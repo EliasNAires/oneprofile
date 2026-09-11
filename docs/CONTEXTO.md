@@ -4,14 +4,19 @@
 > Describe lo que **hay hoy**, no lo que se planea.
 
 **Última actualización:** 2026-09-11
-**Último milestone:** Paso 5 — la app entera corre en prod con
-`cd prod && docker compose up --build`: imagen propia multi-stage y Postgres con
-volumen nombrado, o sea que los datos sobreviven al `down`. Probado a mano por Elias.
+**Último milestone:** Paso 6 — `GreenhouseBoardUrl.slugFrom` extrae el slug de una
+URL de board de Greenhouse, y `CompanyRepository.findSlugsByAts` devuelve los slugs
+ya guardados de un ATS. Las dos piezas que el paso 7 necesita, sin red. Probado a
+mano por Elias.
 
 > **Hay un plan en curso, aprobado y a medio ejecutar:** `docs/PLAN-DESCUBRIMIENTO.md`.
-> Le quedan los **Pasos 6 y 7** (extracción de slugs, y el script de descubrimiento
-> sobre CommonCrawl con su endpoint). **El próximo paso es el 6.** Ese archivo se
-> borra cuando el plan termine.
+> Le queda el **Paso 7** (cliente de CommonCrawl, servicio de descubrimiento y
+> endpoint). **El próximo paso es el 7.** Ese archivo se borra cuando el plan
+> termine.
+
+> **En esta misma sesión se reorganizaron los paquetes a MVC** (capa técnica), lo
+> que derogó la convención anterior de organizar por feature. El detalle está más
+> abajo y en el registro de `docs/METODOLOGIA.md`.
 
 ## Qué es esto
 
@@ -215,20 +220,57 @@ docs/CONTEXTO.md
 docs/PLAN-DESCUBRIMIENTO.md                        (plan en curso)
 pom.xml
 src/main/java/oneprofile/backend/BackendApplication.java
-src/main/java/oneprofile/backend/company/Ats.java
-src/main/java/oneprofile/backend/company/Company.java
-src/main/java/oneprofile/backend/company/CompanyRepository.java
+src/main/java/oneprofile/backend/model/Ats.java
+src/main/java/oneprofile/backend/model/Company.java
+src/main/java/oneprofile/backend/repository/CompanyRepository.java
+src/main/java/oneprofile/backend/util/GreenhouseBoardUrl.java
 src/main/resources/application.properties
 src/main/resources/application-dev.properties       (vacío)
 src/main/resources/application-prod.properties      (vacío)
 src/main/resources/db/migration/V1__create_company.sql
 src/test/java/oneprofile/backend/BackendApplicationTests.java
 src/test/java/oneprofile/backend/TestcontainersConfiguration.java
-src/test/java/oneprofile/backend/company/CompanyRepositoryTest.java
+src/test/java/oneprofile/backend/repository/CompanyRepositoryTest.java
+src/test/java/oneprofile/backend/util/GreenhouseBoardUrlTest.java
 src/test/resources/application.properties
 ```
 
-### El paquete `company`
+### Organización de los paquetes
+
+El código se organiza **por capa técnica**, no por feature: `model`, `repository`,
+`service`, `controller` y `util` cuelgan directo de `oneprofile.backend`. Hoy
+existen `model`, `repository` y `util`; `service` y `controller` todavía no,
+porque no tienen ninguna clase.
+
+### La clase `GreenhouseBoardUrl` (paquete `util`)
+
+Clase final sin instancias con un solo método público,
+`static Optional<String> slugFrom(String url)`. Es una **función pura, sin red y
+sin Spring**: recibe una URL tal como la devuelve el índice de CommonCrawl y
+devuelve el slug de la empresa, o vacío si esa URL no identifica a ninguna.
+
+Cómo trabaja: matchea la URL contra
+`^https://(?:www\.)?(?:job-)?boards\.greenhouse\.io/(.*)$` —una sola regex que
+cubre los dos dominios de Greenhouse—, corta el fragment, separa path de query y
+toma el primer segmento del path. Si ese segmento es `embed`, el slug sale del
+parámetro `for` de la query. El candidato se valida contra `[A-Za-z0-9_-]+`.
+
+Tres decisiones que no son obvias leyendo el código:
+
+- **Solo `https`.** Decisión explícita de Elias: los boards de Greenhouse hoy son
+  https y aceptar http agrega ruido. Ojo, la consulta al CDX de CommonCrawl es
+  **agnóstica al esquema** (normaliza a SURT), así que pueden llegar capturas
+  `http://` y se van a **descartar en silencio**. Si el paso 7 encuentra menos
+  empresas de las esperadas, éste es uno de los lugares donde mirar.
+- **Las URLs de iframe embebido sí cuentan.** `boards.greenhouse.io/embed/job_board?for=X`
+  y `/embed/job_app?for=X&token=...` son una porción grande de las capturas —son
+  el board metido en la página de carreras propia de la empresa— y su `for=` es el
+  mismo identificador. Descartarlas perdería muchas empresas.
+- **La validación `[A-Za-z0-9_-]+` es la que descarta la basura**, sin listas
+  negras: rechaza el vacío (host pelado) y cualquier cosa con punto
+  (`robots.txt`, `favicon.ico`), porque un slug nunca lleva punto.
+
+### Las clases de company
 
 `Ats` es un **enum**, no una entidad. Se decidió así porque es un conjunto cerrado
 que define el código y no cargan usuarios: da chequeo del compilador y `switch`
@@ -246,8 +288,17 @@ ningún campo ni método.
 el nombre legible, así que el nombre se agrega en el paso donde se consulte la API
 del ATS, que es cuando el dato existe.
 
-`CompanyRepository` es un `JpaRepository<Company, Long>` pelado, sin métodos
-propios.
+`CompanyRepository` es un `JpaRepository<Company, Long>` con un solo método
+propio:
+
+```java
+@Query("select c.slug from Company c where c.ats = :ats")
+List<String> findSlugsByAts(Ats ats);
+```
+
+Devuelve **slugs y no entidades** a propósito: es lo único que el descubrimiento
+necesita —restar de un `Set` lo que ya está guardado— y así no hidrata miles de
+entidades en la sesión de JPA.
 
 ### Migraciones
 
@@ -274,8 +325,9 @@ Hibernate 6/7 espera para `@GeneratedValue`, y si no coincide `validate` falla.
 
 ## Estado verificado
 
-- `./mvnw test` → **3 tests, 0 fallas**: `BackendApplicationTests.contextLoads` más
-  los dos de `CompanyRepositoryTest`. Ambas clases importan
+- `./mvnw test` → **16 tests, 0 fallas**: `BackendApplicationTests.contextLoads`,
+  los 3 de `CompanyRepositoryTest` y los 12 casos parametrizados de
+  `GreenhouseBoardUrlTest`. Las dos primeras clases importan
   `TestcontainersConfiguration`, que declara un `PostgreSQLContainer` como
   `@Bean @ServiceConnection`; `CompanyRepositoryTest` lleva además
   `@AutoConfigureTestDatabase(replace = NONE)`, porque sin base embebida en el
@@ -293,6 +345,16 @@ Hibernate 6/7 espera para `@GeneratedValue`, y si no coincide `validate` falla.
      que vuelven el mismo `ats` y el mismo `slug`.
   2. `rejectsSameSlugTwiceWithinAnAts` — al guardar dos veces el mismo par
      `(ats, slug)` salta `DataIntegrityViolationException`.
+  3. `findsTheSlugsOfAnAts` — guarda dos empresas, flush y clear, y
+     `findSlugsByAts` devuelve esos dos slugs.
+     **Limitación conocida:** hoy no se puede probar que el método *filtra* por
+     ATS, porque `Ats` tiene un solo valor y agregar uno falso sería meter algo
+     que nadie pidió. Esa assertion se suma cuando entre el segundo ATS.
+- `GreenhouseBoardUrlTest` no levanta contexto de Spring y corre en ~40 ms. Son dos
+  `@ParameterizedTest`: 7 URLs que devuelven slug (path extra, query string, los
+  dos dominios, `www.`, y las dos formas de `embed`) y 5 que devuelven vacío
+  (`embed` sin `for`, `robots.txt`, host pelado, otro host, y **`http://`**, que
+  documenta la decisión de aceptar solo https).
 - `./mvnw spring-boot:run` → levanta el container `backend-postgres-1`, Flyway
   aplica `V1`, Hibernate valida el esquema y Tomcat arranca en 8080. Verificado en
   la base: tabla `company` con `company_pkey` y `company_ats_slug_key`, secuencia
@@ -300,7 +362,8 @@ Hibernate 6/7 espera para `@GeneratedValue`, y si no coincide `validate` falla.
 
 ## Qué NO existe todavía
 
-- **El script de descubrimiento sobre CommonCrawl** y todo el paquete `discovery`.
+- **El script de descubrimiento sobre CommonCrawl**: no hay cliente del índice,
+  ni servicio, ni endpoint. Lo único que existe del paso 6 es `GreenhouseBoardUrl`.
 - Ningún cliente de API de ATS, ninguna vacante, ninguna lógica de matching.
 - Ningún servicio ni endpoint HTTP propio.
 - Ninguna forma de cargar empresas: la tabla `company` existe pero arranca vacía.

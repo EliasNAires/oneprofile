@@ -1,4 +1,4 @@
-package oneprofile.backend.company;
+package oneprofile.backend.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -12,6 +12,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.dao.DataIntegrityViolationException;
 
 import oneprofile.backend.TestcontainersConfiguration;
+import oneprofile.backend.model.Ats;
+import oneprofile.backend.model.Company;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -34,6 +36,17 @@ class CompanyRepositoryTest {
 
 		assertThat(found.getAts()).isEqualTo(Ats.GREENHOUSE);
 		assertThat(found.getSlug()).isEqualTo("mercadolibre");
+	}
+
+	@Test
+	void findsTheSlugsOfAnAts() {
+		companies.save(new Company(Ats.GREENHOUSE, "mercadolibre"));
+		companies.save(new Company(Ats.GREENHOUSE, "globant"));
+		entityManager.flush();
+		entityManager.clear();
+
+		assertThat(companies.findSlugsByAts(Ats.GREENHOUSE))
+				.containsExactlyInAnyOrder("mercadolibre", "globant");
 	}
 
 	@Test

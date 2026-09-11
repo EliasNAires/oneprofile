@@ -1,8 +1,8 @@
 # Plan en curso — prod con Docker y el script de descubrimiento
 
-> Plan acordado con Elias y aprobado. Los **Pasos 4 y 5 ya están hechos y
-> verificados** (ver `docs/CONTEXTO.md`); acá quedan los pasos **6 y 7**,
-> pendientes. Este archivo se borra cuando el plan esté terminado.
+> Plan acordado con Elias y aprobado. Los **Pasos 4, 5 y 6 ya están hechos y
+> verificados** (ver `docs/CONTEXTO.md`); acá queda el paso **7**, pendiente.
+> Este archivo se borra cuando el plan esté terminado.
 
 ## Por qué
 
@@ -95,9 +95,31 @@ queda expuesto. Se decide en ese momento.
 
 ---
 
-## Paso 6 — Extracción de slugs (puro, sin red)
+## Paso 6 — Extracción de slugs (puro, sin red) ✅ HECHO (2026-09-11)
 
-**`oneprofile/backend/discovery/GreenhouseBoardUrl.java`** (nuevo)
+> **Cerrado y probado a mano por Elias** (`./mvnw test` → 16 tests, 0 fallas).
+> Se implementó con cuatro desvíos acordados sobre la marcha:
+>
+> - **Solo `https`.** El plan listaba "`http` y `https`" como casos de test, lo que
+>   asumía un chequeo de esquema. Elias decidió exigir `https://` y descartar el
+>   resto. Queda anotado que la consulta al CDX es agnóstica al esquema, así que
+>   pueden llegar capturas `http://` y se descartan en silencio.
+> - **Las URLs de iframe embebido dan slug** (`/embed/job_board?for=X`,
+>   `/embed/job_app?for=X&token=...`), en vez de descartarse: son muchas capturas
+>   y el `for=` es el mismo identificador.
+> - **El repositorio devuelve slugs, no entidades**: `List<String> findSlugsByAts`
+>   en lugar de `List<Company> findAllByAts`.
+> - **`indexPatterns()` se pasó al Paso 7**, donde nace el cliente que lo consume.
+>   En el Paso 6 no lo llamaba nadie y su único test posible era declarativo.
+>
+> Además, en la misma sesión y a pedido de Elias, **los paquetes se reorganizaron
+> por capa técnica (MVC)**: por eso las rutas de abajo dicen `util/`, `service/` y
+> `controller/` y no `discovery/`.
+>
+> El detalle de cómo quedó está en `docs/CONTEXTO.md`; lo de abajo es el plan
+> original, conservado como registro.
+
+**`oneprofile/backend/util/GreenhouseBoardUrl.java`** (nuevo)
 
 - `static Optional<String> slugFrom(String url)` — recibe una URL del índice y
   devuelve el slug. Casos que cubren los tests: path extra
@@ -121,7 +143,12 @@ implementación que justifique colgarle comportamiento.
 
 ## Paso 7 — Cliente de CommonCrawl, servicio y endpoint
 
-**`discovery/CommonCrawlIndexClient.java`** (nuevo, `@Component`)
+**`util/GreenhouseBoardUrl.java`** (existe) — se le agrega
+`static List<String> indexPatterns()`, los dos prefijos con los que se consulta el
+índice (`boards.greenhouse.io/` y `job-boards.greenhouse.io/`). Venía del Paso 6 y
+se postergó hasta acá, que es donde aparece el cliente que los consume.
+
+**`util/CommonCrawlIndexClient.java`** (nuevo, `@Component`)
 
 - `void forEachUrl(String indexId, String pattern, Consumer<String> onUrl)`
 - `RestClient` contra
@@ -134,14 +161,14 @@ implementación que justifique colgarle comportamiento.
 - El listado de índices disponibles está en `https://index.commoncrawl.org/collinfo.json`
   (el más reciente al 2026-09-11 era `CC-MAIN-2026-34`).
 
-**`discovery/GreenhouseDiscoveryService.java`** (nuevo, `@Service`)
+**`service/GreenhouseDiscoveryService.java`** (nuevo, `@Service`)
 
 - `DiscoveryResult discover(String indexId)` — recorre los dos patrones volcando
   todo en un único `Set<String>`, resta los slugs que devuelve
   `findAllByAts(GREENHOUSE)`, y hace `saveAll` de los nuevos.
 - `record DiscoveryResult(int slugsFound, int newCompanies)`.
 
-**`discovery/DiscoveryController.java`** (nuevo)
+**`controller/DiscoveryController.java`** (nuevo)
 
 - `POST /admin/discovery/greenhouse?index=CC-MAIN-2026-34` → **202 Accepted**
   inmediato. El trabajo corre en un executor de **un solo hilo**, con un flag que

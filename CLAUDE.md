@@ -38,7 +38,7 @@ Java 25, Spring Boot 4.1.1, Spring Data JPA, Spring Web MVC, PostgreSQL (runtime
 ## Convenciones
 
 - Conversación y documentos en español; código e identificadores en inglés.
-- Paquetes bajo `oneprofile.backend`, organizados por feature (`vacancy`,
-  `profile`, `matching`), no por capa técnica.
+- Paquetes bajo `oneprofile.backend`, organizados por capa técnica
+  (`model`, `repository`, `service`, `controller`, `util`).
 - Sin credenciales ni secretos en el repo.
 - Git lo maneja Elias: no inicializar, commitear ni pushear sin pedido explícito.

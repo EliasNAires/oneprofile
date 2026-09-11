@@ -58,9 +58,11 @@ Cada pedido de Elias se resuelve con este ciclo. Un pasaje completo del ciclo es
 
 - **Idioma:** la conversación y los documentos, en español. El código —nombres de
   clases, métodos, variables, paquetes, mensajes de commit y comentarios— en inglés.
-- **Paquetes:** todo bajo `oneprofile.backend`, organizado **por feature**
-  (`vacancy`, `profile`, `matching`, ...), no por capa técnica
-  (nada de un `controllers/` global con todo adentro).
+- **Paquetes:** todo bajo `oneprofile.backend`, organizado **por capa técnica**
+  (`model`, `repository`, `service`, `controller`, `util`). Las features conviven
+  dentro de cada capa; no hay un paquete por feature. Las clases que no son
+  ninguna capa de MVC —funciones puras, helpers— van a `util`. Un paquete de capa
+  se crea recién cuando tiene su primera clase, no vacío.
 - **Comandos habituales:**
   - `./mvnw test` — corre los tests.
   - `./mvnw spring-boot:run` — levanta la app.
@@ -119,6 +121,13 @@ Cada entrada es una regla aprendida, con la fecha en que se acordó.
   properties, clases, métodos, archivos y tests. Salió de dejar un datasource H2
   en archivo que no persistía nada: no cumplía ninguna función, así que se
   eliminó en vez de quedarse "por las dudas".
+- **2026-09-11 — Paquetes por capa técnica, no por feature.** Elias pidió pasar
+  la estructura a MVC y eligió la variante de **capa técnica global**: `model`,
+  `repository`, `service`, `controller` y `util` en la raíz de
+  `oneprofile.backend`. Esto **deroga** la convención anterior, que mandaba
+  organizar por feature y prohibía explícitamente un paquete por capa; se le
+  señaló el conflicto antes de mover nada y lo confirmó. Los paquetes `company` y
+  `discovery` desaparecieron.
 - **2026-09-10 — Archivo de contexto.** El estado del repo vive en
   `docs/CONTEXTO.md` y se actualiza después de cada milestone alcanzado, para
   poder retomar sin reconstruir todo leyendo código.

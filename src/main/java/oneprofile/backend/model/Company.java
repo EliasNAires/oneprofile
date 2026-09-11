@@ -1,4 +1,4 @@
-package oneprofile.backend.company;
+package oneprofile.backend.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
