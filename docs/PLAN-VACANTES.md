@@ -297,9 +297,30 @@ con un pipeline que la refresque en cada commit a `main`.
 **Qué quedó escrito:**
 
 - `.github/workflows/publish.yml` — dispara en push a `main`. Job `test`
-  (`actions/setup-java` temurin 25 con cache de Maven, `./mvnw -B test`) y job
+  (`actions/setup-java@v5` temurin 25 con cache de Maven, `mvn -B test`) y job
   `publish` con `needs: test`, que loguea a GHCR y publica con
-  `docker/build-push-action`. Lleva la label `org.opencontainers.image.source`, que es
+  `docker/build-push-action`.
+
+  **El job de tests usa `mvn`, no `./mvnw`, y es a propósito.** La primera corrida
+  falló así, en 0 segundos:
+
+  ```
+  wget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip
+  ```
+
+  El wrapper está en `distributionType=only-script`: no hay jar versionado, así que
+  cada corrida limpia tiene que bajarse Maven entero. En la máquina de Elias no se nota
+  porque ya está en `~/.m2/wrapper/dists/`. La URL es válida (devuelve 200 y 9,4 MB
+  desde una conexión normal) y el runner tiene `wget`, así que lo que pasa es que la
+  descarga la cortan del otro lado desde las IPs de los runners. Como `mvnw` corre
+  `wget` en modo silencioso, el log no dice el código.
+
+  La salida fue usar el Maven que la imagen `ubuntu-24.04` **ya trae instalado**, que
+  es **la misma 3.9.16** que declara `.mvn/wrapper/maven-wrapper.properties`. La contra
+  asumida: si GitHub actualiza la imagen, CI podría correr una 3.9.x distinta de la del
+  wrapper. Si algún día eso importa, la salida es fijar la versión con una acción que
+  instale Maven, **no** volver al wrapper. Cachear `~/.m2/wrapper` no servía: la caché
+  arranca vacía y la primera corrida intentaría la misma descarga. Lleva la label `org.opencontainers.image.source`, que es
   lo que vincula el paquete al repo — y de esa vinculación sale el permiso del token
   sobre el paquete, así que no es cosmética.
 - `prod/compose.yaml` — el servicio `app` usa `image:` en vez de `build:`.

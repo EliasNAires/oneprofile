@@ -8,13 +8,17 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '25'
           cache: maven
-      - run: ./mvnw -B test
+      # Se usa el mvn del runner, no ./mvnw: el wrapper esta en modo only-script y
+      # tiene que bajarse la distribucion en cada corrida, y esa descarga la cortan
+      # desde las IPs de los runners. La imagen ya trae la misma version que declara
+      # .mvn/wrapper/maven-wrapper.properties.
+      - run: mvn -B test
 
   publish:
     needs: test
@@ -23,7 +27,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: docker/login-action@v3
         with:
           registry: ghcr.io
