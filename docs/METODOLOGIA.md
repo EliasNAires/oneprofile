@@ -177,6 +177,15 @@ Cada entrada es una regla aprendida, con la fecha en que se acordó.
   sesiones cortas y una sesión nueva arranca sin nada de lo conversado, así que un
   plan que vive solo en la conversación se pierde. El criterio de escritura está
   arriba, en el punto 2 del ciclo.
+- **2026-09-11 — Entrar en modo plan al empezar a planificar.** Elias pidió que *"al
+  comenzar cada plan automáticamente te pones en modo plan"*, sin que él tenga que
+  activarlo. Salió de arrancar el paso 2 en modo auto —lo había dejado activado sin
+  querer— y ponerme a ejecutar consultas contra la base de prod en vez de planificar.
+  El modo plan es la contraparte en la herramienta de la regla "plan antes de código"
+  del punto 2 del ciclo: garantiza que mientras se diseña no se toca nada del sistema,
+  que es exactamente lo que esa etapa espera. Confiar en la propia disciplina no
+  alcanza, porque el modo activo puede habilitar acciones que la etapa no debería
+  permitir.
 - **2026-09-11 — La documentación para personas es intuitiva y breve.** Elias pidió
   que quedara escrito que `docs/para-humanos/` se escribe para entenderse rápido y
   no para ser exhaustiva, notas de los diagramas incluidas. El detalle vive en

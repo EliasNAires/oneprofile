@@ -18,8 +18,11 @@ tres estados. Probado a mano por Elias en prod.
 **Milestone anterior:** documentación para personas en `docs/para-humanos/`.
 
 **Hay un plan en curso:** [`docs/PLAN-VACANTES.md`](PLAN-VACANTES.md) — el paso 2,
-modelar y persistir las vacantes. Está escrito para que lo pueda retomar otra sesión
-sin más contexto que ese archivo y este.
+modelar y persistir las vacantes, **partido en 2a** (el modelo y la carga de una
+empresa por slug) **y 2b** (el recorrido de las 3.121 activas y el borrado de lo que
+ya no está). Ahí están también los números medidos y las decisiones ya cerradas.
+Está escrito para que lo pueda retomar otra sesión sin más contexto que ese archivo
+y este.
 
 ## Qué es esto
 
@@ -231,7 +234,7 @@ prod/compose.yaml
 prod/.env.example
 docs/METODOLOGIA.md
 docs/CONTEXTO.md
-docs/PLAN-VACANTES.md                               (plan en curso: el paso 2)
+docs/PLAN-VACANTES.md                               (plan en curso: el paso 2, en 2a y 2b)
 docs/para-humanos/README.md                         (para personas, no para agentes)
 docs/para-humanos/diagramas/*.puml + *.svg          (6 diagramas PlantUML)
 pom.xml
@@ -610,12 +613,11 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
   corrida en curso, con la misma técnica del `CountDownLatch` que el de descubrimiento.
 - **Ningún test le pega a Greenhouse de verdad.**
 - **El sondeo anda de punta a punta en prod.** Probado a mano por Elias con un POST
-  que devolvió 202 al toque. Números **parciales**, leídos con la corrida todavía en
-  curso: de unas 3.400 empresas ya sondeadas, **~300 `NOT_FOUND`, ~80 `EMPTY` y
-  ~3.000 `ACTIVE`**, y **cero fallos**. La proporción es el hallazgo del paso: la
-  enorme mayoría de lo que descubrió CommonCrawl **sigue vivo y con vacantes** — se
-  esperaba bastante más mortandad. La corrida tardó ~30 minutos, más de los ~14 que
-  daría la pausa sola.
+  que devolvió 202 al toque. La corrida **terminó**, y el reparto final de las 4.046
+  empresas es **3.121 `ACTIVE`, 708 `NOT_FOUND` y 217 `EMPTY`**. La proporción es el
+  hallazgo del paso: el **77%** de lo que descubrió CommonCrawl **sigue vivo y con
+  vacantes** — se esperaba bastante más mortandad. La corrida tardó ~30 minutos, más
+  de los ~14 que daría la pausa sola.
 - `GreenhouseBoardUrlTest` no levanta contexto de Spring y corre en ~40 ms. Son dos
   `@ParameterizedTest`: 7 URLs que devuelven slug (path extra, query string, los
   dos dominios, `www.`, y las dos formas de `embed`) y 5 que devuelven vacío
@@ -660,7 +662,9 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 ## Qué sigue
 
 El paso 2 está planificado en **[`docs/PLAN-VACANTES.md`](PLAN-VACANTES.md)**:
-modelar la vacante y persistir las de las empresas `ACTIVE`.
+modelar la vacante y persistir las de las empresas `ACTIVE`. Va en dos tramos —**2a**
+deja el modelo y la carga de una empresa por slug, **2b** el recorrido completo— y
+las decisiones de diseño ya están tomadas y anotadas ahí.
 
 Más allá de eso, sin priorizar y sin planificar:
 
