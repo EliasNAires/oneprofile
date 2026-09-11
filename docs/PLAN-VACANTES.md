@@ -1,10 +1,13 @@
 # Plan — paso 2: las vacantes
 
-> **Plan en curso. 2a está cerrado. 2b está escrito y con tests, pero sin probar a mano.
-> Falta 2c.** Lo que ya existe está descrito en `docs/CONTEXTO.md` (sección "Las
-> vacantes"), así que **acá queda el guion de prueba de 2b y lo que todavía no existe**,
-> más las mediciones y decisiones. Este archivo se borra cuando el paso 2 entero esté
-> terminado y probado a mano.
+> **Plan en curso. 2a está cerrado. 2b y 2c están escritos, pero ninguno de los dos está
+> probado a mano.** Lo que ya existe está descrito en `docs/CONTEXTO.md` (sección "Las
+> vacantes"), así que **acá quedan los guiones de prueba de 2b y de 2c**, más las
+> mediciones y decisiones. Este archivo se borra cuando el paso 2 entero esté terminado y
+> probado a mano.
+>
+> **El orden es 2c primero.** Después del cambio de `prod/compose.yaml`, prod ya no se
+> construye en la máquina de Elias, así que la corrida real de 2b se hace en el servidor.
 >
 > Para retomar esto en una sesión nueva alcanza con leer, en este orden:
 > `docs/METODOLOGIA.md` (cómo trabajamos), `docs/CONTEXTO.md` (qué hay hoy) y este
@@ -239,11 +242,11 @@ values (nextval('vacancy_seq'), (select id from company where slug='splice'), 99
 ```
 
 **3. La corrida real, en prod** (estimada en 1 a 2 horas; 500 ms × 3.121 son 26 minutos de
-pausa sola, más el peso de cada descarga):
+pausa sola, más el peso de cada descarga). **Va en el servidor**, con el despliegue del
+paso 2c ya hecho — es una de las razones del paso: cerrás el SSH y la corrida sigue:
 
 ```bash
-cd prod
-docker compose up --build -d
+cd ~/oneprofile
 docker compose exec app curl -i -X POST 'localhost:8080/admin/vacancies/greenhouse'
 docker compose logs -f app
 ```
@@ -256,17 +259,129 @@ select count(distinct company_id) from vacancy;
 Los números de esa corrida son la primera medición real del volumen: hasta ahora las
 250.000 vacantes son una proyección de una muestra de 40 empresas.
 
-### Paso 2c — desplegar en un servidor por SSH — **a planificar**
+### Paso 2c — desplegar en un servidor — **escrito, falta probarlo a mano**
 
-Declaración de Elias, tal como la dio (2026-09-11):
+El motivo, en palabras de Elias: los procesos son constantes, a futuro en paralelo con
+más ATS y con la normalización, y **los datos ya tardan horas en conseguirse**, así que
+no pueden depender de que su máquina esté prendida. Tiene un servidor accesible por SSH
+a través de una VPN de ZeroTier.
 
-> "Vamos a añadir un paso 2c después de reiniciar el chat. Voy a desplegar esto en un
-> servidor por SSH, porque ya estamos hablando de procesos constantes, a futuro en
-> paralelo con más ATS y normalización de las vacantes. El paso 2c va a ser una guía de
-> despliegue."
+Descartó copiar la imagen y el volumen a mano —lo más simple y lo menos escalable, hay
+que repetirlo en cada cambio— a favor de **publicar la imagen en un registry público**
+con un pipeline que la refresque en cada commit a `main`.
 
-**Todavía no está planificado**: no hay servidor elegido, ni decisiones tomadas, ni
-alcance definido. Se planifica en la sesión que lo arranque.
+**Decisiones tomadas (cerradas, no volver a preguntarlas):**
+
+1. **Registry: GHCR**, imagen pública, `ghcr.io/eliasnaires/oneprofile-backend:latest`.
+   El workflow se autentica con el `GITHUB_TOKEN` que Actions ya provee: no hay ningún
+   secret que crear. Pasarla a privada más adelante es un toggle en GitHub.
+2. **El pipeline corre `./mvnw test` antes de publicar.** El `Dockerfile` saltea los
+   tests porque adentro del build de la imagen no hay un Docker para que Testcontainers
+   levante Postgres; un runner de Actions sí lo tiene, así que corren en un job aparte,
+   previo al build. **El `Dockerfile` no se tocó.**
+3. **Un solo tag, `latest`.** Sin tag por SHA: si alguna vez hace falta volver a una
+   versión anterior, se agrega en ese momento.
+4. **El servidor es amd64**, así que se construye una sola imagen.
+5. **`prod/compose.yaml` pasa de `build:` a `image:`.** El servidor es prod; en la
+   máquina de Elias, para probar se usa dev. **Consecuencia:** `cd prod && docker
+   compose up --build -d` ya no existe, así que **la corrida real de 2b (el punto 3 del
+   guion de arriba) se hace en el servidor.**
+6. **`compose.yaml` y `.env` llegan al servidor por `scp`**, no clonando el repo: el
+   servidor ya no compila nada, así que no necesita el código. El costo es volver a
+   copiar el compose cuando cambie, que es casi nunca.
+7. **Los datos ya existentes se migran** con `pg_dump` + `psql` por SSH, en vez de
+   rehacer el descubrimiento y el sondeo en el servidor.
+8. **El despliegue al servidor es a mano** (`docker compose pull && docker compose up
+   -d`). Que un push a `main` reinicie prod solo es una decisión aparte, no se tomó.
+
+**Qué quedó escrito:**
+
+- `.github/workflows/publish.yml` — dispara en push a `main`. Job `test`
+  (`actions/setup-java` temurin 25 con cache de Maven, `./mvnw -B test`) y job
+  `publish` con `needs: test`, que loguea a GHCR y publica con
+  `docker/build-push-action`. Lleva la label `org.opencontainers.image.source`, que es
+  lo que vincula el paquete al repo — y de esa vinculación sale el permiso del token
+  sobre el paquete, así que no es cosmética.
+- `prod/compose.yaml` — el servicio `app` usa `image:` en vez de `build:`.
+- `docs/para-humanos/despliegue.md` — la guía, con su diagrama
+  `diagramas/despliegue.puml`. `diagramas/entorno.puml` y el `README.md` de esa carpeta
+  se actualizaron porque decían que prod corre en la máquina de Elias.
+
+**Este paso no lleva tests automáticos**, y es a propósito: no agrega comportamiento
+—es un workflow de CI, una línea del compose y documentación—, y testear eso sería
+testear configuración declarativa, que `METODOLOGIA.md` prohíbe. Lo que sí gana el
+proyecto es que **los 62 tests que ya existen corren en cada push**.
+
+**Lo que falta es la prueba manual.** Guion:
+
+**1. El pipeline.** Commit y push a `main`. En la pestaña Actions, el job de tests
+termina en verde con los 62 tests y recién después corre el de publicación. Al final,
+en la página de packages del repo aparece `oneprofile-backend` con el tag `latest`.
+
+**2. Que la imagen se baje.** La primera vez hay que marcar el paquete como **público**
+desde la web de GitHub (un paquete nuevo nace privado). Después, en el servidor:
+
+```bash
+docker pull ghcr.io/eliasnaires/oneprofile-backend:latest
+```
+
+Sin `docker login`. Si pide credenciales, el paquete quedó privado.
+
+**3. El stack en el servidor.**
+
+```bash
+ssh servidor mkdir -p oneprofile
+scp prod/compose.yaml prod/.env servidor:~/oneprofile/     # desde la máquina de Elias
+```
+
+```bash
+cd ~/oneprofile                                            # en el servidor
+docker compose up -d postgres
+docker compose logs -f postgres    # hasta "database system is ready to accept connections"
+```
+
+**4. Los datos.** En la máquina de Elias:
+
+```bash
+cd prod
+docker compose up -d postgres
+docker compose exec -T postgres sh -c 'pg_dump -U "$POSTGRES_USER" -d "$POSTGRES_DB"' > ~/oneprofile.sql
+scp ~/oneprofile.sql servidor:~/
+```
+
+En el servidor, **con la app todavía apagada** (si arranca primero crea el esquema
+vacío y el restore choca):
+
+```bash
+docker compose exec -T postgres sh -c 'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB"' < ~/oneprofile.sql
+docker compose exec -T postgres sh -c 'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "select board_status, count(*) from company group by board_status"'
+```
+
+Tiene que dar **3.121 `ACTIVE`, 708 `NOT_FOUND` y 217 `EMPTY`**.
+
+**5. La app.**
+
+```bash
+docker compose up -d
+docker compose logs -f app
+```
+
+Flyway tiene que reportar el esquema **ya en la última versión**, sin aplicar ninguna
+migración —el historial vino en el dump—, y después `Started BackendApplication`.
+
+**6. Que responda.**
+
+```bash
+docker compose exec app curl -i -X POST 'localhost:8080/admin/vacancies/greenhouse/figma'
+```
+
+`200` con `{"fetched":...,"inserted":...,"updated":...,"deleted":...}`.
+
+**7. El ciclo de actualización.** Un commit cualquiera a `main`, esperar el workflow, y
+en el servidor `docker compose pull && docker compose up -d`. Tiene que recrear **solo**
+el container de la app, dejando el de Postgres y sus datos intactos.
+
+Con eso cerrado, el servidor queda listo para correr ahí la corrida real del paso 2b.
 
 ## Cómo se cierra cada uno
 

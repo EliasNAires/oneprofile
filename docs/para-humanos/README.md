@@ -22,6 +22,11 @@ tiene el suyo:
 - [**Cómo se traen las vacantes**](vacantes.md) — qué pide la API, las dos trampas del
   JSON, y qué se guarda de cada vacante.
 
+Y aparte, cómo se pone esto a correr fuera de tu máquina:
+
+- [**Cómo se despliega**](despliegue.md) — el pipeline que publica la imagen en cada
+  commit, y cómo se levanta y se actualiza en el servidor.
+
 ---
 
 ## Qué es esto
@@ -167,7 +172,9 @@ devuelvan lo mismo—, así que tenerlo en una tabla no evitaría recompilar nad
 
 ![Entorno](diagramas/entorno.svg)
 
-Hay dos formas de levantarlo, y la diferencia que más se nota es que **en
+Hay dos formas de levantarlo. **Desarrollo corre en tu máquina y producción en un
+servidor**, con la imagen bajada del registry: cómo llega hasta ahí está en
+[cómo se despliega](despliegue.md). La diferencia que más se nota es que **en
 producción no hay ningún puerto abierto**: para hablarle a la app hay que meterse
 adentro del container.
 
@@ -186,12 +193,12 @@ En desarrollo, para ver que arranca:
 
 Levanta solo el Postgres en Docker y queda escuchando en el 8080.
 
-En producción, el ciclo completo:
+En producción —o sea, en el servidor— el ciclo completo:
 
 ```bash
-cd prod
-cp .env.example .env          # solo la primera vez, después completalo
-docker compose up --build -d
+cd ~/oneprofile
+docker compose pull
+docker compose up -d
 
 # 1. descubrir empresas (unos minutos)
 docker compose exec app curl -i -X POST \
@@ -242,11 +249,11 @@ crawl nuevo suma empresas que los anteriores no habían visto.
 
 ## Qué sigue
 
-Lo próximo son dos cosas. **Correr la carga completa de vacantes de verdad** —una o dos
-horas, del orden de 250.000— y después **sacar esto de la máquina de Elias y ponerlo en un
-servidor**. Eso último es porque ya no son experimentos sueltos: son procesos que tienen
-que correr seguido, y más adelante en paralelo, con más ATS y con el trabajo de ordenar
-los títulos.
+Lo próximo es **correr la carga completa de vacantes de verdad** —una o dos horas, del
+orden de 250.000—, y ahora se hace en el servidor: cerrás el SSH y la corrida sigue. Que
+esto haya salido de la máquina de Elias es justamente porque ya no son experimentos
+sueltos, sino procesos que tienen que correr seguido, y más adelante en paralelo, con más
+ATS y con el trabajo de ordenar los títulos.
 
 Y ahí aparece el problema interesante: los títulos son texto libre, escrito por cada
 empresa a su manera, y para que el matching sirva hay que hacer que

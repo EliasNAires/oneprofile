@@ -16,8 +16,7 @@ services:
       retries: 10
 
   app:
-    build:
-      context: ..
+    image: ghcr.io/eliasnaires/oneprofile-backend:latest
     depends_on:
       postgres:
         condition: service_healthy
