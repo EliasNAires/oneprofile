@@ -4,14 +4,14 @@
 > Describe lo que **hay hoy**, no lo que se planea.
 
 **Última actualización:** 2026-09-11
-**Último milestone:** Paso 4 — se voló H2; la app corre sobre PostgreSQL real
-(container levantado por `spring-boot-docker-compose` en dev, Testcontainers en
-tests) y el esquema lo maneja **Flyway**. `./mvnw test` en verde con 3 tests.
+**Último milestone:** Paso 5 — la app entera corre en prod con
+`cd prod && docker compose up --build`: imagen propia multi-stage y Postgres con
+volumen nombrado, o sea que los datos sobreviven al `down`. Probado a mano por Elias.
 
 > **Hay un plan en curso, aprobado y a medio ejecutar:** `docs/PLAN-DESCUBRIMIENTO.md`.
-> Contiene los **Pasos 5, 6 y 7** (prod con `docker-compose up`, extracción de
-> slugs, y el script de descubrimiento sobre CommonCrawl con su endpoint).
-> **El próximo paso es el 5.** Ese archivo se borra cuando el plan termine.
+> Le quedan los **Pasos 6 y 7** (extracción de slugs, y el script de descubrimiento
+> sobre CommonCrawl con su endpoint). **El próximo paso es el 6.** Ese archivo se
+> borra cuando el plan termine.
 
 ## Qué es esto
 
@@ -133,9 +133,10 @@ spring.jpa.hibernate.ddl-auto=validate
 la raíz, `spring-boot-docker-compose` levanta el Postgres y deriva el datasource
 del container: no hay nada que declarar.
 
-`src/main/resources/application-prod.properties` — **vacío**. Cuando prod sea real
-las credenciales entran por `SPRING_DATASOURCE_URL/USERNAME/PASSWORD`, que Spring
-Boot bindea solo por relaxed binding.
+`src/main/resources/application-prod.properties` — **vacío**, y se queda así: en
+prod las credenciales entran por `SPRING_DATASOURCE_URL/USERNAME/PASSWORD`, que
+`prod/compose.yaml` le pasa como variables de entorno y Spring Boot bindea solo
+por relaxed binding.
 
 `src/test/resources/application.properties`:
 
@@ -156,11 +157,59 @@ local y efímera, Elias las dio por aceptables en el repo.
 stop`, **no `down`**. El container se conserva con sus datos hasta que corras
 `docker compose down` a mano.
 
+## Prod
+
+Prod es una carpeta aparte, `prod/`, y se levanta entrando en ella:
+
+```bash
+cd prod
+cp .env.example .env          # solo la primera vez, y después completarlo
+docker compose up --build -d  # --build cada vez que cambie el código
+docker compose logs -f app
+docker compose down           # conserva los datos
+docker compose down -v        # los borra
+```
+
+Está en una subcarpeta con el nombre `compose.yaml` a propósito: así el comando es
+`docker compose up` pelado, sin `-f`. El nombre `compose.yaml` en la raíz no se
+podía usar porque lo ocupa el de dev, que `spring-boot-docker-compose` busca ahí
+por convención.
+
+- **`Dockerfile`** (en la raíz, junto al código) — multi-stage:
+  `eclipse-temurin:25-jdk` corre `./mvnw -DskipTests package`, y
+  `eclipse-temurin:25-jre` solo copia el jar. Copia únicamente `.mvn`, `mvnw`,
+  `pom.xml` y `src`, así que **`compose.yaml` no entra a la imagen** y el soporte
+  de docker-compose queda inerte en prod sin desactivarlo por configuración.
+  Los tests se saltean **porque usan Testcontainers**, que necesitaría un Docker
+  disponible dentro del stage de build; se corren aparte con `./mvnw test`.
+- **`prod/compose.yaml`** — `name: oneprofile-prod`, servicio `postgres` con
+  volumen nombrado y servicio `app` con `build: context: ..` (el Dockerfile vive
+  en la raíz) y `SPRING_PROFILES_ACTIVE=prod`. **Ningún puerto publicado**, ni el
+  de la app ni el de la base.
+- **`prod/.env.example`** — plantilla versionada con `POSTGRES_DB`,
+  `POSTGRES_USER` y `POSTGRES_PASSWORD` vacías. El `prod/.env` real tiene los
+  valores y **no va al repo** (`.env` está en `.gitignore`). Compose lo lee del
+  directorio desde donde corrés el comando, por eso vive en `prod/`.
+
+Tres detalles que costaron descubrir y no son obvios:
+
+- **El volumen se monta en `/var/lib/postgresql`, no en `/var/lib/postgresql/data`.**
+  Postgres 18 movió el `PGDATA` a `/var/lib/postgresql/18/docker` y declara el
+  `VOLUME` en el directorio padre. Con el path viejo los datos **no persisten**.
+- **`name: oneprofile-prod` no es cosmético.** Sin él, Compose deriva el nombre de
+  proyecto del directorio y los dos stacks se pisan: un `up` de prod llegó a
+  **recrear el container de Postgres de dev**.
+- **`healthcheck` + `depends_on: condition: service_healthy`.** Con `depends_on`
+  pelado la app arranca antes de que Postgres acepte conexiones y Flyway muere.
+
 ## Qué existe hoy
 
 ```
 CLAUDE.md
 compose.yaml
+Dockerfile
+prod/compose.yaml
+prod/.env.example
 docs/METODOLOGIA.md
 docs/CONTEXTO.md
 docs/PLAN-DESCUBRIMIENTO.md                        (plan en curso)
@@ -233,6 +282,12 @@ Hibernate 6/7 espera para `@GeneratedValue`, y si no coincide `validate` falla.
   classpath `@DataJpaTest` falla al intentar reemplazar el datasource.
 - Los tests corren contra **Postgres real y contra el esquema que creó Flyway**, no
   contra uno generado por Hibernate.
+- **Prod anda de punta a punta.** `cd prod && docker compose up --build -d`
+  construye la imagen, levanta los dos containers y la app arranca
+  (`Started BackendApplication`) después de que Flyway aplica `V1`. Con un `down`
+  y un `up` de nuevo, la fila insertada a mano sigue ahí y Flyway reporta
+  `Current version of schema "public": 1` en vez de reaplicar la migración: el
+  volumen nombrado persiste. Probado a mano por Elias.
 - `CompanyRepositoryTest` prueba comportamiento, no anotaciones:
   1. `savesAndReadsBackAts` — guarda, hace flush y clear, relee por id y verifica
      que vuelven el mismo `ats` y el mismo `slug`.
@@ -249,8 +304,6 @@ Hibernate 6/7 espera para `@GeneratedValue`, y si no coincide `validate` falla.
 - Ningún cliente de API de ATS, ninguna vacante, ninguna lógica de matching.
 - Ningún servicio ni endpoint HTTP propio.
 - Ninguna forma de cargar empresas: la tabla `company` existe pero arranca vacía.
-- **Prod no existe**: no hay `Dockerfile` ni `compose.prod.yaml`, y el perfil prod
-  nunca se probó. Es el Paso 5 del plan en curso.
 
 ## Puntos abiertos
 

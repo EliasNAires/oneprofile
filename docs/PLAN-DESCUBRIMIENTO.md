@@ -1,8 +1,8 @@
 # Plan en curso — prod con Docker y el script de descubrimiento
 
-> Plan acordado con Elias y aprobado. El **Paso 4 ya está hecho y verificado**
-> (ver `docs/CONTEXTO.md`); acá quedan los pasos **5, 6 y 7**, pendientes.
-> Este archivo se borra cuando el plan esté terminado.
+> Plan acordado con Elias y aprobado. Los **Pasos 4 y 5 ya están hechos y
+> verificados** (ver `docs/CONTEXTO.md`); acá quedan los pasos **6 y 7**,
+> pendientes. Este archivo se borra cuando el plan esté terminado.
 
 ## Por qué
 
@@ -16,7 +16,7 @@ mano.
 
 | Tema | Decisión |
 |---|---|
-| Base de prod | Postgres en `compose.prod.yaml`, **con volumen nombrado** |
+| Base de prod | Postgres en `prod/compose.yaml`, **con volumen nombrado** |
 | Imagen de prod | Dockerfile propio multi-stage |
 | Disparo del script | Endpoint HTTP, **sin protección**, puerto de la app no publicado |
 | Ejecución | Asíncrona: 202 inmediato, resultado y errores por log |
@@ -46,14 +46,32 @@ En tres niveles:
 
 ---
 
-## Paso 5 — Prod con `docker-compose up`
+## Paso 5 — Prod con `docker-compose up` ✅ HECHO (2026-09-11)
+
+> **Cerrado y probado a mano por Elias.** Se implementó como estaba planeado, con
+> tres desvíos acordados sobre la marcha:
+>
+> - El compose de prod **no quedó en la raíz como `compose.prod.yaml`**, sino en
+>   `prod/compose.yaml`, para que el comando sea `docker compose up` sin `-f`.
+>   El `.env` vive en `prod/` por la misma razón, y el `Dockerfile` se queda en la
+>   raíz con `build: context: ..`.
+> - El build de la imagen corre `package` con **`-DskipTests`**: los tests usan
+>   Testcontainers y necesitarían un Docker dentro del stage de build.
+> - Se agregaron **`name: oneprofile-prod`** (sin él, prod recreaba el container de
+>   Postgres de dev) y un **`healthcheck`** en Postgres con
+>   `depends_on: condition: service_healthy` (sin él la app arranca antes de que la
+>   base acepte conexiones y Flyway muere).
+>
+> El detalle de cómo quedó está en `docs/CONTEXTO.md`; lo de abajo es el plan
+> original, conservado como registro.
+
 
 **`Dockerfile`** (nuevo, multi-stage): stage de build con Maven + JDK 25 que corre
 `./mvnw package`, stage de runtime con JRE 25 que solo copia el jar. No copia
 `compose.yaml`, así que el soporte de docker-compose queda inerte en prod sin
 necesidad de desactivarlo por configuración.
 
-**`compose.prod.yaml`** (nuevo): servicio `postgres` con **volumen nombrado** y
+**`prod/compose.yaml`** (nuevo): servicio `postgres` con **volumen nombrado** y
 servicio `app` construido desde el `Dockerfile`, con `depends_on` y
 `SPRING_PROFILES_ACTIVE=prod`. El puerto de la app **no se publica** (decisión de
 seguridad del endpoint); el de Postgres tampoco.
@@ -65,8 +83,8 @@ bindea `SPRING_DATASOURCE_URL/USERNAME/PASSWORD` por relaxed binding.
 
 **Sin tests automáticos**: es empaquetado, no comportamiento.
 
-**Prueba manual:** `cp .env.example .env` y completarlo →
-`docker compose -f compose.prod.yaml up --build` → la app arranca y Flyway aplica
+**Prueba manual:** `cd prod`, `cp .env.example .env` y completarlo →
+`docker compose up --build` → la app arranca y Flyway aplica
 `V1` → `down` y `up` de nuevo, y la tabla sigue ahí con sus datos (eso prueba el
 volumen).
 
@@ -143,8 +161,8 @@ implementación que justifique colgarle comportamiento.
   con una corrida en curso.
 - **Ningún test le pega a CommonCrawl de verdad.**
 
-**Prueba manual:** `docker compose -f compose.prod.yaml up --build -d` →
-`docker compose -f compose.prod.yaml exec app curl -X POST 'localhost:8080/admin/discovery/greenhouse'`
+**Prueba manual:** `cd prod && docker compose up --build -d` →
+`docker compose exec app curl -X POST 'localhost:8080/admin/discovery/greenhouse'`
 → 202 al toque → `docker compose logs -f app` muestra el avance y la línea final →
 `select count(*) from company;` muestra las filas → un segundo POST y el conteo
 casi no sube.
