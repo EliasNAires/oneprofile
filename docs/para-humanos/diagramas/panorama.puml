@@ -1,6 +1,6 @@
 @startuml panorama
 !theme plain
-title Las piezas del backend\nQuien habla con quien, y que hay del otro lado
+title Las piezas del backend\nDos procesos que se disparan a mano, y que hay del otro lado
 
 skinparam componentStyle rectangle
 skinparam shadowing false
@@ -11,11 +11,14 @@ actor "Vos" as you
 
 rectangle "controller" {
   [DiscoveryController] as ctrl
+  [BoardProbeController] as probeCtrl
 }
 
 rectangle "service" {
   [GreenhouseDiscoveryService] as svc
   [CommonCrawlIndexClient] as client
+  [GreenhouseBoardProbeService] as probeSvc
+  [GreenhouseBoardClient] as boardClient
 }
 
 rectangle "util" {
@@ -27,14 +30,23 @@ rectangle "repository" {
 }
 
 cloud "index.commoncrawl.org\nel indice de URLs" as cc
+cloud "boards-api.greenhouse.io\nla API de Greenhouse" as gh
 database "PostgreSQL\ntabla company" as db
 
-you --> ctrl : POST /admin/discovery/greenhouse
+you --> ctrl : 1. descubrir empresas
+you --> probeCtrl : 2. sondear sus boards
+
 ctrl --> svc : discover(indice)
-svc --> client : 1. dame todas las URLs
-svc --> url : 2. de esta URL,\ncual es el slug?
-svc --> repo : 3. cuales ya tengo?\nguardame las nuevas
+probeCtrl --> probeSvc : probeAll()
+
+svc --> client
+svc --> url
+svc --> repo
+probeSvc --> boardClient
+probeSvc --> repo
+
 client --> cc : HTTPS,\npagina por pagina
+boardClient --> gh : HTTPS,\nun GET por empresa
 repo --> db
 
 @enduml

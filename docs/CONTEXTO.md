@@ -11,18 +11,15 @@
 > carpeta.
 
 **Última actualización:** 2026-09-11
-**Último milestone:** documentación para personas. Se creó `docs/para-humanos/`,
-con un README breve y cinco diagramas en PlantUML que explican el sistema de forma
-intuitiva. **No se tocó una línea de código.**
+**Último milestone:** el **sondeo de boards** anda de punta a punta. Un POST recorre
+las empresas de Greenhouse, le pega al board de cada una y clasifica el resultado en
+tres estados. Probado a mano por Elias en prod.
 
-**Milestone anterior:** Paso 7 — el descubrimiento anda de punta a punta. Un POST al
-endpoint consulta el índice de CommonCrawl, extrae los slugs de Greenhouse y los
-guarda. Probado a mano por Elias en prod: **4.046 empresas cargadas** desde
-`CC-MAIN-2026-34`. Con eso **terminó el plan de descubrimiento**, y
-`docs/PLAN-DESCUBRIMIENTO.md` se borró.
+**Milestone anterior:** documentación para personas en `docs/para-humanos/`.
 
-**No hay ningún plan en curso.** El próximo paso se decide de cero; hay candidatos
-al final de este documento.
+**Hay un plan en curso:** [`docs/PLAN-VACANTES.md`](PLAN-VACANTES.md) — el paso 2,
+modelar y persistir las vacantes. Está escrito para que lo pueda retomar otra sesión
+sin más contexto que ese archivo y este.
 
 ## Qué es esto
 
@@ -36,7 +33,8 @@ se resuelve con un proceso de descubrimiento sobre **CommonCrawl**: se le pide a
 índice todas las URLs que matcheen el patrón de board de un ATS
 (`boards.greenhouse.io/*`) y de cada URL se extrae el identificador de la
 empresa. Con ese identificador se le pega después a la API del ATS para traer las
-vacantes. **Para Greenhouse esto ya está hecho y funcionando** (ver más abajo).
+vacantes. **Para Greenhouse el descubrimiento y el sondeo de boards ya están hechos
+y funcionando** (ver más abajo); lo que falta son las vacantes.
 
 Como el descubrimiento es caro y el índice tiene límites de consulta, se corre a
 mano cuando hace falta y el resultado queda en la base. Por eso vive en este mismo
@@ -59,6 +57,9 @@ Hechos que condicionan el diseño y conviene no olvidar:
 - **Greenhouse tiene dos dominios de board** —`boards.greenhouse.io/<slug>` y
   `job-boards.greenhouse.io/<slug>`— que son el **mismo ATS**: mismo slug y misma
   API de vacantes. Son dos patrones de URL de `Ats.GREENHOUSE`, no dos ATS.
+- **CommonCrawl es una foto vieja.** Que el índice haya visto un board no quiere
+  decir que la empresa siga en Greenhouse hoy: hay slugs guardados que ya dan 404.
+  Por eso existe el sondeo, que es lo que separa lo que sigue vivo de lo que no.
 
 ## Qué es un slug
 
@@ -230,27 +231,36 @@ prod/compose.yaml
 prod/.env.example
 docs/METODOLOGIA.md
 docs/CONTEXTO.md
+docs/PLAN-VACANTES.md                               (plan en curso: el paso 2)
 docs/para-humanos/README.md                         (para personas, no para agentes)
-docs/para-humanos/diagramas/*.puml + *.svg          (5 diagramas PlantUML)
+docs/para-humanos/diagramas/*.puml + *.svg          (6 diagramas PlantUML)
 pom.xml
 src/main/java/oneprofile/backend/BackendApplication.java
 src/main/java/oneprofile/backend/model/Ats.java
+src/main/java/oneprofile/backend/model/BoardStatus.java
 src/main/java/oneprofile/backend/model/Company.java
 src/main/java/oneprofile/backend/repository/CompanyRepository.java
 src/main/java/oneprofile/backend/service/CommonCrawlIndexClient.java
 src/main/java/oneprofile/backend/service/GreenhouseDiscoveryService.java
+src/main/java/oneprofile/backend/service/GreenhouseBoardClient.java
+src/main/java/oneprofile/backend/service/GreenhouseBoardProbeService.java
 src/main/java/oneprofile/backend/controller/DiscoveryController.java
+src/main/java/oneprofile/backend/controller/BoardProbeController.java
 src/main/java/oneprofile/backend/util/GreenhouseBoardUrl.java
 src/main/resources/application.properties
 src/main/resources/application-dev.properties       (vacío)
 src/main/resources/application-prod.properties      (vacío)
 src/main/resources/db/migration/V1__create_company.sql
+src/main/resources/db/migration/V2__add_company_board_status.sql
 src/test/java/oneprofile/backend/BackendApplicationTests.java
 src/test/java/oneprofile/backend/TestcontainersConfiguration.java
 src/test/java/oneprofile/backend/repository/CompanyRepositoryTest.java
 src/test/java/oneprofile/backend/service/CommonCrawlIndexClientTest.java
 src/test/java/oneprofile/backend/service/GreenhouseDiscoveryServiceTest.java
+src/test/java/oneprofile/backend/service/GreenhouseBoardClientTest.java
+src/test/java/oneprofile/backend/service/GreenhouseBoardProbeServiceTest.java
 src/test/java/oneprofile/backend/controller/DiscoveryControllerTest.java
+src/test/java/oneprofile/backend/controller/BoardProbeControllerTest.java
 src/test/java/oneprofile/backend/util/GreenhouseBoardUrlTest.java
 src/test/resources/application.properties
 ```
@@ -357,6 +367,87 @@ cambiando el `index` solo agrega lo que ese crawl vio de más. Medido sobre los 
 julio suma **1.269 nuevas** y la unión de los dos da **5.315**. O sea que cada
 índice extra aporta del orden de un 25-30% más.
 
+### La API de Greenhouse, medida
+
+Antes de escribir el sondeo se le pegó a mano a `boards-api.greenhouse.io` para no
+codear sobre supuestos. Lo que contesta:
+
+- **Board inexistente → `404`**, con `{"status":404,"error":"Job not found"}`. **No
+  es 400.** Verificado con `mercadolibre`, `notion`, `retool`, `benchling` y
+  `sourcegraph` — los cuatro últimos están en la base porque CommonCrawl los vio, y
+  hoy ya no están en Greenhouse.
+- **Board vivo → `200`** con `{"jobs":[...],"meta":{"total":N}}`, **todo en una sola
+  respuesta: no hay paginación.** Stripe devuelve 628 vacantes en 392 KB. Es lo
+  contrario del índice de CommonCrawl, donde hay que leer en streaming.
+- **Cada job trae `company_name` adentro**, así que el nombre legible de la empresa
+  sale gratis de la misma respuesta, sin un request extra.
+- Existe `GET /v1/boards/<slug>` (sin `/jobs`), que devuelve `{"name":"...",
+  "content":""}`. **No se usa**: duplicaría la cantidad de requests para conseguir un
+  dato que la respuesta de `/jobs` ya trae en la mayoría de los casos. El precio
+  aceptado es que las empresas sin vacantes quedan sin nombre.
+
+### El sondeo de boards: cliente, servicio y endpoint
+
+Tres clases que van de un POST a tener clasificada cada empresa.
+
+**`service/GreenhouseBoardClient`** habla con la API. Su único método es
+`BoardProbe probe(String slug)`, con `BoardProbe` un record
+`(BoardStatus status, int jobCount, String companyName)`. Sigue el molde de
+`CommonCrawlIndexClient` —timeouts explícitos, reintentos con backoff, `.exchange()`
+en vez de `.retrieve()`— con dos diferencias que importan:
+
+- **El 404 no es un error, es una respuesta.** Es una de las tres cosas que el
+  sondeo busca averiguar, no una falla: se traduce a `NOT_FOUND` y **no se
+  reintenta**. Por eso hace falta `.exchange()` y chequear el status a mano;
+  `.retrieve()` tiraría excepción.
+- **Reintenta 3 veces (1s, 2s), no 4 (2s, 4s, 8s)** como el de CommonCrawl. Allá son
+  7 requests enormes y perder uno arruina la corrida; acá son 4.000 chicos y perder
+  uno cuesta una empresa, que se reintenta en la corrida siguiente.
+
+**`service/GreenhouseBoardProbeService.probeAll()`** es el recorrido: trae las
+empresas con `findByAts(GREENHOUSE)` y, por cada una, espera, sondea, anota y
+guarda. Devuelve `ProbeResult(companies, notFound, empty, active, failed)`. Tres
+decisiones que no se leen en el código:
+
+- **NO es `@Transactional`, al revés que `GreenhouseDiscoveryService`.** Son
+  problemas distintos: el descubrimiento es un montón de INSERTs juntos al final, y
+  la transacción los agrupa en lotes de 50. El sondeo es un UPDATE cada 200 ms
+  durante media hora: una transacción así retiene una conexión todo ese tiempo y, si
+  el proceso muere, **pierde todo lo ya sondeado**. Con un `save()` por empresa cada
+  uno abre su transacción corta y una corrida interrumpida conserva lo que alcanzó.
+- **Una empresa que falla no aborta la corrida.** Después de los reintentos se
+  loguea `WARN`, se cuenta en `failed` y se sigue; esa empresa conserva su estado
+  anterior y se reintenta la próxima vez.
+- **Pausa de 200 ms entre boards**, unos 5 por segundo. Es el piso, no el total: hay
+  que sumarle lo que tarda cada respuesta, y la corrida real dio **~30 minutos** para
+  4.046 empresas, no los ~14 que daría la pausa sola.
+
+Tiene dos constructores: el público `(cliente, repo)` **marcado con `@Autowired`** y
+uno de paquete que además recibe la pausa, para que el test la ponga en cero. El
+`@Autowired` no es decorativo: con dos constructores y ninguno sin argumentos, Spring
+no sabe cuál elegir y **el contexto no levanta**. (`CommonCrawlIndexClient` tiene el
+mismo par y no lo necesita porque su constructor público no tiene argumentos.)
+
+**`controller/BoardProbeController`** expone `POST /admin/probe/greenhouse`, **sin
+parámetros**: sondea todas las empresas de Greenhouse. Calca a `DiscoveryController`
+—202 al toque, executor de un solo hilo, `AtomicBoolean` que da 409 si ya hay una
+corrida, resultado al log— a propósito: si el patrón ya está probado a mano, que el
+segundo endpoint se lea igual vale más que inventar otra forma.
+
+### Cómo se corre el sondeo
+
+```bash
+cd prod
+docker compose exec app curl -i -X POST 'localhost:8080/admin/probe/greenhouse'
+docker compose logs -f app
+```
+
+Y para mirar el resultado en la base:
+
+```sql
+select board_status, count(*) from company group by board_status;
+```
+
 ### Las clases de company
 
 `Ats` es un **enum**, no una entidad. Se decidió así porque es un conjunto cerrado
@@ -366,26 +457,41 @@ porque cada ATS necesita igual su propia clase para parsear su JSON, así que un
 INSERT no evitaría recompilar. Hoy tiene **un solo valor, `GREENHOUSE`**, y
 ningún campo ni método.
 
-`Company` tiene `id`, `ats` y `slug`, con `@UniqueConstraint` sobre el par
-`(ats, slug)`. Constructor sin argumentos `protected` para JPA más uno público
-`(Ats, String)`, y getters sin setters. El enum se mapea con
+`BoardStatus` es el otro enum, con los tres valores del sondeo: `NOT_FOUND`,
+`EMPTY` y `ACTIVE`.
+
+`Company` tiene `id`, `ats` y `slug` —con `@UniqueConstraint` sobre el par
+`(ats, slug)`— más los tres campos que deja el sondeo: `name`, `boardStatus` y
+`lastProbedAt`. Constructor sin argumentos `protected` para JPA más uno público
+`(Ats, String)`, y getters sin setters. Los enums se mapean con
 `@Enumerated(EnumType.STRING)`.
 
-**No tiene campo `name` a propósito**: el índice de CommonCrawl da el slug pero no
-el nombre legible, así que el nombre se agrega en el paso donde se consulte la API
-del ATS, que es cuando el dato existe.
+En vez de setters sueltos hay un método de dominio,
+`recordProbe(BoardStatus status, String name, Instant probedAt)`, con una regla que
+importa: **si el nombre viene `null`, no pisa el que ya estaba**. El caso concreto es
+una empresa que hoy tiene vacantes —y de ahí se aprende que se llama "Globant"— y en
+dos meses cierra las búsquedas: el sondeo la deja `EMPTY` y sin nombre nuevo, y
+sobreescribir con `null` perdería un dato ya conseguido por una razón que no tiene
+nada que ver. Tiene test.
 
-`CompanyRepository` es un `JpaRepository<Company, Long>` con un solo método
-propio:
+Los tres campos son **nullable, y eso es semántico**: `board_status is null`
+significa exactamente *"esta empresa nunca se sondeó"*. Con `last_probed_at` encima,
+el cron futuro puede hacer dos preguntas distintas —"¿a quién no sondeé nunca?" y
+"¿a quién no toco hace más de N días?"—, que es para lo que se pidió el timestamp.
+
+`CompanyRepository` es un `JpaRepository<Company, Long>` con dos métodos propios:
 
 ```java
 @Query("select c.slug from Company c where c.ats = :ats")
 List<String> findSlugsByAts(Ats ats);
+
+List<Company> findByAts(Ats ats);
 ```
 
-Devuelve **slugs y no entidades** a propósito: es lo único que el descubrimiento
-necesita —restar de un `Set` lo que ya está guardado— y así no hidrata miles de
-entidades en la sesión de JPA.
+El primero devuelve **slugs y no entidades** a propósito: es lo único que el
+descubrimiento necesita —restar de un `Set` lo que ya está guardado— y así no hidrata
+miles de entidades. El segundo devuelve entidades porque el sondeo **las actualiza**,
+y ahí no hay forma de evitarlo.
 
 ### La carpeta `docs/para-humanos/`
 
@@ -394,14 +500,16 @@ advertencia del encabezado). Existe porque `METODOLOGIA.md` y este archivo está
 escritos para el agente y no sirven para entender el sistema de un vistazo: son
 exhaustivos y no tienen un solo diagrama.
 
-Contiene un `README.md` de ~170 líneas y cinco diagramas en `diagramas/`, cada uno
-con su `.puml` fuente y su `.svg` versionado al lado: `panorama` (componentes),
-`flujo-descubrimiento` (secuencia, el más importante), `url-a-slug` (actividad),
+Contiene un `README.md` y **seis** diagramas en `diagramas/`, cada uno con su `.puml`
+fuente y su `.svg` versionado al lado: `panorama` (componentes), `flujo-descubrimiento`
+y `flujo-sondeo` (secuencia, los dos más importantes), `url-a-slug` (actividad),
 `modelo-de-datos` (clases) y `entorno` (despliegue dev vs. prod).
 
 **PlantUML no está instalado en la máquina.** Los SVG se generaron con el jar
 bajado aparte; para regenerarlos hace falta `sudo pacman -S plantuml` — Java y
-Graphviz, que es lo único que PlantUML necesita de fondo, ya están.
+Graphviz, que es lo único que PlantUML necesita de fondo, ya están. Para revisar un
+diagrama *mirándolo* —que es como se da por bueno— conviene generar un PNG temporal
+fuera del repo y abrirlo, en vez de leer el SVG como texto.
 
 El criterio de escritura y el de las notas de los diagramas están en
 `docs/METODOLOGIA.md`, en "Convenciones del proyecto".
@@ -410,8 +518,8 @@ El criterio de escritura y el de las notas de los diagramas están en
 
 El esquema vive en `src/main/resources/db/migration/` y lo aplica Flyway, que
 anota lo ya corrido en la tabla `flyway_schema_history`. **Cuando cambie el
-esquema no se reescribe `V1`: se agrega `V2` con el `ALTER TABLE`**, y los datos
-existentes sobreviven. Hoy hay una sola migración:
+esquema no se reescribe `V1`: se agrega la siguiente con el `ALTER TABLE`**, y los
+datos existentes sobreviven. Hoy hay dos migraciones:
 
 ```sql
 -- V1__create_company.sql
@@ -426,15 +534,27 @@ create table company (
 );
 ```
 
+```sql
+-- V2__add_company_board_status.sql
+alter table company add column name varchar(255);
+alter table company add column board_status varchar(255);
+alter table company add column last_probed_at timestamp(6) with time zone;
+```
+
 El `increment by 50` no es decorativo: es el `allocationSize` por defecto que
 Hibernate 6/7 espera para `@GeneratedValue`, y si no coincide `validate` falla.
 
+`V2` se aplicó sobre prod con las 4.046 filas ya cargadas y no las tocó: las tres
+columnas entraron en `null`. El tipo `timestamp(6) with time zone` es el que Hibernate
+espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
+
 ## Estado verificado
 
-- `./mvnw test` → **28 tests, 0 fallas**: `BackendApplicationTests.contextLoads`,
+- `./mvnw test` → **39 tests, 0 fallas**: `BackendApplicationTests.contextLoads`,
   3 de `CompanyRepositoryTest`, 12 casos parametrizados de `GreenhouseBoardUrlTest`,
-  6 de `CommonCrawlIndexClientTest`, 4 de `GreenhouseDiscoveryServiceTest` y 2 de
-  `DiscoveryControllerTest`. Las dos primeras clases importan
+  6 de `CommonCrawlIndexClientTest`, 4 de `GreenhouseDiscoveryServiceTest`, 2 de
+  `DiscoveryControllerTest`, 6 de `GreenhouseBoardClientTest`, 3 de
+  `GreenhouseBoardProbeServiceTest` y 2 de `BoardProbeControllerTest`. Las dos primeras clases importan
   `TestcontainersConfiguration`, que declara un `PostgreSQLContainer` como
   `@Bean @ServiceConnection`; `CompanyRepositoryTest` lleva además
   `@AutoConfigureTestDatabase(replace = NONE)`, porque sin base embebida en el
@@ -477,6 +597,25 @@ Hibernate 6/7 espera para `@GeneratedValue`, y si no coincide `validate` falla.
   las mismas reglas fuera de la app: 76.765 capturas → exactamente 4.046 slugs
   distintos. La app no está perdiendo nada; 4.046 es lo que ese crawl contiene.
   Solo 229 de las 76.765 URLs no dan slug, y son las que corresponde descartar.
+- **`GreenhouseBoardClientTest`** usa `MockRestServiceServer`, así que no toca la red:
+  un 404 da `NOT_FOUND` **y no se reintenta**, un board sin vacantes da `EMPTY` y sin
+  nombre, uno con vacantes da `ACTIVE` con el total y el `company_name`, se recupera
+  de un 503 y se rinde al tercer intento.
+- **`GreenhouseBoardProbeServiceTest`** es `@DataJpaTest` con un doble del cliente
+  escrito a mano —un `Map` de slug a respuesta, donde **un slug ausente significa un
+  board inalcanzable**—: deja estado, nombre y fecha en cada empresa; conserva el
+  nombre guardado cuando un sondeo posterior no trae uno; y sigue con las demás
+  cuando una falla, dejándola sin tocar y contándola en `failed`.
+- **`BoardProbeControllerTest`** es `@WebMvcTest`: 202 y delegación, y 409 con una
+  corrida en curso, con la misma técnica del `CountDownLatch` que el de descubrimiento.
+- **Ningún test le pega a Greenhouse de verdad.**
+- **El sondeo anda de punta a punta en prod.** Probado a mano por Elias con un POST
+  que devolvió 202 al toque. Números **parciales**, leídos con la corrida todavía en
+  curso: de unas 3.400 empresas ya sondeadas, **~300 `NOT_FOUND`, ~80 `EMPTY` y
+  ~3.000 `ACTIVE`**, y **cero fallos**. La proporción es el hallazgo del paso: la
+  enorme mayoría de lo que descubrió CommonCrawl **sigue vivo y con vacantes** — se
+  esperaba bastante más mortandad. La corrida tardó ~30 minutos, más de los ~14 que
+  daría la pausa sola.
 - `GreenhouseBoardUrlTest` no levanta contexto de Spring y corre en ~40 ms. Son dos
   `@ParameterizedTest`: 7 URLs que devuelven slug (path extra, query string, los
   dos dominios, `www.`, y las dos formas de `embed`) y 5 que devuelven vacío
@@ -489,17 +628,24 @@ Hibernate 6/7 espera para `@GeneratedValue`, y si no coincide `validate` falla.
 
 ## Qué NO existe todavía
 
-- Ningún cliente de la API de Greenhouse: de las empresas se sabe el slug y nada
-  más. `Company` sigue sin campo `name`.
-- Ninguna vacante, ningún perfil de usuario, ninguna lógica de matching.
-- Ningún endpoint que devuelva datos: el único que hay dispara el descubrimiento.
+- **Ninguna vacante guardada.** El sondeo cuenta cuántas tiene cada board, pero
+  descarta el contenido. Eso es el paso 2, en `docs/PLAN-VACANTES.md`.
+- Ningún perfil de usuario, ninguna lógica de matching.
+- Ningún endpoint que devuelva datos: los dos que hay disparan procesos.
 - Ningún ATS además de Greenhouse.
+- Ningún cron: los dos procesos se disparan a mano. `last_probed_at` está puesto
+  para cuando exista, pero todavía no lo lee nadie.
 
 ## Puntos abiertos
 
-- **El endpoint de descubrimiento no tiene ninguna protección.** Hoy no importa
+- **Los endpoints de administración no tienen ninguna protección.** Hoy no importa
   porque el puerto de la app no se publica, pero cuando exista el endpoint de
-  vacantes habrá que publicarlo y ahí éste queda expuesto. Se decide en ese momento.
+  vacantes habrá que publicarlo y ahí los dos quedan expuestos. Se decide en ese
+  momento.
+- **El sondeo se corre entero cada vez.** No hay forma de pedirle "solo las que nunca
+  sondeaste" o "solo las viejas": vuelve a pegarle a las 4.046. Los datos para
+  filtrar están (`board_status`, `last_probed_at`), la consulta no. Se agrega cuando
+  haya un cron que la necesite, no antes.
 - **Una respuesta truncada del índice se aceptaría en silencio.** Bajando páginas a
   mano pasó tres veces que el índice cerró la conexión limpio con un cuerpo corto
   (256 KB o 560 KB en vez de ~9 MB) y HTTP 200. El cliente leería esas líneas, no
@@ -511,14 +657,18 @@ Hibernate 6/7 espera para `@GeneratedValue`, y si no coincide `validate` falla.
 - En la máquina de Elias, `docker-rootless-extras` quedó en 29.8.0 y `docker` en
   29.7.2 (actualización parcial). Funciona; se empareja en el próximo `pacman -Syu`.
 
-## Candidatos para el próximo paso (sin priorizar)
+## Qué sigue
+
+El paso 2 está planificado en **[`docs/PLAN-VACANTES.md`](PLAN-VACANTES.md)**:
+modelar la vacante y persistir las de las empresas `ACTIVE`.
+
+Más allá de eso, sin priorizar y sin planificar:
 
 - Correr el descubrimiento con más índices de CommonCrawl para engordar la tabla.
   No necesita código: es repetir el POST cambiando el `index`.
-- Cliente de la API de Greenhouse (`boards-api.greenhouse.io/v1/boards/<slug>/jobs`),
-  que es donde aparece el nombre legible de la empresa y las vacantes. Agregar
-  `name` a `Company` con su migración `V2`.
-- Modelar la vacante (`vacancy`), con relación unidireccional `Vacancy → Company`.
+- Normalizar los títulos de las vacantes para llegar a una lista de roles. Elias lo
+  sacó explícitamente del plan actual: se ve cuando haya vacantes guardadas.
 - Modelar el perfil del usuario (`profile`).
 - Primer algoritmo de matching, simple, con tests sobre casos concretos.
 - Endpoint HTTP para consultar las vacantes que matchean.
+- Un cron que refresque el sondeo y las vacantes en vez de dispararlos a mano.

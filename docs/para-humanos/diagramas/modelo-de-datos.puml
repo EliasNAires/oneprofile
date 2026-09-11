@@ -13,13 +13,24 @@ package "En Java" {
     id : Long
     ats : Ats
     slug : String
+    .. lo que deja el sondeo ..
+    name : String
+    boardStatus : BoardStatus
+    lastProbedAt : Instant
   }
 
   enum Ats {
     GREENHOUSE
   }
 
+  enum BoardStatus {
+    NOT_FOUND
+    EMPTY
+    ACTIVE
+  }
+
   Company --> Ats
+  Company --> BoardStatus
 }
 
 package "En Postgres" {
@@ -30,6 +41,10 @@ package "En Postgres" {
     ats : varchar
     slug : varchar
     --
+    name : varchar
+    board_status : varchar
+    last_probed_at : timestamptz
+    --
     **unique (ats, slug)**
   }
 
@@ -38,6 +53,6 @@ package "En Postgres" {
   }
 }
 
-Company ..> t : Flyway crea la tabla.\nAl arrancar, Hibernate\ncompara y falla si no coinciden.
+Company ..> t : Flyway crea y modifica la tabla.\nAl arrancar, Hibernate\ncompara y falla si no coinciden.
 
 @enduml

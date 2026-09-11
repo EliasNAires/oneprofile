@@ -24,6 +24,14 @@ Cada pedido de Elias se resuelve con este ciclo. Un pasaje completo del ciclo es
 2. **Plan primero.** Antes de escribir código: qué archivos se tocan, qué va a
    quedar funcionando al terminar, y cómo se va a probar. Elias lo aprueba.
 
+   Si el plan abarca **más de un paso**, lo que queda pendiente se escribe en un
+   documento del repo, `docs/PLAN-<TEMA>.md`, **autocontenido**: pensado para que
+   otra sesión lo retome leyendo solo ese archivo, este y `docs/CONTEXTO.md`. Ahí va
+   todo lo que se midió o averiguó —respuestas reales de una API, números de una
+   corrida—, porque si no hay que volver a averiguarlo. Las decisiones que faltan
+   quedan anotadas **como preguntas para Elias**, no resueltas por cuenta propia. El
+   documento se borra cuando el plan termina y su contenido pasa a `CONTEXTO.md`.
+
 3. **Implementar solo el paso, nada más que el paso.** Esto es estricto: no se
    agrega *nada* que Elias no haya pedido. Ni features "por las dudas", ni
    abstracciones anticipadas, ni refactors de oportunidad, ni configuración
@@ -163,6 +171,12 @@ Cada entrada es una regla aprendida, con la fecha en que se acordó.
   las mandaba lejos y llenaba el dibujo de líneas punteadas cruzadas, y pasé su
   contenido al texto. A Elias le gustó el resultado y pidió que el criterio quedara
   escrito; está arriba, en las convenciones.
+- **2026-09-11 — Los planes de varios pasos viven en un doc del repo.** Al cerrar el
+  paso 1 del sondeo, Elias pidió *"guarda el plan del paso 2 en un doc aparte, para
+  que lo siga otro chat en un contexto nuevo"*. El proyecto se construye en muchas
+  sesiones cortas y una sesión nueva arranca sin nada de lo conversado, así que un
+  plan que vive solo en la conversación se pierde. El criterio de escritura está
+  arriba, en el punto 2 del ciclo.
 - **2026-09-11 — La documentación para personas es intuitiva y breve.** Elias pidió
   que quedara escrito que `docs/para-humanos/` se escribe para entenderse rápido y
   no para ser exhaustiva, notas de los diagramas incluidas. El detalle vive en
@@ -173,5 +187,6 @@ Cada entrada es una regla aprendida, con la fecha en que se acordó.
 - `CLAUDE.md` — resumen corto en la raíz, se carga solo en cada sesión.
 - `docs/METODOLOGIA.md` — este archivo: cómo trabajamos.
 - `docs/CONTEXTO.md` — estado actual del repo, actualizado tras cada milestone.
+- `docs/PLAN-<TEMA>.md` — el plan en curso, si hay uno. Se borra al terminarlo.
 - `docs/para-humanos/` — explicación breve y con diagramas, **para personas**. El
   agente no la lee.
