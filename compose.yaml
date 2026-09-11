@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: oneprofile
+      POSTGRES_USER: oneprofile
+      POSTGRES_PASSWORD: oneprofile
+    ports:
+      - "5432:5432"
