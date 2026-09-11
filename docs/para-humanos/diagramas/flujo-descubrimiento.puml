@@ -1,0 +1,69 @@
+@startuml flujo-descubrimiento
+!theme plain
+title Que pasa cuando disparas el descubrimiento\nDe un POST a miles de filas en la tabla company
+
+skinparam shadowing false
+skinparam responseMessageBelowArrow true
+
+actor Vos as you
+participant "DiscoveryController" as ctrl
+participant "executor\n(1 solo hilo)" as exec
+participant "GreenhouseDiscoveryService" as svc
+participant "CommonCrawlIndexClient" as client
+participant "GreenhouseBoardUrl" as url
+participant "indice de\nCommonCrawl" as cc
+database "Postgres" as db
+
+you -> ctrl : POST ...?index=CC-MAIN-2026-34
+
+alt ya hay una corrida en curso
+  ctrl --> you : 409 Conflict
+  note right of ctrl
+    Un AtomicBoolean alcanza:
+    dos corridas a la vez pelearian
+    por las mismas empresas.
+  end note
+else libre
+  ctrl -> exec : encolar el trabajo
+  ctrl --> you : 202 Accepted
+  note right of you
+    Tu request termina ACA, en un
+    segundo. Lo que sigue tarda
+    minutos y solo se ve en el log.
+  end note
+end
+
+exec -> svc : discover(indexId)
+activate svc
+note over svc : Todo esto es UNA sola transaccion
+
+loop por cada uno de los 2 dominios de board
+  svc -> client : forEachUrl(indice, dominio, callback)
+  activate client
+  client -> cc : cuantas paginas hay?
+  cc --> client : 7
+
+  loop pagina 0 .. 6
+    client -> cc : dame la pagina N
+    cc --> client : ~9 MB, ~12.000 lineas
+
+    loop por cada linea, mientras la lee
+      client -> svc : callback(url)
+      svc -> url : slugFrom(url)
+      url --> svc : "mercadolibre"  o  vacio
+      note over svc : Los slugs se juntan en un Set,\nasi los repetidos se colapsan solos
+    end
+  end
+  deactivate client
+end
+
+svc -> db : que slugs ya tengo guardados?
+db --> svc : los conocidos
+note over svc : nuevos = encontrados - conocidos
+svc -> db : saveAll(nuevos), de a lotes de 50
+deactivate svc
+
+svc --> exec : 4046 encontrados, 4046 nuevos
+exec -> exec : lo escribe en el log
+
+@enduml

@@ -3,8 +3,19 @@
 > Se actualiza después de cada milestone alcanzado (ver `docs/METODOLOGIA.md`).
 > Describe lo que **hay hoy**, no lo que se planea.
 
+> **`docs/para-humanos/` no la leas.** Es documentación para personas: una versión
+> resumida y con diagramas de lo que este archivo ya cuenta en detalle. Está
+> duplicada, así que leerla gasta contexto en información repetida y te arriesga a
+> trabajar sobre el resumen en vez de sobre la fuente de verdad, que es este
+> documento. Se abre solo si Elias pide explícitamente escribir o actualizar esa
+> carpeta.
+
 **Última actualización:** 2026-09-11
-**Último milestone:** Paso 7 — el descubrimiento anda de punta a punta. Un POST al
+**Último milestone:** documentación para personas. Se creó `docs/para-humanos/`,
+con un README breve y cinco diagramas en PlantUML que explican el sistema de forma
+intuitiva. **No se tocó una línea de código.**
+
+**Milestone anterior:** Paso 7 — el descubrimiento anda de punta a punta. Un POST al
 endpoint consulta el índice de CommonCrawl, extrae los slugs de Greenhouse y los
 guarda. Probado a mano por Elias en prod: **4.046 empresas cargadas** desde
 `CC-MAIN-2026-34`. Con eso **terminó el plan de descubrimiento**, y
@@ -219,6 +230,8 @@ prod/compose.yaml
 prod/.env.example
 docs/METODOLOGIA.md
 docs/CONTEXTO.md
+docs/para-humanos/README.md                         (para personas, no para agentes)
+docs/para-humanos/diagramas/*.puml + *.svg          (5 diagramas PlantUML)
 pom.xml
 src/main/java/oneprofile/backend/BackendApplication.java
 src/main/java/oneprofile/backend/model/Ats.java
@@ -373,6 +386,25 @@ List<String> findSlugsByAts(Ats ats);
 Devuelve **slugs y no entidades** a propósito: es lo único que el descubrimiento
 necesita —restar de un `Set` lo que ya está guardado— y así no hidrata miles de
 entidades en la sesión de JPA.
+
+### La carpeta `docs/para-humanos/`
+
+Documentación dirigida a personas, **que este agente no debe leer** (ver la
+advertencia del encabezado). Existe porque `METODOLOGIA.md` y este archivo están
+escritos para el agente y no sirven para entender el sistema de un vistazo: son
+exhaustivos y no tienen un solo diagrama.
+
+Contiene un `README.md` de ~170 líneas y cinco diagramas en `diagramas/`, cada uno
+con su `.puml` fuente y su `.svg` versionado al lado: `panorama` (componentes),
+`flujo-descubrimiento` (secuencia, el más importante), `url-a-slug` (actividad),
+`modelo-de-datos` (clases) y `entorno` (despliegue dev vs. prod).
+
+**PlantUML no está instalado en la máquina.** Los SVG se generaron con el jar
+bajado aparte; para regenerarlos hace falta `sudo pacman -S plantuml` — Java y
+Graphviz, que es lo único que PlantUML necesita de fondo, ya están.
+
+El criterio de escritura y el de las notas de los diagramas están en
+`docs/METODOLOGIA.md`, en "Convenciones del proyecto".
 
 ### Migraciones
 

@@ -70,6 +70,25 @@ Cada pedido de Elias se resuelve con este ciclo. Un pasaje completo del ciclo es
 - **Tests:** test unitario liso (sin contexto de Spring) cuando alcanza;
   `@DataJpaTest` para repositorios; `@WebMvcTest` para controllers; contexto
   completo (`@SpringBootTest`) solo cuando realmente hace falta, porque es lento.
+- **Documentación para personas** (`docs/para-humanos/`): **intuitiva y breve**.
+  Se escribe para que alguien entienda el sistema de una sentada, apoyándose en
+  diagramas y en ejemplos concretos, no para ser completa. Entre ser exhaustivo y
+  que se entienda rápido, gana lo segundo: el detalle ya está en `docs/CONTEXTO.md`,
+  y es esa división la que le permite a este documento dejar cosas afuera. Vale
+  igual para las notas de los diagramas: cortas y en criollo.
+- **Diagramas:** en PlantUML (`.puml`), y se versiona también el `.svg` generado.
+  Criterio para las **notas** explicativas:
+  - Van en los diagramas de **secuencia y de actividad**, donde PlantUML las ancla
+    al elemento que comentan. En los de **componentes, clases y despliegue** el
+    layout lo resuelve Graphviz: las notas terminan lejos, con líneas punteadas
+    que cruzan todo el dibujo, así que ahí no van.
+  - Una nota dice **lo que el dibujo no puede mostrar**: el porqué de una decisión,
+    una restricción que no se ve en las flechas, o un número medido que da escala.
+    Nunca repite en palabras lo que las cajas y las flechas ya dicen.
+  - Si una nota no entra limpia, **su contenido se mueve al texto** que acompaña al
+    diagrama; no se tira. Manda la legibilidad del diagrama: si la nota lo ensucia,
+    el diagrama pierde más de lo que la nota aporta.
+  - Un diagrama se da por bueno **mirándolo renderizado**, no porque compile.
 - **Secretos:** ninguna credencial, password de base ni API key va al repo.
   Configuración sensible por variable de entorno.
 - **Git:** lo maneja Elias. Claude no inicializa repos, no commitea ni pushea
@@ -131,9 +150,28 @@ Cada entrada es una regla aprendida, con la fecha en que se acordó.
 - **2026-09-10 — Archivo de contexto.** El estado del repo vive en
   `docs/CONTEXTO.md` y se actualiza después de cada milestone alcanzado, para
   poder retomar sin reconstruir todo leyendo código.
+- **2026-09-11 — La documentación para personas no la lee el agente.** Elias pidió
+  una carpeta aparte, `docs/para-humanos/`, con una explicación breve y con
+  diagramas del sistema, y aclaró que **`docs/CONTEXTO.md` tiene que decir que el
+  agente no debe leerla**: su contenido está duplicado, así que leerla gasta
+  contexto en información repetida y arriesga trabajar sobre el resumen en vez de
+  la fuente de verdad. La regla general: cuando se escribe documentación dirigida a
+  personas, se la marca como off-limits para el agente en el mismo paso en que se
+  crea, tanto en el propio documento como en `CONTEXTO.md`.
+- **2026-09-11 — Criterio de notas en los diagramas.** Al hacer los diagramas de
+  `docs/para-humanos/` saqué las notas de tres de ellos porque el layout automático
+  las mandaba lejos y llenaba el dibujo de líneas punteadas cruzadas, y pasé su
+  contenido al texto. A Elias le gustó el resultado y pidió que el criterio quedara
+  escrito; está arriba, en las convenciones.
+- **2026-09-11 — La documentación para personas es intuitiva y breve.** Elias pidió
+  que quedara escrito que `docs/para-humanos/` se escribe para entenderse rápido y
+  no para ser exhaustiva, notas de los diagramas incluidas. El detalle vive en
+  `docs/CONTEXTO.md`; acá se privilegia que se entienda de una sentada.
 
 ## Documentos del repo
 
 - `CLAUDE.md` — resumen corto en la raíz, se carga solo en cada sesión.
 - `docs/METODOLOGIA.md` — este archivo: cómo trabajamos.
 - `docs/CONTEXTO.md` — estado actual del repo, actualizado tras cada milestone.
+- `docs/para-humanos/` — explicación breve y con diagramas, **para personas**. El
+  agente no la lee.

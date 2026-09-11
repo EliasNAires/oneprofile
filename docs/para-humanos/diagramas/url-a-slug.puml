@@ -1,0 +1,66 @@
+@startuml url-a-slug
+!theme plain
+title Como se saca el slug de una URL\nGreenhouseBoardUrl.slugFrom(url)
+
+skinparam shadowing false
+
+start
+
+:llega una URL del indice;
+note right
+  Ejemplos reales:
+  https://boards.greenhouse.io/mercadolibre/jobs/123
+  https://job-boards.greenhouse.io/globant
+  https://boards.greenhouse.io/embed/job_board?for=auth0
+  https://boards.greenhouse.io/robots.txt
+end note
+
+if (empieza con https:// y es\nun dominio de board de Greenhouse?) then (no)
+  :sin slug;
+  note right
+    Solo https, a proposito.
+    Se midio: de las 76.765 capturas
+    del indice, las 76.765 son https.
+  end note
+  stop
+else (si)
+endif
+
+:cortar todo lo que venga despues del #;
+:separar el camino de la query (el ?);
+:quedarse con el primer tramo del camino;
+
+if (ese tramo es "embed"?) then (si)
+  :el slug esta en el parametro for=;
+  note right
+    Es el board metido como iframe
+    dentro de la pagina de carreras
+    de la empresa. Son un monton de
+    capturas y apuntan al mismo lugar.
+  end note
+else (no)
+  :ese tramo ES el slug;
+endif
+
+if (lo que quedo son solo letras,\nnumeros, guiones o guion bajo?) then (no)
+  :sin slug;
+  note right
+    Este filtro, el solito, hace todo el
+    trabajo sucio sin listas negras: descarta lo
+    vacio (el dominio pelado) y cualquier
+    cosa con punto, como robots.txt o
+    favicon.ico. Un slug nunca lleva punto.
+  end note
+  stop
+else (si)
+endif
+
+:devolver el slug;
+note right
+  De las 76.765 capturas, solo 229
+  no dan slug. Y son exactamente
+  las que hay que tirar.
+end note
+stop
+
+@enduml

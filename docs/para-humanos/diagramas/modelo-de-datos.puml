@@ -1,0 +1,43 @@
+@startuml modelo-de-datos
+!theme plain
+title Que se guarda\nLas clases de Java, y la tabla que hay abajo
+
+skinparam shadowing false
+skinparam nodesep 20
+skinparam ranksep 40
+hide circle
+
+package "En Java" {
+
+  class Company {
+    id : Long
+    ats : Ats
+    slug : String
+  }
+
+  enum Ats {
+    GREENHOUSE
+  }
+
+  Company --> Ats
+}
+
+package "En Postgres" {
+
+  entity "company" as t {
+    id : bigint  <<PK>>
+    --
+    ats : varchar
+    slug : varchar
+    --
+    **unique (ats, slug)**
+  }
+
+  entity "company_seq" as s {
+    da los id de a 50 por vez
+  }
+}
+
+Company ..> t : Flyway crea la tabla.\nAl arrancar, Hibernate\ncompara y falla si no coinciden.
+
+@enduml

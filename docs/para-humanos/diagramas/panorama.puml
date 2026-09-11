@@ -1,0 +1,40 @@
+@startuml panorama
+!theme plain
+title Las piezas del backend\nQuien habla con quien, y que hay del otro lado
+
+skinparam componentStyle rectangle
+skinparam shadowing false
+skinparam nodesep 25
+skinparam ranksep 45
+
+actor "Vos" as you
+
+rectangle "controller" {
+  [DiscoveryController] as ctrl
+}
+
+rectangle "service" {
+  [GreenhouseDiscoveryService] as svc
+  [CommonCrawlIndexClient] as client
+}
+
+rectangle "util" {
+  [GreenhouseBoardUrl] as url
+}
+
+rectangle "repository" {
+  [CompanyRepository] as repo
+}
+
+cloud "index.commoncrawl.org\nel indice de URLs" as cc
+database "PostgreSQL\ntabla company" as db
+
+you --> ctrl : POST /admin/discovery/greenhouse
+ctrl --> svc : discover(indice)
+svc --> client : 1. dame todas las URLs
+svc --> url : 2. de esta URL,\ncual es el slug?
+svc --> repo : 3. cuales ya tengo?\nguardame las nuevas
+client --> cc : HTTPS,\npagina por pagina
+repo --> db
+
+@enduml
