@@ -11,4 +11,7 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
 
 	@Query("select c.slug from Company c where c.ats = :ats")
 	List<String> findSlugsByAts(Ats ats);
+
+	/** Whole entities, unlike {@link #findSlugsByAts}: the probe updates them. */
+	List<Company> findByAts(Ats ats);
 }
