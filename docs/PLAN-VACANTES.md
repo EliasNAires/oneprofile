@@ -1,7 +1,10 @@
 # Plan — paso 2: las vacantes
 
-> **Plan en curso.** Se borra cuando 2a y 2b estén terminados y probados a mano, y
-> su contenido pasa a `docs/CONTEXTO.md`.
+> **Plan en curso. 2a está cerrado. 2b está escrito y con tests, pero sin probar a mano.
+> Falta 2c.** Lo que ya existe está descrito en `docs/CONTEXTO.md` (sección "Las
+> vacantes"), así que **acá queda el guion de prueba de 2b y lo que todavía no existe**,
+> más las mediciones y decisiones. Este archivo se borra cuando el paso 2 entero esté
+> terminado y probado a mano.
 >
 > Para retomar esto en una sesión nueva alcanza con leer, en este orden:
 > `docs/METODOLOGIA.md` (cómo trabajamos), `docs/CONTEXTO.md` (qué hay hoy) y este
@@ -77,33 +80,88 @@ más que las 50.000-100.000 que suponía la versión anterior de este plan.
   250.000 vacantes son **~1,2 GB de texto**, antes de la compresión que Postgres
   aplica sola a las columnas largas.
 
+### Los campos del endpoint (medido el 2026-09-11)
+
+Sondeados 9 boards: splice, discord, airbnb y stripe con `content=true` (842 vacantes)
+y figma, ramp, brex, coinbase y reddit (2.410 vacantes más). Sobre esa muestra:
+
+- `id` es **único dentro del board** (626/626 en stripe) y llega a 8.801.523.002 →
+  **bigint, no int**. `internal_job_id` **no** es único (603 sobre 626).
+- `departments` viene siempre y siempre con **un solo** elemento (842/842).
+- **`pay_transparency=true`** —un parámetro más en la misma request, se combina con
+  `content=true`— agrega `pay_input_ranges`, con rango salarial estructurado en
+  **426 de 787** vacantes. Cuando hay, es **siempre exactamente 1** rango
+  (`min_cents`, `max_cents`, `currency_type`, `title`), así que van columnas planas y
+  no tabla hija. Monedas vistas: USD, INR, GBP, CAD, EUR, PHP, SGD, BRL, AED.
+  **25 de esos 426 rangos son por hora**, y lo único que los distingue de un anual es
+  el `title` (`"Hourly Rate:"` vs `"Annual base salary range…"`), texto libre.
+- `offices` da un `location` normalizado con país, pero **solo en 107/842 (13%)**; el
+  resto trae `null` y un `name` que es vocabulario de cada empresa (`"US"`,
+  `"Ireland Locations"`, `"US-PERM"`).
+- `metadata` son campos personalizados por empresa (solo 211/842): hay señal útil
+  (`"Workplace Type" → "Hybrid"`) pero sin esquema común entre empresas.
+- Largos máximos medidos: `title` 94, `location.name` 185, `departments[0].name` 60,
+  `absolute_url` 76, `language` 2, `currency_type` 3, `title` del rango 54.
+  **Corrige lo que decía la versión anterior de este plan**: la URL no pasa de 255
+  caracteres. Va igual como `text`, porque una URL no tiene largo acotado, pero la
+  justificación era falsa.
+- `language`: 832 `en`, 9 `fr`, 1 `ja`.
+- `application_deadline` existe pero es rarísimo (0 de 842 en los boards con content).
+
 ## Decisiones tomadas (cerradas, no volver a preguntarlas)
 
 1. **Se guardan todas las vacantes.** Sin filtrar por país en la carga, coherente con
    la decisión ya anotada en `CONTEXTO.md`: el filtro por país es una consulta sobre
    las vacantes, no un descarte al cargarlas.
-2. **Se pide `?content=true`.** La descripción es el único lugar donde están los
-   requisitos reales —tecnologías, seniority, si el remoto es de verdad—; sin ella el
-   matching futuro tendría solo el título.
+2. **Se pide `?content=true&pay_transparency=true`.** La descripción es el único
+   lugar donde están los requisitos reales —tecnologías, seniority, si el remoto es de
+   verdad—; sin ella el matching futuro tendría solo el título. Y
+   `pay_transparency=true` es lo que convierte el salario en números en la mitad de
+   las vacantes, en vez de una frase enterrada en la descripción.
 3. **La descripción se guarda limpiada a texto plano**, no como HTML crudo.
 4. **La limpieza se hace con Jsoup**, dependencia nueva aceptada explícitamente.
 5. **Una vacante que desaparece del board se borra.** La tabla es un espejo del
    board: la foto de hoy, no la historia.
 6. **Pausa de 500 ms entre empresas**, más conservadora que los 200 ms del sondeo
    porque acá cada respuesta pesa mucho más.
+7. **Las columnas de `vacancy`**, decididas con las mediciones de arriba:
+   `external_id` (el `id` del ATS), `title`, `location` (el `location.name` crudo, sin
+   parsear), `department` (el `departments[0].name`), `description`, `url`, `language`,
+   `pay_min_cents`, `pay_max_cents`, `pay_currency`, `pay_title`, `first_published` y
+   `updated_at`. **No** se guardan `offices`, `metadata`, `internal_job_id`,
+   `requisition_id`, `education`, `employment`, `application_deadline`,
+   `data_compliance` ni los `ai_*`; `company_name` tampoco, porque ya está en
+   `Company.name` desde el paso 1.
+8. **El `title` del rango salarial se guarda crudo**, sin derivar un enum anual/hora:
+   eso sería una heurística sobre texto libre de cada empresa y no es parte de esto.
+9. **No se descartan vacantes por antigüedad.** Se evaluó no cargar las que tienen
+   `updated_at` de más de dos meses y **se decidió que no**: el endpoint ignora
+   `updated_after` (probado con un corte de hoy y con el valor `basura`), así que no hay
+   ahorro de descarga; y el recorte es chico y desparejo —sobre 8 boards y 1.630
+   vacantes da 7%, con splice, figma, discord y stripe en 0% y brex en 17%—, porque mide
+   hábitos de cada equipo de RRHH más que vigencia de la búsqueda. La recencia se usa
+   **al buscar**, no como descarte en la carga.
+10. **El filtro por país sigue sin existir.** Los 107 `offices` con país normalizado no
+   alcanzan para basar nada, así que la ubicación queda como el texto libre que es.
 
-## Por qué el paso va partido en dos
+## Por qué el paso va partido
 
-Con `content=true` y 3.121 empresas, hacerlo de una sola vez daría un paso cuya
+Con `content=true` y 3.121 empresas, hacer la carga de una sola vez daría un paso cuya
 prueba manual es una corrida de una o dos horas — lo contrario de lo que pide
-`METODOLOGIA.md`. Va partido:
+`METODOLOGIA.md`. De ahí 2a y 2b. El 2c es otra cosa: lo pidió Elias sobre el final,
+cuando quedó claro que esto son procesos que tienen que correr seguido y no en su
+máquina.
 
-### Paso 2a — el modelo y una empresa
+### Paso 2a — el modelo y una empresa — **HECHO** (2026-09-11)
 
-Dejar guardadas en la base las vacantes de **una sola empresa** pedida por slug. Sin
-recorrido masivo y sin borrado de las que desaparecen.
+Quedó `POST /admin/vacancies/greenhouse/{slug}`, que carga las vacantes de una empresa
+y contesta en línea con `{"fetched":N,"inserted":N,"updated":N}`. Probado a mano por
+Elias contra la API real: splice 5, discord 45, figma 153 con 96 salarios. **El detalle
+de las clases, los campos y los tests está en `docs/CONTEXTO.md`**, no acá.
 
-La forma prevista, sujeta a la conversación de diseño que va antes del código:
+Lo que se implementó, contra lo que estaba previsto abajo, con dos desvíos que vale
+anotar: se agregó `pay_transparency=true` (decisión 2) y el `READ_TIMEOUT` subió a
+**120 s**. Lo previsto era:
 
 - `model/Vacancy` — relación **unidireccional** `Vacancy → Company` (`@ManyToOne`).
   La empresa no conoce sus vacantes: una `@OneToMany` con miles de elementos es un
@@ -128,21 +186,91 @@ La forma prevista, sujeta a la conversación de diseño que va antes del código
   entidad tiene que declararlo, porque con `ddl-auto=validate` Hibernate espera
   `varchar(255)` para un `String` pelado y la app no levanta si no coinciden.
 
-### Paso 2b — el recorrido completo
+### Paso 2b — el recorrido completo — **escrito, falta probarlo a mano**
 
-- `repository/CompanyRepository` — un método para traer las empresas por estado de
-  board, y pedirle vacantes solo a las `ACTIVE`.
-- `service/` — el recorrido de las 3.121 con la pausa de 500 ms y **el borrado de las
-  vacantes que ya no están en el board**. Sin transacción por corrida, igual que el
-  sondeo: una corrida interrumpida tiene que conservar lo ya cargado.
-- `controller/` — el `POST` masivo, ahí sí con el molde ya usado dos veces: 202 al
-  toque, executor de un solo hilo, `AtomicBoolean` para el 409, resultado al log.
-- La corrida real, estimada en **1 a 2 horas** (500 ms × 3.121 son 26 minutos de
-  pausa sola, más el peso de cada descarga).
+El código está y `./mvnw test` da **62 tests en verde**. Lo que quedó hecho está descrito
+en `docs/CONTEXTO.md`: el borrado dentro de `syncCompany`, el
+`GreenhouseVacancySweepService`, el `POST /admin/vacancies/greenhouse` y el método
+`findSlugsByAtsAndBoardStatus`. Dos decisiones que se tomaron al implementarlo:
+
+- **El borrado vive dentro de `syncCompany`**, así que el endpoint por slug también borra
+  y su respuesta ganó un contador `deleted`. Hay un solo camino de sincronización.
+- **El POST masivo vive en `VacancyController`**, al lado del que ya existía: mismo
+  recurso, dos alcances.
+
+**Lo que falta es la prueba manual.** Guion:
+
+**1. En dev, con pocas empresas** (la base de dev arranca vacía):
+
+```bash
+./mvnw spring-boot:run
+```
+
+```sql
+insert into company (id, ats, slug, board_status) values
+  (nextval('company_seq'), 'GREENHOUSE', 'splice',  'ACTIVE'),
+  (nextval('company_seq'), 'GREENHOUSE', 'discord', 'ACTIVE'),
+  (nextval('company_seq'), 'GREENHOUSE', 'figma',   'ACTIVE'),
+  (nextval('company_seq'), 'GREENHOUSE', 'notion',  'NOT_FOUND');
+```
+
+```bash
+curl -i -X POST 'localhost:8080/admin/vacancies/greenhouse'
+```
+
+Tiene que dar **202** al toque, y en el log `Greenhouse vacancy sweep started` y al
+terminar algo del orden de `3 companies, 203 fetched, 203 inserted, 0 updated, 0 deleted,
+0 failed`. Un segundo POST mientras corre da **409**.
+
+```sql
+select c.slug, count(v.id) from company c left join vacancy v on v.company_id = c.id
+group by c.slug order by 2 desc;
+```
+
+`notion` tiene que quedar en **0**: no es `ACTIVE`, no se le pidió nada.
+
+**2. Idempotencia y borrado.** Repetir el POST: todo pasa a `updated`, `inserted:0`.
+Después, meter una vacante que el board no tiene y ver que la corrida siguiente se la
+lleva, diciendo `1 deleted`:
+
+```sql
+insert into vacancy (id, company_id, external_id, title)
+values (nextval('vacancy_seq'), (select id from company where slug='splice'), 999999999, 'Fantasma');
+```
+
+**3. La corrida real, en prod** (estimada en 1 a 2 horas; 500 ms × 3.121 son 26 minutos de
+pausa sola, más el peso de cada descarga):
+
+```bash
+cd prod
+docker compose up --build -d
+docker compose exec app curl -i -X POST 'localhost:8080/admin/vacancies/greenhouse'
+docker compose logs -f app
+```
+
+```sql
+select count(*) from vacancy;
+select count(distinct company_id) from vacancy;
+```
+
+Los números de esa corrida son la primera medición real del volumen: hasta ahora las
+250.000 vacantes son una proyección de una muestra de 40 empresas.
+
+### Paso 2c — desplegar en un servidor por SSH — **a planificar**
+
+Declaración de Elias, tal como la dio (2026-09-11):
+
+> "Vamos a añadir un paso 2c después de reiniciar el chat. Voy a desplegar esto en un
+> servidor por SSH, porque ya estamos hablando de procesos constantes, a futuro en
+> paralelo con más ATS y normalización de las vacantes. El paso 2c va a ser una guía de
+> despliegue."
+
+**Todavía no está planificado**: no hay servidor elegido, ni decisiones tomadas, ni
+alcance definido. Se planifica en la sesión que lo arranque.
 
 ## Cómo se cierra cada uno
 
 Como siempre (ver `docs/METODOLOGIA.md`): tests de comportamiento en el mismo paso,
 guion de prueba manual con los comandos exactos, y el paso cierra **cuando Elias lo
-probó a mano**. Cuando 2b esté cerrado se actualiza `docs/CONTEXTO.md` y se borra
-este archivo.
+probó a mano**. Cuando 2c esté cerrado se actualiza `docs/CONTEXTO.md` con los números
+reales y se borra este archivo.

@@ -1,6 +1,6 @@
 @startuml panorama
 !theme plain
-title Las piezas del backend\nDos procesos que se disparan a mano, y que hay del otro lado
+title Las piezas del backend\nTres procesos que se disparan a mano, y que hay del otro lado
 
 skinparam componentStyle rectangle
 skinparam shadowing false
@@ -12,41 +12,55 @@ actor "Vos" as you
 rectangle "controller" {
   [DiscoveryController] as ctrl
   [BoardProbeController] as probeCtrl
+  [VacancyController] as vacCtrl
 }
 
 rectangle "service" {
   [GreenhouseDiscoveryService] as svc
   [CommonCrawlIndexClient] as client
   [GreenhouseBoardProbeService] as probeSvc
+  [GreenhouseVacancySyncService] as vacSvc
+  [GreenhouseVacancySweepService] as sweepSvc
   [GreenhouseBoardClient] as boardClient
 }
 
 rectangle "util" {
   [GreenhouseBoardUrl] as url
+  [HtmlToText] as html
 }
 
 rectangle "repository" {
   [CompanyRepository] as repo
+  [VacancyRepository] as vacRepo
 }
 
 cloud "index.commoncrawl.org\nel indice de URLs" as cc
 cloud "boards-api.greenhouse.io\nla API de Greenhouse" as gh
-database "PostgreSQL\ntabla company" as db
+database "PostgreSQL\ntablas company y vacancy" as db
 
 you --> ctrl : 1. descubrir empresas
 you --> probeCtrl : 2. sondear sus boards
+you --> vacCtrl : 3. traer las vacantes\nde una empresa o de todas
 
 ctrl --> svc : discover(indice)
 probeCtrl --> probeSvc : probeAll()
+vacCtrl --> vacSvc : syncCompany(slug)
+vacCtrl --> sweepSvc : syncAllActive()
+sweepSvc --> vacSvc : cada empresa ACTIVE,\ncon pausa de 500 ms
 
 svc --> client
 svc --> url
 svc --> repo
 probeSvc --> boardClient
 probeSvc --> repo
+vacSvc --> boardClient
+vacSvc --> repo
+vacSvc --> vacRepo
 
 client --> cc : HTTPS,\npagina por pagina
 boardClient --> gh : HTTPS,\nun GET por empresa
+boardClient --> html : limpia el HTML\nde la descripcion
 repo --> db
+vacRepo --> db
 
 @enduml

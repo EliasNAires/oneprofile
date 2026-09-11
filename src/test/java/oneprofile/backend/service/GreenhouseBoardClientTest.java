@@ -7,8 +7,10 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 import java.time.Duration;
+import java.time.Instant;
 
 import oneprofile.backend.model.BoardStatus;
+import oneprofile.backend.service.GreenhouseBoardClient.BoardJob;
 import oneprofile.backend.service.GreenhouseBoardClient.BoardProbe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,6 +27,8 @@ class GreenhouseBoardClientTest {
 	private static final String SLUG = "globant";
 
 	private static final String BOARD_URL = "https://boards-api.greenhouse.io/v1/boards/globant/jobs";
+
+	private static final String JOBS_URL = BOARD_URL + "?content=true&pay_transparency=true";
 
 	private MockRestServiceServer server;
 
@@ -95,5 +99,66 @@ class GreenhouseBoardClientTest {
 
 		assertThatThrownBy(() -> this.client.probe(SLUG)).isInstanceOf(HttpServerErrorException.class);
 		this.server.verify();
+	}
+	@Test
+	void mapsAnOpeningWithEverythingTheBoardPublishes() {
+		this.server.expect(requestTo(JOBS_URL)).andRespond(withSuccess("""
+				{"jobs":[{
+				  "id": 8172510,
+				  "title": "Backend Engineer",
+				  "location": {"name": "Buenos Aires, Argentina"},
+				  "departments": [{"id": 4095160002, "name": "Engineering"}],
+				  "content": "&lt;p&gt;Java &amp;amp; Spring&lt;/p&gt;",
+				  "absolute_url": "https://job-boards.greenhouse.io/globant/jobs/8172510",
+				  "language": "en",
+				  "pay_input_ranges": [
+				    {"min_cents": 12000000, "max_cents": 18000000, "currency_type": "USD",
+				     "title": "Annual base salary range:"}
+				  ],
+				  "first_published": "2026-09-09T10:50:29-04:00",
+				  "updated_at": "2026-09-10T13:11:58-04:00"
+				}],"meta":{"total":1}}
+				""", MediaType.APPLICATION_JSON));
+
+		assertThat(this.client.jobs(SLUG)).containsExactly(new BoardJob(8172510L, "Backend Engineer",
+				"Buenos Aires, Argentina", "Engineering", "Java & Spring",
+				"https://job-boards.greenhouse.io/globant/jobs/8172510", "en", 12000000L, 18000000L, "USD",
+				"Annual base salary range:", Instant.parse("2026-09-09T14:50:29Z"),
+				Instant.parse("2026-09-10T17:11:58Z")));
+		this.server.verify();
+	}
+
+	@Test
+	void leavesThePayFieldsNullWhenTheBoardPublishesNoRange() {
+		this.server.expect(requestTo(JOBS_URL)).andRespond(withSuccess("""
+				{"jobs":[{
+				  "id": 4001,
+				  "title": "Data Analyst",
+				  "location": {"name": "Remote - LATAM"},
+				  "departments": [{"name": "Data"}],
+				  "content": "&lt;p&gt;SQL&lt;/p&gt;",
+				  "absolute_url": "https://job-boards.greenhouse.io/globant/jobs/4001",
+				  "language": "en",
+				  "pay_input_ranges": [],
+				  "first_published": "2026-09-09T10:50:29-04:00",
+				  "updated_at": "2026-09-09T10:50:29-04:00"
+				}],"meta":{"total":1}}
+				""", MediaType.APPLICATION_JSON));
+
+		BoardJob job = this.client.jobs(SLUG).getFirst();
+
+		assertThat(job.payMinCents()).isNull();
+		assertThat(job.payMaxCents()).isNull();
+		assertThat(job.payCurrency()).isNull();
+		assertThat(job.payTitle()).isNull();
+		assertThat(job.title()).isEqualTo("Data Analyst");
+	}
+
+	@Test
+	void readsAnEmptyBoardAsNoOpenings() {
+		this.server.expect(requestTo(JOBS_URL))
+				.andRespond(withSuccess("{\"jobs\":[],\"meta\":{\"total\":0}}", MediaType.APPLICATION_JSON));
+
+		assertThat(this.client.jobs(SLUG)).isEmpty();
 	}
 }

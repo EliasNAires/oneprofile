@@ -11,18 +11,22 @@
 > carpeta.
 
 **Última actualización:** 2026-09-11
-**Último milestone:** el **sondeo de boards** anda de punta a punta. Un POST recorre
-las empresas de Greenhouse, le pega al board de cada una y clasifica el resultado en
-tres estados. Probado a mano por Elias en prod.
+**Último milestone probado:** el **paso 2a**. Hay una tabla `vacancy` y un POST que carga
+las vacantes de **una** empresa pedida por slug, con la descripción limpiada a texto
+plano y el salario en centavos cuando el board lo publica. Probado a mano por Elias
+contra la API real.
 
-**Milestone anterior:** documentación para personas en `docs/para-humanos/`.
+**Milestone anterior:** el sondeo de boards de punta a punta en prod.
 
-**Hay un plan en curso:** [`docs/PLAN-VACANTES.md`](PLAN-VACANTES.md) — el paso 2,
-modelar y persistir las vacantes, **partido en 2a** (el modelo y la carga de una
-empresa por slug) **y 2b** (el recorrido de las 3.121 activas y el borrado de lo que
-ya no está). Ahí están también los números medidos y las decisiones ya cerradas.
-Está escrito para que lo pueda retomar otra sesión sin más contexto que ese archivo
-y este.
+**Ojo: el paso 2b está escrito y con tests en verde, pero Elias TODAVÍA NO lo probó a
+mano.** O sea que el código del recorrido masivo y del borrado existe y está descrito más
+abajo, pero **nunca corrió contra la API real ni contra la base de prod**: no hay un solo
+número medido de esa corrida. Hasta que Elias la corra, tratalo como no verificado.
+
+**Hay un plan en curso:** [`docs/PLAN-VACANTES.md`](PLAN-VACANTES.md) — el paso 2. Ahí
+quedaron los números medidos del endpoint, las decisiones cerradas, el guion de prueba
+manual de 2b que falta correr, y la declaración del **paso 2c** (el despliegue en un
+servidor por SSH), que es lo que sigue.
 
 ## Qué es esto
 
@@ -236,35 +240,50 @@ docs/METODOLOGIA.md
 docs/CONTEXTO.md
 docs/PLAN-VACANTES.md                               (plan en curso: el paso 2, en 2a y 2b)
 docs/para-humanos/README.md                         (para personas, no para agentes)
+docs/para-humanos/descubrimiento.md
+docs/para-humanos/sondeo.md
+docs/para-humanos/vacantes.md
 docs/para-humanos/diagramas/*.puml + *.svg          (6 diagramas PlantUML)
 pom.xml
 src/main/java/oneprofile/backend/BackendApplication.java
 src/main/java/oneprofile/backend/model/Ats.java
 src/main/java/oneprofile/backend/model/BoardStatus.java
 src/main/java/oneprofile/backend/model/Company.java
+src/main/java/oneprofile/backend/model/Vacancy.java
 src/main/java/oneprofile/backend/repository/CompanyRepository.java
+src/main/java/oneprofile/backend/repository/VacancyRepository.java
 src/main/java/oneprofile/backend/service/CommonCrawlIndexClient.java
 src/main/java/oneprofile/backend/service/GreenhouseDiscoveryService.java
 src/main/java/oneprofile/backend/service/GreenhouseBoardClient.java
 src/main/java/oneprofile/backend/service/GreenhouseBoardProbeService.java
+src/main/java/oneprofile/backend/service/GreenhouseVacancySyncService.java
+src/main/java/oneprofile/backend/service/GreenhouseVacancySweepService.java
 src/main/java/oneprofile/backend/controller/DiscoveryController.java
 src/main/java/oneprofile/backend/controller/BoardProbeController.java
+src/main/java/oneprofile/backend/controller/VacancyController.java
 src/main/java/oneprofile/backend/util/GreenhouseBoardUrl.java
+src/main/java/oneprofile/backend/util/HtmlToText.java
 src/main/resources/application.properties
 src/main/resources/application-dev.properties       (vacío)
 src/main/resources/application-prod.properties      (vacío)
 src/main/resources/db/migration/V1__create_company.sql
 src/main/resources/db/migration/V2__add_company_board_status.sql
+src/main/resources/db/migration/V3__create_vacancy.sql
 src/test/java/oneprofile/backend/BackendApplicationTests.java
 src/test/java/oneprofile/backend/TestcontainersConfiguration.java
 src/test/java/oneprofile/backend/repository/CompanyRepositoryTest.java
+src/test/java/oneprofile/backend/repository/VacancyRepositoryTest.java
 src/test/java/oneprofile/backend/service/CommonCrawlIndexClientTest.java
 src/test/java/oneprofile/backend/service/GreenhouseDiscoveryServiceTest.java
 src/test/java/oneprofile/backend/service/GreenhouseBoardClientTest.java
 src/test/java/oneprofile/backend/service/GreenhouseBoardProbeServiceTest.java
+src/test/java/oneprofile/backend/service/GreenhouseVacancySyncServiceTest.java
+src/test/java/oneprofile/backend/service/GreenhouseVacancySweepServiceTest.java
 src/test/java/oneprofile/backend/controller/DiscoveryControllerTest.java
 src/test/java/oneprofile/backend/controller/BoardProbeControllerTest.java
+src/test/java/oneprofile/backend/controller/VacancyControllerTest.java
 src/test/java/oneprofile/backend/util/GreenhouseBoardUrlTest.java
+src/test/java/oneprofile/backend/util/HtmlToTextTest.java
 src/test/resources/application.properties
 ```
 
@@ -274,8 +293,9 @@ El código se organiza **por capa técnica**, no por feature: `model`, `reposito
 `service`, `controller` y `util` cuelgan directo de `oneprofile.backend`. Ya
 existen las cinco.
 
-`util` quedó reservado para **funciones puras sin dependencias** —hoy solo
-`GreenhouseBoardUrl`—. Un componente que hace I/O va a la capa que le corresponde,
+`util` quedó reservado para **funciones puras sin dependencias** —hoy
+`GreenhouseBoardUrl` y `HtmlToText`—. Un componente que hace I/O va a la capa que le
+corresponde,
 aunque sea un colaborador y no lógica de negocio: por eso `CommonCrawlIndexClient`
 está en `service` y no en `util`.
 
@@ -389,6 +409,65 @@ codear sobre supuestos. Lo que contesta:
   dato que la respuesta de `/jobs` ya trae en la mayoría de los casos. El precio
   aceptado es que las empresas sin vacantes quedan sin nombre.
 
+Para el paso 2a se volvió a medir el mismo endpoint, esta vez con los parámetros que
+traen todo lo aprovechable. Sondeados 9 boards: splice, discord, airbnb y stripe con
+`content=true` (842 vacantes) y figma, ramp, brex, coinbase y reddit (2.410 más).
+
+`GET /v1/boards/<slug>/jobs?content=true&pay_transparency=true`
+
+- **`content=true` multiplica la respuesta por 10-18x** y agrega además `departments`
+  y `offices`. Medido: splice 2 KB → 53 KB, discord 35 KB → 383 KB, stripe 4,7 MB.
+  Por eso el `READ_TIMEOUT` del cliente subió de 30 s a 120 s.
+- **`content` viene HTML-escapeado dentro del JSON.** El valor literal del campo,
+  ya parseado el JSON, es `&lt;div class=&quot;…&quot;&gt;` y contiene `&amp;nbsp;`.
+  Limpiarlo son **dos desescapes**; de ahí `HtmlToText`.
+- **`pay_transparency=true`** —se combina con `content=true`— agrega
+  `pay_input_ranges`, con el salario estructurado en **426 de 787** vacantes. Cuando
+  hay, es **siempre exactamente 1** rango, así que van columnas planas y no tabla
+  hija. Monedas vistas: USD, INR, GBP, CAD, EUR, PHP, SGD, BRL, AED. **25 de esos 426
+  son por hora**, y lo único que los distingue de un anual es el `title` del rango
+  (`"Hourly Rate:"` vs `"Annual base salary range…"`), que es texto libre.
+- **`id` es único dentro del board** (626/626 en stripe) y llega a 8.801.523.002, o
+  sea que **no entra en un int**. `internal_job_id` **no** es único (603 sobre 626).
+- `departments` viene siempre y siempre con **un solo** elemento (842/842).
+- **La ubicación no es parseable.** `location.name` es texto libre:
+  `"Remote - U.S."`, `"Atlanta; New York"`, `"AMER"`, `"(San Francisco, Chicago, NYC)"`.
+  `offices` sí trae un `location` normalizado con país, pero **solo en 107/842 (13%)**;
+  el resto es vocabulario de cada empresa (`"US"`, `"Ireland Locations"`, `"US-PERM"`).
+  Por eso no se guarda.
+- `metadata` son campos personalizados por empresa (211/842): hay señal útil
+  (`"Workplace Type" → "Hybrid"`) pero sin esquema común. Tampoco se guarda.
+- Largos máximos medidos: `title` 94, `location.name` 185, `departments[0].name` 60,
+  `absolute_url` 76. **La URL no pasa de 255**, al revés de lo que suponía el plan; va
+  como `text` igual, porque una URL no tiene largo acotado.
+- `absolute_url` **no siempre apunta a Greenhouse**: de 842, 626 van a `stripe.com` y
+  166 a `careers.airbnb.com`. Cuando la empresa tiene careers propio, la URL es la
+  suya.
+- **El endpoint no acepta filtrar por fecha.** `updated_after` se ignora: con un corte de
+  hoy devuelve el board entero igual, y con el valor literal `basura` tampoco da error.
+  El board viene completo o no viene.
+
+### Vacantes viejas: se evaluó descartarlas y se decidió que no (2026-09-11)
+
+Se pensó en no cargar las vacantes con `updated_at` de más de dos meses, tomándolas por
+abandonadas. Se midió antes de escribir nada y **la idea quedó descartada**:
+
+- No hay forma de pedirle al board que no las mande (ver arriba), así que el ahorro de
+  descarga —la mitad del motivo— no existe. El filtro solo podría aplicarse al mapear.
+- **El recorte es chico y desparejo.** Sobre 8 boards y 1.630 vacantes: splice, figma,
+  discord y stripe **0%**; reddit 10%, coinbase 13%, airbnb 14%, brex 17%. Total 117 de
+  1.630, **7%**.
+- Los ceros lo explican: discord y stripe tienen *todas* sus vacantes tocadas hace uno o
+  dos días. Hay empresas que reescriben `updated_at` en bloque y otras no, así que el
+  corte mide **hábitos del equipo de RRHH** más que vigencia de la búsqueda.
+- Y el error es asimétrico: guardar una vacante muerta cuesta unos KB, borrar una viva
+  cuesta justo lo que el proyecto quiere producir, y no se recupera.
+
+**Se guardan todas.** `updated_at` está guardado, así que la recencia se usa **al
+buscar** —para filtrar u ordenar—, no como descarte en la carga. Es la misma forma que
+tiene tomada el filtro por país. La señal fuerte de abandono es que la vacante
+**desaparezca del board**, y eso ya lo captura el borrado.
+
 ### El sondeo de boards: cliente, servicio y endpoint
 
 Tres clases que van de un POST a tener clasificada cada empresa.
@@ -496,6 +575,94 @@ descubrimiento necesita —restar de un `Set` lo que ya está guardado— y así
 miles de entidades. El segundo devuelve entidades porque el sondeo **las actualiza**,
 y ahí no hay forma de evitarlo.
 
+### Las vacantes: modelo, limpieza, cliente, servicio y endpoint
+
+Las piezas que van de un POST a tener vacantes en la base, sea de una empresa o de
+todas. Lo de 2a está probado a mano; lo que agregó 2b —el borrado y el recorrido
+masivo— está escrito y con tests, pero sin correr de verdad.
+
+**`util/HtmlToText`** es una clase final sin instancias con un solo método,
+`static String plainText(String escapedHtml)`. Función pura, sin red y sin Spring, al
+lado de `GreenhouseBoardUrl`. Hace el desescape doble que el campo `content` necesita:
+`Jsoup.parse(Parser.unescapeEntities(raw, false)).text()` — el primero recupera el HTML
+real y el segundo lo hace Jsoup solo al pedirle el texto. Devuelve `null` cuando no
+queda nada para leer, así una vacante sin descripción queda en `null` y no en `""`.
+**Jsoup es dependencia nueva** (`org.jsoup:jsoup:1.21.2`, con `<version>` explícita
+porque el parent de Spring Boot no la gestiona).
+
+**`service/GreenhouseBoardClient`** ganó un segundo método público,
+`List<BoardJob> jobs(String slug)`, que reusa el mismo `withRetries(...)` y el mismo
+`ObjectMapper` que ya tenía. `BoardJob` es un record con los 13 campos que se guardan.
+Dos detalles: llama a `HtmlToText` **al mapear**, así el record no arrastra HTML crudo,
+y los cuatro campos de salario son `null` juntos cuando el board no publica rango. La
+URL de `probe` quedó intacta —el sondeo no quiere el contenido— y la nueva es otra
+constante con los dos parámetros.
+
+**`model/Vacancy`** sigue el molde de `Company`: constructor `protected` para JPA más
+uno público `(Company, Long)`, getters sin setters, y un método de dominio
+`describe(...)` que reescribe de una todo lo mutable. La relación a `Company` es
+`@ManyToOne(optional = false)` **unidireccional**: la empresa no conoce sus vacantes,
+porque una `@OneToMany` de miles de elementos es un problema y no una comodidad.
+Identidad: `@UniqueConstraint` sobre `(company_id, external_id)`, porque el id de
+Greenhouse es único dentro del board y no globalmente.
+
+Los campos guardados son `externalId`, `title`, `location` (el `location.name` crudo,
+sin parsear), `department` (el `departments[0].name`), `description`, `url`,
+`language`, `payMinCents`, `payMaxCents`, `payCurrency`, `payTitle`, `firstPublished` y
+`updatedAt`. **No** se guardan `offices`, `metadata`, `internal_job_id`,
+`requisition_id`, `education`, `employment`, `application_deadline`, `data_compliance`
+ni los `ai_*`; `company_name` tampoco, porque ya está en `Company.name`. El `payTitle`
+se guarda **crudo**, sin derivar un enum anual/hora: eso sería una heurística sobre
+texto libre de cada empresa.
+
+**`service/GreenhouseVacancySyncService`** tiene un solo método,
+`Optional<SyncResult> syncCompany(String slug)`, con
+`SyncResult(int fetched, int inserted, int updated, int deleted)`. Busca la empresa por
+`(GREENHOUSE, slug)` y devuelve **vacío si no la conoce** —eso es lo que el controller
+convierte en 404—. Carga en un `Map<Long, Vacancy>` lo que ya tenía guardado de esa
+empresa con una sola consulta, y por cada vacante del board hace `stored.remove(...)`
+para insertar o actualizar. Ese `remove` es el truco del borrado: **lo que queda en el
+mapa al terminar el recorrido es exactamente lo que el board ya no tiene**, y se va con
+un `deleteAll`. Es `@Transactional`, al revés del sondeo: una empresa sola tarda
+segundos, así que no hay riesgo de tener una transacción abierta media hora.
+
+**`service/GreenhouseVacancySweepService`** es el recorrido masivo, y calca a
+`GreenhouseBoardProbeService` porque es el mismo problema. Su método es
+`SweepResult syncAllActive()`, con
+`SweepResult(companies, fetched, inserted, updated, deleted, failed)`: pide los slugs
+`ACTIVE`, y por cada uno espera 500 ms, llama a `syncCompany(slug)` y acumula. Una
+empresa que falla —un board que murió desde el sondeo contesta 404, y `jobs()` lo tira
+como excepción— se loguea en `WARN`, se cuenta en `failed` y **no aborta la corrida**.
+Tiene los dos constructores de siempre, con `@Autowired` en el público, para que el test
+ponga la pausa en cero.
+
+Dos cosas de esta clase que no se leen en el código:
+
+- **No es `@Transactional`**, por lo mismo que el sondeo: una corrida de dos horas en una
+  sola transacción retiene una conexión todo ese tiempo y pierde todo si el proceso muere.
+- **Que sea una clase aparte y no un método más del sync no es cosmético.** Es lo que hace
+  que el `@Transactional` de `syncCompany` efectivamente aplique: una llamada entre
+  métodos del mismo bean saltea el proxy de Spring, y la corrida entera quedaría sin
+  transacción por empresa.
+
+**`controller/VacancyController`** expone los dos endpoints, que contestan distinto a
+propósito:
+
+- `POST /admin/vacancies/greenhouse/{slug}` **contesta en línea**, con el `SyncResult` en
+  el cuerpo. Todo el método es `ResponseEntity.of(this.syncService.syncCompany(slug))`:
+  el `Optional` vacío ya da 404. **No mira `board_status`**: le pega a cualquier empresa
+  conocida, que es lo que lo hace útil para probar una empresa puntual.
+- `POST /admin/vacancies/greenhouse` (sin slug) usa el molde ya probado dos veces —202 al
+  toque, executor de un solo hilo, `AtomicBoolean` que da 409, resultado al log—, porque
+  acá sí la corrida dura horas.
+
+**`repository/VacancyRepository`** es un `JpaRepository<Vacancy, Long>` con
+`List<Vacancy> findByCompany(Company company)`, que es lo que arma ese mapa. Y
+`CompanyRepository` ganó dos métodos más: `Optional<Company> findByAtsAndSlug(Ats, String)`
+y `List<String> findSlugsByAtsAndBoardStatus(Ats, BoardStatus)`. El segundo devuelve
+**slugs y no entidades**, como `findSlugsByAts`: es lo único que el recorrido necesita
+—`syncCompany` recibe un slug— y así no hidrata 3.121 entidades.
+
 ### La carpeta `docs/para-humanos/`
 
 Documentación dirigida a personas, **que este agente no debe leer** (ver la
@@ -503,7 +670,8 @@ advertencia del encabezado). Existe porque `METODOLOGIA.md` y este archivo está
 escritos para el agente y no sirven para entender el sistema de un vistazo: son
 exhaustivos y no tienen un solo diagrama.
 
-Contiene un `README.md` y **seis** diagramas en `diagramas/`, cada uno con su `.puml`
+Contiene un `README.md`, un archivo por proceso —`descubrimiento.md`, `sondeo.md` y
+`vacantes.md`— y **seis** diagramas en `diagramas/`, cada uno con su `.puml`
 fuente y su `.svg` versionado al lado: `panorama` (componentes), `flujo-descubrimiento`
 y `flujo-sondeo` (secuencia, los dos más importantes), `url-a-slug` (actividad),
 `modelo-de-datos` (clases) y `entorno` (despliegue dev vs. prod).
@@ -522,7 +690,7 @@ El criterio de escritura y el de las notas de los diagramas están en
 El esquema vive en `src/main/resources/db/migration/` y lo aplica Flyway, que
 anota lo ya corrido en la tabla `flyway_schema_history`. **Cuando cambie el
 esquema no se reescribe `V1`: se agrega la siguiente con el `ALTER TABLE`**, y los
-datos existentes sobreviven. Hoy hay dos migraciones:
+datos existentes sobreviven. Hoy hay tres migraciones:
 
 ```sql
 -- V1__create_company.sql
@@ -544,8 +712,38 @@ alter table company add column board_status varchar(255);
 alter table company add column last_probed_at timestamp(6) with time zone;
 ```
 
+```sql
+-- V3__create_vacancy.sql
+create sequence vacancy_seq start with 1 increment by 50;
+
+create table vacancy (
+    id bigint not null,
+    company_id bigint not null references company,
+    external_id bigint not null,
+    title varchar(255),
+    location text,
+    department varchar(255),
+    description text,
+    url text,
+    language varchar(255),
+    pay_min_cents bigint,
+    pay_max_cents bigint,
+    pay_currency varchar(255),
+    pay_title varchar(255),
+    first_published timestamp(6) with time zone,
+    updated_at timestamp(6) with time zone,
+    primary key (id),
+    unique (company_id, external_id)
+);
+```
+
 El `increment by 50` no es decorativo: es el `allocationSize` por defecto que
-Hibernate 6/7 espera para `@GeneratedValue`, y si no coincide `validate` falla.
+Hibernate 6/7 espera para `@GeneratedValue`, y si no coincide `validate` falla. Por eso
+`vacancy_seq` lo repite.
+
+Las tres columnas `text` de `vacancy` obligan a declarar
+`@Column(columnDefinition = "text")` en la entidad: para un `String` pelado Hibernate
+espera `varchar(255)` y con `ddl-auto=validate` la app no levantaría.
 
 `V2` se aplicó sobre prod con las 4.046 filas ya cargadas y no las tocó: las tres
 columnas entraron en `null`. El tipo `timestamp(6) with time zone` es el que Hibernate
@@ -553,11 +751,13 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Estado verificado
 
-- `./mvnw test` → **39 tests, 0 fallas**: `BackendApplicationTests.contextLoads`,
-  3 de `CompanyRepositoryTest`, 12 casos parametrizados de `GreenhouseBoardUrlTest`,
-  6 de `CommonCrawlIndexClientTest`, 4 de `GreenhouseDiscoveryServiceTest`, 2 de
-  `DiscoveryControllerTest`, 6 de `GreenhouseBoardClientTest`, 3 de
-  `GreenhouseBoardProbeServiceTest` y 2 de `BoardProbeControllerTest`. Las dos primeras clases importan
+- `./mvnw test` → **62 tests, 0 fallas**: `BackendApplicationTests.contextLoads`,
+  4 de `CompanyRepositoryTest`, 5 de `VacancyRepositoryTest`, 12 casos parametrizados
+  de `GreenhouseBoardUrlTest`, 3 de `HtmlToTextTest`, 6 de `CommonCrawlIndexClientTest`,
+  4 de `GreenhouseDiscoveryServiceTest`, 2 de `DiscoveryControllerTest`, 9 de
+  `GreenhouseBoardClientTest`, 3 de `GreenhouseBoardProbeServiceTest`, 4 de
+  `GreenhouseVacancySyncServiceTest`, 3 de `GreenhouseVacancySweepServiceTest`, 2 de
+  `BoardProbeControllerTest` y 4 de `VacancyControllerTest`. Las dos primeras clases importan
   `TestcontainersConfiguration`, que declara un `PostgreSQLContainer` como
   `@Bean @ServiceConnection`; `CompanyRepositoryTest` lleva además
   `@AutoConfigureTestDatabase(replace = NONE)`, porque sin base embebida en el
@@ -618,6 +818,46 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
   hallazgo del paso: el **77%** de lo que descubrió CommonCrawl **sigue vivo y con
   vacantes** — se esperaba bastante más mortandad. La corrida tardó ~30 minutos, más
   de los ~14 que daría la pausa sola.
+- **`HtmlToTextTest`** no levanta Spring: el desescape doble sobre un `content` con la
+  forma real de Greenhouse deja el texto sin tags, con `&amp;nbsp;` convertido en
+  espacio y `&amp;amp;` en `&`; una entidad que solo sobrevive al segundo desescape
+  (`&amp;ndash;`) llega bien; y `null`, `""` y un HTML sin texto dan `null`.
+- **`VacancyRepositoryTest`** es `@DataJpaTest` contra Postgres real: guarda una
+  vacante con los 13 campos y la relee igual; una descripción de 6.600 caracteres
+  sobrevive (la columna es `text`); el mismo `(company, external_id)` dos veces salta
+  `DataIntegrityViolationException`; el **mismo `external_id` en dos empresas
+  distintas se acepta**, que es justamente lo que la unique compuesta tiene que
+  permitir; y `findByCompany` trae solo las de esa empresa.
+- **`GreenhouseBoardClientTest`** ganó tres casos para `jobs(slug)`: una vacante con
+  todo se mapea completa —incluido el `content` ya limpio y el rango en centavos—, una
+  sin `pay_input_ranges` deja los cuatro campos de salario en `null`, y un board vacío
+  da lista vacía. El `requestTo` exacto verifica que se piden **los dos** parámetros.
+- **`GreenhouseVacancySyncServiceTest`** es `@DataJpaTest` con un doble del cliente
+  escrito a mano: guarda las vacantes del board, en la segunda corrida **actualiza sin
+  duplicar** (`inserted:0`), **borra la vacante que ya no está en el board** y la cuenta
+  en `deleted`, y devuelve vacío para un slug que no es una empresa conocida.
+- **`GreenhouseVacancySweepServiceTest`** es `@DataJpaTest` con un doble del cliente
+  —un `Map` de slug a board, donde un slug ausente significa un board inalcanzable—:
+  le pide vacantes **solo a las `ACTIVE`** (una `EMPTY`, una `NOT_FOUND` y una nunca
+  sondeada quedan sin nada), suma los contadores de todas las empresas, y sigue con las
+  demás cuando una falla, contándola en `failed` y dejándole sus vacantes anteriores.
+- **`VacancyControllerTest`** es `@WebMvcTest`: 200 con el JSON de contadores y 404 cuando
+  el servicio devuelve vacío para el endpoint por slug; 202 más delegación y 409 con una
+  corrida en curso para el masivo, con la misma técnica del `CountDownLatch`.
+- **El recorrido masivo NO está probado a mano.** Sus tres tests pasan, pero nunca corrió
+  contra la API real ni contra prod. El guion de prueba está en `docs/PLAN-VACANTES.md`.
+- **La carga de una empresa anda de punta a punta contra la API real.** Probado a mano
+  por Elias en dev. Salidas textuales: splice `{"fetched":5,"inserted":5,"updated":0}`
+  y en el segundo POST `{"fetched":5,"inserted":0,"updated":5}` —idempotente—, discord
+  45, figma 153 de las cuales **96 con salario** (por ejemplo `16500000`-`19000000`
+  USD con `pay_title` = `"Annual Base Salary Range:"`). Las descripciones quedaron en
+  texto plano de 5.008 a 8.102 caracteres, con **cero** `&amp;nbsp;` y cero tags. Un
+  slug desconocido da 404.
+  Un chequeo tosco de `description like '%<%'` da 10 falsos positivos: son `<`
+  legítimos del texto de figma (`"(<5000 FTEs)"`, `"(500< FTEs)"`). Para verificar la
+  limpieza hay que buscar **tags y entidades**, no el caracter suelto:
+  `description ~ '</[a-zA-Z]'`, los tags que Greenhouse usa, y `&amp;nbsp;` / `&amp;amp;`
+  / `&amp;lt;`.
 - `GreenhouseBoardUrlTest` no levanta contexto de Spring y corre en ~40 ms. Son dos
   `@ParameterizedTest`: 7 URLs que devuelven slug (path extra, query string, los
   dos dominios, `www.`, y las dos formas de `embed`) y 5 que devuelven vacío
@@ -630,20 +870,34 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Qué NO existe todavía
 
-- **Ninguna vacante guardada.** El sondeo cuenta cuántas tiene cada board, pero
-  descarta el contenido. Eso es el paso 2, en `docs/PLAN-VACANTES.md`.
+- **La carga masiva existe pero nunca corrió.** El endpoint, el recorrido y el borrado
+  están escritos y con tests, pero Elias todavía no los probó a mano, así que la tabla
+  `vacancy` tiene solo lo que se pidió empresa por empresa. Los ~250.000 son una
+  proyección de una muestra de 40 empresas, no un número medido.
+- **Nada normaliza los títulos ni la ubicación.** Están guardados como los escribió
+  cada empresa.
 - Ningún perfil de usuario, ninguna lógica de matching.
-- Ningún endpoint que devuelva datos: los dos que hay disparan procesos.
+- Ningún endpoint que devuelva datos: los tres que hay disparan procesos. El de
+  vacantes contesta con los contadores de lo que cargó, no con las vacantes.
 - Ningún ATS además de Greenhouse.
-- Ningún cron: los dos procesos se disparan a mano. `last_probed_at` está puesto
-  para cuando exista, pero todavía no lo lee nadie.
+- Ningún cron: los procesos se disparan a mano. `last_probed_at` está puesto para cuando
+  exista, pero todavía no lo lee nadie.
+- **Ningún despliegue fuera de la máquina de Elias.** Prod es `docker compose` en su
+  propia máquina; poner esto en un servidor es el paso 2c.
 
 ## Puntos abiertos
 
 - **Los endpoints de administración no tienen ninguna protección.** Hoy no importa
-  porque el puerto de la app no se publica, pero cuando exista el endpoint de
-  vacantes habrá que publicarlo y ahí los dos quedan expuestos. Se decide en ese
+  porque el puerto de la app no se publica, pero cuando exista un endpoint que
+  **devuelva** vacantes habrá que publicarlo y ahí los tres de administración quedan
+  expuestos. Se decide en ese
   momento.
+- **El recorrido de vacantes trabaja sobre la foto que dejó el sondeo.** Le pide vacantes
+  solo a las `ACTIVE`, así que una empresa que empezó a publicar después de la última
+  corrida de sondeo sigue marcada `EMPTY` y no se le pide nada; y una que cerró todo se
+  consulta igual, contesta cero y el borrado le saca lo que tuviera. O sea que el orden
+  correcto es **sondeo primero, vacantes después**, y hoy nada lo fuerza porque los dos se
+  disparan a mano. Cuando exista el cron habrá que encadenarlos.
 - **El sondeo se corre entero cada vez.** No hay forma de pedirle "solo las que nunca
   sondeaste" o "solo las viejas": vuelve a pegarle a las 4.046. Los datos para
   filtrar están (`board_status`, `last_probed_at`), la consulta no. Se agrega cuando
@@ -654,6 +908,13 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
   vería ningún error y reportaría menos empresas sin avisar. Los reintentos no
   ayudan, porque el status es 200. En la corrida real no pasó —el conteo dio
   exactamente el mismo número que el cálculo offline completo— pero el agujero está.
+- **La base de dev arranca vacía.** Las 4.046 empresas viven en el volumen nombrado de
+  prod; el `compose.yaml` de la raíz no declara volumen, así que para probar algo en
+  dev hay que insertar la empresa a mano:
+  `insert into company (id, ats, slug) values (nextval('company_seq'), 'GREENHOUSE', 'figma');`
+- **El endpoint de vacantes no tiene tope de tamaño.** Una empresa de 700 vacantes con
+  `content=true` son varios MB en una sola respuesta que se parsea entera en memoria.
+  Con las medidas de hoy entra, pero nadie midió el peor caso.
 - `pom.xml` tiene la metadata (`name`, `description`, `url`, `licenses`,
   `developers`, `scm`) vacía, tal como la dejó el Initializr.
 - En la máquina de Elias, `docker-rootless-extras` quedó en 29.8.0 y `docker` en
@@ -661,10 +922,13 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Qué sigue
 
-El paso 2 está planificado en **[`docs/PLAN-VACANTES.md`](PLAN-VACANTES.md)**:
-modelar la vacante y persistir las de las empresas `ACTIVE`. Va en dos tramos —**2a**
-deja el modelo y la carga de una empresa por slug, **2b** el recorrido completo— y
-las decisiones de diseño ya están tomadas y anotadas ahí.
+Dos cosas, en orden, las dos en **[`docs/PLAN-VACANTES.md`](PLAN-VACANTES.md)**:
+
+1. **Cerrar 2b probándolo a mano.** El código está; falta la corrida real, estimada en 1 a
+   2 horas y del orden de 250.000 vacantes. El guion está en el plan.
+2. **El paso 2c: desplegar en un servidor por SSH.** Es un pedido de Elias y va a ser una
+   guía de despliegue. El motivo es que esto ya son procesos constantes, y a futuro
+   corriendo en paralelo con más ATS y con la normalización de las vacantes.
 
 Más allá de eso, sin priorizar y sin planificar:
 

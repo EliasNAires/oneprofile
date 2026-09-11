@@ -12,13 +12,15 @@
 > repetida y te arriesga a trabajar sobre el resumen en vez de sobre la fuente de
 > verdad.
 
-Este archivo cuenta qué es el sistema y cómo correrlo. Cada uno de los dos procesos
+Este archivo cuenta qué es el sistema y cómo correrlo. Cada uno de los tres procesos
 tiene el suyo:
 
 - [**Cómo se descubren las empresas**](descubrimiento.md) — de dónde sale la lista de
   empresas y cómo se saca el slug de cada URL.
 - [**Cómo se categoriza cada empresa**](sondeo.md) — cómo se separa lo que sigue vivo
   de lo que no, y quién tiene vacantes abiertas.
+- [**Cómo se traen las vacantes**](vacantes.md) — qué pide la API, las dos trampas del
+  JSON, y qué se guarda de cada vacante.
 
 ---
 
@@ -27,15 +29,22 @@ tiene el suyo:
 El objetivo final es armar **una buena lista de vacantes laborales que matcheen con
 el perfil del usuario**.
 
-Hoy están construidas las dos primeras piezas:
+Hoy están construidas las tres piezas:
 
 1. **Descubrir qué empresas usan Greenhouse.**
 2. **Sondear el board de cada una** para saber cuáles siguen vivas y cuáles tienen
    vacantes publicadas hoy.
+3. **Traer las vacantes**, de una empresa o de las ~3.000 activas de una pasada, y borrar
+   las que dejaron de estar publicadas.
 
-Todavía **no hay vacantes guardadas**, ni perfiles, ni matching. De cada empresa se
-sabe su identificador corto, si su board existe, cuántas búsquedas tiene abiertas y
-cómo se llama.
+Con una salvedad: **el recorrido completo de vacantes todavía no se corrió de verdad.**
+Está escrito y con tests, pero la corrida real —una o dos horas, del orden de 250.000
+vacantes— está pendiente, así que por ahora en la base solo hay las vacantes de las
+empresas que se pidieron de a una.
+
+Todavía no hay perfiles ni matching. De cada empresa se sabe su identificador corto,
+si su board existe, cuántas búsquedas tiene abiertas y cómo se llama; y de las
+empresas que se hayan pedido, sus vacantes con descripción y sueldo.
 
 ## La idea de fondo
 
@@ -68,8 +77,8 @@ distintas. Por eso acá una empresa se identifica por el **par (ATS, slug)**.
 
 ![Panorama de componentes](diagramas/panorama.svg)
 
-Son dos columnas casi paralelas —un proceso cada una— que se juntan abajo, en la
-misma tabla. Cada clase tiene un trabajo bien chico:
+Son tres caminos casi paralelos —un proceso cada uno— que se juntan abajo, en la misma
+base. Cada clase tiene un trabajo bien chico:
 
 Del **descubrimiento**:
 
@@ -89,7 +98,32 @@ Del **sondeo**:
   contestó cada board.
 - **`GreenhouseBoardClient`** — el que le habla a la API de Greenhouse.
 
-Y **`CompanyRepository`**, que es de los dos: habla con Postgres.
+De las **vacantes**:
+
+- **`VacancyController`** — el único que atiende dos pedidos distintos: una empresa suelta
+  y todas juntas. Contestan diferente a propósito. La empresa suelta tarda un segundo, así
+  que la respuesta trae ya la cuenta de lo que cargó; la corrida completa tarda horas, así
+  que contesta "ya arranqué" como los otros dos procesos.
+- **`GreenhouseVacancySyncService`** — pide el board de una empresa y decide, vacante
+  por vacante, si es nueva, si ya la tenía guardada, o si dejó de estar y hay que borrarla.
+- **`GreenhouseVacancySweepService`** — el que repite eso para las ~3.000 activas, con una
+  pausa entre empresa y empresa.
+- **`HtmlToText`** — desarma el HTML de la descripción hasta dejar texto que una
+  persona pueda leer. Texto que entra, texto que sale: nada más.
+
+Que el recorrido sea una clase aparte y no un método más del anterior tiene una razón
+concreta, y es de las cosas que uno descubre a los golpes: **Spring abre una transacción
+con la base cuando entrás a un objeto desde afuera, no cuando un objeto se llama a sí
+mismo.** Si el recorrido viviera adentro del mismo servicio, las dos horas de corrida
+quedarían sin esa red de contención por empresa.
+
+El `GreenhouseBoardClient` **es el mismo para el sondeo y para las vacantes**, con dos
+usos distintos: el sondeo pide el board pelado y solo mira cuántas vacantes hay, y este
+proceso lo pide con la descripción y el sueldo. Es el mismo servicio ajeno con las
+mismas mañas, así que sería raro tener dos clases para hablarle.
+
+Y los dos repositorios, **`CompanyRepository`** y **`VacancyRepository`**, que son los
+que hablan con Postgres.
 
 Que los dos clientes que salen a internet estén en clases separadas no es capricho.
 Son dos servicios ajenos con mañas distintas: el índice de CommonCrawl manda
@@ -100,7 +134,7 @@ y usa el `404` para decirte algo. Mezclarlos sería meter dos problemas en una c
 
 ![Modelo de datos](diagramas/modelo-de-datos.svg)
 
-Sigue siendo **una sola tabla**. La mitad de arriba es lo que deja el
+Ahora son **dos tablas**. En `company`, la mitad de arriba es lo que deja el
 descubrimiento —qué ATS y qué slug—; la de abajo, lo que deja el sondeo: el nombre,
 en qué estado está el board y cuándo se lo sondeó por última vez.
 
@@ -111,6 +145,18 @@ descubrimiento arrancaron así.
 La fecha del último sondeo todavía no la usa nadie. Está para cuando esto corra solo:
 con ella se puede pedir "volvé a sondear lo que no se toca hace una semana" en vez de
 repasar las 4.000 cada vez.
+
+En `vacancy` hay dos cosas que vale la pena mirar. La primera: **la vacante sabe de qué
+empresa es, pero la empresa no tiene la lista de sus vacantes.** Parece una asimetría
+molesta y es a propósito: una empresa grande tiene cientos de búsquedas, y una lista así
+colgada de la empresa se convierte en una trampa —cada vez que tocás una empresa te
+arrastra todo lo demás—.
+
+La segunda: además del id propio, cada vacante guarda el **id que le puso Greenhouse**.
+Sirve para reconocerla la próxima vez que se pida el mismo board y decidir si hay que
+actualizarla o insertarla. Ese id **no es único en el mundo, solo dentro de su board** —
+la misma historia que el slug—, así que lo que no se puede repetir es el par
+(empresa, id de Greenhouse).
 
 `Ats` y `BoardStatus` son enums de Java y no tablas. La razón: son listas cerradas
 que define el código, no algo que cargue un usuario. Sumar un ATS obliga igual a
@@ -156,11 +202,28 @@ docker compose exec app curl -i -X POST \
   'localhost:8080/admin/probe/greenhouse'
 
 docker compose logs -f app    # acá se ve cómo terminan
+
+# 3a. traer las vacantes de una empresa (un segundo)
+docker compose exec app curl -i -X POST \
+  'localhost:8080/admin/vacancies/greenhouse/figma'
+
+# 3b. o las de todas las empresas activas (una o dos horas)
+docker compose exec app curl -i -X POST \
+  'localhost:8080/admin/vacancies/greenhouse'
 ```
 
-Los dos te contestan `202` al instante y siguen trabajando por atrás. Si disparás uno
-que ya está corriendo, te contesta `409` y no hace nada: dos corridas a la vez se
-pelearían por las mismas empresas.
+**Todos te contestan `202` al instante y siguen trabajando por atrás**, menos el de una
+empresa sola. El resultado se ve en el log. Si disparás uno que ya está corriendo, te
+contesta `409` y no hace nada: dos corridas a la vez se pelearían por las mismas empresas.
+
+**El de una empresa es la excepción:** contesta en la misma respuesta, con la cuenta de lo
+que cargó (`{"fetched":153,"inserted":153,"updated":0,"deleted":0}`), porque tarda un
+segundo y ahí esperar es lo más cómodo. Está explicado en
+[cómo se traen las vacantes](vacantes.md), junto con el detalle incómodo de que en
+desarrollo la base arranca vacía.
+
+**Y el orden de arriba es el orden real**, no una sugerencia: el recorrido de vacantes
+solo le pregunta a las empresas que el sondeo dejó marcadas como activas.
 
 Para ver el resultado del sondeo, en la base:
 
@@ -179,8 +242,13 @@ crawl nuevo suma empresas que los anteriores no habían visto.
 
 ## Qué sigue
 
-Lo próximo es **traer las vacantes de verdad** de las ~3.000 empresas activas y
-guardarlas. Ahí aparece el problema interesante: los títulos son texto libre, escrito
-por cada empresa a su manera, y para que el matching sirva hay que hacer que
+Lo próximo son dos cosas. **Correr la carga completa de vacantes de verdad** —una o dos
+horas, del orden de 250.000— y después **sacar esto de la máquina de Elias y ponerlo en un
+servidor**. Eso último es porque ya no son experimentos sueltos: son procesos que tienen
+que correr seguido, y más adelante en paralelo, con más ATS y con el trabajo de ordenar
+los títulos.
+
+Y ahí aparece el problema interesante: los títulos son texto libre, escrito por cada
+empresa a su manera, y para que el matching sirva hay que hacer que
 "Sr. Backend Engineer", "Backend Developer Senior" y "SWE II - Backend" se reconozcan
 como el mismo tipo de puesto. Eso todavía no está resuelto ni decidido.

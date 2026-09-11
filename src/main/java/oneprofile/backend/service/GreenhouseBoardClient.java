@@ -4,9 +4,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.http.HttpClient;
 import java.time.Duration;
+import java.time.Instant;
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 
 import oneprofile.backend.model.BoardStatus;
+import oneprofile.backend.util.HtmlToText;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tools.jackson.databind.JsonNode;
@@ -34,10 +39,21 @@ public class GreenhouseBoardClient {
 
 	private static final String BOARD_JOBS_URL = "https://boards-api.greenhouse.io/v1/boards/{slug}/jobs";
 
+	/**
+	 * The same endpoint asked for everything worth keeping: {@code content} is the only
+	 * place with the real requirements, and {@code pay_transparency} is what turns the
+	 * salary into numbers instead of a sentence buried in the description.
+	 */
+	private static final String BOARD_JOBS_WITH_CONTENT_URL = BOARD_JOBS_URL
+			+ "?content=true&pay_transparency=true";
+
 	private static final Duration CONNECT_TIMEOUT = Duration.ofSeconds(10);
 
-	/** A large board is a few hundred KB in a single response. */
-	private static final Duration READ_TIMEOUT = Duration.ofSeconds(30);
+	/**
+	 * A probe is a few hundred KB, but asking for the content multiplies that by ten or
+	 * more: the largest boards answer several MB in a single response.
+	 */
+	private static final Duration READ_TIMEOUT = Duration.ofSeconds(120);
 
 	private static final int MAX_ATTEMPTS = 3;
 
@@ -76,6 +92,56 @@ public class GreenhouseBoardClient {
 					}
 					return read(response.getBody());
 				}));
+	}
+
+	/**
+	 * Brings every opening of a board with its description already turned into plain
+	 * text. There is no pagination: this is one response with the whole board.
+	 */
+	public List<BoardJob> jobs(String slug) {
+		return withRetries("the openings of " + slug, () -> this.restClient.get()
+				.uri(BOARD_JOBS_WITH_CONTENT_URL, slug)
+				.exchange((request, response) -> {
+					HttpStatusCode status = response.getStatusCode();
+					if (status.isError()) {
+						throw errorFor(status, response.getStatusText());
+					}
+					return readJobs(response.getBody());
+				}));
+	}
+
+	private List<BoardJob> readJobs(InputStream body) throws IOException {
+		JsonNode jobs = this.json.readTree(body).path("jobs");
+		List<BoardJob> parsed = new ArrayList<>(jobs.size());
+		for (JsonNode job : jobs) {
+			parsed.add(toJob(job));
+		}
+		return parsed;
+	}
+
+	private static BoardJob toJob(JsonNode job) {
+		// Always exactly one range when the board publishes any.
+		JsonNode pay = job.path("pay_input_ranges").path(0);
+		return new BoardJob(job.path("id").asLong(), text(job.path("title")), text(job.path("location").path("name")),
+				text(job.path("departments").path(0).path("name")),
+				HtmlToText.plainText(text(job.path("content"))), text(job.path("absolute_url")),
+				text(job.path("language")), number(pay.path("min_cents")), number(pay.path("max_cents")),
+				text(pay.path("currency_type")), text(pay.path("title")), timestamp(job.path("first_published")),
+				timestamp(job.path("updated_at")));
+	}
+
+	private static String text(JsonNode node) {
+		return node.isTextual() ? node.asString() : null;
+	}
+
+	private static Long number(JsonNode node) {
+		return node.isNumber() ? node.asLong() : null;
+	}
+
+	/** The board writes its timestamps with an offset, which the instant drops. */
+	private static Instant timestamp(JsonNode node) {
+		String value = text(node);
+		return value == null ? null : OffsetDateTime.parse(value).toInstant();
 	}
 
 	private BoardProbe read(InputStream body) throws IOException {
@@ -137,5 +203,11 @@ public class GreenhouseBoardClient {
 
 	/** The readable name is only there when the board had at least one opening. */
 	public record BoardProbe(BoardStatus status, int jobCount, String companyName) {
+	}
+
+	/** One opening as the board tells it. The four pay fields are null together. */
+	public record BoardJob(long externalId, String title, String location, String department, String description,
+			String url, String language, Long payMinCents, Long payMaxCents, String payCurrency, String payTitle,
+			Instant firstPublished, Instant updatedAt) {
 	}
 }

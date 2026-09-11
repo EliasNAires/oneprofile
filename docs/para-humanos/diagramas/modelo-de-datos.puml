@@ -1,6 +1,6 @@
 @startuml modelo-de-datos
 !theme plain
-title Que se guarda\nLas clases de Java, y la tabla que hay abajo
+title Que se guarda\nLas clases de Java, y las tablas que hay abajo
 
 skinparam shadowing false
 skinparam nodesep 20
@@ -19,6 +19,27 @@ package "En Java" {
     lastProbedAt : Instant
   }
 
+  class Vacancy {
+    id : Long
+    company : Company
+    externalId : Long
+    .. el puesto ..
+    title : String
+    description : String
+    location : String
+    department : String
+    url : String
+    language : String
+    .. la plata ..
+    payMinCents : Long
+    payMaxCents : Long
+    payCurrency : String
+    payTitle : String
+    .. fechas ..
+    firstPublished : Instant
+    updatedAt : Instant
+  }
+
   enum Ats {
     GREENHOUSE
   }
@@ -31,11 +52,12 @@ package "En Java" {
 
   Company --> Ats
   Company --> BoardStatus
+  Vacancy --> Company : sabe de que empresa es.\nLa empresa NO tiene\nla lista de sus vacantes.
 }
 
 package "En Postgres" {
 
-  entity "company" as t {
+  entity "company" as tc {
     id : bigint  <<PK>>
     --
     ats : varchar
@@ -48,11 +70,36 @@ package "En Postgres" {
     **unique (ats, slug)**
   }
 
-  entity "company_seq" as s {
-    da los id de a 50 por vez
+  entity "vacancy" as tv {
+    id : bigint  <<PK>>
+    --
+    company_id : bigint  <<FK>>
+    external_id : bigint
+    --
+    title : varchar
+    description : text
+    location : text
+    department : varchar
+    url : text
+    language : varchar
+    --
+    pay_min_cents : bigint
+    pay_max_cents : bigint
+    pay_currency : varchar
+    pay_title : varchar
+    --
+    first_published : timestamptz
+    updated_at : timestamptz
+    --
+    **unique (company_id, external_id)**
   }
+
+  entity "company_seq / vacancy_seq" as s {
+    dan los id de a 50 por vez
+  }
+
 }
 
-Company ..> t : Flyway crea y modifica la tabla.\nAl arrancar, Hibernate\ncompara y falla si no coinciden.
+Company ..> tc : Flyway crea y modifica las tablas.\nAl arrancar, Hibernate\ncompara y falla si no coinciden.
 
 @enduml
