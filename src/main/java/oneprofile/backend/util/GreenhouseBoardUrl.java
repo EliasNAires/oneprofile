@@ -1,5 +1,6 @@
 package oneprofile.backend.util;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,7 +20,14 @@ public final class GreenhouseBoardUrl {
 
 	private static final Pattern SLUG = Pattern.compile("[A-Za-z0-9_-]+");
 
+	/** Both board domains as CommonCrawl index prefixes. */
+	private static final List<String> INDEX_PATTERNS = List.of("boards.greenhouse.io/", "job-boards.greenhouse.io/");
+
 	private GreenhouseBoardUrl() {
+	}
+
+	public static List<String> indexPatterns() {
+		return INDEX_PATTERNS;
 	}
 
 	public static Optional<String> slugFrom(String url) {

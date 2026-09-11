@@ -4,38 +4,32 @@
 > Describe lo que **hay hoy**, no lo que se planea.
 
 **Última actualización:** 2026-09-11
-**Último milestone:** Paso 6 — `GreenhouseBoardUrl.slugFrom` extrae el slug de una
-URL de board de Greenhouse, y `CompanyRepository.findSlugsByAts` devuelve los slugs
-ya guardados de un ATS. Las dos piezas que el paso 7 necesita, sin red. Probado a
-mano por Elias.
+**Último milestone:** Paso 7 — el descubrimiento anda de punta a punta. Un POST al
+endpoint consulta el índice de CommonCrawl, extrae los slugs de Greenhouse y los
+guarda. Probado a mano por Elias en prod: **4.046 empresas cargadas** desde
+`CC-MAIN-2026-34`. Con eso **terminó el plan de descubrimiento**, y
+`docs/PLAN-DESCUBRIMIENTO.md` se borró.
 
-> **Hay un plan en curso, aprobado y a medio ejecutar:** `docs/PLAN-DESCUBRIMIENTO.md`.
-> Le queda el **Paso 7** (cliente de CommonCrawl, servicio de descubrimiento y
-> endpoint). **El próximo paso es el 7.** Ese archivo se borra cuando el plan
-> termine.
-
-> **En esta misma sesión se reorganizaron los paquetes a MVC** (capa técnica), lo
-> que derogó la convención anterior de organizar por feature. El detalle está más
-> abajo y en el registro de `docs/METODOLOGIA.md`.
+**No hay ningún plan en curso.** El próximo paso se decide de cero; hay candidatos
+al final de este documento.
 
 ## Qué es esto
 
 Backend de `oneprofile`. El objetivo final es producir una buena lista de
 vacantes laborales que matcheen con el perfil del usuario.
 
-## El plan general (decidido, todavía no implementado)
+## El plan general
 
 Para tener vacantes hace falta primero saber **qué empresas usan cada ATS**. Eso
 se resuelve con un proceso de descubrimiento sobre **CommonCrawl**: se le pide al
 índice todas las URLs que matcheen el patrón de board de un ATS
 (`boards.greenhouse.io/*`) y de cada URL se extrae el identificador de la
 empresa. Con ese identificador se le pega después a la API del ATS para traer las
-vacantes.
+vacantes. **Para Greenhouse esto ya está hecho y funcionando** (ver más abajo).
 
-Como el descubrimiento es caro y el índice tiene límites de consulta, la idea es
-correrlo **una sola vez por ATS** y guardar el resultado en la base. Por eso el
-script vive en este mismo repo (en Java, contra el esquema JPA) y no en archivos
-sueltos.
+Como el descubrimiento es caro y el índice tiene límites de consulta, se corre a
+mano cuando hace falta y el resultado queda en la base. Por eso vive en este mismo
+repo (en Java, contra el esquema JPA) y no en archivos sueltos.
 
 Hechos que condicionan el diseño y conviene no olvidar:
 
@@ -128,11 +122,16 @@ Spring Boot no cubre.
 spring.application.name=backend
 spring.profiles.default=dev
 spring.jpa.hibernate.ddl-auto=validate
+spring.jpa.properties.hibernate.jdbc.batch_size=50
 ```
 
 `ddl-auto=validate` está porque el esquema ahora lo genera Flyway y no Hibernate:
 `validate` no toca la base, solo compara las entidades contra las tablas reales y
 **falla al arrancar** si alguien cambió una entidad y se olvidó la migración.
+
+`batch_size=50` está por el descubrimiento, que inserta miles de empresas de una.
+El 50 no es un número al azar: es el mismo `increment by 50` de `company_seq`, así
+que cada lote de inserts se corresponde con un `nextval`.
 
 `src/main/resources/application-dev.properties` — **vacío**. Con `compose.yaml` en
 la raíz, `spring-boot-docker-compose` levanta el Postgres y deriva el datasource
@@ -187,6 +186,9 @@ por convención.
   de docker-compose queda inerte en prod sin desactivarlo por configuración.
   Los tests se saltean **porque usan Testcontainers**, que necesitaría un Docker
   disponible dentro del stage de build; se corren aparte con `./mvnw test`.
+  La imagen de runtime instala **`curl`** por `apt-get`: es la única forma de
+  pegarle al endpoint de descubrimiento, porque el puerto de la app no se publica
+  y hay que entrar con `docker compose exec app`.
 - **`prod/compose.yaml`** — `name: oneprofile-prod`, servicio `postgres` con
   volumen nombrado y servicio `app` con `build: context: ..` (el Dockerfile vive
   en la raíz) y `SPRING_PROFILES_ACTIVE=prod`. **Ningún puerto publicado**, ni el
@@ -217,12 +219,14 @@ prod/compose.yaml
 prod/.env.example
 docs/METODOLOGIA.md
 docs/CONTEXTO.md
-docs/PLAN-DESCUBRIMIENTO.md                        (plan en curso)
 pom.xml
 src/main/java/oneprofile/backend/BackendApplication.java
 src/main/java/oneprofile/backend/model/Ats.java
 src/main/java/oneprofile/backend/model/Company.java
 src/main/java/oneprofile/backend/repository/CompanyRepository.java
+src/main/java/oneprofile/backend/service/CommonCrawlIndexClient.java
+src/main/java/oneprofile/backend/service/GreenhouseDiscoveryService.java
+src/main/java/oneprofile/backend/controller/DiscoveryController.java
 src/main/java/oneprofile/backend/util/GreenhouseBoardUrl.java
 src/main/resources/application.properties
 src/main/resources/application-dev.properties       (vacío)
@@ -231,6 +235,9 @@ src/main/resources/db/migration/V1__create_company.sql
 src/test/java/oneprofile/backend/BackendApplicationTests.java
 src/test/java/oneprofile/backend/TestcontainersConfiguration.java
 src/test/java/oneprofile/backend/repository/CompanyRepositoryTest.java
+src/test/java/oneprofile/backend/service/CommonCrawlIndexClientTest.java
+src/test/java/oneprofile/backend/service/GreenhouseDiscoveryServiceTest.java
+src/test/java/oneprofile/backend/controller/DiscoveryControllerTest.java
 src/test/java/oneprofile/backend/util/GreenhouseBoardUrlTest.java
 src/test/resources/application.properties
 ```
@@ -238,9 +245,13 @@ src/test/resources/application.properties
 ### Organización de los paquetes
 
 El código se organiza **por capa técnica**, no por feature: `model`, `repository`,
-`service`, `controller` y `util` cuelgan directo de `oneprofile.backend`. Hoy
-existen `model`, `repository` y `util`; `service` y `controller` todavía no,
-porque no tienen ninguna clase.
+`service`, `controller` y `util` cuelgan directo de `oneprofile.backend`. Ya
+existen las cinco.
+
+`util` quedó reservado para **funciones puras sin dependencias** —hoy solo
+`GreenhouseBoardUrl`—. Un componente que hace I/O va a la capa que le corresponde,
+aunque sea un colaborador y no lógica de negocio: por eso `CommonCrawlIndexClient`
+está en `service` y no en `util`.
 
 ### La clase `GreenhouseBoardUrl` (paquete `util`)
 
@@ -258,10 +269,10 @@ parámetro `for` de la query. El candidato se valida contra `[A-Za-z0-9_-]+`.
 Tres decisiones que no son obvias leyendo el código:
 
 - **Solo `https`.** Decisión explícita de Elias: los boards de Greenhouse hoy son
-  https y aceptar http agrega ruido. Ojo, la consulta al CDX de CommonCrawl es
-  **agnóstica al esquema** (normaliza a SURT), así que pueden llegar capturas
-  `http://` y se van a **descartar en silencio**. Si el paso 7 encuentra menos
-  empresas de las esperadas, éste es uno de los lugares donde mirar.
+  https y aceptar http agrega ruido. Quedaba la duda de si el CDX, que es agnóstico
+  al esquema, traería capturas `http://` que se descartarían en silencio.
+  **Ya se midió y no cuesta nada:** de las 76.765 capturas de `CC-MAIN-2026-34`,
+  **las 76.765 son https**. La duda está cerrada.
 - **Las URLs de iframe embebido sí cuentan.** `boards.greenhouse.io/embed/job_board?for=X`
   y `/embed/job_app?for=X&token=...` son una porción grande de las capturas —son
   el board metido en la página de carreras propia de la empresa— y su `for=` es el
@@ -269,6 +280,69 @@ Tres decisiones que no son obvias leyendo el código:
 - **La validación `[A-Za-z0-9_-]+` es la que descarta la basura**, sin listas
   negras: rechaza el vacío (host pelado) y cualquier cosa con punto
   (`robots.txt`, `favicon.ico`), porque un slug nunca lleva punto.
+
+### El descubrimiento: cliente, servicio y endpoint
+
+Tres clases encadenadas que van del índice de CommonCrawl a filas en `company`.
+
+**`service/CommonCrawlIndexClient`** habla con el índice (CDX). Su único método es
+`forEachUrl(indexId, pattern, onUrl)`: pide primero `showNumPages=true` para saber
+cuántas páginas hay y después recorre `page=0..N-1`, entregando cada URL a medida
+que la lee. Detalles que importan:
+
+- **Lee línea por línea** desde el `InputStream` de la respuesta, con `.exchange()`.
+  No es una optimización opcional: una página son ~9 MB y ~12.000 líneas.
+- **Reintenta con backoff** —hasta 4 intentos, esperando 2s, 4s y 8s— ante 5xx o
+  error de red, y deja un `WARN` en cada reintento. El índice se satura y contesta
+  504 de a ratos; sin esto, un solo 504 tira abajo una corrida de siete requests.
+  **Un 4xx no se reintenta**: ahí el índice dice que la request está mal (índice
+  inexistente, patrón sin capturas) y repetirla no cambia nada.
+- **Timeouts explícitos** (10 s de connect, 2 min de read) para que una corrida
+  colgada muera con excepción en vez de esperar para siempre.
+- El patrón viaja **percent-encodeado** en la query (`boards.greenhouse.io%2F`) y
+  el índice lo decodifica sin problema. Está verificado contra el servicio real.
+- Tiene dos constructores: el público sin argumentos que usa Spring, y uno de
+  paquete que recibe el `RestClient.Builder` y el delay del primer reintento. Ese
+  segundo existe para el test: permite bindearle `MockRestServiceServer` y poner el
+  delay en cero.
+
+**`service/GreenhouseDiscoveryService.discover(indexId)`** vuelca los dos patrones
+de `GreenhouseBoardUrl.indexPatterns()` en **un único `Set<String>`** (eso deduplica
+las capturas repetidas y unifica los dos dominios), le resta lo que devuelve
+`findSlugsByAts(GREENHOUSE)` y hace `saveAll` de los nuevos. Devuelve
+`DiscoveryResult(slugsFound, newCompanies)`. Es **`@Transactional`**: sin eso cada
+empresa se insertaría en su propia transacción, que son miles de round trips.
+
+**`controller/DiscoveryController`** expone
+`POST /admin/discovery/greenhouse?index=<id>`. El parámetro `index` es
+**obligatorio a propósito**: un default hardcodeado envejecería solo y en silencio.
+Contesta **202 al toque** y el trabajo corre en un executor de un solo hilo; un
+`AtomicBoolean` da **409** si ya hay una corrida en curso. **El log es el único
+canal de resultado**: el índice al arrancar, los números al terminar, y la
+excepción si falla.
+
+### Cómo se corre el descubrimiento
+
+El puerto de la app no se publica, así que se entra al container:
+
+```bash
+cd prod
+docker compose up --build -d
+docker compose exec app curl -i -X POST \
+  'localhost:8080/admin/discovery/greenhouse?index=CC-MAIN-2026-34'
+docker compose logs -f app
+```
+
+Los índices disponibles salen de `https://index.commoncrawl.org/collinfo.json`.
+**No todos los ids existen**: la numeración salta (`CC-MAIN-2026-26` no está), así
+que hay que sacarlos de ahí y no inventarlos.
+
+**Correrlo con varios índices es la forma de tener más empresas, y no necesita
+código nuevo**: `discover` ya resta lo que está guardado, así que repetir el POST
+cambiando el `index` solo agrega lo que ese crawl vio de más. Medido sobre los dos
+últimos: agosto da 4.046 empresas, julio da 4.348, pero **solo 3.079 se repiten**;
+julio suma **1.269 nuevas** y la unión de los dos da **5.315**. O sea que cada
+índice extra aporta del orden de un 25-30% más.
 
 ### Las clases de company
 
@@ -325,9 +399,10 @@ Hibernate 6/7 espera para `@GeneratedValue`, y si no coincide `validate` falla.
 
 ## Estado verificado
 
-- `./mvnw test` → **16 tests, 0 fallas**: `BackendApplicationTests.contextLoads`,
-  los 3 de `CompanyRepositoryTest` y los 12 casos parametrizados de
-  `GreenhouseBoardUrlTest`. Las dos primeras clases importan
+- `./mvnw test` → **28 tests, 0 fallas**: `BackendApplicationTests.contextLoads`,
+  3 de `CompanyRepositoryTest`, 12 casos parametrizados de `GreenhouseBoardUrlTest`,
+  6 de `CommonCrawlIndexClientTest`, 4 de `GreenhouseDiscoveryServiceTest` y 2 de
+  `DiscoveryControllerTest`. Las dos primeras clases importan
   `TestcontainersConfiguration`, que declara un `PostgreSQLContainer` como
   `@Bean @ServiceConnection`; `CompanyRepositoryTest` lleva además
   `@AutoConfigureTestDatabase(replace = NONE)`, porque sin base embebida en el
@@ -350,6 +425,26 @@ Hibernate 6/7 espera para `@GeneratedValue`, y si no coincide `validate` falla.
      **Limitación conocida:** hoy no se puede probar que el método *filtra* por
      ATS, porque `Ats` tiene un solo valor y agregar uno falso sería meter algo
      que nadie pidió. Esa assertion se suma cuando entre el segundo ATS.
+- **`CommonCrawlIndexClientTest`** usa `MockRestServiceServer`, así que verifica
+  comportamiento real sin tocar la red: recorre las dos páginas que el índice dice
+  tener, no pide ninguna si dice cero, saltea líneas vacías o sin `url`, se recupera
+  de un 504 y de un 503, se rinde después del cuarto intento, y ante un 404 falla al
+  toque **sin reintentar**.
+- **`GreenhouseDiscoveryServiceTest`** es `@DataJpaTest` con un doble del cliente
+  escrito a mano (una subclase que devuelve URLs de mentira): guarda una sola empresa
+  por slug por más capturas que tenga, trata los dos dominios como la misma empresa,
+  no reinserta las que ya estaban, e ignora las URLs que no identifican a ninguna.
+- **`DiscoveryControllerTest`** es `@WebMvcTest`: 202 y delegación en el servicio, y
+  409 cuando ya hay una corrida en curso. El doble del servicio se bloquea en un
+  `CountDownLatch` para que la segunda request llegue con la primera todavía viva.
+- **Ningún test le pega a CommonCrawl de verdad.**
+- **El descubrimiento anda de punta a punta en prod.** Un POST con
+  `index=CC-MAIN-2026-34` devolvió 202 al toque y terminó con
+  `4046 slugs found, 4046 new companies saved`. Probado a mano por Elias.
+  Ese número **se verificó aparte**, bajando las 7 páginas del índice y corriendo
+  las mismas reglas fuera de la app: 76.765 capturas → exactamente 4.046 slugs
+  distintos. La app no está perdiendo nada; 4.046 es lo que ese crawl contiene.
+  Solo 229 de las 76.765 URLs no dan slug, y son las que corresponde descartar.
 - `GreenhouseBoardUrlTest` no levanta contexto de Spring y corre en ~40 ms. Son dos
   `@ParameterizedTest`: 7 URLs que devuelven slug (path extra, query string, los
   dos dominios, `www.`, y las dos formas de `embed`) y 5 que devuelven vacío
@@ -362,15 +457,36 @@ Hibernate 6/7 espera para `@GeneratedValue`, y si no coincide `validate` falla.
 
 ## Qué NO existe todavía
 
-- **El script de descubrimiento sobre CommonCrawl**: no hay cliente del índice,
-  ni servicio, ni endpoint. Lo único que existe del paso 6 es `GreenhouseBoardUrl`.
-- Ningún cliente de API de ATS, ninguna vacante, ninguna lógica de matching.
-- Ningún servicio ni endpoint HTTP propio.
-- Ninguna forma de cargar empresas: la tabla `company` existe pero arranca vacía.
+- Ningún cliente de la API de Greenhouse: de las empresas se sabe el slug y nada
+  más. `Company` sigue sin campo `name`.
+- Ninguna vacante, ningún perfil de usuario, ninguna lógica de matching.
+- Ningún endpoint que devuelva datos: el único que hay dispara el descubrimiento.
+- Ningún ATS además de Greenhouse.
 
 ## Puntos abiertos
 
+- **El endpoint de descubrimiento no tiene ninguna protección.** Hoy no importa
+  porque el puerto de la app no se publica, pero cuando exista el endpoint de
+  vacantes habrá que publicarlo y ahí éste queda expuesto. Se decide en ese momento.
+- **Una respuesta truncada del índice se aceptaría en silencio.** Bajando páginas a
+  mano pasó tres veces que el índice cerró la conexión limpio con un cuerpo corto
+  (256 KB o 560 KB en vez de ~9 MB) y HTTP 200. El cliente leería esas líneas, no
+  vería ningún error y reportaría menos empresas sin avisar. Los reintentos no
+  ayudan, porque el status es 200. En la corrida real no pasó —el conteo dio
+  exactamente el mismo número que el cálculo offline completo— pero el agujero está.
 - `pom.xml` tiene la metadata (`name`, `description`, `url`, `licenses`,
   `developers`, `scm`) vacía, tal como la dejó el Initializr.
 - En la máquina de Elias, `docker-rootless-extras` quedó en 29.8.0 y `docker` en
   29.7.2 (actualización parcial). Funciona; se empareja en el próximo `pacman -Syu`.
+
+## Candidatos para el próximo paso (sin priorizar)
+
+- Correr el descubrimiento con más índices de CommonCrawl para engordar la tabla.
+  No necesita código: es repetir el POST cambiando el `index`.
+- Cliente de la API de Greenhouse (`boards-api.greenhouse.io/v1/boards/<slug>/jobs`),
+  que es donde aparece el nombre legible de la empresa y las vacantes. Agregar
+  `name` a `Company` con su migración `V2`.
+- Modelar la vacante (`vacancy`), con relación unidireccional `Vacancy → Company`.
+- Modelar el perfil del usuario (`profile`).
+- Primer algoritmo de matching, simple, con tests sobre casos concretos.
+- Endpoint HTTP para consultar las vacantes que matchean.
