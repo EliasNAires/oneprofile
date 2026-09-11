@@ -4,8 +4,14 @@
 > Describe lo que **hay hoy**, no lo que se planea.
 
 **Última actualización:** 2026-09-11
-**Último milestone:** Paso 3 — entidad `Company` con su enum `Ats`, repositorio y
-tests de persistencia. `./mvnw test` en verde con 3 tests.
+**Último milestone:** Paso 4 — se voló H2; la app corre sobre PostgreSQL real
+(container levantado por `spring-boot-docker-compose` en dev, Testcontainers en
+tests) y el esquema lo maneja **Flyway**. `./mvnw test` en verde con 3 tests.
+
+> **Hay un plan en curso, aprobado y a medio ejecutar:** `docs/PLAN-DESCUBRIMIENTO.md`.
+> Contiene los **Pasos 5, 6 y 7** (prod con `docker-compose up`, extracción de
+> slugs, y el script de descubrimiento sobre CommonCrawl con su endpoint).
+> **El próximo paso es el 5.** Ese archivo se borra cuando el plan termine.
 
 ## Qué es esto
 
@@ -34,13 +40,15 @@ Hechos que condicionan el diseño y conviene no olvidar:
   boards embeben en el HTML, y es opcional. Consecuencia: hace falta **un cliente
   por ATS** que mapee a un modelo canónico propio.
 - **La ubicación viene como texto libre** en Greenhouse y Lever
-  (`"Buenos Aires, Argentina"`, `"Remote - LATAM"`, `"Remote - Americas"`). No hay
-  campo `country` confiable, así que filtrar por Argentina es una heurística sobre
-  strings.
+  (`"Buenos Aires, Argentina"`, `"Remote - LATAM"`). No hay campo `country`
+  confiable, así que filtrar por Argentina es una heurística sobre strings.
 - **Decisión tomada:** el descubrimiento guarda **todas** las empresas del ATS, no
   solo las que hoy tienen vacantes en Argentina. Una empresa sin vacantes AR hoy
   puede tenerlas mañana, y descartarla obligaría a volver a pegarle a CommonCrawl.
   El filtro por país es una consulta sobre las vacantes, no un descarte en la carga.
+- **Greenhouse tiene dos dominios de board** —`boards.greenhouse.io/<slug>` y
+  `job-boards.greenhouse.io/<slug>`— que son el **mismo ATS**: mismo slug y misma
+  API de vacantes. Son dos patrones de URL de `Ats.GREENHOUSE`, no dos ATS.
 
 ## Qué es un slug
 
@@ -58,79 +66,117 @@ empresa en este sistema es el par **(ats, slug)**.
 
 - Java 25, Spring Boot 4.1.1 (generado con Spring Initializr).
 - `spring-boot-starter-data-jpa`, `spring-boot-starter-webmvc`.
-- **H2** (runtime) — base de desarrollo y de tests, en memoria, autoconfigurada.
-- PostgreSQL, driver en scope `runtime` — pensado para prod, todavía sin configurar.
+- **PostgreSQL** (driver en `runtime`) — la única base, en dev, tests y prod.
+- **`spring-boot-docker-compose`** (runtime/optional) — levanta el Postgres de dev.
+- **`spring-boot-starter-flyway`** + **`flyway-database-postgresql`** — migraciones.
 - `spring-boot-devtools` (runtime/optional) — hot reload.
-- Tests: `spring-boot-starter-data-jpa-test`, `spring-boot-starter-webmvc-test`.
+- Tests: `spring-boot-starter-data-jpa-test`, `spring-boot-starter-webmvc-test`,
+  **`spring-boot-testcontainers`** y **`org.testcontainers:testcontainers-postgresql`**.
 - Build con el wrapper: `./mvnw`.
 
-**Ojo con los paquetes de test en Spring Boot 4:** se modularizaron y cambiaron de
-lugar respecto de Boot 3. Los que van son:
+**Trampas de Spring Boot 4 que ya nos costaron tiempo:**
 
-```java
-import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
-import org.springframework.boot.jpa.test.autoconfigure.TestEntityManager;
-```
+- Los paquetes de test se modularizaron respecto de Boot 3. Van
+  `org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest`,
+  `org.springframework.boot.jpa.test.autoconfigure.TestEntityManager` y
+  `org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase`
+  (en Boot 3 los dos primeros vivían en `org.springframework.boot.test.autoconfigure.orm.jpa`).
+- **`flyway-core` solo no alcanza.** La autoconfiguración de Flyway vive en el
+  módulo `spring-boot-flyway`, que `flyway-core` no arrastra: con solo
+  `flyway-core`, Flyway **no corre y no avisa**. Por eso va el starter
+  `spring-boot-starter-flyway`, que trae los dos.
+- **`flyway-database-postgresql` es obligatorio.** Sin él, Flyway falla al arrancar
+  con `Unsupported Database: PostgreSQL 18.6`. Verificado sacándolo.
+- **Testcontainers acá es 2.0.5**, que renombró los artefactos: es
+  `org.testcontainers:testcontainers-postgresql` (no `postgresql`) y la clase es
+  `org.testcontainers.postgresql.PostgreSQLContainer`.
+- No hace falta `testcontainers-junit-jupiter`: con el container declarado como
+  `@Bean @ServiceConnection`, el ciclo de vida lo maneja Spring Boot. Tampoco hace
+  falta `spring-boot-starter-flyway-test`: el starter principal ya mete Flyway en
+  el slice de `@DataJpaTest`. Las dos se probaron y se sacaron.
 
-(en Boot 3 ambos vivían en `org.springframework.boot.test.autoconfigure.orm.jpa`).
-Es la misma modularización por la que la consola de H2 pasó a su propio módulo.
+## El entorno: Docker rootless
+
+La máquina de Elias corre **Docker en modo rootless**, porque su usuario no está
+en el grupo `docker` (y el grupo `docker` equivale a root). Se configuró así:
+
+- Paquetes de Arch: `docker` + `docker-rootless-extras`. **El paquete de Arch no
+  trae el `dockerd-rootless-setuptool.sh` de upstream**: trae directamente las
+  unidades de systemd de usuario, así que el setup fue
+  `systemctl --user enable --now docker.socket` y `systemctl --user start docker.service`.
+- Contexto `rootless` apuntando a `unix:///run/user/1000/docker.sock`, seleccionado
+  con `docker context use rootless`. Linger habilitado para el usuario.
+- Sin `slirp4netns` ni `fuse-overlayfs`: usa `overlayfs` nativo del kernel.
+- Consecuencia: **las imágenes y volúmenes viven en `~/.local/share/docker`** y no
+  se comparten con ningún daemon rootful. Publicar puertos ≥1024 funciona normal.
+
+Tanto Testcontainers como `spring-boot-docker-compose` lo detectan solos.
 
 ## Configuración por perfiles
 
 La configuración se mantiene **mínima**: solo va al archivo lo que el default de
-Spring Boot no cubre. Hoy eso es una sola cosa.
+Spring Boot no cubre.
 
 `src/main/resources/application.properties` — común a todos los perfiles:
 
 ```properties
 spring.application.name=backend
 spring.profiles.default=dev
+spring.jpa.hibernate.ddl-auto=validate
 ```
 
-`src/main/resources/application-dev.properties` — **vacío**. Con H2 en el
-classpath y sin datasource declarado, Spring Boot autoconfigura solo una base
-H2 en memoria (`jdbc:h2:mem:<uuid>`), que es justo lo que queremos en dev.
+`ddl-auto=validate` está porque el esquema ahora lo genera Flyway y no Hibernate:
+`validate` no toca la base, solo compara las entidades contra las tablas reales y
+**falla al arrancar** si alguien cambió una entidad y se olvidó la migración.
 
-`src/main/resources/application-prod.properties` — **vacío**. Prod todavía no se
-usa; se completa cuando haga falta.
+`src/main/resources/application-dev.properties` — **vacío**. Con `compose.yaml` en
+la raíz, `spring-boot-docker-compose` levanta el Postgres y deriva el datasource
+del container: no hay nada que declarar.
 
-`src/test/resources/application.properties` — **vacío**, a propósito. Al existir
-en `src/test/resources` tapa al archivo de `src/main/resources`, así que los
-tests no activan el perfil dev. Es el lugar donde poner lo común a los tests
-cuando aparezca.
+`src/main/resources/application-prod.properties` — **vacío**. Cuando prod sea real
+las credenciales entran por `SPRING_DATASOURCE_URL/USERNAME/PASSWORD`, que Spring
+Boot bindea solo por relaxed binding.
 
-Cosas que **no** hace falta declarar (las resuelve Spring Boot solo):
+`src/test/resources/application.properties`:
 
-- El datasource de desarrollo — con H2 en el classpath levanta una base embebida
-  en memoria sin configurar nada.
-- `spring.datasource.driver-class-name` — lo deriva de la URL del datasource.
-- Los flags de devtools (`restart.enabled`, `livereload.enabled`) — ya vienen
-  activados por tener la dependencia.
-- `spring.jpa.hibernate.ddl-auto` — con una base embebida usa `create-drop`.
+```properties
+spring.jpa.hibernate.ddl-auto=validate
+```
 
-**Consecuencia asumida:** en dev la base arranca vacía en cada arranque, y
-también en cada hot reload, porque devtools cierra y recrea el contexto de Spring
-y `create-drop` dropea el esquema al cerrarlo. Esto va a molestar en cuanto el
-script de descubrimiento guarde empresas reales: ahí se decide (H2 en archivo +
-`ddl-auto=update`, o pasar a Postgres).
+Este archivo existe para **tapar** al de `src/main/resources`, así que los tests no
+activan el perfil `dev`; como efecto colateral tampoco heredaban `validate`, y por
+eso la línea está repetida acá. Se verificó que sirve: al renombrar una columna en
+`V1`, los 3 tests fallan por schema validation.
+
+`compose.yaml` (raíz) — un servicio `postgres:18-alpine`, **sin volumen**, con el
+5432 publicado y usuario/base/password `oneprofile`. Son credenciales de una base
+local y efímera, Elias las dio por aceptables en el repo.
+
+**Ojo con el ciclo de vida:** al apagar la app, Spring Boot hace `docker compose
+stop`, **no `down`**. El container se conserva con sus datos hasta que corras
+`docker compose down` a mano.
 
 ## Qué existe hoy
 
 ```
 CLAUDE.md
+compose.yaml
 docs/METODOLOGIA.md
 docs/CONTEXTO.md
+docs/PLAN-DESCUBRIMIENTO.md                        (plan en curso)
 pom.xml
 src/main/java/oneprofile/backend/BackendApplication.java
 src/main/java/oneprofile/backend/company/Ats.java
 src/main/java/oneprofile/backend/company/Company.java
 src/main/java/oneprofile/backend/company/CompanyRepository.java
 src/main/resources/application.properties
-src/main/resources/application-dev.properties      (vacío)
-src/main/resources/application-prod.properties     (vacío)
+src/main/resources/application-dev.properties       (vacío)
+src/main/resources/application-prod.properties      (vacío)
+src/main/resources/db/migration/V1__create_company.sql
 src/test/java/oneprofile/backend/BackendApplicationTests.java
+src/test/java/oneprofile/backend/TestcontainersConfiguration.java
 src/test/java/oneprofile/backend/company/CompanyRepositoryTest.java
-src/test/resources/application.properties           (vacío)
+src/test/resources/application.properties
 ```
 
 ### El paquete `company`
@@ -140,89 +186,75 @@ que define el código y no cargan usuarios: da chequeo del compilador y `switch`
 exhaustivo cuando se sumen ATS. La flexibilidad de una tabla sería ilusoria,
 porque cada ATS necesita igual su propia clase para parsear su JSON, así que un
 INSERT no evitaría recompilar. Hoy tiene **un solo valor, `GREENHOUSE`**, y
-ningún campo ni método: el patrón de URL del board se le cuelga cuando el script
-lo use.
+ningún campo ni método.
 
 `Company` tiene `id`, `ats` y `slug`, con `@UniqueConstraint` sobre el par
 `(ats, slug)`. Constructor sin argumentos `protected` para JPA más uno público
 `(Ats, String)`, y getters sin setters. El enum se mapea con
-`@Enumerated(EnumType.STRING)` para que la columna guarde el texto y no una
-posición numérica, que se corrompería al reordenar el enum.
+`@Enumerated(EnumType.STRING)`.
 
 **No tiene campo `name` a propósito**: el índice de CommonCrawl da el slug pero no
 el nombre legible, así que el nombre se agrega en el paso donde se consulte la API
 del ATS, que es cuando el dato existe.
 
 `CompanyRepository` es un `JpaRepository<Company, Long>` pelado, sin métodos
-propios. El `findByAtsAndSlug` que el script va a querer para no duplicar se
-agrega en ese paso, con su test.
+propios.
 
-Esquema que Hibernate genera a partir de las anotaciones:
+### Migraciones
+
+El esquema vive en `src/main/resources/db/migration/` y lo aplica Flyway, que
+anota lo ya corrido en la tabla `flyway_schema_history`. **Cuando cambie el
+esquema no se reescribe `V1`: se agrega `V2` con el `ALTER TABLE`**, y los datos
+existentes sobreviven. Hoy hay una sola migración:
 
 ```sql
+-- V1__create_company.sql
+create sequence company_seq start with 1 increment by 50;
+
 create table company (
-  id bigint not null,
-  slug varchar(255),
-  ats enum ('GREENHOUSE'),
-  primary key (id),
-  unique (ats, slug)
-)
+    id bigint not null,
+    ats varchar(255),
+    slug varchar(255),
+    primary key (id),
+    unique (ats, slug)
+);
 ```
 
-H2 mapea el enum a su tipo nativo `enum('GREENHOUSE')` en vez de a `varchar`. Es
-equivalente a nivel comportamiento; Postgres lo va a resolver distinto.
+El `increment by 50` no es decorativo: es el `allocationSize` por defecto que
+Hibernate 6/7 espera para `@GeneratedValue`, y si no coincide `validate` falla.
 
 ## Estado verificado
 
-- `./mvnw test` → **3 tests, 0 fallas**: `BackendApplicationTests.contextLoads`
-  más los dos de `CompanyRepositoryTest`.
-- `CompanyRepositoryTest` (`@DataJpaTest`) prueba comportamiento, no anotaciones:
+- `./mvnw test` → **3 tests, 0 fallas**: `BackendApplicationTests.contextLoads` más
+  los dos de `CompanyRepositoryTest`. Ambas clases importan
+  `TestcontainersConfiguration`, que declara un `PostgreSQLContainer` como
+  `@Bean @ServiceConnection`; `CompanyRepositoryTest` lleva además
+  `@AutoConfigureTestDatabase(replace = NONE)`, porque sin base embebida en el
+  classpath `@DataJpaTest` falla al intentar reemplazar el datasource.
+- Los tests corren contra **Postgres real y contra el esquema que creó Flyway**, no
+  contra uno generado por Hibernate.
+- `CompanyRepositoryTest` prueba comportamiento, no anotaciones:
   1. `savesAndReadsBackAts` — guarda, hace flush y clear, relee por id y verifica
-     que vuelven el mismo `ats` y el mismo `slug` (o sea que el mapeo del enum
-     funciona en las dos direcciones).
+     que vuelven el mismo `ats` y el mismo `slug`.
   2. `rejectsSameSlugTwiceWithinAnAts` — al guardar dos veces el mismo par
-     `(ats, slug)` salta `DataIntegrityViolationException`. Si la
-     `@UniqueConstraint` no llegara al esquema real, el duplicado entraría sin
-     quejarse y el test fallaría.
-- `./mvnw spring-boot:run` → levanta en perfil `dev`, Tomcat en 8080, H2 en
-  memoria, sin escribir nada en disco. Hot reload de devtools confirmado (~0,4 s).
+     `(ats, slug)` salta `DataIntegrityViolationException`.
+- `./mvnw spring-boot:run` → levanta el container `backend-postgres-1`, Flyway
+  aplica `V1`, Hibernate valida el esquema y Tomcat arranca en 8080. Verificado en
+  la base: tabla `company` con `company_pkey` y `company_ats_slug_key`, secuencia
+  `company_seq`, y `flyway_schema_history` con `1 | create company | t`.
 
 ## Qué NO existe todavía
 
-- **El script de descubrimiento sobre CommonCrawl.** Es el próximo paso.
+- **El script de descubrimiento sobre CommonCrawl** y todo el paquete `discovery`.
 - Ningún cliente de API de ATS, ninguna vacante, ninguna lógica de matching.
 - Ningún servicio ni endpoint HTTP propio.
 - Ninguna forma de cargar empresas: la tabla `company` existe pero arranca vacía.
-- Sin consola web de H2. Si hace falta inspeccionar la base desde el navegador,
-  requiere la dependencia `org.springframework.boot:spring-boot-h2console` (en
-  Spring Boot 4 la consola vive en su propio módulo) más
-  `spring.h2.console.enabled=true`; sin la dependencia, `/h2-console` da 404.
-- Sin migraciones de esquema (Flyway/Liquibase).
-- El perfil prod está vacío: hoy la app solo corre en dev.
+- **Prod no existe**: no hay `Dockerfile` ni `compose.prod.yaml`, y el perfil prod
+  nunca se probó. Es el Paso 5 del plan en curso.
 
 ## Puntos abiertos
 
 - `pom.xml` tiene la metadata (`name`, `description`, `url`, `licenses`,
   `developers`, `scm`) vacía, tal como la dejó el Initializr.
-- El perfil prod está vacío y nunca se probó contra una base Postgres real.
-- Con `create-drop` en memoria, todo lo que guarde el script se pierde al apagar
-  la app. Hay que resolverlo antes o durante el paso del descubrimiento.
-- Falta decidir **cómo se dispara** el script: un `CommandLineRunner` condicionado
-  por un argumento o perfil, o una clase con `main` propia.
-
-## Próximos pasos (candidatos, sin priorizar — decide Elias)
-
-- **Paso siguiente acordado:** el script de descubrimiento contra el índice de
-  CommonCrawl para Greenhouse — consultar el índice CDX
-  (`index.commoncrawl.org/CC-MAIN-*-index?url=boards.greenhouse.io/*&matchType=prefix&output=json`)
-  o el índice columnar en Parquet, extraer los slugs de las URLs y guardarlos como
-  `Company`.
-- Agregar `name` a `Company` al implementar el cliente de la API de Greenhouse.
-- Modelar la vacante (`vacancy`), con relación **unidireccional `Vacancy → Company`**
-  (decidido: la consulta real es "vacantes que matchean el perfil", no "vacantes de
-  esta empresa", así que una colección en `Company` sería peso muerto y fuente de
-  `LazyInitializationException`).
-- Modelar el perfil del usuario (`profile`).
-- Primer algoritmo de matching, simple, con tests sobre casos concretos.
-- Endpoint HTTP para consultar las vacantes que matchean.
-- Completar el perfil prod y elegir herramienta de migraciones cuando prod sea real.
+- En la máquina de Elias, `docker-rootless-extras` quedó en 29.8.0 y `docker` en
+  29.7.2 (actualización parcial). Funciona; se empareja en el próximo `pacman -Syu`.
