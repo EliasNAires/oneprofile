@@ -12,8 +12,19 @@ son preparación: [descubrir](descubrimiento.md) dejó la lista de empresas y
 Se construyó en dos tandas, a propósito. Primero **una empresa por vez**, para poder
 mirar el ciclo entero de cerca en segundos. Después **las 3.000 de una pasada**, que es
 una corrida de una o dos horas y no se puede mirar de cerca. Hoy están los dos: el de una
-empresa ya se probó contra la API real, el masivo está escrito y con tests **pero todavía
-no se corrió de verdad**.
+empresa se probó contra la API real, y el masivo **está corriendo por primera vez, en el
+servidor**, con vacantes entrando a la base y sin terminar todavía.
+
+Mientras corre, la forma de ver el avance es preguntarle a la base, porque el endpoint
+contesta "ya arranqué" y el resto se ve en el log:
+
+```bash
+docker compose exec -T postgres sh -c \
+  'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "select count(*), count(distinct company_id) from vacancy"'
+```
+
+Si ese número sube, está entrando trabajo. Si se queda quieto varios minutos y el log
+tampoco se mueve, ahí sí hay algo trabado.
 
 ## Lo mismo que el sondeo, pidiendo más
 

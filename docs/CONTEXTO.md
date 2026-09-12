@@ -10,23 +10,23 @@
 > documento. Se abre solo si Elias pide explícitamente escribir o actualizar esa
 > carpeta.
 
-**Última actualización:** 2026-09-11
-**Último milestone probado:** el **paso 2a**. Hay una tabla `vacancy` y un POST que carga
-las vacantes de **una** empresa pedida por slug, con la descripción limpiada a texto
-plano y el salario en centavos cuando el board lo publica. Probado a mano por Elias
-contra la API real.
+**Última actualización:** 2026-09-12
+**Último milestone probado:** el **despliegue**. Prod salió de la máquina de
+Elias y corre en un **servidor propio**, con la imagen publicada en GHCR por un pipeline
+de GitHub Actions que se dispara en cada push a `main`. Probado a mano por Elias de punta
+a punta: pipeline en verde, imagen bajada del registry, datos mudados y app andando.
 
-**Milestone anterior:** el sondeo de boards de punta a punta en prod.
+**Milestone anterior:** la carga de vacantes de una empresa por slug.
 
-**Ojo: el paso 2b está escrito y con tests en verde, pero Elias TODAVÍA NO lo probó a
-mano.** O sea que el código del recorrido masivo y del borrado existe y está descrito más
-abajo, pero **nunca corrió contra la API real ni contra la base de prod**: no hay un solo
-número medido de esa corrida. Hasta que Elias la corra, tratalo como no verificado.
+**El recorrido masivo de vacantes terminó.** Corrió entero en el servidor y dejó
+**128.953 vacantes sobre 3.118 empresas**. El número importa porque **desmiente la
+proyección**: se esperaban ~250.000, o sea el doble. La media de la muestra (80 vacantes
+por empresa) tiraba para arriba; la mediana (17) era la guía correcta.
 
-**Hay un plan en curso:** [`docs/PLAN-VACANTES.md`](PLAN-VACANTES.md) — el paso 2. Ahí
-quedaron los números medidos del endpoint, las decisiones cerradas, el guion de prueba
-manual de 2b que falta correr, y la declaración del **paso 2c** (el despliegue en un
-servidor por SSH), que es lo que sigue.
+**No hay ningún plan en curso.** Lo que sigue es normalizar, y todavía no hay un plan
+escrito para eso. Lo único que existe es la **medición** de la tabla `vacancy` corrida
+el 2026-09-12 contra prod, que vive en `docs/MEDICION-VACANTES.md`: números, sin
+enfoque propuesto.
 
 ## Qué es esto
 
@@ -182,21 +182,32 @@ stop`, **no `down`**. El container se conserva con sus datos hasta que corras
 
 ## Prod
 
-Prod es una carpeta aparte, `prod/`, y se levanta entrando en ella:
+**Prod corre en un servidor de Elias, no en su máquina.** Se llega por SSH a través de
+una VPN de ZeroTier. El servidor no compila nada: baja una imagen ya construida desde
+GHCR. Ahí el ciclo es:
 
 ```bash
-cd prod
-cp .env.example .env          # solo la primera vez, y después completarlo
-docker compose up --build -d  # --build cada vez que cambie el código
+cd ~/oneprofile
+docker compose pull           # trae la ultima imagen publicada
+docker compose up -d          # recrea solo el container de la app
 docker compose logs -f app
 docker compose down           # conserva los datos
 docker compose down -v        # los borra
 ```
 
-Está en una subcarpeta con el nombre `compose.yaml` a propósito: así el comando es
-`docker compose up` pelado, sin `-f`. El nombre `compose.yaml` en la raíz no se
-podía usar porque lo ocupa el de dev, que `spring-boot-docker-compose` busca ahí
-por convención.
+El servidor tiene **dos archivos y nada más**: `compose.yaml` y `.env`, copiados por
+`scp`. No tiene el repo, ni Java, ni Maven. Se descartó clonar el repo ahí justamente
+por eso: no usaría el código para nada. El costo asumido es que cuando cambie el
+`compose.yaml` hay que volver a copiarlo a mano, que es casi nunca.
+
+En el repo, prod vive en la carpeta `prod/` con el nombre `compose.yaml` a propósito:
+así el comando es `docker compose up` pelado, sin `-f`. El nombre `compose.yaml` en la
+raíz no se podía usar porque lo ocupa el de dev, que `spring-boot-docker-compose` busca
+ahí por convención.
+
+**En la máquina de Elias ya no se levanta prod.** El servicio `app` declara `image:` y
+no tiene `build:`, así que `docker compose up --build` en `prod/` no construye nada:
+para probar local está dev.
 
 - **`Dockerfile`** (en la raíz, junto al código) — multi-stage:
   `eclipse-temurin:25-jdk` corre `./mvnw -DskipTests package`, y
@@ -209,9 +220,10 @@ por convención.
   pegarle al endpoint de descubrimiento, porque el puerto de la app no se publica
   y hay que entrar con `docker compose exec app`.
 - **`prod/compose.yaml`** — `name: oneprofile-prod`, servicio `postgres` con
-  volumen nombrado y servicio `app` con `build: context: ..` (el Dockerfile vive
-  en la raíz) y `SPRING_PROFILES_ACTIVE=prod`. **Ningún puerto publicado**, ni el
-  de la app ni el de la base.
+  volumen nombrado y servicio `app` con
+  `image: ghcr.io/eliasnaires/oneprofile-backend:latest` y
+  `SPRING_PROFILES_ACTIVE=prod`. **Ningún puerto publicado**, ni el de la app ni el de
+  la base.
 - **`prod/.env.example`** — plantilla versionada con `POSTGRES_DB`,
   `POSTGRES_USER` y `POSTGRES_PASSWORD` vacías. El `prod/.env` real tiene los
   valores y **no va al repo** (`.env` está en `.gitignore`). Compose lo lee del
@@ -228,22 +240,94 @@ Tres detalles que costaron descubrir y no son obvios:
 - **`healthcheck` + `depends_on: condition: service_healthy`.** Con `depends_on`
   pelado la app arranca antes de que Postgres acepte conexiones y Flyway muere.
 
+## El pipeline: de un commit a la imagen
+
+`.github/workflows/publish.yml` se dispara en cada **push a `main`** y tiene dos jobs:
+
+1. **`test`** — `actions/checkout@v5`, `actions/setup-java@v5` (temurin 25, `cache: maven`)
+   y `mvn -B test`. Si falla, se corta acá y no se publica nada.
+2. **`publish`** — con `needs: test` y `permissions: packages: write`. Loguea a `ghcr.io`
+   con `${{ github.actor }}` y el `GITHUB_TOKEN` que Actions ya provee —**no hay ningún
+   secret creado a mano**— y publica con `docker/build-push-action`.
+
+La imagen es **`ghcr.io/eliasnaires/oneprofile-backend:latest`**, **pública**, y lleva la
+label `org.opencontainers.image.source`. Esa label no es cosmética: es lo que vincula el
+paquete al repo, y de esa vinculación sale el permiso del token sobre el paquete. Un
+paquete nuevo de GHCR **nace privado**: hay que marcarlo público una vez desde la web,
+o el servidor no puede bajarlo sin credenciales.
+
+**Un solo tag, `latest`.** No hay tag por SHA, así que hoy no se puede volver a una
+versión anterior; se agrega cuando haga falta.
+
+**El job de tests usa `mvn`, no `./mvnw`, y es a propósito.** La primera corrida del
+pipeline falló así, en 0 segundos:
+
+```
+wget: Failed to fetch https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip
+```
+
+El wrapper está en `distributionType=only-script`: no hay jar versionado, así que cada
+corrida limpia tiene que bajarse Maven entero. En la máquina de Elias no se nota porque
+ya está en `~/.m2/wrapper/dists/`. La URL es válida —devuelve 200 y 9,4 MB desde una
+conexión normal— y el runner tiene `wget`, así que lo que pasa es que la descarga la
+cortan del otro lado desde las IPs de los runners. Como `mvnw` corre `wget` en modo
+silencioso, el log no dice el código de error.
+
+La salida fue usar el Maven que la imagen `ubuntu-24.04` **ya trae instalado**, que es
+**la misma 3.9.16** que declara `.mvn/wrapper/maven-wrapper.properties`. La contra
+asumida: si GitHub actualiza la imagen, CI podría correr una 3.9.x distinta de la del
+wrapper. Si algún día importa, la salida es fijar la versión con una acción que instale
+Maven, **no** volver al wrapper. Cachear `~/.m2/wrapper` no servía: la caché arranca
+vacía y la primera corrida intentaría la misma descarga.
+
+**Los tests corren en CI aunque el `Dockerfile` los saltee**, y no es contradictorio:
+adentro del build de la imagen no hay un Docker para que Testcontainers levante Postgres,
+y en el runner sí. Por eso van en un job aparte, antes y por fuera de la imagen.
+
+**El despliegue al servidor es a mano** (`docker compose pull && docker compose up -d`).
+Que un push a `main` reinicie prod solo es una decisión que no se tomó.
+
+### La mudanza de los datos al servidor (hecha, 2026-09-11)
+
+Las 4.046 empresas se mudaron con un dump, no se rehicieron: el descubrimiento y el
+sondeo habían costado horas. El orden importa y quedó verificado: **la base se restaura
+con la app apagada**, porque el dump trae las tablas *y* `flyway_schema_history`; si la
+app arranca primero, crea el esquema vacío y el restore choca.
+
+```bash
+# en la maquina de Elias
+docker compose exec -T postgres sh -c 'pg_dump -U "$POSTGRES_USER" -d "$POSTGRES_DB"' > ~/oneprofile.sql
+# en el servidor, con la app sin levantar
+docker compose exec -T postgres sh -c 'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB"' < ~/oneprofile.sql
+```
+
+**Un detalle real de esta mudanza:** el prod de la máquina de Elias estaba en **V2** y no
+tenía la tabla `vacancy` —las pruebas de vacantes se habían hecho en dev—, así que el dump
+llevó las empresas y el historial hasta V2, y al levantar la app en el servidor **Flyway
+aplicó `V3` y creó `vacancy` vacía**. Es el comportamiento correcto, pero desmiente la
+expectativa de que Flyway no iba a aplicar nada: aplica lo que al dump le falta.
+
+El `.env` tiene que ser el **mismo** de los dos lados: si el usuario de la base no
+coincide, el restore se queja de dueños que no existen.
+
 ## Qué existe hoy
 
 ```
 CLAUDE.md
 compose.yaml
 Dockerfile
+.github/workflows/publish.yml                       (el pipeline: tests + imagen a GHCR)
 prod/compose.yaml
 prod/.env.example
 docs/METODOLOGIA.md
 docs/CONTEXTO.md
-docs/PLAN-VACANTES.md                               (plan en curso: el paso 2, en 2a y 2b)
+docs/MEDICION-VACANTES.md                           (los números medidos el 2026-09-12)
 docs/para-humanos/README.md                         (para personas, no para agentes)
 docs/para-humanos/descubrimiento.md
 docs/para-humanos/sondeo.md
 docs/para-humanos/vacantes.md
-docs/para-humanos/diagramas/*.puml + *.svg          (6 diagramas PlantUML)
+docs/para-humanos/despliegue.md
+docs/para-humanos/diagramas/*.puml + *.svg          (7 diagramas PlantUML)
 pom.xml
 src/main/java/oneprofile/backend/BackendApplication.java
 src/main/java/oneprofile/backend/model/Ats.java
@@ -409,7 +493,7 @@ codear sobre supuestos. Lo que contesta:
   dato que la respuesta de `/jobs` ya trae en la mayoría de los casos. El precio
   aceptado es que las empresas sin vacantes quedan sin nombre.
 
-Para el paso 2a se volvió a medir el mismo endpoint, esta vez con los parámetros que
+Antes de escribir la carga de vacantes se volvió a medir el mismo endpoint, esta vez con los parámetros que
 traen todo lo aprovechable. Sondeados 9 boards: splice, discord, airbnb y stripe con
 `content=true` (842 vacantes) y figma, ramp, brex, coinbase y reddit (2.410 más).
 
@@ -578,8 +662,8 @@ y ahí no hay forma de evitarlo.
 ### Las vacantes: modelo, limpieza, cliente, servicio y endpoint
 
 Las piezas que van de un POST a tener vacantes en la base, sea de una empresa o de
-todas. Lo de 2a está probado a mano; lo que agregó 2b —el borrado y el recorrido
-masivo— está escrito y con tests, pero sin correr de verdad.
+todas. Está todo probado a mano: la carga de una empresa contra la API real, y el
+recorrido masivo corrido entero en el servidor.
 
 **`util/HtmlToText`** es una clase final sin instancias con un solo método,
 `static String plainText(String escapedHtml)`. Función pura, sin red y sin Spring, al
@@ -671,16 +755,23 @@ escritos para el agente y no sirven para entender el sistema de un vistazo: son
 exhaustivos y no tienen un solo diagrama.
 
 Contiene un `README.md`, un archivo por proceso —`descubrimiento.md`, `sondeo.md` y
-`vacantes.md`— y **seis** diagramas en `diagramas/`, cada uno con su `.puml`
-fuente y su `.svg` versionado al lado: `panorama` (componentes), `flujo-descubrimiento`
-y `flujo-sondeo` (secuencia, los dos más importantes), `url-a-slug` (actividad),
-`modelo-de-datos` (clases) y `entorno` (despliegue dev vs. prod).
+`vacantes.md`—, el de `despliegue.md`, y **siete** diagramas en `diagramas/`, cada uno
+con su `.puml` fuente y su `.svg` versionado al lado: `panorama` (componentes),
+`flujo-descubrimiento` y `flujo-sondeo` (secuencia, los dos más importantes),
+`url-a-slug` (actividad), `modelo-de-datos` (clases), `entorno` (dónde corre dev y dónde
+prod) y `despliegue` (cómo la imagen llega del commit al servidor).
 
-**PlantUML no está instalado en la máquina.** Los SVG se generaron con el jar
-bajado aparte; para regenerarlos hace falta `sudo pacman -S plantuml` — Java y
-Graphviz, que es lo único que PlantUML necesita de fondo, ya están. Para revisar un
-diagrama *mirándolo* —que es como se da por bueno— conviene generar un PNG temporal
-fuera del repo y abrirlo, en vez de leer el SVG como texto.
+**PlantUML no está instalado como comando**, pero el jar sí está en la máquina, y con él
+alcanza:
+
+```bash
+java -jar ~/.vscode/extensions/jebbs.plantuml-2.18.1/plantuml.jar -tsvg <archivo>.puml
+```
+
+Java y Graphviz —lo único que PlantUML necesita de fondo— ya están. Para revisar un
+diagrama *mirándolo*, que es como se da por bueno, se genera un PNG temporal fuera del
+repo (`rsvg-convert -z 2 x.svg -o /tmp/.../x.png`) y se abre, en vez de leer el SVG como
+texto.
 
 El criterio de escritura y el de las notas de los diagramas están en
 `docs/METODOLOGIA.md`, en "Convenciones del proyecto".
@@ -764,12 +855,15 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
   classpath `@DataJpaTest` falla al intentar reemplazar el datasource.
 - Los tests corren contra **Postgres real y contra el esquema que creó Flyway**, no
   contra uno generado por Hibernate.
-- **Prod anda de punta a punta.** `cd prod && docker compose up --build -d`
-  construye la imagen, levanta los dos containers y la app arranca
-  (`Started BackendApplication`) después de que Flyway aplica `V1`. Con un `down`
-  y un `up` de nuevo, la fila insertada a mano sigue ahí y Flyway reporta
-  `Current version of schema "public": 1` en vez de reaplicar la migración: el
-  volumen nombrado persiste. Probado a mano por Elias.
+- **El despliegue anda de punta a punta.** Probado a mano por Elias el 2026-09-11:
+  el pipeline terminó en verde, la imagen quedó publicada en GHCR, el servidor la bajó
+  **sin `docker login`** una vez marcado el paquete como público, el dump restauró las
+  4.046 empresas, Flyway aplicó `V3` al arrancar la app y la app quedó andando. Antes de
+  eso, cuando prod todavía corría en la máquina de Elias, ya se había verificado que el
+  volumen nombrado persiste: con un `down` y un `up`, la fila insertada a mano seguía ahí
+  y Flyway reportaba el esquema en su versión en vez de reaplicar la migración.
+- **La primera corrida del pipeline falló** por la descarga de Maven del wrapper; está
+  contado arriba, en "El pipeline". Con `mvn` en vez de `./mvnw` quedó en verde.
 - `CompanyRepositoryTest` prueba comportamiento, no anotaciones:
   1. `savesAndReadsBackAts` — guarda, hace flush y clear, relee por id y verifica
      que vuelven el mismo `ats` y el mismo `slug`.
@@ -815,7 +909,7 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 - **El sondeo anda de punta a punta en prod.** Probado a mano por Elias con un POST
   que devolvió 202 al toque. La corrida **terminó**, y el reparto final de las 4.046
   empresas es **3.121 `ACTIVE`, 708 `NOT_FOUND` y 217 `EMPTY`**. La proporción es el
-  hallazgo del paso: el **77%** de lo que descubrió CommonCrawl **sigue vivo y con
+  hallazgo: el **77%** de lo que descubrió CommonCrawl **sigue vivo y con
   vacantes** — se esperaba bastante más mortandad. La corrida tardó ~30 minutos, más
   de los ~14 que daría la pausa sola.
 - **`HtmlToTextTest`** no levanta Spring: el desescape doble sobre un `content` con la
@@ -844,8 +938,21 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 - **`VacancyControllerTest`** es `@WebMvcTest`: 200 con el JSON de contadores y 404 cuando
   el servicio devuelve vacío para el endpoint por slug; 202 más delegación y 409 con una
   corrida en curso para el masivo, con la misma técnica del `CountDownLatch`.
-- **El recorrido masivo NO está probado a mano.** Sus tres tests pasan, pero nunca corrió
-  contra la API real ni contra prod. El guion de prueba está en `docs/PLAN-VACANTES.md`.
+- **El recorrido masivo corrió entero en el servidor** (2026-09-11/12) y dejó
+  **128.953 vacantes sobre 3.118 empresas**. Son 3.118 de las 3.121 `ACTIVE` (verificado en la
+  base): **tres empresas quedaron sin ninguna vacante**. No se averiguó por qué —pueden
+  haber cerrado las búsquedas entre el sondeo y la carga, o haber fallado— pero en
+  cualquiera de los dos casos la corrida siguió, que es lo que `failed` contempla.
+- **Para mirar el avance de una corrida** se consulta la base directamente, porque el
+  endpoint contesta 202 y el resultado solo se ve en el log:
+
+  ```bash
+  docker compose exec -T postgres sh -c \
+    'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "select count(*), count(distinct company_id) from vacancy"'
+  ```
+
+  Elias lo corre en un bucle cada 60 segundos junto con el delta; el script no está
+  versionado, vive en el home del servidor.
 - **La carga de una empresa anda de punta a punta contra la API real.** Probado a mano
   por Elias en dev. Salidas textuales: splice `{"fetched":5,"inserted":5,"updated":0}`
   y en el segundo POST `{"fetched":5,"inserted":0,"updated":5}` —idempotente—, discord
@@ -870,20 +977,19 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Qué NO existe todavía
 
-- **La carga masiva existe pero nunca corrió.** El endpoint, el recorrido y el borrado
-  están escritos y con tests, pero Elias todavía no los probó a mano, así que la tabla
-  `vacancy` tiene solo lo que se pidió empresa por empresa. Los ~250.000 son una
-  proyección de una muestra de 40 empresas, no un número medido.
-- **Nada normaliza los títulos ni la ubicación.** Están guardados como los escribió
-  cada empresa.
+- **Nada normaliza los títulos, el departamento ni la ubicación.** Están guardados como
+  los escribió cada empresa. **La normalización todavía no empezó**: lo único que hay
+  es la medición de `docs/MEDICION-VACANTES.md`.
 - Ningún perfil de usuario, ninguna lógica de matching.
 - Ningún endpoint que devuelva datos: los tres que hay disparan procesos. El de
   vacantes contesta con los contadores de lo que cargó, no con las vacantes.
 - Ningún ATS además de Greenhouse.
 - Ningún cron: los procesos se disparan a mano. `last_probed_at` está puesto para cuando
   exista, pero todavía no lo lee nadie.
-- **Ningún despliegue fuera de la máquina de Elias.** Prod es `docker compose` en su
-  propia máquina; poner esto en un servidor es el paso 2c.
+- **Ningún tag por SHA ni forma de volver atrás.** La imagen se publica solo como
+  `latest`: si una versión rompe, la salida es arreglar y pushear, no revertir el deploy.
+- **Ningún despliegue automático.** El `pull` + `up -d` en el servidor es a mano.
+- **Ni HTTPS, ni dominio, ni reverse proxy.** No hay nada expuesto todavía.
 
 ## Puntos abiertos
 
@@ -908,9 +1014,10 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
   vería ningún error y reportaría menos empresas sin avisar. Los reintentos no
   ayudan, porque el status es 200. En la corrida real no pasó —el conteo dio
   exactamente el mismo número que el cálculo offline completo— pero el agujero está.
-- **La base de dev arranca vacía.** Las 4.046 empresas viven en el volumen nombrado de
-  prod; el `compose.yaml` de la raíz no declara volumen, así que para probar algo en
-  dev hay que insertar la empresa a mano:
+- **La base de dev arranca vacía, y ahora además está sola.** Las 4.046 empresas viven
+  en el volumen de prod, que está **en el servidor**: ya no hay una base con datos en la
+  máquina de Elias. El `compose.yaml` de la raíz no declara volumen, así que para probar
+  algo en dev hay que insertar la empresa a mano:
   `insert into company (id, ats, slug) values (nextval('company_seq'), 'GREENHOUSE', 'figma');`
 - **El endpoint de vacantes no tiene tope de tamaño.** Una empresa de 700 vacantes con
   `content=true` son varios MB en una sola respuesta que se parsea entera en memoria.
@@ -922,20 +1029,15 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Qué sigue
 
-Dos cosas, en orden, las dos en **[`docs/PLAN-VACANTES.md`](PLAN-VACANTES.md)**:
-
-1. **Cerrar 2b probándolo a mano.** El código está; falta la corrida real, estimada en 1 a
-   2 horas y del orden de 250.000 vacantes. El guion está en el plan.
-2. **El paso 2c: desplegar en un servidor por SSH.** Es un pedido de Elias y va a ser una
-   guía de despliegue. El motivo es que esto ya son procesos constantes, y a futuro
-   corriendo en paralelo con más ATS y con la normalización de las vacantes.
+Lo inmediato es la **normalización**, y **todavía no hay plan escrito**: se va a
+discutir de cero. Lo que sí está es la medición previa, en `docs/MEDICION-VACANTES.md`
+(volumen real, la columna `language`, la cardinalidad de los departamentos y una
+primera mirada a los títulos); esos números no se duplican acá.
 
 Más allá de eso, sin priorizar y sin planificar:
 
 - Correr el descubrimiento con más índices de CommonCrawl para engordar la tabla.
   No necesita código: es repetir el POST cambiando el `index`.
-- Normalizar los títulos de las vacantes para llegar a una lista de roles. Elias lo
-  sacó explícitamente del plan actual: se ve cuando haya vacantes guardadas.
 - Modelar el perfil del usuario (`profile`).
 - Primer algoritmo de matching, simple, con tests sobre casos concretos.
 - Endpoint HTTP para consultar las vacantes que matchean.

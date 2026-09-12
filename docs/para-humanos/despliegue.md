@@ -9,7 +9,8 @@ descubrimiento y el sondeo tardan horas, y esas horas no deberían depender de q
 laptop esté prendida.
 
 Ahora **prod corre en un servidor**, y la imagen de la app viaja hasta él por un
-registry público.
+registry público. Ya está andando: el pipeline publica, el servidor baja la imagen y los
+datos están ahí.
 
 ![Cómo llega el código al servidor](diagramas/despliegue.svg)
 
@@ -84,7 +85,7 @@ que sigue.
 Las 4.046 empresas y su sondeo costaron horas de corrida. Se mudan con un dump, no se
 rehacen. **El orden importa**: la base se restaura con la app todavía apagada, porque
 el dump trae las tablas *y* el historial de migraciones de Flyway; si la app arranca
-primero, crea el esquema vacía y el restore choca.
+primero, crea el esquema vacío y el restore choca.
 
 En tu máquina:
 
@@ -116,8 +117,15 @@ Tienen que ser los mismos números que en tu máquina. Y recién ahí:
 docker compose up -d
 ```
 
-En el log de la app, Flyway tiene que decir que el esquema **ya está en la última
-versión** en vez de aplicar migraciones: eso confirma que el historial vino en el dump.
+En el log de la app, Flyway va a aplicar **solo las migraciones que al dump le
+faltaban**, y ninguna de las que ya traía. Eso es lo que confirma que el historial viajó
+adentro del dump: si las reaplicara todas, el dump no habría traído
+`flyway_schema_history` y estarías pisando datos.
+
+En la mudanza real pasó justo eso: la base de origen estaba una migración atrás —no tenía
+todavía la tabla de vacantes—, así que Flyway aplicó esa y la creó vacía, con las 4.046
+empresas ya adentro. Salió bien, pero conviene mirar el log y entender **cuáles** aplicó
+en vez de dar por hecho que no aplicó ninguna.
 
 Usá el **mismo `.env`** de los dos lados. Si el usuario de la base no coincide, el
 restore se queja de dueños que no existen.

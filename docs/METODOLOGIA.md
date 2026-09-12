@@ -186,6 +186,15 @@ Cada entrada es una regla aprendida, con la fecha en que se acordó.
   que es exactamente lo que esa etapa espera. Confiar en la propia disciplina no
   alcanza, porque el modo activo puede habilitar acciones que la etapa no debería
   permitir.
+- **2026-09-12 — En `CONTEXTO.md` no se numeran los pasos.** Al limpiar el plan de
+  normalización, Elias pidió *"borra lo de los pasos, en la proxima sesion voy a
+  arrancar con un plan nuevo"*. La numeración (`paso 2a`, `2b`, `3a`…) vive en el
+  `docs/PLAN-<TEMA>.md` de turno, y ese documento **se borra al terminar el plan**: los
+  números que quedaron citados en `CONTEXTO.md` apuntan entonces a algo que ya no
+  existe y no se pueden interpretar sin la historia de la conversación. Por eso en
+  `CONTEXTO.md` cada milestone se nombra **por lo que es** ("el despliegue", "el
+  recorrido masivo de vacantes"), no por su número de paso. Dentro del plan en curso
+  numerar está bien; al cerrarlo, lo que pase a `CONTEXTO.md` va sin números.
 - **2026-09-11 — La documentación para personas es intuitiva y breve.** Elias pidió
   que quedara escrito que `docs/para-humanos/` se escribe para entenderse rápido y
   no para ser exhaustiva, notas de los diagramas incluidas. El detalle vive en

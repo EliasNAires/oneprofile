@@ -14,10 +14,6 @@ jobs:
           distribution: temurin
           java-version: '25'
           cache: maven
-      # Se usa el mvn del runner, no ./mvnw: el wrapper esta en modo only-script y
-      # tiene que bajarse la distribucion en cada corrida, y esa descarga la cortan
-      # desde las IPs de los runners. La imagen ya trae la misma version que declara
-      # .mvn/wrapper/maven-wrapper.properties.
       - run: mvn -B test
 
   publish:

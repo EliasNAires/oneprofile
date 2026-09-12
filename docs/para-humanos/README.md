@@ -42,10 +42,10 @@ Hoy están construidas las tres piezas:
 3. **Traer las vacantes**, de una empresa o de las ~3.000 activas de una pasada, y borrar
    las que dejaron de estar publicadas.
 
-Con una salvedad: **el recorrido completo de vacantes todavía no se corrió de verdad.**
-Está escrito y con tests, pero la corrida real —una o dos horas, del orden de 250.000
-vacantes— está pendiente, así que por ahora en la base solo hay las vacantes de las
-empresas que se pidieron de a una.
+Con una salvedad: **la carga completa de vacantes está corriendo por primera vez
+mientras se escribe esto.** Ya está entrando trabajo de verdad a la base, pero la corrida
+—una o dos horas, del orden de 250.000 vacantes— todavía no terminó, así que el número
+final no existe.
 
 Todavía no hay perfiles ni matching. De cada empresa se sabe su identificador corto,
 si su board existe, cuántas búsquedas tiene abiertas y cómo se llama; y de las
@@ -249,11 +249,11 @@ crawl nuevo suma empresas que los anteriores no habían visto.
 
 ## Qué sigue
 
-Lo próximo es **correr la carga completa de vacantes de verdad** —una o dos horas, del
-orden de 250.000—, y ahora se hace en el servidor: cerrás el SSH y la corrida sigue. Que
-esto haya salido de la máquina de Elias es justamente porque ya no son experimentos
-sueltos, sino procesos que tienen que correr seguido, y más adelante en paralelo, con más
-ATS y con el trabajo de ordenar los títulos.
+Lo próximo es **esperar a que termine la primera carga completa** y ver con qué número
+queda. Está corriendo en el servidor, que es justamente para lo que se armó el
+despliegue: cerrás el SSH y la corrida sigue. Que esto haya salido de la máquina de Elias
+es porque ya no son experimentos sueltos, sino procesos que tienen que correr seguido, y
+más adelante en paralelo, con más ATS y con el trabajo de ordenar los títulos.
 
 Y ahí aparece el problema interesante: los títulos son texto libre, escrito por cada
 empresa a su manera, y para que el matching sirva hay que hacer que
