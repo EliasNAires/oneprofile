@@ -11,12 +11,14 @@
 > carpeta.
 
 **Última actualización:** 2026-09-12
-**Último milestone probado:** el **despliegue**. Prod salió de la máquina de
-Elias y corre en un **servidor propio**, con la imagen publicada en GHCR por un pipeline
-de GitHub Actions que se dispara en cada push a `main`. Probado a mano por Elias de punta
-a punta: pipeline en verde, imagen bajada del registry, datos mudados y app andando.
+**Último milestone probado:** el **normalizador de títulos**. Una función pura en `util`
+que limpia el título de una vacante y le **extrae el seniority a un campo propio**, con
+sus reglas medidas contra las 128.953 vacantes reales. No toca la base: se verifica con
+`./mvnw test`.
 
-**Milestone anterior:** la carga de vacantes de una empresa por slug.
+**Milestone anterior:** el **despliegue**. Prod salió de la máquina de Elias y corre en
+un **servidor propio**, con la imagen publicada en GHCR por un pipeline de GitHub Actions
+que se dispara en cada push a `main`.
 
 **El recorrido masivo de vacantes terminó.** Corrió entero en el servidor y dejó
 **128.953 vacantes sobre 3.118 empresas**. El número importa porque **desmiente la
@@ -24,14 +26,13 @@ proyección**: se esperaban ~250.000, o sea el doble. La media de la muestra (80
 por empresa) tiraba para arriba; la mediana (17) era la guía correcta.
 
 **Hay un plan en curso: la normalización de los títulos**, en
-`docs/PLAN-NORMALIZACION.md`, que es donde vive todo su detalle. Están medidas y
-analizadas la distribución del título y la del seniority; **todavía no hay una sola línea
-de código escrita** para este plan: falta el normalizador en Java y la tabla que lo
-guarde. Hay además **una tercera medición corrida y sin analizar** —los falsos positivos
-de los tokens de seniority, en `medicion-seniority.txt`—, que Elias tiene que leer antes
-de seguir. Ese documento arranca con un "Estado del plan" que dice exactamente qué está
-hecho, qué no, y por dónde retomar. La medición anterior de la tabla `vacancy`, sobre
-departamento e idioma, vive aparte en `docs/MEDICION-VACANTES.md`.
+`docs/PLAN-NORMALIZACION.md`, que es donde vive todo su detalle —las cuatro mediciones
+corridas contra prod, sus números y cada regla con su justificación—. Ese documento
+arranca con un "Estado del plan" que dice qué está hecho y por dónde retomar. Lo que
+falta del plan es **la tabla `normalized_vacancy` y el proceso que la puebla**: hoy el
+normalizador existe y está probado, pero **nada lo llama todavía**. La medición anterior
+de la tabla `vacancy`, sobre departamento e idioma, vive aparte en
+`docs/MEDICION-VACANTES.md`.
 
 ## Qué es esto
 
@@ -330,7 +331,8 @@ docs/MEDICION-VACANTES.md                           (los números medidos el 202
 docs/PLAN-NORMALIZACION.md                          (el plan en curso; se borra al terminarlo)
 medicion-titulos.txt                                (salida cruda de la medicion de titulos)
 medicion-titulos-ronda2.txt                         (salida cruda de la segunda ronda)
-medicion-seniority.txt                              (salida cruda del paso B1, sin analizar)
+medicion-seniority.txt                              (salida cruda: falsos positivos por token)
+medicion-senior.txt                                 (la cabeza de `senior` a fondo, con su analisis)
 docs/para-humanos/README.md                         (para personas, no para agentes)
 docs/para-humanos/descubrimiento.md
 docs/para-humanos/sondeo.md
@@ -343,6 +345,7 @@ src/main/java/oneprofile/backend/model/Ats.java
 src/main/java/oneprofile/backend/model/BoardStatus.java
 src/main/java/oneprofile/backend/model/Company.java
 src/main/java/oneprofile/backend/model/Vacancy.java
+src/main/java/oneprofile/backend/model/Seniority.java
 src/main/java/oneprofile/backend/repository/CompanyRepository.java
 src/main/java/oneprofile/backend/repository/VacancyRepository.java
 src/main/java/oneprofile/backend/service/CommonCrawlIndexClient.java
@@ -356,6 +359,7 @@ src/main/java/oneprofile/backend/controller/BoardProbeController.java
 src/main/java/oneprofile/backend/controller/VacancyController.java
 src/main/java/oneprofile/backend/util/GreenhouseBoardUrl.java
 src/main/java/oneprofile/backend/util/HtmlToText.java
+src/main/java/oneprofile/backend/util/TitleNormalizer.java
 src/main/resources/application.properties
 src/main/resources/application-dev.properties       (vacío)
 src/main/resources/application-prod.properties      (vacío)
@@ -377,6 +381,7 @@ src/test/java/oneprofile/backend/controller/BoardProbeControllerTest.java
 src/test/java/oneprofile/backend/controller/VacancyControllerTest.java
 src/test/java/oneprofile/backend/util/GreenhouseBoardUrlTest.java
 src/test/java/oneprofile/backend/util/HtmlToTextTest.java
+src/test/java/oneprofile/backend/util/TitleNormalizerTest.java
 src/test/resources/application.properties
 ```
 
@@ -387,7 +392,7 @@ El código se organiza **por capa técnica**, no por feature: `model`, `reposito
 existen las cinco.
 
 `util` quedó reservado para **funciones puras sin dependencias** —hoy
-`GreenhouseBoardUrl` y `HtmlToText`—. Un componente que hace I/O va a la capa que le
+`GreenhouseBoardUrl`, `HtmlToText` y `TitleNormalizer`—. Un componente que hace I/O va a la capa que le
 corresponde,
 aunque sea un colaborador y no lógica de negocio: por eso `CommonCrawlIndexClient`
 está en `service` y no en `util`.
@@ -756,6 +761,58 @@ y `List<String> findSlugsByAtsAndBoardStatus(Ats, BoardStatus)`. El segundo devu
 **slugs y no entidades**, como `findSlugsByAts`: es lo único que el recorrido necesita
 —`syncCompany` recibe un slug— y así no hidrata 3.121 entidades.
 
+### El normalizador de títulos: `TitleNormalizer` y `Seniority`
+
+`oneprofile.backend.util.TitleNormalizer` es una **función pura** —sin red, sin base y
+sin Spring, como `GreenhouseBoardUrl` y `HtmlToText`—: recibe el título crudo de una
+vacante y devuelve el record `NormalizedTitle(String title, Seniority seniority)`. Hoy
+**no lo llama nadie**; existe para el paso siguiente, que es la tabla que lo va a guardar.
+
+Existe porque el objetivo es **categorizar las vacantes en tech-adyacentes y no
+tech-adyacentes** usando el título como señal, y el título viene sucio de dos maneras
+distintas: formato (`Sr. Software Engineer - Backend` contra
+`Senior Software Engineer (Backend)`) y **seniority metido adentro del texto**. Todas las
+reglas de abajo salieron de medir contra las 128.953 vacantes reales; los números y el
+porqué de cada una están en `docs/PLAN-NORMALIZACION.md`.
+
+**La limpieza es una lista blanca, no una lista negra.** Se saca **todo** lo que no sea
+letra, dígito o espacio, salvo cuatro caracteres que se conservan solo donde significan
+algo: `.` seguido de alfanumérico (`.net`, `node.js`), `#` precedido de alfanumérico
+(`c#`), `+` precedido de alfanumérico o de otro `+` (`c++`) y `&` entre alfanuméricos
+(`r&d`). Enumerar lo que molesta siempre deja alguno afuera; enumerar lo que importa es
+un conjunto cerrado. Antes se pasa a minúsculas y se sacan los diacríticos, y el
+apóstrofo se borra **sin dejar espacio** (`women's` → `womens`). Las clases de caracteres
+son unicode, así que un título en coreano no queda vacío, y al final se recompone a
+**NFC**: NFD parte cada sílaba del hangul en sus letras, y dejarlo así daría dos
+escrituras del mismo título.
+
+**El seniority sale a un campo propio**, el enum `Seniority` (`ENTRY`, `JUNIOR`,
+`SEMI_SENIOR`, `MID`, `SENIOR`, `STAFF`, `PRINCIPAL`, más `LEVEL_2` y `LEVEL_3` para el
+`ii` / `iii` de "Engineer II", que se dejan sin traducir a propósito porque los títulos no
+dicen a qué nivel equivalen). No es ruido: estaba adentro de una de cada cuatro vacantes,
+y sacarlo colapsa más títulos que toda la limpieza de caracteres.
+
+Lo que **no** cuenta como seniority y se queda adentro del título: los roles jerárquicos
+(`director`, `lead`, `head`, `vp`, `chief`), porque son la función y no un modificador
+—un director de ingeniería no es un ingeniero—; el ambiguo `associate`; y `intern`, que
+es tipo de contrato.
+
+**Tres tokens tienen guarda**, porque se midió que no siempre significan un nivel:
+`entry` cuenta solo si le sigue `level` (si no, es `entry door` o `data entry`); `mid`
+solo si le sigue `level`, si cierra el título o si forma rango con otro nivel (si no, es
+`mid market` o `mid atlantic`); y `staff` no cuenta si lo precede `of` —`chief of staff`,
+`member of technical staff`—, si cierra el título, o si le sigue `nurse`, `accountant` o
+`attorney`. Un token que no pasa su guarda se queda adentro del título como una palabra
+más.
+
+**Cuando el título nombra más de un nivel, gana el más bajo**, porque una vacante publica
+**el piso que acepta**: `junior to senior project manager` busca gente desde junior. Por
+eso los valores del enum se declaran de menor a mayor y ese orden es significativo. El
+tramo `STAFF` < `PRINCIPAL` es convención adoptada, no un hecho medido, y está dicho en
+el javadoc del enum. `LEVEL_2` y `LEVEL_3` van declarados después de toda la escala de
+palabras, así que el mínimo hace sola la regla de que una palabra le gane a un numeral:
+`senior account executive ii` da `SENIOR`.
+
 ### La carpeta `docs/para-humanos/`
 
 Documentación dirigida a personas, **que este agente no debe leer** (ver la
@@ -851,9 +908,9 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Estado verificado
 
-- `./mvnw test` → **62 tests, 0 fallas**: `BackendApplicationTests.contextLoads`,
+- `./mvnw test` → **80 tests, 0 fallas**: `BackendApplicationTests.contextLoads`,
   4 de `CompanyRepositoryTest`, 5 de `VacancyRepositoryTest`, 12 casos parametrizados
-  de `GreenhouseBoardUrlTest`, 3 de `HtmlToTextTest`, 6 de `CommonCrawlIndexClientTest`,
+  de `GreenhouseBoardUrlTest`, 3 de `HtmlToTextTest`, 18 de `TitleNormalizerTest`, 6 de `CommonCrawlIndexClientTest`,
   4 de `GreenhouseDiscoveryServiceTest`, 2 de `DiscoveryControllerTest`, 9 de
   `GreenhouseBoardClientTest`, 3 de `GreenhouseBoardProbeServiceTest`, 4 de
   `GreenhouseVacancySyncServiceTest`, 3 de `GreenhouseVacancySweepServiceTest`, 2 de
@@ -986,10 +1043,12 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Qué NO existe todavía
 
-- **Nada normaliza los títulos, el departamento ni la ubicación.** Están guardados como
-  los escribió cada empresa. De la normalización **hay plan y hay mediciones, pero
-  todavía no hay una sola línea de código ni tabla nueva**: ver
-  `docs/PLAN-NORMALIZACION.md`.
+- **Nada guarda los títulos normalizados.** `TitleNormalizer` existe y está probado,
+  pero **no lo llama nadie**: no hay tabla `normalized_vacancy`, ni entidad, ni proceso
+  que la puebla, así que en la base los títulos siguen tal como los escribió cada
+  empresa. Ver `docs/PLAN-NORMALIZACION.md`.
+- **Nada normaliza el departamento ni la ubicación.** Se decidió normalizar solo el
+  título por ahora; los otros dos cuando haya un paso que los use.
 - Ningún perfil de usuario, ninguna lógica de matching.
 - Ningún endpoint que devuelva datos: los tres que hay disparan procesos. El de
   vacantes contesta con los contadores de lo que cargó, no con las vacantes.
@@ -1039,12 +1098,14 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Qué sigue
 
-Lo inmediato es la **normalización de los títulos**, y el plan está escrito en
-`docs/PLAN-NORMALIZACION.md` con su estado al principio. Lo que falta de ese plan son
-dos etapas: el **normalizador** —una función pura en `util` que limpia el título y le
-extrae el seniority, con sus tests— y después la **tabla `normalized_vacancy`** con el
-proceso que la puebla. Las decisiones ya tomadas y los números que las respaldan están
-en ese documento y no se duplican acá.
+Lo inmediato es **terminar la normalización de los títulos**, y el plan está escrito en
+`docs/PLAN-NORMALIZACION.md` con su estado al principio. Falta una sola etapa: la
+**tabla `normalized_vacancy`** —entidad 1:1 con `Vacancy`, su repositorio, el servicio
+que recorre las vacantes de a páginas y el endpoint que lo dispara—, que es donde el
+normalizador se corre de verdad contra las 128.953 vacantes. Va en un paso aparte porque
+se prueba distinto: el normalizador cierra con `./mvnw test`, la tabla con una corrida
+real contra prod. Las decisiones ya tomadas y los números que las respaldan están en ese
+documento y no se duplican acá.
 
 Lo que viene después de la normalización es **categorizar las vacantes en
 tech-adyacentes y no-tech-adyacentes**, que es para lo que se normaliza. La medición ya

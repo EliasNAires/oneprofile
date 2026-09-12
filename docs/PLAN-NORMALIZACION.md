@@ -9,32 +9,34 @@
 - **Paso A — medir la distribución del título: HECHO.** Corrido contra prod el
   2026-09-12 y analizado. Los números y su lectura están más abajo; las decisiones que
   dejó, en "Decisiones que cerró el paso A".
-- **Paso B — el normalizador (función pura): EN CURSO, partido en dos.**
-  - **B1 — medir los falsos positivos de los tokens de seniority: CORRIDO** contra prod
-    el 2026-09-12. La salida cruda está en `medicion-seniority.txt`, en la raíz del
-    repo. **Elias todavía no la leyó**, así que el análisis está sin hacer **a
-    propósito** (ver "Quién lee la salida primero" más abajo). Es lo primero que hay que
-    hacer al retomar.
-  - **B2 — el código (`Seniority`, `TitleNormalizer` y su test): PENDIENTE.** Depende de
-    las guardas que salgan de leer B1.
-- **Paso C — la tabla y el proceso que la puebla: PENDIENTE.**
+- **Paso B — el normalizador (función pura): HECHO, a falta de que Elias corra los
+  tests.**
+  - **B1 — falsos positivos de los tokens de seniority: MEDIDO Y ANALIZADO.** Salida en
+    `medicion-seniority.txt`.
+  - **B1b — la cabeza de `senior` a fondo: MEDIDO Y ANALIZADO.** Salió de que el top 15
+    de B1 dejaba el caso sospechado fuera de la ventana. Salida y análisis en
+    `medicion-senior.txt`.
+  - **B2 — el código: ESCRITO.** `Seniority`, `TitleNormalizer` y
+    `TitleNormalizerTest`. `./mvnw test` da **80 tests en verde** (eran 62).
+- **Paso C — la tabla y el proceso que la puebla: PENDIENTE.** Es lo que sigue.
 
-**Por dónde arrancar la próxima sesión:** Elias lee `medicion-seniority.txt`, y con eso
-se define la lista de guardas de B2 —cada una justificada con su número— y se escribe el
-código. No hace falta correr ninguna medición más.
+**Por dónde arrancar la próxima sesión:** el paso C, que está descripto más abajo. Las
+reglas del normalizador están todas cerradas y medidas; no hace falta correr ninguna
+medición más para seguir.
 
 **Atajo de lectura:** las secciones "Resultados" y "Segunda ronda" son **salida cruda de
 psql, larga y saltéable**. Lo que hay que leer sí o sí es "Decisiones ya tomadas", "El
 análisis", "Decisiones que cerró el paso A" y los pasos B1, B2 y C.
 
-Las salidas crudas de las tres mediciones viven en la raíz del repo, **sin versionar**
+Las salidas crudas de las mediciones viven en la raíz del repo, **sin versionar**
 (se borran cuando el plan termine):
 
 | Archivo | Qué contiene |
 |---|---|
-| `medicion-titulos.txt` | Paso A, primera ronda: distribución del título limpio. Ya analizada. |
-| `medicion-titulos-ronda2.txt` | Paso A, segunda ronda: cuantificación del seniority. Ya analizada. |
-| `medicion-seniority.txt` | **Paso B1: falsos positivos de cada token de seniority. SIN ANALIZAR.** |
+| `medicion-titulos.txt` | Paso A, primera ronda: distribución del título limpio. Analizada. |
+| `medicion-titulos-ronda2.txt` | Paso A, segunda ronda: cuantificación del seniority. Analizada. |
+| `medicion-seniority.txt` | Paso B1: falsos positivos de cada token de seniority. Analizada. |
+| `medicion-senior.txt` | Paso B1b: la cabeza de `senior` a fondo. **Trae el análisis escrito adentro**, arriba de la salida cruda. |
 
 ## A dónde vamos
 
@@ -988,59 +990,122 @@ lo rodea a cada lado.
   3.133, `ii` 1.947 contra 1.941). Las diferencias chicas son esperables: la ronda 2
   contó con un regex sobre el título entero y B1 cuenta por **token exacto**.
 
-### Cómo cierra B1
+### Lo que cerró B1, y el agujero que dejó
 
-Elias lee `medicion-seniority.txt`. Con eso se define **la lista de guardas**, cada una
-justificada con su número, y recién entonces se escribe B2. **El análisis está
-deliberadamente sin hacer**: no hay que reconstruirlo ni buscarlo en otro lado, hay que
-leer el `.txt`.
+**Siete de los diez tokens no necesitan guarda:** `sr` 3.119 (92,8% en primera posición),
+`junior` 543 y `jr` 73 —S5 los muestra título por título y son todos legítimos—,
+`principal` 2.154 —ni un caso de director de escuela—, e `ii` 1.947 / `iii` 462, que
+según S6 siempre siguen a un sustantivo de rol (`engineer ii` 351), nunca `phase ii`.
+`senior` entra también acá, pero por lo que midió B1b.
+
+**Tres sí**, y las guardas están en el paso B2, cada una con su número.
+
+El agujero: S2 traía solo el **top 15** de la palabra siguiente a cada token, y para
+`senior` —21.138 apariciones— ese top 15 corta en 209 vacantes, así que los usos
+sospechados quedaban fuera de la ventana. De ahí salió B1b.
+
+## Paso B1b — la cabeza de `senior` a fondo
+
+**Corrido y analizado el 2026-09-12. `medicion-senior.txt` trae el análisis escrito
+adentro, arriba de la salida cruda.**
+
+Cuatro consultas sobre la misma vista `sen` de B1, filtrando `tok = 'senior'`: el top
+**50** de la palabra siguiente y de la anterior con porcentaje acumulado, los 50 títulos
+completos más frecuentes de la **cola** que queda fuera de ese top 50, y un conteo
+directo de los usos donde `senior` podría ser sustantivo.
+
+Lo que encontró:
+
+- **El falso positivo existe y son 37 vacantes sobre 21.100: el 0,18%.** No tiene la
+  forma sospechada —`senior care` son 2 y `senior living` 1—, sino `senior` como
+  **paciente**, en dos plantillas de una empresa de cuidado domiciliario:
+  `caregiver needed support for a senior client <ciudad>` 21 y
+  `hiring caregiver for a female|male senior in <ciudad>` 16.
+- **`senior client` (114) no era el problema**: 93 son seniority legítima
+  (`senior client success manager`, `senior client partner`).
+- **La cola no esconde nada.** El top 50 cubre el 67,3%, y los 50 títulos más frecuentes
+  del 32,7% restante son todos puestos reales (`senior analytics engineer` 31,
+  `senior recruiter` 25).
+- **Hallazgo nuevo: `semi senior`**, el nivel intermedio del mercado hispanoamericano.
+
+**Decisión de Elias: `senior` no lleva guarda**, porque el 0,18% no daña los títulos de
+los que sí se extrae.
 
 ## Paso B2 — el normalizador (función pura)
 
-Chico y cerrado: **no toca la base**. Se prueba entero con `./mvnw test`.
+**HECHO.** Tres archivos, sin base y sin Spring:
 
-- `src/main/java/oneprofile/backend/model/Seniority.java` — enum, al lado de `Ats` y
-  `BoardStatus`. Valores: `ENTRY`, `JUNIOR`, `MID`, `SENIOR`, `STAFF`, `PRINCIPAL`,
-  `LEVEL_2`, `LEVEL_3`. Los dos últimos son `ii` y `iii` **sin traducir a una
-  seniority nombrada**: mapear "Engineer II" a `MID` sería inventar una equivalencia
-  que los datos no dicen.
+- `src/main/java/oneprofile/backend/model/Seniority.java` — enum al lado de `Ats` y
+  `BoardStatus`. Los valores **se declaran de menor a mayor** (`ENTRY`, `JUNIOR`,
+  `SEMI_SENIOR`, `MID`, `SENIOR`, `STAFF`, `PRINCIPAL`) y después `LEVEL_2` y `LEVEL_3`,
+  que quedan fuera de esa escala. **El orden de declaración es significativo**: lo usa la
+  regla del mínimo.
 - `src/main/java/oneprofile/backend/util/TitleNormalizer.java` — clase final sin
-  instancias, un método `static NormalizedTitle normalize(String title)` que devuelve
-  un record `(String title, Seniority seniority)`. Función pura, sin red y sin Spring,
-  al lado de `GreenhouseBoardUrl` y `HtmlToText`. Implementa la regla de la lista
-  blanca y después saca el seniority. Devuelve `title` en `null` cuando no queda nada,
-  igual que `HtmlToText.plainText`.
+  instancias, al lado de `HtmlToText` y `GreenhouseBoardUrl`. Un método
+  `static NormalizedTitle normalize(String)` que devuelve el record
+  `(String title, Seniority seniority)`.
+- `src/test/java/oneprofile/backend/util/TitleNormalizerTest.java` — 18 tests, todos con
+  títulos reales de las mediciones.
 
-  **Precedencia cuando hay más de uno** ("Senior Staff Engineer" existe):
-  `PRINCIPAL` > `STAFF` > `SENIOR` > `MID` > `JUNIOR` > `ENTRY`, y los niveles
-  `ii`/`iii` solo se miran si no apareció ninguna palabra. **S4b es la que dice si esa
-  precedencia alcanza** o si hay combinaciones que no se previeron.
+### Las reglas que implementa
 
-  **Las guardas de los falsos positivos salen de B1** y hay que leerlas de ahí: un token
-  cuenta como seniority solo si pasa su guarda, y si no la pasa **se queda adentro del
-  título** como cualquier otra palabra. La forma que tome cada guarda —posición en el
-  título, palabra siguiente, palabra anterior— la decide la salida de B1; lo que ya se
-  sabe es que **la posición es la guarda preferible cuando alcanza**, porque es general,
-  y que enumerar palabras es el último recurso, por la misma razón por la que la
-  limpieza de caracteres es lista blanca y no lista negra.
-- `src/test/java/oneprofile/backend/util/TitleNormalizerTest.java` — sin contexto de
-  Spring. Casos que salen de los datos reales medidos: `C++`, `C#`, `.NET`, `Node.js`,
-  `R&D`, `Women's`; los negativos de la regla posicional (`Engineer.`, `#hiring`,
-  `Sales & Marketing`); las variantes que la consulta H mostró colapsando
-  (`Sr. Software Engineer - Backend`, `Senior Software Engineer (Backend)`,
-  `Aide à domicile (H/F)`); la precedencia de `Senior Staff Engineer`; y que
-  `Director of Engineering` **conserva** el `director`.
+**Limpieza: lista blanca.** Minúsculas → sin diacríticos → el apóstrofo se borra sin
+dejar espacio (`women's` → `womens`) → todo lo que no sea letra, dígito o espacio pasa a
+espacio, salvo `.` seguido de alfanumérico (`.net`), `#` precedido de alfanumérico (`c#`),
+`+` precedido de alfanumérico o de otro `+` (`c++`) y `&` entre alfanuméricos (`r&d`) →
+colapsar espacios. Las clases son unicode, así que un título en coreano no queda vacío.
 
-  Se suman **un test por cada falso positivo que B1 confirme** —el caso tiene que ser un
-  título real de la salida, no inventado—, que el título en coreano no quede vacío, y que
-  `null`, `""` y un título que es solo puntuación devuelvan `title` en `null`.
+**Un detalle que el SQL de las mediciones no tenía:** al final se recompone a **NFC**,
+porque NFD parte cada sílaba del hangul en sus letras y dejarlo así daría dos escrituras
+del mismo título coreano. Para el alfabeto latino no cambia nada.
+
+**Los tokens de seniority y sus guardas:**
+
+| Token | Guarda | Falso positivo que evita |
+|---|---|---|
+| `senior`, `sr`, `junior`, `jr`, `principal`, `ii`, `iii`, `ssr`, `semisenior` | ninguna | — |
+| `semi senior` / `semi sr` | se reconoce como **secuencia de dos tokens**, antes que los sueltos | que `semi senior` dé `SENIOR` |
+| `entry` 287 | solo si le sigue `level` (196) | `entry door` 72, `data entry` |
+| `mid` 566 | solo si le sigue `level`, si cierra el título, o si forma rango con otro nivel (~125) | `mid market` 300, `mid atlantic` 25, `mid enterprise` 15 |
+| `staff` 4.557 | no cuenta si lo precede `of` —directo o con una palabra en el medio—, si cierra el título, o si le sigue `nurse`, `accountant` o `attorney` | `chief of staff` 119, `member of technical staff` 117, `staff nurse` 66, `staff accountant` 53 |
+
+Un token que no pasa su guarda **se queda adentro del título** como una palabra más.
+
+**Cuando el título nombra más de un nivel (1.584 títulos), gana el más bajo**, porque una
+vacante publica **el piso que acepta**: `junior to senior project manager` busca gente
+desde junior. Quedarse con el máximo subiría la barra de entrada y escondería vacantes
+para las que el usuario califica; el error es asimétrico. Así: `senior staff` 609 →
+`SENIOR`, `staff principal` 32 → `STAFF`, `mid senior` 39 → `MID`, `ii iii` 47 →
+`LEVEL_2`. El orden `STAFF < PRINCIPAL` es **convención adoptada**, no un hecho medido, y
+está escrito en el javadoc del enum.
+
+`LEVEL_2` y `LEVEL_3` están declarados después de toda la escala de palabras, así que el
+mínimo hace sola la regla de que **una palabra le gane a un numeral**: `senior ii` 244 →
+`SENIOR`.
+
+### El semi senior, medido antes de escribirlo
+
+Elias lo pidió con esta razón: *"quiero darle importancia al español, ahora tengo pocas
+vacantes, pero cuando sume más ATS van a ser más"*. El dataset de hoy sale de un solo ATS
+sesgado a Estados Unidos, así que su volumen actual subestima el caso; y hoy se
+clasificaría como `SENIOR`, que es un dato **equivocado**, no solo incompleto.
+
+`semi senior` son **13** vacantes, `semisenior` en una palabra **1**, y `ssr` **3**, las
+tres con sentido de semi senior (`ssr data scientist`, `accounting analyst ssr`). **`ssr`
+no colisiona con *server-side rendering***: ningún título lo usa así, y "server side
+rendering" no aparece escrito entero en ninguno. `junior senior` 6 **no** es semi senior:
+son rangos.
+
+`SEMI_SENIOR` es un valor propio y **no se mapea a `MID`**: son escalas de culturas
+distintas y equipararlas sería inventar la equivalencia que el paso A ya descartó para
+`ii` / `iii`.
 
 ### Cómo cierra B2
 
-`./mvnw test` en verde. Hoy son 62 tests; los nuevos se suman a esa cuenta. **No hay
-prueba manual contra prod en este paso**: el normalizador no tiene red ni base, así que
-los tests *son* la verificación. La corrida real llega en el paso C, cuando exista la
-tabla.
+`./mvnw test` en verde. Da **80 tests** (eran 62; los 18 nuevos son del normalizador).
+**No hay prueba manual contra prod**: el normalizador no tiene red ni base, así que los
+tests son la verificación. La corrida real llega en el paso C.
+
 
 ## Paso C — la tabla y el proceso que la puebla
 
@@ -1077,6 +1142,16 @@ y el C con una corrida real contra prod.
   `general application / speculative / future opportunities` 296. Son formularios de
   "dejanos tu CV". No se filtran en estos pasos porque nadie lo pidió; se decide cuando
   el matching exista y moleste.
+- **Los rangos de nivel** (`junior to senior` 13, `junior senior` 6, `i ii iii` 94, ~200
+  vacantes en total) los resuelve bien la regla del mínimo, que es justamente el caso que
+  la motiva. Lo que queda feo es el conector suelto: `controls engineer all levels junior
+  to senior` deja el título en `controls engineer all levels to`. No se limpia porque
+  nadie lo pidió y son 200 sobre 128.953.
+- **El falso positivo de `senior`** —37 vacantes de cuidado domiciliario, el 0,18%— está
+  medido y **sin guarda por decisión de Elias**. Si alguna vez molesta, la guarda sería
+  descartar `senior` cuando lo precede `a`, `female` o `male`.
+- **El nivel `i` no está en la lista de tokens** y no hay `LEVEL_1`: no se midió y no se
+  pidió, así que `engineer i` conserva el `i` adentro del título.
 - **`associate` (5.861) quedó adentro del título** por ambiguo. Desambiguarlo exige
   mirar la palabra siguiente y no hay pedido de hacerlo.
 - **`docs/MEDICION-VACANTES.md` dice 85.050 títulos distintos y acá dan 87.647**, con el

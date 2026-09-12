@@ -1,0 +1,468 @@
+================================================================================
+ MEDICION B1b — la cabeza de `senior` a fondo
+ Corrida contra prod el 2026-09-12. psql salio con codigo 0 en las dos rondas y
+ la salida no tiene ningun ERROR ni "does not exist".
+ Control de sanidad: 21.138 apariciones sobre 21.100 vacantes, identico a S1 de
+ `medicion-seniority.txt`.
+================================================================================
+
+ POR QUE SE CORRIO
+ -----------------
+ La consulta S2 de `medicion-seniority.txt` traia solo el top 15 de la palabra
+ siguiente a cada token. Para `senior`, que tiene 21.138 apariciones, ese top 15
+ corta en 209 vacantes: los usos sospechados (`senior care`, `senior living`)
+ quedaban FUERA de la ventana de la medicion. Concluir de ahi que no existen es
+ ausencia de evidencia, no evidencia de ausencia.
+
+
+================================================================================
+ EL ANALISIS
+================================================================================
+
+ 1. EL FALSO POSITIVO EXISTE, Y ES 37 VACANTES SOBRE 21.100 — EL 0,18%.
+ ----------------------------------------------------------------------
+ Pero NO tiene la forma que yo habia sospechado. `senior care` son 2 vacantes y
+ `senior living` 1 (SR4b). El eldercare no aparece como `senior <sustantivo>`.
+
+ Aparece con `senior` como el PACIENTE, en dos plantillas de una sola empresa de
+ cuidado domiciliario (SR6):
+
+   21  caregiver needed support for a senior client <ciudad> <estado> <zip>
+   16  hiring caregiver for a female|male senior in <ciudad> <estado> <zip>
+   ---
+   37  total
+
+ Ahi `senior` es la persona mayor, no el nivel del puesto. El normalizador hoy
+ produciria `SENIOR` + "caregiver needed support for client lancaster
+ pennsylvania 17603", que es un dato equivocado.
+
+ SR7 da 46, pero 9 de esos son ruido del propio patron de busqueda y hay que
+ descartarlos: `senior welder` (3) hace match con "elder" adentro de "w-elder",
+ `senior named account executive majors adelaide` con "aide" adentro de
+ "ad-elaide", y `senior director companion diagnostics` (2) y `senior medical
+ lead ai health companion` con "companion" en su sentido de producto. El numero
+ bueno es 37.
+
+ 2. `senior client` (114, el rn 31 de SR1) NO es el problema que parecia.
+ -----------------------------------------------------------------------
+ SR5 lo desglosa titulo por titulo: 93 de los 114 son seniority legitima
+ (`senior client success manager` 8, `senior client solution architect` 8,
+ `senior client manager` 5, `senior client partner`, `senior client portfolio
+ manager`...). Los 21 restantes son la plantilla de caregiver ya contada arriba.
+
+ 3. LA COLA NO ESCONDE NADA.
+ ---------------------------
+ El top 50 de SR1 cubre el 67,3% de las apariciones: quedan 6.909 afuera, que es
+ mucho, y era justo el agujero de la medicion anterior. SR3 lista los 50 titulos
+ completos mas frecuentes de esa cola y son todos puestos reales con seniority
+ legitima: `senior analytics engineer` 31, `senior forward deployed engineer` 30,
+ `senior recruiter` 25, `senior designer` 22, `senior producer` 20, `senior
+ frontend engineer` 19, `senior revenue accountant` 19. Ni un solo caso donde
+ `senior` no sea el nivel. La cola es variedad semantica, no basura.
+
+ 4. SR2 CONFIRMA QUE LA POSICION YA HACE CASI TODO EL TRABAJO.
+ -------------------------------------------------------------
+ El 91,8% de las apariciones esta en primera posicion, y el acumulado del top 50
+ de la palabra anterior llega al 96,2%. Las dos entradas que delatan el eldercare
+ son justamente las que NO son primera posicion: `a senior` (21, "for a senior
+ client") y `female senior` (11, "for a female senior in").
+
+ 5. HALLAZGO NUEVO: `semi senior` (SR8, 12 vacantes).
+ ----------------------------------------------------
+ Es el nivel intermedio del mercado hispanoamericano —esta entre junior y
+ senior—, no un senior. `analista qa funcional semi senior`, `desarrollador ios
+ semi senior`, `semi senior data engineer`. Hoy el normalizador les pondria
+ SENIOR, que esta mal. Son 12 sobre 128.953.
+
+
+================================================================================
+ LO QUE PROPONGO
+================================================================================
+
+ NINGUNA GUARDA PARA `senior`.
+
+ El falso positivo esta medido y es el 0,18% del token. Una guarda —descartar
+ `senior` cuando lo precede `a`, `female` o `male`— corregiria unas 32 de las 37,
+ pero significa escribir codigo y un caso de test para un 0,18%, enumerando
+ palabras, que es el ultimo recurso de la regla de limpieza. Con `staff` la
+ relacion era otra: ahi el falso positivo es ~10% del token.
+
+ Mismo criterio para `semi senior` (0,06%): no se escribe nada.
+
+ Las dos cosas quedan anotadas como puntos abiertos en el plan, con su numero, y
+ si mas adelante molestan se agrega la guarda en ese momento.
+
+ Y queda cerrado lo que faltaba de B1: de los diez tokens, SIETE no necesitan
+ guarda (`senior`, `sr`, `junior`, `jr`, `principal`, `ii`, `iii`) y TRES si
+ (`entry`, `mid`, `staff`), con las guardas ya decididas. Se puede escribir B2.
+
+
+================================================================================
+ SALIDA CRUDA — PRIMERA RONDA (SR0 a SR4b)
+================================================================================
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+
+=== SR0. total de apariciones de senior ===
++-------------+----------+
+| apariciones | vacantes |
++-------------+----------+
+|       21138 |    21100 |
++-------------+----------+
+(1 row)
+
+
+=== SR1. top 50 de la palabra QUE LE SIGUE a senior, con acumulado ===
++----+------------------+----------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| rn |    siguiente     | vacantes | pct_acum |                                                                        ejemplos                                                                        |
++----+------------------+----------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+|  1 | software         |     2599 |     12.3 | 1529 senior software engineer ruby on rails | ai native senior software engineer | ai native senior software engineer md drive | ai security senior so |
+|  2 | manager          |     1311 |     18.5 | 711 senior manager talent acquisition | accounts payable shared services senior manager | acquisition strategist senior manager eatontown nj | advisor |
+|  3 | product          |     1215 |     24.2 | 1519 senior product manager | dogbyte senior product manager | emea senior product marketing manager | l6 2 senior product manager ii retail product | |
+|  4 | data             |      673 |     27.4 | 1509 senior data privacy specialist onetrust dsar | 1521 senior data and insight engineer | 1542 senior data reporting engineer python sql aws | cubis |
+|  5 | staff            |      632 |     30.4 | avionics production engineer senior staff | contract senior staff product manager us east | electrical engineer senior staff egse | electrical enginee |
+|  6 | director         |      584 |     33.2 | ai product senior director | analytics senior director | business development senior director capital markets | client strategy senior director | cmbs |
+|  7 | account          |      549 |     35.8 | 21grams senior account executive | account executive and senior account executive future opportunity | account executive senior account executive amer |
+|  8 | technical        |      391 |     37.6 | contract senior technical recruiter | developpeur euse logiciel simulation houdini simulation houdini senior technical developer | north america aiviq |
+|  9 | associate        |      356 |     39.3 | 2027 phd abd graduates economic consulting senior associate canada | 2027 phd abd graduates economic consulting senior associate united states | accou |
+| 10 | project          |      301 |     40.7 | 1531 senior project manager | 21grams senior project manager | associate director principal project manager senior project manager operational excelle |
+| 11 | sales            |      268 |     42.0 | dach senior sales manager | ft senior sales associate brea | fx senior sales executive | pt senior sales associate | senior sales account executive |  |
+| 12 | backend          |      258 |     43.2 | middle to senior backend engineer | senior backend .net software engineer | senior backend data engineer | senior backend developer | senior backend d |
+| 13 | customer         |      241 |     44.4 | bilingual senior customer success manager responsable senior du succes client ste 12 month contract french english | ces senior customer service speci |
+| 14 | ai               |      237 |     45.5 | cxo senior ai automation specialist | developpeur euse senior en ia systemes agentiques senior ai agentic systems developer | full stack software engi |
+| 15 | security         |      209 |     46.5 | 178 senior security control assessor | csso senior security manager | grupo quintoandar senior security engineer datasecurity | senior security alarm  |
+| 16 | analyst          |      208 |     47.5 | account payable senior analyst bangkok based relocation provided | analyst senior analyst associate manager corporate strategy bangkok based | analyst |
+| 17 | solutions        |      207 |     48.4 | advisory senior solutions architect | ai senior solutions architect global advanced services uk us | regional senior solutions architect | senior solu |
+| 18 | engineer         |      205 |     49.4 | ai senior engineer graph | ai senior engineer vision | backend senior engineer | electrical engineer iv senior engineer | engineer senior engineer pyt |
+| 19 | mechanical       |      203 |     50.4 | avionics senior mechanical engineer | robotics senior mechanical engineer | senior mechanical and industrial design engineer | senior mechanical contr |
+| 20 | full             |      189 |     51.3 | ai first senior full stack engineer | full stack engineer senior full stack engineer | senior full stack .net developer | senior full stack ai applica |
+| 21 | systems          |      184 |     52.1 | ets senior systems engineer | senior systems administrator | senior systems administrator it | senior systems administrator microsoft 365 azure aws |  |
+| 22 | business         |      180 |     53.0 | bfa senior business analyst change management | business analyst senior business analyst banking | semi senior business analyst | senior business affa |
+| 23 | electrical       |      168 |     53.8 | electrical engineer designer iii senior electrical engineer designer | electrical engineer iv senior electrical engineer | electrical iv senior electr |
+| 24 | machine          |      165 |     54.6 | senior data science engineer senior machine learning engineer applied insights | senior machine control software engineer | senior machine learning da |
+| 25 | (fin del titulo) |      162 |     55.3 | 2026 project manager associate mid senior | 718 business analyst for the chief scientist engineer senior | 720 directorate management liaison senior | |
+| 26 | consultant       |      161 |     56.1 | ai business consultant senior consultant wealth asset management | ajo senior consultant | ajo senior consultant database | alm qa senior consultant | |
+| 27 | specialist       |      141 |     56.8 | 2026 people rewards senior specialist principal specialist bangkok based relocation provided | ai business operations senior specialist | collections  |
+| 28 | engineering      |      131 |     57.4 | engineering manager senior engineering manager infrastructure team | rd senior engineering team lead | senior engineering architect | senior engineeri |
+| 29 | site             |      127 |     58.0 | grupo quintoandar senior site reliability engineer ai platform | senior platform engineer senior devops engineer senior infrastructure engineer senior |
+| 30 | accountant       |      123 |     58.6 | financial reporting equity administration senior accountant | financial reporting senior accountant | senior accountant | senior accountant accounting |
+| 31 | client           |      114 |     59.1 | caregiver needed support for a senior client bronxville new york 10708 | caregiver needed support for a senior client franklin massachusetts 02038 | c |
+| 32 | enterprise       |      114 |     59.6 | senior enterprise account executive | senior enterprise account executive acquisition bengaluru india | senior enterprise account executive acquisitio |
+| 33 | principal        |      109 |     60.2 | autonomy engineer ops research senior principal | director senior principal ai soc validation bring up lead | electrical engineer senior principal har |
+| 34 | devops           |      107 |     60.7 | senior devops | senior devops delivery engineer delivery | senior devops engineer | senior devops engineer aws | senior devops engineer aws java linux |
+| 35 | manufacturing    |      106 |     61.2 | data scientist ii senior manufacturing analytics | robotics senior manufacturing engineer | senior manufacturing development engineer automation | sen |
+| 36 | financial        |      104 |     61.7 | analyst senior financial analyst | cls senior financial planning analysis hub fp&a | manager senior financial planner dallas tx | senior financial acc |
+| 37 | lead             |      104 |     62.1 | accountant finance senior lead | client strategy senior lead media | convergent video audio senior lead | distribution analytics lead senior lead mark |
+| 38 | partner          |      100 |     62.6 | marketing senior partner marketing manager | payroll senior partner bangkok based relocation provided | sales assistant to senior partner | senior par |
+| 39 | executive        |       96 |     63.1 | advanced analytics senior executive goc | analytics senior executive | analytics senior executive goc | commerce senior executive goc | data managemen |
+| 40 | marketing        |       96 |     63.5 | marketing executive senior marketing executive digital subscription growth | senior marketing ai systems manager | senior marketing analyst | senior m |
+| 41 | program          |       95 |     64.0 | dow skillbridge senior program manager | dow skillbridge senior program manager in space | eats senior program management specialist l5 q commerce str |
+| 42 | it               |       89 |     64.4 | global senior it auditor | senior it administrator | senior it analyst | senior it app automation engineer | senior it application specialist | senior |
+| 43 | network          |       86 |     64.8 | senior network administrator | senior network analyst ii | senior network and infrastructure engineer | senior network deployment technician resibridg |
+| 44 | platform         |       84 |     65.2 | grupo quintoandar senior platform engineer women applicants only | senior platform developer | senior platform devex engineer devops | senior platform |
+| 45 | cloud            |       81 |     65.6 | senior cloud administrator | senior cloud architect | senior cloud architect delivery genai | senior cloud architect network sre | senior cloud data a |
+| 46 | clinical         |       77 |     65.9 | band 4 5 senior clinical trials pharmacy technician act | clinical project manager senior clinical project manager | clinical research associate ii se |
+| 47 | counsel          |       77 |     66.3 | markets derivatives senior counsel | senior counsel | senior counsel capital markets | senior counsel cards product | senior counsel clinical r&d lega |
+| 48 | quality          |       74 |     66.7 | contractor senior quality engineer | senior quality analyst salesforce digital technology | senior quality assurance analyst | senior quality assuranc |
+| 49 | research         |       70 |     67.0 | process development senior research associate associate scientist | research associate ii senior research associate therapeutics | research associate  |
+| 50 | people           |       68 |     67.3 | hr senior people operations specialist | senior people analytics manager | senior people business partner | senior people business partner alternative |
++----+------------------+----------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+(50 rows)
+
+
+=== SR2. top 50 de la palabra QUE LE PRECEDE a senior, con acumulado ===
++----+------------------------+----------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| rn |        anterior        | vacantes | pct_acum |                                                                        ejemplos                                                                        |
++----+------------------------+----------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+|  1 | (principio del titulo) |    19408 |     91.8 | senior .net azure ai developer baltimore md | senior .net developer | senior .net developer application infrastructure temporary position | senior .ne |
+|  2 | manager                |      103 |     92.3 | area manager senior area manager manila based | area manager senior area manager strategic accounts japan based in tokyo | area manager senior area ma |
+|  3 | engineer               |       67 |     92.6 | 718 business analyst for the chief scientist engineer senior | agile modeling simulation engineer senior 920 | ai agentic engineer senior | ai analyti |
+|  4 | staff                  |       48 |     92.8 | member of technical staff senior software engineer | member of technical staff senior specialized indexing | staff senior agi solutions engineer | sta |
+|  5 | director               |       46 |     93.1 | assistant director senior writer | associate director senior manager health economics outcomes research organ health | associate director senior manag |
+|  6 | analyst                |       45 |     93.3 | 721 division business analyst senior | 732 cd toc network analyst senior | analyst senior analyst associate manager corporate strategy bangkok based | |
+|  7 | operations             |       43 |     93.5 | ahs operations senior associate | ai business operations senior specialist | ai strategy operations senior manager | back office operations senior ass |
+|  8 | to                     |       36 |     93.7 | controls engineer all levels junior to senior | data center construction mid to senior project manager | data center construction mid to senior projec |
+|  9 | principal              |       32 |     93.8 | principal senior animator | principal senior mobile engineer trading strategies cex | principal senior principal scientist small molecule therapeutics |
+| 10 | ii                     |       29 |     93.9 | avionics test and launch engineer ii senior | clinical research associate ii senior clinical research associate | commissioning agent ii senior | comp |
+| 11 | scientist              |       22 |     94.0 | data scientist senior | data scientist senior 917 | data scientist senior analyst supply analytics bangkok based relocation provided | data scientist  |
+| 12 | a                      |       21 |     94.1 | advogado a senior renegociacao de credito | caregiver needed support for a senior client bronxville new york 10708 | caregiver needed support for a se |
+| 13 | strategy               |       21 |     94.2 | acquisition strategy senior associate | client strategy senior director | client strategy senior lead media | commercial strategy senior analyst | com |
+| 14 | mid                    |       20 |     94.3 | 2026 project manager associate mid senior | backend software engineer mid senior | devops engineer mid senior | front end developer mid senior java qu |
+| 15 | media                  |       17 |     94.4 | brand media senior associate | programmatic media senior associate | retail media senior manager | social media senior manager | wpp media senior acti |
+| 16 | consultant             |       16 |     94.5 | ai business consultant senior consultant wealth asset management | consultant senior chef de projet deploiement paiements h f | consultant senior cons |
+| 17 | lead                   |       16 |     94.6 | agile delivery lead senior | distribution analytics lead senior lead marketing data scientist | external stakeholder lead senior | full stack tech lea |
+| 18 | mep                    |       16 |     94.6 | mep senior engineer | mep senior field coordinator | mep senior manager systems integration | mep senior preconstruction engineer                      |
+| 19 | or                     |       15 |     94.7 | avionics r&d technician iii or senior | avionics technician i ii iii or senior | consultant or senior consultant | data scientist staff or senior aust |
+| 20 | president              |       14 |     94.8 | alternative distribution sales desk manager vice president senior vice president | global head of payroll vice president senior vice president | inter |
+| 21 | executive              |       13 |     94.8 | account executive senior account executive amer future talent opportunity | account executive senior remote august 2026 | account executive senior str |
+| 22 | marketing              |       13 |     94.9 | advisor marketing senior manager | email marketing senior specialist | field marketing senior analyst | growth marketing senior manager | lifecycle ma |
+| 23 | semi                   |       13 |     95.0 | analista qa funcional semi senior | business analyst semi senior | consultor sap co pa pc semi senior s 4hana | desarrollador android semi senior | de |
+| 24 | analytics              |       12 |     95.0 | advanced analytics senior executive goc | analytics senior director | analytics senior executive | analytics senior executive goc | data strategy anal |
+| 25 | iii                    |       12 |     95.1 | cnc machinist iii senior b shift | electrical engineer designer iii senior electrical engineer designer | engineer iii senior electrical engineer | en |
+| 26 | management             |       12 |     95.1 | 729 logistics and equipment management senior | analista de politicas e portifolio management senior exclusiva para pcd hibrido sao paulo sp | categor |
+| 27 | quintoandar            |       12 |     95.2 | grupo quintoandar senior data scientist | grupo quintoandar senior data scientist women applicants only | grupo quintoandar senior growth designer afi |
+| 28 | female                 |       11 |     95.2 | hiring caregiver for a female senior in brighton new york 14620 | hiring caregiver for a female senior in centennial colorado 80122 | hiring caregiver |
+| 29 | finance                |       11 |     95.3 | accountant finance senior lead | commercial finance senior analyst bangkok based relocation provided | grants finance senior associate manager | strat |
+| 30 | partner                |       11 |     95.3 | carbon partner senior assessoria de investimentos local belo horizonte | carbon partner senior assessoria de investimentos local brasilia | carbon par |
+| 31 | social                 |       11 |     95.4 | paid social senior account executive | paid social senior associate | paid social senior associate director | paid social senior director | paid socia |
+| 32 | specialist             |       11 |     95.5 | 726 financial operations specialist senior | administrative operations specialist senior | discovery collection specialist senior job#476 | disseminat |
+| 33 | analista               |       10 |     95.5 | analista senior de aplicaciones | analista senior de appsec | analista senior de estrategia de prevencao a fraudes | analista senior de growth crm | a |
+| 34 | global                 |       10 |     95.5 | global senior director of brand apparel marketing | global senior equity program manager | global senior it auditor | global senior manager early tale |
+| 35 | middle                 |       10 |     95.6 | middle senior forward deployed engineer python ai | middle senior java developer | middle senior software engineer java | middle senior software engin |
+| 36 | services               |       10 |     95.6 | accounts payable shared services senior manager | consumer services senior paid advertising strategist | oracle field services senior consultant | ora |
+| 37 | vdc                    |       10 |     95.7 | vdc senior engineer                                                                                                                                    |
+| 38 | bi                     |        9 |     95.7 | bi senior bi developer analytics engineer | data analytics business intelligence bi senior associate | data management and bi senior executive goc     |
+| 39 | freelance              |        9 |     95.8 | freelance senior designer | freelance senior digital marketing developer | freelance senior experiential producer | freelance senior presentation desi |
+| 40 | locum                  |        9 |     95.8 | band 6 7 locum senior ct radiographer west sussex | band 6 locum senior cardiac physiologist cambridge | band 6 locum senior inpatient physiotherapist |
+| 41 | negocios               |        9 |     95.9 | analista de negocios senior | analista de negocios senior bizdev | analista negocios senior growth | analista negocios senior inteligencia market shar |
+| 42 | administrator          |        8 |     95.9 | business administrator senior 862 | business administrator senior top secret with agreement to obtain ci poly | cloud systems administrator senior | l |
+| 43 | associate              |        8 |     95.9 | associate senior associate healthcare | associate senior associate management consulting | associate senior optical engineer r&d | associate senior ta |
+| 44 | contract               |        8 |     96.0 | contract senior content designer | contract senior front end engineer | contract senior organic growth specialist | contract senior producer project m |
+| 45 | dados                  |        8 |     96.0 | analista de dados senior | analista de dados senior campinas sp | cientista de dados senior | cientista de dados senior campinas sp | cientista de dad |
+| 46 | development            |        8 |     96.0 | business development senior associate | business development senior director capital markets | learning and development senior associate | learning de |
+| 47 | technician             |        8 |     96.1 | field service maintenance technician senior | industrial maintenance technician senior regional travel | maintenance technician senior | tool and die  |
+| 48 | and                    |        7 |     96.1 | account executive and senior account executive future opportunity | art director and senior copywriter on site nyc | mid and senior servicenow develop |
+| 49 | engineering            |        7 |     96.2 | ai software engineering senior manager | data engineering senior manager | engineering senior customer forward deployed engineer | forward deployed en |
+| 50 | fp&a                   |        7 |     96.2 | analista de fp&a senior ifood pago | fp&a senior analyst | fp&a senior analyst bangkok based relocation provided | fp&a senior analyst planning and ca |
++----+------------------------+----------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+(50 rows)
+
+
+=== SR3. la cola: titulos completos cuya palabra siguiente NO esta en el top 50 ===
++------------------------+
+| apariciones_en_la_cola |
++------------------------+
+|                   6909 |
++------------------------+
+(1 row)
+
++----+----------+-------------------------------------------------------+
+| rn | vacantes |                         clean                         |
++----+----------+-------------------------------------------------------+
+|  1 |       33 | senior market strategy and partnerships manager       |
+|  2 |       31 | senior analytics engineer                             |
+|  3 |       30 | senior forward deployed engineer                      |
+|  4 |       29 | senior instructional designer contract remote         |
+|  5 |       25 | senior recruiter                                      |
+|  6 |       22 | senior designer                                       |
+|  7 |       20 | senior producer                                       |
+|  8 |       19 | senior frontend engineer                              |
+|  9 |       19 | senior revenue accountant                             |
+| 10 |       18 | senior hr business partner                            |
+| 11 |       16 | senior application security engineer                  |
+| 12 |       16 | senior fullstack engineer                             |
+| 13 |       14 | senior brand designer                                 |
+| 14 |       14 | senior embedded software engineer                     |
+| 15 |       14 | senior medical writer                                 |
+| 16 |       14 | senior operations specialist                          |
+| 17 |       13 | senior firmware engineer                              |
+| 18 |       13 | senior fp&a analyst                                   |
+| 19 |       13 | senior operations manager                             |
+| 20 |       13 | senior qa engineer                                    |
+| 21 |       13 | senior talent acquisition partner                     |
+| 22 |       12 | senior field marketing manager                        |
+| 23 |       12 | senior qa automation engineer                         |
+| 24 |       11 | senior art director                                   |
+| 25 |       11 | senior commercial counsel                             |
+| 26 |       11 | senior design engineer                                |
+| 27 |       10 | senior civil engineer                                 |
+| 28 |       10 | senior community manager                              |
+| 29 |       10 | senior controls engineer                              |
+| 30 |       10 | senior solution architect                             |
+| 31 |       10 | senior structural engineer                            |
+| 32 |        9 | senior buyer                                          |
+| 33 |        9 | senior database reliability engineer                  |
+| 34 |        9 | senior flight software engineer                       |
+| 35 |        9 | senior gnc engineer                                   |
+| 36 |        9 | senior legal counsel                                  |
+| 37 |        9 | senior lifecycle marketing manager                    |
+| 38 |        9 | senior mobile engineer                                |
+| 39 |        9 | senior paid advertising strategist ecommerce          |
+| 40 |        9 | senior property manager                               |
+| 41 |        9 | senior test engineer                                  |
+| 42 |        8 | senior applied ai engineer                            |
+| 43 |        8 | senior contracts manager                              |
+| 44 |        8 | senior copywriter                                     |
+| 45 |        8 | senior graphic designer                               |
+| 46 |        8 | senior implementation consultant                      |
+| 47 |        8 | senior motion designer                                |
+| 48 |        8 | senior payments engineer acquiring payment processing |
+| 49 |        8 | senior process engineer                               |
+| 50 |        8 | senior salesforce developer                           |
++----+----------+-------------------------------------------------------+
+(50 rows)
+
+
+=== SR4. conteo directo de los usos donde senior es sustantivo, no nivel ===
++-----------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| siguiente | vacantes |                                                                                                 ejemplos                                                                                                 |
++-----------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| community |       22 | band 6 senior community physiotherapist whitehaven | senior community affairs partnerships manager | senior community editor | senior community growth manager | senior community lifecycle manager | se |
+| service   |       13 | bilingual senior service manager north atlanta | senior service delivery manager | senior service designer | senior service designer product experience | senior service operations manager | senior ser |
+| advisor   |        9 | senior advisor | senior advisor development manager | senior advisor drug product cmc | senior advisor for healthcare delivery | senior advisor grants program analyst | senior advisor manufacturing pa |
+| resident  |        3 | senior resident engineer | senior resident services coordinator san diego                                                                                                                                |
+| services  |        2 | senior services architect security cloud siem | senior services commissioning manager                                                                                                                    |
+| care      |        2 | senior care advisor | senior care integration nurse rn temporary                                                                                                                                         |
+| nutrition |        1 | senior nutrition researcher                                                                                                                                                                              |
+| living    |        1 | silverado senior living frederick hiring event                                                                                                                                                           |
+| life      |        1 | senior life underwriter                                                                                                                                                                                  |
+| home      |        1 | pessoa consultora de negocios imobiliarios senior home equity b2b parcerias brasilia distrito federal                                                                                                    |
++-----------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+(10 rows)
+
+
+=== SR4b. lo mismo mirando el titulo entero (por si senior queda lejos) ===
++------------------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|      patron      | vacantes |                                                                                                 ejemplos                                                                                                 |
++------------------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| senior community |       22 | band 6 senior community physiotherapist whitehaven | senior community affairs partnerships manager | senior community editor | senior community growth manager | senior community lifecycle manager | se |
+| senior life      |       19 | senior life underwriter | senior lifecycle counsel international | senior lifecycle manager | senior lifecycle marketing manager | senior lifecycle marketing manager enterprise partnerships bankrate | |
+| senior advisor   |       15 | senior advisor | senior advisor development manager | senior advisor drug product cmc | senior advisor for healthcare delivery | senior advisor grants program analyst | senior advisor manufacturing pa |
+| senior health    |        8 | senior healthcare analyst | senior healthcare architect | senior healthcare broker risk management | senior healthcare sales executive                                                                   |
+| senior resident  |        3 | senior resident engineer | senior resident services coordinator san diego                                                                                                                                |
+| senior care      |        2 | senior care advisor | senior care integration nurse rn temporary                                                                                                                                         |
+| senior services  |        2 | senior services architect security cloud siem | senior services commissioning manager                                                                                                                    |
+| senior living    |        1 | silverado senior living frederick hiring event                                                                                                                                                           |
+| senior home      |        1 | pessoa consultora de negocios imobiliarios senior home equity b2b parcerias brasilia distrito federal                                                                                                    |
+| senior nutrition |        1 | senior nutrition researcher                                                                                                                                                                              |
++------------------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+(10 rows)
+
+
+
+================================================================================
+ SALIDA CRUDA — SEGUNDA RONDA (SR5 a SR8)
+================================================================================
+CREATE VIEW
+
+=== SR5. los 114 de "senior client", desglosados por titulo ===
++----------+-----------------------------------------------------------------------------+
+| vacantes |                                    clean                                    |
++----------+-----------------------------------------------------------------------------+
+|        8 | senior client solution architect remote                                     |
+|        8 | senior client success manager programmatic                                  |
+|        6 | caregiver needed support for a senior client lancaster pennsylvania 17603   |
+|        6 | senior client success manager                                               |
+|        5 | senior client manager                                                       |
+|        4 | senior client executive northeast construction insurance                    |
+|        3 | caregiver needed support for a senior client franklin massachusetts 02038   |
+|        3 | caregiver needed support for a senior client richmond hill georgia          |
+|        3 | female caregiver needed part time support for senior client wailuku hi      |
+|        3 | senior client manager commercial p&c accounts                               |
+|        3 | senior client manager team lead for commercial p&c                          |
+|        2 | caregiver needed support for a senior client bronxville new york 10708      |
+|        2 | caregiver needed support for a senior client nashville tennessee 37212      |
+|        2 | caregiver needed support for a senior client san jose ca 95117              |
+|        2 | senior client account manager large customer sales pharma                   |
+|        2 | senior client director                                                      |
+|        2 | senior client experience analyst                                            |
+|        2 | senior client finance analyst                                               |
+|        2 | senior client intake specialist immigration and criminal defense            |
+|        2 | senior client services project manager cx                                   |
+|        2 | senior client success concierge                                             |
+|        1 | category management senior client lead                                      |
+|        1 | customer engagement senior client lead                                      |
+|        1 | retail insights senior client lead                                          |
+|        1 | senior client account manager app dev enterprise                            |
+|        1 | senior client account manager global strategic accounts media entertainment |
+|        1 | senior client account manager global strategic accounts tech ai             |
+|        1 | senior client account manager global strategic accounts uk                  |
+|        1 | senior client account manager large customer sales cpg                      |
+|        1 | senior client account manager large customer sales restaurants and drinks   |
+|        1 | senior client consultant agricultural facilities                            |
+|        1 | senior client delivery manager                                              |
+|        1 | senior client engagement manager                                            |
+|        1 | senior client executive                                                     |
+|        1 | senior client experience associate                                          |
+|        1 | senior client finance manager                                               |
+|        1 | senior client growth manager performance                                    |
+|        1 | senior client intake specialist immigration criminal law                    |
+|        1 | senior client leadership specialist                                         |
+|        1 | senior client management associate                                          |
+|        1 | senior client manager cpg                                                   |
+|        1 | senior client partner                                                       |
+|        1 | senior client partner acquisitions dach                                     |
+|        1 | senior client partner global strategic accounts uk                          |
+|        1 | senior client partner large customer sales big box retail                   |
+|        1 | senior client partner programmatic new york chicago                         |
+|        1 | senior client partnerships executive p572                                   |
+|        1 | senior client platform engineer                                             |
+|        1 | senior client portfolio manager                                             |
+|        1 | senior client portfolio manager fx dealer                                   |
+|        1 | senior client solutions manager brands agencies                             |
+|        1 | senior client strategist                                                    |
+|        1 | senior client success associate                                             |
+|        1 | senior client success manager activation p4649                              |
+|        1 | senior client success manager commercial                                    |
+|        1 | senior client success manager enterprise                                    |
+|        1 | senior client success manager insights cincinnati p4648                     |
+|        1 | senior client success manager new york ny                                   |
+|        1 | senior client success manager smarternotes                                  |
+|        1 | senior client support associate                                             |
+|        1 | senior client support specialist                                            |
+|        1 | shopper insights senior client lead                                         |
+|        1 | ta0094 senior client success manager                                        |
++----------+-----------------------------------------------------------------------------+
+(63 rows)
+
+
+=== SR6. titulos con senior que son de cuidado de personas mayores ===
++----------+---------------------------------------------------------------------------------+
+| vacantes |                                      clean                                      |
++----------+---------------------------------------------------------------------------------+
+|        6 | caregiver needed support for a senior client lancaster pennsylvania 17603       |
+|        4 | hiring caregiver for a male senior in sevierville tn 37876                      |
+|        3 | caregiver needed support for a senior client franklin massachusetts 02038       |
+|        3 | caregiver needed support for a senior client richmond hill georgia              |
+|        3 | female caregiver needed part time support for senior client wailuku hi          |
+|        3 | hiring caregiver for a female senior in eagle idaho 83616                       |
+|        2 | caregiver needed support for a senior client bronxville new york 10708          |
+|        2 | caregiver needed support for a senior client nashville tennessee 37212          |
+|        2 | caregiver needed support for a senior client san jose ca 95117                  |
+|        2 | hiring caregiver for a female senior in wailuku hi 96793 must know how to drive |
+|        2 | senior accountant finanzbuchhalter in m w d                                     |
+|        2 | senior director companion diagnostics                                           |
+|        2 | senior welder                                                                   |
+|        1 | hiring caregiver for a female senior in brighton new york 14620                 |
+|        1 | hiring caregiver for a female senior in centennial colorado 80122               |
+|        1 | hiring caregiver for a female senior in lynchburg virginia 24502                |
+|        1 | hiring caregiver for a female senior in maple grove minnesota 55369             |
+|        1 | hiring caregiver for a female senior in raleigh north carolina 27606            |
+|        1 | hiring caregiver for a female senior in smyrna tennessee 37167                  |
+|        1 | hiring caregiver for a male senior in atlanta ga 30342                          |
+|        1 | senior medical lead ai health companion x f m                                   |
+|        1 | senior named account executive majors adelaide                                  |
+|        1 | senior welder and fabrication technician                                        |
++----------+---------------------------------------------------------------------------------+
+(23 rows)
+
+
+=== SR7. total de esos ===
++----------+
+| vacantes |
++----------+
+|       46 |
++----------+
+(1 row)
+
+
+=== SR8. semi senior / semi sr ===
++----------+--------------------------------------------+
+| vacantes |                   clean                    |
++----------+--------------------------------------------+
+|        2 | analista qa funcional semi senior          |
+|        1 | business analyst semi senior               |
+|        1 | consultor sap co pa pc semi senior s 4hana |
+|        1 | desarrollador android semi senior          |
+|        1 | desarrollador cells semi senior            |
+|        1 | desarrollador ios semi senior              |
+|        1 | semi senior bi analyst                     |
+|        1 | semi senior business analyst               |
+|        1 | semi senior data engineer                  |
+|        1 | semi senior designer                       |
+|        1 | semi senior intercompany accountant        |
+|        1 | semi senior paid media                     |
++----------+--------------------------------------------+
+(12 rows)
+

@@ -231,6 +231,21 @@ Cada entrada es una regla aprendida, con la fecha en que se acordó.
   invocación de SSH**, porque con `tty_tickets` el ticket no sobrevive de una conexión a
   la siguiente. La contraseña no se guarda en ningún archivo ni en el repo.
 
+- **2026-09-12 — Un top N que no muestra el caso no prueba que el caso no exista.**
+  La medición de falsos positivos de seniority traía el **top 15** de la palabra
+  siguiente a cada token. Para `senior` —21.138 apariciones— ese top 15 cortaba en 209
+  vacantes y no incluía ninguno de los usos sospechados, y yo concluí que la sospecha
+  "no se confirmó". Elias me corrigió: *"mira la cabeza de senior más exhaustivamente,
+  analiza el top 50 de senior para buscar falsos positivos primero"*. Eso es ausencia de
+  evidencia tomada como evidencia de ausencia: la ventana de la consulta no llegaba
+  hasta donde podía estar el caso, así que la medición **no contestaba la pregunta**. La
+  regla: cuando una medición tiene una ventana (`limit`, top N, un umbral) y el caso
+  buscado **no aparece adentro**, se amplía la ventana y se vuelve a medir; no se
+  declara descartado. Ampliar es una consulta más, y es el mismo criterio que nos llevó
+  a medir en vez de suponer. Vale sobre todo cuando el token analizado domina el
+  volumen: ahí la cola invisible es justamente donde vive el riesgo. (Al ampliarla
+  apareció: el falso positivo existía, con otra forma, y es el 0,18% del token.)
+
 - **2026-09-11 — La documentación para personas es intuitiva y breve.** Elias pidió
   que quedara escrito que `docs/para-humanos/` se escribe para entenderse rápido y
   no para ser exhaustiva, notas de los diagramas incluidas. El detalle vive en
