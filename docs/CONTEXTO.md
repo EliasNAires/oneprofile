@@ -23,10 +23,15 @@ a punta: pipeline en verde, imagen bajada del registry, datos mudados y app anda
 proyección**: se esperaban ~250.000, o sea el doble. La media de la muestra (80 vacantes
 por empresa) tiraba para arriba; la mediana (17) era la guía correcta.
 
-**No hay ningún plan en curso.** Lo que sigue es normalizar, y todavía no hay un plan
-escrito para eso. Lo único que existe es la **medición** de la tabla `vacancy` corrida
-el 2026-09-12 contra prod, que vive en `docs/MEDICION-VACANTES.md`: números, sin
-enfoque propuesto.
+**Hay un plan en curso: la normalización de los títulos**, en
+`docs/PLAN-NORMALIZACION.md`, que es donde vive todo su detalle. Están medidas y
+analizadas la distribución del título y la del seniority; **todavía no hay una sola línea
+de código escrita** para este plan: falta el normalizador en Java y la tabla que lo
+guarde. Hay además **una tercera medición corrida y sin analizar** —los falsos positivos
+de los tokens de seniority, en `medicion-seniority.txt`—, que Elias tiene que leer antes
+de seguir. Ese documento arranca con un "Estado del plan" que dice exactamente qué está
+hecho, qué no, y por dónde retomar. La medición anterior de la tabla `vacancy`, sobre
+departamento e idioma, vive aparte en `docs/MEDICION-VACANTES.md`.
 
 ## Qué es esto
 
@@ -322,6 +327,10 @@ prod/.env.example
 docs/METODOLOGIA.md
 docs/CONTEXTO.md
 docs/MEDICION-VACANTES.md                           (los números medidos el 2026-09-12)
+docs/PLAN-NORMALIZACION.md                          (el plan en curso; se borra al terminarlo)
+medicion-titulos.txt                                (salida cruda de la medicion de titulos)
+medicion-titulos-ronda2.txt                         (salida cruda de la segunda ronda)
+medicion-seniority.txt                              (salida cruda del paso B1, sin analizar)
 docs/para-humanos/README.md                         (para personas, no para agentes)
 docs/para-humanos/descubrimiento.md
 docs/para-humanos/sondeo.md
@@ -978,8 +987,9 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 ## Qué NO existe todavía
 
 - **Nada normaliza los títulos, el departamento ni la ubicación.** Están guardados como
-  los escribió cada empresa. **La normalización todavía no empezó**: lo único que hay
-  es la medición de `docs/MEDICION-VACANTES.md`.
+  los escribió cada empresa. De la normalización **hay plan y hay mediciones, pero
+  todavía no hay una sola línea de código ni tabla nueva**: ver
+  `docs/PLAN-NORMALIZACION.md`.
 - Ningún perfil de usuario, ninguna lógica de matching.
 - Ningún endpoint que devuelva datos: los tres que hay disparan procesos. El de
   vacantes contesta con los contadores de lo que cargó, no con las vacantes.
@@ -1029,10 +1039,18 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Qué sigue
 
-Lo inmediato es la **normalización**, y **todavía no hay plan escrito**: se va a
-discutir de cero. Lo que sí está es la medición previa, en `docs/MEDICION-VACANTES.md`
-(volumen real, la columna `language`, la cardinalidad de los departamentos y una
-primera mirada a los títulos); esos números no se duplican acá.
+Lo inmediato es la **normalización de los títulos**, y el plan está escrito en
+`docs/PLAN-NORMALIZACION.md` con su estado al principio. Lo que falta de ese plan son
+dos etapas: el **normalizador** —una función pura en `util` que limpia el título y le
+extrae el seniority, con sus tests— y después la **tabla `normalized_vacancy`** con el
+proceso que la puebla. Las decisiones ya tomadas y los números que las respaldan están
+en ese documento y no se duplican acá.
+
+Lo que viene después de la normalización es **categorizar las vacantes en
+tech-adyacentes y no-tech-adyacentes**, que es para lo que se normaliza. La medición ya
+dejó claro que esa categorización **tiene que ser por tokens del título y no por un
+diccionario de títulos**: casi la mitad de las vacantes tiene un título que no se repite
+nunca.
 
 Más allá de eso, sin priorizar y sin planificar:
 

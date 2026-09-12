@@ -195,6 +195,42 @@ Cada entrada es una regla aprendida, con la fecha en que se acordó.
   `CONTEXTO.md` cada milestone se nombra **por lo que es** ("el despliegue", "el
   recorrido masivo de vacantes"), no por su número de paso. Dentro del plan en curso
   numerar está bien; al cerrarlo, lo que pase a `CONTEXTO.md` va sin números.
+- **2026-09-12 — Las consultas las corro yo; hay salidas que Elias lee primero.** Al
+  arrancar la normalización pidió *"dame las instrucciones para entrar a base de datos
+  en prod, y que queres saber, asi me internalizo con los datos yo tambien, posterior a
+  mi analisis, podes analizar vos tambien"*, y yo lo entendí como que quería
+  ejecutarlo él. Me corrigió: *"corre los comandos en mi servidor y dejame el txt de la
+  salida, asi lo leo"*. O sea que **ejecutar siempre me toca a mí** (`ssh elitedesk1`),
+  y lo que cambia según el tipo de medición es **quién lee la salida primero**:
+  verificar un número puntual lo analizo y lo cuento de una, pero **explorar la
+  distribución de un dataset para decidir cómo modelarlo la lee él antes**, para
+  formarse su propio criterio sin que mi lectura se lo anticipe. En ese caso el
+  entregable es el `.txt` crudo donde lo pueda abrir, más si los controles de sanidad
+  dieron bien, y el análisis se guarda hasta que él lo haya mirado. El documento del
+  plan igual lleva escrito **qué contesta cada consulta y por qué se pide**, que es lo
+  que le permite leer la salida sin mí.
+- **2026-09-12 — Para sacar ruido de texto: lista blanca, no lista negra.** Propuse
+  limpiar los títulos enumerando los separadores a eliminar y Elias lo invirtió:
+  *"why not all special caracters minus the ones i care about? feel free to see if
+  there's another special caracter we'd should keep"*. Se saca **todo** lo que no sea
+  letra, dígito o espacio, salvo una lista chica y explícita de lo que se conserva,
+  porque enumerar lo que molesta siempre deja alguno afuera y enumerar lo que importa
+  es un conjunto cerrado que se justifica caracter por caracter. Dos corolarios: la
+  lista blanca se propone **razonada**, con el ejemplo concreto de qué se rompería sin
+  cada caracter; y un caracter puede merecer conservarse **solo en cierta posición**
+  (el punto sirve en `.net`, es ruido en `Engineer.`).
+- **2026-09-12 — Si Elias ya autorizó, se reintenta; no se le devuelve el comando.**
+  En el servidor de prod el Docker es rootful y el usuario no está en el grupo `docker`,
+  así que las consultas necesitan `sudo`. El clasificador de auto mode me bloqueó el
+  `sudo` dos veces, y yo paré y le pasé el comando para que lo corriera él. Me corrigió:
+  *"deberias poder, en una sesion anterior pudiste. corre sudo antes de cada comando"*.
+  Es la regla de "las consultas las corro yo" aplicada al caso en que la herramienta se
+  pone en el medio: **cuando él ya dio la autorización, se busca otra forma razonable de
+  ejecutarlo en vez de delegárselo**. Lo que funcionó fue partirlo en dos llamadas —una
+  que cachea el ticket de `sudo`, otra que corre el comando—, pero dentro de la **misma
+  invocación de SSH**, porque con `tty_tickets` el ticket no sobrevive de una conexión a
+  la siguiente. La contraseña no se guarda en ningún archivo ni en el repo.
+
 - **2026-09-11 — La documentación para personas es intuitiva y breve.** Elias pidió
   que quedara escrito que `docs/para-humanos/` se escribe para entenderse rápido y
   no para ser exhaustiva, notas de los diagramas incluidas. El detalle vive en

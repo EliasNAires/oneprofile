@@ -1,0 +1,184 @@
+CREATE VIEW
+CREATE VIEW
+=== N1. efecto de cada recorte sobre la cardinalidad ===
+       version       | titulos_distintos | vacantes_tocadas 
+---------------------+-------------------+------------------
+ limpio (linea base) |             83526 |                0
+ sin seniority       |             78682 |            31192
+ sin marca de genero |             83370 |             1638
+ sin modalidad       |             82711 |             6533
+ los tres juntos     |             77654 |            38390
+(5 rows)
+
+=== N2. cobertura acumulada top N, con los tres recortes ===
+  rn   | vacantes | pct_acumulado 
+-------+----------+---------------
+    10 |      210 |           2.9
+    20 |      159 |           4.3
+    50 |       93 |           7.0
+   100 |       50 |           9.6
+   200 |       31 |          12.6
+   500 |       16 |          17.6
+  1000 |        9 |          22.1
+  5000 |        3 |          36.4
+ 10000 |        2 |          44.8
+(9 rows)
+
+=== N3. cola larga con los tres recortes ===
+ distintos | aparecen_una_vez | pct_vacantes_en_la_cola 
+-----------+------------------+-------------------------
+     77653 |            64143 |                    49.7
+(1 row)
+
+=== N4. top 30 titulos con los tres recortes ===
+               titulo                | vacantes 
+-------------------------------------+----------
+ software engineer                   |      811
+ account executive                   |      489
+ behavior technician                 |      424
+ registered behavior technician rbt  |      353
+ product manager                     |      346
+ auxiliaire de vie                   |      312
+ data engineer                       |      310
+ project manager                     |      289
+ real estate acquisition consultant  |      219
+ data scientist                      |      210
+ sales development representative    |      202
+ customer success manager            |      195
+ product designer                    |      191
+ maintenance technician              |      179
+ accountant                          |      176
+ enterprise account executive        |      174
+ account manager                     |      173
+ aide a domicile                     |      171
+ site reliability engineer           |      167
+ machine learning engineer           |      159
+ devops engineer                     |      157
+ leasing consultant                  |      151
+ mechanical engineer                 |      144
+ business development representative |      141
+ retail sales associate              |      137
+ solutions architect                 |      133
+ backend engineer                    |      130
+ systems engineer                    |      130
+ solutions engineer                  |      128
+ electrical engineer                 |      127
+(30 rows)
+
+=== N5. cuanto aporta cada token de seniority ===
+ tok | vacantes 
+-----+----------
+(0 rows)
+
+    tok    | vacantes 
+-----------+----------
+ senior    |    21102
+ director  |     6124
+ associate |     5861
+ lead      |     5153
+ staff     |     4562
+ sr        |     3133
+ principal |     2142
+ ii        |     1941
+ intern    |     1408
+ head      |     1109
+ mid       |      565
+ junior    |      554
+ iii       |      460
+ vp        |      415
+ chief     |      384
+ entry     |      287
+ jr        |       73
+(17 rows)
+
+=== N6. top 60 tokens del titulo limpio ===
+     token      | vacantes | x 
+----------------+----------+---
+ engineer       |    25322 | 1
+ manager        |    21781 | 1
+ senior         |    21138 | 1
+ software       |     8595 | 1
+ sales          |     6262 | 1
+ director       |     6229 | 1
+ account        |     5978 | 1
+ technician     |     5947 | 1
+ associate      |     5895 | 1
+ specialist     |     5402 | 1
+ product        |     5198 | 1
+ lead           |     5170 | 1
+ operations     |     4893 | 1
+ executive      |     4829 | 1
+ data           |     4763 | 1
+ staff          |     4557 | 1
+ analyst        |     3991 | 1
+ and            |     3704 | 1
+ ai             |     3437 | 1
+ engineering    |     3353 | 1
+ development    |     3268 | 1
+ time           |     3120 | 1
+ sr             |     3119 | 1
+ assistant      |     3049 | 1
+ of             |     2931 | 1
+ business       |     2874 | 1
+ marketing      |     2871 | 1
+ technical      |     2655 | 1
+ systems        |     2519 | 1
+ project        |     2499 | 1
+ consultant     |     2464 | 1
+ security       |     2266 | 1
+ principal      |     2154 | 1
+ platform       |     2141 | 1
+ part           |     2134 | 1
+ customer       |     2091 | 1
+ de             |     2082 | 1
+ enterprise     |     2070 | 1
+ coordinator    |     2026 | 1
+ support        |     1975 | 1
+ nurse          |     1959 | 1
+ ii             |     1947 | 1
+ representative |     1944 | 1
+ in             |     1868 | 1
+ partner        |     1836 | 1
+ management     |     1819 | 1
+ program        |     1803 | 1
+ behavior       |     1701 | 1
+ architect      |     1687 | 1
+ full           |     1678 | 1
+ solutions      |     1658 | 1
+ f              |     1607 | 1
+ designer       |     1602 | 1
+ remote         |     1594 | 1
+ scientist      |     1536 | 1
+ field          |     1501 | 1
+ service        |     1484 | 1
+ health         |     1480 | 1
+ developer      |     1435 | 1
+ intern         |     1408 | 1
+(60 rows)
+
+=== N7. cuantos titulos distintos hay por cantidad de tokens ===
+ tokens | vacantes | titulos_distintos 
+--------+----------+-------------------
+      1 |      949 |               252
+      2 |    14190 |              3936
+      3 |    29198 |             14558
+      4 |    29181 |             20353
+      5 |    22920 |             17418
+      6 |    14570 |             11895
+      7 |     8369 |              7037
+      8 |     4480 |              3811
+      9 |     2243 |              1942
+     10 |     1283 |              1050
+     11 |      691 |               546
+     12 |      377 |               312
+     13 |      247 |               181
+     14 |      106 |                97
+     15 |       54 |                47
+(15 rows)
+
+=== N8. no son vacantes: talent pool y similares ===
+ vacantes | talent_pool | aplicacion_general | prueba 
+----------+-------------+--------------------+--------
+   128953 |         356 |                296 |   1102
+(1 row)
+

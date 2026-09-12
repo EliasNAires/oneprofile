@@ -1,0 +1,211 @@
+CREATE VIEW
+=== A. control: volumen y titulos que se quedan vacios ===
+ vacantes | vacio_crudo | vacio_limpio | largo_medio_crudo | largo_medio_limpio 
+----------+-------------+--------------+-------------------+--------------------
+   128953 |           0 |            0 |              36.0 |               34.4
+(1 row)
+
+=== B. cuanto colapsa, y que parte de la regla lo aporta ===
+ distintos_crudos | distintos_solo_minusculas | distintos_limpios 
+------------------+---------------------------+-------------------
+            87647 |                     87513 |             83526
+(1 row)
+
+=== C. cola larga: crudo vs limpio ===
+ version | distintos | aparecen_una_vez | pct_vacantes_en_la_cola 
+---------+-----------+------------------+-------------------------
+ crudo   |     87647 |            75160 |                    58.3
+ limpio  |     83526 |            70537 |                    54.7
+(2 rows)
+
+=== D. cobertura acumulada de los top N, LIMPIO ===
+  rn   | vacantes | pct_acumulado 
+-------+----------+---------------
+    10 |      161 |           2.0
+    20 |      117 |           3.1
+    50 |       67 |           5.1
+   100 |       44 |           7.2
+   200 |       29 |           9.9
+   500 |       14 |          14.5
+  1000 |        9 |          18.7
+  5000 |        3 |          32.4
+ 10000 |        2 |          40.7
+(9 rows)
+
+=== E. cobertura acumulada de los top N, CRUDO ===
+  rn   | vacantes | pct_acumulado 
+-------+----------+---------------
+    10 |      141 |           1.7
+    20 |      107 |           2.6
+    50 |       61 |           4.4
+   100 |       41 |           6.3
+   200 |       26 |           8.8
+   500 |       13 |          12.8
+  1000 |        8 |          16.8
+  5000 |        3 |          29.8
+ 10000 |        2 |          37.9
+(9 rows)
+
+=== F. top 30 titulos LIMPIOS ===
+                  titulo                   | vacantes 
+-------------------------------------------+----------
+ behavior technician                       |      419
+ senior software engineer                  |      351
+ registered behavior technician rbt        |      349
+ auxiliaire de vie h f                     |      301
+ senior account executive                  |      236
+ real estate acquisition consultant        |      219
+ account executive                         |      218
+ sales development representative          |      188
+ aide a domicile h f                       |      165
+ maintenance technician                    |      161
+ software engineer                         |      158
+ staff software engineer                   |      156
+ project manager                           |      156
+ senior data engineer                      |      152
+ enterprise account executive              |      149
+ senior product manager                    |      141
+ leasing consultant                        |      138
+ business development representative       |      135
+ account manager                           |      123
+ registered behavior technician            |      117
+ customer success manager                  |      109
+ independent sales representative          |      108
+ heavy equipment field technician mechanic |      108
+ aide aux personnes agees h f              |      105
+ seo strategist consultant                 |      105
+ sales representative                      |      102
+ retail sales associate part time          |      100
+ heavy equipment shop technician mechanic  |       98
+ product manager                           |       97
+ events and ministry coordinator onsite    |       97
+(30 rows)
+
+=== G. top 30 titulos CRUDOS ===
+                      titulo                       | vacantes 
+---------------------------------------------------+----------
+ Behavior Technician                               |      354
+ Registered Behavior Technician (RBT)              |      337
+ Senior Software Engineer                          |      305
+ Real Estate Acquisition Consultant                |      219
+ Account Executive                                 |      194
+ Auxiliaire de vie H/F                             |      184
+ Senior Account Executive                          |      175
+ Sales Development Representative                  |      162
+ Maintenance Technician                            |      146
+ Software Engineer                                 |      141
+ Staff Software Engineer                           |      137
+ Leasing Consultant                                |      132
+ Project Manager                                   |      130
+ Enterprise Account Executive                      |      123
+ Senior Product Manager                            |      121
+ Senior Data Engineer                              |      119
+ Account Manager                                   |      110
+ Aide à domicile H/F                               |      108
+ Heavy Equipment Field Technician (Mechanic)       |      108
+ Business Development Representative               |      107
+ Independent Sales Representative                  |      107
+ SEO Strategist (Consultant)                       |      105
+ Registered Behavior Technician                    |      101
+ Retail Sales Associate - Part Time                |       99
+ Heavy Equipment Shop Technician (Mechanic)        |       98
+ Customer Success Manager                          |       97
+ Events and Ministry Coordinator (Onsite)          |       97
+ Center-Based Registered Behavior Technician (RBT) |       87
+ Territory Account Manager                         |       86
+ Yard Technician                                   |       84
+(30 rows)
+
+=== H. que colapso: crudos distintos que caen al mismo limpio ===
+               titulo_limpio                | variantes_crudas | vacantes |                                                                                       ejemplos                                                                                       
+--------------------------------------------+------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ auxiliaire de vie h f                      |               23 |      301 |    Auxiliaire de vie H/F |   Auxiliaire de Vie H/F |   Auxiliaire de vie H/F |  AUXILIAIRE DE VIE H/F |  Auxiliaire de vie  (H/F) |  Auxiliaire de vie  H/F |  Auxiliaire de vie (H/
+ aide a domicile h f                        |               19 |      165 |   Aide à domicile (H/F)  |   Aide à domicile H/F |  Aide a domicile (H/F) |  Aide à domicile (H/F)  |  Aide à domicile H/F |  Aide à domicile H/F  | AIDE A DOMICILE H/F | AIDE A DO
+ aide aux personnes agees h f               |               14 |      105 |   Aide aux personnes âgées (H/F)  |  Aide aux personnes agées H/F |  Aide aux personnes âgées H/F |  Aide aux personnes âgées H/F  | Aide aux personnes agées (H/F) | Aide aux perso
+ senior software engineer backend           |                9 |       42 | Senior Software Engineer (Backend) | Senior Software Engineer (Backend)  | Senior Software Engineer - Backend | Senior Software Engineer - Backend  | Senior Software Engineer Backe
+ staff software engineer backend            |                8 |       31 | Staff Software Engineer (Backend) | Staff Software Engineer - Backend | Staff Software Engineer - Backend  | Staff Software Engineer - Backend   | Staff Software Engineer Backend  
+ join our talent community                  |                8 |       45 | Join Our Talent Community | Join Our Talent Community  | Join Our Talent Community! | Join Our Talent Community!  | Join our Talent Community | Join our Talent Community! | Join ou
+ assistant e de vie h f                     |                8 |       30 |   Assistant(e) de vie H/F | ASSISTANT(E) DE VIE H/F | Assistant(e)  de vie H/F | Assistant(e) de Vie H/F | Assistant(e) de vie  H/F | Assistant(e) de vie (H/F) | Assistant(e) de vi
+ assistant de vie h f                       |                7 |       61 |  Assistant de vie (H/F) |  Assistant de vie H/F | Assistant de vie  (H/F) | Assistant de vie  H/F  | Assistant de vie (H/F) | Assistant de vie H/F | Assistant de vie H/F 
+ sr software engineer backend               |                7 |        7 | Sr Software Engineer - Backend | Sr Software Engineer - Backend  | Sr. Software Engineer (Backend) | Sr. Software Engineer - Backend | Sr. Software Engineer - Backend  | Sr. Softwa
+ senior software engineer                   |                7 |      351 |  Senior Software Engineer |  Senior Software Engineer  | Senior Software Engineer | Senior Software Engineer  | Senior Software Engineer || | Senior, Software Engineer  | Senior/So
+ senior software engineer frontend          |                7 |       17 | Senior Software Engineer  - Frontend  | Senior Software Engineer (Frontend)  | Senior Software Engineer - Frontend | Senior Software Engineer – Frontend | Senior Software Engineer,
+ assistante de vie h f                      |                7 |       29 |  Assistante de vie H/F |  Assistante de vie H/F  | Assistante de vie   H/F | Assistante de vie  (H/F) | Assistante de vie  H/F | Assistante de vie (H/F) | Assistante de vie H/F
+ senior software engineer full stack        |                7 |       30 | Senior Software Engineer (Full Stack) | Senior Software Engineer (Full-Stack) | Senior Software Engineer - Full Stack | Senior Software Engineer, Full Stack | Senior Software Engin
+ maintenance technician 2 500 sign on bonus |                6 |       11 | Maintenance Technician  $2,500 Sign On Bonus | Maintenance Technician ($2,500 Sign On Bonus!) | Maintenance Technician ($2,500 Sign On Bonus)  | Maintenance Technician ($2,500 Sign
+ senior software engineer infrastructure    |                6 |        9 |  Senior Software Engineer, Infrastructure | Senior Software Engineer - Infrastructure | Senior Software Engineer | Infrastructure | Senior Software Engineer,  Infrastructure | Seni
+ band 6 locum physiotherapist london        |                6 |       10 | Band 6 - Locum Physiotherapist - London | Band 6 - Locum Physiotherapist - London  | Band 6 Locum Physiotherapist - London | Band 6 Locum Physiotherapist - London  | Band 6 Locum P
+ software engineering intern summer 2027    |                6 |        9 | Software Engineering Intern (Summer 2027) | Software Engineering Intern (Summer 2027)  | Software Engineering Intern - Summer 2027 | Software Engineering Intern – Summer 2027 | Sof
+ senior product manager                     |                6 |      141 |  Senior Product Manager | Senior  Product Manager | Senior Product Manager | Senior Product Manager  | Senior Product Manager   | Senior Product Manager 
+ join our talent network                    |                6 |       10 | Join Our Talent Network | Join Our Talent Network! | Join our Talent Network | Join our Talent Network  | Join our Talent Network!  | Join our talent network!
+ senior data engineer                       |                6 |      152 |  Senior Data Engineer |  Senior Data Engineer  | Senior Data Engineer | Senior Data Engineer  | Senior Data Engineer  | Senior, Data Engineer
+ spanish speaking behavior technician       |                6 |       72 | Spanish Speaking - Behavior Technician | Spanish Speaking Behavior Technician | Spanish Speaking Behavior Technician  | Spanish Speaking-Behavior Technician | Spanish- Speaking Beh
+ behavior technician                        |                6 |      419 |  Behavior Technician |  Behavior Technician  |  Behavior Technician   | Behavior Technician | Behavior Technician  | Behavior Technician  
+ mid market account executive               |                5 |       55 |  Mid-Market Account Executive | Mid Market Account Executive | Mid Market Account Executive  | Mid-Market Account Executive | Mid-Market Account Executive 
+ project civil engineer project manager     |                5 |       25 | Project Civil Engineer - Project Manager | Project Civil Engineer - Project Manager  | Project Civil Engineer / Project Manager | Project Civil Engineer / Project Manager  | Projec
+ licensed practical nurse lpn               |                5 |       12 | Licensed Practical Nurse (LPN) | Licensed Practical Nurse (LPN)  | Licensed Practical Nurse - LPN | Licensed Practical Nurse - LPN  | Licensed Practical Nurse LPN 
+(25 rows)
+
+=== I. sobreviven los tokens tecnicos (las dos columnas tienen que dar igual) ===
+  token  | en_crudo | en_limpio 
+---------+----------+-----------
+ c++     |      201 |       201
+ .js     |       34 |        34
+ f#      |        0 |         0
+ .net    |       93 |        93
+ c#      |       57 |        57
+ node.js |       26 |        26
+(6 rows)
+
+=== J. que caracteres ASCII no alfanumericos quedan (solo deberian ser . + # &) ===
+ caracter | apariciones 
+----------+-------------
+ &        |         827
+ +        |         586
+ .        |         475
+ #        |         124
+(4 rows)
+
+=== J2. los cuatro guardados, en contexto ===
+ caracter  | titulos_con_el |                                                                                                                                                   ejemplos                                                                                                                                                   
+-----------+----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ punto     |            456 | .net application and solutions architect assistant vice president | .net c# developer senior 879 | .net c# developer senior top secret with agreement to obtain ci poly | .net custom developer | .net developer always recruiting | .net developer vulnerability | .net engineer on site | .net react full 
+ ampersand |            823 | 1541 microsoft dynamics 365 f&scm functional analyst | 2026 financial analyst i ad&s | 2026 support associate korean&english seoul | a&a engineer | a&e accident and emergency nurse barts | a&e accident emergency nurse east london | a&e accident emergency nurse euston warren street | a&e accident eme
+ mas       |            382 | 110k+ bonus tax free opportunity consultant child adolescent psychiatrist doha | account executive dach c1+ german m w x | ai engineer middle middle+ ai team | algorithmic trading c++ engineer equities | analytics engineer middle middle+ dwh risk domain | applied ml cs phd internship 6+ months | arc
+ gato      |            124 | .net c# developer senior 879 | .net c# developer senior top secret with agreement to obtain ci poly | 1505 senior fullstack engineer react node.js c# | 1565 senior fullstack c# and react engineer | account executive bailiwick req#1206 | account executive enterprise new england area req#1064 | accoun
+(4 rows)
+
+=== K. ruido semantico: atributos pegados al titulo ===
+ marca_de_genero | dice_remote | dice_modalidad | pasantia | trae_seniority | crudo_con_parentesis | crudo_con_barra 
+-----------------+-------------+----------------+----------+----------------+----------------------+-----------------
+            1503 |        1592 |            800 |     1939 |          41837 |                26110 |            9492
+(1 row)
+
+=== L. titulos que no quedan en alfabeto latino ===
+ con_algun_no_ascii | sin_ninguna_letra_latina 
+--------------------+--------------------------
+                725 |                      208
+(1 row)
+
+=== M. lo mismo, por idioma declarado ===
+ language | vacantes | sin_letra_latina 
+----------+----------+------------------
+ en       |   123847 |               72
+ pt       |     1805 |                0
+ fr       |     1314 |                0
+ de       |      562 |                0
+ es       |      446 |                0
+ ko       |      302 |               39
+ ja       |      300 |               77
+ it       |      127 |                0
+ nl       |       76 |                0
+ iw       |       55 |               14
+ zhHant   |       53 |                5
+ pl       |       40 |                0
+ zh       |       14 |                1
+ no       |        6 |                0
+ fi       |        3 |                0
+ ru       |        2 |                0
+ se       |        1 |                0
+(17 rows)
+

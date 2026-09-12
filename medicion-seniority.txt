@@ -1,0 +1,555 @@
+CREATE VIEW
+CREATE VIEW
+CREATE VIEW
+
+=== S1. volumen por token y donde cae en el titulo ===
+    tok    | vacantes | en_primera_posicion | en_ultima_posicion | pct_primera 
+-----------+----------+---------------------+--------------------+-------------
+ senior    |    21138 |               19408 |                162 |        91.8
+ staff     |     4557 |                3284 |                 83 |        72.1
+ sr        |     3119 |                2895 |                 25 |        92.8
+ principal |     2154 |                1759 |                 74 |        81.7
+ ii        |     1947 |                   0 |                862 |         0.0
+ mid       |      566 |                 221 |                 27 |        39.0
+ junior    |      543 |                 389 |                 31 |        71.6
+ iii       |      462 |                   0 |                211 |         0.0
+ entry     |      287 |                 172 |                  2 |        59.9
+ jr        |       73 |                  52 |                  8 |        71.2
+(10 rows)
+
+
+=== S2. top 15 de la palabra QUE LE SIGUE a cada token ===
+    tok    | rn |    siguiente     | vacantes |                                                                           ejemplos                                                                           
+-----------+----+------------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+ entry     |  1 | level            |      196 | analyst client service entry level new york and san francisco | analyst financial advisory entry level new york and san francisco | architectural desi
+ entry     |  2 | door             |       72 | commercial entry door installer experienced east atlanta | commercial entry door installer experienced north atlanta | commercial entry door installer
+ entry     |  3 | specialist       |        5 | customs entry specialist | data entry specialist | id verification agent data entry specialist
+ entry     |  4 | (fin del titulo) |        2 | rwanda seed sample reception and data entry | senior trade advisory associate post entry
+ entry     |  5 | associate        |        2 | data entry associate qa | data entry associate temporary onsite
+ entry     |  6 | automatics       |        2 | entry automatics door installer experienced or trainee dalton | entry automatics door service technician experienced or trainee dalton
+ entry     |  7 | chandler         |        1 | research phlebotomist data entry chandler
+ entry     |  8 | land             |        1 | entry land survey technician
+ entry     |  9 | bridge           |        1 | entry bridge engineer
+ entry     | 10 | mla              |        1 | data entry mla west yorkshire
+ entry     | 11 | officer          |        1 | data entry officer kano
+ entry     | 12 | operator         |        1 | entry operator nights
+ entry     | 13 | pharmacy         |        1 | data entry pharmacy technician
+ entry     | 14 | administrator    |        1 | order entry administrator
+ ii        |  1 | (fin del titulo) |      862 | 627 information assurance compliance specialist ii | 733 operations manager support level ii | a&p mechanic ii | account development representative ii
+ ii        |  2 | iii              |       48 | aerospace production technician ii iii | assembly integration test technician ii iii a shift | automation engineer i ii iii | automation engineering t
+ ii        |  3 | senior           |       29 | avionics test and launch engineer ii senior | clinical research associate ii senior clinical research associate | commissioning agent ii senior | comp
+ ii        |  4 | backend          |       22 | senior full stack engineer ii backend leaning | senior software engineer ii backend | software engineer ii backend | software engineer ii backend coll
+ ii        |  5 | full             |       17 | analyst ii full stack revenue analytics | ar coating technician ii full time weekday mon thur | ar coating technician ii full time weekend fri sun | a
+ ii        |  6 | ai               |       15 | data scientist ii ai deployment | principal product manager ii ai vectors | product manager ii ai data security | product manager ii ai evaluations | 
+ ii        |  7 | secret           |       12 | cybersecurity engineer ii secret clearance | senior cybersecurity engineer ii secret clearance | senior electrical engineer ii secret clearance | seni
+ ii        |  8 | dedrone          |       10 | professional services manager ii dedrone | sales engineer ii dedrone | sales engineer ii dedrone federal
+ ii        |  9 | sr               |        9 | application analyst i ii sr lead | lng originator i ii sr | medical sewer i ii sr | safety coordinator i ii sr midstream construction | safety coordin
+ ii        | 10 | android          |        9 | sde ii android | senior software engineer ii android | software engineer ii android
+ ii        | 11 | onsite           |        9 | dc operator ii onsite | electronic sourcing engineer ii onsite | iqc inspector ii onsite | it technician ii onsite dallas tx | manufacturing engineer 
+ ii        | 12 | financials       |        9 | software developer ii financials full stack front end | software developer ii financials software full stack angular
+ ii        | 13 | contract         |        9 | application security engineer ii contract | application security engineer ii contract 6 months | avionics craftsman ii contract | biomanufacturing ass
+ ii        | 14 | information      |        9 | director compliance l7 ii information security and tba compliance | engineer ii information engineer
+ ii        | 15 | iv               |        8 | bim technician ii iv | bms smart building engineer ii iv | electrical engineer ii iv | fire alarm engineer ii iv | mechanical engineer ii iv
+ iii       |  1 | (fin del titulo) |      211 | 602 information systems security manager iii | 603 information system security officer isso iii | 626 information system security specialist iii | 628
+ iii       |  2 | farmer           |       14 | executivo a de contas estrategicas iii farmer
+ iii       |  3 | iv               |       14 | arc flash electrical cx engineer iii iv | bim technician iii iv | electrical engineer iii iv spacecraft programs | landman ii iii iv | measurement ins
+ iii       |  4 | senior           |       12 | cnc machinist iii senior b shift | electrical engineer designer iii senior electrical engineer designer | engineer iii senior electrical engineer | en
+ iii       |  5 | 6706             |        7 | forward deployed engineer iii 6706 | principal systems architect ai integration iii 6706 | principal systems architect enterprise ai iii 6706 | princi
+ iii       |  6 | cloud            |        7 | product support engineer iii cloud | software developer iii cloud platform back end authentication | technical support engineer iii cloud
+ iii       |  7 | a                |        6 | assembly integration test technician ii iii a shift | harness technician ii iii a shift | propulsion assembly technician ii iii a shift | propulsion t
+ iii       |  8 | or               |        4 | avionics r&d technician iii or senior | avionics technician i ii iii or senior | mechanisms engineer iii or senior motor control | structures technici
+ iii       |  9 | backend          |        4 | software development engineer iii backend ai | software engineer iii backend | software engineer iii backend automate
+ iii       | 10 | defense          |        4 | account executive iii defense
+ iii       | 11 | data             |        3 | sde iii data engineering | software engineer iii data fmx
+ iii       | 12 | 6707             |        3 | sr ai ml engineer iii 6707
+ iii       | 13 | contract         |        3 | avionics craftsman iii contract | cabinet finisher iii contract | manufacturing technician i ii iii contract
+ iii       | 14 | onsite           |        3 | hardware validation technician iii onsite | logistics specialist iii onsite at bayer | quality inspector iii onsite
+ iii       | 15 | sr               |        3 | automation engineering technician i ii iii sr | land data analyst ii iii sr | midstream compressor technician i ii iii sr
+ jr        |  1 | marketing        |       12 | jr marketing specialist contract remote
+ jr        |  2 | (fin del titulo) |        8 | analista de formalizacao jr | exclusiva pcd analista contabil jr | exclusiva pcd analista de operacoes de folha jr | hrbp jr | identity intelligence a
+ jr        |  3 | sous             |        6 | jr sous chef | jr sous chef sushi | jr sous chef temporary
+ jr        |  4 | manager          |        4 | jr manager business insights | jr manager solutions bogota the orchard | merchant technical support jr manager
+ jr        |  5 | customer         |        4 | jr customer success manager remote
+ jr        |  6 | mechanical       |        3 | jr mechanical cad designer | jr mechanical design engineer | jr mechanical engineer machine design
+ jr        |  7 | systems          |        3 | jr systems administrator | jr systems engineer
+ jr        |  8 | analyst          |        2 | fraud jr analyst | hris jr analyst
+ jr        |  9 | account          |        2 | jr account executive | jr account executive full cycle inside sales
+ jr        | 10 | devops           |        1 | jr devops engineer
+ jr        | 11 | digital          |        1 | jr digital designer
+ jr        | 12 | engineer         |        1 | it jr engineer support technician
+ jr        | 13 | equity           |        1 | jr equity trader
+ jr        | 14 | facilities       |        1 | jr facilities coordinator part time
+ jr        | 15 | graphic          |        1 | jr graphic designer
+ junior    |  1 | (fin del titulo) |       31 | account manager junior | account operations junior | account representative junior | analista de compras junior | analista de folha de pagamento junio
+ junior    |  2 | software         |       30 | junior software developer | junior software engineer | junior software engineer bilingual | junior software engineer c++ vietnam | junior software eng
+ junior    |  3 | to               |       20 | business manager junior to leadership | controls engineer all levels junior to senior | data center construction junior to mid project manager | data 
+ junior    |  4 | account          |       19 | gusto pro core junior account manager | junior account executive | junior account executive m f d | junior account executive new york city | junior ac
+ junior    |  5 | specialist       |       18 | advanced solutions junior specialist | marketing campaign coordinator junior specialist | sem junior specialist
+ junior    |  6 | data             |       12 | commercial graduate scheme junior data scientist dubai uae | junior data analyst | junior data analyst intern co op | junior data analyst product | ju
+ junior    |  7 | accountant       |       12 | inventory ap junior accountant | junior accountant | junior accountant accounts payable | junior accountant f m d | junior accountant intern | junior 
+ junior    |  8 | sales            |       11 | junior sales | junior sales administrator m f d part time | junior sales consultant | junior sales development representative api cpaas | junior sales
+ junior    |  9 | project          |       10 | data center construction junior project manager cost | junior project manager | junior project manager dach | junior project manager dach region | jun
+ junior    | 10 | customer         |       10 | analista de implementacao junior customer success rd station remoto afirmativa para pessoas com deficiencia | analista de suporte n1 junior customer e
+ junior    | 11 | partner          |        8 | junior partner associate | junior partner m&a advisor
+ junior    | 12 | fx               |        8 | business developer junior fx sales | business developer junior fx sales m w d | junior fx business developer | junior fx structurer | junior fx struct
+ junior    | 13 | product          |        7 | junior product designer | junior product manager | junior product manager devops and ai | junior product manager marketplace
+ junior    | 14 | quantitative     |        7 | junior quantitative researcher | junior quantitative trader | junior quantitative trader apac delta one | junior quantitative trader researcher
+ junior    | 15 | business         |        7 | junior business analyst | junior business analyst japanese speaking | junior business architect ba program | junior business development executive all
+ mid       |  1 | market           |      300 | account director commercial sales mid market | account executive commercial mid market central east | account executive commercial mid market central 
+ mid       |  2 | level            |       78 | activity based intelligence analyst geoint mid level | android engineer mid level | art director mid level | computer vision machine learning engineer
+ mid       |  3 | (fin del titulo) |       27 | all source analyst mid | application developer mid | applications developer mid | backend engineer mid | backend java mid | cno developer mid | cno re
+ mid       |  4 | atlantic         |       25 | account executive enterprise mid atlantic | ai security engineer mid atlantic region remote in va md pa nc de nj or dc | application security engineer
+ mid       |  5 | senior           |       20 | 2026 project manager associate mid senior | backend software engineer mid senior | devops engineer mid senior | front end developer mid senior java qu
+ mid       |  6 | to               |       18 | data center construction mid to senior project manager | data center construction mid to senior project manager cost | data center construction mid to
+ mid       |  7 | enterprise       |       15 | account executive mid enterprise | manager customer success mid enterprise northern | mid enterprise account executive greater china region | mid ente
+ mid       |  8 | project          |        7 | data center construction junior to mid project manager | data center construction junior to mid project manager cost | healthcare construction junior 
+ mid       |  9 | top              |        5 | dissemination specialist senior mid top secret with agreement to obtain ci poly | helpdesk access manager senior mid top secret with agreement to obta
+ mid       | 10 | city             |        4 | account executive mid city
+ mid       | 11 | sr               |        4 | mechanical engineer mid sr | mid sr cloud devops engineer | mid sr designer global navigation | mid sr software developer
+ mid       | 12 | career           |        3 | early to mid career sales opportunities in maryland hybrid | industrial engineer mid career level | mid career software engineer
+ mid       | 13 | west             |        3 | associate sales engineer se desk mid west | customer success manager us mid west and west coast spanish speaking | regional sales manager mid west
+ mid       | 14 | shift            |        2 | hvac r service technician mid shift 15 shift differential no on call | senior patient support specialist uk mid shift
+ mid       | 15 | training         |        2 | member of technical staff mid training
+ principal |  1 | software         |      224 | principal software architect | principal software architect data platform | principal software architect must go kafka aws | principal software archit
+ principal |  2 | product          |      212 | associate principal product manager networks | associate principal product manager platform | peach pilot principal product manager | principal produc
+ principal |  3 | engineer         |      131 | data principal engineer | lead principal engineer plant design integration products | lead principal engineer reactor design | principal engineer | pr
+ principal |  4 | (fin del titulo) |       74 | accounting analyst principal | accounts payable principal | ai advisory principal | ai software engineer principal | ai strategy transformation managi
+ principal |  5 | data             |       73 | associate director principal data engineer | lead principal data engineer dbt databricks | managing principal data | principal data analyst | principa
+ principal |  6 | ai               |       67 | director senior principal ai soc validation bring up lead | principal ai architect | principal ai architect agentic platform | principal ai data scien
+ principal |  7 | technical        |       54 | principal technical account manager | principal technical account manager inventory | principal technical animator | principal technical architect | p
+ principal |  8 | consultant       |       52 | applied ai analytics principal consultant | consultant principal responsable de lia principal consultant head of ai | financial risk principal consult
+ principal |  9 | solutions        |       36 | associate principal solutions architect japan | principal solutions architect | principal solutions architect ai data infrastructure | principal solut
+ principal | 10 | senior           |       32 | principal senior animator | principal senior mobile engineer trading strategies cex | principal senior principal scientist small molecule therapeutics
+ principal | 11 | scientist        |       29 | associate principal principal scientist protein science | associate principal scientist innovation scientific affairs | principal scientist analytical
+ principal | 12 | security         |       26 | principal security awareness human risk engineer | principal security compliance advisor outpost | principal security consultant req 1132 | principal 
+ principal | 13 | architect        |       24 | principal architect | principal architect ai | principal architect ai developer experience platform | principal architect amazon web services aws | pr
+ principal | 14 | business         |       22 | cls principal business analyst l6 1 opex | coupang pay principal business development fintech business development | coupang pay principal business de
+ principal | 15 | program          |       21 | principal program management | principal program management 6 i coupang eats q commerce | principal program management logistics operation center | pr
+ senior    |  1 | software         |     2599 | 1529 senior software engineer ruby on rails | ai native senior software engineer | ai native senior software engineer md drive | ai security senior so
+ senior    |  2 | manager          |     1311 | 711 senior manager talent acquisition | accounts payable shared services senior manager | acquisition strategist senior manager eatontown nj | advisor
+ senior    |  3 | product          |     1215 | 1519 senior product manager | dogbyte senior product manager | emea senior product marketing manager | l6 2 senior product manager ii retail product |
+ senior    |  4 | data             |      673 | 1509 senior data privacy specialist onetrust dsar | 1521 senior data and insight engineer | 1542 senior data reporting engineer python sql aws | cubis
+ senior    |  5 | staff            |      632 | avionics production engineer senior staff | contract senior staff product manager us east | electrical engineer senior staff egse | electrical enginee
+ senior    |  6 | director         |      584 | ai product senior director | analytics senior director | business development senior director capital markets | client strategy senior director | cmbs
+ senior    |  7 | account          |      549 | 21grams senior account executive | account executive and senior account executive future opportunity | account executive senior account executive amer
+ senior    |  8 | technical        |      391 | contract senior technical recruiter | developpeur euse logiciel simulation houdini simulation houdini senior technical developer | north america aiviq
+ senior    |  9 | associate        |      356 | 2027 phd abd graduates economic consulting senior associate canada | 2027 phd abd graduates economic consulting senior associate united states | accou
+ senior    | 10 | project          |      301 | 1531 senior project manager | 21grams senior project manager | associate director principal project manager senior project manager operational excelle
+ senior    | 11 | sales            |      268 | dach senior sales manager | ft senior sales associate brea | fx senior sales executive | pt senior sales associate | senior sales account executive | 
+ senior    | 12 | backend          |      258 | middle to senior backend engineer | senior backend .net software engineer | senior backend data engineer | senior backend developer | senior backend d
+ senior    | 13 | customer         |      241 | bilingual senior customer success manager responsable senior du succes client ste 12 month contract french english | ces senior customer service speci
+ senior    | 14 | ai               |      237 | cxo senior ai automation specialist | developpeur euse senior en ia systemes agentiques senior ai agentic systems developer | full stack software engi
+ senior    | 15 | security         |      209 | 178 senior security control assessor | csso senior security manager | grupo quintoandar senior security engineer datasecurity | senior security alarm 
+ sr        |  1 | manager          |      290 | associate director sr manager health economics outcomes research oncology | asst manager manager sr manager legal infrastructure | commercial finance 
+ sr        |  2 | software         |      215 | mid sr software developer | sr software architect | sr software architect axs | sr software dev engineer | sr software developer | sr software develop
+ sr        |  3 | staff            |      147 | mechanical engineer sr staff | opportunistic hire sr staff engineer | principal sr staff engineer | software eng sr staff devops | sr staff ai data ce
+ sr        |  4 | director         |      141 | director or sr director origination | director sr director clinical pharmacology | director sr director corporate finance investor relations | directo
+ sr        |  5 | product          |      123 | sr product analyst m w x | sr product analyst omni | sr product compliance engineer starlink | sr product designer | sr product designer ai bi | sr pr
+ sr        |  6 | technical        |       87 | associate sr technical consultant | sr technical account manager east | sr technical account manager enterprise | sr technical account manager okta st
+ sr        |  7 | solutions        |       86 | presales sr solutions architect french defense and intelligence | solutions architect opportunities lakebase solutions architect sr solutions architec
+ sr        |  8 | forward          |       67 | sr forward deployed ai engineer remote eligible in germany | sr forward deployed ai engineer remote eligible in the uk | sr forward deployed ai soluti
+ sr        |  9 | account          |       52 | cpg marketing sr account manager | emea corporate new logo sr account executive | french speaking sr account executive enterprise | german speaking sr
+ sr        | 10 | project          |       47 | contract sr project manager | sr program manager sr project manager | sr project coordinator | sr project engineer | sr project engineer aviation airf
+ sr        | 11 | specialist       |       44 | data solutions validation sr specialist | ehs sr specialist 3rd shift | product specialist gen ai sr specialist solutions architect | sr specialist af
+ sr        | 12 | business         |       36 | lead sr business system analyst | senior business analysis sr business analyst bnpp paribas | sr business analyst | sr business analyst customer succe
+ sr        | 13 | data             |       35 | ic4 sr data engineer | sr data analyst | sr data analyst finance | sr data analyst sr revenue operations analyst bangalore hybrid | sr data engineer |
+ sr        | 14 | principal        |       35 | principal sr principal backend engineer | sr principal ai systems architect | sr principal business development head of air force strategy | sr princi
+ sr        | 15 | ai               |       35 | ai transformation dept sr ai data pipeline specialist 7년 이상 | ai transformation dept sr ai dba 7년 이상 | ai transformation dept sr ai devops e
+ staff     |  1 | software         |     1094 | back end staff software engineer bangkok based relocation provided | fast track 1 day program staff software engineer back end bangkok based relocatio
+ staff     |  2 | product          |      390 | chief of staff product | contract senior staff product manager us east | coupang pay staff product designer fintech ux | design systems staff product 
+ staff     |  3 | engineer         |      272 | ai staff engineer | cyber security staff engineer application security | ic5 staff engineer | opportunistic hire sr staff engineer | platform staff en
+ staff     |  4 | data             |      186 | grupo quintoandar staff data engineer | grupo quintoandar staff data engineer women applicants only | grupo quintoandar staff data scientist | grupo q
+ staff     |  5 | machine          |      131 | member of research staff machine learning for neural circuit modeling postdoc | senior staff machine learning engineer | senior staff machine learning
+ staff     |  6 | backend          |      125 | 1535 staff backend engineer .net | member of technical staff backend api platform | member of technical staff backend engineering lead portworx enterp
+ staff     |  7 | technical        |      109 | event staff technical and broadcast part time seasonal | game night staff technical lead part time seasonal | senior staff technical delivery manager 
+ staff     |  8 | ai               |       96 | chief of staff ai automation | ic5 staff ai engineer | member of technical staff ai | member of technical staff ai agent development lead | member of 
+ staff     |  9 | (fin del titulo) |       83 | administrative assistant external agency staff | application management specialist staff | associate chief of staff | associate hr operations external
+ staff     | 10 | security         |       74 | chief of staff security customer engineering | member of technical staff security engineering | senior staff security engineer | senior staff security
+ staff     | 11 | nurse            |       66 | acute care staff nurse | psychiatric staff nurse | staff nurse 1 medical ft nights lhaamc | staff nurse 4 medical med surg tele | staff nurse acute ca
+ staff     | 12 | site             |       61 | senior staff site reliability engineer | sr staff site reliability engineer | sr staff site reliability engineer consumer apps | sr staff site reliabi
+ staff     | 13 | accountant       |       53 | associate staff accountant | corporate staff accountant | financial operations staff accountant | international staff accountant | junior staff accoun
+ staff     | 14 | electrical       |       52 | lead staff electrical engineer hardware design | senior or staff electrical engineer | senior staff electrical engineer | senior staff electrical engi
+ staff     | 15 | platform         |       51 | founding staff platform engineer | member of technical staff platform | senior staff platform engineer | sr staff platform engineer | staff platform e
+(149 rows)
+
+
+=== S3. top 10 de la palabra QUE LE PRECEDE a cada token ===
+    tok    | rn |        anterior        | vacantes |                                                                            ejemplos                                                                            
+-----------+----+------------------------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ entry     |  1 | (principio del titulo) |      172 | entry automatics door installer experienced or trainee dalton | entry automatics door service technician experienced or trainee dalton | entry bridge 
+ entry     |  2 | commercial             |       29 | commercial entry door installer experienced east atlanta | commercial entry door installer experienced north atlanta | commercial entry door installer
+ entry     |  3 | technician             |       15 | composite field technician entry level us | electronics test and assembly technician entry level | field maintenance technician entry level | it suppo
+ entry     |  4 | data                   |       11 | data entry associate qa | data entry associate temporary onsite | data entry mla west yorkshire | data entry officer kano | data entry pharmacy techni
+ entry     |  5 | assistant              |        6 | dental assistant entry level | scheduling assistant entry level
+ entry     |  6 | representative         |        4 | sales development representative entry level | technical support representative entry level fresh graduates
+ entry     |  7 | coordinator            |        3 | dental front desk coordinator entry level part time | project coordinator entry level digital | service department coordinator entry door
+ entry     |  8 | pharmacist             |        3 | pharmacist entry level closed door onsite boise id | pharmacist entry level closed door onsite chesterfield | pharmacist entry level closed door onsit
+ entry     |  9 | engineer               |        3 | software engineer entry level | structural engineer entry level | ubuntu sales engineer entry level
+ entry     | 10 | operation              |        3 | e commerce operation entry level fresh graduates | website operation entry level fresh graduates
+ ii        |  1 | engineer               |      830 | actuarial software engineer ii analyst | additive manufacturing engineer ii pbf | aerodynamics and flight mechanics engineer ii | aerothermal engineer
+ ii        |  2 | manager                |      159 | account manager ii intermodal | account manager ii specialized transportation logistics | account manager ii strategic | account manager ii transporta
+ ii        |  3 | technician             |      150 | 1st shift environmental test technician ii mon fri 7 30am to 5 30 pm el paso midland | aerospace production technician ii iii | ar coating technician 
+ ii        |  4 | analyst                |       98 | 730 logistics analyst ii mca | aml analyst ii latin | aml analyst ii latin america markets | analyst ii credit | analyst ii full stack revenue analyti
+ ii        |  5 | i                      |       94 | additive manufacturing engineer i ii | application analyst i ii sr lead | automation engineer i ii iii | automation engineering technician i ii iii sr
+ ii        |  6 | specialist             |       81 | 627 information assurance compliance specialist ii | accounts payable specialist ii | annotation specialist ii | annuity new business specialist ii | 
+ ii        |  7 | scientist              |       61 | applied machine learning scientist ii | applied scientist ii | applied scientist ii moloco commerce media | applied scientist ii recommendation system
+ ii        |  8 | associate              |       46 | aseptic manufacturing risk management associate ii | associate ii account management l2 contract | associate ii account management rocketnow | associa
+ ii        |  9 | coordinator            |       46 | clinical research coordinator ii | clinical research coordinator ii beaumont tx | clinical research coordinator ii birmingham al | clinical research c
+ ii        | 10 | designer               |       36 | brand designer ii | cad designer ii | content designer ii personalization | designer ii | designer ii civil engineering | designer ii landscape archit
+ iii       |  1 | engineer               |      182 | analytics engineer iii fmx | android engineer iii | android engineer iii hunt | arc flash electrical cx engineer iii iv | astrodynamics and navigation
+ iii       |  2 | technician             |       49 | avionics r&d technician iii or senior | bim technician iii iv | biomedical engineering technician iii ft days doctors comm med ctr | commissioning tec
+ iii       |  3 | ii                     |       48 | aerospace production technician ii iii | assembly integration test technician ii iii a shift | automation engineer i ii iii | automation engineering t
+ iii       |  4 | manager                |       21 | 602 information systems security manager iii | assistant property manager leasing experience manager iii mansion grove | case manager iii pt nights | 
+ iii       |  5 | level                  |       17 | asnt navsea ndt inspector ut level iii maritime | biomedical technician equipment support specialist level iii | field service technician level iii | 
+ iii       |  6 | specialist             |       15 | 626 information system security specialist iii | customer support specialist iii | customer support specialist iii account support operations shared s
+ iii       |  7 | estrategicas           |       14 | executivo a de contas estrategicas iii farmer
+ iii       |  8 | developer              |       12 | salesforce developer iii | sap developer iii | sap integration developer iii | software developer iii | software developer iii cloud platform back end
+ iii       |  9 | analyst                |        9 | compensation analyst iii | cyber security operations analyst iii product appsec | data analyst iii perfomance analytics | data analyst iii reporting a
+ iii       | 10 | i                      |        8 | composite technician i iii | mechanical engineer space based interceptors i iii | operations specialist i iii germany | operations specialist i iii ne
+ jr        |  1 | (principio del titulo) |       52 | jr account executive | jr account executive full cycle inside sales | jr ai ml engineer | jr ar accountant | jr copywriter contract | jr customer succ
+ jr        |  2 | analyst                |        2 | business analyst jr canal assessorado b2c | identity intelligence analyst jr
+ jr        |  3 | mantenimiento          |        1 | tecnico de mantenimiento jr
+ jr        |  4 | mecanico               |        1 | tecnico mecanico jr
+ jr        |  5 | negocios               |        1 | analista de negocios jr comercial atacado
+ jr        |  6 | incidentes             |        1 | analista de gestao de incidentes jr vaga exclusiva para pcd
+ jr        |  7 | hris                   |        1 | hris jr analyst
+ jr        |  8 | operacoes              |        1 | grupo quintoandar vaga afirmativa para pcd analista de operacoes jr vistoria e laudos
+ jr        |  9 | opportunity            |        1 | skillbridge opportunity jr mid level recruiter
+ jr        | 10 | it                     |        1 | it jr engineer support technician
+ junior    |  1 | (principio del titulo) |      389 | junior 3d graphics software engineer | junior 3d motion designer | junior account executive | junior account executive m f d | junior account executiv
+ junior    |  2 | coordinator            |       17 | commerce coordinator junior merch analyst | marketing campaign coordinator junior specialist
+ junior    |  3 | levels                 |       11 | controls engineer all levels junior to senior | design engineer all levels junior to senior | electrical engineer all levels junior to senior | hardwa
+ junior    |  4 | developer              |        8 | analytic developer junior | business developer junior | business developer junior fx sales | business developer junior fx sales m w d | full stack dev
+ junior    |  5 | construction           |        8 | data center construction junior project manager cost | data center construction junior to mid project manager | data center construction junior to mid
+ junior    |  6 | analyst                |        5 | antifraud analyst junior | business analyst junior antifraud | functional requirements and testing analyst junior | product analyst junior junior+ mid
+ junior    |  7 | operacoes              |        5 | analista de operacoes junior backoffice imoveis | analista de operacoes junior conciliacoes middle office | analista de operacoes junior mensageria e 
+ junior    |  8 | scheme                 |        4 | commercial graduate scheme junior data scientist dubai uae | commercial graduate scheme junior market analyst dubai uae
+ junior    |  9 | externo                |        4 | agente fit vendedor a externo junior 6 horas pocos de caldas mg | vendedor a externo junior 6 horas mamanguape pb
+ junior    | 10 | finance                |        4 | finance junior at hrtechx | finance junior at private equity insights | finance junior at setsales | finance junior at united media
+ mid       |  1 | (principio del titulo) |      221 | mid agile delivery manager | mid ai product manager consumer | mid and senior servicenow developers always recruiting | mid android developer | mid at
+ mid       |  2 | executive              |       58 | account executive mid central | account executive mid city | account executive mid enterprise | account executive mid market | account executive mid m
+ mid       |  3 | manager                |       50 | account manager mid market | account manager mid market london | customer success manager mid market | customer success manager mid market hybrid | en
+ mid       |  4 | engineer               |       39 | agile modeling simulation engineer mid 921 | ai security engineer mid atlantic region remote in va md pa nc de nj or dc | android engineer mid level |
+ mid       |  5 | analyst                |       18 | all source analyst mid | business analyst mid 771 | business analyst mid emerging commercial geoint systems job 511 | business analyst mid exp en banc
+ mid       |  6 | construction           |       17 | data center construction mid to senior project manager | data center construction mid to senior project manager cost | data center construction mid to
+ mid       |  7 | commercial             |       11 | account executive commercial mid market central east | account executive commercial mid market central east remote eligible | account executive commer
+ mid       |  8 | senior                 |       11 | dissemination specialist senior mid top secret with agreement to obtain ci poly | helpdesk access manager senior mid top secret with agreement to obta
+ mid       |  9 | territory              |       10 | account executive territory mid market
+ mid       | 10 | director               |        9 | art director mid level | director mid market sales canada | global director mid market onboarding | regional business director mid atlantic | regional
+ principal |  1 | (principio del titulo) |     1759 | principal | principal account executive sled west r1 institutions and higher ed | principal account management | principal account manager | principal
+ principal |  2 | senior                 |      109 | autonomy engineer ops research senior principal | director senior principal ai soc validation bring up lead | electrical engineer senior principal har
+ principal |  3 | staff                  |       47 | electrical engineer senior staff principal | machine learning engineer staff principal | production software engineer senior staff principal | senior 
+ principal |  4 | sr                     |       35 | principal sr principal backend engineer | sr principal ai systems architect | sr principal business development head of air force strategy | sr princi
+ principal |  5 | associate              |       33 | associate principal analyst food drink | associate principal antitrust competition economics practice | associate principal commercial strategy life s
+ principal |  6 | managing               |       21 | ai strategy transformation managing principal | ai transformation managing principal banking | data strategy advisory leader managing principal | mana
+ principal |  7 | lead                   |       12 | lead principal consultant data and ai | lead principal data engineer dbt databricks | lead principal deployment engineer | lead principal digital tran
+ principal |  8 | engineer               |        9 | ai software engineer principal | cyber software engineer principal | electrical engineer principal power systems | optical validation engineer princip
+ principal |  9 | operations             |        8 | launch operations principal | strategy and operations principal | strategy operations principal | strategy operations principal driver operations | st
+ principal | 10 | strategy               |        6 | client strategy principal | product growth strategy principal | product strategy principal | provider network strategy principal | renewals strategy p
+ senior    |  1 | (principio del titulo) |    19408 | senior .net azure ai developer baltimore md | senior .net developer | senior .net developer application infrastructure temporary position | senior .ne
+ senior    |  2 | manager                |      103 | area manager senior area manager manila based | area manager senior area manager strategic accounts japan based in tokyo | area manager senior area ma
+ senior    |  3 | engineer               |       67 | 718 business analyst for the chief scientist engineer senior | agile modeling simulation engineer senior 920 | ai agentic engineer senior | ai analyti
+ senior    |  4 | staff                  |       48 | member of technical staff senior software engineer | member of technical staff senior specialized indexing | staff senior agi solutions engineer | sta
+ senior    |  5 | director               |       46 | assistant director senior writer | associate director senior manager health economics outcomes research organ health | associate director senior manag
+ senior    |  6 | analyst                |       45 | 721 division business analyst senior | 732 cd toc network analyst senior | analyst senior analyst associate manager corporate strategy bangkok based |
+ senior    |  7 | operations             |       43 | ahs operations senior associate | ai business operations senior specialist | ai strategy operations senior manager | back office operations senior ass
+ senior    |  8 | to                     |       36 | controls engineer all levels junior to senior | data center construction mid to senior project manager | data center construction mid to senior projec
+ senior    |  9 | principal              |       32 | principal senior animator | principal senior mobile engineer trading strategies cex | principal senior principal scientist small molecule therapeutics
+ senior    | 10 | ii                     |       29 | avionics test and launch engineer ii senior | clinical research associate ii senior clinical research associate | commissioning agent ii senior | comp
+ sr        |  1 | (principio del titulo) |     2895 | sr .net developer ii 6661 | sr .net developer iii 6681 | sr 3d animator | sr 3gpp ran standardization engineer starlink mobile | sr abm programs manag
+ sr        |  2 | staff                  |       22 | sr staff sr staff engineer ip design asic | sr staff sr staff firmware validation engineer | sr staff sr staff si pi hardware engineer | sr staff sr s
+ sr        |  3 | manager                |       16 | asst manager manager sr manager legal infrastructure | clinical trial manager sr clinical trial manager | corporate counsel manager sr manager | legal
+ sr        |  4 | engineer               |       10 | database engineer sr | devops engineer sr | engineer sr frontend ios | mechanical engineer sr staff | process engineer sr expert advisor midstream fac
+ sr        |  5 | director               |        9 | associate director sr manager health economics outcomes research oncology | director sr director clinical pharmacology | director sr director corporat
+ sr        |  6 | ii                     |        9 | application analyst i ii sr lead | lng originator i ii sr | medical sewer i ii sr | safety coordinator i ii sr midstream construction | safety coordin
+ sr        |  7 | analyst                |        8 | business analyst sr payments industry business reporting | security assessment authorization sa&a analyst sr job 1457 | senior total rewards analyst s
+ sr        |  8 | scientist              |        7 | pioneering medicines scientist sr scientist translational sciences t cell focused | scientist sr scientist bioinformatics data | scientist sr scientis
+ sr        |  9 | 쿠팡                |        5 | 쿠팡 sr account management specialist l5 3p consumable 1 | 쿠팡 sr employee relation specialist | 쿠팡 sr hrm specialist eats | 쿠팡 sr hrm specia
+ sr        | 10 | or                     |        5 | director or sr director origination | engineer or sr engineer development engineering utility scale solar | manager or sr manager development engineer
+ staff     |  1 | (principio del titulo) |     3284 | staff accountant | staff accountant emerging markets | staff accountant healthcare | staff accountant hybrid | staff accountant hybrid role silver spr
+ staff     |  2 | senior                 |      632 | avionics production engineer senior staff | contract senior staff product manager us east | electrical engineer senior staff egse | electrical enginee
+ staff     |  3 | sr                     |      147 | mechanical engineer sr staff | opportunistic hire sr staff engineer | principal sr staff engineer | software eng sr staff devops | sr staff ai data ce
+ staff     |  4 | of                     |      119 | associate chief of staff | business operations chief of staff | chief of staff | chief of staff ai automation | chief of staff at hrtechx | chief of s
+ staff     |  5 | technical              |      117 | fullstack member of technical staff ii | manager of the technical staff next.js | member of technical staff | member of technical staff agent delivery
+ staff     |  6 | or                     |       21 | bess development engineer senior or staff | bess electrical development engineer senior or staff | junior senior or staff software engineer inference 
+ staff     |  7 | clinical               |       19 | clinical staff manager | clinical staff pharmacist employee pharmacy prn aamc | clinical staff pharmacist full time aamc | clinical staff pharmacist f
+ staff     |  8 | home                   |       15 | in home staff assist thousand oaks ca 91359 | in home staff assist thousand oaks ca 91360
+ staff     |  9 | services               |       14 | event guest services staff pacific northwest | event guest services staff texas trust cu theatre grand prairie | event security guest services staff r
+ staff     | 10 | event                  |       14 | event staff arena experience part time seasonal | event staff executive suites host part time seasonal | event staff ford amphitheater rocky mountains
+(100 rows)
+
+
+=== S4a. cuantos titulos traen mas de un token de seniority ===
+ con_uno | con_dos | con_mas_de_dos 
+---------+---------+----------------
+   31355 |    1584 |            104
+(1 row)
+
+
+=== S4b. que combinaciones son ===
+         combo          | vacantes |                                                                                                 ejemplos                                                                                                 
+------------------------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ senior staff           |      609 | avionics production engineer senior staff | bess development engineer senior or staff | bess electrical development engineer senior or staff | contract senior staff product manager us east | electrica
+ senior ii              |      244 | l6 2 senior product manager ii retail product | senior account executive ii | senior account executive ii financial services | senior accountant ii | senior ai ml ops engineer ii hybrid in bangalore |
+ sr staff               |      122 | mechanical engineer sr staff | opportunistic hire sr staff engineer | software eng sr staff devops | sr full stack member of technical staff | sr member of technical staff | sr or staff business devel
+ senior principal       |      111 | 2026 people rewards senior specialist principal specialist bangkok based relocation provided | autonomy engineer ops research senior principal | director senior principal ai soc validation bring up le
+ ii iii                 |       47 | aerospace production technician ii iii | assembly integration test technician ii iii a shift | automation engineer i ii iii | automation specialist i ii iii | avionics production engineer ii or iii | 
+ sr ii                  |       42 | sr .net developer ii 6661 | sr business analyst ii policy decision | sr cloud finops engineer ii 6798 | sr cybersecurity engineer ii 6708 | sr data scientist ii remote eligible | sr database reliabili
+ principal senior       |       41 | artiste principal ou artiste principale en developpement de lapparence senior look development artist | associate director principal project manager senior project manager operational excellence autom
+ mid senior             |       39 | 2026 project manager associate mid senior | backend software engineer mid senior | data center construction mid to senior project manager | data center construction mid to senior project manager cost 
+ sr principal           |       36 | sr lead principal fundamentals analyst | sr lead principal fundamentals analyst midwest | sr manager or principal generation interconnection grid engineering | sr or principal engineer hv engineering 
+ staff senior           |       35 | chief of staff emergency cash senior manager | data scientist staff or senior australia | data scientist staff or senior united kingdom | member of technical staff senior software engineer | member of
+ staff principal        |       32 | machine learning engineer staff principal | mechanical cad drafter staff or principal | staff or principal applications engineer | staff principal applied ai researcher agentic search | staff principa
+ senior senior          |       29 | analista de seguranca da informacao senior senior remoto | analyste senior des donnees de jeu senior game data analyst | animateur de gameplay senior senior gameplay animator | artiste de niveau senio
+ ii senior              |       27 | avionics test and launch engineer ii senior | clinical research associate ii senior clinical research associate | commissioning agent ii senior | composites engineer ii senior | data scientist ii seni
+ senior mid             |       21 | dissemination specialist senior mid top secret with agreement to obtain ci poly | helpdesk access manager senior mid top secret with agreement to obtain ci poly | messaging manager senior mid top secr
+ staff senior staff     |       20 | staff attorney senior staff attorney | staff senior staff cad methodology engineer digital implementation signoff | staff senior staff engineer kubernetes | staff senior staff engineer public cloud op
+ sr iii                 |       19 | sr .net developer iii 6681 | sr ai ml engineer iii 6707 | sr aws cloud engineer iii 6823 | sr azure cloud architect iii 6796 | sr cloud engineer iii 6805 | sr cyber operations engineer iii noc soc 679
+ junior senior          |       13 | controls engineer all levels junior to senior | design engineer all levels junior to senior | electrical engineer all levels junior to senior | hardware engineer all levels junior to senior | junior s
+ staff sr staff         |       12 | staff or sr staff software engineer ai insurance tech | staff sr staff backend engineer configuration telemetry | staff sr staff design verification | staff sr staff design verification engineer | sta
+ iii senior             |       12 | avionics r&d technician iii or senior | cnc machinist iii senior b shift | electrical engineer designer iii senior electrical engineer designer | engineer iii senior electrical engineer | environmenta
+ sr mid                 |       11 | sr account executive mid market | sr client partner mid market app performance | sr field marketing manager mid market east | sr field marketing manager mid market west | sr sales manager mid market u
+ junior mid             |       11 | data center construction junior to mid project manager | data center construction junior to mid project manager cost | healthcare construction junior to mid project manager | junior mid full stack sof
+ senior staff principal |       10 | electrical engineer senior staff principal | production software engineer senior staff principal | senior staff principal backend engineer platform data ingestion | senior staff principal battery cell
+ senior staff staff     |        8 | senior staff or staff attorney democracy education youth alit | senior staff or staff attorney inclusion anti extremism | senior staff staff back end engineer | senior staff staff backend engineer sec
+ principal staff        |        8 | developpeur euse principal e sante staff developer healthcare | principal chief of staff office of the ceo | principal staff engineer compliance | principal technical staff clearance required
+ staff ii               |        8 | fullstack member of technical staff ii | staff accountant ii | staff database engineer ii poland | staff devops engineer ii dbops poland | staff product designer ii visual design | staff security soft
+ ii sr                  |        8 | application analyst i ii sr lead | lng originator i ii sr | medical sewer i ii sr | safety coordinator i ii sr midstream construction | safety coordinator i ii sr midstream operations | safety coordin
+ senior sr              |        7 | senior associate sr recruiter finance accounting agency staffing and recruitment | senior attorney sr estate planning strategist atlanta chicago new york dallas | senior attorney sr estate planning st
+ senior iii             |        6 | senior data scientist data scientist iii supply chain operations research | senior electrical quality inspector iii | senior engineer iii adme | senior environmental scientist iii | senior network eng
+ sr staff principal     |        6 | sr staff principal firmware engineer flash interface layer fil | sr staff principal laser design engineer | sr staff principal mechanical engineer battery | sr staff principal ssd firmware engineer fl
+ principal principal    |        5 | artiste principal en vfx principal vfx artist | associate principal principal scientist protein science | consultant principal responsable de lia principal consultant head of ai | environmental princi
+(30 rows)
+
+
+=== S5. los tokens chicos, titulo por titulo (entry, mid, jr, iii) ===
+  tok  | rn | vacantes |                                             clean                                              
+-------+----+----------+------------------------------------------------------------------------------------------------
+ entry |  1 |       25 | entry level civil engineer
+ entry |  2 |       19 | entry door technician
+ entry |  3 |       14 | entry level geotechnical engineer
+ entry |  4 |       11 | field maintenance technician entry level
+ entry |  5 |        7 | entry level sales laborer
+ entry |  6 |        6 | commercial entry door technician
+ entry |  7 |        6 | project manager commercial entry door experience is a plus
+ entry |  8 |        5 | entry door installer
+ entry |  9 |        5 | entry level environmental engineer scientist or geologist
+ entry | 10 |        4 | dental assistant entry level
+ entry | 11 |        3 | entry level criminal defense attorney
+ entry | 12 |        3 | entry level engineer water wastewater
+ entry | 13 |        3 | entry level sales executive employee benefits
+ entry | 14 |        3 | entry level sales executive trucking
+ entry | 15 |        3 | entry level territory manager outside account executive
+ entry | 16 |        3 | entry level construction material testing technician
+ entry | 17 |        3 | technical support representative entry level fresh graduates
+ entry | 18 |        3 | commercial entry door installer experienced north atlanta
+ entry | 19 |        3 | data entry specialist
+ entry | 20 |        2 | entry door technicians and installers
+ entry | 21 |        2 | e commerce operation entry level fresh graduates
+ entry | 22 |        2 | entry level civil engineer transportation highway dot
+ entry | 23 |        2 | scheduling assistant entry level
+ entry | 24 |        2 | presuit secretary entry level
+ entry | 25 |        2 | entry level civil engineer site design
+ entry | 26 |        2 | entry level operations training role
+ entry | 27 |        2 | entry level sales executive risk management
+ entry | 28 |        2 | associate accountant entry level fresh graduates
+ entry | 29 |        2 | entry level to experienced teacher
+ entry | 30 |        2 | entry level surveyor
+ entry | 31 |        2 | video editor entry level fresh graduates
+ entry | 32 |        2 | entry level architectural designer
+ entry | 33 |        2 | entry door technician trainee
+ entry | 34 |        2 | entry door service technician
+ entry | 35 |        2 | entry level traffic engineer
+ entry | 36 |        2 | entry level transportation engineer roadway
+ entry | 37 |        1 | entry level civil engineer rail track
+ entry | 38 |        1 | analyst client service entry level new york and san francisco
+ entry | 39 |        1 | entry level civil engineer site design municipal
+ entry | 40 |        1 | analyst financial advisory entry level new york and san francisco
+ entry | 41 |        1 | architectural designer entry level k 12
+ entry | 42 |        1 | audiovisual systems designer entry level
+ entry | 43 |        1 | business development associate entry level sales
+ entry | 44 |        1 | business development specialist entry level
+ entry | 45 |        1 | commercial entry door installer experienced east atlanta
+ iii   |  1 |       15 | software engineer iii
+ iii   |  2 |       15 | maintenance technician iii
+ iii   |  3 |       14 | executivo a de contas estrategicas iii farmer
+ iii   |  4 |        6 | field service technician level iii
+ iii   |  5 |        5 | software developer iii cloud platform back end authentication
+ iii   |  6 |        4 | account executive iii defense
+ iii   |  7 |        4 | security engineer iii
+ iii   |  8 |        3 | site reliability engineer iii
+ iii   |  9 |        3 | midstream operations technician i ii iii iv
+ iii   | 10 |        3 | osp engineer iii
+ iii   | 11 |        3 | facilities technician iii
+ iii   | 12 |        3 | technical services engineer iii
+ iii   | 13 |        3 | sr systems engineer iii 6706
+ iii   | 14 |        3 | sr ai ml engineer iii 6707
+ iii   | 15 |        3 | data engineer iii
+ iii   | 16 |        3 | designated support engineer iii
+ iii   | 17 |        3 | biomedical technician equipment support specialist level iii
+ iii   | 18 |        3 | telecommunications installer level iii
+ iii   | 19 |        2 | technical support engineer iii
+ iii   | 20 |        2 | factory automation technician iii
+ iii   | 21 |        2 | technician iii maintenance
+ iii   | 22 |        2 | pre award mxm model based systems engineer iii
+ iii   | 23 |        2 | design engineer iii private land development
+ iii   | 24 |        2 | electrical technician iii
+ iii   | 25 |        2 | quality assurance specialist iii
+ iii   | 26 |        2 | design engineer iii water resources
+ iii   | 27 |        2 | field service representative iii fsr iii future opportunities
+ iii   | 28 |        2 | relationship manager iii
+ iii   | 29 |        2 | account executive iii marketplace sales
+ iii   | 30 |        2 | designer iii land development
+ iii   | 31 |        2 | backend engineer iii
+ iii   | 32 |        2 | commissioning technician iii
+ iii   | 33 |        2 | product manager iii
+ iii   | 34 |        2 | software engineer iii backend
+ iii   | 35 |        2 | sales engineer iii
+ iii   | 36 |        2 | measurement instrumentation m&i technician i ii iii iv
+ iii   | 37 |        2 | bim technician iii iv
+ iii   | 38 |        2 | mechanical engineer iii designer iii
+ iii   | 39 |        2 | accountant iii
+ iii   | 40 |        2 | sde iii data engineering
+ iii   | 41 |        2 | systems engineer iii
+ iii   | 42 |        2 | mechanical engineer iii spacecraft programs
+ iii   | 43 |        2 | customer support specialist iii
+ iii   | 44 |        2 | customer value architect iii
+ iii   | 45 |        2 | software engineer iii mobile
+ jr    |  1 |       12 | jr marketing specialist contract remote
+ jr    |  2 |        4 | jr customer success manager remote
+ jr    |  3 |        3 | jr sous chef temporary
+ jr    |  4 |        2 | jr sous chef
+ jr    |  5 |        2 | jr manager solutions bogota the orchard
+ jr    |  6 |        2 | jr systems engineer
+ jr    |  7 |        1 | exclusiva pcd analista contabil jr
+ jr    |  8 |        1 | exclusiva pcd analista de operacoes de folha jr
+ jr    |  9 |        1 | fraud jr analyst
+ jr    | 10 |        1 | game research insights dept jr 시선 데이터 분석 연구원 경력무관 인턴
+ jr    | 11 |        1 | grupo quintoandar ops recruiter jr afirmativa para pessoas com deficiencia
+ jr    | 12 |        1 | grupo quintoandar vaga afirmativa para pcd analista de operacoes jr vistoria e laudos
+ jr    | 13 |        1 | hrbp jr
+ jr    | 14 |        1 | hris jr analyst
+ jr    | 15 |        1 | identity intelligence analyst jr
+ jr    | 16 |        1 | it jr engineer support technician
+ jr    | 17 |        1 | jr account executive
+ jr    | 18 |        1 | jr account executive full cycle inside sales
+ jr    | 19 |        1 | jr ai ml engineer
+ jr    | 20 |        1 | jr ar accountant
+ jr    | 21 |        1 | jr copywriter contract
+ jr    | 22 |        1 | jr data scientist
+ jr    | 23 |        1 | jr devops engineer
+ jr    | 24 |        1 | jr digital designer
+ jr    | 25 |        1 | jr equity trader
+ jr    | 26 |        1 | jr facilities coordinator part time
+ jr    | 27 |        1 | jr graphic designer
+ jr    | 28 |        1 | jr intelligence research analyst
+ jr    | 29 |        1 | jr it technician second shift
+ jr    | 30 |        1 | jr level software developer
+ jr    | 31 |        1 | jr manager business insights
+ jr    | 32 |        1 | jr mechanical cad designer
+ jr    | 33 |        1 | jr mechanical design engineer
+ jr    | 34 |        1 | jr mechanical engineer machine design
+ jr    | 35 |        1 | jr motion designer
+ jr    | 36 |        1 | jr naval architect
+ jr    | 37 |        1 | jr project manager
+ jr    | 38 |        1 | jr quality control associate
+ jr    | 39 |        1 | jr software engineer
+ jr    | 40 |        1 | jr sous chef sushi
+ jr    | 41 |        1 | jr specialist expense reconciliation
+ jr    | 42 |        1 | jr systems administrator
+ jr    | 43 |        1 | jr technical recruiter sourcer defense manufacturing
+ jr    | 44 |        1 | merchant technical support jr manager
+ jr    | 45 |        1 | skillbridge opportunity jr mid level recruiter
+ mid   |  1 |       55 | mid market account executive
+ mid   |  2 |       29 | mid level instructional designer contract remote
+ mid   |  3 |       14 | account executive mid market
+ mid   |  4 |       10 | account executive territory mid market
+ mid   |  5 |        8 | data center construction mid to senior project manager
+ mid   |  6 |        5 | sr field marketing manager mid market west
+ mid   |  7 |        5 | account executive mid enterprise
+ mid   |  8 |        5 | data center construction junior to mid project manager
+ mid   |  9 |        4 | commercial mid market sales engineer
+ mid   | 10 |        4 | account executive mid city
+ mid   | 11 |        3 | business development representative mid market
+ mid   | 12 |        3 | data center construction mid to senior project manager cost
+ mid   | 13 |        3 | manager mid market sales
+ mid   | 14 |        3 | mid market account executive toast retail
+ mid   | 15 |        3 | mid market account manager
+ mid   | 16 |        3 | senior mid market account executive
+ mid   | 17 |        3 | data center construction mid to senior project manager scheduler
+ mid   | 18 |        3 | enterprise account executive mid atlantic
+ mid   | 19 |        3 | software engineer mid level
+ mid   | 20 |        3 | regional director mid market sales
+ mid   | 21 |        3 | customer success manager mid market
+ mid   | 22 |        3 | mid market account executive emea
+ mid   | 23 |        3 | sr field marketing manager mid market east
+ mid   | 24 |        3 | strategic account manager mid market
+ mid   | 25 |        3 | mid market account executive financial services healthcare
+ mid   | 26 |        3 | mid market solutions consultant expense
+ mid   | 27 |        3 | mid senior fire protection engineer
+ mid   | 28 |        3 | account executive commercial mid market west
+ mid   | 29 |        3 | mid level software engineer
+ mid   | 30 |        2 | mid level data analyst
+ mid   | 31 |        2 | mid market account executive dach
+ mid   | 32 |        2 | mid market account executive americas
+ mid   | 33 |        2 | specialist seller mid market
+ mid   | 34 |        2 | mid sap grc security analyst
+ mid   | 35 |        2 | mid market account executive ejecutivo de cuentas mid market mexico city hybrid
+ mid   | 36 |        2 | mid market account executive uk&i
+ mid   | 37 |        2 | account manager mid market
+ mid   | 38 |        2 | account executive commercial mid market central east
+ mid   | 39 |        2 | mid market sales manager
+ mid   | 40 |        2 | mid market account executive financial services
+ mid   | 41 |        2 | senior account executive mid market
+ mid   | 42 |        2 | front end developer mid senior java quarkus html css javascript oracle aws
+ mid   | 43 |        2 | systems engineer mid level
+ mid   | 44 |        2 | mid market client sales executive
+ mid   | 45 |        2 | member of technical staff mid training
+(180 rows)
+
+
+=== S6. ii / iii: con que los rodean ===
+ tok |   anterior    |  siguiente  | vacantes 
+-----+---------------+-------------+----------
+ ii  | engineer      | (fin)       |      351
+ iii | engineer      | (fin)       |       83
+ ii  | technician    | (fin)       |       80
+ ii  | analyst       | (fin)       |       57
+ ii  | manager       | (fin)       |       56
+ ii  | specialist    | (fin)       |       43
+ iii | technician    | (fin)       |       32
+ ii  | coordinator   | (fin)       |       30
+ ii  | i             | (fin)       |       25
+ ii  | associate     | (fin)       |       24
+ ii  | engineer      | backend     |       22
+ ii  | scientist     | (fin)       |       21
+ ii  | i             | iii         |       20
+ ii  | executive     | (fin)       |       19
+ iii | ii            | (fin)       |       17
+ ii  | designer      | (fin)       |       17
+ iii | estrategicas  | farmer      |       14
+ iii | level         | (fin)       |       14
+ ii  | engineer      | senior      |       13
+ iii | manager       | (fin)       |       11
+ iii | specialist    | (fin)       |       11
+ ii  | consultant    | (fin)       |       11
+ ii  | engineer      | secret      |       11
+ ii  | technician    | iii         |       10
+ ii  | developer     | financials  |        9
+ ii  | engineer      | dedrone     |        9
+ iii | ii            | iv          |        9
+ ii  | scientist     | senior      |        9
+ ii  | engineer      | fullstack   |        8
+ ii  | technician    | full        |        8
+ ii  | engineer      | iii         |        8
+ ii  | engineer      | information |        8
+ ii  | engineer      | android     |        8
+ ii  | engineer      | with        |        7
+ ii  | administrator | (fin)       |        7
+ ii  | operator      | (fin)       |        7
+ ii  | i             | sr          |        7
+ ii  | or            | rn          |        7
+ ii  | engineer      | ai          |        7
+ ii  | accountant    | (fin)       |        7
+(40 rows)
+
