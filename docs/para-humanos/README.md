@@ -39,13 +39,17 @@ Hoy están construidas las tres piezas:
 1. **Descubrir qué empresas usan Greenhouse.**
 2. **Sondear el board de cada una** para saber cuáles siguen vivas y cuáles tienen
    vacantes publicadas hoy.
-3. **Traer las vacantes**, de una empresa o de las ~3.000 activas de una pasada, y borrar
+3. **Traer las vacantes**, de una empresa o de las 3.121 activas de una pasada, y borrar
    las que dejaron de estar publicadas.
 
-Con una salvedad: **la carga completa de vacantes está corriendo por primera vez
-mientras se escribe esto.** Ya está entrando trabajo de verdad a la base, pero la corrida
-—una o dos horas, del orden de 250.000 vacantes— todavía no terminó, así que el número
-final no existe.
+Las tres corrieron de verdad, y la última ya terminó: hay **128.953 vacantes de 3.118
+empresas** en la base.
+
+Ese número tiene una sorpresa adentro: se esperaba **el doble**. La proyección se había
+hecho con el **promedio** de una muestra —80 vacantes por empresa—, y el promedio estaba
+inflado por un puñado de empresas enormes: Stripe sola tiene 628. La guía correcta era la
+**mediana**, que era 17. Es el tipo de error que conviene recordar: en datos así, el
+promedio miente y la mediana no.
 
 Todavía no hay perfiles ni matching. De cada empresa se sabe su identificador corto,
 si su board existe, cuántas búsquedas tiene abiertas y cómo se llama; y de las
@@ -111,7 +115,7 @@ De las **vacantes**:
   que contesta "ya arranqué" como los otros dos procesos.
 - **`GreenhouseVacancySyncService`** — pide el board de una empresa y decide, vacante
   por vacante, si es nueva, si ya la tenía guardada, o si dejó de estar y hay que borrarla.
-- **`GreenhouseVacancySweepService`** — el que repite eso para las ~3.000 activas, con una
+- **`GreenhouseVacancySweepService`** — el que repite eso para las 3.121 activas, con una
   pausa entre empresa y empresa.
 - **`HtmlToText`** — desarma el HTML de la descripción hasta dejar texto que una
   persona pueda leer. Texto que entra, texto que sale: nada más.
@@ -144,12 +148,12 @@ descubrimiento —qué ATS y qué slug—; la de abajo, lo que deja el sondeo: e
 en qué estado está el board y cuándo se lo sondeó por última vez.
 
 Esos tres campos **pueden estar vacíos**, y eso significa algo preciso: una empresa
-sin estado de board es una empresa **que nunca se sondeó**. Las 4.000 que cargó el
+sin estado de board es una empresa **que nunca se sondeó**. Las 4.046 que cargó el
 descubrimiento arrancaron así.
 
 La fecha del último sondeo todavía no la usa nadie. Está para cuando esto corra solo:
 con ella se puede pedir "volvé a sondear lo que no se toca hace una semana" en vez de
-repasar las 4.000 cada vez.
+repasar las 4.046 cada vez.
 
 En `vacancy` hay dos cosas que vale la pena mirar. La primera: **la vacante sabe de qué
 empresa es, pero la empresa no tiene la lista de sus vacantes.** Parece una asimetría
@@ -214,7 +218,7 @@ docker compose logs -f app    # acá se ve cómo terminan
 docker compose exec app curl -i -X POST \
   'localhost:8080/admin/vacancies/greenhouse/figma'
 
-# 3b. o las de todas las empresas activas (una o dos horas)
+# 3b. o las de todas las empresas activas (varias horas)
 docker compose exec app curl -i -X POST \
   'localhost:8080/admin/vacancies/greenhouse'
 ```
@@ -249,13 +253,12 @@ crawl nuevo suma empresas que los anteriores no habían visto.
 
 ## Qué sigue
 
-Lo próximo es **esperar a que termine la primera carga completa** y ver con qué número
-queda. Está corriendo en el servidor, que es justamente para lo que se armó el
-despliegue: cerrás el SSH y la corrida sigue. Que esto haya salido de la máquina de Elias
-es porque ya no son experimentos sueltos, sino procesos que tienen que correr seguido, y
-más adelante en paralelo, con más ATS y con el trabajo de ordenar los títulos.
+Con las vacantes ya cargadas, lo próximo es el problema interesante: los títulos son
+texto libre, escritos por cada empresa a su manera, y para que el matching sirva hay que
+lograr que "Sr. Backend Engineer", "Backend Developer Senior" y "SWE II - Backend" se
+reconozcan como el mismo tipo de puesto. Está en curso y todavía no se puede contar como
+funcionando.
 
-Y ahí aparece el problema interesante: los títulos son texto libre, escrito por cada
-empresa a su manera, y para que el matching sirva hay que hacer que
-"Sr. Backend Engineer", "Backend Developer Senior" y "SWE II - Backend" se reconozcan
-como el mismo tipo de puesto. Eso todavía no está resuelto ni decidido.
+Que todo esto haya salido de la máquina de Elias y viva en un servidor es porque ya no
+son experimentos sueltos, sino procesos que tienen que correr seguido —y más adelante en
+paralelo, con más ATS—: cerrás el SSH y la corrida sigue.

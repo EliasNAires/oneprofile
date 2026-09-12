@@ -50,6 +50,18 @@ package "En Java" {
     ACTIVE
   }
 
+  enum Seniority {
+    ENTRY
+    JUNIOR
+    SEMI_SENIOR
+    MID
+    SENIOR
+    STAFF
+    PRINCIPAL
+    LEVEL_2
+    LEVEL_3
+  }
+
   Company --> Ats
   Company --> BoardStatus
   Vacancy --> Company : sabe de que empresa es.\nLa empresa NO tiene\nla lista de sus vacantes.

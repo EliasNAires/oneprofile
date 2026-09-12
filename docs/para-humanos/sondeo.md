@@ -25,9 +25,12 @@ no existen.
 
 ## Lo que dio la primera corrida
 
-Una sorpresa: **la enorme mayoría sigue viva y con vacantes.** Alrededor de **3.000
-activas**, unas **300 que ya no están en Greenhouse** y unas **80 sin nada publicado**.
-Se esperaba bastante más mortandad de la que hubo.
+Una sorpresa: **la enorme mayoría sigue viva y con vacantes.** De las 4.046 empresas que
+había descubierto CommonCrawl, la corrida completa dejó **3.121 activas**, **708 que ya no
+están en Greenhouse** y **217 sin nada publicado**.
+
+O sea que el **77%** de lo que vio una foto vieja de internet sigue vivo y con búsquedas
+abiertas. Se esperaba bastante más mortandad de la que hubo.
 
 De paso, el sondeo trae el **nombre legible** de la empresa —"Globant", no `globant`—
 porque viene adentro de cada vacante. Gratis, sin un pedido extra. Las empresas que no
@@ -60,5 +63,5 @@ El log al terminar se lee así:
 
 ```
 Greenhouse board probe started
-Greenhouse board probe finished: 4046 companies, N not found, N empty, N active, N failed
+Greenhouse board probe finished: 4046 companies, 708 not found, 217 empty, 3121 active, 0 failed
 ```

@@ -27,6 +27,7 @@ rectangle "service" {
 rectangle "util" {
   [GreenhouseBoardUrl] as url
   [HtmlToText] as html
+  [TitleNormalizer] as titleNorm
 }
 
 rectangle "repository" {

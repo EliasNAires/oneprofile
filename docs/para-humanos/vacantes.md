@@ -7,16 +7,21 @@
 
 Este es el proceso que produce **lo que el proyecto vino a buscar**. Los dos anteriores
 son preparación: [descubrir](descubrimiento.md) dejó la lista de empresas y
-[sondear](sondeo.md) dejó marcadas las ~3.000 que hoy tienen búsquedas abiertas.
+[sondear](sondeo.md) dejó marcadas las 3.121 que hoy tienen búsquedas abiertas.
 
 Se construyó en dos tandas, a propósito. Primero **una empresa por vez**, para poder
-mirar el ciclo entero de cerca en segundos. Después **las 3.000 de una pasada**, que es
-una corrida de una o dos horas y no se puede mirar de cerca. Hoy están los dos: el de una
-empresa se probó contra la API real, y el masivo **está corriendo por primera vez, en el
-servidor**, con vacantes entrando a la base y sin terminar todavía.
+mirar el ciclo entero de cerca en segundos. Después **las 3.121 de una pasada**, que es
+una corrida de varias horas y no se puede mirar de cerca. Los dos están probados: el de
+una empresa contra la API real, y el masivo corrió **entero en el servidor** y dejó
+**128.953 vacantes de 3.118 empresas**.
 
-Mientras corre, la forma de ver el avance es preguntarle a la base, porque el endpoint
-contesta "ya arranqué" y el resto se ve en el log:
+Ese 3.118 no es un error de tipeo: son 3.118 de las 3.121 activas, o sea que **tres
+empresas quedaron sin ninguna vacante**. No se averiguó por qué —pueden haber cerrado sus
+búsquedas entre el sondeo y la carga, o haber fallado— y en los dos casos la corrida
+siguió igual, que es exactamente para lo que está el contador de fallas.
+
+Para ver el avance de una corrida hay que preguntarle a la base, porque el endpoint
+contesta "ya arranqué" y el resto se ve recién al final, en el log:
 
 ```bash
 docker compose exec -T postgres sh -c \
@@ -82,7 +87,7 @@ Se deja pasar bastante, y es deliberado. Lo más tentador que quedó afuera:
 
 ## Cómo lo probás vos
 
-Hay un detalle incómodo: **la base de desarrollo arranca vacía.** Las 4.000 empresas
+Hay un detalle incómodo: **la base de desarrollo arranca vacía.** Las 4.046 empresas
 viven en el volumen de producción, así que en dev hay que crear a mano la empresa que
 vas a probar. Con la app corriendo (`./mvnw spring-boot:run`):
 
@@ -132,7 +137,7 @@ select count(*) from vacancy
 Tiene que dar **0**. Ojo con la versión tosca de este chequeo —buscar un `<` suelto—:
 da falsos positivos, porque hay descripciones que dicen cosas como `"(<5000 FTEs)"`.
 
-## Las 3.000 de una pasada
+## Las 3.121 de una pasada
 
 El mismo trabajo, repetido, con **medio segundo de pausa entre empresa y empresa** para no
 maltratar una API ajena. Es el doble de la pausa del sondeo, porque acá cada respuesta
@@ -142,12 +147,9 @@ pesa muchísimo más.
 curl -i -X POST localhost:8080/admin/vacancies/greenhouse    # sin slug
 ```
 
-Este sí contesta `202` y sigue por atrás, como los otros dos procesos, porque son una o
-dos horas. El resultado aparece al final, en el log:
-
-```
-3121 companies, 248000 fetched, 248000 inserted, 0 updated, 0 deleted, 0 failed
-```
+Este sí contesta `202` y sigue por atrás, como los otros dos procesos, porque son varias
+horas. El resultado aparece al final, en el log, y en la corrida real dio 128.953 vacantes
+sobre 3.118 de las 3.121 empresas activas.
 
 Tres cosas que vale la pena saber:
 
@@ -182,13 +184,21 @@ equipo de RRHH. Y el error es de un solo lado: guardar una vacante muerta cuesta
 borrar una viva cuesta justo lo que el proyecto quiere producir. Así que se guardan todas,
 y la fecha queda ahí para filtrar u ordenar **al buscar**.
 
+## La proyección que quedó desmentida
+
+Antes de correrlo se esperaban **del orden de 250.000 vacantes**, casi el doble de las
+128.953 que salieron. La proyección se había hecho sobre una muestra de 40 empresas al
+azar, usando el **promedio**: 80 vacantes por empresa. El problema es que un promedio así
+lo levantan unas pocas empresas gigantes —Stripe sola publica 628—, mientras que la
+empresa típica tiene muchísimas menos. La **mediana** de esa misma muestra era 17, y era
+la que había que mirar.
+
+No cambia nada de lo construido, pero sí la forma de proyectar: con datos tan desparejos,
+el promedio miente.
+
 ## Qué falta
 
-Correr el recorrido completo de verdad. Son del orden de **250.000 vacantes**, aunque ese
-número es una proyección hecha sobre 40 empresas al azar y no una medición: el primer
-número real va a salir de esa corrida.
-
-Después de eso empieza el problema de verdad, el que todavía no está resuelto ni
-decidido: los títulos son texto libre, y para que un matching sirva hay que lograr que
-"Sr. Backend Engineer", "Backend Developer Senior" y "SWE II - Backend" se reconozcan
-como el mismo puesto.
+Los títulos son texto libre, y para que un matching sirva hay que lograr que
+"Sr. Backend Engineer", "Backend Developer Senior" y "SWE II - Backend" se reconozcan como
+el mismo puesto. Es lo que está en curso ahora, y no se puede contar todavía como
+funcionando.
