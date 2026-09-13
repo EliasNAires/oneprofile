@@ -17,16 +17,30 @@
     de B1 dejaba el caso sospechado fuera de la ventana. Salida y análisis en
     `medicion-senior.txt`.
   - **B2 — el código: ESCRITO.** `Seniority`, `TitleNormalizer` y
-    `TitleNormalizerTest`. `./mvnw test` da **80 tests en verde** (eran 62).
-- **Paso C — la tabla y el proceso que la puebla: PENDIENTE.** Es lo que sigue.
+    `TitleNormalizerTest`. `./mvnw test` da **80 tests en verde** (eran 62). En B4
+    `TitleNormalizer` se partió en dos clases y ya no existe.
+- **Paso B3 — más criterios de limpieza, medidos: MEDIDO Y ANALIZADO.** Corrido el
+  2026-09-12; Elias leyó las salidas antes del análisis. Salidas en
+  `medicion-ubicacion.txt` y `medicion-ruido.txt`, análisis en "El análisis de B3".
+  **El resultado es mayormente negativo**: de once hipótesis, entran tres.
+- **Paso B4 — el refactor y las tres reglas que B3 sostuvo: ESCRITO.** `TitleCleaner`,
+  `SeniorityExtractor`, `WorkModeExtractor` y `WorkMode`, con sus tests. `./mvnw test`
+  da **95 tests en verde** (eran 80).
+- **Paso C — la tabla y el proceso que la puebla: PENDIENTE.** Es lo que sigue. La tabla
+  nace con `title`, `seniority` y `work_mode`.
 
-**Por dónde arrancar la próxima sesión:** el paso C, que está descripto más abajo. Las
-reglas del normalizador están todas cerradas y medidas; no hace falta correr ninguna
-medición más para seguir.
+**Por dónde arrancar la próxima sesión:** el paso C. Las reglas de los tres extractores
+están cerradas y probadas; B4 lo dio por probado Elias el 2026-09-13.
+
+**Pendiente: ver los falsos positivos de la extracción de modalidad.** Los sinónimos de
+`WorkModeExtractor` salieron de contar apariciones (P3), pero nadie miró en qué contexto
+aparecen —como sí se hizo con el seniority en B1—. Casos a revisar: `remote` como parte
+del puesto (`remote sensing`, `remote monitoring`), `field based` e `in person`.
 
 **Atajo de lectura:** las secciones "Resultados" y "Segunda ronda" son **salida cruda de
 psql, larga y saltéable**. Lo que hay que leer sí o sí es "Decisiones ya tomadas", "El
-análisis", "Decisiones que cerró el paso A" y los pasos B1, B2 y C.
+análisis", "Decisiones que cerró el paso A", los pasos B1 y B2, "El análisis de B3", B4
+y C. De B3, las secciones del SQL también se pueden saltear.
 
 Las salidas crudas de las mediciones viven en la raíz del repo, **sin versionar**
 (se borran cuando el plan termine):
@@ -37,6 +51,8 @@ Las salidas crudas de las mediciones viven en la raíz del repo, **sin versionar
 | `medicion-titulos-ronda2.txt` | Paso A, segunda ronda: cuantificación del seniority. Analizada. |
 | `medicion-seniority.txt` | Paso B1: falsos positivos de cada token de seniority. Analizada. |
 | `medicion-senior.txt` | Paso B1b: la cabeza de `senior` a fondo. **Trae el análisis escrito adentro**, arriba de la salida cruda. |
+| `medicion-ubicacion.txt` | Paso B3, familia P: modalidad y ubicación. Analizada. |
+| `medicion-ruido.txt` | Paso B3, familia Q: ruido y atributos en el título. Analizada. |
 
 ## A dónde vamos
 
@@ -1107,6 +1123,452 @@ distintas y equipararlas sería inventar la equivalencia que el paso A ya descar
 tests son la verificación. La corrida real llega en el paso C.
 
 
+## Paso B3 — medir otros criterios para limpiar el título
+
+**Corrido el 2026-09-12 y analizado. Las salidas están en `medicion-ubicacion.txt` y
+`medicion-ruido.txt`; el análisis, en "El análisis de B3".**
+
+### Por qué existe este paso
+
+Hasta acá el único criterio medido y aplicado es el **seniority**. Elias pidió anidar un
+paso antes del C para ver **por qué otro criterio se puede limpiar el título**, y el
+orden no es capricho: el paso C crea `normalized_vacancy`, y una dimensión que aparezca
+después obliga a migrar la tabla. Va partido en dos, como los anteriores: **B3 mide** y
+**B4 escribe el código**.
+
+### Las hipótesis
+
+Las de Elias:
+
+| # | Hipótesis | Qué se espera de ella |
+|---|---|---|
+| H1 | **Modalidad**: `remote` y sus equivalentes, `on-site` y los suyos | se **extrae** a un campo propio, no se limpia |
+| H2 | **Ubicación** metida en el título | se extrae a **otro** campo; y si dice remote y no hay ubicación, es **fully remote** |
+| H3 | **Ruido puro**: salario, bonos y "oportunidad" pegados al título | se limpia |
+| H4 | **`experienced`** | ¿mapea a algún valor de `Seniority`? |
+
+H2 es la que Elias marcó como más clara, y su regla del *fully remote* interesa porque
+**a esas vacantes puede aplicar cualquiera**: es un subconjunto útil para el matching, no
+un detalle de limpieza.
+
+Las mías, todas sacadas de datos que las mediciones anteriores ya habían mostrado:
+
+| # | Hipótesis | Evidencia que ya estaba a la vista |
+|---|---|---|
+| H5 | **Marca de género** (`h/f`, `m/f/d`, `w/m/x`) | 1.503 títulos en la consulta K. En el limpio quedan como tokens sueltos `h f`, y `auxiliaire de vie h f` (301) es el mismo puesto que `auxiliaire de vie`. **Ruido puro.** |
+| H6 | **Sigla de certificación entre paréntesis** | `registered behavior technician rbt` 353 contra `registered behavior technician` 117, y `licensed practical nurse lpn`. El mismo puesto partido en dos por la sigla, justo en la cabeza de la distribución. |
+| H7 | **Número de requisición pegado** | `account executive bailiwick req#1206`, `1541 microsoft dynamics 365 f&scm…`, `.net c# developer senior 879`. Ids internos de cada empresa. **Ruido puro.** |
+| H8 | **Contrato y jornada** | `part time` 2.134, `intern` 1.408, más `full time`, `contract`, `seasonal`, `per diem`. Es una dimensión ortogonal: **campo propio, no borrado**, por el mismo argumento que ganó el seniority. |
+| H9 | **Idioma requerido** | `spanish speaking behavior technician` 72, `korean&english`, `c1+ german`. Atributo real del puesto. |
+| H10 | **Cohorte o fecha** | `software engineering intern summer 2027`, `2026 financial analyst i ad&s`, `class of`. |
+| H11 | **Marketing y urgencia** | `join our talent community!`, `hiring now`, `apply now`, `immediate start`. Se toca con las ~650 filas que no son vacantes. |
+
+### Las dos fuentes
+
+**Esta medición mira `title` y `location`, no solo el título.** Son dos razones
+distintas y las dos importan:
+
+- La **modalidad vive más en `location` que en el título**: el board escribe
+  `"Remote - U.S."`, `"Remote - LATAM"`. Medir solo el título la subestimaría.
+- Los **tokens de `location` son un diccionario de lugares real**, sacado de estos mismos
+  datos. Es lo que permite reconocer la ciudad dentro del título sin inventar una lista
+  de ciudades del mundo, que era el problema de H2.
+
+`docs/CONTEXTO.md` ya dice que `location` **no es parseable** como campo estructurado
+—es texto libre, y `offices` trae país en solo el 13% de los casos—. Eso sigue siendo
+cierto y no es lo que se busca acá: no se quiere el país normalizado, se quiere saber si
+el título repite algo que `location` ya dice.
+
+### Cómo se corrió
+
+Las consultas **las corro yo** por `ssh elitedesk1`. El SQL va copiado con `scp` y
+redirigido desde el archivo —el heredoc pelea con las regex—, y el `sudo` se cachea y se
+usa **dentro de la misma invocación de SSH**, porque el ticket no sobrevive entre
+conexiones:
+
+```bash
+scp medicion-ubicacion.sql medicion-ruido.sql elitedesk1:~/
+ssh elitedesk1 'echo <password> | sudo -S -p "" true 2>/dev/null; \
+  cd ~/oneprofile && sudo -n docker compose exec -T postgres \
+  sh -c "psql -U \$POSTGRES_USER -d \$POSTGRES_DB" < ~/medicion-ubicacion.sql \
+  > ~/medicion-ubicacion.txt'
+```
+
+**No escribe nada en la base:** funciones y vistas se crean en `pg_temp`, así que viven
+solo en esa sesión de psql.
+
+### La limpieza, ahora como función
+
+Los dos archivos empiezan con la **misma** regla del paso A, pero envuelta en una función
+temporal en vez de repetida dentro de una vista. El motivo es concreto: hay que aplicarla
+**al título y a `location`**, y copiar los ocho `regexp_replace` anidados dos veces es
+justamente cómo se cuela un error.
+
+```sql
+create function pg_temp.clean(t text) returns text language sql immutable as $fn$
+select btrim(regexp_replace(                                      -- 8. colapsar espacios
+  regexp_replace(                                                 -- 7. todo lo demas a espacio
+    regexp_replace(                                               -- 6. & solo entre alfanumericos
+      regexp_replace(                                             -- 5. + precedido por alfanumerico o por otro +
+        regexp_replace(                                           -- 4. # solo precedido por alfanumerico
+          regexp_replace(                                         -- 3. . solo si le sigue un alfanumerico
+            regexp_replace(                                       -- 2. apostrofos, sin dejar espacio
+              regexp_replace(normalize(lower(t), NFD),            -- 1. minusculas y diacriticos
+                             '[̀-ͯ]', '', 'g'),
+              '[''’]', '', 'g'),
+            '\.(?![[:alnum:]])', ' ', 'g'),
+          '(?<![[:alnum:]])#', ' ', 'g'),
+        '(?<![[:alnum:]+])\+', ' ', 'g'),
+      '(?<![[:alnum:]])&|&(?![[:alnum:]])', ' ', 'g'),
+    '[^[:alnum:] .+#&]', ' ', 'g'),
+  '\s+', ' ', 'g'))
+$fn$;
+```
+
+**Y pasó exactamente eso**: la primera corrida de `medicion-ruido.sql` falló entera —28
+errores en cascada— porque a esa copia de la función le faltaba un nivel de anidamiento.
+`psql` no para en el primer error, así que la vista no se creó y las 20 consultas
+siguientes dieron `relation "v" does not exist`. Se arregló copiando la función que ya
+había funcionado en el otro archivo, y se volvió a correr.
+
+La familia P agrega una segunda función, que es la que hace medible la regla del *fully
+remote*: **lo que queda de un texto de ubicación después de sacarle las palabras de
+modalidad y el relleno**. Si queda vacío, esa vacante no nombra ningún lugar.
+
+```sql
+create function pg_temp.place_left(t text) returns text language sql immutable as $fn$
+select btrim(regexp_replace(
+  regexp_replace(
+    regexp_replace(coalesce(t, ''),
+      '\m(remote|remoto|telecommute|telecommuting|telework|teletrabajo|wfh|virtual|hybrid|hibrido|onsite|presencial)\M|work from home|home based|a distancia|on site|in office|in person',
+      ' ', 'g'),
+    '\m(only|anywhere|flexible|optional|friendly|first|work|from|home|based|or|and|the|of|position|role|job|other|location|locations|office|offices|area|areas|any|various|multiple|global|worldwide|distributed|field|travel|tbd|n a)\M',
+    ' ', 'g'),
+  '\s+', ' ', 'g'))
+$fn$;
+```
+
+Esa lista de relleno es **lista negra, no blanca**, al revés de la regla de limpieza, y
+es una debilidad conocida de esta medición: si falta una palabra de relleno, una vacante
+que sí es fully remote va a contarse como "remote con lugar". Se acepta porque acá no se
+está guardando nada, se está dimensionando; la regla definitiva se escribe en B4 con la
+salida a la vista.
+
+La familia Q agrega una línea base propia: **el título limpio y además sin seniority**,
+que es lo que el normalizador produce hoy. La aproximación del seniority es la misma
+regex de la ronda 2 del paso A —no las guardas finas de `TitleNormalizer`— justamente
+para que los números sean comparables con N1 y N2.
+
+```sql
+create temp table v as
+select id, title, location,
+       pg_temp.clean(title) as clean,
+       pg_temp.squeeze(regexp_replace(pg_temp.clean(title),
+         '\m(senior|sr|junior|jr|staff|principal|mid level|entry level|ii|iii|ssr|semi senior)\M', ' ', 'g')) as base
+from vacancy;
+
+create index on v (clean);
+create index on v (base);
+analyze v;
+```
+
+**Acá es tabla y no vista, al revés que en el paso A, y no es cosmético.** Una vista
+recalcula `pg_temp.clean(title)` cada vez que alguien la toca, y esta familia la toca
+veintitrés veces. Con vista, la consulta Q2c —que busca para cada título con sigla si
+existe el mismo título sin ella— **se colgó**: hubo que cancelarla a mano con
+`pg_cancel_backend` después de varios minutos. Materializada, con un índice sobre
+`clean` y con los títulos distintos en su propia tabla, la corrida entera termina en
+menos de un minuto. Lo mismo vale para `w`, la tabla de los recortes, que se recorre
+cuatro veces.
+
+Dos trampas más de esta corrida, las dos de sintaxis y las dos encontradas corriendo:
+
+- **`full` es palabra reservada** (por `full outer join`). Postgres acepta
+  `... as full` en la lista de un `select`, así que la tabla se creó igual, pero después
+  `create index on w (full)` y `select count(distinct full)` fallan. La columna se llama
+  `recortado`.
+- En la última consulta, `w` y `v` **comparten la columna `base`**, así que el `join` la
+  deja ambigua y hay que calificarla.
+
+### Familia P — modalidad y ubicación (`medicion-ubicacion.txt`)
+
+| # | Qué contesta | Por qué se pide |
+|---|---|---|
+| P1 | **Control.** Cuántas vacantes tienen `location`, su largo medio, cuántos valores distintos, y cuántos quedan vacíos al limpiar | dice si `location` es un campo confiable —poblado como `language`— o opcional. **`location_vacia_limpia` no puede ser mayor que `location_vacia_cruda`**: si lo es, la limpieza destruye ubicaciones |
+| P2 | **Matriz título × location** para cada modalidad: dice remote solo en el título, solo en location, en las dos, en ninguna | **la consulta central de H1.** Decide de qué fuente se lee la modalidad, y si hace falta leer las dos |
+| P3 | **Vocabulario**: cada variante por separado (`remote`, `fully remote`, `100 remote`, `work from home`, `wfh`, `telecommute`, `virtual`, `home based`, `remoto`, `teletrabajo`, `a distancia`, `onsite`, `on site`, `in office`, `in person`, `presencial`, `hybrid`, `hibrido`, `field based`), en título y en location | qué equivalentes existen **de verdad**. Sin esto, la lista de sinónimos del extractor sería inventada |
+| P4 | La **forma** de `location`: top 50 valores crudos, y cuántos llevan coma, guion suelto, punto y coma, barra o paréntesis, cuántos empiezan con "Remote", y cuántos tokens tiene en promedio | si `"Remote - U.S."` es el patrón dominante, partir el campo es trivial; si no, hay que ir por tokens |
+| P5 | **La regla de Elias**: cuántas dicen remote **sin** ningún lugar nombrado (→ fully remote) contra cuántas lo dicen **con** un lugar (→ remoto restringido) | dimensiona el subconjunto "puede aplicar cualquiera", que es el que motivó la hipótesis |
+| P5b | Qué queda concretamente en `location` cuando dice remote (top 40), con `(nada: fully remote)` como una fila más | es la contracara de P5: permite ver a ojo si `place_left` está sacando lo que debe y no de más |
+| P6 | Cuántas vacantes tienen en el título un token que **también está en su propia `location`** | **mide si el diccionario funciona**, que es lo que hace viable H2 sin una lista de ciudades |
+| P6b | Cuáles son esos tokens (top 60) | para mirarlos a ojo: separa las ciudades de las coincidencias casuales |
+| P7 | El **diccionario candidato**: top 100 tokens de `location` con cuántas veces aparecen ahí y cuántas en títulos | el insumo directo del extractor de B4 |
+
+### Familia Q — ruido y atributos en el título (`medicion-ruido.txt`)
+
+| # | Qué contesta | Hipótesis |
+|---|---|---|
+| Q1 / Q1b / Q1c | Marca de género por patrón, cómo queda en el limpio (los tokens sueltos `h`, `f`, `m`, `d`, `w`, `x`) y ejemplos | H5 |
+| Q2a-Q2d | Sigla entre paréntesis: volumen, top 40 siglas, **cuántos títulos con sigla tienen un gemelo sin sigla en el dataset**, y los pares concretos | H6. El gemelo es la prueba: si existe, la sigla está partiendo un mismo puesto en dos |
+| Q3 / Q3b | `req#`, `#` con número, números de 3 y 4+ dígitos al principio, al final y sueltos, más ejemplos | H7 |
+| Q4 / Q4b | `$`, `\d+k`, `sign on bonus`, `bonus`, `hourly`/`per hour`, `salary`/`pay`, `up to`, `opportunity`, urgencia, más ejemplos | H3 |
+| Q5 | `!` en el crudo, `join our`, talent pool, `general application`, `we are hiring`, `apply now` | H11 |
+| Q6 | `part time`, `full time`, `intern`, `contract`, `temporary`, `seasonal`, `per diem`/`prn`, `apprentice`, `freelance`, `w2`/`1099`, `locum`, `volunteer`, `casual` | H8 |
+| Q7 | `20xx`, estación (`summer`/`winter`/`fall`/`spring`), `class of`, `new grad`, `campus`, `cohort` | H10 |
+| Q8 | `speaking`/`speaker`, `bilingual`, los idiomas nombrados, y el nivel del marco europeo (`b2`, `c1+`) | H9 |
+| Q9a-Q9c | **`experienced`**: volumen, `experience`, `N+ years`, `experienced hire`, sinónimos (`seasoned`, `veteran`, `expert`, `advanced`), y **con qué palabra sigue y qué palabra lo precede** (top 25 y top 15) | H4. Los vecinos son lo que separa "nivel" de "categoría de reclutamiento": `experienced hire` es lo segundo |
+| Q10 | **El efecto agregado**: títulos distintos y vacantes tocadas **por cada recorte separado**, contra la línea base | **la consulta que decide qué vale la pena.** Un recorte que mueve la cardinalidad menos que la marca de género (−0,2% en la ronda 2) no justifica escribir una regla |
+| Q10b / Q10c | Los siete recortes **juntos**: cardinalidad, cola larga, cobertura top N y top 30 títulos | la comparación directa contra N1, N2, N3 y N4 de la ronda 2 |
+| Q11 / Q11b | **Control de sanidad**: cuántos títulos quedan vacíos con solo la limpieza, sin seniority, y con todos los recortes; y cuáles son | mismo control que la consulta A del paso A. Un recorte que vacía un título borró la vacante entera |
+
+### Cómo cierra B3
+
+Dejo los dos `.txt` en la raíz del repo, informo el resultado de los controles duros (P1
+y Q11) y **no escribo el análisis hasta que Elias los haya leído**: es una medición
+exploratoria, de las que sirven para decidir cómo modelar, y la decisión tomada es que él
+se forme su criterio primero. Después analizo, y de ahí salen las reglas que implementa
+B4.
+
+**Los controles, tal como dieron (2026-09-12):**
+
+- **P1 pasa.** 128.953 vacantes, `location` nula en **1** sola, y la limpieza no vacía
+  ninguna: `location_vacia_limpia` da 0 contra `location_vacia_cruda` 1. (El 0 es porque
+  `clean(null)` devuelve `null` y no `''`; la fila sin `location` está contada en
+  `location_null`.) El campo tiene **20.113 valores crudos distintos** y 17.699 limpios.
+- **Q11 NO pasa, y es un hallazgo, no un error de la regla.** Con solo la limpieza no se
+  vacía ningún título —igual que en el paso A—, pero **al sacar el seniority se vacían 6**
+  y **con los siete recortes juntos, 87**. Q11b dice cuáles: los 87 son casi todos
+  `Join Our Talent Community`, `Talent Network`, `Talent Pool` y variantes, o sea las
+  filas que el paso A ya había marcado como *no son vacantes*; y las 6 del seniority son
+  el título `Principal` solo. **Ninguna regla se da por buena hasta que Elias lea la
+  salida**, pero el control queda registrado como no limpio.
+
+### El análisis de B3
+
+**1. Casi ningún recorte de esta ronda vale la pena, y ese es el resultado principal.**
+Q10, contra la línea base de 78.142 títulos distintos:
+
+| Recorte | Títulos distintos | Vacantes tocadas |
+|---|---|---|
+| línea base (limpio, sin seniority) | 78.142 | — |
+| sin contrato | 77.264 (**−1,1%**) | 5.117 |
+| sin números | 77.914 (−0,3%) | 2.787 |
+| sin modalidad | 77.881 (−0,3%) | 2.671 |
+| sin fecha | 77.915 (−0,3%) | 1.494 |
+| sin marca de género | 77.980 (−0,2%) | 1.524 |
+| sin marketing | 78.092 (−0,1%) | 832 |
+| sin plata | 78.124 (−0,02%) | 371 |
+| **los siete juntos** | **76.303 (−2,4%)** | 12.751 (9,9%) |
+
+El seniority solo valía **−5,8% y 31.192 vacantes**: los siete recortes juntos valen
+menos de la mitad. La cola baja de 49,7% a 48,5% y los top 20 suben de 4,3% a 4,5%.
+**La forma de la distribución no se mueve.** La conclusión que deja es tan útil como
+incómoda: el ruido de formato ya está exprimido, y lo que queda por ganar está en la
+categorización por tokens, no en seguir limpiando el título.
+
+Por eso B4 implementa tres reglas y no once. Lo que entra, entra por una razón distinta
+de la cardinalidad.
+
+**2. La modalidad: la hipótesis se confirma, pero la fuente no es el título.** P2 es
+tajante: de las **16.444** vacantes que declaran trabajo remoto, **14.624 lo dicen solo
+en `location`** y apenas **1.066 solo en el título** (754 en las dos). Leer solo el
+título perdería el 89% de la señal. Lo mismo con híbrido: 2.345 en total, 1.829 solo en
+`location`. Presencial es marginal —876— y además poco informativo, porque el default
+implícito de una vacante es que sea presencial.
+
+P3 recorta la lista de sinónimos a lo que existe: `remote` (16.416 apariciones),
+`hybrid`, `home based` (280, casi todas en `location`), `on site`, `in office`, `remoto`,
+`hibrido`, `presencial`, `in person`, `field based` (89). Y **`telecommute`, `telework`,
+`teletrabajo`, `a distancia` y `site based` dan cero en las dos fuentes**: son
+exactamente las palabras que una lista escrita de memoria habría incluido, y habrían sido
+código muerto. Esa es la medición pagándose sola.
+
+**3. La regla del fully remote funciona: 3.105 vacantes** (2,4% del total), de las cuales
+3.099 salen de `location` y 6 solo del título. P5b la valida a ojo: lo que queda cuando
+*no* es fully remote es casi todo país limpio —`united states` 2.075, `us` 1.916, `usa`
+921, `canada` 364, `india` 221, `united kingdom` 196—. O sea el remoto casi siempre trae
+un ámbito geográfico (13.339 de 16.444, el 81%), y el "puede aplicar cualquiera" es el
+19% restante.
+
+**4. La sigla redundante es el mejor hallazgo de la familia Q.** 3.033 títulos terminan
+en una sigla, y **1.393 tienen un gemelo idéntico sin ella**. Q2d son pares perfectos:
+`registered behavior technician` / `…rbt` (349 vacantes), `center based registered
+behavior technician` / `…rbt` (87), `board certified behavior analyst` / `…bcba`,
+`infusion registered nurse` / `…rn`, `licensed practical nurse` / `…lpn`,
+`chief information security officer` / `…ciso`, `sdr`, `bdr`, `cna`, `tam`.
+
+Pero la regla obvia —borrar lo que cierra el título entre paréntesis— es **la
+equivocada**, y Q2b lo muestra: en ese mismo lugar viven `.NET` (24), `H/F` (212), el
+código postal `91359` (46), `2027`, `US`, `UK`, `LATAM`, `EMEA`, `PRN`, `CONTRACT`.
+Ninguno es redundante y borrarlos perdería información. Lo que los separa es pedir que
+**las letras sean las iniciales de las palabras anteriores**, que además es una función
+pura del título: no hace falta ver el resto del dataset.
+
+**5. La marca de género entra pese a colapsar poco.** Son 1.524 vacantes y −0,2% de
+cardinalidad, apenas la vara. Lo que la justifica es Q1b: deja **tokens de una sola letra
+sueltos** dentro del título —`f` 1.607, `h` 970, `m` 953, `d` 760, `w` 329, `x` 259—, y
+el paso A ya decidió que la categorización va a ser **por tokens**. Para un clasificador
+por tokens eso es basura pura. El criterio acá es calidad de tokens, no cardinalidad.
+
+**6. La ubicación dentro del título se descarta, y es el resultado que más contradice lo
+esperado.** P6 parece prometer: 15.365 vacantes (11,9%) repiten en el título un token que
+está en su propia `location`. Pero P6b muestra de qué están hechos esos tokens: `new`
+287, `united` 260, `city` 234, `san` 229, `west` 177, `south` 117, más `park`, `hills`,
+`mall`, `beach`, `county`, `thousand`. Y P7 da la contraprueba: `west` aparece en 500
+títulos, `based` en 867, `office` en 362, `park` en 167. Un diccionario de tokens sueltos
+convierte "West Coast Sales Manager" en una ubicación. **No alcanza.**
+
+Lo que sí quedó claro es lo contrario de lo que suponíamos: **`location` es mucho más
+parseable de lo que dice `docs/CONTEXTO.md`.** De 128.952 valores, **91.223 llevan coma**
+(70,7%), el promedio es de 3,28 tokens y P4a es `"London, United Kingdom"`,
+`"New York, NY"`, `"Remote - US"`, `"Costa Mesa, California, United States"`. Ese juicio
+viejo se había hecho sobre el campo `offices` y sobre 842 vacantes de 9 boards; con
+128.953 no se sostiene igual. **La ubicación estructurada merece un paso propio, saliendo
+de `location` y no del título.**
+
+**7. `experienced` no mapea a ningún nivel.** Son 253 títulos, y Q9b dice qué palabra le
+sigue: `sales` 26, `event` 18, `aesthetic` 11, `clinician` 11, `trader` 9, `dermatology`
+8, `teacher` 8. Es un **adjetivo del rol** —"Experienced Sales Professional"—, no un
+escalón de la escala; `experienced hire`, que sí sería categoría de reclutamiento, son 3
+casos. Q9c lo confirma: en 170 de 253 abre el título. Mapearlo a `SENIOR` sería inventar
+la equivalencia que el paso A ya descartó para `ii` / `iii`. Lo mismo vale para
+`seasoned`, `veteran`, `expert` y `advanced` (518 juntos).
+
+**8. La hipótesis de los números de requisición estaba mal formulada.** Q3 la desmiente:
+`req#` son **68** casos y `#` con número **53**. Los números que sí abundan son de otra
+cosa: 2.136 títulos con un número de 4+ dígitos, y Q3b muestra que son **códigos
+postales** —`thousand oaks ca 91359`, `norcross ga 30071`, `poteet texas 78065`— y
+**años** —`summer 2027`—. El código postal es ubicación metida en el título, así que se
+va con el paso de ubicación, no con una regla de ids.
+
+**9. Plata y marketing son reales pero chicos.** La plata existe —`home inspector salary
+50 85k` 16, `maintenance technician 2 500 sign on bonus` 11— pero toca 371 vacantes, el
+0,3%. El marketing toca 832. Los dos están debajo de la vara y no justifican una regla.
+Lo que sí confirma Q5 es el punto abierto que ya venía: `talent pool` 357 y
+`general application` 318, **675 filas que no son vacantes**.
+
+**10. Contrato y jornada es el recorte más grande, y por eso mismo no entra acá.** Q6:
+`part time` 2.128, `intern` 1.939, `contract` 1.429, `full time` 914, `seasonal` 750,
+`per diem / prn` 690, `locum` 644, `volunteer` 290, `temporary` 288 — unas 9.000
+vacantes, y −1,1% de cardinalidad, el único recorte que pasa la vara con claridad. Pero
+es un **atributo, no ruido**: para el matching, part time contra full time pesa tanto
+como el seniority. Le corresponde un paso propio con su propia medición de falsos
+positivos, igual que el seniority tuvo B1 —sin esa medición no existirían las guardas que
+salvaron a `staff nurse` y `mid market`—.
+
+**11. El control Q11 no dio limpio, y dice algo.** Con solo la limpieza no se vacía
+ningún título. Al sacar el seniority se vacían **6**: son el título `Principal` a secas,
+que en este dataset es el director de una escuela y no un nivel. Con los siete recortes
+juntos se vacían **87**, y Q11b muestra que son casi todos `Join Our Talent Community`,
+`Talent Network` y `Talent Pool`. O sea que **un título que queda vacío es señal de que
+la fila no es una vacante** — una forma de detectarlas que no requiere lista de frases.
+No se implementa acá porque nadie lo pidió; queda como punto abierto.
+
+## Paso B4 — el refactor y las tres reglas que B3 sostuvo
+
+**ESCRITO.** `./mvnw test` da **95 tests en verde** (eran 80). Sin prueba manual contra
+prod: las tres clases son funciones puras, sin red y sin base, así que los tests son la
+verificación. La corrida real llega en el paso C.
+
+**Alcance, decidido con Elias después del análisis:** el refactor, la modalidad, la sigla
+redundante y la marca de género. **Nada más.** Contrato y jornada, y la ubicación
+estructurada, quedan para pasos propios (ver "Puntos abiertos").
+
+### El refactor: `TitleNormalizer` se parte en dos
+
+La clase hacía dos cosas —limpiar y extraer el seniority— y con una tercera extracción
+entrando cada criterio nuevo la iba a agrandar. Elias pidió separarlas:
+
+- **`util/TitleCleaner`** — `static String clean(String)`. Se llevó la lista blanca
+  entera, tal cual estaba, y suma las dos reglas nuevas de abajo. Devuelve `""` cuando no
+  queda nada legible.
+- **`util/SeniorityExtractor`** — `static Extracted extract(String cleanTitle)`, con el
+  record `(String title, Seniority seniority)`. Se llevó `LEVELS`, las guardas de `entry`,
+  `mid` y `staff`, el `semi senior` y la regla del mínimo, **sin tocar una línea**.
+- `TitleNormalizer` y su test **se borraron**. **No quedó una fachada**: quien encadena
+  limpieza → seniority → modalidad es el servicio del paso C, y una clase que nadie usa
+  no va.
+
+**Los 18 tests de B2 no quedaron idénticos, y conviene decirlo.** Los de
+`SeniorityExtractorTest` conservan entradas y valores esperados y encadenan las dos
+clases desde un helper, que es lo que prueba que el refactor no cambió comportamiento. Los
+de `TitleCleanerTest` conservan las entradas, pero el esperado ahora trae el seniority
+adentro —`"senior software engineer c++"` y no `"software engineer c++"`—, porque esa
+clase ya no lo saca. Y **un caso cambió de verdad**: `"Aide à domicile (H/F)"` daba
+`"aide a domicile h f"` y ahora da `"aide a domicile"`. No es un error del refactor: es
+la regla nueva de género haciendo su trabajo.
+
+### Regla nueva 1: la sigla redundante al final
+
+Se borra el último token **solo si sus letras son las iniciales de las palabras que lo
+preceden**. La regla obvia —borrar la sigla final— perdía `.NET`, `(US)`, `(PRN)` y los
+códigos postales, que viven en ese mismo lugar y no repiten nada.
+
+- La sigla tiene que ser **solo letras** (eso descarta `.net`, `c#` y `91359`) y tener
+  **de 2 a 6**.
+- Se compara de atrás hacia adelante: la última letra contra la inicial de la palabra
+  anterior, y así. **Una palabra de dos letras o menos se puede saltear** si no aporta
+  letra —es lo que hace entrar `senior software development engineer in test sdet`, que
+  saltea el `in`—; **una más larga que no aporta letra rompe la sigla**.
+- Positivos en los tests: `rbt`, `bcba`, `lpn`, `ciso`, `sdet`. Negativos, que son la
+  razón de ser de la regla: `senior software architect .net`,
+  `dialysis technician thousand oaks ca 91359`, `account executive us`,
+  `certified nurse midwife cnm prn`.
+
+Se revisó a mano contra los 18 títulos de B2 que terminan en palabra corta —`ii`, `iii`,
+`mid`, `staff`, `senior`, `ai`, `care`, `level`— y ninguno dispara la regla: siempre hay
+una palabra larga en el medio que no aporta la letra.
+
+### Regla nueva 2: la marca de género
+
+Se sacan las secuencias `h f`, `f h`, `m f d`, `m w d`, `w m d`, `m f x`, `m w x` y
+`f m x` **en cualquier posición** —Q1c mostró que también aparece en el medio:
+`solution architect m w d financial services`— y **solo como secuencia completa**. El
+test que lo cuida es real: `"Assistant(e) de vie H/F"` da `"assistant e de vie"`; la `e`
+suelta de "Assistant(e)" se queda porque no es parte de la marca.
+
+Corre **antes** que la de la sigla, así una sigla que quedaba tapada por la marca
+(`… rbt h f`) queda al final y también se va.
+
+### Regla nueva 3: la modalidad
+
+**`model/WorkMode`** — `REMOTE`, `FULLY_REMOTE`, `HYBRID`, `ONSITE`.
+
+- `FULLY_REMOTE` es un valor propio y no un booleano aparte porque es como Elias lo
+  describió, y el javadoc aclara que es un caso de `REMOTE`, no otra modalidad.
+- **`null` significa "no lo declara", no "es presencial"**: son 112.508 vacantes, y
+  pasarlas a `ONSITE` sería inventar el dato. Misma semántica que `boardStatus` nulo.
+
+**`util/WorkModeExtractor`** — `static Extracted extract(String cleanTitle, String
+location)`, con el record `(String title, WorkMode mode)`. Recibe el título ya limpio y la
+`location` **cruda**, que normaliza con `TitleCleaner.clean`.
+
+- **Los sinónimos son solo los que P3 encontró.** Remoto: `remote`, `remoto`, `wfh`,
+  `home based`, `work from home`, `fully remote`, `100 remote`, `remote only`. Híbrido:
+  `hybrid`, `hibrido`. Presencial: `onsite`, `on site`, `in office`, `in person`,
+  `presencial`, `field based`. **No están** `telecommute`, `telework`, `teletrabajo`,
+  `a distancia` ni `site based`, que dieron cero. **`virtual` quedó afuera por decisión
+  de Elias**: 194 títulos, pero "Virtual Assistant" es un puesto.
+- **Las frases largas se prueban primero**, así `fully remote` sale entera y no deja un
+  `fully` colgando en el título.
+- **`location` manda sobre el título**, porque ahí vive el 89% de la señal. El título
+  solo contesta cuando `location` no nombra ninguna modalidad.
+- **Dentro de una misma fuente, `HYBRID` gana sobre `REMOTE` y `REMOTE` sobre `ONSITE`**,
+  de más específico a menos: `"Hybrid Remote - London"` es híbrido.
+- **`FULLY_REMOTE` cuando la modalidad es remota y a la `location` limpia, sacadas las
+  frases de modalidad, no le queda ningún token.** `"Remote"` da fully remote;
+  `"Remote - US"`, `"US Remote"` y `"Remote, United States"` dan `REMOTE`. Una `location`
+  nula o vacía con remoto en el título también da fully remote (P5 midió 6 casos).
+- **Las frases de modalidad salen del título siempre**, haya decidido la fuente que haya
+  decidido.
+
+**Una diferencia deliberada con la medición.** P5 contó 3.105 fully remote usando una
+lista de palabras de relleno (`anywhere`, `only`, `flexible`, `global`…) que se sacaban
+antes de preguntar si quedaba un lugar. **El código no la usa**: es una lista negra, que
+es justo lo que este proyecto evita. Sin ella la regla es más conservadora —`"Remote"` a
+secas son 2.736 vacantes— y el precio es algún falso negativo del tipo
+`"Remote, Anywhere"`, que queda como `REMOTE`. Anotado en "Puntos abiertos".
+
 ## Paso C — la tabla y el proceso que la puebla
 
 - `src/main/resources/db/migration/V4__create_normalized_vacancy.sql` — la tabla y
@@ -1116,25 +1578,31 @@ tests son la verificación. La corrida real llega en el paso C.
 - `src/main/java/oneprofile/backend/model/NormalizedVacancy.java` — entidad 1:1 con
   `Vacancy` (FK única `vacancy_id`), con el molde de `Company` y `Vacancy`:
   constructor `protected` para JPA, uno público, getters sin setters y un método de
-  dominio en vez de setters sueltos. Campos: `title` y `seniority`.
+  dominio en vez de setters sueltos. Campos: `title`, `seniority` y **`work_mode`**, este
+  último salido de B4. `place` **no** va: B3 descartó sacar la ubicación del título, y la
+  estructurada tiene su propio paso. Esperar a B4 fue todo el motivo de anidarlo: así la
+  tabla nace completa en vez de migrarse al poco tiempo de creada.
 - `src/main/java/oneprofile/backend/repository/NormalizedVacancyRepository.java`.
 - `src/main/java/oneprofile/backend/service/VacancyNormalizationService.java` — recorre
-  `vacancy` **de a páginas**, con cada página en su propia transacción. No hay red de
+  `vacancy` **de a páginas**, con cada página en su propia transacción. Por cada vacante
+  encadena `TitleCleaner.clean(title)` → `WorkModeExtractor.extract(limpio, location)` →
+  `SeniorityExtractor.extract(título sin modalidad)`. No hay red de
   por medio, así que no hace falta la pausa del sondeo ni del recorrido de vacantes;
   lo que sí hace falta es no traer 128.953 entidades a memoria de una.
 - `src/main/java/oneprofile/backend/controller/NormalizationController.java` — el molde
   ya probado tres veces: 202 al toque, executor de un solo hilo, `AtomicBoolean` que da
   409 si ya hay una corrida, resultado al log.
 
-Va en un paso aparte del B **porque se prueba distinto**: el B cierra con `./mvnw test`
-y el C con una corrida real contra prod.
+Va en un paso aparte de los B **porque se prueba distinto**: los B cierran con
+`./mvnw test` y el C con una corrida real contra prod.
 
 ### Cómo cierra el paso C
 
 `./mvnw test` en verde, y una corrida contra prod donde `count(*)` de
 `normalized_vacancy` dé 128.953, el reparto de `seniority` se parezca a lo medido
-(`senior` ~21.100, `staff` ~4.560, `sr` ~3.130, `principal` ~2.140) y los top 20
-`title` se parezcan al top 30 de la consulta N4.
+(`senior` ~21.100, `staff` ~4.560, `sr` ~3.130, `principal` ~2.140), el de `work_mode`
+se parezca a P2 y P5 (remoto ~16.400 entre `REMOTE` y `FULLY_REMOTE`, con fully remote
+entre 2.736 y 3.105; híbrido ~2.300) y los top 20 `title` se parezcan al top 30 de Q10c.
 
 ## Puntos abiertos
 
@@ -1157,3 +1625,28 @@ y el C con una corrida real contra prod.
 - **`docs/MEDICION-VACANTES.md` dice 85.050 títulos distintos y acá dan 87.647**, con el
   `count(*)` idéntico. Ese documento aclara que el SQL del título no quedó registrado,
   así que la diferencia es de cómo se contó entonces. Sin resolver.
+- **Contrato y jornada merece un paso propio.** Es el recorte más grande de B3 (5.117
+  vacantes, −1,1%): `part time` 2.128, `intern` 1.939, `contract` 1.429, `full time` 914,
+  `seasonal` 750, `per diem / prn` 690, `locum` 644. Es un atributo que pesa en el
+  matching tanto como el seniority, y antes de escribirlo hay que medir sus falsos
+  positivos, como B1 hizo con el seniority.
+- **La ubicación estructurada merece un paso propio, saliendo de `location`.** B3 descartó
+  sacarla del título, pero mostró que `location` es mucho más parseable de lo que dice
+  `docs/CONTEXTO.md`: 70,7% lleva coma, 3,28 tokens de promedio, y la cabeza es
+  `ciudad, región, país`. Ese paso también debería absorber los códigos postales metidos
+  en el título (`thousand oaks ca 91359`).
+- **`virtual` no está entre los sinónimos de remoto**, por decisión de Elias y sin medir:
+  194 títulos y 59 `location`, pero "Virtual Assistant" es un puesto.
+- **`FULLY_REMOTE` es conservador a propósito.** No se sacan palabras de relleno antes de
+  preguntar si queda un lugar, así que `"Remote, Anywhere"` o `"Remote - Global"` quedan
+  como `REMOTE`. La medición con relleno dio 3.105 contra 2.736 sin él: el hueco es de
+  unas 370 vacantes como máximo.
+- **Un título que queda vacío es señal de que la fila no es una vacante.** Q11b: los 87
+  títulos que se vacían con todos los recortes de B3 son casi todos `Talent Community`,
+  `Talent Network` y `Talent Pool`. Es una forma de detectar las ~650 filas que no son
+  vacantes sin escribir una lista de frases; no se implementa porque nadie lo pidió.
+- **`Principal` a secas se queda sin título.** Son 6 vacantes donde es el puesto (director
+  de escuela) y no el nivel; `SeniorityExtractor` lo toma como `PRINCIPAL` y deja `title`
+  nulo. No se agrega guarda porque son 6.
+- **`experienced` y sinónimos (`seasoned`, `veteran`, `expert`, `advanced`) quedan adentro
+  del título.** Q9 mostró que son adjetivos del rol y no niveles de la escala.

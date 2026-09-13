@@ -4,7 +4,7 @@ package oneprofile.backend.model;
  * The experience level a vacancy asks for, taken out of its title.
  *
  * <p>The declaration order is meaningful: values go from the lowest level to the
- * highest, and that order is what {@code TitleNormalizer} uses when a title names more
+ * highest, and that order is what {@code SeniorityExtractor} uses when a title names more
  * than one level —a vacancy publishes the floor it accepts, so the lowest one wins. The
  * {@code STAFF} / {@code PRINCIPAL} stretch is an adopted convention rather than a
  * measured fact: both are individual contributor track and their relative order varies

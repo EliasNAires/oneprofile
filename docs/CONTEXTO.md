@@ -10,11 +10,13 @@
 > documento. Se abre solo si Elias pide explícitamente escribir o actualizar esa
 > carpeta.
 
-**Última actualización:** 2026-09-12
-**Último milestone probado:** el **normalizador de títulos**. Una función pura en `util`
-que limpia el título de una vacante y le **extrae el seniority a un campo propio**, con
-sus reglas medidas contra las 128.953 vacantes reales. No toca la base: se verifica con
-`./mvnw test`.
+**Última actualización:** 2026-09-13
+**Último milestone probado:** los **tres extractores del título**. Tres funciones puras en
+`util` —`TitleCleaner`, `SeniorityExtractor` y `WorkModeExtractor`— que limpian el título
+de una vacante y le **sacan el seniority y la modalidad a campos propios**, con cada regla
+medida contra las 128.953 vacantes reales. No tocan la base: se verifican con
+`./mvnw test`. Reemplazan al `TitleNormalizer` del milestone anterior, que se partió y ya
+no existe.
 
 **Milestone anterior:** el **despliegue**. Prod salió de la máquina de Elias y corre en
 un **servidor propio**, con la imagen publicada en GHCR por un pipeline de GitHub Actions
@@ -29,10 +31,19 @@ por empresa) tiraba para arriba; la mediana (17) era la guía correcta.
 `docs/PLAN-NORMALIZACION.md`, que es donde vive todo su detalle —las cuatro mediciones
 corridas contra prod, sus números y cada regla con su justificación—. Ese documento
 arranca con un "Estado del plan" que dice qué está hecho y por dónde retomar. Lo que
-falta del plan es **la tabla `normalized_vacancy` y el proceso que la puebla**: hoy el
-normalizador existe y está probado, pero **nada lo llama todavía**. La medición anterior
+falta del plan es **la tabla `normalized_vacancy` y el proceso que la puebla**: hoy los
+extractores existen y están probados, pero **nada los llama todavía**. La medición anterior
 de la tabla `vacancy`, sobre departamento e idioma, vive aparte en
 `docs/MEDICION-VACANTES.md`.
+
+**Hay un segundo plan, independiente: traer a prod todos los slugs de Greenhouse**, en
+`docs/PLAN-SLUGS.md`. Salió de medir por qué había solo 4.046 empresas, con los números
+en `docs/MEDICION-SLUGS.md`: el descubrimiento **no pierde nada de lo que lee**, pero
+**un solo índice de CommonCrawl ve una fracción**. Dieciséis índices juntan 10.086 slugs,
+y la **Wayback Machine** trae 17.730, 8.035 de ellos en ningún índice de CommonCrawl. En
+la medición ya se corrieron cuatro índices más en prod, así que **`company` tiene 6.988
+filas, 2.942 sin sondear**. No hay código nuevo todavía: el cliente de Wayback es el paso
+2 de ese plan.
 
 ## Qué es esto
 
@@ -329,10 +340,14 @@ docs/METODOLOGIA.md
 docs/CONTEXTO.md
 docs/MEDICION-VACANTES.md                           (los números medidos el 2026-09-12)
 docs/PLAN-NORMALIZACION.md                          (el plan en curso; se borra al terminarlo)
+docs/MEDICION-SLUGS.md                              (cobertura del descubrimiento, medida el 2026-09-13)
+docs/PLAN-SLUGS.md                                  (plan para traer todos los slugs; se borra al terminarlo)
 medicion-titulos.txt                                (salida cruda de la medicion de titulos)
 medicion-titulos-ronda2.txt                         (salida cruda de la segunda ronda)
 medicion-seniority.txt                              (salida cruda: falsos positivos por token)
 medicion-senior.txt                                 (la cabeza de `senior` a fondo, con su analisis)
+medicion-ubicacion.txt                              (salida cruda: modalidad y ubicacion)
+medicion-ruido.txt                                  (salida cruda: otros criterios de limpieza)
 docs/para-humanos/README.md                         (para personas, no para agentes)
 docs/para-humanos/descubrimiento.md
 docs/para-humanos/sondeo.md
@@ -346,6 +361,7 @@ src/main/java/oneprofile/backend/model/BoardStatus.java
 src/main/java/oneprofile/backend/model/Company.java
 src/main/java/oneprofile/backend/model/Vacancy.java
 src/main/java/oneprofile/backend/model/Seniority.java
+src/main/java/oneprofile/backend/model/WorkMode.java
 src/main/java/oneprofile/backend/repository/CompanyRepository.java
 src/main/java/oneprofile/backend/repository/VacancyRepository.java
 src/main/java/oneprofile/backend/service/CommonCrawlIndexClient.java
@@ -359,7 +375,9 @@ src/main/java/oneprofile/backend/controller/BoardProbeController.java
 src/main/java/oneprofile/backend/controller/VacancyController.java
 src/main/java/oneprofile/backend/util/GreenhouseBoardUrl.java
 src/main/java/oneprofile/backend/util/HtmlToText.java
-src/main/java/oneprofile/backend/util/TitleNormalizer.java
+src/main/java/oneprofile/backend/util/TitleCleaner.java
+src/main/java/oneprofile/backend/util/SeniorityExtractor.java
+src/main/java/oneprofile/backend/util/WorkModeExtractor.java
 src/main/resources/application.properties
 src/main/resources/application-dev.properties       (vacío)
 src/main/resources/application-prod.properties      (vacío)
@@ -381,7 +399,9 @@ src/test/java/oneprofile/backend/controller/BoardProbeControllerTest.java
 src/test/java/oneprofile/backend/controller/VacancyControllerTest.java
 src/test/java/oneprofile/backend/util/GreenhouseBoardUrlTest.java
 src/test/java/oneprofile/backend/util/HtmlToTextTest.java
-src/test/java/oneprofile/backend/util/TitleNormalizerTest.java
+src/test/java/oneprofile/backend/util/TitleCleanerTest.java
+src/test/java/oneprofile/backend/util/SeniorityExtractorTest.java
+src/test/java/oneprofile/backend/util/WorkModeExtractorTest.java
 src/test/resources/application.properties
 ```
 
@@ -392,7 +412,8 @@ El código se organiza **por capa técnica**, no por feature: `model`, `reposito
 existen las cinco.
 
 `util` quedó reservado para **funciones puras sin dependencias** —hoy
-`GreenhouseBoardUrl`, `HtmlToText` y `TitleNormalizer`—. Un componente que hace I/O va a la capa que le
+`GreenhouseBoardUrl`, `HtmlToText`, `TitleCleaner`, `SeniorityExtractor` y
+`WorkModeExtractor`—. Un componente que hace I/O va a la capa que le
 corresponde,
 aunque sea un colaborador y no lógica de negocio: por eso `CommonCrawlIndexClient`
 está en `service` y no en `util`.
@@ -483,10 +504,15 @@ que hay que sacarlos de ahí y no inventarlos.
 
 **Correrlo con varios índices es la forma de tener más empresas, y no necesita
 código nuevo**: `discover` ya resta lo que está guardado, así que repetir el POST
-cambiando el `index` solo agrega lo que ese crawl vio de más. Medido sobre los dos
-últimos: agosto da 4.046 empresas, julio da 4.348, pero **solo 3.079 se repiten**;
-julio suma **1.269 nuevas** y la unión de los dos da **5.315**. O sea que cada
-índice extra aporta del orden de un 25-30% más.
+cambiando el `index` solo agrega lo que ese crawl vio de más. Cada índice trae
+~4.000 slugs pero solo ~3.000 se repiten con el siguiente. Sobre 16 índices, de
+agosto 2026 a diciembre 2023, la unión llega a **10.086** y **no se aplanó**: los de 2024
+todavía suman 200-300 nuevos cada uno. Detalle en `docs/MEDICION-SLUGS.md`.
+
+Ya se corrieron en prod `CC-MAIN-2026-34` y, el 2026-09-13, `-30`, `-25`, `-21` y `-17`.
+Dieron 1.269, 637, 533 y 503 empresas nuevas, en 15-50 s cada una. Si se encadenan con un
+script en el servidor corriendo con `sudo`, **hay que usar paths absolutos**: con `~`
+termina en `/root`, donde no hay `compose.yaml`.
 
 ### La API de Greenhouse, medida
 
@@ -761,19 +787,32 @@ y `List<String> findSlugsByAtsAndBoardStatus(Ats, BoardStatus)`. El segundo devu
 **slugs y no entidades**, como `findSlugsByAts`: es lo único que el recorrido necesita
 —`syncCompany` recibe un slug— y así no hidrata 3.121 entidades.
 
-### El normalizador de títulos: `TitleNormalizer` y `Seniority`
+### Los extractores del título: `TitleCleaner`, `SeniorityExtractor` y `WorkModeExtractor`
 
-`oneprofile.backend.util.TitleNormalizer` es una **función pura** —sin red, sin base y
-sin Spring, como `GreenhouseBoardUrl` y `HtmlToText`—: recibe el título crudo de una
-vacante y devuelve el record `NormalizedTitle(String title, Seniority seniority)`. Hoy
-**no lo llama nadie**; existe para el paso siguiente, que es la tabla que lo va a guardar.
+Tres **funciones puras** en `util` —sin red, sin base y sin Spring, como
+`GreenhouseBoardUrl` y `HtmlToText`— que se encadenan en este orden:
 
-Existe porque el objetivo es **categorizar las vacantes en tech-adyacentes y no
-tech-adyacentes** usando el título como señal, y el título viene sucio de dos maneras
-distintas: formato (`Sr. Software Engineer - Backend` contra
-`Senior Software Engineer (Backend)`) y **seniority metido adentro del texto**. Todas las
-reglas de abajo salieron de medir contra las 128.953 vacantes reales; los números y el
-porqué de cada una están en `docs/PLAN-NORMALIZACION.md`.
+```java
+String clean = TitleCleaner.clean(vacancy.title);
+WorkModeExtractor.Extracted mode = WorkModeExtractor.extract(clean, vacancy.location);
+SeniorityExtractor.Extracted level = SeniorityExtractor.extract(mode.title());
+// level.title() es el titulo normalizado; level.seniority() y mode.mode(), sus campos
+```
+
+Hoy **no las llama nadie**; existen para el paso siguiente, que es la tabla que las va a
+guardar. **No hay una clase que las encadene**: lo va a hacer el servicio de ese paso, y
+una fachada que nadie usa no va. Hasta el 2026-09-12 las dos primeras eran una sola clase,
+`TitleNormalizer`; se partió porque con la modalidad entrando cada criterio nuevo la iba a
+agrandar.
+
+Existen porque el objetivo es **categorizar las vacantes en tech-adyacentes y no
+tech-adyacentes** usando el título como señal, y el título viene sucio de dos maneras:
+formato (`Sr. Software Engineer - Backend` contra `Senior Software Engineer (Backend)`) y
+**atributos metidos adentro del texto**. Todas las reglas de abajo salieron de medir
+contra las 128.953 vacantes reales; los números y el porqué de cada una están en
+`docs/PLAN-NORMALIZACION.md`.
+
+#### `TitleCleaner.clean(String)` → `String`
 
 **La limpieza es una lista blanca, no una lista negra.** Se saca **todo** lo que no sea
 letra, dígito o espacio, salvo cuatro caracteres que se conservan solo donde significan
@@ -784,18 +823,58 @@ un conjunto cerrado. Antes se pasa a minúsculas y se sacan los diacríticos, y 
 apóstrofo se borra **sin dejar espacio** (`women's` → `womens`). Las clases de caracteres
 son unicode, así que un título en coreano no queda vacío, y al final se recompone a
 **NFC**: NFD parte cada sílaba del hangul en sus letras, y dejarlo así daría dos
-escrituras del mismo título.
+escrituras del mismo título. Devuelve `""` cuando no queda nada legible.
+
+Después, sobre los tokens, dos reglas más:
+
+- **La marca de género se va**: las secuencias `h f`, `f h`, `m f d`, `m w d`, `w m d`,
+  `m f x`, `m w x`, `f m x`, en cualquier posición y **solo enteras** —la `e` suelta de
+  `assistant(e) de vie h/f` se queda—. Casi no colapsa títulos, pero dejaba letras sueltas
+  (`f` en 1.607 títulos) que ensucian cualquier lectura por tokens.
+- **La sigla redundante al final se va**, pero **solo si sus letras son las iniciales de
+  las palabras anteriores**: `registered behavior technician rbt` pierde el `rbt`, y
+  `senior software architect .net`, `account executive us` y
+  `dialysis technician … 91359` no pierden nada. La sigla tiene que ser solo letras, de 2
+  a 6, y puede saltearse palabras de dos letras o menos (`… engineer in test sdet`). La
+  regla obvia —borrar lo que cierra el título— es la equivocada: ahí mismo viven `.NET`,
+  `(US)`, `(PRN)` y códigos postales.
+
+#### `WorkModeExtractor.extract(cleanTitle, location)` → `(title, WorkMode mode)`
+
+Lee la modalidad del título **y de `location`**, y saca del título las palabras que la
+dicen. Necesita las dos fuentes porque **la señal vive en `location`**: de 16.444 vacantes
+remotas, 14.624 lo dicen solo ahí y 1.066 solo en el título. Por eso **`location` manda**
+y el título solo contesta cuando `location` no nombra ninguna modalidad.
+
+`WorkMode` es un enum en `model`: `REMOTE`, `FULLY_REMOTE`, `HYBRID`, `ONSITE`.
+
+- **`null` es "no lo declara", no "es presencial"**: son 112.508 vacantes, y pasarlas a
+  `ONSITE` sería inventar el dato.
+- **Los sinónimos son solo los que aparecen en los datos**: `remote`, `remoto`, `wfh`,
+  `home based`, `work from home`, `fully remote`, `100 remote`, `remote only`; `hybrid`,
+  `hibrido`; `onsite`, `on site`, `in office`, `in person`, `presencial`, `field based`.
+  `telecommute`, `telework`, `teletrabajo` y `a distancia` se midieron y dan **cero**, por
+  eso no están. **`virtual` queda afuera por decisión de Elias**: "Virtual Assistant" es
+  un puesto.
+- Las frases largas se prueban primero (`fully remote` sale entera). Si una misma fuente
+  nombra varias, `HYBRID` gana sobre `REMOTE` y `REMOTE` sobre `ONSITE`.
+- **`FULLY_REMOTE`** —la idea de Elias: a esas vacantes puede aplicar cualquiera— es
+  remoto con una `location` a la que, sacadas las frases de modalidad, **no le queda
+  ningún token**: `"Remote"` sí, `"Remote - US"` no. Es conservador a propósito, sin lista
+  de palabras de relleno, así que `"Remote, Anywhere"` queda como `REMOTE`.
+
+#### `SeniorityExtractor.extract(cleanTitle)` → `(title, Seniority seniority)`
 
 **El seniority sale a un campo propio**, el enum `Seniority` (`ENTRY`, `JUNIOR`,
 `SEMI_SENIOR`, `MID`, `SENIOR`, `STAFF`, `PRINCIPAL`, más `LEVEL_2` y `LEVEL_3` para el
 `ii` / `iii` de "Engineer II", que se dejan sin traducir a propósito porque los títulos no
 dicen a qué nivel equivalen). No es ruido: estaba adentro de una de cada cuatro vacantes,
-y sacarlo colapsa más títulos que toda la limpieza de caracteres.
+y sacarlo colapsa más títulos que toda la limpieza de caracteres junta.
 
 Lo que **no** cuenta como seniority y se queda adentro del título: los roles jerárquicos
 (`director`, `lead`, `head`, `vp`, `chief`), porque son la función y no un modificador
-—un director de ingeniería no es un ingeniero—; el ambiguo `associate`; y `intern`, que
-es tipo de contrato.
+—un director de ingeniería no es un ingeniero—; el ambiguo `associate`; `intern`, que es
+tipo de contrato; y `experienced`, que se midió y es un adjetivo del rol.
 
 **Tres tokens tienen guarda**, porque se midió que no siempre significan un nivel:
 `entry` cuenta solo si le sigue `level` (si no, es `entry door` o `data entry`); `mid`
@@ -812,6 +891,14 @@ tramo `STAFF` < `PRINCIPAL` es convención adoptada, no un hecho medido, y está
 el javadoc del enum. `LEVEL_2` y `LEVEL_3` van declarados después de toda la escala de
 palabras, así que el mínimo hace sola la regla de que una palabra le gane a un numeral:
 `senior account executive ii` da `SENIOR`.
+
+#### Lo que se midió y se descartó
+
+No todo lo que parece ruido vale una regla. Se midieron once criterios más y los siete
+recortes candidatos juntos bajan los títulos distintos apenas **−2,4%**, contra el −5,8%
+del seniority solo. Quedaron afuera, con sus números en el plan: la ubicación metida en el
+título (un diccionario de tokens toma `west` o `park` por lugares), plata, marketing,
+fechas, números de requisición, idioma requerido y contrato/jornada.
 
 ### La carpeta `docs/para-humanos/`
 
@@ -908,9 +995,10 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Estado verificado
 
-- `./mvnw test` → **80 tests, 0 fallas**: `BackendApplicationTests.contextLoads`,
+- `./mvnw test` → **95 tests, 0 fallas**: `BackendApplicationTests.contextLoads`,
   4 de `CompanyRepositoryTest`, 5 de `VacancyRepositoryTest`, 12 casos parametrizados
-  de `GreenhouseBoardUrlTest`, 3 de `HtmlToTextTest`, 18 de `TitleNormalizerTest`, 6 de `CommonCrawlIndexClientTest`,
+  de `GreenhouseBoardUrlTest`, 3 de `HtmlToTextTest`, 11 de `TitleCleanerTest`, 13 de
+  `SeniorityExtractorTest`, 9 de `WorkModeExtractorTest`, 6 de `CommonCrawlIndexClientTest`,
   4 de `GreenhouseDiscoveryServiceTest`, 2 de `DiscoveryControllerTest`, 9 de
   `GreenhouseBoardClientTest`, 3 de `GreenhouseBoardProbeServiceTest`, 4 de
   `GreenhouseVacancySyncServiceTest`, 3 de `GreenhouseVacancySweepServiceTest`, 2 de
@@ -1031,6 +1119,11 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
   limpieza hay que buscar **tags y entidades**, no el caracter suelto:
   `description ~ '</[a-zA-Z]'`, los tags que Greenhouse usa, y `&amp;nbsp;` / `&amp;amp;`
   / `&amp;lt;`.
+- **Los tests de los extractores** no levantan Spring y usan solo títulos y `location`
+  reales sacados de las mediciones. `SeniorityExtractorTest` y `WorkModeExtractorTest`
+  pasan la entrada cruda por `TitleCleaner` primero, que es el orden en que corre la
+  normalización. Los negativos importan tanto como los positivos: `TitleCleanerTest`
+  verifica que `.net`, `us`, `prn` y un código postal **no** se toman por siglas.
 - `GreenhouseBoardUrlTest` no levanta contexto de Spring y corre en ~40 ms. Son dos
   `@ParameterizedTest`: 7 URLs que devuelven slug (path extra, query string, los
   dos dominios, `www.`, y las dos formas de `embed`) y 5 que devuelven vacío
@@ -1043,9 +1136,9 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Qué NO existe todavía
 
-- **Nada guarda los títulos normalizados.** `TitleNormalizer` existe y está probado,
-  pero **no lo llama nadie**: no hay tabla `normalized_vacancy`, ni entidad, ni proceso
-  que la puebla, así que en la base los títulos siguen tal como los escribió cada
+- **Nada guarda los títulos normalizados.** Los tres extractores existen y están
+  probados, pero **no los llama nadie**: no hay tabla `normalized_vacancy`, ni entidad, ni
+  proceso que la puebla, así que en la base los títulos siguen tal como los escribió cada
   empresa. Ver `docs/PLAN-NORMALIZACION.md`.
 - **Nada normaliza el departamento ni la ubicación.** Se decidió normalizar solo el
   título por ahora; los otros dos cuando haya un paso que los use.
@@ -1062,6 +1155,12 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Puntos abiertos
 
+- **Falta ver los falsos positivos de la extracción de modalidad.** Los sinónimos salieron
+  de contar cuántas veces aparece cada uno, pero —al revés que el seniority, que tuvo su
+  medición de falsos positivos y de ahí sus guardas— **nadie miró en qué contexto
+  aparecen**. Casos a revisar: `remote` como parte del puesto (`remote sensing`,
+  `remote monitoring`), `field based` y `in person`. Está pendiente antes de dar la
+  modalidad por confiable.
 - **Los endpoints de administración no tienen ninguna protección.** Hoy no importa
   porque el puerto de la app no se publica, pero cuando exista un endpoint que
   **devuelva** vacantes habrá que publicarlo y ahí los tres de administración quedan
@@ -1074,7 +1173,7 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
   correcto es **sondeo primero, vacantes después**, y hoy nada lo fuerza porque los dos se
   disparan a mano. Cuando exista el cron habrá que encadenarlos.
 - **El sondeo se corre entero cada vez.** No hay forma de pedirle "solo las que nunca
-  sondeaste" o "solo las viejas": vuelve a pegarle a las 4.046. Los datos para
+  sondeaste" o "solo las viejas": vuelve a pegarle a las 6.988. Los datos para
   filtrar están (`board_status`, `last_probed_at`), la consulta no. Se agrega cuando
   haya un cron que la necesite, no antes.
 - **Una respuesta truncada del índice se aceptaría en silencio.** Bajando páginas a
@@ -1083,7 +1182,14 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
   vería ningún error y reportaría menos empresas sin avisar. Los reintentos no
   ayudan, porque el status es 200. En la corrida real no pasó —el conteo dio
   exactamente el mismo número que el cálculo offline completo— pero el agujero está.
-- **La base de dev arranca vacía, y ahora además está sola.** Las 4.046 empresas viven
+- **El dominio EU de Greenhouse no se descubre.** Existe `job-boards.eu.greenhouse.io`,
+  con 848 slugs medidos, 93 de ellos ya en prod por el otro dominio, y no está entre
+  los patrones. Meterlo toca también el sondeo y la carga, porque su API sería
+  `boards-api.eu.greenhouse.io`. Elias decidió dejarlo afuera por ahora.
+- **Las reglas de slug tiran algunas empresas reales, a sabiendas.** Existen slugs con
+  `&` o `)` (`1pyra)mid_health&care` tiene vacantes) y Wayback trae 77 slugs que solo
+  aparecen con `http://`. Por el volumen, se decidió no aflojar las reglas.
+- **La base de dev arranca vacía, y ahora además está sola.** Las 6.988 empresas viven
   en el volumen de prod, que está **en el servidor**: ya no hay una base con datos en la
   máquina de Elias. El `compose.yaml` de la raíz no declara volumen, así que para probar
   algo en dev hay que insertar la empresa a mano:
@@ -1100,11 +1206,12 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 Lo inmediato es **terminar la normalización de los títulos**, y el plan está escrito en
 `docs/PLAN-NORMALIZACION.md` con su estado al principio. Falta una sola etapa: la
-**tabla `normalized_vacancy`** —entidad 1:1 con `Vacancy`, su repositorio, el servicio
-que recorre las vacantes de a páginas y el endpoint que lo dispara—, que es donde el
-normalizador se corre de verdad contra las 128.953 vacantes. Va en un paso aparte porque
-se prueba distinto: el normalizador cierra con `./mvnw test`, la tabla con una corrida
-real contra prod. Las decisiones ya tomadas y los números que las respaldan están en ese
+**tabla `normalized_vacancy`** —entidad 1:1 con `Vacancy` con `title`, `seniority` y
+`work_mode`, su repositorio, el servicio que recorre las vacantes de a páginas y el
+endpoint que lo dispara—, que es donde los extractores se corren de verdad contra las
+128.953 vacantes. Va en un paso aparte porque se prueba distinto: los extractores cierran
+con `./mvnw test`, la tabla con una corrida real contra prod. Queda pendiente, además,
+revisar los falsos positivos de la modalidad (ver "Puntos abiertos"). Las decisiones ya tomadas y los números que las respaldan están en ese
 documento y no se duplican acá.
 
 Lo que viene después de la normalización es **categorizar las vacantes en
@@ -1115,8 +1222,9 @@ nunca.
 
 Más allá de eso, sin priorizar y sin planificar:
 
-- Correr el descubrimiento con más índices de CommonCrawl para engordar la tabla.
-  No necesita código: es repetir el POST cambiando el `index`.
+- Traer a prod todos los slugs descubribles: más índices de CommonCrawl, un cliente de
+  Wayback, y después sondear y cargar vacantes de lo nuevo. Está planificado en
+  `docs/PLAN-SLUGS.md`.
 - Modelar el perfil del usuario (`profile`).
 - Primer algoritmo de matching, simple, con tests sobre casos concretos.
 - Endpoint HTTP para consultar las vacantes que matchean.

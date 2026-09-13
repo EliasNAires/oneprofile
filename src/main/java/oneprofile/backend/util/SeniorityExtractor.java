@@ -1,10 +1,8 @@
 package oneprofile.backend.util;
 
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -12,46 +10,19 @@ import java.util.regex.Pattern;
 import oneprofile.backend.model.Seniority;
 
 /**
- * Turns the title of a vacancy into a comparable one, and takes the experience level
- * out of it into a field of its own.
+ * Takes the experience level out of a title that {@link TitleCleaner} already cleaned,
+ * into a field of its own.
  *
  * <p>The level is not noise: it was measured to sit inside one out of four titles, and
  * pulling it out is what makes "Senior Software Engineer" and "Sr. Software Engineer"
  * meet. What is left in the title is the function of the job, so hierarchical roles
  * —director, lead, head— stay: "Director of Engineering" is not an engineer.
  */
-public final class TitleNormalizer {
+public final class SeniorityExtractor {
 
 	/** The title with its level taken out, and the level itself; both null when absent. */
-	public record NormalizedTitle(String title, Seniority seniority) {
+	public record Extracted(String title, Seniority seniority) {
 	}
-
-	/**
-	 * What survives the cleanup, spelled as what is kept rather than what is dropped:
-	 * listing the separators that bother us always misses one, while this is a closed
-	 * set. It is unicode-aware on purpose, so a title in Korean does not end up empty.
-	 */
-	private static final String KEPT = "\\p{IsAlphabetic}\\p{IsDigit}";
-
-	private static final Pattern DIACRITICS = Pattern.compile("\\p{M}+");
-
-	/** The only character dropped without leaving a space: "women's" -> "womens". */
-	private static final Pattern APOSTROPHE = Pattern.compile("['’]");
-
-	/** Kept only where it means something: ".net" and "node.js" survive, "engineer." does not. */
-	private static final Pattern LONE_DOT = Pattern.compile("\\.(?![" + KEPT + "])");
-
-	/** "c#" survives, "#hiring" does not. */
-	private static final Pattern LONE_HASH = Pattern.compile("(?<![" + KEPT + "])#");
-
-	/** Another plus counts as a predecessor too, or "c++" would come out as "c+". */
-	private static final Pattern LONE_PLUS = Pattern.compile("(?<![" + KEPT + "+])\\+");
-
-	/** "r&d" survives; in "sales & marketing" the ampersand is just a separator. */
-	private static final Pattern LONE_AMPERSAND = Pattern
-			.compile("(?<![" + KEPT + "])&|&(?![" + KEPT + "])");
-
-	private static final Pattern DROPPED = Pattern.compile("[^" + KEPT + " .+#&]");
 
 	private static final Pattern SPACES = Pattern.compile("\\s+");
 
@@ -86,16 +57,15 @@ public final class TitleNormalizer {
 	/** Jobs where "staff" means on the payroll, not a level above senior. */
 	private static final Set<String> STAFF_JOBS = Set.of("nurse", "accountant", "attorney");
 
-	private TitleNormalizer() {
+	private SeniorityExtractor() {
 	}
 
-	public static NormalizedTitle normalize(String title) {
-		String clean = clean(title);
-		if (clean.isEmpty()) {
-			return new NormalizedTitle(null, null);
+	public static Extracted extract(String cleanTitle) {
+		if (cleanTitle == null || cleanTitle.isEmpty()) {
+			return new Extracted(null, null);
 		}
 
-		List<String> tokens = Arrays.asList(SPACES.split(clean));
+		List<String> tokens = Arrays.asList(SPACES.split(cleanTitle));
 		boolean[] isLevel = new boolean[tokens.size()];
 		Seniority found = null;
 
@@ -115,7 +85,7 @@ public final class TitleNormalizer {
 				kept.add(tokens.get(i));
 			}
 		}
-		return new NormalizedTitle(kept.isEmpty() ? null : String.join(" ", kept), found);
+		return new Extracted(kept.isEmpty() ? null : String.join(" ", kept), found);
 	}
 
 	/**
@@ -181,23 +151,5 @@ public final class TitleNormalizer {
 	/** Empty past the ends of the title, so the neighbour of a token is always a word. */
 	private static String at(List<String> tokens, int i) {
 		return i >= 0 && i < tokens.size() ? tokens.get(i) : "";
-	}
-
-	private static String clean(String title) {
-		if (title == null) {
-			return "";
-		}
-		String text = Normalizer.normalize(title.toLowerCase(Locale.ROOT), Normalizer.Form.NFD);
-		text = DIACRITICS.matcher(text).replaceAll("");
-		text = APOSTROPHE.matcher(text).replaceAll("");
-		text = LONE_DOT.matcher(text).replaceAll(" ");
-		text = LONE_HASH.matcher(text).replaceAll(" ");
-		text = LONE_PLUS.matcher(text).replaceAll(" ");
-		text = LONE_AMPERSAND.matcher(text).replaceAll(" ");
-		text = DROPPED.matcher(text).replaceAll(" ");
-		text = SPACES.matcher(text).replaceAll(" ").trim();
-		// Back together: NFD also splits a Hangul syllable into its letters, and leaving
-		// it that way would give two spellings of the same Korean title.
-		return Normalizer.normalize(text, Normalizer.Form.NFC);
 	}
 }

@@ -1,0 +1,467 @@
+Timing is off.
+Pager usage is off.
+CREATE FUNCTION
+CREATE FUNCTION
+SELECT 128953
+CREATE INDEX
+CREATE INDEX
+ANALYZE
+SELECT 83526
+CREATE INDEX
+ANALYZE
+SELECT 3033
+CREATE INDEX
+ANALYZE
+
+=== Q1. marca de genero ===
+      patron       | sobre | vacantes 
+-------------------+-------+----------
+ h/f en el crudo   | crudo |      891
+ m/f/d en el crudo | crudo |      580
+ m/f/x m/w/x       | crudo |       61
+ (m/f) (f/m)       | crudo |        1
+ a/e o/a           | crudo |        0
+(5 rows)
+
+
+=== Q1b. como queda en el titulo limpio ===
+ token_suelto | vacantes 
+--------------+----------
+ f            |     1607
+ h            |      970
+ m            |      953
+ d            |      760
+ w            |      329
+ x            |      259
+(6 rows)
+
+
+=== Q1c. ejemplos de titulos con marca de genero (top 20 limpios) ===
+                       clean                        | vacantes 
+----------------------------------------------------+----------
+ auxiliaire de vie h f                              |      301
+ aide a domicile h f                                |      165
+ aide aux personnes agees h f                       |      105
+ assistant de vie h f                               |       61
+ assistant e de vie h f                             |       30
+ assistante de vie h f                              |       29
+ auxiliaire de vie job etudiant h f                 |       14
+ aide de vie h f                                    |        9
+ responsable de secteur daide a domicile h f        |        8
+ psychologe m w d                                   |        6
+ auxiliaire de vie job dete h f                     |        6
+ field sales manager m w d                          |        6
+ facharzt fur allgemeinmedizin innere medizin m w d |        6
+ psychologische berater in m w d                    |        6
+ responsable de secteur aide a domicile h f         |        5
+ solution architect m w d financial services        |        5
+ auxiliaire de vie a domicile h f                   |        5
+ banking test architect m w d                       |        5
+ assistants de vie h f                              |        5
+ praxismanager fur m w d allgemeinmedizin           |        4
+(20 rows)
+
+
+=== Q2a. sigla entre parentesis al final del crudo ===
+ sigla_al_final | sigla_en_cualquier_lado | crudo_con_parentesis 
+----------------+-------------------------+----------------------
+           3033 |                    5256 |                26105
+(1 row)
+
+
+=== Q2b. top 40 siglas ===
+  sigla   | vacantes 
+----------+----------
+ RBT      |      447
+ H/F      |      212
+ BCBA     |       72
+ RN       |       63
+ US       |       53
+ 91359    |       46
+ AM       |       40
+ PM       |       40
+ UK       |       33
+ PRN      |       32
+ F/M/D    |       32
+ NP       |       31
+ SLP      |       31
+ LATAM    |       31
+ EMEA     |       28
+ SDET     |       24
+ .NET     |       24
+ NY       |       23
+ FTC      |       21
+ F/H      |       21
+ DACH     |       20
+ LPN / RN |       19
+ APAC     |       18
+ NYC      |       18
+ LPN      |       17
+ SRE      |       16
+ AWS      |       16
+ HRBP     |       15
+ NOC      |       15
+ DSP      |       14
+ PMHNP    |       14
+ AI       |       13
+ 2027     |       13
+ TS/SCI   |       13
+ PE       |       13
+ CONTRACT |       12
+ P2P      |       12
+ MD/DO    |       12
+ CDMX     |       12
+ GTM      |       11
+(40 rows)
+
+
+=== Q2c. cuantos titulos con sigla tienen un gemelo sin sigla en el dataset ===
+ vacantes_con_sigla_al_final | tienen_gemelo_sin_sigla | titulos_base_distintos 
+-----------------------------+-------------------------+------------------------
+                        3033 |                    1393 |                   1500
+(1 row)
+
+
+=== Q2d. los pares concretos (top 25) ===
+                  titulo_base                  |                  titulo_con_sigla                  | vacantes 
+-----------------------------------------------+----------------------------------------------------+----------
+ registered behavior technician                | registered behavior technician rbt                 |      349
+ center based registered behavior technician   | center based registered behavior technician rbt    |       87
+ auxiliaire de vie                             | auxiliaire de vie h f                              |       54
+ center based board certified behavior analyst | center based board certified behavior analyst bcba |       29
+ aide a domicile                               | aide a domicile h f                                |       24
+ board certified behavior analyst              | board certified behavior analyst bcba              |       23
+ infusion registered nurse                     | infusion registered nurse rn                       |       20
+ infusion nurse practitioner                   | infusion nurse practitioner np                     |       18
+ psychiatric mental health nurse practitioner  | psychiatric mental health nurse practitioner pmhnp |       11
+ assistant de vie                              | assistant de vie h f                               |       10
+ registered nurse                              | registered nurse rn                                |       10
+ auxiliaire de vie job etudiant                | auxiliaire de vie job etudiant h f                 |       10
+ licensed practical nurse                      | licensed practical nurse lpn                       |        9
+ senior software development engineer in test  | senior software development engineer in test sdet  |        8
+ sales development representative              | sales development representative sdr               |        8
+ certified nurse midwife cnm                   | certified nurse midwife cnm prn                    |        8
+ expanded functions dental assistant           | expanded functions dental assistant efda           |        7
+ chief information security officer            | chief information security officer ciso            |        7
+ auxiliaire de vie                             | auxiliaire de vie f h                              |        7
+ behavior technician                           | behavior technician bt                             |        6
+ senior software architect                     | senior software architect .net                     |        6
+ business development representative           | business development representative bdr            |        6
+ assistant e de vie                            | assistant e de vie h f                             |        6
+ technical account manager                     | technical account manager tam                      |        5
+ certified nursing assistant                   | certified nursing assistant cna                    |        5
+(25 rows)
+
+
+=== Q3. numeros de requisicion e ids pegados ===
+       patron        | en_limpio 
+---------------------+-----------
+ numero 4+ suelto    |      2136
+ numero 3+ al final  |      1573
+ numero 3+ al inicio |       264
+ req# o req numero   |        68
+ gato + numero       |        53
+ jr/job id           |         0
+(6 rows)
+
+
+=== Q3b. ejemplos (top 25 limpios con numero de 4+ digitos) ===
+                                   clean                                   | vacantes 
+---------------------------------------------------------------------------+----------
+ intern co op site civil engineering summer 2027                           |       18
+ in home staff assist thousand oaks ca 91359                               |       14
+ dialysis technician thousand oaks ca 91359                                |       13
+ in home hhd dialysis care partner 1 1 client norcross ga 30071            |       11
+ in home hhd dialysis care partner 1 1 client thousand oaks ca 91359       |        9
+ software engineering intern summer 2027                                   |        9
+ dialysis technician 93205                                                 |        9
+ new er doctor nerd program starts october 2026 practicing veterinarians   |        8
+ intern co op environmental summer 2027                                    |        8
+ compassionate caregiver needed delhi california 95315                     |        8
+ in home dialysis care partner 1 1 client st peters missouri 63303         |        7
+ compassionate caregiver needed poteet texas 78065                         |        7
+ research analyst economics and finance july 2027                          |        7
+ now hiring helpers for in home support bethel springs tn 38315            |        7
+ in home dialysis care partner thousand oaks ca 91359                      |        7
+ in home dialysis care partner fate tx 75189                               |        7
+ associate phd early decision economics focus 2027                         |        6
+ intern co op geotechnical engineering summer 2027                         |        6
+ in home hhd dialysis care partner 1 1 client laguna niguel ca 92677       |        6
+ now hiring helpers for in home support harrisburg pa 17110                |        6
+ caregiver needed support for a senior client lancaster pennsylvania 17603 |        6
+ intern engineering sciences summer 2027                                   |        6
+ peritoneal dialysis technician madison wi 53711                           |        6
+ now hiring helpers for in home support st cloud florida 34771             |        6
+ compassionate caregiver needed waterloo ia 50702                          |        6
+(25 rows)
+
+
+=== Q4. plata: salario, bonos, oportunidad ===
+      patron       | sobre  | vacantes 
+-------------------+--------+----------
+ hourly / per hour | limpio |      466
+ urgent / now      | limpio |      444
+ signo peso        | crudo  |      365
+ opportunity       | limpio |      298
+ bonus             | limpio |      246
+ sign on bonus     | limpio |      205
+ salary / pay      | limpio |       93
+ numero + k        | limpio |       77
+ up to             | limpio |       41
+(9 rows)
+
+
+=== Q4b. ejemplos con plata en el titulo (top 25) ===
+                            clean                             | vacantes 
+--------------------------------------------------------------+----------
+ home inspector salary 50 85k                                 |       16
+ maintenance technician 2 500 sign on bonus                   |       11
+ part time substitute teacher preschool daycare 14 17 hr      |        9
+ part time substitute teacher up to 144 daily                 |        5
+ maintenance technician 500 sign on bonus                     |        5
+ grocery shopper delivery driver avg 22 hr                    |        5
+ residential rehabilitation educator 20.00                    |        4
+ seasonal ft warehouse associate start 16 hr weekly pay       |        4
+ registered nurse rn urgent care 1500 sign on bonus           |        4
+ associate lead dentist 10k sign on bonus                     |        4
+ porter 500 sign on bonus                                     |        4
+ occupational therapist ot 15 000 bonus                       |        3
+ residential rehab educator 20                                |        3
+ home health physical therapist pt 10k sign on                |        3
+ residential rehab educator 20.00                             |        3
+ registered behavior technician rbt sign on bonus             |        3
+ home health registered nurse 10 000 sign on bonus            |        3
+ business development associate 118k ote                      |        2
+ specialty pharmacy technician sign on bonus                  |        2
+ housekeeper 500 sign on bonus                                |        2
+ residential rehab coordinator 22.00                          |        2
+ physical therapist pt home health 10k sign on                |        2
+ outreach case worker up to 25.25                             |        2
+ remote therapist lmft lmhc or licsw 75 115 hr part time 1099 |        2
+ licensed practical nurse lpn urgent care 1500 sign on bonus  |        2
+(25 rows)
+
+
+=== Q5. marketing, urgencia y filas que no son vacantes ===
+        patron        | vacantes 
+----------------------+----------
+ signo de exclamacion |      440
+ talent pool          |      357
+ general application  |      318
+ join our             |      187
+ we are hiring        |       88
+ apply now            |       19
+(6 rows)
+
+
+=== Q6. contrato y jornada ===
+     patron     | vacantes 
+----------------+----------
+ part time      |     2128
+ intern         |     1939
+ contract       |     1429
+ full time      |      914
+ seasonal       |      750
+ per diem / prn |      690
+ locum          |      644
+ volunteer      |      290
+ temporary      |      288
+ apprentice     |      217
+ freelance      |      182
+ w2 / 1099      |      126
+ casual         |       30
+(13 rows)
+
+
+=== Q7. cohorte y fecha ===
+     patron     | vacantes 
+----------------+----------
+ anio 20xx      |     1177
+ estacion       |      794
+ new grad       |      210
+ campus         |      175
+ cohort / batch |       16
+ class of       |       11
+(6 rows)
+
+
+=== Q8. idioma requerido ===
+  patron   | vacantes 
+-----------+----------
+ un idioma |     1548
+ speaking  |     1288
+ bilingual |      401
+ nivel mce |       21
+(4 rows)
+
+
+=== Q9a. experienced: volumen y vecinos ===
+ experienced | experience | x_years | experienced_hire | otros_sinonimos 
+-------------+------------+---------+------------------+-----------------
+         253 |        925 |      72 |                3 |             518
+(1 row)
+
+
+=== Q9b. que palabra sigue a experienced (top 25) ===
+ palabra_siguiente  | vacantes 
+--------------------+----------
+ sales              |       26
+ or                 |       21
+ event              |       18
+ (cierra el titulo) |       13
+ aesthetic          |       11
+ clinician          |       11
+ trader             |        9
+ dermatology        |        8
+ teacher            |        8
+ quantitative       |        7
+ professionals      |        7
+ operations         |        6
+ conference         |        6
+ consultant         |        6
+ lateral            |        5
+ caregiver          |        4
+ critical           |        4
+ north              |        3
+ sponsorships       |        3
+ partner            |        3
+ account            |        3
+ relationship       |        3
+ ccht               |        3
+ business           |        3
+ hire               |        2
+(25 rows)
+
+
+=== Q9c. que palabra precede a experienced (top 15) ===
+ palabra_anterior | vacantes 
+------------------+----------
+ (abre el titulo) |      170
+ installer        |       15
+ technician       |       14
+ to               |        7
+ for              |        6
+ hiring           |        4
+ technicians      |        3
+ bcba             |        3
+ dexperience      |        3
+ or               |        2
+ slp              |        2
+ therapist        |        2
+ pt               |        2
+ from             |        2
+ rbt              |        1
+(15 rows)
+
+
+=== Q10. el efecto agregado de cada recorte sobre la linea base ===
+              version              | titulos_distintos | vacantes_tocadas 
+-----------------------------------+-------------------+------------------
+ linea base (limpio sin seniority) |             78142 |                0
+ sin marca de genero               |             77980 |             1524
+ sin modalidad                     |             77881 |             2671
+ sin numeros/req                   |             77914 |             2787
+ sin plata                         |             78124 |              371
+ sin marketing                     |             78092 |              832
+ sin contrato                      |             77264 |             5117
+ sin fecha                         |             77915 |             1494
+(8 rows)
+
+
+=== Q10b. todos los recortes juntos: cardinalidad, cola y cobertura top N ===
+SELECT 128953
+CREATE INDEX
+CREATE INDEX
+ANALYZE
+ titulos_distintos | vacantes_tocadas 
+-------------------+------------------
+             76303 |            12751
+(1 row)
+
+ distintos | aparecen_una_vez | pct_vacantes_en_la_cola 
+-----------+------------------+-------------------------
+     76302 |            62475 |                    48.5
+(1 row)
+
+  rn   | vacantes | pct_acumulado 
+-------+----------+---------------
+    10 |      221 |           3.0
+    20 |      162 |           4.5
+    50 |       95 |           7.3
+   100 |       51 |           9.9
+   200 |       31 |          12.9
+   500 |       16 |          18.1
+  1000 |        9 |          22.7
+  5000 |        3 |          37.0
+ 10000 |        2 |          45.6
+(9 rows)
+
+
+=== Q10c. top 30 titulos con todos los recortes aplicados ===
+               titulo                | vacantes 
+-------------------------------------+----------
+ software engineer                   |      899
+ account executive                   |      508
+ behavior technician                 |      424
+ registered behavior technician rbt  |      356
+ product manager                     |      333
+ data engineer                       |      324
+ auxiliaire de vie                   |      305
+ project manager                     |      265
+ maintenance technician              |      236
+ data scientist                      |      221
+ real estate acquisition consultant  |      219
+ sales development representative    |      210
+ customer success manager            |      202
+ product designer                    |      192
+ accountant                          |      182
+ site reliability engineer           |      180
+ enterprise account executive        |      180
+ account manager                     |      173
+ aide a domicile                     |      167
+ machine learning engineer           |      162
+ devops engineer                     |      161
+ mechanical engineer                 |      160
+ leasing consultant                  |      152
+ business development representative |      142
+ systems engineer                    |      139
+ electrical engineer                 |      137
+ retail sales associate              |      137
+ solutions architect                 |      137
+ backend engineer                    |      133
+ solutions engineer                  |      129
+(30 rows)
+
+
+=== Q11. control de sanidad: ningun recorte puede vaciar un titulo ===
+ vacantes | vacio_solo_limpio | vacio_sin_seniority | vacio_con_todos_los_recortes 
+----------+-------------------+---------------------+------------------------------
+   128953 |                 0 |                   6 |                           87
+(1 row)
+
+
+=== Q11b. los que se vacian, si hay alguno (top 20) ===
+        titulo_crudo         | vacantes 
+-----------------------------+----------
+ Join Our Talent Community   |       17
+ Talent Community            |       10
+ Join our Talent Community   |       10
+ Join our Talent Community!  |        9
+ Principal                   |        6
+ Talent Network              |        4
+ Join Our Talent Community!  |        4
+ Join Our Talent Network!    |        3
+ Talent Community            |        3
+ Join Our Talent Community!  |        2
+ Join our Talent Network     |        2
+ Talent Pool                 |        2
+ Join Our Talent Network     |        2
+ Talent pool                 |        1
+ Join Our Talent Community   |        1
+ Join Our Talent Pool        |        1
+ Join our Talent Community!  |        1
+ Join our Talent Network     |        1
+ Join our Talent Network!    |        1
+ Join our Talent Pool        |        1
+(20 rows)
+
