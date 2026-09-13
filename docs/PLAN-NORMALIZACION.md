@@ -26,8 +26,13 @@
 - **Paso B4 — el refactor y las tres reglas que B3 sostuvo: ESCRITO.** `TitleCleaner`,
   `SeniorityExtractor`, `WorkModeExtractor` y `WorkMode`, con sus tests. `./mvnw test`
   da **95 tests en verde** (eran 80).
-- **Paso C — la tabla y el proceso que la puebla: PENDIENTE.** Es lo que sigue. La tabla
-  nace con `title`, `seniority` y `work_mode`.
+- **Paso C — la tabla y el proceso que la puebla: ESCRITO, falta la corrida contra prod.**
+  `V4`, `NormalizedVacancy`, su repositorio, `VacancyNormalizationService` y
+  `NormalizationController`. `./mvnw test` da **103 tests en verde** (eran 95). Decidido con
+  Elias el 2026-09-13: la FK lleva `on delete cascade` (el sync borra vacantes sin conocer
+  la tabla derivada) y hay **dos endpoints**, `POST /admin/normalization/vacancies`
+  (recalcula todo) y `POST /admin/normalization/vacancies/missing` (solo las que no tienen
+  fila). Recorren por keyset de id en páginas de 1.000, cada una en su transacción.
 
 **Por dónde arrancar la próxima sesión:** el paso C. Las reglas de los tres extractores
 están cerradas y probadas; B4 lo dio por probado Elias el 2026-09-13.

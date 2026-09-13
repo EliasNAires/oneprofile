@@ -9,8 +9,10 @@ import java.util.List;
 import oneprofile.backend.TestcontainersConfiguration;
 import oneprofile.backend.model.Ats;
 import oneprofile.backend.model.Company;
+import oneprofile.backend.model.NormalizedVacancy;
 import oneprofile.backend.model.Vacancy;
 import oneprofile.backend.repository.CompanyRepository;
+import oneprofile.backend.repository.NormalizedVacancyRepository;
 import oneprofile.backend.repository.VacancyRepository;
 import oneprofile.backend.service.GreenhouseBoardClient.BoardJob;
 import oneprofile.backend.service.GreenhouseVacancySyncService.SyncResult;
@@ -32,6 +34,9 @@ class GreenhouseVacancySyncServiceTest {
 
 	@Autowired
 	private VacancyRepository vacancies;
+
+	@Autowired
+	private NormalizedVacancyRepository normalized;
 
 	@Autowired
 	private TestEntityManager entityManager;
@@ -69,6 +74,22 @@ class GreenhouseVacancySyncServiceTest {
 
 		assertThat(result).isEqualTo(new SyncResult(1, 0, 1, 1));
 		assertThat(this.vacancies.findAll()).extracting(Vacancy::getExternalId).containsExactly(4001L);
+	}
+
+	@Test
+	void removesAnOpeningThatWasAlreadyNormalizedTogetherWithItsRow() {
+		// The normalized row is derived: the foreign key cascade takes it away with its vacancy.
+		store("globant");
+		sync("globant", job(4001L, "Backend Engineer"), job(4002L, "Data Analyst"));
+		for (Vacancy vacancy : this.vacancies.findAll()) {
+			this.normalized.save(new NormalizedVacancy(vacancy));
+		}
+		this.entityManager.flush();
+		this.entityManager.clear();
+
+		sync("globant", job(4001L, "Backend Engineer"));
+
+		assertThat(this.normalized.findAll()).extracting(n -> n.getVacancy().getExternalId()).containsExactly(4001L);
 	}
 
 	@Test
