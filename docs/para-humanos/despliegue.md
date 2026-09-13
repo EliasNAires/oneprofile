@@ -20,7 +20,9 @@ Cada `git push` a `main` dispara un workflow de GitHub Actions
 ([`.github/workflows/publish.yml`](../../.github/workflows/publish.yml)) que hace dos
 cosas, en orden:
 
-1. **Corre `./mvnw test`.** Si algo falla, ahí se corta y no se publica nada.
+1. **Corre `mvn test`.** Si algo falla, ahí se corta y no se publica nada. Usa el Maven
+   que ya trae el runner y no `./mvnw`, porque desde GitHub la descarga del wrapper se
+   corta.
 2. **Construye la imagen y la publica** en GHCR, el registry de GitHub, como
    `ghcr.io/eliasnaires/oneprofile-backend:latest`.
 
@@ -160,15 +162,17 @@ está expuesta a nadie.
 ```bash
 cd ~/oneprofile
 
-# descubrir empresas (unos minutos)
-docker compose exec app curl -i -X POST \
-  'localhost:8080/admin/discovery/greenhouse?index=CC-MAIN-2026-34'
+# descubrir empresas en los 10 índices más nuevos de CommonCrawl (minutos)
+docker compose exec app curl -i -X POST 'localhost:8080/admin/discovery/greenhouse/commoncrawl'
 
-# sondear sus boards (alrededor de media hora)
+# sondear sus boards (media hora o más)
 docker compose exec app curl -i -X POST 'localhost:8080/admin/probe/greenhouse'
 
-# traer las vacantes de todas las activas (una o dos horas)
+# traer las vacantes de todas las activas (horas)
 docker compose exec app curl -i -X POST 'localhost:8080/admin/vacancies/greenhouse'
+
+# normalizar los títulos (segundos)
+docker compose exec app curl -i -X POST 'localhost:8080/admin/normalization/vacancies'
 
 docker compose logs -f app
 ```

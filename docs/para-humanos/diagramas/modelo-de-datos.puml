@@ -40,6 +40,15 @@ package "En Java" {
     updatedAt : Instant
   }
 
+  class NormalizedVacancy {
+    id : Long
+    vacancy : Vacancy
+    .. lo que dicen los extractores ..
+    title : String
+    seniority : Seniority
+    workMode : WorkMode
+  }
+
   enum Ats {
     GREENHOUSE
   }
@@ -62,9 +71,19 @@ package "En Java" {
     LEVEL_3
   }
 
+  enum WorkMode {
+    REMOTE
+    FULLY_REMOTE
+    HYBRID
+    ONSITE
+  }
+
   Company --> Ats
   Company --> BoardStatus
   Vacancy --> Company : sabe de que empresa es.\nLa empresa NO tiene\nla lista de sus vacantes.
+  NormalizedVacancy --> Vacancy : una por vacante
+  NormalizedVacancy --> Seniority
+  NormalizedVacancy --> WorkMode
 }
 
 package "En Postgres" {
@@ -106,7 +125,19 @@ package "En Postgres" {
     **unique (company_id, external_id)**
   }
 
-  entity "company_seq / vacancy_seq" as s {
+  entity "normalized_vacancy" as tn {
+    id : bigint  <<PK>>
+    --
+    vacancy_id : bigint  <<FK, unique>>
+    --
+    title : varchar
+    seniority : varchar
+    work_mode : varchar
+    --
+    **on delete cascade**
+  }
+
+  entity "company_seq / vacancy_seq /\nnormalized_vacancy_seq" as s {
     dan los id de a 50 por vez
   }
 

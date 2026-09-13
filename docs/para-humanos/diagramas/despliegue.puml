@@ -11,7 +11,7 @@ node "TU MAQUINA" as local {
 }
 
 node "GITHUB" as gh {
-  component "Actions\n\n1. ./mvnw test\n2. construye la imagen" as actions
+  component "Actions\n\n1. mvn test\n2. construye la imagen" as actions
   component "GHCR\n\nghcr.io/eliasnaires/\noneprofile-backend:latest" as ghcr
   actions -down-> ghcr : publica
 }

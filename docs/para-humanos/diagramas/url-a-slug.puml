@@ -20,7 +20,7 @@ if (empieza con https:// y es\nun dominio de board de Greenhouse?) then (no)
   note right
     Solo https, a proposito.
     Se midio: de las 76.765 capturas
-    del indice, las 76.765 son https.
+    de un indice, las 76.765 son https.
   end note
   stop
 else (si)

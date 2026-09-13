@@ -345,8 +345,9 @@ docs/para-humanos/README.md                         (para personas, no para agen
 docs/para-humanos/descubrimiento.md
 docs/para-humanos/sondeo.md
 docs/para-humanos/vacantes.md
+docs/para-humanos/normalizacion.md
 docs/para-humanos/despliegue.md
-docs/para-humanos/diagramas/*.puml + *.svg          (7 diagramas PlantUML)
+docs/para-humanos/diagramas/*.puml + *.svg          (8 diagramas PlantUML)
 pom.xml
 src/main/java/oneprofile/backend/BackendApplication.java
 src/main/java/oneprofile/backend/model/Ats.java
@@ -1038,12 +1039,15 @@ advertencia del encabezado). Existe porque `METODOLOGIA.md` y este archivo está
 escritos para el agente y no sirven para entender el sistema de un vistazo: son
 exhaustivos y no tienen un solo diagrama.
 
-Contiene un `README.md`, un archivo por proceso —`descubrimiento.md`, `sondeo.md` y
-`vacantes.md`—, el de `despliegue.md`, y **siete** diagramas en `diagramas/`, cada uno
-con su `.puml` fuente y su `.svg` versionado al lado: `panorama` (componentes),
+Contiene un `README.md` —que cierra con los puntos abiertos—, un archivo por proceso
+—`descubrimiento.md`, `sondeo.md`, `vacantes.md` y `normalizacion.md`—, el de
+`despliegue.md`, y **ocho** diagramas en `diagramas/`, cada uno con su `.puml` fuente y
+su `.svg` versionado al lado: `panorama` (componentes),
 `flujo-descubrimiento` y `flujo-sondeo` (secuencia, los dos más importantes),
-`url-a-slug` (actividad), `modelo-de-datos` (clases), `entorno` (dónde corre dev y dónde
-prod) y `despliegue` (cómo la imagen llega del commit al servidor).
+`url-a-slug` (actividad), `pipeline-normalizacion` (actividad, con un título real
+transformándose en cada extractor), `modelo-de-datos` (clases), `entorno` (dónde corre
+dev y dónde prod) y `despliegue` (cómo la imagen llega del commit al servidor).
+Actualizada el 2026-09-13, con el descubrimiento sobre 10 índices y la normalización.
 
 **PlantUML no está instalado como comando**, pero el jar sí está en la máquina, y con él
 alcanza:

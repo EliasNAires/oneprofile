@@ -12,7 +12,7 @@
 > repetida y te arriesga a trabajar sobre el resumen en vez de sobre la fuente de
 > verdad.
 
-Este archivo cuenta qué es el sistema y cómo correrlo. Cada uno de los tres procesos
+Este archivo cuenta qué es el sistema y cómo correrlo. Cada uno de los cuatro procesos
 tiene el suyo:
 
 - [**Cómo se descubren las empresas**](descubrimiento.md) — de dónde sale la lista de
@@ -21,6 +21,8 @@ tiene el suyo:
   de lo que no, y quién tiene vacantes abiertas.
 - [**Cómo se traen las vacantes**](vacantes.md) — qué pide la API, las dos trampas del
   JSON, y qué se guarda de cada vacante.
+- [**Cómo se normalizan los títulos**](normalizacion.md) — cómo un título escrito de mil
+  maneras queda comparable, con el nivel y la modalidad en campos propios.
 
 Y aparte, cómo se pone esto a correr fuera de tu máquina:
 
@@ -31,29 +33,28 @@ Y aparte, cómo se pone esto a correr fuera de tu máquina:
 
 ## Qué es esto
 
-El objetivo final es armar **una buena lista de vacantes laborales que matcheen con
-el perfil del usuario**.
+El objetivo final es armar **una buena lista de vacantes laborales que matcheen con el
+perfil del usuario**.
 
-Hoy están construidas las tres piezas:
+Hoy están construidas cuatro piezas:
 
-1. **Descubrir qué empresas usan Greenhouse.**
+1. **Descubrir qué empresas usan Greenhouse**, leyendo los 10 índices más recientes de
+   CommonCrawl.
 2. **Sondear el board de cada una** para saber cuáles siguen vivas y cuáles tienen
    vacantes publicadas hoy.
-3. **Traer las vacantes**, de una empresa o de las 3.121 activas de una pasada, y borrar
+3. **Traer las vacantes**, de una empresa o de todas las activas de una pasada, y borrar
    las que dejaron de estar publicadas.
+4. **Normalizar los títulos**: limpiarlos y sacarles el nivel y la modalidad.
 
-Las tres corrieron de verdad, y la última ya terminó: hay **128.953 vacantes de 3.118
-empresas** en la base.
+Las cuatro corrieron de verdad en el servidor. Hoy hay **6.988 empresas**, **128.953
+vacantes de 3.118 empresas**, y todas esas vacantes con su título normalizado.
 
-Ese número tiene una sorpresa adentro: se esperaba **el doble**. La proyección se había
-hecho con el **promedio** de una muestra —80 vacantes por empresa—, y el promedio estaba
-inflado por un puñado de empresas enormes: Stripe sola tiene 628. La guía correcta era la
-**mediana**, que era 17. Es el tipo de error que conviene recordar: en datos así, el
-promedio miente y la mediana no.
+El número de vacantes tiene una sorpresa adentro: se esperaba **el doble**. La proyección
+se había hecho con el **promedio** de una muestra —80 vacantes por empresa—, y el promedio
+estaba inflado por un puñado de empresas enormes: Stripe sola tiene 628. La guía correcta
+era la **mediana**, que era 17. En datos así, el promedio miente y la mediana no.
 
-Todavía no hay perfiles ni matching. De cada empresa se sabe su identificador corto,
-si su board existe, cuántas búsquedas tiene abiertas y cómo se llama; y de las
-empresas que se hayan pedido, sus vacantes con descripción y sueldo.
+Todavía no hay perfiles ni matching.
 
 ## La idea de fondo
 
@@ -86,91 +87,59 @@ distintas. Por eso acá una empresa se identifica por el **par (ATS, slug)**.
 
 ![Panorama de componentes](diagramas/panorama.svg)
 
-Son tres caminos casi paralelos —un proceso cada uno— que se juntan abajo, en la misma
-base. Cada clase tiene un trabajo bien chico:
+Son cuatro caminos casi paralelos —uno por proceso— que se juntan abajo, en la misma
+base. El código está ordenado por **capa**, y cada capa tiene un trabajo:
 
-Del **descubrimiento**:
+- **`controller`** — recibe el pedido por HTTP. No sabe nada del negocio: se ocupa de
+  que no haya dos corridas a la vez y de contestar rápido. Hay uno por proceso.
+- **`service`** — el que dirige la orquesta de cada proceso: junta, decide y guarda.
+- **`client`** — los que salen a internet. **Uno por servicio ajeno**:
+  `CommonCrawlIndexClient` y `GreenhouseBoardClient`.
+- **`util`** — funciones chicas: entra algo, sale algo, sin red y sin base.
+  `GreenhouseBoardUrl` saca el slug de una URL, `HtmlToText` limpia la descripción,
+  `HttpRetry` reintenta cuando un servicio ajeno falla, y los tres extractores del título
+  hacen la normalización.
+- **`repository`** — los que hablan con Postgres, uno por tabla.
 
-- **`DiscoveryController`** — recibe el pedido por HTTP. No sabe nada del negocio:
-  solo se ocupa de que no haya dos corridas a la vez y de contestar rápido.
-- **`GreenhouseDiscoveryService`** — el que dirige la orquesta. Junta los slugs,
-  descarta los que ya tenía y guarda los nuevos.
-- **`CommonCrawlIndexClient`** — le pide páginas al índice y las va leyendo.
-- **`GreenhouseBoardUrl`** — convierte una URL en un slug. Es texto que entra y
-  texto que sale: sin red, sin base, sin nada.
+Algunas cosas del dibujo que no son obvias:
 
-Del **sondeo**:
-
-- **`BoardProbeController`** — el gemelo del otro, con el mismo molde. Que se lean
-  igual es a propósito: el patrón ya estaba probado.
-- **`GreenhouseBoardProbeService`** — recorre las empresas de a una y anota qué
-  contestó cada board.
-- **`GreenhouseBoardClient`** — el que le habla a la API de Greenhouse.
-
-De las **vacantes**:
-
-- **`VacancyController`** — el único que atiende dos pedidos distintos: una empresa suelta
-  y todas juntas. Contestan diferente a propósito. La empresa suelta tarda un segundo, así
-  que la respuesta trae ya la cuenta de lo que cargó; la corrida completa tarda horas, así
-  que contesta "ya arranqué" como los otros dos procesos.
-- **`GreenhouseVacancySyncService`** — pide el board de una empresa y decide, vacante
-  por vacante, si es nueva, si ya la tenía guardada, o si dejó de estar y hay que borrarla.
-- **`GreenhouseVacancySweepService`** — el que repite eso para las 3.121 activas, con una
-  pausa entre empresa y empresa.
-- **`HtmlToText`** — desarma el HTML de la descripción hasta dejar texto que una
-  persona pueda leer. Texto que entra, texto que sale: nada más.
-
-Que el recorrido sea una clase aparte y no un método más del anterior tiene una razón
-concreta, y es de las cosas que uno descubre a los golpes: **Spring abre una transacción
-con la base cuando entrás a un objeto desde afuera, no cuando un objeto se llama a sí
-mismo.** Si el recorrido viviera adentro del mismo servicio, las dos horas de corrida
-quedarían sin esa red de contención por empresa.
-
-El `GreenhouseBoardClient` **es el mismo para el sondeo y para las vacantes**, con dos
-usos distintos: el sondeo pide el board pelado y solo mira cuántas vacantes hay, y este
-proceso lo pide con la descripción y el sueldo. Es el mismo servicio ajeno con las
-mismas mañas, así que sería raro tener dos clases para hablarle.
-
-Y los dos repositorios, **`CompanyRepository`** y **`VacancyRepository`**, que son los
-que hablan con Postgres.
-
-Que los dos clientes que salen a internet estén en clases separadas no es capricho.
-Son dos servicios ajenos con mañas distintas: el índice de CommonCrawl manda
-respuestas de 9 MB y se satura seguido, la API de Greenhouse manda respuestas chicas
-y usa el `404` para decirte algo. Mezclarlos sería meter dos problemas en una caja.
+- **Los dos clientes están separados aunque se parezcan.** Son dos servicios ajenos con
+  mañas distintas: el índice de CommonCrawl manda respuestas de 9 MB y se satura seguido,
+  la API de Greenhouse manda respuestas chicas y usa el `404` para decirte algo. Lo que sí
+  hacen igual —reintentar— está una sola vez, en `HttpRetry`.
+- **`GreenhouseBoardClient` es el mismo para el sondeo y para las vacantes.** El sondeo
+  pide el board pelado y solo cuenta cuántas vacantes hay; la carga lo pide con la
+  descripción y el sueldo. Es el mismo servicio ajeno, así que es la misma clase.
+- **Recorrer todas las empresas es una clase aparte** (`GreenhouseVacancySweepService`) y
+  no un método más del que carga una. **Spring abre una transacción cuando entrás a un
+  objeto desde afuera, no cuando un objeto se llama a sí mismo.** Si el recorrido viviera
+  adentro del mismo servicio, las horas de corrida quedarían sin esa red por empresa.
 
 ## Qué se guarda
 
 ![Modelo de datos](diagramas/modelo-de-datos.svg)
 
-Ahora son **dos tablas**. En `company`, la mitad de arriba es lo que deja el
-descubrimiento —qué ATS y qué slug—; la de abajo, lo que deja el sondeo: el nombre,
-en qué estado está el board y cuándo se lo sondeó por última vez.
+Son **tres tablas**, una por proceso que deja algo.
 
-Esos tres campos **pueden estar vacíos**, y eso significa algo preciso: una empresa
-sin estado de board es una empresa **que nunca se sondeó**. Las 4.046 que cargó el
-descubrimiento arrancaron así.
+En **`company`**, la mitad de arriba es lo que deja el descubrimiento —qué ATS y qué
+slug—; la de abajo, lo que deja el sondeo: el nombre, en qué estado está el board y
+cuándo se lo sondeó por última vez. Esos tres campos **pueden estar vacíos**, y eso
+significa algo preciso: una empresa **que nunca se sondeó**.
 
-La fecha del último sondeo todavía no la usa nadie. Está para cuando esto corra solo:
-con ella se puede pedir "volvé a sondear lo que no se toca hace una semana" en vez de
-repasar las 4.046 cada vez.
+En **`vacancy`** hay dos cosas que vale la pena mirar. La primera: **la vacante sabe de
+qué empresa es, pero la empresa no tiene la lista de sus vacantes.** Es a propósito: una
+empresa grande tiene cientos de búsquedas, y una lista así colgada de la empresa se
+convierte en una trampa —cada vez que tocás una empresa te arrastra todo lo demás—. La
+segunda: cada vacante guarda el **id que le puso Greenhouse**, para reconocerla la
+próxima vez. Ese id solo es único dentro de su board, así que lo que no se puede repetir
+es el par (empresa, id de Greenhouse).
 
-En `vacancy` hay dos cosas que vale la pena mirar. La primera: **la vacante sabe de qué
-empresa es, pero la empresa no tiene la lista de sus vacantes.** Parece una asimetría
-molesta y es a propósito: una empresa grande tiene cientos de búsquedas, y una lista así
-colgada de la empresa se convierte en una trampa —cada vez que tocás una empresa te
-arrastra todo lo demás—.
+En **`normalized_vacancy`** hay una fila por vacante, con el título limpio, el nivel y la
+modalidad. Está aparte porque `vacancy` es un espejo del board y esto es un cálculo sobre
+él, que se rehace cuando cambia una regla. Si se borra la vacante, su fila se va con ella.
 
-La segunda: además del id propio, cada vacante guarda el **id que le puso Greenhouse**.
-Sirve para reconocerla la próxima vez que se pida el mismo board y decidir si hay que
-actualizarla o insertarla. Ese id **no es único en el mundo, solo dentro de su board** —
-la misma historia que el slug—, así que lo que no se puede repetir es el par
-(empresa, id de Greenhouse).
-
-`Ats` y `BoardStatus` son enums de Java y no tablas. La razón: son listas cerradas
-que define el código, no algo que cargue un usuario. Sumar un ATS obliga igual a
-escribir la clase que entiende *su* formato de JSON —porque no hay dos ATS que
-devuelvan lo mismo—, así que tenerlo en una tabla no evitaría recompilar nada.
+`Ats`, `BoardStatus`, `Seniority` y `WorkMode` son enums de Java y no tablas: son listas
+cerradas que define el código, no algo que cargue un usuario.
 
 ## Dónde corre
 
@@ -195,7 +164,8 @@ En desarrollo, para ver que arranca:
 ./mvnw spring-boot:run
 ```
 
-Levanta solo el Postgres en Docker y queda escuchando en el 8080.
+Levanta solo el Postgres en Docker y queda escuchando en el 8080. Ojo: esa base arranca
+vacía, los datos están en el servidor.
 
 En producción —o sea, en el servidor— el ciclo completo:
 
@@ -204,37 +174,37 @@ cd ~/oneprofile
 docker compose pull
 docker compose up -d
 
-# 1. descubrir empresas (unos minutos)
+# 1. descubrir empresas en los 10 índices más nuevos (minutos)
 docker compose exec app curl -i -X POST \
-  'localhost:8080/admin/discovery/greenhouse?index=CC-MAIN-2026-34'
+  'localhost:8080/admin/discovery/greenhouse/commoncrawl'
 
-# 2. sondear sus boards (alrededor de media hora)
+# 2. sondear sus boards (media hora o más)
 docker compose exec app curl -i -X POST \
   'localhost:8080/admin/probe/greenhouse'
-
-docker compose logs -f app    # acá se ve cómo terminan
 
 # 3a. traer las vacantes de una empresa (un segundo)
 docker compose exec app curl -i -X POST \
   'localhost:8080/admin/vacancies/greenhouse/figma'
 
-# 3b. o las de todas las empresas activas (varias horas)
+# 3b. o las de todas las empresas activas (horas)
 docker compose exec app curl -i -X POST \
   'localhost:8080/admin/vacancies/greenhouse'
+
+# 4. normalizar los títulos (segundos)
+docker compose exec app curl -i -X POST \
+  'localhost:8080/admin/normalization/vacancies'
+
+docker compose logs -f app    # acá se ve cómo terminan
 ```
 
 **Todos te contestan `202` al instante y siguen trabajando por atrás**, menos el de una
-empresa sola. El resultado se ve en el log. Si disparás uno que ya está corriendo, te
-contesta `409` y no hace nada: dos corridas a la vez se pelearían por las mismas empresas.
+empresa sola, que contesta en la misma respuesta con la cuenta de lo que cargó
+(`{"fetched":153,"inserted":153,"updated":0,"deleted":0}`). Si disparás uno que ya está
+corriendo, te contesta `409` y no hace nada.
 
-**El de una empresa es la excepción:** contesta en la misma respuesta, con la cuenta de lo
-que cargó (`{"fetched":153,"inserted":153,"updated":0,"deleted":0}`), porque tarda un
-segundo y ahí esperar es lo más cómodo. Está explicado en
-[cómo se traen las vacantes](vacantes.md), junto con el detalle incómodo de que en
-desarrollo la base arranca vacía.
-
-**Y el orden de arriba es el orden real**, no una sugerencia: el recorrido de vacantes
-solo le pregunta a las empresas que el sondeo dejó marcadas como activas.
+**El orden de arriba es el orden real**, no una sugerencia: el recorrido de vacantes solo
+le pregunta a las empresas que el sondeo dejó activas, y la normalización trabaja sobre
+las vacantes que ya están.
 
 Para ver el resultado del sondeo, en la base:
 
@@ -242,23 +212,45 @@ Para ver el resultado del sondeo, en la base:
 select board_status, count(*) from company group by board_status;
 ```
 
-El `index=` no tiene valor por defecto, y es a propósito: uno fijo quedaría viejo
-en silencio. Los que existen salen de
-[`collinfo.json`](https://index.commoncrawl.org/collinfo.json) — **ojo que la
-numeración salta**, no todos los números existen.
-
-**Repetir el POST cambiando el índice es la forma de tener más empresas**, y no
-hace falta tocar código: lo que ya está guardado no se vuelve a insertar. Cada
-crawl nuevo suma empresas que los anteriores no habían visto.
-
 ## Qué sigue
 
-Con las vacantes ya cargadas, lo próximo es el problema interesante: los títulos son
-texto libre, escritos por cada empresa a su manera, y para que el matching sirva hay que
-lograr que "Sr. Backend Engineer", "Backend Developer Senior" y "SWE II - Backend" se
-reconozcan como el mismo tipo de puesto. Está en curso y todavía no se puede contar como
-funcionando.
+Lo próximo es **separar las vacantes tech-adyacentes de las que no**, que es para lo que
+se normalizaron los títulos. Ya se sabe que tiene que ser **por palabras del título y no
+con una lista de títulos**: casi la mitad de las vacantes tiene un título que no se
+repite nunca.
 
-Que todo esto haya salido de la máquina de Elias y viva en un servidor es porque ya no
-son experimentos sueltos, sino procesos que tienen que correr seguido —y más adelante en
-paralelo, con más ATS—: cerrás el SSH y la corrida sigue.
+Más adelante, sin orden fijo: el perfil del usuario, un primer matching, un endpoint que
+devuelva las vacantes que matchean, y un cron que corra todo solo.
+
+## Puntos abiertos
+
+Lo que se sabe que falta o que no está resuelto:
+
+- **Faltan muchas empresas por descubrir.** La **Wayback Machine** trae 17.730 slugs, y
+  8.035 no aparecen en ningún índice de CommonCrawl. Está medido y diseñado, pero no hay
+  nada escrito.
+- **El descubrimiento sobre 10 índices todavía no corrió en prod.** Está escrito y con
+  tests. Si da lo esperado, `company` queda cerca de 8.614 empresas.
+- **Hay 2.942 empresas sin sondear**, las que trajeron los últimos índices. Sin sondeo no
+  se les piden vacantes.
+- **La modalidad puede tener falsos positivos.** Nadie miró todavía en qué contexto
+  aparece `remote`: "remote sensing" o "remote monitoring" son puestos, no modalidades.
+  Hasta revisarlo, la modalidad no es del todo confiable.
+- **Traer vacantes no normaliza.** Una vacante nueva queda sin título normalizado hasta
+  que se corre la normalización. Hoy da igual porque todo es a mano; con un cron habrá que
+  encadenar sondeo → vacantes → normalización.
+- **Hay ~650 filas que no son vacantes**: "talent community", "general application" y
+  parecidos, que son formularios para dejar el CV. No se filtran todavía.
+- **Contrato, jornada y ubicación siguen adentro del texto.** "Part time", "intern" o
+  "contract" pesan en un matching tanto como el nivel. La ubicación es más ordenable de lo
+  que parecía (ciudad, región, país). Cada uno merece su propio paso.
+- **Una respuesta cortada de CommonCrawl pasaría sin aviso.** A mano se vio que el índice
+  a veces corta la página con un `200`. El cliente no tiene cómo notarlo, y reportaría
+  menos empresas sin avisar.
+- **Hay empresas que se dejan afuera a sabiendas.** Las del dominio europeo de Greenhouse
+  (unas 850) y los slugs con símbolos raros, por volumen.
+- **Nada protege los endpoints de administración.** Hoy no hace falta porque no hay
+  ningún puerto abierto. Cuando exista un endpoint que devuelva vacantes, habrá que
+  resolverlo.
+- **No hay cómo volver a una versión anterior.** La imagen se publica solo como `latest`,
+  y el despliegue al servidor es a mano.

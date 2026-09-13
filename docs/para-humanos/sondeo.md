@@ -32,6 +32,9 @@ están en Greenhouse** y **217 sin nada publicado**.
 O sea que el **77%** de lo que vio una foto vieja de internet sigue vivo y con búsquedas
 abiertas. Se esperaba bastante más mortandad de la que hubo.
 
+Después se leyeron más índices de CommonCrawl, y hoy `company` tiene **6.988 empresas**.
+Las **2.942 nuevas todavía no se sondearon**: no tienen estado hasta la próxima corrida.
+
 De paso, el sondeo trae el **nombre legible** de la empresa —"Globant", no `globant`—
 porque viene adentro de cada vacante. Gratis, sin un pedido extra. Las empresas que no
 tienen vacantes abiertas se quedan sin nombre hasta que publiquen alguna; es el precio

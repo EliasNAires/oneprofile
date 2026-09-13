@@ -1,0 +1,52 @@
+@startuml pipeline-normalizacion
+!theme plain
+title Como se normaliza el titulo de una vacante\nUn ejemplo, paso por paso
+
+skinparam shadowing false
+
+start
+
+:llega una vacante de la tabla vacancy;
+note right
+  title    = "Sr. Software Engineer – Backend (Remote) (m/f/d)"
+  location = "Remote - US"
+end note
+
+:**TitleCleaner.clean(title)**
+minusculas, sin acentos, sin simbolos,
+sin marca de genero, sin sigla repetida al final;
+note right
+  "sr software engineer backend remote"
+
+  Se van el punto, la raya, los parentesis y el (m/f/d).
+  El punto de ".net" o el # de "c#" se hubieran quedado.
+end note
+
+:**WorkModeExtractor.extract(limpio, location)**
+lee la modalidad y la saca del titulo;
+note right
+  titulo    = "sr software engineer backend"
+  modalidad = REMOTE
+
+  Manda la location: ahi lo dicen 14.624 de las 16.444
+  remotas. No es FULLY_REMOTE porque despues de
+  "Remote" le queda un lugar: "US".
+end note
+
+:**SeniorityExtractor.extract(titulo)**
+lee el nivel y lo saca del titulo;
+note right
+  titulo    = "software engineer backend"
+  seniority = SENIOR
+end note
+
+:se guarda en normalized_vacancy;
+note right
+  title     = "software engineer backend"
+  seniority = SENIOR
+  work_mode = REMOTE
+end note
+
+stop
+
+@enduml

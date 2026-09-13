@@ -196,9 +196,7 @@ la que había que mirar.
 No cambia nada de lo construido, pero sí la forma de proyectar: con datos tan desparejos,
 el promedio miente.
 
-## Qué falta
+## Lo que sigue
 
-Los títulos son texto libre, y para que un matching sirva hay que lograr que
-"Sr. Backend Engineer", "Backend Developer Senior" y "SWE II - Backend" se reconozcan como
-el mismo puesto. Es lo que está en curso ahora, y no se puede contar todavía como
-funcionando.
+Los títulos son texto libre, y cada empresa escribe el mismo puesto a su manera. Cómo se
+los deja comparables está en [cómo se normalizan los títulos](normalizacion.md).

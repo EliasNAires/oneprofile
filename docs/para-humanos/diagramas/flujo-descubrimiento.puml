@@ -11,18 +11,13 @@ participant "executor\n(1 solo hilo)" as exec
 participant "GreenhouseDiscoveryService" as svc
 participant "CommonCrawlIndexClient" as client
 participant "GreenhouseBoardUrl" as url
-participant "indice de\nCommonCrawl" as cc
+participant "CommonCrawl" as cc
 database "Postgres" as db
 
-you -> ctrl : POST ...?index=CC-MAIN-2026-34
+you -> ctrl : POST /admin/discovery/greenhouse/commoncrawl
 
 alt ya hay una corrida en curso
   ctrl --> you : 409 Conflict
-  note right of ctrl
-    Un AtomicBoolean alcanza:
-    dos corridas a la vez pelearian
-    por las mismas empresas.
-  end note
 else libre
   ctrl -> exec : encolar el trabajo
   ctrl --> you : 202 Accepted
@@ -33,37 +28,47 @@ else libre
   end note
 end
 
-exec -> svc : discover(indexId)
+exec -> svc : discoverOnRecentCommonCrawl()
 activate svc
-note over svc : Todo esto es UNA sola transaccion
+svc -> client : latestIndexIds(10)
+client -> cc : collinfo.json
+cc --> client : los indices, del mas nuevo al mas viejo
+client --> svc : los 10 mas nuevos
+note right of svc
+  Ningun indice esta escrito en el codigo:
+  cuando CommonCrawl publica uno nuevo, entra solo.
+end note
 
-loop por cada uno de los 2 dominios de board
-  svc -> client : forEachUrl(indice, dominio, callback)
-  activate client
-  client -> cc : cuantas paginas hay?
-  cc --> client : 7
-
-  loop pagina 0 .. 6
-    client -> cc : dame la pagina N
-    cc --> client : ~9 MB, ~12.000 lineas
-
-    loop por cada linea, mientras la lee
-      client -> svc : callback(url)
-      svc -> url : slugFrom(url)
-      url --> svc : "mercadolibre"  o  vacio
-      note over svc : Los slugs se juntan en un Set,\nasi los repetidos se colapsan solos
+loop por cada uno de los 10 indices
+  loop por cada uno de los 2 dominios de board
+    svc -> client : forEachUrl(indice, dominio, callback)
+    activate client
+    loop pagina por pagina (~9 MB cada una)
+      client -> cc : dame la pagina N
+      loop por cada linea, mientras la lee
+        client -> svc : callback(url)
+        svc -> url : slugFrom(url)
+        url --> svc : "mercadolibre"  o  vacio
+      end
     end
+    deactivate client
   end
-  deactivate client
+
+  alt el indice contesto
+    svc -> db : que slugs ya tengo?
+    db --> svc : los conocidos
+    svc -> db : guardar los nuevos
+    note right of svc
+      Se guarda al terminar cada indice, no al final:
+      si el septimo falla, lo de los seis anteriores ya quedo.
+    end note
+  else el indice fallo
+    svc -> svc : anotarlo y seguir con el siguiente
+  end
 end
 
-svc -> db : que slugs ya tengo guardados?
-db --> svc : los conocidos
-note over svc : nuevos = encontrados - conocidos
-svc -> db : saveAll(nuevos), de a lotes de 50
+svc --> exec : lo de cada indice + los que fallaron
 deactivate svc
-
-svc --> exec : 4046 encontrados, 4046 nuevos
 exec -> exec : lo escribe en el log
 
 @enduml

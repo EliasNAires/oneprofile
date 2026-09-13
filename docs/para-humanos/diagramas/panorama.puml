@@ -1,6 +1,6 @@
 @startuml panorama
 !theme plain
-title Las piezas del backend\nTres procesos que se disparan a mano, y que hay del otro lado
+title Las piezas del backend\nCuatro procesos que se disparan a mano, y que hay del otro lado
 
 skinparam componentStyle rectangle
 skinparam shadowing false
@@ -13,43 +13,54 @@ rectangle "controller" {
   [DiscoveryController] as ctrl
   [BoardProbeController] as probeCtrl
   [VacancyController] as vacCtrl
+  [NormalizationController] as normCtrl
 }
 
 rectangle "service" {
   [GreenhouseDiscoveryService] as svc
-  [CommonCrawlIndexClient] as client
   [GreenhouseBoardProbeService] as probeSvc
   [GreenhouseVacancySyncService] as vacSvc
   [GreenhouseVacancySweepService] as sweepSvc
+  [VacancyNormalizationService] as normSvc
+}
+
+rectangle "client" {
+  [CommonCrawlIndexClient] as ccClient
   [GreenhouseBoardClient] as boardClient
 }
 
 rectangle "util" {
   [GreenhouseBoardUrl] as url
+  [HttpRetry] as retry
   [HtmlToText] as html
-  [TitleNormalizer] as titleNorm
+  [TitleCleaner] as cleaner
+  [WorkModeExtractor] as modeEx
+  [SeniorityExtractor] as levelEx
 }
 
 rectangle "repository" {
   [CompanyRepository] as repo
   [VacancyRepository] as vacRepo
+  [NormalizedVacancyRepository] as normRepo
 }
 
 cloud "index.commoncrawl.org\nel indice de URLs" as cc
 cloud "boards-api.greenhouse.io\nla API de Greenhouse" as gh
-database "PostgreSQL\ntablas company y vacancy" as db
+database "PostgreSQL\ncompany, vacancy\ny normalized_vacancy" as db
 
 you --> ctrl : 1. descubrir empresas
 you --> probeCtrl : 2. sondear sus boards
-you --> vacCtrl : 3. traer las vacantes\nde una empresa o de todas
+you --> vacCtrl : 3. traer las vacantes
+you --> normCtrl : 4. normalizar los titulos
 
-ctrl --> svc : discover(indice)
-probeCtrl --> probeSvc : probeAll()
-vacCtrl --> vacSvc : syncCompany(slug)
-vacCtrl --> sweepSvc : syncAllActive()
-sweepSvc --> vacSvc : cada empresa ACTIVE,\ncon pausa de 500 ms
+ctrl --> svc
+probeCtrl --> probeSvc
+vacCtrl --> sweepSvc : todas
+sweepSvc -left-> vacSvc : cada ACTIVE
+vacCtrl --> vacSvc : una
+normCtrl --> normSvc
 
-svc --> client
+svc --> ccClient
 svc --> url
 svc --> repo
 probeSvc --> boardClient
@@ -57,11 +68,19 @@ probeSvc --> repo
 vacSvc --> boardClient
 vacSvc --> repo
 vacSvc --> vacRepo
+normSvc --> cleaner
+normSvc --> modeEx
+normSvc --> levelEx
+normSvc --> vacRepo
+normSvc --> normRepo
 
-client --> cc : HTTPS,\npagina por pagina
-boardClient --> gh : HTTPS,\nun GET por empresa
-boardClient --> html : limpia el HTML\nde la descripcion
+ccClient --> retry
+boardClient --> retry
+boardClient --> html
+ccClient --> cc
+boardClient --> gh
 repo --> db
 vacRepo --> db
+normRepo --> db
 
 @enduml

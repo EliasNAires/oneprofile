@@ -26,7 +26,7 @@ end note
 exec -> svc : probeAll()
 activate svc
 svc -> db : dame todas las\nempresas de Greenhouse
-db --> svc : ~4.000 empresas
+db --> svc : todas (hoy 6.988)
 
 loop por cada empresa
   svc -> svc : esperar 200 ms
@@ -64,7 +64,7 @@ loop por cada empresa
 end
 
 deactivate svc
-svc --> exec : 4046 empresas: N sin board,\nN vacias, N con vacantes
+svc --> exec : cuantas sin board, vacias,\ncon vacantes y fallidas
 exec -> exec : lo escribe en el log
 
 @enduml
