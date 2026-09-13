@@ -1,6 +1,7 @@
 package oneprofile.backend.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,7 @@ import java.util.function.Consumer;
 
 import oneprofile.backend.TestcontainersConfiguration;
 import oneprofile.backend.client.CommonCrawlIndexClient;
+import oneprofile.backend.client.WaybackCdxClient;
 import oneprofile.backend.model.Ats;
 import oneprofile.backend.model.Company;
 import oneprofile.backend.repository.CompanyRepository;
@@ -112,16 +114,60 @@ class GreenhouseDiscoveryServiceTest {
 		assertThat(slugsInDatabase()).containsExactlyInAnyOrder("globant", "auth0");
 	}
 
+	@Test
+	void savesWhatWaybackBringsThroughBothDomainsExceptTheKnownCompanies() {
+		this.companies.save(new Company(Ats.GREENHOUSE, "globant"));
+		this.entityManager.flush();
+		this.entityManager.clear();
+
+		DiscoveryResult result = discoverOnWayback(500, new FakeWaybackClient(Map.of(
+				BOARDS, List.of("https://boards.greenhouse.io/globant", "http://boards.greenhouse.io/ignored"),
+				JOB_BOARDS, List.of("https://job-boards.greenhouse.io/auth0", "https://job-boards.greenhouse.io/globant")),
+				Integer.MAX_VALUE));
+
+		assertThat(result).isEqualTo(new DiscoveryResult(2, 1));
+		assertThat(slugsInDatabase()).containsExactlyInAnyOrder("globant", "auth0");
+	}
+
+	@Test
+	void keepsTheBatchesAlreadySavedWhenWaybackFailsHalfway() {
+		FakeWaybackClient failsAfterThreeUrls = new FakeWaybackClient(Map.of(
+				BOARDS, List.of("https://boards.greenhouse.io/globant", "https://boards.greenhouse.io/auth0",
+						"https://boards.greenhouse.io/stripe", "https://boards.greenhouse.io/never-read"),
+				JOB_BOARDS, List.of()), 3);
+
+		assertThatThrownBy(() -> discoverOnWayback(2, failsAfterThreeUrls)).isInstanceOf(RestClientException.class);
+
+		assertThat(slugsInDatabase()).containsExactlyInAnyOrder("globant", "auth0");
+	}
+
 	private DiscoveryResult discoverOnOneIndex(Map<String, List<String>> urlsByPattern) {
 		return discover(List.of(INDEX_ID), Map.of(INDEX_ID, urlsByPattern)).indexes().getFirst().result();
 	}
 
 	private CommonCrawlResult discover(List<String> indexIds, Map<String, Map<String, List<String>>> urlsByIndex) {
-		CommonCrawlResult result = new GreenhouseDiscoveryService(new FakeIndexClient(indexIds, urlsByIndex),
-				this.companies).discoverOnRecentCommonCrawl();
+		CommonCrawlResult result = service(new FakeIndexClient(indexIds, urlsByIndex), noWayback(), 500)
+				.discoverOnRecentCommonCrawl();
 		this.entityManager.flush();
 		this.entityManager.clear();
 		return result;
+	}
+
+	private DiscoveryResult discoverOnWayback(int batch, FakeWaybackClient waybackClient) {
+		DiscoveryResult result = service(new FakeIndexClient(List.of(), Map.of()), waybackClient, batch)
+				.discoverOnWayback();
+		this.entityManager.flush();
+		this.entityManager.clear();
+		return result;
+	}
+
+	private GreenhouseDiscoveryService service(FakeIndexClient indexClient, FakeWaybackClient waybackClient,
+			int batch) {
+		return new GreenhouseDiscoveryService(indexClient, waybackClient, this.companies, batch);
+	}
+
+	private static FakeWaybackClient noWayback() {
+		return new FakeWaybackClient(Map.of(BOARDS, List.of(), JOB_BOARDS, List.of()), Integer.MAX_VALUE);
 	}
 
 	private List<String> slugsInDatabase() {
@@ -157,6 +203,33 @@ class GreenhouseDiscoveryServiceTest {
 				throw new RestClientException("Index " + indexId + " is unreachable");
 			}
 			urlsByPattern.get(pattern).forEach(onUrl);
+		}
+	}
+
+	/**
+	 * Hands back canned URLs per domain; never touches the network. It stops working after
+	 * {@code urlsBeforeFailing} URLs, standing for an archive that fails halfway.
+	 */
+	private static final class FakeWaybackClient extends WaybackCdxClient {
+
+		private final Map<String, List<String>> urlsByPattern;
+
+		private int urlsLeft;
+
+		private FakeWaybackClient(Map<String, List<String>> urlsByPattern, int urlsBeforeFailing) {
+			assertThat(urlsByPattern.keySet()).containsExactlyInAnyOrderElementsOf(GreenhouseBoardUrl.indexPatterns());
+			this.urlsByPattern = urlsByPattern;
+			this.urlsLeft = urlsBeforeFailing;
+		}
+
+		@Override
+		public void forEachUrl(String pattern, Consumer<String> onUrl) {
+			for (String url : this.urlsByPattern.get(pattern)) {
+				if (this.urlsLeft-- == 0) {
+					throw new RestClientException("Wayback is unreachable");
+				}
+				onUrl.accept(url);
+			}
 		}
 	}
 }

@@ -58,13 +58,29 @@ Cada pedido de Elias se resuelve con este ciclo. Un pasaje completo del ciclo es
    cierta clave, que una anotación esté puesta). Eso no prueba nada, se rompe al
    renombrar una clave y es puro ruido.
 
-5. **Guion de prueba manual.** Al cerrar, entrego los comandos exactos
+5. **Guion de prueba.** Al cerrar la construcción, entrego los comandos exactos
    (`./mvnw ...`, `curl ...`, etc.) y qué tiene que verse en pantalla para saber
-   que funciona. El paso se da por cerrado recién cuando Elias lo probó a mano.
+   que funciona. Esa prueba la corre **otra sesión** (ver "Una sesión por fase").
 
 6. **Reporte honesto.** Si un test falla, muestro la salida real. Si algo quedó
    afuera del paso, lo digo explícitamente. Nunca se reporta "listo" algo que no
    se verificó.
+
+## Una sesión por fase
+
+Analizar, construir y probar consumen contexto cada una, así que **cada fase va en una
+sesión nueva de Claude Code**, que carga solo lo de su tarea. Lo que las encadena es
+`docs/CONTEXTO.md`:
+
+- **Al terminar cualquier fase, la sesión actualiza `CONTEXTO.md` sola**, sin esperar
+  a que Elias lo pida: qué hizo, con los resultados reales, y **cuál es la fase
+  siguiente**.
+- **Construir** deja escrito qué se construyó, los tests que dieron y el guion de
+  prueba. La fase siguiente es probarlo.
+- **Probar** lee lo construido, lo corre y lo analiza. Si funciona, **cierra el tema**
+  en `CONTEXTO.md`. Si falla, escribe un **reporte** (qué se corrió, la salida real, la
+  causa si se encontró) y la fase siguiente es corregirlo.
+- **Corregir** lee el reporte, ejecuta la solución, y el ciclo vuelve a probar.
 
 ## Convenciones del proyecto
 
@@ -120,10 +136,11 @@ reconstruir la historia leyendo código.
 Reglas:
 
 - Claude lo lee al empezar a trabajar, junto con este documento.
-- Se **actualiza después de cada milestone alcanzado** — no en cada commit ni en
-  cada cambio chico, sino cuando se completa un paso que Elias ya probó a mano.
-- Describe el estado real, no las intenciones: si algo quedó a medias o no anda,
-  se dice ahí.
+- Se **actualiza automáticamente al terminar cada fase** —analizar, construir,
+  probar o corregir—, no en cada commit ni en cada cambio chico.
+- Describe el estado real: si algo quedó a medias o no anda, se dice ahí. Lo único
+  que mira hacia adelante es **la fase siguiente**, que tiene que quedar escrita para
+  que la próxima sesión arranque sin la conversación anterior.
 - Reemplaza el estado anterior; no es un changelog que crece sin fin. La historia
   larga la lleva git.
 
@@ -294,6 +311,16 @@ Cada entrada es una regla aprendida, con la fecha en que se acordó.
   embarrar el contexto. Es el mismo criterio que `docs/para-humanos/`: el contenido útil ya
   está resumido en `CONTEXTO.md`, y leer la salida cruda gasta contexto en información
   repetida. Se abre solo el archivo puntual que un plan o un pedido nombre.
+- **2026-09-13 — Una sesión por fase, y `CONTEXTO.md` se actualiza solo al terminar
+  cada una.** Al cerrar la construcción del descubrimiento sobre Wayback, Elias pidió
+  *"el contexto se actualiza automaticamente despues de analizar, construir, y probar.
+  cada uno de esos pasos usan contexto, entonces merecen tener una sesion nueva por
+  paso"*, y que en `CONTEXTO.md` quede **el paso siguiente y los resultados del
+  anterior**: *"así cada sesión de claude code tiene solo el contexto de su tarea"*. Esto
+  **deroga** la regla anterior, que actualizaba el contexto recién cuando Elias daba un
+  milestone por probado a mano: ahora la prueba la corre y la analiza otra sesión, y si
+  falla deja un reporte que la siguiente usa para corregir. El detalle está arriba, en
+  "Una sesión por fase".
 
 ## Documentos del repo
 

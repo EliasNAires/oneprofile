@@ -19,6 +19,7 @@ import org.springframework.test.web.client.ExpectedCount;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClient;
 
 class CommonCrawlIndexClientTest {
@@ -132,6 +133,51 @@ class CommonCrawlIndexClientTest {
 				.andRespond(withStatus(HttpStatus.NOT_FOUND));
 
 		assertThatThrownBy(this::collectUrls).isInstanceOf(HttpClientErrorException.class);
+		this.server.verify();
+	}
+
+	@Test
+	void asksAgainForAPageThatArrivedCutHalfwayThroughALine() {
+		this.server.expect(queryParam("showNumPages", "true"))
+				.andRespond(withSuccess("{\"pages\":1}", MediaType.APPLICATION_JSON));
+		this.server.expect(queryParam("page", "0"))
+				.andRespond(withSuccess("""
+						{"url":"https://boards.greenhouse.io/globant"}
+						{"url":"https://boards.greenhouse.io/mercad""", MediaType.APPLICATION_JSON));
+		this.server.expect(queryParam("page", "0"))
+				.andRespond(withSuccess("""
+						{"url":"https://boards.greenhouse.io/globant"}
+						{"url":"https://boards.greenhouse.io/mercadolibre"}
+						""", MediaType.APPLICATION_JSON));
+
+		assertThat(collectUrls()).containsExactly(
+				"https://boards.greenhouse.io/globant",
+				"https://boards.greenhouse.io/globant",
+				"https://boards.greenhouse.io/mercadolibre");
+		this.server.verify();
+	}
+
+	@Test
+	void givesUpOnAPageThatArrivesCutEveryTime() {
+		this.server.expect(queryParam("showNumPages", "true"))
+				.andRespond(withSuccess("{\"pages\":1}", MediaType.APPLICATION_JSON));
+		this.server.expect(ExpectedCount.times(4), queryParam("page", "0"))
+				.andRespond(withSuccess("{\"url\":\"https://boards.greenhouse.io/mercad", MediaType.APPLICATION_JSON));
+
+		assertThatThrownBy(this::collectUrls).isInstanceOf(ResourceAccessException.class);
+		this.server.verify();
+	}
+
+	@Test
+	void aRejectedPageSaysWhyTheIndexRejectedIt() {
+		this.server.expect(queryParam("showNumPages", "true"))
+				.andRespond(withSuccess("{\"pages\":1}", MediaType.APPLICATION_JSON));
+		this.server.expect(ExpectedCount.once(), queryParam("page", "0"))
+				.andRespond(withStatus(HttpStatus.BAD_REQUEST)
+						.body("{\"message\": \"Page 5 invalid: First Page is 0, Last Page is 4\"}"));
+
+		assertThatThrownBy(this::collectUrls).isInstanceOf(HttpClientErrorException.class)
+				.hasMessageContaining("Page 5 invalid");
 		this.server.verify();
 	}
 

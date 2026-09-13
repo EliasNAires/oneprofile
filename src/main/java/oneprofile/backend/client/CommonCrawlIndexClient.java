@@ -11,11 +11,13 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import oneprofile.backend.util.HttpRetry;
+import tools.jackson.core.JacksonException;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
 
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClient;
 
 /**
@@ -58,7 +60,7 @@ public class CommonCrawlIndexClient {
 
 	CommonCrawlIndexClient(RestClient.Builder builder, Duration firstRetryDelay) {
 		this.restClient = builder.build();
-		this.retry = new HttpRetry("CommonCrawl index", MAX_ATTEMPTS, firstRetryDelay);
+		this.retry = new HttpRetry("CommonCrawl index", MAX_ATTEMPTS, firstRetryDelay, false);
 	}
 
 	/**
@@ -110,14 +112,18 @@ public class CommonCrawlIndexClient {
 				.exchange((request, response) -> {
 					HttpStatusCode status = response.getStatusCode();
 					if (status.isError()) {
-						throw HttpRetry.errorFor(status, response.getStatusText());
+						throw HttpRetry.errorFor(status, response.getStatusText(), response.getBody().readAllBytes());
 					}
 					streamUrls(response.getBody(), onUrl);
 					return null;
 				}));
 	}
 
-	/** Line by line: a page of the index is far too big to hold in memory at once. */
+	/**
+	 * Line by line: a page of the index is far too big to hold in memory at once. An
+	 * overloaded index closes the response halfway through a line, and the status stays
+	 * 200; the cut line is turned into a network error so the page is asked for again.
+	 */
 	private void streamUrls(InputStream body, Consumer<String> onUrl) throws IOException {
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(body, StandardCharsets.UTF_8))) {
 			String line;
@@ -125,7 +131,13 @@ public class CommonCrawlIndexClient {
 				if (line.isBlank()) {
 					continue;
 				}
-				JsonNode url = this.json.readTree(line).path("url");
+				JsonNode url;
+				try {
+					url = this.json.readTree(line).path("url");
+				}
+				catch (JacksonException ex) {
+					throw new ResourceAccessException("Page of the index arrived cut: " + ex.getOriginalMessage());
+				}
 				if (!url.isMissingNode()) {
 					onUrl.accept(url.asString());
 				}

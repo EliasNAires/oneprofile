@@ -1,7 +1,8 @@
 # Contexto — estado actual del repo
 
-> Se actualiza después de cada milestone alcanzado (ver `docs/METODOLOGIA.md`).
-> Describe lo que **hay hoy**, no lo que se planea.
+> Se actualiza al terminar cada fase —analizar, construir, probar, corregir—, cada una en
+> su propia sesión (ver "Una sesión por fase" en `docs/METODOLOGIA.md`). Describe lo que
+> **hay hoy**, y deja escrita **la fase siguiente** en "Qué sigue".
 
 > **`docs/para-humanos/` no la leas.** Es documentación para personas: una versión
 > resumida y con diagramas de lo que este archivo ya cuenta en detalle. Está
@@ -28,8 +29,8 @@ por empresa) tiraba para arriba; la mediana (17) era la guía correcta.
 
 **La normalización de los títulos terminó** y su plan se cerró el 2026-09-13. Lo que vale
 la pena conservar de él —las reglas, las decisiones de modelo y lo que quedó sin resolver—
-está en este documento. Lo único pendiente es revisar los falsos positivos de la modalidad
-(ver "Puntos abiertos"). La medición anterior
+está en este documento. Los falsos positivos de la modalidad ya se midieron y quedan sin
+guardas (ver "Puntos abiertos"). La medición anterior
 de la tabla `vacancy`, sobre departamento e idioma, vive aparte en
 `docs/MEDICION-VACANTES.md`.
 
@@ -39,10 +40,21 @@ en `docs/MEDICION-SLUGS.md`: el descubrimiento **no pierde nada de lo que lee**,
 **un solo índice de CommonCrawl ve una fracción**. Dieciséis índices juntan 10.086 slugs,
 y la **Wayback Machine** trae 17.730, 8.035 de ellos en ningún índice de CommonCrawl. En
 la medición ya se corrieron cuatro índices más en prod, así que **`company` tiene 6.988
-filas, 2.942 sin sondear**. De ese plan ya está escrito, con tests en verde, el
-**descubrimiento sobre los 10 índices más recientes de CommonCrawl** (y el reordenamiento
-que lo precedió: paquete `client` y `util/HttpRetry`), pero **todavía no se probó en prod**.
-**El crawling de Wayback no está hecho**: ni cliente, ni endpoint (ver "Puntos abiertos").
+filas, 2.942 sin sondear**. De ese plan hay dos cosas escritas:
+
+- El **descubrimiento sobre los 10 índices más recientes de CommonCrawl** (y el
+  reordenamiento que lo precedió: paquete `client` y `util/HttpRetry`). **Se probó en prod
+  el 2026-09-13 y falló**: 3 índices leídos, 7 fallidos, 475 empresas nuevas, `company` en
+  **7.463**. El reporte está en `docs/PLAN-FALLAS-COMMONCRAWL.md`. **La corrección se
+  construyó el 2026-09-13** y `./mvnw test` da **126 en verde**. Una página cortada a mitad
+  de línea ahora se reintenta: `CommonCrawlIndexClient` convierte el error de Jackson en
+  `ResourceAccessException`. Un error HTTP lleva el cuerpo de la respuesta en el mensaje
+  (`HttpRetry.errorFor` recibe el cuerpo). Y `HttpRetry.call` loguea `… Giving up` con qué
+  se pidió cuando se rinde. El 400 **no** se reintenta. **La fase siguiente es probarla en
+  prod**, con el guion de la sección C de ese plan.
+- El **descubrimiento sobre Wayback**: construido el 2026-09-13, **122 tests en verde**, y
+  Elias dio la construcción por cerrada. **Falta probarlo en prod**, que es la fase
+  siguiente (ver "Qué sigue").
 
 ## Qué es esto
 
@@ -341,6 +353,7 @@ docs/MEDICION-VACANTES.md                           (los números medidos el 202
 docs/MEDICION-SLUGS.md                              (cobertura del descubrimiento, medida el 2026-09-13)
 docs/PLAN-SLUGS.md                                  (plan para traer todos los slugs; se borra al terminarlo)
 mediciones/primera-normalizacion-13-09-2026/*.txt   (salidas crudas historicas; no se leen salvo que un plan apunte a una)
+mediciones/falsos-positivos-modalidad-13-09-2026/   (las dos consultas y sus salidas crudas; misma regla)
 docs/para-humanos/README.md                         (para personas, no para agentes)
 docs/para-humanos/descubrimiento.md
 docs/para-humanos/sondeo.md
@@ -362,6 +375,7 @@ src/main/java/oneprofile/backend/repository/VacancyRepository.java
 src/main/java/oneprofile/backend/repository/NormalizedVacancyRepository.java
 src/main/java/oneprofile/backend/client/CommonCrawlIndexClient.java
 src/main/java/oneprofile/backend/client/GreenhouseBoardClient.java
+src/main/java/oneprofile/backend/client/WaybackCdxClient.java
 src/main/java/oneprofile/backend/service/GreenhouseDiscoveryService.java
 src/main/java/oneprofile/backend/service/GreenhouseBoardProbeService.java
 src/main/java/oneprofile/backend/service/GreenhouseVacancySyncService.java
@@ -390,6 +404,7 @@ src/test/java/oneprofile/backend/repository/CompanyRepositoryTest.java
 src/test/java/oneprofile/backend/repository/VacancyRepositoryTest.java
 src/test/java/oneprofile/backend/client/CommonCrawlIndexClientTest.java
 src/test/java/oneprofile/backend/client/GreenhouseBoardClientTest.java
+src/test/java/oneprofile/backend/client/WaybackCdxClientTest.java
 src/test/java/oneprofile/backend/service/GreenhouseDiscoveryServiceTest.java
 src/test/java/oneprofile/backend/service/GreenhouseBoardProbeServiceTest.java
 src/test/java/oneprofile/backend/service/GreenhouseVacancySyncServiceTest.java
@@ -456,14 +471,15 @@ Tres decisiones que no son obvias leyendo el código:
 
 ### El descubrimiento: cliente, servicio y endpoint
 
-Tres clases encadenadas que van del índice de CommonCrawl a filas en `company`.
+Las clases que van de un archivo web —CommonCrawl o Wayback— a filas en `company`.
 
 **`util/HttpRetry`** es lo que los clients hacen igual: `call(what, supplier)` reintenta
 5xx y errores de red con backoff exponencial y un `WARN` por reintento, y **no reintenta
-ningún 4xx**; `errorFor(status, text)` arma la excepción que hace falta con
-`.exchange()`; y `requestFactory(connect, read)` fija los timeouts. Cada client crea su
-instancia con **sus** números (CommonCrawl 4 intentos desde 2 s, Greenhouse 3 desde 1 s).
-Tiene `HttpRetryTest`, sin Spring.
+ningún 4xx, salvo el 429 si el client lo habilita** (el cuarto parámetro del constructor,
+`retriesTooManyRequests`; hoy solo Wayback lo prende); `errorFor(status, text)` arma la
+excepción que hace falta con `.exchange()`; y `requestFactory(connect, read)` fija los
+timeouts. Cada client crea su instancia con **sus** números (CommonCrawl 4 intentos desde
+2 s, Greenhouse 3 desde 1 s, Wayback 4 desde 30 s). Tiene `HttpRetryTest`, sin Spring.
 
 **`client/CommonCrawlIndexClient`** habla con el índice (CDX). Tiene dos métodos:
 
@@ -493,6 +509,23 @@ Detalles que importan:
   segundo existe para el test: permite bindearle `MockRestServiceServer` y poner el
   delay en cero.
 
+**`client/WaybackCdxClient`** habla con el CDX de la Wayback Machine y calca al de
+CommonCrawl. Su único método es `forEachUrl(pattern, onUrl)`. Lo que cambia respecto de
+CommonCrawl, todo medido en `docs/MEDICION-SLUGS.md`:
+
+- **El conteo se pide sin `fl`** (`...cdx?url={pattern}&matchType=prefix&showNumPages=true`),
+  porque con `fl` Wayback contesta `-` en vez del número. La respuesta es un entero pelado.
+- **Las páginas son texto plano con una URL por línea** (`&fl=original&page=N`), no JSON.
+  Se leen en streaming y se saltean las líneas vacías. Traen también capturas `http://`,
+  que `GreenhouseBoardUrl` descarta.
+- **2 s de pausa antes de cada página**: es el ritmo al que se bajó el archivo entero sin
+  ningún 429 ni 5xx.
+- **El 429 se reintenta, con 4 intentos desde 30 s** (30, 60, 120 s). Decisión de Elias:
+  un rate limit del Internet Archive dura minutos, y las esperas de CommonCrawl se agotarían
+  antes de que se levante. Una página fuera de rango da 400, que no se reintenta.
+- Timeouts de 10 s / 2 min, y el mismo par de constructores; el de paquete recibe además
+  la pausa, para que el test la ponga en cero.
+
 **`service/GreenhouseDiscoveryService.discoverOnRecentCommonCrawl()`** recorre los
 **10 índices más recientes** (`RECENT_INDEXES`) de a uno. Por cada índice vuelca los dos
 patrones de `GreenhouseBoardUrl.indexPatterns()` en **un único `Set<String>`** (eso
@@ -511,13 +544,27 @@ resta lo que devuelve `findSlugsByAts(GREENHOUSE)` y hace `saveAll` de los nuevo
   retendría una conexión durante toda ella. El `saveAll` de `SimpleJpaRepository` abre su
   propia transacción corta, que sigue mandando los INSERTs en lotes de 50.
 
-**`controller/DiscoveryController`** expone
-`POST /admin/discovery/greenhouse/commoncrawl`, **sin parámetros**. El endpoint viejo
-con `?index=` **se sacó**: el nuevo lo cubre, y descubrir es idempotente. Contesta
-**202 al toque** y el trabajo corre en un executor de un solo hilo; un `AtomicBoolean`
-da **409** si ya hay una corrida en curso. **El log es el único canal de resultado**:
-una línea por índice (`CommonCrawl index <id>: N slugs found, M new companies saved`),
-una final con índices leídos, empresas nuevas y fallidos, y la excepción si falla.
+**`GreenhouseDiscoveryService.discoverOnWayback()`** lee los dos patrones del archivo
+entero y devuelve `DiscoveryResult(slugs distintos, empresas nuevas)`. Carga **una sola
+vez** los slugs conocidos en un `Set`, y cada slug que no estaba va a una lista pendiente
+que se guarda **en lotes de 500** (`WAYBACK_BATCH`, diez lotes JDBC de 50) **mientras se
+lee**. Decisión de Elias: la lectura dura unos 40 minutos, y guardar todo al final
+perdería lo leído si una página falla cerca del final. Si la lectura falla, la excepción
+sube y **los lotes ya guardados quedan**; la corrida siguiente los saltea como conocidos.
+Tampoco es `@Transactional`. El service ahora tiene dos constructores: el público marcado
+con `@Autowired` y uno de paquete que recibe el tamaño de lote, para el test.
+
+**`controller/DiscoveryController`** expone dos endpoints **sin parámetros**:
+`POST /admin/discovery/greenhouse/commoncrawl` y `POST /admin/discovery/greenhouse/wayback`.
+El endpoint viejo con `?index=` **se sacó**: el nuevo lo cubre, y descubrir es idempotente.
+Los dos pasan por un `private start(source, run)`, como el de `NormalizationController`:
+contestan **202 al toque**, el trabajo corre en un executor de un solo hilo, y **comparten
+el `AtomicBoolean`**, así que cualquiera da **409** si hay una corrida de cualquiera de los
+dos en curso (escriben la misma tabla). **El log es el único canal de resultado**: para
+CommonCrawl, una línea por índice (`CommonCrawl index <id>: N slugs found, M new companies
+saved`) y una final con índices leídos, empresas nuevas y fallidos; para Wayback, una sola
+(`Greenhouse discovery on Wayback finished: N slugs found, M new companies saved`); y en
+los dos, la excepción si falla.
 
 ### Cómo se corre el descubrimiento
 
@@ -527,8 +574,12 @@ El puerto de la app no se publica, así que se entra al container:
 cd ~/oneprofile
 docker compose pull && docker compose up -d
 docker compose exec app curl -i -X POST 'localhost:8080/admin/discovery/greenhouse/commoncrawl'
+docker compose exec app curl -i -X POST 'localhost:8080/admin/discovery/greenhouse/wayback'
 docker compose logs -f app
 ```
+
+Los dos comparten el lock: el segundo POST da 409 hasta que el primero loguee `finished`.
+Y un `docker compose up -d` reinicia la app y **mata la corrida en curso**.
 
 **Varios índices son la forma de tener más empresas**, porque cada uno ve una parte:
 trae ~4.000 slugs, pero solo ~3.000 se repiten con el siguiente. Sobre 16 índices, de
@@ -1145,13 +1196,14 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Estado verificado
 
-- `./mvnw test` → **110 tests, 0 fallas** (corrido el 2026-09-13, con el descubrimiento
-  sobre 10 índices ya escrito): `BackendApplicationTests.contextLoads`,
+- `./mvnw test` → **122 tests, 0 fallas** (corrido el 2026-09-13, con el descubrimiento
+  sobre Wayback ya escrito): `BackendApplicationTests.contextLoads`,
   4 de `CompanyRepositoryTest`, 5 de `VacancyRepositoryTest`, 12 casos parametrizados
   de `GreenhouseBoardUrlTest`, 3 de `HtmlToTextTest`, 11 de `TitleCleanerTest`, 13 de
-  `SeniorityExtractorTest`, 9 de `WorkModeExtractorTest`, 4 de `HttpRetryTest`, 7 de
-  `CommonCrawlIndexClientTest`, 6 de `GreenhouseDiscoveryServiceTest`, 2 de
-  `DiscoveryControllerTest`, 9 de `GreenhouseBoardClientTest`, 3 de
+  `SeniorityExtractorTest`, 9 de `WorkModeExtractorTest`, 6 de `HttpRetryTest`, 7 de
+  `CommonCrawlIndexClientTest`, 6 de `WaybackCdxClientTest`, 8 de
+  `GreenhouseDiscoveryServiceTest`, 4 de `DiscoveryControllerTest`, 9 de
+  `GreenhouseBoardClientTest`, 3 de
   `GreenhouseBoardProbeServiceTest`, 5 de `GreenhouseVacancySyncServiceTest`, 3 de
   `GreenhouseVacancySweepServiceTest`, 2 de `BoardProbeControllerTest`, 4 de
   `VacancyControllerTest`, 3 de `NormalizationControllerTest` y 4 de
@@ -1182,7 +1234,12 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
      ATS, porque `Ats` tiene un solo valor y agregar uno falso sería meter algo
      que nadie pidió. Esa assertion se suma cuando entre el segundo ATS.
 - **`HttpRetryTest`** no levanta Spring: reintenta un 5xx hasta que anda y un error de
-  red, se rinde en el último intento, y un 4xx sale al primer intento.
+  red, se rinde en el último intento, un 4xx sale al primer intento, y el 429 se
+  reintenta solo si está habilitado.
+- **`WaybackCdxClientTest`** usa `MockRestServiceServer`: recorre las páginas que dice
+  el conteo, no pide ninguna si dice cero, pide el conteo **sin `fl`** y las páginas con
+  `fl=original`, saltea líneas vacías, se recupera de un 503 y de un 429, y ante un 400
+  falla sin reintentar.
 - **El reordenamiento a `client` + `HttpRetry` no cambió comportamiento**, y está
   verificado así: los tests de los dos clients se movieron **sin tocar sus aserciones**
   (el diff contra lo commiteado es solo `package` e imports) y siguieron en verde.
@@ -1199,11 +1256,15 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
   capturas que tenga, trata los dos dominios como la misma empresa, no reinserta las que
   ya estaban, ignora las URLs que no identifican a ninguna, recorre varios índices
   contando en cada uno solo lo que suma, y cuando uno falla conserva lo de los demás y lo
-  anota en `failedIndexes`.
-- **`DiscoveryControllerTest`** es `@WebMvcTest`: 202 y delegación en el servicio, y
-  409 cuando ya hay una corrida en curso, los dos sobre `/commoncrawl`. El doble del servicio se bloquea en un
-  `CountDownLatch` para que la segunda request llegue con la primera todavía viva.
-- **Ningún test le pega a CommonCrawl de verdad.**
+  anota en `failedIndexes`. Para Wayback, con un segundo doble escrito a mano: una empresa
+  ya guardada y una nueva por los dos dominios dan `(2, 1)`, y **con lote 2, una falla
+  después de tres empresas nuevas deja guardadas las dos del primer lote**.
+- **`DiscoveryControllerTest`** es `@WebMvcTest`: 202 y delegación en el servicio para
+  `/commoncrawl` y `/wayback`, 409 en `/commoncrawl` con una corrida en curso, y **409 en
+  `/wayback` mientras corre CommonCrawl**, que prueba que comparten el lock. El doble del
+  servicio se bloquea en un `CountDownLatch` para que la segunda request llegue con la
+  primera todavía viva.
+- **Ningún test le pega a CommonCrawl ni a Wayback de verdad.**
 - **El descubrimiento anduvo de punta a punta en prod con el endpoint viejo** (el
   nuevo, sobre 10 índices, falta probarlo). Un POST con
   `index=CC-MAIN-2026-34` devolvió 202 al toque y terminó con
@@ -1331,24 +1392,32 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Puntos abiertos
 
-- **El crawling de Wayback no se hizo.** La medición mostró que la Wayback Machine trae
-  **17.730 slugs**, 8.035 de ellos en ningún índice de CommonCrawl (del orden de ~1.850
-  empresas vivas extra), y el plan lo tiene diseñado —`client/WaybackCdxClient`,
-  `discoverOnWayback()`, `POST /admin/discovery/greenhouse/wayback` con el mismo lock, 2 s
-  entre páginas y el 429 reintentable solo ahí—, pero **no hay nada escrito**. Es el paso 3
-  de `docs/PLAN-SLUGS.md`. Hasta que exista, `company` solo crece con CommonCrawl.
-- **El descubrimiento sobre 10 índices no se probó en prod.** Está escrito y con tests en
-  verde, pero hace falta commitear y pushear para que el pipeline publique la imagen, y
-  después correr el POST y comparar con los números esperados (ver "Cómo se corre el
-  descubrimiento").
+- **El descubrimiento sobre Wayback no se corrió en prod.** Está construido y con tests en
+  verde; correrlo es la fase siguiente (ver "Qué sigue").
+- **El descubrimiento sobre 10 índices falló en prod** (7 de 10 índices). El reporte y la
+  corrección están en `docs/PLAN-FALLAS-COMMONCRAWL.md`.
+- **No está claro qué código tiene la imagen de prod.** `docs/PLAN-FALLAS-COMMONCRAWL.md`
+  dice que la imagen desplegada el 2026-09-13 traía el descubrimiento sobre CommonCrawl
+  *y* el de Wayback. Sin embargo, al cerrar la construcción de Wayback, `git status`
+  mostraba `WaybackCdxClient.java` y su test como archivos nuevos sin commitear, así que
+  ese código podría no estar en la imagen. Es consecuencia de que Elias tiene **varias
+  sesiones de Claude corriendo en paralelo** sobre el mismo working tree: una construye
+  mientras otra despliega y prueba, y ninguna ve lo que la otra tiene sin commitear. Antes
+  de sacar conclusiones de una prueba en prod, conviene confirmar qué commit se publicó.
 
-- **Falta ver los falsos positivos de la extracción de modalidad.** Los sinónimos salieron
-  de contar cuántas veces aparece cada uno, pero —al revés que el seniority, que tuvo su
-  medición de falsos positivos y de ahí sus guardas— **nadie miró en qué contexto
-  aparecen**. Casos a revisar: `remote` como parte del puesto (`remote sensing`,
-  `remote monitoring`), `field based` y `in person`. Está pendiente antes de dar la
-  modalidad por confiable. Ahora que la modalidad está en la base, se puede medir con una
-  consulta sobre `normalized_vacancy`.
+- **Los falsos positivos de la modalidad no tienen guarda, por decisión de Elias.** Se
+  midieron el 2026-09-13 con la palabra anterior y la siguiente de cada frase, sin top N, y
+  todos los títulos crudos. Son **37 vacantes con la modalidad equivocada sobre 19.255
+  (0,19%)**, todas por el título; en `location` no apareció ninguno. Los casos: `hybrid
+  casual` (género de videojuegos) 13, `remote sensing` 7, `hybrid cloud` 4, `remote
+  assist(ance)` 3, `home based primary care` (visitas a domicilio) 3, `onsite` como nombre
+  de equipo o área 3, `hybrid electric` / `hybrid behavior planning` 2, `remote handling` /
+  `remote care` como producto 2. Aparte, 9 títulos pierden la palabra sin que cambie la
+  modalidad (`in-person giving` 8, `secure remote access` 1). `remote monitoring` no
+  aparece. En ~5 conflictos manda una `location` que dice `Remote` mal cargada por la
+  empresa (`Plumber - On-site` queda `FULLY_REMOTE`). Si alguna vez molesta, la guarda
+  sería por la palabra siguiente (`sensing`, `handling`, `assist`, `casual`, `cloud`,
+  `electric`); `remote care` no sirve, porque `Remote Care Coordinator` sí es remoto.
 - **`remotely` no es sinónimo de remoto, y deja falsos negativos.** En la corrida de prod,
   31 vacantes con `location` del tipo `Remotely based` o `Remotely in Germany` quedaron sin
   modalidad. Son pocas y no se tocó el extractor.
@@ -1407,6 +1476,13 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
   vería ningún error y reportaría menos empresas sin avisar. Los reintentos no
   ayudan, porque el status es 200. En la corrida real no pasó —el conteo dio
   exactamente el mismo número que el cálculo offline completo— pero el agujero está.
+  El corte **a mitad de línea** ya no es silencioso y se reintenta. Este caso, en el que
+  el corte cae justo en un salto de línea, Elias decidió dejarlo abierto el 2026-09-13.
+- **En Wayback, una línea cortada guardaría una empresa falsa.** `WaybackCdxClient` lee
+  texto plano, así que si el archivo corta la respuesta a mitad de línea no hay error de
+  parseo: la URL llega recortada (`…/mercadolibre` → `…/mercadol`) y ese slug se guarda.
+  El sondeo después la marca `NOT_FOUND`, así que el daño son filas basura. Anotado el
+  2026-09-13 por decisión de Elias, sin arreglar.
 - **El dominio EU de Greenhouse no se descubre.** Existe `job-boards.eu.greenhouse.io`,
   con 848 slugs medidos, 93 de ellos ya en prod por el otro dominio, y no está entre
   los patrones. Meterlo toca también el sondeo y la carga, porque su API sería
@@ -1429,8 +1505,34 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Qué sigue
 
-**La normalización de los títulos está hecha y corrida en prod.** Lo que le queda anotado es
-revisar los falsos positivos de la modalidad (ver "Puntos abiertos").
+**Fase siguiente: probar en prod el descubrimiento sobre Wayback.** La sesión que la tome:
+
+1. Confirma que la imagen publicada en GHCR incluye `WaybackCdxClient`. El código se
+   escribió sin commitear: si no está pusheado, se le pide a Elias que lo haga.
+2. Espera a que no haya una corrida de CommonCrawl en curso: comparten el lock, y un
+   `up -d` mata la que esté corriendo.
+3. Corre, por `ssh elitedesk1` y con `sudo`:
+   ```bash
+   cd ~/oneprofile && sudo docker compose pull && sudo docker compose up -d
+   sudo docker compose exec app curl -i -X POST 'localhost:8080/admin/discovery/greenhouse/wayback'   # 202
+   sudo docker compose logs -f app
+   ```
+4. Compara con lo esperado: unos **40 minutos** (439 páginas), ningún `WARN` que termine en
+   falla, `Greenhouse discovery on Wayback finished: N slugs found`, con N cerca de
+   **17.730** (lo medido offline con las mismas reglas), y `select count(*) from company`
+   cerca de **18.000**.
+5. Si da, cierra el tema acá y en `docs/PLAN-SLUGS.md` (el paso siguiente del plan es
+   sondear y cargar lo nuevo). Si falla, deja el reporte con el log crudo archivado en
+   `mediciones/` y la causa, y la fase siguiente pasa a ser corregirlo.
+
+**La corrección del descubrimiento sobre CommonCrawl también está construida (126 tests en
+verde) y espera su prueba en prod**, con el guion de la sección C de
+`docs/PLAN-FALLAS-COMMONCRAWL.md`. Sale en la misma imagen que Wayback, pero las dos
+corridas **no se superponen**: comparten el lock, y un `up -d` mata la que esté corriendo.
+Las dos pruebas se pueden hacer en cualquier orden, una después de la otra.
+
+**La normalización de los títulos está hecha y corrida en prod**, con los falsos positivos de
+la modalidad medidos.
 
 Lo que viene ahora es **categorizar las vacantes en
 tech-adyacentes y no-tech-adyacentes**, que es para lo que se normaliza. La medición ya
@@ -1440,9 +1542,10 @@ nunca.
 
 Más allá de eso, sin priorizar y sin planificar:
 
-- Terminar de traer los slugs descubribles: probar en prod los 10 índices de CommonCrawl,
-  escribir el cliente de Wayback, y después sondear y cargar vacantes de lo nuevo. El
-  plan, con su estado, está en `docs/PLAN-SLUGS.md`.
+- Terminar de traer los slugs descubribles: probar en prod la corrección de CommonCrawl y
+  Wayback, y
+  después sondear y cargar vacantes de lo nuevo. El plan, con su estado, está en
+  `docs/PLAN-SLUGS.md`.
 - Modelar el perfil del usuario (`profile`).
 - Primer algoritmo de matching, simple, con tests sobre casos concretos.
 - Endpoint HTTP para consultar las vacantes que matchean.

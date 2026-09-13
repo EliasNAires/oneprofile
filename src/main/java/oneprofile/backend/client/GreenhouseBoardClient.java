@@ -62,7 +62,7 @@ public class GreenhouseBoardClient {
 
 	GreenhouseBoardClient(RestClient.Builder builder, Duration firstRetryDelay) {
 		this.restClient = builder.build();
-		this.retry = new HttpRetry("Greenhouse", MAX_ATTEMPTS, firstRetryDelay);
+		this.retry = new HttpRetry("Greenhouse", MAX_ATTEMPTS, firstRetryDelay, false);
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class GreenhouseBoardClient {
 						return new BoardProbe(BoardStatus.NOT_FOUND, 0, null);
 					}
 					if (status.isError()) {
-						throw HttpRetry.errorFor(status, response.getStatusText());
+						throw HttpRetry.errorFor(status, response.getStatusText(), response.getBody().readAllBytes());
 					}
 					return read(response.getBody());
 				}));
@@ -94,7 +94,7 @@ public class GreenhouseBoardClient {
 				.exchange((request, response) -> {
 					HttpStatusCode status = response.getStatusCode();
 					if (status.isError()) {
-						throw HttpRetry.errorFor(status, response.getStatusText());
+						throw HttpRetry.errorFor(status, response.getStatusText(), response.getBody().readAllBytes());
 					}
 					return readJobs(response.getBody());
 				}));

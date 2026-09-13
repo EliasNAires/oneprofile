@@ -1,6 +1,7 @@
 package oneprofile.backend.util;
 
 import java.net.http.HttpClient;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.function.Supplier;
 
@@ -8,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.JdkClientHttpRequestFactory;
@@ -29,30 +31,34 @@ public final class HttpRetry {
 
 	private final Duration firstDelay;
 
+	private final boolean retriesTooManyRequests;
+
 	/**
 	 * @param service how the service is named in the log
 	 * @param firstDelay doubles on every retry
+	 * @param retriesTooManyRequests whether a 429 counts as transient, for a service whose
+	 * rate limit lifts on its own
 	 */
-	public HttpRetry(String service, int maxAttempts, Duration firstDelay) {
+	public HttpRetry(String service, int maxAttempts, Duration firstDelay, boolean retriesTooManyRequests) {
 		this.service = service;
 		this.maxAttempts = maxAttempts;
 		this.firstDelay = firstDelay;
+		this.retriesTooManyRequests = retriesTooManyRequests;
 	}
 
 	/**
-	 * Retries a transient failure —5xx or a network error— and nothing else. A 4xx means
-	 * the request itself is wrong, and repeating it changes nothing.
+	 * Retries a transient failure —5xx, a network error, and a 429 if enabled— and nothing
+	 * else. Any other 4xx means the request itself is wrong, and repeating it changes nothing.
 	 */
 	public <T> T call(String what, Supplier<T> call) {
 		for (int attempt = 1;; attempt++) {
 			try {
 				return call.get();
 			}
-			catch (HttpClientErrorException ex) {
-				throw ex;
-			}
 			catch (RestClientException ex) {
-				if (attempt == this.maxAttempts) {
+				if (!isTransient(ex) || attempt == this.maxAttempts) {
+					logger.warn("{} failed on {} (attempt {} of {}): {}. Giving up", this.service, what, attempt,
+							this.maxAttempts, ex.getMessage());
 					throw ex;
 				}
 				Duration delay = this.firstDelay.multipliedBy(1L << (attempt - 1));
@@ -61,6 +67,13 @@ public final class HttpRetry {
 				sleep(delay);
 			}
 		}
+	}
+
+	private boolean isTransient(RestClientException ex) {
+		if (ex instanceof HttpClientErrorException clientError) {
+			return this.retriesTooManyRequests && clientError.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS;
+		}
+		return true;
 	}
 
 	private void sleep(Duration delay) {
@@ -73,11 +86,20 @@ public final class HttpRetry {
 		}
 	}
 
-	/** Needed with {@code .exchange()}, which hands over the error status instead of throwing. */
-	public static RestClientException errorFor(HttpStatusCode status, String statusText) {
+	/**
+	 * Needed with {@code .exchange()}, which hands over the error status instead of throwing.
+	 * The body goes into the message because it is where the service says why it refused.
+	 */
+	public static RestClientException errorFor(HttpStatusCode status, String statusText, byte[] body) {
+		String message = status.value() + " " + statusText;
+		if (body.length > 0) {
+			message += ": " + new String(body, StandardCharsets.UTF_8);
+		}
 		return status.is4xxClientError()
-				? HttpClientErrorException.create(status, statusText, HttpHeaders.EMPTY, new byte[0], null)
-				: HttpServerErrorException.create(status, statusText, HttpHeaders.EMPTY, new byte[0], null);
+				? HttpClientErrorException.create(message, status, statusText, HttpHeaders.EMPTY, body,
+						StandardCharsets.UTF_8)
+				: HttpServerErrorException.create(message, status, statusText, HttpHeaders.EMPTY, body,
+						StandardCharsets.UTF_8);
 	}
 
 	/** Explicit timeouts so a stalled request dies with an exception instead of hanging. */

@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import jakarta.annotation.PreDestroy;
 import oneprofile.backend.service.GreenhouseDiscoveryService;
 import oneprofile.backend.service.GreenhouseDiscoveryService.CommonCrawlResult;
+import oneprofile.backend.service.GreenhouseDiscoveryService.DiscoveryResult;
 import oneprofile.backend.service.GreenhouseDiscoveryService.IndexResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,8 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Triggers the discovery by hand. A run takes long enough that the request cannot
- * wait for it: the answer is an immediate 202 and the outcome goes to the log.
+ * Triggers the discovery by hand, on CommonCrawl or on Wayback. A run takes long enough
+ * that the request cannot wait for it: the answer is an immediate 202 and the outcome
+ * goes to the log. Both share one run flag because they write the same table.
  */
 @RestController
 public class DiscoveryController {
@@ -38,33 +40,52 @@ public class DiscoveryController {
 
 	@PostMapping("/admin/discovery/greenhouse/commoncrawl")
 	public ResponseEntity<Void> discoverOnCommonCrawl() {
+		return start("CommonCrawl", this::runCommonCrawl);
+	}
+
+	@PostMapping("/admin/discovery/greenhouse/wayback")
+	public ResponseEntity<Void> discoverOnWayback() {
+		return start("Wayback", this::runWayback);
+	}
+
+	private ResponseEntity<Void> start(String source, Runnable run) {
 		if (!this.running.compareAndSet(false, true)) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
 		}
-		this.executor.execute(this::runCommonCrawl);
+		this.executor.execute(() -> run(source, run));
 		return ResponseEntity.accepted().build();
 	}
 
-	private void runCommonCrawl() {
-		logger.info("Greenhouse discovery started on the most recent CommonCrawl indexes");
+	private void run(String source, Runnable run) {
+		logger.info("Greenhouse discovery on {} started", source);
 		try {
-			CommonCrawlResult result = this.discoveryService.discoverOnRecentCommonCrawl();
-			int newCompanies = 0;
-			for (IndexResult index : result.indexes()) {
-				logger.info("CommonCrawl index {}: {} slugs found, {} new companies saved", index.indexId(),
-						index.result().slugsFound(), index.result().newCompanies());
-				newCompanies += index.result().newCompanies();
-			}
-			logger.info("Greenhouse discovery on CommonCrawl finished: {} indexes read, {} new companies saved, "
-					+ "{} indexes failed {}", result.indexes().size(), newCompanies, result.failedIndexes().size(),
-					result.failedIndexes());
+			run.run();
 		}
 		catch (RuntimeException ex) {
-			logger.error("Greenhouse discovery on CommonCrawl failed", ex);
+			logger.error("Greenhouse discovery on {} failed", source, ex);
 		}
 		finally {
 			this.running.set(false);
 		}
+	}
+
+	private void runCommonCrawl() {
+		CommonCrawlResult result = this.discoveryService.discoverOnRecentCommonCrawl();
+		int newCompanies = 0;
+		for (IndexResult index : result.indexes()) {
+			logger.info("CommonCrawl index {}: {} slugs found, {} new companies saved", index.indexId(),
+					index.result().slugsFound(), index.result().newCompanies());
+			newCompanies += index.result().newCompanies();
+		}
+		logger.info("Greenhouse discovery on CommonCrawl finished: {} indexes read, {} new companies saved, "
+				+ "{} indexes failed {}", result.indexes().size(), newCompanies, result.failedIndexes().size(),
+				result.failedIndexes());
+	}
+
+	private void runWayback() {
+		DiscoveryResult result = this.discoveryService.discoverOnWayback();
+		logger.info("Greenhouse discovery on Wayback finished: {} slugs found, {} new companies saved",
+				result.slugsFound(), result.newCompanies());
 	}
 
 	@PreDestroy

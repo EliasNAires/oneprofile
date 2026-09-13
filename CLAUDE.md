@@ -10,7 +10,9 @@ chicos y probados, no de una sola vez.
 2. Leé **`docs/CONTEXTO.md`** — en qué estado está el repo hoy.
 3. Si Elias te corrige algo sobre **cómo trabajar**, agregá esa corrección al
    registro de `docs/METODOLOGIA.md` en la misma respuesta.
-4. Después de cada milestone que Elias dé por probado, actualizá `docs/CONTEXTO.md`.
+4. **Una sesión por fase** (analizar, construir, probar, corregir). Al terminar la
+   tuya, actualizá `docs/CONTEXTO.md` sin que te lo pidan: qué hiciste, los
+   resultados reales y cuál es la fase siguiente.
 
 ## Lo esencial de la metodología
 
@@ -21,8 +23,8 @@ chicos y probados, no de una sola vez.
 - **Ante la duda, preguntar antes.** Si algo te parece importante y no te lo
   pidieron, se pregunta; no se agrega para explicarlo después.
 - **Tests en el mismo paso.** Un paso sin tests no está terminado.
-- **Prueba manual para cerrar.** Entregá los comandos exactos y qué tiene que
-  verse; el paso cierra cuando Elias lo probó.
+- **Guion de prueba para cerrar.** Entregá los comandos exactos y qué tiene que
+  verse; la prueba la corre la sesión siguiente.
 - **Reporte honesto.** Si algo falla o quedó afuera, decilo con la salida real.
 
 ## Stack y comandos

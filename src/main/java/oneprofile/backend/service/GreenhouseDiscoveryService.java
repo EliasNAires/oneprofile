@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import oneprofile.backend.client.CommonCrawlIndexClient;
+import oneprofile.backend.client.WaybackCdxClient;
 import oneprofile.backend.model.Ats;
 import oneprofile.backend.model.Company;
 import oneprofile.backend.repository.CompanyRepository;
@@ -13,6 +14,7 @@ import oneprofile.backend.util.GreenhouseBoardUrl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -30,13 +32,33 @@ public class GreenhouseDiscoveryService {
 	 */
 	private static final int RECENT_INDEXES = 10;
 
+	/**
+	 * Reading Wayback takes about forty minutes, so new companies are saved as they come
+	 * instead of at the end; a failure then loses at most one batch. Ten JDBC batches of 50.
+	 */
+	private static final int WAYBACK_BATCH = 500;
+
 	private final CommonCrawlIndexClient indexClient;
+
+	private final WaybackCdxClient waybackClient;
 
 	private final CompanyRepository companyRepository;
 
-	public GreenhouseDiscoveryService(CommonCrawlIndexClient indexClient, CompanyRepository companyRepository) {
+	private final int waybackBatch;
+
+	/** Marked so Spring picks this one: the other is there only for the test. */
+	@Autowired
+	public GreenhouseDiscoveryService(CommonCrawlIndexClient indexClient, WaybackCdxClient waybackClient,
+			CompanyRepository companyRepository) {
+		this(indexClient, waybackClient, companyRepository, WAYBACK_BATCH);
+	}
+
+	GreenhouseDiscoveryService(CommonCrawlIndexClient indexClient, WaybackCdxClient waybackClient,
+			CompanyRepository companyRepository, int waybackBatch) {
 		this.indexClient = indexClient;
+		this.waybackClient = waybackClient;
 		this.companyRepository = companyRepository;
+		this.waybackBatch = waybackBatch;
 	}
 
 	/**
@@ -57,6 +79,32 @@ public class GreenhouseDiscoveryService {
 			}
 		}
 		return new CommonCrawlResult(indexes, failedIndexes);
+	}
+
+	/**
+	 * Reads everything Wayback holds for both board domains, saving new companies in
+	 * batches along the way. If the reading fails, the batches already saved stay, and a
+	 * later run skips them as known.
+	 */
+	public DiscoveryResult discoverOnWayback() {
+		Set<String> known = new HashSet<>(this.companyRepository.findSlugsByAts(Ats.GREENHOUSE));
+		int knownBefore = known.size();
+		Set<String> found = new HashSet<>();
+		List<Company> pending = new ArrayList<>();
+		for (String pattern : GreenhouseBoardUrl.indexPatterns()) {
+			this.waybackClient.forEachUrl(pattern, url -> GreenhouseBoardUrl.slugFrom(url).ifPresent(slug -> {
+				found.add(slug);
+				if (known.add(slug)) {
+					pending.add(new Company(Ats.GREENHOUSE, slug));
+					if (pending.size() == this.waybackBatch) {
+						this.companyRepository.saveAll(pending);
+						pending.clear();
+					}
+				}
+			}));
+		}
+		this.companyRepository.saveAll(pending);
+		return new DiscoveryResult(found.size(), known.size() - knownBefore);
 	}
 
 	private DiscoveryResult discoverOnIndex(String indexId) {

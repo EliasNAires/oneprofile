@@ -18,7 +18,16 @@
   necesita que Elias commitee y pushee para que el pipeline publique la imagen. Por
   ahora el endpoint tiene un solo lugar donde dispararse, así que no tiene
   `private start(...)`; ese método entra en el paso 3, con el segundo endpoint.
-- **Por dónde retomar:** la prueba en prod del paso 2.
+- **Paso 3: construcción cerrada por Elias** (2026-09-13), `./mvnw test` da **122 en
+  verde**. Falta la prueba en prod, que es la fase siguiente (guion en "Qué sigue" de
+  `docs/CONTEXTO.md`). **No desplegar mientras corre el paso 2**: `docker compose up -d` reinicia la app y
+  mata esa corrida.
+- **Paso 2, prueba en prod (2026-09-13): FALLÓ.** 3 índices leídos, 7 fallidos, 475
+  empresas nuevas; `company` en **7.463** (3.417 sin sondear). Causa y corrección en
+  **`docs/PLAN-FALLAS-COMMONCRAWL.md`**.
+- **Corrección de esas fallas: CONSTRUIDA** (2026-09-13), `./mvnw test` da **126 en verde**.
+- **Por dónde retomar:** repetir la prueba en prod del paso 2 con el guion de la sección C de
+  `docs/PLAN-FALLAS-COMMONCRAWL.md`, y después la del paso 3.
 
 ## El objetivo y la escala
 
@@ -73,9 +82,11 @@ controller/DiscoveryController       /commoncrawl y /wayback, mismo executor y A
   el código es el número 10.
 - Si un índice falla después de sus reintentos, **se sigue con los demás** (WARN y
   contador de fallidos), igual que el sondeo y la carga.
-- Wayback: **lectura sin transacción y guardado al final** en una transacción corta; **2 s
-  de pausa** entre páginas (la condición medida, sin 429 ni 5xx); el **429 se reintenta
-  solo en Wayback**.
+- Wayback: **lectura sin transacción y guardado en lotes de 500 empresas mientras se lee**
+  (cambiado el 2026-09-13; antes era todo al final), así una falla a los 38 minutos no
+  tira lo ya leído; **2 s de pausa** entre páginas (la condición medida, sin 429 ni 5xx);
+  el **429 se reintenta solo en Wayback**, con **4 intentos desde 30 s** (30, 60, 120 s),
+  porque un rate limit del Internet Archive dura minutos.
 - Wayback tiene endpoint propio, sin parámetros, y **comparte el lock** con CommonCrawl.
 - El dominio EU (`job-boards.eu.greenhouse.io`, 848 slugs) queda afuera por ahora.
 - Las reglas de `GreenhouseBoardUrl` no se tocan (se pierden 77 slugs solo-http y ~3 con
@@ -121,14 +132,21 @@ controller/DiscoveryController       /commoncrawl y /wayback, mismo executor y A
   - **El conteo se pide sin `fl`** (`&showNumPages=true`): con `fl` contesta `-` en vez
     del número. La respuesta es un entero pelado (`286\n`).
   - Una página fuera de rango da **400**.
-  - 2 s entre páginas, `HttpRetry` con el 429 habilitado, timeouts explícitos.
-- `GreenhouseDiscoveryService.discoverOnWayback()` (los dos patrones al mismo `Set`, y
-  `saveNew`) y `POST /admin/discovery/greenhouse/wayback`, con el mismo lock.
+  - 2 s antes de cada página, `HttpRetry` con el 429 habilitado (4 intentos desde 30 s),
+    timeouts explícitos (10 s / 2 min).
+- `HttpRetry` ganó el flag `retriesTooManyRequests`; los otros dos clients pasan `false`.
+- `GreenhouseDiscoveryService.discoverOnWayback()`: carga una vez los slugs conocidos, lee
+  los dos patrones y guarda las empresas nuevas **en lotes de 500** (`WAYBACK_BATCH`) a
+  medida que aparecen; si la lectura falla, los lotes guardados quedan. Devuelve
+  `DiscoveryResult(slugs distintos, empresas nuevas)`.
+- `POST /admin/discovery/greenhouse/wayback`, con el mismo lock; `DiscoveryController`
+  ganó `private start(source, run)`.
 - Tests: `WaybackCdxClientTest` con `MockRestServiceServer` (recorre lo que dice el
   conteo, 0 páginas, conteo sin `fl` y páginas con `fl=original`, saltea líneas vacías,
-  reintenta 503 y 429, un 400 no reintenta); servicio, Wayback trae una empresa guardada
-  y una nueva por los dos dominios → `(2, 1)`; controller, 202, y 409 si hay una corrida
-  de CommonCrawl en curso.
+  reintenta 503 y 429, un 400 no reintenta); `HttpRetryTest`, el 429 solo si está
+  habilitado; servicio, Wayback trae una empresa guardada y una nueva por los dos
+  dominios → `(2, 1)`, y con lote 2 una falla a mitad deja guardado el primer lote;
+  controller, 202 y delegación, y 409 si hay una corrida de CommonCrawl en curso.
 - Prueba manual en prod: el POST, ~40 minutos (450 páginas), log con `slugs found` ≈
   **17.730** y `company` ≈ **18.000**.
 

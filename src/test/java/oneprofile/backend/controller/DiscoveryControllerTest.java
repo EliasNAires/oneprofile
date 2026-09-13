@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 import oneprofile.backend.service.GreenhouseDiscoveryService;
 import oneprofile.backend.service.GreenhouseDiscoveryService.CommonCrawlResult;
+import oneprofile.backend.service.GreenhouseDiscoveryService.DiscoveryResult;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
@@ -40,7 +41,7 @@ class DiscoveryControllerTest {
 
 	@Test
 	void acceptsTheRequestAndDiscoversInTheBackground() throws InterruptedException {
-		blockTheRun();
+		blockTheCommonCrawlRun();
 
 		assertThat(postCommonCrawl()).hasStatus(202);
 
@@ -50,14 +51,37 @@ class DiscoveryControllerTest {
 
 	@Test
 	void rejectsASecondRunWhileOneIsInProgress() throws InterruptedException {
-		blockTheRun();
+		blockTheCommonCrawlRun();
 		assertThat(postCommonCrawl()).hasStatus(202);
 		assertThat(this.runStarted.await(5, TimeUnit.SECONDS)).isTrue();
 
 		assertThat(postCommonCrawl()).hasStatus(409);
 	}
 
-	private void blockTheRun() {
+	@Test
+	void acceptsTheWaybackRequestAndDiscoversInTheBackground() throws InterruptedException {
+		given(this.discoveryService.discoverOnWayback()).willAnswer(invocation -> {
+			this.runStarted.countDown();
+			this.runBlocked.await();
+			return new DiscoveryResult(0, 0);
+		});
+
+		assertThat(postWayback()).hasStatus(202);
+
+		assertThat(this.runStarted.await(5, TimeUnit.SECONDS)).isTrue();
+		verify(this.discoveryService).discoverOnWayback();
+	}
+
+	@Test
+	void rejectsWaybackWhileACommonCrawlRunIsInProgress() throws InterruptedException {
+		blockTheCommonCrawlRun();
+		assertThat(postCommonCrawl()).hasStatus(202);
+		assertThat(this.runStarted.await(5, TimeUnit.SECONDS)).isTrue();
+
+		assertThat(postWayback()).hasStatus(409);
+	}
+
+	private void blockTheCommonCrawlRun() {
 		given(this.discoveryService.discoverOnRecentCommonCrawl()).willAnswer(invocation -> {
 			this.runStarted.countDown();
 			this.runBlocked.await();
@@ -67,5 +91,9 @@ class DiscoveryControllerTest {
 
 	private MvcTestResult postCommonCrawl() {
 		return this.mvc.post().uri("/admin/discovery/greenhouse/commoncrawl").exchange();
+	}
+
+	private MvcTestResult postWayback() {
+		return this.mvc.post().uri("/admin/discovery/greenhouse/wayback").exchange();
 	}
 }

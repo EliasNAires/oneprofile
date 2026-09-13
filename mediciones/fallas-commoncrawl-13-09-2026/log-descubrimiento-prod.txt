@@ -1,0 +1,74 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-13T17:59:34.020Z  INFO 1 --- [backend] [           main] oneprofile.backend.BackendApplication    : Starting BackendApplication v0.0.1-SNAPSHOT using Java 25.0.4 with PID 1 (/app/app.jar started by root in /app)
+2026-09-13T17:59:34.025Z  INFO 1 --- [backend] [           main] oneprofile.backend.BackendApplication    : The following 1 profile is active: "prod"
+2026-09-13T17:59:34.802Z  INFO 1 --- [backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-13T17:59:34.864Z  INFO 1 --- [backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51 ms. Found 3 JPA repository interfaces.
+2026-09-13T17:59:35.402Z  INFO 1 --- [backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-09-13T17:59:35.416Z  INFO 1 --- [backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-13T17:59:35.416Z  INFO 1 --- [backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-09-13T17:59:35.441Z  INFO 1 --- [backend] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1346 ms
+2026-09-13T17:59:35.766Z  INFO 1 --- [backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-13T17:59:35.978Z  INFO 1 --- [backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@40c06358
+2026-09-13T17:59:35.979Z  INFO 1 --- [backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-13T17:59:36.001Z  INFO 1 --- [backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://postgres:5432/oneprofile (PostgreSQL 18.6)
+2026-09-13T17:59:36.095Z  INFO 1 --- [backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 4 migrations (execution time 00:00.041s)
+2026-09-13T17:59:36.151Z  INFO 1 --- [backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 4
+2026-09-13T17:59:36.155Z  INFO 1 --- [backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-13T17:59:36.274Z  INFO 1 --- [backend] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-13T17:59:36.333Z  INFO 1 --- [backend] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-09-13T17:59:36.787Z  INFO 1 --- [backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-13T17:59:36.868Z  INFO 1 --- [backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://postgres:5432/oneprofile]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.6
+	Default catalog/schema: oneprofile/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-13T17:59:37.720Z  INFO 1 --- [backend] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-13T17:59:37.723Z  INFO 1 --- [backend] [           main] org.hibernate.orm.jdbc.batch             : HHH100501: Automatic JDBC statement batching enabled (maximum batch size 50)
+2026-09-13T17:59:37.761Z  INFO 1 --- [backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-13T17:59:37.945Z  INFO 1 --- [backend] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-13T17:59:38.771Z  WARN 1 --- [backend] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-13T17:59:39.053Z  INFO 1 --- [backend] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-09-13T17:59:39.063Z  INFO 1 --- [backend] [           main] oneprofile.backend.BackendApplication    : Started BackendApplication in 5.536 seconds (process running for 6.053)
+2026-09-13T18:00:31.432Z  INFO 1 --- [backend] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-13T18:00:31.432Z  INFO 1 --- [backend] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-13T18:00:31.434Z  INFO 1 --- [backend] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-09-13T18:00:31.461Z  INFO 1 --- [backend] [pool-3-thread-1] o.b.controller.DiscoveryController       : Greenhouse discovery started on the most recent CommonCrawl indexes
+2026-09-13T18:00:46.976Z  WARN 1 --- [backend] [pool-3-thread-1] oneprofile.backend.util.HttpRetry        : CommonCrawl index failed on page 0 of boards.greenhouse.io/ (attempt 1 of 4): 502 Bad Gateway. Retrying in 2s
+2026-09-13T18:01:13.410Z  WARN 1 --- [backend] [pool-3-thread-1] o.b.service.GreenhouseDiscoveryService   : Greenhouse discovery on CommonCrawl index CC-MAIN-2026-34 failed: Unexpected end-of-input: was expecting closing quote for a string value
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]
+2026-09-13T18:02:36.308Z  WARN 1 --- [backend] [pool-3-thread-1] o.b.service.GreenhouseDiscoveryService   : Greenhouse discovery on CommonCrawl index CC-MAIN-2026-25 failed: Unexpected end-of-input: was expecting closing quote for a string value
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]
+2026-09-13T18:02:44.307Z  WARN 1 --- [backend] [pool-3-thread-1] o.b.service.GreenhouseDiscoveryService   : Greenhouse discovery on CommonCrawl index CC-MAIN-2026-21 failed: 400 Bad Request
+2026-09-13T18:02:54.613Z  WARN 1 --- [backend] [pool-3-thread-1] oneprofile.backend.util.HttpRetry        : CommonCrawl index failed on page 0 of boards.greenhouse.io/ (attempt 1 of 4): 502 Bad Gateway. Retrying in 2s
+2026-09-13T18:04:50.822Z  WARN 1 --- [backend] [pool-3-thread-1] o.b.service.GreenhouseDiscoveryService   : Greenhouse discovery on CommonCrawl index CC-MAIN-2026-12 failed: Unexpected end-of-input: was expecting closing quote for a string value
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]
+2026-09-13T18:05:31.885Z  WARN 1 --- [backend] [pool-3-thread-1] o.b.service.GreenhouseDiscoveryService   : Greenhouse discovery on CommonCrawl index CC-MAIN-2026-08 failed: Unexpected end-of-input: was expecting closing quote for a string value
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]
+2026-09-13T18:06:26.241Z  WARN 1 --- [backend] [pool-3-thread-1] o.b.service.GreenhouseDiscoveryService   : Greenhouse discovery on CommonCrawl index CC-MAIN-2026-04 failed: 400 Bad Request
+2026-09-13T18:06:44.415Z  WARN 1 --- [backend] [pool-3-thread-1] oneprofile.backend.util.HttpRetry        : CommonCrawl index failed on page 1 of boards.greenhouse.io/ (attempt 1 of 4): 502 Bad Gateway. Retrying in 2s
+2026-09-13T18:07:00.856Z  WARN 1 --- [backend] [pool-3-thread-1] oneprofile.backend.util.HttpRetry        : CommonCrawl index failed on page 0 of job-boards.greenhouse.io/ (attempt 1 of 4): 504 Gateway Timeout. Retrying in 2s
+2026-09-13T18:07:36.086Z  WARN 1 --- [backend] [pool-3-thread-1] oneprofile.backend.util.HttpRetry        : CommonCrawl index failed on page 3 of job-boards.greenhouse.io/ (attempt 1 of 4): 502 Bad Gateway. Retrying in 2s
+2026-09-13T18:08:10.483Z  WARN 1 --- [backend] [pool-3-thread-1] oneprofile.backend.util.HttpRetry        : CommonCrawl index failed on page 1 of boards.greenhouse.io/ (attempt 1 of 4): 502 Bad Gateway. Retrying in 2s
+2026-09-13T18:08:17.564Z  WARN 1 --- [backend] [pool-3-thread-1] oneprofile.backend.util.HttpRetry        : CommonCrawl index failed on page 1 of boards.greenhouse.io/ (attempt 2 of 4): 502 Bad Gateway. Retrying in 4s
+2026-09-13T18:08:31.721Z  WARN 1 --- [backend] [pool-3-thread-1] o.b.service.GreenhouseDiscoveryService   : Greenhouse discovery on CommonCrawl index CC-MAIN-2025-47 failed: Unexpected end-of-input in property name
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]
+2026-09-13T18:08:31.721Z  INFO 1 --- [backend] [pool-3-thread-1] o.b.controller.DiscoveryController       : CommonCrawl index CC-MAIN-2026-30: 4348 slugs found, 0 new companies saved
+2026-09-13T18:08:31.722Z  INFO 1 --- [backend] [pool-3-thread-1] o.b.controller.DiscoveryController       : CommonCrawl index CC-MAIN-2026-17: 4008 slugs found, 0 new companies saved
+2026-09-13T18:08:31.722Z  INFO 1 --- [backend] [pool-3-thread-1] o.b.controller.DiscoveryController       : CommonCrawl index CC-MAIN-2025-51: 3947 slugs found, 475 new companies saved
+2026-09-13T18:08:31.722Z  INFO 1 --- [backend] [pool-3-thread-1] o.b.controller.DiscoveryController       : Greenhouse discovery on CommonCrawl finished: 3 indexes read, 475 new companies saved, 7 indexes failed [CC-MAIN-2026-34, CC-MAIN-2026-25, CC-MAIN-2026-21, CC-MAIN-2026-12, CC-MAIN-2026-08, CC-MAIN-2026-04, CC-MAIN-2025-47]
