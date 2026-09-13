@@ -1,13 +1,13 @@
 # Plan — traer a prod los slugs de Greenhouse: 10 índices de CommonCrawl y Wayback
 
 > Plan de varios pasos, autocontenido: se retoma leyendo este archivo,
-> `docs/METODOLOGIA.md` y `docs/CONTEXTO.md`. Los números y el porqué de cada decisión
-> están en **`docs/MEDICION-SLUGS.md`**; leelo antes de empezar. Se borra al terminar
+> `docs/agents/METODOLOGIA.md` y `docs/agents/CONTEXTO.md`. Los números y el porqué de cada decisión
+> están en **`docs/agents/MEDICION-SLUGS.md`**; leelo antes de empezar. Se borra al terminar
 > el plan y lo que quede pasa a `CONTEXTO.md`.
 
 ## Estado del plan
 
-- **Hecho:** la medición (`docs/MEDICION-SLUGS.md`) y cuatro índices extra de
+- **Hecho:** la medición (`docs/agents/MEDICION-SLUGS.md`) y cuatro índices extra de
   CommonCrawl corridos en prod (`CC-MAIN-2026-30`, `-25`, `-21`, `-17`) con el endpoint
   de hoy. `company` quedó en **6.988**: 3.121 `ACTIVE`, 217 `EMPTY`, 708 `NOT_FOUND` y
   **2.942 sin sondear**.
@@ -20,14 +20,14 @@
   `private start(...)`; ese método entra en el paso 3, con el segundo endpoint.
 - **Paso 3: construcción cerrada por Elias** (2026-09-13), `./mvnw test` da **122 en
   verde**. Falta la prueba en prod, que es la fase siguiente (guion en "Qué sigue" de
-  `docs/CONTEXTO.md`). **No desplegar mientras corre el paso 2**: `docker compose up -d` reinicia la app y
+  `docs/agents/CONTEXTO.md`). **No desplegar mientras corre el paso 2**: `docker compose up -d` reinicia la app y
   mata esa corrida.
 - **Paso 2, prueba en prod (2026-09-13): FALLÓ.** 3 índices leídos, 7 fallidos, 475
   empresas nuevas; `company` en **7.463** (3.417 sin sondear). Causa y corrección en
-  **`docs/PLAN-FALLAS-COMMONCRAWL.md`**.
+  **`docs/agents/PLAN-FALLAS-COMMONCRAWL.md`**.
 - **Corrección de esas fallas: CONSTRUIDA** (2026-09-13), `./mvnw test` da **126 en verde**.
 - **Por dónde retomar:** repetir la prueba en prod del paso 2 con el guion de la sección C de
-  `docs/PLAN-FALLAS-COMMONCRAWL.md`, y después la del paso 3.
+  `docs/agents/PLAN-FALLAS-COMMONCRAWL.md`, y después la del paso 3.
 
 ## El objetivo y la escala
 
@@ -38,7 +38,7 @@ Wayback**.
 
 ## Relación con la normalización
 
-La normalización de los títulos ya terminó (ver `docs/CONTEXTO.md`). Sus archivos —`V4`,
+La normalización de los títulos ya terminó (ver `docs/agents/tema/normalizacion.md`). Sus archivos —`V4`,
 `VacancyRepository`, `NormalizedVacancy*`, `VacancyNormalizationService` y
 `NormalizationController`— **no usan los clients** (verificado con grep), así que este plan
 no los toca y no necesita migración.
@@ -162,6 +162,6 @@ controller/DiscoveryController       /commoncrawl y /wayback, mismo executor y A
 
 ## Al terminar
 
-- `docs/CONTEXTO.md`: el paquete `client`, `HttpRetry`, los endpoints nuevos, los números
+- `docs/agents/tema/descubrimiento.md` y el tablero `docs/agents/CONTEXTO.md`: el paquete `client`, `HttpRetry`, los endpoints nuevos, los números
   finales de `company` y `vacancy`, y el dominio EU como punto abierto.
-- Borrar este archivo. `docs/MEDICION-SLUGS.md` se queda.
+- Borrar este archivo. `docs/agents/MEDICION-SLUGS.md` se queda.

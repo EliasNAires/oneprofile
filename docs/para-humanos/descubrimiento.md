@@ -1,7 +1,7 @@
 # Cómo se descubren las empresas
 
 > Para personas, no para agentes. Volvé al [README](README.md); el detalle completo
-> está en [`docs/CONTEXTO.md`](../CONTEXTO.md).
+> está en [`docs/agents/CONTEXTO.md`](../agents/CONTEXTO.md).
 
 ## De dónde sale la lista
 

@@ -103,7 +103,7 @@ vacantes | empresas
 ```
 
 **128.953 vacantes sobre 3.118 empresas.** La proyección que había en
-`docs/CONTEXTO.md` era de ~250.000, o sea el doble: la mediana de la muestra
+`docs/agents/CONTEXTO.md` era de ~250.000, o sea el doble: la mediana de la muestra
 (17 vacantes por empresa) resultó mejor guía que la media (80).
 
 ### 2. `language` viene poblado al 100%

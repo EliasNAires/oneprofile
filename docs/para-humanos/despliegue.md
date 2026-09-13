@@ -1,7 +1,7 @@
 # Cómo se despliega
 
 > **Esto es para personas, no para agentes.** El detalle completo vive en
-> [`docs/CONTEXTO.md`](../CONTEXTO.md).
+> [`docs/agents/CONTEXTO.md`](../agents/CONTEXTO.md).
 
 Hasta acá prod era `docker compose up --build -d` en la máquina de Elias: la imagen se
 construía ahí y los datos vivían en un volumen local. Eso dejó de alcanzar. El

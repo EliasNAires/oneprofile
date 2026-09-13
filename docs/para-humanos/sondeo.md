@@ -1,7 +1,7 @@
 # Cómo se categoriza cada empresa
 
 > Para personas, no para agentes. Volvé al [README](README.md); el detalle completo
-> está en [`docs/CONTEXTO.md`](../CONTEXTO.md).
+> está en [`docs/agents/CONTEXTO.md`](../agents/CONTEXTO.md).
 
 ## Por qué no alcanza con descubrir
 

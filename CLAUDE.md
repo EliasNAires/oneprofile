@@ -6,13 +6,15 @@ chicos y probados, no de una sola vez.
 
 ## Antes de tocar nada
 
-1. Leé **`docs/METODOLOGIA.md`** — cómo trabajamos — y seguila.
-2. Leé **`docs/CONTEXTO.md`** — en qué estado está el repo hoy.
-3. Si Elias te corrige algo sobre **cómo trabajar**, agregá esa corrección al
-   registro de `docs/METODOLOGIA.md` en la misma respuesta.
+1. Leé **`docs/agents/METODOLOGIA.md`** — cómo trabajamos — y seguila. Su sección
+   "Qué leer al empezar" dice qué más cargar; nada más que eso.
+2. Leé **`docs/agents/CONTEXTO.md`** — estado actual y fase siguiente.
+3. Si Elias te corrige algo sobre **cómo trabajar**, en la misma respuesta: la regla va
+   a su sección de `docs/agents/METODOLOGIA.md` y una línea a
+   `docs/agents/historial-correcciones.md`.
 4. **Una sesión por fase** (analizar, construir, probar, corregir). Al terminar la
-   tuya, actualizá `docs/CONTEXTO.md` sin que te lo pidan: qué hiciste, los
-   resultados reales y cuál es la fase siguiente.
+   tuya, actualizá `docs/agents/CONTEXTO.md` sin que te lo pidan: qué hiciste, los
+   resultados reales y la fase siguiente con su línea "Leer:".
 
 ## Lo esencial de la metodología
 

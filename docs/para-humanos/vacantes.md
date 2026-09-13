@@ -1,7 +1,7 @@
 # Cómo se traen las vacantes
 
 > Para personas, no para agentes. Volvé al [README](README.md); el detalle completo
-> está en [`docs/CONTEXTO.md`](../CONTEXTO.md).
+> está en [`docs/agents/CONTEXTO.md`](../agents/CONTEXTO.md).
 
 ## Dónde estamos
 

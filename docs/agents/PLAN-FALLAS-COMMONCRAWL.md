@@ -1,7 +1,7 @@
 # Plan — por qué falló el descubrimiento sobre 10 índices de CommonCrawl, y cómo se corrige
 
-> Plan autocontenido: se retoma leyendo este archivo, `docs/METODOLOGIA.md` y
-> `docs/CONTEXTO.md`. Es un desvío dentro del paso 2 de `docs/PLAN-SLUGS.md` (los 10
+> Plan autocontenido: se retoma leyendo este archivo, `docs/agents/METODOLOGIA.md` y
+> `docs/agents/CONTEXTO.md`. Es un desvío dentro del paso 2 de `docs/agents/PLAN-SLUGS.md` (los 10
 > índices recientes): ese paso no se da por probado hasta que esto esté corregido y la
 > corrida en prod salga limpia. El log crudo de la corrida está archivado en
 > `mediciones/fallas-commoncrawl-13-09-2026/log-descubrimiento-prod.txt`. Se borra al

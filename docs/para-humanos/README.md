@@ -4,11 +4,11 @@
 >
 > Está escrito para entenderse rápido, no para ser exhaustivo. El detalle completo
 > —cada decisión, cada trampa, qué está verificado y qué no— vive en
-> [`docs/CONTEXTO.md`](../CONTEXTO.md); la forma de trabajar, en
-> [`docs/METODOLOGIA.md`](../METODOLOGIA.md).
+> [`docs/agents/CONTEXTO.md`](../agents/CONTEXTO.md); la forma de trabajar, en
+> [`docs/agents/METODOLOGIA.md`](../agents/METODOLOGIA.md).
 >
 > **Si sos un agente: no leas esta carpeta.** Todo lo que hay acá está duplicado de
-> `docs/CONTEXTO.md` en una versión resumida. Leerlo gasta contexto en información
+> `docs/agents/CONTEXTO.md` en una versión resumida. Leerlo gasta contexto en información
 > repetida y te arriesga a trabajar sobre el resumen en vez de sobre la fuente de
 > verdad.
 
