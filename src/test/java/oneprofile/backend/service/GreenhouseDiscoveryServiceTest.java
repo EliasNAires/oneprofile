@@ -7,10 +7,13 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 import oneprofile.backend.TestcontainersConfiguration;
+import oneprofile.backend.client.CommonCrawlIndexClient;
 import oneprofile.backend.model.Ats;
 import oneprofile.backend.model.Company;
 import oneprofile.backend.repository.CompanyRepository;
+import oneprofile.backend.service.GreenhouseDiscoveryService.CommonCrawlResult;
 import oneprofile.backend.service.GreenhouseDiscoveryService.DiscoveryResult;
+import oneprofile.backend.service.GreenhouseDiscoveryService.IndexResult;
 import oneprofile.backend.util.GreenhouseBoardUrl;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +22,7 @@ import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase;
 import org.springframework.boot.jpa.test.autoconfigure.TestEntityManager;
 import org.springframework.context.annotation.Import;
+import org.springframework.web.client.RestClientException;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -39,7 +43,7 @@ class GreenhouseDiscoveryServiceTest {
 
 	@Test
 	void savesOneCompanyPerSlugNoMatterHowManyCapturesItHas() {
-		DiscoveryResult result = discover(Map.of(BOARDS, List.of(
+		DiscoveryResult result = discoverOnOneIndex(Map.of(BOARDS, List.of(
 				"https://boards.greenhouse.io/mercadolibre",
 				"https://boards.greenhouse.io/mercadolibre/jobs/4001",
 				"https://boards.greenhouse.io/mercadolibre?token=abc",
@@ -51,7 +55,7 @@ class GreenhouseDiscoveryServiceTest {
 
 	@Test
 	void treatsTheTwoBoardDomainsAsTheSameCompany() {
-		DiscoveryResult result = discover(Map.of(
+		DiscoveryResult result = discoverOnOneIndex(Map.of(
 				BOARDS, List.of("https://boards.greenhouse.io/globant"),
 				JOB_BOARDS, List.of("https://job-boards.greenhouse.io/globant")));
 
@@ -65,7 +69,7 @@ class GreenhouseDiscoveryServiceTest {
 		this.entityManager.flush();
 		this.entityManager.clear();
 
-		DiscoveryResult result = discover(Map.of(BOARDS, List.of(
+		DiscoveryResult result = discoverOnOneIndex(Map.of(BOARDS, List.of(
 				"https://boards.greenhouse.io/globant",
 				"https://boards.greenhouse.io/auth0"), JOB_BOARDS, List.of()));
 
@@ -75,7 +79,7 @@ class GreenhouseDiscoveryServiceTest {
 
 	@Test
 	void ignoresIndexedUrlsThatDoNotIdentifyACompany() {
-		DiscoveryResult result = discover(Map.of(BOARDS, List.of(
+		DiscoveryResult result = discoverOnOneIndex(Map.of(BOARDS, List.of(
 				"https://boards.greenhouse.io/robots.txt",
 				"https://boards.greenhouse.io/",
 				"https://boards.greenhouse.io/globant"), JOB_BOARDS, List.of()));
@@ -84,9 +88,37 @@ class GreenhouseDiscoveryServiceTest {
 		assertThat(slugsInDatabase()).containsExactly("globant");
 	}
 
-	private DiscoveryResult discover(Map<String, List<String>> urlsByPattern) {
-		DiscoveryResult result = new GreenhouseDiscoveryService(new FakeIndexClient(urlsByPattern), this.companies)
-				.discover(INDEX_ID);
+	@Test
+	void goesThroughEveryRecentIndexCountingOnlyWhatEachOneAdds() {
+		CommonCrawlResult result = discover(List.of("CC-MAIN-2026-34", "CC-MAIN-2026-30"), Map.of(
+				"CC-MAIN-2026-34", Map.of(BOARDS, List.of("https://boards.greenhouse.io/globant"), JOB_BOARDS, List.of()),
+				"CC-MAIN-2026-30", Map.of(BOARDS, List.of("https://boards.greenhouse.io/globant"),
+						JOB_BOARDS, List.of("https://job-boards.greenhouse.io/auth0"))));
+
+		assertThat(result).isEqualTo(new CommonCrawlResult(List.of(
+				new IndexResult("CC-MAIN-2026-34", new DiscoveryResult(1, 1)),
+				new IndexResult("CC-MAIN-2026-30", new DiscoveryResult(2, 1))), List.of()));
+		assertThat(slugsInDatabase()).containsExactlyInAnyOrder("globant", "auth0");
+	}
+
+	@Test
+	void keepsWhatTheOtherIndexesFoundWhenOneFails() {
+		CommonCrawlResult result = discover(List.of("CC-MAIN-2026-34", "CC-MAIN-2026-30", "CC-MAIN-2026-25"), Map.of(
+				"CC-MAIN-2026-34", Map.of(BOARDS, List.of("https://boards.greenhouse.io/globant"), JOB_BOARDS, List.of()),
+				"CC-MAIN-2026-25", Map.of(BOARDS, List.of("https://boards.greenhouse.io/auth0"), JOB_BOARDS, List.of())));
+
+		assertThat(result.failedIndexes()).containsExactly("CC-MAIN-2026-30");
+		assertThat(result.indexes()).extracting(IndexResult::indexId).containsExactly("CC-MAIN-2026-34", "CC-MAIN-2026-25");
+		assertThat(slugsInDatabase()).containsExactlyInAnyOrder("globant", "auth0");
+	}
+
+	private DiscoveryResult discoverOnOneIndex(Map<String, List<String>> urlsByPattern) {
+		return discover(List.of(INDEX_ID), Map.of(INDEX_ID, urlsByPattern)).indexes().getFirst().result();
+	}
+
+	private CommonCrawlResult discover(List<String> indexIds, Map<String, Map<String, List<String>>> urlsByIndex) {
+		CommonCrawlResult result = new GreenhouseDiscoveryService(new FakeIndexClient(indexIds, urlsByIndex),
+				this.companies).discoverOnRecentCommonCrawl();
 		this.entityManager.flush();
 		this.entityManager.clear();
 		return result;
@@ -96,20 +128,35 @@ class GreenhouseDiscoveryServiceTest {
 		return this.companies.findSlugsByAts(Ats.GREENHOUSE);
 	}
 
-	/** Hands back canned URLs per pattern; never touches the network. */
+	/**
+	 * Hands back canned indexes and URLs; never touches the network. An index in the
+	 * list but absent from the map stands for one that cannot be read.
+	 */
 	private static final class FakeIndexClient extends CommonCrawlIndexClient {
 
-		private final Map<String, List<String>> urlsByPattern;
+		private final List<String> indexIds;
 
-		private FakeIndexClient(Map<String, List<String>> urlsByPattern) {
-			assertThat(urlsByPattern.keySet()).containsExactlyInAnyOrderElementsOf(GreenhouseBoardUrl.indexPatterns());
-			this.urlsByPattern = urlsByPattern;
+		private final Map<String, Map<String, List<String>>> urlsByIndex;
+
+		private FakeIndexClient(List<String> indexIds, Map<String, Map<String, List<String>>> urlsByIndex) {
+			urlsByIndex.values().forEach(urlsByPattern -> assertThat(urlsByPattern.keySet())
+					.containsExactlyInAnyOrderElementsOf(GreenhouseBoardUrl.indexPatterns()));
+			this.indexIds = indexIds;
+			this.urlsByIndex = urlsByIndex;
+		}
+
+		@Override
+		public List<String> latestIndexIds(int count) {
+			return this.indexIds;
 		}
 
 		@Override
 		public void forEachUrl(String indexId, String pattern, Consumer<String> onUrl) {
-			assertThat(indexId).isEqualTo(INDEX_ID);
-			this.urlsByPattern.get(pattern).forEach(onUrl);
+			Map<String, List<String>> urlsByPattern = this.urlsByIndex.get(indexId);
+			if (urlsByPattern == null) {
+				throw new RestClientException("Index " + indexId + " is unreachable");
+			}
+			urlsByPattern.get(pattern).forEach(onUrl);
 		}
 	}
 }

@@ -1,4 +1,4 @@
-# Plan — traer a prod todos los slugs de Greenhouse que se pueden descubrir
+# Plan — traer a prod los slugs de Greenhouse: 10 índices de CommonCrawl y Wayback
 
 > Plan de varios pasos, autocontenido: se retoma leyendo este archivo,
 > `docs/METODOLOGIA.md` y `docs/CONTEXTO.md`. Los números y el porqué de cada decisión
@@ -9,140 +9,141 @@
 
 - **Hecho:** la medición (`docs/MEDICION-SLUGS.md`) y cuatro índices extra de
   CommonCrawl corridos en prod (`CC-MAIN-2026-30`, `-25`, `-21`, `-17`) con el endpoint
-  que ya existe. `company` quedó en **6.988**: 3.121 `ACTIVE`, 217 `EMPTY`,
-  708 `NOT_FOUND` y **2.942 sin sondear**.
-- **No hay código escrito.** En la sesión de la medición se empezó un cliente de
-  Wayback en una branch y **se descartó a propósito**, para construirlo en una sesión
-  limpia. No hay nada que rescatar.
-- **Por dónde retomar:** el paso 1.
+  de hoy. `company` quedó en **6.988**: 3.121 `ACTIVE`, 217 `EMPTY`, 708 `NOT_FOUND` y
+  **2.942 sin sondear**.
+- **Hecho (2026-09-13):** el diseño, acordado con Elias (abajo).
+- **Paso 1: HECHO y probado por Elias** (`mvn test`, 107 en verde). El reintento del 429
+  **no** entró en `HttpRetry`: nadie lo usaba todavía, entra en el paso 3 con Wayback.
+- **Paso 2: ESCRITO**, `./mvnw test` da **110 en verde**. Falta la prueba en prod, que
+  necesita que Elias commitee y pushee para que el pipeline publique la imagen. Por
+  ahora el endpoint tiene un solo lugar donde dispararse, así que no tiene
+  `private start(...)`; ese método entra en el paso 3, con el segundo endpoint.
+- **Por dónde retomar:** la prueba en prod del paso 2.
 
 ## El objetivo y la escala
 
-Pasar de 6.988 empresas a las **~18.000** que suman CommonCrawl y Wayback. No todas
-están vivas: se espera del orden de **~1.850 `ACTIVE` extra solo por Wayback**, más las
-que den los índices de CommonCrawl que faltan, cuya tasa de vida no se midió.
+Pasar de 6.988 empresas a **~18.000**. No se busca ser exhaustivo: con los **10 índices
+más recientes** de CommonCrawl y Wayback alcanza, porque Wayback casi contiene a
+CommonCrawl y tiene el doble. Se espera del orden de **~1.850 `ACTIVE` extra solo por
+Wayback**.
+
+## Relación con la normalización
+
+La normalización de los títulos ya terminó (ver `docs/CONTEXTO.md`). Sus archivos —`V4`,
+`VacancyRepository`, `NormalizedVacancy*`, `VacancyNormalizationService` y
+`NormalizationController`— **no usan los clients** (verificado con grep), así que este plan
+no los toca y no necesita migración.
+
+## El criterio de diseño
+
+**Se separa por motivo de cambio** (está en las convenciones de `METODOLOGIA.md`):
+
+- **Un client por proveedor.** CommonCrawl y Wayback cambian por razones distintas: rate
+  limit, 429, forma de contar páginas.
+- **Un service y un controller por caso de uso.** "Descubrir empresas" es uno solo: los
+  dos orígenes son métodos de `GreenhouseDiscoveryService` y endpoints de
+  `DiscoveryController`.
+- **Un util solo si lo usa más de un lugar.** Los reintentos los usan los tres clients.
+- **Nada de comportamiento nuevo**: ni sondeo incremental, ni detección de páginas
+  truncadas. Suman ruido cuando todo corra con crons.
+
+```
+util/HttpRetry                       reintentos con backoff (intentos, primer delay, nombre para el log,
+                                     si reintenta 429), errorFor(status, text), requestFactory(connect, read)
+client/CommonCrawlIndexClient        (movido) forEachUrl(indexId, pattern, onUrl) + latestIndexIds(count)
+client/WaybackCdxClient              (nuevo)  forEachUrl(pattern, onUrl)
+client/GreenhouseBoardClient         (movido) sin cambios de comportamiento
+service/GreenhouseDiscoveryService   discoverOnRecentCommonCrawl() + discoverOnWayback()
+                                     + private saveNew(slugs); sin @Transactional
+controller/DiscoveryController       /commoncrawl y /wayback, mismo executor y AtomicBoolean,
+                                     private start(...) como el de NormalizationController
+```
 
 ## Decisiones ya tomadas por Elias
 
-- **Wayback tiene endpoint propio**, `POST /admin/discovery/greenhouse/wayback` y sin
-  parámetros. El de CommonCrawl queda igual, con `?index=` obligatorio.
-- **El dominio EU (`job-boards.eu.greenhouse.io`, 848 slugs) queda afuera** por ahora.
-- **Las reglas de `GreenhouseBoardUrl` no se tocan:** siguen aceptando solo https y
-  sin `&` ni `)` en el slug. Se pierden 77 y ~3 slugs respectivamente; el volumen no lo
-  justifica.
-- **Los índices de CommonCrawl los corre el agente en prod, a su criterio.**
+- Paquete nuevo **`client`** (no `component`: en Spring todo es un `@Component`).
+- `withRetries` / `errorFor` / `requestFactory`, hoy copiados en los dos clients, salen a
+  `util/HttpRetry`.
+- CommonCrawl: un endpoint que recorre los **10 índices más recientes**, no los 127. Se
+  **saca** `POST /admin/discovery/greenhouse?index=`.
+- **Cómo no se hardcodean los índices:** en cada corrida la app pide
+  `https://index.commoncrawl.org/collinfo.json` y toma los primeros 10 `id`. Verificado el
+  2026-09-13: el JSON es un array de objetos `{id, name, timegate, cdx-api, from, to}`
+  **ordenado del más nuevo al más viejo** (arranca en `CC-MAIN-2026-34`). Lo único fijo en
+  el código es el número 10.
+- Si un índice falla después de sus reintentos, **se sigue con los demás** (WARN y
+  contador de fallidos), igual que el sondeo y la carga.
+- Wayback: **lectura sin transacción y guardado al final** en una transacción corta; **2 s
+  de pausa** entre páginas (la condición medida, sin 429 ni 5xx); el **429 se reintenta
+  solo en Wayback**.
+- Wayback tiene endpoint propio, sin parámetros, y **comparte el lock** con CommonCrawl.
+- El dominio EU (`job-boards.eu.greenhouse.io`, 848 slugs) queda afuera por ahora.
+- Las reglas de `GreenhouseBoardUrl` no se tocan (se pierden 77 slugs solo-http y ~3 con
+  `&` o `)`).
+- Las corridas en prod las hace el agente.
 
-## Paso 1 — Terminar CommonCrawl con los índices que faltan (sin código)
+## Paso 1 — Paquete `client` y `util/HttpRetry` (refactor puro)
 
-Con el endpoint que ya existe, uno por vez (da 409 si hay una corrida en curso):
+- Mover `CommonCrawlIndexClient` y `GreenhouseBoardClient` (y sus tests) de `service` a
+  `client`; ajustar los imports de `GreenhouseDiscoveryService`,
+  `GreenhouseBoardProbeService`, `GreenhouseVacancySyncService` y sus tests.
+- Extraer `util/HttpRetry`: los dos clients lo usan y pierden sus copias. Cada uno
+  conserva sus números (CommonCrawl 4 intentos desde 2 s; Greenhouse 3 desde 1 s) y su
+  delay inyectable por el constructor de paquete para los tests.
+- Tests: `HttpRetryTest` unitario (reintenta 5xx y error de red, no reintenta 4xx, el 429
+  solo si está habilitado, se rinde en el último intento). Los tests de los dos clients
+  **no cambian sus aserciones**: que sigan verdes es la prueba del refactor.
+- Prueba manual: `./mvnw test`.
 
-```bash
-docker compose exec app curl -i -X POST 'localhost:8080/admin/discovery/greenhouse?index=<id>'
-```
+## Paso 2 — Los 10 índices recientes de CommonCrawl
 
-- Los ids salen de `https://index.commoncrawl.org/collinfo.json`; no hay que
-  inventarlos. Faltan los 12 de la muestra medida (`CC-MAIN-2026-12` a
-  `CC-MAIN-2023-50`, ver la tabla de H1) y el resto de los 127.
-- Cada corrida tarda **15-50 s**. Se encadenan con un script en el servidor que hace
-  el POST y espera en el log la línea `Greenhouse discovery finished` o
-  `... failed` antes de seguir. Ese script **tiene que usar paths absolutos**
-  (`/home/eliasaires/oneprofile`): corre con `sudo` y con `~` termina en `/root`, donde
-  no hay `compose.yaml`. Ya pasó una vez.
-- **Criterio de corte:** anotar por índice las empresas nuevas y seguir hacia atrás
-  hasta que varios índices seguidos aporten casi nada. **Pregunta para Elias:** ¿qué
-  cuenta como "casi nada"? Propuesta: parar después de 5 índices seguidos con menos
-  de 20 nuevas cada uno.
-- Verificación: `select count(*) from company` sube lo que dicen los logs.
+- `CommonCrawlIndexClient.latestIndexIds(int count)`.
+- `GreenhouseDiscoveryService.discoverOnRecentCommonCrawl()`, con `RECENT_INDEXES = 10`:
+  por índice junta los slugs de los dos patrones en un `Set` y llama a
+  `private saveNew(Set<String>)`, que resta `findSlugsByAts` y hace `saveAll`. Devuelve el
+  resultado por índice y los fallidos. **Sin `@Transactional`**: el `saveAll` de
+  `SimpleJpaRepository` abre su propia transacción y conserva los lotes de 50. Se saca
+  `discover(indexId)`.
+- `DiscoveryController`: `POST /admin/discovery/greenhouse/commoncrawl` sin parámetros;
+  log por índice y total. Se saca el endpoint con `?index=`.
+- Tests: client, `latestIndexIds(2)` sobre un `collinfo.json` de mentira; servicio, se
+  conservan los 4 casos actuales y se suman "recorre los índices recientes" y "un índice
+  que falla no impide guardar los demás"; controller, 202 + delegación y 409.
+- Prueba manual en prod: `docker compose pull && docker compose up -d`, el POST, y en el
+  log los 10 índices. Los 5 ya corridos dan 0 nuevas; los otros 5, cerca de la unión de
+  H1 (378, 345, 364, 253 y 286). `select count(*) from company` ≈ **8.614**.
 
-## Paso 2 — Cliente de Wayback y endpoint
+## Paso 3 — Wayback
 
-Calcado del descubrimiento por CommonCrawl, que ya está probado.
+- `client/WaybackCdxClient.forEachUrl(pattern, onUrl)`:
+  - Páginas: `https://web.archive.org/cdx/search/cdx?url={pattern}&matchType=prefix&fl=original&page=N`,
+    texto plano, **una URL por línea**, leídas en streaming con `.exchange()`.
+  - **El conteo se pide sin `fl`** (`&showNumPages=true`): con `fl` contesta `-` en vez
+    del número. La respuesta es un entero pelado (`286\n`).
+  - Una página fuera de rango da **400**.
+  - 2 s entre páginas, `HttpRetry` con el 429 habilitado, timeouts explícitos.
+- `GreenhouseDiscoveryService.discoverOnWayback()` (los dos patrones al mismo `Set`, y
+  `saveNew`) y `POST /admin/discovery/greenhouse/wayback`, con el mismo lock.
+- Tests: `WaybackCdxClientTest` con `MockRestServiceServer` (recorre lo que dice el
+  conteo, 0 páginas, conteo sin `fl` y páginas con `fl=original`, saltea líneas vacías,
+  reintenta 503 y 429, un 400 no reintenta); servicio, Wayback trae una empresa guardada
+  y una nueva por los dos dominios → `(2, 1)`; controller, 202, y 409 si hay una corrida
+  de CommonCrawl en curso.
+- Prueba manual en prod: el POST, ~40 minutos (450 páginas), log con `slugs found` ≈
+  **17.730** y `company` ≈ **18.000**.
 
-**`service/WaybackCdxClient`** (nuevo), con el mismo molde que `CommonCrawlIndexClient`:
+## Paso 4 — Sondear y cargar lo nuevo (sin código)
 
-- Un solo método, `forEachUrl(String pattern, Consumer<String> onUrl)`: pide
-  `showNumPages=true` y recorre `page=0..N-1`, leyendo **línea por línea** con
-  `.exchange()`.
-- **URL de las páginas:**
-  `https://web.archive.org/cdx/search/cdx?url={pattern}&matchType=prefix&fl=original&page=N`.
-  Devuelve una URL por línea, **sin JSON**.
-- **El conteo de páginas se pide sin `fl`**: con `fl` Wayback contesta `-` en vez del
-  número. La respuesta es un entero en texto plano.
-- **Reintentos:** 5xx y errores de red se reintentan con backoff (4 intentos: 2 s,
-  4 s, 8 s). Un 4xx no se reintenta.
-- **Timeouts** explícitos.
-- **Constructores:** uno público sin argumentos y otro de paquete
-  `(RestClient.Builder, Duration)` para el test.
-
-**`GreenhouseDiscoveryService`**:
-- Recibe también el cliente de Wayback.
-- Gana `discoverOnWayback()`, que vuelca los dos patrones de
-  `GreenhouseBoardUrl.indexPatterns()` al mismo `Set`.
-- La resta de lo ya guardado y el `saveAll` se comparten con `discover(indexId)` en
-  un método privado.
-- Devuelve el mismo `DiscoveryResult`.
-
-**`DiscoveryController`**:
-- Suma `POST /admin/discovery/greenhouse/wayback`.
-- **Comparte el `AtomicBoolean` y el executor** con el de CommonCrawl, porque dos
-  corridas a la vez se pelearían por las mismas empresas.
-- La línea de log `Greenhouse discovery finished: N slugs found, M new companies saved`
-  queda **idéntica**, y el script del paso 1 depende de ella.
-
-**Tests:**
-- `WaybackCdxClientTest` con `MockRestServiceServer`: recorre las páginas que dice el
-  conteo, no pide ninguna si dice 0, saltea líneas vacías, se recupera de 504/503, se
-  rinde al cuarto intento y un 400 falla sin reintentar. Además verifica que las
-  páginas llevan `fl=original`.
-- `GreenhouseDiscoveryServiceTest`:
-  - Suma un doble a mano de `WaybackCdxClient`, igual al que ya tiene para
-    CommonCrawl.
-  - Caso nuevo: Wayback trae una empresa guardada y una nueva, con la nueva por los
-    dos dominios; da `DiscoveryResult(2, 1)`.
-  - Los tests existentes pasan a construir el servicio con los dos dobles.
-- `DiscoveryControllerTest`: 202 y delegación para el endpoint de Wayback, y **409 si
-  hay una corrida de CommonCrawl en curso**, que prueba que el lock es compartido.
-
-**Preguntas para Elias antes de escribirlo:**
-- **La transacción.** `discover` es `@Transactional` entero, y una corrida de Wayback
-  son 450 páginas, **~40 minutos con pausa**. Así retiene una conexión todo ese tiempo
-  aunque solo escriba al final. ¿Se acepta igual o se separa la lectura (sin
-  transacción) del guardado?
-- **La pausa entre páginas.** La medición usó 2 s y no vio ningún 429. ¿Se pone la
-  pausa en el cliente, o se prueba sin ella y se agrega si aparece un 429?
-- **El 429.** ¿Se reintenta como un 5xx? Hoy un 4xx no se reintenta.
-
-**Prueba manual:** `pull` + `up -d` en el servidor, el POST de Wayback, y en el log
-`N slugs found` cerca de **17.730**, con `M new companies saved` cerca de la cantidad de
-slugs de Wayback que todavía no estén en `company` después del paso 1 (con la muestra
-de CommonCrawl completa serían ~8.035).
-
-## Paso 3 — Sondear lo nuevo
-
-`POST /admin/probe/greenhouse` (ya existe) **sondea todas las empresas cada vez**. Con
-~18.000 a ~5 por segundo más la latencia de la API son **~2 horas y media** (4.046
-tardaron 30 min), y la mayoría ya tendría estado.
-
-**Pregunta para Elias:** ¿se corre entero así, o antes se agrega sondear solo las que
-nunca se sondearon (`board_status is null`)? `CONTEXTO.md` ya lo anota como punto
-abierto: los datos para filtrar están, la consulta no.
-
-Verificación: `select coalesce(board_status,'(sin sondear)'), count(*) from company group by 1`
-sin filas sin sondear. En la muestra de Wayback, 23% dio `ACTIVE`.
-
-## Paso 4 — Cargar las vacantes de las nuevas `ACTIVE`
-
-`POST /admin/vacancies/greenhouse` (ya existe) recorre todas las `ACTIVE`, **las viejas
-también**. Hoy son 3.121 y la corrida tardó horas, con 500 ms entre empresas. Con unas
-2.000-3.000 `ACTIVE` más, crece en proporción.
-
-**Pregunta para Elias:** ¿recorrido entero o solo las empresas sin vacantes cargadas?
-Ojo con el plan de normalización que corre en paralelo: si su proceso ya recorre
-`vacancy`, conviene que la carga termine antes, o volver a correrlo después.
+- `POST /admin/probe/greenhouse`: sondea todo, ~18.000 empresas, **~2 h 30**.
+- Después `POST /admin/vacancies/greenhouse`: recorre todas las `ACTIVE`.
+- Coordinar con la normalización: su `POST /admin/normalization/vacancies/missing`
+  normaliza lo nuevo después de la carga.
+- Verificación:
+  `select coalesce(board_status,'(sin sondear)'), count(*) from company group by 1` sin
+  filas sin sondear (en la muestra de Wayback, 23% dio `ACTIVE`).
 
 ## Al terminar
 
-- `docs/CONTEXTO.md`: el cliente de Wayback, el endpoint, los números finales de
-  `company` y de `vacancy`, y el dominio EU como punto abierto.
-- Borrar este archivo. `docs/MEDICION-SLUGS.md` se queda, igual que
-  `MEDICION-VACANTES.md`.
+- `docs/CONTEXTO.md`: el paquete `client`, `HttpRetry`, los endpoints nuevos, los números
+  finales de `company` y `vacancy`, y el dominio EU como punto abierto.
+- Borrar este archivo. `docs/MEDICION-SLUGS.md` se queda.

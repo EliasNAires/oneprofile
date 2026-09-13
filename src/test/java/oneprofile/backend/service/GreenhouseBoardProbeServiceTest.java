@@ -6,11 +6,12 @@ import java.time.Duration;
 import java.util.Map;
 
 import oneprofile.backend.TestcontainersConfiguration;
+import oneprofile.backend.client.GreenhouseBoardClient;
+import oneprofile.backend.client.GreenhouseBoardClient.BoardProbe;
 import oneprofile.backend.model.Ats;
 import oneprofile.backend.model.BoardStatus;
 import oneprofile.backend.model.Company;
 import oneprofile.backend.repository.CompanyRepository;
-import oneprofile.backend.service.GreenhouseBoardClient.BoardProbe;
 import oneprofile.backend.service.GreenhouseBoardProbeService.ProbeResult;
 import org.junit.jupiter.api.Test;
 

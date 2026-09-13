@@ -6,11 +6,12 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
+import oneprofile.backend.client.GreenhouseBoardClient;
+import oneprofile.backend.client.GreenhouseBoardClient.BoardProbe;
 import oneprofile.backend.model.Ats;
 import oneprofile.backend.model.BoardStatus;
 import oneprofile.backend.model.Company;
 import oneprofile.backend.repository.CompanyRepository;
-import oneprofile.backend.service.GreenhouseBoardClient.BoardProbe;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

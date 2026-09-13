@@ -1,8 +1,9 @@
-package oneprofile.backend.service;
+package oneprofile.backend.client;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.queryParam;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
@@ -39,6 +40,19 @@ class CommonCrawlIndexClientTest {
 		this.server = MockRestServiceServer.bindTo(builder).build();
 		// No wait between retries: the point under test is the retry, not the backoff.
 		this.client = new CommonCrawlIndexClient(builder, Duration.ZERO);
+	}
+
+	@Test
+	void takesTheMostRecentIndexesFromTheListCommonCrawlPublishes() {
+		this.server.expect(requestTo("https://index.commoncrawl.org/collinfo.json"))
+				.andRespond(withSuccess("""
+						[ {"id":"CC-MAIN-2026-34","name":"August 2026 Index"},
+						  {"id":"CC-MAIN-2026-30","name":"July 2026 Index"},
+						  {"id":"CC-MAIN-2026-25","name":"June 2026 Index"} ]
+						""", MediaType.APPLICATION_JSON));
+
+		assertThat(this.client.latestIndexIds(2)).containsExactly("CC-MAIN-2026-34", "CC-MAIN-2026-30");
+		this.server.verify();
 	}
 
 	@Test

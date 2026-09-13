@@ -5,12 +5,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import oneprofile.backend.client.GreenhouseBoardClient;
+import oneprofile.backend.client.GreenhouseBoardClient.BoardJob;
 import oneprofile.backend.model.Ats;
 import oneprofile.backend.model.Company;
 import oneprofile.backend.model.Vacancy;
 import oneprofile.backend.repository.CompanyRepository;
 import oneprofile.backend.repository.VacancyRepository;
-import oneprofile.backend.service.GreenhouseBoardClient.BoardJob;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

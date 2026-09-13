@@ -6,14 +6,14 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import jakarta.annotation.PreDestroy;
 import oneprofile.backend.service.GreenhouseDiscoveryService;
-import oneprofile.backend.service.GreenhouseDiscoveryService.DiscoveryResult;
+import oneprofile.backend.service.GreenhouseDiscoveryService.CommonCrawlResult;
+import oneprofile.backend.service.GreenhouseDiscoveryService.IndexResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -36,24 +36,31 @@ public class DiscoveryController {
 		this.discoveryService = discoveryService;
 	}
 
-	@PostMapping("/admin/discovery/greenhouse")
-	public ResponseEntity<Void> discoverGreenhouse(@RequestParam("index") String index) {
+	@PostMapping("/admin/discovery/greenhouse/commoncrawl")
+	public ResponseEntity<Void> discoverOnCommonCrawl() {
 		if (!this.running.compareAndSet(false, true)) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
 		}
-		this.executor.execute(() -> run(index));
+		this.executor.execute(this::runCommonCrawl);
 		return ResponseEntity.accepted().build();
 	}
 
-	private void run(String index) {
-		logger.info("Greenhouse discovery started on CommonCrawl index {}", index);
+	private void runCommonCrawl() {
+		logger.info("Greenhouse discovery started on the most recent CommonCrawl indexes");
 		try {
-			DiscoveryResult result = this.discoveryService.discover(index);
-			logger.info("Greenhouse discovery finished: {} slugs found, {} new companies saved",
-					result.slugsFound(), result.newCompanies());
+			CommonCrawlResult result = this.discoveryService.discoverOnRecentCommonCrawl();
+			int newCompanies = 0;
+			for (IndexResult index : result.indexes()) {
+				logger.info("CommonCrawl index {}: {} slugs found, {} new companies saved", index.indexId(),
+						index.result().slugsFound(), index.result().newCompanies());
+				newCompanies += index.result().newCompanies();
+			}
+			logger.info("Greenhouse discovery on CommonCrawl finished: {} indexes read, {} new companies saved, "
+					+ "{} indexes failed {}", result.indexes().size(), newCompanies, result.failedIndexes().size(),
+					result.failedIndexes());
 		}
 		catch (RuntimeException ex) {
-			logger.error("Greenhouse discovery on index {} failed", index, ex);
+			logger.error("Greenhouse discovery on CommonCrawl failed", ex);
 		}
 		finally {
 			this.running.set(false);

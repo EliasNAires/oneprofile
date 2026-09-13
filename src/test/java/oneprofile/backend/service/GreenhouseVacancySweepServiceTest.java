@@ -8,13 +8,14 @@ import java.util.List;
 import java.util.Map;
 
 import oneprofile.backend.TestcontainersConfiguration;
+import oneprofile.backend.client.GreenhouseBoardClient;
+import oneprofile.backend.client.GreenhouseBoardClient.BoardJob;
 import oneprofile.backend.model.Ats;
 import oneprofile.backend.model.BoardStatus;
 import oneprofile.backend.model.Company;
 import oneprofile.backend.model.Vacancy;
 import oneprofile.backend.repository.CompanyRepository;
 import oneprofile.backend.repository.VacancyRepository;
-import oneprofile.backend.service.GreenhouseBoardClient.BoardJob;
 import oneprofile.backend.service.GreenhouseVacancySweepService.SweepResult;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package oneprofile.backend.service;
+package oneprofile.backend.client;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -10,8 +10,8 @@ import java.time.Duration;
 import java.time.Instant;
 
 import oneprofile.backend.model.BoardStatus;
-import oneprofile.backend.service.GreenhouseBoardClient.BoardJob;
-import oneprofile.backend.service.GreenhouseBoardClient.BoardProbe;
+import oneprofile.backend.client.GreenhouseBoardClient.BoardJob;
+import oneprofile.backend.client.GreenhouseBoardClient.BoardProbe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -30,7 +30,11 @@ Cada pedido de Elias se resuelve con este ciclo. Un pasaje completo del ciclo es
    todo lo que se midió o averiguó —respuestas reales de una API, números de una
    corrida—, porque si no hay que volver a averiguarlo. Las decisiones que faltan
    quedan anotadas **como preguntas para Elias**, no resueltas por cuenta propia. El
-   documento se borra cuando el plan termina y su contenido pasa a `CONTEXTO.md`.
+   documento se borra cuando el plan termina y su contenido pasa a `CONTEXTO.md`. **Las
+   salidas crudas de sus mediciones no se borran**: se archivan en
+   `mediciones/<tema>-dd-mm-yyyy/`, como información histórica. **Esa carpeta no se lee
+   salvo que un plan o un pedido apunte a una medición concreta**: son miles de líneas de
+   salida cruda, y lo que importa de ellas ya pasó a `CONTEXTO.md`.
 
 3. **Implementar solo el paso, nada más que el paso.** Esto es estricto: no se
    agrega *nada* que Elias no haya pedido. Ni features "por las dudas", ni
@@ -67,10 +71,15 @@ Cada pedido de Elias se resuelve con este ciclo. Un pasaje completo del ciclo es
 - **Idioma:** la conversación y los documentos, en español. El código —nombres de
   clases, métodos, variables, paquetes, mensajes de commit y comentarios— en inglés.
 - **Paquetes:** todo bajo `oneprofile.backend`, organizado **por capa técnica**
-  (`model`, `repository`, `service`, `controller`, `util`). Las features conviven
-  dentro de cada capa; no hay un paquete por feature. Las clases que no son
-  ninguna capa de MVC —funciones puras, helpers— van a `util`. Un paquete de capa
+  (`model`, `repository`, `service`, `controller`, `client`, `util`). Las features
+  conviven dentro de cada capa; no hay un paquete por feature. `client` guarda las
+  clases que hablan con un sistema externo, **una por proveedor**. Las clases que no
+  son ninguna capa de MVC —funciones puras, helpers— van a `util`. Un paquete de capa
   se crea recién cuando tiene su primera clase, no vacío.
+- **Diseño: se separa por motivo de cambio.** Un client por proveedor externo; un
+  service y un controller por caso de uso, con sus variantes como métodos; un util
+  solo si lo usa más de un lugar. Partir por técnica (reintentos, paginado) no es un
+  motivo de cambio. Lo nuevo tiene que quedar armonioso con lo que ya existe.
 - **Comandos habituales:**
   - `./mvnw test` — corre los tests.
   - `./mvnw spring-boot:run` — levanta la app.
@@ -250,6 +259,41 @@ Cada entrada es una regla aprendida, con la fecha en que se acordó.
   que quedara escrito que `docs/para-humanos/` se escribe para entenderse rápido y
   no para ser exhaustiva, notas de los diagramas incluidas. El detalle vive en
   `docs/CONTEXTO.md`; acá se privilegia que se entienda de una sentada.
+
+- **2026-09-13 — "Arquitectura" es reparto de responsabilidades, no comportamiento.**
+  Elias pidió mejorar el descubrimiento "con una arquitectura aceptable" y yo propuse
+  detección de páginas truncadas, sondeo incremental y carga incremental. Me corrigió:
+  *"por arquitectura, me refería a mejoras en base a distribución de responsabilidad
+  entre componentes, composición y reusabilidad, no de comportamiento"*, y esas features
+  iban a sumar ruido cuando todo corra con crons. Cuando pide mejorar el diseño, no se
+  proponen features.
+- **2026-09-13 — Ni sobremodularizar ni submodularizar: se separa por motivo de cambio.**
+  En el mismo diseño primero propuse 5 services y 2 utils para un solo caso de uso, y
+  Elias lo frenó: *"muchos de esos services pueden ser métodos en una clase, y los utils,
+  si no se usan en más de un lugar tampoco tienen razón de ser"*; el buen diseño era que
+  lo nuevo fuera armonioso con lo anterior. Después uní los clients de CommonCrawl y
+  Wayback en uno y me corrigió al revés: *"si hay dos providers diferentes, hago 2
+  clients diferentes"*. El criterio que une las dos está en las convenciones. Salió
+  también el paquete `client`: Elias propuso `component`, le señalé que en Spring todo
+  es un `@Component` y el nombre no dice qué hay adentro, y eligió `client`.
+- **2026-09-13 — Dar feedback sobre el diseño que propone Elias.** Pidió *"me gustaría
+  escuchar tu feedback en el proceso de diseño, para ver si me estoy equivocando en
+  algo"*. Sus propuestas de diseño se discuten antes de ejecutarlas: con qué estoy de
+  acuerdo y por qué, dónde veo un problema y con qué argumento concreto. La decisión
+  sigue siendo suya; se pregunta, no se aplica la alternativa por cuenta propia.
+- **2026-09-13 — Las mediciones se archivan, no se borran.** Al cerrar el plan de
+  normalización borré con `rm` los siete `medicion-*.txt` sin versionar, siguiendo lo que
+  el propio plan decía. Elias lo corrigió: *"me parecen buena información histórica para
+  tener en una carpeta"*. Seis se recuperaron del home del servidor y uno se regeneró; la
+  copia de `medicion-senior.txt` con el análisis escrito adentro se perdió. La regla: al
+  cerrar un plan se borra el `docs/PLAN-<TEMA>.md`, pero las salidas crudas van a
+  `mediciones/<tema>-dd-mm-yyyy/`. Y un archivo sin versionar con datos medidos no se
+  borra sin preguntar, porque git no lo puede devolver.
+- **2026-09-13 — `mediciones/` no se lee si nada apunta ahí.** Elias pidió que las
+  mediciones archivadas **no se lean salvo que el plan apunte a una medición**, para no
+  embarrar el contexto. Es el mismo criterio que `docs/para-humanos/`: el contenido útil ya
+  está resumido en `CONTEXTO.md`, y leer la salida cruda gasta contexto en información
+  repetida. Se abre solo el archivo puntual que un plan o un pedido nombre.
 
 ## Documentos del repo
 

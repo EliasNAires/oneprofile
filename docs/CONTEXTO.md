@@ -11,28 +11,25 @@
 > carpeta.
 
 **Última actualización:** 2026-09-13
-**Último milestone probado:** los **tres extractores del título**. Tres funciones puras en
-`util` —`TitleCleaner`, `SeniorityExtractor` y `WorkModeExtractor`— que limpian el título
-de una vacante y le **sacan el seniority y la modalidad a campos propios**, con cada regla
-medida contra las 128.953 vacantes reales. No tocan la base: se verifican con
-`./mvnw test`. Reemplazan al `TitleNormalizer` del milestone anterior, que se partió y ya
-no existe.
+**Último milestone probado:** la **tabla `normalized_vacancy`**, que guarda lo que dicen
+los tres extractores del título. Corrió en prod el 2026-09-13 sobre las **128.953 vacantes
+en 24 segundos**, y los números coinciden con lo medido antes de escribir las reglas: los
+títulos distintos bajan de 87.647 a **77.630 (−11,4%)**, **32.219 vacantes tienen
+seniority** y **19.255 declaran modalidad**.
 
-**Milestone anterior:** el **despliegue**. Prod salió de la máquina de Elias y corre en
-un **servidor propio**, con la imagen publicada en GHCR por un pipeline de GitHub Actions
-que se dispara en cada push a `main`.
+**Milestone anterior:** los **tres extractores del título** —`TitleCleaner`,
+`SeniorityExtractor` y `WorkModeExtractor`—, funciones puras que limpian el título y le
+sacan el seniority y la modalidad a campos propios.
 
 **El recorrido masivo de vacantes terminó.** Corrió entero en el servidor y dejó
 **128.953 vacantes sobre 3.118 empresas**. El número importa porque **desmiente la
 proyección**: se esperaban ~250.000, o sea el doble. La media de la muestra (80 vacantes
 por empresa) tiraba para arriba; la mediana (17) era la guía correcta.
 
-**Hay un plan en curso: la normalización de los títulos**, en
-`docs/PLAN-NORMALIZACION.md`, que es donde vive todo su detalle —las cuatro mediciones
-corridas contra prod, sus números y cada regla con su justificación—. Ese documento
-arranca con un "Estado del plan" que dice qué está hecho y por dónde retomar. Lo que
-falta del plan es **la tabla `normalized_vacancy` y el proceso que la puebla**: hoy los
-extractores existen y están probados, pero **nada los llama todavía**. La medición anterior
+**La normalización de los títulos terminó** y su plan se cerró el 2026-09-13. Lo que vale
+la pena conservar de él —las reglas, las decisiones de modelo y lo que quedó sin resolver—
+está en este documento. Lo único pendiente es revisar los falsos positivos de la modalidad
+(ver "Puntos abiertos"). La medición anterior
 de la tabla `vacancy`, sobre departamento e idioma, vive aparte en
 `docs/MEDICION-VACANTES.md`.
 
@@ -42,8 +39,10 @@ en `docs/MEDICION-SLUGS.md`: el descubrimiento **no pierde nada de lo que lee**,
 **un solo índice de CommonCrawl ve una fracción**. Dieciséis índices juntan 10.086 slugs,
 y la **Wayback Machine** trae 17.730, 8.035 de ellos en ningún índice de CommonCrawl. En
 la medición ya se corrieron cuatro índices más en prod, así que **`company` tiene 6.988
-filas, 2.942 sin sondear**. No hay código nuevo todavía: el cliente de Wayback es el paso
-2 de ese plan.
+filas, 2.942 sin sondear**. De ese plan ya está escrito, con tests en verde, el
+**descubrimiento sobre los 10 índices más recientes de CommonCrawl** (y el reordenamiento
+que lo precedió: paquete `client` y `util/HttpRetry`), pero **todavía no se probó en prod**.
+**El crawling de Wayback no está hecho**: ni cliente, ni endpoint (ver "Puntos abiertos").
 
 ## Qué es esto
 
@@ -339,15 +338,9 @@ prod/.env.example
 docs/METODOLOGIA.md
 docs/CONTEXTO.md
 docs/MEDICION-VACANTES.md                           (los números medidos el 2026-09-12)
-docs/PLAN-NORMALIZACION.md                          (el plan en curso; se borra al terminarlo)
 docs/MEDICION-SLUGS.md                              (cobertura del descubrimiento, medida el 2026-09-13)
 docs/PLAN-SLUGS.md                                  (plan para traer todos los slugs; se borra al terminarlo)
-medicion-titulos.txt                                (salida cruda de la medicion de titulos)
-medicion-titulos-ronda2.txt                         (salida cruda de la segunda ronda)
-medicion-seniority.txt                              (salida cruda: falsos positivos por token)
-medicion-senior.txt                                 (la cabeza de `senior` a fondo, con su analisis)
-medicion-ubicacion.txt                              (salida cruda: modalidad y ubicacion)
-medicion-ruido.txt                                  (salida cruda: otros criterios de limpieza)
+mediciones/primera-normalizacion-13-09-2026/*.txt   (salidas crudas historicas; no se leen salvo que un plan apunte a una)
 docs/para-humanos/README.md                         (para personas, no para agentes)
 docs/para-humanos/descubrimiento.md
 docs/para-humanos/sondeo.md
@@ -362,19 +355,24 @@ src/main/java/oneprofile/backend/model/Company.java
 src/main/java/oneprofile/backend/model/Vacancy.java
 src/main/java/oneprofile/backend/model/Seniority.java
 src/main/java/oneprofile/backend/model/WorkMode.java
+src/main/java/oneprofile/backend/model/NormalizedVacancy.java
 src/main/java/oneprofile/backend/repository/CompanyRepository.java
 src/main/java/oneprofile/backend/repository/VacancyRepository.java
-src/main/java/oneprofile/backend/service/CommonCrawlIndexClient.java
+src/main/java/oneprofile/backend/repository/NormalizedVacancyRepository.java
+src/main/java/oneprofile/backend/client/CommonCrawlIndexClient.java
+src/main/java/oneprofile/backend/client/GreenhouseBoardClient.java
 src/main/java/oneprofile/backend/service/GreenhouseDiscoveryService.java
-src/main/java/oneprofile/backend/service/GreenhouseBoardClient.java
 src/main/java/oneprofile/backend/service/GreenhouseBoardProbeService.java
 src/main/java/oneprofile/backend/service/GreenhouseVacancySyncService.java
 src/main/java/oneprofile/backend/service/GreenhouseVacancySweepService.java
+src/main/java/oneprofile/backend/service/VacancyNormalizationService.java
 src/main/java/oneprofile/backend/controller/DiscoveryController.java
 src/main/java/oneprofile/backend/controller/BoardProbeController.java
 src/main/java/oneprofile/backend/controller/VacancyController.java
+src/main/java/oneprofile/backend/controller/NormalizationController.java
 src/main/java/oneprofile/backend/util/GreenhouseBoardUrl.java
 src/main/java/oneprofile/backend/util/HtmlToText.java
+src/main/java/oneprofile/backend/util/HttpRetry.java
 src/main/java/oneprofile/backend/util/TitleCleaner.java
 src/main/java/oneprofile/backend/util/SeniorityExtractor.java
 src/main/java/oneprofile/backend/util/WorkModeExtractor.java
@@ -384,21 +382,25 @@ src/main/resources/application-prod.properties      (vacío)
 src/main/resources/db/migration/V1__create_company.sql
 src/main/resources/db/migration/V2__add_company_board_status.sql
 src/main/resources/db/migration/V3__create_vacancy.sql
+src/main/resources/db/migration/V4__create_normalized_vacancy.sql
 src/test/java/oneprofile/backend/BackendApplicationTests.java
 src/test/java/oneprofile/backend/TestcontainersConfiguration.java
 src/test/java/oneprofile/backend/repository/CompanyRepositoryTest.java
 src/test/java/oneprofile/backend/repository/VacancyRepositoryTest.java
-src/test/java/oneprofile/backend/service/CommonCrawlIndexClientTest.java
+src/test/java/oneprofile/backend/client/CommonCrawlIndexClientTest.java
+src/test/java/oneprofile/backend/client/GreenhouseBoardClientTest.java
 src/test/java/oneprofile/backend/service/GreenhouseDiscoveryServiceTest.java
-src/test/java/oneprofile/backend/service/GreenhouseBoardClientTest.java
 src/test/java/oneprofile/backend/service/GreenhouseBoardProbeServiceTest.java
 src/test/java/oneprofile/backend/service/GreenhouseVacancySyncServiceTest.java
 src/test/java/oneprofile/backend/service/GreenhouseVacancySweepServiceTest.java
+src/test/java/oneprofile/backend/service/VacancyNormalizationServiceTest.java
 src/test/java/oneprofile/backend/controller/DiscoveryControllerTest.java
 src/test/java/oneprofile/backend/controller/BoardProbeControllerTest.java
 src/test/java/oneprofile/backend/controller/VacancyControllerTest.java
+src/test/java/oneprofile/backend/controller/NormalizationControllerTest.java
 src/test/java/oneprofile/backend/util/GreenhouseBoardUrlTest.java
 src/test/java/oneprofile/backend/util/HtmlToTextTest.java
+src/test/java/oneprofile/backend/util/HttpRetryTest.java
 src/test/java/oneprofile/backend/util/TitleCleanerTest.java
 src/test/java/oneprofile/backend/util/SeniorityExtractorTest.java
 src/test/java/oneprofile/backend/util/WorkModeExtractorTest.java
@@ -408,15 +410,20 @@ src/test/resources/application.properties
 ### Organización de los paquetes
 
 El código se organiza **por capa técnica**, no por feature: `model`, `repository`,
-`service`, `controller` y `util` cuelgan directo de `oneprofile.backend`. Ya
-existen las cinco.
+`service`, `controller`, `client` y `util` cuelgan directo de `oneprofile.backend`.
+Existen las seis.
 
-`util` quedó reservado para **funciones puras sin dependencias** —hoy
-`GreenhouseBoardUrl`, `HtmlToText`, `TitleCleaner`, `SeniorityExtractor` y
-`WorkModeExtractor`—. Un componente que hace I/O va a la capa que le
-corresponde,
-aunque sea un colaborador y no lógica de negocio: por eso `CommonCrawlIndexClient`
-está en `service` y no en `util`.
+**`client`** guarda las clases que hablan con un sistema externo, **una por proveedor**:
+hoy `CommonCrawlIndexClient` y `GreenhouseBoardClient`. Se acordó el 2026-09-13 junto con
+el criterio de diseño de `METODOLOGIA.md` —se separa por motivo de cambio—: dos
+proveedores son dos clients aunque se parezcan, y un caso de uso es un service aunque
+tenga varias variantes. Se llama `client` y no `component` porque en Spring todo es un
+`@Component` y ese nombre no diría qué hay adentro.
+
+`util` guarda **helpers sin estado y sin Spring** —hoy `GreenhouseBoardUrl`,
+`HtmlToText`, `TitleCleaner`, `SeniorityExtractor`, `WorkModeExtractor` y `HttpRetry`—.
+Un util existe solo si lo usa más de un lugar: `HttpRetry` entró porque los reintentos
+estaban copiados en los dos clients.
 
 ### La clase `GreenhouseBoardUrl` (paquete `util`)
 
@@ -450,10 +457,24 @@ Tres decisiones que no son obvias leyendo el código:
 
 Tres clases encadenadas que van del índice de CommonCrawl a filas en `company`.
 
-**`service/CommonCrawlIndexClient`** habla con el índice (CDX). Su único método es
-`forEachUrl(indexId, pattern, onUrl)`: pide primero `showNumPages=true` para saber
-cuántas páginas hay y después recorre `page=0..N-1`, entregando cada URL a medida
-que la lee. Detalles que importan:
+**`util/HttpRetry`** es lo que los clients hacen igual: `call(what, supplier)` reintenta
+5xx y errores de red con backoff exponencial y un `WARN` por reintento, y **no reintenta
+ningún 4xx**; `errorFor(status, text)` arma la excepción que hace falta con
+`.exchange()`; y `requestFactory(connect, read)` fija los timeouts. Cada client crea su
+instancia con **sus** números (CommonCrawl 4 intentos desde 2 s, Greenhouse 3 desde 1 s).
+Tiene `HttpRetryTest`, sin Spring.
+
+**`client/CommonCrawlIndexClient`** habla con el índice (CDX). Tiene dos métodos:
+
+- `latestIndexIds(count)` pide `https://index.commoncrawl.org/collinfo.json` y devuelve
+  los primeros `count` ids. Verificado el 2026-09-13: ese JSON viene **ordenado del más
+  nuevo al más viejo**. Se pide en cada corrida, así que **ningún id queda hardcodeado**:
+  cuando CommonCrawl publica un índice nuevo, entra solo.
+- `forEachUrl(indexId, pattern, onUrl)`: pide primero `showNumPages=true` para saber
+  cuántas páginas hay y después recorre `page=0..N-1`, entregando cada URL a medida
+  que la lee.
+
+Detalles que importan:
 
 - **Lee línea por línea** desde el `InputStream` de la respuesta, con `.exchange()`.
   No es una optimización opcional: una página son ~9 MB y ~12.000 líneas.
@@ -471,48 +492,55 @@ que la lee. Detalles que importan:
   segundo existe para el test: permite bindearle `MockRestServiceServer` y poner el
   delay en cero.
 
-**`service/GreenhouseDiscoveryService.discover(indexId)`** vuelca los dos patrones
-de `GreenhouseBoardUrl.indexPatterns()` en **un único `Set<String>`** (eso deduplica
-las capturas repetidas y unifica los dos dominios), le resta lo que devuelve
-`findSlugsByAts(GREENHOUSE)` y hace `saveAll` de los nuevos. Devuelve
-`DiscoveryResult(slugsFound, newCompanies)`. Es **`@Transactional`**: sin eso cada
-empresa se insertaría en su propia transacción, que son miles de round trips.
+**`service/GreenhouseDiscoveryService.discoverOnRecentCommonCrawl()`** recorre los
+**10 índices más recientes** (`RECENT_INDEXES`) de a uno. Por cada índice vuelca los dos
+patrones de `GreenhouseBoardUrl.indexPatterns()` en **un único `Set<String>`** (eso
+deduplica las capturas repetidas y unifica los dos dominios), y un `saveNew` privado le
+resta lo que devuelve `findSlugsByAts(GREENHOUSE)` y hace `saveAll` de los nuevos
+**antes de pasar al índice siguiente**. Devuelve
+`CommonCrawlResult(List<IndexResult> indexes, List<String> failedIndexes)`, con
+`IndexResult(indexId, DiscoveryResult(slugsFound, newCompanies))`. Tres decisiones:
+
+- **10 y no los 127.** Decisión de Elias: no hace falta ser exhaustivo, porque Wayback
+  cubre muchísimo, y lo que importaba era dejar de perder la mayoría de las empresas con
+  un solo índice.
+- **Un índice que falla no corta la corrida**: se loguea `WARN`, va a `failedIndexes` y
+  se sigue, igual que el sondeo y la carga. Lo que trajeron los otros queda guardado.
+- **Ya no es `@Transactional`.** La lectura es tiempo de red y una transacción
+  retendría una conexión durante toda ella. El `saveAll` de `SimpleJpaRepository` abre su
+  propia transacción corta, que sigue mandando los INSERTs en lotes de 50.
 
 **`controller/DiscoveryController`** expone
-`POST /admin/discovery/greenhouse?index=<id>`. El parámetro `index` es
-**obligatorio a propósito**: un default hardcodeado envejecería solo y en silencio.
-Contesta **202 al toque** y el trabajo corre en un executor de un solo hilo; un
-`AtomicBoolean` da **409** si ya hay una corrida en curso. **El log es el único
-canal de resultado**: el índice al arrancar, los números al terminar, y la
-excepción si falla.
+`POST /admin/discovery/greenhouse/commoncrawl`, **sin parámetros**. El endpoint viejo
+con `?index=` **se sacó**: el nuevo lo cubre, y descubrir es idempotente. Contesta
+**202 al toque** y el trabajo corre en un executor de un solo hilo; un `AtomicBoolean`
+da **409** si ya hay una corrida en curso. **El log es el único canal de resultado**:
+una línea por índice (`CommonCrawl index <id>: N slugs found, M new companies saved`),
+una final con índices leídos, empresas nuevas y fallidos, y la excepción si falla.
 
 ### Cómo se corre el descubrimiento
 
 El puerto de la app no se publica, así que se entra al container:
 
 ```bash
-cd prod
-docker compose up --build -d
-docker compose exec app curl -i -X POST \
-  'localhost:8080/admin/discovery/greenhouse?index=CC-MAIN-2026-34'
+cd ~/oneprofile
+docker compose pull && docker compose up -d
+docker compose exec app curl -i -X POST 'localhost:8080/admin/discovery/greenhouse/commoncrawl'
 docker compose logs -f app
 ```
 
-Los índices disponibles salen de `https://index.commoncrawl.org/collinfo.json`.
-**No todos los ids existen**: la numeración salta (`CC-MAIN-2026-26` no está), así
-que hay que sacarlos de ahí y no inventarlos.
-
-**Correrlo con varios índices es la forma de tener más empresas, y no necesita
-código nuevo**: `discover` ya resta lo que está guardado, así que repetir el POST
-cambiando el `index` solo agrega lo que ese crawl vio de más. Cada índice trae
-~4.000 slugs pero solo ~3.000 se repiten con el siguiente. Sobre 16 índices, de
+**Varios índices son la forma de tener más empresas**, porque cada uno ve una parte:
+trae ~4.000 slugs, pero solo ~3.000 se repiten con el siguiente. Sobre 16 índices, de
 agosto 2026 a diciembre 2023, la unión llega a **10.086** y **no se aplanó**: los de 2024
-todavía suman 200-300 nuevos cada uno. Detalle en `docs/MEDICION-SLUGS.md`.
+todavía suman 200-300 nuevos cada uno. Detalle en `docs/MEDICION-SLUGS.md`. **No todos los
+ids existen** (la numeración salta, `CC-MAIN-2026-26` no está), y por eso salen de
+`collinfo.json` y no se inventan.
 
-Ya se corrieron en prod `CC-MAIN-2026-34` y, el 2026-09-13, `-30`, `-25`, `-21` y `-17`.
-Dieron 1.269, 637, 533 y 503 empresas nuevas, en 15-50 s cada una. Si se encadenan con un
-script en el servidor corriendo con `sudo`, **hay que usar paths absolutos**: con `~`
-termina en `/root`, donde no hay `compose.yaml`.
+Con el endpoint viejo, uno por índice, ya se corrieron en prod `CC-MAIN-2026-34` y, el
+2026-09-13, `-30`, `-25`, `-21` y `-17`. Dieron 1.269, 637, 533 y 503 empresas nuevas, en
+15-50 s cada una. **El endpoint nuevo todavía no se corrió**: al correrlo, esos cinco
+tendrían que dar 0 nuevas, los otros cinco cerca de la unión medida (~378, 345, 364, 253
+y 286), y `company` quedar cerca de **8.614**.
 
 ### La API de Greenhouse, medida
 
@@ -596,10 +624,10 @@ tiene tomada el filtro por país. La señal fuerte de abandono es que la vacante
 
 Tres clases que van de un POST a tener clasificada cada empresa.
 
-**`service/GreenhouseBoardClient`** habla con la API. Su único método es
+**`client/GreenhouseBoardClient`** habla con la API. Su método del sondeo es
 `BoardProbe probe(String slug)`, con `BoardProbe` un record
 `(BoardStatus status, int jobCount, String companyName)`. Sigue el molde de
-`CommonCrawlIndexClient` —timeouts explícitos, reintentos con backoff, `.exchange()`
+`CommonCrawlIndexClient` —timeouts y reintentos con backoff vía `HttpRetry`, `.exchange()`
 en vez de `.retrieve()`— con dos diferencias que importan:
 
 - **El 404 no es un error, es una respuesta.** Es una de las tres cosas que el
@@ -615,9 +643,7 @@ empresas con `findByAts(GREENHOUSE)` y, por cada una, espera, sondea, anota y
 guarda. Devuelve `ProbeResult(companies, notFound, empty, active, failed)`. Tres
 decisiones que no se leen en el código:
 
-- **NO es `@Transactional`, al revés que `GreenhouseDiscoveryService`.** Son
-  problemas distintos: el descubrimiento es un montón de INSERTs juntos al final, y
-  la transacción los agrupa en lotes de 50. El sondeo es un UPDATE cada 200 ms
+- **NO es `@Transactional`.** El sondeo es un UPDATE cada 200 ms
   durante media hora: una transacción así retiene una conexión todo ese tiempo y, si
   el proceso muere, **pierde todo lo ya sondeado**. Con un `save()` por empresa cada
   uno abre su transacción corta y una corrida interrumpida conserva lo que alcanzó.
@@ -714,8 +740,8 @@ queda nada para leer, así una vacante sin descripción queda en `null` y no en 
 **Jsoup es dependencia nueva** (`org.jsoup:jsoup:1.21.2`, con `<version>` explícita
 porque el parent de Spring Boot no la gestiona).
 
-**`service/GreenhouseBoardClient`** ganó un segundo método público,
-`List<BoardJob> jobs(String slug)`, que reusa el mismo `withRetries(...)` y el mismo
+**`client/GreenhouseBoardClient`** ganó un segundo método público,
+`List<BoardJob> jobs(String slug)`, que reusa el mismo `HttpRetry` y el mismo
 `ObjectMapper` que ya tenía. `BoardJob` es un record con los 13 campos que se guardan.
 Dos detalles: llama a `HtmlToText` **al mapear**, así el record no arrastra HTML crudo,
 y los cuatro campos de salario son `null` juntos cuando el board no publica rango. La
@@ -799,9 +825,9 @@ SeniorityExtractor.Extracted level = SeniorityExtractor.extract(mode.title());
 // level.title() es el titulo normalizado; level.seniority() y mode.mode(), sus campos
 ```
 
-Hoy **no las llama nadie**; existen para el paso siguiente, que es la tabla que las va a
-guardar. **No hay una clase que las encadene**: lo va a hacer el servicio de ese paso, y
-una fachada que nadie usa no va. Hasta el 2026-09-12 las dos primeras eran una sola clase,
+Las llama **`VacancyNormalizationService`**, que es quien las encadena y guarda el
+resultado en `normalized_vacancy` (ver la sección siguiente); no hay una fachada aparte.
+Hasta el 2026-09-12 las dos primeras eran una sola clase,
 `TitleNormalizer`; se partió porque con la modalidad entrando cada criterio nuevo la iba a
 agrandar.
 
@@ -809,8 +835,7 @@ Existen porque el objetivo es **categorizar las vacantes en tech-adyacentes y no
 tech-adyacentes** usando el título como señal, y el título viene sucio de dos maneras:
 formato (`Sr. Software Engineer - Backend` contra `Senior Software Engineer (Backend)`) y
 **atributos metidos adentro del texto**. Todas las reglas de abajo salieron de medir
-contra las 128.953 vacantes reales; los números y el porqué de cada una están en
-`docs/PLAN-NORMALIZACION.md`.
+contra las 128.953 vacantes reales, y el porqué de cada una está abajo.
 
 #### `TitleCleaner.clean(String)` → `String`
 
@@ -896,9 +921,115 @@ palabras, así que el mínimo hace sola la regla de que una palabra le gane a un
 
 No todo lo que parece ruido vale una regla. Se midieron once criterios más y los siete
 recortes candidatos juntos bajan los títulos distintos apenas **−2,4%**, contra el −5,8%
-del seniority solo. Quedaron afuera, con sus números en el plan: la ubicación metida en el
+del seniority solo. Quedaron afuera: la ubicación metida en el
 título (un diccionario de tokens toma `west` o `park` por lugares), plata, marketing,
 fechas, números de requisición, idioma requerido y contrato/jornada.
+
+#### Dos decisiones de modelo que no se leen en el código
+
+- **El seniority es un enum con nombre, no un nivel numérico.** Se evaluó guardarlo como
+  1-5 y se descartó, porque un número no permite reconstruir la vacante:
+  - `ii` y `iii` (1.941 + 460 vacantes) no dicen a qué nivel equivalen.
+  - `staff` y `principal` son del carril de contribuidor individual, y cada empresa los
+    ordena a su manera.
+  - `SENIOR` + `software engineer` se recompone a "senior software engineer"; con un `3`
+    se pierde qué palabra decía el título.
+
+  El número se puede derivar del enum cuando el matching lo necesite, y al revés no.
+- **`Vacancy` no se renombró a `GreenhouseVacancy`.** Las columnas de `vacancy` ya son un
+  modelo propio: el formato del ATS lo absorbe `GreenhouseBoardClient.BoardJob`, y un
+  segundo ATS caería en las mismas columnas. Se reevalúa cuando ese segundo ATS exista y
+  se vea con datos si su forma cruda difiere de verdad.
+
+### La normalización: tabla, servicio y endpoints
+
+Las piezas que corren los extractores sobre las vacantes guardadas y dejan el resultado en
+la base.
+
+**`model/NormalizedVacancy`** tiene `title`, `seniority` y `workMode`, con
+`@OneToOne(optional = false)` **unidireccional** a `Vacancy` (FK única `vacancy_id`). Sigue
+el molde de `Vacancy`: constructor `protected` para JPA, uno público `(Vacancy)`, getters
+sin setters y el método de dominio `describe(title, seniority, workMode)`. Los enums van con
+`@Enumerated(STRING)`. `title` es nullable porque `SeniorityExtractor` lo deja en `null`
+cuando no queda nada, como en `Principal` a secas.
+
+**Es una tabla aparte y no columnas de `vacancy` porque es otro tipo de dato.** `vacancy` es
+un **espejo del board**: el sync sobreescribe lo que cambió y borra lo que ya no está. Lo
+normalizado es **derivado**: se recalcula cuando cambia una regla, sin volver a pegarle a la
+API. Juntarlos obligaría a que `Vacancy.describe(...)` preserve columnas que no vienen del
+board.
+
+**La FK lleva `on delete cascade`**, decidido con Elias. Así el sync borra vacantes sin
+conocer la tabla derivada: Postgres se lleva la fila normalizada con su vacante.
+
+**`service/VacancyNormalizationService`** tiene dos métodos, que devuelven
+`NormalizationResult(int inserted, int updated)`:
+
+- `normalizeAll()` recorre **todas** las vacantes, actualiza las filas que ya existen e
+  inserta las que faltan. Es lo que se corre después de cambiar una regla.
+- `normalizeMissing()` recorre **solo las vacantes sin fila** y no toca las que ya existen.
+
+Los dos comparten el mismo recorrido y cambia solo la consulta. Cada vacante pasa por
+`TitleCleaner.clean` → `WorkModeExtractor.extract(limpio, location)` →
+`SeniorityExtractor.extract(mode.title())`. Tres decisiones del recorrido:
+
+- **Páginas de 1.000 por keyset de id** (`id > :after order by id`), no por offset. En
+  `normalizeMissing` el conjunto se achica mientras se recorre, y un offset saltearía filas.
+  Las consultas son `VacancyRepository.findByIdGreaterThanOrderById` y
+  `findNotNormalizedByIdGreaterThan` (un `not exists`), las dos con `Limit`.
+- **Cada página va en su propia transacción**, con un `TransactionTemplate`. No es
+  `@Transactional` entero, por lo mismo que el sondeo: una corrida cortada conserva lo que
+  alcanzó. Usar el template en vez de un segundo bean evita el problema del proxy que obliga
+  a separar `GreenhouseVacancySweepService` del sync.
+- **Sin pausa**, porque no hay red de por medio. Una página trae sus filas existentes con
+  `NormalizedVacancyRepository.findByVacancyIn` y guarda todo con un `saveAll`, que el
+  `batch_size=50` agrupa.
+
+Tiene los dos constructores de siempre, con `@Autowired` en el público; el de paquete recibe
+el tamaño de página para que el test use páginas de 2.
+
+**`controller/NormalizationController`** usa el molde de los otros controllers: 202 al toque,
+executor de un solo hilo y resultado al log. Expone:
+
+- `POST /admin/normalization/vacancies` → `normalizeAll()`
+- `POST /admin/normalization/vacancies/missing` → `normalizeMissing()`
+
+Los dos **comparten un solo `AtomicBoolean`**, porque escriben la misma tabla: mientras corre
+cualquiera, los dos dan 409.
+
+### Cómo se corre la normalización
+
+```bash
+cd ~/oneprofile
+docker compose exec app curl -i -X POST 'localhost:8080/admin/normalization/vacancies'
+docker compose logs -f app   # "Vacancy normalization (all) finished: N inserted, M updated"
+```
+
+### La corrida en prod (2026-09-13)
+
+Terminó con `128953 inserted, 0 updated` en **24 segundos**, sin ninguna vacante sin fila.
+Todo coincide con lo medido antes de
+escribir las reglas, y cada diferencia tiene explicación:
+
+| | Normalizado | Medido antes | Por qué difiere |
+|---|---|---|---|
+| `SENIOR` | 24.119 | ~24.230 (senior + sr) | regla del mínimo |
+| `STAFF` | 3.281 | 4.562 títulos con la palabra | guardas (`staff accountant` 31, `chief of staff` 28, `staff attorney` 14, `member of technical staff` 8) y la regla del mínimo (`senior staff` → `SENIOR`) |
+| `PRINCIPAL` | 1.880 | ~2.140 | regla del mínimo |
+| `LEVEL_2` / `LEVEL_3` | 1.587 / 364 | 1.941 / 460 | una palabra le gana al numeral |
+| `JUNIOR` / `ENTRY` / `MID` / `SEMI_SENIOR` | 616 / 196 / 159 / 17 | — | — |
+| Remoto (`REMOTE` + `FULLY_REMOTE`) | 16.094 (13.166 + 2.928) | ~16.444 | 193 quedan `HYBRID` a propósito; 31 quedan sin modalidad por `remotely` |
+| `FULLY_REMOTE` | 2.928 | entre 2.736 y 3.105 | — |
+| `HYBRID` | 2.340 | ~2.345 | — |
+| `ONSITE` | 821 | ~876 | — |
+| Títulos distintos | 77.630 | 87.647 crudos | −11,4% |
+| Títulos nulos | 6 | 6 | todos `Principal` a secas |
+
+El top 30 de títulos es el mismo que se había medido con los recortes simulados, con dos
+cambios. `registered behavior technician` junta ahora su variante con `rbt` (466), y
+`accountant` baja de 182 a 134 porque `staff accountant` queda como título propio. Arriba de
+todo: `software engineer` 884, `account executive` 505, `registered behavior technician`
+466, `behavior technician` 425, `product manager` 331, `data engineer` 324.
 
 ### La carpeta `docs/para-humanos/`
 
@@ -934,7 +1065,7 @@ El criterio de escritura y el de las notas de los diagramas están en
 El esquema vive en `src/main/resources/db/migration/` y lo aplica Flyway, que
 anota lo ya corrido en la tabla `flyway_schema_history`. **Cuando cambie el
 esquema no se reescribe `V1`: se agrega la siguiente con el `ALTER TABLE`**, y los
-datos existentes sobreviven. Hoy hay tres migraciones:
+datos existentes sobreviven. Hoy hay cuatro migraciones:
 
 ```sql
 -- V1__create_company.sql
@@ -981,9 +1112,24 @@ create table vacancy (
 );
 ```
 
+```sql
+-- V4__create_normalized_vacancy.sql
+create sequence normalized_vacancy_seq start with 1 increment by 50;
+
+create table normalized_vacancy (
+    id bigint not null,
+    vacancy_id bigint not null unique references vacancy on delete cascade,
+    title varchar(255),
+    seniority varchar(255),
+    work_mode varchar(255),
+    primary key (id)
+);
+```
+
 El `increment by 50` no es decorativo: es el `allocationSize` por defecto que
 Hibernate 6/7 espera para `@GeneratedValue`, y si no coincide `validate` falla. Por eso
-`vacancy_seq` lo repite.
+`vacancy_seq` y `normalized_vacancy_seq` lo repiten. `V4` se aplicó en prod sobre las
+128.953 vacantes y creó la tabla vacía.
 
 Las tres columnas `text` de `vacancy` obligan a declarar
 `@Column(columnDefinition = "text")` en la entidad: para un `String` pelado Hibernate
@@ -995,14 +1141,17 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Estado verificado
 
-- `./mvnw test` → **95 tests, 0 fallas**: `BackendApplicationTests.contextLoads`,
+- `./mvnw test` → **110 tests, 0 fallas** (corrido el 2026-09-13, con el descubrimiento
+  sobre 10 índices ya escrito): `BackendApplicationTests.contextLoads`,
   4 de `CompanyRepositoryTest`, 5 de `VacancyRepositoryTest`, 12 casos parametrizados
   de `GreenhouseBoardUrlTest`, 3 de `HtmlToTextTest`, 11 de `TitleCleanerTest`, 13 de
-  `SeniorityExtractorTest`, 9 de `WorkModeExtractorTest`, 6 de `CommonCrawlIndexClientTest`,
-  4 de `GreenhouseDiscoveryServiceTest`, 2 de `DiscoveryControllerTest`, 9 de
-  `GreenhouseBoardClientTest`, 3 de `GreenhouseBoardProbeServiceTest`, 4 de
-  `GreenhouseVacancySyncServiceTest`, 3 de `GreenhouseVacancySweepServiceTest`, 2 de
-  `BoardProbeControllerTest` y 4 de `VacancyControllerTest`. Las dos primeras clases importan
+  `SeniorityExtractorTest`, 9 de `WorkModeExtractorTest`, 4 de `HttpRetryTest`, 7 de
+  `CommonCrawlIndexClientTest`, 6 de `GreenhouseDiscoveryServiceTest`, 2 de
+  `DiscoveryControllerTest`, 9 de `GreenhouseBoardClientTest`, 3 de
+  `GreenhouseBoardProbeServiceTest`, 5 de `GreenhouseVacancySyncServiceTest`, 3 de
+  `GreenhouseVacancySweepServiceTest`, 2 de `BoardProbeControllerTest`, 4 de
+  `VacancyControllerTest`, 3 de `NormalizationControllerTest` y 4 de
+  `VacancyNormalizationServiceTest`. Las dos primeras clases importan
   `TestcontainersConfiguration`, que declara un `PostgreSQLContainer` como
   `@Bean @ServiceConnection`; `CompanyRepositoryTest` lleva además
   `@AutoConfigureTestDatabase(replace = NONE)`, porque sin base embebida en el
@@ -1028,20 +1177,31 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
      **Limitación conocida:** hoy no se puede probar que el método *filtra* por
      ATS, porque `Ats` tiene un solo valor y agregar uno falso sería meter algo
      que nadie pidió. Esa assertion se suma cuando entre el segundo ATS.
+- **`HttpRetryTest`** no levanta Spring: reintenta un 5xx hasta que anda y un error de
+  red, se rinde en el último intento, y un 4xx sale al primer intento.
+- **El reordenamiento a `client` + `HttpRetry` no cambió comportamiento**, y está
+  verificado así: los tests de los dos clients se movieron **sin tocar sus aserciones**
+  (el diff contra lo commiteado es solo `package` e imports) y siguieron en verde.
+  Elias corrió `mvn test`: 107 en verde, antes de sumar los 10 índices.
 - **`CommonCrawlIndexClientTest`** usa `MockRestServiceServer`, así que verifica
-  comportamiento real sin tocar la red: recorre las dos páginas que el índice dice
+  comportamiento real sin tocar la red: `latestIndexIds(2)` toma los dos primeros ids
+  de un `collinfo.json`, recorre las dos páginas que el índice dice
   tener, no pide ninguna si dice cero, saltea líneas vacías o sin `url`, se recupera
   de un 504 y de un 503, se rinde después del cuarto intento, y ante un 404 falla al
   toque **sin reintentar**.
 - **`GreenhouseDiscoveryServiceTest`** es `@DataJpaTest` con un doble del cliente
-  escrito a mano (una subclase que devuelve URLs de mentira): guarda una sola empresa
-  por slug por más capturas que tenga, trata los dos dominios como la misma empresa,
-  no reinserta las que ya estaban, e ignora las URLs que no identifican a ninguna.
+  escrito a mano (una subclase que devuelve índices y URLs de mentira; un índice listado
+  pero sin URLs representa uno inalcanzable): guarda una sola empresa por slug por más
+  capturas que tenga, trata los dos dominios como la misma empresa, no reinserta las que
+  ya estaban, ignora las URLs que no identifican a ninguna, recorre varios índices
+  contando en cada uno solo lo que suma, y cuando uno falla conserva lo de los demás y lo
+  anota en `failedIndexes`.
 - **`DiscoveryControllerTest`** es `@WebMvcTest`: 202 y delegación en el servicio, y
-  409 cuando ya hay una corrida en curso. El doble del servicio se bloquea en un
+  409 cuando ya hay una corrida en curso, los dos sobre `/commoncrawl`. El doble del servicio se bloquea en un
   `CountDownLatch` para que la segunda request llegue con la primera todavía viva.
 - **Ningún test le pega a CommonCrawl de verdad.**
-- **El descubrimiento anda de punta a punta en prod.** Un POST con
+- **El descubrimiento anduvo de punta a punta en prod con el endpoint viejo** (el
+  nuevo, sobre 10 índices, falta probarlo). Un POST con
   `index=CC-MAIN-2026-34` devolvió 202 al toque y terminó con
   `4046 slugs found, 4046 new companies saved`. Probado a mano por Elias.
   Ese número **se verificó aparte**, bajando las 7 páginas del índice y corriendo
@@ -1124,6 +1284,20 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
   pasan la entrada cruda por `TitleCleaner` primero, que es el orden en que corre la
   normalización. Los negativos importan tanto como los positivos: `TitleCleanerTest`
   verifica que `.net`, `us`, `prn` y un código postal **no** se toman por siglas.
+- **`VacancyNormalizationServiceTest`** es `@DataJpaTest` contra Postgres real, con páginas
+  de 2 y títulos reales. Verifica cuatro cosas:
+  - `"Sr. Software Engineer (Remote)"` con location `"Remote"` queda como
+    `software engineer` / `SENIOR` / `FULLY_REMOTE`.
+  - Cinco vacantes dan cinco filas, o sea que recorre todas las páginas.
+  - Volver a correr `normalizeAll` después de cambiar un título **actualiza sin duplicar**.
+  - `normalizeMissing` inserta solo la vacante nueva y **deja la fila vieja como estaba**,
+    aunque su vacante haya cambiado.
+- **`GreenhouseVacancySyncServiceTest`** ganó un caso: el sync borra una vacante que ya
+  estaba normalizada **sin error**, y su fila desaparece. Es el test del `on delete cascade`.
+- **`NormalizationControllerTest`** es `@WebMvcTest`: 202 y delegación en cada endpoint, y
+  409 en los dos mientras corre uno, con la técnica del `CountDownLatch`.
+- **La normalización anda de punta a punta en prod**, corrida el 2026-09-13 (ver "La corrida
+  en prod"). En dev no se probó a mano: se fue directo al servidor.
 - `GreenhouseBoardUrlTest` no levanta contexto de Spring y corre en ~40 ms. Son dos
   `@ParameterizedTest`: 7 URLs que devuelven slug (path extra, query string, los
   dos dominios, `www.`, y las dos formas de `embed`) y 5 que devuelven vacío
@@ -1136,14 +1310,12 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Qué NO existe todavía
 
-- **Nada guarda los títulos normalizados.** Los tres extractores existen y están
-  probados, pero **no los llama nadie**: no hay tabla `normalized_vacancy`, ni entidad, ni
-  proceso que la puebla, así que en la base los títulos siguen tal como los escribió cada
-  empresa. Ver `docs/PLAN-NORMALIZACION.md`.
+- **Nada categoriza las vacantes** en tech-adyacentes y no tech-adyacentes, que es para lo
+  que se normalizó el título.
 - **Nada normaliza el departamento ni la ubicación.** Se decidió normalizar solo el
   título por ahora; los otros dos cuando haya un paso que los use.
 - Ningún perfil de usuario, ninguna lógica de matching.
-- Ningún endpoint que devuelva datos: los tres que hay disparan procesos. El de
+- Ningún endpoint que devuelva datos: todos los que hay disparan procesos. El de
   vacantes contesta con los contadores de lo que cargó, no con las vacantes.
 - Ningún ATS además de Greenhouse.
 - Ningún cron: los procesos se disparan a mano. `last_probed_at` está puesto para cuando
@@ -1155,15 +1327,64 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Puntos abiertos
 
+- **El crawling de Wayback no se hizo.** La medición mostró que la Wayback Machine trae
+  **17.730 slugs**, 8.035 de ellos en ningún índice de CommonCrawl (del orden de ~1.850
+  empresas vivas extra), y el plan lo tiene diseñado —`client/WaybackCdxClient`,
+  `discoverOnWayback()`, `POST /admin/discovery/greenhouse/wayback` con el mismo lock, 2 s
+  entre páginas y el 429 reintentable solo ahí—, pero **no hay nada escrito**. Es el paso 3
+  de `docs/PLAN-SLUGS.md`. Hasta que exista, `company` solo crece con CommonCrawl.
+- **El descubrimiento sobre 10 índices no se probó en prod.** Está escrito y con tests en
+  verde, pero hace falta commitear y pushear para que el pipeline publique la imagen, y
+  después correr el POST y comparar con los números esperados (ver "Cómo se corre el
+  descubrimiento").
+
 - **Falta ver los falsos positivos de la extracción de modalidad.** Los sinónimos salieron
   de contar cuántas veces aparece cada uno, pero —al revés que el seniority, que tuvo su
   medición de falsos positivos y de ahí sus guardas— **nadie miró en qué contexto
   aparecen**. Casos a revisar: `remote` como parte del puesto (`remote sensing`,
   `remote monitoring`), `field based` y `in person`. Está pendiente antes de dar la
-  modalidad por confiable.
+  modalidad por confiable. Ahora que la modalidad está en la base, se puede medir con una
+  consulta sobre `normalized_vacancy`.
+- **`remotely` no es sinónimo de remoto, y deja falsos negativos.** En la corrida de prod,
+  31 vacantes con `location` del tipo `Remotely based` o `Remotely in Germany` quedaron sin
+  modalidad. Son pocas y no se tocó el extractor.
+- **El sync de vacantes no normaliza.** `GreenhouseVacancySyncService` carga, actualiza y
+  borra sin tocar `normalized_vacancy`. Una vacante nueva queda sin fila hasta que se corre
+  `/admin/normalization/vacancies/missing`, y una cuyo título cambió conserva la fila vieja
+  hasta que se recalcula todo. El borrado sí está cubierto por el `on delete cascade`. Hoy no
+  importa porque todo se dispara a mano. **Va a importar cuando exista el cron**, que tendría
+  que encadenar sondeo → vacantes → normalización. Elias pidió dejarlo anotado.
+- **Hay ~650 filas que no son vacantes**: `talent community/network/pool` (356) y
+  `general application / speculative / future opportunities` (296), que son formularios de
+  "dejanos tu CV". No se filtran porque nadie lo pidió; se decide cuando el matching exista
+  y molesten. Un título que queda vacío es una señal de estas filas que no necesita lista de
+  frases, pero hoy casi ninguno se vacía, porque los recortes que los vaciaban no entraron.
+- **Contrato y jornada merecen un paso propio.** Fue el recorte más grande de los
+  descartados (5.117 vacantes): `part time` 2.128, `intern` 1.939, `contract` 1.429,
+  `full time` 914, `seasonal` 750, `per diem / prn` 690, `locum` 644. Pesa en el matching
+  tanto como el seniority, y antes de escribirlo hay que medir sus falsos positivos.
+- **La ubicación estructurada merece un paso propio, saliendo de `location`.** Es más
+  parseable de lo que parecía: el 70,7% lleva coma, tiene 3,28 tokens de promedio y la
+  cabeza es `ciudad, región, país`. Ese paso también debería absorber los códigos postales
+  metidos en el título (`thousand oaks ca 91359`).
+- **`FULLY_REMOTE` es conservador a propósito.** No se sacan palabras de relleno antes de
+  preguntar si queda un lugar, así que `"Remote, Anywhere"` o `"Remote - Global"` quedan
+  como `REMOTE`. Medido con relleno daba 3.105; la corrida dio 2.928.
+- **Los rangos de nivel dejan un conector suelto.** La regla del mínimo los resuelve bien
+  (~200 vacantes), pero `controls engineer all levels junior to senior` queda como
+  `controls engineer all levels to`. No se limpia porque nadie lo pidió.
+- **El falso positivo de `senior` no tiene guarda, por decisión de Elias.** Son 37
+  vacantes de cuidado domiciliario (0,18% del token). Si alguna vez molesta, la guarda sería
+  descartar `senior` cuando lo precede `a`, `female` o `male`.
+- **Quedan adentro del título sin regla:** el nivel `i` (no hay `LEVEL_1`, no se midió),
+  `associate` (5.861, ambiguo) y `virtual` como remoto (194 títulos, sin medir). El
+  `Principal` a secas (6 vacantes, director de escuela) queda con título nulo.
+- **`docs/MEDICION-VACANTES.md` dice 85.050 títulos distintos y la base da 87.647**, con el
+  mismo `count(*)`. Ese documento no registró su SQL, así que la diferencia es de cómo se
+  contó entonces. Sin resolver.
 - **Los endpoints de administración no tienen ninguna protección.** Hoy no importa
   porque el puerto de la app no se publica, pero cuando exista un endpoint que
-  **devuelva** vacantes habrá que publicarlo y ahí los tres de administración quedan
+  **devuelva** vacantes habrá que publicarlo y ahí los de administración quedan
   expuestos. Se decide en ese
   momento.
 - **El recorrido de vacantes trabaja sobre la foto que dejó el sondeo.** Le pide vacantes
@@ -1204,17 +1425,10 @@ espera para un `Instant`; está verificado porque `ddl-auto=validate` pasa.
 
 ## Qué sigue
 
-Lo inmediato es **terminar la normalización de los títulos**, y el plan está escrito en
-`docs/PLAN-NORMALIZACION.md` con su estado al principio. Falta una sola etapa: la
-**tabla `normalized_vacancy`** —entidad 1:1 con `Vacancy` con `title`, `seniority` y
-`work_mode`, su repositorio, el servicio que recorre las vacantes de a páginas y el
-endpoint que lo dispara—, que es donde los extractores se corren de verdad contra las
-128.953 vacantes. Va en un paso aparte porque se prueba distinto: los extractores cierran
-con `./mvnw test`, la tabla con una corrida real contra prod. Queda pendiente, además,
-revisar los falsos positivos de la modalidad (ver "Puntos abiertos"). Las decisiones ya tomadas y los números que las respaldan están en ese
-documento y no se duplican acá.
+**La normalización de los títulos está hecha y corrida en prod.** Lo que le queda anotado es
+revisar los falsos positivos de la modalidad (ver "Puntos abiertos").
 
-Lo que viene después de la normalización es **categorizar las vacantes en
+Lo que viene ahora es **categorizar las vacantes en
 tech-adyacentes y no-tech-adyacentes**, que es para lo que se normaliza. La medición ya
 dejó claro que esa categorización **tiene que ser por tokens del título y no por un
 diccionario de títulos**: casi la mitad de las vacantes tiene un título que no se repite
@@ -1222,9 +1436,9 @@ nunca.
 
 Más allá de eso, sin priorizar y sin planificar:
 
-- Traer a prod todos los slugs descubribles: más índices de CommonCrawl, un cliente de
-  Wayback, y después sondear y cargar vacantes de lo nuevo. Está planificado en
-  `docs/PLAN-SLUGS.md`.
+- Terminar de traer los slugs descubribles: probar en prod los 10 índices de CommonCrawl,
+  escribir el cliente de Wayback, y después sondear y cargar vacantes de lo nuevo. El
+  plan, con su estado, está en `docs/PLAN-SLUGS.md`.
 - Modelar el perfil del usuario (`profile`).
 - Primer algoritmo de matching, simple, con tests sobre casos concretos.
 - Endpoint HTTP para consultar las vacantes que matchean.
