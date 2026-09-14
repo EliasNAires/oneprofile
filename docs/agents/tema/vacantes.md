@@ -87,7 +87,7 @@ Idea: no cargar las de `updated_at` de más de dos meses. Descartada midiendo:
 Avance de una corrida masiva (el endpoint solo da 202), en el servidor:
 
 ```bash
-sudo docker compose exec -T postgres sh -c \
+docker compose exec -T postgres sh -c \
   'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "select count(*), count(distinct company_id) from vacancy"'
 ```
 

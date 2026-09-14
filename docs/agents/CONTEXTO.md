@@ -60,11 +60,11 @@ Wayback:
 
 1. Confirmar que el pipeline de `7f33a53` (o posterior) terminó en verde y que no hay una
    corrida de CommonCrawl en curso.
-2. Por `ssh elitedesk1`, con `sudo`:
+2. Por `ssh elitedesk1` (Docker sin `sudo`: el usuario está en el grupo `docker`):
    ```bash
-   cd ~/oneprofile && sudo docker compose pull && sudo docker compose up -d
-   sudo docker compose exec app curl -i -X POST 'localhost:8080/admin/discovery/greenhouse/wayback'   # 202
-   sudo docker compose logs -f app
+   cd ~/oneprofile && docker compose pull && docker compose up -d
+   docker compose exec app curl -i -X POST 'localhost:8080/admin/discovery/greenhouse/wayback'   # 202
+   docker compose logs -f app
    ```
 3. Esperado: ~40 min (439 páginas), ningún `WARN` que termine en falla,
    `Greenhouse discovery on Wayback finished: N slugs found` con N cerca de **17.730**, y

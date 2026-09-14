@@ -61,15 +61,15 @@ Nunca se reescribe una migración aplicada: se agrega la siguiente. Detalles no 
 
 ## Prod
 
-Servidor de Elias, por SSH vía ZeroTier (`ssh elitedesk1`, Docker con `sudo`). No compila:
+Servidor de Elias, por SSH vía ZeroTier (`ssh elitedesk1`, Docker sin `sudo`: el usuario está en el grupo `docker`). No compila:
 baja la imagen de GHCR. Tiene **solo `compose.yaml` y `.env`** en `~/oneprofile`, copiados
 por `scp`; se descartó clonar el repo porque no usaría el código. Si cambia
 `prod/compose.yaml`, se vuelve a copiar a mano.
 
 ```bash
 cd ~/oneprofile
-sudo docker compose pull && sudo docker compose up -d   # up -d mata cualquier corrida en curso
-sudo docker compose logs -f app
+docker compose pull && docker compose up -d   # up -d mata cualquier corrida en curso
+docker compose logs -f app
 ```
 
 - **Ningún puerto publicado**: a los endpoints se entra con
@@ -94,7 +94,7 @@ Tres cosas que costó descubrir:
 Para mirar el avance de una corrida (los endpoints solo contestan 202 y loguean):
 
 ```bash
-sudo docker compose exec -T postgres sh -c \
+docker compose exec -T postgres sh -c \
   'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "select count(*), count(distinct company_id) from vacancy"'
 ```
 

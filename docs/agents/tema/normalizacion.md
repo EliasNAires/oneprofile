@@ -93,8 +93,8 @@ requerido, contrato/jornada.
   `AtomicBoolean` compartido** porque escriben la misma tabla.
 
 ```bash
-sudo docker compose exec app curl -i -X POST 'localhost:8080/admin/normalization/vacancies'
-sudo docker compose logs -f app   # "Vacancy normalization (all) finished: N inserted, M updated"
+docker compose exec app curl -i -X POST 'localhost:8080/admin/normalization/vacancies'
+docker compose logs -f app   # "Vacancy normalization (all) finished: N inserted, M updated"
 ```
 
 ## Probado en prod (2026-09-13)

@@ -88,8 +88,8 @@ resultado.** El endpoint viejo con `?index=` se sacó: el nuevo lo cubre y descu
 idempotente.
 
 ```bash
-sudo docker compose exec app curl -i -X POST 'localhost:8080/admin/discovery/greenhouse/commoncrawl'
-sudo docker compose exec app curl -i -X POST 'localhost:8080/admin/discovery/greenhouse/wayback'
+docker compose exec app curl -i -X POST 'localhost:8080/admin/discovery/greenhouse/commoncrawl'
+docker compose exec app curl -i -X POST 'localhost:8080/admin/discovery/greenhouse/wayback'
 ```
 
 ## La API de Greenhouse para el sondeo (medida a mano)
