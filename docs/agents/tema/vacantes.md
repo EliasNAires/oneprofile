@@ -110,8 +110,21 @@ Elias lo corre en bucle cada 60 s; el script vive en el home del servidor, sin v
   3.121 `ACTIVE`. Tres quedaron sin vacantes; no se averiguó si cerraron o fallaron.
   **Desmintió la proyección** de ~250.000: la media de la muestra (80 por empresa) tiraba
   para arriba; la mediana (17) era la guía.
+- **Recorrido sobre las empresas nuevas (2026-09-14, 12:40–14:31 UTC)**: 6.883 `ACTIVE`,
+  216.867 traídas, **89.376 insertadas**, 127.491 actualizadas, 1.461 borradas, 0 fallidas.
+  `vacancy` 128.953 → **216.868 sobre 6.879 empresas** (+68%). ~62 empresas/min con los 500 ms
+  de pausa. Normalización `/missing` después: 89.376 en 18 s, 0 sin normalizar. De qué fuente
+  salieron: tabla en `descubrimiento.md` ("Qué fuente rindió"). Números:
+  `mediciones/slugs-13-09-2026/sondeo-y-carga.txt`.
+  - La carga no loguea avance: se estimó con el `xmin` de las filas de `vacancy` (no hay
+    columna de sincronización; `updated_at` es la fecha de Greenhouse).
 
 ## Abierto
+
+- **Logs de avance de la carga**: ver el punto de logs en `descubrimiento.md` (Elias,
+  2026-09-14); la carga dura ~2 h y solo loguea `started` y `finished`.
+- **4 `ACTIVE` sin vacantes** y **`fetched` (216.867) una fila menos que `vacancy`
+  (216.868)** en el recorrido del 2026-09-14. Sin averiguar.
 
 - **El sync no normaliza**: una vacante nueva queda sin fila en `normalized_vacancy` hasta
   correr `/missing`, y un título cambiado conserva la fila vieja. El borrado sí lo cubre el

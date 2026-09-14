@@ -73,6 +73,8 @@ la tarea: **nadie resuelve solo una duda**, le llega a Elias.
   `orquestador.md` (commit/push, prod, dataset que Elias lee primero, decisión de diseño).
   Un paso sin código (una corrida, una prueba en prod) se marca **sin ejecutor**: solo
   verificador, y si falla se para.
+  Una prueba nueva (p. ej. reintentar lo que falló) va a un **subagente nuevo** con un
+  resumen breve de lo que hizo el anterior, no al mismo que ya cargó mucho contexto.
   Resume cada paso a Elias y es el **único que actualiza `CONTEXTO.md`**.
 - **Ejecutor** (agente `ejecutor`): construye un paso con sus tests, o lo corrige.
 - **Verificador** (agente `verificador`): corre el guion del paso, sin editar.
@@ -155,6 +157,9 @@ reales y la fase siguiente con su "Leer:" o `/ejecutar <tema>`.
 - Búsquedas amplias por el código con el subagente `Explore`: vuelve solo la conclusión.
 - Docs largos: leer solo el rango que hace falta (`grep -n '^##'` da las secciones).
 - `/context` para ver el consumo real.
+- **Techo blando de ~100k por sesión**, orquestador incluido. Cerca del techo se para en el
+  próximo punto seguro, se actualiza `CONTEXTO.md` y se sigue en una sesión nueva. El
+  orquestador de `slugs` llegó a 182k, sobre todo por reenviar avisos de avance uno por uno.
 
 ## Documentos
 

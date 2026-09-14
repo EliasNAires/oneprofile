@@ -4,7 +4,7 @@
 > orquestador al parar o terminar (ver "Roles" en `docs/agents/METODOLOGIA.md`). Tope ~12 KB (`wc -c`). El detalle vive
 > en los docs de tema y se lee solo si "Leer:" lo pide. **`docs/para-humanos/` no se lee.**
 
-**Última actualización:** 2026-09-13
+**Última actualización:** 2026-09-14
 
 ## Qué es
 
@@ -14,19 +14,20 @@ lista de vacantes que matcheen con el perfil del usuario.
 
 ## Estado
 
-- **Descubrimiento y sondeo** andan en prod. `company` tiene **7.463** filas (varias sin
-  sondear). La unión de fuentes promete muchas más: 10.086 slugs sobre 16 índices de
-  CommonCrawl y 17.730 en Wayback (`docs/agents/MEDICION-SLUGS.md`).
-- **Vacantes:** el recorrido masivo dejó **128.953 vacantes sobre 3.118 empresas**
-  (2026-09-11/12), sobre las 4.046 empresas de entonces.
-- **Normalización del título** (limpieza, seniority, modalidad) corrida en prod el
-  2026-09-13 en 24 s: títulos distintos de 87.647 a 77.630, 32.219 con seniority, 19.255 con
-  modalidad.
-- **Plan en curso: traer todos los slugs de Greenhouse** (`docs/agents/planes/slugs/`). El
-  descubrimiento sobre los 10 índices recientes **falló en prod** (3 leídos, 7 fallidos); la
-  corrección está construida. El descubrimiento sobre **Wayback** está construido. Los dos
-  están en el commit `7f33a53`, ya en `origin/main`, y **ninguno se probó en prod**. Faltan
-  tres corridas en prod, sin código: CommonCrawl, Wayback, y sondeo + vacantes + normalización.
+- **Descubrimiento y sondeo** andan en prod. `company` tiene **18.051** filas (índices de
+  CommonCrawl, con 4 de los 10 recientes sin leer, más Wayback), todas sondeadas el 2026-09-14: ACTIVE 6.883,
+  NOT_FOUND 9.787, EMPTY 1.381.
+- **Vacantes:** el recorrido del 2026-09-14 (12:40–14:31 UTC) dejó **216.868 vacantes sobre
+  6.879 empresas** (89.376 nuevas, 127.491 actualizadas, 1.461 borradas, 0 fallidas).
+- **Normalización del título** (limpieza, seniority, modalidad): corrida entera el 2026-09-13
+  en 24 s (títulos distintos de 87.647 a 77.630); el 2026-09-14 se normalizaron las 89.376
+  nuevas en 18 s y no quedan vacantes sin normalizar.
+- **Plan de slugs terminado y borrado** (2026-09-14): CommonCrawl 6/10 índices (+590),
+  Wayback +9.998, sondeo y carga. **+3.762 `ACTIVE` y +87.915 vacantes (+68%)**: 54% de las
+  vacantes nuevas salió de índices viejos de CommonCrawl nunca sondeados, 43% de Wayback, 4%
+  de los índices del plan. Wayback trae la mitad de las activas nuevas pero el 75% de sus
+  slugs está muerto. Detalle en "Probado en prod" de `descubrimiento`; crudos, revisión y uso
+  de contexto en `mediciones/slugs-13-09-2026/`.
 - **La dieta de contexto terminó** (2026-09-13): docs de agentes en `docs/agents/`, este
   tablero y cuatro temas. Falta la prueba real: `/context` después de la lectura inicial de
   la sesión siguiente debería rondar ~35k en vez de ~70k.
@@ -46,13 +47,9 @@ ejecutor / verificador / consulta, construidos el 2026-09-13 (sección "Roles" d
    metodología; `/context` bajo ~35k.
 4. `/planificar` con un tema chico (p. ej. categorización tech/no tech) → conversa, entra en
    modo plan, y el plan aprobado se vuelca a `docs/agents/planes/<tema>/` con puertas.
-5. `/ejecutar <tema>` → ejecutor y verificador por paso, resumen después de cada uno, las
-   dudas de los subagentes llegan como preguntas, para en la primera puerta; anotar el
-   `/context` del orquestador al final.
-
-**Fase siguiente del plan de slugs: `/ejecutar slugs`.** Sirve también como el punto 5 de la
-prueba de arriba. Sus tres pasos son **sin ejecutor** (solo verificador) y tienen puertas
-entre CommonCrawl, Wayback y el sondeo.
+5. ~~`/ejecutar <tema>`~~ → **probado con `slugs` el 2026-09-14** (solo verificadores, sin
+   ejecutor): anduvo, con los problemas de "Flujo de trabajo" abajo. Falta probarlo con un
+   paso que lleve ejecutor.
 
 Después, sin priorizar ni planificar: **categorizar las vacantes en tech-adyacentes y no**
 (por tokens del título, no por diccionario: casi la mitad de los títulos no se repite),
@@ -73,14 +70,50 @@ encadene sondeo → vacantes → normalización.
 
 El detalle de cada uno está en la sección "Abierto" de su tema.
 
+**Pendientes de diseñar (Elias, 2026-09-14):**
+
+- **Reintento de índices abortados** en el descubrimiento de CommonCrawl: 4 quedaron sin leer
+  (`-2026-25`, `-2026-04`, `-2025-51`, `-2025-47`) y no hay endpoint para índices sueltos.
+  → `descubrimiento`
+- **Borrar slugs truncados después del sondeo**: todo truncado `NOT_FOUND` con su versión no
+  truncada `ACTIVE`, para evitar falsos positivos y achicar los sondeos. → `descubrimiento`
+- **Logs de avance** en descubrimiento, sondeo y carga (~2 h cada uno, hoy solo `started` y
+  `finished`): confirmar que va bien o fallar temprano. → `descubrimiento`, `vacantes`
+
+**Flujo de trabajo** (visto en `/ejecutar slugs`; uso de contexto en
+`mediciones/slugs-13-09-2026/uso-de-contexto.md`):
+
+- **Los monitores no despiertan al subagente**: vieron cada `finished` a tiempo, pero el aviso
+  le llegó recién cuando el orquestador le escribió. Se perdieron 6 h 20 min antes de la carga
+  y 35 min antes de la normalización; Wayback, 25 min. Dos monitores además tenían mal el
+  filtro (cortaban con el WARN de un reintento, o el `tail -N` dejaba afuera el `finished`).
+- **Permisos**: `gh` sin sesión; el clasificador bloqueó `psql` por ssh y consultas de solo
+  lectura varias veces. Cada bloqueo paró la corrida hasta que Elias dio el permiso.
+- **Reportes viejos**: un verificador contestó el estado de hacía 1 h 15 min sin darse cuenta.
+- **El orquestador se desbordó**: 182k al cerrar (~150k sin el cierre), más que cualquier
+  verificador (38–81k). Sobre todo por ~40 avisos de avance de 5 en 5 min, cada uno
+  reenviado, y por consultar prod él mismo cuando los monitores no avisaban. Elias busca un
+  **techo blando de ~100k por sesión** (regla en `METODOLOGIA.md`, "Higiene de contexto").
+- **Estimaciones del plan desfasadas**: rango de `company` y duraciones (Wayback 40 → 98 min)
+  sin margen para fuentes externas degradadas; un endpoint que se creía existente no estaba.
+- **Por evaluar: Sonnet en ejecutor y verificador** para ahorrar tokens: el piso de un
+  subagente ronda ~38k por las definiciones de herramientas, aunque la tarea sea trivial.
+  Opinión del orquestador: probarlo primero en verificadores (siguen un guion con criterio
+  claro) y dejar Opus en ejecutores que diseñan código.
+- **Tamaño de pasos: bien** (Elias y orquestador): cada uno terminó con un resultado claro
+  para mirar en la puerta. Opinión del orquestador: lo caro fue la espera, no el tamaño; un
+  paso sin ejecutor con corridas de horas conviene partirlo en "lanzar" y "verificar al
+  terminar", con una espera que despierte al agente, en vez de un verificador vivo horas.
+
 - **Imagen de prod:** Elias corre sesiones en paralelo; antes de concluir de una prueba en
   prod, confirmar qué commit se publicó. → `prod-y-despliegue`
 - Endpoints de administración sin protección (importa al publicar uno que devuelva datos).
   → `prod-y-despliegue`
 - Respuesta truncada del índice justo en un salto de línea se acepta en silencio (Elias lo
   dejó abierto). → `descubrimiento`
-- Wayback con una línea cortada guarda un slug falso (el sondeo lo marca `NOT_FOUND`). →
-  `descubrimiento`
+- Wayback con una línea cortada guarda un slug falso (el sondeo lo marca `NOT_FOUND`; lo
+  cubriría el borrado de truncados). → `descubrimiento`
+- 4 `ACTIVE` sin vacantes y `fetched` una fila menos que `vacancy` (2026-09-14). → `vacantes`
 - Dominio EU de Greenhouse no se descubre (848 slugs), afuera por ahora. → `descubrimiento`
 - Reglas de slug descartan algunas empresas reales (`&`, `)`, 77 solo `http://`), a
   sabiendas. → `descubrimiento`
@@ -110,7 +143,6 @@ El detalle de cada uno está en la sección "Abierto" de su tema.
   reintentos, sondeo, `Company`.
 - `docs/agents/tema/vacantes.md` — API de `/jobs`, vacantes viejas, sync y recorrido masivo.
 - `docs/agents/tema/normalizacion.md` — extractores del título, tabla y corrida en prod.
-- `docs/agents/planes/slugs/` — plan en curso (se lee con `/ejecutar slugs`).
 - `docs/agents/MEDICION-SLUGS.md`, `docs/agents/MEDICION-VACANTES.md` — números medidos.
 - `mediciones/` — salidas crudas; no se lee salvo que un plan nombre un archivo.
 

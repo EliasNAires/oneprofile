@@ -1,6 +1,8 @@
 ---
 name: consultar
 description: Contestar una consulta sobre el código o el estado de oneprofile/backend sin cargar planes ni metodología y sin tocar nada. Usar cuando Elias escribe /consultar o solo quiere preguntar algo.
+model: sonnet
+effort: medium
 ---
 
 # Rol: consulta
