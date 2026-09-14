@@ -12,6 +12,11 @@
 - **Corrección CONSTRUIDA (2026-09-13):** A y B, tal como se describen abajo. `./mvnw test`
   da **126 en verde** (122 + 4 nuevos). **Falta la prueba en prod** (sección C), que
   necesita que Elias commitee y pushee.
+- **Primera prueba en prod (2026-09-14 00:21Z): no concluyente.** El índice de CommonCrawl dio
+  `504 Gateway Timeout` en 9 de los 10 índices y `CC-MAIN-2026-12` agotó los intentos con página
+  cortada; 0 leídos, 0 nuevas, ningún 400. La imagen ya está desplegada: repetir desde el paso 3
+  de la sección C. Docker ya no necesita `sudo`. Log:
+  `mediciones/slugs-prod-13-09-2026/commoncrawl.txt`.
 - Las preguntas del final ya tienen respuesta de Elias; están anotadas ahí mismo.
 
 ## Qué pasó

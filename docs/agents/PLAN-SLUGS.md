@@ -26,6 +26,10 @@
   empresas nuevas; `company` en **7.463** (3.417 sin sondear). Causa y corrección en
   **`docs/agents/PLAN-FALLAS-COMMONCRAWL.md`**.
 - **Corrección de esas fallas: CONSTRUIDA** (2026-09-13), `./mvnw test` da **126 en verde**.
+- **Desplegada y corrida en prod (2026-09-14): FALLÓ por causa externa.** CommonCrawl devolvió
+  504 en los 10 índices; 0 leídos, `company` sigue en 7.463. Hay que repetirla. Wayback, desplegado
+  pero sin correr. Detalle en `docs/agents/CONTEXTO.md` y el log en
+  `mediciones/slugs-prod-13-09-2026/commoncrawl.txt`.
 - **Por dónde retomar:** repetir la prueba en prod del paso 2 con el guion de la sección C de
   `docs/agents/PLAN-FALLAS-COMMONCRAWL.md`, y después la del paso 3.
 

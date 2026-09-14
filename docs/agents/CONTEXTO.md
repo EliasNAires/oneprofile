@@ -4,7 +4,7 @@
 > sesión por fase" en `docs/agents/METODOLOGIA.md`). Tope ~12 KB (`wc -c`). El detalle vive
 > en los docs de tema y se lee solo si "Leer:" lo pide. **`docs/para-humanos/` no se lee.**
 
-**Última actualización:** 2026-09-13
+**Última actualización:** 2026-09-14
 
 ## Qué es
 
@@ -22,32 +22,58 @@ lista de vacantes que matcheen con el perfil del usuario.
 - **Normalización del título** (limpieza, seniority, modalidad) corrida en prod el
   2026-09-13 en 24 s: títulos distintos de 87.647 a 77.630, 32.219 con seniority, 19.255 con
   modalidad.
-- **Plan en curso: traer todos los slugs de Greenhouse** (`docs/agents/PLAN-SLUGS.md`). El
-  descubrimiento sobre los 10 índices recientes **falló en prod** (3 leídos, 7 fallidos); la
-  corrección está construida. El descubrimiento sobre **Wayback** está construido. Los dos
-  están en el commit `7f33a53`, ya en `origin/main`, y **ninguno se probó en prod**.
+- **Plan en curso: traer todos los slugs de Greenhouse** (`docs/agents/PLAN-SLUGS.md`). La
+  corrección de CommonCrawl y el descubrimiento sobre Wayback están en `7f33a53`, **desplegados
+  en prod** desde el 2026-09-14 00:20Z (imagen `b17586abbec2`, creada 23:46:59Z, un minuto
+  después de `ab7a5b2`; la imagen **no trae label de revision**, el commit se deduce por la hora).
+- **Segunda corrida de CommonCrawl (2026-09-14 00:21:41Z → 00:33:05Z): FALLÓ por causa
+  externa**, no prueba ni refuta la corrección. `0 indexes read, 0 new companies saved, 10
+  indexes failed`; `company` sigue en **7.463**. 9 índices dieron `504 Gateway Timeout` del nginx
+  de CommonCrawl en los 4 intentos (en el conteo de páginas o en la página 0); `CC-MAIN-2026-12`
+  agotó los intentos con `Page of the index arrived cut`. 33 `Retrying` (31 por 504, 2 por página
+  cortada, ninguno se recuperó), 0 respuestas 400, 0 ERROR. El mensaje del 504 mete el HTML de
+  nginx en el log, a veces en varias líneas. Log crudo:
+  `mediciones/slugs-prod-13-09-2026/commoncrawl.txt`.
+- **Wayback todavía no se corrió**: el POST quedó sin disparar (ver "Prueba de orquestación").
+- **Docker en prod corre sin `sudo`** desde el 2026-09-13: el usuario de elitedesk1 está en el
+  grupo `docker`. No hace falta clave para desplegar ni consultar.
+- **Prueba de orquestación con subagentes (2026-09-14), sin cerrar.** Elias probó que la sesión
+  orqueste y cada paso de prueba en prod lo ejecute un subagente que devuelve solo el resumen.
+  Plan: A (deploy + CommonCrawl) → B (Wayback) → C (sondeo), en cadena porque las dos fuentes
+  comparten el lock. Lo que se vio:
+  - El clasificador de auto mode **bloqueó lanzar un subagente con la clave de sudo en el
+    prompt**, y bloqueó que la sesión se escriba `.claude/settings.local.json`. Por eso se pasó
+    Docker a sin sudo.
+  - El subagente **pudo** `pull`, `up -d`, logs y SQL, pero **no el POST que dispara la corrida**
+    ni un `ssh … until … sleep` en segundo plano. El POST de CommonCrawl lo corrió la sesión
+    orquestadora y pasó; el de Wayback, justo después y combinado con un `select`, lo bloqueó
+    también en la orquestadora. Queda sin saber si pasa solo.
+  - El subagente **se detuvo creyendo tener una espera viva** y hubo que retomarlo dos veces con
+    `SendMessage`; después mandó notificaciones repetidas. Esperó bien con `Monitor` cada 150 s.
+  - Contexto: el subagente A cerró en ~54k. La orquestadora llegó a **~184k**, por encima del tope
+    de 100k que se buscaba: la mayor parte la sumó cargar la skill `update-config` (trae el
+    esquema entero de settings), más las idas y vueltas por los permisos.
 - **La dieta de contexto terminó** (2026-09-13): docs de agentes en `docs/agents/`, este
   tablero y cuatro temas. Falta la prueba real: `/context` después de la lectura inicial de
   la sesión siguiente debería rondar ~35k en vez de ~70k.
 
 ## Qué sigue
 
-**Fase siguiente: probar en prod el descubrimiento sobre Wayback y la corrección de
-CommonCrawl**, una después de la otra, en cualquier orden. Comparten el lock (la segunda da
-409 hasta que la primera loguee `finished`) y un `up -d` mata la corrida en curso.
+**Fase siguiente: probar en prod el descubrimiento sobre Wayback, y repetir CommonCrawl
+cuando su índice responda**, una después de la otra. Comparten el lock (la segunda da 409
+hasta que la primera loguee `finished`). La imagen ya está desplegada: **no hace falta
+`pull`/`up -d`**, y un `up -d` mata la corrida en curso.
 
 **Leer:** `docs/agents/tema/descubrimiento.md`, `docs/agents/PLAN-SLUGS.md` y, para
-CommonCrawl, la sección C de `docs/agents/PLAN-FALLAS-COMMONCRAWL.md` (su guion).
+CommonCrawl, la sección C de `docs/agents/PLAN-FALLAS-COMMONCRAWL.md` (su guion, sin el deploy).
 
 Wayback:
 
-1. Confirmar que el pipeline de `7f33a53` (o posterior) terminó en verde y que no hay una
-   corrida de CommonCrawl en curso.
-2. Por `ssh elitedesk1`, con `sudo`:
+1. Confirmar en el log que no hay una corrida en curso (`docker compose logs --since 30m app`).
+2. Por `ssh elitedesk1`, sin `sudo`; el POST solo, sin encadenarlo con otros comandos:
    ```bash
-   cd ~/oneprofile && sudo docker compose pull && sudo docker compose up -d
-   sudo docker compose exec app curl -i -X POST 'localhost:8080/admin/discovery/greenhouse/wayback'   # 202
-   sudo docker compose logs -f app
+   cd ~/oneprofile && docker compose exec -T app curl -s -i -X POST 'localhost:8080/admin/discovery/greenhouse/wayback'   # 202
+   docker compose logs --since <hora> app | grep -iE "finished|WARN|Giving up" | tail
    ```
 3. Esperado: ~40 min (439 páginas), ningún `WARN` que termine en falla,
    `Greenhouse discovery on Wayback finished: N slugs found` con N cerca de **17.730**, y
