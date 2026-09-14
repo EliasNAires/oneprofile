@@ -22,10 +22,11 @@ lista de vacantes que matcheen con el perfil del usuario.
 - **Normalización del título** (limpieza, seniority, modalidad) corrida en prod el
   2026-09-13 en 24 s: títulos distintos de 87.647 a 77.630, 32.219 con seniority, 19.255 con
   modalidad.
-- **Plan en curso: traer todos los slugs de Greenhouse** (`docs/agents/PLAN-SLUGS.md`). El
+- **Plan en curso: traer todos los slugs de Greenhouse** (`docs/agents/planes/slugs/`). El
   descubrimiento sobre los 10 índices recientes **falló en prod** (3 leídos, 7 fallidos); la
   corrección está construida. El descubrimiento sobre **Wayback** está construido. Los dos
-  están en el commit `7f33a53`, ya en `origin/main`, y **ninguno se probó en prod**.
+  están en el commit `7f33a53`, ya en `origin/main`, y **ninguno se probó en prod**. Faltan
+  tres corridas en prod, sin código: CommonCrawl, Wayback, y sondeo + vacantes + normalización.
 - **La dieta de contexto terminó** (2026-09-13): docs de agentes en `docs/agents/`, este
   tablero y cuatro temas. Falta la prueba real: `/context` después de la lectura inicial de
   la sesión siguiente debería rondar ~35k en vez de ~70k.
@@ -49,28 +50,9 @@ ejecutor / verificador / consulta, construidos el 2026-09-13 (sección "Roles" d
    dudas de los subagentes llegan como preguntas, para en la primera puerta; anotar el
    `/context` del orquestador al final.
 
-**Pendiente después: probar en prod el descubrimiento sobre Wayback y la corrección de
-CommonCrawl**, una después de la otra, en cualquier orden. Comparten el lock (la segunda da
-409 hasta que la primera loguee `finished`) y un `up -d` mata la corrida en curso.
-
-Para esa, **Leer:** `docs/agents/tema/descubrimiento.md`, `docs/agents/PLAN-SLUGS.md` y, para
-CommonCrawl, la sección C de `docs/agents/PLAN-FALLAS-COMMONCRAWL.md` (su guion).
-
-Wayback:
-
-1. Confirmar que el pipeline de `7f33a53` (o posterior) terminó en verde y que no hay una
-   corrida de CommonCrawl en curso.
-2. Por `ssh elitedesk1` (Docker sin `sudo`: el usuario está en el grupo `docker`):
-   ```bash
-   cd ~/oneprofile && docker compose pull && docker compose up -d
-   docker compose exec app curl -i -X POST 'localhost:8080/admin/discovery/greenhouse/wayback'   # 202
-   docker compose logs -f app
-   ```
-3. Esperado: ~40 min (439 páginas), ningún `WARN` que termine en falla,
-   `Greenhouse discovery on Wayback finished: N slugs found` con N cerca de **17.730**, y
-   `select count(*) from company` cerca de **18.000**.
-4. Si da, se cierra acá y en `PLAN-SLUGS.md` (sigue sondear y cargar lo nuevo). Si falla,
-   reporte con el log crudo en `mediciones/` y la causa; la fase siguiente pasa a corregir.
+**Fase siguiente del plan de slugs: `/ejecutar slugs`.** Sirve también como el punto 5 de la
+prueba de arriba. Sus tres pasos son **sin ejecutor** (solo verificador) y tienen puertas
+entre CommonCrawl, Wayback y el sondeo.
 
 Después, sin priorizar ni planificar: **categorizar las vacantes en tech-adyacentes y no**
 (por tokens del título, no por diccionario: casi la mitad de los títulos no se repite),
@@ -128,7 +110,7 @@ El detalle de cada uno está en la sección "Abierto" de su tema.
   reintentos, sondeo, `Company`.
 - `docs/agents/tema/vacantes.md` — API de `/jobs`, vacantes viejas, sync y recorrido masivo.
 - `docs/agents/tema/normalizacion.md` — extractores del título, tabla y corrida en prod.
-- `docs/agents/PLAN-SLUGS.md`, `docs/agents/PLAN-FALLAS-COMMONCRAWL.md` — planes en curso.
+- `docs/agents/planes/slugs/` — plan en curso (se lee con `/ejecutar slugs`).
 - `docs/agents/MEDICION-SLUGS.md`, `docs/agents/MEDICION-VACANTES.md` — números medidos.
 - `mediciones/` — salidas crudas; no se lee salvo que un plan nombre un archivo.
 

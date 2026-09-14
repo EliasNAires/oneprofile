@@ -19,6 +19,9 @@ subagentes: no los leas. `CONTEXTO.md` se lee recién para actualizarlo.
 
 ## Por cada paso pendiente
 
+Si `orquestador.md` marca el paso **sin ejecutor** (no lleva código: una corrida o una prueba
+en prod), se saltean los puntos 2, 3 y 6: va directo al verificador y, si falla, se para.
+
 1. **Puerta "antes"**, si la hay: pararse y decirle a Elias qué hace falta.
 2. **Ejecutor.** `Agent` con `subagent_type: "ejecutor"` y un prompt que diga solo:
    la ruta del archivo de paso y los desvíos de pasos anteriores que le afecten (o

@@ -3,7 +3,7 @@
 De un archivo web (CommonCrawl, Wayback) a filas en `company`, y del sondeo a saber cuáles
 siguen vivas. Lo que el código no dice: porqués, lo medido y lo descartado. Los números
 de cobertura están en `docs/agents/MEDICION-SLUGS.md`; el plan en curso, en
-`docs/agents/PLAN-SLUGS.md`.
+`docs/agents/planes/slugs/`.
 
 ## Hechos que condicionan el diseño
 
@@ -55,8 +55,12 @@ constructores con argumentos, el público necesita `@Autowired` o el contexto no
   no existe).
 - Una página son ~9 MB y ~12.000 líneas: **se lee en streaming**, con `.exchange()`.
 - El patrón viaja percent-encodeado y el índice lo acepta (verificado contra el real).
-- Un 4xx no se reintenta (índice inexistente, patrón sin capturas). Una página cortada a
-  mitad de línea sí: el error de Jackson se convierte en `ResourceAccessException`.
+- Un 4xx no se reintenta (índice inexistente, patrón sin capturas); antes de rendirse,
+  `HttpRetry` loguea la página pedida y el cuerpo del error (`... Giving up`).
+- **Una página cortada a mitad de línea sí se reintenta.** El índice saturado corta el cuerpo
+  con 200, `Transfer-Encoding: chunked` y sin `Content-Length`, así que HTTP no lo detecta. Es
+  transitorio (bajada a mano minutos después, completa). En Jackson 3 el error de parseo no es
+  `RestClientException` y `HttpRetry` no lo veía: se convierte en `ResourceAccessException`.
 
 **Wayback** (medido en `MEDICION-SLUGS.md`):
 
@@ -138,13 +142,18 @@ Resultado: `select board_status, count(*) from company group by board_status;`
 - **Sondeo** (4.046 empresas): **3.121 `ACTIVE`, 708 `NOT_FOUND`, 217 `EMPTY`**. El 77% sigue
   vivo con vacantes; se esperaba más mortandad.
 - **Los 10 índices recientes fallaron** el 2026-09-13: 3 leídos, 7 fallidos, 475 nuevas,
-  `company` en 7.463. Reporte y corrección (construida, sin probar en prod) en
-  `docs/agents/PLAN-FALLAS-COMMONCRAWL.md`. Al probarla, esperado: `company` cerca de 8.614.
+  `company` en 7.463 (5 por página cortada, 2 por `400`). Corrección construida, sin probar
+  en prod: `docs/agents/planes/slugs/`. Esperado: `company` entre 8.328 y ~8.650 (`2025-47` no
+  se midió).
 - **Wayback: construido, sin correr en prod.** Esperado: ~40 min (439 páginas), N cerca de
   17.730 slugs, `company` cerca de 18.000.
 
 ## Abierto
 
+- **Dos `400 Bad Request` de CommonCrawl sin causa confirmada** (`-21` y `-04`, 2026-09-13),
+  cuando los conteos eran normales. Hipótesis: bajo carga `showNumPages` dio páginas de más
+  (una página fuera de rango da 400). No se reintentan (Elias); la línea `Giving up` dirá el
+  motivo. Log crudo en `mediciones/fallas-commoncrawl-13-09-2026/`.
 - **Respuesta truncada del índice justo en un salto de línea**: HTTP 200 con cuerpo corto
   (pasó 3 veces bajando a mano) se acepta en silencio. Elias lo dejó abierto el 2026-09-13.
 - **Wayback con una línea cortada guarda un slug falso** (`mercadol`); el sondeo lo marca

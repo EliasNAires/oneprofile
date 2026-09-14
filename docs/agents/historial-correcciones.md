@@ -36,3 +36,4 @@ Formato: fecha — regla — de dónde salió.
 - 2026-09-13 — Dieta de contexto: docs para agentes en `docs/agents/`, la regla una sola vez, se escribe lo que el código no dice, topes de ~12 KB, "Leer:" en la fase siguiente, higiene de contexto — las sesiones arrancaban con ~70k tokens.
 - 2026-09-13 — Roles planificador / orquestador / ejecutor / verificador / consulta, con plan partido en `docs/agents/planes/<tema>/` (deroga una sesión por fase) — Elias se la pasaba haciendo `/clear` y "seguí con el siguiente paso".
 - 2026-09-13 — El planificador usa modo plan y escribe el plan ya partido; el orquestador solo encadena; las dudas de los subagentes van a Elias, nadie las resuelve solo — propuse un planificador sin modo plan y no dejé claro que el orquestador no decide.
+- 2026-09-13 — Un paso sin código (corrida o prueba en prod) se marca "sin ejecutor": solo verificador, y si falla se para — el plan de slugs quedaba con tres pasos sin nada que construir.

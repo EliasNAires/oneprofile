@@ -71,6 +71,8 @@ la tarea: **nadie resuelve solo una duda**, le llega a Elias.
   vuelve a fallar, para. Le reenvía a Elias las preguntas de los subagentes tal cual y
   continúa al mismo subagente con la respuesta. Para en las **puertas** que declara
   `orquestador.md` (commit/push, prod, dataset que Elias lee primero, decisión de diseño).
+  Un paso sin código (una corrida, una prueba en prod) se marca **sin ejecutor**: solo
+  verificador, y si falla se para.
   Resume cada paso a Elias y es el **único que actualiza `CONTEXTO.md`**.
 - **Ejecutor** (agente `ejecutor`): construye un paso con sus tests, o lo corrige.
 - **Verificador** (agente `verificador`): corre el guion del paso, sin editar.
