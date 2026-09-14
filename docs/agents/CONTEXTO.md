@@ -34,22 +34,28 @@ lista de vacantes que matcheen con el perfil del usuario.
 
 ## Qué sigue
 
-**Fase siguiente: probar la metodología nueva.** Roles planificador / orquestador /
-ejecutor / verificador / consulta, construidos el 2026-09-13 (sección "Roles" de
-`METODOLOGIA.md`, `.claude/skills/` y `.claude/agents/`), sin probar.
+**Fase siguiente: `/ejecutar descubrimiento-v2`** (plan en
+`docs/agents/planes/descubrimiento-v2/`, planificado el 2026-09-14). En siete pasos:
+- mejoras de orquestación (Sonnet en subagentes, esperas con `Monitor` del orquestador);
+- logs de avance en sondeo, carga y descubrimiento;
+- 3 pasadas sobre los índices fallidos de CommonCrawl;
+- dominio EU (misma API: sondeo y carga no cambian);
+- blacklist y limpieza de slugs truncados al final del sondeo.
 
-**Leer:** nada; el guion se sigue en sesiones nuevas.
+Solo implementación, con tests y dev; la corrida en prod queda para después.
+
+Prueba de la metodología nueva (roles construidos el 2026-09-13), estado:
 
 1. Las skills `planificar`, `ejecutar`, `consultar` y los agentes `ejecutor`, `verificador`
    aparecen en `/skills` y `/agents`.
 2. Sesión nueva sin comando → el agente pregunta el modo antes de leer nada.
 3. `/consultar ¿qué hace GreenhouseDiscoveryService?` → contesta sin leer planes ni
    metodología; `/context` bajo ~35k.
-4. `/planificar` con un tema chico (p. ej. categorización tech/no tech) → conversa, entra en
-   modo plan, y el plan aprobado se vuelca a `docs/agents/planes/<tema>/` con puertas.
+4. ~~`/planificar`~~ → **probado con `descubrimiento-v2` el 2026-09-14**: conversó, entró en
+   modo plan y volcó el plan aprobado.
 5. ~~`/ejecutar <tema>`~~ → **probado con `slugs` el 2026-09-14** (solo verificadores, sin
-   ejecutor): anduvo, con los problemas de "Flujo de trabajo" abajo. Falta probarlo con un
-   paso que lleve ejecutor.
+   ejecutor): anduvo, con los problemas de "Flujo de trabajo" abajo. Con ejecutor se prueba
+   en `descubrimiento-v2`.
 
 Después, sin priorizar ni planificar: **categorizar las vacantes en tech-adyacentes y no**
 (por tokens del título, no por diccionario: casi la mitad de los títulos no se repite),
@@ -70,7 +76,8 @@ encadene sondeo → vacantes → normalización.
 
 El detalle de cada uno está en la sección "Abierto" de su tema.
 
-**Pendientes de diseñar (Elias, 2026-09-14):**
+**En plan `descubrimiento-v2`** (se sacan de acá al terminarlo; también el dominio EU y lo
+resuelto de "Flujo de trabajo"):
 
 - **Reintento de índices abortados** en el descubrimiento de CommonCrawl: 4 quedaron sin leer
   (`-2026-25`, `-2026-04`, `-2025-51`, `-2025-47`) y no hay endpoint para índices sueltos.
@@ -114,7 +121,9 @@ El detalle de cada uno está en la sección "Abierto" de su tema.
 - Wayback con una línea cortada guarda un slug falso (el sondeo lo marca `NOT_FOUND`; lo
   cubriría el borrado de truncados). → `descubrimiento`
 - 4 `ACTIVE` sin vacantes y `fetched` una fila menos que `vacancy` (2026-09-14). → `vacantes`
-- Dominio EU de Greenhouse no se descubre (848 slugs), afuera por ahora. → `descubrimiento`
+- Dominio EU de Greenhouse no se descubre (848 slugs): **entra en `descubrimiento-v2`**. La API
+  de siempre contesta los boards EU (verificado 2026-09-14); no hay otras regiones. →
+  `descubrimiento`
 - Reglas de slug descartan algunas empresas reales (`&`, `)`, 77 solo `http://`), a
   sabiendas. → `descubrimiento`
 - El sondeo se corre entero cada vez; nada fuerza el orden sondeo → vacantes →
