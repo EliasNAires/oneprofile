@@ -76,8 +76,10 @@ la tarea: **nadie resuelve solo una duda**, le llega a Elias.
   Una prueba nueva (p. ej. reintentar lo que falló) va a un **subagente nuevo** con un
   resumen breve de lo que hizo el anterior, no al mismo que ya cargó mucho contexto.
   Resume cada paso a Elias y es el **único que actualiza `CONTEXTO.md`**.
-- **Ejecutor** (agente `ejecutor`): construye un paso con sus tests, o lo corrige.
-- **Verificador** (agente `verificador`): corre el guion del paso, sin editar.
+  Un paso **de espera** (corrida larga) lo espera el orquestador con su propio `Monitor`
+  (solo la línea final): el `Monitor` de un subagente no lo despierta.
+- **Ejecutor** (agente `ejecutor`, Sonnet): construye un paso con sus tests, o lo corrige.
+- **Verificador** (agente `verificador`, Sonnet): corre el guion del paso, sin editar.
 - **Consulta** (`/consultar`): solo lectura.
 
 Ejecutor y verificador leen solo su archivo de paso y las secciones de este archivo que
@@ -103,6 +105,8 @@ reales y la fase siguiente con su "Leer:" o `/ejecutar <tema>`.
 - **Las consultas a prod las corro yo** (`ssh elitedesk1`); no se le devuelven comandos a
   Elias. Si él ya autorizó y la herramienta bloquea algo (p. ej. `sudo`), se busca otra
   forma razonable de ejecutarlo en vez de delegar.
+- **Cada dato observado va con la hora** (timestamp del log o `date -u`); el estado de algo
+  que sigue corriendo se vuelve a mirar antes de reportarlo.
 - **Quién lee primero:** verificar un número puntual lo analizo y lo cuento. **Explorar
   la distribución de un dataset para decidir un modelo la lee Elias antes**: el
   entregable es el `.txt` crudo, más si dieron los controles de sanidad, y el análisis se

@@ -72,6 +72,9 @@ Idea: no cargar las de `updated_at` de más de dos meses. Descartada midiendo:
   **No es transaccional** (la corrida dura horas: retendría una conexión y perdería todo).
   500 ms entre empresas; una que falla (p. ej. un board muerto desde el sondeo da 404) va
   a `WARN` y `failed` y no aborta.
+- **Logs** (2026-09-14): avance con `util/ProgressLog` cada 500 empresas y cierre
+  `Greenhouse vacancy sweep finished: N companies, F fetched, I inserted, U updated, D deleted,
+  X failed` o `... aborted`. Formato común en "Logs" de `descubrimiento.md`.
 - **Solo pide a las `ACTIVE`**: trabaja sobre la foto del último sondeo, así que el orden
   correcto es sondeo → vacantes, y nada lo fuerza.
 - `findSlugsByAtsAndBoardStatus` devuelve slugs y no entidades: `syncCompany` recibe un slug.
@@ -95,6 +98,12 @@ Elias lo corre en bucle cada 60 s; el script vive en el home del servidor, sin v
 
 **Dev arranca vacía**: los datos viven en prod. Para probar la carga en dev:
 `insert into company (id, ats, slug) values (nextval('company_seq'), 'GREENHOUSE', 'figma');`
+- Desde bash, `sh -c` con **comillas dobles afuera** (`sh -c "psql ... -c \"...'figma'...\""`
+  o `docker compose exec -T postgres psql -U oneprofile -d oneprofile -c "..."`): con
+  simples afuera y `''` adentro, bash se come las comillas (Elias, 2026-09-14).
+- **El Postgres de dev no tiene volumen**: los datos duran lo que el container. Para vaciarlo,
+  `docker compose down` + `docker compose up -d`, sin `truncate` (Elias; el clasificador
+  bloquea el `truncate` y el `down` a los subagentes aunque se apruebe con `/permissions`).
 
 ## Probado
 
@@ -116,13 +125,11 @@ Elias lo corre en bucle cada 60 s; el script vive en el home del servidor, sin v
   de pausa. Normalización `/missing` después: 89.376 en 18 s, 0 sin normalizar. De qué fuente
   salieron: tabla en `descubrimiento.md` ("Qué fuente rindió"). Números:
   `mediciones/slugs-13-09-2026/sondeo-y-carga.txt`.
-  - La carga no loguea avance: se estimó con el `xmin` de las filas de `vacancy` (no hay
-    columna de sincronización; `updated_at` es la fecha de Greenhouse).
+  - La carga todavía no logueaba avance: se estimó con el `xmin` de las filas de `vacancy`
+    (no hay columna de sincronización; `updated_at` es la fecha de Greenhouse).
 
 ## Abierto
 
-- **Logs de avance de la carga**: ver el punto de logs en `descubrimiento.md` (Elias,
-  2026-09-14); la carga dura ~2 h y solo loguea `started` y `finished`.
 - **4 `ACTIVE` sin vacantes** y **`fetched` (216.867) una fila menos que `vacancy`
   (216.868)** en el recorrido del 2026-09-14. Sin averiguar.
 
@@ -136,3 +143,8 @@ Elias lo corre en bucle cada 60 s; el script vive en el home del servidor, sin v
 - **Departamento y ubicación no se normalizan**: se decidió solo el título por ahora.
 - **Los endpoints de administración no tienen protección**. Hoy el puerto no se publica; se
   decide cuando exista un endpoint que devuelva vacantes.
+- **Borrar una `Company` no borra en cascada sus `Vacancy`**: ni el `@ManyToOne` de
+  `Vacancy.java:27` declara `cascade`, ni la FK de `V3__create_vacancy.sql:5` tiene
+  `on delete cascade` (es `references company` a secas, `NO ACTION`). El único borrado de
+  empresas, la limpieza de truncados (2026-09-14), borra las vacantes a mano en la misma
+  transacción; uno nuevo tiene que hacer lo mismo.

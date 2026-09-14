@@ -5,10 +5,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.time.Clock;
 import java.time.Duration;
 import java.util.function.Consumer;
 
 import oneprofile.backend.util.HttpRetry;
+import oneprofile.backend.util.ProgressLog;
 
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
@@ -39,6 +41,9 @@ public class WaybackCdxClient {
 	/** The pace at which the whole archive was read without a single 429. */
 	private static final Duration PAUSE_BETWEEN_PAGES = Duration.ofSeconds(2);
 
+	/** One pattern takes up to ~270 pages; logging every page would flood the log. */
+	private static final int PROGRESS_INTERVAL = 10;
+
 	private final RestClient restClient;
 
 	private final HttpRetry retry;
@@ -62,9 +67,12 @@ public class WaybackCdxClient {
 	 */
 	public void forEachUrl(String pattern, Consumer<String> onUrl) {
 		int pages = numberOfPages(pattern);
+		ProgressLog progress = new ProgressLog("Wayback " + pattern, "pages", pages, PROGRESS_INTERVAL,
+				Clock.systemUTC());
 		for (int page = 0; page < pages; page++) {
 			pause();
 			readPage(pattern, page, onUrl);
+			progress.itemDone(false);
 		}
 	}
 

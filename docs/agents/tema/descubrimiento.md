@@ -77,7 +77,16 @@ uno, guardando lo nuevo antes de pasar al siguiente.
 - **10 y no los 127** (Elias): Wayback cubre muchísimo; lo que importaba era no quedarse con
   un solo índice, que ve una fracción (~4.000 slugs; ~3.000 se repiten con el siguiente;
   16 índices unen 10.086 y no se aplanó).
-- **Un índice que falla no corta la corrida**: `WARN` y a `failedIndexes`.
+- **Hasta 3 pasadas** (Elias, 2026-09-14): la 1 con los 10 índices; los que fallan (agotados
+  sus reintentos de `HttpRetry`, que no cambian) van a la 2, y los de la 2 a la 3. Lo que
+  falla en la 3 queda en `failedIndexes`. Un índice que falla no corta la corrida.
+- **Dominio EU** (Elias, 2026-09-14): `GreenhouseBoardUrl.indexPatterns()` trae 4 patrones
+  (`job-boards.`, `boards.`, `job-boards.eu.`, `boards.eu.`) y el service los recorre sin
+  distinguirlos; mismo slug en los dos dominios = una empresa. **Sondeo y carga no cambian:
+  la API de siempre contesta los boards EU** (verificado; `proton` cargó 69 vacantes con URL
+  `job-boards.eu.`). No hay otras regiones.
+- **Saltea `blacklisted_slug`** (tabla `id`, `ats`, `slug`, unique `(ats, slug)`, V5): los
+  slugs que la limpieza de truncados borró no vuelven a guardarse.
 - **No es `@Transactional`**: la lectura es tiempo de red; `saveAll` abre su transacción
   corta y sigue en lotes JDBC de 50.
 
@@ -120,6 +129,27 @@ respuesta, no un error**: no se reintenta, y por eso `.exchange()` en vez de `.r
 
 `POST /admin/probe/greenhouse`, sin parámetros, calca a `DiscoveryController` a propósito.
 Resultado: `select board_status, count(*) from company group by board_status;`
+
+**Limpieza de truncados** (`GreenhouseTruncatedSlugCleanupService`, Elias 2026-09-14): corre
+sola al terminar el sondeo, desde `BoardProbeController`. Todo slug `NOT_FOUND` que sea
+prefijo de otro `ACTIVE` (`figm` frente a `figma`) se borra de `company` y va a
+`blacklisted_slug`. **Si tiene vacantes, se borran con la empresa en la misma transacción**
+(Elias); `normalized_vacancy` cae por cascade. Log: `Greenhouse truncated slug cleanup
+finished: N companies removed and blacklisted`.
+
+## Logs (Elias, 2026-09-14)
+
+Fail fast = verlo en el log; la app no aborta sola. `util/ProgressLog` da las líneas de
+avance (hechos de total, fallas acumuladas). Toda corrida cierra con una línea inconfundible:
+`Greenhouse ... finished: <contadores>` o `... aborted` (excepción inesperada); ya no existe el
+cierre `failed`. En el descubrimiento:
+- `CommonCrawl pass {n} of 3: {k} indexes [ids]` al empezar cada pasada;
+- `CommonCrawl index {id} pass {n}: {s} slugs found, {c} new companies saved` al terminar
+  cada índice (antes lo logueaba el controller al final);
+- `WARN CommonCrawl index {id} failed on pass {n}: {motivo}`;
+- Wayback: avance `"Wayback " + patrón` cada 10 páginas.
+
+Para esperar una corrida alcanza con `grep -m1 -E '<proceso> (finished|aborted)'`.
 
 ## `Company`
 
@@ -176,21 +206,17 @@ mismo día (`vacantes.md`).
   que infla el sondeo; los índices viejos de CommonCrawl dieron más vacantes con un tercio de
   las empresas.
 
+### Probado en dev (plan `descubrimiento-v2`, 2026-09-14)
+
+- **Tasa de fallo de CommonCrawl, para mirar en prod**: una corrida (17:02 UTC) falló en los
+  **10 de 10** índices en la pasada 1 (8× `504`, 1× `502`, 1× I/O error, ~17 min); en la 2
+  iba 1 leído y 5 fallidos (`504`, `400 Connection aborted`, página cortada) cuando se cortó.
+  La siguiente (17:39 UTC) leyó los 10 sin fallas en ~27 min. Si prod se parece a la primera,
+  3 pasadas pueden no alcanzar.
+- Limpieza: `figm` borrado y en blacklist, `figma` `ACTIVE`, `no-existe-xyz` `NOT_FOUND` queda.
+
 ## Abierto
 
-- **Reintento de índices abortados, por diseñar** (Elias, 2026-09-14): un mecanismo en el
-  descubrimiento de CommonCrawl que vuelva a pedir los índices que fallaron en la primera
-  pasada. Hoy van a `failedIndexes` y se pierden: el 2026-09-14 quedaron sin leer `-2026-25`,
-  `-2026-04`, `-2025-51` y `-2025-47`, y **no existe endpoint para pedir índices sueltos**.
-- **Borrado de slugs truncados después del sondeo, por diseñar** (Elias, 2026-09-14): eliminar
-  todo slug truncado `NOT_FOUND` que tenga su versión no truncada `ACTIVE` (p. ej. `mercadol`
-  frente a `mercadolibre`), para evitar falsos positivos y no volver a sondearlos. Salen de
-  líneas cortadas (Wayback, índices truncados en un salto de línea).
-- **Logs de avance, por mejorar** (Elias, 2026-09-14): descubrimiento, sondeo y carga duran
-  ~2 h y solo loguean `started` y `finished`. Hace falta ver el avance mientras corren (páginas
-  o índices hechos, empresas por minuto, fallas acumuladas) para confirmar que van bien o
-  fallar temprano, sin esperar al final. Hoy el avance se deduce con SQL (`xmin`,
-  `last_probed_at`).
 - **Dos `400 Bad Request` de CommonCrawl sin causa confirmada** (`-21` y `-04`, 2026-09-13),
   cuando los conteos eran normales. Hipótesis: bajo carga `showNumPages` dio páginas de más
   (una página fuera de rango da 400). No se reintentan (Elias); la línea `Giving up` dirá el
@@ -199,9 +225,13 @@ mismo día (`vacantes.md`).
 - **Respuesta truncada del índice justo en un salto de línea**: HTTP 200 con cuerpo corto
   (pasó 3 veces bajando a mano) se acepta en silencio. Elias lo dejó abierto el 2026-09-13.
 - **Wayback con una línea cortada guarda un slug falso** (`mercadol`); el sondeo lo marca
-  `NOT_FOUND`. Anotado sin arreglar (Elias); lo limpiaría el borrado de truncados de arriba.
-- **Dominio EU** (`job-boards.eu.greenhouse.io`, 848 slugs, 93 ya en prod por el otro) no se
-  descubre; tocaría sondeo y carga (`boards-api.eu.greenhouse.io`). Afuera por ahora (Elias).
+  `NOT_FOUND`. Sin arreglar en la lectura (Elias); lo limpia la limpieza de truncados al final
+  del sondeo si la versión completa está `ACTIVE`.
+- **Sin probar en prod**: pasadas, dominio EU (848 slugs estimados), blacklist y limpieza.
+  La corrida descubrimiento → sondeo → carga está por planificar.
 - **El sondeo se corre entero cada vez**: los datos para filtrar están, la consulta no. Se
   agrega con el cron.
 - **Orden sondeo → vacantes → normalización** no lo fuerza nada; importa cuando haya cron.
+- **Leer los índices de CommonCrawl directo de S3 o `data.commoncrawl.org` en vez del
+  servidor de índices, por diseñar** (Elias, 2026-09-14): fallaron 10 índices seguidos
+  contra el servidor de índices.

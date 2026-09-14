@@ -2,6 +2,7 @@ package oneprofile.backend.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
@@ -18,17 +19,21 @@ import oneprofile.backend.repository.CompanyRepository;
 import oneprofile.backend.repository.VacancyRepository;
 import oneprofile.backend.service.GreenhouseVacancySweepService.SweepResult;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase;
 import org.springframework.boot.jpa.test.autoconfigure.TestEntityManager;
+import org.springframework.boot.test.system.CapturedOutput;
+import org.springframework.boot.test.system.OutputCaptureExtension;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.client.RestClientException;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Import(TestcontainersConfiguration.class)
+@ExtendWith(OutputCaptureExtension.class)
 class GreenhouseVacancySweepServiceTest {
 
 	@Autowired
@@ -85,6 +90,21 @@ class GreenhouseVacancySweepServiceTest {
 		assertThat(result).isEqualTo(new SweepResult(2, 2, 1, 1, 0, 1));
 		assertThat(this.vacancies.findAll()).extracting(Vacancy::getExternalId)
 				.containsExactlyInAnyOrder(4001L, 4003L, 4004L);
+	}
+
+	@Test
+	void logsProgressWithTheFailuresAccumulatedSoFar(CapturedOutput output) {
+		store("globant", BoardStatus.ACTIVE);
+		store("auth0", BoardStatus.ACTIVE);
+
+		// Neither slug is in the canned boards, so the fake client fails on both.
+		GreenhouseVacancySyncService syncService = new GreenhouseVacancySyncService(new FakeBoardClient(Map.of()),
+				this.companies, this.vacancies);
+		new GreenhouseVacancySweepService(this.companies, syncService, Duration.ZERO, 1, Clock.systemUTC())
+				.syncAllActive();
+
+		assertThat(output.getOut())
+				.contains("Greenhouse vacancy sweep progress: 1 of 2 companies (50%), 1 failed");
 	}
 
 	private void store(String slug, BoardStatus status) {

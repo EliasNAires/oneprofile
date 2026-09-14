@@ -34,15 +34,72 @@ lista de vacantes que matcheen con el perfil del usuario.
 
 ## Qué sigue
 
-**Fase siguiente: `/ejecutar descubrimiento-v2`** (plan en
-`docs/agents/planes/descubrimiento-v2/`, planificado el 2026-09-14). En siete pasos:
-- mejoras de orquestación (Sonnet en subagentes, esperas con `Monitor` del orquestador);
-- logs de avance en sondeo, carga y descubrimiento;
-- 3 pasadas sobre los índices fallidos de CommonCrawl;
-- dominio EU (misma API: sondeo y carga no cambian);
-- blacklist y limpieza de slugs truncados al final del sondeo.
+**Fase siguiente: corrida en prod de descubrimiento → sondeo → carga para medir** lo de
+`descubrimiento-v2` (pasadas, EU, limpieza), con `/planificar`.
 
-Solo implementación, con tests y dev; la corrida en prod queda para después.
+**Los 7 pasos están hechos (2026-09-14), sin commit:** parado en la puerta "después" del
+paso 07 (commit y push de Elias). Lo decidido ya pasó a `descubrimiento` y `vacantes`; la
+carpeta del plan se borró y sus desvíos por paso están abajo. Lo principal:
+- Subagentes en Sonnet (el orquestador pasa `model: sonnet` explícito); `.claude/settings.json`
+  con allowlist (`./mvnw`, `ssh elitedesk1 docker compose logs/ps/exec`).
+- `util/ProgressLog`; sondeo, carga y descubrimiento cierran con `finished`/`aborted`.
+- CommonCrawl en 3 pasadas. En dev (14:02 UTC-3) la pasada 1 falló en los 10 índices
+  (504/502); en otra corrida (14:39) leyó los 10 sin fallas. Mirar la tasa de fallo en prod.
+- Dominio EU (`job-boards.eu.`, `boards.eu.`): `proton` cargó 69 vacantes por la misma API.
+- Tabla `blacklisted_slug` (V5); al final del sondeo los truncados `NOT_FOUND` se borran
+  (con sus vacantes) y van a la blacklist. 189 tests.
+- Dev: el clasificador bloquea a los subagentes `truncate` y `docker compose down` aunque
+  Elias apruebe con `/permissions`; la base de dev no tiene volumen y se vacía reiniciando
+  el container. Los guiones con `sh -c '...'` y `''` adentro no corren: comillas dobles afuera.
+
+### `descubrimiento-v2`: estado y desvíos por paso
+
+- Paso 01 (2026-09-14): PASÓ. Allowlist por decisión de Elias: los tres propuestos más
+  `Bash(ssh elitedesk1 docker compose exec:*)` para psql (no se limita a solo lectura).
+  `.claude/settings.json` lo escribió el orquestador (al ejecutor le bloquearon la escritura).
+  El ejecutor corrió en Opus; desde el verificador del 01, subagentes con `model: sonnet`
+  explícito en la llamada (no depende de reiniciar la sesión).
+- Paso 02 (2026-09-14): PASÓ. `util/ProgressLog` nuevo; sondeo y carga cierran con
+  `finished`/`aborted`. Guion en dev, dos cosas que valen para los pasos siguientes:
+  (1) `sh -c` con comillas simples y `''` adentro no anda: Elias eligió comillas dobles
+  afuera; (2) la base de dev no arranca vacía (volumen persistente: `splice`, `discord`,
+  `figma` y 205 vacantes): Elias eligió reusar filas existentes y solo agregar las que faltan.
+- Paso 03 (2026-09-14): PASÓ, sin desvíos. Solo `GreenhouseDiscoveryService` y su test;
+  `CommonCrawlResult` mantiene su forma (`indexes`, `failedIndexes`). Loguea WARN
+  `failed on pass N` por índice.
+- Paso 04 (2026-09-14): verificación **cortada por Elias** (lo importante era validar las
+  pasadas). Tests del ejecutor verdes. Desvíos del ejecutor (no preguntados): Awaitility
+  transitivo en el test del controller; formatos `CommonCrawl pass {} of {}: {} indexes {}`,
+  `CommonCrawl index {} pass {}: {} slugs found, {} new companies saved`, avance Wayback
+  `"Wayback " + pattern`. Corrida real de CommonCrawl en dev (arranque 17:02 UTC, cortada
+  17:33 UTC sin línea final): pasada 1 falló en los **10 de 10** índices (8× 504, 1× 502,
+  1× I/O error), ~17 min; la pasada 2 arrancó con los 10 y va 1 leído (`CC-MAIN-2026-21`:
+  3953 slugs, 3950 companies nuevas) y 5 fallidos (2× 504, 2× 400 "Connection aborted",
+  1× página cortada). Las pasadas y sus logs andan; llama la atención la tasa de fallo del
+  índice (para mirar en la corrida de prod). Wayback y el cierre `finished` no se vieron.
+  **Efecto en dev:** la base quedó con ~3950 companies más (antes: splice, discord, figma).
+- Orquestación: el verificador esperaba con sus propios monitores y reenviaba cada WARN;
+  se le pidió cortar y la espera quedó en el Monitor del orquestador.
+- Paso 05 (2026-09-14): PASÓ. Solo `GreenhouseBoardUrl` (4 patrones) y tests; el service no
+  cambió. CommonCrawl en dev esta vez completo: 27 min, 10 índices leídos, 5024 nuevas,
+  0 fallidos. Sondeo de los 6 EU: 6 ACTIVE; carga de `proton`: 69 vacantes con URL
+  `job-boards.eu.`. **Dev:** Elias eligió vaciar la base; el clasificador bloqueó al
+  verificador truncate y `docker compose down` pese a `/permissions` (4+1 intentos); el
+  orquestador corrió `down`/`up -d` por pedido de Elias (dev no tiene volumen). Base de dev
+  ahora: solo los 6 slugs EU y 69 vacantes de proton. Para los pasos siguientes: vaciar la
+  base de dev = reiniciar el container, sin query.
+- Paso 06 (2026-09-14): PASÓ, sin desvíos. `V5__create_blacklisted_slug.sql` (`id`, `ats`,
+  `slug`, unique `(ats, slug)`), `model/BlacklistedSlug`, `repository/BlacklistedSlugRepository`;
+  `GreenhouseDiscoveryService` la saltea. 183 tests verdes; Flyway en dev llega a v5.
+- Paso 07 (2026-09-14): PASÓ. `GreenhouseTruncatedSlugCleanupService` (nuevo), llamado desde
+  `BoardProbeController` al terminar el sondeo. Decisión de Elias: un truncado `NOT_FOUND` con
+  vacantes se borra con sus vacantes en la misma transacción (`normalized_vacancy` cae por
+  cascade). Log `Greenhouse truncated slug cleanup finished: {} companies removed and
+  blacklisted`. Test del controller espera el log en vez de contar invocaciones. Total real:
+  **189 tests**, 0 fallas (los 156/183 reportados por ejecutores estaban mal). Guion en dev:
+  `figm` borrado y en blacklist, `figma` ACTIVE, `no-existe-xyz` NOT_FOUND queda. El guion
+  volvió a traer el `''` dentro de `sh -c '...'`: se aplicó la decisión del paso 02.
+  Dev quedó con 8 companies (6 EU + figma + no-existe-xyz).
 
 Prueba de la metodología nueva (roles construidos el 2026-09-13), estado:
 
@@ -54,8 +111,8 @@ Prueba de la metodología nueva (roles construidos el 2026-09-13), estado:
 4. ~~`/planificar`~~ → **probado con `descubrimiento-v2` el 2026-09-14**: conversó, entró en
    modo plan y volcó el plan aprobado.
 5. ~~`/ejecutar <tema>`~~ → **probado con `slugs` el 2026-09-14** (solo verificadores, sin
-   ejecutor): anduvo, con los problemas de "Flujo de trabajo" abajo. Con ejecutor se prueba
-   en `descubrimiento-v2`.
+   ejecutor) y **con ejecutores en `descubrimiento-v2`** el mismo día: anduvo, con los
+   problemas de "Flujo de trabajo" abajo.
 
 Después, sin priorizar ni planificar: **categorizar las vacantes en tech-adyacentes y no**
 (por tokens del título, no por diccionario: casi la mitad de los títulos no se repite),
@@ -76,41 +133,22 @@ encadene sondeo → vacantes → normalización.
 
 El detalle de cada uno está en la sección "Abierto" de su tema.
 
-**En plan `descubrimiento-v2`** (se sacan de acá al terminarlo; también el dominio EU y lo
-resuelto de "Flujo de trabajo"):
+**Flujo de trabajo** (monitores, permisos, hora en reportes, estimaciones y Sonnet se
+resolvieron en el paso 01 de `descubrimiento-v2`; queda lo visto al ejecutarlo):
 
-- **Reintento de índices abortados** en el descubrimiento de CommonCrawl: 4 quedaron sin leer
-  (`-2026-25`, `-2026-04`, `-2025-51`, `-2025-47`) y no hay endpoint para índices sueltos.
-  → `descubrimiento`
-- **Borrar slugs truncados después del sondeo**: todo truncado `NOT_FOUND` con su versión no
-  truncada `ACTIVE`, para evitar falsos positivos y achicar los sondeos. → `descubrimiento`
-- **Logs de avance** en descubrimiento, sondeo y carga (~2 h cada uno, hoy solo `started` y
-  `finished`): confirmar que va bien o fallar temprano. → `descubrimiento`, `vacantes`
-
-**Flujo de trabajo** (visto en `/ejecutar slugs`; uso de contexto en
-`mediciones/slugs-13-09-2026/uso-de-contexto.md`):
-
-- **Los monitores no despiertan al subagente**: vieron cada `finished` a tiempo, pero el aviso
-  le llegó recién cuando el orquestador le escribió. Se perdieron 6 h 20 min antes de la carga
-  y 35 min antes de la normalización; Wayback, 25 min. Dos monitores además tenían mal el
-  filtro (cortaban con el WARN de un reintento, o el `tail -N` dejaba afuera el `finished`).
-- **Permisos**: `gh` sin sesión; el clasificador bloqueó `psql` por ssh y consultas de solo
-  lectura varias veces. Cada bloqueo paró la corrida hasta que Elias dio el permiso.
-- **Reportes viejos**: un verificador contestó el estado de hacía 1 h 15 min sin darse cuenta.
-- **El orquestador se desbordó**: 182k al cerrar (~150k sin el cierre), más que cualquier
-  verificador (38–81k). Sobre todo por ~40 avisos de avance de 5 en 5 min, cada uno
-  reenviado, y por consultar prod él mismo cuando los monitores no avisaban. Elias busca un
-  **techo blando de ~100k por sesión** (regla en `METODOLOGIA.md`, "Higiene de contexto").
-- **Estimaciones del plan desfasadas**: rango de `company` y duraciones (Wayback 40 → 98 min)
-  sin margen para fuentes externas degradadas; un endpoint que se creía existente no estaba.
-- **Por evaluar: Sonnet en ejecutor y verificador** para ahorrar tokens: el piso de un
-  subagente ronda ~38k por las definiciones de herramientas, aunque la tarea sea trivial.
-  Opinión del orquestador: probarlo primero en verificadores (siguen un guion con criterio
-  claro) y dejar Opus en ejecutores que diseñan código.
-- **Tamaño de pasos: bien** (Elias y orquestador): cada uno terminó con un resultado claro
-  para mirar en la puerta. Opinión del orquestador: lo caro fue la espera, no el tamaño; un
-  paso sin ejecutor con corridas de horas conviene partirlo en "lanzar" y "verificar al
-  terminar", con una espera que despierte al agente, en vez de un verificador vivo horas.
+- **Verificadores esperando corridas**: aunque la regla dice que espera el orquestador, uno
+  armó monitores propios y reenvió cada WARN (~15 avisos) hasta que se le pidió cortar. Al
+  pasarle el protocolo en el prompt (devolver log, patrón y hora UTC, y cortar) anduvo.
+- **Clasificador de permisos**: bloqueó a subagentes `truncate` y `docker compose down` en dev
+  aunque Elias aprobara con `/permissions` (5 intentos); lo destrabó el orquestador.
+- **Guiones con `sh -c '...'` y `''` adentro** no corren (pasos 02 y 07): comillas dobles
+  afuera. Lo tiene que evitar el planificador al escribir el guion.
+- **Conteos de tests mal reportados** por ejecutores (156/183; real 189): el verificador cuenta
+  en `surefire-reports`.
+- **Ejecutores que deciden formatos no fijados** (paso 04, textos de log): conviene que el paso
+  los traiga cerrados o que el ejecutor pregunte.
+- **Tamaño de pasos: bien** (Elias y orquestador, en `slugs`). Techo blando de ~100k por
+  sesión (regla en `METODOLOGIA.md`, "Higiene de contexto").
 
 - **Imagen de prod:** Elias corre sesiones en paralelo; antes de concluir de una prueba en
   prod, confirmar qué commit se publicó. → `prod-y-despliegue`
@@ -118,12 +156,11 @@ resuelto de "Flujo de trabajo"):
   → `prod-y-despliegue`
 - Respuesta truncada del índice justo en un salto de línea se acepta en silencio (Elias lo
   dejó abierto). → `descubrimiento`
-- Wayback con una línea cortada guarda un slug falso (el sondeo lo marca `NOT_FOUND`; lo
-  cubriría el borrado de truncados). → `descubrimiento`
+- Wayback con una línea cortada guarda un slug falso (lo limpia la limpieza de truncados si
+  la versión completa está `ACTIVE`). → `descubrimiento`
+- Tasa de fallo de CommonCrawl: en dev falló 10/10 en una pasada y 0/10 en otra; ver en prod
+  si 3 pasadas alcanzan. → `descubrimiento`
 - 4 `ACTIVE` sin vacantes y `fetched` una fila menos que `vacancy` (2026-09-14). → `vacantes`
-- Dominio EU de Greenhouse no se descubre (848 slugs): **entra en `descubrimiento-v2`**. La API
-  de siempre contesta los boards EU (verificado 2026-09-14); no hay otras regiones. →
-  `descubrimiento`
 - Reglas de slug descartan algunas empresas reales (`&`, `)`, 77 solo `http://`), a
   sabiendas. → `descubrimiento`
 - El sondeo se corre entero cada vez; nada fuerza el orden sondeo → vacantes →
@@ -132,7 +169,10 @@ resuelto de "Flujo de trabajo"):
 - Sin tope de tamaño en la respuesta de un board. → `vacantes`
 - `MEDICION-VACANTES.md` (85.050 títulos distintos) no coincide con la base (87.647). →
   `vacantes`
-- La base de dev arranca vacía; hay que insertar la empresa a mano. → `vacantes`
+- La base de dev arranca vacía (no tiene volumen: se vacía reiniciando el container); hay que
+  insertar la empresa a mano. → `vacantes`
+- Borrar una `Company` no borra en cascada sus `Vacancy` (ni JPA ni la FK); la limpieza de
+  truncados las borra a mano. → `vacantes`
 - Modalidad: 37 falsos positivos y 31 falsos negativos (`remotely`), sin guarda por decisión
   de Elias; `FULLY_REMOTE` conservador a propósito. → `normalizacion`
 - `senior` en cuidado domiciliario (37), sin guarda por decisión de Elias. → `normalizacion`

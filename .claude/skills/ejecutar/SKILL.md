@@ -19,6 +19,12 @@ subagentes: no los leas. `CONTEXTO.md` se lee recién para actualizarlo.
 
 ## Por cada paso pendiente
 
+Si `orquestador.md` marca el paso **de espera** (una corrida larga ya lanzada), no se lanza
+un verificador que espere: el orquestador arranca él un `Monitor` con el comando que trae el
+plan, que emite **solo** la línea final (`grep -m1` sobre el patrón de fin/aborto; nunca
+`tail -N`, nunca avisos de avance). Al llegar la notificación, lanza el verificador del paso
+"verificar al terminar". No consulta prod él mismo.
+
 Si `orquestador.md` marca el paso **sin ejecutor** (no lleva código: una corrida o una prueba
 en prod), se saltean los puntos 2, 3 y 6: va directo al verificador y, si falla, se para.
 

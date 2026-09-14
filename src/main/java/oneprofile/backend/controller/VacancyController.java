@@ -65,7 +65,7 @@ public class VacancyController {
 					result.updated(), result.deleted(), result.failed());
 		}
 		catch (RuntimeException ex) {
-			logger.error("Greenhouse vacancy sweep failed", ex);
+			logger.error("Greenhouse vacancy sweep aborted", ex);
 		}
 		finally {
 			this.running.set(false);

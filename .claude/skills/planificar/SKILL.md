@@ -36,6 +36,14 @@ su archivo de paso**.
 - Cada archivo de paso es **autocontenido**: el ejecutor no lee `orquestador.md`, ni otros
   pasos, ni `CONTEXTO.md`. Lo que necesite (datos medidos, decisiones que aplican, archivos
   a leer, trampas conocidas) va en su archivo, aunque se repita en otro paso.
+- Una corrida de más de ~10 min se parte en "lanzar" (sin ejecutor; el verificador la
+  dispara y confirma `started`) y "verificar al terminar". Entre los dos, un paso **de
+  espera** en `orquestador.md` con el comando exacto del `Monitor` (`grep -m1`, nunca
+  `tail -N`) y sus patrones de fin y de aborto, probados contra una línea de WARN real para
+  que no corte antes.
+- Duraciones y rangos que dependen de fuentes externas van con margen (2–3x) y diciendo de
+  dónde salen. Lo que el plan da por existente (endpoint, método) se verifica en el código
+  al planificar.
 - Lo que el plan no decide se escribe **como pregunta para Elias**, no como supuesto.
 - Las **puertas** van en `orquestador.md`: lo que necesita a Elias antes o después de un paso
   (commit/push, prueba en prod, dataset que Elias lee primero, decisión de diseño).

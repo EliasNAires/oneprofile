@@ -2,6 +2,7 @@ package oneprofile.backend.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.time.Clock;
 import java.time.Duration;
 import java.util.Map;
 
@@ -14,17 +15,21 @@ import oneprofile.backend.model.Company;
 import oneprofile.backend.repository.CompanyRepository;
 import oneprofile.backend.service.GreenhouseBoardProbeService.ProbeResult;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase;
 import org.springframework.boot.jpa.test.autoconfigure.TestEntityManager;
+import org.springframework.boot.test.system.CapturedOutput;
+import org.springframework.boot.test.system.OutputCaptureExtension;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.client.RestClientException;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Import(TestcontainersConfiguration.class)
+@ExtendWith(OutputCaptureExtension.class)
 class GreenhouseBoardProbeServiceTest {
 
 	@Autowired
@@ -74,6 +79,18 @@ class GreenhouseBoardProbeServiceTest {
 		assertThat(result).isEqualTo(new ProbeResult(2, 0, 0, 1, 1));
 		assertThat(reload("globant").getBoardStatus()).isEqualTo(BoardStatus.ACTIVE);
 		assertThat(reload("auth0").getBoardStatus()).isNull();
+	}
+
+	@Test
+	void logsProgressWithTheFailuresAccumulatedSoFar(CapturedOutput output) {
+		store("globant", "auth0");
+
+		// Neither slug is in the canned answers, so the fake client fails on both.
+		new GreenhouseBoardProbeService(new FakeBoardClient(Map.of()), this.companies, Duration.ZERO, 1,
+				Clock.systemUTC()).probeAll();
+
+		assertThat(output.getOut())
+				.contains("Greenhouse board probe progress: 1 of 2 companies (50%), 1 failed");
 	}
 
 	private void store(String... slugs) {

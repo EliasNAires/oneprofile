@@ -8,7 +8,6 @@ import jakarta.annotation.PreDestroy;
 import oneprofile.backend.service.GreenhouseDiscoveryService;
 import oneprofile.backend.service.GreenhouseDiscoveryService.CommonCrawlResult;
 import oneprofile.backend.service.GreenhouseDiscoveryService.DiscoveryResult;
-import oneprofile.backend.service.GreenhouseDiscoveryService.IndexResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -62,7 +61,7 @@ public class DiscoveryController {
 			run.run();
 		}
 		catch (RuntimeException ex) {
-			logger.error("Greenhouse discovery on {} failed", source, ex);
+			logger.error("Greenhouse discovery on {} aborted", source, ex);
 		}
 		finally {
 			this.running.set(false);
@@ -71,12 +70,7 @@ public class DiscoveryController {
 
 	private void runCommonCrawl() {
 		CommonCrawlResult result = this.discoveryService.discoverOnRecentCommonCrawl();
-		int newCompanies = 0;
-		for (IndexResult index : result.indexes()) {
-			logger.info("CommonCrawl index {}: {} slugs found, {} new companies saved", index.indexId(),
-					index.result().slugsFound(), index.result().newCompanies());
-			newCompanies += index.result().newCompanies();
-		}
+		int newCompanies = result.indexes().stream().mapToInt(index -> index.result().newCompanies()).sum();
 		logger.info("Greenhouse discovery on CommonCrawl finished: {} indexes read, {} new companies saved, "
 				+ "{} indexes failed {}", result.indexes().size(), newCompanies, result.failedIndexes().size(),
 				result.failedIndexes());

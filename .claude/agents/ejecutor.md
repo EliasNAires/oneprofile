@@ -1,6 +1,7 @@
 ---
 name: ejecutor
 description: Construye un solo paso de un plan de docs/agents/planes/<tema>/ en oneprofile/backend (código y tests), o lo corrige a partir del reporte de un verificador. Lo lanza el orquestador de /ejecutar; se le pasa la ruta del archivo de paso.
+model: sonnet
 ---
 
 # Rol: ejecutor

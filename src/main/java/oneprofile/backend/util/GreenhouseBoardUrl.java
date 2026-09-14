@@ -11,17 +11,23 @@ import java.util.regex.Pattern;
  */
 public final class GreenhouseBoardUrl {
 
-	/** Both board domains; the rest of the URL is captured as path + query + fragment. */
+	/**
+	 * All four board domains (global and EU, both with and without the {@code job-}
+	 * prefix); the rest of the URL is captured as path + query + fragment. There is no
+	 * separate EU jobs API: a slug is one namespace shared by both regions, so the domain
+	 * only matters for finding it.
+	 */
 	private static final Pattern BOARD_URL = Pattern
-			.compile("^https://(?:www\\.)?(?:job-)?boards\\.greenhouse\\.io/(.*)$");
+			.compile("^https://(?:www\\.)?(?:job-)?boards\\.(?:eu\\.)?greenhouse\\.io/(.*)$");
 
 	/** The board embedded as an iframe carries the slug in the {@code for} query parameter. */
 	private static final String EMBED_SEGMENT = "embed";
 
 	private static final Pattern SLUG = Pattern.compile("[A-Za-z0-9_-]+");
 
-	/** Both board domains as CommonCrawl index prefixes. */
-	private static final List<String> INDEX_PATTERNS = List.of("boards.greenhouse.io/", "job-boards.greenhouse.io/");
+	/** All four board domains as CommonCrawl and Wayback index prefixes. */
+	private static final List<String> INDEX_PATTERNS = List.of("boards.greenhouse.io/", "job-boards.greenhouse.io/",
+			"boards.eu.greenhouse.io/", "job-boards.eu.greenhouse.io/");
 
 	private GreenhouseBoardUrl() {
 	}

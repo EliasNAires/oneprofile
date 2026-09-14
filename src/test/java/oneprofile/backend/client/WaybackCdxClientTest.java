@@ -14,6 +14,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.boot.test.system.CapturedOutput;
+import org.springframework.boot.test.system.OutputCaptureExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.client.ExpectedCount;
@@ -21,6 +24,7 @@ import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClient;
 
+@ExtendWith(OutputCaptureExtension.class)
 class WaybackCdxClientTest {
 
 	private static final String PATTERN = "boards.greenhouse.io/";
@@ -109,6 +113,19 @@ class WaybackCdxClientTest {
 
 		assertThat(collectUrls()).containsExactly("https://boards.greenhouse.io/globant");
 		this.server.verify();
+	}
+
+	@Test
+	void logsProgressEveryTenPages(CapturedOutput output) {
+		this.server.expect(queryParam("showNumPages", "true")).andRespond(withSuccess("25\n", MediaType.TEXT_PLAIN));
+		for (int page = 0; page < 25; page++) {
+			this.server.expect(queryParam("page", String.valueOf(page)))
+					.andRespond(withSuccess("https://boards.greenhouse.io/company" + page + "\n", MediaType.TEXT_PLAIN));
+		}
+
+		collectUrls();
+
+		assertThat(output.getOut()).contains("10 of 25 pages").contains("20 of 25 pages");
 	}
 
 	@Test

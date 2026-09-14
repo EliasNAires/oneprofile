@@ -1,5 +1,6 @@
 package oneprofile.backend.service;
 
+import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.EnumMap;
@@ -12,6 +13,7 @@ import oneprofile.backend.model.Ats;
 import oneprofile.backend.model.BoardStatus;
 import oneprofile.backend.model.Company;
 import oneprofile.backend.repository.CompanyRepository;
+import oneprofile.backend.util.ProgressLog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,23 +32,37 @@ public class GreenhouseBoardProbeService {
 	/** Roughly five boards a second: thousands of requests against someone else's API. */
 	private static final Duration PAUSE_BETWEEN_BOARDS = Duration.ofMillis(200);
 
+	/** ~2h20 at today's volume: often enough to follow along, rare enough not to flood. */
+	private static final int PROGRESS_INTERVAL = 1000;
+
 	private final GreenhouseBoardClient boardClient;
 
 	private final CompanyRepository companyRepository;
 
 	private final Duration pauseBetweenBoards;
 
+	private final int progressInterval;
+
+	private final Clock clock;
+
 	/** Marked so Spring picks this one: the other is there only for the test. */
 	@Autowired
 	public GreenhouseBoardProbeService(GreenhouseBoardClient boardClient, CompanyRepository companyRepository) {
-		this(boardClient, companyRepository, PAUSE_BETWEEN_BOARDS);
+		this(boardClient, companyRepository, PAUSE_BETWEEN_BOARDS, PROGRESS_INTERVAL, Clock.systemUTC());
 	}
 
 	GreenhouseBoardProbeService(GreenhouseBoardClient boardClient, CompanyRepository companyRepository,
 			Duration pauseBetweenBoards) {
+		this(boardClient, companyRepository, pauseBetweenBoards, PROGRESS_INTERVAL, Clock.systemUTC());
+	}
+
+	GreenhouseBoardProbeService(GreenhouseBoardClient boardClient, CompanyRepository companyRepository,
+			Duration pauseBetweenBoards, int progressInterval, Clock clock) {
 		this.boardClient = boardClient;
 		this.companyRepository = companyRepository;
 		this.pauseBetweenBoards = pauseBetweenBoards;
+		this.progressInterval = progressInterval;
+		this.clock = clock;
 	}
 
 	/**
@@ -59,6 +75,8 @@ public class GreenhouseBoardProbeService {
 		List<Company> companies = this.companyRepository.findByAts(Ats.GREENHOUSE);
 		Map<BoardStatus, Integer> counts = new EnumMap<>(BoardStatus.class);
 		int failed = 0;
+		ProgressLog progress = new ProgressLog("Greenhouse board probe", "companies", companies.size(),
+				this.progressInterval, this.clock);
 
 		boolean first = true;
 		for (Company company : companies) {
@@ -66,6 +84,7 @@ public class GreenhouseBoardProbeService {
 				pause();
 			}
 			first = false;
+			boolean itemFailed = false;
 			try {
 				BoardProbe probe = this.boardClient.probe(company.getSlug());
 				company.recordProbe(probe.status(), probe.companyName(), Instant.now());
@@ -77,7 +96,9 @@ public class GreenhouseBoardProbeService {
 				// keeps its previous state and the next run picks it up again.
 				logger.warn("Probing the Greenhouse board of {} failed: {}", company.getSlug(), ex.getMessage());
 				failed++;
+				itemFailed = true;
 			}
+			progress.itemDone(itemFailed);
 		}
 
 		return new ProbeResult(companies.size(), counts.getOrDefault(BoardStatus.NOT_FOUND, 0),
