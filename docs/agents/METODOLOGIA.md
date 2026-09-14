@@ -12,10 +12,8 @@ por pasos chicos y probados.
 
 ## Qué leer al empezar
 
-1. `CLAUDE.md` (se carga solo) y este archivo.
-2. `docs/agents/CONTEXTO.md`: estado actual y fase siguiente.
-3. Lo que diga la línea **"Leer:"** de la fase siguiente (docs de tema, un plan,
-   archivos puntuales). **Nada más**, salvo que la tarea lo pida.
+Lo dice el rol (ver "Roles"): cada skill y cada agente nombra lo que lee. **Nada más**,
+salvo que la tarea lo pida.
 
 No se leen:
 
@@ -28,14 +26,16 @@ No se leen:
 
 1. **Alcance chico.** Un paso = una capacidad que se prueba a mano en pocos minutos. Si
    el pedido es grande, se parte en pasos y se propone el orden antes de empezar.
-2. **Plan primero, en modo plan.** Al empezar a planificar se entra en modo plan sin
-   esperar a que Elias lo active: mientras se diseña no se toca nada del sistema. El plan
-   dice qué archivos se tocan, qué queda funcionando y cómo se prueba; Elias lo aprueba.
-   - Un plan de **más de un paso** se escribe en `docs/agents/PLAN-<TEMA>.md`, **autocontenido**
-     (se retoma leyendo solo ese archivo, este y `CONTEXTO.md`): lleva todo lo medido o
-     averiguado, y las decisiones pendientes **como preguntas para Elias**. Cada paso
-     tiene que **entrar en el presupuesto de una sesión**.
-   - Al terminar el plan: el `PLAN-*.md` se borra y lo que vale pasa a `CONTEXTO.md`
+2. **Plan primero, en modo plan.** El planificador conversa el problema y, cuando está
+   claro cómo encararlo, entra en modo plan sin esperar a que Elias lo active: mientras se
+   diseña no se toca nada del sistema. El plan dice qué archivos se tocan, qué queda
+   funcionando y cómo se prueba; Elias lo aprueba.
+   - El plan se escribe **ya partido**: `docs/agents/planes/<tema>/orquestador.md` y un
+     `paso-NN-<nombre>.md` por paso (plantillas en la skill `planificar`). Cada paso es
+     **autocontenido** para un subagente que no ve nada más, y **entra en su contexto**; lo
+     que no está decidido va **como pregunta para Elias**.
+   - Los `PLAN-*.md` anteriores a este formato siguen como están hasta cerrarse.
+   - Al terminar el plan: la carpeta se borra (preguntando) y lo que vale pasa a `CONTEXTO.md`
      (o a su doc de tema); las salidas crudas **se archivan** en
      `mediciones/<tema>-dd-mm-yyyy/`. Un archivo sin versionar con datos medidos no se
      borra sin preguntar: git no lo devuelve.
@@ -53,21 +53,33 @@ No se leen:
 4. **Tests en el mismo paso.** Un paso sin tests no está terminado. Solo tests de
    **comportamiento**: nada de testear configuración declarativa (claves de properties,
    anotaciones).
-5. **Guion de prueba.** Comandos exactos y qué tiene que verse. La prueba la corre otra
-   sesión.
+5. **Guion de prueba.** Comandos exactos y qué tiene que verse. La prueba la corre el
+   verificador, no quien construyó.
 6. **Reporte honesto.** Salida real si algo falla; lo que quedó afuera se dice. Nada se
    reporta "listo" sin verificar.
 
-## Una sesión por fase
+## Roles
 
-Analizar, construir, probar y corregir van **cada una en una sesión nueva**. Las encadena
-`CONTEXTO.md`, que **la sesión actualiza sola al terminar su fase**: qué hizo, resultados
-reales y la fase siguiente con su línea "Leer:".
+El objetivo es que Elias **no maneje el contexto de las sesiones**, no que se desentienda de
+la tarea: **nadie resuelve solo una duda**, le llega a Elias.
 
-- **Construir** deja lo construido, los tests que dieron y el guion. Sigue probar.
-- **Probar** corre y analiza. Si anda, cierra el tema; si falla, deja un **reporte**
-  (qué se corrió, salida real, causa si se encontró). Sigue corregir.
-- **Corregir** parte del reporte y vuelve a probar.
+- **Planificador** (`/planificar`): conversa el problema con Elias y deja el plan partido
+  en archivos. No construye.
+- **Orquestador** (`/ejecutar <tema>`): encadena los pasos para que Elias no reinicie
+  sesiones. No planifica, no escribe código y no contesta dudas. Por paso: ejecutor →
+  verificador. Si falla, **un** ejecutor corrector con el reporte y otro verificador; si
+  vuelve a fallar, para. Le reenvía a Elias las preguntas de los subagentes tal cual y
+  continúa al mismo subagente con la respuesta. Para en las **puertas** que declara
+  `orquestador.md` (commit/push, prod, dataset que Elias lee primero, decisión de diseño).
+  Resume cada paso a Elias y es el **único que actualiza `CONTEXTO.md`**.
+- **Ejecutor** (agente `ejecutor`): construye un paso con sus tests, o lo corrige.
+- **Verificador** (agente `verificador`): corre el guion del paso, sin editar.
+- **Consulta** (`/consultar`): solo lectura.
+
+Ejecutor y verificador leen solo su archivo de paso y las secciones de este archivo que
+nombra su definición, y devuelven un reporte corto de formato fijo.
+`CONTEXTO.md` sigue siendo el tablero: al parar o terminar dice qué se hizo, resultados
+reales y la fase siguiente con su "Leer:" o `/ejecutar <tema>`.
 
 ## Diseño
 
@@ -144,12 +156,15 @@ reales y la fase siguiente con su línea "Leer:".
 
 ## Documentos
 
-- `CLAUDE.md` — resumen en la raíz, se carga solo.
+- `CLAUDE.md` — resumen en la raíz, se carga solo (también en los subagentes).
+- `.claude/skills/{planificar,ejecutar,consultar}/` y `.claude/agents/{ejecutor,verificador}.md`
+  — definición de cada rol.
 - `docs/agents/METODOLOGIA.md` — este archivo.
 - `docs/agents/historial-correcciones.md` — una línea por corrección; no se lee.
 - `docs/agents/CONTEXTO.md` — estado actual y fase siguiente.
 - `docs/agents/tema/<tema>.md` — detalle de un tema; se lee solo si "Leer:" lo pide.
-- `docs/agents/PLAN-<TEMA>.md` — plan en curso, si hay; se borra al terminarlo.
+- `docs/agents/planes/<tema>/` — plan en curso partido en orquestador y pasos; se borra
+  al terminarlo. `docs/agents/PLAN-<TEMA>.md` — planes del formato anterior.
 - `docs/agents/MEDICION-*.md` — números medidos que un plan o tema cita.
 - `mediciones/` — salidas crudas archivadas; no se lee.
 - `docs/para-humanos/` — para personas; no se lee.

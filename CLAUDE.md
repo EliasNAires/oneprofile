@@ -4,30 +4,32 @@ Backend en Java + Spring Boot. El objetivo final es armar una buena lista de
 vacantes laborales que matcheen con el perfil del usuario. Se construye por pasos
 chicos y probados, no de una sola vez.
 
-## Antes de tocar nada
+## Modo de la sesión
 
-1. Leé **`docs/agents/METODOLOGIA.md`** — cómo trabajamos — y seguila. Su sección
-   "Qué leer al empezar" dice qué más cargar; nada más que eso.
-2. Leé **`docs/agents/CONTEXTO.md`** — estado actual y fase siguiente.
-3. Si Elias te corrige algo sobre **cómo trabajar**, en la misma respuesta: la regla va
-   a su sección de `docs/agents/METODOLOGIA.md` y una línea a
-   `docs/agents/historial-correcciones.md`.
-4. **Una sesión por fase** (analizar, construir, probar, corregir). Al terminar la
-   tuya, actualizá `docs/agents/CONTEXTO.md` sin que te lo pidan: qué hiciste, los
-   resultados reales y la fase siguiente con su línea "Leer:".
+Cada sesión principal trabaja en un modo, con su skill, que dice qué leer:
+
+- **`/planificar`** — conversar un problema con Elias y dejar el plan partido en archivos.
+- **`/ejecutar <tema>`** — orquestar un plan de `docs/agents/planes/<tema>/`.
+- **`/consultar`** — preguntar algo sobre el código o el estado del repo.
+
+Si el primer mensaje no usa ninguna, **lo primero es preguntarle a Elias qué modo quiere**
+(y si es ejecutar, qué plan: las carpetas de `docs/agents/planes/`), sin leer nada antes.
+Los subagentes `ejecutor` y `verificador` no preguntan el modo: su rol está en su definición.
 
 ## Lo esencial de la metodología
 
+Detalle en `docs/agents/METODOLOGIA.md`; cada rol lee solo las secciones que le tocan.
+
 - **Pasos chicos.** Un paso = algo que se pueda probar a mano en pocos minutos.
-- **Plan antes de código.** Qué archivos se tocan y qué va a quedar funcionando.
 - **Si no se usa o no se pidió, no se pone. Si algo no sirve, se saca.** Vale para
   dependencias, properties, clases, métodos, archivos y tests. Nada "por las dudas".
-- **Ante la duda, preguntar antes.** Si algo te parece importante y no te lo
-  pidieron, se pregunta; no se agrega para explicarlo después.
+- **Ante la duda, preguntar antes.** Nadie la resuelve solo: un subagente para y la
+  devuelve, y le llega a Elias.
 - **Tests en el mismo paso.** Un paso sin tests no está terminado.
-- **Guion de prueba para cerrar.** Entregá los comandos exactos y qué tiene que
-  verse; la prueba la corre la sesión siguiente.
 - **Reporte honesto.** Si algo falla o quedó afuera, decilo con la salida real.
+- Si Elias corrige algo sobre **cómo trabajar**, en la misma respuesta: la regla va a su
+  sección de `docs/agents/METODOLOGIA.md` y una línea a
+  `docs/agents/historial-correcciones.md`.
 
 ## Stack y comandos
 

@@ -1,7 +1,7 @@
 # Contexto — tablero del repo
 
-> Estado actual y fase siguiente. Lo actualiza cada sesión al terminar su fase (ver "Una
-> sesión por fase" en `docs/agents/METODOLOGIA.md`). Tope ~12 KB (`wc -c`). El detalle vive
+> Estado actual y fase siguiente. Lo actualiza el planificador al volcar un plan y el
+> orquestador al parar o terminar (ver "Roles" en `docs/agents/METODOLOGIA.md`). Tope ~12 KB (`wc -c`). El detalle vive
 > en los docs de tema y se lee solo si "Leer:" lo pide. **`docs/para-humanos/` no se lee.**
 
 **Última actualización:** 2026-09-13
@@ -32,11 +32,28 @@ lista de vacantes que matcheen con el perfil del usuario.
 
 ## Qué sigue
 
-**Fase siguiente: probar en prod el descubrimiento sobre Wayback y la corrección de
+**Fase siguiente: probar la metodología nueva.** Roles planificador / orquestador /
+ejecutor / verificador / consulta, construidos el 2026-09-13 (sección "Roles" de
+`METODOLOGIA.md`, `.claude/skills/` y `.claude/agents/`), sin probar.
+
+**Leer:** nada; el guion se sigue en sesiones nuevas.
+
+1. Las skills `planificar`, `ejecutar`, `consultar` y los agentes `ejecutor`, `verificador`
+   aparecen en `/skills` y `/agents`.
+2. Sesión nueva sin comando → el agente pregunta el modo antes de leer nada.
+3. `/consultar ¿qué hace GreenhouseDiscoveryService?` → contesta sin leer planes ni
+   metodología; `/context` bajo ~35k.
+4. `/planificar` con un tema chico (p. ej. categorización tech/no tech) → conversa, entra en
+   modo plan, y el plan aprobado se vuelca a `docs/agents/planes/<tema>/` con puertas.
+5. `/ejecutar <tema>` → ejecutor y verificador por paso, resumen después de cada uno, las
+   dudas de los subagentes llegan como preguntas, para en la primera puerta; anotar el
+   `/context` del orquestador al final.
+
+**Pendiente después: probar en prod el descubrimiento sobre Wayback y la corrección de
 CommonCrawl**, una después de la otra, en cualquier orden. Comparten el lock (la segunda da
 409 hasta que la primera loguee `finished`) y un `up -d` mata la corrida en curso.
 
-**Leer:** `docs/agents/tema/descubrimiento.md`, `docs/agents/PLAN-SLUGS.md` y, para
+Para esa, **Leer:** `docs/agents/tema/descubrimiento.md`, `docs/agents/PLAN-SLUGS.md` y, para
 CommonCrawl, la sección C de `docs/agents/PLAN-FALLAS-COMMONCRAWL.md` (su guion).
 
 Wayback:
