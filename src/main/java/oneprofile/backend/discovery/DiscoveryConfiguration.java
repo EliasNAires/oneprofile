@@ -23,4 +23,15 @@ public class DiscoveryConfiguration {
 		return new ClusterIndexReader(rangeReader);
 	}
 
+	@Bean
+	CdxBlockReader cdxBlockReader(RangeReader rangeReader) {
+		return new CdxBlockReader(rangeReader);
+	}
+
+	@Bean
+	GreenhouseSlugDiscovery greenhouseSlugDiscovery(ClusterIndexReader clusterIndexReader,
+			CdxBlockReader cdxBlockReader) {
+		return new GreenhouseSlugDiscovery(clusterIndexReader, cdxBlockReader);
+	}
+
 }

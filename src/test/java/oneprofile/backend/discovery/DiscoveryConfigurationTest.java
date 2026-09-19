@@ -11,9 +11,11 @@ class DiscoveryConfigurationTest {
 			.withUserConfiguration(DiscoveryConfiguration.class);
 
 	@Test
-	void offersAClusterIndexReaderThatReadsFromCommonCrawl() {
+	void offersASlugDiscoveryThatReadsFromCommonCrawl() {
 		this.contextRunner.run((context) -> {
+			assertThat(context).hasSingleBean(GreenhouseSlugDiscovery.class);
 			assertThat(context).hasSingleBean(ClusterIndexReader.class);
+			assertThat(context).hasSingleBean(CdxBlockReader.class);
 			assertThat(context).getBean(RangeReader.class).isInstanceOf(HttpRangeReader.class);
 		});
 	}

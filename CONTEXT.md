@@ -55,6 +55,12 @@ taken and which archive file holds it. Sorted by SURT key, which is what makes a
 captures contiguous and a prefix searchable.
 _Avoid_: CDX API, index server, catalog
 
+**Capture**:
+One line of a crawl index: a URL as it was fetched, and where the response was stored. A crawl
+index mixes three kinds — the pages themselves, the robots.txt files, and the responses that
+never became a page, redirects above all — and only the first kind is a capture of a board.
+_Avoid_: record, entry, hit, snapshot
+
 **Shard**:
 One file of a crawl index. A capture is located by shard and by the block within it.
 _Avoid_: part, partition, segment
