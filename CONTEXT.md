@@ -42,7 +42,39 @@ _Avoid_: fetch, sync, import, scrape
 **Crawl**:
 One dated snapshot of the public web published by Common Crawl, searched for board URLs to
 discover slugs.
-_Avoid_: index, dataset, archive
+_Avoid_: dataset, archive
+
+### The Crawl Index
+
+Common Crawl's own names for the parts of a crawl's index are kept, because they are the
+names on the files themselves and in the tools that read them.
+
+**Crawl Index**:
+The record of what a crawl captured: one line per capture, giving its SURT key, when it was
+taken and which archive file holds it. Sorted by SURT key, which is what makes a host's
+captures contiguous and a prefix searchable.
+_Avoid_: CDX API, index server, catalog
+
+**Shard**:
+One file of a crawl index. A capture is located by shard and by the block within it.
+_Avoid_: part, partition, segment
+
+**CDX Block**:
+A compressed run of index lines inside a shard, addressed as a byte range. The smallest
+piece of a crawl index that can be read on its own.
+_Avoid_: chunk, page, range, slice
+
+**Cluster Index**:
+The sampled table of contents of a crawl index: one line per 3000th capture, naming the
+block it was sampled from. A prefix is searched here first, and the sampling is why the
+blocks on either side of the matches are read too.
+_Avoid_: summary index, manifest, secondary index
+
+**SURT Key**:
+A URL rewritten so that its host reads from least to most specific, as in
+`io,greenhouse,boards)/`. The form a crawl index is sorted by, so it is also the form a
+prefix search has to be asked in.
+_Avoid_: canonical URL, normalized URL, sort key
 
 ### Openings
 
