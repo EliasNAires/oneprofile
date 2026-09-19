@@ -1,7 +1,9 @@
 package oneprofile.backend.company;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.time.Instant;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ import oneprofile.backend.TestcontainersConfiguration;
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Import({ TestcontainersConfiguration.class, CompanyConfiguration.class })
 class CompaniesTest {
+
+	private static final Instant PROBED_AT = Instant.parse("2026-09-19T10:15:30Z");
 
 	@Autowired
 	private Companies companies;
@@ -36,6 +40,48 @@ class CompaniesTest {
 
 		assertThat(this.companies.record(Ats.GREENHOUSE, discovered)).isZero();
 		assertThat(this.repository.count()).isEqualTo(2);
+	}
+
+	@Test
+	void recordsWhatAProbeFoundOnTheCompanyItProbed() {
+		this.companies.record(Ats.GREENHOUSE, List.of("stripe"));
+
+		this.companies.recordProbe(Ats.GREENHOUSE, "stripe", BoardStatus.ACTIVE, "Stripe", PROBED_AT);
+
+		Company stripe = this.repository.findByAtsAndSlug(Ats.GREENHOUSE, "stripe").orElseThrow();
+		assertThat(stripe.boardStatus()).isEqualTo(BoardStatus.ACTIVE);
+		assertThat(stripe.name()).isEqualTo("Stripe");
+		assertThat(stripe.probedAt()).isEqualTo(PROBED_AT);
+	}
+
+	@Test
+	void keepsTheNameItAlreadyHasWhenALaterProbeBringsNone() {
+		this.companies.record(Ats.GREENHOUSE, List.of("stripe"));
+		this.companies.recordProbe(Ats.GREENHOUSE, "stripe", BoardStatus.ACTIVE, "Stripe", PROBED_AT);
+
+		Instant later = PROBED_AT.plusSeconds(3600);
+		this.companies.recordProbe(Ats.GREENHOUSE, "stripe", BoardStatus.EMPTY, null, later);
+
+		Company stripe = this.repository.findByAtsAndSlug(Ats.GREENHOUSE, "stripe").orElseThrow();
+		assertThat(stripe.name()).isEqualTo("Stripe");
+		assertThat(stripe.boardStatus()).isEqualTo(BoardStatus.EMPTY);
+		assertThat(stripe.probedAt()).isEqualTo(later);
+		assertThat(this.repository.count()).isEqualTo(1);
+	}
+
+	@Test
+	void refusesToRecordAProbeOfASlugItDoesNotHold() {
+		assertThatThrownBy(() -> this.companies.recordProbe(Ats.GREENHOUSE, "stripe", BoardStatus.ACTIVE, "Stripe",
+				PROBED_AT))
+			.isInstanceOf(IllegalStateException.class)
+			.hasMessageContaining("stripe");
+	}
+
+	@Test
+	void readsTheSlugsItHoldsInSlugOrder() {
+		this.companies.record(Ats.GREENHOUSE, List.of("stripe", "notion"));
+
+		assertThat(this.companies.slugsOf(Ats.GREENHOUSE)).containsExactly("notion", "stripe");
 	}
 
 	@Test

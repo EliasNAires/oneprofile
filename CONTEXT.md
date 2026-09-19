@@ -32,7 +32,9 @@ not found. Unknown until the board has been checked.
 _Avoid_: alive, valid, health
 
 **Probe**:
-Checking whether a slug corresponds to a real board, and recording its board status.
+Checking whether a slug corresponds to a real board, and recording its board status. A board
+the ATS would say nothing about is not probed at all: the company keeps the board status it
+had, so the next run asks again.
 _Avoid_: validate, ping, health check
 
 **Sweep**:
