@@ -85,6 +85,16 @@ class CompaniesTest {
 	}
 
 	@Test
+	void readsOnlyTheSlugsWhoseBoardWasLastFoundActive() {
+		this.companies.record(Ats.GREENHOUSE, List.of("stripe", "notion", "gone", "unprobed"));
+		this.companies.recordProbe(Ats.GREENHOUSE, "stripe", BoardStatus.ACTIVE, "Stripe", PROBED_AT);
+		this.companies.recordProbe(Ats.GREENHOUSE, "notion", BoardStatus.EMPTY, null, PROBED_AT);
+		this.companies.recordProbe(Ats.GREENHOUSE, "gone", BoardStatus.NOT_FOUND, null, PROBED_AT);
+
+		assertThat(this.companies.slugsOf(Ats.GREENHOUSE, BoardStatus.ACTIVE)).containsExactly("stripe");
+	}
+
+	@Test
 	void recordsOnlyTheSlugsItDoesNotHoldYet() {
 		this.companies.record(Ats.GREENHOUSE, List.of("stripe"));
 

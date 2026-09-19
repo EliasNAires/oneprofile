@@ -49,6 +49,18 @@ public class Companies {
 	}
 
 	/**
+	 * The slugs held for one ATS whose board was last found to be of one kind, in slug order, so
+	 * that a run over them is repeatable.
+	 * @param ats the ATS to read
+	 * @param boardStatus what their boards were last found to be
+	 * @return every slug held for it with that board status
+	 */
+	@Transactional(readOnly = true)
+	public SortedSet<String> slugsOf(Ats ats, BoardStatus boardStatus) {
+		return new TreeSet<>(this.repository.slugsOf(ats, boardStatus));
+	}
+
+	/**
 	 * Records on a company what a probe found on its board. Probing the same slug again replaces
 	 * what the last probe recorded rather than adding anything.
 	 * @param ats the ATS the slug belongs to
