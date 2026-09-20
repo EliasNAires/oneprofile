@@ -7,3 +7,10 @@ services:
       POSTGRES_PASSWORD: oneprofile
     ports:
       - "5432:5432"
+    volumes:
+      # The corpus takes a day of paced requests to build, so it outlives the container.
+      # Resetting the database is `docker compose down -v`.
+      - corpus:/var/lib/postgresql
+
+volumes:
+  corpus:
