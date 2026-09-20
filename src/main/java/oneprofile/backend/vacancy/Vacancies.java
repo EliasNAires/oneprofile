@@ -8,6 +8,7 @@ import java.util.Map;
 import oneprofile.backend.company.Ats;
 import oneprofile.backend.company.Company;
 import oneprofile.backend.company.CompanyRepository;
+import org.springframework.data.domain.Limit;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -59,6 +60,18 @@ public class Vacancies {
 		this.repository.saveAll(mirrored);
 		this.repository.deleteAll(held.values());
 		return new Reconciliation(added, mirrored.size() - added, held.size());
+	}
+
+	/**
+	 * The titles of the vacancies held after one id, in id order. A pass that derives facts from
+	 * titles walks the corpus with this, batch by batch, resuming from the last id it read.
+	 * @param after the id to read past, 0 to start at the first vacancy
+	 * @param batch how many to read at most
+	 * @return their ids and titles, empty once there are none left
+	 */
+	@Transactional(readOnly = true)
+	public List<VacancyTitle> titlesAfter(long after, int batch) {
+		return this.repository.titlesAfter(after, Limit.of(batch));
 	}
 
 	/**

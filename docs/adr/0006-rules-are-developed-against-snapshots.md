@@ -28,3 +28,20 @@ destroy hours of crawling. Production keeps its own role: live data, served.
 Snapshots are the interface between the step that builds the corpus and every step that
 derives facts from it. A later stage restores the previous stage's snapshot rather than
 rebuilding from Common Crawl, so the twelve-crawl run is paid for once.
+
+## How many snapshots, once the stages multiplied
+
+Amended 2026-09-20. The decision is unchanged; its scope is narrower than "one per stage"
+now that deriving facts takes three passes rather than one — cleaning, classification, and
+normalization over the engineering subset.
+
+Two snapshots are kept, not four: the **raw corpus**, and the corpus **after
+classification**. The reason for a snapshot is that the input must be reproducible, and
+cleaning and classification are deterministic pure functions that run over the raw corpus in
+seconds. Restoring raw and re-running them reproduces their output exactly, for free, so a
+dump of each would cost 132 MB apiece to store what a re-run already gives.
+
+Classification earns its own snapshot for a different reason: it is what the hand labelling
+attaches to, and what every later step reads. A label is a statement about a specific
+vacancy in a specific state, and if the population being labelled can shift under the labels,
+the measured accuracy stops meaning anything.

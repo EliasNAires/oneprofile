@@ -120,6 +120,24 @@ class VacanciesTest {
 			.hasMessageContaining("figma");
 	}
 
+	@Test
+	void readsTheTitlesOfTheCorpusInIdOrderABatchAtATime() {
+		this.vacancies.mirror(Ats.GREENHOUSE, "stripe", List.of(published(4001), published(4002)));
+
+		List<VacancyTitle> first = this.vacancies.titlesAfter(0, 1);
+
+		assertThat(first).singleElement().extracting(VacancyTitle::title).isEqualTo("Backend Engineer");
+		assertThat(this.vacancies.titlesAfter(first.getFirst().id(), 10)).hasSize(1);
+	}
+
+	@Test
+	void readsNoTitlesOnceThereAreNoneLeft() {
+		this.vacancies.mirror(Ats.GREENHOUSE, "stripe", List.of(published(4001)));
+		List<VacancyTitle> all = this.vacancies.titlesAfter(0, 10);
+
+		assertThat(this.vacancies.titlesAfter(all.getLast().id(), 10)).isEmpty();
+	}
+
 	private Vacancy held(long externalId) {
 		return this.repository.findAll()
 			.stream()

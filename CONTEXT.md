@@ -97,15 +97,29 @@ seniority evidence appears.
 _Avoid_: content, body, details
 
 **Normalized Vacancy**:
-The facts derived from a vacancy by rule, rather than published by the ATS: its normalized
-title, role family, work mode, seniority level, eligibility and skills. Derived data is
-never mixed into the vacancy itself, so rules can be re-run at any time.
+The facts derived from a vacancy by rule, rather than published by the ATS: its cleaned and
+normalized titles, whether it is an engineering role, its work mode, declared location,
+seniority and skills. Derived data is never mixed into the vacancy itself, so rules can be
+re-run at any time.
 _Avoid_: enriched vacancy, parsed vacancy, processed vacancy
 
+**Cleaned Title**:
+A vacancy's title with what is noise in any title taken out: decoration, gender markers, and
+the seniority words that name a level wherever they appear. Every vacancy in the corpus has
+one, because it is what classification reads.
+_Avoid_: normalized title, clean title, title slug
+
+**Cleaning**:
+The pass that gives every vacancy in the corpus a cleaned title. It runs before classification,
+because a corpus whose duplicate titles have been collapsed is what makes a classifier buildable
+by reading the most common ones.
+_Avoid_: normalization, scrubbing, preprocessing, sanitizing
+
 **Normalized Title**:
-A vacancy's title reduced to its role-bearing words, with seniority, work mode, gender
-markers and decoration removed.
-_Avoid_: clean title, canonical title, title slug
+A cleaned title reduced further to its role-bearing words, with the seniority words that
+need a reading of the job and the work mode taken out. Only engineering roles have one,
+because only there is the vocabulary known well enough to tell a level from a job.
+_Avoid_: canonical title, title slug
 
 ### The Corpus
 
@@ -118,9 +132,10 @@ _Avoid_: dataset, database, sample, data
 **Snapshot**:
 The corpus frozen at one stage, so that a rule re-run later is re-run over identical input.
 Snapshots are what rules are developed against; live data is what production serves. There
-is one per stage — the raw corpus, then the normalized one — and a snapshot is never
-replaced, because an accuracy measured against one is only meaningful while that input can
-be produced again.
+are two of them — the raw corpus, and the corpus once it has been classified — and a
+snapshot is never replaced, because an accuracy measured against one is only meaningful
+while that input can be produced again. The passes in between are pure rules that re-run
+over the raw corpus in seconds, so restoring it reproduces them for free.
 _Avoid_: backup, dump, export, copy, fixture
 
 ### Classification
@@ -131,21 +146,34 @@ software. The product exists to serve these; the current iteration covers only t
 engineering subset of them.
 _Avoid_: tech role, IT role, technical role
 
-**Role Family**:
-The hiring market a vacancy belongs to, such as software engineering or security. A vacancy
-belongs to at most one. Belonging to none is what makes a vacancy out of scope.
-_Avoid_: category, discipline, job function, department, specialization
+**Engineering Role**:
+A vacancy whose work is engineering. Whether a vacancy is one is the whole of what
+classification answers, and a vacancy that is not one is out of scope.
+_Avoid_: role family, category, discipline, job function, technical role
 
 **Work Mode**:
-Where the work is performed, as declared by the vacancy: remote, fully remote, hybrid or
-onsite. Undeclared is its own answer and never means onsite.
+Where the work is performed, as declared by the vacancy: remote, hybrid or onsite.
+Undeclared is its own answer and never means onsite.
 _Avoid_: modality, workplace type, location type, arrangement
+
+**Declared Location**:
+The place a vacancy names for the work, as it wrote it, once its work mode has been taken
+out. A remote vacancy that names a place is not thereby restricted to it, so the place it
+names is never on its own a reason to rule it out.
+_Avoid_: office, region, geo, country
 
 **Seniority Level**:
 The experience level a vacancy asks for, on one ordinal scale from entry to principal.
 Where a vacancy names several, the lowest applies, because a vacancy publishes the minimum
-it will accept.
+it will accept. That choice belongs to the step that derives the final level, never to a
+step that only gathers evidence for it.
 _Avoid_: level, grade, rank, band, experience
+
+**Title Seniority**:
+Every level a vacancy's title names, kept as found. Evidence rather than an answer: the
+title is one source among several, and collapsing it to a single level before the others
+are read throws away what they would have been weighed against.
+_Avoid_: seniority, level, title level
 
 ### Eligibility
 
