@@ -107,6 +107,22 @@ A vacancy's title reduced to its role-bearing words, with seniority, work mode, 
 markers and decoration removed.
 _Avoid_: clean title, canonical title, title slug
 
+### The Corpus
+
+**Corpus**:
+Every company and vacancy that discovery, probing and sweeping have accumulated, taken as
+one body of data rather than as rows. What the rules are run over, and what their measured
+accuracy is a statement about.
+_Avoid_: dataset, database, sample, data
+
+**Snapshot**:
+The corpus frozen at one stage, so that a rule re-run later is re-run over identical input.
+Snapshots are what rules are developed against; live data is what production serves. There
+is one per stage — the raw corpus, then the normalized one — and a snapshot is never
+replaced, because an accuracy measured against one is only meaningful while that input can
+be produced again.
+_Avoid_: backup, dump, export, copy, fixture
+
 ### Classification
 
 **Tech-Adjacent Role**:
