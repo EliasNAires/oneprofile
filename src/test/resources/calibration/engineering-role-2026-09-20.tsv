@@ -1,0 +1,55 @@
+# Calibration set for the engineering-role labeller (issue #9, ADR-0007).
+# Labelled by hand on 2026-09-20 against criterion version d782b1c50dc3.
+# Agreement with the ruling table: 78% (39 of 50).
+# Held out of every measurement sample: a round never draws a title listed here.
+# title	label	reason	criterion_verdict	source
+graphic designer	OUT		OUT	pair
+data scientist	IN		IN	table
+scrum master	IN		IN	table
+business analyst	UNKNOWN	scope_ambiguity	UNKNOWN	table
+field engineer	UNKNOWN	domain_ambiguity	UNKNOWN	table
+audit analyst	UNKNOWN	domain_ambiguity	OUT	pair
+civil engineer	OUT		OUT	table
+network engineer	IN		IN	table
+implementation engineer	UNKNOWN	scope_ambiguity	IN	table
+payroll analyst	UNKNOWN	scope_ambiguity	OUT	pair
+research scientist	UNKNOWN	domain_ambiguity	UNKNOWN	table
+management consultant	UNKNOWN	scope_ambiguity	OUT	pair
+manufacturing systems engineer	UNKNOWN	scope_ambiguity	IN	pair
+solution engineer	IN		IN	table
+cloud architect	IN		IN	pair
+product manager	UNKNOWN	scope_ambiguity	OUT	table
+maintenance technician	OUT		OUT	pair
+customer engineer	IN		IN	table
+embedded systems engineer	IN		IN	pair
+petroleum engineer	OUT		OUT	pair
+solutions architect	IN		IN	table
+security analyst	IN		IN	pair
+aerospace engineer	OUT		OUT	pair
+engineer ii	UNKNOWN	domain_ambiguity	UNKNOWN	pair
+technician	UNKNOWN	domain_ambiguity	UNKNOWN	pair
+systems administrator	UNKNOWN	domain_ambiguity	IN	table
+engineering manager	UNKNOWN	domain_ambiguity	UNKNOWN	table
+marketing analyst	UNKNOWN	scope_ambiguity	UNKNOWN	pair
+support engineer	UNKNOWN	scope_ambiguity	UNKNOWN	table
+hvac technician	OUT		OUT	pair
+industrial engineer	UNKNOWN	scope_ambiguity	UNKNOWN	pair
+analyst	UNKNOWN	domain_ambiguity	UNKNOWN	pair
+data analyst	UNKNOWN	scope_ambiguity	UNKNOWN	table
+technical writer	UNKNOWN	scope_ambiguity	UNKNOWN	table
+architect	UNKNOWN	domain_ambiguity	UNKNOWN	pair
+sales engineer	UNKNOWN	domain_ambiguity	UNKNOWN	table
+technical program manager	UNKNOWN	domain_ambiguity	IN	table
+pharmacy technician	OUT		OUT	pair
+mechanical software engineer	OUT		IN	pair
+game designer	UNKNOWN	domain_ambiguity	OUT	table
+biomedical engineer	OUT		UNKNOWN	pair
+agricultural engineer	OUT		OUT	pair
+marketing manager	OUT		OUT	pair
+database administrator	IN		IN	table
+mechanical engineer	OUT		OUT	table
+electrical engineer	UNKNOWN	scope_ambiguity	UNKNOWN	table
+ux engineer	IN		IN	table
+game programmer	IN		IN	table
+software developer	IN		IN	pair
+embedded software engineer	IN		IN	pair
