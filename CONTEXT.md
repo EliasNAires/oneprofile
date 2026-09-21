@@ -157,12 +157,39 @@ classification answers, and a vacancy that is not one is out of scope.
 _Avoid_: role family, category, discipline, job function, technical role
 
 **Classification State**:
-What classification answers about a vacancy: in, out, or unknown. Unknown is not a softer
-out — it says the signal read did not carry enough to decide, and it carries the reason,
-either that the title's function word exists identically outside software or that titles of
-its shape split across the criterion. Which signal decided, title or body, is recorded
-alongside, so a wrong answer is attributable to the rule that produced it.
+What classification answers about a vacancy: in, out, or unknown. Unknown is the default and
+not a softer out — it says nothing earned a decision, and it carries the reason: the head is
+known but the domain is not, a ruled phrase genuinely splits, or no rule reaches the title at
+all. Which signal decided, title or body, is recorded alongside, so a wrong answer is
+attributable to the rule that produced it.
 _Avoid_: verdict, flag, is_engineering, category
+
+**Function Head**:
+The noun in a title that names what the role does — engineer, analyst, technician — as opposed
+to the modifiers naming the domain it does it in. Extracted during cleaning and stored, because
+it is the first thing classification reads and the list of known heads is what each measurement
+round grows.
+_Avoid_: role noun, job noun, base title, head word
+
+**Domain-Bound**:
+Said of a function head whose modifier settles what the role is, because the function only
+exists inside a domain: a civil engineer is not a software job. The opposite is domain-free,
+where the function operates on information about a domain and the modifier settles nothing —
+an audit analyst may work on audit software.
+_Avoid_: domain-specific, vertical, contextual
+
+**Ruling**:
+A verdict fixed for one phrase by a decision, overriding every rule. Rulings are what the
+criterion's lists cannot express and what never changes as a side effect of editing them; they
+are precise and they do not generalise, which is why they are an override layer rather than the
+mechanism.
+_Avoid_: exception, override, special case, hardcoded verdict
+
+**Unruled**:
+The unknown reason meaning no rule reaches this title, as against the reasons that say the
+corpus itself is ambiguous. It measures the backlog rather than the world, so it is the one
+share expected to fall every round, and it is what the loop's exit is gated on.
+_Avoid_: uncovered, unhandled, missing, not found
 
 **Labeller**:
 What produces the ground truth a classification state is scored against: it reads titles and

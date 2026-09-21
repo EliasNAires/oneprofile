@@ -2,10 +2,11 @@
 
 Status: accepted
 
-A vacancy is classified as **in**, **out**, or **unknown**, where unknown carries a reason:
-`domain_ambiguity`, the title's function word exists identically outside software, or
-`scope_ambiguity`, titles of this shape split across the criterion. The state and the signal
-that produced it — title or body — are both stored.
+A vacancy is classified as **in**, **out**, or **unknown**, where unknown carries one of three
+reasons: `domain_ambiguity`, the head names a function that exists identically outside software
+and no modifier settles the domain; `scope_ambiguity`, a ruled phrase whose variants genuinely
+split across the criterion; or `unruled`, the rules do not reach this title at all. The state and
+the signal that produced it — title or body — are both stored.
 
 ## Considered options
 
@@ -30,13 +31,29 @@ the reason code says which question to ask there: a domain-ambiguous title needs
 checked for domain markers, a scope-ambiguous one needs the membership test re-run. Without
 the reason, the body pass would re-derive from scratch what the title pass already knew.
 
+`unruled` is a fourth thing again, and it does not go to #11 at all. It says the title stage has
+no rule for this head, which is a statement about our backlog rather than about the vacancy: the
+fix is a line added to a list, not a description read. Separating it from `scope_ambiguity` is
+what makes the two numbers mean different things. The `unruled` share is ours and must fall every
+round; `domain_ambiguity` and `scope_ambiguity` are the corpus's and will plateau at whatever the
+world actually is.
+
 The third state is also an **escape hatch that has to be capped**, which is the price of
 having it. A classifier that answers unknown to everything has no false accepts and no misses
-and would satisfy any accuracy threshold; the loop in #10 therefore exits only when the
-unknown share of the corpus is at or below 10%, alongside its error thresholds. Each round
-also labels a slice of the unknown pile — not to gate on it, but because a pile that is mostly
-in means recall is worse than the miss rate reports, and nothing else would reveal that.
+and would satisfy any accuracy threshold. The cap was originally a fixed 10% of the corpus.
+ADR-0009 makes unknown the default, so the classifier now starts above half the corpus and a
+fixed number would gate nothing for many rounds; the cap is therefore restated as a direction.
+**The loop exits when the `unruled` share stops falling**, alongside its error thresholds. That
+is the same discipline against over-declining, applied to the one reason code that measures our
+own work rather than the corpus's ambiguity. Each round also labels a slice of the unknown pile —
+not to gate on it, but because a pile that is mostly in means recall is worse than the miss rate
+reports, and nothing else would reveal that.
 
 Downstream, three states means every consumer of classification chooses explicitly what to do
 with unknown, rather than inheriting a default. In this iteration the engineering subset is the
 in state alone; unknown vacancies reach it only if #11 resolves them.
+
+## Amended by ADR-0009
+
+The third reason code and the restated cap above were added when ADR-0009 made unknown the
+default. The three-state decision itself is unchanged.

@@ -34,12 +34,28 @@ that made it — which is why rounds accumulate and are never regenerated. Each 
 records the criterion version it was produced under, so a label can be read against the rules
 that were in force when it was made.
 
-Because the labeller is trusted rather than verified per row, it is **calibrated**: 50
-adversarial titles labelled by hand, once, checked against the ruling table in
-`docs/engineering-role-criterion.md`. Agreement below 95% means the criterion is not written
-clearly enough to be followed, and the criterion is fixed before any round runs. The
-calibration set is held out of every measurement sample. Calibration is re-run whenever the
-criterion changes.
+Because the labeller is trusted rather than verified per row, it is **calibrated**: adversarial
+titles labelled blind, checked against `docs/engineering-role-criterion.md`. Agreement below 95%
+means the criterion is not written clearly enough to be followed, and the criterion is fixed
+before any round runs. The calibration set is held out of every measurement sample. Calibration
+is re-run whenever the criterion changes.
+
+The first run, on 2026-09-20, scored 78% and is what produced ADR-0009. Three things about how
+calibration is run were decided by that failure.
+
+**The rulings table is shown.** It was hidden on the first run, on the theory that a labeller who
+can recall the answers is not being tested. That was wrong: in production the labeller reads the
+whole criterion, rulings included, and five of the eleven disagreements were on ruled phrases the
+procedure is structurally incapable of deriving. Hiding the table tested recall, not clarity.
+
+**The reader that is certified is the Claude Code session**, because that is what labels the
+rounds. A run by hand remains worth doing and its labels remain the answer key — a document its
+own author cannot follow blind is not ready — but it is diagnostic, not the gate.
+
+**Two numbers, not one.** Since ADR-0009 made unknown the default, a labeller that declines
+everything scores well by accident. Calibration therefore reports agreement on the items where
+the criterion commits to `in` or `out`, held to 95%, and separately checks that the labeller
+produces no more unknowns than the criterion does, within one item.
 
 The labeller reads **titles only**. Ground truth therefore answers "is this title readable as
 an engineering role", not "is this job one" — which is the right question to score a
