@@ -165,6 +165,19 @@ seniority words 5.4%. The step's own report records the real figures.
 A **token dictionary over cleaned titles** answers one question: is this an engineering role?
 A vacancy that is not one is out of scope, and nothing downstream asks anything finer.
 
+It answers in **three states** — in, out, or unknown — for the reasons in ADR-0008. Unknown
+says the signal read did not carry enough to decide, and it carries the reason: the title's
+function word exists identically outside software (`Engineer II`, `Electrical Engineer`), or
+titles of its shape split across the criterion (`Data Analyst`, `Support Engineer`). Roughly
+10% of the raw corpus lands there. Each vacancy records **which signal classified it**, title
+or body, so a wrong answer can be attributed to the right rule.
+
+What counts as an engineering role is written down in `docs/engineering-role-criterion.md`,
+as a procedure plus the rulings it must reproduce. It is wider than the phrase usually
+carries: a role a software background alone would make you a credible candidate for today is
+in scope even when it does not write software, because the product exists to find work a
+person can actually take. Scrum Master is in on that ground; Product Manager is out.
+
 The eight role families of the pre-reset design — `SOFTWARE_ENGINEERING`, `DATA_ENGINEERING`,
 `MACHINE_LEARNING`, `SRE_DEVOPS_PLATFORM`, `QA_TEST`, `SECURITY`, `MOBILE`, `EMBEDDED` — are
 **not modelled in this iteration**. Nothing consumes them: the score in §6.2 is built from
@@ -173,20 +186,28 @@ field. Eight dictionaries to tune and eight error rates to measure is a large co
 label nothing reads. The tokens stay grouped in the source, so a later iteration that wants
 facets can split them against a corpus it understands better than this one does.
 
-A second pass reads the description body for role vocabulary the title does not carry, and
-classifies from it when the title cannot. Each vacancy records **which signal classified
-it**, title or body, so a wrong answer can be attributed to the right rule.
+A second pass reads the description body of the **unknown** vacancies, by rule, and resolves
+what it can. The reason code says which question to ask: a domain-ambiguous title needs the
+body checked for domain markers, a scope-ambiguous one needs the criterion re-applied.
 
 Separately and offline, a mining report lists role vocabulary found in description bodies
 that the dictionary does not know, ranked by frequency, as input for growing the dictionary
 by hand. The dictionary only ever grows through a decision, never at runtime.
 
-The classifier's error rate is measured on hand-labelled samples **stratified by what it
-predicted**: roughly 150 vacancies drawn at random from those it called engineering, which
-measures how many it lets in wrongly, and roughly 150 from those it rejected, which measures
-how many it misses. A random sample of the corpus would spend most of its labels on jobs the
-classifier already rejects correctly. This is a **loop**, not a gate: label, measure, grow
-the dictionary, re-classify, draw again, until the numbers stop moving.
+The classifier's error rate is measured on samples **stratified by what it predicted** and
+labelled by a **blind labeller** — a Claude Code session applying the written criterion,
+never told what the classifier said (ADR-0007). A round is 1000 labels: 300 drawn from what
+it called in, which measures how many it lets in wrongly; 600 from what it called out, which
+measures how many it misses; and 100 from the unknown pile, which measures how much recall is
+parked rather than lost. The rejected stratum is the largest because the miss rate is the
+number that matters, and 1000 labels put the noise floor near ±1pp, which is what a 3%
+threshold needs to be measurable at all.
+
+This is a **loop**, not a gate: label, measure, grow the dictionary, re-classify, draw a
+fresh sample. It exits when two consecutive rounds hold a miss rate at or below 3%, a false
+accept rate at or below 10%, and an unknown share of the corpus at or below 10%. The unknown
+cap is not decoration: without it a classifier that answers unknown to everything satisfies
+the other two thresholds on the first round.
 
 ### 5.3 Title normalization
 
@@ -416,9 +437,10 @@ These are consequences of the decisions above and belong in the plan, not in hin
 
 1. **Eligibility recall**, measured on a hand-labelled sample of ~200 remote engineering
    vacancies. It is the binding constraint on the product's output.
-2. **Classifier accuracy**, measured on ~300 hand-labelled vacancies drawn stratified by
-   what the classifier predicted — half from what it accepted, half from what it rejected —
-   and re-measured each time the dictionary grows.
+2. **Classifier accuracy**, measured on 1000 blind-labelled titles per round, drawn
+   stratified by what the classifier predicted — 300 in, 600 out, 100 unknown — and
+   re-measured on a fresh sample each time the dictionary grows. Reported as three numbers:
+   miss rate, false accept rate, and the unknown share of the corpus.
 3. **Title cleaning**, reported as the share of distinct titles each rule collapses, which
    is what decides whether a rule stays.
 4. **Normalizer regression**, by diffing against the pre-reset corpus.
@@ -427,7 +449,7 @@ These are consequences of the decisions above and belong in the plan, not in hin
 ## 12. Explicitly out of scope
 
 Authentication and multiple users; role families finer than "engineering"; tech-adjacent
-roles beyond engineering; résumé
+roles a software background alone would not open, which §5.2's criterion rules out; résumé
 parsing; required-versus-mentioned skill discrimination; multi-dimensional seniority;
 salary-based ranking; LLM extraction of any kind; scheduled ingestion; TLS, a domain and
 rollbackable deploys; ATS beyond Greenhouse and Ashby.

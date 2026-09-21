@@ -142,14 +142,39 @@ _Avoid_: backup, dump, export, copy, fixture
 
 **Tech-Adjacent Role**:
 A role whose hiring market is shaped by software work, whether or not the role writes
-software. The product exists to serve these; the current iteration covers only the
-engineering subset of them.
+software. The product exists to serve these. The ones a software background alone opens are
+engineering roles for this iteration's purposes; the rest wait for a later one.
 _Avoid_: tech role, IT role, technical role
 
 **Engineering Role**:
-A vacancy whose work is engineering. Whether a vacancy is one is the whole of what
+A vacancy a software background alone qualifies someone for: it writes code, or it reads and
+operates on engineer-facing artifacts, or it is a role a software person could credibly be
+hired into today without a new credential. Wider than the phrase usually carries, and
+deliberately so — the product exists to find work a person can actually take, which is why
+Scrum Master belongs and Product Manager does not. The criterion and its rulings live in
+`docs/engineering-role-criterion.md`; whether a vacancy is one is the whole of what
 classification answers, and a vacancy that is not one is out of scope.
 _Avoid_: role family, category, discipline, job function, technical role
+
+**Classification State**:
+What classification answers about a vacancy: in, out, or unknown. Unknown is not a softer
+out — it says the signal read did not carry enough to decide, and it carries the reason,
+either that the title's function word exists identically outside software or that titles of
+its shape split across the criterion. Which signal decided, title or body, is recorded
+alongside, so a wrong answer is attributable to the rule that produced it.
+_Avoid_: verdict, flag, is_engineering, category
+
+**Labeller**:
+What produces the ground truth a classification state is scored against: it reads titles and
+applies the criterion, knowing nothing of what the classifier predicted. Never part of the
+pipeline — it exists only inside a measurement round.
+_Avoid_: annotator, judge, oracle, reviewer
+
+**Label Round**:
+One measurement of the classifier against fresh labels: a sample drawn stratified by what the
+classifier predicted, labelled blind, and scored. Rounds accumulate and are never replaced,
+because an accuracy figure is a statement about a specific sample of a specific corpus.
+_Avoid_: batch, run, evaluation, test set
 
 **Work Mode**:
 Where the work is performed, as declared by the vacancy: remote, hybrid or onsite.
