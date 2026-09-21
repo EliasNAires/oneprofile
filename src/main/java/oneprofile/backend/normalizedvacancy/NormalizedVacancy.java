@@ -34,6 +34,12 @@ public class NormalizedVacancy {
 
 	private String cleanedTitle;
 
+	@Enumerated(EnumType.STRING)
+	private ClassificationState classificationState;
+
+	@Enumerated(EnumType.STRING)
+	private UnknownReason classificationReason;
+
 	@ElementCollection
 	@CollectionTable(name = "normalized_vacancy_title_seniority",
 			joinColumns = @JoinColumn(name = "normalized_vacancy_id"))
@@ -59,6 +65,17 @@ public class NormalizedVacancy {
 		this.titleSeniorities.addAll(cleaned.titleSeniorities());
 	}
 
+	/**
+	 * Takes on what classification made of the vacancy's cleaned title. Classifying it again
+	 * replaces what the last run decided, because a rule change is measured by running the pass
+	 * again over the same corpus.
+	 * @param classification what the rules decided, and why they left it undecided where they did
+	 */
+	public void classifiedAs(Classification classification) {
+		this.classificationState = classification.state();
+		this.classificationReason = classification.reason();
+	}
+
 	/** The vacancy these facts were derived from. */
 	public long vacancyId() {
 		return this.vacancyId;
@@ -67,6 +84,12 @@ public class NormalizedVacancy {
 	/** Its title with what is noise in any title taken out. */
 	public String cleanedTitle() {
 		return this.cleanedTitle;
+	}
+
+	/** What classification made of its cleaned title, null until classification has run. */
+	public Classification classification() {
+		return (this.classificationState == null) ? null
+				: new Classification(this.classificationState, this.classificationReason);
 	}
 
 	/** Every seniority level its title names, empty if it names none. */

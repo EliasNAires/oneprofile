@@ -90,7 +90,13 @@ deciding a phrase, and it is never executed at classification time. An earlier v
 document put a judgement of exactly this kind inside the procedure, where a labeller could not
 run it, and it caused six of the eleven disagreements in the first hand check.
 
-A phrase is IN if any one of these holds:
+**Q1 — it has to be a vacancy.** This one is a gate, not an alternative: it has to hold before
+Q2–Q4 are worth asking. A post that names no role being hired for is OUT however engineering it
+sounds — talent-community sign-ups, general applications, "join our team" banners, event and
+referral posts. They are marketing surfaces that happen to sit in a job feed, and Q2–Q4 would
+otherwise read them as engineering because the words around them are.
+
+Given a post that is a vacancy, it is IN if any one of these holds:
 
 - **Q2** — the role writes code as its primary artifact.
 - **Q3** — the role reads or operates on engineer-facing artifacts — source, API definitions,
@@ -105,7 +111,7 @@ IN for this reason and for no other.
 
 A phrase is UNKNOWN with `scope_ambiguity` when its variants split across Q2–Q4 in the world —
 some `data analyst` roles are engineering roles and some are not, and no rule fixes that. It is
-OUT when none of Q2–Q4 holds and the title says so.
+OUT when Q1 fails, and when none of Q2–Q4 holds and the title says so.
 
 ## What a rule may cost
 

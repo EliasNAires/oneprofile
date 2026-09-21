@@ -1,0 +1,1007 @@
+# Hand labels for iteration 2 of the engineering-role loop (issue #10).
+# The 1000 rows sampled by iteration 1, in docs/measurements/engineering-role-2026-09-21.md.
+# Labelled on 2026-09-21 from docs/engineering-role-criterion.md alone, at revision
+# 33113b2f832188092b8f9b8cb1ac763bca5f43d2, over the bare cleaned titles, before any rule of
+# the classifier was read. Never regenerated: a session is not reproducible, so these labels
+# are the artifact and not the process that made them.
+# id	cleaned_title	label	unknown_reason
+87	Junk Removal and Sales In Training	OUT	
+374	Outside Sales Representative Roofing	OUT	
+590	Procurement Operations Manager Factor Europe all genders	OUT	
+918	Assistant Teacher	OUT	
+1044	Developer Relations Manager	IN	
+1119	Software Engineer II Full Stack	IN	
+1236	Director Content Development	OUT	
+1326	3rd Grade Teacher	OUT	
+1342	5th Grade Teacher	OUT	
+1423	Instructional Aide	OUT	
+1527	Virtual General Education Teacher	OUT	
+1565	AI ML Strategist	UNKNOWN	scope_ambiguity
+1705	Data Platform Engineer Palantir	IN	
+2479	Specialist Marketing Key Account Manager Media	OUT	
+2558	Board Certified Behavior Analyst	OUT	
+2583	Registered Behavior Technician	OUT	
+2752	Strategic Account Executive	OUT	
+2782	Security and Infrastructure Engineer	IN	
+2946	Associate Sales Development Representative	OUT	
+3069	Industrial Maintenance Technician	OUT	
+3171	Field Marketing Manager	OUT	
+3203	Manager Global Mobility	OUT	
+3443	Guest Services Staff Usher Ticket Taker AEG Presents Great Lakes Royal Oak Music Theater	OUT	
+3473	Maintenance Specialist The Pinnacle	OUT	
+3483	Marketing Coordinator Pacific Northwest	OUT	
+4018	Attorney Specialist Freelance AI Trainer Project	OUT	
+4066	Chinese Language Specialist Freelance AI Trainer Project	OUT	
+4303	Hungarian Voice Acting Specialist Freelance AI Trainer Project	OUT	
+4312	Indonesian Language Specialist Freelance AI Trainer Project	OUT	
+4409	Language Alignment Resource Partner Polish Freelance AI Trainer Project	OUT	
+4467	Manufacturing Specialist Fluent in French Freelance AI Trainer Project	OUT	
+4491	Mathematics Specialist Fluent in Italian Freelance AI Trainer Project	OUT	
+4494	Mathematics Specialist Fluent in Portuguese Brazil Freelance AI Trainer Project	OUT	
+4616	Radiochemistry Nuclear Chemistry Specialist Freelance AI Trainer Project	OUT	
+4644	Science Specialist Fluent in Portuguese Portugal Freelance AI Trainer Project	OUT	
+4741	Tajik Language Specialist Freelance AI Trainer Project	OUT	
+4778	Visual Digital Arts Specialist Freelance AI Trainer Project	OUT	
+4796	Xiang Dialect Specialist Freelance AI Trainer Project	OUT	
+5186	Assistente Fiscal II	OUT	
+6246	Construction Inspector	OUT	
+6865	Mechanical Technician	OUT	
+6940	Geospatial Analyst Middle Job#823	UNKNOWN	scope_ambiguity
+6974	Mission Trainer 866	OUT	
+7467	Operations Visual Manager Chicago IL	OUT	
+7843	Seasonal Operations Associate Part Time Oakridge Centre	OUT	
+8049	Seasonal Sales Associate Part Time Shops at Crystals	OUT	
+8874	HIL Validation Integration Engineer Automotive	OUT	
+9292	Dental Assistant Instructor	OUT	
+9368	Construction Project Manager New Grad 2027	OUT	
+9397	Project Manager Construction	OUT	
+9656	Strategic Account Executive	OUT	
+9664	Maintenance Mechanic Technician	OUT	
+9813	Executive Support Analyst	UNKNOWN	scope_ambiguity
+10021	Entry Level Project Manager Construction	OUT	
+10668	Machine Vision Engineer Manufacturing Automation	IN	
+10712	Manufacturing Engineer	OUT	
+10974	Production Optical Assembly Technician	OUT	
+11152	Safety Equipment Engineer Rocket Motor Systems	OUT	
+11289	Electrical Test Technician	OUT	
+11474	Manufacturing Engineer Mechanical	OUT	
+11590	Product Designer Space	OUT	
+12452	Winter 2027 Manufacturing Engineer Co op	OUT	
+12505	MSU Medical Surgical Unit OvernightVeterinary Assistant	OUT	
+12661	BDR Enablement Lead	OUT	
+12704	Data Center Energy Lead Australia	OUT	
+12764	Enterprise Account Executive Industries Generalist	OUT	
+12920	Product Manager Claude Science	IN	
+13156	Strategic Account Executive Retail Commercial Banking	OUT	
+13278	Microsoft AI and Data Architect	IN	
+13334	Events and Ministry Coordinator Offsite Part Time	OUT	
+13365	Events and Ministry Coordinator Onsite	OUT	
+13420	Events and Ministry Coordinator Onsite	OUT	
+13488	Construction Engineer	OUT	
+13750	Medical Assistant Ashtabula Office	OUT	
+13956	Account Executive	OUT	
+14009	Head of Revenue Enablement	OUT	
+14065	Advisory Solutions Consultant Broad Markets	IN	
+14357	Revenue Accountant	OUT	
+14649	Sales Executive	OUT	
+14845	In Vivo Research Associate II Konermann Lab	OUT	
+14867	Assistant General Counsel EPC Transactions	OUT	
+14872	Assistant Superintendent Data Center Construction	OUT	
+14874	Assistant Superintendent New Grad 2027	OUT	
+15028	Director of Business Development Construction	OUT	
+15141	Project Manager Construction	OUT	
+15260	Traveling Project Safety Manager Construction	OUT	
+15338	Construction Project Manager Intern or Co Op 2027	OUT	
+15351	Construction Project Manager Intern or Co Op Summer 2027	OUT	
+15573	GIS Project Manager	UNKNOWN	scope_ambiguity
+15772	AI Engineer	IN	
+15787	Capacity Sales Representative	OUT	
+16108	Stage Communication Stratégie création de contenus Adopt AI	OUT	
+16192	Enterprise Solutions Engineer Service Management	IN	
+16377	Tax Manager Estate Trust	OUT	
+16633	Engineer Data BIA AI	IN	
+16638	Engineer Mechanical Engineering Chemical Materials Based	OUT	
+16663	Engineer Field Process Boise ID	OUT	
+16907	Specialist II Technical Training Night Shift	OUT	
+17546	Manufacturing IT Technician	UNKNOWN	scope_ambiguity
+17596	RAN Deployment Engineer	UNKNOWN	domain_ambiguity
+17793	Attendant Adult Care Partner Lindale TX	OUT	
+17835	Special Attendant Adult Travel Care Partner Community Care Mesquite Tx	OUT	
+18022	Head of Product Security Engineer	IN	
+18117	Supply Chain Coordinator	OUT	
+18280	Civil Designer Land Development	OUT	
+18328	Electrical Project Engineer Oil and Gas Pipelines and Facilities	OUT	
+18392	Proposal Marketing Associate Remote West Coast Land Development Public Works	OUT	
+18594	Strategic Relationship Executive Account Manager	OUT	
+19068	Technical Support Engineer	IN	
+19231	Werkstudent in Finance all genders	OUT	
+19247	Facilities Technician	OUT	
+19551	Content Marketing Manager	OUT	
+19603	Facilities Manager	OUT	
+19698	Privacy AI Counsel	OUT	
+19745	Account Executive Vehicle Intelligence	OUT	
+20563	BI Integration Innovation Lead FTC	IN	
+20588	Initiativbewerbung	UNKNOWN	unruled
+20840	Computer Systems Engineer I Computer Network Architect	IN	
+21447	Certified Home Health Aide CHHA Work Close to Home	OUT	
+21478	Certified Nursing Assistant CNA	OUT	
+21622	CNA Certified Nursing Assistant	OUT	
+21650	CNA Personal Aide for People with Disabilities	OUT	
+21882	Home Care Nurse LPN	OUT	
+21884	Home Care Nurse LPN	OUT	
+22187	Licensed Practical Nurse LPN 1 1	OUT	
+22201	Licensed Practical Nurse LPN For High Acuity	OUT	
+22890	Physical Therapy Assistant	OUT	
+23057	Registered Nurse 1 1 Pediatric Home Care	OUT	
+23072	Registered Nurse Flexible Schedule	OUT	
+23095	Registered Nurse Home Health	OUT	
+23212	Registered Nurse RN Homecare	OUT	
+23213	Registered Nurse RN Homecare	OUT	
+23219	Registered Nurse RN Home Care	OUT	
+23227	Registered Nurse RN Home Care	OUT	
+23243	Registered Nurse RN Home Health	OUT	
+23362	Registered Nurse Weekends Home Health Living	OUT	
+23531	RN Private Duty Wabash	OUT	
+23589	Living Program Manager Nurse Therapist	OUT	
+23705	Transitional Care Adult Pediatric Nurse RN	OUT	
+23716	Updated HH HOS Nurse Job Post Questions Q12026	OUT	
+24010	Executive Medical Director Clinical Development	OUT	
+24039	Engineering Coordinator	UNKNOWN	domain_ambiguity
+24127	Strategic Account Manager	OUT	
+24188	Construction Manager	OUT	
+24215	Maintenance Technician Round Rock TX	OUT	
+24405	Certified Nursing Assistant CNA Full Time 2 45pm 11 15pm	OUT	
+24416	Certified Nursing Assistant CNA Memory Care Full Time 10 45pm 7 15am	OUT	
+24478	Physical Therapist Assistant As Needed 8am 4pm	OUT	
+24556	Gaming Coordinator Greece	OUT	
+24593	Backend .NET Software Engineer	IN	
+24917	Customer Service Representative	OUT	
+24927	Inside Sales Representative Remote	OUT	
+24951	Business Development Representative	OUT	
+25162	Civil Land Site Project Manager	OUT	
+25512	Prenatal Account Executive	OUT	
+25528	Prenatal Regional Sales Manager Great Plains	OUT	
+25596	Operations Partner Denver CO	OUT	
+25693	Child Adolescent Therapist Resident in Counseling LPC R	OUT	
+25732	Facilities Clinic Operations Coordinator	OUT	
+25764	Psychiatric Mental Health Nurse Practitioner VA License PMHNP Contract 1099	OUT	
+25930	Assistant General Manager Manchester	OUT	
+25967	Cafe Manager Beverly Hills	OUT	
+26065	Growth Lifecycle Marketing Manager	OUT	
+26711	Psychiatric Mental Health Nurse Practitioner PMHNP	OUT	
+26729	Psychiatric Mental Health Nurse Practitioner PMHNP	OUT	
+26818	Psychiatric Mental Health Nurse Practitioner PMHNP	OUT	
+26827	Psychiatric Mental Health Nurse Practitioner PMHNP	OUT	
+26879	Psychiatric Mental Health Nurse Practitioner PMHNP	OUT	
+26958	Psychiatric Mental Health Nurse Practitioner PMHNP	OUT	
+26971	Psychiatric Mental Health Nurse Practitioner PMHNP	OUT	
+27019	Psychiatric Mental Health Nurse Practitioner PMHNP	OUT	
+27881	Credentialed Veterinary Technician Boston Multiple Locations	OUT	
+28079	Sales Development Representative	OUT	
+28337	Werkstudent in Influencer Marketing	OUT	
+28498	Accounting Manager	OUT	
+28931	Enterprise Client Sales Executive	OUT	
+29019	Product Manager Travel	UNKNOWN	domain_ambiguity
+29020	Product Manager Travel	UNKNOWN	domain_ambiguity
+29460	Executive	UNKNOWN	unruled
+29878	Lead Blockchain Development Engineer Java	IN	
+29938	Growth Product Manager User Activation	IN	
+30480	Grocery Merchandiser Rockford IL	OUT	
+30506	Cost Accounting Manager	OUT	
+30537	Assistant Curator Schlinger Chair of Arachnology	OUT	
+30777	Channel Partner Sales Executive Japan	OUT	
+31607	Python Developer HR Strat Engineer	IN	
+31772	Técnico de Segurança do Trabalho Offshore Santos SP	OUT	
+32273	Product Operations Specialist	UNKNOWN	scope_ambiguity
+32303	Customer Service Representative	OUT	
+32405	Salesforce Developer	IN	
+32470	Funds Paralegal	OUT	
+32836	Sales Development Representative	OUT	
+33135	Client Value Partner CVP Utilities Energy Industry	OUT	
+33842	Behavior Technician	OUT	
+34316	Registered Behavior Technician RBT	OUT	
+34628	Spanish Speaking Behavior Technician	OUT	
+34772	Human Resources Business Partner	OUT	
+34997	Part Time Microbiology Lab Tech	OUT	
+35002	Research Assistant I	OUT	
+35620	Systems Engineer Integration Test	UNKNOWN	domain_ambiguity
+35876	Enterprise Account Executive Upper Mid Market	OUT	
+36265	Sales Development Representative	OUT	
+36274	Staff Software Engineer	IN	
+36392	CityVet Veterinarian Externship Houston TX	OUT	
+37447	Majors Account Executive San Francisco Bay Area	OUT	
+37639	IHC Certified Medical Assistant Union NJ	OUT	
+37656	Medical Assistant Somerset Middlesex NJ	OUT	
+37705	Assistant Store Manager TEC	OUT	
+37929	Associate Project Manager	UNKNOWN	domain_ambiguity
+38040	Executive Director Precision Medicine Executives	OUT	
+38231	Accounting Manager GL Operations Intercompany	OUT	
+38234	Accounting Manager Tokenized Equities	OUT	
+38561	Business Development Representative	OUT	
+38583	Demand Generation Manager Industrials Manufacturing	OUT	
+38920	Registered Nurse	OUT	
+39357	Inventory Control Specialist	OUT	
+39492	Licensed Practical Nurse LPN Pool PRN	OUT	
+39555	Registered Nurse RN Back End Days	OUT	
+39594	Unit Coordinator PRN Pool	OUT	
+39601	B2B SaaS Sales Development Representative	OUT	
+39671	Technical Assistant Surety	OUT	
+39890	Mid Market Account Executive France	OUT	
+40093	Medical Assistant MA Urgent Care	OUT	
+40097	Medical Assistant MA Urgent Care	OUT	
+40101	Medical Assistant MA Urgent Care	OUT	
+40355	Dishwasher	OUT	
+40704	Data Scientist Technical Targeter	IN	
+40800	Sales Development Representative UK	OUT	
+40813	Account Solution Architect	IN	
+40852	Director Compensation	OUT	
+40891	Manager Energy Market Development	OUT	
+41149	Behavioral Interventionist	OUT	
+41232	Maintenance Technician Cortland Belmar	OUT	
+41250	Regional Marketing Manager Atlanta GA	OUT	
+41392	Entry Level Sales Executive Employee Benefits	OUT	
+41487	Part Time Customer Experience Specialist at 5 Row Apartments	OUT	
+41699	Coupang Pay Back end Engineer Pay Test Operations	IN	
+42026	PR Manager	OUT	
+42055	Software Development Manager ECommerce Engineering	IN	
+42081	Staff ll Machine Learning Engineer Search Relevance	IN	
+42581	Manager Trust and Safety Compliance Audit	OUT	
+42684	Staff Engineer Cloud Backend Engineering	IN	
+42710	Staff Visual Designer L6 1 Coupang Eats	OUT	
+43064	Kitchen Agent 2nd Shift	OUT	
+43822	Delivery Driver	OUT	
+43826	Delivery Driver Scooter Car	OUT	
+43884	Middleware Solutions Engineer I	IN	
+44046	Director of US Payroll and Tax Compliance US Experience	OUT	
+44055	Software Team Lead	IN	
+44103	Assistant Store Manager	OUT	
+44780	Director Web Marketing	OUT	
+44907	Manager Field Engineering Financial Services Industry	UNKNOWN	domain_ambiguity
+45143	Solutions Architect Digital Native Business Named Accounts	IN	
+45459	Staff Product Manager SAP	IN	
+45637	Commercial Account Executive	OUT	
+45735	Enterprise Sales Executive	OUT	
+45770	HRIS Manager	UNKNOWN	scope_ambiguity
+46436	Nurse Practitioner Home Virtual Care	OUT	
+46733	Account Executive Agency Partnerships	OUT	
+47143	Resource Manager	OUT	
+47286	Entry level New graduates Computer Science CIS	IN	
+47323	Product Designer Design Systems	OUT	
+47558	Commercial Entry Door Installers Hollow Metal Wood Frames Hardware	OUT	
+48079	Sales Development Representative	OUT	
+48086	Site Reliability Engineer	IN	
+48538	Revenue Enablement Manager	OUT	
+48542	Business Operations Analyst Infrastructure Planning and Operational Excellence	UNKNOWN	scope_ambiguity
+48719	Advisory Consulting Manager Risk Audit	OUT	
+48838	Strategic Account Executive	OUT	
+48999	Recruiting Coordinator	OUT	
+49005	AM Equipment Engineer	OUT	
+49252	Structural Engineer	OUT	
+49301	Marketing Executive Marketing Executive Digital Subscription Growth	OUT	
+50348	Product Manager Delivery	UNKNOWN	domain_ambiguity
+50749	Reverse Engineer	IN	
+50966	Platform Engineer AI Focused	IN	
+51000	Paid Social Media Coordinator	OUT	
+51192	Sales Executive Partnerships FX Sales	OUT	
+51236	Product Manager Financial Crime Name Payment Screening	IN	
+51264	Federal Contracts Manager	OUT	
+51293	Manufacturing Test Development Manager	OUT	
+51511	Medical Assistant No weekends Full benefits	OUT	
+51749	Patient Coordinator	OUT	
+51751	Patient Coordinator	OUT	
+51791	Registered Nurse Pre Op Post Op PACU PRN	OUT	
+51885	Manager Tax Advisory Planning Remote USA	OUT	
+52631	Customer Success Manager Tier 2 East	OUT	
+53220	Manager Information Technology	IN	
+53301	Mechanical Engineer Building Systems	OUT	
+53342	3000 Sign on Bonus Nurse Practitioner or Physician Assistant Baltimore County	OUT	
+53532	Project Office Coordinator Tucson AZ	OUT	
+53617	Assistant Controller	OUT	
+53729	Product Manager AI Led Mainframe Managed Services	IN	
+53991	Assistant Fitness Manager	OUT	
+53993	Assistant Fitness Manager	OUT	
+54015	Assistant Fitness Manager	OUT	
+54225	Assistant General Manager	OUT	
+54242	Assistant General Manager	OUT	
+54429	Assistant Kids Club Manager	OUT	
+54459	Assistant Stretch Manager	OUT	
+54473	Assistant Stretch Manager	OUT	
+54832	Fitness Counselor	OUT	
+54942	Fitness Manager	OUT	
+55529	Kids Club Associate	OUT	
+55542	Kids Club Associate	OUT	
+55683	Kids Club Manager	OUT	
+56442	Service Associate Night	OUT	
+56858	Future Opportunities Software Engineering	IN	
+57102	Assistant General Manager	OUT	
+57182	District Field Technician Mechanic Pump Power HVAC	OUT	
+57300	General Manager Pump Power HVAC	OUT	
+57384	Heavy Equipment CDL Driver	OUT	
+57600	Industrial Tooling CDL Delivery Driver	OUT	
+57678	Parts Assistant	OUT	
+57680	Parts Assistant	OUT	
+57682	Parts Assistant	OUT	
+57683	Parts Assistant	OUT	
+57704	Purchasing Coordinator	OUT	
+57725	Rental Coordinator	OUT	
+57854	Shop Technician Mechanic Pump Power HVAC	OUT	
+57985	Territory Account Manager Pump Power HVAC	OUT	
+58680	Medical Support Associate Manila Registered Nurse	OUT	
+58959	Operations Coordinator	OUT	
+59417	Childcare Lead Teacher	OUT	
+59877	Apartment Maintenance Manager	OUT	
+60020	Head of Technical Accounting Financial Reporting	OUT	
+60300	Marketing Director LATAM	OUT	
+60384	Apparel Graphic Designer I	OUT	
+60519	Retail Lead Orlando City Soccer Club Pride Team Store	OUT	
+60854	Crop Insurance Trainer	OUT	
+60966	Manager Merchandise Planning	OUT	
+61057	Cybersecurity Systems Analyst Intermediate	IN	
+61144	Bank Early Years Educator	OUT	
+61329	Account Development Representative French Speaker	OUT	
+61500	Growth Manager Hindi Speaker	OUT	
+61542	Head of Business Strategy	OUT	
+61790	Market Strategy and Partnerships Manager	OUT	
+61854	Software Engineer High Performance Scale	IN	
+61993	Product Manager Chicago IL	UNKNOWN	domain_ambiguity
+62092	Executive Assistant Design	OUT	
+62769	Software Engineer	IN	
+62799	Vice President Engineering and AI Innovations	IN	
+63042	Account Executive Mid Market	OUT	
+63219	Assistant Manager Air Operations Gurugram	OUT	
+63250	Enterprise Account Executive	OUT	
+63587	Trainer Ausbilder für Lokführer Triebfahrzeugführer	OUT	
+63657	Production Training Coordinator	OUT	
+63803	Construction Manager South West Region	OUT	
+64842	Technical Sales Representative Spanish Speaking	OUT	
+64897	Technical SEO	OUT	
+65079	Product Manager Digital Experience	IN	
+65318	Manufacturing Engineer New Grad Summer 2027	OUT	
+65338	Additive Manufacturing Development Engineer	OUT	
+65884	Business Development Representative Commercial Doors	OUT	
+66032	Software Engineer Intern	IN	
+66085	IT Systems Engineer	IN	
+66202	Executive Protection Specialist	OUT	
+66288	HVAC R Service Technician Mid Shift 15 SHIFT DIFFERENTIAL NO ON CALL	OUT	
+66330	Staff Security Engineer Threat Detection Response	IN	
+66408	Automation and Controls Engineer Manufacturing	OUT	
+66487	Quality Engineer Manufacturing	OUT	
+67299	Order Specialist	OUT	
+67471	Account Manager	OUT	
+67898	Fullstack Engineer Marketing	IN	
+68068	Consumer Insights	OUT	
+68150	Founding Forward Deployed Engineer	IN	
+68166	Product Marketing Manager Glean Intelligence	OUT	
+68180	Product Manager Enterprise Intelligence	IN	
+68670	Commercial Account Executive Outbound Sales	OUT	
+68812	DACH Sales Manager	OUT	
+69290	Recruiting Manager Bilingual Mandarin Required	OUT	
+69598	Lab Technician	OUT	
+69707	Staff Manufacturing Product Engineer	OUT	
+70192	Group Creative Director Health	OUT	
+70461	Payment Product Manager	IN	
+70571	DevOps Engineer	IN	
+70936	Account Executive Southern CA	OUT	
+71060	Lead Infant Teacher	OUT	
+72009	Staff Product Manager Continuous Deployment	IN	
+72213	AI Game Designer	UNKNOWN	scope_ambiguity
+72341	Nurse Practitioner or Physician Assistant Plymouth MA Clinical Research	OUT	
+72567	Territory Account Manager Syracuse NY Utica NY	OUT	
+72578	Territory Sales Manager Charleston SC Columbia SC Greenville SC	OUT	
+72647	Culture Assistant 2026 2027	OUT	
+72705	Psychiatric Mental Health Nurse Practitioner Oklahoma	OUT	
+73044	Manager Long Term Planning	OUT	
+73051	Mobile Product Developer Growth	IN	
+73078	Staff Machine Learning Engineer Menu Personalisation	IN	
+74186	UAS Operator	OUT	
+74252	Business Development Representative	OUT	
+74518	Executive Director Interim Opportunities Submit Your Resume	OUT	
+74581	Store Manager Boston	OUT	
+74700	Assistant Quality Superintendent	OUT	
+74926	Preconstruction Engineer	OUT	
+75351	Associate Regional Sales Manager Southeast	OUT	
+75515	Medical Assistant	OUT	
+75823	Insurance Producer Huntsville AL	OUT	
+76042	Staff Engineer I Back end	IN	
+76074	Retail Artist Full Time 5 Days 40 Hours Per Week Arnotts Dublin	OUT	
+76903	Maintenance Technician II	OUT	
+76957	Conference Coordinator Volunteer	OUT	
+77022	Event Executive	OUT	
+77456	Full Stack Engineer	IN	
+77485	Manager Client Relationship Management	OUT	
+77527	Partner Account Manager Washington DC	OUT	
+77555	AI Trainer Automotive Expertise Required	OUT	
+77636	Sales Development Representative	OUT	
+77776	Environmental Compliance Manager	OUT	
+78093	Relationship Manager Business Development RIA Enterprise Vice President	OUT	
+78219	Payroll Executive	OUT	
+78466	Executivo a de Contas Estratégicas III Farmer	OUT	
+78756	Java Software Engineer	IN	
+78947	Publisher Development Manager	OUT	
+78991	HR Operations Specialist	OUT	
+79026	Executive Assistant	OUT	
+79096	Business Development Representative NAM	OUT	
+79307	Field Service Technician Level II	UNKNOWN	domain_ambiguity
+79329	Manufacturing Engineer	OUT	
+79452	Inside Sales Representative Bilingual French Spanish	OUT	
+79472	Client Success Representative Remote Contract	OUT	
+79485	Client Success Representative Remote Contract	OUT	
+79511	Graphic Designer Data Visualization Remote Contract	OUT	
+79521	Graphic Designer Data Visualization Remote Contract	OUT	
+79779	Product Manager Remote Contract	UNKNOWN	domain_ambiguity
+80067	Staff Engineer 1 Salesforce AI	IN	
+80192	Staff Staff Wi Fi Firmware Engineer	IN	
+80375	Software Engineer Instawork Robotics	IN	
+81004	Cafe Shift Assistant	OUT	
+81415	Strategic Account Manager Los Angeles	OUT	
+81794	Engine Cycle Engineer	OUT	
+82166	FT Front Desk Coordinator	OUT	
+82291	IXL Associate Product Manager	IN	
+82423	FIX Onboarding and Connectivity Engineer	IN	
+82599	Meet us at NeurIPS 2026	UNKNOWN	unruled
+82661	Sales Assistant Categoria Protetta Firenze C.C I Gigli	OUT	
+82709	Sales Assistant Part Time Categorie Protette Modena C.C Grandemilia	OUT	
+82718	Sales Assistant Part Time Civitavecchia C.C La Scaglia	OUT	
+82907	Directeur adjoint de magasin	OUT	
+83105	Vendeur CDD Temps partiel	OUT	
+83242	Vendeur CDD temps plein	OUT	
+83440	Vendeur CDI temps plein	OUT	
+83933	Technical Product Marketing Manager .NET Developer Tools	UNKNOWN	scope_ambiguity
+84138	Sanitation Weekends 2nd Shift	OUT	
+84173	Juicer Manchester Airport	OUT	
+84751	Auxiliaire de vie	OUT	
+84931	Data Engineer II	IN	
+85020	Contracted In Home Occupational Therapist	OUT	
+85490	Software Engineer Applied AI Toronto	IN	
+85675	Electro Mechanical Manufacturing Engineer	OUT	
+85751	Supplier Development Engineer Mechanical	OUT	
+85859	VP of Energy Solutions Owner s Representative Data Center Construction	OUT	
+86139	Staff Product Manager Customer Insight Strategy	UNKNOWN	domain_ambiguity
+86303	Rodman	OUT	
+86304	Safety Coordinator	OUT	
+86464	Travel Product Content Specialist	OUT	
+86752	Weekends Family Nurse Practitioner FNP FL NJ NY MA VA NLC Remote	OUT	
+87061	Customer Success Manager SMB Hybrid	OUT	
+87146	Inside Sales Representative	OUT	
+87752	Automotive Technician Express	OUT	
+87969	Design Director Packaging	OUT	
+88019	Entry Level Civil Engineer	OUT	
+88309	Civil Project Manager Power Generation Transmission	OUT	
+88449	Health Safety Coordinator	OUT	
+88689	Account Executive DACH	OUT	
+88767	Software Engineer Vehicle Communication C++	IN	
+88809	Enterprise Acquisition Account Executive	OUT	
+88829	EMEA Marketing Manager	OUT	
+89361	Account Care Representative	OUT	
+89404	MLOps Engineer	IN	
+89423	Software Engineer Backend	IN	
+89618	Supervisor I Production	OUT	
+89621	Technician III Maintenance	OUT	
+89643	Field Service Technician Atlanta GA	UNKNOWN	domain_ambiguity
+89684	Sales Representative Finnish speaking	OUT	
+89754	Center Based Behavior Technician	OUT	
+89982	Backend Engineer	IN	
+90308	Director Head of Social Influencer	OUT	
+90345	Adult Social Worker Specialist Placement Team	OUT	
+90368	Advanced Practitioner First Response Team MASH	OUT	
+90375	Advanced Practitioner Long Term Team	OUT	
+90420	Assistant Team Manager Families First Non Case Holding	OUT	
+91072	Social Worker CHC	OUT	
+91134	Social Worker Child Protection	OUT	
+91434	Social Worker Children s Support and Safeguarding	OUT	
+91595	Social Worker Looked After Children	OUT	
+91959	Team Leader Children s Residential	OUT	
+92150	Software Engineer Android	IN	
+92345	Assistant Project Manager Electrical Construction	OUT	
+92354	Carpenter	OUT	
+92568	Project Coordinator Electrical	OUT	
+92731	1685 Director Indirect Procurement IT	OUT	
+92849	Premium Divison Assistant Accountant	OUT	
+93149	Store Manager Euroma 2	OUT	
+93773	Field Service Technician	UNKNOWN	domain_ambiguity
+93894	PRN Registered Nurse Case Manager	OUT	
+94238	Staff Nurse Emergency Department	OUT	
+94600	Seasonal Ambassador Santa Anita	OUT	
+94888	Business Systems Engineer	IN	
+95671	QAQC Lead	UNKNOWN	scope_ambiguity
+95752	Retail Security Dispatch Officer	OUT	
+96275	Systems Engineer II	UNKNOWN	domain_ambiguity
+96655	Software Engineer	IN	
+96686	Attending Physician	OUT	
+96712	Certified Nursing Assistant	OUT	
+96779	LPN Care Coordinator BHI	OUT	
+96852	Neurology Nurse Practitioner Physician Assistant	OUT	
+96979	Primary Care Nurse Practitioner	OUT	
+96983	Primary Care Nurse Practitioner	OUT	
+96996	Primary Care Nurse Practitioner	OUT	
+97039	Primary Care Nurse Practitioner Physician Assistant	OUT	
+97061	Psychiatric Nurse Practitioner	OUT	
+97102	Travel Certified Nursing Assistant	OUT	
+97119	Travel Medical Assistant	OUT	
+97488	Floor Lead Retail Part time	OUT	
+97500	Future Opportunities New York	UNKNOWN	unruled
+97562	Seasonal Stylist Retail Part time	OUT	
+97588	Account Executive UHV Payors	OUT	
+97605	Customer Service Representative	OUT	
+97826	Compliance Risk Manager Prudential	OUT	
+98098	Mechanical Engineer Cryogenics	OUT	
+98184	Manager Growth Marketing	OUT	
+98765	HSE Coordinator Micon Group Inc	OUT	
+99124	Nurse Practitioner California	OUT	
+99183	Services Coordinator I 636 El Camino A Willow Greenridge	OUT	
+99256	Director of Operations	OUT	
+99557	Business Development Manager Architecture Engineering Construction	OUT	
+99684	Delivery Driver	OUT	
+99700	Human Resources Coordinator	OUT	
+99761	Home Health Nursing Supervisor Internal Only	OUT	
+99807	Hospice Certified Nursing Assistant CNA	OUT	
+99966	Inside Sales Executive US	OUT	
+99992	Vehicle Logistics Specialist	OUT	
+100182	Anesthesiologist Herrin Comfortable with Peds	OUT	
+100210	Lifecycle Marketing Manager	OUT	
+100227	Medical Assistant I	OUT	
+100424	Associate Cybersecurity Analyst Early Career	IN	
+100533	Financial Service Representative	OUT	
+100535	Financial Service Representative	OUT	
+100567	Financial Service Representative	OUT	
+100669	Enterprise Account Executive	OUT	
+100675	Enterprise Account Executive	OUT	
+101834	Lead Product Manager Payments	IN	
+101847	Backend Engineer	IN	
+101933	Psychiatric Mental Health Nurse Practitioner PMHNP	OUT	
+101935	Psychiatric Mental Health Nurse Practitioner PMHNP	OUT	
+102098	Window Installation Subcontractor	OUT	
+102187	Facilities Coordinator	OUT	
+102556	Civil Engineer Project Manager	OUT	
+102558	Civil Engineer Project Manager	OUT	
+102707	Technical Program Manager Release Integration	IN	
+102773	Marketing Data Science Manager	IN	
+102885	Channel Manager Line Producer	OUT	
+103104	Plumbing Superintendent Traveling	OUT	
+103166	Satellite Operator	OUT	
+103629	Account Executive	OUT	
+103638	Account Executive	OUT	
+103663	Account Executive	OUT	
+103676	Account Executive	OUT	
+104259	Connected Living Activities Coordinator	OUT	
+104289	Registered Nurse RN MDS Coordinator	OUT	
+104499	Data Center IT Technician	UNKNOWN	scope_ambiguity
+104622	Network Security Engineer	IN	
+104699	ML Engineer AI Research Portability	IN	
+104770	U.S Securities and Transactional Counsel	OUT	
+104842	Dermatologist Cape Cod MA	OUT	
+105473	Salesforce Engagement Manager	UNKNOWN	scope_ambiguity
+105792	Software Engineer Manager Database Observability	IN	
+106086	Research Communications Analyst Critical Infrastructure	OUT	
+106170	Product Manager Omnichannel CX	IN	
+106181	Strategic Assistant to the CEO Co Founder	OUT	
+106501	Data Engineer	IN	
+106672	Document Control Quality Systems Administrator	OUT	
+106945	SAP Security Specialist	IN	
+107341	Physical Security Engineer	OUT	
+107358	Technical Product Manager GPU Infrastructure	IN	
+107586	Pharmacy Manager Bilingual Miami Florida	OUT	
+107740	Tupande Procurement Coordinator BU Support	OUT	
+108010	Sales Director	OUT	
+108322	Business Development Representative East	OUT	
+108351	Enterprise Account Executive	OUT	
+108383	Manager Site Reliability Engineering Auth0	IN	
+108871	Product Manager DEX Institution Trading	IN	
+109060	Maintenance Technician 2nd Shift	OUT	
+109430	Design Technician Site Design	OUT	
+109471	Entry Level Civil Engineer Airports	OUT	
+109533	Licensed Civil Engineer Site Design Municipal	OUT	
+109677	Mechanical Engineer Healthcare Buildings	OUT	
+109979	Site Reliability Engineer	IN	
+110030	Administrative Assistant Castro Monday Friday	OUT	
+110110	Family Medicine Physician South Austin	OUT	
+110174	Nurse Practitioner or Physician Assistant	OUT	
+110440	Project Engineer BESS	OUT	
+110494	Advanced Practice Provider Tennessee Oncology	OUT	
+110667	Account Executive Enterprise Denver CO Remote	OUT	
+110733	Solutions Engineer Solutions Consultant Internship	IN	
+110811	Head of Commercial Strategy	OUT	
+111451	ABA Therapist RBT Forest Hills NY	OUT	
+111502	Board Certified Behavior Analyst BCBA	OUT	
+111912	Software QA Specialist	IN	
+112062	Product Marketing Manager Hybrid	OUT	
+112165	E Scooter Delivery Driver	OUT	
+112228	Bilingual English and Spanish Member Loyalty Representative R14210	OUT	
+112235	Bilingual English and Spanish Member Loyalty Representative R14248	OUT	
+112319	Sales Development Representative Vietnam	OUT	
+112490	YOW Expression of Interest Software Engineer	IN	
+112654	Clinical Project Manager	OUT	
+112806	Infrastructure Systems Engineer	IN	
+113015	Associate Strategic Finance FP&A	OUT	
+113232	GI Nurse Practitioner Arizona California New Mexico Nevada or Utah	OUT	
+113336	Executive Director	OUT	
+113428	Resident Assistant Resident Aide RA	OUT	
+113519	Aide à domicile	OUT	
+113681	Assistant de vie	OUT	
+113972	Auxiliaire de vie	OUT	
+114278	Accounting Manager	OUT	
+114464	Business to Business Sales Representative	OUT	
+114585	Bilingual Field Care Coordinator Field Case Management	OUT	
+115523	Front Desk Coordinator	OUT	
+116127	Remote Nurse Practitioner Contractor Multi State	OUT	
+116456	Analog Mixed Signal IC Designer	OUT	
+116549	Medical Assistant II Dermatology Sign On Brookhaven Snellville GA	OUT	
+117074	Full Stack Engineer Product	IN	
+117136	Director Digital Product	IN	
+117493	Fullstack Software Engineer React Node.js	IN	
+117560	Field Demand Generation Marketer	OUT	
+117600	Sales Executive	OUT	
+117665	Assistant Store Manager	OUT	
+117750	Assistant Store Manager	OUT	
+117782	Assistant Store Manager	OUT	
+117858	Assistant Store Manager	OUT	
+117970	Customer Service Representative	OUT	
+118063	Customer Service Representative	OUT	
+118310	Shift Supervisor	OUT	
+118657	Head of Compliance Hong Kong	OUT	
+118857	Product Support Lead eCommerce	UNKNOWN	scope_ambiguity
+118960	Mid Market Account Executive	OUT	
+119214	Project Manager Digital Marketing	OUT	
+119746	Event Coordinator	OUT	
+120643	Investor Relations Associate French speaking	OUT	
+120987	Partner Development Executive	OUT	
+120993	Sales Representative	OUT	
+121164	Applied AI Engineer	IN	
+121582	AI Trainer Advanced Tamil Fluency Freelance Basel	OUT	
+121655	AI Trainer Computer Science Expert Graphical Abstract Fully Remote Birmingham	IN	
+121692	AI Trainer Fluent Azerbaijani Speakers Nuremberg Germany	OUT	
+121857	AI Trainer Graphical Abstract Physics Remote New York	OUT	
+121860	AI Trainer Graphical Abstract Physics Remote Sydney	OUT	
+121893	AI Trainer Materials Science Specialists Remote Boston	OUT	
+121930	AI Trainer Neuroscience Fully Remote New York	OUT	
+121934	AI Trainer Neuroscience Fully Remote St Louis	OUT	
+122533	Canada Residents Survey Participants Saint Zotique Canada	OUT	
+123016	Doctors AI Training Columbus US	OUT	
+123123	Einwohner Deutschlands Studienteilnehmer innen Bremen Deutschland	OUT	
+123201	Finance Professionals AI Training Liverpool UK	OUT	
+123237	Fluent Danish Speakers AI Trainer Freelance Remote Odense Denmark	OUT	
+123670	Italian Fluent Speakers AI Training Switzerland	OUT	
+123847	Javascript Developers AI Training Philadelphia USA	IN	
+124074	Linguist Translator Graduates AI Training Sheffield UK	OUT	
+124389	Pathologists Freelance Remote Boston US	OUT	
+124501	Pharmacists AI Training Long Beach US	OUT	
+124574	Polish Fluent Speakers AI Training Norway	OUT	
+125076	Survey Participants Pregnancy Care Research Mesa US	OUT	
+125257	Assistant Property Manager Leasing Experience Manager III Mansion Grove	OUT	
+125374	Onsite Contract Interpreters	OUT	
+125508	Remote Clinical Psychologist Florida	OUT	
+125569	Android Software Engineer Vilnius	IN	
+125680	PUBG STUDIOS Lead Engine Engineer 10년 이상	IN	
+125701	Account Executive Commerce Media	OUT	
+125863	Adult Neuro Rehab Speech and Language Therapist	OUT	
+125894	Anaesthetics Theatres Specialty Registrar Birmingham	OUT	
+126000	Band 5 Accident Emergency A&E Nurse Hereford	OUT	
+126003	Band 5 Accident Emergency A&E Nurse Lewisham	OUT	
+126074	Band 5 Intensive Care Unit Nurse ITU Surrey	OUT	
+126202	Band 5 Registered General Nurse RGN Liverpool Merseyside	OUT	
+126351	Band 6 Biomedical Science Blood Transfusion and Haematology Portsmouth	OUT	
+126795	Band 7 8 Locum Invasive Cardiac Physiologist EP Physiologist Cardiff	OUT	
+126868	Band 7 Emergency Nurse Practitioner ENP Chippenham	OUT	
+127148	Band 7 Sonographer Bradford	OUT	
+127915	MENTAL HEALTH NURSE RMN EUSTON	OUT	
+128099	Permanent Adult Neuro Rehab Speech and Language Therapist Glasgow	OUT	
+128263	Specialist Chemo Nurse Bristol Somerset Permanent Opportunity	OUT	
+128372	Specialty Dr Required for Community CAMHS role in the North East	OUT	
+128656	Product Manager Commercial Systems	UNKNOWN	domain_ambiguity
+129098	Executive Manager Commercial Finance 12m FTC	OUT	
+129127	VP Legal	OUT	
+129722	Grupo QuintoAndar Staff Software Engineer Women Applicants Only	IN	
+129887	Software Engineer	IN	
+129906	Channel Partner Marketing Manager	OUT	
+129986	Lead Product Marketing Manager Solo Agents Small Teams	OUT	
+130000	Data Scientist CRM Personalization	IN	
+130273	Materials Coordinator	OUT	
+130414	Clinical Supply Chain Manager	OUT	
+130449	Healthcare Sales Executive	OUT	
+130548	Software Engineer Ads	IN	
+130649	Leasing Specialist Part Time	OUT	
+130691	Group AI Product Manager Growth	IN	
+130920	Java Engineer Distributed Systems Serverless Elasticsearch	IN	
+131107	Sales Lead Full Time Broadway Plaza	OUT	
+131154	Store Manager Full Time Passy	OUT	
+131245	Asset Maintenance Technician II First Shift	OUT	
+131364	Propulsion Integration Test Engineer II First Shift	OUT	
+131409	EHS Program Manager	OUT	
+131564	Valve Manufacturing Engineer 2nd Shift	OUT	
+132022	Regional Field Marketing Manager	OUT	
+132259	Customer Service Representative	OUT	
+132290	Client Success Manager at Retail Insights	OUT	
+132378	Event Operations Coordinator	OUT	
+132519	Social Media Coordinator at Retail Insights	OUT	
+132547	Associate Director Supply Chain Planning	OUT	
+132595	Logistics Coordinator	OUT	
+132682	Sales Account Executive Minneapolis MN	OUT	
+132686	Sales Account Executive Orange County CA	OUT	
+132917	Head of Customer Success Support	OUT	
+133166	Quantum Error Correction Researcher qLDPC	UNKNOWN	scope_ambiguity
+133337	Product Manager Money Movement	IN	
+133370	Underwriting Associate	OUT	
+133394	Staff Product Manager Integrations Advisor Platform	IN	
+133827	Aircraft Structural Technician all levels	OUT	
+133843	Business Development Director Optical Systems TS SCI Clearance	OUT	
+133894	Electrical Technician All levels	OUT	
+134284	Spacecraft Structural Analysis Engineer I II	OUT	
+134328	Test and Launch Engineer II Launch Pad	OUT	
+134351	Join Our Talent Community Brazil	UNKNOWN	unruled
+134424	Physical Therapist	OUT	
+134448	Account Manager	OUT	
+134450	Ad Operations Associate	OUT	
+134476	Executive Assistant	OUT	
+134522	Device Sales Marketing Manager	OUT	
+134582	Product Manager Recommendations	IN	
+134647	Software Engineer Roku UI	IN	
+134802	Account Executive	OUT	
+135192	Data Center Site Manager Pittsburgh	OUT	
+135244	Landscape Designer	OUT	
+135357	Assistant Retail Store Manager	OUT	
+135590	Data Engineer	IN	
+135682	Product Manager Revenue Tools	IN	
+135990	Forward Deployed Engineer	IN	
+136330	AI Product Manager Coding Multimodal	IN	
+136786	Strategist	UNKNOWN	unruled
+136847	Per Diem Clinical Research Nurse Home Visits	OUT	
+136860	Per Diem Clinical Research Nurse Home Visits	OUT	
+137140	Analyst Material Chemical Conformity	OUT	
+137334	Specialist L2 Body Integration	OUT	
+137518	Manager Engineering Sciences Electrical Engineering	OUT	
+137815	AI Platform Engineer Lead Architect	IN	
+138327	Leadership Program MBA Graduate	OUT	
+138782	Engineering Technology Intern Opportunities	UNKNOWN	domain_ambiguity
+139047	Dispensing Pharmacy Technician	OUT	
+139059	Patient Outreach Specialist Pharmacy Technician	OUT	
+139082	Pharmacy Technician Refill Calls	OUT	
+139483	Manufacturing Engineer II	OUT	
+139624	Revenue Accounting Manager	OUT	
+139629	Software Engineer Frontend	IN	
+139923	R&D Engineer	UNKNOWN	domain_ambiguity
+140417	AI Memory Solution Architect	IN	
+140558	Clinical Sales Manager	OUT	
+140624	Wound Care Nurse Practitioner	OUT	
+140735	Clinic Manager Brea	OUT	
+142163	Support Coordinator	OUT	
+142229	Test Staff Engineer Network+ Automation Exp is a must	IN	
+142291	Registered Nurse	OUT	
+142833	Product Manager Mobile	IN	
+142843	Medical Assistant Columbus GA	OUT	
+142966	Application Software Engineer	IN	
+143097	Business Operations Manager Starlink Aviation	OUT	
+143200	Contractor Service Administrator Facilities	OUT	
+143973	Mechanical Engineer Tower Launch and Test	OUT	
+144538	Sourcing Manager Capital Equipment Construction Starlink	OUT	
+144799	Human Resources Business Partner	OUT	
+144918	Power Systems Engineer Starship	OUT	
+145014	Site Reliability Engineer AI Infrastructure Starshield	IN	
+145094	Supplier Development Engineer Mechanical Metrology Starlink	OUT	
+145576	Dental Assistant	OUT	
+145602	Dental Hygienist	OUT	
+145665	Surgical Assistant	OUT	
+145764	Software Engineer Platform Dubai United Arab Emirates	IN	
+145887	Software Engineer Platform San Jose CA USA	IN	
+146012	U.S Liaison Officer to the U.S Congress	OUT	
+146224	Field Sales Representative	OUT	
+146469	Sales assistant Sport Zone Ovar Dolce Vita	OUT	
+146644	Retail General Manager Fashion Valley	OUT	
+146687	Onboarding Associate	OUT	
+147056	2027 Venture Capital Summer Analyst	OUT	
+147244	Account Executive Farming Operação Híbrido SP	OUT	
+147580	Vaga Temporária Auxiliar de Atendimento Logístico CNH B Carro Gramado RS	OUT	
+147740	Agente Stone Consultor a Comercial Externo Ubatuba SP	OUT	
+147909	Assistant Store Manager	OUT	
+148082	Product Owner Office Cloud Storage	IN	
+148184	Account Executive Enterprise Platforms Tier 2 Grower	OUT	
+148210	Account Executive Product Sales Currency Management	OUT	
+148395	Full Stack Software Engineer Brazil	IN	
+148399	Growth Marketing Manager Greater China	OUT	
+148671	Short form Video Social Community Comms	OUT	
+148912	Staff Machine Learning Engineer	IN	
+149010	Product Manager Seller Experience	IN	
+149104	Health Sciences Assignment Grader Contract	OUT	
+149156	Entry Level to Experienced Teacher	OUT	
+149230	Theater Teacher	OUT	
+149397	Agente di commercio Procacciatore P IVA Settore pagamenti	OUT	
+149654	Inbound Sales Representative Nordics	OUT	
+149993	Staff Site Reliability Engineer Cloud Efficiency	IN	
+150113	Manager Remote Accounting Services	OUT	
+150114	Manager Remote Accounting Services PST	OUT	
+150196	Internal Auditor Insurance Fronting Carrier	OUT	
+150344	Personal Trainer	OUT	
+150370	Personal Trainer	OUT	
+150503	Personal Trainer	OUT	
+150692	Personal Trainer	OUT	
+150748	Personal Trainer	OUT	
+150963	Personal Trainer	OUT	
+151067	Personal Trainer	OUT	
+151072	Personal Trainer	OUT	
+151167	Personal Trainer	OUT	
+151259	Personal Trainer	OUT	
+151372	Personal Trainer	OUT	
+151387	Personal Trainer	OUT	
+151595	Personal Trainer	OUT	
+151628	Personal Trainer	OUT	
+151639	Personal Trainer	OUT	
+151672	Personal Trainer	OUT	
+151674	Personal Trainer	OUT	
+151711	Personal Trainer	OUT	
+151762	Personal Trainer	OUT	
+151775	Personal Trainer	OUT	
+151898	Personal Trainer	OUT	
+151921	Personal Trainer	OUT	
+151945	Personal Trainer	OUT	
+152227	Personal Trainer	OUT	
+152248	Personal Trainer	OUT	
+152301	Personal Trainer	OUT	
+152450	Personal Trainer	OUT	
+152521	Personal Trainer	OUT	
+152548	Personal Trainer	OUT	
+152615	Personal Trainer	OUT	
+152663	Personal Trainer	OUT	
+152679	Personal Trainer	OUT	
+152700	Personal Trainer	OUT	
+152934	Personal Trainer	OUT	
+153092	Personal Trainer	OUT	
+153101	Personal Trainer	OUT	
+153193	Personal Trainer	OUT	
+153230	Personal Trainer	OUT	
+153260	Personal Trainer	OUT	
+153295	Personal Trainer	OUT	
+153356	Personal Trainer	OUT	
+153379	Personal Trainer	OUT	
+153522	Personal Trainer	OUT	
+153537	Personal Trainer	OUT	
+153550	Personal Trainer	OUT	
+153566	Personal Trainer	OUT	
+153721	Personal Trainer	OUT	
+153759	Personal Trainer	OUT	
+153822	Personal Trainer	OUT	
+153829	Personal Trainer	OUT	
+153847	Personal Trainer	OUT	
+153983	Personal Trainer	OUT	
+153994	Personal Trainer	OUT	
+154033	Personal Trainer	OUT	
+154188	Personal Trainer	OUT	
+154195	Personal Trainer	OUT	
+154230	Personal Trainer	OUT	
+154231	Personal Trainer	OUT	
+154233	Personal Trainer	OUT	
+154282	Personal Trainer	OUT	
+154366	Personal Trainer	OUT	
+154373	Personal Trainer	OUT	
+154481	Personal Trainer	OUT	
+154565	Personal Trainer	OUT	
+154640	Personal Trainer Beaver PA	OUT	
+154694	Personal Trainer Cleburne TX	OUT	
+154896	Personal Trainer Leonard TX	OUT	
+154904	Personal Trainer Long Island NY	OUT	
+154976	Personal Trainer North Sea NY	OUT	
+154984	Personal Trainer Omaha NE	OUT	
+155053	Personal Trainer Salem MA	OUT	
+155078	Personal Trainer Scurry TX	OUT	
+155121	Personal Trainer Swedesboro NJ	OUT	
+155137	Personal Trainer Tracy CA	OUT	
+155410	Mechanical Engineer I	OUT	
+155989	Colorado Waitlist Contract Psychiatric Nurse Practitioner	OUT	
+156012	Nevada Waitlist Contract Psychiatric Nurse Practitioner	OUT	
+156205	Product Manager Virtual Physical Appliances	IN	
+156388	Enterprise Account Executive Singapore	OUT	
+156399	Remote Sales Representative FL	OUT	
+156494	Sales Marketing Intern	OUT	
+156719	Maintenance Engineer Automation Instandhaltung	OUT	
+156894	Contact Center Solutions Architect	IN	
+156931	Assistant Store Manager	OUT	
+157173	Multimedia Consumer Reporter	OUT	
+157378	People Partner	OUT	
+157842	Structural Analysis Engineer	OUT	
+157868	EHS Coordinator	OUT	
+158102	Sales Representative	OUT	
+158145	Account Executive Mid Market East Coast	OUT	
+158498	Join Our Talent Pipeline LA	UNKNOWN	unruled
+159023	Associate Manager Supplier Operations NYT Wirecutter Temporary	OUT	
+159165	Video Journalist News	OUT	
+159602	Head of Laboratory gn	OUT	
+159701	Field Sales Representative gn LEH Deutschlandweit	OUT	
+159894	Leasing Consultant	OUT	
+160296	Staff Product Manager Generalist	UNKNOWN	domain_ambiguity
+160326	Procedural Nurse Darien	OUT	
+160772	Assistant Store Manager	OUT	
+161124	Enterprise Account Executive Bay Area	OUT	
+161135	Strategic Account Executive PacNW	OUT	
+161150	Customer Success Manager	OUT	
+161201	Bilingual Strategic Cuisines Account Executive Mandarin Toronto	OUT	
+161469	Territory Account Executive Retail Scranton	OUT	
+161512	Développeur euse en IA systèmes agentiques AI Agentic Systems Developer	IN	
+161567	Software Engineer Together Cloud Infrastructure	IN	
+161717	Cashier Deli Bakery Coordinator	OUT	
+161735	Deli Cook	OUT	
+161741	Delivery Driver Restaurant Catering	OUT	
+161968	Director Treasury Credit Collections	OUT	
+162107	Software Engineer Development Tools	IN	
+162258	Inside Sales Representative	OUT	
+162312	VP Security	UNKNOWN	scope_ambiguity
+162458	Tri County Veterinary Clinic Kennel Attendant	OUT	
+162508	Sales Executive KC	OUT	
+162705	Business Development Executive London	OUT	
+163013	Embedded Systems Security Engineer	IN	
+163383	Product Manager Creative Strategy Applications	IN	
+163418	Product Manager Search	IN	
+163430	Low Latency Quantitative Researcher	IN	
+163501	Site Reliability Engineer	IN	
+163637	Sales Development Representative 2	OUT	
+163706	Strategic Account Executive	OUT	
+164022	Counsel	OUT	
+164144	Transportation Logistics Coordinator New Grads Welcome	OUT	
+164631	Criminal Defense Legal Assistant	OUT	
+164828	Email Channel Manager at United Media	OUT	
+165180	Registered Nurse PRN	OUT	
+165539	Manufacturing Engineer	OUT	
+165572	Agent Experience Coordinator	OUT	
+166207	Medical Assistant OB Gyn	OUT	
+166265	Registered Nurse Radiation Oncology	OUT	
+166680	Space Avionics Systems Engineer	OUT	
+166973	Manager Quality Assurance	UNKNOWN	scope_ambiguity
+167066	Director Product Marketing Veeam Intelligent ResOps	OUT	
+167434	Scaled Commercial Account Executive Install base	OUT	
+167508	Sales Representative	OUT	
+167518	Product Manager Hardware	OUT	
+167639	Veterinary Assistant Internal Medicine	OUT	
+167707	Account Executive Territory Mid Market	OUT	
+167740	Dec 2026 Grads Sales Development Representative AAE Salt Lake City	OUT	
+167805	Global Solutions Engineer	IN	
+167917	Software Engineer Alarms	IN	
+168086	Staff Software Engineer	IN	
+168825	Emergency Veterinary Assistant Costa Mesa CA	OUT	
+168926	Emergency Veterinary Assistant Relief Clifton NJ	OUT	
+169069	Medical Director Orange Village Ohio	OUT	
+169124	Nursing Manager Portland Maine	OUT	
+169173	Veterinary Nursing Manager Annapolis MD	OUT	
+169178	Veterinary Nursing Manager Full Time Ralph Ave Brooklyn NYC Relocation Assistance Available	OUT	
+169434	Surgical Veterinary Assistant	OUT	
+169518	Veterinary Assistant	OUT	
+170109	Paralegal	OUT	
+170168	Duty Manager VA	OUT	
+170620	Physical Therapy Assistant PTA Home Health PRN	OUT	
+170627	Physical Therapy Assistant PTA Home Health PRN	OUT	
+170629	Physical Therapy Assistant PTA Home Health PRN CORE	OUT	
+170687	Registered Nurse RN Home Health PRN	OUT	
+170710	RN Registered Nurse Home Health	OUT	
+170764	Speech Language Pathologist SLP Home Health PRN	OUT	
+170828	Assistant Project Manager Construction	OUT	
+172100	Vehicle Dynamics Simulation Engineer	OUT	
+172331	Roboticist Robot Foundation Model	IN	
+172498	Member Transportation Specialist North Seattle	OUT	
+173052	Associate Veterinarian Hilliard Veterinary Hospital	OUT	
+173395	Veterinary Assistant	OUT	
+173400	Veterinary Assistant	OUT	
+173457	Veterinary Receptionist Client Service Representative	OUT	
+173892	Legal Support Assistant	OUT	
+174020	Cyber Incident Response Attorney	OUT	
+174370	Product Manager Homepage	IN	
+174460	Store Manager Wolt Market Qormi	OUT	
+174716	Survey Crew Chief	OUT	
+174722	Water Resources Engineer Water Business	OUT	
+175081	Quantitative Developer	IN	
+175179	ABA Clinical Assistant	OUT	
+175311	Solution Architect Sales Marketing	IN	
+175402	Account Director SEO CDI	OUT	
+175594	Business Director Investment	OUT	
+175633	CX Designer	OUT	
+175648	Data Management and BI Executive GOC	UNKNOWN	scope_ambiguity
+175762	GOC Paid Social Media Specialist	OUT	
+176163	Executive Non Biddable	UNKNOWN	unruled
+176412	Security Infrastructure Engineer	IN	
+176552	Civil Engineer SpaceXAI Battery Storage Memphis	OUT	
+176649	Manager Data Center Facilities Memphis	OUT	
+176905	Fullstack Architect AI Agentic Systems	IN	
+176941	Java Developer with Italian Integration Azure	IN	
+177045	Health Product Manager Claims	UNKNOWN	domain_ambiguity
+177145	Account Executive Defense	OUT	
+177606	Account Executive Enterprise Brands Retail Corporate	OUT	
+177705	Commercial Manager	OUT	
+178054	Soccer Coach Specialty Program Teacher	OUT	
+178357	Account Executive Enterprise	OUT	
+178560	Presales Solutions Architect	IN	
+178728	Escalation Engineer DLP	IN	

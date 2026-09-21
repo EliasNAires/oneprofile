@@ -111,6 +111,65 @@ class NormalizedVacanciesTest {
 		assertThat(this.repository.count()).isZero();
 	}
 
+	@Test
+	void holdsWhatClassificationMadeOfACleanedTitle() {
+		long vacancyId = heldTitles().getFirst().id();
+		this.normalized.recordCleanedTitles(Map.of(vacancyId, new CleanedTitle("Backend Engineer", Set.of())));
+
+		assertThat(this.normalized.recordClassifications(Map.of(vacancyId, Classification.in()))).isEqualTo(1);
+
+		assertThat(this.repository.findAll()).singleElement()
+			.extracting(NormalizedVacancy::classification)
+			.isEqualTo(Classification.in());
+	}
+
+	@Test
+	void holdsWhyATitleWasLeftUndecided() {
+		long vacancyId = heldTitles().getFirst().id();
+		this.normalized.recordCleanedTitles(Map.of(vacancyId, new CleanedTitle("Engineer", Set.of())));
+
+		this.normalized.recordClassifications(
+				Map.of(vacancyId, Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY)));
+
+		assertThat(this.repository.findAll()).singleElement()
+			.extracting(NormalizedVacancy::classification)
+			.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+	}
+
+	@Test
+	void replacesWhatTheLastClassificationRunDecided() {
+		long vacancyId = heldTitles().getFirst().id();
+		this.normalized.recordCleanedTitles(Map.of(vacancyId, new CleanedTitle("Backend Engineer", Set.of())));
+		this.normalized.recordClassifications(Map.of(vacancyId, Classification.unknown(UnknownReason.UNRULED)));
+
+		this.normalized.recordClassifications(Map.of(vacancyId, Classification.in()));
+
+		assertThat(this.repository.findAll()).singleElement()
+			.extracting(NormalizedVacancy::classification)
+			.isEqualTo(Classification.in());
+	}
+
+	@Test
+	void classifiesNothingForAVacancyCleaningHasNotReached() {
+		assertThat(this.normalized.recordClassifications(Map.of(heldTitles().getFirst().id(), Classification.in())))
+			.isZero();
+		assertThat(this.repository.count()).isZero();
+	}
+
+	@Test
+	void readsTheCleanedTitlesHeldAfterOneVacancyInIdOrder() {
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		this.normalized.recordCleanedTitles(Map.of(first, new CleanedTitle("Backend Engineer", Set.of()), second,
+				new CleanedTitle("Frontend Engineer", Set.of())));
+
+		assertThat(this.normalized.cleanedTitlesAfter(0, 10)).containsExactly(
+				new NormalizedTitle(first, "Backend Engineer"), new NormalizedTitle(second, "Frontend Engineer"));
+		assertThat(this.normalized.cleanedTitlesAfter(first, 10))
+			.containsExactly(new NormalizedTitle(second, "Frontend Engineer"));
+		assertThat(this.normalized.cleanedTitlesAfter(second, 10)).isEmpty();
+	}
+
 	private List<VacancyTitle> heldTitles() {
 		return this.vacancies.titlesAfter(0, 10);
 	}
