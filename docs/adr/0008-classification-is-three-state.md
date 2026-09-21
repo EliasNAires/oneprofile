@@ -36,7 +36,7 @@ knew.
 no rule for this head, which is a statement about our backlog rather than about the vacancy: the
 fix is a line added to a list, not a description read. Separating it from `scope_ambiguity` is
 what makes the two numbers mean different things. The `unruled` share is ours and must fall every
-round; `domain_ambiguity` and `scope_ambiguity` are the corpus's and will plateau at whatever the
+iteration; `domain_ambiguity` and `scope_ambiguity` are the corpus's and will plateau at whatever the
 world actually is.
 
 The third state is also an **escape hatch that has to be capped**, which is the price of
@@ -44,11 +44,19 @@ having it. A classifier that answers unknown to everything has no false accepts 
 and would satisfy any accuracy threshold. The cap was originally a fixed 10% of the corpus.
 ADR-0009 makes unknown the default, so the classifier now starts above half the corpus and a
 fixed number would gate nothing for many rounds; the cap is therefore restated as a direction.
-**The loop exits when the `unruled` share stops falling**, alongside its error thresholds. That
-is the same discipline against over-declining, applied to the one reason code that measures our
-own work rather than the corpus's ambiguity. Each round also labels a slice of the unknown pile —
-not to gate on it, but because a pile that is mostly in means recall is worse than the miss rate
-reports, and nothing else would reveal that.
+**The loop exits when the unknown share stops falling** — when it drops by less than a
+percentage point from the previous iteration — alongside a miss rate at or below 2% and a
+false accept rate at or below 10%, each held for two consecutive iterations.
+
+The gate is the **total** unknown share, not the `unruled` share alone. The reasons still
+exist and are still reported, because they tell the next reader why a title landed where it
+did and they tell #11 which question to ask of the body; they are simply not what the exit is
+measured on. One number is what a person checks between sessions, and a fall in the total can
+only come from a fall in one of its parts.
+
+Each iteration also labels a slice of the unknown pile — 300 of the 1000 drawn rows, the
+largest stratum after the rejected one. Not to gate on it, but because a pile that is mostly
+in means recall is worse than the miss rate reports, and nothing else would reveal that.
 
 Downstream, three states means every consumer of classification chooses explicitly what to do
 with unknown, rather than inheriting a default. In this iteration the engineering subset is the

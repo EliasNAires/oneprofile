@@ -165,8 +165,8 @@ seniority words 5.4%. The step's own report records the real figures.
 A **rule over cleaned titles** answers one question: is this an engineering role? A vacancy
 that is not one is out of scope, and nothing downstream asks anything finer. The rule reads a
 title as a **function head** — the noun naming what the role does — qualified by modifiers
-naming the domain, per ADR-0009. It was specified here as a token dictionary; the calibration
-of #9 is what replaced that, and the criterion document carries the current form.
+naming the domain, per ADR-0009. It was specified here as a token dictionary; the hand check
+is what replaced that, and the criterion document carries the current form.
 
 It answers in **three states** — in, out, or unknown — for the reasons in ADR-0008. Unknown is
 the **default**: in and out are claims a rule has to earn, and a title no rule reaches has not
@@ -202,21 +202,27 @@ ranked by the share of the corpus each reaches, as input for growing the head li
 The lists only ever grow through a decision, never at runtime.
 
 The classifier's error rate is measured on samples **stratified by what it predicted** and
-labelled by a **blind labeller** — a Claude Code session applying the written criterion,
-never told what the classifier said (ADR-0007). A round is 1000 labels: 300 drawn from what
-it called in, which measures how many it lets in wrongly; 600 from what it called out, which
-measures how many it misses; and 100 from the unknown pile, which measures how much recall is
-parked rather than lost. The rejected stratum is the largest because the miss rate is the
-number that matters, and 1000 labels put the noise floor near ±1pp, which is what a 3%
-threshold needs to be measurable at all.
+labelled by a Claude Code session applying the written criterion, before that session has read
+the rules the classifier runs on (ADR-0007). An iteration is 1000 labels: 600 drawn from what
+it called out, which measures how many it misses; 300 from the unknown pile, which measures how
+much recall is parked rather than lost; and 100 from what it called in, which measures how many
+it lets in wrongly. The rejected stratum is the largest because the miss rate is the number
+that matters, and 600 labels put its noise floor near ±1pp, which is what a 2% threshold needs
+to be measurable at all.
 
-This is a **loop**, not a gate: label, measure, grow the lists, re-classify, draw a fresh
-sample. It exits when two consecutive rounds hold a miss rate at or below 3%, a false accept
-rate at or below 10%, and an `unruled` share that has stopped falling. The discipline against
+This is a **loop**, not a gate, and **one session is one iteration**: label the sample the last
+session left, score the rules, change them, re-classify, draw the next sample. It exits when
+two consecutive iterations hold a miss rate at or below 2%, a false accept rate at or below
+10%, and an unknown share that fell by less than a percentage point. The discipline against
 over-declining is not decoration — without it a classifier that answers unknown to everything
-satisfies the other two thresholds on the first round — but it is a direction rather than a
+satisfies the other two thresholds on the first iteration — but it is a direction rather than a
 fixed cap, because ADR-0009 made unknown the default and a fixed 10% would gate nothing for
-many rounds.
+many iterations.
+
+The rules themselves are code and nobody signs off on them. `docs/engineering-role-criterion.md`
+is the prose the loop answers to; how the classifier satisfies it is the loop's business, bounded
+only by cost — whole-word matching over the cleaned title, no description reads, no network, a
+full corpus pass under ten seconds.
 
 ### 5.3 Title normalization
 
@@ -446,10 +452,10 @@ These are consequences of the decisions above and belong in the plan, not in hin
 
 1. **Eligibility recall**, measured on a hand-labelled sample of ~200 remote engineering
    vacancies. It is the binding constraint on the product's output.
-2. **Classifier accuracy**, measured on 1000 blind-labelled titles per round, drawn
-   stratified by what the classifier predicted — 300 in, 600 out, 100 unknown — and
-   re-measured on a fresh sample each time the lists grow. Reported as miss rate, false accept
-   rate, and the unknown share of the corpus split by reason.
+2. **Classifier accuracy**, measured on 1000 labelled titles per iteration, drawn
+   stratified by what the classifier predicted — 100 in, 600 out, 300 unknown — and
+   re-measured on a fresh sample each time the rules change. Reported as miss rate, false
+   accept rate, and the unknown share of the corpus, split by reason alongside.
 3. **Title cleaning**, reported as the share of distinct titles each rule collapses, which
    is what decides whether a rule stays.
 4. **Normalizer regression**, by diffing against the pre-reset corpus.

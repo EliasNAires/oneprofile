@@ -151,9 +151,9 @@ A vacancy a software background alone qualifies someone for: it writes code, or 
 operates on engineer-facing artifacts, or it is a role a software person could credibly be
 hired into today without a new credential. Wider than the phrase usually carries, and
 deliberately so — the product exists to find work a person can actually take, which is why
-Scrum Master belongs and Product Manager does not. The criterion and its rulings live in
-`docs/engineering-role-criterion.md`; whether a vacancy is one is the whole of what
-classification answers, and a vacancy that is not one is out of scope.
+Scrum Master belongs and Product Manager does not. Whether a vacancy is one is the whole of what classification answers, and a vacancy that is
+not one is out of scope. The criterion lives in `docs/engineering-role-criterion.md`; the
+rules that approximate it are code.
 _Avoid_: role family, category, discipline, job function, technical role
 
 **Classification State**:
@@ -167,8 +167,8 @@ _Avoid_: verdict, flag, is_engineering, category
 **Function Head**:
 The noun in a title that names what the role does — engineer, analyst, technician — as opposed
 to the modifiers naming the domain it does it in. Extracted during cleaning and stored, because
-it is the first thing classification reads and the list of known heads is what each measurement
-round grows.
+it is the first thing classification reads and the list of known heads is where the loop's
+coverage comes from.
 _Avoid_: role noun, job noun, base title, head word
 
 **Domain-Bound**:
@@ -179,29 +179,30 @@ an audit analyst may work on audit software.
 _Avoid_: domain-specific, vertical, contextual
 
 **Ruling**:
-A verdict fixed for one phrase by a decision, overriding every rule. Rulings are what the
-criterion's lists cannot express and what never changes as a side effect of editing them; they
-are precise and they do not generalise, which is why they are an override layer rather than the
-mechanism.
+A verdict fixed for one phrase, overriding every other rule. Rulings are what the word lists
+cannot express; they are precise and they do not generalise, which is why they are an override
+layer rather than the mechanism.
 _Avoid_: exception, override, special case, hardcoded verdict
 
 **Unruled**:
 The unknown reason meaning no rule reaches this title, as against the reasons that say the
 corpus itself is ambiguous. It measures the backlog rather than the world, so it is the one
-share expected to fall every round, and it is what the loop's exit is gated on.
+share expected to fall every iteration. The exit is gated on the total unknown share, of which
+this is the part that is ours to fix.
 _Avoid_: uncovered, unhandled, missing, not found
 
 **Labeller**:
-What produces the ground truth a classification state is scored against: it reads titles and
-applies the criterion, knowing nothing of what the classifier predicted. Never part of the
-pipeline — it exists only inside a measurement round.
+What produces the ground truth a classification state is scored against: a session that reads
+titles and applies the criterion before it has read the rules the classifier runs on. Never
+part of the pipeline — it exists only inside an iteration.
 _Avoid_: annotator, judge, oracle, reviewer
 
-**Label Round**:
-One measurement of the classifier against fresh labels: a sample drawn stratified by what the
-classifier predicted, labelled blind, and scored. Rounds accumulate and are never replaced,
-because an accuracy figure is a statement about a specific sample of a specific corpus.
-_Avoid_: batch, run, evaluation, test set
+**Iteration**:
+One session's pass around the classification loop: label the sample the last session left,
+score the rules against it, change them, re-classify, draw the next sample. Iterations
+accumulate and their labels are never replaced, because an accuracy figure is a statement
+about a specific sample of a specific corpus.
+_Avoid_: round, batch, run, evaluation, cycle
 
 **Work Mode**:
 Where the work is performed, as declared by the vacancy: remote, hybrid or onsite.

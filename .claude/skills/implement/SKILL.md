@@ -1,88 +1,79 @@
 ---
 name: implement
-description: Run one round of the engineering-role classification loop — classify, draw a blind stratified sample, label it, report the numbers, propose a list diff. Use when asked to run a classification round, measure the classifier, or advance issues #10 and #9.
+description: Run one iteration of the engineering-role classification loop — label the sample the last session left, score the classifier, change its rules, draw the next sample. Use when asked to run a classification round, measure the classifier, or advance issue #10.
 ---
 
-# One classification round
+# One iteration of the classification loop
 
-Issues #10 and #9 are a loop: classify the corpus, label a fresh sample blind, measure, grow
-the lists, re-classify. This skill runs **exactly one round** and stops for approval. It
-never runs two.
+Issue #10 is a loop, and **one session is one iteration**. You label what the last
+session left you, you change the rules, and you leave a sample for the next session. Then you
+stop. There is no second iteration in this session and nothing to ask approval for: the rules
+are yours as long as they obey the cost limit in the criterion.
 
-Read `docs/engineering-role-criterion.md` first. It is the criterion, and this skill assumes
-its six-step procedure, its four lists — function heads, software qualifiers, off-domain
-markers, rulings — and the three unknown reasons of ADR-0008.
+Two things only are not yours. The **criterion** — `docs/engineering-role-criterion.md` — is
+the developer's, changed only in a grilling session, and when your rules disagree with it the
+rules are wrong. And the **exit thresholds** below.
 
-The head list is the one that grows. Coverage comes from heads, not from qualifiers: a head
-generalises across every title that names it, and a ruling generalises across none.
+## The order matters
 
-## Before the first round
+Read the criterion and the sample **first**, label the sample, and only then open the
+classifier's code. Backwards, you can work out what the classifier predicted for each title,
+you will agree with it, and the numbers you report will be decorative. Write your labels to
+disk before you read any rules.
 
-The labeller must be calibrated, per ADR-0007. If no calibration fixture exists for the
-current criterion version, stop and say so.
+## The iteration
 
-Calibration certifies **the reader that does the labelling**, which for a round is a Claude
-Code session. A run by hand is worth doing and its labels are the answer key, but it is
-diagnostic, not the gate. The labeller reads the whole criterion, rulings table included.
+**1. Read the handoff.** `docs/measurements/` holds one file per iteration. The newest is
+your input: it carries 1000 ids and cleaned titles, and the previous iteration's numbers. If
+there is none, you are iteration 1 — skip to step 5.
 
-Two numbers, not one: agreement of 95% or better on the items where the criterion commits to
-`IN` or `OUT`, and no more unknowns than the criterion itself produces, within one item.
+**2. Label the sample.** From the criterion alone, over bare titles. `IN`, `OUT`, or
+`UNKNOWN` with one of the three reasons. Never read a description body, never call a paid API
+(ADR-0007). Write the labels to `src/test/resources/labels/` as a fixture, recording the date
+and the criterion's git revision. Fixtures accumulate and are never regenerated: a session is
+not reproducible, so the labels are the artifact, not the process that made them.
 
-A session that has read a calibration set's answers is disqualified as that set's labeller,
-and is equally disqualified from editing the criterion that set measures — it would fit the
-criterion to answers it has already seen. If that has happened, say so and stop.
+**3. Score.** Now open the previous implementation and the prediction map in the handoff, and
+rejoin by id:
 
-## The round
+- **miss rate** — of the `OUT` stratum, the share you labelled `IN`.
+- **false accept rate** — of the `IN` stratum, the share you labelled `OUT`.
+- **unknown share** — `UNKNOWN` as a share of the whole corpus, not of the sample. Report the
+  split by reason alongside, but the gate is the total.
 
-**1. Classify.** Bring the dev database up (`docker compose up -d postgres`) and run the
-classifier over the corpus. Report the counts per state, and the unknown share **split by
-reason** — `unruled`, `domain_ambiguity`, `scope_ambiguity`.
-
-**2. Draw the sample.** 300 from `IN`, 600 from `OUT`, 100 from `UNKNOWN`, at random,
-**excluding** every vacancy in a previous round's fixture and every vacancy in the
-calibration set. Fresh means fresh: a vacancy labelled once is never drawn again, because
-growing the lists from a round's misses and re-measuring on the same rows is training on
-the test set.
-
-**3. Blind it.** Keep the `vacancy id → prediction` map to yourself. Write the 1000 rows out
-as id and cleaned title only, **shuffled together**, so the labeller cannot tell the strata
-apart or feel where it is in the list. A labeller that can see the prediction agrees with it,
-and the round measures nothing.
-
-**4. Label.** Dispatch a subagent whose entire instruction is the criterion document and the
-shuffled titles, returning `IN` / `OUT` / `UNKNOWN` plus a reason for each id. Titles only —
-never description bodies, never a paid API (ADR-0007). Chunk if the list is large, but never
-let a chunk correspond to a stratum.
-
-**5. Score.** Rejoin by id and report:
-
-- **miss rate** — of the `OUT` stratum, the share the labeller called `IN`.
-- **false accept rate** — of the `IN` stratum, the share the labeller called `OUT`.
-- **unruled share** — of the whole corpus, not of the sample. This is the one that must fall.
-- **domain and scope shares** — reported alongside, expected to plateau.
-
-Also report what the `UNKNOWN` stratum turned out to be. It does not gate the exit, but a pile
+Also say what the `UNKNOWN` stratum turned out to be. It does not gate anything, but a pile
 that is mostly `IN` means recall is worse than the miss rate says.
 
-**6. Write it down.** A measurement doc under `docs/measurements/`, following the shape of the
-ones already there: what was run, against which snapshot, the numbers, and what the round
-changes. The labels themselves go in as a fixture under `src/test/resources/`, recording the
-criterion version they were labelled under. Fixtures accumulate — never replace or regenerate
-one.
+**4. Check the exit.** The loop is done when **two consecutive iterations** hold a miss rate
+at or below **2%**, a false accept rate at or below **10%**, and an unknown share that fell by
+less than **1 percentage point** from the iteration before. If this iteration is the second
+such, say so plainly and stop — the remaining work is only to close #10.
 
-**7. Propose, then stop.** From the disagreements, propose a diff: heads first, then
-qualifiers and markers, and the ruling table where the labeller had to guess at a phrase the
-criterion does not cover. A head proposal names its two attributes — domain-bound or
-domain-free, engineering-capable or not — or proposes it as never-engineering, and gives the
-share of the corpus it reaches. **Halt.** The diff is applied only once the developer approves
-it: a list grows through a decision, never as a side effect of a measurement.
+**5. Change the rules.** The classifier lives in `src/main/java`, built test-first. Grow it
+from where your labels and its answers disagreed. Heads are where coverage comes from: a head
+generalises across every title that names it, and a ruling generalises across none, so reach
+for the head list first and the ruling table last.
 
-## Exiting
+Every rule obeys the cost limit in the criterion — whole words, case-insensitive, cleaned
+title only, no bodies, no network, full corpus pass under ten seconds. Beyond that the shape
+is yours.
 
-The loop is done when two consecutive rounds hold miss rate ≤ 3%, false accept rate ≤ 10%,
-and the `unruled` share has stopped falling. The old fixed 10% unknown cap was replaced in
-ADR-0008 when ADR-0009 made unknown the default: unknown now starts above half the corpus, so
-a fixed number gates nothing, and what matters is that our own backlog is still shrinking.
+On iteration 1 there is nothing to grow from. Port `docs/engineering-role-seed-lists.md` into
+the classifier, **delete that file**, and go on.
 
-Say so plainly when a round meets the thresholds, and say which consecutive round it is. Until
-then, the round ends at step 7 and the next one is a separate invocation.
+**6. Re-classify.** Bring the dev database up (`docker compose up -d postgres`) and run the
+classifier over the corpus snapshot (`scripts/restore-snapshot.sh` if it is not loaded).
+Report the counts per state.
+
+**7. Draw the next sample and hand off.** 1000 rows at random from the new predictions — 100
+from `IN`, 600 from `OUT`, 300 from `UNKNOWN` — **excluding** every vacancy any previous
+fixture already holds. Fresh means fresh: growing the rules from an iteration's misses and
+re-measuring on the same rows is training on the test set.
+
+Write one file, `docs/measurements/engineering-role-<date>.md`, holding: this iteration's
+three numbers, what you changed and why, and the 1000 drawn rows as id and cleaned title,
+**shuffled together** so the next session cannot tell the strata apart. Keep the `id →
+prediction` map in the same file but in a clearly separated section the next session is told
+not to read until step 3.
+
+Then stop.

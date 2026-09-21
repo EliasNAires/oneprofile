@@ -9,13 +9,16 @@ application, at any stage, for any vacancy outside a measurement sample.
 
 Two constraints bound this. **No API is paid for**: labelling runs inside a Claude Code
 session, never through the Batch API or any other billed endpoint, and a design that needs
-one is rejected rather than costed. And **the labeller is blind**: it is handed bare titles,
-shuffled, with the classifier's prediction stripped, because a labeller that can see the
-prediction agrees with it and the resulting agreement figure measures nothing.
+one is rejected rather than costed. And **the labeller is blind by ordering**: a session labels
+the sample from the criterion alone, over bare shuffled titles, and writes its labels to disk
+before it opens the classifier's code. A labeller that can see the prediction — or can derive
+it from the rules that produced it — agrees with it, and the resulting figure measures nothing.
+Since the same session goes on to change those rules, the sequence is the whole mechanism;
+there is nothing else keeping it honest.
 
 ## Considered options
 
-- **Hand labelling by the developer**, which is what #9 originally specified. Rejected as the
+- **Hand labelling by the developer**, which is what the labelling issue originally specified. Rejected as the
   binding cost: the loop in #10 needs a fresh sample every round, several rounds are
   expected, and 300 labels per round paid in an evening of human attention is what stops the
   loop from being run often enough to converge.
@@ -30,32 +33,26 @@ prediction agrees with it and the resulting agreement figure measures nothing.
 
 The labels are **not reproducible by re-running a script**. A session given the same titles
 may not return identical answers, so the committed fixture is the artifact, not the process
-that made it — which is why rounds accumulate and are never regenerated. Each fixture
+that made it — which is why iterations accumulate and are never regenerated. Each fixture
 records the criterion version it was produced under, so a label can be read against the rules
 that were in force when it was made.
 
-Because the labeller is trusted rather than verified per row, it is **calibrated**: adversarial
-titles labelled blind, checked against `docs/engineering-role-criterion.md`. Agreement below 95%
-means the criterion is not written clearly enough to be followed, and the criterion is fixed
-before any round runs. The calibration set is held out of every measurement sample. Calibration
-is re-run whenever the criterion changes.
+The labeller is trusted rather than verified per row, and an attempt was made to certify it
+instead: a **calibration set** of fifty adversarial titles, hand-labelled, with a 95%-agreement
+gate in front of every round. That gate is **abandoned**. It cost the developer an evening of
+labelling titles he could not confidently label, to certify a reader the loop's own numbers
+already test every iteration — a labeller that reads the criterion badly produces a bad miss
+rate, which is the thing being measured anyway. The two fixtures it produced,
+`src/test/resources/calibration/engineering-role-2026-09-20.tsv` and
+`engineering-role-boundary-2026-09-21.tsv`, are kept as history and read by nothing.
 
-The first run, on 2026-09-20, scored 78% and is what produced ADR-0009. Three things about how
-calibration is run were decided by that failure.
-
-**The rulings table is shown.** It was hidden on the first run, on the theory that a labeller who
-can recall the answers is not being tested. That was wrong: in production the labeller reads the
-whole criterion, rulings included, and five of the eleven disagreements were on ruled phrases the
-procedure is structurally incapable of deriving. Hiding the table tested recall, not clarity.
-
-**The reader that is certified is the Claude Code session**, because that is what labels the
-rounds. A run by hand remains worth doing and its labels remain the answer key — a document its
-own author cannot follow blind is not ready — but it is diagnostic, not the gate.
-
-**Two numbers, not one.** Since ADR-0009 made unknown the default, a labeller that declines
-everything scores well by accident. Calibration therefore reports agreement on the items where
-the criterion commits to `in` or `out`, held to 95%, and separately checks that the labeller
-produces no more unknowns than the criterion does, within one item.
+Its one run, on 2026-09-20, scored 78% and is what produced ADR-0009; that finding rests on its
+own evidence and is unaffected by dropping the gate. Two lessons from it survive as standing
+rules rather than as calibration procedure. **The labeller reads the whole criterion, rulings
+included**, because that is what it reads in production, and hiding the table tests recall
+rather than clarity. And **a judgement a blind reader cannot execute does not belong in the
+procedure**, which is why the criterion now separates its mechanical steps from the reasoning
+behind a ruling.
 
 The labeller reads **titles only**. Ground truth therefore answers "is this title readable as
 an engineering role", not "is this job one" — which is the right question to score a

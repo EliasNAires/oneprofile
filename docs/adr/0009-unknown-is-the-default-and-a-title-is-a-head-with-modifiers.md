@@ -8,17 +8,19 @@ read a title as a **function head** — the noun that names what the role does �
 `docs/engineering-role-criterion.md` said before: the old procedure defaulted to `out` for
 anything it did not recognise, and it read a title as an unordered bag of tokens.
 
-The calibration of #9 is what forced it. Fifty adversarial titles, labelled by hand against the
-old criterion, agreed with it 78% of the time against a 95% threshold. Simulating candidate
-rules against those same labels is what chose between them: flipping the default alone scored
-78% again, and reading the title as head-and-modifier scores **90%**.
+A hand check of fifty adversarial titles is what forced it. Labelled against the old criterion,
+they agreed with it 78% of the time. Simulating candidate rules against those same labels is
+what chose between them: flipping the default alone scored 78% again, and reading the title as
+head-and-modifier scores **90%**.
 
-That is still below the 95% threshold, and the five remaining disagreements are all on phrases
-the rulings table fixes — `product manager`, `implementation engineer`, `systems administrator`,
-`technical program manager`, `game designer`. A labeller reads those rather than deriving them,
-which is why ADR-0007 now shows it the table. What that number cannot do is predict the re-run:
-agreement on ruled phrases is agreement with a lookup, so the re-run has to be scored on the
-items the lists decide, which is the two-number scheme ADR-0007 now specifies.
+The five remaining disagreements are all on phrases the rulings table fixes — `product manager`,
+`implementation engineer`, `systems administrator`, `technical program manager`, `game
+designer`. A labeller reads those rather than deriving them, which is why ADR-0007 has it read
+the whole criterion, rulings included.
+
+That hand check was, at the time, meant to become a recurring 95%-agreement gate in front of
+every round. ADR-0007 abandoned the gate. These findings stand regardless: they rest on the
+fifty labels and the simulation over them, not on the threshold they were once scored against.
 
 ## Why the default flips
 
@@ -69,7 +71,7 @@ carries that distinction as an attribute of each head, which is what the reason 
 
 **The head list is the new unit of work, and it is tractable.** Twenty-two seeded heads already
 match 62.6% of the corpus, and 77 heads cover half of it by trailing word alone. Growing that
-list is what each round of #10 does, in place of growing the qualifier list.
+list is what each iteration of #10 does, in place of growing the qualifier list.
 
 **The ambiguous-function-word list is deleted.** Its members — `engineer`, `engineering`,
 `analyst`, `architect`, `technician` — are all heads, and its only job was to force `unknown`
