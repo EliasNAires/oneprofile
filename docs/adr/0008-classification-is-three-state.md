@@ -28,8 +28,9 @@ the signal that produced it — title or body — are both stored.
 
 Unknown is a **queue, not an answer**. #11 resolves it from the description body by rule, and
 the reason code says which question to ask there: a domain-ambiguous title needs the body
-checked for domain markers, a scope-ambiguous one needs the membership test re-run. Without
-the reason, the body pass would re-derive from scratch what the title pass already knew.
+checked for domain markers, a scope-ambiguous one needs the criterion re-applied to the body.
+Without the reason, the body pass would re-derive from scratch what the title pass already
+knew.
 
 `unruled` is a fourth thing again, and it does not go to #11 at all. It says the title stage has
 no rule for this head, which is a statement about our backlog rather than about the vacancy: the

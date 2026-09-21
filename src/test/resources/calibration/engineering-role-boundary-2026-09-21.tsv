@@ -1,0 +1,56 @@
+# Boundary item set for the engineering-role criterion (issue #9, ADR-0007, ADR-0009).
+# Fifty corpus titles picked on the decision boundary by a session that had seen no label.
+# Labelled by hand on 2026-09-21 against criterion version ab2bef52b9f6.
+# Disjoint from engineering-role-2026-09-20.tsv, which stays held out of every sample.
+# No criterion verdict column: nothing computes the six steps yet.
+# title	label	reason	head	probe	n
+sales specialist	OUT		specialist	absent-head	14
+autonomous vehicle test driver	OUT		driver	never-head	3
+engineer	UNKNOWN	domain_ambiguity	engineer	bare-head	77
+it specialist	IN		specialist	absent-head	12
+field engineer technician hourly	UNKNOWN	scope_ambiguity	engineer	two-heads	11
+marketing data analyst	UNKNOWN	scope_ambiguity	analyst	domain-attr	4
+quality assurance technician	UNKNOWN	domain_ambiguity	technician	incapable-head	6
+project civil engineer project manager	OUT		engineer	two-heads	25
+security guard	OUT		guard	absent-head	3
+engineering manager data platform	IN		manager	two-heads	5
+designer	UNKNOWN	domain_ambiguity	designer	bare-head	48
+product owner	UNKNOWN	scope_ambiguity	owner	absent-head	21
+security officer	OUT		officer	absent-head	56
+engineering technician	UNKNOWN	domain_ambiguity	technician	incapable-head	22
+quality assurance specialist	UNKNOWN	domain_ambiguity	specialist	absent-head	13
+data strategist	UNKNOWN	scope_ambiguity	strategist	absent-head	8
+maintenance engineer	UNKNOWN	unruled	engineer	marker-clash	15
+software engineering manager	IN		manager	two-heads	21
+business analyst consultant	UNKNOWN	scope_ambiguity	analyst	two-heads	4
+solutions consultant	UNKNOWN	domain_ambiguity	consultant	incapable-head	46
+data scientist manager	IN		scientist	two-heads	4
+financial systems analyst	IN		analyst	domain-attr	6
+data consultant	UNKNOWN	scope_ambiguity	consultant	incapable-head	12
+data manager	UNKNOWN	scope_ambiguity	manager	incapable-head	4
+clinical data scientist	IN		scientist	domain-attr	3
+generative ai associate flexible hours	UNKNOWN	scope_ambiguity	associate	absent-head	61
+technical recruiter	IN		recruiter	absent-head	81
+control systems technician	OUT		technician	marker-clash	3
+director of engineering	UNKNOWN	domain_ambiguity	director	absent-head	22
+technical support representative	UNKNOWN	scope_ambiguity	representative	never-head	7
+web designer	UNKNOWN	scope_ambiguity	designer	incapable-head	4
+developer relations engineer	IN		developer	two-heads	5
+it support specialist	UNKNOWN	scope_ambiguity	specialist	absent-head	34
+healthcare solutions manager	UNKNOWN	scope_ambiguity	manager	incapable-head	5
+electro mechanical technician	OUT		technician	marker-clash	5
+technical account manager	UNKNOWN	scope_ambiguity	manager	incapable-head	87
+marketing data scientist	IN		scientist	domain-attr	4
+technical trainer	UNKNOWN	domain_ambiguity	trainer	never-head	3
+developer	UNKNOWN	domain_ambiguity	developer	bare-head	7
+construction application analyst	UNKNOWN	scope_ambiguity	analyst	domain-attr	6
+manufacturing systems analyst	UNKNOWN	scope_ambiguity	analyst	domain-attr	1
+scientist	UNKNOWN	domain_ambiguity	scientist	bare-head	10
+manufacturing test engineer	OUT		engineer	marker-clash	8
+graphics programmer	IN		programmer	marker-clash	6
+ux researcher	OUT		researcher	absent-head	16
+consultant	UNKNOWN	domain_ambiguity	consultant	bare-head	53
+implementation specialist	UNKNOWN	scope_ambiguity	specialist	absent-head	21
+technical lead	UNKNOWN	domain_ambiguity	lead	absent-head	8
+security specialist	UNKNOWN	domain_ambiguity	specialist	absent-head	34
+business systems analyst	IN		analyst	domain-attr	13

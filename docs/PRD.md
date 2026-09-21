@@ -162,15 +162,20 @@ seniority words 5.4%. The step's own report records the real figures.
 
 ### 5.2 Engineering roles
 
-A **token dictionary over cleaned titles** answers one question: is this an engineering role?
-A vacancy that is not one is out of scope, and nothing downstream asks anything finer.
+A **rule over cleaned titles** answers one question: is this an engineering role? A vacancy
+that is not one is out of scope, and nothing downstream asks anything finer. The rule reads a
+title as a **function head** — the noun naming what the role does — qualified by modifiers
+naming the domain, per ADR-0009. It was specified here as a token dictionary; the calibration
+of #9 is what replaced that, and the criterion document carries the current form.
 
-It answers in **three states** — in, out, or unknown — for the reasons in ADR-0008. Unknown
-says the signal read did not carry enough to decide, and it carries the reason: the title's
-function word exists identically outside software (`Engineer II`, `Electrical Engineer`), or
-titles of its shape split across the criterion (`Data Analyst`, `Support Engineer`). Roughly
-10% of the raw corpus lands there. Each vacancy records **which signal classified it**, title
-or body, so a wrong answer can be attributed to the right rule.
+It answers in **three states** — in, out, or unknown — for the reasons in ADR-0008. Unknown is
+the **default**: in and out are claims a rule has to earn, and a title no rule reaches has not
+been read. The reason says which kind of not-knowing it is — `unruled`, no rule reaches this
+title; `domain_ambiguity`, the head is known and the domain is not (`Engineer II`, `Electrical
+Engineer`); `scope_ambiguity`, a ruled phrase whose variants genuinely split (`Data Analyst`,
+`Support Engineer`). Only `unruled` is ours and only `unruled` is expected to fall; it starts
+above half the corpus. Each vacancy records **which signal classified it**, title or body, so a
+wrong answer can be attributed to the right rule.
 
 What counts as an engineering role is written down in `docs/engineering-role-criterion.md`,
 as a procedure plus the rulings it must reproduce. It is wider than the phrase usually
@@ -183,16 +188,18 @@ The eight role families of the pre-reset design — `SOFTWARE_ENGINEERING`, `DAT
 **not modelled in this iteration**. Nothing consumes them: the score in §6.2 is built from
 skills, seniority and eligibility, and a family appears only as a column and a response
 field. Eight dictionaries to tune and eight error rates to measure is a large cost for a
-label nothing reads. The tokens stay grouped in the source, so a later iteration that wants
-facets can split them against a corpus it understands better than this one does.
+label nothing reads. The qualifiers stay grouped in the source, so a later iteration that
+wants facets can split them against a corpus it understands better than this one does.
 
 A second pass reads the description body of the **unknown** vacancies, by rule, and resolves
 what it can. The reason code says which question to ask: a domain-ambiguous title needs the
-body checked for domain markers, a scope-ambiguous one needs the criterion re-applied.
+body checked for domain markers, a scope-ambiguous one needs the criterion re-applied. An
+`unruled` title does not reach this pass at all — it says the title stage has no rule for that
+head, which a line added to a list fixes more cheaply than a description read.
 
-Separately and offline, a mining report lists role vocabulary found in description bodies
-that the dictionary does not know, ranked by frequency, as input for growing the dictionary
-by hand. The dictionary only ever grows through a decision, never at runtime.
+Separately and offline, a mining report lists the function heads the criterion does not know,
+ranked by the share of the corpus each reaches, as input for growing the head list by hand.
+The lists only ever grow through a decision, never at runtime.
 
 The classifier's error rate is measured on samples **stratified by what it predicted** and
 labelled by a **blind labeller** — a Claude Code session applying the written criterion,
@@ -203,11 +210,13 @@ parked rather than lost. The rejected stratum is the largest because the miss ra
 number that matters, and 1000 labels put the noise floor near ±1pp, which is what a 3%
 threshold needs to be measurable at all.
 
-This is a **loop**, not a gate: label, measure, grow the dictionary, re-classify, draw a
-fresh sample. It exits when two consecutive rounds hold a miss rate at or below 3%, a false
-accept rate at or below 10%, and an unknown share of the corpus at or below 10%. The unknown
-cap is not decoration: without it a classifier that answers unknown to everything satisfies
-the other two thresholds on the first round.
+This is a **loop**, not a gate: label, measure, grow the lists, re-classify, draw a fresh
+sample. It exits when two consecutive rounds hold a miss rate at or below 3%, a false accept
+rate at or below 10%, and an `unruled` share that has stopped falling. The discipline against
+over-declining is not decoration — without it a classifier that answers unknown to everything
+satisfies the other two thresholds on the first round — but it is a direction rather than a
+fixed cap, because ADR-0009 made unknown the default and a fixed 10% would gate nothing for
+many rounds.
 
 ### 5.3 Title normalization
 
@@ -439,8 +448,8 @@ These are consequences of the decisions above and belong in the plan, not in hin
    vacancies. It is the binding constraint on the product's output.
 2. **Classifier accuracy**, measured on 1000 blind-labelled titles per round, drawn
    stratified by what the classifier predicted — 300 in, 600 out, 100 unknown — and
-   re-measured on a fresh sample each time the dictionary grows. Reported as three numbers:
-   miss rate, false accept rate, and the unknown share of the corpus.
+   re-measured on a fresh sample each time the lists grow. Reported as miss rate, false accept
+   rate, and the unknown share of the corpus split by reason.
 3. **Title cleaning**, reported as the share of distinct titles each rule collapses, which
    is what decides whether a rule stays.
 4. **Normalizer regression**, by diffing against the pre-reset corpus.

@@ -181,123 +181,117 @@ finish() {
 
 
 # ──────────────────────────────────────────────────────────────────────────
-# STAGES: calibrating the blind labeller (ADR-0007, issue #9).
+# STAGES: labelling a fresh boundary item set against the rewritten criterion.
 # ──────────────────────────────────────────────────────────────────────────
 
-TOTAL_STAGES=4
+TOTAL_STAGES=3
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 CRITERION="$REPO/docs/engineering-role-criterion.md"
 WORK_DIR="${CORPUS_DIR:-$HOME/oneprofile-corpus}/calibration"
-ANSWERS="$WORK_DIR/answers.tsv"
-ITEMS="$WORK_DIR/items.tsv"
-THRESHOLD=95      # agreement on the items where the criterion commits
-DECLINE_SLACK=1   # how many more UNKNOWNs than the criterion produces is tolerated
+ANSWERS="$WORK_DIR/boundary-answers.tsv"
+ITEMS="$WORK_DIR/boundary-items.tsv"
 
 mkdir -p "$WORK_DIR"
 
-# The criterion version a label was produced under, so a fixture can be read against the rules
-# that were in force when it was made. The blob hash changes whenever the document does, which is
-# also when ADR-0007 requires calibration to be re-run.
 criterion_version() { git -C "$REPO" hash-object "$CRITERION" | cut -c1-12; }
 
-# The 50 adversarial items, shuffled once so the strata are not walkable, and fixed here so the
-# order is the same on every re-run. Each row is: index, title, verdict, source.
+# Fifty boundary titles, every one of them a cleaned title that occurs in the corpus, picked by a
+# session that had never seen a label or a verdict. They are NOT the 2026-09-20 fifty and none of
+# those fifty appears here: that set is held out, and its answers were read by the session that
+# rewrote the criterion, so re-running on it measures the fit rather than the document.
 #
-# The verdicts are NOT judgement calls. Each one is what the six-step procedure in the criterion
-# returns for that title, computed mechanically: a ruling first, then the head list, then a marker
-# under a domain-bound head, then a qualifier under an engineering-capable head. A `table` row is a
-# phrase the ruling table fixes; a `pair` row differs from one by a single feature of the lists.
+# There are no verdicts in this file, and that is the point. The rewritten criterion has never been
+# scored against titles it was not fitted to, and nothing yet computes what its six steps return —
+# the head is not stored and the classifier does not exist. So this script collects labels only.
 #
-# These verdicts were regenerated when ADR-0009 replaced the bag-of-tokens reading with a head and
-# its modifiers. Six of the fifty changed: audit analyst, payroll analyst, management consultant and
-# manufacturing systems engineer became UNKNOWN, mechanical software engineer became OUT, and
-# biomedical engineer became OUT.
+# The items are not a random draw. Most corpus titles are easy; the criterion has failed twice at
+# the boundary, so each row sits on one. The fourth column says which decision it probes:
 #
-# WARNING — this item set is no longer a clean measurement. The criterion was rewritten by a session
-# that had already read the 2026-09-20 answers, and three markers (graphic, marketing, biomedical)
-# were added because of them. Re-running on these fifty scores a criterion against the labels it was
-# fitted to. Until a second stratum of unseen items exists, treat the result as a regression check
-# that the rewrite did not break what it claimed to fix, and not as calibration.
+#   absent-head     a common trailing word the head list does not carry, `specialist` above all
+#   domain-attr     the same modifier under a domain-bound head and under a domain-free one
+#   marker-clash    an off-domain marker and a software qualifier in the same title
+#   two-heads       more than one head named, where "the first is the head" has to be applied
+#   incapable-head  a software qualifier under a head that is not engineering-capable
+#   never-head      a never-engineering head with a technical modifier
+#   bare-head       a head with no qualifier and no marker at all
+#
+# Shuffled once so the strata are not walkable, and fixed here so the order is the same on a re-run.
 write_items() {
 	cat >"$ITEMS" <<'ITEMS_TSV'
-1	graphic designer	OUT	pair
-2	data scientist	IN	table
-3	scrum master	IN	table
-4	business analyst	UNKNOWN	table
-5	field engineer	UNKNOWN	table
-6	audit analyst	UNKNOWN	pair
-7	civil engineer	OUT	table
-8	network engineer	IN	table
-9	implementation engineer	IN	table
-10	payroll analyst	UNKNOWN	pair
-11	research scientist	UNKNOWN	table
-12	management consultant	UNKNOWN	pair
-13	manufacturing systems engineer	UNKNOWN	pair
-14	solution engineer	IN	table
-15	cloud architect	IN	pair
-16	product manager	OUT	table
-17	maintenance technician	OUT	pair
-18	customer engineer	IN	table
-19	embedded systems engineer	IN	pair
-20	petroleum engineer	OUT	pair
-21	solutions architect	IN	table
-22	security analyst	IN	pair
-23	aerospace engineer	OUT	pair
-24	engineer ii	UNKNOWN	pair
-25	technician	UNKNOWN	pair
-26	systems administrator	IN	table
-27	engineering manager	UNKNOWN	table
-28	marketing analyst	UNKNOWN	pair
-29	support engineer	UNKNOWN	table
-30	hvac technician	OUT	pair
-31	industrial engineer	UNKNOWN	pair
-32	analyst	UNKNOWN	pair
-33	data analyst	UNKNOWN	table
-34	technical writer	UNKNOWN	table
-35	architect	UNKNOWN	pair
-36	sales engineer	UNKNOWN	table
-37	technical program manager	IN	table
-38	pharmacy technician	OUT	pair
-39	mechanical software engineer	OUT	pair
-40	game designer	OUT	table
-41	biomedical engineer	OUT	pair
-42	agricultural engineer	OUT	pair
-43	marketing manager	OUT	pair
-44	database administrator	IN	table
-45	mechanical engineer	OUT	table
-46	electrical engineer	UNKNOWN	table
-47	ux engineer	IN	table
-48	game programmer	IN	table
-49	software developer	IN	pair
-50	embedded software engineer	IN	pair
+1	sales specialist	specialist	absent-head	14
+2	autonomous vehicle test driver	driver	never-head	3
+3	engineer	engineer	bare-head	77
+4	it specialist	specialist	absent-head	12
+5	field engineer technician hourly	engineer	two-heads	11
+6	marketing data analyst	analyst	domain-attr	4
+7	quality assurance technician	technician	incapable-head	6
+8	project civil engineer project manager	engineer	two-heads	25
+9	security guard	guard	absent-head	3
+10	engineering manager data platform	manager	two-heads	5
+11	designer	designer	bare-head	48
+12	product owner	owner	absent-head	21
+13	security officer	officer	absent-head	56
+14	engineering technician	technician	incapable-head	22
+15	quality assurance specialist	specialist	absent-head	13
+16	data strategist	strategist	absent-head	8
+17	maintenance engineer	engineer	marker-clash	15
+18	software engineering manager	manager	two-heads	21
+19	business analyst consultant	analyst	two-heads	4
+20	solutions consultant	consultant	incapable-head	46
+21	data scientist manager	scientist	two-heads	4
+22	financial systems analyst	analyst	domain-attr	6
+23	data consultant	consultant	incapable-head	12
+24	data manager	manager	incapable-head	4
+25	clinical data scientist	scientist	domain-attr	3
+26	generative ai associate flexible hours	associate	absent-head	61
+27	technical recruiter	recruiter	absent-head	81
+28	control systems technician	technician	marker-clash	3
+29	director of engineering	director	absent-head	22
+30	technical support representative	representative	never-head	7
+31	web designer	designer	incapable-head	4
+32	developer relations engineer	developer	two-heads	5
+33	it support specialist	specialist	absent-head	34
+34	healthcare solutions manager	manager	incapable-head	5
+35	electro mechanical technician	technician	marker-clash	5
+36	technical account manager	manager	incapable-head	87
+37	marketing data scientist	scientist	domain-attr	4
+38	technical trainer	trainer	never-head	3
+39	developer	developer	bare-head	7
+40	construction application analyst	analyst	domain-attr	6
+41	manufacturing systems analyst	analyst	domain-attr	1
+42	scientist	scientist	bare-head	10
+43	manufacturing test engineer	engineer	marker-clash	8
+44	graphics programmer	programmer	marker-clash	6
+45	ux researcher	researcher	absent-head	16
+46	consultant	consultant	bare-head	53
+47	implementation specialist	specialist	absent-head	21
+48	technical lead	lead	absent-head	8
+49	security specialist	specialist	absent-head	34
+50	business systems analyst	analyst	domain-attr	13
 ITEMS_TSV
 }
 
-banner "Calibrating the engineering-role labeller"
+banner "Labelling the boundary item set"
 
 # ── Stage 1 ───────────────────────────────────────────────────────────────
 stage "Read the criterion"
 write_items
-say "ADR-0007 requires the labeller to be calibrated before any round of #10 runs:"
-say "50 adversarial titles, labelled by hand, checked against the ruling table."
+say "Fifty boundary titles, none of them obvious, all of them real corpus titles."
 printf '\n'
 step "Open docs/engineering-role-criterion.md and read all of it, rulings table included."
 printf '\n'
-note "The table used to be hidden here, on the theory that a labeller who can recall the"
-note "answers is not being tested. That was wrong and ADR-0007 now says so: in production the"
-note "labeller reads the whole criterion, so hiding the table tested recall, not clarity."
+note "Read it the way the labeller does: the whole document, the rulings table included,"
+note "and nothing else. What is being measured is whether it is written clearly enough to"
+note "follow, so a disagreement is evidence about the document and not about you."
 printf '\n'
-note "What is being measured is whether the criterion is written clearly enough to follow."
-note "A disagreement is evidence the document is ambiguous, not that you were careless:"
-note "below ${THRESHOLD}% the criterion gets rewritten, and your labels stand."
+say "Where these fifty came from, and why they are not the calibration set:"
 printf '\n'
-note "ADR-0007 certifies the reader that labels the rounds, which is a Claude Code session."
-note "This run by hand is diagnostic and its labels are the answer key, but it is not the gate."
-printf '\n'
-say "The 50 items are adversarial, meaning chosen to sit on the decision boundary —"
-say "the phrases the ruling table fixes, each paired with a near-miss that differs by"
-say "exactly one feature of the lists. None of them is an obvious case."
+note "The 2026-09-20 fifty are held out. The session that rewrote the criterion had read"
+note "their answers, so scoring against them measures the fit and not the document."
+note "These fifty were picked by a session that had seen no label and no verdict, from the"
+note "corpus, weighted toward the heads and modifier combinations the four lists do not"
+note "obviously commit on. Frequencies run from 1 to 87 occurrences."
 printf '\n'
 note "items:     $ITEMS"
 note "criterion: version $(criterion_version)"
@@ -305,13 +299,15 @@ pause "Press Enter once you have read the procedure."
 
 # ── Stage 2 ───────────────────────────────────────────────────────────────
 stage "Label the 50 titles"
-say "For each title, run the procedure top to bottom and answer:"
+say "For each title, run the six steps top to bottom and answer what they return:"
 printf '\n'
 step "${BOLD}i${RESET} — IN, it is an engineering role"
 step "${BOLD}o${RESET} — OUT, and the title says so"
 step "${BOLD}u${RESET} — UNKNOWN, the title does not carry enough to decide"
 printf '\n'
-note "UNKNOWN asks for a reason: d = domain_ambiguity, s = scope_ambiguity."
+note "UNKNOWN asks for a reason: r = unruled, d = domain_ambiguity, s = scope_ambiguity."
+note "Answering unknown is not free. Which of the three it is matters as much as the label:"
+note "unruled is our backlog, the other two are the corpus's."
 note "Every answer is written to disk as you give it, so Ctrl-C and re-run resumes here."
 printf '\n'
 
@@ -323,7 +319,7 @@ if (( answered > 0 )); then
 fi
 
 exec 3<"$ITEMS"
-while IFS=$'\t' read -r index title verdict source <&3; do
+while IFS=$'\t' read -r index title head probe n <&3; do
 	(( index <= answered )) && continue
 	printf '\n  %s[%2s/50]%s  %s%s%s\n' "$DIM" "$index" "$RESET" "$BOLD" "$title" "$RESET"
 	label=""
@@ -340,12 +336,13 @@ while IFS=$'\t' read -r index title verdict source <&3; do
 	reason=""
 	if [[ "$label" == "UNKNOWN" ]]; then
 		while [[ -z "$reason" ]]; do
-			printf '    %sd%s omain / %ss%s cope ambiguity: ' "$BOLD" "$RESET" "$BOLD" "$RESET"
+			printf '    %sr%s unruled / %sd%s omain / %ss%s cope: ' "$BOLD" "$RESET" "$BOLD" "$RESET" "$BOLD" "$RESET"
 			read -r answer <&0 || true
 			case "$answer" in
+				r|R) reason="unruled" ;;
 				d|D) reason="domain_ambiguity" ;;
 				s|S) reason="scope_ambiguity" ;;
-				*) warn "answer d or s" ;;
+				*) warn "answer r, d or s" ;;
 			esac
 		done
 	fi
@@ -355,84 +352,47 @@ exec 3<&-
 
 printf '\n'
 say "All 50 labelled."
-pause "Press Enter to score them against the ruling table."
+pause "Press Enter to see what you said."
 
 # ── Stage 3 ───────────────────────────────────────────────────────────────
-stage "Score against the criterion"
-say "Your labels, rejoined with the verdicts the criterion fixes."
+stage "What the labels came to"
+say "There is nothing to score them against yet: the six steps are not computed anywhere,"
+say "so this stage counts what you said and groups it by what each item probes."
 printf '\n'
 
-agreed=0
-committed=0
-disagreed=0
-mine_unknown=0
-crit_unknown=0
-while IFS=$'\t' read -r index title verdict source; do
-	mine=$(awk -F'\t' -v i="$index" '$1 == i { print $3 }' "$ANSWERS")
-	[[ "$mine" == "UNKNOWN" ]] && mine_unknown=$((mine_unknown + 1))
-	[[ "$verdict" == "UNKNOWN" ]] && crit_unknown=$((crit_unknown + 1))
-	# Only the items where the criterion commits to IN or OUT are scored for agreement.
-	# Since ADR-0009 made UNKNOWN the default, a labeller that declines everything would
-	# otherwise score well by accident.
-	if [[ "$verdict" != "UNKNOWN" ]]; then
-		committed=$((committed + 1))
-		[[ "$mine" == "$verdict" ]] && agreed=$((agreed + 1))
-	fi
-	if [[ "$mine" != "$verdict" ]]; then
-		disagreed=$((disagreed + 1))
-		printf '  %s✗%s %-32s you said %-8s criterion says %-8s %s(%s)%s\n' \
-			"$RED" "$RESET" "$title" "$mine" "$verdict" "$DIM" "$source" "$RESET"
-	fi
-done <"$ITEMS"
-
-(( disagreed == 0 )) && say "No disagreements."
-agreement=$(( agreed * 100 / committed ))
-excess=$(( mine_unknown - crit_unknown ))
-printf '\n  %s%sAgreement on committed items: %s%% (%s of %s)%s\n' \
-	"$BOLD" "$BLUE" "$agreement" "$agreed" "$committed" "$RESET"
-printf '  %s%sUnknowns: you %s, criterion %s (excess %s)%s\n\n' \
-	"$BOLD" "$BLUE" "$mine_unknown" "$crit_unknown" "$excess" "$RESET"
-
-note "Scored on the label alone. The criterion does not fix a reason for every row, so the"
-note "reason is recorded in the fixture but not counted here."
+for state in IN OUT UNKNOWN; do
+	count=$(awk -F'\t' -v s="$state" '$3 == s' "$ANSWERS" | wc -l)
+	printf '  %s%-8s%s %s\n' "$BOLD" "$state" "$RESET" "$count"
+done
+printf '\n'
+for reason in unruled domain_ambiguity scope_ambiguity; do
+	count=$(awk -F'\t' -v r="$reason" '$4 == r' "$ANSWERS" | wc -l)
+	printf '  %s  %-18s%s %s\n' "$DIM" "$reason" "$RESET" "$count"
+done
 printf '\n'
 
-pass=1
-if (( agreement >= THRESHOLD )); then
-	printf '  %s✓ Agreement at or above the %s%% gate.%s\n' "$GREEN" "$THRESHOLD" "$RESET"
-else
-	pass=0
-	printf '  %s⚠ Agreement below the %s%% gate.%s\n' "$YELLOW" "$THRESHOLD" "$RESET"
-fi
-if (( excess <= DECLINE_SLACK )); then
-	printf '  %s✓ Not over-declining: within %s of the criterion.%s\n' "$GREEN" "$DECLINE_SLACK" "$RESET"
-else
-	pass=0
-	printf '  %s⚠ Over-declining: %s more unknowns than the criterion produces.%s\n' "$YELLOW" "$excess" "$RESET"
-	say "Answering unknown is not free. Each excess one is a title the criterion reaches and"
-	say "the labeller did not, which is the same evidence of ambiguity as a wrong label."
-fi
-if (( pass == 1 )); then
-	printf '\n  %s✓ Both gates met. Rounds of #10 may run.%s\n' "$GREEN" "$RESET"
-else
-	printf '\n'
-	say "Per ADR-0007 the criterion is not written clearly enough to be followed."
-	say "Each disagreement above points at the sentence to fix. Rewrite the criterion,"
-	say "then re-run this wizard — a changed criterion requires re-calibration anyway."
-fi
+say "By what the item probes:"
+printf '\n'
+for probe in absent-head domain-attr marker-clash two-heads incapable-head never-head bare-head; do
+	line=""
+	while IFS=$'\t' read -r index title head p n; do
+		[[ "$p" == "$probe" ]] || continue
+		mine=$(awk -F'\t' -v i="$index" '$1 == i { print $3 }' "$ANSWERS")
+		case "$mine" in IN) line+="I" ;; OUT) line+="O" ;; UNKNOWN) line+="u" ;; *) line+="." ;; esac
+	done <"$ITEMS"
+	printf '  %-16s %s\n' "$probe" "$line"
+done
+printf '\n'
+note "I = IN, O = OUT, u = UNKNOWN. A probe that came out all u is a part of the criterion"
+note "that reaches nothing; a probe that came out mixed is where the document is ambiguous."
 printf '\n'
 pause "Press Enter to write the fixture."
 
-# ── Stage 4 ───────────────────────────────────────────────────────────────
-stage "Commit the fixture"
-version="$(criterion_version)"
-fixture="$REPO/src/test/resources/calibration/engineering-role-$(date +%Y-%m-%d).tsv"
+fixture="$REPO/src/test/resources/calibration/engineering-role-boundary-$(date +%Y-%m-%d).tsv"
 mkdir -p "$(dirname "$fixture")"
-
 if [[ -e "$fixture" ]]; then
 	warn "$(basename "$fixture") already exists."
-	say "Fixtures accumulate and are never replaced or regenerated (ADR-0007): a label set is a"
-	say "statement about one sitting, and a session-driven labeller is not reproducible."
+	say "Fixtures accumulate and are never replaced or regenerated (ADR-0007)."
 	if ! confirm "Write to a suffixed name instead?"; then
 		say "Nothing written. Your answers are still at $ANSWERS"
 		finish
@@ -442,27 +402,23 @@ if [[ -e "$fixture" ]]; then
 fi
 
 {
-	printf '# Calibration set for the engineering-role labeller (issue #9, ADR-0007).\n'
-	printf '# Labelled by hand on %s against criterion version %s.\n' "$(date +%Y-%m-%d)" "$version"
-	printf '# Agreement on the %s items the criterion commits on: %s%% (%s of them).\n' "$committed" "$agreement" "$agreed"
-	printf '# Unknowns: labeller %s, criterion %s.\n' "$mine_unknown" "$crit_unknown"
-	printf '# Held out of every measurement sample: a round never draws a title listed here.\n'
-	printf '# title\tlabel\treason\tcriterion_verdict\tsource\n'
-	while IFS=$'\t' read -r index title verdict source; do
+	printf '# Boundary item set for the engineering-role criterion (issue #9, ADR-0007, ADR-0009).\n'
+	printf '# Fifty corpus titles picked on the decision boundary by a session that had seen no label.\n'
+	printf '# Labelled by hand on %s against criterion version %s.\n' "$(date +%Y-%m-%d)" "$(criterion_version)"
+	printf '# Disjoint from engineering-role-2026-09-20.tsv, which stays held out of every sample.\n'
+	printf '# No criterion verdict column: nothing computes the six steps yet.\n'
+	printf '# title\tlabel\treason\thead\tprobe\tn\n'
+	while IFS=$'\t' read -r index title head probe n; do
 		mine=$(awk -F'\t' -v i="$index" '$1 == i { print $3 }' "$ANSWERS")
 		reason=$(awk -F'\t' -v i="$index" '$1 == i { print $4 }' "$ANSWERS")
-		printf '%s\t%s\t%s\t%s\t%s\n' "$title" "$mine" "$reason" "$verdict" "$source"
+		printf '%s\t%s\t%s\t%s\t%s\t%s\n' "$title" "$mine" "$reason" "$head" "$probe" "$n"
 	done <"$ITEMS"
 } >"$fixture"
 
 printf '  %s✓ wrote%s %s\n' "$GREEN" "$RESET" "${fixture#"$REPO"/}"
 printf '\n'
-say "Two things left, and both are yours — this wizard commits nothing:"
+say "Yours from here — this script commits nothing:"
 step "git add ${fixture#"$REPO"/} && commit it"
-if (( pass == 1 )); then
-	step "run /implement #10 for the first round"
-else
-	step "rewrite the criterion where the disagreements point, then re-run this wizard"
-fi
+step "the labels are the answer key the criterion gets scored against once it can be computed"
 
 finish
