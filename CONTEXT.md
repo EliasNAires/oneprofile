@@ -180,6 +180,24 @@ language and the corpus is allowed to win it: a head is reclassed on the evidenc
 against the criterion's own argument if they say so.
 _Avoid_: domain-specific, vertical, contextual
 
+**Yielding Head**:
+A head that gives way to a head standing behind it, because it names a rank — lead, director,
+manager, chief — or a department — support, operations, tech — rather than the work itself. A
+Lead Analytics Engineer is an engineer and a Network Support Engineer is an engineer, so
+classification reads past the first word to the head behind it. A never-engineering word behind a
+yielding head does not take the head, because there it names who the work is done for rather than
+what it does.
+_Avoid_: rank head, seniority word, prefix head, title prefix
+
+**Generic Head**:
+A yielding head that names no work of its own even when nothing stands behind it — manager,
+director, operations, support. With any
+modifier and no software qualifier arguing back, a generic head is out: this is the criterion's
+own default, that a modifier no one has classed is a market marker, applied where it cannot cause
+a miss. Engineer and developer are deliberately not generic heads, because a bare C Engineer is a
+software job and the same reading would decide it out.
+_Avoid_: management head, empty head, weak head
+
 **Marker**:
 A modifier that names a domain outside software, and one of two things. A **discipline marker**
 names a body of training a person is hired on — mechanical, fpga, nurse, chef — and is about

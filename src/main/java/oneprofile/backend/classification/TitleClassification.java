@@ -14,13 +14,17 @@ import oneprofile.backend.normalizedvacancy.UnknownReason;
  * mechanism, so where the two disagree the document is right and these lists are wrong.
  * <p>
  * A title is read as a <b>function head</b> — the noun naming what the role does — with
- * <b>modifiers</b> naming the domain it does it in. Where a title names more than one head the
- * first is the head, and a head is what keeps the modifier lists honest: {@code security} is a
- * software qualifier, so {@code security analyst} is in while {@code security guard} is out on a
- * head that is never engineering whatever modifies it.
+ * <b>modifiers</b> naming the domain it does it in. Where a title names more than one function
+ * head the first is the head, except where the first <b>yields</b>: {@code lead}, {@code
+ * manager}, {@code support} and their kind name a rank or a department rather than the work, so
+ * a head behind one of them is what the title is about — {@code Lead Analytics Engineer} is an
+ * engineer. A head is what keeps the modifier lists honest: {@code security} is a software
+ * qualifier, so {@code security analyst} is in while {@code security guard} is out on a head that
+ * is never engineering whatever modifies it.
  * <p>
- * Four lists and nothing else. Heads carry the two attributes the criterion gives them; the
- * never-engineering heads are held apart because neither attribute means anything for them.
+ * Four lists and three sets that qualify the head list. Heads carry the two attributes the
+ * criterion gives them; the never-engineering heads are held apart because neither attribute
+ * means anything for them.
  * Qualifiers and markers are modifiers, read only through the head. Rulings are decisions on a
  * phrase and override the whole procedure, which is why they are a layer above it rather than
  * entries in a list.
@@ -57,13 +61,123 @@ public class TitleClassification {
 
 	private static final Head FREE_CAPABLE = new Head(Domain.FREE, true);
 
-	private static final Map<String, Head> HEADS = Map.ofEntries(Map.entry("engineer", BOUND_CAPABLE),
+	/**
+	 * Heads that give way to a head standing behind them. Each names a rank ({@code lead},
+	 * {@code director}) or a department ({@code support}, {@code operations}) rather than the work
+	 * itself, so where another head follows, {@link #head(List)} reads that one instead:
+	 * {@code Lead Analytics Engineer} is an engineer and {@code Network Support Engineer} is an
+	 * engineer. Reading the yielding word as the head is the masking problem iterations 5 through
+	 * 9 each priced and each left open; it cost 24 titles on iteration 10's sample alone.
+	 */
+	private static final Set<String> YIELDING_HEADS = Set.of(
+			"lead",
+			"leader",
+			"leaders",
+			"head",
+			"director",
+			"directors",
+			"manager",
+			"managers",
+			"associate",
+			"chief",
+			"president",
+			"vp",
+			"avp",
+			"mgr",
+			"fellow",
+			"expert",
+			"master",
+			"intern",
+			"internship",
+			"extern",
+			"externship",
+			"werkstudent",
+			"praktikant",
+			"praktikum",
+			"stage",
+			"stagiaire",
+			"estagiário",
+			"estágio",
+			"chargé",
+			"responsable",
+			"leiter",
+			"gerente",
+			"member",
+			"partner",
+			"management",
+			"operations",
+			"tech",
+			"support",
+			"specialist",
+			"specialists");
+
+	/**
+	 * Yielding heads that name no work of their own even when nothing stands behind them. Step 6
+	 * read literally — "a modifier no one has classed is a market marker" — makes one of these OUT
+	 * as soon as the title carries any
+	 * modifier and no software qualifier argued back at step 5, which is what settles the
+	 * {@code Hotel Manager} and {@code Director of Operations} families the market list was never
+	 * going to reach one word at a time. The narrower {@code engineer} and {@code developer} heads
+	 * are deliberately not here: a bare {@code C Engineer} is a software job and the same reading
+	 * would decide it OUT.
+	 */
+	private static final Set<String> GENERIC_HEADS = Set.of(
+			"advisor",
+			"associate",
+			"avp",
+			"chief",
+			"controller",
+			"director",
+			"directors",
+			"fellow",
+			"gerente",
+			"head",
+			"leader",
+			"leaders",
+			"leiter",
+			"liaison",
+			"management",
+			"manager",
+			"managers",
+			"member",
+			"mgr",
+			"mitarbeiter",
+			"operations",
+			"partner",
+			"president",
+			"responsable",
+			"sachbearbeiter",
+			"strategist",
+			"support",
+			"tech",
+			"vp");
+
+	/**
+	 * Words that hold a generic head open rather than letting the rule above decide it. The
+	 * corpus's product roles are the family nine labellers have split hardest — 44 IN, 5 OUT and
+	 * 58 UNKNOWN across the accumulated fixtures — so a product title with no software qualifier
+	 * is left to steps 6 and 7 to answer, which is the {@code domain_ambiguity} the criterion says
+	 * it is.
+	 */
+	private static final Set<String> GENERIC_HEAD_EXEMPTIONS = Set.of(
+			"product",
+			"products");
+
+	private static final Map<String, Head> HEADS = Map.ofEntries(
+			// The heads this corpus writes in a language other than English. Only the spellings the
+			// corpus actually posts are here; a list of every plausible translation would be a list
+			// of words no title uses.
+			Map.entry("cientista", FREE_CAPABLE), Map.entry("científico", FREE_CAPABLE),
+			Map.entry("エンジニア", BOUND_CAPABLE), Map.entry("개발자", BOUND_CAPABLE),
+			Map.entry("엔지니어", BOUND_CAPABLE),
+			Map.entry("engineer", BOUND_CAPABLE),
 			Map.entry("developer", BOUND_CAPABLE), Map.entry("administrator", BOUND_CAPABLE),
 			Map.entry("programmer", BOUND_CAPABLE), Map.entry("analyst", FREE_CAPABLE),
 			Map.entry("architect", FREE_CAPABLE), Map.entry("scientist", FREE_CAPABLE),
 			Map.entry("researcher", FREE_CAPABLE), Map.entry("specialist", BOUND_CAPABLE),
 			Map.entry("lead", BOUND_CAPABLE), Map.entry("engineering", BOUND_CAPABLE),
-			Map.entry("manager", BOUND_CAPABLE), Map.entry("fellow", BOUND_CAPABLE), Map.entry("associate", BOUND_CAPABLE),
+			Map.entry("manager", BOUND_CAPABLE), Map.entry("fellow", BOUND_CAPABLE),
+			Map.entry("associate", BOUND_CAPABLE),
 			Map.entry("writer", BOUND_INCAPABLE), Map.entry("master", BOUND_INCAPABLE),
 			// Heads whose modifier carries the whole of the domain: an intern, a leader, a partner,
 			// an advisor and a strategist are all named by the thing they are one of.
@@ -204,9 +318,23 @@ public class TitleClassification {
 	 * roles are named by ruling instead.
 	 */
 	private static final Set<String> SOFTWARE_QUALIFIERS = Set.of(
+			"graph",
+			"devex",
+			"malware",
+			"sharepoint",
+			"sdk",
+			"iam",
+			"secops",
+			"telemetry",
+			"microservices",
+			"latency",
+			"runtime",
+			"dados",
+			"datos",
+			"소프트웨어",
 			"software", "backend", "back end", "frontend", "front end", "fullstack", "full stack", "data",
 			"platform", "devops", "sre", "site reliability", "security", "mobile", "ios", "android", "cloud",
-			"infrastructure", "qa", "quality assurance", "test", "automation", "machine learning", "deep learning",
+			"infrastructure", "automation", "machine learning", "deep learning",
 			"ml", "ai", "systems", "network", "web", "api", "embedded", "application", "integration", "database",
 			"firmware", "compiler", "robotics", "it", "information technology", "computer", "computer science",
 			"cybersecurity", "mlops", "java", "python", "javascript", "typescript", "salesforce", "sap", "azure",
@@ -243,6 +371,22 @@ public class TitleClassification {
 	 * and the word {@code data} inside the phrase would otherwise read as a software qualifier.
 	 */
 	private static final Set<String> DISCIPLINE_MARKERS = Set.of(
+			"radar",
+			"metrology",
+			"hil",
+			"shop floor",
+			"motor controls",
+			"calibration",
+			"fire protection",
+			"brake",
+			"medium voltage",
+			"assay",
+			"polymer",
+			"machining",
+			"tool and die",
+			"post silicon",
+			"occupational",
+			"phlebotomy",
 			"civil", "structural", "structures", "mechanical", "mechatronics", "chemical", "chemistry", "materials",
 			"thermal", "hydraulic", "pneumatic", "cryogenic", "cryogenics", "combustion", "propulsion",
 			"turbomachinery", "aerospace", "avionics", "nuclear", "petroleum", "geotechnical", "roadway",
@@ -292,6 +436,24 @@ public class TitleClassification {
 	 * before step 4.
 	 */
 	private static final Set<String> MARKET_MARKERS = Set.of(
+			"sports",
+			"trading desk",
+			"proposal",
+			"grants",
+			"retirement",
+			"cruise",
+			"maritime",
+			"vocational",
+			"claims",
+			"closing",
+			"conference",
+			"valet",
+			"babysitting",
+			"shift",
+			"hazardous waste",
+			"dangerous goods",
+			"due diligence",
+			"workforce planning",
 			"account", "accounting", "accounts", "apparel", "asset", "audit", "automotive", "aviation", "banking",
 			"beauty", "benefits", "bookkeeping", "brand", "budget", "business development", "business operations",
 			"cable", "campaign", "cashier", "channel", "channels", "charity", "client", "clients", "coach",
@@ -335,6 +497,10 @@ public class TitleClassification {
 	 * is what that reason names.
 	 */
 	private static final Map<String, Classification> RULINGS = Map.ofEntries(
+			Map.entry("qa engineer", Classification.in()), Map.entry("test automation", Classification.in()),
+			Map.entry("automation test", Classification.in()), Map.entry("qa automation", Classification.in()),
+			Map.entry("qa analyst", Classification.in()), Map.entry("test analyst", Classification.in()),
+			
 			Map.entry("product owner", Classification.in()),
 			Map.entry("solutions consultant", Classification.in()),
 			Map.entry("solutions engineer", Classification.in()),
@@ -488,6 +654,8 @@ public class TitleClassification {
 
 	private static final int LONGEST_MARKET_MARKER = longest(MARKET_MARKERS);
 
+	private static final int LONGEST_GENERIC_HEAD_EXEMPTION = longest(GENERIC_HEAD_EXEMPTIONS);
+
 	/**
 	 * Decides what one cleaned title names, by the criterion's seven steps in their order.
 	 * @param cleanedTitle the title once cleaning has taken the noise out of it
@@ -527,6 +695,14 @@ public class TitleClassification {
 		}
 
 		// 6 — With no qualifier to argue against, the market decides a bound head.
+		// 6a — A generic head with a modifier and nothing software about it. The criterion's
+		// own default, that an unclassed modifier is a market marker, applied where it cannot
+		// cause a miss.
+		if (reading.domain() == Domain.BOUND && GENERIC_HEADS.contains(head) && words.size() > 1
+				&& named(words, GENERIC_HEAD_EXEMPTIONS, LONGEST_GENERIC_HEAD_EXEMPTION) == null) {
+			return Classification.out();
+		}
+
 		if (reading.domain() == Domain.BOUND && named(words, MARKET_MARKERS, LONGEST_MARKET_MARKER) != null) {
 			return Classification.out();
 		}
@@ -535,14 +711,31 @@ public class TitleClassification {
 		return reading.engineeringCapable() ? Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY) : unruled();
 	}
 
-	/** The first function head the title names, never the last word: a title ends in anything. */
+	/**
+	 * The function head the title names, never the last word: a title ends in anything. A yielding
+	 * word is skipped while a head still follows it, and a never-engineering word behind a yielding
+	 * word names who the work is done for rather than what it does, so the yielding word keeps the
+	 * head there. Returns null where nothing in the title is a head this class reaches.
+	 */
 	private static String head(List<String> words) {
+		String yielding = null;
 		for (String word : words) {
-			if (HEADS.containsKey(word) || NEVER_ENGINEERING.contains(word)) {
+			if (YIELDING_HEADS.contains(word)) {
+				if (yielding == null) {
+					yielding = word;
+				}
+				continue;
+			}
+			if (NEVER_ENGINEERING.contains(word)) {
+				return yielding != null ? yielding : word;
+			}
+			if (HEADS.containsKey(word)) {
 				return word;
 			}
 		}
-		return null;
+		return yielding != null && (HEADS.containsKey(yielding) || NEVER_ENGINEERING.contains(yielding))
+				? yielding
+				: null;
 	}
 
 	/**

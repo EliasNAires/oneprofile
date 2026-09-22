@@ -251,8 +251,9 @@ class TitleClassificationTest {
 		void readsSolutionsAsASoftwareDomainOnlyWhereARulingSaysSo() {
 			assertThat(classify("partner solutions engineer latam")).isEqualTo(Classification.in());
 			assertThat(classify("solutions engineering lead healthcare life sciences")).isEqualTo(Classification.in());
-			assertThat(classify("workplace solutions manager"))
-				.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+			// Iteration 10 decides this one OUT: manager is a generic rank head, workplace is a
+			// modifier and no software qualifier argues back.
+			assertThat(classify("workplace solutions manager")).isEqualTo(Classification.out());
 		}
 
 		@Test
@@ -573,8 +574,10 @@ class TitleClassificationTest {
 			// publisher all name who the work is done for, and a market marker no longer beats the
 			// qualifier standing next to it. The criterion decides these in now, and the revision
 			// rather than the rules is what changed them.
+			// Iteration 10 took qa and quality assurance off the qualifier list — the corpus posts
+			// them over shop floors and inspection lines — so this one is OUT again.
 			assertThat(classify("quality assurance manager women s apparel qa import"))
-				.isEqualTo(Classification.in());
+				.isEqualTo(Classification.out());
 			assertThat(classify("it asset manager")).isEqualTo(Classification.in());
 			assertThat(classify("partner manager channels uki security")).isEqualTo(Classification.in());
 			assertThat(classify("vice president client partnerships publisher cloud"))
@@ -733,7 +736,8 @@ class TitleClassificationTest {
 			assertThat(classify("vp legal")).isEqualTo(Classification.out());
 			assertThat(classify("vp of strategic accounts financial services")).isEqualTo(Classification.out());
 			assertThat(classify("mgr financial business consulting")).isEqualTo(Classification.out());
-			assertThat(classify("vp growth")).isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+			// Iteration 10 decides a bare growth vp OUT: growth is a modifier under a generic head.
+			assertThat(classify("vp growth")).isEqualTo(Classification.out());
 		}
 
 		@Test
@@ -996,6 +1000,95 @@ class TitleClassificationTest {
 		@Test
 		void saysNothingAboutATitleThatIsEmpty() {
 			assertThat(classify("")).isEqualTo(Classification.unknown(UnknownReason.UNRULED));
+		}
+
+	}
+
+	@Nested
+	class RankHeads {
+
+		@Test
+		void yieldToTheHeadTheyStandInFrontOf() {
+			// Lead, head, manager and director name a rank before they name a function. Where a
+			// title puts one in front of another head, the head behind it is what the title is
+			// about; reading the rank word as the head masked every senior engineering title.
+			assertThat(classify("manager field engineering"))
+				.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+			assertThat(classify("head of engineering payment gateway"))
+				.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+		}
+
+		@Test
+		void doNotYieldToAWordThatDecidesOutOnItsOwn() {
+			// A never-engineering word behind a rank word names what the role is done for, not what
+			// it does: Manager Rider and Driver Experience is a manager, not a driver.
+			assertThat(classify("manager rider and driver experience")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void decideOutOnAnyModifierWhenNoSoftwareQualifierArguesBack() {
+			// Step 6 read literally: an unclassed modifier is a market marker, and a rank head is
+			// domain-bound, so a rank head with a modifier and no software qualifier is OUT.
+			assertThat(classify("hotel manager")).isEqualTo(Classification.out());
+			assertThat(classify("director of operations")).isEqualTo(Classification.out());
+			assertThat(classify("software delivery manager")).isEqualTo(Classification.in());
+		}
+
+		@Test
+		void areOnlyReadAsAHeadWhereTheHeadListAlsoNamesThem() {
+			// A rank word that is not on the head list reaches no reading, so it cannot stand in
+			// for one: leads is a sales noun, not a rank.
+			assertThat(classify("leads")).isEqualTo(Classification.unknown(UnknownReason.UNRULED));
+			assertThat(classify("qualified leads")).isEqualTo(Classification.unknown(UnknownReason.UNRULED));
+		}
+
+		@Test
+		void leaveABareRankHeadAsTheCorpusAmbiguity() {
+			assertThat(classify("manager")).isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+		}
+
+		@Test
+		void leaveAProductRoleOpenRatherThanDecidingIt() {
+			// Nine labellers split this family 44 IN, 5 OUT and 58 UNKNOWN, so the rule above steps
+			// around it and lets steps 6 and 7 answer.
+			assertThat(classify("product manager search"))
+				.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+		}
+
+	}
+
+	@Nested
+	class TestAndQualityAssurance {
+
+		@Test
+		void areNotSoftwareQualifiersOnTheirOwn() {
+			// Test and QA name a function every discipline has: the corpus posts shop-floor QA,
+			// inspection QA and hardware test under the same words.
+			assertThat(classify("test engineer")).isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+			assertThat(classify("quality assurance inspection specialist")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void areStillInWhereTheTitleNamesSoftwareOrThePhraseIsRuled() {
+			assertThat(classify("software test engineer")).isEqualTo(Classification.in());
+			assertThat(classify("qa engineer")).isEqualTo(Classification.in());
+			assertThat(classify("test automation engineer")).isEqualTo(Classification.in());
+		}
+
+		@Test
+		void loseToAHardwareDisciplineMarker() {
+			assertThat(classify("radar software engineer")).isEqualTo(Classification.out());
+		}
+
+	}
+
+	@Nested
+	class HeadsTheCorpusWritesInOtherLanguages {
+
+		@Test
+		void areReadLikeTheirEnglishSpelling() {
+			assertThat(classify("cientista de dados senior")).isEqualTo(Classification.in());
+			assertThat(classify("엔지니어 백엔드 소프트웨어")).isEqualTo(Classification.in());
 		}
 
 	}
