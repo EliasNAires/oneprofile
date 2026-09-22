@@ -21,6 +21,27 @@ classifier's code. Backwards, you can work out what the classifier predicted for
 you will agree with it, and the numbers you report will be decorative. Write your labels to
 disk before you read any rules.
 
+## The context budget
+
+**The session finishes at around 100k tokens.** An iteration reads a thousand titles, a
+corpus of predictions and a classifier full of rule lists, and none of that belongs in this
+session's context. Delegating only the blind labelling is not enough — that still lands near
+180k. Hold to three habits:
+
+- **The blind labelling goes to a subagent**, handed the criterion and the bare titles, and
+  told explicitly not to read `src/`, `docs/measurements/`, or any earlier fixture. It writes
+  the labels to disk and returns counts only.
+- **The data never enters this session.** Scoring, pricing a candidate rule and drawing the
+  next sample are done with scripts — `awk`, `grep`, `psql` — over files in the scratchpad.
+  Read the rows that disagree, never the thousand rows, and never the accumulated fixtures.
+- **Rules are tried on an offline harness**: `javac` over the classifier and its immediate
+  dependencies plus a `main` that reclassifies the fixtures. Seconds a run against minutes of
+  Maven, and it keeps the rule lists out of context — extract them to text files and `grep`
+  them.
+
+**The judgement stays here.** Which rule goes in and which is discarded is not delegated: a
+subagent does the blind, mechanical work, not the deciding.
+
 ## The iteration
 
 **1. Read the handoff.** `docs/measurements/` holds one file per iteration. The newest is
