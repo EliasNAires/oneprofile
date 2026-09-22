@@ -175,8 +175,25 @@ _Avoid_: role noun, job noun, base title, head word
 Said of a function head whose modifier settles what the role is, because the function only
 exists inside a domain: a civil engineer is not a software job. The opposite is domain-free,
 where the function operates on information about a domain and the modifier settles nothing —
-an audit analyst may work on audit software.
+an audit analyst may work on audit software. Which one a head is, is an argument about
+language and the corpus is allowed to win it: a head is reclassed on the evidence of samples,
+against the criterion's own argument if they say so.
 _Avoid_: domain-specific, vertical, contextual
+
+**Marker**:
+A modifier that names a domain outside software, and one of two things. A **discipline marker**
+names a body of training a person is hired on — mechanical, fpga, nurse, chef — and is about
+the candidate. A **market marker** names who the work is done for — finance, retail, marketing
+— and is about the customer. The test between them is the credential, and it decides one thing:
+a discipline marker outranks a software qualifier in the same title and a market marker does
+not, because software is built for every market and for no credential.
+_Avoid_: off-domain word, negative keyword, exclusion term, vertical
+
+**Software Qualifier**:
+A modifier that names the work as software — the thing a marker is weighed against. It earns
+in under a head that can carry engineering work, and loses to a discipline marker in the same
+title.
+_Avoid_: tech keyword, positive keyword, signal word
 
 **Ruling**:
 A verdict fixed for one phrase, overriding every other rule. Rulings are what the word lists
@@ -194,7 +211,9 @@ _Avoid_: uncovered, unhandled, missing, not found
 **Labeller**:
 What produces the ground truth a classification state is scored against: a session that reads
 titles and applies the criterion before it has read the rules the classifier runs on. Never
-part of the pipeline — it exists only inside an iteration.
+part of the pipeline — it exists only inside an iteration. It reads meaning in any language the
+title is written in, and it does not override the criterion on a family it finds unsatisfying:
+a disagreement with the criterion is a disagreement, not a label.
 _Avoid_: annotator, judge, oracle, reviewer
 
 **Iteration**:

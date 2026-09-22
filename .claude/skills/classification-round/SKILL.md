@@ -108,6 +108,27 @@ from `IN`, 500 from `OUT`, 400 from `UNKNOWN` — **excluding** every vacancy an
 fixture already holds. The `UNKNOWN` stratum carries a gate now, so it gets the rows: the
 `OUT` stratum error has been passing by a wide margin and has band to spare.
 
+## Iteration 8 carries a criterion revision
+
+The criterion was rewritten on 2026-09-22 (ADR-0010) while iteration 8's sample sat undrawn-on.
+Three things follow, for iteration 8 only:
+
+- **The markers are unclassed.** `TitleClassification` holds about 200 off-domain markers under
+  one rule the criterion has split in two. Do not sort all 200 by hand: a marker's class only
+  has consequences when a software qualifier is present in the same title, so measure which
+  markers ever co-occur with one, class those, price the result on the accumulated labels, and
+  leave the rest market by default.
+- **The rules being scored predate the criterion.** Score the three rates straight — no adjusted
+  figure, no asterisk — and report alongside how many of the errors are attributable to the
+  revision rather than to the rules, so iteration 9 does not re-solve what the revision already
+  answered.
+- **The older fixtures are partly superseded.** Each fixture in `src/test/resources/labels/`
+  carries a header note naming the families it labelled under rules the criterion no longer
+  holds. When pricing a candidate rule over the accumulated labels, those rows are evidence-free
+  — not costs. Never rewrite a label row.
+
+The twelve-session cap does not move for this.
+
 **Iteration 8 is the exception.** Its sample was drawn by iteration 7 under the old split, 600
 `OUT` / 300 `UNKNOWN` / 100 `IN`. Label it as handed and score the three rates on those stratum
 sizes — redrawing it would mean running the classifier over the corpus before labelling, which

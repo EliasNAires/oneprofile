@@ -5,6 +5,22 @@
 # the classifier was read. Never regenerated: a session is not reproducible, so these labels
 # are the artifact and not the process that made them.
 # id	cleaned_title	label	unknown_reason
+#
+# SUPERSEDED CONVENTIONS. This fixture was labelled before ADR-0010 and the criterion revision
+# of 2026-09-22. The rows are never rewritten — they are the artifact — but the families below
+# were labelled under rules the criterion no longer holds, so a session pricing a candidate rule
+# against the accumulated labels treats them as evidence-free rather than as costs:
+#
+#   - A title carrying both an off-domain marker and a software qualifier. The old step 4 let
+#     every marker beat the qualifier; a market marker no longer does.
+#   - A hardware-adjacent code role (fpga, asic, rtl, gnc, emulation, signal processing). Q2 and
+#     Q4 were unranked and three labellers split the family three ways; the discipline marker
+#     decides it now.
+#   - A domain-free head with a market modifier (Treasury Analyst, Management Analyst). Labellers
+#     resolved these on judgement; the criterion says they are unknown.
+#   - A post that hires nobody (talent community, general application, refer a friend). The Q1
+#     vacancy gate did not exist when this fixture was labelled.
+#
 87	Junk Removal and Sales In Training	OUT	
 374	Outside Sales Representative Roofing	OUT	
 590	Procurement Operations Manager Factor Europe all genders	OUT	
