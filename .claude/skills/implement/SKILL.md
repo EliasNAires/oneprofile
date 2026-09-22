@@ -36,23 +36,40 @@ not reproducible, so the labels are the artifact, not the process that made them
 **3. Score.** Now open the previous implementation and the prediction map in the handoff, and
 rejoin by id:
 
-- **miss rate** — of the `OUT` stratum, the share you labelled `IN`.
-- **false accept rate** — of the `IN` stratum, the share you labelled `OUT`.
-- **unknown share** — `UNKNOWN` as a share of the whole corpus, not of the sample. Report the
-  split by reason alongside, but the gate is the total.
+**A mistake is a row whose state differs from your label.** There are three states, so an `IN`
+you labelled `UNKNOWN` is as wrong as an `IN` you labelled `OUT`. Three rates:
 
-Also say what the `UNKNOWN` stratum turned out to be. It does not gate anything, but a pile
-that is mostly `IN` means recall is worse than the miss rate says.
+- **`OUT` stratum error** — the share you labelled `IN` or `UNKNOWN`.
+- **`IN` stratum error** — the share you labelled `OUT` or `UNKNOWN`.
+- **`UNKNOWN` stratum error** — the share you labelled `IN` or `OUT`. The unknown pile has to be
+  a pile you could not decide either, or the loop is classifying its own ambiguity.
 
-**4. Check the exit.** The loop is done when **two consecutive iterations** hold a miss rate
-at or below **2%**, a false accept rate at or below **10%**, and an unknown share that fell by
-less than **1 percentage point** from the iteration before. If this iteration is the second
-such, say so plainly and stop — the remaining work is only to close #10.
+Agreement is on **state only**: a reason that differs from yours is not a mistake, because the
+reason codes exist to tell #11 which question to ask. Report alongside, gated by nothing: the
+corpus's unknown share split by reason, the count of `OUT`-stratum rows you labelled `IN`, and
+the count of rows you left `UNKNOWN` that the classifier decided.
+
+**4. Check the exit.** The loop is done when one iteration holds **all three rates at or below
+10%** and `unruled` **at or below 4%** of the corpus. There is no streak to hold: the rates are
+levels, read once, and `unruled` is a corpus-wide census with no sampling error in it.
+
+**The loop also stops at twelve sessions**, whatever the numbers say. Seven are spent, so
+iteration 12 is the last. If the cap binds with the gate unmet, write the report, record the
+reason split, close #10, and hand the remaining unknown pile to #11 as its input; the open
+criterion questions carry over as notes on #11.
+
+Iterations 1–7 were scored under a narrower definition of a mistake and are not comparable to
+yours. Do not read a trend across iteration 8. Iteration 7 under the definition above is 7.33%,
+35.00% and 62.67%.
 
 **5. Change the rules.** The classifier lives in `src/main/java`, built test-first. Grow it
 from where your labels and its answers disagreed. Heads are where coverage comes from: a head
 generalises across every title that names it, and a ruling generalises across none, so reach
 for the head list first and the ruling table last.
+
+One change is forbidden outright: **a change that raises the count of `OUT`-stratum rows
+labelled `IN` is not accepted**, whatever else it buys. A vacancy decided `OUT` reaches neither
+#11's body pass nor a profile, so it is the one error nothing downstream recovers.
 
 Every rule obeys the cost limit in the criterion — whole words, case-insensitive, cleaned
 title only, no bodies, no network, full corpus pass under ten seconds. Beyond that the shape
@@ -66,8 +83,15 @@ classifier over the corpus snapshot (`scripts/restore-snapshot.sh` if it is not 
 Report the counts per state.
 
 **7. Draw the next sample and hand off.** 1000 rows at random from the new predictions — 100
-from `IN`, 600 from `OUT`, 300 from `UNKNOWN` — **excluding** every vacancy any previous
-fixture already holds. Fresh means fresh: growing the rules from an iteration's misses and
+from `IN`, 500 from `OUT`, 400 from `UNKNOWN` — **excluding** every vacancy any previous
+fixture already holds. The `UNKNOWN` stratum carries a gate now, so it gets the rows: the
+`OUT` stratum error has been passing by a wide margin and has band to spare.
+
+**Iteration 8 is the exception.** Its sample was drawn by iteration 7 under the old split, 600
+`OUT` / 300 `UNKNOWN` / 100 `IN`. Label it as handed and score the three rates on those stratum
+sizes — redrawing it would mean running the classifier over the corpus before labelling, which
+is exactly the ordering this skill exists to protect. The new split starts with the sample
+iteration 8 hands to iteration 9. Fresh means fresh: growing the rules from an iteration's misses and
 re-measuring on the same rows is training on the test set.
 
 Write one file, `docs/measurements/engineering-role-<date>.md`, holding: this iteration's

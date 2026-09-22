@@ -44,19 +44,18 @@ having it. A classifier that answers unknown to everything has no false accepts 
 and would satisfy any accuracy threshold. The cap was originally a fixed 10% of the corpus.
 ADR-0009 makes unknown the default, so the classifier now starts above half the corpus and a
 fixed number would gate nothing for many rounds; the cap is therefore restated as a direction.
-**The loop exits when the unknown share stops falling** — when it drops by less than a
-percentage point from the previous iteration — alongside a miss rate at or below 2% and a
-false accept rate at or below 10%, each held for two consecutive iterations.
+The cap is therefore on the unknown pile's **honesty** rather than on its size: the pile has to
+be a pile the labeller could not decide either. **The loop exits when all three per-stratum
+error rates are at or below 10%** — where a mistake is any row whose state differs from the
+labeller's — and the `unruled` share is at or below 4% of the corpus. See #10 for the numbers
+and the sample split; a twelve-session cap stops the loop whatever they say.
 
-The gate is the **total** unknown share, not the `unruled` share alone. The reasons still
-exist and are still reported, because they tell the next reader why a title landed where it
-did and they tell #11 which question to ask of the body; they are simply not what the exit is
-measured on. One number is what a person checks between sessions, and a fall in the total can
-only come from a fall in one of its parts.
+The reasons are still reported and are not gated, because they tell the next reader why a title
+landed where it did and they tell #11 which question to ask of the body. `unruled` is the one
+exception, because it is the only reason that is ours rather than the corpus's.
 
-Each iteration also labels a slice of the unknown pile — 300 of the 1000 drawn rows, the
-largest stratum after the rejected one. Not to gate on it, but because a pile that is mostly
-in means recall is worse than the miss rate reports, and nothing else would reveal that.
+Each iteration labels a slice of the unknown pile — 400 of the 1000 drawn rows, now the second
+largest stratum — and that slice is what the third rate is measured on.
 
 Downstream, three states means every consumer of classification chooses explicitly what to do
 with unknown, rather than inheriting a default. In this iteration the engineering subset is the
@@ -66,3 +65,19 @@ in state alone; unknown vacancies reach it only if #11 resolves them.
 
 The third reason code and the restated cap above were added when ADR-0009 made unknown the
 default. The three-state decision itself is unchanged.
+
+## Amended after iteration 7
+
+The exit above was originally a direction rather than a level: the unknown share had to fall by
+less than a percentage point, alongside a miss rate and a false accept rate held for two
+consecutive iterations. Seven iterations showed what that measured. Both quality rates passed
+from iteration 4 onwards, and the direction condition restarted four times — met either by
+converging or by declining to make changes the sample had already shown were right. It gated the
+loop's rate of change, not the classifier.
+
+Two further findings from the same seven iterations are behind the restatement. The unknown
+pile is 17% `domain_ambiguity` against 5.82% `unruled`, and `domain_ambiguity` is what #11 exists
+to resolve, so gating on the total asked the title stage to solve the next stage's problem. And
+the old definition of a mistake was one-directional per stratum, which left the classifier free
+to decide titles the labeller could not — a row the labeller left `UNKNOWN` and the classifier
+called `OUT` was counted by nothing.

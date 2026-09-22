@@ -203,21 +203,21 @@ The lists only ever grow through a decision, never at runtime.
 
 The classifier's error rate is measured on samples **stratified by what it predicted** and
 labelled by a Claude Code session applying the written criterion, before that session has read
-the rules the classifier runs on (ADR-0007). An iteration is 1000 labels: 600 drawn from what
-it called out, which measures how many it misses; 300 from the unknown pile, which measures how
-much recall is parked rather than lost; and 100 from what it called in, which measures how many
-it lets in wrongly. The rejected stratum is the largest because the miss rate is the number
-that matters, and 600 labels put its noise floor near ±1pp, which is what a 2% threshold needs
-to be measurable at all.
+the rules the classifier runs on (ADR-0007). An iteration is 1000 labels: 500 drawn from what
+it called out, 400 from the unknown pile, and 100 from what it called in. A mistake is any row
+whose state differs from the labeller's, in either direction, so each stratum yields one error
+rate. The unknown pile carries the largest share after the rejected one because its error rate
+is the gate that decides the exit: an unknown pile the labeller could have decided is recall
+parked rather than lost.
 
 This is a **loop**, not a gate, and **one session is one iteration**: label the sample the last
-session left, score the rules, change them, re-classify, draw the next sample. It exits when
-two consecutive iterations hold a miss rate at or below 2%, a false accept rate at or below
-10%, and an unknown share that fell by less than a percentage point. The discipline against
+session left, score the rules, change them, re-classify, draw the next sample. It exits when one
+iteration holds all three error rates at or below 10% and the `unruled` share at or below 4% of
+the corpus, and it stops unconditionally at twelve sessions. The discipline against
 over-declining is not decoration — without it a classifier that answers unknown to everything
-satisfies the other two thresholds on the first iteration — but it is a direction rather than a
-fixed cap, because ADR-0009 made unknown the default and a fixed 10% would gate nothing for
-many iterations.
+satisfies every accuracy threshold on the first iteration — and it is enforced by scoring the
+unknown pile itself rather than by capping its size, because ADR-0009 made unknown the default
+and a size cap would gate nothing for many iterations.
 
 The rules themselves are code and nobody signs off on them. `docs/engineering-role-criterion.md`
 is the prose the loop answers to; how the classifier satisfies it is the loop's business, bounded
@@ -453,9 +453,10 @@ These are consequences of the decisions above and belong in the plan, not in hin
 1. **Eligibility recall**, measured on a hand-labelled sample of ~200 remote engineering
    vacancies. It is the binding constraint on the product's output.
 2. **Classifier accuracy**, measured on 1000 labelled titles per iteration, drawn
-   stratified by what the classifier predicted — 100 in, 600 out, 300 unknown — and
-   re-measured on a fresh sample each time the rules change. Reported as miss rate, false
-   accept rate, and the unknown share of the corpus, split by reason alongside.
+   stratified by what the classifier predicted — 100 in, 500 out, 400 unknown — and
+   re-measured on a fresh sample each time the rules change. Reported as one error rate per
+   stratum, counting any state that differs from the label, and the unknown share of the
+   corpus split by reason alongside.
 3. **Title cleaning**, reported as the share of distinct titles each rule collapses, which
    is what decides whether a rule stays.
 4. **Normalizer regression**, by diffing against the pre-reset corpus.

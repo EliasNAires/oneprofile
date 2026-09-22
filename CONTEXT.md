@@ -187,8 +187,8 @@ _Avoid_: exception, override, special case, hardcoded verdict
 **Unruled**:
 The unknown reason meaning no rule reaches this title, as against the reasons that say the
 corpus itself is ambiguous. It measures the backlog rather than the world, so it is the one
-share expected to fall every iteration. The exit is gated on the total unknown share, of which
-this is the part that is ours to fix.
+share expected to fall every iteration, and the only unknown reason the exit is gated on: the
+rest of the unknown pile is the corpus's, and the body pass is what resolves it.
 _Avoid_: uncovered, unhandled, missing, not found
 
 **Labeller**:
