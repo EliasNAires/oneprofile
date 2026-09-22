@@ -120,14 +120,15 @@ public class TitleClassification {
 	 * names a function that no software domain turns into engineering work: there is no software
 	 * veterinarian and no software bartender.
 	 */
-	private static final Set<String> NEVER_ENGINEERING = Set.of("trainer", "assistant", "executive", "nurse",
-			"representative", "coordinator", "teacher", "driver", "veterinarian", "physician", "psychologist",
-			"psychiatrist", "pharmacist", "dentist", "surgeon", "therapist", "dietitian", "practitioner", "paramedic",
-			"midwife", "caregiver", "pathologist", "radiographer", "sonographer", "attorney", "paralegal", "counsel",
-			"counselor", "recruiter", "accountant", "bookkeeper", "auditor", "cashier", "clerk", "receptionist",
-			"secretary", "janitor", "housekeeper", "chef", "cook", "bartender", "barista", "waiter", "host", "stylist",
-			"barber", "esthetician", "merchandiser", "installer", "plumber", "mechanic", "welder", "machinist",
-			"carpenter", "painter", "roofer", "landscaper", "guard", "firefighter", "instructor", "tutor", "professor",
+	private static final Set<String> NEVER_ENGINEERING = Set.of(
+			"trainer", "assistant", "executive", "nurse", "representative", "coordinator", "teacher", "driver",
+			"veterinarian", "physician", "psychologist", "psychiatrist", "pharmacist", "dentist", "surgeon",
+			"therapist", "dietitian", "practitioner", "paramedic", "midwife", "caregiver", "pathologist",
+			"radiographer", "sonographer", "attorney", "paralegal", "counsel", "counselor", "recruiter",
+			"accountant", "bookkeeper", "auditor", "cashier", "clerk", "receptionist", "secretary", "janitor",
+			"housekeeper", "chef", "cook", "bartender", "barista", "waiter", "host", "stylist", "barber",
+			"esthetician", "merchandiser", "installer", "plumber", "mechanic", "welder", "machinist", "carpenter",
+			"painter", "roofer", "landscaper", "guard", "firefighter", "instructor", "tutor", "professor",
 			"librarian", "translator", "interpreter", "linguist", "editor", "artist", "animator", "illustrator",
 			"photographer", "videographer", "copywriter", "journalist", "salesperson", "seller", "ambassador",
 			"volunteer", "supervisor", "operator", "foreman", "superintendent", "dispatcher", "courier", "chaplain",
@@ -147,20 +148,23 @@ public class TitleClassification {
 			"oncologist", "cardiologist", "cardiologists", "aesthetician", "reporter", "educator", "merchant",
 			"advocate", "scheduler", "employee", "surveyor", "helper", "helpers", "caregivers",
 			// The Spanish, Portuguese, French, German and Dutch spellings of the same functions.
-			"aide", "agente", "auxiliar", "auxiliaire", "assistante", "medewerker", "berater", "vendedor", "vendedora",
-			"vendeur", "vendeuse", "operador", "operadora", "enfermero", "enfermera", "enfermeiro", "enfermeira",
-			"provider", "navigator", "banker", "attendant", "fabricator", "fitter", "physiologist", "optometrist",
-			"endocrinologist", "sorter", "mixer", "babysitter", "apprentice", "firefighters", "pathologists",
+			"aide", "agente", "auxiliar", "auxiliaire", "assistante", "medewerker", "berater", "vendedor",
+			"vendedora", "vendeur", "vendeuse", "operador", "operadora", "enfermero", "enfermera", "enfermeiro",
+			"enfermeira", "provider", "navigator", "banker", "attendant", "fabricator", "fitter", "physiologist",
+			"optometrist", "endocrinologist", "sorter", "mixer", "apprentice", "firefighters", "pathologists",
 			"personalberater", "verkoopmedewerker", "superviseur", "directeur", "ejecutivo", "executivo",
 			"produktionsleiter",
 			// The professions iteration 7's unruled pile named, and the officers a title writes as
 			// three letters. A chief of finance, marketing, people or operations is never an
 			// engineering role; the chiefs that are — the technology and information officers — are
 			// rulings, and a ruling runs first. gm says what the general manager ruling says.
-			"pediatrician", "physiatrist", "psychotherapists", "registrar", "crna", "dvm", "orthotist",
-			"hygienist", "sommelier", "polisher", "juicer", "usher", "concierge", "interpreters", "cleaner",
-			"negotiator", "trader", "evaluator", "grader", "scriptwriter", "interventionist", "rodman",
-			"sonographers", "cfo", "cmo", "chro", "coo", "sdr", "gm");
+			"pediatrician", "physiatrist", "psychotherapists", "registrar", "crna", "dvm", "orthotist", "hygienist",
+			"sommelier", "polisher", "juicer", "usher", "concierge", "interpreters", "cleaner", "negotiator",
+			"trader", "evaluator", "grader", "scriptwriter", "interventionist", "rodman", "sonographers", "cfo",
+			// The professions iteration 8's unruled pile named, one shape at a time.
+			"cmo", "chro", "coo", "sdr", "gm", "endodontist", "internist", "dietician", "nanny", "scribe",
+			"correspondent", "assessor", "keyholder", "runner", "shuttler", "orthodontist", "babysitter"
+		);
 
 	/**
 	 * A software domain. One of these under an engineering-capable head decides in, and it decides
@@ -170,69 +174,113 @@ public class TitleClassification {
 	 * head decided {@code Workplace Solutions Manager} in. The solutions roles that are engineering
 	 * roles are named by ruling instead.
 	 */
-	private static final Set<String> SOFTWARE_QUALIFIERS = Set.of("software", "backend", "back end", "frontend",
-			"front end", "fullstack", "full stack", "data", "platform", "devops", "sre", "site reliability", "security",
-			"mobile", "ios", "android", "cloud", "infrastructure", "qa", "quality assurance", "test", "automation",
-			"machine learning", "deep learning", "ml", "ai", "systems", "network", "web", "api", "embedded",
-			"application", "integration", "database", "firmware", "compiler", "robotics",
-			"it", "information technology", "computer", "computer science", "cybersecurity", "mlops", "java",
-			"python", "javascript", "typescript", "salesforce", "sap", "azure", "aws", "kubernetes", "linux",
-			"blockchain", "react", "sql", "saas", "algorithm", "algorithms", "middleware", "ux", "ui", "edi",
-			"identity access management", "technical", "llm", "nlp", "computer vision", "generative ai",
-			"informatics", "netsuite", "servicenow", "workday", "gameplay", "unreal", "quant", "quantitative",
-			"rendering", "graphics", "detection engineering", "exploit", "streaming",
-			"c++", "gis", "outsystems", "devsecops", "observability", "threat", "cyber",
-			"applications", "storage", "bi", "technology",
+	private static final Set<String> SOFTWARE_QUALIFIERS = Set.of(
+			"software", "backend", "back end", "frontend", "front end", "fullstack", "full stack", "data",
+			"platform", "devops", "sre", "site reliability", "security", "mobile", "ios", "android", "cloud",
+			"infrastructure", "qa", "quality assurance", "test", "automation", "machine learning", "deep learning",
+			"ml", "ai", "systems", "network", "web", "api", "embedded", "application", "integration", "database",
+			"firmware", "compiler", "robotics", "it", "information technology", "computer", "computer science",
+			"cybersecurity", "mlops", "java", "python", "javascript", "typescript", "salesforce", "sap", "azure",
+			"aws", "kubernetes", "linux", "blockchain", "react", "sql", "saas", "algorithm", "algorithms",
+			"middleware", "ux", "ui", "edi", "identity access management", "technical", "llm", "nlp",
+			"computer vision", "generative ai", "informatics", "netsuite", "servicenow", "workday", "gameplay",
+			"unreal", "quant", "quantitative", "rendering", "graphics", "detection engineering", "exploit",
+			"streaming", "c++", "gis", "outsystems", "devsecops", "observability", "threat", "cyber", "applications",
+			"storage", "bi", "technology",
 			// The software domains iteration 7's unknown pile named by their own word.
-			"incident response", "forensic", "dfir", "postgresql", "datapath", "model training");
+			// The software domains iteration 8's missed in rows named by their own word.
+			"incident response", "forensic", "dfir", "postgresql", "datapath", "model training", "rust", "django",
+			"rpa", "uipath", "snowflake", "power bi", "dmz", "vulnerability management", "isso", "agile", "helpdesk",
+			"help desk", "interoperability", "ddi", "golang", "kotlin", "scala", "ruby", "php", "rails", "angular",
+			"terraform", "ansible", "docker", "hadoop", "kafka", "tableau", "databricks"
+		);
 
 	/**
-	 * A function that exists identically outside software. Under a domain-bound head one of these
-	 * decides out and beats a software qualifier; under a domain-free head they do nothing, which is
-	 * why {@code audit analyst} and {@code payroll analyst} are not out.
+	 * A body of training a person is hired on. It names the candidate rather than the customer, so it
+	 * decides out under any head — domain-bound or domain-free — and it beats a software qualifier:
+	 * {@code mechanical software engineer} and {@code nurse analyst} are both out.
 	 * <p>
-	 * The commercial domains are here for the same reason the physical ones are: a manager of an
-	 * account, a territory or a hiring pipeline is not managing software. {@code sales} is among them
-	 * because the one title it would have decided wrongly, Sales Engineer, is a ruling — and a ruling
-	 * runs before step 4.
+	 * This is what settles the hardware-adjacent code roles. An FPGA or ASIC verification engineer
+	 * writes SystemVerilog, which is the criterion's Q2, and hires on a hardware credential, which
+	 * fails its Q4; the discipline the title names is what decides between them.
+	 * <p>
+	 * The test for membership is the credential: would a person need that training to be hired? This
+	 * list was split out of one undivided marker list in iteration 8, by measuring which markers ever
+	 * share a title with a software qualifier and classing those — a marker that never meets a
+	 * qualifier behaves identically in either class. {@code data center} is here for the facility it
+	 * names: the corpus's data-center titles are cabling foremen, electricians and repair technicians,
+	 * and the word {@code data} inside the phrase would otherwise read as a software qualifier.
 	 */
-	private static final Set<String> OFF_DOMAIN_MARKERS = Set.of("civil", "structural", "mechanical", "chemical",
-			"hvac", "plumbing", "electrician", "nurse", "nursing", "clinical", "patient", "pharmacy", "pharmaceutical",
-			"restaurant", "retail", "store", "cashier", "driver", "warehouse", "forklift", "construction", "teacher",
-			"tutor", "attorney", "legal", "paralegal", "accounting", "payroll", "audit", "tax", "janitor", "maintenance",
-			"facilities", "manufacturing", "welder", "machinist", "automotive", "aerospace", "petroleum", "mining",
-			"agriculture", "agricultural", "graphic", "marketing", "biomedical", "physical", "propulsion",
-			"avionics", "spacecraft", "launch", "satellite", "power systems", "data center", "controls", "electronics",
-			"plc", "turbomachinery", "combustion", "thermal", "hydraulic", "pneumatic", "cryogenic", "cryogenics",
-			"industrial", "materials", "sales", "account", "accounts", "customer success", "finance", "financial", "investor",
-			"commercial", "real estate", "insurance", "procurement", "supply chain", "logistics", "merchandising",
-			"property", "talent", "recruiting", "recruitment", "human resources", "veterinary", "dental", "fitness",
-			"hospitality", "culinary", "housekeeping", "events", "social media", "brand", "editorial",
-			"public relations", "hr", "behavioral", "vehicle", "solar", "sanitation", "laboratory",
-			"microbiology", "equipment", "weld", "welding", "hardware", "mep", "gas", "aviation", "energy", "grid",
-			"geotechnical", "telecommunications", "door", "cable", "semiconductor", "wafer", "rfic",
-			"silicon engineering", "laser", "space systems", "ew", "brakes", "steering", "fastener", "mechatronics",
-			"battery", "analog", "architectural", "compliance", "fashion", "wealth", "investment",
-			"business development", "renewals", "territory", "purchasing", "sourcing", "contracts", "licensing",
-			"community", "customer care", "customer experience",
-			"apparel", "emc", "rf", "partnerships", "channel", "channels", "pfas", "asset",
-			"client", "clients", "leasing", "outreach", "campaign", "banking", "escrow", "staffing",
-			"gear", "fluidic", "optomechanical", "roadway", "structures", "lunar", "nuclear", "mechanism",
-			"flight", "business operations", "regulatory", "inventory", "beauty", "transformation",
-			"transmission", "environmental", "transportation", "intake", "records", "print", "personal training",
-			"yard", "relationship", "tour", "paid search", "seo", "programmatic", "operational excellence",
-			"preconstruction", "medical", "mammography", "oncology", "pathology", "dialysis", "ward", "charity",
-			"coach",
-			// The domains iteration 7's domain-ambiguity pile named and no marker held. chef and
-			// veterinarian are here as domains rather than heads: as heads they were masked by the
-			// leadership and associate heads named before them, which is the cost iterations 5 and 6
-			// pinned, and as markers they decide those titles out without giving the mask its power.
-			"water", "low voltage", "private equity", "compensation", "benefits", "bookkeeping", "budget",
-			"government affairs", "demand generation", "chef", "kitchen", "hospice", "wellness",
-			"personal care", "kids", "farm", "shipping", "mine", "explosive", "gene", "immunology",
-			"chemistry", "photonics", "renovations", "interiors", "housing", "telesales", "esg", "underground",
-			"commissioning", "vfx", "speech", "case manager", "tiktok", "biometrics", "veterinarian",
-			"anesthesia");
+	private static final Set<String> DISCIPLINE_MARKERS = Set.of(
+			"civil", "structural", "structures", "mechanical", "mechatronics", "chemical", "chemistry", "materials",
+			"thermal", "hydraulic", "pneumatic", "cryogenic", "cryogenics", "combustion", "propulsion",
+			"turbomachinery", "aerospace", "avionics", "nuclear", "petroleum", "geotechnical", "roadway",
+			"preconstruction", "architectural", "mep", "low voltage", "hvac", "plumbing", "electrician",
+			"electronics", "analog", "rf", "rfic", "emc", "laser", "photonics", "optomechanical", "fluidic",
+			"semiconductor", "wafer", "silicon engineering", "plc", "controls", "hardware", "battery", "brakes",
+			"steering", "fastener", "mechanism", "ew", "biomedical", "mining", "mine", "agriculture", "agricultural",
+			"underground", "explosive", "data center", "welder", "weld", "welding", "machinist", "forklift",
+			"janitor", "sanitation", "housekeeping", "nurse", "nursing", "clinical", "patient", "pharmacy",
+			"pharmaceutical", "medical", "mammography", "oncology", "pathology", "dialysis", "ward", "anesthesia",
+			"dental", "veterinary", "veterinarian", "hospice", "speech", "case manager", "behavioral",
+			"personal care", "microbiology", "laboratory", "gene", "immunology", "biometrics", "attorney",
+			"paralegal", "teacher", "tutor", "chef", "culinary", "graphic", "vfx", "interiors", "renovations",
+			"power systems",
+			// The three words the split moved out of the market list once it was priced, and the four
+			// it had to write fresh: without them a pfas manager, a water systems specialist, a
+			// physical security engineer and a guidance navigation and control engineer all decided in
+			// on the qualifier standing next to the credential.
+			"pfas", "water", "physical", "gnc", "guidance navigation", "high pressure", "industrial automation",
+			// The credentials iteration 8's sample named. fpga, asic and rtl are the criterion's own
+			// worked example for the hardware-adjacent code roles and were on no list until now; counsel
+			// and dentist are here as credentials rather than only as heads, because associate and
+			// director are named before them and hide them, the same repayment iteration 7 made with
+			// chef and veterinarian.
+			"fpga", "asic", "rtl", "dft", "serdes", "signal integrity", "pcb", "electrical",
+			"airworthiness", "cfd", "cathode", "dfm", "energetics", "human factors", "formulation", "cqv", "aba",
+			"bioinformatics", "biomarkers", "ultrasound", "neurology", "radiology", "bacteriology", "autism",
+			"counsel", "dentist", "nanny", "scribe"
+		);
+
+	/**
+	 * Who the work is done for. Software is built for every market, so a market marker says nothing
+	 * about whether this role builds it: it decides out only under a domain-bound head with no
+	 * software qualifier, and under a domain-free head it settles nothing at all. {@code marketing
+	 * manager} is out, {@code marketing web developer} is not, and {@code audit analyst} is undecided.
+	 * <p>
+	 * A marker nobody has classed belongs here, because market is the class that cannot cause a miss:
+	 * the worst it does is leave a title undecided, and a vacancy decided out reaches neither the
+	 * description pass that reads bodies nor a profile.
+	 * <p>
+	 * The commercial domains are here for the reason the physical ones were: a manager of an account,
+	 * a territory or a hiring pipeline is not managing software. {@code sales} is among them because
+	 * the one title it would have decided wrongly, Sales Engineer, is a ruling — and a ruling runs
+	 * before step 4.
+	 */
+	private static final Set<String> MARKET_MARKERS = Set.of(
+			"account", "accounting", "accounts", "apparel", "asset", "audit", "automotive", "aviation", "banking",
+			"beauty", "benefits", "bookkeeping", "brand", "budget", "business development", "business operations",
+			"cable", "campaign", "cashier", "channel", "channels", "charity", "client", "clients", "coach",
+			"commercial", "commissioning", "community", "compensation", "compliance", "construction", "contracts",
+			"customer care", "customer experience", "customer success", "demand generation", "door", "driver",
+			"editorial", "energy", "environmental", "equipment", "escrow", "esg", "events", "facilities", "farm",
+			"fashion", "finance", "financial", "fitness", "flight", "gas", "gear", "government affairs", "grid",
+			"hospitality", "housing", "hr", "human resources", "industrial", "insurance", "intake", "inventory",
+			"investment", "investor", "kids", "kitchen", "launch", "leasing", "legal", "licensing", "logistics",
+			"lunar", "maintenance", "manufacturing", "marketing", "merchandising", "operational excellence",
+			"outreach", "paid search", "partnerships", "payroll", "personal training", "print", "private equity",
+			"procurement", "programmatic", "property", "public relations", "purchasing", "real estate", "records",
+			"recruiting", "recruitment", "regulatory", "relationship", "renewals", "restaurant", "retail", "sales",
+			"satellite", "seo", "shipping", "social media", "solar", "sourcing", "spacecraft", "space systems",
+			"staffing", "store", "supply chain", "talent", "tax", "telecommunications", "telesales", "territory",
+			"tiktok", "tour", "transformation", "transmission", "transportation", "vehicle", "warehouse", "wealth",
+			// The markets iteration 8's domain-ambiguity pile named.
+			"wellness", "yard", "advertising", "creative", "visuals", "giving", "collections", "people", "hrbp",
+			"fp&a", "federal affairs", "policy", "media relations", "royalties", "packaging", "footwear", "supplier",
+			"deal desk", "enablement", "alliances", "credit risk", "localization", "catalog", "pricing",
+			"fulfillment", "warranty", "residential", "site acquisition", "branch", "poker", "organizing",
+			"commerce", "treatment", "imagery", "inspection", "survey", "fundraising", "philanthropy"
+		);
 
 	/**
 	 * The answers the procedure must reproduce. A ruling is a decision about a phrase, so it changes
@@ -381,16 +429,23 @@ public class TitleClassification {
 			Map.entry("data warehouse", Classification.in()),
 			Map.entry("machine learning engineer", Classification.in()),
 			Map.entry("research opportunity", Classification.out()),
-			Map.entry("talent communities", Classification.out()));
+			Map.entry("talent communities", Classification.out()),
+			// The shapes iteration 8's sample wrote for the post that hires nobody: an interest
+			// register, a general interest page and the "don't see it here" banner.
+			Map.entry("register your interest", Classification.out()),
+			Map.entry("general interest", Classification.out()),
+			Map.entry("don t see", Classification.out()));
 
 	private static final int LONGEST_RULING = longest(RULINGS.keySet());
 
 	private static final int LONGEST_QUALIFIER = longest(SOFTWARE_QUALIFIERS);
 
-	private static final int LONGEST_MARKER = longest(OFF_DOMAIN_MARKERS);
+	private static final int LONGEST_DISCIPLINE_MARKER = longest(DISCIPLINE_MARKERS);
+
+	private static final int LONGEST_MARKET_MARKER = longest(MARKET_MARKERS);
 
 	/**
-	 * Decides what one cleaned title names, by the criterion's six steps in their order.
+	 * Decides what one cleaned title names, by the criterion's seven steps in their order.
 	 * @param cleanedTitle the title once cleaning has taken the noise out of it
 	 * @return what the title names, with the reason where it names too little to decide
 	 */
@@ -416,9 +471,9 @@ public class TitleClassification {
 		}
 		Head reading = HEADS.get(head);
 
-		// 4 — Under a domain-bound head the modifier decides, and an off-domain marker beats a
-		// software qualifier: "mechanical software engineer".
-		if (reading.domain() == Domain.BOUND && named(words, OFF_DOMAIN_MARKERS, LONGEST_MARKER) != null) {
+		// 4 — The credential beats everything the title says about the market, under any head:
+		// "mechanical software engineer" and "nurse analyst" are both out.
+		if (named(words, DISCIPLINE_MARKERS, LONGEST_DISCIPLINE_MARKER) != null) {
 			return Classification.out();
 		}
 
@@ -427,7 +482,12 @@ public class TitleClassification {
 			return Classification.in();
 		}
 
-		// 6 — The head is known and nothing settled the rest.
+		// 6 — With no qualifier to argue against, the market decides a bound head.
+		if (reading.domain() == Domain.BOUND && named(words, MARKET_MARKERS, LONGEST_MARKET_MARKER) != null) {
+			return Classification.out();
+		}
+
+		// 7 — The head is known and nothing settled the rest.
 		return reading.engineeringCapable() ? Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY) : unruled();
 	}
 

@@ -86,24 +86,50 @@ class TitleClassificationTest {
 		}
 
 		@Test
-		void anOffDomainMarkerBeatsASoftwareQualifierUnderADomainBoundHead() {
-			assertThat(classify("mechanical software engineer")).isEqualTo(Classification.out());
-		}
-
-		@Test
 		void readAnOffDomainMarkerThatIsSpeltAcrossMoreThanOneWord() {
 			assertThat(classify("power systems engineer")).isEqualTo(Classification.out());
 			assertThat(classify("data center site manager")).isEqualTo(Classification.out());
 		}
 
 		@Test
-		void anOffDomainMarkerDecidesNothingUnderADomainFreeHead() {
-			assertThat(classify("audit analyst")).isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+		void aSoftwareQualifierUnderAHeadThatCarriesNoEngineeringDecidesNothing() {
+			assertThat(classify("software writer")).isEqualTo(Classification.unknown(UnknownReason.UNRULED));
+		}
+
+	}
+
+	/**
+	 * The two marker classes of ADR-0010. They differ in exactly one place — what happens when the
+	 * title also names a software qualifier — and are identical everywhere else.
+	 */
+	@Nested
+	class MarkerClasses {
+
+		@Test
+		void aDisciplineMarkerBeatsASoftwareQualifier() {
+			assertThat(classify("mechanical software engineer")).isEqualTo(Classification.out());
 		}
 
 		@Test
-		void aSoftwareQualifierUnderAHeadThatCarriesNoEngineeringDecidesNothing() {
-			assertThat(classify("software writer")).isEqualTo(Classification.unknown(UnknownReason.UNRULED));
+		void aDisciplineMarkerDecidesOutUnderADomainFreeHeadToo() {
+			assertThat(classify("nurse analyst")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void aMarketMarkerDoesNotBeatASoftwareQualifier() {
+			// The market is who the work is done for, and software is built for every market.
+			assertThat(classify("marketing web developer")).isEqualTo(Classification.in());
+			assertThat(classify("staff data engineer accounting")).isEqualTo(Classification.in());
+		}
+
+		@Test
+		void aMarketMarkerDecidesOutUnderADomainBoundHeadWithNoQualifier() {
+			assertThat(classify("marketing manager")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void aMarketMarkerSettlesNothingUnderADomainFreeHead() {
+			assertThat(classify("audit analyst")).isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
 		}
 
 	}
@@ -418,17 +444,18 @@ class TitleClassificationTest {
 			assertThat(classify("director of aviation")).isEqualTo(Classification.out());
 			assertThat(classify("head of accounts payable")).isEqualTo(Classification.out());
 			assertThat(classify("vice president public relations business of health")).isEqualTo(Classification.out());
+			// Retail is the market this platform is built for, which ADR-0010 stopped reading as the
+			// domain the work is in: a director of software engineering is an engineering role.
 			assertThat(classify("director software engineering retail platform delivery elera"))
-				.isEqualTo(Classification.out());
+				.isEqualTo(Classification.in());
 			// The seniority still cannot swallow the engineer underneath it.
 			assertThat(classify("director of data engineering")).isEqualTo(Classification.in());
 			// What these heads cost, and what three iterations kept them off the list for: they are
 			// named before the head that would have decided the title, so they hide it. Iteration 7
-			// paid half of it back with a marker — the chef is a domain as well as a head — and the
-			// counsel is still hidden.
+			// paid half of it back with a marker — the chef is a domain as well as a head — and
+			// iteration 8 paid the rest, because the counsel names a credential too.
 			assertThat(classify("head chef")).isEqualTo(Classification.out());
-			assertThat(classify("director securities corporate counsel"))
-				.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+			assertThat(classify("director securities corporate counsel")).isEqualTo(Classification.out());
 		}
 
 		@Test
@@ -541,13 +568,17 @@ class TitleClassificationTest {
 			// list held yet.
 			assertThat(classify("rf test engineer staff")).isEqualTo(Classification.out());
 			assertThat(classify("emc test engineer")).isEqualTo(Classification.out());
-			assertThat(classify("quality assurance manager women s apparel qa import"))
-				.isEqualTo(Classification.out());
-			assertThat(classify("it asset manager")).isEqualTo(Classification.out());
-			assertThat(classify("partner manager channels uki security")).isEqualTo(Classification.out());
-			assertThat(classify("vice president client partnerships publisher cloud"))
-				.isEqualTo(Classification.out());
 			assertThat(classify("pfas technical manager")).isEqualTo(Classification.out());
+			// What ADR-0010 costs on this sample. Apparel, an IT asset, a channel, a client and a
+			// publisher all name who the work is done for, and a market marker no longer beats the
+			// qualifier standing next to it. The criterion decides these in now, and the revision
+			// rather than the rules is what changed them.
+			assertThat(classify("quality assurance manager women s apparel qa import"))
+				.isEqualTo(Classification.in());
+			assertThat(classify("it asset manager")).isEqualTo(Classification.in());
+			assertThat(classify("partner manager channels uki security")).isEqualTo(Classification.in());
+			assertThat(classify("vice president client partnerships publisher cloud"))
+				.isEqualTo(Classification.in());
 		}
 
 		@Test
@@ -754,7 +785,8 @@ class TitleClassificationTest {
 			// the title named was physical or financial and no marker held it.
 			assertThat(classify("water systems specialist")).isEqualTo(Classification.out());
 			assertThat(classify("ict infrastructure design engineer i low voltage")).isEqualTo(Classification.out());
-			assertThat(classify("head of graphics at private equity insights")).isEqualTo(Classification.out());
+			// Private equity is who the insights are for, so the graphics qualifier now carries it.
+			assertThat(classify("head of graphics at private equity insights")).isEqualTo(Classification.in());
 			// The post that hires nobody, in the shape this sample wrote it: a paid research study
 			// and a talent community in the plural.
 			assertThat(classify("it directors short term paid research opportunity itsm esm platforms canada"))
@@ -785,6 +817,89 @@ class TitleClassificationTest {
 			// The restaurant server and the server engineer are one word, so the word is not a head:
 			// 132 titles in this corpus name it and they split down the middle.
 			assertThat(classify("server engineer")).isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+		}
+
+	}
+
+	@Nested
+	class CoverageFromIterationEight {
+
+		@Test
+		void readsTheHardwareCredentialsTheCriterionNamesByName() {
+			// The criterion settles the hardware-adjacent code roles on the discipline the title
+			// names, and these are the words it names them with. None of them was on any list.
+			assertThat(classify("fpga verification engineer")).isEqualTo(Classification.out());
+			assertThat(classify("asic dft engineer silicon")).isEqualTo(Classification.out());
+			assertThat(classify("signal integrity engineer serdes satellites starlink"))
+				.isEqualTo(Classification.out());
+			assertThat(classify("supplier development engineer pcb starlink")).isEqualTo(Classification.out());
+			assertThat(classify("cathode design engineer")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void readsTheCredentialsTheUnknownPileNamedThatAreNotSoftwareAtAll() {
+			assertThat(classify("airworthiness engineer advanced effects")).isEqualTo(Classification.out());
+			assertThat(classify("human factors engineer")).isEqualTo(Classification.out());
+			assertThat(classify("cqv engineer new grad")).isEqualTo(Classification.out());
+			assertThat(classify("electrical project manager glomfjord norway")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void readsTheMarketsTheDomainAmbiguityPileNamed() {
+			assertThat(classify("director advertising analytics")).isEqualTo(Classification.out());
+			assertThat(classify("head of visuals")).isEqualTo(Classification.out());
+			assertThat(classify("director of growth giving")).isEqualTo(Classification.out());
+			assertThat(classify("lead footwear costing")).isEqualTo(Classification.out());
+			assertThat(classify("manager packaging artwork")).isEqualTo(Classification.out());
+			assertThat(classify("royalties manager")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void readsAMarketMarkerOnlyWhereNoQualifierArguesWithIt() {
+			// The same words, under the same heads, with a software qualifier standing next to them.
+			assertThat(classify("director advertising platform engineering")).isEqualTo(Classification.in());
+			assertThat(classify("manager packaging software")).isEqualTo(Classification.in());
+		}
+
+		@Test
+		void repaysTheAssociateHeadTheProfessionsItWasMasking() {
+			// "associate" is named before the profession that would have decided the title, the same
+			// mask iteration 7 paid back for the chef and the veterinarian.
+			assertThat(classify("associate general counsel transactions")).isEqualTo(Classification.out());
+			assertThat(classify("associate dentist full time")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void readsTheProfessionsTheUnruledPileNamed() {
+			assertThat(classify("part time nanny wheaton il")).isEqualTo(Classification.out());
+			assertThat(classify("medical scribe full benefits no weekends paid holidays"))
+				.isEqualTo(Classification.out());
+			assertThat(classify("veterinary internist")).isEqualTo(Classification.out());
+			assertThat(classify("registered dietician")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void readsThePostThatHiresNobodyInTheShapesThisSampleWroteIt() {
+			assertThat(classify("register your interest business management")).isEqualTo(Classification.out());
+			assertThat(classify("conga general interest")).isEqualTo(Classification.out());
+			assertThat(classify("don t see internships you are looking for")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void readsTheSoftwareDomainsTheMissedInRowsNamedByTheirOwnWord() {
+			assertThat(classify("rust engineer")).isEqualTo(Classification.in());
+			assertThat(classify("rpa uipath developer")).isEqualTo(Classification.in());
+			assertThat(classify("temporary helpdesk engineer")).isEqualTo(Classification.in());
+			assertThat(classify("architect perimeter dmz")).isEqualTo(Classification.in());
+			assertThat(classify("vulnerability management engineer")).isEqualTo(Classification.in());
+		}
+
+		@Test
+		void leavesSocToTheHardwareItAlsoNames() {
+			// A security operations centre and a system on a chip are the same three letters, and
+			// the corpus writes both, so the qualifier was dropped rather than kept.
+			assertThat(classify("engineer soc design verification"))
+				.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
 		}
 
 	}
