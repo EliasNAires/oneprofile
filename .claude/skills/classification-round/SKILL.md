@@ -1,5 +1,5 @@
 ---
-name: implement
+name: classification-round
 description: Run one iteration of the engineering-role classification loop — label the sample the last session left, score the classifier, change its rules, draw the next sample. Use when asked to run a classification round, measure the classifier, or advance issue #10.
 ---
 
