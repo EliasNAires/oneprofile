@@ -113,7 +113,29 @@ public class TitleClassification {
 			// A student posting is a vacancy and its modifier carries the domain, the way the
 			// intern's does. The German spelling is on the list because this corpus repeats it.
 			Map.entry("internship", BOUND_CAPABLE), Map.entry("externship", BOUND_CAPABLE),
-			Map.entry("extern", BOUND_CAPABLE), Map.entry("werkstudent", BOUND_CAPABLE));
+			Map.entry("extern", BOUND_CAPABLE), Map.entry("werkstudent", BOUND_CAPABLE),
+			// The heads iteration 9's unruled pile named. Half of them are the same functions in Spanish,
+			// Portuguese, French and German; the rest are the nouns a title uses where it names the
+			// function without naming the person doing it — an account management, a market data
+			// operations, a chief of staff. Every one is capable, because a head that masks the head
+			// behind it must not be the one that decides out: staff was left off for exactly that.
+			Map.entry("chargé", BOUND_CAPABLE),
+			Map.entry("chief", BOUND_CAPABLE), Map.entry("controller", BOUND_CAPABLE),
+			Map.entry("especialista", BOUND_CAPABLE),
+			Map.entry("estagiário", BOUND_CAPABLE), Map.entry("estágio", BOUND_CAPABLE),
+			Map.entry("gerente", BOUND_CAPABLE),
+			Map.entry("ingenieur", BOUND_CAPABLE), Map.entry("ingénieur", BOUND_CAPABLE),
+			Map.entry("leiter", BOUND_CAPABLE),
+			Map.entry("liaison", BOUND_CAPABLE), Map.entry("management", BOUND_CAPABLE),
+			Map.entry("member", BOUND_CAPABLE), Map.entry("mitarbeiter", BOUND_CAPABLE),
+			Map.entry("operations", BOUND_CAPABLE),
+			Map.entry("praktikant", BOUND_CAPABLE), Map.entry("praktikum", BOUND_CAPABLE),
+			Map.entry("produktmanager", BOUND_CAPABLE), Map.entry("responsable", BOUND_CAPABLE),
+			Map.entry("sachbearbeiter", BOUND_CAPABLE), Map.entry("specialiste", BOUND_CAPABLE),
+			Map.entry("spécialiste", BOUND_CAPABLE), Map.entry("stage", BOUND_CAPABLE),
+			Map.entry("stagiaire", BOUND_CAPABLE), Map.entry("support", BOUND_CAPABLE),
+			Map.entry("tech", BOUND_CAPABLE), Map.entry("techniker", BOUND_CAPABLE),
+			Map.entry("tester", BOUND_CAPABLE));
 
 	/**
 	 * The heads that decide out whatever modifies them, and so carry neither attribute. Each one
@@ -163,7 +185,14 @@ public class TitleClassification {
 			"trader", "evaluator", "grader", "scriptwriter", "interventionist", "rodman", "sonographers", "cfo",
 			// The professions iteration 8's unruled pile named, one shape at a time.
 			"cmo", "chro", "coo", "sdr", "gm", "endodontist", "internist", "dietician", "nanny", "scribe",
-			"correspondent", "assessor", "keyholder", "runner", "shuttler", "orthodontist", "babysitter"
+			"correspondent", "assessor", "keyholder", "runner", "shuttler", "orthodontist", "babysitter",
+			// The clinical grades and licences the unruled pile was largest in: an NHS band, an American
+			// nursing licence and the locum that staffs it. Sales is a function and not only a market —
+			// it was on the market list alone, which left a headless sales title unruled and read a sales
+			// title whose modifier named software as an engineering role. Sales Engineer is a ruling, and
+			// rulings run first. Técnico and coordenador follow the technician and the coordinator.
+			"actuary", "band", "cna", "coordenador", "coordinador", "locum", "lpn", "rn", "sales", "tecnico",
+			"teller", "técnico", "underwriter"
 		);
 
 	/**
@@ -192,7 +221,9 @@ public class TitleClassification {
 			"incident response", "forensic", "dfir", "postgresql", "datapath", "model training", "rust", "django",
 			"rpa", "uipath", "snowflake", "power bi", "dmz", "vulnerability management", "isso", "agile", "helpdesk",
 			"help desk", "interoperability", "ddi", "golang", "kotlin", "scala", "ruby", "php", "rails", "angular",
-			"terraform", "ansible", "docker", "hadoop", "kafka", "tableau", "databricks"
+			"terraform", "ansible", "docker", "hadoop", "kafka", "tableau", "databricks",
+			// The word the corpus writes for software when it is not writing English.
+			"informatica", "informatique", "logiciel"
 		);
 
 	/**
@@ -221,7 +252,7 @@ public class TitleClassification {
 			"steering", "fastener", "mechanism", "ew", "biomedical", "mining", "mine", "agriculture", "agricultural",
 			"underground", "explosive", "data center", "welder", "weld", "welding", "machinist", "forklift",
 			"janitor", "sanitation", "housekeeping", "nurse", "nursing", "clinical", "patient", "pharmacy",
-			"pharmaceutical", "medical", "mammography", "oncology", "pathology", "dialysis", "ward", "anesthesia",
+			"pharmaceutical", "medical", "mammography", "oncology", "pathology", "ward", "anesthesia",
 			"dental", "veterinary", "veterinarian", "hospice", "speech", "case manager", "behavioral",
 			"personal care", "microbiology", "laboratory", "gene", "immunology", "biometrics", "attorney",
 			"paralegal", "teacher", "tutor", "chef", "culinary", "graphic", "vfx", "interiors", "renovations",
@@ -239,7 +270,10 @@ public class TitleClassification {
 			"fpga", "asic", "rtl", "dft", "serdes", "signal integrity", "pcb", "electrical",
 			"airworthiness", "cfd", "cathode", "dfm", "energetics", "human factors", "formulation", "cqv", "aba",
 			"bioinformatics", "biomarkers", "ultrasound", "neurology", "radiology", "bacteriology", "autism",
-			"counsel", "dentist", "nanny", "scribe"
+			"counsel", "dentist", "nanny", "scribe",
+			// A dialysis role is certified clinical work, so the credential test the criterion writes
+			// puts it here and not on the market list: it decides out under a domain-free head too.
+			"dialysis"
 		);
 
 	/**
@@ -279,7 +313,17 @@ public class TitleClassification {
 			"fp&a", "federal affairs", "policy", "media relations", "royalties", "packaging", "footwear", "supplier",
 			"deal desk", "enablement", "alliances", "credit risk", "localization", "catalog", "pricing",
 			"fulfillment", "warranty", "residential", "site acquisition", "branch", "poker", "organizing",
-			"commerce", "treatment", "imagery", "inspection", "survey", "fundraising", "philanthropy"
+			"commerce", "treatment", "imagery", "inspection", "survey", "fundraising", "philanthropy",
+			// The markets iteration 9's domain-ambiguity pile named. The Spanish, Portuguese, French and
+			// German ones are here to decide the non-English heads on the head list: a head on its own only
+			// moves a row from unruled to domain ambiguity, so those heads are worth nothing until the
+			// markers land beside them.
+			"atención al cliente", "atendimento", "buchhaltung", "care", "compras", "contabilidad",
+			"contabilidade", "customer service", "customer support", "direct support", "einkauf",
+			"event", "health", "logistica", "logística", "loja",
+			"mantenimiento", "manutenção", "member experience", "production", "recursos humanos",
+			"salud", "segurança", "seguridad", "social", "strategy", "sécurité", "team member",
+			"vendas", "ventas", "ventes", "vertrieb"
 		);
 
 	/**

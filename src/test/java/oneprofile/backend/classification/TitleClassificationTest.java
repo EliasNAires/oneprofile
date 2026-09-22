@@ -905,6 +905,81 @@ class TitleClassificationTest {
 	}
 
 	@Nested
+	class CoverageFromIterationNine {
+
+		@Test
+		void readsTheMarketsThisSamplesDomainAmbiguityPileNamed() {
+			// Two thirds of the pile the classifier could not decide were titles whose modifier
+			// names who the work is for, and no marker held it. These are the words they used.
+			assertThat(classify("growth strategy manager")).isEqualTo(Classification.out());
+			assertThat(classify("event marketing associate")).isEqualTo(Classification.out());
+			assertThat(classify("social media specialist")).isEqualTo(Classification.out());
+			assertThat(classify("customer service team lead")).isEqualTo(Classification.out());
+			assertThat(classify("customer support manager")).isEqualTo(Classification.out());
+			assertThat(classify("population health director")).isEqualTo(Classification.out());
+			assertThat(classify("production supervisor meat")).isEqualTo(Classification.out());
+			assertThat(classify("bibibop team member huber heights")).isEqualTo(Classification.out());
+			// The market is read only where no qualifier argues with it, as it always was.
+			assertThat(classify("customer support software engineer")).isEqualTo(Classification.in());
+		}
+
+		@Test
+		void readsTheClinicalGradesTheUnruledPileWasMadeOf() {
+			// The NHS grade and the American nursing licences are the largest single families in
+			// the unruled pile, and the corpus holds no engineering role that names any of them.
+			assertThat(classify("band 6 echocardiographer leeds")).isEqualTo(Classification.out());
+			assertThat(classify("locum band 7 health psychology")).isEqualTo(Classification.out());
+			assertThat(classify("lpn charge nurse")).isEqualTo(Classification.out());
+			assertThat(classify("rn med surg nights")).isEqualTo(Classification.out());
+			assertThat(classify("cna skilled nursing")).isEqualTo(Classification.out());
+			assertThat(classify("commercial lines underwriter")).isEqualTo(Classification.out());
+			assertThat(classify("actuary pricing")).isEqualTo(Classification.out());
+			assertThat(classify("teller part time")).isEqualTo(Classification.out());
+			// Dialysis is a credential and not a market, so it decides out under the domain-free
+			// head too, where a market marker would have settled nothing.
+			assertThat(classify("dialysis program architect")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void readsTheHeadsTheCorpusWritesInOtherLanguages() {
+			// A head on its own only moves a row from unruled to domain ambiguity, so the heads
+			// land here beside the markers and the qualifiers that decide them.
+			assertThat(classify("gerente de growth marketing campinas sp")).isEqualTo(Classification.out());
+			assertThat(classify("especialista en ventas")).isEqualTo(Classification.out());
+			assertThat(classify("técnico de gestão ambiental presencial linhares es")).isEqualTo(Classification.out());
+			assertThat(classify("estágio em marketing digital")).isEqualTo(Classification.out());
+			assertThat(classify("praktikum marketing")).isEqualTo(Classification.out());
+			assertThat(classify("ingénieur logiciel")).isEqualTo(Classification.in());
+		}
+
+		@Test
+		void readsTheNounPhraseThatNamesAFunctionWithoutNamingARole() {
+			// Titles the corpus writes with no head at all — the function is a noun rather than
+			// the person doing it. They were unruled, which says a rule could reach them.
+			assertThat(classify("account management")).isEqualTo(Classification.out());
+			assertThat(classify("financial controller")).isEqualTo(Classification.out());
+			assertThat(classify("medical science liaison")).isEqualTo(Classification.out());
+			assertThat(classify("direct support professional dsp")).isEqualTo(Classification.out());
+			assertThat(classify("pharmacy tech")).isEqualTo(Classification.out());
+			// The same heads carry engineering work where the domain says so.
+			assertThat(classify("software tech lead")).isEqualTo(Classification.in());
+			assertThat(classify("salesforce tester")).isEqualTo(Classification.in());
+			assertThat(classify("member of technical staff")).isEqualTo(Classification.in());
+		}
+
+		@Test
+		void readsSalesAsTheFunctionItNamesRatherThanTheMarketItServes() {
+			// Sales was a market marker only, so a headless sales title was unruled and a sales
+			// title whose modifier named software was read as an engineering role. It is the
+			// function being hired for; Sales Engineer stays a ruling, and rulings run first.
+			assertThat(classify("institutional equity sales")).isEqualTo(Classification.out());
+			assertThat(classify("sales manager b2b saas")).isEqualTo(Classification.out());
+			assertThat(classify("sales engineer")).isEqualTo(Classification.unknown(UnknownReason.SCOPE_AMBIGUITY));
+		}
+
+	}
+
+	@Nested
 	class Matching {
 
 		@Test
