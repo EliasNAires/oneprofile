@@ -106,6 +106,12 @@ _Avoid_: normalized title, clean title, title slug
 The pass that gives every vacancy in the corpus a cleaned title. Runs before classification.
 _Avoid_: normalization, scrubbing, preprocessing, sanitizing
 
+**Cleaned Description**:
+A vacancy's description with what is decoration rather than text taken out — emoji,
+pictographs, drawn symbols — and its spacing made even. What the body pass reads, and what the
+labeller of the body pass reads (ADR-0012).
+_Avoid_: clean body, body text, stripped description
+
 **Normalized Title**:
 A cleaned title reduced further to its role-bearing words. Only engineering roles have one.
 _Avoid_: canonical title, title slug

@@ -21,6 +21,11 @@ public class CleaningConfiguration {
 	}
 
 	@Bean
+	DescriptionCleaning descriptionCleaning() {
+		return new DescriptionCleaning();
+	}
+
+	@Bean
 	CorpusCleaning corpusCleaning(TitleCleaning titleCleaning, Vacancies vacancies, NormalizedVacancies normalized) {
 		return new CorpusCleaning(titleCleaning, vacancies, normalized, BATCH);
 	}

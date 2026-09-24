@@ -23,4 +23,9 @@ class CleaningConfigurationTest {
 		});
 	}
 
+	@Test
+	void offersACleaningOfDescriptions() {
+		this.contextRunner.run((context) -> assertThat(context).hasSingleBean(DescriptionCleaning.class));
+	}
+
 }
