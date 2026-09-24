@@ -107,12 +107,18 @@ modifier that plainly names a market — `building`, `hotel`, `retail` — is a 
 title carrying nothing else falls to step 7.
 
 **Function words are neither.** `solutions`, `systems`, `sales`, `presales`, `application`,
-`technical support`, `customer`, `integration` and `production` say what kind of engineer the
-role is, not the domain it works in. Each is as common in industrial equipment as in software:
-`Production Engineer` is a plant title and an SRE title. So they are no marker and no software
-qualifier. A bare `Solutions Engineer` or `Systems Engineer` falls to step 7, and `Sales
-Engineer Data Security` is `IN` on `data security`. `sales` and `presales` yield to `engineer`,
-because a software background alone opens software sales engineering (Q4). Under `technician`,
+`technical support`, `customer`, `integration`, `production`, `infrastructure`, `storage`,
+`technology` and `quality assurance` say what kind of engineer the role is, not the domain it
+works in. Each is as common in industrial equipment as in software: `Production Engineer` is a
+plant title and an SRE title, and `Infrastructure Engineer` is a civil title and a cloud one. So
+they are no marker and no software qualifier. A bare `Solutions Engineer`, `Systems Engineer` or
+`Infrastructure Engineer` falls to step 7, and `Sales Engineer Data Security` is `IN` on `data
+security`. `sales`, `presales` and `solutions` yield to `engineer`, because a software background
+alone opens software sales engineering (Q4), and a market word beside them names the customer
+segment rather than deciding `OUT`: `Event Solutions Engineer` is `domain_ambiguity`. Under the
+generic heads of the managers ruling, `technology` stays a technology noun (`Technology Strategy
+Consultant`). Algorithm development is writing code (Q2), whatever the algorithms serve, so it is
+a software qualifier: `Systems Engineer Algorithm Development` is `IN`. Under `technician`,
 `production`, `service` and `QA/QC` name trade work, which is a credential, so `Production
 Technician` is OUT.
 
@@ -259,9 +265,37 @@ manager of data science is `IN` too. A `data analyst` or `business systems analy
 `scope_ambiguity`, because some write queries and specs and some build slides. It is `IN` when
 the title names an engineer-facing artifact (Q3), such as a data warehouse, an API or ETL.
 
+A `data analyst` ruling reads analyst titles only: a title whose head is `engineer` with a
+software word, such as `Software Engineer Data Analyst`, is `IN`.
+
 **Network roles.** A network engineer is `IN`, because configurations, logs and protocol specs
 are engineer-facing artifacts (Q3). A network or NOC technician is `scope_ambiguity`, because
 first-line monitoring splits the way help desk does.
+
+**Field and service engineers.** A bare field engineer is `scope_ambiguity`. A software qualifier
+makes it `IN` (`Telco Cloud Field Engineer`), as under any `engineer`, and a discipline marker
+decides it `OUT` (`Electrical Field Engineer`, `OSP Field Engineer`). A bare `Service Engineer` is
+`domain_ambiguity`; a shift pattern beside it is not a credential.
+
+**Security governance.** A governance, risk or compliance role over a security word
+(`Cybersecurity Governance Analyst`) is `scope_ambiguity`, like `Security Advisor`: some read
+configurations and logs (Q3), some write policy.
+
+**Strategists and educators over a software word** (`Deployment Strategist`, `OxCaml Educator`)
+are `scope_ambiguity`: a software background alone may open them (Q4), or they may need a
+consulting or teaching record.
+
+**Research scientists** are `IN` with a machine-learning or AI word, because code is their
+primary artifact (Q2). In this corpus `frontier` names frontier AI models: `Research Scientist
+Frontier Benchmarks` and `Research Intern Frontier Agents` are `IN`.
+
+**Postdocs.** `postdoctoral` and `postdoc` are student forms: a bare `Postdoctoral Associate` is
+`domain_ambiguity`, and with a modifier and no software word the title is `OUT`.
+
+**Building and finance professions.** `project architect` and `estimator` name building and
+construction credentials, so they are discipline markers: `Project Architect Healthcare` and
+`Project Manager Estimator Sales` are `OUT`. `controller` is a never-engineering head, the
+financial controller; the controls engineer is spelled `controls`.
 
 **Designers.** UX, UI, visual and product designers are `OUT`. A designer writes no code (Q2),
 authors the surface instead of working on engineer-facing artifacts (Q3), and is hired on a

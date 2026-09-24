@@ -143,7 +143,7 @@ class TitleClassificationTest {
 			assertThat(classify("product manager platform engineering")).isEqualTo(scopeAmbiguity());
 			assertThat(classify("program manager")).isEqualTo(scopeAmbiguity());
 			assertThat(classify("project manager data centers")).isEqualTo(scopeAmbiguity());
-			assertThat(classify("product manager construction")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("product manager construction")).isEqualTo(Classification.out());
 		}
 
 		@Test
@@ -184,7 +184,7 @@ class TitleClassificationTest {
 			assertThat(classify("software engineering manager")).isEqualTo(Classification.in());
 			assertThat(classify("manager backend engineering")).isEqualTo(Classification.in());
 			assertThat(classify("sre manager")).isEqualTo(Classification.in());
-			assertThat(classify("technical lead")).isEqualTo(Classification.in());
+			assertThat(classify("technical lead")).isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
 		}
 
 		@Test
@@ -295,7 +295,7 @@ class TitleClassificationTest {
 		@Test
 		void stillReadsSalesEngineerAsTheRulingAndNotAsASalesDomain() {
 			assertThat(classify("associate sales engineer se desk southeast"))
-				.isEqualTo(Classification.unknown(UnknownReason.SCOPE_AMBIGUITY));
+				.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
 		}
 
 		@Test
@@ -337,8 +337,8 @@ class TitleClassificationTest {
 
 		@Test
 		void readsSolutionsAsASoftwareDomainOnlyWhereARulingSaysSo() {
-			assertThat(classify("partner solutions engineer latam")).isEqualTo(Classification.in());
-			assertThat(classify("solutions engineering lead healthcare life sciences")).isEqualTo(Classification.in());
+			assertThat(classify("partner solutions engineer latam")).isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+			assertThat(classify("solutions engineering lead healthcare life sciences")).isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
 			// Iteration 10 decides this one OUT: manager is a generic rank head, workplace is a
 			// modifier and no software qualifier argues back.
 			assertThat(classify("workplace solutions manager")).isEqualTo(Classification.out());
@@ -360,8 +360,8 @@ class TitleClassificationTest {
 
 		@Test
 		void readsTheEngineerWhoCarriesACustomerRelationshipAsAnEngineer() {
-			assertThat(classify("technical account manager azure")).isEqualTo(Classification.in());
-			assertThat(classify("manager technical account management")).isEqualTo(Classification.in());
+			assertThat(classify("technical account manager azure")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("manager technical account management")).isEqualTo(scopeAmbiguity());
 			assertThat(classify("customer success engineer robotics software and automation"))
 				.isEqualTo(Classification.in());
 		}
@@ -570,7 +570,7 @@ class TitleClassificationTest {
 		@Test
 		void readsThePreSalesEngineerTheWayItAlreadyReadsTheSalesEngineer() {
 			assertThat(classify("pre sales systems engineer higher education mid atlantic"))
-				.isEqualTo(Classification.unknown(UnknownReason.SCOPE_AMBIGUITY));
+				.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
 		}
 
 		@Test
@@ -668,9 +668,9 @@ class TitleClassificationTest {
 			assertThat(classify("quality assurance manager women s apparel qa import"))
 				.isEqualTo(Classification.out());
 			assertThat(classify("it asset manager")).isEqualTo(scopeAmbiguity());
-			assertThat(classify("partner manager channels uki security")).isEqualTo(Classification.in());
+			assertThat(classify("partner manager channels uki security")).isEqualTo(Classification.out());
 			assertThat(classify("vice president client partnerships publisher cloud"))
-				.isEqualTo(Classification.in());
+				.isEqualTo(Classification.out());
 		}
 
 		@Test
@@ -775,8 +775,8 @@ class TitleClassificationTest {
 			assertThat(classify("devsecops engineer ii")).isEqualTo(Classification.in());
 			assertThat(classify("manager monitoring observability")).isEqualTo(Classification.in());
 			assertThat(classify("staff threat attack research engineer")).isEqualTo(Classification.in());
-			assertThat(classify("consultant manager cyber")).isEqualTo(Classification.in());
-			assertThat(classify("business applications manager")).isEqualTo(Classification.in());
+			assertThat(classify("consultant manager cyber")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("business applications manager")).isEqualTo(scopeAmbiguity());
 			assertThat(classify("engineering director storage")).isEqualTo(Classification.in());
 			assertThat(classify("manager bi analytics engineer")).isEqualTo(Classification.in());
 			assertThat(classify("managing director of technology chicago")).isEqualTo(scopeAmbiguity());
@@ -939,7 +939,7 @@ class TitleClassificationTest {
 
 		@Test
 		void readsTheMarketsTheDomainAmbiguityPileNamed() {
-			assertThat(classify("director advertising analytics")).isEqualTo(Classification.out());
+			assertThat(classify("director advertising analytics")).isEqualTo(scopeAmbiguity());
 			assertThat(classify("head of visuals")).isEqualTo(Classification.out());
 			assertThat(classify("director of growth giving")).isEqualTo(Classification.out());
 			assertThat(classify("lead footwear costing")).isEqualTo(Classification.out());
@@ -1067,7 +1067,7 @@ class TitleClassificationTest {
 			// function being hired for; Sales Engineer stays a ruling, and rulings run first.
 			assertThat(classify("institutional equity sales")).isEqualTo(Classification.out());
 			assertThat(classify("sales manager b2b saas")).isEqualTo(Classification.out());
-			assertThat(classify("sales engineer")).isEqualTo(Classification.unknown(UnknownReason.SCOPE_AMBIGUITY));
+			assertThat(classify("sales engineer")).isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
 		}
 
 	}
@@ -1226,6 +1226,114 @@ class TitleClassificationTest {
 	}
 
 	@Nested
+	class CoverageFromRoundFifteen {
+
+		@Test
+		void aFunctionWordIsNeitherAMarkerNorAQualifier() {
+			assertThat(classify("solutions engineer")).isEqualTo(domainAmbiguity());
+			assertThat(classify("systems engineer")).isEqualTo(domainAmbiguity());
+			assertThat(classify("customer engineer")).isEqualTo(domainAmbiguity());
+			assertThat(classify("production engineer")).isEqualTo(domainAmbiguity());
+			assertThat(classify("solutions consultant")).isEqualTo(domainAmbiguity());
+			assertThat(classify("sales engineer data security")).isEqualTo(Classification.in());
+		}
+
+		@Test
+		void salesYieldsToAnEngineerAndDecidesNothingUnderAnAnalyst() {
+			assertThat(classify("sales engineer")).isEqualTo(domainAmbiguity());
+			assertThat(classify("presales engineer")).isEqualTo(domainAmbiguity());
+			assertThat(classify("sales operations analyst commissions")).isEqualTo(domainAmbiguity());
+			assertThat(classify("sales manager")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void technicalReadsAsEngineering() {
+			assertThat(classify("technical lead")).isEqualTo(domainAmbiguity());
+			assertThat(classify("technical lead java")).isEqualTo(Classification.in());
+			assertThat(classify("technical account manager")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("technical services manager")).isEqualTo(scopeAmbiguity());
+		}
+
+		@Test
+		void aRankWordIsNotAModifier() {
+			assertThat(classify("team lead")).isEqualTo(domainAmbiguity());
+			assertThat(classify("senior manager")).isEqualTo(domainAmbiguity());
+			assertThat(classify("assistant general manager")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void theStudentFormsAreGenericHeads() {
+			assertThat(classify("student ceo sceo northeastern university")).isEqualTo(Classification.out());
+			assertThat(classify("marketing intern")).isEqualTo(Classification.out());
+			assertThat(classify("software engineering intern")).isEqualTo(Classification.in());
+		}
+
+		@Test
+		void theDisciplineMarkersRoundFourteenMissed() {
+			assertThat(classify("technical lead high voltage and fault handling")).isEqualTo(Classification.out());
+			assertThat(classify("digital ic design engineer")).isEqualTo(Classification.out());
+			assertThat(classify("nx cad support engineer")).isEqualTo(Classification.out());
+			assertThat(classify("aerodynamics analyst")).isEqualTo(Classification.out());
+			assertThat(classify("naval architect")).isEqualTo(Classification.out());
+			assertThat(classify("fire engineer")).isEqualTo(Classification.out());
+			assertThat(classify("scientist i in vitro pharmacology")).isEqualTo(Classification.out());
+			assertThat(classify("associate director drug product")).isEqualTo(Classification.out());
+			assertThat(classify("construction project manager")).isEqualTo(Classification.out());
+			assertThat(classify("project manager midstream oil and gas")).isEqualTo(Classification.out());
+			assertThat(classify("material flow engineer")).isEqualTo(Classification.out());
+			assertThat(classify("cpu architect")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void theSoftwareQualifiersRoundFourteenMissed() {
+			assertThat(classify("detection engineer")).isEqualTo(Classification.in());
+			assertThat(classify("cryptography engineer")).isEqualTo(Classification.in());
+			assertThat(classify("appian developer")).isEqualTo(Classification.in());
+			assertThat(classify("kdb developer")).isEqualTo(Classification.in());
+			assertThat(classify("windows engineer")).isEqualTo(Classification.in());
+			assertThat(classify("staff developer experience engineer")).isEqualTo(Classification.in());
+			assertThat(classify("devrel engineer")).isEqualTo(Classification.in());
+			assertThat(classify("game development engineer")).isEqualTo(Classification.in());
+			assertThat(classify("voip engineer iv")).isEqualTo(Classification.in());
+			assertThat(classify("a.i engineering intern")).isEqualTo(Classification.in());
+			assertThat(classify("ia engineer specialist")).isEqualTo(Classification.in());
+		}
+
+		@Test
+		void aHeadMisreadByRoundFourteen() {
+			assertThat(classify("specialist account executive secops commercial il oh co")).isEqualTo(Classification.out());
+			assertThat(classify("strategic partnerships manager ai api")).isEqualTo(Classification.out());
+			assertThat(classify("isv technical alliance manager")).isEqualTo(Classification.out());
+			assertThat(classify("lead security officer")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void aTechnologyNounUnderAnyGenericHeadIsOpenOnItsExpertise() {
+			assertThat(classify("director enterprise applications")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("hris manager")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("director ai")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("it support")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("security advisor")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("director applied ai")).isEqualTo(Classification.in());
+		}
+
+		@Test
+		void productProgramAndProjectRolesUnderAnyRankWord() {
+			assertThat(classify("project lead")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("project director")).isEqualTo(scopeAmbiguity());
+		}
+
+		@Test
+		void dataScienceIsInAndADataAnalystIsOpen() {
+			assertThat(classify("director data science")).isEqualTo(Classification.in());
+			assertThat(classify("data product analyst corporate")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("network technician")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("training content developer")).isEqualTo(Classification.out());
+		}
+
+	}
+
+	@Nested
 	class CoverageFromRoundFourteen {
 
 		@Test
@@ -1238,9 +1346,8 @@ class TitleClassificationTest {
 		}
 
 		@Test
-		void anInternWithNoSoftwareWordStaysOpen() {
-			assertThat(classify("research intern frontier agents winter 2027"))
-				.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+		void aResearchInternIsRecoveredByItsSoftwareWords() {
+			assertThat(classify("research intern frontier agents winter 2027")).isEqualTo(Classification.in());
 		}
 
 		@Test
@@ -1268,8 +1375,8 @@ class TitleClassificationTest {
 		@Test
 		void aSupportEngineerIsReadByItsQualifierLikeAnyEngineer() {
 			assertThat(classify("it support engineer")).isEqualTo(Classification.in());
-			assertThat(classify("application support engineer")).isEqualTo(Classification.in());
-			assertThat(classify("production support engineer")).isEqualTo(Classification.in());
+			assertThat(classify("application support engineer")).isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+			assertThat(classify("production support engineer")).isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
 			assertThat(classify("support engineer"))
 				.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
 		}
@@ -1309,6 +1416,10 @@ class TitleClassificationTest {
 
 	private Classification classify(String cleanedTitle) {
 		return this.classification.classify(cleanedTitle);
+	}
+
+	private static Classification domainAmbiguity() {
+		return Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY);
 	}
 
 	private static Classification scopeAmbiguity() {

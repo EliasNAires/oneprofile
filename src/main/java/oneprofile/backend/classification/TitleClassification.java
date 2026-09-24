@@ -170,7 +170,9 @@ public class TitleClassification {
 			// either. The intern and the graduate are left off: a research intern names no software word
 			// and is an engineering post as often as not.
 			"lead", "specialist", "specialists", "especialista", "specialiste", "spécialiste",
-			"administrator", "consultor", "consultora", "svp", "rvp", "assessoria", "매니저", "담당자");
+			"administrator", "consultor", "consultora", "svp", "rvp", "assessoria", "매니저", "담당자",
+			// Round 15: the student forms name a stage of a career, not work.
+			"intern", "interns", "internship", "extern", "externship", "werkstudent", "praktikant", "stagiaire", "estagiário", "graduate", "graduates", "grad", "trainee", "trainees", "student", "students");
 
 	/**
 	 * Words that hold a generic head open rather than letting the rule above decide it. The
@@ -391,7 +393,7 @@ public class TitleClassification {
 			// Round 14: software domains round 13 read as nothing.
 			"etl", "mainframe", "plm", "backup", "server side",
 			"system administrator", "systems administrator", "service desk", "website", "webpage", "wordpress",
-			"ict", "soc lead", "soc analyst", "soc analysts", "calypso", "tech delivery", "production support", "technical lead", "technical leads",
+			"ict", "soc lead", "soc analyst", "soc analysts", "calypso", "tech delivery",
 			"graph",
 			"devex",
 			"malware",
@@ -409,19 +411,18 @@ public class TitleClassification {
 			"software", "backend", "back end", "frontend", "front end", "fullstack", "full stack", "data",
 			"platform", "devops", "sre", "site reliability", "security", "mobile", "ios", "android", "cloud",
 			"infrastructure", "automation", "machine learning", "deep learning",
-			"ml", "ai", "systems", "network", "web", "api", "embedded", "application",
-			"integration", "database",
+			"ml", "ai", "network", "web", "api", "embedded", "database",
 			"firmware", "compiler", "robotics", "it", "information technology", "computer",
 			"computer science",
 			"cybersecurity", "mlops", "java", "python", "javascript", "typescript", "salesforce",
 			"sap", "azure",
 			"aws", "kubernetes", "linux", "blockchain", "react", "sql", "saas", "algorithm", "algorithms",
-			"middleware", "ux", "ui", "edi", "identity access management", "technical", "llm", "nlp",
+			"middleware", "ux", "ui", "edi", "identity access management", "llm", "nlp",
 			"computer vision", "generative ai", "informatics", "netsuite", "servicenow", "workday",
 			"gameplay",
 			"unreal", "quant", "quantitative", "rendering", "graphics", "detection engineering", "exploit",
 			"streaming", "c++", "gis", "outsystems", "devsecops", "observability", "threat",
-			"cyber", "applications",
+			"cyber",
 			"storage", "bi", "technology",
 			// The software domains iteration 7's unknown pile named by their own word.
 			// The software domains iteration 8's missed in rows named by their own word.
@@ -443,8 +444,13 @@ public class TitleClassification {
 			// markers and decide "Tech Lead ASIC Design Engineer" in; as qualifiers step 4 still reads the
 			// ASIC first. Bare "Tech Lead" was out on the generic-head rule, which read "lead" as a
 			// modifier of "tech".
-			"tech lead", "analytics engineer", "analytics engineering"
-		);
+			"tech lead", "analytics engineer", "analytics engineering",
+			// Round 15: the security, package, tooling and domain words round 14 missed, and the technology nouns the
+			// revised criterion names. The function words left the list: they say what kind of engineer, not
+			// the domain.
+			"detection", "dlp", "cryptography", "corpsec", "appian", "oracle fusion", "m365", "wms", "kdb", "windows", "aem", "dev tooling", "cli", "developer experience", "devrel", "game development", "voip", "a.i", "ia", "enterprise applications", "hris", "analytics", "digital transformation", "data science", "applied ai", "sw", "oracle", "oracle ebs", "coupa", "wem",
+			"business applications", "business application", "enterprise application", "anaplan",
+			"frontier agents", "model shaping");
 
 	/**
 	 * A body of training a person is hired on. It names the candidate rather than the customer, so it
@@ -524,8 +530,10 @@ public class TitleClassification {
 			"counsel", "dentist", "nanny", "scribe",
 			// A dialysis role is certified clinical work, so the credential test the criterion writes
 			// puts it here and not on the market list: it decides out under a domain-free head too.
-			"dialysis"
-		);
+			"dialysis",
+			// Round 15: the credentials round 14 missed, and the construction, oil and gas, permitting and
+			// processor-architecture families the revised criterion names.
+			"high voltage", "ic design", "board design", "mechanisms", "cad", "cnc", "composites", "aerodynamics", "propellant", "mission design", "payload", "naval", "reactor", "fire engineer", "fire engineering", "fire safety", "vdc", "environmental", "land surveyor", "surveying", "antibody", "pharmacology", "in vitro", "drug substance", "drug product", "msat", "technical accounting", "construction", "commissioning", "oil and gas", "midstream", "permitting", "cpu", "npu");
 
 	/**
 	 * Who the work is done for. Software is built for every market, so a market marker says nothing
@@ -568,10 +576,9 @@ public class TitleClassification {
 			"beauty", "benefits", "bookkeeping", "brand", "budget", "business development",
 			"business operations",
 			"cable", "campaign", "cashier", "channel", "channels", "charity", "client", "clients", "coach",
-			"commercial", "commissioning", "community", "compensation", "compliance",
-			"construction", "contracts",
+			"commercial", "community", "compensation", "compliance", "contracts",
 			"customer care", "customer experience", "customer success", "demand generation", "door", "driver",
-			"editorial", "energy", "environmental", "equipment", "escrow", "esg", "events",
+			"editorial", "energy", "equipment", "escrow", "esg", "events",
 			"facilities", "farm",
 			"fashion", "finance", "financial", "fitness", "flight", "gas", "gear",
 			"government affairs", "grid",
@@ -585,7 +592,7 @@ public class TitleClassification {
 			"procurement", "programmatic", "property", "public relations", "purchasing",
 			"real estate", "records",
 			"recruiting", "recruitment", "regulatory", "relationship", "renewals", "restaurant",
-			"retail", "sales",
+			"retail",
 			"satellite", "seo", "shipping", "social media", "solar", "sourcing", "spacecraft",
 			"space systems",
 			"staffing", "store", "supply chain", "talent", "tax", "telecommunications",
@@ -607,10 +614,11 @@ public class TitleClassification {
 			"atención al cliente", "atendimento", "buchhaltung", "care", "compras", "contabilidad",
 			"contabilidade", "customer service", "customer support", "direct support", "einkauf",
 			"event", "health", "logistica", "logística", "loja",
-			"mantenimiento", "manutenção", "member experience", "production", "recursos humanos",
+			"mantenimiento", "manutenção", "member experience", "recursos humanos",
 			"salud", "segurança", "seguridad", "social", "strategy", "sécurité", "team member",
-			"vendas", "ventas", "ventes", "vertrieb"
-		);
+			"vendas", "ventas", "ventes", "vertrieb",
+			// Round 15: logistics spelled as material flow, and the alliance manager.
+			"material flow", "alliance", "sales");
 
 	/**
 	 * The answers the procedure must reproduce. A ruling is a decision about a phrase, so it changes
@@ -627,9 +635,6 @@ public class TitleClassification {
 			Map.entry("qa analyst", Classification.in()), Map.entry("test analyst", Classification.in()),
 			
 			Map.entry("product owner", Classification.in()),
-			Map.entry("solutions consultant", Classification.in()),
-			Map.entry("solutions engineer", Classification.in()),
-			Map.entry("solutions engineering", Classification.in()),
 			Map.entry("forward deployed engineer", Classification.in()),
 			Map.entry("forward deployed engineering", Classification.in()),
 			Map.entry("forward deployment engineer", Classification.in()),
@@ -641,7 +646,6 @@ public class TitleClassification {
 			Map.entry("mechanical engineer", Classification.out()),
 			Map.entry("electrical engineer", Classification.out()),
 			Map.entry("solutions architect", Classification.in()),
-			Map.entry("sales engineer", scopeAmbiguity()),
 			Map.entry("data analyst", scopeAmbiguity()),
 			Map.entry("business analyst", scopeAmbiguity()),
 			Map.entry("civil engineer", Classification.out()),
@@ -656,15 +660,13 @@ public class TitleClassification {
 			Map.entry("implementation engineer", Classification.in()),
 			Map.entry("game designer", Classification.out()),
 			Map.entry("game programmer", Classification.in()),
-			Map.entry("solution engineer", Classification.in()),
-			Map.entry("customer engineer", Classification.in()),
 			// The one ruling that holds a rule together rather than recording a judgement about a
 			// phrase: step 4 sends it to out, and a manufacturing system is itself software.
 			Map.entry("manufacturing systems engineer", scopeAmbiguity()),
 			// The engineer a customer relationship is built around: the account is who the work is
 			// for and not the domain it is in, so step 4's commercial markers read it wrongly.
-			Map.entry("technical account manager", Classification.in()),
-			Map.entry("technical account management", Classification.in()),
+			Map.entry("technical account manager", scopeAmbiguity()),
+			Map.entry("technical account management", scopeAmbiguity()),
 			Map.entry("customer success engineer", Classification.in()),
 			// Code is the primary artifact however physical the machine it runs on, which is why
 			// this one phrase escapes step 4 where "mechanical software engineer" does not.
@@ -721,7 +723,6 @@ public class TitleClassification {
 			Map.entry("operations manager", Classification.out()),
 			// The sales engineer's own family: what the title names is the customer it is sold to
 			// and not the domain the work is in, which is the same split the sales engineer carries.
-			Map.entry("pre sales", scopeAmbiguity()),
 			// The hospital consultant, named by the speciality because the consultant head is read
 			// first and cannot see it.
 			Map.entry("psychiatry", Classification.out()),
@@ -786,7 +787,17 @@ public class TitleClassification {
 			Map.entry("study participant", Classification.out()),
 			Map.entry("studienteilnehmer", Classification.out()),
 			// A shop's key holder, where holder alone also names a PhD holder.
-			Map.entry("key holder", Classification.out()));
+			Map.entry("key holder", Classification.out()),
+			// Round 15: the customer-facing technical services manager splits the way a technical account
+			// manager does; an account executive sells; a security officer is a guard; a network
+			// technician splits the way help desk does; a content developer writes content; a business
+			// systems analyst is a data analyst's scope.
+			Map.entry("technical services manager", scopeAmbiguity()),
+			Map.entry("account executive", Classification.out()),
+			Map.entry("security officer", Classification.out()),
+			Map.entry("network technician", scopeAmbiguity()),
+			Map.entry("content developer", Classification.out()),
+			Map.entry("business systems analyst", scopeAmbiguity()));
 
 	/**
 	 * Families the criterion decides by ruling but that a discipline marker still decides out, so
@@ -805,7 +816,20 @@ public class TitleClassification {
 			Map.entry("technical project managers", Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY)),
 			Map.entry("product manager", scopeAmbiguity()), Map.entry("product managers", scopeAmbiguity()),
 			Map.entry("program manager", scopeAmbiguity()), Map.entry("program managers", scopeAmbiguity()),
-			Map.entry("project manager", scopeAmbiguity()), Map.entry("project managers", scopeAmbiguity()));
+			Map.entry("project manager", scopeAmbiguity()), Map.entry("project managers", scopeAmbiguity()),
+			// Round 15: the ruling covers any rank word, not only manager.
+			Map.entry("product lead", scopeAmbiguity()),
+			Map.entry("product leader", scopeAmbiguity()),
+			Map.entry("product director", scopeAmbiguity()),
+			Map.entry("product head", scopeAmbiguity()),
+			Map.entry("program lead", scopeAmbiguity()),
+			Map.entry("program leader", scopeAmbiguity()),
+			Map.entry("program director", scopeAmbiguity()),
+			Map.entry("program head", scopeAmbiguity()),
+			Map.entry("project lead", scopeAmbiguity()),
+			Map.entry("project leader", scopeAmbiguity()),
+			Map.entry("project director", scopeAmbiguity()),
+			Map.entry("project head", scopeAmbiguity()));
 
 	/** The phrases that make a post an AI-training gig, decided by the expertise it names. */
 	private static final Set<String> AI_TRAINING = Set.of("ai trainer", "ai trainers", "ai training", "ai tutor");
@@ -819,7 +843,9 @@ public class TitleClassification {
 			"computer science", "computer sciences", "software", "developer", "developers", "programmer",
 			"programmers", "programming", "coding", "javascript", "typescript", "python", "java", "html",
 			"css", "sql", "full stack", "frontend", "front end", "backend", "back end", "ai engineer",
-			"ml engineer", "machine learning", "data science", "database administrator");
+			"ml engineer", "machine learning", "data science", "database administrator",
+			// Round 15: two more software expertises an AI-training post names.
+			"computer vision", "computer information systems");
 
 	/** An AI-training post that names no expertise at all, and so is open on the expertise it needs. */
 	private static final Set<String> AI_TRAINING_WITHOUT_EXPERTISE = Set.of(
@@ -841,13 +867,18 @@ public class TitleClassification {
 	 */
 	private static final Set<String> SALE_OR_HIRE = Set.of(
 			"sales", "business development", "account", "client", "talent", "sourcing", "staffing",
-			"recruitment", "recruiting");
+			"recruitment", "recruiting",
+			// Round 15: partnerships and alliances are business development.
+			"partnerships", "partnership", "alliance", "alliances", "channel", "channels");
 
 	private static final int LONGEST_SALE_OR_HIRE = longest(SALE_OR_HIRE);
 
 	private static final Set<String> NON_FUNCTION_QUALIFIERS = Set.of(
 			"it", "information technology", "technology", "data", "security", "cyber", "cybersecurity",
-			"salesforce", "sap", "netsuite", "workday", "servicenow", "technical");
+			"salesforce", "sap", "netsuite", "workday", "servicenow",
+			// Round 15: the technology nouns the revised criterion names.
+			"ai", "analytics", "enterprise applications", "hris", "digital transformation", "oracle", "oracle ebs", "coupa", "wem", "business applications",
+			"business application", "enterprise application");
 
 	private static final Set<String> FUNCTION_QUALIFIERS = SOFTWARE_QUALIFIERS.stream()
 		.filter((qualifier) -> !NON_FUNCTION_QUALIFIERS.contains(qualifier))
@@ -864,6 +895,26 @@ public class TitleClassification {
 	private static final Set<String> FUNCTIONAL_HEADS = Set.of(
 			"consultant", "consultants", "consultor", "consultora", "analyst", "analysts", "analista",
 			"administrator");
+
+	/**
+	 * Words that are not modifiers, so that a generic head carrying only these is bare. A rank word
+	 * says where the role sits and a function word what kind of engineer it is, neither the domain it
+	 * works in; {@code technical} reads as {@code engineering}. Round 15.
+	 */
+	private static final Set<String> NOT_MODIFIERS = Set.of(
+			"associate", "deputy", "co", "senior", "sr", "team", "group", "solutions", "solution", "systems",
+			"system", "application", "applications", "integration", "technical");
+
+	/** {@code sales} and {@code presales} yield to a head that names engineering work (Q4). Round 15. */
+	private static final Set<String> SALE_WORDS = Set.of("sales", "presales");
+
+	/** The heads {@code sales} yields to: engineering work, and the analyst a market settles nothing under. */
+	private static final Set<String> SOLD_BY = Set.of("engineer", "engineers", "analyst", "analysts");
+
+	/** An analyst over nothing but these is a data analyst, open on its scope. Round 15. */
+	private static final Set<String> ANALYST_HEADS = Set.of("analyst", "analysts", "analista");
+
+	private static final Set<String> DATA_NOUNS = Set.of("data", "dados", "datos", "analytics", "bi");
 
 	private static final int LONGEST_MANAGEMENT_FAMILY = longest(MANAGEMENT_FAMILIES.keySet());
 
@@ -943,12 +994,20 @@ public class TitleClassification {
 					&& named(words, ENTERPRISE_PACKAGES, LONGEST_ENTERPRISE_PACKAGE) != null) {
 				return scopeAmbiguity();
 			}
-			if (RANK_HEADS.contains(head)
-					&& named(words, FUNCTION_QUALIFIERS, LONGEST_FUNCTION_QUALIFIER) == null) {
+			if (RANK_HEADS.contains(head) || GENERIC_HEADS.contains(head)) {
 				// What is left once the rank word is stripped is a sale or a hire: the technology noun
-				// names the market, not what the manager runs.
-				return named(words, SALE_OR_HIRE, LONGEST_SALE_OR_HIRE) != null ? Classification.out()
-						: scopeAmbiguity();
+				// names what is sold or hired for, not what the manager runs.
+				if (named(words, SALE_OR_HIRE, LONGEST_SALE_OR_HIRE) != null) {
+					return Classification.out();
+				}
+				if (named(words, FUNCTION_QUALIFIERS, LONGEST_FUNCTION_QUALIFIER) == null) {
+					return scopeAmbiguity();
+				}
+			}
+			// An analyst over data alone is the data analyst: some write queries and some build slides.
+			if (ANALYST_HEADS.contains(head)
+					&& named(without(words, DATA_NOUNS), SOFTWARE_QUALIFIERS, LONGEST_QUALIFIER) == null) {
+				return scopeAmbiguity();
 			}
 			return Classification.in();
 		}
@@ -958,13 +1017,31 @@ public class TitleClassification {
 		// own default, that an unclassed modifier is a market marker, applied where it cannot
 		// cause a miss.
 		boolean product = named(words, GENERIC_HEAD_EXEMPTIONS, LONGEST_GENERIC_HEAD_EXEMPTION) != null;
-		if (reading.domain() == Domain.BOUND && GENERIC_HEADS.contains(head) && words.size() > 1 && !product) {
+		boolean modified = !without(without(words, NOT_MODIFIERS), Set.of(head)).isEmpty();
+		// Round 15: solutions work is as often software as not, and it was the rules' IN until the
+		// function-word revision, so no market decides it OUT: it falls to step 7.
+		boolean solutions = words.contains("solutions") || words.contains("solution");
+		if (solutions && !GENERIC_HEADS.contains(head)) {
+			return Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY);
+		}
+		// Round 15: technical reads as engineering, so it holds a generic head open the way an
+		// engineering head is held: bare it is the domain that is unclear, and with a function beside
+		// it (success, delivery, account) the customer-facing role splits on its expertise.
+		if (GENERIC_HEADS.contains(head) && words.contains("technical")) {
+			if (named(words, SALE_OR_HIRE, LONGEST_SALE_OR_HIRE) != null) {
+				return Classification.out();
+			}
+			return modified ? scopeAmbiguity() : Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY);
+		}
+		if (reading.domain() == Domain.BOUND && GENERIC_HEADS.contains(head) && modified && !product) {
 			return Classification.out();
 		}
 
 		// An engineering organisation names whom it builds for with a market word, the way a
 		// marketing web developer does, so the market decides nothing under it.
-		if (reading.domain() == Domain.BOUND && !head.equals("engineering")
+		// A sales engineer's market word names the customer segment it sells to, not what it builds.
+		boolean sold = SOLD_BY.contains(head) && words.stream().anyMatch(SALE_WORDS::contains);
+		if (reading.domain() == Domain.BOUND && !head.equals("engineering") && !sold
 				&& named(words, MARKET_MARKERS, LONGEST_MARKET_MARKER) != null) {
 			return Classification.out();
 		}
@@ -985,7 +1062,13 @@ public class TitleClassification {
 	 */
 	private static String head(List<String> words) {
 		String yielding = null;
-		for (String word : words) {
+		for (int at = 0; at < words.size(); at++) {
+			String word = words.get(at);
+			if (SALE_WORDS.contains(word) && words.subList(at + 1, words.size())
+				.stream()
+				.anyMatch(SOLD_BY::contains)) {
+				continue;
+			}
 			if (YIELDING_HEADS.contains(word)) {
 				if (yielding == null) {
 					yielding = word;
@@ -1028,6 +1111,11 @@ public class TitleClassification {
 		List<String> rest = new java.util.ArrayList<>(words.subList(0, at));
 		rest.addAll(words.subList(at + taken.size(), words.size()));
 		return rest;
+	}
+
+	/** The words of the title with every word of a set taken out of them. */
+	private static List<String> without(List<String> words, Set<String> taken) {
+		return words.stream().filter((word) -> !taken.contains(word)).toList();
 	}
 
 	private static List<String> words(String cleanedTitle) {
