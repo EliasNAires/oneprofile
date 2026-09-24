@@ -1,11 +1,12 @@
-# Extraction is rule-based; no LLM is used
+# Extraction is rule-based; no LLM is used in the pipeline
 
 Status: accepted
 
-Every derived fact — normalized title, work mode, seniority level, role family, eligibility
-and skills — is produced by pure functions over text: whitelist cleaning, small hand-built
-dictionaries, and a trie pass for skills. No language model is called anywhere in the
-pipeline.
+Every derived fact — cleaned and normalized title, classification, work mode, seniority level,
+eligibility and skills — is produced by pure functions over text: whitelist cleaning, small
+hand-built dictionaries, and a trie pass for skills. No language model is called anywhere in
+the pipeline. The measurement harness that scores the pipeline is not the pipeline; ADR-0007
+covers it.
 
 ## Considered options
 
@@ -26,4 +27,5 @@ positive rate (37 of 19,255) from a 16-phrase dictionary.
 The cost is recall on eligibility, where the vocabulary is genuinely open-ended rather than
 closed, and this compounds with the hard filter in ADR-0004. An LLM pass remains the obvious
 upgrade, and should be adopted on measured evidence that the rules have plateaued below a
-useful recall — not on the assumption that it would do better.
+useful recall — not on the assumption that it would do better. Adopting it also requires
+revisiting the rule that no API is paid for.

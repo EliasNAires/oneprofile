@@ -706,7 +706,7 @@ public class TitleClassification {
 	private static final int LONGEST_GENERIC_HEAD_EXEMPTION = longest(GENERIC_HEAD_EXEMPTIONS);
 
 	/**
-	 * Decides what one cleaned title names, by the criterion's seven steps in their order.
+	 * Decides what one cleaned title names, by the criterion's procedure in its order.
 	 * @param cleanedTitle the title once cleaning has taken the noise out of it
 	 * @return what the title names, with the reason where it names too little to decide
 	 */

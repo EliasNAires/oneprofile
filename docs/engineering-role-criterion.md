@@ -30,7 +30,16 @@ Only `unruled` is expected to fall. The other two are what the world is.
 ## How a title is read
 
 A title is a **function head** — the noun naming what the role does — with **modifiers** naming
-the domain it does it in. Where a title names more than one head, the first is the head.
+the domain it does it in.
+
+**Which word is the head.** The first head the title names, except where that word **yields**.
+A yielding head names a rank or a department rather than the work — `lead`, `director`,
+`manager`, `chief`, `intern`, `support`, `operations`, `specialist` — so where another head
+stands behind it, that one is the head: `Lead Analytics Engineer` is an engineer, and so is
+`Network Support Engineer`. A never-engineering word behind a yielding word does not take the
+head, because there it names who the work is done for rather than what it does: in `Manager
+Rider Operations` the head stays `manager`. A yielding word with no head behind it is the head
+itself.
 
 Each head carries two attributes:
 
@@ -44,13 +53,24 @@ Each head carries two attributes:
 A third class sits outside both: **never-engineering heads**, which decide OUT whatever
 modifies them.
 
+**Generic heads** are domain-bound heads that name no work of their own — `manager`,
+`director`, `consultant`, `advisor`, `operations`, `support`. Most are yielding heads, and
+they matter where nothing stands behind them. With any
+modifier and no software qualifier, a generic head is OUT: `Hotel Manager` and `Director of
+Operations` say what the role is for, and nothing about software. This is the rule that an
+unclassed modifier is a market marker, applied where it cannot cause a miss. `engineer` and
+`developer` are deliberately not generic, because a bare `C Engineer` is a software job and
+the same reading would decide it OUT. One word holds a generic head open: **`product`**. A
+product title with no software qualifier is `domain_ambiguity`, because product roles split
+across the criterion more than any other family.
+
 **A head's attributes are evidence-revisable.** They are an argument about language, and the
 corpus is allowed to win: a session may reclass a head against the argument made here when its
-samples say so, recording the sample count that moved it. `consultant` is the first — this
-document called it domain-free on the audit-analyst argument, and five samples said the
-consultants this corpus posts are leasing agents, beauty counters and recruiters, so it is
-domain-bound. Reclassing a head is a change like any other: it is priced on the accumulated
-labels and it obeys the ban on new `OUT`-stratum false accepts.
+samples say so, recording the sample count that moved it. `consultant` is domain-bound for this
+reason — the consultants this corpus posts are leasing agents, beauty counters and recruiters,
+though the audit-analyst argument would make it domain-free. Reclassing a head is a change like
+any other: it is priced on the accumulated labels and it obeys the ban on new `OUT`-stratum
+false accepts.
 
 ## Two kinds of modifier
 
@@ -112,6 +132,10 @@ classify(cleaned_title):
     if a software qualifier is present and head is engineering-capable:
         return IN
 
+    # 6a — A generic head with a modifier and nothing software about it.
+    if head is generic and the title has a modifier and `product` is absent:
+        return OUT
+
     # 6 — With no qualifier to argue against, the market decides a bound head.
     if head is domain-bound and a market marker is present:
         return OUT
@@ -122,16 +146,14 @@ classify(cleaned_title):
     return UNKNOWN, reason = unruled
 ```
 
-Matching is case-insensitive and on whole words. Every list entry is spelled out in full for
-that reason: an earlier version carried stems such as `pharmac` and `agricultur`, which only
-work under prefix matching and silently stop working the moment the rule is stated precisely.
+Matching is case-insensitive and on whole words, so every list entry is spelled out in full:
+a stem such as `pharmac` matches nothing.
 
 ## How a ruling is decided
 
-Steps 1 through 7 are mechanical. This section is not: it is the reasoning a person does when
-deciding a phrase, and it is never executed at classification time. An earlier version of this
-document put a judgement of exactly this kind inside the procedure, where a labeller could not
-run it, and it caused six of the eleven disagreements in the first hand check.
+Steps 0 through 7 are mechanical. This section is not: it is the reasoning a person does when
+deciding a phrase, and it is never executed at classification time. A judgement a blind reader
+cannot execute does not belong in the procedure.
 
 **Q1 — it has to be a vacancy.** This one is a gate, not an alternative: it has to hold before
 Q2–Q4 are worth asking, and it is read before the title is read as a head at all. A post that
