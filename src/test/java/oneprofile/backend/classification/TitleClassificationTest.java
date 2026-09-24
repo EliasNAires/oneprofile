@@ -305,10 +305,10 @@ class TitleClassificationTest {
 			// Iteration 6 made the consultant domain-bound and transformation an off-domain marker,
 			// so the strategy consultant this once left open is decided.
 			assertThat(classify("strategy consultant transformation")).isEqualTo(Classification.out());
-			// The cost of reading consultant as engineering-capable: the physician a hospital calls a
-			// consultant names its own profession second, and the first head named is the head.
-			assertThat(classify("consultant gastroenterologist bristol"))
-				.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+			// The physician a hospital calls a consultant names its own profession second, and the
+			// first head named is the head. It was left open until iteration 11 made the consultant a
+			// generic head, which a modifier with nothing software about it decides out.
+			assertThat(classify("consultant gastroenterologist bristol")).isEqualTo(Classification.out());
 		}
 
 		@Test
@@ -1089,6 +1089,50 @@ class TitleClassificationTest {
 		void areReadLikeTheirEnglishSpelling() {
 			assertThat(classify("cientista de dados senior")).isEqualTo(Classification.in());
 			assertThat(classify("엔지니어 백엔드 소프트웨어")).isEqualTo(Classification.in());
+		}
+
+	}
+
+	@Nested
+	class CoverageFromIterationEleven {
+
+		@Test
+		void aTechLeadIsASoftwareRoleUnlessAHardwareDisciplineIsNamed() {
+			assertThat(classify("tech lead")).isEqualTo(Classification.in());
+			assertThat(classify("tech lead manager connectors")).isEqualTo(Classification.in());
+			assertThat(classify("tech lead asic design engineer")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void aSoftwareDomainNamedByItsOwnWordDecidesIn() {
+			assertThat(classify("flutter engineer")).isEqualTo(Classification.in());
+			assertThat(classify("genai engineer")).isEqualTo(Classification.in());
+			assertThat(classify("analytics engineer")).isEqualTo(Classification.in());
+			assertThat(classify("swe data ingestion")).isEqualTo(Classification.in());
+		}
+
+		@Test
+		void aClinicalOrFloorProfessionIsNeverEngineering() {
+			assertThat(classify("phlebotomist our future health")).isEqualTo(Classification.out());
+			assertThat(classify("babysitting opportunities in durham nc")).isEqualTo(Classification.out());
+			assertThat(classify("specialty doctor in microbiology manchester")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void aTalentPoolInAnyLanguageHiresNobody() {
+			assertThat(classify("banco de talentos tecnologia")).isEqualTo(Classification.out());
+			assertThat(classify("initiativbewerbung münchen")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void aConsultantWithNothingSoftwareAboutItIsOut() {
+			assertThat(classify("consultant public sector")).isEqualTo(Classification.out());
+			assertThat(classify("sap consultant")).isEqualTo(Classification.in());
+		}
+
+		@Test
+		void aSiteOrPlantTrainingDecidesOut() {
+			assertThat(classify("project engineer land development")).isEqualTo(Classification.out());
 		}
 
 	}

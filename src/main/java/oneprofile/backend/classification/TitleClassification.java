@@ -119,13 +119,17 @@ public class TitleClassification {
 	 * {@code Hotel Manager} and {@code Director of Operations} families the market list was never
 	 * going to reach one word at a time. The narrower {@code engineer} and {@code developer} heads
 	 * are deliberately not here: a bare {@code C Engineer} is a software job and the same reading
-	 * would decide it OUT.
+	 * would decide it OUT. {@code consultant} joined in iteration 11, after the head was reclassed
+	 * domain-bound: priced on the accumulated labels it decided 26 rows right and 9 wrong, with no
+	 * new miss. {@code specialist} and {@code intern} were priced the same way and each added a miss.
 	 */
 	private static final Set<String> GENERIC_HEADS = Set.of(
 			"advisor",
 			"associate",
 			"avp",
 			"chief",
+			"consultant",
+			"consultants",
 			"controller",
 			"director",
 			"directors",
@@ -249,7 +253,11 @@ public class TitleClassification {
 			Map.entry("spécialiste", BOUND_CAPABLE), Map.entry("stage", BOUND_CAPABLE),
 			Map.entry("stagiaire", BOUND_CAPABLE), Map.entry("support", BOUND_CAPABLE),
 			Map.entry("tech", BOUND_CAPABLE), Map.entry("techniker", BOUND_CAPABLE),
-			Map.entry("tester", BOUND_CAPABLE));
+			Map.entry("tester", BOUND_CAPABLE),
+			// The software engineer by its abbreviation, the engineer by its commonest misspelling, and
+			// the inclusive French spelling of a developer.
+			Map.entry("swe", BOUND_CAPABLE), Map.entry("enginer", BOUND_CAPABLE),
+			Map.entry("développeur.euse", BOUND_CAPABLE));
 
 	/**
 	 * The heads that decide out whatever modifies them, and so carry neither attribute. Each one
@@ -306,7 +314,15 @@ public class TitleClassification {
 			// title whose modifier named software as an engineering role. Sales Engineer is a ruling, and
 			// rulings run first. Técnico and coordenador follow the technician and the coordinator.
 			"actuary", "band", "cna", "coordenador", "coordinador", "locum", "lpn", "rn", "sales", "tecnico",
-			"teller", "técnico", "underwriter"
+			"teller", "técnico", "underwriter",
+			// The professions iteration 10's unruled pile named: clinical specialities, the care and
+			// hospitality floor, and the warehouse line.
+			"audiologist", "babysitting", "bcba", "budtender", "busser", "detailer", "doctor", "doctors",
+			"doula", "emt", "geologist", "gynecologist", "hematologist", "housekeeping",
+			"lawyer", "lifeguard", "loader", "mammographers", "marketer", "nurses", "obstetrician",
+			"operative", "ophthalmologist", "ophthalmologists", "organiser", "organizer", "packer",
+			"paediatrician", "palletizer", "phlebotomist", "physicians", "physicist", "subcontractor",
+			"veterinarians"
 		);
 
 	/**
@@ -351,7 +367,17 @@ public class TitleClassification {
 			"help desk", "interoperability", "ddi", "golang", "kotlin", "scala", "ruby", "php", "rails", "angular",
 			"terraform", "ansible", "docker", "hadoop", "kafka", "tableau", "databricks",
 			// The word the corpus writes for software when it is not writing English.
-			"informatica", "informatique", "logiciel"
+			"informatica", "informatique", "logiciel",
+			// The software domains iteration 10's unknown pile named by their own word, the one
+			// misspelling of a platform the corpus writes often enough to count, and the software
+			// engineer's abbreviation, which is a head as well so that "SWE Data Ingestion" has one.
+			"flutter", "genai", "agentic", "c#", "ubuntu", "vulnerability", "redes", "mac os", "macos",
+			"andorid", "swe",
+			// Two roles named by a phrase that holds a head. As rulings they would outrun the discipline
+			// markers and decide "Tech Lead ASIC Design Engineer" in; as qualifiers step 4 still reads the
+			// ASIC first. Bare "Tech Lead" was out on the generic-head rule, which read "lead" as a
+			// modifier of "tech".
+			"tech lead", "analytics engineer", "analytics engineering"
 		);
 
 	/**
@@ -371,6 +397,12 @@ public class TitleClassification {
 	 * and the word {@code data} inside the phrase would otherwise read as a software qualifier.
 	 */
 	private static final Set<String> DISCIPLINE_MARKERS = Set.of(
+			// The trainings iteration 10's unknown pile hired on: bioscience, the power grid, civil
+			// site work and the process plant. Protein and actuarial were priced and left out — the
+			// first named machine-learning roles in protein design, the second an actuarial software
+			// engineer.
+			"bioconjugation", "substation", "power generation", "land development", "traffic engineering",
+			"process engineering", "cultivation",
 			"radar",
 			"metrology",
 			"hil",
@@ -507,6 +539,7 @@ public class TitleClassification {
 			Map.entry("solutions engineering", Classification.in()),
 			Map.entry("forward deployed engineer", Classification.in()),
 			Map.entry("forward deployed engineering", Classification.in()),
+			Map.entry("forward deployment engineer", Classification.in()),
 			Map.entry("chief technology officer", Classification.in()),
 			// A domain expert hired to teach a model their own domain, not to build one. The
 			// computer-science and data-science variants of the same posting are the exceptions
@@ -644,7 +677,23 @@ public class TitleClassification {
 			// register, a general interest page and the "don't see it here" banner.
 			Map.entry("register your interest", Classification.out()),
 			Map.entry("general interest", Classification.out()),
-			Map.entry("don t see", Classification.out()));
+			Map.entry("don t see", Classification.out()),
+			// The shapes iteration 10's sample wrote for it: the Portuguese and German talent pools and
+			// "didn't find your vacancy" banners, careers fairs, and the study that recruits
+			// participants rather than staff.
+			Map.entry("banco de talentos", Classification.out()),
+			Map.entry("banco de candidatos", Classification.out()),
+			Map.entry("não encontrou", Classification.out()),
+			Map.entry("initiativbewerbung", Classification.out()),
+			Map.entry("candidature spontanée", Classification.out()),
+			Map.entry("career opportunities", Classification.out()),
+			Map.entry("career fair", Classification.out()),
+			Map.entry("interested in applying", Classification.out()),
+			Map.entry("share your contacts", Classification.out()),
+			Map.entry("no open role", Classification.out()),
+			Map.entry("resume drop", Classification.out()),
+			Map.entry("study participant", Classification.out()),
+			Map.entry("studienteilnehmer", Classification.out()));
 
 	private static final int LONGEST_RULING = longest(RULINGS.keySet());
 
