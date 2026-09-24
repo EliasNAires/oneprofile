@@ -17,6 +17,24 @@
 # - Data/business analysts: (Data Analyst MedTech, Business Analyst Insurance Domain, BI Analyst RTB, Analytics Lead Data Measurement Impact): scope_ambiguity; other domain-free analysts with market markers (Treasury Analyst, Supply Chain Analyst, Media analyst) domain_ambiguity; analysts with a credential marker (Actuarial Analyst, Language Data Analyst Croatian) OUT.
 # - Designers and technical-art/pipeline roles: (UX UI Designer, Game Designer, Instructional Designer vs 2K Games Technical Art, Experienced Pipeline TD): designers read as never-engineering (OUT); technical art / pipeline TD scope_ambiguity since they often script.
 # id	cleaned_title	label	unknown_reason
+#
+# SUPERSEDED BY THE CRITERION REVISION OF 2026-09-24. The rows are never rewritten, but the
+# families below were labelled before the criterion decided them, so a session pricing a
+# candidate rule against the accumulated labels treats them as evidence-free rather than as
+# costs:
+#
+#   - Managers: a manager over a technology noun (IT, Data, Security, Salesforce Manager) is now
+#     scope_ambiguity, and a bare Engineering Manager, with or without a market marker, is now
+#     domain_ambiguity.
+#   - Technical Product Manager and Technical Program Manager are now IN; Technical Project
+#     Manager is now domain_ambiguity.
+#   - AI-training posts: the expertise named decides, and a post that names none is now
+#     scope_ambiguity.
+#   - Named enterprise packages (SAP, Salesforce, Oracle EBS, NetSuite, Workday) under consultant,
+#     analyst or administrator are now scope_ambiguity.
+#   - Reasons only, not states: a product title with no software qualifier is now
+#     scope_ambiguity, and the two corpus reasons were redefined as "the domain is unclear" and
+#     "the expertise is unclear".
 22368	LPN New Grad Nurse Residency Fort Wayne	OUT	
 119637	Regulatory and Start Up Specialist Argentina	OUT	
 56024	Operations Manager	OUT	

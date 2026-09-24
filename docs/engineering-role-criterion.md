@@ -22,12 +22,15 @@ landed there:
 | Reason | Means | Whose problem |
 | --- | --- | --- |
 | `unruled` | no rule reaches this title | **ours** — a line added to a list fixes it |
-| `domain_ambiguity` | the head is known, the domain is not | the corpus's |
-| `scope_ambiguity` | a ruled phrase whose variants genuinely split | the corpus's |
+| `domain_ambiguity` | the title means different work in different domains, and does not say which | the corpus's |
+| `scope_ambiguity` | the domain is clear, the expertise the role needs is not | the corpus's |
 
 Only `unruled` is expected to fall. The other two are what the world is.
 
-`scope_ambiguity` means a role family with technical and non-technical subsets.
+The two corpus reasons answer one question: **is it the domain that is unclear, or the
+expertise?** A bare `Engineering Manager` could run a software team or a plant, and the title
+does not say which: that is `domain_ambiguity`. A `Product Manager` is plainly in software, but
+a software background opens some product roles and not others: that is `scope_ambiguity`.
 
 ## How a title is read
 
@@ -63,8 +66,9 @@ Operations` say what the role is for, and nothing about software. This is the ru
 unclassed modifier is a market marker, applied where it cannot cause a miss. `engineer` and
 `developer` are deliberately not generic, because a bare `C Engineer` is a software job and
 the same reading would decide it OUT. One word holds a generic head open: **`product`**. A
-product title with no software qualifier is `domain_ambiguity`, because product roles split
-across the criterion more than any other family.
+product title with no software qualifier is `scope_ambiguity`, because product roles split
+across the criterion more than any other family, and what splits them is the expertise, not
+the domain.
 
 **A head's attributes are evidence-revisable.** They are an argument about language, and the
 corpus is allowed to win: a session may reclass a head against the argument made here when its
@@ -188,8 +192,34 @@ A phrase is UNKNOWN with `scope_ambiguity` when its variants split across Q2–Q
 some `data analyst` roles are engineering roles and some are not, and no rule fixes that. It is
 OUT when Q1 fails, and when none of Q2–Q4 holds and the title says so.
 
-A manager or director of engineering work is `IN`. Product managers are `UNKNOWN` /
-`scope_ambiguity`. Program and project managers are `UNKNOWN` / `scope_ambiguity`.
+### Families decided by ruling
+
+**Managers.** Strip the rank word — `manager`, `director`, `head of`, `lead` — and read what is
+left as a title. A manager of an `IN` role is `IN`: `Software Engineering Manager`, `Manager,
+Backend Engineering`, `Director of Data Engineering`, `SRE Manager`. A manager over a technology
+noun that names no engineering function — `IT Manager`, `Data Manager`, `Security Manager`,
+`Salesforce Manager` — is `UNKNOWN` / `scope_ambiguity`: the domain is software, but the job may
+run a help desk as easily as a team of engineers. A bare `Engineering Manager`, with no software
+word and no discipline marker, is `UNKNOWN` / `domain_ambiguity`. A market marker behind it does
+not change that: in `Engineering Manager Finance` the marker names whom the team builds for, as
+it does in `Marketing Web Developer`. A discipline marker still decides `OUT`.
+
+**Product, program and project managers** are `UNKNOWN` / `scope_ambiguity`, with two
+exceptions. `Technical Product Manager` and `Technical Program Manager` are `IN`: `technical`
+names the subset a software background opens. `Technical Project Manager` is `UNKNOWN` /
+`domain_ambiguity`, because a technical project is as often cabling or construction as software.
+A discipline marker still decides all of them `OUT`.
+
+**AI-training posts** — `AI Trainer …`, `… AI Training …` — are vacancies, so they pass Q1, and
+the expertise they name decides them. Software or computer-science expertise is `IN`. Any other
+expertise — a language, accounting, biology, aerospace CAD — is `OUT`. A post that names no
+expertise is `UNKNOWN` / `scope_ambiguity`.
+
+**Named enterprise packages** — `SAP`, `Salesforce`, `Oracle EBS`, `NetSuite`, `Workday` — are
+software qualifiers. Under `developer` or `engineer` they are `IN`. Under `consultant`, `analyst`
+or `administrator` they are `UNKNOWN` / `scope_ambiguity`: a functional consultant configures a
+business process, and that takes finance or supply-chain knowledge a software background does
+not bring.
 
 ## How a title is labelled
 
@@ -204,6 +234,9 @@ a rule. Three conventions it does not get to invent:
   rules' backlog, not the label's: a labeller calling every non-English title `unruled` scores
   the rules wrong for reading a language it refused to. A labeller that genuinely cannot read a
   script says so on that row.
+- **`scope_ambiguity` is available to the labeller on its own judgement**, on any title whose
+  domain is clear and whose expertise is not, whether or not a ruling names the family. The
+  labeller does not know the rulings and is not meant to.
 - **`unruled` is available to the labeller.** It is the honest answer for a title the labeller
   cannot reach at all, and forbidding it only pushes those rows into `domain_ambiguity`, where
   they inflate the reason this document says belongs to the corpus.

@@ -142,8 +142,8 @@ _Avoid_: tech role, IT role, technical role
 
 **Engineering Role**:
 A vacancy a software background alone qualifies someone for — wider than the phrase usually
-carries, so Scrum Master belongs. Product Manager is unknown with scope ambiguity: the family
-has technical and non-technical subsets. The criterion is
+carries, so Scrum Master belongs. Product Manager is unknown with scope ambiguity: it is plainly
+software, but the expertise it needs is not clear from the title. The criterion is
 `docs/engineering-role-criterion.md`.
 _Avoid_: role family, category, discipline, job function, technical role
 

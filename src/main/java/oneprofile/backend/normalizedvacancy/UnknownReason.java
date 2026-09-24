@@ -10,10 +10,10 @@ public enum UnknownReason {
 	/** No rule reaches this title. Ours — a line added to a list fixes it. */
 	UNRULED,
 
-	/** The head is known, the domain is not. The corpus's. */
+	/** The title means different work in different domains, and does not say which. The corpus's. */
 	DOMAIN_AMBIGUITY,
 
-	/** A ruled phrase whose variants genuinely split. The corpus's. */
+	/** The domain is clear, the expertise the role needs is not. The corpus's. */
 	SCOPE_AMBIGUITY
 
 }

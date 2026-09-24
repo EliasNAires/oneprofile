@@ -17,6 +17,24 @@
 # - Vendor-package analysts: Epic Referrals Analyst, Specialist Epic Solution Delivery, EBS Analyst, ServiceNow Business Analyst, Lead SAP Business Solutions S4 Hana (UNKNOWN scope_ambiguity), against SAP Basis Admin and Calypso CATT Specialist (IN, as technical administration and test automation). A ruling that a named enterprise package is a software qualifier under Q3 would flip the scope rows to IN.
 # - Domain-free heads under non-engineering markets: Content Moderation Analyst, Underwriting Analyst, Treasury Operations Analyst, Architect K 12, Customer Success Architect. UNKNOWN domain_ambiguity by the Treasury Analyst rule even where the title reads plainly non-engineering; Actuarial Analyst and Logistician Data Analyst are OUT (actuarial as a discipline marker, logistician as the first head). A reclass of analyst or architect as domain-bound, as happened to consultant, would move most of this family to OUT.
 # id	cleaned_title	label	unknown_reason
+#
+# SUPERSEDED BY THE CRITERION REVISION OF 2026-09-24. The rows are never rewritten, but the
+# families below were labelled before the criterion decided them, so a session pricing a
+# candidate rule against the accumulated labels treats them as evidence-free rather than as
+# costs:
+#
+#   - Managers: a manager over a technology noun (IT, Data, Security, Salesforce Manager) is now
+#     scope_ambiguity, and a bare Engineering Manager, with or without a market marker, is now
+#     domain_ambiguity.
+#   - Technical Product Manager and Technical Program Manager are now IN; Technical Project
+#     Manager is now domain_ambiguity.
+#   - AI-training posts: the expertise named decides, and a post that names none is now
+#     scope_ambiguity.
+#   - Named enterprise packages (SAP, Salesforce, Oracle EBS, NetSuite, Workday) under consultant,
+#     analyst or administrator are now scope_ambiguity.
+#   - Reasons only, not states: a product title with no software qualifier is now
+#     scope_ambiguity, and the two corpus reasons were redefined as "the domain is unclear" and
+#     "the expertise is unclear".
 1215	General Creative Services Application	OUT	
 155016	Personal Trainer Punta Gorda FL	OUT	
 109455	Engineering Internship Substation and Power Generation	OUT	

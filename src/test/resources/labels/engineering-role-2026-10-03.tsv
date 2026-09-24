@@ -20,6 +20,24 @@
 # - IT support/ops -> IN (Technical Support Engineer, Service Desk Technician, Helpdesk Technician, Service Desk Engineer, Directory Services Engineer); Customer Support Engineer, Product Support Engineer -> domain_ambiguity. Building Engineer, Field Service Technician -> OUT.
 # - Designers, researchers and scientists: UX/service/product/graphic designers, UX researchers, UX writer -> OUT; Research Scientist Autonomous Systems, Applied Scientist, Quantum Scientist, Scientist I -> domain_ambiguity; lab/biology scientists and Computational Biologist/Chemistry -> OUT. Titles with no readable head (Intern, Strategist, Intercedent STEM, Data Validation Liquidity, Director MOE, Research Lead Training) -> unruled.
 # id	cleaned_title	label	unknown_reason
+#
+# SUPERSEDED BY THE CRITERION REVISION OF 2026-09-24. The rows are never rewritten, but the
+# families below were labelled before the criterion decided them, so a session pricing a
+# candidate rule against the accumulated labels treats them as evidence-free rather than as
+# costs:
+#
+#   - Managers: a manager over a technology noun (IT, Data, Security, Salesforce Manager) is now
+#     scope_ambiguity, and a bare Engineering Manager, with or without a market marker, is now
+#     domain_ambiguity.
+#   - Technical Product Manager and Technical Program Manager are now IN; Technical Project
+#     Manager is now domain_ambiguity.
+#   - AI-training posts: the expertise named decides, and a post that names none is now
+#     scope_ambiguity.
+#   - Named enterprise packages (SAP, Salesforce, Oracle EBS, NetSuite, Workday) under consultant,
+#     analyst or administrator are now scope_ambiguity.
+#   - Reasons only, not states: a product title with no software qualifier is now
+#     scope_ambiguity, and the two corpus reasons were redefined as "the domain is unclear" and
+#     "the expertise is unclear".
 38444	User Research Intern	OUT	
 873	Anesthesiologist Lake Oswego	OUT	
 80628	FINANCIAL OPERATIONS ANALYST II	UNKNOWN	domain_ambiguity
