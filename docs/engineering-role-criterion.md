@@ -46,6 +46,11 @@ head, because there it names who the work is done for rather than what it does: 
 Rider Operations` the head stays `manager`. A yielding word with no head behind it is the head
 itself.
 
+**A rank word is not a modifier.** `assistant`, `associate`, `deputy`, `co`, `senior`, `team`
+and `group` say where the role sits, not what domain it works in. They belong to the head:
+`Team Lead` and `Co Manager Assistant Manager` are bare heads. `general` is different, because
+it names general management: `Assistant General Manager` is a manager with a modifier.
+
 Each head carries two attributes:
 
 - **Domain-bound or domain-free.** `engineer` and `technician` name a function embedded in a
@@ -59,8 +64,9 @@ A third class sits outside both: **never-engineering heads**, which decide OUT w
 modifies them.
 
 **Generic heads** are domain-bound heads that name no work of their own — `manager`,
-`director`, `consultant`, `advisor`, `operations`, `support`. Most are yielding heads, and
-they matter where nothing stands behind them. With any
+`director`, `consultant`, `advisor`, `operations`, `support`, and the student forms `intern`,
+`graduate`, `trainee` and `student`, which name a stage of a career rather than work. Most are
+yielding heads, and they matter where nothing stands behind them. With any
 modifier and no software qualifier, a generic head is OUT: `Hotel Manager` and `Director of
 Operations` say what the role is for, and nothing about software. This is the rule that an
 unclassed modifier is a market marker, applied where it cannot cause a miss. `engineer` and
@@ -86,8 +92,8 @@ carries an off-domain modifier *and* a software qualifier at once, which the cor
 constantly.
 
 - A **discipline marker** names a body of training a person is hired on — `mechanical`,
-  `civil`, `chemical`, `aerospace`, `fpga`, and equally `nurse`, `attorney`, `chef`,
-  `veterinarian`. It is about the candidate, not the customer.
+  `civil`, `chemical`, `aerospace`, `fpga`, `construction`, `commissioning`, and equally
+  `nurse`, `attorney`, `chef`, `veterinarian`. It is about the candidate, not the customer.
 - A **market marker** names who the work is done *for* — `finance`, `retail`, `marketing`,
   `higher education`, `logistics`, `procurement`. Software is built for every one of these
   markets, so the marker says nothing about whether this role builds it.
@@ -100,13 +106,23 @@ Engineer`, `Payments Engineer` and `Autonomy Engineer` OUT, and that is a miss. 
 modifier that plainly names a market — `building`, `hotel`, `retail` — is a market marker, and a
 title carrying nothing else falls to step 7.
 
-The two behave differently in exactly one place, and identically everywhere else:
+**Function words are neither.** `solutions`, `systems`, `sales`, `presales`, `application`,
+`technical support`, `customer`, `integration` and `production` say what kind of engineer the
+role is, not the domain it works in. Each is as common in industrial equipment as in software:
+`Production Engineer` is a plant title and an SRE title. So they are no marker and no software
+qualifier. A bare `Solutions Engineer` or `Systems Engineer` falls to step 7, and `Sales
+Engineer Data Security` is `IN` on `data security`. `sales` and `presales` yield to `engineer`,
+because a software background alone opens software sales engineering (Q4). Under `technician`,
+`production`, `service` and `QA/QC` name trade work, which is a credential, so `Production
+Technician` is OUT.
+
+The two kinds of marker behave differently in exactly one place, and identically everywhere else:
 
 - A **discipline marker decides OUT under any head**, domain-bound or domain-free, and it
   beats a software qualifier. `Mechanical Software Engineer` is OUT, and so is `Nurse
   Analyst`. This is what settles the hardware-adjacent code roles — `FPGA Engineer`,
-  `ASIC Verification Engineer`, `GNC Engineer` — where the artifact is code but the credential
-  is not software: the discipline named in the title decides, and Q4 is why.
+  `ASIC Verification Engineer`, `GNC Engineer`, `CPU Architect` — where the artifact is code
+  but the credential is not software: the discipline named in the title decides, and Q4 is why.
 - A **market marker decides OUT only under a domain-bound head with no software qualifier**.
   `Marketing Manager` is OUT; `Marketing Web Developer` is not, because `web` is present and
   `marketing` names the customer. Under a domain-free head a market marker settles nothing at
@@ -206,17 +222,52 @@ OUT when Q1 fails, and when none of Q2–Q4 holds and the title says so.
 left as a title. A manager of an `IN` role is `IN`: `Software Engineering Manager`, `Manager,
 Backend Engineering`, `Director of Data Engineering`, `SRE Manager`. A manager over a technology
 noun that names no engineering function — `IT Manager`, `Data Manager`, `Security Manager`,
-`Salesforce Manager` — is `UNKNOWN` / `scope_ambiguity`: the domain is software, but the job may
-run a help desk as easily as a team of engineers. A bare `Engineering Manager`, with no software
-word and no discipline marker, is `UNKNOWN` / `domain_ambiguity`. A market marker behind it does
-not change that: in `Engineering Manager Finance` the marker names whom the team builds for, as
-it does in `Marketing Web Developer`. A discipline marker still decides `OUT`.
+`Salesforce Manager`, `Director AI`, `Director Business Analytics`, `Director Enterprise
+Applications`, `HRIS Manager` — is `UNKNOWN` / `scope_ambiguity`: the domain is software, but the
+job may run a help desk as easily as a team of engineers. The same holds under every generic
+head, not only rank words: `IT Support`, `Technology Strategy Consultant`, `Security Advisor` and
+`Digital Transformation Specialist` are `scope_ambiguity`. An engineering function word makes
+the noun an `IN` role: `Director Applied AI`, `AI Engineering Lead`. A head that names the
+help-desk work itself, such as `Service Desk Agent`, is `OUT`, because it is the non-engineering
+side of that split.
 
-**Product, program and project managers** are `UNKNOWN` / `scope_ambiguity`, with two
-exceptions. `Technical Product Manager` and `Technical Program Manager` are `IN`: `technical`
-names the subset a software background opens. `Technical Project Manager` is `UNKNOWN` /
-`domain_ambiguity`, because a technical project is as often cabling or construction as software.
-A discipline marker still decides all of them `OUT`.
+What is left after the rank word is stripped can also be a sale or a hire: `Strategic
+Partnerships Manager AI API`, `Alliance Manager`, `Talent Sourcing Director Data`. The technology
+noun names what is sold or hired for, so these are `OUT`.
+
+A bare `Engineering Manager`, with no software word and no discipline marker, is `UNKNOWN` /
+`domain_ambiguity`. A market marker behind it does not change that: in `Engineering Manager
+Finance` the marker names whom the team builds for, as it does in `Marketing Web Developer`. A
+discipline marker still decides `OUT`.
+
+**`technical`** reads as `engineering`: it says the work is engineering and not which domain. A
+bare `Technical Lead` is `UNKNOWN` / `domain_ambiguity`, like a bare `Engineering Manager`. It is
+`IN` with a software word and `OUT` with a discipline marker. Customer-facing technical roles,
+`Technical Account Manager` and `Technical Services Manager`, are `scope_ambiguity`, because the
+expertise they need splits the way a product manager's does.
+
+**Product, program and project roles**, under any rank word (`manager`, `lead`, `director`,
+`head of`), are `UNKNOWN` / `scope_ambiguity`, with two exceptions. `Technical Product Manager`
+and `Technical Program Manager` are `IN`: `technical` names the subset a software background
+opens. `Technical Project Manager` is `UNKNOWN` / `domain_ambiguity`, because a technical project
+is as often cabling or construction as software. A discipline marker still decides all of them
+`OUT`: `Construction Project Manager` and `Project Manager Midstream Oil and Gas` are `OUT`,
+because they hire on site training that a software background does not replace.
+
+**Data roles.** Data science is `IN`, because code is its primary artifact (Q2), and so a
+manager of data science is `IN` too. A `data analyst` or `business systems analyst` is
+`scope_ambiguity`, because some write queries and specs and some build slides. It is `IN` when
+the title names an engineer-facing artifact (Q3), such as a data warehouse, an API or ETL.
+
+**Network roles.** A network engineer is `IN`, because configurations, logs and protocol specs
+are engineer-facing artifacts (Q3). A network or NOC technician is `scope_ambiguity`, because
+first-line monitoring splits the way help desk does.
+
+**Designers.** UX, UI, visual and product designers are `OUT`. A designer writes no code (Q2),
+authors the surface instead of working on engineer-facing artifacts (Q3), and is hired on a
+portfolio rather than a software background (Q4). `product` does not hold them open, because
+`designer` is not a generic head. Content roles are `OUT` for the same reason, even under
+`developer`: a `Training Content Developer` writes content, like a `writer`.
 
 **AI-training posts** — `AI Trainer …`, `… AI Training …` — are vacancies, so they pass Q1, and
 the expertise they name decides them. Software or computer-science expertise is `IN`. Any other

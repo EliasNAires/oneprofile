@@ -20,7 +20,7 @@ import org.junit.jupiter.api.Test;
  */
 class LabelledFixturesTest {
 
-	private static final int LABELLED_IN_DECIDED_OUT_CEILING = 19;
+	private static final int LABELLED_IN_DECIDED_OUT_CEILING = 18;
 
 	private final TitleClassification classification = new TitleClassification();
 

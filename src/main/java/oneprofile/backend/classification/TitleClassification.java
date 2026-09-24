@@ -55,6 +55,8 @@ public class TitleClassification {
 
 	private static final Pattern WHITESPACE = Pattern.compile("\\s+");
 
+	private static final Pattern LIST_NUMBER = Pattern.compile("^\\d+\\.(?=\\p{L})");
+
 	private static final Head BOUND_CAPABLE = new Head(Domain.BOUND, true);
 
 	private static final Head BOUND_INCAPABLE = new Head(Domain.BOUND, false);
@@ -113,7 +115,7 @@ public class TitleClassification {
 			// Round 13: the German team and shift leads, read the way leiter is, and the student and
 			// graduate postings, read the way intern is.
 			"teamleiter", "teamleitung", "schichtleiter", "objektleiter", "student", "students", "graduate",
-			"graduates", "grad", "trainee", "trainees", "fellowship");
+			"graduates", "grad", "trainee", "trainees", "fellowship", "svp", "rvp");
 
 	/**
 	 * Yielding heads that name no work of their own even when nothing stands behind them. Step 6
@@ -126,6 +128,9 @@ public class TitleClassification {
 	 * would decide it OUT. {@code consultant} joined in iteration 11, after the head was reclassed
 	 * domain-bound: priced on the accumulated labels it decided 26 rows right and 9 wrong, with no
 	 * new miss. {@code specialist} and {@code intern} were priced the same way and each added a miss.
+	 * Round 14 took {@code lead}, {@code specialist} and {@code administrator} in once the software
+	 * words those misses named — service desk, website, WordPress, ICT — were qualifiers; the intern
+	 * stays off, because the research interns it misses name no software word at all.
 	 */
 	private static final Set<String> GENERIC_HEADS = Set.of(
 			"advisor",
@@ -160,7 +165,12 @@ public class TitleClassification {
 			"tech",
 			"vp",
 			// Round 13: the German team and shift leads, read the way leiter is.
-			"teamleiter", "teamleitung", "schichtleiter", "objektleiter");
+			"teamleiter", "teamleitung", "schichtleiter", "objektleiter",
+			// Round 14: the lead, the specialist and the administrator, which name no work of their own
+			// either. The intern and the graduate are left off: a research intern names no software word
+			// and is an engineering post as often as not.
+			"lead", "specialist", "specialists", "especialista", "specialiste", "spécialiste",
+			"administrator", "consultor", "consultora", "svp", "rvp", "assessoria", "매니저", "담당자");
 
 	/**
 	 * Words that hold a generic head open rather than letting the rule above decide it. The
@@ -226,8 +236,8 @@ public class TitleClassification {
 			Map.entry("desenvolvedor", BOUND_CAPABLE), Map.entry("desenvolvedora", BOUND_CAPABLE),
 			Map.entry("programador", BOUND_CAPABLE), Map.entry("programadora", BOUND_CAPABLE),
 			Map.entry("analista", FREE_CAPABLE), Map.entry("arquitecto", FREE_CAPABLE),
-			Map.entry("arquiteto", FREE_CAPABLE), Map.entry("consultor", FREE_CAPABLE),
-			Map.entry("consultora", FREE_CAPABLE), Map.entry("desenvolvimento", BOUND_CAPABLE),
+			Map.entry("arquiteto", FREE_CAPABLE), Map.entry("consultor", BOUND_CAPABLE),
+			Map.entry("consultora", BOUND_CAPABLE), Map.entry("desenvolvimento", BOUND_CAPABLE),
 			Map.entry("développeur", BOUND_CAPABLE),
 			Map.entry("développeuse", BOUND_CAPABLE),
 			Map.entry("desarrollo", BOUND_CAPABLE),
@@ -272,7 +282,12 @@ public class TitleClassification {
 			Map.entry("student", BOUND_CAPABLE), Map.entry("students", BOUND_CAPABLE),
 			Map.entry("graduate", BOUND_CAPABLE), Map.entry("graduates", BOUND_CAPABLE),
 			Map.entry("grad", BOUND_CAPABLE), Map.entry("trainee", BOUND_CAPABLE),
-			Map.entry("trainees", BOUND_CAPABLE), Map.entry("fellowship", BOUND_CAPABLE));
+			Map.entry("trainees", BOUND_CAPABLE), Map.entry("fellowship", BOUND_CAPABLE),
+			// Round 14: the vice presidents abbreviated further, the Portuguese advisory and the Korean
+			// manager and person in charge, all generic; and the author, which writes the way a writer does.
+			Map.entry("svp", BOUND_CAPABLE), Map.entry("rvp", BOUND_CAPABLE), Map.entry("assessoria", BOUND_CAPABLE),
+			Map.entry("매니저", BOUND_CAPABLE),
+			Map.entry("담당자", BOUND_CAPABLE), Map.entry("author", BOUND_INCAPABLE));
 
 	/**
 	 * The heads that decide out whatever modifies them, and so carry neither attribute. Each one
@@ -280,6 +295,8 @@ public class TitleClassification {
 	 * veterinarian and no software bartender.
 	 */
 	private static final Set<String> NEVER_ENGINEERING = Set.of(
+			// Round 14: the never-engineering heads round 13's unruled pile named.
+			"hrbp", "biostatistician", "canvasser", "paraprofessionals", "aides", "podiatry", "groundman", "creator", "treasurer", "coater", "butler", "geschäftsführer", "bauleiter", "bankkaufmann", "referendar", "koordinator",
 			"trainer", "assistant", "executive", "nurse", "representative", "coordinator",
 			"teacher", "driver",
 			"veterinarian", "physician", "psychologist", "psychiatrist", "pharmacist", "dentist", "surgeon",
@@ -371,6 +388,10 @@ public class TitleClassification {
 	 * roles are named by ruling instead.
 	 */
 	private static final Set<String> SOFTWARE_QUALIFIERS = Set.of(
+			// Round 14: software domains round 13 read as nothing.
+			"etl", "mainframe", "plm", "backup", "server side",
+			"system administrator", "systems administrator", "service desk", "website", "webpage", "wordpress",
+			"ict", "soc lead", "soc analyst", "soc analysts", "calypso", "tech delivery", "production support", "technical lead", "technical leads",
 			"graph",
 			"devex",
 			"malware",
@@ -442,6 +463,10 @@ public class TitleClassification {
 	 * and the word {@code data} inside the phrase would otherwise read as a software qualifier.
 	 */
 	private static final Set<String> DISCIPLINE_MARKERS = Set.of(
+			// Round 14: credentials round 13 left at step 7. energy storage and quality management
+			// systems are here the way data center is, for the facility or function they name: the
+			// storage and systems inside them would otherwise read as software qualifiers.
+			"wastewater", "pharmacokinetics", "dmpk", "actuarial", "warhead", "rotors", "blades", "fluids", "pll", "foundry", "plastics", "industrialization", "engineer in training", "harness design", "digital design", "energy storage", "quality management system", "quality management systems",
 			// The trainings iteration 10's unknown pile hired on: bioscience, the power grid, civil
 			// site work and the process plant. Protein and actuarial were priced and left out — the
 			// first named machine-learning roles in protein design, the second an actuarial software
@@ -518,6 +543,8 @@ public class TitleClassification {
 	 * before step 4.
 	 */
 	private static final Set<String> MARKET_MARKERS = Set.of(
+			// Round 14: markets a title names plainly, which decide a bound head that is not generic.
+			"building", "buildings", "material handling",
 			"sports",
 			"trading desk",
 			"proposal",
@@ -617,7 +644,6 @@ public class TitleClassification {
 			Map.entry("sales engineer", scopeAmbiguity()),
 			Map.entry("data analyst", scopeAmbiguity()),
 			Map.entry("business analyst", scopeAmbiguity()),
-			Map.entry("support engineer", scopeAmbiguity()),
 			Map.entry("civil engineer", Classification.out()),
 			Map.entry("network engineer", Classification.in()),
 			Map.entry("field engineer", scopeAmbiguity()),
@@ -712,6 +738,10 @@ public class TitleClassification {
 			Map.entry("talent pipeline", Classification.out()),
 			Map.entry("candidate pool", Classification.out()),
 			Map.entry("general application", Classification.out()),
+			// Round 14: posts that hire nobody, and the recruiter who hires engineers.
+			Map.entry("general applications", Classification.out()), Map.entry("job fair", Classification.out()),
+			Map.entry("인재풀", Classification.out()), Map.entry("engineering recruiter", Classification.out()),
+			Map.entry("engineering recruiters", Classification.out()),
 			Map.entry("employment application", Classification.out()),
 			Map.entry("open application", Classification.out()),
 			Map.entry("open applications", Classification.out()),
@@ -804,9 +834,20 @@ public class TitleClassification {
 			"manager", "managers", "mgr", "director", "directors", "head", "lead", "leader", "leaders", "vp",
 			"avp", "chief", "president", "gerente", "leiter", "responsable");
 
+	/**
+	 * The functions a rank word leaves behind when the manager sells or hires rather than runs
+	 * anything: under one of them a technology noun names the market, as {@code IT} does in
+	 * {@code Account Manager IT Staffing}.
+	 */
+	private static final Set<String> SALE_OR_HIRE = Set.of(
+			"sales", "business development", "account", "client", "talent", "sourcing", "staffing",
+			"recruitment", "recruiting");
+
+	private static final int LONGEST_SALE_OR_HIRE = longest(SALE_OR_HIRE);
+
 	private static final Set<String> NON_FUNCTION_QUALIFIERS = Set.of(
 			"it", "information technology", "technology", "data", "security", "cyber", "cybersecurity",
-			"salesforce", "sap", "netsuite", "workday", "servicenow");
+			"salesforce", "sap", "netsuite", "workday", "servicenow", "technical");
 
 	private static final Set<String> FUNCTION_QUALIFIERS = SOFTWARE_QUALIFIERS.stream()
 		.filter((qualifier) -> !NON_FUNCTION_QUALIFIERS.contains(qualifier))
@@ -818,7 +859,7 @@ public class TitleClassification {
 	 * knowledge a software background does not bring. Under a developer the package is software.
 	 */
 	private static final Set<String> ENTERPRISE_PACKAGES = Set.of(
-			"sap", "salesforce", "netsuite", "workday", "servicenow", "oracle ebs");
+			"sap", "salesforce", "netsuite", "workday", "servicenow", "oracle ebs", "plm");
 
 	private static final Set<String> FUNCTIONAL_HEADS = Set.of(
 			"consultant", "consultants", "consultor", "consultora", "analyst", "analysts", "analista",
@@ -859,8 +900,10 @@ public class TitleClassification {
 		// 1a — The families the criterion decides by ruling, below the credential: a discipline
 		// marker still decides each of them out.
 		boolean disciplined = named(words, DISCIPLINE_MARKERS, LONGEST_DISCIPLINE_MARKER) != null;
-		if (named(words, AI_TRAINING, 2) != null) {
-			if (disciplined) {
+		String training = named(words, AI_TRAINING, 2);
+		if (training != null) {
+			// The phrase itself names no discipline: the tutor in "ai tutor" is the gig, not a credential.
+			if (named(without(words, training), DISCIPLINE_MARKERS, LONGEST_DISCIPLINE_MARKER) != null) {
 				return Classification.out();
 			}
 			if (named(words, AI_TRAINING_SOFTWARE_EXPERTISE, LONGEST_AI_TRAINING_EXPERTISE) != null) {
@@ -902,7 +945,10 @@ public class TitleClassification {
 			}
 			if (RANK_HEADS.contains(head)
 					&& named(words, FUNCTION_QUALIFIERS, LONGEST_FUNCTION_QUALIFIER) == null) {
-				return scopeAmbiguity();
+				// What is left once the rank word is stripped is a sale or a hire: the technology noun
+				// names the market, not what the manager runs.
+				return named(words, SALE_OR_HIRE, LONGEST_SALE_OR_HIRE) != null ? Classification.out()
+						: scopeAmbiguity();
 			}
 			return Classification.in();
 		}
@@ -975,8 +1021,19 @@ public class TitleClassification {
 		return null;
 	}
 
+	/** The words of the title with the first occurrence of one phrase taken out of them. */
+	private static List<String> without(List<String> words, String phrase) {
+		List<String> taken = List.of(WHITESPACE.split(phrase));
+		int at = java.util.Collections.indexOfSubList(words, taken);
+		List<String> rest = new java.util.ArrayList<>(words.subList(0, at));
+		rest.addAll(words.subList(at + taken.size(), words.size()));
+		return rest;
+	}
+
 	private static List<String> words(String cleanedTitle) {
 		String title = cleanedTitle.trim();
+		// A list number glued to the first word, as in "07.Data Engineer", is not part of the word.
+		title = LIST_NUMBER.matcher(title).replaceFirst("");
 		return title.isEmpty() ? List.of() : List.of(WHITESPACE.split(title.toLowerCase(Locale.ROOT)));
 	}
 
