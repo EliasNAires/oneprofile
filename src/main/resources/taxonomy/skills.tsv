@@ -1,0 +1,15 @@
+postgresql	PostgreSQL	database	postgres|psql
+mysql	MySQL	database	
+terraform	Terraform	devops	
+ansible	Ansible	devops	
+docker	Docker	devops	
+kubernetes	Kubernetes	devops	k8s
+aws	AWS	cloud	amazon web services
+angular	Angular	framework	
+react	React	framework	react.js|reactjs
+java	Java	language	
+javascript	JavaScript	language	js
+typescript	TypeScript	language	ts
+python	Python	language	
+go	Go	language	golang
+c-sharp	C#	language	csharp
