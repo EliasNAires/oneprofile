@@ -1,0 +1,1228 @@
+# Taxonomy review (issue #38): one verdict per candidate of taxonomy-candidates-2026-09-24.tsv with df>=3,
+# in that file's order, split across four subagents; the last rows were added by hand. Merged into
+# src/main/resources/taxonomy/skills.tsv by scripts/taxonomy_select.py with a threshold of 3.
+name	verdict	canonical	category	aliases	note
+HAL/S	drop				noise: A
+ActionScript	drop				AS noise; honest forms match almost nothing
+TOPS-10	drop				noise: S, T
+S	drop				single letter
+Berry	drop				noise: be
+Build	drop				ordinary word
+Microsoft Teams	drop				office software; Teams ordinary word
+Adobe Illustrator	drop				AI noise; honest forms match almost nothing
+Vim Help File	drop				noise: help
+Cloud	drop				ordinary word
+make	keep	GNU Make	tool	Makefile	make: ordinary word
+Python	keep	Python	language	python3|py3|Python language	py: too short; Python.org, rusthon, Python computer language: not used
+Google Drive	drop				office software; Drive ordinary word
+Vision	drop				ordinary word
+Office	drop				ordinary word
+Access	keep	Microsoft Access	database	MS Access	Access: ordinary word
+AWS	keep	AWS	cloud	Amazon Web Services	
+Just	drop				ordinary word
+Deployment	drop				ordinary word
+Enterprise	drop				ordinary word
+Incompatible Timesharing System	drop				obscure; ITS noise
+Go	keep	Golang	language		Go: ordinary word
+Google Meet	drop				consumer software; Meet ordinary word
+Universal Scene Description	drop				USD noise (currency)
+Edge	drop				ordinary word
+Kubernetes	keep	Kubernetes	devops	K8s	container orchestrator: generic
+SQL	keep	SQL	language	Structured query language	Structural Query Language: misspelling
+Source	drop				ordinary word
+Analytics	drop				ordinary word
+Self	drop				ordinary word
+Azure	keep	Azure	cloud	Microsoft Azure|Windows Azure	Azul: different product; old platform names unused
+Microsoft Project	keep	Microsoft Project	tool	MS Project	Project: ordinary word
+Move	drop				ordinary word
+Processing	drop				ordinary word
+WEB	drop				ordinary word
+ML	drop				means machine learning
+D	drop				single letter
+Java	keep	Java	language		
+Java platform	keep	Java	language		Java platform: merged into Java
+TypeScript	keep	TypeScript	language		TS: also TS/SCI clearance
+Optimization	drop				ordinary word
+K	drop				single letter
+Solid	drop				ordinary word / SOLID principles
+Email	drop				ordinary word
+Action!	drop				ordinary word
+Reporting	drop				ordinary word
+Docker	keep	Docker	devops		Docker software: unused
+Oracle Database	keep	Oracle Database	database	Oracle DBMS|Oracle RDBMS|Oracle DB	Database: noise; Oracle: company, names several products
+C++	keep	C++	language	cpp	
+Linux	keep	Linux	os		
+Perl Compatible Regular Expressions	drop				noise form; honest forms 0
+React	keep	React	framework	React.js|ReactJS	
+Terraform	keep	Terraform	devops	HashiCorp Terraform	tf: ambiguous
+SAN	drop				SAN ambiguous (San Jose); storage area network generic
+Workflow	drop				ordinary word
+C	keep	C	language	C language	
+C--	drop				obscure; matches C
+Debugging	drop				generic concept
+Expect	drop				ordinary word
+E	drop				single letter
+JavaScript	keep	JavaScript	language	js	
+Click	drop				ordinary word
+BASIC	drop				ordinary word
+Git	keep	Git	tool		content tracker: unused
+LinkedIn	drop				consumer software
+GitHub	keep	GitHub	tool		
+ConTeXt	drop				ordinary word (context)
+Clean	drop				ordinary word
+Requests	drop				ordinary word
+root	drop				ordinary word
+Apache Kafka	keep	Apache Kafka	data	Kafka	
+IBM WebSphere Application Server	drop				WAS noise; honest forms match almost nothing
+Oracle Reports	drop				Reports noise; honest forms 0
+Text	drop				ordinary word
+OpenEdge Advanced Business Language	drop				Progress noise; honest forms 0
+Node.js	keep	Node.js	framework	NodeJS	Node: ordinary word (graph/cluster node)
+PHP	keep	PHP	language		inc: noise
+PostgreSQL	keep	PostgreSQL	database	Postgres|psql	
+Apache Spark	keep	Apache Spark	data	Spark	
+SPARK	drop				homonym of Apache Spark; Ada subset not meant
+LESS	drop				ordinary word
+R	keep	R	language	GNU R|R language|Rscript	GNU S, splus: other dialects
+Active Directory	keep	Active Directory	security	MS Active Directory|MS AD	AD: ordinary abbreviation
+B	drop				single letter
+Google Docs	drop				office software
+Step	drop				ordinary word
+Clarity	drop				ordinary word
+Velocity Template Language	drop				velocity: agile term; honest forms match almost nothing
+Version control	drop				generic concept
+Concept	drop				ordinary word
+Rust	keep	Rust	language		rs: ambiguous
+Microsoft Excel	keep	Microsoft Excel	data	MS Excel|Office Excel|Microsoft 365 Excel	Excel: verb (excel at)
+Programming languages	drop				generic concept
+Bash	keep	Bash	language		
+C#	keep	C#	language	csharp	cake, cakescript: other tool; Microsoft Java: unused
+Microsoft Windows	keep	Microsoft Windows	os	Windows	MSFT Win: unused
+PyTorch	keep	PyTorch	ml		torch: also Lua Torch
+YouTube	drop				consumer software
+Jira	keep	Jira	tool	Jira Software	
+Snowflake	keep	Snowflake	data		
+Verification	drop				ordinary word
+Operating system	drop				generic concept
+Simulation	drop				ordinary word
+GitLab EE	keep	GitLab	tool	GitLab EE	
+NoSQL	drop				generic concept (database category)
+Connectivity	drop				ordinary word
+MySQL	keep	MySQL	database		
+Central	drop				ordinary word
+Data modeling	drop				generic concept
+Exchange	drop				ordinary word; mail server, not engineering skill
+IntelliJ IDEA	keep	IntelliJ IDEA	tool	IntelliJ	IDEA: ordinary word
+Elasticsearch	keep	Elasticsearch	database		es: noise (Spanish)
+Apache Airflow	keep	Apache Airflow	data	Airflow	
+Ansible	keep	Ansible	devops		
+Sites	drop				ordinary word
+Prometheus	keep	Prometheus	devops		
+Fluent	drop				ordinary word
+Statistical	drop				ordinary word
+Inform	drop				ordinary word
+Spring Framework	keep	Spring Framework	framework	springframework	Spring: ordinary word; ac: noise
+Migration	drop				ordinary word
+Adobe Director	drop				Director noise; honest forms 0
+Director	drop				ordinary word
+Data analysis	drop				generic concept
+Sierra's Creative Interpreter	drop				SCI noise (TS/SCI)
+Scheduling	drop				ordinary word
+Root cause analysis	drop				generic concept
+Reason	drop				ordinary word; ReasonML matches almost nothing
+FALSE	drop				ordinary word
+Salesforce	keep	Salesforce	tool		
+Kotlin	keep	Kotlin	language		
+Android	keep	Android	os		
+GAP	drop				ordinary word
+Scala	keep	Scala	language		
+Apache HTTP Server	keep	Apache HTTP Server	devops	httpd|Apache web server|Apache webserver	Apache: names many projects; HTTP Server: generic
+S3	keep	Amazon S3	cloud	S3|Simple Storage Service	
+Project management	drop				generic concept
+MongoDB	keep	MongoDB	database	Mongo	
+MUMPS	drop				M noise; honest forms match almost nothing
+Adobe AIR	drop				AIR noise; honest forms 0
+Redis	keep	Redis	database		
+Big Data	drop				generic concept
+Cisco IOS	keep	Cisco IOS	networking		IOS: collides with Apple iOS
+Continuous integration	drop				generic concept
+GraphQL	keep	GraphQL	language		
+DNS	keep	DNS	networking	Domain name system	
+SAP ERP	keep	SAP ERP	tool	SAP	ERP: generic concept
+TensorFlow	keep	TensorFlow	ml		
+eXist	drop				ordinary word (exist)
+Access management	drop				generic concept
+MicroStation	drop				CAD noise; honest forms match almost nothing
+P′′	drop				obscure; noise
+CRM	drop				generic concept
+Angular	keep	Angular	framework		Angular 2+: punctuation form
+Org-mode	drop				Org noise; honest forms 0
+Batchfile	drop				batch noise; honest forms match almost nothing
+Google Workspace	drop				office software; Workspace ordinary word
+PowerShell	keep	PowerShell	language	pwsh	posh: ordinary word
+Tax	drop				ordinary word
+Configuration management	drop				generic concept
+Ruby	keep	Ruby	language		jruby, macruby: other implementations; rake, rb, rbx: ambiguous
+Google Slides	drop				office software; Presentations noise
+Encryption	drop				generic concept
+Cascading Style Sheets Level 3	keep	CSS	language	Cascading style sheets|CSS3	
+Scratch	drop				ordinary word
+BigQuery	keep	Google BigQuery	data	BigQuery	
+Microsoft SQL Server	keep	Microsoft SQL Server	database	SQL Server|MS SQL|MS SQL Server|MS SQLServer|MSSQL	Windows SQL: unused
+Confluence	keep	Confluence	tool		Confluence Hosted: unused
+Lean	drop				ordinary word (lean methodology)
+Raw token data	drop				raw noise
+HTML	keep	HTML	language	HTML5|XHTML	
+Spring Boot	keep	Spring Boot	framework		
+HTTP	keep	HTTP	networking		
+Disaster recovery	drop				generic concept
+Pandas	keep	pandas	data		
+CloudFormation	keep	AWS CloudFormation	devops	CloudFormation	
+gRPC	keep	gRPC	framework		
+Vue.js	keep	Vue.js	framework	Vue|VueJS	
+EGO	drop				ordinary word
+HCL Domino	drop				Notes noise; Domino ordinary word
+serverless computing	drop				generic concept
+DEMOS	drop				ordinary word
+Capacity planning	drop				generic concept
+Microsoft Dynamics	keep	Microsoft Dynamics	tool	Dynamics 365	Dynamics: ordinary word
+Clinical	drop				ordinary word
+Tableau	keep	Tableau	data		
+Genie	drop				ordinary word; obscure
+Genie	drop				ordinary word; obscure
+Genie	drop				ordinary word; obscure
+Eclipse Jersey	drop				Jersey noise (New Jersey); honest forms 0
+F*	drop				obscure; noise
+scikit-learn	keep	scikit-learn	ml	sklearn	scikit: also scikit-image; scikits.learn: old name
+Lift	drop				ordinary word
+AL	drop				common abbreviation
+Next.js	keep	Next.js	framework	NextJS	
+UNIX	keep	Unix	os		
+E-mail	drop				ordinary word
+Jakarta Expression Language	drop				generic phrase noise; honest forms 0
+ABC	drop				JSON noise; obscure
+Amazon DynamoDB	keep	Amazon DynamoDB	database	DynamoDB	
+desktop	drop				ordinary word
+Slack	drop				office chat software
+V	drop				single letter
+Zoom	drop				consumer software
+Data Pipeline	drop				generic concept
+STAR	drop				ordinary word
+Checkstyle	drop				CS noise; honest forms 0
+cloud computing	drop				generic concept
+Red	drop				ordinary word
+RabbitMQ	keep	RabbitMQ	data		
+Data warehouse	drop				generic concept
+EC2	keep	Amazon EC2	cloud	EC2|Elastic Compute Cloud	
+Ruby on Rails	keep	Ruby on Rails	framework	Rails|RoR	
+Shell	drop				ordinary word; generic
+ServiceNow	keep	ServiceNow	tool		
+Metal	drop				ordinary word
+Object oriented programming	drop				generic concept
+Unit testing	drop				generic concept
+NumPy	keep	NumPy	data		
+React Native	keep	React Native	framework		
+Robots Exclusion Rules	drop				robots noise
+Cadence	drop				ordinary word
+Data visualization	drop				generic concept
+Swift	keep	Swift	language	Swift language|Apple Swift|Swiftlang	
+Scheme	drop				ordinary word
+Mathematical	drop				ordinary word
+FastAPI	keep	FastAPI	framework		
+macOS	keep	macOS	os	OSX|OS X|Mac OS	Mac OS 10 etc: unused
+Microservices Architecture	drop				generic concept
+Middleware	drop				generic concept
+Business intelligence	drop				generic concept
+Git Commit	drop				commit noise
+ECS	keep	Amazon ECS	cloud	ECS|Elastic Container Service	
+Gemini	drop				Gemini protocol not meant (Google Gemini)
+VPN	keep	VPN	networking	Virtual private network|Virtual private networking	
+Mlflow	keep	MLflow	ml		
+SAML	keep	SAML	security	Security assertion markup language	
+Algorithmic	drop				ordinary word
+Integration testing	drop				generic concept
+Microsoft Power BI	keep	Power BI	data	Microsoft Power BI|PowerBI	
+Firewall	drop				generic concept
+Facebook	drop				consumer software
+Relational database	drop				generic concept
+Web application	drop				generic concept
+Apache Flex	drop				Flex noise; honest forms 0
+Django	keep	Django	framework		
+FLEX	drop				ordinary word; obscure OS
+assembly language	keep	Assembly language	language	asm|assembler language|assembly code	assembly: ordinary word (manufacturing)
+PySpark	keep	PySpark	data		
+Apache Maven	keep	Apache Maven	tool	Maven	
+FlagShip	drop				ordinary word (flagship)
+MAGIC	drop				ordinary word
+Redshift	keep	Amazon Redshift	data	Redshift	
+Ads	drop				ordinary word
+FL	drop				abbreviation (Florida)
+Factor	drop				ordinary word
+SageMaker	keep	Amazon SageMaker	ml	SageMaker	
+VMware	keep	VMware	devops		
+Coherent	drop				ordinary word
+Express.js	keep	Express.js	framework	Expressjs	Express: ordinary word
+Catalyst	drop				ordinary word
+ClickHouse	keep	ClickHouse	database		
+Route	drop				ordinary word
+RTOS	drop				generic concept
+Selenium	keep	Selenium	testing		
+Joy	drop				ordinary word
+Puppet	keep	Puppet	devops		Puppet Labs, Reductive Labs: company names
+Markdown	keep	Markdown	tool		md: abbreviation (MD, Maryland); pandoc: other tool
+BGP	keep	BGP	networking	Border Gateway Protocol	
+Liquid	drop				ordinary word
+CoffeeScript	drop				coffee noise; honest forms 0
+Apache Hadoop	keep	Apache Hadoop	data	Hadoop	
+Clustering	drop				generic concept
+Database design	drop				generic concept
+Systems integration	drop				generic concept
+Jest	keep	Jest	testing		
+Pod	drop				ordinary word
+A♯	drop				obscure; A sharp noise
+WAN	drop				generic concept
+Regression testing	drop				generic concept
+ShellSession	drop				console noise
+Security testing	drop				generic concept
+Ada	drop				collides with ADA (disabilities act); no safe form
+Cuda	keep	CUDA	framework		
+Penetration testing	drop				generic concept
+Hope	drop				ordinary word
+DHCP	keep	DHCP	networking	Dynamic Host Configuration Protocol	
+Boost	keep	Boost C++ Libraries	framework	libboost	Boost: ordinary word
+structured text	drop				ST noise; honest form matches almost nothing
+Ubuntu	keep	Ubuntu	os	Canonical Ubuntu|Ubuntu Linux|Ubuntu OS|Ubuntu GNU/Linux	
+MDM	drop				generic concept; MDM ambiguous (mobile device management)
+OpenSearch	keep	OpenSearch	database		
+Component Object Model	drop				COM noise (.com); honest form 0
+Workday	drop				workday: ordinary word
+Starlark	keep	Bazel	tool		Starlark 0; all matches are bazel, so kept as Bazel
+Forth	drop				ordinary word (so forth)
+Google Sheets	keep	Google Sheets	data	Google Spreadsheets	Sheets, Spreadsheets: ordinary words; URLs left out
+Gradle	keep	Gradle	tool	Gradle Build Tool	
+Micrografx Designer	drop				Designer noise; historical
+Resource management	drop				generic concept
+GNU lightning	drop				lightning noise; obscure
+ImpressCMS	drop				CMS noise; honest form 0
+Database management	drop				generic concept
+Switch	drop				generic concept / ordinary word
+Apache Cassandra	keep	Apache Cassandra	database	Cassandra	
+Interpreter	drop				generic concept
+MATLAB	keep	MATLAB	language	Matrix Laboratory	
+Flask	keep	Flask	framework		
+Hugging Face	keep	Hugging Face	ml	HuggingFace	
+Protocol Buffer	keep	Protocol Buffers	tool	Protocol Buffer|protobuf|protobuf3	proto: too generic
+Kinesis	keep	Amazon Kinesis	data	Kinesis|AWS Kinesis	
+ht://Dig	drop				Dig noise; obscure
+LAN	drop				generic concept
+XML	keep	XML	language	Extensible Markup Language	xsd, wsdl: different things
+General Architecture for Text Engineering	drop				GATE noise; honest form 0
+Redux	keep	Redux	framework		
+SonarQube	keep	SonarQube	testing		Sonar: also sonar sensing
+RPC	drop				generic concept; xdr noise (extended detection and response)
+Windows Server	keep	Windows Server	os		
+Figma	keep	Figma	tool		figma.com: URL
+Apex	keep	Salesforce Apex	language		Apex: ordinary word, Apex Systems, Oracle APEX
+Microsoft Word	drop				office software; Word noise
+IDS	drop				generic concept
+Postman	keep	Postman	tool		
+LiveCode	drop				Revolution noise; honest forms 0
+Nunjucks	drop				NJ noise (New Jersey); honest form 0
+Load testing	drop				generic concept
+Chef	keep	Chef	devops	Progress Chef|Chef Infra	Chef software: not how people write it
+Data extraction	drop				generic concept
+RESTful API	keep	RESTful API	tool	RESTful|REST API|REST APIs|RESTful APIs	REST: ordinary word
+Data validation	drop				generic concept
+Logitech Media Server	drop				consumer software; SC/LMS noise
+Risk assessment	drop				generic concept
+DOS	drop				historical; collides with DoS attacks, do's
+Google Apps Script	keep	Google Apps Script	language	Apps Script	GAS: ordinary word
+MITRE ATT&CK	keep	MITRE ATT&CK	security		
+Apache Hive	keep	Apache Hive	data	Hive	
+OSPF	keep	OSPF	networking	Open Shortest Path First	
+Tailwind CSS	keep	Tailwind CSS	framework	Tailwind|TailwindCSS	
+webpack	keep	webpack	tool		
+Cool	drop				ordinary word
+JUnit	keep	JUnit	testing		
+Flutter	keep	Flutter	framework		
+Microsoft SharePoint	keep	Microsoft SharePoint	tool	SharePoint	
+Kubeflow	keep	Kubeflow	ml		
+Microsoft Outlook	drop				office software nobody lists
+Vite	keep	Vite	tool	Vite.js|vitejs	
+Compilers	drop				generic concept
+FLUX	drop				flux: ordinary word (in flux)
+Quantum	drop				ordinary word; Firefox engine
+Robot Operating System	keep	Robot Operating System	framework	ROS|ROS2|ROS 2|Robotic Operating System	
+npm	keep	npm	tool	Node Package Manager	
+Hibernate	keep	Hibernate	framework	Hibernate ORM	
+Salt	keep	SaltStack	devops	Salt Project	Salt: ordinary word; saltstate left out
+Bootstrap	keep	Bootstrap	framework	Twitter Bootstrap	
+Ignore List	drop				ignore noise
+Microsoft Defender Antivirus	keep	Microsoft Defender	security	Microsoft Defender Antivirus|Windows Defender|Defender Antivirus|Microsoft Defender for Endpoint	Defender: ordinary word
+Data mining	drop				generic concept
+SeeU	drop				SeU noise; obscure
+OpenShift	keep	OpenShift	devops	Red Hat OpenShift	
+SCM	drop				generic concept; ambiguous abbreviation
+q	drop				single letter
+IDE	drop				generic concept
+Adobe Flash	drop				historical; flash noise (flash memory)
+Adobe Flash Player	drop				historical; flash noise
+Cobalt Qube	drop				Qube noise; historical
+Hosts File	drop				hosts noise
+Component libraries	drop				generic concept
+Static analysis	drop				generic concept
+Help desk	drop				generic concept
+NAS	drop				generic concept
+IPS	drop				generic concept
+EMR	keep	Amazon EMR	data	Elastic MapReduce|AWS EMR	EMR: electronic medical records
+Kit	drop				ordinary word
+BETA	drop				ordinary word
+IQ	drop				ambiguous abbreviation
+S&box	drop				Sandbox noise
+Bitbucket	keep	Bitbucket	tool	Atlassian Bitbucket	bitbucket.org: URL
+NestJS	keep	NestJS	framework	Nest.js	Nest: ordinary word, Google Nest
+XGBoost	keep	XGBoost	ml	eXtreme Gradient Boosting	
+Checksums	drop				sum/hash noise; generic concept
+Network monitoring	drop				generic concept
+Perl	keep	Perl	language	Perl 5	Pearl: different word; cperl, Perl/CGI left out
+Xcas	drop				giac noise (GIAC certs)
+Network design	drop				generic concept
+Patch management	drop				generic concept
+Power Automate	keep	Power Automate	tool	Microsoft Power Automate	
+Construct	drop				ordinary word
+Atari TOS	drop				noise form; historical
+MIS	drop				generic concept
+Endpoint Protection	drop				generic concept
+YAML	keep	YAML	tool	yml	
+Home Assistant	drop				HA noise; honest forms 0
+Nix	keep	NixOS	os		Nix: *nix; kept as NixOS
+Matplotlib	keep	Matplotlib	data		
+Opa	drop				matches are Open Policy Agent, not Opa language
+Bicep	keep	Bicep	devops	Azure Bicep	
+pluggable authentication module	drop				PAM noise (privileged access mgmt)
+Project planning	drop				generic concept
+SEO	drop				marketing concept
+Remote access	drop				generic concept
+Active Server Pages	drop				ASP.Net matches belong to ASP.NET; honest forms almost nothing
+Apache Ant	keep	Apache Ant	tool		Ant: ordinary word
+MuleSoft	keep	MuleSoft	tool	Mule ESB	
+Debuggers	drop				generic concept
+PowerPoint	drop				office software nobody lists as engineering skill
+Wireshark	keep	Wireshark	networking		
+System Integrity Protection	drop				SIP matches are Session Initiation Protocol
+Keras	keep	Keras	ml		
+Test design	drop				generic concept
+ASP.NET	keep	ASP.NET	framework		aspx: file extension
+Azure Data Factory	keep	Azure Data Factory	data		
+Marketing Cloud	keep	Salesforce Marketing Cloud	tool	Marketing Cloud|SFMC	
+SwiftUI	keep	SwiftUI	framework		
+Airtable	keep	Airtable	tool		
+J	drop				single letter
+System testing	drop				generic concept
+HubSpot	keep	HubSpot	tool		
+Data entry	drop				generic concept
+Neo4j	keep	Neo4j	database		
+SciPy	keep	SciPy	data		
+GIS	drop				generic concept
+JavaScript framework	drop				generic concept
+Router	drop				generic concept
+Carbon	drop				collides with carbon (emissions)
+Data mapping	drop				generic concept
+OpenStack	keep	OpenStack	cloud		
+Chatbot	drop				generic concept
+CMake	keep	CMake	tool		
+Data General AOS	drop				AOS noise; historical
+GDB	keep	GDB	tool	GNU Debugger	
+Power Platform	keep	Microsoft Power Platform	tool	Power Platform	
+Nginx	keep	Nginx	devops		
+Wiring	drop				ordinary word
+Failure analysis	drop				generic concept
+Objective-C	keep	Objective-C	language	Objc|obj-c|objectivec	
+General Problem Solver	drop				GPS noise; historical
+Leo	drop				ordinary name
+OpenGL	keep	OpenGL	framework	Open GL	GL: general ledger
+OpenVMS	drop				VMS noise (video mgmt systems); honest form 3
+Presto	keep	Presto	data	PrestoDB|PrestoSQL	
+Requirements analysis	drop				generic concept
+Logo	drop				ordinary word
+Network management	drop				generic concept
+Functional testing	drop				generic concept
+EQ	drop				emotional quotient noise
+React Redux	keep	Redux	framework	React Redux|react-redux	merged with Redux
+VM	drop				generic abbreviation
+Blueprint	drop				ordinary word
+Celery	keep	Celery	framework		
+Firebase	keep	Firebase	cloud	Google Firebase	
+Google Classroom	drop				education software; Classroom noise
+Slice	drop				ordinary word
+Diff	drop				ordinary word
+SCADA	drop				generic concept (system class)
+Apache JMeter	keep	Apache JMeter	testing	JMeter	
+Appium	keep	Appium	testing		
+Transact-SQL	keep	T-SQL	language	Transact-SQL|TSQL	
+Jupyter	keep	Jupyter	tool	Jupyter Notebook|Jupyter Notebooks|JupyterLab|IPython Notebook	
+SAS	keep	SAS	data		
+SAS Language	keep	SAS	data		merged with SAS
+Unreal Engine 1	keep	Unreal Engine	framework	UE4|UE5|Unreal Engine 5	UE: too short; UE 1 left out
+Gherkin	keep	Cucumber	testing	Gherkin	matches mostly cucumber; kept as Cucumber
+HCL	keep	OpenTofu	devops		HCL: HCLTech company; matches mostly opentofu
+A+	drop				CompTIA A+ noise
+Prisma	keep	Prisma ORM	framework		Prisma: also Prisma Cloud
+Informatica	keep	Informatica	data		
+Snap!	drop				snap noise; educational
+Sass	keep	Sass	language	SCSS|Syntactically Awesome Style Sheets	
+UrWeb	drop				Ur noise; honest forms 0
+Elixir	keep	Elixir	language		
+Apache Solr	keep	Apache Solr	database	Solr	
+ATS	drop				applicant tracking system noise
+Dynatrace	keep	Dynatrace	devops		
+ArcGIS	keep	ArcGIS	tool		arcgis.com: URL
+PL/SQL	keep	PL/SQL	language	PLSQL	
+Mesa	drop				ordinary word/place; obscure
+Mesa	drop				ordinary word/place; obscure
+Software development tools	drop				generic concept
+FP	drop				ambiguous abbreviation
+Publisher	drop				ordinary word; office software
+Power Systems	drop				collides with power systems engineering
+tcpdump	keep	tcpdump	networking		
+Podman	keep	Podman	devops		
+Shoes	drop				ordinary word
+Visual Studio	keep	Visual Studio	tool	Microsoft Visual Studio	
+OPhone	drop				OMS noise; obscure
+Planner	drop				ordinary word
+Apache Groovy	keep	Groovy	language	Apache Groovy	
+Software as a service SaaS	drop				generic concept
+WordPress	keep	WordPress	framework		
+Charity	drop				ordinary word
+OrientDB	drop				Orient noise; honest form 0
+Simulink	keep	Simulink	tool		
+Spreadsheet	drop				generic concept
+.NET Framework	keep	.NET Framework	framework		
+Close to Metal	drop				THIN noise; historical
+Apache Continuum	drop				Continuum noise; historical
+Entity Framework	keep	Entity Framework	framework	Entity Framework Core|EF Core|ADO.NET Entity Framework	EF: too short
+Adventure Game Interpreter	drop				AGI noise
+AngularJS	keep	AngularJS	framework	Angular.js|Angular JS	Angular 1.: malformed
+Falcon	drop				collides with CrowdStrike Falcon; obscure
+jQuery	keep	jQuery	framework		
+pcap	drop				generic concept (packet capture)
+SCSS	keep	Sass	language	SCSS	merged with Sass
+Smartsheet	keep	Smartsheet	tool		
+Svelte	keep	Svelte	framework	sveltejs	
+InfluxDB	keep	InfluxDB	database		
+Ring	drop				ordinary word
+SNMP	keep	SNMP	networking	Simple Network Management Protocol	
+Tape	drop				ordinary word
+Apache Druid	keep	Apache Druid	database	Druid	
+Database security	drop				generic concept
+Lucid	drop				ordinary word; obscure
+Xcode	keep	Xcode	tool		
+Jakarta EE	keep	Jakarta EE	framework	J2EE|Java EE|JavaEE|Java Enterprise Edition|Java Platform, Enterprise Edition	
+Ninja	drop				ordinary word
+Visualforce	keep	Visualforce	framework		
+File system	drop				generic concept
+Ghidra	keep	Ghidra	security		
+HTML+ECR	drop				ecr noise
+Io	drop				ordinary token
+Zeta	drop				ordinary word; obscure
+Azure Cosmos DB	keep	Azure Cosmos DB	database	Cosmos DB|CosmosDB|Azure CosmosDB|Azure DocumentDB	Cosmos: blockchain, other meanings
+C3	drop				collides with C3 AI; obscure
+Requirements management	drop				generic concept
+Stress testing	drop				generic concept
+WebGL	keep	WebGL	framework	Web Graphics Library	
+Application management	drop				generic concept
+OCR	drop				generic concept
+Security Support Provider	drop				SSP noise
+Bamboo	keep	Bamboo	devops	Atlassian Bamboo	
+Dynamic analysis	drop				generic concept
+Embedded C	keep	Embedded C	language		
+EOS	drop				ambiguous abbreviation
+Launchpad	drop				ordinary word
+MariaDB	keep	MariaDB	database		
+Object-oriented programming languages	drop				generic concept
+Propel	drop				ordinary word
+Web design	drop				generic concept
+Gettext Catalog	drop				pot noise
+IBM Db2	keep	IBM Db2	database	Db2	
+Thrift	keep	Apache Thrift	framework		Thrift: ordinary word (thrift savings plan)
+Windows 7	drop				Vienna noise; outdated
+Allegro	drop				ordinary word; obscure
+Ace	drop				ordinary word
+LXC	keep	LXC	devops	Linux Containers	
+Single sign-on SSO	drop				generic concept
+Cosmos	drop				obscure OS; Cosmos noise
+ECLiPSe	drop				matches are Eclipse IDE; obscure
+Fortify	keep	Fortify	security	Micro Focus Fortify|OpenText Fortify	
+XL	drop				ordinary token
+Arc	drop				ordinary word
+EDI	drop				generic concept
+Common Lisp	drop				CL noise; honest form 0
+SAM	drop				ambiguous abbreviation
+ASP.NET Core	keep	ASP.NET Core	framework		ASP.NET vNext: obsolete
+AutoCAD	keep	AutoCAD	tool		
+Dart	keep	Dart	language		
+Defect tracking	drop				generic concept
+Dropbox	drop				consumer software
+Max	drop				ordinary word
+Public Key	drop				generic concept
+TestNG	keep	TestNG	testing		
+Ping Identity	keep	Ping Identity	security		
+Stripes	drop				ordinary word
+Apache Tomcat	keep	Apache Tomcat	devops	Tomcat	
+SolarWinds	keep	SolarWinds	devops		
+CSV	drop				file format, not a skill
+Hack	drop				ordinary word
+LLVM	keep	LLVM	tool		
+Qalb	drop				Alb noise
+Windows Presentation Foundation	keep	WPF	framework	Windows Presentation Foundation	
+bc	drop				ordinary token
+Bouncy Castle	drop				BC noise; honest forms 0
+Cypher Query Language	keep	Cypher	language	Cypher Query Language	CQL: also Cassandra Query Language
+Jupyter Notebook	keep	Jupyter	tool	Jupyter Notebook|Jupyter Notebooks|IPython Notebook	merged with Jupyter
+Ollama	keep	Ollama	ml		
+Packet analysis	drop				generic concept
+SQLite	keep	SQLite	database		
+Tea	drop				ordinary word
+Three.js	keep	Three.js	framework	ThreeJS	
+WebAssembly	keep	WebAssembly	language	WASM	wast: rarely written
+Mozilla Firefox	drop				web browser
+QNX	keep	QNX	os		
+Recovery testing	drop				generic concept
+Web browser	drop				generic concept
+Apache Lucene	keep	Apache Lucene	database	Lucene	
+DMS	drop				ambiguous abbreviation
+Emulators	drop				generic concept
+Gmail	drop				consumer software
+Lua	keep	Lua	language		
+Microsoft Visio	keep	Microsoft Visio	tool	MS Visio|Visio	
+QUEL	drop				obscure; collides with French word
+CAP CDS	drop				cds is noise
+EDA	drop				ambiguous abbreviation (exploratory data analysis, event-driven)
+exec	drop				ordinary word
+Laravel	keep	Laravel	framework		
+Nagios	keep	Nagios	devops		
+SQLAlchemy	keep	SQLAlchemy	framework		
+Apache HBase	keep	Apache HBase	database	HBase	
+Enterprise Linux	drop				generic; fragment of Red Hat Enterprise Linux
+Network documentation	drop				generic concept
+NUnit	keep	NUnit	testing		
+Qlik	keep	Qlik	data		
+Shakespeare	drop				SPL is noise
+ZAP	keep	OWASP ZAP	security	ZAP	homonym: kept as the security scanner, not the Linguist language
+BPM	drop				generic concept; ambiguous abbreviation
+CodeQL	keep	CodeQL	security		ql: too short, noise
+D3.js	keep	D3.js	framework	D3|d3js	Data-Driven Documents: never written
+FlexBox	keep	Flexbox	tool		
+Hollywood	drop				obscure; ordinary word
+Antivirus	drop				generic concept
+ASL	drop				obscure; collides with sign language abbreviation
+Database management systems	drop				generic concept
+Formatted	drop				ordinary word
+Web framework	drop				generic concept
+Zabbix	keep	Zabbix	devops		
+DuckDB	keep	DuckDB	database		
+Mocha	keep	Mocha	testing		
+MyBatis	keep	MyBatis	framework		SSM: noise abbreviation
+Network storage	drop				generic concept
+SAND	drop				ordinary word
+Text Processing Utility	drop				obscure; TPU is tensor processing unit
+3D graphics	drop				generic concept
+Android Open Source Project	keep	Android Open Source Project	os	AOSP	
+APL	drop				only match is noise form "A programming language"
+Eagle	drop				ordinary word
+Roff	drop				man is noise
+xUnit	keep	xUnit	testing		
+YARA	keep	YARA	security		
+Kickstart	drop				ordinary word
+MLIR	keep	MLIR	framework		
+Rapid7	keep	Rapid7	security		
+RSS	drop				generic format; ambiguous abbreviation
+Software libraries	drop				generic concept
+Ethereum	keep	Ethereum	tool		Ether: ordinary word; ETH: ambiguous (ETH Zurich)
+IpTables	keep	iptables	networking		
+OCaml	keep	OCaml	language		
+Revision control	drop				generic concept
+SSRS	keep	SQL Server Reporting Services	data	SSRS	SQL Server Reporting Services SSRS: redundant O*NET form
+Storage management	drop				generic concept
+Wrike	keep	Wrike	tool		
+ABAP	keep	ABAP	language	ABAP/4|Advanced Business Application Programming	German expansion left out
+AMOS	drop				obscure; collides with names
+Apache Portable Runtime	drop				APR is noise (annual percentage rate)
+ASIC	drop				hardware term collision
+Blink	drop				ordinary word
+Flix	drop				obscure; collision
+GNU	drop				project name, not a skill
+Robot Framework	keep	Robot Framework	testing		
+Java Database Connectivity	keep	JDBC	framework	Java Database Connectivity	
+Jinja	keep	Jinja	framework	jinja2	html+django forms: Linguist lexer names
+LookML	keep	LookML	data		
+spaCy	keep	spaCy	ml		
+Symfony	keep	Symfony	framework		
+Usability testing	drop				generic concept
+Visual Basic for Applications	keep	Visual Basic for Applications	language	VBA	
+Automatically Programmed Tool	drop				APT is noise (advanced persistent threat)
+Coral 66	drop				obscure; CORAL ordinary word
+Echo	drop				ordinary word
+Standard Template Library	keep	Standard Template Library	framework	C++ STL|C++ Standard Template Library	STL: St. Louis / 3D file format; ascii stl, stla: file formats
+Apptainer	keep	Apptainer	devops	Singularity	Singularity given to the container runtime, not the language/OS
+aRts	drop				obscure; arts is ordinary word
+Data conversion	drop				generic concept
+Haskell	keep	Haskell	language		hs: too short, noise
+Microsoft Research Image Composite Editor	drop				ICE is noise
+Perforce P4	keep	Perforce	tool	Helix Core|Perforce P4	
+QGIS	keep	QGIS	tool		
+Alloy	drop				ordinary word
+Call center	drop				generic concept
+EIGRP	keep	EIGRP	networking	Enhanced Interior Gateway Routing Protocol	
+Electron	keep	Electron	framework	Electron.js|electronjs	Atom Shell: obsolete
+JFrog Artifactory	keep	JFrog Artifactory	devops	Artifactory	
+Pic	drop				ordinary abbreviation
+Rational	drop				ordinary word
+Scylla	keep	ScyllaDB	database	Scylla	
+Singularity	drop				homonym; Singularity container runtime is under Apptainer
+Tox	drop				collides with toxicology abbreviation
+GNU Multiple Precision Arithmetic Library	drop				GMP is noise (good manufacturing practice)
+Icon	drop				ordinary word
+Nuxt	keep	Nuxt	framework	Nuxt.js|NuxtJS	
+RTL	drop				generic concept; ambiguous abbreviation
+Ubisoft Anvil	drop				Anvil ordinary word; not an engineering skill
+Amazon Redshift	keep	Amazon Redshift	data	Redshift	
+DYNAMO	drop				obscure; collides with DynamoDB/ordinary word
+FaceTime	drop				consumer software
+Lex	drop				ambiguous; ordinary word
+Pact	drop				collides with PACT Act and ordinary word
+Power Query	keep	Power Query	data	powerquery	
+Travis	keep	Travis CI	devops		Travis: personal name
+VHDL	keep	VHDL	language		
+Bourne shell	drop				sh is noise; honest form matches almost nothing
+COMIT	drop				obscure; collision
+Database testing	drop				generic concept
+Diagramming	drop				generic concept
+Embedded systems development	drop				generic concept
+GDAL	keep	GDAL	framework	Geospatial Data Abstraction Library	
+GStreamer	keep	GStreamer	framework		
+Open Policy Agent	keep	Open Policy Agent	security		OPA: ambiguous abbreviation
+Pan	drop				ordinary word
+Records management	drop				generic concept
+Shiny	keep	R Shiny	framework	Shiny for R|shiny R	Shiny: ordinary word
+Solidity	keep	Solidity	language		
+SSIS	keep	SQL Server Integration Services	data	SSIS	SQL Server Integration Services SSIS: redundant O*NET form
+Tanium	keep	Tanium	security		
+Windows Server 2016	keep	Windows Server	os	Windows Server 2016	
+Apache Flume	keep	Apache Flume	data	Flume	
+Apache ZooKeeper	keep	Apache ZooKeeper	devops	ZooKeeper	
+Botan	drop				only matches via OpenCL noise form
+Bullet	drop				ordinary word
+crontab	keep	cron	tool	crontab|cron table	
+Dialog	drop				ordinary word
+HAProxy	keep	HAProxy	devops		
+IBM Information Management System	drop				IMS is ambiguous abbreviation
+OpenCL	keep	OpenCL	framework	Open Computing Language	
+Profilers	drop				generic concept
+TAM	drop				ambiguous abbreviation
+Apache Avro	keep	Apache Avro	data	Avro	
+Data Fabric	drop				generic concept
+DDL	drop				generic concept
+eMASS	keep	eMASS	security		
+FOCAL	drop				obscure; ordinary word
+HIP	drop				ordinary word
+Lustre	keep	Lustre	devops		homonym: kept as the HPC file system, not the language
+Mercury	drop				ordinary word; obscure language
+PeopleSoft	keep	PeopleSoft	tool		
+Rapide	drop				obscure; collision
+SystemVerilog	keep	SystemVerilog	language		
+Transaction Application Language	drop				TAL is noise
+Windows 11	keep	Microsoft Windows	os	Windows 11|Windows11	merged into Microsoft Windows
+Autodesk Revit	keep	Autodesk Revit	tool	Revit	
+Digital Analytics	drop				generic concept
+Drupal	keep	Drupal	framework		
+GN	drop				ambiguous abbreviation
+Jenkins CI	keep	Jenkins	devops	Jenkins CI	
+Logos	drop				ordinary word
+macOS Monterey	keep	macOS	os	macOS Monterey|macOS 12|macOS 12 Monterey	Monterey: place name
+Photoshop	keep	Adobe Photoshop	tool	Photoshop	
+Platform as a service PaaS	drop				generic concept
+SAGE	drop				ambiguous; ordinary word
+Time reporting	drop				generic concept
+Altium Designer	keep	Altium Designer	tool	Altium	
+Business Objects	keep	SAP BusinessObjects	data	Business Objects|BusinessObjects	
+DML	drop				generic concept
+GEOS	drop				obscure; collision
+Gremlin	keep	Gremlin	language		
+Message Passing Interface	keep	MPI	framework	Message Passing Interface	
+Natural Language Toolkit	keep	NLTK	ml	Natural Language Toolkit	
+Nmap	keep	Nmap	security	Nmap Security Scanner	Network Mapper: generic phrase
+Relational database management	drop				generic concept
+Sail	drop				ordinary word
+4D	drop				collides with generic "4D"
+ASP.NET MVC Framework	keep	ASP.NET MVC	framework	ASP.NET MVC Framework	
+BIRD2	drop				bird is noise
+CLOS	drop				obscure; ambiguous abbreviation
+Julia	keep	JuliaLang	language	The Julia Language|Julia language	Julia: personal name
+Netty	keep	Netty	framework		
+Regular Expression	keep	Regex	tool	Regular Expression|regular expressions|regexp	
+SMTP	keep	SMTP	networking	Simple mail transfer protocol	
+User-mode Linux	drop				UML is noise (Unified Modeling Language)
+Weka	keep	Weka	ml		
+A/UX	drop				obscure; matches via UI/UX tokenization
+Crystal	drop				ordinary word; no safe form
+Doctrine	drop				ordinary word; no safe form
+Erlang	keep	Erlang	language		
+Expat	drop				ordinary word
+Graphite	drop				ordinary word; ambiguous
+LabVIEW	keep	LabVIEW	tool		
+macOS Sierra	drop				Sierra is noise; honest forms match nothing
+Opus	drop				ordinary word
+P4	drop				ambiguous abbreviation
+Play Framework	keep	Play Framework	framework		
+SignalR	keep	SignalR	framework		
+Snort	keep	Snort	security		
+VRRP	keep	VRRP	networking	Virtual Router Redundancy Protocol	
+Wikitext	drop				wiki is noise
+Cognos	keep	IBM Cognos	data	Cognos	
+Curl	drop				homonym; curl key given to the curl tool
+curl	keep	curl	tool		
+Direct Rendering Infrastructure	drop				DRI is ambiguous abbreviation
+EAI	drop				generic concept
+Fancy	drop				ordinary word
+HDL	drop				generic concept
+Junos	keep	Junos OS	networking	Junos	
+MiNT	drop				obscure; ordinary word
+Object Windows Library	drop				OWL is noise
+Pizza	drop				ordinary word
+Relational database management system	drop				generic concept
+Remote monitoring	drop				generic concept
+Type Language	drop				tl is noise
+Verilog	keep	Verilog	language	Verilog HDL|IEEE 1364	
+Vespa Schema Definition	keep	Vespa	database		homonym: kept as the Vespa search engine
+XSLT	keep	XSLT	language	XSL Transformations|Extensible Stylesheet Language Transformations	xsl: names the wider XSL family
+AJAX	keep	AJAX	framework		
+Blazor	keep	Blazor	framework		
+COBOL	keep	COBOL	language		
+Java Server Pages	keep	JavaServer Pages	framework	JSP|Java Server Pages	
+Job Control Language	keep	JCL	language	Job Control Language	
+License management	drop				generic concept
+Metasploit	keep	Metasploit	security	Metasploit Framework	
+MicroStrategy	keep	MicroStrategy	data		
+RAC	keep	Oracle RAC	database	Real Application Cluster|Real Application Clusters	RAC: ambiguous abbreviation
+Tact	drop				ordinary word
+Adblock Filter List	drop				adb is noise
+Bugzilla	keep	Bugzilla	tool		
+CICS	keep	CICS	devops	Customer Information Control System	
+GD Graphics Library	drop				GD is noise
+Grace	drop				ordinary word
+Jakarta Messaging	keep	JMS	framework	Java Message Service|Jakarta Messaging	
+OpenGL Shading Language	keep	GLSL	language	OpenGL Shading Language	
+PHPUnit	keep	PHPUnit	testing		
+PowerBuilder	drop				pb is noise; honest forms match nothing
+RON	drop				personal name
+SAP HANA	keep	SAP HANA	database		
+Solaris	keep	Solaris	os	Oracle Solaris|Sun Solaris	
+Text mining	drop				generic concept
+UNIX Shell	drop				generic concept
+Visual Basic .NET	keep	Visual Basic .NET	language	VB.NET|vbnet	Visual Basic: given to classic Visual Basic
+Web server	drop				generic concept
+Windows Communication Foundation	keep	Windows Communication Foundation	framework	WCF	Indigo: ordinary word
+Ember.js	keep	Ember.js	framework	EmberJS	
+Fossil	drop				ordinary word
+Helix	drop				ordinary word; ambiguous
+Helix	drop				ordinary word; Perforce covered by Perforce
+IBM AIX	keep	IBM AIX	os	AIX	
+Jasmine	keep	Jasmine	testing		JSUnit: different tool
+Linux Security Modules	drop				LSM is ambiguous abbreviation
+Luau	keep	Luau	language		
+Material Design	keep	Material Design	tool		
+Shell script	drop				generic concept
+Structure prediction	drop				generic concept
+User interface design	drop				generic concept
+WildFly	keep	JBoss	devops	WildFly|JBoss Application Server	
+ZeroMQ	keep	ZeroMQ	framework	zmq|0MQ	
+Akka	keep	Akka	framework		
+Android TV	keep	Android TV	os		
+Application Server	drop				generic concept
+Azure Sentinel	keep	Microsoft Sentinel	security	Azure Sentinel	
+Catboost	keep	CatBoost	ml		
+EDC	drop				ambiguous abbreviation
+ESLint	keep	ESLint	tool		
+Fund accounting	drop				not a technology
+High Level Shader Language	keep	HLSL	language	High Level Shader Language|High-level shading language	
+Insight Segmentation and Registration Toolkit	keep	ITK	framework	Insight Segmentation and Registration Toolkit	
+Internet Protocol Security IPSEC	keep	IPsec	networking		
+Learning Management	drop				generic concept
+llama.cpp	keep	llama.cpp	ml		
+NetSuite ERP	keep	NetSuite	tool	NetSuite ERP	
+Nim	drop				collides with NVIDIA NIM
+Oozie	keep	Apache Oozie	data	Oozie	
+Parallel systems	drop				generic concept
+Password management	drop				generic concept
+Project scheduling	drop				generic concept
+RAD	drop				generic concept
+RocksDB	keep	RocksDB	database		
+RPG	drop				collides with role-playing game
+Software distribution	drop				generic concept
+Tk	drop				ambiguous two-letter name
+Astro	keep	Astro	framework		
+Classic Visual Basic	keep	Visual Basic	language	VB|VB6	
+Clojure	keep	Clojure	language		
+Cryptographic key management	drop				generic concept
+Data acquisition systems	drop				generic concept
+Disassembler	drop				generic concept
+Experience Manager (AEM)	keep	Adobe Experience Manager	framework	AEM	Experience Manager (AEM): O*NET form
+Google Web Toolkit	keep	Google Web Toolkit	framework	GWT	
+Hyperion	keep	Oracle Hyperion	data	Hyperion	
+Migration testing	drop				generic concept
+Monte Carlo simulation	drop				generic concept
+Netfilter	keep	Netfilter	networking		
+Network Security Services	drop				NSS is ambiguous; honest form matches little
+Ook!	drop				esoteric language
+OSGi	keep	OSGi	framework		
+Parrot Internal Representation	drop				pir is noise
+PCL	keep	Point Cloud Library	framework	PCL	
+PlantUML	keep	PlantUML	tool		
+Remote control	drop				generic concept
+Series 40	drop				S 40 is noise
+SPARQL	keep	SPARQL	language		
+Torch	drop				torch mostly means PyTorch; not the Lua library
+X Toolkit Intrinsics	drop				Intrinsics and Xt are noise
+Acrobat	drop				office software
+Brightscript	keep	BrightScript	language		
+Computer operating systems	drop				generic concept
+Concurrency control	drop				generic concept
+device mapper	drop				DM is noise
+End-to-end encryption	drop				generic concept
+ERC	drop				ambiguous abbreviation
+ERM	drop				ambiguous abbreviation
+FAUST	drop				obscure; collision
+fish	drop				ordinary word
+HTML+Razor	keep	ASP.NET Razor	framework	Razor Pages	razor: ordinary word
+Jsonnet	keep	Jsonnet	tool		
+LoadRunner	keep	LoadRunner	testing	HP LoadRunner|OpenText LoadRunner|Hewlett Packard LoadRunner	
+MediaWiki	keep	MediaWiki	tool		mw: noise
+S-PLUS	drop				obscure; collision
+Sed	keep	sed	tool		
+Siemens Teamcenter	keep	Siemens Teamcenter	tool	Teamcenter	
+Snappy	drop				ordinary word
+Terra	drop				ordinary word
+Zeek	keep	Zeek	security		bro: ordinary word
+Adobe XD	keep	Adobe XD	tool	Adobe Experience Design	XD: ambiguous abbreviation
+AMPL	keep	AMPL	language		
+Avalonia	keep	Avalonia	framework	Avalonia UI	
+Cairo	drop				Xr noise; Cairo is a city
+Chakra	drop				homonym; matches mean Chakra UI
+Chakra	drop				homonym; matches mean Chakra UI
+Compatibility testing	drop				generic concept
+Data Integrator	drop				generic phrase
+DirectX	keep	DirectX	framework		
+F#	keep	F#	language	F Sharp|FSharp	
+Index tuning	drop				generic concept
+Ionic	keep	Ionic	framework	ionic 2|ionic2	
+Kali Linux	keep	Kali Linux	os	Kali Linux OS	Kali: personal name
+LPC	drop				obscure; LPC ambiguous abbreviation
+Network architecture design	drop				generic concept
+Opal	drop				obscure; ordinary word
+Oz	drop				obscure; ordinary word
+rc	drop				ordinary abbreviation
+REXX	keep	REXX	language	Restructured Extended Executor	
+Standard ML	drop				collides with "standard ML" (machine learning); SML=0
+Visual Basic Script	keep	VBScript	language	Visual Basic Script|Microsoft Visual Basic Scripting Edition	VBS: ambiguous abbreviation
+YANG	keep	YANG	networking		
+AWK	keep	AWK	language		
+Azure DevOps Server	keep	Azure DevOps Server	devops	Team Foundation Server|Visual Studio Team System|TFS	
+Blitz BASIC	drop				Monkey noise
+BuildStream	drop				obscure; matches unlikely to be the tool
+Cocoa	keep	Cocoa	framework	Apple Cocoa	
+ColdFusion CFC	drop				cfc noise
+Data Guard	keep	Oracle Data Guard	database	Data Guard	
+Enterprise Manager	drop				generic phrase / job title
+GNU Prolog	drop				Calypso noise
+LiveScript	drop				ls noise
+MetaQuotes Language	drop				MQL means marketing qualified lead
+Microsoft Virtual Server	drop				Virtual Server generic phrase
+NEON	drop				homonym of Neon Postgres / ARM NEON
+Network Monitor	drop				generic phrase
+Nextflow	keep	Nextflow	data		
+NL	drop				obscure; ordinary abbreviation
+Norton Utilities	drop				NU noise
+ODS	drop				ambiguous abbreviation / concept
+OpenAI ChatGPT	keep	ChatGPT	ml	OpenAI ChatGPT	
+Oracle Spatial	keep	Oracle Spatial	database		
+PEARL	drop				obscure; collides with pearl/Perl
+Proxmox Backup Server	drop				PBS noise
+Roblox Studio	keep	Roblox Studio	tool		
+Roc	drop				obscure; collides with ROC
+Rust programming language	keep	Rust	language	Rust programming language	
+Security risk assessment	drop				generic concept
+SolidThinking Embed	drop				VisSim matches mean PTV Vissim
+SQL*Plus	keep	SQL*Plus	tool	SQLPlus|SQL Plus	
+Swing	keep	Java Swing	framework		Swing: ordinary word
+Tcl	keep	Tcl	language	Tool Command Language	sdc/xdc: other file formats
+TMG	drop				obscure; TMG ambiguous
+Turing	drop				collides with Alan Turing / Turing test
+V8	keep	V8	tool		
+Webex	drop				video conferencing software
+Zebra	drop				Zebra Technologies / printers collision
+Basecamp	keep	Basecamp	tool		
+Blade	drop				ordinary word (blade servers)
+Bun	keep	Bun	framework	Bun.js	
+CHICKEN	drop				obscure; ordinary word
+Code libraries	drop				generic concept
+Data dictionary	drop				generic concept
+eC	drop				obscure; eC collides
+FlatBuffers	keep	FlatBuffers	framework		
+FreeMarker	keep	FreeMarker	framework	Apache FreeMarker	ftl: ambiguous abbreviation
+Gensim	keep	Gensim	ml		
+Interoperability testing	drop				generic concept
+Liberty BASIC	drop				LB noise
+LibTIFF	drop				tiff is a file format
+Linear Programming	drop				generic concept
+Loom	drop				video recording tool; also Project Loom
+Mask	drop				ordinary word
+NetBackup	keep	Veritas NetBackup	devops	NetBackup|Symantec NetBackup	
+Nickel	drop				obscure; ordinary word
+OpenLayers	keep	OpenLayers	framework		
+OpenUI5	keep	OpenUI5	framework	UI5|UI Development Toolkit for HTML5	
+Oracle Application Express	keep	Oracle APEX	framework	Oracle Application Express	
+Oracle SQL Developer	drop				SQL Developer is a job title; honest forms 0
+Python Imaging Library	keep	Pillow	framework	Python Imaging Library|PIL	
+Redirect Rules	drop				redirects ordinary word
+Rez	drop				obscure; ordinary word
+Talon	drop				obscure; ordinary word
+Tencent Instant Messenger	drop				TIM noise
+Unreal Engine 4	keep	Unreal Engine	framework	Unreal Engine 4|UE4|UE 4|Unreal 4	
+Verse	drop				obscure; ordinary word
+Video editing	drop				generic concept
+Zig	keep	Zig	language	Zig language|Ziglang	
+Adaptive Server Enterprise	drop				ASE noise (associate software engineer); honest forms 0
+Adobe After Effects	keep	Adobe After Effects	tool	After Effects	
+Adobe InDesign	keep	Adobe InDesign	tool	InDesign	
+Android Auto	keep	Android Auto	os		
+Atlas Search	keep	MongoDB Atlas Search	database	Atlas Search	
+BitBake	keep	BitBake	devops		
+BSD	keep	BSD	os	BSD operating system	BSD-based and others left out
+Closure Templates	keep	Closure Templates	framework		soy: ordinary word
+D-Bus	keep	D-Bus	tool	dbus|Desktop Bus	
+Database management system	drop				generic concept
+Discrete event simulation	drop				generic concept
+Dojo	drop				Dojo ordinary word; Dojo Toolkit=0
+Drizzle	drop				homonym; matches mean Drizzle ORM
+ECL	drop				obscure; ambiguous abbreviation
+Elm	keep	Elm	language		
+Extensible Application Markup Language	keep	XAML	language	Extensible Application Markup Language	
+gulp.js	keep	gulp	tool	gulp.js|gulpjs	
+Inform 7	drop				i7 noise (Intel i7)
+Integrity verification	drop				generic concept
+ISPF	keep	ISPF	tool	Interactive System Productivity Facility	
+Jade	drop				homonym; neither Jade is what matches
+Jakarta Enterprise Beans	keep	Enterprise JavaBeans	framework	EJB|Enterprise Java Beans|Jakarta Enterprise Beans	
+Java Agent Development Framework	drop				homonym; neither Jade is what matches
+JetBrains MPS	drop				mps noise; honest form 1
+Kusto	keep	Kusto Query Language	language	Kusto	KQL: also Kibana Query Language
+Leaflet	keep	Leaflet.js	framework	Leaflet js|leafletjs	Leaflet: ordinary word
+Lisp	keep	Lisp	language		
+Log4j	keep	Log4j	framework		
+Macaulay2	drop				m2 noise
+Nit	drop				obscure; ordinary word
+PEAR	drop				ordinary word; no safe form matches
+PL/pgSQL	keep	PL/pgSQL	language		
+PLSQL	keep	PL/SQL	language	PLSQL	
+Polymer	drop				ordinary word; library obsolete
+PPM	drop				ambiguous abbreviation
+Proguard	keep	ProGuard	tool		
+Pure Data	drop				collides with ordinary phrase
+Qiskit	keep	Qiskit	framework		
+Rhapsody	drop				homonym; matches mean IBM Rhapsody or others
+Rouge	drop				obscure; ordinary word
+Safari	drop				web browser
+Sqoop	keep	Apache Sqoop	data	Sqoop	
+Timing analysis	drop				generic concept
+TSQL	keep	T-SQL	language	TSQL|Transact-SQL	
+TSX	drop				ambiguous abbreviation (Toronto Stock Exchange)
+Vim script	keep	Vim	tool		vim matches the editor; nvim is Neovim
+Windows Driver Model	drop				WDM noise (wavelength division multiplexing)
+Wolfram Language	keep	Mathematica	language	Wolfram Language|Wolfram Mathematica|Mathematica language	Wolfram: company name
+Adobe Creative Cloud	keep	Adobe Creative Cloud	tool	Creative Cloud|Adobe CC	
+Adobe Dreamweaver	keep	Adobe Dreamweaver	tool	Dreamweaver|Macromedia Dreamweaver	DW: ambiguous abbreviation
+Advanced Linux Sound Architecture	keep	ALSA	framework	Advanced Linux Sound Architecture	
+Alteryx	keep	Alteryx	data		
+Android Automotive	keep	Android Automotive	os	Android Automotive OS|AAOS	
+Aqua	drop				ordinary word
+ArangoDB	keep	ArangoDB	database		
+assembler	keep	Assembly language	language	assembler	
+Babylon.js	keep	Babylon.js	framework		
+C++/CLI	keep	C++/CLI	language		
+Chart.js	keep	Chart.js	framework		
+CloudWorks	drop				obscure; matches likely other products
+Common Intermediate Language	drop				CIL noise; honest forms 0
+DataWeave	keep	DataWeave	language		
+Delphi	keep	Delphi	language	Embarcadero Delphi	
+Delphi	keep	Delphi	language	Embarcadero Delphi	
+DTS	drop				ambiguous abbreviation
+Dune	drop				obscure; ordinary word
+Element management	drop				generic concept
+Eloqua	keep	Oracle Eloqua	tool	Eloqua	
+Emacs Lisp	keep	Emacs	tool		emacs matches the editor
+Google Guava	keep	Guava	framework	Google Guava	
+Grails	keep	Grails	framework		
+Groovy Server Pages	drop				gsp noise
+Handlebars	keep	Handlebars	framework	handlebars.js|htmlbars	hbs: ambiguous
+INI	drop				conf noise
+Internet Information Services (IIS)	keep	Internet Information Services	devops	IIS|Microsoft IIS|Internet Information Services (IIS)	
+InVision	keep	InVision	tool		
+JMP	keep	JMP	data		
+McAfee	keep	McAfee	security		
+Minitab	keep	Minitab	data		
+OpenEdge ABL	drop				abl noise; honest forms 0
+QML	keep	QML	language	Qt Meta-object Language	
+Quake	drop				video game
+Recovery Manager	keep	Oracle RMAN	database	RMAN|Recovery Manager	
+Resource Access Control Facility	keep	RACF	security	Resource Access Control Facility	
+Semrush	drop				marketing SEO tool
+Server Side Includes	drop				SSI ambiguous abbreviation
+Simple DirectMedia Layer	drop				SDL means security development lifecycle
+SVG	keep	SVG	language	Scalable Vector Graphics	
+Traceroute	keep	Traceroute	networking		
+Vector CANoe	keep	CANoe	testing	Vector CANoe	
+Vert.x	keep	Vert.x	framework	vertx	
+WAN optimization	drop				generic concept
+X10	drop				X10 ambiguous; obscure
+ABAP CDS	keep	ABAP CDS	language		
+ADO.NET	keep	ADO.NET	framework		
+Android 1.0	drop				Android Base noise
+Apache MXNet	keep	Apache MXNet	ml	MXNet	
+Apache Pig	keep	Apache Pig	data	Pig	
+Apache Struts	keep	Apache Struts	framework	Struts|Jakarta Struts	WebWork: predecessor product
+Binary File Descriptor library	drop				BFD noise
+Bluespec BH	drop				bh noise
+C shell	keep	C shell	language	csh|tcsh	
+CGAL	keep	CGAL	framework		
+CGI	drop				CGI is a consulting company
+Computational statistics	drop				generic concept
+Computer forensic	drop				generic concept
+Database capacity planning	drop				generic concept
+Database cloning	drop				generic concept
+dbm	drop				obscure; ambiguous
+Decompilers	drop				generic concept
+Diesel	drop				ordinary word
+Document management system	drop				generic concept
+DTrace	keep	DTrace	tool		
+FitNesse	keep	FitNesse	testing		
+Fortran	keep	Fortran	language		
+GNU Guile	drop				GEL noise
+GNU Octave	keep	GNU Octave	language	Octave	
+Go Workspace	drop				go work noise
+Godot	keep	Godot	framework	Godot Engine|Godot Game Engine	
+Grunt	drop				grunt work is ordinary phrase
+H2	drop				H2 ambiguous (headings, hydrogen, half-year)
+Harbour	drop				obscure; ordinary word
+Hibernate ORM	keep	Hibernate	framework	Hibernate ORM	
+HRMS	drop				generic concept
+IBATIS	keep	iBATIS	framework		
+IBM WebSphere	keep	IBM WebSphere	devops	WebSphere	
+Interactive Data Language	drop				IDL ambiguous (interface definition language)
+Issue tracking system	drop				generic concept
+jq	keep	jq	tool		
+Keynote	drop				ordinary word; presentation software
+Knockout.js	keep	Knockout.js	framework	KnockoutJS	Knockout: ordinary word
+ladder logic	keep	Ladder logic	language		
+libvirt	keep	libvirt	devops		
+Mermaid	keep	Mermaid	tool	mermaid.js	
+MIB	drop				generic concept
+Network intrusion detection	drop				generic concept
+Open Dynamics Engine	drop				ODE: ordinary math abbreviation
+OpenView	keep	HP OpenView	devops	OpenView	
+Redmine	keep	Redmine	tool		
+reStructuredText	drop				rst noise; honest forms 0
+Slash	drop				ordinary word
+Slim	drop				ordinary word
+SMT	drop				SMT means surface mount technology
+Squirrel	drop				obscure; ordinary word
+Stan	keep	Stan	language		
+Tenable Nessus	keep	Nessus	security	Tenable Nessus	
+Test implementation	drop				generic concept
+Time Sharing Option	drop				TSO ambiguous abbreviation
+Underscore.js	drop				ordinary word; honest forms 0
+Web CMS	drop				generic concept
+WebKit	keep	WebKit	framework	AppleWebKit	
+WGSL	keep	WGSL	language		
+Yardi	keep	Yardi	tool		
+Ab Initio	keep	Ab Initio	data		
+Anti-phishing	drop				generic concept
+Apache CouchDB	drop				Couch noise; honest forms 0
+ArcSDE	keep	ArcSDE	database		
+ASP.NET Core MVC	keep	ASP.NET Core	framework	ASP.NET Core MVC	
+Bubble	drop				ordinary word
+Cascading Style Sheets	keep	CSS	language	Cascading Style Sheets	
+Chromium Embedded Framework	drop				CEF ambiguous; honest form 1
+Cloud Bigtable	keep	Google Cloud Bigtable	database	Cloud Bigtable|Bigtable	Big Table: ordinary phrase
+Code hosting	drop				generic concept
+Crystal Reports	keep	Crystal Reports	data		
+CUE	drop				ordinary word
+Cyclone	drop				obscure; ordinary word
+Cython	keep	Cython	language		
+Data Explorer	drop				generic phrase
+DIGITAL Command Language	drop				DCL ambiguous; obscure
+Dylan	drop				obscure; personal name
+eCos	keep	eCos	os		
+Essbase	keep	Oracle Essbase	data	Essbase	
+Fortress	drop				obscure; ordinary word
+FPGA design	drop				generic concept
+FreeBASIC	drop				fb noise
+ggplot2	keep	ggplot2	data		
+GNU C Library	keep	glibc	framework	GNU C Library|GNU libc	
+GraalVM	keep	GraalVM	tool	Oracle GraalVM|GraalVM Community Edition	
+High Level Assembly	drop				HLA ambiguous (High Level Architecture)
+HiveQL	keep	HiveQL	language		
+Horde	drop				ordinary word
+htmx	keep	htmx	framework		
+Indexed Database API	keep	IndexedDB	database	Indexed Database API	
+IRC log	drop				irc noise
+ISIS	drop				obscure; ISIS collides
+JavaScriptCore	keep	JavaScriptCore	framework		
+KakouneScript	drop				kak noise
+KornShell	keep	KornShell	language	ksh|ksh93	
+Lark	drop				obscure; ordinary word
+LaTeX	keep	LaTeX	tool		
+Latte	drop				obscure; ordinary word
+Linux Kernel Module	drop				generic concept
+Logic programming	drop				generic concept
+m4	drop				m4 ambiguous (Apple M4); obscure
+MarkLogic	keep	MarkLogic	database	MarkLogic Server	
+MEDITECH	keep	MEDITECH	tool		
+Meson	keep	Meson	tool		
+Microsoft Foundation Class Library	keep	MFC	framework	Microsoft Foundation Class Library|Microsoft Foundation Classes	
+Motif	drop				ordinary word
+MSHTML	drop				Trident noise
+Multi-router traffic grapher MRTG	keep	MRTG	devops	Multi-Router Traffic Grapher	combined form left out
+musl	keep	musl	framework	musl libc	
+MVS	keep	MVS	os	IBM MVS|Multiple Virtual Storage|OS/VS2	
+netstat	keep	netstat	networking		
+NetView	keep	NetView	devops		
+Norton AntiVirus	drop				consumer software; NAV noise
+Packet filter	drop				generic concept
+Place-and-route	drop				generic concept
+PowerCenter	keep	Informatica PowerCenter	data	PowerCenter	
+Riot	drop				obscure; ordinary word
+RobotFramework	keep	Robot Framework	testing	RobotFramework	
+Rockwell Automation	drop				company name, not a technology
+RTX	drop				RTX means NVIDIA RTX
+Scaleform	keep	Scaleform	framework		
+Skype	drop				consumer communications software
+Snakemake	keep	Snakemake	data		
+SpiderMonkey	keep	SpiderMonkey	framework		
+TLA+	keep	TLA+	language		
+Turbo C++	drop				tcc noise
+V operating system	drop				obscure; V-System collides
+Videoconferencing	drop				generic concept
+WDL	keep	WDL	language	Workflow Description Language	
+Web application framework	drop				generic concept
+webOS	keep	webOS	os	LG webOS|HP webOS|Palm webOS|Open webOS	web OS: generic phrase
+Whitespace	drop				obscure; ordinary word
+Windows Installer	keep	Windows Installer	tool		Darwin: noise
+Windows Mobile	keep	Windows Mobile	os	Microsoft Windows Mobile	
+x86 assembly language	keep	x86 assembly	language	x86 assembly language|X86 asm|Intel assembly|Intel assembly syntax	
+Xbox One and Xbox Series X/S system software	drop				S system software noise
+XPath	keep	XPath	language	XML Path Language	
+ZK	drop				ZK ambiguous (zero-knowledge)
+(added by hand)	keep	dbt	data	data build tool|dbt Core|dbt Cloud	missing from the candidates
+(added by hand)	drop				ts: named in #38, but 793 of the 1196 descriptions with it say TS/SCI (clearance)
+(added by hand)	drop				pg: named in #38, but 9 of its 23 descriptions have no database context

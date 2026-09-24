@@ -1,15 +1,521 @@
-postgresql	PostgreSQL	database	postgres|psql
-mysql	MySQL	database	
-terraform	Terraform	devops	
-ansible	Ansible	devops	
-docker	Docker	devops	
-kubernetes	Kubernetes	devops	k8s
-aws	AWS	cloud	amazon web services
+ab-initio	Ab Initio	data	
+abap	ABAP	language	ABAP/4|Advanced Business Application Programming
+abap-cds	ABAP CDS	language	
+active-directory	Active Directory	security	MS Active Directory|MS AD
+ado-net	ADO.NET	framework	
+adobe-after-effects	Adobe After Effects	tool	After Effects
+adobe-creative-cloud	Adobe Creative Cloud	tool	Creative Cloud|Adobe CC
+adobe-dreamweaver	Adobe Dreamweaver	tool	Dreamweaver|Macromedia Dreamweaver
+adobe-experience-manager	Adobe Experience Manager	framework	AEM
+adobe-indesign	Adobe InDesign	tool	InDesign
+adobe-photoshop	Adobe Photoshop	tool	Photoshop
+adobe-xd	Adobe XD	tool	Adobe Experience Design
+airtable	Airtable	tool	
+ajax	AJAX	framework	
+akka	Akka	framework	
+alsa	ALSA	framework	Advanced Linux Sound Architecture
+alteryx	Alteryx	data	
+altium-designer	Altium Designer	tool	Altium
+amazon-dynamodb	Amazon DynamoDB	database	DynamoDB
+amazon-ec2	Amazon EC2	cloud	EC2|Elastic Compute Cloud
+amazon-ecs	Amazon ECS	cloud	ECS|Elastic Container Service
+amazon-emr	Amazon EMR	data	Elastic MapReduce|AWS EMR
+amazon-kinesis	Amazon Kinesis	data	Kinesis|AWS Kinesis
+amazon-redshift	Amazon Redshift	data	Redshift
+amazon-s3	Amazon S3	cloud	S3|Simple Storage Service
+amazon-sagemaker	Amazon SageMaker	ml	SageMaker
+ampl	AMPL	language	
+android	Android	os	
+android-auto	Android Auto	os	
+android-automotive	Android Automotive	os	Android Automotive OS|AAOS
+android-open-source-project	Android Open Source Project	os	AOSP
+android-tv	Android TV	os	
 angular	Angular	framework	
-react	React	framework	react.js|reactjs
+angularjs	AngularJS	framework	Angular.js|Angular JS
+ansible	Ansible	devops	
+apache-airflow	Apache Airflow	data	Airflow
+apache-avro	Apache Avro	data	Avro
+apache-cassandra	Apache Cassandra	database	Cassandra
+apache-druid	Apache Druid	database	Druid
+apache-flume	Apache Flume	data	Flume
+apache-hadoop	Apache Hadoop	data	Hadoop
+apache-hbase	Apache HBase	database	HBase
+apache-hive	Apache Hive	data	Hive
+apache-jmeter	Apache JMeter	testing	JMeter
+apache-kafka	Apache Kafka	data	Kafka
+apache-lucene	Apache Lucene	database	Lucene
+apache-maven	Apache Maven	tool	Maven
+apache-mxnet	Apache MXNet	ml	MXNet
+apache-oozie	Apache Oozie	data	Oozie
+apache-pig	Apache Pig	data	Pig
+apache-solr	Apache Solr	database	Solr
+apache-spark	Apache Spark	data	Spark
+apache-sqoop	Apache Sqoop	data	Sqoop
+apache-struts	Apache Struts	framework	Struts|Jakarta Struts
+apache-tomcat	Apache Tomcat	devops	Tomcat
+apache-zookeeper	Apache ZooKeeper	devops	ZooKeeper
+appium	Appium	testing	
+apptainer	Apptainer	devops	Singularity
+arangodb	ArangoDB	database	
+arcgis	ArcGIS	tool	
+arcsde	ArcSDE	database	
+asp-net	ASP.NET	framework	
+asp-net-core	ASP.NET Core	framework	ASP.NET Core MVC
+asp-net-mvc	ASP.NET MVC	framework	ASP.NET MVC Framework
+assembly-language	Assembly language	language	asm|assembler language|assembly code|assembler
+astro	Astro	framework	
+autocad	AutoCAD	tool	
+autodesk-revit	Autodesk Revit	tool	Revit
+avalonia	Avalonia	framework	Avalonia UI
+awk	AWK	language	
+aws	AWS	cloud	Amazon Web Services
+aws-cloudformation	AWS CloudFormation	devops	CloudFormation
+azure	Azure	cloud	Microsoft Azure|Windows Azure
+azure-cosmos-db	Azure Cosmos DB	database	Cosmos DB|CosmosDB|Azure CosmosDB|Azure DocumentDB
+azure-data-factory	Azure Data Factory	data	
+azure-devops-server	Azure DevOps Server	devops	Team Foundation Server|Visual Studio Team System|TFS
+babylon-js	Babylon.js	framework	
+bamboo	Bamboo	devops	Atlassian Bamboo
+basecamp	Basecamp	tool	
+bash	Bash	language	
+bazel	Bazel	tool	
+bgp	BGP	networking	Border Gateway Protocol
+bicep	Bicep	devops	Azure Bicep
+bitbake	BitBake	devops	
+bitbucket	Bitbucket	tool	Atlassian Bitbucket
+blazor	Blazor	framework	
+bootstrap	Bootstrap	framework	Twitter Bootstrap
+brightscript	BrightScript	language	
+bsd	BSD	os	BSD operating system
+bugzilla	Bugzilla	tool	
+bun	Bun	framework	Bun.js
+c	C	language	C language
+c-sharp	C#	language	csharp
+c-shell	C shell	language	csh|tcsh
+canoe	CANoe	testing	Vector CANoe
+catboost	CatBoost	ml	
+celery	Celery	framework	
+cgal	CGAL	framework	
+chart-js	Chart.js	framework	
+chatgpt	ChatGPT	ml	OpenAI ChatGPT
+chef	Chef	devops	Progress Chef|Chef Infra
+cics	CICS	devops	Customer Information Control System
+cisco-ios	Cisco IOS	networking	
+clickhouse	ClickHouse	database	
+clojure	Clojure	language	
+closure-templates	Closure Templates	framework	
+cmake	CMake	tool	
+cobol	COBOL	language	
+cocoa	Cocoa	framework	Apple Cocoa
+codeql	CodeQL	security	
+confluence	Confluence	tool	
+cpp	C++	language	cpp
+cpp-cli	C++/CLI	language	
+cron	cron	tool	crontab|cron table
+crystal-reports	Crystal Reports	data	
+css	CSS	language	Cascading style sheets|CSS3
+cucumber	Cucumber	testing	Gherkin
+cuda	CUDA	framework	
+curl	curl	tool	
+cypher	Cypher	language	Cypher Query Language
+cython	Cython	language	
+d-bus	D-Bus	tool	dbus|Desktop Bus
+d3-js	D3.js	framework	D3|d3js
+dart	Dart	language	
+dataweave	DataWeave	language	
+dbt	dbt	data	data build tool|dbt Core|dbt Cloud
+delphi	Delphi	language	Embarcadero Delphi
+dhcp	DHCP	networking	Dynamic Host Configuration Protocol
+directx	DirectX	framework	
+django	Django	framework	
+dns	DNS	networking	Domain name system
+docker	Docker	devops	
+drupal	Drupal	framework	
+dtrace	DTrace	tool	
+duckdb	DuckDB	database	
+dynatrace	Dynatrace	devops	
+ecos	eCos	os	
+eigrp	EIGRP	networking	Enhanced Interior Gateway Routing Protocol
+elasticsearch	Elasticsearch	database	
+electron	Electron	framework	Electron.js|electronjs
+elixir	Elixir	language	
+elm	Elm	language	
+emacs	Emacs	tool	
+emass	eMASS	security	
+embedded-c	Embedded C	language	
+ember-js	Ember.js	framework	EmberJS
+enterprise-javabeans	Enterprise JavaBeans	framework	EJB|Enterprise Java Beans|Jakarta Enterprise Beans
+entity-framework	Entity Framework	framework	Entity Framework Core|EF Core|ADO.NET Entity Framework
+erlang	Erlang	language	
+eslint	ESLint	tool	
+ethereum	Ethereum	tool	
+express-js	Express.js	framework	Expressjs
+f-sharp	F#	language	F Sharp|FSharp
+fastapi	FastAPI	framework	
+figma	Figma	tool	
+firebase	Firebase	cloud	Google Firebase
+fitnesse	FitNesse	testing	
+flask	Flask	framework	
+flatbuffers	FlatBuffers	framework	
+flexbox	Flexbox	tool	
+flutter	Flutter	framework	
+fortify	Fortify	security	Micro Focus Fortify|OpenText Fortify
+fortran	Fortran	language	
+gdal	GDAL	framework	Geospatial Data Abstraction Library
+gdb	GDB	tool	GNU Debugger
+gensim	Gensim	ml	
+ggplot2	ggplot2	data	
+ghidra	Ghidra	security	
+git	Git	tool	
+github	GitHub	tool	
+gitlab	GitLab	tool	GitLab EE
+glibc	glibc	framework	GNU C Library|GNU libc
+glsl	GLSL	language	OpenGL Shading Language
+gnu-make	GNU Make	tool	Makefile
+gnu-octave	GNU Octave	language	Octave
+godot	Godot	framework	Godot Engine|Godot Game Engine
+golang	Golang	language	
+google-apps-script	Google Apps Script	language	Apps Script
+google-bigquery	Google BigQuery	data	BigQuery
+google-cloud-bigtable	Google Cloud Bigtable	database	Cloud Bigtable|Bigtable
+google-sheets	Google Sheets	data	Google Spreadsheets
+google-web-toolkit	Google Web Toolkit	framework	GWT
+graalvm	GraalVM	tool	Oracle GraalVM|GraalVM Community Edition
+gradle	Gradle	tool	Gradle Build Tool
+grails	Grails	framework	
+graphql	GraphQL	language	
+gremlin	Gremlin	language	
+groovy	Groovy	language	Apache Groovy
+grpc	gRPC	framework	
+gstreamer	GStreamer	framework	
+guava	Guava	framework	Google Guava
+gulp	gulp	tool	gulp.js|gulpjs
+handlebars	Handlebars	framework	handlebars.js|htmlbars
+haproxy	HAProxy	devops	
+haskell	Haskell	language	
+hibernate	Hibernate	framework	Hibernate ORM
+hiveql	HiveQL	language	
+hlsl	HLSL	language	High Level Shader Language|High-level shading language
+hp-openview	HP OpenView	devops	OpenView
+html	HTML	language	HTML5|XHTML
+htmx	htmx	framework	
+http	HTTP	networking	
+hubspot	HubSpot	tool	
+hugging-face	Hugging Face	ml	HuggingFace
+ibatis	iBATIS	framework	
+ibm-aix	IBM AIX	os	AIX
+ibm-cognos	IBM Cognos	data	Cognos
+ibm-db2	IBM Db2	database	Db2
+ibm-websphere	IBM WebSphere	devops	WebSphere
+indexeddb	IndexedDB	database	Indexed Database API
+influxdb	InfluxDB	database	
+informatica	Informatica	data	
+informatica-powercenter	Informatica PowerCenter	data	PowerCenter
+intellij-idea	IntelliJ IDEA	tool	IntelliJ
+internet-information-services	Internet Information Services	devops	IIS|Microsoft IIS|Internet Information Services (IIS)
+invision	InVision	tool	
+ionic	Ionic	framework	ionic 2|ionic2
+ipsec	IPsec	networking	
+iptables	iptables	networking	
+ispf	ISPF	tool	Interactive System Productivity Facility
+itk	ITK	framework	Insight Segmentation and Registration Toolkit
+jakarta-ee	Jakarta EE	framework	J2EE|Java EE|JavaEE|Java Enterprise Edition|Java Platform, Enterprise Edition
+jasmine	Jasmine	testing	
 java	Java	language	
 javascript	JavaScript	language	js
-typescript	TypeScript	language	ts
-python	Python	language	
-go	Go	language	golang
-c-sharp	C#	language	csharp
+javascriptcore	JavaScriptCore	framework	
+javaserver-pages	JavaServer Pages	framework	JSP|Java Server Pages
+jboss	JBoss	devops	WildFly|JBoss Application Server
+jcl	JCL	language	Job Control Language
+jdbc	JDBC	framework	Java Database Connectivity
+jenkins	Jenkins	devops	Jenkins CI
+jest	Jest	testing	
+jfrog-artifactory	JFrog Artifactory	devops	Artifactory
+jinja	Jinja	framework	jinja2
+jira	Jira	tool	Jira Software
+jmp	JMP	data	
+jms	JMS	framework	Java Message Service|Jakarta Messaging
+jq	jq	tool	
+jquery	jQuery	framework	
+jsonnet	Jsonnet	tool	
+julialang	JuliaLang	language	The Julia Language|Julia language
+junit	JUnit	testing	
+junos-os	Junos OS	networking	Junos
+jupyter	Jupyter	tool	Jupyter Notebook|Jupyter Notebooks|JupyterLab|IPython Notebook
+kali-linux	Kali Linux	os	Kali Linux OS
+keras	Keras	ml	
+kornshell	KornShell	language	ksh|ksh93
+kotlin	Kotlin	language	
+kubeflow	Kubeflow	ml	
+kubernetes	Kubernetes	devops	K8s
+kusto-query-language	Kusto Query Language	language	Kusto
+labview	LabVIEW	tool	
+ladder-logic	Ladder logic	language	
+laravel	Laravel	framework	
+latex	LaTeX	tool	
+libvirt	libvirt	devops	
+linux	Linux	os	
+lisp	Lisp	language	
+llama-cpp	llama.cpp	ml	
+llvm	LLVM	tool	
+loadrunner	LoadRunner	testing	HP LoadRunner|OpenText LoadRunner|Hewlett Packard LoadRunner
+log4j	Log4j	framework	
+lookml	LookML	data	
+lua	Lua	language	
+luau	Luau	language	
+lustre	Lustre	devops	
+lxc	LXC	devops	Linux Containers
+macos	macOS	os	OSX|OS X|Mac OS|macOS Monterey|macOS 12|macOS 12 Monterey
+mariadb	MariaDB	database	
+markdown	Markdown	tool	
+marklogic	MarkLogic	database	MarkLogic Server
+material-design	Material Design	tool	
+matlab	MATLAB	language	Matrix Laboratory
+matplotlib	Matplotlib	data	
+mcafee	McAfee	security	
+mediawiki	MediaWiki	tool	
+meditech	MEDITECH	tool	
+mermaid	Mermaid	tool	mermaid.js
+meson	Meson	tool	
+metasploit	Metasploit	security	Metasploit Framework
+mfc	MFC	framework	Microsoft Foundation Class Library|Microsoft Foundation Classes
+microsoft-access	Microsoft Access	database	MS Access
+microsoft-defender	Microsoft Defender	security	Microsoft Defender Antivirus|Windows Defender|Defender Antivirus|Microsoft Defender for Endpoint
+microsoft-dynamics	Microsoft Dynamics	tool	Dynamics 365
+microsoft-excel	Microsoft Excel	data	MS Excel|Office Excel|Microsoft 365 Excel
+microsoft-power-platform	Microsoft Power Platform	tool	Power Platform
+microsoft-project	Microsoft Project	tool	MS Project
+microsoft-sentinel	Microsoft Sentinel	security	Azure Sentinel
+microsoft-sharepoint	Microsoft SharePoint	tool	SharePoint
+microsoft-sql-server	Microsoft SQL Server	database	SQL Server|MS SQL|MS SQL Server|MS SQLServer|MSSQL
+microsoft-visio	Microsoft Visio	tool	MS Visio|Visio
+microsoft-windows	Microsoft Windows	os	Windows|Windows 11|Windows11
+microstrategy	MicroStrategy	data	
+minitab	Minitab	data	
+mitre-att-ck	MITRE ATT&CK	security	
+mlflow	MLflow	ml	
+mlir	MLIR	framework	
+mocha	Mocha	testing	
+mongodb	MongoDB	database	Mongo
+mongodb-atlas-search	MongoDB Atlas Search	database	Atlas Search
+mpi	MPI	framework	Message Passing Interface
+mrtg	MRTG	devops	Multi-Router Traffic Grapher
+mulesoft	MuleSoft	tool	Mule ESB
+musl	musl	framework	musl libc
+mvs	MVS	os	IBM MVS|Multiple Virtual Storage|OS/VS2
+mybatis	MyBatis	framework	
+mysql	MySQL	database	
+nagios	Nagios	devops	
+neo4j	Neo4j	database	
+nessus	Nessus	security	Tenable Nessus
+nestjs	NestJS	framework	Nest.js
+net-framework	.NET Framework	framework	
+netfilter	Netfilter	networking	
+netstat	netstat	networking	
+netsuite	NetSuite	tool	NetSuite ERP
+netty	Netty	framework	
+netview	NetView	devops	
+next-js	Next.js	framework	NextJS
+nextflow	Nextflow	data	
+nginx	Nginx	devops	
+nixos	NixOS	os	
+nltk	NLTK	ml	Natural Language Toolkit
+nmap	Nmap	security	Nmap Security Scanner
+node-js	Node.js	framework	NodeJS
+npm	npm	tool	Node Package Manager
+numpy	NumPy	data	
+nunit	NUnit	testing	
+nuxt	Nuxt	framework	Nuxt.js|NuxtJS
+objective-c	Objective-C	language	Objc|obj-c|objectivec
+ocaml	OCaml	language	
+ollama	Ollama	ml	
+open-policy-agent	Open Policy Agent	security	
+opencl	OpenCL	framework	Open Computing Language
+opengl	OpenGL	framework	Open GL
+openlayers	OpenLayers	framework	
+opensearch	OpenSearch	database	
+openshift	OpenShift	devops	Red Hat OpenShift
+openstack	OpenStack	cloud	
+opentofu	OpenTofu	devops	
+openui5	OpenUI5	framework	UI5|UI Development Toolkit for HTML5
+oracle-apex	Oracle APEX	framework	Oracle Application Express
+oracle-data-guard	Oracle Data Guard	database	Data Guard
+oracle-database	Oracle Database	database	Oracle DBMS|Oracle RDBMS|Oracle DB
+oracle-eloqua	Oracle Eloqua	tool	Eloqua
+oracle-essbase	Oracle Essbase	data	Essbase
+oracle-hyperion	Oracle Hyperion	data	Hyperion
+oracle-rac	Oracle RAC	database	Real Application Cluster|Real Application Clusters
+oracle-rman	Oracle RMAN	database	RMAN|Recovery Manager
+oracle-spatial	Oracle Spatial	database	
+osgi	OSGi	framework	
+ospf	OSPF	networking	Open Shortest Path First
+owasp-zap	OWASP ZAP	security	ZAP
+pandas	pandas	data	
+peoplesoft	PeopleSoft	tool	
+perforce	Perforce	tool	Helix Core|Perforce P4
+perl	Perl	language	Perl 5
+php	PHP	language	
+phpunit	PHPUnit	testing	
+pillow	Pillow	framework	Python Imaging Library|PIL
+ping-identity	Ping Identity	security	
+pl-pgsql	PL/pgSQL	language	
+pl-sql	PL/SQL	language	PLSQL
+plantuml	PlantUML	tool	
+play-framework	Play Framework	framework	
+podman	Podman	devops	
+point-cloud-library	Point Cloud Library	framework	PCL
+postgresql	PostgreSQL	database	Postgres|psql
+postman	Postman	tool	
+power-automate	Power Automate	tool	Microsoft Power Automate
+power-bi	Power BI	data	Microsoft Power BI|PowerBI
+power-query	Power Query	data	powerquery
+powershell	PowerShell	language	pwsh
+presto	Presto	data	PrestoDB|PrestoSQL
+proguard	ProGuard	tool	
+prometheus	Prometheus	devops	
+protocol-buffers	Protocol Buffers	tool	Protocol Buffer|protobuf|protobuf3
+puppet	Puppet	devops	
+pyspark	PySpark	data	
+python	Python	language	python3|py3|Python language
+pytorch	PyTorch	ml	
+qgis	QGIS	tool	
+qiskit	Qiskit	framework	
+qlik	Qlik	data	
+qml	QML	language	Qt Meta-object Language
+qnx	QNX	os	
+r	R	language	GNU R|R language|Rscript
+r-shiny	R Shiny	framework	Shiny for R|shiny R
+rabbitmq	RabbitMQ	data	
+racf	RACF	security	Resource Access Control Facility
+rapid7	Rapid7	security	
+react	React	framework	React.js|ReactJS
+react-native	React Native	framework	
+redis	Redis	database	
+redmine	Redmine	tool	
+redux	Redux	framework	React Redux|react-redux
+regex	Regex	tool	Regular Expression|regular expressions|regexp
+restful-api	RESTful API	tool	RESTful|REST API|REST APIs|RESTful APIs
+rexx	REXX	language	Restructured Extended Executor
+roblox-studio	Roblox Studio	tool	
+robot-framework	Robot Framework	testing	RobotFramework
+robot-operating-system	Robot Operating System	framework	ROS|ROS2|ROS 2|Robotic Operating System
+rocksdb	RocksDB	database	
+ruby	Ruby	language	
+ruby-on-rails	Ruby on Rails	framework	Rails|RoR
+rust	Rust	language	Rust programming language
+salesforce	Salesforce	tool	
+salesforce-apex	Salesforce Apex	language	
+salesforce-marketing-cloud	Salesforce Marketing Cloud	tool	Marketing Cloud|SFMC
+saltstack	SaltStack	devops	Salt Project
+saml	SAML	security	Security assertion markup language
+sap-businessobjects	SAP BusinessObjects	data	Business Objects|BusinessObjects
+sap-erp	SAP ERP	tool	SAP
+sap-hana	SAP HANA	database	
+sas	SAS	data	
+sass	Sass	language	SCSS|Syntactically Awesome Style Sheets
+scala	Scala	language	
+scaleform	Scaleform	framework	
+scikit-learn	scikit-learn	ml	sklearn
+scipy	SciPy	data	
+scylladb	ScyllaDB	database	Scylla
+sed	sed	tool	
+selenium	Selenium	testing	
+servicenow	ServiceNow	tool	
+siemens-teamcenter	Siemens Teamcenter	tool	Teamcenter
+signalr	SignalR	framework	
+simulink	Simulink	tool	
+smartsheet	Smartsheet	tool	
+smtp	SMTP	networking	Simple mail transfer protocol
+snakemake	Snakemake	data	
+snmp	SNMP	networking	Simple Network Management Protocol
+snort	Snort	security	
+snowflake	Snowflake	data	
+solaris	Solaris	os	Oracle Solaris|Sun Solaris
+solarwinds	SolarWinds	devops	
+solidity	Solidity	language	
+sonarqube	SonarQube	testing	
+spacy	spaCy	ml	
+sparql	SPARQL	language	
+spidermonkey	SpiderMonkey	framework	
+spring-boot	Spring Boot	framework	
+spring-framework	Spring Framework	framework	springframework
+sql	SQL	language	Structured query language
+sql-plus	SQL*Plus	tool	SQLPlus|SQL Plus
+sql-server-integration-services	SQL Server Integration Services	data	SSIS
+sql-server-reporting-services	SQL Server Reporting Services	data	SSRS
+sqlalchemy	SQLAlchemy	framework	
+sqlite	SQLite	database	
+stan	Stan	language	
+standard-template-library	Standard Template Library	framework	C++ STL|C++ Standard Template Library
+svelte	Svelte	framework	sveltejs
+svg	SVG	language	Scalable Vector Graphics
+swift	Swift	language	Swift language|Apple Swift|Swiftlang
+swiftui	SwiftUI	framework	
+symfony	Symfony	framework	
+systemverilog	SystemVerilog	language	
+t-sql	T-SQL	language	Transact-SQL|TSQL
+tableau	Tableau	data	
+tailwind-css	Tailwind CSS	framework	Tailwind|TailwindCSS
+tanium	Tanium	security	
+tcl	Tcl	language	Tool Command Language
+tcpdump	tcpdump	networking	
+tensorflow	TensorFlow	ml	
+terraform	Terraform	devops	HashiCorp Terraform
+testng	TestNG	testing	
+three-js	Three.js	framework	ThreeJS
+tla	TLA+	language	
+traceroute	Traceroute	networking	
+travis-ci	Travis CI	devops	
+typescript	TypeScript	language	
+ubuntu	Ubuntu	os	Canonical Ubuntu|Ubuntu Linux|Ubuntu OS|Ubuntu GNU/Linux
+unix	Unix	os	
+unreal-engine	Unreal Engine	framework	UE4|UE5|Unreal Engine 5|Unreal Engine 4|UE 4|Unreal 4
+v8	V8	tool	
+vbscript	VBScript	language	Visual Basic Script|Microsoft Visual Basic Scripting Edition
+verilog	Verilog	language	Verilog HDL|IEEE 1364
+veritas-netbackup	Veritas NetBackup	devops	NetBackup|Symantec NetBackup
+vert-x	Vert.x	framework	vertx
+vespa	Vespa	database	
+vhdl	VHDL	language	
+vim	Vim	tool	
+visual-basic	Visual Basic	language	VB|VB6
+visual-basic-for-applications	Visual Basic for Applications	language	VBA
+visual-basic-net	Visual Basic .NET	language	VB.NET|vbnet
+visual-studio	Visual Studio	tool	Microsoft Visual Studio
+visualforce	Visualforce	framework	
+vite	Vite	tool	Vite.js|vitejs
+vmware	VMware	devops	
+vpn	VPN	networking	Virtual private network|Virtual private networking
+vrrp	VRRP	networking	Virtual Router Redundancy Protocol
+vue-js	Vue.js	framework	Vue|VueJS
+wdl	WDL	language	Workflow Description Language
+webassembly	WebAssembly	language	WASM
+webgl	WebGL	framework	Web Graphics Library
+webkit	WebKit	framework	AppleWebKit
+webos	webOS	os	LG webOS|HP webOS|Palm webOS|Open webOS
+webpack	webpack	tool	
+weka	Weka	ml	
+wgsl	WGSL	language	
+windows-communication-foundation	Windows Communication Foundation	framework	WCF
+windows-mobile	Windows Mobile	os	Microsoft Windows Mobile
+windows-server	Windows Server	os	Windows Server 2016
+wireshark	Wireshark	networking	
+wordpress	WordPress	framework	
+wpf	WPF	framework	Windows Presentation Foundation
+wrike	Wrike	tool	
+x86-assembly	x86 assembly	language	x86 assembly language|X86 asm|Intel assembly|Intel assembly syntax
+xaml	XAML	language	Extensible Application Markup Language
+xcode	Xcode	tool	
+xgboost	XGBoost	ml	eXtreme Gradient Boosting
+xml	XML	language	Extensible Markup Language
+xpath	XPath	language	XML Path Language
+xslt	XSLT	language	XSL Transformations|Extensible Stylesheet Language Transformations
+xunit	xUnit	testing	
+yaml	YAML	tool	yml
+yang	YANG	networking	
+yara	YARA	security	
+yardi	Yardi	tool	
+zabbix	Zabbix	devops	
+zeek	Zeek	security	
+zeromq	ZeroMQ	framework	zmq|0MQ
+zig	Zig	language	Zig language|Ziglang
