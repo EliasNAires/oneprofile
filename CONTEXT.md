@@ -188,12 +188,15 @@ _Avoid_: exception, override, special case, hardcoded verdict
 
 **Unruled**:
 The unknown reason meaning no rule reaches this title — the rules' backlog, as against the
-reasons that say the corpus itself is ambiguous.
+reasons that say the corpus itself is ambiguous. Since the title loop closed, an unruled
+vacancy is discarded: it never reaches the engineering subset and the body pass does not read
+it. See ADR-0008.
 _Avoid_: uncovered, unhandled, missing, not found
 
 **Labeller**:
-The session that produces the labels a classification state is scored against, applying the
-criterion before it has read the rules. Never part of the pipeline. See ADR-0007.
+What produces the labels a classification state is scored against, applying the criterion
+before any rule it scores exists. For titles, a Claude Code session (ADR-0007); for bodies, a
+single run of Jev over the whole pile (ADR-0012). Never part of the pipeline.
 _Avoid_: annotator, judge, oracle, reviewer
 
 **Iteration**:

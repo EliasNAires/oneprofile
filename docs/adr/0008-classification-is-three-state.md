@@ -47,6 +47,11 @@ list, not a description read. The `unruled` share is ours and must fall every it
 `domain_ambiguity` and `scope_ambiguity` are the corpus's and will plateau at whatever the world
 actually is.
 
+Once the title loop closed (#35, at its cap with `unruled` at 2.60%), `unruled` became final:
+**an `unruled` vacancy is discarded**. It never reaches the engineering subset and no later
+pass reads it, the body pass included. Most of these rows are non-vacancies and titles in
+languages other than English, and no stage is owed the work of rescuing them.
+
 The third state is an **escape hatch that has to be capped**: a classifier that answers unknown
 to everything has no false accepts and no misses. The cap is on the unknown pile's **honesty**
 rather than its size — the pile has to be a pile the labeller could not decide either.
@@ -61,6 +66,15 @@ unknown share of the corpus is reported split by reason.
 below 10%** and the **`unruled` share at or below 4% of the corpus**. It stops unconditionally
 at **twelve sessions**, whatever the numbers say. The reasons other than `unruled` are reported
 and not gated, because they are the corpus's rather than ours.
+
+**The body pass is measured the same way.** #11's rules decide from the description body,
+and they are scored against a blind labeller exactly as the title rules were: a sample drawn
+from the body pass's predictions and stratified by them, one error rate per stratum, each
+gated, and a cap on the number of iterations. Reporting how much of the pile the body pass
+decided is not enough on its own, because a rule that decides everything decides the pile
+empty. The labels come from a single labelling run over the whole pile (ADR-0012), so each
+round samples stored labels rather than labelling a fresh sample. The sample sizes, the gates
+and the cap are fixed in ADR-0012.
 
 Downstream, three states means every consumer of classification chooses explicitly what to do
 with unknown, rather than inheriting a default. The engineering subset is the in state alone;
