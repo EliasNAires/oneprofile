@@ -73,7 +73,10 @@ the count of rows you left `UNKNOWN` that the classifier decided.
 levels — there is no streak to hold. Iteration 12 is the last whatever the numbers say. If the
 cap binds with the gate unmet, write the report, record the reason split, close #10, and hand
 the remaining unknown pile to #11 as its input; the open criterion questions carry over as notes
-on #11.
+on #11. Before closing, and only after the labels are written and scored, apply the criterion
+decisions in the #10 comment "Criterion decisions for the close"
+(https://github.com/EliasNAires/oneprofile/issues/10#issuecomment-5806582704), and carry its open
+questions to #11.
 
 Iterations 1–7 were scored under a narrower definition of a mistake, so read trends from
 iteration 8 on.

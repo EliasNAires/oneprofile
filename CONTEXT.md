@@ -122,6 +122,17 @@ The corpus frozen at one stage, so that a rule re-run later is re-run over ident
 Never replaced. Which snapshots exist, and why: ADR-0006.
 _Avoid_: backup, dump, export, copy, fixture
 
+**Cycle**:
+One scheduled pass of the pipeline: a probe and a sweep every week, and discovery whenever a
+new crawl has been published.
+_Avoid_: run, job, batch, refresh
+
+**Stability**:
+The point at which the corpus is large and steady enough for its history to mean something:
+one million vacancies live in a single sweep, and four consecutive cycles completed without
+manual intervention. Series start being recorded here, and not before (ADR-0011).
+_Avoid_: maturity, readiness, launch
+
 ### Classification
 
 **Tech-Adjacent Role**:
@@ -268,3 +279,28 @@ How well a match fits a profile: coverage, reduced where the profile falls short
 vacancy's seniority level or where the vacancy carries too little evidence. Exceeding a
 vacancy's seniority level costs nothing.
 _Avoid_: rank, rating, weight, relevance
+
+### The Explorer
+
+**Explorer**:
+The public, read-only view of the corpus: how engineering roles divide by role, seniority and
+skill, as it stands now and, after stability, over time. Its one-line promise is "jobs you
+can apply to from a software background".
+_Avoid_: dashboard, analytics, insights, report
+
+**Share**:
+A count taken as a proportion of the engineering roles in scope, always shown beside the
+count itself and beside the unknown share of the dimension being charted, since unknowns are
+left out of the denominator and are not spread evenly across it.
+_Avoid_: percentage, ratio, market share, rate
+
+**Unknown Share**:
+The proportion of the vacancies in scope whose value for the charted dimension could not be
+determined — no seniority stated, no skill found, classification undecided. How much of the
+corpus a chart cannot see.
+_Avoid_: missing data, null rate, coverage
+
+**Series**:
+A share or count recorded at dated points, kept as a number rather than as the vacancies that
+produced it. The only history the corpus has (ADR-0011).
+_Avoid_: trend, time series, history table, aggregate

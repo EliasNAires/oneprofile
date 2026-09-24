@@ -1,8 +1,8 @@
 # OneProfile — Product Requirements, MVP iteration
 
-Status: agreed 2026-09-19. The spec for what is not built yet. What is built is summarized
-with pointers to the code, the ADRs and `docs/engineering-role-criterion.md`, which own it.
-Sequencing lives in the issue tracker.
+Status: agreed 2026-09-19, re-sequenced 2026-09-24 (§12). The spec for what is not built
+yet. What is built is summarized with pointers to the code, the ADRs and
+`docs/engineering-role-criterion.md`, which own it. Sequencing lives in the issue tracker.
 
 ## 1. The problem
 
@@ -16,7 +16,8 @@ that consumes it.
 
 ## 2. Users and scope
 
-This iteration serves **one user: the developer**. There are no accounts, no
+Matching serves **one user: the developer**. The explorer (§12) is the one public surface,
+and it is anonymous and read-only. There are no accounts, no
 authentication, no sessions and no `user` table. The `profile` table has its own id and the
 API takes a profile identifier, so adding real users later is a `user` table plus a foreign
 key — but nothing is built for that case now.
@@ -54,8 +55,8 @@ Unauthenticated, whole board in one response, no pagination. Its structured fiel
 (`workplaceType`, `secondaryLocations[]` with per-location countries, compensation) are kept
 — see §7.
 
-All ingestion is triggered manually by an administrative endpoint. Scheduling comes after the
-real runtimes are measured.
+All ingestion is triggered manually by an administrative endpoint today. In production every
+stage runs on a schedule (§12.4), once the real runtimes are measured.
 
 ## 5. Feature 2 — classification and eligibility
 
@@ -258,7 +259,9 @@ byte range spans several.
 **nginx** is added in front as a reverse proxy. It serves the SPA's built assets and proxies
 `/api/**` to the application over the Docker network; only the proxy publishes a port. Same
 origin, so CORS does not enter the design, and `/admin/**` is simply not proxied. The
-vertical slice runs as plain HTTP over ZeroTier; a domain and TLS are a later decision.
+vertical slice runs as plain HTTP over ZeroTier. The public explorer is reached through a
+Cloudflare tunnel on a paid domain, which also provides TLS, rate limiting and bot protection
+(§12.5).
 
 Two known deployment gaps carried over and not fixed this iteration: images are tagged
 `latest` only, so **a deploy cannot be rolled back**, and deployment is manual.
@@ -277,5 +280,80 @@ Still open:
 
 Authentication and multiple users; role families finer than "engineering"; tech-adjacent
 roles a software background alone would not open; résumé parsing; required-versus-mentioned skill discrimination; multi-dimensional seniority;
-salary-based ranking; LLM extraction of any kind; scheduled ingestion; TLS, a domain and
-rollbackable deploys; ATS beyond Greenhouse and Ashby.
+salary-based ranking; LLM extraction of any kind; rollbackable deploys. For the explorer:
+free-text questions, accounts, and static blog pages — the last come after the explorer, for
+search traffic.
+
+## 12. The explorer — the first public surface
+
+Agreed 2026-09-24. Matching stays the product; the explorer is built first because it shares
+the whole data layer with matching and is cheaper to finish. It is the start of a public
+reputation built on the data: posts about job seeking, in several formats, drawn from what
+the explorer shows. Its audience is job seekers, globally — most of the corpus is US-based,
+and its measurements are presented as such. Everything in it has to look good; the ambition
+is for it to be shared widely.
+
+### 12.1 What it is
+
+A **structured** explorer: a person picks a measure, a grouping and filters, and gets a
+chart. Every chart is an exact query. There is no free-text question box, which would need an
+LLM at request time.
+
+Launch dimensions: **role** (the normalized title, within engineering roles), **seniority**
+and **skills**. Eligibility comes next, once its extraction is measured. Salary only ever
+appears with the subset it describes stated on the chart, since it exists only where the ATS
+publishes pay.
+
+The query "best stack for a role" is the share of that role's vacancies that name each skill.
+
+### 12.2 How numbers are shown
+
+- **Shares beside counts.** The denominator is the engineering roles in scope. The corpus is
+  a sample of the market, so relative numbers are the honest reading while it is small.
+- **The unknown share of the charted dimension**, on every chart: unknown classification on
+  role charts, no stated seniority on seniority charts, no skill found on skill charts.
+  Unknowns are not spread evenly, so leaving them out of the denominator biases the shares;
+  showing their size says how much the chart cannot see.
+- **Seniority counts each vacancy once**, at the lowest level it names (§6.1).
+- **Small samples.** A cell with fewer than 10 vacancies is hidden. Every other bar carries its
+  n and a 95% Wilson interval, which stays well-behaved at small n and near 0% or 100%.
+- **A methodology page**, linked from every chart: the one-line criterion ("jobs you can
+  apply to from a software background"), which ATSs are covered, board and vacancy counts, the
+  as-of date, what unknown means, and the known biases — the selection of companies by ATS and
+  by crawl, the US weight of the corpus, and salary coming only from postings that publish it.
+
+### 12.3 History
+
+The explorer shows the live corpus only until **stability**: one million vacancies live in a
+single sweep, and four consecutive weekly cycles without manual intervention. From then on
+series are recorded just before each sweep — vacancy count per (role × seniority) and skill
+share per (role × skill) — and trend views are added to the explorer once there are enough
+points to show one. History is numbers, not vacancies (ADR-0011).
+
+Reaching a million live vacancies needs discovery from Wayback Machine captures as well as
+Common Crawl, and five to ten ATSs in all.
+
+### 12.4 Scheduling
+
+Every stage runs on a schedule in production: discovery when a new crawl is published,
+probing after discovery and periodically for empty and not-found boards, and a sweep every
+week.
+
+### 12.5 Launch
+
+The explorer is only the developer's until the launch gate is met; then it is public,
+anonymous and read-only, behind a Cloudflare tunnel.
+
+The launch gate:
+
+1. Greenhouse and Ashby both swept.
+2. The engineering-role classifier has met its exit criterion.
+3. Skill extraction has a measured precision.
+4. Titles are normalized and duplicate vacancies are collapsed.
+
+### 12.6 Order of work
+
+Classification (body pass included) → title normalization → seniority from the body → the
+skill taxonomy → skill extraction → deduplication → explorer endpoints → the explorer page
+and nginx, with Ashby in parallel before launch. The profile and matching come after. The
+schedule and the series follow on their own track, as the pipeline heads toward stability.
