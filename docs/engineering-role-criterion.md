@@ -27,6 +27,8 @@ landed there:
 
 Only `unruled` is expected to fall. The other two are what the world is.
 
+`scope_ambiguity` means a role family with technical and non-technical subsets.
+
 ## How a title is read
 
 A title is a **function head** — the noun naming what the role does — with **modifiers** naming
@@ -185,6 +187,9 @@ title genuinely does not say.
 A phrase is UNKNOWN with `scope_ambiguity` when its variants split across Q2–Q4 in the world —
 some `data analyst` roles are engineering roles and some are not, and no rule fixes that. It is
 OUT when Q1 fails, and when none of Q2–Q4 holds and the title says so.
+
+A manager or director of engineering work is `IN`. Product managers are `UNKNOWN` /
+`scope_ambiguity`. Program and project managers are `UNKNOWN` / `scope_ambiguity`.
 
 ## How a title is labelled
 
