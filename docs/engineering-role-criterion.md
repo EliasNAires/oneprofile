@@ -66,7 +66,8 @@ Operations` say what the role is for, and nothing about software. This is the ru
 unclassed modifier is a market marker, applied where it cannot cause a miss. `engineer` and
 `developer` are deliberately not generic, because a bare `C Engineer` is a software job and
 the same reading would decide it OUT. One word holds a generic head open: **`product`**. A
-product title with no software qualifier is `scope_ambiguity`, because product roles split
+product title with no software qualifier is `scope_ambiguity`, whatever market marker it
+carries, because product roles split
 across the criterion more than any other family, and what splits them is the expertise, not
 the domain.
 
@@ -92,8 +93,12 @@ constantly.
   markets, so the marker says nothing about whether this role builds it.
 
 The test is the credential: would a person need that training to be hired? If yes, it is a
-discipline marker; if no, it is a market marker. **A modifier no one has classed is a market
-marker**, because market is the class that cannot cause a miss.
+discipline marker; if no, it is a market marker. **Under a generic head, a modifier no one has
+classed is a market marker**, because there market is the class that cannot cause a miss. Under
+any other head it is no marker at all: under `engineer` the same default would decide `Systems
+Engineer`, `Payments Engineer` and `Autonomy Engineer` OUT, and that is a miss. There only a
+modifier that plainly names a market — `building`, `hotel`, `retail` — is a market marker, and a
+title carrying nothing else falls to step 7.
 
 The two behave differently in exactly one place, and identically everywhere else:
 
@@ -143,7 +148,10 @@ classify(cleaned_title):
         return OUT
 
     # 6 — With no qualifier to argue against, the market decides a bound head.
-    if head is domain-bound and a market marker is present:
+    #     An unclassed modifier is a market marker only under a generic head
+    #     (6a), so here the marker has to be one that plainly names a market.
+    #     `product` holds the title open here as it does at 6a.
+    if head is domain-bound and a market marker is present and `product` is absent:
         return OUT
 
     # 7 — The head is known and nothing settled the rest.

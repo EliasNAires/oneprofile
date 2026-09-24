@@ -135,27 +135,115 @@ class TitleClassificationTest {
 	}
 
 	@Nested
-	class ProductManagement {
+	class ProductProgramAndProjectManagement {
 
 		@Test
-		void isInWhereTheTitleNamesTheSoftwareTheRoleManages() {
-			assertThat(classify("product manager mobile")).isEqualTo(Classification.in());
+		void isScopeAmbiguityWhateverTheTitleSaysAboutTheSoftwareOrTheMarket() {
+			assertThat(classify("product manager")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("product manager platform engineering")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("program manager")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("project manager data centers")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("product manager construction")).isEqualTo(scopeAmbiguity());
+		}
+
+		@Test
+		void isInWhereTheTitleNamesTheTechnicalSubsetOfProductOrProgramManagement() {
 			assertThat(classify("technical product manager gpu infrastructure")).isEqualTo(Classification.in());
+			assertThat(classify("technical program manager qa developer experience")).isEqualTo(Classification.in());
 		}
 
 		@Test
-		void isTheCorpusAmbiguityWhereTheTitleNamesNoDomain() {
-			assertThat(classify("product manager")).isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+		void isDomainAmbiguityForATechnicalProjectWhichIsAsOftenCablingAsSoftware() {
+			assertThat(classify("technical project manager"))
+				.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
 		}
 
 		@Test
-		void isOutWhereTheTitleNamesADomainThatIsNotSoftware() {
-			assertThat(classify("product manager construction")).isEqualTo(Classification.out());
+		void isOutWhereTheTitleNamesADiscipline() {
+			assertThat(classify("mechanical project manager")).isEqualTo(Classification.out());
+			assertThat(classify("technical program manager mechanical")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void holdsAGenericHeadOpenOnTheExpertiseWhereProductStandsBesideIt() {
+			assertThat(classify("head of product growth")).isEqualTo(scopeAmbiguity());
 		}
 
 		@Test
 		void readsProductOwnerTheSameWayItReadsScrumMaster() {
 			assertThat(classify("product owner office cloud storage")).isEqualTo(Classification.in());
+		}
+
+	}
+
+	@Nested
+	class Managers {
+
+		@Test
+		void areInWhereWhatTheyManageIsAnEngineeringFunction() {
+			assertThat(classify("software engineering manager")).isEqualTo(Classification.in());
+			assertThat(classify("manager backend engineering")).isEqualTo(Classification.in());
+			assertThat(classify("sre manager")).isEqualTo(Classification.in());
+			assertThat(classify("technical lead")).isEqualTo(Classification.in());
+		}
+
+		@Test
+		void areScopeAmbiguityOverATechnologyNounThatNamesNoEngineeringFunction() {
+			assertThat(classify("it manager")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("data manager")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("security manager")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("salesforce manager")).isEqualTo(scopeAmbiguity());
+		}
+
+		@Test
+		void leaveABareEngineeringManagerOpenOnItsDomainWhateverMarketItNames() {
+			assertThat(classify("engineering manager"))
+				.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+			assertThat(classify("engineering manager finance"))
+				.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+			assertThat(classify("mechanical engineering manager")).isEqualTo(Classification.out());
+		}
+
+	}
+
+	@Nested
+	class NamedEnterprisePackages {
+
+		@Test
+		void areInUnderADeveloper() {
+			assertThat(classify("salesforce developer")).isEqualTo(Classification.in());
+		}
+
+		@Test
+		void areScopeAmbiguityUnderAFunctionalHead() {
+			assertThat(classify("netsuite consultant non profit")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("sap fico consultant")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("salesforce administrator")).isEqualTo(scopeAmbiguity());
+			assertThat(classify("sap analyst")).isEqualTo(scopeAmbiguity());
+		}
+
+	}
+
+	@Nested
+	class AiTrainingPosts {
+
+		@Test
+		void areInWhereTheExpertiseNamedIsSoftware() {
+			assertThat(classify("javascript developers ai training")).isEqualTo(Classification.in());
+			assertThat(classify("computer sciences graduates ai training")).isEqualTo(Classification.in());
+		}
+
+		@Test
+		void areOutWhereTheExpertiseNamedIsAnythingElse() {
+			assertThat(classify("biology graduates ai training")).isEqualTo(Classification.out());
+			assertThat(classify("ai trainer advanced french fluency")).isEqualTo(Classification.out());
+			assertThat(classify("data entry clerk graduates ai training")).isEqualTo(Classification.out());
+			assertThat(classify("ai trainer electrical engineers cad python expertise")).isEqualTo(Classification.out());
+		}
+
+		@Test
+		void areScopeAmbiguityWhereNoExpertiseIsNamed() {
+			assertThat(classify("ai training experts")).isEqualTo(scopeAmbiguity());
 		}
 
 	}
@@ -261,7 +349,8 @@ class TitleClassificationTest {
 			assertThat(classify("engineering manager data delivery platform")).isEqualTo(Classification.in());
 			assertThat(classify("engineering manager"))
 				.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
-			assertThat(classify("manufacturing engineering manager")).isEqualTo(Classification.out());
+			assertThat(classify("manufacturing engineering manager"))
+				.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
 		}
 
 	}
@@ -291,7 +380,8 @@ class TitleClassificationTest {
 
 		@Test
 		void readsTechnicalUnderAnEngineeringCapableHeadAsASoftwareDomain() {
-			assertThat(classify("technical project manager")).isEqualTo(Classification.in());
+			assertThat(classify("technical project manager"))
+				.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
 			assertThat(classify("coupa technical functional lead")).isEqualTo(Classification.in());
 			assertThat(classify("technical project manager industrial automation")).isEqualTo(Classification.out());
 			assertThat(classify("technical project lead silicon engineering")).isEqualTo(Classification.out());
@@ -316,7 +406,7 @@ class TitleClassificationTest {
 			assertThat(classify("applied scientist efficient llm inference model optimization"))
 				.isEqualTo(Classification.in());
 			assertThat(classify("informatics engineer")).isEqualTo(Classification.in());
-			assertThat(classify("netsuite administrator")).isEqualTo(Classification.in());
+			assertThat(classify("netsuite administrator")).isEqualTo(scopeAmbiguity());
 			assertThat(classify("overdare unreal gameplay engineer")).isEqualTo(Classification.in());
 			assertThat(classify("quantitative developer")).isEqualTo(Classification.in());
 			assertThat(classify("rendering engineer")).isEqualTo(Classification.in());
@@ -360,8 +450,7 @@ class TitleClassificationTest {
 		void readsTheAnnotationPostingAheadOfTheProfessionItRecruitsFrom() {
 			// Iteration 4 read this out and iteration 5 read its Wellington twin in, so the phrase
 			// is left undecided rather than decided one of the two ways two labellers split on.
-			assertThat(classify("database administrator graduates ai training lyon france"))
-				.isEqualTo(Classification.unknown(UnknownReason.SCOPE_AMBIGUITY));
+			assertThat(classify("database administrator graduates ai training lyon france")).isEqualTo(Classification.in());
 		}
 
 		@Test
@@ -470,10 +559,8 @@ class TitleClassificationTest {
 
 		@Test
 		void readsTheAnnotationPostingAsTheSplitTwoLabellersMadeOfIt() {
-			assertThat(classify("javascript developers ai training omaha us"))
-				.isEqualTo(Classification.unknown(UnknownReason.SCOPE_AMBIGUITY));
-			assertThat(classify("computer sciences graduates ai training brighton uk"))
-				.isEqualTo(Classification.unknown(UnknownReason.SCOPE_AMBIGUITY));
+			assertThat(classify("javascript developers ai training omaha us")).isEqualTo(Classification.in());
+			assertThat(classify("computer sciences graduates ai training brighton uk")).isEqualTo(Classification.in());
 			// The posting that names a profession no software background reaches is untouched.
 			assertThat(classify("registered nurses ai training belfast uk")).isEqualTo(Classification.out());
 		}
@@ -578,7 +665,7 @@ class TitleClassificationTest {
 			// them over shop floors and inspection lines — so this one is OUT again.
 			assertThat(classify("quality assurance manager women s apparel qa import"))
 				.isEqualTo(Classification.out());
-			assertThat(classify("it asset manager")).isEqualTo(Classification.in());
+			assertThat(classify("it asset manager")).isEqualTo(scopeAmbiguity());
 			assertThat(classify("partner manager channels uki security")).isEqualTo(Classification.in());
 			assertThat(classify("vice president client partnerships publisher cloud"))
 				.isEqualTo(Classification.in());
@@ -627,7 +714,7 @@ class TitleClassificationTest {
 			assertThat(classify("entry level recruitment consultant")).isEqualTo(Classification.out());
 			assertThat(classify("real estate acquisition consultant")).isEqualTo(Classification.out());
 			// The software consultant is still a software consultant.
-			assertThat(classify("sap consultant")).isEqualTo(Classification.in());
+			assertThat(classify("sap consultant")).isEqualTo(scopeAmbiguity());
 			// What the change costs: the audit consultant the domain-free reading held open reads
 			// out now, where the audit analyst next to it does not.
 			assertThat(classify("audit consultant")).isEqualTo(Classification.out());
@@ -690,7 +777,7 @@ class TitleClassificationTest {
 			assertThat(classify("business applications manager")).isEqualTo(Classification.in());
 			assertThat(classify("engineering director storage")).isEqualTo(Classification.in());
 			assertThat(classify("manager bi analytics engineer")).isEqualTo(Classification.in());
-			assertThat(classify("managing director of technology chicago")).isEqualTo(Classification.in());
+			assertThat(classify("managing director of technology chicago")).isEqualTo(scopeAmbiguity());
 			assertThat(classify("d\u00e9veloppeur c++")).isEqualTo(Classification.in());
 		}
 
@@ -1050,9 +1137,8 @@ class TitleClassificationTest {
 		@Test
 		void leaveAProductRoleOpenRatherThanDecidingIt() {
 			// Nine labellers split this family 44 IN, 5 OUT and 58 UNKNOWN, so the rule above steps
-			// around it and lets steps 6 and 7 answer.
-			assertThat(classify("product manager search"))
-				.isEqualTo(Classification.unknown(UnknownReason.DOMAIN_AMBIGUITY));
+			// around it.
+			assertThat(classify("product director search")).isEqualTo(scopeAmbiguity());
 		}
 
 	}
@@ -1127,7 +1213,7 @@ class TitleClassificationTest {
 		@Test
 		void aConsultantWithNothingSoftwareAboutItIsOut() {
 			assertThat(classify("consultant public sector")).isEqualTo(Classification.out());
-			assertThat(classify("sap consultant")).isEqualTo(Classification.in());
+			assertThat(classify("sap consultant")).isEqualTo(scopeAmbiguity());
 		}
 
 		@Test
@@ -1139,6 +1225,10 @@ class TitleClassificationTest {
 
 	private Classification classify(String cleanedTitle) {
 		return this.classification.classify(cleanedTitle);
+	}
+
+	private static Classification scopeAmbiguity() {
+		return Classification.unknown(UnknownReason.SCOPE_AMBIGUITY);
 	}
 
 }
