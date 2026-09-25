@@ -11,3 +11,7 @@ The five canonical triage labels, used under their own names. See `docs/agents/t
 ### Domain docs
 
 Single-context: `CONTEXT.md` and `docs/adr/` at the repo root. See `docs/agents/domain.md`.
+
+### Code layout
+
+Packages split into `storage/` and `workers/`, and every class is named by its role (`Run`, `Rule`, `Store`, …). See `docs/agents/code-layout.md`.
