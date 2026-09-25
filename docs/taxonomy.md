@@ -13,7 +13,7 @@ taxonomy is curated rather than taken whole from someone else's: ADR-0003.
 | Wikidata | queried 2026-09-24 through https://query.wikidata.org/sparql | CC0 | seven class pulls and one label lookup, below |
 | The corpus | the 26,587 IN descriptions of the development database, newest vacancy update 2026-09-20 | — | the names its ads use that no source above supplies |
 
-O\*NET and Linguist are pinned by SHA-256 in `scripts/taxonomy_candidates.py`:
+O\*NET and Linguist were pinned by SHA-256 in the seed script:
 
 - O\*NET: `a6e7ea1fb368659a3a8ffe2895d8343cbe80b61efbb2db39cb3cb0f9bd56d3b4`
 - Linguist: `7c2bc5b59662de6c5d09cd4990e82b2541d4cd2ea7c8c213537730474f24a5c7`
@@ -60,7 +60,8 @@ kept in the taxonomy.
 
 ## How it was built
 
-Three scripts in `scripts/`, each run against the development database:
+Three scripts, each run against the development database. They were removed once the taxonomy was
+built; they are in the history at commit `57c8bce`, under `scripts/`:
 
 1. **Seed** (#37). `taxonomy_candidates.py` turns the three sources into 3,793 candidate
    skills and counts, for each, how many of the 26,587 IN descriptions name it. Archived in
@@ -80,9 +81,8 @@ Three scripts in `scripts/`, each run against the development database:
    `taxonomy_select.py` over both reviews, again at a threshold of 3, wrote the 2,009 skills of
    `skills.tsv`.
 
-From then on `skills.tsv` is curated by hand. The scripts and archived files are the record of
-how it started, not a build step: rerunning `taxonomy_select.py` over the file would throw the
-hand edits away.
+From then on `skills.tsv` is curated by hand. The archived files are the record of how it
+started, not a build step.
 
 ## Every skill, by source
 

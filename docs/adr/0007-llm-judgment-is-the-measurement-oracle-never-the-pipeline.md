@@ -41,7 +41,7 @@ bodies and is not covered by this decision.
   the developer's attention on titles he cannot confidently label, to certify a reader the
   loop's own numbers already test — a labeller that reads the criterion badly produces a bad
   error rate, which is the thing being measured anyway. Its two fixtures,
-  `src/test/resources/calibration/engineering-role-2026-09-20.tsv` and
+  `docs/measurements/engineering-role-2026-09-20.tsv` and
   `engineering-role-boundary-2026-09-21.tsv`, are kept as history and read by nothing.
 
 ## Consequences
