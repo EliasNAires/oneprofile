@@ -48,7 +48,7 @@ class TaxonomyConfigurationTest {
 	void holdsTheSkillsTheCorpusSupports() throws IOException {
 		try (Reader tsv = new InputStreamReader(new ClassPathResource("taxonomy/skills.tsv").getInputStream(),
 				StandardCharsets.UTF_8)) {
-			assertThat(new BufferedReader(tsv).lines().count()).isBetween(450L, 600L);
+			assertThat(new BufferedReader(tsv).lines().count()).isBetween(1800L, 2200L);
 		}
 	}
 

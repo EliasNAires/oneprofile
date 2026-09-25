@@ -2,9 +2,9 @@
 """Selects the skill taxonomy from the review of the candidates: merges the verdicts into skills,
 keeps those named in enough IN descriptions by the keys the review kept, and writes skills.tsv.
 
-    scripts/taxonomy_select.py <review.tsv> <threshold> <skills.tsv>
+    scripts/taxonomy_select.py <review.tsv>... <threshold> <skills.tsv>
 
-The review has one verdict per line, as name, verdict (keep or drop), canonical name, category,
+Each review has one verdict per line, as name, verdict (keep or drop), canonical name, category,
 aliases separated by '|', and a note. The descriptions are counted as scripts/taxonomy_candidates.py
 counts them, so the development database must be up. Once written, skills.tsv is edited by hand.
 """
@@ -79,13 +79,14 @@ def read(path):
 
 
 def main():
-    if len(sys.argv) != 4:
-        raise SystemExit('usage: taxonomy_select.py <review.tsv> <threshold> <skills.tsv>')
-    skills = merge(read(sys.argv[1]))
+    if len(sys.argv) < 4:
+        raise SystemExit('usage: taxonomy_select.py <review.tsv>... <threshold> <skills.tsv>')
+    *reviews, threshold, out = sys.argv[1:]
+    skills = merge([v for review in reviews for v in read(review)])
     docs, _ = corpus()
-    kept = select(skills, docs, int(sys.argv[2]))
-    say(f'{len(skills)} skills kept by the review, {len(kept)} named in at least {sys.argv[2]} descriptions')
-    with open(sys.argv[3], 'w') as f:
+    kept = select(skills, docs, int(threshold))
+    say(f'{len(skills)} skills kept by the reviews, {len(kept)} named in at least {threshold} descriptions')
+    with open(out, 'w') as f:
         for s in sorted(kept, key=lambda s: s['id']):
             f.write(f"{s['id']}\t{s['canonical']}\t{s['category']}\t{'|'.join(s['aliases'])}\n")
 

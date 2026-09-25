@@ -100,14 +100,20 @@ MERGE = {
 TOKEN_SEPARATOR = re.compile(r'[^a-z0-9+#.]+')
 
 
+def trim_dots(t):
+    """A trailing dot is a sentence's, and a leading one is kept only before a letter ('.net')."""
+    t = t.rstrip('.')
+    if t.startswith('.') and not re.match(r'\.[A-Za-z]', t):
+        t = t.lstrip('.')
+    return t
+
+
 def tokens(text):
-    """Lower-cased words, keeping the '+', '#' and '.' technology names are spelled with. A trailing
-    dot is a sentence's, and a leading one is kept only before a letter ('.net')."""
+    """Lower-cased words, keeping the '+', '#' and '.' technology names are spelled with, their dots
+    trimmed."""
     out = []
     for t in TOKEN_SEPARATOR.split(text.lower()):
-        t = t.rstrip('.')
-        if t.startswith('.') and not re.match(r'\.[a-z]', t):
-            t = t.lstrip('.')
+        t = trim_dots(t)
         if t:
             out.append(t)
     return out
