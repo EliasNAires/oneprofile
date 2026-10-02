@@ -201,8 +201,9 @@ _Avoid_: uncovered, unhandled, missing, not found
 
 **Labeller**:
 What produces the labels a classification state is scored against, applying the criterion
-before any rule it scores exists. For titles, a Claude Code session (ADR-0007); for bodies, a
-single run of Jev over the whole pile (ADR-0012). Never part of the pipeline.
+without seeing any rule or prediction it scores. For titles, a Claude Code session
+(ADR-0007); for bodies, Jev, over the rows each round draws (ADR-0012). Never part of the
+pipeline.
 _Avoid_: annotator, judge, oracle, reviewer
 
 **Iteration**:

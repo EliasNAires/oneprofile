@@ -1,39 +1,50 @@
-# The body pile is labelled once, by Jev, and every round is scored against those labels
+# The body pass is scored against Jev's labels, made only for the rows a round draws
 
-Status: accepted
+Status: accepted (amended 2026-10-02)
 
 The body pass of #11 is measured against labels, as the title rules were (ADR-0008), but a
-description body is two orders of magnitude longer than a title, and a Claude Code session
-cannot label hundreds of them per round. So the labels for #11 are produced **once, for the
-whole pile, by Jev** (TypeSafe's decision model, `typesafe-ai/jev` on Vercel's AI Gateway),
-and stored. Every build-review round afterwards draws its sample from the stored labels and
-labels nothing.
+description is two orders of magnitude longer than a title, and a Claude Code session
+cannot label hundreds of them per round. So the labels for #11 are made by **Jev**
+(TypeSafe's decision model, pinned to `jev-1.13.0`), called on TypeSafe's API with
+`TYPESAFE_API_KEY`. Jev is the one paid API this project allows (ADR-0007).
 
 The pile is every vacancy the title stage left `UNKNOWN` with reason `domain_ambiguity` or
 `scope_ambiguity`: 21 456 rows once #35 closed. `unruled` rows are discarded (ADR-0008) and
-are not labelled. The pile is fixed because the title loop is closed, which is what makes a
-single labelling run enough for the whole loop.
+are never labelled. The pile is fixed because the title stage is frozen: the body pass never
+changes a title rule, and title gaps it finds are reported, not fixed.
 
 ## How the labels are made
 
 - Jev reads the whole criterion (`docs/engineering-role-criterion.md`), the title, and the
-  body **as the body pass will read it**: the same cleaned text, produced by the same code,
-  so a disagreement between rule and label is never a disagreement about the input.
-- It answers in the three states, `IN`, `OUT` or `UNKNOWN`, and its probability is kept.
-  `UNKNOWN` is a legitimate label: the body pass's unknown stratum is scored against rows the
-  labeller could not decide either.
-- The labels are **blind by ordering**: they are made before any body rule is written, so no
-  rule can have shaped them.
-- The run happens inside Jev's free period on the AI Gateway, which ends on 2026-09-25, with
-  **no card on file**, so it cannot be billed. The no-paid-API rule of ADR-0007 stands: a run
-  that would cost money is not made.
-- The labels are committed as a fixture, with the criterion revision they were made under.
+  **Cleaned Description**, exported from the application's own `DescriptionCleaningRule`, so a
+  disagreement between rule and label is never a disagreement about the input.
+- It answers one Choice question in the three states, `IN`, `OUT` or `UNKNOWN`, and the
+  whole probability distribution is kept. `UNKNOWN` is a legitimate label: the body pass's
+  unknown stratum is scored against rows the labeller could not decide either.
+- **Only rows that are drawn are labelled.** The labeller check and each round send Jev the
+  rows they draw, and nothing else. Every label is stored once, with the criterion revision
+  and the model ID it was made under, and is never remade.
+- **Blindness** is kept by what Jev reads, not by ordering: it sees the criterion and the
+  vacancy, never a rule or a prediction. Rows labelled after the reviewer changes the
+  criterion are labelled under the new revision.
+
+## Budget
+
+Jev bills input tokens only, at $0.042 per million, against a **$5 hard limit** on the
+account. The criterion is about 5.3k tokens and a cleaned description about 1.5k on
+average, so the criterion is most of every call. Labelling only what is drawn caps the work
+at about 7 000 rows (the check plus 600 rows a round for ten rounds), about 49M tokens, or
+**about $2**. Every script that calls Jev records the `usage` of each response, keeps a
+running total, and **stops when it reaches $4**.
 
 ## Checking the labeller
 
-Before any round is scored against them, about **1000 of the stored labels are re-labelled
-blind by Claude Code Haiku subagents** working in batches, from the same criterion and the
-same cleaned text, and the agreement is reported, split by state.
+Before the loop, about **1000 rows** are drawn from the pile, stratified by reason in
+proportion to it, and labelled by Jev. **Claude Code Haiku subagents** re-label the same rows
+blind, in batches of 20, through the `body-labeller` agent (`model: haiku`, tools `Read` and
+`Write`), from the same criterion and the same cleaned text. A single pilot batch runs
+first; if its measured cost projects past about 4M tokens for 1000 rows, the check drops to
+**500 rows**, which still measures 85% agreement to within about ±3 points.
 
 Jev is accepted as the labeller when **at least 85% of the checked rows agree**. The limit is
 set against the loop's error gates below: a labeller that disagrees with a second reader on
@@ -43,22 +54,36 @@ developer is told, because which labeller the loop trusts is part of its goal.
 
 ## The loop
 
+Each round is two sessions.
+
+- **The implementer** writes body rules test-first, in whatever shape it chooses, starting
+  from the previous round's feedback. It never sees a label.
+- **The reviewer** runs the scoring script, reviews the implementer's code without its
+  reasoning, and writes the feedback for the next round. It decides any criterion question
+  itself and writes it into the criterion, judged by what the classifier is for: helping
+  software people find better jobs, so a rule that lets a non-software job into the
+  engineering subset, or keeps a software job out of it, costs the user directly.
+
+The round's record is a comment on #11; the issue stays open until the loop exits or hits
+the cap.
+
 - **Sample.** Each round draws **200 rows from each state the body pass predicted**, `IN`,
-  `OUT` and `UNKNOWN`, from the stored labels, excluding every row an earlier round drew. A
-  state that predicted fewer than 200 rows gives all of them. 200 rows put a 10% error rate
-  within about ±4 points, and the pile holds enough rows for every round the cap allows.
-  Drawing costs nothing, since nothing is labelled; what a round pays for is reading its
-  disagreements.
+  `OUT` and `UNKNOWN`, excluding every row an earlier round drew. A state that predicted
+  fewer than 200 rows gives all of them. Rows the labeller check labelled may be drawn,
+  since their labels were made without any rule. 200 rows put a 10% error rate within
+  about ±4 points.
 - **Error.** As in ADR-0008, a mistake is any row whose predicted state differs from the
   label, in either direction, so each stratum yields one error rate.
 - **Exit.** The loop exits when one round holds the **`IN` error at or below 10%**, the
-  **`OUT` error at or below 10%**, and the **`UNKNOWN` error at or below 30%**. `IN` is the
-  error the rest of the pipeline pays for, because an `IN` row enters the engineering subset
-  and every later pass. `OUT` stays out of the subset for good. `UNKNOWN` is looser because
-  staying unknown is the safe default (ADR-0009), and the rows that cost this gate are ones a
-  model decided from wording that no rule reaches. The gate still stops a pass that decides
-  nothing, since such a pass scores this stratum at about the share of the pile the labeller
-  decided.
+  **`OUT` error at or below 10%**, the **`UNKNOWN` error at or below 30%**, and the body
+  pass runs over the whole pile in **2 minutes or less** on the laptop in dev mode. `IN` is
+  the error the rest of the pipeline pays for, because an `IN` row enters the engineering
+  subset and every later pass. `OUT` stays out of the subset for good. `UNKNOWN` is looser
+  because staying unknown is the safe default (ADR-0009), and the rows that cost this gate
+  are ones a model decided from wording that no rule reaches. The gate still stops a pass
+  that decides nothing, since such a pass scores this stratum at about the share of the pile
+  the labeller decided. The time gate is tight because the corpus is expected to grow about
+  fivefold.
 - **Cap.** The loop stops after **ten rounds**, whatever the numbers say, and reports where
   it stopped.
 
@@ -67,15 +92,20 @@ developer is told, because which labeller the loop trusts is part of its goal.
 - **A Claude Code session labelling a fresh sample every round**, as ADR-0007 does for
   titles. Rejected on cost in context: 400 bodies is about 400k tokens per round, a dozen
   subagent runs each time.
-- **Paying for Jev, or any API, past its free period.** Rejected under ADR-0007.
+- **Jev labelling the whole pile once**, the first version of this ADR, written while Jev was
+  free. About 150M tokens, or $6.30, over the $5 limit.
+- **A shortened criterion sent to Jev.** About $2.70 for the whole pile, but Jev would read a
+  different text from the Haiku check and the reviewer, and the summary could lose cases.
+- **Several vacancies packed into one call**, the criterion sent once. About $1.70 for the
+  whole pile, but TypeSafe documents that Jev's accuracy shifts as the state grows, so it
+  would need a check of its own.
 
 ## Consequences
 
-The loop's labelling cost is paid once. Because the fixture holds labels for every row of the
-pile, a round's sample can exclude every row an earlier round used without ever running out.
-A criterion change after the labelling run does not relabel the pile; the fixture records the
-revision it was made under, and rows whose label a later criterion would change are the
-developer's call.
+The loop's labelling cost grows with the rounds actually run, not with the pile. Labels made
+in different rounds can sit under different criterion revisions; each records its own, and
+a round is scored only against labels in its own sample. A failed labeller check stops the
+loop before more than about $0.30 is spent.
 
 This amends ADR-0007 for #11 only: the labeller of the title loop remains a Claude Code
 session reading titles.

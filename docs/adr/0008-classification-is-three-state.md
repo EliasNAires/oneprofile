@@ -72,9 +72,8 @@ and they are scored against a blind labeller exactly as the title rules were: a 
 from the body pass's predictions and stratified by them, one error rate per stratum, each
 gated, and a cap on the number of iterations. Reporting how much of the pile the body pass
 decided is not enough on its own, because a rule that decides everything decides the pile
-empty. The labels come from a single labelling run over the whole pile (ADR-0012), so each
-round samples stored labels rather than labelling a fresh sample. The sample sizes, the gates
-and the cap are fixed in ADR-0012.
+empty. The labels come from Jev, made once for each row a round draws and stored
+(ADR-0012). The sample sizes, the gates and the cap are fixed in ADR-0012.
 
 Downstream, three states means every consumer of classification chooses explicitly what to do
 with unknown, rather than inheriting a default. The engineering subset is the in state alone;
