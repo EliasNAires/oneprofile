@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+"""Labels vacancies of the pile with Jev (ADR-0012), skipping any already labelled.
+
+    scripts/jev-label <file of vacancy ids> [pile export]
+
+Each label is appended to docs/measurements/body-labels-jev.jsonl with its distribution, the
+criterion revision, the model and the input tokens. Stops when every label stored has cost $4.
+"""
+
+import sys
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import bodyloop  # noqa: E402
+
+if not 2 <= len(sys.argv) <= 3:
+    sys.exit(__doc__.strip())
+pile = Path(sys.argv[2]) if len(sys.argv) == 3 else bodyloop.PILE
+bodyloop.label(bodyloop.read_ids(sys.argv[1]), bodyloop.read_pile(pile))

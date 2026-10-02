@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+"""Compares the body-labeller agent's labels with Jev's over the labeller check (ADR-0012): overall
+agreement, and agreement split by Jev's state.
+
+    scripts/agreement <directory the check was drawn into>
+
+Reads every batch-*.labels.json the agents wrote there, and Jev's labels from the labels store.
+Jev is accepted as the labeller at 85% agreement or more.
+"""
+
+import json
+import sys
+from collections import Counter
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import bodyloop  # noqa: E402
+
+ACCEPTED = 0.85
+
+if len(sys.argv) != 2:
+    sys.exit(__doc__.strip())
+directory = Path(sys.argv[1])
+
+haiku = {}
+for labels in sorted(directory.glob("batch-*.labels.json")):
+    haiku.update({int(vacancy_id): state for vacancy_id, state in json.loads(labels.read_text()).items()})
+jev = {vacancy_id: row["label"] for vacancy_id, row in bodyloop.read_labels().items()}
+
+drawn = bodyloop.read_ids(directory / "ids.txt")
+both = [vacancy_id for vacancy_id in drawn if vacancy_id in haiku and vacancy_id in jev]
+print(f"{len(drawn)} rows drawn, {len(haiku)} labelled by the agent, "
+      f"{sum(vacancy_id in jev for vacancy_id in drawn)} by Jev, {len(both)} by both")
+if not both:
+    sys.exit("Nothing to compare")
+
+pairs = Counter((jev[vacancy_id], haiku[vacancy_id]) for vacancy_id in both)
+agreed = sum(count for (left, right), count in pairs.items() if left == right)
+print(f"\nAgreement: {agreed}/{len(both)} = {agreed / len(both):.1%} "
+      f"({'accepted' if agreed / len(both) >= ACCEPTED else 'below'} the {ACCEPTED:.0%} bar)")
+
+print("\nBy Jev's state:")
+for state in bodyloop.STATES:
+    rows = sum(count for (left, _), count in pairs.items() if left == state)
+    if rows:
+        print(f"  {state:<8} {pairs[(state, state)]}/{rows} = {pairs[(state, state)] / rows:.1%}")
+

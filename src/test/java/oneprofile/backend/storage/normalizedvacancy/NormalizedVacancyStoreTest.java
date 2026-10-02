@@ -1,6 +1,7 @@
 package oneprofile.backend.storage.normalizedvacancy;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.tuple;
 
 import java.time.Instant;
 import java.util.List;
@@ -152,6 +153,80 @@ class NormalizedVacancyStoreTest {
 		assertThat(this.normalized.recordClassifications(Map.of(heldTitles().getFirst().id(), Classification.in())))
 			.isZero();
 		assertThat(this.repository.count()).isZero();
+	}
+
+	@Test
+	void recordsThatTheTitleDecided() {
+		long vacancyId = heldTitles().getFirst().id();
+		this.normalized.recordCleanedTitles(Map.of(vacancyId, new CleanedTitle("Backend Engineer", Set.of())));
+
+		this.normalized.recordClassifications(Map.of(vacancyId, Classification.in()));
+
+		assertThat(this.repository.findAll()).singleElement()
+			.extracting((held) -> held.classification().signal())
+			.isEqualTo(ClassificationSignalEnum.TITLE);
+	}
+
+	@Test
+	void readsThePileWhateverItsStateWithEachDescription() {
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		this.normalized.recordCleanedTitles(Map.of(first, new CleanedTitle("Engineer", Set.of()), second,
+				new CleanedTitle("Product Manager", Set.of())));
+		this.normalized.recordClassifications(Map.of(first, Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY),
+				second, Classification.unknown(UnknownReasonEnum.SCOPE_AMBIGUITY)));
+		this.normalized.recordBodyDecisions(Map.of(second, ClassificationStateEnum.IN));
+
+		assertThat(this.normalized.pileAfter(0, 10)).containsExactly(
+				new PileVacancy(first, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "Ship payments."),
+				new PileVacancy(second, "Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, "Ship payments."));
+		assertThat(this.normalized.pileAfter(first, 10)).extracting(PileVacancy::vacancyId).containsExactly(second);
+	}
+
+	@Test
+	void leavesOutOfThePileWhatTheTitleDecidedOrNoRuleReached() {
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		this.normalized.recordCleanedTitles(Map.of(first, new CleanedTitle("Backend Engineer", Set.of()), second,
+				new CleanedTitle("Roboticist", Set.of())));
+		this.normalized.recordClassifications(
+				Map.of(first, Classification.in(), second, Classification.unknown(UnknownReasonEnum.UNRULED)));
+
+		assertThat(this.normalized.pileAfter(0, 10)).isEmpty();
+	}
+
+	@Test
+	void recordsWhatTheBodyDecidedKeepingTheTitlesReason() {
+		long vacancyId = heldTitles().getFirst().id();
+		this.normalized.recordCleanedTitles(Map.of(vacancyId, new CleanedTitle("Engineer", Set.of())));
+		this.normalized.recordClassifications(
+				Map.of(vacancyId, Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY)));
+
+		assertThat(this.normalized.recordBodyDecisions(Map.of(vacancyId, ClassificationStateEnum.OUT))).isEqualTo(1);
+
+		assertThat(this.repository.findAll()).singleElement()
+			.extracting(NormalizedVacancyEntity::classification)
+			.isEqualTo(Classification.byBody(ClassificationStateEnum.OUT, UnknownReasonEnum.DOMAIN_AMBIGUITY));
+	}
+
+	@Test
+	void putsThePileBackToWhatTheTitleLeftItAndNothingElse() {
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		this.normalized.recordCleanedTitles(Map.of(first, new CleanedTitle("Engineer", Set.of()), second,
+				new CleanedTitle("Backend Engineer", Set.of())));
+		this.normalized.recordClassifications(Map.of(first,
+				Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY), second, Classification.in()));
+		this.normalized.recordBodyDecisions(Map.of(first, ClassificationStateEnum.IN));
+
+		assertThat(this.normalized.resetPile()).isEqualTo(1);
+		this.entityManager.clear();
+
+		assertThat(this.repository.findByVacancyIdIn(List.of(first, second)))
+			.extracting(NormalizedVacancyEntity::vacancyId, NormalizedVacancyEntity::classification)
+			.containsExactlyInAnyOrder(
+					tuple(first, Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY)),
+					tuple(second, Classification.in()));
 	}
 
 	@Test

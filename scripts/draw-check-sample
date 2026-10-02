@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+"""Draws the labeller check's sample from the pile (ADR-0012): stratified by title reason in
+proportion to the pile, with a fixed seed, written as batch files of 20 for the body-labeller
+agent, and as one file of vacancy ids for jev-label.
+
+    scripts/draw-check-sample <directory> [size, default 1000] [pile export]
+
+Each stratum is shuffled once with the fixed seed and its first rows are taken, so a 500-row draw
+is the first half of each stratum of the 1000-row draw.
+"""
+
+import json
+import random
+import sys
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import bodyloop  # noqa: E402
+
+SEED = 43
+
+BATCH = 20
+
+if not 2 <= len(sys.argv) <= 4:
+    sys.exit(__doc__.strip())
+directory = Path(sys.argv[1])
+size = int(sys.argv[2]) if len(sys.argv) >= 3 else 1000
+pile = bodyloop.read_pile(Path(sys.argv[3]) if len(sys.argv) == 4 else bodyloop.PILE)
+
+strata = {}
+for row in pile.values():
+    strata.setdefault(row["title_reason"], []).append(row["vacancy_id"])
+
+# Largest remainder, so the strata add up to the size asked for exactly.
+shares = {reason: size * len(ids) / len(pile) for reason, ids in strata.items()}
+counts = {reason: int(share) for reason, share in shares.items()}
+for reason in sorted(shares, key=lambda reason: shares[reason] - counts[reason], reverse=True)[:size - sum(counts.values())]:
+    counts[reason] += 1
+
+drawn = []
+for reason in sorted(strata):
+    ids = sorted(strata[reason])
+    random.Random(f"{SEED}-{reason}").shuffle(ids)
+    drawn += ids[:counts[reason]]
+random.Random(SEED).shuffle(drawn)
+
+directory.mkdir(parents=True, exist_ok=True)
+(directory / "ids.txt").write_text("".join(f"{vacancy_id}\n" for vacancy_id in drawn))
+for start in range(0, len(drawn), BATCH):
+    batch = [{"vacancy_id": vacancy_id, "title": pile[vacancy_id]["cleaned_title"],
+              "description": pile[vacancy_id]["cleaned_description"]} for vacancy_id in drawn[start:start + BATCH]]
+    (directory / f"batch-{start // BATCH + 1:03d}.json").write_text(json.dumps(batch, ensure_ascii=False, indent=1))
+
+print(f"Drew {len(drawn)} rows into {directory}: " + ", ".join(f"{reason} {count}" for reason, count in sorted(counts.items())))
+print(f"{-(-len(drawn) // BATCH)} batch files of {BATCH}, and ids.txt for jev-label")

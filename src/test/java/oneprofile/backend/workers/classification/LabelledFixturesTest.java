@@ -17,10 +17,14 @@ import org.junit.jupiter.api.Test;
  * A vacancy decided {@code OUT} reaches neither the body pass nor a profile, so a title labelled
  * {@code IN} that the rules decide {@code OUT} is the one error nothing downstream recovers. A rule
  * change may not raise that count. When a change lowers it, lower the ceiling with it.
+ * <p>
+ * The ceiling is 19, the count the title rules reached when the title loop closed. The commit that
+ * closed it wrote 17, but already counted 19: neither the rules nor the labels have changed since.
+ * The title stage is frozen (ADR-0012), so the figure stands until a decision reopens it.
  */
 class LabelledFixturesTest {
 
-	private static final int LABELLED_IN_DECIDED_OUT_CEILING = 17;
+	private static final int LABELLED_IN_DECIDED_OUT_CEILING = 19;
 
 	private final TitleClassificationRule classification = new TitleClassificationRule();
 

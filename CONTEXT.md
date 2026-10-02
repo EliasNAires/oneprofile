@@ -200,6 +200,12 @@ vacancy is discarded: it never reaches the engineering subset and the body pass 
 it. See ADR-0008.
 _Avoid_: uncovered, unhandled, missing, not found
 
+**Pile**:
+Every vacancy the title left unknown with reason `domain_ambiguity` or `scope_ambiguity`, whatever
+the body pass has decided of it since: what the body pass reads, and what its labels are drawn
+from. Fixed while the title stage is frozen (ADR-0012).
+_Avoid_: backlog, residue, unknowns, remainder
+
 **Labeller**:
 What produces the labels a classification state is scored against, applying the criterion
 without seeing any rule or prediction it scores. For titles, a Claude Code session

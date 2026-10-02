@@ -40,6 +40,9 @@ public class NormalizedVacancyEntity {
 	@Enumerated(EnumType.STRING)
 	private UnknownReasonEnum classificationReason;
 
+	@Enumerated(EnumType.STRING)
+	private ClassificationSignalEnum classificationSignal;
+
 	@ElementCollection
 	@CollectionTable(name = "normalized_vacancy_title_seniority",
 			joinColumns = @JoinColumn(name = "normalized_vacancy_id"))
@@ -66,14 +69,23 @@ public class NormalizedVacancyEntity {
 	}
 
 	/**
-	 * Takes on what classification made of the vacancy's cleaned title. Classifying it again
-	 * replaces what the last run decided, because a rule change is measured by running the pass
-	 * again over the same corpus.
-	 * @param classification what the rules decided, and why they left it undecided where they did
+	 * Takes on what classification made of the vacancy. Classifying it again replaces what the last
+	 * run decided, because a rule change is measured by running the pass again over the same corpus.
+	 * @param classification what the rules decided, why the title left it undecided where it did,
+	 * and which signal decided
 	 */
 	public void classifiedAs(Classification classification) {
 		this.classificationState = classification.state();
 		this.classificationReason = classification.reason();
+		this.classificationSignal = classification.signal();
+	}
+
+	/**
+	 * Takes on what the body decided of a vacancy its title left unknown, keeping the title's reason.
+	 * @param state what the body decided, {@code IN} or {@code OUT}
+	 */
+	public void decidedByBody(ClassificationStateEnum state) {
+		classifiedAs(Classification.byBody(state, this.classificationReason));
 	}
 
 	/** The vacancy these facts were derived from. */
@@ -86,10 +98,10 @@ public class NormalizedVacancyEntity {
 		return this.cleanedTitle;
 	}
 
-	/** What classification made of its cleaned title, null until classification has run. */
+	/** What classification made of it, null until classification has run. */
 	public Classification classification() {
 		return (this.classificationState == null) ? null
-				: new Classification(this.classificationState, this.classificationReason);
+				: new Classification(this.classificationState, this.classificationReason, this.classificationSignal);
 	}
 
 	/** Every seniority level its title names, empty if it names none. */

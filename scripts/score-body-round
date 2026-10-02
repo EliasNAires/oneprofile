@@ -1,0 +1,107 @@
+#!/usr/bin/env python3
+"""Scores one round of the body-pass loop against Jev (ADR-0012).
+
+    scripts/score-body-round <round number | trial> [pile export]
+
+Needs the application running on the development database (./mvnw spring-boot:run). It runs the
+body pass over the whole pile and times it, draws 200 rows from each state the pass predicted,
+leaving out every row an earlier round drew, has Jev label the drawn rows that have no label yet,
+and prints the error of each stratum against the gates, the rows that disagree, and what Jev has
+cost so far.
+
+A numbered round adds its draw to docs/measurements/body-rounds-drawn.tsv. A trial does not, so
+its rows can still be drawn by a round; the labels it made are kept, since no rule shaped them.
+"""
+
+import json
+import random
+import subprocess
+import sys
+import time
+import urllib.error
+import urllib.request
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import bodyloop  # noqa: E402
+
+BODY_PASS = "http://localhost:8080/body-classifications"
+
+PER_STATE = 200
+
+# The highest error each stratum may show for the loop to exit, and the longest the pass may take.
+GATES = {"IN": 0.10, "OUT": 0.10, "UNKNOWN": 0.30}
+SECONDS = 120
+
+EXCERPT = 300
+
+if not 2 <= len(sys.argv) <= 3 or not (sys.argv[1] == "trial" or sys.argv[1].isdigit()):
+    sys.exit(__doc__.strip())
+round_name = sys.argv[1]
+pile = bodyloop.read_pile(Path(sys.argv[2]) if len(sys.argv) == 3 else bodyloop.PILE)
+earlier = bodyloop.read_drawn()
+if round_name in earlier.values():
+    sys.exit(f"Round {round_name} is already in {bodyloop.DRAWN.name}")
+
+print(f"Round {round_name}: running the body pass over the pile")
+started = time.monotonic()
+try:
+    with urllib.request.urlopen(urllib.request.Request(BODY_PASS, method="POST"), timeout=3600) as response:
+        report = json.load(response)
+except urllib.error.URLError as error:
+    sys.exit(f"The body pass did not run ({error.reason}). Is the application up? ./mvnw spring-boot:run")
+seconds = time.monotonic() - started
+print(f"  {report} in {seconds:.1f}s")
+
+rows = subprocess.run(
+    ["docker", "compose", "--project-directory", str(bodyloop.REPO), "exec", "-T", "postgres", "psql", "-U",
+     "oneprofile", "-d", "oneprofile", "-At", "-F", "\t", "-c",
+     "select vacancy_id, classification_state from normalized_vacancy"],
+    check=True, capture_output=True, text=True).stdout.split()
+# The pile is what the application exported; the database only says what the pass made of it.
+states = {int(vacancy_id): state for vacancy_id, state in zip(rows[0::2], rows[1::2])}
+if not pile.keys() <= states.keys():
+    sys.exit("The export holds vacancies the database does not: re-export the pile")
+predicted = {vacancy_id: states[vacancy_id] for vacancy_id in pile}
+if sum(state == "UNKNOWN" for state in predicted.values()) != report["unknown"]:
+    sys.exit("The body pass left a different pile unknown than the export holds: re-export the pile")
+
+drawn = {}
+for state in bodyloop.STATES:
+    candidates = sorted(vacancy_id for vacancy_id, said in predicted.items() if said == state and vacancy_id not in earlier)
+    drawn[state] = random.Random(f"round-{round_name}-{state}").sample(candidates, min(PER_STATE, len(candidates)))
+    print(f"  {state}: predicted {sum(said == state for said in predicted.values())}, drew {len(drawn[state])}")
+
+bodyloop.label([vacancy_id for state in bodyloop.STATES for vacancy_id in drawn[state]], pile)
+labels = bodyloop.read_labels()
+if round_name != "trial":
+    bodyloop.record_drawn(round_name, [vacancy_id for state in bodyloop.STATES for vacancy_id in drawn[state]])
+
+print(f"\nRound {round_name}, scored against Jev")
+passed = seconds <= SECONDS
+print(f"  time     {seconds:6.1f}s  gate {SECONDS}s  {'pass' if passed else 'FAIL'}")
+disagreeing = []
+for state in bodyloop.STATES:
+    scored = [vacancy_id for vacancy_id in drawn[state] if vacancy_id in labels]
+    wrong = [vacancy_id for vacancy_id in scored if labels[vacancy_id]["label"] != state]
+    disagreeing += [(state, vacancy_id) for vacancy_id in wrong]
+    if not scored:
+        print(f"  {state:<8} no labelled rows  gate {GATES[state]:.0%}  FAIL")
+        passed = False
+        continue
+    error = len(wrong) / len(scored)
+    passed = passed and error <= GATES[state]
+    print(f"  {state:<8} {len(wrong):3}/{len(scored):<3} = {error:6.1%}  gate {GATES[state]:.0%}  "
+          f"{'pass' if error <= GATES[state] else 'FAIL'}")
+print(f"  {'every gate holds: the loop exits' if passed else 'the loop goes on'}")
+
+print(f"\nRows that disagree ({len(disagreeing)}):")
+for state, vacancy_id in disagreeing:
+    row = pile[vacancy_id]
+    print(f"\n  {vacancy_id}  predicted {state}, Jev {labels[vacancy_id]['label']} "
+          f"{labels[vacancy_id]['probabilities']}  ({row['title_reason']})")
+    print(f"  {row['cleaned_title']}")
+    print(f"  {row['cleaned_description'][:EXCERPT]}")
+
+print(f"\nJev has cost ${bodyloop.spend(labels):.4f} over every run, of the ${bodyloop.SPEND_LIMIT:.2f} limit")
