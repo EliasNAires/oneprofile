@@ -154,8 +154,9 @@ software, but the expertise it needs is not clear from the title. The criterion 
 _Avoid_: role family, category, discipline, job function, technical role
 
 **Classification State**:
-What classification answers about a vacancy: in, out, or unknown, with a reason when unknown
-and the signal (title or body) that decided. See ADR-0008.
+What classification answers about a vacancy: in, out, or unknown, with a reason when the title
+left it unknown, and the signal (title or body) that decided. A vacancy the body decides keeps
+its title's reason, which is what marks it as one the body pass read. See ADR-0008.
 _Avoid_: verdict, flag, is_engineering, category
 
 **Function Head**:
