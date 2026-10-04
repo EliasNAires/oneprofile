@@ -13,12 +13,14 @@ Your task names one batch file, such as `.../batch-007.json`. Do this:
 
 1. Read `docs/engineering-role-body-criterion.md` in full. It is the only rulebook.
 2. Read the batch file. It is a JSON array of 20 vacancies, each with `vacancy_id`, `title` and
-   `description`.
-3. For each vacancy, answer: applying the criterion, is the vacancy whose title and description
-   are given an engineering role?
+   `description`, plus `title_reason`: why the title alone was left undecided
+   (`domain_ambiguity` or `scope_ambiguity`). The criterion says how to use it.
+3. For each vacancy, answer: applying the criterion, is the vacancy whose title, title reason
+   and description are given an engineering role?
    - `IN`: the vacancy is an engineering role.
    - `OUT`: it is not an engineering role.
-   - `UNKNOWN`: the text does not say what the work is.
+   - `UNKNOWN`: the text does not say what the work is, or, for `domain_ambiguity`, which
+     domain it is in.
 4. Write the labels next to the batch file, under the same name with `.labels.json` in place of
    `.json` (`batch-007.json` → `batch-007.labels.json`): one JSON object mapping each
    `vacancy_id`, as a string, to its state.

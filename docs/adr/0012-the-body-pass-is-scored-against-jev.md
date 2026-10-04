@@ -16,7 +16,8 @@ changes a title rule, and title gaps it finds are reported, not fixed.
 ## How the labels are made
 
 - Jev reads the whole body criterion (`docs/engineering-role-body-criterion.md`), the title,
-  and the **Cleaned Description**, exported from the application's own `DescriptionCleaningRule`, so a
+  the reason the title stage left it undecided (`domain_ambiguity` or `scope_ambiguity`, since
+  2026-10-04: the body pass exists to settle that doubt), and the **Cleaned Description**, exported from the application's own `DescriptionCleaningRule`, so a
   disagreement between rule and label is never a disagreement about the input.
 - It answers one Choice question in the three states, `IN`, `OUT` or `UNKNOWN`, and the
   whole probability distribution is kept. `UNKNOWN` is a legitimate label: the body pass's
@@ -25,7 +26,8 @@ changes a title rule, and title gaps it finds are reported, not fixed.
   rows they draw, and nothing else. Every label is stored once, with the criterion revision
   and the model ID it was made under, and is never remade.
 - **Blindness** is kept by what Jev reads, not by ordering: it sees the criterion and the
-  vacancy, never a rule or a prediction. Rows labelled after the reviewer changes the
+  vacancy, never a body rule or a body prediction. The title's reason is part of the vacancy:
+  the pile is defined by it, and the body pass does not produce it. Rows labelled after the reviewer changes the
   criterion are labelled under the new revision.
 
 ## Budget
