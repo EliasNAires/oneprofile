@@ -21,7 +21,7 @@ roles in this sense.
 **IN** — the vacancy is an engineering role.
 **OUT** — it is not.
 **UNKNOWN** — the text does not say what the work is, or, for a title whose domain was the doubt,
-does not say which domain the work is in.
+describes work that could be software or not without saying which.
 
 UNKNOWN means missing information, never a hard call. If the title and description say what the
 person hired will do, the questions below decide IN or OUT, however close the call. A labeller
@@ -45,24 +45,57 @@ Given a vacancy, it is IN if any one of these holds:
 
 - **Q2** — the role writes code as its primary artifact.
 - **Q3** — the role reads or operates on engineer-facing artifacts — source, API definitions,
-  schemas, logs, specs — as opposed to authoring surfaces built for non-engineers.
-- **Q4** — a software background gives an applicant a clear edge for the role, and the role
-  asks for no expertise outside software that such an applicant would lack.
+  schemas, logs, specs — as opposed to content, reports or dashboards made in tools built for
+  non-engineers.
+- **Q4** — the description requires or prefers a software background, and the role asks for no
+  expertise outside software that such an applicant would lack.
 
 If none holds, it is OUT.
 
 Q4 is what makes this project's sense of "engineering role" wider than the phrase usually
 carries: the product exists to find work a person can actually take, so a role a software
-background opens is in scope even when the role does not write software. Scrum Master is IN for
-this reason and for no other.
+background opens is in scope even when the role does not write software. A Scrum Master role
+that asks for a technical background is IN for this reason.
 
-**The expertise limit on Q4.** A clear edge is not enough when the role also asks for expertise
-outside software: a sales track record, finance or market-research experience, a clinical or
-legal licence, an engineering degree in another discipline. A software applicant would lack it,
-so the role is OUT. The same holds against Q2: a role that writes code but requires an
-electrical-engineering degree for FPGA verification, a clinical licence or an actuarial
-qualification is OUT. Domain knowledge the description lists as a plus, or expects to be learned
+**Low-code is software work.** A role whose main work is building applications, automations or
+integrations is a software role whether it builds them in code or in a low-code builder: apps
+and flows in Power Apps or Salesforce, an ERP or quality system implemented and configured, a
+marketing and sales tool stack wired together and automated. A role that only reports on data
+in such a tool — reports, dashboards — or administers it day to day — users, permissions, page
+layouts, content — is not. When a role does some of both, its main work decides.
+
+**What counts as a stated software background.** Q4 needs the description to say it, as a
+requirement or a preference; a background that would merely help with the duties is not enough.
+It counts when the description asks for any of:
+
+- a degree in computer science or software engineering, or equivalent technical experience;
+- a programming language, by name;
+- SQL;
+- cloud, container, infrastructure or networking skills;
+- technical experience in a field, when that field is software — logs analytics, observability,
+  developer tools.
+
+A background listed only as a plus or a nice-to-have does not count.
+
+**The expertise limit on Q4.** Experience in the job itself is never expertise outside software.
+Years as a product manager, an analyst, a pre-sales or sales engineer, a project or programme
+manager, an account or customer success manager do not make a role OUT: a product manager role
+that asks for five years of product management and a computer-science degree is IN.
+
+Knowledge of a field the role is about is expertise outside software when the description
+requires it: finance, marketing, market research, insurance, medicine, law, an engineering degree
+in another discipline, a clinical or legal licence, an actuarial qualification. A software
+applicant would lack it, so the role is OUT, even when it also asks for a software background.
+The same holds against Q2: a role that writes code but requires an electrical-engineering degree,
+a clinical licence or an actuarial qualification is OUT. It is the requirement that makes it OUT,
+not the field: verification code written in SystemVerilog, Python or C++ for a role that asks for
+no such degree is Q2. Field knowledge the description lists as a plus, or expects to be learned
 on the job, is not such a requirement.
+
+**Selling is decided by the duties.** A role whose main work is selling — carrying a quota,
+owning revenue, closing deals — is OUT, whatever background it asks for. A role that supports a
+sale without carrying its quota — demos, proofs of concept, architecture, technical objections —
+is decided by Q4 like any other.
 
 ## Reading the title's doubt
 
@@ -77,27 +110,28 @@ team or a plant — and the description has to say which.
 - The description names software work — a stack, a codebase, APIs, cloud infrastructure,
   software products or teams — and the domain is software. Go on to the questions as for any
   vacancy: a software domain does not make every role IN, and an `Event Solutions Engineer`
-  shown to be in software may still be a pre-sales role, decided as under `scope_ambiguity`.
+  shown to be in software may still be a selling role, decided as under `scope_ambiguity`.
 - The description names another domain — highways, a plant, body metals, HVAC, construction,
   process equipment — and the vacancy is OUT.
-- The description describes the job but names no domain at all, and the vacancy is UNKNOWN:
-  the title's doubt is still open.
+- The description describes work that is plainly not engineering of any kind — policy,
+  operations, business analysis — and the vacancy is OUT, whether or not it names a domain.
+- The description describes work that could be software or not, and does not say which —
+  "maintain the control systems", with nothing to show whether that is code or a plant — and the
+  vacancy is UNKNOWN: the title's doubt is still open.
 
 ### `scope_ambiguity` — does this role need a software background?
 
 The domain is clear, but the title covers roles a software background opens and roles it does
 not — product managers, data and business analysts, solutions, sales and customer engineers,
-technical account and programme managers. The description decides, through Q2–Q4. Ask, for
-example:
+technical account and programme managers. The description decides, through Q2–Q4. A
+`scope_ambiguity` vacancy whose work is described is never UNKNOWN. Ask, for example:
 
-- Does the role require technical knowledge, as a stated requirement or because its duties are
-  technical in themselves — owning API specs, reading logs, making architecture calls, writing
-  queries or code?
-- Does the description prefer a technical background, or would one plainly help with the duties
-  it lists? That is the clear edge of Q4.
-- Is the expertise the role is built on something else — a quota, market research, financial
-  analysis, account management — with technical knowledge at most a nice-to-have? Then the
-  expertise limit makes it OUT.
+- Are the duties technical in themselves — owning API specs, reading logs, making architecture
+  calls, writing queries or code? That is Q2 or Q3.
+- Does the description require or prefer a software background, in the forms listed above? That
+  is the clear edge of Q4.
+- Does the description require knowledge of a field — finance, marketing, market research,
+  insurance — or is the role's main work selling? Then the expertise limit makes it OUT.
 
 ## How a vacancy is read
 
