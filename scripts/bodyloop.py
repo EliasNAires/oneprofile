@@ -12,9 +12,10 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 
-CRITERION = REPO / "docs" / "engineering-role-criterion.md"
+CRITERION = REPO / "docs" / "engineering-role-body-criterion.md"
 
-# One row per vacancy Jev labelled. Committed: a label is paid for, made once and never remade.
+# One row per vacancy and criterion revision Jev labelled under. Committed: a label is paid for, made
+# once and never remade; labels under an earlier revision stay, as that revision's measurement.
 LABELS = REPO / "docs" / "measurements" / "body-labels-jev.jsonl"
 
 # Every row a round drew, so a later round never draws it again.
@@ -36,7 +37,7 @@ QUESTION = "Applying `criterion`, is the vacancy whose `title` and `description`
 OPTIONS = {
     "IN": "The vacancy is an engineering role.",
     "OUT": "It is not an engineering role.",
-    "UNKNOWN": "What the vacancy says does not carry enough to decide.",
+    "UNKNOWN": "The text does not say what the work is.",
 }
 
 # Jev answers 429 when the rate limit is hit and 529 when it is overloaded; both are retried.
@@ -55,12 +56,18 @@ def read_pile(path=PILE):
         return {row["vacancy_id"]: row for row in map(json.loads, lines)}
 
 
-def read_labels():
-    """Every label Jev has made, by vacancy id."""
+def read_all_labels():
+    """Every label Jev has made, under any criterion revision."""
     if not LABELS.exists():
-        return {}
+        return []
     with open(LABELS) as lines:
-        return {row["vacancy_id"]: row for row in map(json.loads, lines)}
+        return [json.loads(line) for line in lines]
+
+
+def read_labels(revision=None):
+    """The labels Jev made under one criterion revision, the current one by default, by vacancy id."""
+    revision = revision or criterion_revision()
+    return {row["vacancy_id"]: row for row in read_all_labels() if row["criterion_revision"] == revision}
 
 
 def append_label(row):
@@ -68,9 +75,9 @@ def append_label(row):
         labels.write(json.dumps(row) + "\n")
 
 
-def spend(labels):
+def spend():
     """What every label stored has cost, in dollars, from the usage Jev reported for it."""
-    return sum(row["input_tokens"] for row in labels.values()) * DOLLARS_PER_INPUT_TOKEN
+    return sum(row["input_tokens"] for row in read_all_labels()) * DOLLARS_PER_INPUT_TOKEN
 
 
 def criterion_revision():
@@ -140,9 +147,9 @@ def ask_jev(key, criterion, title, description):
 
 
 def label(vacancy_ids, pile):
-    """Labels every vacancy given that has no label yet, appending each label as it arrives, so a
-    run that dies is resumed by running it again. Stops once every label stored has cost $4.
-    Returns how many it labelled."""
+    """Labels every vacancy given that has no label under the current criterion revision, appending
+    each label as it arrives, so a run that dies is resumed by running it again. Stops once every
+    label stored has cost $4. Returns how many it labelled."""
     labels = read_labels()
     wanted = [vacancy_id for vacancy_id in dict.fromkeys(vacancy_ids) if vacancy_id not in labels]
     missing = [vacancy_id for vacancy_id in wanted if vacancy_id not in pile]
@@ -154,7 +161,7 @@ def label(vacancy_ids, pile):
     key = api_key()
     criterion = CRITERION.read_text()
     revision = criterion_revision()
-    spent = spend(labels)
+    spent = spend()
     made = 0
     for vacancy_id in wanted:
         if spent >= SPEND_LIMIT:

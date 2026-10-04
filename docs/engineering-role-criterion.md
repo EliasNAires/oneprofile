@@ -1,8 +1,9 @@
 # What counts as an engineering role
 
-The prose criterion. It is the one document a session reads before labelling, and it is the
-only thing the classifier's rules answer to. When the rules and this file disagree, this file
-is right and the rules are wrong.
+The prose criterion of the title stage. It is the one document a session reads before labelling
+a title, and the only thing the title rules answer to. When the rules and this file disagree, this
+file is right and the rules are wrong. A vacancy read with its description is labelled under
+`docs/engineering-role-body-criterion.md` instead.
 
 It holds no word lists. The lists are code — `src/main/java`, grown by whichever session is
 running the loop — because a list is mechanism and this is judgement.

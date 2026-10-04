@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """Compares the body-labeller agent's labels with Jev's over the labeller check (ADR-0012): overall
-agreement, and agreement split by Jev's state.
+agreement with its 95% interval, the confusion matrix, and agreement split by Jev's state.
 
-    scripts/agreement <directory the check was drawn into>
+    scripts/agreement <directory the check was drawn into> [first batch] [last batch]
 
-Reads every batch-*.labels.json the agents wrote there, and Jev's labels from the labels store.
-Jev is accepted as the labeller at 85% agreement or more.
+Reads the batch-*.labels.json the agents wrote there, within the batch range if one is given, and
+Jev's labels under the current criterion revision. The check passes when the interval's lower
+bound reaches 80%, fails when its upper bound stays below, and otherwise needs more batches.
 """
 
 import json
+import math
 import sys
 from collections import Counter
 from pathlib import Path
@@ -17,32 +19,56 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import bodyloop  # noqa: E402
 
-ACCEPTED = 0.85
+BAR = 0.80
 
-if len(sys.argv) != 2:
+Z = 1.96
+
+
+def wilson(agreed, total):
+    """The 95% Wilson interval of a proportion."""
+    share = agreed / total
+    centre = (share + Z * Z / (2 * total)) / (1 + Z * Z / total)
+    half = Z * math.sqrt(share * (1 - share) / total + Z * Z / (4 * total * total)) / (1 + Z * Z / total)
+    return centre - half, centre + half
+
+
+if not 2 <= len(sys.argv) <= 4:
     sys.exit(__doc__.strip())
 directory = Path(sys.argv[1])
+first = int(sys.argv[2]) if len(sys.argv) >= 3 else 1
+last = int(sys.argv[3]) if len(sys.argv) == 4 else 10 ** 6
 
-haiku = {}
-for labels in sorted(directory.glob("batch-*.labels.json")):
-    haiku.update({int(vacancy_id): state for vacancy_id, state in json.loads(labels.read_text()).items()})
+drawn, haiku, numbers = [], {}, []
+for batch in sorted(directory.glob("batch-[0-9][0-9][0-9].json")):
+    if not first <= int(batch.stem.split("-")[1]) <= last:
+        continue
+    numbers.append(int(batch.stem.split("-")[1]))
+    drawn += [row["vacancy_id"] for row in json.loads(batch.read_text())]
+    labels = batch.with_suffix(".labels.json")
+    if labels.exists():
+        haiku.update({int(vacancy_id): state for vacancy_id, state in json.loads(labels.read_text()).items()})
 jev = {vacancy_id: row["label"] for vacancy_id, row in bodyloop.read_labels().items()}
 
-drawn = bodyloop.read_ids(directory / "ids.txt")
 both = [vacancy_id for vacancy_id in drawn if vacancy_id in haiku and vacancy_id in jev]
-print(f"{len(drawn)} rows drawn, {len(haiku)} labelled by the agent, "
+print(f"Criterion revision {bodyloop.criterion_revision()[:8]}, batches {numbers[0]}-{numbers[-1]}" if numbers else "No batches")
+print(f"{len(drawn)} rows drawn, {sum(vacancy_id in haiku for vacancy_id in drawn)} labelled by the agent, "
       f"{sum(vacancy_id in jev for vacancy_id in drawn)} by Jev, {len(both)} by both")
 if not both:
     sys.exit("Nothing to compare")
 
 pairs = Counter((jev[vacancy_id], haiku[vacancy_id]) for vacancy_id in both)
 agreed = sum(count for (left, right), count in pairs.items() if left == right)
-print(f"\nAgreement: {agreed}/{len(both)} = {agreed / len(both):.1%} "
-      f"({'accepted' if agreed / len(both) >= ACCEPTED else 'below'} the {ACCEPTED:.0%} bar)")
+low, high = wilson(agreed, len(both))
+verdict = "passed" if low >= BAR else "failed" if high < BAR else "undecided, draw more batches"
+print(f"\nAgreement: {agreed}/{len(both)} = {agreed / len(both):.1%}, 95% interval {low:.1%}-{high:.1%}: "
+      f"{verdict} at the {BAR:.0%} bar")
+
+print("\nJev \\ agent  " + "".join(f"{state:>9}" for state in bodyloop.STATES))
+for left in bodyloop.STATES:
+    print(f"  {left:<10} " + "".join(f"{pairs[(left, right)]:>9}" for right in bodyloop.STATES))
 
 print("\nBy Jev's state:")
 for state in bodyloop.STATES:
     rows = sum(count for (left, _), count in pairs.items() if left == state)
     if rows:
         print(f"  {state:<8} {pairs[(state, state)]}/{rows} = {pairs[(state, state)] / rows:.1%}")
-

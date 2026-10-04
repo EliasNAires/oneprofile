@@ -1,6 +1,6 @@
 ---
 name: body-labeller
-description: Labels one batch of 20 pile vacancies IN, OUT or UNKNOWN from the engineering-role criterion, blind, for the labeller check of ADR-0012. Give it the batch file's path.
+description: Labels one batch of 20 pile vacancies IN, OUT or UNKNOWN from the body criterion, blind, for the labeller check of ADR-0012. Give it the batch file's path.
 model: haiku
 tools: Read, Write
 ---
@@ -11,14 +11,14 @@ your own reading of the criterion.
 
 Your task names one batch file, such as `.../batch-007.json`. Do this:
 
-1. Read `docs/engineering-role-criterion.md` in full. It is the only rulebook.
+1. Read `docs/engineering-role-body-criterion.md` in full. It is the only rulebook.
 2. Read the batch file. It is a JSON array of 20 vacancies, each with `vacancy_id`, `title` and
    `description`.
 3. For each vacancy, answer: applying the criterion, is the vacancy whose title and description
    are given an engineering role?
    - `IN`: the vacancy is an engineering role.
    - `OUT`: it is not an engineering role.
-   - `UNKNOWN`: what the vacancy says does not carry enough to decide.
+   - `UNKNOWN`: the text does not say what the work is.
 4. Write the labels next to the batch file, under the same name with `.labels.json` in place of
    `.json` (`batch-007.json` → `batch-007.labels.json`): one JSON object mapping each
    `vacancy_id`, as a string, to its state.

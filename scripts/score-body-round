@@ -104,4 +104,4 @@ for state, vacancy_id in disagreeing:
     print(f"  {row['cleaned_title']}")
     print(f"  {row['cleaned_description'][:EXCERPT]}")
 
-print(f"\nJev has cost ${bodyloop.spend(labels):.4f} over every run, of the ${bodyloop.SPEND_LIMIT:.2f} limit")
+print(f"\nJev has cost ${bodyloop.spend():.4f} over every run, of the ${bodyloop.SPEND_LIMIT:.2f} limit")

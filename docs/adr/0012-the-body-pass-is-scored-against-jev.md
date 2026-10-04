@@ -1,6 +1,6 @@
 # The body pass is scored against Jev's labels, made only for the rows a round draws
 
-Status: accepted (amended 2026-10-02)
+Status: accepted (amended 2026-10-02, 2026-10-04)
 
 The body pass of #11 is measured against labels, as the title rules were (ADR-0008), but a
 description is two orders of magnitude longer than a title, and a Claude Code session
@@ -15,8 +15,8 @@ changes a title rule, and title gaps it finds are reported, not fixed.
 
 ## How the labels are made
 
-- Jev reads the whole criterion (`docs/engineering-role-criterion.md`), the title, and the
-  **Cleaned Description**, exported from the application's own `DescriptionCleaningRule`, so a
+- Jev reads the whole body criterion (`docs/engineering-role-body-criterion.md`), the title,
+  and the **Cleaned Description**, exported from the application's own `DescriptionCleaningRule`, so a
   disagreement between rule and label is never a disagreement about the input.
 - It answers one Choice question in the three states, `IN`, `OUT` or `UNKNOWN`, and the
   whole probability distribution is kept. `UNKNOWN` is a legitimate label: the body pass's
@@ -31,11 +31,10 @@ changes a title rule, and title gaps it finds are reported, not fixed.
 ## Budget
 
 Jev bills input tokens only, at $0.042 per million, against a **$5 hard limit** on the
-account. The criterion is about 5.3k tokens and a cleaned description about 1.5k on
-average, so the criterion is most of every call. Labelling only what is drawn caps the work
-at about 7 000 rows (the check plus 600 rows a round for ten rounds), about 49M tokens, or
-**about $2**. Every script that calls Jev records the `usage` of each response, keeps a
-running total, and **stops when it reaches $4**.
+account. The body criterion is under 1k tokens and a cleaned description about 1.5k on
+average. Labelling only what is drawn caps the work at about 7 000 rows (the check plus 600
+rows a round for ten rounds), about 17M tokens, or **under $1**. Every script that calls Jev
+records the `usage` of each response, keeps a running total, and **stops when it reaches $4**.
 
 ## Checking the labeller
 
@@ -44,13 +43,22 @@ proportion to it, and labelled by Jev. **Claude Code Haiku subagents** re-label 
 blind, in batches of 20, through the `body-labeller` agent (`model: haiku`, tools `Read` and
 `Write`), from the same criterion and the same cleaned text. A single pilot batch runs
 first; if its measured cost projects past about 4M tokens for 1000 rows, the check drops to
-**500 rows**, which still measures 85% agreement to within about ±3 points.
+**500 rows**, which still measures 80% agreement to within about ±3.5 points.
 
-Jev is accepted as the labeller when **at least 85% of the checked rows agree**. The limit is
-set against the loop's error gates below: a labeller that disagrees with a second reader on
-more than 15% of rows cannot score rules to within 10%, since some of every error rate
-would be the labeller's own. Below 85% the loop does not run on Jev's labels, and the
-developer is told, because which labeller the loop trusts is part of its goal.
+The check is judged on **80% agreement**, by the 95% interval of the rows checked: it passes
+when the lower bound reaches 80%, fails when the upper bound stays below it, and otherwise
+draws more of the 1000 rows until one holds. Agreement is a check on the **criterion's
+objectivity** more than on the labeller: two blind readers of one document disagreeing says
+the document is ambiguous. So a failed check is reported, and the answer is a revision of the
+body criterion, re-checked on rows drawn after it, not a change of labeller. The loop does not
+run until a check passes.
+
+The first check (2026-10-02) ran Jev and Haiku on the title criterion and agreed on 72.3% of
+260 rows, 55 of the 72 disagreements involving `UNKNOWN`: the title criterion says when a title
+carries enough to decide, not when a description does. That is why the body pass has a
+criterion of its own (#45). Its check re-labels those 260 rows for comparison, and is judged on
+rows that were not drawn into the first, since the body criterion was written after reading
+the first check's disagreements.
 
 ## The loop
 
@@ -95,7 +103,8 @@ the cap.
 - **Jev labelling the whole pile once**, the first version of this ADR, written while Jev was
   free. About 150M tokens, or $6.30, over the $5 limit.
 - **A shortened criterion sent to Jev.** About $2.70 for the whole pile, but Jev would read a
-  different text from the Haiku check and the reviewer, and the summary could lose cases.
+  different text from the Haiku check and the reviewer, and the summary could lose cases. Moot
+  since 2026-10-04: the body criterion is short in its own right, and every reader reads it.
 - **Several vacancies packed into one call**, the criterion sent once. About $1.70 for the
   whole pile, but TypeSafe documents that Jev's accuracy shifts as the state grows, so it
   would need a check of its own.
@@ -105,7 +114,7 @@ the cap.
 The loop's labelling cost grows with the rounds actually run, not with the pile. Labels made
 in different rounds can sit under different criterion revisions; each records its own, and
 a round is scored only against labels in its own sample. A failed labeller check stops the
-loop before more than about $0.30 is spent.
+loop before more than a few cents are spent.
 
 This amends ADR-0007 for #11 only: the labeller of the title loop remains a Claude Code
 session reading titles.

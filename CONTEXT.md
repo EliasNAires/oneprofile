@@ -149,8 +149,9 @@ _Avoid_: tech role, IT role, technical role
 **Engineering Role**:
 A vacancy a software background alone qualifies someone for — wider than the phrase usually
 carries, so Scrum Master belongs. Product Manager is unknown with scope ambiguity: it is plainly
-software, but the expertise it needs is not clear from the title. The criterion is
-`docs/engineering-role-criterion.md`.
+software, but the expertise it needs is not clear from the title. There is one criterion per
+signal: `docs/engineering-role-criterion.md` for titles, and
+`docs/engineering-role-body-criterion.md` for a vacancy read with its description.
 _Avoid_: role family, category, discipline, job function, technical role
 
 **Classification State**:
@@ -207,8 +208,8 @@ from. Fixed while the title stage is frozen (ADR-0012).
 _Avoid_: backlog, residue, unknowns, remainder
 
 **Labeller**:
-What produces the labels a classification state is scored against, applying the criterion
-without seeing any rule or prediction it scores. For titles, a Claude Code session
+What produces the labels a classification state is scored against, applying its signal's
+criterion without seeing any rule or prediction it scores. For titles, a Claude Code session
 (ADR-0007); for bodies, Jev, over the rows each round draws (ADR-0012). Never part of the
 pipeline.
 _Avoid_: annotator, judge, oracle, reviewer
