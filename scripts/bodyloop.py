@@ -31,13 +31,14 @@ JEV = "https://api.typesafe.ai/v1/systemone"
 
 MODEL = "jev-1.13.0"
 
-QUESTION = "Applying `criterion`, is the vacancy whose `title` and `description` are given an engineering role?"
+QUESTION = ("Applying `criterion`, is the vacancy whose `title`, `title_reason` and `description` are given an "
+            "engineering role?")
 
 # The criterion's three states, worded for a vacancy read with its description.
 OPTIONS = {
     "IN": "The vacancy is an engineering role.",
     "OUT": "It is not an engineering role.",
-    "UNKNOWN": "The text does not say what the work is.",
+    "UNKNOWN": "The text does not say what the work is, or, for domain_ambiguity, which domain it is in.",
 }
 
 # Jev answers 429 when the rate limit is hit and 529 when it is overloaded; both are retried.
@@ -119,11 +120,11 @@ def api_key():
     sys.exit("TYPESAFE_API_KEY is not in .env")
 
 
-def ask_jev(key, criterion, title, description):
+def ask_jev(key, criterion, title, title_reason, description):
     """One labelling request. Returns Jev's response, retrying 429 and 529 with backoff."""
     body = json.dumps({
         "model": MODEL,
-        "state": {"title": title, "description": description},
+        "state": {"title": title, "title_reason": title_reason, "description": description},
         "questions": {
             "engineering_role": {
                 "type": "choice",
@@ -168,7 +169,7 @@ def label(vacancy_ids, pile):
             print(f"Stopped: Jev has cost ${spent:.4f}, the limit is ${SPEND_LIMIT:.2f}")
             break
         row = pile[vacancy_id]
-        response = ask_jev(key, criterion, row["cleaned_title"], row["cleaned_description"])
+        response = ask_jev(key, criterion, row["cleaned_title"], row["title_reason"], row["cleaned_description"])
         if response["model"] != MODEL:
             sys.exit(f"Jev answered as {response['model']}, not the pinned {MODEL}")
         answer = response["answers"]["engineering_role"]

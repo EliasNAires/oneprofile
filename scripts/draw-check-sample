@@ -49,7 +49,7 @@ directory.mkdir(parents=True, exist_ok=True)
 (directory / "ids.txt").write_text("".join(f"{vacancy_id}\n" for vacancy_id in drawn))
 for start in range(0, len(drawn), BATCH):
     batch = [{"vacancy_id": vacancy_id, "title": pile[vacancy_id]["cleaned_title"],
-              "description": pile[vacancy_id]["cleaned_description"]} for vacancy_id in drawn[start:start + BATCH]]
+              "title_reason": pile[vacancy_id]["title_reason"], "description": pile[vacancy_id]["cleaned_description"]} for vacancy_id in drawn[start:start + BATCH]]
     (directory / f"batch-{start // BATCH + 1:03d}.json").write_text(json.dumps(batch, ensure_ascii=False, indent=1))
 
 print(f"Drew {len(drawn)} rows into {directory}: " + ", ".join(f"{reason} {count}" for reason, count in sorted(counts.items())))
