@@ -16,6 +16,12 @@ questions below, not for word combinations in the title.
 electrical, chemical, manufacturing and every other engineering discipline are not engineering
 roles in this sense.
 
+"Engineering role" is this document's term, and it is wider than the everyday phrase. It means a
+role a software background lets a person take, so it covers roles nobody would call engineering:
+a data analyst, a support specialist, an IT manager or a product manager is IN when Q4 below
+holds. Never answer from what the title or the day-to-day work sounds like. Answer from the
+questions.
+
 ## The three states
 
 **IN** — the vacancy is an engineering role.
@@ -82,6 +88,27 @@ SQL"), and it counts when it is the tool the role works with every day: an analy
 SQL, or a support engineer asked to configure Linux and TCP/IP networks, has been asked for a
 software background. "Would merely help with the duties" is about a background the description
 does not ask for, never about one it does.
+
+**Once the description asks for a software background, Q4 holds, and the vacancy is IN** unless
+one of these makes it OUT:
+
+- it is not a vacancy (Q1);
+- its main work is selling (*Selling is decided by the duties*, below);
+- it requires expertise outside software (*The expertise limit on Q4*, below);
+- the "background" is not asked of the applicant: it is only a plus, it is one choice among
+  non-software tools, it names a degree list that is open to fields outside computing, or it
+  describes the company or a tracking tool (the list below).
+
+Nothing else makes such a vacancy OUT. That includes a title that is not an engineer's, duties
+that are mostly meetings, reports or customers, and a skill asked for at a basic level. These are
+IN when none of the four applies:
+
+- a data, business or marketing analyst whose requirements include SQL, Python or R;
+- a technical support specialist asked for "basic SQL or scripting";
+- an IT support or data-centre manager asked for basic Linux or command-line proficiency;
+- a network technician asked for TCP/IP, BGP, VLANs or DNS;
+- a programme or project manager asked for exposure to cloud technologies such as AWS;
+- a product manager asked for a computer-science degree.
 
 What is asked of the applicant has to be the software background itself:
 
