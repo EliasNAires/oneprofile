@@ -86,18 +86,20 @@ does not ask for, never about one it does.
 What is asked of the applicant has to be the software background itself:
 
 - **A degree list counts only when every field it accepts is a computing field** — computer
-  science, software or computer engineering, information technology, information systems. A list
-  that also accepts physics, mathematics, another engineering discipline, "engineering" without a
-  discipline, any STEM field, policy or business says a software background is one way in among
-  others, so it asks for none. "Or equivalent technical experience" beside a computing degree
+  science, software or computer engineering, information technology, information systems, data
+  science, cybersecurity, networking and telecommunications, systems administration: the fields
+  that teach computers, networks or data, since networking skills are a software background in
+  their own right. A list that also accepts physics, mathematics, another engineering discipline,
+  "engineering" without a discipline, any STEM field, policy or business says a software
+  background is one way in among others, so it asks for none. "Or equivalent technical experience" beside a computing degree
   keeps it a computing list.
 - **A skill offered as one choice among tools that are not software skills is not asked for**:
   "SQL or BI tools", "Excel, SQL or Looker", "Stata, R, Python or SAS". The applicant can meet it
   without the software skill.
 - **Only what the applicant must bring counts**, not what the description says of the company,
   its stack or its customers ("we specialise in Kubernetes"), not what it says the role does not
-  need ("you don't need to write code"), and not tools used only to track work (Jira, Confluence,
-  Azure DevOps boards).
+  need ("you don't need to write code"), and not tools used only to track work or store documents
+  (Jira, Confluence, Azure DevOps boards, GitLab or Git as a project tracker or a content system).
 
 **The expertise limit on Q4.** Experience in the job itself is never expertise outside software.
 Years as a product manager, an analyst, a pre-sales or sales engineer, a project or programme
@@ -144,6 +146,13 @@ team or a plant — and the description has to say which.
   shown to be in software may still be a selling role, decided as under `scope_ambiguity`.
 - The description names another domain — highways, a plant, body metals, HVAC, construction,
   process equipment — and the vacancy is OUT.
+- A physical product the role designs, integrates, tests or certifies — aircraft, rockets,
+  satellites, weapons, vehicles, robots, chips, building systems — is another domain, unless the
+  role's own work on it is software: writing its code, its software tests or its software's
+  architecture. A programming language asked for analysis, modelling or simulation of such a
+  product does not move the role into software, and neither does a software word in a list of
+  the product's tools. Verification code is code, so the Q2 example under the expertise limit
+  stands.
 - The description describes work that is plainly not engineering of any kind — policy,
   operations, business analysis — and the vacancy is OUT, whether or not it names a domain.
 - The description describes work that could be software or not, and does not say which —
