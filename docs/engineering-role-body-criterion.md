@@ -80,7 +80,10 @@ A background listed only as a plus or a nice-to-have does not count.
 **The expertise limit on Q4.** Experience in the job itself is never expertise outside software.
 Years as a product manager, an analyst, a pre-sales or sales engineer, a project or programme
 manager, an account or customer success manager do not make a role OUT: a product manager role
-that asks for five years of product management and a computer-science degree is IN.
+that asks for five years of product management and a computer-science degree is IN. This holds
+when the experience names the field it was done in: years of marketing analytics, growth
+analytics, fintech product management or healthcare project management are years in the job, and
+the field they name is where the job was done, not expertise the role requires on its own.
 
 Knowledge of a field the role is about is expertise outside software when the description
 requires it: finance, marketing, market research, insurance, medicine, law, an engineering degree
@@ -91,6 +94,12 @@ a clinical licence or an actuarial qualification is OUT. It is the requirement t
 not the field: verification code written in SystemVerilog, Python or C++ for a role that asks for
 no such degree is Q2. Field knowledge the description lists as a plus, or expects to be learned
 on the job, is not such a requirement.
+
+So the line between the two is what the description asks the applicant to have. Experience
+doing this kind of role, wherever it was done, is the job itself. Knowledge of the field asked
+for in its own right — a degree, licence or qualification in it, or expertise in the subject
+named as a requirement apart from the role's experience, such as "a payments domain expert" or
+"deep knowledge of insurance products" — is expertise outside software.
 
 **Selling is decided by the duties.** A role whose main work is selling — carrying a quota,
 owning revenue, closing deals — is OUT, whatever background it asks for. A role that supports a
@@ -130,8 +139,10 @@ technical account and programme managers. The description decides, through Q2–
   calls, writing queries or code? That is Q2 or Q3.
 - Does the description require or prefer a software background, in the forms listed above? That
   is the clear edge of Q4.
-- Does the description require knowledge of a field — finance, marketing, market research,
-  insurance — or is the role's main work selling? Then the expertise limit makes it OUT.
+- Does the description require knowledge of a field in its own right — finance, marketing,
+  market research, insurance — or is the role's main work selling? Then the expertise limit makes
+  it OUT. Years of experience in the role, even named after a field ("five years of marketing
+  analytics"), are not field knowledge.
 
 ## How a vacancy is read
 
