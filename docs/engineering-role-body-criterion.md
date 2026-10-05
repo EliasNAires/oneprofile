@@ -68,7 +68,10 @@ integrations is a software role whether it builds them in code or in a low-code 
 and flows in Power Apps or Salesforce, an ERP or quality system implemented and configured, a
 marketing and sales tool stack wired together and automated. A role that only reports on data
 in such a tool — reports, dashboards — or administers it day to day — users, permissions, page
-layouts, content — is not. When a role does some of both, its main work decides.
+layouts, content — is not. When a role does some of both, its main work decides. A quality
+management system counts only when it is software the role builds or configures; a quality system
+that is procedures and controlled documents, set up under ISO 9001 or a similar standard and kept in
+a document tool, is not software, and building or improving it is quality work.
 
 **What counts as a stated software background.** Q4 needs the description to say it, as a
 requirement or a preference; a background that would merely help with the duties is not enough.
@@ -120,8 +123,13 @@ What is asked of the applicant has to be the software background itself:
   "engineering" without a discipline, any STEM field, policy or business says a software
   background is one way in among others, so it asks for none. "Or equivalent technical experience" beside a computing degree
   keeps it a computing list.
-- **A skill offered as one choice among tools that are not software skills is not asked for**:
-  "SQL or BI tools", "Excel, SQL or Looker", "Stata, R, Python or SAS". The applicant can meet it
+- **A skill offered as one choice among tools or skills that are not software skills is not asked
+  for**: "SQL or BI tools", "Excel, SQL or Looker", "Stata, R, Python or SAS", "SQL or advanced data
+  analysis skills", "knowledge of CRM integrations, reporting, analytics, or SQL", a data tool named
+  only as an example ("e.g. Eagle RDC, SQL, or similar"). The applicant can meet it without the
+  software skill. A skill joined to the others with "and", or asked for on its own, is asked for.
+- **A skill the applicant may learn instead is not asked for**: "SQL or willingness to learn", "fluency
+  — or a fast ramp — in SQL", "C or Python, or curiosity about firmware". The applicant can meet it
   without the software skill.
 - **Only what the applicant must bring counts**, not what the description says of the company,
   its stack or its customers ("we specialise in Kubernetes"), not what it says the role does not
