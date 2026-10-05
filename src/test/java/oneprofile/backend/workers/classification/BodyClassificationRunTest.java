@@ -56,9 +56,11 @@ class BodyClassificationRunTest {
 		holds(pile(1, "Engineer", "Ship 🚀 Go services."), pile(2, "Engineer", "Weld pipes."),
 				pile(3, "Engineer", "We are hiring."));
 		BodyClassificationRule rule = mock(BodyClassificationRule.class);
-		given(rule.classify(anyString(), anyString())).willReturn(ClassificationStateEnum.UNKNOWN);
-		given(rule.classify("Engineer", "Ship Go services.")).willReturn(ClassificationStateEnum.IN);
-		given(rule.classify("Engineer", "Weld pipes.")).willReturn(ClassificationStateEnum.OUT);
+		given(rule.classify(anyString(), any(), anyString())).willReturn(ClassificationStateEnum.UNKNOWN);
+		given(rule.classify("Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "Ship Go services."))
+			.willReturn(ClassificationStateEnum.IN);
+		given(rule.classify("Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "Weld pipes."))
+			.willReturn(ClassificationStateEnum.OUT);
 
 		BodyClassificationRun.Report report = run(rule, 10).classifyPile();
 
@@ -71,11 +73,22 @@ class BodyClassificationRunTest {
 	void readsAVacancyWithNoDescriptionAsAnEmptyOne() {
 		holds(pile(1, "Engineer", null));
 		BodyClassificationRule rule = mock(BodyClassificationRule.class);
-		given(rule.classify(any(), any())).willReturn(ClassificationStateEnum.UNKNOWN);
+		given(rule.classify(any(), any(), any())).willReturn(ClassificationStateEnum.UNKNOWN);
 
 		run(rule, 10).classifyPile();
 
-		then(rule).should().classify("Engineer", "");
+		then(rule).should().classify("Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "");
+	}
+
+	@Test
+	void givesTheRuleTheReasonTheTitleWasLeftUnknown() {
+		holds(new PileVacancy(1, "Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, "Own the roadmap."));
+		BodyClassificationRule rule = mock(BodyClassificationRule.class);
+		given(rule.classify(any(), any(), any())).willReturn(ClassificationStateEnum.UNKNOWN);
+
+		run(rule, 10).classifyPile();
+
+		then(rule).should().classify("Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, "Own the roadmap.");
 	}
 
 	@Test

@@ -79,7 +79,8 @@ public class BodyClassificationRun {
 			Map<Long, ClassificationStateEnum> decided = new LinkedHashMap<>();
 			for (PileVacancy vacancy : read) {
 				String description = (vacancy.description() != null) ? this.cleaning.clean(vacancy.description()) : "";
-				ClassificationStateEnum state = this.classification.classify(vacancy.cleanedTitle(), description);
+				ClassificationStateEnum state = this.classification.classify(vacancy.cleanedTitle(), vacancy.titleReason(),
+						description);
 				states.merge(state, 1, Integer::sum);
 				if (state != ClassificationStateEnum.UNKNOWN) {
 					decided.put(vacancy.vacancyId(), state);
