@@ -54,12 +54,32 @@ class BodyClassificationRuleTest {
 	}
 
 	@Test
-	void aDomainRoleWhoseWorkCouldBeSoftwareOrNotIsUnknown() {
+	void aDomainRoleWhoseDutiesCouldBeSoftwareOrNotIsUnknown() {
 		assertThat(classify("Controls Engineer", DOMAIN_AMBIGUITY,
 				"You will maintain the control systems that keep our operation running, troubleshoot faults "
 						+ "as they arise, document changes and work with the operations team on improvements. You will report to the "
 						+ "head of operations and join the on-call rotation."))
 			.isEqualTo(UNKNOWN);
+		assertThat(classify("Controls Engineer", SCOPE_AMBIGUITY,
+				"You will maintain the control systems that keep our operation running, troubleshoot faults "
+						+ "as they arise, document changes and work with the operations team on improvements. You will report to the "
+						+ "head of operations and join the on-call rotation."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void internalControlSystemsAreNotWorkThatCouldBeSoftware() {
+		assertThat(classify("Compliance Engineer", DOMAIN_AMBIGUITY, DUTIES
+				+ "You will maintain the internal control systems that keep our financial reporting compliant."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void aWordThatCouldBeSoftwareOrNotLeavesNoDescribedRoleUnknown() {
+		assertThat(classify("Revenue Operations Engineer", DOMAIN_AMBIGUITY, "Our platform brings automation and "
+				+ "simulation to embedded teams. You will own the sales forecast, run pipeline reviews with account "
+				+ "executives and keep the territory plan current. You will report to the head of revenue." + OFFER))
+			.isEqualTo(OUT);
 	}
 
 	@Test
@@ -254,6 +274,174 @@ class BodyClassificationRuleTest {
 				+ "produce mechanical drawings in SolidWorks and sign off fabrication packages. You will join a team of "
 				+ "eight and report to the plant manager." + OFFER))
 			.isEqualTo(OUT);
+	}
+
+	@Test
+	void aSkillOfferedAsOneChoiceAmongToolsThatAreNotSoftwareIsNotAskedFor() {
+		for (String requirement : new String[] { "experience with SQL or BI tools", "Excel, SQL or Looker",
+				"proficiency in Stata, R, Python or SAS" }) {
+			assertThat(classify("Data Analyst", SCOPE_AMBIGUITY, DUTIES + "Requirements: " + requirement + "."))
+				.as(requirement)
+				.isEqualTo(OUT);
+		}
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: strong SQL and Excel or Google Sheets."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void whatTheCompanySaysOfItselfOrWhatTheRoleDoesNotNeedIsNotAskedFor() {
+		assertThat(classify("Solutions Consultant", SCOPE_AMBIGUITY,
+				DUTIES + "We specialise in Kubernetes and bring deep expertise to every customer."))
+			.isEqualTo(OUT);
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY,
+				DUTIES + "You don't need to know Python or SQL for this role."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void aToolUsedOnlyToTrackWorkIsNoSoftwareBackground() {
+		assertThat(classify("Project Manager", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: experience with Jira, Confluence and Azure DevOps boards."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void fieldExpertiseRequiredInItsOwnRightIsOutEvenBesideASoftwareBackground() {
+		for (String expertise : new String[] { "A subject matter expert in financial services is a must",
+				"You understand how fraud attacks work", "Experience analysing biological datasets",
+				"Experience in RF and satcom engineering", "Hands-on experience with avionics and flight control",
+				"Deep knowledge of insurance products", "Strong understanding of trading and financial crime", "Knowledge of anti-money-laundering rules",
+				"Financial-crime knowledge is required" }) {
+			assertThat(classify("Data Analyst", SCOPE_AMBIGUITY,
+					DUTIES + "Requirements: advanced SQL and Python. " + expertise + "."))
+				.as(expertise)
+				.isEqualTo(OUT);
+		}
+	}
+
+	@Test
+	void yearsInTheJobNamedAfterAFieldOrFieldKnowledgeTheCompanyClaimsAreNoFieldExpertise() {
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: five years of marketing analytics experience and advanced SQL."))
+			.isEqualTo(IN);
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY,
+				DUTIES + "We bring deep knowledge of payments to our customers. Requirements: advanced SQL."))
+			.isEqualTo(IN);
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY, DUTIES + "Combining data, research, technology and "
+				+ "trading expertise has shaped QRT's collaborative mindset. Requirements: advanced SQL."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void anArtifactPhraseThatIsNotSoftwareWorkOrNotTheRolesOwnWorkIsNotIn() {
+		for (String duty : new String[] { "Lead system design for pole-line and conduit projects",
+				"Partner with engineers on architecture decisions and system design discussions",
+				"Ramp on an unfamiliar codebase alongside the engineering team",
+				"Run log analysis and crawl audits for technical SEO",
+				"Support source code review in patent litigation and disputes" }) {
+			assertThat(classify("Product Designer", SCOPE_AMBIGUITY, DUTIES + duty + "."))
+				.as(duty)
+				.isEqualTo(OUT);
+		}
+	}
+
+	@Test
+	void architectureCallsTheRoleMakesItselfAreIn() {
+		assertThat(classify("Product Designer", SCOPE_AMBIGUITY,
+				DUTIES + "You will own architecture decisions and lead system design discussions for the platform."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void aManagerWhoLeadsSoftwareEngineersIsIn() {
+		assertThat(classify("Engineering Manager", DOMAIN_AMBIGUITY,
+				DUTIES + "You will lead a team of eight software engineers building customer-facing products."))
+			.isEqualTo(IN);
+		assertThat(classify("Engineering Manager", DOMAIN_AMBIGUITY,
+				DUTIES + "We hold every manager to a staff-engineer-level technical bar."))
+			.isEqualTo(IN);
+		assertThat(classify("Program Manager", SCOPE_AMBIGUITY,
+				DUTIES + "You will manage relationships with software developers across our partners."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void aRoleThatBuildsInALowCodeToolIsIn() {
+		for (String duty : new String[] { "Build apps and flows in Power Apps and Power Automate",
+				"Configure and implement Dynamics 365 for our clients", "Develop case management applications on Pega",
+				"Automate our sales tool stack with Clay and Zapier" }) {
+			assertThat(classify("Solutions Consultant", SCOPE_AMBIGUITY, DUTIES + duty + "."))
+				.as(duty)
+				.isEqualTo(IN);
+		}
+	}
+
+	@Test
+	void aRoleThatOnlyReportsInOrAdministersALowCodeToolIsNot() {
+		assertThat(classify("Business Analyst", SCOPE_AMBIGUITY,
+				DUTIES + "Build reports and dashboards in Power Apps for the sales team."))
+			.isEqualTo(OUT);
+		assertThat(classify("Business Analyst", SCOPE_AMBIGUITY,
+				DUTIES + "Administer Dynamics 365 users, permissions and page layouts."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void aLowCodeToolNamedInTheNextSentenceIsNotWhatTheRoleBuilds() {
+		assertThat(classify("Solutions Consultant", SCOPE_AMBIGUITY, DUTIES
+				+ "Customers buy our automation platform. As a consultant at Appian you will advise their executives."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void technicalExperienceInASoftwareFieldIsASoftwareBackground() {
+		assertThat(classify("Solutions Consultant", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: experience with observability and developer tools."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void aScientistWhoBuildsMachineLearningSystemsIsIn() {
+		assertThat(classify("Applied Scientist", DOMAIN_AMBIGUITY,
+				DUTIES + "You will build and deploy machine learning models for search ranking."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void dutiesWrittenInAnotherLanguageAreRead() {
+		assertThat(classify("Projektingenieur", DOMAIN_AMBIGUITY,
+				DUTIES + "Ihre Aufgaben: Programmierung von Webanwendungen und Pflege der Schnittstellen."))
+			.isEqualTo(IN);
+		assertThat(classify("Ingeniero de Proyectos", DOMAIN_AMBIGUITY,
+				DUTIES + "Requisitos: experiencia en programación de aplicaciones."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void aDegreeListCountsOnlyWhenEveryFieldItAcceptsIsAComputingField() {
+		for (String degree : new String[] { "Computer Science, Physics, Mathematics or Engineering",
+				"Computer Science or a related STEM field", "Computer Science or Electrical Engineering" }) {
+			assertThat(classify("Product Manager", SCOPE_AMBIGUITY,
+					DUTIES + "Requirements: a bachelor's degree in " + degree + "."))
+				.as(degree)
+				.isEqualTo(OUT);
+		}
+		for (String degree : new String[] {
+				"Computer Science or Information Systems, or equivalent technical experience",
+				"Information Technology" }) {
+			assertThat(classify("Product Manager", SCOPE_AMBIGUITY,
+					DUTIES + "Requirements: a bachelor's degree in " + degree + "."))
+				.as(degree)
+				.isEqualTo(IN);
+		}
+	}
+
+	@Test
+	void aFieldDegreeOfferedBesideAComputingOneIsNoFieldRequirement() {
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: a degree in Finance or Information Systems. Advanced SQL skills."))
+			.isEqualTo(IN);
 	}
 
 	private ClassificationStateEnum classify(String title, UnknownReasonEnum reason, String description) {

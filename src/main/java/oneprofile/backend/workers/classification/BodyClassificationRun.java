@@ -76,18 +76,17 @@ public class BodyClassificationRun {
 			if (read.isEmpty()) {
 				break;
 			}
+			List<ClassificationStateEnum> classified = read.parallelStream().map(this::classify).toList();
 			Map<Long, ClassificationStateEnum> decided = new LinkedHashMap<>();
-			for (PileVacancy vacancy : read) {
-				String description = (vacancy.description() != null) ? this.cleaning.clean(vacancy.description()) : "";
-				ClassificationStateEnum state = this.classification.classify(vacancy.cleanedTitle(), vacancy.titleReason(),
-						description);
+			for (int i = 0; i < read.size(); i++) {
+				ClassificationStateEnum state = classified.get(i);
 				states.merge(state, 1, Integer::sum);
 				if (state != ClassificationStateEnum.UNKNOWN) {
-					decided.put(vacancy.vacancyId(), state);
+					decided.put(read.get(i).vacancyId(), state);
 				}
-				pile++;
-				after = vacancy.vacancyId();
 			}
+			pile += read.size();
+			after = read.getLast().vacancyId();
 			if (!decided.isEmpty()) {
 				this.normalized.recordBodyDecisions(decided);
 			}
@@ -95,6 +94,15 @@ public class BodyClassificationRun {
 		return new Report(pile, states.getOrDefault(ClassificationStateEnum.IN, 0),
 				states.getOrDefault(ClassificationStateEnum.OUT, 0),
 				states.getOrDefault(ClassificationStateEnum.UNKNOWN, 0));
+	}
+
+	/**
+	 * Decides one vacancy from its cleaned description. The vacancies of a batch are decided in
+	 * parallel, since the rules read each on its own and are what a pass spends its time on.
+	 */
+	private ClassificationStateEnum classify(PileVacancy vacancy) {
+		String description = (vacancy.description() != null) ? this.cleaning.clean(vacancy.description()) : "";
+		return this.classification.classify(vacancy.cleanedTitle(), vacancy.titleReason(), description);
 	}
 
 	/**
