@@ -77,6 +77,28 @@ It counts when the description asks for any of:
 
 A background listed only as a plus or a nice-to-have does not count.
 
+A listed skill counts at whatever level the description asks for it ("a basic understanding of
+SQL"), and it counts when it is the tool the role works with every day: an analyst asked to write
+SQL, or a support engineer asked to configure Linux and TCP/IP networks, has been asked for a
+software background. "Would merely help with the duties" is about a background the description
+does not ask for, never about one it does.
+
+What is asked of the applicant has to be the software background itself:
+
+- **A degree list counts only when every field it accepts is a computing field** — computer
+  science, software or computer engineering, information technology, information systems. A list
+  that also accepts physics, mathematics, another engineering discipline, "engineering" without a
+  discipline, any STEM field, policy or business says a software background is one way in among
+  others, so it asks for none. "Or equivalent technical experience" beside a computing degree
+  keeps it a computing list.
+- **A skill offered as one choice among tools that are not software skills is not asked for**:
+  "SQL or BI tools", "Excel, SQL or Looker", "Stata, R, Python or SAS". The applicant can meet it
+  without the software skill.
+- **Only what the applicant must bring counts**, not what the description says of the company,
+  its stack or its customers ("we specialise in Kubernetes"), not what it says the role does not
+  need ("you don't need to write code"), and not tools used only to track work (Jira, Confluence,
+  Azure DevOps boards).
+
 **The expertise limit on Q4.** Experience in the job itself is never expertise outside software.
 Years as a product manager, an analyst, a pre-sales or sales engineer, a project or programme
 manager, an account or customer success manager do not make a role OUT: a product manager role

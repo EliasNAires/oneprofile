@@ -1,0 +1,1802 @@
+Round 1: running the body pass over the pile
+  {'pile': 21456, 'in': 8294, 'out': 12455, 'unknown': 707} in 334.7s
+  IN: predicted 8294, drew 200
+  OUT: predicted 12455, drew 200
+  UNKNOWN: predicted 707, drew 200
+12 already labelled, 588 to label
+  59552	IN	3437 tokens	Product Manager II
+  29085	OUT	3609 tokens	Staff Product Manager Growth
+  135644	OUT	4073 tokens	IT Specialist
+  1972	IN	3956 tokens	SAP Basis Administrator Lead
+  50495	OUT	3179 tokens	Commodities Macro Analyst
+  5633	OUT	2916 tokens	Associate
+  101365	IN	3656 tokens	Lead Engineer
+  133168	OUT	3597 tokens	Quantum Scientist Applied QEC
+  12991	IN	4267 tokens	Research Scientist Interpretability
+  108538	IN	4101 tokens	Technical Account Manager Okta Strategic Customers
+  58544	IN	3848 tokens	Protocol Validation Engineer Exp 10+ Years
+  66160	IN	3765 tokens	Behavior Prediction Engineer
+  28789	IN	4854 tokens	Staff Engineer
+  49639	OUT	3742 tokens	Manager Analytics
+  14329	OUT	3539 tokens	Business Analyst One year contract
+  27777	IN	3809 tokens	Global Technical Product Lead Networking
+  6989	IN	2945 tokens	Remote Sensing OPIR Engineer 897
+  81163	IN	4571 tokens	Technical Product Specialist
+  17508	OUT	4122 tokens	Field Tester
+  87335	OUT	3984 tokens	Data Product Manager
+  67544	OUT	4391 tokens	Director of Data Services
+  81145	IN	3776 tokens	Quality Development Engineer
+  138555	IN	4136 tokens	Payments Engineer Acquiring Payment Processing
+  26663	IN	4243 tokens	Director of Engineering See Scout
+  166770	OUT	3710 tokens	Integration Build Engineer
+  79253	IN	3222 tokens	Data Consultant
+  167240	IN	3533 tokens	Technical Account Manager
+  131633	IN	3620 tokens	Technical Lead
+  32862	IN	4019 tokens	Project Manager
+  172104	OUT	3376 tokens	Silicon Emulation Engineer
+  48559	IN	3636 tokens	Engineer II Serverless Inference
+  15872	OUT	3404 tokens	Data Director Indonesia Malaysia
+  105295	IN	3660 tokens	Engineering Director Foundation Services
+  138616	IN	3924 tokens	Solutions Engineer
+  50564	IN	3230 tokens	Research Engineer FICCO
+  13978	IN	3831 tokens	Consultant
+  67136	OUT	3307 tokens	Research Scientist II Gene R&D
+  61865	OUT	3897 tokens	SEO Technical Lead Madrid based
+  27999	IN	3583 tokens	Solution Engineer Pre Sales Remote UK
+  29616	OUT	3828 tokens	Technical Delivery Manager Technical Engagement Manager
+  105336	OUT	3978 tokens	Solutions Engineer
+  94996	IN	3512 tokens	Product Manager Customer Care AI
+  167933	IN	3555 tokens	Test Engineer Alarms
+  67087	OUT	4043 tokens	Revenue Operations Analyst Bosnia and Herzegovina
+  142103	IN	3129 tokens	Engineering Manager
+  59074	IN	3699 tokens	Vice President Engineering
+  107667	IN	4308 tokens	IT Security Specialist
+  44654	IN	3097 tokens	Program Manager
+  10825	OUT	3899 tokens	Mission Engineer Air Dominance Strike
+  104535	OUT	3546 tokens	Field Deploy Engineer
+  106331	OUT	3147 tokens	Business Analyst
+  101635	IN	3123 tokens	Director SAP Development
+  118601	OUT	3169 tokens	Business Intelligence Analyst
+  137829	OUT	4264 tokens	Analyst Pricing Operations
+  30918	IN	4036 tokens	Performance Engineer Open Source
+  148791	OUT	3231 tokens	Technical Account Manager Billing
+  130373	OUT	3810 tokens	Fraud Analyst
+  104714	IN	3648 tokens	Product Manager Vertical Search
+  137538	OUT	3460 tokens	Associate Technology Disputes Coding
+  87730	IN	4305 tokens	Forward Deployed Research Scientist
+  106621	IN	3733 tokens	Technical Integration Support Analyst Bilingual Spanish English
+  134798	IN	3264 tokens	Systems Engineer
+  142377	IN	4161 tokens	Product Manager
+  156221	IN	3830 tokens	Staff Identity and Access Management Engineer
+  69518	IN	4858 tokens	Staff Product Manager OpenTelemetry Germany Remote
+  70582	OUT	3673 tokens	Exploitation Analyst 3
+  178710	IN	3682 tokens	Deputy Manager Analytics Insights
+  46081	IN	3436 tokens	Technical Support Engineer 3 Premier Sao Paulo
+  62937	OUT	4314 tokens	UAS Systems Integration Engineer II
+  160845	IN	3554 tokens	Application Suport Engineer
+  133128	IN	3119 tokens	Validator Engineer
+  40954	IN	3864 tokens	Manager Production Engineering
+  39677	IN	3698 tokens	Design Engineer MetaMask
+  67906	IN	4155 tokens	Product Manager Source Code
+  101093	IN	3771 tokens	Head of Engineering Supply Chain
+  128765	IN	3589 tokens	Technical Architect
+  96283	OUT	3640 tokens	Systems Engineer II
+  170345	OUT	3141 tokens	Trading Operations Analyst
+  26611	OUT	4056 tokens	Analytics Manager I
+  1641	IN	3864 tokens	CNO Developer
+  12977	IN	4176 tokens	Research Engineer Pretraining Scaling London
+  11889	OUT	3988 tokens	Systems Engineer Integration Test Intelligence Systems
+  50329	IN	3498 tokens	Product Manager Dragos Cloud
+  93686	OUT	3966 tokens	Staff Test Engineer Powertrain
+  155626	IN	3428 tokens	Reverse Engineer
+  45906	IN	3504 tokens	Applied Scientist
+  64519	OUT	3383 tokens	Aladdin Front Office Technical Analyst
+  131642	IN	3654 tokens	Customer Engineer
+  19692	IN	3992 tokens	Product Manager Software
+  160378	IN	3401 tokens	Program Manager
+  36009	OUT	4263 tokens	Lead Analyst Financial Crimes
+  115661	OUT	3765 tokens	OSP Field Engineer
+  137363	IN	4034 tokens	Systems Specialist AI Data
+  172401	IN	4453 tokens	Technical Lead Manager Synthetic Data
+  9944	IN	3981 tokens	Manager Security Architecture
+  60702	OUT	3685 tokens	Commercial Analyst Casino
+  177786	IN	3346 tokens	Technical Support Engineer APJ
+  3151	IN	3684 tokens	Engineering Manager Issuing
+  41734	OUT	3402 tokens	Data Analyst TW Logistics
+  169942	OUT	3396 tokens	Product Manager Remix Platform
+  77674	OUT	3620 tokens	Cybersecurity Partner
+  13982	IN	3841 tokens	Consultant Technical Public Sector
+  140466	IN	3475 tokens	SSD Reliability Engineer Contract
+  105238	OUT	2989 tokens	All Source Analyst Mid
+  20405	OUT	4617 tokens	Director Product Design AI Builder
+  37983	IN	3957 tokens	AI Operations Lead
+  18819	IN	3197 tokens	Business Analyst with Salesforce experience
+  175457	OUT	3945 tokens	Analytics Manager
+  105681	IN	3419 tokens	Systems Engineer
+  125575	IN	3999 tokens	Engineering Manager
+  41011	IN	3990 tokens	Systems Engineer
+  29083	OUT	3609 tokens	Staff Product Manager Growth
+  51128	OUT	3583 tokens	Data Analyst II Regulatory Reporting
+  51234	OUT	3947 tokens	Product Manager Anti Money Laundering Transaction Monitoring
+  110735	IN	3922 tokens	Staff Product Manager
+  111909	OUT	3868 tokens	Sales Engineer
+  177324	IN	3490 tokens	AI Research Intern Predictive World Model
+  78356	IN	4244 tokens	Director of Product Security
+  134576	OUT	4582 tokens	Product Manager Data Collaboration Measurement
+  101167	OUT	3238 tokens	Data Analyst Fraud
+  81562	IN	3937 tokens	Staff Orchestration Engineer
+  18144	OUT	3630 tokens	Analytics Consultant Higher Education
+  178416	OUT	3492 tokens	Chief Engineer
+  162357	OUT	3322 tokens	Subject Matter Expert Physician Enterprise
+  88808	IN	3826 tokens	Engineering Manager Experimentation
+  49579	OUT	3965 tokens	Product Analyst
+  110624	IN	3746 tokens	Systems Engineer ll
+  163175	OUT	3499 tokens	Engineering Technician
+  155541	IN	3683 tokens	Lead All Source Intelligence Engineer
+  135001	OUT	3945 tokens	Project Manager Professional Services
+  45202	IN	3484 tokens	Designated Support Engineer Apache Spark
+  177642	OUT	3970 tokens	Data Product Analyst Corporate
+  77737	IN	2977 tokens	Applications Engineer II
+  18696	IN	3442 tokens	Technical Lead Full or Part time
+  136425	OUT	4021 tokens	Program Manager Technical Enablement
+  58613	OUT	3248 tokens	Product Analyst
+  17998	IN	3492 tokens	Product Support Engineer
+  106251	IN	3335 tokens	AI Solution Strategist
+  43112	IN	3770 tokens	Application Support Engineer
+  78741	IN	3228 tokens	HPC Systems Architect
+  82510	IN	3003 tokens	Production Engineer
+  172181	OUT	3245 tokens	Staff Systems Engineer Driving Behaviors
+  24612	OUT	3310 tokens	Quantitative Data Analyst
+  45760	IN	3871 tokens	Group Product Manager Bring Your Own Cloud
+  167550	IN	3473 tokens	PAM Engineer BeyondTrust
+  48452	IN	3534 tokens	AppSec Engineer
+  142715	IN	3396 tokens	Simulation Houdini Technical Engineer
+  14318	IN	3061 tokens	Engineer
+  49052	OUT	3208 tokens	Product Manager
+  14834	IN	3226 tokens	Sales Operations Engineer
+  10438	OUT	3964 tokens	Field Service Engineer Counter Intrusion
+  70929	IN	3634 tokens	Technical Operations Engineer
+  17727	OUT	3776 tokens	Project Manager Web Content Management
+  102668	IN	4165 tokens	Engineer Team Lead AV Behavior
+  178272	OUT	4534 tokens	Project Lead I Thought Leadership
+  107289	OUT	3487 tokens	Product Manager People Systems
+  105472	IN	4091 tokens	Salesforce Engagement Manager
+  8553	IN	3829 tokens	Engineering Manager Product Platforms
+  60623	IN	3705 tokens	Engineer Core
+  27780	OUT	3822 tokens	Solution Engineer Post Sales
+  35755	OUT	3774 tokens	Analyst Associate Litigation Life Sciences practice
+  104621	OUT	3697 tokens	Network Planning Technical Project Manager North America
+  69637	OUT	3470 tokens	Execution and Quality Validation Engineer
+  8884	OUT	3475 tokens	System Verification Engineer
+  149731	OUT	4004 tokens	Product Data Analyst Consumer Growth
+  6073	OUT	3484 tokens	Technical Services Manager
+  106548	IN	3044 tokens	Intern Quality Engineer
+  68498	OUT	3846 tokens	Data Analyst
+  156523	IN	3508 tokens	Technical Solutions Engineer
+  17223	OUT	3585 tokens	IP Signoff Methodology Engineer
+  174159	OUT	3957 tokens	L1 L3 Service Support Engineer
+  161530	IN	3614 tokens	GTM Engineer
+  80600	OUT	3303 tokens	CUSTOMER SUCCESS ANALYST III
+  60053	OUT	3535 tokens	Research Analyst
+  131649	IN	3523 tokens	Engineer
+  12437	OUT	4121 tokens	Warfighter Research Systems Analyst
+  118551	OUT	3842 tokens	Product Manager Voice AI
+  157547	OUT	3924 tokens	Security Consultant
+  39826	IN	3295 tokens	Head of Information Security
+  31530	OUT	2975 tokens	Nostro Risk Reporting Business Analyst
+  64945	IN	3162 tokens	Engineering Manager
+  44563	IN	3542 tokens	Systems Engineer
+  37375	OUT	5205 tokens	Customer Engineering Manager Majors Texas
+  163689	IN	4148 tokens	Architect Emerging Technologies
+  41976	OUT	3776 tokens	Data Analyst Audit Automation Data Analytics
+  161947	IN	3585 tokens	Sales Engineer Chicago
+  129258	IN	3196 tokens	Production Engineer
+  62457	IN	3520 tokens	Security Operations Team Lead
+  167848	IN	3806 tokens	Project Architect Global Services
+  43967	IN	3964 tokens	Product Manager Fleet Management
+  115508	IN	3018 tokens	Research Engineer
+  52620	IN	3492 tokens	Technical Support Analyst
+  161946	IN	3569 tokens	Sales Engineer Canada
+  136973	OUT	3809 tokens	IT Support Technician
+  52520	OUT	3222 tokens	Controller
+  20524	OUT	3856 tokens	Strategic Sourcing Analyst Req 1326
+  165811	OUT	3530 tokens	Design Engineer II SMS
+  71721	OUT	3510 tokens	Project Manager
+  2643	OUT	3426 tokens	Engine Sustainment Program Analyst Journeyman
+  96320	OUT	4088 tokens	Project Manager Temp to Perm
+  158365	OUT	3353 tokens	Financial Analyst
+  83767	OUT	4316 tokens	Façade Engineer
+  94735	OUT	4031 tokens	Right of Way Engineer
+  156916	OUT	3249 tokens	Consultant Workforce Analytics Human Capital
+  167949	OUT	3866 tokens	Channel Enablement Program Manager
+  9190	OUT	3242 tokens	Product Manager
+  74764	OUT	3037 tokens	Engineer Technician Training Hourly
+  165442	OUT	3968 tokens	Director Revenue Intelligence Analytics
+  33335	OUT	3925 tokens	Value Engineer
+  140181	OUT	3446 tokens	Quality Lab Associate III QC Compliance Analyst
+  98743	OUT	3130 tokens	HR Analyst Compensation
+  80595	OUT	3242 tokens	CREDIT ANALYST I CORPORATE CREDIT ANALYSIS
+  2866	OUT	3656 tokens	Manager Data Validation Specialist Investment Management
+  17996	OUT	3477 tokens	Product Manager Platform
+  10491	OUT	3683 tokens	Fuel Systems Engineer Air Vehicles
+  31751	OUT	3136 tokens	System Analyst Authorization Host SWITCH POS Handling E commerce
+  66254	OUT	2801 tokens	Security Specialist
+  50074	OUT	4620 tokens	Manager Tax Technology Implementations
+  24148	OUT	3569 tokens	AI Enablement Lead
+  29500	OUT	3729 tokens	Project Manager
+  86200	OUT	3287 tokens	Quality Engineer
+  1100	OUT	3761 tokens	Customer Trust Analyst EMEA
+  89104	OUT	3921 tokens	Payroll Analyst
+  132802	OUT	3645 tokens	Financial Systems Analyst
+  106144	OUT	3788 tokens	Insurance Product Manager
+  134959	IN	3773 tokens	Mid Market Sales Engineer UK
+  43430	IN	3219 tokens	Commercial Sales Engineer US West
+  64879	IN	4101 tokens	Engineering Manager Decision Engineering
+  42239	IN	4586 tokens	쿠팡페이 Technical Account Manager 신사업 로켓페이
+  106045	OUT	3795 tokens	Product Development Project Manager New Products
+  141733	OUT	3328 tokens	Manager de Audiovisual IT AV IT Soho House Los Cabos
+  141416	OUT	3708 tokens	Technical Project Manager Enterprise AI Solutions
+  11000	OUT	4111 tokens	Product Manager Connected Warfare
+  130775	OUT	3323 tokens	Global Supply Chain Analyst
+  100973	IN	4209 tokens	Staff Product Manager AI Builder Experience
+  138760	OUT	4100 tokens	Director Engineering Motors
+  29078	OUT	3464 tokens	Staff Product Manager Embedded
+  65632	OUT	3884 tokens	Product Manager Core Products Platform
+  104147	OUT	3731 tokens	Associate
+  33402	OUT	3370 tokens	H Andrew Schwartz Memorial Fellowship
+  175364	OUT	3731 tokens	Workday HCM Consultant
+  108914	OUT	3595 tokens	Strategy Project Manager VIP Institutions
+  87243	IN	3851 tokens	Product Manager Command and Field Operations
+  122027	OUT	3191 tokens	AI Training Experts El Paso US
+  98884	OUT	3218 tokens	Project Manager Engineering Michels Energy Solutions Inc
+  3695	OUT	3442 tokens	IT Support Administrator I
+  61686	OUT	3800 tokens	Product Design Lead
+  12740	IN	3697 tokens	Engineering Manager Growth
+  47231	OUT	3502 tokens	Analista de Mídia Sênior
+  67415	OUT	4055 tokens	Finance Transformation Analyst
+  177357	OUT	3607 tokens	Analista de Produtos e Processos Fundos de Investimento e Oferta
+  41257	OUT	4111 tokens	FP&A Analyst Atlanta GA
+  101886	OUT	3458 tokens	Director of Product Design
+  16767	OUT	3601 tokens	Engineering Technician II Field Service
+  103775	OUT	3530 tokens	Applied Mechanics Engineer
+  59052	OUT	3812 tokens	TPRM Analyst
+  1177	OUT	2859 tokens	Plating Process Engineer
+  108659	OUT	3988 tokens	Compliance Analyst Financial Crime Compliance QA
+  134337	OUT	3835 tokens	Thermofluids Analyst
+  16041	OUT	3903 tokens	Director AI Data Consulting Life Sciences
+  97176	OUT	3497 tokens	Analyst Growth Analytics
+  13031	OUT	4476 tokens	Business Systems Analyst Finance Systems Assets Lease Management
+  79606	OUT	3279 tokens	Middle Project Manager
+  172234	IN	3511 tokens	Control Engineer
+  178271	OUT	3854 tokens	Project Lead II
+  60826	OUT	3384 tokens	FP&A Analyst
+  98893	OUT	3912 tokens	Project Manager Michels Canada
+  70894	OUT	3470 tokens	Product Manager AI Product Engineering
+  77255	OUT	3872 tokens	Product Management Intern
+  31760	IN	3674 tokens	Technical Project Manager Vadodara
+  18500	OUT	3571 tokens	Data Analyst Business Development CO OP
+  78634	OUT	3985 tokens	Program Manager
+  115547	OUT	3646 tokens	In Region Product Developer Vietnam
+  14337	OUT	3309 tokens	Manager Project Manager
+  130704	IN	4191 tokens	AI Product Manager Bankrate
+  38483	OUT	3859 tokens	Market Research Analyst
+  81816	OUT	3555 tokens	Turbopump Turbine Engineer
+  49656	OUT	3310 tokens	Project Manager
+  115248	OUT	4694 tokens	Head of Product Quality
+  66492	OUT	3692 tokens	Reliability Engineer
+  16019	OUT	3786 tokens	Consulting Manager Data AI Strategy
+  78822	OUT	3418 tokens	Macro Analyst
+  45312	IN	3250 tokens	Manager Field Engineering UAE
+  45856	OUT	3676 tokens	People Strategy Engineering
+  49852	OUT	4279 tokens	Associate Product Operations
+  18655	OUT	3100 tokens	Product Manager BSG
+  107678	OUT	4544 tokens	Technical Specialist Grid Transition
+  5519	OUT	4097 tokens	ALM Treasury Analyst
+  135382	OUT	3554 tokens	Product Manager Connectors and AI Infrastructure
+  84798	OUT	3179 tokens	Program Analyst
+  85758	OUT	3699 tokens	Tooling Engineer
+  74693	OUT	3177 tokens	Assistant Field Engineer Hourly
+  138531	OUT	3635 tokens	Product Design Intern
+  77894	OUT	3156 tokens	EBS Federal Financials Functional Lead Analyst
+  88380	OUT	3530 tokens	Project Manager Traffic Transportation Design
+  28817	IN	4760 tokens	Technical Account Manager
+  165849	OUT	3530 tokens	Design Engineer SMS
+  9973	OUT	3592 tokens	GTM Analytics Manager
+  8358	OUT	3722 tokens	Manager Functional Delivery Solution Lead Workday Financials
+  142621	OUT	3280 tokens	Product Manager
+  79221	OUT	3473 tokens	Financial Analyst
+  79635	OUT	3269 tokens	Middle Project Manager Remote Contract
+  37391	OUT	4567 tokens	Customer Engineer Named LA
+  2848	OUT	3434 tokens	Data Validation Specialist
+  170994	IN	4016 tokens	Technical Project Manager
+  5101	OUT	3211 tokens	Systems and Safety Engineer
+  87720	OUT	3874 tokens	Simulation Engineer
+  138842	OUT	4181 tokens	Product Design Engineering Co op Opportunities
+  1174	OUT	2914 tokens	Photo Process Engineer
+  31557	OUT	3552 tokens	Consultant Business Analyst Credit and Capital Management
+  140995	OUT	3303 tokens	Technical Account Manager Onboarding
+  3308	OUT	3705 tokens	Team Lead IT support APAC
+  31825	OUT	3223 tokens	Workforce Project Manager
+  17540	OUT	3392 tokens	Lead Systems Engineer Defense Programs
+  150220	OUT	3265 tokens	Technical Consultant I
+  125708	OUT	3397 tokens	Associate Director Product Management Buyer Solutions
+  31201	OUT	3184 tokens	Business Analyst Data Management
+  130973	IN	3709 tokens	Product Manager Logs Observability
+  32676	OUT	3747 tokens	Project Manager
+  157977	OUT	2941 tokens	Freelance Tester Greenland Paid International Payment Study
+  56827	OUT	3550 tokens	Service Delivery Director Data Centres
+  93334	OUT	3813 tokens	Assoc Security Specialist SOC
+  101290	OUT	3368 tokens	Data Analyst
+  148548	OUT	3211 tokens	Product Manager Connected Account Onboarding Experiences
+  105112	OUT	3453 tokens	Associate Product Manager
+  46869	OUT	3354 tokens	Field Service Engineer
+  71832	OUT	3848 tokens	Financial Analyst
+  81925	OUT	3947 tokens	Product Manager 6294
+  93737	OUT	3308 tokens	Product Manager AI
+  11226	OUT	3989 tokens	Cost Value Engineer Intelligence Systems Active Clearance
+  98905	OUT	3047 tokens	Project Manager Michels Road Stone Inc
+  31092	OUT	3289 tokens	FP&A Analyst Manager
+  17842	OUT	3287 tokens	AI Business Partner
+  77368	OUT	4576 tokens	Chief of Staff to the Managing Director of AI
+  86479	OUT	3878 tokens	Director Data Strategy Analytics Retail
+  141395	OUT	3440 tokens	Research Scientist Frontier Benchmarks
+  81505	OUT	4146 tokens	Optical Engineer
+  66101	IN	4192 tokens	Staff Applied Scientist
+  75280	OUT	3825 tokens	Director Growth Products
+  72659	OUT	3837 tokens	Customer Analytics Lead
+  101671	OUT	3223 tokens	Product Development Manager
+  76717	OUT	3078 tokens	Valuations Analyst
+  44528	OUT	3593 tokens	Business Management Analyst II
+  83762	OUT	3511 tokens	Engineer Fire and Life Safety Consultant Tunnel Engineer Chartered Engineer
+  79230	OUT	3244 tokens	AI Adoption Leader
+  2261	OUT	3711 tokens	Director
+  93581	OUT	4038 tokens	Engineer Seatbelts
+  69340	OUT	4744 tokens	Consultant Digital Transformation
+  36778	OUT	3403 tokens	Consulting Project Team Lead New Product Planning
+  77972	IN	3383 tokens	Configuration Developer Analyst
+  133430	OUT	3173 tokens	Developer Engagement Representative Malaysia Part Time Contract
+  94717	OUT	3937 tokens	Project Manager
+  63841	OUT	4049 tokens	Failure Analysis Engineer
+  16561	OUT	3398 tokens	Engineer Product Safety
+  31220	OUT	3226 tokens	Business Analyst Retail Energy
+  51838	OUT	3660 tokens	Technical Support Specialist I
+  31147	OUT	3055 tokens	Analista de Processos e Projetos Hibrido Rio de Janeiro RJ
+  3742	OUT	3625 tokens	Product Manager Checkout
+  114996	OUT	3368 tokens	Product Manager Technical Commercialization
+  41677	OUT	4499 tokens	CLS Operation Research Scientist First Middlemile
+  145197	OUT	3766 tokens	Starship Engineer FOD Control
+  78070	OUT	3174 tokens	Product Specialist Solutions Associate
+  99312	IN	3561 tokens	Trainee IT Consultant
+  79638	OUT	3328 tokens	Middle+ Project Manager Remote Contract
+  45923	OUT	3574 tokens	Financial Systems Analyst
+  28661	OUT	4946 tokens	Lead Technology Partners Product Marketing Manager
+  89103	OUT	4098 tokens	MES Engineer
+  37250	OUT	4917 tokens	Customer Engineer Korea
+  13949	OUT	3451 tokens	Middle Product Manager
+  171286	OUT	3947 tokens	Systems Engineer III Project Engineer
+  99285	OUT	3154 tokens	Praktikum Personal Schwerpunkt Eventmanagement
+  75448	OUT	3227 tokens	Project Engineering Manager
+  178191	OUT	2817 tokens	Tax Analyst
+  175389	OUT	3893 tokens	WPP Production Print Project Manager
+  165537	OUT	3590 tokens	Application Engineer
+  116633	IN	3800 tokens	Research Scientist Large Geometry Models
+  64753	OUT	3245 tokens	Operation Program Manager
+  13926	OUT	3435 tokens	Technical Support Specialist T1
+  95620	OUT	3224 tokens	Bilingual Technical Service Engineer
+  40463	OUT	4434 tokens	Product Manager Shopping Experience
+  176025	OUT	3471 tokens	Pessoa Analista de Mídia Sênior
+  178288	OUT	4335 tokens	Director of Growth Customer Analytics
+  20107	IN	4599 tokens	Product Manager Experience Control
+  30533	OUT	4108 tokens	Staff Product Manager Intelligent Customer Experience
+  138875	OUT	4438 tokens	Manager Product Integrity
+  77318	OUT	4557 tokens	AI Implementation Specialist Contech LA
+  129572	OUT	4051 tokens	Product Development Manager Lighting Home Decor Cookware
+  120477	OUT	3344 tokens	Investor Development Analyst Swedish speaking
+  25669	OUT	3634 tokens	Intern Business IT
+  71725	OUT	3516 tokens	Risk Analyst
+  3584	OUT	3616 tokens	Program Finance Analyst
+  68267	OUT	3660 tokens	Document Intelligence Analyst I
+  148116	OUT	3770 tokens	Program Finance Analyst
+  133098	OUT	3973 tokens	Sales Engineer
+  64482	OUT	3629 tokens	Sales Engineer
+  179036	OUT	4088 tokens	Analyst Relations Manager
+  176719	OUT	3527 tokens	Analyst Safety Operations Child Safety
+  3699	OUT	3730 tokens	Legal Operations Analyst II
+  86085	OUT	3856 tokens	Revenue Analyst Philippines
+  47902	OUT	3429 tokens	Sales Engineer III
+  98171	OUT	3659 tokens	Revenue Economics Analyst
+  40724	OUT	3340 tokens	Experimentation Analyst
+  68264	OUT	3425 tokens	Customer Support Analyst II
+  64612	IN	4277 tokens	GTM Engineer
+  147067	OUT	3240 tokens	Analyst Private Equity Secondaries
+  2283	OUT	3921 tokens	Microsoft 365 Engineer
+  71382	OUT	4656 tokens	Sales Operations Analyst
+  71634	OUT	3389 tokens	Sales Operations Analyst
+  105165	OUT	3169 tokens	Sales Operations Analyst
+  19678	IN	4383 tokens	Mission Engineer Sarasota
+  166975	OUT	4094 tokens	Scientist Analytical Development
+  156223	IN	3692 tokens	Technical Support Engineer TSE Intern
+  175004	OUT	3746 tokens	Marketing Analyst
+  108658	OUT	3419 tokens	Compliance Analyst
+  78992	OUT	3580 tokens	Product Engineer
+  16422	OUT	3253 tokens	Solution Engineer
+  98170	OUT	3659 tokens	Revenue Economics Analyst
+  133097	OUT	3973 tokens	Sales Engineer
+  9700	OUT	3744 tokens	Solutions Analyst
+  3720	OUT	3546 tokens	Revenue Operations Analyst II
+  52868	UNKNOWN	2536 tokens	Developer Engineer 204
+  172020	OUT	3341 tokens	Analyst Deals Finance
+  9952	OUT	3870 tokens	Solution Consultant
+  7007	OUT	2939 tokens	Systems Engineer Expert
+  12959	OUT	3868 tokens	Research Engineer Chip Design RL Reinforcement Learning
+  44393	OUT	3237 tokens	Reconciliation Analyst
+  133106	OUT	3973 tokens	Sales Engineer
+  172202	OUT	3164 tokens	Systems Engineering Lead New Product Initiatives
+  149865	OUT	3320 tokens	Business Process Analyst
+  44833	IN	4461 tokens	Field Engineering Enablement Leader
+  71326	OUT	3479 tokens	Consultant
+  86507	IN	4311 tokens	Dynamics 365 CE Developer
+  104831	OUT	3215 tokens	Technical Project Manager Server Network
+  28907	IN	3555 tokens	Engineering Manager Bill Pay
+  59501	IN	3605 tokens	Government Pre Sales Engineer
+  177539	OUT	3623 tokens	Sales Engineer
+  112112	IN	3958 tokens	Technical Project Manager Project Success
+  128547	IN	3495 tokens	Engineering Manager Flash Array
+  53076	OUT	3664 tokens	Energy Market Analyst Solutions
+  95437	OUT	3808 tokens	Analyst Regulatory Reporting and Financial Accounting
+  136976	OUT	3927 tokens	Lead Finance Analyst
+  105409	OUT	3554 tokens	Talent Acquisition Partner Engineering Product Direct Contract
+  133094	OUT	3973 tokens	Sales Engineer
+  68273	OUT	3493 tokens	Managed Services Analyst II OT
+  95545	OUT	3403 tokens	Technical Project Manager Martech
+  108468	OUT	3882 tokens	Payroll Analyst
+  45902	OUT	4090 tokens	Sales Revenue Analyst NYC
+  70611	OUT	4458 tokens	Image Scientist PIR
+  13987	IN	4247 tokens	Demo Engineer Presales Solutions Consulting
+  43200	OUT	3922 tokens	Strategic Solutions Engineer East
+  32975	OUT	3314 tokens	Portfolio Management Analyst Fundamental Equity
+  29791	OUT	3736 tokens	Financial Crime Intelligence Analyst Crypto
+  86027	OUT	3322 tokens	Solutions Engineer Architect
+  103967	OUT	3634 tokens	Associate Scientist R&D
+  100452	OUT	3789 tokens	Analyst Fraud Strategy
+  1593	OUT	3914 tokens	Business Architect
+  179023	OUT	3774 tokens	Customer Solutions Engineer Payments
+  70215	OUT	3274 tokens	Operation Analyst
+  19253	IN	3618 tokens	Lead Test Engineer Scenario Coverage Evaluation Datasets
+  77649	OUT	3752 tokens	Staff CSIRT Analyst
+  32939	OUT	3362 tokens	Marketing Operations Analyst 12 Month Contract
+  87092	OUT	3240 tokens	Sales Engineer Position located in Melbourne Australia
+  145968	OUT	3594 tokens	DEX Monitoring Engineer
+  59507	OUT	3954 tokens	Investigative Analyst Due Diligence Global Risk
+  160081	OUT	4189 tokens	People Talent Analyst Analyst
+  107853	OUT	3124 tokens	Engineering Technician
+  95549	OUT	3466 tokens	Technical Project Manager Martech
+  44895	OUT	4175 tokens	Lead GTM Enablement Scale Architect Product Enablement
+  24094	OUT	3941 tokens	FP&A Analyst
+  108348	IN	3775 tokens	Engineering Manager Access Essentials Core Product
+  87110	OUT	3574 tokens	Total Rewards Analyst Americas
+  100286	OUT	3485 tokens	Client Risk Analyst
+  128517	OUT	3472 tokens	Collections Analyst
+  19543	OUT	4798 tokens	Business Systems Architect Finance D365 FO
+  65286	IN	3387 tokens	Test Engineer 265
+  87093	OUT	3242 tokens	Sales Engineer Position located in Singapore
+  52867	UNKNOWN	2532 tokens	Developer Engineer
+  754	OUT	3987 tokens	Engineering Manager APAC
+  95448	OUT	3683 tokens	Team Administrator
+  16261	OUT	3667 tokens	Solutions Consultant
+  68300	OUT	3973 tokens	Strategic Financial Analyst Corporate Strategy Development
+  139120	OUT	3757 tokens	Quality and Process Engineer
+  36281	IN	2872 tokens	SOC Engineer
+  137912	OUT	3752 tokens	Solutions Engineer Commercial South Southeast
+  164279	OUT	2883 tokens	Sales Solution Engineer South Korea Seoul
+  36314	OUT	3581 tokens	Fleet Analyst
+  40495	OUT	4147 tokens	Accounts Payable Analyst
+  62797	OUT	3132 tokens	Telecom Engineer Voice Deployment
+  74372	OUT	3878 tokens	Solutions Engineer Enterprise Pre Sales German speaking
+  112029	IN	3734 tokens	Director Engineering Partnerships
+  95551	OUT	3409 tokens	Technical Project Manager Martech
+  172060	OUT	3117 tokens	Safety Researcher Computational Behavior Modeling
+  166292	OUT	2817 tokens	Content Engineer
+  167577	OUT	3896 tokens	6490 C&Q Engineer Validation Engineer
+  19538	OUT	4930 tokens	Business Systems Architect Finance D365 FO
+  193	OUT	3482 tokens	LQA Analyst Arabic
+  117156	OUT	3687 tokens	Solutions Consultant
+  30497	OUT	3441 tokens	Fund Management Analyst
+  164276	OUT	2848 tokens	Sales Solution Engineer Indonesia
+  138715	OUT	3771 tokens	Marketing Operations Analyst RevOps ShareGate
+  65687	OUT	3584 tokens	Solutions Consultant
+  92704	OUT	3930 tokens	EMEA Solutions Engineer Solutions Engineer
+  51074	OUT	3422 tokens	Treasury Analyst India
+  132007	OUT	4019 tokens	Tax Analyst PEO
+  26136	OUT	3133 tokens	Growth Paid Media Analyst
+  87124	OUT	3496 tokens	SEO Analyst
+  137697	OUT	3560 tokens	Scientist I
+  24114	OUT	4010 tokens	FP&A Analyst
+  133322	OUT	3918 tokens	Compensation Analyst
+  141463	IN	3438 tokens	Performance Test Architect
+  32905	OUT	3245 tokens	Analyst Institutional Portfolio Operations ABC
+  129395	OUT	3092 tokens	Quantum Scientist
+  16828	OUT	3552 tokens	Manager ALD Manufacturing Engineering
+  110717	OUT	3951 tokens	Sales Strategy Analyst
+  136975	OUT	3918 tokens	Lead Finance Analyst
+  104827	OUT	3380 tokens	Technical Project Manager IT Infrastructure Engineer
+  161649	OUT	3875 tokens	Systems Engineer
+  175320	OUT	3874 tokens	Strategy Transformation Analyst CRC
+  52826	UNKNOWN	2534 tokens	58 SAS Developer
+  146942	OUT	3560 tokens	Renewals Analyst
+  71365	OUT	4489 tokens	Lead AV Engineer
+  5490	UNKNOWN	2533 tokens	Campaign Marketing Analyst change
+  16063	OUT	3816 tokens	Marketing Analyst Spanish LATAM
+  19677	IN	4385 tokens	Mission Engineer Port St Lucie Florida
+  138117	OUT	3295 tokens	Analyst Diligence
+  247	IN	3448 tokens	Systems Engineer
+  128724	OUT	3561 tokens	Payment Application Analyst
+  63733	IN	3170 tokens	Staff Enterprise Engineer
+  64613	IN	4277 tokens	GTM Engineer
+  59313	OUT	3317 tokens	Marketing Analyst
+  130301	OUT	3762 tokens	Quality Assurance Engineer
+  71562	OUT	3136 tokens	Engineering Technician
+  29790	OUT	3766 tokens	Financial Crime Intelligence Analyst Crypto
+  164280	OUT	2855 tokens	Sales Solution Engineer Taiwan
+  194	OUT	5201 tokens	LQA Analyst Brazilian Portuguese
+  167996	OUT	3465 tokens	Adjudication Analyst
+  114547	IN	4220 tokens	Solutions Consultant
+  84977	OUT	3666 tokens	Analyst Risk Management PG
+  53073	OUT	3581 tokens	Energy Market Analyst
+  68272	OUT	3493 tokens	Managed Services Analyst II EMS
+  24109	OUT	3444 tokens	Regulatory Surveillance Analyst 2
+  107205	IN	3778 tokens	Director Supply Chain Engineering
+  195	OUT	3457 tokens	LQA Analyst Russian
+  175067	OUT	3592 tokens	Lead Technical Project Manager
+  107852	OUT	3178 tokens	Engineering Technician
+  24092	OUT	3941 tokens	FP&A Analyst
+  121249	OUT	3303 tokens	Customer Experience Analyst Internship
+  40798	OUT	3664 tokens	Revenue Operations Analyst US
+  145672	OUT	3268 tokens	A R Cash Application Analyst
+  29787	OUT	3679 tokens	Reconciliation Analyst
+  62822	OUT	3210 tokens	Program Financial and Governance Reporting Analyst
+  19675	IN	4385 tokens	Mission Engineer Overland Park KS
+  17205	OUT	3201 tokens	Architect
+  107537	OUT	3197 tokens	Analyst FP&A
+  40965	OUT	4229 tokens	People Business Partner Product Engineering
+  165437	OUT	3597 tokens	Solutions Consultant
+  13772	OUT	4559 tokens	Vice President Solution Engineering
+  66046	IN	3965 tokens	Associate Applied Scientist
+  24108	OUT	3444 tokens	Regulatory Surveillance Analyst 2
+  105184	IN	3782 tokens	GTM Engineer
+  107823	IN	3674 tokens	Support Engineer
+  49357	OUT	3812 tokens	Chargé e de comptes Opticien Audioprothésiste
+  18002	IN	3419 tokens	Solution Consultant
+  104084	OUT	3893 tokens	Scientist IVD Product Development
+  19556	IN	4515 tokens	Copy of Mission Engineer Chicago
+  57082	UNKNOWN	2549 tokens	Business Analyst
+  115308	OUT	3308 tokens	Solutions Consultant
+  1903	IN	4029 tokens	Pega Developer LSA
+  68262	OUT	3196 tokens	Credentialing Analyst I
+  74369	OUT	4063 tokens	Solutions Engineer Enterprise East Pre Sales
+  157746	IN	3418 tokens	Staff Field Application Engineer
+  62155	OUT	3661 tokens	Technical Revenue Analyst
+  137916	OUT	3590 tokens	Solutions Engineer Partner UK I
+  89634	OUT	3729 tokens	Anti Financial Crime Onboarding Analyst
+  110877	UNKNOWN	2540 tokens	Program Manager Global Distributor led Store Business
+  155942	OUT	3424 tokens	Analyst FP&A
+  178128	OUT	3314 tokens	Revenue Analyst
+  89221	IN	3257 tokens	GTM Engineer
+  58917	OUT	3919 tokens	Deal Desk Analyst 6 Month Fixed Term
+  111020	UNKNOWN	2536 tokens	Specialist Product Quality Intelligence
+  74377	OUT	3968 tokens	Solutions Engineer Mid Market West Pre Sales
+  100744	IN	4182 tokens	Manager Technical Services Engineering
+  18555	OUT	3955 tokens	FP&A Revenue Analyst LATAM
+  1860	IN	4101 tokens	MS Power Apps Developer
+  155946	OUT	3933 tokens	Director Solutions Engineering Americas
+  50731	OUT	3628 tokens	Product Analyst
+  88925	OUT	3402 tokens	BSA AML Analyst
+  149513	OUT	3557 tokens	Controllership Analyst
+Labelled 588. Jev has cost $0.4537 over every run.
+
+Round 1, scored against Jev
+  time      334.7s  gate 120s  FAIL
+  IN        87/200 =  43.5%  gate 10%  FAIL
+  OUT       19/200 =   9.5%  gate 10%  pass
+  UNKNOWN  193/200 =  96.5%  gate 30%  FAIL
+  the loop goes on
+
+Rows that disagree (299):
+
+  29085  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.17, 'OUT': 0.83}  (SCOPE_AMBIGUITY)
+  Staff Product Manager Growth
+  Why join us Brex is the intelligent finance platform that enables companies to spend smarter and move faster in more than 200 markets. By combining global corporate cards and banking with intuitive spend management, bill pay, and travel software, Brex enables founders and finance teams to accelerate
+
+  135644  predicted IN, Jev OUT {'OUT': 0.75, 'IN': 0.25, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  IT Specialist
+  Who we are Samsara (NYSE: IOT) is the pioneer of the Connected Operations Cloud, which is a platform that enables organizations that depend on physical operations to harness Internet of Things (IoT) data to develop actionable insights and improve their operations. At Samsara, we are helping improve 
+
+  50495  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 0.98, 'IN': 0.02}  (DOMAIN_AMBIGUITY)
+  Commodities Macro Analyst
+  DRW is a diversified trading firm with over 3 decades of experience bringing sophisticated technology and exceptional people together to operate in markets around the world. We value autonomy and the ability to quickly pivot to capture opportunities, so we operate using our own capital and trading a
+
+  5633  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Associate
+  The AI Policy Network (AIPN) is a bipartisan, independent 501(c)(4) advocacy organization dedicated to advancing secure AI development that serves America's economic prosperity, technological leadership, and national security. We provide policymakers with technically-grounded perspectives on emergin
+
+  133168  predicted IN, Jev OUT {'IN': 0.14, 'UNKNOWN': 0.02, 'OUT': 0.84}  (DOMAIN_AMBIGUITY)
+  Quantum Scientist Applied QEC
+  Quantum Scientist - Applied QEC Boston, MA, US | Full-time | Permanent | Hybrid Salary: $135,000 to $170,000 DOE About us Riverlane’s mission is to master quantum error correction (QEC) and unlock a new age of human progress. From advances in material and climate science, to complex chemistry simula
+
+  49639  predicted IN, Jev OUT {'OUT': 0.81, 'UNKNOWN': 0.0, 'IN': 0.19}  (SCOPE_AMBIGUITY)
+  Manager Analytics
+  ABOUT DSC: In 2011, Dollar Shave Club didn’t just shake up the shaving aisle—we reinvented it. A viral video put us on the map, and our direct-to-consumer model challenged an entire industry by making great razors accessible, affordable, and actually fun to buy. Since then, we’ve grown far beyond bl
+
+  14329  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (SCOPE_AMBIGUITY)
+  Business Analyst One year contract
+  About us Appnovation is a global, full-service digital partner that combines Strategy, Experience & Design, Engineering and Managed Services. We build digital solutions that deliver real impact today and serve as foundations for future growth. Bold ambition. Practical action. Endless possibilities. 
+
+  17508  predicted IN, Jev OUT {'IN': 0.03, 'OUT': 0.96, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Field Tester
+  AST SpaceMobile is building the first and only global cellular broadband network in space to operate directly with standard, unmodified mobile devices based on our extensive IP and patent portfolio and designed for both commercial and government applications. Our engineers and space scientists are o
+
+  87335  predicted IN, Jev OUT {'IN': 0.48, 'OUT': 0.52, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Data Product Manager
+  We Breathe Life Into Data At Komodo Health, our mission is to reduce the global burden of disease. And we believe that smarter use of data is essential to this mission. That’s why we built the Healthcare Map — the industry’s largest, most complete, precise view of the U.S. healthcare system — by com
+
+  67544  predicted IN, Jev OUT {'OUT': 0.5, 'IN': 0.5, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Director of Data Services
+  Gibson Dunn is a leading global law firm, advising clients on significant transactions and disputes. Our exceptional teams craft and deploy creative legal strategies that are meticulously tailored to every matter, however complex or high-stakes. The firm’s work is distinguished by a unique combinati
+
+  166770  predicted IN, Jev OUT {'IN': 0.0, 'UNKNOWN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Integration Build Engineer
+  Vast is developing next-generation space stations and space infrastructure using an incremental, hardware-rich, and low-cost approach. Vast is rapidly developing its multi-module Haven Station to ensure a continuous human presence in space for America and its allies, enabling advanced microgravity r
+
+  172104  predicted IN, Jev OUT {'UNKNOWN': 0.02, 'IN': 0.45, 'OUT': 0.53}  (DOMAIN_AMBIGUITY)
+  Silicon Emulation Engineer
+  Waymo is an autonomous driving technology company with the mission to be the world's most trusted driver. Since its start as the Google Self-Driving Car Project in 2009, Waymo has focused on building the Waymo Driver—The World's Most Experienced Driver —to improve access to mobility while saving tho
+
+  15872  predicted IN, Jev OUT {'OUT': 0.64, 'IN': 0.36, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Data Director Indonesia Malaysia
+  Who are we? Artefact is a new generation of a data service provider, specialised in data consulting and data-driven digital marketing. Our purpose? Every day we boost our clients’ data transformation into business impact across the entire value chain of organisations. Our strength? Our data services
+
+  67136  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.02, 'OUT': 0.98}  (SCOPE_AMBIGUITY)
+  Research Scientist II Gene R&D
+  About GenScript Founded in 2002 in New Jersey, GenScript Biotech Corporation accelerates innovation in biotech and healthcare by providing researchers and companies with the building blocks needed to develop groundbreaking treatments and products. Guided by its mission to Make People and Nature Heal
+
+  61865  predicted IN, Jev OUT {'OUT': 0.72, 'UNKNOWN': 0.0, 'IN': 0.28}  (SCOPE_AMBIGUITY)
+  SEO Technical Lead Madrid based
+  Hey there! We’re Fever, the world’s leading tech platform for culture and live entertainment. Our mission? To democratize access to culture and entertainment. With our proprietary cutting-edge technology and data-driven approach, we’re revolutionizing the way people engage with live entertainment. E
+
+  29616  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 0.81, 'IN': 0.19}  (SCOPE_AMBIGUITY)
+  Technical Delivery Manager Technical Engagement Manager
+  We are Bugcrowd. Since 2012, we’ve been empowering organizations to take back control and stay ahead of threat actors by uniting the collective ingenuity and expertise of our customers and trusted alliance of elite hackers, with our patented data and AI-powered Security Knowledge Platform . Our netw
+
+  105336  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.15, 'OUT': 0.85}  (DOMAIN_AMBIGUITY)
+  Solutions Engineer
+  Join the Future of Security at Netskope Netskope (NASDAQ: NTSK) is a leader in modern security and networking for the cloud and AI era. We secure and accelerate cloud, data, and AI in real time, everywhere. Thousands of customers, including more than 30 of the Fortune 100, trust the Netskope One pla
+
+  67087  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.09, 'OUT': 0.91}  (DOMAIN_AMBIGUITY)
+  Revenue Operations Analyst Bosnia and Herzegovina
+  Our Company Genomenon is an AI-driven genetic intelligence company on a mission to save and improve lives by making biomedical information actionable. Rare diseases and cancer affect more than 30 million people in the U.S. alone and hundreds of millions globally, yet most patients still face long di
+
+  10825  predicted IN, Jev OUT {'UNKNOWN': 0.01, 'OUT': 0.8, 'IN': 0.19}  (DOMAIN_AMBIGUITY)
+  Mission Engineer Air Dominance Strike
+  Anduril Industries is a defense technology company with a mission to transform U.S. and allied military capabilities with advanced technology. By bringing the expertise, technology, and business model of the 21st century’s most innovative companies to the defense industry, Anduril is changing how mi
+
+  104535  predicted IN, Jev OUT {'UNKNOWN': 0.01, 'OUT': 0.83, 'IN': 0.16}  (DOMAIN_AMBIGUITY)
+  Field Deploy Engineer
+  About Nebius: Nebius is leading a new era in cloud infrastructure for the global AI economy. We are building a full-stack AI cloud platform that supports developers and enterprises from data and model training through to production deployment, without the cost and complexity of building large in-hou
+
+  106331  predicted IN, Jev OUT {'OUT': 0.99, 'IN': 0.01, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Business Analyst
+  At NiCE, we don’t limit our challenges. We challenge our limits. Always. We’re ambitious. We’re game changers. And we play to win. We set the highest standards and execute beyond them. And if you’re like us, we can offer you the ultimate career opportunity that will light a fire within you. So, what
+
+  118601  predicted IN, Jev OUT {'OUT': 0.58, 'UNKNOWN': 0.01, 'IN': 0.41}  (DOMAIN_AMBIGUITY)
+  Business Intelligence Analyst
+  Business Intelligence Analyst A Career with Point72’s Intelligence and Surveillance Team Point72’s Intelligence and Surveillance team sets the industry standard for intelligence driven analysis by proactively identifying, monitoring, and assessing various sources of risk using proprietary tools and 
+
+  137829  predicted IN, Jev OUT {'IN': 0.01, 'OUT': 0.99, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Analyst Pricing Operations
+  Our Purpose At SentinelOne, we are driven by a clear purpose: to give the advantage to those who secure our future. As AI reshapes how organizations build, operate, and innovate, the responsibility to protect them becomes more critical than ever. When you join SentinelOne, your work helps protect gl
+
+  148791  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.06, 'OUT': 0.94}  (SCOPE_AMBIGUITY)
+  Technical Account Manager Billing
+  Who we are About Stripe Stripe is a financial infrastructure platform for businesses. Millions of companies - from the world’s largest enterprises to the most ambitious startups - use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase
+
+  130373  predicted IN, Jev OUT {'IN': 0.13, 'UNKNOWN': 0.0, 'OUT': 0.87}  (DOMAIN_AMBIGUITY)
+  Fraud Analyst
+  With 1,000+ intelligence professionals serving over 1,900 clients worldwide, Recorded Future is the world’s most advanced, and largest, intelligence company! Recorded Future provides intelligence that 1,500+ clients use to defend their people and networks from cybersecurity threats. We are looking f
+
+  137538  predicted IN, Jev OUT {'OUT': 0.54, 'IN': 0.46, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Associate Technology Disputes Coding
+  Chart Your Journey at Secretariat From a collaborative culture to teammates who will always be by your side, find a career that will grow with you. Deliver your impact at Secretariat. ABOUT THE FIRM Secretariat professionals are trusted in the highest-stakes legal, risk, and regulatory matters aroun
+
+  157616  predicted IN, Jev OUT {'IN': 0.48, 'OUT': 0.52, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Director of Product Management
+  About Tensordyne: Artificial intelligence (AI) is transforming our world. It can perform cognitive functions that previously only humans could do, such as perceiving interactions across different modalities and environments - with the ability to quickly learn and then solve complex problems. Tensord
+
+  70582  predicted IN, Jev OUT {'UNKNOWN': 0.03, 'IN': 0.38, 'OUT': 0.59}  (DOMAIN_AMBIGUITY)
+  Exploitation Analyst 3
+  What Impact You’ll Have: GRVTY is seeking experienced Exploitation Analysts (EAs) to support core Intelligence Community (IC) missions. As a cyber professional in the intelligence community, you will work as part of a team on the frontlines against our cyber adversaries. What You’ll be Owning: Use c
+
+  62937  predicted IN, Jev OUT {'UNKNOWN': 0.01, 'OUT': 0.74, 'IN': 0.25}  (DOMAIN_AMBIGUITY)
+  UAS Systems Integration Engineer II
+  COMPANY DESCRIPTION Flagship Pioneering is a platform innovation company that invents and builds companies that change the world. We bring together the greatest scientific minds with entrepreneurial company builders and assemble the capital to allow them to take courageous leaps. Those big leaps in 
+
+  96283  predicted IN, Jev OUT {'OUT': 0.71, 'UNKNOWN': 0.17, 'IN': 0.12}  (DOMAIN_AMBIGUITY)
+  Systems Engineer II
+  May Mobility is transforming cities through autonomous technology to create a safer, greener, more accessible world. Based in Ann Arbor, Michigan, May develops and deploys autonomous vehicles (AVs) powered by our innovative Multi-Policy Decision Making (MPDM) technology that literally reimagines the
+
+  170345  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.09, 'OUT': 0.91}  (DOMAIN_AMBIGUITY)
+  Trading Operations Analyst
+  Virtu is a leading financial firm that leverages cutting edge technology to offer liquidity to the global markets and innovative, transparent trading solutions to our clients. As a market maker, Virtu provides deep liquidity that helps to create more efficient markets around the world. Our market st
+
+  97698  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.27, 'OUT': 0.73}  (SCOPE_AMBIGUITY)
+  IT manager
+  Purpose/ Mission: The IT Manager is responsible for establishing, managing, and developing the overall Information Technology (IT) function for Meranti Green Steel Oman (MGSO). This role will lead the design, implementation, and maintenance of the company's IT infrastructure, systems, cybersecurity,
+
+  26611  predicted IN, Jev OUT {'IN': 0.11, 'UNKNOWN': 0.0, 'OUT': 0.89}  (SCOPE_AMBIGUITY)
+  Analytics Manager I
+  About BlueLabs BlueLabs is a leading provider of analytics services and technology dedicated to helping our partners do the most good with their data. Our team of analysts, scientists, engineers, and strategists hail from diverse backgrounds yet share a passion for using data to solve the world’s gr
+
+  11889  predicted IN, Jev OUT {'OUT': 0.48, 'UNKNOWN': 0.06, 'IN': 0.46}  (DOMAIN_AMBIGUITY)
+  Systems Engineer Integration Test Intelligence Systems
+  Anduril Industries is a defense technology company with a mission to transform U.S. and allied military capabilities with advanced technology. By bringing the expertise, technology, and business model of the 21st century’s most innovative companies to the defense industry, Anduril is changing how mi
+
+  93686  predicted IN, Jev OUT {'OUT': 0.99, 'IN': 0.01, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Staff Test Engineer Powertrain
+  About Lucid At Lucid, we are creating exceptional mobility experiences through innovation to drive the world forward. Built on Lucid’s proprietary technology and software-defined vehicle architecture, our award-winning vehicles bring our “Compromise Nothing ” approach to the global automotive market
+
+  64519  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 0.98, 'IN': 0.02}  (DOMAIN_AMBIGUITY)
+  Aladdin Front Office Technical Analyst
+  About the Role FormativGroup is seeking an Aladdin Front Office - Technical Analyst to join our growing Financial Services practice. In this role, you'll work closely with investment and trading teams, leveraging BlackRock Aladdin Front Office capabilities to support daily trading operations, optimi
+
+  36009  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 1.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Lead Analyst Financial Crimes
+  About the role Chime's Financial Crimes team protects millions of members from money laundering, fraud, and the organized networks that target consumer financial platforms. We work in a bank-partner model: we run detection and investigation, and we escalate unusual activity to our bank partners, who
+
+  115661  predicted IN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  OSP Field Engineer
+  At PEARCE, we've got a career for you! Pearce is a leading technology-enabled provider of asset management solutions for mission-critical electromechanical infrastructure throughout North America. Pearce provides technical maintenance, repair, operations, and engineering services for uninterruptible
+
+  60702  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 0.97, 'IN': 0.03}  (DOMAIN_AMBIGUITY)
+  Commercial Analyst Casino
+  THE POSITION Our roster has an opening with your name on it The Commercial Analyst will support our Commercial team to optimize our Casino VIP proposition and guide our approach to Casino VIP strategy (and its connection to group VIP strategy and Casino strategy). They will play an important role in
+
+  41734  predicted IN, Jev OUT {'OUT': 0.63, 'IN': 0.37, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Data Analyst TW Logistics
+  Data Analysis Specialist (TW Logistics) Company Introduction: Coupang is reimagining the shopping experience with the goal of wowing each customer from the instant they open the Coupang app to the moment an order is delivered to their door. Our services in Taiwan include “Rocket Delivery” which offe
+
+  169942  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.04, 'OUT': 0.96}  (SCOPE_AMBIGUITY)
+  Product Manager Remix Platform
+  Via is on a mission to create public transportation systems that provide far greater access to jobs, healthcare, and education. Our platform serves as the technology backbone for modern transit networks, transforming antiquated and siloed public transportation systems into smart, data-driven, and ef
+
+  77674  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.27, 'OUT': 0.73}  (SCOPE_AMBIGUITY)
+  Cybersecurity Partner
+  ABOUT HUT 8 Imagine the ultimate destination for those who want to work at the cutting edge of technology, energy, and infrastructure. Hut 8 is on a mission to build and operate some of the world’s largest data centers for next-generation computing workloads, including AI, Colocation, Cloud, and Bit
+
+  105238  predicted IN, Jev OUT {'IN': 0.18, 'OUT': 0.81, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  All Source Analyst Mid
+  At NetSage, we are more than a government contractor—we are a mission-focused partner dedicated to advancing national security through exceptional cyber expertise. We believe our success begins with our people, which is why we invest in and care for our employees. We know that employee retention is 
+
+  20405  predicted IN, Jev OUT {'OUT': 0.99, 'UNKNOWN': 0.0, 'IN': 0.01}  (SCOPE_AMBIGUITY)
+  Director Product Design AI Builder
+  What the Role Is Registry is the heart of Babylist – how we help growing families feel prepared during one of life's most consequential transitions, and the acquisition and commercial engine powering the rest of our business. We're hiring a design leader to own it. This role is the durable design an
+
+  175457  predicted IN, Jev OUT {'IN': 0.12, 'OUT': 0.88, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Analytics Manager
+  About WPP Media WPP is the trusted growth partner for the world’s leading brands. With exceptional talent, trusted data and intelligence, and world-class partnerships – all united by our pioneering agentic marketing platform, WPP Open – we help clients navigate change, capture opportunity, and deliv
+
+  29083  predicted IN, Jev OUT {'OUT': 0.83, 'IN': 0.17, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Staff Product Manager Growth
+  Why join us Brex is the intelligent finance platform that enables companies to spend smarter and move faster in more than 200 markets. By combining global corporate cards and banking with intuitive spend management, bill pay, and travel software, Brex enables founders and finance teams to accelerate
+
+  51128  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 0.77, 'IN': 0.23}  (SCOPE_AMBIGUITY)
+  Data Analyst II Regulatory Reporting
+  Ebury helps ambitious businesses unlock global growth, and we take the same approach with our people. We encourage innovation and movement, collaboration and problem-solving, and foster an environment where everyone can feel they belong, are valued, supported and empowered to succeed. If you’re a co
+
+  51234  predicted IN, Jev OUT {'OUT': 0.98, 'UNKNOWN': 0.0, 'IN': 0.02}  (SCOPE_AMBIGUITY)
+  Product Manager Anti Money Laundering Transaction Monitoring
+  Ebury helps ambitious businesses unlock global growth, and we take the same approach with our people. We encourage innovation and movement, collaboration and problem-solving, and foster an environment where everyone can feel they belong, are valued, supported and empowered to succeed. If you’re a co
+
+  111909  predicted IN, Jev OUT {'UNKNOWN': 0.01, 'IN': 0.16, 'OUT': 0.83}  (DOMAIN_AMBIGUITY)
+  Sales Engineer
+  POSITION OVERVIEW: OpenEye, an innovator in the design and development of cloud-centric software solutions for commercial video management is looking for a Sales Engineer to join our growing team, covering the North East Region. This position is a key member of the OpenEye sales organization and is 
+
+  134576  predicted IN, Jev OUT {'IN': 0.15, 'OUT': 0.85, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Manager Data Collaboration Measurement
+  Teamwork makes the stream work. Roku is changing how the world watches TV Roku is the #1 TV streaming platform in the U.S., Canada, and Mexico, and we've set our sights on powering every television in the world. Roku pioneered streaming to the TV. Our mission is to be the TV streaming platform that 
+
+  101167  predicted IN, Jev OUT {'IN': 0.07, 'UNKNOWN': 0.0, 'OUT': 0.93}  (SCOPE_AMBIGUITY)
+  Data Analyst Fraud
+  Who We Are Moniepoint Inc. is Africa’s all-in-one financial platform, helping 20 million businesses and individuals access seamless payments, banking, credit, cross-border, and business management tools each month. As Nigeria’s largest merchant acquirer, we power most of the country’s point-of-sale 
+
+  18144  predicted IN, Jev OUT {'IN': 0.08, 'UNKNOWN': 0.0, 'OUT': 0.92}  (SCOPE_AMBIGUITY)
+  Analytics Consultant Higher Education
+  Attain Partners is an innovative consulting firm dedicated to disrupting the status quo to change the world and improve the lives of those we touch. From strategy to technology and everywhere in between, our experts use their unique skills to advance the important missions of education, nonprofit, h
+
+  178416  predicted IN, Jev OUT {'OUT': 0.7, 'UNKNOWN': 0.13, 'IN': 0.17}  (DOMAIN_AMBIGUITY)
+  Chief Engineer
+  At Zone 5 Technologies, we're redefining what's possible in unmanned aircraft systems. Our team of engineers and innovators is developing cutting-edge autonomous solutions that push the boundaries of UAS technology - solving complex challenges that matter. We're building the future of UAS capabiliti
+
+  162357  predicted IN, Jev OUT {'OUT': 1.0, 'IN': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Subject Matter Expert Physician Enterprise
+  ROLE DETAILS Full-Time Office Location — New York City (preferred) WHY TRANSLUCENT Healthcare providers drive $2.5 trillion in medical expenditures annually — and operate on razor-thin 2–5% margins. Despite these stakes, the finance teams behind these organizations are buried in spreadsheets, manual
+
+  49579  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.49, 'OUT': 0.51}  (DOMAIN_AMBIGUITY)
+  Product Analyst
+  Location Our Product Operations Analyst - Product Analytics will be an integral part of our Global Product Management team. This role is based remotely in the East US, the UK, Ireland, Sweden, the Netherlands, Estonia and Israel. Who We Are DoiT is a global technology company that works with cloud-d
+
+  163175  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 1.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Engineering Technician
+  Trust Automation Trust Automation is a government contractor and has over 35 years of experience in custom motors, linear drives, digital drives, and systems which meet the unique needs of its customers. Its product line includes motors, linear drives, digital drives, custom assemblies, and products
+
+  135001  predicted IN, Jev OUT {'IN': 0.04, 'OUT': 0.96, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Project Manager Professional Services
+  Professional Services Senior Project Manager Location: France (Remote) Department: Professional Services (PS) About the Job Rubrik Professional Services is looking for a high-energy, strategic, and results-driven Senior Project Manager to lead complex, enterprise customer implementations and help sh
+
+  177642  predicted IN, Jev OUT {'OUT': 0.82, 'UNKNOWN': 0.0, 'IN': 0.18}  (SCOPE_AMBIGUITY)
+  Data Product Analyst Corporate
+  About Us: YipitData is the leading market research and analytics firm for the disruptive economy and most recently raised $475M from The Carlyle Group at a valuation of over $1B. Every day, our proprietary technology analyzes billions of alternative data points to uncover actionable insights across 
+
+  136425  predicted IN, Jev OUT {'OUT': 0.83, 'UNKNOWN': 0.0, 'IN': 0.17}  (SCOPE_AMBIGUITY)
+  Program Manager Technical Enablement
+  Scale AI’s customer-facing engineering organization is one of the fastest-growing and most technically demanding in enterprise AI. Frontier Agentic Engineers sit at the center of our most strategic relationships; building, integrating, and troubleshooting directly with customers. Until now, there ha
+
+  58613  predicted IN, Jev OUT {'UNKNOWN': 0.01, 'IN': 0.12, 'OUT': 0.87}  (DOMAIN_AMBIGUITY)
+  Product Analyst
+  About Ethos Ethos is a leading life insurance technology company on a mission to protect families by democratizing access to life insurance and empowering agents at scale. With its robust three-sided technology platform, Ethos is transforming the life insurance experience for consumers, agents, and 
+
+  44617  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 0.64, 'IN': 0.36}  (SCOPE_AMBIGUITY)
+  Cybersecurity Lead ISSM
+  Dark Wolf is looking for an Cybersecurity Lead/Information System Security Manager (ISSM) who is interested in working in a fast-paced environment to establish a robust security posture for a government information system. The successful candidate will provide oversight and enforcement of Department
+
+  172181  predicted IN, Jev OUT {'UNKNOWN': 0.11, 'OUT': 0.49, 'IN': 0.4}  (DOMAIN_AMBIGUITY)
+  Staff Systems Engineer Driving Behaviors
+  Waymo is an autonomous driving technology company with the mission to be the world's most trusted driver. Since its start as the Google Self-Driving Car Project in 2009, Waymo has focused on building the Waymo Driver—The World's Most Experienced Driver —to improve access to mobility while saving tho
+
+  1068  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 0.53, 'IN': 0.47}  (DOMAIN_AMBIGUITY)
+  Enterprise Sales Engineer France
+  About the Role Abnormal AI is seeking an Enterprise Sales Engineer to join our growing Sales team in France. As an Enterprise Sales Engineer, you will be our customer’s technical contact, and craft strategic business cases to win customers over & help them conquer their most intractable email securi
+
+  24612  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.15, 'OUT': 0.85}  (SCOPE_AMBIGUITY)
+  Quantitative Data Analyst
+  The Wow Senior Quantitative Analyst - Revolutionizing Sports Betting Join our team and shape the future of sports betting! We're seeking a highly motivated and innovative Quantitative Analyst to develop and maintain cutting-edge statistical models. You'll play a crucial role in enhancing our market 
+
+  49052  predicted IN, Jev OUT {'OUT': 0.77, 'UNKNOWN': 0.0, 'IN': 0.23}  (SCOPE_AMBIGUITY)
+  Product Manager
+  About DKatalis DKatalis is a financial technology company with multiple offices in the APAC region. In our quest to build a better financial world, one of our key goals is to create an ecosystem-linked financial services business. DKatalis is built and backed by experienced and successful entreprene
+
+  10438  predicted IN, Jev OUT {'UNKNOWN': 0.01, 'IN': 0.01, 'OUT': 0.98}  (DOMAIN_AMBIGUITY)
+  Field Service Engineer Counter Intrusion
+  Anduril Industries is a defense technology company with a mission to transform U.S. and allied military capabilities with advanced technology. By bringing the expertise, technology, and business model of the 21st century’s most innovative companies to the defense industry, Anduril is changing how mi
+
+  17727  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 0.53, 'IN': 0.47}  (SCOPE_AMBIGUITY)
+  Project Manager Web Content Management
+  Empower, Innovate, Impact! At Team A-TEK, we EMPOWER people to drive INNOVATION that IMPACTS mission! A-TEK operates at the intersection of mission and innovation by applying our deep domain expertise across the federal markets. Embracing our digital-first strategy, A-TEK provides enhanced capabilit
+
+  178272  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.01, 'OUT': 0.99}  (SCOPE_AMBIGUITY)
+  Project Lead I Thought Leadership
+  About Zinnov Zinnov is a global management consulting firm that helps organizations make decisions that actually get used — and deliver results that matter. For over two decades, we’ve partnered with leading enterprises, high-growth technology companies, and investors to answer some of the toughest 
+
+  107289  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.46, 'OUT': 0.54}  (SCOPE_AMBIGUITY)
+  Product Manager People Systems
+  About Nscale Nscale is the GPU cloud engineered for AI. We provide cost-effective, high-performance infrastructure for AI start-ups and large enterprise customers. Nscale enables AI-focused companies to achieve superior results by reducing the complexity of AI development. Our GPU cloud bolsters tec
+
+  27780  predicted IN, Jev OUT {'IN': 0.49, 'OUT': 0.5, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Solution Engineer Post Sales
+  Solution Engineer, Post-Sales Remote, United States About Blumira and Our Culture Blumira is the security operations platform built for growing teams and partners supporting them, integrating comprehensive visibility, tools, and expert guidance to give IT and security teams peace of mind from knowin
+
+  35755  predicted IN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Analyst Associate Litigation Life Sciences practice
+  About Charles River Associates Charles River Associates is a leading global consulting firm that provides economic, financial, and business management expertise to major law firms, corporations and governments around the world. CRA advises clients on economic and financial matters pertaining to liti
+
+  104621  predicted IN, Jev OUT {'OUT': 0.97, 'IN': 0.02, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Network Planning Technical Project Manager North America
+  About Nebius: Nebius is leading a new era in cloud infrastructure for the global AI economy. We are building a full-stack AI cloud platform that supports developers and enterprises from data and model training through to production deployment, without the cost and complexity of building large in-hou
+
+  69637  predicted IN, Jev OUT {'UNKNOWN': 0.03, 'OUT': 0.64, 'IN': 0.33}  (DOMAIN_AMBIGUITY)
+  Execution and Quality Validation Engineer
+  About us Graphcore is one of the world’s leading innovators in Artificial Intelligence compute. It is developing hardware, software, and systems infrastructure that will unlock the next generation of AI breakthroughs and power the widespread adoption of AI solutions across every industry. As part of
+
+  8884  predicted IN, Jev OUT {'UNKNOWN': 0.01, 'OUT': 0.98, 'IN': 0.01}  (DOMAIN_AMBIGUITY)
+  System Verification Engineer
+  We’re ALTEN Technology USA, an engineering company helping clients bring groundbreaking ideas to life—from advancing space exploration and life-saving medical devices to building autonomous electric vehicles. With 3,000+ experts across North America, we partner with leading companies in aerospace, m
+
+  149731  predicted IN, Jev OUT {'OUT': 0.73, 'UNKNOWN': 0.0, 'IN': 0.27}  (SCOPE_AMBIGUITY)
+  Product Data Analyst Consumer Growth
+  About the team SumUp is best known for helping small businesses get paid — our Consumer tribe builds the other half of that story. We make SumUp Consumer, the wallet app that lets everyday consumers pay SumUp merchants with a tap, send money to friends, track their spending and earn loyalty rewards 
+
+  6073  predicted IN, Jev OUT {'OUT': 1.0, 'UNKNOWN': 0.0, 'IN': 0.0}  (SCOPE_AMBIGUITY)
+  Technical Services Manager
+  Want to be a part of Asia Pacific & Middle East's (APME) largest, most innovative, and rapidly growing data centre company? AirTrunk is a hyperscale data centre company with a powerful purpose - to scale and sustain the relentless growth of the region’s digital future. We do this by continuously red
+
+  68498  predicted IN, Jev OUT {'OUT': 0.93, 'IN': 0.07, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Data Analyst
+  About us GoCardless, a Mollie company, is a global leader in bank payments. Over 100,000 businesses, from start-ups to household names, use GoCardless to collect, manage and send bank payments through Direct Debit, real-time payments and open banking. With US$130bn+ processed annually across 30+ cou
+
+  17223  predicted IN, Jev OUT {'UNKNOWN': 0.01, 'OUT': 0.89, 'IN': 0.1}  (DOMAIN_AMBIGUITY)
+  IP Signoff Methodology Engineer
+  Astera Labs (NASDAQ: ALAB) provides rack-scale AI infrastructure through purpose-built connectivity solutions. By collaborating with hyperscalers and ecosystem partners, Astera Labs enables organizations to unlock the full potential of modern AI. Astera Labs’ Intelligent Connectivity Platform integr
+
+  174159  predicted IN, Jev OUT {'UNKNOWN': 0.01, 'OUT': 0.63, 'IN': 0.36}  (DOMAIN_AMBIGUITY)
+  L1 L3 Service Support Engineer
+  What we’re all about: Any company can tell you about how they are a multi award winning, market leading business and yes, we are both of those things in the world of IoT connectivity! But we’re more than that. Our mission? To make IoT management a breeze for any device, anywhere. With over 20 millio
+
+  80600  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 0.94, 'IN': 0.06}  (DOMAIN_AMBIGUITY)
+  CUSTOMER SUCCESS ANALYST III
+  Conheça o Inter Pioneiros, mudamos o mercado ao lançar o primeiro banco digital do Brasil e seguimos criando tendências com tecnologia de ponta. Evoluímos para um Super App Financeiro Global, com soluções completas e inovação de primeira. Aqui, o trabalho tem propósito: construir oportunidades reais
+
+  60053  predicted IN, Jev OUT {'OUT': 1.0, 'UNKNOWN': 0.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Research Analyst
+  Company Overview Soros Fund Management LLC (SFM) is a global asset manager and family office founded by George Soros in 1973. With $28 billion in assets under management (AUM), SFM serves as the principal asset manager for the Open Society Foundations, one of the world’s largest charitable foundatio
+
+  12437  predicted IN, Jev OUT {'IN': 0.08, 'UNKNOWN': 0.01, 'OUT': 0.91}  (DOMAIN_AMBIGUITY)
+  Warfighter Research Systems Analyst
+  Anduril Industries is a defense technology company with a mission to transform U.S. and allied military capabilities with advanced technology. By bringing the expertise, technology, and business model of the 21st century’s most innovative companies to the defense industry, Anduril is changing how mi
+
+  118551  predicted IN, Jev OUT {'OUT': 0.58, 'UNKNOWN': 0.0, 'IN': 0.42}  (SCOPE_AMBIGUITY)
+  Product Manager Voice AI
+  At Podium, we bring AI Employees to local businesses that turn every conversation into revenue. Trusted by 60,000+ businesses across Auto, Home Services, and Aesthetics, Podium captures and converts leads 24/7, driving both new business and repeat customers. In under 24 months, we crossed $100M in A
+
+  157547  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 0.63, 'IN': 0.37}  (SCOPE_AMBIGUITY)
+  Security Consultant
+  Who is Tenable? Tenable is the Exposure Management company. Over 40,000 organizations around the globe rely on Tenable to understand and reduce cyber risk. Our global employees support 65 percent of the Fortune 500, 50 percent of the Global 2000, and large government agencies. Come be part of our jo
+
+  31530  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (SCOPE_AMBIGUITY)
+  Nostro Risk Reporting Business Analyst
+  Job Title: Nostro Risk Reporting BA About Us “Capco, a Wipro company, is a global technology and management consulting firm. Awarded with Consultancy of the year in the British Bank Award and has been ranked Top 100 Best Companies for Women in India 2022 by Avtar & Seramount. With our presence acros
+
+  37375  predicted IN, Jev OUT {'IN': 0.02, 'UNKNOWN': 0.0, 'OUT': 0.98}  (DOMAIN_AMBIGUITY)
+  Customer Engineering Manager Majors Texas
+  About Us At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects 
+
+  41976  predicted IN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 0.67, 'IN': 0.33}  (SCOPE_AMBIGUITY)
+  Data Analyst Audit Automation Data Analytics
+  About Coupang We exist to wow our customers. We know we’re doing the right thing when we hear our customers say, “How did I ever live without Coupang?” Born out of an obsession to make shopping, eating, and living easier than ever, we are collectively disrupting the multi-billion-dollar commerce ind
+
+  134959  predicted OUT, Jev IN {'IN': 0.52, 'UNKNOWN': 0.0, 'OUT': 0.48}  (DOMAIN_AMBIGUITY)
+  Mid Market Sales Engineer UK
+  Mid-Market Sales Engineer UK Location: London UK Languag Requirements: French Native. About Team & About Role: Ready for an opportunity to make a substantial impact with a disruptive tech company while building your pre-sales career? Rubrik, Inc. has an amazing product, a supercharged team and the f
+
+  43430  predicted OUT, Jev IN {'OUT': 0.37, 'UNKNOWN': 0.0, 'IN': 0.63}  (DOMAIN_AMBIGUITY)
+  Commercial Sales Engineer US West
+  Join the company that’s building the telemetry infrastructure for the AI era. At Cribl, we partner with IT and Security teams at many of the world’s biggest enterprises, including half of the Fortune 100, to bridge the gap between AI ambition and infrastructure reality. As the AI Platform for Teleme
+
+  64879  predicted OUT, Jev IN {'IN': 1.0, 'OUT': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Engineering Manager Decision Engineering
+  About the role: Forter is some of the internet's biggest eCommerce merchants' trust platform. We help them sell more by lowering the friction that fraud and abuse add to the buying experience, and that means making a lot of decisions for them. We process over 10M daily decisions for an annual GMV of
+
+  42239  predicted OUT, Jev IN {'UNKNOWN': 0.0, 'OUT': 0.48, 'IN': 0.52}  (SCOPE_AMBIGUITY)
+  쿠팡페이 Technical Account Manager 신사업 로켓페이
+  회사 소개 쿠팡페이의 핀테크 사업은 금융 서비스의 재정의를 통해 쿠팡 고객과 판매자들이 동일한 비용으로 더 많은 가치를 누리도록 지원합니다. 쿠팡페이는 쿠팡 앱 및 홈페이지에서 상품을 구매하는 소비자와 쿠팡 마켓플레이스에서 사업을 영위하는 판매자, 쿠팡이츠에 입점한 음식점주 등에게 혁신적인 결제 및 금융 솔루션을 제공하는 데 최선을 다합니다. 쿠팡페이의 최신 핀테크 혁신 기술은 원터치 결제 서비스가 탑재된 자체 결제 시스템 쿠페이를 기반으로 한국과 대만 소비자들의 니즈에 부응하고 있습니다. 대표적으로 쿠팡페이는 고객 가치 지향 차원
+
+  100973  predicted OUT, Jev IN {'IN': 0.7, 'OUT': 0.3, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Staff Product Manager AI Builder Experience
+  The Role AI Builder Experience (ABX) is MongoDB’s front door for the agentic era. We help human developers and coding agents discover, evaluate, and choose MongoDB, and we make MongoDB work naturally inside the AI-native tools, frameworks, and platforms where software is being built. We are looking 
+
+  87243  predicted OUT, Jev IN {'UNKNOWN': 0.0, 'OUT': 0.32, 'IN': 0.68}  (SCOPE_AMBIGUITY)
+  Product Manager Command and Field Operations
+  Kodiak Robotics, Inc. was founded in 2018 and has become a leader in autonomous ground transportation committed to a safer and more efficient future for all. The company has developed an artificial intelligence (AI) powered technology stack purpose-built for commercial trucking and the public sector
+
+  12740  predicted OUT, Jev IN {'IN': 0.99, 'OUT': 0.01, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Engineering Manager Growth
+  About Anthropic Anthropic’s mission is to create reliable, interpretable, and steerable AI systems. We want AI to be safe and beneficial for our users and for society as a whole. Our team is a quickly growing group of committed researchers, engineers, policy experts, and business leaders working tog
+
+  172234  predicted OUT, Jev IN {'UNKNOWN': 0.02, 'OUT': 0.15, 'IN': 0.83}  (DOMAIN_AMBIGUITY)
+  Control Engineer
+  About us Founded in 2017, Wayve is the leading developer of Embodied AI technology. Our advanced AI software and foundation models enable vehicles to perceive, understand, and navigate any complex environment, enhancing the usability and safety of automated driving systems. Our vision is to create a
+
+  31760  predicted OUT, Jev IN {'UNKNOWN': 0.0, 'OUT': 0.17, 'IN': 0.83}  (DOMAIN_AMBIGUITY)
+  Technical Project Manager Vadodara
+  Job Title: Technical Project Manager About Us “Capco, a Wipro company, is a global technology and management consulting firm. Awarded with Consultancy of the year in the British Bank Award and has been ranked Top 100 Best Companies for Women in India 2022 by Avtar & Seramount. With our presence acro
+
+  130704  predicted OUT, Jev IN {'UNKNOWN': 0.0, 'OUT': 0.15, 'IN': 0.85}  (SCOPE_AMBIGUITY)
+  AI Product Manager Bankrate
+  *This role is open to remote or hybrid candidates (East Coast preference), with hybrid being central to our New York, NY or Charlotte area offices. Must be able to work Eastern Standard Time hours. For the Bankrate website click here. Curious how Bankrate fits into Red Ventures? Click here. Bankrate
+
+  45312  predicted OUT, Jev IN {'IN': 0.66, 'UNKNOWN': 0.0, 'OUT': 0.34}  (DOMAIN_AMBIGUITY)
+  Manager Field Engineering UAE
+  FEQ427R248 As a Field Engineering Manager, you will lead a team of technical pre-sales Solutions Architects and Solutions Engineers across the UAE market. Your experience partnering with the sales organisation will help drive revenue with the right approach whilst coaching sales and pre-sales teams 
+
+  28817  predicted OUT, Jev IN {'UNKNOWN': 0.0, 'OUT': 0.38, 'IN': 0.62}  (SCOPE_AMBIGUITY)
+  Technical Account Manager
+  At Braze, we have found our people. We’re a genuinely approachable, exceptionally kind, and intensely passionate crew. We seek to ignite that passion by setting high standards, championing teamwork, and creating work-life harmony as we collectively navigate rapid growth on a global scale while striv
+
+  170994  predicted OUT, Jev IN {'OUT': 0.47, 'UNKNOWN': 0.01, 'IN': 0.52}  (DOMAIN_AMBIGUITY)
+  Technical Project Manager
+  Who We Are WPP Enterprise Solutions designs, builds, and operates the growth systems that competitive businesses rely on. In a world where Al is reshaping how companies drive growth, we lead clients in business transformation and marketing modernization, connecting strategy directly to execution. Ou
+
+  130973  predicted OUT, Jev IN {'IN': 0.77, 'UNKNOWN': 0.0, 'OUT': 0.23}  (SCOPE_AMBIGUITY)
+  Product Manager Logs Observability
+  Elastic, the Search AI Company, enables everyone to find the answers they need in real time, using all their data, at scale — unleashing the potential of businesses and people. The Elastic Search AI Platform, used by more than 50% of the Fortune 500, brings together the precision of search and the i
+
+  66101  predicted OUT, Jev IN {'UNKNOWN': 0.0, 'OUT': 0.11, 'IN': 0.89}  (DOMAIN_AMBIGUITY)
+  Staff Applied Scientist
+  What you’ll be part of Garner is on a mission to transform the U.S. healthcare system — and we’re the only proven player doing exactly that. We partner with employers to redesign how healthcare works: applying 550+ proprietary clinical metrics across 80+ specialties to a dataset of 320M+ patients to
+
+  77972  predicted OUT, Jev IN {'IN': 0.6, 'UNKNOWN': 0.0, 'OUT': 0.4}  (DOMAIN_AMBIGUITY)
+  Configuration Developer Analyst
+  About the Role iCapital is looking to hire an Analyst Configuration Developer who is responsible for implementing and maintaining business rules within FireLight , Hexure’s (now part of iCapital) proprietary SaaS electronic fulfillment platform. This role builds on foundational configuration skills 
+
+  99312  predicted OUT, Jev IN {'OUT': 0.07, 'IN': 0.92, 'UNKNOWN': 0.01}  (SCOPE_AMBIGUITY)
+  Trainee IT Consultant
+  Wenn du glaubst, dass Arbeiten bei allen IT-Beratungen gleich ist. Free your mind! Bei mindsquare geht´s um mehr: mehr Anspruch, mehr Impact, mehr du. Hier kommst du nicht einfach irgendwo unter. Du wirst Teil einer einzigartigen Community, die dich fordert, fördert und feiert. Wer bei uns einsteigt
+
+  116633  predicted OUT, Jev IN {'OUT': 0.1, 'IN': 0.9, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Research Scientist Large Geometry Models
+  About us Re-architecting Engineering for the Age of Intelligence PhysicsX is the physics AI company for industrials. The company’s mission is to accelerate hardware innovation by overhauling what industrial engineering and manufacturing look like today. PhysicsX is building a new simulation software
+
+  20107  predicted OUT, Jev IN {'UNKNOWN': 0.0, 'OUT': 0.32, 'IN': 0.68}  (SCOPE_AMBIGUITY)
+  Product Manager Experience Control
+  AXS connects fans with the artists and teams they love. Each year we sell millions of tickets to thousands of incredible events – from concerts and festivals to sports and theater – at some of the most iconic venues in the world. Since our founding in 2011, we've consistently pushed the industry for
+
+  68267  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'UNKNOWN': 0.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Document Intelligence Analyst I
+  ABOUT THIS ROLE GHX connects healthcare suppliers and hospitals across North America, processing over 2.2 million Purchase Order (PO) documents per year through its ADM (Automated Document Management) platform. The platform processes the majority of documents automatically; documents the system cann
+
+  148116  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'IN': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Program Finance Analyst
+  Stratolaunch is a technology accelerator that engineers operationally realistic testing at Mach 5+. Our air-launched, Talon testbeds are reusable, cost-effective platforms that enable routine access to the hypersonic environment. We deliver flight data critical to validating system performance and a
+
+  133098  predicted UNKNOWN, Jev OUT {'IN': 0.06, 'OUT': 0.94, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Sales Engineer
+  Rithum is the world’s most trusted commerce network, accelerating how brands, suppliers, and retailers work together to deliver seamless e-commerce experiences. We provide an unmatched platform for brands and retailers, enabling them to accelerate growth, optimize operations across channels, scale p
+
+  64482  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 0.7, 'IN': 0.3}  (DOMAIN_AMBIGUITY)
+  Sales Engineer
+  About Forma.ai: Forma.ai is a Series B startup that's revolutionizing how sales compensation is designed, managed and optimized. We handle billions in annual managed commissions for market leaders like Edmentum, Stryker, and Autodesk. Our growth has been fuelled by our passion for fundamentally chan
+
+  179036  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'UNKNOWN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Analyst Relations Manager
+  Company Overview Zuora is the finance-first monetization platform for the AI era. As companies shift to usage, credits, tokens, and hybrid pricing, Zuora helps them turn that complexity into revenue by connecting pricing, billing, payments, collections, and revenue in one system built for finance. T
+
+  176719  predicted UNKNOWN, Jev OUT {'OUT': 0.99, 'UNKNOWN': 0.0, 'IN': 0.01}  (DOMAIN_AMBIGUITY)
+  Analyst Safety Operations Child Safety
+  SpaceXAI’s mission is to create AI systems that can accurately understand the universe and aid humanity in its pursuit of knowledge. Our team is small, highly motivated, and focused on engineering excellence. This organization is for individuals who appreciate challenging themselves and thrive on cu
+
+  3699  predicted UNKNOWN, Jev OUT {'IN': 0.05, 'UNKNOWN': 0.0, 'OUT': 0.95}  (DOMAIN_AMBIGUITY)
+  Legal Operations Analyst II
+  At Affirm, we exist for the moments that matter—giving people a clear, predictable way to pay over time, with no hidden fees, no surprises, and no tradeoffs on what matters most. About the Legal, Compliance, and Public Affairs team The Legal, Compliance, and Public Affairs team is a group of dedicat
+
+  86085  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'IN': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Revenue Analyst Philippines
+  About Kasa Kasa is the leading tech-enabled hotel and apartment hotel brand and manager. We partner with owners of multifamily and boutique hospitality properties to deliver stylish, professionally managed accommodations to business and leisure travelers alike. We took the best that hotels and short
+
+  47902  predicted UNKNOWN, Jev OUT {'IN': 0.49, 'UNKNOWN': 0.0, 'OUT': 0.51}  (DOMAIN_AMBIGUITY)
+  Sales Engineer III
+  About Dialpad Dialpad is the AI platform for customer experience, built to resolve customer problems in real time across voice and digital. Our AI agents learn from your best human agents and improve with every interaction, helping organizations understand their customers, deliver better experiences
+
+  98171  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Revenue Economics Analyst
+  Who we are The real world is the next frontier, and at Metropolis, we are creating the artificial intelligence to make it responsive. We are pioneering the Recognition Economy — a future where mundane repetition disappears and being known unlocks access, comfort, and belonging everywhere you go. Fro
+
+  40724  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'UNKNOWN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Experimentation Analyst
+  Join our team at Core One! Our mission is to be at the forefront of devising analytical, operational and technical solutions to our Nation's most complex national security challenges. In order to achieve our mission, Core One values people first! We are committed to recruiting, nurturing, and retain
+
+  68264  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Customer Support Analyst II
+  Role Summary : A Customer Support Analyst Level II works within the Customer Support Center to meet the needs of GHX's important customers. The CSA-II will develop a strong working knowledge of our leading edge GHX Internet B2B exchange system and growth products, the Customer Support knowledge base
+
+  64612  predicted UNKNOWN, Jev IN {'UNKNOWN': 0.0, 'OUT': 0.32, 'IN': 0.68}  (DOMAIN_AMBIGUITY)
+  GTM Engineer
+  Who we are: Formic is on a mission to reshape American manufacturing by making automation accessible to every factory. As labor constraints rise, costs increase, and global competition intensifies, automation is no longer optional for manufacturers that want to stay competitive. We deliver automatio
+
+  147067  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Analyst Private Equity Secondaries
+  We are global private markets specialists delivering tailored investment solutions, advisory services, and impactful, data driven insights to the world’s investors. Leveraging the power of our platform and our peerless intelligence across sectors, strategies, and geographies, we help identify the ad
+
+  2283  predicted UNKNOWN, Jev OUT {'OUT': 0.68, 'UNKNOWN': 0.0, 'IN': 0.32}  (DOMAIN_AMBIGUITY)
+  Microsoft 365 Engineer
+  The Company At AccountsIQ, part of the AIQ Group, we’re on a mission to deeply understand our customers and deliver technology that enriches their lives. Alongside ExpenseIn, a leading expense management platform within the group, we provide smart, feature-rich financial management software designed
+
+  71382  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.08, 'OUT': 0.92}  (DOMAIN_AMBIGUITY)
+  Sales Operations Analyst
+  About Gusto At Gusto, we're on a mission to grow the small business economy. We handle the hard stuff — payroll, health insurance, 401(k)s, and HR — so owners can focus on their craft and their customers. With teams in Denver, San Francisco, and New York, we support more than 500,000 small businesse
+
+  71634  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 1.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Sales Operations Analyst
+  HackerRank helps companies like NVIDIA, Amazon, and Microsoft hire and upskill the next generation of developers based on skills, not pedigree. Our platform is trusted by over 2,500 of the world’s most innovative companies to build strong engineering teams ready for what’s next. Software has entered
+
+  105165  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.01, 'OUT': 0.99}  (DOMAIN_AMBIGUITY)
+  Sales Operations Analyst
+  We’re building the future of how the world communicates. Netcracker, part of NEC Corporation, combines deep telecom industry expertise with cutting-edge cloud-native and AI-powered innovations to enable communications service providers and enterprises to transform their businesses, unlock innovation
+
+  19678  predicted UNKNOWN, Jev IN {'UNKNOWN': 0.0, 'IN': 0.88, 'OUT': 0.12}  (DOMAIN_AMBIGUITY)
+  Mission Engineer Sarasota
+  Join Axon and be a Force for Good. At Axon, we’re on a mission to Protect Life. We’re explorers, pursuing society’s most critical safety and justice issues with our ecosystem of devices and cloud software. Like our products, we work better together. We connect with candor and care, seeking out diver
+
+  166975  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'UNKNOWN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Scientist Analytical Development
+  Join our Mission to Protect Humankind! Vaxcyte is a clinical-stage vaccine innovation company engineering high-fidelity vaccines to protect humankind from the consequences of bacterial diseases, which have serious and costly health consequences when left unchecked. Working to eradicate or treat bact
+
+  156223  predicted UNKNOWN, Jev IN {'IN': 0.5, 'UNKNOWN': 0.01, 'OUT': 0.49}  (DOMAIN_AMBIGUITY)
+  Technical Support Engineer TSE Intern
+  The Basics: As a Tanium Technical Support Engineer (TSE) Intern, you will support Tanium’s world-class customer organization, responsible for the satisfaction & retention of our enterprise customers, including the U.S. Department of Defense and over half the Fortune 100. With a primary focus on cust
+
+  175004  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'UNKNOWN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Marketing Analyst
+  Company Introduction WorldStrides is the global leader in educational travel and experiential learning. The company was founded in 1967 to provide middle school travel programs to Washington, D.C. and has grown to provide a wide range of programs for more than half a million students annually to ove
+
+  108658  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'IN': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Compliance Analyst
+  Who We Are At OKX, we believe that the future will be reshaped by crypto, and ultimately contribute to every individual's freedom. OKX is a leading crypto exchange, and the developer of OKX Wallet, giving millions access to crypto trading and decentralized crypto applications (dApps). OKX is also a 
+
+  78992  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 1.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Product Engineer
+  Impinj is a leading RAIN RFID provider and Internet of Things pioneer. We’re inventing ways to connect every thing to the Internet — including retail apparel, retail general merchandise, healthcare items, automobile parts, airline baggage, food and much more. With more than 100 billion items connect
+
+  16422  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.01, 'OUT': 0.99}  (DOMAIN_AMBIGUITY)
+  Solution Engineer
+  About IntellaQuest IntellaQuest provides quality-focused software for manufacturing organizations, including organizations with sensitive defense-related requirements. The company helps these teams manage quality, compliance, and operational complexity across their manufacturing environments. Intell
+
+  98170  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 1.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Revenue Economics Analyst
+  Who we are The real world is the next frontier, and at Metropolis, we are creating the artificial intelligence to make it responsive. We are pioneering the Recognition Economy — a future where mundane repetition disappears and being known unlocks access, comfort, and belonging everywhere you go. Fro
+
+  133097  predicted UNKNOWN, Jev OUT {'IN': 0.05, 'OUT': 0.95, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Sales Engineer
+  Rithum is the world’s most trusted commerce network, accelerating how brands, suppliers, and retailers work together to deliver seamless e-commerce experiences. We provide an unmatched platform for brands and retailers, enabling them to accelerate growth, optimize operations across channels, scale p
+
+  9700  predicted UNKNOWN, Jev OUT {'IN': 0.02, 'OUT': 0.98, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Solutions Analyst
+  About Vista Equity Partners Vista Equity Partners is a leading global investment firm focused exclusively on enterprise software, data, and technology-enabled businesses. With over $100B in assets under management and a portfolio of 90+ software product companies worldwide, Vista accelerates growth 
+
+  3720  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 0.82, 'IN': 0.18}  (DOMAIN_AMBIGUITY)
+  Revenue Operations Analyst II
+  At Affirm, we exist for the moments that matter—giving people a clear, predictable way to pay over time, with no hidden fees, no surprises, and no tradeoffs on what matters most. About the Team: We're looking for a curious, driven analyst to join our Revenue Operations team. Revenue Operations serve
+
+  172020  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Analyst Deals Finance
+  Waymo is an autonomous driving technology company with the mission to be the world's most trusted driver. Since its start as the Google Self-Driving Car Project in 2009, Waymo has focused on building the Waymo Driver—The World's Most Experienced Driver —to improve access to mobility while saving tho
+
+  289  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  LQA Analyst Arabic
+  TITLE: Localization Quality Assurance Analyst I LOCATION: Madrid DEPT: Global Localization COMPANY: 2K (Take-Two Interactive) TYPE: Full-Time, onsite At 2K, we create some of the most iconic and culture-shaping video games in entertainment, including NBA 2K, one of the top-selling franchises in the 
+
+  9952  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.05, 'OUT': 0.95}  (DOMAIN_AMBIGUITY)
+  Solution Consultant
+  At Anaplan, we are a team of innovators focused on optimizing business decision-making through our leading AI-infused scenario planning and analysis platform so our customers can outpace their competition and the market. What unites Anaplanners across teams and geographies is our collective commitme
+
+  7007  predicted UNKNOWN, Jev OUT {'OUT': 0.89, 'UNKNOWN': 0.09, 'IN': 0.02}  (DOMAIN_AMBIGUITY)
+  Systems Engineer Expert
+  TS/SCI Clearance REQUIRED Expert Systems Engineer The Space Systems Engineer provides advanced engineering support across all phases of the system lifecycle to ensure the delivery of timely and accurate Geospatial Intelligence (GEOINT). This role applies to a multi-disciplinary approach to the devel
+
+  12959  predicted UNKNOWN, Jev OUT {'IN': 0.28, 'UNKNOWN': 0.02, 'OUT': 0.7}  (DOMAIN_AMBIGUITY)
+  Research Engineer Chip Design RL Reinforcement Learning
+  About Anthropic Anthropic’s mission is to create reliable, interpretable, and steerable AI systems. We want AI to be safe and beneficial for our users and for society as a whole. Our team is a quickly growing group of committed researchers, engineers, policy experts, and business leaders working tog
+
+  44393  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Reconciliation Analyst
+  About the Company At Redpin we simplify life's most important payments. Buying a new property overseas can be a stressful time, especially when it comes to moving your money. Through our Currencies Direct and TorFX brands we've been helping people do just that for over 25 years. With recent investme
+
+  133106  predicted UNKNOWN, Jev OUT {'IN': 0.06, 'UNKNOWN': 0.0, 'OUT': 0.94}  (DOMAIN_AMBIGUITY)
+  Sales Engineer
+  Rithum is the world’s most trusted commerce network, accelerating how brands, suppliers, and retailers work together to deliver seamless e-commerce experiences. We provide an unmatched platform for brands and retailers, enabling them to accelerate growth, optimize operations across channels, scale p
+
+  172202  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.04, 'OUT': 0.81, 'IN': 0.15}  (DOMAIN_AMBIGUITY)
+  Systems Engineering Lead New Product Initiatives
+  Waymo is an autonomous driving technology company with the mission to be the world's most trusted driver. Since its start as the Google Self-Driving Car Project in 2009, Waymo has focused on building the Waymo Driver—The World's Most Experienced Driver —to improve access to mobility while saving tho
+
+  149865  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'UNKNOWN': 0.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Business Process Analyst
+  We are on a mission to pioneer the world’s next era of play. As we grow across Europe and Latin America, we’re building The Playstack - the technology powering the next generation of sports, gaming, and fan experiences. Join us, and help make it the most widely used platform in the world! From opera
+
+  44833  predicted UNKNOWN, Jev IN {'OUT': 0.4, 'UNKNOWN': 0.0, 'IN': 0.6}  (DOMAIN_AMBIGUITY)
+  Field Engineering Enablement Leader
+  FEQ427R368 The Impact You Will Have Databricks' Field Engineering organization is growing rapidly across the Americas (AMER), and our FE teams need enablement that meets them where they are: regionally relevant, technically deep, and aligned to how their Business Unit (BU) sells. This is a regional 
+
+  71326  predicted UNKNOWN, Jev OUT {'OUT': 0.99, 'UNKNOWN': 0.01, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Consultant
+  Location: Denver, CO Work Environment: Hybrid, periodic travel required Target Compensation Range: $100,000 to $130,000 Role Summary: Contribute to client engagements by executing high-quality work, bringing structure to ambiguity, and delivering practical solutions across execution, technology, peo
+
+  86507  predicted UNKNOWN, Jev IN {'IN': 1.0, 'OUT': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Dynamics 365 CE Developer
+  Senior Power Platform Developer Where the job is based: Stellenbosch, South Africa This role demands flexibility to work during UK hours and requires 2 days a week working from the Stellenbosch office. Who we are: Dive into a world where technology meets innovation. At Kerv Digital, we're not just a
+
+  104831  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.01, 'OUT': 0.86, 'IN': 0.13}  (DOMAIN_AMBIGUITY)
+  Technical Project Manager Server Network
+  About Nebius: Nebius is leading a new era in cloud infrastructure for the global AI economy. We are building a full-stack AI cloud platform that supports developers and enterprises from data and model training through to production deployment, without the cost and complexity of building large in-hou
+
+  28907  predicted UNKNOWN, Jev IN {'UNKNOWN': 0.0, 'IN': 1.0, 'OUT': 0.0}  (DOMAIN_AMBIGUITY)
+  Engineering Manager Bill Pay
+  Why join us Brex is the intelligent finance platform that enables companies to spend smarter and move faster in more than 200 markets. By combining global corporate cards and banking with intuitive spend management, bill pay, and travel software, Brex enables founders and finance teams to accelerate
+
+  59501  predicted UNKNOWN, Jev IN {'UNKNOWN': 0.0, 'IN': 0.63, 'OUT': 0.37}  (DOMAIN_AMBIGUITY)
+  Government Pre Sales Engineer
+  Who We Are: Exiger is the AI partner for supply chain and procurement automation. Its centralized 1EXIGER.AI platform allows organizations to manage their entire operating network, from parts to suppliers, regulators, and customers, through an autonomous agentic workforce that learns, adapts, and au
+
+  177539  predicted UNKNOWN, Jev OUT {'OUT': 0.65, 'UNKNOWN': 0.0, 'IN': 0.35}  (DOMAIN_AMBIGUITY)
+  Sales Engineer
+  Yalo! Hi! We’re Yalo! We’re on a mission to revolutionize how businesses sell in an omnichannel way with our intelligent sales platform and intelligent agents powered by cutting-edge AI. Imagine a world where businesses seamlessly connect with their customers across every channel—offering personaliz
+
+  112112  predicted UNKNOWN, Jev IN {'UNKNOWN': 0.0, 'OUT': 0.15, 'IN': 0.85}  (DOMAIN_AMBIGUITY)
+  Technical Project Manager Project Success
+  Who We Are Every organization runs on intelligence: years of accumulated knowledge, decisions, and context. As AI takes on more of that work, companies face a choice: rent that intelligence from vendors who keep the data, the context, and the results, or own it. OpenTeams exists to make ownership po
+
+  128547  predicted UNKNOWN, Jev IN {'UNKNOWN': 0.0, 'IN': 1.0, 'OUT': 0.0}  (DOMAIN_AMBIGUITY)
+  Engineering Manager Flash Array
+  Everpure (NYSE: P) has evolved from storage pioneer to data platform, closing fiscal 2026 with $3.7 billion in revenue, its first billion-dollar quarter, and accelerating growth into FY27. Our strategic agenda spans the companies defining the next era of technology - hyperscalers, AI labs, the AI ha
+
+  53076  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Energy Market Analyst Solutions
+  About Energy Exemplar In an era where the world is rapidly advancing towards a cleaner future through decarbonization, Energy Exemplar’s mission lies in ‘Empowering Transformative Energy Decisions’. Founded in 1999 in Adelaide, Australia, our award-winning software portfolio encompassing the modelin
+
+  95437  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'IN': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Analyst Regulatory Reporting and Financial Accounting
+  About Man Group Man Group is a global alternative investment management firm focused on pursuing outperformance for sophisticated clients via our Systematic, Discretionary and Solutions offerings. Powered by talent and advanced technology, our single and multi-manager investment strategies are under
+
+  136976  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Lead Finance Analyst
+  Scopely is seeking an experienced a Lead Finance Analyst/Manager to join Product Finance in support of our LIVE Games Portfolio — a group of live-operated, top-grossing mobile games generating meaningful revenue for Scopely. This is a senior, high-visibility role for someone ready to operate as a tr
+
+  105409  predicted UNKNOWN, Jev OUT {'IN': 0.05, 'OUT': 0.95, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Talent Acquisition Partner Engineering Product Direct Contract
+  Join the Future of Security at Netskope Netskope (NASDAQ: NTSK) is a leader in modern security and networking for the cloud and AI era. We secure and accelerate cloud, data, and AI in real time, everywhere. Thousands of customers, including more than 30 of the Fortune 100, trust the Netskope One pla
+
+  133094  predicted UNKNOWN, Jev OUT {'IN': 0.05, 'OUT': 0.95, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Sales Engineer
+  Rithum is the world’s most trusted commerce network, accelerating how brands, suppliers, and retailers work together to deliver seamless e-commerce experiences. We provide an unmatched platform for brands and retailers, enabling them to accelerate growth, optimize operations across channels, scale p
+
+  68273  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.01, 'IN': 0.01, 'OUT': 0.98}  (DOMAIN_AMBIGUITY)
+  Managed Services Analyst II OT
+  Job Description Role Summary The Managed Services Analyst role provides excellent customer service to both internal and external customers to assist with products or services provided by GHX. This role provides administrative process support for routine tasks. This individual will have a passion for
+
+  95545  predicted UNKNOWN, Jev OUT {'IN': 0.14, 'UNKNOWN': 0.0, 'OUT': 0.86}  (DOMAIN_AMBIGUITY)
+  Technical Project Manager Martech
+  Who We Are MAP | WPP Enterprise Solutions designs, builds, and operates the growth systems that competitive businesses rely on. In a world where Al is reshaping how companies drive growth, we lead clients in business transformation and marketing modernization, connecting strategy directly to executi
+
+  108468  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Payroll Analyst
+  Secure Every Identity, from AI to Human Identity is the key to unlocking the potential of AI. Okta secures AI by building the trusted, neutral infrastructure that enables organizations to safely embrace this new era. This work requires a relentless drive to solve complex challenges with real-world s
+
+  45902  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Sales Revenue Analyst NYC
+  Datadog is the monitoring and security platform for cloud applications. Our SaaS product is used by organizations of all sizes across a wide range of industries to enable digital transformation, cloud migration, and infrastructure monitoring of our customers’ entire technology stack, allowing for se
+
+  70611  predicted UNKNOWN, Jev OUT {'IN': 0.01, 'UNKNOWN': 0.01, 'OUT': 0.98}  (DOMAIN_AMBIGUITY)
+  Image Scientist PIR
+  What Impact You'll Have GRVTY is seeking motivated and experienced multidisciplinary scientists and intelligence analysts to support Persistent Infrared (PIR), Scientific and Technical Intelligence (S&TI), research and development, collection planning, and broader multi-INT missions. The ideal candi
+
+  13987  predicted UNKNOWN, Jev IN {'UNKNOWN': 0.0, 'OUT': 0.01, 'IN': 0.99}  (DOMAIN_AMBIGUITY)
+  Demo Engineer Presales Solutions Consulting
+  Here at Appian, our values of Intensity and Excellence define who we are. We set high standards and live up to them, ensuring that everything we do is done with care and quality. We approach every challenge with ambition and commitment, holding ourselves and each other accountable to achieve the bes
+
+  43200  predicted UNKNOWN, Jev OUT {'OUT': 0.57, 'IN': 0.43, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Strategic Solutions Engineer East
+  Cresta unlocks the true potential of the customer experience, turning every conversation into a competitive advantage. Cresta’s unified AI platform combines conversational AI agents, real-time human agent augmentation, and comprehensive conversation intelligence to drive revenue and efficiency gains
+
+  32975  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'UNKNOWN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Portfolio Management Analyst Fundamental Equity
+  Connor, Clark & Lunn Investment Management ("CC&L"), an affiliate of the Connor, Clark & Lunn Financial Group, is looking for a Portfolio Management Analyst to join our Vancouver-based Fundamental Canadian Equity Team. As the PM Analyst, you will own the day-to-day operational management of these po
+
+  29791  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'UNKNOWN': 0.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Financial Crime Intelligence Analyst Crypto
+  About us: BVNK is the stablecoin-powered financial stack for enterprises. We're now part of Mastercard, and together we're building a network for every form of money – one that delivers more reach, more capability and more choice. We enable businesses to build financial products, unlock new markets,
+
+  86027  predicted UNKNOWN, Jev OUT {'OUT': 0.66, 'IN': 0.3, 'UNKNOWN': 0.04}  (DOMAIN_AMBIGUITY)
+  Solutions Engineer Architect
+  At Kargo, our mission is to build a connective tissue between the physical world of freight and the digital ecosystem used to manage it. We believe that advancements in smart infrastructure are critical to enabling a safer and more efficient future for logistics. Our loading dock sensor platform ver
+
+  103967  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'IN': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Associate Scientist R&D
+  POSITION DURATION: This is a six-month contract role located in San Carlos with the potential to extend or convert to full-time based on performance and business needs. POSITION SUMMARY: Join our dynamic and fast-paced assay development team as an Associate Scientist supporting the Organ Health busi
+
+  100452  predicted UNKNOWN, Jev OUT {'IN': 0.01, 'OUT': 0.99, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Analyst Fraud Strategy
+  Who We Are At Momentum Financial Services Group, we help people move forward by reimagining how money works for those who need it most. With more than 40 years of experience, we’re the team behind Money Mart—Canada’s largest non-bank branch network and a leader in financial solutions for underserved
+
+  1593  predicted UNKNOWN, Jev OUT {'OUT': 0.9400000000000001, 'IN': 0.06, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Business Architect
+  At Accenture Federal Services, nothing matters more than helping the US federal government make the nation stronger and safer and life better for people. Our 13,000+ people are united in a shared purpose to pursue the limitless potential of technology and ingenuity for clients across defense, nation
+
+  179023  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.08, 'OUT': 0.92}  (DOMAIN_AMBIGUITY)
+  Customer Solutions Engineer Payments
+  About Zuora At Zuora, we help businesses grow smarter and adapt faster. Our platform powers modern business models — from subscriptions and usage-based pricing to AI-driven and outcome-based offerings — helping companies launch new products, automate complex billing, and unlock predictable, recurrin
+
+  70215  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Operation Analyst
+  Gridmatic Inc. is a high-growth startup with offices in the Bay Area and Houston, dedicated to accelerating the clean energy transition. We leverage deep expertise in data, machine learning, and energy markets to drive innovation in the power sector. We are a startup that has multiple years of profi
+
+  19253  predicted UNKNOWN, Jev IN {'IN': 0.84, 'UNKNOWN': 0.01, 'OUT': 0.15}  (DOMAIN_AMBIGUITY)
+  Lead Test Engineer Scenario Coverage Evaluation Datasets
+  Lead Test Engineer — Scenario Coverage & Evaluation Datasets About the team Avride builds autonomous driving technology for vehicles and delivery robots. Our QA organization measures how well that technology drives, largely in simulation — and an evaluation is only as good as the data behind it. So 
+
+  77649  predicted UNKNOWN, Jev OUT {'OUT': 0.62, 'UNKNOWN': 0.0, 'IN': 0.38}  (DOMAIN_AMBIGUITY)
+  Staff CSIRT Analyst
+  Reports to: Director of Product Security and Incident Response Location: Remote US Compensation Range: $200,000.00 to $210,000.00 plus bonus and equity What We Do: Cybercrime is growing, and more businesses are getting hit by threats that used to target only the biggest organizations. That pushes de
+
+  32939  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Marketing Operations Analyst 12 Month Contract
+  Connor, Clark & Lunn is looking to hire a Marketing Operations Analyst for a 12 month contract. The Marketing Operations Analyst provides operational and analytical support for the Marketing Team. This role assists with marketing reporting, technology administration, process improvements, project co
+
+  87092  predicted UNKNOWN, Jev OUT {'IN': 0.1, 'OUT': 0.9, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Sales Engineer Position located in Melbourne Australia
+  KnowBe4 empowers the modern workforce to make smarter security decisions every day. Trusted by more than 70,000 organizations worldwide, KnowBe4 is the pioneer of digital workforce security, securing both AI agents and humans. The KnowBe4 Platform provides attack simulation and training, collaborati
+
+  145968  predicted UNKNOWN, Jev OUT {'OUT': 0.58, 'UNKNOWN': 0.01, 'IN': 0.41}  (DOMAIN_AMBIGUITY)
+  DEX Monitoring Engineer
+  Spektrum supports apex purchasers (NATO, UN, EU, and National Government and Defence) and their Tier 1 supplier ecosystem with a wide range of specialist services. We provide our clients with professional services, specialised aerospace and defence sales, delivery, and operational subject matter exp
+
+  59507  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 1.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Investigative Analyst Due Diligence Global Risk
+  Who We Are: Exiger is the AI partner for supply chain and procurement automation. Its centralized 1EXIGER.AI platform allows organizations to manage their entire operating network, from parts to suppliers, regulators, and customers, through an autonomous agentic workforce that learns, adapts, and au
+
+  160081  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'UNKNOWN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  People Talent Analyst Analyst
+  About Us The human brain is the most complex object in the universe, yet society had accepted one-size-fits all approaches to cognition. The “solutions” (think coffee, energy drinks, and even a friend’s rx) were mediocre at best and frankly, made no sense to us. So, we created Thesis, the world’s fi
+
+  107853  predicted UNKNOWN, Jev OUT {'OUT': 0.95, 'IN': 0.0, 'UNKNOWN': 0.05}  (DOMAIN_AMBIGUITY)
+  Engineering Technician
+  About Us We are Ocado Group, and we're bringing world-class automation to online grocery. Our Ocado Smart Platform (OSP) combines cutting-edge robotics, AI, and IoT within our advanced CFCs (Customer Fulfilment Centres). We've mastered the single pick, transforming online delivery for our global par
+
+  95549  predicted UNKNOWN, Jev OUT {'IN': 0.14, 'UNKNOWN': 0.01, 'OUT': 0.85}  (DOMAIN_AMBIGUITY)
+  Technical Project Manager Martech
+  Who We Are MAP | WPP Enterprise Solutions designs, builds, and operates the growth systems that competitive businesses rely on. In a world where Al is reshaping how companies drive growth, we lead clients in business transformation and marketing modernization, connecting strategy directly to executi
+
+  44895  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.45, 'OUT': 0.55}  (DOMAIN_AMBIGUITY)
+  Lead GTM Enablement Scale Architect Product Enablement
+  SLSQ227R703 Lead GTM Enablement & Scale Architect, Product Enablement The Impact You Will Have Databricks ships category-defining products across its portfolio - from Data Warehousing and Real-Time Analytics, to Data Engineering, AI and Agents, Business Intelligence and Genie, and Operational Data. 
+
+  24094  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'UNKNOWN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  FP&A Analyst
+  About Behavox Behavox is a cloud-native AI company providing an integrated controls platform for global banks, asset managers, hedge funds, private equity firms, insurance businesses, and commodity firms. The platform unifies communications and trade surveillance, compliant archiving, policy managem
+
+  108348  predicted UNKNOWN, Jev IN {'OUT': 0.0, 'UNKNOWN': 0.0, 'IN': 1.0}  (DOMAIN_AMBIGUITY)
+  Engineering Manager Access Essentials Core Product
+  Secure Every Identity, from AI to Human Identity is the key to unlocking the potential of AI. Okta secures AI by building the trusted, neutral infrastructure that enables organizations to safely embrace this new era. This work requires a relentless drive to solve complex challenges with real-world s
+
+  87110  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Total Rewards Analyst Americas
+  KnowBe4 empowers the modern workforce to make smarter security decisions every day. Trusted by more than 70,000 organizations worldwide, KnowBe4 is the pioneer of digital workforce security, securing both AI agents and humans. The KnowBe4 Platform provides attack simulation and training, collaborati
+
+  100286  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 1.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Client Risk Analyst
+  Client Risk Analyst London Full-time In office 4 days/week Do you enjoy digging deeper when something doesn't quite add up? Do you want to own real portfolios from day one, with your independent thinking trusted by clients and colleagues? Would you like to help build better tooling and AI into how w
+
+  128517  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Collections Analyst
+  Everpure (NYSE: P) has evolved from storage pioneer to data platform, closing fiscal 2026 with $3.7 billion in revenue, its first billion-dollar quarter, and accelerating growth into FY27. Our strategic agenda spans the companies defining the next era of technology - hyperscalers, AI labs, the AI ha
+
+  19543  predicted UNKNOWN, Jev OUT {'IN': 0.15, 'UNKNOWN': 0.0, 'OUT': 0.85}  (DOMAIN_AMBIGUITY)
+  Business Systems Architect Finance D365 FO
+  Join Axon and be a Force for Good. At Axon, we’re on a mission to Protect Life. We’re explorers, pursuing society’s most critical safety and justice issues with our ecosystem of devices and cloud software. Like our products, we work better together. We connect with candor and care, seeking out diver
+
+  65286  predicted UNKNOWN, Jev IN {'OUT': 0.27, 'IN': 0.72, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Test Engineer 265
+  Freedom Technology Solutions Group is seeking a Test Engineer. The Test Engineer (GTE) will perform GEOINT quality risk analysis, test planning, and test performance of GEOINT data, systems, applications, and services. The Lead GTE will provide technical and process leadership to GEOINT Quality team
+
+  87093  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.11, 'OUT': 0.89}  (DOMAIN_AMBIGUITY)
+  Sales Engineer Position located in Singapore
+  KnowBe4 empowers the modern workforce to make smarter security decisions every day. Trusted by more than 70,000 organizations worldwide, KnowBe4 is the pioneer of digital workforce security, securing both AI agents and humans. The KnowBe4 Platform provides attack simulation and training, collaborati
+
+  754  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 1.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Engineering Manager APAC
+  Company Overview Metrea delivers effects-as-a-service to national security partners across five domains and more than a dozen mission areas. These include airborne ISR, electronic warfare, secure communications, aerial refueling, special air missions, aerial firefighting, and advanced simulation. We
+
+  95448  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'UNKNOWN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Team Administrator
+  About Man Group Man Group is a global alternative investment management firm focused on pursuing outperformance for sophisticated clients via our Systematic, Discretionary and Solutions offerings. Powered by talent and advanced technology, our single and multi-manager investment strategies are under
+
+  16261  predicted UNKNOWN, Jev OUT {'IN': 0.01, 'OUT': 0.99, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Solutions Consultant
+  The Solutions Org drives customer acquisition and accelerates revenue growth through a mastery of strategic sales and Asana platform expertise. We are trusted advisors for our prospects and clients. Our team bridges the gaps between the voice of business and voice of customer, gathering first-party 
+
+  68300  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 1.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Strategic Financial Analyst Corporate Strategy Development
+  We are seeking a senior finance professional with a strategic mindset who thrives in a dynamic, private equity-backed business environment. This person will serve as a trusted financial advisor to the CEO and executive leadership team, providing analytical rigor and strategic insight to drive the co
+
+  139120  predicted UNKNOWN, Jev OUT {'IN': 0.01, 'OUT': 0.98, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Quality and Process Engineer
+  About Shift5 Shift5 is the observability platform for onboard operational technology (OT). We’re a rapidly growing scale-up that specializes in cybersecurity, predictive maintenance, and compliance for operational technology (OT) systems across all defense vehicles and commercial aviation. We are a 
+
+  36281  predicted UNKNOWN, Jev IN {'IN': 0.92, 'OUT': 0.08, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  SOC Engineer
+  Professional Requirements Log Source Mapping: Identify and map organizational log sources intended for ingestion into the SIEM platform. Understand which security-relevant logs are available, assess their value, and ensure they are properly collected and ingested. SIEM Integrations: Design and imple
+
+  137912  predicted UNKNOWN, Jev OUT {'OUT': 0.8200000000000001, 'UNKNOWN': 0.0, 'IN': 0.18}  (DOMAIN_AMBIGUITY)
+  Solutions Engineer Commercial South Southeast
+  Our Purpose At SentinelOne, we are driven by a clear purpose: to give the advantage to those who secure our future. As AI reshapes how organizations build, operate, and innovate, the responsibility to protect them becomes more critical than ever. When you join SentinelOne, your work helps protect gl
+
+  164279  predicted UNKNOWN, Jev OUT {'OUT': 0.74, 'IN': 0.26, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Sales Solution Engineer South Korea Seoul
+  About Ubiquiti At Ubiquiti Inc., we create technology platforms for Businesses, Smart Homes, and Internet Service Providers, driven by our goal to connect everyone, everywhere. To date, Ubiquiti has shipped over 100 million devices worldwide, from ISP networking products to next generation of IT sol
+
+  36314  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 1.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Fleet Analyst
+  Pay Range: $31.52 - $40.98/hr. | $65,563 - $85,232 annual compensation Job Posting Closing on: Monday, September 21, 2026 Workdays & Hours: Monday – Friday 7am – 4pm; Some evening/weekends work could be required. Benefits for this position include: 11 Paid Holidays, Medical, Dental, Vision, Paid Tim
+
+  40495  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'IN': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Accounts Payable Analyst
+  Since being founded in 2018, Copper has been building the standard for institutional digital asset infrastructure with a focus on custody, collateral management, and prime services. Led by Amar Kuchinad, Copper's Global CEO, the firm provides a comprehensive suite of custody, trading and settlement 
+
+  62797  predicted UNKNOWN, Jev OUT {'OUT': 0.54, 'IN': 0.44, 'UNKNOWN': 0.02}  (DOMAIN_AMBIGUITY)
+  Telecom Engineer Voice Deployment
+  Join us in bringing joy to customer experience. Five9 is a leading provider of cloud contact center software, bringing the power of cloud innovation to customers worldwide. Living our values everyday results in our team-first culture and enables us to innovate, grow, and thrive while enjoying the jo
+
+  74372  predicted UNKNOWN, Jev OUT {'OUT': 0.74, 'UNKNOWN': 0.0, 'IN': 0.26}  (DOMAIN_AMBIGUITY)
+  Solutions Engineer Enterprise Pre Sales German speaking
+  About Hightouch Hightouch is an Agentic Marketing Platform powered by the industry-leading Composable CDP. With complete brand context, customer data, and performance history in one place, every marketer finally has the power to build and ship end-to-end campaigns themselves. Teams move faster, stay
+
+  112029  predicted UNKNOWN, Jev IN {'IN': 1.0, 'UNKNOWN': 0.0, 'OUT': 0.0}  (DOMAIN_AMBIGUITY)
+  Director Engineering Partnerships
+  With millions of diners, 70,000+ restaurant partners and 25+ years of experience, OpenTable, part of Booking Holdings, Inc. (NASDAQ: BKNG), is an industry leader with a passion for helping restaurants thrive. Our world-class technology empowers restaurants to focus on what matters most – their team,
+
+  95551  predicted UNKNOWN, Jev OUT {'IN': 0.13, 'UNKNOWN': 0.01, 'OUT': 0.86}  (DOMAIN_AMBIGUITY)
+  Technical Project Manager Martech
+  Who We Are MAP | WPP Enterprise Solutions designs, builds, and operates the growth systems that competitive businesses rely on. In a world where Al is reshaping how companies drive growth, we lead clients in business transformation and marketing modernization, connecting strategy directly to executi
+
+  172060  predicted UNKNOWN, Jev OUT {'IN': 0.31, 'OUT': 0.68, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Safety Researcher Computational Behavior Modeling
+  Waymo is an autonomous driving technology company with the mission to be the world's most trusted driver. Since its start as the Google Self-Driving Car Project in 2009, Waymo has focused on building the Waymo Driver—The World's Most Experienced Driver —to improve access to mobility while saving tho
+
+  166292  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.01, 'OUT': 0.61, 'IN': 0.38}  (DOMAIN_AMBIGUITY)
+  Content Engineer
+  Build More Than Just a Career. Build Your Future. At Vailexa, we’re not just hiring — we’re building thinkers, creators, and future leaders. We believe in giving people the space to grow, the freedom to think, and the opportunity to create real impact from day one. If you’re someone who wants to lea
+
+  167577  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'IN': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  6490 C&Q Engineer Validation Engineer
+  Description Verista’s 500 experts team up with the world’s most recognizable brands in the life science industry to solve their business needs. The nature of our business is to empower growth and innovation within the scientific community and to help researchers, organizations, and companies solve s
+
+  19538  predicted UNKNOWN, Jev OUT {'OUT': 0.85, 'IN': 0.15, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Business Systems Architect Finance D365 FO
+  Join Axon and be a Force for Good. At Axon, we’re on a mission to Protect Life. We’re explorers, pursuing society’s most critical safety and justice issues with our ecosystem of devices and cloud software. Like our products, we work better together. We connect with candor and care, seeking out diver
+
+  193  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  LQA Analyst Arabic
+  TITLE: Localization Quality Assurance Analyst I LOCATION: Madrid DEPT: Global Localization COMPANY: 2K (Take-Two Interactive) TYPE: Full-Time, onsite At 2K, we create some of the most iconic and culture-shaping video games in entertainment, including NBA 2K, one of the top-selling franchises in the 
+
+  117156  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 0.79, 'IN': 0.21}  (DOMAIN_AMBIGUITY)
+  Solutions Consultant
+  The Company: Placements AI is building the operating system for advertising. As a product-first company, we are transforming the way digital media publishers, broadcasters, retail media networks, and eCommerce businesses manage their advertising operations through AI-powered technology and automatio
+
+  30497  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'UNKNOWN': 0.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Fund Management Analyst
+  CAIS is the pioneer in democratizing access to and education about alternative investments for independent financial advisors, empowering them to engage and transact with leading asset managers at scale through a wide variety of alternative investment products and technology solutions. CAIS provides
+
+  164276  predicted UNKNOWN, Jev OUT {'OUT': 0.73, 'IN': 0.27, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Sales Solution Engineer Indonesia
+  About Ubiquiti At Ubiquiti Inc., we create technology platforms for Businesses, Smart Homes, and Internet Service Providers, driven by our goal to connect everyone, everywhere. To date, Ubiquiti has shipped over 100 million devices worldwide, from ISP networking products to next generation of IT sol
+
+  138715  predicted UNKNOWN, Jev OUT {'OUT': 0.99, 'UNKNOWN': 0.0, 'IN': 0.01}  (DOMAIN_AMBIGUITY)
+  Marketing Operations Analyst RevOps ShareGate
+  About ShareGate ShareGate is the leading Microsoft 365 migration and governance platform, trusted by over 100,000 IT pros for its unmatched simplicity. It offers the simplest, most reliable, and most affordable way to move business data to Microsoft 365. Whether migrating from Google Workspace, file
+
+  65687  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 0.52, 'IN': 0.48}  (DOMAIN_AMBIGUITY)
+  Solutions Consultant
+  About Fundraise Up We're Fundraise Up — a global fundraising platform built to make donating to nonprofits fast, seamless, and accessible to all. Every month, our technology powers tens of millions of dollars in donations across the globe. Our platform is trusted by many of the world's leading nonpr
+
+  92704  predicted UNKNOWN, Jev OUT {'IN': 0.13, 'UNKNOWN': 0.0, 'OUT': 0.87}  (DOMAIN_AMBIGUITY)
+  EMEA Solutions Engineer Solutions Engineer
+  LogicGate is the leading AI GRC platform for the Enterprise, helping governance, risk, and compliance teams limit surprises, strengthen resilience, augment program performance, and confidently quantify impact and business value. Built to provide a centralized view of risk and compliance, with AI int
+
+  51074  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'UNKNOWN': 0.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Treasury Analyst India
+  EBANX is one of the most successful fintechs to emerge from Latin America — and today, we are building a truly global payments company. Our mission has remained constant from day one: to unlock access and enable companies and consumers to participate in the digital economy, no matter where they are.
+
+  132007  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Tax Analyst PEO
+  About Remote Remote is solving modern organizations’ biggest challenge – navigating global employment compliantly with ease. We make it possible for businesses of all sizes to recruit, pay, and manage international teams. With our core values at heart and future focused work culture, our team works 
+
+  26136  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'IN': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Growth Paid Media Analyst
+  We are Blip, a conversational AI platform for intelligent interactions which allows businesses to connect with customers at scale across multiple communication channels, such as WhatsApp, Instagram, Facebook,or webchat. Through AI we allow brands to gain scalability and directly impact key KPIs by a
+
+  87124  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'IN': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  SEO Analyst
+  Position Overview: The Senior SEO Analyst leads the strategy and day-to-day execution of organic search, technical SEO, content SEO, AEO, GEO, backlink health, and search intelligence. The role identifies opportunities, sets priorities, and ensures KnowledgeCity's website and content are structured 
+
+  137697  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Scientist I
+  About Sail: Sail Biomedicines is pioneering the integrative design and deployment of fully programmable medicines to transform patient care. Sail's platform combines first-in-class programmable circular RNA technology (Endless RNA or eRNA), and an industry-leading platform of programmable nanopartic
+
+  24114  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'UNKNOWN': 0.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  FP&A Analyst
+  About Behavox Behavox is a cloud-native AI company providing an integrated controls platform for global banks, asset managers, hedge funds, private equity firms, insurance businesses, and commodity firms. The platform unifies communications and trade surveillance, compliant archiving, policy managem
+
+  133322  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'UNKNOWN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Compensation Analyst
+  Join us in building the future of finance. Our mission is to democratize finance for all. An estimated $124 trillion of assets will be inherited by younger generations in the next two decades. The largest transfer of wealth in human history. If you’re ready to be at the epicenter of this historic cu
+
+  141463  predicted UNKNOWN, Jev IN {'UNKNOWN': 0.0, 'OUT': 0.0, 'IN': 1.0}  (DOMAIN_AMBIGUITY)
+  Performance Test Architect
+  Why SOFICO? At SOFICO, we're shaping the future of mobility, and we're doing it together. Our software, Miles, helps leasing, fleet, and mobility providers around the world manage their operations through one powerful, integrated platform. As our customers continue to grow and evolve, ensuring excep
+
+  32905  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 1.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Analyst Institutional Portfolio Operations ABC
+  When you join the Institutional Portfolio Operations (IPO) team as a Analyst, you are joining a group of tightknit, energetic, and social individuals, who together have a direct impact on the investment success of individuals, pension funds, foundations and endowments, First Nations and other instit
+
+  129395  predicted UNKNOWN, Jev OUT {'OUT': 0.91, 'UNKNOWN': 0.02, 'IN': 0.07}  (DOMAIN_AMBIGUITY)
+  Quantum Scientist
+  Summary QuEra is building its next-generation quantum computer in Boston: the first fault-tolerant, universal quantum computer at a scale where commercially useful applications become possible. This is the scientific, technological and commercial frontier — and this Quantum Scientist role helps make
+
+  16828  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Manager ALD Manufacturing Engineering
+  Step into a career with ASM, where cutting edge technology meets collaborative culture. For over 55 years ASM has been ahead of what’s next, at the forefront of innovation and what’s technologically possible. With more than 4,500 ASMers representing 70 nationalities, our people and our advanced semi
+
+  110717  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'IN': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Sales Strategy Analyst
+  Strength in Trust OneTrust’s mission is to enable innovation through the responsible use of data and AI. We believe that ensuring data is trusted shouldn’t slow teams down—it should accelerate what’s possible. This led us to develop the first technology platform for responsible data use in 2016. Tod
+
+  136975  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'UNKNOWN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Lead Finance Analyst
+  Scopely is seeking an experienced Lead Analyst / Finance Manager to join Product Finance in support of our LIVE Games Portfolio — a group of live-operated, top-grossing mobile games generating meaningful revenue for Scopely. This is a senior, high-visibility role for someone ready to operate as a tr
+
+  104827  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.01, 'OUT': 0.77, 'IN': 0.22}  (DOMAIN_AMBIGUITY)
+  Technical Project Manager IT Infrastructure Engineer
+  About Nebius: Nebius is leading a new era in cloud infrastructure for the global AI economy. We are building a full-stack AI cloud platform that supports developers and enterprises from data and model training through to production deployment, without the cost and complexity of building large in-hou
+
+  161649  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.01, 'OUT': 0.98, 'IN': 0.01}  (DOMAIN_AMBIGUITY)
+  Systems Engineer
+  Tomorrow.io is a leading weather intelligence and climate resilience platform helping organizations and governments make better decisions in a world of increasing weather volatility. By combining proprietary satellite technology, advanced AI forecasting models, and actionable analytics, Tomorrow.io 
+
+  175320  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Strategy Transformation Analyst CRC
+  WPP is the trusted growth partner for the world’s leading brands. We unite cutting-edge media intelligence and data solutions, world-class creativity, next-generation production, transformative enterprise solutions and expert strategic counsel in a single company – powered by exceptional talent and 
+
+  146942  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Renewals Analyst
+  About StarRez StarRez is the global leader in student housing software, providing innovative solutions for on and off-campus housing management, resident wellness and experience, and revenue generation. Trusted by 1,400+ clients across 25+ countries, StarRez supports more than 4 million beds annuall
+
+  71365  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.01, 'IN': 0.04, 'OUT': 0.95}  (DOMAIN_AMBIGUITY)
+  Lead AV Engineer
+  About Gusto At Gusto, we're on a mission to grow the small business economy. We handle the hard stuff — payroll, health insurance, 401(k)s, and HR — so owners can focus on their craft and their customers. With teams in Denver, San Francisco, and New York, we support more than 500,000 small businesse
+
+  16063  predicted UNKNOWN, Jev OUT {'OUT': 0.99, 'IN': 0.01, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Marketing Analyst Spanish LATAM
+  Quienes somos Artefact es una nueva generación de proveedores de servicios de datos, especializado en consultoría de datos y marketing digital basado en datos, dedicado a transformar los datos en impacto empresarial en toda la cadena de valor de las organizaciones. Estamos orgullosos de decir que es
+
+  19677  predicted UNKNOWN, Jev IN {'IN': 0.89, 'OUT': 0.11, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Mission Engineer Port St Lucie Florida
+  Join Axon and be a Force for Good. At Axon, we’re on a mission to Protect Life. We’re explorers, pursuing society’s most critical safety and justice issues with our ecosystem of devices and cloud software. Like our products, we work better together. We connect with candor and care, seeking out diver
+
+  138117  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.01, 'OUT': 0.99}  (DOMAIN_AMBIGUITY)
+  Analyst Diligence
+  About the role: Behind many of life's most important transactions — buying a house, applying for a mortgage, getting a small business loan, or refinancing a credit card — is a network of credit relationships. Setpoint provides critical infrastructure for relationships between the world's largest ban
+
+  247  predicted UNKNOWN, Jev IN {'IN': 1.0, 'OUT': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Systems Engineer
+  Who We Are At 2K, we create some of the most iconic and culture-shaping video games in entertainment, including NBA 2K , one of the top-selling franchises in the world, and legendary titles like BioShock , Borderlands , Mafia , Sid Meier’s Civilization , and XCOM , as well as fan favorites WWE 2K , 
+
+  128724  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'IN': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Payment Application Analyst
+  Everpure (NYSE: P) has evolved from storage pioneer to data platform, closing fiscal 2026 with $3.7 billion in revenue, its first billion-dollar quarter, and accelerating growth into FY27. Our strategic agenda spans the companies defining the next era of technology - hyperscalers, AI labs, the AI ha
+
+  63733  predicted UNKNOWN, Jev IN {'IN': 0.92, 'OUT': 0.08, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Staff Enterprise Engineer
+  Flow Traders is looking for an experienced Staff Enterprise Engineer. The ideal candidate is proactive and driven, with a genuine appetite for modernizing and continuously improving our technology estate. This is a unique opportunity to join a leading proprietary trading firm with an entrepreneurial
+
+  64613  predicted UNKNOWN, Jev IN {'UNKNOWN': 0.0, 'OUT': 0.29, 'IN': 0.71}  (DOMAIN_AMBIGUITY)
+  GTM Engineer
+  Who we are: Formic is on a mission to reshape American manufacturing by making automation accessible to every factory. As labor constraints rise, costs increase, and global competition intensifies, automation is no longer optional for manufacturers that want to stay competitive. We deliver automatio
+
+  59313  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 1.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Marketing Analyst
+  *** This is where your organization can create a consistent intro to all of your jobs, creating consistency in voice and messaging across all job posts *** C'est ici que votre organisation peut créer une introduction cohérente à tous vos emplois, en créant une cohérence dans la voix et la messagerie
+
+  130301  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'UNKNOWN': 0.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Quality Assurance Engineer
+  About Re:Build At Re:Build, our mission is to ensure the next generation of important products are made, at scale, in America. We are laying the foundation for a better future for our customers, employees, and communities by revitalizing America's manufacturing base and creating meaningful jobs acro
+
+  71562  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.06, 'IN': 0.0, 'OUT': 0.94}  (DOMAIN_AMBIGUITY)
+  Engineering Technician
+  This posting is for hourly paid logistics employees to apply through. About Us We are Ocado Group, and we're bringing world-class automation to online grocery. Our Ocado Smart Platform (OSP) combines cutting-edge robotics, AI, and IoT within our advanced CFCs (Customer Fulfilment Centres). We've mas
+
+  29790  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'IN': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Financial Crime Intelligence Analyst Crypto
+  About us: BVNK is the stablecoin-powered financial stack for enterprises. We're now part of Mastercard, and together we're building a network for every form of money – one that delivers more reach, more capability and more choice. We enable businesses to build financial products, unlock new markets,
+
+  164280  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 0.83, 'IN': 0.17}  (DOMAIN_AMBIGUITY)
+  Sales Solution Engineer Taiwan
+  About Ubiquiti At Ubiquiti Inc., we create technology platforms for Businesses, Smart Homes, and Internet Service Providers, driven by our goal to connect everyone, everywhere. To date, Ubiquiti has shipped over 100 million devices worldwide, from ISP networking products to next generation of IT sol
+
+  194  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.01, 'OUT': 0.99}  (DOMAIN_AMBIGUITY)
+  LQA Analyst Brazilian Portuguese
+  TITRE: Analyste en assurance qualité linguistique (LQA) portugais brésilien LIEU: Montréal SERVICE: Localisation mondiale ENTREPRISE: 2K (Take-Two Interactive) TYPE: Temps plein Fondée en 2005, 2K Games est une entreprise internationale de jeux vidéo, éditant des titres développés par certains des s
+
+  167996  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'IN': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Adjudication Analyst
+  Verra Mobility is a global road safety technology business partnering with governments and enforcement agencies across multiple international markets. Our technology captures and processes road safety incident data, while our Operations teams ensure that information is reviewed accurately, consisten
+
+  114547  predicted UNKNOWN, Jev IN {'UNKNOWN': 0.0, 'OUT': 0.48, 'IN': 0.52}  (DOMAIN_AMBIGUITY)
+  Solutions Consultant
+  PagerDuty, Inc. (NYSE: PD) is the global leader in AI-first digital operations. By automatically detecting, diagnosing, and remediating issues, the PagerDuty Platform orchestrates AI agents and automated workflows with context from over 750 integrations. Trusted by approximately two-thirds of the Fo
+
+  19669  predicted UNKNOWN, Jev IN {'IN': 0.89, 'OUT': 0.11, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Mission Engineer Baltimore
+  Join Axon and be a Force for Good. At Axon, we’re on a mission to Protect Life. We’re explorers, pursuing society’s most critical safety and justice issues with our ecosystem of devices and cloud software. Like our products, we work better together. We connect with candor and care, seeking out diver
+
+  84977  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Analyst Risk Management PG
+  About Judi Health Judi Health is a health technology company providing benefit administration solutions to employers, unions, health plans, and government entities. Judi Health replaces fragmented, outdated systems with the industry's first Unified Claims Processing architecture, seamlessly consolid
+
+  53073  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'UNKNOWN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Energy Market Analyst
+  About Energy Exemplar In an era where the world is rapidly advancing towards a cleaner future through decarbonization, Energy Exemplar’s mission lies in ‘Empowering Transformative Energy Decisions’. Founded in 1999 in Adelaide, Australia, our award-winning software portfolio encompassing the modelin
+
+  68272  predicted UNKNOWN, Jev OUT {'OUT': 0.98, 'IN': 0.02, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Managed Services Analyst II EMS
+  Job Description Role Summary The Managed Services Analyst role provides excellent customer service to both internal and external customers to assist with products or services provided by GHX. This role provides administrative process support for routine tasks. This individual will have a passion for
+
+  24109  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Regulatory Surveillance Analyst 2
+  About Behavox Behavox is shaping the future for how businesses harness their most important raw material - data. Our mission is bold: Organize enterprise data into actionable information that protects and promotes the business growth of multinational companies around the world. From managing enterpr
+
+  107205  predicted UNKNOWN, Jev IN {'IN': 0.81, 'UNKNOWN': 0.0, 'OUT': 0.19}  (DOMAIN_AMBIGUITY)
+  Director Supply Chain Engineering
+  About Nscale Nscale is the GPU cloud engineered for AI. We provide cost-effective, high-performance infrastructure for AI start-ups and large enterprise customers. Nscale enables AI-focused companies to achieve superior results by reducing the complexity of AI development. Our GPU cloud bolsters tec
+
+  195  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  LQA Analyst Russian
+  LQA Analyst Russian Onsite Position At 2K, we create some of the most iconic and culture-shaping video games in entertainment, including NBA 2K, one of the top-selling franchises in the world, and legendary titles like BioShock , Borderlands , Mafia, Sid Meier’s Civilization , and XCOM , as well as 
+
+  175067  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.01, 'IN': 0.36, 'OUT': 0.63}  (DOMAIN_AMBIGUITY)
+  Lead Technical Project Manager
+  WorldQuant develops and deploys systematic financial strategies across a broad range of asset classes and global markets. We seek to produce high-quality predictive signals (alphas) through our proprietary research platform to employ financial strategies focused on market inefficiencies. Our teams w
+
+  68274  predicted UNKNOWN, Jev OUT {'OUT': 0.99, 'UNKNOWN': 0.0, 'IN': 0.01}  (DOMAIN_AMBIGUITY)
+  Managed Services Analyst II PS
+  Job Description Role Summary The Managed Services Analyst role provides excellent customer service to both internal and external customers to assist with products or services provided by GHX. This role provides administrative process support for routine tasks. This individual will have a passion for
+
+  107852  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.02, 'OUT': 0.98, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Engineering Technician
+  About Us We are Ocado Group, and we're bringing world-class automation to online grocery. Our Ocado Smart Platform (OSP) combines cutting-edge robotics, AI, and IoT within our advanced CFCs (Customer Fulfilment Centres). We've mastered the single pick, transforming online delivery for our global par
+
+  24092  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'UNKNOWN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  FP&A Analyst
+  About Behavox Behavox is a cloud-native AI company providing an integrated controls platform for global banks, asset managers, hedge funds, private equity firms, insurance businesses, and commodity firms. The platform unifies communications and trade surveillance, compliant archiving, policy managem
+
+  121249  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'UNKNOWN': 0.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Customer Experience Analyst Internship
+  About the Job As a key growth accelerator, A11 partners with Europe’s most ambitious startups and scaleups, corporates, and SMBs to connect them with top-tier talent ready to make an impact. We’re looking for a motivated Customer Experience Analyst Intern (m/f/d) to join and support the Customer Exp
+
+  40798  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Revenue Operations Analyst US
+  About CoreView CoreView is the global leader in Microsoft 365 (M365) tenant resilience, serving over 23 million users worldwide. We empower the world’s leading organizations to master the complexity of Microsoft M365. Through robust security and precise governance, we help ensure that our client’s e
+
+  145672  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  A R Cash Application Analyst
+  About Spectrum Vascular Spectrum Vascular is an innovative medical device company focused on vascular access and medication management. Our mission is to improve the lives of patients worldwide by providing caregivers with high quality, innovative products with exceptional customer service. We are a
+
+  29787  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'UNKNOWN': 0.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Reconciliation Analyst
+  About us: BVNK is the stablecoin-powered financial stack for enterprises. We're now part of Mastercard, and together we're building a network for every form of money – one that delivers more reach, more capability and more choice. We enable businesses to build financial products, unlock new markets,
+
+  62822  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Program Financial and Governance Reporting Analyst
+  Are you a data-driven professional who thrives in fast-paced environments and excels at transforming complex financial data into clear executive insights? Do you want to work with global financial institutions using the latest Microsoft tools and automation technologies? If so, then you might be Fiv
+
+  19675  predicted UNKNOWN, Jev IN {'OUT': 0.1, 'UNKNOWN': 0.0, 'IN': 0.9}  (DOMAIN_AMBIGUITY)
+  Mission Engineer Overland Park KS
+  Join Axon and be a Force for Good. At Axon, we’re on a mission to Protect Life. We’re explorers, pursuing society’s most critical safety and justice issues with our ecosystem of devices and cloud software. Like our products, we work better together. We connect with candor and care, seeking out diver
+
+  17205  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.02, 'IN': 0.08, 'OUT': 0.9}  (DOMAIN_AMBIGUITY)
+  Architect
+  Astera Labs (NASDAQ: ALAB) provides rack-scale AI infrastructure through purpose-built connectivity solutions. By collaborating with hyperscalers and ecosystem partners, Astera Labs enables organizations to unlock the full potential of modern AI. Astera Labs’ Intelligent Connectivity Platform integr
+
+  107537  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Analyst FP&A
+  Senior Analyst, FP&A Nurix Therapeutics is a clinical stage biopharmaceutical company focused on the discovery, development, and commercialization of targeted protein degradation medicines, the next frontier in innovative drug design aimed at improving treatment options for patients with cancer and 
+
+  40965  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 1.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  People Business Partner Product Engineering
+  CoreWeave is The Essential Cloud for AI . Built for pioneers by pioneers, CoreWeave delivers a platform of technology, tools, and teams that enables innovators to build and scale AI with confidence. Trusted by leading AI labs, startups, and global enterprises, CoreWeave combines superior infrastruct
+
+  165437  predicted UNKNOWN, Jev OUT {'IN': 0.01, 'OUT': 0.99, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Solutions Consultant
+  About Upshop Upshop is the market leader in Total Store Operations solutions for the Grocery and C-Store markets. We offer an AI-powered, SaaS platform connecting Fresh, Center, eCommerce, and DSD department operations to deliver a simplified, smarter, more connected store experience. Customers runn
+
+  13772  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 0.88, 'IN': 0.12}  (DOMAIN_AMBIGUITY)
+  Vice President Solution Engineering
+  Apiphani is a technology-enabled managed services company dedicated to redefining what it means to support mission-critical enterprise workloads. We’re a small but rapidly growing company, which means there’s lots of room for growth and learning opportunities abound! Apiphani is dedicated to creatin
+
+  66046  predicted UNKNOWN, Jev IN {'OUT': 0.13, 'IN': 0.87, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Associate Applied Scientist
+  What you’ll be part of Garner is on a mission to transform the U.S. healthcare system — and we’re the only proven player doing exactly that. We partner with employers to redesign how healthcare works: applying 550+ proprietary clinical metrics across 80+ specialties to a dataset of 320M+ patients to
+
+  24108  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Regulatory Surveillance Analyst 2
+  About Behavox Behavox is shaping the future for how businesses harness their most important raw material - data. Our mission is bold: Organize enterprise data into actionable information that protects and promotes the business growth of multinational companies around the world. From managing enterpr
+
+  105184  predicted UNKNOWN, Jev IN {'IN': 0.6, 'OUT': 0.4, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  GTM Engineer
+  About Netcraft Netcraft is the global leader in cybercrime detection and disruption. We’re a trusted partner for three of the four largest companies in the world and many large governments. We've blocked over 225 million cyber-attacks to date, and we take down around 33% of the world's phishing atta
+
+  107823  predicted UNKNOWN, Jev IN {'OUT': 0.24, 'UNKNOWN': 0.0, 'IN': 0.76}  (DOMAIN_AMBIGUITY)
+  Support Engineer
+  Obsidian Security is the leading SaaS security platform, trusted by global enterprises like Snowflake, T-Mobile, and Algolia. We protect 200+ organizations across North America, Europe, the Middle East, Southeast Asia, Australia, and New Zealand, including many of the world’s largest Fortune 1000 an
+
+  49357  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'UNKNOWN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Chargé e de comptes Opticien Audioprothésiste
+  Vos missions dans l'équipe commerciale Rejoignez-nous pour relever le défi passionnant de révolutionner le secteur de l'optique et de l'audition ! Vous aurez l'opportunité d'intégrer une véritable école de vente et de satisfaction client où le travail d'équipe est une valeur fondamentale. Le secteur
+
+  18002  predicted UNKNOWN, Jev IN {'UNKNOWN': 0.01, 'IN': 0.67, 'OUT': 0.32}  (DOMAIN_AMBIGUITY)
+  Solution Consultant
+  Atomicwork is on a mission to transform the digital workplace experience by uniting people, processes, and platforms through AI automation. Our team is building a modern service management platform that enables growing businesses to reduce operational complexity and drive business success. We’re loo
+
+  104084  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 1.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Scientist IVD Product Development
+  Natera is a global leader in cell-free DNA testing. We measure fetal, tumor, or donor cfDNA at the molecular level to help inform personalized health care decisions with a non-invasive test. We are looking for a highly motivated Scientist with a strong focus on process optimization and product verif
+
+  19556  predicted UNKNOWN, Jev IN {'IN': 0.89, 'UNKNOWN': 0.0, 'OUT': 0.11}  (DOMAIN_AMBIGUITY)
+  Copy of Mission Engineer Chicago
+  Join Axon and be a Force for Good. At Axon, we’re on a mission to Protect Life. We’re explorers, pursuing society’s most critical safety and justice issues with our ecosystem of devices and cloud software. Like our products, we work better together. We connect with candor and care, seeking out diver
+
+  115308  predicted UNKNOWN, Jev OUT {'OUT': 0.99, 'IN': 0.01, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Solutions Consultant
+  Company Mission Payhawk is a leading global spend management solution for scaling businesses. Headquartered in London and combining company cards, reimbursable expenses and accounts payable into a single product; its future-facing technology enables finance teams to control and automate company spen
+
+  1903  predicted UNKNOWN, Jev IN {'OUT': 0.16, 'IN': 0.84, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Pega Developer LSA
+  At Accenture Federal Services, nothing matters more than helping the US federal government make the nation stronger and safer and life better for people. Our 13,000+ people are united in a shared purpose to pursue the limitless potential of technology and ingenuity for clients across defense, nation
+
+  68262  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'OUT': 1.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Credentialing Analyst I
+  Role Summary: GHX India seeks a trustworthy, highly motivated and detail-oriented individual. The Credentialing Analyst will be primarily responsible for analyzing and processing healthcare documents submitted by vendor representatives for registration. Responsibilities: Reports to Manager/Superviso
+
+  74369  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.24, 'OUT': 0.76}  (DOMAIN_AMBIGUITY)
+  Solutions Engineer Enterprise East Pre Sales
+  About Hightouch Hightouch is an Agentic Marketing Platform powered by the industry-leading Composable CDP. With complete brand context, customer data, and performance history in one place, every marketer finally has the power to build and ship end-to-end campaigns themselves. Teams move faster, stay
+
+  157746  predicted UNKNOWN, Jev IN {'IN': 0.71, 'OUT': 0.28, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Staff Field Application Engineer
+  Tenstorrent is leading the industry on cutting-edge AI technology, revolutionizing performance expectations, ease of use, and cost efficiency. With AI redefining the computing paradigm, solutions must evolve to unify innovations in software models, compilers, platforms, networking, and semiconductor
+
+  62155  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Technical Revenue Analyst
+  Figma is growing our team of passionate creatives and builders on a mission to make design accessible to all. Figma’s platform helps teams bring ideas to life—whether you're brainstorming, creating a prototype, translating designs into code, or iterating with AI. From idea to product, Figma empowers
+
+  137916  predicted UNKNOWN, Jev OUT {'OUT': 0.87, 'IN': 0.13, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Solutions Engineer Partner UK I
+  Our Purpose At SentinelOne, we are driven by a clear purpose: to give the advantage to those who secure our future. As AI reshapes how organizations build, operate, and innovate, the responsibility to protect them becomes more critical than ever. When you join SentinelOne, your work helps protect gl
+
+  89634  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'UNKNOWN': 0.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  Anti Financial Crime Onboarding Analyst
+  LHV Bank Limited is a UK-licensed bank operating across three core business segments: Retail Banking, SME Lending, and Banking Services (BaaS). The bank is a wholly owned subsidiary of LHV Group, a listed financial services provider headquartered in Estonia. LHV Bank operates under a full UK banking
+
+  155942  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Analyst FP&A
+  We are looking to bring on a Sr. Analyst, FP&A for this role. This individual will be responsible for partnering cross-functionally within a fast-moving technology company and its senior management to build annual budgets, manage forecasts, and provide decision support through financial analyses to 
+
+  178128  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Revenue Analyst
+  Analyst - Revenue Accounting Essential Responsibilities 2 - 4 years of experience in US GAAP Revenue Accounting In depth knowledge of ASC 606 concepts Hands-on experience working on revenue assurance (preferably for an IT / ITES company) in a US public company SOX environment Engage in objective ana
+
+  89221  predicted UNKNOWN, Jev IN {'UNKNOWN': 0.0, 'OUT': 0.12, 'IN': 0.88}  (DOMAIN_AMBIGUITY)
+  GTM Engineer
+  Levanta is the creator affiliate platform built for modern e-commerce. We connect brands, creators, publishers, and marketplaces through a single platform for creator discovery, activation, partnership management, payments, and cross-channel performance measurement. Through our Creator Marketplace a
+
+  58917  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.02, 'OUT': 0.98}  (DOMAIN_AMBIGUITY)
+  Deal Desk Analyst 6 Month Fixed Term
+  The Role You'll help eliminate quoting backlogs and drive high-volume, complex deal execution as Everlaw scales through a critical capacity surge. Acting as a strategic bridge between Sales, Customer Success, Finance, and Legal, you will manage end-to-end quoting and queue triage to ensure deal stru
+
+  74377  predicted UNKNOWN, Jev OUT {'UNKNOWN': 0.0, 'IN': 0.24, 'OUT': 0.76}  (DOMAIN_AMBIGUITY)
+  Solutions Engineer Mid Market West Pre Sales
+  About Hightouch Hightouch is an Agentic Marketing Platform powered by the industry-leading Composable CDP. With complete brand context, customer data, and performance history in one place, every marketer finally has the power to build and ship end-to-end campaigns themselves. Teams move faster, stay
+
+  100744  predicted UNKNOWN, Jev IN {'IN': 0.78, 'OUT': 0.22, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Manager Technical Services Engineering
+  Technical Services has over 500 team members in offices spanning the entire globe. The team operates out of 16 locations including offices in New York City, Toronto, Austin, Palo Alto, Vancouver, Sydney, Gurgaon (India), Tel Aviv, and Dublin. Outstanding customer satisfaction is achieved utilizing a
+
+  18555  predicted UNKNOWN, Jev OUT {'OUT': 1.0, 'UNKNOWN': 0.0, 'IN': 0.0}  (DOMAIN_AMBIGUITY)
+  FP&A Revenue Analyst LATAM
+  Who We Are Authentic Brands Group (Authentic) is a global brand and entertainment platform that owns and invests in iconic intellectual property and cultural assets. It accelerates brands through a set of specialized businesses that combine powerful storytelling, premium content, unforgettable live 
+
+  1860  predicted UNKNOWN, Jev IN {'IN': 1.0, 'UNKNOWN': 0.0, 'OUT': 0.0}  (DOMAIN_AMBIGUITY)
+  MS Power Apps Developer
+  At Accenture Federal Services, nothing matters more than helping the US federal government make the nation stronger and safer and life better for people. Our 13,000+ people are united in a shared purpose to pursue the limitless potential of technology and ingenuity for clients across defense, nation
+
+  155946  predicted UNKNOWN, Jev OUT {'IN': 0.14, 'OUT': 0.86, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Director Solutions Engineering Americas
+  As the Senior Director, Head of Americas Solution Engineering, you will be the strategic technical partner driving net-new logos and ARR expansion across North America (NA) and Latin America (LATAM). Working in lockstep partnership with the SVP of Sales for the Americas, you will lead, scale, and in
+
+  50731  predicted UNKNOWN, Jev OUT {'IN': 0.04, 'OUT': 0.96, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Product Analyst
+  About dunnhumby dunnhumby is the global leader in Customer Data Science, helping the world's most ambitious retailers and brands put the customer at the heart of every decision. With nearly 3,000 experts across Europe, Asia, Africa and the Americas, we partner with iconic businesses like Tesco, Coca
+
+  88925  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  BSA AML Analyst
+  About LeafLink LeafLink is the largest unified B2B cannabis platform, providing licensed cannabis businesses a suite of tools to manage their business more effectively, sell or order from their favorite brands and accelerate growth. We are one platform, one solution and we’re defining the way thousa
+
+  149513  predicted UNKNOWN, Jev OUT {'IN': 0.0, 'UNKNOWN': 0.0, 'OUT': 1.0}  (DOMAIN_AMBIGUITY)
+  Controllership Analyst
+  SumUp enables businesses to get paid easily, process orders quickly, sell online instantly and manage their money more efficiently. We create the tools businesses need to make their business and their customer experience thrive! You will be part of SumUp's Brazil Controlling team, sitting at the int
+
+Jev has cost $0.4537 over every run, of the $4.00 limit
