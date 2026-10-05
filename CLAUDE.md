@@ -15,3 +15,7 @@ Single-context: `CONTEXT.md` and `docs/adr/` at the repo root. See `docs/agents/
 ### Code layout
 
 Packages split into `storage/` and `workers/`, and every class is named by its role (`Run`, `Rule`, `Store`, …). See `docs/agents/code-layout.md`.
+
+### Rule loops
+
+An issue whose body has a `## Loop` section is worked in rounds by two sessions: an implementer (`/mattpocock-skills:implement #N`) and a reviewer (`/review-round #N`). Read `docs/agents/rule-loop.md` before working such an issue in either role.
