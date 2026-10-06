@@ -44,7 +44,8 @@ spans each `POST`. Every entity a run touches stays managed, and every auto-flus
 all of them, so each board or batch costs more than the one before. The thread dumps sat in
 Hibernate's `DirtyHelper.findDirty`. Part of cleaning's time is new work: it now cleans and splits
 every description, where on 2026-09-20 it cleaned titles alone in 54s. The figures above are what
-the code as committed in `7f8c46a` does, and are re-timed once #50 lands.
+the code as committed in `7f8c46a` does. With #50 in, cleaning takes about 4m 15s instead:
+`2026-10-cleaning-pace.md`.
 
 ## Boards that answered 404
 
