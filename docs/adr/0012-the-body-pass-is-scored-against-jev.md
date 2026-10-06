@@ -32,8 +32,11 @@ cleaning run that cuts them is reported, not gated.
 
 - Jev reads the whole body criterion (`docs/engineering-role-body-criterion.md`), the title,
   the reason the title stage left it undecided (`domain_ambiguity` or `scope_ambiguity`, since
-  2026-10-04: the body pass exists to settle that doubt), and the **Cleaned Description**, exported from the application's own `DescriptionCleaningRule`, so a
-  disagreement between rule and label is never a disagreement about the input.
+  2026-10-04: the body pass exists to settle that doubt), and the **Cleaned Description**, exported from what the application's own cleaning made of it,
+  since round 4 the stored segments one a line, the same the body pass reads, so a
+  disagreement between rule and label is never a disagreement about the input. Boilerplate is
+  exported marked `> `; the body pass does not read it, since it is the company's text, not the
+  role's.
 - It answers one Choice question in the three states, `IN`, `OUT` or `UNKNOWN`, and the
   whole probability distribution is kept. `UNKNOWN` is a legitimate label: the body pass's
   unknown stratum is scored against rows the labeller could not decide either.

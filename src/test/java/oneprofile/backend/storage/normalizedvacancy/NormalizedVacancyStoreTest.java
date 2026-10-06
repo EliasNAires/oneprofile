@@ -209,8 +209,8 @@ class NormalizedVacancyStoreTest {
 		this.normalized.recordBodyDecisions(Map.of(second, ClassificationStateEnum.IN));
 
 		assertThat(this.normalized.pileAfter(0, 10)).containsExactly(
-				new PileVacancy(first, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "Ship payments.", List.of()),
-				new PileVacancy(second, "Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, "Ship payments.", List.of()));
+				new PileVacancy(first, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "en", List.of()),
+				new PileVacancy(second, "Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, "en", List.of()));
 		assertThat(this.normalized.pileAfter(first, 10)).extracting(PileVacancy::vacancyId).containsExactly(second);
 	}
 
@@ -258,6 +258,25 @@ class NormalizedVacancyStoreTest {
 			.containsExactlyInAnyOrder(
 					tuple(first, Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY)),
 					tuple(second, Classification.in()));
+	}
+
+	@Test
+	void recordsThatTheBodySkippedAVacancyForItsLanguageAndKeepsReadingItWithThePile() {
+		long vacancyId = heldTitles().getFirst().id();
+		this.normalized.recordCleanedVacancies(Map.of(vacancyId, cleaned("Engineer", Set.of())));
+		this.normalized.recordClassifications(
+				Map.of(vacancyId, Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY)));
+
+		assertThat(this.normalized.recordUnsupportedLanguage(Set.of(vacancyId))).isEqualTo(1);
+		this.entityManager.flush();
+		this.entityManager.clear();
+
+		assertThat(this.repository.findAll()).singleElement()
+			.extracting(NormalizedVacancyEntity::classification)
+			.isEqualTo(Classification.unsupportedLanguage());
+		assertThat(this.normalized.pileAfter(0, 10)).extracting(PileVacancy::vacancyId, PileVacancy::titleReason)
+			.containsExactly(tuple(vacancyId, UnknownReasonEnum.UNSUPPORTED_LANGUAGE));
+		assertThat(this.normalized.resetPile()).isZero();
 	}
 
 	@Test

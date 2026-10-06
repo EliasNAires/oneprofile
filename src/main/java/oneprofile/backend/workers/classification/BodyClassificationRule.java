@@ -1,11 +1,12 @@
 package oneprofile.backend.workers.classification;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Predicate;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum;
+import oneprofile.backend.storage.normalizedvacancy.Segment;
 import oneprofile.backend.storage.normalizedvacancy.UnknownReasonEnum;
 import org.springframework.stereotype.Component;
 
@@ -26,31 +27,18 @@ import org.springframework.stereotype.Component;
  * open, and it is unknown. A word that could be software or not — automation, simulation, embedded
  * — opens no such doubt when it is not the role's work.
  * <p>
- * A flattened description keeps no structure but its punctuation and the capital that starts a list
- * item, so whether a mention is asked for, listed as a plus or merely said of the company is read
- * from the sentence or list item around it, and from the heading the list sits under. The whole of
- * it is plain matching over the lowercased description, each pattern tried only around the literal
- * words it needs, which keeps a pass over the pile inside the time ADR-0012 allows it.
+ * It reads the description as cleaning cut it into segments, so whether a mention is asked for,
+ * listed as a plus or merely said of the company is read from the segment it is in, the sentence,
+ * list item or heading, and from the heading that segment sits under. The board's boilerplate is the
+ * company's text, not the role's, and is not read. The whole of it is plain matching over the
+ * lowercased segments, each pattern tried only on a segment holding the literal words it needs,
+ * which keeps a pass over the pile inside the time ADR-0012 allows it.
  */
 @Component
 public class BodyClassificationRule {
 
 	/** The longest descriptions in the pile that describe no work are placeholders and a link. */
 	private static final int SHORTEST_DESCRIPTION_OF_WORK = 200;
-
-	/**
-	 * Where a list flattened without punctuation starts a new item: a word that opens a requirement
-	 * or a heading, capitalized or a number of years, right after a lowercase word, a digit or a closing
-	 * parenthesis. It is marked with {@value #ITEM}.
-	 */
-	private static final Pattern ITEM_START = Pattern.compile("(Experience|Strong|Excellent"
-			+ "|Proven|Ability|Knowledge|Familiarity|Proficiency|Proficient|Understanding|Hands-on|Bachelor|Master|Degree"
-			+ "|BS|BA|Minimum|Must|Solid|Demonstrated|Working|Good|Deep|Advanced|Fluent|Fluency|Comfortable|Exposure"
-			+ "|Background|At least|Nice|Bonus|Preferred|Desired|Requirements|Qualifications|Responsibilities|You|What"
-			+ "|\\d+\\+? years)\\b");
-
-	/** What marks the start of a list item that had no punctuation before it. */
-	private static final char ITEM = '¶';
 
 	/**
 	 * What a post says when it hires nobody (Q1): a pipeline or general application, said of the
@@ -432,37 +420,36 @@ public class BodyClassificationRule {
 	private static final Pattern PLUS = Pattern.compile("\\b(an? (\\w+ )?plus|nice[- ]to[- ]haves?|bonus points|an? bonus"
 			+ "|any history of|un plus|un atout|von vorteil|wünschenswert|deseable|valorable|diferencial)\\b");
 
-	/** A heading that makes every item under it a plus, read where it opens a list item. */
+	/** A heading that makes every item under it a plus. */
 	private static final Pattern PLUS_HEADING = Pattern.compile("\\s*(nice[- ]to[- ]haves?|bonus points|pluses"
 			+ "|desirable|desired (skills|qualifications|experience))\\b");
 
 	private static final Pattern PREFERRED = Pattern.compile("\\bpreferred\\b");
 
-	/** A heading that makes every item under it preferred, read where it opens a list item. */
+	/** A heading that makes every item under it preferred. */
 	private static final Pattern PREFERRED_HEADING = Pattern.compile("\\s*preferred (qualifications|skills|experience"
 			+ "|requirements)\\b");
-
-	/** How many characters before a mention are read with it, at most. */
-	private static final int CHARACTERS_BEFORE = 150;
-
-	/** How many characters after a mention are read with it, at most. */
-	private static final int CHARACTERS_AFTER = 80;
-
-	/** How many characters before a list item are read for the heading it sits under, at most. */
-	private static final int CHARACTERS_OF_HEADING = 150;
 
 	/**
 	 * Decides one vacancy of the pile.
 	 * @param cleanedTitle its cleaned title
 	 * @param titleReason why its title was left unknown, which says what doubt the description settles
-	 * @param cleanedDescription its description once cleaned, empty if it has none
+	 * @param segments its description as cleaning cut it, none if it has none
 	 * @return {@code IN} or {@code OUT} where the description settles it, {@code UNKNOWN} otherwise
 	 */
-	public ClassificationStateEnum classify(String cleanedTitle, UnknownReasonEnum titleReason, String cleanedDescription) {
-		if (cleanedDescription.length() < SHORTEST_DESCRIPTION_OF_WORK) {
+	public ClassificationStateEnum classify(String cleanedTitle, UnknownReasonEnum titleReason,
+			List<Segment> segments) {
+		List<Around> description = new ArrayList<>(segments.size());
+		int length = 0;
+		for (Segment segment : segments) {
+			if (!segment.boilerplate()) {
+				description.add(Around.of(segment));
+				length += segment.text().length() + 1;
+			}
+		}
+		if (length < SHORTEST_DESCRIPTION_OF_WORK) {
 			return ClassificationStateEnum.UNKNOWN;
 		}
-		String description = markItems(cleanedDescription).toLowerCase(Locale.ROOT);
 		if (anyMention(description, NO_VACANCY, (around) -> true)
 				|| anyMention(description, CARRIES_A_QUOTA, (around) -> true)
 				|| requiresExpertiseOutsideSoftware(description)) {
@@ -480,38 +467,10 @@ public class BodyClassificationRule {
 				&& anyMention(description, WORK_EITHER_WAY,
 						(around) -> !FINANCIAL_CONTROLS.matcher(around.item()).find()
 								&& !REQUIREMENT.matcher(around.item()).find())
-				&& !OTHER_DOMAIN.matcher(description).find()) {
+				&& description.stream().noneMatch((around) -> OTHER_DOMAIN.matcher(around.item()).find())) {
 			return ClassificationStateEnum.UNKNOWN;
 		}
 		return ClassificationStateEnum.OUT;
-	}
-
-	/**
-	 * Marks with {@value #ITEM} where a list item starts with no punctuation before it. Only the
-	 * spaces where an item can start are tried, which keeps it a single quick pass.
-	 */
-	private static String markItems(String description) {
-		StringBuilder marked = new StringBuilder(description.length());
-		Matcher start = ITEM_START.matcher(description);
-		for (int i = 0; i < description.length(); i++) {
-			char c = description.charAt(i);
-			marked.append(c);
-			if (c == ' ' && mayStartAnItem(description, i) && start.region(i + 1, description.length()).lookingAt()) {
-				marked.append(ITEM).append(' ');
-			}
-		}
-		return marked.toString();
-	}
-
-	/** Whether the space at an index sits between a lowercase word, a digit or a ")" and a capital or a digit. */
-	private static boolean mayStartAnItem(String description, int space) {
-		if (space == 0 || space + 1 == description.length()) {
-			return false;
-		}
-		char before = description.charAt(space - 1);
-		char after = description.charAt(space + 1);
-		return (Character.isLowerCase(before) || Character.isDigit(before) || before == ')')
-				&& (Character.isUpperCase(after) || Character.isDigit(after));
 	}
 
 	/**
@@ -519,7 +478,7 @@ public class BodyClassificationRule {
 	 * prefers or claims for the company is no requirement, nor is a field's degree offered beside a
 	 * computing one, nor a science offered among the fields of a quantitative list.
 	 */
-	private static boolean requiresExpertiseOutsideSoftware(String description) {
+	private static boolean requiresExpertiseOutsideSoftware(List<Around> description) {
 		return anyMention(description, FIELD_DEGREE,
 				(around) -> required(around) && !COMPUTING_FIELD.matcher(around.item()).find())
 				|| anyMention(description, SCIENCE_DEGREE,
@@ -532,7 +491,8 @@ public class BodyClassificationRule {
 	}
 
 	private static boolean required(Around around) {
-		return !aPlus(around) && !PREFERRED.matcher(around.item()).find() && !opensAnItem(PREFERRED_HEADING, around);
+		return !aPlus(around) && !PREFERRED.matcher(around.item()).find()
+				&& !PREFERRED_HEADING.matcher(around.heading()).lookingAt();
 	}
 
 	/**
@@ -540,20 +500,7 @@ public class BodyClassificationRule {
 	 * does. A plus said of the item before it is not said of this one.
 	 */
 	private static boolean aPlus(Around around) {
-		return PLUS.matcher(around.item()).find() || opensAnItem(PLUS_HEADING, around);
-	}
-
-	/**
-	 * Whether a heading opens one of the sentence or list items before an item: what a list sits
-	 * under, rather than what the end of an earlier item says of that item.
-	 */
-	private static boolean opensAnItem(Pattern heading, Around around) {
-		for (String item : around.heading().split(String.valueOf(ITEM))) {
-			if (heading.matcher(item).lookingAt()) {
-				return true;
-			}
-		}
-		return false;
+		return PLUS.matcher(around.item()).find() || PLUS_HEADING.matcher(around.heading()).lookingAt();
 	}
 
 	/**
@@ -561,7 +508,7 @@ public class BodyClassificationRule {
 	 * written to analyse, model or simulate the product, its software tests or its software's
 	 * architecture.
 	 */
-	private static boolean writesTheProductsSoftware(String description) {
+	private static boolean writesTheProductsSoftware(List<Around> description) {
 		return anyMention(description, CODE_WORK,
 				(around) -> ownCodeWork(around) && !ANALYSIS.matcher(around.item()).find())
 				|| anyMention(description, PRODUCT_SOFTWARE, (around) -> !aPlus(around) && !companyOnly(around.item())
@@ -572,7 +519,7 @@ public class BodyClassificationRule {
 	 * Whether the description requires or prefers a software background, or has the role do software
 	 * work: code, engineer-facing artifacts, low-code building or leading software engineers.
 	 */
-	private static boolean statesASoftwareBackground(String description) {
+	private static boolean statesASoftwareBackground(List<Around> description) {
 		return anyMention(description, CODE_WORK, BodyClassificationRule::ownCodeWork)
 				|| anyMention(description, FOREIGN_CODE_WORK,
 						(around) -> ownCodeWork(around) && !FOREIGN_DEGREE.matcher(around.item()).find())
@@ -632,90 +579,62 @@ public class BodyClassificationRule {
 		return OTHER_FIELD.matcher(item).find();
 	}
 
-	/** Whether any mention of a pattern is one that counts, read with the words around it. */
-	private static boolean anyMention(String description, Anchored mention, Predicate<Around> counts) {
-		for (String anchor : mention.anchors()) {
-			for (int at = description.indexOf(anchor); at >= 0; at = description.indexOf(anchor, at + 1)) {
-				if (at > 0 && Character.isLetterOrDigit(description.charAt(at - 1))) {
-					continue;
-				}
-				Matcher found = mention.pattern()
-					.matcher(description)
-					.region(Math.max(0, at - Anchored.REACH),
-							Math.min(description.length(), at + anchor.length() + Anchored.REACH))
-					.useTransparentBounds(true)
-					.useAnchoringBounds(false);
-				while (found.find()) {
-					if (counts.test(around(description, found.start(), found.end()))) {
-						return true;
-					}
-				}
+	/**
+	 * Whether any mention of a pattern is one that counts, read with the segment it is in. A segment is
+	 * searched only when it holds one of the pattern's anchors at the start of a word.
+	 */
+	private static boolean anyMention(List<Around> description, Anchored mention, Predicate<Around> counts) {
+		for (Around around : description) {
+			if (mention.anchoredIn(around.item()) && mention.pattern().matcher(around.item()).find()
+					&& counts.test(around)) {
+				return true;
 			}
 		}
 		return false;
 	}
 
 	/**
-	 * The sentence or list item around a span, and the heading before it. A flattened description
-	 * keeps no other boundary than its punctuation and the items marked where a capital starts one. A
-	 * list flattened with neither runs on for hundreds of words, so no more than
-	 * {@value #CHARACTERS_BEFORE} characters before the span and {@value #CHARACTERS_AFTER} after it
-	 * are read. The heading is what precedes the item in its sentence, across the items before it.
-	 */
-	private static Around around(String description, int start, int end) {
-		int from = start;
-		while (from > 0 && start - from < CHARACTERS_BEFORE && !endsASentence(description, from - 1)
-				&& description.charAt(from - 1) != ITEM) {
-			from--;
-		}
-		int to = end;
-		while (to < description.length() && to - end < CHARACTERS_AFTER && !endsASentence(description, to)
-				&& description.charAt(to) != ITEM) {
-			to++;
-		}
-		int heading = from;
-		while (heading > 0 && from - heading < CHARACTERS_OF_HEADING && !endsASentence(description, heading - 1)) {
-			heading--;
-		}
-		return new Around(description.substring(from, to), description.substring(heading, from));
-	}
-
-	/**
 	 * What a mention is read with.
 	 *
-	 * @param item the sentence or list item it is in
-	 * @param heading what precedes the item in its sentence, where a list's heading is
+	 * @param item the segment it is in, lowercased: a sentence, a list item or a heading
+	 * @param heading the heading that segment sits under, lowercased, empty if there is none
 	 */
 	private record Around(String item, String heading) {
+
+		static Around of(Segment segment) {
+			return new Around(segment.text().toLowerCase(Locale.ROOT),
+					(segment.under() != null) ? segment.under().toLowerCase(Locale.ROOT) : "");
+		}
+
 	}
 
 	/**
-	 * A pattern searched only around its anchors: literal words, one of which every match of it
-	 * contains at the start of a word. A description is scanned for the anchors and the pattern is tried only in a region
-	 * around each, since trying an alternation at every position of every description is what made a
-	 * pass over the pile slow.
+	 * A pattern searched only in a segment holding one of its anchors: literal words, one of which every
+	 * match of it contains at the start of a word. Segments are scanned for the anchors and the pattern
+	 * is tried only on those that hold one, since trying an alternation at every position of every
+	 * description is what made a pass over the pile slow.
 	 *
-	 * @param pattern what a mention looks like, over the lowercased description
+	 * @param pattern what a mention looks like, over a lowercased segment
 	 * @param anchors literal words one of which every match contains at the start of a word
 	 */
 	private record Anchored(Pattern pattern, List<String> anchors) {
-
-		/** How far from its anchor a match can reach, at most. */
-		static final int REACH = 150;
 
 		Anchored(String pattern, String... anchors) {
 			this(Pattern.compile(pattern), List.of(anchors));
 		}
 
-	}
-
-	private static boolean endsASentence(String description, int index) {
-		char c = description.charAt(index);
-		if (c == '•') {
-			return true;
+		/** Whether a segment holds one of the anchors at the start of a word. */
+		boolean anchoredIn(String item) {
+			for (String anchor : this.anchors) {
+				for (int at = item.indexOf(anchor); at >= 0; at = item.indexOf(anchor, at + 1)) {
+					if (at == 0 || !Character.isLetterOrDigit(item.charAt(at - 1))) {
+						return true;
+					}
+				}
+			}
+			return false;
 		}
-		return (c == '.' || c == ';' || c == '!' || c == '?')
-				&& (index + 1 == description.length() || description.charAt(index + 1) == ' ');
+
 	}
 
 }

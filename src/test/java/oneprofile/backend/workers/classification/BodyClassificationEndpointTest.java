@@ -20,10 +20,10 @@ class BodyClassificationEndpointTest {
 
 	@Test
 	void reportsWhatTheBodyDecidedOfThePile() {
-		given(this.body.classifyPile()).willReturn(new BodyClassificationRun.Report(21456, 9000, 7000, 5456));
+		given(this.body.classifyPile()).willReturn(new BodyClassificationRun.Report(21246, 9000, 7000, 4519, 727));
 
 		assertThat(this.mvc.post().uri("/body-classifications")).hasStatusOk().bodyJson().isEqualTo("""
-				{"pile":21456,"in":9000,"out":7000,"unknown":5456}""");
+				{"pile":21246,"in":9000,"out":7000,"unknown":4519,"unsupportedLanguage":727}""");
 	}
 
 }

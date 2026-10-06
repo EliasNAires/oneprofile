@@ -28,6 +28,20 @@ public record Segment(SegmentKindEnum kind, @JsonInclude(Include.NON_NULL) Strin
 	private static final Pattern WORD = Pattern.compile("[\\p{L}\\p{N}](?:[\\p{L}\\p{N}'’.+#-]*[\\p{L}\\p{N}+#])?");
 
 	/**
+	 * Its text as the labeller reads it, marked the way the sweep marks what it read:
+	 * {@code # } for a heading, {@code - } for an item, and {@code > } before either for boilerplate.
+	 * @return its text with the marks that say what it is
+	 */
+	public String marked() {
+		String marked = switch (this.kind) {
+			case HEADING -> "# " + this.text;
+			case ITEM -> "- " + this.text;
+			case SENTENCE -> this.text;
+		};
+		return this.boilerplate ? "> " + marked : marked;
+	}
+
+	/**
 	 * Its tokens: the words of its text, lowercased. Derived rather than stored, because they are
 	 * quicker to read off the text than to read from the database.
 	 * @return its words, in the order they are written

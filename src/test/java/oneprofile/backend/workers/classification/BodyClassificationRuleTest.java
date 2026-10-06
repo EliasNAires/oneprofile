@@ -7,8 +7,13 @@ import static oneprofile.backend.storage.normalizedvacancy.UnknownReasonEnum.DOM
 import static oneprofile.backend.storage.normalizedvacancy.UnknownReasonEnum.SCOPE_AMBIGUITY;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
+import java.util.List;
 import oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum;
+import oneprofile.backend.storage.normalizedvacancy.Segment;
+import oneprofile.backend.storage.normalizedvacancy.SegmentKindEnum;
 import oneprofile.backend.storage.normalizedvacancy.UnknownReasonEnum;
+import oneprofile.backend.workers.cleaning.DescriptionSplittingRule;
 import org.junit.jupiter.api.Test;
 
 class BodyClassificationRuleTest {
@@ -21,6 +26,9 @@ class BodyClassificationRuleTest {
 	private static final String OFFER = " We offer a hybrid schedule, a learning budget and private health cover.";
 
 	private final BodyClassificationRule rule = new BodyClassificationRule();
+
+	/** What cuts the descriptions written here as one line, the way cleaning cuts a flat one. */
+	private final DescriptionSplittingRule splitting = new DescriptionSplittingRule();
 
 	@Test
 	void aRoleThatRequiresANamedProgrammingLanguageIsIn() {
@@ -651,8 +659,60 @@ class BodyClassificationRuleTest {
 			.isEqualTo(IN);
 	}
 
+	@Test
+	void aHeadingMakesEveryItemUnderItAPlusHoweverLongTheListBeforeIt() {
+		List<Segment> description = new ArrayList<>(duties());
+		description.add(heading("Nice to have"));
+		for (int i = 0; i < 6; i++) {
+			description.add(item("Nice to have", "A track record of presenting complex findings to senior leadership "
+					+ "and turning them into decisions the business acts on."));
+		}
+		description.add(item("Nice to have", "Experience with Python."));
+
+		assertThat(this.rule.classify("Data Analyst", SCOPE_AMBIGUITY, description)).isEqualTo(OUT);
+	}
+
+	@Test
+	void aMentionIsReadWithTheSegmentItIsInAndNotTheOneBeforeIt() {
+		List<Segment> description = new ArrayList<>(duties());
+		description.add(item("Requirements", "Advanced Excel or Looker"));
+		description.add(item("Requirements", "Python or SQL"));
+
+		assertThat(this.rule.classify("Data Analyst", SCOPE_AMBIGUITY, description)).isEqualTo(IN);
+	}
+
+	@Test
+	void theCompanysBoilerplateIsNotReadAsTheRoles() {
+		List<Segment> description = new ArrayList<>(duties());
+		description.add(new Segment(SegmentKindEnum.SENTENCE, null,
+				"Experience with Python is required for every engineer we hire.", true));
+
+		assertThat(this.rule.classify("Data Analyst", SCOPE_AMBIGUITY, description)).isEqualTo(OUT);
+	}
+
+	@Test
+	void aDescriptionMadeOnlyOfTheCompanysBoilerplateIsUnknown() {
+		List<Segment> description = duties().stream()
+			.map((segment) -> new Segment(segment.kind(), segment.under(), segment.text(), true))
+			.toList();
+
+		assertThat(this.rule.classify("Data Analyst", SCOPE_AMBIGUITY, description)).isEqualTo(UNKNOWN);
+	}
+
 	private ClassificationStateEnum classify(String title, UnknownReasonEnum reason, String description) {
-		return this.rule.classify(title, reason, description);
+		return this.rule.classify(title, reason, this.splitting.split(description));
+	}
+
+	private List<Segment> duties() {
+		return this.splitting.split(DUTIES.strip());
+	}
+
+	private static Segment heading(String text) {
+		return new Segment(SegmentKindEnum.HEADING, null, text, false);
+	}
+
+	private static Segment item(String under, String text) {
+		return new Segment(SegmentKindEnum.ITEM, under, text, false);
 	}
 
 }

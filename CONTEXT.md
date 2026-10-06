@@ -109,8 +109,8 @@ _Avoid_: normalization, scrubbing, preprocessing, sanitizing
 
 **Cleaned Description**:
 A vacancy's description with what is decoration rather than text taken out — emoji,
-pictographs, drawn symbols — and its spacing made even, one line per block. What the body pass
-reads, and what the labeller of the body pass reads (ADR-0012).
+pictographs, drawn symbols — and its spacing made even, one line per block. What cleaning cuts
+into segments, which the body pass and its labeller read (ADR-0012).
 _Avoid_: clean body, body text, stripped description
 
 **Boilerplate**:
@@ -175,7 +175,8 @@ _Avoid_: role family, category, discipline, job function, technical role
 **Classification State**:
 What classification answers about a vacancy: in, out, or unknown, with a reason when the title
 left it unknown, and the signal (title or body) that decided. A vacancy the body decides keeps
-its title's reason, which is what marks it as one the body pass read. See ADR-0008.
+its title's reason, which is what marks it as one the body pass read; one it skipped for its
+language carries `unsupported_language` instead. See ADR-0008.
 _Avoid_: verdict, flag, is_engineering, category
 
 **Function Head**:
@@ -222,7 +223,9 @@ _Avoid_: uncovered, unhandled, missing, not found
 **Pile**:
 Every vacancy the title left unknown with reason `domain_ambiguity` or `scope_ambiguity`, whatever
 the body pass has decided of it since: what the body pass reads, and what its labels are drawn
-from. Fixed while the title stage is frozen (ADR-0012).
+from. Those written in a language other than English or Spanish the body pass does not read: they
+stay unknown, with the reason `unsupported_language` in place of the title's. Fixed while the title
+stage is frozen (ADR-0012).
 _Avoid_: backlog, residue, unknowns, remainder
 
 **Labeller**:

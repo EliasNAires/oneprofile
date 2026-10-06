@@ -14,8 +14,9 @@ import java.util.List;
 import java.util.Map;
 import oneprofile.backend.storage.normalizedvacancy.NormalizedVacancyStore;
 import oneprofile.backend.storage.normalizedvacancy.PileVacancy;
+import oneprofile.backend.storage.normalizedvacancy.Segment;
+import oneprofile.backend.storage.normalizedvacancy.SegmentKindEnum;
 import oneprofile.backend.storage.normalizedvacancy.UnknownReasonEnum;
-import oneprofile.backend.workers.cleaning.DescriptionCleaningRule;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import tools.jackson.core.type.TypeReference;
@@ -31,18 +32,37 @@ class PileExportRunTest {
 	private Path directory;
 
 	@Test
-	void writesEveryVacancyOfThePileAsOneLineWithItsCleanedDescription() throws IOException {
-		holds(new PileVacancy(7, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "Build 🚀 APIs  in Go.", List.of()),
-				new PileVacancy(9, "Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, null, List.of()));
+	void writesEveryVacancyOfThePileAsOneLineWithItsDescriptionOneSegmentALine() throws IOException {
+		holds(new PileVacancy(7, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "en", List.of(
+				new Segment(SegmentKindEnum.SENTENCE, null, "We build payments.", true),
+				new Segment(SegmentKindEnum.HEADING, null, "Requirements", false),
+				new Segment(SegmentKindEnum.ITEM, "Requirements", "Build APIs in Go.", false),
+				new Segment(SegmentKindEnum.SENTENCE, "Requirements", "You will ship weekly.", false))),
+				new PileVacancy(9, "Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, null, null));
 		Path file = this.directory.resolve("pile.jsonl");
 
 		export(10).exportTo(file);
 
 		assertThat(lines(file)).containsExactly(
 				Map.of("vacancy_id", 7, "cleaned_title", "Engineer", "title_reason", "DOMAIN_AMBIGUITY",
-						"cleaned_description", "Build APIs in Go."),
+						"cleaned_description",
+						"> We build payments.\n# Requirements\n- Build APIs in Go.\nYou will ship weekly."),
 				Map.of("vacancy_id", 9, "cleaned_title", "Product Manager", "title_reason", "SCOPE_AMBIGUITY",
 						"cleaned_description", ""));
+	}
+
+	@Test
+	void leavesOutWhatTheBodyPassSkipsForItsLanguage() throws IOException {
+		holds(pile(1, "Construire des API."), new PileVacancy(2, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "fr",
+				segments("Construire des API.")), new PileVacancy(3, "Engineer",
+						UnknownReasonEnum.UNSUPPORTED_LANGUAGE, "de", segments("APIs bauen.")));
+		Path file = this.directory.resolve("pile.jsonl");
+
+		PileExportRun.Report report = export(10).exportTo(file);
+
+		assertThat(lines(file)).extracting((line) -> line.get("vacancy_id")).containsExactly(1);
+		assertThat(report.vacancies()).isEqualTo(1);
+		assertThat(report.unsupportedLanguage()).isEqualTo(2);
 	}
 
 	@Test
@@ -66,16 +86,20 @@ class PileExportRunTest {
 
 		PileExportRun.Report report = export(10).exportTo(this.directory.resolve("pile.jsonl"));
 
-		assertThat(report).isEqualTo(new PileExportRun.Report(this.directory.resolve("pile.jsonl").toString(), 20,
+		assertThat(report).isEqualTo(new PileExportRun.Report(this.directory.resolve("pile.jsonl").toString(), 20, 0,
 				420, 760, 105, 190));
 	}
 
 	private PileExportRun export(int batch) {
-		return new PileExportRun(new DescriptionCleaningRule(), this.normalized, this.json, batch);
+		return new PileExportRun(this.normalized, this.json, batch);
 	}
 
 	private static PileVacancy pile(long vacancyId, String description) {
-		return new PileVacancy(vacancyId, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, description, List.of());
+		return new PileVacancy(vacancyId, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "en", segments(description));
+	}
+
+	private static List<Segment> segments(String description) {
+		return List.of(new Segment(SegmentKindEnum.SENTENCE, null, description, false));
 	}
 
 	private void holds(PileVacancy... pile) {

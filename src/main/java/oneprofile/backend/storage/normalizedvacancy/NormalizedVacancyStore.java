@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.springframework.data.domain.Limit;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,20 +52,22 @@ public class NormalizedVacancyStore {
 	}
 
 	/**
-	 * The pile held after one vacancy id, in id order, each with its description and its
-	 * segments: the vacancies the body pass reads, walked batch by batch like the titles are.
+	 * The pile held after one vacancy id, in id order, each with its language and its segments: the
+	 * vacancies the body pass reads, walked batch by batch like the titles are. Those it skipped for
+	 * their language are read too, with the reason that says so.
 	 * @param after the vacancy id to read past, 0 to start at the first
 	 * @param batch how many to read at most
 	 * @return the pile's vacancies, empty once there are none left
 	 */
 	@Transactional(readOnly = true)
 	public List<PileVacancy> pileAfter(long after, int batch) {
-		return this.repository.pileAfter(Classification.PILE_REASONS, after, Limit.of(batch));
+		return this.repository.pileAfter(Classification.PILE_HELD_REASONS, after, Limit.of(batch));
 	}
 
 	/**
 	 * Puts the pile back to what the title stage left it, so the body pass can be run again without
-	 * the title pass: every vacancy of it unknown, decided by the title, with its reason kept.
+	 * the title pass: every vacancy of it unknown, decided by the title, with its reason kept. One the
+	 * body pass skipped for its language has lost its title's reason, and is left as it is.
 	 * @return how many vacancies the pile holds
 	 */
 	@Transactional
@@ -85,6 +88,19 @@ public class NormalizedVacancyStore {
 			normalized.decidedByBody(decided.get(normalized.vacancyId()));
 			recorded.add(normalized);
 		}
+		this.repository.saveAll(recorded);
+		return recorded.size();
+	}
+
+	/**
+	 * Records that the body pass skipped vacancies of the pile for the language they are written in.
+	 * @param skipped the vacancies it skipped
+	 * @return how many vacancies this recorded it for
+	 */
+	@Transactional
+	public int recordUnsupportedLanguage(Set<Long> skipped) {
+		List<NormalizedVacancyEntity> recorded = this.repository.findByVacancyIdIn(skipped);
+		recorded.forEach((normalized) -> normalized.classifiedAs(Classification.unsupportedLanguage()));
 		this.repository.saveAll(recorded);
 		return recorded.size();
 	}
