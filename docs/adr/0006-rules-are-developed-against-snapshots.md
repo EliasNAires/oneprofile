@@ -1,10 +1,10 @@
 # Rules are developed against snapshots on the development machine, not against production
 
-Status: accepted
+Status: accepted (amended 2026-10-06)
 
 Extraction and classification rules are built and measured against a snapshot — a frozen
 copy of the corpus held on the development machine — and never against the production
-server, which holds live data. A snapshot is archived rather than replaced.
+server, which holds live data. A snapshot is archived rather than deleted.
 
 Two snapshots are kept: the **raw corpus**, and the corpus **after classification**. The
 reason for a snapshot is that the input must be reproducible. Cleaning is a deterministic pure
@@ -13,6 +13,16 @@ reproduces its output exactly. Classification earns its own snapshot for a diffe
 is what the labelling attaches to, and what every later step reads. A label is a statement
 about a specific vacancy in a specific state, and if the population being labelled can shift
 under the labels, the measured accuracy stops meaning anything.
+
+## When a snapshot is superseded
+
+A re-sweep that changes ingestion, such as a reader that keeps more of what the ATS sends, cuts
+a new pair of snapshots, raw and after classification, and the new pair becomes what dev
+restores. The old pair moves to `~/oneprofile-snapshots/archive/` and is kept, because the
+measurements made against it name it. The re-sweep reads the same boards again, so the
+population moves with the market: whatever was measured against the old pair stays a statement
+about the old pair, and the next measurement starts a new baseline. Once production exists,
+this is the routine answer to drift.
 
 ## Considered options
 

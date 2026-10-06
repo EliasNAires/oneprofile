@@ -22,8 +22,9 @@ LABELS = REPO / "docs" / "measurements" / "body-labels-jev.jsonl"
 DRAWN = REPO / "docs" / "measurements" / "body-rounds-drawn.tsv"
 
 # The export the application writes (POST /pile-exports). It holds every description, so it lives
-# outside the repository, next to the snapshot it was exported from.
-PILE = Path.home() / "oneprofile-snapshots" / "pile-raw-2026-09-20.jsonl"
+# outside the repository, next to the snapshot it was exported from. This is round 3's, archived with
+# its snapshot; the pile of the 2026-10-06 snapshot is exported once the export reads segments (#46).
+PILE = Path.home() / "oneprofile-snapshots" / "archive" / "pile-raw-2026-09-20.jsonl"
 
 STATES = ("IN", "OUT", "UNKNOWN")
 

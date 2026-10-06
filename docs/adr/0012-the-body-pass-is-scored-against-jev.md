@@ -1,6 +1,6 @@
 # The body pass is scored against Jev's labels, made only for the rows a round draws
 
-Status: accepted (amended 2026-10-02, 2026-10-04)
+Status: accepted (amended 2026-10-02, 2026-10-04, 2026-10-06)
 
 The body pass of #11 is measured against labels, as the title rules were (ADR-0008), but a
 description is two orders of magnitude longer than a title, and a Claude Code session
@@ -12,6 +12,21 @@ The pile is every vacancy the title stage left `UNKNOWN` with reason `domain_amb
 `scope_ambiguity`: 21 456 rows once #35 closed. `unruled` rows are discarded (ADR-0008) and
 are never labelled. The pile is fixed because the title stage is frozen: the body pass never
 changes a title rule, and title gaps it finds are reported, not fixed.
+
+## The pile after the re-sweep (2026-10-06)
+
+#46 re-swept the corpus so descriptions keep their structure, and cut a new pair of snapshots
+(ADR-0006). The pile is **recomputed once**, from the new snapshot after classification, and
+is fixed from then on: 21 246 rows (11 272 `domain_ambiguity`, 9 974 `scope_ambiguity`) in
+`classified-2026-10-06.dump`, against 21 456 before. 727 of them are in a language other than
+English or Spanish and skip the body pass as `unsupported_language`. The re-sweep reads the
+market again, so the population moved; round 4's record is a **new baseline**, not comparable
+to round 3, and the ten-round cap keeps counting.
+
+From round 4 on, Jev reads the **segmented** description, one segment per line, for every row
+it labels. Labels already made stay valid and are never remade: each is a statement about the
+text it read. The 2-minute gate times the body pass alone, reading stored segments; the
+cleaning run that cuts them is reported, not gated.
 
 ## How the labels are made
 

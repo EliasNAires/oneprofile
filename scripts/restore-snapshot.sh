@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Puts a snapshot back into the development database, replacing whatever it holds.
 #
-#     scripts/restore-snapshot.sh ~/oneprofile-snapshots/raw-2026-09-19.dump
+#     scripts/restore-snapshot.sh ~/oneprofile-snapshots/classified-2026-10-06.dump
 
 source "$(dirname "$0")/lib.sh"
 

@@ -142,7 +142,8 @@ _Avoid_: dataset, database, sample, data
 
 **Snapshot**:
 The corpus frozen at one stage, so that a rule re-run later is re-run over identical input.
-Never replaced. Which snapshots exist, and why: ADR-0006.
+Never deleted: a newer one supersedes it and the old one is archived. Which snapshots exist,
+and why: ADR-0006.
 _Avoid_: backup, dump, export, copy, fixture
 
 **Cycle**:
