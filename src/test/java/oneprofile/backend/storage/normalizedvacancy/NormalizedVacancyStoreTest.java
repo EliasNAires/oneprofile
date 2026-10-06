@@ -12,7 +12,7 @@ import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.company.CompanyStore;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
 import oneprofile.backend.storage.vacancy.VacancyStore;
-import oneprofile.backend.storage.vacancy.VacancyTitle;
+import oneprofile.backend.storage.vacancy.VacancyText;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,8 +53,8 @@ class NormalizedVacancyStoreTest {
 	void holdsTheCleanedTitleAndEveryLevelItNames() {
 		long vacancyId = heldTitles().getFirst().id();
 
-		assertThat(this.normalized.recordCleanedTitles(
-				Map.of(vacancyId, new CleanedTitle("Backend Engineer", Set.of(SeniorityLevelEnum.SENIOR)))))
+		assertThat(this.normalized.recordCleanedVacancies(
+				Map.of(vacancyId, cleaned("Backend Engineer", Set.of(SeniorityLevelEnum.SENIOR)))))
 			.isEqualTo(1);
 
 		assertThat(this.repository.findAll()).singleElement().satisfies((held) -> {
@@ -68,8 +68,8 @@ class NormalizedVacancyStoreTest {
 	void holdsEveryLevelATitleNames() {
 		long vacancyId = heldTitles().getFirst().id();
 
-		this.normalized.recordCleanedTitles(Map.of(vacancyId,
-				new CleanedTitle("Engineer", Set.of(SeniorityLevelEnum.SENIOR, SeniorityLevelEnum.PRINCIPAL))));
+		this.normalized.recordCleanedVacancies(Map.of(vacancyId,
+				cleaned("Engineer", Set.of(SeniorityLevelEnum.SENIOR, SeniorityLevelEnum.PRINCIPAL))));
 
 		assertThat(this.repository.findAll()).singleElement()
 			.extracting(NormalizedVacancyEntity::titleSeniorities)
@@ -79,10 +79,10 @@ class NormalizedVacancyStoreTest {
 	@Test
 	void replacesWhatTheLastRunRecordedRatherThanAddingToIt() {
 		long vacancyId = heldTitles().getFirst().id();
-		this.normalized.recordCleanedTitles(
-				Map.of(vacancyId, new CleanedTitle("Engineer", Set.of(SeniorityLevelEnum.SENIOR))));
+		this.normalized.recordCleanedVacancies(
+				Map.of(vacancyId, cleaned("Engineer", Set.of(SeniorityLevelEnum.SENIOR))));
 
-		this.normalized.recordCleanedTitles(Map.of(vacancyId, new CleanedTitle("Backend Engineer", Set.of())));
+		this.normalized.recordCleanedVacancies(Map.of(vacancyId, cleaned("Backend Engineer", Set.of())));
 
 		assertThat(this.repository.findAll()).singleElement().satisfies((held) -> {
 			assertThat(held.cleanedTitle()).isEqualTo("Backend Engineer");
@@ -92,17 +92,17 @@ class NormalizedVacancyStoreTest {
 
 	@Test
 	void recordsOneRowPerVacancyOfABatch() {
-		Map<Long, CleanedTitle> batch = Map.of(heldTitles().get(0).id(), new CleanedTitle("Backend Engineer", Set.of()),
-				heldTitles().get(1).id(), new CleanedTitle("Frontend Engineer", Set.of()));
+		Map<Long, CleanedVacancy> batch = Map.of(heldTitles().get(0).id(), cleaned("Backend Engineer", Set.of()),
+				heldTitles().get(1).id(), cleaned("Frontend Engineer", Set.of()));
 
-		assertThat(this.normalized.recordCleanedTitles(batch)).isEqualTo(2);
+		assertThat(this.normalized.recordCleanedVacancies(batch)).isEqualTo(2);
 		assertThat(this.repository.count()).isEqualTo(2);
 	}
 
 	@Test
 	void letsGoOfWhatWasDerivedFromAVacancyThatHasLeftItsBoard() {
-		this.normalized.recordCleanedTitles(Map.of(heldTitles().getFirst().id(),
-				new CleanedTitle("Backend Engineer", Set.of(SeniorityLevelEnum.SENIOR))));
+		this.normalized.recordCleanedVacancies(Map.of(heldTitles().getFirst().id(),
+				cleaned("Backend Engineer", Set.of(SeniorityLevelEnum.SENIOR))));
 
 		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of());
 		this.entityManager.flush();
@@ -111,9 +111,40 @@ class NormalizedVacancyStoreTest {
 	}
 
 	@Test
+	void holdsTheSegmentsOfADescriptionForThePileToRead() {
+		long vacancyId = heldTitles().getFirst().id();
+		List<Segment> segments = List.of(new Segment(SegmentKindEnum.HEADING, null, "Requirements", false),
+				new Segment(SegmentKindEnum.ITEM, "Requirements", "5+ years of Java", false),
+				new Segment(SegmentKindEnum.SENTENCE, null, "We offer equity.", true));
+		this.normalized.recordCleanedVacancies(
+				Map.of(vacancyId, new CleanedVacancy(new CleanedTitle("Engineer", Set.of()), segments)));
+		this.normalized.recordClassifications(
+				Map.of(vacancyId, Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY)));
+
+		assertThat(this.normalized.pileAfter(0, 10)).singleElement()
+			.extracting(PileVacancy::descriptionSegments)
+			.isEqualTo(segments);
+	}
+
+	@Test
+	void writesEachSegmentWithOnlyTheFieldsItHas() {
+		long vacancyId = heldTitles().getFirst().id();
+		this.normalized.recordCleanedVacancies(Map.of(vacancyId,
+				new CleanedVacancy(new CleanedTitle("Engineer", Set.of()),
+						List.of(new Segment(SegmentKindEnum.HEADING, null, "Requirements", false),
+								new Segment(SegmentKindEnum.ITEM, "Requirements", "Java", true)))));
+		this.entityManager.flush();
+
+		assertThat(this.entityManager.getEntityManager()
+			.createNativeQuery("select description_segments::text from normalized_vacancy")
+			.getSingleResult()).isEqualTo("[{\"kind\": \"HEADING\", \"text\": \"Requirements\"}, "
+					+ "{\"kind\": \"ITEM\", \"text\": \"Java\", \"under\": \"Requirements\", \"boilerplate\": true}]");
+	}
+
+	@Test
 	void holdsWhatClassificationMadeOfACleanedTitle() {
 		long vacancyId = heldTitles().getFirst().id();
-		this.normalized.recordCleanedTitles(Map.of(vacancyId, new CleanedTitle("Backend Engineer", Set.of())));
+		this.normalized.recordCleanedVacancies(Map.of(vacancyId, cleaned("Backend Engineer", Set.of())));
 
 		assertThat(this.normalized.recordClassifications(Map.of(vacancyId, Classification.in()))).isEqualTo(1);
 
@@ -125,7 +156,7 @@ class NormalizedVacancyStoreTest {
 	@Test
 	void holdsWhyATitleWasLeftUndecided() {
 		long vacancyId = heldTitles().getFirst().id();
-		this.normalized.recordCleanedTitles(Map.of(vacancyId, new CleanedTitle("Engineer", Set.of())));
+		this.normalized.recordCleanedVacancies(Map.of(vacancyId, cleaned("Engineer", Set.of())));
 
 		this.normalized.recordClassifications(
 				Map.of(vacancyId, Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY)));
@@ -138,7 +169,7 @@ class NormalizedVacancyStoreTest {
 	@Test
 	void replacesWhatTheLastClassificationRunDecided() {
 		long vacancyId = heldTitles().getFirst().id();
-		this.normalized.recordCleanedTitles(Map.of(vacancyId, new CleanedTitle("Backend Engineer", Set.of())));
+		this.normalized.recordCleanedVacancies(Map.of(vacancyId, cleaned("Backend Engineer", Set.of())));
 		this.normalized.recordClassifications(Map.of(vacancyId, Classification.unknown(UnknownReasonEnum.UNRULED)));
 
 		this.normalized.recordClassifications(Map.of(vacancyId, Classification.in()));
@@ -158,7 +189,7 @@ class NormalizedVacancyStoreTest {
 	@Test
 	void recordsThatTheTitleDecided() {
 		long vacancyId = heldTitles().getFirst().id();
-		this.normalized.recordCleanedTitles(Map.of(vacancyId, new CleanedTitle("Backend Engineer", Set.of())));
+		this.normalized.recordCleanedVacancies(Map.of(vacancyId, cleaned("Backend Engineer", Set.of())));
 
 		this.normalized.recordClassifications(Map.of(vacancyId, Classification.in()));
 
@@ -171,15 +202,15 @@ class NormalizedVacancyStoreTest {
 	void readsThePileWhateverItsStateWithEachDescription() {
 		long first = heldTitles().get(0).id();
 		long second = heldTitles().get(1).id();
-		this.normalized.recordCleanedTitles(Map.of(first, new CleanedTitle("Engineer", Set.of()), second,
-				new CleanedTitle("Product Manager", Set.of())));
+		this.normalized.recordCleanedVacancies(Map.of(first, cleaned("Engineer", Set.of()), second,
+				cleaned("Product Manager", Set.of())));
 		this.normalized.recordClassifications(Map.of(first, Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY),
 				second, Classification.unknown(UnknownReasonEnum.SCOPE_AMBIGUITY)));
 		this.normalized.recordBodyDecisions(Map.of(second, ClassificationStateEnum.IN));
 
 		assertThat(this.normalized.pileAfter(0, 10)).containsExactly(
-				new PileVacancy(first, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "Ship payments."),
-				new PileVacancy(second, "Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, "Ship payments."));
+				new PileVacancy(first, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "Ship payments.", List.of()),
+				new PileVacancy(second, "Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, "Ship payments.", List.of()));
 		assertThat(this.normalized.pileAfter(first, 10)).extracting(PileVacancy::vacancyId).containsExactly(second);
 	}
 
@@ -187,8 +218,8 @@ class NormalizedVacancyStoreTest {
 	void leavesOutOfThePileWhatTheTitleDecidedOrNoRuleReached() {
 		long first = heldTitles().get(0).id();
 		long second = heldTitles().get(1).id();
-		this.normalized.recordCleanedTitles(Map.of(first, new CleanedTitle("Backend Engineer", Set.of()), second,
-				new CleanedTitle("Roboticist", Set.of())));
+		this.normalized.recordCleanedVacancies(Map.of(first, cleaned("Backend Engineer", Set.of()), second,
+				cleaned("Roboticist", Set.of())));
 		this.normalized.recordClassifications(
 				Map.of(first, Classification.in(), second, Classification.unknown(UnknownReasonEnum.UNRULED)));
 
@@ -198,7 +229,7 @@ class NormalizedVacancyStoreTest {
 	@Test
 	void recordsWhatTheBodyDecidedKeepingTheTitlesReason() {
 		long vacancyId = heldTitles().getFirst().id();
-		this.normalized.recordCleanedTitles(Map.of(vacancyId, new CleanedTitle("Engineer", Set.of())));
+		this.normalized.recordCleanedVacancies(Map.of(vacancyId, cleaned("Engineer", Set.of())));
 		this.normalized.recordClassifications(
 				Map.of(vacancyId, Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY)));
 
@@ -213,8 +244,8 @@ class NormalizedVacancyStoreTest {
 	void putsThePileBackToWhatTheTitleLeftItAndNothingElse() {
 		long first = heldTitles().get(0).id();
 		long second = heldTitles().get(1).id();
-		this.normalized.recordCleanedTitles(Map.of(first, new CleanedTitle("Engineer", Set.of()), second,
-				new CleanedTitle("Backend Engineer", Set.of())));
+		this.normalized.recordCleanedVacancies(Map.of(first, cleaned("Engineer", Set.of()), second,
+				cleaned("Backend Engineer", Set.of())));
 		this.normalized.recordClassifications(Map.of(first,
 				Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY), second, Classification.in()));
 		this.normalized.recordBodyDecisions(Map.of(first, ClassificationStateEnum.IN));
@@ -233,8 +264,8 @@ class NormalizedVacancyStoreTest {
 	void readsTheCleanedTitlesHeldAfterOneVacancyInIdOrder() {
 		long first = heldTitles().get(0).id();
 		long second = heldTitles().get(1).id();
-		this.normalized.recordCleanedTitles(Map.of(first, new CleanedTitle("Backend Engineer", Set.of()), second,
-				new CleanedTitle("Frontend Engineer", Set.of())));
+		this.normalized.recordCleanedVacancies(Map.of(first, cleaned("Backend Engineer", Set.of()), second,
+				cleaned("Frontend Engineer", Set.of())));
 
 		assertThat(this.normalized.cleanedTitlesAfter(0, 10)).containsExactly(
 				new NormalizedTitle(first, "Backend Engineer"), new NormalizedTitle(second, "Frontend Engineer"));
@@ -243,13 +274,17 @@ class NormalizedVacancyStoreTest {
 		assertThat(this.normalized.cleanedTitlesAfter(second, 10)).isEmpty();
 	}
 
-	private List<VacancyTitle> heldTitles() {
-		return this.vacancies.titlesAfter(0, 10);
+	private List<VacancyText> heldTitles() {
+		return this.vacancies.textsAfter(0, 10);
+	}
+
+	private static CleanedVacancy cleaned(String title, Set<SeniorityLevelEnum> titleSeniorities) {
+		return new CleanedVacancy(new CleanedTitle(title, titleSeniorities), List.of());
 	}
 
 	private PublishedVacancy published(long externalId) {
 		return new PublishedVacancy(externalId, "Senior Backend Engineer", "Remote - Americas", "Engineering",
-				"Ship payments.", "https://job-boards.greenhouse.io/stripe/jobs/" + externalId, null, null, null, null,
+				"Ship payments.", "en", "https://job-boards.greenhouse.io/stripe/jobs/" + externalId, null, null, null, null,
 				Instant.parse("2026-09-01T14:00:00Z"), Instant.parse("2026-09-18T16:30:00Z"));
 	}
 

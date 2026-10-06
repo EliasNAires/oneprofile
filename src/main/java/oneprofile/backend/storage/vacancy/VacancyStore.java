@@ -65,15 +65,15 @@ public class VacancyStore {
 	}
 
 	/**
-	 * The titles of the vacancies held after one id, in id order. A pass that derives facts from
-	 * titles walks the corpus with this, batch by batch, resuming from the last id it read.
+	 * The titles and descriptions of the vacancies held after one id, in id order. Cleaning walks
+	 * the corpus with this, batch by batch, resuming from the last id it read.
 	 * @param after the id to read past, 0 to start at the first vacancy
 	 * @param batch how many to read at most
-	 * @return their ids and titles, empty once there are none left
+	 * @return their ids, titles and descriptions, empty once there are none left
 	 */
 	@Transactional(readOnly = true)
-	public List<VacancyTitle> titlesAfter(long after, int batch) {
-		return this.repository.titlesAfter(after, Limit.of(batch));
+	public List<VacancyText> textsAfter(long after, int batch) {
+		return this.repository.textsAfter(after, Limit.of(batch));
 	}
 
 	/**

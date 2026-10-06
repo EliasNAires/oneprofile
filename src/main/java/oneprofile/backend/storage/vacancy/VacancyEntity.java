@@ -38,6 +38,8 @@ public class VacancyEntity {
 
 	private String description;
 
+	private String language;
+
 	private String url;
 
 	private Long payMinCents;
@@ -69,6 +71,7 @@ public class VacancyEntity {
 		this.location = published.location();
 		this.department = published.department();
 		this.description = published.description();
+		this.language = published.language();
 		this.url = published.url();
 		this.payMinCents = published.payMinCents();
 		this.payMaxCents = published.payMaxCents();
@@ -98,9 +101,14 @@ public class VacancyEntity {
 		return this.department;
 	}
 
-	/** Its body as plain text, or null if the board published none. */
+	/** Its description as marked lines of plain text, or null if the board published none. */
 	public String description() {
 		return this.description;
+	}
+
+	/** The language its board says it is written in, or null if the board said none. */
+	public String language() {
+		return this.language;
 	}
 
 	/** Where it is published. */

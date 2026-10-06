@@ -11,10 +11,18 @@ import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
 import oneprofile.backend.workers.UserAgent;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
+import org.jsoup.nodes.TextNode;
 import org.jsoup.parser.Parser;
+import org.jsoup.select.NodeTraversor;
+import org.jsoup.select.NodeVisitor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import tools.jackson.core.JacksonException;
@@ -120,24 +128,128 @@ public class GreenhouseVacancyReaderAdapter implements VacancyReaderPort {
 		JsonNode pay = opening.path("pay_input_ranges").path(0);
 		return new PublishedVacancy(opening.path("id").asLong(), text(opening.path("title")),
 				text(opening.path("location").path("name")), text(opening.path("departments").path(0).path("name")),
-				plainText(text(opening.path("content"))), text(opening.path("absolute_url")),
+				markedLines(text(opening.path("content"))), text(opening.path("language")),
+				text(opening.path("absolute_url")),
 				number(pay.path("min_cents")), number(pay.path("max_cents")), text(pay.path("currency_type")),
 				text(pay.path("title")), timestamp(opening.path("first_published")),
 				timestamp(opening.path("updated_at")));
 	}
 
 	/**
-	 * The description as readable text. Greenhouse escapes it twice over — its literal value starts
-	 * with {@code &lt;div} — so recovering the text takes two unescapes: one to get back the HTML,
-	 * and one for the entities of the text itself, since a {@code &nbsp;} of the original arrives as
-	 * {@code &amp;nbsp;}. The second is Jsoup's own, which decodes as it parses.
+	 * The description as marked lines, one per block of its HTML. Greenhouse escapes it twice over —
+	 * its literal value starts with {@code &lt;div} — so recovering the text takes two unescapes: one
+	 * to get back the HTML, and one for the entities of the text itself, since a {@code &nbsp;} of
+	 * the original arrives as {@code &amp;nbsp;}. The second is Jsoup's own, which decodes as it
+	 * parses.
 	 */
-	private static String plainText(String escapedHtml) {
+	private static String markedLines(String escapedHtml) {
 		if (escapedHtml == null || escapedHtml.isBlank()) {
 			return null;
 		}
-		String text = Jsoup.parse(Parser.unescapeEntities(escapedHtml, false)).text();
-		return text.isBlank() ? null : text;
+		Lines lines = new Lines();
+		NodeTraversor.traverse(lines, Jsoup.parse(Parser.unescapeEntities(escapedHtml, false)).body());
+		return lines.written();
+	}
+
+	/**
+	 * Walks the HTML of a description into lines. A block element starts and ends a line, so the
+	 * paragraphs, headings and list items the company wrote stay apart, and so does what a
+	 * {@code <br>} breaks. A line inside a list item is marked {@code - }, and a short one that is
+	 * a heading is marked {@code # }: inside a heading tag, or all bold, which is how most
+	 * descriptions head their sections. Every line of a block Greenhouse adds to each vacancy of a
+	 * board — the company's introduction, its pay transparency and its conclusion — is marked
+	 * {@code > }: its headings and lists are the company's rather than the role's. A {@code >} or
+	 * {@code #} the company typed at the start of a line is dropped, so that only these marks say
+	 * what a line is.
+	 */
+	private static final class Lines implements NodeVisitor {
+
+		private static final Set<String> BLOCKS = Set.of("address", "article", "aside", "blockquote", "dd", "div",
+				"dl", "dt", "figcaption", "figure", "footer", "h1", "h2", "h3", "h4", "h5", "h6", "header", "hr", "li",
+				"main", "nav", "ol", "p", "pre", "section", "table", "td", "th", "tr", "ul");
+
+		private static final Set<String> HEADING_TAGS = Set.of("h1", "h2", "h3", "h4", "h5", "h6");
+
+		/** Longer than this, a bold line or a heading tag holds prose rather than a heading. */
+		private static final int HEADING_LENGTH = 80;
+
+		private static final Set<String> BOLD_TAGS = Set.of("b", "strong");
+
+		private static final Set<String> BOILERPLATE = Set.of("content-intro", "content-pay-transparency",
+				"content-conclusion");
+
+		private static final Pattern WHITESPACE = Pattern.compile("[\\s\u00a0]+", Pattern.UNICODE_CHARACTER_CLASS);
+
+		private static final Pattern TYPED_MARK = Pattern.compile("^[>#]+\\s*");
+
+		private final List<String> lines = new ArrayList<>();
+
+		private final StringBuilder line = new StringBuilder();
+
+		/** The element the text of the line sits in, which says what the line is. */
+		private Element context;
+
+		/** Whether every word of the line so far is bold. */
+		private boolean bold = true;
+
+		@Override
+		public void head(Node node, int depth) {
+			if (node instanceof TextNode text) {
+				this.line.append(text.getWholeText());
+				this.context = (Element) text.parent();
+				this.bold &= isBlank(text.getWholeText()) || within((at) -> BOLD_TAGS.contains(at.normalName()));
+			}
+			else if (node instanceof Element element && (BLOCKS.contains(element.normalName()) || element.nameIs("br"))) {
+				end();
+			}
+		}
+
+		@Override
+		public void tail(Node node, int depth) {
+			if (node instanceof Element element && BLOCKS.contains(element.normalName())) {
+				end();
+			}
+		}
+
+		private void end() {
+			String text = TYPED_MARK.matcher(WHITESPACE.matcher(this.line).replaceAll(" ").trim()).replaceFirst("");
+			if (!text.isEmpty()) {
+				boolean item = within((at) -> at.nameIs("li"));
+				String marked = text;
+				if (!item && text.length() <= HEADING_LENGTH
+						&& (this.bold || within((at) -> HEADING_TAGS.contains(at.normalName())))) {
+					marked = "# " + text;
+				}
+				else if (item) {
+					marked = "- " + text;
+				}
+				boolean boilerplate = within((at) -> at.classNames().stream().anyMatch(BOILERPLATE::contains));
+				this.lines.add(boilerplate ? "> " + marked : marked);
+			}
+			this.line.setLength(0);
+			this.context = null;
+			this.bold = true;
+		}
+
+		/** Whether the text of the line sits in an element that is, or is inside, one of these. */
+		private boolean within(Predicate<Element> element) {
+			for (Element at = this.context; at != null; at = at.parent()) {
+				if (element.test(at)) {
+					return true;
+				}
+			}
+			return false;
+		}
+
+		private static boolean isBlank(String text) {
+			return WHITESPACE.matcher(text).replaceAll("").isEmpty();
+		}
+
+		String written() {
+			end();
+			return this.lines.isEmpty() ? null : String.join("\n", this.lines);
+		}
+
 	}
 
 	private static String text(JsonNode node) {

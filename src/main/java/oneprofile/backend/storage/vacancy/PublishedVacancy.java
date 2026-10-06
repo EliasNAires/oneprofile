@@ -10,7 +10,12 @@ import java.time.Instant;
  * @param title the title as the company wrote it
  * @param location the location as free text, such as "Remote - Americas"
  * @param department the department the opening belongs to, or null if the board named none
- * @param description the body of the opening as plain text, or null if it published none
+ * @param description the body of the opening as plain text, one line per paragraph, heading or list
+ * item, or null if it published none. A line may be marked with what its source said it was:
+ * {@code # } for a heading, {@code - } for a list item, and {@code > } before either for text the
+ * ATS adds to every vacancy of the board rather than the company writing it for this one
+ * @param language the language the board says the opening is written in, as an ISO 639-1 code, or
+ * null if it said none
  * @param url where the opening is published
  * @param payMinCents the bottom of the published pay range, or null if it published none
  * @param payMaxCents the top of the published pay range, or null if it published none
@@ -20,6 +25,6 @@ import java.time.Instant;
  * @param updatedAt when the opening was last changed
  */
 public record PublishedVacancy(long externalId, String title, String location, String department, String description,
-		String url, Long payMinCents, Long payMaxCents, String payCurrency, String payTitle, Instant firstPublishedAt,
-		Instant updatedAt) {
+		String language, String url, Long payMinCents, Long payMaxCents, String payCurrency, String payTitle,
+		Instant firstPublishedAt, Instant updatedAt) {
 }

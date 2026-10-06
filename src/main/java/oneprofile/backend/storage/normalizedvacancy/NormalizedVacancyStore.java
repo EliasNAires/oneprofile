@@ -51,8 +51,8 @@ public class NormalizedVacancyStore {
 	}
 
 	/**
-	 * The pile held after one vacancy id, in id order, each with its description: the vacancies the
-	 * body pass reads, walked batch by batch like the titles are.
+	 * The pile held after one vacancy id, in id order, each with its description and its
+	 * segments: the vacancies the body pass reads, walked batch by batch like the titles are.
 	 * @param after the vacancy id to read past, 0 to start at the first
 	 * @param batch how many to read at most
 	 * @return the pile's vacancies, empty once there are none left
@@ -90,21 +90,21 @@ public class NormalizedVacancyStore {
 	}
 
 	/**
-	 * Records what cleaning made of a batch of titles. A batch is one transaction, because a pass
+	 * Records what cleaning made of a batch of vacancies. A batch is one transaction, because a pass
 	 * over the corpus is too large to be one and is re-runnable anyway.
-	 * @param cleaned the cleaned title of each vacancy, by vacancy id
-	 * @return how many vacancies this recorded a cleaned title for
+	 * @param cleaned the cleaned title and description segments of each vacancy, by vacancy id
+	 * @return how many vacancies this recorded a cleaning for
 	 */
 	@Transactional
-	public int recordCleanedTitles(Map<Long, CleanedTitle> cleaned) {
+	public int recordCleanedVacancies(Map<Long, CleanedVacancy> cleaned) {
 		Map<Long, NormalizedVacancyEntity> held = new HashMap<>();
 		for (NormalizedVacancyEntity normalized : this.repository.findByVacancyIdIn(cleaned.keySet())) {
 			held.put(normalized.vacancyId(), normalized);
 		}
 		List<NormalizedVacancyEntity> recorded = new ArrayList<>(cleaned.size());
-		cleaned.forEach((vacancyId, title) -> {
+		cleaned.forEach((vacancyId, vacancy) -> {
 			NormalizedVacancyEntity normalized = held.computeIfAbsent(vacancyId, NormalizedVacancyEntity::new);
-			normalized.cleanedAs(title);
+			normalized.cleanedAs(vacancy);
 			recorded.add(normalized);
 		});
 		this.repository.saveAll(recorded);

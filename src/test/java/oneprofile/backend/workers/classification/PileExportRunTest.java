@@ -32,8 +32,8 @@ class PileExportRunTest {
 
 	@Test
 	void writesEveryVacancyOfThePileAsOneLineWithItsCleanedDescription() throws IOException {
-		holds(new PileVacancy(7, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "Build 🚀 APIs  in Go."),
-				new PileVacancy(9, "Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, null));
+		holds(new PileVacancy(7, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "Build 🚀 APIs  in Go.", List.of()),
+				new PileVacancy(9, "Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, null, List.of()));
 		Path file = this.directory.resolve("pile.jsonl");
 
 		export(10).exportTo(file);
@@ -75,7 +75,7 @@ class PileExportRunTest {
 	}
 
 	private static PileVacancy pile(long vacancyId, String description) {
-		return new PileVacancy(vacancyId, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, description);
+		return new PileVacancy(vacancyId, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, description, List.of());
 	}
 
 	private void holds(PileVacancy... pile) {

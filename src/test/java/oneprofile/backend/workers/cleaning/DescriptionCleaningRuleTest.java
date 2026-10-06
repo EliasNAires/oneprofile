@@ -14,6 +14,14 @@ class DescriptionCleaningRuleTest {
 	}
 
 	@Test
+	void keepsEveryLineThatHasTextLeftApart() {
+		assertThat(this.cleaning.clean("# Requirements \r\n\n  🚀  \n- Build  APIs\n> - 401(k)\n")).isEqualTo("""
+				# Requirements
+				- Build APIs
+				> - 401(k)""");
+	}
+
+	@Test
 	void takesOutWhatIsDecorationRatherThanText() {
 		assertThat(this.cleaning.clean("🚀 Join us!\u2764\ufe0f Perks:\uf0b7Equity ● Remote\u200dfirst ☐ Apply®"))
 			.isEqualTo("Join us! Perks: Equity Remote first Apply");

@@ -82,7 +82,7 @@ class BodyClassificationRunTest {
 
 	@Test
 	void givesTheRuleTheReasonTheTitleWasLeftUnknown() {
-		holds(new PileVacancy(1, "Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, "Own the roadmap."));
+		holds(new PileVacancy(1, "Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, "Own the roadmap.", List.of()));
 		BodyClassificationRule rule = mock(BodyClassificationRule.class);
 		given(rule.classify(any(), any(), any())).willReturn(ClassificationStateEnum.UNKNOWN);
 
@@ -112,7 +112,7 @@ class BodyClassificationRunTest {
 	}
 
 	private static PileVacancy pile(long vacancyId, String cleanedTitle, String description) {
-		return new PileVacancy(vacancyId, cleanedTitle, UnknownReasonEnum.DOMAIN_AMBIGUITY, description);
+		return new PileVacancy(vacancyId, cleanedTitle, UnknownReasonEnum.DOMAIN_AMBIGUITY, description, List.of());
 	}
 
 	private void holds(PileVacancy... pile) {

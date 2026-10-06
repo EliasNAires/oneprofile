@@ -11,7 +11,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 /**
  * The facts derived from one vacancy by rule, rather than published by its ATS. Derived data is
@@ -43,6 +46,9 @@ public class NormalizedVacancyEntity {
 	@Enumerated(EnumType.STRING)
 	private ClassificationSignalEnum classificationSignal;
 
+	@JdbcTypeCode(SqlTypes.JSON)
+	private List<Segment> descriptionSegments;
+
 	@ElementCollection
 	@CollectionTable(name = "normalized_vacancy_title_seniority",
 			joinColumns = @JoinColumn(name = "normalized_vacancy_id"))
@@ -58,14 +64,17 @@ public class NormalizedVacancyEntity {
 	}
 
 	/**
-	 * Takes on what cleaning made of the vacancy's title. Cleaning the same vacancy again replaces
-	 * what the last run recorded rather than adding to it.
-	 * @param cleaned the vacancy's title once cleaned, and the levels it named
+	 * Takes on what cleaning made of the vacancy. Cleaning the same vacancy again replaces what the
+	 * last run recorded rather than adding to it.
+	 * @param cleaned the vacancy's title once cleaned with the levels it named, and its description's
+	 * segments
 	 */
-	public void cleanedAs(CleanedTitle cleaned) {
-		this.cleanedTitle = cleaned.title();
+	public void cleanedAs(CleanedVacancy cleaned) {
+		CleanedTitle title = cleaned.cleanedTitle();
+		this.cleanedTitle = title.title();
 		this.titleSeniorities.clear();
-		this.titleSeniorities.addAll(cleaned.titleSeniorities());
+		this.titleSeniorities.addAll(title.titleSeniorities());
+		this.descriptionSegments = cleaned.descriptionSegments();
 	}
 
 	/**
@@ -102,6 +111,11 @@ public class NormalizedVacancyEntity {
 	public Classification classification() {
 		return (this.classificationState == null) ? null
 				: new Classification(this.classificationState, this.classificationReason, this.classificationSignal);
+	}
+
+	/** Its cleaned description cut into segments, null until cleaning has cut it. */
+	public List<Segment> descriptionSegments() {
+		return this.descriptionSegments;
 	}
 
 	/** Every seniority level its title names, empty if it names none. */

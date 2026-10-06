@@ -49,6 +49,7 @@ class VacancyStoreTest {
 		assertThat(held.location()).isEqualTo("Remote - Americas");
 		assertThat(held.department()).isEqualTo("Engineering");
 		assertThat(held.description()).isEqualTo("Ship payments.");
+		assertThat(held.language()).isEqualTo("en");
 		assertThat(held.url()).isEqualTo("https://job-boards.greenhouse.io/stripe/jobs/4001");
 		assertThat(held.payMinCents()).isEqualTo(15000000L);
 		assertThat(held.payMaxCents()).isEqualTo(20000000L);
@@ -73,7 +74,7 @@ class VacancyStoreTest {
 		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001)));
 
 		PublishedVacancy renamed = new PublishedVacancy(4001, "Staff Backend Engineer", "Remote - Americas",
-				"Engineering", "Ship payments.", "https://job-boards.greenhouse.io/stripe/jobs/4001", 15000000L,
+				"Engineering", "Ship payments.", "en", "https://job-boards.greenhouse.io/stripe/jobs/4001", 15000000L,
 				20000000L, "USD", "Annual Salary", FIRST_PUBLISHED_AT, UPDATED_AT.plusSeconds(3600));
 		assertThat(this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(renamed)))
 			.isEqualTo(new VacancyStore.Reconciliation(0, 1, 0));
@@ -120,21 +121,23 @@ class VacancyStoreTest {
 	}
 
 	@Test
-	void readsTheTitlesOfTheCorpusInIdOrderABatchAtATime() {
+	void readsTheTitlesAndDescriptionsOfTheCorpusInIdOrderABatchAtATime() {
 		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001), published(4002)));
 
-		List<VacancyTitle> first = this.vacancies.titlesAfter(0, 1);
+		List<VacancyText> first = this.vacancies.textsAfter(0, 1);
 
-		assertThat(first).singleElement().extracting(VacancyTitle::title).isEqualTo("Backend Engineer");
-		assertThat(this.vacancies.titlesAfter(first.getFirst().id(), 10)).hasSize(1);
+		assertThat(first).singleElement()
+			.extracting(VacancyText::title, VacancyText::description)
+			.containsExactly("Backend Engineer", "Ship payments.");
+		assertThat(this.vacancies.textsAfter(first.getFirst().id(), 10)).hasSize(1);
 	}
 
 	@Test
-	void readsNoTitlesOnceThereAreNoneLeft() {
+	void readsNoTextsOnceThereAreNoneLeft() {
 		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001)));
-		List<VacancyTitle> all = this.vacancies.titlesAfter(0, 10);
+		List<VacancyText> all = this.vacancies.textsAfter(0, 10);
 
-		assertThat(this.vacancies.titlesAfter(all.getLast().id(), 10)).isEmpty();
+		assertThat(this.vacancies.textsAfter(all.getLast().id(), 10)).isEmpty();
 	}
 
 	private VacancyEntity held(long externalId) {
@@ -147,7 +150,7 @@ class VacancyStoreTest {
 
 	private PublishedVacancy published(long externalId) {
 		return new PublishedVacancy(externalId, "Backend Engineer", "Remote - Americas", "Engineering",
-				"Ship payments.", "https://job-boards.greenhouse.io/stripe/jobs/" + externalId, 15000000L, 20000000L,
+				"Ship payments.", "en", "https://job-boards.greenhouse.io/stripe/jobs/" + externalId, 15000000L, 20000000L,
 				"USD", "Annual Salary", FIRST_PUBLISHED_AT, UPDATED_AT);
 	}
 

@@ -2,6 +2,7 @@ package oneprofile.backend.workers.cleaning;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.tuple;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyMap;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -14,10 +15,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import oneprofile.backend.storage.normalizedvacancy.CleanedTitle;
+import oneprofile.backend.storage.normalizedvacancy.CleanedVacancy;
 import oneprofile.backend.storage.normalizedvacancy.NormalizedVacancyStore;
+import oneprofile.backend.storage.normalizedvacancy.Segment;
+import oneprofile.backend.storage.normalizedvacancy.SegmentKindEnum;
 import oneprofile.backend.storage.normalizedvacancy.SeniorityLevelEnum;
 import oneprofile.backend.storage.vacancy.VacancyStore;
-import oneprofile.backend.storage.vacancy.VacancyTitle;
+import oneprofile.backend.storage.vacancy.VacancyText;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
@@ -30,32 +34,45 @@ class CorpusCleaningRunTest {
 
 	@Test
 	void cleansTheTitleOfEveryVacancyHeld() {
-		holds(new VacancyTitle(1, "Senior Backend Engineer (m/w/d)"), new VacancyTitle(2, "Jr. Data Analyst"));
+		holds(titled(1, "Senior Backend Engineer (m/w/d)"), titled(2, "Jr. Data Analyst"));
 
 		assertThat(cleaning(10).cleanAll().vacancies()).isEqualTo(2);
 
-		assertThat(recorded()).containsExactly(
-				Map.entry(1L, new CleanedTitle("Backend Engineer", Set.of(SeniorityLevelEnum.SENIOR))),
-				Map.entry(2L, new CleanedTitle("Data Analyst", Set.of(SeniorityLevelEnum.JUNIOR))));
+		assertThat(recorded()).extracting(Map.Entry::getKey, (entry) -> entry.getValue().cleanedTitle())
+			.containsExactly(tuple(1L, new CleanedTitle("Backend Engineer", Set.of(SeniorityLevelEnum.SENIOR))),
+					tuple(2L, new CleanedTitle("Data Analyst", Set.of(SeniorityLevelEnum.JUNIOR))));
+	}
+
+	@Test
+	void cutsTheCleanedDescriptionOfEveryVacancyIntoSegments() {
+		holds(new VacancyText(1, "Backend Engineer", "# Requirements\n- 🚀 Java"), titled(2, "Designer"));
+
+		cleaning(10).cleanAll();
+
+		assertThat(recorded()).extracting(Map.Entry::getKey, (entry) -> entry.getValue().descriptionSegments())
+			.containsExactly(
+					tuple(1L, List.of(new Segment(SegmentKindEnum.HEADING, null, "Requirements", false),
+							new Segment(SegmentKindEnum.ITEM, "Requirements", "Java", false))),
+					tuple(2L, List.of()));
 	}
 
 	@Test
 	void walksTheWholeCorpusABatchAtATime() {
-		holds(new VacancyTitle(1, "Backend Engineer"), new VacancyTitle(2, "Frontend Engineer"),
-				new VacancyTitle(3, "Data Engineer"));
+		holds(titled(1, "Backend Engineer"), titled(2, "Frontend Engineer"),
+				titled(3, "Data Engineer"));
 
 		assertThat(cleaning(2).cleanAll().vacancies()).isEqualTo(3);
 
-		then(this.vacancies).should().titlesAfter(0, 2);
-		then(this.vacancies).should().titlesAfter(2, 2);
-		then(this.vacancies).should().titlesAfter(3, 2);
+		then(this.vacancies).should().textsAfter(0, 2);
+		then(this.vacancies).should().textsAfter(2, 2);
+		then(this.vacancies).should().textsAfter(3, 2);
 	}
 
 	@Test
 	void countsWhatEachRuleCollapsesOnItsOwn() {
-		holds(new VacancyTitle(1, "Backend Engineer"), new VacancyTitle(2, "Backend Engineer (m/w/d)"),
-				new VacancyTitle(3, "Backend Engineer!"), new VacancyTitle(4, "Senior Backend Engineer"),
-				new VacancyTitle(5, "Data Analyst"));
+		holds(titled(1, "Backend Engineer"), titled(2, "Backend Engineer (m/w/d)"),
+				titled(3, "Backend Engineer!"), titled(4, "Senior Backend Engineer"),
+				titled(5, "Data Analyst"));
 
 		CorpusCleaningRun.Report report = cleaning(10).cleanAll();
 
@@ -69,7 +86,7 @@ class CorpusCleaningRunTest {
 
 	@Test
 	void creditsNoRuleWithTheSpacingEveryRuleMakesEven() {
-		holds(new VacancyTitle(1, "Backend  Engineer"), new VacancyTitle(2, "Backend Engineer"));
+		holds(titled(1, "Backend  Engineer"), titled(2, "Backend Engineer"));
 
 		CorpusCleaningRun.Report report = cleaning(10).cleanAll();
 
@@ -82,7 +99,7 @@ class CorpusCleaningRunTest {
 
 	@Test
 	void countsATitleSeveralVacanciesShareOnce() {
-		holds(new VacancyTitle(1, "Backend Engineer"), new VacancyTitle(2, "Backend Engineer"));
+		holds(titled(1, "Backend Engineer"), titled(2, "Backend Engineer"));
 
 		CorpusCleaningRun.Report report = cleaning(10).cleanAll();
 
@@ -103,25 +120,30 @@ class CorpusCleaningRunTest {
 	}
 
 	private CorpusCleaningRun cleaning(int batch) {
-		return new CorpusCleaningRun(new TitleCleaningRule(), this.vacancies, this.normalized, batch);
+		return new CorpusCleaningRun(new TitleCleaningRule(), new DescriptionCleaningRule(),
+				new DescriptionSplittingRule(), this.vacancies, this.normalized, batch);
 	}
 
 	/** Answers as the corpus does: the titles held after an id, in id order, at most a batch of them. */
-	private void holds(VacancyTitle... held) {
-		List<VacancyTitle> corpus = List.of(held);
-		given(this.vacancies.titlesAfter(anyLong(), anyInt())).willAnswer((invocation) -> {
+	private static VacancyText titled(long id, String title) {
+		return new VacancyText(id, title, null);
+	}
+
+	private void holds(VacancyText... held) {
+		List<VacancyText> corpus = List.of(held);
+		given(this.vacancies.textsAfter(anyLong(), anyInt())).willAnswer((invocation) -> {
 			long after = invocation.getArgument(0);
 			int batch = invocation.getArgument(1);
 			return corpus.stream().filter((vacancy) -> vacancy.id() > after).limit(batch).toList();
 		});
-		given(this.normalized.recordCleanedTitles(anyMap()))
+		given(this.normalized.recordCleanedVacancies(anyMap()))
 			.willAnswer((invocation) -> ((Map<?, ?>) invocation.getArgument(0)).size());
 	}
 
-	private List<Map.Entry<Long, CleanedTitle>> recorded() {
-		ArgumentCaptor<Map<Long, CleanedTitle>> batches = ArgumentCaptor.captor();
-		then(this.normalized).should(Mockito.atLeastOnce()).recordCleanedTitles(batches.capture());
-		List<Map.Entry<Long, CleanedTitle>> recorded = new ArrayList<>();
+	private List<Map.Entry<Long, CleanedVacancy>> recorded() {
+		ArgumentCaptor<Map<Long, CleanedVacancy>> batches = ArgumentCaptor.captor();
+		then(this.normalized).should(Mockito.atLeastOnce()).recordCleanedVacancies(batches.capture());
+		List<Map.Entry<Long, CleanedVacancy>> recorded = new ArrayList<>();
 		batches.getAllValues().forEach((batch) -> recorded.addAll(batch.entrySet()));
 		return recorded;
 	}

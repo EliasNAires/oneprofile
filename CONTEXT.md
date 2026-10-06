@@ -103,14 +103,31 @@ the seniority words that name a level wherever they appear. What classification 
 _Avoid_: normalized title, clean title, title slug
 
 **Cleaning**:
-The pass that gives every vacancy in the corpus a cleaned title. Runs before classification.
+The pass that gives every vacancy in the corpus a cleaned title, and cuts its cleaned
+description into segments. Runs before classification.
 _Avoid_: normalization, scrubbing, preprocessing, sanitizing
 
 **Cleaned Description**:
 A vacancy's description with what is decoration rather than text taken out — emoji,
-pictographs, drawn symbols — and its spacing made even. What the body pass reads, and what the
-labeller of the body pass reads (ADR-0012).
+pictographs, drawn symbols — and its spacing made even, one line per block. What the body pass
+reads, and what the labeller of the body pass reads (ADR-0012).
 _Avoid_: clean body, body text, stripped description
+
+**Boilerplate**:
+Text an ATS adds to every vacancy of a board rather than the company writing it for one: the
+company's introduction, its pay transparency, its closing. Kept and marked, so a pass can skip
+its headings and lists, which are the company's rather than the role's.
+_Avoid_: template, footer, intro
+
+**Segment**:
+One piece of a cleaned description: a heading, a list item or a sentence, knowing the heading
+it sits under and whether it is boilerplate. Cut once, by cleaning, for every pass that reads
+descriptions.
+_Avoid_: chunk, block, line, span
+
+**Token**:
+One lowercased word of a segment's text, as rules match on it. Not a lemma.
+_Avoid_: term, word, lexeme
 
 **Normalized Title**:
 A cleaned title reduced further to its role-bearing words. Only engineering roles have one.

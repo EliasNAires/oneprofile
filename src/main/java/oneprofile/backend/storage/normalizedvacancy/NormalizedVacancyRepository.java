@@ -34,10 +34,11 @@ public interface NormalizedVacancyRepository extends ListCrudRepository<Normaliz
 	 * @param reasons the title reasons that make the pile
 	 * @param after the vacancy id to read past, 0 to start at the first
 	 * @param limit how many to read at most
-	 * @return the pile's vacancies, their cleaned titles, title reasons and descriptions
+	 * @return the pile's vacancies, their cleaned titles, title reasons, descriptions and segments
 	 */
 	@Query("select new oneprofile.backend.storage.normalizedvacancy.PileVacancy(n.vacancyId, n.cleanedTitle, "
-			+ "n.classificationReason, v.description) from NormalizedVacancy n join Vacancy v on v.id = n.vacancyId "
+			+ "n.classificationReason, v.description, n.descriptionSegments) "
+			+ "from NormalizedVacancy n join Vacancy v on v.id = n.vacancyId "
 			+ "where n.vacancyId > :after and n.classificationReason in :reasons order by n.vacancyId")
 	List<PileVacancy> pileAfter(Collection<UnknownReasonEnum> reasons, long after, Limit limit);
 
