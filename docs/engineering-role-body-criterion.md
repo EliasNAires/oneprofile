@@ -84,7 +84,10 @@ It counts when the description asks for any of:
 - technical experience in a field, when that field is software — logs analytics, observability,
   developer tools.
 
-A background listed only as a plus or a nice-to-have does not count.
+A background listed only as a plus or a nice-to-have does not count: "a plus", "nice to have",
+"bonus", "extra credit", "even better if", "it's great if you have". A background that is *desired*
+or *desirable* is preferred, and counts: under "Essential" and "Desirable" headings, or "Desired
+qualifications", the second list is what the employer prefers, not a nice-to-have.
 
 A listed skill counts at whatever level the description asks for it ("a basic understanding of
 SQL"), and it counts when it is the tool the role works with every day: an analyst asked to write
@@ -153,6 +156,12 @@ a clinical licence or an actuarial qualification is OUT. It is the requirement t
 not the field: verification code written in SystemVerilog, Python or C++ for a role that asks for
 no such degree is Q2. Field knowledge the description lists as a plus, or expects to be learned
 on the job, is not such a requirement.
+
+Radio is two things. Experience with wireless or network *protocols* — Bluetooth, Wi-Fi, cellular
+or low-latency audio protocol stacks — for a role that writes their firmware or software is a
+networking background, not expertise outside software. RF *hardware* — antennas, RF circuits,
+RF test equipment such as spectrum and network analysers — is electrical engineering, and
+requiring it is expertise outside software.
 
 So the line between the two is what the description asks the applicant to have. Experience
 doing this kind of role, wherever it was done, is the job itself. Knowledge of the field asked
