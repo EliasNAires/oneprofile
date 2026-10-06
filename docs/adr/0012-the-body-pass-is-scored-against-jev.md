@@ -28,6 +28,22 @@ it labels. Labels already made stay valid and are never remade: each is a statem
 text it read. The 2-minute gate times the body pass alone, reading stored segments; the
 cleaning run that cuts them is reported, not gated.
 
+## The skill taxonomy as a signal (2026-10-06)
+
+The body rules may read the skill taxonomy (`src/main/resources/taxonomy/skills.tsv`): a
+description asking for named software skills is the plainest domain marker the body carries.
+It is still rules only (ADR-0005). #11 reads the taxonomy and never changes it; it is grown by
+skill discovery (#41), and descriptions are lemmatized against it by #47.
+
+So the rules' input can move without a rule changing. Each round's Record names the commit of
+`skills.tsv` it ran against, and a round after the taxonomy or the stored lemmas changed says
+so, so the gain or loss is not credited to the rules alone. Such a change is not a new
+baseline: the pile is fixed and Jev keeps reading the segmented text, never lemmas, so the
+labels' input does not move.
+
+After round 4 the loop pauses for #41 and #47, and resumes with the rules moved onto lemmas.
+A pause is not a round; the ten-round cap counts rounds run.
+
 ## How the labels are made
 
 - Jev reads the whole body criterion (`docs/engineering-role-body-criterion.md`), the title,
