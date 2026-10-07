@@ -1,6 +1,7 @@
-"""Shared plumbing for skill discovery (#41, ADR-0013): name forms, the decision record, and the
-labels Jev made of candidates, each made once for its name form under one criterion revision and
-model and never remade. Imported by the scripts next to it, never run.
+"""Shared plumbing for skill discovery (#41, ADR-0013): name forms, the decision record, the segment
+export, the labels Jev made of candidates and its answers on the segments recall is scored on, each
+made once under one criterion revision and model and never remade. Imported by the scripts next to
+it, never run.
 """
 
 import bisect
@@ -10,10 +11,13 @@ import random
 import re
 import subprocess
 import sys
+from pathlib import Path
 
 import jev
 
 REPO = jev.REPO
+
+SKILLS = REPO / "src" / "main" / "resources" / "taxonomy" / "skills.tsv"
 
 CRITERION = REPO / "docs" / "skill-criterion.md"
 
@@ -22,6 +26,10 @@ DECISIONS = REPO / "src" / "main" / "resources" / "taxonomy" / "decisions.tsv"
 # One row per name form, criterion revision and model Jev labelled under, with what it read.
 # Committed: a label is paid for, made once and never remade.
 LABELS = jev.SKILL_LABELS
+
+# One row per segment, list of names found in it, criterion revision and model Jev answered under.
+# Committed, like LABELS.
+RECALL_LABELS = jev.SKILL_RECALL_LABELS
 
 QUESTIONS = {
     "decision": ("Applying `criterion`, is `name`, seen in the job-ad `segments` given, a skill to keep or a "
@@ -37,6 +45,16 @@ DECISION_OPTIONS = {
 }
 
 
+RECALL_QUESTION = ("Applying `criterion`, does the job-ad `segment` name a software skill, as the criterion reads "
+                   "a skill, that is not in `found`, under its own name or another spelling?")
+
+RECALL_OPTIONS = {
+    "none": "None: the segment names no software skill at all.",
+    "covered": "Covered: the segment names at least one software skill, and every one it names is in `found`.",
+    "missed": "Missed: the segment names at least one software skill that is not in `found`.",
+}
+
+
 def name_form(name):
     """The name as discovery compares it: lowercased, each run of spaces and hyphens between two other
     characters one space, the ends trimmed, every other character kept."""
@@ -45,9 +63,9 @@ def name_form(name):
 
 def mention(name):
     """A pattern finding the name in text in any case, its spaces and hyphens interchangeable, with no
-    letter or digit right before or after it."""
+    letter or digit right before or after it, nor the + or # that would make it a longer name (C in C++)."""
     words = [re.escape(word) for word in name_form(name).split(" ")]
-    return re.compile(r"(?<![^\W_])" + r"[\s-]+".join(words) + r"(?![^\W_])", re.IGNORECASE)
+    return re.compile(r"(?<![^\W_])" + r"[\s-]+".join(words) + r"(?![^\W_]|[+#])", re.IGNORECASE)
 
 
 class Segments:
@@ -87,6 +105,89 @@ class Segments:
         for vacancy_id in sorted(found):
             first.setdefault(found[vacancy_id], vacancy_id)
         return [(first[text], text) for text in shuffled(first, seed)[:count]]
+
+
+# The requirement text of the IN vacancies and the pile (ADR-0012), English and Spanish, boilerplate
+# and headings left out, one segment a line after its vacancy id, and each vacancy's company. Exported
+# once from the development database, which has to hold the snapshot, into files next to it.
+SNAPSHOT = "classified-2026-10-06"
+
+SEGMENTS = Path.home() / "oneprofile-snapshots" / f"skill-segments-{SNAPSHOT}.tsv"
+
+SEGMENTS_EXPORT = """
+select n.vacancy_id, regexp_replace(e->>'text', '\\s+', ' ', 'g')
+from normalized_vacancy n
+join vacancy v on v.id = n.vacancy_id,
+jsonb_array_elements(n.description_segments) e
+where v.language in ('en', 'es')
+and ((n.classification_state = 'IN' and n.classification_reason is null)
+     or n.classification_reason in ('DOMAIN_AMBIGUITY', 'SCOPE_AMBIGUITY'))
+and e->>'kind' <> 'HEADING'
+and not coalesce((e->>'boilerplate')::boolean, false)
+order by n.vacancy_id
+"""
+
+COMPANIES = Path.home() / "oneprofile-snapshots" / f"skill-companies-{SNAPSHOT}.tsv"
+
+COMPANIES_EXPORT = "select id, company_id from vacancy order by id"
+
+
+def export(path, sql):
+    """The lines of an export, made from the development database if the file is not there yet."""
+    if not path.exists():
+        print(f"Exporting {path}", file=sys.stderr)
+        with open(path, "w") as out:
+            subprocess.run(["docker", "compose", "--project-directory", str(REPO), "exec", "-T", "postgres", "psql",
+                            "-v", "ON_ERROR_STOP=1", "-U", "oneprofile", "-d", "oneprofile", "-At", "-F", "\t",
+                            "-c", sql], check=True, stdout=out)
+    with open(path) as lines:
+        return lines.readlines()
+
+
+def read_segment_lines():
+    return export(SEGMENTS, SEGMENTS_EXPORT)
+
+
+def read_segments():
+    return Segments(read_segment_lines())
+
+
+def read_companies():
+    """Each vacancy's company, by vacancy id."""
+    return dict(line.rstrip("\n").split("\t") for line in export(COMPANIES, COMPANIES_EXPORT))
+
+
+def read_keys():
+    """The canonical name of the skill each key of skills.tsv names, by the key's name form."""
+    keys = {}
+    with open(SKILLS) as lines:
+        for line in lines:
+            _, canonical, _, aliases = line.rstrip("\n").split("\t")
+            for key in [canonical] + aliases.split("|"):
+                if key:
+                    keys[name_form(key)] = canonical
+    return keys
+
+
+class Names:
+    """The skills of skills.tsv, found by any of their keys and named by their canonical name, and the
+    candidates of a run, found and named by their own name."""
+
+    def __init__(self, keys, candidates):
+        self.patterns = [(name_form(key).split(" ")[0], mention(key), canonical) for key, canonical in keys.items()]
+        self.patterns += [(name_form(name).split(" ")[0], mention(name), name) for name in candidates]
+
+    def named_in(self, text):
+        """Every name found in the text, once, in alphabetical order."""
+        lowered = text.lower()
+        return sorted({name for word, pattern, name in self.patterns if word in lowered and pattern.search(text)},
+                      key=str.lower)
+
+
+def recall(answers):
+    """How many of the segments answered named no skill the list missed, of how many named one."""
+    bearing = [answer for answer in answers if answer != "none"]
+    return sum(answer == "covered" for answer in bearing), len(bearing)
 
 
 def criterion_revision(text=None):
@@ -138,11 +239,7 @@ def label(candidates):
     under the current revision and model, appending each label as it arrives, so a run that dies is
     resumed by running it again. Stops once Jev has cost the spend limit over both issues. Returns how many it made."""
     labels = read_labels()
-    blob = criterion_blob()
-    edited = {row["criterion_blob"] for row in labels.values()} - {blob}
-    if edited:
-        sys.exit(f"{CRITERION.name} changed since labels were made under revision {criterion_revision()}: "
-                 "a changed criterion is a new revision, so raise its Revision marker")
+    blob = unchanged_criterion(labels.values())
     wanted = list({name_form(candidate["name"]): candidate for candidate in candidates
                    if name_form(candidate["name"]) not in labels}.values())
     print(f"{len(candidates) - len(wanted)} already labelled, {len(wanted)} to label")
@@ -182,6 +279,76 @@ def label(candidates):
         made += 1
         print(f"  {decision['choice']:<4} {category['choice']:<10} {tokens:5} tokens  {candidate['name']}")
     print(f"Labelled {made}. Jev has cost ${spent:.4f} over every run of both issues.")
+    return made
+
+
+def unchanged_criterion(labels):
+    """The criterion's blob, once it is the one every label of its revision was made under."""
+    blob = criterion_blob()
+    if {row["criterion_blob"] for row in labels} - {blob}:
+        sys.exit(f"{CRITERION.name} changed since labels were made under revision {criterion_revision()}: "
+                 "a changed criterion is a new revision, so raise its Revision marker")
+    return blob
+
+
+def recall_key(segment, found):
+    return segment, tuple(found)
+
+
+def read_recall_labels(revision=None):
+    """Jev's answers on segments under one criterion revision, the current one by default, and the
+    pinned model, by segment and the names that were found in it."""
+    revision = revision or criterion_revision()
+    if not RECALL_LABELS.exists():
+        return {}
+    with open(RECALL_LABELS) as lines:
+        rows = [json.loads(line) for line in lines if line.strip()]
+    return {recall_key(row["segment"], row["found"]): row for row in rows
+            if row["criterion_revision"] == revision and row["model"] == jev.MODEL}
+
+
+def label_recall(segments):
+    """Asks Jev of every segment given, each a dict of `vacancy_id`, `segment` and `found`, whether it
+    names a software skill `found` misses, unless it has answered for that segment and list under the
+    current revision and model. Like label(), it appends each answer as it arrives and stops at the
+    spend limit. Returns how many it made."""
+    labels = read_recall_labels()
+    blob = unchanged_criterion(labels.values())
+    wanted = list({recall_key(row["segment"], row["found"]): row for row in segments
+                   if recall_key(row["segment"], row["found"]) not in labels}.values())
+    print(f"{len(segments) - len(wanted)} segments already answered, {len(wanted)} to ask")
+    if not wanted:
+        return 0
+    key = jev.api_key()
+    criterion = CRITERION.read_text()
+    revision = criterion_revision(criterion)
+    spent = jev.spend()
+    made = 0
+    for row in wanted:
+        if spent >= jev.SPEND_LIMIT:
+            print(f"Stopped: Jev has cost ${spent:.4f}, the limit is ${jev.SPEND_LIMIT:.2f}")
+            break
+        response = jev.ask(key, {"criterion": criterion, "segment": row["segment"], "found": row["found"]}, {
+            "recall": {"type": "choice", "instructions": RECALL_QUESTION, "criteria": RECALL_OPTIONS},
+        })
+        answer = response["answers"]["recall"]
+        tokens = response["usage"]["input_tokens"]
+        with open(RECALL_LABELS, "a") as ledger:
+            ledger.write(json.dumps({
+                "vacancy_id": row["vacancy_id"],
+                "segment": row["segment"],
+                "found": row["found"],
+                "answer": answer["choice"],
+                "probabilities": answer["probabilities"],
+                "criterion_revision": revision,
+                "criterion_blob": blob,
+                "model": response["model"],
+                "input_tokens": tokens,
+            }, ensure_ascii=False) + "\n")
+        spent += tokens * jev.DOLLARS_PER_INPUT_TOKEN
+        made += 1
+        print(f"  {answer['choice']:<7} {tokens:5} tokens  {row['segment'][:80]}")
+    print(f"Asked {made}. Jev has cost ${spent:.4f} over every run of both issues.")
     return made
 
 

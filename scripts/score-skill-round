@@ -1,0 +1,213 @@
+#!/usr/bin/env python3
+"""Scores one round of the skill discovery loop against Jev (ADR-0013).
+
+    scripts/score-skill-round <round number>
+
+Runs scripts/skill_discovery.py over the segments of IN and the pile and times it, then measures:
+
+- Precision: draws candidates the script proposed. One whose name form is in the decision record
+  takes its decision there; Jev labels any other under the skill criterion, from its name and three
+  segments mentioning it. Precision is the share kept.
+- Recall: draws segments of IN and the pile, uniformly over the export, so each in proportion to its
+  size; the export holds requirement text only, boilerplate and headings left out. Jev reads each
+  segment and the names found in it, every skills.tsv key and every candidate, and answers whether it
+  names no software skill, only skills found, or one missed. Recall is the share of segments naming a
+  skill in which none was missed. The segments that missed one are printed for the reviewer, who
+  writes down the missed names as the next round's feedback.
+- Size and time: how many candidates, and how long the script took.
+
+Neither draw takes a candidate or a segment an earlier round drew, and each round's draw goes into
+docs/measurements/skill-rounds-drawn.tsv. Running a round again redraws the same rows and replaces
+its own draw; every Jev label is cached by skillloop and never remade, so a round stopped by an error
+or the $4 stop is resumed by running it again. The report is archived as
+docs/measurements/skill-round-<round>.txt, and the candidates are kept next to the snapshot.
+"""
+
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import jev  # noqa: E402
+import skill_discovery  # noqa: E402
+import skillloop  # noqa: E402
+
+DISCOVERY = Path(__file__).resolve().parent / "skill_discovery.py"
+
+CANDIDATES = skillloop.SEGMENTS.parent / f"skill-candidates-round-{{round}}-{skillloop.SNAPSHOT}.tsv"
+
+DRAWN = skillloop.REPO / "docs" / "measurements" / "skill-rounds-drawn.tsv"
+
+ARCHIVE = skillloop.REPO / "docs" / "measurements" / "skill-round-{round}.txt"
+
+PRECISION_SIZE = 200
+RECALL_SIZE = 2400
+EXAMPLES = 3
+
+# ADR-0013's gates.
+RECALL = 0.90
+PRECISION = 0.50
+MOST_CANDIDATES = 1000
+
+
+class Report:
+    """Prints to the terminal and to the round's archive."""
+
+    def __init__(self, archive):
+        self.archive = archive
+
+    def __call__(self, line=""):
+        print(line)
+        self.archive.write(line + "\n")
+
+
+def read_drawn():
+    """Every row an earlier round drew, as round, kind (`candidate` by name form or `segment` by text)
+    and what was drawn."""
+    if not DRAWN.exists():
+        return []
+    with open(DRAWN) as lines:
+        return [line.rstrip("\n").split("\t") for line in lines if line.strip()][1:]
+
+
+def record_drawn(round_name, candidates, segments):
+    rows = [row for row in read_drawn() if row[0] != round_name]
+    rows += [[round_name, "candidate", form] for form in candidates] + [[round_name, "segment", text] for text in segments]
+    DRAWN.write_text("round\tkind\tdrawn\n" + "".join("\t".join(row) + "\n" for row in rows))
+
+
+def discover(round_name):
+    """Runs the discovery script, and returns its candidates and how long it took."""
+    path = Path(str(CANDIDATES).format(round=round_name))
+    started = time.monotonic()
+    subprocess.run([sys.executable, str(DISCOVERY), str(path)], check=True)
+    return skill_discovery.read_candidates(path), time.monotonic() - started
+
+
+def draw_candidates(round_name, candidates, earlier, segments):
+    """The candidates drawn for precision, by name form, each with its name and segments, and how many
+    were passed over for being mentioned nowhere the segment search finds."""
+    by_form = {skillloop.name_form(c["name"]): c for c in candidates}
+    drawn, passed_over = {}, 0
+    for form in skillloop.shuffled([form for form in by_form if form not in earlier], f"round-{round_name}-candidates"):
+        if len(drawn) == PRECISION_SIZE:
+            break
+        examples = segments.examples(by_form[form]["name"], EXAMPLES, f"round-{round_name}-{form}")
+        if not examples:
+            passed_over += 1
+            continue
+        drawn[form] = {"name": by_form[form]["name"], "df": by_form[form]["df"], "segments": [text for _, text in examples]}
+    return drawn, passed_over
+
+
+def draw_segments(round_name, lines, earlier, names):
+    """The segments drawn for recall, each a distinct text, with its vacancy and the names found in it."""
+    order = skillloop.shuffled(range(len(lines)), f"round-{round_name}-segments")
+    drawn, seen = [], set(earlier)
+    for index in order:
+        if len(drawn) == RECALL_SIZE:
+            break
+        vacancy_id, text = lines[index].rstrip("\n").split("\t", 1)
+        if text in seen:
+            continue
+        seen.add(text)
+        drawn.append({"vacancy_id": vacancy_id, "segment": text, "found": names.named_in(text)})
+    return drawn
+
+
+def score(report, round_name, candidates, seconds, precision_drawn, passed_over, recall_drawn):
+    decisions = skillloop.read_decisions()
+    labels = skillloop.read_labels()
+    answers = skillloop.read_recall_labels()
+    passed = True
+
+    report(f"Round {round_name} at criterion revision {skillloop.criterion_revision()}, {jev.MODEL}")
+    report(f"\nSize and time: {len(candidates)} candidates (gate {MOST_CANDIDATES}) in {seconds:.0f}s")
+    passed = passed and len(candidates) <= MOST_CANDIDATES
+
+    verdicts = {}
+    for form in precision_drawn:
+        if form in decisions:
+            verdicts[form] = (decisions[form]["decision"], f"decided {decisions[form]['source']}")
+        elif form in labels:
+            verdicts[form] = (labels[form]["decision"], "Jev")
+    kept = sum(decision == "keep" for decision, _ in verdicts.values())
+    if verdicts:
+        low, high = skillloop.wilson(kept, len(verdicts))
+        share = kept / len(verdicts)
+        report(f"Precision: {kept}/{len(verdicts)} kept = {share:.1%}, 95% interval {low:.1%}-{high:.1%}, "
+               f"gate {PRECISION:.0%}  {'pass' if share >= PRECISION else 'FAIL'}")
+        passed = passed and share >= PRECISION
+    else:
+        report("Precision: no candidate decided  FAIL")
+        passed = False
+    report(f"  {len(precision_drawn)} drawn, {len(precision_drawn) - len(verdicts)} without a label, "
+           f"{sum(source != 'Jev' for _, source in verdicts.values())} from the decision record, "
+           f"{passed_over} passed over for no mention")
+
+    answered = [(row, answers[key]) for row in recall_drawn
+                if (key := skillloop.recall_key(row["segment"], row["found"])) in answers]
+    covered, bearing = skillloop.recall([label["answer"] for _, label in answered])
+    if bearing:
+        low, high = skillloop.wilson(covered, bearing)
+        share = covered / bearing
+        report(f"Recall: {covered}/{bearing} skill-bearing segments missed nothing = {share:.1%}, "
+               f"95% interval {low:.1%}-{high:.1%}, gate {RECALL:.0%}  {'pass' if share >= RECALL else 'FAIL'}")
+        passed = passed and share >= RECALL
+    else:
+        report("Recall: no skill-bearing segment answered  FAIL")
+        passed = False
+    report(f"  {len(recall_drawn)} segments drawn, {len(answered)} answered, "
+           f"{len(answered) - bearing} naming no skill")
+    report(f"\n{'Every gate holds: the loop exits' if passed else 'The loop goes on'}")
+
+    report("\nCandidates drawn for precision, dropped first:")
+    for form in sorted(verdicts, key=lambda form: (verdicts[form][0] != "drop", -precision_drawn[form]["df"])):
+        decision, source = verdicts[form]
+        report(f"  {decision:<4} {precision_drawn[form]['df']:6}  {precision_drawn[form]['name']:<40} {source}")
+
+    missed = [(row, label) for row, label in answered if label["answer"] == "missed"]
+    report(f"\nSegments that name a skill not found ({len(missed)}), for the reviewer to name it:")
+    for row, label in missed:
+        report(f"\n  vacancy {row['vacancy_id']}  Jev {label['probabilities']}")
+        report(f"  found: {', '.join(row['found']) or 'nothing'}")
+        report(f"  {row['segment']}")
+
+    report(f"\nJev has cost ${jev.spend():.4f} over every run of both issues, of the ${jev.SPEND_LIMIT:.2f} limit")
+
+
+def main():
+    if len(sys.argv) != 2 or not sys.argv[1].isdigit():
+        sys.exit(__doc__.strip())
+    round_name = sys.argv[1]
+    # Exported before the clock starts: the export is made once per snapshot, not by the script.
+    lines = skillloop.read_segment_lines()
+    skillloop.read_companies()
+
+    print(f"Round {round_name}: running the discovery script")
+    candidates, seconds = discover(round_name)
+    print(f"  {len(candidates)} candidates in {seconds:.0f}s")
+
+    earlier = read_drawn()
+    earlier_candidates = {drawn for round_drawn, kind, drawn in earlier if round_drawn != round_name and kind == "candidate"}
+    earlier_segments = {drawn for round_drawn, kind, drawn in earlier if round_drawn != round_name and kind == "segment"}
+    segments = skillloop.Segments(lines)
+    precision_drawn, passed_over = draw_candidates(round_name, candidates, earlier_candidates, segments)
+    names = skillloop.Names(skillloop.read_keys(), [c["name"] for c in candidates])
+    recall_drawn = draw_segments(round_name, lines, earlier_segments, names)
+    record_drawn(round_name, precision_drawn, [row["segment"] for row in recall_drawn])
+
+    decisions = skillloop.read_decisions()
+    skillloop.label([{"name": c["name"], "segments": c["segments"]} for form, c in precision_drawn.items()
+                     if form not in decisions])
+    skillloop.label_recall(recall_drawn)
+
+    print()
+    with open(str(ARCHIVE).format(round=round_name), "w") as archive:
+        score(Report(archive), round_name, candidates, seconds, precision_drawn, passed_over, recall_drawn)
+
+
+if __name__ == "__main__":
+    main()

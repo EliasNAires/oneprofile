@@ -21,7 +21,9 @@ BODY_LABELS = REPO / "docs" / "measurements" / "body-labels-jev.jsonl"
 
 SKILL_LABELS = REPO / "docs" / "measurements" / "skill-labels-jev.jsonl"
 
-LEDGERS = (BODY_LABELS, SKILL_LABELS)
+SKILL_RECALL_LABELS = REPO / "docs" / "measurements" / "skill-recall-labels-jev.jsonl"
+
+LEDGERS = (BODY_LABELS, SKILL_LABELS, SKILL_RECALL_LABELS)
 
 # Jev answers 429 when the rate limit is hit and 529 when it is overloaded; both are retried.
 RETRIED = (429, 529)

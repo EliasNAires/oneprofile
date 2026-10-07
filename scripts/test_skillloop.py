@@ -52,6 +52,10 @@ class MentionsTest(unittest.TestCase):
         self.assertTrue(skillloop.mention("C++").search("C++ and Rust"))
         self.assertFalse(skillloop.mention("C++").search("C and Rust"))
         self.assertTrue(skillloop.mention("C#").search("(C#)"))
+
+    def test_does_not_find_a_name_that_a_longer_one_continues_with_a_symbol(self):
+        self.assertFalse(skillloop.mention("C").search("C++ and C# only"))
+        self.assertTrue(skillloop.mention("C").search("C, C++ or C#"))
         self.assertTrue(skillloop.mention("Node.js").search("Node.js."))
 
 
@@ -145,6 +149,27 @@ class WilsonTest(unittest.TestCase):
         low, high = skillloop.wilson(90, 100)
         self.assertAlmostEqual(low, 0.8256, places=3)
         self.assertAlmostEqual(high, 0.9448, places=3)
+
+
+class NamesTest(unittest.TestCase):
+
+    NAMES = skillloop.Names({"python": "Python", "golang": "Go", "spring boot": "Spring Boot", "c++": "C++"},
+                            ["Grafana", "Spring"])
+
+    def test_finds_the_skills_by_their_canonical_name_and_the_candidates_by_theirs(self):
+        self.assertEqual(self.NAMES.named_in("Golang, python-3 and Grafana dashboards"), ["Go", "Grafana", "Python"])
+
+    def test_finds_every_name_in_any_spacing_once(self):
+        self.assertEqual(self.NAMES.named_in("Spring-Boot or spring boot, C++"), ["C++", "Spring", "Spring Boot"])
+
+    def test_finds_nothing_inside_a_longer_word(self):
+        self.assertEqual(self.NAMES.named_in("Pythonic springs"), [])
+
+
+class RecallTest(unittest.TestCase):
+
+    def test_counts_only_skill_bearing_segments(self):
+        self.assertEqual(skillloop.recall(["none", "covered", "missed", "covered", "none"]), (2, 3))
 
 
 class CriterionRevisionTest(unittest.TestCase):

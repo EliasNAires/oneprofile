@@ -1,0 +1,775 @@
+Round 0 at criterion revision 1, jev-1.13.0
+
+Size and time: 4321 candidates (gate 1000) in 290s
+Precision: 44/200 kept = 22.0%, 95% interval 16.8%-28.2%, gate 50%  FAIL
+  200 drawn, 0 without a label, 0 from the decision record, 0 passed over for no mention
+Recall: 179/319 skill-bearing segments missed nothing = 56.1%, 95% interval 50.6%-61.5%, gate 90%  FAIL
+  2400 segments drawn, 2400 answered, 2081 naming no skill
+
+The loop goes on
+
+Candidates drawn for precision, dropped first:
+  drop   1265  MCP                                      Jev
+  drop   1080  Fortune                                  Jev
+  drop    500  Node                                     Jev
+  drop    259  NYSE                                     Jev
+  drop    232  Uber                                     Jev
+  drop    231  fullstack                                Jev
+  drop    227  F                                        Jev
+  drop    114  PS                                       Jev
+  drop    114  3D CAD                                   Jev
+  drop    100  PCs                                      Jev
+  drop     88  shield                                   Jev
+  drop     79  GC                                       Jev
+  drop     73  Zuora                                    Jev
+  drop     65  Security+ CE                             Jev
+  drop     64  UI API                                   Jev
+  drop     60  B Corp                                   Jev
+  drop     53  SQL Oracle                               Jev
+  drop     48  3PL                                      Jev
+  drop     48  Five9                                    Jev
+  drop     45  Cake                                     Jev
+  drop     34  Vista Equity Partners                    Jev
+  drop     33  RTOS-based                               Jev
+  drop     32  Handler                                  Jev
+  drop     31  Web Gateway                              Jev
+  drop     31  Microsoft’s                              Jev
+  drop     29  Oracle EBS                               Jev
+  drop     28  Synchro                                  Jev
+  drop     28  Fullstack Software                       Jev
+  drop     27  Senior GTM                               Jev
+  drop     24  REST-based                               Jev
+  drop     23  Ambiq                                    Jev
+  drop     22  Senior Java                              Jev
+  drop     22  FedRAMP-authorized                       Jev
+  drop     22  cert                                     Jev
+  drop     21  York Metro                               Jev
+  drop     20  Unifier                                  Jev
+  drop     20  RTR                                      Jev
+  drop     20  CORS                                     Jev
+  drop     17  Oracle applications                      Jev
+  drop     15  Thomson Reuters                          Jev
+  drop     15  Certified Protection Professional        Jev
+  drop     15  2027 June 2028                           Jev
+  drop     14  Senior Engineer II                       Jev
+  drop     14  Shopify Apps                             Jev
+  drop     13  Security Engineer II                     Jev
+  drop     13  Hitachi                                  Jev
+  drop     12  SIPRNet                                  Jev
+  drop     12  Gartner MQ                               Jev
+  drop     12  SumIf                                    Jev
+  drop     11  Google Campaign                          Jev
+  drop     11  PPS                                      Jev
+  drop     11  Gaia                                     Jev
+  drop     11  FedRAMP-certified                        Jev
+  drop     11  BMCs                                     Jev
+  drop     11  MLSys                                    Jev
+  drop     11  MDG                                      Jev
+  drop     10  Professional AWS Certified               Jev
+  drop     10  TikTok Ads                               Jev
+  drop     10  MBD                                      Jev
+  drop     10  expedia                                  Jev
+  drop     10  DaaS                                     Jev
+  drop      9  CPSM                                     Jev
+  drop      9  Foundation Model APIs                    Jev
+  drop      9  CLAUDE.md                                Jev
+  drop      9  Salesforce Business                      Jev
+  drop      8  AWS-centric                              Jev
+  drop      8  Xactly                                   Jev
+  drop      8  MS Suite                                 Jev
+  drop      8  Web Services API                         Jev
+  drop      8  Okta access                              Jev
+  drop      8  On-site 4                                Jev
+  drop      8  LinkedIn Sales                           Jev
+  drop      7  SFRA                                     Jev
+  drop      7  MDMs                                     Jev
+  drop      7  Turbo                                    Jev
+  drop      7  365 Business                             Jev
+  drop      7  Unix-based                               Jev
+  drop      7  Sidecar                                  Jev
+  drop      7  Freddie                                  Jev
+  drop      7  IP LAN                                   Jev
+  drop      7  2 IT                                     Jev
+  drop      7  9k                                       Jev
+  drop      6  FDI                                      Jev
+  drop      6  GCP Cloud Security                       Jev
+  drop      6  CMK                                      Jev
+  drop      6  Plex                                     Jev
+  drop      6  Dun                                      Jev
+  drop      6  API Mesh                                 Jev
+  drop      6  TP                                       Jev
+  drop      6  Intapp                                   Jev
+  drop      6  Microsoft Advertising                    Jev
+  drop      6  Agents SDKs                              Jev
+  drop      6  API-focused                              Jev
+  drop      6  Audit Manager                            Jev
+  drop      5  AZ-204                                   Jev
+  drop      5  OWD                                      Jev
+  drop      5  TPL                                      Jev
+  drop      5  SurveyMonkey                             Jev
+  drop      5  Adservers                                Jev
+  drop      5  Query API                                Jev
+  drop      5  ETQ                                      Jev
+  drop      5  Content Manager                          Jev
+  drop      5  Codeforces                               Jev
+  drop      5  Dynamics 365 CRM                         Jev
+  drop      5  Service Lightning                        Jev
+  drop      5  Platforms Marketo                        Jev
+  drop      5  846                                      Jev
+  drop      5  SmartBear                                Jev
+  drop      5  Automation Platforms Marketo             Jev
+  drop      5  carteira                                 Jev
+  drop      5  XCP                                      Jev
+  drop      5  Rel                                      Jev
+  drop      5  IAM role                                 Jev
+  drop      5  Star-CCM+                                Jev
+  drop      4  SAP Power BI                             Jev
+  drop      4  Versal                                   Jev
+  drop      4  Tier 1 ERP                               Jev
+  drop      4  Tooling Microsoft                        Jev
+  drop      4  AI-enabled Finance                       Jev
+  drop      4  Salesforce Consultant                    Jev
+  drop      4  Data Governance Specialist               Jev
+  drop      4  Esri’s                                   Jev
+  drop      4  Oracle Fusion Applications               Jev
+  drop      4  CaptivateIQ                              Jev
+  drop      4  ERDAS IMAGINE                            Jev
+  drop      4  Studio Pro                               Jev
+  drop      4  SOC II                                   Jev
+  drop      4  Hybrid Administrator                     Jev
+  drop      4  p50                                      Jev
+  drop      4  DB Performance                           Jev
+  drop      4  SOE                                      Jev
+  drop      4  OS Management                            Jev
+  drop      3  Siemens OpCenter                         Jev
+  drop      3  Enablement Specialist                    Jev
+  drop      3  WFX                                      Jev
+  drop      3  MHS                                      Jev
+  drop      3  API Ingress                              Jev
+  drop      3  Kubernetes pod                           Jev
+  drop      3  Science Officer                          Jev
+  drop      3  Partner Program Manager                  Jev
+  drop      3  EcoStruxure                              Jev
+  drop      3  IFRS 16                                  Jev
+  drop      3  Zuken E3                                 Jev
+  drop      3  Salesforce Financial Services            Jev
+  drop      3  Animator                                 Jev
+  drop      3  Tropic                                   Jev
+  drop      3  Descope                                  Jev
+  drop      3  txt                                      Jev
+  drop      3  Harvey                                   Jev
+  drop      3  HydroCAD                                 Jev
+  drop      3  L3 Support Engineer                      Jev
+  drop      3  Google Chrome                            Jev
+  drop      3  OWASP Testing                            Jev
+  drop      3  GS1                                      Jev
+  drop      3  DPC                                      Jev
+  drop      3  Parquet-based                            Jev
+  keep   1125  Spring                                   Jev
+  keep    106  LoRA                                     Jev
+  keep    102  Prisma                                   Jev
+  keep     80  HSMs                                     Jev
+  keep     74  Cedar                                    Jev
+  keep     54  E.g Databricks                           Jev
+  keep     23  KubeVirt                                 Jev
+  keep     22  Xen                                      Jev
+  keep     22  WSUS                                     Jev
+  keep     16  SRT                                      Jev
+  keep     15  Spacelift                                Jev
+  keep     14  Bull                                     Jev
+  keep     13  Gerrit                                   Jev
+  keep     12  NVIDIA GPU Operator                      Jev
+  keep     10  VictoriaLogs                             Jev
+  keep      9  Kubebuilder                              Jev
+  keep      8  AsyncAPI                                 Jev
+  keep      8  Power Fx                                 Jev
+  keep      8  OpenConfig gNMI                          Jev
+  keep      8  OBIEE                                    Jev
+  keep      7  Lambda AWS                               Jev
+  keep      7  AliCloud                                 Jev
+  keep      6  Scripted REST APIs                       Jev
+  keep      6  Google Workspace APIs                    Jev
+  keep      6  Azure VMware                             Jev
+  keep      6  Claroty                                  Jev
+  keep      6  LogQL                                    Jev
+  keep      5  AirWatch                                 Jev
+  keep      5  YARA-L                                   Jev
+  keep      5  SageMaker AI                             Jev
+  keep      4  ScikitLearn                              Jev
+  keep      4  CMSIS-NN                                 Jev
+  keep      4  Grafana Faro                             Jev
+  keep      4  Microsoft Azure DevOps                   Jev
+  keep      3  SuiteTalk APIs                           Jev
+  keep      3  Sysmon                                   Jev
+  keep      3  GNU Radio                                Jev
+  keep      3  OPNsense                                 Jev
+  keep      3  Samsung Tizen                            Jev
+  keep      3  JSON Web Tokens                          Jev
+  keep      3  Peplink                                  Jev
+  keep      3  G.729                                    Jev
+  keep      3  iPerf3                                   Jev
+  keep      3  Alto XSOAR                               Jev
+
+Segments that name a skill not found (140), for the reviewer to name it:
+
+  vacancy 63994  Jev {'none': 0.0, 'missed': 0.99, 'covered': 0.01}
+  found: MATLAB, Python
+  You’ll build analyses in Matlab, Julia, or Python to prove the performance of your controls designs, and execute Monte-Carlo simulations to validate complex dynamics.
+
+  vacancy 177951  Jev {'covered': 0.11, 'none': 0.25, 'missed': 0.64}
+  found: nothing
+  Maintain thorough documentation and follow organizational processes to ensure successful implementation of Zenoti software features and products.
+
+  vacancy 49641  Jev {'none': 0.32, 'covered': 0.19, 'missed': 0.49}
+  found: nothing
+  Drive infrastructure as code, CI/CD, and GitOps practices that let engineering teams ship safely and quickly
+
+  vacancy 181704  Jev {'covered': 0.1, 'missed': 0.66, 'none': 0.24}
+  found: nothing
+  Familiarity with S1000D technical publication standards and IETM authoring tools (RapidAuthor or equivalent)
+
+  vacancy 40265  Jev {'covered': 0.15, 'missed': 0.83, 'none': 0.02}
+  found: JSON, SOAP
+  Strong understanding of REST/SOAP APIs, JSON, authentication, and error integration (retries, timeouts, idempotency)
+
+  vacancy 928  Jev {'missed': 0.81, 'none': 0.14, 'covered': 0.05}
+  found: nothing
+  Train and evaluate robot policies (imitation learning, diffusion policies, VLA, RL fine-tuning) on our data and public baselines, in simulation and on real robots.
+
+  vacancy 43165  Jev {'covered': 0.07, 'none': 0.09, 'missed': 0.84}
+  found: nothing
+  AI Agent Development: Develop, configure, deploy, and optimize AI agents using Cresta’s AI platform and tools.
+
+  vacancy 125768  Jev {'covered': 0.07, 'missed': 0.69, 'none': 0.24}
+  found: nothing
+  Direct experience with Real-Time Bidding (RTB), OpenRTB protocol, and Mobile DSP/SSP/Ad Exchange architecture.
+
+  vacancy 52917  Jev {'none': 0.05, 'missed': 0.82, 'covered': 0.13}
+  found: Unix
+  Exposure to Unix/Shell Scripting
+
+  vacancy 125749  Jev {'missed': 0.58, 'covered': 0.1, 'none': 0.32}
+  found: ML Ops
+  Innovation: Stay ahead of emerging trends in Generative AI, ML Ops, and Big Data to introduce best practices and next-gen solutions.
+
+  vacancy 111937  Jev {'missed': 0.39999999999999997, 'covered': 0.24, 'none': 0.36}
+  found: nothing
+  Own orchestration and the delivery path for data: scheduled and event-driven pipelines, CI/CD and testing for data code, environments, backfills and schema change.
+
+  vacancy 82481  Jev {'none': 0.09, 'covered': 0.22, 'missed': 0.69}
+  found: Python
+  The hands-on coding skills needed to rapidly implement and iterate on your ideas in Python and your favorite ML framework
+
+  vacancy 192600  Jev {'covered': 0.15, 'none': 0.24, 'missed': 0.61}
+  found: nothing
+  Significant hands-on experience with Calypso implementations and technical integrations
+
+  vacancy 133739  Jev {'missed': 0.88, 'none': 0.08, 'covered': 0.04}
+  found: Power Automate
+  Experience in Automation Anywhere, Power Automate
+
+  vacancy 182506  Jev {'covered': 0.35, 'none': 0.01, 'missed': 0.64}
+  found: Bash, Git, JavaScript, PR-based, Python, TypeScript
+  Strong Python skills, with hands-on experience in Git workflows, PR-based code review, automated testing, and CI/CD. Go, Bash, or JavaScript/TypeScript is a plus.
+
+  vacancy 157476  Jev {'covered': 0.09, 'missed': 0.8, 'none': 0.11}
+  found: VoIP
+  As a VoIP Engineer you understand how the Telnyx Telephony Engine works as whole, while also being able to identify each underlying service and its purpose.
+
+  vacancy 133447  Jev {'none': 0.14, 'missed': 0.71, 'covered': 0.15}
+  found: MCP
+  Security for AI, and AI for security: Set direction for how AI is deployed safely at Roblox: agent sandboxing, tool and MCP server access, scoped and short-lived credentials, and control over the data agents can reach. Then turn it around and use AI to accelerate the security work itself, from triage and investigation to code and configuration review.
+
+  vacancy 170299  Jev {'missed': 0.99, 'covered': 0.01, 'none': 0.0}
+  found: nothing
+  Design, build, and maintain our core backend platform and services using Go.
+
+  vacancy 101809  Jev {'covered': 0.25, 'missed': 0.74, 'none': 0.01}
+  found: Kotlin, ViewModel
+  Our app is 100% Kotlin, built using MVVM (Model View ViewModel) and Coordinators, and modularised by product feature.
+
+  vacancy 186429  Jev {'none': 0.36, 'missed': 0.4, 'covered': 0.24}
+  found: lakehouse
+  End-to-end modern data platform architecture design (lakehouse, ingestion, processing, access layers)
+
+  vacancy 107446  Jev {'missed': 0.68, 'covered': 0.08, 'none': 0.23}
+  found: nothing
+  We’re looking for a deeply technical Member of Technical Staff to own RL and post-training for large-scale omni models.
+
+  vacancy 19388  Jev {'missed': 0.64, 'none': 0.31, 'covered': 0.05}
+  found: nothing
+  Recommend and validate optimizations at code level (async patterns, caching, batching), database level (query tuning, indexing, partitioning), and infrastructure level (resource limits, autoscaling).
+
+  vacancy 168212  Jev {'missed': 0.76, 'none': 0.13, 'covered': 0.11}
+  found: VPC
+  Strong understanding of cloud networking, VPCs, routing, load balancers, and hybrid connectivity.
+
+  vacancy 50809  Jev {'covered': 0.13, 'none': 0.01, 'missed': 0.86}
+  found: Kubernetes
+  Experience with advanced Kubernetes networking (CNI plugins, network policies, service mesh).
+
+  vacancy 148427  Jev {'missed': 0.57, 'none': 0.31, 'covered': 0.12}
+  found: nothing
+  As part of incidents, analyze high-risk accounts to identify fraudulent merchants, card testing, account takeovers, and other fraud vectors, classifying them using FT3 to standardize threat intelligence.
+
+  vacancy 165852  Jev {'missed': 0.95, 'covered': 0.04, 'none': 0.01}
+  found: Linux, Linux-based
+  Experience with RTOS and/or Linux-based embedded systems
+
+  vacancy 187661  Jev {'missed': 0.8, 'covered': 0.18, 'none': 0.02}
+  found: OAuth, SOAP
+  Implement REST/SOAP APIs with OAuth, authentication, encryption, and API security.
+
+  vacancy 166486  Jev {'missed': 0.56, 'none': 0.3, 'covered': 0.14}
+  found: OMS, Salesforce, Salesforce OMS
+  Integrate with Order Management Systems (OMS) such as Fluent OMS, Salesforce OMS, or custom-built solutions.
+
+  vacancy 137638  Jev {'covered': 0.11, 'missed': 0.52, 'none': 0.37}
+  found: nothing
+  Knowledge of and/or application of compliance and security frameworks and standards such as COSO, NIST, ISO
+
+  vacancy 114565  Jev {'covered': 0.09, 'missed': 0.67, 'none': 0.24}
+  found: DISA, STIGs
+  Hands-on hardening to CIS Benchmarks and DISA STIGs within a FedRAMP (or similar) program; familiarity with NIST CSF, SOC 2, or ISO 27001; and experience partnering with AppSec and GRC teams to produce compliance evidence.
+
+  vacancy 9950  Jev {'missed': 0.53, 'none': 0.02, 'covered': 0.45}
+  found: Gurobi
+  Hands-on Technical Agility: Strong multi-dimensional modelling skills and direct experience or comfortable familiarity with mathematical optimization engines/solvers (such as Gurobi, Simplex, or similar).
+
+  vacancy 138556  Jev {'covered': 0.02, 'none': 0.0, 'missed': 0.98}
+  found: Python, RESTful API
+  Strong Go (preferred), or comparable experience in Python, building and serving REST APIs
+
+  vacancy 95606  Jev {'missed': 0.97, 'none': 0.0, 'covered': 0.03}
+  found: Amazon EKS, Azure Kubernetes Service, Defender, JFrog Artifactory, Kubernetes
+  Harden AKS/EKS using pod security, OPA/Gatekeeper, network policies, secrets management, and runtime protections; govern artifacts via JFrog Artifactory (trust, allow/deny, immutability) and integrate Kubernetes signals into Defender for Cloud.
+
+  vacancy 69525  Jev {'missed': 0.61, 'covered': 0.09, 'none': 0.3}
+  found: nothing
+  Define SLOs/SLIs and lead incident response. Establish measurable reliability targets, run high-severity incident response, lead blameless post-mortems, and drive systemic fixes and automation to prevent recurrence.
+
+  vacancy 60826  Jev {'missed': 0.49, 'covered': 0.17, 'none': 0.34}
+  found: EPM, LLM
+  Participate in FP&A modernization initiatives — EPM platform rollout, process automation, and AI/LLM workflow experimentation.
+
+  vacancy 209369  Jev {'missed': 0.97, 'covered': 0.03, 'none': 0.0}
+  found: Android, animations, Dagger, JUnit, Kotlin, Kotlin Coroutines, Music, Navigation
+  Rock solid Kotlin, Kotlin Coroutines, Kotlin Flow, Dagger 2, MVVM, Clean Architecture, Background Services, Music Player Service, Android animations, Jetpack Navigation, and JUnit tests
+
+  vacancy 89667  Jev {'none': 0.07, 'missed': 0.53, 'covered': 0.4}
+  found: Amazon EKS, AWS, Kubernetes
+  Own and evolve Liberate’s production cloud foundation across AWS, Kubernetes/EKS, networking, compute, storage, data services, environment isolation, and production access.
+
+  vacancy 45333  Jev {'covered': 0.18, 'missed': 0.53, 'none': 0.29}
+  found: Lakeflow
+  We are reinventing Data Engineering with Lakeflow - a unified product and experience for simple data ingestion, declarative data transformation, and real-time streaming.
+
+  vacancy 196900  Jev {'none': 0.02, 'missed': 0.83, 'covered': 0.15}
+  found: Kubernetes
+  Open-source contributions to Kubernetes, Go, cloud-native, or platform engineering projects.
+
+  vacancy 6534  Jev {'missed': 0.81, 'covered': 0.12, 'none': 0.07}
+  found: SQL
+  Familiarity working with SQL and/or NoSQL databases
+
+  vacancy 207955  Jev {'covered': 0.08, 'missed': 0.81, 'none': 0.1}
+  found: Architect, MCP
+  Architect and prototype agentic workflows and integrations; wiring Simpplr's AI Agents into customer systems via APIs and MCP tool connections to prove value before contracts are signed.
+
+  vacancy 18562  Jev {'none': 0.27, 'covered': 0.28, 'missed': 0.45}
+  found: CLM, ERP, NetSuite, OneStream, Salesforce
+  The role owns integrations end to end, from requirements and architecture through production support, across NetSuite ERP, OneStream CPM, Salesforce CRM, Luminance CLM, enterprise data platforms, SaaS applications, and partner systems.
+
+  vacancy 108666  Jev {'missed': 0.52, 'covered': 0.39, 'none': 0.09}
+  found: LLM, SQL, text-to-SQL
+  Hands-on experience applying Agentic AI to data engineering (text-to-SQL, LLM-powered remediation, self-healing pipelines, automated metadata/lineage management and more)
+
+  vacancy 122722  Jev {'missed': 0.58, 'covered': 0.06, 'none': 0.36}
+  found: nothing
+  RLHF (Reinforcement Learning from Human Feedback): providing the human "ground truth" to help models align with professional standards in software engineering and data science.
+
+  vacancy 122866  Jev {'none': 0.27, 'missed': 0.68, 'covered': 0.05}
+  found: ERP
+  Data Management Systems: experience with CRM platforms, ERP systems, or document management tools.
+
+  vacancy 81609  Jev {'none': 0.02, 'covered': 0.13, 'missed': 0.85}
+  found: Microsoft Intune, Microsoft Windows
+  Establish and maintain laptop performance baselines and remediation workflows — including startup time optimization, memory and CPU utilization profiling, background service rationalization, and bloatware removal — using Intune Proactive Remediations (detection + remediation script pairs), Endpoint Analytics scores, and Windows performance counters to identify degradation patterns before they generate tickets, and to enforce consistent performance standards across both hardware models.
+
+  vacancy 18173  Jev {'covered': 0.34, 'missed': 0.46, 'none': 0.2}
+  found: 365 Finance, Dynamics 365 Finance, Microsoft Dynamics
+  5+ years of hands-on experience with Microsoft Dynamics 365 Finance & Supply Chain Management.
+
+  vacancy 66499  Jev {'none': 0.3, 'missed': 0.61, 'covered': 0.09}
+  found: ERP
+  You will own this integration end to end, from API and data mapping through production monitoring and troubleshooting, and then expand into integrations across our MES, WMS, QMS, and ERP systems as the company scales.
+
+  vacancy 45407  Jev {'none': 0.01, 'covered': 0.07, 'missed': 0.92}
+  found: Apache, Apache Spark, Databricks, Delta Lake, MLflow
+  Become an expert in, and promote Databricks inspired open-source projects (Apache Spark , Delta Lake, MLflow, and Koalas) across developer communities through meetups, conferences, and webinars
+
+  vacancy 29224  Jev {'missed': 0.61, 'covered': 0.08, 'none': 0.31}
+  found: nothing
+  Strong applied experience with LLMs: prompting, structured output, tool and function calling, evaluation, and retrieval-augmented generation (RAG) – together with the judgment to recognize when a model should not be used at all.
+
+  vacancy 11157  Jev {'missed': 0.67, 'covered': 0.14, 'none': 0.19}
+  found: Confluence
+  Program Ownership: Manage and scale Anduril’s SETA program, designing innovative training methods across multiple channels (in-person, Slack, Confluence, email).
+
+  vacancy 209493  Jev {'covered': 0.03, 'none': 0.0, 'missed': 0.97}
+  found: Android, animations, Dagger, JUnit, Kotlin, Kotlin Coroutines, Music, Navigation
+  Rock solid experience with Kotlin, Kotlin Coroutines, Kotlin Flow, Dagger 2, MVVM, Clean Architecture, Background Services, Music Player Service, Android Animations, Jetpack Navigation, JUnit tests
+
+  vacancy 44999  Jev {'covered': 0.03, 'missed': 0.8, 'none': 0.17}
+  found: PS
+  Lead high-stakes enterprise engagements: partner with Account Executives, Engagement Managers, and Field Engineering leaders to position and deliver transformational PS programs spanning data migrations, AI/ML platforms, and advanced analytics
+
+  vacancy 100747  Jev {'none': 0.01, 'missed': 0.65, 'covered': 0.34}
+  found: AWS, Azure, Google Cloud Platform, MongoDB
+  Our cloud-native platform, MongoDB Atlas, is the only globally distributed, multi-cloud data platform and is available across AWS, Google Cloud, and Microsoft Azure.
+
+  vacancy 53704  Jev {'missed': 0.82, 'none': 0.1, 'covered': 0.08}
+  found: nothing
+  Manage large, complex mainframe environments including z/OS Parallel Sysplex, Coupling Facility, and Disaster Recovery (DR) configurations
+
+  vacancy 211266  Jev {'covered': 0.24, 'missed': 0.53, 'none': 0.23}
+  found: Kubernetes
+  Container-driven development (Kubernetes, microservices)
+
+  vacancy 147170  Jev {'none': 0.14, 'covered': 0.36, 'missed': 0.5}
+  found: MCP
+  Use MCP tools (good to have) for assisted test creation and self-healing automation.
+
+  vacancy 5964  Jev {'covered': 0.47, 'none': 0.05, 'missed': 0.48}
+  found: Android, iOS
+  Comfort working with iOS and Android mobile platforms and their development tools
+
+  vacancy 209581  Jev {'covered': 0.15, 'missed': 0.84, 'none': 0.01}
+  found: Kotlin
+  Kotlin Flow
+
+  vacancy 160880  Jev {'none': 0.38, 'missed': 0.45, 'covered': 0.17}
+  found: nothing
+  You will learn and adopt best practices like writing clean and reusable code using practices like TDD, mobile architecture patterns, design, and pair programming
+
+  vacancy 65229  Jev {'covered': 0.12, 'none': 0.39, 'missed': 0.49}
+  found: nothing
+  Regression Testing: Perform regression testing to identify and track software defects and ensure that they are resolved before release
+
+  vacancy 67934  Jev {'covered': 0.46, 'none': 0.05, 'missed': 0.49}
+  found: Code's, Ruby
+  The ability to read, debug, and reason about code. Most of our teams work in Go; some work in Ruby. You can discuss a piece of code's behavior, performance, and failure modes
+
+  vacancy 19028  Jev {'missed': 0.63, 'covered': 0.09, 'none': 0.28}
+  found: nothing
+  Implement GitOps workflows for cluster configuration management.
+
+  vacancy 129315  Jev {'covered': 0.08, 'none': 0.1, 'missed': 0.81}
+  found: SIEM
+  Demonstrable experience with building, troubleshooting and optimizing Detection & Response technologies (e.g., SIEM, Threat Intelligence Platform, Automation)
+
+  vacancy 5449  Jev {'none': 0.02, 'missed': 0.56, 'covered': 0.42}
+  found: Apache Kafka, Apache Spark, RabbitMQ
+  Hands-on experience working with technologies like Spark for data processing, ETLs for data pipelines and queueing systems (Kafka, RabbitMQ)
+
+  vacancy 125762  Jev {'covered': 0.35, 'none': 0.09, 'missed': 0.56}
+  found: Langfuse
+  Experience with agent observability, tracing, and guardrails — tools like Langfuse or equivalent — to ensure reliability, safety, and debuggability of agentic systems.
+
+  vacancy 197917  Jev {'covered': 0.17, 'missed': 0.8, 'none': 0.03}
+  found: Apple, iOS, Xcode
+  Familiarity with Xcode, iOS Simulator and common Apple development and diagnostic tools
+
+  vacancy 205054  Jev {'missed': 0.85, 'none': 0.01, 'covered': 0.14}
+  found: Google Cloud Platform, Google Kubernetes Engine, Google Vertex AI, IAM, VPC
+  GCP Ecosystem Mastery: Deep, practical experience with Google Cloud Platform (GCP), including Vertex AI, Cloud Storage, GKE, Cloud Run, and IAM/VPC configurations.
+
+  vacancy 191591  Jev {'missed': 0.54, 'covered': 0.44, 'none': 0.02}
+  found: Active Directory
+  Active Directory Domain Services
+
+  vacancy 108810  Jev {'covered': 0.13, 'missed': 0.66, 'none': 0.21}
+  found: Anthropic, MCP, OpenAI
+  Model tooling across the Anthropic, OpenAI, and Google ecosystems; Model Context Protocol (MCP) integrations and plugin development; agent-based apps.
+
+  vacancy 139360  Jev {'none': 0.02, 'covered': 0.07, 'missed': 0.91}
+  found: nothing
+  Experience with Go.
+
+  vacancy 87054  Jev {'missed': 0.54, 'none': 0.35, 'covered': 0.11}
+  found: nothing
+  Educate current partners on KnowBe4 products, with emphasis on tech enablement.
+
+  vacancy 172481  Jev {'missed': 0.52, 'none': 0.44, 'covered': 0.04}
+  found: nothing
+  Stay at the forefront of research in computer vision, multimodal learning, generative modeling, and foundation models, and apply emerging techniques to real-world problems.
+
+  vacancy 27777  Jev {'covered': 0.12, 'missed': 0.83, 'none': 0.05}
+  found: BGP
+  Deep understanding of service provider and enterprise networking, including BGP, routing and switching, internet transit, IP addressing, QoS and network interconnects.
+
+  vacancy 194523  Jev {'missed': 0.51, 'none': 0.01, 'covered': 0.48}
+  found: Grafana Mimir, Loki, Prometheus, Pyroscope
+  It allows our customers to leverage the best open source observability software – including Prometheus, Mimir, Loki, Tempo, and Pyroscope – without the overhead of installing, maintaining and scaling their own observability stack.
+
+  vacancy 86647  Jev {'missed': 0.84, 'none': 0.01, 'covered': 0.15}
+  found: GraphQL
+  Experience with GraphQL (urql or Apollo)
+
+  vacancy 200159  Jev {'none': 0.0, 'covered': 0.08, 'missed': 0.92}
+  found: Amazon EC2, Amazon RDS, Amazon S3, AWS
+  Experience supporting AWS infrastructure (e.g., EC2, S3, RDS, Security Groups, and Load Balancing).
+
+  vacancy 155539  Jev {'missed': 0.5, 'none': 0.43, 'covered': 0.07}
+  found: nothing
+  RF/radar signal processing, optimization, waveform design, electronic warfare, machine learning, adaptive signal processing, AI/ML algorithm development, algorithm development, test & evaluation, model & simulation, or systems engineering, test engineering, radar modelling, or RF systems prototyping
+
+  vacancy 134789  Jev {'none': 0.05, 'covered': 0.05, 'missed': 0.9}
+  found: nothing
+  AWSの利用経験
+
+  vacancy 23958  Jev {'none': 0.33, 'missed': 0.62, 'covered': 0.05}
+  found: nothing
+  Develop and integrate ML and deep learning models (e.g., predictive models, anomaly detection, demand forecasting) as core capabilities within agentic pipelines
+
+  vacancy 38584  Jev {'covered': 0.12, 'missed': 0.87, 'none': 0.01}
+  found: JavaScript
+  Practical experience in DevSecOps and proficiency in at least one scripting language like JavaScript or Go
+
+  vacancy 41442  Jev {'missed': 0.41000000000000003, 'covered': 0.3, 'none': 0.29}
+  found: Salesforce
+  Deep knowledge of Salesforce configuration, security model, automation tools, reporting, and data management.
+
+  vacancy 168044  Jev {'missed': 0.54, 'covered': 0.43, 'none': 0.03}
+  found: Zerto
+  Experience with Zerto, including VPG Migration and VPG Setup.
+
+  vacancy 140043  Jev {'missed': 0.95, 'covered': 0.03, 'none': 0.02}
+  found: nothing
+  7+ years of development experience with at least 4 years in OutSystems development.
+
+  vacancy 35672  Jev {'missed': 0.65, 'covered': 0.09, 'none': 0.26}
+  found: nothing
+  Hands-on with the boot chain: bootloader, kernel configuration, drivers, and device tree.
+
+  vacancy 9908  Jev {'covered': 0.11, 'none': 0.33, 'missed': 0.56}
+  found: LLMOps
+  Strong expertise in MLOps and LLMOps, ensuring scalable, reliable, and monitorable model deployments.
+
+  vacancy 118607  Jev {'covered': 0.25, 'none': 0.26, 'missed': 0.49}
+  found: nothing
+  Familiarity with CI/CD pipelines and GitOps workflows for infrastructure and application delivery.
+
+  vacancy 49598  Jev {'covered': 0.29, 'missed': 0.7, 'none': 0.01}
+  found: GenAI, Kubernetes
+  With decades of multicloud experience, we have specializations in Kubernetes, GenAI, CloudOps, and more.
+
+  vacancy 163013  Jev {'covered': 0.25, 'none': 0.18, 'missed': 0.57}
+  found: VHDL
+  FPGA/VHDL security and RF/radio security.
+
+  vacancy 89633  Jev {'none': 0.1, 'missed': 0.82, 'covered': 0.08}
+  found: nothing
+  Review code and mentor other engineers, with particular focus on architecture, testing, and Compose best practices.
+
+  vacancy 6576  Jev {'missed': 0.72, 'covered': 0.06, 'none': 0.22}
+  found: nothing
+  Leverage the tools, frameworks, and partners of the Algolia ecosystem to validate technical and functional fit.
+
+  vacancy 110741  Jev {'none': 0.03, 'covered': 0.22, 'missed': 0.75}
+  found: Jakarta EE, Java, Spring, Spring MVC, SQL
+  Extensive hands-on experience and expertise in object-oriented design methodology and application development using Java/J2EE, Design Patterns,DSA, Multithreading, Spring MVC, SQL, Web services.
+
+  vacancy 133490  Jev {'covered': 0.13, 'missed': 0.86, 'none': 0.01}
+  found: WebAuthn
+  Secure Product & Auth Protocols: Deep domain knowledge of client-side security architecture, passkeys/WebAuthn, device attestation, and smooth protocol integration that balances robust security with effortless user onboarding.
+
+  vacancy 179174  Jev {'none': 0.02, 'missed': 0.74, 'covered': 0.24}
+  found: Engine’s, Jenkins, Unreal Engine
+  We are seeking a Build Systems Engineer with experience running production game development pipelines in the cloud to migrate, support, and optimize standardized build environments across both Unreal Engine’s Horde and Jenkins.
+
+  vacancy 213077  Jev {'missed': 0.58, 'covered': 0.41, 'none': 0.01}
+  found: React
+  Connaissance de React / Front-end est un plus
+
+  vacancy 209384  Jev {'none': 0.03, 'missed': 0.59, 'covered': 0.38}
+  found: iOS, Node.js
+  Experience with iOS, Web or NodeJS
+
+  vacancy 28763  Jev {'covered': 0.04, 'missed': 0.61, 'none': 0.35}
+  found: VM-based
+  Establish best practices for patch management, base-image hardening, and version management across containerized and VM-based environments
+
+  vacancy 96568  Jev {'covered': 0.42, 'missed': 0.56, 'none': 0.02}
+  found: Azure
+  Own the strategy, architecture, and day-to-day operations of the firm's Microsoft Azure environment, including compute, storage, networking, and identity services.
+
+  vacancy 140010  Jev {'none': 0.04, 'covered': 0.3, 'missed': 0.66}
+  found: Linux, Linux-based
+  Linux & Network Infrastructure: Develop and maintain automation for Linux-based systems and network appliances, including system bootstrapping, secure configuration generation, package and software management, network configuration, updates, and validation.
+
+  vacancy 85199  Jev {'missed': 0.72, 'none': 0.23, 'covered': 0.05}
+  found: nothing
+  Researchers lean heavily on statistical analysis, machine learning, and data engineering skills; applying the results of their research to forecasts and predictive trading models.
+
+  vacancy 145057  Jev {'none': 0.02, 'missed': 0.76, 'covered': 0.22}
+  found: Docker, Kubernetes
+  Deep hands-on experience with Docker, Kubernetes, security architecture, and integrations across multiple cloud and frontier model providers
+
+  vacancy 6459  Jev {'covered': 0.23, 'none': 0.01, 'missed': 0.76}
+  found: iOS, Swift, SwiftUI
+  Typical projects include Swift and SwiftUI feature implementation, iOS media framework integrations, and backend API connectivity.
+
+  vacancy 182643  Jev {'missed': 0.86, 'covered': 0.12, 'none': 0.02}
+  found: Google Kubernetes Engine, IAM
+  Security & DevSecOps: IAM, GKE Workload Identity, security baselines, governance and policy guardrails, CI/CD pipelines, observability and monitoring
+
+  vacancy 59039  Jev {'covered': 0.11, 'missed': 0.7, 'none': 0.19}
+  found: LLM
+  Define and enforce security architecture standards for AI, ML, and LLM platforms across cloud, hybrid, on-prem, and OT-adjacent environments
+
+  vacancy 70672  Jev {'covered': 0.03, 'none': 0.22, 'missed': 0.75}
+  found: Architect
+  Architect, govern, and maintain the ground segment's behavioral and structural SysML models. Ensure model consistency, maintain tight bidirectional traceability to software user stories, and enforce MBSE modeling standards across the engineering teams.
+
+  vacancy 117534  Jev {'covered': 0.04, 'missed': 0.93, 'none': 0.03}
+  found: nothing
+  Create custom scripts using Suite Script 2.1
+
+  vacancy 212349  Jev {'missed': 0.94, 'none': 0.02, 'covered': 0.04}
+  found: STK
+  Hands-on experience with mission analysis tools such as STK, FreeFlyer, GMAT, or similar software.
+
+  vacancy 185394  Jev {'missed': 0.56, 'covered': 0.43, 'none': 0.01}
+  found: .NET, Java, JavaScript, NET, Node, Node.js, Python, TypeScript, Visualforce
+  Experience working with one or more of the following: Python, Typescript, Node.js (MEAN stack), Java, .NET , Visualforce.
+
+  vacancy 214282  Jev {'missed': 0.96, 'none': 0.01, 'covered': 0.03}
+  found: Claroty
+  Worked with advanced monitoring software and hardware products made for OT environments such as Claroty, Dragos, Nozomi
+
+  vacancy 92099  Jev {'covered': 0.2, 'none': 0.01, 'missed': 0.79}
+  found: .NET, .NET Framework, Apache Solr, Java, Microsoft SQL Server, NET, NET Framework, Python, SQL
+  Platform team uses state of the art modern technologies like .Net framework, Python, Java, SQL Server, My SQL, Graph DB, SOLR, and a lot of other tools & technologies serving millions of users with hundreds of million transactions everyday through a scalable and fault tolerant architecture.
+
+  vacancy 31413  Jev {'missed': 0.45, 'covered': 0.43, 'none': 0.12}
+  found: GitLab, Jenkins
+  Familiarity with CI/CD tools and practices (Jenkins, GitLab).
+
+  vacancy 89927  Jev {'none': 0.46, 'covered': 0.06, 'missed': 0.48}
+  found: nothing
+  Solid background in Machine Learning systems research and experience with performance evaluation and performance modeling.
+
+  vacancy 13723  Jev {'none': 0.03, 'covered': 0.41, 'missed': 0.5599999999999999}
+  found: OIC, Oracle, Oracle Fusion, Oracle Integration, Oracle Integration Cloud
+  Design and implement integrations between Oracle Fusion Service and other enterprise applications using Oracle Integration Cloud (OIC) or other middleware solutions.
+
+  vacancy 125592  Jev {'covered': 0.3, 'none': 0.13, 'missed': 0.57}
+  found: Android, iOS, macOS, Microsoft Windows
+  You will work collaboratively in a cross-functional team, including backend API, web frontend, Mac, Windows, and Android/iOS mobile developers, to ensure seamless integration and optimal performance across various client applications.
+
+  vacancy 119370  Jev {'none': 0.26, 'missed': 0.68, 'covered': 0.06}
+  found: nothing
+  Execute end-to-end testing and operational verification of relay protection systems, SCADA, RTUs, IEC 61850 networks, GOOSE messaging, telecom systems, breaker controls, and station communications.
+
+  vacancy 108498  Jev {'covered': 0.17, 'missed': 0.78, 'none': 0.05}
+  found: AWS
+  Design, build, and deploy high-throughput event-driven integration flows, API gateways, and async orchestration workflows using AWS architectures and iPaaS platforms.
+
+  vacancy 24982  Jev {'covered': 0.14, 'none': 0.38, 'missed': 0.48}
+  found: nothing
+  Experience working with the sudo plugin framework.
+
+  vacancy 85485  Jev {'missed': 0.88, 'covered': 0.1, 'none': 0.02}
+  found: Claude, Claude Code, Cursor
+  Experience in setting up and deploying AI engineering tools like vector databases, AI model hosting and monitoring tools and in driving security best practices with AI coding assistants (like Claude Code, Cursor, etc.).
+
+  vacancy 214504  Jev {'missed': 0.93, 'none': 0.02, 'covered': 0.05}
+  found: TRACE32
+  Post-silicon debug software (e.g. Trace32, OpenOCD, TARMAC) and lab bench tools (analyzers, scopes, meters)
+
+  vacancy 3808  Jev {'none': 0.16, 'missed': 0.79, 'covered': 0.05}
+  found: nothing
+  You will focus on designing and maintaining scalable, reliable, and developer-friendly frontend and backend test automation solutions, as well as CI pipelines, enabling teams to deliver changes with confidence and receive fast, actionable feedback.
+
+  vacancy 192376  Jev {'none': 0.03, 'covered': 0.15, 'missed': 0.82}
+  found: anti-virus, Microsoft Windows, VMware, VMware vSphere, Windows Server
+  Familiarity with: endpoint security, anti-virus, and malware; Windows Server administration; VMWare vSphere and Horizon; medical environments and HIPAA compliance.
+
+  vacancy 105381  Jev {'covered': 0.13, 'missed': 0.67, 'none': 0.2}
+  found: nothing
+  Modify and enhance the Chromium engine to support new features.
+
+  vacancy 74987  Jev {'missed': 0.69, 'covered': 0.09, 'none': 0.22}
+  found: Bluebeam, Navisworks, SketchUp
+  Basic understanding of construction tools like Bluebeam, SketchUp, Navisworks, BIM360, etc.
+
+  vacancy 48922  Jev {'missed': 0.58, 'none': 0.05, 'covered': 0.37}
+  found: Microsoft Intune, Microsoft SharePoint
+  Lead technical projects including SharePoint migrations, Intune deployments, and security implementations
+
+  vacancy 148765  Jev {'none': 0.24, 'missed': 0.73, 'covered': 0.03}
+  found: Stripe
+  While being an integral part of almost every product line at Stripe (e.g., Payments, Radar, Capital, Billing, etc.), we have lots of exciting opportunities to innovate in ML Platform at Stripe.
+
+  vacancy 60350  Jev {'missed': 0.56, 'covered': 0.04, 'none': 0.4}
+  found: a11y
+  Solid front-end fundamentals: responsive UI, accessibility (a11y), internationalization (i18n), localization, and performance.
+
+  vacancy 48062  Jev {'none': 0.08, 'covered': 0.37, 'missed': 0.55}
+  found: Terraform
+  Experience building and maintaining Infrastructure as Code at scale (e.g. Terraform modules, State management, CI/CD integration).
+
+  vacancy 10611  Jev {'covered': 0.23, 'missed': 0.76, 'none': 0.01}
+  found: Power BI, Python, SQL, Tableau, TypeScript, Visual Basic for Applications
+  Experience and expertise developing insights and solutions using data visualization tools: SQL, Python, Typescript, Tableau, PowerBI, PLTR Foundry, MS VBA, etc...
+
+  vacancy 77297  Jev {'covered': 0.11, 'none': 0.05, 'missed': 0.84}
+  found: GraphQL
+  Proficient in REST and GraphQL API integration, modern build tools, CI/CD pipelines, and cloud deployment platforms.
+
+  vacancy 70972  Jev {'none': 0.04, 'missed': 0.7, 'covered': 0.26}
+  found: Duo Security, Jamf, Microsoft Intune, Workspace
+  Duo Trusted Endpoints — Integration with endpoint management platforms (Intune, Jamf, Workspace ONE, etc.)
+
+  vacancy 186407  Jev {'covered': 0.11, 'missed': 0.65, 'none': 0.24}
+  found: nothing
+  Design and build security controls and automation across applications, cloud infrastructure, identity and access, CI/CD and infrastructure as code.
+
+  vacancy 74306  Jev {'missed': 0.72, 'covered': 0.26, 'none': 0.02}
+  found: Git, Markdown, MDX
+  Docs-as-code: Markdown or MDX in a static site generator, versioned in git
+
+  vacancy 37397  Jev {'missed': 0.66, 'none': 0.17, 'covered': 0.17}
+  found: HTTP, RESTful API
+  You're not afraid of command-line interfaces, RESTful APIs, or analyzing HTTP request and response in a browser’s web inspector.
+
+  vacancy 201728  Jev {'none': 0.31, 'covered': 0.09, 'missed': 0.6}
+  found: nothing
+  Ensure data pipelines, Data Lake, and Data Warehouse platforms can be recovered and restored during disaster scenarios.
+
+  vacancy 105084  Jev {'missed': 0.71, 'none': 0.21, 'covered': 0.08}
+  found: nothing
+  Kernel-level competence: device drivers, device tree, and debugging kernel or boot failures on real hardware
+
+  vacancy 143703  Jev {'none': 0.02, 'missed': 0.92, 'covered': 0.06}
+  found: DHCP, DNS, NTP, Precision Time Protocol, SNMP, TCP
+  Working knowledge of network protocols (TCP/IP, DNS, DHCP, SNMP, NTP, PTP etc.), firewall administration and cybersecurity technologies.
+
+  vacancy 213054  Jev {'missed': 0.63, 'none': 0.29, 'covered': 0.08}
+  found: nothing
+  Extensive experience in DRC/LVS debugging using Calibre, ICV, or similar physical verification tools.
+
+  vacancy 202001  Jev {'none': 0.11, 'missed': 0.82, 'covered': 0.07}
+  found: nothing
+  You'll lead Order-to-Cash design, configuration, and support in S/4HANA, working directly with business stakeholders and technical teams.
+
+  vacancy 60582  Jev {'missed': 0.46, 'covered': 0.3, 'none': 0.24}
+  found: ERP, SL
+  Support ERP workflows through Dynamics SL that directly power Order Management, Inventory Control, and Fulfillment — capabilities that underpin the on-time delivery of merchandise to fans globally.
+
+  vacancy 130914  Jev {'missed': 0.59, 'covered': 0.39, 'none': 0.02}
+  found: Elasticsearch
+  Leveraging your deep distributed systems expertise to design, build, and operate core pieces of our next-generation Serverless Elasticsearch offering, directly impacting the experience of customers worldwide.
+
+Jev has cost $1.0132 over every run of both issues, of the $4.00 limit
