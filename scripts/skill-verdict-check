@@ -1,0 +1,232 @@
+#!/usr/bin/env python3
+"""Checks Jev's skill decisions against the #38 and #40 reviews (#52, ADR-0013).
+
+    scripts/skill-verdict-check <check number> [size, default 200]
+
+Draws names the two reviews decided, half keeps and half drops, the drops stratified by the reason
+their note gives in proportion to how many each reason dropped. Left out are the 334 names #40 never
+reviewed and its `screened out` drops, which were screened on the name alone, and every name an
+earlier check drew. A name mentioned nowhere in the snapshot is passed over for the next one of its
+stratum, since a candidate always comes with segments.
+
+Jev reads the skill criterion, the name and three segments that mention it, and decides keep or drop
+and a category; labels go through skillloop's cache, so none is made twice. The check prints the
+agreement with the reviews and its 95% interval: it passes when the lower bound reaches 80%, fails
+when the upper bound stays below, and otherwise needs a larger size. Category agreement is scored
+apart, on the names both kept. Every disagreement is printed with what Jev read, for hand-reading.
+
+Once the disagreements are hand-read into skill-verdict-check-<check>-disagreements.tsv, the check
+also prints agreement with the right decision: a disagreement ruled `jev` is not a miss, and one
+ruled `unclear` is. Only disagreements are read, so this can only raise the raw figure.
+
+Each stratum is shuffled once with a fixed seed, so a larger draw of the same check begins with the
+smaller one. A check's names go into docs/measurements/skill-verdict-check-drawn.tsv, so a check run
+after a criterion revision draws names not yet drawn.
+
+The segments are the requirement text of the IN vacancies and the pile (ADR-0012), English and
+Spanish, boilerplate and headings left out, exported once from the development database, which has to
+hold classified-2026-10-06.dump, into a file next to the snapshot.
+"""
+
+import subprocess
+import sys
+from collections import Counter
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import jev  # noqa: E402
+import skillloop  # noqa: E402
+
+ARCHIVES = (
+    skillloop.REPO / "docs" / "measurements" / "taxonomy-review-2026-09-24.tsv",
+    skillloop.REPO / "docs" / "measurements" / "taxonomy-mined-review-2026-09-24.tsv",
+)
+
+UNDECIDED = ("screened out", "not reviewed")
+
+DRAWN = skillloop.REPO / "docs" / "measurements" / "skill-verdict-check-drawn.tsv"
+
+# The disagreements of a check, hand-read: one row each, its `right` column `jev`, `reviews` or `unclear`.
+RULINGS = skillloop.REPO / "docs" / "measurements" / "skill-verdict-check-{check}-disagreements.tsv"
+
+SEGMENTS = Path.home() / "oneprofile-snapshots" / "skill-segments-classified-2026-10-06.tsv"
+
+EXPORT = """
+select n.vacancy_id, regexp_replace(e->>'text', '\\s+', ' ', 'g')
+from normalized_vacancy n
+join vacancy v on v.id = n.vacancy_id,
+jsonb_array_elements(n.description_segments) e
+where v.language in ('en', 'es')
+and ((n.classification_state = 'IN' and n.classification_reason is null)
+     or n.classification_reason in ('DOMAIN_AMBIGUITY', 'SCOPE_AMBIGUITY'))
+and e->>'kind' <> 'HEADING'
+and not coalesce((e->>'boilerplate')::boolean, false)
+order by n.vacancy_id
+"""
+
+EXAMPLES = 3
+
+SEED = 52
+
+BAR = 0.80
+
+
+def read_reviewed():
+    """Each name form the decision record took from the reviews and a reviewer decided under the review
+    rules, with its spelling, decision, note and category, by name form."""
+    decisions = skillloop.read_decisions()
+    reviewed = {}
+    for archive in ARCHIVES:
+        with open(archive) as lines:
+            header, *rows = [line.rstrip("\n").split("\t") for line in lines if not line.startswith("#")]
+        for row in (dict(zip(header, row)) for row in rows):
+            form = skillloop.name_form(row["name"])
+            decided = decisions.get(form)
+            if (form in reviewed or row["note"] in UNDECIDED or not decided or decided["source"] not in ("#38", "#40")
+                    or decided["decision"] != row["verdict"]):
+                continue
+            reviewed[form] = {"name": row["name"], "decision": row["verdict"], "note": row["note"],
+                              "category": row["category"],
+                              "stratum": "keep" if row["verdict"] == "keep" else f"drop: {skillloop.drop_reason(row['note'])}"}
+    return reviewed
+
+
+def read_drawn():
+    """Every name form a check drew, with the check that drew it."""
+    if not DRAWN.exists():
+        return {}
+    with open(DRAWN) as lines:
+        rows = [line.rstrip("\n").split("\t") for line in lines if line.strip()][1:]
+    return {form: check for check, form, _ in rows}
+
+
+def record_drawn(check, drawn, reviewed):
+    """Writes this check's names into the drawn file, replacing any an earlier run of it wrote."""
+    rows = []
+    if DRAWN.exists():
+        with open(DRAWN) as lines:
+            rows = [line.rstrip("\n").split("\t") for line in lines if line.strip()][1:]
+    rows = [row for row in rows if row[0] != check] + [[check, form, reviewed[form]["stratum"]] for form in drawn]
+    DRAWN.write_text("check\tname_form\tstratum\n" + "".join("\t".join(row) + "\n" for row in rows))
+
+
+def read_rulings(check):
+    """Who was right on each disagreement of the check, by name form, if they have been hand-read."""
+    path = Path(str(RULINGS).format(check=check))
+    if not path.exists():
+        return None
+    with open(path) as lines:
+        header, *rows = [line.rstrip("\n").split("\t") for line in lines if line.strip()]
+    return {skillloop.name_form(row["name"]): row["right"] for row in (dict(zip(header, row)) for row in rows)}
+
+
+def read_segments():
+    if not SEGMENTS.exists():
+        print(f"Exporting the segments of IN and the pile into {SEGMENTS}")
+        with open(SEGMENTS, "w") as export:
+            subprocess.run(["docker", "compose", "--project-directory", str(skillloop.REPO), "exec", "-T", "postgres",
+                            "psql", "-v", "ON_ERROR_STOP=1", "-U", "oneprofile", "-d", "oneprofile", "-At", "-F", "\t",
+                            "-c", EXPORT], check=True, stdout=export)
+    with open(SEGMENTS) as lines:
+        return skillloop.Segments(lines)
+
+
+def draw(reviewed, earlier, size, segments):
+    """The names drawn for the check, each with its segments, and how many each stratum passed over."""
+    strata = {}
+    for form, row in reviewed.items():
+        if form not in earlier:
+            strata.setdefault(row["stratum"], []).append(form)
+    drops = {stratum: len(forms) for stratum, forms in strata.items() if stratum != "keep"}
+    counts = {"keep": min(size // 2, len(strata["keep"])), **skillloop.allocate(drops, size - size // 2)}
+    drawn, passed_over = {}, Counter()
+    for stratum in sorted(strata):
+        taken = 0
+        for form in skillloop.shuffled(strata[stratum], f"{SEED}-{stratum}"):
+            if taken == counts[stratum]:
+                break
+            examples = segments.examples(reviewed[form]["name"], EXAMPLES, f"{SEED}-{form}")
+            if not examples:
+                passed_over[stratum] += 1
+                continue
+            drawn[form] = [text for _, text in examples]
+            taken += 1
+    return drawn, counts, passed_over
+
+
+def report(check, drawn, counts, passed_over, reviewed):
+    labels = skillloop.read_labels()
+    scored = [form for form in drawn if form in labels]
+    print(f"\nCheck {check} at criterion revision {skillloop.criterion_revision()}, {jev.MODEL}: "
+          f"{len(scored)} of {len(drawn)} drawn names labelled")
+    if not scored:
+        return
+    agreed = [form for form in scored if labels[form]["decision"] == reviewed[form]["decision"]]
+    low, high = skillloop.wilson(len(agreed), len(scored))
+    verdict = "passed" if low >= BAR else "failed" if high < BAR else "undecided, draw a larger size"
+    print(f"\nAgreement: {len(agreed)}/{len(scored)} = {len(agreed) / len(scored):.1%}, "
+          f"95% interval {low:.1%}-{high:.1%}: {verdict} at the {BAR:.0%} bar")
+
+    rulings = read_rulings(check)
+    if rulings is not None:
+        unread = [reviewed[form]["name"] for form in scored if form not in agreed and form not in rulings]
+        if unread:
+            print(f"  {len(unread)} disagreements have no ruling yet, the first {unread[0]}")
+        right = [form for form in scored if form in agreed or rulings.get(form) == "jev"]
+        low, high = skillloop.wilson(len(right), len(scored))
+        verdict = "passed" if low >= BAR else "failed" if high < BAR else "undecided, draw a larger size"
+        print(f"With the disagreements hand-read: {len(right)}/{len(scored)} = {len(right) / len(scored):.1%}, "
+              f"95% interval {low:.1%}-{high:.1%}: {verdict} at the {BAR:.0%} bar")
+        rulings_count = Counter(rulings.get(form) for form in scored if form not in agreed)
+        print(f"  rulings: Jev right {rulings_count['jev']}, reviews right {rulings_count['reviews']}, "
+              f"unclear {rulings_count['unclear']}")
+        # The draw is half keeps; weighted back to the share of keeps among the names decided.
+        shares = Counter(row["decision"] for row in reviewed.values())
+        weighted = sum(shares[said] / len(reviewed) * sum(form in right for form in scored if reviewed[form]["decision"] == said)
+                       / sum(reviewed[form]["decision"] == said for form in scored) for said in shares)
+        print(f"  weighted to the decided names ({shares['keep']} keeps, {shares['drop']} drops): {weighted:.1%}")
+
+    pairs = Counter((reviewed[form]["decision"], labels[form]["decision"]) for form in scored)
+    print("\nReviews \\ Jev    keep   drop")
+    for said in ("keep", "drop"):
+        print(f"  {said:<12} {pairs[(said, 'keep')]:6} {pairs[(said, 'drop')]:6}")
+
+    print("\nBy stratum:                                 agreed  drawn  passed over (no mention)")
+    for stratum in sorted(counts):
+        rows = [form for form in scored if reviewed[form]["stratum"] == stratum]
+        right = sum(form in agreed for form in rows)
+        print(f"  {stratum:<42} {right:3}/{len(rows):<3} {counts[stratum]:6}  {passed_over[stratum]:6}")
+
+    kept = [form for form in scored if reviewed[form]["decision"] == labels[form]["decision"] == "keep"]
+    if kept:
+        same = [form for form in kept if labels[form]["category"] == reviewed[form]["category"]]
+        low, high = skillloop.wilson(len(same), len(kept))
+        print(f"\nCategory, on the {len(kept)} names both kept: {len(same)}/{len(kept)} = {len(same) / len(kept):.1%}, "
+              f"95% interval {low:.1%}-{high:.1%}")
+        for form in kept:
+            if form not in same:
+                print(f"  {reviewed[form]['name']:<36} reviews {reviewed[form]['category']:<10} Jev {labels[form]['category']}")
+
+    disagreeing = [form for form in scored if form not in agreed]
+    print(f"\nDisagreements ({len(disagreeing)}):")
+    for form in sorted(disagreeing, key=lambda form: reviewed[form]["stratum"]):
+        row, label = reviewed[form], labels[form]
+        print(f"\n  {row['name']}  [{row['stratum']}]  reviews {row['decision']}"
+              f"{', ' + row['note'] if row['note'] else ''}  |  Jev {label['decision']} {label['decision_probabilities']}")
+        for text in label["segments"]:
+            print(f"    - {text[:300]}")
+
+
+if __name__ == "__main__":
+    if not 2 <= len(sys.argv) <= 3 or not sys.argv[1].isdigit():
+        sys.exit(__doc__.strip())
+    check, size = sys.argv[1], int(sys.argv[2]) if len(sys.argv) == 3 else 200
+    reviewed = read_reviewed()
+    earlier = {form for form, drawn_by in read_drawn().items() if drawn_by != check}
+    print(f"{len(reviewed)} reviewed names, {len(earlier)} drawn by earlier checks")
+    drawn, counts, passed_over = draw(reviewed, earlier, size, read_segments())
+    skillloop.label([{"name": reviewed[form]["name"], "segments": segments} for form, segments in drawn.items()])
+    record_drawn(check, drawn, reviewed)
+    report(check, drawn, counts, passed_over, reviewed)
+    print(f"\nJev has cost ${jev.spend():.4f} over every run of both issues, of the ${jev.SPEND_LIMIT:.2f} limit")

@@ -1,0 +1,401 @@
+check	name_form	stratum
+1	tcg	drop: ambiguous abbreviation
+1	ppm	drop: ambiguous abbreviation
+1	rn	drop: ambiguous abbreviation
+1	graph api	drop: ambiguous abbreviation
+1	argo	drop: ambiguous abbreviation
+1	v0	drop: ambiguous abbreviation
+1	csi	drop: ambiguous abbreviation
+1	lance	drop: ambiguous abbreviation
+1	sage	drop: ambiguous abbreviation
+1	rti	drop: ambiguous abbreviation
+1	sse	drop: ambiguous abbreviation
+1	composer	drop: ambiguous abbreviation
+1	sv	drop: ambiguous abbreviation
+1	sbe	drop: ambiguous abbreviation
+1	goose	drop: ambiguous abbreviation
+1	linux security modules	drop: ambiguous abbreviation
+1	r2	drop: ambiguous abbreviation
+1	gpc	drop: ambiguous abbreviation
+1	mosaic	drop: ambiguous abbreviation
+1	acrobat	drop: consumer, office or browser software
+1	dropbox	drop: consumer, office or browser software
+1	safari	drop: consumer, office or browser software
+1	ms powerpoint	drop: consumer, office or browser software
+1	google slides	drop: consumer, office or browser software
+1	zoom	drop: consumer, office or browser software
+1	records management	drop: generic concept
+1	database management	drop: generic concept
+1	nosql	drop: generic concept
+1	element management	drop: generic concept
+1	federated graphql	drop: generic concept
+1	data warehouse	drop: generic concept
+1	javascript framework	drop: generic concept
+1	functional testing	drop: generic concept
+1	chatops	drop: generic concept
+1	regression testing	drop: generic concept
+1	microservices architecture	drop: generic concept
+1	data fabric	drop: generic concept
+1	security testing	drop: generic concept
+1	data modeling	drop: generic concept
+1	test implementation	drop: generic concept
+1	compatibility testing	drop: generic concept
+1	computational statistics	drop: generic concept
+1	web server	drop: generic concept
+1	data mapping	drop: generic concept
+1	ffi	drop: generic concept
+1	automl	drop: generic concept
+1	packet analysis	drop: generic concept
+1	transformers	drop: generic concept
+1	microvm	drop: generic concept
+1	cloud computing	drop: generic concept
+1	asrs	drop: generic concept
+1	web framework	drop: generic concept
+1	packet filter	drop: generic concept
+1	programming languages	drop: generic concept
+1	hsm	drop: generic concept
+1	router	drop: generic concept
+1	data integrator	drop: generic concept
+1	nat gateways	drop: generic concept
+1	data analysis	drop: generic concept
+1	videoconferencing	drop: generic concept
+1	ipcs	drop: generic concept
+1	linear programming	drop: generic concept
+1	ide	drop: generic concept
+1	network architecture design	drop: generic concept
+1	azure ai	drop: generic concept
+1	spreadsheet	drop: generic concept
+1	enterprise linux	drop: generic concept
+1	logic programming	drop: generic concept
+1	webviews	drop: generic concept
+1	load testing	drop: generic concept
+1	end to end encryption	drop: generic concept
+1	ai control tower	drop: generic concept
+1	digital analytics	drop: generic concept
+1	rpc	drop: generic concept
+1	integration testing	drop: generic concept
+1	debugging	drop: generic concept
+1	dml	drop: generic concept
+1	unix shell	drop: generic concept
+1	place and route	drop: generic concept
+1	foundry	drop: homonym
+1	carbon	drop: homonym
+1	gemini	drop: homonym
+1	deepar	drop: homonym
+1	asic	drop: homonym
+1	power systems	drop: homonym
+1	smt	drop: homonym
+1	c3	drop: homonym
+1	pure data	drop: homonym
+1	bourne shell	drop: key noise
+1	checkstyle	drop: key noise
+1	proxmox backup server	drop: key noise
+1	powerbuilder	drop: key noise
+1	adobe illustrator	drop: key noise
+1	home assistant	drop: key noise
+1	common lisp	drop: key noise
+1	wikitext	drop: key noise
+1	abc	drop: key noise
+1	checksums	drop: key noise
+1	structured text	drop: key noise
+1	ats	drop: key noise
+1	openvms	drop: key noise
+1	berry	drop: key noise
+1	mumps	drop: key noise
+1	apl	drop: key noise
+1	jetbrains mps	drop: key noise
+1	cairo	drop: key noise
+1	a+	drop: key noise
+1	windows 7	drop: key noise
+1	orientdb	drop: key noise
+1	git commit	drop: key noise
+1	microstation	drop: key noise
+1	coffeescript	drop: key noise
+1	mev	drop: not a technology
+1	symantec	drop: not a technology
+1	github pull requests	drop: not a technology
+1	fabric data factory	drop: not a technology
+1	sap activate	drop: not a technology
+1	logic apps azure	drop: not a technology
+1	assured compliance assessment	drop: not a technology
+1	shared vpc	drop: not a technology
+1	lgtm	drop: not a technology
+1	jira automation	drop: not a technology
+1	365 sharepoint online	drop: not a technology
+1	viper	drop: not a technology
+1	365 gcc high	drop: not a technology
+1	next.js app router	drop: not a technology
+1	lake storage gen2	drop: not a technology
+1	rockwell automation	drop: not a technology
+1	data vault	drop: not a technology
+1	ctem	drop: not a technology
+1	arcgis portal	drop: not a technology
+1	visual studio ide	drop: not a technology
+1	binance	drop: not a technology
+1	data vault 2.0	drop: not a technology
+1	ucs	drop: not a technology
+1	spark ml	drop: not a technology
+1	seo	drop: not hired for
+1	asl	drop: obscure or historical
+1	nl	drop: obscure or historical
+1	whitespace	drop: obscure or historical
+1	pearl	drop: obscure or historical
+1	opal	drop: obscure or historical
+1	arts	drop: obscure or historical
+1	nickel	drop: obscure or historical
+1	riot	drop: obscure or historical
+1	geos	drop: obscure or historical
+1	nit	drop: obscure or historical
+1	flix	drop: obscure or historical
+1	isis	drop: obscure or historical
+1	metal	drop: ordinary word
+1	flux	drop: ordinary word
+1	catalyst	drop: ordinary word
+1	polymer	drop: ordinary word
+1	flex	drop: ordinary word
+1	desktop	drop: ordinary word
+1	bc	drop: ordinary word
+1	logo	drop: ordinary word
+1	step	drop: ordinary word
+1	root	drop: ordinary word
+1	kit	drop: ordinary word
+1	optimization	drop: ordinary word
+1	bullet	drop: ordinary word
+1	workday	drop: ordinary word
+1	metronome	drop: ordinary word
+1	scratch	drop: ordinary word
+1	max	drop: ordinary word
+1	clip	drop: ordinary word
+1	planner	drop: ordinary word
+1	pizza	drop: ordinary word
+1	swarm	drop: ordinary word
+1	text	drop: ordinary word
+1	compose	drop: ordinary word
+1	fabric	drop: ordinary word
+1	e mail	drop: ordinary word
+1	datastore	drop: ordinary word
+1	icon	drop: ordinary word
+1	tempo	drop: ordinary word
+1	just	drop: ordinary word
+1	cool	drop: ordinary word
+1	pan	drop: ordinary word
+1	action!	drop: ordinary word
+1	graphite	drop: ordinary word
+1	coherent	drop: ordinary word
+1	tea	drop: ordinary word
+1	demos	drop: ordinary word
+1	rabbit	drop: ordinary word
+1	hope	drop: ordinary word
+1	spark structured	drop: other
+1	elementary	drop: other
+1	cube	drop: other
+1	mc	drop: other
+1	certified engineer	drop: other
+1	implementierung	drop: other
+1	cwe	drop: other
+1	awq	drop: other
+1	core .net	drop: other
+1	abi	drop: other
+1	broadcom	drop: other
+1	v	drop: single letter
+1	k	drop: single letter
+1	cockroachdb	keep
+1	flyway	keep
+1	iam	keep
+1	electron	keep
+1	ssl	keep
+1	tosca	keep
+1	kmm	keep
+1	netview	keep
+1	victoriametrics	keep
+1	clickhouse	keep
+1	charles proxy	keep
+1	microsoft copilot	keep
+1	mwaa	keep
+1	veracode	keep
+1	windows mobile	keep
+1	cobol	keep
+1	pgsql	keep
+1	statamic	keep
+1	pulsar	keep
+1	docker compose	keep
+1	x12	keep
+1	hyperion	keep
+1	pinia	keep
+1	gensim	keep
+1	karma	keep
+1	notebooklm	keep
+1	fluxcd	keep
+1	ecos	keep
+1	zeromq	keep
+1	conjur	keep
+1	elementor	keep
+1	a100	keep
+1	bmide	keep
+1	roce	keep
+1	microsoft purview	keep
+1	k3s	keep
+1	recovery manager	keep
+1	spiffe	keep
+1	librenms	keep
+1	google vertex ai	keep
+1	kafka streams	keep
+1	mlir	keep
+1	klaxoon	keep
+1	sap joule	keep
+1	dify	keep
+1	cloud formation	keep
+1	lucidchart	keep
+1	azure container registry	keep
+1	+ node.js	keep
+1	palo alto cortex	keep
+1	mosyle	keep
+1	snmp	keep
+1	cloudflare dns	keep
+1	ciena	keep
+1	winapi	keep
+1	grdb	keep
+1	jtag	keep
+1	factorytalk	keep
+1	solidity	keep
+1	netbackup	keep
+1	tvos	keep
+1	cognito	keep
+1	datahub	keep
+1	spec kit	keep
+1	sns	keep
+1	google web toolkit	keep
+1	cypher query language	keep
+1	sso	keep
+1	tgw	keep
+1	matplotlib	keep
+1	hdf5	keep
+1	appkit	keep
+1	rundeck	keep
+1	redux	keep
+1	d bus	keep
+1	flask	keep
+1	fastly	keep
+1	spirent	keep
+1	scalr	keep
+1	scap	keep
+1	flux cd	keep
+1	zod	keep
+1	airbyte	keep
+1	flyte	keep
+1	google dataflow	keep
+1	apache parquet	keep
+1	openview	keep
+1	pydantic	keep
+1	rxjs	keep
+1	selenium webdriver	keep
+1	bun	keep
+1	azure sentinel	keep
+1	atlas cli	keep
+1	stardog	keep
+1	qualys	keep
+1	microsoft sql	keep
+1	nautobot	keep
+1	openxr	keep
+1	polly	keep
+1	pinot	keep
+1	opensearch	keep
+1	syslog	keep
+1	sparql	keep
+1	clojure	keep
+1	cilium	keep
+1	poe	keep
+1	arista eos	keep
+1	figma	keep
+1	eslint	keep
+1	sveltekit	keep
+1	yara	keep
+1	chromatic	keep
+1	windows server 2012	keep
+1	react native	keep
+1	palantir foundry	keep
+1	sdwan	keep
+1	cloud deployment manager	keep
+1	freshservice	keep
+1	mimecast	keep
+1	tableau desktop	keep
+1	cosmodb	keep
+1	soap ui	keep
+1	elb	keep
+1	haskell	keep
+1	vlans	keep
+1	sqs	keep
+1	fivetran	keep
+1	xds	keep
+1	numba	keep
+1	homebrew	keep
+1	sac	keep
+1	binary ninja	keep
+1	horizon vdi	keep
+1	flosum	keep
+1	rapid7	keep
+1	k9s	keep
+1	creo	keep
+1	sap pm	keep
+1	epolicy orchestrator	keep
+1	wagtail	keep
+1	hashicorp vault	keep
+1	rancher	keep
+1	verilog	keep
+1	snowflake	keep
+1	metal3	keep
+1	cordova	keep
+1	azure arm	keep
+1	microk8s	keep
+1	alloydb	keep
+1	bapis	keep
+1	elastic cache	keep
+1	spring boot	keep
+1	kiro	keep
+1	testng	keep
+1	saucelabs	keep
+1	pymc	keep
+1	dspy	keep
+1	travis	keep
+1	ipmi	keep
+1	ibm mq	keep
+1	graphql	keep
+1	purview	keep
+1	sap basis	keep
+1	rccl	keep
+1	fiddler	keep
+1	beanstalk	keep
+1	wi fi	keep
+1	defectdojo	keep
+1	nginx	keep
+1	make	keep
+1	spark sql	keep
+1	mapreduce	keep
+1	nvlink	keep
+1	entra	keep
+1	sonarcloud	keep
+1	azure automation	keep
+1	a10	keep
+1	makefiles	keep
+1	triton inference server	keep
+1	websocket	keep
+1	tray.io	keep
+1	visual basic for applications	keep
+1	azure application insights	keep
+1	secret manager	keep
+1	yardi	keep
+1	github action	keep
+1	connectrpc	keep
+1	korn shell	keep
+1	tensorrt	keep
+1	apache pinot	keep
+1	adls gen2	keep
+1	virtualbox	keep
+1	stan	keep
+1	devnet	keep
+1	servicenow irm	keep
+1	vrrp	keep
+1	rac	keep
+1	python 2	keep
+1	hcm extracts	keep
+1	nat	keep

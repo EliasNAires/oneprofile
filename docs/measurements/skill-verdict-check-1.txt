@@ -1,0 +1,480 @@
+3437 reviewed names, 0 drawn by earlier checks
+400 already labelled, 0 to label
+
+Check 1 at criterion revision 1, jev-1.13.0: 400 of 400 drawn names labelled
+
+Agreement: 315/400 = 78.8%, 95% interval 74.5%-82.5%: undecided, draw a larger size at the 80% bar
+With the disagreements hand-read: 343/400 = 85.8%, 95% interval 82.0%-88.8%: passed at the 80% bar
+  rulings: Jev right 28, reviews right 34, unclear 23
+  weighted to the decided names (2417 keeps, 1020 drops): 87.1%
+
+Reviews \ Jev    keep   drop
+  keep            165     35
+  drop             50    150
+
+By stratum:                                 agreed  drawn  passed over (no mention)
+  drop: ambiguous abbreviation                14/19      19       3
+  drop: consumer, office or browser software   6/6        6       1
+  drop: generic concept                       49/54      54       2
+  drop: homonym                                6/9        9       0
+  drop: key noise                             11/24      24      74
+  drop: not a technology                      13/24      24       1
+  drop: not hired for                          1/1        1       0
+  drop: obscure or historical                 10/12      12       2
+  drop: ordinary word                         31/38      38       2
+  drop: other                                  7/11      11       0
+  drop: single letter                          2/2        2       0
+  keep                                       165/200    200       6
+
+Category, on the 165 names both kept: 113/165 = 68.5%, 95% interval 61.0%-75.1%
+  NetView                              reviews devops     Jev networking
+  VictoriaMetrics                      reviews database   Jev devops
+  MWAA                                 reviews data       Jev cloud
+  pgSQL                                reviews database   Jev language
+  Pulsar                               reviews data       Jev framework
+  X12                                  reviews data       Jev tool
+  NotebookLM                           reviews tool       Jev ml
+  ZeroMQ                               reviews framework  Jev networking
+  Microsoft Purview                    reviews data       Jev security
+  Kafka Streams                        reviews data       Jev framework
+  Dify                                 reviews ml         Jev framework
+  Cloud Formation                      reviews devops     Jev cloud
+  Azure Container Registry             reviews devops     Jev cloud
+  Mosyle                               reviews devops     Jev tool
+  Cloudflare DNS                       reviews networking Jev cloud
+  GRDB                                 reviews framework  Jev database
+  JTAG                                 reviews tool       Jev networking
+  Cognito                              reviews security   Jev cloud
+  SNS                                  reviews data       Jev cloud
+  TGW                                  reviews networking Jev cloud
+  Matplotlib                           reviews data       Jev framework
+  HDF5                                 reviews data       Jev database
+  D-Bus                                reviews tool       Jev networking
+  Spirent                              reviews testing    Jev networking
+  Flyte                                reviews data       Jev devops
+  Google Dataflow                      reviews data       Jev cloud
+  Bun                                  reviews framework  Jev tool
+  Nautobot                             reviews networking Jev devops
+  Polly                                reviews framework  Jev cloud
+  syslog                               reviews networking Jev devops
+  Cilium                               reviews devops     Jev security
+  ESLint                               reviews tool       Jev framework
+  Cloud Deployment Manager             reviews devops     Jev cloud
+  SQS                                  reviews data       Jev cloud
+  xDS                                  reviews devops     Jev networking
+  Numba                                reviews ml         Jev framework
+  Binary Ninja                         reviews security   Jev tool
+  Horizon VDI                          reviews devops     Jev tool
+  Snowflake                            reviews data       Jev cloud
+  AlloyDB                              reviews database   Jev cloud
+  Elastic Cache                        reviews database   Jev cloud
+  DSPy                                 reviews ml         Jev framework
+  IBM MQ                               reviews framework  Jev tool
+  RCCL                                 reviews ml         Jev framework
+  Spark SQL                            reviews data       Jev language
+  SonarCloud                           reviews testing    Jev devops
+  Azure Automation                     reviews devops     Jev cloud
+  Makefiles                            reviews tool       Jev devops
+  Azure Application Insights           reviews devops     Jev cloud
+  Secret Manager                       reviews security   Jev cloud
+  VirtualBox                           reviews devops     Jev tool
+  Stan                                 reviews language   Jev ml
+
+Disagreements (85):
+
+  Argo  [drop: ambiguous abbreviation]  reviews drop, ambiguous within the Argo project family (CD/Workflows/Rollouts/Events), no dominant single meaning  |  Jev keep {'keep': 0.58, 'drop': 0.42}
+    - Familiarity with Backstage, Crossplane, Argo, Terraform, policy-as-code frameworks, or similar platform tooling.
+    - Deploy and manage services in Azure Kubernetes Service (AKS) clusters using Argo CD
+    - 2+ years experience with containers, Kubernetes, Helm, Argo CD
+
+  SBE  [drop: ambiguous abbreviation]  reviews drop, ambiguous acronym (Simple Binary Encoding / Small Business Enterprise certification), no clear referent  |  Jev keep {'keep': 0.69, 'drop': 0.31}
+    - Proficiency in low-latency Java (or C++) and familiarity with high-throughput messaging frameworks (Aeron, SBE, or similar).
+    - Proficiency in low-latency Java (or C++) and high-throughput messaging (Aeron, SBE, or similar).
+    - Industry-standard messaging protocols (FIX, SBE)
+
+  Goose  [drop: ambiguous abbreviation]  reviews drop, ambiguous (GOOSE substation protocol IEC 61850 / Goose AI agent / ordinary word), no clear referent  |  Jev keep {'keep': 0.52, 'drop': 0.48}
+    - AI-Driven Development: Claude Code, Goose (Block's open-source AI agent), Cursor, GitHub Copilot, Anthropic's Model Context Protocol (MCP)
+    - Produce configuration files associated with IEC61850 (GOOSE), DNP3, or other SCADA protocols
+    - AI agents and tooling (Goose, Claude, MCP
+
+  Linux Security Modules  [drop: ambiguous abbreviation]  reviews drop, LSM is ambiguous abbreviation  |  Jev keep {'keep': 0.65, 'drop': 0.35}
+    - Develop kernel security policies using SELinux, AppArmor, and custom Linux Security Modules and runtime enforcement mechanisms
+    - Experience working with Linux Security Modules
+
+  R2  [drop: ambiguous abbreviation]  reviews drop, ambiguous short form (possibly Cloudflare R2); low signal (near=0.25), unsafe bare key  |  Jev keep {'keep': 0.51, 'drop': 0.49}
+    - Our Developer Platform, including Workers, Workers AI, R2, KV, Durable Objects, and Pages, empowers developers to build and deploy applications globally, faster than ever before.
+    - You will assemble Workers, Durable Objects, KV, R2, D1, Vectorize, Workers AI, AI Gateway, and the Agent SDK into real agents customers use every day.
+    - Support the full breadth of the Cloudflare platform when engaged — from Workers, storage (KV, R2, D1), and Durable Objects to AI (Workers AI, AI Gateway, Vectorize), security, networking, and observability.
+
+  Federated GraphQL  [drop: generic concept]  reviews drop, generic architectural description, not itself a named product; cf. Apollo Federation  |  Jev keep {'drop': 0.26, 'keep': 0.74}
+    - Build, support, and maintain key services that drive our Federated GraphQL API, event-driven architecture, and regulatory compliance tooling
+    - Build, support, and maintain key services that drive our Federated GraphQL API, event-driven architecture, and regulatory compliance tooling
+
+  HSM  [drop: generic concept]  reviews drop, generic concept (Hardware Security Module category), not one named product  |  Jev keep {'drop': 0.49, 'keep': 0.51}
+    - Linux security implementations TPM, FDE, LUKS, HSM, etc.
+    - Performs daily mainframe storage operations using z/OS tools to optimize SMS/DASD utilization, verify HSM/DLM health and space, audit volumes/datasets across both plexes, and submit CRs/incidents as needed to maintain reliability.
+    - Manage secrets, encryption, and workload certificates (SOPS, KMS/HSM equivalents) consistently across cloud environments.
+
+  NAT gateways  [drop: generic concept]  reviews drop, generic term - AWS, Azure and GCP each have a same-named NAT gateway service, no dominant one  |  Jev keep {'drop': 0.04, 'keep': 0.96}
+    - Strong cloud networking fundamentals, including VPC/VNet, subnets, NAT Gateways, Transit Gateways, routing, DNS, load balancing, and private connectivity.
+    - Experience designing and implementing AWS and Azure networking solutions including VPCs, VNets, Network Security Groups (NSGs) Subnets, Route Tables, Internet Gateways, and NAT Gateways
+    - Deep expertise in public cloud networking (AWS/GCP), including VPC design, peering, routing, NAT gateways, and service endpoints.
+
+  Enterprise Linux  [drop: generic concept]  reviews drop, generic; fragment of Red Hat Enterprise Linux  |  Jev keep {'drop': 0.47, 'keep': 0.53}
+    - Red Hat Enterprise Linux experience with knowledge of SELinux (MAC and DAC security mechanisms)
+    - Modify the Redline Software to be compatible with different versions of Linux including RedHat Enterprise Linux and CentOS
+    - 1 year of experience with RHEL (Red Hat Enterprise Linux) or CentOS administration
+
+  UNIX Shell  [drop: generic concept]  reviews drop, generic concept  |  Jev keep {'drop': 0.4, 'keep': 0.6}
+    - Solid understanding of Linux operating system fundamentals and Unix shell scripting.
+    - Develop and maintain UNIX shell scripts for automation, batch processing, and operational support.
+    - Unix shell commands and scripting
+
+  Foundry  [drop: homonym]  reviews drop, multi-way homonym (Palantir Foundry / Foundry Solidity toolkit / Azure AI Foundry), low near-score (0.38); AI Foundry kept separately  |  Jev keep {'keep': 0.53, 'drop': 0.47}
+    - Experience with Google Workspace, Gemini, Skywise (Palantir Foundry), or similar digital and analytics platforms is a strong plus.
+    - Drive manufacturing ramp execution with foundry and OSAT partners, achieving yield, quality, and production targets.
+    - Palantir Foundry is our central hub for data driven applications, visualizations and large scale data analysis across the Anduril org. We manage a large user base and provide true data self service at scale.
+
+  Gemini  [drop: homonym]  reviews drop, Gemini protocol not meant (Google Gemini)  |  Jev keep {'drop': 0.21, 'keep': 0.79}
+    - Platform Stack: Architecting and deploying solutions on Google Gemini Enterprise and Vertex AI as the primary stack, applying working knowledge of Microsoft AI Foundry and AWS Bedrock where client contexts require.
+    - Proficiency leveraging Generative AI platforms (e.g., Google Gemini) and prompt engineering as a technical lever to rapidly prototype, debug data logic, and automate routine technical documentation.
+    - Hands-on experience (even in personal projects) with generative AI tools such as Claude and Gemini, and automation platforms like Zapier, n8n, or Make.com.
+
+  DeepAR  [drop: homonym]  reviews drop, homonym: AWS DeepAR+ forecasting vs DeepAR AR SDK, unclear which meant  |  Jev keep {'drop': 0.04, 'keep': 0.96}
+    - Utilize time-series forecasting methods (e.g., ARIMA, LSTM, DeepAR, Prophet) for predictive modeling.
+    - Familiarity with time-series and intermittent-demand forecasting methods (Croston, TSB, ETS, ARIMA, hierarchical/global deep models such as DeepAR or Temporal Fusion Transformers).
+    - Design, test, and deploy time series models for demand forecasting, product lifecycle tracking, and performance analytics using both classical (ARIMA, exponential smoothing) and ML-based approaches (XGBoost, LSTM, DeepAR).
+
+  Bourne shell  [drop: key noise]  reviews drop, sh is noise; honest form matches almost nothing  |  Jev keep {'drop': 0.07, 'keep': 0.93}
+    - Strong development experience using Python and Bourne shell
+
+  Checkstyle  [drop: key noise]  reviews drop, CS noise; honest forms 0  |  Jev keep {'drop': 0.04, 'keep': 0.96}
+    - We have a strict static-analysis setup with a lot of checks in GitLab CI (Checkstyle, SpotBugs, ErrorProne, NullAway, other linters, security scans, renovate-bot).
+
+  Proxmox Backup Server  [drop: key noise]  reviews drop, PBS noise  |  Jev keep {'drop': 0.15, 'keep': 0.85}
+    - Architect & Maintain: Design, build, and manage Proxmox Virtual Environments (Proxmox VE) and Proxmox Backup Server (PBS) deployments globally.
+
+  PowerBuilder  [drop: key noise]  reviews drop, pb is noise; honest forms match nothing  |  Jev keep {'drop': 0.22, 'keep': 0.78}
+    - Minimum 3 years experience in PowerBuilder development
+
+  Home Assistant  [drop: key noise]  reviews drop, HA noise; honest forms 0  |  Jev keep {'drop': 0.36, 'keep': 0.64}
+    - Created a home lab, side project, GitHub repo, Raspberry Pi graveyard, overly complicated Home Assistant setup, or other evidence that you genuinely enjoy messing with technology also counts.
+
+  Common Lisp  [drop: key noise]  reviews drop, CL noise; honest form 0  |  Jev keep {'drop': 0.01, 'keep': 0.99}
+    - 4+ years of hands-on experience with functional programming (e.g., Scala, Haskell, Clojure, Common Lisp).
+
+  Wikitext  [drop: key noise]  reviews drop, wiki is noise  |  Jev keep {'drop': 0.31, 'keep': 0.69}
+    - Familiarity with Wikipedia / wikitext / markdown editing or content management systems (e.g., MediaWiki, Drupal, WordPress).
+    - Familiarity with Wikipedia / wikitext / markdown editing or content management systems (e.g., MediaWiki, Drupal, WordPress).
+    - On the Content Platform team, we work to support and evolve all things wikitext, the markup language behind Wikipedia.
+
+  OpenVMS  [drop: key noise]  reviews drop, VMS noise (video mgmt systems); honest form 3  |  Jev keep {'drop': 0.5, 'keep': 0.5}
+    - Mastery-level experience in routed, switched, and shared LAN environments supporting current Microsoft operating systems, Windows Active Directory, UNIX, and OpenVMS, together with routers, switches, terminal servers, and local and long-haul WAN connectivity.
+
+  MUMPS  [drop: key noise]  reviews drop, M noise; honest forms match almost nothing  |  Jev keep {'keep': 0.61, 'drop': 0.39}
+    - Analyze and reverse-engineer business, functional, and technical requirements directly from the existing VistA/MUMPS Prosthetics module — extrapolating current-state rules and workflows from system functionality rather than starting from user-interview elicitation.
+    - This role will contribute to the modernization of mission-critical healthcare applications and enterprise systems supporting Veteran care, including efforts related to legacy VistA/MUMPS environments, enterprise integrations, cloud modernization, and next-generation digital health solutions.
+    - The Lead Functional Business Analyst must be equally comfortable reverse-engineering business rules directly from existing VistA/MUMPS Prosthetics functionality as they are coaching a team of analysts to do the same — and must bring human-centered design (HCD) discipline to the process, ensuring leg
+
+  JetBrains MPS  [drop: key noise]  reviews drop, mps noise; honest form 1  |  Jev keep {'drop': 0.23, 'keep': 0.77}
+    - All of it is written in a domain-specific language whose syntax trees and graphs we keep in a projectional editor (JetBrains MPS) — so the DSL is not a convenience layer, it is the thing that defines the model's state space and the boundary of what the model is allowed to propose.
+
+  Windows 7  [drop: key noise]  reviews drop, Vienna noise; outdated  |  Jev keep {'keep': 0.76, 'drop': 0.24}
+    - Windows Desktop Family administration: Windows 7/8/10
+    - Microsoft Windows Operating System Administration, including Windows 11, Windows 10, Windows 7, and Windows XP (at a minimum)
+    - Experience and/or knowledgeable with: Windows 7; Windows 10; Win11 Citrix; SMS; and SCCM
+
+  OrientDB  [drop: key noise]  reviews drop, Orient noise; honest form 0  |  Jev keep {'drop': 0.01, 'keep': 0.99}
+    - Configure and manage data analytic frameworks and pipelines using databases and tools such as NoSQL, SQL, HDInsight, MongoDB, Cassandra, Neo4j, GraphDB, OrientDB, Spark, Hadoop, Kafka, Hive, and Pig.
+    - Multiple years of Graph DB related experience i.e. Neo4j, OrientDB, TitanDB, or similar
+    - Working knowledge of graph databases (Neo4j, TigerGraph, OrientDB, JanusGraph, etc) a strong plus!
+
+  CoffeeScript  [drop: key noise]  reviews drop, coffee noise; honest forms 0  |  Jev keep {'drop': 0.04, 'keep': 0.96}
+    - CoffeeScript, Puma, Ruby on Rails
+
+  Logic Apps Azure  [drop: not a technology]  reviews drop, fragment of Azure Logic Apps, reordered  |  Jev keep {'drop': 0.19, 'keep': 0.81}
+    - Design and develop solutions using technologies including: Microsoft Fabric Fabric Data Factory - Azure Data Factory - Fabric Lakehouse and Warehouse - OneLake - Azure Functions - Logic Apps - Azure API Management - Azure Service Bus - Event Hubs / Fabric Eventstream - Azure SQL.
+
+  Assured Compliance Assessment  [drop: not a technology]  reviews drop, fragment of Assured Compliance Assessment Solution (ACAS)  |  Jev keep {'drop': 0.36, 'keep': 0.64}
+    - Assured Compliance Assessment Solution (ACAS) support
+    - Additionally, the Cybersecurity Systems Analyst should be able to perform security evaluations and vulnerability assessments using the DOD Assured Compliance Assessment Solution (ACAS), Nessus vulnerability scanning tool and Security Content Automation Protocol tool.
+    - Vulnerability Assessment: Proficiency with tools like ACAS (Assured Compliance Assessment Solution) and HBSS (Host Based Security System) to conduct vulnerability scanning and analysis.
+
+  Shared VPC  [drop: not a technology]  reviews drop, descriptive phrase / weak match signal, not clearly the named GCP feature  |  Jev keep {'keep': 0.93, 'drop': 0.07}
+    - Experience with cloud networking: VPC design and peering, Shared VPC/Transit Gateway, Cloud Interconnect/Direct Connect, Cloud NAT, cross-cloud private connectivity, BGP and route control, edge load balancing and DDoS mitigation (Cloud Armor / AWS Shield)
+    - GCP Expertise: Minimum 3+ years of deep, hands-on experience securing GCP (GKE, GCE, Shared VPC etc).
+    - Design and manage secure, scalable GCP network architecture — including VPC design, VPC peering, shared VPC, Cloud Interconnect/VPN, Cloud NAT, firewall rules, and DNS
+
+  Jira Automation  [drop: not a technology]  reviews drop, fragment of Jira  |  Jev keep {'drop': 0.26, 'keep': 0.74}
+    - Deep expertise building and maintaining complex automations with n8n, Airflow, Temporal, Jira Automation, or Workato, plus strong Git-based development workflows (branching, CI/CD, code review)
+    - Deep expertise building and maintaining complex automations using n8n, Airflow, Temporal, Jira Automation, or Workato, paired with strong Git-based development workflows including branching, CI/CD, and code review
+    - Design and implement complex solutions using Jira Automation, Rovo, ScriptRunner, REST APIs, webhooks and Marketplace applications.
+
+  365 GCC High  [drop: not a technology]  reviews drop, fragment of Microsoft 365 GCC High  |  Jev keep {'drop': 0.34, 'keep': 0.66}
+    - Experience supporting aerospace and defense organizations subject to CMMC residing in Microsoft 365 GCC High preferred.
+    - Experience in a Microsoft 365 GCC High tenant or other government cloud environments(GCC, Azure Government, AWS GovCloud).
+    - Microsoft 365 GCC High
+
+  Next.js App Router  [drop: not a technology]  reviews drop, Next.js routing feature, not separate from Next.js  |  Jev keep {'keep': 0.88, 'drop': 0.12}
+    - Own end-to-end implementation of product features spanning mobile (React Native / Expo), web (Next.js App Router), and backend services (NestJS / Node.js)
+
+  Lake Storage Gen2  [drop: not a technology]  reviews drop, fragment of Azure Data Lake Storage Gen2  |  Jev keep {'keep': 0.95, 'drop': 0.05}
+    - Collaborated with data engineers to optimize architectures on Azure Data Lake Storage Gen2, Synapse, and MS Fabric
+    - Design and evolve a modern Azure data platform using Azure Synapse Analytics, Synapse Spark, Azure Data Factory, Azure Data Lake Storage Gen2, Azure SQL Database, and Microsoft Fabric.
+    - Azure: Azure Data Factory (ADF), Data Lake Storage Gen2, Key Vault, Azure Databricks.
+
+  ArcGIS Portal  [drop: not a technology]  reviews drop, fragment of ArcGIS (Portal for ArcGIS component)  |  Jev keep {'keep': 0.69, 'drop': 0.31}
+    - Manage and update ArcGIS Portal content, including hosted feature layers, map services, web maps, dashboards, data hubs, and related geospatial products.
+    - Production support for mission-critical systems and applications, including ArcGIS Portal, ArcGIS Server, GeoEvent Server, ArcGIS Data Store, and related services
+    - This role requires a cleared geospatial technologist who can bridge two mission offices: one focused on geospatial data curation, ArcGIS Portal products, and operational visualization; the other focused on data processing, analytics, and Tableau-driven reporting.
+
+  Visual Studio IDE  [drop: not a technology]  reviews drop, redundant with existing Visual Studio; IDE suffix adds nothing  |  Jev keep {'drop': 0.35, 'keep': 0.65}
+    - Consistently delivers end-to-end solutions from requirements gathering through production deployment within Agile/Scrum teams. Core stack: C#, ASP.NET Core, MVC, and Web API, utilizing Visual Studio IDE, SSRS, SOAP, XML, and GitHub.
+    - Experience developing testing workflows using Microsoft Visual Studio IDE and Postman, as well as source control tools like Git and SourceTree.
+
+  UCS  [drop: not a technology]  reviews drop, fragment of Cisco UCS, ambiguous bare abbreviation  |  Jev keep {'drop': 0.41, 'keep': 0.59}
+    - Knowledge of Cisco UCS environments and management
+    - Hardware/Compute: Dell, Cisco UCS, HPE, Supermicro server platforms.
+    - Deliver effective demos, best practices session on UCs, deployments & workshops as needed
+
+  Spark ML  [drop: not a technology]  reviews drop, fragment of Apache Spark (its ML module)  |  Jev keep {'keep': 0.88, 'drop': 0.12}
+    - You are proficient in Python programming, Manage ML Libraries and TensorFlow, PyTorch, XgBoost, Scikit-learn, Spark ML and code/model versioning in Git, MLFlow.
+    - Hands-on with modern ML frameworks such asPyTorch, TensorFlow, scikit-learn, or Spark ML.
+    - Familiarity with ML frameworks (FastAPI, PyTorch, TensorFlow, Spark ML) and workflow orchestration tools (Airflow, etc.).
+
+  Opal  [drop: obscure or historical]  reviews drop, obscure; ordinary word  |  Jev keep {'drop': 0.45, 'keep': 0.55}
+    - Assist with the administration of our tech stack with platforms such as Okta, GCC High, Opal, Slack, Jamf, Jira, and many more
+    - We’re based in NYC, are growing rapidly, and are backed by $60 million in funding from Oak HC/FT, CRV, Black Opal Ventures, and experienced C-level healthtech angel investors.
+    - Review, implement, and continuously improve cloud identity and access policies (IAM, Okta, Opal) to align with Databricks security standards and audit requirements.
+
+  ISIS  [drop: obscure or historical]  reviews drop, obscure; ISIS collides  |  Jev keep {'keep': 0.81, 'drop': 0.19}
+    - Develop scalable network solutions for data center and cloud connectivity using protocols such as BGP, ISIS, MPLS, VxLAN, and SR (Segment Routing) across the network environment.
+    - You bring a deep understanding of modern routing protocols (BGP, ISIS, RSVP-TE), software-defined forwarding, and the tradeoffs between automation, standardization, and operational flexibility.
+    - Experienced understanding of networking and routing protocols such as TCP/IP, BGP4 (multi-homing), OSPF (multi-area), RIP, ISIS, etc.
+
+  FLUX  [drop: ordinary word]  reviews drop, flux: ordinary word (in flux)  |  Jev keep {'keep': 0.87, 'drop': 0.13}
+    - Flux and GitOps.
+    - Experience with Helm, Kustomize, Argo CD, Flux, or GitOps practices;
+    - Écosystème Data : Piloter l'intégration des flux en temps réel via Apache Kafka et le développement d'API REST performantes dans un environnement distribué.
+
+  Polymer  [drop: ordinary word]  reviews drop, ordinary word; library obsolete  |  Jev keep {'drop': 0.32, 'keep': 0.68}
+    - Experience with developing semi-solid electrolytes (e.g. in-situ gel polymer electrolyte, polymer electrolyte, hybrid solid/liquid electrolyte) are highly preferred.
+    - Preferred Pluses: Experience with modern JavaScript frameworks (ReactJS, Angular, Google Polymer), multi-agent AI workflows, or Spec-Driven Development frameworks is highly valued.
+    - We are looking for a highly motivated and scientifically rigorous individual to join our Innovation Center for novel lipid or other polymer molecules development to be used in RNA and gene delivery formulation, with experience in developing organic lipid and polymer molecules from R&D to Scale up.
+
+  CLIP  [drop: ordinary word]  reviews drop, ordinary word (video/audio clip) collision, 25% lowercase; OpenAI CLIP too ambiguous  |  Jev keep {'drop': 0.18, 'keep': 0.82}
+    - Relationships, lunches, luck, and a clip report at the end of the month.
+    - Multimodal AI Experience: Hands-on experience integrating state-of-the-art vision models (GPT-4V, Claude 3.5 Sonnet) and embedding models (CLIP).
+    - Multimodal Expertise: Experience working with Multimodal models (Image-to-Text, Text-to-Image, VLMs like CLIP, LLaVA).
+
+  Swarm  [drop: ordinary word]  reviews drop, ordinary word ("the team will swarm on it") / bee swarm; Docker Swarm signal weak, mixed-case forms  |  Jev keep {'drop': 0.17, 'keep': 0.83}
+    - Proficiency in Kubernetes or equivalent container orchestration platforms (OpenShift, Nomad, Docker Swarm).
+    - Familiarity with Linux containers and container orchestration (Docker Swarm, Nomad).
+    - Experiencia con OpenShift y Docker Swarm.
+
+  Compose  [drop: ordinary word]  reviews drop, ordinary verb "compose" + homonym (Docker Compose vs Jetpack Compose); Jetpack Compose kept separately  |  Jev keep {'keep': 0.57, 'drop': 0.43}
+    - Android Architecture & Depth: Expert-level mastery of Kotlin, Jetpack Compose, modern architecture patterns (MVVM/MVI), Coroutines, and Flow. Demonstrated experience architecting multi-module libraries and SDKs.
+    - Containers & CI/CD: Hands-on experience with Docker, Docker Compose, Jenkins, and modern deployment pipelines.
+    - Strong componentization skills: designing reusable components and shared modules whose logic lives in framework-agnostic packages, including web features that ship inside our native apps through webviews and JavaScript/native bridges. Our apps are Kotlin/Jetpack Compose and Swift/SwiftUI; you won't 
+
+  Tempo  [drop: ordinary word]  reviews drop, ordinary word "tempo" (pace/music, 11% lowercase), low near-score (0.27); Grafana Tempo is a minority use  |  Jev keep {'drop': 0.19, 'keep': 0.81}
+    - The role will help maintain consistent security-testing delivery across complex applications, external services, and internal systems in a high-tempo, cross-regional environment.
+    - Reconhecimento: Prêmios por tempo de trabalho na empresa e reconhecimento por desempenho no trabalho;
+    - Observability Tooling: Strong experience with Grafana and PromQL (Prometheus Query Language), Grafana Alloy for Loki logs, and a metrics backend such as Prometheus or Datadog. Experience instrumenting with OpenTelemetry and a tracing/Application Performance Monitoring (APM) backend (open-source pref
+
+  Graphite  [drop: ordinary word]  reviews drop, ordinary word; ambiguous  |  Jev keep {'keep': 0.85, 'drop': 0.15}
+    - Deep experience with thermal module technologies — heat pipes, vapor chambers, TIMs, graphite spreaders — and vendor evaluation at scale
+    - You have proven experience in leading and improving alerting and major incident management standard processes metrics systems (e.g. Elastic Stack, Graphite, Prometheus, Influx) to diagnose issues and quantify impacts to present to others at varying level of the organization.
+    - Monitoring tools (e.g., Grafana, Graphite, etc.) and logging systems (e.g., Kibana, Splunk, etc.)
+
+  Spark Structured  [drop: other]  reviews drop  |  Jev keep {'drop': 0.46, 'keep': 0.54}
+    - Design and develop robust data pipelines using Delta Lake, Spark Structured Streaming, Unity Catalog, and Azure-native services.
+    - Design secure, scalable data pipelines using Delta Lake, Spark Structured Streaming, Unity Catalog, and Azure-native services, applying AI-enabled engineering approaches where appropriate.
+    - Strong experience with real-time and streaming data architectures, including Kafka, Spark Structured Streaming, or similar technologies.
+
+  Elementary  [drop: other]  reviews drop  |  Jev keep {'keep': 0.74, 'drop': 0.26}
+    - We currently operate multiple elementary and middle schools across the Bronx, Upper Manhattan, and Queens, and continue to grow - opening 1–2 new schools each year, because children in every community deserve excellent, equitable education.
+    - Familiarity with Snowflake Cortex, Feast, DataHub, Atlan, OpenLineage, Elementary, dbt-expectations, or Evidently AI.
+    - You drive data modeling excellence in Databricks using advanced SQL, dbt, and data quality frameworks like elementary
+
+  CWE  [drop: other]  reviews drop  |  Jev keep {'keep': 0.7, 'drop': 0.3}
+    - Team Human: Respecting all humans is a critical part of who we are at CWe practice integrity in all interactions, we empathize with others, we create a supportive work environment, and we support the communities in which we live and operate.
+    - Familiarity with security standards and frameworks such as OWASP, CWE, CVSS, EPSS, NIST SSDF, or SLSA.
+    - Deep understanding of web application vulnerabilities, API security, and exploitation techniques (OWASP Top 10, CWE).
+
+  AWQ  [drop: other]  reviews drop  |  Jev keep {'keep': 0.81, 'drop': 0.19}
+    - Apply and develop quantization techniques (INT8, INT4, GPTQ, AWQ, and beyond) to reduce memory footprint and increase throughput without meaningfully degrading quality
+    - Hands-on with fine-tuning (e.g. LoRA/QLoRA), quantization (GGUF/AWQ/GPTQ), and inference runtimes (vLLM/SGLang, TensorRT-LLM, ONNX Runtime, llama.cpp, or MLX/CoreML). On-device or edge inference experience is a strong plus.
+    - Inference Optimization & Model Compression: Optimize LLM models for efficient GPU serving, balancing latency, throughput, memory, and cost. Apply quantization from FP32 to FP16/BF16, FP8, and FP4 using PTQ methods (GPTQ, AWQ, SmoothQuant) and QAT. Design mixed precision strategies and run calibratio
+
+  IAM  [keep]  reviews keep  |  Jev drop {'drop': 0.67, 'keep': 0.33}
+    - Harden cloud infrastructure across multiple AWS accounts (IAM, EKS, VPC and network access paths, KMS) and review IaC for misconfigurations.
+    - Deep experience in integrating enterprise tools such as Nexthink, Zoom Contact Center (ZCC), IAM platforms (Okta, SailPoint), ServiceNow, and similar ITSM, identity, and observability tools
+    - CI tooling for platform-related configuration, including IAM roles, SCPs, and associated components
+
+  SSL  [keep]  reviews keep, distinct entry from TLS  |  Jev drop {'drop': 0.67, 'keep': 0.33}
+    - Understanding of cybersecurity principles, encryption (PKI, TLS/SSL), authentication, endpoint agents, and anti-tampering
+    - Minimum of 2-3 years of experience managing SSL certificates, including renewal, deployment, and troubleshooting.
+    - Knowledge of PKI, TLS/SSL, code signing, DNS, S/MIME, SMTP, and networking protocols is beneficial.
+
+  Microsoft Copilot  [keep]  reviews keep, resolves the other half of the Copilot homonym  |  Jev drop {'drop': 0.63, 'keep': 0.37}
+    - Generative AI platforms (Microsoft Copilot, ChatGPT, Claude, Gemini, etc.).
+    - Microsoft Copilot Studio, Azure AI Foundry, Power Platform, or Microsoft Fabric.
+    - Regularly leverages AI tools such as Notion AI, Perplexity, Claude, Descript, Runway, Midjourney, or Microsoft Copilot i.e. to improve speed, clarity, or creative output.
+
+  Windows Mobile  [keep]  reviews keep  |  Jev drop {'keep': 0.43, 'drop': 0.57}
+    - Proficient in mobile device technologies (MDM/MAM) and OS such as Android, iOS, and Windows Mobile
+    - Proficient in mobile device technologies (MDM/MAM) and OS such as Android, iOS, and Windows Mobile
+    - Proficient in mobile device technologies (MDM/MAM) and OS such as Android, iOS, and Windows Mobile
+
+  Hyperion  [keep]  reviews keep  |  Jev drop {'drop': 0.54, 'keep': 0.46}
+    - Support the development and improvement of forecasting workflows in FP&A and ERP tools (Oracle, Hyperion EPM, Foundry)
+    - Hyperion or similar ERP/EPM planning tool experience (e.g., Anaplan, Adaptive Insights, IBM Planning Analytics)
+    - Oracle Suite: Experience with Oracle Fusion, Hyperion Essbase, or EPBCS.
+
+  eCos  [keep]  reviews keep  |  Jev drop {'keep': 0.08, 'drop': 0.92}
+    - Own the material and inventory impact of supply impacting ECOs from assessment through implementation quantifying exposure, and keeping the program informed of what's changing and why it matters
+    - Engineering Change Management: Author, review, and execute Engineering Change Requests/Orders (ECRs/ECOs) for running changes, ensuring accurate updates to 3D models, 2D drawings, and Bill of Materials (BOM).
+    - Build integrations that propagate BOM changes, ECOs, and design decisions through sustainment artifacts automatically replacing manual impact assessments with structured, tool-supported analysis tied to the LSA database
+
+  Elementor  [keep]  reviews keep  |  Jev drop {'drop': 0.52, 'keep': 0.48}
+    - Experience using modern WordPress page builders such as Elementor, Bricks, or Gutenberg.
+    - Experience using modern WordPress page builders such as Elementor, Bricks, or Gutenberg.
+
+  BMIDE  [keep]  reviews keep  |  Jev drop {'drop': 0.61, 'keep': 0.39}
+    - Hands-on programming/configuration experience: e.g., BMIDE, ITK, Workflow Manager, SOAP/REST APIs, Active Workspace customization, scripting (Java, C#, Python, etc.).
+    - Experience with the BMIDE
+    - Enterprise / partner integration experience – Prior work integrating with PLM, ERP, or large enterprise SaaS systems; partner Teamcenter experience (data model, BMIDE, Active Workspace APIs, AWC integrations) or comparable PLM exposure is a strong plus
+
+  Recovery Manager  [keep]  reviews keep  |  Jev drop {'keep': 0.35, 'drop': 0.65}
+    - Hands-on System Engineering experience with core enterprise infrastructure platforms and services, including Windows Server, VMware vSphere, VMware Site Recovery Manager (SRM), SAN technologies, and the Rubrik ecosystem, with the ability to understand dependencies, recovery workflows, and failure mo
+    - Experience using Oracle Recovery Manager (RMAN) or equivalent tools for backup and recovery operations.
+    - Experience in Oracle Enterprise Manager (OEM) and Recovery Manager (RMAN)
+
+  Klaxoon  [keep]  reviews keep  |  Jev drop {'drop': 0.99, 'keep': 0.01}
+    - We’re looking for a Group Product Manager to lead Klaxoon — the product area responsible for Wrike’s visual collaboration strategy and the evolution of whiteboarding experiences within the broader CWM platform.
+    - We’re looking for a Group Product Manager to lead Klaxoon — the product area responsible for Wrike’s visual collaboration strategy and the evolution of whiteboarding experiences within the broader CWM platform.
+    - We’re looking for a Group Product Manager to lead Klaxoon — the product area responsible for Wrike’s visual collaboration strategy and the evolution of whiteboarding experiences within the broader CWM platform.
+
+  SAP Joule  [keep]  reviews keep  |  Jev drop {'keep': 0.34, 'drop': 0.66}
+    - You will also utilize SAP Joule for Developers and SAP Joule for Consultants to streamline workflows and deliver tailored AI solutions that address complex organizational challenges.
+    - Define how Databricks, Microsoft Copilot, SAP Joule, specialized AI tools and other capabilities fit together, balancing enterprise platforms with justified domain-specific needs.
+    - Leverage your foundational SAP AI knowledge: apply your first hands-on experience with SAP Business AI and it's underlying components such as SAP AI Core and Launchpad, SAP Joule agents and skills to support AI-powered integration scenarios and extensibility.
+
+  Lucidchart  [keep]  reviews keep  |  Jev drop {'keep': 0.13, 'drop': 0.87}
+    - Its products include the Lucid Visual Collaboration Suite (Lucidchart and Lucidspark) and airfocus.
+    - Proficiency in process mapping tools such as Visio or LucidChart
+    - Comfortable using flow charting tools (e.g., Lucidchart)
+
+  Palo Alto Cortex  [keep]  reviews keep  |  Jev drop {'keep': 0.44, 'drop': 0.56}
+    - Reporting to the Sr. Manager of IT & Security and working closely with the SVP of IT & Security, you will be the owner and subject matter expert for our core security platform — Palo Alto Cortex XDR and the day-to-day manager of our relationship with Palo Alto Unit 42, and various outside cybersecur
+    - Expertise with EDR platforms such as CrowdStrike, Microsoft Defender, SentinelOne, or Palo Alto Cortex XDR.
+    - Palo Alto Cortex XDR or equivalent experience.
+
+  Ciena  [keep]  reviews keep  |  Jev drop {'drop': 0.7, 'keep': 0.3}
+    - Deploy, configure, operate, and troubleshoot Nokia, Ciena and other optical platforms.
+    - Experience working with Nokia, Arista, and Ciena
+    - Good working knowledge of major networking and optical device OS such as Juniper Junos, Cisco IOS, Cisco NX-OS, Arista EOS, SONiC, Ciena, Nokia (Infinera).
+
+  FactoryTalk  [keep]  reviews keep  |  Jev drop {'drop': 0.71, 'keep': 0.29}
+    - Control systems: Working understanding of at least one SCADA/HMI platform — Ignition, AVEVA, Siemens WinCC, Rockwell FactoryTalk — including its user model, historian, and remote client architecture, enough to write requirements and read its logs; familiarity with PLCs and RTUs (Siemens, Rockwell, S
+    - Own SCADA architecture and standards (Ignition, WinCC, or FactoryTalk View SE)
+    - Hands-on experience with Rockwell/Allen-Bradley (ControlLogix, FactoryTalk) and/or Siemens (S7, TIA Portal, WinCC) required; comfort working across other ICS/SCADA platforms and industrial protocols and the associated industrial switch technology (Modbus, EtherNet/IP, PROFINET) as the environment gr
+
+  Spec Kit  [keep]  reviews keep  |  Jev drop {'keep': 0.45, 'drop': 0.55}
+    - Utilize GitHub Spec-kit and/or Open Spec to streamline development workflows and maintain specification standards.
+    - Utilize GitHub Spec-kit and/or Open Spec to streamline development workflows and maintain specification standards.
+    - Familiarity with spec-driven development — using structured specifications to guide AI coding agents, preserve architectural intent, and validate generated output (e.g. BMAD, GitHub Spec-Kit).
+
+  SSO  [keep]  reviews keep  |  Jev drop {'keep': 0.11, 'drop': 0.89}
+    - Fluency with identity protocols and access models (SAML, OIDC, OAuth 2.0, SCIM; RBAC, ABAC, or policy-based access), plus working knowledge of Okta administration and APIs: SSO, provisioning, group rules, and authentication policies
+    - Support identity and access management across Entra ID and AWS, including SSO, MFA, Enterprise Applications, and third-party SSO / user provisioning.
+    - You have hands-on experience administering Okta or a comparable enterprise identity provider, including application integrations, SSO, MFA, group and role assignments, lifecycle management, and troubleshooting authentication and provisioning issues.
+
+  OpenView  [keep]  reviews keep  |  Jev drop {'drop': 0.69, 'keep': 0.31}
+    - Cisco IOS, CatOS, NxOS, filter and access control, Ciscoworks, TACACS+, ASA, FWSM, HP Openview, Cisco routers, Cisco Switches, F5/Cisco load balancers, Infiniband, Juniper, FiberChannel (FC) SAN, and VPN (IPSEC)
+    - Cisco IOS, CatOS, NxOS, filter and access control, Ciscoworks, TACACS+, ASA, FWSM, HP Openview, Cisco routers, Cisco Switches, F5/Cisco load balancers, Infiniband, Juniper, FiberChannel (FC) SAN, and VPN (IPSEC)
+    - Cisco IOS, CatOS, NxOS, filter and access control, Ciscoworks, TACACS+, ASA, FWSM, HP Openview, Cisco routers, Cisco Switches, F5/Cisco load balancers, Infiniband, Juniper, FiberChannel (FC) SAN, and VPN (IPSEC)
+
+  Atlas CLI  [keep]  reviews keep  |  Jev drop {'drop': 0.52, 'keep': 0.48}
+    - As part of our team in APIx, you will be responsible for improving & extending our API platform & downstream tooling, such as the Atlas CLI.
+
+  PoE  [keep]  reviews keep  |  Jev drop {'drop': 0.59, 'keep': 0.41}
+    - Working technical knowledge of network control protocols (QoS, PfR, PoE, NTP, DHCP), network management protocols (CDP, FTP, TFTP, SNMP) and security protocols (SSH, HTTPS, AAA, IPSec, TrustSec)
+    - Deep familiarity with IP networking, SNMP, DHCP, PoE, Linux CLI, and basic system administration
+    - Networking (switching, VLANs, routing basics, TCP/IP, DNS, DHCP, wireless, PoE, structured cabling and fiber) and troubleshooting
+
+  Figma  [keep]  reviews keep, figma.com: URL  |  Jev drop {'drop': 0.69, 'keep': 0.31}
+    - Proficiency with screen design and prototyping tools such as Figma, Balsamiq, Axure RP, Adobe XD, or similar.
+    - Familiarity with product tools such as Figma, Amplitude, Mixpanel, or SQL.
+    - Bring designs and user experiences to life by translating Figma designs and other project requirements into polished, responsive features and reusable components within WordPress themes and plugins.
+
+  Freshservice  [keep]  reviews keep  |  Jev drop {'keep': 0.14, 'drop': 0.86}
+    - Maintain accurate asset lifecycle management and tracking within Freshservice, including managing a budget to ensure stock levels
+    - Okta, Okta Workflows, Retool, FreshService (ITSM), Google Workspace, Slack, Atlassian (Confluence and Jira), MDM platforms (Jamf Pro, Kandji/Iru, Intune), Airtable, AWS and GCP, Terraform, Rippling (HRIS), SOAR (Tines), and AI-enabled operational tooling (Claude, Gemini, OpenAI)
+    - Maintain and improve onboarding and offboarding checklists, workflows, and documentation; track completion in Freshservice.
+
+  SAC  [keep]  reviews keep  |  Jev drop {'keep': 0.37, 'drop': 0.63}
+    - Professional RL Experience: Proven track record of training and deploying deep RL algorithms (e.g., PPO, SAC) for complex, real-world robotic or autonomous systems.
+    - Demonstrated experience in seismo-acoustic waveform analysis and experience using seismo-acoustic analysis software such as ARS (Analyst Review Station), Geotool/Seatools, SAC (Seismic Analysis Code).
+    - As the leader of Continuous Monitoring, you'll be responsible for growing and developing the team; setting a clear vision, priority, and strategy; making the case for the headcount and tooling the program needs; and building durable partnerships across GRC (SAC, SAF, Governance, Risk Management, TPR
+
+  Creo  [keep]  reviews keep  |  Jev drop {'keep': 0.11, 'drop': 0.89}
+    - Proficiency with Siemens NX, Creo, SolidWorks, CATIA, or similar 3D CAD software.
+    - Experience with or proficient in 3D CAD wire harness routing, such as (NX, Siemens Capital, CATIA, CREO)
+    - GD&T and CAD experience (Solid Works, PTC Creo, Siemens NX, or similar)
+
+  SAP PM  [keep]  reviews keep  |  Jev drop {'drop': 0.87, 'keep': 0.13}
+    - Hands-on work management: Warp, Foundation, Maximo, SAP PM, or equivalent CMMS; you can write and close a work order to support an initiative
+    - End-to-end business responsibility for planning the enterprise SAP PM (Plant Maintenance) platform.
+    - Familiarity with SAP PM, Maximo, or similar maintenance systems.
+
+  BAPIs  [keep]  reviews keep  |  Jev drop {'keep': 0.48, 'drop': 0.52}
+    - Strong ABAP proficiency, including OOP ABAP, BAPIs/RFCs, IDocs, user exits/enhancement framework, Smart Forms/SAPscript, and custom report/interface development
+    - Hands-on experience developing interfaces with SAP integration middleware (SAP PO, CPI/Integration Suite, EDI, ALE/IDocs, BAPIs, and Web Services)
+    - 4+ years of hands-on SAP development experience (ABAP, HANA SQL, CDS views, BTP, or SAP integration technologies like BAPIs, RFC)
+
+  Purview  [keep]  reviews keep, ordinary word "purview" (scope/domain) present as minor noise (8%)  |  Jev drop {'drop': 0.65, 'keep': 0.35}
+    - Delegate effectively to free up bandwidth for strategic priorities while ensuring everything under your purview runs smoothly.
+    - Manage content lifecycle within SharePoint, including archival and disposition, in line with retention outcomes defined by Information Security and Microsoft Purview.
+    - You understand AI governance, risk, guardrails, access control and data-protection considerations for high-impact use cases; familiarity with Okta and Microsoft Purview is advantageous
+
+  SAP Basis  [keep]  reviews keep  |  Jev drop {'keep': 0.4, 'drop': 0.6}
+    - 8-10 years of relevant hands-on SAP Basis engineering with one or more area of focus.
+    - At least 10 years of related professional experience in SAP Basis, SAP Security, and Oracle database administration.
+    - 5+ years of SAP Release Management, SAP BASIS, or Change Management experience
+
+  make  [keep]  reviews keep, make: ordinary word  |  Jev drop {'keep': 0.02, 'drop': 0.98}
+    - By transforming massive volumes of consumer data into accurate, reliable, and actionable insights, we enable our clients to understand not just what is happening in their businesses, but why—and to use that understanding to make higher-confidence decisions in an increasingly competitive landscape.
+    - Energised by bringing a service to new internal audiences, and able to make the case as compellingly on the twentieth telling as on the first
+    - As a quickly growing company focused on helping agents and agencies win, we make sure our users have what they need to do their best work, wherever they work from.
+
+  MapReduce  [keep]  reviews keep  |  Jev drop {'drop': 0.53, 'keep': 0.47}
+    - Knowledge of big data processing tools like Hadoop and Spark, including concepts such as MapReduce and data parallelism.
+    - MapReduce
+    - Captivation Software is looking for a mid level software engineer with experience in MapReduce, Java, Hadoop and Accumulo.
+
+  Yardi  [keep]  reviews keep  |  Jev drop {'keep': 0.46, 'drop': 0.54}
+    - Loan onboarding to Yardi and Debt Manager
+    - Direct experience with property management, leasing, or development and construction technology platforms (e.g., Yardi, MRI, Procore, Salesforce, or similar) strongly preferred.
+    - Familiarity with the multifamily data ecosystem: PMSes (Yardi, RealPage, Entrata, ResMan), CRMs (Knock, Funnel, EliseAI), and market data platforms (CoStar, Yardi Matrix, RealPage Market Analytics).
+
+  DevNet  [keep]  reviews keep  |  Jev drop {'keep': 0.29, 'drop': 0.71}
+    - Certifications: CCNP/CCIE, DevNet
+    - Experience with OT/ICS, critical infrastructure, industrial networks, facility-edge environments, and network automation tools (e.g., Ansible, Cisco DevNet, open-source routing tools).
+    - We seek a senior full-stack web developer within the DevNet team.
+
+  Python 2  [keep]  reviews keep  |  Jev drop {'keep': 0.4, 'drop': 0.6}
+    - Experience with Python 2.7 and Python 3.12.
+
+  HCM Extracts  [keep]  reviews keep  |  Jev drop {'drop': 0.88, 'keep': 0.12}
+    - HCM extracts and related reporting processes
+    - Collaborate with technical teams on integrations, conversions, reporting, HDL, HCM Extracts, and related solutions.
+    - HCM Extracts
+
+  NAT  [keep]  reviews keep  |  Jev drop {'drop': 0.84, 'keep': 0.16}
+    - Comfortable on a Linux command line, with solid IP networking (subnets, routing, NAT, DNS, DHCP, firewalls); able to use tcpdump or Wireshark to see where traffic stops.
+    - A Strong background in Networking: Experience with HTTPS/SSL, VLANs, TCP/IP, DNS, NAT devices, DHCP servers, Firewalls and software systems.
+    - Configure and manage VPCs, subnets, routing, NAT gateways and secure connectivity.
+
+Jev has cost $0.8169 over every run of both issues, of the $4.00 limit

@@ -1,22 +1,23 @@
 """Shared plumbing for the body-pass loop of #11 (ADR-0012): the pile export, the labels Jev made,
-the rows earlier rounds drew, and what Jev has cost. Imported by the scripts next to it, never run.
+and the rows earlier rounds drew. The request and what Jev has cost are jev.py's. Imported by the
+scripts next to it, never run.
 """
 
 import json
 import subprocess
 import sys
-import time
-import urllib.error
-import urllib.request
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parent.parent
+import jev
+from jev import SPEND_LIMIT, api_key, spend  # noqa: F401, the names score-body-round reads here
+
+REPO = jev.REPO
 
 CRITERION = REPO / "docs" / "engineering-role-body-criterion.md"
 
 # One row per vacancy and criterion revision Jev labelled under. Committed: a label is paid for, made
 # once and never remade; labels under an earlier revision stay, as that revision's measurement.
-LABELS = REPO / "docs" / "measurements" / "body-labels-jev.jsonl"
+LABELS = jev.BODY_LABELS
 
 # Every row a round drew, so a later round never draws it again.
 DRAWN = REPO / "docs" / "measurements" / "body-rounds-drawn.tsv"
@@ -28,9 +29,7 @@ PILE = Path.home() / "oneprofile-snapshots" / "pile-classified-2026-10-06.jsonl"
 
 STATES = ("IN", "OUT", "UNKNOWN")
 
-JEV = "https://api.typesafe.ai/v1/systemone"
-
-MODEL = "jev-1.13.0"
+MODEL = jev.MODEL
 
 QUESTION = ("Applying `criterion`, is the vacancy whose `title`, `title_reason` and `description` are given an "
             "engineering role?")
@@ -41,15 +40,6 @@ OPTIONS = {
     "OUT": "It is not an engineering role.",
     "UNKNOWN": "The text does not say what the work is, or, for domain_ambiguity, which domain it is in.",
 }
-
-# Jev answers 429 when the rate limit is hit and 529 when it is overloaded; both are retried.
-RETRIED = (429, 529)
-
-ATTEMPTS = 8
-
-DOLLARS_PER_INPUT_TOKEN = 0.042 / 1_000_000
-
-SPEND_LIMIT = 4.00
 
 
 def read_pile(path=PILE):
@@ -75,11 +65,6 @@ def read_labels(revision=None):
 def append_label(row):
     with open(LABELS, "a") as labels:
         labels.write(json.dumps(row) + "\n")
-
-
-def spend():
-    """What every label stored has cost, in dollars, from the usage Jev reported for it."""
-    return sum(row["input_tokens"] for row in read_all_labels()) * DOLLARS_PER_INPUT_TOKEN
 
 
 def criterion_revision():
@@ -112,40 +97,15 @@ def read_ids(path):
         return [int(line) for line in lines if line.strip()]
 
 
-def api_key():
-    """TYPESAFE_API_KEY from the repository's .env. Never printed."""
-    for line in (REPO / ".env").read_text().splitlines():
-        name, _, value = line.partition("=")
-        if name.strip() == "TYPESAFE_API_KEY":
-            return value.strip().strip('"').strip("'")
-    sys.exit("TYPESAFE_API_KEY is not in .env")
-
-
 def ask_jev(key, criterion, title, title_reason, description):
-    """One labelling request. Returns Jev's response, retrying 429 and 529 with backoff."""
-    body = json.dumps({
-        "model": MODEL,
-        "state": {"title": title, "title_reason": title_reason, "description": description},
-        "questions": {
-            "engineering_role": {
-                "type": "choice",
-                "instructions": {"criterion": criterion, "question": QUESTION},
-                "criteria": OPTIONS,
-            },
+    """One labelling request. Returns Jev's response."""
+    return jev.ask(key, {"title": title, "title_reason": title_reason, "description": description}, {
+        "engineering_role": {
+            "type": "choice",
+            "instructions": {"criterion": criterion, "question": QUESTION},
+            "criteria": OPTIONS,
         },
-    }).encode()
-    for attempt in range(ATTEMPTS):
-        request = urllib.request.Request(JEV, data=body, method="POST", headers={
-            "Authorization": f"Bearer {key}", "Content-Type": "application/json"})
-        try:
-            with urllib.request.urlopen(request, timeout=120) as response:
-                return json.load(response)
-        except urllib.error.HTTPError as error:
-            if error.code not in RETRIED or attempt == ATTEMPTS - 1:
-                sys.exit(f"Jev answered {error.code}: {error.read().decode(errors='replace')}")
-            wait = float(error.headers.get("Retry-After") or 2 ** attempt)
-            print(f"  Jev answered {error.code}, retrying in {wait:.0f}s", file=sys.stderr)
-            time.sleep(wait)
+    })
 
 
 def label(vacancy_ids, pile):
@@ -171,8 +131,6 @@ def label(vacancy_ids, pile):
             break
         row = pile[vacancy_id]
         response = ask_jev(key, criterion, row["cleaned_title"], row["title_reason"], row["cleaned_description"])
-        if response["model"] != MODEL:
-            sys.exit(f"Jev answered as {response['model']}, not the pinned {MODEL}")
         answer = response["answers"]["engineering_role"]
         tokens = response["usage"]["input_tokens"]
         append_label({

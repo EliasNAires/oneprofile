@@ -1,0 +1,86 @@
+name	reviews	jev	right	pattern	why
+Argo	drop	keep	unclear	bare name of a family	in ads it names the Argo project (Argo CD, Workflows); whether the bare name is a safe key is the drafter's call
+SBE	drop	keep	reviews	ambiguous abbreviation	Simple Binary Encoding in two ads, Small Business Enterprise in many others
+Goose	drop	keep	reviews	ordinary word	an ordinary word and a substation protocol as well as the agent
+Linux Security Modules	drop	keep	jev	dropped for its abbreviation	the full name is a kernel framework; the review dropped it because LSM is unsafe, a key question the drafter settles
+R2	drop	keep	reviews	ambiguous abbreviation	Cloudflare R2 only with Cloudflare around it; bare R2 names many things
+Federated GraphQL	drop	keep	reviews	generic concept	an architecture, not a product (Apollo Federation is)
+HSM	drop	keep	reviews	generic concept	a device category, and a z/OS storage manager
+NAT gateways	drop	keep	reviews	generic concept	each cloud has one; a concept, not one service
+Enterprise Linux	drop	keep	reviews	fragment	of Red Hat Enterprise Linux
+UNIX Shell	drop	keep	reviews	generic concept	shell scripting in general
+Foundry	drop	keep	reviews	homonym	semiconductor foundries outnumber Palantir Foundry
+Gemini	drop	keep	jev	homonym read the wrong way	in ads Gemini is Google Gemini; the review weighed the Gemini protocol no ad names
+DeepAR	drop	keep	jev	homonym read the wrong way	every ad means the forecasting model
+Bourne shell	drop	keep	jev	dropped for its abbreviation	sh is unsafe; the full name is a skill
+Checkstyle	drop	keep	jev	dropped for its abbreviation	CS is unsafe; the full name is a skill
+Proxmox Backup Server	drop	keep	jev	dropped for its abbreviation	PBS is unsafe; the full name is a skill
+PowerBuilder	drop	keep	jev	dropped for its abbreviation	pb is unsafe; the full name is a skill
+Home Assistant	drop	keep	reviews	consumer software	a home-automation hobby, named in an ad as one
+Common Lisp	drop	keep	jev	dropped for its abbreviation	CL is unsafe; the full name is a language
+Wikitext	drop	keep	unclear	obscure	a markup language, named almost only by Wikimedia
+OpenVMS	drop	keep	jev	dropped for its abbreviation	VMS is unsafe; OpenVMS is an operating system still hired for
+MUMPS	drop	keep	jev	dropped for its abbreviation	M is unsafe; MUMPS is the language of VistA
+JetBrains MPS	drop	keep	unclear	obscure	one ad
+Windows 7	drop	keep	unclear	version of a skill	a spelling of Windows, or outdated
+OrientDB	drop	keep	jev	dropped for its abbreviation	Orient is unsafe; OrientDB is a database
+CoffeeScript	drop	keep	jev	dropped for its abbreviation	coffee is unsafe; CoffeeScript is a language
+Logic Apps Azure	drop	keep	reviews	fragment	two names run together across a dash
+Assured Compliance Assessment	drop	keep	reviews	fragment	of Assured Compliance Assessment Solution
+Shared VPC	drop	keep	unclear	feature of a service	a named GCP feature, or a phrase
+Jira Automation	drop	keep	unclear	feature of a service	a feature of Jira that ads name as a tool
+365 GCC High	drop	keep	reviews	fragment	of Microsoft 365 GCC High
+Next.js App Router	drop	keep	reviews	feature of a service	part of Next.js
+Lake Storage Gen2	drop	keep	reviews	fragment	of Azure Data Lake Storage Gen2
+ArcGIS Portal	drop	keep	unclear	feature of a service	a component of ArcGIS
+Visual Studio IDE	drop	keep	jev	another spelling	the criterion keeps another spelling of a skill as that skill
+UCS	drop	keep	reviews	fragment	of Cisco UCS, and unified communications
+Spark ML	drop	keep	jev	module named as a library	the name ads give Spark's ML library
+Opal	drop	keep	reviews	ordinary word	a gem and a word before it is an access tool
+ISIS	drop	keep	unclear	homonym	IS-IS in routing ads; the bare form collides
+FLUX	drop	keep	reviews	ordinary word	in flux, and French flux, as well as Flux CD
+Polymer	drop	keep	reviews	ordinary word	chemistry ads outnumber the library
+CLIP	drop	keep	reviews	ordinary word	clip as well as OpenAI CLIP
+Swarm	drop	keep	reviews	ordinary word	Docker Swarm is a skill; bare Swarm is a word
+Compose	drop	keep	reviews	ordinary word	a verb, and two skills (Docker Compose, Jetpack Compose)
+Tempo	drop	keep	reviews	ordinary word	high-tempo, and Portuguese tempo
+Graphite	drop	keep	reviews	ordinary word	the material as well as the monitoring tool
+Spark Structured	drop	keep	reviews	fragment	of Spark Structured Streaming
+Elementary	drop	keep	reviews	ordinary word	elementary schools as well as the dbt package
+CWE	drop	keep	jev	security standard	the criterion keeps security standards
+AWQ	drop	keep	unclear	method	a quantization method; a technique more than a tool
+IAM	keep	drop	unclear	generic concept	identity and access management in general, or AWS IAM
+SSL	keep	drop	reviews	protocol	the criterion keeps security protocols
+Microsoft Copilot	keep	drop	jev	office software	the assistant of Microsoft 365, named beside ChatGPT
+Windows Mobile	keep	drop	unclear	historical	still named in device-management ads
+Hyperion	keep	drop	unclear	not hired for	Oracle's finance planning suite
+eCos	keep	drop	jev	homonym	every mention is ECOs, engineering change orders
+Elementor	keep	drop	unclear	not hired for	a WordPress page builder
+BMIDE	keep	drop	unclear	obscure	Teamcenter's modelling tool
+Recovery Manager	keep	drop	jev	ambiguous bare name	Oracle Recovery Manager and VMware Site Recovery Manager both; the safe form names the vendor
+Klaxoon	keep	drop	jev	office software	a whiteboard product
+SAP Joule	keep	drop	unclear	office software	SAP's assistant
+Lucidchart	keep	drop	jev	office software	diagramming, named beside Visio
+Palo Alto Cortex	keep	drop	reviews	security tool	Cortex XDR is a security tool engineers run
+Ciena	keep	drop	jev	vendor	a company, not one technology
+FactoryTalk	keep	drop	unclear	not hired for	industrial control software
+Spec Kit	keep	drop	unclear	obscure	GitHub Spec Kit, new
+SSO	keep	drop	jev	generic concept	single sign-on in general
+OpenView	keep	drop	unclear	historical	HP OpenView
+Atlas CLI	keep	drop	unclear	obscure	one ad
+PoE	keep	drop	reviews	protocol	the criterion keeps network protocols
+Figma	keep	drop	reviews	tool	front-end engineers put it on a CV
+Freshservice	keep	drop	unclear	office software	an ITSM tool IT staff run
+SAC	keep	drop	jev	ambiguous abbreviation	Soft Actor-Critic, Seismic Analysis Code and more
+Creo	keep	drop	jev	not hired for	CAD, as the criterion drops AutoCAD
+SAP PM	keep	drop	jev	not hired for	plant maintenance
+BAPIs	keep	drop	reviews	interface	what ABAP developers are hired to write
+Purview	keep	drop	jev	ordinary word	bare purview is a word; Microsoft Purview is the safe form
+SAP Basis	keep	drop	reviews	platform	SAP's technical administration, hired for
+make	keep	drop	jev	ordinary word	the criterion names it: GNU Make, not make
+MapReduce	keep	drop	reviews	framework	a programming model and Hadoop's framework
+Yardi	keep	drop	jev	not hired for	property management software
+DevNet	keep	drop	unclear	certification	Cisco's developer programme and certification
+Python 2	keep	drop	reviews	another spelling	a version of Python, kept as that skill
+HCM Extracts	keep	drop	unclear	feature of a service	a feature of Oracle HCM
+NAT	keep	drop	unclear	generic concept	address translation in general, or a networking technique the criterion files as a skill, as it does SSL and PoE
