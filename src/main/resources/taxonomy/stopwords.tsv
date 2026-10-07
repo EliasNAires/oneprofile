@@ -19,6 +19,7 @@ you’ll	18093	0.0261		closed-class
 we’re	17975	0.0115		closed-class
 us	17950	0.1884		closed-class
 you'll	17707	0.0065		closed-class
+responsibilities	16960	0.0145	0.96	head
 all	14320	0.0075		closed-class
 do	13657	0.0400		closed-class
 we're	11633	0.0221		closed-class
@@ -35,7 +36,9 @@ these	6567	0.0011		closed-class
 must	6359	0.0137		closed-class
 how	4799	0.0074		closed-class
 from	4787	0.0020		closed-class
+additionally	4475	0.0000	0.95	head
 when	4159	0.0044		closed-class
+employees	4084	0.0285	0.94	head
 off	4028	0.2100		closed-class
 no	4024	0.0330		closed-class
 will	4009	0.0009		closed-class
@@ -62,17 +65,21 @@ you’re	2188	0.0043		closed-class
 since	2131	0.0000		closed-class
 that’s	2093	0.0133		closed-class
 it’s	2010	0.0088		closed-class
+headquartered	2003	0.0004	0.98	head
+willingness	1988	0.0131	0.96	head
 like	1859	0.0124		closed-class
 but	1839	0.0003		closed-class
 or	1795	0.0039		closed-class
 up	1656	0.0096		closed-class
 we’ve	1563	0.0048		closed-class
+ordinance	1551	0.8944	0.96	head
 o	1544	0.0995		closed-class
 is	1526	0.0016		closed-class
 via	1458	0.0226		closed-class
 where	1389	0.0005		closed-class
 there	1388	0.0051		closed-class
 that's	1328	0.0065		closed-class
+depending	1317	0.0035	0.93	head
 so	1289	0.0011		closed-class
 yourself	1271	0.0282		closed-class
 it's	1230	0.0104		closed-class
@@ -83,12 +90,17 @@ may	1132	0.0091		closed-class
 doing	1128	0.0048		closed-class
 what’s	1032	0.0186		closed-class
 beyond	950	0.0166		closed-class
+company's	932	0.3534	0.95	head
 each	931	0.0036		closed-class
+here’s	930	0.0256	0.93	head
+asylee	892	0.7365	0.94	head
+utilize	888	0.0079	0.94	head
 don’t	849	0.0007		closed-class
 its	832	0.0062		closed-class
 what's	821	0.0101		closed-class
 e	815	0.0286		closed-class
 across	811	0.0012		closed-class
+researchers	789	0.0549	0.95	head
 many	786	0.0120		closed-class
 has	770	0.0012		closed-class
 those	763	0.0006		closed-class
@@ -96,10 +108,13 @@ being	757	0.0041		closed-class
 during	694	0.0004		closed-class
 above	685	0.0070		closed-class
 tu	679	0.0268		closed-class
+employer's	661	0.9955	0.98	head
 en	649	0.0054		closed-class
 of	632	0.0003		closed-class
 we’ll	621	0.0007		closed-class
+company’s	617	0.2291	0.95	head
 below	605	0.0003		closed-class
+stipend	599	0.1551	0.96	head
 after	587	0.0182		closed-class
 era	584	0.1171		closed-class
 everyone	583	0.0032		closed-class
@@ -112,7 +127,10 @@ whatever	512	0.0368		closed-class
 you’ve	507	0.0037		closed-class
 sobre	501	0.0000		closed-class
 la	487	0.0287		closed-class
+internship	484	0.1006	0.93	head
 someone	479	0.0001		closed-class
+effectively	473	0.0023	0.94	head
+contractors	457	0.2162	0.94	head
 having	441	0.0037		closed-class
 de	431	0.0039		closed-class
 si	422	0.5000		closed-class
@@ -121,6 +139,7 @@ everything	381	0.0132		closed-class
 several	374	0.0000		closed-class
 y	374	0.0569		closed-class
 we'll	373	0.0067		closed-class
+furthermore	367	0.0000	0.93	head
 let’s	367	0.0214		closed-class
 me	363	0.5537		closed-class
 un	359	0.0233		closed-class
@@ -140,6 +159,10 @@ such	280	0.0000		closed-class
 something	278	0.0009		closed-class
 le	273	0.0112		closed-class
 none	270	0.0000		closed-class
+employers	268	0.2294	0.96	head
+residing	265	0.0000	0.94	head
+위2항	262		0.96	head
+undergraduate	261	0.0649	0.97	head
 nothing	252	0.1214		closed-class
 nos	250	0.0362		closed-class
 you'd	250	0.0023		closed-class
