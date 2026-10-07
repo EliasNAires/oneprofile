@@ -2,6 +2,11 @@
 
 Status: accepted (amended 2026-10-02, 2026-10-06)
 
+This decides the title loop's labeller, and that loop closed with #35. Later loops name
+their own labellers (ADR-0012, ADR-0013), and ADR-0014 keeps them blind by splitting
+each round between two sessions instead of by ordering. The rule that LLM labels never enter
+the pipeline, and the rule against paid APIs, still hold everywhere.
+
 The labelling that measures the classifier of #10 is produced by a Claude Code session
 applying `docs/engineering-role-criterion.md`, not by a person reading each row. The labels it
 produces are ground truth. No language model is called from the application, at any stage, for

@@ -1,6 +1,6 @@
 ---
 name: body-labeller
-description: Labels one batch of 20 pile vacancies IN, OUT or UNKNOWN from the body criterion, blind, for the labeller check of ADR-0012. Give it the batch file's path.
+description: Labels one batch of 20 pile vacancies IN, OUT or UNKNOWN from the body criterion, blind, when calibrating #11 drafts a gold set or checks a labeller. Give it the batch file's path.
 model: haiku
 tools: Read, Write
 ---

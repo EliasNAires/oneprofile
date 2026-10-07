@@ -31,6 +31,11 @@ Whether a board was found and whether it had openings when last checked: active,
 not found. Unknown until the board has been checked.
 _Avoid_: alive, valid, health
 
+**Discovery**:
+Finding slugs by searching crawls for board URLs. The first stage of a cycle, and the one that
+decides which companies the corpus can hold at all.
+_Avoid_: crawling, scraping, slug mining
+
 **Probe**:
 Checking whether a slug corresponds to a real board, and recording its board status.
 _Avoid_: validate, ping, health check
@@ -105,7 +110,13 @@ _Avoid_: normalized title, clean title, title slug
 **Cleaning**:
 The pass that gives every vacancy in the corpus a cleaned title, and cuts its cleaned
 description into segments. Runs before classification.
-_Avoid_: normalization, scrubbing, preprocessing, sanitizing
+_Avoid_: scrubbing, preprocessing, sanitizing
+
+**Normalization**:
+The pass after classification, over the engineering subset alone, that derives the normalized
+title, work mode, declared location and seniority. Its rules may assume the vocabulary of
+engineering work, because nothing else reaches it.
+_Avoid_: cleaning, enrichment, parsing
 
 **Cleaned Description**:
 A vacancy's description with what is decoration rather than text taken out — emoji,
@@ -174,10 +185,18 @@ _Avoid_: role family, category, discipline, job function, technical role
 
 **Classification State**:
 What classification answers about a vacancy: in, out, or unknown, with a reason when the title
-left it unknown, and the signal (title or body) that decided. A vacancy the body decides keeps
-its title's reason, which is what marks it as one the body pass read; one it skipped for its
-language carries `unsupported_language` instead. See ADR-0008.
+left it unknown, and the signal (title or body) that decided. See ADR-0008.
 _Avoid_: verdict, flag, is_engineering, category
+
+**Engineering Subset**:
+The vacancies classified in. What normalization, seniority, skills and the explorer read; an
+unknown vacancy enters it only if the body pass decides it in.
+_Avoid_: tech jobs, filtered corpus, in pile
+
+**Body Pass**:
+The second classification pass, which reads the cleaned description of every vacancy in the
+pile and decides what it can. Rules only, like the title pass (ADR-0012).
+_Avoid_: description classifier, body classifier, second stage
 
 **Function Head**:
 The noun in a title that names what the role does — engineer, analyst, technician — as
@@ -229,17 +248,11 @@ stage is frozen (ADR-0012).
 _Avoid_: backlog, residue, unknowns, remainder
 
 **Labeller**:
-What produces the labels a classification state is scored against, applying its signal's
-criterion without seeing any rule or prediction it scores. For titles, a Claude Code session
-(ADR-0007); for bodies, Jev, over the rows each round draws (ADR-0012). Never part of the
-pipeline.
+What produces the labels a rule loop's rules are scored against, applying the loop's criterion
+without seeing any rule or prediction it scores. Each loop's ADR names its labeller: for titles,
+a Claude Code session (ADR-0007); for bodies and skill discovery, Jev (ADR-0012, ADR-0013).
+Never part of the pipeline.
 _Avoid_: annotator, judge, oracle, reviewer
-
-**Iteration**:
-One session's pass around the classification loop: label the sample the last session left,
-score the rules, change them, re-classify, draw the next sample. The single-session form a rule
-loop replaced.
-_Avoid_: batch, run, evaluation, cycle
 
 **Work Mode**:
 Where the work is performed, as declared by the vacancy: remote, hybrid or onsite.
@@ -361,10 +374,22 @@ Developing rules against labels until they meet a goal, in rounds split between 
 that never see each other's work except through the issue thread (`docs/agents/rule-loop.md`).
 _Avoid_: classification loop, training loop, iteration
 
+**Criterion**:
+The prose document a loop's labeller, adjudicator and reviewer read, and the only thing its
+rules answer to: where the rules and the criterion disagree, the rules are wrong. Versioned in
+revisions.
+_Avoid_: spec, guidelines, rubric, definition
+
 **Round**:
 One turn of a rule loop: an implementer session changes the rules, then a reviewer session
-scores them and writes the next round's feedback.
+scores them and writes the next round's feedback. The title loop's single-session rounds were
+called iterations.
 _Avoid_: iteration, pass, cycle, run
+
+**Gate**:
+A limit a round's scores must hold for the loop to exit, such as an error rate per stratum or a
+time. Fixed in the loop's ADR; the loop also stops at a cap of rounds, whatever the gates say.
+_Avoid_: threshold, target, KPI, exit criterion
 
 **Calibration**:
 The phase of a rule loop in which its criterion is revised, and the labeller is checked against

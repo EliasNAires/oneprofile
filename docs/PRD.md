@@ -1,7 +1,7 @@
 # OneProfile — Product Requirements, MVP iteration
 
-Status: agreed 2026-09-19, re-sequenced 2026-09-24 (§12). The spec for what is not built
-yet. What is built is summarized with pointers to the code, the ADRs and
+Status: agreed 2026-09-19, re-sequenced 2026-09-24 (§12), section statuses brought up to date
+2026-10-07. The spec for what is not built yet. What is built is summarized with pointers to the code, the ADRs and
 `docs/engineering-role-criterion.md`, which own it. Sequencing lives in the issue tracker.
 
 ## 1. The problem
@@ -67,7 +67,7 @@ classifier by eye; classification is what earns the right to stop reasoning abou
 trainers and psychiatric nurse practitioners; and normalization is where rules may assume
 the vocabulary of engineering, because by then nothing else is left.
 
-### 5.1 Title cleaning — built
+### 5.1 Cleaning — built
 
 A character whitelist, gender-marker removal, and extraction of the unguarded seniority words
 (`senior`, `sr`, `junior`, `jr`, `principal`, and `semi senior`/`ssr` as mid). The levels a
@@ -75,19 +75,23 @@ title names are kept as a **list**, since the title is one source of seniority a
 several. Work-mode words are **not** removed here; they belong to §5.3. The rules and their
 measured yield: `docs/measurements/2026-09-title-cleaning.md`.
 
-### 5.2 Engineering roles — built, loop open
+Cleaning also strips decoration from each description and cuts it into **segments** once, with
+boilerplate marked, for every pass that reads descriptions (#46).
+
+### 5.2 Engineering roles — title pass built, body pass in its loop
 
 A rule over cleaned titles answers whether a vacancy is an engineering role, in three states
 (ADR-0008, ADR-0009, ADR-0010). The criterion is `docs/engineering-role-criterion.md`; the
 rules are code, and nobody signs off on them. Measurement and the loop's exit: ADR-0008.
 Role families finer than "engineering role" are **not modelled** — nothing consumes them.
 
-Still to build (#11): a second pass reads the description body of the **unknown** vacancies,
-by rule, and resolves what it can. The reason code says which question to ask: a
+The title loop closed with #35, and its rules are frozen. The **body pass** (#11, ADR-0012) is
+in its rule loop: it reads the description of every vacancy in the pile, by rule, and resolves
+what it can. The reason code says which question to ask: a
 domain-ambiguous title needs the body checked for domain markers, a scope-ambiguous one needs
 the criterion re-applied. An `unruled` title does not reach this pass.
 
-### 5.3 Title normalization
+### 5.3 Normalization
 
 Over the engineering subset only. Everything in this pass may assume the vocabulary of
 engineering work, which is what makes its rules small.
@@ -148,7 +152,7 @@ the binding constraint on the product (ADR-0004); recall is measured by hand-lab
 random sample of roughly 200 remote-flagged vacancies, and the missed phrasings are the work
 queue.
 
-### 5.5 Skills
+### 5.5 Skills — taxonomy built, extraction not built
 
 Skills use a **curated engineering taxonomy of roughly 1,500–3,000 concepts**, stored as
 `id, canonical_name, category, aliases[]` and matched against description text by a
@@ -156,7 +160,9 @@ normalized trie pass. The same taxonomy is the picker the user chooses their own
 from, which is what makes coverage a meaningful number.
 
 The taxonomy is seeded from **O\*NET Technology Skills**, **GitHub Linguist** and
-**Wikidata**; why not Lightcast, ESCO or Stack Overflow: ADR-0003.
+**Wikidata**; why not Lightcast, ESCO or Stack Overflow: ADR-0003. It is built:
+`src/main/resources/taxonomy/skills.tsv`, with 2,009 skills (provenance in `docs/taxonomy.md`),
+grown on each new snapshot by skill discovery (#41, ADR-0013). Extraction (#15) is not built.
 
 This iteration does **not** distinguish required skills from merely mentioned ones.
 Coverage is a rough signal and is accepted as such.

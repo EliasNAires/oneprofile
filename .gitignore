@@ -10,3 +10,5 @@ target/
 *.ipr
 
 .env
+
+__pycache__/

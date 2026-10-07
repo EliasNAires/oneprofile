@@ -1,6 +1,7 @@
 # The body pass is scored against Jev's labels, made only for the rows a round draws
 
-Status: accepted (amended 2026-10-02, 2026-10-04, 2026-10-06)
+Status: accepted (amended 2026-10-02, 2026-10-04, 2026-10-06); partly superseded by ADR-0014,
+which overrides the labeller check and the reviewer's criterion edits, as marked below
 
 The body pass of #11 is measured against labels, as the title rules were (ADR-0008), but a
 description is two orders of magnitude longer than a title, and a Claude Code session
@@ -74,6 +75,9 @@ records the `usage` of each response, keeps a running total, and **stops when it
 
 ## Checking the labeller
 
+*Superseded by ADR-0014: this check was the loop's first calibration. Its figures stand until a
+gold set is checked.*
+
 Before the loop, about **1000 rows** are drawn from the pile, stratified by reason in
 proportion to it, and labelled by Jev. **Claude Code Haiku subagents** re-label the same rows
 blind, in batches of 20, through the `body-labeller` agent (`model: haiku`, tools `Read` and
@@ -103,10 +107,11 @@ Each round is two sessions.
 - **The implementer** writes body rules test-first, in whatever shape it chooses, starting
   from the previous round's feedback. It never sees a label.
 - **The reviewer** runs the scoring script, reviews the implementer's code without its
-  reasoning, and writes the feedback for the next round. It decides any criterion question
-  itself and writes it into the criterion, judged by what the classifier is for: helping
-  software people find better jobs, so a rule that lets a non-software job into the
-  engineering subset, or keeps a software job out of it, costs the user directly.
+  reasoning, and writes the feedback for the next round. *Superseded by ADR-0014:* it no
+  longer writes criterion questions into the criterion; it proposes them, and calibration
+  decides them. Either way they are judged by what the classifier is for: helping software
+  people find better jobs, so a rule that lets a non-software job into the engineering
+  subset, or keeps a software job out of it, costs the user directly.
 
 The round's record is a comment on #11; the issue stays open until the loop exits or hits
 the cap.
