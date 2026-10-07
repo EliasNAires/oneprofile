@@ -14,7 +14,12 @@ Runs scripts/skill_discovery.py over the segments of IN and the pile and times i
   names no software skill, only skills found, or one missed. Recall is the share of segments naming a
   skill in which none was missed. The segments that missed one are printed for the reviewer, who
   writes down the missed names as the next round's feedback.
-- Size and time: how many candidates, and how long the script took.
+- Yield: the valid candidates a run proposes, estimated as its size times its precision. A round fails
+  when the top of its yield's interval is below the best earlier round's estimate, each earlier round
+  measured on its own draw under the current criterion revision. Cutting candidates raises precision,
+  and only this shows when the cut took valid names with it.
+- Size and time: how many candidates, and how long the script took. No gate: Jev's cost per
+  candidate is a hundredth of a cent, and drafting scales.
 
 Neither draw takes a candidate or a segment an earlier round drew, and each round's draw goes into
 docs/measurements/skill-rounds-drawn.tsv. Running a round again redraws the same rows and replaces
@@ -23,6 +28,7 @@ or the $4 stop is resumed by running it again. The report is archived as
 docs/measurements/skill-round-<round>.txt, and the candidates are kept next to the snapshot.
 """
 
+import collections
 import subprocess
 import sys
 import time
@@ -49,7 +55,6 @@ EXAMPLES = 3
 # ADR-0013's gates.
 RECALL = 0.90
 PRECISION = 0.50
-MOST_CANDIDATES = 1000
 
 
 class Report:
@@ -117,22 +122,57 @@ def draw_segments(round_name, lines, earlier, names):
     return drawn
 
 
-def score(report, round_name, candidates, seconds, precision_drawn, passed_over, recall_drawn):
+def earlier_draws(round_name, segments):
+    """Each earlier round whose candidates are kept next to the snapshot, as its candidates and the ones
+    it drew for precision, each with its name and segments, redrawn as that round drew them."""
+    drawn = collections.defaultdict(set)
+    for round_drawn, kind, form in read_drawn():
+        if kind == "candidate" and round_drawn.isdigit() and int(round_drawn) < int(round_name):
+            drawn[round_drawn].add(form)
+    rounds = {}
+    for round_drawn, forms in sorted(drawn.items(), key=lambda item: int(item[0])):
+        path = Path(str(CANDIDATES).format(round=round_drawn))
+        if not path.exists():
+            continue
+        candidates = skill_discovery.read_candidates(path)
+        by_form = {skillloop.name_form(c["name"]): c for c in candidates}
+        rounds[round_drawn] = (candidates, {
+            form: {"name": by_form[form]["name"],
+                   "segments": [text for _, text in segments.examples(by_form[form]["name"], EXAMPLES,
+                                                                         f"round-{round_drawn}-{form}")]}
+            for form in forms if form in by_form})
+    return rounds
+
+
+def verdicts_of(drawn):
+    """The decision of each drawn candidate that has one, by the decision record or by Jev, with its
+    source."""
     decisions = skillloop.read_decisions()
     labels = skillloop.read_labels()
-    answers = skillloop.read_recall_labels()
-    passed = True
-
-    report(f"Round {round_name} at criterion revision {skillloop.criterion_revision()}, {jev.MODEL}")
-    report(f"\nSize and time: {len(candidates)} candidates (gate {MOST_CANDIDATES}) in {seconds:.0f}s")
-    passed = passed and len(candidates) <= MOST_CANDIDATES
-
     verdicts = {}
-    for form in precision_drawn:
+    for form in drawn:
         if form in decisions:
             verdicts[form] = (decisions[form]["decision"], f"decided {decisions[form]['source']}")
         elif form in labels:
             verdicts[form] = (labels[form]["decision"], "Jev")
+    return verdicts
+
+
+def estimated_yield(size, verdicts):
+    """The valid candidates of a run, size times the share of its draw kept, with its 95% interval."""
+    kept = sum(decision == "keep" for decision, _ in verdicts.values())
+    low, high = skillloop.wilson(kept, len(verdicts))
+    return size * kept / len(verdicts), size * low, size * high
+
+
+def score(report, round_name, candidates, seconds, precision_drawn, passed_over, recall_drawn, earlier):
+    answers = skillloop.read_recall_labels()
+    passed = True
+
+    report(f"Round {round_name} at criterion revision {skillloop.criterion_revision()}, {jev.MODEL}")
+    report(f"\nSize and time: {len(candidates)} candidates in {seconds:.0f}s")
+
+    verdicts = verdicts_of(precision_drawn)
     kept = sum(decision == "keep" for decision, _ in verdicts.values())
     if verdicts:
         low, high = skillloop.wilson(kept, len(verdicts))
@@ -146,6 +186,25 @@ def score(report, round_name, candidates, seconds, precision_drawn, passed_over,
     report(f"  {len(precision_drawn)} drawn, {len(precision_drawn) - len(verdicts)} without a label, "
            f"{sum(source != 'Jev' for _, source in verdicts.values())} from the decision record, "
            f"{passed_over} passed over for no mention")
+
+    best = None
+    for round_drawn, (earlier_candidates, earlier_drawn) in earlier.items():
+        earlier_verdicts = verdicts_of(earlier_drawn)
+        if earlier_verdicts:
+            estimate, low, high = estimated_yield(len(earlier_candidates), earlier_verdicts)
+            report(f"  round {round_drawn}: {len(earlier_candidates)} candidates, "
+                   f"about {estimate:.0f} valid ({low:.0f}-{high:.0f})")
+            if best is None or estimate > best[1]:
+                best = (round_drawn, estimate)
+    if verdicts:
+        estimate, low, high = estimated_yield(len(candidates), verdicts)
+        holds = best is None or high >= best[1]
+        report(f"Yield: about {estimate:.0f} valid candidates, 95% interval {low:.0f}-{high:.0f}, "
+               + (f"gate the best earlier round's {best[1]:.0f} (round {best[0]})" if best else "no earlier round")
+               + f"  {'pass' if holds else 'FAIL'}")
+        passed = passed and holds
+    else:
+        report("Yield: no candidate decided  FAIL")
 
     answered = [(row, answers[key]) for row in recall_drawn
                 if (key := skillloop.recall_key(row["segment"], row["found"])) in answers]
@@ -198,15 +257,17 @@ def main():
     names = skillloop.Names(skillloop.read_keys(), [c["name"] for c in candidates])
     recall_drawn = draw_segments(round_name, lines, earlier_segments, names)
     record_drawn(round_name, precision_drawn, [row["segment"] for row in recall_drawn])
+    earlier = earlier_draws(round_name, segments)
 
     decisions = skillloop.read_decisions()
-    skillloop.label([{"name": c["name"], "segments": c["segments"]} for form, c in precision_drawn.items()
-                     if form not in decisions])
+    skillloop.label([{"name": c["name"], "segments": c["segments"]}
+                     for drawn in [precision_drawn] + [drawn for _, drawn in earlier.values()]
+                     for form, c in drawn.items() if form not in decisions])
     skillloop.label_recall(recall_drawn)
 
     print()
     with open(str(ARCHIVE).format(round=round_name), "w") as archive:
-        score(Report(archive), round_name, candidates, seconds, precision_drawn, passed_over, recall_drawn)
+        score(Report(archive), round_name, candidates, seconds, precision_drawn, passed_over, recall_drawn, earlier)
 
 
 if __name__ == "__main__":

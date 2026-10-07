@@ -1,6 +1,6 @@
 # What counts as a skill
 
-Revision 2 (2026-10-07)
+Revision 3 (2026-10-07)
 
 The criterion of skill discovery (#41, ADR-0013). It is the one document read by Jev when it
 decides whether a candidate is kept, by the agent that drafts a kept candidate's row of
@@ -29,10 +29,12 @@ the ad naming it is not an engineering role.
 
 **Keep** a candidate when it names one specific technology an engineer would put on a CV: a
 language, a framework or library, a database, a cloud or one of its services, a tool or a
-platform. Python, Grafana, Claude Code, GNU Make, Google Cloud Platform.
+platform. Python, Grafana, Claude Code, GNU Make, Google Cloud Platform. A platform data, ML or AI
+teams build on is a platform like any other: Dataiku, Microsoft Foundry, Databricks.
 
 A candidate that names an existing skill by another spelling is a keep, as that skill: GCP is
-Google Cloud Platform, `#Kubernetes` is Kubernetes.
+Google Cloud Platform, `#Kubernetes` is Kubernetes, and a name split by a space, an underscore or a
+slash is that name (Check MK is Checkmk, Mongo DB is MongoDB).
 
 ## Drop
 
@@ -41,7 +43,8 @@ Google Cloud Platform, `#Kubernetes` is Kubernetes.
 - **A generic concept**, not a named technology: data visualization, CI/CD, microservices, API,
   dead letter queue, WebView.
 - **An ordinary word**, in English or Spanish, or a phrase of them: Clean, Cadence, Familiarity,
-  Nice.
+  Nice. This holds even where the ads use the word for a technology: Camel, Ant and Ranger are
+  drops, and Apache Camel, Apache Ant and Apache Ranger are the candidates that keep them.
 - **Obscure or historical**: a name few ads use and few engineers would recognise, or a technology
   that is no longer hired for: TOPS-10, HAL/S, C--.
 - **An ambiguous abbreviation**: one that names several things, none dominant: CAPI, SDF, BO, ZK.
@@ -56,7 +59,9 @@ Google Cloud Platform, `#Kubernetes` is Kubernetes.
   person is certified in, not a technology they build with: SOC 2, ISO 27001, NIST CSF, FedRAMP,
   HIPAA, PCI DSS, ITIL, CISSP, AZ-204, Security+.
 - **Not a technology at all**: a company, a vendor umbrella, a product line, a place, a person, a
-  fragment of a longer name (Fabric for Microsoft Fabric), or the name glued to an ordinary word.
+  fragment of a longer name (Fabric for Microsoft Fabric), or the name glued to an ordinary word. A
+  vendor's name is a drop even where ads use it for its products: Palo Alto for its firewalls,
+  Juniper for its routers. The products are kept under their own names (PAN-OS, Junos).
 
 When in doubt between keep and drop, drop. A dropped name costs a skill that ads could have
 named; a kept name that matches ordinary text puts a false skill on every vacancy containing it.
@@ -77,7 +82,9 @@ A key belongs to one skill. A candidate whose name is already a key is the skill
 ## In a segment
 
 Whether a job-ad segment names a skill, and whether a list of names found in it misses one, is read
-by the same rules as a candidate:
+by the same rules as a candidate. **A name is missed only when, offered as a candidate, it would be
+a keep, and it is in neither the list found nor this section's exceptions.** Before answering that a
+segment misses a skill, check the name against each of these:
 
 - A segment names a skill only where it names a technology the Keep section keeps. A practice,
   method, technique, architecture or kind of system is no skill, however technical the segment:
@@ -91,7 +98,13 @@ by the same rules as a candidate:
   Proactive Remediations is Microsoft Intune, GKE Workload Identity is Google Kubernetes Engine, AWS
   security groups are AWS.
 - A company named as an employer, customer or partner is not its products: "Databricks Customer
-  Support" or "at Stripe" names no skill.
+  Support" or "at Stripe" names no skill. Nor does a list of brands that use a product.
+- A skill found under another spelling is found: the list names skills by their canonical name, so
+  Google Cloud is found when Google Cloud Platform is listed, and k8s when Kubernetes is. A
+  version of a skill found is that skill: HTTP/2 is HTTP, Vue 3 is Vue.js.
+- A name the Drop section drops is not missed, wherever it appears: office and consumer software
+  (Zoom, Box, Coda), software no software person is hired for, compliance frameworks, ordinary
+  words, and vendors.
 
 ## Category
 
@@ -118,6 +131,12 @@ A decision records the revision it was made under. A drop is final: a name dropp
 revision is not decided again under the next, unless the reviewer of the next names that drop's
 reason as one the new revision reopens (ADR-0013).
 
+- **Revision 3** (2026-10-07): from #54's round 1, where Jev decided like candidates two ways. A
+  vendor's name used for its products is a drop. An ordinary word is a drop even where ads use it
+  for a technology. Data, ML and AI platforms are keeps, and a known name split by a separator is
+  that name. *In a segment* says that a missed name must be one that would be a keep, and adds
+  spellings, versions and dropped kinds of software to what is not missed. It states what revision
+  2 already meant, and reopens no drop.
 - **Revision 2** (2026-10-07): compliance frameworks, regulations and certifications are drops, as
   #40 dropped OWASP, ITIL, CIS Benchmarks and NIST CSF; and *In a segment* says how a segment names
   a skill, after #54's round 0 counted concepts and bare forms as missed skills. It narrows what is

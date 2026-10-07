@@ -46,12 +46,15 @@ DECISION_OPTIONS = {
 
 
 RECALL_QUESTION = ("Applying `criterion`, does the job-ad `segment` name a software skill, as the criterion reads "
-                   "a skill, that is not in `found`, under its own name or another spelling?")
+                   "a skill, that is not in `found`, under its own name or another spelling? Read the criterion's "
+                   "In a segment section first: it lists what is never missed.")
 
 RECALL_OPTIONS = {
     "none": "None: the segment names no software skill at all.",
     "covered": "Covered: the segment names at least one software skill, and every one it names is in `found`.",
-    "missed": "Missed: the segment names at least one software skill that is not in `found`.",
+    "missed": "Missed: the segment names at least one software skill that is not in `found`, one that would be a "
+              "keep offered as a candidate. Never a bare form In a segment names (Go, REST), a concept, a company, "
+              "office software, a dropped name, or a spelling, version or feature of a skill in `found`.",
 }
 
 

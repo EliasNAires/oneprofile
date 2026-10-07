@@ -47,8 +47,18 @@ Scored each round by `scripts/score-skill-round` (#53), with Jev as the labeller
   boilerplate skipped.
 - **Precision at or above 50%**: the share of candidates kept, by the decision record where it
   has the name and by Jev otherwise.
-- **At most 1,000 candidates a run**, so the Haiku drafter and the reviewing session read about
-  500 rows at the precision gate.
+The loop **maximizes yield while keeping precision at or above 50%**, and recall at the gate.
+
+- **Yield not below the best earlier round's**: the valid candidates a run proposes, estimated as
+  its size times its precision. A round fails when the top of its yield's 95% interval is below the
+  best earlier round's estimate, every round measured under the current criterion revision.
+- **No limit on candidates.** Amended 2026-10-07: the first version capped a run at 1,000, so that
+  the Haiku drafter and the reviewing session read about 500 rows. No person reads them, drafting
+  scales by running more Haiku agents, and Jev costs a hundredth of a cent a candidate. Round 1
+  of #54 showed what the cap cost: to fit it, the script stopped proposing names in fewer than ten
+  ads, and its valid candidates fell from about 900 to about 320. Recall, which counts segments,
+  barely moved: a skill in a handful of ads is rarely drawn. Precision rose. So the cap and the
+  precision gate together reward cutting valid names, and only a yield gate catches it.
 - **Six rounds** at most, whatever the numbers say; the loop then stops and reports where it
   stopped.
 

@@ -19,8 +19,11 @@ first: it defines the round, the two roles, the loop spec and what the round com
    rows into patterns. Done when every disagreeing row belongs to a pattern or is named as a
    labeller error, with the criterion clause it was judged by.
 4. **Settle the criterion.** A pattern where the criterion itself is unclear is yours to
-   decide, judged by what the classifier is for. Write the decision into the criterion now, so
-   the next labels are made under it.
+   decide, judged by what the classifier is for. So is a labeller error that a clause already
+   covers: the labeller is the final gate once the loop ends, so a clause it misapplies is not
+   working. Sharpen it, and the answer text the labeller chooses from where that steers it. Write
+   every change into the criterion now, then score the round again under the new revision, so the
+   Feedback is measured against the criterion the next round is labelled under.
 5. **Write the round comment** on the issue: Record and Feedback, as `rule-loop.md` describes.
    Feedback is patterns and clauses, ranked by the error they cost against the gates, with no
    vacancy ids and no labels. When the round held every gate, or N is the cap, the comment says

@@ -1,0 +1,361 @@
+Round 1 at criterion revision 3, jev-1.13.0
+
+Size and time: 990 candidates in 901s
+Precision: 68/200 kept = 34.0%, 95% interval 27.8%-40.8%, gate 50%  FAIL
+  200 drawn, 0 without a label, 0 from the decision record, 2 passed over for no mention
+  round 0: 4321 candidates, about 886 valid (669-1151)
+Yield: about 337 valid candidates, 95% interval 275-404, gate the best earlier round's 886 (round 0)  FAIL
+Recall: 230/266 skill-bearing segments missed nothing = 86.5%, 95% interval 81.8%-90.1%, gate 90%  FAIL
+  2400 segments drawn, 2400 answered, 2134 naming no skill
+
+The loop goes on
+
+Candidates drawn for precision, dropped first:
+  drop   1188  TS SCI                                   Jev
+  drop   1047  Workspace                                Jev
+  drop    616  catalog                                  Jev
+  drop    412  portal                                   Jev
+  drop    357  Palo Alto                                Jev
+  drop    234  DAST                                     Jev
+  drop    220  SolidWorks                               Jev
+  drop    216  Juniper                                  Jev
+  drop    177  universal                                Jev
+  drop    149  DISA                                     Jev
+  drop    140  Cameo                                    Jev
+  drop    137  ICLR                                     Jev
+  drop    114  Google Suite                             Jev
+  drop    109  Jama                                     Jev
+  drop    105  Gong                                     Jev
+  drop     88  MLOps experience                         Jev
+  drop     79  Oracle Fusion                            Jev
+  drop     75  DFMEA                                    Jev
+  drop     73  Illustrator                              Jev
+  drop     62  Vanta                                    Jev
+  drop     59  SDN                                      Jev
+  drop     58  fierce                                   Jev
+  drop     47  LLM engineering                          Jev
+  drop     46  NASTRAN                                  Jev
+  drop     45  Canva                                    Jev
+  drop     44  Lakeflow                                 Jev
+  drop     44  Polarion                                 Jev
+  drop     43  Disney                                   Jev
+  drop     42  Pigment                                  Jev
+  drop     41  Tendency                                 Jev
+  drop     38  SWG                                      Jev
+  drop     38  Workbench                                Jev
+  drop     38  FEMAP                                    Jev
+  drop     38  UV                                       Jev
+  drop     33  OpenClaw                                 Jev
+  drop     31  Clari                                    Jev
+  drop     31  Secure Web Gateway                       Jev
+  drop     30  Fax                                      Jev
+  drop     30  Q2                                       Jev
+  drop     30  administración                           Jev
+  drop     30  Cloud+                                   Jev
+  drop     30  Data Loader                              Jev
+  drop     29  Teamcenter PLM                           Jev
+  drop     29  Bluebeam Revu                            Jev
+  drop     29  Kimball                                  Jev
+  drop     27  master data governance                   Jev
+  drop     26  JWICS                                    Jev
+  drop     26  ACC                                      Jev
+  drop     26  RUM                                      Jev
+  drop     26  Productboard                             Jev
+  drop     25  Neo                                      Jev
+  drop     23  Open AI                                  Jev
+  drop     23  PivotTables                              Jev
+  drop     23  SNOW                                     Jev
+  drop     23  JSM                                      Jev
+  drop     22  LiveRamp                                 Jev
+  drop     22  Excel Pivot Tables                       Jev
+  drop     22  Workday Adaptive Planning                Jev
+  drop     21  ICPC                                     Jev
+  drop     21  P.E                                      Jev
+  drop     21  Sage Intacct                             Jev
+  drop     21  GoCardless                               Jev
+  drop     21  Saudi Arabia                             Jev
+  drop     20  Ant                                      Jev
+  drop     20  MQL                                      Jev
+  drop     20  OMOP                                     Jev
+  drop     20  DealHub                                  Jev
+  drop     19  ICAM                                     Jev
+  drop     19  Kubernetes Monitoring                    Jev
+  drop     19  Apple App Store                          Jev
+  drop     19  Hermes                                   Jev
+  drop     19  DEP                                      Jev
+  drop     18  Checker                                  Jev
+  drop     18  AI DevOps                                Jev
+  drop     18  IBM DOORS                                Jev
+  drop     18  DB2 Oracle                               Jev
+  drop     18  Spark Capital                            Jev
+  drop     18  Databricks Genie                         Jev
+  drop     17  SA360                                    Jev
+  drop     17  Shopee                                   Jev
+  drop     17  Odoo                                     Jev
+  drop     16  draw.io                                  Jev
+  drop     16  Camel                                    Jev
+  drop     16  Advanced RPA Developer                   Jev
+  drop     16  STLC                                     Jev
+  drop     15  Ranger                                   Jev
+  drop     15  Databricks Apps                          Jev
+  drop     15  SaaS management                          Jev
+  drop     15  GraphPad Prism                           Jev
+  drop     15  partner portal                           Jev
+  drop     15  Junie                                    Jev
+  drop     15  Enovia                                   Jev
+  drop     15  LOINC                                    Jev
+  drop     15  Halo                                     Jev
+  drop     15  Excel Power Query                        Jev
+  drop     14  cATO                                     Jev
+  drop     13  Symphony                                 Jev
+  drop     13  Moody                                    Jev
+  drop     13  GMSL                                     Jev
+  drop     13  West London                              Jev
+  drop     13  L’Oreal                                  Jev
+  drop     13  400G                                     Jev
+  drop     13  Bill.com                                 Jev
+  drop     13  Geodatabases                             Jev
+  drop     12  Fraud Examiner                           Jev
+  drop     12  Universal Directory                      Jev
+  drop     12  Social Studio                            Jev
+  drop     12  SSRF                                     Jev
+  drop     12  AWS Marketplace                          Jev
+  drop     12  Lazada                                   Jev
+  drop     12  PSS E                                    Jev
+  drop     12  TF                                       Jev
+  drop     12  AWS Support                              Jev
+  drop     12  Finance Tech                             Jev
+  drop     12  OFDM                                     Jev
+  drop     11  CFor                                     Jev
+  drop     11  TSO                                      Jev
+  drop     11  DBC                                      Jev
+  drop     11  CSS-in-JS                                Jev
+  drop     10  LeanData                                 Jev
+  drop     10  HDR                                      Jev
+  drop     10  ArcGIS Desktop                           Jev
+  drop     10  Siemens Teamcenter PLM                   Jev
+  drop     10  LI-MS1                                   Jev
+  drop     10  Power Apps Canvas                        Jev
+  drop     10  AI exposure                              Jev
+  drop     10  Integration Suite                        Jev
+  drop     10  LinkedIn Ads                             Jev
+  drop     10  Costpoint                                Jev
+  drop     10  COMM                                     Jev
+  drop     10  Access Gateway                           Jev
+  drop      8  Model Builder                            Jev
+  keep    692  JSON                                     Jev
+  keep    640  Ethernet                                 Jev
+  keep    178  NET Core                                 Jev
+  keep     85  NET Framework                            Jev
+  keep     71  LTE                                      Jev
+  keep     55  Gemini CLI                               Jev
+  keep     49  Flow Designer                            Jev
+  keep     48  Grafana Cloud                            Jev
+  keep     45  Tines                                    Jev
+  keep     43  Stata                                    Jev
+  keep     41  Domo                                     Jev
+  keep     36  CSS Grid                                 Jev
+  keep     33  Arduino                                  Jev
+  keep     31  Dataiku                                  Jev
+  keep     28  Ragas                                    Jev
+  keep     24  Zigbee                                   Jev
+  keep     24  Sybase                                   Jev
+  keep     22  SPIRE                                    Jev
+  keep     22  Microsoft Exchange                       Jev
+  keep     22  LINQ                                     Jev
+  keep     21  Salesforce Data Cloud                    Jev
+  keep     21  Microsoft Foundry                        Jev
+  keep     21  Splunk SOAR                              Jev
+  keep     21  Kong AI Gateway                          Jev
+  keep     20  MiniMax                                  Jev
+  keep     19  I²C                                      Jev
+  keep     18  cuDNN                                    Jev
+  keep     18  Dell Boomi                               Jev
+  keep     17  TFLite                                   Jev
+  keep     17  REFramework                              Jev
+  keep     17  Modbus TCP                               Jev
+  keep     17  Vue 3                                    Jev
+  keep     17  Checkmarx                                Jev
+  keep     17  GPTQ                                     Jev
+  keep     17  ADB                                      Jev
+  keep     16  WebGPU                                   Jev
+  keep     16  Vitess                                   Jev
+  keep     16  Vertex AI Pipelines                      Jev
+  keep     16  RDF                                      Jev
+  keep     15  PlanetScale                              Jev
+  keep     15  Profinet                                 Jev
+  keep     14  GeoJSON                                  Jev
+  keep     14  Poetry                                   Jev
+  keep     14  IBM Cloud                                Jev
+  keep     13  ArcGIS Online                            Jev
+  keep     13  Liquibase                                Jev
+  keep     13  Visual Studio Code                       Jev
+  keep     13  ACR                                      Jev
+  keep     13  Zsh                                      Jev
+  keep     13  Relyence                                 Jev
+  keep     12  Cosign                                   Jev
+  keep     12  Claude Managed Agents                    Jev
+  keep     12  rerun                                    Jev
+  keep     12  GTest                                    Jev
+  keep     12  Chai                                     Jev
+  keep     11  DGX                                      Jev
+  keep     11  AWS DMS                                  Jev
+  keep     11  Coil                                     Jev
+  keep     11  xarray                                   Jev
+  keep     11  Kamailio                                 Jev
+  keep     10  ext4                                     Jev
+  keep     10  JPEG                                     Jev
+  keep     10  PIM-SM                                   Jev
+  keep     10  NTFS                                     Jev
+  keep      9  Private Link                             Jev
+  keep      6  PY-SPARK                                 Jev
+  keep      5  Cloud Watch                              Jev
+  keep      3  Check MK                                 Jev
+
+Segments that name a skill not found (36), for the reviewer to name it:
+
+  vacancy 208992  Jev {'none': 0.05, 'missed': 0.76, 'covered': 0.19}
+  found: ARP, DHCP, DNS, LLDP, SNMP
+  DNS, DHCP, SNMP, IP helpers, ARP, CDP, LLDP.
+
+  vacancy 12571  Jev {'covered': 0.31, 'missed': 0.55, 'none': 0.14}
+  found: Domo, Excel
+  Some weeks you're deep in creation of reports and data visualizations (PBI, Domo, Excel); others you're presenting at an executive meeting for a key client.
+
+  vacancy 182919  Jev {'none': 0.02, 'missed': 0.7, 'covered': 0.28}
+  found: Azure, OpenStack
+  Apply your knowledge of T Cloud Public and its OpenStack heritage, alongside Azure's native services, to day-to-day operations and troubleshooting.
+
+  vacancy 129316  Jev {'covered': 0.08, 'missed': 0.91, 'none': 0.01}
+  found: GDB, tcpdump, Valgrind, Wireshark
+  Proficiency in system-level tools (e.g., gdb, perf, tcpdump, valgrind, wireshark)
+
+  vacancy 129754  Jev {'none': 0.05, 'covered': 0.09, 'missed': 0.86}
+  found: Dash
+  Proficiency with BI and analytics platforms such as Sigma Computing and Dash Enterprise
+
+  vacancy 44691  Jev {'missed': 0.93, 'none': 0.0, 'covered': 0.07}
+  found: Amazon EC2, Amazon ECS, Amazon S3, Amazon SQS, AWS, AWS Lambda, Redis
+  Infrastructure and storage layer: AWS EC2, ECS, Lambda, SQS, Aurora, Redis, S3, MemoryDB
+
+  vacancy 108897  Jev {'none': 0.0, 'covered': 0.03, 'missed': 0.97}
+  found: Assembly language, Java
+  Own the design and development of RASP / Java Agent runtime protection, leveraging ASM, ByteBuddy, and Java Instrumentation for bytecode enhancement, runtime hooks, detection and blocking engines, while continuously improving performance, stability, and compatibility.
+
+  vacancy 182626  Jev {'missed': 0.97, 'none': 0.0, 'covered': 0.03}
+  found: Python, SOAR, YARA
+  Testing & Automation (Bonus): Sigma, YARA, Atomic Red Team, Caldera, Python and SOAR playbooks.
+
+  vacancy 209391  Jev {'covered': 0.32, 'none': 0.32, 'missed': 0.36}
+  found: Navigation
+  Jetpack Navigation
+
+  vacancy 212370  Jev {'none': 0.01, 'missed': 0.92, 'covered': 0.07}
+  found: TypeScript
+  Proficiency in at least one modern programming language and a willingness to work in our stack (e.g., Go, TypeScript).
+
+  vacancy 100996  Jev {'none': 0.31, 'covered': 0.1, 'missed': 0.59}
+  found: nothing
+  The team builds Atlas Data Federation, a distributed query engine that lets users query data across Atlas Clusters and cloud object storage through a unified service.
+
+  vacancy 117071  Jev {'covered': 0.37, 'missed': 0.61, 'none': 0.02}
+  found: Playwright, Selenium
+  Browser automation experience (Selenium, CDP, Playwright): useful context for our integration surface
+
+  vacancy 60905  Jev {'none': 0.01, 'covered': 0.17, 'missed': 0.82}
+  found: ESLint, GitHub, GitHub Actions, Prettier
+  Testing Library ESLint · Prettier · GitHub Actions CI
+
+  vacancy 211896  Jev {'none': 0.01, 'covered': 0.09, 'missed': 0.9}
+  found: dbt, Google BigQuery
+  Define the feature pipeline pattern: what's precomputed in BigQuery/dbt vs. what needs to be fresh/real-time via Pub/Sub or similar.
+
+  vacancy 215041  Jev {'covered': 0.29, 'none': 0.01, 'missed': 0.7}
+  found: Google BigQuery, Google Cloud Dataflow, Google Cloud Platform, Google Vertex AI, TensorFlow
+  Hands on experience with Google Cloud Services such as Vertex AI, TensorFlow, BigQuery, Cloud Storage, and Dataflow.
+
+  vacancy 6409  Jev {'none': 0.16, 'missed': 0.67, 'covered': 0.17}
+  found: Ethernet, Zigbee
+  Home automation protocols (Z-Wave, Zigbee), USB, Ethernet, sensors, and power management
+
+  vacancy 48605  Jev {'missed': 0.87, 'none': 0.01, 'covered': 0.12}
+  found: Python
+  Programming or development experience, with basic skills in at least one mainstream language (e.g., Python, Go).
+
+  vacancy 35778  Jev {'missed': 0.8, 'none': 0.07, 'covered': 0.13}
+  found: Maltego
+  Proficiency with Threat Intelligence Platforms and analyst software tools e.g. MISP, Maltego, etc.
+
+  vacancy 104745  Jev {'missed': 0.69, 'none': 0.26, 'covered': 0.05}
+  found: nothing
+  Build and maintain Application Security Posture Management (ASPM) at the Company scale.
+
+  vacancy 143692  Jev {'covered': 0.27, 'none': 0.05, 'missed': 0.68}
+  found: iSCSI, NetApp
+  The ideal candidate will possess knowledge of both Pure and NetApp storage systems running iSCSI with hands-on keyboard as well as on hardware in an on-premises environment.
+
+  vacancy 185052  Jev {'covered': 0.13, 'none': 0.01, 'missed': 0.86}
+  found: Perl, Python
+  Scripting: Go or Python or Shell or Perl
+
+  vacancy 196028  Jev {'none': 0.25, 'covered': 0.29, 'missed': 0.45999999999999996}
+  found: Claude, Claude Enterprise, Figma, Miro, Okta, Smartsheet
+  Provision and support our SaaS estate through Okta groups and just-in-time provisioning —Adobe, Figma, Box, Miro, Zoom, Smartsheet, Coda and our AI tools (Claude Enterprise, Gemini) — and keep routing and approval notes current.
+
+  vacancy 99960  Jev {'none': 0.24, 'missed': 0.47000000000000003, 'covered': 0.29}
+  found: IDP
+  Direct exposure to IDP (Identity Provider) or XDR (Extended Detection and Response) platforms is highly preferred.
+
+  vacancy 129250  Jev {'missed': 0.67, 'covered': 0.2, 'none': 0.13}
+  found: BGP, Precision Time Protocol
+  Low Latency LAN: Multicast, BGP, PTP, FPGA, Layer 1 Switching
+
+  vacancy 200533  Jev {'covered': 0.04, 'missed': 0.96, 'none': 0.0}
+  found: Azure, Azure Key Vault, HashiCorp Vault
+  Experiencia práctica en la integración y gestión de servicios en Azure (Key Vault, Storage, Functions, Service Bus).
+
+  vacancy 177191  Jev {'covered': 0.45, 'none': 0.02, 'missed': 0.53}
+  found: CSS, HTML
+  Required: Knowledge of HTML, CSS, DOM web programming.
+
+  vacancy 205637  Jev {'none': 0.07, 'missed': 0.7, 'covered': 0.23}
+  found: TCP
+  Experience with network protocols, including TCP/IP.
+
+  vacancy 45016  Jev {'none': 0.02, 'missed': 0.65, 'covered': 0.33}
+  found: C++, Java, Scala
+  Strong proficiency in one or more languages such as Java, Scala, Go, or C++
+
+  vacancy 104705  Jev {'none': 0.02, 'covered': 0.1, 'missed': 0.88}
+  found: Anthropic, OpenAI, SGLang, TensorRT, TensorRT-LLM, vLLM
+  ML Frameworks and Libraries: vLLM, TensorRT-LLM, SGLang, Transformers, OpenAI/Anthropic SDKs
+
+  vacancy 179773  Jev {'none': 0.01, 'covered': 0.05, 'missed': 0.94}
+  found: Amazon Redshift, AWS
+  Familiarity with AWS data services (EMR, Redshift, Glue)
+
+  vacancy 70734  Jev {'none': 0.0, 'missed': 0.99, 'covered': 0.01}
+  found: CodeQL, Semgrep
+  Experience with code analysis tools – CodeQL, Joern, Semgrep
+
+  vacancy 144018  Jev {'missed': 0.95, 'none': 0.01, 'covered': 0.04}
+  found: BGP, OSPF
+  Routing (BGP, OSPF, IS-IS)
+
+  vacancy 146019  Jev {'none': 0.01, 'covered': 0.04, 'missed': 0.95}
+  found: GitLab, Kyverno, Okta, Sumo Logic
+  Experience with tools such as Nexus, GitLab, Okta, NeuVector, Kyverno, Sumo Logic, monitoring platforms, alerting systems, or Web Application Firewalls (WAFs) is a plus.
+
+  vacancy 33093  Jev {'covered': 0.22, 'missed': 0.65, 'none': 0.13}
+  found: Salesforce
+  Experience working with Salesforce, Apex, or Salesforce data models.
+
+  vacancy 36045  Jev {'covered': 0.33, 'none': 0.05, 'missed': 0.62}
+  found: React, Ruby, Ruby on Rails
+  Proven experience with both a modern front-end framework (React or comparable) and a server-side framework (Ruby on Rails, Go, or comparable)
+
+  vacancy 37834  Jev {'none': 0.0, 'missed': 0.92, 'covered': 0.08}
+  found: Python
+  Design, build, and maintain scalable backend services in Python and/or Go that power underwriting decisioning and automation.
+
+Jev has cost $1.8429 over every run of both issues, of the $4.00 limit
