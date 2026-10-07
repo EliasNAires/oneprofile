@@ -1,0 +1,301 @@
+id	part	stratum	vacancy_id	skills	doubt	segment
+1	open	round	19903			Work Location: This role is based out of our Seattle office and follows a hybrid schedule.
+2	open	round	138122			A client partner: You enjoy working directly with clients (asset managers, business owners, technical stakeholders) to understand their needs and deliver solutions that work in the real world.
+3	open	round	5220			Intellectual curiosity
+4	held-out	round	143776			2+ years of professional work experience
+5	open	round	135209			Experience building and debugging networked features for multiplayer games.
+6	open	round	68395			We provide market leading solutions to our clients with the core objective of helping them to expand and grow their business in the personalised and data driven age.
+7	held-out	round	106142			Additionally, Next Insurance will never ask for payment, fees, or purchases to be made by a job applicant.
+8	open	round	67865		GitLab is named here as the employer, so it names no skill.	The Database Excellence Group is a remote, agile backend team that builds and maintains the frameworks, patterns, and tooling that enable GitLab teams to work confidently with data at scale across all application datastores.
+9	held-out	round	82036			Paid US Holiday
+10	open	round	13477			Ability to travel Domestically and Internationally on occassion
+11	held-out	round	177252			Establish and monitor the KPIs that define marketplace health: sourcing margin, time to take, partners per job, eyes on jobs, served rate, and conversion. Conduct deep analysis to surface and prioritize the highest-leverage opportunities to compress time-to-take and expand liquidity
+12	held-out	round	138459			Degree in statistics, math, finance, economics, or related quantitative discipline; graduate degree a plus
+13	held-out	round	177529			You will often have to work independently designing complex systems that need to run uninterrupted for long periods of time, so practical experience designing and implementing software systems is a plus.
+14	held-out	round	1042			Design and build end-to-end applications across frontend and backend.
+15	held-out	round	78741			Deep expertise in some or all of the following areas:
+16	open	round	78888			Hands-on expertise with LC, GC, LC-MSMS, NMR, DVS, Karl Fischer, spectroscopy, impurity profiling, and degradation studies
+17	held-out	round	120358			If so, you might be our next member of the investor relations team.
+18	held-out	round	164390			Data Modeling
+19	held-out	round	12842			Help streamline onboarding and other high-volume operations as the company scales
+20	open	round	40982			You care about the person spending the money: clear errors, sensible defaults, answers they can find themselves
+21	held-out	round	47911			Partner with Product, Engineering, Finance, and customer teams to connect relevant data sources and define measurement and reporting requirements before launch.
+22	open	round	35553			Bachelor’s degree in aerospace engineering, mechanical engineering, electrical engineering, computer engineering, computer science, physics, applied mathematics, or a related technical discipline, or equivalent demonstrated expertise.
+23	open	round	142063			This role sits at the center of how Cadence measures and improves care delivery at scale.
+24	open	round	106510	GCP = Google Cloud Platform | IAM = Google Cloud IAM | VPC Service Controls | Organization Policy = Google Cloud Platform | Shared VPC = Google Cloud VPC | Workload Identity = Google Kubernetes Engine | KMS = Cloud KMS | Security Command Center	IAM here is GCP's IAM service but the bare abbreviation also reads as the generic practice of identity and access management.	Own the cloud security architecture across our GCP environments, including IAM and least privilege design, VPC Service Controls, Organization Policy, Shared VPC, Workload Identity, KMS/encryption, and Security Command Center
+25	open	round	29506			Lead schedule optimization efforts and implement recovery plans when needed.
+26	held-out	round	43995			Strong communication and collaboration skills, capable of working effectively in a multidisciplinary team and communicating technical concepts to non-technical stakeholders
+27	open	round	121018			Collaborating closely with the editorial team to ensure all deadlines are met.
+28	open	round	5772			We ask that you only reach out to us if you are a candidate whose disability prevents you from being able to complete our online application.
+29	open	round	205508		Proton Mail, Proton VPN and the rest are the employer's consumer products, so no skill.	Since then, we’ve built the world’s largest encrypted email service (Proton Mail) and expanded into Proton VPN, Proton Drive, Proton Pass, and Proton Calendar—tools used by millions globally to protect their freedom, fight censorship, and keep their data safe.
+30	open	round	137872	C++23 = C++ | Rust | Go		Software Development (70-80% of time) we use C++23, occasionally also Rust and/or Go
+31	held-out	round	162596			LI-remote
+32	held-out	round	144882			Familiarity with Starlink-style distributed systems and the intersection of terrestrial and orbital network layers
+33	open	round	205352			Excellent written communication (async-first culture)
+34	open	round	45496			Query compilation and optimization
+35	open	round	59662			Works cooperatively with others within the organization and other cross-functional stakeholders
+36	open	round	11792			At Anduril, our Software Engineers are at the forefront of defense technology, crafting high-impact, cutting-edge solutions that redefine innovation.
+37	open	round	213081	Git		Good understanding of Git, CI/CD and software engineering practices applied to data engineering.
+38	open	round	89712			The value of this role is that you own the whole path, from the sensor register to the inference result, without handing off the hard parts.
+39	held-out	round	163696			Based in Colorado, Hawaii, Illinois, Maryland, Massachusetts, Minnesota, Vermont or Washington D.C. : $155,520.00 $194,400.00.
+40	held-out	round	167172			The qualifications below include both core requirements and preferred experience.
+41	open	round	94908			At Lyft, our purpose is to serve and connect.
+42	held-out	round	24524			Private health and life insurance.
+43	open	round	35589			Lead the development of new radar capabilities with minimal guidance
+44	open	round	212125			Have you ever been in a hurry and made use of the self-checkout at Lowe’s Foods, earned fuel rewards at Kroger, or just paid for purchases at retailers such as Walmart, Michaels, Carrefour, The Gap, Calvin Klein, Boots, Cencosud, BJ’s, or Costco?
+45	held-out	round	167063			You will lead highly complex, high-visibility initiatives, shape the approach to problems that arrive ambiguous, and influence organizational direction through the standards you set.
+46	held-out	round	108506			Excellent grasp of software engineering principles
+47	held-out	round	166489			Experienced in Agile methodologies and consulting (a plus)
+48	held-out	round	49598			Employee Stock Option Plan
+49	held-out	round	29791			Experience leveraging AI tools and technologies to streamline processes, automate routine tasks, and drive operational improvements;
+50	held-out	round	199787			Develop/maintain operational procedures and post orders that are always available for emergency reference by staff.
+51	held-out	round	105028			Serve as the primary technical interface to component manufacturers, obtaining NDAA compliance documentation, reliability and safety data, and technical specifications not available in published datasheets
+52	open	round	74170			Lead and grow the production team, including hiring, training, and supervising build technicians, and managing the Product Lifecycle Manager for Hydrogen and other production staff.
+53	open	round	182646		Service Cloud and Agentforce are Salesforce products, but here they appear only inside certification names, which are drops.	Salesforce Certified Agentforce Service Consultant (formerly Service Cloud Consultant) required; Administrator required
+54	open	round	19350	RESTful APIs = RESTful API	REST is an architectural style, which ADR-0015 excludes, though revision 3 treats RESTful API as the safe form of a skill.	Develop RESTful APIs and event-driven services with robust security, scalability, and performance.
+55	held-out	round	129369	Active Directory | Group Policy = Active Directory | DNS		Strong expertise in Active Directory, Group Policy, and DNS design, implementation, and advanced troubleshooting.
+56	open	round	185980			Learn more: https://www.callrail.com/about/
+57	held-out	round	143090			Manage analytical projects and execute to tight timelines while effectively communicating to and influencing internal stakeholders
+58	open	round	65949	TypeScript | JavaScript | Python		Experience with TypeScript/JavaScript and/or Python preferred
+59	held-out	round	64683			If you’re ready to shape the future of fabrication, come build it with us.
+60	held-out	round	207624			Multisport Card – fully paid by the company.
+61	held-out	round	134815			Prepare business analyses and draw actionable conclusions from data.
+62	held-out	round	201129			Own day-to-day Layout maintenance: fix bugs and regressions, keep tests green, handle incoming issues.
+63	held-out	round	178892			You are a problem-solver. You seek out challenges because you are energized by finding solutions, knowing that solving the hard problems delivers the biggest impact.
+64	open	round	59181			Data analytics/BI
+65	held-out	round	108945			In-depth reverse engineering of major apps from first-tier vendors, or other projects that demonstrate strong reverse engineering capabilities.
+66	held-out	round	49443			Join us in building the healthcare we all dream of!
+67	held-out	round	170299			You will thrive in this role if you are a resilient problem-solver who is comfortable navigating the unique challenges of on-premise, air-gapped, and cloud-native environments.
+68	open	round	11230			The work encompasses building scorecards that catch quality drift before customers do, pipelines that turn ERP / MES / QMS data into decisions, and AI tools that compress hours of manual triage into minutes.
+69	open	round	162459			Build full-stack applications using modern technologies (frontend, backend, APIs)
+70	held-out	round	170112			This is not an administrative support role.
+71	open	round	97855			Proactively manage sequencing, resourcing tradeoffs, and escalations. When initiatives are off-track, you identify it first and bring a recommended path forward.
+72	open	round	70745	C# | python = Python | Blueprint = Unreal Engine	Blueprint read as Unreal Engine's visual scripting, a part of Unreal Engine, though the bare word is ordinary.	C#/python/Blueprint experience.
+73	open	round	78710			Engage researchers and traders directly on data trust, methodology, and trade-offs.
+74	open	round	200311			We offer a comprehensive benefits program, including Health, Dental, Life, Flexible Spending Accounts, Health Savings Account, Short Term and Long-Term Disability Insurance, 401(k) plan, Legal Plan, and Identity Theft and Monitoring Plan. Depending on your position and location you may participate in a different benefit plan.
+75	held-out	round	92643		P6 (Primavera P6) is project scheduling software no software person is hired for, so dropped.	Experience with P6 or similar scheduling software.
+76	open	round	182997			The ideal Project Manager will have an advanced understanding of; Boundary Surveys, ALTA Surveys, Construction Staking, Leveling, Traversing, GPS, Data Collections, Legal Descriptions, Plan interpretations, along with Real Estate Documents.
+77	held-out	round	74761			Individuals must be able to work in an OSHA compliant safety environment.
+78	held-out	round	80179			Partner with Operations and Program Managers to implement corrective and preventive actions.
+79	held-out	round	155314			The work environment characteristics described here are representative of those an employee encounters while performing the essential functions of this job, including moderate noise level, an indoor temperate environment, and light levels that are bright and conducive to minimal eye strain, typical for an office environment.
+80	open	round	172156			This role is responsible for:
+81	held-out	round	31584			Awarded with Consultancy of the year in the British Bank Award and has been ranked Top 100 Best Companies for Women in India 2022 by Avtar & Seramount.
+82	held-out	round	212576			Communicate technical concepts, risks, and trade-offs clearly to technical and nontechnical partners.
+83	open	round	167753			We are the experts in edge storage, responsible for designing and optimizing systems that manage video data directly on the camera.
+84	open	round	53065	.Net = .NET | C# | SQL Server = Microsoft SQL Server		Strong knowledge in OOPS with .Net, C# or relevant technologies with SQL Server or any RDBMS
+85	held-out	round	133929			Maintain existing software and tooling according to bug-fix and feature requests
+86	open	round	78259			This role is based in Miami, FL, and will require travel outside of the area for extended durations.
+87	open	round	49592			Translate complex business problems into cloud architectures that are secure, reliable, cost-efficient, and observable.
+88	held-out	round	118656			Generous parental and family leave policies
+89	held-out	round	45956			An inclusive company culture, able to join our Community Guilds and Inclusion Talks
+90	held-out	round	108013			4–6 years of experience in digital optimization, conversion rate optimization (CRO), digital analytics and digital marketing within a B2B SaaS or enterprise environment.
+91	open	round	176132			Experience with CI/CD, workflow orchestration, containerisation or automated testing for data pipelines.
+92	open	round	201790			Deliver weekly executive-level reporting and strategic recommendations to guide team priorities and continuous performance optimization
+93	held-out	round	19506			(ID: 2026-3432)
+94	open	round	162957			Site Operations: Own day-to-day operations of the test facility, including staffing, scheduling, facility maintenance, and infrastructure readiness. Ensure the site is always prepared to support active test campaigns with zero unplanned downtime.
+95	held-out	round	144814			Troubleshoot wired/wireless networking related issues
+96	open	round	89087			The incumbent investigates, reports on, and resolves data quality issues; establishes and maintains data governance standards; coordinates testing and change control activities; and makes recommendations regarding process improvements, data controls, and reporting requirements.
+97	held-out	round	212214			Conduct rigorous code reviews, providing constructive feedback and ensuring adherence to clean code principles and design patterns.
+98	open	round	206864			You’d move mountains (or wash dishes) to drive successful outcomes.
+99	open	round	18985			Propose and implement improvements to streamline operational workflows and reduce manual overhead.
+100	held-out	round	81138			Meaningful work supporting healthcare customers
+101	open	round	155981			Adapt project management processes and methodologies to maximize team productivity and effectiveness in a fast-moving environment.
+102	open	round	137213			Here's what else you'll bring:
+103	held-out	round	5789			The Trust team is responsible for developing the technology that helps protect our community and platform from fraud while also ensuring our hosts, guests, homes, and experiences meet our high standards.
+104	held-out	round	323	Azure = Microsoft Azure		Deep technical expertise in one or more Azure domains, with growing fluency across adjacent disciplines (Application Innovation, Cloud Platform, or Data & AI).
+105	held-out	round	201172			Now, with more than 225 million people around the world using our products each month, we’re shaping the next 25 years of technology and helping to reclaim an internet built for people, not companies.
+106	open	round	206300	K8S = Kubernetes | AWS = Amazon Web Services | GCP = Google Cloud Platform | Azure = Microsoft Azure		Dynamic pace and opportunity to work with the hottest technology K8S CI/CD and infrastructure-as-code tools in AWS, GCP, Azure.
+107	open	round	162112			Brilliant problem-solving abilities
+108	open	round	211175			Comfortable thinking about hardware behavior in terms of properties, invariants, assumptions, assertions, and proofs.
+109	open	round	135611		Samsara platform is the employer's product being demoed to customers, read as the company rather than a skill.	Conduct product demonstrations and facilitate live proof-of-concept trials for prospective customers, and ensure these prospects understand and are fully utilizing - the Samsara platform.
+110	open	round	211975	MCP = Model Context Protocol | Model Context Protocol		Implement MCP (Model Context Protocol) services and service templates that make it faster and easier for teams across Toast to build AI-powered workflows
+111	held-out	round	77380			Establish shared dashboards for delivery health (timeline, risk, burn, dependency status) and run tight meeting cadences
+112	open	round	68170			Glean is at an inflection point where product decisions carry real P&L consequences from AI infrastructure costs to consumption-based pricing models.
+113	open	round	78349			If you love turning messy manual processes into elegant solutions and want to help define how a company puts AI to work, this is an exciting opportunity to make a meaningful impact.
+114	open	round	201945			We're looking for a self-motivated professional with experience designing and architecting technical solutions and the ability to quickly learn new technologies and programming languages.
+115	held-out	round	122051			AI Training task skills and verifiable professional experience as an AI Trainer
+116	held-out	round	30978			Opportunity to travel to new locations to meet colleagues
+117	open	round	99909			Experience helping scale a business in a fast-paced startup environment.
+118	open	round	149217			Over the past decade, Success Academy has grown faster than any charter network in the nation, building a vibrant network of 59 elementary, middle and high schools.
+119	held-out	round	37394			Trusted Advisory: Act as a trusted technical advisor throughout the entire customer lifecycle, maintaining a continuous, deep relationship with key stakeholders from initial onboarding through maturity, renewal, and expansion. Provide thought partnership on architecture, AI control layers, security posture, and deployment confidence. Identify potential deployment risks or integration bottlenecks early, and provide remediation strategies to de-risk customer outcomes.
+120	held-out	round	129422			We highly value diversity in our current and future employees and do not discriminate (including in our hiring and promotion practices) based on race, religion, color, national origin, gender, gender expression, sexual orientation, age, marital status, veteran status, disability status, or any other characteristic protected by law.
+121	open	round	62627	Microsoft Purview	Microsoft Purview is a data governance and compliance service; kept as a named Microsoft cloud service, though it sits near the compliance drop.	Microsoft Purview
+122	held-out	round	112327	.NET	MetaDefender Secure Managed File Transfer is the employer's own product, so not listed.	At OPSWAT’s Technology Development Centre in Veszprém, we are looking for talented AI Native Senior .NET Engineer to join our team working on one of our most strategic solutions: MetaDefender Secure Managed File Transfer (MFT).
+123	held-out	round	30390			Serás el catalizador que atrae el talento adecuado y asegura que cada persona se sienta valorada y apoyada en su crecimiento.
+124	held-out	round	150142			Produce high-quality solution documentation and implementation guidance.
+125	held-out	round	205137			You can run more than one discovery at a time and keep several scopes moving in parallel
+126	held-out	round	37379		Cloudflare is named as the company and its network, not as a technology asked for.	Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request.
+127	open	round	9698			Industry certifications preferred, such as CISSP, CISM, CCSP, or AWS Security Specialty
+128	held-out	round	160083			Advanced Excel or Google Sheets skills and comfort building practical cost and scenario models.
+129	open	round	36749			Excellent stakeholder management and communication skills, including experience reporting progress, risks, and recommendations to senior leadership.
+130	held-out	round	182319			If the answer is, “Yes!” then we have an opportunity that will impress you.
+131	open	round	143749			Experience writing work instructions, test plans, and procedures.
+132	held-out	round	201947	C# | Angular		We are seeking Senior Fullstack Engineer (C# and Angular) to join our team, grow with us, and teach us a few things along the way.
+133	held-out	round	201441	Snowflake | AWS = Amazon Web Services		Deep experience with a modern cloud data warehouse and cloud infrastructure (Snowflake/AWS preferred).
+134	open	round	15708			Government and Stakeholder Coordination
+135	open	round	66229			Coordinate and execute security plans and respond to medical emergencies
+136	open	round	23849			Ability to thrive in a high-growth environment without losing sight of the big picture.
+137	open	round	215751			Yes Energy has been named one of the Best Places to Work in Colorado, and we have the culture to prove it.
+138	held-out	round	66618			Frequently required to communicate by talking, hearing, using telephone and e-mail
+139	held-out	round	171049			Lead and develop product managers, raising the overall standard for product thinking.
+140	open	round	207997			Translate findings and stakeholder feedback into model improvement roadmaps
+141	held-out	round	48603			They are passionate about building meaningful, long-term relationships with our customers and are experts in cloud technology and the digital economy.
+142	open	round	98258			Working knowledge of power budgeting, battery systems, and thermal management in compact devices
+143	held-out	round	92259			Partner with engineering teams to design and maintain secure systems and development practices.
+144	open	round	64512			You will receive consideration for employment without regard to race, color, religion, gender, gender identity or expression, sexual orientation, national origin, genetics, disability, age, or veteran status.
+145	held-out	round	163548			Scope and stand up coding workstreams across supervised demonstrations, agentic trajectories, RL environments, benchmark construction, and rubric-graded evaluation.
+146	held-out	round	179079			Deliver analytics and data science projects that are aligned with the roadmap, and product goals - balancing actionable insights to substantially improve core game metrics
+147	held-out	round	143239			Design, ship, and iterate AI agents that power Starlink Enterprise go-to-market workflows
+148	held-out	round	8262			Introduce chaos engineering practices designing fault-injection and resilience experiments that surface failure modes before our customers do.
+149	open	round	129770			Establish automated validation, reconciliation, monitoring, and alerting
+150	held-out	round	182160			Family Support - Employees receive a one-time net Baby Bonus upon the birth of a child.
+151	held-out	round	177224	Kafka = Apache Kafka | Spark = Apache Spark | Kinesis = Amazon Kinesis | Apache Iceberg		Working knowledge of queueing, batch and stream processing (e.g., Kafka, Spark, Kinesis), and highly scalable data stores (e.g., Apache Iceberg)
+152	open	round	181527			In this role, you will lead the hands-on work and inform the broader, long-term training strategy for the business unit.
+153	held-out	round	201322		Dell is a vendor named for its storage products, dropped as a vendor umbrella.	Proven experience managing Dell storage and backup solutions.
+154	open	round	14740			Develop and implement fault detection and diagnostic algorithms in software to identify and respond to hardware-level events such as short circuits and sensor failures.
+155	open	round	87247			Contribute to the development of scalable AI infrastructure that supports continuous learning and deployment across Kodiak’s fleet.
+156	held-out	round	157430	SIP | WebRTC	VoIP dropped as a generic kind of technology rather than one named protocol.	Exposure to SIP, WebRTC, VoIP, or real-time voice and messaging systems
+157	held-out	round	89150			Continuous and thoughtful listener, able to learn from others and leverage input
+158	open	round	95042	Android		Are you an enthusiastic engineer with a passion for crafting Android productivity tools and robust infrastructure?
+159	held-out	round	170301			401K contribution and stock options
+160	open	round	42421			탐지 룰의 생성변경·폐기 전 과정에 대한 문서화 및 변경 이력 관리
+161	held-out	round	187786			This role is eligible to participate in Cloudflare’s equity plan.
+162	held-out	round	72639			So please drop us a message or share more detail in your application!
+163	held-out	round	177752			Guide troubleshooting and root-cause analysis on the toughest HW/SW integration issues — hands-on, and by mentoring others through them.
+164	open	round	125585			Proton has become profitable and reached scale without relying upon VC funding, largely due to superior talent that allows us to do things faster, more creatively, and more efficiently.
+165	held-out	round	211166			International Clients: Collaborate with global organizations and solve real-world challenges at scale
+166	held-out	round	191336			Experiencia en sistemas de tesorería, mercados financieros o commodities.
+167	open	round	44042	Git | GitHub		Version Control: Proficient with Git and GitHub for code management and collaboration.
+168	held-out	round	156919			Annual Learning & Development benefit to support your career growth
+169	open	round	142106			Support English class
+170	held-out	round	204865	Go | Java | Python		Build, deploy and maintain performant, distributed large-scale services and highly-available APIs in Go, Java and/or Python with a strong emphasis on customer experience
+171	open	round	38107	DataDog = Datadog | AWS = Amazon Web Services		Operational Awareness: Familiarity with on-call responsibilities, runbooks, and contributing to system reliability and operational health. (DataDog, AWS)
+172	open	round	122854			If you have the necessary experience, we'll send you a quick 10- to 15-minute test to assess your skills and suitability for AI tasks.
+173	open	round	32330			Build and maintain a CI/CD pipeline that is easy for product developers to use and accelerates the release of new software.
+174	open	round	155911			Hybrid Delivery Leadership: You are comfortable leading through both traditional and agile delivery methods. You know when a project needs a clear plan, timeline, budget, RAID log, and governance rhythm, and when a team needs lighter agile planning, backlog refinement, Kanban flow, sprint routines, or iterative delivery checkpoints.
+175	open	round	115809			You don't wait for direction; you identify gaps, shape solutions, and drive them forward.
+176	held-out	round	9783			Experience working with briefing and engaging General Officer/Flag Officer/Senior Executive Service (GO/FO/SES) level personnel.
+177	held-out	round	146518			Proactively monitor the health of our services in production to ensure our customers always have a world-class experience
+178	held-out	round	93463			Project management capabilities are a plus.
+179	open	round	204695			If you need assistance in completing this application or with the application process because of a disability, please contact the Human Resources Department at 1.888.862.8818 or 1.310.857.3020.
+180	open	round	19741			Axon is seeking a high-energy, results driven pre-sales sales engineer who thrives on pitching technology to leadership as well as support staff and end-users.
+181	open	round	137891			Own the team's charter as an internal enablement function: build and evolve the standards, tools, and frameworks that other engineering teams consume for testing across the full pyramid unit, component, integration, end-to-end, and persona-based.
+182	open	round	114518			Leading the development and implementation of optimization algorithms and strategies aimed at maximizing loan portfolio performance, minimizing risk, and increasing overall profitability.
+183	open	round	147171			3+ years of experience developing and maintaining test automation for Backend (predominantly), Web & Mobile Applications
+184	held-out	round	209882			Remote Work Support: A one-time $550 USD (equivalent) stipend to set up your home office, plus a monthly $50 USD (equivalent) stipend for internet.
+185	open	round	145515	Anaplan	Anaplan is a business planning platform; kept because model builders and developers are hired for it.	Stay current with latest Anaplan technologies and best practices within the industry
+186	open	round	183390			Work with vendors and service providers to troubleshoot service issues and track SLA performance
+187	open	round	147096	C | C++ | Rust | PHP		The role also carries low-level language depth (C, C++, or Rust) used for optimization, including rewriting performance-critical paths and migrating business logic out of the firm’s PHP systems into faster implementations.
+188	held-out	round	196928	Claude | Codex = OpenAI Codex	Claude and Codex are AI coding assistants named as tools; kept, though bare Claude is close to a person's name.	Use AI tools (e.g., Claude, Codex, etc) in your development workflow to enhance code writing, support code reviews, and improve productivity.
+189	open	round	146632			A love of working with data. Familiarity with cleaning/transforming data.
+190	held-out	round	166287			Required Qualifications
+191	held-out	round	129338			Advanced programming skills, with a drive for delivering strategic solutions.
+192	held-out	round	100338			We understand the value of a strong engineering team and strive to hire only the best engineers.
+193	open	round	85438			Deep user empathy and a high bar for user experience.
+194	open	round	80017	D365 F&O = Microsoft Dynamics 365 Finance and Operations		Stay up-to-date on the latest developments and new features within D365 F&O and identify opportunities to leverage these for greater efficiency and automation.
+195	held-out	round	38141			Foster a culture of ownership, reliability, and continuous improvement within the team
+196	held-out	round	211770			Partner with technical teams to evaluate solutions and trade-offs across usability, performance, scalability, security and maintainability.
+197	held-out	round	157968	TypeScript | Node.js | AWS = Amazon Web Services | Lambda = AWS Lambda | DynamoDB = Amazon DynamoDB		Technical stack: Strong affinity with TypeScript and Node.js on AWS, including serverless (Lambda), DynamoDB, and event-driven patterns.
+198	held-out	round	108644			Strong software architecture skills, familiar with microservices architecture, distributed systems, high-availability design, service governance, observability, and platform engineering.
+199	open	round	89606			Lead environmental audits, inspections, and compliance assessments; assign corrective actions, verify closure, and escalate significant risks or recurring issues to appropriate leadership.
+200	open	round	185802			Today the culture sits, alongside our people, as our most important edge.
+201	held-out	known	130561	FFMPEG = FFmpeg | GPAC		Hands-on expertise with tools like FFMPEG, GPAC and similar media frameworks for processing, modifying, and manipulating media streams.
+202	held-out	known	125570	Kubernetes		Our infrastructure runs on Kubernetes.
+203	held-out	known	134243	Jira	Teamcenter (PLM) and Infor LN (ERP) dropped as software used by manufacturing staff rather than one a software person is hired for.	Act as a power user of Teamcenter, Jira, and Infor LN, tracking progress and ensuring data smoothly crosses the boundaries between design, manufacturing, and enterprise resource planning.
+204	open	known	77251		AWS here names a certification, not use of the cloud, so it was dropped.	Certified. You hold one or more security or privacy certifications (such as SC2, SANS or AWS).
+205	open	known	205047	Unity Catalog = Databricks Unity Catalog		Translate claim-system data dictionaries into Unity Catalog tables for reporting and APIs.
+206	held-out	known	38339	Salesforce | Apex | LWC = Lightning Web Components | Flows = Salesforce | Sales Cloud = Salesforce Sales Cloud | Service Cloud = Salesforce Service Cloud		6+ years of hands-on Salesforce development experience (Apex, LWC, Flows, security/sharing model, packaging, and release management) with demonstrated delivery of complex solutions in Sales Cloud or Service Cloud
+207	open	known	210635	macOS		Diagnose and resolve macOS errors, connectivity issues, and application bugs.
+208	held-out	known	44595	Linux | macOS | Windows = Microsoft Windows		Strong command-line and troubleshooting skills across Linux, macOS, and Windows environments
+209	held-out	known	64486	SQL		Strong foundation in SQL, relational schema design, and data modeling.
+210	open	known	141050	AWS = Amazon Web Services | Kubernetes | EKS = Amazon EKS | ECS Fargate = AWS Fargate | EC2 = Amazon EC2 | Lambda = AWS Lambda | CloudWatch = Amazon CloudWatch		Advanced AWS & Kubernetes Expertise: EKS, ECS Fargate, EC2, Lambda, and CloudWatch in production.
+211	held-out	known	38003	Terraform | Pulumi		Automation: Strong experience with IaC (Terraform/Pulumi) and Configuration Management.
+212	open	known	101471	Figma	WCAG dropped as an accessibility standard a product is audited against, though it could be read as a technical standard software implements.	Oversee UI/UX workflows in Figma, ensuring wireframes, design systems, and prototypes meet WCAG accessibility standards and client branding guidelines.
+213	held-out	known	203283	Python | PySpark | SQL		You'll have a bachelor's or master's degree in Computer Science, Data Science, Engineering, or a related field, or equivalent practical experience; strong proficiency in Python/PySpark and SQL; and strong leadership, problem-solving, decision-making, and communication skills.
+214	open	known	112802	QGIS | ArcGIS Pro = ArcGIS	QGIS and ArcGIS Pro are desktop GIS tools more often used by analysts; kept since GIS developers list them.	You'll bring capabilities familiar from desktop GIS tools such as QGIS and ArcGIS Pro into the browser, continuously expanding the map platform's rich feature set while keeping interactions coherent and responsive.
+215	open	known	163061	Blender | Unreal = Unreal Engine		Prior work with synthetic data generation, Blender/Unreal for rendering, or domain randomization
+216	open	known	19990	TypeScript | Angular | React		Deep frontend expertise: strong command of TypeScript and modern frameworks (Angular and/or React), and experience defining frontend architecture at scale (modular package ecosystems or module federation, shared component libraries, build and delivery systems).
+217	held-out	known	65356			Based in Hawthorne, our vertically integrated facility brings technology development, R&D, and production together under one roof. We operate at the center of LA’s deep tech ecosystem, surrounded by some of the most ambitious hardware innovation happening anywhere in the country.
+218	open	known	187901	SQL | Python | Spark = Apache Spark | PySpark		Strong hands-on capability with SQL, Python, Spark and PySpark for data engineering, analytics and automation workloads.
+219	open	known	9605	Ruby on Rails | React | PostgreSQL | Elasticsearch | Redis		Ruby on Rails, React, PostgreSQL, Elasticsearch, Redis
+220	held-out	known	128743	Python		As a Senior Python Engineer on the Prague-based Autotriage team, you will drive the development of infrastructure and tools that automatically triage failed tests across Everpure’s large-scale automated environments.
+221	open	known	37376	Python | JavaScript		Coding/Scripting: Proficiency in Python, JavaScript, or similar languages to write custom integration scripts, API connectors, and edge computing functions.
+222	held-out	known	215192		MITRE ATT&CK dropped as a threat knowledge framework rather than a technology, though security engineers do list it.	Strong knowledge of threat hunting methodologies and frameworks (MITRE ATT&CK, TaHiTI).
+223	held-out	known	193265	Terraform		Infrastructure as Code tools (Terraform)
+224	held-out	known	46003	Datadog	Datadog is also the employer here, but the segment names using it as a tool.	If using Datadog to observe Datadog's own security posture, building impactful tooling, and shaping how we secure AI-powered systems sounds like the right kind of problem, this role is worth a close look.
+225	open	known	123811	JavaScript | TypeScript		Professional Experience: professional experience building scalable web applications using JavaScript/TypeScript.
+226	open	known	181603	Active Directory | DNS | DHCP		Experience standing up and managing Active Directory, DNS, DHCP, and enterprise patch management in new environments
+227	open	known	105274	Kubernetes		Working knowledge of Kubernetes, including application deployment, scaling, administration, and troubleshooting.
+228	open	known	189640	Salesforce | Confluence | Jira	Confluence kept as engineering tooling, though it sits close to office collaboration software.	Proficiency with tools e.g. Google Workspace, Brightflag, Docusign, Salesforce, Coupa, Confluence, Jira and Office365
+229	open	known	136714			Strong knowledge of Microsoft Office 365, including Word, Excel and Power Point
+230	open	known	106955	Kubernetes	NGA CORE dropped as an obscure internal government platform.	Experience with NGA CORE (Common Operations Release Environment) a DevSecOps environment with an integrated CI/CD pipeline and a Kubernetes-based PaaS.
+231	open	known	175041	C++		C++ template meta programming knowledge
+232	held-out	known	28893	Python | SQL		Expertise in Python programming, SQL queries, and ML-related frameworks
+233	held-out	known	202352			We are a diverse team of engineers, product managers, and designers who are bringing Okta’s expertise in identity to define the future of Agent Identity management, focusing on enablement while staying secure.
+234	open	known	215070	iOS | Swift | UIKit | SwiftUI	Backbase Design System dropped as a vendor's product-specific component set.	Modern iOS Engineering: Write clean, testable, and maintainable Swift code utilizing UIKit, SwiftUI and the Backbase Design System.
+235	held-out	known	198817	Microsoft Azure		We're looking for a Cloud Engineer to own and evolve our Microsoft Azure environment — from core infrastructure to the data and AI platforms built on top of it.
+236	held-out	known	193742	ElasticSearch = Elasticsearch		ElasticSearch
+237	open	known	106259	Jenkins | CircleCI | Bamboo = Atlassian Bamboo | TFS Build = Team Foundation Server		Familiarity with CI/CD automation tools such as Jenkins, CircleCI, Bamboo, or TFS Build.
+238	held-out	known	25001	Windows = Microsoft Windows		As Staff Software Development Engineer, you'll be the Windows kernel authority for the runtime enforcement layer of our Identity Security Platform.
+239	open	known	163685	ArgoCD = Argo CD | Harness		Deployment Orchestration: Some exposure to GitOps workflows (e.g., ArgoCD) and CI/CD pipelines (e.g., Harness or an equivalent platform); willingness to learn our specific tooling on the job.
+240	open	known	37775	AWS = Amazon Web Services | Azure = Microsoft Azure | GCP = Google Cloud Platform		Have experience with relational databases, API design, and cloud platforms such as AWS, Azure, or GCP.
+241	held-out	known	181504	TypeScript | React		Front-end experience with TypeScript and React, or equivalent, for console development.
+242	open	known	143827	Grok | Claude | PowerBI = Power BI | SQL | Grafana	Grok and Claude are chat assistants used here as end-user AI tools, close to consumer software; kept as named AI models.	Process Design, Improvement, and Optimization: Design and implement innovative strategies for efficient material flow from receipt to lineside and any reverse logistics required. Understand critical part flow categories to develop specific plans that will allow production customers to achieve significant scale. Use value stream mapping to ensure end-to-end process optimization. Drive the projects and changes needed to ensure operations can maintain and scale rates year-over-year; utilize AI and data analysis tools (Grok, Claude, Excel, PowerBI, SQL, Grafana) to assess material flow performance metrics; develop and track key performance indicators.
+243	open	known	105350	Android | iOS		Proficient in mobile device technologies (MDM/MAM) and OS such as Android and iOS
+244	open	known	66324	TypeScript | Scala | Java | Go | JavaScript		Proficiency in a typed language (e.g., TypeScript, Scala, Java, Go) and comfort with JavaScript/TypeScript for web and mobile surfaces.
+245	held-out	known	161027	AWS = Amazon Web Services		Hosted in AWS
+246	held-out	known	200656	SQL		Technical Aptitude: Strong proficiency in SQL, AI tooling, and data visualization
+247	open	known	105503	Twilio	Genesys dropped as a vendor name used for its contact center products; Cisco and Avaya likewise.	Contact center product knowledge of other platforms (Genesys, Cisco, Avaya, Twilio, etc.)
+248	held-out	known	114945	CUDA		Advanced skills in GPU acceleration, CUDA, and distributed model training.
+249	held-out	known	850	ServiceNow		Assist with ServiceNow integrations using approved frameworks and Government-approved standards.
+250	open	known	1112	Kafka = Apache Kafka		Demonstrated expertise in Kafka or comparable high-throughput messaging and streaming platforms
+251	held-out	known	105676	MongoDB		MongoDB
+252	open	known	45360	Python | Java | Scala | Spark = Apache Spark		Prior experience with coding in a core programming language (i.e., Python, Java, Scala) and willingness to learn a base level of Spark.
+253	held-out	known	49013	OpenCV		Familiarity with OpenCV or other computer vision frameworks
+254	held-out	known	191368	Azure App Service		Conocimiento de Azure App Service.
+255	open	known	190882	Docker | Kubernetes		Experience packaging and deploying software using container technologies such as Docker; container orchestration platforms such as Kubernetes is a plus.
+256	held-out	known	206643	C++		You will work across system-level, cross-platform C++ game engine, and front-end codebase, partnering with teams across the company to identify bad behavior patterns and performance bottlenecks, ship measurable improvements, and prevent regressions over time.
+257	open	known	12906	Linux		Experience with security-focused Linux distributions
+258	held-out	known	11787	Python		Demonstrated proficiency in Python programming
+259	open	known	108392			Okta Federal, Inc. is seeking a seasoned Classified Systems Architect to join our Technology, Data & Intelligence (TDI) Team.
+260	open	known	208727	AWS = Amazon Web Services		We're looking for a Data Engineer to help build and operate an AWS-native data platform processing healthcare claims data and tokenized identifiers.
+261	open	known	95054	Python		Develop and maintain high-quality back-end services and APIs using Python.
+262	open	known	168087	Android		Lead the design and architecture of complex Android apps, ensuring scalability, reliability, and overall performance.
+263	held-out	known	176423	Salesforce | Workday | NetSuite | ServiceNow	Workday and NetSuite are business applications; kept because integration developers are hired for them.	Experience with enterprise cloud business applications such as Salesforce, Workday, NetSuite, ServiceNow, or similar platforms
+264	held-out	known	119390			Proficiency in Microsoft Word and Excel sufficient to produce accurate test records, redlines, daily field reports, and task-level test and isolation plans for Senior or Lead review.
+265	open	known	134586	Jenkins | GitLab | TeamCity | AWS = Amazon Web Services		Knowledge of continuous integration tools (Jenkins, GitLab, TeamCity, AWS) and their optimization for quality gates
+266	open	known	198567	Spring Boot | Java | Kafka = Apache Kafka | Kafka Streams | AWS = Amazon Web Services | iOS | Swift | Android | Kotlin		Our stack spans Spring Boot microservices, Java, Kafka, and Kafka Streams on the backend, a modern cloud-native platform on AWS, and native iOS (Swift) and Android (Kotlin) apps on the client side.
+267	open	known	166365	Polarion = Siemens Polarion | Entra ID = Microsoft Entra ID	Polarion is an ALM tool mostly used by systems engineers; kept as software engineering tooling.	Design and manage the mapping of Polarion roles and permissions to Entra ID groups to automate license assignment and access by role and department.
+268	open	known	70942	Semgrep | Snyk | CodeQL | Checkmarx | Veracode		Proficiency with the implementation, operationalization, and troubleshooting of Static Application Security Testing (SAST) tools such as Semgrep, Snyk, CodeQL, Checkmarx, Veracode, etc.
+269	open	known	175650		DP-203 and GCP Professional Data Engineer are certifications, so GCP inside the certification name was dropped.	DP-203 and/or GCP Professional Data Engineer certification is a plus.
+270	open	known	67859	GitLab		Practical experience with GitLab and continuous integration / continuous delivery (CI/CD), including how different deployment models and outages affect customers.
+271	held-out	known	176419			You will join the Backend Reliability (BRE) team, a small, highly specialized, senior group focused solely on Wrike’s reliability.
+272	open	known	178623	Jira		Experience using Jira for sprint planning and tracking tasks/bugs.
+273	open	known	103446	Kubernetes		Cloud Deployment: Hands-on Experience with modern cloud technology components and deployment patterns: virtual machines, containers, Kubernetes, serverless, infrastructure as code, etc.
+274	held-out	known	1786			Google Cloud Professional Data Engineer Certification.
+275	held-out	known	98169			Our corporate team members hold to our office-first model, which requires employees to be on-site at least four days a week, fostering organic interactions that spark creativity and connection
+276	held-out	known	106137	Angular | Node.js | NestJS		As a member of our dynamic team, we'll spearhead the development of our customer portal and back-office web application, leveraging cutting-edge technologies such as Angular, Node.js, and NestJS and delivering high quality code.
+277	open	known	194162		GitLab.com is the employer's own hosted service named as the workplace, read as naming the company rather than asking for GitLab.	You will be accountable for database capacity and availability on GitLab.com.
+278	open	known	89706	Spark = Apache Spark | Presto | Trino		Experience with large-scale data processing using Spark and/or Presto/Trino.
+279	held-out	known	211364	SOQL | SOSL	SOQL and SOSL are Salesforce query languages; they could instead be mapped to Salesforce as parts of it.	Experience in designing and optimising complex SOQL and SOSL queries.
+280	held-out	known	43921	markdown = Markdown		Familiarity with documentation tools (for example wikis, markdown, docs) and writing design documents and playbooks.
+281	held-out	known	200517	ServiceNow		ServiceNow for request and problem ticket tracking
+282	open	known	150095	Nginx | Apache = Apache HTTP Server		Configure Nginx and Apache for load balancing and high availability across production systems.
+283	held-out	known	35753	Stata | Python | R | SQL | SAS | ArcGIS | ArcPy | Databricks | Spark = Apache Spark | Google Cloud = Google Cloud Platform | Azure = Microsoft Azure | AWS = Amazon Web Services	Stata is statistics software used mostly by economists; kept as a language data people list.	Experience in Excel, Stata, Python, R, SQL, SAS, ArcGIS/ArcPy, or Cloud computing (Databricks/Spark, Google Cloud, Azure, AWS);
+284	open	known	3657	Cursor | Claude Code		AI Fluency & Efficiency: Integrate AI tools such as Cursor, Claude Code, and copilots into your daily workflows to accelerate data mining and routine tasks, while carefully verifying outputs.
+285	held-out	known	47922	Salesforce DX | VS Code = Visual Studio Code | Git | Copado | Gearset		Proficiency with modern development tools, including Salesforce DX, VS Code, and version control systems like Git, and CI/CD tools such as Copado or Gearset.
+286	held-out	known	30111	NetSuite	Coupa dropped as procurement software no software person is hired for; NetSuite kept as an ERP developers build on.	The ideal candidate brings 4–5 years of hands-on AP experience, proficiency in NetSuite and Coupa, a passion for process improvement, Agentic AI processes and automation, and the ability to thrive in a fast-paced, high-growth enterprise AI environment.
+287	held-out	known	176670	Kubernetes		Background in distributed systems, real-time inference serving, Kubernetes, observability tools, or large-scale data infrastructure.
+288	open	known	105676	Entity Framework Core		Utilize Entity Framework Core for ORM and data access.
+289	open	known	146054	SAP FICO | CFIN = SAP Central Finance | S/4HANA = SAP S/4HANA	SAP finance modules are worked by functional consultants; kept as SAP technology, CFIN least certain.	18+ years of expert level SAP FICO, CFIN and S/4HANA Finance experience
+290	held-out	known	3728	Python		Strong production experience in Python or a similar backend language
+291	held-out	known	201194	BigQuery = Google BigQuery | Snowflake | Databricks		Bring deep understanding of cloud data warehousing (BigQuery, Snowflake, Databricks, or similar) to inform architecture and platform decisions
+292	held-out	known	140888	C++		As a Senior C++ Software Engineer, you will have the opportunity to contribute to the development and maintenance of key SmartBear products in the web, mobile, and desktop test automation market.
+293	held-out	known	804		SharePoint dropped as office software here, though SharePoint development is a hired skill.	Proficiency with Microsoft Office Suite, particularly Word and Excel and SharePoint
+294	held-out	known	10865			Communications, sensors, and effector domain expertise in RF based systems (e.g. Radar, ESM, EW, etc.)
+295	open	known	212206			Through this dedication to unity and professional advancement, each team member is directly impacting the successful outcome of TrellisWare’s deliverables and setting the tone for our core values of delivering excellence, pushing boundaries, and empowering people
+296	open	known	1112	OpenSearch | DynamoDB = Amazon DynamoDB		Hands-on experience with OpenSearch, DynamoDB, or architecting large-scale search and indexing systems
+297	held-out	known	50570	PostgreSQL | Oracle = Oracle Database		DRW is seeking a Senior Database Engineer with focus in PostgreSQL and Oracle who will be responsible for implementation, support and maintenance of mission critical database environments.
+298	held-out	known	70980	Okta for AI Agents = Okta	A product line of the employer Okta; kept as a part of the Okta identity platform.	Okta for AI Agents (O4AA)
+299	held-out	known	52906	PHP		PHP 2+ years
+300	held-out	known	135384	Windows = Microsoft Windows | Linux | Mac = macOS | Docker | AWS = Amazon Web Services | Azure = Microsoft Azure | GCP = Google Cloud Platform		Research in rich environments: Work across Windows, Linux, Mac, Docker, and advanced cloud environments (AWS, Azure, GCP).
