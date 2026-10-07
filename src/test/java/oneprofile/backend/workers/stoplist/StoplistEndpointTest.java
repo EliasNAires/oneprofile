@@ -23,13 +23,15 @@ class StoplistEndpointTest {
 	void reportsWhatTheRunMeasured() {
 		given(this.stoplist.measure()).willReturn(new StoplistRun.Report(100, 40, 12, 30, 0.3, 9,
 				List.of(new StoplistRun.WordPieces("the", 20)), 300, 0.02, 5,
-				List.of(new StoplistRun.WordShare("make", 0.02, 900)), 2000, 1500, 0.01, 1.92, false));
+				List.of(new StoplistRun.WordShare("make", 0.02, 900)), 2000, 1500, 0.01, 1.92, false, 0.97, 400, 0.18,
+				List.of(), List.of(new StoplistRun.HeadWord("team", 300, 0.01, 0.16))));
 
 		assertThat(this.mvc.post().uri("/stoplists")).hasStatusOk().bodyJson().isEqualTo("""
 				{"pieces":100,"words":40,"head":12,"closedClassPieces":30,"closedClassShare":0.3,"headOfTheRest":9,\
 				"top":[{"word":"the","pieces":20}],"guardSetSize":300,"cutoff":0.02,"capitalizationLetsThrough":5,\
 				"guardAtTheCutoff":[{"word":"make","share":0.02,"midSentence":900}],"jevWords":2000,"jevCalls":1500,\
-				"jevCost":0.01,"jevSpent":1.92,"jevStopped":false}""");
+				"jevCost":0.01,"jevSpent":1.92,"jevStopped":false,"bar":0.97,"stoplisted":400,\
+				"coverage":0.18,"guardCheck":[],"blocked":[{"word":"team","pieces":300,"share":0.01,"no":0.16}]}""");
 	}
 
 }

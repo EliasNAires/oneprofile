@@ -14,7 +14,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 import oneprofile.backend.storage.normalizedvacancy.NormalizedVacancyStore;
 import oneprofile.backend.storage.normalizedvacancy.Segment;
@@ -42,11 +44,19 @@ class StoplistRunTest {
 
 	private Path otherLedger;
 
+	private Path stoplist;
+
 	private final List<String> asked = Collections.synchronizedList(new ArrayList<>());
+
+	/** Jev's probability of no for a word, when it is not {@link #otherwise}. */
+	private final Map<String, Double> nos = new HashMap<>();
+
+	private double otherwise = 0.9;
 
 	private final JevPort jev = (word) -> {
 		this.asked.add(word);
-		return new JevAnswer("no", 0.9, 0.1, JevPort.MODEL, 100);
+		double no = this.nos.getOrDefault(word, this.otherwise);
+		return new JevAnswer((no >= 0.5) ? "no" : "yes", no, Math.round((1 - no) * 100) / 100.0, JevPort.MODEL, 100);
 	};
 
 	private double spendLimit = 4.0;
@@ -60,6 +70,7 @@ class StoplistRunTest {
 		this.labels = Files.writeString(this.files.resolve("labels.jsonl"), "");
 		this.answers = this.files.resolve("stoplist-labels.jsonl");
 		this.otherLedger = Files.writeString(this.files.resolve("body-labels.jsonl"), "");
+		this.stoplist = this.files.resolve("stopwords.tsv");
 	}
 
 	@Test
@@ -230,11 +241,65 @@ class StoplistRunTest {
 
 		assertThat(this.asked).isEmpty();
 		assertThat(report.jevStopped()).isTrue();
+		assertThat(this.stoplist).doesNotExist();
+	}
+
+	@Test
+	void raisesJevsBarUntilNoGuardWordClearsItAndStoplistsTheClosedClassAndTheHeadWordsPastBothGuards()
+			throws IOException {
+		codeIsKeptInContext();
+		this.otherwise = 0.0;
+		this.nos.put("experience", 0.9);
+		this.nos.put("code", 0.85);
+		this.nos.put("use", 0.95);
+		holds(vacancy(1, "Use Go and Code with experience", "Use Go, code, experience and team",
+				"Use code with experience and team", "Use code with experience"));
+
+		StoplistRun.Report report = run(10).measure();
+
+		// The cutoff is code's 0.25. Use is never written mid-sentence, so only experience passes it.
+		assertThat(report.bar()).isEqualTo(0.86);
+		assertThat(Files.readAllLines(this.stoplist)).containsExactly("word\tpieces\tcapitalized_share\tjev_no\tlayer",
+				"experience\t4\t0.0000\t0.90\thead", "and\t3\t0.0000\t\tclosed-class",
+				"with\t3\t0.0000\t\tclosed-class");
+		assertThat(report.stoplisted()).isEqualTo(3);
+		assertThat(report.coverage()).isEqualTo(10 / 22.0);
+		assertThat(report.guardCheck()).isEmpty();
+		assertThat(report.blocked()).containsExactly(new StoplistRun.HeadWord("code", 4, 0.25, 0.85),
+				new StoplistRun.HeadWord("use", 4, null, 0.95), new StoplistRun.HeadWord("go", 2, 1.0, 0.0));
+	}
+
+	@Test
+	void startsJevsBarAtEightyPercent() throws IOException {
+		codeIsKeptInContext();
+		this.otherwise = 0.0;
+		this.nos.put("experience", 0.8);
+		holds(vacancy(1, "Use Code with experience", "Use code with experience", "Use code with experience",
+				"Use code with experience"));
+
+		StoplistRun.Report report = run(10).measure();
+
+		assertThat(report.bar()).isEqualTo(0.8);
+		assertThat(Files.readAllLines(this.stoplist)).contains("experience\t4\t0.0000\t0.80\thead");
+	}
+
+	@Test
+	void reportsTheStoplistedWordsThatAreInTheGuardSet() throws IOException {
+		Files.writeString(this.decisions, "name\tdecision\trevision\tsnapshot\tsource\nwith\tkeep\t0\traw\t#38\n");
+		holds(vacancy(1, "Go with Rust"));
+
+		assertThat(run(10).measure().guardCheck()).containsExactly("with");
+	}
+
+	private void codeIsKeptInContext() throws IOException {
+		Files.writeString(this.labels, """
+				{"name_form": "code", "name": "code", "segment": "Use code", "decision": "keep", "criterion_revision": "5"}
+				""");
 	}
 
 	private StoplistRun run(int batch) {
 		return new StoplistRun(this.normalized, this.taxonomy, this.jev, this.decisions, this.labels, this.answers,
-				List.of(this.otherLedger), this.spendLimit, batch, this.chunk);
+				List.of(this.otherLedger), this.stoplist, this.spendLimit, batch, this.chunk);
 	}
 
 	private static StoplistRun.WordShare share(String word, double share, long midSentence) {

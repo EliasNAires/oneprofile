@@ -5,6 +5,7 @@ import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -20,6 +21,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import oneprofile.backend.storage.normalizedvacancy.NormalizedVacancyStore;
 import oneprofile.backend.storage.normalizedvacancy.Segment;
@@ -46,8 +48,11 @@ import tools.jackson.databind.json.JsonMapper;
  * Jev's account is shared with every Jev script, so it stops between chunks of questions once their
  * ledgers together have cost the spend limit {@code scripts/jev.py} stops at.
  * <p>
- * The decision record, Jev's recall labels and the ledgers are read from the repository, so it runs
- * from the repository's root.
+ * It sets Jev's bar at the strictest hundredth from 0.80 up that no guard word reaches, and writes the
+ * stoplist: the closed-class words, and the words of the head of the rest that pass both guards.
+ * <p>
+ * The decision record, Jev's recall labels and the ledgers are read from the repository, and the
+ * stoplist written into it, so it runs from the repository's root.
  */
 @Component
 public class StoplistRun {
@@ -82,6 +87,12 @@ public class StoplistRun {
 	/** How many questions are asked before the spend is checked again, as in jev.py. */
 	private static final int CHUNK = 200;
 
+	/** Where Jev's bar starts, raised a hundredth at a time until no guard word clears it. */
+	private static final int FIRST_BAR = 80;
+
+	/** Where the stoplist is written. */
+	private static final Path STOPLIST = Path.of("src/main/resources/taxonomy/stopwords.tsv");
+
 	private static final ObjectMapper JSON = JsonMapper.builder().build();
 
 	private final NormalizedVacancyStore normalized;
@@ -98,6 +109,8 @@ public class StoplistRun {
 
 	private final List<Path> ledgers;
 
+	private final Path stoplist;
+
 	private final double spendLimit;
 
 	private final int batch;
@@ -113,7 +126,8 @@ public class StoplistRun {
 	 */
 	@Autowired
 	public StoplistRun(NormalizedVacancyStore normalized, TaxonomyStore taxonomy, JevPort jev) {
-		this(normalized, taxonomy, jev, DECISIONS, RECALL_LABELS, ANSWERS, LEDGERS, SPEND_LIMIT, BATCH, CHUNK);
+		this(normalized, taxonomy, jev, DECISIONS, RECALL_LABELS, ANSWERS, LEDGERS, STOPLIST, SPEND_LIMIT, BATCH,
+				CHUNK);
 	}
 
 	/**
@@ -124,12 +138,14 @@ public class StoplistRun {
 	 * @param recallLabels Jev's verdicts on pieces, whose keeps join the guard set
 	 * @param answers the ledger Jev's answers are appended to and read back from
 	 * @param ledgers the other ledgers of Jev's account, whose costs count toward the spend limit
+	 * @param stoplist where the stoplist is written
 	 * @param spendLimit the dollars every ledger together may cost before no more is asked
 	 * @param batch how many vacancies are read at a time
 	 * @param chunk how many questions are asked between two checks of the spend
 	 */
 	StoplistRun(NormalizedVacancyStore normalized, TaxonomyStore taxonomy, JevPort jev, Path decisions,
-			Path recallLabels, Path answers, List<Path> ledgers, double spendLimit, int batch, int chunk) {
+			Path recallLabels, Path answers, List<Path> ledgers, Path stoplist, double spendLimit, int batch,
+			int chunk) {
 		this.normalized = normalized;
 		this.taxonomy = taxonomy;
 		this.jev = jev;
@@ -137,6 +153,7 @@ public class StoplistRun {
 		this.recallLabels = recallLabels;
 		this.answers = answers;
 		this.ledgers = ledgers;
+		this.stoplist = stoplist;
 		this.spendLimit = spendLimit;
 		this.batch = batch;
 		this.chunk = chunk;
@@ -171,23 +188,106 @@ public class StoplistRun {
 			.flatMap((word) -> share(word.word(), counts).stream())
 			.filter((word) -> word.share() < cutoff)
 			.count();
+		Map<String, Double> nos = nos();
 		Set<String> asked = new LinkedHashSet<>();
 		rest.subList(0, headOfTheRest).forEach((word) -> asked.add(word.word()));
 		asked.addAll(new TreeSet<>(guardSet));
-		Asking asking = ask(asked);
+		Asking asking = ask(asked, nos);
+		double bar = bar(guardSet, nos);
+		Set<String> head = rest.subList(0, headOfTheRest)
+			.stream()
+			.map(WordPieces::word)
+			.collect(Collectors.toSet());
+		List<Stoplisted> stoplisted = new ArrayList<>();
+		List<HeadWord> blocked = new ArrayList<>();
+		for (WordPieces word : ranked) {
+			Double share = share(word.word(), counts).map(WordShare::share).orElse(null);
+			Double no = nos.get(word.word());
+			if (ClosedClassRule.closedClass(word.word())) {
+				stoplisted.add(new Stoplisted(word.word(), word.pieces(), share, no, "closed-class"));
+			}
+			else if (head.contains(word.word()) && share != null && share < cutoff && no != null && no >= bar) {
+				stoplisted.add(new Stoplisted(word.word(), word.pieces(), share, no, "head"));
+			}
+			else if (head.contains(word.word()) && blocked.size() < TOP) {
+				blocked.add(new HeadWord(word.word(), word.pieces(), share, no));
+			}
+		}
+		// A guard word Jev was not asked about could have cleared the bar, so the bar is only set once
+		// Jev has answered them all.
+		if (!asking.stopped()) {
+			write(stoplisted);
+		}
+		long stoplistedPieces = stoplisted.stream().mapToLong(Stoplisted::pieces).sum();
 		return new Report(pieces, ranked.size(), head(ranked, HEAD_SHARE * pieces), closedClassPieces,
 				(pieces == 0) ? 0 : (double) closedClassPieces / pieces, headOfTheRest,
 				ranked.subList(0, Math.min(TOP, ranked.size())), guardSet.size(), cutoff, capitalizationLetsThrough,
 				guardShares.stream().filter((word) -> word.share() == cutoff).toList(), asked.size(), asking.calls(),
-				asking.tokens() * DOLLARS_PER_INPUT_TOKEN, asking.spent(), asking.stopped());
+				asking.tokens() * DOLLARS_PER_INPUT_TOKEN, asking.spent(), asking.stopped(), bar, stoplisted.size(),
+				(pieces == 0) ? 0 : (double) stoplistedPieces / pieces,
+				stoplisted.stream().map(Stoplisted::word).filter(guardSet::contains).toList(), blocked);
+	}
+
+	/**
+	 * Jev's bar: 0.80, raised a hundredth at a time until no guard word's probability of no reaches
+	 * it.
+	 */
+	private static double bar(Set<String> guardSet, Map<String, Double> nos) {
+		int hundredths = FIRST_BAR;
+		while (true) {
+			double bar = hundredths / 100.0;
+			if (guardSet.stream().map(nos::get).noneMatch((no) -> no != null && no >= bar)) {
+				return bar;
+			}
+			hundredths++;
+		}
+	}
+
+	/**
+	 * Writes the stoplist, one row per word, the most frequent first, with its capitalized share to
+	 * four places and Jev's probability of no to two, as Jev gives it.
+	 */
+	private void write(List<Stoplisted> stoplisted) {
+		List<String> rows = new ArrayList<>();
+		rows.add("word\tpieces\tcapitalized_share\tjev_no\tlayer");
+		for (Stoplisted word : stoplisted) {
+			rows.add(String.join("\t", word.word(), String.valueOf(word.pieces()),
+					decimals(word.share(), 4), decimals(word.no(), 2), word.layer()));
+		}
+		try {
+			Files.write(this.stoplist, rows);
+		}
+		catch (IOException ex) {
+			throw new UncheckedIOException(ex);
+		}
+	}
+
+	private static String decimals(Double value, int places) {
+		return (value == null) ? "" : String.format(Locale.ROOT, "%." + places + "f", value);
+	}
+
+	/** Jev's probability of no for every word the pinned model has answered in the ledger. */
+	private Map<String, Double> nos() {
+		Map<String, Double> nos = new HashMap<>();
+		if (Files.exists(this.answers)) {
+			for (String line : lines(this.answers)) {
+				if (!line.isBlank()) {
+					JsonNode row = JSON.readTree(line);
+					if (row.path("model").asString("").equals(JevPort.MODEL)) {
+						nos.put(row.get("word").asString(), row.get("probabilities").get("no").asDouble());
+					}
+				}
+			}
+		}
+		return nos;
 	}
 
 	/**
 	 * Asks Jev about every word the pinned model has not answered in the ledger, a chunk at a time,
-	 * appending each answer as it arrives, until the spend limit is reached.
+	 * appending each answer to the ledger and to Jev's probabilities of no as it arrives, until the
+	 * spend limit is reached.
 	 */
-	private Asking ask(Set<String> words) {
-		Set<String> answered = new HashSet<>();
+	private Asking ask(Set<String> words, Map<String, Double> nos) {
 		long ledgered = 0;
 		for (Path ledger : Stream.concat(Stream.of(this.answers), this.ledgers.stream()).toList()) {
 			if (!Files.exists(ledger)) {
@@ -197,13 +297,10 @@ public class StoplistRun {
 				if (!line.isBlank()) {
 					JsonNode row = JSON.readTree(line);
 					ledgered += row.required("input_tokens").asLong();
-					if (ledger.equals(this.answers) && row.path("model").asString("").equals(JevPort.MODEL)) {
-						answered.add(row.get("word").asString());
-					}
 				}
 			}
 		}
-		List<String> wanted = words.stream().filter((word) -> !answered.contains(word)).toList();
+		List<String> wanted = words.stream().filter((word) -> !nos.containsKey(word)).toList();
 		int calls = 0;
 		long tokens = 0;
 		try (ExecutorService pool = Executors.newFixedThreadPool(WORKERS)) {
@@ -211,12 +308,14 @@ public class StoplistRun {
 				if ((ledgered + tokens) * DOLLARS_PER_INPUT_TOKEN >= this.spendLimit) {
 					return new Asking(calls, tokens, (ledgered + tokens) * DOLLARS_PER_INPUT_TOKEN, true);
 				}
-				List<Future<JevAnswer>> asked = wanted.subList(start, Math.min(start + this.chunk, wanted.size()))
-					.stream()
+				List<String> chunked = wanted.subList(start, Math.min(start + this.chunk, wanted.size()));
+				List<Future<JevAnswer>> asked = chunked.stream()
 					.map((word) -> pool.submit(() -> ledger(word, this.jev.ask(word))))
 					.toList();
-				for (Future<JevAnswer> answer : asked) {
-					tokens += answered(answer).inputTokens();
+				for (int i = 0; i < asked.size(); i++) {
+					JevAnswer answer = answered(asked.get(i));
+					nos.put(chunked.get(i), answer.no());
+					tokens += answer.inputTokens();
 					calls++;
 				}
 			}
@@ -397,6 +496,31 @@ public class StoplistRun {
 	}
 
 	/**
+	 * A word on the stoplist, and the layer that put it there.
+	 *
+	 * @param word the word, lowercased
+	 * @param pieces how many times it is a piece across the corpus
+	 * @param share the share of its mid-sentence mentions written capitalized, unless it never is
+	 * written mid-sentence
+	 * @param no Jev's probability that it could name no technology, unless Jev was not asked
+	 * @param layer {@code closed-class} or {@code head}
+	 */
+	private record Stoplisted(String word, long pieces, Double share, Double no, String layer) {
+	}
+
+	/**
+	 * A word of the head of the rest that a guard keeps off the stoplist.
+	 *
+	 * @param word the word, lowercased
+	 * @param pieces how many times it is a piece across the corpus
+	 * @param share the share of its mid-sentence mentions written capitalized, unless it never is
+	 * written mid-sentence
+	 * @param no Jev's probability that it could name no technology, unless Jev has not answered
+	 */
+	public record HeadWord(String word, long pieces, Double share, Double no) {
+	}
+
+	/**
 	 * One word and its piece occurrences.
 	 *
 	 * @param word the word, lowercased
@@ -437,11 +561,19 @@ public class StoplistRun {
 	 * @param jevCost what they cost, in dollars
 	 * @param jevSpent what Jev's account has cost across every ledger, in dollars
 	 * @param jevStopped whether the spend limit left words unasked
+	 * @param bar Jev's bar: the lowest hundredth from 0.80 up that no guard word's probability of no
+	 * reaches. A word whose probability reaches it passes the Jev guard
+	 * @param stoplisted how many words the stoplist holds, written unless the spend limit left words
+	 * unasked
+	 * @param coverage the share of every piece that a stoplisted word is
+	 * @param guardCheck the stoplisted words that are in the guard set, which should be none
+	 * @param blocked the fifty most frequent words of the head of the rest a guard keeps off the stoplist
 	 */
 	public record Report(long pieces, int words, int head, long closedClassPieces, double closedClassShare,
 			int headOfTheRest, List<WordPieces> top, int guardSetSize, double cutoff, int capitalizationLetsThrough,
 			List<WordShare> guardAtTheCutoff, int jevWords, int jevCalls, double jevCost, double jevSpent,
-			boolean jevStopped) {
+			boolean jevStopped, double bar, int stoplisted, double coverage, List<String> guardCheck,
+			List<HeadWord> blocked) {
 	}
 
 }

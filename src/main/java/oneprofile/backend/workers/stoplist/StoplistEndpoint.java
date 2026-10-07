@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Measures the piece occurrences the stoplist of skill discovery's recall is built from.
+ * Builds the stoplist of skill discovery's recall, and reports what it is built from.
  */
 @RestController
 class StoplistEndpoint {
