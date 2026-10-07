@@ -18,4 +18,4 @@ Packages split into `storage/` and `workers/`, and every class is named by its r
 
 ### Rule loops
 
-An issue whose body has a `## Loop` section is worked in rounds by two sessions: an implementer (`/mattpocock-skills:implement #N`) and a reviewer (`/review-round #N`). Read `docs/agents/rule-loop.md` before working such an issue in either role.
+An issue whose body has a `## Loop` section is calibrated (`/calibrate-loop #N`), then worked in rounds by two sessions under the frozen criterion: an implementer (`/mattpocock-skills:implement #N`) and a reviewer (`/review-round #N`). Read `docs/agents/rule-loop.md` before working such an issue in any role.

@@ -237,8 +237,9 @@ _Avoid_: annotator, judge, oracle, reviewer
 
 **Iteration**:
 One session's pass around the classification loop: label the sample the last session left,
-score the rules, change them, re-classify, draw the next sample.
-_Avoid_: round, batch, run, evaluation, cycle
+score the rules, change them, re-classify, draw the next sample. The single-session form a rule
+loop replaced.
+_Avoid_: batch, run, evaluation, cycle
 
 **Work Mode**:
 Where the work is performed, as declared by the vacancy: remote, hybrid or onsite.
@@ -352,6 +353,51 @@ _Avoid_: normalized name, slug, key
 Every decision skill discovery has made, drops included, so no name is decided twice. It says
 what has been seen; the taxonomy says what the skills are, and every key counts as seen.
 _Avoid_: history, blacklist, verdict cache, review log
+
+### Rule Loops
+
+**Rule Loop**:
+Developing rules against labels until they meet a goal, in rounds split between two sessions
+that never see each other's work except through the issue thread (`docs/agents/rule-loop.md`).
+_Avoid_: classification loop, training loop, iteration
+
+**Round**:
+One turn of a rule loop: an implementer session changes the rules, then a reviewer session
+scores them and writes the next round's feedback.
+_Avoid_: iteration, pass, cycle, run
+
+**Calibration**:
+The phase of a rule loop in which its criterion is revised, and the labeller is checked against
+the gold set, until the criterion is fit to score rounds by. No rules change during it, and no
+round is scored under a revision it has not passed.
+_Avoid_: criterion phase, tuning, labeller check
+
+**Frozen Revision**:
+The criterion revision a calibration ended on, which every round scores under until the next
+calibration. Rounds under one frozen revision are comparable; rounds across two are not.
+_Avoid_: current criterion, settled criterion, baseline
+
+**Gold Set**:
+A loop's rows labelled by Elias: drafted by an agent, corrected by him. What the labeller and
+the adjudicator are checked against. Part of it is held out, never read by the session that
+revises the criterion.
+_Avoid_: ground truth, golden set, test set, calibration set
+
+**Agreement**:
+The share of the gold set's held-out rows a labeller or the adjudicator answers as Elias did. It
+says how far a gate can be trusted to tell rules apart from reading noise.
+_Avoid_: accuracy, noise floor, labeller quality
+
+**Adjudication**:
+A blind second reading of each row where the labeller and the rules disagree, deciding which
+of the two answers the criterion supports. The gates are computed on its outcome, the
+labeller's raw figure reported beside it.
+_Avoid_: re-marking, re-labelling, review, arbitration
+
+**Criterion Proposal**:
+A change to the frozen revision that a reviewer finds a round calls for, written into the round
+comment instead of into the criterion. Proposals are taken up by the next calibration.
+_Avoid_: criterion change, amendment, revision request
 
 ### The Explorer
 
