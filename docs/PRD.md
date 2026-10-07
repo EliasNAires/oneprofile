@@ -163,6 +163,9 @@ The taxonomy is seeded from **O\*NET Technology Skills**, **GitHub Linguist** an
 **Wikidata**; why not Lightcast, ESCO or Stack Overflow: ADR-0003. It is built:
 `src/main/resources/taxonomy/skills.tsv`, with 2,009 skills (provenance in `docs/taxonomy.md`),
 grown on each new snapshot by skill discovery (#41, ADR-0013). Extraction (#15) is not built.
+A skill is one named technology, and each of its keys is plain or context (ADR-0015): a plain key
+is matched anywhere, a context key such as Go or Kafka only where a context rule says the text
+means the skill.
 
 This iteration does **not** distinguish required skills from merely mentioned ones.
 Coverage is a rough signal and is accepted as such.

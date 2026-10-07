@@ -1,6 +1,6 @@
 # Skill discovery is a script whose candidates Jev filters, against a decision record
 
-Status: accepted
+Status: accepted; recall and key safety superseded by ADR-0015
 
 The taxonomy was built in one-off steps (#37, #38, #40), and #40's pass cannot be repeated: its
 miner passed 8,290 names, about 70% noise, and two rounds of subagents reading them all used

@@ -299,9 +299,10 @@ _Avoid_: hours, overlap, availability window
 ### Matching
 
 **Skill**:
-A named capability a vacancy asks for and a profile can claim, drawn from the taxonomy so
-that both sides speak the same vocabulary.
-_Avoid_: technology, tool, keyword, competency, requirement
+One specific named technology — a language, framework, database, cloud service, tool or
+platform — that a vacancy asks for and a profile can claim, drawn from the taxonomy so that both
+sides speak the same vocabulary. Practices (CI/CD, microservices, TDD) are not skills.
+_Avoid_: tool, keyword, competency, requirement
 
 **Alias**:
 An alternative spelling or name for a skill. Without aliases the two sides of a match never
@@ -315,9 +316,18 @@ _Avoid_: skill list, ontology, dictionary, catalog
 
 **Key**:
 A name a skill is found by: its canonical name or one of its aliases, in any case and spacing.
-Never an ordinary word, so where a skill's bare name is ambiguous its safe form is the key
-(Golang, not Go).
+Each key is either plain or context, set by a rule and never by hand (ADR-0015).
 _Avoid_: term, keyword, token, match string
+
+**Plain Key**:
+A key found wherever it appears, because it means its skill nearly everywhere it is written:
+Kubernetes, PostgreSQL, Golang.
+_Avoid_: safe key, exact key
+
+**Context Key**:
+A key that is also an ordinary word, or the letter C or R, so it means its skill only in some
+texts: Go, Spring, Kafka, Compose. Found only where a context rule says the text means the skill.
+_Avoid_: bare form, ambiguous key, unsafe key
 
 **Coverage**:
 The share of a vacancy's skills that a profile holds. A vacancy naming very few skills
@@ -366,6 +376,12 @@ _Avoid_: normalized name, slug, key
 Every decision skill discovery has made, drops included, so no name is decided twice. It says
 what has been seen; the taxonomy says what the skills are, and every key counts as seen.
 _Avoid_: history, blacklist, verdict cache, review log
+
+**Ordinary List**:
+The words that skill discovery's recall check never asks Jev about again, because Jev has dropped
+each of them in several different segments and kept it in none. Built from Jev's verdicts, never
+from a dictionary.
+_Avoid_: stopwords, dictionary, common words
 
 ### Rule Loops
 
