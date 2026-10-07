@@ -1,6 +1,6 @@
 # LLM judgment labels the measurement samples, and never enters the pipeline
 
-Status: accepted (amended 2026-10-02)
+Status: accepted (amended 2026-10-02, 2026-10-06)
 
 The labelling that measures the classifier of #10 is produced by a Claude Code session
 applying `docs/engineering-role-criterion.md`, not by a person reading each row. The labels it
@@ -11,7 +11,7 @@ Two constraints bound this. **No API is paid for**: labelling runs inside a Clau
 session, never through the Batch API or any other billed endpoint, and a design that needs
 one is rejected rather than costed. The one exception is **TypeSafe's Jev**, which may be
 paid for, within a $5 hard limit on the account; ADR-0012 uses it to label description
-bodies. And **the labeller is blind by ordering**: a session labels
+bodies, and ADR-0013 to decide the candidates of skill discovery. And **the labeller is blind by ordering**: a session labels
 the sample from the criterion alone, over bare shuffled titles, and writes its labels to disk
 before it opens the classifier's code. A labeller that can see the prediction — or can derive
 it from the rules that produced it — agrees with it, and the resulting figure measures nothing.

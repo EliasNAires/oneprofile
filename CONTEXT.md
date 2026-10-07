@@ -299,6 +299,12 @@ The curated set of skills and their aliases. It is the vocabulary of matching an
 person picks their own skills from.
 _Avoid_: skill list, ontology, dictionary, catalog
 
+**Key**:
+A name a skill is found by: its canonical name or one of its aliases, in any case and spacing.
+Never an ordinary word, so where a skill's bare name is ambiguous its safe form is the key
+(Golang, not Go).
+_Avoid_: term, keyword, token, match string
+
 **Coverage**:
 The share of a vacancy's skills that a profile holds. A vacancy naming very few skills
 carries less evidence and is scored as such.
@@ -318,6 +324,34 @@ How well a match fits a profile: coverage, reduced where the profile falls short
 vacancy's seniority level or where the vacancy carries too little evidence. Exceeding a
 vacancy's seniority level costs nothing.
 _Avoid_: rank, rating, weight, relevance
+
+### Skill Discovery
+
+**Skill Discovery**:
+Finding the names a snapshot's ads use for skills the taxonomy lacks, and deciding each, run
+again on every new snapshot. Decided against `docs/skill-criterion.md` (ADR-0013). A skill whose
+demand fades is never removed.
+_Avoid_: mining, taxonomy build, skill extraction
+
+**Candidate**:
+A name skill discovery proposes as a possible skill: one that is not a key and has never been
+decided.
+_Avoid_: mined name, n-gram, suggestion
+
+**Decision**:
+Whether a candidate is a skill: keep or drop, made once for its name form, under one revision of
+the skill criterion. A drop is final unless a later revision reopens its reason.
+_Avoid_: review, judgment, label
+
+**Name Form**:
+A name as discovery compares it with what has been seen: case, spacing and hyphenation set
+aside, every other character kept, so C, C++ and C# are three names.
+_Avoid_: normalized name, slug, key
+
+**Decision Record**:
+Every decision skill discovery has made, drops included, so no name is decided twice. It says
+what has been seen; the taxonomy says what the skills are, and every key counts as seen.
+_Avoid_: history, blacklist, verdict cache, review log
 
 ### The Explorer
 
