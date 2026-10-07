@@ -1,0 +1,20 @@
+[
+ {
+  "id": "203:infor ln",
+  "text": "Name: Infor LN\nSegment: Act as a power user of Teamcenter, Jira, and Infor LN, tracking progress and ensuring data smoothly crosses the boundaries between design, manufacturing, and enterprise resource planning.",
+  "b": "keep",
+  "a": "drop"
+ },
+ {
+  "id": "206:sales cloud",
+  "text": "Name: Sales Cloud\nSegment: 6+ years of hands-on Salesforce development experience (Apex, LWC, Flows, security/sharing model, packaging, and release management) with demonstrated delivery of complex solutions in Sales Cloud or Service Cloud",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "206:service cloud",
+  "text": "Name: Service Cloud\nSegment: 6+ years of hands-on Salesforce development experience (Apex, LWC, Flows, security/sharing model, packaging, and release management) with demonstrated delivery of complex solutions in Sales Cloud or Service Cloud",
+  "a": "drop",
+  "b": "keep"
+ }
+]

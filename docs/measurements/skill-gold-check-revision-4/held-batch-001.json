@@ -1,0 +1,86 @@
+[
+ {
+  "id": "122:native senior .net",
+  "text": "Name: Native Senior .NET\nSegment: At OPSWAT’s Technology Development Centre in Veszprém, we are looking for talented AI Native Senior .NET Engineer to join our team working on one of our most strategic solutions: MetaDefender Secure Managed File Transfer (MFT).",
+  "b": "keep",
+  "a": "drop"
+ },
+ {
+  "id": "122:senior .net",
+  "text": "Name: Senior .NET\nSegment: At OPSWAT’s Technology Development Centre in Veszprém, we are looking for talented AI Native Senior .NET Engineer to join our team working on one of our most strategic solutions: MetaDefender Secure Managed File Transfer (MFT).",
+  "b": "keep",
+  "a": "drop"
+ },
+ {
+  "id": "122:senior .net engineer",
+  "text": "Name: Senior .NET Engineer\nSegment: At OPSWAT’s Technology Development Centre in Veszprém, we are looking for talented AI Native Senior .NET Engineer to join our team working on one of our most strategic solutions: MetaDefender Secure Managed File Transfer (MFT).",
+  "b": "keep",
+  "a": "drop"
+ },
+ {
+  "id": "203:infor",
+  "text": "Name: Infor\nSegment: Act as a power user of Teamcenter, Jira, and Infor LN, tracking progress and ensuring data smoothly crosses the boundaries between design, manufacturing, and enterprise resource planning.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "220:python engineer",
+  "text": "Name: Python Engineer\nSegment: As a Senior Python Engineer on the Prague-based Autotriage team, you will drive the development of infrastructure and tools that automatically triage failed tests across Everpure’s large-scale automated environments.",
+  "b": "keep",
+  "a": "drop"
+ },
+ {
+  "id": "220:senior python",
+  "text": "Name: Senior Python\nSegment: As a Senior Python Engineer on the Prague-based Autotriage team, you will drive the development of infrastructure and tools that automatically triage failed tests across Everpure’s large-scale automated environments.",
+  "b": "keep",
+  "a": "drop"
+ },
+ {
+  "id": "220:senior python engineer",
+  "text": "Name: Senior Python Engineer\nSegment: As a Senior Python Engineer on the Prague-based Autotriage team, you will drive the development of infrastructure and tools that automatically triage failed tests across Everpure’s large-scale automated environments.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "224:datadog's",
+  "text": "Name: Datadog's\nSegment: If using Datadog to observe Datadog's own security posture, building impactful tooling, and shaping how we secure AI-powered systems sounds like the right kind of problem, this role is worth a close look.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "285:code",
+  "text": "Name: Code\nSegment: Proficiency with modern development tools, including Salesforce DX, VS Code, and version control systems like Git, and CI/CD tools such as Copado or Gearset.",
+  "b": "keep",
+  "a": "drop"
+ },
+ {
+  "id": "292:c++ software",
+  "text": "Name: C++ Software\nSegment: As a Senior C++ Software Engineer, you will have the opportunity to contribute to the development and maintenance of key SmartBear products in the web, mobile, and desktop test automation market.",
+  "b": "keep",
+  "a": "drop"
+ },
+ {
+  "id": "292:c++ software engineer",
+  "text": "Name: C++ Software Engineer\nSegment: As a Senior C++ Software Engineer, you will have the opportunity to contribute to the development and maintenance of key SmartBear products in the web, mobile, and desktop test automation market.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "292:senior c++",
+  "text": "Name: Senior C++\nSegment: As a Senior C++ Software Engineer, you will have the opportunity to contribute to the development and maintenance of key SmartBear products in the web, mobile, and desktop test automation market.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "292:senior c++ software",
+  "text": "Name: Senior C++ Software\nSegment: As a Senior C++ Software Engineer, you will have the opportunity to contribute to the development and maintenance of key SmartBear products in the web, mobile, and desktop test automation market.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "299:php 2+",
+  "text": "Name: PHP 2+\nSegment: PHP 2+ years",
+  "b": "keep",
+  "a": "drop"
+ }
+]

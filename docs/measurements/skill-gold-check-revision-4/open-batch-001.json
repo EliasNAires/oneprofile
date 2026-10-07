@@ -1,0 +1,104 @@
+[
+ {
+  "id": "110:mcp",
+  "text": "Name: MCP\nSegment: Implement MCP (Model Context Protocol) services and service templates that make it faster and easier for teams across Toast to build AI-powered workflows",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "110:model context protocol",
+  "text": "Name: Model Context Protocol\nSegment: Implement MCP (Model Context Protocol) services and service templates that make it faster and easier for teams across Toast to build AI-powered workflows",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "194:f&o",
+  "text": "Name: F&O\nSegment: Stay up-to-date on the latest developments and new features within D365 F&O and identify opportunities to leverage these for greater efficiency and automation.",
+  "b": "keep",
+  "a": "drop"
+ },
+ {
+  "id": "205:catalog",
+  "text": "Name: Catalog\nSegment: Translate claim-system data dictionaries into Unity Catalog tables for reporting and APIs.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "210:advanced aws",
+  "text": "Name: Advanced AWS\nSegment: Advanced AWS & Kubernetes Expertise: EKS, ECS Fargate, EC2, Lambda, and CloudWatch in production.",
+  "b": "keep",
+  "a": "drop"
+ },
+ {
+  "id": "210:kubernetes expertise",
+  "text": "Name: Kubernetes Expertise\nSegment: Advanced AWS & Kubernetes Expertise: EKS, ECS Fargate, EC2, Lambda, and CloudWatch in production.",
+  "b": "keep",
+  "a": "drop"
+ },
+ {
+  "id": "230:kubernetes based",
+  "text": "Name: Kubernetes-based\nSegment: Experience with NGA CORE (Common Operations Release Environment) a DevSecOps environment with an integrated CI/CD pipeline and a Kubernetes-based PaaS.",
+  "b": "keep",
+  "a": "drop"
+ },
+ {
+  "id": "24:command center",
+  "text": "Name: Command Center\nSegment: Own the cloud security architecture across our GCP environments, including IAM and least privilege design, VPC Service Controls, Organization Policy, Shared VPC, Workload Identity, KMS/encryption, and Security Command Center",
+  "b": "keep",
+  "a": "drop"
+ },
+ {
+  "id": "24:security command",
+  "text": "Name: Security Command\nSegment: Own the cloud security architecture across our GCP environments, including IAM and least privilege design, VPC Service Controls, Organization Policy, Shared VPC, Workload Identity, KMS/encryption, and Security Command Center",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "24:service controls",
+  "text": "Name: Service Controls\nSegment: Own the cloud security architecture across our GCP environments, including IAM and least privilege design, VPC Service Controls, Organization Policy, Shared VPC, Workload Identity, KMS/encryption, and Security Command Center",
+  "b": "keep",
+  "a": "drop"
+ },
+ {
+  "id": "24:vpc service",
+  "text": "Name: VPC Service\nSegment: Own the cloud security architecture across our GCP environments, including IAM and least privilege design, VPC Service Controls, Organization Policy, Shared VPC, Workload Identity, KMS/encryption, and Security Command Center",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "282:configure nginx",
+  "text": "Name: Configure Nginx\nSegment: Configure Nginx and Apache for load balancing and high availability across production systems.",
+  "b": "keep",
+  "a": "drop"
+ },
+ {
+  "id": "288:utilize entity",
+  "text": "Name: Utilize Entity\nSegment: Utilize Entity Framework Core for ORM and data access.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "288:utilize entity framework",
+  "text": "Name: Utilize Entity Framework\nSegment: Utilize Entity Framework Core for ORM and data access.",
+  "b": "keep",
+  "a": "drop"
+ },
+ {
+  "id": "289:cfin",
+  "text": "Name: CFIN\nSegment: 18+ years of expert level SAP FICO, CFIN and S/4HANA Finance experience",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "289:s/4hana finance",
+  "text": "Name: S/4HANA Finance\nSegment: 18+ years of expert level SAP FICO, CFIN and S/4HANA Finance experience",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "53:service cloud",
+  "text": "Name: Service Cloud\nSegment: Salesforce Certified Agentforce Service Consultant (formerly Service Cloud Consultant) required; Administrator required",
+  "a": "keep",
+  "b": "drop"
+ }
+]

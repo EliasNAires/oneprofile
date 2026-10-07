@@ -1,11 +1,11 @@
 # What counts as a skill
 
-Revision 3 (2026-10-07)
+Revision 5 (2026-10-07)
 
-The criterion of skill discovery (#41, ADR-0013). It is the one document read by Jev when it
-decides whether a candidate is kept, by the agent that drafts a kept candidate's row of
-`skills.tsv`, and by every session that reviews either. When a decision and this file disagree,
-this file is right and the decision is wrong.
+The criterion of skill discovery (#41, ADR-0013, ADR-0015). It is read by the agent that drafts a
+kept candidate's row of `skills.tsv`, by the adjudicator, and by every session that reviews
+either. Jev reads only its short form, the section *What Jev reads*, and the Category table. When a
+decision and this file disagree, this file is right and the decision is wrong.
 
 It is written from the verdict rules of #38 and #40, whose decisions are archived in
 `docs/measurements/taxonomy-review-2026-09-24.tsv` and
@@ -17,7 +17,12 @@ read how a like name was decided there.
 A skill is matched in two places: in a vacancy's description, where an ad asks for it, and in a
 profile, where a person claims it. Both sides only meet if they name a skill the same way, and
 the taxonomy is also the list a person picks their own skills from. So a skill is a name that an
-engineer would put on a CV, and that can be found in an ad without false hits.
+engineer would put on a CV.
+
+A skill is a **technology**: one specific named language, framework or library, database, cloud
+or cloud service, tool or platform. A practice, method, technique, architecture or kind of system
+is no skill, however technical: CI/CD, GitOps, infrastructure as code, TDD, MVVM, microservices,
+REST, RAG, LLMs, reinforcement learning, device drivers, ERP, CRM, data lake, vector databases.
 
 "Engineer" in this document always means a software person: someone whose background is
 software, as `docs/engineering-role-criterion.md` reads the word. Whether a technology is a skill
@@ -27,84 +32,105 @@ the ad naming it is not an engineering role.
 
 ## Keep
 
-**Keep** a candidate when it names one specific technology an engineer would put on a CV: a
-language, a framework or library, a database, a cloud or one of its services, a tool or a
-platform. Python, Grafana, Claude Code, GNU Make, Google Cloud Platform. A platform data, ML or AI
-teams build on is a platform like any other: Dataiku, Microsoft Foundry, Databricks.
+**Keep** a name when it names one specific technology an engineer would put on a CV: a language,
+a framework or library, a database, a cloud or one of its services, a tool or a platform. Python,
+Grafana, Claude Code, GNU Make, Google Cloud Platform. A platform data, ML or AI teams build on is
+a platform like any other: Dataiku, Microsoft Foundry, Databricks. So is a protocol, file format
+or standard that software implements: MCP, gRPC, OAuth, Parquet, Bluetooth.
 
-A candidate that names an existing skill by another spelling is a keep, as that skill: GCP is
-Google Cloud Platform, `#Kubernetes` is Kubernetes, and a name split by a space, an underscore or a
-slash is that name (Check MK is Checkmk, Mongo DB is MongoDB).
+A name is judged where it is written, and exactly as given: in the segments given with it, it is a
+keep when they use it for the technology, and when it is the technology's whole name and nothing
+more. A name with an ordinary word before or after it (Configure Nginx, Kubernetes Expertise,
+Advanced AWS, Kubernetes-based) is a drop, though the name inside it is a keep; so is part of a
+longer name written around it (Security Command, written in Security Command Center). A **bare form**, the name ads use for a product without its vendor or
+qualifier, is that product: Go is Golang, Spring is the Spring Framework, Kafka is Apache Kafka,
+Compose is Jetpack Compose or Docker Compose, Fabric is Microsoft Fabric, Tempo is Grafana Tempo.
+It is a keep where the text uses it for the product, and a drop where the text uses the ordinary
+word ("go above and beyond", "the fabric of our team").
+
+A name that names an existing skill by another spelling is a keep, as that skill: GCP is Google
+Cloud Platform, `#Kubernetes` is Kubernetes, and a name split by a space, an underscore or a slash
+is that name (Check MK is Checkmk, Mongo DB is MongoDB). So is a version of a skill (HTTP/2 is
+HTTP, Vue 3 is Vue.js), and a named feature or service of a skill that ads ask for by its own name
+(GKE Workload Identity, Intune Proactive Remediations).
 
 ## Drop
 
-**Drop** a candidate that is:
+**Drop** a name that is:
 
-- **A generic concept**, not a named technology: data visualization, CI/CD, microservices, API,
-  dead letter queue, WebView.
-- **An ordinary word**, in English or Spanish, or a phrase of them: Clean, Cadence, Familiarity,
-  Nice. This holds even where the ads use the word for a technology: Camel, Ant and Ranger are
-  drops, and Apache Camel, Apache Ant and Apache Ranger are the candidates that keep them.
+- **A generic concept** or a practice, not a named technology: data visualization, CI/CD,
+  microservices, API, dead letter queue, WebView.
+- **An ordinary word**, in English or Spanish, or a phrase of them, used in its ordinary sense:
+  Clean, Cadence, Familiarity, Nice. The same word used for a product is a bare form, and kept.
 - **Obscure or historical**: a name few ads use and few engineers would recognise, or a technology
   that is no longer hired for: TOPS-10, HAL/S, C--.
-- **An ambiguous abbreviation**: one that names several things, none dominant: CAPI, SDF, BO, ZK.
+- **An ambiguous abbreviation**: one that names several things, none dominant where it is
+  written: CAPI, SDF, BO, ZK.
 - **Consumer, office or browser software**: what anyone uses, not what an engineer is hired for:
-  Chrome, Microsoft Word, Microsoft Teams, Google Drive, Concur.
+  Chrome, Microsoft Word, Microsoft Teams, Google Drive, Zoom, Box, Coda, Concur.
 - **A single letter**, except C and R.
-- **A homonym** of something else, where the ad's word usually means the other thing: SPARK (the
-  Ada subset) against Apache Spark, TS against TS/SCI.
+- **A homonym** of something else, where the text means the other thing: SPARK (the Ada subset)
+  against Apache Spark, TS against TS/SCI.
 - **A technology no software person is hired for**: AutoCAD, Epic EHR, SAP Concur, a CNC
   controller.
 - **A compliance framework, regulation or certification**: what a company is audited against or a
   person is certified in, not a technology they build with: SOC 2, ISO 27001, NIST CSF, FedRAMP,
   HIPAA, PCI DSS, ITIL, CISSP, AZ-204, Security+.
-- **Not a technology at all**: a company, a vendor umbrella, a product line, a place, a person, a
-  fragment of a longer name (Fabric for Microsoft Fabric), or the name glued to an ordinary word. A
-  vendor's name is a drop even where ads use it for its products: Palo Alto for its firewalls,
-  Juniper for its routers. The products are kept under their own names (PAN-OS, Junos).
+- **Not a technology at all**: a company (as an employer, customer, partner or vendor), a vendor
+  umbrella, a product line, a place, a person, a heading or field of study, a piece of a longer
+  name that ads never use alone for the product ("Cloud Platform" of Google Cloud Platform,
+  "Directory" of Active Directory), or a name glued to an ordinary word. A vendor's name is a drop
+  even where ads use it for its products: Palo Alto for its firewalls, Juniper for its routers.
+  The products are kept under their own names (PAN-OS, Junos).
 
-When in doubt between keep and drop, drop. A dropped name costs a skill that ads could have
-named; a kept name that matches ordinary text puts a false skill on every vacancy containing it.
+When in doubt between keep and drop, drop. A kept name that matches ordinary text puts a false
+skill on every vacancy containing it.
 
 ## Key safety
 
 A skill is looked up by its keys: its canonical name and each of its aliases, in any case and
-spacing. **No key is an ordinary word**, in English or Spanish, and no key is a single letter
-other than C and R.
+spacing. Aliases are the other spellings ads actually use (k8s, postgres, ReactJS, Go for
+Golang). A key belongs to one skill, and a name that is already a key is the skill it names.
 
-Where a name's bare form is ambiguous, the safe form is canonical and the bare form is no key at
-all: Express.js, not Express; Golang, not Go; GNU Make, not make; Microsoft Access, not Access;
-Apache Thrift, not Thrift. Aliases are the other spellings ads actually use (k8s, postgres,
-ReactJS), each held to the same rule.
+Each key is **plain** or **context**, set by a rule when its row is drafted, never by hand
+(ADR-0015):
 
-A key belongs to one skill. A candidate whose name is already a key is the skill it names.
+- A **plain** key is matched anywhere. It must mean its skill in at least 95% of its mentions.
+- A **context** key is an ordinary word, or C or R: Go, Spring, Rails, Compose, Tempo. It is
+  matched only where a context rule says the text means the skill.
 
-## In a segment
+Whether a name is a skill and how its key is matched are two questions: a bare form that is an
+ordinary word is a skill with a context key, not a drop.
 
-Whether a job-ad segment names a skill, and whether a list of names found in it misses one, is read
-by the same rules as a candidate. **A name is missed only when, offered as a candidate, it would be
-a keep, and it is in neither the list found nor this section's exceptions.** Before answering that a
-segment misses a skill, check the name against each of these:
+## What Jev reads
 
-- A segment names a skill only where it names a technology the Keep section keeps. A practice,
-  method, technique, architecture or kind of system is no skill, however technical the segment:
-  CI/CD, GitOps, infrastructure as code, TDD, MVVM, microservices, RAG, LLMs, reinforcement
-  learning, device drivers, ERP, CRM, data lake, vector databases.
-- A skill named by a bare form that key safety keeps from being a key is not missed: the taxonomy
-  holds it under its safe form, and losing those mentions is the price key safety chose. Go for
-  Golang, Julia for JuliaLang, REST for RESTful API, Compose for Jetpack Compose, Tempo for Grafana
-  Tempo, OPA for Open Policy Agent.
-- A feature, setting or part of a skill found in the segment is that skill, not another: Intune
-  Proactive Remediations is Microsoft Intune, GKE Workload Identity is Google Kubernetes Engine, AWS
-  security groups are AWS.
-- A company named as an employer, customer or partner is not its products: "Databricks Customer
-  Support" or "at Stripe" names no skill. Nor does a list of brands that use a product.
-- A skill found under another spelling is found: the list names skills by their canonical name, so
-  Google Cloud is found when Google Cloud Platform is listed, and k8s when Kubernetes is. A
-  version of a skill found is that skill: HTTP/2 is HTTP, Vue 3 is Vue.js.
-- A name the Drop section drops is not missed, wherever it appears: office and consumer software
-  (Zoom, Box, Coda), software no software person is hired for, compliance frameworks, ordinary
-  words, and vendors.
+This section is the whole criterion Jev reads, with the Category table for the category. It says
+what the sections above say, short. It changes only with them, at a calibration.
+
+> A skill is a technology an engineer puts on a CV and an ad asks for: one specific named
+> language, framework or library, database, cloud or cloud service, tool or platform (Python,
+> Grafana, Google Cloud Platform, Databricks, Claude Code), or a protocol, file format or standard
+> software implements (MCP, gRPC, OAuth, Parquet). Decide the name exactly as given, word for word,
+> as the text given with it uses it.
+>
+> Keep it when the text uses it for one such technology. Keep it too when it is that technology
+> under another spelling (GCP, k8s, Mongo DB), a version of it (Vue 3, HTTP/2), a named feature or
+> service ads ask for, or its bare form without the vendor: Go for Golang, Spring, Kafka, Compose,
+> Fabric for Microsoft Fabric, Tempo for Grafana Tempo.
+>
+> Drop it when it holds more or less than a technology's name: an ordinary word before or after
+> the name (Configure Nginx, Kubernetes Expertise, Advanced AWS, Kubernetes-based), or only part
+> of a longer name written there (Security Command, when the text says Security Command Center).
+>
+> Drop it when it is: a practice, method, architecture or concept (CI/CD, microservices, REST,
+> TDD, RAG, LLMs, API, data lake); an ordinary English or Spanish word used in its ordinary sense
+> ("go above and beyond", "the fabric of our team"); a company, vendor, customer, place, person,
+> heading or field of study (Palo Alto, Juniper, Stripe as an employer); a piece of a longer name
+> that is never used alone for the product ("Cloud Platform", "Directory"); a compliance
+> framework, regulation or certification (SOC 2, HIPAA, ITIL, CISSP); consumer, office or browser
+> software (Chrome, Microsoft Word, Zoom); software no software person is hired for (AutoCAD,
+> Epic EHR); an abbreviation that names several things, none dominant there; a single letter
+> other than C and R; or a name few engineers would recognise. When in doubt, drop.
 
 ## Category
 
@@ -131,6 +157,18 @@ A decision records the revision it was made under. A drop is final: a name dropp
 revision is not decided again under the next, unless the reviewer of the next names that drop's
 reason as one the new revision reopens (ADR-0013).
 
+- **Revision 5** (2026-10-07): from the open half of the gold set under revision 4. A name is
+  judged exactly as given, so a name with an ordinary word around it, or part of a longer name
+  written there, is a drop; protocols, file formats and standards software implements are keeps,
+  as the Category table already had them. Reopens no drop.
+- **Revision 4** (2026-10-07): from #58 and ADR-0015, at #54's first calibration. A skill is a
+  technology, and practices stay out. A bare form is the skill it names, kept where the text uses
+  it for the product; *An ordinary word* drops only the ordinary sense, and *Not a technology*
+  drops only the pieces of a name ads never use alone. Key safety is rewritten around plain and
+  context keys. *In a segment* goes: its exceptions are the filters of the recall check, and a
+  name in a segment is judged by Keep and Drop like any other. *What Jev reads* is the short text
+  Jev answers from. It reopens the decisions dropped, or kept without a key, for being a bare
+  form.
 - **Revision 3** (2026-10-07): from #54's round 1, where Jev decided like candidates two ways. A
   vendor's name used for its products is a drop. An ordinary word is a drop even where ads use it
   for a technology. Data, ML and AI platforms are keeps, and a known name split by a separator is

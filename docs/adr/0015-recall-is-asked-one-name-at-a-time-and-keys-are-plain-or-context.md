@@ -91,6 +91,19 @@ never proposes. Each row lists the skills the segment names and a verdict on eac
 step 2. An agent drafts it, in a session other than the calibrating one, and Elias corrects it. It
 measures Jev's agreement, about ±2.5 points on the held-out half, and the generator's losses.
 
+The gold set is `docs/measurements/skill-gold-set.tsv`, its `part` column marking the held-out
+half, and `scripts/check-skill-gold` checks Jev and the adjudicator against it.
+
+### Agreement
+
+| Calibration | Revision | Jev, held-out pieces | Jev, held-out segments | Adjudicator with the gold set, held-out disagreements | Generator losses, held-out |
+| --- | --- | --- | --- | --- | --- |
+| #54, 1st (2026-10-07) | 4 | 437/451 = 96.9% | 144/150 = 96.0% | not run | 1 skill in 1 segment |
+| #54, 1st (2026-10-07) | 5, frozen | 364/367 = 99.2% (97.6–99.7%) | 149/150 = 99.3% (96.3–99.9%) | 1/3 (2 with Jev) | 1 skill in 1 segment |
+
+Revision 5's pieces are fewer than revision 4's because the ordinary list grew from its own
+verdicts. Recorded beside the gates, never gated on (ADR-0014).
+
 ## Considered options
 
 - **Keep revising the recall wording.** Revision 2 spelled out the bare forms, with examples, and

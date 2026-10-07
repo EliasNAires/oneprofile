@@ -1,0 +1,5 @@
+{
+  "203:infor ln": {"verdict": "a", "clause": "A technology no software person is hired for", "pattern": "named enterprise software, power user"},
+  "206:sales cloud": {"verdict": "a", "clause": "Not a technology at all: a product line", "pattern": "vendor's named product line"},
+  "206:service cloud": {"verdict": "a", "clause": "Not a technology at all: a product line", "pattern": "vendor's named product line"}
+}

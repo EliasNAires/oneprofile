@@ -1,0 +1,14 @@
+id	name	jev	gold	skills	segment
+110:context protocol	Context Protocol	keep	drop	MCP = Model Context Protocol | Model Context Protocol	Implement MCP (Model Context Protocol) services and service templates that make it faster and easier for teams across Toast to build AI-powered workflows
+110:implement mcp	Implement MCP	keep	drop	MCP = Model Context Protocol | Model Context Protocol	Implement MCP (Model Context Protocol) services and service templates that make it faster and easier for teams across Toast to build AI-powered workflows
+110:model context	Model Context	keep	drop	MCP = Model Context Protocol | Model Context Protocol	Implement MCP (Model Context Protocol) services and service templates that make it faster and easier for teams across Toast to build AI-powered workflows
+16:karl fischer	Karl Fischer	keep	drop		Hands-on expertise with LC, GC, LC-MSMS, NMR, DVS, Karl Fischer, spectroscopy, impurity profiling, and degradation studies
+16:lc msms	LC-MSMS	keep	drop		Hands-on expertise with LC, GC, LC-MSMS, NMR, DVS, Karl Fischer, spectroscopy, impurity profiling, and degradation studies
+205:catalog	Catalog	keep	drop	Unity Catalog = Databricks Unity Catalog	Translate claim-system data dictionaries into Unity Catalog tables for reporting and APIs.
+214:arcgis pro	ArcGIS Pro	drop	keep	QGIS | ArcGIS Pro = ArcGIS	You'll bring capabilities familiar from desktop GIS tools such as QGIS and ArcGIS Pro into the browser, continuously expanding the map platform's rich feature set while keeping interactions coherent and responsive.
+247:twilio	Twilio	drop	keep	Twilio	Contact center product knowledge of other platforms (Genesys, Cisco, Avaya, Twilio, etc.)
+24:security command center	Security Command Center	drop	keep	GCP = Google Cloud Platform | IAM = Google Cloud IAM | VPC Service Controls | Organization Policy = Google Cloud Platform | Shared VPC = Google Cloud VPC | Workload Identity = Google Kubernetes Engine | KMS = Cloud KMS | Security Command Center	Own the cloud security architecture across our GCP environments, including IAM and least privilege design, VPC Service Controls, Organization Policy, Shared VPC, Workload Identity, KMS/encryption, and Security Command Center
+282:apache	Apache	drop	keep	Nginx | Apache = Apache HTTP Server	Configure Nginx and Apache for load balancing and high availability across production systems.
+289:cfin	CFIN	drop	keep	SAP FICO | CFIN = SAP Central Finance | S/4HANA = SAP S/4HANA	18+ years of expert level SAP FICO, CFIN and S/4HANA Finance experience
+289:s/4hana finance	S/4HANA Finance	keep	drop	SAP FICO | CFIN = SAP Central Finance | S/4HANA = SAP S/4HANA	18+ years of expert level SAP FICO, CFIN and S/4HANA Finance experience
+53:service cloud	Service Cloud	keep	drop		Salesforce Certified Agentforce Service Consultant (formerly Service Cloud Consultant) required; Administrator required

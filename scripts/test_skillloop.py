@@ -166,10 +166,63 @@ class NamesTest(unittest.TestCase):
         self.assertEqual(self.NAMES.named_in("Pythonic springs"), [])
 
 
-class RecallTest(unittest.TestCase):
+    def test_gives_where_each_name_is(self):
+        self.assertEqual(self.NAMES.spans_in("Use Spring Boot"), [(4, 10), (4, 15)])
 
-    def test_counts_only_skill_bearing_segments(self):
-        self.assertEqual(skillloop.recall(["none", "covered", "missed", "covered", "none"]), (2, 3))
+
+class PiecesTest(unittest.TestCase):
+
+    def pieces(self, segment, vocabulary=("with", "and", "or", "experience")):
+        return [text for text, _, _ in skillloop.pieces(segment, set(vocabulary))]
+
+    def test_proposes_capitalized_words_and_runs_of_up_to_three(self):
+        self.assertEqual(self.pieces("Own VPC Service Controls Policy"),
+                         ["Own", "VPC", "Service", "Controls", "Policy", "Own VPC", "Own VPC Service", "VPC Service",
+                          "VPC Service Controls", "Service Controls", "Service Controls Policy", "Controls Policy"])
+
+    def test_never_runs_across_punctuation(self):
+        self.assertEqual(self.pieces("Go, Rust"), ["Go", "Rust"])
+
+    def test_proposes_tokens_with_a_digit_or_symbol_and_unknown_lowercase_words(self):
+        self.assertEqual(self.pieces("experience with k8s, C++ and kubectl"), ["k8s", "C++", "kubectl"])
+
+    def test_cuts_names_joined_by_a_slash_but_not_a_version(self):
+        self.assertEqual(self.pieces("TypeScript/JavaScript and/or HTTP/2"), ["TypeScript", "JavaScript", "HTTP/2"])
+
+
+class FilterTest(unittest.TestCase):
+
+    FILTER = skillloop.Filter({"python"}, {"go"}, {"cloud": {}, "go": {}}, {"this"})
+
+    def test_drops_plain_keys_decisions_numbers_single_letters_and_ordinary_words(self):
+        pieces = [(text, 0, 0) for text in ["Python", "Cloud", "53", "X", "This", "R", "Kotlin"]]
+        self.assertEqual(self.FILTER(pieces, []), {"r": "R", "kotlin": "Kotlin"})
+
+    def test_never_drops_a_context_key_by_name(self):
+        self.assertEqual(self.FILTER([("Go", 0, 2)], []), {"go": "Go"})
+
+    def test_drops_a_piece_inside_a_name_found(self):
+        self.assertEqual(self.FILTER([("Google Cloud", 0, 12), ("Go", 23, 25)], [(0, 21)]), {"go": "Go"})
+
+
+class OrdinaryListTest(unittest.TestCase):
+
+    def labels(self, form, decisions):
+        return {(form, f"segment {index}"): {"decision": decision} for index, decision in enumerate(decisions)}
+
+    def test_takes_a_word_dropped_in_five_segments_and_never_kept(self):
+        self.assertEqual(skillloop.ordinary_list(self.labels("this", ["drop"] * 5)), {"this"})
+
+    def test_leaves_a_word_kept_once_or_dropped_in_fewer(self):
+        labels = {**self.labels("spring", ["drop"] * 6 + ["keep"]), **self.labels("you", ["drop"] * 4)}
+        self.assertEqual(skillloop.ordinary_list(labels), set())
+
+
+class JevTextTest(unittest.TestCase):
+
+    def test_reads_the_quoted_section(self):
+        text = "## Keep\n\nKeep.\n\n## What Jev reads\n\nIntro.\n\n> A skill\n> is.\n>\n> Drop.\n\n## Category\n"
+        self.assertEqual(skillloop.jev_text(text), "A skill\nis.\n\nDrop.")
 
 
 class CriterionRevisionTest(unittest.TestCase):

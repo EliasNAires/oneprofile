@@ -9,18 +9,15 @@ microsoft teams	drop	0	raw-2026-09-20	#38
 adobe illustrator	drop	0	raw-2026-09-20	#38
 vim help file	drop	0	raw-2026-09-20	#38
 cloud	drop	0	raw-2026-09-20	#38
-make	keep	0	raw-2026-09-20	#38
 python	keep	0	raw-2026-09-20	#38
 google drive	drop	0	raw-2026-09-20	#38
 vision	drop	0	raw-2026-09-20	#38
 office	drop	0	raw-2026-09-20	#38
-access	keep	0	raw-2026-09-20	#38
 aws	keep	0	raw-2026-09-20	#38
 just	drop	0	raw-2026-09-20	#38
 deployment	drop	0	raw-2026-09-20	#38
 enterprise	drop	0	raw-2026-09-20	#38
 incompatible timesharing system	drop	0	raw-2026-09-20	#38
-go	keep	0	raw-2026-09-20	#38
 google meet	drop	0	raw-2026-09-20	#38
 universal scene description	drop	0	raw-2026-09-20	#38
 edge	drop	0	raw-2026-09-20	#38
@@ -254,7 +251,6 @@ sagemaker	keep	0	raw-2026-09-20	#38
 vmware	keep	0	raw-2026-09-20	#38
 coherent	drop	0	raw-2026-09-20	#38
 express.js	keep	0	raw-2026-09-20	#38
-catalyst	drop	0	raw-2026-09-20	#38
 clickhouse	keep	0	raw-2026-09-20	#38
 route	drop	0	raw-2026-09-20	#38
 rtos	drop	0	raw-2026-09-20	#38
@@ -313,7 +309,6 @@ sonarqube	keep	0	raw-2026-09-20	#38
 rpc	drop	0	raw-2026-09-20	#38
 windows server	keep	0	raw-2026-09-20	#38
 figma	keep	0	raw-2026-09-20	#38
-apex	keep	0	raw-2026-09-20	#38
 ids	drop	0	raw-2026-09-20	#38
 postman	keep	0	raw-2026-09-20	#38
 livecode	drop	0	raw-2026-09-20	#38
@@ -340,12 +335,10 @@ kubeflow	keep	0	raw-2026-09-20	#38
 microsoft outlook	drop	0	raw-2026-09-20	#38
 vite	keep	0	raw-2026-09-20	#38
 compilers	drop	0	raw-2026-09-20	#38
-flux	drop	0	raw-2026-09-20	#38
 quantum	drop	0	raw-2026-09-20	#38
 robot operating system	keep	0	raw-2026-09-20	#38
 npm	keep	0	raw-2026-09-20	#38
 hibernate	keep	0	raw-2026-09-20	#38
-salt	keep	0	raw-2026-09-20	#38
 bootstrap	keep	0	raw-2026-09-20	#38
 ignore list	drop	0	raw-2026-09-20	#38
 microsoft defender antivirus	keep	0	raw-2026-09-20	#38
@@ -364,7 +357,6 @@ static analysis	drop	0	raw-2026-09-20	#38
 help desk	drop	0	raw-2026-09-20	#38
 nas	drop	0	raw-2026-09-20	#38
 ips	drop	0	raw-2026-09-20	#38
-emr	keep	0	raw-2026-09-20	#38
 kit	drop	0	raw-2026-09-20	#38
 beta	drop	0	raw-2026-09-20	#38
 iq	drop	0	raw-2026-09-20	#38
@@ -385,7 +377,6 @@ mis	drop	0	raw-2026-09-20	#38
 endpoint protection	drop	0	raw-2026-09-20	#38
 yaml	keep	0	raw-2026-09-20	#38
 home assistant	drop	0	raw-2026-09-20	#38
-nix	keep	0	raw-2026-09-20	#38
 matplotlib	keep	0	raw-2026-09-20	#38
 opa	drop	0	raw-2026-09-20	#38
 bicep	keep	0	raw-2026-09-20	#38
@@ -454,7 +445,6 @@ sas	keep	0	raw-2026-09-20	#38
 sas language	keep	0	raw-2026-09-20	#38
 unreal engine 1	keep	0	raw-2026-09-20	#38
 gherkin	keep	0	raw-2026-09-20	#38
-hcl	keep	0	raw-2026-09-20	#38
 a+	drop	0	raw-2026-09-20	#38
 informatica	keep	0	raw-2026-09-20	#38
 snap!	drop	0	raw-2026-09-20	#38
@@ -540,7 +530,6 @@ cosmos	drop	0	raw-2026-09-20	#38
 eclipse	drop	0	raw-2026-09-20	#38
 fortify	keep	0	raw-2026-09-20	#38
 xl	drop	0	raw-2026-09-20	#38
-arc	drop	0	raw-2026-09-20	#38
 edi	drop	0	raw-2026-09-20	#38
 common lisp	drop	0	raw-2026-09-20	#38
 sam	drop	0	raw-2026-09-20	#38
@@ -657,7 +646,6 @@ haskell	keep	0	raw-2026-09-20	#38
 microsoft research image composite editor	drop	0	raw-2026-09-20	#38
 perforce p4	keep	0	raw-2026-09-20	#38
 qgis	keep	0	raw-2026-09-20	#38
-alloy	drop	0	raw-2026-09-20	#38
 call center	drop	0	raw-2026-09-20	#38
 eigrp	keep	0	raw-2026-09-20	#38
 electron	keep	0	raw-2026-09-20	#38
@@ -674,10 +662,8 @@ ubisoft anvil	drop	0	raw-2026-09-20	#38
 amazon redshift	keep	0	raw-2026-09-20	#38
 dynamo	drop	0	raw-2026-09-20	#38
 facetime	drop	0	raw-2026-09-20	#38
-lex	drop	0	raw-2026-09-20	#38
 pact	drop	0	raw-2026-09-20	#38
 power query	keep	0	raw-2026-09-20	#38
-travis	keep	0	raw-2026-09-20	#38
 vhdl	keep	0	raw-2026-09-20	#38
 bourne shell	drop	0	raw-2026-09-20	#38
 comit	drop	0	raw-2026-09-20	#38
@@ -689,7 +675,6 @@ gstreamer	keep	0	raw-2026-09-20	#38
 open policy agent	keep	0	raw-2026-09-20	#38
 pan	drop	0	raw-2026-09-20	#38
 records management	drop	0	raw-2026-09-20	#38
-shiny	keep	0	raw-2026-09-20	#38
 solidity	keep	0	raw-2026-09-20	#38
 ssis	keep	0	raw-2026-09-20	#38
 tanium	keep	0	raw-2026-09-20	#38
@@ -743,7 +728,6 @@ sail	drop	0	raw-2026-09-20	#38
 asp.net mvc framework	keep	0	raw-2026-09-20	#38
 bird2	drop	0	raw-2026-09-20	#38
 clos	drop	0	raw-2026-09-20	#38
-julia	keep	0	raw-2026-09-20	#38
 netty	keep	0	raw-2026-09-20	#38
 regular expression	keep	0	raw-2026-09-20	#38
 smtp	keep	0	raw-2026-09-20	#38
@@ -788,7 +772,6 @@ job control language	keep	0	raw-2026-09-20	#38
 license management	drop	0	raw-2026-09-20	#38
 metasploit	keep	0	raw-2026-09-20	#38
 microstrategy	keep	0	raw-2026-09-20	#38
-rac	keep	0	raw-2026-09-20	#38
 tact	drop	0	raw-2026-09-20	#38
 adblock filter list	drop	0	raw-2026-09-20	#38
 bugzilla	keep	0	raw-2026-09-20	#38
@@ -890,7 +873,6 @@ adobe xd	keep	0	raw-2026-09-20	#38
 ampl	keep	0	raw-2026-09-20	#38
 avalonia	keep	0	raw-2026-09-20	#38
 cairo	drop	0	raw-2026-09-20	#38
-chakra	drop	0	raw-2026-09-20	#38
 compatibility testing	drop	0	raw-2026-09-20	#38
 data integrator	drop	0	raw-2026-09-20	#38
 directx	keep	0	raw-2026-09-20	#38
@@ -983,7 +965,6 @@ d bus	keep	0	raw-2026-09-20	#38
 database management system	drop	0	raw-2026-09-20	#38
 discrete event simulation	drop	0	raw-2026-09-20	#38
 dojo	drop	0	raw-2026-09-20	#38
-drizzle	drop	0	raw-2026-09-20	#38
 ecl	drop	0	raw-2026-09-20	#38
 elm	keep	0	raw-2026-09-20	#38
 extensible application markup language	keep	0	raw-2026-09-20	#38
@@ -1244,7 +1225,6 @@ c c++	drop	0	raw-2026-09-20	#40
 datadog	keep	0	raw-2026-09-20	#40
 id	drop	0	raw-2026-09-20	#40
 mlops	drop	0	raw-2026-09-20	#40
-copilot	drop	0	raw-2026-09-20	#40
 amazon	drop	0	raw-2026-09-20	#40
 science software	drop	0	raw-2026-09-20	#40
 boot	drop	0	raw-2026-09-20	#40
@@ -1347,7 +1327,6 @@ aws google cloud	drop	0	raw-2026-09-20	#40
 services apis	drop	0	raw-2026-09-20	#40
 aws experience	drop	0	raw-2026-09-20	#40
 data lake	drop	0	raw-2026-09-20	#40
-fabric	drop	0	raw-2026-09-20	#40
 flink	keep	0	raw-2026-09-20	#40
 jira confluence	drop	0	raw-2026-09-20	#40
 cypress	keep	0	raw-2026-09-20	#40
@@ -1356,7 +1335,6 @@ microsoft 365	keep	0	raw-2026-09-20	#40
 c# .net	drop	0	raw-2026-09-20	#40
 iceberg	keep	0	raw-2026-09-20	#40
 ce	drop	0	raw-2026-09-20	#40
-transformers	drop	0	raw-2026-09-20	#40
 entra id	keep	0	raw-2026-09-20	#40
 apis data	drop	0	raw-2026-09-20	#40
 typescript javascript	drop	0	raw-2026-09-20	#40
@@ -1371,7 +1349,6 @@ sql python	drop	0	raw-2026-09-20	#40
 53	drop	0	raw-2026-09-20	#40
 2.0	drop	0	raw-2026-09-20	#40
 adobe	drop	0	raw-2026-09-20	#40
-aurora	keep	0	raw-2026-09-20	#40
 kanban	drop	0	raw-2026-09-20	#40
 desired qualifications	drop	0	raw-2026-09-20	#40
 itil	drop	0	raw-2026-09-20	#40
@@ -1379,7 +1356,6 @@ argo	drop	0	raw-2026-09-20	#40
 languages python	drop	0	raw-2026-09-20	#40
 finops	drop	0	raw-2026-09-20	#40
 udp	keep	0	raw-2026-09-20	#40
-glue	keep	0	raw-2026-09-20	#40
 ray	keep	0	raw-2026-09-20	#40
 chrome extension	drop	0	raw-2026-09-20	#40
 tdd	drop	0	raw-2026-09-20	#40
@@ -1432,12 +1408,10 @@ new relic	keep	0	raw-2026-09-20	#40
 relic	drop	0	raw-2026-09-20	#40
 biases	drop	0	raw-2026-09-20	#40
 cdk	keep	0	raw-2026-09-20	#40
-compose	drop	0	raw-2026-09-20	#40
 pinecone	keep	0	raw-2026-09-20	#40
 itsm	drop	0	raw-2026-09-20	#40
 intune	keep	0	raw-2026-09-20	#40
 oauth 2.0	keep	0	raw-2026-09-20	#40
-foundry	drop	0	raw-2026-09-20	#40
 dagster	keep	0	raw-2026-09-20	#40
 cursor claude	drop	0	raw-2026-09-20	#40
 ai experience	drop	0	raw-2026-09-20	#40
@@ -1479,7 +1453,6 @@ python powershell	drop	0	raw-2026-09-20	#40
 sentry	keep	0	raw-2026-09-20	#40
 n8n	keep	0	raw-2026-09-20	#40
 l3	drop	0	raw-2026-09-20	#40
-tempo	drop	0	raw-2026-09-20	#40
 crowdstrike	keep	0	raw-2026-09-20	#40
 jwt	keep	0	raw-2026-09-20	#40
 kubernetes terraform	drop	0	raw-2026-09-20	#40
@@ -1491,7 +1464,6 @@ strong linux	drop	0	raw-2026-09-20	#40
 comptia security+	drop	0	raw-2026-09-20	#40
 java experience	drop	0	raw-2026-09-20	#40
 kubernetes aws	drop	0	raw-2026-09-20	#40
-sentinel	keep	0	raw-2026-09-20	#40
 weaviate	keep	0	raw-2026-09-20	#40
 workato	keep	0	raw-2026-09-20	#40
 400+	drop	0	raw-2026-09-20	#40
@@ -1505,7 +1477,6 @@ sd	drop	0	raw-2026-09-20	#40
 weights	drop	0	raw-2026-09-20	#40
 bloomberg	drop	0	raw-2026-09-20	#40
 crewai	keep	0	raw-2026-09-20	#40
-triton	keep	0	raw-2026-09-20	#40
 apis microservices	drop	0	raw-2026-09-20	#40
 rdbms	drop	0	raw-2026-09-20	#40
 e2e	drop	0	raw-2026-09-20	#40
@@ -1528,7 +1499,6 @@ powershell python	drop	0	raw-2026-09-20	#40
 360	drop	0	raw-2026-09-20	#40
 ccna	drop	0	raw-2026-09-20	#40
 frameworks pytorch	drop	0	raw-2026-09-20	#40
-jetpack	keep	0	raw-2026-09-20	#40
 agentforce	keep	0	raw-2026-09-20	#40
 websockets	keep	0	raw-2026-09-20	#40
 microsoft entra	keep	0	raw-2026-09-20	#40
@@ -1646,11 +1616,9 @@ spotify	drop	0	raw-2026-09-20	#40
 synapse	keep	0	raw-2026-09-20	#40
 aws certified solutions	drop	0	raw-2026-09-20	#40
 arista	drop	0	raw-2026-09-20	#40
-beam	drop	0	raw-2026-09-20	#40
 kubernetes version	drop	0	raw-2026-09-20	#40
 kubernetes version control	drop	0	raw-2026-09-20	#40
 apm	drop	0	raw-2026-09-20	#40
-einstein	drop	0	raw-2026-09-20	#40
 kubernetes you	drop	0	raw-2026-09-20	#40
 postgresql experience	drop	0	raw-2026-09-20	#40
 postgresql mongodb	drop	0	raw-2026-09-20	#40
@@ -1698,7 +1666,6 @@ ldap	keep	0	raw-2026-09-20	#40
 rhel	keep	0	raw-2026-09-20	#40
 secrets manager	keep	0	raw-2026-09-20	#40
 ttps	drop	0	raw-2026-09-20	#40
-unreal	keep	0	raw-2026-09-20	#40
 hyper v	keep	0	raw-2026-09-20	#40
 javascript es6+	drop	0	raw-2026-09-20	#40
 python rust	drop	0	raw-2026-09-20	#40
@@ -1708,7 +1675,6 @@ architect expert	drop	0	raw-2026-09-20	#40
 azure solutions architect	drop	0	raw-2026-09-20	#40
 golang experience	drop	0	raw-2026-09-20	#40
 languages java	drop	0	raw-2026-09-20	#40
-apollo	keep	0	raw-2026-09-20	#40
 kustomize	keep	0	raw-2026-09-20	#40
 microsoft sql	keep	0	raw-2026-09-20	#40
 mqtt	keep	0	raw-2026-09-20	#40
@@ -1724,7 +1690,6 @@ platforms azure	drop	0	raw-2026-09-20	#40
 zero trust architecture	drop	0	raw-2026-09-20	#40
 106	drop	0	raw-2026-09-20	#40
 anthropic claude	keep	0	raw-2026-09-20	#40
-cortex	drop	0	raw-2026-09-20	#40
 learning ml	drop	0	raw-2026-09-20	#40
 oltp	drop	0	raw-2026-09-20	#40
 osi	drop	0	raw-2026-09-20	#40
@@ -1831,7 +1796,6 @@ aws terraform	drop	0	raw-2026-09-20	#40
 cissp cism	drop	0	raw-2026-09-20	#40
 ddos	drop	0	raw-2026-09-20	#40
 e.g airflow	drop	0	raw-2026-09-20	#40
-gatekeeper	drop	0	raw-2026-09-20	#40
 javascript experience	drop	0	raw-2026-09-20	#40
 microsoft fabric	keep	0	raw-2026-09-20	#40
 microsoft intune	keep	0	raw-2026-09-20	#40
@@ -2011,7 +1975,6 @@ unternehmen	drop	0	raw-2026-09-20	#40
 vps	drop	0	raw-2026-09-20	#40
 vsphere	keep	0	raw-2026-09-20	#40
 aes	drop	0	raw-2026-09-20	#40
-autopilot	drop	0	raw-2026-09-20	#40
 cd automated testing	drop	0	raw-2026-09-20	#40
 certified kubernetes administrator	drop	0	raw-2026-09-20	#40
 cloud platforms azure	drop	0	raw-2026-09-20	#40
@@ -2190,7 +2153,6 @@ netapp	keep	0	raw-2026-09-20	#40
 postgis	keep	0	raw-2026-09-20	#40
 rabbitmq kafka	drop	0	raw-2026-09-20	#40
 react javascript	drop	0	raw-2026-09-20	#40
-swarm	drop	0	raw-2026-09-20	#40
 #1 ai	drop	0	raw-2026-09-20	#40
 151	drop	0	raw-2026-09-20	#40
 articulation	drop	0	raw-2026-09-20	#40
@@ -2259,7 +2221,6 @@ honeycomb	keep	0	raw-2026-09-20	#40
 javascript java	drop	0	raw-2026-09-20	#40
 kyverno	keep	0	raw-2026-09-20	#40
 monday.com	keep	0	raw-2026-09-20	#40
-neptune	keep	0	raw-2026-09-20	#40
 nvidia gpu	drop	0	raw-2026-09-20	#40
 rancher	keep	0	raw-2026-09-20	#40
 slack zoom	drop	0	raw-2026-09-20	#40
@@ -2344,7 +2305,6 @@ powershell experience	drop	0	raw-2026-09-20	#40
 responsibilities analyze	drop	0	raw-2026-09-20	#40
 rspec	keep	0	raw-2026-09-20	#40
 server side rendering	drop	0	raw-2026-09-20	#40
-spanner	keep	0	raw-2026-09-20	#40
 terraform ci	drop	0	raw-2026-09-20	#40
 tools cursor	drop	0	raw-2026-09-20	#40
 vmware vsphere	keep	0	raw-2026-09-20	#40
@@ -2589,7 +2549,6 @@ api experience	drop	0	raw-2026-09-20	#40
 apportes	drop	0	raw-2026-09-20	#40
 architect technical	drop	0	raw-2026-09-20	#40
 arm cortex	keep	0	raw-2026-09-20	#40
-arrow	drop	0	raw-2026-09-20	#40
 aws ai	drop	0	raw-2026-09-20	#40
 aws amazon	drop	0	raw-2026-09-20	#40
 bert	keep	0	raw-2026-09-20	#40
@@ -2873,7 +2832,6 @@ puppet ansible	drop	0	raw-2026-09-20	#40
 react +	drop	0	raw-2026-09-20	#40
 rego	keep	0	raw-2026-09-20	#40
 restful apis microservices	drop	0	raw-2026-09-20	#40
-rocky	keep	0	raw-2026-09-20	#40
 route53	keep	0	raw-2026-09-20	#40
 salesforce sales	drop	0	raw-2026-09-20	#40
 services s3	drop	0	raw-2026-09-20	#40
@@ -3103,7 +3061,6 @@ specific qualifications	drop	0	raw-2026-09-20	#40
 spinnaker	keep	0	raw-2026-09-20	#40
 sql git	drop	0	raw-2026-09-20	#40
 storage azure	drop	0	raw-2026-09-20	#40
-strands	keep	0	raw-2026-09-20	#40
 swift concurrency	keep	0	raw-2026-09-20	#40
 system engineer	drop	0	raw-2026-09-20	#40
 terraform gitlab	drop	0	raw-2026-09-20	#40
@@ -3166,7 +3123,6 @@ pinot	keep	0	raw-2026-09-20	#40
 polygon	drop	0	raw-2026-09-20	#40
 posix	keep	0	raw-2026-09-20	#40
 python build	drop	0	raw-2026-09-20	#40
-radix	keep	0	raw-2026-09-20	#40
 react graphql	drop	0	raw-2026-09-20	#40
 react strong	drop	0	raw-2026-09-20	#40
 redis aws	drop	0	raw-2026-09-20	#40
@@ -4709,7 +4665,6 @@ sneak	drop	0	raw-2026-09-20	#40
 soap xml	drop	0	raw-2026-09-20	#40
 solid java	drop	0	raw-2026-09-20	#40
 solutions architect google	drop	0	raw-2026-09-20	#40
-sonnet	drop	0	raw-2026-09-20	#40
 sparksql	keep	0	raw-2026-09-20	#40
 spotfire	keep	0	raw-2026-09-20	#40
 sql server azure	drop	0	raw-2026-09-20	#40
@@ -5041,7 +4996,6 @@ typeorm	keep	0	raw-2026-09-20	#40
 typescript ability	drop	0	raw-2026-09-20	#40
 typescript mongodb	drop	0	raw-2026-09-20	#40
 uam	drop	0	raw-2026-09-20	#40
-ucs	drop	0	raw-2026-09-20	#40
 unternehmensgruppe	drop	0	raw-2026-09-20	#40
 upper intermediate english	drop	0	raw-2026-09-20	#40
 ussir	drop	0	raw-2026-09-20	#40
@@ -6194,7 +6148,6 @@ jcr	keep	0	raw-2026-09-20	#40
 jetpack compose you	drop	0	raw-2026-09-20	#40
 jira automation	drop	0	raw-2026-09-20	#40
 jira confluence smartsheet	drop	0	raw-2026-09-20	#40
-joule	keep	0	raw-2026-09-20	#40
 jquery experience	drop	0	raw-2026-09-20	#40
 jwt experience	drop	0	raw-2026-09-20	#40
 k8s ci	drop	0	raw-2026-09-20	#40

@@ -3,6 +3,7 @@ what Jev has cost across #11 and #41, which share one account. Imported by the s
 never run.
 """
 
+import concurrent.futures
 import json
 import sys
 import time
@@ -23,7 +24,9 @@ SKILL_LABELS = REPO / "docs" / "measurements" / "skill-labels-jev.jsonl"
 
 SKILL_RECALL_LABELS = REPO / "docs" / "measurements" / "skill-recall-labels-jev.jsonl"
 
-LEDGERS = (BODY_LABELS, SKILL_LABELS, SKILL_RECALL_LABELS)
+SKILL_KEY_LABELS = REPO / "docs" / "measurements" / "skill-key-labels-jev.jsonl"
+
+LEDGERS = (BODY_LABELS, SKILL_LABELS, SKILL_RECALL_LABELS, SKILL_KEY_LABELS)
 
 # Jev answers 429 when the rate limit is hit and 529 when it is overloaded; both are retried.
 RETRIED = (429, 529)
@@ -63,6 +66,21 @@ def ask(key, state, questions):
         if answer["model"] != MODEL:
             sys.exit(f"Jev answered as {answer['model']}, not the pinned {MODEL}")
         return answer
+
+
+# Requests in flight at once, and how many are sent before the spend is checked again.
+WORKERS = 8
+CHUNK = 200
+
+
+def ask_many(key, items, request):
+    """Asks Jev for each item, `request(item)` giving its state and questions, WORKERS at a time. Yields
+    each chunk of CHUNK items as [(item, response)], in the items' order, so the caller can stop
+    between chunks."""
+    with concurrent.futures.ThreadPoolExecutor(WORKERS) as pool:
+        for start in range(0, len(items), CHUNK):
+            chunk = items[start:start + CHUNK]
+            yield list(zip(chunk, pool.map(lambda item: ask(key, *request(item)), chunk)))
 
 
 def spend():

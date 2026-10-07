@@ -1,0 +1,80 @@
+[
+ {
+  "id": "110:context protocol",
+  "text": "Name: Context Protocol\nSegment: Implement MCP (Model Context Protocol) services and service templates that make it faster and easier for teams across Toast to build AI-powered workflows",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "110:implement mcp",
+  "text": "Name: Implement MCP\nSegment: Implement MCP (Model Context Protocol) services and service templates that make it faster and easier for teams across Toast to build AI-powered workflows",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "110:model context",
+  "text": "Name: Model Context\nSegment: Implement MCP (Model Context Protocol) services and service templates that make it faster and easier for teams across Toast to build AI-powered workflows",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "16:karl fischer",
+  "text": "Name: Karl Fischer\nSegment: Hands-on expertise with LC, GC, LC-MSMS, NMR, DVS, Karl Fischer, spectroscopy, impurity profiling, and degradation studies",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "16:lc msms",
+  "text": "Name: LC-MSMS\nSegment: Hands-on expertise with LC, GC, LC-MSMS, NMR, DVS, Karl Fischer, spectroscopy, impurity profiling, and degradation studies",
+  "b": "keep",
+  "a": "drop"
+ },
+ {
+  "id": "205:catalog",
+  "text": "Name: Catalog\nSegment: Translate claim-system data dictionaries into Unity Catalog tables for reporting and APIs.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "214:arcgis pro",
+  "text": "Name: ArcGIS Pro\nSegment: You'll bring capabilities familiar from desktop GIS tools such as QGIS and ArcGIS Pro into the browser, continuously expanding the map platform's rich feature set while keeping interactions coherent and responsive.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "247:twilio",
+  "text": "Name: Twilio\nSegment: Contact center product knowledge of other platforms (Genesys, Cisco, Avaya, Twilio, etc.)",
+  "b": "drop",
+  "a": "keep"
+ },
+ {
+  "id": "24:security command center",
+  "text": "Name: Security Command Center\nSegment: Own the cloud security architecture across our GCP environments, including IAM and least privilege design, VPC Service Controls, Organization Policy, Shared VPC, Workload Identity, KMS/encryption, and Security Command Center",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "282:apache",
+  "text": "Name: Apache\nSegment: Configure Nginx and Apache for load balancing and high availability across production systems.",
+  "b": "drop",
+  "a": "keep"
+ },
+ {
+  "id": "289:cfin",
+  "text": "Name: CFIN\nSegment: 18+ years of expert level SAP FICO, CFIN and S/4HANA Finance experience",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "289:s/4hana finance",
+  "text": "Name: S/4HANA Finance\nSegment: 18+ years of expert level SAP FICO, CFIN and S/4HANA Finance experience",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "53:service cloud",
+  "text": "Name: Service Cloud\nSegment: Salesforce Certified Agentforce Service Consultant (formerly Service Cloud Consultant) required; Administrator required",
+  "a": "keep",
+  "b": "drop"
+ }
+]

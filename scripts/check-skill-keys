@@ -1,0 +1,100 @@
+#!/usr/bin/env python3
+"""Sets each key's kind in skills.tsv by ADR-0015's rule, and checks the plain keys with Jev.
+
+    scripts/check-skill-keys [--set-only]
+
+Writes the fifth column of skills.tsv, the keys of the row that are context keys, by the rule in
+skillloop.context_keys(). Then, for each plain key, draws up to MENTIONS segments mentioning it, each
+from another vacancy, and asks Jev whether the key means its skill there. A plain key that means it in
+less than 95% of its mentions is a miss of the rule, printed for whoever fixes the rule. Each verdict is
+appended to docs/measurements/skill-key-labels-jev.jsonl and never remade, so a run stopped at the spend
+limit is resumed by running it again.
+"""
+
+import json
+import sys
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import jev  # noqa: E402
+import skillloop  # noqa: E402
+
+MENTIONS = 20
+MIN_MEANING = 0.95
+# Fewer mentions than this leave the share too loose to call a miss on.
+MIN_MENTIONS = 10
+
+
+def set_kinds(lines):
+    rows = skillloop.read_skill_rows()
+    context = skillloop.context_keys({key for row in rows for key in row[3]}, lines)
+    with open(skillloop.SKILLS, "w") as out:
+        for identifier, canonical, category, keys, _ in rows:
+            out.write("\t".join([identifier, canonical, category, "|".join(keys[1:]),
+                                 "|".join(key for key in keys if key in context)]) + "\n")
+    print(f"{len(context)} context keys of {sum(len(row[3]) for row in rows)}: {', '.join(sorted(context))}")
+
+
+def read_key_labels():
+    if not skillloop.KEY_LABELS.exists():
+        return {}
+    with open(skillloop.KEY_LABELS) as lines:
+        rows = [json.loads(line) for line in lines if line.strip()]
+    return {(row["key"], row["segment"]): row for row in rows if row["model"] == jev.MODEL}
+
+
+def check(lines):
+    segments = skillloop.Segments(lines)
+    wanted = []
+    for _, canonical, _, keys, context in skillloop.read_skill_rows():
+        for key in keys:
+            if key not in context:
+                wanted += [{"key": key, "skill": canonical, "segment": text}
+                           for _, text in segments.examples(key, MENTIONS, f"key-{key}")]
+    labels = read_key_labels()
+    todo = [row for row in wanted if (row["key"], row["segment"]) not in labels]
+    print(f"{len(wanted)} mentions of plain keys, {len(todo)} to ask")
+    api = jev.api_key()
+    spent = jev.spend()
+    question = {"means": {"type": "choice", "instructions": skillloop.KEY_QUESTION, "criteria": skillloop.KEY_OPTIONS}}
+    asked = 0
+    for chunk in jev.ask_many(api, todo, lambda row: (row, question)):
+        with open(skillloop.KEY_LABELS, "a") as ledger:
+            for row, response in chunk:
+                answer = response["answers"]["means"]
+                tokens = response["usage"]["input_tokens"]
+                ledger.write(json.dumps({**row, "means": answer["choice"] == "yes",
+                                         "probabilities": answer["probabilities"],
+                                         "model": response["model"], "input_tokens": tokens},
+                                        ensure_ascii=False) + "\n")
+                spent += tokens * jev.DOLLARS_PER_INPUT_TOKEN
+        asked += len(chunk)
+        print(f"  {asked} asked, Jev has cost ${spent:.4f}")
+        if spent >= jev.SPEND_LIMIT:
+            print(f"Stopped: Jev has cost ${spent:.4f}, the limit is ${jev.SPEND_LIMIT:.2f}")
+            break
+    labels = read_key_labels()
+    by_key = {}
+    for row in wanted:
+        if (row["key"], row["segment"]) in labels:
+            by_key.setdefault(row["key"], []).append(labels[(row["key"], row["segment"])]["means"])
+    checked = {key: answers for key, answers in by_key.items() if len(answers) >= MIN_MENTIONS}
+    misses = sorted((sum(answers) / len(answers), key) for key, answers in checked.items()
+                    if sum(answers) / len(answers) < MIN_MEANING)
+    print(f"\n{len(checked)} plain keys with at least {MIN_MENTIONS} mentions asked, "
+          f"{len(by_key) - len(checked)} with fewer; {len(misses)} mean their skill in under {MIN_MEANING:.0%}:")
+    for share, key in misses:
+        print(f"  {share:4.0%}  {key}")
+    print(f"Jev has cost ${jev.spend():.4f} over every run of both issues, of the ${jev.SPEND_LIMIT:.2f} limit")
+
+
+def main():
+    lines = skillloop.read_segment_lines()
+    set_kinds([line.split("\t", 1)[1] for line in lines])
+    if "--set-only" not in sys.argv:
+        check(lines)
+
+
+if __name__ == "__main__":
+    main()

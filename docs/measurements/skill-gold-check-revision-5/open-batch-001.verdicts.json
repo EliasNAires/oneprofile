@@ -1,0 +1,15 @@
+{
+  "110:context protocol": {"verdict": "b", "clause": "Not a technology at all: a piece of a longer name that ads never use alone for the product", "pattern": "piece of longer name"},
+  "110:implement mcp": {"verdict": "b", "clause": "A name is judged where it is written, and exactly as given: a name with an ordinary word before or after it is a drop", "pattern": "ordinary word before key term"},
+  "110:model context": {"verdict": "b", "clause": "Not a technology at all: a piece of a longer name that ads never use alone for the product", "pattern": "piece of longer name"},
+  "16:karl fischer": {"verdict": "b", "clause": "A technology no software person is hired for", "pattern": "lab technique not software skill"},
+  "16:lc msms": {"verdict": "a", "clause": "A technology no software person is hired for", "pattern": "lab technique not software skill"},
+  "205:catalog": {"verdict": "b", "clause": "Not a technology at all: a piece of a longer name that ads never use alone for the product", "pattern": "piece of longer name"},
+  "214:arcgis pro": {"verdict": "b", "clause": "Keep: one specific named technology, a tool or a platform", "pattern": "named software platform tool"},
+  "247:twilio": {"verdict": "b", "clause": "A vendor's name is a drop even where ads use it for its products", "pattern": "vendor name for product"},
+  "24:security command center": {"verdict": "b", "clause": "it is the technology's whole name and nothing more", "pattern": "full product name given whole"},
+  "282:apache": {"verdict": "a", "clause": "A bare form ... is a keep where the text uses it for the product", "pattern": "bare form of product name"},
+  "289:cfin": {"verdict": "a", "clause": "Obscure or historical: a name few ads use and few engineers would recognise", "pattern": "obscure niche abbreviation"},
+  "289:s/4hana finance": {"verdict": "a", "clause": "Keep: one specific named technology, a tool or a platform", "pattern": "named enterprise platform product"},
+  "53:service cloud": {"verdict": "b", "clause": "A name is judged where it is written, and exactly as given: a name with an ordinary word before or after it is a drop", "pattern": "ordinary word after key term"}
+}

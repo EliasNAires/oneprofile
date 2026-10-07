@@ -1,0 +1,66 @@
+{
+ "110:context protocol": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "110:implement mcp": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "110:model context": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "16:karl fischer": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "16:lc msms": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "205:catalog": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "214:arcgis pro": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "247:twilio": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "24:security command center": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "282:apache": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "289:cfin": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "289:s/4hana finance": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "53:service cloud": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "203:infor ln": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "206:sales cloud": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "206:service cloud": {
+  "jev": "a",
+  "gold": "b"
+ }
+}

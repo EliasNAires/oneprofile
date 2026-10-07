@@ -15,9 +15,10 @@ import java.util.regex.Pattern;
  * The curated set of skills, and the resolution of a name to the skill it names.
  * <p>
  * The taxonomy is read from a file with one skill per line, as
- * {@code id<TAB>canonical_name<TAB>category<TAB>aliases}, its aliases separated by {@code |}. A
- * name is looked up by a key: the name lowercased and trimmed, its whitespace collapsed. The
- * canonical name is a key like any alias.
+ * {@code id<TAB>canonical_name<TAB>category<TAB>aliases<TAB>context_keys}, its aliases and its
+ * context keys separated by {@code |}. A name is looked up by a key: the name lowercased and
+ * trimmed, its whitespace collapsed. The canonical name is a key like any alias. The context keys
+ * are not told apart here yet (#15).
  * <p>
  * A file is refused if two of its skills share an id, or if one key would name two skills.
  */

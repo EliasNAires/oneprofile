@@ -1,0 +1,138 @@
+#!/usr/bin/env python3
+"""Checks Jev, and the adjudicator, against the skill gold set under the current criterion revision.
+
+    scripts/check-skill-gold
+
+The gold set, docs/measurements/skill-gold-set.tsv, lists for each segment the skills it names, as
+written and mapped to the skill (`written = skill`, or the name alone). Each segment is cut into
+pieces and filtered as recall does (skillloop.Recall), with the plain keys as the only names found,
+and Jev judges each piece left in its segment. A piece is a keep by the gold set when it is written as
+one of the row's skills. Reports, for the open and the held-out part apart:
+
+- Jev's agreement with the gold set, by piece, and by segment (whether it names a skill the plain
+  keys did not find);
+- the generator's losses: skills the gold set lists that are neither a piece nor a plain key.
+
+Each piece where Jev and the gold set disagree is written, both answers unattributed, into batches of
+20 under docs/measurements/skill-gold-check-revision-<R>/, open-batch-NNN.json and held-batch-NNN.json,
+for the adjudicator; which answer is Jev's is in sides.json. Once the batches carry verdicts, run it
+again: it reports how often the adjudicator sided with the gold set. The session calibrating the
+criterion reads the open part's disagreements in open-disagreements.tsv and never the held-out
+batches. Jev's verdicts are cached by skillloop, so a run is resumed by running it again.
+"""
+
+import json
+import random
+import sys
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import jev  # noqa: E402
+import skillloop  # noqa: E402
+
+GOLD = skillloop.REPO / "docs" / "measurements" / "skill-gold-set.tsv"
+CHECK = skillloop.REPO / "docs" / "measurements" / "skill-gold-check-revision-{revision}"
+BATCH = 20
+
+
+def read_gold():
+    with open(GOLD) as lines:
+        header, *rows = [line.rstrip("\n").split("\t") for line in lines if line.strip()]
+    return [dict(zip(header, row)) for row in rows]
+
+
+def written(row):
+    """The name forms the row's skills are written as."""
+    return {skillloop.name_form(skill.split(" = ")[0]) for skill in row["skills"].split(" | ") if skill.strip()}
+
+
+def share(agreed, total):
+    if not total:
+        return "none"
+    low, high = skillloop.wilson(agreed, total)
+    return f"{agreed}/{total} = {agreed / total:.1%} (95% interval {low:.1%}-{high:.1%})"
+
+
+def main():
+    revision = skillloop.criterion_revision()
+    gold = read_gold()
+    recall = skillloop.Recall(skillloop.read_segment_lines())
+    plain = skillloop.Names(skillloop.read_keys("plain"), [])
+    rows = [{**row, "found": plain.spans_in(row["segment"])} for row in gold]
+    skillloop.label_pieces([{"name": name, "segment": row["segment"]}
+                            for row in rows for name in recall.pieces(row).values()])
+    labels = skillloop.read_piece_labels()
+
+    pieces, segments, losses, disagreements = {}, {}, {}, {}
+    plain_forms = set(skillloop.read_keys("plain"))
+    for row in rows:
+        part, gold_forms = row["part"], written(row)
+        left = recall.pieces(row)
+        generated = {skillloop.name_form(text) for text, _, _ in skillloop.pieces(row["segment"], recall.vocabulary)}
+        verdicts = {form: labels[(form, row["segment"])]["decision"] for form in left if (form, row["segment"]) in labels}
+        for form, verdict in verdicts.items():
+            answer = "keep" if form in gold_forms else "drop"
+            pieces.setdefault(part, []).append(verdict == answer)
+            if verdict != answer:
+                disagreements.setdefault(part, []).append(
+                    {"id": f"{row['id']}:{form}", "name": left[form], "segment": row["segment"],
+                     "jev": verdict, "gold": answer, "skills": row["skills"]})
+        jev_names = any(verdict == "keep" for verdict in verdicts.values())
+        gold_names = any(form in gold_forms for form in verdicts)
+        segments.setdefault(part, []).append(jev_names == gold_names)
+        lost = sorted(form for form in gold_forms if form not in generated and form not in plain_forms)
+        losses.setdefault(part, []).append(lost)
+
+    directory = Path(str(CHECK).format(revision=revision))
+    directory.mkdir(exist_ok=True)
+    sides_path = directory / "sides.json"
+    sides = json.loads(sides_path.read_text()) if sides_path.exists() else {}
+    print(f"Gold set check at criterion revision {revision}, {jev.MODEL}")
+    for part in ("open", "held-out"):
+        print(f"\n{part}:")
+        print(f"  Jev by piece:   {share(sum(pieces.get(part, [])), len(pieces.get(part, [])))}")
+        print(f"  Jev by segment: {share(sum(segments[part]), len(segments[part]))}")
+        lost = losses[part]
+        print(f"  generator: {sum(map(len, lost))} listed skills never a piece, in {sum(map(bool, lost))} "
+              f"of {len(lost)} segments")
+        if part == "open":
+            print("    " + ", ".join(form for forms in lost for form in forms))
+        prefix = "open" if part == "open" else "held"
+        rows_out = sorted(disagreements.get(part, []), key=lambda row: row["id"])
+        if part == "open":
+            with open(directory / "open-disagreements.tsv", "w") as out:
+                out.write("id\tname\tjev\tgold\tskills\tsegment\n")
+                for row in rows_out:
+                    out.write("\t".join([row["id"], row["name"], row["jev"], row["gold"], row["skills"],
+                                         row["segment"]]) + "\n")
+        if not list(directory.glob(f"{prefix}-batch-*.json")):
+            for start in range(0, len(rows_out), BATCH):
+                batch = []
+                for row in rows_out[start:start + BATCH]:
+                    jev_side = random.Random(row["id"]).choice("ab")
+                    other = "b" if jev_side == "a" else "a"
+                    sides[row["id"]] = {"jev": jev_side, "gold": other}
+                    batch.append({"id": row["id"], "text": f"Name: {row['name']}\nSegment: {row['segment']}",
+                                  jev_side: row["jev"], other: row["gold"]})
+                (directory / f"{prefix}-batch-{start // BATCH + 1:03}.json").write_text(
+                    json.dumps(batch, indent=1, ensure_ascii=False) + "\n")
+        verdicts = {}
+        for path in directory.glob(f"{prefix}-batch-*.verdicts.json"):
+            verdicts.update(json.loads(path.read_text()))
+        total = len(rows_out)
+        print(f"  {total} disagreements in {len(list(directory.glob(f'{prefix}-batch-*[0-9].json')))} batches, "
+              f"{len(verdicts)} adjudicated")
+        if verdicts:
+            gold_side = sum(verdict["verdict"] == sides[row_id]["gold"] for row_id, verdict in verdicts.items())
+            jev_side = sum(verdict["verdict"] == sides[row_id]["jev"] for row_id, verdict in verdicts.items())
+            print(f"  adjudicator with the gold set {share(gold_side, len(verdicts))}, with Jev {jev_side}, "
+                  f"neither {len(verdicts) - gold_side - jev_side}")
+            agreed = sum(pieces[part])
+            print(f"  Jev by piece, adjudicated: {share(agreed + jev_side, len(pieces[part]))}")
+    sides_path.write_text(json.dumps(sides, indent=1) + "\n")
+    print(f"\nJev has cost ${jev.spend():.4f} over every run of both issues, of the ${jev.SPEND_LIMIT:.2f} limit")
+
+
+if __name__ == "__main__":
+    main()

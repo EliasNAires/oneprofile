@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Scores one round of the skill discovery loop against Jev (ADR-0013).
+"""Scores one round of the skill discovery loop against Jev (ADR-0013, ADR-0015).
 
     scripts/score-skill-round <round number>
 
@@ -9,11 +9,12 @@ Runs scripts/skill_discovery.py over the segments of IN and the pile and times i
   takes its decision there; Jev labels any other under the skill criterion, from its name and three
   segments mentioning it. Precision is the share kept.
 - Recall: draws segments of IN and the pile, uniformly over the export, so each in proportion to its
-  size; the export holds requirement text only, boilerplate and headings left out. Jev reads each
-  segment and the names found in it, every skills.tsv key and every candidate, and answers whether it
-  names no software skill, only skills found, or one missed. Recall is the share of segments naming a
-  skill in which none was missed. The segments that missed one are printed for the reviewer, who
-  writes down the missed names as the next round's feedback.
+  size; the export holds requirement text only, boilerplate and headings left out. The names found in
+  a segment are the plain keys of skills.tsv and the candidates. Each segment is cut into name-like
+  pieces and filtered (skillloop.Recall), and Jev keeps or drops each piece left, in its segment, with
+  the precision question. A segment is missed when a piece is kept, covered when a name was found and
+  no piece is kept. Recall is covered over covered and missed. The missed segments are printed with
+  the names kept, for the adjudication.
 - Yield: the valid candidates a run proposes, estimated as its size times its precision. A round fails
   when the top of its yield's interval is below the best earlier round's estimate, each earlier round
   measured on its own draw under the current criterion revision. Cutting candidates raises precision,
@@ -108,7 +109,8 @@ def draw_candidates(round_name, candidates, earlier, segments):
 
 
 def draw_segments(round_name, lines, earlier, names):
-    """The segments drawn for recall, each a distinct text, with its vacancy and the names found in it."""
+    """The segments drawn for recall, each a distinct text, with its vacancy, the names found in it and
+    where."""
     order = skillloop.shuffled(range(len(lines)), f"round-{round_name}-segments")
     drawn, seen = [], set(earlier)
     for index in order:
@@ -118,7 +120,8 @@ def draw_segments(round_name, lines, earlier, names):
         if text in seen:
             continue
         seen.add(text)
-        drawn.append({"vacancy_id": vacancy_id, "segment": text, "found": names.named_in(text)})
+        drawn.append({"vacancy_id": vacancy_id, "segment": text, "names": names.named_in(text),
+                      "found": names.spans_in(text)})
     return drawn
 
 
@@ -165,8 +168,7 @@ def estimated_yield(size, verdicts):
     return size * kept / len(verdicts), size * low, size * high
 
 
-def score(report, round_name, candidates, seconds, precision_drawn, passed_over, recall_drawn, earlier):
-    answers = skillloop.read_recall_labels()
+def score(report, round_name, candidates, seconds, precision_drawn, passed_over, recall_drawn, earlier, recall):
     passed = True
 
     report(f"Round {round_name} at criterion revision {skillloop.criterion_revision()}, {jev.MODEL}")
@@ -206,20 +208,19 @@ def score(report, round_name, candidates, seconds, precision_drawn, passed_over,
     else:
         report("Yield: no candidate decided  FAIL")
 
-    answered = [(row, answers[key]) for row in recall_drawn
-                if (key := skillloop.recall_key(row["segment"], row["found"])) in answers]
-    covered, bearing = skillloop.recall([label["answer"] for _, label in answered])
+    outcomes = recall.score(recall_drawn)
+    count = {outcome: sum(found == outcome for _, found, _ in outcomes) for outcome in ("covered", "missed", "none", "unjudged")}
+    bearing = count["covered"] + count["missed"]
     if bearing:
-        low, high = skillloop.wilson(covered, bearing)
-        share = covered / bearing
-        report(f"Recall: {covered}/{bearing} skill-bearing segments missed nothing = {share:.1%}, "
+        low, high = skillloop.wilson(count["covered"], bearing)
+        share = count["covered"] / bearing
+        report(f"Recall: {count['covered']}/{bearing} skill-bearing segments missed nothing = {share:.1%}, "
                f"95% interval {low:.1%}-{high:.1%}, gate {RECALL:.0%}  {'pass' if share >= RECALL else 'FAIL'}")
-        passed = passed and share >= RECALL
+        passed = passed and share >= RECALL and not count["unjudged"]
     else:
-        report("Recall: no skill-bearing segment answered  FAIL")
+        report("Recall: no skill-bearing segment  FAIL")
         passed = False
-    report(f"  {len(recall_drawn)} segments drawn, {len(answered)} answered, "
-           f"{len(answered) - bearing} naming no skill")
+    report(f"  {len(recall_drawn)} segments drawn, {count['none']} naming no skill, {count['unjudged']} not yet judged")
     report(f"\n{'Every gate holds: the loop exits' if passed else 'The loop goes on'}")
 
     report("\nCandidates drawn for precision, dropped first:")
@@ -227,11 +228,11 @@ def score(report, round_name, candidates, seconds, precision_drawn, passed_over,
         decision, source = verdicts[form]
         report(f"  {decision:<4} {precision_drawn[form]['df']:6}  {precision_drawn[form]['name']:<40} {source}")
 
-    missed = [(row, label) for row, label in answered if label["answer"] == "missed"]
-    report(f"\nSegments that name a skill not found ({len(missed)}), for the reviewer to name it:")
-    for row, label in missed:
-        report(f"\n  vacancy {row['vacancy_id']}  Jev {label['probabilities']}")
-        report(f"  found: {', '.join(row['found']) or 'nothing'}")
+    missed = [(row, kept) for row, outcome, kept in outcomes if outcome == "missed"]
+    report(f"\nSegments that name a skill not found ({len(missed)}), with the names Jev kept:")
+    for row, kept in missed:
+        report(f"\n  vacancy {row['vacancy_id']}  kept: {' | '.join(kept)}")
+        report(f"  found: {', '.join(row['names']) or 'nothing'}")
         report(f"  {row['segment']}")
 
     report(f"\nJev has cost ${jev.spend():.4f} over every run of both issues, of the ${jev.SPEND_LIMIT:.2f} limit")
@@ -254,7 +255,7 @@ def main():
     earlier_segments = {drawn for round_drawn, kind, drawn in earlier if round_drawn != round_name and kind == "segment"}
     segments = skillloop.Segments(lines)
     precision_drawn, passed_over = draw_candidates(round_name, candidates, earlier_candidates, segments)
-    names = skillloop.Names(skillloop.read_keys(), [c["name"] for c in candidates])
+    names = skillloop.Names(skillloop.read_keys("plain"), [c["name"] for c in candidates])
     recall_drawn = draw_segments(round_name, lines, earlier_segments, names)
     record_drawn(round_name, precision_drawn, [row["segment"] for row in recall_drawn])
     earlier = earlier_draws(round_name, segments)
@@ -263,11 +264,14 @@ def main():
     skillloop.label([{"name": c["name"], "segments": c["segments"]}
                      for drawn in [precision_drawn] + [drawn for _, drawn in earlier.values()]
                      for form, c in drawn.items() if form not in decisions])
-    skillloop.label_recall(recall_drawn)
+    recall = skillloop.Recall(lines)
+    skillloop.label_pieces([{"name": name, "segment": row["segment"]}
+                            for row in recall_drawn for name in recall.pieces(row).values()])
 
     print()
     with open(str(ARCHIVE).format(round=round_name), "w") as archive:
-        score(Report(archive), round_name, candidates, seconds, precision_drawn, passed_over, recall_drawn, earlier)
+        score(Report(archive), round_name, candidates, seconds, precision_drawn, passed_over, recall_drawn, earlier,
+              recall)
 
 
 if __name__ == "__main__":

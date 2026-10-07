@@ -1,0 +1,126 @@
+{
+ "110:mcp": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "110:model context protocol": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "194:f&o": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "205:catalog": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "210:advanced aws": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "210:kubernetes expertise": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "230:kubernetes based": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "24:command center": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "24:security command": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "24:service controls": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "24:vpc service": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "282:configure nginx": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "288:utilize entity": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "288:utilize entity framework": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "289:cfin": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "289:s/4hana finance": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "53:service cloud": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "122:native senior .net": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "122:senior .net": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "122:senior .net engineer": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "203:infor": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "220:python engineer": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "220:senior python": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "220:senior python engineer": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "224:datadog's": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "285:code": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "292:c++ software": {
+  "jev": "b",
+  "gold": "a"
+ },
+ "292:c++ software engineer": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "292:senior c++": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "292:senior c++ software": {
+  "jev": "a",
+  "gold": "b"
+ },
+ "299:php 2+": {
+  "jev": "b",
+  "gold": "a"
+ }
+}
