@@ -396,6 +396,13 @@ capitalized mid-sentence and that Jev says could name no technology. Never depen
 criterion. Replaces the ordinary list (#60).
 _Avoid_: ordinary list, stopwords, dictionary
 
+**Guard Set**:
+The single words that are known skills: the single-word keys, the bare forms reopened by ADR-0015,
+and the names Jev kept in context or the decision record keeps. The test of the stoplist's
+mechanism, never an input to it: a cutoff or bar that would stoplist one of its words is too loose
+(#60).
+_Avoid_: whitelist, protected words
+
 ### Rule Loops
 
 **Rule Loop**:

@@ -22,11 +22,13 @@ class StoplistEndpointTest {
 	@Test
 	void reportsWhatTheRunMeasured() {
 		given(this.stoplist.measure()).willReturn(new StoplistRun.Report(100, 40, 12, 30, 0.3, 9,
-				List.of(new StoplistRun.WordPieces("the", 20))));
+				List.of(new StoplistRun.WordPieces("the", 20)), 300, 0.02, 5,
+				List.of(new StoplistRun.WordShare("make", 0.02, 900))));
 
 		assertThat(this.mvc.post().uri("/stoplists")).hasStatusOk().bodyJson().isEqualTo("""
 				{"pieces":100,"words":40,"head":12,"closedClassPieces":30,"closedClassShare":0.3,"headOfTheRest":9,\
-				"top":[{"word":"the","pieces":20}]}""");
+				"top":[{"word":"the","pieces":20}],"guardSetSize":300,"cutoff":0.02,"capitalizationLetsThrough":5,\
+				"guardAtTheCutoff":[{"word":"make","share":0.02,"midSentence":900}]}""");
 	}
 
 }
