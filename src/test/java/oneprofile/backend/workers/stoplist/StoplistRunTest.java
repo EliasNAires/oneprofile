@@ -1,6 +1,7 @@
 package oneprofile.backend.workers.stoplist;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.within;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
@@ -37,11 +38,28 @@ class StoplistRunTest {
 
 	private Path labels;
 
+	private Path answers;
+
+	private Path otherLedger;
+
+	private final List<String> asked = Collections.synchronizedList(new ArrayList<>());
+
+	private final JevPort jev = (word) -> {
+		this.asked.add(word);
+		return new JevAnswer("no", 0.9, 0.1, JevPort.MODEL, 100);
+	};
+
+	private double spendLimit = 4.0;
+
+	private int chunk = 200;
+
 	@BeforeEach
 	void emptyRecords() throws IOException {
 		this.decisions = Files.writeString(this.files.resolve("decisions.tsv"),
 				"name\tdecision\trevision\tsnapshot\tsource\n");
 		this.labels = Files.writeString(this.files.resolve("labels.jsonl"), "");
+		this.answers = this.files.resolve("stoplist-labels.jsonl");
+		this.otherLedger = Files.writeString(this.files.resolve("body-labels.jsonl"), "");
 	}
 
 	@Test
@@ -149,8 +167,74 @@ class StoplistRunTest {
 		assertThat(report.capitalizationLetsThrough()).isEqualTo(1);
 	}
 
+	@Test
+	void asksJevAboutEveryWordOfTheHeadOfTheRestAndOfTheGuardSetAndLedgersEachAnswer() throws IOException {
+		this.taxonomy = TaxonomyStore.read(new StringReader("rust\tRust\tlanguage\t\n"));
+		holds(vacancy(1, Stream.of(repeat("The", 6), repeat("Go", 5), repeat("Team", 3), repeat("Scala", 1))
+			.flatMap(List::stream)
+			.toArray(String[]::new)));
+
+		StoplistRun.Report report = run(10).measure();
+
+		// The head of the rest is go and team; the guard set is rust and the 47 reopened forms, go among them.
+		assertThat(this.asked).hasSize(GuardSetRule.REOPENED.size() + 2)
+			.contains("go", "team", "rust")
+			.doesNotContain("the", "scala")
+			.doesNotHaveDuplicates();
+		assertThat(report.jevWords()).isEqualTo(this.asked.size());
+		assertThat(report.jevCalls()).isEqualTo(this.asked.size());
+		assertThat(report.jevCost()).isCloseTo(this.asked.size() * 100 * 0.042 / 1_000_000, within(1e-12));
+		assertThat(report.jevStopped()).isFalse();
+		assertThat(Files.readAllLines(this.answers)).hasSize(this.asked.size())
+			.contains("{\"word\":\"team\",\"answer\":\"no\",\"probabilities\":{\"no\":0.9,\"yes\":0.1},"
+					+ "\"model\":\"jev-1.13.0\",\"input_tokens\":100}");
+	}
+
+	@Test
+	void asksNothingThePinnedModelHasAnsweredBefore() throws IOException {
+		Files.writeString(this.answers, """
+				{"word":"go","answer":"yes","probabilities":{"no":0.0,"yes":1.0},"model":"jev-1.13.0","input_tokens":100}
+				{"word":"make","answer":"yes","probabilities":{"no":0.0,"yes":1.0},"model":"jev-1.12.0","input_tokens":100}
+				""");
+		holds(vacancy(1, "Go"));
+
+		StoplistRun.Report report = run(10).measure();
+
+		assertThat(this.asked).hasSize(GuardSetRule.REOPENED.size() - 1).contains("make").doesNotContain("go");
+		assertThat(report.jevWords()).isEqualTo(GuardSetRule.REOPENED.size());
+		assertThat(report.jevCalls()).isEqualTo(this.asked.size());
+	}
+
+	@Test
+	void stopsBetweenChunksOnceJevHasCostTheSpendLimitAcrossEveryLedger() throws IOException {
+		Files.writeString(this.otherLedger, "{\"input_tokens\": 900}\n");
+		this.spendLimit = 1000 * 0.042 / 1_000_000;
+		this.chunk = 2;
+		holds(vacancy(1, "Go"));
+
+		StoplistRun.Report report = run(10).measure();
+
+		assertThat(this.asked).hasSize(2);
+		assertThat(report.jevCalls()).isEqualTo(2);
+		assertThat(report.jevStopped()).isTrue();
+		assertThat(report.jevSpent()).isCloseTo(1100 * 0.042 / 1_000_000, within(1e-12));
+	}
+
+	@Test
+	void asksNothingOnceTheSpendLimitIsReached() throws IOException {
+		Files.writeString(this.otherLedger, "{\"input_tokens\": 1000}\n");
+		this.spendLimit = 1000 * 0.042 / 1_000_000;
+		holds(vacancy(1, "Go"));
+
+		StoplistRun.Report report = run(10).measure();
+
+		assertThat(this.asked).isEmpty();
+		assertThat(report.jevStopped()).isTrue();
+	}
+
 	private StoplistRun run(int batch) {
-		return new StoplistRun(this.normalized, this.taxonomy, this.decisions, this.labels, batch);
+		return new StoplistRun(this.normalized, this.taxonomy, this.jev, this.decisions, this.labels, this.answers,
+				List.of(this.otherLedger), this.spendLimit, batch, this.chunk);
 	}
 
 	private static StoplistRun.WordShare share(String word, double share, long midSentence) {

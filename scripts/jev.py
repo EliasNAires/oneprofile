@@ -26,7 +26,10 @@ SKILL_RECALL_LABELS = REPO / "docs" / "measurements" / "skill-recall-labels-jev.
 
 SKILL_KEY_LABELS = REPO / "docs" / "measurements" / "skill-key-labels-jev.jsonl"
 
-LEDGERS = (BODY_LABELS, SKILL_LABELS, SKILL_RECALL_LABELS, SKILL_KEY_LABELS)
+# Written by the stoplist run in Java (#60), which reads these same ledgers for the spend.
+STOPLIST_LABELS = REPO / "docs" / "measurements" / "stoplist-labels-jev.jsonl"
+
+LEDGERS = (BODY_LABELS, SKILL_LABELS, SKILL_RECALL_LABELS, SKILL_KEY_LABELS, STOPLIST_LABELS)
 
 # Jev answers 429 when the rate limit is hit and 529 when it is overloaded; both are retried.
 RETRIED = (429, 529)

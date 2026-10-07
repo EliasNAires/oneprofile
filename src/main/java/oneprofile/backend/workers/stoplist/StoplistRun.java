@@ -4,20 +4,30 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.stream.Stream;
 import oneprofile.backend.storage.normalizedvacancy.NormalizedVacancyStore;
 import oneprofile.backend.storage.normalizedvacancy.Segment;
 import oneprofile.backend.storage.normalizedvacancy.SegmentedVacancy;
 import oneprofile.backend.storage.taxonomy.TaxonomyStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
 import tools.jackson.databind.json.JsonMapper;
 
@@ -31,8 +41,13 @@ import tools.jackson.databind.json.JsonMapper;
  * set, and sets the capitalization cutoff at the lowest mid-sentence capitalized share of a guard word,
  * so that a word is let through only when it is written capitalized less often than every guard word.
  * <p>
- * The decision record and Jev's recall labels are read from the repository, so it runs from the
- * repository's root.
+ * It asks Jev, out of context, whether each word of the head and of the guard set could name a
+ * technology, and ledgers every answer, so a rerun asks only what the pinned model has not answered.
+ * Jev's account is shared with every Jev script, so it stops between chunks of questions once their
+ * ledgers together have cost the spend limit {@code scripts/jev.py} stops at.
+ * <p>
+ * The decision record, Jev's recall labels and the ledgers are read from the repository, so it runs
+ * from the repository's root.
  */
 @Component
 public class StoplistRun {
@@ -49,48 +64,88 @@ public class StoplistRun {
 
 	private static final Path RECALL_LABELS = Path.of("docs/measurements/skill-recall-labels-jev.jsonl");
 
+	/** Where Jev's answers on whether a word could name a technology are ledgered. */
+	private static final Path ANSWERS = Path.of("docs/measurements/stoplist-labels-jev.jsonl");
+
+	/** The ledgers of the other Jev scripts, which share its account; jev.py's LEDGERS. */
+	private static final List<Path> LEDGERS = List.of(Path.of("docs/measurements/body-labels-jev.jsonl"),
+			Path.of("docs/measurements/skill-labels-jev.jsonl"), RECALL_LABELS,
+			Path.of("docs/measurements/skill-key-labels-jev.jsonl"));
+
+	private static final double DOLLARS_PER_INPUT_TOKEN = 0.042 / 1_000_000;
+
+	private static final double SPEND_LIMIT = 4.00;
+
+	/** Questions in flight at once, as in jev.py. */
+	private static final int WORKERS = 8;
+
+	/** How many questions are asked before the spend is checked again, as in jev.py. */
+	private static final int CHUNK = 200;
+
 	private static final ObjectMapper JSON = JsonMapper.builder().build();
 
 	private final NormalizedVacancyStore normalized;
 
 	private final TaxonomyStore taxonomy;
 
+	private final JevPort jev;
+
 	private final Path decisions;
 
 	private final Path recallLabels;
 
+	private final Path answers;
+
+	private final List<Path> ledgers;
+
+	private final double spendLimit;
+
 	private final int batch;
+
+	private final int chunk;
 
 	/**
 	 * Reads the corpus in batches of a thousand vacancies, and the repository's decision record and
 	 * recall labels.
 	 * @param normalized where the segments are read
 	 * @param taxonomy the skills whose keys join the guard set
+	 * @param jev who is asked whether a word could name a technology
 	 */
 	@Autowired
-	public StoplistRun(NormalizedVacancyStore normalized, TaxonomyStore taxonomy) {
-		this(normalized, taxonomy, DECISIONS, RECALL_LABELS, BATCH);
+	public StoplistRun(NormalizedVacancyStore normalized, TaxonomyStore taxonomy, JevPort jev) {
+		this(normalized, taxonomy, jev, DECISIONS, RECALL_LABELS, ANSWERS, LEDGERS, SPEND_LIMIT, BATCH, CHUNK);
 	}
 
 	/**
 	 * @param normalized where the segments are read
 	 * @param taxonomy the skills whose keys join the guard set
+	 * @param jev who is asked whether a word could name a technology
 	 * @param decisions the decision record, whose keeps join the guard set
 	 * @param recallLabels Jev's verdicts on pieces, whose keeps join the guard set
+	 * @param answers the ledger Jev's answers are appended to and read back from
+	 * @param ledgers the other ledgers of Jev's account, whose costs count toward the spend limit
+	 * @param spendLimit the dollars every ledger together may cost before no more is asked
 	 * @param batch how many vacancies are read at a time
+	 * @param chunk how many questions are asked between two checks of the spend
 	 */
-	StoplistRun(NormalizedVacancyStore normalized, TaxonomyStore taxonomy, Path decisions, Path recallLabels,
-			int batch) {
+	StoplistRun(NormalizedVacancyStore normalized, TaxonomyStore taxonomy, JevPort jev, Path decisions,
+			Path recallLabels, Path answers, List<Path> ledgers, double spendLimit, int batch, int chunk) {
 		this.normalized = normalized;
 		this.taxonomy = taxonomy;
+		this.jev = jev;
 		this.decisions = decisions;
 		this.recallLabels = recallLabels;
+		this.answers = answers;
+		this.ledgers = ledgers;
+		this.spendLimit = spendLimit;
 		this.batch = batch;
+		this.chunk = chunk;
 	}
 
 	/**
-	 * Counts every word's piece occurrences over the corpus.
-	 * @return the counts, the head, and what the closed class removes
+	 * Counts every word's piece occurrences over the corpus, and asks Jev about the head and the guard
+	 * set.
+	 * @return the counts, the head, what the closed class removes, the cutoff and what Jev cost
 	 */
 	public Report measure() {
 		Map<String, Count> counts = count();
@@ -116,10 +171,86 @@ public class StoplistRun {
 			.flatMap((word) -> share(word.word(), counts).stream())
 			.filter((word) -> word.share() < cutoff)
 			.count();
+		Set<String> asked = new LinkedHashSet<>();
+		rest.subList(0, headOfTheRest).forEach((word) -> asked.add(word.word()));
+		asked.addAll(new TreeSet<>(guardSet));
+		Asking asking = ask(asked);
 		return new Report(pieces, ranked.size(), head(ranked, HEAD_SHARE * pieces), closedClassPieces,
 				(pieces == 0) ? 0 : (double) closedClassPieces / pieces, headOfTheRest,
 				ranked.subList(0, Math.min(TOP, ranked.size())), guardSet.size(), cutoff, capitalizationLetsThrough,
-				guardShares.stream().filter((word) -> word.share() == cutoff).toList());
+				guardShares.stream().filter((word) -> word.share() == cutoff).toList(), asked.size(), asking.calls(),
+				asking.tokens() * DOLLARS_PER_INPUT_TOKEN, asking.spent(), asking.stopped());
+	}
+
+	/**
+	 * Asks Jev about every word the pinned model has not answered in the ledger, a chunk at a time,
+	 * appending each answer as it arrives, until the spend limit is reached.
+	 */
+	private Asking ask(Set<String> words) {
+		Set<String> answered = new HashSet<>();
+		long ledgered = 0;
+		for (Path ledger : Stream.concat(Stream.of(this.answers), this.ledgers.stream()).toList()) {
+			if (!Files.exists(ledger)) {
+				continue;
+			}
+			for (String line : lines(ledger)) {
+				if (!line.isBlank()) {
+					JsonNode row = JSON.readTree(line);
+					ledgered += row.required("input_tokens").asLong();
+					if (ledger.equals(this.answers) && row.path("model").asString("").equals(JevPort.MODEL)) {
+						answered.add(row.get("word").asString());
+					}
+				}
+			}
+		}
+		List<String> wanted = words.stream().filter((word) -> !answered.contains(word)).toList();
+		int calls = 0;
+		long tokens = 0;
+		try (ExecutorService pool = Executors.newFixedThreadPool(WORKERS)) {
+			for (int start = 0; start < wanted.size(); start += this.chunk) {
+				if ((ledgered + tokens) * DOLLARS_PER_INPUT_TOKEN >= this.spendLimit) {
+					return new Asking(calls, tokens, (ledgered + tokens) * DOLLARS_PER_INPUT_TOKEN, true);
+				}
+				List<Future<JevAnswer>> asked = wanted.subList(start, Math.min(start + this.chunk, wanted.size()))
+					.stream()
+					.map((word) -> pool.submit(() -> ledger(word, this.jev.ask(word))))
+					.toList();
+				for (Future<JevAnswer> answer : asked) {
+					tokens += answered(answer).inputTokens();
+					calls++;
+				}
+			}
+		}
+		return new Asking(calls, tokens, (ledgered + tokens) * DOLLARS_PER_INPUT_TOKEN, false);
+	}
+
+	private synchronized JevAnswer ledger(String word, JevAnswer answer) throws IOException {
+		Map<String, Object> row = new LinkedHashMap<>();
+		row.put("word", word);
+		row.put("answer", answer.choice());
+		Map<String, Double> probabilities = new LinkedHashMap<>();
+		probabilities.put("no", answer.no());
+		probabilities.put("yes", answer.yes());
+		row.put("probabilities", probabilities);
+		row.put("model", answer.model());
+		row.put("input_tokens", answer.inputTokens());
+		Files.writeString(this.answers, JSON.writeValueAsString(row) + "\n", StandardOpenOption.CREATE,
+				StandardOpenOption.APPEND);
+		return answer;
+	}
+
+	private static JevAnswer answered(Future<JevAnswer> answer) {
+		try {
+			return answer.get();
+		}
+		catch (InterruptedException ex) {
+			Thread.currentThread().interrupt();
+			throw new IllegalStateException("Interrupted while asking Jev", ex);
+		}
+		catch (ExecutionException ex) {
+			throw (ex.getCause() instanceof IOException io) ? new UncheckedIOException(io)
+					: new IllegalStateException(ex.getCause());
+		}
 	}
 
 	/**
@@ -255,6 +386,17 @@ public class StoplistRun {
 	}
 
 	/**
+	 * What asking Jev made and cost in one run.
+	 *
+	 * @param calls the questions asked
+	 * @param tokens the input tokens they cost
+	 * @param spent what every ledger of Jev's account has cost, in dollars, once they were asked
+	 * @param stopped whether the spend limit left words unasked
+	 */
+	private record Asking(int calls, long tokens, double spent, boolean stopped) {
+	}
+
+	/**
 	 * One word and its piece occurrences.
 	 *
 	 * @param word the word, lowercased
@@ -290,10 +432,16 @@ public class StoplistRun {
 	 * @param capitalizationLetsThrough how many words of the head of the rest pass the capitalization
 	 * guard
 	 * @param guardAtTheCutoff the guard words that set the cutoff, written capitalized least often
+	 * @param jevWords how many words of the head of the rest and of the guard set Jev is asked about
+	 * @param jevCalls the questions this run asked, the others answered by an earlier run
+	 * @param jevCost what they cost, in dollars
+	 * @param jevSpent what Jev's account has cost across every ledger, in dollars
+	 * @param jevStopped whether the spend limit left words unasked
 	 */
 	public record Report(long pieces, int words, int head, long closedClassPieces, double closedClassShare,
 			int headOfTheRest, List<WordPieces> top, int guardSetSize, double cutoff, int capitalizationLetsThrough,
-			List<WordShare> guardAtTheCutoff) {
+			List<WordShare> guardAtTheCutoff, int jevWords, int jevCalls, double jevCost, double jevSpent,
+			boolean jevStopped) {
 	}
 
 }
