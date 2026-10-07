@@ -194,7 +194,7 @@ class FilterTest(unittest.TestCase):
 
     FILTER = skillloop.Filter({"python"}, {"go"}, {"cloud": {}, "go": {}}, {"this"})
 
-    def test_drops_plain_keys_decisions_numbers_single_letters_and_ordinary_words(self):
+    def test_drops_plain_keys_decisions_numbers_single_letters_and_stoplisted_words(self):
         pieces = [(text, 0, 0) for text in ["Python", "Cloud", "53", "X", "This", "R", "Kotlin"]]
         self.assertEqual(self.FILTER(pieces, []), {"r": "R", "kotlin": "Kotlin"})
 
@@ -205,17 +205,12 @@ class FilterTest(unittest.TestCase):
         self.assertEqual(self.FILTER([("Google Cloud", 0, 12), ("Go", 23, 25)], [(0, 21)]), {"go": "Go"})
 
 
-class OrdinaryListTest(unittest.TestCase):
+class StoplistTest(unittest.TestCase):
 
-    def labels(self, form, decisions):
-        return {(form, f"segment {index}"): {"decision": decision} for index, decision in enumerate(decisions)}
-
-    def test_takes_a_word_dropped_in_five_segments_and_never_kept(self):
-        self.assertEqual(skillloop.ordinary_list(self.labels("this", ["drop"] * 5)), {"this"})
-
-    def test_leaves_a_word_kept_once_or_dropped_in_fewer(self):
-        labels = {**self.labels("spring", ["drop"] * 6 + ["keep"]), **self.labels("you", ["drop"] * 4)}
-        self.assertEqual(skillloop.ordinary_list(labels), set())
+    def test_reads_the_words_column_without_the_header(self):
+        stoplist = skillloop.read_stoplist()
+        self.assertIn("we", stoplist)
+        self.assertNotIn("word", stoplist)
 
 
 class JevTextTest(unittest.TestCase):
