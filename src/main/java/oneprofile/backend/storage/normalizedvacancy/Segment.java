@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 
 /**
@@ -42,12 +43,21 @@ public record Segment(SegmentKindEnum kind, @JsonInclude(Include.NON_NULL) Strin
 	}
 
 	/**
+	 * Its words as they are written, in the case they are written in. Derived rather than stored,
+	 * like its tokens.
+	 * @return its words, in the order they are written
+	 */
+	public List<String> words() {
+		return WORD.matcher(this.text).results().map(MatchResult::group).toList();
+	}
+
+	/**
 	 * Its tokens: the words of its text, lowercased. Derived rather than stored, because they are
 	 * quicker to read off the text than to read from the database.
 	 * @return its words, in the order they are written
 	 */
 	public List<String> tokens() {
-		return WORD.matcher(this.text).results().map((word) -> word.group().toLowerCase(Locale.ROOT)).toList();
+		return words().stream().map((word) -> word.toLowerCase(Locale.ROOT)).toList();
 	}
 
 }
