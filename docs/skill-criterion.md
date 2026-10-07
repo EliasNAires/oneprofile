@@ -1,6 +1,6 @@
 # What counts as a skill
 
-Revision 1 (2026-10-06)
+Revision 2 (2026-10-07)
 
 The criterion of skill discovery (#41, ADR-0013). It is the one document read by Jev when it
 decides whether a candidate is kept, by the agent that drafts a kept candidate's row of
@@ -52,6 +52,9 @@ Google Cloud Platform, `#Kubernetes` is Kubernetes.
   Ada subset) against Apache Spark, TS against TS/SCI.
 - **A technology no software person is hired for**: AutoCAD, Epic EHR, SAP Concur, a CNC
   controller.
+- **A compliance framework, regulation or certification**: what a company is audited against or a
+  person is certified in, not a technology they build with: SOC 2, ISO 27001, NIST CSF, FedRAMP,
+  HIPAA, PCI DSS, ITIL, CISSP, AZ-204, Security+.
 - **Not a technology at all**: a company, a vendor umbrella, a product line, a place, a person, a
   fragment of a longer name (Fabric for Microsoft Fabric), or the name glued to an ordinary word.
 
@@ -71,6 +74,25 @@ ReactJS), each held to the same rule.
 
 A key belongs to one skill. A candidate whose name is already a key is the skill it names.
 
+## In a segment
+
+Whether a job-ad segment names a skill, and whether a list of names found in it misses one, is read
+by the same rules as a candidate:
+
+- A segment names a skill only where it names a technology the Keep section keeps. A practice,
+  method, technique, architecture or kind of system is no skill, however technical the segment:
+  CI/CD, GitOps, infrastructure as code, TDD, MVVM, microservices, RAG, LLMs, reinforcement
+  learning, device drivers, ERP, CRM, data lake, vector databases.
+- A skill named by a bare form that key safety keeps from being a key is not missed: the taxonomy
+  holds it under its safe form, and losing those mentions is the price key safety chose. Go for
+  Golang, Julia for JuliaLang, REST for RESTful API, Compose for Jetpack Compose, Tempo for Grafana
+  Tempo, OPA for Open Policy Agent.
+- A feature, setting or part of a skill found in the segment is that skill, not another: Intune
+  Proactive Remediations is Microsoft Intune, GKE Workload Identity is Google Kubernetes Engine, AWS
+  security groups are AWS.
+- A company named as an employer, customer or partner is not its products: "Databricks Customer
+  Support" or "at Stripe" names no skill.
+
 ## Category
 
 Every kept skill has exactly one category, the one that best says what it is:
@@ -86,7 +108,7 @@ Every kept skill has exactly one category, the one that best says what it is:
 | `ml` | machine learning and AI models, libraries and platforms |
 | `testing` | test frameworks and tools |
 | `os` | operating systems |
-| `security` | security tools, protocols and standards |
+| `security` | security tools, and the protocols and technical standards software implements |
 | `networking` | network protocols, hardware and tools |
 | `tool` | anything an engineer uses that fits none of the above |
 
@@ -96,6 +118,10 @@ A decision records the revision it was made under. A drop is final: a name dropp
 revision is not decided again under the next, unless the reviewer of the next names that drop's
 reason as one the new revision reopens (ADR-0013).
 
+- **Revision 2** (2026-10-07): compliance frameworks, regulations and certifications are drops, as
+  #40 dropped OWASP, ITIL, CIS Benchmarks and NIST CSF; and *In a segment* says how a segment names
+  a skill, after #54's round 0 counted concepts and bare forms as missed skills. It narrows what is
+  kept and reopens no drop.
 - **Revision 1** (2026-10-06): written from the verdict rules of #38 and #40.
 - **Revision 0** stands for those rules themselves, unwritten, under which every decision of the
   two archives was made.
