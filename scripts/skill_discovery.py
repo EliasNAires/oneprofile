@@ -24,6 +24,13 @@ near a skill more often than a longer name, a name has to be in more vacancies, 
 mostly inside a longer name. Office and design software are no anchors. A known key written with a
 space inside it is that key's spelling, and proposed on less evidence.
 
+Round 2 brings back the names in few ads, which round 1's ten-vacancy bar cut to fit a cap that is
+gone: a name needs three companies, and so three vacancies, as in round 0. A vacancy counts for a
+phrase only where it writes the words as one, so a pair from a list ("Grafana, Kibana") is not
+counted as a phrase. An acronym sits near a skill as often as any other name has to, since protocols
+are named in prose. A known key respelled still skips the tests a name in its own right takes, but no
+longer has a lower bar of vacancies.
+
 Reads the segment export skillloop makes from the development database, which has to hold
 classified-2026-10-06.dump the first time.
 """
@@ -38,14 +45,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import skillloop  # noqa: E402
 
 MAX_WORDS = 3
-MIN_DF = 10  # names in few ads are most of the phrases, and weigh least on recall, which counts segments
-MIN_RESPELLED_DF = 3  # a known key written another way needs no more evidence than that it is written
-MIN_COMPANIES = 3  # one company's boilerplate and its own name are not skills
+MIN_COMPANIES = 3  # one company's boilerplate and its own name are not skills; in as many vacancies at least
 MIN_CAPITALIZED = 0.4  # pytest is capitalized in 45% of its mid-sentence occurrences
 MIN_PHRASE_CAPITALIZED = 0.9  # a product word after a known name (MongoDB Atlas) is capitalized with it
 NEAR = 6  # words either side
 MIN_NEAR = 0.2  # 95% of the skills in skills.tsv sit near another more often than this
-MIN_SHORT_NEAR = 0.4  # an acronym is capitalized by construction; 87% of those in skills.tsv sit near more often
 MAX_EXTENDED = 0.7  # 97% of the keys of skills.tsv sit inside a longer name less often (Workspace in Google Workspace)
 
 # Segment.WORD: letters and digits of any script, holding together across the apostrophes, full stops
@@ -55,7 +59,6 @@ SENTENCE_BREAK = re.compile(r"[.!?]\s|[:;•*|–—]|(^|\s)-(\s|$)")
 MARKED = re.compile(r"[0-9+#.]")
 POSSESSIVE = re.compile(r"['’]s$", re.IGNORECASE)
 NUMBER = re.compile(r"[0-9][0-9.,+%]*(?:[kKmMbB]|년)?")  # a year, a count, a version: 2028, 5+, 2.0, 100M, 5년
-SHORT = re.compile(r"(?=.*[A-Z])[A-Z0-9]{1,3}")  # LLM, UX, I2C
 
 # A name with one of these hyphened to it is the name: Linux-based is Linux, AI-assisted is AI.
 FOLDED_SUFFIXES = {"assisted", "authorized", "aware", "based", "centric", "certified", "compatible", "compliant",
@@ -213,17 +216,14 @@ def respelled(form, compact):
 
 
 def passes(form, s, said, known, compact):
-    """Whether a phrase measured in the corpus is a candidate: in enough vacancies of enough companies,
-    written as a name, and either a known key respelled, or a name in its own right: in more vacancies,
-    near a skill, not mostly a fragment of a longer name, and naming a product."""
-    if not (s["df"] >= MIN_RESPELLED_DF and len(s["companies"]) >= MIN_COMPANIES
-            and s["capitalized"] / s["said"] >= MIN_CAPITALIZED):
+    """Whether a phrase measured in the corpus is a candidate: in the vacancies of enough companies,
+    written as a name, and either a known key respelled, or a name in its own right: near a skill, not
+    mostly a fragment of a longer name, and naming a product."""
+    if not (len(s["companies"]) >= MIN_COMPANIES and s["capitalized"] / s["said"] >= MIN_CAPITALIZED):
         return False
     if respelled(form, compact):
         return True
-    short = SHORT.fullmatch(s["forms"].most_common(1)[0][0]) is not None
-    return (s["df"] >= MIN_DF
-            and s["near"] / s["said"] >= (MIN_SHORT_NEAR if short else MIN_NEAR)
+    return (s["near"] / s["said"] >= MIN_NEAR
             and s["extended"] / s["said"] <= MAX_EXTENDED
             and names_a_product(form, s, said, known))
 
@@ -257,7 +257,8 @@ def candidate(s):
 
 
 def measure(docs, forms, anchors):
-    """For each of the name forms, the vacancies and companies mentioning it, and of its mid-sentence
+    """For each of the name forms, the vacancies and companies writing it as a phrase, not as words that
+    only follow each other across a comma or a sentence break, and of its mid-sentence
     occurrences: how many, how many written as a name, how many near an anchor's, how many inside a
     longer run of words written as names, and each spelling's count."""
     longest = max(len(form.split(" ")) for form in anchors)
@@ -268,8 +269,7 @@ def measure(docs, forms, anchors):
     for company, segments in docs:
         ws = words(segments)
         word_forms = [w.form for w in ws]
-        present = {" ".join(word_forms[i:j]) for i in range(len(word_forms))
-                   for j in range(i + 1, min(i + MAX_WORDS, len(word_forms)) + 1)} & forms
+        present = {" ".join(word_forms[i:j]) for i, j in phrases(ws)} & forms
         if not present:
             continue
         for form in present:

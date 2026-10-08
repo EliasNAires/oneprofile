@@ -8,7 +8,6 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
-from unittest import mock
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -58,13 +57,6 @@ class WordsTest(unittest.TestCase):
 
 
 class MineTest(unittest.TestCase):
-    """Each ad of ads() makes a corpus of three vacancies, so the frequency a name needs is three here,
-    except in test_needs_more_vacancies_for_a_name_than_for_a_respelled_key."""
-
-    def setUp(self):
-        patch = mock.patch.object(skill_discovery, "MIN_DF", 3)
-        patch.start()
-        self.addCleanup(patch.stop)
 
     def test_finds_a_capitalized_name_near_a_known_skill(self):
         found = mined(ads("We run Grafana and Docker."))
@@ -119,6 +111,13 @@ class MineTest(unittest.TestCase):
         found = mined(ads("We run GitHub Actions and Docker.", "We run Grafana, Kibana with Docker."))
         self.assertIn("GitHub Actions", found)
         self.assertNotIn("Grafana Kibana", found)
+
+    def test_counts_a_vacancy_for_a_phrase_only_where_it_is_written_as_one(self):
+        written = [(company, ["We run Grafana Kibana and Docker."]) for company in ("Acme", "Globex", "Initech")]
+        listed = [(company, ["We run Grafana, Kibana and Docker."]) for company in ("Hooli", "Umbrella", "Vandelay")]
+        found = mined(written + listed)["Grafana Kibana"]
+        self.assertEqual((found["df"], found["companies"]), (3, 3))
+        self.assertNotIn("Grafana Kibana", mined(written[:2] + listed))
 
     def test_needs_every_word_of_a_phrase_capitalized(self):
         found = mined(ads("We run Grafana and Docker."))
@@ -204,11 +203,10 @@ class MineTest(unittest.TestCase):
         self.assertNotIn("Cloud Docker", mined(ads("We run Cloud Docker and Kubernetes.", "Our cloud runs Kubernetes.",
                                                    "The cloud is Docker.")))
 
-    def test_needs_an_acronym_mostly_near_a_known_skill(self):
-        found = mined(ads("We run SIP and Docker.", "SIP trunks and Kubernetes.", "Docker runs here. Today, after a "
-                          "long talk about it with the whole team, we run an LLM, and our LLM is the best LLM there is."))
+    def test_takes_an_acronym_named_in_prose_as_any_other_name(self):
+        found = mined(ads("We run SIP and Docker.", "Our SIP stack speaks to phones. SIP routes every call we take.",
+                          "SIP trunks carry calls. We size SIP for peaks."))
         self.assertIn("SIP", found)
-        self.assertNotIn("LLM", found)
 
     def test_takes_no_name_mostly_inside_a_longer_one(self):
         found = mined(ads("We run Google Workspace and Docker.", "We run Google Workspace and Kubernetes.",
@@ -226,13 +224,6 @@ class MineTest(unittest.TestCase):
         self.assertIn("GPU", found)
         self.assertNotIn("GPUs", found)
 
-    def test_needs_more_vacancies_for_a_name_than_for_a_respelled_key(self):
-        with mock.patch.object(skill_discovery, "MIN_DF", 4):
-            found = mined(ads("We run Grafana and Docker.", "Our data sits in Mongo DB."), covered=KNOWN | {"mongodb"},
-                          known=KNOWN | {"mongodb"})
-        self.assertNotIn("Grafana", found)
-        self.assertIn("Mongo DB", found)
-
     def test_takes_only_anchors_for_evidence(self):
         self.assertNotIn("Grafana", mined(ads("We run Grafana and Docker."), anchors=KNOWN - {"docker"}))
 
@@ -249,7 +240,6 @@ class MineTest(unittest.TestCase):
 
 class CandidatesFileTest(unittest.TestCase):
 
-    @mock.patch.object(skill_discovery, "MIN_DF", 3)
     def test_reads_back_what_it_writes(self):
         candidates = mine(ads("We run Datadog and Docker.", "Datadog and Docker."), KNOWN, KNOWN)
         with tempfile.TemporaryDirectory() as directory:
