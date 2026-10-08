@@ -31,6 +31,13 @@ counted as a phrase. An acronym sits near a skill as often as any other name has
 are named in prose. A known key respelled still skips the tests a name in its own right takes, but no
 longer has a lower bar of vacancies.
 
+Round 3 cuts concepts, certifications and companies, and keeps yield: an acronym is judged by how
+vacancies spell it out, where enough of them do, and is no candidate when they spell it out in lower
+case, as a title or as several things. A phrase of two or more words has to be capitalized as a whole
+more often than a word, and one holding no known name cannot end on a generic noun. A name vacancies
+mostly write after "at" is a company. A descriptor hyphened to a word (Multi-Cloud), an organization
+word (Capital, Ventures) or a count glued to a word (5+years) makes a phrase no candidate.
+
 Reads the segment export skillloop makes from the development database, which has to hold
 classified-2026-10-06.dump the first time.
 """
@@ -48,9 +55,24 @@ MAX_WORDS = 3
 MIN_COMPANIES = 3  # one company's boilerplate and its own name are not skills; in as many vacancies at least
 MIN_CAPITALIZED = 0.4  # pytest is capitalized in 45% of its mid-sentence occurrences
 MIN_PHRASE_CAPITALIZED = 0.9  # a product word after a known name (MongoDB Atlas) is capitalized with it
+MIN_WORDS_CAPITALIZED = 0.65  # round 2's feedback: round 1's sample held no keep among phrases capitalized less
 NEAR = 6  # words either side
 MIN_NEAR = 0.2  # 95% of the skills in skills.tsv sit near another more often than this
+# A company is written after "at" (engineers at GoCardless); a platform whose maker posts vacancies less
+# often: Dataiku 0.15, PlanetScale 0.22 in round 2's candidates, against GoCardless 0.44, Tipalti 0.31.
+MAX_AFTER_AT = 0.3
 MAX_EXTENDED = 0.7  # 97% of the keys of skills.tsv sit inside a longer name less often (Workspace in Google Workspace)
+# An acronym is judged by how vacancies spell it out, where they do at least MIN_SPELLED times: a technology's is
+# written as a name and means one thing (Model Context Protocol, Open Policy Agent). A concept's is written
+# in lower case somewhere (service level agreement), a certification's holds a title (Certified Kubernetes
+# Administrator), and an ambiguous abbreviation's mean several things (Azure Resource Manager, Advanced
+# Revenue Management). Each spelling counts once a vacancy. Of round 2's 608 short acronyms, 244 were
+# spelled out three times or more.
+MIN_SPELLED = 3
+# Spelled out in lower case or as a title: MCP 1%, OPA 0%, against PAM 12%, HPC 51%, API 81%.
+MAX_NOT_A_NAME_SPELLED = 0.1
+# The commonest meaning's share: MCP 0.95, OPA 0.85, against ARM 0.58, MDM 0.58, CD 0.37.
+MIN_ONE_MEANING = 0.6
 
 # Segment.WORD: letters and digits of any script, holding together across the apostrophes, full stops
 # and hyphens inside it, and keeping the + and # that end C++, C# or 5+.
@@ -59,11 +81,23 @@ SENTENCE_BREAK = re.compile(r"[.!?]\s|[:;•*|–—]|(^|\s)-(\s|$)")
 MARKED = re.compile(r"[0-9+#.]")
 POSSESSIVE = re.compile(r"['’]s$", re.IGNORECASE)
 NUMBER = re.compile(r"[0-9][0-9.,+%]*(?:[kKmMbB]|년)?")  # a year, a count, a version: 2028, 5+, 2.0, 100M, 5년
+GLUED_COUNT = re.compile(r"[0-9][0-9.,]*[+%].+")  # 5+years, not 3D or H100
+ACRONYM = re.compile(r"[A-Z]{2,6}")  # one letter is no evidence: R (preferred)
+# An acronym's spelling out, before it or after it: "Open Shortest Path First (OSPF)", "OSPF (Open Shortest Path
+# First)". A plural s after the acronym is the acronym (SLAs).
+SPELLED_BEFORE = re.compile(r"((?:[^\W_][\w'’.&/-]*,?\s+){1,8})\(\s*([A-Z]{2,6})s?\s*\)")
+SPELLED_AFTER = re.compile(r"(?<![^\W_])([A-Z]{2,6})s?\s*\(\s*([^()]{3,80})\)")
+SPELLED_PARTS = re.compile(r"[\s,/-]+")
+# Words a spelling out passes over (Network Access Control, Extract, Transform and Load).
+SMALL = {"&", "a", "an", "and", "as", "by", "de", "for", "in", "of", "on", "the", "to", "with", "y"}
 
 # A name with one of these hyphened to it is the name: Linux-based is Linux, AI-assisted is AI.
 FOLDED_SUFFIXES = {"assisted", "authorized", "aware", "based", "centric", "certified", "compatible", "compliant",
                    "driven", "enabled", "first", "focused", "friendly", "heavy", "led", "native", "oriented",
-                   "powered", "ready", "related", "savvy", "specific", "accelerated", "agnostic", "backed", "style"}
+                   "powered", "ready", "related", "savvy", "specific", "accelerated", "agnostic", "backed", "style",
+                   "augmented", "level"}
+# Words hyphened before a name that make it a descriptor (Multi-Cloud, Cross-Platform): the phrase is no name.
+DESCRIPTOR_PREFIXES = {"cross", "multi", "non"}
 # Abbreviations whose full stop, and contractions whose capital, is no evidence of a name: "e.g Python" is
 # Python, and I'm is no one.
 ABBREVIATIONS = {"e.g", "i.e", "eg", "ie", "etc", "vs", "incl", "approx", "esp", "i'm", "i’m"}
@@ -72,6 +106,8 @@ TITLES = {"admin", "administrator", "administrators", "analyst", "analysts", "ar
           "cert", "certificate", "certification", "certifications", "certified", "consultant", "consultants",
           "director", "engineer", "engineers", "ii", "iii", "intern", "iv", "jr", "junior", "lead", "officer",
           "principal", "professional", "scientist", "senior", "specialist", "specialists", "sr", "technician"}
+# Words that make a phrase an investor or an organization (Sequoia Capital, Vista Equity Partners).
+ORGANIZATIONS = {"capital", "corp", "corporation", "foundation", "inc", "llc", "ltd", "partners", "ventures"}
 # Words that end a product's name as often as a title's (Google Tag Manager, Amazon Q Developer): a title
 # only after a skill, a title word or a word that heads a title (Java Developer, Product Manager).
 ROLES = {"developer", "developers", "manager", "managers"}
@@ -79,8 +115,9 @@ ROLE_HEADS = {"account", "delivery", "engineering", "general", "hiring", "office
 # Ordinary nouns that end no product's name after a skill (Docker Access, Kubernetes Pods), nor lead into
 # one (Platforms Docker). Inside a name they are part of it: Azure Data Factory.
 GENERIC = {"access", "ai", "api", "apis", "automation", "business", "certs", "ci", "data", "development",
-           "experience", "fundamentals", "it", "key", "knowledge", "office", "ops", "platform", "platforms", "pod",
-           "pods", "proficiency", "role", "roles", "sdk", "sdks", "skills", "stack", "suite", "tooling", "tools"}
+           "experience", "fundamentals", "gpu", "gpus", "it", "key", "knowledge", "ml", "office", "ops", "os",
+           "platform", "platforms", "pod", "pods", "proficiency", "role", "roles", "saas", "sdk", "sdks", "skills",
+           "soc", "stack", "suite", "tooling", "tools"}
 # Office, design and engineering software the criterion drops: its passages vouch for their own vendors,
 # so its keys are no evidence that a name beside them is a skill.
 NOT_ANCHORS = {"Abaqus", "Adobe After Effects", "Adobe Creative Cloud", "Adobe InDesign", "Adobe Photoshop",
@@ -165,13 +202,18 @@ def a_title(words, known):
 def proposable(form, covered, known, compact):
     """Whether a phrase's name form can be a candidate at all, before the corpus is asked about it: not
     covered, not covered once a plural s is taken off, and either a known key respelled or holding no
-    number or folded suffix, no title, and not names already known run together."""
+    number, folded suffix, descriptor prefix or organization word, no title, and not names already known
+    run together. A plural is no candidate where its singular cannot be one (ITIL Foundations, Chief Data
+    Officers)."""
     if form in covered or (form.endswith("s") and form[:-1] in covered):
         return False
     if respelled(form, compact):
         return True
+    if form.endswith("s") and not proposable(form[:-1], covered, known, compact):
+        return False
     words = form.split(" ")
-    return not (any(NUMBER.fullmatch(word) or word in FOLDED_SUFFIXES for word in words)
+    return not (any(NUMBER.fullmatch(word) or GLUED_COUNT.fullmatch(word) or word in FOLDED_SUFFIXES
+                    or word in DESCRIPTOR_PREFIXES or word in ORGANIZATIONS for word in words)
                 or a_title(words, known) or names_run_together(words, known))
 
 
@@ -182,7 +224,9 @@ def mine(docs, covered, known, anchors=None):
     compact = {key.replace(" ", "") for key in known}
     said, forms = gather(docs, covered, known, compact)
     stats = measure(docs, forms, known if anchors is None else anchors)
-    return [candidate(s) for form, s in stats.items() if passes(form, s, said, known, compact)]
+    acronyms = {commonest_spelling(s) for s in stats.values() if ACRONYM.fullmatch(commonest_spelling(s))}
+    spelled = spelled_out(docs, acronyms, known)
+    return [candidate(s) for form, s in stats.items() if passes(form, s, said, known, compact, spelled)]
 
 
 def gather(docs, covered, known, compact):
@@ -215,25 +259,86 @@ def respelled(form, compact):
     return " " in form and len(joined) > 3 and joined in compact
 
 
-def passes(form, s, said, known, compact):
+def passes(form, s, said, known, compact, spelled):
     """Whether a phrase measured in the corpus is a candidate: in the vacancies of enough companies,
     written as a name, and either a known key respelled, or a name in its own right: near a skill, not
-    mostly a fragment of a longer name, and naming a product."""
+    mostly a company written after "at" nor a fragment of a longer name, naming a product, and, for an
+    acronym, spelled out as one."""
     if not (len(s["companies"]) >= MIN_COMPANIES and s["capitalized"] / s["said"] >= MIN_CAPITALIZED):
         return False
     if respelled(form, compact):
         return True
     return (s["near"] / s["said"] >= MIN_NEAR
+            and s["after_at"] / s["said"] <= MAX_AFTER_AT
             and s["extended"] / s["said"] <= MAX_EXTENDED
-            and names_a_product(form, s, said, known))
+            and (" " not in form or s["capitalized"] / s["said"] >= MIN_WORDS_CAPITALIZED)
+            and names_a_product(form, s, said, known)
+            and spelled_as_a_name(spelled.get(commonest_spelling(s), collections.Counter())))
+
+
+def spelled_out(docs, acronyms, known):
+    """For each of the acronyms, its spellings out in the docs, each counted once a vacancy, as
+    (whether it is written as a name, holding no lower-case word and no title; what it means, the first
+    letters of its words)."""
+    spellings = collections.defaultdict(collections.Counter)
+    for _, segments in docs:
+        found = set()
+        for segment in segments:
+            if "(" not in segment:
+                continue
+            for pattern, before in ((SPELLED_BEFORE, True), (SPELLED_AFTER, False)):
+                for match in pattern.finditer(segment):
+                    words, acronym = match.groups() if before else match.groups()[::-1]
+                    spelling = acronym in acronyms and spelling_out(SPELLED_PARTS.split(words.strip()), acronym,
+                                                                    before)
+                    if spelling:
+                        found.add((acronym, tuple(spelling)))
+        for acronym, spelling in found:
+            words = [part for part in spelling if part.lower() not in SMALL]
+            written_as_a_name = not any(word.islower() for word in words) and not a_title(
+                [word.lower() for word in words], known)
+            spellings[acronym][written_as_a_name, tuple(word[:4].lower() for word in words)] += 1
+    return spellings
+
+
+def spelling_out(parts, acronym, before):
+    """The fewest of the parts, counted from the last when they come before the acronym and from the
+    first when after it, whose initials spell the acronym, small words passed over and none at the far
+    end."""
+    if before:
+        spelling = spelling_out(parts[::-1], acronym[::-1], False)
+        return spelling and spelling[::-1]
+    initials = ""
+    for k, part in enumerate(parts):
+        if part.lower() not in SMALL:
+            initials += part[0].upper()
+            if initials == acronym:
+                return parts[:k + 1]
+            if not acronym.startswith(initials):
+                return None
+    return None
+
+
+def spelled_as_a_name(spellings):
+    """Whether the vacancies spelling an acronym out write it as a name, and as one name: true when too
+    few spell it out to tell."""
+    total = sum(spellings.values())
+    if total < MIN_SPELLED:
+        return True
+    meanings = collections.Counter()
+    for (_, meaning), n in spellings.items():
+        meanings[meaning] += n
+    not_a_name = sum(n for (written_as_a_name, _), n in spellings.items() if not written_as_a_name)
+    return not_a_name / total < MAX_NOT_A_NAME_SPELLED and meanings.most_common(1)[0][1] / total >= MIN_ONE_MEANING
 
 
 def names_a_product(form, s, said, known):
     """Whether the words of a phrase that are not a known name are name-like: any of them, for a phrase
-    holding none; each, for one that does, none that ends the phrase or leads into the known name a
-    generic noun, and those after the known name passing too when the phrase is capitalized as a whole
-    (MongoDB Atlas, Redis Cloud). A phrase of ordinary words capitalized as a whole is a heading or a
-    field of study as often as a name (Key Responsibilities, Computer Science), so a phrase holding no
+    holding none, whose last word is no generic noun either (Excel Experience, NVIDIA GPU);
+    each, for one that does, none that ends the phrase or leads into the known name a generic noun, and
+    those after the known name passing too when the phrase is capitalized as a whole (MongoDB Atlas, Redis
+    Cloud). A phrase of ordinary words capitalized as a whole is a heading or a field of study as often as
+    a name (Key Responsibilities, Computer Science), so a phrase holding no
     known name has no such pass."""
 
     def name_like(word):
@@ -242,7 +347,7 @@ def names_a_product(form, s, said, known):
     words = form.split(" ")
     inside = spans(words, known)
     if not inside:
-        return any(name_like(word) for word in words)
+        return any(name_like(word) for word in words) and words[-1] not in GENERIC
     whole = s["capitalized"] / s["said"] >= MIN_PHRASE_CAPITALIZED
     first = min(i for i, _ in inside)
     outside = [k for k in range(len(words)) if not any(i <= k < j for i, j in inside)]
@@ -250,21 +355,26 @@ def names_a_product(form, s, said, known):
                and (name_like(words[k]) or (whole and k > first)) for k in outside)
 
 
+def commonest_spelling(s):
+    """A measured phrase's commonest spelling."""
+    return s["forms"].most_common(1)[0][0]
+
+
 def candidate(s):
     """A candidate as a run writes it, named by its commonest spelling."""
-    return {"name": s["forms"].most_common(1)[0][0], "df": s["df"], "companies": len(s["companies"]),
+    return {"name": commonest_spelling(s), "df": s["df"], "companies": len(s["companies"]),
             "capitalized": s["capitalized"] / s["said"], "near": s["near"] / s["said"], "forms": dict(s["forms"])}
 
 
 def measure(docs, forms, anchors):
     """For each of the name forms, the vacancies and companies writing it as a phrase, not as words that
     only follow each other across a comma or a sentence break, and of its mid-sentence
-    occurrences: how many, how many written as a name, how many near an anchor's, how many inside a
-    longer run of words written as names, and each spelling's count."""
+    occurrences: how many, how many written as a name, how many near an anchor's, how many right after
+    "at", how many inside a longer run of words written as names, and each spelling's count."""
     longest = max(len(form.split(" ")) for form in anchors)
     firsts = {form.split(" ")[0] for form in anchors}
     stats = collections.defaultdict(lambda: {"df": 0, "companies": set(), "said": 0, "capitalized": 0,
-                                             "near": 0, "extended": 0,
+                                             "near": 0, "after_at": 0, "extended": 0,
                                              "forms": collections.Counter()})
     for company, segments in docs:
         ws = words(segments)
@@ -287,6 +397,7 @@ def measure(docs, forms, anchors):
             s["capitalized"] += written_as_name(text)
             s["forms"][text] += 1
             s["near"] += any((b <= i or a >= j) and a <= j + NEAR and b >= i - NEAR for a, b in skills)
+            s["after_at"] += ws[i].joined and ws[i - 1].form == "at"
             s["extended"] += ((ws[i].joined and extends(ws[i - 1]))
                               or (j < len(ws) and ws[j].joined and extends(ws[j])))
     return stats

@@ -208,6 +208,80 @@ class MineTest(unittest.TestCase):
                           "SIP trunks carry calls. We size SIP for peaks."))
         self.assertIn("SIP", found)
 
+    def test_takes_an_acronym_ads_spell_out_as_a_name(self):
+        found = mined(ads("We run Open Shortest Path First (OSPF) with Docker.",
+                          "OSPF (Open Shortest Path First) and Docker."))
+        self.assertIn("OSPF", found)
+
+    def test_takes_no_acronym_ads_spell_out_in_lower_case(self):
+        found = mined(ads("We keep a Service Level Agreement (SLA) on Docker.",
+                          "We meet each SLA (service level agreement) on Docker.", "We set an SLA for Docker.", "Our SLA covers Docker."))
+        self.assertNotIn("SLA", found)
+
+    def test_reads_a_spelling_out_across_commas(self):
+        found = mined(ads("We build ETL in Docker.", "We extract, transform and load (ETL) with Docker."))
+        self.assertNotIn("ETL", found)
+
+    def test_takes_no_parenthesis_after_a_letter_for_a_spelling_out(self):
+        found = mined(ads("We run Q (quarterly) with Docker.", "We run Q on Docker."))
+        self.assertIn("Q", found)
+
+    def test_takes_a_phrase_of_unknown_names_that_starts_with_a_generic_noun(self):
+        self.assertIn("Data Factory", mined(ads("We run Data Factory with Docker.")))
+
+    def test_takes_no_acronym_ads_spell_out_as_several_things(self):
+        found = mined(ads("We run Azure Resource Manager (ARM) with Docker.",
+                          "Our Advanced Revenue Management (ARM) team uses Docker."))
+        self.assertNotIn("ARM", found)
+
+    def test_takes_no_acronym_ads_spell_out_as_a_certification(self):
+        found = mined(ads("A Certified Kubernetes Administrator (CKA) runs Docker.", "We want a CKA for Docker."))
+        self.assertNotIn("CKA", found)
+
+    def test_judges_an_acronym_by_its_spellings_out_only_in_three_vacancies(self):
+        docs = ads("We run SLA tooling with Docker.") + [
+            ("Hooli", ["We meet a service level agreement (SLA) with Docker."])]
+        self.assertIn("SLA", mined(docs))
+
+    def test_needs_a_phrase_capitalized_as_a_whole_more_often_than_a_word(self):
+        found = mined(ads("We run Load Balancer setups with Docker.", "We run load balancer setups with Docker."))
+        self.assertNotIn("Load Balancer", found)
+
+    def test_takes_no_phrase_of_unknown_names_that_ends_in_a_generic_noun(self):
+        found = mined(ads("We want Excel Experience with Docker.", "We run Windows OS and Docker.",
+                          "We run NVIDIA GPU and Docker.", "We run NVIDIA Triton and Docker."))
+        for phrase in ("Excel Experience", "Windows OS", "NVIDIA GPU"):
+            self.assertNotIn(phrase, found)
+        self.assertIn("NVIDIA Triton", found)
+
+    def test_takes_no_word_with_a_hyphened_descriptor(self):
+        found = mined(ads("We run Multi-Cloud stacks, Retrieval-Augmented search and Docker.",
+                          "Our Cluster-level Docker work."))
+        for phrase in ("Multi-Cloud", "Multi-Cloud stacks", "Retrieval-Augmented", "Cluster-level"):
+            self.assertNotIn(phrase, found)
+
+    def test_takes_no_count_glued_to_a_word(self):
+        self.assertNotIn("5+Years", mined(ads("We want 5+Years of Docker.")))
+
+    def test_takes_no_name_ads_mostly_place_people_at(self):
+        found = mined(ads("Engineers at Tipalti run Docker.", "We run Tipalti with Docker.", "Tipalti and Kubernetes.",
+                          "Teams at Dataiku run Docker.", "We run Dataiku with Docker.",
+                          "We run Dataiku with Kubernetes.",
+                          "Dataiku and Python.", "We use Dataiku and Docker."))
+        self.assertNotIn("Tipalti", found)
+        self.assertIn("Dataiku", found)
+
+    def test_takes_no_investor_or_organization(self):
+        found = mined(ads("Backed by Sequoia Capital and Battery Ventures, we run Docker.",
+                          "Vista Equity Partners runs Docker."))
+        for name in ("Sequoia Capital", "Battery Ventures", "Vista Equity Partners", "Equity Partners"):
+            self.assertNotIn(name, found)
+
+    def test_takes_no_plural_of_what_cannot_be_a_candidate(self):
+        found = mined(ads("We run ITIL Foundations and Docker.", "Our Chief Data Officers run Docker."))
+        self.assertNotIn("ITIL Foundations", found)
+        self.assertNotIn("Chief Data Officers", found)
+
     def test_takes_no_name_mostly_inside_a_longer_one(self):
         found = mined(ads("We run Google Workspace and Docker.", "We run Google Workspace and Kubernetes.",
                           "We run Google Workspace and Python.", "A Workspace and Docker."),
@@ -220,9 +294,9 @@ class MineTest(unittest.TestCase):
         self.assertNotIn("Grafana Based", mined(ads("Our Grafana Based stack with Docker.")))
 
     def test_takes_no_plural_of_another_candidate(self):
-        found = mined(ads("We run GPUs and Docker.", "We run a GPU and Docker."))
-        self.assertIn("GPU", found)
-        self.assertNotIn("GPUs", found)
+        found = mined(ads("We run FPGAs and Docker.", "We run an FPGA and Docker."))
+        self.assertIn("FPGA", found)
+        self.assertNotIn("FPGAs", found)
 
     def test_takes_only_anchors_for_evidence(self):
         self.assertNotIn("Grafana", mined(ads("We run Grafana and Docker."), anchors=KNOWN - {"docker"}))
