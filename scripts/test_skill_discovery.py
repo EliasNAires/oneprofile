@@ -222,6 +222,14 @@ class MineTest(unittest.TestCase):
         found = mined(ads("We build ETL in Docker.", "We extract, transform and load (ETL) with Docker."))
         self.assertNotIn("ETL", found)
 
+    def test_reads_a_spelling_out_that_ends_on_a_hyphen(self):
+        spellings = skill_discovery.spelled_out([("c", ["Extract, Transform, Load- (ETL)"])], {"ETL"}, set())
+        self.assertEqual({(True, ("extr", "tran", "load")): 1}, dict(spellings["ETL"]))
+
+    def test_reads_a_spelling_out_that_starts_on_a_hyphen(self):
+        spellings = skill_discovery.spelled_out([("c", ["ETL (-Extract Transform Load)"])], {"ETL"}, set())
+        self.assertEqual({(True, ("extr", "tran", "load")): 1}, dict(spellings["ETL"]))
+
     def test_takes_no_parenthesis_after_a_letter_for_a_spelling_out(self):
         found = mined(ads("We run Q (quarterly) with Docker.", "We run Q on Docker."))
         self.assertIn("Q", found)

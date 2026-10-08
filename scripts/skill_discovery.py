@@ -289,8 +289,8 @@ def spelled_out(docs, acronyms, known):
             for pattern, before in ((SPELLED_BEFORE, True), (SPELLED_AFTER, False)):
                 for match in pattern.finditer(segment):
                     words, acronym = match.groups() if before else match.groups()[::-1]
-                    spelling = acronym in acronyms and spelling_out(SPELLED_PARTS.split(words.strip()), acronym,
-                                                                    before)
+                    parts = [part for part in SPELLED_PARTS.split(words) if part]
+                    spelling = acronym in acronyms and spelling_out(parts, acronym, before)
                     if spelling:
                         found.add((acronym, tuple(spelling)))
         for acronym, spelling in found:
