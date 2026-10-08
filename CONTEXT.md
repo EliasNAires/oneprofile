@@ -380,8 +380,21 @@ _Avoid_: history, blacklist, verdict cache, review log
 **Ordinary List**:
 The words that skill discovery's recall check never asks Jev about again, because Jev has dropped
 each of them in several different segments and kept it in none. Built from Jev's verdicts, never
-from a dictionary.
-_Avoid_: stopwords, dictionary, common words
+from a dictionary. Replaced by the stoplist.
+_Avoid_: dictionary, common words
+
+**Piece**:
+A name-like piece of a segment that recall would ask Jev about: a word written capitalized or
+with a digit or symbol, a lowercase word outside the known vocabulary, or a run of up to three
+such words (ADR-0015).
+_Avoid_: candidate, token, n-gram
+
+**Stoplist**:
+The single words recall never asks Jev about, in `src/main/resources/taxonomy/stopwords.tsv`: the
+closed-class words of English and Spanish, and the most frequent pieces of the IN vacancies and
+the pile judged by hand to name no technology in any context. A word that could name one, as a
+bare form does (go, spring, net), stays off it. Replaces the ordinary list (#60).
+_Avoid_: ordinary list, stopwords, dictionary
 
 ### Rule Loops
 
