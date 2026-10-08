@@ -1,0 +1,22 @@
+{
+ "r:119374:acselerator": {"verdict": "a", "clause": "A bare form... is a keep where the text uses it for the product", "pattern": "vendor-prefixed bare product name"},
+ "p:owasp top ten": {"verdict": "a", "clause": "A compliance framework, regulation or certification", "pattern": "named vulnerability awareness list"},
+ "p:falcon": {"verdict": "a", "clause": "A bare form... is a keep where the text uses it for the product", "pattern": "bare form valid once, homonym elsewhere"},
+ "r:199195:sap cloud connector": {"verdict": "b", "clause": "Keep... a tool or a platform", "pattern": "full vendor-prefixed product name"},
+ "p:excel experience": {"verdict": "b", "clause": "An ordinary word before or after it... is a drop", "pattern": "ordinary word attached to key"},
+ "p:dag": {"verdict": "a", "clause": "An ambiguous abbreviation: none dominant", "pattern": "abbreviation never means the tech"},
+ "p:unreal animation": {"verdict": "b", "clause": "part of a longer name written around it", "pattern": "fragment of a longer phrase"},
+ "p:google marketing platform": {"verdict": "b", "clause": "Not a technology at all... a vendor umbrella, a product line", "pattern": "umbrella brand for product suite"},
+ "r:209304:kotlin flow": {"verdict": "a", "clause": "a named feature or service... by its own name", "pattern": "named feature of a language"},
+ "p:palantir": {"verdict": "a", "clause": "A vendor's name is a drop even where ads use it for its products", "pattern": "vendor name used for product"},
+ "r:209304:kotlin kotlin": {"verdict": "b", "clause": "the technology's whole name and nothing more", "pattern": "duplicated word mining artifact"},
+ "p:tt": {"verdict": "b", "clause": "An ambiguous abbreviation: none dominant", "pattern": "ambiguous abbreviation, multiple meanings"},
+ "p:dl": {"verdict": "b", "clause": "A practice, method, technique... is no skill", "pattern": "ML technique abbreviation not product"},
+ "r:37415:workers ai": {"verdict": "b", "clause": "Keep... a cloud or cloud service", "pattern": "specific named cloud AI service"},
+ "p:dba": {"verdict": "b", "clause": "An ambiguous abbreviation: none dominant", "pattern": "role title, ambiguous abbreviation"},
+ "r:69710:fio": {"verdict": "a", "clause": "Keep... a tool or a platform", "pattern": "named benchmarking tool in list"},
+ "r:212096:shapefiles": {"verdict": "a", "clause": "a protocol, file format or standard that software implements", "pattern": "named geospatial file format"},
+ "p:troubleshoot microsoft": {"verdict": "a", "clause": "An ordinary word before or after it... is a drop", "pattern": "verb plus product name"},
+ "p:llm augmented": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology", "pattern": "generic concept plus ordinary word"},
+ "p:csd": {"verdict": "b", "clause": "An ambiguous abbreviation: none dominant", "pattern": "ambiguous abbreviation, multiple meanings"}
+}

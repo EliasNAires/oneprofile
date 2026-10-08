@@ -1,0 +1,102 @@
+{
+  "p:saga": {
+    "verdict": "b",
+    "clause": "A practice, method, technique, architecture or kind of system is no skill",
+    "pattern": "architecture pattern named"
+  },
+  "p:dqn": {
+    "verdict": "b",
+    "clause": "A practice, method, technique, architecture or kind of system is no skill",
+    "pattern": "named RL algorithm technique"
+  },
+  "r:119374:omicron": {
+    "verdict": "b",
+    "clause": "A technology no software person is hired for",
+    "pattern": "technology no software engineer hires"
+  },
+  "r:201565:sr iov": {
+    "verdict": "b",
+    "clause": "So is a protocol, file format or standard that software implements",
+    "pattern": "named standard protocol"
+  },
+  "p:anti ddos": {
+    "verdict": "a",
+    "clause": "A generic concept",
+    "pattern": "generic security practice named"
+  },
+  "p:balancer": {
+    "verdict": "b",
+    "clause": "An ordinary word, in English or Spanish, or a phrase of them, used in its ordinary sense",
+    "pattern": "fragment of generic phrase"
+  },
+  "r:53072:log analytics": {
+    "verdict": "b",
+    "clause": "A name is judged where it is written, and exactly as given",
+    "pattern": "named cloud service feature"
+  },
+  "r:119374:enervista": {
+    "verdict": "b",
+    "clause": "A technology no software person is hired for",
+    "pattern": "technology no software engineer hires"
+  },
+  "p:integer": {
+    "verdict": "b",
+    "clause": "An ordinary word, in English or Spanish, or a phrase of them, used in its ordinary sense",
+    "pattern": "fragment of generic phrase"
+  },
+  "r:106258:click": {
+    "verdict": "b",
+    "clause": "A name is judged where it is written, and exactly as given",
+    "pattern": "ordinary word as library name"
+  },
+  "p:nrf": {
+    "verdict": "a",
+    "clause": "An ambiguous abbreviation",
+    "pattern": "ambiguous abbreviation multiple meanings"
+  },
+  "p:mckinsey": {
+    "verdict": "a",
+    "clause": "Not a technology at all: a company",
+    "pattern": "company name not technology"
+  },
+  "p:mri": {
+    "verdict": "b",
+    "clause": "An ambiguous abbreviation",
+    "pattern": "ambiguous abbreviation multiple meanings"
+  },
+  "p:arm": {
+    "verdict": "a",
+    "clause": "A name with an ordinary word before or after it",
+    "pattern": "name glued to ordinary word"
+  },
+  "r:48599:vagrant": {
+    "verdict": "b",
+    "clause": "A name is judged where it is written, and exactly as given",
+    "pattern": "specific devops tool named"
+  },
+  "r:11764:canfd": {
+    "verdict": "b",
+    "clause": "So is a protocol, file format or standard that software implements",
+    "pattern": "named standard protocol"
+  },
+  "p:cta": {
+    "verdict": "a",
+    "clause": "A compliance framework, regulation or certification",
+    "pattern": "certification or job title not technology"
+  },
+  "r:190204:daml": {
+    "verdict": "b",
+    "clause": "A skill is a technology: one specific named language, framework or library",
+    "pattern": "specific named programming language"
+  },
+  "p:mtd": {
+    "verdict": "b",
+    "clause": "An ambiguous abbreviation",
+    "pattern": "ambiguous abbreviation multiple meanings"
+  },
+  "r:105571:zemax": {
+    "verdict": "b",
+    "clause": "A technology no software person is hired for",
+    "pattern": "technology no software engineer hires"
+  }
+}

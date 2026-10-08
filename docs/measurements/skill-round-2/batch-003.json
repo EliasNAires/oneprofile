@@ -1,0 +1,122 @@
+[
+ {
+  "id": "r:119374:acselerator",
+  "text": "Name: AcSELerator\nSegment: Independently execute relay protection testing using Doble, Omicron, RTS, SEL AcSELerator, GE Enervista, and equivalent testing platforms.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:owasp top ten",
+  "text": "Name: OWASP Top Ten\nSegments:\n- Ability to clearly communicate security topics and vulnerability classes (e.g. OWASP Top Ten) and ability to provide actionable direction to product teams.\n- Performing application security assessments targeting OWASP Top Ten vulnerabilities and API security vectors.\n- Understanding of secure software development practices, threat modeling, and knowledge of common security vulnerabilities (like OWASP Top Ten)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:falcon",
+  "text": "Name: Falcon\nSegments:\n- Security & Threat Intelligence: CrowdStrike Falcon, Microsoft Defender, SentinelOne, Okta, MITRE ATT&CK, MISP, OpenCTI, Recorded Future, FS-ISAC.\n- The SpaceX engineering teams tackle the most challenging problems in space exploration by developing our reusable launch vehicles (Falcon 9 and Falcon Heavy) and spacecraft (Crew Dragon and Cargo Dragon).\n- The IT Network Infrastructure team installs and supports the infrastructure used for all types of telecommunications in support of our launch vehicles, spacecraft and production areas, including the layer 1 fiber and copper data network cabling infrastructure, operational voice (both wired and wireless systems), mission video, ground-side vehicle and payload interface RF systems, ground stations, telemetry and optical tracking systems, marine communications, readiness testing, and other systems involved in real-time communications and operations for Falcon, Dragon, Starship and other missions.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:199195:sap cloud connector",
+  "text": "Name: SAP Cloud Connector\nSegment: SAP Cloud Connector",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:excel experience",
+  "text": "Name: Excel Experience\nSegments:\n- Analytic skills, including intermediate or advanced excel experience;\n- Build the Excel Experience: Develop and ship production-grade features for the Excel plugin that integrate AlphaSense's capabilities while respecting Excel's performance and stability requirements\n- Advanced Excel experience.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:dag",
+  "text": "Name: DAG\nSegments:\n- Experience with Microsoft Fabric, including Lakehouse architecture, Notebooks (PySpark, Spark SQL, DAG workflows), and PowerShell scripting.\n- The UX Engineer will ensure that DAG AI capabilities are designed around the actual workflows, cognitive needs, and technical proficiency of DAG users.\n- You'll work within the Data Analytics Group (DAG), partnering closely with Analytics Engineers, Data Analysts, Data Scientists, and Data Product Managers, though you won't own dbt models, metric definitions, or reporting.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:unreal animation",
+  "text": "Name: Unreal Animation\nSegments:\n- Strong experience with Unreal Engine, Blueprints, and Unreal animation principles (Animation Blueprints, state machines, blend spaces, linked layers).\n- Unreal Engine, Blueprints and Unreal Animation Principles",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:google marketing platform",
+  "text": "Name: Google Marketing Platform\nSegments:\n- As Head of Data Services, you will lead Brainlabs' data capability across Business Intelligence, Data Science, digital analytics, and Google Marketing Platform, setting the strategic direction and quality bar for every team under your remit.\n- 6-8 years of experience of working with data for major digital media platforms (e.g. Google Marketing Platform, Meta, LinkedIn, etc.) across a variety of digital channels (Search, Display, Social, Video, and Email).\n- 3-5+ years of experience of working with data for major digital media platforms (e.g. Google Marketing Platform, Meta, LinkedIn, etc.) across a variety of digital channels (Search, Display, Social, Video, and Email).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:209304:kotlin flow",
+  "text": "Name: Kotlin Flow\nSegment: Kotlin Kotlin Coroutines · Kotlin Flow · Jetpack Navigation · Dagger 2 · Room · Custom Views, Canvas & Paint · Jetpack Compose · JUnit",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:palantir",
+  "text": "Name: Palantir\nSegments:\n- Experience with Oracle Fusion, Salesforce, Slack, and Palantir Foundry are preferred.\n- With world-class collaborators like Palantir, Nvidia, HPE, and Oracle, we’re building intelligent infrastructure that enhances human capability and drives impact at the edge and across a range of enterprises.\n- The client is adopting Palantir as the target modernization platform.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:209304:kotlin kotlin",
+  "text": "Name: Kotlin Kotlin\nSegment: Kotlin Kotlin Coroutines · Kotlin Flow · Jetpack Navigation · Dagger 2 · Room · Custom Views, Canvas & Paint · Jetpack Compose · JUnit",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:tt",
+  "text": "Name: TT\nSegments:\n- As our TT-Distributed Software Engineer, you will develop and optimize distributed software systems that power the most efficient and highest-performing AI and HPC clusters.\n- We are seeking a Technical Director to work directly with the Government acquisition and mission leaders responsible for a critical Satellite Control (Telemetry, Tracking, and Command - TT&C) capability.\n- Experience contributing to CUDA Runtime (cudart), ROCm (HIP, ROCr, HSA), the Tenstorrent runtime (TT-Metalium), oneAPI Level Zero, OpenCL, or another accelerator runtime software stack.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:dl",
+  "text": "Name: DL\nSegments:\n- Model Development & Tuning: Train, fine-tune, and evaluate ML/DL models for pattern matching, anomaly detection, and classification across massive, heterogeneous security datasets.\n- Automated Security Tooling: Design and develop AI-powered automated security detection tools. Utilize Machine Learning (ML) and Deep Learning (DL) techniques to enhance threat detection, anomalous behavior analysis, and vulnerability discovery efficiency.\n- Familiarity with ML/DL frameworks such as PyTorch or TensorFlow.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:37415:workers ai",
+  "text": "Name: Workers AI\nSegment: Many of our products also incorporate strong AI components, giving you opportunities to build sophisticated, AI-ready data layers and work with modern AI infrastructure and tools such as vector databases, MCP-based services, and Workers AI.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:dba",
+  "text": "Name: DBA\nSegments:\n- Fluency across the operational mechanics: bulk account opening, ACAT and non-ACAT transfers, NIGO resolution, billing setup, multi-DBA and sub-firm hierarchy, and reporting and integration dependencies — enough to spot risk early and escalate well\n- Property-casualty insurance and related services are written or provided by Housing Authority Risk Retention Group, Inc.; Housing Authority Property Insurance, A Mutual Company; Housing Enterprise Insurance Company, Inc.; Housing Specialty Insurance Company, Inc.; Innovative Housing Insurance Company Inc.; Housing Investment Group, Inc.; and Housing Insurance Services, Inc. (DBA Housing Insurance Agency Services, Inc. in NY and MI).\n- Work with Product Owner, Quality Test Automation Engineers, Software Engineers, Development DBA, and Scrum Masters to determine and transform business requirements into software features.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:69710:fio",
+  "text": "Name: fio\nSegment: Experience with benchmarking and profiling tools such as stress-ng, fio, perf, iperf or equivalent technologies",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:212096:shapefiles",
+  "text": "Name: shapefiles\nSegment: Experience working with geospatial data formats (e.g., shapefiles, GeoJSON, KML) and coordinate/projection systems",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:troubleshoot microsoft",
+  "text": "Name: troubleshoot Microsoft\nSegments:\n- Administer and troubleshoot Microsoft 365 workloads hands-on (Exchange Online, Teams, SharePoint, OneDrive), ensuring reliable day-to-day service for end users.\n- Troubleshoot Microsoft security platform issues and assist with resolving operational challenges.\n- Administer and troubleshoot Microsoft 365 services, including Exchange Online, Teams, SharePoint, OneDrive, licensing, groups, security settings, and user access issues.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:llm augmented",
+  "text": "Name: LLM-augmented\nSegments:\n- This is a builder-focused role: the ideal candidate is a data scientist with a strong engineering background (or vice versa) who is energized by turning ambiguous workflows into well-engineered, LLM-augmented data tools and automated insights.\n- Experienced in using LLM augmented development and rapid prototyping\n- Leverage Snowflake Cortex, Databricks Genie, or equivalent tooling to help engineering teams deliver natural language query and LLM-augmented data products.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:csd",
+  "text": "Name: CSD\nSegments:\n- Release Server, CoreGIS, HMART, CSD IPL/IWS, ICMT, AOSS, NAMIS,\n- Lead the administration, configuration, maintenance, and tuning of the CSD tool suite (SIEM, IDS/IPS, AV solutions).\n- Certified Scrum Developer (CSD)",
+  "a": "keep",
+  "b": "drop"
+ }
+]

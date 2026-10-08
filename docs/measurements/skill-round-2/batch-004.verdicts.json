@@ -1,0 +1,22 @@
+{
+ "p:partner portal": {"verdict": "a", "clause": "Not a technology at all", "pattern": "generic internal product name"},
+ "p:fannie": {"verdict": "a", "clause": "Not a technology at all", "pattern": "entity named as authority"},
+ "r:172219:automotive ethernet": {"verdict": "b", "clause": "So is a protocol, file format or standard", "pattern": "named networking standard kept"},
+ "p:médaillon": {"verdict": "b", "clause": "A practice, method, technique, architecture or kind of system is no skill", "pattern": "architecture pattern, not a technology"},
+ "r:69710:iperf": {"verdict": "a", "clause": "Keep a name when it names one specific technology", "pattern": "specific tool named plainly"},
+ "r:186432:step functions": {"verdict": "a", "clause": "A bare form, the name ads use for a product without its vendor or qualifier, is that product", "pattern": "bare form of a cloud service"},
+ "r:11764:qspi": {"verdict": "a", "clause": "So is a protocol, file format or standard", "pattern": "named hardware bus protocol"},
+ "p:data explorer": {"verdict": "b", "clause": "a piece of a longer name that ads never use alone for the product", "pattern": "part of longer vendor product name"},
+ "p:hexagon": {"verdict": "a", "clause": "A vendor's name is a drop even where ads use it for its products", "pattern": "vendor name used for its products"},
+ "p:lightspeed venture partners": {"verdict": "b", "clause": "Not a technology at all", "pattern": "company named as investor/funder"},
+ "p:p2p": {"verdict": "a", "clause": "An ambiguous abbreviation", "pattern": "abbreviation with multiple meanings"},
+ "p:secretary": {"verdict": "b", "clause": "Not a technology at all", "pattern": "job title fragment"},
+ "p:crm proficiency": {"verdict": "a", "clause": "A practice, method, technique, architecture or kind of system is no skill", "pattern": "generic system plus ordinary word"},
+ "r:65159:e.g c++": {"verdict": "b", "clause": "A name with an ordinary word before or after it", "pattern": "extra word glued before name"},
+ "r:136023:app service": {"verdict": "b", "clause": "A bare form, the name ads use for a product without its vendor or qualifier, is that product", "pattern": "bare form of a cloud service"},
+ "r:52801:c/c++": {"verdict": "a", "clause": "A name is judged where it is written, and exactly as given", "pattern": "two languages joined by slash"},
+ "p:ecc": {"verdict": "b", "clause": "An ambiguous abbreviation", "pattern": "abbreviation with multiple meanings"},
+ "p:cfi": {"verdict": "b", "clause": "An ambiguous abbreviation", "pattern": "abbreviation with multiple meanings"},
+ "p:hedis": {"verdict": "b", "clause": "Not a technology at all", "pattern": "healthcare quality measure program"},
+ "r:191403:plexos": {"verdict": "a", "clause": "Keep a name when it names one specific technology", "pattern": "specific simulation software tool"}
+}

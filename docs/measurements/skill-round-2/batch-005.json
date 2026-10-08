@@ -1,0 +1,122 @@
+[
+ {
+  "id": "r:53036:purl",
+  "text": "Name: PURL\nSegment: ecosystem is built on (CVE, CWE, CVSS, EPSS, PURL, NVD, OSV, GHSA, VEX) and continuously improving the accuracy, coverage, and timeliness of our data.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:open lakehouse",
+  "text": "Name: Open Lakehouse\nSegments:\n- Columnar data processing, open lakehouse technologies and table formats.\n- Hands-on experience with modern table formats and open lakehouse patterns (Iceberg, Delta Lake, Hudi).\n- Your team's remit spans the Open Lakehouse — Apache Spark (including Spark Declarative Pipelines), Delta Lake, Unity Catalog, Apache Iceberg , and MLflow — as well as Omnigent, our open source meta-harness for composing, governing, and sharing AI agents.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:41054:own w&b",
+  "text": "Name: Own W&B\nSegment: Own W&B Launch and evolve it for the CoreWeave era. Launch is W&B's job submission and compute orchestration product. Today it helps teams submit training jobs to Kubernetes clusters and cloud providers. As part of a vertically integrated AI platform, Launch can go further — with deeper infrastructure awareness and the ability to serve as the orchestration layer for agentic and automated research workflows. You'll set the vision for what that looks like and ship it.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:mediatek",
+  "text": "Name: MediaTek\nSegments:\n- A major near-term priority will be supporting component changes in Android tablets, including MediaTek-based devices, while preserving a safe and consistent software experience for existing and future deployments.\n- We work with the world's most significant silicon companies - Intel, AMD, Nvidia, Mediatek, Hisilicon, Samsung and more - to optimize Ubuntu on their next-generation chips.\n- There is a strong demand from silicon manufacturers such as NVIDIA, Xilinx, MediaTek, and Qualcomm to provide Ubuntu Linux to their customers and Canonical is looking to broaden its silicon enablement squads to meet this challenge.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:bsp",
+  "text": "Name: BSP\nSegments:\n- Strong BSP (Board Support Package) background with hands-on experience in device drivers. This includes reading datasheets, design device driver and implementing firmware in real-time system.\n- Collaborate with hardware, BSP, and Network teams to integrate features and ensure seamless performance.\n- Core Experience: 6+ years of professional experience in Embedded Linux development, board bring-up, and Board Support Package (BSP) customization.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:119374:sel acselerator",
+  "text": "Name: SEL AcSELerator\nSegment: Independently execute relay protection testing using Doble, Omicron, RTS, SEL AcSELerator, GE Enervista, and equivalent testing platforms.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:56976:base command platform",
+  "text": "Name: Base Command Platform\nSegment: Experience with NVIDIA Base Command Platform or Mission Control for multi-cluster AI Factory operations.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:106258:typer",
+  "text": "Name: Typer\nSegment: Experience building CLI tools and automation frameworks using Python (Click, Typer, or similar)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:56976:mission control",
+  "text": "Name: Mission Control\nSegment: Experience with NVIDIA Base Command Platform or Mission Control for multi-cluster AI Factory operations.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:gcr",
+  "text": "Name: GCR\nSegments:\n- Google Cloud Platform (GCP) including Cloud Run (GCR), Kubernetes (GKE, k8s) and Compute Engine (GCE)\n- Drive regional performance targets—including billable utilisation, team growth, and hiring—while championing delivery excellence and customer success across the ASEAN/GCR FDE portfolio\n- As a Technical Account Manager (TAM), you will serve as a trusted technical advisor to some of Figma’s largest enterprise customers across APAC and GCR.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:recursion",
+  "text": "Name: recursion\nSegments:\n- Familiarity with Computer Science topics, such as: Recursion, Sorting, Search, Linked Lists, Stacks and queues, Sets, Trees, Search Tries, Graphs, Hash tables, and Design patterns\n- Deep understanding of Salesforce platform constraints: governor limits, bulkification, sharing and visibility, recursion control, and how they surface in CPQ-specific situations such as large quotes, calculation performance, and bulk amendments\n- Advanced Recursion & Tree Processing: Ability to structure complex recursive functions, tree/graph traversals, and dynamic programming patterns efficiently while preventing stack overflows (e.g., using explicit stack vectors or trampoline patterns).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:mdr",
+  "text": "Name: MDR\nSegments:\n- Product management experience in cybersecurity or SOC-related domains, including SIEM, SOAR, XDR, EDR, MDR, threat detection, incident response, alert triage, investigation, or case management.\n- PhishGuard: Email Managed Detection and Response (MDR) service.\n- Own and mature the firm’s security operations function — monitoring, detection, and triage across XDR, DLP, and endpoint controls — in partnership with any MDR/MSSP provider.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:16634:celonis",
+  "text": "Name: Celonis\nSegment: Define how key platforms such as Databricks, SAP, Teamcenter, Salesforce and Celonis fit together in ASM’s target data architecture.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:41054:w&b's",
+  "text": "Name: W&B's\nSegment: Own W&B Launch and evolve it for the CoreWeave era. Launch is W&B's job submission and compute orchestration product. Today it helps teams submit training jobs to Kubernetes clusters and cloud providers. As part of a vertically integrated AI platform, Launch can go further — with deeper infrastructure awareness and the ability to serve as the orchestration layer for agentic and automated research workflows. You'll set the vision for what that looks like and ship it.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:dml",
+  "text": "Name: DML\nSegments:\n- Strong proficiency in SQL (for DDL operations, DML operations, data architecture, etc.)\n- Implement DDL/DML scripts in support of SCRUM application release cycles.\n- Experience in writing DDL, DML and DCL",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:dci",
+  "text": "Name: DCI\nSegments:\n- Drive reliability improvements across the whole network: not only services, but also site readiness, inter-site connectivity (DCI), and operational standards\n- Support backbone, DCI, WAN, and edge connectivity solutions.\n- Knowledge of Decentralized Identity (DCI) and Identity & Access Management (IAM) concepts, including auth patterns like OAuth/OIDC",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:heredia",
+  "text": "Name: Heredia\nSegments:\n- Zuora Costa Rica office (Heredia): Multiple office days with some remote flexibility.\n- This is a hybrid position based out of the SentinelOne office in Heredia, Costa Rica.\n- You reside in Heredia, Costa Rica",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:tui",
+  "text": "Name: TUI\nSegments:\n- Prior hands-on experience with terminal/TUI agentic tools applied to real test engineering is required.\n- It is not just a vision; Parloa has powered over ONE BILLION interactions between global enterprise brands and their customers, with companies like Booking.com, HealthEquity, Allianz, SAP, BarmeniaGothaer, and TUI already deploying Parloa at scale.\n- Strong full-stack technical depth. You've built and shipped non-trivial systems on both sides of the wire and can speak credibly about frontend architecture, backend service design, API contracts, and the tradeoffs between them. Familiarity with terminal/CLI clients (TUI frameworks, SSH, CLI ergonomics) is a plus.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:212096:kml",
+  "text": "Name: KML\nSegment: Experience working with geospatial data formats (e.g., shapefiles, GeoJSON, KML) and coordinate/projection systems",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:descript",
+  "text": "Name: Descript\nSegments:\n- Regularly leverages AI tools such as Notion AI, Perplexity, Claude, Descript, Runway, Midjourney, or Microsoft Copilot i.e. to improve speed, clarity, or creative output.\n- We are trusted by some of the world’s most customer-obsessed companies like Canva, Descript, Notion, Perplexity and many more, and backed by leading investors like Kleiner Perkins, Canaan Partners, and Peak XV Partners.\n- Descript is a startup.",
+  "a": "drop",
+  "b": "keep"
+ }
+]

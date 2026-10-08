@@ -1,0 +1,9 @@
+{
+  "p:arctic wolf": {"verdict": "b", "clause": "Not a technology at all: a vendor's name is a drop even where ads use it for its products", "pattern": "vendor name for its product"},
+  "r:11764:rs485": {"verdict": "b", "clause": "So is a protocol, file format or standard that software implements", "pattern": "named hardware protocol standard"},
+  "r:11764:rs232": {"verdict": "b", "clause": "So is a protocol, file format or standard that software implements", "pattern": "named hardware protocol standard"},
+  "p:hsi": {"verdict": "b", "clause": "A practice, method, technique, architecture or kind of system is no skill", "pattern": "imaging technique not product"},
+  "r:13129:typescript sdks": {"verdict": "a", "clause": "A name with an ordinary word before or after it ... is a drop", "pattern": "ordinary word after the name"},
+  "p:corpsec": {"verdict": "a", "clause": "Not a technology at all: ... a heading or field of study", "pattern": "security domain as team name"},
+  "p:opencode": {"verdict": "a", "clause": "Keep a name when it names one specific technology an engineer would put on a CV", "pattern": "named AI coding tool"}
+}

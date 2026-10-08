@@ -1,0 +1,44 @@
+[
+ {
+  "id": "p:arctic wolf",
+  "text": "Name: Arctic Wolf\nSegments:\n- This role is both strategic and hands-on, leading key IT initiatives while diving deep into tools like Microsoft 365, Zscaler, Okta, Arctic Wolf, and Abnormal.\n- Arctic Wolf MDR.\n- Hands-on with an MDR provider such as RedCanary, Kroll, or Arctic Wolf.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:11764:rs485",
+  "text": "Name: RS485\nSegment: Familiarity with communications busses and protocols (e.g. one or more of CAN, CANFD, UART/RS232/RS422/RS485, SPI, QSPI, I2C, UDP, TCP, Ethernet )",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:11764:rs232",
+  "text": "Name: RS232\nSegment: Familiarity with communications busses and protocols (e.g. one or more of CAN, CANFD, UART/RS232/RS422/RS485, SPI, QSPI, I2C, UDP, TCP, Ethernet )",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:hsi",
+  "text": "Name: HSI\nSegments:\n- Hands-on experience with other image modalities (SAR, IR, HSI, Lidar, Sonar)\n- Knowledge of PAN, IR, MSI/HSI, RADAR, and LIDAR on both space or airborne platforms.\n- Technical Expertise: Demonstrated hands-on experience operating and maintaining EO/IR systems and a strong working knowledge of Hyperspectral Imaging (HSI) fundamentals",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:13129:typescript sdks",
+  "text": "Name: TypeScript SDKs\nSegment: You'll build the admin controls and permission models that let enterprise IT govern what agents can do, and contribute to the MCP standard and its ecosystem, including the spec and the official Python and TypeScript SDKs.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:corpsec",
+  "text": "Name: CorpSec\nSegments:\n- Work closely with other InfoSec teams (AppSec, D&R, GRC, CorpSec, CloudSec, NetSec) and partner with engineering teams across Roblox, specifically the Infrastructure organization, to ensure the secure outcomes of security and product driven initiatives.\n- Support Slack app installs in partnership with CorpSec for scope review\n- In this role, you will be responsible for managing Vercel’s internal Corporate Security (CorpSec) posture, monitoring for security anomalies, building additional detections and visibility mechanisms, and ensuring the overall security of our internal systems.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:opencode",
+  "text": "Name: OpenCode\nSegments:\n- Leverage AI tools and agentic workflows (OpenCode, Claude Code, Zed, and Eve) to write code and debug faster, while helping build natural-language querying tools/agents for non-technical stakeholders.\n- Deep familiarity with agent clients such as Claude, ChatGPT, and OpenCode, grounded in sustained use.\n- Proven AI-assisted coding experience Regular, hands-on use of AI coding tools (e.g., Claude, Copilot, Cursor, OpenCode) in real development work, with specific examples of AI tools used in production workflows",
+  "a": "keep",
+  "b": "drop"
+ }
+]

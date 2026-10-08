@@ -1,0 +1,22 @@
+{
+ "r:53036:purl": {"verdict": "b", "clause": "So is a protocol, file format or standard that software implements", "pattern": "security identifier standard"},
+ "p:open lakehouse": {"verdict": "a", "clause": "A practice, method, technique, architecture or kind of system is no skill", "pattern": "generic architecture umbrella term"},
+ "r:41054:own w&b": {"verdict": "b", "clause": "A name with an ordinary word before or after it ... is a drop", "pattern": "ordinary word before key"},
+ "p:mediatek": {"verdict": "a", "clause": "Not a technology at all: a company (as an employer, customer, partner or vendor)", "pattern": "vendor company named"},
+ "p:bsp": {"verdict": "b", "clause": "A generic concept or a practice, not a named technology", "pattern": "generic concept acronym"},
+ "r:119374:sel acselerator": {"verdict": "a", "clause": "A technology no software person is hired for", "pattern": "non-software engineering tool"},
+ "r:56976:base command platform": {"verdict": "a", "clause": "A bare form ... is that product; it is a keep where the text uses it for the product", "pattern": "vendor product bare form"},
+ "r:106258:typer": {"verdict": "b", "clause": "Keep a name when it names one specific technology: ... a framework or library", "pattern": "named CLI framework"},
+ "r:56976:mission control": {"verdict": "a", "clause": "a bare form that is an ordinary word is a skill with a context key, not a drop", "pattern": "vendor product bare form"},
+ "p:gcr": {"verdict": "b", "clause": "An ambiguous abbreviation: one that names several things, none dominant where it is written", "pattern": "ambiguous abbreviation region vs tech"},
+ "p:recursion": {"verdict": "b", "clause": "A generic concept or a practice, not a named technology", "pattern": "generic CS concept"},
+ "p:mdr": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology", "pattern": "security service category"},
+ "r:16634:celonis": {"verdict": "a", "clause": "A platform data, ML or AI teams build on is a platform like any other: Dataiku, Microsoft Foundry, Databricks", "pattern": "data platform named directly"},
+ "r:41054:w&b's": {"verdict": "a", "clause": "A name that names an existing skill by another spelling is a keep, as that skill", "pattern": "possessive spelling of key"},
+ "p:dml": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology", "pattern": "generic SQL operation category"},
+ "p:dci": {"verdict": "b", "clause": "An ambiguous abbreviation: one that names several things, none dominant where it is written", "pattern": "ambiguous abbreviation networking identity"},
+ "p:heredia": {"verdict": "b", "clause": "Not a technology at all: ... a place", "pattern": "place name"},
+ "p:tui": {"verdict": "b", "clause": "A generic concept or a practice, not a named technology", "pattern": "generic UI concept company mix"},
+ "r:212096:kml": {"verdict": "a", "clause": "So is a protocol, file format or standard that software implements", "pattern": "named file format standard"},
+ "p:descript": {"verdict": "a", "clause": "Not a technology at all: a company (as an employer, customer, partner or vendor)", "pattern": "company named as customer"}
+}

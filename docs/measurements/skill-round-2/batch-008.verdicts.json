@@ -1,0 +1,22 @@
+{
+ "r:209304:canvas": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology (WebView)", "pattern": "generic android graphics primitive"},
+ "p:giac": {"verdict": "a", "clause": "A compliance framework, regulation or certification", "pattern": "certification name as skill"},
+ "p:gcp ml": {"verdict": "a", "clause": "A name with an ordinary word before or after it is a drop, though the name inside it is a keep", "pattern": "generic qualifier appended to cloud name"},
+ "r:209304:jetpack navigation": {"verdict": "a", "clause": "Keep: one specific named technology, a framework or library", "pattern": "specific named library in list"},
+ "p:itom": {"verdict": "b", "clause": "a practice, method, technique, architecture or kind of system is no skill, however technical (ERP, CRM)", "pattern": "enterprise system category abbreviation"},
+ "p:graphrag": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology (RAG)", "pattern": "retrieval technique named like product"},
+ "p:osi": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology", "pattern": "reference model not implemented technology"},
+ "p:wm": {"verdict": "a", "clause": "a practice, method, technique, architecture or kind of system is no skill, however technical (ERP, CRM)", "pattern": "enterprise system category abbreviation"},
+ "p:id": {"verdict": "a", "clause": "Not a technology at all: a piece of a longer name that ads never use alone for the product", "pattern": "generic identifier abbreviation"},
+ "p:cep": {"verdict": "b", "clause": "A compliance framework, regulation or certification", "pattern": "ambiguous abbreviation between certification and practice"},
+ "p:auditoria": {"verdict": "a", "clause": "An ordinary word, in English or Spanish, used in its ordinary sense", "pattern": "ordinary word in Spanish or Portuguese"},
+ "p:tag": {"verdict": "a", "clause": "Not a technology at all: a piece of a longer name that ads never use alone for the product", "pattern": "fragment of longer product name"},
+ "p:ubs": {"verdict": "a", "clause": "Not a technology at all: a company (as an employer, customer, partner or vendor)", "pattern": "company named as employer or customer"},
+ "p:ehr": {"verdict": "b", "clause": "a practice, method, technique, architecture or kind of system is no skill, however technical (ERP, CRM)", "pattern": "kind of system category abbreviation"},
+ "r:12395:s1000d": {"verdict": "a", "clause": "a protocol, file format or standard that software implements", "pattern": "industry documentation standard implemented by software"},
+ "r:41054:w&b launch": {"verdict": "a", "clause": "Keep: a tool or a platform, its whole name and nothing more", "pattern": "product name defined in its own ad"},
+ "p:oracle data": {"verdict": "a", "clause": "A name with an ordinary word before or after it is a drop", "pattern": "ordinary word attached to vendor name"},
+ "p:crt": {"verdict": "a", "clause": "A compliance framework, regulation or certification", "pattern": "certification abbreviation"},
+ "p:bronze": {"verdict": "a", "clause": "An ordinary word, in English or Spanish, used in its ordinary sense", "pattern": "medallion architecture tier label"},
+ "p:uci": {"verdict": "a", "clause": "a protocol, file format or standard that software implements", "pattern": "interoperability standard implemented by software"}
+}

@@ -1,0 +1,22 @@
+{
+  "p:optimizer": {"verdict": "a", "clause": "A generic concept", "pattern": "generic concept not technology"},
+  "p:rfc": {"verdict": "a", "clause": "A practice, method, technique, architecture or kind of system is no skill", "pattern": "process not a technology"},
+  "p:marvell": {"verdict": "b", "clause": "A vendor's name is a drop even where ads use it for its products", "pattern": "vendor name for products"},
+  "p:os level": {"verdict": "a", "clause": "a name glued to an ordinary word", "pattern": "name glued to ordinary word"},
+  "p:google antigravity": {"verdict": "b", "clause": "Keep: one specific technology... a tool or a platform", "pattern": "specific AI coding tool"},
+  "r:180215:scada": {"verdict": "a", "clause": "a kind of system is no skill, however technical", "pattern": "kind of system category"},
+  "r:41054:own w&b launch": {"verdict": "a", "clause": "A name with an ordinary word before or after it... is a drop", "pattern": "ordinary word before name"},
+  "r:157473:statefulsets": {"verdict": "a", "clause": "a named feature or service of a skill that ads ask for by its own name", "pattern": "named feature of skill"},
+  "p:ai security depth": {"verdict": "b", "clause": "a heading or field of study", "pattern": "heading not a technology"},
+  "p:uv": {"verdict": "a", "clause": "A homonym of something else, where the text means the other thing", "pattern": "ordinary sense dominates mentions"},
+  "r:191403:running plexos": {"verdict": "b", "clause": "A name with an ordinary word before or after it... is a drop", "pattern": "ordinary word before name"},
+  "r:32951:cyberark pam": {"verdict": "a", "clause": "The products are kept under their own names (PAN-OS, Junos)", "pattern": "vendor product own name"},
+  "p:egnyte": {"verdict": "a", "clause": "Consumer, office or browser software", "pattern": "office file storage software"},
+  "p:psoc": {"verdict": "a", "clause": "An ambiguous abbreviation: one that names several things, none dominant", "pattern": "ambiguous abbreviation multiple meanings"},
+  "r:202387:okta customer identity": {"verdict": "a", "clause": "a vendor umbrella, a product line", "pattern": "vendor product line umbrella"},
+  "p:sep": {"verdict": "b", "clause": "Obscure or historical: a name few ads use and few engineers would recognise", "pattern": "obscure abbreviation few recognize"},
+  "r:186432:step": {"verdict": "a", "clause": "so is part of a longer name written around it", "pattern": "piece of longer name"},
+  "p:tracy": {"verdict": "a", "clause": "a place, a person", "pattern": "person or place name"},
+  "p:snow": {"verdict": "a", "clause": "An ordinary word, in English or Spanish... used in its ordinary sense", "pattern": "ordinary word weather term"},
+  "p:lakeflow": {"verdict": "a", "clause": "a vendor umbrella, a product line", "pattern": "vendor product line umbrella"}
+}

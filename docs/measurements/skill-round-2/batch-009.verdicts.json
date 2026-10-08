@@ -1,0 +1,22 @@
+{
+ "r:105840:twilio": {"verdict": "a", "clause": "Keep: one specific technology an engineer would put on a CV", "pattern": "named platform in example list"},
+ "p:cloud siem": {"verdict": "b", "clause": "Keep: a named feature or service of a skill that ads ask for by its own name", "pattern": "vendor's named security feature"},
+ "p:xtp": {"verdict": "b", "clause": "Keep: so is part of a longer name written around it", "pattern": "part of vendor's longer product name"},
+ "p:ui level": {"verdict": "b", "clause": "Drop: a generic concept or a practice, not a named technology", "pattern": "generic concept not a technology"},
+ "r:178514:model context protocols": {"verdict": "a", "clause": "When in doubt between keep and drop, drop", "pattern": "pluralized protocol name mismatch"},
+ "p:caf": {"verdict": "a", "clause": "Drop: a generic concept or a practice, not a named technology", "pattern": "governance framework not software"},
+ "r:105840:braze": {"verdict": "a", "clause": "Keep: one specific technology an engineer would put on a CV", "pattern": "named platform in example list"},
+ "p:cncf": {"verdict": "b", "clause": "Drop: not a technology at all", "pattern": "foundation or org not technology"},
+ "r:190204:canton": {"verdict": "a", "clause": "Keep: one specific technology an engineer would put on a CV", "pattern": "named platform used for tech"},
+ "r:81614:context protocol": {"verdict": "b", "clause": "Keep: so is part of a longer name written around it", "pattern": "part of longer protocol name"},
+ "r:53790:r": {"verdict": "b", "clause": "Drop: a single letter, except C and R", "pattern": "R language in list"},
+ "r:119374:doble": {"verdict": "a", "clause": "Drop: a technology no software person is hired for", "pattern": "hardware test equipment no software hire"},
+ "p:ddos": {"verdict": "a", "clause": "Drop: a generic concept or a practice, not a named technology", "pattern": "attack type not technology"},
+ "p:pwa": {"verdict": "a", "clause": "What a skill is for: a kind of system is no skill", "pattern": "app architecture type not technology"},
+ "p:l’oreal": {"verdict": "a", "clause": "Drop: not a technology at all, a company", "pattern": "company named as customer"},
+ "r:201565:trt llm": {"verdict": "a", "clause": "Keep: one specific technology an engineer would put on a CV", "pattern": "abbreviated library name in list"},
+ "r:48599:coreos": {"verdict": "a", "clause": "Keep: one specific technology an engineer would put on a CV", "pattern": "named OS in tech list"},
+ "p:aws saas": {"verdict": "b", "clause": "A name with an ordinary word before or after it ... is a drop", "pattern": "cloud name plus generic concept"},
+ "p:focp": {"verdict": "a", "clause": "Drop: a compliance framework, regulation or certification", "pattern": "professional certification abbreviation"},
+ "p:fullstack developer": {"verdict": "b", "clause": "Drop: not a technology at all", "pattern": "job title not technology"}
+}

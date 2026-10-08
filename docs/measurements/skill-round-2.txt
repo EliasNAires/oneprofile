@@ -1,0 +1,394 @@
+Round 2 at criterion revision 5, jev-1.13.0
+
+Size and time: 3281 candidates in 1078s
+Precision: 85/200 kept = 42.5%, 95% interval 35.9%-49.4%, gate 50%  FAIL
+  200 drawn, 0 without a label, 1 passed over for no mention
+  round 0: 4321 candidates, about 1534 valid (1262-1830)
+  round 1: 1022 candidates, about 562 valid (491-631)
+Yield: about 1394 valid candidates, 95% interval 1176-1622, gate the best earlier round's 1534 (round 0)  pass
+Recall: 411/455 skill-bearing segments missed nothing = 90.3%, 95% interval 87.3%-92.7%, gate 90%  pass
+  2400 segments drawn, 1945 naming no skill, 0 not yet judged
+
+The loop goes on
+
+Candidates drawn for precision, dropped first:
+  drop   1268  ID
+  drop    573  ARM
+  drop    403  MDM
+  drop    269  Tag
+  drop    260  biases
+  drop    177  OSI
+  drop    168  GIAC
+  drop    156  LLMOps
+  drop    154  Palantir
+  drop    145  EHR
+  drop    131  ORM
+  drop    115  DBA
+  drop    114  MDR
+  drop    100  Falcon
+  drop     94  DDoS
+  drop     89  DL
+  drop     84  P2P
+  drop     71  BSP
+  drop     71  ECC
+  drop     69  McKinsey
+  drop     68  PSA
+  drop     56  DAG
+  drop     55  OS-level
+  drop     55  CNCF
+  drop     52  Bronze
+  drop     51  optimizer
+  drop     50  RFC
+  drop     49  BPM
+  drop     44  Lakeflow
+  drop     40  BEM
+  drop     39  balancer
+  drop     38  UV
+  drop     37  Secretary
+  drop     35  CTA
+  drop     34  ITOM
+  drop     32  OpenCode
+  drop     28  UCI
+  drop     24  AAAI
+  drop     23  SNOW
+  drop     22  DCI
+  drop     21  DML
+  drop     20  MRI
+  drop     19  SEP
+  drop     19  GraphRAG
+  drop     18  TUI
+  drop     18  Cisco CCNA
+  drop     18  Fortinet NSE
+  drop     17  Saga
+  drop     16  Google Marketing Platform
+  drop     15  DHL
+  drop     15  partner portal
+  drop     14  PWA
+  drop     13  integer
+  drop     13  L’Oreal
+  drop     12  OWASP Top Ten
+  drop     11  MediaTek
+  drop     11  Fullstack Developer
+  drop     10  PMA
+  drop     10  WM
+  drop     10  ISPM
+  drop      9  AI Agents Team
+  drop      9  Biamp
+  drop      9  GCP ML
+  drop      9  Descript
+  drop      8  5+years
+  drop      8  troubleshoot Microsoft
+  drop      8  CRT
+  drop      8  TT
+  drop      7  CEP
+  drop      7  Cloud SIEM
+  drop      7  multi-OS
+  drop      7  Oracle data
+  drop      7  Tracy
+  drop      7  HEDIS
+  drop      7  Google Antigravity
+  drop      7  UI-level
+  drop      7  HSI
+  drop      6  recursion
+  drop      6  Hexagon
+  drop      6  Egnyte
+  drop      5  CSD
+  drop      5  Unreal Animation
+  drop      5  NRF
+  drop      5  LPQ
+  drop      5  AWS SaaS
+  drop      5  Anti-DDoS
+  drop      5  Lightspeed Venture Partners
+  drop      5  CAF
+  drop      5  Marvell
+  drop      5  Open Lakehouse
+  drop      5  LLM-augmented
+  drop      4  CFI
+  drop      4  Auditoria
+  drop      4  Data Explorer
+  drop      4  GCR
+  drop      4  DQN
+  drop      4  UBS
+  drop      4  Arctic Wolf
+  drop      4  Personio
+  drop      4  ARM SoC
+  drop      4  ISC2 CISSP
+  drop      4  Excel Experience
+  drop      3  CRM Proficiency
+  drop      3  Heredia
+  drop      3  Fannie
+  drop      3  MTD
+  drop      3  XTP
+  drop      3  War Data Platform
+  drop      3  SSIDs
+  drop      3  Studio Integrations
+  drop      3  Médaillon
+  drop      3  PSOC
+  drop      3  CorpSec
+  drop      3  AI Security Depth
+  drop      3  FOCP
+  keep   1246  GPU
+  keep    173  Flux
+  keep    143  Glean
+  keep    128  Tempo
+  keep    111  Apollo
+  keep     95  CSV
+  keep     69  ECR
+  keep     52  datastore
+  keep     51  LIN
+  keep     50  Agent SDK
+  keep     38  QLoRA
+  keep     27  DICOM
+  keep     24  Tableau Prep
+  keep     21  Splunk SOAR
+  keep     21  Firehose
+  keep     20  Matillion
+  keep     18  APIM
+  keep     17  GPTQ
+  keep     17  ArcGIS Enterprise
+  keep     16  AFL++
+  keep     16  CM360
+  keep     16  Vitess
+  keep     16  CDA
+  keep     14  Azure Site Recovery
+  keep     14  ADE
+  keep     10  ID protection
+  keep      9  Workday Web Services
+  keep      9  BentoML
+  keep      8  Galileo
+  keep      8  MDT
+  keep      8  Katalon
+  keep      8  SkyPilot
+  keep      7  Framer
+  keep      7  MS Graph
+  keep      7  Trackwise
+  keep      7  Opcenter
+  keep      7  Amazon Web Service
+  keep      7  ServiceNow CMDB
+  keep      7  Sprinklr
+  keep      7  Cortex XSOAR
+  keep      7  SAI
+  keep      7  IOMMU
+  keep      7  Koin
+  keep      6  Lauterbach
+  keep      6  Workday Prism
+  keep      6  FortiAnalyzer
+  keep      5  GDDR
+  keep      5  XBRL
+  keep      5  Aconex
+  keep      5  PSCAD
+  keep      5  web3.js
+  keep      5  distroless
+  keep      5  Verdi
+  keep      5  Unity AI Gateway
+  keep      5  WireMock
+  keep      4  Batch Apex
+  keep      4  CANbus
+  keep      4  Omniverse
+  keep      4  Dassault 3DEXPERIENCE
+  keep      4  Kandji MDM
+  keep      4  Chisel
+  keep      4  Ribbon
+  keep      4  GLB
+  keep      4  IDL
+  keep      4  AMD Instinct
+  keep      4  Stratum
+  keep      4  JAX-RS
+  keep      4  UiPath RPA
+  keep      4  Netsparker
+  keep      4  AVB
+  keep      3  Maxio
+  keep      3  Cromwell
+  keep      3  Patran
+  keep      3  Ardoq
+  keep      3  PyQt
+  keep      3  Lightning App Builder
+  keep      3  Geneos
+  keep      3  SOTI
+  keep      3  SWIFT MT
+  keep      3  CHEMCAD
+  keep      3  SCIP
+  keep      3  GCD
+  keep      3  Totango
+  keep      3  Amplitude Analytics
+  keep      3  RAUC
+
+Segments that name a skill not found (44), with the names Jev kept:
+
+  vacancy 81614  kept: Context Protocol | Model Context Protocol
+  found: MCP
+  Deep, hands-on production experience with Retrieval-Augmented Generation (RAG) including chunking strategies, embedding models, vector stores, retrieval and reranking, and grounding for high-accuracy use cases. Working production experience with Model Context Protocol (MCP) or equivalent agent/tool integration patterns.
+
+  vacancy 191403  kept: PLEXOS | Running PLEXOS
+  found: Aurora
+  Running PLEXOS and/or Aurora and interpreting output model results and energy balances
+
+  vacancy 100728  kept: Atlas | MongoDB Atlas
+  found: MongoDB
+  Manage a team of engineers to design, build and test new features for MongoDB Atlas
+
+  vacancy 11764  kept: CANFD | QSPI | RS232 | RS485
+  found: Ethernet, I2C, RS422, SPI, TCP, UART, UDP
+  Familiarity with communications busses and protocols (e.g. one or more of CAN, CANFD, UART/RS232/RS422/RS485, SPI, QSPI, I2C, UDP, TCP, Ethernet )
+
+  vacancy 119374  kept: AcSELerator | Doble | Enervista | GE Enervista | Omicron | SEL AcSELerator
+  found: nothing
+  Independently execute relay protection testing using Doble, Omicron, RTS, SEL AcSELerator, GE Enervista, and equivalent testing platforms.
+
+  vacancy 155875  kept: Swift
+  found: Apache Kafka, Google Cloud Platform, Kotlin, Kubernetes, Python, React, Redis, Scala
+  Exposure to the latest technologies: ReactJS, Python, Scala, Kotlin, Swift, Google Cloud, Kafka, Redis, Kubernetes, and all things machine learning. If you build it, they will come.
+
+  vacancy 178514  kept: Model Context Protocols
+  found: Jira
+  Proficiency in AI-assisted coding, including building and maintaining custom skills and integrating with Model Context Protocols (MCPs) for tools like Jira.
+
+  vacancy 157473  kept: StatefulSets
+  found: Argo CD, Kubernetes
+  Familiarity with ArgoCD, StatefulSets, or Kubernetes operations beyond basic deployments
+
+  vacancy 53036  kept: PURL
+  found: CVE, CWE, NVD, VEX
+  ecosystem is built on (CVE, CWE, CVSS, EPSS, PURL, NVD, OSV, GHSA, VEX) and continuously improving the accuracy, coverage, and timeliness of our data.
+
+  vacancy 53072  kept: Application Insights | Log Analytics
+  found: Grafana, KQL, Prometheus
+  Observability — KQL, Log Analytics alerts, Prometheus + Grafana, Application Insights.
+
+  vacancy 63773  kept: SGBM
+  found: nothing
+  Strong understanding of classical computer vision (e.g. camera calibration, epipolar geometry, structure-from-motion, SGBM stereo) and the ability to blend it with modern ML approaches.
+
+  vacancy 105840  kept: Braze | Twilio
+  found: Customer.io, Iterable, SendGrid
+  Hands-on production experience with a major messaging provider or platform (for example Twilio, SendGrid, Braze, Iterable, Customer.io, or an in-house equivalent), and clear judgment about build versus buy.
+
+  vacancy 53790  kept: R
+  found: Python
+  Strong analytical skills and comfort working with data; familiarity with basic statistics and the scientific method; exposure to R, Python, or similar is an advantage
+
+  vacancy 172219  kept: Automotive Ethernet
+  found: Ethernet
+  Demonstrated technical fluency in embedded and modern vehicle cybersecurity concepts with the ability to act as a technical peer to Systems Engineering and Security Engineering when discussing vehicle networks (CAN, Automotive Ethernet, ECUs), autonomous driving hardware/software systems and onboard security features.
+
+  vacancy 13129  kept: TypeScript SDKs
+  found: MCP, Python, TypeScript
+  You'll build the admin controls and permission models that let enterprise IT govern what agents can do, and contribute to the MCP standard and its ecosystem, including the spec and the official Python and TypeScript SDKs.
+
+  vacancy 134578  kept: VMAP
+  found: Server
+  Own the product strategy for integrating measurement capabilities into Roku's ad platform, including server-to-server integrations, pixel-based tracking, and ad serving standards (VAST/VMAP)
+
+  vacancy 32951  kept: CyberArk PAM
+  found: CyberArk, PAM
+  Experience administering or supporting CyberArk PAM.
+
+  vacancy 65159  kept: e.g C++
+  found: C++, Python
+  Python (or another object oriented language e.g C++)
+
+  vacancy 16634  kept: Celonis
+  found: Assembly language, Databricks, Salesforce, SAP ERP, Siemens Teamcenter
+  Define how key platforms such as Databricks, SAP, Teamcenter, Salesforce and Celonis fit together in ASM’s target data architecture.
+
+  vacancy 48599  kept: CoreOS | Vagrant
+  found: CKA, Docker, Kubernetes
+  Open Source: CoreOS, Docker, Kubernetes (CKA/CKE), Vagrant
+
+  vacancy 52801  kept: C/C++
+  found: C++
+  Strong proficiency in C/C++ and low-level systems programming.
+
+  vacancy 12395  kept: S1000D
+  found: Gov
+  Along with our commercial offerings outlined above, Anduril is pursuing Programs with the GOV, which require documentation in standards such as MIL-STD-40051D and S1000D, delivered via IETMs / IETDs.
+
+  vacancy 186432  kept: Step | Step Functions
+  found: Amazon DynamoDB, Amazon EventBridge, Amazon Kinesis, Amazon SNS, Amazon SQS, AWS Lambda
+  Build serverless, event-driven backends with Lambda, EventBridge, Step Functions, SQS/SNS, DynamoDB, and Kinesis for real-time event processing and customer journey orchestration
+
+  vacancy 190204  kept: Canton | Daml
+  found: nothing
+  Designs and builds prototype and demo code on Canton and Daml — smart contracts, registry apps, DA Registry and DA Utilities components, integration adapters — that hold up to technical scrutiny from engineers at the world's largest banks, financial market infrastructures, and crypto-native and stablecoin companies
+
+  vacancy 44862  kept: Spark
+  found: PySpark, Python
+  Strong coding proficiency in Python and PySpark/Spark: you must demonstrate live coding, debugging, and solution-building skills
+
+  vacancy 136023  kept: App Service
+  found: Azure, Azure Kubernetes Service
+  Production experience deploying and running applications on a major cloud platform – Azure strongly preferred (App Service, AKS, containers).
+
+  vacancy 105571  kept: Zemax
+  found: nothing
+  2+ years of experience simulating and designing optics in Zemax or equivalent software
+
+  vacancy 180215  kept: SCADA
+  found: nothing
+  Experience with Operational Technology, including Programmable Logic Controllers (PLCs) and Supervisory Control and Data Acquisition (SCADA) software.
+
+  vacancy 77617  kept: Spark
+  found: nothing
+  Experience optimizing cost and performance of data-heavy workloads (Spark tuning, cluster right-sizing).
+
+  vacancy 77652  kept: Sigma v2
+  found: Sigma
+  Detection engine and pipeline modernization. We're rewriting our detection engine to support the full Sigma v2 specification, including stateful correlation of patterns across many events over time. In parallel, we're reworking several existing detection pipelines and building new ones, moving off the bespoke per-product detectors we've accumulated and onto a common platform. You'll lead major workstreams across both and own the validation approach that proves a reworked pipeline still behaves like the one it replaces, so we can turn old paths off knowing we haven't lost anything.
+
+  vacancy 199195  kept: SAP Cloud Connector
+  found: SAP ERP
+  SAP Cloud Connector
+
+  vacancy 82465  kept: SystemTap
+  found: DTrace, eBPF, GDB
+  Strong troubleshooting skills and knowledge of profiling/debugging tools such as gdb, perf, DTrace, eBPF, or SystemTap
+
+  vacancy 212096  kept: KML | shapefiles
+  found: GeoJSON
+  Experience working with geospatial data formats (e.g., shapefiles, GeoJSON, KML) and coordinate/projection systems
+
+  vacancy 186009  kept: C
+  found: C++, Python, Rust
+  You have practical programming experience in at least one of: C, C++, Python or Rust demonstrated through projects, coursework, or personal work that shows your curiosity and capability.
+
+  vacancy 37415  kept: Workers AI
+  found: MCP
+  Many of our products also incorporate strong AI components, giving you opportunities to build sophisticated, AI-ready data layers and work with modern AI infrastructure and tools such as vector databases, MCP-based services, and Workers AI.
+
+  vacancy 202387  kept: Okta Customer Identity
+  found: Okta
+  Establish a deep understanding of Okta Customer Identity products and infrastructure
+
+  vacancy 69710  kept: fio | iperf
+  found: nothing
+  Experience with benchmarking and profiling tools such as stress-ng, fio, perf, iperf or equivalent technologies
+
+  vacancy 56976  kept: Base Command Platform | Mission Control
+  found: NVIDIA
+  Experience with NVIDIA Base Command Platform or Mission Control for multi-cluster AI Factory operations.
+
+  vacancy 106258  kept: Click | Typer
+  found: CLI, Python
+  Experience building CLI tools and automation frameworks using Python (Click, Typer, or similar)
+
+  vacancy 209304  kept: Canvas | Jetpack Navigation | Kotlin Flow | Kotlin Kotlin
+  found: Compose, Dagger, Jetpack Compose, JUnit, Kotlin, Kotlin Coroutines, Navigation, Paint
+  Kotlin Kotlin Coroutines · Kotlin Flow · Jetpack Navigation · Dagger 2 · Room · Custom Views, Canvas & Paint · Jetpack Compose · JUnit
+
+  vacancy 167050  kept: Veeam
+  found: nothing
+  The ideal candidate will be naturally collaborative, articulate, extremely organized, have a solid technical understanding of Veeam products, and motivated by maximizing customer success and outcomes.
+
+  vacancy 201565  kept: SR-IOV | TRT-LLM
+  found: Fabric, GPU, InfiniBand, IOMMU, LLM, RDMA, Slurm, vLLM
+  Research novel attacks against GPU infrastructure (e.g., closed-source firmware and vendor driver binaries, device passthrough exploits, SR-IOV/IOMMU misconfigurations, RDMA/InfiniBand fabric attacks, etc.), the inference stack (e.g., vLLM, TRT-LLM), and AI platform managed services (e.g., managed Slurm). Assess tenant-isolation boundaries and how they can be broken at the low-level stack
+
+  vacancy 64678  kept: Embedded Linux
+  found: C++, JavaScript, Linux, Python
+  The tech stack: C++, Python, Embedded Linux, and the occasional dip into Javascript.
+
+  vacancy 41054  kept: Own W&B | Own W&B Launch | W&B | W&B Launch | W&B's
+  found: Go, Kubernetes
+  Own W&B Launch and evolve it for the CoreWeave era. Launch is W&B's job submission and compute orchestration product. Today it helps teams submit training jobs to Kubernetes clusters and cloud providers. As part of a vertically integrated AI platform, Launch can go further — with deeper infrastructure awareness and the ability to serve as the orchestration layer for agentic and automated research workflows. You'll set the vision for what that looks like and ship it.
+
+Jev has cost $2.1594 over every run of both issues, of the $4.00 limit

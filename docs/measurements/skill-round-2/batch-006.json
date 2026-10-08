@@ -1,0 +1,122 @@
+[
+ {
+  "id": "p:arm soc",
+  "text": "Name: ARM SoC\nSegments:\n- You will be responsible for designing complex embedded systems on ARM SoC and ST Micro platforms, developing robust data acquisition pipelines, and implementing the control algorithms that drive precision sensing technology.\n- Familiarity with x86 and ARM SoC architectures and vendors.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:psa",
+  "text": "Name: PSA\nSegments:\n- PSA (Professional Services Automation)\n- Maintain PM compliance responsibilities including PSA Health reporting, status reports, sprint reviews, and risk and issue management\n- Kaseya is seeking an experienced, strategic, and highly customer-focused Senior Product Manager responsible for defining and supporting the building of desirable, feasible, viable, and sustainable products that meet customer needs within our Professional Services Automation (PSA) module - the operational backbone for Managed Service Providers.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:81614:model context protocol",
+  "text": "Name: Model Context Protocol\nSegment: Deep, hands-on production experience with Retrieval-Augmented Generation (RAG) including chunking strategies, embedding models, vector stores, retrieval and reranking, and grounding for high-accuracy use cases. Working production experience with Model Context Protocol (MCP) or equivalent agent/tool integration patterns.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:82465:systemtap",
+  "text": "Name: SystemTap\nSegment: Strong troubleshooting skills and knowledge of profiling/debugging tools such as gdb, perf, DTrace, eBPF, or SystemTap",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:bem",
+  "text": "Name: BEM\nSegments:\n- Code Quality: a high standard for clean, semantic markup and maintainable CSS, including adherence to BEM methodology, design tokens, and modern CSS standards.\n- Saúde e Bem-estar: Planos completos de saúde, odontológico e seguro de vida, além de assinatura do Gympass/Wellhub.\n- In depth knowledge in HTML5, CSS3, knowledge of BEM methodology is preferred.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:pma",
+  "text": "Name: PMA\nSegments:\n- Experience with retimer or gearbox firmware, SDK/API development, optical modules or pluggable optics, high-speed copper connectivity, Ethernet PHY subsystems, FEC, PMA, or signal-integrity analysis.\n- Familiar with FAA certification and approval processes (STC, DO-160 Qualification, TSOA, PMA, Major Alterations). Familiarity with foreign authority certification a plus\n- As a Program/Project/Management Analyst, you will coordinate with other members of the PMA customer supporting a Navy program at Naval Air Station Patuxent River (Pax).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:5+years",
+  "text": "Name: 5+years\nSegments:\n- Generally, requires 5+years of related experience\n- 5+years professional experience in software automation, tooling, or related engineering roles.\n- 5+years of experience in financial systems, ERP administration, finance operations technology, or a related field",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:lpq",
+  "text": "Name: LPQ\nSegments:\n- Professional certification such as CPP, PSP, APP, PCI, LPQ, LPC, or comparable security, investigations, or asset protection credential preferred.\n- LPQ（Loss Prevention Qualified）\n- Loss Prevention Qualified (LPQ) certification required.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:llmops",
+  "text": "Name: LLMOps\nSegments:\n- Cloud & MLOps/LLMOps: Design and operate solutions on Azure, GCP, or AWS (CI/CD, containers, model serving, feature stores, vector DBs, monitoring, eval pipelines).\n- Demonstrated experience with MLOps/LLMOps tools and CI/CD pipelines, such as MLflow, Kubeflow, or GitLab CI.\n- Experience with LLMOps tooling such as LangFuse, LangSmith, LangChain or similar",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:orm",
+  "text": "Name: ORM\nSegments:\n- Postgres beyond ORM basics — migrations on live systems, locking semantics, queue patterns.\n- Good knowledge of Hibernate or equivalent ORM, and relational databases like MySQL, experience with NoSQL databases is a bonus.\n- You have experience with a diverse set of tools (e.g. Spring Boot, Hibernate ORM, PostgreSQL or Oracle).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:77617:spark",
+  "text": "Name: Spark\nSegment: Experience optimizing cost and performance of data-heavy workloads (Spark tuning, cluster right-sizing).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:personio",
+  "text": "Name: Personio\nSegments:\n- Second, we build the extensions that connect to the tools people already use, like Workday, Personio, ServiceNow and Microsoft.\n- Practical experience building or administering an LMS (e.g., Personio, Docebo, TalentLMS)\n- Experience integrating platforms such as Personio, SAP, Salesforce or similar",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:53072:application insights",
+  "text": "Name: Application Insights\nSegment: Observability — KQL, Log Analytics alerts, Prometheus + Grafana, Application Insights.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:63773:sgbm",
+  "text": "Name: SGBM\nSegment: Strong understanding of classical computer vision (e.g. camera calibration, epipolar geometry, structure-from-motion, SGBM stereo) and the ability to blend it with modern ML approaches.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:bpm",
+  "text": "Name: BPM\nSegments:\n- Habilidades clave: Enterprise Architecture, Solution Architecture, TOGAF, BIAN, Microservices, Cloud Architecture, BPM, RPA, AI Solutions, CRM.\n- Knowledge of implementing integration projects is essential. Hands-on experience with automation technologies, middleware, integration architecture patterns, web services technologies, enterprise messaging patterns, APIs, SOA, ESB, BPM, SDKs, and databases.\n- Exposure to workflow automation platforms, BPM tools, or event-driven architectures.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:aaai",
+  "text": "Name: AAAI\nSegments:\n- High-impact publications or open‑source contributions in AI for Science in relevant venues (NeurIPS, ICML, ICLR, AAAI, Nature Methods, Nature Biotechnology, or equivalent)\n- Publication record in relevant venues such as NeurIPS, ICLR, AAAI, ICML or ACL/EMNLP\n- Publication record in reputable venues that demonstrates mastery in your field, and in particular the domains of interest listed above. Desirable venues include (but not limited to): NeurIPS, ICML, ICLR, UAI, AISTATS, AAAI, Siggraph, CVPR, TPAMI/JMLR, Nature and Science.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:ispm",
+  "text": "Name: ISPM\nSegments:\n- Identity Security Posture Management (ISPM): Delivering continuous, contextual visibility into complex identity infrastructure, surfacing misconfigurations, eliminating toxic combinations of permissions, and reducing overall attack surfaces.\n- At ISPM (formerly Spera Security), we are revolutionizing identity security for modern organizations.\n- As one of Abnormal's fastest-growing divisions, ISPM is seeking a Senior Software Engineer to drive the technical roadmap and guide an engineering team in developing the next generation of identity security defenses.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:100728:atlas",
+  "text": "Name: Atlas\nSegment: Manage a team of engineers to design, build and test new features for MongoDB Atlas",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:155875:swift",
+  "text": "Name: Swift\nSegment: Exposure to the latest technologies: ReactJS, Python, Scala, Kotlin, Swift, Google Cloud, Kafka, Redis, Kubernetes, and all things machine learning. If you build it, they will come.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:119374:ge enervista",
+  "text": "Name: GE Enervista\nSegment: Independently execute relay protection testing using Doble, Omicron, RTS, SEL AcSELerator, GE Enervista, and equivalent testing platforms.",
+  "a": "keep",
+  "b": "drop"
+ }
+]

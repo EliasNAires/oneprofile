@@ -1,0 +1,22 @@
+{
+  "p:ssids": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology", "pattern": "generic networking config term"},
+  "p:mdm": {"verdict": "b", "clause": "An ambiguous abbreviation: one that names several things, none dominant", "pattern": "ambiguous abbreviation across segments"},
+  "p:multi os": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology", "pattern": "generic descriptor not a technology"},
+  "p:fortinet nse": {"verdict": "a", "clause": "A compliance framework, regulation or certification", "pattern": "certification named as skill"},
+  "r:100728:mongodb atlas": {"verdict": "b", "clause": "it is a keep when they use it for the technology, and when it is the technology's whole name and nothing more", "pattern": "whole product name used plainly"},
+  "r:77652:sigma v2": {"verdict": "b", "clause": "a protocol, file format or standard that software implements", "pattern": "named standard version kept"},
+  "p:dhl": {"verdict": "b", "clause": "Not a technology at all: a company (as an employer, customer, partner or vendor)", "pattern": "company named as customer"},
+  "p:studio integrations": {"verdict": "a", "clause": "A name with an ordinary word before or after it ... is a drop", "pattern": "piece of longer product name"},
+  "p:war data platform": {"verdict": "a", "clause": "Keep a name when it names one specific technology ... a tool or a platform", "pattern": "specific named niche platform"},
+  "p:isc2 cissp": {"verdict": "b", "clause": "A compliance framework, regulation or certification", "pattern": "certification named as skill"},
+  "r:186009:c": {"verdict": "b", "clause": "A single letter, except C and R", "pattern": "single letter language exception"},
+  "p:ai agents team": {"verdict": "a", "clause": "Not a technology at all", "pattern": "internal team named as skill"},
+  "r:64678:embedded linux": {"verdict": "b", "clause": "A name with an ordinary word before or after it ... is a drop", "pattern": "ordinary word before the name"},
+  "p:biases": {"verdict": "b", "clause": "a piece of a longer name that ads never use alone for the product", "pattern": "piece of vendor's longer name"},
+  "r:41054:w&b": {"verdict": "b", "clause": "Not a technology at all: a company (as an employer, customer, partner or vendor)", "pattern": "company named as employer"},
+  "p:biamp": {"verdict": "b", "clause": "A vendor's name is a drop even where ads use it for its products", "pattern": "vendor name for its products"},
+  "r:44862:spark": {"verdict": "a", "clause": "A bare form, the name ads use for a product without its vendor or qualifier, is that product", "pattern": "bare form of a product"},
+  "p:cisco ccna": {"verdict": "b", "clause": "A compliance framework, regulation or certification", "pattern": "certification named as skill"},
+  "r:134578:vmap": {"verdict": "a", "clause": "a protocol, file format or standard that software implements", "pattern": "named standard software implements"},
+  "r:167050:veeam": {"verdict": "a", "clause": "A name with an ordinary word before or after it ... is a drop", "pattern": "vendor name plus ordinary word"}
+}

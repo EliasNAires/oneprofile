@@ -1,0 +1,122 @@
+[
+ {
+  "id": "p:partner portal",
+  "text": "Name: partner portal\nSegments:\n- As the Staff Software Engineer for our Restaurant Partner Experience, you will own the architectural direction of the frontend systems that power how our partners discover, onboard, manage, and grow their business on ezCater — including the partner portal and order management tooling used by thousands of restaurant operators every day.\n- Own the implementation of AI/automation frameworks across OEM operations, Partner Journey, and the Partner Portal.\n- Manage Channel Ops distribution and Partner Portal inquires, projects and account activation",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:fannie",
+  "text": "Name: Fannie\nSegments:\n- Strong proficiency in agency CRE (Fannie/Freddie) underwriting preferred. A comprehensive understanding of various property types is also essential.\n- This role requires deep underwriting expertise - including comprehensive knowledge of Fannie Mae, Freddie Mac, FHA, VA, and USDA guidelines - to validate income calculations, underwriting conditions, and other loan-level outputs for accuracy and completeness..\n- Mastery of agency guidelines — Fannie Mae Selling Guide, Freddie Mac Seller/Servicer Guide, and FHA Handbook 4000.1 — with VA and USDA experience valued; Non-QM underwriting experience strongly preferred.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:172219:automotive ethernet",
+  "text": "Name: Automotive Ethernet\nSegment: Demonstrated technical fluency in embedded and modern vehicle cybersecurity concepts with the ability to act as a technical peer to Systems Engineering and Security Engineering when discussing vehicle networks (CAN, Automotive Ethernet, ECUs), autonomous driving hardware/software systems and onboard security features.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:médaillon",
+  "text": "Name: Médaillon\nSegments:\n- Concevoir et déployer des architectures Data & IA complexes et scalables (ex. architectures Médaillon, solutions multi-agents LangGraph sur Kubernetes).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:69710:iperf",
+  "text": "Name: iperf\nSegment: Experience with benchmarking and profiling tools such as stress-ng, fio, perf, iperf or equivalent technologies",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:186432:step functions",
+  "text": "Name: Step Functions\nSegment: Build serverless, event-driven backends with Lambda, EventBridge, Step Functions, SQS/SNS, DynamoDB, and Kinesis for real-time event processing and customer journey orchestration",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:11764:qspi",
+  "text": "Name: QSPI\nSegment: Familiarity with communications busses and protocols (e.g. one or more of CAN, CANFD, UART/RS232/RS422/RS485, SPI, QSPI, I2C, UDP, TCP, Ethernet )",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:data explorer",
+  "text": "Name: Data Explorer\nSegments:\n- Working knowledge of KQL (Azure Data Explorer, Eventhouse, or Application Insights) a plus\n- The Developer Tools Team works on a variety of APIs and customer-facing UIs empowering MongoDB users to interact with their stored data, whether that’s on desktop via MongoDB Compass or in the browser via Atlas Data Explorer.\n- The initial scope includes MongoDB Compass and Data Explorer, with the opportunity to shape connected experiences across the broader developer tools ecosystem, including MongoDB Shell, IDE integrations, data modeling, and AI powered developer experiences.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:hexagon",
+  "text": "Name: Hexagon\nSegments:\n- Develop, optimize, and execute CMM programs using PC-DMIS on Hexagon systems to inspect precision components.\n- Working knowledge with QMS software solutions which might include Net Inspect, Siemens, SAP, ETQ, One Factory, MasterControl, Compliance Quest, Hexagon, PTC, QT9.\n- Experience with audience tools such as Comscore, MRI, Exact Target; creative/brand evaluation and tracking tools like Kantar Millward Brown, Nielsen Brand Effects; search tools like Adwords, Kenshoo; social tools like Crimson Hexagon, Netbase",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:lightspeed venture partners",
+  "text": "Name: Lightspeed Venture Partners\nSegments:\n- To date, we have raised $292 million in funding from Acrew Capital, Glilot Capital, Icon Ventures, ION Crossover Partners, Khosla Ventures, Lightspeed Venture Partners, M12, entrepreneur Shlomo Kramer, and Qumra Capital.\n- Founded by a former Google DeepMind research scientist and Stanford CS PhD, Mithril has raised $80M across seed and Series A funding led by Sequoia Capital & Lightspeed Venture Partners.\n- Chainguard is venture-backed by leading investors, including Amplify, IVP, Kleiner Perkins, Lightspeed Venture Partners, Mantis VC, Redpoint Ventures, Sequoia Capital, and Spark Capital.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:p2p",
+  "text": "Name: P2P\nSegments:\n- 4+ years’ experience supporting enterprise applications in a G&A environment (Finance, HR, Legal, P2P).\n- This role sits embedded within Procurement — not in a central IT or analytics function — and operates in accordance with the Finance Data Strategy governance framework to drive rapid P2P process transformation by designing, deploying, and scaling automation and data solutions directly within business workflows.\n- Lead design and implementation of wireless communication stacks (LTE, 5G, Wi-Fi, sidelink, mesh, P2P, WiFi, Bluetooth, NFC....)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:secretary",
+  "text": "Name: Secretary\nSegments:\n- Reports to: Sr. VP, General Counsel, Chief Compliance Officer & Corporate Secretary\n- ANSER is seeking a Senior Financial Analyst to support the Warfighting Investments, Resourcing, and Execution (WIRE) Office Industrial Base Analysis and Sustainment (IBAS) Program within the Office of the Assistant Secretary of Defense for Industrial Base Policy (IBP).\n- Analytic Services, Inc. (ANSER) is seeking a Budget & Finance Analyst to work in support of the Office of the Assistant Secretary of War for Nuclear Deterrence, Chemical, and Biological Defense, Policy and Programs OASW(NDCBD).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:crm proficiency",
+  "text": "Name: CRM Proficiency\nSegments:\n- Enterprise Tooling & CRM Proficiency: Demonstrated hands-on experience with Salesforce CRM, enterprise provisioning admin consoles, identity management tools, and contract lifecycle workflows.\n- CRM Proficiency: Strong working knowledge of Salesforce, including custom object management, field mapping, reporting, and marketing-to-sales data flow.\n- CRM proficiency is a must.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:65159:e.g c++",
+  "text": "Name: e.g C++\nSegment: Python (or another object oriented language e.g C++)",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:136023:app service",
+  "text": "Name: App Service\nSegment: Production experience deploying and running applications on a major cloud platform – Azure strongly preferred (App Service, AKS, containers).",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:52801:c/c++",
+  "text": "Name: C/C++\nSegment: Strong proficiency in C/C++ and low-level systems programming.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:ecc",
+  "text": "Name: ECC\nSegments:\n- Knowledge of high-speed memory interfaces — DDR4 and/or DDR5 DRAM — including initialization sequences, training algorithms, timing margins, and ECC/RAS features\n- 5+ years of SAP Procurement experience across ECC and SRM\n- Knowledge of memory redundancy, repair algorithms, ECC, and MBIST integration is highly desirable.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:cfi",
+  "text": "Name: CFI\nSegments:\n- Understanding of common exploit mitigation mechanisms such as SELinux, Seccomp, ASLR, and CFI.\n- Knowledge of operating system security mitigations (ASLR, DEP, CFI, Stack Canaries) and common vulnerability patterns (CWEs).\n- CFI（Certified Forensic Interviewer）",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:hedis",
+  "text": "Name: HEDIS\nSegments:\n- Exceptional stakeholder management skills, with the ability to translate complex technical constraints into clear, actionable business strategies (e.g., impact on HEDIS/RADV outcomes) for non-technical leadership.\n- Translate regulatory and quality requirements, like HEDIS measures and clinical coding, into clean product experiences that add value without adding friction.\n- Understand and advise internal and external audiences on relevant industry trends, including value-based care, quality measure programs (e.g., HEDIS, Star Ratings), risk adjustment, regulatory requirements, and changes in practice",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:191403:plexos",
+  "text": "Name: PLEXOS\nSegment: Running PLEXOS and/or Aurora and interpreting output model results and energy balances",
+  "a": "keep",
+  "b": "drop"
+ }
+]

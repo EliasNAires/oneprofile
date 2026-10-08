@@ -1,0 +1,122 @@
+[
+ {
+  "id": "r:105840:twilio",
+  "text": "Name: Twilio\nSegment: Hands-on production experience with a major messaging provider or platform (for example Twilio, SendGrid, Braze, Iterable, Customer.io, or an in-house equivalent), and clear judgment about build versus buy.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:cloud siem",
+  "text": "Name: Cloud SIEM\nSegments:\n- The ideal candidate has deep, hands-on experience administering and scaling Datadog, including Cloud SIEM, log management, security monitoring, dashboards, monitors and telemetry pipelines.\n- As a Senior Services Architect focused on Security and Cloud SIEM, you will help customers design, implement, and operationalize Datadog’s security capabilities across cloud, infrastructure, application, and log data sources.\n- Evaluate and lead the implementation of additional detection tooling, including cloud SIEM platforms, designing detection rules and alerting pipelines.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:xtp",
+  "text": "Name: XTP\nSegments:\n- Direct FCM or derivatives experience, with hands-on ownership of one or more parts of the futures trade lifecycle (settlement, clearing, margin/risk, order entry/routing, market data, or back office/books and records). Ion XTP or comparable exchange platform experience preferred.\n- Experience with trading platforms such as Openlink or XTP systems\n- Extron XTP and FOX Matrix switch experience",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:ui level",
+  "text": "Name: UI-level\nSegments:\n- Build the appropriate balance of API, integration, component, contract, data, and end-to-end automation, minimizing unnecessary dependence on UI-level testing.\n- Shift in coverage ratio toward API-level tests relative to UI-level tests, consistent with testing-pyramid targets.\n- Experience with frontend development (JavaScript/React) for occasional UI-level fixes.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:178514:model context protocols",
+  "text": "Name: Model Context Protocols\nSegment: Proficiency in AI-assisted coding, including building and maintaining custom skills and integrating with Model Context Protocols (MCPs) for tools like Jira.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:caf",
+  "text": "Name: CAF\nSegments:\n- Familiarity with the Azure Well-Architected Framework and Cloud Adoption Framework (CAF) landing zones\n- Design, implement, and evolve Azure Landing Zones aligned with Microsoft Cloud Adoption Framework (CAF) guidance and enterprise governance requirements.\n- Set architectural direction for Azure Landing Zones aligned to CAF and WAF and properly sized to support our clients’ AI workloads.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:105840:braze",
+  "text": "Name: Braze\nSegment: Hands-on production experience with a major messaging provider or platform (for example Twilio, SendGrid, Braze, Iterable, Customer.io, or an in-house equivalent), and clear judgment about build versus buy.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:cncf",
+  "text": "Name: CNCF\nSegments:\n- Hands-on experience with Crossplane or meaningful contributions to CNCF projects, such as code, documentation, design, or community maintenance.\n- As the company behind Crossplane, the open-source CNCF project that extends Kubernetes into an AI-native cloud control plane, Upbound enables organizations to compose, manage, and operate infrastructure and services through declarative, programmable control planes.\n- CNCF certifications (CKA, CKS, CKAD, PCA, OTCA).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:190204:canton",
+  "text": "Name: Canton\nSegment: Designs and builds prototype and demo code on Canton and Daml — smart contracts, registry apps, DA Registry and DA Utilities components, integration adapters — that hold up to technical scrutiny from engineers at the world's largest banks, financial market infrastructures, and crypto-native and stablecoin companies",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:81614:context protocol",
+  "text": "Name: Context Protocol\nSegment: Deep, hands-on production experience with Retrieval-Augmented Generation (RAG) including chunking strategies, embedding models, vector stores, retrieval and reranking, and grounding for high-accuracy use cases. Working production experience with Model Context Protocol (MCP) or equivalent agent/tool integration patterns.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:53790:r",
+  "text": "Name: R\nSegment: Strong analytical skills and comfort working with data; familiarity with basic statistics and the scientific method; exposure to R, Python, or similar is an advantage",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:119374:doble",
+  "text": "Name: Doble\nSegment: Independently execute relay protection testing using Doble, Omicron, RTS, SEL AcSELerator, GE Enervista, and equivalent testing platforms.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:ddos",
+  "text": "Name: DDoS\nSegments:\n- Knowledge of DNS security best practices (DNSSEC, DDoS mitigation)\n- Own the architecture and operation of Cloudflare edge security: WAF rule strategy, custom rules, rate limiting, bot management, and DDoS posture, tuned against real production traffic with SRE and product teams.\n- Experience with cloud networking: VPC design and peering, Shared VPC/Transit Gateway, Cloud Interconnect/Direct Connect, Cloud NAT, cross-cloud private connectivity, BGP and route control, edge load balancing and DDoS mitigation (Cloud Armor / AWS Shield)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:pwa",
+  "text": "Name: PWA\nSegments:\n- Review EPC Contractor and vendor compliance with PWA, insurance, and other contract requirements\n- Experienced in or desire to master one or more of: Progressive Web Apps (PWA), Web Extensions, Electron, Capacitor, React, Redux, Webpack\n- Experience creating responsive PWA or mobile applications using Ionic or Angular or similar framework.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:l’oreal",
+  "text": "Name: L’Oreal\nSegments:\n- aCommerce is the leading ecommerce enabler in Southeast Asia, delivering retail solutions for global brands such as L’Oreal, Samsung, and Unilever.\n- To learn more about how impact.com’s technology platform and partnerships marketplace is driving revenue growth for global enterprise brands such as Walmart, Uber, Shopify, Lenovo, L’Oreal and Fanatics visit www.impact.com.\n- aCommerce is the leading ecommerce enabler and e-distributor in Southeast Asia, delivering retail solutions for global brands such as L’Oreal, Samsung, and Unilever.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:201565:trt llm",
+  "text": "Name: TRT-LLM\nSegment: Research novel attacks against GPU infrastructure (e.g., closed-source firmware and vendor driver binaries, device passthrough exploits, SR-IOV/IOMMU misconfigurations, RDMA/InfiniBand fabric attacks, etc.), the inference stack (e.g., vLLM, TRT-LLM), and AI platform managed services (e.g., managed Slurm). Assess tenant-isolation boundaries and how they can be broken at the low-level stack",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:48599:coreos",
+  "text": "Name: CoreOS\nSegment: Open Source: CoreOS, Docker, Kubernetes (CKA/CKE), Vagrant",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:aws saas",
+  "text": "Name: AWS SaaS\nSegments:\n- You will collaborate with Product, UX, Engineering, and DevOps to deliver high-quality features in an agile, flow-oriented delivery environment using Jira, GitLab pipelines, and AWS SaaS architecture.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:focp",
+  "text": "Name: FOCP\nSegments:\n- FinOps credentials. FinOps Certified Practitioner (FOCP), or hands-on experience applying FinOps best practices.\n- FinOps Certified Practitioner (FOCP) certification preferred.\n- FinOps Certified Practitioner (FOCP).",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:fullstack developer",
+  "text": "Name: Fullstack Developer\nSegments:\n- We are looking for a Senior Fullstack Developer with strong experience in Angular and .NET Core to support and evolve a web application focused on client price management, revenue tracking, and invoice processes.\n- Solid professional experience (typically 5+ years) as a fullstack developer, including working within engineering teams and owning solutions from concept to delivery\n- As we continue to grow, we are looking to add a Senior Fullstack Developer to the team to support and evolve a web application focused on client price management, revenue tracking, and invoice processes.",
+  "a": "keep",
+  "b": "drop"
+ }
+]

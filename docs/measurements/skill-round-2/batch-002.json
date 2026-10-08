@@ -1,0 +1,122 @@
+[
+ {
+  "id": "p:saga",
+  "text": "Name: Saga\nSegments:\n- Core Languages & Design: Expert in Java 8/11/17+, OOP, design patterns (SAGA, MVC, CQRS).\n- Aplicar patrones como Saga, Arquitectura Orientada a Eventos, Event Sourcing y CQRS.\n- Working closely with engineers across AI Runtime, Cloud Ops, API & Saga, Knowledge, Governance, and Data teams, you will ensure that critical business flows, integrations, and AI-powered capabilities are validated through scalable, automated testing.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:dqn",
+  "text": "Name: DQN\nSegments:\n- Proven experience applying algorithms such as PPO, DQN, SAC, etc., to real-world problems.\n- Solid grasp of core RL training objectives and loss functions, including temporal-difference and Bellman error losses (Q-learning, DQN), policy gradient objectives (REINFORCE, actor-critic advantage estimation), and clipped surrogate objectives (PPO, TRPO), with an understanding of when each applies and how they behave in training.\n- Deep RL: policy gradient (PPO, SAC) or value-based (DQN, IQL) methods; offline / batch RL (CQL, IQL, TD3+BC, Decision Transformer).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:119374:omicron",
+  "text": "Name: Omicron\nSegment: Independently execute relay protection testing using Doble, Omicron, RTS, SEL AcSELerator, GE Enervista, and equivalent testing platforms.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:201565:sr iov",
+  "text": "Name: SR-IOV\nSegment: Research novel attacks against GPU infrastructure (e.g., closed-source firmware and vendor driver binaries, device passthrough exploits, SR-IOV/IOMMU misconfigurations, RDMA/InfiniBand fabric attacks, etc.), the inference stack (e.g., vLLM, TRT-LLM), and AI platform managed services (e.g., managed Slurm). Assess tenant-isolation boundaries and how they can be broken at the low-level stack",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:anti ddos",
+  "text": "Name: Anti-DDoS\nSegments:\n- Network security and Anti-DDoS measures\n- Experience in cloud security practices, including Web Application Firewall (WAF) and DDoS protection (Alibaba Cloud Anti-DDoS Premium, AWS Shield).\n- Network security (MACsec, ACLs) and Anti-DDoS measures",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:balancer",
+  "text": "Name: balancer\nSegments:\n- Own networking architecture decisions including VPC topology, Transit Gateway strategy, VPN configurations, load balancer patterns (ALB/NLB), CDN optimization (Fastly/CloudFront), and DNS management.\n- Experience with cloud managed services (e.g., EC2, S3, Lambda, Load Balancer, ECS, API Gateway, etc.).\n- Design and implement Datapath features related to Load Balancer, Firewall rules and L7 Protocol implementations",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:53072:log analytics",
+  "text": "Name: Log Analytics\nSegment: Observability — KQL, Log Analytics alerts, Prometheus + Grafana, Application Insights.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:119374:enervista",
+  "text": "Name: Enervista\nSegment: Independently execute relay protection testing using Doble, Omicron, RTS, SEL AcSELerator, GE Enervista, and equivalent testing platforms.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:integer",
+  "text": "Name: integer\nSegments:\n- Select and apply appropriate optimization methodologies including Linear Programming (LP), Mixed-Integer Programming (MIP), Constraint Programming (CP), vehicle routing, network flow, metaheuristics, and stochastic optimization\n- Design and deploy large-scale combinatorial optimization algorithms, with approaches ranging from mixed-integer programming and heuristics to reinforcement-learning-based solvers operating on heterogeneous graphs.\n- Apply Operations Research methodologies including Linear Programming (LP), Mixed-Integer Programming (MIP), Constraint Programming (CP), heuristics, vehicle routing, and network flow.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:106258:click",
+  "text": "Name: Click\nSegment: Experience building CLI tools and automation frameworks using Python (Click, Typer, or similar)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:nrf",
+  "text": "Name: NRF\nSegments:\n- This role is responsible for building and maintaining reporting infrastructure that provides visibility into marketing program performance, campaign ROI, and pipeline contribution, while also executing email marketing and landing page campaigns across North America and supporting the company’s global NRF annual event.\n- Experience with vendor embedded SDKs (ESP-IDF, nRF Connect SDK, or similar)\n- o Participate in NRF/ARF/Enterprise CABs as needed to support new software",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:mckinsey",
+  "text": "Name: McKinsey\nSegments:\n- STRA#ANLS#MRKT#3#LI-TR2 #sanfrancisco #sanjose #losangeles #sandiego #oakland #denver #miami #orlando #atlanta #chicago #boston #detroit #newyork #portland #philadelphia #dallas #houston #austin #seattle #washdc #tirana #yerevan #sydney #melbourne #perth #vienna #graz #linz #baku #minsk #brussels #antwerp #ghent #charleroi #liege #saopaolo #sofia #toronto #vancouver #montreal #shanghai #beijing #shenzhen #zagreb #cyprus #prague #Brno #Ostrava #copenhagen #cairo #alexandria #giza #estonia #helsinki #paris #nice #marseille #rouen #lyon #toulouse #tbilisi #berlin #munich #hamburg #stuttgart #cologne #frankfurt #dusseldorf #dortmund #essen #Bremen #leipzig #dresden #hanover #nuremberg #athens #hongkong #budapest #bangalore #newdelhi #jakarta #bali #bandung #dublin #telaviv #milan #rome #naples #turin #palermo #venice #bologna #florence #tokyo #osaka #yokohama #nagoya #okinawa #fukuoka #sapporo #amman #irbid #riga #beirut #tripoli #vilnius #luxembourg #kualalumpur #malta #chisinau #amsterdam #oslo #jerusalem #manila #warsaw #krakow #sintra #lisbon #porto #braga #cascais #loures #amadora #almada #doha #alrayyan #bucharest #moscow #saintpetersburg #riyadh #jeddah #mecca #medina #belgrade #singapore #bratislava #capetown #johannesburg #seoul #barcelona #madrid #valencia #seville #bilbao #malaga #oviedo #alicante #laspalmas #zaragozbanga #stockholm #zurich #geneva #basel #taipei #tainan #taichung #kaohsiung #Phuket #bangkok #istanbul #ankara #izmir #dubai #abudhabi #sharjah #london #manchester #liverpool #edinburgh #kiev #hcmc #hanoi #sanaa #taiz #aden #gibraltar #marrakech #lodz #wroclaw #poznan #Gdansk #szczecin #bydgoszcz #lublin #katowice #rio #salvador #fortaleza #brasilia #belo #belem #manaus #curitiba #portoalegre #saoluis data representation data analysis SQL data analytics analytics python (programming language) data mining data science r (programming language) tableau analytical skills data visualization databases business analysis business intelligence (bi) microsoft sql server machine learning statistics microsoft power bi java finance shopee traveloka google facebook ctrip trip.com makemytrip grab amazon pandas (software) artificial intelligence (ai) information technology capital one accenture upwork deloitte mckinsey bain microsoft uber lyft gojek lazada alibaba shopify expedia skyscanner\n- A+ colleagues. Our team includes alumni from Goldman Sachs, BlackRock, Two Sigma, Bridgewater, SpaceX, AWS, Meta, Google, McKinsey, Coinbase, Circle, and Uniswap.\n- On top of having multicultural backgrounds, people in the team are all top profiles: McKinsey, Amazon, Google, KKR, Cirque du Soleil, PSG, and Roland Garros.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:mri",
+  "text": "Name: MRI\nSegments:\n- Experience with the following industry tools a plus: Syndicated Consumer (e.g. Simmons, MRI), Syndicated Sales (e.g. IRI, Nielsen), Media Consumption (e.g. N-Power, Arbitron, ComScore), Paid Media Monitoring (e.g. Kantar, AdViews), Social Media Monitoring (e.g. NetBase, Sysomos), 1st Party (e.g. CRM), 3rd Party (e.g. Blue Kai), Digital Ad Server (e.g. DART, Atlas, Mediamind) & Site Served, Website Analytics (e.g. Omniture, Web Trends)\n- VTS's Lease integrations connect our platform to the property management and accounting systems - Yardi, MRI, JDE, and others - that our customers run their portfolios on.\n- Strong proficiency in Excel, AI tools, financial modeling, and real estate software such as Yardi, MRI, or a comparable platform.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:arm",
+  "text": "Name: ARM\nSegments:\n- Enable Trusted Execution Environments (TEE) support on Ambiq’s TrustZone (ARM venabled Apollo and Atomiq family of products.\n- Develop and deliver technical demos and training sessions to help customers and partners better understand Arm‑based technologies and Toradex solutions.\n- Growth Product is the product management arm of Growth Marketing and is supported by the dedicated Growth Engineering, Data Science and Analytics team within the larger GM org.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:48599:vagrant",
+  "text": "Name: Vagrant\nSegment: Open Source: CoreOS, Docker, Kubernetes (CKA/CKE), Vagrant",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:11764:canfd",
+  "text": "Name: CANFD\nSegment: Familiarity with communications busses and protocols (e.g. one or more of CAN, CANFD, UART/RS232/RS422/RS485, SPI, QSPI, I2C, UDP, TCP, Ethernet )",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:cta",
+  "text": "Name: CTA\nSegments:\n- As the CTA you'll also help the account teams identify, pursue and close strategic business development opportunities while driving add-on business within existing accounts.\n- Salesforce Certified Technical Architect (CTA) or Salesforce Certified Integration/System Architect credentials.\n- ServiceNow Certified Technical Architect (CTA)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:190204:daml",
+  "text": "Name: Daml\nSegment: Designs and builds prototype and demo code on Canton and Daml — smart contracts, registry apps, DA Registry and DA Utilities components, integration adapters — that hold up to technical scrutiny from engineers at the world's largest banks, financial market infrastructures, and crypto-native and stablecoin companies",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:mtd",
+  "text": "Name: MTD\nSegments:\n- Design and maintain a unified, original control framework tailored to CHAOS Industries' operating environment, including a security-by-design approach to systems development and defined: Maximum Tolerable Downtime (MTD), Recovery Point Objective (RPO), and Recovery Time Objective (RTO) for critical systems.\n- Understanding of device-level threat models and protections; familiarity with MDM/UEM platforms and mobile threat defense (MTD) solutions\n- We are looking for a Mobile Developer to lead native Android development while contributing to our iOS client for our Mobile Threat Defense (MTD) platform.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:105571:zemax",
+  "text": "Name: Zemax\nSegment: 2+ years of experience simulating and designing optics in Zemax or equivalent software",
+  "a": "keep",
+  "b": "drop"
+ }
+]

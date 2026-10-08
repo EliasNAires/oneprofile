@@ -1,0 +1,122 @@
+[
+ {
+  "id": "r:209304:canvas",
+  "text": "Name: Canvas\nSegment: Kotlin Kotlin Coroutines · Kotlin Flow · Jetpack Navigation · Dagger 2 · Room · Custom Views, Canvas & Paint · Jetpack Compose · JUnit",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:giac",
+  "text": "Name: GIAC\nSegments:\n- Industry certifications such as CISSP, CEH, Security+, CCSP, GIAC, AWS Security Specialty, or equivalent.\n- At least one current cybersecurity certification such as CISSP, CGRC, CISM, CRISC, Security+, SecurityX, CCSP, or GIAC.\n- Relevant Certifications, such as CCNP Security, CEH, CISSP, and GIAC Certifications (GSEC, GCIH, GPEN).",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:gcp ml",
+  "text": "Name: GCP ML\nSegments:\n- GCP ML Infrastructure: Architect and manage scalable GCP-based ML infrastructure using Vertex AI, Google Kubernetes Engine (GKE), Google Cloud Storage (GCS), Cloud Run, and GPU/TPU compute instances.\n- Hands-on experience with specific technologies: Databricks, Palantir, Snowflake, Qlik, Kubernetes, Terraform, Python, Spark, AWS/Azure/GCP ML services, vector databases, LLM frameworks\n- Experience with AWS or GCP ML services (SageMaker, Vertex AI)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:209304:jetpack navigation",
+  "text": "Name: Jetpack Navigation\nSegment: Kotlin Kotlin Coroutines · Kotlin Flow · Jetpack Navigation · Dagger 2 · Room · Custom Views, Canvas & Paint · Jetpack Compose · JUnit",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:itom",
+  "text": "Name: ITOM\nSegments:\n- Expertise in implementing and optimizing ServiceNow modules such as ITSM, ITOM, HRSD, Security Operations, Service Catalog, and Reporting.\n- Experience working with ServiceNow implementations across ITSM, ITOM, CSM, HRSD, or related modules.\n- Strong understanding of enterprise IT operations and service management platforms, including ServiceNow (e.g., ITOM Pro), and other industry leading monitoring, observability, and automation tools.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:graphrag",
+  "text": "Name: GraphRAG\nSegments:\n- Knowledge of knowledge graphs, ontologies, or Resource Description Framework (RDF), particularly as applied to graph-based retrieval (GraphRAG) and grounding\n- Integrate knowledge graphs with AI and machine-learning solutions, including generative AI, retrieval-augmented generation, GraphRAG, semantic search, and intelligent agents.\n- Knowledge graph or GraphRAG experience — bonus for enterprise search architectures at scale.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:osi",
+  "text": "Name: OSI\nSegments:\n- TCP/IP stack and OSI model proficiency.\n- Familiarity with PV plant SCADA systems and technologies (e.g., Ignition, Power Factors, OSI, SEL).\n- Implement robust mitigation strategies for complex attacks across OSI Layers 3, 4, and 7 using Cloudflare's suite (Magic Transit, Magic Firewall, Advanced TCP Protection, Advanced DNS Protection, WAF, Custom Rules, IP Access Rules, Bot Management, and Rate Limiting)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:wm",
+  "text": "Name: WM\nSegments:\n- Collaborate with SAP teams (MM, SD, WM, QM, FICO) to ensure seamless integration of planning processes with procurement, sales, warehousing, and financial modules.\n- Provide expert technical guidance on WM processes.\n- Integrate Ecosystem Architecture: Design robust EDI, API, and platform integration touchpoints connecting external suppliers, contract manufacturers, and 3PL partners with core SAP S/4HANA (MM, WM, SD) and SAP IBP planning layers.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:id",
+  "text": "Name: ID\nSegments:\n- Req ID: P78149\n- Familiarity with Entra ID B2B, Conditional Access, Access Reviews, PIM.\n- Req ID: 1333",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:cep",
+  "text": "Name: CEP\nSegments:\n- Certified Compensation Professional (CCP) or Certified Equity Professional (CEP) designation.\n- Experience with real-time and event-driven decision architectures, including complex event processing (CEP), streaming decision services, and sub-second decisioning requirements.\n- A Certified Equity Professional (CEP) designation",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:auditoria",
+  "text": "Name: Auditoria\nSegments:\n- Monitoramento, auditoria, relatórios e análises da conta;\n- Formación universitaria en Contabilidad, Auditoria, Finanzas o Administración.\n- Formación universitaria o técnica superior en Contabilidad, Auditoria, Finanzas o Administración.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:tag",
+  "text": "Name: Tag\nSegments:\n- Moderate understanding of site tagging and ad tagging (Amazon Ad Tag).\n- Marketing and CRM platforms: HubSpot, Google Analytics (GA4), Google Ads, Meta Ads Manager, Google Tag Manager, call tracking tools\n- Familiarity with Google Analytics, Google Tag Manager, or similar tools.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:ubs",
+  "text": "Name: UBS\nSegments:\n- Financial wellness benefits (unlimited 1:1 sessions with a UBS financial coach and employer-sponsored 401k with up to 4% company match)\n- The senior team at GLC has worked together over the past decade and brings financial advisory experience from AlixPartners, Credit Suisse First Boston, Donaldson, Lufkin & Jenrette, Morgan Stanley, PriceWaterhouseCoopers, Smith Barney, and UBS.\n- Provide Db2 system engineering services for UBS Db2 for z/OS platforms, including subsystem engineering, lifecycle management, maintenance and PFSET implementation, upgrades aligned to the IBM Db2 Continuous Delivery model, performance engineering, Level 3 support for complex database issues, and definition of engineering configurations for resiliency, recovery, automation, and monitoring.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:ehr",
+  "text": "Name: EHR\nSegments:\n- Develop foundational end-to-end AI/ML workflows from source ingestion and preparation, (2) training and tuning, (3) experimentation and productionisation, and (4) downstream systems integration (EHR modules, micro-services, dashboards).\n- Transform massive healthcare claims, EHR, and reference datasets into trusted, performant Healthcare Map data products and serving-ready data assets.\n- You will have the opportunity to work with an extensive, high-quality dataset of real-world Electronic Health Records (EHR), encompassing over 130 million patients.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:12395:s1000d",
+  "text": "Name: S1000D\nSegment: Along with our commercial offerings outlined above, Anduril is pursuing Programs with the GOV, which require documentation in standards such as MIL-STD-40051D and S1000D, delivered via IETMs / IETDs.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:41054:w&b launch",
+  "text": "Name: W&B Launch\nSegment: Own W&B Launch and evolve it for the CoreWeave era. Launch is W&B's job submission and compute orchestration product. Today it helps teams submit training jobs to Kubernetes clusters and cloud providers. As part of a vertically integrated AI platform, Launch can go further — with deeper infrastructure awareness and the ability to serve as the orchestration layer for agentic and automated research workflows. You'll set the vision for what that looks like and ship it.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:oracle data",
+  "text": "Name: Oracle data\nSegments:\n- You will get hands-on with Oracle data, process models, applications, and AI-driven workflows on the Celonis platform, iterating directly with the customers and partners who will use them.\n- Configure and maintain Oracle Data Guard, Active Data Guard, and full disaster‑recovery environments.\n- Job Title: Oracle Data Architect",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:crt",
+  "text": "Name: CRT\nSegments:\n- Candidates with relevant certifications such as CISSP, CCSP, CRT, OSCP would be an added advantage.\n- Cybersecurity certifications: Minimally possess OSCP or CREST CRT. Other cybersecurity certifications would be an added advantage\n- OSCP, OSCE, OSWE, CREST CRT, CRTP, CCT INF, Cloud security experience",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:bronze",
+  "text": "Name: Bronze\nSegments:\n- Where our Data Engineers own ingestion and the Bronze layer, you own the path from modeled data to decisions — making our numbers consistent, our warehouse fast and cost-efficient, and our analytics self-serve.\n- This role sits at the center of the enterprise data fabric: upstream, it consumes structured and event-driven data from ERP, PLM, MES, and third-party SaaS systems; downstream, it feeds the data lake ingestion layer (bronze) and operational integrations with peer systems.\n- Build modular, scalable data models using dbt Core, designing a Medallion architecture (Bronze, Silver, Gold) that transforms raw ingestion feeds into curated, business-ready data marts.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:uci",
+  "text": "Name: UCI\nSegments:\n- Experience as a contributor of the UCI standard or as an implementer of an adopting system\n- Experience defining or implementing Mission Autonomy behaviors through UCI\n- Experience defining or implementing Mission System behaviors through UCI",
+  "a": "keep",
+  "b": "drop"
+ }
+]

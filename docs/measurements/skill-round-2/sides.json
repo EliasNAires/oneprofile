@@ -1,0 +1,937 @@
+{
+ "p:optimizer": {
+  "kind": "precision",
+  "name": "optimizer",
+  "labeller": "a"
+ },
+ "p:rfc": {
+  "kind": "precision",
+  "name": "RFC",
+  "labeller": "a"
+ },
+ "p:marvell": {
+  "kind": "precision",
+  "name": "Marvell",
+  "labeller": "b"
+ },
+ "p:os level": {
+  "kind": "precision",
+  "name": "OS-level",
+  "labeller": "a"
+ },
+ "p:google antigravity": {
+  "kind": "precision",
+  "name": "Google Antigravity",
+  "labeller": "a"
+ },
+ "r:180215:scada": {
+  "kind": "recall",
+  "name": "SCADA",
+  "labeller": "b"
+ },
+ "r:41054:own w&b launch": {
+  "kind": "recall",
+  "name": "Own W&B Launch",
+  "labeller": "b"
+ },
+ "r:157473:statefulsets": {
+  "kind": "recall",
+  "name": "StatefulSets",
+  "labeller": "a"
+ },
+ "p:ai security depth": {
+  "kind": "precision",
+  "name": "AI Security Depth",
+  "labeller": "b"
+ },
+ "p:uv": {
+  "kind": "precision",
+  "name": "UV",
+  "labeller": "a"
+ },
+ "r:191403:running plexos": {
+  "kind": "recall",
+  "name": "Running PLEXOS",
+  "labeller": "a"
+ },
+ "r:32951:cyberark pam": {
+  "kind": "recall",
+  "name": "CyberArk PAM",
+  "labeller": "a"
+ },
+ "p:egnyte": {
+  "kind": "precision",
+  "name": "Egnyte",
+  "labeller": "a"
+ },
+ "p:psoc": {
+  "kind": "precision",
+  "name": "PSOC",
+  "labeller": "a"
+ },
+ "r:202387:okta customer identity": {
+  "kind": "recall",
+  "name": "Okta Customer Identity",
+  "labeller": "b"
+ },
+ "p:sep": {
+  "kind": "precision",
+  "name": "SEP",
+  "labeller": "b"
+ },
+ "r:186432:step": {
+  "kind": "recall",
+  "name": "Step",
+  "labeller": "b"
+ },
+ "p:tracy": {
+  "kind": "precision",
+  "name": "Tracy",
+  "labeller": "a"
+ },
+ "p:snow": {
+  "kind": "precision",
+  "name": "SNOW",
+  "labeller": "a"
+ },
+ "p:lakeflow": {
+  "kind": "precision",
+  "name": "Lakeflow",
+  "labeller": "a"
+ },
+ "p:saga": {
+  "kind": "precision",
+  "name": "Saga",
+  "labeller": "b"
+ },
+ "p:dqn": {
+  "kind": "precision",
+  "name": "DQN",
+  "labeller": "b"
+ },
+ "r:119374:omicron": {
+  "kind": "recall",
+  "name": "Omicron",
+  "labeller": "a"
+ },
+ "r:201565:sr iov": {
+  "kind": "recall",
+  "name": "SR-IOV",
+  "labeller": "b"
+ },
+ "p:anti ddos": {
+  "kind": "precision",
+  "name": "Anti-DDoS",
+  "labeller": "a"
+ },
+ "p:balancer": {
+  "kind": "precision",
+  "name": "balancer",
+  "labeller": "b"
+ },
+ "r:53072:log analytics": {
+  "kind": "recall",
+  "name": "Log Analytics",
+  "labeller": "b"
+ },
+ "r:119374:enervista": {
+  "kind": "recall",
+  "name": "Enervista",
+  "labeller": "a"
+ },
+ "p:integer": {
+  "kind": "precision",
+  "name": "integer",
+  "labeller": "b"
+ },
+ "r:106258:click": {
+  "kind": "recall",
+  "name": "Click",
+  "labeller": "b"
+ },
+ "p:nrf": {
+  "kind": "precision",
+  "name": "NRF",
+  "labeller": "a"
+ },
+ "p:mckinsey": {
+  "kind": "precision",
+  "name": "McKinsey",
+  "labeller": "a"
+ },
+ "p:mri": {
+  "kind": "precision",
+  "name": "MRI",
+  "labeller": "b"
+ },
+ "p:arm": {
+  "kind": "precision",
+  "name": "ARM",
+  "labeller": "a"
+ },
+ "r:48599:vagrant": {
+  "kind": "recall",
+  "name": "Vagrant",
+  "labeller": "b"
+ },
+ "r:11764:canfd": {
+  "kind": "recall",
+  "name": "CANFD",
+  "labeller": "b"
+ },
+ "p:cta": {
+  "kind": "precision",
+  "name": "CTA",
+  "labeller": "a"
+ },
+ "r:190204:daml": {
+  "kind": "recall",
+  "name": "Daml",
+  "labeller": "b"
+ },
+ "p:mtd": {
+  "kind": "precision",
+  "name": "MTD",
+  "labeller": "b"
+ },
+ "r:105571:zemax": {
+  "kind": "recall",
+  "name": "Zemax",
+  "labeller": "a"
+ },
+ "r:119374:acselerator": {
+  "kind": "recall",
+  "name": "AcSELerator",
+  "labeller": "a"
+ },
+ "p:owasp top ten": {
+  "kind": "precision",
+  "name": "OWASP Top Ten",
+  "labeller": "a"
+ },
+ "p:falcon": {
+  "kind": "precision",
+  "name": "Falcon",
+  "labeller": "b"
+ },
+ "r:199195:sap cloud connector": {
+  "kind": "recall",
+  "name": "SAP Cloud Connector",
+  "labeller": "b"
+ },
+ "p:excel experience": {
+  "kind": "precision",
+  "name": "Excel Experience",
+  "labeller": "b"
+ },
+ "p:dag": {
+  "kind": "precision",
+  "name": "DAG",
+  "labeller": "a"
+ },
+ "p:unreal animation": {
+  "kind": "precision",
+  "name": "Unreal Animation",
+  "labeller": "b"
+ },
+ "p:google marketing platform": {
+  "kind": "precision",
+  "name": "Google Marketing Platform",
+  "labeller": "b"
+ },
+ "r:209304:kotlin flow": {
+  "kind": "recall",
+  "name": "Kotlin Flow",
+  "labeller": "a"
+ },
+ "p:palantir": {
+  "kind": "precision",
+  "name": "Palantir",
+  "labeller": "a"
+ },
+ "r:209304:kotlin kotlin": {
+  "kind": "recall",
+  "name": "Kotlin Kotlin",
+  "labeller": "a"
+ },
+ "p:tt": {
+  "kind": "precision",
+  "name": "TT",
+  "labeller": "b"
+ },
+ "p:dl": {
+  "kind": "precision",
+  "name": "DL",
+  "labeller": "b"
+ },
+ "r:37415:workers ai": {
+  "kind": "recall",
+  "name": "Workers AI",
+  "labeller": "b"
+ },
+ "p:dba": {
+  "kind": "precision",
+  "name": "DBA",
+  "labeller": "b"
+ },
+ "r:69710:fio": {
+  "kind": "recall",
+  "name": "fio",
+  "labeller": "a"
+ },
+ "r:212096:shapefiles": {
+  "kind": "recall",
+  "name": "shapefiles",
+  "labeller": "a"
+ },
+ "p:troubleshoot microsoft": {
+  "kind": "precision",
+  "name": "troubleshoot Microsoft",
+  "labeller": "a"
+ },
+ "p:llm augmented": {
+  "kind": "precision",
+  "name": "LLM-augmented",
+  "labeller": "a"
+ },
+ "p:csd": {
+  "kind": "precision",
+  "name": "CSD",
+  "labeller": "b"
+ },
+ "p:partner portal": {
+  "kind": "precision",
+  "name": "partner portal",
+  "labeller": "a"
+ },
+ "p:fannie": {
+  "kind": "precision",
+  "name": "Fannie",
+  "labeller": "a"
+ },
+ "r:172219:automotive ethernet": {
+  "kind": "recall",
+  "name": "Automotive Ethernet",
+  "labeller": "b"
+ },
+ "p:médaillon": {
+  "kind": "precision",
+  "name": "Médaillon",
+  "labeller": "b"
+ },
+ "r:69710:iperf": {
+  "kind": "recall",
+  "name": "iperf",
+  "labeller": "a"
+ },
+ "r:186432:step functions": {
+  "kind": "recall",
+  "name": "Step Functions",
+  "labeller": "a"
+ },
+ "r:11764:qspi": {
+  "kind": "recall",
+  "name": "QSPI",
+  "labeller": "a"
+ },
+ "p:data explorer": {
+  "kind": "precision",
+  "name": "Data Explorer",
+  "labeller": "b"
+ },
+ "p:hexagon": {
+  "kind": "precision",
+  "name": "Hexagon",
+  "labeller": "a"
+ },
+ "p:lightspeed venture partners": {
+  "kind": "precision",
+  "name": "Lightspeed Venture Partners",
+  "labeller": "b"
+ },
+ "p:p2p": {
+  "kind": "precision",
+  "name": "P2P",
+  "labeller": "a"
+ },
+ "p:secretary": {
+  "kind": "precision",
+  "name": "Secretary",
+  "labeller": "b"
+ },
+ "p:crm proficiency": {
+  "kind": "precision",
+  "name": "CRM Proficiency",
+  "labeller": "a"
+ },
+ "r:65159:e.g c++": {
+  "kind": "recall",
+  "name": "e.g C++",
+  "labeller": "a"
+ },
+ "r:136023:app service": {
+  "kind": "recall",
+  "name": "App Service",
+  "labeller": "b"
+ },
+ "r:52801:c/c++": {
+  "kind": "recall",
+  "name": "C/C++",
+  "labeller": "b"
+ },
+ "p:ecc": {
+  "kind": "precision",
+  "name": "ECC",
+  "labeller": "b"
+ },
+ "p:cfi": {
+  "kind": "precision",
+  "name": "CFI",
+  "labeller": "b"
+ },
+ "p:hedis": {
+  "kind": "precision",
+  "name": "HEDIS",
+  "labeller": "b"
+ },
+ "r:191403:plexos": {
+  "kind": "recall",
+  "name": "PLEXOS",
+  "labeller": "a"
+ },
+ "r:53036:purl": {
+  "kind": "recall",
+  "name": "PURL",
+  "labeller": "b"
+ },
+ "p:open lakehouse": {
+  "kind": "precision",
+  "name": "Open Lakehouse",
+  "labeller": "a"
+ },
+ "r:41054:own w&b": {
+  "kind": "recall",
+  "name": "Own W&B",
+  "labeller": "a"
+ },
+ "p:mediatek": {
+  "kind": "precision",
+  "name": "MediaTek",
+  "labeller": "a"
+ },
+ "p:bsp": {
+  "kind": "precision",
+  "name": "BSP",
+  "labeller": "b"
+ },
+ "r:119374:sel acselerator": {
+  "kind": "recall",
+  "name": "SEL AcSELerator",
+  "labeller": "b"
+ },
+ "r:56976:base command platform": {
+  "kind": "recall",
+  "name": "Base Command Platform",
+  "labeller": "a"
+ },
+ "r:106258:typer": {
+  "kind": "recall",
+  "name": "Typer",
+  "labeller": "b"
+ },
+ "r:56976:mission control": {
+  "kind": "recall",
+  "name": "Mission Control",
+  "labeller": "a"
+ },
+ "p:gcr": {
+  "kind": "precision",
+  "name": "GCR",
+  "labeller": "b"
+ },
+ "p:recursion": {
+  "kind": "precision",
+  "name": "recursion",
+  "labeller": "b"
+ },
+ "p:mdr": {
+  "kind": "precision",
+  "name": "MDR",
+  "labeller": "a"
+ },
+ "r:16634:celonis": {
+  "kind": "recall",
+  "name": "Celonis",
+  "labeller": "a"
+ },
+ "r:41054:w&b's": {
+  "kind": "recall",
+  "name": "W&B's",
+  "labeller": "a"
+ },
+ "p:dml": {
+  "kind": "precision",
+  "name": "DML",
+  "labeller": "a"
+ },
+ "p:dci": {
+  "kind": "precision",
+  "name": "DCI",
+  "labeller": "b"
+ },
+ "p:heredia": {
+  "kind": "precision",
+  "name": "Heredia",
+  "labeller": "b"
+ },
+ "p:tui": {
+  "kind": "precision",
+  "name": "TUI",
+  "labeller": "b"
+ },
+ "r:212096:kml": {
+  "kind": "recall",
+  "name": "KML",
+  "labeller": "a"
+ },
+ "p:descript": {
+  "kind": "precision",
+  "name": "Descript",
+  "labeller": "a"
+ },
+ "p:arm soc": {
+  "kind": "precision",
+  "name": "ARM SoC",
+  "labeller": "a"
+ },
+ "p:psa": {
+  "kind": "precision",
+  "name": "PSA",
+  "labeller": "a"
+ },
+ "r:81614:model context protocol": {
+  "kind": "recall",
+  "name": "Model Context Protocol",
+  "labeller": "a"
+ },
+ "r:82465:systemtap": {
+  "kind": "recall",
+  "name": "SystemTap",
+  "labeller": "a"
+ },
+ "p:bem": {
+  "kind": "precision",
+  "name": "BEM",
+  "labeller": "a"
+ },
+ "p:pma": {
+  "kind": "precision",
+  "name": "PMA",
+  "labeller": "b"
+ },
+ "p:5+years": {
+  "kind": "precision",
+  "name": "5+years",
+  "labeller": "b"
+ },
+ "p:lpq": {
+  "kind": "precision",
+  "name": "LPQ",
+  "labeller": "b"
+ },
+ "p:llmops": {
+  "kind": "precision",
+  "name": "LLMOps",
+  "labeller": "a"
+ },
+ "p:orm": {
+  "kind": "precision",
+  "name": "ORM",
+  "labeller": "b"
+ },
+ "r:77617:spark": {
+  "kind": "recall",
+  "name": "Spark",
+  "labeller": "a"
+ },
+ "p:personio": {
+  "kind": "precision",
+  "name": "Personio",
+  "labeller": "b"
+ },
+ "r:53072:application insights": {
+  "kind": "recall",
+  "name": "Application Insights",
+  "labeller": "b"
+ },
+ "r:63773:sgbm": {
+  "kind": "recall",
+  "name": "SGBM",
+  "labeller": "b"
+ },
+ "p:bpm": {
+  "kind": "precision",
+  "name": "BPM",
+  "labeller": "a"
+ },
+ "p:aaai": {
+  "kind": "precision",
+  "name": "AAAI",
+  "labeller": "a"
+ },
+ "p:ispm": {
+  "kind": "precision",
+  "name": "ISPM",
+  "labeller": "a"
+ },
+ "r:100728:atlas": {
+  "kind": "recall",
+  "name": "Atlas",
+  "labeller": "b"
+ },
+ "r:155875:swift": {
+  "kind": "recall",
+  "name": "Swift",
+  "labeller": "a"
+ },
+ "r:119374:ge enervista": {
+  "kind": "recall",
+  "name": "GE Enervista",
+  "labeller": "a"
+ },
+ "p:ssids": {
+  "kind": "precision",
+  "name": "SSIDs",
+  "labeller": "a"
+ },
+ "p:mdm": {
+  "kind": "precision",
+  "name": "MDM",
+  "labeller": "b"
+ },
+ "p:multi os": {
+  "kind": "precision",
+  "name": "multi-OS",
+  "labeller": "a"
+ },
+ "p:fortinet nse": {
+  "kind": "precision",
+  "name": "Fortinet NSE",
+  "labeller": "a"
+ },
+ "r:100728:mongodb atlas": {
+  "kind": "recall",
+  "name": "MongoDB Atlas",
+  "labeller": "b"
+ },
+ "r:77652:sigma v2": {
+  "kind": "recall",
+  "name": "Sigma v2",
+  "labeller": "b"
+ },
+ "p:dhl": {
+  "kind": "precision",
+  "name": "DHL",
+  "labeller": "b"
+ },
+ "p:studio integrations": {
+  "kind": "precision",
+  "name": "Studio Integrations",
+  "labeller": "a"
+ },
+ "p:war data platform": {
+  "kind": "precision",
+  "name": "War Data Platform",
+  "labeller": "b"
+ },
+ "p:isc2 cissp": {
+  "kind": "precision",
+  "name": "ISC2 CISSP",
+  "labeller": "b"
+ },
+ "r:186009:c": {
+  "kind": "recall",
+  "name": "C",
+  "labeller": "b"
+ },
+ "p:ai agents team": {
+  "kind": "precision",
+  "name": "AI Agents Team",
+  "labeller": "a"
+ },
+ "r:64678:embedded linux": {
+  "kind": "recall",
+  "name": "Embedded Linux",
+  "labeller": "a"
+ },
+ "p:biases": {
+  "kind": "precision",
+  "name": "biases",
+  "labeller": "b"
+ },
+ "r:41054:w&b": {
+  "kind": "recall",
+  "name": "W&B",
+  "labeller": "a"
+ },
+ "p:biamp": {
+  "kind": "precision",
+  "name": "Biamp",
+  "labeller": "b"
+ },
+ "r:44862:spark": {
+  "kind": "recall",
+  "name": "Spark",
+  "labeller": "a"
+ },
+ "p:cisco ccna": {
+  "kind": "precision",
+  "name": "Cisco CCNA",
+  "labeller": "b"
+ },
+ "r:134578:vmap": {
+  "kind": "recall",
+  "name": "VMAP",
+  "labeller": "a"
+ },
+ "r:167050:veeam": {
+  "kind": "recall",
+  "name": "Veeam",
+  "labeller": "b"
+ },
+ "r:209304:canvas": {
+  "kind": "recall",
+  "name": "Canvas",
+  "labeller": "b"
+ },
+ "p:giac": {
+  "kind": "precision",
+  "name": "GIAC",
+  "labeller": "a"
+ },
+ "p:gcp ml": {
+  "kind": "precision",
+  "name": "GCP ML",
+  "labeller": "a"
+ },
+ "r:209304:jetpack navigation": {
+  "kind": "recall",
+  "name": "Jetpack Navigation",
+  "labeller": "a"
+ },
+ "p:itom": {
+  "kind": "precision",
+  "name": "ITOM",
+  "labeller": "b"
+ },
+ "p:graphrag": {
+  "kind": "precision",
+  "name": "GraphRAG",
+  "labeller": "a"
+ },
+ "p:osi": {
+  "kind": "precision",
+  "name": "OSI",
+  "labeller": "a"
+ },
+ "p:wm": {
+  "kind": "precision",
+  "name": "WM",
+  "labeller": "a"
+ },
+ "p:id": {
+  "kind": "precision",
+  "name": "ID",
+  "labeller": "a"
+ },
+ "p:cep": {
+  "kind": "precision",
+  "name": "CEP",
+  "labeller": "b"
+ },
+ "p:auditoria": {
+  "kind": "precision",
+  "name": "Auditoria",
+  "labeller": "a"
+ },
+ "p:tag": {
+  "kind": "precision",
+  "name": "Tag",
+  "labeller": "a"
+ },
+ "p:ubs": {
+  "kind": "precision",
+  "name": "UBS",
+  "labeller": "a"
+ },
+ "p:ehr": {
+  "kind": "precision",
+  "name": "EHR",
+  "labeller": "b"
+ },
+ "r:12395:s1000d": {
+  "kind": "recall",
+  "name": "S1000D",
+  "labeller": "a"
+ },
+ "r:41054:w&b launch": {
+  "kind": "recall",
+  "name": "W&B Launch",
+  "labeller": "a"
+ },
+ "p:oracle data": {
+  "kind": "precision",
+  "name": "Oracle data",
+  "labeller": "a"
+ },
+ "p:crt": {
+  "kind": "precision",
+  "name": "CRT",
+  "labeller": "a"
+ },
+ "p:bronze": {
+  "kind": "precision",
+  "name": "Bronze",
+  "labeller": "a"
+ },
+ "p:uci": {
+  "kind": "precision",
+  "name": "UCI",
+  "labeller": "b"
+ },
+ "r:105840:twilio": {
+  "kind": "recall",
+  "name": "Twilio",
+  "labeller": "a"
+ },
+ "p:cloud siem": {
+  "kind": "precision",
+  "name": "Cloud SIEM",
+  "labeller": "a"
+ },
+ "p:xtp": {
+  "kind": "precision",
+  "name": "XTP",
+  "labeller": "b"
+ },
+ "p:ui level": {
+  "kind": "precision",
+  "name": "UI-level",
+  "labeller": "b"
+ },
+ "r:178514:model context protocols": {
+  "kind": "recall",
+  "name": "Model Context Protocols",
+  "labeller": "b"
+ },
+ "p:caf": {
+  "kind": "precision",
+  "name": "CAF",
+  "labeller": "a"
+ },
+ "r:105840:braze": {
+  "kind": "recall",
+  "name": "Braze",
+  "labeller": "a"
+ },
+ "p:cncf": {
+  "kind": "precision",
+  "name": "CNCF",
+  "labeller": "b"
+ },
+ "r:190204:canton": {
+  "kind": "recall",
+  "name": "Canton",
+  "labeller": "a"
+ },
+ "r:81614:context protocol": {
+  "kind": "recall",
+  "name": "Context Protocol",
+  "labeller": "a"
+ },
+ "r:53790:r": {
+  "kind": "recall",
+  "name": "R",
+  "labeller": "b"
+ },
+ "r:119374:doble": {
+  "kind": "recall",
+  "name": "Doble",
+  "labeller": "b"
+ },
+ "p:ddos": {
+  "kind": "precision",
+  "name": "DDoS",
+  "labeller": "a"
+ },
+ "p:pwa": {
+  "kind": "precision",
+  "name": "PWA",
+  "labeller": "a"
+ },
+ "p:l’oreal": {
+  "kind": "precision",
+  "name": "L’Oreal",
+  "labeller": "a"
+ },
+ "r:201565:trt llm": {
+  "kind": "recall",
+  "name": "TRT-LLM",
+  "labeller": "a"
+ },
+ "r:48599:coreos": {
+  "kind": "recall",
+  "name": "CoreOS",
+  "labeller": "a"
+ },
+ "p:aws saas": {
+  "kind": "precision",
+  "name": "AWS SaaS",
+  "labeller": "b"
+ },
+ "p:focp": {
+  "kind": "precision",
+  "name": "FOCP",
+  "labeller": "a"
+ },
+ "p:fullstack developer": {
+  "kind": "precision",
+  "name": "Fullstack Developer",
+  "labeller": "b"
+ },
+ "p:arctic wolf": {
+  "kind": "precision",
+  "name": "Arctic Wolf",
+  "labeller": "b"
+ },
+ "r:11764:rs485": {
+  "kind": "recall",
+  "name": "RS485",
+  "labeller": "b"
+ },
+ "r:11764:rs232": {
+  "kind": "recall",
+  "name": "RS232",
+  "labeller": "b"
+ },
+ "p:hsi": {
+  "kind": "precision",
+  "name": "HSI",
+  "labeller": "b"
+ },
+ "r:13129:typescript sdks": {
+  "kind": "recall",
+  "name": "TypeScript SDKs",
+  "labeller": "b"
+ },
+ "p:corpsec": {
+  "kind": "precision",
+  "name": "CorpSec",
+  "labeller": "a"
+ },
+ "p:opencode": {
+  "kind": "precision",
+  "name": "OpenCode",
+  "labeller": "b"
+ }
+}

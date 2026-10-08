@@ -1,0 +1,22 @@
+{
+  "p:arm soc": {"verdict": "a", "clause": "A name with an ordinary word before or after it... is a drop", "pattern": "generic word attached to name"},
+  "p:psa": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology", "pattern": "generic software category concept"},
+  "r:81614:model context protocol": {"verdict": "a", "clause": "a protocol, file format or standard that software implements: MCP", "pattern": "protocol named in full"},
+  "r:82465:systemtap": {"verdict": "a", "clause": "Keep a name when it names one specific technology... a tool or a platform", "pattern": "named debugging tool in list"},
+  "p:bem": {"verdict": "a", "clause": "A practice, method, technique, architecture or kind of system is no skill", "pattern": "naming convention methodology"},
+  "p:pma": {"verdict": "b", "clause": "An ambiguous abbreviation: one that names several things, none dominant where it is written", "pattern": "ambiguous abbreviation multiple meanings"},
+  "p:5+years": {"verdict": "b", "clause": "Not a technology at all", "pattern": "not a technology at all"},
+  "p:lpq": {"verdict": "b", "clause": "A compliance framework, regulation or certification", "pattern": "certification credential not technology"},
+  "p:llmops": {"verdict": "a", "clause": "A practice, method, technique, architecture or kind of system is no skill", "pattern": "ops practice not technology"},
+  "p:orm": {"verdict": "b", "clause": "A generic concept or a practice, not a named technology", "pattern": "generic technique abbreviation"},
+  "r:77617:spark": {"verdict": "a", "clause": "A bare form... is that product; it is a keep where the text uses it for the product", "pattern": "bare form used for product"},
+  "p:personio": {"verdict": "a", "clause": "Keep a name when it names one specific technology... a tool or a platform", "pattern": "named SaaS platform integration"},
+  "r:53072:application insights": {"verdict": "b", "clause": "Keep a name when it names one specific technology... a cloud or one of its services", "pattern": "named cloud service full name"},
+  "r:63773:sgbm": {"verdict": "a", "clause": "A practice, method, technique, architecture or kind of system is no skill", "pattern": "algorithm technique not technology"},
+  "p:bpm": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology", "pattern": "generic software category concept"},
+  "p:aaai": {"verdict": "a", "clause": "Not a technology at all: ... a heading or field of study", "pattern": "conference or organization name"},
+  "p:ispm": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology / Not a technology at all: a company", "pattern": "security concept or division name"},
+  "r:100728:atlas": {"verdict": "a", "clause": "so is part of a longer name written around it", "pattern": "part of longer name as written"},
+  "r:155875:swift": {"verdict": "a", "clause": "Keep a name when it names one specific technology... a language", "pattern": "language named in list"},
+  "r:119374:ge enervista": {"verdict": "b", "clause": "A technology no software person is hired for", "pattern": "tool for non-software engineer"}
+}

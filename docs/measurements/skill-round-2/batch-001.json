@@ -1,0 +1,122 @@
+[
+ {
+  "id": "p:optimizer",
+  "text": "Name: optimizer\nSegments:\n- Deep, architectural knowledge of Apache Spark internals (including Drivers, Executors, Core Memory Management, DAGs, Catalyst Optimizer, and Tungsten execution engine).\n- You will own the execution of training workloads, including gradient computation, optimizer updates, rollout coordination, and checkpoint recovery.\n- Tune performance at the optimizer and storage level",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:rfc",
+  "text": "Name: RFC\nSegments:\n- Define and maintain the data model RFC process, reviewing proposed changes, enforcing boundary discipline, and ensuring no undocumented changes promote to canonical layers.\n- A history of driving engineering culture improvements whether through RFC processes, architecture review boards, or engineering blog contributions.\n- Technical and AI fluency. You work in Claude Code or OpenAI Codex, you understand code, data flows, and architecture well enough to challenge an engineering design. You know the software development lifecycle deeply, from RFC and specification through review, release, and support. AI takes you from evidence to a testable artifact in hours.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:marvell",
+  "text": "Name: Marvell\nSegments:\n- Switch & Hardware Management: Configure and troubleshoot managed automotive/industrial switches (e.g., Marvell, Broadcom), VLAN segmentation, and Automotive Ethernet to ensure deterministic traffic isolation.\n- Hardware Acceleration — Working knowledge of crypto offload engines (QAT, Marvell OCTEON, Cavium/Nitrox) or SmartNIC/DPU integration into packet pipelines.\n- Experience integrating or debugging switch ASIC SDKs from Broadcom, Marvell, NVIDIA, Intel, or comparable vendors.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:os level",
+  "text": "Name: OS-level\nSegments:\n- Own and execute end-to-end patch management across AWS compute resources (EC2, ECS, Lambda runtimes, EKS nodes), third-party dependencies, and OS-level packages.\n- Strong knowledge of Linux/Unix systems administration, OS-level tuning, and server/GPU hardware architecture.\n- 8+ years of experience in systems security, with at least 5 years focused on firmware and hardware security (firmware, bootloaders, and OS-level security)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:google antigravity",
+  "text": "Name: Google Antigravity\nSegments:\n- You have hands-on experience using AI coding agents or tools such as Claude Code, Google Antigravity, Codex, Cursor, or similar systems.\n- Familiarity with agentic coding tools such as Claude Code, Cursor and Google Antigravity will be an advantage.\n- Hands-on experience using AI coding agents or tools such as Claude Code, Google Antigravity, Codex, Cursor, or similar systems.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:180215:scada",
+  "text": "Name: SCADA\nSegment: Experience with Operational Technology, including Programmable Logic Controllers (PLCs) and Supervisory Control and Data Acquisition (SCADA) software.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:41054:own w&b launch",
+  "text": "Name: Own W&B Launch\nSegment: Own W&B Launch and evolve it for the CoreWeave era. Launch is W&B's job submission and compute orchestration product. Today it helps teams submit training jobs to Kubernetes clusters and cloud providers. As part of a vertically integrated AI platform, Launch can go further — with deeper infrastructure awareness and the ability to serve as the orchestration layer for agentic and automated research workflows. You'll set the vision for what that looks like and ship it.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:157473:statefulsets",
+  "text": "Name: StatefulSets\nSegment: Familiarity with ArgoCD, StatefulSets, or Kubernetes operations beyond basic deployments",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:ai security depth",
+  "text": "Name: AI Security Depth\nSegments:\n- AI Security Depth (preferred): Hands-on experience securing AI infrastructure, LLM integrations, or agentic automation frameworks.\n- Required AI Security Depth (must demonstrate genuine, applied experience in at least one of the following — not coursework, certifications, or familiarity alone)",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:uv",
+  "text": "Name: UV\nSegments:\n- Tooling: uv, pytest, Ruff, Claude Code / Cursor / Copilot\n- Conducting reliability and material research (e.g., drop testing, scratch resistance, UV yellowing) to understand opportunities to develop their product line's durability and overall business.\n- Support durability and environmental testing validation including UV resistance, thermal cycling, abrasion, and seam strength",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:191403:running plexos",
+  "text": "Name: Running PLEXOS\nSegment: Running PLEXOS and/or Aurora and interpreting output model results and energy balances",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:32951:cyberark pam",
+  "text": "Name: CyberArk PAM\nSegment: Experience administering or supporting CyberArk PAM.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:egnyte",
+  "text": "Name: Egnyte\nSegments:\n- Data & document tooling: vector databases, hybrid search, integrations with platforms like Egnyte and Google Drive\n- Experience with common SaaS Offerings (especially Microsoft 365 system administration, but also may include Box, Dropbox, and Egnyte)\n- Egnyte",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:psoc",
+  "text": "Name: PSOC\nSegments:\n- Contribute to continuous improvement of runbooks, dashboards, and operational standards for the Perimeter Security Operations Center (PSOC), raising the operational baseline for the broader team.\n- Experience: 2+ years of experience in GSOC/PSOC environments, dispatch center, emergency operations center, data center security operations, critical-infrastructure monitoring environment, or related role.\n- Experience developing and debugging Qualcomm, STM32, Cypress/Infineon PSoC, or Nordic",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:202387:okta customer identity",
+  "text": "Name: Okta Customer Identity\nSegment: Establish a deep understanding of Okta Customer Identity products and infrastructure",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:sep",
+  "text": "Name: SEP\nSegments:\n- Senior Software Engineer - Socrates Experimentation Platform (SEP), Provo or Seattle\n- June 7 Sep 3, 2027\n- Knowledge of developing the Systems Engineering Management Plan (SEMP) and Systems Engineering Plan (SEP)",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:186432:step",
+  "text": "Name: Step\nSegment: Build serverless, event-driven backends with Lambda, EventBridge, Step Functions, SQS/SNS, DynamoDB, and Kinesis for real-time event processing and customer journey orchestration",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:tracy",
+  "text": "Name: Tracy\nSegments:\n- Now an Infosys company, our culture remains the same—open, inclusive and curious—rooted in Creative Democracy formed by our founders, Tracy Wong and Patrick Doody.\n- This role is onsite at our customer’s location in Tracy, CA.\n- CA: Tracy",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:snow",
+  "text": "Name: SNOW\nSegments:\n- PVsyst energy modeling, including terrain shade analysis, soiling and snow profiles, probability of exceedance analysis, and life cycle degradation projections.\n- Ability to work in poor weather conditions such as heat, snow, rain, or wind\n- Investigate root causes of underperformance—distinguishing between equipment failures, inverter outages, soiling/snow loss, weather anomalies, curtailment, and data quality issues.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:lakeflow",
+  "text": "Name: Lakeflow\nSegments:\n- Experience with Unity Catalog, Lakeflow Spark Declarative Pipelines, or MLflow\n- We are the Lakeflow Engineering team, responsible for Databricks ETL product line such as Spark Declarative Pipelines, Structured Streaming, and Ingestion.\n- The Lakeflow Engineering team here at Databricks is responsible for the entirety of the ETL product line.",
+  "a": "drop",
+  "b": "keep"
+ }
+]

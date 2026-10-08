@@ -1,0 +1,122 @@
+[
+ {
+  "id": "p:ssids",
+  "text": "Name: SSIDs\nSegments:\n- Hands-on familiarity with the Cisco Meraki platform, including configuring VLANs, SSIDs and wireless settings, group policies, and site-to-site VPN (Auto VPN) across MX, MS, and MR devices.\n- Administer our SASE client (Cato) and office networking on Cisco Meraki: SSIDs, VLANs, uplinks and failover, firmware, and coordination with ISPs and facilities. The New York office is yours in person.\n- Provision network access: create SSIDs for events, enable/disable hardline port access",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:mdm",
+  "text": "Name: MDM\nSegments:\n- Support testing initiatives involving Microsoft Intune, Apple MDM, Android Enterprise, and Linux device management platforms.\n- Exposure to master data management (MDM) or data governance practices in product or catalog contexts.\n- Understanding of mobile device management (MDM) concepts and enterprise device management platforms.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:multi os",
+  "text": "Name: multi-OS\nSegments:\n- Hands-on experience deploying and operating enterprise security tools (Jamf Pro, Microsoft Intune, FleetDM, CrowdStrike Falcon, Okta Verify, or similar) in multi-OS production environments.\n- Lead the integration of multi-OS environments, including but not limited to Android Automotive OS, Linux, and QNX subsystem modules.\n- In this role, you will diagnose, troubleshoot, and resolve L1 endpoint management issues across multi-OS environments, ensure SLA adherence, and deliver exceptional support experiences.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:fortinet nse",
+  "text": "Name: Fortinet NSE\nSegments:\n- Certifications in Cloud/Network/Security (such as Azure AZ500, AZ700, Cisco CCNA/CCNP, Fortinet NSE 3-6, Palo Alto PCNSE, etc.)\n- Professional Certifications: Certifications such as Fortinet NSE 4/5, CCNA Security, CCNP Security, PCNSA, PCNSE, Security+, or Network+ are highly desirable.\n- Certifications such as Fortinet NSE, CWNA, JNCIA, or Mist AI certifications are advantageous.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:100728:mongodb atlas",
+  "text": "Name: MongoDB Atlas\nSegment: Manage a team of engineers to design, build and test new features for MongoDB Atlas",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:77652:sigma v2",
+  "text": "Name: Sigma v2\nSegment: Detection engine and pipeline modernization. We're rewriting our detection engine to support the full Sigma v2 specification, including stateful correlation of patterns across many events over time. In parallel, we're reworking several existing detection pipelines and building new ones, moving off the bespoke per-product detectors we've accumulated and onto a common platform. You'll lead major workstreams across both and own the validation approach that proves a reworked pipeline still behaves like the one it replaces, so we can turn old paths off knowing we haven't lost anything.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:dhl",
+  "text": "Name: DHL\nSegments:\n- Cross-Team Collaboration: Work closely with employees, managers, IT team members, accessory vendors, MacBook fleet logistics vendors, and shipment providers (e.g., DHL, FedEx).\n- Over 10,000 customers trust ABBYY – including Fortune 500 companies like DHL, Johnson & Johnson, FDA, PwC, KeyBank, Spotify, and H&R Block – to automate their most complex document workflows.\n- Unlike traditional enterprise software, our teams ship solutions in days, not months—delivering real impact for some of the world’s largest companies, including Cargill, Coherent, DHL, and Duracell.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:studio integrations",
+  "text": "Name: Studio Integrations\nSegments:\n- Support AI Builder and Copilot Studio integrations with Dynamics.\n- Build & Innovate: Build Workday Studio Integrations from scratch, unassisted, in novel situations.\n- Studio Integrations",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:war data platform",
+  "text": "Name: War Data Platform\nSegments:\n- Familiarity with Microsoft Power BI, Advana/War Data Platform (WDP), or similar reporting tools.\n- Perform program analysis and integration across the OASW(NDCBD) portfolio for resource requests and justification for RDT&E, Procurement, and O&M appropriations. Develop analytical products leveraging various tools such as the War Data Platform (WDP) and the Defense Agencies Initiative (DAI).\n- The junior data governance innovation analyst will support the Data governance innovation lead in advancing data governance, interoperability, and emerging technology initiatives across the War Data Platform.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:isc2 cissp",
+  "text": "Name: ISC2 CISSP\nSegments:\n- Advanced level cybersecurity certification (e.g., CompTIA CISM, ISC2 CISSP)\n- One or more industry-recognized certifications: CompTIA Security+, ISC2 CISSP, SANS GIAC Security Essentials, Cisco CCNA/CCNP;\n- Appropriate certification in CompTIA A+ or CompTIA Network+ or CompTIA Security+ or ISC2 CISSP or AWS Certified Cloud Practitioner or AWS Certified Solutions Architect or Microsoft Certified: Azure Fundamentals or Microsoft Certified: Azure Administrator",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:186009:c",
+  "text": "Name: C\nSegment: You have practical programming experience in at least one of: C, C++, Python or Rust demonstrated through projects, coursework, or personal work that shows your curiosity and capability.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:ai agents team",
+  "text": "Name: AI Agents Team\nSegments:\n- Enable downstream and agent consumption: BI integration, warehouse export, and APIs for customers who want the data in their own stack, plus partnering with the AI Agents team to expose graph queries, findings, and posture metrics as MCP tools and resources for customer and internal AI agents\n- We are seeking a highly motivated Software Engineer Intern to join our AI Agents team.\n- The Okta for AI Agents Team is building the future of digital identity management.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:64678:embedded linux",
+  "text": "Name: Embedded Linux\nSegment: The tech stack: C++, Python, Embedded Linux, and the occasional dip into Javascript.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:biases",
+  "text": "Name: biases\nSegments:\n- Experience identifying data quality issues, inconsistencies, biases, and anomalies and applying appropriate analytical or technical approaches to resolve discrepancies and improve the reliability of analytical results.\n- Our Solutions Architecture team at Weights & Biases is a unique hybrid organization, combining the deep technical skills of Site Reliability Engineering with the consultative expertise of Solutions Architecture.\n- Knowledge of AI observability tools (LangSmith, Weights & Biases, Prometheus/Grafana for AI).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:41054:w&b",
+  "text": "Name: W&B\nSegment: Own W&B Launch and evolve it for the CoreWeave era. Launch is W&B's job submission and compute orchestration product. Today it helps teams submit training jobs to Kubernetes clusters and cloud providers. As part of a vertically integrated AI platform, Launch can go further — with deeper infrastructure awareness and the ability to serve as the orchestration layer for agentic and automated research workflows. You'll set the vision for what that looks like and ship it.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:biamp",
+  "text": "Name: Biamp\nSegments:\n- Q-SYS, Extron, BIAMP, Crestron, Logitech, Poly, Neat\n- Audio: 4-48 channel analog/digital mixers, wireless microphone lavaliers and handhelds, push to talk microphone systems, audio recorders. Familiarity with Biamp Server/Forte systems is a plus.\n- Deep hands-on control, audio, and video systems expertise: AV control system programming (QSC strongly preferred; experience with Crestron, Biamp, and Extron a bonus), video switching and production (Barco E2, Ross Ultrix, Blackmagic ATEM), audio routing over IP networks such as Dante, comfort on an audio board with at least 16 channels including microphone systems and the ability to tune a room, theatrical and architectural lighting systems and fixtures (ETC, Paradigm, Martin, Chroma Q), and DMX networking.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:44862:spark",
+  "text": "Name: Spark\nSegment: Strong coding proficiency in Python and PySpark/Spark: you must demonstrate live coding, debugging, and solution-building skills",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:cisco ccna",
+  "text": "Name: Cisco CCNA\nSegments:\n- One or more industry-recognized certifications: CompTIA Security+, ISC2 CISSP, SANS GIAC Security Essentials, Cisco CCNA/CCNP;\n- Cisco CCNA\n- Certifications: Okta, Jamf, CompTIA Network+/Security+, or Cisco CCNA.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:134578:vmap",
+  "text": "Name: VMAP\nSegment: Own the product strategy for integrating measurement capabilities into Roku's ad platform, including server-to-server integrations, pixel-based tracking, and ad serving standards (VAST/VMAP)",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:167050:veeam",
+  "text": "Name: Veeam\nSegment: The ideal candidate will be naturally collaborative, articulate, extremely organized, have a solid technical understanding of Veeam products, and motivated by maximizing customer success and outcomes.",
+  "a": "drop",
+  "b": "keep"
+ }
+]
