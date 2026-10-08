@@ -23,6 +23,9 @@ CRITERION = REPO / "docs" / "skill-criterion.md"
 
 DECISIONS = REPO / "src" / "main" / "resources" / "taxonomy" / "decisions.tsv"
 
+# The single words recall never asks Jev about (#60).
+STOPLIST = REPO / "src" / "main" / "resources" / "taxonomy" / "stopwords.tsv"
+
 # One row per name form, criterion revision and model Jev labelled under, with what it read.
 # Committed: a label is paid for, made once and never remade.
 LABELS = jev.SKILL_LABELS
@@ -268,6 +271,13 @@ def read_decisions():
     return {row[0]: dict(zip(header, row)) for row in rows}
 
 
+def read_stoplist():
+    """The words of the stoplist."""
+    with open(STOPLIST) as lines:
+        _, *rows = [line.rstrip("\n").split("\t") for line in lines if line.strip()]
+    return {row[0] for row in rows}
+
+
 def read_all_labels():
     """Every label Jev has made of a candidate, under any revision and model."""
     if not LABELS.exists():
@@ -396,11 +406,11 @@ def pieces(segment, vocabulary):
 
 class Filter:
     """ADR-0015's step 2: drops a piece the rules found, a plain key, a name in the decision record, a
-    number, a single letter other than C and R, or a word on the ordinary list. A context key is never
+    number, a single letter other than C and R, or a word on the stoplist (#60). A context key is never
     dropped by name. A piece inside the span of a name found is that name, and dropped with it."""
 
-    def __init__(self, plain_forms, context_forms, decisions, ordinary):
-        self.plain, self.context, self.decisions, self.ordinary = plain_forms, context_forms, decisions, ordinary
+    def __init__(self, plain_forms, context_forms, decisions, stoplist):
+        self.plain, self.context, self.decisions, self.stoplist = plain_forms, context_forms, decisions, stoplist
 
     def __call__(self, segment_pieces, found_spans):
         kept = {}
@@ -409,7 +419,7 @@ class Filter:
             if any(found_start <= start and end <= found_end for found_start, found_end in found_spans):
                 continue
             if form not in self.context and (
-                    form in self.plain or form in self.decisions or form in self.ordinary
+                    form in self.plain or form in self.decisions or form in self.stoplist
                     or re.fullmatch(r"[\d\W_]+", form) or (len(form) == 1 and form not in "cr")):
                 continue
             kept.setdefault(form, text)
@@ -426,23 +436,6 @@ def read_piece_labels(revision=None):
         rows = [json.loads(line) for line in lines if line.strip()]
     return {(row["name_form"], row["segment"]): row for row in rows
             if row["criterion_revision"] == revision and row["model"] == jev.MODEL and "name_form" in row}
-
-
-# A word joins the ordinary list once Jev has dropped it in this many different segments, and never kept it.
-ORDINARY_DROPS = 5
-
-
-def ordinary_list(labels):
-    """The single words Jev has dropped in ORDINARY_DROPS different segments and kept in none."""
-    drops, kept = {}, set()
-    for (form, segment), row in labels.items():
-        if " " in form:
-            continue
-        if row["decision"] == "keep":
-            kept.add(form)
-        else:
-            drops.setdefault(form, set()).add(segment)
-    return {form for form, segments in drops.items() if len(segments) >= ORDINARY_DROPS and form not in kept}
 
 
 def label_pieces(wanted):
@@ -496,9 +489,8 @@ class Recall:
 
     def __init__(self, lines):
         self.vocabulary = known_vocabulary(lines)
-        labels = read_piece_labels()
         self.filter = Filter(set(read_keys("plain")), set(read_keys("context")), read_decisions(),
-                             ordinary_list(labels))
+                             read_stoplist())
 
     def pieces(self, row):
         """The pieces of a segment left after the filter, by name form."""
