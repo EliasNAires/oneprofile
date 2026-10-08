@@ -1,0 +1,122 @@
+[
+ {
+  "id": "p:cfor",
+  "text": "Name: CFor\nSegments:\n- Deep architectural expertise in Cloudflare One (CFor equivalent SASE/SSE architectures, Zero Trust, DNS, and application security, alongside hands-on familiarity with global AI deployment, AI Gateway, LLM orchestration frameworks, or vector databases.\n- Strong technical depth in Cloudflare One (CFor equivalent SASE/SSE architectures, Zero Trust, DNS, and application security, alongside hands-on familiarity with AI deployment, AI Gateway, LLM orchestration frameworks, or vector databases.\n- Advanced English (B2–Cfor daily work with English-speaking teams and written security documentation.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:dcc",
+  "text": "Name: DCC\nSegments:\n- Not limited to a single engine. Familiar with the runtime animation architecture of at least one mainstream or proprietary engine, and able to solve animation R&D problems using DCC tools, scripting, and toolchains. Experience with multiple engines is preferred.\n- Experience with DCC tool integration (Substance, Maya, Blender, Unreal) and/or platform integrations (SaaS APIs, OAuth, webhooks).\n- Lead a team of developers to develop products and tools across a breadth of domains, including game engine, pipeline, DCC, and web tools.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:tencent",
+  "text": "Name: Tencent\nSegments:\n- We are a team from UC Berkeley, Cornell, SJTU, Cambridge, NUS, with broad industry experiences from Tencent, Alibaba, Amazon, ByteDance, and more.\n- Familiar with cloud computing platforms, such as AWS, Tencent Cloud.\n- Responsible for daily operations and resource management of public cloud environments such as AWS and Tencent Cloud.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:uv vis",
+  "text": "Name: UV-Vis\nSegments:\n- Strong proficiency in analytical characterization techniques (HPLC/UPLC, DLS/SLS, TEM, DSC, SAXS, UV-Vis, fluorescence spectrophotometry) to support process development\n- The position requires expertise in the biophysical characterization of AAV particles with an emphasis on HPLC based methodology using various detectors including UV-Vis, CAD, and MALS detectors.\n- Hands-on experience with multiple analytical techniques, such as chromatography, capillary electrophoresis, UV-Vis spectroscopy, dynamic light scattering, plate-based assays, ligand-binding assays, molecular biology methods, or cell-based assays.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:dbre",
+  "text": "Name: DBRE\nSegments:\n- By embracing Development & DBRE principles, driving automation-first practices, and applying AI/ML where applicable, you’ll enhance system uptime, reduce manual toil, and enable velocity for engineering teams across PlayStation.\n- As part of the SHEIN DBRE team, you will play a key role in ensuring the reliability, performance, and security of our database infrastructure through automation and scalable solutions.\n- We are looking for a Senior Database Reliability Engineer (DBRE) to join our Cloud deployment team and take ownership of the reliability, scalability, automation, and operational excellence of our core database infrastructure.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:jde",
+  "text": "Name: JDE\nSegments:\n- Experience and the ability to use enterprise software (examples include: JDE, Microsoft Dynamics, BPLM, Veeva, Trackwise, etc.)\n- Understanding and exposure in the Oracle technology ecosystem, from legacy systems (EBS, Fusion, Peoplesoft, JDE), Industry Apps (e.g. Primavera, Retail, Micros etc.) to the modern Oracle Fusion SaaS and OCI stack (e.g. AI Agent Studio, AI Data Platform etc.).\n- Project management of a large-scale migration from prior versions of SAP and JDE ERPs to SAP S/4 HANA.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:cis itsm",
+  "text": "Name: CIS-ITSM\nSegments:\n- ServiceNow certifications (e.g., Certified System Administrator, Certified Application Developer, CIS-ITSM, CIS-ITOM or GRC).\n- ITIL certification and/or ServiceNow certifications (e.g., CSA, CAD, CIS-ITSM).\n- Certified Application Developer(CAD) / CIS ITSM",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:saf",
+  "text": "Name: SAF\nSegments:\n- Working in or alongside AFMC, SAF/MR, HAF, MAJCOMs, PEOs, program offices, A5/A8/AQ organizations, or similar DoD organizations.\n- Strong knowledge of VAT, GST, withholding tax, e-invoicing, SAF-T, and statutory reporting.\n- As the leader of Continuous Monitoring, you'll be responsible for growing and developing the team; setting a clear vision, priority, and strategy; making the case for the headcount and tooling the program needs; and building durable partnerships across GRC (SAC, SAF, Governance, Risk Management, TPRM), IT, Legal, and Engineering — the organizations that own the controls your team monitors.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:google ad manager",
+  "text": "Name: Google Ad Manager\nSegments:\n- Hands-on experience with Google Ad Manager (GAM) or another ad server.\n- Experience integrating with Google Ad Manager / Ad Exchange, Meta or Google ad SDKs, or major mobile exchanges.\n- Minimum of one year of hands-on experience with Google Ad Manager — including trafficking, targeting, and campaign troubleshooting",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:etom",
+  "text": "Name: eTOM\nSegments:\n- Experience with TM Forum Open APIs and the eTOM/TAM business process and application frameworks\n- Exposure to frameworks such as 3GPP, TM Forum ODA, eTOM, ETSI NFV, ONAP, O-RAN, or similar is a plus\n- Familiarity with telecom OSS concepts like FCAPS, TMF eTOM framework or similar operational support system concepts",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:gpt oss",
+  "text": "Name: GPT-OSS\nSegments:\n- Build LLM infrastructure powering large-scale inference workloads for customers through partner models (OpenAI, Anthropic, Gemini) and self-hosted models (GLM, Kimi, DeepSeek, Qwen, GPT-OSS, Llama)\n- Deploy and operate open-weight LLMs such as Llama, Qwen, Mistral, DeepSeek, and gpt-oss in customer-controlled cloud, on-premises, and air-gapped environments\n- Advanced Fine-Tuning: Enhancing fine-tuning methodologies both LoRA-based and full-parameter - for cutting-edge LLMs (e.g., GPT-OSS, Kimi K2.5, DeepSeek V3.1/V3.2, GLM-4.7), focusing on both model quality and training efficiency.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:eaton",
+  "text": "Name: Eaton\nSegments:\n- OEM factory training or experience with brands such as Emerson/Liebert/Vertiv, APC/MGE/Schneider, or Eaton/Powerware/PDI is required.\n- Experience working with Tier-1 or microgrid firms such as GHD, GE, Baker Hughes, AlphaStruxure, Eaton, or similar is preferred.\n- Experience supporting equipment from manufacturers such as Eaton, Vertiv/Liebert, Schneider Electric/APC, Mitsubishi, Toshiba, ABB, or comparable critical power platforms is strongly preferred.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:giac security essentials",
+  "text": "Name: GIAC Security Essentials\nSegments:\n- GIAC Security Essentials Certification (GSEC)\n- GIAC Security Essentials (GSEC)\n- CompTIA Security+ CE, CompTIA CySA+, GIAC Security Essentials (GSEC), GIAC Global Industrial Cyber Security Professional (GICSP), Cisco Certified Network Associate (CCNA), ISC2 Systems Security Certified Practitioner (SSCP).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:netops",
+  "text": "Name: NetOps\nSegments:\n- Secondary DCWF Work Role 441: Network Operations (NETOPS) Specialist\n- Not a NetOps/NOC role. The deliverable is software — APIs, control planes, automation — not manual device changes.\n- Analyze industry and Government data on technology changes impacting the DISN and commercial telecommunications sector and provide preliminary design and implementation guidance to support strategic planning and decision-making. Areas include wireless technologies, IPv6 transition (NIPRNet/SIPRNet), NetOps and cyber defense (JTF-GNO), VoIP/DSN, VTC and streaming video, core system refreshes, and emerging standards aligned with DoD mandates.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:bcm",
+  "text": "Name: BCM\nSegments:\n- Familiarity with using configuration management, CICD tools, workload manager and cluster softwares (eg: Slurm, Kubernetes, Nvidia BCM) and Observability tools (eg: Prometheus, Grafana, ELK, etc)\n- Troubleshoot and resolve issues related to ITSM, HAM, SAM integrations, portal and other ServiceNow modules(optional), including HRSD/SPM/SAM/CMDB/IRM/SecOps/BCM\n- Gute bis sehr gute Kenntnisse grundlegender IT-Prozesse (insbesondere BCM, Incidentund Problem-Management, Cloud-Technologien, Outsourcing, Software- und Entwicklungsprozesse inkl. Testing und Freigabe sowie Berechtigungsmanagement).",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:bytedance",
+  "text": "Name: ByteDance\nSegments:\n- Operated inference platforms at the scale of Ant Group, Alibaba Cloud / PAI, Tencent, ByteDance, Baidu, Huawei, DaoCloud, Moonshot, DeepSeek, or comparable teams.\n- We are a team from UC Berkeley, Cornell, SJTU, Cambridge, NUS, with broad industry experiences from Tencent, Alibaba, Amazon, ByteDance, and more.\n- Experience at leading AI labs such as OpenAI, Google DeepMind, Google, ByteDance, Midjourney, or Adobe",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:deltek costpoint",
+  "text": "Name: Deltek Costpoint\nSegments:\n- Proficiency in contract administration systems and enterprise tools (e.g., Deltek Costpoint, JAMIS, SharePoint-based contract management platforms, and WAWF/InvoiceX).\n- Exposure to ERP systems (e.g., Deltek Costpoint, NetSuite, SAP, or similar).\n- Proficiency in government contract accounting systems: Deltek Costpoint, JAMIS Prime, or equivalent government ERP/accounting platform required; experience with IBM Cognos, Hyperion, or similar enterprise financial reporting tools is a plus.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:apo",
+  "text": "Name: APO\nSegments:\n- Develop and maintain Apollo’s in-house analytical suite of libraries such as APO Analytics in partnership with Technology.\n- Familiarity with SAP data structures (PP, MM, APO, or IBP)\n- Experience implementing a Greenfield S/4HANA solution using core Production Planning (not IBP or APO)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:majestic",
+  "text": "Name: Majestic\nSegments:\n- We have a Majestic Monolith of Ruby on Rails, React, and PostgreSQL. It is hosted in AWS, and we use GitLab for pipelines and deployments. We use feature flags to allow us to continually integrate our code.\n- We are seeking a Senior Software Engineer to thrive within our Majestic Monolith of Ruby on Rails and React.\n- In the caves of Lascaux, sockets in the cave wall were used to build scaffolds, allowing its Paleolithic inhabitants to craft their majestic cave-paintings, which survive to the modern day.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:vasp",
+  "text": "Name: VASP\nSegments:\n- Experience with classical simulation methods and HPC workloads for these problems, ideally including packages such as QuantumATK, QuantumEspresso or VASP, plus scientific programming in Python and C++ sufficient to integrate tools, run computations and maintain a code base in version control.\n- Experience with atomistic simulation software ( VASP; Quantum Espresso ).\n- Compliance & Regulatory Products — Translating global regulatory frameworks (MiCA, VASP, MAS) into scalable product solutions; KYC/AML systems; market launch and business migration",
+  "a": "drop",
+  "b": "keep"
+ }
+]

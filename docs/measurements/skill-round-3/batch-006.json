@@ -1,0 +1,122 @@
+[
+ {
+  "id": "r:191358:py spark",
+  "text": "Name: PY-SPARK\nSegment: Experience with APACHE SPARK / PY-SPARK.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:80184:802 15 4 mac",
+  "text": "Name: 802.15.4 MAC\nSegment: Expertise in IEEE 802.15.4 MAC/PHY, Zigbee, and Thread protocol stacks.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:80184:ieee 802 15 4 mac",
+  "text": "Name: IEEE 802.15.4 MAC\nSegment: Expertise in IEEE 802.15.4 MAC/PHY, Zigbee, and Thread protocol stacks.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:80184:thread",
+  "text": "Name: Thread\nSegment: Expertise in IEEE 802.15.4 MAC/PHY, Zigbee, and Thread protocol stacks.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:187734:cloudflare",
+  "text": "Name: Cloudflare\nSegment: Stay current with industry trends and evolving Cloudflare solutions to provide forward-thinking guidance and configuration enhancements.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:132620:ecc 6 0",
+  "text": "Name: ECC 6.0\nSegment: The role oversees SAP ECC 6.0 (SP7) planning and procurement functionality, associated master data governance, and the implementation of an Advanced Planning Solution (APS) to elevate S&OP maturity and drive a significant, sustained reduction in enterprise inventory while maintaining service performance.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:132620:sap ecc 6 0",
+  "text": "Name: SAP ECC 6.0\nSegment: The role oversees SAP ECC 6.0 (SP7) planning and procurement functionality, associated master data governance, and the implementation of an Advanced Planning Solution (APS) to elevate S&OP maturity and drive a significant, sustained reduction in enterprise inventory while maintaining service performance.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:37591:cloudflare",
+  "text": "Name: Cloudflare\nSegment: Ramp quickly into unfamiliar and legacy codebases, build context across a wide range of Cloudflare systems, and make thoughtful improvements that reduce operational toil and improve platform reliability.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:96278:tsn",
+  "text": "Name: TSN\nSegment: Expertise in automotive communication networks and in-vehicle network architecture, such as automotive Ethernet, CAN/CAN-FD, LIN, and Time-Sensitive Networking (TSN)",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:96278:time sensitive",
+  "text": "Name: Time-Sensitive\nSegment: Expertise in automotive communication networks and in-vehicle network architecture, such as automotive Ethernet, CAN/CAN-FD, LIN, and Time-Sensitive Networking (TSN)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:96278:time sensitive networking",
+  "text": "Name: Time-Sensitive Networking\nSegment: Expertise in automotive communication networks and in-vehicle network architecture, such as automotive Ethernet, CAN/CAN-FD, LIN, and Time-Sensitive Networking (TSN)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:105014:c",
+  "text": "Name: C\nSegment: We’re looking for Software Engineers to work close to the metal on defence systems, in C++, Rust and C. This is a hands-on engineering role where you will have impact across a wide variety of projects.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:3830:spark",
+  "text": "Name: Spark\nSegment: You have an extensive track record of developing highly available distributed systems using technologies like AWS, MySQL, Spark and Kubernetes.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:39102:leverages sfmc",
+  "text": "Name: Leverages SFMC\nSegment: Leverages SFMC Personalization to deliver relevant, audience-specific experiences across digital channels, using customer behavior, attributes and engagement data to determine the right content and experience for each audience.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:39102:sfmc personalization",
+  "text": "Name: SFMC Personalization\nSegment: Leverages SFMC Personalization to deliver relevant, audience-specific experiences across digital channels, using customer behavior, attributes and engagement data to determine the right content and experience for each audience.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:100112:pega",
+  "text": "Name: Pega\nSegment: Experience with Pega eForms development and implementation.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:106364:openidconnect",
+  "text": "Name: OpenIDConnect\nSegment: OpenIDConnect/Identity server",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:9200:spi",
+  "text": "Name: SPI\nSegment: Experience working with MCU peripherals including SPI, I2C, UART, and USB.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:50801:python scipy",
+  "text": "Name: Python SciPy\nSegment: A working knowledge of Python SciPy & statsmodels, R, C/C++/C#, SAS, and/or Matlab",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:50801:r",
+  "text": "Name: R\nSegment: A working knowledge of Python SciPy & statsmodels, R, C/C++/C#, SAS, and/or Matlab",
+  "a": "drop",
+  "b": "keep"
+ }
+]

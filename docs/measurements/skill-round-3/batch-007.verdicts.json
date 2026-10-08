@@ -1,0 +1,22 @@
+{
+  "r:130108:cursor ai": {"verdict": "a", "clause": "A name with an ordinary word before or after it", "pattern": "ordinary qualifier attached to name"},
+  "r:37565:workers ai": {"verdict": "b", "clause": "it is the technology's whole name and nothing more", "pattern": "qualifier is part of product's own name"},
+  "r:5900:aws athena": {"verdict": "b", "clause": "a database, a cloud or one of its services", "pattern": "named cloud service"},
+  "r:53721:wlm": {"verdict": "a", "clause": "a named feature or service of a skill that ads ask for by its own name", "pattern": "named feature of a platform"},
+  "r:53721:z os": {"verdict": "b", "clause": "Category: os — operating systems", "pattern": "named operating system"},
+  "r:62697:gcp organization policy": {"verdict": "a", "clause": "it is the technology's whole name and nothing more", "pattern": "qualifier is part of product's own name"},
+  "r:62697:organization policy": {"verdict": "a", "clause": "so is part of a longer name written around it", "pattern": "piece of a longer name"},
+  "r:198405:launchdarkly": {"verdict": "a", "clause": "Not a technology at all: a company (as an employer…)", "pattern": "company named as itself"},
+  "r:202490:swift": {"verdict": "b", "clause": "a language, a framework or library", "pattern": "named programming language"},
+  "r:143431:eds": {"verdict": "a", "clause": "A technology no software person is hired for", "pattern": "lab instrument not software"},
+  "r:143431:fib": {"verdict": "a", "clause": "A technology no software person is hired for", "pattern": "lab instrument not software"},
+  "r:30491:cortex": {"verdict": "a", "clause": "a named feature or service of a skill that ads ask for by its own name", "pattern": "named feature of a platform"},
+  "r:117279:the planetscale": {"verdict": "b", "clause": "A name with an ordinary word before or after it", "pattern": "ordinary qualifier attached to name"},
+  "r:78651:use sql": {"verdict": "b", "clause": "A name with an ordinary word before or after it", "pattern": "ordinary qualifier attached to name"},
+  "r:171287:rs 422": {"verdict": "b", "clause": "a protocol, file format or standard that software implements", "pattern": "named hardware protocol standard"},
+  "r:171287:rs 485": {"verdict": "a", "clause": "a protocol, file format or standard that software implements", "pattern": "named hardware protocol standard"},
+  "r:187327:helm charts": {"verdict": "a", "clause": "A name with an ordinary word before or after it", "pattern": "ordinary qualifier attached to name"},
+  "r:2268:solid": {"verdict": "b", "clause": "An ordinary word… used in its ordinary sense", "pattern": "ordinary word in ordinary sense"},
+  "r:17040:tpus": {"verdict": "b", "clause": "a tool or a platform", "pattern": "named ML hardware platform"},
+  "r:107542:hplc": {"verdict": "b", "clause": "A technology no software person is hired for", "pattern": "lab instrument not software"}
+}

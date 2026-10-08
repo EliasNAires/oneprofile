@@ -1,0 +1,22 @@
+{
+  "p:cfor": {"verdict": "b", "clause": "Not a technology at all", "pattern": "text artifact not real name"},
+  "p:dcc": {"verdict": "b", "clause": "A generic concept", "pattern": "generic category term"},
+  "p:tencent": {"verdict": "b", "clause": "A vendor's name is a drop even where ads use it for its products", "pattern": "vendor name for product"},
+  "p:uv vis": {"verdict": "a", "clause": "A technology no software person is hired for", "pattern": "lab technique not software"},
+  "p:dbre": {"verdict": "b", "clause": "A generic concept", "pattern": "job role not technology"},
+  "p:jde": {"verdict": "a", "clause": "A technology no software person is hired for", "pattern": "ERP software not hired for"},
+  "p:cis itsm": {"verdict": "b", "clause": "A compliance framework, regulation or certification", "pattern": "named certification"},
+  "p:saf": {"verdict": "a", "clause": "An ambiguous abbreviation", "pattern": "ambiguous abbreviation multiple meanings"},
+  "p:google ad manager": {"verdict": "a", "clause": "a tool or a platform", "pattern": "named ad platform tool"},
+  "p:etom": {"verdict": "a", "clause": "A generic concept or a practice", "pattern": "business process framework"},
+  "p:gpt oss": {"verdict": "b", "clause": "Category: ml", "pattern": "named AI model"},
+  "p:eaton": {"verdict": "b", "clause": "A vendor's name is a drop even where ads use it for its products", "pattern": "vendor manufacturer name"},
+  "p:giac security essentials": {"verdict": "b", "clause": "A compliance framework, regulation or certification", "pattern": "named certification"},
+  "p:netops": {"verdict": "a", "clause": "A generic concept or a practice", "pattern": "network operations practice"},
+  "p:bcm": {"verdict": "a", "clause": "An ambiguous abbreviation", "pattern": "ambiguous abbreviation multiple meanings"},
+  "p:bytedance": {"verdict": "b", "clause": "Not a technology at all: a company", "pattern": "company named as employer"},
+  "p:deltek costpoint": {"verdict": "b", "clause": "A technology no software person is hired for", "pattern": "ERP software not hired for"},
+  "p:apo": {"verdict": "a", "clause": "An ambiguous abbreviation", "pattern": "ambiguous abbreviation multiple meanings"},
+  "p:majestic": {"verdict": "b", "clause": "An ordinary word", "pattern": "ordinary word not product"},
+  "p:vasp": {"verdict": "a", "clause": "A homonym of something else", "pattern": "homonym differing meanings"}
+}

@@ -1,0 +1,22 @@
+{
+  "p:sipr": {"verdict": "a", "clause": "When in doubt between keep and drop, drop", "pattern": "classified network environment name"},
+  "p:br": {"verdict": "b", "clause": "Not a technology at all: ... a place", "pattern": "country code used generically"},
+  "p:fierce healthcare": {"verdict": "a", "clause": "Not a technology at all: a company", "pattern": "media outlet named as source"},
+  "p:inductive": {"verdict": "b", "clause": "An ordinary word, in English or Spanish", "pattern": "adjective for physical property"},
+  "p:suitefoundation": {"verdict": "b", "clause": "A compliance framework, regulation or certification", "pattern": "certification exam name"},
+  "p:cp": {"verdict": "b", "clause": "A generic concept or a practice, not a named technology", "pattern": "statistical quality metric"},
+  "p:guru": {"verdict": "a", "clause": "The same word used for a product is a bare form, and kept", "pattern": "tool name among SaaS list"},
+  "p:authenticator": {"verdict": "b", "clause": "Consumer, office or browser software", "pattern": "Microsoft 365 end-user app"},
+  "p:icam": {"verdict": "b", "clause": "A generic concept or a practice, not a named technology", "pattern": "security domain spelled out"},
+  "p:rhcsa": {"verdict": "a", "clause": "A compliance framework, regulation or certification", "pattern": "certification exam name"},
+  "p:nr": {"verdict": "b", "clause": "An ambiguous abbreviation", "pattern": "ambiguous abbreviation multiple meanings"},
+  "p:ringcentral": {"verdict": "a", "clause": "Consumer, office or browser software", "pattern": "UCaaS like Zoom"},
+  "p:rt": {"verdict": "a", "clause": "part of a longer name written around it", "pattern": "abbreviation inside longer name"},
+  "p:ci cd": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology", "pattern": "explicit practice example listed"},
+  "p:ssg": {"verdict": "b", "clause": "A generic concept or a practice, not a named technology", "pattern": "rendering technique generic"},
+  "p:cato": {"verdict": "a", "clause": "A compliance framework, regulation or certification", "pattern": "government authorization process"},
+  "p:mtu": {"verdict": "b", "clause": "A generic concept or a practice, not a named technology", "pattern": "network parameter not protocol"},
+  "p:wix": {"verdict": "b", "clause": "A vendor's name is a drop even where ads use it for its products", "pattern": "vendor name own product"},
+  "p:splash": {"verdict": "a", "clause": "The same word used for a product is a bare form, and kept", "pattern": "tool name among SaaS list"},
+  "p:snowpro core": {"verdict": "b", "clause": "A compliance framework, regulation or certification", "pattern": "certification exam name"}
+}

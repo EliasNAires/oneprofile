@@ -1,0 +1,102 @@
+{
+  "r:191358:py spark": {
+    "verdict": "b",
+    "clause": "A name that names an existing skill by another spelling",
+    "pattern": "spelling variant of library name"
+  },
+  "r:80184:802 15 4 mac": {
+    "verdict": "a",
+    "clause": "so is part of a longer name written around it",
+    "pattern": "piece of longer standard name"
+  },
+  "r:80184:ieee 802 15 4 mac": {
+    "verdict": "b",
+    "clause": "so is part of a longer name written around it",
+    "pattern": "piece of longer standard name"
+  },
+  "r:80184:thread": {
+    "verdict": "b",
+    "clause": "A bare form",
+    "pattern": "full name of listed protocol"
+  },
+  "r:187734:cloudflare": {
+    "verdict": "b",
+    "clause": "A platform data, ML or AI teams build on is a platform like any other",
+    "pattern": "vendor platform configured directly"
+  },
+  "r:132620:ecc 6 0": {
+    "verdict": "b",
+    "clause": "A technology no software person is hired for",
+    "pattern": "ERP software not for engineers"
+  },
+  "r:132620:sap ecc 6 0": {
+    "verdict": "a",
+    "clause": "A technology no software person is hired for",
+    "pattern": "ERP software not for engineers"
+  },
+  "r:37591:cloudflare": {
+    "verdict": "b",
+    "clause": "Not a technology at all: a company (as an employer...)",
+    "pattern": "company named as employer"
+  },
+  "r:96278:tsn": {
+    "verdict": "a",
+    "clause": "An ambiguous abbreviation",
+    "pattern": "disambiguated standard abbreviation"
+  },
+  "r:96278:time sensitive": {
+    "verdict": "a",
+    "clause": "so is part of a longer name written around it",
+    "pattern": "piece of longer standard name"
+  },
+  "r:96278:time sensitive networking": {
+    "verdict": "b",
+    "clause": "So is a protocol, file format or standard that software implements",
+    "pattern": "full name of listed protocol"
+  },
+  "r:105014:c": {
+    "verdict": "b",
+    "clause": "A single letter, except C and R",
+    "pattern": "excepted single letter language"
+  },
+  "r:3830:spark": {
+    "verdict": "b",
+    "clause": "A bare form",
+    "pattern": "bare form of a key"
+  },
+  "r:39102:leverages sfmc": {
+    "verdict": "a",
+    "clause": "A name with an ordinary word before or after it",
+    "pattern": "ordinary word before name"
+  },
+  "r:39102:sfmc personalization": {
+    "verdict": "b",
+    "clause": "a named feature or service of a skill that ads ask for by its own name",
+    "pattern": "named feature of a skill"
+  },
+  "r:100112:pega": {
+    "verdict": "a",
+    "clause": "Keep a name when it names one specific technology",
+    "pattern": "platform named directly as itself"
+  },
+  "r:106364:openidconnect": {
+    "verdict": "a",
+    "clause": "A name that names an existing skill by another spelling",
+    "pattern": "spelling variant of protocol name"
+  },
+  "r:9200:spi": {
+    "verdict": "a",
+    "clause": "An ambiguous abbreviation",
+    "pattern": "disambiguated standard abbreviation"
+  },
+  "r:50801:python scipy": {
+    "verdict": "a",
+    "clause": "A name with an ordinary word before or after it",
+    "pattern": "ordinary word before name"
+  },
+  "r:50801:r": {
+    "verdict": "b",
+    "clause": "A single letter, except C and R",
+    "pattern": "excepted single letter language"
+  }
+}

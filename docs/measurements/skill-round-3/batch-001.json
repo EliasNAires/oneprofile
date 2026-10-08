@@ -1,0 +1,122 @@
+[
+ {
+  "id": "p:rest",
+  "text": "Name: REST\nSegments:\n- Experience developing REST APIs and Microservices.\n- Integrate forms with enterprise applications, REST APIs, workflow platforms, content repositories, identity services, communication channels, and third-party solutions.\n- Expect to work with languages and tools like Java, Python, Angular, Groovy, REST Services, GIT, PostgreSQL, Mongo, Athena, NiFi, Quarkus, and cloud platforms like Google Cloud, MS Azure, and AWS.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:meta",
+  "text": "Name: Meta\nSegments:\n- Clients include major consumer-facing brands (American Express, Airbnb, Paramount Pictures), technology companies (Anthropic, Meta, Amazon), academic researchers (MIT, Yale, Stanford) and mission-aligned civic advocacy campaigns (e.g. on climate, human rights and elections).\n- Hands-on experience with walled garden advertising APIs (Meta, Google, Amazon, TikTok) or the equivalent from the advertiser, agency, or DSP side\n- Knowledge of digital metrics. Social Media and visualization tools (Preferably Brandwatch, SocialBakers-Emplifi, Meta for business, creator studio, TikTok, Twitter Ads, Youtube Analytics, Google Data Studio)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:a+",
+  "text": "Name: A+\nSegments:\n- Certifications in relevant technical areas (e.g., CompTIA A+, Network+, Security+, Microsoft certifications, ITIL Foundation, HDI Support Center Manager)\n- CompTIA A+, Network+, or related certifications are a plus.\n- IT certifications (e.g., CompTIA A+, Microsoft Certified IT Professional) are a plus.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:oltp",
+  "text": "Name: OLTP\nSegments:\n- Conocimiento de modelamiento OLTP y OLAP.\n- Experience working with AWS-managed databases (e.g., Aurora or similar OLTP systems)\n- Perform data migration / data transformation from OLTP to OLAP systems.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:secops",
+  "text": "Name: SecOps\nSegments:\n- A hands-on DevOps and SecOps position as part of Unframe's Security and IT team, owning Security Vulnerabilities handling, Cloud infrastructure maintenance, the CI/CD and deployment automation that ships the platform into customer on-prem, cloud and hybrid environments.\n- We are looking for a Senior Corporate Security Engineer to join the Corporate Security team in SecOps.\n- Experience with Snowflake, Cortex, or Google SecOps is preferred.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:rpc",
+  "text": "Name: RPC\nSegments:\n- Proficiency in Java and/or Kotlin, and comfort working within a microservices environment (RPC frameworks, service IDLs, dependency injection)\n- Strong distributed systems and infrastructure background: Java/Scala services, RPC and routing layers, configuration systems, Kubernetes-based microservices, and multi-cloud or multi-region deployments\n- Strong background in distributed systems design, including RPC frameworks, queuing, RPC batching, sharding, memory partitioning",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:oracle fusion",
+  "text": "Name: Oracle Fusion\nSegments:\n- Build and maintain automated data pipelines extracting financial data from Oracle Fusion Cloud (GL, AP, AR, Fixed Assets)\n- Experience with Oracle Fusion, Oracle Financials, or a comparable enterprise ERP platform.\n- Integrate enterprise systems: Work with REST APIs, JSON, databases, files and connectors to integrate with enterprise systems such as Oracle Fusion and automate end-to-end processes",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:mm",
+  "text": "Name: MM\nSegments:\n- Financial & Integrated Systems Fluency: Strong understanding of core SAP FI/CO modules (GL, AP, AR) and their integration points with Project Systems (PS) and Procurement (MM) to support capital accounting.\n- Fibre & optical infrastructure (SM/MM, DWDM/CWDM)\n- The Senior SAP MM Procurement Consultant provides senior level configuration management support for SAP procurement and materials processes.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:intercom",
+  "text": "Name: Intercom\nSegments:\n- Manage primary and backup internet paths, contribution feeds, SRT or equivalent transport, return video, intercom, confidence monitoring and streaming outputs.\n- Experience with Intercom Fin or similar conversational AI platforms.\n- It’s an exciting time at Intercom — especially within our Deployment Services team.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:reuters",
+  "text": "Name: Reuters\nSegments:\n- Technical skills preferred in any or all of the following: Microsoft Excel, SQL, Salesforce, Jira, Bloomberg, Thomson Reuters, or other common financial services systems and applications.\n- Reuters: Driverless vehicles on limited routes bump along despite US robotaxi scrutiny\n- Build and maintain strong relationships with financial and institutional media across Bloomberg, Reuters, FT, WSJ, and other key capital markets and crypto trade press",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:fw",
+  "text": "Name: FW\nSegments:\n- Working knowledge of C or C++ for embedded FW\n- Participate in interdepartmental processes such as Drawing Release, Work Instruction Release, FW Release.\n- Principal Embedded SW/FW Engineer (Bringup) - Austin, Tx, USA",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:jncip",
+  "text": "Name: JNCIP\nSegments:\n- JNCIA/JNCIP or CCNA/CCNP certifications\n- Industry-standard certifications such as CCNA, CCNP, JNCIS, or JNCIP.\n- Relevant experience or certification (e.g. CCNP or JNCIP Data centre, Enterprise or Service provider)",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:raspberry",
+  "text": "Name: Raspberry\nSegments:\n- A personal project involving a Raspberry Pi, Arduino, microcontroller, or home automation\n- Experience with embedded platforms (i.e. ESP32, STM, Arduino, Raspberry Pi, etc.)\n- Implement robust, portable firmware using C/C++ for ARM-based microcontrollers and SBCs (e.g., STM32, NXP, Raspberry Pi-class devices).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:ni",
+  "text": "Name: NI\nSegments:\n- Salary sacrifice pension with matched employer contributions up to 5% + NI savings\n- Ces outils ne prennent pas de décisions d'embauche ni de décisions entièrement automatisées concernant votre candidature – toutes les décisions sont prises par nos équipes.\n- Demonstrated experience in working with NI hardware (PXIe-RT, cRIO, and cDAQ) and coding with real-time and FPGA modules.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:dynamo",
+  "text": "Name: Dynamo\nSegments:\n- Our team also works closely with the open source community, contributing to and leveraging projects like SGLang, vLLM, and NVIDIA Dynamo to push the boundaries of inference performance and efficiency.\n- Familiarity with parametric and computational design tools (e.g., Grasshopper, Dynamo) to explore and optimize complex forms, workflows, or performance outcomes.\n- Experience with LLM inference serving engines and technologies, e.g. vLLM, SGLang, Mooncake, NIM, Dynamo, LMCache.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:misra",
+  "text": "Name: MISRA\nSegments:\n- Experience building automotive or safety-critical systems using qualification methods and processes such as MISRA, ASPICE, and ISO 26262.\n- Familiarity with coding safety standards (e.g. MISRA-C).\n- High-Rel Coding Standards & Frameworks: Familiarity with safety-critical, mission-assurance software development standards, or common flight architectures (e.g., NASA cFE/cFS, MISRA C/C++, DO-178C, or NASA NPR 7150.2).",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:warp",
+  "text": "Name: Warp\nSegments:\n- Intuition about the latency and throughput characteristics of CUDA graph launch, tensor core arithmetic, warp-level synchronization, and asynchronous memory loads\n- Deep understanding of GPU architecture and performance: tensor cores, warp/occupancy tuning, the memory hierarchy and bandwidth, NVLink/PCIe, and profiling with Nsight Compute/Systems.\n- Among the products powered by this technology is Dedicated Egress IP Connectivity, WARP, Cloudflare One/Zero Trust, and Cloudflare's egress proxy for the iCloud Private Relay product.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:citadel",
+  "text": "Name: Citadel\nSegments:\n- We’ve turned down opportunities like Stanford PhD programs and Y Combinator in order to pursue this goal, and we have experience doing AI research and engineering at places like Harvard, MIT, Citadel, Datadog, and McKinsey QuantumBlack (to name a few).\n- Our team includes alumni of Two Sigma, Citadel Securities, Flow Traders, Tower Research, PDT Partners, SIG, and other top quantitative firms.\n- Our early hires include an MIT PhD with 21,000+ Physics/ML/Stats citations, a Datadog engineering manager who led their GenAI observability team, a Citadel quant with a huge open-source presence, and more.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:jit",
+  "text": "Name: JIT\nSegments:\n- Automate Access Reviews, entitlement packages, and JIT access using Graph API/PowerShell.\n- OPA, ISPM & Zero Standing Privilege: Lead OPA, ISPM, and Zero Standing Privilege (ZSP) initiatives — design privileged session access, Just-In-Time (JIT) elevation, break-glass emergency access, identity security vulnerability detection, and tiering models for Tier 0/Tier 1 systems.\n- Own access management, including Conditional Access, phishing-resistant MFA, and privileged access on a Zero Trust model, with least-privilege by default, just-in-time (JIT) elevation, and enforcement confirmed on every access path rather than only saved.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:linux cli",
+  "text": "Name: Linux CLI\nSegments:\n- Experience using the Linux CLI and Linux Tools\n- Deep familiarity with IP networking, SNMP, DHCP, PoE, Linux CLI, and basic system administration\n- Experience with OS installation, Linux CLI and network setup",
+  "a": "drop",
+  "b": "keep"
+ }
+]

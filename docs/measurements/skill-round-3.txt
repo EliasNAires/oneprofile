@@ -1,0 +1,395 @@
+Round 3 at criterion revision 5, jev-1.13.0
+
+Size and time: 2815 candidates in 959s
+Precision: 104/200 kept = 52.0%, 95% interval 45.1%-58.8%, gate 50%  pass
+  200 drawn, 0 without a label, 1 passed over for no mention
+  round 0: 4321 candidates, about 1534 valid (1262-1830)
+  round 1: 1022 candidates, about 562 valid (491-631)
+  round 2: 3281 candidates, about 1394 valid (1176-1622)
+Yield: about 1464 valid candidates, 95% interval 1270-1656, gate the best earlier round's 1534 (round 0)  pass
+Recall: 392/436 skill-bearing segments missed nothing = 89.9%, 95% interval 86.7%-92.4%, gate 90%  FAIL
+  2400 segments drawn, 1964 naming no skill, 0 not yet judged
+
+The loop goes on
+
+Candidates drawn for precision, dropped first:
+  drop   4099  REST
+  drop    487  Meta
+  drop    183  A+
+  drop    100  OLTP
+  drop     97  SecOps
+  drop     90  RPC
+  drop     77  Oracle Fusion
+  drop     71  MM
+  drop     57  Intercom
+  drop     55  Reuters
+  drop     53  FW
+  drop     51  JNCIP
+  drop     47  Raspberry
+  drop     45  NI
+  drop     37  Dynamo
+  drop     34  MISRA
+  drop     33  Warp
+  drop     27  Citadel
+  drop     26  JIT
+  drop     26  Linux CLI
+  drop     25  SIPR
+  drop     24  BR
+  drop     23  Fierce Healthcare
+  drop     20  Inductive
+  drop     20  SuiteFoundation
+  drop     20  Cp
+  drop     20  Guru
+  drop     20  Authenticator
+  drop     19  ICAM
+  drop     19  RHCSA
+  drop     17  NR
+  drop     17  RingCentral
+  drop     17  RT
+  drop     17  CI-CD
+  drop     16  SSG
+  drop     14  cATO
+  drop     14  MTU
+  drop     12  Wix
+  drop     12  Splash
+  drop     12  SnowPro Core
+  drop     11  CFor
+  drop     10  DCC
+  drop     10  Tencent
+  drop     10  UV-Vis
+  drop      9  DBRE
+  drop      9  JDE
+  drop      8  CIS-ITSM
+  drop      8  SAF
+  drop      8  Google Ad Manager
+  drop      7  eTOM
+  drop      7  GPT-OSS
+  drop      7  Eaton
+  drop      7  GIAC Security Essentials
+  drop      6  NetOps
+  drop      6  BCM
+  drop      6  ByteDance
+  drop      6  Deltek Costpoint
+  drop      6  APO
+  drop      6  Majestic
+  drop      6  VASP
+  drop      6  SAFe Scrum
+  drop      6  ICL
+  drop      6  CSC
+  drop      6  Vorteil
+  drop      5  EME
+  drop      5  Golden Gate
+  drop      5  SalesOps
+  drop      5  Cloud SME
+  drop      5  SDLC Ownership
+  drop      5  VLDB
+  drop      5  ML-integrated
+  drop      5  Anna
+  drop      5  Arista Networks
+  drop      5  latte
+  drop      5  PyData
+  drop      4  nutzen
+  drop      4  Aon
+  drop      4  GDSA
+  drop      4  Kenntnisse
+  drop      4  HAM
+  drop      4  UiARD
+  drop      4  CER
+  drop      4  BSL2
+  drop      4  PAI
+  drop      4  TS SCI
+  drop      4  GDM
+  drop      3  pubsec
+  drop      3  EHR-integrated
+  drop      3  PowerMax
+  drop      3  CCFA
+  drop      3  Azure Security Specialty
+  drop      3  Airflow DAG
+  drop      3  Python NLP
+  drop      3  SBU
+  drop      3  EWA
+  drop      3  WebUI
+  keep    294  I2C
+  keep    292  Foundry
+  keep    273  Glue
+  keep    188  Triton
+  keep    141  USB
+  keep     63  Bot Management
+  keep     63  Llama
+  keep     49  NGFW
+  keep     35  SAP ECC
+  keep     32  Symantec
+  keep     28  U-Boot
+  keep     22  AI Studio
+  keep     21  FIDO
+  keep     20  Axiom
+  keep     18  Big Query
+  keep     18  Kueue
+  keep     17  Aurora MySQL
+  keep     17  Coralogix
+  keep     17  RTSP
+  keep     17  Rocky
+  keep     17  Odoo
+  keep     17  GoogleTest
+  keep     16  Camel
+  keep     16  Maya
+  keep     16  App Store Connect
+  keep     16  Glide
+  keep     16  XSOAR
+  keep     15  Deployment Manager
+  keep     15  Spark Structured Streaming
+  keep     13  BlackRock Aladdin
+  keep     13  CameraX
+  keep     12  Marketing Cloud Engagement
+  keep     12  ZIO
+  keep     11  Scrapy
+  keep     10  IEX
+  keep      9  VersionOne
+  keep      9  Google Data Studio
+  keep      9  HIP
+  keep      9  4HANA Finance
+  keep      9  SAP S4
+  keep      8  Whisper
+  keep      8  FCP
+  keep      8  Snowflake Horizon
+  keep      8  HDD
+  keep      8  Bob
+  keep      8  Keystore
+  keep      7  CDH
+  keep      7  Bugsnag
+  keep      7  Salesforce Experience Cloud
+  keep      7  Cisco DNA Center
+  keep      7  PowerPivot
+  keep      7  Real-Time CDP
+  keep      7  NI TestStand
+  keep      7  Jira Assets
+  keep      6  Proxmox VE
+  keep      6  WGS
+  keep      6  Shodan
+  keep      6  Zerto
+  keep      6  Xpedition
+  keep      6  Netflix Conductor
+  keep      6  VPA
+  keep      5  Attio
+  keep      5  PingFederate
+  keep      5  ACK
+  keep      5  OSMF
+  keep      5  Reanimated
+  keep      5  OpenVINO
+  keep      5  Cvent
+  keep      5  MS Entra ID
+  keep      5  Model Garden
+  keep      5  MkDocs
+  keep      5  ToF
+  keep      5  PixiJS
+  keep      5  SimPy
+  keep      5  TestComplete
+  keep      5  PAS-X
+  keep      4  Xavier
+  keep      4  Hubble
+  keep      4  SAP PLM
+  keep      4  Profisee
+  keep      4  Meltwater
+  keep      4  CMEK
+  keep      4  Gloo
+  keep      4  PostCSS
+  keep      4  Tron
+  keep      4  ETAS-INCA
+  keep      4  Ignition SCADA
+  keep      4  URDF
+  keep      4  TruLens
+  keep      3  Genesis
+  keep      3  PeopleTools
+  keep      3  NetApp ONTAP
+  keep      3  Groundcover
+  keep      3  Zeppelin
+  keep      3  Munki
+  keep      3  Autopsy
+  keep      3  BizzDesign
+  keep      3  Power Automate Desktop
+  keep      3  NetScout
+  keep      3  ag-Grid
+  keep      3  SAP B1
+  keep      3  SAP APO
+  keep      3  AMD ROCm
+  keep      3  VCN
+
+Segments that name a skill not found (44), with the names Jev kept:
+
+  vacancy 193135  kept: Bloomreach | Data 360
+  found: Marketing Cloud Next, Marketo, Salesforce, Salesforce Marketing Cloud
+  In Marketing & Commercial Data, we are evolving our marketing technology landscape towards Salesforce Marketing Cloud Next and Data 360, while continuing to operate and transition from established platforms including Bloomreach, Marketo and Legacy Salesforce Marketing Cloud products for B2B & B2C marketing.
+
+  vacancy 213096  kept: Spark
+  found: Delta Lake, Lake
+  This includes developing reliable batch, streaming, and near-real-time pipelines using technologies such as Spark and Delta Lake, and building ingestion, transformation, and curation workflows for both structured and unstructured data.
+
+  vacancy 1801  kept: R
+  found: nothing
+  R
+
+  vacancy 191358  kept: PY-SPARK
+  found: Apache Spark, Py
+  Experience with APACHE SPARK / PY-SPARK.
+
+  vacancy 80184  kept: 802.15.4 MAC | IEEE 802.15.4 MAC | Thread
+  found: IEEE, IEEE 802.15.4, macOS, PHY, Zigbee
+  Expertise in IEEE 802.15.4 MAC/PHY, Zigbee, and Thread protocol stacks.
+
+  vacancy 187734  kept: Cloudflare
+  found: nothing
+  Stay current with industry trends and evolving Cloudflare solutions to provide forward-thinking guidance and configuration enhancements.
+
+  vacancy 132620  kept: ECC 6.0 | SAP ECC 6.0
+  found: ECC, SAP ECC, SAP ERP
+  The role oversees SAP ECC 6.0 (SP7) planning and procurement functionality, associated master data governance, and the implementation of an Advanced Planning Solution (APS) to elevate S&OP maturity and drive a significant, sustained reduction in enterprise inventory while maintaining service performance.
+
+  vacancy 37591  kept: Cloudflare
+  found: nothing
+  Ramp quickly into unfamiliar and legacy codebases, build context across a wide range of Cloudflare systems, and make thoughtful improvements that reduce operational toil and improve platform reliability.
+
+  vacancy 96278  kept: TSN | Time-Sensitive | Time-Sensitive Networking
+  found: CAN-FD, Ethernet, LIN
+  Expertise in automotive communication networks and in-vehicle network architecture, such as automotive Ethernet, CAN/CAN-FD, LIN, and Time-Sensitive Networking (TSN)
+
+  vacancy 105014  kept: C
+  found: C++, Rust
+  We’re looking for Software Engineers to work close to the metal on defence systems, in C++, Rust and C. This is a hands-on engineering role where you will have impact across a wide variety of projects.
+
+  vacancy 3830  kept: Spark
+  found: AWS, Kubernetes, MySQL
+  You have an extensive track record of developing highly available distributed systems using technologies like AWS, MySQL, Spark and Kubernetes.
+
+  vacancy 39102  kept: Leverages SFMC | SFMC Personalization
+  found: Salesforce Marketing Cloud
+  Leverages SFMC Personalization to deliver relevant, audience-specific experiences across digital channels, using customer behavior, attributes and engagement data to determine the right content and experience for each audience.
+
+  vacancy 100112  kept: Pega
+  found: nothing
+  Experience with Pega eForms development and implementation.
+
+  vacancy 106364  kept: OpenIDConnect
+  found: Server
+  OpenIDConnect/Identity server
+
+  vacancy 9200  kept: SPI
+  found: I2C, MCU, UART, USB
+  Experience working with MCU peripherals including SPI, I2C, UART, and USB.
+
+  vacancy 50801  kept: Python SciPy | R
+  found: C#, C++, MATLAB, Python, SAS, SciPy
+  A working knowledge of Python SciPy & statsmodels, R, C/C++/C#, SAS, and/or Matlab
+
+  vacancy 130108  kept: Cursor AI
+  found: Claude, Claude Code, Copilot, Cursor, GitHub, GitHub Copilot
+  Active, daily practitioner of AI code generation tools (GitHub Copilot, Cursor AI, Claude Code) — able to define team-wide workflows around them
+
+  vacancy 37565  kept: Workers AI
+  found: CDN, R2, Warp
+  Almost all products in Cloudflare’s portfolio are or will be powered by Argo technology, including CDN, Spectrum, Magic Transit, Stream, Workers, Workers AI, R2, WARP, and more. As a member of the Argo team, you’ll be a key technical contributor to the cutting edge network software infrastructure used by those products.
+
+  vacancy 5900  kept: AWS Athena
+  found: Amazon Athena, AWS, Azure, Azure Synapse Analytics, ClickHouse, Databricks, Datadog, Elasticsearch, Lake, OpenSearch, Sentinel, Splunk
+  Hands-on experience with SIEM or log analytics platforms and data lake technologies (OpenSearch, Elasticsearch, Clickhouse, Sentinel, Splunk, Datadog, AWS Athena, Azure synapse, Databricks or equivalent) and alerting/monitoring tooling.
+
+  vacancy 53721  kept: WLM | z/OS
+  found: IBM Db2
+  System Performance – responsible for measuring system capacity demand, managing WLM settings, providing source data for SCRT reports, maintaining the z/OS Performance Alert Monitor, analyzing system resource consumption on demand, performing DB2 buffer pool analysis regularly, and supporting the IPM process.
+
+  vacancy 62697  kept: GCP Organization Policy | Organization Policy
+  found: AWS, AWS SCP, AWS Service Control Policies, Azure, Azure Policy, Google Cloud Platform
+  Hands-on experience implementing preventative guardrails in at least one hyperscaler (GCP Organization Policy, AWS SCPs or Config, Azure Policy). You should be able to walk us through a policy you rolled out, what it broke, and how you handled the fallout.
+
+  vacancy 198405  kept: LaunchDarkly
+  found: nothing
+  LaunchDarkly helps engineering organizations ship software and AI with speed, safety, and control.
+
+  vacancy 202490  kept: Swift
+  found: Android, iOS, Java, Kotlin, Objective-C
+  Solid software engineering fundamentals with hands-on experience building, shipping, or maintaining production native mobile applications (iOS with Swift/Objective-C or Android with Kotlin/Java).
+
+  vacancy 143431  kept: EDS | FIB
+  found: nothing
+  Perform advanced physical failure analysis using SEM, FIB, EDS, SAM, cross-sectioning, and related techniques to identify failure mechanisms in silicon, packaging, and interconnects
+
+  vacancy 30491  kept: Cortex
+  found: Airtable, BT, Claude, Cowork, DataHub, n8n, Salesforce, Snowflake, Streamlit
+  The BT team partners with the AI & Data Technology teams to optimize solutions & deployment processes on platforms including Snowflake (Cortex, Streamlit), N8N, Airtable, Salesforce, DataHub, Claude/CoWork, and Stonly.
+
+  vacancy 117279  kept: The PlanetScale
+  found: PlanetScale, PostgreSQL
+  The PlanetScale platform delivers a fully managed, multi-cloud Postgres service designed for the most demanding production workloads.
+
+  vacancy 78651  kept: Use SQL
+  found: HIE, SQL
+  Use SQL and other tools to collect, process, and analyze large datasets from claims, EHR, HIE, and other programmatic and operational sources
+
+  vacancy 171287  kept: RS-422 | RS-485
+  found: nothing
+  Working knowledge and hands-on experience with serial communication protocols, including RS-422, RS-485, and CAN, for integration and troubleshooting of test systems.
+
+  vacancy 187327  kept: Helm Charts
+  found: DevOps, GitHub, Helm, Linux, Terraform
+  You're comfortable in the DevOps warzone: CI/CD, Linux, GitHub, Helm Charts, Terraform, Open source and all the good stuff.
+
+  vacancy 2268  kept: Solid
+  found: Python, React, TypeScript
+  Solid Python and/or TypeScript/React fundamentals — you write clean code and can reason about what a framework is doing underneath it
+
+  vacancy 17040  kept: TPUs
+  found: JAX
+  The ideal candidate has a deep understanding of modern deep learning systems, combined with strong engineering expertise across JAX and TPUs, layer-level optimization, large-scale distributed training, streaming, low-latency and asynchronous inference, inference compilers, and advanced parallelization techniques.
+
+  vacancy 107542  kept: HPLC | LCMS
+  found: nothing
+  Experience analyzing and purifying DNA-conjugates using common analytical tools (LCMS/HPLC).
+
+  vacancy 64514  kept: ICD9/10 | UMLS
+  found: LOINC
+  You have experience with ontologies and biomedical schemas (e.g. UMLS, LOINC, ICD9/10, MeSH) and understand the modalities found within RWD — billing claims, lab results, visit notes.
+
+  vacancy 64715  kept: R
+  found: Python, SQL
+  SQL, Python, R; comfortable building with AI coding tools
+
+  vacancy 179031  kept: Spring
+  found: nothing
+  Spring
+
+  vacancy 144658  kept: BAW
+  found: nothing
+  Design RF modules integrating BAW filters, including layout, packaging, and integration with other RF components such as amplifiers, switches, and antennas
+
+  vacancy 210272  kept: R | Using Python
+  found: Python
+  Using Python or R for data analysis, data processing, visualizations, statistical modeling, machine learning, predictive analytics, automation, and implementing causal inference and experimental analyses
+
+  vacancy 31056  kept: ACPI
+  found: BIOS, Boot, Linux, Ubuntu, UEFI
+  The Canonical Kernel Team - those responsible for the build, maintenance, and distribution of the Linux kernel for Ubuntu - is looking for an individual to take ownership of aspects pertaining to the boot process, BIOS, UEFI, ACPI, and other platform firmware components as they pertain to the Ubuntu Linux kernel.
+
+  vacancy 138998  kept: C/C++
+  found: C++, Python
+  Strong proficiency in Python and C/C++ for performance-critical algorithms
+
+  vacancy 211113  kept: Telnyx | Telnyx APIs
+  found: Fax, WebRTC
+  Build and deploy custom implementations: AI Voice Assistants, Telnyx APIs (Voice, Messaging, Fax, Wireless), WebRTC
+
+  vacancy 42614  kept: Spring
+  found: IntelliJ IDEA, Java
+  Experience with Java / IntelliJ / Spring environment.
+
+  vacancy 157509  kept: Outsystems
+  found: nothing
+  Outsystems Certification is an advantage
+
+  vacancy 135792  kept: C/C++
+  found: C++
+  Experience with C/C++, relevant to firmware and embedded systems.
+
+  vacancy 66053  kept: Argo | Spark
+  found: Airbyte, Apache Airflow, Apache Iceberg, AWS, dbt, DuckDB, Elasticsearch, Looker, OpenSearch, OpenTelemetry, PostgreSQL, Python, Snowflake, SQL, Terraform
+  Postgres/SQL, Snowflake, Python, AWS, Terraform, Argo, Airflow, Spark, DuckDB, Iceberg, Airbyte, DBT, ElasticSearch (aka OpenSearch), OpenTelemetry, Looker
+
+Jev has cost $2.2502 over every run of both issues, of the $4.00 limit

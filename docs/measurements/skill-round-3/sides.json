@@ -1,0 +1,787 @@
+{
+ "p:rest": {
+  "kind": "precision",
+  "name": "REST",
+  "labeller": "a"
+ },
+ "p:meta": {
+  "kind": "precision",
+  "name": "Meta",
+  "labeller": "a"
+ },
+ "p:a+": {
+  "kind": "precision",
+  "name": "A+",
+  "labeller": "b"
+ },
+ "p:oltp": {
+  "kind": "precision",
+  "name": "OLTP",
+  "labeller": "b"
+ },
+ "p:secops": {
+  "kind": "precision",
+  "name": "SecOps",
+  "labeller": "a"
+ },
+ "p:rpc": {
+  "kind": "precision",
+  "name": "RPC",
+  "labeller": "a"
+ },
+ "p:oracle fusion": {
+  "kind": "precision",
+  "name": "Oracle Fusion",
+  "labeller": "b"
+ },
+ "p:mm": {
+  "kind": "precision",
+  "name": "MM",
+  "labeller": "b"
+ },
+ "p:intercom": {
+  "kind": "precision",
+  "name": "Intercom",
+  "labeller": "a"
+ },
+ "p:reuters": {
+  "kind": "precision",
+  "name": "Reuters",
+  "labeller": "a"
+ },
+ "p:fw": {
+  "kind": "precision",
+  "name": "FW",
+  "labeller": "b"
+ },
+ "p:jncip": {
+  "kind": "precision",
+  "name": "JNCIP",
+  "labeller": "b"
+ },
+ "p:raspberry": {
+  "kind": "precision",
+  "name": "Raspberry",
+  "labeller": "b"
+ },
+ "p:ni": {
+  "kind": "precision",
+  "name": "NI",
+  "labeller": "a"
+ },
+ "p:dynamo": {
+  "kind": "precision",
+  "name": "Dynamo",
+  "labeller": "a"
+ },
+ "p:misra": {
+  "kind": "precision",
+  "name": "MISRA",
+  "labeller": "a"
+ },
+ "p:warp": {
+  "kind": "precision",
+  "name": "Warp",
+  "labeller": "b"
+ },
+ "p:citadel": {
+  "kind": "precision",
+  "name": "Citadel",
+  "labeller": "a"
+ },
+ "p:jit": {
+  "kind": "precision",
+  "name": "JIT",
+  "labeller": "a"
+ },
+ "p:linux cli": {
+  "kind": "precision",
+  "name": "Linux CLI",
+  "labeller": "a"
+ },
+ "p:sipr": {
+  "kind": "precision",
+  "name": "SIPR",
+  "labeller": "a"
+ },
+ "p:br": {
+  "kind": "precision",
+  "name": "BR",
+  "labeller": "b"
+ },
+ "p:fierce healthcare": {
+  "kind": "precision",
+  "name": "Fierce Healthcare",
+  "labeller": "a"
+ },
+ "p:inductive": {
+  "kind": "precision",
+  "name": "Inductive",
+  "labeller": "b"
+ },
+ "p:suitefoundation": {
+  "kind": "precision",
+  "name": "SuiteFoundation",
+  "labeller": "b"
+ },
+ "p:cp": {
+  "kind": "precision",
+  "name": "Cp",
+  "labeller": "b"
+ },
+ "p:guru": {
+  "kind": "precision",
+  "name": "Guru",
+  "labeller": "b"
+ },
+ "p:authenticator": {
+  "kind": "precision",
+  "name": "Authenticator",
+  "labeller": "b"
+ },
+ "p:icam": {
+  "kind": "precision",
+  "name": "ICAM",
+  "labeller": "b"
+ },
+ "p:rhcsa": {
+  "kind": "precision",
+  "name": "RHCSA",
+  "labeller": "a"
+ },
+ "p:nr": {
+  "kind": "precision",
+  "name": "NR",
+  "labeller": "b"
+ },
+ "p:ringcentral": {
+  "kind": "precision",
+  "name": "RingCentral",
+  "labeller": "a"
+ },
+ "p:rt": {
+  "kind": "precision",
+  "name": "RT",
+  "labeller": "a"
+ },
+ "p:ci cd": {
+  "kind": "precision",
+  "name": "CI-CD",
+  "labeller": "a"
+ },
+ "p:ssg": {
+  "kind": "precision",
+  "name": "SSG",
+  "labeller": "b"
+ },
+ "p:cato": {
+  "kind": "precision",
+  "name": "cATO",
+  "labeller": "a"
+ },
+ "p:mtu": {
+  "kind": "precision",
+  "name": "MTU",
+  "labeller": "b"
+ },
+ "p:wix": {
+  "kind": "precision",
+  "name": "Wix",
+  "labeller": "b"
+ },
+ "p:splash": {
+  "kind": "precision",
+  "name": "Splash",
+  "labeller": "b"
+ },
+ "p:snowpro core": {
+  "kind": "precision",
+  "name": "SnowPro Core",
+  "labeller": "b"
+ },
+ "p:cfor": {
+  "kind": "precision",
+  "name": "CFor",
+  "labeller": "b"
+ },
+ "p:dcc": {
+  "kind": "precision",
+  "name": "DCC",
+  "labeller": "b"
+ },
+ "p:tencent": {
+  "kind": "precision",
+  "name": "Tencent",
+  "labeller": "b"
+ },
+ "p:uv vis": {
+  "kind": "precision",
+  "name": "UV-Vis",
+  "labeller": "a"
+ },
+ "p:dbre": {
+  "kind": "precision",
+  "name": "DBRE",
+  "labeller": "b"
+ },
+ "p:jde": {
+  "kind": "precision",
+  "name": "JDE",
+  "labeller": "a"
+ },
+ "p:cis itsm": {
+  "kind": "precision",
+  "name": "CIS-ITSM",
+  "labeller": "b"
+ },
+ "p:saf": {
+  "kind": "precision",
+  "name": "SAF",
+  "labeller": "a"
+ },
+ "p:google ad manager": {
+  "kind": "precision",
+  "name": "Google Ad Manager",
+  "labeller": "b"
+ },
+ "p:etom": {
+  "kind": "precision",
+  "name": "eTOM",
+  "labeller": "a"
+ },
+ "p:gpt oss": {
+  "kind": "precision",
+  "name": "GPT-OSS",
+  "labeller": "a"
+ },
+ "p:eaton": {
+  "kind": "precision",
+  "name": "Eaton",
+  "labeller": "b"
+ },
+ "p:giac security essentials": {
+  "kind": "precision",
+  "name": "GIAC Security Essentials",
+  "labeller": "b"
+ },
+ "p:netops": {
+  "kind": "precision",
+  "name": "NetOps",
+  "labeller": "a"
+ },
+ "p:bcm": {
+  "kind": "precision",
+  "name": "BCM",
+  "labeller": "a"
+ },
+ "p:bytedance": {
+  "kind": "precision",
+  "name": "ByteDance",
+  "labeller": "b"
+ },
+ "p:deltek costpoint": {
+  "kind": "precision",
+  "name": "Deltek Costpoint",
+  "labeller": "b"
+ },
+ "p:apo": {
+  "kind": "precision",
+  "name": "APO",
+  "labeller": "a"
+ },
+ "p:majestic": {
+  "kind": "precision",
+  "name": "Majestic",
+  "labeller": "b"
+ },
+ "p:vasp": {
+  "kind": "precision",
+  "name": "VASP",
+  "labeller": "a"
+ },
+ "p:safe scrum": {
+  "kind": "precision",
+  "name": "SAFe Scrum",
+  "labeller": "b"
+ },
+ "p:icl": {
+  "kind": "precision",
+  "name": "ICL",
+  "labeller": "a"
+ },
+ "p:csc": {
+  "kind": "precision",
+  "name": "CSC",
+  "labeller": "a"
+ },
+ "p:vorteil": {
+  "kind": "precision",
+  "name": "Vorteil",
+  "labeller": "b"
+ },
+ "p:eme": {
+  "kind": "precision",
+  "name": "EME",
+  "labeller": "b"
+ },
+ "p:golden gate": {
+  "kind": "precision",
+  "name": "Golden Gate",
+  "labeller": "b"
+ },
+ "p:salesops": {
+  "kind": "precision",
+  "name": "SalesOps",
+  "labeller": "a"
+ },
+ "p:cloud sme": {
+  "kind": "precision",
+  "name": "Cloud SME",
+  "labeller": "a"
+ },
+ "p:sdlc ownership": {
+  "kind": "precision",
+  "name": "SDLC Ownership",
+  "labeller": "a"
+ },
+ "p:vldb": {
+  "kind": "precision",
+  "name": "VLDB",
+  "labeller": "b"
+ },
+ "p:ml integrated": {
+  "kind": "precision",
+  "name": "ML-integrated",
+  "labeller": "b"
+ },
+ "p:anna": {
+  "kind": "precision",
+  "name": "Anna",
+  "labeller": "b"
+ },
+ "p:arista networks": {
+  "kind": "precision",
+  "name": "Arista Networks",
+  "labeller": "a"
+ },
+ "p:latte": {
+  "kind": "precision",
+  "name": "latte",
+  "labeller": "a"
+ },
+ "p:pydata": {
+  "kind": "precision",
+  "name": "PyData",
+  "labeller": "b"
+ },
+ "p:nutzen": {
+  "kind": "precision",
+  "name": "nutzen",
+  "labeller": "a"
+ },
+ "p:aon": {
+  "kind": "precision",
+  "name": "Aon",
+  "labeller": "a"
+ },
+ "p:gdsa": {
+  "kind": "precision",
+  "name": "GDSA",
+  "labeller": "a"
+ },
+ "p:kenntnisse": {
+  "kind": "precision",
+  "name": "Kenntnisse",
+  "labeller": "a"
+ },
+ "p:ham": {
+  "kind": "precision",
+  "name": "HAM",
+  "labeller": "a"
+ },
+ "p:uiard": {
+  "kind": "precision",
+  "name": "UiARD",
+  "labeller": "b"
+ },
+ "p:cer": {
+  "kind": "precision",
+  "name": "CER",
+  "labeller": "b"
+ },
+ "p:bsl2": {
+  "kind": "precision",
+  "name": "BSL2",
+  "labeller": "b"
+ },
+ "p:pai": {
+  "kind": "precision",
+  "name": "PAI",
+  "labeller": "a"
+ },
+ "p:ts sci": {
+  "kind": "precision",
+  "name": "TS SCI",
+  "labeller": "a"
+ },
+ "p:gdm": {
+  "kind": "precision",
+  "name": "GDM",
+  "labeller": "b"
+ },
+ "p:pubsec": {
+  "kind": "precision",
+  "name": "pubsec",
+  "labeller": "b"
+ },
+ "p:ehr integrated": {
+  "kind": "precision",
+  "name": "EHR-integrated",
+  "labeller": "b"
+ },
+ "p:powermax": {
+  "kind": "precision",
+  "name": "PowerMax",
+  "labeller": "a"
+ },
+ "p:ccfa": {
+  "kind": "precision",
+  "name": "CCFA",
+  "labeller": "b"
+ },
+ "p:azure security specialty": {
+  "kind": "precision",
+  "name": "Azure Security Specialty",
+  "labeller": "b"
+ },
+ "p:airflow dag": {
+  "kind": "precision",
+  "name": "Airflow DAG",
+  "labeller": "b"
+ },
+ "p:python nlp": {
+  "kind": "precision",
+  "name": "Python NLP",
+  "labeller": "b"
+ },
+ "p:sbu": {
+  "kind": "precision",
+  "name": "SBU",
+  "labeller": "a"
+ },
+ "p:ewa": {
+  "kind": "precision",
+  "name": "EWA",
+  "labeller": "b"
+ },
+ "p:webui": {
+  "kind": "precision",
+  "name": "WebUI",
+  "labeller": "b"
+ },
+ "r:193135:bloomreach": {
+  "kind": "recall",
+  "name": "Bloomreach",
+  "labeller": "a"
+ },
+ "r:193135:data 360": {
+  "kind": "recall",
+  "name": "Data 360",
+  "labeller": "b"
+ },
+ "r:213096:spark": {
+  "kind": "recall",
+  "name": "Spark",
+  "labeller": "b"
+ },
+ "r:1801:r": {
+  "kind": "recall",
+  "name": "R",
+  "labeller": "b"
+ },
+ "r:191358:py spark": {
+  "kind": "recall",
+  "name": "PY-SPARK",
+  "labeller": "b"
+ },
+ "r:80184:802 15 4 mac": {
+  "kind": "recall",
+  "name": "802.15.4 MAC",
+  "labeller": "b"
+ },
+ "r:80184:ieee 802 15 4 mac": {
+  "kind": "recall",
+  "name": "IEEE 802.15.4 MAC",
+  "labeller": "a"
+ },
+ "r:80184:thread": {
+  "kind": "recall",
+  "name": "Thread",
+  "labeller": "b"
+ },
+ "r:187734:cloudflare": {
+  "kind": "recall",
+  "name": "Cloudflare",
+  "labeller": "b"
+ },
+ "r:132620:ecc 6 0": {
+  "kind": "recall",
+  "name": "ECC 6.0",
+  "labeller": "a"
+ },
+ "r:132620:sap ecc 6 0": {
+  "kind": "recall",
+  "name": "SAP ECC 6.0",
+  "labeller": "b"
+ },
+ "r:37591:cloudflare": {
+  "kind": "recall",
+  "name": "Cloudflare",
+  "labeller": "a"
+ },
+ "r:96278:tsn": {
+  "kind": "recall",
+  "name": "TSN",
+  "labeller": "a"
+ },
+ "r:96278:time sensitive": {
+  "kind": "recall",
+  "name": "Time-Sensitive",
+  "labeller": "b"
+ },
+ "r:96278:time sensitive networking": {
+  "kind": "recall",
+  "name": "Time-Sensitive Networking",
+  "labeller": "b"
+ },
+ "r:105014:c": {
+  "kind": "recall",
+  "name": "C",
+  "labeller": "b"
+ },
+ "r:3830:spark": {
+  "kind": "recall",
+  "name": "Spark",
+  "labeller": "b"
+ },
+ "r:39102:leverages sfmc": {
+  "kind": "recall",
+  "name": "Leverages SFMC",
+  "labeller": "b"
+ },
+ "r:39102:sfmc personalization": {
+  "kind": "recall",
+  "name": "SFMC Personalization",
+  "labeller": "b"
+ },
+ "r:100112:pega": {
+  "kind": "recall",
+  "name": "Pega",
+  "labeller": "a"
+ },
+ "r:106364:openidconnect": {
+  "kind": "recall",
+  "name": "OpenIDConnect",
+  "labeller": "a"
+ },
+ "r:9200:spi": {
+  "kind": "recall",
+  "name": "SPI",
+  "labeller": "a"
+ },
+ "r:50801:python scipy": {
+  "kind": "recall",
+  "name": "Python SciPy",
+  "labeller": "b"
+ },
+ "r:50801:r": {
+  "kind": "recall",
+  "name": "R",
+  "labeller": "b"
+ },
+ "r:130108:cursor ai": {
+  "kind": "recall",
+  "name": "Cursor AI",
+  "labeller": "b"
+ },
+ "r:37565:workers ai": {
+  "kind": "recall",
+  "name": "Workers AI",
+  "labeller": "b"
+ },
+ "r:5900:aws athena": {
+  "kind": "recall",
+  "name": "AWS Athena",
+  "labeller": "b"
+ },
+ "r:53721:wlm": {
+  "kind": "recall",
+  "name": "WLM",
+  "labeller": "a"
+ },
+ "r:53721:z os": {
+  "kind": "recall",
+  "name": "z/OS",
+  "labeller": "b"
+ },
+ "r:62697:gcp organization policy": {
+  "kind": "recall",
+  "name": "GCP Organization Policy",
+  "labeller": "a"
+ },
+ "r:62697:organization policy": {
+  "kind": "recall",
+  "name": "Organization Policy",
+  "labeller": "b"
+ },
+ "r:198405:launchdarkly": {
+  "kind": "recall",
+  "name": "LaunchDarkly",
+  "labeller": "b"
+ },
+ "r:202490:swift": {
+  "kind": "recall",
+  "name": "Swift",
+  "labeller": "b"
+ },
+ "r:143431:eds": {
+  "kind": "recall",
+  "name": "EDS",
+  "labeller": "b"
+ },
+ "r:143431:fib": {
+  "kind": "recall",
+  "name": "FIB",
+  "labeller": "b"
+ },
+ "r:30491:cortex": {
+  "kind": "recall",
+  "name": "Cortex",
+  "labeller": "a"
+ },
+ "r:117279:the planetscale": {
+  "kind": "recall",
+  "name": "The PlanetScale",
+  "labeller": "a"
+ },
+ "r:78651:use sql": {
+  "kind": "recall",
+  "name": "Use SQL",
+  "labeller": "a"
+ },
+ "r:171287:rs 422": {
+  "kind": "recall",
+  "name": "RS-422",
+  "labeller": "b"
+ },
+ "r:171287:rs 485": {
+  "kind": "recall",
+  "name": "RS-485",
+  "labeller": "a"
+ },
+ "r:187327:helm charts": {
+  "kind": "recall",
+  "name": "Helm Charts",
+  "labeller": "b"
+ },
+ "r:2268:solid": {
+  "kind": "recall",
+  "name": "Solid",
+  "labeller": "a"
+ },
+ "r:17040:tpus": {
+  "kind": "recall",
+  "name": "TPUs",
+  "labeller": "b"
+ },
+ "r:107542:hplc": {
+  "kind": "recall",
+  "name": "HPLC",
+  "labeller": "a"
+ },
+ "r:107542:lcms": {
+  "kind": "recall",
+  "name": "LCMS",
+  "labeller": "b"
+ },
+ "r:64514:icd9 10": {
+  "kind": "recall",
+  "name": "ICD9/10",
+  "labeller": "a"
+ },
+ "r:64514:umls": {
+  "kind": "recall",
+  "name": "UMLS",
+  "labeller": "a"
+ },
+ "r:64715:r": {
+  "kind": "recall",
+  "name": "R",
+  "labeller": "b"
+ },
+ "r:179031:spring": {
+  "kind": "recall",
+  "name": "Spring",
+  "labeller": "b"
+ },
+ "r:144658:baw": {
+  "kind": "recall",
+  "name": "BAW",
+  "labeller": "a"
+ },
+ "r:210272:r": {
+  "kind": "recall",
+  "name": "R",
+  "labeller": "b"
+ },
+ "r:210272:using python": {
+  "kind": "recall",
+  "name": "Using Python",
+  "labeller": "a"
+ },
+ "r:31056:acpi": {
+  "kind": "recall",
+  "name": "ACPI",
+  "labeller": "a"
+ },
+ "r:138998:c c": {
+  "kind": "recall",
+  "name": "C/C++",
+  "labeller": "b"
+ },
+ "r:211113:telnyx": {
+  "kind": "recall",
+  "name": "Telnyx",
+  "labeller": "a"
+ },
+ "r:211113:telnyx apis": {
+  "kind": "recall",
+  "name": "Telnyx APIs",
+  "labeller": "b"
+ },
+ "r:42614:spring": {
+  "kind": "recall",
+  "name": "Spring",
+  "labeller": "b"
+ },
+ "r:157509:outsystems": {
+  "kind": "recall",
+  "name": "Outsystems",
+  "labeller": "a"
+ },
+ "r:135792:c c": {
+  "kind": "recall",
+  "name": "C/C++",
+  "labeller": "a"
+ },
+ "r:66053:argo": {
+  "kind": "recall",
+  "name": "Argo",
+  "labeller": "a"
+ },
+ "r:66053:spark": {
+  "kind": "recall",
+  "name": "Spark",
+  "labeller": "a"
+ }
+}

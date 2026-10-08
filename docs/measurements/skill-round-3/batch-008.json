@@ -1,0 +1,104 @@
+[
+ {
+  "id": "r:107542:lcms",
+  "text": "Name: LCMS\nSegment: Experience analyzing and purifying DNA-conjugates using common analytical tools (LCMS/HPLC).",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:64514:icd9 10",
+  "text": "Name: ICD9/10\nSegment: You have experience with ontologies and biomedical schemas (e.g. UMLS, LOINC, ICD9/10, MeSH) and understand the modalities found within RWD — billing claims, lab results, visit notes.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:64514:umls",
+  "text": "Name: UMLS\nSegment: You have experience with ontologies and biomedical schemas (e.g. UMLS, LOINC, ICD9/10, MeSH) and understand the modalities found within RWD — billing claims, lab results, visit notes.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:64715:r",
+  "text": "Name: R\nSegment: SQL, Python, R; comfortable building with AI coding tools",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:179031:spring",
+  "text": "Name: Spring\nSegment: Spring",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:144658:baw",
+  "text": "Name: BAW\nSegment: Design RF modules integrating BAW filters, including layout, packaging, and integration with other RF components such as amplifiers, switches, and antennas",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:210272:r",
+  "text": "Name: R\nSegment: Using Python or R for data analysis, data processing, visualizations, statistical modeling, machine learning, predictive analytics, automation, and implementing causal inference and experimental analyses",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:210272:using python",
+  "text": "Name: Using Python\nSegment: Using Python or R for data analysis, data processing, visualizations, statistical modeling, machine learning, predictive analytics, automation, and implementing causal inference and experimental analyses",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:31056:acpi",
+  "text": "Name: ACPI\nSegment: The Canonical Kernel Team - those responsible for the build, maintenance, and distribution of the Linux kernel for Ubuntu - is looking for an individual to take ownership of aspects pertaining to the boot process, BIOS, UEFI, ACPI, and other platform firmware components as they pertain to the Ubuntu Linux kernel.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:138998:c c",
+  "text": "Name: C/C++\nSegment: Strong proficiency in Python and C/C++ for performance-critical algorithms",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:211113:telnyx",
+  "text": "Name: Telnyx\nSegment: Build and deploy custom implementations: AI Voice Assistants, Telnyx APIs (Voice, Messaging, Fax, Wireless), WebRTC",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:211113:telnyx apis",
+  "text": "Name: Telnyx APIs\nSegment: Build and deploy custom implementations: AI Voice Assistants, Telnyx APIs (Voice, Messaging, Fax, Wireless), WebRTC",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:42614:spring",
+  "text": "Name: Spring\nSegment: Experience with Java / IntelliJ / Spring environment.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:157509:outsystems",
+  "text": "Name: Outsystems\nSegment: Outsystems Certification is an advantage",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:135792:c c",
+  "text": "Name: C/C++\nSegment: Experience with C/C++, relevant to firmware and embedded systems.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:66053:argo",
+  "text": "Name: Argo\nSegment: Postgres/SQL, Snowflake, Python, AWS, Terraform, Argo, Airflow, Spark, DuckDB, Iceberg, Airbyte, DBT, ElasticSearch (aka OpenSearch), OpenTelemetry, Looker",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:66053:spark",
+  "text": "Name: Spark\nSegment: Postgres/SQL, Snowflake, Python, AWS, Terraform, Argo, Airflow, Spark, DuckDB, Iceberg, Airbyte, DBT, ElasticSearch (aka OpenSearch), OpenTelemetry, Looker",
+  "a": "keep",
+  "b": "drop"
+ }
+]

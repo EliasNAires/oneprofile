@@ -1,0 +1,122 @@
+[
+ {
+  "id": "p:safe scrum",
+  "text": "Name: SAFe Scrum\nSegments:\n- Certified ScrumMaster (CSM), SAFe Scrum Master (SSM),Professional Scrum Master I (PSM I) or equivalent\n- The ideal candidate has strong full-stack engineering skills, thrives on a SAFe scrum team, and is passionate about delivering innovative geospatial tools in support of the mission.\n- Certificación SAFe Scrum Master.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:icl",
+  "text": "Name: ICL\nSegments:\n- Proven track record of publications in relevant conferences (CVPR, ICML, NeurIPS, ICCV, ICL, etc.)\n- Work closely with our Data team and specific datasets that can be used for continued pre-training, RLHF, in-context-learning (ICL), and other applications.\n- Hands-on expertise with ASIC design flows, IP integration, and relevant design views (.lib, LEF, ICL, PDL).",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:csc",
+  "text": "Name: CSC\nSegments:\n- Bachelor's degree in a relevant field such as security studies, security management, or industry recognised certifications such as Certified Protection Professional (CPP), Certified Security Consultant (CSC) or Physical Security Professional (PSP).\n- CND, GISF, SSCP, Security X/ CSAP+, CCSP, Cloud +, CSC, GCLD, GSEC, CISSP-ISSEP, FITSP-D, GCSA\n- Familiarity with security frameworks such as the NIST CSF, CIS CSC, and ISO 27001",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:vorteil",
+  "text": "Name: Vorteil\nSegments:\n- Überdurchschnittlicher Studienabschluss in Informatik, Naturwissenschaften oder einer vergleichbaren technischen Fachrichtung; eine Promotion im Bereich AI oder Machine Learning ist von Vorteil\n- Ein gutes Verständnis von Kommunikationsprotokollen wie CAN-Bus oder ROS/ROS2 ist von Vorteil.\n- Kenntnisse in der Fertigungsindustrie sind von Vorteil",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:eme",
+  "text": "Name: EME\nSegments:\n- Media pipelines: MSE/EME, ExoPlayer or native players, demuxers, Widevine or PlayReady DRM\n- Experience with media frameworks and streaming protocols, including HLS and MPEG-DASH, DRM, and media playback on HTML5, iOS, and Android platforms; familiarity with MSE/EME, ExoPlayer, Shaka Player, or Dash.js\n- An understanding of Electro Magnetic Effects (EME) to include Electro Magnetic Compatibility (EMC) and Electro Magnetic Interference (EMI)",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:golden gate",
+  "text": "Name: Golden Gate\nSegments:\n- Founded in 1853, the California Academy of Sciences is a globally renowned, AZA-accredited non-profit scientific and cultural institution located in the heart of San Francisco’s Golden Gate Park.\n- You will complete the entity-agent pipeline, build the evidence adapters behind a single envelope, run the benchmark and golden-gate system on a schedule, build the review and batch tooling the team operates, and carry the agents onto ZoomInfo’s Agentic Platform.\n- Construct plasmids using modern molecular biology techniques (e.g: Golden Gate assembly, HiFi assembly, etc.)",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:salesops",
+  "text": "Name: SalesOps\nSegments:\n- Background in SalesOps automation (specifically Quote-to-Cash processes).\n- Design, build, and maintain scalable data structures (data marts and star schemas) for SalesOps metrics and performance reporting\n- SalesOperations #RevOps #SalesOps #Salesforce #DataAnalytics #GoToMarket #SaaS #Hiring #RevenueOperations",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:cloud sme",
+  "text": "Name: Cloud SME\nSegments:\n- Serve as the primary Tableau Cloud SME for the organization, including user management, security, performance tuning, and environment configuration.\n- Share in new feature design as the cloud SME supporting container/k8s first designs",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:sdlc ownership",
+  "text": "Name: SDLC Ownership\nSegments:\n- Full SDLC ownership — from requirements and architecture through code reviews, testing, and deployment.\n- Modern SDLC Ownership — Operates and teaches a full-lifecycle model: engineers own design, build, test, deploy, and support for what they ship.\n- Full SDLC Ownership: Lead the entire lifecycle of digital banking products, from initial idea and architectural design to release and maintenance.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:vldb",
+  "text": "Name: VLDB\nSegments:\n- The following publications in VLDB conferences reflect the storage work at Couchbase\n- Experience managing and supporting Very Large Databases (VLDB).\n- Understanding of dimensional modeling, SCD strategies, data partitioning, and VLDB design principles",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:ml integrated",
+  "text": "Name: ML-integrated\nSegments:\n- You will work closely with Product, Data Science, Marketplace Quality, DSP Partnerships, Publisher teams, and SRE to build ML-integrated and data-driven monetization systems that improve yield, bid rate, win rate, fill rate, attribution readiness, latency, and reliability across PubMatic’s mobile app ecosystem.\n- Drive the AI-first transformation of the safety platform: architecting agentic and ML-integrated workflows with the security, auditability, and reliability that production safety systems require\n- Experience with experimentation, feature flags, instrumentation, analytics, and product or quality-of-experience metrics; familiarity with AVFoundation, VideoToolbox, HLS, media playback, recommendation systems, accessibility, or ML-integrated products is a plus.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:anna",
+  "text": "Name: Anna\nSegments:\n- This position assists every aspect of the Santa Anna Label Group’s (SALG) A&R department.\n- 1 ⃣ Meet our Recruiter Anna — your first conversation is a chance to share your experience and aspirations.\n- We produce award-winning scripted and unscripted Original Series, such as “Boyhood”, “Anna”, and “SNL Korea”.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:arista networks",
+  "text": "Name: Arista Networks\nSegments:\n- Arista Networks: EOS, CloudVision (CVP), modern spine-and-leaf designs.\n- Experience with or exposure to networking platforms such as Palo Alto Networks, SonicWall, Arista Networks, Extreme Networks, or similar technologies.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:latte",
+  "text": "Name: latte\nSegments:\n- Home office setup and coworking allowances. Working from a coffee shop? You can use your coworking allowance for the requisite latte!\n- Experience using eMASS / Xacta / SNOW / LATTE ART\n- Subsidized meals at our onsite cafe, smoothie bars and coffee bars (aka $5 for a made-to-order salad, sandwich, pizza, or sushi, or $2 for a delicious smoothie or latte)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:pydata",
+  "text": "Name: PyData\nSegments:\n- We host and sponsor London’s PyData and Machine Learning Meetups\n- We actively engage with the technology community by hosting and sponsoring events (PyData, Hackathons, DEV.BG), speaking at industry conferences and open-sourcing technology; see github.com/man-group\n- We host and sponsor Boston meetups and London’s PyData and Machine Learning Meetups",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:nutzen",
+  "text": "Name: nutzen\nSegments:\n- Innovation als Waffe: Sie nutzen modernste Technologien wie KI zur Log-Analyse und Pattern-Detection, um Angreifern immer einen Schritt voraus zu sein und neue Mitigation-Ideen im Team zu implementieren.\n- Kundenprojekte mit echtem gesellschaftlichem Nutzen\n- Wir agieren nicht als reine Demo-Abteilung, sondern als vertrauenswürdige Berater, die komplexe Geschäftsanforderungen in messbaren wirtschaftlichen Nutzen übersetzen.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:aon",
+  "text": "Name: Aon\nSegments:\n- Operate AON's high temperature industrial 3D printers to the point of becoming an expert\n- Conduct thorough job evaluations and market pricing using Aon Radford as the primary survey source, along with other providers (e.g., Mercer, WTW, Culpepper).\n- Leaders at companies like Databricks, Aon, HubSpot, and HelloFresh trust GoodTime to orchestrate smarter, faster, people-first hiring experiences for their candidates, interviewers, and talent teams.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:gdsa",
+  "text": "Name: GDSA\nSegments:\n- GIAC (e.g., GSEC, GCED, GCIH, GMON, GCIA, GDSA, etc.)\n- Certifications such as CISSP, CCSP, AWS Security Specialty, GIAC (GCSA, GWEB, GDSA).\n- GDSA: GIAC Defensible Security Architecture",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:kenntnisse",
+  "text": "Name: Kenntnisse\nSegments:\n- Sehr gute Kenntnisse der regulatorischen Bankenstandards.\n- Du hast fortgeschrittene Kenntnisse in Programmiersprachen wie Python, TypeScript, oder Java\n- Kenntnisse in der Fertigungsindustrie sind von Vorteil",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:ham",
+  "text": "Name: HAM\nSegments:\n- ITSM, HAM, SAM and/or CSM experience\n- You will serve as the technical SME for Software Asset Management (SAM) and Hardware Asset Management (HAM), ensuring our platform delivers an accurate, real-time view of asset visibility and cloud consumption.\n- Expertise in various ServiceNow modules: ITSM, ITOM, ITAM (SAM/HAM), GRC, SecOPS, IRM, CSM;",
+  "a": "drop",
+  "b": "keep"
+ }
+]

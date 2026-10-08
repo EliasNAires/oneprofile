@@ -1,0 +1,158 @@
+kind	id	name	outcome	clause	pattern
+precision	p:rest	REST	rule miss	A practice, method, technique, architecture or kind of system is no skill, however technical: ... REST	generic practice listed explicitly
+precision	p:meta	Meta	rule miss	Not a technology at all: a company (as an employer, customer, partner or vendor)	company named as employer
+precision	p:a+	A+	rule miss	A compliance framework, regulation or certification	certification like Security+
+precision	p:oltp	OLTP	rule miss	A practice, method, technique, architecture or kind of system is no skill, however technical	generic kind of system
+precision	p:secops	SecOps	rule miss	so is part of a longer name written around it (Security Command, written in Security Command Center)	generic practice or part of vendor name
+precision	p:rpc	RPC	rule miss	A practice, method, technique, architecture or kind of system is no skill, however technical	generic protocol paradigm
+precision	p:oracle fusion	Oracle Fusion	rule miss	A technology no software person is hired for	ERP platform not for engineers
+precision	p:mm	MM	rule miss	An ambiguous abbreviation: one that names several things, none dominant where it is written	ambiguous abbreviation multiple meanings
+precision	p:intercom	Intercom	rule miss	Not a technology at all: a company (as an employer, customer, partner or vendor)	company name or ordinary word
+precision	p:reuters	Reuters	rule miss	Not a technology at all: a company (as an employer, customer, partner or vendor)	company named as employer
+precision	p:fw	FW	rule miss	A generic concept or a practice, not a named technology	generic concept abbreviation
+precision	p:jncip	JNCIP	rule miss	A compliance framework, regulation or certification	certification like CISSP
+precision	p:raspberry	Raspberry	rule miss	a piece of a longer name that ads never use alone for the product	piece of longer name never alone
+precision	p:ni	NI	rule miss	A vendor's name is a drop even where ads use it for its products: Palo Alto for its firewalls, Juniper for its routers	ambiguous abbreviation vendor name
+precision	p:dynamo	Dynamo	labeller error	A bare form ... is that product. It is a keep where the text uses it for the product	bare form of multiple real products
+precision	p:misra	MISRA	rule miss	A compliance framework, regulation or certification	coding safety standard
+precision	p:warp	Warp	labeller error	A context key is an ordinary word ... The same word used for a product is a bare form, and kept	ordinary term also product bare form
+precision	p:citadel	Citadel	rule miss	Not a technology at all: a company (as an employer, customer, partner or vendor)	company named as employer
+precision	p:jit	JIT	rule miss	A generic concept or a practice, not a named technology	generic security access practice
+precision	p:linux cli	Linux CLI	rule miss	A name with an ordinary word before or after it ... is a drop, though the name inside it is a keep	ordinary word attached to product name
+precision	p:sipr	SIPR	rule miss	When in doubt between keep and drop, drop	classified network environment name
+precision	p:br	BR	rule miss	Not a technology at all: ... a place	country code used generically
+precision	p:fierce healthcare	Fierce Healthcare	rule miss	Not a technology at all: a company	media outlet named as source
+precision	p:inductive	Inductive	rule miss	An ordinary word, in English or Spanish	adjective for physical property
+precision	p:suitefoundation	SuiteFoundation	rule miss	A compliance framework, regulation or certification	certification exam name
+precision	p:cp	Cp	rule miss	A generic concept or a practice, not a named technology	statistical quality metric
+precision	p:guru	Guru	labeller error	The same word used for a product is a bare form, and kept	tool name among SaaS list
+precision	p:authenticator	Authenticator	rule miss	Consumer, office or browser software	Microsoft 365 end-user app
+precision	p:icam	ICAM	rule miss	A generic concept or a practice, not a named technology	security domain spelled out
+precision	p:rhcsa	RHCSA	rule miss	A compliance framework, regulation or certification	certification exam name
+precision	p:nr	NR	rule miss	An ambiguous abbreviation	ambiguous abbreviation multiple meanings
+precision	p:ringcentral	RingCentral	rule miss	Consumer, office or browser software	UCaaS like Zoom
+precision	p:rt	RT	rule miss	part of a longer name written around it	abbreviation inside longer name
+precision	p:ci cd	CI-CD	rule miss	A generic concept or a practice, not a named technology	explicit practice example listed
+precision	p:ssg	SSG	rule miss	A generic concept or a practice, not a named technology	rendering technique generic
+precision	p:cato	cATO	rule miss	A compliance framework, regulation or certification	government authorization process
+precision	p:mtu	MTU	rule miss	A generic concept or a practice, not a named technology	network parameter not protocol
+precision	p:wix	Wix	rule miss	A vendor's name is a drop even where ads use it for its products	vendor name own product
+precision	p:splash	Splash	labeller error	The same word used for a product is a bare form, and kept	tool name among SaaS list
+precision	p:snowpro core	SnowPro Core	rule miss	A compliance framework, regulation or certification	certification exam name
+precision	p:cfor	CFor	rule miss	Not a technology at all	text artifact not real name
+precision	p:dcc	DCC	rule miss	A generic concept	generic category term
+precision	p:tencent	Tencent	rule miss	A vendor's name is a drop even where ads use it for its products	vendor name for product
+precision	p:uv vis	UV-Vis	rule miss	A technology no software person is hired for	lab technique not software
+precision	p:dbre	DBRE	rule miss	A generic concept	job role not technology
+precision	p:jde	JDE	rule miss	A technology no software person is hired for	ERP software not hired for
+precision	p:cis itsm	CIS-ITSM	rule miss	A compliance framework, regulation or certification	named certification
+precision	p:saf	SAF	rule miss	An ambiguous abbreviation	ambiguous abbreviation multiple meanings
+precision	p:google ad manager	Google Ad Manager	labeller error	a tool or a platform	named ad platform tool
+precision	p:etom	eTOM	rule miss	A generic concept or a practice	business process framework
+precision	p:gpt oss	GPT-OSS	labeller error	Category: ml	named AI model
+precision	p:eaton	Eaton	rule miss	A vendor's name is a drop even where ads use it for its products	vendor manufacturer name
+precision	p:giac security essentials	GIAC Security Essentials	rule miss	A compliance framework, regulation or certification	named certification
+precision	p:netops	NetOps	rule miss	A generic concept or a practice	network operations practice
+precision	p:bcm	BCM	rule miss	An ambiguous abbreviation	ambiguous abbreviation multiple meanings
+precision	p:bytedance	ByteDance	rule miss	Not a technology at all: a company	company named as employer
+precision	p:deltek costpoint	Deltek Costpoint	rule miss	A technology no software person is hired for	ERP software not hired for
+precision	p:apo	APO	rule miss	An ambiguous abbreviation	ambiguous abbreviation multiple meanings
+precision	p:majestic	Majestic	rule miss	An ordinary word	ordinary word not product
+precision	p:vasp	VASP	rule miss	A homonym of something else	homonym differing meanings
+precision	p:safe scrum	SAFe Scrum	rule miss	A generic concept or a practice, not a named technology	agile methodology practice
+precision	p:icl	ICL	rule miss	An ambiguous abbreviation: one that names several things, none dominant	ambiguous abbreviation multiple meanings
+precision	p:csc	CSC	rule miss	A compliance framework, regulation or certification	certification abbreviation
+precision	p:vorteil	Vorteil	rule miss	An ordinary word, in English or Spanish, used in its ordinary sense	foreign ordinary word
+precision	p:eme	EME	labeller error	A name is judged ... a keep when they use it for the technology	standard dominant despite homonym
+precision	p:golden gate	Golden Gate	rule miss	Not a technology at all: ... a place	place name or unclear codename
+precision	p:salesops	SalesOps	rule miss	Not a technology at all: ... a heading or field of study	business function not technology
+precision	p:cloud sme	Cloud SME	rule miss	Not a technology at all: ... a heading or field of study	job role or title
+precision	p:sdlc ownership	SDLC Ownership	rule miss	Not a technology at all: ... a name glued to an ordinary word	concept glued to ordinary word
+precision	p:vldb	VLDB	rule miss	A generic concept or a practice, not a named technology	generic concept acronym
+precision	p:ml integrated	ML-integrated	rule miss	Not a technology at all: ... a name glued to an ordinary word	concept glued to ordinary word
+precision	p:anna	Anna	rule miss	Not a technology at all: ... a person	person's name
+precision	p:arista networks	Arista Networks	rule miss	A vendor's name is a drop even where ads use it for its products	vendor name for products
+precision	p:latte	latte	rule miss	An ordinary word, in English or Spanish, used in its ordinary sense	ordinary word in ordinary sense
+precision	p:pydata	PyData	rule miss	Not a technology at all: ... a vendor umbrella	conference or community name
+precision	p:nutzen	nutzen	rule miss	An ordinary word, in English or Spanish, used in its ordinary sense	foreign ordinary word
+precision	p:aon	Aon	rule miss	Not a technology at all: a company (as an employer, customer, partner or vendor)	company named as employer
+precision	p:gdsa	GDSA	rule miss	A compliance framework, regulation or certification	certification abbreviation
+precision	p:kenntnisse	Kenntnisse	rule miss	An ordinary word, in English or Spanish, used in its ordinary sense	foreign ordinary word
+precision	p:ham	HAM	rule miss	A generic concept or a practice, not a named technology	generic concept acronym
+precision	p:uiard	UiARD	rule miss	A compliance framework, regulation or certification	certification name or abbreviation
+precision	p:cer	CER	rule miss	An ambiguous abbreviation	abbreviation with several meanings
+precision	p:bsl2	BSL2	rule miss	A generic concept	lab safety classification, not tech
+precision	p:pai	PAI	rule miss	An ambiguous abbreviation	abbreviation with several meanings
+precision	p:ts sci	TS SCI	rule miss	Not a technology at all	security clearance designation
+precision	p:gdm	GDM	rule miss	An ambiguous abbreviation	abbreviation with several meanings
+precision	p:pubsec	pubsec	rule miss	A generic concept	industry vertical, not tech
+precision	p:ehr integrated	EHR-integrated	rule miss	A name is judged where it is written, and exactly as given	extra word attached to tech name
+precision	p:powermax	PowerMax	labeller error	Keep a name when it names one specific technology	vendor's specific product name
+precision	p:ccfa	CCFA	rule miss	A compliance framework, regulation or certification	certification name or abbreviation
+precision	p:azure security specialty	Azure Security Specialty	rule miss	A compliance framework, regulation or certification	certification name or abbreviation
+precision	p:airflow dag	Airflow DAG	rule miss	A name is judged where it is written, and exactly as given	extra word attached to tech name
+precision	p:python nlp	Python NLP	rule miss	A name is judged where it is written, and exactly as given	extra word attached to tech name
+precision	p:sbu	SBU	rule miss	Not a technology at all	org/classification term, never tech
+precision	p:ewa	EWA	rule miss	Not a technology at all	company's own in-house product
+precision	p:webui	WebUI	rule miss	A name is judged where it is written, and exactly as given	generic term and partial product name
+recall	r:193135:bloomreach	Bloomreach	rule miss	Keep a name when it names one specific technology	platform named as product
+recall	r:193135:data 360	Data 360	labeller error	Not a technology at all	vendor umbrella product suite
+recall	r:213096:spark	Spark	rule miss	A bare form	bare form used for product
+recall	r:1801:r	R	rule miss	A single letter, except C and R	bare single letter R
+recall	r:191358:py spark	PY-SPARK	rule miss	A name that names an existing skill by another spelling	spelling variant of library name
+recall	r:80184:802 15 4 mac	802.15.4 MAC	labeller error	so is part of a longer name written around it	piece of longer standard name
+recall	r:80184:ieee 802 15 4 mac	IEEE 802.15.4 MAC	labeller error	so is part of a longer name written around it	piece of longer standard name
+recall	r:80184:thread	Thread	rule miss	A bare form	full name of listed protocol
+recall	r:187734:cloudflare	Cloudflare	rule miss	A platform data, ML or AI teams build on is a platform like any other	vendor platform configured directly
+recall	r:132620:ecc 6 0	ECC 6.0	labeller error	A technology no software person is hired for	ERP software not for engineers
+recall	r:132620:sap ecc 6 0	SAP ECC 6.0	labeller error	A technology no software person is hired for	ERP software not for engineers
+recall	r:37591:cloudflare	Cloudflare	labeller error	Not a technology at all: a company (as an employer...)	company named as employer
+recall	r:96278:tsn	TSN	rule miss	An ambiguous abbreviation	disambiguated standard abbreviation
+recall	r:96278:time sensitive	Time-Sensitive	labeller error	so is part of a longer name written around it	piece of longer standard name
+recall	r:96278:time sensitive networking	Time-Sensitive Networking	rule miss	So is a protocol, file format or standard that software implements	full name of listed protocol
+recall	r:105014:c	C	rule miss	A single letter, except C and R	excepted single letter language
+recall	r:3830:spark	Spark	rule miss	A bare form	bare form of a key
+recall	r:39102:leverages sfmc	Leverages SFMC	labeller error	A name with an ordinary word before or after it	ordinary word before name
+recall	r:39102:sfmc personalization	SFMC Personalization	rule miss	a named feature or service of a skill that ads ask for by its own name	named feature of a skill
+recall	r:100112:pega	Pega	rule miss	Keep a name when it names one specific technology	platform named directly as itself
+recall	r:106364:openidconnect	OpenIDConnect	rule miss	A name that names an existing skill by another spelling	spelling variant of protocol name
+recall	r:9200:spi	SPI	rule miss	An ambiguous abbreviation	disambiguated standard abbreviation
+recall	r:50801:python scipy	Python SciPy	labeller error	A name with an ordinary word before or after it	ordinary word before name
+recall	r:50801:r	R	rule miss	A single letter, except C and R	excepted single letter language
+recall	r:130108:cursor ai	Cursor AI	labeller error	A name with an ordinary word before or after it	ordinary qualifier attached to name
+recall	r:37565:workers ai	Workers AI	rule miss	it is the technology's whole name and nothing more	qualifier is part of product's own name
+recall	r:5900:aws athena	AWS Athena	rule miss	a database, a cloud or one of its services	named cloud service
+recall	r:53721:wlm	WLM	rule miss	a named feature or service of a skill that ads ask for by its own name	named feature of a platform
+recall	r:53721:z os	z/OS	rule miss	Category: os — operating systems	named operating system
+recall	r:62697:gcp organization policy	GCP Organization Policy	rule miss	it is the technology's whole name and nothing more	qualifier is part of product's own name
+recall	r:62697:organization policy	Organization Policy	labeller error	so is part of a longer name written around it	piece of a longer name
+recall	r:198405:launchdarkly	LaunchDarkly	labeller error	Not a technology at all: a company (as an employer…)	company named as itself
+recall	r:202490:swift	Swift	rule miss	a language, a framework or library	named programming language
+recall	r:143431:eds	EDS	labeller error	A technology no software person is hired for	lab instrument not software
+recall	r:143431:fib	FIB	labeller error	A technology no software person is hired for	lab instrument not software
+recall	r:30491:cortex	Cortex	rule miss	a named feature or service of a skill that ads ask for by its own name	named feature of a platform
+recall	r:117279:the planetscale	The PlanetScale	labeller error	A name with an ordinary word before or after it	ordinary qualifier attached to name
+recall	r:78651:use sql	Use SQL	labeller error	A name with an ordinary word before or after it	ordinary qualifier attached to name
+recall	r:171287:rs 422	RS-422	rule miss	a protocol, file format or standard that software implements	named hardware protocol standard
+recall	r:171287:rs 485	RS-485	rule miss	a protocol, file format or standard that software implements	named hardware protocol standard
+recall	r:187327:helm charts	Helm Charts	labeller error	A name with an ordinary word before or after it	ordinary qualifier attached to name
+recall	r:2268:solid	Solid	labeller error	An ordinary word… used in its ordinary sense	ordinary word in ordinary sense
+recall	r:17040:tpus	TPUs	rule miss	a tool or a platform	named ML hardware platform
+recall	r:107542:hplc	HPLC	labeller error	A technology no software person is hired for	lab instrument not software
+recall	r:107542:lcms	LCMS	labeller error	A technology no software person is hired for	lab instrument not software
+recall	r:64514:icd9 10	ICD9/10	labeller error	Not a technology at all: ... a heading or field of study	medical classification system
+recall	r:64514:umls	UMLS	labeller error	Not a technology at all: ... a heading or field of study	medical classification system
+recall	r:64715:r	R	rule miss	A single letter, except C and R	R listed among languages
+recall	r:179031:spring	Spring	labeller error	When in doubt between keep and drop, drop	bare form no context
+recall	r:144658:baw	BAW	labeller error	A technology no software person is hired for	hardware filter not software
+recall	r:210272:r	R	rule miss	A single letter, except C and R	R listed among languages
+recall	r:210272:using python	Using Python	labeller error	A name with an ordinary word before or after it	ordinary word before name
+recall	r:31056:acpi	ACPI	rule miss	a protocol, file format or standard that software implements	standard implemented by software
+recall	r:138998:c c	C/C++	labeller error	the technology's whole name and nothing more	two languages joined slash
+recall	r:211113:telnyx	Telnyx	rule miss	A platform data, ML or AI teams build on is a platform like any other	company name is platform
+recall	r:211113:telnyx apis	Telnyx APIs	labeller error	A name with an ordinary word before or after it	vendor name plus generic word
+recall	r:42614:spring	Spring	rule miss	A bare form ... is a keep where the text uses it for the product	bare form with tech context
+recall	r:157509:outsystems	Outsystems	rule miss	though the name inside it is a keep	tech name before certification word
+recall	r:135792:c c	C/C++	labeller error	the technology's whole name and nothing more	two languages joined slash
+recall	r:66053:argo	Argo	rule miss	A bare form ... is a keep where the text uses it for the product	tool name in stack list
+recall	r:66053:spark	Spark	rule miss	A bare form ... is a keep where the text uses it for the product	tool name in stack list

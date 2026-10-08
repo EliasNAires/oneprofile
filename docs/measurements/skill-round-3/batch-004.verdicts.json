@@ -1,0 +1,22 @@
+{
+  "p:safe scrum": {"verdict": "b", "clause": "A generic concept or a practice, not a named technology", "pattern": "agile methodology practice"},
+  "p:icl": {"verdict": "a", "clause": "An ambiguous abbreviation: one that names several things, none dominant", "pattern": "ambiguous abbreviation multiple meanings"},
+  "p:csc": {"verdict": "a", "clause": "A compliance framework, regulation or certification", "pattern": "certification abbreviation"},
+  "p:vorteil": {"verdict": "b", "clause": "An ordinary word, in English or Spanish, used in its ordinary sense", "pattern": "foreign ordinary word"},
+  "p:eme": {"verdict": "a", "clause": "A name is judged ... a keep when they use it for the technology", "pattern": "standard dominant despite homonym"},
+  "p:golden gate": {"verdict": "b", "clause": "Not a technology at all: ... a place", "pattern": "place name or unclear codename"},
+  "p:salesops": {"verdict": "a", "clause": "Not a technology at all: ... a heading or field of study", "pattern": "business function not technology"},
+  "p:cloud sme": {"verdict": "a", "clause": "Not a technology at all: ... a heading or field of study", "pattern": "job role or title"},
+  "p:sdlc ownership": {"verdict": "a", "clause": "Not a technology at all: ... a name glued to an ordinary word", "pattern": "concept glued to ordinary word"},
+  "p:vldb": {"verdict": "b", "clause": "A generic concept or a practice, not a named technology", "pattern": "generic concept acronym"},
+  "p:ml integrated": {"verdict": "b", "clause": "Not a technology at all: ... a name glued to an ordinary word", "pattern": "concept glued to ordinary word"},
+  "p:anna": {"verdict": "b", "clause": "Not a technology at all: ... a person", "pattern": "person's name"},
+  "p:arista networks": {"verdict": "a", "clause": "A vendor's name is a drop even where ads use it for its products", "pattern": "vendor name for products"},
+  "p:latte": {"verdict": "a", "clause": "An ordinary word, in English or Spanish, used in its ordinary sense", "pattern": "ordinary word in ordinary sense"},
+  "p:pydata": {"verdict": "b", "clause": "Not a technology at all: ... a vendor umbrella", "pattern": "conference or community name"},
+  "p:nutzen": {"verdict": "a", "clause": "An ordinary word, in English or Spanish, used in its ordinary sense", "pattern": "foreign ordinary word"},
+  "p:aon": {"verdict": "a", "clause": "Not a technology at all: a company (as an employer, customer, partner or vendor)", "pattern": "company named as employer"},
+  "p:gdsa": {"verdict": "a", "clause": "A compliance framework, regulation or certification", "pattern": "certification abbreviation"},
+  "p:kenntnisse": {"verdict": "a", "clause": "An ordinary word, in English or Spanish, used in its ordinary sense", "pattern": "foreign ordinary word"},
+  "p:ham": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology", "pattern": "generic concept acronym"}
+}

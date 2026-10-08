@@ -1,0 +1,122 @@
+[
+ {
+  "id": "r:130108:cursor ai",
+  "text": "Name: Cursor AI\nSegment: Active, daily practitioner of AI code generation tools (GitHub Copilot, Cursor AI, Claude Code) — able to define team-wide workflows around them",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:37565:workers ai",
+  "text": "Name: Workers AI\nSegment: Almost all products in Cloudflare’s portfolio are or will be powered by Argo technology, including CDN, Spectrum, Magic Transit, Stream, Workers, Workers AI, R2, WARP, and more. As a member of the Argo team, you’ll be a key technical contributor to the cutting edge network software infrastructure used by those products.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:5900:aws athena",
+  "text": "Name: AWS Athena\nSegment: Hands-on experience with SIEM or log analytics platforms and data lake technologies (OpenSearch, Elasticsearch, Clickhouse, Sentinel, Splunk, Datadog, AWS Athena, Azure synapse, Databricks or equivalent) and alerting/monitoring tooling.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:53721:wlm",
+  "text": "Name: WLM\nSegment: System Performance – responsible for measuring system capacity demand, managing WLM settings, providing source data for SCRT reports, maintaining the z/OS Performance Alert Monitor, analyzing system resource consumption on demand, performing DB2 buffer pool analysis regularly, and supporting the IPM process.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:53721:z os",
+  "text": "Name: z/OS\nSegment: System Performance – responsible for measuring system capacity demand, managing WLM settings, providing source data for SCRT reports, maintaining the z/OS Performance Alert Monitor, analyzing system resource consumption on demand, performing DB2 buffer pool analysis regularly, and supporting the IPM process.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:62697:gcp organization policy",
+  "text": "Name: GCP Organization Policy\nSegment: Hands-on experience implementing preventative guardrails in at least one hyperscaler (GCP Organization Policy, AWS SCPs or Config, Azure Policy). You should be able to walk us through a policy you rolled out, what it broke, and how you handled the fallout.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:62697:organization policy",
+  "text": "Name: Organization Policy\nSegment: Hands-on experience implementing preventative guardrails in at least one hyperscaler (GCP Organization Policy, AWS SCPs or Config, Azure Policy). You should be able to walk us through a policy you rolled out, what it broke, and how you handled the fallout.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:198405:launchdarkly",
+  "text": "Name: LaunchDarkly\nSegment: LaunchDarkly helps engineering organizations ship software and AI with speed, safety, and control.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:202490:swift",
+  "text": "Name: Swift\nSegment: Solid software engineering fundamentals with hands-on experience building, shipping, or maintaining production native mobile applications (iOS with Swift/Objective-C or Android with Kotlin/Java).",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:143431:eds",
+  "text": "Name: EDS\nSegment: Perform advanced physical failure analysis using SEM, FIB, EDS, SAM, cross-sectioning, and related techniques to identify failure mechanisms in silicon, packaging, and interconnects",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:143431:fib",
+  "text": "Name: FIB\nSegment: Perform advanced physical failure analysis using SEM, FIB, EDS, SAM, cross-sectioning, and related techniques to identify failure mechanisms in silicon, packaging, and interconnects",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:30491:cortex",
+  "text": "Name: Cortex\nSegment: The BT team partners with the AI & Data Technology teams to optimize solutions & deployment processes on platforms including Snowflake (Cortex, Streamlit), N8N, Airtable, Salesforce, DataHub, Claude/CoWork, and Stonly.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:117279:the planetscale",
+  "text": "Name: The PlanetScale\nSegment: The PlanetScale platform delivers a fully managed, multi-cloud Postgres service designed for the most demanding production workloads.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:78651:use sql",
+  "text": "Name: Use SQL\nSegment: Use SQL and other tools to collect, process, and analyze large datasets from claims, EHR, HIE, and other programmatic and operational sources",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:171287:rs 422",
+  "text": "Name: RS-422\nSegment: Working knowledge and hands-on experience with serial communication protocols, including RS-422, RS-485, and CAN, for integration and troubleshooting of test systems.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:171287:rs 485",
+  "text": "Name: RS-485\nSegment: Working knowledge and hands-on experience with serial communication protocols, including RS-422, RS-485, and CAN, for integration and troubleshooting of test systems.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:187327:helm charts",
+  "text": "Name: Helm Charts\nSegment: You're comfortable in the DevOps warzone: CI/CD, Linux, GitHub, Helm Charts, Terraform, Open source and all the good stuff.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:2268:solid",
+  "text": "Name: Solid\nSegment: Solid Python and/or TypeScript/React fundamentals — you write clean code and can reason about what a framework is doing underneath it",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:17040:tpus",
+  "text": "Name: TPUs\nSegment: The ideal candidate has a deep understanding of modern deep learning systems, combined with strong engineering expertise across JAX and TPUs, layer-level optimization, large-scale distributed training, streaming, low-latency and asynchronous inference, inference compilers, and advanced parallelization techniques.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:107542:hplc",
+  "text": "Name: HPLC\nSegment: Experience analyzing and purifying DNA-conjugates using common analytical tools (LCMS/HPLC).",
+  "a": "keep",
+  "b": "drop"
+ }
+]

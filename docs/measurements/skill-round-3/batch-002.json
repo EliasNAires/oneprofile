@@ -1,0 +1,122 @@
+[
+ {
+  "id": "p:sipr",
+  "text": "Name: SIPR\nSegments:\n- Experience working in high-security DoD environments (e.g., SIPR, JWICS)\n- Experience working in high-security DoD environments (e.g., SIPR, JWICS).\n- Provide Tier I–II technical support for SIPR, NIPR, and CENTRIX environments.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:br",
+  "text": "Name: BR\nSegments:\n- You have solid, hands-on knowledge of Brazilian GAAP (BR GAAP) and IFRS fundamentals, with direct experience in month-end close and Balance Sheet reconciliations;\n- All communication will be conducted via email, so please stay tuned for our messages and release the domain @quintoandar.com.br to ensure our emails are not sent to spam.\n- By joining the Payments BR tribe, you’ll help shape solutions that directly solve merchants’ everyday challenges and redefine how financial products empower entrepreneurship in Brazil.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:fierce healthcare",
+  "text": "Name: Fierce Healthcare\nSegments:\n- Learn more about our Series C: Nourish Blog, Bloomberg, Fierce Healthcare, Digital Native, The Pulse Podcast.\n- Our awards include: 2023 and 2024 BuiltIn Best Place to Work; Top 5 LinkedIn Startup; TripleTree iAward; multiple KLAS Research Points of Light awards, along with recognition on Fierce Healthcare's Fierce 15 and CB Insights' Digital Health 150 lists.\n- The company's award-winning solutions were recognized again in 2024 by KLAS Research, Fierce Healthcare, and AVIA Marketplace.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:inductive",
+  "text": "Name: Inductive\nSegments:\n- Experience selecting and integrating sensors and actuators (encoders, force/torque, vision, capacitive/inductive, pneumatics, motors, bearings) with clear understanding of physics and failure modes.\n- We believe a graph-based approach that analyzes relationships across data on a topological level provides the correct inductive bias for long-context multimodal reasoning.\n- HMI and SCADA Software (e.g., FactoryTalk View, Ignition by Inductive Automation, Wonderware, GE iFIX)",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:suitefoundation",
+  "text": "Name: SuiteFoundation\nSegments:\n- NetSuite SuiteFoundation, Administrator, Application Developer, or Web Services certification preferred but not required\n- NetSuite Administrator and/or ERP Consultant certification required; SuiteFoundation or SuiteCloud Developer certification strongly preferred.\n- NetSuite Administrator certification (SuiteFoundation or Administrator).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:cp",
+  "text": "Name: Cp\nSegments:\n- Establish process capability studies (Cp, Cpk) and drive continuous improvement\n- Collaborate with Manufacturing Engineering to establish SPC methods, capability studies (Cp, Cpk), yield targets, and build monitoring frameworks that support production stability and COGS objectives.\n- Discipline depth in civil/structural, mechanical, electrical, or NDE with the associated code sets (ACI/AISC, ASME Section III/V/IX, IEEE/ISA, SNT-TC-1A / CP-189).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:guru",
+  "text": "Name: Guru\nSegments:\n- Distributed Systems Guru: Proven ability to build systems that handle consensus, replication, and partitioning at cloud scale.\n- Help oversee the configuration, maintenance, performance, and optimization of the general CS tech stack (e.g. WFM & QA tooling, apps, company tools Notion, Guru, Slack, Okta etc.)\n- As the Procurement Lead, you'll be the APAC Procurement guru for SAP S/4HANA and SAP Ariba transformation projects.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:authenticator",
+  "text": "Name: Authenticator\nSegments:\n- Microsoft 365 & End-User Technologies: Exchange, SharePoint, Teams, OneDrive, Office, Copilot, Windows OS, Defender, MFA, Authenticator\n- Manage user MFA setup and issues with Microsoft Authenticator.\n- Mobile Device: A smartphone capable of installing the Microsoft Authenticator app.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:icam",
+  "text": "Name: ICAM\nSegments:\n- Hands-on expertise in ICAM, micro-segmentation, cloud security, and policy enforcement.\n- Ensure compliance with DISA STIGs, DoD ICAM Reference Design, and DoDI 8520.03.\n- North Point Technology is looking to hire an ICAM Architect to support a significant modernization effort transitioning legacy Identity, Credentialing, and Access Management (ICAM) capabilities to modern on-premises and cloud-ready technologies, improved architectural patterns, and automated deployment pipelines.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:rhcsa",
+  "text": "Name: RHCSA\nSegments:\n- Professional certifications such as Red Hat Certified System Administrator (RHCSA) or CompTIA Linux+, and Security+.\n- RHCSA/LPIC 1/2, CKA, or Docker Certified Associate certification.\n- Relevant certifications such as CompTIA Security+, RHCSA, VCP, or equivalent",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:nr",
+  "text": "Name: NR\nSegments:\n- Document the planned F-35 external IO design in the Department of Defense Communications Information Officer (DoD CIO)-mandated architectural views and the associated F-35 military standards compliance to support Joint Staff’s Joint Net Ready Key Performance Parameter (NR KPP) certification as well as Joint IO certification by the Joint IO Test Command (JITC)\n- LTE and 5G NR protocol stacks, including RRC, MAC, RLC, and PDCP layer behavior and configuration.\n- Experience with core Audio DSP algorithms and their implementations, including AEC, Beamforming, NR, AGC, VAD, DoA estimation etc.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:ringcentral",
+  "text": "Name: RingCentral\nSegments:\n- Experience in Axon applications (Salesforce, MS Dynamics, JIRA, and RingCentral)\n- Manage vendor portfolio relationships with companies like Zoom, Slack and Ringcentral\n- In this role, you will serve as the technical bridge connecting cloud telephony platforms (RingCentral), conversational AI engines (Amelia, SoundHound), and core clinical infrastructure (Epic EHR).",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:rt",
+  "text": "Name: RT\nSegments:\n- Architect and develop deterministic, safety-critical control software on real-time Linux (e.g., PREEMPT_RT) and embedded microcontroller/DSP targets, including scheduling, timing, and fault-tolerant control logic.\n- Implement and maintain real-time systems using RTOS (e.g., FreeRTOS, RT Linux, VxWorks).\n- Real-time tuning — PREEMPT_RT, latency analysis",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:ci cd",
+  "text": "Name: CI-CD\nSegments:\n- Familiarity with DevOps/CI-CD practices applied to PLM deployments, containerization, microservices.\n- Familiarity with GitHub workflows and DevOps/CI-CD pipelines to align with software development cycles.\n- Experience building and maintaining distributed systems, web frameworks, or CI CD pipelines.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:ssg",
+  "text": "Name: SSG\nSegments:\n- Frontend: Hands-on proficiency with React and its ecosystem — Next.js (SSR/SSG), TypeScript, state management (Redux, Zustand, or similar), component libraries, and build tooling (Webpack/Vite)\n- Build performant, accessible React/Next.js + TypeScript UIs; apply SSR/SSG pragmatically, instrument analytics, and support experimentation/A‑B testing.\n- Proficiency with Next.js and modern React patterns: Hooks, Context API, Custom Hooks architecture, SSR/SSG, and the App Router.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:cato",
+  "text": "Name: cATO\nSegments:\n- Familiarity with Linux, VMware, AWS, or enterprise networking/security (Palo Alto, Cato Networks).\n- Dark Wolf is seeking a Senior Cybersecurity Engineer to join a collaborative team to develop, manage, and maintain the security posture of cloud-based information systems with a focus on SIEM validation, continuous exposure management, and continuous Authorization to Operate (cATO) support.\n- Automated Security Integration & Continuous ATO: Spearhead the seamless integration of dynamic security tools and automated governance into pipelines—including SAST, DAST, dependency scanning, and container analysis—to support Continuous Authority to Operate (cATO).",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:mtu",
+  "text": "Name: MTU\nSegments:\n- Strong knowledge of Linux networking, TCP/IP, DNS, HTTP, routing, MTU, congestion control, packet loss, latency, and performance tuning.\n- Demonstrate strong expertise across core network technologies, including the OSI model; fibre, CWDM and DWDM transmission services; Ethernet and layer 2 switching, including VLANs, STP, MTU and layer 2 security; IPv4 and IPv6; VRF; GRE; routing protocols such as HSRP, VRRP, OSPF, EIGRP and BGP; route-based IPsec VPNs; multicast; QoS; MPLS and EoMPLS; network security and 802.1x; DNS; DHCP; and RADIUS.\n- Guide the customer's infrastructure and platform teams through the layers underneath Portworx: LUN presentation and masking, multipath behavior, LVM layout, HBA and NIC choices, MTU and bonding, VLAN and routing boundaries, hypervisor datastore and passthrough decisions. Their engineers execute; you make sure the design is sound and the tradeoffs are understood",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:wix",
+  "text": "Name: Wix\nSegments:\n- StarTree Cloud delivers the same as a fully managed platform — so teams like Razorpay, Blinkit, Stripe, Wix, Rippling, together.ai, and Dialpad get real-time analytics at scale without managing the infrastructure.\n- Design integration solutions across our API, SDKs, and platform plugins (Shopify, BigCommerce, Magento, WooCommerce, Wix, and custom builds)\n- Own Windows installer engineering: MSI/EXE packages built with the WiX Toolset, silent install and uninstall flows (/quiet, /norestart), upgrade paths, and code signing that keeps us clear of SmartScreen and Defender blocks.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:splash",
+  "text": "Name: Splash\nSegments:\n- If you’re looking for an opportunity to make a splash, have a foundational say in a new, exciting and growing platform, and steer the direction on the frontier of data platforms, this team might be a good fit for you.\n- Experience with event technology platforms (e.g., Splash, Cvent)\n- Secondary administration: support the primary admins in managing the connective tissue of our stack, including but not limited to Reachdesk, Qualified, Demandbase, Pathfactory, and Splash.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:snowpro core",
+  "text": "Name: SnowPro Core\nSegments:\n- Snowflake certification, including SnowPro Core, SnowPro Advanced Architect, or SnowPro Advanced Data Engineer, is strongly preferred.\n- SnowPro Core certified; SnowPro Advanced: Architect preferred\n- SnowPro Core or Administrator certification",
+  "a": "keep",
+  "b": "drop"
+ }
+]

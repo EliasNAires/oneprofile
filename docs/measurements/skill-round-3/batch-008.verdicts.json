@@ -1,0 +1,19 @@
+{
+ "r:107542:lcms": {"verdict": "a", "clause": "A technology no software person is hired for", "pattern": "lab instrument not software"},
+ "r:64514:icd9 10": {"verdict": "b", "clause": "Not a technology at all: ... a heading or field of study", "pattern": "medical classification system"},
+ "r:64514:umls": {"verdict": "b", "clause": "Not a technology at all: ... a heading or field of study", "pattern": "medical classification system"},
+ "r:64715:r": {"verdict": "b", "clause": "A single letter, except C and R", "pattern": "R listed among languages"},
+ "r:179031:spring": {"verdict": "a", "clause": "When in doubt between keep and drop, drop", "pattern": "bare form no context"},
+ "r:144658:baw": {"verdict": "b", "clause": "A technology no software person is hired for", "pattern": "hardware filter not software"},
+ "r:210272:r": {"verdict": "b", "clause": "A single letter, except C and R", "pattern": "R listed among languages"},
+ "r:210272:using python": {"verdict": "b", "clause": "A name with an ordinary word before or after it", "pattern": "ordinary word before name"},
+ "r:31056:acpi": {"verdict": "a", "clause": "a protocol, file format or standard that software implements", "pattern": "standard implemented by software"},
+ "r:138998:c c": {"verdict": "a", "clause": "the technology's whole name and nothing more", "pattern": "two languages joined slash"},
+ "r:211113:telnyx": {"verdict": "a", "clause": "A platform data, ML or AI teams build on is a platform like any other", "pattern": "company name is platform"},
+ "r:211113:telnyx apis": {"verdict": "a", "clause": "A name with an ordinary word before or after it", "pattern": "vendor name plus generic word"},
+ "r:42614:spring": {"verdict": "b", "clause": "A bare form ... is a keep where the text uses it for the product", "pattern": "bare form with tech context"},
+ "r:157509:outsystems": {"verdict": "a", "clause": "though the name inside it is a keep", "pattern": "tech name before certification word"},
+ "r:135792:c c": {"verdict": "b", "clause": "the technology's whole name and nothing more", "pattern": "two languages joined slash"},
+ "r:66053:argo": {"verdict": "a", "clause": "A bare form ... is a keep where the text uses it for the product", "pattern": "tool name in stack list"},
+ "r:66053:spark": {"verdict": "a", "clause": "A bare form ... is a keep where the text uses it for the product", "pattern": "tool name in stack list"}
+}

@@ -1,0 +1,22 @@
+{
+  "p:rest": {"verdict": "a", "clause": "A practice, method, technique, architecture or kind of system is no skill, however technical: ... REST", "pattern": "generic practice listed explicitly"},
+  "p:meta": {"verdict": "a", "clause": "Not a technology at all: a company (as an employer, customer, partner or vendor)", "pattern": "company named as employer"},
+  "p:a+": {"verdict": "b", "clause": "A compliance framework, regulation or certification", "pattern": "certification like Security+"},
+  "p:oltp": {"verdict": "b", "clause": "A practice, method, technique, architecture or kind of system is no skill, however technical", "pattern": "generic kind of system"},
+  "p:secops": {"verdict": "a", "clause": "so is part of a longer name written around it (Security Command, written in Security Command Center)", "pattern": "generic practice or part of vendor name"},
+  "p:rpc": {"verdict": "a", "clause": "A practice, method, technique, architecture or kind of system is no skill, however technical", "pattern": "generic protocol paradigm"},
+  "p:oracle fusion": {"verdict": "b", "clause": "A technology no software person is hired for", "pattern": "ERP platform not for engineers"},
+  "p:mm": {"verdict": "b", "clause": "An ambiguous abbreviation: one that names several things, none dominant where it is written", "pattern": "ambiguous abbreviation multiple meanings"},
+  "p:intercom": {"verdict": "a", "clause": "Not a technology at all: a company (as an employer, customer, partner or vendor)", "pattern": "company name or ordinary word"},
+  "p:reuters": {"verdict": "a", "clause": "Not a technology at all: a company (as an employer, customer, partner or vendor)", "pattern": "company named as employer"},
+  "p:fw": {"verdict": "b", "clause": "A generic concept or a practice, not a named technology", "pattern": "generic concept abbreviation"},
+  "p:jncip": {"verdict": "b", "clause": "A compliance framework, regulation or certification", "pattern": "certification like CISSP"},
+  "p:raspberry": {"verdict": "b", "clause": "a piece of a longer name that ads never use alone for the product", "pattern": "piece of longer name never alone"},
+  "p:ni": {"verdict": "a", "clause": "A vendor's name is a drop even where ads use it for its products: Palo Alto for its firewalls, Juniper for its routers", "pattern": "ambiguous abbreviation vendor name"},
+  "p:dynamo": {"verdict": "b", "clause": "A bare form ... is that product. It is a keep where the text uses it for the product", "pattern": "bare form of multiple real products"},
+  "p:misra": {"verdict": "a", "clause": "A compliance framework, regulation or certification", "pattern": "coding safety standard"},
+  "p:warp": {"verdict": "a", "clause": "A context key is an ordinary word ... The same word used for a product is a bare form, and kept", "pattern": "ordinary term also product bare form"},
+  "p:citadel": {"verdict": "a", "clause": "Not a technology at all: a company (as an employer, customer, partner or vendor)", "pattern": "company named as employer"},
+  "p:jit": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology", "pattern": "generic security access practice"},
+  "p:linux cli": {"verdict": "a", "clause": "A name with an ordinary word before or after it ... is a drop, though the name inside it is a keep", "pattern": "ordinary word attached to product name"}
+}

@@ -1,0 +1,22 @@
+{
+  "p:uiard": {"verdict": "b", "clause": "A compliance framework, regulation or certification", "pattern": "certification name or abbreviation"},
+  "p:cer": {"verdict": "b", "clause": "An ambiguous abbreviation", "pattern": "abbreviation with several meanings"},
+  "p:bsl2": {"verdict": "b", "clause": "A generic concept", "pattern": "lab safety classification, not tech"},
+  "p:pai": {"verdict": "a", "clause": "An ambiguous abbreviation", "pattern": "abbreviation with several meanings"},
+  "p:ts sci": {"verdict": "a", "clause": "Not a technology at all", "pattern": "security clearance designation"},
+  "p:gdm": {"verdict": "b", "clause": "An ambiguous abbreviation", "pattern": "abbreviation with several meanings"},
+  "p:pubsec": {"verdict": "b", "clause": "A generic concept", "pattern": "industry vertical, not tech"},
+  "p:ehr integrated": {"verdict": "b", "clause": "A name is judged where it is written, and exactly as given", "pattern": "extra word attached to tech name"},
+  "p:powermax": {"verdict": "b", "clause": "Keep a name when it names one specific technology", "pattern": "vendor's specific product name"},
+  "p:ccfa": {"verdict": "b", "clause": "A compliance framework, regulation or certification", "pattern": "certification name or abbreviation"},
+  "p:azure security specialty": {"verdict": "b", "clause": "A compliance framework, regulation or certification", "pattern": "certification name or abbreviation"},
+  "p:airflow dag": {"verdict": "b", "clause": "A name is judged where it is written, and exactly as given", "pattern": "extra word attached to tech name"},
+  "p:python nlp": {"verdict": "b", "clause": "A name is judged where it is written, and exactly as given", "pattern": "extra word attached to tech name"},
+  "p:sbu": {"verdict": "a", "clause": "Not a technology at all", "pattern": "org/classification term, never tech"},
+  "p:ewa": {"verdict": "b", "clause": "Not a technology at all", "pattern": "company's own in-house product"},
+  "p:webui": {"verdict": "b", "clause": "A name is judged where it is written, and exactly as given", "pattern": "generic term and partial product name"},
+  "r:193135:bloomreach": {"verdict": "a", "clause": "Keep a name when it names one specific technology", "pattern": "platform named as product"},
+  "r:193135:data 360": {"verdict": "a", "clause": "Not a technology at all", "pattern": "vendor umbrella product suite"},
+  "r:213096:spark": {"verdict": "b", "clause": "A bare form", "pattern": "bare form used for product"},
+  "r:1801:r": {"verdict": "b", "clause": "A single letter, except C and R", "pattern": "bare single letter R"}
+}
