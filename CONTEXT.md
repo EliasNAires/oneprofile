@@ -381,27 +381,7 @@ _Avoid_: history, blacklist, verdict cache, review log
 The words that skill discovery's recall check never asks Jev about again, because Jev has dropped
 each of them in several different segments and kept it in none. Built from Jev's verdicts, never
 from a dictionary.
-_Avoid_: dictionary, common words
-
-**Piece**:
-A name-like piece of a segment that recall would ask Jev about: a word written capitalized or
-with a digit or symbol, a lowercase word outside the known vocabulary, or a run of up to three
-such words (ADR-0015).
-_Avoid_: candidate, token, n-gram
-
-**Stoplist**:
-The single words recall never asks Jev about, built once and mechanically from how often each is
-a piece: the closed-class words of English and Spanish, and the frequent words that are rarely
-capitalized mid-sentence and that Jev says could name no technology. Never depends on the
-criterion. Replaces the ordinary list (#60).
-_Avoid_: ordinary list, stopwords, dictionary
-
-**Guard Set**:
-The single words that are known skills: the single-word keys, the bare forms reopened by ADR-0015,
-and the names Jev kept in context or the decision record keeps. The test of the stoplist's
-mechanism, never an input to it: a cutoff or bar that would stoplist one of its words is too loose
-(#60).
-_Avoid_: whitelist, protected words
+_Avoid_: stopwords, dictionary, common words
 
 ### Rule Loops
 

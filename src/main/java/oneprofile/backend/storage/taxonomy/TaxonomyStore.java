@@ -2,7 +2,6 @@ package oneprofile.backend.storage.taxonomy;
 
 import java.io.BufferedReader;
 import java.io.Reader;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -29,11 +28,8 @@ public class TaxonomyStore {
 
 	private final Map<String, Skill> byKey;
 
-	private final List<String> keys;
-
-	private TaxonomyStore(Map<String, Skill> byKey, List<String> keys) {
+	private TaxonomyStore(Map<String, Skill> byKey) {
 		this.byKey = byKey;
-		this.keys = keys;
 	}
 
 	/**
@@ -45,17 +41,14 @@ public class TaxonomyStore {
 	public static TaxonomyStore read(Reader tsv) {
 		Set<String> ids = new HashSet<>();
 		Map<String, Skill> byKey = new HashMap<>();
-		List<String> keys = new ArrayList<>();
 		new BufferedReader(tsv).lines().map(TaxonomyStore::parse).forEach((skill) -> {
 			if (!ids.add(skill.id())) {
 				throw new IllegalStateException("Two skills have the id '" + skill.id() + "'");
 			}
 			index(byKey, skill.canonicalName(), skill);
 			skill.aliases().forEach((alias) -> index(byKey, alias, skill));
-			keys.add(skill.canonicalName());
-			keys.addAll(skill.aliases());
 		});
-		return new TaxonomyStore(byKey, List.copyOf(keys));
+		return new TaxonomyStore(byKey);
 	}
 
 	/**
@@ -65,14 +58,6 @@ public class TaxonomyStore {
 	 */
 	public Optional<Skill> resolve(String name) {
 		return Optional.ofNullable(this.byKey.get(key(name)));
-	}
-
-	/**
-	 * Every key of every skill, its canonical name and its aliases, plain and context alike.
-	 * @return the keys as the file writes them
-	 */
-	public List<String> keys() {
-		return this.keys;
 	}
 
 	private static Skill parse(String line) {

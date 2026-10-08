@@ -58,10 +58,4 @@ class TaxonomyStoreTest {
 		assertThat(taxonomy.resolve("k8s")).map(Skill::id).hasValue("kubernetes");
 	}
 
-	@Test
-	void listsEveryKeyAsItIsWritten() {
-		assertThat(this.taxonomy.keys()).containsExactlyInAnyOrder("PostgreSQL", "postgres", "psql", "C#", "csharp",
-				"c sharp", "Terraform");
-	}
-
 }

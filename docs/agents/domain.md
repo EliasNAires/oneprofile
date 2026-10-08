@@ -55,5 +55,4 @@ the later ADR wins; the overridden parts are marked below.
 - **0015**: recall is scored one name at a time: code proposes and filters a segment's name-like
   pieces, Jev judges each left in its segment with the precision question, and the ordinary list
   grows from its drops. Each key is plain or context, set by a rule Jev checks. Lands in #54's
-  first calibration, with a 300-segment gold set. *Overridden by #60:* the ordinary list, which
-  the stoplist (`stopwords.tsv`) replaces.
+  first calibration, with a 300-segment gold set.

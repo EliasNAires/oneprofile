@@ -280,47 +280,6 @@ class NormalizedVacancyStoreTest {
 	}
 
 	@Test
-	void readsTheSegmentsOfWhatTheTitleKeptInAndOfThePileWhateverTheBodyDecided() {
-		long first = heldTitles().get(0).id();
-		long second = heldTitles().get(1).id();
-		List<Segment> segments = List.of(new Segment(SegmentKindEnum.ITEM, null, "Build APIs in Go.", false));
-		this.normalized.recordCleanedVacancies(Map.of(first, new CleanedVacancy(new CleanedTitle("Backend Engineer",
-				Set.of()), segments), second, cleaned("Engineer", Set.of())));
-		this.normalized.recordClassifications(Map.of(first, Classification.in(), second,
-				Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY)));
-		this.normalized.recordBodyDecisions(Map.of(second, ClassificationStateEnum.OUT));
-
-		assertThat(this.normalized.inAndPileAfter(0, 10)).containsExactly(new SegmentedVacancy(first, segments),
-				new SegmentedVacancy(second, List.of()));
-		assertThat(this.normalized.inAndPileAfter(first, 10)).extracting(SegmentedVacancy::vacancyId)
-			.containsExactly(second);
-	}
-
-	@Test
-	void readsNoSegmentsOfWhatTheTitleKeptOutOrNoRuleReached() {
-		long first = heldTitles().get(0).id();
-		long second = heldTitles().get(1).id();
-		this.normalized.recordCleanedVacancies(Map.of(first, cleaned("Account Executive", Set.of()), second,
-				cleaned("Roboticist", Set.of())));
-		this.normalized.recordClassifications(
-				Map.of(first, Classification.out(), second, Classification.unknown(UnknownReasonEnum.UNRULED)));
-
-		assertThat(this.normalized.inAndPileAfter(0, 10)).isEmpty();
-	}
-
-	@Test
-	void readsTheSegmentsOfAVacancyOfThePileTheBodySkippedForItsLanguage() {
-		long vacancyId = heldTitles().getFirst().id();
-		this.normalized.recordCleanedVacancies(Map.of(vacancyId, cleaned("Engineer", Set.of())));
-		this.normalized.recordClassifications(
-				Map.of(vacancyId, Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY)));
-		this.normalized.recordUnsupportedLanguage(Set.of(vacancyId));
-
-		assertThat(this.normalized.inAndPileAfter(0, 10)).extracting(SegmentedVacancy::vacancyId)
-			.containsExactly(vacancyId);
-	}
-
-	@Test
 	void readsTheCleanedTitlesHeldAfterOneVacancyInIdOrder() {
 		long first = heldTitles().get(0).id();
 		long second = heldTitles().get(1).id();

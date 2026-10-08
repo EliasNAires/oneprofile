@@ -43,21 +43,6 @@ public interface NormalizedVacancyRepository extends ListCrudRepository<Normaliz
 	List<PileVacancy> pileAfter(Collection<UnknownReasonEnum> reasons, long after, Limit limit);
 
 	/**
-	 * The segments of what the title kept in and of the pile, held after one vacancy id, in id order:
-	 * the vacancies skill discovery reads, whatever language they are written in and whatever the body
-	 * has decided of those of the pile.
-	 * @param reasons the reasons a vacancy of the pile can hold
-	 * @param after the vacancy id to read past, 0 to start at the first
-	 * @param limit how many to read at most
-	 * @return their vacancy ids and segments
-	 */
-	@Query("select new oneprofile.backend.storage.normalizedvacancy.SegmentedVacancy(n.vacancyId, "
-			+ "n.descriptionSegments) from NormalizedVacancy n where n.vacancyId > :after and ("
-			+ "(n.classificationState = oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum.IN "
-			+ "and n.classificationReason is null) or n.classificationReason in :reasons) order by n.vacancyId")
-	List<SegmentedVacancy> inAndPileAfter(Collection<UnknownReasonEnum> reasons, long after, Limit limit);
-
-	/**
 	 * Puts every vacancy of the pile back to what its title left it: unknown, decided by the title.
 	 * @param reasons the title reasons that make the pile
 	 * @return how many vacancies the pile holds

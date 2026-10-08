@@ -26,7 +26,7 @@ SKILL_RECALL_LABELS = REPO / "docs" / "measurements" / "skill-recall-labels-jev.
 
 SKILL_KEY_LABELS = REPO / "docs" / "measurements" / "skill-key-labels-jev.jsonl"
 
-# Written by the stoplist run in Java (#60), which reads these same ledgers for the spend.
+# Written by the stoplist run of #60, since removed; kept so its spend still counts.
 STOPLIST_LABELS = REPO / "docs" / "measurements" / "stoplist-labels-jev.jsonl"
 
 LEDGERS = (BODY_LABELS, SKILL_LABELS, SKILL_RECALL_LABELS, SKILL_KEY_LABELS, STOPLIST_LABELS)
