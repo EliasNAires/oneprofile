@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Proposes the candidates of skill discovery (ADR-0013): the name-like phrases of the segments of IN
-and the pile that are neither a key of skills.tsv nor in the decision record.
+and the pile that are not a key of skills.tsv. A name in the decision record is proposed like any other
+(#62): precision grades the rules on every new name they propose, whatever an older criterion decided.
 
     scripts/skill_discovery.py <out.tsv>
 
@@ -12,7 +13,7 @@ are capitalized too, fail the second.
 Round 0 is #40's taxonomy_mine.py, reading the segments cleaning stored (#46) instead of whole
 descriptions, and their words as Segment.tokens() reads them. A segment's first word starts a
 sentence, and no phrase runs from one segment into the next. Spellings are grouped by name form,
-the decision record's, so a hyphen inside a word counts as a space (Spring-Boot is spring boot), and
+the decision record's and the keys', so a hyphen inside a word counts as a space (Spring-Boot is spring boot), and
 #40's check that a phrase keeps one key token a word is gone with the key it checked.
 
 Round 1 cuts what round 0's review found to be noise: a word hyphened or possessive to a name is
@@ -331,16 +332,20 @@ def corpus():
     return [(companies[vacancy_id], segments) for vacancy_id, segments in docs.items()]
 
 
+def covered():
+    """The name forms never proposed: the keys of skills.tsv."""
+    return set(skillloop.read_keys())
+
+
 def main():
     if len(sys.argv) != 2:
         sys.exit(__doc__.strip())
     keys = skillloop.read_keys()
     known = set(keys)
     anchors = {form for form, canonical in keys.items() if canonical not in NOT_ANCHORS}
-    covered = known | set(skillloop.read_decisions())
     docs = corpus()
     print(f"Mining the segments of {len(docs)} vacancies", file=sys.stderr)
-    mined = mine(docs, covered, known, anchors)
+    mined = mine(docs, covered(), known, anchors)
     write_candidates(sys.argv[1], mined, f"the segments of {len(docs)} vacancies of {skillloop.SEGMENTS.name}")
     print(f"Wrote {len(mined)} candidates to {sys.argv[1]}", file=sys.stderr)
 

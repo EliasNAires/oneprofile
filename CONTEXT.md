@@ -373,8 +373,10 @@ aside, every other character kept, so C, C++ and C# are three names.
 _Avoid_: normalized name, slug, key
 
 **Decision Record**:
-Every decision skill discovery has made, drops included, so no name is decided twice. It says
-what has been seen; the taxonomy says what the skills are, and every key counts as seen.
+Every decision skill discovery has made, drops included, each under the criterion revision it
+was made under. It says what has been seen; the taxonomy says what the skills are, and every key
+counts as seen. It takes no part in measuring discovery: a name it holds is still proposed, and
+judged again under the current revision.
 _Avoid_: history, blacklist, verdict cache, review log
 
 **Ordinary List**:

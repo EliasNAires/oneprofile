@@ -1,6 +1,6 @@
 # Recall is asked one name at a time, and a key is plain or context
 
-Status: accepted
+Status: accepted; the filter's use of the decision record overridden by #61, as marked below
 
 ADR-0013 scores skill discovery's recall by asking Jev, for each drawn segment, an open question:
 *does this segment name a skill that is not in this list?* Jev answers it badly, and criterion
@@ -24,7 +24,9 @@ For each drawn segment:
    under test, whose blind spots it would share.
 2. **Filter.** Code drops a piece that the rules found in the segment, a plain key, a name in the
    decision record, a number, a single letter other than C and R, or a word on the **ordinary
-   list**. A context key is never dropped here.
+   list**. A context key is never dropped here. *Overridden by #61:* a name in the decision record
+   is not dropped for it, since a decision made from a few segments cannot say the name is no
+   skill in this one.
 3. **Judge.** Jev answers keep or drop for each piece left, in its segment: the precision
    question, asked with the same call and input, so the two gates share their verdicts. A verdict
    is cached by name and segment.

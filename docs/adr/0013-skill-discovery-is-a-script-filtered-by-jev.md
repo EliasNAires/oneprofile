@@ -1,6 +1,7 @@
 # Skill discovery is a script whose candidates Jev filters, against a decision record
 
-Status: accepted; recall and key safety superseded by ADR-0015
+Status: accepted; recall and key safety superseded by ADR-0015, and the decision record's part in
+the measurements overridden by #62, as marked below
 
 The taxonomy was built in one-off steps (#37, #38, #40), and #40's pass cannot be repeated: its
 miner passed 8,290 names, about 70% noise, and two rounds of subagents reading them all used
@@ -12,7 +13,8 @@ be run again on each new snapshot (#41). This records its design, settled on 202
 1. A **script** reads a snapshot and proposes **candidates**: names that are neither a key of
    `skills.tsv` nor in the decision record. Each comes with its spellings grouped, its
    document frequency, a category suggested from the known skills it sits beside, and three
-   example segments.
+   example segments. *Overridden by #62:* a name in the decision record is proposed like any
+   other; the script skips only the keys of `skills.tsv`.
 2. **Jev** (ADR-0012) reads `docs/skill-criterion.md`, a candidate and its segments, and decides
    keep or drop; for a keep, it picks one of the criterion's twelve categories.
 3. A **Haiku** agent drafts the `skills.tsv` row of each kept name: its id, canonical name and
@@ -46,7 +48,8 @@ Scored each round by `scripts/score-skill-round` (#53), with Jev as the labeller
   requirement segments drawn from the IN vacancies and the pile in proportion to their size,
   boilerplate skipped.
 - **Precision at or above 50%**: the share of candidates kept, by the decision record where it
-  has the name and by Jev otherwise.
+  has the name and by Jev otherwise. *Overridden by #62:* Jev labels every drawn candidate under
+  the current revision, a name in the record too.
 - **Yield not below the best earlier round's**: the valid candidates a run proposes, estimated as
   its size times its precision. A round fails when the top of its yield's 95% interval is below the
   best earlier round's estimate, every round measured under the current criterion revision.

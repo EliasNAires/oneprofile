@@ -74,6 +74,12 @@ class MineTest(unittest.TestCase):
         found = mined(ads("We run Grafana and Docker."), covered=KNOWN | {"grafana"})
         self.assertNotIn("Grafana", found)
 
+    def test_proposes_a_name_the_decision_record_drops(self):
+        import skillloop
+        self.assertEqual(skillloop.read_decisions()["crystal"]["decision"], "drop")
+        found = mined(ads("We code in Crystal and Python."), covered=skill_discovery.covered())
+        self.assertIn("Crystal", found)
+
     def test_compares_with_what_is_covered_by_name_form(self):
         found = mined(ads("We run Spring-Boot and Docker.", "We run Spring Boot and Docker."), covered=KNOWN | {"spring boot"})
         self.assertNotIn("Spring Boot", found)

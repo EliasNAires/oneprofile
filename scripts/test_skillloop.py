@@ -1,8 +1,11 @@
-"""Tests of the pure parts of skillloop, the shared plumbing of skill discovery (ADR-0013).
+"""Tests of the pure parts of skillloop, the shared plumbing of skill discovery (ADR-0013), and of the
+scoring score-skill-round does with it.
 
     python3 -m unittest discover -s scripts
 """
 
+import importlib.machinery
+import importlib.util
 import sys
 import unittest
 from pathlib import Path
@@ -10,6 +13,14 @@ from pathlib import Path
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import skillloop  # noqa: E402
+
+
+def load_script(name):
+    """A script of this directory without a .py suffix, as a module."""
+    loader = importlib.machinery.SourceFileLoader(name.replace("-", "_"), str(Path(__file__).resolve().parent / name))
+    module = importlib.util.module_from_spec(importlib.util.spec_from_loader(loader.name, loader))
+    loader.exec_module(module)
+    return module
 
 
 class NameFormTest(unittest.TestCase):
@@ -192,17 +203,30 @@ class PiecesTest(unittest.TestCase):
 
 class FilterTest(unittest.TestCase):
 
-    FILTER = skillloop.Filter({"python"}, {"go"}, {"cloud": {}, "go": {}}, {"this"})
+    FILTER = skillloop.Filter({"python"}, {"go"}, {"this"})
 
-    def test_drops_plain_keys_decisions_numbers_single_letters_and_stoplisted_words(self):
-        pieces = [(text, 0, 0) for text in ["Python", "Cloud", "53", "X", "This", "R", "Kotlin"]]
+    def test_drops_plain_keys_numbers_single_letters_and_stoplisted_words(self):
+        pieces = [(text, 0, 0) for text in ["Python", "53", "X", "This", "R", "Kotlin"]]
         self.assertEqual(self.FILTER(pieces, []), {"r": "R", "kotlin": "Kotlin"})
+
+    def test_keeps_a_name_the_decision_record_drops(self):
+        self.assertEqual(skillloop.read_decisions()["crystal"]["decision"], "drop")
+        self.assertEqual(self.FILTER([("Crystal", 0, 7)], []), {"crystal": "Crystal"})
 
     def test_never_drops_a_context_key_by_name(self):
         self.assertEqual(self.FILTER([("Go", 0, 2)], []), {"go": "Go"})
 
     def test_drops_a_piece_inside_a_name_found(self):
         self.assertEqual(self.FILTER([("Google Cloud", 0, 12), ("Go", 23, 25)], [(0, 21)]), {"go": "Go"})
+
+
+class PrecisionVerdictsTest(unittest.TestCase):
+
+    def test_takes_a_drawn_name_the_decision_record_drops_from_jev(self):
+        score_round = load_script("score-skill-round")
+        self.assertEqual(skillloop.read_decisions()["crystal"]["decision"], "drop")
+        drawn = {"crystal": {"name": "Crystal"}, "unlabelled": {"name": "Unlabelled"}}
+        self.assertEqual(score_round.verdicts_of(drawn, {"crystal": {"decision": "keep"}}), {"crystal": "keep"})
 
 
 class StoplistTest(unittest.TestCase):

@@ -405,12 +405,13 @@ def pieces(segment, vocabulary):
 
 
 class Filter:
-    """ADR-0015's step 2: drops a piece the rules found, a plain key, a name in the decision record, a
-    number, a single letter other than C and R, or a word on the stoplist (#60). A context key is never
-    dropped by name. A piece inside the span of a name found is that name, and dropped with it."""
+    """ADR-0015's step 2: drops a piece the rules found, a plain key, a number, a single letter other than
+    C and R, or a word on the stoplist (#60). A context key is never dropped by name. A piece inside the
+    span of a name found is that name, and dropped with it. A name in the decision record is not dropped
+    for it (#61): a decision was made from a few segments, and the name may be a skill in this one."""
 
-    def __init__(self, plain_forms, context_forms, decisions, stoplist):
-        self.plain, self.context, self.decisions, self.stoplist = plain_forms, context_forms, decisions, stoplist
+    def __init__(self, plain_forms, context_forms, stoplist):
+        self.plain, self.context, self.stoplist = plain_forms, context_forms, stoplist
 
     def __call__(self, segment_pieces, found_spans):
         kept = {}
@@ -419,7 +420,7 @@ class Filter:
             if any(found_start <= start and end <= found_end for found_start, found_end in found_spans):
                 continue
             if form not in self.context and (
-                    form in self.plain or form in self.decisions or form in self.stoplist
+                    form in self.plain or form in self.stoplist
                     or re.fullmatch(r"[\d\W_]+", form) or (len(form) == 1 and form not in "cr")):
                 continue
             kept.setdefault(form, text)
@@ -489,8 +490,7 @@ class Recall:
 
     def __init__(self, lines):
         self.vocabulary = known_vocabulary(lines)
-        self.filter = Filter(set(read_keys("plain")), set(read_keys("context")), read_decisions(),
-                             read_stoplist())
+        self.filter = Filter(set(read_keys("plain")), set(read_keys("context")), read_stoplist())
 
     def pieces(self, row):
         """The pieces of a segment left after the filter, by name form."""

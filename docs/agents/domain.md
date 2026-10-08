@@ -50,10 +50,12 @@ the later ADR wins; the overridden parts are marked below.
 - **0013**: skill discovery (#41, looped in #54) is a script whose candidates Jev filters,
   against the decision record `src/main/resources/taxonomy/decisions.tsv`. Its gates: recall,
   precision and yield. *Overridden by 0015:* how recall is scored, and every key being safe.
+  *Overridden by #62:* the record filtering candidates and deciding drawn ones.
 - **0014**: every rule loop calibrates its criterion, freezes it, and gates on adjudication.
   How a loop is worked: `docs/agents/rule-loop.md`.
 - **0015**: recall is scored one name at a time: code proposes and filters a segment's name-like
   pieces, Jev judges each left in its segment with the precision question, and the ordinary list
   grows from its drops. Each key is plain or context, set by a rule Jev checks. Lands in #54's
   first calibration, with a 300-segment gold set. *Overridden by #60:* the ordinary list, which
-  the stoplist (`stopwords.tsv`) replaces.
+  the stoplist (`stopwords.tsv`) replaces. *Overridden by #61:* the filter's use of the decision
+  record.
