@@ -297,7 +297,8 @@ def read_labels(revision=None):
 def label(candidates):
     """Labels every candidate given, each a dict of `name` and `segments`, whose name form has no label
     under the current revision and model, appending each label as it arrives, so a run that dies is
-    resumed by running it again. Stops once Jev has cost the spend limit over both issues. Returns how many it made."""
+    resumed by running it again. Asks a chunk at a time and stops between chunks once Jev has cost the
+    spend limit over both issues. Returns how many it made."""
     labels = read_labels()
     blob = unchanged_criterion(labels.values())
     wanted = list({name_form(candidate["name"]): candidate for candidate in candidates
@@ -310,33 +311,35 @@ def label(candidates):
     criterion, revision, options = jev_text(text), criterion_revision(text), categories(text)
     spent = jev.spend()
     made = 0
-    for candidate in wanted:
+    questions = {
+        "decision": {"type": "choice", "instructions": QUESTIONS["decision"], "criteria": DECISION_OPTIONS},
+        "category": {"type": "choice", "instructions": QUESTIONS["category"], "criteria": options},
+    }
+    for chunk in jev.ask_many(key, wanted, lambda candidate: (
+            {"criterion": criterion, "name": candidate["name"], "segments": candidate["segments"]}, questions)):
+        with open(LABELS, "a") as ledger:
+            for candidate, response in chunk:
+                decision, category = response["answers"]["decision"], response["answers"]["category"]
+                tokens = response["usage"]["input_tokens"]
+                ledger.write(json.dumps({
+                    "name_form": name_form(candidate["name"]),
+                    "name": candidate["name"],
+                    "segments": candidate["segments"],
+                    "decision": decision["choice"],
+                    "decision_probabilities": decision["probabilities"],
+                    "category": category["choice"],
+                    "category_probabilities": category["probabilities"],
+                    "criterion_revision": revision,
+                    "criterion_blob": blob,
+                    "model": response["model"],
+                    "input_tokens": tokens,
+                }, ensure_ascii=False) + "\n")
+                spent += tokens * jev.DOLLARS_PER_INPUT_TOKEN
+                made += 1
+        print(f"  {made} labelled, Jev has cost ${spent:.4f}", flush=True)
         if spent >= jev.SPEND_LIMIT:
             print(f"Stopped: Jev has cost ${spent:.4f}, the limit is ${jev.SPEND_LIMIT:.2f}")
             break
-        response = jev.ask(key, {"criterion": criterion, "name": candidate["name"], "segments": candidate["segments"]}, {
-            "decision": {"type": "choice", "instructions": QUESTIONS["decision"], "criteria": DECISION_OPTIONS},
-            "category": {"type": "choice", "instructions": QUESTIONS["category"], "criteria": options},
-        })
-        decision, category = response["answers"]["decision"], response["answers"]["category"]
-        tokens = response["usage"]["input_tokens"]
-        with open(LABELS, "a") as ledger:
-            ledger.write(json.dumps({
-                "name_form": name_form(candidate["name"]),
-                "name": candidate["name"],
-                "segments": candidate["segments"],
-                "decision": decision["choice"],
-                "decision_probabilities": decision["probabilities"],
-                "category": category["choice"],
-                "category_probabilities": category["probabilities"],
-                "criterion_revision": revision,
-                "criterion_blob": blob,
-                "model": response["model"],
-                "input_tokens": tokens,
-            }, ensure_ascii=False) + "\n")
-        spent += tokens * jev.DOLLARS_PER_INPUT_TOKEN
-        made += 1
-        print(f"  {decision['choice']:<4} {category['choice']:<10} {tokens:5} tokens  {candidate['name']}")
     print(f"Labelled {made}. Jev has cost ${spent:.4f} over every run of both issues.")
     return made
 

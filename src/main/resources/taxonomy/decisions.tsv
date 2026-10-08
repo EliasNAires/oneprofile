@@ -9092,3 +9092,2897 @@ xpu	drop	0	raw-2026-09-20	#40
 yellow	drop	0	raw-2026-09-20	#40
 you bring basic	drop	0	raw-2026-09-20	#40
 zoom microsoft	drop	0	raw-2026-09-20	#40
+go	keep	5	classified-2026-10-06	session
+microsoft	drop	5	classified-2026-10-06	jev
+rest	drop	5	classified-2026-10-06	jev
+devops	drop	5	classified-2026-10-06	jev
+excel	drop	5	classified-2026-10-06	jev
+d	drop	5	classified-2026-10-06	jev
+ux	drop	5	classified-2026-10-06	jev
+server	drop	5	classified-2026-10-06	jev
+amazon	drop	5	classified-2026-10-06	jev
+nosql	drop	5	classified-2026-10-06	jev
+mcp	keep	5	classified-2026-10-06	jev
+copilot	drop	5	classified-2026-10-06	session
+id	drop	5	classified-2026-10-06	jev
+net	keep	5	classified-2026-10-06	jev
+iac	drop	5	classified-2026-10-06	jev
+oracle	drop	5	classified-2026-10-06	jev
+fortune	drop	5	classified-2026-10-06	jev
+mlops	drop	5	classified-2026-10-06	jev
+workspace	drop	5	classified-2026-10-06	session
+navigation	drop	5	classified-2026-10-06	jev
+boot	drop	5	classified-2026-10-06	jev
+apple	drop	5	classified-2026-10-06	jev
+stripe	drop	5	classified-2026-10-06	jev
+genai	drop	5	classified-2026-10-06	jev
+studio	drop	5	classified-2026-10-06	jev
+devsecops	drop	5	classified-2026-10-06	jev
+nice	drop	5	classified-2026-10-06	jev
+anthropic	drop	5	classified-2026-10-06	jev
+lake	drop	5	classified-2026-10-06	jev
+gateway	drop	5	classified-2026-10-06	jev
+slack	drop	5	classified-2026-10-06	jev
+compose	drop	5	classified-2026-10-06	session
+json	keep	5	classified-2026-10-06	jev
+music	drop	5	classified-2026-10-06	jev
+ethernet	keep	5	classified-2026-10-06	jev
+bolt	drop	5	classified-2026-10-06	session
+catalog	drop	5	classified-2026-10-06	jev
+security+	drop	5	classified-2026-10-06	jev
+codex	keep	5	classified-2026-10-06	session
+gitops	drop	5	classified-2026-10-06	jev
+mvvm	drop	5	classified-2026-10-06	jev
+sigma	drop	5	classified-2026-10-06	session
+stanford	drop	5	classified-2026-10-06	jev
+lakehouse	drop	5	classified-2026-10-06	jev
+workday	drop	5	classified-2026-10-06	jev
+cisco	drop	5	classified-2026-10-06	jev
+paint	drop	5	classified-2026-10-06	jev
+gemini	keep	5	classified-2026-10-06	session
+zoom	drop	5	classified-2026-10-06	jev
+node	drop	5	classified-2026-10-06	jev
+chrome extension	drop	5	classified-2026-10-06	jev
+meta	drop	5	classified-2026-10-06	jev
+fabric	keep	5	classified-2026-10-06	jev
+pro	drop	5	classified-2026-10-06	jev
+portal	drop	5	classified-2026-10-06	jev
+nvidia	drop	5	classified-2026-10-06	jev
+palo alto	drop	5	classified-2026-10-06	jev
+apex	drop	5	classified-2026-10-06	session
+asana	drop	5	classified-2026-10-06	jev
+elastic	drop	5	classified-2026-10-06	jev
+itsm	drop	5	classified-2026-10-06	jev
+express	keep	5	classified-2026-10-06	jev
+aurora	keep	5	classified-2026-10-06	session
+i2c	keep	5	classified-2026-10-06	jev
+foundry	drop	5	classified-2026-10-06	session
+atlassian	drop	5	classified-2026-10-06	jev
+pc	drop	5	classified-2026-10-06	jev
+glue	keep	5	classified-2026-10-06	session
+tag	drop	5	classified-2026-10-06	jev
+greenhouse	drop	5	classified-2026-10-06	jev
+lightning	drop	5	classified-2026-10-06	jev
+biases	drop	5	classified-2026-10-06	jev
+nyse	drop	5	classified-2026-10-06	jev
+pcie	keep	5	classified-2026-10-06	jev
+uber	drop	5	classified-2026-10-06	jev
+q	drop	5	classified-2026-10-06	jev
+fullstack	drop	5	classified-2026-10-06	jev
+pub	drop	5	classified-2026-10-06	session
+f	drop	5	classified-2026-10-06	jev
+solidworks	drop	5	classified-2026-10-06	jev
+juniper	drop	5	classified-2026-10-06	jev
+comptia security+	drop	5	classified-2026-10-06	jev
+uart	keep	5	classified-2026-10-06	jev
+db	drop	5	classified-2026-10-06	jev
+network+	drop	5	classified-2026-10-06	jev
+neurips	drop	5	classified-2026-10-06	jev
+l3	drop	5	classified-2026-10-06	jev
+l2	drop	5	classified-2026-10-06	jev
+paas	drop	5	classified-2026-10-06	jev
+triton	drop	5	classified-2026-10-06	session
+bot	drop	5	classified-2026-10-06	jev
+ibm	drop	5	classified-2026-10-06	jev
+xdr	drop	5	classified-2026-10-06	jev
+a+	drop	5	classified-2026-10-06	jev
+e2e	drop	5	classified-2026-10-06	jev
+sentinel	keep	5	classified-2026-10-06	session
+osi	drop	5	classified-2026-10-06	jev
+universal	drop	5	classified-2026-10-06	jev
+defender	keep	5	classified-2026-10-06	session
+unity catalog	keep	5	classified-2026-10-06	session
+amplitude	keep	5	classified-2026-10-06	jev
+flux	drop	5	classified-2026-10-06	session
+bloomberg	drop	5	classified-2026-10-06	jev
+giac	drop	5	classified-2026-10-06	jev
+net core	keep	5	classified-2026-10-06	jev
+voip	drop	5	classified-2026-10-06	jev
+wcag	drop	5	classified-2026-10-06	jev
+icml	drop	5	classified-2026-10-06	jev
+llmops	drop	5	classified-2026-10-06	jev
+palantir	drop	5	classified-2026-10-06	jev
+app store	drop	5	classified-2026-10-06	jev
+hcm	drop	5	classified-2026-10-06	jev
+disa	drop	5	classified-2026-10-06	jev
+nexus	drop	5	classified-2026-10-06	session
+sase	drop	5	classified-2026-10-06	jev
+glean	keep	5	classified-2026-10-06	jev
+stig	drop	5	classified-2026-10-06	jev
+ipaas	drop	5	classified-2026-10-06	jev
+usb	keep	5	classified-2026-10-06	jev
+cameo	keep	5	classified-2026-10-06	jev
+intel	drop	5	classified-2026-10-06	jev
+dell	drop	5	classified-2026-10-06	jev
+iclr	drop	5	classified-2026-10-06	jev
+arista	drop	5	classified-2026-10-06	jev
+kit	drop	5	classified-2026-10-06	jev
+olap	drop	5	classified-2026-10-06	jev
+orm	drop	5	classified-2026-10-06	jev
+hl7	keep	5	classified-2026-10-06	jev
+qos	drop	5	classified-2026-10-06	jev
+samsung	drop	5	classified-2026-10-06	jev
+4hana	drop	5	classified-2026-10-06	session
+auth0	keep	5	classified-2026-10-06	jev
+tempo	keep	5	classified-2026-10-06	jev
+mixpanel	keep	5	classified-2026-10-06	jev
+rpa	drop	5	classified-2026-10-06	jev
+autogen	keep	5	classified-2026-10-06	jev
+l’oréal	drop	5	classified-2026-10-06	jev
+beam	keep	5	classified-2026-10-06	jev
+rdma	keep	5	classified-2026-10-06	jev
+programmer	drop	5	classified-2026-10-06	jev
+dba	drop	5	classified-2026-10-06	jev
+hex	drop	5	classified-2026-10-06	session
+hiv	drop	5	classified-2026-10-06	jev
+ieee	drop	5	classified-2026-10-06	jev
+microsoft teams	drop	5	classified-2026-10-06	jev
+opa	keep	5	classified-2026-10-06	jev
+3d cad	drop	5	classified-2026-10-06	jev
+fortinet	drop	5	classified-2026-10-06	jev
+pagerduty	keep	5	classified-2026-10-06	jev
+apollo	drop	5	classified-2026-10-06	session
+pl	drop	5	classified-2026-10-06	jev
+jama	keep	5	classified-2026-10-06	jev
+einstein	drop	5	classified-2026-10-06	jev
+orchestrator	drop	5	classified-2026-10-06	jev
+lora	drop	5	classified-2026-10-06	session
+cvpr	drop	5	classified-2026-10-06	jev
+gong	drop	5	classified-2026-10-06	jev
+salt	keep	5	classified-2026-10-06	session
+togaf	drop	5	classified-2026-10-06	jev
+5g	keep	5	classified-2026-10-06	jev
+milvus	keep	5	classified-2026-10-06	jev
+prisma	drop	5	classified-2026-10-06	session
+falcon	drop	5	classified-2026-10-06	jev
+oltp	drop	5	classified-2026-10-06	jev
+google play	drop	5	classified-2026-10-06	jev
+gpt	keep	5	classified-2026-10-06	jev
+secops	drop	5	classified-2026-10-06	jev
+aiops	drop	5	classified-2026-10-06	jev
+comptia a+	drop	5	classified-2026-10-06	jev
+sap s	drop	5	classified-2026-10-06	jev
+omni	drop	5	classified-2026-10-06	jev
+pdf	drop	5	classified-2026-10-06	jev
+ping	drop	5	classified-2026-10-06	session
+ddos	drop	5	classified-2026-10-06	jev
+rest assured	keep	5	classified-2026-10-06	jev
+ebay	drop	5	classified-2026-10-06	jev
+ansys	drop	5	classified-2026-10-06	session
+bluetooth	keep	5	classified-2026-10-06	jev
+telco	drop	5	classified-2026-10-06	jev
+ai gateway	drop	5	classified-2026-10-06	jev
+rpc	drop	5	classified-2026-10-06	jev
+shortcut	drop	5	classified-2026-10-06	jev
+cloudops	drop	5	classified-2026-10-06	jev
+pim	drop	5	classified-2026-10-06	jev
+shield	drop	5	classified-2026-10-06	session
+autopilot	drop	5	classified-2026-10-06	session
+hp	drop	5	classified-2026-10-06	jev
+nvme	keep	5	classified-2026-10-06	jev
+sim	drop	5	classified-2026-10-06	jev
+cmdb	drop	5	classified-2026-10-06	jev
+core web vitals	drop	5	classified-2026-10-06	jev
+p2p	drop	5	classified-2026-10-06	jev
+nix	drop	5	classified-2026-10-06	session
+sage	drop	5	classified-2026-10-06	jev
+zoominfo	drop	5	classified-2026-10-06	jev
+buck	drop	5	classified-2026-10-06	jev
+modbus	keep	5	classified-2026-10-06	jev
+net framework	keep	5	classified-2026-10-06	jev
+casb	drop	5	classified-2026-10-06	jev
+mozilla	drop	5	classified-2026-10-06	jev
+tensorrt llm	keep	5	classified-2026-10-06	jev
+dx	drop	5	classified-2026-10-06	jev
+devtools	drop	5	classified-2026-10-06	jev
+oracle fusion	drop	5	classified-2026-10-06	jev
+bubble	keep	5	classified-2026-10-06	jev
+ga4	keep	5	classified-2026-10-06	session
+l4	drop	5	classified-2026-10-06	jev
+adobe analytics	keep	5	classified-2026-10-06	jev
+cedar	keep	5	classified-2026-10-06	jev
+clay	keep	5	classified-2026-10-06	jev
+retrofit	keep	5	classified-2026-10-06	jev
+illustrator	drop	5	classified-2026-10-06	jev
+zuora	drop	5	classified-2026-10-06	session
+ach	drop	5	classified-2026-10-06	jev
+ccaas	drop	5	classified-2026-10-06	jev
+databricks lakehouse	keep	5	classified-2026-10-06	session
+nga	drop	5	classified-2026-10-06	jev
+platform developer i	drop	5	classified-2026-10-06	jev
+unix like	drop	5	classified-2026-10-06	jev
+amd	drop	5	classified-2026-10-06	jev
+bmc	drop	5	classified-2026-10-06	session
+composer	drop	5	classified-2026-10-06	session
+ecc	drop	5	classified-2026-10-06	jev
+iccv	drop	5	classified-2026-10-06	jev
+lte	keep	5	classified-2026-10-06	jev
+mm	drop	5	classified-2026-10-06	jev
+c#.net	keep	5	classified-2026-10-06	session
+meddpicc	drop	5	classified-2026-10-06	jev
+charles river	drop	5	classified-2026-10-06	jev
+ecr	keep	5	classified-2026-10-06	session
+mckinsey	drop	5	classified-2026-10-06	jev
+cve	drop	5	classified-2026-10-06	jev
+risc v	keep	5	classified-2026-10-06	session
+ninja	keep	5	classified-2026-10-06	jev
+pants	keep	5	classified-2026-10-06	jev
+phy	drop	5	classified-2026-10-06	jev
+coupa	drop	5	classified-2026-10-06	jev
+fc	drop	5	classified-2026-10-06	jev
+mq	drop	5	classified-2026-10-06	session
+b.sc	drop	5	classified-2026-10-06	jev
+sd	drop	5	classified-2026-10-06	jev
+security+ ce	drop	5	classified-2026-10-06	jev
+adk	keep	5	classified-2026-10-06	session
+cicd	drop	5	classified-2026-10-06	jev
+eclipse	keep	5	classified-2026-10-06	session
+genie	drop	5	classified-2026-10-06	session
+swarm	keep	5	classified-2026-10-06	session
+ztna	drop	5	classified-2026-10-06	jev
+afsim	drop	5	classified-2026-10-06	jev
+bot management	drop	5	classified-2026-10-06	session
+dropbox	drop	5	classified-2026-10-06	jev
+google tag manager	keep	5	classified-2026-10-06	jev
+llama	keep	5	classified-2026-10-06	session
+mcu	drop	5	classified-2026-10-06	jev
+vlookup	drop	5	classified-2026-10-06	jev
+cnapp	drop	5	classified-2026-10-06	jev
+vanta	keep	5	classified-2026-10-06	jev
+ocr	drop	5	classified-2026-10-06	jev
+lenovo	drop	5	classified-2026-10-06	jev
+conductor	drop	5	classified-2026-10-06	session
+cowork	keep	5	classified-2026-10-06	jev
+ddr	keep	5	classified-2026-10-06	jev
+fierce	drop	5	classified-2026-10-06	jev
+g2	drop	5	classified-2026-10-06	jev
+iphone	drop	5	classified-2026-10-06	jev
+intercom	drop	5	classified-2026-10-06	jev
+jetson	keep	5	classified-2026-10-06	session
+neptune	keep	5	classified-2026-10-06	jev
+tpu	keep	5	classified-2026-10-06	session
+decagon	drop	5	classified-2026-10-06	session
+ai fluent	drop	5	classified-2026-10-06	jev
+cncf	drop	5	classified-2026-10-06	jev
+gemini cli	keep	5	classified-2026-10-06	jev
+optimizely	keep	5	classified-2026-10-06	jev
+reuters	drop	5	classified-2026-10-06	jev
+blackrock	drop	5	classified-2026-10-06	jev
+datastore	drop	5	classified-2026-10-06	session
+scaled agile	drop	5	classified-2026-10-06	jev
+fi	drop	5	classified-2026-10-06	jev
+five9	drop	5	classified-2026-10-06	jev
+flasharray	drop	5	classified-2026-10-06	jev
+fw	drop	5	classified-2026-10-06	jev
+jetbrains	drop	5	classified-2026-10-06	jev
+proton	drop	5	classified-2026-10-06	jev
+qualcomm	drop	5	classified-2026-10-06	jev
+swd	keep	5	classified-2026-10-06	jev
+twitch	drop	5	classified-2026-10-06	jev
+a2a	drop	5	classified-2026-10-06	jev
+aws security specialty	drop	5	classified-2026-10-06	jev
+bronze	drop	5	classified-2026-10-06	jev
+comptia network+	drop	5	classified-2026-10-06	jev
+eccv	drop	5	classified-2026-10-06	jev
+lovable	drop	5	classified-2026-10-06	jev
+rfc	drop	5	classified-2026-10-06	jev
+x ray	drop	5	classified-2026-10-06	jev
+ansi	drop	5	classified-2026-10-06	jev
+authz	drop	5	classified-2026-10-06	jev
+jncip	drop	5	classified-2026-10-06	jev
+lin	keep	5	classified-2026-10-06	jev
+mistral	keep	5	classified-2026-10-06	jev
+optimizer	drop	5	classified-2026-10-06	jev
+tailscale	keep	5	classified-2026-10-06	jev
+istqb	drop	5	classified-2026-10-06	jev
+mx	drop	5	classified-2026-10-06	jev
+circle	drop	5	classified-2026-10-06	jev
+clearancejobs	drop	5	classified-2026-10-06	jev
+f5	drop	5	classified-2026-10-06	session
+flow designer	keep	5	classified-2026-10-06	jev
+jd	drop	5	classified-2026-10-06	jev
+julia	keep	5	classified-2026-10-06	session
+ngfw	drop	5	classified-2026-10-06	session
+unifi	drop	5	classified-2026-10-06	jev
+web api	drop	5	classified-2026-10-06	jev
+3pl	drop	5	classified-2026-10-06	jev
+gainsight	drop	5	classified-2026-10-06	session
+netflix	drop	5	classified-2026-10-06	jev
+opc ua	keep	5	classified-2026-10-06	jev
+storm	drop	5	classified-2026-10-06	jev
+dom	drop	5	classified-2026-10-06	jev
+hbm	keep	5	classified-2026-10-06	jev
+raspberry	drop	5	classified-2026-10-06	jev
+bpmn	drop	5	classified-2026-10-06	jev
+litellm	keep	5	classified-2026-10-06	jev
+nastran	drop	5	classified-2026-10-06	session
+uml	drop	5	classified-2026-10-06	jev
+adc	drop	5	classified-2026-10-06	jev
+bridgewater	drop	5	classified-2026-10-06	jev
+cake	drop	5	classified-2026-10-06	jev
+canva	drop	5	classified-2026-10-06	jev
+cqrs	drop	5	classified-2026-10-06	jev
+cxl	keep	5	classified-2026-10-06	jev
+gnss	drop	5	classified-2026-10-06	session
+grafana cloud	keep	5	classified-2026-10-06	jev
+ni	drop	5	classified-2026-10-06	jev
+thrift	keep	5	classified-2026-10-06	jev
+tines	keep	5	classified-2026-10-06	jev
+wlan	drop	5	classified-2026-10-06	jev
+xp	drop	5	classified-2026-10-06	jev
+dash	drop	5	classified-2026-10-06	session
+deepseek	keep	5	classified-2026-10-06	jev
+lakeflow	drop	5	classified-2026-10-06	jev
+modeler	drop	5	classified-2026-10-06	jev
+polarion	keep	5	classified-2026-10-06	jev
+rhapsody	keep	5	classified-2026-10-06	jev
+rmm	drop	5	classified-2026-10-06	jev
+spl	drop	5	classified-2026-10-06	session
+alb	keep	5	classified-2026-10-06	jev
+arize	drop	5	classified-2026-10-06	jev
+disney	drop	5	classified-2026-10-06	jev
+il4	drop	5	classified-2026-10-06	jev
+mujoco	keep	5	classified-2026-10-06	jev
+singlestore	keep	5	classified-2026-10-06	jev
+snap	drop	5	classified-2026-10-06	session
+stata	keep	5	classified-2026-10-06	jev
+stk	drop	5	classified-2026-10-06	session
+aruba	drop	5	classified-2026-10-06	session
+gov	drop	5	classified-2026-10-06	jev
+l7	drop	5	classified-2026-10-06	jev
+pigment	drop	5	classified-2026-10-06	session
+xray	drop	5	classified-2026-10-06	session
+beyondtrust	keep	5	classified-2026-10-06	jev
+domo	keep	5	classified-2026-10-06	jev
+salesloft	drop	5	classified-2026-10-06	jev
+spanner	keep	5	classified-2026-10-06	session
+tendency	drop	5	classified-2026-10-06	jev
+bem	drop	5	classified-2026-10-06	jev
+dvp	drop	5	classified-2026-10-06	jev
+inspector	keep	5	classified-2026-10-06	session
+oic	drop	5	classified-2026-10-06	session
+weave	drop	5	classified-2026-10-06	jev
+balancer	drop	5	classified-2026-10-06	jev
+cloud devops	drop	5	classified-2026-10-06	jev
+corl	drop	5	classified-2026-10-06	jev
+cube	drop	5	classified-2026-10-06	session
+oracle integration cloud	keep	5	classified-2026-10-06	session
+salesforce.com	drop	5	classified-2026-10-06	jev
+tanstack	drop	5	classified-2026-10-06	jev
+femap	drop	5	classified-2026-10-06	session
+fibre	drop	5	classified-2026-10-06	jev
+gemini enterprise	drop	5	classified-2026-10-06	jev
+iterable	drop	5	classified-2026-10-06	session
+nea	drop	5	classified-2026-10-06	jev
+pql	keep	5	classified-2026-10-06	jev
+qlora	drop	5	classified-2026-10-06	session
+swg	drop	5	classified-2026-10-06	jev
+uv	drop	5	classified-2026-10-06	jev
+workbench	drop	5	classified-2026-10-06	jev
+authn	drop	5	classified-2026-10-06	jev
+dynamo	drop	5	classified-2026-10-06	jev
+raft	drop	5	classified-2026-10-06	session
+ram	drop	5	classified-2026-10-06	jev
+secretary	drop	5	classified-2026-10-06	jev
+shiny	keep	5	classified-2026-10-06	session
+sonicwall	keep	5	classified-2026-10-06	jev
+can fd	keep	5	classified-2026-10-06	jev
+css grid	keep	5	classified-2026-10-06	jev
+disa stig	drop	5	classified-2026-10-06	jev
+disruptor	drop	5	classified-2026-10-06	jev
+orion	drop	5	classified-2026-10-06	session
+sfdc	keep	5	classified-2026-10-06	jev
+url	drop	5	classified-2026-10-06	jev
+ai center	drop	5	classified-2026-10-06	jev
+arrow	keep	5	classified-2026-10-06	session
+blackwell	drop	5	classified-2026-10-06	jev
+eagle	drop	5	classified-2026-10-06	session
+gpo	drop	5	classified-2026-10-06	session
+int8	drop	5	classified-2026-10-06	jev
+ivr	drop	5	classified-2026-10-06	jev
+rs422	keep	5	classified-2026-10-06	jev
+sap ecc	keep	5	classified-2026-10-06	session
+aurora rds	keep	5	classified-2026-10-06	session
+esb	drop	5	classified-2026-10-06	jev
+gnu	drop	5	classified-2026-10-06	jev
+itom	drop	5	classified-2026-10-06	jev
+misra	drop	5	classified-2026-10-06	jev
+nxp	drop	5	classified-2026-10-06	jev
+r2	drop	5	classified-2026-10-06	session
+uefi	keep	5	classified-2026-10-06	jev
+arduino	keep	5	classified-2026-10-06	jev
+commvault	keep	5	classified-2026-10-06	jev
+devin	drop	5	classified-2026-10-06	session
+forest	drop	5	classified-2026-10-06	jev
+microsoft active directory	keep	5	classified-2026-10-06	jev
+open telemetry	keep	5	classified-2026-10-06	jev
+openclaw	drop	5	classified-2026-10-06	jev
+qwen	keep	5	classified-2026-10-06	jev
+scaled agile framework	drop	5	classified-2026-10-06	jev
+secret manager	keep	5	classified-2026-10-06	session
+v3	drop	5	classified-2026-10-06	jev
+warp	drop	5	classified-2026-10-06	jev
+4g	keep	5	classified-2026-10-06	jev
+active directory services	keep	5	classified-2026-10-06	jev
+allianz	drop	5	classified-2026-10-06	jev
+aspice	drop	5	classified-2026-10-06	jev
+concur	drop	5	classified-2026-10-06	jev
+google drive	drop	5	classified-2026-10-06	jev
+gpio	drop	5	classified-2026-10-06	session
+handler	drop	5	classified-2026-10-06	jev
+heap	drop	5	classified-2026-10-06	session
+ipam	drop	5	classified-2026-10-06	session
+opencode	drop	5	classified-2026-10-06	jev
+ql	drop	5	classified-2026-10-06	jev
+rockwell	drop	5	classified-2026-10-06	session
+rubin	drop	5	classified-2026-10-06	jev
+symantec	drop	5	classified-2026-10-06	session
+clari	drop	5	classified-2026-10-06	session
+cloud manager	drop	5	classified-2026-10-06	session
+dataiku	keep	5	classified-2026-10-06	jev
+edition	drop	5	classified-2026-10-06	jev
+emnlp	drop	5	classified-2026-10-06	jev
+ipad	drop	5	classified-2026-10-06	jev
+jamf pro	keep	5	classified-2026-10-06	jev
+maestro	drop	5	classified-2026-10-06	session
+navigator	drop	5	classified-2026-10-06	jev
+years+	drop	5	classified-2026-10-06	jev
+administración	drop	5	classified-2026-10-06	jev
+aht	drop	5	classified-2026-10-06	jev
+asap	drop	5	classified-2026-10-06	jev
+aws cloud practitioner	drop	5	classified-2026-10-06	jev
+cloud+	drop	5	classified-2026-10-06	jev
+data loader	keep	5	classified-2026-10-06	session
+fax	drop	5	classified-2026-10-06	jev
+gantt	drop	5	classified-2026-10-06	jev
+multiplexing	drop	5	classified-2026-10-06	jev
+oracle fusion cloud	drop	5	classified-2026-10-06	jev
+proto	drop	5	classified-2026-10-06	jev
+q2	drop	5	classified-2026-10-06	jev
+remedy	keep	5	classified-2026-10-06	jev
+service now	keep	5	classified-2026-10-06	jev
+stl	drop	5	classified-2026-10-06	session
+two sigma	drop	5	classified-2026-10-06	jev
+3gpp	keep	5	classified-2026-10-06	jev
+alloy	keep	5	classified-2026-10-06	session
+apis rest	drop	5	classified-2026-10-06	jev
+ardupilot	keep	5	classified-2026-10-06	jev
+arm cortex m	drop	5	classified-2026-10-06	jev
+b200	keep	5	classified-2026-10-06	jev
+bluebeam revu	drop	5	classified-2026-10-06	jev
+booking.com	drop	5	classified-2026-10-06	jev
+cpk	drop	5	classified-2026-10-06	jev
+ey	drop	5	classified-2026-10-06	jev
+kimball	drop	5	classified-2026-10-06	jev
+klaviyo	drop	5	classified-2026-10-06	session
+lakebase	keep	5	classified-2026-10-06	jev
+mom	drop	5	classified-2026-10-06	jev
+opus	drop	5	classified-2026-10-06	jev
+uniswap	drop	5	classified-2026-10-06	jev
+workspace one	keep	5	classified-2026-10-06	session
+bain	drop	5	classified-2026-10-06	jev
+ccda	drop	5	classified-2026-10-06	jev
+dwh	drop	5	classified-2026-10-06	jev
+iru	drop	5	classified-2026-10-06	session
+li dni	drop	5	classified-2026-10-06	jev
+ragas	keep	5	classified-2026-10-06	jev
+u boot	keep	5	classified-2026-10-06	jev
+uci	drop	5	classified-2026-10-06	jev
+ukg	drop	5	classified-2026-10-06	jev
+ccsds	keep	5	classified-2026-10-06	jev
+cdisc	drop	5	classified-2026-10-06	session
+citadel	drop	5	classified-2026-10-06	jev
+cnn	drop	5	classified-2026-10-06	session
+comsol	drop	5	classified-2026-10-06	session
+data hub	drop	5	classified-2026-10-06	jev
+dicom	keep	5	classified-2026-10-06	jev
+dispatcher	drop	5	classified-2026-10-06	session
+h200	keep	5	classified-2026-10-06	jev
+magnet	drop	5	classified-2026-10-06	jev
+meta ads	drop	5	classified-2026-10-06	jev
+nist rmf	drop	5	classified-2026-10-06	jev
+oracle ebs	keep	5	classified-2026-10-06	jev
+p4	drop	5	classified-2026-10-06	jev
+resource manager	drop	5	classified-2026-10-06	session
+starburst	keep	5	classified-2026-10-06	jev
+tiktok shop	drop	5	classified-2026-10-06	jev
+tlv	drop	5	classified-2026-10-06	jev
+us secret	drop	5	classified-2026-10-06	jev
+vmce	drop	5	classified-2026-10-06	jev
+workday studio	keep	5	classified-2026-10-06	jev
+zia	drop	5	classified-2026-10-06	jev
+ambiq	drop	5	classified-2026-10-06	jev
+dmarc	keep	5	classified-2026-10-06	jev
+fibre channel	keep	5	classified-2026-10-06	jev
+fm	drop	5	classified-2026-10-06	jev
+google search	drop	5	classified-2026-10-06	jev
+inventor	drop	5	classified-2026-10-06	session
+jit	drop	5	classified-2026-10-06	jev
+jwics	drop	5	classified-2026-10-06	jev
+linux cli	drop	5	classified-2026-10-06	jev
+nokia	drop	5	classified-2026-10-06	jev
+perplexity	drop	5	classified-2026-10-06	jev
+piv	drop	5	classified-2026-10-06	jev
+pix	drop	5	classified-2026-10-06	session
+productboard	drop	5	classified-2026-10-06	jev
+sitecore	keep	5	classified-2026-10-06	jev
+xbox	drop	5	classified-2026-10-06	jev
+a11y	drop	5	classified-2026-10-06	jev
+campaign manager	drop	5	classified-2026-10-06	jev
+catia v5	drop	5	classified-2026-10-06	session
+chariot	drop	5	classified-2026-10-06	jev
+claude cowork	drop	5	classified-2026-10-06	jev
+d1	drop	5	classified-2026-10-06	session
+flo	drop	5	classified-2026-10-06	jev
+h100	keep	5	classified-2026-10-06	jev
+neo	drop	5	classified-2026-10-06	jev
+o2c	drop	5	classified-2026-10-06	jev
+orca	keep	5	classified-2026-10-06	jev
+radix	keep	5	classified-2026-10-06	session
+sipr	drop	5	classified-2026-10-06	jev
+slsa	drop	5	classified-2026-10-06	session
+woo	drop	5	classified-2026-10-06	jev
+aaai	drop	5	classified-2026-10-06	jev
+br	drop	5	classified-2026-10-06	jev
+dkim	keep	5	classified-2026-10-06	jev
+ef	drop	5	classified-2026-10-06	jev
+fortigate	keep	5	classified-2026-10-06	jev
+go lang	keep	5	classified-2026-10-06	session
+graphite	drop	5	classified-2026-10-06	jev
+hcl	drop	5	classified-2026-10-06	session
+kargo	keep	5	classified-2026-10-06	jev
+pact	keep	5	classified-2026-10-06	jev
+quickbooks online	keep	5	classified-2026-10-06	jev
+sod	drop	5	classified-2026-10-06	jev
+spf	keep	5	classified-2026-10-06	jev
+suiteflow	keep	5	classified-2026-10-06	jev
+sybase	keep	5	classified-2026-10-06	jev
+tableau prep	keep	5	classified-2026-10-06	jev
+tc	drop	5	classified-2026-10-06	jev
+zigbee	keep	5	classified-2026-10-06	jev
+adobe acrobat	drop	5	classified-2026-10-06	jev
+aha	drop	5	classified-2026-10-06	session
+ai qa	drop	5	classified-2026-10-06	jev
+ax	drop	5	classified-2026-10-06	jev
+dpu	drop	5	classified-2026-10-06	jev
+eve	drop	5	classified-2026-10-06	jev
+fierce healthcare	drop	5	classified-2026-10-06	jev
+hdl	drop	5	classified-2026-10-06	session
+intuit	drop	5	classified-2026-10-06	jev
+jdk	keep	5	classified-2026-10-06	jev
+jooq	keep	5	classified-2026-10-06	jev
+jsm	keep	5	classified-2026-10-06	jev
+kubevirt	keep	5	classified-2026-10-06	jev
+lit	drop	5	classified-2026-10-06	session
+oig	keep	5	classified-2026-10-06	jev
+open ai	drop	5	classified-2026-10-06	jev
+owl	drop	5	classified-2026-10-06	jev
+pivottables	drop	5	classified-2026-10-06	jev
+proofpoint	keep	5	classified-2026-10-06	jev
+rocev2	keep	5	classified-2026-10-06	jev
+snow	drop	5	classified-2026-10-06	jev
+stat	drop	5	classified-2026-10-06	jev
+tiger global	drop	5	classified-2026-10-06	jev
+v6	drop	5	classified-2026-10-06	jev
+x.509	keep	5	classified-2026-10-06	jev
+6sense	drop	5	classified-2026-10-06	jev
+ai studio	drop	5	classified-2026-10-06	session
+aladdin	drop	5	classified-2026-10-06	jev
+application gateway	keep	5	classified-2026-10-06	session
+bw	drop	5	classified-2026-10-06	jev
+cerner	drop	5	classified-2026-10-06	jev
+csrf	drop	5	classified-2026-10-06	jev
+dci	drop	5	classified-2026-10-06	jev
+elementary	drop	5	classified-2026-10-06	session
+idc marketscape	drop	5	classified-2026-10-06	jev
+ksa	drop	5	classified-2026-10-06	jev
+linq	keep	5	classified-2026-10-06	jev
+liveramp	drop	5	classified-2026-10-06	jev
+microsoft exchange	keep	5	classified-2026-10-06	jev
+oracle epm	keep	5	classified-2026-10-06	jev
+panorama	keep	5	classified-2026-10-06	jev
+remix	keep	5	classified-2026-10-06	jev
+sdtm	keep	5	classified-2026-10-06	session
+sphinx	keep	5	classified-2026-10-06	jev
+spire	keep	5	classified-2026-10-06	jev
+ssm	keep	5	classified-2026-10-06	session
+vram	drop	5	classified-2026-10-06	jev
+wazuh	keep	5	classified-2026-10-06	jev
+workday adaptive planning	drop	5	classified-2026-10-06	session
+wsus	keep	5	classified-2026-10-06	jev
+xen	keep	5	classified-2026-10-06	jev
+aci	keep	5	classified-2026-10-06	jev
+af	drop	5	classified-2026-10-06	jev
+arcgis pro	keep	5	classified-2026-10-06	jev
+dml	drop	5	classified-2026-10-06	jev
+eib	keep	5	classified-2026-10-06	jev
+fido	keep	5	classified-2026-10-06	jev
+firehose	keep	5	classified-2026-10-06	jev
+gr	drop	5	classified-2026-10-06	jev
+icpc	drop	5	classified-2026-10-06	jev
+kong ai gateway	keep	5	classified-2026-10-06	jev
+lcm	drop	5	classified-2026-10-06	jev
+microsoft foundry	keep	5	classified-2026-10-06	jev
+ms azure	keep	5	classified-2026-10-06	jev
+msp430	keep	5	classified-2026-10-06	jev
+new york metro	drop	5	classified-2026-10-06	jev
+otbi	keep	5	classified-2026-10-06	jev
+p.e	drop	5	classified-2026-10-06	jev
+portkey	keep	5	classified-2026-10-06	jev
+ppc	drop	5	classified-2026-10-06	jev
+rcdd	drop	5	classified-2026-10-06	jev
+rebac	drop	5	classified-2026-10-06	jev
+sage intacct	drop	5	classified-2026-10-06	session
+salesforce data cloud	keep	5	classified-2026-10-06	jev
+saudi arabia	drop	5	classified-2026-10-06	jev
+splunk soar	keep	5	classified-2026-10-06	jev
+teamcenter plm	drop	5	classified-2026-10-06	jev
+v0	drop	5	classified-2026-10-06	session
+ads manager	drop	5	classified-2026-10-06	jev
+ant	drop	5	classified-2026-10-06	session
+authenticator	drop	5	classified-2026-10-06	jev
+axiom	drop	5	classified-2026-10-06	session
+cp	drop	5	classified-2026-10-06	jev
+dealhub	drop	5	classified-2026-10-06	session
+dnp3	keep	5	classified-2026-10-06	jev
+ecmp	drop	5	classified-2026-10-06	session
+elastic security	drop	5	classified-2026-10-06	jev
+gcp vertex	drop	5	classified-2026-10-06	jev
+guice	keep	5	classified-2026-10-06	jev
+guru	drop	5	classified-2026-10-06	jev
+hopper	drop	5	classified-2026-10-06	session
+ietf	drop	5	classified-2026-10-06	jev
+inductive	drop	5	classified-2026-10-06	jev
+jedec	drop	5	classified-2026-10-06	jev
+lstm	drop	5	classified-2026-10-06	session
+matillion	keep	5	classified-2026-10-06	jev
+minimax	keep	5	classified-2026-10-06	jev
+mri	drop	5	classified-2026-10-06	jev
+netconf	keep	5	classified-2026-10-06	jev
+omop	keep	5	classified-2026-10-06	jev
+osd	drop	5	classified-2026-10-06	jev
+rtr	drop	5	classified-2026-10-06	jev
+simcorp	drop	5	classified-2026-10-06	jev
+suitefoundation	drop	5	classified-2026-10-06	jev
+trl	keep	5	classified-2026-10-06	jev
+woocommerce	keep	5	classified-2026-10-06	jev
+zpa	keep	5	classified-2026-10-06	jev
+4d	drop	5	classified-2026-10-06	jev
+acd	drop	5	classified-2026-10-06	jev
+amazon aws	keep	5	classified-2026-10-06	jev
+apple app store	drop	5	classified-2026-10-06	jev
+atp	drop	5	classified-2026-10-06	jev
+beckhoff	drop	5	classified-2026-10-06	session
+capi	drop	5	classified-2026-10-06	session
+claude.ai	drop	5	classified-2026-10-06	jev
+cumulus	drop	5	classified-2026-10-06	session
+ddl	drop	5	classified-2026-10-06	jev
+dep	drop	5	classified-2026-10-06	jev
+firecracker	keep	5	classified-2026-10-06	jev
+freshdesk	drop	5	classified-2026-10-06	jev
+graphrag	drop	5	classified-2026-10-06	jev
+hermes	drop	5	classified-2026-10-06	session
+hexnode	keep	5	classified-2026-10-06	jev
+hightouch	keep	5	classified-2026-10-06	jev
+icam	drop	5	classified-2026-10-06	jev
+ise	drop	5	classified-2026-10-06	session
+iso26262	drop	5	classified-2026-10-06	jev
+i²c	keep	5	classified-2026-10-06	session
+keysight	drop	5	classified-2026-10-06	jev
+mcap	keep	5	classified-2026-10-06	jev
+microsoft hyper v	keep	5	classified-2026-10-06	jev
+nipr	drop	5	classified-2026-10-06	jev
+ogc	drop	5	classified-2026-10-06	jev
+p global	drop	5	classified-2026-10-06	jev
+random forest	drop	5	classified-2026-10-06	session
+rhcsa	drop	5	classified-2026-10-06	jev
+sbe	drop	5	classified-2026-10-06	jev
+snomed	keep	5	classified-2026-10-06	session
+sonnet	keep	5	classified-2026-10-06	session
+sqlmesh	keep	5	classified-2026-10-06	jev
+800g	drop	5	classified-2026-10-06	jev
+aeron	keep	5	classified-2026-10-06	jev
+apim	keep	5	classified-2026-10-06	session
+atlassian cloud	drop	5	classified-2026-10-06	jev
+awq	drop	5	classified-2026-10-06	session
+big query	keep	5	classified-2026-10-06	jev
+broadcom	drop	5	classified-2026-10-06	jev
+checker	drop	5	classified-2026-10-06	jev
+cisco ccna	drop	5	classified-2026-10-06	jev
+cudnn	keep	5	classified-2026-10-06	jev
+cwe	drop	5	classified-2026-10-06	jev
+cwpp	drop	5	classified-2026-10-06	jev
+d engineering	drop	5	classified-2026-10-06	jev
+deepeval	keep	5	classified-2026-10-06	jev
+dell boomi	keep	5	classified-2026-10-06	jev
+division multiplexing	drop	5	classified-2026-10-06	jev
+dod ts	drop	5	classified-2026-10-06	jev
+fortinet nse	drop	5	classified-2026-10-06	jev
+geopandas	keep	5	classified-2026-10-06	jev
+google earth	drop	5	classified-2026-10-06	jev
+gurobi	keep	5	classified-2026-10-06	jev
+hbss	keep	5	classified-2026-10-06	jev
+hello	drop	5	classified-2026-10-06	jev
+ibm doors	keep	5	classified-2026-10-06	jev
+itil v4	drop	5	classified-2026-10-06	jev
+kueue	keep	5	classified-2026-10-06	jev
+mist	keep	5	classified-2026-10-06	session
+mvi	drop	5	classified-2026-10-06	jev
+okta identity governance	keep	5	classified-2026-10-06	jev
+orleans	drop	5	classified-2026-10-06	jev
+prm	drop	5	classified-2026-10-06	jev
+semrush	drop	5	classified-2026-10-06	session
+telegraf	keep	5	classified-2026-10-06	jev
+travis	keep	5	classified-2026-10-06	jev
+tui	drop	5	classified-2026-10-06	jev
+vmware vcp	drop	5	classified-2026-10-06	jev
+adb	keep	5	classified-2026-10-06	jev
+app engine	keep	5	classified-2026-10-06	jev
+arcgis enterprise	keep	5	classified-2026-10-06	jev
+aurora mysql	keep	5	classified-2026-10-06	session
+bff	drop	5	classified-2026-10-06	jev
+bi publisher	keep	5	classified-2026-10-06	jev
+captivate	drop	5	classified-2026-10-06	jev
+chatops	drop	5	classified-2026-10-06	jev
+checkmarx	keep	5	classified-2026-10-06	jev
+ci cd	drop	5	classified-2026-10-06	jev
+cja	drop	5	classified-2026-10-06	session
+coralogix	keep	5	classified-2026-10-06	jev
+cplex	keep	5	classified-2026-10-06	jev
+crv	drop	5	classified-2026-10-06	jev
+cutlass	keep	5	classified-2026-10-06	jev
+datalake	drop	5	classified-2026-10-06	jev
+datorama	drop	5	classified-2026-10-06	session
+dcm	drop	5	classified-2026-10-06	jev
+diamond model	drop	5	classified-2026-10-06	jev
+fsm	drop	5	classified-2026-10-06	jev
+ftk	keep	5	classified-2026-10-06	jev
+fullstory	keep	5	classified-2026-10-06	jev
+googletest	keep	5	classified-2026-10-06	jev
+gptq	drop	5	classified-2026-10-06	session
+lldp	keep	5	classified-2026-10-06	jev
+logitech	drop	5	classified-2026-10-06	jev
+mc	drop	5	classified-2026-10-06	jev
+nitro	drop	5	classified-2026-10-06	jev
+nr	drop	5	classified-2026-10-06	jev
+ntb	drop	5	classified-2026-10-06	jev
+odoo	keep	5	classified-2026-10-06	jev
+office365	drop	5	classified-2026-10-06	jev
+overflow	drop	5	classified-2026-10-06	jev
+posthog	keep	5	classified-2026-10-06	jev
+reframework	keep	5	classified-2026-10-06	jev
+ringcentral	drop	5	classified-2026-10-06	jev
+rocky	keep	5	classified-2026-10-06	jev
+rt	drop	5	classified-2026-10-06	jev
+rtsp	keep	5	classified-2026-10-06	jev
+sa360	drop	5	classified-2026-10-06	session
+saga	drop	5	classified-2026-10-06	jev
+shopee	drop	5	classified-2026-10-06	jev
+tflite	keep	5	classified-2026-10-06	session
+viewmodel	drop	5	classified-2026-10-06	session
+vue 3	keep	5	classified-2026-10-06	jev
+win32	keep	5	classified-2026-10-06	session
+x ways	keep	5	classified-2026-10-06	jev
+advanced rpa developer	drop	5	classified-2026-10-06	jev
+afl++	keep	5	classified-2026-10-06	jev
+agent workspace	drop	5	classified-2026-10-06	jev
+amex	drop	5	classified-2026-10-06	jev
+app store connect	keep	5	classified-2026-10-06	jev
+aspen	drop	5	classified-2026-10-06	jev
+c4	drop	5	classified-2026-10-06	jev
+camel	keep	5	classified-2026-10-06	session
+cda	drop	5	classified-2026-10-06	session
+cm360	drop	5	classified-2026-10-06	session
+comptia security+ ce	drop	5	classified-2026-10-06	jev
+configuration manager	keep	5	classified-2026-10-06	session
+databricks genie	keep	5	classified-2026-10-06	jev
+dita	keep	5	classified-2026-10-06	jev
+draw.io	drop	5	classified-2026-10-06	session
+endpoint manager	keep	5	classified-2026-10-06	jev
+firepower	keep	5	classified-2026-10-06	jev
+glide	drop	5	classified-2026-10-06	session
+google cloud pub	drop	5	classified-2026-10-06	jev
+google play console	drop	5	classified-2026-10-06	jev
+hl7 v2	keep	5	classified-2026-10-06	session
+igmp	keep	5	classified-2026-10-06	jev
+iqvia	drop	5	classified-2026-10-06	jev
+iron bank	keep	5	classified-2026-10-06	jev
+lcat	drop	5	classified-2026-10-06	jev
+lod	drop	5	classified-2026-10-06	jev
+maya	drop	5	classified-2026-10-06	session
+pacific northwest	drop	5	classified-2026-10-06	jev
+powerpc	keep	5	classified-2026-10-06	jev
+premiere	drop	5	classified-2026-10-06	jev
+products group	drop	5	classified-2026-10-06	jev
+qradar	keep	5	classified-2026-10-06	jev
+rdf	keep	5	classified-2026-10-06	jev
+rds proxy	keep	5	classified-2026-10-06	jev
+redpoint	drop	5	classified-2026-10-06	jev
+sap activate	drop	5	classified-2026-10-06	jev
+sap finance	drop	5	classified-2026-10-06	jev
+sdp	drop	5	classified-2026-10-06	session
+shapely	keep	5	classified-2026-10-06	jev
+sigstore	keep	5	classified-2026-10-06	jev
+srt	drop	5	classified-2026-10-06	session
+ssg	drop	5	classified-2026-10-06	jev
+stlc	drop	5	classified-2026-10-06	jev
+sva	keep	5	classified-2026-10-06	jev
+teleport	keep	5	classified-2026-10-06	jev
+tvm	keep	5	classified-2026-10-06	jev
+uipath studio	keep	5	classified-2026-10-06	jev
+vertex ai pipelines	keep	5	classified-2026-10-06	jev
+vscode	keep	5	classified-2026-10-06	jev
+webdriverio	keep	5	classified-2026-10-06	jev
+webgpu	keep	5	classified-2026-10-06	jev
+webview	drop	5	classified-2026-10-06	session
+xsoar	keep	5	classified-2026-10-06	session
+1password	drop	5	classified-2026-10-06	jev
+a2b	keep	5	classified-2026-10-06	jev
+agile sdlc	drop	5	classified-2026-10-06	jev
+anycast	drop	5	classified-2026-10-06	jev
+asil	drop	5	classified-2026-10-06	jev
+av over ip	drop	5	classified-2026-10-06	jev
+azure database	drop	5	classified-2026-10-06	jev
+bt	drop	5	classified-2026-10-06	jev
+chromeos	drop	5	classified-2026-10-06	jev
+cidr	drop	5	classified-2026-10-06	jev
+databricks apps	keep	5	classified-2026-10-06	jev
+datastage	keep	5	classified-2026-10-06	session
+dbaas	drop	5	classified-2026-10-06	jev
+deployment manager	keep	5	classified-2026-10-06	session
+dhl	drop	5	classified-2026-10-06	jev
+diode	drop	5	classified-2026-10-06	jev
+dp	drop	5	classified-2026-10-06	jev
+enovia	drop	5	classified-2026-10-06	session
+eppo	keep	5	classified-2026-10-06	jev
+ethernet mac	drop	5	classified-2026-10-06	jev
+euc	drop	5	classified-2026-10-06	jev
+fast api	keep	5	classified-2026-10-06	jev
+freebsd	keep	5	classified-2026-10-06	jev
+gn	drop	5	classified-2026-10-06	jev
+gpib	keep	5	classified-2026-10-06	jev
+gpudirect	keep	5	classified-2026-10-06	session
+graphpad prism	drop	5	classified-2026-10-06	jev
+halo	drop	5	classified-2026-10-06	jev
+junie	drop	5	classified-2026-10-06	jev
+karate	keep	5	classified-2026-10-06	jev
+lldb	keep	5	classified-2026-10-06	jev
+loinc	keep	5	classified-2026-10-06	jev
+modbus tcp	keep	5	classified-2026-10-06	jev
+mvcc	drop	5	classified-2026-10-06	jev
+navan	drop	5	classified-2026-10-06	jev
+nvidia dynamo	keep	5	classified-2026-10-06	jev
+nvswitch	keep	5	classified-2026-10-06	jev
+nx cad	drop	5	classified-2026-10-06	jev
+openssl	keep	5	classified-2026-10-06	jev
+otp	drop	5	classified-2026-10-06	session
+pcap	keep	5	classified-2026-10-06	jev
+planetscale	keep	5	classified-2026-10-06	jev
+profinet	keep	5	classified-2026-10-06	jev
+proxysql	keep	5	classified-2026-10-06	jev
+ranger	keep	5	classified-2026-10-06	jev
+rstp	keep	5	classified-2026-10-06	jev
+rstudio	keep	5	classified-2026-10-06	jev
+sata	keep	5	classified-2026-10-06	jev
+spacelift	keep	5	classified-2026-10-06	jev
+spark structured streaming	keep	5	classified-2026-10-06	jev
+tcv	drop	5	classified-2026-10-06	jev
+thomson reuters	drop	5	classified-2026-10-06	jev
+uam	drop	5	classified-2026-10-06	jev
+3dexperience	drop	5	classified-2026-10-06	session
+ade	drop	5	classified-2026-10-06	session
+ahj	drop	5	classified-2026-10-06	jev
+ahrefs	drop	5	classified-2026-10-06	session
+alexa	drop	5	classified-2026-10-06	jev
+ase	drop	5	classified-2026-10-06	jev
+auditboard	drop	5	classified-2026-10-06	session
+avidxchange	drop	5	classified-2026-10-06	session
+azure site recovery	keep	5	classified-2026-10-06	jev
+bull	drop	5	classified-2026-10-06	session
+canopen	keep	5	classified-2026-10-06	jev
+cato	drop	5	classified-2026-10-06	jev
+chromium	keep	5	classified-2026-10-06	jev
+cisco nexus	keep	5	classified-2026-10-06	jev
+delinea	drop	5	classified-2026-10-06	jev
+dod approved	drop	5	classified-2026-10-06	jev
+drizzle	keep	5	classified-2026-10-06	session
+ficc	drop	5	classified-2026-10-06	jev
+flexray	keep	5	classified-2026-10-06	jev
+geojson	keep	5	classified-2026-10-06	jev
+gesture	drop	5	classified-2026-10-06	jev
+iaac	drop	5	classified-2026-10-06	jev
+ibm cloud	keep	5	classified-2026-10-06	jev
+int4	drop	5	classified-2026-10-06	jev
+itam	drop	5	classified-2026-10-06	jev
+linux+	drop	5	classified-2026-10-06	jev
+lite	drop	5	classified-2026-10-06	jev
+mtu	drop	5	classified-2026-10-06	jev
+netdocuments	drop	5	classified-2026-10-06	jev
+onesource	drop	5	classified-2026-10-06	session
+planhat	drop	5	classified-2026-10-06	session
+pmi pba	drop	5	classified-2026-10-06	jev
+poetry	keep	5	classified-2026-10-06	jev
+preempt	drop	5	classified-2026-10-06	jev
+pytorch profiler	keep	5	classified-2026-10-06	jev
+qm	drop	5	classified-2026-10-06	jev
+readme	drop	5	classified-2026-10-06	session
+scikit	drop	5	classified-2026-10-06	jev
+system verilog	keep	5	classified-2026-10-06	jev
+tacacs+	keep	5	classified-2026-10-06	jev
+toyota	drop	5	classified-2026-10-06	jev
+us army	drop	5	classified-2026-10-06	jev
+vwo	keep	5	classified-2026-10-06	jev
+xctest	keep	5	classified-2026-10-06	jev
+10pm	drop	5	classified-2026-10-06	jev
+400g	drop	5	classified-2026-10-06	jev
+7am	drop	5	classified-2026-10-06	jev
+acme	drop	5	classified-2026-10-06	session
+acr	keep	5	classified-2026-10-06	jev
+active workspace	drop	5	classified-2026-10-06	session
+ado	drop	5	classified-2026-10-06	session
+ai overviews	drop	5	classified-2026-10-06	jev
+aidlc	drop	5	classified-2026-10-06	jev
+aip	drop	5	classified-2026-10-06	jev
+amqp	keep	5	classified-2026-10-06	jev
+ansa	drop	5	classified-2026-10-06	session
+arcgis online	keep	5	classified-2026-10-06	jev
+argo rollouts	keep	5	classified-2026-10-06	jev
+arize phoenix	keep	5	classified-2026-10-06	jev
+autoscaler	drop	5	classified-2026-10-06	jev
+aws advanced networking	drop	5	classified-2026-10-06	jev
+azure firewall	keep	5	classified-2026-10-06	jev
+bill.com	drop	5	classified-2026-10-06	jev
+blackrock aladdin	drop	5	classified-2026-10-06	session
+blue prism	keep	5	classified-2026-10-06	jev
+c++20	keep	5	classified-2026-10-06	session
+camerax	keep	5	classified-2026-10-06	jev
+coop	drop	5	classified-2026-10-06	jev
+cts d	drop	5	classified-2026-10-06	jev
+d365 f	drop	5	classified-2026-10-06	jev
+epg	drop	5	classified-2026-10-06	jev
+fastify	keep	5	classified-2026-10-06	jev
+ffi	drop	5	classified-2026-10-06	jev
+freeswitch	keep	5	classified-2026-10-06	jev
+frr	keep	5	classified-2026-10-06	jev
+gage r	drop	5	classified-2026-10-06	jev
+geodatabases	drop	5	classified-2026-10-06	jev
+gerrit	keep	5	classified-2026-10-06	jev
+gmsl	keep	5	classified-2026-10-06	jev
+graph db	drop	5	classified-2026-10-06	jev
+growthbook	keep	5	classified-2026-10-06	jev
+hitachi	drop	5	classified-2026-10-06	jev
+hypermesh	drop	5	classified-2026-10-06	session
+integer	drop	5	classified-2026-10-06	jev
+irad	drop	5	classified-2026-10-06	jev
+isc	drop	5	classified-2026-10-06	jev
+jumpstart	drop	5	classified-2026-10-06	jev
+liquibase	keep	5	classified-2026-10-06	jev
+l’oreal	drop	5	classified-2026-10-06	jev
+maltego	keep	5	classified-2026-10-06	jev
+mig	drop	5	classified-2026-10-06	session
+moody	drop	5	classified-2026-10-06	jev
+ner	drop	5	classified-2026-10-06	jev
+nerf	drop	5	classified-2026-10-06	session
+ninjaone	keep	5	classified-2026-10-06	jev
+oak	drop	5	classified-2026-10-06	jev
+omnistudio	keep	5	classified-2026-10-06	jev
+openbmc	keep	5	classified-2026-10-06	jev
+oversee qa	drop	5	classified-2026-10-06	jev
+pardot	drop	5	classified-2026-10-06	session
+qtc	drop	5	classified-2026-10-06	jev
+reflex	drop	5	classified-2026-10-06	jev
+relyence	drop	5	classified-2026-10-06	session
+rip	keep	5	classified-2026-10-06	jev
+rocketmq	keep	5	classified-2026-10-06	jev
+rxnorm	keep	5	classified-2026-10-06	jev
+sdui	drop	5	classified-2026-10-06	jev
+service portal	drop	5	classified-2026-10-06	jev
+stac	drop	5	classified-2026-10-06	session
+symphony	drop	5	classified-2026-10-06	jev
+tealium	keep	5	classified-2026-10-06	jev
+unigraphics	drop	5	classified-2026-10-06	session
+visual studio code	keep	5	classified-2026-10-06	jev
+west london	drop	5	classified-2026-10-06	jev
+xr	drop	5	classified-2026-10-06	jev
+zanzibar	drop	5	classified-2026-10-06	session
+zsh	keep	5	classified-2026-10-06	jev
+adobe launch	keep	5	classified-2026-10-06	jev
+agent bricks	drop	5	classified-2026-10-06	jev
+agentic rag	drop	5	classified-2026-10-06	jev
+arima	drop	5	classified-2026-10-06	jev
+armis	keep	5	classified-2026-10-06	jev
+arxiv	drop	5	classified-2026-10-06	jev
+aws marketplace	drop	5	classified-2026-10-06	jev
+c++23	keep	5	classified-2026-10-06	session
+carla	keep	5	classified-2026-10-06	jev
+chai	keep	5	classified-2026-10-06	jev
+cisco ccnp	drop	5	classified-2026-10-06	jev
+cockpit	drop	5	classified-2026-10-06	jev
+codebeamer	keep	5	classified-2026-10-06	jev
+comptia security	drop	5	classified-2026-10-06	jev
+control m	keep	5	classified-2026-10-06	jev
+cosign	keep	5	classified-2026-10-06	jev
+databricks unity catalog	keep	5	classified-2026-10-06	jev
+dataframe	drop	5	classified-2026-10-06	jev
+dataviz	drop	5	classified-2026-10-06	jev
+epicor	drop	5	classified-2026-10-06	jev
+exoplayer	keep	5	classified-2026-10-06	jev
+floqast	drop	5	classified-2026-10-06	jev
+forgerock	keep	5	classified-2026-10-06	jev
+fraud examiner	drop	5	classified-2026-10-06	jev
+gartner mq	drop	5	classified-2026-10-06	jev
+gtest	keep	5	classified-2026-10-06	jev
+iava	drop	5	classified-2026-10-06	jev
+icarus	drop	5	classified-2026-10-06	jev
+ios app store	drop	5	classified-2026-10-06	jev
+jd edwards	keep	5	classified-2026-10-06	session
+keychain	drop	5	classified-2026-10-06	session
+lazada	drop	5	classified-2026-10-06	jev
+livekit	keep	5	classified-2026-10-06	jev
+lseg	drop	5	classified-2026-10-06	jev
+ltm	keep	5	classified-2026-10-06	jev
+marketing cloud engagement	keep	5	classified-2026-10-06	jev
+martin	drop	5	classified-2026-10-06	jev
+mellanox	drop	5	classified-2026-10-06	jev
+midjourney	drop	5	classified-2026-10-06	jev
+mobx	keep	5	classified-2026-10-06	jev
+neon	drop	5	classified-2026-10-06	session
+noi	drop	5	classified-2026-10-06	jev
+numeric	drop	5	classified-2026-10-06	jev
+nvidia gpu operator	keep	5	classified-2026-10-06	jev
+ofdm	drop	5	classified-2026-10-06	jev
+ord	drop	5	classified-2026-10-06	jev
+orin	drop	5	classified-2026-10-06	session
+owasp top ten	drop	5	classified-2026-10-06	jev
+pallas	keep	5	classified-2026-10-06	jev
+parameter store	keep	5	classified-2026-10-06	jev
+powerfully	drop	5	classified-2026-10-06	jev
+ptc windchill	keep	5	classified-2026-10-06	jev
+react ui	drop	5	classified-2026-10-06	jev
+rerun	drop	5	classified-2026-10-06	session
+sds page	drop	5	classified-2026-10-06	jev
+siprnet	drop	5	classified-2026-10-06	jev
+smf	drop	5	classified-2026-10-06	session
+snowpro core	drop	5	classified-2026-10-06	jev
+social studio	drop	5	classified-2026-10-06	session
+splash	drop	5	classified-2026-10-06	jev
+ssrf	drop	5	classified-2026-10-06	jev
+suse	keep	5	classified-2026-10-06	jev
+testflight	drop	5	classified-2026-10-06	jev
+tf	drop	5	classified-2026-10-06	session
+tm1	keep	5	classified-2026-10-06	jev
+torchserve	keep	5	classified-2026-10-06	jev
+universal directory	drop	5	classified-2026-10-06	session
+volcano	drop	5	classified-2026-10-06	session
+wix	drop	5	classified-2026-10-06	jev
+yolo	keep	5	classified-2026-10-06	jev
+zio	keep	5	classified-2026-10-06	jev
+100g	drop	5	classified-2026-10-06	jev
+agent core	drop	5	classified-2026-10-06	jev
+agent studio	drop	5	classified-2026-10-06	jev
+amazon marketing cloud	drop	5	classified-2026-10-06	session
+arch	drop	5	classified-2026-10-06	jev
+aws dms	keep	5	classified-2026-10-06	jev
+aws iot	keep	5	classified-2026-10-06	jev
+b2c commerce	keep	5	classified-2026-10-06	jev
+bny	drop	5	classified-2026-10-06	jev
+borg	drop	5	classified-2026-10-06	session
+bynder	drop	5	classified-2026-10-06	session
+capella	drop	5	classified-2026-10-06	session
+cfor	drop	5	classified-2026-10-06	jev
+ciem	drop	5	classified-2026-10-06	jev
+claude design	drop	5	classified-2026-10-06	jev
+cloud finops	drop	5	classified-2026-10-06	jev
+coap	keep	5	classified-2026-10-06	jev
+coil	drop	5	classified-2026-10-06	jev
+core devops	drop	5	classified-2026-10-06	jev
+coreml	keep	5	classified-2026-10-06	jev
+css in js	drop	5	classified-2026-10-06	jev
+dassault	drop	5	classified-2026-10-06	jev
+dbc	drop	5	classified-2026-10-06	session
+dgx	keep	5	classified-2026-10-06	session
+director+	drop	5	classified-2026-10-06	jev
+dxp	drop	5	classified-2026-10-06	jev
+eam	drop	5	classified-2026-10-06	jev
+fullstack developer	drop	5	classified-2026-10-06	jev
+gaia	drop	5	classified-2026-10-06	jev
+gemma	keep	5	classified-2026-10-06	jev
+gitflow	drop	5	classified-2026-10-06	jev
+google campaign manager	drop	5	classified-2026-10-06	jev
+google pub	drop	5	classified-2026-10-06	jev
+google test	keep	5	classified-2026-10-06	jev
+houdini	drop	5	classified-2026-10-06	session
+iar	keep	5	classified-2026-10-06	jev
+ib	drop	5	classified-2026-10-06	jev
+imanage	drop	5	classified-2026-10-06	session
+imint	drop	5	classified-2026-10-06	jev
+infoblox	drop	5	classified-2026-10-06	session
+infosum	drop	5	classified-2026-10-06	jev
+ivanti	drop	5	classified-2026-10-06	session
+juniper mist	keep	5	classified-2026-10-06	jev
+jupyterhub	keep	5	classified-2026-10-06	jev
+kamailio	keep	5	classified-2026-10-06	jev
+kantata	drop	5	classified-2026-10-06	jev
+keysight ads	drop	5	classified-2026-10-06	session
+litify	drop	5	classified-2026-10-06	jev
+luna	drop	5	classified-2026-10-06	session
+m3	drop	5	classified-2026-10-06	jev
+may august	drop	5	classified-2026-10-06	jev
+mdg	drop	5	classified-2026-10-06	session
+mediatek	drop	5	classified-2026-10-06	jev
+mlsys	drop	5	classified-2026-10-06	jev
+mse	drop	5	classified-2026-10-06	jev
+nebula	drop	5	classified-2026-10-06	session
+netmiko	keep	5	classified-2026-10-06	jev
+niprnet	drop	5	classified-2026-10-06	jev
+nuget	keep	5	classified-2026-10-06	jev
+nvd	drop	5	classified-2026-10-06	session
+nvidia h100	drop	5	classified-2026-10-06	jev
+okta workforce identity	drop	5	classified-2026-10-06	jev
+openconfig	keep	5	classified-2026-10-06	jev
+openscap	keep	5	classified-2026-10-06	jev
+ops manager	drop	5	classified-2026-10-06	jev
+pac	drop	5	classified-2026-10-06	jev
+panther	drop	5	classified-2026-10-06	session
+pytorch distributed	keep	5	classified-2026-10-06	jev
+q sys	drop	5	classified-2026-10-06	session
+rdc	drop	5	classified-2026-10-06	jev
+rtc	drop	5	classified-2026-10-06	jev
+rtmp	keep	5	classified-2026-10-06	jev
+schneider electric	drop	5	classified-2026-10-06	jev
+scrapy	keep	5	classified-2026-10-06	jev
+search ads	drop	5	classified-2026-10-06	jev
+shopify plus	drop	5	classified-2026-10-06	jev
+slack enterprise	drop	5	classified-2026-10-06	jev
+slingshot	drop	5	classified-2026-10-06	session
+stash	drop	5	classified-2026-10-06	session
+sumologic	keep	5	classified-2026-10-06	jev
+tdr	drop	5	classified-2026-10-06	jev
+torch	keep	5	classified-2026-10-06	jev
+tso	drop	5	classified-2026-10-06	session
+u2f	keep	5	classified-2026-10-06	jev
+upf	drop	5	classified-2026-10-06	session
+verint	drop	5	classified-2026-10-06	jev
+vpc service controls	keep	5	classified-2026-10-06	jev
+webflux	keep	5	classified-2026-10-06	jev
+wysiwyg	drop	5	classified-2026-10-06	jev
+xarray	keep	5	classified-2026-10-06	jev
+zalando	drop	5	classified-2026-10-06	jev
+19c	drop	5	classified-2026-10-06	session
+2fa	drop	5	classified-2026-10-06	jev
+accumulo	keep	5	classified-2026-10-06	jev
+acumatica	drop	5	classified-2026-10-06	session
+adt	drop	5	classified-2026-10-06	jev
+ai devops	drop	5	classified-2026-10-06	jev
+ai leveraged	drop	5	classified-2026-10-06	jev
+ale	drop	5	classified-2026-10-06	session
+analyste	drop	5	classified-2026-10-06	jev
+anforderungen	drop	5	classified-2026-10-06	jev
+arcgis desktop	keep	5	classified-2026-10-06	jev
+arcpy	keep	5	classified-2026-10-06	jev
+argus	drop	5	classified-2026-10-06	jev
+arm64	drop	5	classified-2026-10-06	jev
+aslr	drop	5	classified-2026-10-06	jev
+automation studio	drop	5	classified-2026-10-06	session
+av1	keep	5	classified-2026-10-06	jev
+bacnet	keep	5	classified-2026-10-06	jev
+bam	drop	5	classified-2026-10-06	session
+bentley	drop	5	classified-2026-10-06	jev
+ccdp	drop	5	classified-2026-10-06	jev
+cisco aci	keep	5	classified-2026-10-06	jev
+cna	drop	5	classified-2026-10-06	jev
+comm	drop	5	classified-2026-10-06	jev
+costpoint	drop	5	classified-2026-10-06	session
+d365 finance	keep	5	classified-2026-10-06	session
+dcc	drop	5	classified-2026-10-06	jev
+ddr4	keep	5	classified-2026-10-06	jev
+docebo	drop	5	classified-2026-10-06	session
+docx	drop	5	classified-2026-10-06	jev
+ebgp	keep	5	classified-2026-10-06	session
+expedia	drop	5	classified-2026-10-06	jev
+ext4	keep	5	classified-2026-10-06	jev
+flax	keep	5	classified-2026-10-06	jev
+hdr	drop	5	classified-2026-10-06	jev
+icinga	keep	5	classified-2026-10-06	jev
+iex	drop	5	classified-2026-10-06	session
+integration hub	keep	5	classified-2026-10-06	jev
+ispm	drop	5	classified-2026-10-06	jev
+itil aligned	drop	5	classified-2026-10-06	jev
+jpeg	keep	5	classified-2026-10-06	jev
+kafka connect	keep	5	classified-2026-10-06	jev
+kali	keep	5	classified-2026-10-06	jev
+koa	keep	5	classified-2026-10-06	jev
+lambdatest	keep	5	classified-2026-10-06	jev
+leandata	drop	5	classified-2026-10-06	session
+li ms1	drop	5	classified-2026-10-06	jev
+linkedin ads	drop	5	classified-2026-10-06	jev
+lpc	drop	5	classified-2026-10-06	jev
+mastra	keep	5	classified-2026-10-06	jev
+mbist	drop	5	classified-2026-10-06	session
+mern	drop	5	classified-2026-10-06	jev
+ml dsa	keep	5	classified-2026-10-06	jev
+ml kem	keep	5	classified-2026-10-06	jev
+mparticle	keep	5	classified-2026-10-06	jev
+mqa	drop	5	classified-2026-10-06	jev
+ms dynamics	drop	5	classified-2026-10-06	jev
+ms outlook	drop	5	classified-2026-10-06	jev
+msi	drop	5	classified-2026-10-06	jev
+nacha	drop	5	classified-2026-10-06	jev
+nemo	keep	5	classified-2026-10-06	jev
+nim	keep	5	classified-2026-10-06	jev
+nornir	keep	5	classified-2026-10-06	jev
+nsx	keep	5	classified-2026-10-06	session
+ntfs	keep	5	classified-2026-10-06	jev
+openfga	keep	5	classified-2026-10-06	jev
+openmetadata	keep	5	classified-2026-10-06	jev
+oracle sql	keep	5	classified-2026-10-06	jev
+pim sm	keep	5	classified-2026-10-06	jev
+pma	drop	5	classified-2026-10-06	jev
+pyarrow	keep	5	classified-2026-10-06	jev
+pylon	drop	5	classified-2026-10-06	jev
+pypi	keep	5	classified-2026-10-06	jev
+pytorch lightning	keep	5	classified-2026-10-06	jev
+remoteview	drop	5	classified-2026-10-06	session
+rouge	drop	5	classified-2026-10-06	session
+rtu	drop	5	classified-2026-10-06	session
+sap fi	drop	5	classified-2026-10-06	jev
+screaming frog	drop	5	classified-2026-10-06	session
+sensu	keep	5	classified-2026-10-06	jev
+siemens teamcenter plm	keep	5	classified-2026-10-06	jev
+smart tv	drop	5	classified-2026-10-06	jev
+tencent	drop	5	classified-2026-10-06	jev
+tiktok ads	drop	5	classified-2026-10-06	jev
+uv vis	drop	5	classified-2026-10-06	jev
+vertica	keep	5	classified-2026-10-06	jev
+victorialogs	keep	5	classified-2026-10-06	jev
+wm	drop	5	classified-2026-10-06	jev
+workmanager	keep	5	classified-2026-10-06	jev
+4hana finance	drop	5	classified-2026-10-06	session
+access manager	drop	5	classified-2026-10-06	jev
+agent development kit	keep	5	classified-2026-10-06	session
+ahb	keep	5	classified-2026-10-06	jev
+ai agents team	drop	5	classified-2026-10-06	jev
+amazon q developer	keep	5	classified-2026-10-06	jev
+apk	drop	5	classified-2026-10-06	session
+aqa	drop	5	classified-2026-10-06	jev
+awc	drop	5	classified-2026-10-06	session
+azure openai service	keep	5	classified-2026-10-06	jev
+bentoml	keep	5	classified-2026-10-06	jev
+biamp	drop	5	classified-2026-10-06	jev
+blue yonder	drop	5	classified-2026-10-06	jev
+bluetooth low energy	keep	5	classified-2026-10-06	session
+byok	drop	5	classified-2026-10-06	jev
+captcha	drop	5	classified-2026-10-06	jev
+cartography	drop	5	classified-2026-10-06	jev
+cisco dna	drop	5	classified-2026-10-06	jev
+claude.md	drop	5	classified-2026-10-06	jev
+cloudsec	drop	5	classified-2026-10-06	jev
+cno developer	drop	5	classified-2026-10-06	jev
+conan	keep	5	classified-2026-10-06	jev
+concourse	keep	5	classified-2026-10-06	jev
+converged ethernet	drop	5	classified-2026-10-06	jev
+cpsm	drop	5	classified-2026-10-06	jev
+crl	drop	5	classified-2026-10-06	session
+dama	drop	5	classified-2026-10-06	jev
+databricks asset bundles	keep	5	classified-2026-10-06	jev
+datastudio	keep	5	classified-2026-10-06	jev
+dbre	drop	5	classified-2026-10-06	jev
+descript	drop	5	classified-2026-10-06	jev
+dfma	drop	5	classified-2026-10-06	jev
+dnn	drop	5	classified-2026-10-06	jev
+doris	keep	5	classified-2026-10-06	jev
+dst	drop	5	classified-2026-10-06	jev
+ecl	drop	5	classified-2026-10-06	jev
+ecomm	drop	5	classified-2026-10-06	jev
+enterprise microsoft	drop	5	classified-2026-10-06	jev
+etap	drop	5	classified-2026-10-06	session
+etw	keep	5	classified-2026-10-06	jev
+experian	drop	5	classified-2026-10-06	jev
+extron	drop	5	classified-2026-10-06	session
+fednow	drop	5	classified-2026-10-06	session
+fga	drop	5	classified-2026-10-06	session
+finicity	keep	5	classified-2026-10-06	jev
+fortimanager	keep	5	classified-2026-10-06	jev
+frame.io	drop	5	classified-2026-10-06	jev
+gb200	drop	5	classified-2026-10-06	jev
+gen5	drop	5	classified-2026-10-06	jev
+geoserver	keep	5	classified-2026-10-06	jev
+gfebs	drop	5	classified-2026-10-06	jev
+gin	keep	5	classified-2026-10-06	jev
+google data studio	keep	5	classified-2026-10-06	jev
+graph rag	drop	5	classified-2026-10-06	jev
+gsm	drop	5	classified-2026-10-06	jev
+har	drop	5	classified-2026-10-06	session
+helix	drop	5	classified-2026-10-06	jev
+highjump	drop	5	classified-2026-10-06	session
+hip	drop	5	classified-2026-10-06	session
+hmac	keep	5	classified-2026-10-06	jev
+hurricane	drop	5	classified-2026-10-06	jev
+inferentia	keep	5	classified-2026-10-06	jev
+infraops	drop	5	classified-2026-10-06	jev
+innodb	keep	5	classified-2026-10-06	jev
+itil v3	drop	5	classified-2026-10-06	jev
+jackson	drop	5	classified-2026-10-06	session
+jde	drop	5	classified-2026-10-06	jev
+jira cloud	keep	5	classified-2026-10-06	jev
+jlpt n1	drop	5	classified-2026-10-06	jev
+kantar	drop	5	classified-2026-10-06	jev
+kubebuilder	keep	5	classified-2026-10-06	jev
+kubernetes application developer	drop	5	classified-2026-10-06	jev
+lakeflow declarative pipelines	keep	5	classified-2026-10-06	jev
+lcd	drop	5	classified-2026-10-06	jev
+loom	drop	5	classified-2026-10-06	session
+lottie	keep	5	classified-2026-10-06	jev
+mec	drop	5	classified-2026-10-06	jev
+media3	keep	5	classified-2026-10-06	jev
+meta ads manager	drop	5	classified-2026-10-06	jev
+microsoft agent framework	keep	5	classified-2026-10-06	jev
+microsoft endpoint manager	keep	5	classified-2026-10-06	jev
+morningstar	drop	5	classified-2026-10-06	jev
+mp4	keep	5	classified-2026-10-06	jev
+net c#	drop	5	classified-2026-10-06	session
+netcdf	keep	5	classified-2026-10-06	jev
+node js	keep	5	classified-2026-10-06	jev
+npc	drop	5	classified-2026-10-06	jev
+oda	drop	5	classified-2026-10-06	jev
+onelogin	keep	5	classified-2026-10-06	jev
+ooa	drop	5	classified-2026-10-06	jev
+openair	drop	5	classified-2026-10-06	session
+openembedded	keep	5	classified-2026-10-06	jev
+pci express	drop	5	classified-2026-10-06	jev
+pht	drop	5	classified-2026-10-06	jev
+private link	keep	5	classified-2026-10-06	jev
+pydanticai	keep	5	classified-2026-10-06	jev
+qliksense	keep	5	classified-2026-10-06	jev
+queueable	drop	5	classified-2026-10-06	session
+refinitiv	drop	5	classified-2026-10-06	jev
+ricefw	drop	5	classified-2026-10-06	jev
+ruckus	drop	5	classified-2026-10-06	session
+safebase	drop	5	classified-2026-10-06	session
+sap s4	keep	5	classified-2026-10-06	session
+scd	drop	5	classified-2026-10-06	jev
+server+	drop	5	classified-2026-10-06	jev
+shopify functions	keep	5	classified-2026-10-06	jev
+sia	drop	5	classified-2026-10-06	jev
+simcenter 3d	drop	5	classified-2026-10-06	session
+sn	drop	5	classified-2026-10-06	jev
+socet gxp	drop	5	classified-2026-10-06	session
+soda	drop	5	classified-2026-10-06	session
+solution manager	keep	5	classified-2026-10-06	session
+sora	keep	5	classified-2026-10-06	jev
+strapi	keep	5	classified-2026-10-06	jev
+supermicro	drop	5	classified-2026-10-06	jev
+tan	drop	5	classified-2026-10-06	jev
+telepresence	drop	5	classified-2026-10-06	jev
+terraform managed	drop	5	classified-2026-10-06	jev
+tinder	drop	5	classified-2026-10-06	jev
+tpot	drop	5	classified-2026-10-06	jev
+vapt	drop	5	classified-2026-10-06	jev
+versionone	keep	5	classified-2026-10-06	jev
+warden	drop	5	classified-2026-10-06	jev
+workday web services	keep	5	classified-2026-10-06	jev
+xsd	keep	5	classified-2026-10-06	jev
+3par	keep	5	classified-2026-10-06	jev
+a1	drop	5	classified-2026-10-06	jev
+adobe captivate	drop	5	classified-2026-10-06	jev
+adobe marketing	drop	5	classified-2026-10-06	jev
+api rest	drop	5	classified-2026-10-06	jev
+apple tv	drop	5	classified-2026-10-06	jev
+apptio	drop	5	classified-2026-10-06	session
+asyncapi	keep	5	classified-2026-10-06	jev
+attn	drop	5	classified-2026-10-06	jev
+azure ad b2c	keep	5	classified-2026-10-06	jev
+azure gov	keep	5	classified-2026-10-06	session
+azure iaas	drop	5	classified-2026-10-06	jev
+bob	drop	5	classified-2026-10-06	session
+canvases	drop	5	classified-2026-10-06	jev
+cesium	keep	5	classified-2026-10-06	jev
+cf	drop	5	classified-2026-10-06	jev
+cis itsm	drop	5	classified-2026-10-06	jev
+claude managed agents	keep	5	classified-2026-10-06	jev
+claudecode	keep	5	classified-2026-10-06	jev
+cloud armor	keep	5	classified-2026-10-06	jev
+cocotb	keep	5	classified-2026-10-06	jev
+coda	drop	5	classified-2026-10-06	jev
+code pipeline	keep	5	classified-2026-10-06	jev
+comptia cysa+	drop	5	classified-2026-10-06	jev
+copilot chat	drop	5	classified-2026-10-06	jev
+crma	drop	5	classified-2026-10-06	jev
+crt	drop	5	classified-2026-10-06	jev
+cucm	keep	5	classified-2026-10-06	session
+cumulus linux	keep	5	classified-2026-10-06	jev
+cute	keep	5	classified-2026-10-06	jev
+dai	drop	5	classified-2026-10-06	jev
+delmia	drop	5	classified-2026-10-06	session
+dependabot	keep	5	classified-2026-10-06	jev
+dynamics ax	keep	5	classified-2026-10-06	jev
+ecdsa	keep	5	classified-2026-10-06	jev
+eql	keep	5	classified-2026-10-06	jev
+etsi	drop	5	classified-2026-10-06	jev
+excel power query	keep	5	classified-2026-10-06	jev
+expensify	drop	5	classified-2026-10-06	jev
+fabric lakehouse	keep	5	classified-2026-10-06	jev
+fcoe	keep	5	classified-2026-10-06	jev
+fcp	drop	5	classified-2026-10-06	session
+financial crimes operations	drop	5	classified-2026-10-06	jev
+fp4	drop	5	classified-2026-10-06	session
+galileo	drop	5	classified-2026-10-06	session
+gb300	drop	5	classified-2026-10-06	jev
+github prs	drop	5	classified-2026-10-06	jev
+google ad manager	drop	5	classified-2026-10-06	jev
+google identity	drop	5	classified-2026-10-06	jev
+google it support	drop	5	classified-2026-10-06	jev
+gov cloud	drop	5	classified-2026-10-06	jev
+gpu direct storage	keep	5	classified-2026-10-06	session
+graphana	keep	5	classified-2026-10-06	jev
+hba	drop	5	classified-2026-10-06	session
+hdd	drop	5	classified-2026-10-06	session
+hie	drop	5	classified-2026-10-06	jev
+horde	drop	5	classified-2026-10-06	session
+huel	drop	5	classified-2026-10-06	jev
+hyperautomation	drop	5	classified-2026-10-06	jev
+ibis ami	keep	5	classified-2026-10-06	jev
+irq	drop	5	classified-2026-10-06	jev
+ivd	drop	5	classified-2026-10-06	jev
+jema	drop	5	classified-2026-10-06	jev
+juniper networks	drop	5	classified-2026-10-06	jev
+katalon	keep	5	classified-2026-10-06	jev
+kdb	keep	5	classified-2026-10-06	session
+keystore	drop	5	classified-2026-10-06	session
+kinaxis	drop	5	classified-2026-10-06	session
+kochava	drop	5	classified-2026-10-06	session
+lacework	keep	5	classified-2026-10-06	jev
+leaflet	keep	5	classified-2026-10-06	jev
+lego	drop	5	classified-2026-10-06	jev
+linkedin sales navigator	drop	5	classified-2026-10-06	jev
+litert	keep	5	classified-2026-10-06	jev
+lob	drop	5	classified-2026-10-06	jev
+loe	drop	5	classified-2026-10-06	jev
+lsm	drop	5	classified-2026-10-06	jev
+m2m	drop	5	classified-2026-10-06	jev
+m365 copilot	keep	5	classified-2026-10-06	session
+manageengine	drop	5	classified-2026-10-06	session
+mastercontrol	drop	5	classified-2026-10-06	session
+mc lag	keep	5	classified-2026-10-06	jev
+mci	drop	5	classified-2026-10-06	jev
+mdt	keep	5	classified-2026-10-06	jev
+mdx	drop	5	classified-2026-10-06	jev
+microvm	drop	5	classified-2026-10-06	jev
+mobile qa	drop	5	classified-2026-10-06	jev
+model builder	drop	5	classified-2026-10-06	jev
+monaco	drop	5	classified-2026-10-06	session
+mule	keep	5	classified-2026-10-06	session
+netscaler	keep	5	classified-2026-10-06	jev
+nist pqc	drop	5	classified-2026-10-06	jev
+nutanix ahv	keep	5	classified-2026-10-06	jev
+nvidia isaac sim	keep	5	classified-2026-10-06	jev
+obiee	keep	5	classified-2026-10-06	jev
+ogr	keep	5	classified-2026-10-06	jev
+omnibus	drop	5	classified-2026-10-06	jev
+ontap	keep	5	classified-2026-10-06	session
+opal	drop	5	classified-2026-10-06	session
+openai gpt	drop	5	classified-2026-10-06	jev
+other orm	drop	5	classified-2026-10-06	jev
+pdd	drop	5	classified-2026-10-06	jev
+pipelines etl	drop	5	classified-2026-10-06	jev
+pmd	keep	5	classified-2026-10-06	jev
+power fx	keep	5	classified-2026-10-06	jev
+power platform alm	drop	5	classified-2026-10-06	jev
+questa	keep	5	classified-2026-10-06	jev
+rke	keep	5	classified-2026-10-06	jev
+rlc	drop	5	classified-2026-10-06	jev
+rtcp	keep	5	classified-2026-10-06	jev
+saf	drop	5	classified-2026-10-06	jev
+salesforce devops	drop	5	classified-2026-10-06	jev
+sec mals	drop	5	classified-2026-10-06	jev
+sidecar	drop	5	classified-2026-10-06	jev
+skan	drop	5	classified-2026-10-06	session
+skillsexperience	drop	5	classified-2026-10-06	jev
+skypilot	keep	5	classified-2026-10-06	jev
+slack enterprise grid	drop	5	classified-2026-10-06	session
+smbus	keep	5	classified-2026-10-06	jev
+snowflake horizon	keep	5	classified-2026-10-06	jev
+snowflake snowpro	drop	5	classified-2026-10-06	jev
+snpe	keep	5	classified-2026-10-06	jev
+sox regulated	drop	5	classified-2026-10-06	jev
+spd	drop	5	classified-2026-10-06	jev
+tekton	keep	5	classified-2026-10-06	jev
+testops	drop	5	classified-2026-10-06	jev
+tibco	drop	5	classified-2026-10-06	session
+top secret dod	drop	5	classified-2026-10-06	jev
+tt	drop	5	classified-2026-10-06	jev
+ue	drop	5	classified-2026-10-06	session
+vb script	keep	5	classified-2026-10-06	jev
+veeva crm	keep	5	classified-2026-10-06	jev
+vertiv	drop	5	classified-2026-10-06	jev
+vivado	keep	5	classified-2026-10-06	jev
+wal	drop	5	classified-2026-10-06	jev
+whisper	keep	5	classified-2026-10-06	jev
+wmi	keep	5	classified-2026-10-06	jev
+xactly	drop	5	classified-2026-10-06	session
+xbox series x	drop	5	classified-2026-10-06	jev
+youtrack	drop	5	classified-2026-10-06	jev
+zdx	keep	5	classified-2026-10-06	jev
+zenml	keep	5	classified-2026-10-06	jev
+3d gaussian splatting	drop	5	classified-2026-10-06	session
+3g	keep	5	classified-2026-10-06	jev
+agentops	keep	5	classified-2026-10-06	jev
+ai agent studio	keep	5	classified-2026-10-06	jev
+alicloud	keep	5	classified-2026-10-06	session
+amazon web service	keep	5	classified-2026-10-06	jev
+amc	drop	5	classified-2026-10-06	jev
+api access management	drop	5	classified-2026-10-06	jev
+appfolio	drop	5	classified-2026-10-06	jev
+arcsight	keep	5	classified-2026-10-06	jev
+arena plm	drop	5	classified-2026-10-06	session
+automl	drop	5	classified-2026-10-06	jev
+bloc	keep	5	classified-2026-10-06	jev
+bo	drop	5	classified-2026-10-06	jev
+bugsnag	keep	5	classified-2026-10-06	jev
+ccd	drop	5	classified-2026-10-06	jev
+cdh	drop	5	classified-2026-10-06	session
+cdma	keep	5	classified-2026-10-06	jev
+chakra	keep	5	classified-2026-10-06	session
+chargebee	drop	5	classified-2026-10-06	session
+cisco dna center	keep	5	classified-2026-10-06	jev
+cl	drop	5	classified-2026-10-06	jev
+cncf kubernetes	drop	5	classified-2026-10-06	jev
+cne	drop	5	classified-2026-10-06	jev
+copilot agent	drop	5	classified-2026-10-06	jev
+cortex xsoar	keep	5	classified-2026-10-06	jev
+cte	drop	5	classified-2026-10-06	jev
+dal	drop	5	classified-2026-10-06	jev
+ddp	drop	5	classified-2026-10-06	session
+deepgram	keep	5	classified-2026-10-06	jev
+dmtf	drop	5	classified-2026-10-06	jev
+dockerized	drop	5	classified-2026-10-06	jev
+domain controller	drop	5	classified-2026-10-06	jev
+dsf	drop	5	classified-2026-10-06	jev
+eaton	drop	5	classified-2026-10-06	jev
+email studio	drop	5	classified-2026-10-06	session
+english being	drop	5	classified-2026-10-06	jev
+epbcs	keep	5	classified-2026-10-06	jev
+erp finance	drop	5	classified-2026-10-06	jev
+etom	drop	5	classified-2026-10-06	jev
+event bridge	keep	5	classified-2026-10-06	jev
+fiona	drop	5	classified-2026-10-06	session
+framer	drop	5	classified-2026-10-06	session
+gbm	drop	5	classified-2026-10-06	jev
+giac security essentials	drop	5	classified-2026-10-06	jev
+google ai overviews	drop	5	classified-2026-10-06	jev
+google antigravity	drop	5	classified-2026-10-06	jev
+google earth engine	keep	5	classified-2026-10-06	jev
+gpt oss	drop	5	classified-2026-10-06	jev
+gsp	drop	5	classified-2026-10-06	jev
+gweb	drop	5	classified-2026-10-06	jev
+haystack	keep	5	classified-2026-10-06	jev
+hedis	drop	5	classified-2026-10-06	jev
+hgx	drop	5	classified-2026-10-06	jev
+hsi	drop	5	classified-2026-10-06	jev
+iommu	drop	5	classified-2026-10-06	session
+ios xe	keep	5	classified-2026-10-06	jev
+isaac lab	keep	5	classified-2026-10-06	jev
+ixp	drop	5	classified-2026-10-06	jev
+jira assets	keep	5	classified-2026-10-06	jev
+kai	drop	5	classified-2026-10-06	jev
+koin	keep	5	classified-2026-10-06	jev
+kronos	drop	5	classified-2026-10-06	jev
+leaderboard	drop	5	classified-2026-10-06	jev
+mcm	drop	5	classified-2026-10-06	jev
+meddicc	drop	5	classified-2026-10-06	jev
+mlperf	drop	5	classified-2026-10-06	jev
+ms graph	keep	5	classified-2026-10-06	jev
+netdevops	drop	5	classified-2026-10-06	jev
+ni teststand	keep	5	classified-2026-10-06	jev
+npsp	keep	5	classified-2026-10-06	jev
+opcenter	drop	5	classified-2026-10-06	session
+orb	drop	5	classified-2026-10-06	session
+orca security	keep	5	classified-2026-10-06	jev
+palo alto pcnse	drop	5	classified-2026-10-06	jev
+pbr	drop	5	classified-2026-10-06	jev
+percy	drop	5	classified-2026-10-06	session
+pkcs#11	keep	5	classified-2026-10-06	jev
+planful	drop	5	classified-2026-10-06	session
+pmc	drop	5	classified-2026-10-06	jev
+powerpivot	keep	5	classified-2026-10-06	jev
+pspo	drop	5	classified-2026-10-06	jev
+pty	drop	5	classified-2026-10-06	jev
+qbo	keep	5	classified-2026-10-06	jev
+qsc	drop	5	classified-2026-10-06	jev
+real time cdp	keep	5	classified-2026-10-06	jev
+revpro	drop	5	classified-2026-10-06	session
+rocketlane	drop	5	classified-2026-10-06	jev
+rockwell factorytalk	keep	5	classified-2026-10-06	jev
+sai	drop	5	classified-2026-10-06	session
+salesforce experience cloud	keep	5	classified-2026-10-06	jev
+sans top	drop	5	classified-2026-10-06	jev
+sap concur	drop	5	classified-2026-10-06	jev
+sap tm	keep	5	classified-2026-10-06	jev
+schema.org	keep	5	classified-2026-10-06	jev
+servicenow cmdb	keep	5	classified-2026-10-06	jev
+sfra	drop	5	classified-2026-10-06	jev
+sl	drop	5	classified-2026-10-06	jev
+sneak	drop	5	classified-2026-10-06	jev
+snowpro advanced	drop	5	classified-2026-10-06	jev
+spdx	keep	5	classified-2026-10-06	jev
+spfx	keep	5	classified-2026-10-06	jev
+sprinklr	drop	5	classified-2026-10-06	session
+stack overflow	drop	5	classified-2026-10-06	jev
+synology	drop	5	classified-2026-10-06	jev
+systemverilog assertions	keep	5	classified-2026-10-06	jev
+tcf	drop	5	classified-2026-10-06	jev
+thales	drop	5	classified-2026-10-06	jev
+ti c2000	keep	5	classified-2026-10-06	jev
+tofu	keep	5	classified-2026-10-06	jev
+trackwise	drop	5	classified-2026-10-06	session
+tracy	drop	5	classified-2026-10-06	jev
+treasury management system	drop	5	classified-2026-10-06	jev
+turbo	drop	5	classified-2026-10-06	session
+umg	drop	5	classified-2026-10-06	session
+upbound	drop	5	classified-2026-10-06	jev
+vehicle spy	keep	5	classified-2026-10-06	jev
+verständnis	drop	5	classified-2026-10-06	jev
+vp9	keep	5	classified-2026-10-06	jev
+vpn gateway	drop	5	classified-2026-10-06	session
+w3c	drop	5	classified-2026-10-06	jev
+walletconnect	keep	5	classified-2026-10-06	jev
+west sacramento	drop	5	classified-2026-10-06	jev
+zbrush	drop	5	classified-2026-10-06	jev
+zscaler zia	keep	5	classified-2026-10-06	jev
+200g	drop	5	classified-2026-10-06	jev
+acmp	drop	5	classified-2026-10-06	jev
+adobe data collection	keep	5	classified-2026-10-06	jev
+adobe firefly	drop	5	classified-2026-10-06	jev
+aft	drop	5	classified-2026-10-06	jev
+agent2agent	keep	5	classified-2026-10-06	jev
+agiloft	drop	5	classified-2026-10-06	session
+angular material	keep	5	classified-2026-10-06	jev
+anyconnect	keep	5	classified-2026-10-06	jev
+apo	drop	5	classified-2026-10-06	jev
+appian cloud	drop	5	classified-2026-10-06	jev
+apple search ads	drop	5	classified-2026-10-06	jev
+apple wallet	drop	5	classified-2026-10-06	jev
+atlassian confluence	drop	5	classified-2026-10-06	jev
+auto cad	drop	5	classified-2026-10-06	jev
+azure files	keep	5	classified-2026-10-06	jev
+bcm	drop	5	classified-2026-10-06	jev
+bradstreet	drop	5	classified-2026-10-06	jev
+build ui	drop	5	classified-2026-10-06	jev
+bytedance	drop	5	classified-2026-10-06	jev
+c+	drop	5	classified-2026-10-06	jev
+cdaq	keep	5	classified-2026-10-06	jev
+cdw	drop	5	classified-2026-10-06	jev
+ceres	drop	5	classified-2026-10-06	session
+chandler	drop	5	classified-2026-10-06	jev
+chili piper	drop	5	classified-2026-10-06	session
+chronon	keep	5	classified-2026-10-06	jev
+cipher	drop	5	classified-2026-10-06	jev
+cisco systems	drop	5	classified-2026-10-06	jev
+claroty	keep	5	classified-2026-10-06	jev
+clearpass	keep	5	classified-2026-10-06	session
+cmd	drop	5	classified-2026-10-06	jev
+cmk	drop	5	classified-2026-10-06	jev
+comptia casp+	drop	5	classified-2026-10-06	jev
+comptia server+	drop	5	classified-2026-10-06	jev
+computação	drop	5	classified-2026-10-06	jev
+content strategist	drop	5	classified-2026-10-06	jev
+cql	drop	5	classified-2026-10-06	jev
+cri	drop	5	classified-2026-10-06	jev
+csc	drop	5	classified-2026-10-06	jev
+databrick	drop	5	classified-2026-10-06	jev
+dedupe	drop	5	classified-2026-10-06	session
+deltek costpoint	drop	5	classified-2026-10-06	jev
+dewesoft	drop	5	classified-2026-10-06	session
+duck creek	drop	5	classified-2026-10-06	session
+dun	drop	5	classified-2026-10-06	jev
+egnyte	drop	5	classified-2026-10-06	jev
+epicor erp	drop	5	classified-2026-10-06	jev
+everstage	drop	5	classified-2026-10-06	session
+fabric manager	keep	5	classified-2026-10-06	jev
+fda qmsr	drop	5	classified-2026-10-06	jev
+figjam	drop	5	classified-2026-10-06	jev
+filevault	keep	5	classified-2026-10-06	jev
+fortianalyzer	keep	5	classified-2026-10-06	jev
+fp16	drop	5	classified-2026-10-06	session
+gaa	drop	5	classified-2026-10-06	jev
+google gcp	keep	5	classified-2026-10-06	jev
+google sheet	drop	5	classified-2026-10-06	jev
+google sre	drop	5	classified-2026-10-06	jev
+gql	keep	5	classified-2026-10-06	jev
+grunt	keep	5	classified-2026-10-06	jev
+hexagon	drop	5	classified-2026-10-06	jev
+hfm	drop	5	classified-2026-10-06	session
+hspice	drop	5	classified-2026-10-06	session
+huggingface transformers	keep	5	classified-2026-10-06	jev
+iavm	drop	5	classified-2026-10-06	jev
+icl	drop	5	classified-2026-10-06	jev
+idaas	drop	5	classified-2026-10-06	jev
+incose csep	drop	5	classified-2026-10-06	jev
+inmon	drop	5	classified-2026-10-06	jev
+intapp	drop	5	classified-2026-10-06	jev
+internetworking	drop	5	classified-2026-10-06	jev
+isaacsim	keep	5	classified-2026-10-06	jev
+json ld	keep	5	classified-2026-10-06	jev
+knative	keep	5	classified-2026-10-06	jev
+kubernetes mastery	drop	5	classified-2026-10-06	jev
+lauterbach	drop	5	classified-2026-10-06	session
+lexisnexis	drop	5	classified-2026-10-06	jev
+litmus	drop	5	classified-2026-10-06	session
+logql	keep	5	classified-2026-10-06	jev
+majestic	drop	5	classified-2026-10-06	jev
+mapper	drop	5	classified-2026-10-06	jev
+mcal	keep	5	classified-2026-10-06	jev
+mdio	keep	5	classified-2026-10-06	jev
+meddra	drop	5	classified-2026-10-06	session
+microsoft advertising	drop	5	classified-2026-10-06	jev
+microsoft dynamics crm	drop	5	classified-2026-10-06	jev
+ms sharepoint	keep	5	classified-2026-10-06	jev
+msci	drop	5	classified-2026-10-06	jev
+nca	drop	5	classified-2026-10-06	jev
+netflix conductor	keep	5	classified-2026-10-06	jev
+netops	drop	5	classified-2026-10-06	jev
+networkpolicy	drop	5	classified-2026-10-06	session
+ni labview	keep	5	classified-2026-10-06	jev
+no code data science	drop	5	classified-2026-10-06	jev
+ode	drop	5	classified-2026-10-06	jev
+onenote	drop	5	classified-2026-10-06	jev
+openrouter	keep	5	classified-2026-10-06	jev
+opentext	drop	5	classified-2026-10-06	jev
+oracle epm cloud	keep	5	classified-2026-10-06	session
+outbrain	drop	5	classified-2026-10-06	jev
+peek	drop	5	classified-2026-10-06	jev
+pester	keep	5	classified-2026-10-06	jev
+pfc	drop	5	classified-2026-10-06	session
+phase i	drop	5	classified-2026-10-06	jev
+plex	drop	5	classified-2026-10-06	session
+premiere pro	drop	5	classified-2026-10-06	jev
+prism analytics	keep	5	classified-2026-10-06	session
+proxmox ve	keep	5	classified-2026-10-06	jev
+pyrit	keep	5	classified-2026-10-06	jev
+r3	drop	5	classified-2026-10-06	jev
+rasp	drop	5	classified-2026-10-06	jev
+react context	keep	5	classified-2026-10-06	jev
+recursion	drop	5	classified-2026-10-06	jev
+rssi	drop	5	classified-2026-10-06	jev
+rtcdp	keep	5	classified-2026-10-06	jev
+rtoses	drop	5	classified-2026-10-06	jev
+safe scrum	drop	5	classified-2026-10-06	jev
+salesforce government cloud	drop	5	classified-2026-10-06	jev
+sap hcm	keep	5	classified-2026-10-06	jev
+sap pp	keep	5	classified-2026-10-06	jev
+scapi	drop	5	classified-2026-10-06	session
+sentinelone edr	keep	5	classified-2026-10-06	jev
+shodan	keep	5	classified-2026-10-06	jev
+sidewalk	drop	5	classified-2026-10-06	jev
+sigir	drop	5	classified-2026-10-06	jev
+snomed ct	keep	5	classified-2026-10-06	jev
+soi	drop	5	classified-2026-10-06	jev
+spo	drop	5	classified-2026-10-06	session
+sql like	drop	5	classified-2026-10-06	jev
+suiteapps	drop	5	classified-2026-10-06	session
+suitebilling	keep	5	classified-2026-10-06	jev
+suitescript 2.x	keep	5	classified-2026-10-06	jev
+supplier portal	drop	5	classified-2026-10-06	jev
+synthesia	drop	5	classified-2026-10-06	jev
+team center	keep	5	classified-2026-10-06	jev
+testcontainers	keep	5	classified-2026-10-06	jev
+tetragon	keep	5	classified-2026-10-06	jev
+tflint	keep	5	classified-2026-10-06	jev
+thor	drop	5	classified-2026-10-06	session
+tm forum	drop	5	classified-2026-10-06	jev
+tom	drop	5	classified-2026-10-06	jev
+torch.compile	keep	5	classified-2026-10-06	jev
+tp	drop	5	classified-2026-10-06	jev
+transunion	drop	5	classified-2026-10-06	jev
+uk security check	drop	5	classified-2026-10-06	jev
+unified communications manager	keep	5	classified-2026-10-06	jev
+usda	drop	5	classified-2026-10-06	jev
+usdc	drop	5	classified-2026-10-06	jev
+usergems	drop	5	classified-2026-10-06	jev
+vasp	drop	5	classified-2026-10-06	jev
+vena	drop	5	classified-2026-10-06	jev
+viper	drop	5	classified-2026-10-06	jev
+virustotal	keep	5	classified-2026-10-06	jev
+visualvm	keep	5	classified-2026-10-06	jev
+vorteil	drop	5	classified-2026-10-06	jev
+vpa	drop	5	classified-2026-10-06	session
+vwan	keep	5	classified-2026-10-06	jev
+wgs	drop	5	classified-2026-10-06	session
+workday prism	keep	5	classified-2026-10-06	jev
+workfront fusion	keep	5	classified-2026-10-06	jev
+wsdl	keep	5	classified-2026-10-06	jev
+xcelium	keep	5	classified-2026-10-06	jev
+xid	drop	5	classified-2026-10-06	jev
+xpedition	drop	5	classified-2026-10-06	session
+yellow	drop	5	classified-2026-10-06	jev
+z.b	drop	5	classified-2026-10-06	jev
+zenoss	keep	5	classified-2026-10-06	jev
+zerto	keep	5	classified-2026-10-06	jev
+zuora revenue	drop	5	classified-2026-10-06	session
+4hana public	drop	5	classified-2026-10-06	session
+802.1q	keep	5	classified-2026-10-06	jev
+ack	drop	5	classified-2026-10-06	session
+aconex	drop	5	classified-2026-10-06	session
+adm 2certification	drop	5	classified-2026-10-06	jev
+adobe marketing cloud	drop	5	classified-2026-10-06	session
+agentkit	drop	5	classified-2026-10-06	session
+agile plm	drop	5	classified-2026-10-06	session
+agx	keep	5	classified-2026-10-06	jev
+ai agent governance	drop	5	classified-2026-10-06	jev
+airwatch	keep	5	classified-2026-10-06	jev
+anna	drop	5	classified-2026-10-06	jev
+anova	drop	5	classified-2026-10-06	jev
+anti ddos	drop	5	classified-2026-10-06	jev
+anydesk	drop	5	classified-2026-10-06	jev
+apiand	drop	5	classified-2026-10-06	jev
+apriso	drop	5	classified-2026-10-06	session
+arista networks	drop	5	classified-2026-10-06	jev
+arm cpu	drop	5	classified-2026-10-06	jev
+aspera	keep	5	classified-2026-10-06	jev
+asw	drop	5	classified-2026-10-06	jev
+attio	drop	5	classified-2026-10-06	session
+autogpt	keep	5	classified-2026-10-06	jev
+automox	keep	5	classified-2026-10-06	jev
+aws support	drop	5	classified-2026-10-06	jev
+aws x ray	keep	5	classified-2026-10-06	jev
+azure paas	drop	5	classified-2026-10-06	jev
+azure portal	drop	5	classified-2026-10-06	jev
+azure well architected framework	drop	5	classified-2026-10-06	jev
+azure hosted	drop	5	classified-2026-10-06	jev
+baa	drop	5	classified-2026-10-06	jev
+bettercloud	keep	5	classified-2026-10-06	jev
+bigfix	keep	5	classified-2026-10-06	jev
+bigpicture	drop	5	classified-2026-10-06	session
+bloodhound	keep	5	classified-2026-10-06	jev
+bloomberg terminal	drop	5	classified-2026-10-06	jev
+bscp	drop	5	classified-2026-10-06	jev
+btl2	drop	5	classified-2026-10-06	jev
+caasm	drop	5	classified-2026-10-06	jev
+caboodle	drop	5	classified-2026-10-06	session
+caf	drop	5	classified-2026-10-06	jev
+cai	drop	5	classified-2026-10-06	jev
+cartesia	keep	5	classified-2026-10-06	jev
+cct	drop	5	classified-2026-10-06	jev
+cdmc	drop	5	classified-2026-10-06	jev
+certinia psa	keep	5	classified-2026-10-06	session
+cgeit	drop	5	classified-2026-10-06	jev
+chaps	drop	5	classified-2026-10-06	session
+cinder	keep	5	classified-2026-10-06	jev
+cloud sme	drop	5	classified-2026-10-06	jev
+cloud watch	keep	5	classified-2026-10-06	jev
+cloudflare waf	keep	5	classified-2026-10-06	jev
+codeforces	drop	5	classified-2026-10-06	jev
+comfyui	keep	5	classified-2026-10-06	jev
+configmaps	drop	5	classified-2026-10-06	session
+contentsquare	drop	5	classified-2026-10-06	session
+cri o	keep	5	classified-2026-10-06	jev
+crtl	drop	5	classified-2026-10-06	jev
+csd	drop	5	classified-2026-10-06	jev
+cub	keep	5	classified-2026-10-06	jev
+customersuccess	drop	5	classified-2026-10-06	jev
+cvent	drop	5	classified-2026-10-06	session
+dal a	drop	5	classified-2026-10-06	jev
+dapr	keep	5	classified-2026-10-06	jev
+darktrace	keep	5	classified-2026-10-06	jev
+databricks lakeflow	keep	5	classified-2026-10-06	jev
+def	drop	5	classified-2026-10-06	jev
+devops center	drop	5	classified-2026-10-06	session
+dfar	drop	5	classified-2026-10-06	jev
+distroless	keep	5	classified-2026-10-06	jev
+django orm	keep	5	classified-2026-10-06	jev
+docusign clm	drop	5	classified-2026-10-06	session
+dune	drop	5	classified-2026-10-06	session
+e5	drop	5	classified-2026-10-06	jev
+eeprom	drop	5	classified-2026-10-06	session
+elint	drop	5	classified-2026-10-06	jev
+ellucian banner	drop	5	classified-2026-10-06	session
+eme	drop	5	classified-2026-10-06	jev
+endnote	drop	5	classified-2026-10-06	jev
+esp idf	keep	5	classified-2026-10-06	jev
+etq	drop	5	classified-2026-10-06	session
+faang	drop	5	classified-2026-10-06	jev
+fabric data factory	keep	5	classified-2026-10-06	jev
+factorytalk view	drop	5	classified-2026-10-06	session
+field service lightning	keep	5	classified-2026-10-06	jev
+financialforce	keep	5	classified-2026-10-06	session
+fips validated	drop	5	classified-2026-10-06	jev
+flexsim	drop	5	classified-2026-10-06	session
+freemarker	keep	5	classified-2026-10-06	jev
+gddr	keep	5	classified-2026-10-06	jev
+geoevent server	keep	5	classified-2026-10-06	jev
+gitlab ultimate	drop	5	classified-2026-10-06	jev
+glacier	keep	5	classified-2026-10-06	jev
+golden gate	drop	5	classified-2026-10-06	jev
+google gemini enterprise	keep	5	classified-2026-10-06	jev
+gptp	keep	5	classified-2026-10-06	jev
+gpu dense	drop	5	classified-2026-10-06	jev
+gpudirect storage	keep	5	classified-2026-10-06	jev
+gtm facing	drop	5	classified-2026-10-06	jev
+habu	drop	5	classified-2026-10-06	session
+haifa	drop	5	classified-2026-10-06	jev
+hasura	keep	5	classified-2026-10-06	jev
+hic	drop	5	classified-2026-10-06	jev
+highspot	drop	5	classified-2026-10-06	jev
+hyperion planning	keep	5	classified-2026-10-06	jev
+icu	drop	5	classified-2026-10-06	session
+identityiq	keep	5	classified-2026-10-06	jev
+idrac	keep	5	classified-2026-10-06	jev
+ike	keep	5	classified-2026-10-06	session
+imagej	keep	5	classified-2026-10-06	jev
+importer	drop	5	classified-2026-10-06	jev
+incontact	keep	5	classified-2026-10-06	jev
+inp	drop	5	classified-2026-10-06	jev
+intelligent assistant	drop	5	classified-2026-10-06	jev
+ios ui	drop	5	classified-2026-10-06	jev
+i’ve	drop	5	classified-2026-10-06	jev
+ja3	keep	5	classified-2026-10-06	jev
+jamstack	drop	5	classified-2026-10-06	jev
+javascript seo	drop	5	classified-2026-10-06	jev
+jetty	keep	5	classified-2026-10-06	jev
+jira align	keep	5	classified-2026-10-06	jev
+jsf	drop	5	classified-2026-10-06	jev
+jsi	drop	5	classified-2026-10-06	session
+kettle	drop	5	classified-2026-10-06	session
+keystone	drop	5	classified-2026-10-06	session
+kmip	keep	5	classified-2026-10-06	jev
+korn	keep	5	classified-2026-10-06	session
+ktor	keep	5	classified-2026-10-06	jev
+l'infrastructure	drop	5	classified-2026-10-06	jev
+latte	drop	5	classified-2026-10-06	jev
+lecroy	drop	5	classified-2026-10-06	jev
+libfuzzer	keep	5	classified-2026-10-06	jev
+lpq	drop	5	classified-2026-10-06	jev
+marketing cloud next	keep	5	classified-2026-10-06	jev
+marvell	drop	5	classified-2026-10-06	jev
+materialui	keep	5	classified-2026-10-06	jev
+mcp connected	drop	5	classified-2026-10-06	jev
+microfabrication	drop	5	classified-2026-10-06	jev
+microsoft clarity	keep	5	classified-2026-10-06	jev
+mkdocs	keep	5	classified-2026-10-06	jev
+ml integrated	drop	5	classified-2026-10-06	jev
+mmu	drop	5	classified-2026-10-06	jev
+model garden	keep	5	classified-2026-10-06	jev
+ms entra id	keep	5	classified-2026-10-06	jev
+msl	drop	5	classified-2026-10-06	jev
+mvt	drop	5	classified-2026-10-06	jev
+nb iot	keep	5	classified-2026-10-06	jev
+netbeans	keep	5	classified-2026-10-06	jev
+netweaver	keep	5	classified-2026-10-06	jev
+networkx	keep	5	classified-2026-10-06	jev
+newsql	drop	5	classified-2026-10-06	jev
+nosql db	drop	5	classified-2026-10-06	jev
+nrf	drop	5	classified-2026-10-06	jev
+nvidia ai enterprise	drop	5	classified-2026-10-06	jev
+o9	drop	5	classified-2026-10-06	session
+onshape	drop	5	classified-2026-10-06	session
+ootb	drop	5	classified-2026-10-06	jev
+open lakehouse	drop	5	classified-2026-10-06	jev
+openlineage	keep	5	classified-2026-10-06	jev
+openshift virtualization	keep	5	classified-2026-10-06	session
+openvino	keep	5	classified-2026-10-06	jev
+oracle dba	drop	5	classified-2026-10-06	jev
+oracle fusion scm	drop	5	classified-2026-10-06	jev
+ortb	keep	5	classified-2026-10-06	jev
+osfp	drop	5	classified-2026-10-06	session
+osmf	keep	5	classified-2026-10-06	jev
+owd	drop	5	classified-2026-10-06	jev
+palette	drop	5	classified-2026-10-06	jev
+pas x	drop	5	classified-2026-10-06	session
+patroni	keep	5	classified-2026-10-06	jev
+pcan	keep	5	classified-2026-10-06	jev
+pce	drop	5	classified-2026-10-06	jev
+pdb	drop	5	classified-2026-10-06	jev
+pdl	drop	5	classified-2026-10-06	jev
+pdq	drop	5	classified-2026-10-06	session
+picof	keep	5	classified-2026-10-06	session
+pingfederate	keep	5	classified-2026-10-06	jev
+pingone	keep	5	classified-2026-10-06	jev
+pingora	keep	5	classified-2026-10-06	jev
+pixijs	keep	5	classified-2026-10-06	jev
+pmbus	keep	5	classified-2026-10-06	jev
+popularity	drop	5	classified-2026-10-06	jev
+power apps canvas	keep	5	classified-2026-10-06	session
+powerscale	keep	5	classified-2026-10-06	jev
+ppv	drop	5	classified-2026-10-06	jev
+projekten	drop	5	classified-2026-10-06	jev
+pscad	drop	5	classified-2026-10-06	session
+pstn	drop	5	classified-2026-10-06	jev
+putty	keep	5	classified-2026-10-06	jev
+pvsyst	drop	5	classified-2026-10-06	session
+py	drop	5	classified-2026-10-06	jev
+pydata	drop	5	classified-2026-10-06	jev
+qmetry	keep	5	classified-2026-10-06	jev
+qsa	drop	5	classified-2026-10-06	jev
+raii	drop	5	classified-2026-10-06	jev
+react devtools	keep	5	classified-2026-10-06	jev
+reanimated	keep	5	classified-2026-10-06	jev
+recaptcha	keep	5	classified-2026-10-06	jev
+rel	drop	5	classified-2026-10-06	jev
+revtech	drop	5	classified-2026-10-06	jev
+rive	keep	5	classified-2026-10-06	jev
+rsvp te	keep	5	classified-2026-10-06	jev
+safe scrum master	drop	5	classified-2026-10-06	jev
+salesforce billing	keep	5	classified-2026-10-06	jev
+salesops	drop	5	classified-2026-10-06	jev
+sap mm	drop	5	classified-2026-10-06	jev
+sap rise	drop	5	classified-2026-10-06	jev
+sap solution manager	keep	5	classified-2026-10-06	jev
+sdlc ownership	drop	5	classified-2026-10-06	jev
+secoc	keep	5	classified-2026-10-06	jev
+sequencer	drop	5	classified-2026-10-06	jev
+servicedesk	drop	5	classified-2026-10-06	jev
+sge	drop	5	classified-2026-10-06	session
+simpy	keep	5	classified-2026-10-06	jev
+smartbear	drop	5	classified-2026-10-06	jev
+socand	drop	5	classified-2026-10-06	jev
+sql db	drop	5	classified-2026-10-06	jev
+sql profiler	keep	5	classified-2026-10-06	jev
+squid	keep	5	classified-2026-10-06	jev
+star ccm+	drop	5	classified-2026-10-06	session
+stun	keep	5	classified-2026-10-06	jev
+suitebuilder	keep	5	classified-2026-10-06	jev
+suiteql	keep	5	classified-2026-10-06	jev
+supreme court	drop	5	classified-2026-10-06	jev
+surveymonkey	drop	5	classified-2026-10-06	jev
+tableau crm	keep	5	classified-2026-10-06	session
+tablespaces	drop	5	classified-2026-10-06	jev
+testcomplete	keep	5	classified-2026-10-06	jev
+tof	drop	5	classified-2026-10-06	session
+touch ui	drop	5	classified-2026-10-06	session
+tpl	drop	5	classified-2026-10-06	session
+tsr	drop	5	classified-2026-10-06	jev
+tti	drop	5	classified-2026-10-06	jev
+typescript ui	drop	5	classified-2026-10-06	jev
+unbounce	drop	5	classified-2026-10-06	session
+unity ai gateway	drop	5	classified-2026-10-06	session
+unprotected	drop	5	classified-2026-10-06	jev
+uwb	keep	5	classified-2026-10-06	jev
+varonis	keep	5	classified-2026-10-06	jev
+verdi	keep	5	classified-2026-10-06	jev
+vitally	drop	5	classified-2026-10-06	session
+vldb	drop	5	classified-2026-10-06	jev
+vmware workspace one	keep	5	classified-2026-10-06	jev
+voicebot	drop	5	classified-2026-10-06	jev
+vpi	drop	5	classified-2026-10-06	jev
+wap	drop	5	classified-2026-10-06	jev
+watchguard	keep	5	classified-2026-10-06	jev
+wdp	drop	5	classified-2026-10-06	jev
+web3.js	keep	5	classified-2026-10-06	jev
+wincc	drop	5	classified-2026-10-06	session
+wiremock	keep	5	classified-2026-10-06	jev
+workday finance	drop	5	classified-2026-10-06	jev
+workday systems	drop	5	classified-2026-10-06	jev
+wsd	drop	5	classified-2026-10-06	jev
+wwdc	drop	5	classified-2026-10-06	jev
+x509	keep	5	classified-2026-10-06	jev
+xbrl	keep	5	classified-2026-10-06	jev
+xcp	keep	5	classified-2026-10-06	jev
+yara l	keep	5	classified-2026-10-06	jev
+4am	drop	5	classified-2026-10-06	jev
+aac	drop	5	classified-2026-10-06	session
+aatp	drop	5	classified-2026-10-06	session
+acord	drop	5	classified-2026-10-06	session
+adfdi	drop	5	classified-2026-10-06	session
+adops	drop	5	classified-2026-10-06	jev
+ads b	keep	5	classified-2026-10-06	jev
+adw	drop	5	classified-2026-10-06	session
+adx	drop	5	classified-2026-10-06	jev
+aem cloud	keep	5	classified-2026-10-06	jev
+agentic ai developer	drop	5	classified-2026-10-06	jev
+agile release train	drop	5	classified-2026-10-06	jev
+agrona	keep	5	classified-2026-10-06	jev
+ahu	drop	5	classified-2026-10-06	jev
+ai companion	drop	5	classified-2026-10-06	jev
+ai infrastructure operations	drop	5	classified-2026-10-06	jev
+ai assistive	drop	5	classified-2026-10-06	jev
+aio	drop	5	classified-2026-10-06	jev
+allvue	drop	5	classified-2026-10-06	jev
+amazon ecr	keep	5	classified-2026-10-06	jev
+amba axi	keep	5	classified-2026-10-06	jev
+amd instinct	keep	5	classified-2026-10-06	jev
+amx	drop	5	classified-2026-10-06	jev
+analytics studio	drop	5	classified-2026-10-06	jev
+aon	drop	5	classified-2026-10-06	jev
+app id	keep	5	classified-2026-10-06	jev
+apple macbook	drop	5	classified-2026-10-06	jev
+application dba	drop	5	classified-2026-10-06	jev
+aqua	drop	5	classified-2026-10-06	session
+arcgis portal	keep	5	classified-2026-10-06	jev
+arctic wolf	drop	5	classified-2026-10-06	jev
+as9145	drop	5	classified-2026-10-06	jev
+atak	keep	5	classified-2026-10-06	jev
+atlassian intelligence	drop	5	classified-2026-10-06	jev
+auditoria	drop	5	classified-2026-10-06	jev
+aurora db	keep	5	classified-2026-10-06	jev
+autodesk inventor	drop	5	classified-2026-10-06	jev
+avb	keep	5	classified-2026-10-06	jev
+aws parallelcluster	keep	5	classified-2026-10-06	jev
+azure dev ops	keep	5	classified-2026-10-06	jev
+bai2	drop	5	classified-2026-10-06	session
+baseboard	drop	5	classified-2026-10-06	jev
+batch apex	keep	5	classified-2026-10-06	jev
+bicc	keep	5	classified-2026-10-06	jev
+bipolar	drop	5	classified-2026-10-06	jev
+bison	drop	5	classified-2026-10-06	session
+blackbaud	drop	5	classified-2026-10-06	session
+blackduck	keep	5	classified-2026-10-06	jev
+blackline	drop	5	classified-2026-10-06	session
+blue mountain	drop	5	classified-2026-10-06	jev
+bomgar	keep	5	classified-2026-10-06	jev
+brightflag	drop	5	classified-2026-10-06	session
+broadridge	drop	5	classified-2026-10-06	jev
+brocade	drop	5	classified-2026-10-06	session
+bsl2	drop	5	classified-2026-10-06	jev
+bsw	drop	5	classified-2026-10-06	jev
+canbus	keep	5	classified-2026-10-06	jev
+capiq	drop	5	classified-2026-10-06	jev
+captivateiq	drop	5	classified-2026-10-06	session
+carbon black	keep	5	classified-2026-10-06	jev
+cboe	drop	5	classified-2026-10-06	jev
+ccnp enterprise	drop	5	classified-2026-10-06	jev
+cd excellence	drop	5	classified-2026-10-06	jev
+cdna	drop	5	classified-2026-10-06	jev
+cer	drop	5	classified-2026-10-06	jev
+cfi	drop	5	classified-2026-10-06	jev
+chisel	drop	5	classified-2026-10-06	session
+churnzero	drop	5	classified-2026-10-06	jev
+cisco call manager	keep	5	classified-2026-10-06	jev
+clearml	keep	5	classified-2026-10-06	jev
+cloud portal	drop	5	classified-2026-10-06	jev
+cloud wan	keep	5	classified-2026-10-06	jev
+cloudflare zero trust	keep	5	classified-2026-10-06	jev
+cloudhealth	keep	5	classified-2026-10-06	jev
+cmek	drop	5	classified-2026-10-06	session
+cmsis nn	keep	5	classified-2026-10-06	jev
+cng	drop	5	classified-2026-10-06	session
+compose ui	keep	5	classified-2026-10-06	session
+comptia linux+	drop	5	classified-2026-10-06	jev
+costar	drop	5	classified-2026-10-06	jev
+cradlepoint	drop	5	classified-2026-10-06	session
+cur	drop	5	classified-2026-10-06	session
+dassault 3dexperience	drop	5	classified-2026-10-06	session
+data dog	keep	5	classified-2026-10-06	jev
+data explorer	drop	5	classified-2026-10-06	jev
+dataanalytics	drop	5	classified-2026-10-06	jev
+datawarehouse	drop	5	classified-2026-10-06	jev
+datazone	keep	5	classified-2026-10-06	jev
+dbm	drop	5	classified-2026-10-06	jev
+dell powerstore	keep	5	classified-2026-10-06	jev
+deltek vision	drop	5	classified-2026-10-06	jev
+dgx cloud	keep	5	classified-2026-10-06	jev
+directquery	keep	5	classified-2026-10-06	jev
+dmo	drop	5	classified-2026-10-06	jev
+dnv	drop	5	classified-2026-10-06	jev
+doca	keep	5	classified-2026-10-06	jev
+dqn	drop	5	classified-2026-10-06	jev
+dwd	drop	5	classified-2026-10-06	jev
+eb	drop	5	classified-2026-10-06	jev
+ebc	drop	5	classified-2026-10-06	jev
+ecma	drop	5	classified-2026-10-06	jev
+eigen	keep	5	classified-2026-10-06	jev
+elasticcache	keep	5	classified-2026-10-06	jev
+eletrônica	drop	5	classified-2026-10-06	jev
+emplifi	drop	5	classified-2026-10-06	session
+entra id protection	keep	5	classified-2026-10-06	jev
+erdas imagine	drop	5	classified-2026-10-06	session
+etas inca	keep	5	classified-2026-10-06	jev
+excel vba	keep	5	classified-2026-10-06	jev
+fb	drop	5	classified-2026-10-06	jev
+finout	keep	5	classified-2026-10-06	jev
+firebolt	keep	5	classified-2026-10-06	jev
+flexera	keep	5	classified-2026-10-06	jev
+freddie mac	drop	5	classified-2026-10-06	jev
+galera	keep	5	classified-2026-10-06	jev
+gcr	drop	5	classified-2026-10-06	jev
+gdc	drop	5	classified-2026-10-06	session
+gdm	drop	5	classified-2026-10-06	jev
+gdsa	drop	5	classified-2026-10-06	jev
+gic	drop	5	classified-2026-10-06	jev
+gitguardian	keep	5	classified-2026-10-06	jev
+glb	drop	5	classified-2026-10-06	session
+gloo	keep	5	classified-2026-10-06	jev
+google ai studio	keep	5	classified-2026-10-06	jev
+google g suite	drop	5	classified-2026-10-06	jev
+google scripts	keep	5	classified-2026-10-06	jev
+google vault	drop	5	classified-2026-10-06	session
+google workplace	drop	5	classified-2026-10-06	jev
+gpl	drop	5	classified-2026-10-06	jev
+gpu intensive	drop	5	classified-2026-10-06	jev
+granola	drop	5	classified-2026-10-06	jev
+grib	keep	5	classified-2026-10-06	jev
+gsheet	drop	5	classified-2026-10-06	jev
+gta	drop	5	classified-2026-10-06	jev
+gtsam	keep	5	classified-2026-10-06	jev
+ham	drop	5	classified-2026-10-06	jev
+hockeystack	drop	5	classified-2026-10-06	session
+hotspot	drop	5	classified-2026-10-06	jev
+hp alm	keep	5	classified-2026-10-06	jev
+hubble	drop	5	classified-2026-10-06	session
+husky	drop	5	classified-2026-10-06	session
+i've	drop	5	classified-2026-10-06	jev
+ia générative	drop	5	classified-2026-10-06	jev
+idl	drop	5	classified-2026-10-06	session
+ignition scada	drop	5	classified-2026-10-06	session
+il2	drop	5	classified-2026-10-06	jev
+ilo	keep	5	classified-2026-10-06	jev
+imagen	drop	5	classified-2026-10-06	session
+implementierung	drop	5	classified-2026-10-06	jev
+infineon aurix	keep	5	classified-2026-10-06	jev
+informatica mdm	keep	5	classified-2026-10-06	jev
+intermediário	drop	5	classified-2026-10-06	jev
+isc2 cissp	drop	5	classified-2026-10-06	jev
+iseries	keep	5	classified-2026-10-06	jev
+isilon	keep	5	classified-2026-10-06	session
+iso8583	keep	5	classified-2026-10-06	jev
+it devops	drop	5	classified-2026-10-06	jev
+it glue	drop	5	classified-2026-10-06	jev
+ivi	drop	5	classified-2026-10-06	jev
+j link	keep	5	classified-2026-10-06	jev
+jetson orin	keep	5	classified-2026-10-06	session
+jitterbit	keep	5	classified-2026-10-06	jev
+jpd	drop	5	classified-2026-10-06	jev
+jupiter	drop	5	classified-2026-10-06	jev
+kandji mdm	keep	5	classified-2026-10-06	jev
+kaseya vsa	keep	5	classified-2026-10-06	jev
+kenntnisse	drop	5	classified-2026-10-06	jev
+lac	drop	5	classified-2026-10-06	jev
+lagrangian	drop	5	classified-2026-10-06	jev
+lakeflow jobs	keep	5	classified-2026-10-06	jev
+lance	drop	5	classified-2026-10-06	session
+lightning web component	keep	5	classified-2026-10-06	session
+livedata	keep	5	classified-2026-10-06	jev
+lsmw	keep	5	classified-2026-10-06	jev
+lte m	keep	5	classified-2026-10-06	jev
+luks	keep	5	classified-2026-10-06	jev
+macintosh	drop	5	classified-2026-10-06	jev
+manufacturo	drop	5	classified-2026-10-06	session
+media server	drop	5	classified-2026-10-06	jev
+medidata rave	drop	5	classified-2026-10-06	session
+meltwater	drop	5	classified-2026-10-06	session
+mes to erp	drop	5	classified-2026-10-06	jev
+microsoft azure devops	keep	5	classified-2026-10-06	jev
+microsoft business central	drop	5	classified-2026-10-06	jev
+microsoft forms	drop	5	classified-2026-10-06	session
+microsoft powerbi	keep	5	classified-2026-10-06	jev
+ml familiarity	drop	5	classified-2026-10-06	jev
+ml specialty	drop	5	classified-2026-10-06	jev
+mobileiron	keep	5	classified-2026-10-06	jev
+mongoose	keep	5	classified-2026-10-06	jev
+moveworks	drop	5	classified-2026-10-06	session
+mpeg dash	keep	5	classified-2026-10-06	jev
+msm	drop	5	classified-2026-10-06	jev
+mythos	drop	5	classified-2026-10-06	jev
+naacl	drop	5	classified-2026-10-06	jev
+neoload	keep	5	classified-2026-10-06	jev
+net maui	keep	5	classified-2026-10-06	jev
+netsparker	keep	5	classified-2026-10-06	jev
+nexthink	drop	5	classified-2026-10-06	session
+ng siem	drop	5	classified-2026-10-06	session
+nutzen	drop	5	classified-2026-10-06	jev
+o psychology	drop	5	classified-2026-10-06	jev
+oie	drop	5	classified-2026-10-06	jev
+oif	drop	5	classified-2026-10-06	jev
+oit	drop	5	classified-2026-10-06	jev
+omniverse	keep	5	classified-2026-10-06	jev
+opencti	keep	5	classified-2026-10-06	jev
+openvins	keep	5	classified-2026-10-06	jev
+oracle fusion applications	drop	5	classified-2026-10-06	jev
+oracle pl	drop	5	classified-2026-10-06	jev
+oracle procurement	drop	5	classified-2026-10-06	jev
+oracle wms	drop	5	classified-2026-10-06	session
+orb slam	keep	5	classified-2026-10-06	jev
+osdi	drop	5	classified-2026-10-06	jev
+osisoft pi	keep	5	classified-2026-10-06	jev
+ova	drop	5	classified-2026-10-06	session
+oval	keep	5	classified-2026-10-06	jev
+owasp samm	drop	5	classified-2026-10-06	jev
+p50	drop	5	classified-2026-10-06	jev
+pai	drop	5	classified-2026-10-06	jev
+pcie gen5	keep	5	classified-2026-10-06	session
+peoplecode	keep	5	classified-2026-10-06	jev
+personio	drop	5	classified-2026-10-06	jev
+pfsense	keep	5	classified-2026-10-06	jev
+phabricator	keep	5	classified-2026-10-06	jev
+phaser	keep	5	classified-2026-10-06	jev
+pl sql	keep	5	classified-2026-10-06	jev
+platform sre	drop	5	classified-2026-10-06	jev
+pldm	keep	5	classified-2026-10-06	jev
+pnp	drop	5	classified-2026-10-06	session
+postcss	keep	5	classified-2026-10-06	jev
+postgres sql	keep	5	classified-2026-10-06	jev
+postgresdb	keep	5	classified-2026-10-06	jev
+pots	drop	5	classified-2026-10-06	session
+ppsm	drop	5	classified-2026-10-06	jev
+prismatic	drop	5	classified-2026-10-06	session
+profisee	keep	5	classified-2026-10-06	jev
+promomats	drop	5	classified-2026-10-06	session
+pymupdf	keep	5	classified-2026-10-06	jev
+pytorch ddp	keep	5	classified-2026-10-06	jev
+qam	drop	5	classified-2026-10-06	jev
+r53	keep	5	classified-2026-10-06	session
+rackspace	drop	5	classified-2026-10-06	jev
+rainforest	drop	5	classified-2026-10-06	session
+raml	keep	5	classified-2026-10-06	jev
+rde	drop	5	classified-2026-10-06	jev
+rds aurora	keep	5	classified-2026-10-06	session
+react compiler	keep	5	classified-2026-10-06	jev
+redefinition	drop	5	classified-2026-10-06	jev
+redox	drop	5	classified-2026-10-06	session
+refeição	drop	5	classified-2026-10-06	jev
+refprop	drop	5	classified-2026-10-06	session
+restapi	drop	5	classified-2026-10-06	jev
+ribbon	drop	5	classified-2026-10-06	session
+rippit	drop	5	classified-2026-10-06	jev
+roa	drop	5	classified-2026-10-06	jev
+saas gtm	drop	5	classified-2026-10-06	jev
+salesforce health cloud	keep	5	classified-2026-10-06	jev
+sap plm	drop	5	classified-2026-10-06	session
+sardine	drop	5	classified-2026-10-06	session
+sbt	keep	5	classified-2026-10-06	jev
+scenegraph	drop	5	classified-2026-10-06	jev
+scikitlearn	keep	5	classified-2026-10-06	jev
+scriptable	drop	5	classified-2026-10-06	jev
+sdf	drop	5	classified-2026-10-06	session
+se asia	drop	5	classified-2026-10-06	jev
+shacl	keep	5	classified-2026-10-06	jev
+sic	drop	5	classified-2026-10-06	jev
+sitreps	drop	5	classified-2026-10-06	jev
+sniper	drop	5	classified-2026-10-06	jev
+snowflake tasks	keep	5	classified-2026-10-06	jev
+soe	drop	5	classified-2026-10-06	jev
+solarwinds orion	keep	5	classified-2026-10-06	jev
+solumina	drop	5	classified-2026-10-06	session
+sonet	keep	5	classified-2026-10-06	jev
+speedgoat	drop	5	classified-2026-10-06	session
+spiff	drop	5	classified-2026-10-06	session
+spine and leaf	drop	5	classified-2026-10-06	jev
+splunk core	keep	5	classified-2026-10-06	jev
+sqr	keep	5	classified-2026-10-06	jev
+sre manager	drop	5	classified-2026-10-06	jev
+star ratings	drop	5	classified-2026-10-06	jev
+strata cloud manager	keep	5	classified-2026-10-06	jev
+stratum	drop	5	classified-2026-10-06	session
+studio pro	drop	5	classified-2026-10-06	session
+suite apps	drop	5	classified-2026-10-06	jev
+sunday thursday	drop	5	classified-2026-10-06	jev
+superpod	keep	5	classified-2026-10-06	jev
+swa	drop	5	classified-2026-10-06	session
+sybase ase	keep	5	classified-2026-10-06	session
+taa	drop	5	classified-2026-10-06	jev
+tabnine	keep	5	classified-2026-10-06	jev
+tcr	drop	5	classified-2026-10-06	jev
+td	drop	5	classified-2026-10-06	jev
+tec	drop	5	classified-2026-10-06	jev
+terraform enterprise	keep	5	classified-2026-10-06	jev
+test manager	drop	5	classified-2026-10-06	jev
+testcafe	keep	5	classified-2026-10-06	jev
+tga	drop	5	classified-2026-10-06	jev
+threatlocker	keep	5	classified-2026-10-06	jev
+tonkean	drop	5	classified-2026-10-06	session
+trace32	keep	5	classified-2026-10-06	jev
+tron	drop	5	classified-2026-10-06	session
+trulens	keep	5	classified-2026-10-06	jev
+ts sci	drop	5	classified-2026-10-06	jev
+turnstile	keep	5	classified-2026-10-06	jev
+twingate	keep	5	classified-2026-10-06	jev
+typelevel	drop	5	classified-2026-10-06	jev
+ubs	drop	5	classified-2026-10-06	jev
+ui actions	drop	5	classified-2026-10-06	jev
+uiard	drop	5	classified-2026-10-06	jev
+uipath orchestrator	keep	5	classified-2026-10-06	jev
+uipath rpa	keep	5	classified-2026-10-06	jev
+ultipro	drop	5	classified-2026-10-06	jev
+umgang	drop	5	classified-2026-10-06	jev
+urdf	keep	5	classified-2026-10-06	jev
+us est	drop	5	classified-2026-10-06	jev
+usdt	drop	5	classified-2026-10-06	jev
+velero	keep	5	classified-2026-10-06	jev
+veristand	keep	5	classified-2026-10-06	session
+versal	keep	5	classified-2026-10-06	jev
+vhf	drop	5	classified-2026-10-06	jev
+vss	drop	5	classified-2026-10-06	jev
+wave6	drop	5	classified-2026-10-06	session
+webdataset	keep	5	classified-2026-10-06	jev
+whistic	drop	5	classified-2026-10-06	session
+ws fed	keep	5	classified-2026-10-06	jev
+xavier	drop	5	classified-2026-10-06	session
+xsl	keep	5	classified-2026-10-06	session
+zoho	drop	5	classified-2026-10-06	session
+zoom contact center	drop	5	classified-2026-10-06	jev
+100g+	drop	5	classified-2026-10-06	jev
+6.x	drop	5	classified-2026-10-06	jev
+60fps	drop	5	classified-2026-10-06	jev
+802.11a	keep	5	classified-2026-10-06	session
+802.1as	keep	5	classified-2026-10-06	session
+abl	drop	5	classified-2026-10-06	jev
+acf2	keep	5	classified-2026-10-06	jev
+adm 2or	drop	5	classified-2026-10-06	jev
+adobe sign	drop	5	classified-2026-10-06	jev
+ads data hub	drop	5	classified-2026-10-06	session
+adwords	drop	5	classified-2026-10-06	jev
+aec q	drop	5	classified-2026-10-06	jev
+ag grid	keep	5	classified-2026-10-06	jev
+agile application	drop	5	classified-2026-10-06	jev
+agile qa	drop	5	classified-2026-10-06	jev
+ai ide	drop	5	classified-2026-10-06	jev
+ai security depth	drop	5	classified-2026-10-06	jev
+ai enabling	drop	5	classified-2026-10-06	jev
+airflow dag	drop	5	classified-2026-10-06	jev
+allscripts	drop	5	classified-2026-10-06	jev
+alto cortex xdr	keep	5	classified-2026-10-06	jev
+amateur	drop	5	classified-2026-10-06	jev
+amazon mq	keep	5	classified-2026-10-06	jev
+amd rocm	keep	5	classified-2026-10-06	jev
+amplitude analytics	keep	5	classified-2026-10-06	session
+android pos	drop	5	classified-2026-10-06	jev
+angelscript	keep	5	classified-2026-10-06	jev
+animator	drop	5	classified-2026-10-06	session
+ansys hfss	drop	5	classified-2026-10-06	session
+anthropic claude code	keep	5	classified-2026-10-06	jev
+anypoint studio	keep	5	classified-2026-10-06	jev
+apple mac	drop	5	classified-2026-10-06	jev
+apple school manager	drop	5	classified-2026-10-06	jev
+ardoq	drop	5	classified-2026-10-06	session
+asan	keep	5	classified-2026-10-06	jev
+atlassian guard	keep	5	classified-2026-10-06	jev
+automation pro	drop	5	classified-2026-10-06	jev
+autopsy	keep	5	classified-2026-10-06	jev
+ava	drop	5	classified-2026-10-06	session
+aws elemental	drop	5	classified-2026-10-06	jev
+aws paas	drop	5	classified-2026-10-06	jev
+axure	drop	5	classified-2026-10-06	session
+azure devops boards	keep	5	classified-2026-10-06	session
+azure event hub	keep	5	classified-2026-10-06	jev
+azure local	keep	5	classified-2026-10-06	jev
+azure security specialty	drop	5	classified-2026-10-06	jev
+barra	drop	5	classified-2026-10-06	jev
+baseboard management	drop	5	classified-2026-10-06	jev
+baseboard management controllers	drop	5	classified-2026-10-06	jev
+bb	drop	5	classified-2026-10-06	jev
+bedrock knowledge bases	keep	5	classified-2026-10-06	jev
+beegfs	keep	5	classified-2026-10-06	jev
+bible	drop	5	classified-2026-10-06	jev
+billingplatform	drop	5	classified-2026-10-06	jev
+bizzdesign	drop	5	classified-2026-10-06	session
+bmad	drop	5	classified-2026-10-06	jev
+bmp	drop	5	classified-2026-10-06	session
+bourne	drop	5	classified-2026-10-06	session
+browser forum	drop	5	classified-2026-10-06	jev
+caché	drop	5	classified-2026-10-06	session
+ccfa	drop	5	classified-2026-10-06	jev
+ccfr	drop	5	classified-2026-10-06	jev
+ccie enterprise infrastructure	drop	5	classified-2026-10-06	jev
+ccie security	drop	5	classified-2026-10-06	jev
+cd devops	drop	5	classified-2026-10-06	jev
+cd mastery	drop	5	classified-2026-10-06	jev
+cds hooks	keep	5	classified-2026-10-06	jev
+chainlink	keep	5	classified-2026-10-06	jev
+channel san	drop	5	classified-2026-10-06	jev
+chemcad	drop	5	classified-2026-10-06	session
+chrome enterprise	drop	5	classified-2026-10-06	jev
+cif	drop	5	classified-2026-10-06	session
+cisco ios xe	keep	5	classified-2026-10-06	jev
+cisco lan	drop	5	classified-2026-10-06	jev
+cisco secure	drop	5	classified-2026-10-06	jev
+cisco umbrella	keep	5	classified-2026-10-06	jev
+clair	keep	5	classified-2026-10-06	jev
+class d	drop	5	classified-2026-10-06	jev
+cloud cx	drop	5	classified-2026-10-06	session
+cloud pc	drop	5	classified-2026-10-06	jev
+cloverleaf	keep	5	classified-2026-10-06	jev
+coalesce	drop	5	classified-2026-10-06	session
+commcare	drop	5	classified-2026-10-06	session
+comptia cloud+	drop	5	classified-2026-10-06	jev
+corpsec	drop	5	classified-2026-10-06	jev
+cortex r	keep	5	classified-2026-10-06	jev
+crdt	drop	5	classified-2026-10-06	jev
+cromwell	drop	5	classified-2026-10-06	session
+csom	keep	5	classified-2026-10-06	jev
+cue	drop	5	classified-2026-10-06	session
+cxml	keep	5	classified-2026-10-06	jev
+cyera	keep	5	classified-2026-10-06	jev
+d security	drop	5	classified-2026-10-06	jev
+d'api	drop	5	classified-2026-10-06	jev
+d wide	drop	5	classified-2026-10-06	jev
+dapper	keep	5	classified-2026-10-06	jev
+datadog llm observability	keep	5	classified-2026-10-06	jev
+dataflows gen2	keep	5	classified-2026-10-06	jev
+dataplex	keep	5	classified-2026-10-06	jev
+datto	keep	5	classified-2026-10-06	jev
+ddm	drop	5	classified-2026-10-06	session
+deepar	keep	5	classified-2026-10-06	jev
+descope	drop	5	classified-2026-10-06	session
+detekt	keep	5	classified-2026-10-06	jev
+deutsche telekom	drop	5	classified-2026-10-06	jev
+diameter	keep	5	classified-2026-10-06	jev
+discoverer	drop	5	classified-2026-10-06	jev
+docusaurus	keep	5	classified-2026-10-06	jev
+dod architecture framework	drop	5	classified-2026-10-06	jev
+dod cio	drop	5	classified-2026-10-06	jev
+dod operations	drop	5	classified-2026-10-06	jev
+dod sap	drop	5	classified-2026-10-06	jev
+dod stig	drop	5	classified-2026-10-06	jev
+dot net	keep	5	classified-2026-10-06	session
+dovetail	drop	5	classified-2026-10-06	jev
+dpc	drop	5	classified-2026-10-06	jev
+dscp	drop	5	classified-2026-10-06	session
+dtc ecommerce	drop	5	classified-2026-10-06	jev
+duality	drop	5	classified-2026-10-06	jev
+eap tls	keep	5	classified-2026-10-06	jev
+egg	drop	5	classified-2026-10-06	jev
+ehr integrated	drop	5	classified-2026-10-06	jev
+eic	drop	5	classified-2026-10-06	jev
+ena	drop	5	classified-2026-10-06	session
+entrata	drop	5	classified-2026-10-06	session
+epm automate	keep	5	classified-2026-10-06	jev
+eprivacy	drop	5	classified-2026-10-06	jev
+equinix fabric	keep	5	classified-2026-10-06	jev
+ethernet ip	keep	5	classified-2026-10-06	jev
+ethernet lan	drop	5	classified-2026-10-06	jev
+ethernet phy	drop	5	classified-2026-10-06	session
+etl mastery	drop	5	classified-2026-10-06	jev
+evo	drop	5	classified-2026-10-06	jev
+ewa	drop	5	classified-2026-10-06	jev
+extender	drop	5	classified-2026-10-06	jev
+fannie	drop	5	classified-2026-10-06	jev
+fibersim	drop	5	classified-2026-10-06	session
+ficam	drop	5	classified-2026-10-06	jev
+fim	drop	5	classified-2026-10-06	jev
+focp	drop	5	classified-2026-10-06	jev
+fortinet fortigate	keep	5	classified-2026-10-06	session
+framer motion	keep	5	classified-2026-10-06	jev
+friday night	drop	5	classified-2026-10-06	jev
+fs isac	drop	5	classified-2026-10-06	jev
+fsmo	drop	5	classified-2026-10-06	jev
+fsqa	drop	5	classified-2026-10-06	jev
+g.711	keep	5	classified-2026-10-06	jev
+g.729	keep	5	classified-2026-10-06	jev
+gcd	drop	5	classified-2026-10-06	session
+gclp	drop	5	classified-2026-10-06	jev
+gcp cloud operations	drop	5	classified-2026-10-06	session
+gecko	drop	5	classified-2026-10-06	session
+gemm	drop	5	classified-2026-10-06	jev
+geneos	keep	5	classified-2026-10-06	session
+genesis	drop	5	classified-2026-10-06	session
+gfssp	drop	5	classified-2026-10-06	session
+github enterprise server	keep	5	classified-2026-10-06	jev
+gliderecord	keep	5	classified-2026-10-06	jev
+global protect	keep	5	classified-2026-10-06	jev
+gltf	keep	5	classified-2026-10-06	jev
+gmon	drop	5	classified-2026-10-06	jev
+gnu radio	keep	5	classified-2026-10-06	jev
+goliath	drop	5	classified-2026-10-06	jev
+google chrome	drop	5	classified-2026-10-06	jev
+google gke	keep	5	classified-2026-10-06	jev
+gorgias	drop	5	classified-2026-10-06	session
+gotham	keep	5	classified-2026-10-06	jev
+gradio	keep	5	classified-2026-10-06	jev
+graviton	keep	5	classified-2026-10-06	jev
+groundcover	keep	5	classified-2026-10-06	jev
+grp	drop	5	classified-2026-10-06	jev
+gs1	drop	5	classified-2026-10-06	jev
+gumloop	keep	5	classified-2026-10-06	jev
+h.323	keep	5	classified-2026-10-06	jev
+harvey	drop	5	classified-2026-10-06	jev
+heredia	drop	5	classified-2026-10-06	jev
+hl7v2	keep	5	classified-2026-10-06	session
+hris manager	drop	5	classified-2026-10-06	jev
+hrm	drop	5	classified-2026-10-06	jev
+hsdl	drop	5	classified-2026-10-06	session
+hsx	drop	5	classified-2026-10-06	jev
+huawei	drop	5	classified-2026-10-06	jev
+hydrocad	drop	5	classified-2026-10-06	session
+ibm qradar	keep	5	classified-2026-10-06	session
+icp ms	drop	5	classified-2026-10-06	jev
+identitynow	keep	5	classified-2026-10-06	jev
+iiq	keep	5	classified-2026-10-06	session
+ilevel	drop	5	classified-2026-10-06	jev
+infor syteline	drop	5	classified-2026-10-06	session
+infrastrukturen	drop	5	classified-2026-10-06	jev
+iperf3	keep	5	classified-2026-10-06	jev
+isaac gym	keep	5	classified-2026-10-06	jev
+isml	keep	5	classified-2026-10-06	jev
+itil best practice	drop	5	classified-2026-10-06	jev
+james	drop	5	classified-2026-10-06	jev
+jasper	drop	5	classified-2026-10-06	jev
+javascript tag	drop	5	classified-2026-10-06	jev
+jpl	drop	5	classified-2026-10-06	jev
+jreap	keep	5	classified-2026-10-06	jev
+jsonl	keep	5	classified-2026-10-06	jev
+kicad	drop	5	classified-2026-10-06	session
+kiss	drop	5	classified-2026-10-06	jev
+klayout	drop	5	classified-2026-10-06	session
+kling	keep	5	classified-2026-10-06	jev
+knn	drop	5	classified-2026-10-06	jev
+kno2	drop	5	classified-2026-10-06	session
+kops	keep	5	classified-2026-10-06	jev
+kramer	drop	5	classified-2026-10-06	jev
+kubespray	keep	5	classified-2026-10-06	jev
+kubestronaut	drop	5	classified-2026-10-06	jev
+l6 staff	drop	5	classified-2026-10-06	jev
+lamda	keep	5	classified-2026-10-06	session
+lancedb	keep	5	classified-2026-10-06	jev
+lang graph	keep	5	classified-2026-10-06	jev
+lawson	drop	5	classified-2026-10-06	jev
+lgtm	drop	5	classified-2026-10-06	session
+lightbend	drop	5	classified-2026-10-06	jev
+lightning app builder	keep	5	classified-2026-10-06	jev
+lightning design	drop	5	classified-2026-10-06	jev
+lightning design system	keep	5	classified-2026-10-06	jev
+loopio	drop	5	classified-2026-10-06	jev
+mach o	keep	5	classified-2026-10-06	jev
+mailchimp	drop	5	classified-2026-10-06	session
+mals	drop	5	classified-2026-10-06	jev
+manifest v3	keep	5	classified-2026-10-06	jev
+marketing cloud developer	drop	5	classified-2026-10-06	jev
+maxio	drop	5	classified-2026-10-06	session
+mcitp	drop	5	classified-2026-10-06	jev
+mctp	keep	5	classified-2026-10-06	jev
+medialive	keep	5	classified-2026-10-06	jev
+microsoft configuration manager	keep	5	classified-2026-10-06	session
+microsoft exchange server	keep	5	classified-2026-10-06	session
+microsoft onedrive	drop	5	classified-2026-10-06	jev
+microsoft planner	drop	5	classified-2026-10-06	jev
+mii	drop	5	classified-2026-10-06	jev
+mintlify	keep	5	classified-2026-10-06	jev
+mk	drop	5	classified-2026-10-06	jev
+ml track	drop	5	classified-2026-10-06	jev
+ml guided	drop	5	classified-2026-10-06	jev
+mobile studio	drop	5	classified-2026-10-06	session
+mooncake	drop	5	classified-2026-10-06	session
+ms exchange	keep	5	classified-2026-10-06	session
+ms intune	keep	5	classified-2026-10-06	jev
+ms visual studio	drop	5	classified-2026-10-06	jev
+munki	keep	5	classified-2026-10-06	jev
+mural	drop	5	classified-2026-10-06	jev
+mutex	drop	5	classified-2026-10-06	jev
+mv3	keep	5	classified-2026-10-06	session
+médaillon	drop	5	classified-2026-10-06	jev
+netapp ontap	keep	5	classified-2026-10-06	jev
+netscout	keep	5	classified-2026-10-06	jev
+networkpolicies	drop	5	classified-2026-10-06	session
+nexis	drop	5	classified-2026-10-06	jev
+nisand	drop	5	classified-2026-10-06	jev
+nisp	drop	5	classified-2026-10-06	jev
+nlyte	drop	5	classified-2026-10-06	session
+nonce	drop	5	classified-2026-10-06	jev
+nspb	drop	5	classified-2026-10-06	jev
+nsw	drop	5	classified-2026-10-06	session
+nsx t	keep	5	classified-2026-10-06	session
+nta	drop	5	classified-2026-10-06	jev
+ocapi	keep	5	classified-2026-10-06	jev
+oga	drop	5	classified-2026-10-06	jev
+onednn	keep	5	classified-2026-10-06	jev
+openfeature	keep	5	classified-2026-10-06	jev
+opensips	keep	5	classified-2026-10-06	jev
+openstack neutron	keep	5	classified-2026-10-06	jev
+openusd	keep	5	classified-2026-10-06	jev
+openvla	drop	5	classified-2026-10-06	jev
+opnsense	keep	5	classified-2026-10-06	jev
+optistruct	drop	5	classified-2026-10-06	session
+oracle cloud financials	drop	5	classified-2026-10-06	jev
+oracle primavera	drop	5	classified-2026-10-06	jev
+oracle scm	drop	5	classified-2026-10-06	jev
+oracle service bus	keep	5	classified-2026-10-06	jev
+osfi	drop	5	classified-2026-10-06	jev
+owasp testing	drop	5	classified-2026-10-06	jev
+palo alto xsoar	keep	5	classified-2026-10-06	session
+parasolid	keep	5	classified-2026-10-06	jev
+patran	drop	5	classified-2026-10-06	session
+pbi	drop	5	classified-2026-10-06	session
+pebble	drop	5	classified-2026-10-06	session
+pels	drop	5	classified-2026-10-06	jev
+peopletools	keep	5	classified-2026-10-06	jev
+peplink	drop	5	classified-2026-10-06	session
+perc	drop	5	classified-2026-10-06	jev
+playwright ui	keep	5	classified-2026-10-06	jev
+power automate desktop	keep	5	classified-2026-10-06	jev
+powermax	drop	5	classified-2026-10-06	jev
+ppr	drop	5	classified-2026-10-06	jev
+promptlayer	keep	5	classified-2026-10-06	jev
+psac	drop	5	classified-2026-10-06	jev
+psim	drop	5	classified-2026-10-06	session
+psoc	drop	5	classified-2026-10-06	jev
+pubsec	drop	5	classified-2026-10-06	jev
+pyomo	keep	5	classified-2026-10-06	jev
+pyqt	keep	5	classified-2026-10-06	jev
+python mastery	drop	5	classified-2026-10-06	jev
+python nlp	drop	5	classified-2026-10-06	jev
+rats	drop	5	classified-2026-10-06	jev
+rauc	keep	5	classified-2026-10-06	jev
+readyapi	keep	5	classified-2026-10-06	jev
+realpage	drop	5	classified-2026-10-06	jev
+redhat enterprise linux	keep	5	classified-2026-10-06	jev
+reliasoft	drop	5	classified-2026-10-06	session
+renovate	keep	5	classified-2026-10-06	jev
+resnet	drop	5	classified-2026-10-06	session
+resque	keep	5	classified-2026-10-06	jev
+rillet	drop	5	classified-2026-10-06	jev
+robotik	drop	5	classified-2026-10-06	jev
+s2	drop	5	classified-2026-10-06	jev
+s4hana	keep	5	classified-2026-10-06	jev
+salesforce cloud	drop	5	classified-2026-10-06	jev
+salesforce financial services	drop	5	classified-2026-10-06	jev
+samsung knox	keep	5	classified-2026-10-06	jev
+samsung tizen	keep	5	classified-2026-10-06	jev
+sap apo	keep	5	classified-2026-10-06	jev
+sap b1	keep	5	classified-2026-10-06	jev
+sapf	drop	5	classified-2026-10-06	jev
+sbu	drop	5	classified-2026-10-06	jev
+scep	keep	5	classified-2026-10-06	jev
+schneider ecostruxure	drop	5	classified-2026-10-06	session
+scip	drop	5	classified-2026-10-06	session
+scribe	drop	5	classified-2026-10-06	session
+scrum developer	drop	5	classified-2026-10-06	jev
+sectigo	drop	5	classified-2026-10-06	session
+secureframe	drop	5	classified-2026-10-06	session
+seg	drop	5	classified-2026-10-06	jev
+server team	drop	5	classified-2026-10-06	jev
+servicenow discovery	keep	5	classified-2026-10-06	jev
+shopify hydrogen	keep	5	classified-2026-10-06	jev
+siemens opcenter	drop	5	classified-2026-10-06	session
+simpack	drop	5	classified-2026-10-06	session
+sinatra	keep	5	classified-2026-10-06	jev
+singapore government	drop	5	classified-2026-10-06	jev
+socket.io	keep	5	classified-2026-10-06	jev
+softwaredevelopment	drop	5	classified-2026-10-06	jev
+soti	keep	5	classified-2026-10-06	jev
+sprache	drop	5	classified-2026-10-06	jev
+sqli	drop	5	classified-2026-10-06	jev
+ssids	drop	5	classified-2026-10-06	jev
+studio integrations	drop	5	classified-2026-10-06	jev
+subシステム	drop	5	classified-2026-10-06	jev
+suiteprojects	drop	5	classified-2026-10-06	session
+swift mt	keep	5	classified-2026-10-06	jev
+swiftlint	keep	5	classified-2026-10-06	jev
+syft	keep	5	classified-2026-10-06	jev
+symphony health	drop	5	classified-2026-10-06	jev
+sysmon	keep	5	classified-2026-10-06	jev
+systrace	keep	5	classified-2026-10-06	jev
+taclane	keep	5	classified-2026-10-06	jev
+tage	drop	5	classified-2026-10-06	jev
+tcg	drop	5	classified-2026-10-06	jev
+tcm	drop	5	classified-2026-10-06	jev
+tenable.sc	keep	5	classified-2026-10-06	jev
+tensorboard	keep	5	classified-2026-10-06	jev
+toad	keep	5	classified-2026-10-06	jev
+tor	drop	5	classified-2026-10-06	jev
+torchtitan	keep	5	classified-2026-10-06	jev
+totango	drop	5	classified-2026-10-06	session
+totp	keep	5	classified-2026-10-06	jev
+trailhead	drop	5	classified-2026-10-06	jev
+triton backend	keep	5	classified-2026-10-06	jev
+tropic	drop	5	classified-2026-10-06	session
+trustsec	keep	5	classified-2026-10-06	jev
+tsdb	drop	5	classified-2026-10-06	jev
+txt	drop	5	classified-2026-10-06	jev
+udr	drop	5	classified-2026-10-06	session
+uspto	drop	5	classified-2026-10-06	jev
+v18+	drop	5	classified-2026-10-06	jev
+valgenesis	drop	5	classified-2026-10-06	session
+vcn	drop	5	classified-2026-10-06	session
+veo	drop	5	classified-2026-10-06	session
+vif	drop	5	classified-2026-10-06	jev
+virtual wan	keep	5	classified-2026-10-06	jev
+visual force	keep	5	classified-2026-10-06	jev
+vuln	drop	5	classified-2026-10-06	jev
+wai aria	keep	5	classified-2026-10-06	jev
+wdr	drop	5	classified-2026-10-06	jev
+webui	drop	5	classified-2026-10-06	jev
+wfx	drop	5	classified-2026-10-06	session
+windows hello	keep	5	classified-2026-10-06	jev
+windows ui	drop	5	classified-2026-10-06	jev
+workato genie	drop	5	classified-2026-10-06	jev
+workday erp	keep	5	classified-2026-10-06	jev
+x++	keep	5	classified-2026-10-06	jev
+xm	drop	5	classified-2026-10-06	jev
+xprotect	keep	5	classified-2026-10-06	jev
+xpu	drop	5	classified-2026-10-06	jev
+xstate	keep	5	classified-2026-10-06	jev
+xtp	drop	5	classified-2026-10-06	jev
+yougov	drop	5	classified-2026-10-06	jev
+zeppelin	keep	5	classified-2026-10-06	jev
+zuora revpro	drop	5	classified-2026-10-06	session
+f5 big	drop	5	classified-2026-10-06	jev
+gemini enterprise agent	drop	5	classified-2026-10-06	jev
+google analytics 4	keep	5	classified-2026-10-06	session
+google suite	drop	5	classified-2026-10-06	jev
+server sent events	keep	5	classified-2026-10-06	jev
+aws msk	keep	5	classified-2026-10-06	jev
+gcm	drop	5	classified-2026-10-06	jev
+gpu operator	keep	5	classified-2026-10-06	jev
+hubspot workflows	drop	5	classified-2026-10-06	session
+ieee 802.11	keep	5	classified-2026-10-06	jev
+internet protocol	drop	5	classified-2026-10-06	jev
+kubernetes api	drop	5	classified-2026-10-06	jev
+nvidia gpus	drop	5	classified-2026-10-06	jev
+pwa	drop	5	classified-2026-10-06	jev
+rls	drop	5	classified-2026-10-06	session
+salesforce commerce	drop	5	classified-2026-10-06	jev
+bedrock agents	keep	5	classified-2026-10-06	jev
+cursor ai	keep	5	classified-2026-10-06	jev
+dockerfiles	drop	5	classified-2026-10-06	jev
+dsls	drop	5	classified-2026-10-06	jev
+elastic kubernetes service	keep	5	classified-2026-10-06	session
+msmq	keep	5	classified-2026-10-06	jev
+vitess	keep	5	classified-2026-10-06	jev
+anthos	keep	5	classified-2026-10-06	jev
+azure backup	keep	5	classified-2026-10-06	jev
+claude ai	keep	5	classified-2026-10-06	jev
+cluster api	keep	5	classified-2026-10-06	session
+cors	drop	5	classified-2026-10-06	jev
+crane	drop	5	classified-2026-10-06	jev
+crd	drop	5	classified-2026-10-06	session
+figma design	drop	5	classified-2026-10-06	jev
+hackerone	drop	5	classified-2026-10-06	jev
+i18n	drop	5	classified-2026-10-06	jev
+kml	keep	5	classified-2026-10-06	jev
+nacls	drop	5	classified-2026-10-06	session
+spring data jpa	keep	5	classified-2026-10-06	jev
+statefulsets	drop	5	classified-2026-10-06	session
+tilt	drop	5	classified-2026-10-06	jev
+vrfs	keep	5	classified-2026-10-06	jev
+ansible awx	keep	5	classified-2026-10-06	session
+anthropic apis	drop	5	classified-2026-10-06	jev
+aura components	keep	5	classified-2026-10-06	jev
+bgp evpn	drop	5	classified-2026-10-06	session
+cifs	keep	5	classified-2026-10-06	session
+data 360	drop	5	classified-2026-10-06	session
+device farm	keep	5	classified-2026-10-06	session
+drs	drop	5	classified-2026-10-06	jev
+junit 5	keep	5	classified-2026-10-06	jev
+metastore	keep	5	classified-2026-10-06	session
+microsoft office 365	drop	5	classified-2026-10-06	jev
+microvms	drop	5	classified-2026-10-06	session
+npus	drop	5	classified-2026-10-06	jev
+nservicebus	keep	5	classified-2026-10-06	jev
+nsg	drop	5	classified-2026-10-06	jev
+nvidia orin	keep	5	classified-2026-10-06	session
+odata services	keep	5	classified-2026-10-06	jev
+ovs	keep	5	classified-2026-10-06	session
+rap	drop	5	classified-2026-10-06	session
+sap abap	keep	5	classified-2026-10-06	jev
+sls	drop	5	classified-2026-10-06	jev
+tca	drop	5	classified-2026-10-06	session
+amis	keep	5	classified-2026-10-06	jev
+aws athena	keep	5	classified-2026-10-06	jev
+aws sns	keep	5	classified-2026-10-06	jev
+cds views	keep	5	classified-2026-10-06	jev
+cnis	drop	5	classified-2026-10-06	jev
+codewhisperer	keep	5	classified-2026-10-06	session
+dpus	drop	5	classified-2026-10-06	session
+gam	drop	5	classified-2026-10-06	session
+graphql federation	drop	5	classified-2026-10-06	session
+jwts	keep	5	classified-2026-10-06	jev
+linux red hat	drop	5	classified-2026-10-06	jev
+mpeg	drop	5	classified-2026-10-06	jev
+neutron	drop	5	classified-2026-10-06	session
+pasta	drop	5	classified-2026-10-06	jev
+protobufs	keep	5	classified-2026-10-06	jev
+q developer	keep	5	classified-2026-10-06	jev
+ai devsecops	drop	5	classified-2026-10-06	session
+let encrypt	drop	5	classified-2026-10-06	session
+argocd gitops	drop	5	classified-2026-10-06	session
+ai bi	drop	5	classified-2026-10-06	session
+microsoft fabric azure	drop	5	classified-2026-10-06	session
+key vault azure	drop	5	classified-2026-10-06	session

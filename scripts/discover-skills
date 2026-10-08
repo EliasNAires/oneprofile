@@ -1,0 +1,237 @@
+#!/usr/bin/env python3
+"""Runs skill discovery on a snapshot (ADR-0013, #55): Jev decides the candidates, a drafting agent
+writes the row of each kept name, and a session reviews the rows into skills.tsv and every decision
+into the decision record. docs/taxonomy.md holds the procedure; this is its plumbing.
+
+    scripts/discover-skills judge <candidates.tsv> [<names.txt>]
+    scripts/discover-skills collect
+    scripts/discover-skills append
+
+judge reads the candidates scripts/skill_discovery.py wrote, and the names of a file, one a line,
+proposed besides them; a name that is a key of skills.tsv is skipped. Each is labelled by Jev, keep or
+drop and a category, from three segments mentioning it, under the current criterion revision (labels
+already made are reused, and the $4 stop holds). A name no segment mentions cannot be judged, and is a
+drop of the session's. It writes into the run's folder, next to the snapshot, the verdicts and the kept
+names in batches of BATCH for the skill-drafter agent, each with the skills of skills.tsv it may be a
+spelling of.
+
+collect reads the agent's drafts and writes review.tsv: one row per candidate, the kept ones drafted,
+the dropped ones as Jev left them. The session edits it, marking each row it changes with the source
+`session`, and append writes it: each kept name joins skills.tsv, as a new skill or as a spelling of
+the one its id names, and each decision, drops included, is appended to decisions.tsv. Run
+scripts/check-skill-keys after it, which sets the kind of every key.
+"""
+
+import csv
+import json
+import re
+import sys
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import skill_discovery  # noqa: E402
+import skillloop  # noqa: E402
+
+# The run's working files, next to the snapshot: verdicts, batches, drafts and the review.
+RUN = skillloop.SEGMENTS.parent / f"skill-run-{skillloop.SNAPSHOT}"
+
+EXAMPLES = 3  # segments per candidate, as each round of #54 gave Jev
+
+BATCH = 60  # about 10k tokens of entries, which a Haiku drafter drafts whole in one pass
+
+REVIEW_COLUMNS = ("name", "decision", "source", "id", "canonical", "category", "aliases", "note")
+
+
+def run_candidates(candidates, names, keys):
+    """The run's candidates, those of the discovery script then the names given, once by name form, no
+    key of skills.tsv among them. A name given has no document frequency of its own."""
+    seen, result = set(keys), []
+    for candidate in list(candidates) + [{"name": name, "df": None} for name in names]:
+        form = skillloop.name_form(candidate["name"])
+        if form not in seen:
+            seen.add(form)
+            result.append(candidate)
+    return result
+
+
+def compact(name):
+    """The name form without its spaces and punctuation, a symbol a name carries (C++, C#) kept."""
+    return re.sub(r"[^\w+#]|_", "", skillloop.name_form(name))
+
+
+def similar(name, keys):
+    """The skills of skills.tsv, by canonical name, a name may be a spelling of: one whose key is the
+    name written without its spaces or symbols, or with an s; a run of the name's words, three
+    characters long at least (Kafka Streams beside Kafka); or one whose key holds the name as a run of
+    its words, the name's bare form (Glue beside AWS Glue). Narrows what the drafter checks; the drafter
+    decides."""
+    compacts, runs = {}, {}
+    for form, canonical in keys.items():
+        compacts.setdefault(compact(form), set()).add(canonical)
+        for run in word_runs(form):
+            runs.setdefault(run, set()).add(canonical)
+    found = set()
+    for written in {compact(name), re.sub(r"e?s$", "", compact(name))}:
+        found |= compacts.get(written, set())
+    found |= {keys[run] for run in word_runs(skillloop.name_form(name)) if len(run) >= 3 and run in keys}
+    if len(skillloop.name_form(name)) >= 3:
+        found |= runs.get(skillloop.name_form(name), set())
+    return sorted(found, key=str.lower)
+
+
+def word_runs(form):
+    """Every run of adjacent words of a name form."""
+    words = form.split(" ")
+    return {" ".join(words[first:last]) for first in range(len(words)) for last in range(first + 1, len(words) + 1)}
+
+
+def apply(skills, rows):
+    """skills.tsv's rows, as read by skillloop.read_skill_rows, with the reviewed rows applied, and the
+    decisions to record as (name form, decision, source). A kept name is a key of the skill its id
+    names: added to that skill's keys, or, under an id skills.tsv lacks, to a new skill, whose canonical
+    name and category the first row giving them gives. A key the skill holds is not added again, and one
+    another skill holds is refused."""
+    by_id = {row[0]: (row[0], row[1], row[2], list(row[3]), row[4]) for row in skills}
+    for row in rows:
+        if row["decision"] == "keep" and row["id"] not in by_id and row["canonical"] and row["category"]:
+            by_id[row["id"]] = (row["id"], row["canonical"], row["category"], [], set())
+    held = {skillloop.name_form(key): row[0] for row in skills for key in row[3]}
+    decisions = []
+    for row in rows:
+        decisions.append((skillloop.name_form(row["name"]), row["decision"], row["source"]))
+        if row["decision"] != "keep":
+            continue
+        if row["id"] not in by_id:
+            sys.exit(f"{row['name']}: a new id, {row['id']!r}, needs a row with its canonical name and category")
+        keys = by_id[row["id"]][3]
+        for key in [by_id[row["id"]][1], *filter(None, row["aliases"].split("|")), row["name"]]:
+            form = skillloop.name_form(key)
+            if held.setdefault(form, row["id"]) != row["id"]:
+                sys.exit(f"{row['name']}: the key {key!r} is a key of {held[form]!r}, not of {row['id']!r}")
+            if all(skillloop.name_form(held_key) != form for held_key in keys):
+                keys.append(key)
+    return [by_id[identifier] for identifier in sorted(by_id)], decisions
+
+
+def write_tsv(path, columns, rows):
+    with open(path, "w", newline="") as out:
+        writer = csv.writer(out, delimiter="\t", lineterminator="\n", quoting=csv.QUOTE_NONE, escapechar="\\")
+        writer.writerow(columns)
+        writer.writerows(rows)
+
+
+def read_tsv(path):
+    with open(path, newline="") as lines:
+        return list(csv.DictReader(lines, delimiter="\t", quoting=csv.QUOTE_NONE))
+
+
+def judge(candidates_path, names_path=None):
+    keys = skillloop.read_keys()
+    names = [line.strip() for line in open(names_path) if line.strip()] if names_path else []
+    candidates = run_candidates(skill_discovery.read_candidates(candidates_path), names, keys)
+    segments = skillloop.read_segments()
+    asked, unmentioned = [], []
+    for candidate in candidates:
+        examples = segments.examples(candidate["name"], EXAMPLES, f"run-{skillloop.SNAPSHOT}-"
+                                     f"{skillloop.name_form(candidate['name'])}")
+        if examples:
+            asked.append({**candidate, "segments": [text for _, text in examples],
+                          "df": candidate["df"] or segments.document_frequency(candidate["name"])})
+        else:
+            unmentioned.append(candidate["name"])
+    print(f"{len(candidates)} candidates, {len(candidates) - len(asked)} mentioned in no segment: "
+          f"{', '.join(unmentioned)}")
+    skillloop.label([{"name": c["name"], "segments": c["segments"]} for c in asked])
+    labels = skillloop.read_labels()
+    if any(skillloop.name_form(c["name"]) not in labels for c in asked):
+        sys.exit("Some candidates have no label yet; run judge again once Jev can be asked")
+    RUN.mkdir(exist_ok=True)
+    for old in RUN.glob("batch-*.json"):
+        old.unlink()
+    verdicts, kept = [], []
+    for c in asked:
+        label = labels[skillloop.name_form(c["name"])]
+        keep = label["decision_probabilities"]["keep"]
+        verdicts.append((c["name"], c["df"], label["decision"], label["category"], f"{keep:.2f}"))
+        if label["decision"] == "keep":
+            kept.append({"name": c["name"], "df": c["df"], "category": label["category"],
+                         "spellings": c.get("forms", {}), "segments": c["segments"],
+                         "similar": similar(c["name"], keys)})
+    verdicts += [(name, 0, "unmentioned", "", "") for name in unmentioned]
+    write_tsv(RUN / "verdicts.tsv", ("name", "df", "decision", "category", "keep"), verdicts)
+    by_canonical = {row[1]: row for row in skillloop.read_skill_rows()}
+    kept.sort(key=lambda c: compact(c["name"]))
+    for number, start in enumerate(range(0, len(kept), BATCH), 1):
+        batch = [{**c, "similar": [{"id": by_canonical[s][0], "canonical": s, "category": by_canonical[s][2],
+                                    "keys": by_canonical[s][3]} for s in c["similar"]]}
+                 for c in kept[start:start + BATCH]]
+        (RUN / f"batch-{number:03}.json").write_text(json.dumps(batch, ensure_ascii=False, indent=1))
+    print(f"{len(kept)} kept of {len(asked)}, in {-(-len(kept) // BATCH)} batches under {RUN}")
+
+
+def review_row(verdict, drafts):
+    """The review row of a verdict: Jev's drop as it is, Jev's keep with its draft, None while the keep
+    has no draft, and a name no segment mentions a drop of the session's, since Jev could not judge it.
+    A draft written as an id alone is a spelling of that skill; Jev's category goes to a new skill whose
+    draft gives none."""
+    row = dict.fromkeys(REVIEW_COLUMNS, "") | {"name": verdict["name"], "decision": verdict["decision"],
+                                               "source": "jev"}
+    if verdict["decision"] == "unmentioned":
+        return row | {"decision": "drop", "source": "session", "note": "mentioned in no segment of the snapshot"}
+    if verdict["decision"] != "keep":
+        return row
+    draft = drafts.get(verdict["name"])
+    if draft is None:
+        return None
+    if isinstance(draft, str):
+        draft = {"id": draft}
+    return row | {"id": draft.get("id", ""), "canonical": draft.get("canonical", ""),
+                  "category": draft.get("category") or (verdict["category"] if draft.get("canonical") else ""),
+                  "aliases": "|".join(draft.get("aliases", [])), "note": draft.get("note", "")}
+
+
+def collect():
+    drafts = {}
+    for path in sorted(RUN.glob("batch-*.drafts.json")):
+        drafts.update(json.loads(path.read_text()))
+    rows, undrafted = [], []
+    for verdict in read_tsv(RUN / "verdicts.tsv"):
+        row = review_row(verdict, drafts)
+        if row is None:
+            undrafted.append(verdict["name"])
+        else:
+            rows.append(row)
+    if undrafted:
+        sys.exit(f"{len(undrafted)} kept names have no draft: {', '.join(undrafted[:20])}")
+    write_tsv(RUN / "review.tsv", REVIEW_COLUMNS, [[row[c] for c in REVIEW_COLUMNS] for row in rows])
+    print(f"Wrote {len(rows)} rows to {RUN / 'review.tsv'}")
+
+
+def append():
+    skills, decisions = apply(skillloop.read_skill_rows(), read_tsv(RUN / "review.tsv"))
+    with open(skillloop.SKILLS, "w") as out:
+        for identifier, canonical, category, keys, context in skills:
+            out.write("\t".join([identifier, canonical, category, "|".join(keys[1:]),
+                                 "|".join(key for key in keys if key in context)]) + "\n")
+    with open(skillloop.DECISIONS, "a") as out:
+        for form, decision, source in decisions:
+            out.write("\t".join([form, decision, skillloop.criterion_revision(), skillloop.SNAPSHOT, source]) + "\n")
+    print(f"{len(skills)} skills in skills.tsv; {len(decisions)} decisions appended. "
+          "Run scripts/check-skill-keys to set the kind of every key.")
+
+
+def main():
+    command, *arguments = sys.argv[1:] or [""]
+    if command == "judge" and len(arguments) in (1, 2):
+        judge(*arguments)
+    elif command == "collect" and not arguments:
+        collect()
+    elif command == "append" and not arguments:
+        append()
+    else:
+        sys.exit(__doc__.strip())
+
+
+if __name__ == "__main__":
+    main()

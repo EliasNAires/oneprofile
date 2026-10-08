@@ -1,0 +1,2895 @@
+name	decision	source	id	canonical	category	aliases	note
+Go	keep	session	golang				session: spelling of golang
+Microsoft	drop	jev					
+REST	drop	jev					
+DevOps	drop	jev					
+Excel	drop	jev					
+D	drop	jev					
+UX	drop	jev					
+Server	drop	jev					
+Amazon	drop	jev					
+NoSQL	drop	jev					
+MCP	keep	jev	mcp	MCP	security		
+Copilot	drop	session					session: names several skills (GitHub Copilot, Microsoft Copilot)
+ID	drop	jev					
+NET	keep	jev	net				
+IaC	drop	jev					
+Oracle	drop	jev					
+Fortune	drop	jev					
+MLOps	drop	jev					
+Workspace	drop	session					session: the bare form of office software, and an ordinary word
+Navigation	drop	jev					
+Boot	drop	jev					
+Apple	drop	jev					
+Stripe	drop	jev					
+GenAI	drop	jev					
+Studio	drop	jev					
+DevSecOps	drop	jev					
+nice	drop	jev					
+Anthropic	drop	jev					
+Lake	drop	jev					
+Gateway	drop	jev					
+Slack	drop	jev					
+Compose	drop	session					session: names several skills (Docker Compose, Jetpack Compose)
+JSON	keep	jev	json	JSON	language		
+Music	drop	jev					
+Ethernet	keep	jev	ethernet	Ethernet	networking		
+Bolt	drop	session					session: names several things, none dominant
+catalog	drop	jev					
+Security+	drop	jev					
+Codex	keep	session	openai-codex				session: spelling of openai-codex
+GitOps	drop	jev					
+MVVM	drop	jev					
+Sigma	drop	session					session: names several things, none dominant
+Stanford	drop	jev					
+lakehouse	drop	jev					
+Workday	drop	jev					
+Cisco	drop	jev					
+Paint	drop	jev					
+Gemini	keep	session	google-gemini				session: spelling of google-gemini
+Zoom	drop	jev					
+Node	drop	jev					
+Chrome Extension	drop	jev					
+Meta	drop	jev					
+Fabric	keep	jev	microsoft-fabric	Microsoft Fabric	data	Fabric	
+Pro	drop	jev					
+portal	drop	jev					
+NVIDIA	drop	jev					
+Palo Alto	drop	jev					
+Apex	drop	session					session: names several skills (Oracle APEX, Salesforce Apex)
+Asana	drop	jev					
+Elastic	drop	jev					
+ITSM	drop	jev					
+express	keep	jev	express-js	Express.js	framework	Express	
+Aurora	keep	session	amazon-aurora				session: spelling of amazon-aurora
+I2C	keep	jev	i2c	I2C	networking		
+Foundry	drop	session					session: names several skills (Palantir, Azure AI, Cloud Foundry)
+Atlassian	drop	jev					
+PC	drop	jev					
+Glue	keep	session	aws-glue				session: spelling of aws-glue
+Tag	drop	jev					
+Greenhouse	drop	jev					
+Lightning	drop	jev					
+biases	drop	jev					
+NYSE	drop	jev					
+PCIe	keep	jev	pcie	PCIe	networking	PCIE	
+Uber	drop	jev					
+Q	drop	jev					
+fullstack	drop	jev					
+Pub	drop	session					session: a fragment of a longer name
+F	drop	jev					
+SolidWorks	drop	jev					
+Juniper	drop	jev					
+CompTIA Security+	drop	jev					
+UART	keep	jev	uart	UART	networking		
+DB	drop	jev					
+Network+	drop	jev					
+NeurIPS	drop	jev					
+L3	drop	jev					
+L2	drop	jev					
+PaaS	drop	jev					
+Triton	drop	session					session: names several skills (Triton Inference Server, OpenAI Triton)
+bot	drop	jev					
+IBM	drop	jev					
+XDR	drop	jev					
+A+	drop	jev					
+E2E	drop	jev					
+Sentinel	keep	session	microsoft-sentinel				session: spelling of microsoft-sentinel
+OSI	drop	jev					
+universal	drop	jev					
+Defender	keep	session	microsoft-defender				session: spelling of microsoft-defender
+Unity Catalog	keep	session	databricks-unity-catalog				session: spelling of databricks-unity-catalog
+Amplitude	keep	jev	amplitude	Amplitude	data		
+Flux	drop	session					session: names several products (Flux CD, the FLUX image models) and ordinary senses
+Bloomberg	drop	jev					
+GIAC	drop	jev					
+NET Core	keep	jev	net				
+VoIP	drop	jev					
+WCAG	drop	jev					
+ICML	drop	jev					
+LLMOps	drop	jev					
+Palantir	drop	jev					
+App Store	drop	jev					
+HCM	drop	jev					
+DISA	drop	jev					
+Nexus	drop	session					session: names several things, none dominant
+SASE	drop	jev					
+Glean	keep	jev	glean	Glean	tool		
+STIG	drop	jev					
+iPaaS	drop	jev					
+USB	keep	jev	usb	USB	networking		
+Cameo	keep	jev	cameo	Cameo	tool		
+Intel	drop	jev					
+Dell	drop	jev					
+ICLR	drop	jev					
+Arista	drop	jev					
+kit	drop	jev					
+OLAP	drop	jev					
+ORM	drop	jev					
+HL7	keep	jev	hl7	HL7	security		
+QoS	drop	jev					
+Samsung	drop	jev					
+4HANA	drop	session					session: a fragment of a longer name
+Auth0	keep	jev	auth0	Auth0	security		
+Tempo	keep	jev	grafana-tempo	Grafana Tempo	devops		
+Mixpanel	keep	jev	mixpanel	Mixpanel	data	MixPanel	
+RPA	drop	jev					
+AutoGen	keep	jev	autogen	AutoGen	framework		
+L’Oréal	drop	jev					
+Beam	keep	jev	apache-beam	Apache Beam	framework		
+RDMA	keep	jev	rdma	RDMA	networking		
+programmer	drop	jev					
+DBA	drop	jev					
+Hex	drop	session					session: names several things, none dominant
+HIV	drop	jev					
+IEEE	drop	jev					
+Microsoft Teams	drop	jev					
+OPA	keep	jev	open-policy-agent	Open Policy Agent	security	OPA	
+3D CAD	drop	jev					
+Fortinet	drop	jev					
+PagerDuty	keep	jev	pagerduty	PagerDuty	devops		
+Apollo	drop	session					session: names several skills (Apollo GraphQL, Apollo Client, Apollo.io)
+PL	drop	jev					
+Jama	keep	jev	jama	Jama	tool	JAMA	
+Einstein	drop	jev					
+orchestrator	drop	jev					
+LoRA	drop	session					session: names several things, none dominant
+CVPR	drop	jev					
+Gong	drop	jev					
+Salt	keep	session	saltstack				session: spelling of saltstack
+TOGAF	drop	jev					
+5G	keep	jev	5g	5G	networking		
+Milvus	keep	jev	milvus	Milvus	database		
+Prisma	drop	session					session: names several products (Prisma ORM, Prisma Cloud, Prisma Access, MediaOcean Prisma)
+Falcon	drop	jev					
+OLTP	drop	jev					
+Google Play	drop	jev					
+GPT	keep	jev	gpt	GPT	ml		
+SecOps	drop	jev					
+AIOps	drop	jev					
+CompTIA A+	drop	jev					
+SAP S	drop	jev					
+Omni	drop	jev					
+PDF	drop	jev					
+Ping	drop	session					session: names several things, none dominant
+DDoS	drop	jev					
+REST Assured	keep	jev	restassured				
+eBay	drop	jev					
+ANSYS	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+Bluetooth	keep	jev	bluetooth	Bluetooth	networking		
+telco	drop	jev					
+AI Gateway	drop	jev					
+RPC	drop	jev					
+shortcut	drop	jev					
+CloudOps	drop	jev					
+PIM	drop	jev					
+shield	drop	session					session: names several things, none dominant
+Autopilot	drop	session					session: names several things, none dominant
+HP	drop	jev					
+NVMe	keep	jev	nvme	NVMe	networking	NVME	
+Sim	drop	jev					
+CMDB	drop	jev					
+Core Web Vitals	drop	jev					
+P2P	drop	jev					
+Nix	drop	session					session: names several things, none dominant
+Sage	drop	jev					
+ZoomInfo	drop	jev					
+Buck	drop	jev					
+Modbus	keep	jev	modbus	Modbus	networking	MODBUS|ModBus	
+NET Framework	keep	jev	net-framework				
+CASB	drop	jev					
+Mozilla	drop	jev					
+TensorRT-LLM	keep	jev	tensorrt-llm	TensorRT-LLM	framework		
+DX	drop	jev					
+DevTools	drop	jev					
+Oracle Fusion	drop	jev					
+Bubble	keep	jev	bubble	Bubble	tool		
+GA4	keep	session	google-analytics				session: spelling of google-analytics
+L4	drop	jev					
+Adobe Analytics	keep	jev	adobe-analytics	Adobe Analytics	data		
+Cedar	keep	jev	cedar	Cedar	security		
+Clay	keep	jev	clay	Clay	tool		
+retrofit	keep	jev	retrofit	Retrofit	framework		
+Illustrator	drop	jev					
+Zuora	drop	session					session: a vendor's name
+ACH	drop	jev					
+CCaaS	drop	jev					
+Databricks Lakehouse	keep	session	databricks				session: spelling of databricks
+NGA	drop	jev					
+Platform Developer I	drop	jev					
+UNIX-like	drop	jev					
+AMD	drop	jev					
+BMC	drop	session					session: names several things, none dominant
+Composer	drop	session					session: names several skills (PHP Composer, Cloud Composer)
+ECC	drop	jev					
+ICCV	drop	jev					
+LTE	keep	jev	lte	LTE	networking		
+MM	drop	jev					
+C#.NET	keep	session	c-sharp				session: spelling of c-sharp
+MEDDPICC	drop	jev					
+Charles River	drop	jev					
+ECR	keep	session	amazon-ecr				session: spelling of amazon-ecr
+McKinsey	drop	jev					
+CVE	drop	jev					
+RISC-V	keep	session	risc-v	RISC-V	tool		
+Ninja	keep	jev	ninja	Ninja	devops	ninja	
+Pants	keep	jev	pants	Pants	devops		
+PHY	drop	jev					
+Coupa	drop	jev					
+FC	drop	jev					
+MQ	drop	session					session: names several things, none dominant
+B.Sc	drop	jev					
+SD	drop	jev					
+Security+ CE	drop	jev					
+ADK	keep	session	google-agent-development-kit				session: spelling of google-agent-development-kit
+CICD	drop	jev					
+Eclipse	keep	session	eclipse-ide				session: spelling of eclipse-ide
+Genie	drop	session					session: names several things, none dominant
+Swarm	keep	session	docker-swarm				session: spelling of docker-swarm
+ZTNA	drop	jev					
+AFSIM	drop	jev					
+Bot Management	drop	session					session: a generic concept
+Dropbox	drop	jev					
+Google Tag Manager	keep	jev	google-tag-manager	Google Tag Manager	tool	GTM	
+Llama	keep	session	meta-llama				session: spelling of meta-llama
+MCU	drop	jev					
+VLOOKUP	drop	jev					
+CNAPP	drop	jev					
+Vanta	keep	jev	vanta	Vanta	security		
+OCR	drop	jev					
+Lenovo	drop	jev					
+Conductor	drop	session					session: names several things, none dominant
+Cowork	keep	jev	cowork	Cowork	tool		
+DDR	keep	jev	ddr	DDR	networking		
+fierce	drop	jev					
+G2	drop	jev					
+iPhone	drop	jev					
+Intercom	drop	jev					
+Jetson	keep	session	nvidia-jetson				session: spelling of nvidia-jetson
+Neptune	keep	jev	amazon-neptune	Amazon Neptune	database	Neptune	
+TPU	keep	session	google-tpu				session: spelling of google-tpu
+Decagon	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+AI-fluent	drop	jev					
+CNCF	drop	jev					
+Gemini CLI	keep	jev	gemini-cli	Gemini CLI	tool		
+Optimizely	keep	jev	optimizely	Optimizely	tool	optimizely	
+Reuters	drop	jev					
+Blackrock	drop	jev					
+datastore	drop	session					session: names several things, none dominant
+Scaled Agile	drop	jev					
+FI	drop	jev					
+Five9	drop	jev					
+FlashArray	drop	jev					
+FW	drop	jev					
+JetBrains	drop	jev					
+Proton	drop	jev					
+Qualcomm	drop	jev					
+SWD	keep	jev	swd	SWD	tool	Serial Wire Debug	
+Twitch	drop	jev					
+A2A	drop	jev					
+AWS Security Specialty	drop	jev					
+Bronze	drop	jev					
+CompTIA Network+	drop	jev					
+ECCV	drop	jev					
+Lovable	drop	jev					
+RFC	drop	jev					
+X-ray	drop	jev					
+ANSI	drop	jev					
+AuthZ	drop	jev					
+JNCIP	drop	jev					
+LIN	keep	jev	lin	LIN	networking		
+Mistral	keep	jev	mistral	Mistral	ml		
+optimizer	drop	jev					
+Tailscale	keep	jev	tailscale	Tailscale	networking		
+ISTQB	drop	jev					
+MX	drop	jev					
+Circle	drop	jev					
+ClearanceJobs	drop	jev					
+F5	drop	session					session: a vendor's name
+Flow Designer	keep	jev	flow-designer	Flow Designer	tool		
+JD	drop	jev					
+Julia	keep	session	julialang				session: spelling of julialang
+NGFW	drop	session					session: a generic concept
+UniFi	drop	jev					
+Web API	drop	jev					
+3PL	drop	jev					
+Gainsight	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+Netflix	drop	jev					
+OPC UA	keep	jev	opc-ua	OPC UA	security	OPC-UA	
+storm	drop	jev					
+DOM	drop	jev					
+HBM	keep	jev	hbm	HBM	tool		
+Raspberry	drop	jev					
+BPMN	drop	jev					
+LiteLLM	keep	jev	litellm	LiteLLM	framework		
+NASTRAN	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+UML	drop	jev					
+ADC	drop	jev					
+Bridgewater	drop	jev					
+Cake	drop	jev					
+Canva	drop	jev					
+CQRS	drop	jev					
+CXL	keep	jev	cxl	CXL	networking		
+GNSS	drop	session					session: a generic concept
+Grafana Cloud	keep	jev	grafana				
+NI	drop	jev					
+Thrift	keep	jev	thrift	Thrift	framework		
+Tines	keep	jev	tines	Tines	security		
+WLAN	drop	jev					
+XP	drop	jev					
+Dash	drop	session					session: names several things, none dominant
+DeepSeek	keep	jev	deepseek	DeepSeek	ml		
+Lakeflow	drop	jev					
+Modeler	drop	jev					
+Polarion	keep	jev	polarion	Polarion	tool		
+Rhapsody	keep	jev	rational-rhapsody	IBM Rational Rhapsody	tool	Rational Rhapsody	
+RMM	drop	jev					
+SPL	drop	session					session: names several things, none dominant
+ALB	keep	jev	aws-application-load-balancer	AWS Application Load Balancer	cloud	ALB	
+Arize	drop	jev					
+Disney	drop	jev					
+IL4	drop	jev					
+MuJoCo	keep	jev	mujoco	MuJoCo	framework	Mujoco	
+SingleStore	keep	jev	singlestore	SingleStore	database	Singlestore	
+Snap	drop	session					session: names several things, none dominant
+Stata	keep	jev	stata	Stata	tool	STATA	
+STK	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+Aruba	drop	session					session: a vendor's name
+Gov	drop	jev					
+L7	drop	jev					
+Pigment	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+Xray	drop	session					session: names several things, none dominant
+BeyondTrust	keep	jev	beyondtrust	BeyondTrust	security		
+Domo	keep	jev	domo	Domo	data		
+Salesloft	drop	jev					
+Spanner	keep	session	google-cloud-spanner				session: spelling of google-cloud-spanner
+Tendency	drop	jev					
+BEM	drop	jev					
+DVP	drop	jev					
+Inspector	keep	session	amazon-inspector				session: spelling of amazon-inspector
+OIC	drop	session					session: names several things, none dominant
+weave	drop	jev					
+balancer	drop	jev					
+Cloud DevOps	drop	jev					
+CoRL	drop	jev					
+Cube	drop	session					session: names several things, none dominant
+Oracle Integration Cloud	keep	session	oracle-integration-cloud	Oracle Integration Cloud	cloud		
+Salesforce.com	drop	jev					
+TanStack	drop	jev					
+FEMAP	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+Fibre	drop	jev					
+Gemini Enterprise	drop	jev					
+Iterable	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+NEA	drop	jev					
+PQL	keep	jev	pql	PQL	language		
+QLoRA	drop	session					session: a generic concept
+SWG	drop	jev					
+UV	drop	jev					
+Workbench	drop	jev					
+AuthN	drop	jev					
+Dynamo	drop	jev					
+Raft	drop	session					session: a generic concept
+RAM	drop	jev					
+Secretary	drop	jev					
+shiny	keep	session	r-shiny				session: spelling of r-shiny
+SonicWall	keep	jev	sonicwall	SonicWall	security	Sonicwall|SonicWALL|sonicwall	
+CAN-FD	keep	jev	can-fd	CAN-FD	networking	CAN FD	
+CSS Grid	keep	jev	css-grid	CSS Grid	language		
+DISA STIG	drop	jev					
+Disruptor	drop	jev					
+Orion	drop	session					session: names several things, none dominant
+SFDC	keep	jev	salesforce				
+URL	drop	jev					
+AI Center	drop	jev					
+Arrow	keep	session	apache-arrow				session: spelling of apache-arrow
+Blackwell	drop	jev					
+Eagle	drop	session					session: names several things, none dominant
+GPO	drop	session					session: names several things, none dominant
+INT8	drop	jev					
+IVR	drop	jev					
+RS422	keep	jev	rs422	RS422	networking		
+SAP ECC	keep	session	sap-erp				session: spelling of sap-erp
+Aurora RDS	keep	session	amazon-aurora				session: spelling of amazon-aurora
+ESB	drop	jev					
+GNU	drop	jev					
+ITOM	drop	jev					
+MISRA	drop	jev					
+NXP	drop	jev					
+R2	drop	session					session: names several things, none dominant
+UEFI	keep	jev	uefi	UEFI	tool		
+Arduino	keep	jev	arduino	Arduino	tool		
+Commvault	keep	jev	commvault	Commvault	tool		
+Devin	drop	session					session: a person's name as much as a product
+Forest	drop	jev					
+Microsoft Active Directory	keep	jev	active-directory				
+Open Telemetry	keep	jev	opentelemetry				
+OpenClaw	drop	jev					
+Qwen	keep	jev	qwen	Qwen	ml		
+Scaled Agile Framework	drop	jev					
+Secret Manager	keep	session	google-cloud-secret-manager				session: spelling of google-cloud-secret-manager
+v3	drop	jev					
+Warp	drop	jev					
+4G	keep	jev	4g	4G	networking		
+Active Directory Services	keep	jev	active-directory				
+Allianz	drop	jev					
+ASPICE	drop	jev					
+Concur	drop	jev					
+Google Drive	drop	jev					
+GPIO	drop	session					session: a generic concept
+Handler	drop	jev					
+Heap	drop	session					session: names several things, none dominant
+IPAM	drop	session					session: a generic concept
+OpenCode	drop	jev					
+QL	drop	jev					
+Rockwell	drop	session					session: a vendor's name
+Rubin	drop	jev					
+Symantec	drop	session					session: a vendor's name
+Clari	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+Cloud Manager	drop	session					session: names several products (Adobe, NetApp, Ansible Cloud Manager)
+Dataiku	keep	jev	dataiku	Dataiku	data		
+Edition	drop	jev					
+EMNLP	drop	jev					
+iPad	drop	jev					
+Jamf Pro	keep	jev	jamf				
+Maestro	drop	session					session: names several things, none dominant
+Navigator	drop	jev					
+years+	drop	jev					
+administración	drop	jev					
+AHT	drop	jev					
+ASAP	drop	jev					
+AWS Cloud Practitioner	drop	jev					
+Cloud+	drop	jev					
+Data Loader	keep	session	salesforce-data-loader	Salesforce Data Loader	tool		session: drafted again
+Fax	drop	jev					
+Gantt	drop	jev					
+multiplexing	drop	jev					
+Oracle Fusion Cloud	drop	jev					
+proto	drop	jev					
+Q2	drop	jev					
+remedy	keep	jev	bmc-remedy	BMC Remedy	tool		
+Service Now	keep	jev	servicenow				
+STL	drop	session					session: names several things (the C++ STL, the STL file format)
+Two Sigma	drop	jev					
+3GPP	keep	jev	3gpp	3GPP	networking		
+Alloy	keep	session	grafana-alloy				session: spelling of grafana-alloy
+APIs REST	drop	jev					
+ArduPilot	keep	jev	ardupilot	ArduPilot	framework		
+ARM Cortex-M	drop	jev					
+B200	keep	jev	b200	B200	tool		
+Bluebeam Revu	drop	jev					
+Booking.com	drop	jev					
+Cpk	drop	jev					
+EY	drop	jev					
+Kimball	drop	jev					
+Klaviyo	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+Lakebase	keep	jev	lakebase	Lakebase	tool		
+MOM	drop	jev					
+Opus	drop	jev					
+Uniswap	drop	jev					
+Workspace ONE	keep	session	vmware-workspace-one				session: spelling of vmware-workspace-one
+Bain	drop	jev					
+CCDA	drop	jev					
+DWH	drop	jev					
+Iru	drop	session					session: obscure
+LI-DNI	drop	jev					
+Ragas	keep	jev	ragas	Ragas	ml	RAGAS	
+U-Boot	keep	jev	u-boot	U-Boot	tool		
+UCI	drop	jev					
+UKG	drop	jev					
+CCSDS	keep	jev	ccsds	CCSDS	networking		
+CDISC	drop	session					session: a vendor's name
+Citadel	drop	jev					
+CNN	drop	session					session: a generic concept
+COMSOL	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+Data Hub	drop	jev					
+DICOM	keep	jev	dicom	DICOM	security		
+dispatcher	drop	session					session: an ordinary word
+H200	keep	jev	nvidia-h200	NVIDIA H200	tool		
+magnet	drop	jev					
+Meta Ads	drop	jev					
+NIST RMF	drop	jev					
+Oracle EBS	keep	jev	oracle-ebs	Oracle E-Business Suite	tool	Oracle EBS	
+P4	drop	jev					
+Resource Manager	drop	session					session: a generic concept
+Starburst	keep	jev	starburst	Starburst	database		
+TikTok Shop	drop	jev					
+TLV	drop	jev					
+US Secret	drop	jev					
+VMCE	drop	jev					
+Workday Studio	keep	jev	workday-studio	Workday Studio	tool		
+ZIA	drop	jev					
+Ambiq	drop	jev					
+DMARC	keep	jev	dmarc	DMARC	security		
+Fibre Channel	keep	jev	fibre-channel	Fibre Channel	networking		
+FM	drop	jev					
+Google Search	drop	jev					
+Inventor	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+JIT	drop	jev					
+JWICS	drop	jev					
+Linux CLI	drop	jev					
+Nokia	drop	jev					
+Perplexity	drop	jev					
+PIV	drop	jev					
+PIX	drop	session					session: names several things, none dominant
+Productboard	drop	jev					
+Sitecore	keep	jev	sitecore	Sitecore	tool		
+Xbox	drop	jev					
+a11y	drop	jev					
+Campaign Manager	drop	jev					
+CATIA V5	drop	session					session: CAD software no software person is hired for
+Chariot	drop	jev					
+Claude Cowork	drop	jev					
+D1	drop	session					session: names several things, none dominant
+Flo	drop	jev					
+H100	keep	jev	nvidia-h100	NVIDIA H100	tool		
+Neo	drop	jev					
+O2C	drop	jev					
+Orca	keep	jev	orca-security	Orca Security	security		
+Radix	keep	session	radix-ui				session: spelling of radix-ui
+SIPR	drop	jev					
+SLSA	drop	session					session: a generic concept
+WOO	drop	jev					
+AAAI	drop	jev					
+BR	drop	jev					
+DKIM	keep	jev	dkim	DKIM	security		
+EF	drop	jev					
+FortiGate	keep	jev	fortigate	FortiGate	networking		
+Go Lang	keep	session	golang				session: spelling of golang
+Graphite	drop	jev					
+HCL	drop	session					session: names several things, none dominant
+Kargo	keep	jev	kargo	Kargo	devops		
+Pact	keep	jev	pact	Pact	testing	Pact.io	
+QuickBooks Online	keep	jev	quickbooks				
+SoD	drop	jev					
+SPF	keep	jev	spf	SPF	security		
+SuiteFlow	keep	jev	suite-flow	SuiteFlow	tool		
+Sybase	keep	jev	sybase	Sybase	database		
+Tableau Prep	keep	jev	tableau-prep	Tableau Prep	data		
+TC	drop	jev					
+Zigbee	keep	jev	zigbee	Zigbee	networking		
+Adobe Acrobat	drop	jev					
+Aha	drop	session					session: an ordinary word
+AI QA	drop	jev					
+AX	drop	jev					
+DPU	drop	jev					
+Eve	drop	jev					
+Fierce Healthcare	drop	jev					
+HDL	drop	session					session: a generic concept
+Intuit	drop	jev					
+JDK	keep	jev	jdk	JDK	tool		
+JOOQ	keep	jev	jooq	jOOQ	framework	Jooq	
+JSM	keep	jev	jira				
+KubeVirt	keep	jev	kubevirt	KubeVirt	devops		
+LIT	drop	session					session: names several things, none dominant
+OIG	keep	jev	okta-identity-governance	Okta Identity Governance	security		
+Open AI	drop	jev					
+OWL	drop	jev					
+PivotTables	drop	jev					
+Proofpoint	keep	jev	proofpoint	Proofpoint	security		
+RoCEv2	keep	jev	roce-v2	RoCEv2	networking		
+SNOW	drop	jev					
+STAT	drop	jev					
+Tiger Global	drop	jev					
+V6	drop	jev					
+X.509	keep	jev	x-509	X.509	security		
+6sense	drop	jev					
+AI Studio	drop	session					session: names several things, none dominant
+Aladdin	drop	jev					
+Application Gateway	keep	session	azure-application-gateway				session: spelling of azure-application-gateway
+BW	drop	jev					
+Cerner	drop	jev					
+CSRF	drop	jev					
+DCI	drop	jev					
+Elementary	drop	session					session: an ordinary word
+IDC MarketScape	drop	jev					
+KSA	drop	jev					
+LINQ	keep	jev	linq	LINQ	language		
+LiveRamp	drop	jev					
+Microsoft Exchange	keep	jev	microsoft-exchange	Microsoft Exchange	tool		
+Oracle EPM	keep	jev	oracle-epm	Oracle Enterprise Performance Management	tool	Oracle EPM	
+Panorama	keep	jev	panorama	Palo Alto Panorama	security		
+Remix	keep	jev	remix	Remix	framework		
+SDTM	keep	session	sdtm	SDTM	data		session: drafted again
+Sphinx	keep	jev	sphinx	Sphinx	framework		
+SPIRE	keep	jev	spire	SPIRE	security		
+SSM	keep	session	aws-systems-manager				session: spelling of aws-systems-manager
+VRAM	drop	jev					
+Wazuh	keep	jev	wazuh	Wazuh	security		
+Workday Adaptive Planning	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+WSUS	keep	jev	wsus	WSUS	tool		
+Xen	keep	jev	xen	Xen	tool		
+ACI	keep	jev	cisco-aci	Cisco ACI	networking	ACI	
+AF	drop	jev					
+ArcGIS Pro	keep	jev	arcgis				
+DML	drop	jev					
+EIB	keep	jev	eib	EIB	tool	Enterprise Interface Builder	
+FIDO	keep	jev	fido	FIDO	security		
+Firehose	keep	jev	amazon-kinesis-data-firehose	Amazon Kinesis Data Firehose	cloud	Firehose|Kinesis Firehose|Kinesis Data Firehose	
+GR	drop	jev					
+ICPC	drop	jev					
+Kong AI Gateway	keep	jev	kong-ai-gateway	Kong AI Gateway	tool		
+LCM	drop	jev					
+Microsoft Foundry	keep	jev	microsoft-foundry	Microsoft Foundry	cloud		
+MS Azure	keep	jev	azure				
+MSP430	keep	jev	msp430	MSP430	tool		
+New York Metro	drop	jev					
+OTBI	keep	jev	otbi	Oracle OTBI	data		
+P.E	drop	jev					
+Portkey	keep	jev	portkey	Portkey	tool		
+PPC	drop	jev					
+RCDD	drop	jev					
+ReBAC	drop	jev					
+Sage Intacct	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+Salesforce Data Cloud	keep	jev	salesforce-data-cloud	Salesforce Data Cloud	cloud		
+Saudi Arabia	drop	jev					
+Splunk SOAR	keep	jev	splunk-soar	Splunk SOAR	security		
+Teamcenter PLM	drop	jev					
+v0	drop	session					session: a key that matches other text (a version)
+Ads Manager	drop	jev					
+Ant	drop	session					session: names several things, none dominant
+Authenticator	drop	jev					
+Axiom	drop	session					session: names several things, none dominant
+Cp	drop	jev					
+DealHub	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+DNP3	keep	jev	dnp3	DNP3	networking		
+ECMP	drop	session					session: a generic concept
+Elastic Security	drop	jev					
+GCP Vertex	drop	jev					
+Guice	keep	jev	guice	Guice	framework		
+Guru	drop	jev					
+Hopper	drop	session					session: names several things, none dominant
+IETF	drop	jev					
+Inductive	drop	jev					
+JEDEC	drop	jev					
+LSTM	drop	session					session: a generic concept
+Matillion	keep	jev	matillion	Matillion	data		
+MiniMax	keep	jev	minimax	MiniMax	ml	Minimax	
+MRI	drop	jev					
+NETCONF	keep	jev	netconf	NETCONF	networking		
+OMOP	keep	jev	omop	OMOP	data		
+OSD	drop	jev					
+RTR	drop	jev					
+SimCorp	drop	jev					
+SuiteFoundation	drop	jev					
+TRL	keep	jev	trl	TRL	framework		
+WooCommerce	keep	jev	woocommerce	WooCommerce	framework		
+ZPA	keep	jev	zscaler-private-access	Zscaler Private Access	security		
+4D	drop	jev					
+ACD	drop	jev					
+Amazon AWS	keep	jev	aws				
+Apple App Store	drop	jev					
+ATP	drop	jev					
+Beckhoff	drop	session					session: a vendor's name
+CAPI	drop	session					session: an ambiguous abbreviation, as the criterion lists CAPI
+Claude.ai	drop	jev					
+Cumulus	drop	session					session: a vendor's name
+DDL	drop	jev					
+DEP	drop	jev					
+Firecracker	keep	jev	firecracker	Firecracker	devops	FireCracker	
+Freshdesk	drop	jev					
+GraphRAG	drop	jev					
+Hermes	drop	session					session: names several things, none dominant
+Hexnode	keep	jev	hexnode	Hexnode	tool		
+Hightouch	keep	jev	hightouch	Hightouch	tool		
+ICAM	drop	jev					
+ISE	drop	session					session: names several skills (Cisco ISE, Xilinx ISE)
+ISO26262	drop	jev					
+I²C	keep	session	i2c				session: drafted again
+Keysight	drop	jev					
+MCAP	keep	jev	mcap	MCAP	data	mcap	
+Microsoft Hyper-V	keep	jev	hyper-v				
+NIPR	drop	jev					
+OGC	drop	jev					
+P Global	drop	jev					
+Random Forest	drop	session					session: a generic concept
+RHCSA	drop	jev					
+SBE	drop	jev					
+SNOMED	keep	session	snomed-ct				session: spelling of snomed-ct
+Sonnet	keep	session	claude-sonnet				session: spelling of claude-sonnet
+SQLMesh	keep	jev	sqlmesh	SQLMesh	framework	Sqlmesh	
+800G	drop	jev					
+Aeron	keep	jev	aeron	Aeron	framework		
+APIM	keep	session	azure-api-management				session: spelling of azure-api-management
+Atlassian Cloud	drop	jev					
+AWQ	drop	session					session: a generic concept
+Big Query	keep	jev	google-bigquery				
+Broadcom	drop	jev					
+Checker	drop	jev					
+Cisco CCNA	drop	jev					
+cuDNN	keep	jev	cudnn	cuDNN	framework		
+CWE	drop	jev					
+CWPP	drop	jev					
+D Engineering	drop	jev					
+DeepEval	keep	jev	deepeval	DeepEval	framework		
+Dell Boomi	keep	jev	boomi				
+Division Multiplexing	drop	jev					
+DoD TS	drop	jev					
+Fortinet NSE	drop	jev					
+GeoPandas	keep	jev	geopandas	GeoPandas	framework		
+Google Earth	drop	jev					
+Gurobi	keep	jev	gurobi	Gurobi	framework		
+HBSS	keep	jev	hbss	HBSS	security		
+Hello	drop	jev					
+IBM DOORS	keep	jev	ibm-doors	IBM DOORS	tool		
+ITIL v4	drop	jev					
+Kueue	keep	jev	kueue	Kueue	devops		
+Mist	keep	session	juniper-mist				session: spelling of juniper-mist
+MVI	drop	jev					
+Okta Identity Governance	keep	jev	okta-identity-governance	Okta Identity Governance	security	OIG	
+Orleans	drop	jev					
+PRM	drop	jev					
+Semrush	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+Telegraf	keep	jev	telegraf	Telegraf	devops		
+Travis	keep	jev	travis-ci	Travis CI	devops	Travis	
+TUI	drop	jev					
+VMware VCP	drop	jev					
+ADB	keep	jev	android-debug-bridge	Android Debug Bridge	tool	ADB|adb	
+App Engine	keep	jev	google-app-engine				
+ArcGIS Enterprise	keep	jev	arcgis				
+Aurora MySQL	keep	session	amazon-aurora				session: spelling of amazon-aurora
+BFF	drop	jev					
+BI Publisher	keep	jev	bi-publisher	BI Publisher	data		
+Captivate	drop	jev					
+ChatOps	drop	jev					
+Checkmarx	keep	jev	checkmarx	Checkmarx	security		
+CI-CD	drop	jev					
+CJA	drop	session					session: names several things, none dominant
+Coralogix	keep	jev	coralogix	Coralogix	devops		
+CPLEX	keep	jev	cplex	CPLEX	tool	Cplex	
+CRV	drop	jev					
+CUTLASS	keep	jev	cutlass	CUTLASS	framework		
+DataLake	drop	jev					
+Datorama	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+DCM	drop	jev					
+Diamond Model	drop	jev					
+FSM	drop	jev					
+FTK	keep	jev	ftk	FTK	security		
+FullStory	keep	jev	fullstory	FullStory	tool	Fullstory	
+GoogleTest	keep	jev	googletest	GoogleTest	testing	gtest	
+GPTQ	drop	session					session: a generic concept
+LLDP	keep	jev	lldp	LLDP	networking		
+Logitech	drop	jev					
+MC	drop	jev					
+Nitro	drop	jev					
+NR	drop	jev					
+NTB	drop	jev					
+Odoo	keep	jev	odoo	Odoo	tool		
+Office365	drop	jev					
+overflow	drop	jev					
+PostHog	keep	jev	posthog	PostHog	tool	Posthog	
+REFramework	keep	jev	reframework	REFramework	framework		
+RingCentral	drop	jev					
+Rocky	keep	jev	rocky-linux	Rocky Linux	os		
+RT	drop	jev					
+RTSP	keep	jev	rtsp	Real-Time Streaming Protocol	networking		
+SA360	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+Saga	drop	jev					
+Shopee	drop	jev					
+TFLite	keep	session	tensorflow-lite				session: spelling of tensorflow-lite
+ViewModel	drop	session					session: a generic concept
+Vue 3	keep	jev	vue-js				
+Win32	keep	session	win32-api				session: spelling of win32-api
+X-Ways	keep	jev	x-ways	X-Ways	security		
+Advanced RPA Developer	drop	jev					
+AFL++	keep	jev	afl-plus-plus	AFL++	security		
+Agent Workspace	drop	jev					
+Amex	drop	jev					
+App Store Connect	keep	jev	app-store-connect	App Store Connect	tool		
+Aspen	drop	jev					
+C4	drop	jev					
+Camel	keep	session	apache-camel				session: spelling of apache-camel
+CDA	drop	session					session: names several things, none dominant
+CM360	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+CompTIA Security+ CE	drop	jev					
+Configuration Manager	keep	session	microsoft-endpoint-configuration-manager				session: spelling of microsoft-endpoint-configuration-manager
+Databricks Genie	keep	jev	databricks-genie	Databricks Genie	data		
+DITA	keep	jev	dita	DITA	language		
+draw.io	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+Endpoint Manager	keep	jev	microsoft-endpoint-manager	Microsoft Endpoint Manager	tool		
+Firepower	keep	jev	cisco-firepower	Cisco Firepower	security	Firepower	
+Glide	drop	session					session: names several skills (Glide for Android, ServiceNow Glide)
+Google Cloud Pub	drop	jev					
+Google Play Console	drop	jev					
+HL7 v2	keep	session	hl7				session: spelling of hl7
+IGMP	keep	jev	igmp	IGMP	networking		
+IQVIA	drop	jev					
+Iron Bank	keep	jev	iron-bank	Iron Bank	devops		
+LCAT	drop	jev					
+LOD	drop	jev					
+Maya	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+Pacific Northwest	drop	jev					
+PowerPC	keep	jev	powerpc	PowerPC	tool		
+Premiere	drop	jev					
+Products Group	drop	jev					
+QRadar	keep	jev	qradar	QRadar	security		
+RDF	keep	jev	rdf	Resource Description Framework	language		
+RDS Proxy	keep	jev	amazon-rds-proxy	Amazon RDS Proxy	cloud		
+Redpoint	drop	jev					
+SAP Activate	drop	jev					
+SAP Finance	drop	jev					
+SDP	drop	session					session: names several things, none dominant
+Shapely	keep	jev	shapely	Shapely	framework		
+Sigstore	keep	jev	sigstore	Sigstore	security		
+SRT	drop	session					session: names several things, none dominant
+SSG	drop	jev					
+STLC	drop	jev					
+SVA	keep	jev	systemverilog-assertions	SystemVerilog Assertions	language		
+Teleport	keep	jev	teleport	Teleport	security		
+TVM	keep	jev	tvm	TVM	ml		
+UiPath Studio	keep	jev	uipath				
+Vertex AI Pipelines	keep	jev	vertex-ai-pipelines	Vertex AI Pipelines	ml		
+VSCode	keep	jev	visual-studio-code				
+WebdriverIO	keep	jev	webdriverio	WebdriverIO	testing	WebDriverIO	
+WebGPU	keep	jev	webgpu	WebGPU	framework		
+WebView	drop	session					session: a generic concept
+XSOAR	keep	session	cortex-xsoar				session: spelling of cortex-xsoar
+1Password	drop	jev					
+A2B	keep	jev	a2b	A2B	networking		
+Agile SDLC	drop	jev					
+Anycast	drop	jev					
+ASIL	drop	jev					
+AV-over-IP	drop	jev					
+Azure Database	drop	jev					
+BT	drop	jev					
+ChromeOS	drop	jev					
+CIDR	drop	jev					
+Databricks Apps	keep	jev	databricks-apps	Databricks Apps	data		
+DataStage	keep	session	ibm-datastage				session: spelling of ibm-datastage
+DBaaS	drop	jev					
+Deployment Manager	keep	session	google-cloud-deployment-manager				session: spelling of google-cloud-deployment-manager
+DHL	drop	jev					
+Diode	drop	jev					
+DP	drop	jev					
+Enovia	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+Eppo	keep	jev	eppo	Eppo	tool		
+Ethernet MAC	drop	jev					
+EUC	drop	jev					
+Fast API	keep	jev	fastapi				
+FreeBSD	keep	jev	freebsd	FreeBSD	os		
+GN	drop	jev					
+GPIB	keep	jev	gpib	GPIB	networking		
+GPUDirect	keep	session	gpudirect-rdma				session: spelling of gpudirect-rdma
+GraphPad Prism	drop	jev					
+Halo	drop	jev					
+Junie	drop	jev					
+Karate	keep	jev	karate	Karate	testing		
+lldb	keep	jev	lldb	lldb	tool	LLDB	
+LOINC	keep	jev	loinc	LOINC	data		
+Modbus TCP	keep	jev	modbus-tcp	Modbus TCP	networking		
+MVCC	drop	jev					
+Navan	drop	jev					
+NVIDIA Dynamo	keep	jev	nvidia-dynamo	NVIDIA Dynamo	framework		
+NVSwitch	keep	jev	nvswitch	NVSwitch	networking		
+NX CAD	drop	jev					
+OpenSSL	keep	jev	openssl	OpenSSL	framework	openssl	
+OTP	drop	session					session: names several things, none dominant
+PCAP	keep	jev	pcap	PCAP	security	Pcap	
+PlanetScale	keep	jev	planetscale	PlanetScale	database		
+Profinet	keep	jev	profinet	PROFINET	networking	ProfiNet	
+ProxySQL	keep	jev	proxysql	ProxySQL	tool		
+Ranger	keep	jev	ranger	Apache Ranger	data		
+RSTP	keep	jev	rstp	Rapid Spanning Tree Protocol	networking		
+RStudio	keep	jev	rstudio	RStudio	tool		
+SATA	keep	jev	sata	SATA	networking		
+Spacelift	keep	jev	spacelift	Spacelift	devops		
+Spark Structured Streaming	keep	jev	spark-structured-streaming	Spark Structured Streaming	framework		
+TCV	drop	jev					
+Thomson Reuters	drop	jev					
+UAM	drop	jev					
+3DEXPERIENCE	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+ADE	drop	session					session: names several things, none dominant
+AHJ	drop	jev					
+Ahrefs	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+Alexa	drop	jev					
+ASE	drop	jev					
+AuditBoard	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+AvidXchange	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+Azure Site Recovery	keep	jev	azure-site-recovery	Azure Site Recovery	cloud		
+Bull	drop	session					session: names several things, none dominant
+CANopen	keep	jev	canopen	CANopen	networking		
+cATO	drop	jev					
+Chromium	keep	jev	chromium	Chromium	framework		
+Cisco Nexus	keep	jev	cisco-nexus	Cisco Nexus	networking	NX-OS	
+Delinea	drop	jev					
+DoD-approved	drop	jev					
+Drizzle	keep	session	drizzle-orm				session: spelling of drizzle-orm
+FICC	drop	jev					
+FlexRay	keep	jev	flexray	FlexRay	networking		
+GeoJSON	keep	jev	geojson	GeoJSON	data		
+gesture	drop	jev					
+IaaC	drop	jev					
+IBM Cloud	keep	jev	ibm-cloud	IBM Cloud	cloud		
+INT4	drop	jev					
+ITAM	drop	jev					
+Linux+	drop	jev					
+Lite	drop	jev					
+MTU	drop	jev					
+NetDocuments	drop	jev					
+OneSource	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+Planhat	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation)
+PMI-PBA	drop	jev					
+Poetry	keep	jev	poetry	Poetry	tool		
+PREEMPT	drop	jev					
+PyTorch Profiler	keep	jev	pytorch				
+QM	drop	jev					
+ReadMe	drop	session					session: a generic concept
+Scikit	drop	jev					
+System Verilog	keep	jev	systemverilog				
+TACACS+	keep	jev	tacacs-plus	TACACS+	security		
+Toyota	drop	jev					
+US Army	drop	jev					
+VWO	keep	jev	vwo	VWO	tool		
+XCTest	keep	jev	xctest	XCTest	testing		
+10pm	drop	jev					
+400G	drop	jev					
+7AM	drop	jev					
+ACME	drop	session					session: names several things, none dominant
+ACR	keep	jev	azure-container-registry	Azure Container Registry	devops	ACR	
+Active Workspace	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+ADO	drop	session					session: names several things, none dominant
+AI Overviews	drop	jev					
+AIDLC	drop	jev					
+AIP	drop	jev					
+AMQP	keep	jev	amqp	AMQP	networking	Advanced Message Queuing Protocol	
+Ansa	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+ArcGIS Online	keep	jev	arcgis				
+Argo Rollouts	keep	jev	argo-rollouts	Argo Rollouts	devops		
+Arize Phoenix	keep	jev	arize-phoenix	Arize Phoenix	devops		
+autoscaler	drop	jev					
+AWS Advanced Networking	drop	jev					
+Azure Firewall	keep	jev	azure-firewall	Azure Firewall	cloud		
+Bill.com	drop	jev					
+BlackRock Aladdin	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+Blue Prism	keep	jev	blue-prism	Blue Prism	tool		
+C++20	keep	session	cpp				session: spelling of cpp
+CameraX	keep	jev	camerax	CameraX	framework		
+COOP	drop	jev					
+CTS-D	drop	jev					
+D365 F	drop	jev					
+EPG	drop	jev					
+Fastify	keep	jev	fastify	Fastify	framework		
+FFI	drop	jev					
+FreeSWITCH	keep	jev	freeswitch	FreeSWITCH	tool	Freeswitch|FreeSwitch	
+FRR	keep	jev	frr	FRR	networking		
+Gage R	drop	jev					
+Geodatabases	drop	jev					
+Gerrit	keep	jev	gerrit	Gerrit	tool		
+GMSL	keep	jev	gmsl	GMSL	networking		
+Graph DB	drop	jev					
+GrowthBook	keep	jev	growthbook	GrowthBook	tool	Growthbook	
+Hitachi	drop	jev					
+Hypermesh	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+integer	drop	jev					
+IRAD	drop	jev					
+ISC	drop	jev					
+jumpstart	drop	jev					
+Liquibase	keep	jev	liquibase	Liquibase	tool		
+L’Oreal	drop	jev					
+Maltego	keep	jev	maltego	Maltego	security		
+MIG	drop	session					session: names several things, none dominant
+Moody	drop	jev					
+NER	drop	jev					
+NeRF	drop	session					session: a generic concept
+NinjaOne	keep	jev	ninjaone	NinjaOne	tool		
+Oak	drop	jev					
+OmniStudio	keep	jev	omnistudio	OmniStudio	framework	Omnistudio	
+OpenBMC	keep	jev	openbmc	OpenBMC	networking	openBMC	
+Oversee QA	drop	jev					
+Pardot	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+QTC	drop	jev					
+Reflex	drop	jev					
+Relyence	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+RIP	keep	jev	rip	Routing Information Protocol	networking		
+RocketMQ	keep	jev	rocketmq	Apache RocketMQ	framework		
+RxNorm	keep	jev	rxnorm	RxNorm	data		
+SDUI	drop	jev					
+Service Portal	drop	jev					
+STAC	drop	session					session: names several things, none dominant
+Symphony	drop	jev					
+Tealium	keep	jev	tealium	Tealium	tool		
+Unigraphics	drop	session					session: CAD software no software person is hired for
+Visual Studio Code	keep	jev	visual-studio-code	Visual Studio Code	tool		
+West London	drop	jev					
+XR	drop	jev					
+Zanzibar	drop	session					session: a generic concept
+Zsh	keep	jev	zsh	Zsh	language		
+Adobe Launch	keep	jev	adobe-launch	Adobe Launch	tool		
+Agent Bricks	drop	jev					
+Agentic RAG	drop	jev					
+ARIMA	drop	jev					
+Armis	keep	jev	armis	Armis	security	ARMIS	
+ArXiv	drop	jev					
+AWS Marketplace	drop	jev					
+C++23	keep	session	cpp				session: spelling of cpp
+CARLA	keep	jev	carla	CARLA	tool		
+Chai	keep	jev	chai	Chai	testing		
+Cisco CCNP	drop	jev					
+Cockpit	drop	jev					
+Codebeamer	keep	jev	codebeamer	Codebeamer	tool		
+CompTIA Security	drop	jev					
+Control-M	keep	jev	control-m	Control-M	tool	Control M	
+Cosign	keep	jev	cosign	Cosign	security		
+Databricks Unity Catalog	keep	jev	databricks-unity-catalog	Databricks Unity Catalog	data		
+DataFrame	drop	jev					
+Dataviz	drop	jev					
+Epicor	drop	jev					
+ExoPlayer	keep	jev	exoplayer	ExoPlayer	framework		
+FloQast	drop	jev					
+ForgeRock	keep	jev	forgerock	ForgeRock	security		
+Fraud Examiner	drop	jev					
+Gartner MQ	drop	jev					
+GTest	keep	jev	googletest				
+IAVA	drop	jev					
+Icarus	drop	jev					
+iOS App Store	drop	jev					
+JD Edwards	keep	session	jd-edwards-oneworld				session: spelling of jd-edwards-oneworld
+Keychain	drop	session					session: an ordinary word
+Lazada	drop	jev					
+LiveKit	keep	jev	livekit	LiveKit	framework		
+LSEG	drop	jev					
+LTM	keep	jev	ltm	F5 LTM	networking	Local Traffic Manager	
+Marketing Cloud Engagement	keep	jev	salesforce-marketing-cloud				
+Martin	drop	jev					
+Mellanox	drop	jev					
+Midjourney	drop	jev					
+MobX	keep	jev	mobx	MobX	framework	Mobx	
+Neon	drop	session					session: names several things, none dominant
+NOI	drop	jev					
+Numeric	drop	jev					
+NVIDIA GPU Operator	keep	jev	nvidia-gpu-operator	NVIDIA GPU Operator	devops	GPU Operator	
+OFDM	drop	jev					
+ORD	drop	jev					
+Orin	drop	session					session: a person's name as much as a product
+OWASP Top Ten	drop	jev					
+Pallas	keep	jev	pallas	Pallas	language		
+Parameter Store	keep	jev	parameter-store	AWS Systems Manager Parameter Store	cloud	AWS Parameter Store	
+Powerfully	drop	jev					
+PTC Windchill	keep	jev	windchill				
+React UI	drop	jev					
+rerun	drop	session					session: an ordinary word
+SDS-PAGE	drop	jev					
+SIPRNet	drop	jev					
+SMF	drop	session					session: names several things, none dominant
+SnowPro Core	drop	jev					
+Social Studio	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+Splash	drop	jev					
+SSRF	drop	jev					
+SUSE	keep	jev	suse	SUSE	os	SUSE Linux	
+TestFlight	drop	jev					
+TF	drop	session					session: ambiguous abbreviation
+TM1	keep	jev	tm1	TM1	data		
+TorchServe	keep	jev	torchserve	TorchServe	ml		
+Universal Directory	drop	session					session: a fragment of a longer name
+Volcano	drop	session					session: names several things, none dominant
+Wix	drop	jev					
+YOLO	keep	jev	yolo	YOLO	ml		
+ZIO	keep	jev	zio	ZIO	framework		
+100G	drop	jev					
+Agent Core	drop	jev					
+Agent Studio	drop	jev					
+Amazon Marketing Cloud	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+Arch	drop	jev					
+AWS DMS	keep	jev	aws-database-migration-service	AWS Database Migration Service	cloud		
+AWS IoT	keep	jev	aws-iot-core	AWS IoT Core	cloud		
+B2C Commerce	keep	jev	b2c-commerce	Salesforce B2C Commerce	tool		
+BNY	drop	jev					
+Borg	drop	session					session: names several things, none dominant
+Bynder	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+Capella	drop	session					session: names several things, none dominant
+CFor	drop	jev					
+CIEM	drop	jev					
+Claude Design	drop	jev					
+Cloud FinOps	drop	jev					
+CoAP	keep	jev	coap	CoAP	networking		
+Coil	drop	jev					
+Core DevOps	drop	jev					
+CoreML	keep	jev	coreml	CoreML	ml		
+CSS-in-JS	drop	jev					
+Dassault	drop	jev					
+DBC	drop	session					session: names several things, none dominant
+DGX	keep	session	nvidia-dgx				session: spelling of nvidia-dgx
+Director+	drop	jev					
+DXP	drop	jev					
+EAM	drop	jev					
+Fullstack Developer	drop	jev					
+Gaia	drop	jev					
+Gemma	keep	jev	gemma	Gemma	ml		
+GitFlow	drop	jev					
+Google Campaign Manager	drop	jev					
+Google Pub	drop	jev					
+Google Test	keep	jev	googletest				
+Houdini	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+IAR	keep	jev	iar	IAR	tool		
+IB	drop	jev					
+iManage	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+IMINT	drop	jev					
+Infoblox	drop	session					session: a vendor's name
+InfoSum	drop	jev					
+Ivanti	drop	session					session: a vendor's name
+Juniper Mist	keep	jev	juniper-mist	Juniper Mist	networking		
+JupyterHub	keep	jev	jupyterhub	JupyterHub	tool	Jupyterhub	
+Kamailio	keep	jev	kamailio	Kamailio	tool		
+Kantata	drop	jev					
+Keysight ADS	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+Litify	drop	jev					
+Luna	drop	session					session: names several things, none dominant
+M3	drop	jev					
+May-August	drop	jev					
+MDG	drop	session					session: a generic concept
+MediaTek	drop	jev					
+MLSys	drop	jev					
+MSE	drop	jev					
+Nebula	drop	session					session: names several things, none dominant
+Netmiko	keep	jev	netmiko	Netmiko	framework	netmiko	
+NIPRNet	drop	jev					
+NuGet	keep	jev	nuget	NuGet	tool	nuget|Nuget	
+NVD	drop	session					session: a generic concept
+NVIDIA H100	drop	jev					
+Okta Workforce Identity	drop	jev					
+OpenConfig	keep	jev	openconfig	OpenConfig	networking		
+OpenSCAP	keep	jev	openscap	OpenSCAP	security		
+Ops Manager	drop	jev					
+PAC	drop	jev					
+Panther	drop	session					session: names several things, none dominant
+PyTorch Distributed	keep	jev	pytorch				
+Q-SYS	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+RDC	drop	jev					
+RTC	drop	jev					
+RTMP	keep	jev	rtmp	Real-Time Messaging Protocol	networking		
+Schneider Electric	drop	jev					
+Scrapy	keep	jev	scrapy	Scrapy	framework		
+Search Ads	drop	jev					
+Shopify Plus	drop	jev					
+Slack Enterprise	drop	jev					
+Slingshot	drop	session					session: names several things, none dominant
+Stash	drop	session					session: names several things, none dominant
+SumoLogic	keep	jev	sumo-logic				
+TDR	drop	jev					
+Torch	keep	jev	pytorch	PyTorch	framework	Torch	
+TSO	drop	session					session: names several things, none dominant
+U2F	keep	jev	u2f	U2F	security		
+UPF	drop	session					session: names several things, none dominant
+Verint	drop	jev					
+VPC Service Controls	keep	jev	vpc-service-controls	VPC Service Controls	cloud		
+WebFlux	keep	jev	webflux	WebFlux	framework		
+WYSIWYG	drop	jev					
+xarray	keep	jev	xarray	xarray	framework		
+Zalando	drop	jev					
+19c	drop	session					session: a bare version number
+2FA	drop	jev					
+Accumulo	keep	jev	apache-accumulo	Apache Accumulo	database	Accumulo	
+Acumatica	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+ADT	drop	jev					
+AI DevOps	drop	jev					
+AI-leveraged	drop	jev					
+ALE	drop	session					session: names several things, none dominant
+analyste	drop	jev					
+Anforderungen	drop	jev					
+ArcGIS Desktop	keep	jev	arcgis				
+ArcPy	keep	jev	arcpy	ArcPy	framework		
+Argus	drop	jev					
+ARM64	drop	jev					
+ASLR	drop	jev					
+Automation Studio	drop	session					session: names several things, none dominant
+AV1	keep	jev	av1	AV1	security		
+BACnet	keep	jev	bacnet	BACnet	networking		
+BAM	drop	session					session: names several things, none dominant
+Bentley	drop	jev					
+CCDP	drop	jev					
+Cisco ACI	keep	jev	cisco-aci	Cisco ACI	networking		
+CNA	drop	jev					
+COMM	drop	jev					
+Costpoint	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+D365 Finance	keep	session	dynamics-ax				session: spelling of dynamics-ax
+DCC	drop	jev					
+DDR4	keep	jev	ddr4	DDR4	tool		
+Docebo	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+DOCX	drop	jev					
+eBGP	keep	session	bgp				session: spelling of bgp
+expedia	drop	jev					
+ext4	keep	jev	ext4	ext4	os		
+Flax	keep	jev	flax	Flax	framework		
+HDR	drop	jev					
+Icinga	keep	jev	icinga	Icinga	devops		
+IEX	drop	session					session: names several things, none dominant
+Integration Hub	keep	jev	servicenow-integrationhub				
+ISPM	drop	jev					
+ITIL-aligned	drop	jev					
+JPEG	keep	jev	jpeg	JPEG	data		
+Kafka Connect	keep	jev	apache-kafka				
+Kali	keep	jev	kali-linux	Kali Linux	security	Kali	
+Koa	keep	jev	koa	Koa	framework		
+LambdaTest	keep	jev	lambdatest	LambdaTest	testing		
+LeanData	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+LI-MS1	drop	jev					
+LinkedIn Ads	drop	jev					
+LPC	drop	jev					
+Mastra	keep	jev	mastra	Mastra	framework		
+MBIST	drop	session					session: a generic concept
+MERN	drop	jev					
+ML-DSA	keep	jev	ml-dsa	ML-DSA	security		
+ML-KEM	keep	jev	ml-kem	ML-KEM	security		
+mParticle	keep	jev	mparticle	mParticle	tool		
+MQA	drop	jev					
+MS Dynamics	drop	jev					
+MS Outlook	drop	jev					
+MSI	drop	jev					
+NACHA	drop	jev					
+NeMo	keep	jev	nemo	NeMo	ml		
+NIM	keep	jev	nvidia-nim	NVIDIA NIM	ml	NIM	
+Nornir	keep	jev	nornir	Nornir	framework		
+NSX	keep	session	vmware-nsx				session: spelling of vmware-nsx
+NTFS	keep	jev	ntfs	NTFS	os		
+OpenFGA	keep	jev	openfga	OpenFGA	security		
+OpenMetadata	keep	jev	openmetadata	OpenMetadata	data		
+Oracle SQL	keep	jev	sql				
+PIM-SM	keep	jev	pim-sm	PIM-SM	networking		
+PMA	drop	jev					
+PyArrow	keep	jev	pyarrow	PyArrow	framework		
+Pylon	drop	jev					
+PyPI	keep	jev	pypi	PyPI	tool		
+PyTorch Lightning	keep	jev	pytorch-lightning	PyTorch Lightning	framework		
+RemoteView	drop	session					session: obscure
+Rouge	drop	session					session: a generic concept
+RTU	drop	session					session: a generic concept
+SAP FI	drop	jev					
+Screaming Frog	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+Sensu	keep	jev	sensu	Sensu	devops		
+Siemens Teamcenter PLM	keep	jev	siemens-teamcenter				
+Smart TV	drop	jev					
+Tencent	drop	jev					
+TikTok Ads	drop	jev					
+UV-Vis	drop	jev					
+Vertica	keep	jev	vertica	Vertica	database		
+VictoriaLogs	keep	jev	victorialogs	VictoriaLogs	database		
+WM	drop	jev					
+WorkManager	keep	jev	workmanager	WorkManager	framework		
+4HANA Finance	drop	session					session: a fragment of a longer name
+Access Manager	drop	jev					
+Agent Development Kit	keep	session	google-agent-development-kit				session: spelling of google-agent-development-kit
+AHB	keep	jev	amba-ahb	AMBA AHB	networking	AHB	
+AI Agents Team	drop	jev					
+Amazon Q Developer	keep	jev	amazon-q-developer	Amazon Q Developer	tool		
+apk	drop	session					session: names several things, none dominant
+AQA	drop	jev					
+AWC	drop	session					session: names several things, none dominant
+Azure OpenAI Service	keep	jev	azure-openai				
+BentoML	keep	jev	bentoml	BentoML	ml		
+Biamp	drop	jev					
+Blue Yonder	drop	jev					
+Bluetooth Low Energy	keep	session	ble				session: spelling of ble
+BYOK	drop	jev					
+CAPTCHA	drop	jev					
+Cartography	drop	jev					
+Cisco DNA	drop	jev					
+CLAUDE.md	drop	jev					
+CloudSec	drop	jev					
+CNO Developer	drop	jev					
+Conan	keep	jev	conan	Conan	tool		
+Concourse	keep	jev	concourse	Concourse	devops		
+Converged Ethernet	drop	jev					
+CPSM	drop	jev					
+CRL	drop	session					session: a generic concept
+DAMA	drop	jev					
+Databricks Asset Bundles	keep	jev	databricks-asset-bundles	Databricks Asset Bundles	devops		
+DataStudio	keep	jev	google-looker-studio				
+DBRE	drop	jev					
+Descript	drop	jev					
+DFMA	drop	jev					
+DNN	drop	jev					
+Doris	keep	jev	apache-doris	Apache Doris	database		
+DST	drop	jev					
+ECL	drop	jev					
+eComm	drop	jev					
+Enterprise Microsoft	drop	jev					
+ETAP	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+ETW	keep	jev	event-tracing-for-windows	Event Tracing for Windows	security	ETW	
+Experian	drop	jev					
+Extron	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+FedNow	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+FGA	drop	session					session: a generic concept
+Finicity	keep	jev	finicity	Finicity	tool		
+FortiManager	keep	jev	fortimanager	FortiManager	security		
+Frame.io	drop	jev					
+GB200	drop	jev					
+Gen5	drop	jev					
+GeoServer	keep	jev	geoserver	GeoServer	tool		
+GFEBS	drop	jev					
+Gin	keep	jev	gin	Gin	framework		
+Google Data Studio	keep	jev	google-looker-studio				
+Graph RAG	drop	jev					
+GSM	drop	jev					
+HAR	drop	session					session: names several things, none dominant
+Helix	drop	jev					
+HighJump	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+HIP	drop	session					session: names several things, none dominant
+HMAC	keep	jev	hmac	HMAC	security		
+Hurricane	drop	jev					
+Inferentia	keep	jev	inferentia	Inferentia	cloud		
+InfraOps	drop	jev					
+InnoDB	keep	jev	innodb	InnoDB	database		
+ITIL v3	drop	jev					
+Jackson	drop	session					session: names several things, none dominant
+JDE	drop	jev					
+Jira Cloud	keep	jev	jira				
+JLPT N1	drop	jev					
+Kantar	drop	jev					
+Kubebuilder	keep	jev	kubebuilder	Kubebuilder	framework		
+Kubernetes Application Developer	drop	jev					
+Lakeflow Declarative Pipelines	keep	jev	lakeflow-declarative-pipelines	Lakeflow Declarative Pipelines	framework		
+LCD	drop	jev					
+Loom	drop	session					session: consumer or office software
+Lottie	keep	jev	lottie	Lottie	framework		
+MEC	drop	jev					
+Media3	keep	jev	media3	Media3	framework		
+Meta Ads Manager	drop	jev					
+Microsoft Agent Framework	keep	jev	microsoft-agent-framework	Microsoft Agent Framework	framework		
+Microsoft Endpoint Manager	keep	jev	microsoft-endpoint-manager	Microsoft Endpoint Manager	tool		
+Morningstar	drop	jev					
+MP4	keep	jev	mp4	MP4	tool		
+NET C#	drop	session					session: a generic concept
+NetCDF	keep	jev	netcdf	NetCDF	data		
+Node JS	keep	jev	node-js				
+NPC	drop	jev					
+ODA	drop	jev					
+OneLogin	keep	jev	onelogin	OneLogin	security	Onelogin	
+OOA	drop	jev					
+OpenAir	drop	session					session: business software no software person is hired for
+OpenEmbedded	keep	jev	openembedded	OpenEmbedded	framework		
+PCI Express	drop	jev					
+PHT	drop	jev					
+Private Link	keep	jev	aws-privatelink				
+PydanticAI	keep	jev	pydantic-ai				
+QlikSense	keep	jev	qlik				
+Queueable	drop	session					session: a generic concept
+Refinitiv	drop	jev					
+RICEFW	drop	jev					
+Ruckus	drop	session					session: a vendor's name
+SafeBase	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+SAP S4	keep	session	sap-s-4hana				session: spelling of sap-s-4hana
+SCD	drop	jev					
+Server+	drop	jev					
+Shopify Functions	keep	jev	shopify-functions	Shopify Functions	tool		
+SIA	drop	jev					
+Simcenter 3D	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+SN	drop	jev					
+SOCET GXP	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+Soda	drop	session					session: an ordinary word
+Solution Manager	keep	session	sap-solution-manager				session: spelling of sap-solution-manager
+Sora	keep	jev	sora	Sora	ml	SORA	doubt: generative model used as consumer/creative tool, unclear if technology engineers are hired for
+Strapi	keep	jev	strapi	Strapi	tool		
+Supermicro	drop	jev					
+tan	drop	jev					
+Telepresence	drop	jev					
+Terraform-managed	drop	jev					
+Tinder	drop	jev					
+TPOT	drop	jev					
+VAPT	drop	jev					
+VersionOne	keep	jev	versionone	VersionOne	tool		
+Warden	drop	jev					
+Workday Web Services	keep	jev	workday-web-services	Workday Web Services	tool		
+XSD	keep	jev	xsd	XSD	language		
+3PAR	keep	jev	3par	3PAR	tool	HPE 3PAR|HP 3PAR	
+A1	drop	jev					
+Adobe Captivate	drop	jev					
+Adobe Marketing	drop	jev					
+API REST	drop	jev					
+Apple TV	drop	jev					
+Apptio	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+AsyncAPI	keep	jev	asyncapi	AsyncAPI	security		
+Attn	drop	jev					
+Azure AD B2C	keep	jev	azure-ad-b2c	Azure AD B2C	cloud		
+Azure Gov	keep	session	azure-government				session: spelling of azure-government
+Azure IaaS	drop	jev					
+Bob	drop	session					session: names several things, none dominant
+Canvases	drop	jev					
+Cesium	keep	jev	cesium	Cesium	framework		
+CF	drop	jev					
+CIS-ITSM	drop	jev					
+Claude Managed Agents	keep	jev	claude-managed-agents	Claude Managed Agents	ml		
+ClaudeCode	keep	jev	claude-code				
+Cloud Armor	keep	jev	cloud-armor	Cloud Armor	cloud		
+Cocotb	keep	jev	cocotb	Cocotb	testing		
+Coda	drop	jev					
+Code Pipeline	keep	jev	aws-codepipeline				
+CompTIA CySA+	drop	jev					
+Copilot Chat	drop	jev					
+CRMA	drop	jev					
+CRT	drop	jev					
+CUCM	keep	session	cisco-unified-communications-manager				session: spelling of cisco-unified-communications-manager
+Cumulus Linux	keep	jev	cumulus-linux	Cumulus Linux	os		
+CuTe	keep	jev	cute	CuTe	framework		
+DAI	drop	jev					
+DELMIA	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+Dependabot	keep	jev	dependabot	Dependabot	security		
+Dynamics AX	keep	jev	dynamics-ax	Dynamics AX	tool	D365 Finance and Operations|D365 F&O	
+ECDSA	keep	jev	ecdsa	ECDSA	security		
+EQL	keep	jev	elastic-query-language	Elastic Query Language	language	EQL	
+ETSI	drop	jev					
+Excel Power Query	keep	jev	power-query				
+Expensify	drop	jev					
+Fabric Lakehouse	keep	jev	fabric-lakehouse	Fabric Lakehouse	data		
+FCoE	keep	jev	fibre-channel-over-ethernet	Fibre Channel over Ethernet	networking	FCoE	
+FCP	drop	session					session: names several things, none dominant
+Financial Crimes Operations	drop	jev					
+FP4	drop	session					session: a generic concept
+Galileo	drop	session					session: names several things, none dominant
+GB300	drop	jev					
+GitHub PRs	drop	jev					
+Google Ad Manager	drop	jev					
+Google Identity	drop	jev					
+Google IT Support	drop	jev					
+Gov Cloud	drop	jev					
+GPU Direct Storage	keep	session	gpu-direct-storage	GPU Direct Storage	networking		
+Graphana	keep	jev	grafana				
+HBA	drop	session					session: a generic concept
+HDD	drop	session					session: a generic concept
+HIE	drop	jev					
+Horde	drop	session					session: names several things, none dominant
+Huel	drop	jev					
+Hyperautomation	drop	jev					
+IBIS-AMI	keep	jev	ibis-ami	IBIS-AMI	tool		
+IRQ	drop	jev					
+IVD	drop	jev					
+JEMA	drop	jev					
+Juniper Networks	drop	jev					
+Katalon	keep	jev	katalon	Katalon Studio	testing	Katalon	
+KDB	keep	session	kdb				session: spelling of kdb
+Keystore	drop	session					session: an ordinary word
+Kinaxis	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+Kochava	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+Lacework	keep	jev	lacework	Lacework	security		
+Leaflet	keep	jev	leaflet	Leaflet	framework		
+Lego	drop	jev					
+LinkedIn Sales Navigator	drop	jev					
+LiteRT	keep	jev	litert	LiteRT	ml		
+LOB	drop	jev					
+LOE	drop	jev					
+LSM	drop	jev					
+M2M	drop	jev					
+M365 Copilot	keep	session	microsoft-copilot				session: spelling of microsoft-copilot
+ManageEngine	drop	session					session: a vendor's name
+MasterControl	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+MC-LAG	keep	jev	mc-lag	MC-LAG	networking		
+MCI	drop	jev					
+MDT	keep	jev	mdt	Microsoft Deployment Toolkit	tool	MDT	
+MDX	drop	jev					
+microVM	drop	jev					
+Mobile QA	drop	jev					
+Model Builder	drop	jev					
+Monaco	drop	session					session: names several things, none dominant
+Mule	keep	session	mulesoft				session: spelling of mulesoft
+Netscaler	keep	jev	netscaler	NetScaler	networking	NetScaler	
+NIST PQC	drop	jev					
+Nutanix AHV	keep	jev	nutanix				
+NVIDIA Isaac Sim	keep	jev	isaac-sim				
+OBIEE	keep	jev	obiee	OBIEE	data		
+OGR	keep	jev	ogr	OGR	framework		
+Omnibus	drop	jev					
+ONTAP	keep	session	netapp-ontap				session: spelling of netapp-ontap
+Opal	drop	session					session: names several things, none dominant
+OpenAI GPT	drop	jev					
+Other ORM	drop	jev					
+PDD	drop	jev					
+Pipelines ETL	drop	jev					
+PMD	keep	jev	pmd	PMD	tool		
+Power Fx	keep	jev	power-fx	Power Fx	language		
+Power Platform ALM	drop	jev					
+Questa	keep	jev	questa	Questa	tool		
+RKE	keep	jev	rke	Rancher Kubernetes Engine	devops		
+RLC	drop	jev					
+RTCP	keep	jev	rtcp	Real-Time Transport Control Protocol	networking		
+SAF	drop	jev					
+Salesforce DevOps	drop	jev					
+SEC-MALS	drop	jev					
+sidecar	drop	jev					
+SKAN	drop	session					session: names several things, none dominant
+skillsExperience	drop	jev					
+SkyPilot	keep	jev	skypilot	SkyPilot	framework		
+Slack Enterprise Grid	drop	session					session: consumer or office software
+SMBus	keep	jev	smbus	SMBus	networking	SMBUS	
+Snowflake Horizon	keep	jev	snowflake-horizon	Snowflake Horizon	tool		
+Snowflake SnowPro	drop	jev					
+SNPE	keep	jev	snpe	SNPE	framework		
+SOX-regulated	drop	jev					
+SPD	drop	jev					
+Tekton	keep	jev	tekton	Tekton	devops		
+TestOps	drop	jev					
+TIBCO	drop	session					session: a vendor's name
+Top Secret DoD	drop	jev					
+TT	drop	jev					
+UE	drop	session					session: names several things, none dominant
+VB Script	keep	jev	vbscript				
+Veeva CRM	keep	jev	veeva				
+Vertiv	drop	jev					
+Vivado	keep	jev	vivado	Vivado	tool		
+WAL	drop	jev					
+Whisper	keep	jev	whisper	Whisper	ml		
+WMI	keep	jev	wmi	WMI	tool		
+Xactly	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+Xbox Series X	drop	jev					
+YouTrack	drop	jev					
+ZDX	keep	jev	zdx	ZDX	security		
+ZenML	keep	jev	zenml	ZenML	ml		
+3D Gaussian Splatting	drop	session					session: a generic concept
+3G	keep	jev	3g	3G	networking		
+AgentOps	keep	jev	agentops	AgentOps	tool		
+AI Agent Studio	keep	jev	oracle-ai-agent-studio	Oracle AI Agent Studio	tool	AI Agent Studio	
+AliCloud	keep	session	alibaba-cloud				session: spelling of alibaba-cloud
+Amazon Web Service	keep	jev	aws				
+AMC	drop	jev					
+API Access Management	drop	jev					
+Appfolio	drop	jev					
+ArcSight	keep	jev	arcsight	Micro Focus ArcSight	security	ArcSight	
+Arena PLM	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+AutoML	drop	jev					
+bloc	keep	jev	bloc	BLoC	framework		
+BO	drop	jev					
+Bugsnag	keep	jev	bugsnag	Bugsnag	devops		
+CCD	drop	jev					
+CDH	drop	session					session: names several things, none dominant
+CDMA	keep	jev	cdma	CDMA	networking		
+Chakra	keep	session	chakra-ui				session: spelling of chakra-ui
+Chargebee	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+Cisco DNA Center	keep	jev	cisco-dna-center	Cisco DNA Center	networking	DNAC	
+CL	drop	jev					
+CNCF Kubernetes	drop	jev					
+CNE	drop	jev					
+Copilot Agent	drop	jev					
+Cortex XSOAR	keep	jev	cortex-xsoar	Cortex XSOAR	security		
+CTE	drop	jev					
+DAL	drop	jev					
+DDP	drop	session					session: names several things, none dominant
+Deepgram	keep	jev	deepgram	Deepgram	ml		
+DMTF	drop	jev					
+Dockerized	drop	jev					
+Domain Controller	drop	jev					
+DSF	drop	jev					
+Eaton	drop	jev					
+Email Studio	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+English Being	drop	jev					
+EPBCS	keep	jev	oracle-epbcs	Oracle EPBCS	cloud	EPBCS	
+ERP Finance	drop	jev					
+eTOM	drop	jev					
+Event Bridge	keep	jev	amazon-eventbridge				
+Fiona	drop	session					session: names several things, none dominant
+Framer	drop	session					session: names several things, none dominant
+GBM	drop	jev					
+GIAC Security Essentials	drop	jev					
+Google AI Overviews	drop	jev					
+Google Antigravity	drop	jev					
+Google Earth Engine	keep	jev	google-earth-engine	Google Earth Engine	cloud		
+GPT-OSS	drop	jev					
+GSP	drop	jev					
+GWEB	drop	jev					
+Haystack	keep	jev	haystack	Haystack	framework		
+HEDIS	drop	jev					
+HGX	drop	jev					
+HSI	drop	jev					
+IOMMU	drop	session					session: a generic concept
+IOS-XE	keep	jev	ios-xe	IOS-XE	os		
+Isaac Lab	keep	jev	isaac-lab	Isaac Lab	framework		
+IXP	drop	jev					
+Jira Assets	keep	jev	jira				
+Kai	drop	jev					
+Koin	keep	jev	koin	Koin	framework		
+Kronos	drop	jev					
+Leaderboard	drop	jev					
+MCM	drop	jev					
+MEDDICC	drop	jev					
+MLPerf	drop	jev					
+MS Graph	keep	jev	microsoft-graph	Microsoft Graph	security		
+NetDevOps	drop	jev					
+NI TestStand	keep	jev	teststand				
+NPSP	keep	jev	npsp	NPSP	tool		
+Opcenter	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+Orb	drop	session					session: names several things, none dominant
+Orca Security	keep	jev	orca-security	Orca Security	security	Orca	
+Palo Alto PCNSE	drop	jev					
+PBR	drop	jev					
+Percy	drop	session					session: names several things, none dominant
+PKCS#11	keep	jev	pkcs-11	PKCS#11	security		
+Planful	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+PMC	drop	jev					
+PowerPivot	keep	jev	powerpivot	PowerPivot	data		
+PSPO	drop	jev					
+Pty	drop	jev					
+QBO	keep	jev	quickbooks				
+QSC	drop	jev					
+Real-Time CDP	keep	jev	adobe-real-time-cdp	Adobe Real-Time CDP	tool	RTCDP	
+RevPro	drop	session					session: business software no software person is hired for
+Rocketlane	drop	jev					
+Rockwell FactoryTalk	keep	jev	factorytalk				
+SAI	drop	session					session: names several things, none dominant
+Salesforce Experience Cloud	keep	jev	salesforce-experience-cloud	Salesforce Experience Cloud	cloud		
+SANS Top	drop	jev					
+SAP Concur	drop	jev					
+SAP TM	keep	jev	sap-tm	SAP Transportation Management	tool	SAP TM	
+Schema.org	keep	jev	schemaorg	Schema.org	security		doubt: schema markup standard; 'security' category mismatch, should be language/framework
+ServiceNow CMDB	keep	jev	servicenow-cmdb	ServiceNow CMDB	tool		
+SFRA	drop	jev					
+SL	drop	jev					
+sneak	drop	jev					
+SnowPro Advanced	drop	jev					
+SPDX	keep	jev	spdx	SPDX	security		
+SPFx	keep	jev	spfx	SPFx	framework		
+Sprinklr	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+Stack Overflow	drop	jev					
+Synology	drop	jev					
+SystemVerilog Assertions	keep	jev	systemverilog-assertions	SystemVerilog Assertions	language	SVA	
+TCF	drop	jev					
+Thales	drop	jev					
+TI C2000	keep	jev	ti-c2000	TI C2000	tool		
+Tofu	keep	jev	opentofu	OpenTofu	devops	Tofu	
+Trackwise	drop	session					session: software no software person is hired for (marketing, sales, finance, design, CAD, simulation, PLM, ERP, AV)
+Tracy	drop	jev					
+Treasury Management System	drop	jev					
+Turbo	drop	session					session: names several things, none dominant
+UMG	drop	session					session: names several things, none dominant
+Upbound	drop	jev					
+Vehicle Spy	keep	jev	vehicle-spy	Vehicle Spy	tool		
+Verständnis	drop	jev					
+VP9	keep	jev	vp9	VP9	tool		doubt: video codec; category corrected from security to tool
+VPN Gateway	drop	session					session: a generic concept or a feature named by an ordinary phrase
+W3C	drop	jev					
+WalletConnect	keep	jev	walletconnect	WalletConnect	framework		
+West Sacramento	drop	jev					
+ZBrush	drop	jev					
+Zscaler ZIA	keep	jev	zscaler-zia	Zscaler ZIA	security		
+200G	drop	jev					
+ACMP	drop	jev					
+Adobe Data Collection	keep	jev	adobe-data-collection	Adobe Data Collection	tool		
+Adobe Firefly	drop	jev					
+AFT	drop	jev					
+Agent2Agent	keep	jev	agent-2-agent	Agent2Agent	security		
+Agiloft	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Angular Material	keep	jev	angular-material	Angular Material	framework		
+AnyConnect	keep	jev	anyconnect	Cisco AnyConnect	security	AnyConnect	
+APO	drop	jev					
+Appian Cloud	drop	jev					
+Apple Search Ads	drop	jev					
+Apple Wallet	drop	jev					
+Atlassian Confluence	drop	jev					
+Auto CAD	drop	jev					
+Azure Files	keep	jev	azure-files	Azure Files	cloud		
+BCM	drop	jev					
+Bradstreet	drop	jev					
+Build UI	drop	jev					
+ByteDance	drop	jev					
+C+	drop	jev					
+cDAQ	keep	jev	cdaq	CompactDAQ	tool	cDAQ	
+CDW	drop	jev					
+Ceres	drop	session					session: names several things, none dominant
+Chandler	drop	jev					
+Chili Piper	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Chronon	keep	jev	chronon	Chronon	ml		
+cipher	drop	jev					
+Cisco Systems	drop	jev					
+Claroty	keep	jev	claroty	Claroty	security		
+ClearPass	keep	session	aruba-clearpass				session: spelling of aruba-clearpass
+CMD	drop	jev					
+CMK	drop	jev					
+CompTIA CASP+	drop	jev					
+CompTIA Server+	drop	jev					
+Computação	drop	jev					
+Content Strategist	drop	jev					
+CQL	drop	jev					
+CRI	drop	jev					
+CSC	drop	jev					
+Databrick	drop	jev					
+dedupe	drop	session					session: names several things, none dominant
+Deltek Costpoint	drop	jev					
+Dewesoft	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Duck Creek	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Dun	drop	jev					
+Egnyte	drop	jev					
+Epicor ERP	drop	jev					
+Everstage	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Fabric Manager	keep	jev	nvidia-fabric-manager	NVIDIA Fabric Manager	networking	Fabric Manager|UFM Fabric Manager	
+FDA QMSR	drop	jev					
+FigJam	drop	jev					
+FileVault	keep	jev	filevault	FileVault	security		
+FortiAnalyzer	keep	jev	fortianalyzer	FortiAnalyzer	security		
+FP16	drop	session					session: a generic concept or a feature named by an ordinary phrase
+GAA	drop	jev					
+Google GCP	keep	jev	google-cloud-platform				
+Google Sheet	drop	jev					
+Google SRE	drop	jev					
+GQL	keep	jev	graphql				
+Grunt	keep	jev	grunt	Grunt	devops		
+Hexagon	drop	jev					
+HFM	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+HSPICE	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+HuggingFace Transformers	keep	jev	hugging-face-transformers				
+IAVM	drop	jev					
+ICL	drop	jev					
+IDaaS	drop	jev					
+INCOSE CSEP	drop	jev					
+Inmon	drop	jev					
+Intapp	drop	jev					
+Internetworking	drop	jev					
+IsaacSim	keep	jev	isaac-sim				
+JSON-LD	keep	jev	json-ld	JSON-LD	language		
+Knative	keep	jev	knative	Knative	devops		
+Kubernetes Mastery	drop	jev					
+Lauterbach	drop	session					session: a vendor's name
+LexisNexis	drop	jev					
+Litmus	drop	session					session: names several things, none dominant
+LogQL	keep	jev	logql	LogQL	language		
+Majestic	drop	jev					
+Mapper	drop	jev					
+MCAL	keep	jev	mcal	MCAL	framework		
+MDIO	keep	jev	mdio	MDIO	networking		
+MedDRA	drop	session					session: a generic concept or a feature named by an ordinary phrase
+Microsoft Advertising	drop	jev					
+Microsoft Dynamics CRM	drop	jev					
+MS SharePoint	keep	jev	microsoft-sharepoint				
+MSCI	drop	jev					
+NCA	drop	jev					
+Netflix Conductor	keep	jev	netflix-conductor	Netflix Conductor	framework		
+NetOps	drop	jev					
+NetworkPolicy	drop	session					session: a generic concept or a feature named by an ordinary phrase
+NI LabVIEW	keep	jev	labview				
+No-Code Data Science	drop	jev					
+ODE	drop	jev					
+OneNote	drop	jev					
+OpenRouter	keep	jev	openrouter	OpenRouter	ml		
+OpenText	drop	jev					
+Oracle EPM Cloud	keep	session	oracle-epm				session: spelling of oracle-epm
+Outbrain	drop	jev					
+peek	drop	jev					
+Pester	keep	jev	pester	Pester	testing		
+PFC	drop	session					session: names several things, none dominant
+Phase I	drop	jev					
+Plex	drop	session					session: names several things, none dominant
+Premiere Pro	drop	jev					
+Prism Analytics	keep	session	workday-prism				session: spelling of workday-prism
+Proxmox VE	keep	jev	proxmox				
+PyRIT	keep	jev	pyrit	PyRIT	security		
+R3	drop	jev					
+RASP	drop	jev					
+React Context	keep	jev	react-context	React Context	framework	React Context API	doubt: a state management feature of React; could be considered part of React rather than separate skill
+recursion	drop	jev					
+RSSI	drop	jev					
+RTCDP	keep	jev	adobe-real-time-cdp				
+RTOSes	drop	jev					
+SAFe Scrum	drop	jev					
+Salesforce Government Cloud	drop	jev					
+SAP HCM	keep	jev	sap-hcm	SAP HCM	tool		
+SAP PP	keep	jev	sap-pp	SAP Production Planning	tool	SAP PP	
+SCAPI	drop	session					session: names several things, none dominant
+SentinelOne EDR	keep	jev	sentinelone-edr	SentinelOne EDR	security		
+Shodan	keep	jev	shodan	Shodan	security		
+Sidewalk	drop	jev					
+SIGIR	drop	jev					
+SNOMED CT	keep	jev	snomed-ct	SNOMED CT	data		
+SOI	drop	jev					
+SPO	drop	session					session: ambiguous abbreviation
+SQL-like	drop	jev					
+SuiteApps	drop	session					session: a generic concept or a feature named by an ordinary phrase
+SuiteBilling	keep	jev	suite-billing	SuiteBilling	tool		
+SuiteScript 2.x	keep	jev	suitescript				
+Supplier Portal	drop	jev					
+Synthesia	drop	jev					
+Team Center	keep	jev	siemens-teamcenter				
+Testcontainers	keep	jev	testcontainers	Testcontainers	testing		
+Tetragon	keep	jev	tetragon	Tetragon	security		
+tflint	keep	jev	tflint	TFLint	devops		
+Thor	drop	session					session: names several things, none dominant
+TM Forum	drop	jev					
+TOM	drop	jev					
+torch.compile	keep	jev	torch-compile	torch.compile	ml		
+TP	drop	jev					
+TransUnion	drop	jev					
+UK Security Check	drop	jev					
+Unified Communications Manager	keep	jev	cisco-unified-communications-manager	Cisco Unified Communications Manager	networking	CUCM	
+USDA	drop	jev					
+USDC	drop	jev					
+UserGems	drop	jev					
+VASP	drop	jev					
+Vena	drop	jev					
+VIPER	drop	jev					
+VirusTotal	keep	jev	virustotal	VirusTotal	security		
+VisualVM	keep	jev	visualvm	VisualVM	tool		
+Vorteil	drop	jev					
+VPA	drop	session					session: names several things, none dominant
+VWAN	keep	jev	virtual-wan				
+WGS	drop	session					session: names several things, none dominant
+Workday Prism	keep	jev	workday-prism	Workday Prism	data		
+Workfront Fusion	keep	jev	workfront-fusion	Workfront Fusion	tool		
+WSDL	keep	jev	wsdl	WSDL	tool		doubt: web services standard; category corrected from security to tool
+Xcelium	keep	jev	xcelium	Xcelium	tool		
+XID	drop	jev					
+Xpedition	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Yellow	drop	jev					
+z.B	drop	jev					
+Zenoss	keep	jev	zenoss	Zenoss	devops		
+Zerto	keep	jev	zerto	Zerto	tool		
+Zuora Revenue	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+4HANA Public	drop	session					session: a fragment of a longer name
+802.1q	keep	jev	ieee-802-1q	IEEE 802.1Q	networking	802.1q|802.1Q	
+ACK	drop	session					session: names several things, none dominant
+Aconex	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+ADM-2certification	drop	jev					
+Adobe Marketing Cloud	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+AgentKit	drop	session					session: names several things, none dominant
+Agile PLM	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+AGX	keep	jev	nvidia-agx	NVIDIA AGX	tool	AGX	
+AI Agent Governance	drop	jev					
+AirWatch	keep	jev	airwatch	AirWatch	tool		
+Anna	drop	jev					
+ANOVA	drop	jev					
+Anti-DDoS	drop	jev					
+AnyDesk	drop	jev					
+APIand	drop	jev					
+Apriso	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Arista Networks	drop	jev					
+Arm CPU	drop	jev					
+Aspera	keep	jev	aspera	Aspera	tool		
+ASW	drop	jev					
+Attio	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+AutoGPT	keep	jev	autogpt	AutoGPT	framework		
+Automox	keep	jev	automox	Automox	tool		
+AWS Support	drop	jev					
+AWS X-Ray	keep	jev	aws-x-ray	AWS X-Ray	devops		
+Azure PaaS	drop	jev					
+Azure Portal	drop	jev					
+Azure Well-Architected Framework	drop	jev					
+Azure-hosted	drop	jev					
+BAA	drop	jev					
+BetterCloud	keep	jev	bettercloud	BetterCloud	tool		
+BigFix	keep	jev	bigfix	BigFix	tool		
+BigPicture	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+BloodHound	keep	jev	bloodhound	BloodHound	security		
+Bloomberg Terminal	drop	jev					
+BSCP	drop	jev					
+BTL2	drop	jev					
+CAASM	drop	jev					
+Caboodle	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+CAF	drop	jev					
+CAI	drop	jev					
+Cartesia	keep	jev	cartesia	Cartesia	ml		
+CCT	drop	jev					
+CDMC	drop	jev					
+Certinia PSA	keep	session	certinia				session: spelling of certinia
+CGEIT	drop	jev					
+CHAPS	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Cinder	keep	jev	cinder	Cinder	tool		
+Cloud SME	drop	jev					
+Cloud Watch	keep	jev	amazon-cloudwatch				
+Cloudflare WAF	keep	jev	cloudflare-waf	Cloudflare WAF	security		
+Codeforces	drop	jev					
+ComfyUI	keep	jev	comfyui	ComfyUI	ml		
+ConfigMaps	drop	session					session: a generic concept or a feature named by an ordinary phrase
+Contentsquare	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+cri-o	keep	jev	cri-o	CRI-O	devops		
+CRTL	drop	jev					
+CSD	drop	jev					
+CUB	keep	jev	cub	CUB	framework		
+CustomerSuccess	drop	jev					
+Cvent	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+DAL A	drop	jev					
+Dapr	keep	jev	dapr	Dapr	framework		
+Darktrace	keep	jev	darktrace	Darktrace	security		
+Databricks Lakeflow	keep	jev	databricks-lakeflow	Databricks Lakeflow	data		
+DEF	drop	jev					
+DevOps Center	drop	session					session: a generic concept or a feature named by an ordinary phrase
+DFAR	drop	jev					
+distroless	keep	jev	distroless	Distroless	devops		
+Django ORM	keep	jev	django-orm	Django ORM	framework		
+DocuSign CLM	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Dune	drop	session					session: names several things, none dominant
+E5	drop	jev					
+EEPROM	drop	session					session: a generic concept or a feature named by an ordinary phrase
+ELINT	drop	jev					
+Ellucian Banner	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+EME	drop	jev					
+EndNote	drop	jev					
+ESP-IDF	keep	jev	esp-idf	ESP-IDF	framework		
+ETQ	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+FAANG	drop	jev					
+Fabric Data Factory	keep	jev	fabric-data-factory	Fabric Data Factory	data		
+FactoryTalk View	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Field Service Lightning	keep	jev	field-service-lightning	Field Service Lightning	tool		
+FinancialForce	keep	session	certinia				session: spelling of certinia
+FIPS-validated	drop	jev					
+FlexSim	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+FreeMarker	keep	jev	freemarker	FreeMarker	framework		
+GDDR	keep	jev	gddr	GDDR	networking		
+GeoEvent Server	keep	jev	geoevent-server	GeoEvent Server	tool		
+GitLab Ultimate	drop	jev					
+Glacier	keep	jev	glacier	Glacier	cloud	AWS Glacier	
+Golden Gate	drop	jev					
+Google Gemini Enterprise	keep	jev	google-gemini				
+gPTP	keep	jev	gptp	gPTP	networking		
+GPU-dense	drop	jev					
+GPUDirect Storage	keep	jev	gpu-direct-storage				
+GTM-facing	drop	jev					
+Habu	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Haifa	drop	jev					
+Hasura	keep	jev	hasura	Hasura	framework		
+HIC	drop	jev					
+Highspot	drop	jev					
+Hyperion Planning	keep	jev	oracle-hyperion				
+ICU	drop	session					session: names several things, none dominant
+IdentityIQ	keep	jev	identityiq	IdentityIQ	security		
+iDRAC	keep	jev	idrac	iDRAC	tool		
+IKE	keep	session	ikev2				session: spelling of ikev2
+ImageJ	keep	jev	imagej	ImageJ	tool		
+Importer	drop	jev					
+InContact	keep	jev	incontact	InContact	tool		
+INP	drop	jev					
+Intelligent Assistant	drop	jev					
+iOS UI	drop	jev					
+I’ve	drop	jev					
+JA3	keep	jev	ja3	JA3	security		
+Jamstack	drop	jev					
+JavaScript SEO	drop	jev					
+Jetty	keep	jev	jetty	Jetty	framework		
+Jira Align	keep	jev	jira				
+JSF	drop	jev					
+JSI	drop	session					session: names several things, none dominant
+Kettle	drop	session					session: names several things, none dominant
+keystone	drop	session					session: names several things, none dominant
+KMIP	keep	jev	kmip	KMIP	security		
+Korn	keep	session	kornshell				session: spelling of kornshell
+Ktor	keep	jev	ktor	Ktor	framework		
+l'Infrastructure	drop	jev					
+latte	drop	jev					
+LeCroy	drop	jev					
+libFuzzer	keep	jev	libfuzzer	libFuzzer	testing		
+LPQ	drop	jev					
+Marketing Cloud Next	keep	jev	salesforce-marketing-cloud				
+Marvell	drop	jev					
+MaterialUI	keep	jev	material-ui				
+MCP-connected	drop	jev					
+microfabrication	drop	jev					
+Microsoft Clarity	keep	jev	microsoft-clarity	Microsoft Clarity	tool		
+MkDocs	keep	jev	mkdocs	MkDocs	tool		
+ML-integrated	drop	jev					
+MMU	drop	jev					
+Model Garden	keep	jev	model-garden	Model Garden	ml		
+MS Entra ID	keep	jev	microsoft-entra-id				
+MSL	drop	jev					
+MVT	drop	jev					
+NB-IoT	keep	jev	nb-iot	NB-IoT	networking		
+NetBeans	keep	jev	netbeans	NetBeans	tool		
+NetWeaver	keep	jev	netweaver	NetWeaver	framework	Netweaver	
+NetworkX	keep	jev	networkx	NetworkX	framework	networkx	
+NewSQL	drop	jev					
+NoSQL DB	drop	jev					
+NRF	drop	jev					
+NVIDIA AI Enterprise	drop	jev					
+O9	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+OnShape	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+OOTB	drop	jev					
+Open Lakehouse	drop	jev					
+OpenLineage	keep	jev	openlineage	OpenLineage	data		
+OpenShift Virtualization	keep	session	openshift-virtualization	OpenShift Virtualization	devops		session: drafted again
+OpenVINO	keep	jev	openvino	OpenVINO	framework	OpenVino	
+Oracle DBA	drop	jev					
+Oracle Fusion SCM	drop	jev					
+oRTB	keep	jev	ortb	OpenRTB	tool	ORTB	
+OSFP	drop	session					session: a generic concept or a feature named by an ordinary phrase
+OSMF	keep	jev	osmf	z/OSMF	devops	z/OS Management Facility	
+OWD	drop	jev					
+Palette	drop	jev					
+PAS-X	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Patroni	keep	jev	patroni	Patroni	tool		
+PCAN	keep	jev	pcan	PCAN	networking		
+PCE	drop	jev					
+PDB	drop	jev					
+PDL	drop	jev					
+PDQ	drop	session					session: names several things, none dominant
+PICOF	keep	session	picof	PICOF	tool		session: drafted again
+PingFederate	keep	jev	pingfederate	PingFederate	security		
+PingOne	keep	jev	pingone	PingOne	security		
+Pingora	keep	jev	pingora	Pingora	framework		
+PixiJS	keep	jev	pixi-js				
+PMBus	keep	jev	pmbus	PMBus	networking		
+popularity	drop	jev					
+Power Apps Canvas	keep	session	power-apps-canvas-apps				session: spelling of power-apps-canvas-apps
+PowerScale	keep	jev	powerscale	PowerScale	tool	Isilon	
+PPV	drop	jev					
+Projekten	drop	jev					
+PSCAD	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+PSTN	drop	jev					
+PuTTY	keep	jev	putty	PuTTY	tool		
+PVsyst	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Py	drop	jev					
+PyData	drop	jev					
+QMetry	keep	jev	qmetry	QMetry	testing		
+QSA	drop	jev					
+RAII	drop	jev					
+React DevTools	keep	jev	react-devtools	React DevTools	tool		
+Reanimated	keep	jev	react-native-reanimated	React Native Reanimated	framework		
+reCAPTCHA	keep	jev	recaptcha	reCAPTCHA	security		
+Rel	drop	jev					
+RevTech	drop	jev					
+Rive	keep	jev	rive	Rive	tool		
+RSVP-TE	keep	jev	rsvp-te	RSVP-TE	networking		
+SAFe Scrum Master	drop	jev					
+Salesforce Billing	keep	jev	salesforce-billing	Salesforce Billing	tool		
+SalesOps	drop	jev					
+SAP MM	drop	jev					
+SAP RISE	drop	jev					
+SAP Solution Manager	keep	jev	sap-solution-manager	SAP Solution Manager	tool		
+SDLC Ownership	drop	jev					
+SecOC	keep	jev	secoc	SecOC	security		
+Sequencer	drop	jev					
+ServiceDesk	drop	jev					
+SGE	drop	session					session: names several things, none dominant
+SimPy	keep	jev	simpy	SimPy	framework		
+SmartBear	drop	jev					
+SOCand	drop	jev					
+SQL DB	drop	jev					
+SQL Profiler	keep	jev	sql-profiler	SQL Profiler	tool		doubt: Profiler is ordinary word attached to SQL; may be just a SQL Server tool feature, not standalone skill
+Squid	keep	jev	squid	Squid	networking		
+Star-CCM+	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+STUN	keep	jev	stun	STUN	networking		
+SuiteBuilder	keep	jev	suite-builder	SuiteBuilder	tool		
+SuiteQL	keep	jev	suiteql	SuiteQL	language		
+Supreme Court	drop	jev					
+SurveyMonkey	drop	jev					
+Tableau CRM	keep	session	salesforce-crm-analytics				session: spelling of salesforce-crm-analytics
+tablespaces	drop	jev					
+TestComplete	keep	jev	testcomplete	TestComplete	testing		
+ToF	drop	session					session: names several things, none dominant
+Touch UI	drop	session					session: a generic concept or a feature named by an ordinary phrase
+TPL	drop	session					session: names several things, none dominant
+TSR	drop	jev					
+TTI	drop	jev					
+TypeScript UI	drop	jev					
+Unbounce	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Unity AI Gateway	drop	session					session: obscure
+unprotected	drop	jev					
+UWB	keep	jev	uwb	UWB	networking		
+Varonis	keep	jev	varonis	Varonis	security		
+Verdi	keep	jev	verdi	Verdi	tool		
+Vitally	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+VLDB	drop	jev					
+VMware Workspace ONE	keep	jev	vmware-workspace-one	VMware Workspace ONE	tool		
+voicebot	drop	jev					
+VPI	drop	jev					
+WAP	drop	jev					
+Watchguard	keep	jev	watchguard	Watchguard	security		
+WDP	drop	jev					
+web3.js	keep	jev	web3-js	web3.js	framework	Web3.js	
+WinCC	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+WireMock	keep	jev	wiremock	WireMock	testing		
+Workday Finance	drop	jev					
+Workday Systems	drop	jev					
+WSD	drop	jev					
+WWDC	drop	jev					
+x509	keep	jev	x-509				
+XBRL	keep	jev	xbrl	XBRL	language		
+XCP	keep	jev	xcp	XCP	networking		
+YARA-L	keep	jev	yara-l	YARA-L	language		
+4AM	drop	jev					
+AAC	drop	session					session: names several things, none dominant
+aATP	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+ACORD	drop	session					session: obscure
+ADFDI	drop	session					session: obscure
+AdOps	drop	jev					
+ADS-B	keep	jev	ads-b	ADS-B	networking	Automatic Dependent Surveillance-Broadcast	
+ADW	drop	session					session: names several things, none dominant
+ADX	drop	jev					
+AEM Cloud	keep	jev	adobe-experience-manager				
+Agentic AI Developer	drop	jev					
+Agile Release Train	drop	jev					
+Agrona	keep	jev	agrona	Agrona	framework		
+AHU	drop	jev					
+AI Companion	drop	jev					
+AI Infrastructure Operations	drop	jev					
+AI-assistive	drop	jev					
+AIO	drop	jev					
+Allvue	drop	jev					
+Amazon ECR	keep	jev	amazon-ecr	Amazon ECR	cloud		
+AMBA AXI	keep	jev	amba-axi	AMBA AXI	networking		
+AMD Instinct	keep	jev	amd-instinct	AMD Instinct	tool		
+AMX	drop	jev					
+Analytics Studio	drop	jev					
+Aon	drop	jev					
+App-ID	keep	jev	app-id	Palo Alto App-ID	security	App-ID	
+Apple MacBook	drop	jev					
+Application DBA	drop	jev					
+Aqua	drop	session					session: names several things, none dominant
+ArcGIS Portal	keep	jev	arcgis				
+Arctic Wolf	drop	jev					
+AS9145	drop	jev					
+ATAK	keep	jev	atak	ATAK	tool		
+Atlassian Intelligence	drop	jev					
+Auditoria	drop	jev					
+Aurora DB	keep	jev	amazon-aurora				
+Autodesk Inventor	drop	jev					
+AVB	keep	jev	avb	AVB	networking		
+AWS ParallelCluster	keep	jev	aws-parallelcluster	AWS ParallelCluster	cloud		
+Azure Dev Ops	keep	jev	azure-devops				
+BAI2	drop	session					session: obscure
+Baseboard	drop	jev					
+Batch Apex	keep	jev	batch-apex	Batch Apex	framework		
+BICC	keep	jev	bicc	BICC	data		
+Bipolar	drop	jev					
+BISON	drop	session					session: names several things, none dominant
+Blackbaud	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Blackduck	keep	jev	blackduck	BlackDuck	security		
+BlackLine	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Blue Mountain	drop	jev					
+Bomgar	keep	jev	bomgar	Bomgar	tool		
+Brightflag	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Broadridge	drop	jev					
+Brocade	drop	session					session: a vendor's name
+BSL2	drop	jev					
+BSW	drop	jev					
+CANbus	keep	jev	canbus	CANbus	networking		
+CapIQ	drop	jev					
+CaptivateIQ	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Carbon Black	keep	jev	carbon-black	Carbon Black	security		
+Cboe	drop	jev					
+CCNP Enterprise	drop	jev					
+CD Excellence	drop	jev					
+CDNA	drop	jev					
+CER	drop	jev					
+CFI	drop	jev					
+Chisel	drop	session					session: names several things, none dominant
+ChurnZero	drop	jev					
+Cisco Call Manager	keep	jev	cisco-unified-communications-manager				
+ClearML	keep	jev	clearml	ClearML	ml		
+Cloud Portal	drop	jev					
+Cloud WAN	keep	jev	cloud-wan	Cloud WAN	cloud		
+Cloudflare Zero Trust	keep	jev	cloudflare-zero-trust	Cloudflare Zero Trust	security		
+CloudHealth	keep	jev	cloudhealth	CloudHealth	tool		
+CMEK	drop	session					session: a generic concept or a feature named by an ordinary phrase
+CMSIS-NN	keep	jev	cmsis-nn	CMSIS-NN	framework		
+CNG	drop	session					session: names several things, none dominant
+Compose UI	keep	session	jetpack-compose				session: spelling of jetpack-compose
+CompTIA Linux+	drop	jev					
+CoStar	drop	jev					
+Cradlepoint	drop	session					session: a vendor's name
+CUR	drop	session					session: names several things, none dominant
+Dassault 3DEXPERIENCE	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Data Dog	keep	jev	datadog				
+Data Explorer	drop	jev					
+dataanalytics	drop	jev					
+Datawarehouse	drop	jev					
+DataZone	keep	jev	datazone	DataZone	cloud		
+DBM	drop	jev					
+Dell PowerStore	keep	jev	dell-powerstore	Dell PowerStore	tool		
+Deltek Vision	drop	jev					
+DGX Cloud	keep	jev	dgx-cloud	DGX Cloud	cloud		
+DirectQuery	keep	jev	directquery	DirectQuery	data		
+DMO	drop	jev					
+DNV	drop	jev					
+DOCA	keep	jev	doca	DOCA	framework		
+DQN	drop	jev					
+DWD	drop	jev					
+EB	drop	jev					
+EBC	drop	jev					
+ECMA	drop	jev					
+Eigen	keep	jev	eigen	Eigen	framework		
+ElasticCache	keep	jev	amazon-elasticache				
+eletrônica	drop	jev					
+Emplifi	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Entra ID Protection	keep	jev	entra-id-protection	Microsoft Entra ID Protection	security	Entra ID Protection	
+ERDAS IMAGINE	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+ETAS-INCA	keep	jev	etas-inca	ETAS INCA	tool	ETAS-INCA	
+Excel VBA	keep	jev	visual-basic-for-applications				
+FB	drop	jev					
+FinOut	keep	jev	finout	FinOut	tool	Finout	
+Firebolt	keep	jev	firebolt	Firebolt	database		
+Flexera	keep	jev	flexera	Flexera	tool		
+Freddie Mac	drop	jev					
+Galera	keep	jev	galera	Galera	database	Galera Cluster	
+GCR	drop	jev					
+GDC	drop	session					session: names several things, none dominant
+GDM	drop	jev					
+GDSA	drop	jev					
+GIC	drop	jev					
+GitGuardian	keep	jev	gitguardian	GitGuardian	security		
+GLB	drop	session					session: names several things, none dominant
+Gloo	keep	jev	gloo	Gloo	devops		
+Google AI Studio	keep	jev	google-ai-studio	Google AI Studio	tool		
+Google G-Suite	drop	jev					
+Google Scripts	keep	jev	google-apps-script	Google Apps Script	language		
+Google Vault	drop	session					session: consumer or office software
+Google Workplace	drop	jev					
+GPL	drop	jev					
+GPU-intensive	drop	jev					
+granola	drop	jev					
+GRIB	keep	jev	grib	GRIB	data		
+Gsheet	drop	jev					
+GTA	drop	jev					
+GTSAM	keep	jev	gtsam	GTSAM	framework		
+HAM	drop	jev					
+HockeyStack	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+hotspot	drop	jev					
+HP ALM	keep	jev	hp-alm	HP ALM	tool		
+Hubble	drop	session					session: names several things, none dominant
+Husky	drop	session					session: names several things, none dominant
+I've	drop	jev					
+IA Générative	drop	jev					
+IDL	drop	session					session: names several things, none dominant
+Ignition SCADA	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+IL2	drop	jev					
+iLO	keep	jev	ilo	iLO	tool		
+Imagen	drop	session					session: an ordinary word in Spanish
+Implementierung	drop	jev					
+Infineon AURIX	keep	jev	infineon-aurix	Infineon AURIX	tool		
+Informatica MDM	keep	jev	informatica-mdm	Informatica MDM	data		
+intermediário	drop	jev					
+ISC2 CISSP	drop	jev					
+iSeries	keep	jev	iseries	iSeries	os	ISeries	
+Isilon	keep	session	powerscale				session: spelling of powerscale
+ISO8583	keep	jev	iso8583	ISO 8583	security		
+IT DevOps	drop	jev					
+IT Glue	drop	jev					
+IVI	drop	jev					
+J-Link	keep	jev	j-link	J-Link	tool		
+Jetson Orin	keep	session	nvidia-jetson				session: spelling of nvidia-jetson
+Jitterbit	keep	jev	jitterbit	Jitterbit	tool		
+JPD	drop	jev					
+Jupiter	drop	jev					
+Kandji MDM	keep	jev	kandji				
+Kaseya VSA	keep	jev	kaseya-vsa	Kaseya VSA	tool		
+Kenntnisse	drop	jev					
+Lac	drop	jev					
+Lagrangian	drop	jev					
+Lakeflow Jobs	keep	jev	lakeflow-jobs	Lakeflow Jobs	data		
+Lance	drop	session					session: names several things, none dominant
+Lightning Web Component	keep	session	lightning-web-components				session: spelling of lightning-web-components
+LiveData	keep	jev	livedata	LiveData	framework		
+LSMW	keep	jev	lsmw	LSMW	tool		
+LTE-M	keep	jev	lte-m	LTE-M	networking		
+LUKS	keep	jev	luks	LUKS	security		
+Macintosh	drop	jev					
+Manufacturo	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Media Server	drop	jev					
+Medidata Rave	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+Meltwater	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+MES-to-ERP	drop	jev					
+Microsoft Azure DevOps	keep	jev	azure-devops				
+Microsoft Business Central	drop	jev					
+Microsoft Forms	drop	session					session: consumer or office software
+Microsoft PowerBI	keep	jev	power-bi				
+ML Familiarity	drop	jev					
+ML Specialty	drop	jev					
+MobileIron	keep	jev	mobileiron	MobileIron	tool		
+Mongoose	keep	jev	mongoose	Mongoose	framework		
+Moveworks	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+MPEG-DASH	keep	jev	mpeg-dash	MPEG-DASH	networking		
+MSM	drop	jev					
+Mythos	drop	jev					
+NAACL	drop	jev					
+NeoLoad	keep	jev	neoload	NeoLoad	testing		
+NET MAUI	keep	jev	net-maui				
+Netsparker	keep	jev	netsparker	Netsparker	security	NetSparker	
+Nexthink	drop	session					session: software no software person is hired for (marketing, sales, finance, CAD, simulation, PLM, MES, SCADA, EHR)
+NG-SIEM	drop	session					session: a generic concept or a feature named by an ordinary phrase
+nutzen	drop	jev					
+O Psychology	drop	jev					
+OIE	drop	jev					
+OIF	drop	jev					
+OIT	drop	jev					
+Omniverse	keep	jev	omniverse	NVIDIA Omniverse	tool		
+OpenCTI	keep	jev	opencti	OpenCTI	security		
+OpenVINS	keep	jev	openvins	OpenVINS	framework		
+Oracle Fusion Applications	drop	jev					
+Oracle PL	drop	jev					
+Oracle Procurement	drop	jev					
+Oracle WMS	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+ORB-SLAM	keep	jev	orb-slam	ORB-SLAM	framework		
+OSDI	drop	jev					
+OSIsoft PI	keep	jev	osisoft-pi	OSIsoft PI	database	OSIsoft PI System	
+OVA	drop	session					session: names several things, none dominant
+OVAL	keep	jev	oval	OVAL	security	Open Vulnerability Assessment Language	
+OWASP SAMM	drop	jev					
+p50	drop	jev					
+PAI	drop	jev					
+PCIe Gen5	keep	session	pcie				session: spelling of pcie
+PeopleCode	keep	jev	peoplecode	PeopleCode	language		
+Personio	drop	jev					
+pfSense	keep	jev	pfsense	pfSense	networking		
+Phabricator	keep	jev	phabricator	Phabricator	tool		
+Phaser	keep	jev	phaser	Phaser	framework		
+PL-SQL	keep	jev	pl-sql				
+Platform SRE	drop	jev					
+PLDM	keep	jev	pldm	PLDM	security		
+PnP	drop	session					session: names several things, none dominant
+PostCSS	keep	jev	postcss	PostCSS	framework		
+PostGres SQL	keep	jev	postgresql				
+PostgresDB	keep	jev	postgresql				
+POTS	drop	session					session: a generic concept
+PPSM	drop	jev					
+Prismatic	drop	session					session: names several things, none dominant
+Profisee	keep	jev	profisee	Profisee	tool		
+PromoMats	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+PyMuPDF	keep	jev	pymupdf	PyMuPDF	framework		
+PyTorch DDP	keep	jev	pytorch				
+QAM	drop	jev					
+R53	keep	session	amazon-route-53				session: spelling of amazon-route-53
+Rackspace	drop	jev					
+Rainforest	drop	session					session: names several things, none dominant
+RAML	keep	jev	raml	RAML	language		
+RDE	drop	jev					
+RDS Aurora	keep	session	amazon-aurora				session: spelling of amazon-aurora
+React Compiler	keep	jev	react-compiler	React Compiler	tool		doubt: a feature of recent React versions, may be too tightly coupled to React itself
+redefinition	drop	jev					
+Redox	drop	session					session: names several things, none dominant
+Refeição	drop	jev					
+REFPROP	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+RestAPI	drop	jev					
+Ribbon	drop	session					session: a vendor's name
+Rippit	drop	jev					
+ROA	drop	jev					
+SaaS GTM	drop	jev					
+Salesforce Health Cloud	keep	jev	salesforce-health-cloud	Salesforce Health Cloud	tool		
+SAP PLM	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+Sardine	drop	session					session: names several things, none dominant
+sbt	keep	jev	sbt	Scala Build Tool	devops	sbt	doubt: one segment mentions 'staff team building' (SBT); context needed
+SceneGraph	drop	jev					
+ScikitLearn	keep	jev	scikit-learn				
+Scriptable	drop	jev					
+SDF	drop	session					session: ambiguous abbreviation, as the criterion lists SDF
+SE Asia	drop	jev					
+SHACL	keep	jev	shacl	SHACL	language		
+SIC	drop	jev					
+Sitreps	drop	jev					
+Sniper	drop	jev					
+Snowflake Tasks	keep	jev	snowflake-tasks	Snowflake Tasks	data		
+SOE	drop	jev					
+SolarWinds Orion	keep	jev	solarwinds-orion	SolarWinds Orion	devops	Solarwinds Orion	
+Solumina	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+SONET	keep	jev	sonet	SONET	networking		
+Speedgoat	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+Spiff	drop	session					session: names several things, none dominant
+Spine-and-Leaf	drop	jev					
+Splunk Core	keep	jev	splunk				
+SQR	keep	jev	sqr	SQR	language		
+SRE Manager	drop	jev					
+Star Ratings	drop	jev					
+Strata Cloud Manager	keep	jev	strata-cloud-manager	Strata Cloud Manager	security		
+Stratum	drop	session					session: names several things, none dominant
+Studio Pro	drop	session					session: names several products
+Suite Apps	drop	jev					
+Sunday-Thursday	drop	jev					
+SuperPOD	keep	jev	super-pod	SuperPOD	tool		
+SWA	drop	session					session: names several things, none dominant
+Sybase ASE	keep	session	sybase				session: spelling of sybase
+TAA	drop	jev					
+Tabnine	keep	jev	tabnine	Tabnine	tool		
+TCR	drop	jev					
+TD	drop	jev					
+Tec	drop	jev					
+Terraform Enterprise	keep	jev	terraform				
+Test Manager	drop	jev					
+TestCafe	keep	jev	testcafe	TestCafe	testing		
+TGA	drop	jev					
+ThreatLocker	keep	jev	threatlocker	ThreatLocker	security		
+Tonkean	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+TRACE32	keep	jev	trace32	TRACE32	tool		
+Tron	drop	session					session: names several things, none dominant
+TruLens	keep	jev	trulens	TruLens	testing		
+TS SCI	drop	jev					
+Turnstile	keep	jev	turnstile	Turnstile	security		
+Twingate	keep	jev	twingate	Twingate	security		
+Typelevel	drop	jev					
+UBS	drop	jev					
+UI Actions	drop	jev					
+UiARD	drop	jev					
+UiPath Orchestrator	keep	jev	uipath				
+UiPath RPA	keep	jev	uipath				
+UltiPro	drop	jev					
+Umgang	drop	jev					
+URDF	keep	jev	urdf	URDF	language		
+US EST	drop	jev					
+USDT	drop	jev					
+Velero	keep	jev	velero	Velero	devops		
+VeriStand	keep	session	veristand	VeriStand	tool		session: drafted again
+Versal	keep	jev	versal	AMD Versal	tool		
+VHF	drop	jev					
+VSS	drop	jev					
+Wave6	drop	session					session: names several things, none dominant
+WebDataset	keep	jev	webdataset	WebDataset	ml		
+Whistic	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+WS-Fed	keep	jev	ws-fed	WS-Fed	security		
+Xavier	drop	session					session: a person's name as much as a product
+XSL	keep	session	xslt				session: spelling of xslt
+Zoho	drop	session					session: a vendor's name
+Zoom Contact Center	drop	jev					
+100G+	drop	jev					
+6.x	drop	jev					
+60fps	drop	jev					
+802.11a	keep	session	802-11				session: spelling of 802-11
+802.1AS	keep	session	gptp				session: spelling of gptp
+ABL	drop	jev					
+ACF2	keep	jev	acf2	ACF2	security		
+ADM-2or	drop	jev					
+Adobe Sign	drop	jev					
+Ads Data Hub	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+Adwords	drop	jev					
+AEC-Q	drop	jev					
+ag-Grid	keep	jev	ag-grid	ag-Grid	framework	ag-grid	
+Agile Application	drop	jev					
+Agile QA	drop	jev					
+AI IDE	drop	jev					
+AI Security Depth	drop	jev					
+AI-enabling	drop	jev					
+Airflow DAG	drop	jev					
+Allscripts	drop	jev					
+Alto Cortex XDR	keep	jev	palo-alto-cortex-xdr				
+Amateur	drop	jev					
+Amazon MQ	keep	jev	amazon-mq	Amazon MQ	cloud		
+AMD ROCm	keep	jev	rocm				
+Amplitude Analytics	keep	session	amplitude				session: spelling of amplitude
+Android POS	drop	jev					
+AngelScript	keep	jev	angelscript	AngelScript	language		
+Animator	drop	session					session: names several things, none dominant
+Ansys HFSS	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+Anthropic Claude Code	keep	jev	claude-code				
+Anypoint Studio	keep	jev	anypoint-studio	Anypoint Studio	tool		
+Apple Mac	drop	jev					
+Apple School Manager	drop	jev					
+Ardoq	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+ASan	keep	jev	asan	AddressSanitizer	tool	ASan	
+Atlassian Guard	keep	jev	atlassian-guard	Atlassian Guard	security		
+Automation Pro	drop	jev					
+Autopsy	keep	jev	autopsy	Autopsy	security		
+AVA	drop	session					session: names several things, none dominant
+AWS Elemental	drop	jev					
+AWS PaaS	drop	jev					
+Axure	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+Azure DevOps Boards	keep	session	azure-devops				session: spelling of azure-devops
+Azure Event Hub	keep	jev	azure-event-hub	Azure Event Hub	cloud		
+Azure Local	keep	jev	azure-local	Azure Local	cloud		
+Azure Security Specialty	drop	jev					
+Barra	drop	jev					
+Baseboard Management	drop	jev					
+Baseboard Management Controllers	drop	jev					
+BB	drop	jev					
+Bedrock Knowledge Bases	keep	jev	amazon-bedrock				
+BeeGFS	keep	jev	beegfs	BeeGFS	tool		
+Bible	drop	jev					
+BillingPlatform	drop	jev					
+BizzDesign	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+BMAD	drop	jev					
+BMP	drop	session					session: names several things, none dominant
+Bourne	drop	session					session: names several things, none dominant
+Browser Forum	drop	jev					
+Caché	drop	session					session: names several things, none dominant
+CCFA	drop	jev					
+CCFR	drop	jev					
+CCIE Enterprise Infrastructure	drop	jev					
+CCIE Security	drop	jev					
+CD DevOps	drop	jev					
+CD Mastery	drop	jev					
+CDS Hooks	keep	jev	cds-hooks	CDS Hooks	security		
+Chainlink	keep	jev	chainlink	Chainlink	tool		
+Channel SAN	drop	jev					
+CHEMCAD	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+Chrome Enterprise	drop	jev					
+CIF	drop	session					session: names several things, none dominant
+Cisco IOS-XE	keep	jev	cisco-ios				
+CISCO LAN	drop	jev					
+Cisco Secure	drop	jev					
+Cisco Umbrella	keep	jev	cisco-umbrella	Cisco Umbrella	security		
+Clair	keep	jev	clair	Clair	security		
+Class D	drop	jev					
+Cloud CX	drop	session					session: obscure
+Cloud PC	drop	jev					
+Cloverleaf	keep	jev	cloverleaf	Cloverleaf	tool		
+Coalesce	drop	session					session: names several things, none dominant
+CommCare	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+CompTIA Cloud+	drop	jev					
+CorpSec	drop	jev					
+Cortex-R	keep	jev	cortex-r	Cortex-R	tool	ARM Cortex-R	
+CRDT	drop	jev					
+Cromwell	drop	session					session: names several things, none dominant
+CSOM	keep	jev	csom	CSOM	framework		
+CUE	drop	session					session: names several things, none dominant
+cXML	keep	jev	cxml	cXML	language		
+Cyera	keep	jev	cyera	Cyera	security		
+D Security	drop	jev					
+d'API	drop	jev					
+D-wide	drop	jev					
+Dapper	keep	jev	dapper	Dapper	framework		
+Datadog LLM Observability	keep	jev	datadog-llm-observability	Datadog LLM Observability	devops		
+Dataflows Gen2	keep	jev	dataflows-gen2	Dataflows Gen2	data		
+Dataplex	keep	jev	dataplex	Dataplex	cloud		
+Datto	keep	jev	datto	Datto	tool		
+DDM	drop	session					session: names several things, none dominant
+DeepAR	keep	jev	deepar	DeepAR	ml		
+Descope	drop	session					session: names several things, none dominant
+Detekt	keep	jev	detekt	Detekt	tool		
+Deutsche Telekom	drop	jev					
+Diameter	keep	jev	diameter	Diameter	networking		
+Discoverer	drop	jev					
+Docusaurus	keep	jev	docusaurus	Docusaurus	framework		
+DoD Architecture Framework	drop	jev					
+DoD CIO	drop	jev					
+DoD Operations	drop	jev					
+DoD SAP	drop	jev					
+DoD STIG	drop	jev					
+Dot Net	keep	session	net				session: spelling of net
+Dovetail	drop	jev					
+DPC	drop	jev					
+DSCP	drop	session					session: a generic concept
+DTC eCommerce	drop	jev					
+Duality	drop	jev					
+EAP-TLS	keep	jev	eap-tls	EAP-TLS	networking		
+Egg	drop	jev					
+EHR-integrated	drop	jev					
+EIC	drop	jev					
+ENA	drop	session					session: names several things, none dominant
+Entrata	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+EPM Automate	keep	jev	oracle-epm-automate	Oracle EPM Automate	tool	EPM Automate	
+ePrivacy	drop	jev					
+Equinix Fabric	keep	jev	equinix-fabric	Equinix Fabric	networking		
+Ethernet IP	keep	jev	ethernet-slash-ip	EtherNet/IP	networking	Ethernet IP	
+Ethernet LAN	drop	jev					
+Ethernet PHY	drop	session					session: a generic concept
+ETL Mastery	drop	jev					
+Evo	drop	jev					
+EWA	drop	jev					
+Extender	drop	jev					
+Fannie	drop	jev					
+Fibersim	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+FICAM	drop	jev					
+FIM	drop	jev					
+FOCP	drop	jev					
+Fortinet FortiGate	keep	session	fortigate				session: spelling of fortigate
+Framer Motion	keep	jev	framer-motion	Framer Motion	framework		
+Friday-night	drop	jev					
+FS-ISAC	drop	jev					
+FSMO	drop	jev					
+FSQA	drop	jev					
+G.711	keep	jev	g-711	G.711	networking		
+G.729	keep	jev	g-729	G.729	networking		
+GCD	drop	session					session: names several things, none dominant
+GCLP	drop	jev					
+GCP Cloud Operations	drop	session					session: a service of a skill named with more than its name
+Gecko	drop	session					session: names several things, none dominant
+GEMM	drop	jev					
+Geneos	keep	session	itrs-geneos				session: spelling of itrs-geneos
+Genesis	drop	session					session: names several things, none dominant
+GFSSP	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+GitHub Enterprise Server	keep	jev	github-enterprise				
+GlideRecord	keep	jev	gliderecord	GlideRecord	framework		
+Global Protect	keep	jev	globalprotect				
+glTF	keep	jev	gltf	glTF	tool		
+GMON	drop	jev					
+GNU Radio	keep	jev	gnu-radio	GNU Radio	framework		
+Goliath	drop	jev					
+Google Chrome	drop	jev					
+Google GKE	keep	jev	google-kubernetes-engine				
+Gorgias	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+Gotham	keep	jev	palantir-gotham	Palantir Gotham	tool		
+Gradio	keep	jev	gradio	Gradio	framework		
+Graviton	keep	jev	aws-graviton	AWS Graviton	cloud		
+Groundcover	keep	jev	groundcover	Groundcover	devops		
+GRP	drop	jev					
+GS1	drop	jev					
+Gumloop	keep	jev	gumloop	Gumloop	tool		
+H.323	keep	jev	h-323	H.323	networking		
+Harvey	drop	jev					
+Heredia	drop	jev					
+HL7v2	keep	session	hl7				session: spelling of hl7
+HRIS Manager	drop	jev					
+HRM	drop	jev					
+HSDL	drop	session					session: obscure
+HSX	drop	jev					
+Huawei	drop	jev					
+HydroCAD	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+IBM QRadar	keep	session	qradar				session: spelling of qradar
+ICP-MS	drop	jev					
+IdentityNow	keep	jev	identitynow	IdentityNow	security		
+IIQ	keep	session	identityiq				session: spelling of identityiq
+iLevel	drop	jev					
+Infor SyteLine	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+Infrastrukturen	drop	jev					
+iPerf3	keep	jev	iperf3	iPerf3	networking		
+Isaac Gym	keep	jev	isaac-gym	Isaac Gym	framework		
+ISML	keep	jev	isml	ISML	language		
+ITIL Best Practice	drop	jev					
+James	drop	jev					
+Jasper	drop	jev					
+JavaScript Tag	drop	jev					
+JPL	drop	jev					
+JREAP	keep	jev	jreap	JREAP	networking		doubt: military/defense protocol, highly niche domain
+JSONL	keep	jev	jsonl	JSONL	data		
+KiCad	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+KISS	drop	jev					
+KLayout	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+Kling	keep	jev	kling	Kling	ml		
+kNN	drop	jev					
+Kno2	drop	session					session: obscure
+kOps	keep	jev	kops	kOps	devops		
+Kramer	drop	jev					
+Kubespray	keep	jev	kubespray	Kubespray	devops		
+Kubestronaut	drop	jev					
+L6 Staff	drop	jev					
+Lamda	keep	session	aws-lambda				session: spelling of aws-lambda
+LanceDB	keep	jev	lancedb	LanceDB	database		
+Lang Graph	keep	jev	langgraph				
+Lawson	drop	jev					
+LGTM	drop	session					session: names several things, none dominant
+Lightbend	drop	jev					
+Lightning App Builder	keep	jev	lightning-app-builder	Lightning App Builder	tool		
+Lightning Design	drop	jev					
+Lightning Design System	keep	jev	lightning-design-system	Lightning Design System	framework	SLDS	
+Loopio	drop	jev					
+Mach-O	keep	jev	mach-o	Mach-O	security		
+Mailchimp	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+MALS	drop	jev					
+Manifest V3	keep	jev	manifest-v3	Manifest V3	security		
+Marketing Cloud Developer	drop	jev					
+Maxio	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+MCITP	drop	jev					
+MCTP	keep	jev	mctp	MCTP	networking		
+MediaLive	keep	jev	medialive	AWS MediaLive	cloud	MediaLive	
+Microsoft Configuration Manager	keep	session	microsoft-endpoint-configuration-manager				session: spelling of microsoft-endpoint-configuration-manager
+Microsoft Exchange Server	keep	session	microsoft-exchange				session: spelling of microsoft-exchange
+Microsoft OneDrive	drop	jev					
+Microsoft Planner	drop	jev					
+MII	drop	jev					
+Mintlify	keep	jev	mintlify	Mintlify	tool		
+MK	drop	jev					
+ML Track	drop	jev					
+ML-guided	drop	jev					
+Mobile Studio	drop	session					session: names several things, none dominant
+Mooncake	drop	session					session: names several things, none dominant
+MS Exchange	keep	session	microsoft-exchange				session: spelling of microsoft-exchange
+MS Intune	keep	jev	microsoft-intune				
+MS Visual Studio	drop	jev					
+Munki	keep	jev	munki	Munki	tool		
+Mural	drop	jev					
+Mutex	drop	jev					
+MV3	keep	session	manifest-v3				session: spelling of manifest-v3
+Médaillon	drop	jev					
+NetApp ONTAP	keep	jev	netapp-ontap	NetApp ONTAP	tool		
+NetScout	keep	jev	netscout	NetScout	networking		
+NetworkPolicies	drop	session					session: a generic concept
+Nexis	drop	jev					
+NISand	drop	jev					
+NISP	drop	jev					
+Nlyte	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+nonce	drop	jev					
+NSPB	drop	jev					
+NSW	drop	session					session: names several things, none dominant
+NSX-T	keep	session	vmware-nsx				session: spelling of vmware-nsx
+NTA	drop	jev					
+OCAPI	keep	jev	ocapi	OCAPI	framework		doubt: category given as security but OCAPI is Salesforce Commerce Cloud API, typically framework or tool
+OGA	drop	jev					
+oneDNN	keep	jev	onednn	oneDNN	ml		
+OpenFeature	keep	jev	openfeature	OpenFeature	framework		
+OpenSIPS	keep	jev	opensips	OpenSIPS	networking	OpenSIPs	
+OpenStack Neutron	keep	jev	openstack-neutron	OpenStack Neutron	networking		
+OpenUSD	keep	jev	openusd	OpenUSD	framework		
+OpenVLA	drop	jev					
+OPNsense	keep	jev	opnsense	OPNsense	security		
+Optistruct	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+Oracle Cloud Financials	drop	jev					
+Oracle Primavera	drop	jev					
+Oracle SCM	drop	jev					
+Oracle Service Bus	keep	jev	oracle-service-bus	Oracle Service Bus	tool	OSB	
+OSFI	drop	jev					
+OWASP Testing	drop	jev					
+Palo Alto XSOAR	keep	session	cortex-xsoar				session: spelling of cortex-xsoar
+Parasolid	keep	jev	parasolid	Parasolid	tool		
+Patran	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+PBI	drop	session					session: names several things, none dominant
+Pebble	drop	session					session: names several things, none dominant
+PELs	drop	jev					
+PeopleTools	keep	jev	peopletools	PeopleTools	tool		
+Peplink	drop	session					session: a vendor's name
+PERC	drop	jev					
+Playwright UI	keep	jev	playwright				
+Power Automate Desktop	keep	jev	power-automate-desktop	Power Automate Desktop	tool		
+PowerMax	drop	jev					
+PPR	drop	jev					
+PromptLayer	keep	jev	promptlayer	PromptLayer	tool		
+PSAC	drop	jev					
+PSIM	drop	session					session: names several things, none dominant
+PSOC	drop	jev					
+pubsec	drop	jev					
+Pyomo	keep	jev	pyomo	Pyomo	framework		
+PyQt	keep	jev	pyqt	PyQt	framework		
+Python Mastery	drop	jev					
+Python NLP	drop	jev					
+rats	drop	jev					
+RAUC	keep	jev	rauc	RAUC	tool		
+ReadyAPI	keep	jev	readyapi	ReadyAPI	testing		
+RealPage	drop	jev					
+RedHat Enterprise Linux	keep	jev	red-hat-enterprise-linux				
+ReliaSoft	drop	session					session: a vendor's name
+Renovate	keep	jev	renovate	Renovate	devops		
+ResNet	drop	session					session: a generic concept
+Resque	keep	jev	resque	Resque	framework		
+Rillet	drop	jev					
+Robotik	drop	jev					
+S2	drop	jev					
+S4HANA	keep	jev	sap-s-4hana				
+Salesforce Cloud	drop	jev					
+Salesforce Financial Services	drop	jev					
+Samsung Knox	keep	jev	samsung-knox	Samsung Knox	security		
+Samsung Tizen	keep	jev	tizen				
+SAP APO	keep	jev	sap-apo	SAP APO	tool		
+SAP B1	keep	jev	sap-b1	SAP Business One	tool	SAP B1	
+SAPF	drop	jev					
+SBU	drop	jev					
+SCEP	keep	jev	scep	SCEP	security		
+Schneider EcoStruxure	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+SCIP	drop	session					session: names several things, none dominant
+Scribe	drop	session					session: names several things, none dominant
+Scrum Developer	drop	jev					
+Sectigo	drop	session					session: a vendor's name
+Secureframe	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+SEG	drop	jev					
+Server Team	drop	jev					
+ServiceNow Discovery	keep	jev	servicenow-discovery	ServiceNow Discovery	tool		
+Shopify Hydrogen	keep	jev	shopify-hydrogen	Shopify Hydrogen	framework		
+Siemens OpCenter	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+Simpack	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+Sinatra	keep	jev	sinatra	Sinatra	framework		
+Singapore Government	drop	jev					
+Socket.IO	keep	jev	socket-io	Socket.IO	framework	socket.io|Socket.io	
+SoftwareDevelopment	drop	jev					
+SOTI	keep	jev	soti	SOTI	tool		
+Sprache	drop	jev					
+SQLi	drop	jev					
+SSIDs	drop	jev					
+Studio Integrations	drop	jev					
+Subシステム	drop	jev					
+SuiteProjects	drop	session					session: business software no software person is hired for
+SWIFT MT	keep	jev	swift-mt	SWIFT MT	security		
+SwiftLint	keep	jev	swiftlint	SwiftLint	tool		
+Syft	keep	jev	syft	Syft	security		
+Symphony Health	drop	jev					
+Sysmon	keep	jev	sysmon	Sysmon	security		
+Systrace	keep	jev	systrace	Systrace	tool		
+TACLANE	keep	jev	taclane	TACLANE	security		
+Tage	drop	jev					
+TCG	drop	jev					
+TCM	drop	jev					
+Tenable.SC	keep	jev	tenable-sc	Tenable.SC	security		
+TensorBoard	keep	jev	tensorboard	TensorBoard	ml		
+Toad	keep	jev	toad	Toad	tool		
+ToR	drop	jev					
+TorchTitan	keep	jev	torchtitan	TorchTitan	framework		
+Totango	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+TOTP	keep	jev	totp	TOTP	security		
+Trailhead	drop	jev					
+Triton Backend	keep	jev	triton-backend	Triton Backend	ml		
+Tropic	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+TrustSec	keep	jev	trustsec	TrustSec	security		
+TSDB	drop	jev					
+txt	drop	jev					
+UDR	drop	session					session: names several things, none dominant
+USPTO	drop	jev					
+v18+	drop	jev					
+ValGenesis	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+VCN	drop	session					session: names several things, none dominant
+Veo	drop	session					session: names several things, none dominant
+VIF	drop	jev					
+Virtual WAN	keep	jev	virtual-wan	Virtual WAN	cloud		
+Visual Force	keep	jev	visualforce				
+VULN	drop	jev					
+WAI-ARIA	keep	jev	aria				
+WDR	drop	jev					
+WebUI	drop	jev					
+WFX	drop	session					session: obscure
+Windows Hello	keep	jev	windows-hello	Windows Hello	security		
+Windows UI	drop	jev					
+Workato Genie	drop	jev					
+Workday ERP	keep	jev	workday-erp	Workday ERP	tool		
+X++	keep	jev	x-plus-plus	X++	language		
+XM	drop	jev					
+XProtect	keep	jev	xprotect	XProtect	security		
+XPU	drop	jev					
+XState	keep	jev	xstate	XState	framework		
+XTP	drop	jev					
+YouGov	drop	jev					
+Zeppelin	keep	jev	zeppelin	Zeppelin	data		
+Zuora RevPro	drop	session					session: business software no software person is hired for
+F5 BIG	drop	jev					
+Gemini Enterprise Agent	drop	jev					
+Google Analytics 4	keep	session	google-analytics				session: spelling of google-analytics
+Google Suite	drop	jev					
+Server Sent Events	keep	jev	server-sent-events	Server-Sent Events	networking		
+AWS MSK	keep	jev	amazon-msk				
+GCM	drop	jev					
+GPU Operator	keep	jev	nvidia-gpu-operator	NVIDIA GPU Operator	devops		
+HubSpot Workflows	drop	session					session: software no software person is hired for (marketing, sales, finance, compliance, CAD, simulation, PLM, MES)
+IEEE 802.11	keep	jev	802-11				
+Internet Protocol	drop	jev					
+Kubernetes API	drop	jev					
+NVIDIA GPUs	drop	jev					
+PWA	drop	jev					
+RLS	drop	session					session: a generic concept
+Salesforce Commerce	drop	jev					
+Bedrock Agents	keep	jev	amazon-bedrock				
+Cursor AI	keep	jev	cursor				
+Dockerfiles	drop	jev					
+DSLs	drop	jev					
+Elastic Kubernetes Service	keep	session	amazon-eks				session: spelling of amazon-eks
+MSMQ	keep	jev	msmq	MSMQ	tool		
+Vitess	keep	jev	vitess	Vitess	database		
+Anthos	keep	jev	anthos	Anthos	cloud		
+Azure Backup	keep	jev	azure-backup	Azure Backup	cloud		
+Claude AI	keep	jev	claude				
+Cluster API	keep	session	cluster-api	Cluster API	framework		
+CORS	drop	jev					
+Crane	drop	jev					
+CRD	drop	session					session: names several things, none dominant
+Figma Design	drop	jev					
+HackerOne	drop	jev					
+i18n	drop	jev					
+KML	keep	jev	kml	KML	data		
+NACLs	drop	session					session: a generic concept
+Spring Data JPA	keep	jev	spring-data-jpa	Spring Data JPA	framework		
+StatefulSets	drop	session					session: a generic concept
+Tilt	drop	jev					
+VRFs	keep	jev	vrf				
+Ansible AWX	keep	session	awx				session: spelling of awx
+Anthropic APIs	drop	jev					
+Aura Components	keep	jev	salesforce-aura-framework				
+BGP EVPN	drop	session					session: a generic concept
+CIFS	keep	session	cifs	CIFS	networking		
+Data 360	drop	session					session: names several things, none dominant
+Device Farm	keep	session	aws-device-farm				session: spelling of aws-device-farm
+DRS	drop	jev					
+JUnit 5	keep	jev	junit				
+Metastore	keep	session	hive-metastore				session: spelling of hive-metastore
+Microsoft Office 365	drop	jev					
+microVMs	drop	session					session: a generic concept
+NPUs	drop	jev					
+NServiceBus	keep	jev	nservicebus	NServiceBus	framework		
+NSG	drop	jev					
+NVIDIA ORIN	keep	session	nvidia-jetson				session: spelling of nvidia-jetson
+OData Services	keep	jev	odata				
+OVS	keep	session	open-vswitch				session: spelling of open-vswitch
+RAP	drop	session					session: names several things, none dominant
+SAP ABAP	keep	jev	abap				
+SLS	drop	jev					
+TCA	drop	session					session: names several things, none dominant
+AMIs	keep	jev	amazon-machine-image				
+AWS Athena	keep	jev	amazon-athena				
+AWS SNS	keep	jev	amazon-sns				
+CDS Views	keep	jev	cds-views	CDS Views	language		
+CNIs	drop	jev					
+CodeWhisperer	keep	session	amazon-codewhisperer				session: spelling of amazon-codewhisperer
+DPUs	drop	session					session: a generic concept
+GAM	drop	session					session: names several things, none dominant
+GraphQL federation	drop	session					session: a generic concept
+JWTs	keep	jev	jwt				
+Linux Red Hat	drop	jev					
+MPEG	drop	jev					
+Neutron	drop	session					session: names several things, none dominant
+PASTA	drop	jev					
+Protobufs	keep	jev	protocol-buffers				
+Q Developer	keep	jev	amazon-q-developer	Amazon Q Developer	tool		
+AI DevSecOps	drop	session					session: mentioned in no segment; a name glued to a word
+Let Encrypt	drop	session					session: mentioned in no segment; a name glued to a word
+ArgoCD GitOps	drop	session					session: mentioned in no segment; a name glued to a word
+AI BI	drop	session					session: mentioned in no segment; a name glued to a word
+Microsoft Fabric Azure	drop	session					session: mentioned in no segment; a name glued to a word
+Key Vault Azure	drop	session					session: mentioned in no segment; a name glued to a word
