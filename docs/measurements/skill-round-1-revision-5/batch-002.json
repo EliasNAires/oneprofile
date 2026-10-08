@@ -1,0 +1,122 @@
+[
+ {
+  "id": "r:108:memorydb",
+  "text": "Name: MemoryDB\nSegment: Infrastructure and storage layer: AWS EC2, ECS, Lambda, SQS, Aurora, Redis, S3, MemoryDB",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:122:rcas",
+  "text": "Name: RCAS\nSegment: Experience with Zona, ZAERO, RCAS, NASTRAN SOL144, or other loads analysis tools",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:91:rpm",
+  "text": "Name: RPM\nSegment: In-depth knowledge of the Linux OS (RHEL 7+/CentOS 7+) and its core components, including the kernel, system libraries, and package management (RPM, YUM).",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:129:xcode server",
+  "text": "Name: Xcode Server\nSegment: Bonus points if you have working knowledge of mobile devops/pipeline tools, such as fastlane, Xcode Server, TestFlight, etc.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:92:rhel 7+",
+  "text": "Name: RHEL 7+\nSegment: In-depth knowledge of the Linux OS (RHEL 7+/CentOS 7+) and its core components, including the kernel, system libraries, and package management (RPM, YUM).",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:d365 f",
+  "text": "Name: D365 F\nSegments:\n- Use Microsoft's standard D365 F&SCM functionality as your baseline — performing fit-to-standard and fit-gap analysis to find the best path forward\n- Nice to have: experience with AX / D365 F&O data entities and manufacturing processes.\n- We are looking for an experienced Associate Product Manager - MSD with deep knowledge of financial processes, core financial modules in Microsoft Dynamics 365 Finance & Operations (D365 F&O), and a strong focus on Controllership process transformation and driving automation initiatives.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:litify",
+  "text": "Name: Litify\nSegments:\n- At Litify, we’re revolutionizing the Legal industry by being the platform powering legal’s top performers.\n- Technical Proficiency: Advanced proficiency in Excel and financial reporting tools, with experience using accounting software such as QuickBooks Online and legal practice management/accounting software such as Filevine, Litify, Needles, Clio, PCLaw, or similar.\n- At Litify, we're powering a new era for the legal industry.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:computer vision ai",
+  "text": "Name: Computer Vision AI\nSegments:\n- Temporal, spatial, geographic, quantitative, and computer vision AI implementation\n- Opportunity to shape an early-stage, mission-driven startup and revolutionize how Enterprises use Computer Vision AI\n- We are seeking a Computer Vision AI & ML Engineer to design, build, and deploy advanced perception systems for real-world robotics and automation.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:148:spark",
+  "text": "Name: Spark\nSegment: Data Savvy: Experience with high-throughput data processing and storage solutions (SQL/NoSQL, Redis, Kafka, or Spark).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:94:amazon aurora postgresql",
+  "text": "Name: Amazon Aurora PostgreSQL\nSegment: Amazon Aurora PostgreSQL + AWS",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:102:c",
+  "text": "Name: C\nSegment: Proficiency with C, C++, Python, or MATLAB; and Windows 10 and Microsoft Office products",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:111:atomic red",
+  "text": "Name: Atomic Red\nSegment: Testing & Automation (Bonus): Sigma, YARA, Atomic Red Team, Caldera, Python and SOAR playbooks.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:ha",
+  "text": "Name: HA\nSegments:\n- Lead high-availability and disaster-recovery (HA/DR) design, including backup, failover, and recovery procedures, to meet client and contractual uptime commitments.\n- Define and implement standards for observability, high availability (HA), backup, and disaster recovery (DR) of workloads in Kubernetes.\n- Architect Global Cloud Resilience & Scale: Champion overarching initiatives for cloud architecture, including Tierless private cloud transitions, Geo HA failover mechanisms, and service-only failovers to guarantee \"four nines\" reliability while optimizing infrastructure COGS.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:weave",
+  "text": "Name: weave\nSegments:\n- We’re looking for experienced full-stack engineers to join the Figma Weave team.\n- Regulatory & Deployment-Readiness Acumen: Working understanding of compliance standards and the ability to weave domain constraints directly into product delivery.\n- As a Senior Forward Deployed Engineer (FDE) you will work directly with our customers, embedding inside their AI teams to help them build and deploy successful AI agents with the W&B Weave developer toolkit.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:104:experience cloud",
+  "text": "Name: Experience Cloud\nSegment: This role is responsible for partnering with business stakeholders, delivery teams, and technical resources to design, configure, optimize, and support scalable Salesforce solutions across Government Cloud, Service Cloud, and Experience Cloud environments.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:ccda",
+  "text": "Name: CCDA\nSegments:\n- Industry certifications are a plus: AWS, CCNA, CCDA, CCNP, MCSE, CEH, Security+, A+, Network+, Microsoft Azure, CISSP, and CSP.\n- Industry certifications are a plus: CCNP, CCNA, CCENT, CCDA, CWNP, CWNA, MCSE, CEH, Network+, Security+, A+\n- You will work closely with external member teams and internal engineering stakeholders to profile, map, validate, and automate data ingestion workflows, bringing hands-on experience with clinical applications such as Epic, Cerner, MEDITECH, or Allscripts and with healthcare data standards including HL7, FHIR, and CCDA.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:midjourney",
+  "text": "Name: Midjourney\nSegments:\n- Experience using AI design tools (Midjourney, Canva AI, Lovable, or similar)\n- Tech & AI Fluency: Familiarity with prompt engineering (OpenAI, Anthropic, Gemini, Midjourney) and social management/listening suites (Sprinklr, Brandwatch, Sprout Social).\n- Deep AI User, with practical experience using AI tools (e.g. ChatGPT, Claude, Cursor, Midjourney) — able to speak to specific use cases and outcomes",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:125:spark",
+  "text": "Name: Spark\nSegment: Technical Expertise in Big Data and Spark: 10+ years of experience designing, building, and troubleshooting distributed computing applications, with 4+ years delivering production-scale Spark/ML/AI solutions using Python, Java, or Scala.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:ib",
+  "text": "Name: IB\nSegments:\n- The Portfolio ranges from Programme of Work (POW) activities funded via the NATO Military Budget (MB) to Critical / Urgent Requirements (CURs/URs) and NATO Security Investment Programme (NSIP) projects funded via the Investment Budget(IB).\n- Live positioning against the threat intelligence, DRP, EASM and exposure management field: Recorded Future, ZeroFox, Flashpoint, Cyble, Group-IB, Check Point/Cyberint, Searchlight Cyber, Silent Push, Doppel, and the ratings vendors (Bitsight, SecurityScorecard) where SVigil competes\n- Understand various RoCE optimisation protocols and mechanisms (e.g.: SHARP, CollNet) and use performance tools (e.g.: ibstat, perfquery, ib_write_bw, nccl, etc) to monitor fabric health, congestion and link errors.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:119:library eslint",
+  "text": "Name: Library ESLint\nSegment: Testing Library ESLint · Prettier · GitHub Actions CI",
+  "a": "keep",
+  "b": "drop"
+ }
+]

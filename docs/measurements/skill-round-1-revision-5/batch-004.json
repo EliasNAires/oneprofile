@@ -1,0 +1,122 @@
+[
+ {
+  "id": "p:simcorp",
+  "text": "Name: SimCorp\nSegments:\n- Exposure to systematic investing, portfolio/trading workflows, middle/back office platforms, IBOR/ABOR, enterprise data platforms or vendor platforms such as SimCorp, BlackRock Aladdin, Arcesium or similar would be nice to have.\n- Familiarity with IBOR or portfolio accounting platforms (e.g. SimCorp, Eagle, Aladdin, Charles River) is a plus\n- Minimum 2 years of experience with implementations, project management, and/or production support role with a focus on front office technology such as: SimCorp One/Dimension, Blackrock Aladdin, Charles River IMS, Bloomberg AIM, FactSet, Finbourne, or Ridgeline – with preference toward SimCorp One/Dimension experience",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:90:systemverilog assertions",
+  "text": "Name: SystemVerilog Assertions\nSegment: Deploy SystemVerilog Assertions for protocol compliance, interface checks, and design invariants across all simulation runs",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:136:c++17/20",
+  "text": "Name: C++17/20\nSegment: Design, implement, and optimize cutting-edge motion planning algorithms in modern C++ (C++17/20)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:153:c++17/20",
+  "text": "Name: C++17/20\nSegment: Architect, implement, and optimize cutting-edge control systems in modern C++ (C++17/20).",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:voip",
+  "text": "Name: VoIP\nSegments:\n- We are seeking Technical Support Specialists to provide top-notch customer support for Zenoti's VOIP solution, Hyperconnect.\n- The Senior Network Engineer will ensure high availability, security, and performance of enterprise routing, switching, and VoIP environments in accordance with DoD and DISA standards.\n- VOIP systems, backup and disaster recovery platforms, and remote monitoring and management platforms.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:model builder",
+  "text": "Name: Model Builder\nSegments:\n- Hands-on Pigment model-building and admin experience strongly preferred; strong Anaplan Model Builder experience considered\n- You will contribute to pre-sales activities including building and presenting platform demonstrations, either personally or by directing a model builder.\n- Anaplan Certified Model Builder (Level 2+; Master Anaplanner preferred)",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:113:jetpack navigation",
+  "text": "Name: Jetpack Navigation\nSegment: Jetpack Navigation",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:administración",
+  "text": "Name: administración\nSegments:\n- Titulación universitaria en Ingeniería, Administración de Empresas, Tecnología, Data, ADE, Economía o carreras afines.\n- Bachiller en Ingeniería Industrial, Administración de Empresas o carreras afines.\n- Formación: Graduado/a en Ingeniería, Economía, Administración de Empresas, Matemáticas o carreras afines.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:bentley",
+  "text": "Name: Bentley\nSegments:\n- Experience with AEC (Architecture, Engineering, and Construction) software platforms and related development ecosystems, including Autodesk Civil 3D, AutoCAD, Revit, Autodesk Construction Cloud (ACC), Bentley applications, ArcGIS, QGIS, or similar engineering technologies is a plus.\n- Experience with MicroStation, OpenRoads software, Bentley Open Bridge Designer, MDX, AASHTOWare BrR and Microsoft Office\n- With 650 people across 11 offices, we help clients like Samsung, Bentley, Wellstar, Beiersdorf, Samsonite, and Barclays show up in culture with work that stands apart.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:apple device",
+  "text": "Name: Apple device\nSegments:\n- Opportunity to make a real and meaningful impact for more than 34,000 global customers with the best Apple Device Management solution in the world\n- Familiarity with mixed Apple and Microsoft environments, including basic Apple device support\n- Hands-on Apple device management with Jamf Pro: zero-touch deployment and automated compliance reporting",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:95:kml",
+  "text": "Name: KML\nSegment: Data Formats: KML, KMZ, NITF, TIFF, JPEG, GeoPDF, and similar geo-related formats and data structures",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:103:service cloud",
+  "text": "Name: Service Cloud\nSegment: This role is responsible for partnering with business stakeholders, delivery teams, and technical resources to design, configure, optimize, and support scalable Salesforce solutions across Government Cloud, Service Cloud, and Experience Cloud environments.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:117:prettier",
+  "text": "Name: Prettier\nSegment: Testing Library ESLint · Prettier · GitHub Actions CI",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:105:pbi",
+  "text": "Name: PBI\nSegment: Some weeks you're deep in creation of reports and data visualizations (PBI, Domo, Excel); others you're presenting at an executive meeting for a key client.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:saudi arabia",
+  "text": "Name: Saudi Arabia\nSegments:\n- Our Customer Experience team is seeking Senior Technical Account Manager in Saudi Arabia.\n- Tamara is a leading fintech platform in Saudi Arabia and the GCC region with a mission to help people own their dreams built on being simple, trusted, and everywhere our customers need us.\n- We're expanding our footprint in Saudi Arabia and the UAE — with live market access, a growing regional roadmap, and ambitions across derivatives, direct connectivity, securities lending, and Sharia-compliant offerings.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:llm engineering",
+  "text": "Name: LLM engineering\nSegments:\n- You should be comfortable owning the system end to end across backend services, full-stack applications, databases, infrastructure, integrations, and modern AI/LLM engineering, while making sound decisions about where probabilistic AI should and should not be used.\n- LLM Engineering at Scale\n- This role combines LLM engineering, agent-based modeling, machine learning, and causal inference with direct applications to real-world rider products.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:iaac",
+  "text": "Name: IaaC\nSegments:\n- Infrastructure-as-a-code (IaaC) using Terraform/Cloud Formation Template/ ARM Template;\n- Own detections and data pipelines written as IaaC.\n- Professional experience maintaining/enhancing Kubernetes cluster via IaaC [Terraform experience preferred].",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:131:mcp",
+  "text": "Name: MCP\nSegment: Curiosity and eagerness to learn about AI/LLM application patterns, even if you haven't worked closely with them yet; exposure to agentic AI tools and workflows (e.g., coding agents, MCP servers) or model-serving and evaluation infrastructure is a plus.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:icarus",
+  "text": "Name: Icarus\nSegments:\n- Cocotb (used for all our testbench collateral), Verilator, Icarus Verilog\n- Proficient in using construction estimating practices, software and tools (ACCE, ICARUS).\n- Icarus was founded on the belief that the Stratosphere is the Forgotten Frontier and that reclaiming it will define the next era of aerospace and what is possible from the sky.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:cockpit",
+  "text": "Name: Cockpit\nSegments:\n- Piloter une équipe de 120+ spécialistes retail au sein d'un compte global de 300+ personnes, dans une gouvernance tripartite (client, intégrateur cockpit, Valtech delivery technique).\n- Your primary focus will be rigorous bench-level testing to support the Cockpit Domain Controller (CDC) ECU, as well as the Advanced Driver Control Unit (ADCU / ADCU Pro).\n- Designing an appropriate data migration solution and end-to-end data migration strategy, including source-to-target mapping, extraction/transformation/load (ETL) approach, and tooling (e.g., LSMW, LTMC/LTMOM, BODS, migration cockpit, or custom scripts) appropriate for SAP EC Payroll",
+  "a": "keep",
+  "b": "drop"
+ }
+]

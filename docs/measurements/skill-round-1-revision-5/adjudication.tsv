@@ -1,0 +1,155 @@
+kind	id	name	outcome	clause	pattern
+precision	p:400g	400G	rule miss	A generic concept or a practice, not a named technology	generic bandwidth speed grade
+precision	p:administración	administración	rule miss	a heading or field of study	field of study not tech
+precision	p:advanced rpa developer	Advanced RPA Developer	rule miss	A compliance framework, regulation or certification	certification name not technology
+precision	p:ai devops	AI DevOps	rule miss	A generic concept or a practice	practice or role name
+precision	p:ai exposure	AI exposure	rule miss	Not a technology at all: a heading or field of study	generic phrase not technology
+precision	p:aiops	AIOps	rule miss	A generic concept or a practice	practice or role name
+precision	p:analyste	analyste	rule miss	Not a technology at all: ... a heading or field of study	job title not technology
+precision	p:app store	App Store	rule miss	An ordinary word ... used in its ordinary sense	generic term not specific product
+precision	p:apple device	Apple device	rule miss	A name with an ordinary word before or after it	vendor name plus ordinary word
+precision	p:apple platform	Apple platform	rule miss	Not a technology at all: ... a vendor umbrella, a product line	vendor ecosystem umbrella term
+precision	p:arm cortex m	ARM Cortex-M	labeller error	it is the technology's whole name and nothing more	vendor plus specific product line
+precision	p:authz	AuthZ	rule miss	A generic concept or a practice, not a named technology	abbreviation for generic security function
+precision	p:av over ip	AV-over-IP	rule miss	A generic concept or a practice, not a named technology	generic technique category with named instances
+precision	p:bentley	Bentley	rule miss	a company (as an employer, customer, partner or vendor)	vendor as company or modifier
+precision	p:bridgewater	Bridgewater	rule miss	Not a technology at all	place name not technology
+precision	p:canva	Canva	rule miss	Not a technology at all: a company	company named as customer
+precision	p:casb	CASB	rule miss	A generic concept or a practice, not a named technology	generic security tool category
+precision	p:ccda	CCDA	rule miss	A compliance framework, regulation or certification	certification abbreviation overlaps standard
+precision	p:cd pipeline management	CD pipeline management	rule miss	A generic concept or a practice, not a named technology	practice phrase around CI/CD
+precision	p:cidr	CIDR	labeller error	A name is judged where it is written, and exactly as given: in the segments given with it	dominant technical sense across segments
+precision	p:cisco wireless	Cisco Wireless	rule miss	Not a technology at all: ... a name glued to an ordinary word	vendor name plus ordinary word
+precision	p:cockpit	Cockpit	rule miss	so is part of a longer name written around it	part of longer name
+precision	p:computer vision ai	Computer Vision AI	rule miss	A generic concept	generic AI field name
+precision	p:coupa	Coupa	rule miss	A technology no software person is hired for	business software not engineer tech
+precision	p:csdm	CSDM	rule miss	An ambiguous abbreviation	ambiguous abbreviation two meanings
+precision	p:d engineering	D Engineering	rule miss	Not a technology at all	mis-split department phrase
+precision	p:d systems	D systems	rule miss	Not a technology at all	fragment of unrelated phrase
+precision	p:d365 f	D365 F	rule miss	a piece of a longer name that ads never use alone for the product	truncated piece of compound name
+precision	p:dast	DAST	rule miss	A generic concept or a practice, not a named technology	security testing category acronym
+precision	p:delinea	Delinea	rule miss	A vendor's name is a drop even where ads use it for its products	vendor name for product
+precision	p:dod ts	DoD TS	rule miss	A compliance framework, regulation or certification	security clearance not technology
+precision	p:dpu	DPU	rule miss	A generic concept or a practice, not a named technology	generic hardware category term
+precision	p:english must	English Must	rule miss	A skill is a **technology**	natural language not a technology
+precision	p:excel	Excel	rule miss	Consumer, office or browser software	office software not engineering tech
+precision	p:experiments doe	Experiments DoE	rule miss	A practice, method, technique, architecture or kind of system is no skill	statistical methodology abbreviation
+precision	p:fibre	Fibre	rule miss	so is part of a longer name written around it	part of longer name
+precision	p:gemini enterprise	Gemini Enterprise	rule miss	so is part of a longer name written around it	part of longer product name
+precision	p:genai	GenAI	rule miss	A generic concept	generic AI concept
+precision	p:geodatabases	Geodatabases	rule miss	A generic concept or a practice, not a named technology	generic data store concept
+precision	p:gitflow	GitFlow	rule miss	A generic concept or a practice, not a named technology	git workflow practice
+precision	p:google campaign manager	Google Campaign Manager	rule miss	A technology no software person is hired for	business tool not for engineers
+precision	p:google play console	Google Play Console	labeller error	Keep a name when it names one specific technology	named developer tool kept
+precision	p:gov cloud	Gov Cloud	rule miss	Not a technology at all: ... a piece of a longer name that ads never use alone for the product	generic cloud descriptor across vendors
+precision	p:graph rag	Graph RAG	rule miss	A generic concept or a practice, not a named technology	architecture technique not technology
+precision	p:ha	HA	rule miss	A generic concept	abbreviation for generic concept
+precision	p:iaac	IaaC	rule miss	A practice, method, technique, architecture or kind of system is no skill	infrastructure as code practice
+precision	p:ib	IB	rule miss	An ambiguous abbreviation	abbreviation ambiguous across segments
+precision	p:icarus	Icarus	rule miss	An ambiguous abbreviation: one that names several things, none dominant where it is written	ambiguous name across segments
+precision	p:idp	IDP	rule miss	An ambiguous abbreviation	ambiguous abbreviation generic category
+precision	p:ieee	IEEE	rule miss	Not a technology at all: ... a piece of a longer name that ads never use alone for the product	standards body name not a standard
+precision	p:infrastructure data science	Infrastructure Data Science	rule miss	Not a technology at all: ... a heading or field of study	team or department name
+precision	p:inteligencia artificial	inteligencia artificial	rule miss	A generic concept	generic concept, not a technology
+precision	p:intuit	Intuit	rule miss	Not a technology at all: a company (as an employer, customer, partner or vendor)	company named as employer or client
+precision	p:ios app store	iOS App Store	rule miss	Not a technology at all	app distribution platform not technology
+precision	p:iphone	iPhone	rule miss	Not a technology at all: ... a product line	hardware product line named
+precision	p:isc	ISC	rule miss	An ambiguous abbreviation: one that names several things, none dominant where it is written	ambiguous abbreviation multiple meanings
+precision	p:iso26262	ISO26262	rule miss	A compliance framework, regulation or certification	compliance standard or regulation
+precision	p:itdr	ITDR	rule miss	A generic concept or a practice, not a named technology	security category acronym
+precision	p:lakehouse	lakehouse	rule miss	A practice, method, technique, architecture or kind of system is no skill	architecture named as architecture
+precision	p:li ms1	LI-MS1	rule miss	Not a technology at all	job-ad tracking tag
+precision	p:linkedin ads	LinkedIn Ads	rule miss	A technology no software person is hired for	marketing platform not engineering skill
+precision	p:litify	Litify	rule miss	Not a technology at all: a company (as an employer...)	company name also lists product
+precision	p:liveramp	LiveRamp	rule miss	Not a technology at all: a company (as an employer, customer, partner or vendor)	company dominant across segments
+precision	p:llm engineering	LLM engineering	rule miss	A practice, method, technique, architecture or kind of system is no skill	practice or discipline not tech
+precision	p:manager technical interview	Manager Technical Interview	rule miss	Not a technology at all: ... a heading or field of study	hiring process stage heading
+precision	p:midjourney	Midjourney	labeller error	Keep: a tool or platform	named AI tool in list
+precision	p:model builder	Model Builder	rule miss	so is part of a longer name written around it	part of certification title
+precision	p:mqa	MQA	rule miss	An ambiguous abbreviation: one that names several things, none dominant where it is written	ambiguous abbreviation several meanings
+precision	p:mql	MQL	rule miss	An ambiguous abbreviation: one that names several things, none dominant where it is written	ambiguous abbreviation multiple meanings
+precision	p:music	Music	rule miss	An ordinary word	ordinary word ordinary sense
+precision	p:neo	Neo	rule miss	Not a technology at all: a company (as an employer, customer, partner or vendor) ... or a piece of a longer name ads never use alone	company or product-line name
+precision	p:neurips	NeurIPS	rule miss	Not a technology at all	conference name not technology
+precision	p:nipr	NIPR	rule miss	Not a technology at all: ... a place	classified network named as place
+precision	p:ntb	NTB	rule miss	An ambiguous abbreviation	ambiguous abbreviation two meanings
+precision	p:orleans	Orleans	rule miss	Not a technology at all: a place	place name not technology
+precision	p:phy	PHY	rule miss	A generic concept or a practice, not a named technology	generic layer abbreviation
+precision	p:pivottables	PivotTables	rule miss	Consumer, office or browser software: what anyone uses, not what an engineer is hired for	office software feature
+precision	p:pmi pba	PMI-PBA	rule miss	A compliance framework, regulation or certification	certification not technology
+precision	p:python an	Python An	rule miss	A name with an ordinary word before or after it ... is a drop	name glued to ordinary word
+precision	p:ql	QL	rule miss	so is part of a longer name written around it	piece of longer name never alone
+precision	p:saudi arabia	Saudi Arabia	rule miss	Not a technology at all: ... a place	place name not technology
+precision	p:siem	SIEM	rule miss	A practice, method, technique, architecture or kind of system is no skill	generic security tool category
+precision	p:simcorp	SimCorp	rule miss	A vendor's name is a drop even where ads use it for its products	vendor name for product
+precision	p:sod	SoD	rule miss	A generic concept or a practice, not a named technology	governance concept not technology
+precision	p:stlc	STLC	rule miss	A generic concept or a practice, not a named technology	process methodology not technology
+precision	p:tiktok shop	TikTok Shop	labeller error	in the segments given with it, it is a keep when they use it for the technology	ecommerce platform integrated via software
+precision	p:voip	VoIP	rule miss	A generic concept or a practice, not a named technology	generic technology domain
+precision	p:weave	weave	labeller error	A bare form	bare form mixed with ordinary word
+precision	p:west london	West London	rule miss	Not a technology at all: ... a place	place name as location
+precision	p:workbench	Workbench	rule miss	A name with an ordinary word before or after it ... is a drop, though the name inside it is a keep	qualified generic term, no bare use
+recall	r:100:mcp	MCP	rule miss	a protocol, file format or standard that software implements	protocol named as given example
+recall	r:101:a2a	A2A	rule miss	So is a protocol, file format or standard that software implements	named protocol listed with peers
+recall	r:102:c	C	rule miss	A single letter, except C and R	single-letter language exception
+recall	r:103:service cloud	Service Cloud	rule miss	A bare form... is that product	bare form drops vendor
+recall	r:104:experience cloud	Experience Cloud	rule miss	Keep: a database, a cloud or one of its services	named cloud service in list
+recall	r:105:pbi	PBI	rule miss	a name that names an existing skill by another spelling	abbreviation disambiguated by context
+recall	r:106:sigma computing	Sigma Computing	rule miss	Keep a name when it names one specific technology	named tool in list
+recall	r:107:dash enterprise	Dash Enterprise	rule miss	A platform data, ML or AI teams build on is a platform like any other	named BI platform product
+recall	r:108:memorydb	MemoryDB	rule miss	Keep: a database, a cloud or one of its services	named cloud service in list
+recall	r:109:bytebuddy	ByteBuddy	rule miss	Keep a name when it names one specific technology ... a framework or library	specific library named exactly
+recall	r:110:caldera	Caldera	rule miss	The same word used for a product is a bare form, and kept	bare form security tool
+recall	r:111:atomic red	Atomic Red	labeller error	so is part of a longer name written around it	fragment of full product name
+recall	r:112:atomic red team	Atomic Red Team	rule miss	Keep a name when it names one specific technology ... a tool or a platform	named tool in a list
+recall	r:113:jetpack navigation	Jetpack Navigation	rule miss	the technology's whole name and nothing more	whole name of library
+recall	r:114:maxscale	MaxScale	rule miss	Keep a name when it names one specific technology ... a tool or a platform	named tool is the technology
+recall	r:115:anaplan	Anaplan	labeller error	A technology no software person is hired for	business tool not for engineers
+recall	r:116:adaptive insights	Adaptive Insights	labeller error	A technology no software person is hired for	business software not engineer tech
+recall	r:117:prettier	Prettier	rule miss	the technology's whole name and nothing more	whole name of tool
+recall	r:118:testing library	Testing Library	rule miss	Keep a name when it names one specific technology	named tool in stack list
+recall	r:119:library eslint	Library ESLint	labeller error	it is a keep when... it is the technology's whole name and nothing more	concatenated fragments of two tools
+recall	r:120:cegid	Cegid	rule miss	Keep a name when it names one specific technology ... a tool or a platform	vendor name is the platform itself
+recall	r:121:zaero	ZAERO	labeller error	A technology no software person is hired for	specialized tool no software person hired for
+recall	r:122:rcas	RCAS	labeller error	A technology no software person is hired for	engineering tool not for software
+recall	r:123:sol144	SOL144	labeller error	so is part of a longer name written around it	piece of longer name never alone
+recall	r:124:nastran sol144	NASTRAN SOL144	rule miss	a named feature or service of a skill that ads ask for by its own name	named feature of a skill
+recall	r:125:spark	Spark	rule miss	A bare form	bare form of a key in list
+recall	r:126:z wave	Z-Wave	rule miss	So is a protocol, file format or standard that software implements	protocol software implements
+recall	r:127:usb	USB	rule miss	a protocol, file format or standard that software implements	protocol standard hardware interface
+recall	r:128:misp	MISP	rule miss	Keep a name when it names one specific technology ... a tool or a platform	named security tool kept
+recall	r:129:xcode server	Xcode Server	rule miss	Keep: a tool or platform	named tool in list
+recall	r:130:pure	Pure	labeller error	A vendor's name is a drop even where ads use it for its products	vendor name for its products
+recall	r:131:mcp	MCP	rule miss	a protocol, file format or standard that software implements: MCP, gRPC, OAuth, Parquet, Bluetooth	protocol named in context
+recall	r:132:chef	Chef	rule miss	Keep a name when it names one specific technology	named tool in list
+recall	r:133:spark	Spark	rule miss	A bare form ... is that product. It is a keep where the text uses it for the product	bare form of a key
+recall	r:134:chef	Chef	rule miss	Keep a name when it names one specific technology	named tool in list
+recall	r:135:service bus	Service Bus	rule miss	a cloud or one of its services	named cloud service in list
+recall	r:136:c++17/20	C++17/20	rule miss	a version of a skill (HTTP/2 is HTTP, Vue 3 is Vue.js)	version number of skill
+recall	r:137:mcp	MCP	rule miss	a protocol, file format or standard that software implements	named protocol or file format
+recall	r:138:portworx	Portworx	labeller error	Not a technology at all: a company (as an employer, customer, partner or vendor)	company named as business division
+recall	r:139:transformers	Transformers	rule miss	A bare form ... is a keep where the text uses it for the product	bare form of library in list
+recall	r:140:anthropic sdks	Anthropic SDKs	labeller error	A vendor's name is a drop even where ads use it for its products	vendor name plus generic word
+recall	r:141:warp	Warp	labeller error	Not a technology at all: a company (as an employer ...)	company named as employer
+recall	r:142:joern	Joern	rule miss	Keep a name when it names one specific technology ... a tool or a platform	named tool in a list
+recall	r:143:vio	VIO	labeller error	A generic concept or a practice, not a named technology	abbreviation for technique spelled out
+recall	r:144:is is	IS-IS	rule miss	a protocol, file format or standard that software implements	named protocol or file format
+recall	r:145:neuvector	NeuVector	rule miss	Keep a name when it names one specific technology	named tool in list
+recall	r:146:equinix fabric	Equinix Fabric	rule miss	the technology's whole name and nothing more	vendor product whole name
+recall	r:147:c/c++	C/C++	rule miss	Keep: one specific technology an engineer would put on a CV: a language	combined language name C/C++
+recall	r:148:spark	Spark	rule miss	A bare form	bare form of a key in list
+recall	r:149:http/2	HTTP/2	rule miss	a version of a skill (HTTP/2 is HTTP)	version of existing skill
+recall	r:150:totvs	TOTVS	rule miss	Keep a name when it names one specific technology ... a tool or a platform	named enterprise platform kept
+recall	r:151:sankhya	Sankhya	rule miss	Keep a name when it names one specific technology ... a tool or a platform	named enterprise platform kept
+recall	r:152:spark	Spark	rule miss	Keep a name when it names one specific technology	named tool in list
+recall	r:153:c++17/20	C++17/20	rule miss	a version of a skill (HTTP/2 is HTTP, Vue 3 is Vue.js)	version number of skill
+recall	r:90:systemverilog assertions	SystemVerilog Assertions	rule miss	a named feature or service of a skill that ads ask for by its own name	named feature of a skill
+recall	r:91:rpm	RPM	rule miss	Keep: a tool or platform	named tool in list
+recall	r:92:rhel 7+	RHEL 7+	rule miss	So is a version of a skill	versioned OS name
+recall	r:93:centos 7+	CentOS 7+	rule miss	a version of a skill (HTTP/2 is HTTP, Vue 3 is Vue.js)	version of existing skill
+recall	r:94:amazon aurora postgresql	Amazon Aurora PostgreSQL	rule miss	Keep: a database, a cloud or one of its services	named cloud service in list
+recall	r:95:kml	KML	rule miss	a protocol, file format or standard that software implements	named file format standard
+recall	r:96:kmz	KMZ	rule miss	a protocol, file format or standard that software implements	file format implemented by software
+recall	r:97:nitf	NITF	rule miss	So is a protocol, file format or standard that software implements	file format standard
+recall	r:98:tiff	TIFF	rule miss	a protocol, file format or standard that software implements	named protocol or file format
+recall	r:99:geopdf	GeoPDF	rule miss	a protocol, file format or standard that software implements	named geospatial file format

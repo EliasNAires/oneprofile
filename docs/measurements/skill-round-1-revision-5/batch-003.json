@@ -1,0 +1,122 @@
+[
+ {
+  "id": "p:dod ts",
+  "text": "Name: DoD TS\nSegments:\n- Active DoD TS clearance\n- Active DoD TS/SCI clearance.\n- U.S. Citizen and eligible for DoD TS/SCI or TS/SAP U.S. government security clearance.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:iphone",
+  "text": "Name: iPhone\nSegments:\n- Work with PMs, designers, and native engineers to bring Figma’s most popular features to iPhone and Android\n- iOS is an important surface for that future because continuous, decision-ready workflows need to feel fast, secure, and reliable across iPhone, iPad, and managed enterprise environments.\n- Support Apple products such as MacBook, iPad, & iPhone",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:liveramp",
+  "text": "Name: LiveRamp\nSegments:\n- Manage and lead paid media projects involving data aggregation and measurement tools such as Datorama, Google Analytics / GA4, Tag Manager, DOMO, BigQuery, LiveRamp, server-server integrations with media partners. Ensure appropriate site tracking is in place to capture relevant data points to measure marketing effectiveness.\n- Experience working with third-party providers to both onboard and offboard data for example, Experian, Liveramp, Neustar, Nielsen, comScore, Circana\n- We're the company-building engine of Travis May, who co-founded and led the two largest data exits of the last 20 years: LiveRamp (NYSE: RAMP, $200M+ revenue) and Datavant ($7B merger with Ciox).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:gitflow",
+  "text": "Name: GitFlow\nSegments:\n- Confidence with Git workflows, code reviews, and trunkor GitFlow-based development.\n- Experience working with Git, GitHub, and GitFlow workflows\n- Domínio em ferramentas de controle de versão (Git/Gitflow);",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:99:geopdf",
+  "text": "Name: GeoPDF\nSegment: Data Formats: KML, KMZ, NITF, TIFF, JPEG, GeoPDF, and similar geo-related formats and data structures",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:107:dash enterprise",
+  "text": "Name: Dash Enterprise\nSegment: Proficiency with BI and analytics platforms such as Sigma Computing and Dash Enterprise",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:137:mcp",
+  "text": "Name: MCP\nSegment: You will also be responsible for working with a diverse set of AI technologies including building Agentic engineering tools, including engineering RAG based tool, and engineering MCP servers.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:98:tiff",
+  "text": "Name: TIFF\nSegment: Data Formats: KML, KMZ, NITF, TIFF, JPEG, GeoPDF, and similar geo-related formats and data structures",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:dast",
+  "text": "Name: DAST\nSegments:\n- DevSecOps & Secure SDLC — Integrate security gates into the CI/CD pipeline: SAST/DAST, dependency scanning, secrets detection, container image scanning, and secure coding standards\n- Practical AppSec experience: you've integrated SAST/DAST/SCA tooling into CI/CD pipelines and worked directly with developers to resolve findings, not just filed tickets\n- As a recognized leader in application security, Black Duck provides industry-leading SAST, SCA, and DAST solutions that enable organizations to identify and remediate vulnerabilities across the software development lifecycle.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:gemini enterprise",
+  "text": "Name: Gemini Enterprise\nSegments:\n- You’ll use managed capabilities within the Gemini Enterprise Agentic Platform (GEAP) and approved cloud tooling, while building Zip-specific orchestration, decision logic, and integrations where needed.\n- The Architect will define target architectures and operating models for secure, governed AI platforms centered on Google Cloud and the Gemini Enterprise Agent Platform, including Vertex AI, Gemini, Agent Development Kit (ADK), Agent Engine, Retrieval-Augmented Generation (RAG), and cloud-native services.\n- Champion and drive the rollout, administration, governance, and organizational adoption of Google Gemini Enterprise capabilities across all Workspace applications.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:133:spark",
+  "text": "Name: Spark\nSegment: Develop scalable pipelines and automation tools using Python, Spark, and cloud infrastructure to operationalize models at scale.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:geodatabases",
+  "text": "Name: Geodatabases\nSegments:\n- Manage geospatial data infrastructure including geodatabases, metadata, data warehouses, and cloud-based repositories.\n- Leveraging relational database management systems, you will design, normalize, and optimize data architectures to enhance performance and scalability, while supporting enterprise geodatabases such as Spatial Database Engines (SDEs).\n- Tools: Boundless Spatial suite, Remote View, PostGRES/PostGIS, Oracle Spatial, ArcGIS Desktop, ArcGIS Server, Image Server, File Geodatabases",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:130:pure",
+  "text": "Name: Pure\nSegment: The ideal candidate will possess knowledge of both Pure and NetApp storage systems running iSCSI with hands-on keyboard as well as on hardware in an on-premises environment.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:135:service bus",
+  "text": "Name: Service Bus\nSegment: Experiencia práctica en la integración y gestión de servicios en Azure (Key Vault, Storage, Functions, Service Bus).",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:manager technical interview",
+  "text": "Name: Manager Technical Interview\nSegments:\n- Hiring Manager Technical Interview",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:itdr",
+  "text": "Name: ITDR\nSegments:\n- Develop rules across a variety of Huntress products and operating systems such as: Identity Threat Detection and Response (ITDR), Security Information and Event Management (SIEM), Endpoint Detection and Response (EDR), Windows, Linux, and MacOS.\n- Technical authority: Deep fluency across identity and access management — PKI, CBA, FIDO/passkeys, MFA, and identity infrastructure. You hold your own with identity architects and engineers in the weeds. Experience in IAM, PAM, ITDR, or adjacent cybersecurity spaces strongly preferred.\n- Identify, evaluate, and drive decision-making around new and emerging IAM technologies, including CIEM, ITDR, and IGA platforms, establishing strategy, implementation, and operationalization roadmaps.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:144:is is",
+  "text": "Name: IS-IS\nSegment: Routing (BGP, OSPF, IS-IS)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:excel",
+  "text": "Name: Excel\nSegments:\n- Advanced proficiency in MS Excel (including modeling, advanced formulas, pivot tables, macros etc.)\n- Proficiency in Excel, Python, SQL, and Tableau/other BI tools is preferred\n- Strong proficiency in SQL, Python or R, Excel, Tableau or an equivalent data visualization tool, and Snowflake or similar data warehousing technologies.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:analyste",
+  "text": "Name: analyste\nSegments:\n- Notre client à Montréal est actuellement à la recherche d’un(e) Analyste KYC pour se joindre à une organisation dynamique et en pleine croissance.\n- En tant qu'analyste du support de production chez mtrois, vous aurez pour mission commune de veiller sur les systèmes et processus techniques sur lesquels les autres équipes comptent.\n- Banyan Capital Partners, qui fait partie du Groupe financier Connor, Clark & Lunn, est à la recherche d’un analyste comptable pour l’une de ses sociétés en portefeuille, MIP",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:141:warp",
+  "text": "Name: Warp\nSegment: Familiarity with Warp’s platform",
+  "a": "keep",
+  "b": "drop"
+ }
+]

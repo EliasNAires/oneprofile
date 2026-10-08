@@ -1,0 +1,102 @@
+{
+  "r:139:transformers": {
+    "verdict": "a",
+    "clause": "A bare form ... is a keep where the text uses it for the product",
+    "pattern": "bare form of library in list"
+  },
+  "r:118:testing library": {
+    "verdict": "a",
+    "clause": "Keep a name when it names one specific technology",
+    "pattern": "named tool in stack list"
+  },
+  "r:121:zaero": {
+    "verdict": "a",
+    "clause": "A technology no software person is hired for",
+    "pattern": "specialized tool no software person hired for"
+  },
+  "r:143:vio": {
+    "verdict": "a",
+    "clause": "A generic concept or a practice, not a named technology",
+    "pattern": "abbreviation for technique spelled out"
+  },
+  "p:authz": {
+    "verdict": "b",
+    "clause": "A generic concept or a practice, not a named technology",
+    "pattern": "abbreviation for generic security function"
+  },
+  "p:lakehouse": {
+    "verdict": "a",
+    "clause": "A practice, method, technique, architecture or kind of system is no skill",
+    "pattern": "architecture named as architecture"
+  },
+  "p:experiments doe": {
+    "verdict": "a",
+    "clause": "A practice, method, technique, architecture or kind of system is no skill",
+    "pattern": "statistical methodology abbreviation"
+  },
+  "p:gov cloud": {
+    "verdict": "b",
+    "clause": "Not a technology at all: ... a piece of a longer name that ads never use alone for the product",
+    "pattern": "generic cloud descriptor across vendors"
+  },
+  "p:dpu": {
+    "verdict": "a",
+    "clause": "A generic concept or a practice, not a named technology",
+    "pattern": "generic hardware category term"
+  },
+  "p:pivottables": {
+    "verdict": "a",
+    "clause": "Consumer, office or browser software: what anyone uses, not what an engineer is hired for",
+    "pattern": "office software feature"
+  },
+  "p:li ms1": {
+    "verdict": "b",
+    "clause": "Not a technology at all",
+    "pattern": "job-ad tracking tag"
+  },
+  "p:400g": {
+    "verdict": "a",
+    "clause": "A generic concept or a practice, not a named technology",
+    "pattern": "generic bandwidth speed grade"
+  },
+  "p:arm cortex m": {
+    "verdict": "a",
+    "clause": "it is the technology's whole name and nothing more",
+    "pattern": "vendor plus specific product line"
+  },
+  "p:mqa": {
+    "verdict": "a",
+    "clause": "An ambiguous abbreviation: one that names several things, none dominant where it is written",
+    "pattern": "ambiguous abbreviation several meanings"
+  },
+  "r:101:a2a": {
+    "verdict": "b",
+    "clause": "So is a protocol, file format or standard that software implements",
+    "pattern": "named protocol listed with peers"
+  },
+  "p:siem": {
+    "verdict": "a",
+    "clause": "A practice, method, technique, architecture or kind of system is no skill",
+    "pattern": "generic security tool category"
+  },
+  "p:ios app store": {
+    "verdict": "b",
+    "clause": "Not a technology at all",
+    "pattern": "app distribution platform not technology"
+  },
+  "p:infrastructure data science": {
+    "verdict": "a",
+    "clause": "Not a technology at all: ... a heading or field of study",
+    "pattern": "team or department name"
+  },
+  "p:av over ip": {
+    "verdict": "a",
+    "clause": "A generic concept or a practice, not a named technology",
+    "pattern": "generic technique category with named instances"
+  },
+  "r:140:anthropic sdks": {
+    "verdict": "a",
+    "clause": "A vendor's name is a drop even where ads use it for its products",
+    "pattern": "vendor name plus generic word"
+  }
+}

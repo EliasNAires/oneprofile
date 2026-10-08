@@ -1,0 +1,22 @@
+{
+ "r:108:memorydb": {"verdict": "b", "clause": "Keep: a database, a cloud or one of its services", "pattern": "named cloud service in list"},
+ "r:122:rcas": {"verdict": "b", "clause": "A technology no software person is hired for", "pattern": "engineering tool not for software"},
+ "r:91:rpm": {"verdict": "b", "clause": "Keep: a tool or platform", "pattern": "named tool in list"},
+ "r:129:xcode server": {"verdict": "a", "clause": "Keep: a tool or platform", "pattern": "named tool in list"},
+ "r:92:rhel 7+": {"verdict": "b", "clause": "So is a version of a skill", "pattern": "versioned OS name"},
+ "p:d365 f": {"verdict": "a", "clause": "a piece of a longer name that ads never use alone for the product", "pattern": "truncated piece of compound name"},
+ "p:litify": {"verdict": "b", "clause": "Not a technology at all: a company (as an employer...)", "pattern": "company name also lists product"},
+ "p:computer vision ai": {"verdict": "a", "clause": "A generic concept", "pattern": "generic AI field name"},
+ "r:148:spark": {"verdict": "a", "clause": "A bare form", "pattern": "bare form of a key in list"},
+ "r:94:amazon aurora postgresql": {"verdict": "a", "clause": "Keep: a database, a cloud or one of its services", "pattern": "named cloud service in list"},
+ "r:102:c": {"verdict": "b", "clause": "A single letter, except C and R", "pattern": "single-letter language exception"},
+ "r:111:atomic red": {"verdict": "b", "clause": "so is part of a longer name written around it", "pattern": "fragment of full product name"},
+ "p:ha": {"verdict": "a", "clause": "A generic concept", "pattern": "abbreviation for generic concept"},
+ "p:weave": {"verdict": "a", "clause": "A bare form", "pattern": "bare form mixed with ordinary word"},
+ "r:104:experience cloud": {"verdict": "b", "clause": "Keep: a database, a cloud or one of its services", "pattern": "named cloud service in list"},
+ "p:ccda": {"verdict": "a", "clause": "A compliance framework, regulation or certification", "pattern": "certification abbreviation overlaps standard"},
+ "p:midjourney": {"verdict": "a", "clause": "Keep: a tool or platform", "pattern": "named AI tool in list"},
+ "r:125:spark": {"verdict": "a", "clause": "A bare form", "pattern": "bare form of a key in list"},
+ "p:ib": {"verdict": "a", "clause": "An ambiguous abbreviation", "pattern": "abbreviation ambiguous across segments"},
+ "r:119:library eslint": {"verdict": "b", "clause": "it is a keep when... it is the technology's whole name and nothing more", "pattern": "concatenated fragments of two tools"}
+}

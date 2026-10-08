@@ -1,0 +1,122 @@
+[
+ {
+  "id": "p:genai",
+  "text": "Name: GenAI\nSegments:\n- LLM & GenAI Expertise: Deep hands-on experience in fine-tuning (SFT, LoRA), aligning (RLHF/DPO), or distilling LLMs specifically for search, recommendation, or NLP tasks (e.g., query expansion, dense retrieval, reranking).\n- Contributing to AI Strategy: Partnering with senior leadership to shape GenAI architecture direction, tooling decisions, and platform roadmap within your area.\n- This role applies GenAI/LLM capabilities to real data-engineering workflows, turning prototypes into reliable internal tools that improve engineering productivity, operational efficiency, and data access.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:146:equinix fabric",
+  "text": "Name: Equinix Fabric\nSegment: Equinix Fabric",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:csdm",
+  "text": "Name: CSDM\nSegments:\n- Build and maintain automated workflows for the hardware lifecycle, following Common Service Data Model (CSDM) best practices to keep the Asset and CI tables in sync.\n- Preferred Licensure/Certification: ITILv4, ITILv4 Foundations, CSDM (Certified Service Desk Manager), HDI-SCM, SDI Service Desk Manager, ISO/IEC 20000, COBIT 2019, CompTIA A+, Google IT Support\n- Deep knowledge of the CMDB data model, CI class hierarchy, IRE (Identification & Reconciliation Engine), Discovery patterns, probes, sensors, and service mapping. Experience with CSDM (Common Service Data Model) alignment.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:ntb",
+  "text": "Name: NTB\nSegments:\n- Familiarity with communication protocols such as Ethernet MAC, PHY, Switching, TCP/IP, Security, SerDes, PCIe, NTB, and SR-IOV.\n- Fluency in core digital-shelf and retail-media metrics is a necessity, with direct Scintilla digital landscape and paid/organic funnel experience preferred (e.g., glance views, sessions, CVR, CTR, ROAS, TACoS, and NTB)\n- Communication protocols like Ethernet MAC, PHY, Switching, TCP/IP, Security, Serdes, PCIe, NTB, and SR-IOV.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:110:caldera",
+  "text": "Name: Caldera\nSegment: Testing & Automation (Bonus): Sigma, YARA, Atomic Red Team, Caldera, Python and SOAR playbooks.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:d engineering",
+  "text": "Name: D Engineering\nSegments:\n- Manage and/or execute R&D engineering deliverables to maintain overall project schedule, with an emphasis on technical tasks and deliverables\n- The Access Management team is part of Okta R&D Engineering.\n- Prior startup, skunkworks, or advanced R&D engineering experience.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:idp",
+  "text": "Name: IDP\nSegments:\n- Knowledge of IdP/SAML integration.\n- Experience with Identity and Access Management (IAM) or Identity Provider (IdP) platforms such as JumpCloud, Okta, Microsoft Entra ID, or similar.\n- Strong experience with internal developer platforms (IDP) and enabling self-service ecosystems",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:cd pipeline management",
+  "text": "Name: CD pipeline management\nSegments:\n- Collaborate with DevOps teams for CI/CD pipeline management and infrastructure as code (IaC) deployments.\n- Hands-on experience with GitLab for source control, CI/CD pipeline management, and GitOps workflows\n- This semi-senior role focuses on implementing advanced DevOps practices, including automation, monitoring, CI/CD pipeline management, and incident response, while contributing to strategic initiatives and providing mentorship to junior team members.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:bridgewater",
+  "text": "Name: Bridgewater\nSegments:\n- Legend Biotech is seeking a Senior HRIS Analyst, Data Governance & Change Control as part of the Human Resources Operations team based in Bridgewater, NJ.\n- Legend Biotech is seeking a Sr Manager, Quality IT as part of the Quality IT team based in Bridgewater, NJ.\n- Legend Biotech is seeking a Treasury Analyst (Contractor) as part of the Finance team based in Bridgewater, NJ.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:coupa",
+  "text": "Name: Coupa\nSegments:\n- Proficiency with tools e.g. Google Workspace, Brightflag, Docusign, Salesforce, Coupa, Confluence, Jira and Office365\n- Familiarity with SAP, Coupa, Tableau, Domo, Power BI, or similar enterprise platforms.\n- You are willing to learn how to use corporate systems (e.g. Salesforce, Coupa, Anaplan) and analytic / dashboarding tools (e.g. Palantir Foundry)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:149:http/2",
+  "text": "Name: HTTP/2\nSegment: Strong understanding of high-performance networking, gRPC, HTTP/2, streaming protocols, API gateways, and service proxy architectures.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:stlc",
+  "text": "Name: STLC\nSegments:\n- QA Methodologies: Deep understanding of software verification principles, the STLC (Software Testing Life Cycle), and test case optimization.\n- Experience participating in the Software Test Life Cycle (STLC), including test planning, test case design, and execution in an Agile environment\n- Hands-on expertise across the whole STLC, including testing patterns and architectures (e.g., Page Object Model, fixtures and factories, data-driven testing) and end-to-end test design strategies.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:127:usb",
+  "text": "Name: USB\nSegment: Home automation protocols (Z-Wave, Zigbee), USB, Ethernet, sensors, and power management",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:116:adaptive insights",
+  "text": "Name: Adaptive Insights\nSegment: Experience with ERP and financial planning systems (e.g., SAP, Oracle, Hyperion, Anaplan, or Adaptive Insights)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:app store",
+  "text": "Name: App Store\nSegments:\n- Nice to Have: CI/CD for mobile (Fastlane, Bitrise, GitHub Actions), App Store deployment and release management and automated testing (XCTest, snapshot testing)\n- Every system you build should minimize human intervention, from code push to app store submission.\n- Support App Store release validation and regression testing for mobile releases",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:music",
+  "text": "Name: Music\nSegments:\n- We turn music, entertainment, culture, and the creativity of our community into new ways to play and connect.\n- SoundCloud empowers artists and fans to connect and share through music.\n- Ballots for exclusive tickets to events like Formula 1, UFC, and more sporting and music events",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:93:centos 7+",
+  "text": "Name: CentOS 7+\nSegment: In-depth knowledge of the Linux OS (RHEL 7+/CentOS 7+) and its core components, including the kernel, system libraries, and package management (RPM, YUM).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:graph rag",
+  "text": "Name: Graph RAG\nSegments:\n- Embed AI into Data, Pipelines, & Analytics: Advance both the central and federated teams to become truly AI-ready. Design and implement strategies to embed AI directly into enterprise analytics, including building complex data pipelines (ETL), custom data apps, and Retrieval-Augmented Generation (RAG / Graph RAG) architectures directly on the data platform\n- Experience with Graph RAG (Retrieval-Augmented Generation): hybrid retrieval across graph traversal and dense/sparse vector search\n- Develop advanced Graph-RAG architectures combining semantic search and structured knowledge retrieval.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:pmi pba",
+  "text": "Name: PMI-PBA\nSegments:\n- Exposure to cybersecurity or GRC programs; CAPM, PMI-PBA, or CBAP.\n- Relevant certifications such as IIBA CBAP, CCBA, PMI-PBA, or Agile Business Analyst.\n- ISTQB, CBAP, PMI-PBA, or Agile certifications.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:sod",
+  "text": "Name: SoD\nSegments:\n- Design, develop, and maintain QA automation frameworks and automated test suites covering Identity Governance capabilities such as certifications, lifecycle management, workflows, and Separation of Duties (SoD), ensuring high-quality and reliable product releases.\n- Strong understanding of IAM/IGA concepts: joiner/mover/leaver, RBAC, role mining, SoD, certifications, and least privilege\n- Maintain the Segregation of Duties (SoD) matrix and review access conflicts quarterly.",
+  "a": "drop",
+  "b": "keep"
+ }
+]

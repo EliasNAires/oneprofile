@@ -1,0 +1,22 @@
+{
+  "p:genai": {"verdict": "a", "clause": "A generic concept", "pattern": "generic AI concept"},
+  "r:146:equinix fabric": {"verdict": "a", "clause": "the technology's whole name and nothing more", "pattern": "vendor product whole name"},
+  "p:csdm": {"verdict": "b", "clause": "An ambiguous abbreviation", "pattern": "ambiguous abbreviation two meanings"},
+  "p:ntb": {"verdict": "b", "clause": "An ambiguous abbreviation", "pattern": "ambiguous abbreviation two meanings"},
+  "r:110:caldera": {"verdict": "b", "clause": "The same word used for a product is a bare form, and kept", "pattern": "bare form security tool"},
+  "p:d engineering": {"verdict": "b", "clause": "Not a technology at all", "pattern": "mis-split department phrase"},
+  "p:idp": {"verdict": "b", "clause": "An ambiguous abbreviation", "pattern": "ambiguous abbreviation generic category"},
+  "p:cd pipeline management": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology", "pattern": "practice phrase around CI/CD"},
+  "p:bridgewater": {"verdict": "b", "clause": "Not a technology at all", "pattern": "place name not technology"},
+  "p:coupa": {"verdict": "a", "clause": "A technology no software person is hired for", "pattern": "business software not engineer tech"},
+  "r:149:http/2": {"verdict": "a", "clause": "a version of a skill (HTTP/2 is HTTP)", "pattern": "version of existing skill"},
+  "p:stlc": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology", "pattern": "process methodology not technology"},
+  "r:127:usb": {"verdict": "b", "clause": "a protocol, file format or standard that software implements", "pattern": "protocol standard hardware interface"},
+  "r:116:adaptive insights": {"verdict": "a", "clause": "A technology no software person is hired for", "pattern": "business software not engineer tech"},
+  "p:app store": {"verdict": "a", "clause": "An ordinary word ... used in its ordinary sense", "pattern": "generic term not specific product"},
+  "p:music": {"verdict": "b", "clause": "An ordinary word", "pattern": "ordinary word ordinary sense"},
+  "r:93:centos 7+": {"verdict": "a", "clause": "a version of a skill (HTTP/2 is HTTP, Vue 3 is Vue.js)", "pattern": "version of existing skill"},
+  "p:graph rag": {"verdict": "b", "clause": "A generic concept or a practice, not a named technology", "pattern": "architecture technique not technology"},
+  "p:pmi pba": {"verdict": "b", "clause": "A compliance framework, regulation or certification", "pattern": "certification not technology"},
+  "p:sod": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology", "pattern": "governance concept not technology"}
+}

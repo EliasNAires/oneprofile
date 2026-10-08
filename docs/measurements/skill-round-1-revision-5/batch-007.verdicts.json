@@ -1,0 +1,22 @@
+{
+  "p:inteligencia artificial": {"verdict": "a", "clause": "A generic concept", "pattern": "generic concept, not a technology"},
+  "p:canva": {"verdict": "a", "clause": "Not a technology at all: a company", "pattern": "company named as customer"},
+  "p:orleans": {"verdict": "a", "clause": "Not a technology at all: a place", "pattern": "place name not technology"},
+  "p:ai devops": {"verdict": "b", "clause": "A generic concept or a practice", "pattern": "practice or role name"},
+  "p:google play console": {"verdict": "a", "clause": "Keep a name when it names one specific technology", "pattern": "named developer tool kept"},
+  "r:145:neuvector": {"verdict": "b", "clause": "Keep a name when it names one specific technology", "pattern": "named tool in list"},
+  "r:134:chef": {"verdict": "a", "clause": "Keep a name when it names one specific technology", "pattern": "named tool in list"},
+  "r:152:spark": {"verdict": "a", "clause": "Keep a name when it names one specific technology", "pattern": "named tool in list"},
+  "p:d systems": {"verdict": "a", "clause": "Not a technology at all", "pattern": "fragment of unrelated phrase"},
+  "p:delinea": {"verdict": "a", "clause": "A vendor's name is a drop even where ads use it for its products", "pattern": "vendor name for product"},
+  "p:neurips": {"verdict": "a", "clause": "Not a technology at all", "pattern": "conference name not technology"},
+  "p:google campaign manager": {"verdict": "a", "clause": "A technology no software person is hired for", "pattern": "business tool not for engineers"},
+  "p:ai exposure": {"verdict": "a", "clause": "Not a technology at all: a heading or field of study", "pattern": "generic phrase not technology"},
+  "r:106:sigma computing": {"verdict": "b", "clause": "Keep a name when it names one specific technology", "pattern": "named tool in list"},
+  "p:aiops": {"verdict": "b", "clause": "A generic concept or a practice", "pattern": "practice or role name"},
+  "r:132:chef": {"verdict": "b", "clause": "Keep a name when it names one specific technology", "pattern": "named tool in list"},
+  "p:iso26262": {"verdict": "a", "clause": "A compliance framework, regulation or certification", "pattern": "compliance standard or regulation"},
+  "p:fibre": {"verdict": "b", "clause": "so is part of a longer name written around it", "pattern": "part of longer name"},
+  "r:115:anaplan": {"verdict": "b", "clause": "A technology no software person is hired for", "pattern": "business tool not for engineers"},
+  "r:126:z wave": {"verdict": "b", "clause": "So is a protocol, file format or standard that software implements", "pattern": "protocol software implements"}
+}

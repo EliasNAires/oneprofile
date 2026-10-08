@@ -1,0 +1,122 @@
+[
+ {
+  "id": "p:cisco wireless",
+  "text": "Name: Cisco Wireless\nSegments:\n- A minimum of 5 years of experience in enterprise-level network design and support, including: IEEE 802.1, WAN/LAN, optimization, load balancing, routing, switching, QOS, TCP/IP, P2P, and P2MP wireless equipment, with hands-on experience administering Cisco wireless access points and controllers.\n- Hands‑on experience with Cisco Wireless LAN Controllers, ISE, and access points; ability to perform wireless site surveys.\n- Good knowledge on Aruba ClearPass/Cisco ISE, Cisco wireless controllers",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:english must",
+  "text": "Name: English Must\nSegments:\n- Excellent verbal and communication skills in English Must",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:linkedin ads",
+  "text": "Name: LinkedIn Ads\nSegments:\n- LinkedIn Ads, YouTube, or programmatic\n- 1-3+ years of full-time digital optimization experience required (e.g., Google Ads, DSP/Display Trading, Meta Ads, LinkedIn Ads, PMDs, mobile analytics, site optimization)\n- Plan, execute, and optimize Google Ads campaigns (Search, Display, YouTube), LinkedIn Ads and across the Meta Ads ecosystem (Facebook, Instagram, Audience Network) and marketing channels like ProspectBase and ComparaSoftware.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:python an",
+  "text": "Name: Python An\nSegments:\n- Deep knowledge of data, analytics, and data analysis tools, such as: SQL, R or Python An advantage",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:96:kmz",
+  "text": "Name: KMZ\nSegment: Data Formats: KML, KMZ, NITF, TIFF, JPEG, GeoPDF, and similar geo-related formats and data structures",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:nipr",
+  "text": "Name: NIPR\nSegments:\n- Experience in classified environments (NIPR, SIPR, JWICS)\n- Experience operating in classified environments (SIPR/NIPR or equivalent)\n- Large classified and unclassified DoD networks, including NIPR and SIPR and relevant experience with JWICS, MPE / CENTRIX, CSfC, Type 1 encryption, or CDS interfaces.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:120:cegid",
+  "text": "Name: Cegid\nSegment: Define and own the engineering vision, architecture principles, and technical standards across the client BU technology stack (Front/Salesforce, Data & Integration, Back/SAP, POS/Cegid)",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:cidr",
+  "text": "Name: CIDR\nSegments:\n- Networking fundamentals: understanding of DNS, TLS/SSL, HTTP/HTTPS, CIDR, NAT, and BGP.\n- As the Senior Manager of Security Operations, you will lead and scale Everpure's global Detection Engineering and Cloud Incident Detection & Response (CIDR) teams.\n- Hybrid and site-to-cloud network security: segmentation, VPN, private connectivity, firewalls, routing, DNS, CIDR and subnetting — securing connections between cloud and physical facilities.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:advanced rpa developer",
+  "text": "Name: Advanced RPA Developer\nSegments:\n- Exposure to UiPath AI Center / Action Center, Agentic AI solution design, or UiPath Advanced RPA Developer certification.\n- UiPath Certified Professional Advanced RPA Developer (UiARD) certification.\n- UiPath Advanced RPA Developer or Solution Architect certification.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:151:sankhya",
+  "text": "Name: Sankhya\nSegment: Own the end-to-end design and delivery of complex integrations between Clara's platform and enterprise ERP systems (SAP, Oracle, TOTVS, Omie, Sankhya).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:ieee",
+  "text": "Name: IEEE\nSegments:\n- Develop software and firmware for DoD systems and automated test sets in accordance with ISO/IEC/IEEE 12207 and IEEE 24748.\n- Utilize and participate in industry standards organizations and working groups (SAE, AIAA, IEEE, INCONSE, RAMS, etc.) to continuously assess and acquire the latest technological solutions and techniques\n- Stay current with industry standards (OIF CMIS, IEEE) and emerging technologies (multi-core/hollow-core fiber, 448G SerDes, TFLN, ring resonators)",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:workbench",
+  "text": "Name: Workbench\nSegments:\n- Develop Python scripts utilizing our Machine Learning Workbench (MLWB) to efficiently consume, transform, and transmit data to the Celonis platform\n- Develops reports and analytical tools using Epic Reporting Workbench, Radar, Qlikview, Business Objects, and the Microsoft BI Stack. Gains a detailed understanding of the business operations driving analytics needs.\n- Your team is the technical backbone of the production floor: troubleshooting builds in real time, dispositioning NCRs, supporting first articles, and ensuring every kit that hits a workbench is accurate and ready to work.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:100:mcp",
+  "text": "Name: MCP\nSegment: Proficiency with agentic AI frameworks (e.g., LangGraph, AutoGen, CrewAI) and understanding of interoperability protocols such as MCP and A2A.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:128:misp",
+  "text": "Name: MISP\nSegment: Proficiency with Threat Intelligence Platforms and analyst software tools e.g. MISP, Maltego, etc.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:phy",
+  "text": "Name: PHY\nSegments:\n- Experience with PIPE, PCS, PMA, MAC, PHY, or other physical and protocol layers of high-speed interfaces.\n- The role is focused on the hardware-software boundary, spanning silicon bring-up, SerDes/PHY configuration, and performance tuning to ensure seamless, high-performance connectivity across complex, large-scale platforms.\n- We are seeking a seasoned DSP / System Architect to lead the design of next-generation high-speed (25G+) physical layer (PHY).",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:tiktok shop",
+  "text": "Name: TikTok Shop\nSegments:\n- AfterShip integrates seamlessly with eCommerce platforms including Shopify and TikTok Shop, and connects with more than 1,400 carriers worldwide.\n- Experience with leading cross-border e-commerce platforms such as Temu, TikTok Shop, SHEIN, Amazon, or Alibaba is highly preferred.\n- Direct experience operating commerce across both US (TikTok Shop, YouTube Shopping) and Greater China (Douyin, Xiaohongshu, Tmall Live) ecosystems.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:138:portworx",
+  "text": "Name: Portworx\nSegment: You will act as a high-impact technical advisor within the rapidly expanding Portworx Professional Services business, solving cutting-edge Kubernetes challenges and driving successful cloud-native adoptions.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:150:totvs",
+  "text": "Name: TOTVS\nSegment: Own the end-to-end design and delivery of complex integrations between Clara's platform and enterprise ERP systems (SAP, Oracle, TOTVS, Omie, Sankhya).",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:intuit",
+  "text": "Name: Intuit\nSegments:\n- While scaling Kubernetes at Intuit, the Akuity founders started building Argo CD in order to streamline the adoption of Kubernetes.\n- After Applatix’s acquisition by Intuit in 2018, Argo rapidly expanded with projects like Argo CD, Argo Rollouts, and Argo Events, and became an incubating project within the Cloud Native Computing Foundation (CNCF).\n- You’ll use PMG’s proprietary technology, Alli, to drive powerful insights for brands like Nike, Apple, and Intuit right from the start.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:109:bytebuddy",
+  "text": "Name: ByteBuddy\nSegment: Own the design and development of RASP / Java Agent runtime protection, leveraging ASM, ByteBuddy, and Java Instrumentation for bytecode enhancement, runtime hooks, detection and blocking engines, while continuously improving performance, stability, and compatibility.",
+  "a": "drop",
+  "b": "keep"
+ }
+]

@@ -1,0 +1,22 @@
+{
+  "p:simcorp": {"verdict": "b", "clause": "A vendor's name is a drop even where ads use it for its products", "pattern": "vendor name for product"},
+  "r:90:systemverilog assertions": {"verdict": "a", "clause": "a named feature or service of a skill that ads ask for by its own name", "pattern": "named feature of a skill"},
+  "r:136:c++17/20": {"verdict": "b", "clause": "a version of a skill (HTTP/2 is HTTP, Vue 3 is Vue.js)", "pattern": "version number of skill"},
+  "r:153:c++17/20": {"verdict": "b", "clause": "a version of a skill (HTTP/2 is HTTP, Vue 3 is Vue.js)", "pattern": "version number of skill"},
+  "p:voip": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology", "pattern": "generic technology domain"},
+  "p:model builder": {"verdict": "b", "clause": "so is part of a longer name written around it", "pattern": "part of certification title"},
+  "r:113:jetpack navigation": {"verdict": "b", "clause": "the technology's whole name and nothing more", "pattern": "whole name of library"},
+  "p:administración": {"verdict": "a", "clause": "a heading or field of study", "pattern": "field of study not tech"},
+  "p:bentley": {"verdict": "a", "clause": "a company (as an employer, customer, partner or vendor)", "pattern": "vendor as company or modifier"},
+  "p:apple device": {"verdict": "a", "clause": "A name with an ordinary word before or after it", "pattern": "vendor name plus ordinary word"},
+  "r:95:kml": {"verdict": "b", "clause": "a protocol, file format or standard that software implements", "pattern": "named file format standard"},
+  "r:103:service cloud": {"verdict": "b", "clause": "A bare form... is that product", "pattern": "bare form drops vendor"},
+  "r:117:prettier": {"verdict": "b", "clause": "the technology's whole name and nothing more", "pattern": "whole name of tool"},
+  "r:105:pbi": {"verdict": "a", "clause": "a name that names an existing skill by another spelling", "pattern": "abbreviation disambiguated by context"},
+  "p:saudi arabia": {"verdict": "b", "clause": "Not a technology at all: ... a place", "pattern": "place name not technology"},
+  "p:llm engineering": {"verdict": "b", "clause": "A practice, method, technique, architecture or kind of system is no skill", "pattern": "practice or discipline not tech"},
+  "p:iaac": {"verdict": "a", "clause": "A practice, method, technique, architecture or kind of system is no skill", "pattern": "infrastructure as code practice"},
+  "r:131:mcp": {"verdict": "a", "clause": "a protocol, file format or standard that software implements: MCP, gRPC, OAuth, Parquet, Bluetooth", "pattern": "protocol named in context"},
+  "p:icarus": {"verdict": "a", "clause": "An ambiguous abbreviation: one that names several things, none dominant where it is written", "pattern": "ambiguous name across segments"},
+  "p:cockpit": {"verdict": "b", "clause": "so is part of a longer name written around it", "pattern": "part of longer name"}
+}

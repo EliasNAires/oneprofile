@@ -1,0 +1,86 @@
+[
+ {
+  "id": "p:neo",
+  "text": "Name: Neo\nSegments:\n- BHE Poseidon App roadmap & Book of Work: End-to-end release planning and prioritisation across the DACH product portfolio (Victa series, NEO 2, Engage (until EOL) and future upcoming products) and the software attached to it.\n- We were founded in 2023 by the youngest macro market-maker at Barclays and a trading systems engineer at Coinbase, and have raised over $20M in capital from Andreesen Horowitz (a16z), Crucible Capital, Neo, Crossbeam Venture Partners and more.\n- This is a wonderful opportunity to gain hands-on training on the Orbitrap Astral Zoom + Vanquish Neo platform from an experienced mass spec scientist, and growing ownership of the workflow as our automated systems come fully online.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:isc",
+  "text": "Name: ISC\nSegments:\n- Strong hands-on experience with platforms such as SailPoint (ISC), Delinea, CyberArk, HashiCorp Vault, or similar technologies.\n- ISC is seeking a skilled and customer-focused Level 2 Helpdesk Technician to join our IT team.\n- 10+ years of enterprise DDI engineering experience with deep expertise in DNS, DHCP, IPAM, ISC BIND, Kea DHCP, NTP, TCP/IP.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:west london",
+  "text": "Name: West London\nSegments:\n- Office-based role in West London, four days a week with flexible start and finish times, plus one remote day of your choice\n- Our team thrives on collaboration. We spend 3 days a week in our West London office (Monday, Wednesday, and Thursday) and 2 days working from wherever you’re most productive. Because being together is a big part of our culture, we’re looking for someone within a comfortable commutable distance to London.\n- Location: you'll be required to cover the West London area, but you'll be allocated to the Croydon Service Centre",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:147:c/c++",
+  "text": "Name: C/C++\nSegment: Collaborate with and mentor software engineers to transition tracking algorithms from MATLAB/Python prototypes to production C/C++ code optimized for real-time operational systems",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:ql",
+  "text": "Name: QL\nSegments:\n- Elastic Stack Elasticsearch, Kibana, ES|QL, and Detection Rules.\n- Elastic query languages (EQL, ES|QL, KQL), Abstract Security, ServiceNow or ServiceNow SecOps.\n- Detection engineering. Own the strategy and quality of our detection library in Elastic Security (ES|QL/KQL), designing high-fidelity detections mapped to real-world attacker techniques while continuously improving coverage, reducing noise and raising the maturity of our SOC.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:114:maxscale",
+  "text": "Name: MaxScale\nSegment: As MaxScale and its tests are written in C++, a good working knowledge of the language is expected, along with a solid understanding of SQL.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:casb",
+  "text": "Name: CASB\nSegments:\n- Strong hands-on experience operating and uplifting security technologies including firewalls, EDR, identity solutions, vulnerability management platforms, SASE, CASB, proxies, SIEM and security analytics, cloud security controls, and automation driven security platforms\n- Administer and optimize CASB and SaaS security controls across cloud applications.\n- Support Palo Alto CASB deployment and policy configuration as needed",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:97:nitf",
+  "text": "Name: NITF\nSegment: Data Formats: KML, KMZ, NITF, TIFF, JPEG, GeoPDF, and similar geo-related formats and data structures",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:124:nastran sol144",
+  "text": "Name: NASTRAN SOL144\nSegment: Experience with Zona, ZAERO, RCAS, NASTRAN SOL144, or other loads analysis tools",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:123:sol144",
+  "text": "Name: SOL144\nSegment: Experience with Zona, ZAERO, RCAS, NASTRAN SOL144, or other loads analysis tools",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:mql",
+  "text": "Name: MQL\nSegments:\n- Own the lead lifecycle systems, partnering with Sales Operations and Sales Technology on lead identity, deduplication, scoring, routing, MQL and SQL definitions, and funnel stage integrity.\n- Experience with databases (SQL or MQL) preferable\n- Develop and execute strategy for marketing programs, including content syndication programs and sponsored webinars to support OpenEye’s Marketing Qualified Lead (MQL) generation and revenue growth goals, including identification of new sponsorship vendors and evaluation of program ROI.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:142:joern",
+  "text": "Name: Joern\nSegment: Experience with code analysis tools – CodeQL, Joern, Semgrep",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:112:atomic red team",
+  "text": "Name: Atomic Red Team\nSegment: Testing & Automation (Bonus): Sigma, YARA, Atomic Red Team, Caldera, Python and SOAR playbooks.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:apple platform",
+  "text": "Name: Apple platform\nSegments:\n- Stay current with Swift, Xcode, iOS, and the broader Apple platform\n- Knowledge of Apple Platform SSO, Passkeys/WebAuthn, PKI, or certificate-based authentication.\n- Lead through hands-on iOS system design: Turn complex product and platform problems into durable production architecture grounded in deep iOS expertise and modern Apple platform practices.",
+  "a": "keep",
+  "b": "drop"
+ }
+]

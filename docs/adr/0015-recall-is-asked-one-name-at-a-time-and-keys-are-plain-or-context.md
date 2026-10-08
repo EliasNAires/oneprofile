@@ -102,7 +102,13 @@ half, and `scripts/check-skill-gold` checks Jev and the adjudicator against it.
 | #54, 1st (2026-10-07) | 5, frozen | 364/367 = 99.2% (97.6–99.7%) | 149/150 = 99.3% (96.3–99.9%) | 1/3 (2 with Jev) | 1 skill in 1 segment |
 
 Revision 5's pieces are fewer than revision 4's because the ordinary list grew from its own
-verdicts. Recorded beside the gates, never gated on (ADR-0014).
+verdicts. Recorded beside the gates, never gated on (ADR-0014). The filter has since read the
+stoplist (#60) in place of the ordinary list; the gold set was not checked again under it, since
+the change only drops pieces before Jev and leaves its verdicts as they were.
+
+Round 1, re-scored under revision 5 with the stoplist: the adjudicator sided with the rules on 6 of
+Jev's 90 candidate drops and on 12 of its 64 kept pieces
+(`docs/measurements/skill-round-1-revision-5/`).
 
 ## Considered options
 

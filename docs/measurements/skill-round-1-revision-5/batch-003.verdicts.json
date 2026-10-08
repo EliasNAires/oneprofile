@@ -1,0 +1,22 @@
+{
+  "p:dod ts": {"verdict": "a", "clause": "A compliance framework, regulation or certification", "pattern": "security clearance not technology"},
+  "p:iphone": {"verdict": "a", "clause": "Not a technology at all: ... a product line", "pattern": "hardware product line named"},
+  "p:liveramp": {"verdict": "b", "clause": "Not a technology at all: a company (as an employer, customer, partner or vendor)", "pattern": "company dominant across segments"},
+  "p:gitflow": {"verdict": "b", "clause": "A generic concept or a practice, not a named technology", "pattern": "git workflow practice"},
+  "r:99:geopdf": {"verdict": "b", "clause": "a protocol, file format or standard that software implements", "pattern": "named geospatial file format"},
+  "r:107:dash enterprise": {"verdict": "a", "clause": "A platform data, ML or AI teams build on is a platform like any other", "pattern": "named BI platform product"},
+  "r:137:mcp": {"verdict": "a", "clause": "a protocol, file format or standard that software implements", "pattern": "named protocol or file format"},
+  "r:98:tiff": {"verdict": "a", "clause": "a protocol, file format or standard that software implements", "pattern": "named protocol or file format"},
+  "p:dast": {"verdict": "b", "clause": "A generic concept or a practice, not a named technology", "pattern": "security testing category acronym"},
+  "p:gemini enterprise": {"verdict": "b", "clause": "so is part of a longer name written around it", "pattern": "part of longer product name"},
+  "r:133:spark": {"verdict": "a", "clause": "A bare form ... is that product. It is a keep where the text uses it for the product", "pattern": "bare form of a key"},
+  "p:geodatabases": {"verdict": "b", "clause": "A generic concept or a practice, not a named technology", "pattern": "generic data store concept"},
+  "r:130:pure": {"verdict": "b", "clause": "A vendor's name is a drop even where ads use it for its products", "pattern": "vendor name for its products"},
+  "r:135:service bus": {"verdict": "b", "clause": "a cloud or one of its services", "pattern": "named cloud service in list"},
+  "p:manager technical interview": {"verdict": "b", "clause": "Not a technology at all: ... a heading or field of study", "pattern": "hiring process stage heading"},
+  "p:itdr": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology", "pattern": "security category acronym"},
+  "r:144:is is": {"verdict": "b", "clause": "a protocol, file format or standard that software implements", "pattern": "named protocol or file format"},
+  "p:excel": {"verdict": "b", "clause": "Consumer, office or browser software", "pattern": "office software not engineering tech"},
+  "p:analyste": {"verdict": "a", "clause": "Not a technology at all: ... a heading or field of study", "pattern": "job title not technology"},
+  "r:141:warp": {"verdict": "b", "clause": "Not a technology at all: a company (as an employer ...)", "pattern": "company named as employer"}
+}

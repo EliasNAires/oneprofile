@@ -1,0 +1,122 @@
+[
+ {
+  "id": "p:inteligencia artificial",
+  "text": "Name: inteligencia artificial\nSegments:\n- Diseñar y liderar soluciones de Inteligencia Artificial de extremo a extremo, tomando decisiones de arquitectura y asegurando su implementación en producción.\n- Te unirás a nuestro equipo de Datos y Consultoría, que ayuda a los clientes a transformar y mejorar su estrategia de datos mediante la aplicación de análisis avanzados para generar percepciones que crean valor comercial a partir de big data e inteligencia artificial.\n- Habilidades clave: Inteligencia Artificial Generativa, Python, LLMs, RAG, LangChain, Agentes de IA, Vector Databases, Prompt Engineering, TypeScript, APIs REST, LLMOps",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:canva",
+  "text": "Name: Canva\nSegments:\n- That conviction is validated by the respected product teams who rely on us every day, including Canva, Notion, Samsung, and Loom.\n- Companies including Canva, Meta, Mistral AI, and NVIDIA rely on Buildkite to run builds, tests, and deployments on their infrastructure, ours, or both - giving them the speed, reliability, and flexibility to ship with confidence.\n- The Program Manager, Research is responsible for the end-to-end implementation of the research and learning agenda in the field for the Canva project (and potentially all Malawi research projects).",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:orleans",
+  "text": "Name: Orleans\nSegments:\n- With offices in the vibrant cities of New York and New Orleans, we’re at the heart of legal innovation.\n- College Track | Hybrid | Bay Area, Washington D.C., Denver, Aurora, Los Angeles, Sacramento, New Orleans, or Baltimore\n- US Employees in Baton Rouge, Birmingham, Charleston, Cincinnati, Cleveland, Daytona Beach, Indianapolis, Nashville, New Orleans, Omaha, Phoenix, Pittsburgh, St. Louis, Tampa - $82,000 - $106,000",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:ai devops",
+  "text": "Name: AI DevOps\nSegments:\n- The AI DevOps Engineer is a very technical, hands-on role, responsible for end to end delivery and operations of our DevOps environments.\n- We are looking for an AI DevOps Engineer to join our team.\n- The scope may include prompt and context engineering, AI security, AI DevOps and hosting, evaluation frameworks, harnesses, benchmarks, and production deployment.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:google play console",
+  "text": "Name: Google Play Console\nSegments:\n- Monitor app health in App Store Connect and Google Play Console (crashes, ANRs, ratings) and support acquisition/retention efforts through ASO, store listings and growth experiments.\n- Release Engineering & QA Infrastructure: Owning the complete mobile release lifecycle, including store deployments (App Store Connect, Google Play Console), CI/CD pipelines (Fastlane, Bitrise), device farm test automation, and mobile telemetry/analytics integrations (such as Braze and Firebase).\n- Develop attribution approaches that reconcile platform-reported performance (Google Search Console, App Store Connect, Google Play Console, web and app analytics) with observed member behavior, accounting for dark and direct traffic, branded vs. non-branded intent, and paid–organic overlap",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:145:neuvector",
+  "text": "Name: NeuVector\nSegment: Experience with tools such as Nexus, GitLab, Okta, NeuVector, Kyverno, Sumo Logic, monitoring platforms, alerting systems, or Web Application Firewalls (WAFs) is a plus.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:134:chef",
+  "text": "Name: Chef\nSegment: Experience with infrastructure automation and configuration management tools such as Chef, Ansible, or Puppet.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:152:spark",
+  "text": "Name: Spark\nSegment: Data Engineering technologies (e.g., ETL, DBT, Spark, Airflow)",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:d systems",
+  "text": "Name: D systems\nSegments:\n- Data Center & Manufacturing Connectivity: Support data center networking (spine-leaf fabric, EVPN/VXLAN, high throughput), structured cabling standards, and plant/manufacturing connectivity (industrial Ethernet, OT/IT convergence, and wireless coverage). Ensure resilient, high-availability connectivity for production-critical and R&D systems.\n- As an engineer at Kalepa, you'll work on real product and R&D systems at the intersection of software engineering and applied AI.\n- Lead implementation and support of R&D systems including Clinical Trial management solutions including CTMS, EDC, eTMF, ePRO/eCOA, IRT, and consolidated clinical analytics solutions.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:delinea",
+  "text": "Name: Delinea\nSegments:\n- Manage the Windows fleet in Kaseya VSA X: build new laptops with our onboarding workflows, keep the agent, patch policy and endpoint security tools (Sophos, Tenable, Delinea) healthy, and investigate devices that stop checking in.\n- Manage the endpoint fleet with our MDM platforms — Iru (formerly Kandji) for macOS and Kaseya VSA X for Windows — including Apple Business Manager enrollment, patch and compliance policy, and endpoint privilege management (Delinea).\n- Prior engineering experience at enterprise security companies such as CyberArk, Delinea, or direct PAM/IAM competitors.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:neurips",
+  "text": "Name: NeurIPS\nSegments:\n- Track record of publications in relevant conferences (e.g. ICRA, IROS, HRI, NeurIPS, ICML), and/or academic journals (e.g. IEEE Transactions).\n- Publications in top AI/ML conferences (e.g., NeurIPS, ICML, ICLR, CVPR, ACL, EMNLP).\n- Preference for a publication record in top-tier ML and NLP conferences (e.g. NeurIPS, ICML, SIGIR, ICLR, ACL, EMNLP, etc.).",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:google campaign manager",
+  "text": "Name: Google Campaign Manager\nSegments:\n- Experience with ad-serving platforms such as Google Campaign Manager is a plus\n- Deep familiarity with ad-tech and digital platforms, such as Google Campaign Manager, social platforms, and DSPs, as well as web analytics tools.\n- Experience with advertising campaign management, media buying, measurement, and analytics platforms, such as Google Campaign Manager, Sizmek, Flashtalking, Moat, DoubleVerify, IAS, MediaOcean, Media Tools, Nielsen, Comscore, social advertising platforms, Google Ads, Microsoft Advertising/Bing, Kenshoo, SA360, DV360, Google Analytics, or Adobe Analytics.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:ai exposure",
+  "text": "Name: AI exposure\nSegments:\n- AI Exposure: Practical exposure to AI-assisted development tools (e.g., GitHub Copilot, Cursor, LLM-driven testing or refactoring workflows).\n- Turn graph traversals into product surfaces: access paths, blast radius, data flow/lineage views, AI exposure, and risk prioritization. Partner with the Access Entitlements team on identity-to-data surfaces (multi-hop reachability through nested groups and shadow roles, least-privilege recommendations, entitlements for non-human identities). Own query and search UX for non-technical users, including natural-language and AI-assisted question answering over the graph, and define scale/performance requirements from the user's point of view (what must return in under a second, what can be async, where multi-hop queries must stay interactive at enterprise scale), holding the bar with engineering\n- Tenable is seeking a Senior Product Marketing Manager to serve as the global go-to-market owner for our AI Exposure domain, playing a pivotal role in advancing go-to-market strategy, driving adoption and reinforcing Tenable’s leadership in the exposure management market.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:106:sigma computing",
+  "text": "Name: Sigma Computing\nSegment: Proficiency with BI and analytics platforms such as Sigma Computing and Dash Enterprise",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:aiops",
+  "text": "Name: AIOps\nSegments:\n- Familiarity with AI-enabled delivery (AIOps, automation, developer productivity)\n- Knowledge of AI trends, AI-enabled operations, automation, AIOps, and emerging use cases that can be translated into client-facing infrastructure strategies and sales opportunities.\n- A strong automation mindset and genuine interest in AIOps (e.g., n8n, AWS Bedrock, Python scripting).",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:132:chef",
+  "text": "Name: Chef\nSegment: Infrastructure as Code: Experience managing infrastructure using IaC technologies such as Terraform, Ansible, Chef, or similar frameworks",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:iso26262",
+  "text": "Name: ISO26262\nSegments:\n- Experience with ISO26262 or similar safety audit and assessment process\n- Experience with ISO26262, DO-178C, or other software functional safety standards\n- Own and manage the safety plan according UL4600 and ISO26262 including a schedule to hit the company’s product launches.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:fibre",
+  "text": "Name: Fibre\nSegments:\n- Deep hands-on experience with network hardware is required, particularly with fibre optic systems.\n- In-depth knowledge of on-premises infrastructure, including servers, SAN/NAS storage devices, fibre channel networks, and backup infrastructures\n- Define Multi-Year Subsystem Strategy: Own the long-term product definition, qualification criteria, and lifecycle roadmap for hardware (compute, chassis, interconnect) and networking fabrics (Ethernet, Fibre Channel, NVMe-oF) across FlashArray and FlashBlade lines.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:115:anaplan",
+  "text": "Name: Anaplan\nSegment: Experience with ERP and financial planning systems (e.g., SAP, Oracle, Hyperion, Anaplan, or Adaptive Insights)",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:126:z wave",
+  "text": "Name: Z-Wave\nSegment: Home automation protocols (Z-Wave, Zigbee), USB, Ethernet, sensors, and power management",
+  "a": "drop",
+  "b": "keep"
+ }
+]

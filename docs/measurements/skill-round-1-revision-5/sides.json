@@ -1,0 +1,618 @@
+{
+ "r:139:transformers": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "r:118:testing library": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "r:121:zaero": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "r:143:vio": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "p:authz": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:lakehouse": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:experiments doe": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:gov cloud": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:dpu": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:pivottables": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:li ms1": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:400g": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:arm cortex m": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:mqa": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:101:a2a": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "p:siem": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:ios app store": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:infrastructure data science": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:av over ip": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:140:anthropic sdks": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "r:108:memorydb": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "r:122:rcas": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "r:91:rpm": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "r:129:xcode server": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "r:92:rhel 7+": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "p:d365 f": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:litify": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:computer vision ai": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:148:spark": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "r:94:amazon aurora postgresql": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "r:102:c": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "r:111:atomic red": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "p:ha": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:weave": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "r:104:experience cloud": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "p:ccda": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:midjourney": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "r:125:spark": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "p:ib": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:119:library eslint": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "p:dod ts": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:iphone": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:liveramp": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:gitflow": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "r:99:geopdf": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "r:107:dash enterprise": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "r:137:mcp": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "r:98:tiff": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "p:dast": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:gemini enterprise": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "r:133:spark": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "p:geodatabases": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "r:130:pure": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "r:135:service bus": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "p:manager technical interview": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:itdr": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:144:is is": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "p:excel": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:analyste": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:141:warp": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "p:simcorp": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "r:90:systemverilog assertions": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "r:136:c++17/20": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "r:153:c++17/20": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "p:voip": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:model builder": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "r:113:jetpack navigation": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "p:administraci\u00f3n": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:bentley": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:apple device": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:95:kml": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "r:103:service cloud": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "r:117:prettier": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "r:105:pbi": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "p:saudi arabia": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:llm engineering": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:iaac": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:131:mcp": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "p:icarus": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:cockpit": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:cisco wireless": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:english must": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:linkedin ads": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:python an": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:96:kmz": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "p:nipr": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:120:cegid": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "p:cidr": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:advanced rpa developer": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:151:sankhya": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "p:ieee": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:workbench": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "r:100:mcp": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "r:128:misp": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "p:phy": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:tiktok shop": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "r:138:portworx": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "r:150:totvs": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "p:intuit": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:109:bytebuddy": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "p:genai": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:146:equinix fabric": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "p:csdm": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:ntb": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "r:110:caldera": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "p:d engineering": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:idp": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:cd pipeline management": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:bridgewater": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:coupa": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:149:http/2": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "p:stlc": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:127:usb": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "r:116:adaptive insights": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "p:app store": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:music": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "r:93:centos 7+": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "p:graph rag": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:pmi pba": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:sod": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:inteligencia artificial": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:canva": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:orleans": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:ai devops": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:google play console": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "r:145:neuvector": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "r:134:chef": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "r:152:spark": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "p:d systems": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:delinea": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:neurips": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:google campaign manager": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:ai exposure": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:106:sigma computing": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "p:aiops": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "r:132:chef": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "p:iso26262": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "p:fibre": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "r:115:anaplan": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "r:126:z wave": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "p:neo": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:isc": {
+  "kind": "precision",
+  "labeller": "b"
+ },
+ "p:west london": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:147:c/c++": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "p:ql": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:114:maxscale": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "p:casb": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:97:nitf": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "r:124:nastran sol144": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "r:123:sol144": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "p:mql": {
+  "kind": "precision",
+  "labeller": "a"
+ },
+ "r:142:joern": {
+  "kind": "recall",
+  "labeller": "a"
+ },
+ "r:112:atomic red team": {
+  "kind": "recall",
+  "labeller": "b"
+ },
+ "p:apple platform": {
+  "kind": "precision",
+  "labeller": "b"
+ }
+}

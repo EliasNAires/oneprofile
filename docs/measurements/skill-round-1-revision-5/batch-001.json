@@ -1,0 +1,122 @@
+[
+ {
+  "id": "r:139:transformers",
+  "text": "Name: Transformers\nSegment: ML Frameworks and Libraries: vLLM, TensorRT-LLM, SGLang, Transformers, OpenAI/Anthropic SDKs",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:118:testing library",
+  "text": "Name: Testing Library\nSegment: Testing Library ESLint · Prettier · GitHub Actions CI",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "r:121:zaero",
+  "text": "Name: ZAERO\nSegment: Experience with Zona, ZAERO, RCAS, NASTRAN SOL144, or other loads analysis tools",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:143:vio",
+  "text": "Name: VIO\nSegment: 5+ years of experience in robotics, computer vision, or autonomy; 3+ years specifically in Visual Odometry or VIO.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:authz",
+  "text": "Name: AuthZ\nSegments:\n- The engineer will deploy and operate secure access management and Identity as a Service (IDaaS) technologies, execute Authentication (AuthN), Authorization (AuthZ), Digital Policy Management (DPM), Entitlement Management (EM), and Authoritative Attributes (AuthA) functions, and implement methods and standards for describing and documenting enterprise IT architecture.\n- Identity & Security: Enterprise AuthN/AuthZ integrations.\n- Build Core Security Systems: Design, develop, and scale QuintoAndar's centralized Authentication (AuthN) and Authorization (AuthZ) platforms.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:lakehouse",
+  "text": "Name: lakehouse\nSegments:\n- Experience with Apache Iceberg and modern data lakehouse architectures.\n- Familiarity with the data and AI ecosystem: Lakehouse architecture, Delta Lake, vector databases, AI/ML serving patterns\n- Strong data engineering and analytics foundation: lakehouse architectures (Fabric, Databricks, Snowflake), CDC, streaming, dbt-style transformation, semantic layers, and analytics-grade data quality. You have built data platforms that serve both humans and machines.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:experiments doe",
+  "text": "Name: Experiments DoE\nSegments:\n- Process Optimization: Design and implement streamlined testing metrics (e.g., Design of Experiments DoE) to significantly shorten the R&D learning and development cycle.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:gov cloud",
+  "text": "Name: Gov Cloud\nSegments:\n- Perform duties related to migrating on-prem Oracle databases into the Oracle Gov Cloud infrastructure.\n- Join us as a Salesforce Product Manager and help scale our Gov Cloud platform to empower teams across Anduril.\n- We are seeking a Cloud Engineer in El Segundo, CA, to join our secure cloud platform team supporting government customers within Gov Cloud Environments.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:dpu",
+  "text": "Name: DPU\nSegments:\n- Experience with NVIDIA BlueField DPUs and DOCA or equivalent DPU platform software, including restricted host mode and device attestation.\n- Evaluate new technologies (RoCEv2, DPU/SmartNICS or quantum interconnects) for next-gen HPC fabrics.\n- Working closely with our network, infrastructure, and product teams, you'll design and implement the network orchestration and provisioning systems that manage DPU-accelerated networking, tenant isolation, and network lifecycle management, enabling researchers and engineers to access enterprise-grade networking with cloud-like simplicity.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:pivottables",
+  "text": "Name: PivotTables\nSegments:\n- Advanced proficiency in Excel, including lookups, PivotTables, conditional functions, and data analysis.\n- Advanced Microsoft Excel skills, including PivotTables, Power Query, and complex data analysis functions\n- Utilize Excel or other data collection sources to extract, clean, and join data subsets for in-depth analysis along with presentation of PivotTables and Pivot Charts for client reporting.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:li ms1",
+  "text": "Name: LI-MS1\nSegments:\n- This is an opportunity to grow your career at the intersection of analytics, experimentation, and product strategy, helping create a culture where every product decision is informed by data and every product improvement is measurable. #LI-MS1\n- Competitive salary and great benefits. #LI-MS1\n- LI-MS1",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:400g",
+  "text": "Name: 400G\nSegments:\n- This experience should include end-to-end design and delivery across terrestrial long-haul fibre and subsea cable systems — including landing-station connectivity, route and duct diversity, and SRLG-based resilience modelling — alongside deep expertise in optical transport (DWDM/OTN, coherent optics, 100G/400G/800G) and IP backbone design (IP/MPLS, segment routing, EVPN, traffic engineering, peering, transit and internet exchange).\n- End-to-End Infrastructure Ownership: Take complete operational and deployment ownership of the network stack across APAC sites—ranging from Day-0 Out-of-Band (OOB) part of network as seed , console setups, and management L2 switches to high-scale leaf-spine frontend fabrics (EVPN/VXLAN) 400g/800g/1,6T ready and regional DCI/Backbone boundaries (BGP/MPLS/SRv6).\n- Perform pre-layout and post-layout signal integrity simulation for high-speed interfaces, including DDR4/DDR5, PCIe Gen3–Gen5, and 100G/400G/800G Ethernet.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:arm cortex m",
+  "text": "Name: ARM Cortex-M\nSegments:\n- Experience developing software on ARM Cortex-M, ARM Cortex-A, RISC-V, or similar embedded processor architectures using Real-Time Operating Systems (e.g., RTEMS, FreeRTOS, VxWorks, Zephyr) or bare-metal environments.\n- Experience optimizing models for deployment on microcontrollers and edge processors such as ARM Cortex-M/A, RISC-V, and DSPs\n- Experience with ARM Cortex-M or Cortex-A processors",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:mqa",
+  "text": "Name: MQA\nSegments:\n- Strong understanding in MQA testing process;\n- Dense Transformers: MHA/MQA/GQA/MLA attention, KV-cache growth characteristics, long-context behaviors, attention sinks and prefix locality.\n- Strong understanding in MQA and AQA testing process;",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:101:a2a",
+  "text": "Name: A2A\nSegment: Proficiency with agentic AI frameworks (e.g., LangGraph, AutoGen, CrewAI) and understanding of interoperability protocols such as MCP and A2A.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:siem",
+  "text": "Name: SIEM\nSegments:\n- CrowdStrike Falcon end to end: EDR, incident response, detections and queries in NG-SIEM, Spotlight vulnerability program with reporting. AF, DDoS protection, DNS security, bot management, and Zero Trust network access.\n- Experience administering Palo Alto Cortex XDR, including detection tuning, posture management, endpoint inventory, and XQL-based investigation and threat hunting or equivalent experience with another SIEM.\n- Provide technical leadership across Zscaler/Zero Trust, secrets and credential security, SIEM/detection engineering, EDR, cloud security, and security automation.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:ios app store",
+  "text": "Name: iOS App Store\nSegments:\n- Shipped production cross-platform mobile applications to both the iOS App Store and Google Play\n- Experience building and releasing on the iOS App Store\n- Proven Shipping Experience: Hands-on experience launching or managing apps on the iOS App Store and/or Google Play Store, with clear impact on user experience and metrics.",
+  "a": "keep",
+  "b": "drop"
+ },
+ {
+  "id": "p:infrastructure data science",
+  "text": "Name: Infrastructure Data Science\nSegments:\n- Databricks is looking for a Senior Manager, Infrastructure Data Science to shape the future of Databricks infrastructure through data science.\n- We’re looking for a Data Scientist to join our Infrastructure Data Science team.",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "p:av over ip",
+  "text": "Name: AV-over-IP\nSegments:\n- Experience with Netgear network switches running AV over IP systems (QLAN, Dante, SMPTE 2110)\n- ProAV (AV-over-IP, multicast)\n- ProAV (AV-over-IP, PTP)",
+  "a": "drop",
+  "b": "keep"
+ },
+ {
+  "id": "r:140:anthropic sdks",
+  "text": "Name: Anthropic SDKs\nSegment: ML Frameworks and Libraries: vLLM, TensorRT-LLM, SGLang, Transformers, OpenAI/Anthropic SDKs",
+  "a": "drop",
+  "b": "keep"
+ }
+]

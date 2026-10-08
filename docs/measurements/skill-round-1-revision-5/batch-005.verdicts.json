@@ -1,0 +1,22 @@
+{
+  "p:cisco wireless": {"verdict": "b", "clause": "Not a technology at all: ... a name glued to an ordinary word", "pattern": "vendor name plus ordinary word"},
+  "p:english must": {"verdict": "b", "clause": "A skill is a **technology**", "pattern": "natural language not a technology"},
+  "p:linkedin ads": {"verdict": "b", "clause": "A technology no software person is hired for", "pattern": "marketing platform not engineering skill"},
+  "p:python an": {"verdict": "a", "clause": "A name with an ordinary word before or after it ... is a drop", "pattern": "name glued to ordinary word"},
+  "r:96:kmz": {"verdict": "a", "clause": "a protocol, file format or standard that software implements", "pattern": "file format implemented by software"},
+  "p:nipr": {"verdict": "a", "clause": "Not a technology at all: ... a place", "pattern": "classified network named as place"},
+  "r:120:cegid": {"verdict": "a", "clause": "Keep a name when it names one specific technology ... a tool or a platform", "pattern": "vendor name is the platform itself"},
+  "p:cidr": {"verdict": "a", "clause": "A name is judged where it is written, and exactly as given: in the segments given with it", "pattern": "dominant technical sense across segments"},
+  "p:advanced rpa developer": {"verdict": "a", "clause": "A compliance framework, regulation or certification", "pattern": "certification name not technology"},
+  "r:151:sankhya": {"verdict": "a", "clause": "Keep a name when it names one specific technology ... a tool or a platform", "pattern": "named enterprise platform kept"},
+  "p:ieee": {"verdict": "b", "clause": "Not a technology at all: ... a piece of a longer name that ads never use alone for the product", "pattern": "standards body name not a standard"},
+  "p:workbench": {"verdict": "b", "clause": "A name with an ordinary word before or after it ... is a drop, though the name inside it is a keep", "pattern": "qualified generic term, no bare use"},
+  "r:100:mcp": {"verdict": "a", "clause": "a protocol, file format or standard that software implements", "pattern": "protocol named as given example"},
+  "r:128:misp": {"verdict": "a", "clause": "Keep a name when it names one specific technology ... a tool or a platform", "pattern": "named security tool kept"},
+  "p:phy": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology", "pattern": "generic layer abbreviation"},
+  "p:tiktok shop": {"verdict": "a", "clause": "in the segments given with it, it is a keep when they use it for the technology", "pattern": "ecommerce platform integrated via software"},
+  "r:138:portworx": {"verdict": "b", "clause": "Not a technology at all: a company (as an employer, customer, partner or vendor)", "pattern": "company named as business division"},
+  "r:150:totvs": {"verdict": "b", "clause": "Keep a name when it names one specific technology ... a tool or a platform", "pattern": "named enterprise platform kept"},
+  "p:intuit": {"verdict": "a", "clause": "Not a technology at all: a company (as an employer, customer, partner or vendor)", "pattern": "company named as employer or client"},
+  "r:109:bytebuddy": {"verdict": "b", "clause": "Keep a name when it names one specific technology ... a framework or library", "pattern": "specific library named exactly"}
+}

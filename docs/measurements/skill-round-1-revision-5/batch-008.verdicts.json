@@ -1,0 +1,16 @@
+{
+ "p:neo": {"verdict": "b", "clause": "Not a technology at all: a company (as an employer, customer, partner or vendor) ... or a piece of a longer name ads never use alone", "pattern": "company or product-line name"},
+ "p:isc": {"verdict": "b", "clause": "An ambiguous abbreviation: one that names several things, none dominant where it is written", "pattern": "ambiguous abbreviation multiple meanings"},
+ "p:west london": {"verdict": "a", "clause": "Not a technology at all: ... a place", "pattern": "place name as location"},
+ "r:147:c/c++": {"verdict": "a", "clause": "Keep: one specific technology an engineer would put on a CV: a language", "pattern": "combined language name C/C++"},
+ "p:ql": {"verdict": "a", "clause": "so is part of a longer name written around it", "pattern": "piece of longer name never alone"},
+ "r:114:maxscale": {"verdict": "b", "clause": "Keep a name when it names one specific technology ... a tool or a platform", "pattern": "named tool is the technology"},
+ "p:casb": {"verdict": "a", "clause": "A generic concept or a practice, not a named technology", "pattern": "generic security tool category"},
+ "r:97:nitf": {"verdict": "a", "clause": "So is a protocol, file format or standard that software implements", "pattern": "file format standard"},
+ "r:124:nastran sol144": {"verdict": "a", "clause": "a named feature or service of a skill that ads ask for by its own name", "pattern": "named feature of a skill"},
+ "r:123:sol144": {"verdict": "a", "clause": "so is part of a longer name written around it", "pattern": "piece of longer name never alone"},
+ "p:mql": {"verdict": "a", "clause": "An ambiguous abbreviation: one that names several things, none dominant where it is written", "pattern": "ambiguous abbreviation multiple meanings"},
+ "r:142:joern": {"verdict": "a", "clause": "Keep a name when it names one specific technology ... a tool or a platform", "pattern": "named tool in a list"},
+ "r:112:atomic red team": {"verdict": "b", "clause": "Keep a name when it names one specific technology ... a tool or a platform", "pattern": "named tool in a list"},
+ "p:apple platform": {"verdict": "b", "clause": "Not a technology at all: ... a vendor umbrella, a product line", "pattern": "vendor ecosystem umbrella term"}
+}
