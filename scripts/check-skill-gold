@@ -58,7 +58,7 @@ def main():
     revision = skillloop.criterion_revision()
     gold = read_gold()
     recall = skillloop.Recall(skillloop.read_segment_lines())
-    plain = skillloop.Names(skillloop.read_keys("plain"), [])
+    plain = skillloop.Names(skillloop.read_keys("plain", spelled=True), [], skillloop.read_keys())
     rows = [{**row, "found": plain.spans_in(row["segment"])} for row in gold]
     skillloop.label_pieces([{"name": name, "segment": row["segment"]}
                             for row in rows for name in recall.pieces(row).values()])

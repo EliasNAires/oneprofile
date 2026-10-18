@@ -80,9 +80,13 @@ software technology named in an OUT-leaning ad is still a skill. The run reads
 - `skills.tsv` stays the truth for **what the skills are**, and is curated by hand; the decision
   record is the truth for **what has been seen**. Every key of `skills.tsv` counts as seen
   without a row.
-- **One row per name form**: the name lowercased, each run of spaces and hyphens between two
-  other characters collapsed into one space, leading and trailing spaces trimmed, every other
-  character kept. `C`, `C++`, `C#` and `C--` stay apart; `Spring-Boot` and `spring boot` are one.
+- **One row per name form**: the name lowercased, each run of spaces, hyphens, underscores and
+  slashes between two other characters collapsed into one space, leading and trailing spaces
+  trimmed, every other character kept. `C`, `C++`, `C#` and `C--` stay apart; `Spring-Boot`,
+  `spring_boot` and `Spring/Boot` are one. Amended 2026-10-18 (#63): the first version parted words
+  by spaces and hyphens only, and Java's `TaxonomyStore` keyed names by spaces alone. The criterion
+  reads a name split by an underscore or a slash as that name, so both now give this one form,
+  tested on the same cases, and the record's 7 forms with a slash were rewritten.
 - Each row carries the **decision**, the **criterion revision** and the **snapshot** it was decided
   under, and its **source**: `#38`, `#40`, `jev` or `session`.
 - **A drop is final**, unless the criterion changes and the reviewer of the new revision names

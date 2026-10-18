@@ -1,5 +1,5 @@
 name	decision	revision	snapshot	source
-hal/s	drop	0	raw-2026-09-20	#38
+hal s	drop	0	raw-2026-09-20	#38
 actionscript	drop	0	raw-2026-09-20	#38
 tops 10	drop	0	raw-2026-09-20	#38
 s	drop	0	raw-2026-09-20	#38
@@ -300,7 +300,7 @@ flask	keep	0	raw-2026-09-20	#38
 hugging face	keep	0	raw-2026-09-20	#38
 protocol buffer	keep	0	raw-2026-09-20	#38
 kinesis	keep	0	raw-2026-09-20	#38
-ht://dig	drop	0	raw-2026-09-20	#38
+ht: dig	drop	0	raw-2026-09-20	#38
 lan	drop	0	raw-2026-09-20	#38
 xml	keep	0	raw-2026-09-20	#38
 general architecture for text engineering	drop	0	raw-2026-09-20	#38
@@ -455,7 +455,7 @@ apache solr	keep	0	raw-2026-09-20	#38
 ats	drop	0	raw-2026-09-20	#38
 dynatrace	keep	0	raw-2026-09-20	#38
 arcgis	keep	0	raw-2026-09-20	#38
-pl/sql	keep	0	raw-2026-09-20	#38
+pl sql	keep	0	raw-2026-09-20	#38
 mesa	drop	0	raw-2026-09-20	#38
 software development tools	drop	0	raw-2026-09-20	#38
 fp	drop	0	raw-2026-09-20	#38
@@ -733,7 +733,7 @@ regular expression	keep	0	raw-2026-09-20	#38
 smtp	keep	0	raw-2026-09-20	#38
 user mode linux	drop	0	raw-2026-09-20	#38
 weka	keep	0	raw-2026-09-20	#38
-a/ux	drop	0	raw-2026-09-20	#38
+a ux	drop	0	raw-2026-09-20	#38
 crystal	drop	0	raw-2026-09-20	#38
 doctrine	drop	0	raw-2026-09-20	#38
 erlang	keep	0	raw-2026-09-20	#38
@@ -982,7 +982,7 @@ log4j	keep	0	raw-2026-09-20	#38
 macaulay2	drop	0	raw-2026-09-20	#38
 nit	drop	0	raw-2026-09-20	#38
 pear	drop	0	raw-2026-09-20	#38
-pl/pgsql	keep	0	raw-2026-09-20	#38
+pl pgsql	keep	0	raw-2026-09-20	#38
 plsql	keep	0	raw-2026-09-20	#38
 polymer	drop	0	raw-2026-09-20	#38
 ppm	drop	0	raw-2026-09-20	#38
@@ -1007,7 +1007,7 @@ aqua	drop	0	raw-2026-09-20	#38
 arangodb	keep	0	raw-2026-09-20	#38
 assembler	keep	0	raw-2026-09-20	#38
 babylon.js	keep	0	raw-2026-09-20	#38
-c++/cli	keep	0	raw-2026-09-20	#38
+c++ cli	keep	0	raw-2026-09-20	#38
 chart.js	keep	0	raw-2026-09-20	#38
 cloudworks	drop	0	raw-2026-09-20	#38
 common intermediate language	drop	0	raw-2026-09-20	#38
@@ -1175,7 +1175,7 @@ webos	keep	0	raw-2026-09-20	#38
 whitespace	drop	0	raw-2026-09-20	#38
 windows mobile	keep	0	raw-2026-09-20	#38
 x86 assembly language	keep	0	raw-2026-09-20	#38
-xbox one and xbox series x/s system software	drop	0	raw-2026-09-20	#38
+xbox one and xbox series x s system software	drop	0	raw-2026-09-20	#38
 xpath	keep	0	raw-2026-09-20	#38
 zk	drop	0	raw-2026-09-20	#38
 dbt	keep	0	raw-2026-09-20	#38

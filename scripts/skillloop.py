@@ -60,17 +60,36 @@ KEY_OPTIONS = {
 }
 
 
+# The characters that part the words of a name, when they stand between two other characters (#63).
+SEPARATED = re.compile(r"(?<=[^\s_/-])([\s_/-]+)(?=[^\s_/-])")
+
+
 def name_form(name):
-    """The name as discovery compares it: lowercased, each run of spaces and hyphens between two other
-    characters one space, the ends trimmed, every other character kept."""
-    return re.sub(r"(?<=[^\s-])[\s-]+(?=[^\s-])", " ", name.strip().lower())
+    """The name as discovery and extraction compare it (TaxonomyStore.key() gives the same): lowercased,
+    each run of spaces, hyphens, underscores and slashes between two other characters one space, the
+    ends trimmed, every other character kept."""
+    return SEPARATED.sub(" ", name.strip().lower())
 
 
-def mention(name):
-    """A pattern finding the name in text in any case, its spaces and hyphens interchangeable, with no
-    letter or digit right before or after it, nor the + or # that would make it a longer name (C in C++)."""
-    words = [re.escape(word) for word in name_form(name).split(" ")]
-    return re.compile(r"(?<![^\W_])" + r"[\s-]+".join(words) + r"(?![^\W_]|[+#])", re.IGNORECASE)
+def mention(name, glued=False):
+    """A pattern finding the name in text in any case, with no letter or digit right before or after it,
+    nor the + or # that would make it a longer name (C in C++). Between its words the text may write a
+    space, a hyphen or an underscore, and a slash too where the name itself has one (PL/SQL is PL-SQL),
+    but a slash in the text parts two names (Spark/SQL is not Spark SQL). Glued, a name of several words
+    is also found written with nothing between them (Spring Boot in SpringBoot)."""
+    parts = SEPARATED.split(name.strip().lower())
+    pattern = re.escape(parts[0])
+    for gap, word in zip(parts[1::2], parts[2::2]):
+        pattern += (r"[\s_/-]+" if "/" in gap else r"[\s_-]+") + re.escape(word)
+    if glued and len(parts) > 1:
+        pattern = f"(?:{pattern}|{re.escape(''.join(parts[::2]))})"
+    return re.compile(r"(?<![^\W_])" + pattern + r"(?![^\W_]|[+#])", re.IGNORECASE)
+
+
+def glued_forms(keys):
+    """The name forms of the keys given, by name form to canonical name, whose words written with
+    nothing between them are no other skill's key (CRI-O is not CompactRIO's cRIO)."""
+    return {form for form, canonical in keys.items() if keys.get(form.replace(" ", ""), canonical) == canonical}
 
 
 class Segments:
@@ -174,14 +193,14 @@ def read_skill_rows():
     return rows
 
 
-def read_keys(kind=None):
-    """The canonical name of the skill each key of skills.tsv names, by the key's name form; only the
-    `plain` or the `context` keys when a kind is given."""
+def read_keys(kind=None, spelled=False):
+    """The canonical name of the skill each key of skills.tsv names, by the key's name form, or by the
+    key as written when spelled; only the `plain` or the `context` keys when a kind is given."""
     keys = {}
     for _, canonical, _, row_keys, context in read_skill_rows():
         for key in row_keys:
             if kind is None or (key in context) == (kind == "context"):
-                keys[name_form(key)] = canonical
+                keys[key if spelled else name_form(key)] = canonical
     return keys
 
 
@@ -215,11 +234,14 @@ def context_keys(keys, lines):
 
 
 class Names:
-    """The skills of skills.tsv, found by the keys given and named by their canonical name, and the
-    candidates of a run, found and named by their own name."""
+    """The skills of skills.tsv, found by the keys given as written and named by their canonical name, a
+    key of several words glued too unless that is another skill's key among the keys `held`, by name
+    form, and the candidates of a run, found and named by their own name."""
 
-    def __init__(self, keys, candidates):
-        self.patterns = [(name_form(key).split(" ")[0], mention(key), canonical) for key, canonical in keys.items()]
+    def __init__(self, keys, candidates, held=None):
+        glued = glued_forms(held or {name_form(key): canonical for key, canonical in keys.items()})
+        self.patterns = [(name_form(key).split(" ")[0], mention(key, name_form(key) in glued), canonical)
+                         for key, canonical in keys.items()]
         self.patterns += [(name_form(name).split(" ")[0], mention(name), name) for name in candidates]
 
     def named_in(self, text):
@@ -438,7 +460,8 @@ def read_piece_labels(revision=None):
         return {}
     with open(RECALL_LABELS) as lines:
         rows = [json.loads(line) for line in lines if line.strip()]
-    return {(row["name_form"], row["segment"]): row for row in rows
+    # A row made before #63 holds the name form of its day, which put no space for an underscore or a slash.
+    return {(name_form(row["name_form"]), row["segment"]): row for row in rows
             if row["criterion_revision"] == revision and row["model"] == jev.MODEL and "name_form" in row}
 
 

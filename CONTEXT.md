@@ -368,8 +368,9 @@ the skill criterion. A drop is final unless a later revision reopens its reason.
 _Avoid_: review, judgment, label
 
 **Name Form**:
-A name as discovery compares it with what has been seen: case, spacing and hyphenation set
-aside, every other character kept, so C, C++ and C# are three names.
+A name as discovery and extraction compare it: case and the spaces, hyphens, underscores and
+slashes between its words set aside, every other character kept, so Mongo_DB is Mongo DB and C,
+C++ and C# are three names.
 _Avoid_: normalized name, slug, key
 
 **Decision Record**:

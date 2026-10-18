@@ -245,7 +245,8 @@ def main():
     earlier_segments = {drawn for round_drawn, kind, drawn in earlier if round_drawn != round_name and kind == "segment"}
     segments = skillloop.Segments(lines)
     precision_drawn, passed_over = draw_candidates(round_name, candidates, earlier_candidates, segments)
-    names = skillloop.Names(skillloop.read_keys("plain"), [c["name"] for c in candidates])
+    names = skillloop.Names(skillloop.read_keys("plain", spelled=True), [c["name"] for c in candidates],
+                            skillloop.read_keys())
     recall_drawn = draw_segments(round_name, lines, earlier_segments, names)
     record_drawn(round_name, precision_drawn, [row["segment"] for row in recall_drawn])
     earlier = earlier_draws(round_name, segments)

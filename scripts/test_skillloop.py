@@ -24,18 +24,16 @@ def load_script(name):
 
 
 class NameFormTest(unittest.TestCase):
+    """The cases Java's TaxonomyStore is tested on too, so the two keys cannot drift (#63)."""
 
-    def test_lowercases_and_collapses_spaces_and_hyphens(self):
-        self.assertEqual(skillloop.name_form("Spring-Boot"), "spring boot")
-        self.assertEqual(skillloop.name_form("spring  boot"), "spring boot")
-        self.assertEqual(skillloop.name_form("TOPS-10"), "tops 10")
+    CASES = skillloop.REPO / "src" / "test" / "resources" / "taxonomy" / "name-forms.tsv"
 
-    def test_keeps_every_other_character(self):
-        self.assertEqual([skillloop.name_form(name) for name in ("C", "C++", "C#", "C--")], ["c", "c++", "c#", "c--"])
-        self.assertEqual(skillloop.name_form("HAL/S"), "hal/s")
-
-    def test_trims_the_ends(self):
-        self.assertEqual(skillloop.name_form(" Node.js "), "node.js")
+    def test_gives_the_key_extraction_gives_for_every_case_they_share(self):
+        cases = [line.rsplit("\t", 1) for line in self.CASES.read_text().split("\n")
+                 if line and not line.startswith("#")]
+        self.assertGreater(len(cases), 10)
+        for name, form in cases:
+            self.assertEqual(skillloop.name_form(name), form, repr(name))
 
 
 class SeedsTheDecisionRecordTest(unittest.TestCase):
@@ -45,6 +43,13 @@ class SeedsTheDecisionRecordTest(unittest.TestCase):
         decisions = skillloop.read_decisions()
         self.assertGreater(len(decisions), 9000)
         self.assertEqual([form for form in decisions if skillloop.name_form(form) != form], [])
+
+
+class SeedsTheStoplistTest(unittest.TestCase):
+    """The filter compares a piece's name form with the stoplist's words, so each word is its own form."""
+
+    def test_every_word_is_its_own_form(self):
+        self.assertEqual([word for word in skillloop.read_stoplist() if skillloop.name_form(word) != word], [])
 
 
 class MentionsTest(unittest.TestCase):
@@ -68,6 +73,39 @@ class MentionsTest(unittest.TestCase):
         self.assertFalse(skillloop.mention("C").search("C++ and C# only"))
         self.assertTrue(skillloop.mention("C").search("C, C++ or C#"))
         self.assertTrue(skillloop.mention("Node.js").search("Node.js."))
+
+
+    def test_finds_the_name_parted_by_an_underscore(self):
+        self.assertTrue(skillloop.mention("Mongo DB").search("we use Mongo_DB daily"))
+
+    def test_finds_a_slash_name_parted_by_any_separator(self):
+        pattern = skillloop.mention("PL/SQL")
+        self.assertTrue(all(pattern.search(text) for text in ("PL/SQL", "pl-sql", "PL SQL", "PL_SQL")))
+
+    def test_does_not_read_a_slash_in_the_text_as_one_name(self):
+        self.assertFalse(skillloop.mention("Spark SQL").search("Spark/SQL"))
+        self.assertTrue(skillloop.mention("Spark SQL").search("Spark-SQL"))
+
+    def test_finds_a_split_name_glued_only_when_asked(self):
+        self.assertTrue(skillloop.mention("Spring Boot", glued=True).search("SpringBoot apps"))
+        self.assertFalse(skillloop.mention("Spring Boot").search("SpringBoot apps"))
+        self.assertFalse(skillloop.mention("Spring Boot", glued=True).search("SpringBootStarter"))
+
+    def test_never_splits_a_glued_name(self):
+        self.assertFalse(skillloop.mention("NoSQL", glued=True).search("no SQL"))
+
+
+class NamesTest(unittest.TestCase):
+
+    def test_finds_a_split_key_glued(self):
+        names = skillloop.Names({"Spring Boot": "Spring Boot"}, [])
+        self.assertEqual(names.named_in("Java and SpringBoot"), ["Spring Boot"])
+
+    def test_does_not_glue_a_key_into_another_skills_key(self):
+        held = {"cri o": "CRI-O", "crio": "CompactRIO"}
+        names = skillloop.Names({"CRI-O": "CRI-O"}, [], held)
+        self.assertEqual(names.named_in("LabVIEW on a cRIO"), [])
+        self.assertEqual(names.named_in("containerd or CRI-O"), ["CRI-O"])
 
 
 class SegmentsTest(unittest.TestCase):

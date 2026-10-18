@@ -16,15 +16,20 @@ import java.util.regex.Pattern;
  * <p>
  * The taxonomy is read from a file with one skill per line, as
  * {@code id<TAB>canonical_name<TAB>category<TAB>aliases<TAB>context_keys}, its aliases and its
- * context keys separated by {@code |}. A name is looked up by a key: the name lowercased and
- * trimmed, its whitespace collapsed. The canonical name is a key like any alias. The context keys
- * are not told apart here yet (#15).
+ * context keys separated by {@code |}. A name is looked up by a key, its name form: the name
+ * lowercased, each run of spaces, hyphens, underscores and slashes between two other characters one
+ * space, the ends trimmed. Discovery's {@code skillloop.name_form} gives the same key, and both are
+ * tested on the cases of {@code taxonomy/name-forms.tsv} (#63). The canonical name is a key like any
+ * alias. The context keys are not told apart here yet (#15).
  * <p>
  * A file is refused if two of its skills share an id, or if one key would name two skills.
  */
 public class TaxonomyStore {
 
-	private static final Pattern WHITESPACE = Pattern.compile("\\s+");
+	private static final Pattern ENDS = Pattern.compile("^\\s+|\\s+$", Pattern.UNICODE_CHARACTER_CLASS);
+
+	private static final Pattern SEPARATED = Pattern.compile("(?<=[^\\s_/-])[\\s_/-]+(?=[^\\s_/-])",
+			Pattern.UNICODE_CHARACTER_CLASS);
 
 	private final Map<String, Skill> byKey;
 
@@ -53,7 +58,7 @@ public class TaxonomyStore {
 
 	/**
 	 * Resolves a name to the skill it names.
-	 * @param name a canonical name or an alias, in any case and spacing
+	 * @param name a canonical name or an alias, in any case and spacing, its words parted by any separator
 	 * @return the skill, or empty if the taxonomy has no skill by that name
 	 */
 	public Optional<Skill> resolve(String name) {
@@ -74,8 +79,9 @@ public class TaxonomyStore {
 		}
 	}
 
-	private static String key(String name) {
-		return WHITESPACE.matcher(name.trim()).replaceAll(" ").toLowerCase(Locale.ROOT);
+	static String key(String name) {
+		String lowered = ENDS.matcher(name).replaceAll("").toLowerCase(Locale.ROOT);
+		return SEPARATED.matcher(lowered).replaceAll(" ");
 	}
 
 }

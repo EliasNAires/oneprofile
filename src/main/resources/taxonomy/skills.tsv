@@ -853,7 +853,7 @@ esri	Esri	tool
 etas-inca	ETAS INCA	tool		
 ethereum	Ethereum	tool		
 ethernet	Ethernet	networking		
-ethernet-slash-ip	EtherNet/IP	networking	Ethernet IP	
+ethernet-slash-ip	EtherNet/IP	networking		
 ethers-js	ethers.js	framework		
 event-tracing-for-windows	Event Tracing for Windows	security	ETW	
 evpn	EVPN	networking		
@@ -1392,7 +1392,7 @@ lin	LIN	networking
 linkerd	Linkerd	devops		
 linq	LINQ	language		
 linux	Linux	os		
-linux-preempt-rt	Linux PREEMPT_RT	os	Linux Preempt RT	
+linux-preempt-rt	Linux PREEMPT_RT	os		
 liquibase	Liquibase	tool		
 lisp	Lisp	language		Lisp
 litellm	LiteLLM	framework		
@@ -1876,7 +1876,7 @@ pkce	PKCE	security
 pkcs-11	PKCS#11	security		
 pki	PKI	security		
 pl-pgsql	PL/pgSQL	language		
-pl-sql	PL/SQL	language	PLSQL|PL-SQL	
+pl-sql	PL/SQL	language	PLSQL	
 planetscale	PlanetScale	database		
 plantuml	PlantUML	tool		
 play-framework	Play Framework	framework		
@@ -1918,7 +1918,7 @@ powershell-dsc	PowerShell DSC	devops
 ppp	PPP	networking		
 pql	PQL	language		
 precision-time-protocol	Precision Time Protocol	networking	PTP	
-preempt-rt	PREEMPT_RT	os	Preempt RT	
+preempt-rt	PREEMPT_RT	os		
 prefect	Prefect	data		
 presto	Presto	data	PrestoDB|PrestoSQL	
 prettier	Prettier	tool		Prettier
@@ -2039,7 +2039,7 @@ redis-cluster	Redis Cluster	database
 redis-streams	Redis Streams	data		
 redmine	Redmine	tool		
 redpanda	Redpanda	data		
-redux	Redux	framework	React Redux|react-redux	
+redux	Redux	framework	React Redux	
 redux-toolkit	Redux Toolkit	framework	RTK	
 reframework	REFramework	framework		
 regex	Regex	tool	Regular Expression|regular expressions|regexp	
@@ -2223,7 +2223,7 @@ sflow	sFlow	networking
 sftp	SFTP	networking		
 sglang	SGLang	ml		
 shacl	SHACL	language		
-shadcn-ui	shadcn/ui	framework	Shadcn|Shadcn UI	
+shadcn-ui	shadcn/ui	framework	Shadcn	
 shadow-dom	Shadow DOM	framework		
 shapely	Shapely	framework		Shapely
 sharegate	ShareGate	tool	ShareGate Migrate	
