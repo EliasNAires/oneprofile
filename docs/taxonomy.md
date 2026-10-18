@@ -110,7 +110,7 @@ until a later loop changes them.
 1. **Point the scripts at the snapshot.** Restore it (`scripts/restore-snapshot.sh`) and set
    `SNAPSHOT` in `scripts/skillloop.py`; its segment export is made the first time a script reads it.
 2. **Propose.** `scripts/skill_discovery.py ~/oneprofile-snapshots/skill-candidates-<snapshot>.tsv`,
-   about 17 minutes.
+   about 6 minutes on four cores; its passes run in a process per core.
 3. **Judge.** `scripts/discover-skills judge <candidates.tsv>`: Jev keeps or drops each candidate
    and picks a category, about a hundredth of a cent a name, and stops at ADR-0013's $4 over every
    Jev script. It writes the kept names, in batches of 60, to

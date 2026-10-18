@@ -43,6 +43,8 @@ classified-2026-10-06.dump the first time.
 """
 
 import collections
+import multiprocessing
+import os
 import re
 import sys
 from pathlib import Path
@@ -50,6 +52,11 @@ from pathlib import Path
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import skillloop  # noqa: E402
+
+# Each pass over the vacancies runs in this many processes, a slice of the vacancies each, and their
+# counts are summed in slice order, so a run writes what one process would.
+WORKERS = os.cpu_count() or 1
+SLICES_PER_WORKER = 4
 
 MAX_WORDS = 3
 MIN_COMPANIES = 3  # one company's boilerplate and its own name are not skills; in as many vacancies at least
@@ -222,17 +229,57 @@ def mine(docs, covered, known, anchors=None):
     not in covered. known holds the name forms of the keys of the skills already in the taxonomy, and
     anchors those of them whose neighbours are evidence of a skill, all of them unless given."""
     compact = {key.replace(" ", "") for key in known}
-    said, forms = gather(docs, covered, known, compact)
-    stats = measure(docs, forms, known if anchors is None else anchors)
+    said, forms = collections.Counter(), set()
+    for slice_said, slice_forms in in_slices(gather, docs, covered, known, compact):
+        said.update(slice_said)
+        forms |= slice_forms
+    forms = {form for form in forms if not (form.endswith("s") and form[:-1] in forms)}
+    stats = {}
+    for slice_stats in in_slices(measure, docs, forms, known if anchors is None else anchors):
+        for form, slice_s in slice_stats.items():
+            s = stats.setdefault(form, {"df": 0, "companies": set(), "said": 0, "capitalized": 0, "near": 0,
+                                        "after_at": 0, "extended": 0, "forms": collections.Counter()})
+            for field in ("df", "said", "capitalized", "near", "after_at", "extended"):
+                s[field] += slice_s[field]
+            s["companies"] |= slice_s["companies"]
+            s["forms"].update(slice_s["forms"])
     acronyms = {commonest_spelling(s) for s in stats.values() if ACRONYM.fullmatch(commonest_spelling(s))}
-    spelled = spelled_out(docs, acronyms, known)
+    spelled = collections.defaultdict(collections.Counter)
+    for slice_spelled in in_slices(spelled_out, docs, acronyms, known):
+        for acronym, spellings in slice_spelled.items():
+            spelled[acronym].update(spellings)
     return [candidate(s) for form, s in stats.items() if passes(form, s, said, known, compact, spelled)]
+
+
+# The pass in_slices runs, set before its processes are forked so that each inherits the vacancies.
+_pass = None
+
+
+def in_slices(function, docs, *args):
+    """function(docs, *args) run over slices of the docs in WORKERS processes, its results in slice order.
+    A pass over few docs, as in the tests, runs in this process."""
+    global _pass
+    size = -(-len(docs) // (WORKERS * SLICES_PER_WORKER))
+    if WORKERS == 1 or len(docs) < 1000:
+        return [function(docs, *args)]
+    _pass = (function, docs, args)
+    try:
+        with multiprocessing.get_context("fork").Pool(WORKERS) as pool:
+            return pool.map(run_slice, range(0, len(docs), size), chunksize=1)
+    finally:
+        _pass = None
+
+
+def run_slice(start):
+    function, docs, args = _pass
+    size = -(-len(docs) // (WORKERS * SLICES_PER_WORKER))
+    return function(docs[start:start + size], *args)
 
 
 def gather(docs, covered, known, compact):
     """How often each word is said mid-sentence and how often written as a name, by word and by (word,
     True); and the name forms of the phrases that could be candidates: written as a name mid-sentence
-    somewhere, proposable, and not the plural of another."""
+    somewhere and proposable. mine() drops those that are the plural of another."""
     said = collections.Counter()
     forms = set()
     for _, segments in docs:
@@ -249,7 +296,7 @@ def gather(docs, covered, known, compact):
             if (form not in forms and written_as_name(" ".join(w.name for w in ws[i:j]))
                     and proposable(form, covered, known, compact)):
                 forms.add(form)
-    return said, {form for form in forms if not (form.endswith("s") and form[:-1] in forms)}
+    return said, forms
 
 
 def respelled(form, compact):
@@ -400,7 +447,7 @@ def measure(docs, forms, anchors):
             s["after_at"] += ws[i].joined and ws[i - 1].form == "at"
             s["extended"] += ((ws[i].joined and extends(ws[i - 1]))
                               or (j < len(ws) and ws[j].joined and extends(ws[j])))
-    return stats
+    return dict(stats)
 
 
 def extends(word):
