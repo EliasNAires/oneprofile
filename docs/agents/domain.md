@@ -51,6 +51,8 @@ the later ADR wins; the overridden parts are marked below.
   against the decision record `src/main/resources/taxonomy/decisions.tsv`. Its gates: recall,
   precision and yield. *Overridden by 0015:* how recall is scored, and every key being safe.
   *Overridden by #62:* the record filtering candidates and deciding drawn ones.
+  *Overridden by 0016:* Jev deciding candidates, the Haiku drafter, and the precision and yield
+  gates.
 - **0014**: every rule loop calibrates its criterion, freezes it, and gates on adjudication.
   How a loop is worked: `docs/agents/rule-loop.md`.
 - **0015**: recall is scored one name at a time: code proposes and filters a segment's name-like
@@ -58,4 +60,9 @@ the later ADR wins; the overridden parts are marked below.
   grows from its drops. Each key is plain or context, set by a rule Jev checks. Lands in #54's
   first calibration, with a 300-segment gold set. *Overridden by #60:* the ordinary list, which
   the stoplist (`stopwords.tsv`) replaces. *Overridden by #61:* the filter's use of the decision
-  record.
+  record. *Overridden by 0016:* the rule and Jev check setting a key's kind.
+- **0016**: agents decide a skill discovery run in one pass (drop, spelling, new skill, split,
+  join), with recall's missed names in their pool, and a session reviews the whole draft. The
+  script only narrows the corpus, gated on recall alone; precision and yield are gone. Jev stays
+  recall's judge of pieces. The agent marks each key plain or context; how context keys are
+  matched is left to a later process.

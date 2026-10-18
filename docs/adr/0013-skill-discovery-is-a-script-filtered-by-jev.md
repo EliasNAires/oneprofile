@@ -1,7 +1,8 @@
 # Skill discovery is a script whose candidates Jev filters, against a decision record
 
-Status: accepted; recall and key safety superseded by ADR-0015, and the decision record's part in
-the measurements overridden by #62, as marked below
+Status: accepted; recall and key safety superseded by ADR-0015, the decision record's part in
+the measurements overridden by #62, and Jev deciding candidates and the precision and yield gates
+superseded by ADR-0016, as marked below
 
 The taxonomy was built in one-off steps (#37, #38, #40), and #40's pass cannot be repeated: its
 miner passed 8,290 names, about 70% noise, and two rounds of subagents reading them all used
@@ -15,7 +16,7 @@ be run again on each new snapshot (#41). This records its design, settled on 202
    document frequency, a category suggested from the known skills it sits beside, and three
    example segments. *Overridden by #62:* a name in the decision record is proposed like any
    other; the script skips only the keys of `skills.tsv`.
-2. **Jev** (ADR-0012) reads `docs/skill-criterion.md`, a candidate and its segments, and decides
+2. *Superseded by ADR-0016 (steps 2 and 3): agents decide and draft in one pass.* **Jev** (ADR-0012) reads `docs/skill-criterion.md`, a candidate and its segments, and decides
    keep or drop; for a keep, it picks one of the criterion's twelve categories.
 3. A **Haiku** agent drafts the `skills.tsv` row of each kept name: its id, canonical name and
    aliases, the canonical name and every alias a safe key.
@@ -40,6 +41,8 @@ not the quality of the taxonomy. A name the script never proposes, though, is lo
 input from being mostly noise.
 
 ## The gates
+
+*Superseded by ADR-0016:* precision and yield are no longer gates; recall is the script's only one.
 
 Scored each round by `scripts/score-skill-round` (#53), with Jev as the labeller:
 

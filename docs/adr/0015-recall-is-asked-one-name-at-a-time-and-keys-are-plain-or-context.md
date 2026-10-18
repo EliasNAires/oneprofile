@@ -1,6 +1,7 @@
 # Recall is asked one name at a time, and a key is plain or context
 
-Status: accepted; the filter's use of the decision record overridden by #61, as marked below
+Status: accepted; the filter's use of the decision record overridden by #61, and the rule and Jev
+check setting a key's kind superseded by ADR-0016, as marked below
 
 ADR-0013 scores skill discovery's recall by asking Jev, for each drawn segment, an open question:
 *does this segment name a skill that is not in this list?* Jev answers it badly, and criterion
@@ -75,7 +76,8 @@ column:
 - **Context**: matched only where a context rule says the text means the skill. In recall a
   context key is always judged by Jev in its segment.
 
-The attribute is set by a **rule** when the row is drafted, never by hand, so new keys get it and
+*Superseded by ADR-0016:* the agent that drafts a row marks each key's kind, and the rule and
+Jev's check below no longer run. The attribute is set by a **rule** when the row is drafted, never by hand, so new keys get it and
 the app can run the same rule when it extracts skills (#15). A key is context when it is an
 ordinary word, or C or R. Jev checks the rule: for each key the rule calls plain, about 20 of its
 mentions are drawn and Jev answers whether the key means the skill there. A plain key must mean it
