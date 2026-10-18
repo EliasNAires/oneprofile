@@ -55,9 +55,15 @@ matched, and whether plain keys misfire, are decided by a process not yet design
   script never proposes is lost for good, which is why recall is the one thing worth measuring.
 - **Precision and yield are dropped as gates.** They existed to keep Jev's input from being mostly
   noise and to stop the script cutting valid names to raise precision. With agents reading the
-  pool, the only limit is size: a run's pool has to fit the agent batches of one usage window. The
-  first run's 2,888 candidates took 25 batches of 60.
-- **The script changes only when recall fails**, or the pool outgrows that limit. The rounds of
+  pool, the only limit is cost. The deciding agent is Sonnet, one headless `claude -p` process per
+  batch of 60, each reporting its cost. Measured on #55's candidates
+  (`docs/measurements/skill-decider-2026-10-18.md`), it agrees with that run's review on 82% of
+  keeps and drops, and a batch costs $0.65–0.92 at list price, almost all of it thinking that no
+  setting turns off. A run of about 2,000 candidates is about 35 batches, more than one usage
+  window. Elias took that over Haiku, which halves the cost but leaves entries out, marks no doubt
+  and drafts more wrong ids, all work moved to the review (2026-10-18).
+- **The script changes only when recall fails**, or the pool grows well past the 2,054 candidates
+  it proposed on `classified-2026-10-06`. The rounds of
   #54 tuned it against precision and yield, and are not reopened.
 
 ## Jev's part

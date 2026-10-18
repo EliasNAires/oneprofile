@@ -1,0 +1,300 @@
+batch	name	review_decision	review_source	review_id	agent_kind	agent_id	agent_reason	agent_note
+1	100G	drop	jev		drop		a generic concept: a bandwidth/speed designation, not a named technology	
+1	100G+	drop	jev		drop		a generic concept: a bandwidth/speed designation, not a named technology	
+1	10pm	drop	jev		drop		not a technology at all: a time of day	
+1	19c	drop	session		spelling	oracle-database		doubt: bare '19c' alone is ambiguous outside the Oracle-version context it's always written in here
+1	1Password	drop	jev		new	1password		
+1	200G	drop	jev		drop		a generic concept: a bandwidth/speed designation, not a named technology	
+1	2FA	drop	jev		drop		a generic concept: a practice/method, not a named technology	
+1	3D CAD	drop	jev		drop		a generic concept: names a category of software, not one specific technology	
+1	3DEXPERIENCE	drop	session		new	3dexperience		
+1	3D Gaussian Splatting	drop	session		drop		a technique, not a named technology	
+1	3G	keep	jev	3g	drop		a generic concept: a cellular generation designation, not a named technology	
+1	3GPP	keep	jev	3gpp	drop		not a technology at all: a standards body, not a technology it produces	
+1	3PAR	keep	jev	3par	new	3par		
+1	3PL	drop	jev		drop		a generic concept: a business practice, not a named technology	
+1	400G	drop	jev		drop		a generic concept: a bandwidth/speed designation, not a named technology	
+1	4AM	drop	jev		drop		not a technology at all: a time of day	
+1	4D	drop	jev		drop		a generic concept: a descriptor, not a named technology	
+1	4G	keep	jev	4g	drop		a generic concept: a cellular generation designation, not a named technology	
+1	4HANA	drop	session		spelling	sap-s-4hana		doubt: overrides the earlier drop — keys match regardless of spacing, and '4HANA' is already the held key '4 HANA' with the space removed
+1	4HANA Finance	drop	session		new	sap-s-4hana-finance		doubt: could instead be a named feature kept under SAP S/4HANA rather than its own product
+1	4HANA Public	drop	session		drop		a fragment of a longer name that ads never use alone (SAP S/4HANA Public Cloud)	
+1	5G	keep	jev	5g	drop		a generic concept: a cellular generation designation, not a named technology	
+1	60fps	drop	jev		drop		not a technology at all: a performance measure, not a named technology	
+1	6sense	drop	jev		drop		software no software person is hired for	doubt: 6sense is a marketing/sales SaaS platform; unclear whether engineers are hired for it specifically
+1	6.x	drop	jev		drop		not a technology at all: a bare version number attached to several different products	
+1	7AM	drop	jev		drop		not a technology at all: a time of day	
+1	800G	drop	jev		drop		a generic concept: a bandwidth/speed designation, not a named technology	
+1	802.11a	keep	session	802-11	drop		obscure or historical: a superseded Wi-Fi PHY standard, never asked for on its own	doubt: a real IEEE standard, but always listed amid newer sub-standards (b/g/n/ac/ax/be) and low frequency
+1	802.1AS	keep	session	gptp	new	ieee-802-1as		
+1	802.1q	keep	jev	ieee-802-1q	new	ieee-802-1q		
+1	A+	drop	jev		drop		a compliance framework, regulation or certification (CompTIA A+); also an ordinary phrase ("A+ teams")	
+1	A1	drop	jev		drop		an ambiguous abbreviation: names several things, none dominant	
+1	a11y	drop	jev		drop		a generic concept: accessibility, a practice, not a named technology	
+1	A2A	drop	jev		new	a2a		
+1	A2B	keep	jev	a2b	new	a2b		
+1	AAAI	drop	jev		drop		not a technology at all: an academic/professional organization	
+1	AAC	drop	session		drop		an ambiguous abbreviation: names several things, none dominant	doubt: segments split between the audio codec and Oracle's unrelated 'Advanced Access Controls' module
+1	aATP	drop	session		new	aatp		doubt: could instead be a named feature kept under SAP S/4HANA rather than its own product
+1	ABL	drop	jev		drop		an ambiguous abbreviation: names several things, none dominant	
+1	Access Manager	drop	jev		drop		a fragment of a longer name that ads never use alone (e.g. Oracle Access Manager), or a certification title	
+1	Accumulo	keep	jev	apache-accumulo	new	accumulo		
+1	ACD	drop	jev		drop		a generic concept: a call-routing feature, not a named technology	
+1	ACF2	keep	jev	acf2	new	acf2		
+1	ACH	drop	jev		drop		a generic concept: a payment clearing system, not a vendor technology	doubt: ACH is a defined payment network/standard, so it could fairly be read as a kept protocol instead
+1	ACI	keep	jev	cisco-aci	drop		an ambiguous abbreviation: names several things, none dominant	
+1	ACK	drop	session		drop		an ambiguous abbreviation: names several things, none dominant	doubt: dropped mainly for the very common generic TCP ACK/NAK sense, though Alibaba Cloud's ACK service is real
+1	ACME	drop	session		new	acme		doubt: kept for the PKI protocol sense, but 'Acme Corp' is a very common generic placeholder name that collides under case-insensitive key matching
+1	ACMP	drop	jev		drop		not a technology at all: a professional certification body	
+1	Aconex	drop	session		new	aconex		
+1	ACORD	drop	session		new	acord		
+1	ACR	keep	jev	azure-container-registry	new	azure-container-registry		doubt: majority sense is Azure Container Registry, but 'ACR' has many other expansions and one segment (non-English, robotics) uses a different one
+1	Active Directory Services	keep	jev	active-directory	spelling	active-directory		
+1	Active Workspace	drop	session		new	active-workspace		doubt: a real Siemens Teamcenter product, but the words also read as an ordinary phrase, as one segment shows
+1	Acumatica	drop	session		new	acumatica		
+1	ADB	keep	jev	android-debug-bridge	new	android-debug-bridge		
+1	ADC	drop	jev		drop		a generic concept: a hardware/networking category, not a named technology	
+1	ADE	drop	session		new	automated-device-enrollment		doubt: Apple's Automated Device Enrollment is dominant here, but 'ADE' is also a common healthcare abbreviation (Adverse Drug Event)
+1	ADFDI	drop	session		new	adf-desktop-integration		
+1	ADK	keep	session	google-agent-development-kit	spelling	google-agent-development-kit		doubt: overrides the prior drop since revision 4 reopens bare-form drops, treating bare 'ADK' as Google ADK's bare form; also a historical homonym (Android Open Accessory Development Kit was once also called ADK)
+1	ADM-2certification	drop	jev		drop		a compliance framework, regulation or certification (a Salesforce Administrator certification code)	
+2	Dapr	keep	jev	dapr	new	dapr		
+2	Darktrace	keep	jev	darktrace	new	darktrace		
+2	Dash	drop	session		drop		names several things, none dominant	doubt: segments split between Plotly Dash's bare form and MPEG-DASH/HLS streaming's bare form, neither dominant
+2	Dassault	drop	jev		drop		a vendor's name	
+2	Dassault 3DEXPERIENCE	drop	session		drop		a technology no software person is hired for	
+2	Data 360	drop	session		new	salesforce-data-360		doubt: 'Data 360' reads as a generic phrase outside the Salesforce context named in segment 3
+2	dataanalytics	drop	jev		drop		a generic concept	
+2	Databrick	drop	jev		spelling	databricks		
+2	Databricks Apps	keep	jev	databricks-apps	new	databricks-apps		
+2	Databricks Asset Bundles	keep	jev	databricks-asset-bundles	new	databricks-asset-bundles		
+2	Databricks Genie	keep	jev	databricks-genie	new	databricks-genie		
+2	Databricks Lakeflow	keep	jev	databricks-lakeflow	new	databricks-lakeflow		
+2	Databricks Lakehouse	keep	session	databricks	spelling	databricks		
+2	Databricks Unity Catalog	keep	jev	databricks-unity-catalog	new	databricks-unity-catalog		
+2	Data Dog	keep	jev	datadog	spelling	datadog		
+2	Datadog LLM Observability	keep	jev	datadog-llm-observability	new	datadog-llm-observability		
+2	Data Explorer	drop	jev		drop		names several things, none dominant	
+2	Dataflows Gen2	keep	jev	dataflows-gen2	new	dataflows-gen2		
+2	DataFrame	drop	jev		drop		a generic concept	
+2	Data Hub	drop	jev		drop		a generic concept	doubt: segments use it for Oracle's Product Data Hub and Google's Ads Data Hub, not the DataHub catalog tool in similar
+2	Dataiku	keep	jev	dataiku	new	dataiku		
+2	DataLake	drop	jev		drop		a generic concept	
+2	Data Loader	keep	session	salesforce-data-loader	drop		names several things, none dominant	doubt: segments name Salesforce's bulk-data tool, not the DataLoader library in similar; the space-split rule would equate the keys but that risks a wrong key
+2	Dataplex	keep	jev	dataplex	new	dataplex		doubt: dropped under revision 0 (#40); under the current criterion a named GCP managed service reads as a keep
+2	DataStage	keep	session	ibm-datastage	spelling	ibm-datastage		
+2	datastore	drop	session		drop		a generic concept	
+2	DataStudio	keep	jev	google-looker-studio	spelling	google-looker-studio		
+2	Dataviz	drop	jev		drop		a generic concept	
+2	Datawarehouse	drop	jev		drop		a generic concept	
+2	DataZone	keep	jev	datazone	new	amazon-datazone		
+2	Datorama	drop	session		new	datorama		
+2	Datto	keep	jev	datto	drop		a vendor's name	
+2	DB	drop	jev		drop		a generic concept	
+2	DBA	drop	jev		drop		names several things, none dominant	
+2	DBaaS	drop	jev		drop		a generic concept	
+2	DBC	drop	session		drop		a technology no software person is hired for	doubt: CAN signal database file format, real but niche to automotive/embedded work
+2	DBM	drop	jev		drop		names several things, none dominant	
+2	DBRE	drop	jev		drop		a practice, not a named technology	
+2	DCC	drop	jev		drop		a generic concept	
+2	DCI	drop	jev		drop		names several things, none dominant	
+2	DCM	drop	jev		drop		names several things, none dominant	
+2	DDL	drop	jev		drop		a generic concept	
+2	DDM	drop	session		drop		names several things, none dominant	
+2	DDoS	drop	jev		drop		a generic concept	
+2	DDP	drop	session		drop		names several things, none dominant	doubt: segments split between PyTorch's DistributedDataParallel and the shipping incoterm (paired with FOB)
+2	DDR	keep	jev	ddr	drop		names several things, none dominant	
+2	DDR4	keep	jev	ddr4	drop		a technology no software person is hired for	doubt: a memory standard mostly named by hardware/silicon engineers, borderline for software roles
+2	DealHub	drop	session		drop		a technology no software person is hired for	doubt: CPQ software some RevOps/sales-engineering roles name
+2	Decagon	drop	session		new	decagon		
+2	dedupe	drop	session		drop		a generic concept	doubt: one segment names the Python `dedupe` library specifically alongside Numpy/Pandas, but most uses are the generic practice
+2	DeepAR	keep	jev	deepar	new	deepar		doubt: dropped under revision 0 (#40); under the current criterion a named ML model reads as a keep
+2	DeepEval	keep	jev	deepeval	new	deepeval		
+2	Deepgram	keep	jev	deepgram	new	deepgram		
+2	DeepSeek	keep	jev	deepseek	new	deepseek		
+2	DEF	drop	jev		drop		names several things, none dominant	
+2	Defender	keep	session	microsoft-defender	spelling	microsoft-defender		
+2	Delinea	drop	jev		drop		a vendor's name	
+2	Dell	drop	jev		drop		a vendor's name	
+2	Dell Boomi	keep	jev	boomi	spelling	boomi		
+2	Dell PowerStore	keep	jev	dell-powerstore	new	dell-powerstore		
+3	JIT	drop	jev		drop		a generic concept	
+3	Jitterbit	keep	jev	jitterbit	new	jitterbit		
+3	J-Link	keep	jev	j-link	new	j-link		
+3	JLPT N1	drop	jev		drop		not a technology at all	
+3	JNCIP	drop	jev		drop		a compliance framework, regulation or certification	
+3	JOOQ	keep	jev	jooq	new	jooq		
+3	JPD	drop	jev		new	jira-product-discovery		doubt: niche Atlassian abbreviation, borderline recognition outside the Jira ecosystem
+3	JPEG	keep	jev	jpeg	new	jpeg		
+3	JPL	drop	jev		drop		not a technology at all	
+3	JREAP	keep	jev	jreap	new	jreap		doubt: narrow defense-specific data-link protocol, borderline obscure outside that niche
+3	JSF	drop	jev		drop		names several things, none dominant	
+3	JSI	drop	session		drop		a fragment of a longer name	doubt: reads as a named React Native feature the current wording might keep, but the prior drop is final since revisions 4/5 reopen only bare-form drops
+3	JSM	keep	jev	jira	new	jira-service-management		
+3	JSON	keep	jev	json	new	json		
+3	JSONL	keep	jev	jsonl	new	jsonl		
+3	JSON-LD	keep	jev	json-ld	new	json-ld		
+3	Julia	keep	session	julialang	spelling	julialang		
+3	jumpstart	drop	jev		drop		an ordinary word used in its ordinary sense	
+3	Junie	drop	jev		new	junie		
+3	Juniper	drop	jev		drop		a vendor's name	
+3	Juniper Mist	keep	jev	juniper-mist	new	juniper-mist		
+3	Juniper Networks	drop	jev		drop		a vendor's name	
+3	JUnit 5	keep	jev	junit	spelling	junit		
+3	Jupiter	drop	jev		drop		a homonym of something else	
+3	JupyterHub	keep	jev	jupyterhub	new	jupyterhub		
+3	JWICS	drop	jev		new	jwics		doubt: a named classified network/environment rather than a product built with, borderline whether it counts as a technology
+3	JWTs	keep	jev	jwt	spelling	jwt		
+3	Kafka Connect	keep	jev	apache-kafka	new	kafka-connect		
+3	Kai	drop	jev		drop		names several things, none dominant	
+3	Kali	keep	jev	kali-linux	spelling	kali-linux		
+3	Kamailio	keep	jev	kamailio	new	kamailio		
+3	Kandji MDM	keep	jev	kandji	drop		an ordinary word after the name	doubt: 'MDM' may just describe Kandji's category rather than a distinct product
+3	Kantar	drop	jev		drop		a vendor's name	
+3	Kantata	drop	jev		drop		software no software person is hired for	
+3	Karate	keep	jev	karate	new	karate		
+3	Kargo	keep	jev	kargo	new	kargo		
+3	Kaseya VSA	keep	jev	kaseya-vsa	new	kaseya-vsa		
+3	Katalon	keep	jev	katalon	new	katalon		
+3	KDB	keep	session	kdb	new	kdb-plus		doubt: prior drop under revision 0 may have been for being an unqualified bare form of kdb+, which revision 4 reopens; also a short, ambiguity-prone abbreviation
+3	Kenntnisse	drop	jev		drop		not a technology at all	
+3	Kettle	drop	session		drop		a homonym of something else	doubt: only one of three segments uses it for the Pentaho/Kettle ETL tool, the others name a company and a snack brand
+3	Keychain	drop	session		drop		a generic concept	
+3	Keysight	drop	jev		drop		a vendor's name	
+3	Keysight ADS	drop	session		new	keysight-ads		
+3	keystone	drop	session		new	openstack-keystone		doubt: one of three segments uses 'keystone' as an ordinary adjective, not the OpenStack service
+3	Keystore	drop	session		drop		a generic concept	
+3	KiCad	drop	session		new	kicad		
+3	Kimball	drop	jev		drop		a generic concept	
+3	Kinaxis	drop	session		drop		a vendor's name	
+3	KISS	drop	jev		drop		a generic concept	
+3	kit	drop	jev		drop		a generic concept	
+3	Klaviyo	drop	session		new	klaviyo		
+3	KLayout	drop	session		new	klayout		
+3	Kling	keep	jev	kling	new	kling		
+3	KMIP	keep	jev	kmip	new	kmip		
+3	KML	keep	jev	kml	new	kml		
+3	Knative	keep	jev	knative	new	knative		
+3	kNN	drop	jev		drop		a generic concept	
+3	Kno2	drop	session		new	kno2		
+4	PTC Windchill	keep	jev	windchill	spelling	windchill		
+4	Pty	drop	jev		drop		not a technology at all	
+4	Pub	drop	session		join	google-cloud-pub-sub		
+4	pubsec	drop	jev		drop		not a technology at all	
+4	PuTTY	keep	jev	putty	new	putty		
+4	PVsyst	drop	session		new	pvsyst		
+4	PWA	drop	jev		drop		a generic concept	
+4	Py	drop	jev		join	pyspark		
+4	PyArrow	keep	jev	pyarrow	new	pyarrow		
+4	PydanticAI	keep	jev	pydantic-ai	spelling	pydantic-ai		
+4	PyData	drop	jev		drop		not a technology at all	doubt: names a Python community/conference, close to a vendor-less generic umbrella rather than one technology
+4	Pylon	drop	jev		new	pylon		
+4	PyMuPDF	keep	jev	pymupdf	new	pymupdf		
+4	Pyomo	keep	jev	pyomo	new	pyomo		
+4	PyPI	keep	jev	pypi	new	pypi		
+4	PyQt	keep	jev	pyqt	new	pyqt		
+4	PyRIT	keep	jev	pyrit	new	pyrit		
+4	Python Mastery	drop	jev		drop		an ordinary word before or after it	
+4	Python NLP	drop	jev		drop		a generic concept	
+4	PyTorch DDP	keep	jev	pytorch	spelling	pytorch		doubt: DDP is a built-in PyTorch feature ads name on its own, like GKE Workload Identity, but could instead be read as technology-plus-ordinary-qualifier
+4	PyTorch Distributed	keep	jev	pytorch	drop		a generic concept	doubt: a prior drop is final here, though it reads much like PyTorch DDP/Profiler which we keep as named features of PyTorch
+4	PyTorch Lightning	keep	jev	pytorch-lightning	new	pytorch-lightning		
+4	PyTorch Profiler	keep	jev	pytorch	spelling	pytorch		doubt: a bundled, by-name PyTorch feature compared alongside separate tools like Nsight; could be read as technology-plus-qualifier instead
+4	Q	drop	jev		drop		a single letter	
+4	Q2	drop	jev		drop		a homonym of something else, where the text means the other thing	
+4	QAM	drop	jev		drop		a generic concept	
+4	QBO	keep	jev	quickbooks	spelling	quickbooks		
+4	Q Developer	keep	jev	amazon-q-developer	join	amazon-q-developer		
+4	QL	drop	jev		drop		an ambiguous abbreviation	
+4	QlikSense	keep	jev	qlik	spelling	qlik		
+4	QLoRA	drop	session		drop		a generic concept	doubt: a fine-tuning technique rather than a single named tool, but widely treated as a distinct named method on CVs
+4	QM	drop	jev		drop		an ambiguous abbreviation	
+4	QMetry	keep	jev	qmetry	new	qmetry		
+4	QoS	drop	jev		drop		a generic concept	
+4	QRadar	keep	jev	qradar	new	qradar		
+4	QSA	drop	jev		drop		a compliance framework, regulation or certification	
+4	QSC	drop	jev		drop		a vendor's name	
+4	Q-SYS	drop	session		new	q-sys		
+4	QTC	drop	jev		drop		a generic concept	
+4	Qualcomm	drop	jev		drop		a vendor's name	
+4	Questa	keep	jev	questa	new	questa		
+4	Queueable	drop	session		drop		an ordinary word	doubt: a prior drop is final; could instead be read as a piece of the named Salesforce feature "Queueable Apex"
+4	QuickBooks Online	keep	jev	quickbooks	spelling	quickbooks		
+4	Qwen	keep	jev	qwen	new	qwen		
+4	R2	drop	session		drop		an ambiguous abbreviation	doubt: a prior drop is final, though two of three segments name Cloudflare's R2 object storage; kept dropped given the token's heavy overload elsewhere (NIST revisions, etc.) and the when-in-doubt rule
+4	R3	drop	jev		drop		not a technology at all	
+4	R53	keep	session	amazon-route-53	new	amazon-route-53		
+4	Rackspace	drop	jev		new	rackspace		
+4	Radix	keep	session	radix-ui	spelling	radix-ui		doubt: one segment uses RADIX for an unrelated DoD process, but the other two match Radix UI in design-system contexts
+4	Raft	drop	session		drop		a generic concept	doubt: a formally specified consensus protocol, arguably a standard software implements like gRPC, but read here as a distributed-systems technique/architecture
+4	Ragas	keep	jev	ragas	new	ragas		
+4	RAII	drop	jev		drop		a generic concept	
+4	Rainforest	drop	session		drop		names several things, none dominant	
+4	RAM	drop	jev		drop		a generic concept	
+4	RAML	keep	jev	raml	new	raml		
+4	Random Forest	drop	session		drop		a generic concept	
+4	Ranger	keep	jev	ranger	new	apache-ranger		
+4	RAP	drop	session		new	abap-restful-application-programming-model		doubt: one of three segments uses RAP for an unrelated "Reconciliation Action Plan"; the SAP ABAP RAP model dominates the other two
+4	RASP	drop	jev		drop		a generic concept	
+4	Raspberry	drop	jev		spelling	raspberry-pi		
+5	WWDC	drop	jev		drop		not a technology at all	
+5	WYSIWYG	drop	jev		drop		a generic concept	
+5	X++	keep	jev	x-plus-plus	new	x-plus-plus		
+5	X.509	keep	jev	x-509	new	x-509		
+5	x509	keep	jev	x-509	spelling	x-509		
+5	Xactly	drop	session		drop		a vendor's name	
+5	xarray	keep	jev	xarray	new	xarray		
+5	Xavier	drop	session		drop		a piece of a longer name that ads never use alone for the product	doubt: NVIDIA Jetson/Drive generation name listed bare beside Orin/AGX, could be read as a bare form of the platform
+5	Xbox	drop	jev		drop		not a technology at all	
+5	Xbox Series X	drop	jev		drop		not a technology at all	
+5	XBRL	keep	jev	xbrl	new	xbrl		
+5	Xcelium	keep	jev	xcelium	new	xcelium		
+5	XCP	keep	jev	xcp	new	xcp		
+5	XCTest	keep	jev	xctest	new	xctest		
+5	XDR	drop	jev		drop		an ambiguous abbreviation	
+5	Xen	keep	jev	xen	new	xen		
+5	XID	drop	jev		drop		a generic concept	
+5	XM	drop	jev		drop		an ambiguous abbreviation	
+5	XP	drop	jev		drop		a generic concept	
+5	Xpedition	drop	session		new	xpedition		
+5	XProtect	keep	jev	xprotect	new	xprotect		
+5	XPU	drop	jev		drop		a generic concept	
+5	XR	drop	jev		drop		a generic concept	
+5	X-ray	drop	jev		drop		a homonym of something else	doubt: segments split between AWS X-Ray tracing and physical x-ray imaging, neither clearly dominant here
+5	Xray	drop	session		new	xray		
+5	XSD	keep	jev	xsd	new	xsd		
+5	XSL	keep	session	xslt	spelling	xslt		doubt: ads may mean the broader XSL language family rather than XSLT specifically
+5	XSOAR	keep	session	cortex-xsoar	new	xsoar		
+5	XState	keep	jev	xstate	new	xstate		
+5	XTP	drop	jev		drop		an ambiguous abbreviation	
+5	X-Ways	keep	jev	x-ways	new	x-ways-forensics		
+5	YARA-L	keep	jev	yara-l	new	yara-l		
+5	years+	drop	jev		drop		not a technology at all	
+5	Yellow	drop	jev		drop		an ordinary word	
+5	YOLO	keep	jev	yolo	new	yolo		
+5	YouGov	drop	jev		drop		not a technology at all	
+5	YouTrack	drop	jev		new	youtrack		
+5	Zalando	drop	jev		drop		not a technology at all	doubt: df is mostly the e-commerce company, but two of three segments reference the Zalando Postgres operator tool
+5	Zanzibar	drop	session		drop		a generic concept	
+5	z.B	drop	jev		drop		an ordinary word	
+5	ZBrush	drop	jev		drop		a technology no software person is hired for	
+5	ZDX	keep	jev	zdx	new	zdx		
+5	ZenML	keep	jev	zenml	new	zenml		
+5	Zenoss	keep	jev	zenoss	new	zenoss		
+5	Zeppelin	keep	jev	zeppelin	new	apache-zeppelin		
+5	Zerto	keep	jev	zerto	new	zerto		
+5	ZIA	drop	jev		new	zscaler-internet-access		
+5	Zigbee	keep	jev	zigbee	new	zigbee		
+5	ZIO	keep	jev	zio	new	zio		
+5	Zoho	drop	session		drop		a vendor's name	
+5	Zoom	drop	jev		drop		consumer, office or browser software	
+5	Zoom Contact Center	drop	jev		new	zoom-contact-center		
+5	ZoomInfo	drop	jev		new	zoominfo		
+5	ZPA	keep	jev	zscaler-private-access	new	zscaler-private-access		
+5	Zscaler ZIA	keep	jev	zscaler-zia	spelling	zscaler-internet-access		
+5	Zsh	keep	jev	zsh	new	zsh		
+5	ZTNA	drop	jev		drop		a generic concept	
+5	Zuora	drop	session		drop		a vendor's name	
+5	Zuora Revenue	drop	session		new	zuora-revenue		
+5	Zuora RevPro	drop	session		spelling	zuora-revenue		
