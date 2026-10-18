@@ -1,14 +1,18 @@
-"""Tests of the pure parts of discover-skills, the run of skill discovery on a snapshot (#55).
+"""Tests of discover-skills, the run of skill discovery on a snapshot (#55, #64). The deciding agent is
+a stub, so the tests spend nothing.
 
     python3 -m unittest discover -s scripts
 """
 
+import json
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import skillloop  # noqa: E402
 from test_skillloop import load_script  # noqa: E402
 
 run = load_script("discover-skills")
@@ -46,6 +50,133 @@ class SimilarTest(unittest.TestCase):
 
     def test_ignores_keys_of_one_or_two_letters_inside_a_name(self):
         self.assertEqual(run.similar("Go-Live Planner", KEYS), [])
+
+
+SEGMENTS = skillloop.Segments([
+    "v1\tWe deploy with Spacelift and Terraform.",
+    "v2\tExperience with Spacelift stacks.",
+    "v3\tBuilt on Fast API and Postgres.",
+])
+
+ROWS = [("fastapi", "FastAPI", "framework", ["FastAPI"], set())]
+
+
+class BatchEntriesTest(unittest.TestCase):
+
+    def entries(self, candidates, record=None):
+        return run.batch_entries(candidates, SEGMENTS, {"fastapi": "FastAPI"}, ROWS, record or {})
+
+    def test_every_candidate_a_segment_mentions_is_an_entry_in_compact_order(self):
+        entries, _ = self.entries([{"name": "Spacelift", "df": 2, "forms": {"Spacelift": 2}},
+                                   {"name": "Fast API", "df": 1}])
+        self.assertEqual([e["name"] for e in entries], ["Fast API", "Spacelift"])
+        self.assertEqual(entries[1]["spellings"], {"Spacelift": 2})
+        self.assertEqual(len(entries[1]["segments"]), 2)
+
+    def test_a_candidate_no_segment_mentions_is_set_apart(self):
+        entries, unmentioned = self.entries([{"name": "Key Vault Azure", "df": None}])
+        self.assertEqual((entries, unmentioned), ([], ["Key Vault Azure"]))
+
+    def test_a_name_given_takes_its_document_frequency_from_the_segments(self):
+        entries, _ = self.entries([{"name": "Spacelift", "df": None}])
+        self.assertEqual((entries[0]["df"], entries[0]["spellings"]), (2, {}))
+
+    def test_similar_skills_carry_their_id_category_and_keys(self):
+        entries, _ = self.entries([{"name": "Fast API", "df": 1}])
+        self.assertEqual(entries[0]["similar"], [{"id": "fastapi", "canonical": "FastAPI", "category": "framework",
+                                                  "keys": ["FastAPI"]}])
+
+    def test_the_record_holds_every_decision_on_the_name_form(self):
+        record = {"spacelift": [{"decision": "drop", "revision": "3", "source": "jev"},
+                                {"decision": "keep", "revision": "5", "source": "session"}]}
+        entries, _ = self.entries([{"name": "Spacelift", "df": 2}], record)
+        self.assertEqual(entries[0]["record"], record["spacelift"])
+
+
+class ReadRecordTest(unittest.TestCase):
+
+    def test_keeps_every_row_of_a_name_form_in_order(self):
+        with tempfile.NamedTemporaryFile("w", suffix=".tsv") as decisions:
+            decisions.write("name\tdecision\trevision\tsnapshot\tsource\n"
+                            "dataplex\tdrop\t3\traw-2026-09-20\tjev\n"
+                            "kdb\tdrop\t3\traw-2026-09-20\tjev\n"
+                            "dataplex\tkeep\t4\tclassified-2026-10-06\tsession\n")
+            decisions.flush()
+            record = run.read_record(decisions.name)
+        self.assertEqual(record["dataplex"], [{"decision": "drop", "revision": "3", "source": "jev"},
+                                              {"decision": "keep", "revision": "4", "source": "session"}])
+
+
+def entry(name):
+    return {"name": name, "df": 1, "spellings": {}, "segments": [], "similar": [], "record": []}
+
+
+# Stands in for `claude -p`: decides every entry of the batch its prompt names, except one named
+# "Left Out", and prints a result as the headless command does.
+STUB = """#!/usr/bin/env python3
+import json, re, sys
+batch = re.search(r"Decide the batch (\\S+)\\.json\\.", sys.argv[-1]).group(1)
+names = [e["name"] for e in json.load(open(batch + ".json")) if e["name"] != "Left Out"]
+json.dump({n: {"kind": "drop", "reason": "a vendor's name"} for n in names}, open(batch + ".decisions.json", "w"))
+print(json.dumps({"is_error": False, "total_cost_usd": 0.5, "duration_ms": 1000,
+                  "usage": {"input_tokens": 10, "cache_creation_input_tokens": 20,
+                            "cache_read_input_tokens": 30, "output_tokens": 40}}))
+"""
+
+
+class DecideTest(unittest.TestCase):
+
+    def setUp(self):
+        self.folder = tempfile.TemporaryDirectory()
+        self.run_dir = Path(self.folder.name)
+        stub = self.run_dir / "claude"
+        stub.write_text(STUB)
+        stub.chmod(0o755)
+        self.claude = run.CLAUDE
+        run.CLAUDE = str(stub)
+
+    def tearDown(self):
+        run.CLAUDE = self.claude
+        self.folder.cleanup()
+
+    def write(self, *batches):
+        run.write_batches([entry(name) for batch in batches for name in batch], self.run_dir, size=2)
+
+    def decided(self, number):
+        return json.loads((self.run_dir / f"batch-{number:03}.decisions.json").read_text())
+
+    def costs(self):
+        return run.read_tsv(self.run_dir / "costs.tsv")
+
+    def test_decides_every_batch_and_counts_its_cost(self):
+        self.write(["Microsoft", "Spacelift"], ["Tempo"])
+        self.assertEqual(run.decide(self.run_dir), [])
+        self.assertEqual(set(self.decided(1)), {"Microsoft", "Spacelift"})
+        self.assertEqual(set(self.decided(2)), {"Tempo"})
+        self.assertEqual([(c["batch"], c["cost_usd"], c["output_tokens"]) for c in self.costs()],
+                         [("batch-001", "0.5", "40"), ("batch-002", "0.5", "40")])
+
+    def test_skips_a_batch_already_decided(self):
+        self.write(["Microsoft", "Spacelift"])
+        (self.run_dir / "batch-001.decisions.json").write_text(json.dumps(
+            {"Microsoft": {"kind": "drop"}, "Spacelift": {"kind": "new"}}))
+        self.assertEqual(run.decide(self.run_dir), [])
+        self.assertEqual(self.decided(1)["Spacelift"], {"kind": "new"})
+        self.assertFalse((self.run_dir / "costs.tsv").exists())
+
+    def test_reports_a_batch_with_entries_left_out_and_decides_it_again_next_time(self):
+        self.write(["Left Out", "Microsoft"])
+        self.assertEqual(run.decide(self.run_dir), [("batch-001", ["Left Out"])])
+        self.assertNotIn("Left Out", self.decided(1))
+        run.decide(self.run_dir)
+        self.assertEqual(len(self.costs()), 2)
+
+    def test_writing_batches_again_starts_a_new_run(self):
+        self.write(["Microsoft", "Spacelift"])
+        run.decide(self.run_dir)
+        self.write(["Tempo"])
+        self.assertEqual(sorted(p.name for p in self.run_dir.glob("batch-*")), ["batch-001.json"])
+        self.assertFalse((self.run_dir / "costs.tsv").exists())
 
 
 class ReviewRowTest(unittest.TestCase):

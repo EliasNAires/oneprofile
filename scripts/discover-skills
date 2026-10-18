@@ -1,19 +1,24 @@
 #!/usr/bin/env python3
-"""Runs skill discovery on a snapshot (ADR-0013, #55): Jev decides the candidates, a drafting agent
-writes the row of each kept name, and a session reviews the rows into skills.tsv and every decision
-into the decision record. docs/taxonomy.md holds the procedure; this is its plumbing.
+"""Runs skill discovery on a snapshot (ADR-0016, #64): the skill-decider agent decides every candidate
+and drafts the row of each it keeps, and a session reviews the decisions into skills.tsv and every
+decision into the decision record. docs/taxonomy.md holds the procedure; this is its plumbing.
 
-    scripts/discover-skills judge <candidates.tsv> [<names.txt>]
+    scripts/discover-skills batch <candidates.tsv> [<names.txt>]
+    scripts/discover-skills decide
     scripts/discover-skills collect
     scripts/discover-skills append
 
-judge reads the candidates scripts/skill_discovery.py wrote, and the names of a file, one a line,
-proposed besides them; a name that is a key of skills.tsv is skipped. Each is labelled by Jev, keep or
-drop and a category, from three segments mentioning it, under the current criterion revision (labels
-already made are reused, and the $4 stop holds). A name no segment mentions cannot be judged, and is a
-drop of the session's. It writes into the run's folder, next to the snapshot, the verdicts and the kept
-names in batches of BATCH for the skill-drafter agent, each with the skills of skills.tsv it may be a
-spelling of.
+batch reads the candidates scripts/skill_discovery.py wrote, and the names of a file, one a line,
+proposed besides them; a name that is a key of skills.tsv is skipped. It writes every candidate a
+segment mentions into the run's folder, next to the snapshot, in batches of BATCH sorted by compact
+name, each with its spellings, three segments, the skills of skills.tsv it may be a spelling of and
+every decision on it in the record. A name no segment mentions cannot be decided, and goes to
+unmentioned.txt. Writing the batches again starts a new run: earlier batches, decisions and costs go.
+
+decide runs the agent headless, PARALLEL batches at a time, on each batch whose decisions file lacks
+an entry of it, and so carries on where a failed or stopped run left off. A batch the agent leaves an
+entry out of is reported, and decided whole again by the next decide; no decision is filled in for
+the agent. The cost and tokens of each batch go to costs.tsv, and the run's total is printed.
 
 collect reads the agent's drafts and writes review.tsv: one row per candidate, the kept ones drafted,
 the dropped ones as Jev left them. The session edits it, marking each row it changes with the source
@@ -25,7 +30,9 @@ scripts/check-skill-keys after it, which sets the kind of every key.
 import csv
 import json
 import re
+import subprocess
 import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 sys.dont_write_bytecode = True
@@ -33,12 +40,19 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import skill_discovery  # noqa: E402
 import skillloop  # noqa: E402
 
-# The run's working files, next to the snapshot: verdicts, batches, drafts and the review.
+# The run's working files, next to the snapshot: batches, decisions, costs and the review.
 RUN = skillloop.SEGMENTS.parent / f"skill-run-{skillloop.SNAPSHOT}"
 
 EXAMPLES = 3  # segments per candidate, as each round of #54 gave Jev
 
-BATCH = 60  # about 10k tokens of entries, which a Haiku drafter drafts whole in one pass
+BATCH = 60  # $0.65-0.92 and 6-9 minutes of Sonnet a batch (docs/measurements/skill-decider-2026-10-18.md)
+
+PARALLEL = 4  # batches decided at once
+
+CLAUDE = "claude"
+
+COST_COLUMNS = ("batch", "cost_usd", "input_tokens", "cache_creation_input_tokens", "cache_read_input_tokens",
+                "output_tokens", "duration_ms")
 
 REVIEW_COLUMNS = ("name", "decision", "source", "id", "canonical", "category", "aliases", "note")
 
@@ -126,48 +140,107 @@ def read_tsv(path):
         return list(csv.DictReader(lines, delimiter="\t", quoting=csv.QUOTE_NONE))
 
 
-def judge(candidates_path, names_path=None):
+def read_record(path=skillloop.DECISIONS):
+    """Every decision of the record, by name form, in the order made; skillloop.read_decisions keeps only
+    the last."""
+    record = {}
+    for row in read_tsv(path):
+        record.setdefault(row["name"], []).append({k: row[k] for k in ("decision", "revision", "source")})
+    return record
+
+
+def batch_entries(candidates, segments, keys, skill_rows, record):
+    """The batch entry of each candidate a segment mentions, sorted by compact name so pieces of one name
+    sit together, and the names no segment mentions."""
+    by_canonical = {row[1]: row for row in skill_rows}
+    entries, unmentioned = [], []
+    for c in candidates:
+        form = skillloop.name_form(c["name"])
+        examples = segments.examples(c["name"], EXAMPLES, f"run-{skillloop.SNAPSHOT}-{form}")
+        if not examples:
+            unmentioned.append(c["name"])
+            continue
+        entries.append({"name": c["name"], "df": c["df"] or segments.document_frequency(c["name"]),
+                        "spellings": c.get("forms", {}), "segments": [text for _, text in examples],
+                        "similar": [{"id": by_canonical[s][0], "canonical": s, "category": by_canonical[s][2],
+                                     "keys": by_canonical[s][3]} for s in similar(c["name"], keys)],
+                        "record": record.get(form, [])})
+    entries.sort(key=lambda e: compact(e["name"]))
+    return entries, unmentioned
+
+
+def write_batches(entries, run, size=BATCH):
+    run.mkdir(exist_ok=True)
+    for old in [*run.glob("batch-*.json"), run / "costs.tsv"]:
+        old.unlink(missing_ok=True)
+    for number, start in enumerate(range(0, len(entries), size), 1):
+        (run / f"batch-{number:03}.json").write_text(json.dumps(entries[start:start + size], ensure_ascii=False,
+                                                                indent=1))
+
+
+def batch(candidates_path, names_path=None):
     keys = skillloop.read_keys()
     names = [line.strip() for line in open(names_path) if line.strip()] if names_path else []
     candidates = run_candidates(skill_discovery.read_candidates(candidates_path), names, keys)
-    segments = skillloop.read_segments()
-    asked, unmentioned = [], []
-    for candidate in candidates:
-        examples = segments.examples(candidate["name"], EXAMPLES, f"run-{skillloop.SNAPSHOT}-"
-                                     f"{skillloop.name_form(candidate['name'])}")
-        if examples:
-            asked.append({**candidate, "segments": [text for _, text in examples],
-                          "df": candidate["df"] or segments.document_frequency(candidate["name"])})
-        else:
-            unmentioned.append(candidate["name"])
-    print(f"{len(candidates)} candidates, {len(candidates) - len(asked)} mentioned in no segment: "
-          f"{', '.join(unmentioned)}")
-    skillloop.label([{"name": c["name"], "segments": c["segments"]} for c in asked])
-    labels = skillloop.read_labels()
-    if any(skillloop.name_form(c["name"]) not in labels for c in asked):
-        sys.exit("Some candidates have no label yet; run judge again once Jev can be asked")
-    RUN.mkdir(exist_ok=True)
-    for old in RUN.glob("batch-*.json"):
-        old.unlink()
-    verdicts, kept = [], []
-    for c in asked:
-        label = labels[skillloop.name_form(c["name"])]
-        keep = label["decision_probabilities"]["keep"]
-        verdicts.append((c["name"], c["df"], label["decision"], label["category"], f"{keep:.2f}"))
-        if label["decision"] == "keep":
-            kept.append({"name": c["name"], "df": c["df"], "category": label["category"],
-                         "spellings": c.get("forms", {}), "segments": c["segments"],
-                         "similar": similar(c["name"], keys)})
-    verdicts += [(name, 0, "unmentioned", "", "") for name in unmentioned]
-    write_tsv(RUN / "verdicts.tsv", ("name", "df", "decision", "category", "keep"), verdicts)
-    by_canonical = {row[1]: row for row in skillloop.read_skill_rows()}
-    kept.sort(key=lambda c: compact(c["name"]))
-    for number, start in enumerate(range(0, len(kept), BATCH), 1):
-        batch = [{**c, "similar": [{"id": by_canonical[s][0], "canonical": s, "category": by_canonical[s][2],
-                                    "keys": by_canonical[s][3]} for s in c["similar"]]}
-                 for c in kept[start:start + BATCH]]
-        (RUN / f"batch-{number:03}.json").write_text(json.dumps(batch, ensure_ascii=False, indent=1))
-    print(f"{len(kept)} kept of {len(asked)}, in {-(-len(kept) // BATCH)} batches under {RUN}")
+    entries, unmentioned = batch_entries(candidates, skillloop.read_segments(), keys, skillloop.read_skill_rows(),
+                                         read_record())
+    write_batches(entries, RUN)
+    (RUN / "unmentioned.txt").write_text("".join(f"{name}\n" for name in unmentioned))
+    print(f"{len(candidates)} candidates, {len(unmentioned)} mentioned in no segment: {', '.join(unmentioned)}")
+    print(f"{len(entries)} in {-(-len(entries) // BATCH)} batches under {RUN}")
+
+
+def left_out(batch_path):
+    """The names of a batch its decisions file has no decision for: all of them while it has none."""
+    names = [e["name"] for e in json.loads(batch_path.read_text())]
+    try:
+        decisions = json.loads(batch_path.with_suffix(".decisions.json").read_text())
+    except (FileNotFoundError, json.JSONDecodeError):
+        return names
+    return [name for name in names if name not in decisions]
+
+
+def decide_batch(batch_path):
+    """Runs the agent on one batch, and returns its headless result, or None when it printed none."""
+    prompt = f"Decide the batch {batch_path}. The criterion is {skillloop.CRITERION}."
+    done = subprocess.run([CLAUDE, "-p", "--agent", "skill-decider", "--model", "sonnet",
+                           "--add-dir", str(batch_path.parent), "--allowedTools", "Read,Write",
+                           "--permission-mode", "acceptEdits", "--output-format", "json", prompt],
+                          cwd=skillloop.REPO, capture_output=True, text=True)
+    try:
+        return json.loads(done.stdout)
+    except json.JSONDecodeError:
+        print(f"{batch_path.stem}: exit {done.returncode}, no result: {done.stderr.strip()[-500:]}")
+        return None
+
+
+def decide(run=RUN):
+    """Decides each batch with an entry left out, and returns the batches still left so, with the names."""
+    pending = [path for path in sorted(run.glob("batch-???.json")) if left_out(path)]
+    costs = run / "costs.tsv"
+    print(f"{len(pending)} batches to decide")
+    incomplete = []
+    with ThreadPoolExecutor(PARALLEL) as pool:
+        futures = {pool.submit(decide_batch, path): path for path in pending}
+        for future in as_completed(futures):
+            path, result = futures[future], future.result()
+            if result is not None:
+                usage = result.get("usage", {})
+                new = not costs.exists()
+                with open(costs, "a") as out:
+                    if new:
+                        out.write("\t".join(COST_COLUMNS) + "\n")
+                    out.write("\t".join([path.stem, str(result.get("total_cost_usd", "")),
+                                         *(str(usage.get(c, "")) for c in COST_COLUMNS[2:6]),
+                                         str(result.get("duration_ms", ""))]) + "\n")
+            missing = left_out(path)
+            if missing:
+                incomplete.append((path.stem, missing))
+            print(f"{path.stem}: " + (f"{len(missing)} left out: {', '.join(missing[:10])}" if missing else "decided"))
+    total = sum(float(row["cost_usd"] or 0) for row in read_tsv(costs)) if costs.exists() else 0
+    print(f"The run has cost ${total:.2f}." + (f" {len(incomplete)} batches left incomplete; run decide again."
+                                                if incomplete else ""))
+    return sorted(incomplete)
 
 
 def review_row(verdict, drafts):
@@ -223,8 +296,11 @@ def append():
 
 def main():
     command, *arguments = sys.argv[1:] or [""]
-    if command == "judge" and len(arguments) in (1, 2):
-        judge(*arguments)
+    if command == "batch" and len(arguments) in (1, 2):
+        batch(*arguments)
+    elif command == "decide" and not arguments:
+        if decide():
+            sys.exit(1)
     elif command == "collect" and not arguments:
         collect()
     elif command == "append" and not arguments:
