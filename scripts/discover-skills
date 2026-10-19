@@ -47,7 +47,7 @@ EXAMPLES = 3  # segments per candidate, as each round of #54 gave Jev
 
 BATCH = 60  # $0.65-0.92 and 6-9 minutes of Sonnet a batch (docs/measurements/skill-decider-2026-10-18.md)
 
-PARALLEL = 4  # batches decided at once
+PARALLEL = 15  # batches decided at once, the account's limit on concurrent agents
 
 CLAUDE = "claude"
 
@@ -204,7 +204,8 @@ def decide_batch(batch_path):
     """Runs the agent on one batch, and returns its headless result, or None when it printed none."""
     prompt = f"Decide the batch {batch_path}. The criterion is {skillloop.CRITERION}."
     done = subprocess.run([CLAUDE, "-p", "--agent", "skill-decider", "--model", "sonnet",
-                           "--add-dir", str(batch_path.parent), "--allowedTools", "Read,Write",
+                           "--add-dir", str(batch_path.parent), "--tools", "Read,Write", "--strict-mcp-config",
+                           "--allowedTools", "Read,Write",
                            "--permission-mode", "acceptEdits", "--output-format", "json", prompt],
                           cwd=skillloop.REPO, capture_output=True, text=True)
     try:

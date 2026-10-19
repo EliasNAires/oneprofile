@@ -48,3 +48,27 @@ Elias: **Sonnet, in batches of 60, one headless `claude -p` process per batch**.
   $23–32 at list price, more than one usage window.
 - Haiku halves the cost but leaves entries out while reporting the batch done, marks no doubt and
   drafts more wrong ids (ADB as new beside `android-debug-bridge`), which moves work to the review.
+
+## The headless command trimmed, and smaller batches (#64 step 1)
+
+`discover-skills decide` on batch 1 of `classified-2026-10-06` (60 candidates, 100G to Adwords),
+one run each, all at once:
+
+| Run | Cache writes | Output | Time | Cost | Same decision as A |
+|---|---|---|---|---|---|
+| `--allowedTools Read,Write` only, as first written | 90k | 98k | 18 min | $1.35 | |
+| A: plus `--tools Read,Write --strict-mcp-config` | 67k | 38k | 6.6 min | $0.66 | |
+| B: A plus `--safe-mode`, the agent as the system prompt | 64k | 34k | 5.7 min | $0.61 | 57/60 |
+| C: A in four batches of 15, at once | 103k | 39k | 2.8 min | $0.82 | 56/60 |
+
+- Loading only Read and Write and no MCP server saves about 23k input tokens a batch. The fall in
+  output is thinking varying between runs, as the two batch 5 runs above show, not the flags.
+- `--safe-mode` saves little beyond that, and `--bare` takes only an API key, not the account's
+  sign-in.
+- A batch of 15 costs about 25k input tokens of its own, so four of them cost a quarter more than
+  one of 60. The time they save comes from running at once, which batches of 60 get too: a run of
+  31 batches, 15 at a time, is three waves of about 7 minutes. Batches stay at 60, decided 15 at a
+  time, so pieces of one name stay in one batch.
+- The four disagreements: 4HANA (A reopens #55's drop as a spelling of `sap-s-4hana`), Adobe
+  Marketing and Adobe Marketing Cloud (A keeps them as one new skill, joined), Active Workspace (C
+  keeps it as new; PLM software).
