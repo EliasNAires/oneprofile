@@ -2,7 +2,7 @@
 
 Status: accepted; recall and key safety superseded by ADR-0015, the decision record's part in
 the measurements overridden by #62, and Jev deciding candidates and the precision and yield gates
-superseded by ADR-0016, as marked below
+superseded by ADR-0016, and a drop being final overridden by #64, as marked below
 
 The taxonomy was built in one-off steps (#37, #38, #40), and #40's pass cannot be repeated: its
 miner passed 8,290 names, about 70% noise, and two rounds of subagents reading them all used
@@ -93,7 +93,9 @@ software technology named in an OUT-leaning ad is still a skill. The run reads
 - Each row carries the **decision**, the **criterion revision** and the **snapshot** it was decided
   under, and its **source**: `#38`, `#40`, `jev` or `session`.
 - **A drop is final**, unless the criterion changes and the reviewer of the new revision names
-  that drop's reason as one it reopens. A keep means the name is a skill, under its own name or
+  that drop's reason as one it reopens. *Overridden by #64 (Elias, 2026-10-19):* no decision is
+  final; a run decides a name the record holds again under the current revision, and the earlier
+  decision is evidence, not a verdict. A keep means the name is a skill, under its own name or
   as another spelling of one.
 
 The decision record is **seeded once** from `docs/measurements/taxonomy-review-2026-09-24.tsv`

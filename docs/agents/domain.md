@@ -52,7 +52,8 @@ the later ADR wins; the overridden parts are marked below.
   precision and yield. *Overridden by 0015:* how recall is scored, and every key being safe.
   *Overridden by #62:* the record filtering candidates and deciding drawn ones.
   *Overridden by 0016:* Jev deciding candidates, the Haiku drafter, and the precision and yield
-  gates.
+  gates. *Overridden by #64:* a drop being final; a run decides a held name again, the record
+  being evidence.
 - **0014**: every rule loop calibrates its criterion, freezes it, and gates on adjudication.
   How a loop is worked: `docs/agents/rule-loop.md`.
 - **0015**: recall is scored one name at a time: code proposes and filters a segment's name-like

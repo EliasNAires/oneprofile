@@ -141,8 +141,9 @@ here is the rules loop: the rules are fixed until a later loop changes them. The
      hold. `append` refuses both. It cannot see a new skill that is a bare form of one held under a
      longer name (Glue, Salt), which is a spelling.
    - **Decisions the criterion does not support** (`docs/skill-criterion.md`), the doubts first.
-     The agent sometimes reopens a final drop of the decision record (4HANA as a spelling of
-     `sap-s-4hana`); check each decision on a name the record has dropped.
+     The agent decides a name the record holds again, and sometimes turns an earlier drop into a
+     keep (4HANA as a spelling of `sap-s-4hana`). The record is evidence, not a verdict: check
+     each decision on a name the record has dropped on its merits.
    - **Unsafe aliases**: an ambiguous abbreviation (SMB, CAPI) or a person's name.
 7. **Append.** `scripts/discover-skills append` adds each spelling and new skill to
    `skills.tsv` with the context marks, and every decision, drops included, to `decisions.tsv`.

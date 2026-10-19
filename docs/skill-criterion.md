@@ -153,9 +153,10 @@ Every kept skill has exactly one category, the one that best says what it is:
 
 ## Revisions
 
-A decision records the revision it was made under. A drop is final: a name dropped under one
-revision is not decided again under the next, unless the reviewer of the next names that drop's
-reason as one the new revision reopens (ADR-0013).
+A decision records the revision it was made under. No decision is final: a run decides a name the
+decision record holds again under the current revision, and the earlier decision is evidence, not a
+verdict (#64, overriding ADR-0013's final drops). Where a revision below says which drops it
+reopens, it was written under that earlier rule.
 
 - **Revision 5** (2026-10-07): from the open half of the gold set under revision 4. A name is
   judged exactly as given, so a name with an ordinary word around it, or part of a longer name

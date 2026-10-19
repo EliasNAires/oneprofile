@@ -365,7 +365,8 @@ _Avoid_: mined name, n-gram, suggestion
 
 **Decision**:
 Whether a candidate is a skill: keep or drop, made once for its name form, under one revision of
-the skill criterion. A drop is final unless a later revision reopens its reason.
+the skill criterion. No decision is final: a later run decides the name again under the current
+revision, with the earlier decision as evidence (#64).
 _Avoid_: review, judgment, label
 
 **Name Form**:
