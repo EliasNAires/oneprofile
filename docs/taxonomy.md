@@ -87,7 +87,7 @@ files are the record of how it started, not a build step.
 
 ## The first skill discovery run
 
-Run once by #55 on `classified-2026-10-06` (ADR-0013), in the steps of the next section:
+Run once by #55 on `classified-2026-10-06` (ADR-0013), before ADR-0016 replaced Jev and the drafter:
 
 - `scripts/skill_discovery.py` proposed 2,815 candidates, the same file round 3 of #54 wrote (the
   rerun reproduced it). The 334 names #40 left unreviewed joined them: 2,894 in all, of which 6 no
@@ -104,38 +104,53 @@ Run once by #55 on `classified-2026-10-06` (ADR-0013), in the steps of the next 
 
 ## How the taxonomy grows
 
-Each new snapshot (ADR-0006) is one session. Nothing here is the rules loop: the rules are fixed
-until a later loop changes them.
+Each new snapshot (ADR-0006) is one session, run as ADR-0016 says: the script narrows the corpus,
+the `skill-decider` agent decides every candidate, and the session reviews the decisions. Nothing
+here is the rules loop: the rules are fixed until a later loop changes them. The docstrings of
+`scripts/score-skill-round` and `scripts/discover-skills` hold the plumbing; this is the order.
 
 1. **Point the scripts at the snapshot.** Restore it (`scripts/restore-snapshot.sh`) and set
    `SNAPSHOT` in `scripts/skillloop.py`; its segment export is made the first time a script reads it.
-2. **Propose.** `scripts/skill_discovery.py ~/oneprofile-snapshots/skill-candidates-<snapshot>.tsv`,
-   about 6 minutes on four cores; its passes run in a process per core.
-3. **Judge.** `scripts/discover-skills judge <candidates.tsv>`: Jev keeps or drops each candidate
-   and picks a category, about a hundredth of a cent a name, and stops at ADR-0013's $4 over every
-   Jev script. It writes the kept names, in batches of 60, to
-   `~/oneprofile-snapshots/skill-run-<snapshot>/`.
-4. **Draft.** Run the `skill-drafter` agent (`.claude/agents/`) on each batch, about 45k Haiku
-   tokens each; 25 batches fit well inside one usage window. `scripts/discover-skills collect`
-   gathers the drafts into `review.tsv`, with every drop and the names no segment mentions as
-   drops of the session's, and names any kept name left undrafted.
-5. **Review.** Read every kept row of `review.tsv`, and mark each row changed with source
-   `session` and a note. What the first run's review found:
-   - **Spellings drafted as new skills**: a bare form (Glue, Salt, Go) whose skill is held under a
-     longer name, or two batches drafting one skill. `skills.tsv` refuses a key of two skills, so
-     `append` stops on these.
-   - **Names that name several things**: Compose, Apex, Foundry, Prisma, Hex, Nexus. The criterion
-     drops them; Jev keeps them when its three segments agree.
-   - **Software no software person is hired for**, the most common keep the review drops: marketing,
-     sales, finance and compliance software, CAD, simulation, PLM, MES and SCADA.
-   - **Vendors, techniques and fragments**: F5, Aruba; LoRA, CNN; Pub of Pub/Sub, 4HANA.
-   - **Unsafe aliases**: an alias that is an ambiguous abbreviation (SMB, CAPI) or a person's name.
-6. **Write.** `scripts/discover-skills append` adds each kept name to `skills.tsv`, as a new skill or
-   a spelling of the one its id names, and appends every decision to `decisions.tsv`. Then
-   `scripts/check-skill-keys --set-only` sets the kind of every key, and the size in
-   `TaxonomyConfigurationTest` is re-pinned.
-7. **Hand on.** Commit, and archive `review.tsv` in `docs/measurements/`. The next round of #11
-   names the `skills.tsv` commit it runs against (ADR-0012).
+2. **Propose and score recall.** `scripts/score-skill-round <round>`, numbered after the last
+   `docs/measurements/skill-round-<n>.txt`. It runs `scripts/skill_discovery.py`, which writes the
+   candidates to `skill-candidates-round-<round>-<snapshot>.tsv` next to the snapshot, and scores
+   its recall (ADR-0015), with Jev judging pieces under ADR-0013's $4 stop. Recall is the only
+   gate. The names Jev kept that the script did not propose go to
+   `skill-missed-round-<round>-<snapshot>.txt`. If recall fails its gate, or the pool grows well
+   past the 2,054 candidates of `classified-2026-10-06`, stop: the script changes first, and is
+   scored again in a new round.
+3. **Batch.** `scripts/discover-skills batch <candidates.tsv> <missed names file>` writes every
+   candidate, the missed names among them, in batches of 60 to
+   `~/oneprofile-snapshots/skill-run-<snapshot>/`. Names no segment mentions go to
+   `unmentioned.txt`. Batching again starts a new run and deletes the earlier batches, decisions
+   and costs.
+4. **Decide.** `scripts/discover-skills decide` runs the agent on each batch, 15 at a time. Each
+   candidate becomes a drop, a spelling, a new skill, a split or a join, and every key the agent
+   writes is marked plain or context. A run is about $20–29 of Sonnet and more than one 5-hour
+   usage window (`docs/measurements/skill-decider-2026-10-18.md`). Run `decide` again after a
+   stop or a reported batch: it resumes at the batches not yet complete. Costs go to `costs.tsv`.
+5. **Collect.** `scripts/discover-skills collect` writes `review.tsv`, and refuses while a batch
+   is incomplete. Its columns are `name, kind, source, id, canonical, category, aliases, context,
+   reason, note`. A row's kind is `drop`, `spelling`, `new`, `split` or `join`, one row per
+   candidate; a split adds a `part` row for each skill it names and a join a `whole` row, and
+   those rows name skills, not candidates. A name in `unmentioned.txt` is a drop with source
+   `session`. A `note` that starts `doubt:` is a decision the agent was unsure of.
+6. **Review.** Read `review.tsv` across batches, and give each row you change the source
+   `session` and a note. Check for:
+   - **One skill drafted twice**: two batches drafting one new skill, or a key that two skills
+     hold. `append` refuses both. It cannot see a new skill that is a bare form of one held under a
+     longer name (Glue, Salt), which is a spelling.
+   - **Decisions the criterion does not support** (`docs/skill-criterion.md`), the doubts first.
+     The agent sometimes reopens a final drop of the decision record (4HANA as a spelling of
+     `sap-s-4hana`); check each decision on a name the record has dropped.
+   - **Unsafe aliases**: an ambiguous abbreviation (SMB, CAPI) or a person's name.
+7. **Append.** `scripts/discover-skills append` adds each spelling and new skill to
+   `skills.tsv` with the context marks, and every decision, drops included, to `decisions.tsv`.
+   Then `./mvnw test`: if `TaxonomyConfigurationTest` fails on the size of `skills.tsv`, move its
+   bounds to the new size.
+8. **Hand on.** Commit, and archive `review.tsv` in `docs/measurements/` as
+   `skill-run-<snapshot>.tsv`. The next round of #11 names the `skills.tsv` commit it runs
+   against (ADR-0012).
 
 ## Every skill, by source
 

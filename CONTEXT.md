@@ -316,7 +316,7 @@ _Avoid_: skill list, ontology, dictionary, catalog
 
 **Key**:
 A name a skill is found by: its canonical name or one of its aliases, in any case and spacing.
-Each key is either plain or context, set by a rule and never by hand (ADR-0015).
+Each key is either plain or context, marked by skill discovery when it writes the key (ADR-0016).
 _Avoid_: term, keyword, token, match string
 
 **Plain Key**:
