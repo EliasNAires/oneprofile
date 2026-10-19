@@ -332,7 +332,8 @@ _Avoid_: safe key, exact key
 
 **Context Key**:
 A key that is also an ordinary word, or the letter C or R, so it means its skill only in some
-texts: Go, Spring, Kafka, Compose. Found only where a context rule says the text means the skill.
+texts: Go, Spring, Kafka, Compose. Found only in its own casing, and where a plain key confirms it
+(ADR-0018).
 _Avoid_: bare form, ambiguous key, unsafe key
 
 **Coverage**:

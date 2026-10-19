@@ -166,8 +166,9 @@ grown on each new snapshot by skill discovery (#41, ADR-0013). Extraction (#15) 
 It runs before the body pass, over the vacancies the title decided in and the pile, and the body
 pass reads its skills (ADR-0017). Descriptions are not lemmatized.
 A skill is one named technology, and each of its keys is plain or context (ADR-0015): a plain key
-is matched anywhere, a context key such as Go or Kafka only where a context rule says the text
-means the skill.
+is matched anywhere, a context key such as Go or Kafka only in its own casing and where a plain key
+confirms it, in the same segment or as its parent or child (ADR-0018). Extraction reads the title
+and the segments that are not boilerplate.
 
 This iteration does **not** distinguish required skills from merely mentioned ones.
 Coverage is a rough signal and is accepted as such.
@@ -238,7 +239,8 @@ company is `(ats, slug)`; a vacancy is `(company_id, external_id)`.
   title may name more than one and the counting these reports need is a join rather than an
   unnest.
 - `vacancy_skill` — join table, one row per (vacancy, skill), unique on the pair so
-  re-extraction is idempotent, indexed on both columns. At roughly 10–15 skills per vacancy
+  re-extraction is idempotent, indexed on both columns. Each row also holds the segments the
+  skill was found in and whether the title names it, which the body pass reads (ADR-0018). At roughly 10–15 skills per vacancy
   this is 2–3 million rows, which is unremarkable for PostgreSQL. It is preferred over an
   array column because the UI needs to show *which* skills matched and which are missing,
   and because a wrong score must be inspectable.
