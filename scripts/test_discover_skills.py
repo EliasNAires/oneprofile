@@ -153,7 +153,7 @@ class DecideTest(unittest.TestCase):
         self.assertEqual(run.decide(self.run_dir), [])
         self.assertEqual(set(self.decided(1)), {"Microsoft", "Spacelift"})
         self.assertEqual(set(self.decided(2)), {"Tempo"})
-        self.assertEqual([(c["batch"], c["cost_usd"], c["output_tokens"]) for c in self.costs()],
+        self.assertEqual(sorted((c["batch"], c["cost_usd"], c["output_tokens"]) for c in self.costs()),
                          [("batch-001", "0.5", "40"), ("batch-002", "0.5", "40")])
 
     def test_skips_a_batch_already_decided(self):
@@ -179,23 +179,84 @@ class DecideTest(unittest.TestCase):
         self.assertFalse((self.run_dir / "costs.tsv").exists())
 
 
-class ReviewRowTest(unittest.TestCase):
+class ReviewRowsTest(unittest.TestCase):
 
-    def test_a_kept_name_takes_its_draft(self):
-        verdict = {"name": "Spacelift", "decision": "keep", "category": "devops"}
-        row = run.review_row(verdict, {"Spacelift": {"id": "spacelift", "canonical": "Spacelift", "aliases": []}})
-        self.assertEqual((row["source"], row["id"], row["category"]), ("jev", "spacelift", "devops"))
+    def test_a_drop_carries_its_reason_and_doubt(self):
+        rows = run.review_rows("Coupa", {"kind": "drop", "reason": "software no software person is hired for",
+                                         "note": "doubt: procurement software"})
+        self.assertEqual([(r["name"], r["kind"], r["source"], r["reason"], r["note"]) for r in rows],
+                         [("Coupa", "drop", "skill-decider", "software no software person is hired for",
+                           "doubt: procurement software")])
 
-    def test_a_draft_written_as_its_id_alone_is_a_spelling(self):
-        row = run.review_row({"name": "Fast API", "decision": "keep", "category": "framework"}, {"Fast API": "fastapi"})
-        self.assertEqual((row["id"], row["canonical"], row["category"]), ("fastapi", "", ""))
+    def test_a_spelling_gives_the_id_and_marks_the_name_context_when_it_is(self):
+        tempo, = run.review_rows("Tempo", {"kind": "spelling", "id": "grafana-tempo", "context": True})
+        fast, = run.review_rows("Fast API", {"kind": "spelling", "id": "fastapi", "context": False})
+        self.assertEqual([(r["kind"], r["id"], r["context"]) for r in (tempo, fast)],
+                         [("spelling", "grafana-tempo", "Tempo"), ("spelling", "fastapi", "")])
 
-    def test_a_name_no_segment_mentions_is_a_session_drop(self):
-        row = run.review_row({"name": "Key Vault Azure", "decision": "unmentioned", "category": ""}, {})
-        self.assertEqual((row["decision"], row["source"]), ("drop", "session"))
+    def test_a_new_skill_gives_its_fields_and_context_keys(self):
+        row, = run.review_rows("Swift UI", {"kind": "new", "id": "swiftui", "canonical": "SwiftUI",
+                                            "category": "framework", "aliases": ["Swift UI Kit", "SUI"],
+                                            "context": ["SUI"]})
+        self.assertEqual([row[c] for c in ("kind", "id", "canonical", "category", "aliases", "context")],
+                         ["new", "swiftui", "SwiftUI", "framework", "Swift UI Kit|SUI", "SUI"])
 
-    def test_a_kept_name_without_a_draft_has_no_row(self):
-        self.assertIsNone(run.review_row({"name": "Guice", "decision": "keep", "category": "framework"}, {}))
+    def test_a_split_is_a_row_for_the_glued_name_and_one_for_each_part(self):
+        rows = run.review_rows("Spring Hibernate", {"kind": "split", "parts": [
+            {"id": "spring-framework"},
+            {"id": "hibernate", "canonical": "Hibernate", "category": "framework", "aliases": ["Hibernate ORM"],
+             "context": []}]})
+        self.assertEqual([(r["name"], r["kind"], r["id"], r["canonical"], r["aliases"]) for r in rows],
+                         [("Spring Hibernate", "split", "", "", ""),
+                          ("Spring Hibernate", "part", "spring-framework", "", ""),
+                          ("Spring Hibernate", "part", "hibernate", "Hibernate", "Hibernate ORM")])
+
+    def test_a_join_is_a_row_for_the_piece_naming_the_whole_and_one_for_the_whole(self):
+        held = run.review_rows("Unity", {"kind": "join", "whole": "Databricks Unity Catalog",
+                                         "id": "databricks-unity-catalog"})
+        new = run.review_rows("Time-Sensitive", {"kind": "join", "whole": "Time-Sensitive Networking",
+                                                 "id": "time-sensitive-networking",
+                                                 "canonical": "Time-Sensitive Networking", "category": "networking",
+                                                 "aliases": ["TSN"], "context": []})
+        self.assertEqual([(r["kind"], r["id"], r["canonical"], r["aliases"], r["reason"]) for r in held + new],
+                         [("join", "", "", "", "a fragment of Databricks Unity Catalog"),
+                          ("whole", "databricks-unity-catalog", "", "", ""),
+                          ("join", "", "", "", "a fragment of Time-Sensitive Networking"),
+                          ("whole", "time-sensitive-networking", "Time-Sensitive Networking", "TSN", "")])
+
+
+class CollectTest(unittest.TestCase):
+
+    def setUp(self):
+        self.folder = tempfile.TemporaryDirectory()
+        self.run_dir = Path(self.folder.name)
+        (self.run_dir / "unmentioned.txt").write_text("")
+
+    def tearDown(self):
+        self.folder.cleanup()
+
+    def batch(self, number, decisions, left_out=()):
+        (self.run_dir / f"batch-{number:03}.json").write_text(json.dumps([entry(n) for n in [*decisions, *left_out]]))
+        (self.run_dir / f"batch-{number:03}.decisions.json").write_text(json.dumps(decisions))
+
+    def test_refuses_while_a_batch_has_an_entry_left_out(self):
+        self.batch(1, {"Microsoft": {"kind": "drop", "reason": "a vendor's name"}}, left_out=["Spacelift"])
+        with self.assertRaisesRegex(SystemExit, "run decide again"):
+            run.collect(self.run_dir)
+        self.assertFalse((self.run_dir / "review.tsv").exists())
+
+    def test_writes_the_rows_of_every_batch_then_each_unmentioned_name_as_a_session_drop(self):
+        self.batch(1, {"Fast API": {"kind": "spelling", "id": "fastapi", "context": False},
+                       "Microsoft": {"kind": "drop", "reason": "a vendor's name"}})
+        self.batch(2, {"Spring Hibernate": {"kind": "split", "parts": [{"id": "spring-framework"}]}})
+        (self.run_dir / "unmentioned.txt").write_text("Key Vault Azure\n")
+        run.collect(self.run_dir)
+        rows = run.read_tsv(self.run_dir / "review.tsv")
+        self.assertEqual([(r["name"], r["kind"], r["source"]) for r in rows],
+                         [("Fast API", "spelling", "skill-decider"), ("Microsoft", "drop", "skill-decider"),
+                          ("Spring Hibernate", "split", "skill-decider"), ("Spring Hibernate", "part", "skill-decider"),
+                          ("Key Vault Azure", "drop", "session")])
+        self.assertEqual(rows[-1]["reason"], "mentioned in no segment of the snapshot")
 
 
 SKILLS = [
@@ -204,43 +265,43 @@ SKILLS = [
 ]
 
 
-def reviewed(name, decision, identifier="", canonical="", category="", aliases=""):
-    return {"name": name, "decision": decision, "source": "jev", "id": identifier, "canonical": canonical,
-            "category": category, "aliases": aliases, "note": ""}
+def reviewed(name, kind, identifier="", canonical="", category="", aliases="", context=""):
+    return {"name": name, "kind": kind, "source": "skill-decider", "id": identifier, "canonical": canonical,
+            "category": category, "aliases": aliases, "context": context, "reason": "", "note": ""}
 
 
 class ApplyTest(unittest.TestCase):
 
-    def test_a_kept_spelling_of_a_skill_becomes_its_alias(self):
-        skills, _ = run.apply(SKILLS, [reviewed("Fast API", "keep", "fastapi")])
+    def test_a_spelling_of_a_skill_becomes_its_alias(self):
+        skills, _ = run.apply(SKILLS, [reviewed("Fast API", "spelling", "fastapi")])
         self.assertEqual(skills[0], ("fastapi", "FastAPI", "framework", ["FastAPI", "Fast API"], set()))
 
-    def test_a_kept_name_with_a_new_id_is_a_new_skill_in_id_order(self):
-        skills, _ = run.apply(SKILLS, [reviewed("Guice", "keep", "guice", "Guice", "framework", "Google Guice")])
+    def test_a_new_skill_takes_its_place_in_id_order(self):
+        skills, _ = run.apply(SKILLS, [reviewed("Guice", "new", "guice", "Guice", "framework", "Google Guice")])
         self.assertEqual([row[0] for row in skills], ["fastapi", "go", "guice"])
         self.assertEqual(skills[2], ("guice", "Guice", "framework", ["Guice", "Google Guice"], set()))
 
-    def test_two_kept_names_of_one_new_skill_make_one_row(self):
-        skills, _ = run.apply(SKILLS, [reviewed("Server Sent Events", "keep", "server-sent-events",
+    def test_a_new_skill_and_a_spelling_of_it_make_one_row(self):
+        skills, _ = run.apply(SKILLS, [reviewed("Server Sent Events", "new", "server-sent-events",
                                                 "Server-Sent Events", "networking"),
-                                       reviewed("SSE", "keep", "server-sent-events")])
+                                       reviewed("SSE", "spelling", "server-sent-events")])
         self.assertEqual(skills[2], ("server-sent-events", "Server-Sent Events", "networking",
                                      ["Server-Sent Events", "SSE"], set()))
 
     def test_a_spelling_may_come_before_the_row_that_defines_its_new_skill(self):
-        skills, _ = run.apply(SKILLS, [reviewed("SSE", "keep", "server-sent-events"),
-                                       reviewed("Server Sent Events", "keep", "server-sent-events",
+        skills, _ = run.apply(SKILLS, [reviewed("SSE", "spelling", "server-sent-events"),
+                                       reviewed("Server Sent Events", "new", "server-sent-events",
                                                 "Server-Sent Events", "networking")])
         self.assertEqual(skills[2], ("server-sent-events", "Server-Sent Events", "networking",
                                      ["Server-Sent Events", "SSE"], set()))
 
     def test_a_key_already_held_is_not_added_again(self):
-        skills, _ = run.apply(SKILLS, [reviewed("golang", "keep", "go", aliases="Go Lang")])
+        skills, _ = run.apply(SKILLS, [reviewed("golang", "spelling", "go", aliases="Go Lang")])
         self.assertEqual(skills[1][3], ["Go", "Golang", "Go Lang"])
 
     def test_refuses_a_key_another_skill_holds(self):
         with self.assertRaises(SystemExit):
-            run.apply(SKILLS, [reviewed("Guice", "keep", "guice", "Guice", "framework", "Golang")])
+            run.apply(SKILLS, [reviewed("Guice", "new", "guice", "Guice", "framework", "Golang")])
 
     def test_a_drop_changes_no_skill(self):
         skills, _ = run.apply(SKILLS, [reviewed("Expert Python", "drop")])
@@ -248,12 +309,63 @@ class ApplyTest(unittest.TestCase):
 
     def test_every_decision_is_recorded_by_name_form_drops_included(self):
         _, decisions = run.apply(SKILLS, [reviewed("Expert Python", "drop"),
-                                          {**reviewed("Fast API", "keep", "fastapi"), "source": "session"}])
-        self.assertEqual(decisions, [("expert python", "drop", "jev"), ("fast api", "keep", "session")])
+                                          {**reviewed("Fast API", "spelling", "fastapi"), "source": "session"}])
+        self.assertEqual(decisions, [("expert python", "drop", "skill-decider"), ("fast api", "keep", "session")])
 
-    def test_refuses_a_keep_with_a_new_id_and_no_canonical_name(self):
+    def test_refuses_a_spelling_of_an_id_no_row_defines(self):
         with self.assertRaises(SystemExit):
-            run.apply(SKILLS, [reviewed("Guice", "keep", "guice")])
+            run.apply(SKILLS, [reviewed("Guice", "spelling", "guice")])
+
+    def test_a_split_records_the_glued_name_as_a_drop_and_adds_each_new_part_without_it(self):
+        skills, decisions = run.apply(SKILLS, [reviewed("FastAPI Hibernate", "split"),
+                                               reviewed("FastAPI Hibernate", "part", "fastapi"),
+                                               reviewed("FastAPI Hibernate", "part", "hibernate", "Hibernate",
+                                                        "framework", "Hibernate ORM")])
+        self.assertEqual(skills, [SKILLS[0], SKILLS[1],
+                                  ("hibernate", "Hibernate", "framework", ["Hibernate", "Hibernate ORM"], set())])
+        self.assertEqual(decisions, [("fastapi hibernate", "drop", "skill-decider")])
+
+    def test_a_join_records_the_piece_as_a_drop_and_adds_a_new_whole_without_it(self):
+        skills, decisions = run.apply(SKILLS, [reviewed("Time-Sensitive", "join"),
+                                               reviewed("Time-Sensitive", "whole", "time-sensitive-networking",
+                                                        "Time-Sensitive Networking", "networking", "TSN")])
+        self.assertEqual(skills[2], ("time-sensitive-networking", "Time-Sensitive Networking", "networking",
+                                     ["Time-Sensitive Networking", "TSN"], set()))
+        self.assertEqual(decisions, [("time sensitive", "drop", "skill-decider")])
+
+    def test_a_join_to_an_entry_decided_new_gives_only_its_id(self):
+        skills, _ = run.apply(SKILLS, [reviewed("Adobe Marketing", "join"),
+                                       reviewed("Adobe Marketing", "whole", "adobe-marketing-cloud"),
+                                       reviewed("Adobe Marketing Cloud", "new", "adobe-marketing-cloud",
+                                                "Adobe Marketing Cloud", "tool")])
+        self.assertEqual(skills[0], ("adobe-marketing-cloud", "Adobe Marketing Cloud", "tool",
+                                     ["Adobe Marketing Cloud"], set()))
+
+    def test_refuses_a_part_or_whole_whose_id_no_row_defines(self):
+        with self.assertRaises(SystemExit):
+            run.apply(SKILLS, [reviewed("Unity", "join"), reviewed("Unity", "whole", "unity-catalog")])
+
+    def test_a_key_marked_context_joins_the_skill_s_context_keys(self):
+        skills, _ = run.apply(SKILLS, [reviewed("Fast", "spelling", "fastapi", context="Fast"),
+                                       reviewed("Swift UI", "new", "swiftui", "SwiftUI", "framework", "SUI|Swift UI Kit",
+                                                context="SUI")])
+        self.assertEqual(skills[0], ("fastapi", "FastAPI", "framework", ["FastAPI", "Fast"], {"Fast"}))
+        self.assertEqual(skills[2], ("swiftui", "SwiftUI", "framework", ["SwiftUI", "SUI", "Swift UI Kit", "Swift UI"],
+                                     {"SUI"}))
+
+    def test_a_context_mark_holds_when_a_spelling_added_the_key_first(self):
+        skills, _ = run.apply(SKILLS, [reviewed("Swift lang", "spelling", "swift"),
+                                       reviewed("Swift", "new", "swift", "Swift", "language", context="Swift")])
+        self.assertEqual(skills[2], ("swift", "Swift", "language", ["Swift", "Swift lang"], {"Swift"}))
+
+    def test_refuses_one_new_skill_drafted_twice(self):
+        with self.assertRaisesRegex(SystemExit, "guice"):
+            run.apply(SKILLS, [reviewed("Guice", "new", "guice", "Guice", "framework"),
+                               reviewed("Google Guice", "new", "guice", "Google Guice", "framework")])
+
+    def test_refuses_a_new_skill_under_an_id_skills_tsv_holds(self):
+        with self.assertRaisesRegex(SystemExit, "fastapi"):
+            run.apply(SKILLS, [reviewed("Fast API", "new", "fastapi", "Fast API", "framework")])
 
 
 if __name__ == "__main__":
