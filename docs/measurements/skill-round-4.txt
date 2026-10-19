@@ -1,0 +1,245 @@
+Round 4 at criterion revision 5, jev-1.13.0
+
+Size: 2054 candidates
+Recall: 380/438 skill-bearing segments missed nothing = 86.8%, 95% interval 83.3%-89.6%, gate 90%  FAIL
+  2400 segments drawn, 1962 naming no skill, 0 not yet judged
+
+Recall fails: the script changes
+
+Segments that name a skill not found (58), with the names Jev kept:
+
+  vacancy 147169  kept: Harness
+  found: CircleCI, GitHub, GitHub Actions, Jenkins
+  Experience with CircleCI, GitHub Actions, Jenkins, Harness, or similar CI/CD platforms.
+
+  vacancy 96119  kept: CycloneDDS | FastDDS
+  found: Robot Operating System, Zenoh
+  Familiarity with ROS 2 middleware and alternatives (Eg. FastDDS, CycloneDDS, Zenoh).
+
+  vacancy 186415  kept: C
+  found: Golang, Java, JavaScript, Node, Node.js, Python, TypeScript
+  3+ years of programming experience utilizing Python, Node.js, Typescript, GoLang, Java, C , or other similar languages
+
+  vacancy 68578  kept: CATIA V6
+  found: CATIA, CATIA V5, D, V6
+  3+ years of Experience using 3-D modeling software CATIA V5 required (CATIA V6 preferred)
+
+  vacancy 11396  kept: Go
+  found: C++, Rust
+  Experience with Go, Rust, or C++
+
+  vacancy 107442  kept: Spark
+  found: Dask, Ray
+  Strong proficiency with distributed data processing frameworks — Spark, Ray, Dask, or similar — and a clear sense of when to use each
+
+  vacancy 144476  kept: SPI
+  found: GPIB, I2C, Modbus, TCP, USB, VLAN
+  Extensive knowledge with a range of digital and analog interfaces including GPIB, USB, VISA, TCP/IP, VLAN, CAN bus, SPI, I2C, Modbus, analog-to-digital conversion
+
+  vacancy 68232  kept: GO
+  found: Java, npm, Python
+  Research on ways to reduce the supply chain vulnerability footprint across Python, Java, GO, npm ecosystems and base layers.
+
+  vacancy 177839  kept: JavaScript-based Three.js
+  found: JavaScript, Three.js
+  Use JavaScript-based Three.js model viewer.
+
+  vacancy 53720  kept: CICS TS
+  found: CICS
+  10+ years experience on the zSeries (mainframe) platform including “hands on” technical experience (installation and maintenance of products) related to CICS TS and OEM product support.
+
+  vacancy 104622  kept: Backbone | L2VPN | L3VPN | L3VPN MPLS | MPBGP
+  found: EVPN, MPLS
+  Experience and Knowledge of Backbone & Datacenter technologies (EVPN, L3VPN MPLS, MPBGP, L2VPN..)
+
+  vacancy 202335  kept: One Identity
+  found: Okta, Oracle, SailPoint, Saviynt
+  Identity Governance and Administration (IGA) — access requests, certifications, entitlement management, separation of duties, or role modeling (Okta, SailPoint, Saviynt, One Identity, Oracle, or in-house)
+
+  vacancy 193544  kept: Go
+  found: C#, Java, Kotlin, Python
+  Deep expertise in at least one production-grade backend language (e.g., Python, Java, Kotlin, Go, C#, etc.).
+
+  vacancy 173688  kept: Go
+  found: C++, Java, Python, Ruby
+  We use Go. If you know it, great. If not, we’ll interview you in your strongest language (Python, C++, Java, Ruby, etc.). We hire for engineering fundamentals, not syntax.
+
+  vacancy 29226  kept: C
+  found: nothing
+  Advanced skills in designing optimized solutions using C for embedded systems with stringent resource constraints.
+
+  vacancy 30019  kept: KG-250x
+  found: nothing
+  Familiarity with the operation of encryption devices such as KG-250, KG-250x, KIV-7HS, KIV-7M, and KG-175
+
+  vacancy 96074  kept: Go
+  found: React, TypeScript
+  You’ll drive architecture and technical strategy across our Go backend and React/TypeScript web frontend — partnering across teams to ship features that hold up under strict security, compliance, and reliability requirements.
+
+  vacancy 73276  kept: Go
+  found: Python, Rust, TypeScript
+  Fluent in at least one modern programming language (Python, TypeScript, Go, Rust, etc.) and quick to adapt to new technologies.
+
+  vacancy 49594  kept: BigQuery ML | Cloud AutoML
+  found: AutoML, Google BigQuery, Google Cloud Platform, Google Vertex AI
+  Working knowledge of Google Cloud AI tools (e.g., Vertex AI, Cloud AutoML, BigQuery ML) sufficient to reason about multi-cloud architectures and integration points.
+
+  vacancy 106965  kept: Kinetica
+  found: Elasticsearch, GitOps, Kubernetes
+  Big data technologies including data ingest, analytics, Elasticsearch, Kubernetes, GitOps pipelines, Kinetica, and COTS integration
+
+  vacancy 198840  kept: Oxlint | Stylelint | oxfmt | tsc
+  found: Husky
+  Quality: tsc + Oxlint + oxfmt, Stylelint, Husky + lint-staged
+
+  vacancy 140042  kept: OutSystems
+  found: nothing
+  Opportunity to shape how OutSystems is delivered at scale across the ASEAN region.
+
+  vacancy 26557  kept: MS Copilot Studio
+  found: Copilot, Microsoft Copilot Studio, Python, Studio
+  Build simple prototypes or proof‑of‑concept workflows using Python, internal libraries, or approved AI APIs alongside tools such as MS Copilot Studio.
+
+  vacancy 195249  kept: B2 | Backblaze B2
+  found: Amazon S3, AWS
+  Architect and execute the large-scale, high-throughput migration of petabytes of data from AWS S3 to lower-cost alternative storage providers (e.g., Backblaze B2). Design, develop, and maintain robust, centralized client libraries (SDKs) to abstract the underlying storage infrastructure, enabling application teams to seamlessly interact with object storage without vendor lock-in.
+
+  vacancy 28158  kept: SQLの実践的なスキルを
+  found: Python, TypeScript
+  技術の習得意欲: Python、TypeScript、SQLの実践的なスキルを、実際のお客様やプロダクトのシナリオに適用・習得することに対する強い意欲。
+
+  vacancy 175216  kept: dlthub
+  found: Databricks, dbt, GitHub, GitHub Actions, Python
+  We are moving from isolated, market-specific implementations to a standardized, scalable, cloud-agnostic, and AI-ready data platform built on a modern tech stack: dbt, Databricks, Python (dlthub), and GitHub Actions.
+
+  vacancy 102907  kept: Go
+  found: Java, JavaScript, Node, Node.js, Rust
+  Strong software engineering fundamentals with hands-on experience in at least one backend language (Node.js, Go, Java, Rust, or equivalent) and one frontend framework.
+
+  vacancy 139662  kept: Fabric
+  found: Databricks
+  Fabric & Databricks architecture.
+
+  vacancy 175189  kept: R | R Scripting
+  found: Python, SQL
+  Technical background, experience with data engineering practices, database structures and schemas, SQL, Python and R Scripting. Must have the ability to use SQL for intermediate to advanced data analysis
+
+  vacancy 24078  kept: Lucid
+  found: Confluence, Jira, Miro, Notion
+  Familiarity with tools such as Jira, Confluence, Lucid, Notion, Miro, or similar.
+
+  vacancy 139019  kept: APISIX | Etcd
+  found: Apache Kafka, Apache ZooKeeper, Elasticsearch, HashiCorp Consul, Kubernetes, Nginx, Redis
+  Own and operate core open-source infrastructure such as APISIX, Nginx, Kubernetes, Kafka, Elasticsearch, Redis, Consul, Etcd, Zookeeper and other large-scale distributed systems.
+
+  vacancy 36994  kept: R
+  found: SAS
+  BS with more than 5 or MS with 3 years of experience in statistical programming (SAS, R) in the pharmaceutical industry.
+
+  vacancy 171753  kept: Wasabi | Wasabi Cloud
+  found: nothing
+  tools/utilities that can talk to Wasabi Cloud).
+
+  vacancy 107307  kept: Go
+  found: Bash, Python
+  Experience writing production-quality automation, tooling, or backend code in Go, Python, Bash, or similar languages.
+
+  vacancy 14376  kept: GameAnalytics
+  found: Amplitude, Firebase
+  Familiarity with Firebase, GameAnalytics or Amplitude.
+
+  vacancy 1756  kept: Application Security Manager
+  found: Assembly language, F5, F5 iRules, F5 LTM, Google Tag Manager
+  Your primary focus will be configuring and optimizing F5 policies, virtual servers, pools, iRules, local traffic policies (LTM), global traffic management (GTM), and Application Security Manager (ASM) policies.
+
+  vacancy 19779  kept: Experience Cloud
+  found: Salesforce, Salesforce CPQ
+  Own the multi-year strategy and roadmap for Axon's Salesforce platform across Sales Cloud, CPQ / Revenue Cloud, Billing, Experience Cloud, and connected enterprise systems
+
+  vacancy 62934  kept: CDD Vault | Code Ocean | Quilt | Seqera
+  found: AWS, Benchling, HashiCorp Vault
+  This role is primarily responsible for administering and configuring core research platforms such as Benchling, CDD Vault, Quilt, AWS, Code Ocean, Seqera, etc., translating stakeholder requirements into system configurations, troubleshooting issues, and standing up these systems for Flagship's emerging companies.
+
+  vacancy 178149  kept: EMR
+  found: Amazon S3, Apache Airflow, AWS, Snowflake
+  Hands-on experience with AWS data services, especially S3, and a modern cloud data warehouse; experience with Snowflake, Airflow, and EMR is strongly preferred.
+
+  vacancy 202130  kept: SIP
+  found: nothing
+  SIP, IP telephony, voice gateways, and call routing
+
+  vacancy 17175  kept: Doxygen
+  found: GCC, GitHub
+  Working knowledge of software/firmware build environments, gcc/Make, Doxygen, and GitHub.
+
+  vacancy 166569  kept: Xstore
+  found: Oracle
+  Develop, customize, and maintain Oracle Xstore POS applications.
+
+  vacancy 28019  kept: Go
+  found: C++, Java, JavaScript, Python, TypeScript
+  Strong software development skills in Python and C++, plus at least one of Go, Java, or JavaScript/TypeScript
+
+  vacancy 108451  kept: Jira Query | Jira Query Language
+  found: Jira, JQL, SQL
+  Technical Languages: Essential proficiency with Jira Query Language (JQL), basic SQL, or equivalent database queries.
+
+  vacancy 32165  kept: nanopb
+  found: Protocol Buffers
+  Experience with Protobuf and nanopb
+
+  vacancy 37429  kept: OTLP
+  found: ClickHouse, Elasticsearch, Grafana, Kibana, OLAP
+  Implementing observability (OTLP, OLAP databases such as Clickhouse, Grafana, Elasticsearch, Kibana, etc)
+
+  vacancy 85708  kept: Cadence
+  found: Keysight, Keysight ADS
+  Experience with Cadence, Keysight ADS, EM simulation tools, or equivalent RF/MMIC design environments.
+
+  vacancy 137847  kept: Go
+  found: Python, Ruby
+  Strong scripting or development skills in at least one mainstream language like Python, Go, or Ruby.
+
+  vacancy 123591  kept: Lighthouse
+  found: DevTools
+  Testing & Tools: proficiency with browser DevTools, accessibility auditing tools (e.g., axe, Lighthouse), and cross-browser testing platforms.
+
+  vacancy 25000  kept: BPF LSM
+  found: eBPF, LSM
+  Design, build, and own our eBPF programs and BPF LSM hooks (bprm_check_security, file_open, socket_connect). You'll enforce policy synchronously in the kernel by returning -EPERM to block, rather than logging after the fact, and you'll build the userspace agent that loads and drives them.
+
+  vacancy 194209  kept: Rails
+  found: Ruby
+  Ruby/Rails modularization and large-monolith modernization.
+
+  vacancy 178531  kept: CodeMirror
+  found: nothing
+  Develop delightful CodeMirror extensions that bridge the gap between the user's code and the 3d-model
+
+  vacancy 53704  kept: z/OS
+  found: nothing
+  z/OS Automation Engineering
+
+  vacancy 134024  kept: OpticStudio | Zemax
+  found: nothing
+  Experience with optical design and Zemax OpticStudio
+
+  vacancy 61097  kept: PerfMon | Resource Monitor | Windows PerfMon
+  found: Microsoft Windows
+  Skilled with Windows PerfMon, Resource Monitor, and event tracing to baseline DC performance.
+
+  vacancy 25554  kept: ESMFold
+  found: ECMAScript Modules
+  Frontier molecular modeling, from protein language models (e.g., ESM) to structure prediction (e.g., ESMFold) and beyond.
+
+  vacancy 311  kept: Data Flows | Express Route
+  found: Active Directory, Azure, Azure Cosmos DB, DB, Microsoft, Microsoft Entra ID
+  Microsoft Azure Cosmos DB, Data Flows, Express Route, Azure Active Directory
+
+  vacancy 187741  kept: C
+  found: nothing
+  Strong systems programming in C, with the judgement to make high-risk changes to shared infrastructure safely.
+
+67 names kept and not proposed, written to /home/elias/oneprofile-snapshots/skill-missed-round-4-classified-2026-10-06.txt
+
+Jev has cost $2.4487 over every run of both issues, of the $4.00 limit
