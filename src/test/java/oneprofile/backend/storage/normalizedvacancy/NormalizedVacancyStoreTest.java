@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
 
 import java.time.Instant;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -293,6 +294,58 @@ class NormalizedVacancyStoreTest {
 		assertThat(this.normalized.cleanedTitlesAfter(second, 10)).isEmpty();
 	}
 
+	@Test
+	void readsForExtractionWhatTheTitleDecidedInAndThePileInALanguageTheBodyPassReads() {
+		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001), published(4002),
+				published(4003), published(4004), published(4005), published(4006, "fr"), published(4007, "fr")));
+		List<Long> ids = this.vacancies.textsAfter(0, 10).stream().map(VacancyText::id).toList();
+		Map<Long, CleanedVacancy> cleaned = new HashMap<>();
+		ids.forEach((id) -> cleaned.put(id, cleaned("Engineer " + id, Set.of())));
+		this.normalized.recordCleanedVacancies(cleaned);
+		this.normalized.recordClassifications(Map.of(ids.get(0), Classification.in(), ids.get(1), Classification.out(),
+				ids.get(2), Classification.unknown(UnknownReasonEnum.UNRULED), ids.get(3),
+				Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY), ids.get(4),
+				Classification.unknown(UnknownReasonEnum.SCOPE_AMBIGUITY), ids.get(5), Classification.in(), ids.get(6),
+				Classification.unknown(UnknownReasonEnum.SCOPE_AMBIGUITY)));
+		this.normalized.recordBodyDecisions(Map.of(ids.get(4), ClassificationStateEnum.OUT));
+		this.entityManager.flush();
+
+		assertThat(this.normalized.extractionScopeAfter(0, 10)).extracting(ExtractionVacancy::cleanedTitle)
+			.containsExactly("Engineer " + ids.get(0), "Engineer " + ids.get(3), "Engineer " + ids.get(4),
+					"Engineer " + ids.get(5));
+	}
+
+	@Test
+	void leavesOutOfExtractionWhatTheBodyPassSkippedForItsLanguage() {
+		long vacancyId = heldTitles().getFirst().id();
+		this.normalized.recordCleanedVacancies(Map.of(vacancyId, cleaned("Engineer", Set.of())));
+		this.normalized.recordClassifications(
+				Map.of(vacancyId, Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY)));
+		this.normalized.recordUnsupportedLanguage(Set.of(vacancyId));
+
+		assertThat(this.normalized.extractionScopeAfter(0, 10)).isEmpty();
+	}
+
+	@Test
+	void walksTheExtractionScopeABatchAtATimeWithEachDescription() {
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		List<Segment> segments = List.of(new Segment(SegmentKindEnum.ITEM, null, "Java", false));
+		this.normalized.recordCleanedVacancies(Map.of(first,
+				new CleanedVacancy(new CleanedTitle("Backend Engineer", Set.of()), segments), second,
+				cleaned("Frontend Engineer", Set.of())));
+		this.normalized.recordClassifications(Map.of(first, Classification.in(), second, Classification.in()));
+
+		List<ExtractionVacancy> batch = this.normalized.extractionScopeAfter(0, 1);
+		assertThat(batch).singleElement().satisfies((vacancy) -> {
+			assertThat(vacancy.cleanedTitle()).isEqualTo("Backend Engineer");
+			assertThat(vacancy.segments()).isEqualTo(segments);
+		});
+		assertThat(this.normalized.extractionScopeAfter(batch.getFirst().vacancyId(), 1))
+			.extracting(ExtractionVacancy::cleanedTitle)
+			.containsExactly("Frontend Engineer");
+	}
+
 	private List<VacancyText> heldTitles() {
 		return this.vacancies.textsAfter(0, 10);
 	}
@@ -302,8 +355,12 @@ class NormalizedVacancyStoreTest {
 	}
 
 	private PublishedVacancy published(long externalId) {
+		return published(externalId, "en");
+	}
+
+	private PublishedVacancy published(long externalId, String language) {
 		return new PublishedVacancy(externalId, "Senior Backend Engineer", "Remote - Americas", "Engineering",
-				"Ship payments.", "en", "https://job-boards.greenhouse.io/stripe/jobs/" + externalId, null, null, null, null,
+				"Ship payments.", language, "https://job-boards.greenhouse.io/stripe/jobs/" + externalId, null, null, null, null,
 				Instant.parse("2026-09-01T14:00:00Z"), Instant.parse("2026-09-18T16:30:00Z"));
 	}
 

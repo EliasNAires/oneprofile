@@ -43,6 +43,26 @@ public interface NormalizedVacancyRepository extends ListCrudRepository<Normaliz
 	List<PileVacancy> pileAfter(Collection<UnknownReasonEnum> reasons, long after, Limit limit);
 
 	/**
+	 * What skill extraction reads after one vacancy id, in id order: every vacancy the title decided in,
+	 * and every one of the pile, whatever the body has decided of it since, in a language the body pass
+	 * reads.
+	 * @param pileReasons the title reasons that make the pile
+	 * @param languages the languages the body pass reads; a vacancy whose board names none is read
+	 * @param after the vacancy id to read past, 0 to start at the first
+	 * @param limit how many to read at most
+	 * @return the vacancies, their cleaned titles and segments
+	 */
+	@Query("select new oneprofile.backend.storage.normalizedvacancy.ExtractionVacancy(n.id, n.vacancyId, "
+			+ "n.cleanedTitle, n.descriptionSegments) "
+			+ "from NormalizedVacancy n join Vacancy v on v.id = n.vacancyId where n.vacancyId > :after and ("
+			+ "(n.classificationState = oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum.IN "
+			+ "and n.classificationSignal = oneprofile.backend.storage.normalizedvacancy.ClassificationSignalEnum.TITLE) "
+			+ "or (n.classificationReason in :pileReasons and (v.language is null or v.language in :languages))) "
+			+ "order by n.vacancyId")
+	List<ExtractionVacancy> extractionScopeAfter(Collection<UnknownReasonEnum> pileReasons,
+			Collection<String> languages, long after, Limit limit);
+
+	/**
 	 * Puts every vacancy of the pile back to what its title left it: unknown, decided by the title.
 	 * @param reasons the title reasons that make the pile
 	 * @return how many vacancies the pile holds

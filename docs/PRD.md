@@ -152,7 +152,7 @@ the binding constraint on the product (ADR-0004); recall is measured by hand-lab
 random sample of roughly 200 remote-flagged vacancies, and the missed phrasings are the work
 queue.
 
-### 5.5 Skills — taxonomy built, extraction not built
+### 5.5 Skills — taxonomy and extraction built, precision not measured
 
 Skills use a **curated engineering taxonomy of roughly 1,500–3,000 concepts**, stored as
 `id, canonical_name, category, aliases[]` and matched against description text by a
@@ -162,9 +162,10 @@ from, which is what makes coverage a meaningful number.
 The taxonomy is seeded from **O\*NET Technology Skills**, **GitHub Linguist** and
 **Wikidata**; why not Lightcast, ESCO or Stack Overflow: ADR-0003. It is built:
 `src/main/resources/taxonomy/skills.tsv`, with 2,009 skills (provenance in `docs/taxonomy.md`),
-grown on each new snapshot by skill discovery (#41, ADR-0013). Extraction (#15) is not built.
-It runs before the body pass, over the vacancies the title decided in and the pile, and the body
-pass reads its skills (ADR-0017). Descriptions are not lemmatized.
+grown on each new snapshot by skill discovery (#41, ADR-0013). Extraction (#15) is built:
+`POST /skill-extractions` fills `vacancy_skill`, and its precision is measured in #65. It runs
+before the body pass, over the vacancies the title decided in and the pile, and the body pass
+reads its skills (ADR-0017). Descriptions are not lemmatized.
 A skill is one named technology, and each of its keys is plain or context (ADR-0015): a plain key
 is matched anywhere, a context key such as Go or Kafka only in its own casing and where a plain key
 confirms it, in the same segment or as its parent or child (ADR-0018). Extraction reads the title

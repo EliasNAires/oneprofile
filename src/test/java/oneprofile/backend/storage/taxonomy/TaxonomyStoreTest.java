@@ -9,15 +9,16 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.ClassPathResource;
 
 class TaxonomyStoreTest {
 
 	private final TaxonomyStore taxonomy = TaxonomyStore.read(new StringReader("""
-			postgresql\tPostgreSQL\tdatabase\tpostgres|psql
-			c-sharp\tC#\tlanguage\tcsharp|c sharp
-			terraform\tTerraform\tdevops\t
+			postgresql\tPostgreSQL\tdatabase\tpostgres|psql\t\t
+			c-sharp\tC#\tlanguage\tcsharp|c sharp\t\t
+			terraform\tTerraform\tdevops\t\t\t
 			"""));
 
 	@Test
@@ -52,7 +53,22 @@ class TaxonomyStoreTest {
 
 	@Test
 	void resolvesASkillThatHasNoAliases() {
-		assertThat(this.taxonomy.resolve("terraform")).hasValue(new Skill("terraform", "Terraform", "devops", List.of()));
+		assertThat(this.taxonomy.resolve("terraform")).hasValue(new Skill("terraform", "Terraform", "devops", List.of(), Set.of(), null));
+	}
+
+	@Test
+	void readsWhichOfASkillsKeysAreContextKeysAndTheSkillItBelongsTo() {
+		TaxonomyStore taxonomy = TaxonomyStore.read(new StringReader("""
+				amazon-aurora\tAmazon Aurora\tdatabase\tAurora|AWS Aurora\tAurora\taws
+				"""));
+		assertThat(taxonomy.resolve("aurora")).hasValue(new Skill("amazon-aurora", "Amazon Aurora", "database",
+				List.of("Aurora", "AWS Aurora"), Set.of("Aurora"), "aws"));
+	}
+
+	@Test
+	void holdsEverySkillOnce() {
+		assertThat(this.taxonomy.skills()).extracting(Skill::id)
+			.containsExactlyInAnyOrder("postgresql", "c-sharp", "terraform");
 	}
 
 	@Test

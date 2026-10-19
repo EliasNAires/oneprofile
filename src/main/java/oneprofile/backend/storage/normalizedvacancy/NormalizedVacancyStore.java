@@ -65,6 +65,20 @@ public class NormalizedVacancyStore {
 	}
 
 	/**
+	 * What skill extraction reads after one vacancy id, in id order, each with its title and segments:
+	 * the vacancies the title decided in, and the pile without those in a language the body pass does
+	 * not read (ADR-0017), walked batch by batch like the titles are.
+	 * @param after the vacancy id to read past, 0 to start at the first
+	 * @param batch how many to read at most
+	 * @return the vacancies, empty once there are none left
+	 */
+	@Transactional(readOnly = true)
+	public List<ExtractionVacancy> extractionScopeAfter(long after, int batch) {
+		return this.repository.extractionScopeAfter(Classification.PILE_REASONS, PileVacancy.SUPPORTED_LANGUAGES,
+				after, Limit.of(batch));
+	}
+
+	/**
 	 * Puts the pile back to what the title stage left it, so the body pass can be run again without
 	 * the title pass: every vacancy of it unknown, decided by the title, with its reason kept. One the
 	 * body pass skipped for its language has lost its title's reason, and is left as it is.

@@ -2,6 +2,7 @@ package oneprofile.backend.storage.taxonomy;
 
 import java.io.BufferedReader;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -17,11 +18,11 @@ import java.util.regex.Pattern;
  * The taxonomy is read from a file with one skill per line, as
  * {@code id<TAB>canonical_name<TAB>category<TAB>aliases<TAB>context_keys<TAB>parent}, its aliases and
  * its context keys separated by {@code |}, and its parent the id of the skill it belongs to, if any
- * (Spring Security to the Spring Framework). The parent is not read here yet. A name is looked up by a key, its name form: the name
+ * (Spring Security to the Spring Framework). A name is looked up by a key, its name form: the name
  * lowercased, each run of spaces, hyphens, underscores and slashes between two other characters one
  * space, the ends trimmed. Discovery's {@code skillloop.name_form} gives the same key, and both are
  * tested on the cases of {@code taxonomy/name-forms.tsv} (#63). The canonical name is a key like any
- * alias. The context keys are not told apart here yet (#15).
+ * alias. Which of a skill's names are context keys it holds, and extraction tells them apart (ADR-0018).
  * <p>
  * A file is refused if two of its skills share an id, or if one key would name two skills.
  */
@@ -34,8 +35,11 @@ public class TaxonomyStore {
 
 	private final Map<String, Skill> byKey;
 
-	private TaxonomyStore(Map<String, Skill> byKey) {
+	private final List<Skill> skills;
+
+	private TaxonomyStore(Map<String, Skill> byKey, List<Skill> skills) {
 		this.byKey = byKey;
+		this.skills = List.copyOf(skills);
 	}
 
 	/**
@@ -47,14 +51,24 @@ public class TaxonomyStore {
 	public static TaxonomyStore read(Reader tsv) {
 		Set<String> ids = new HashSet<>();
 		Map<String, Skill> byKey = new HashMap<>();
+		List<Skill> skills = new ArrayList<>();
 		new BufferedReader(tsv).lines().map(TaxonomyStore::parse).forEach((skill) -> {
 			if (!ids.add(skill.id())) {
 				throw new IllegalStateException("Two skills have the id '" + skill.id() + "'");
 			}
 			index(byKey, skill.canonicalName(), skill);
 			skill.aliases().forEach((alias) -> index(byKey, alias, skill));
+			skills.add(skill);
 		});
-		return new TaxonomyStore(byKey);
+		return new TaxonomyStore(byKey, skills);
+	}
+
+	/**
+	 * Every skill it holds, in the order of its file.
+	 * @return its skills
+	 */
+	public List<Skill> skills() {
+		return this.skills;
 	}
 
 	/**
@@ -68,8 +82,17 @@ public class TaxonomyStore {
 
 	private static Skill parse(String line) {
 		String[] fields = line.split("\t", -1);
-		List<String> aliases = fields[3].isEmpty() ? List.of() : List.of(fields[3].split("\\|"));
-		return new Skill(fields[0], fields[1], fields[2], aliases);
+		String parent = field(fields, 5);
+		return new Skill(fields[0], fields[1], fields[2], names(field(fields, 3)), Set.copyOf(names(field(fields, 4))),
+				parent.isEmpty() ? null : parent);
+	}
+
+	private static String field(String[] fields, int index) {
+		return (index < fields.length) ? fields[index] : "";
+	}
+
+	private static List<String> names(String field) {
+		return field.isEmpty() ? List.of() : List.of(field.split("\\|"));
 	}
 
 	private static void index(Map<String, Skill> byKey, String name, Skill skill) {

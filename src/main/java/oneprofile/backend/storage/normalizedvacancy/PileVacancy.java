@@ -21,7 +21,7 @@ public record PileVacancy(long vacancyId, String cleanedTitle, UnknownReasonEnum
 	 * The languages the body pass reads: those the product can be marketed, supported and take
 	 * feedback in.
 	 */
-	private static final Set<String> SUPPORTED_LANGUAGES = Set.of("en", "es");
+	static final Set<String> SUPPORTED_LANGUAGES = Set.of("en", "es");
 
 	/**
 	 * Whether the body pass reads it. One whose board names no language is read.
