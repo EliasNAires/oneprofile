@@ -311,10 +311,7 @@ def collect(run=RUN):
 
 def append():
     skills, decisions = apply(skillloop.read_skill_rows(), read_tsv(RUN / "review.tsv"))
-    with open(skillloop.SKILLS, "w") as out:
-        for identifier, canonical, category, keys, context in skills:
-            out.write("\t".join([identifier, canonical, category, "|".join(keys[1:]),
-                                 "|".join(key for key in keys if key in context)]) + "\n")
+    skillloop.write_skill_rows(skills)
     with open(skillloop.DECISIONS, "a") as out:
         for form, decision, source in decisions:
             out.write("\t".join([form, decision, skillloop.criterion_revision(), skillloop.SNAPSHOT, source]) + "\n")

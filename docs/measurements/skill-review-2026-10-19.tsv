@@ -1,0 +1,549 @@
+change	skill	detail
+merged	aws-agentcore	amazon-bedrock-agentcore
+merged	amazon-mwaa	amazon-managed-workflows-for-apache-airflow
+merged	azure-event-hub	azure-event-hubs
+merged	azure-data-lake-storage-gen2	azure-data-lake-storage
+merged	azure-data-lake	azure-data-lake-storage
+merged	aws-scp	aws-service-control-policies
+merged	adobe-launch	adobe-data-collection
+merged	anthropic-api	claude-api
+merged	cisco-firepower-threat-defense	cisco-firepower
+merged	cesium	cesiumjs
+merged	crashlytics	firebase-crashlytics
+merged	cloud-firestore	firestore
+merged	databricks-sql-warehouse	databricks-sql
+merged	elk-stack	elastic-stack
+merged	fido2	fido
+merged	ddr4	ddr
+merged	es6	javascript
+merged	google-chronicle	google-security-operations
+merged	chronicle-siem	google-security-operations
+merged	hl7-fhir	fhir
+merged	ios-xe	cisco-ios
+merged	ieee-802-1x	802-1x
+merged	kql	kusto-query-language
+merged	kotlin-multiplatform-mobile	kotlin-multiplatform
+merged	gateway-api	kubernetes-gateway-api
+merged	delta-live-tables	lakeflow-declarative-pipelines
+merged	databricks-workflows	lakeflow-jobs
+merged	microsoft-endpoint-manager	microsoft-intune
+merged	powershell-dsc	powershell-desired-state-configuration
+merged	oracle-weblogic	oracle-weblogic-server
+merged	oracle-erp	oracle-erp-cloud
+merged	pivotal-cloud-foundry	cloud-foundry
+merged	context-api	react-context
+merged	cortex-ai	snowflake-cortex
+merged	sap-btp	sap-business-technology-platform
+merged	sentinelone-edr	sentinelone
+merged	mllib	spark-mllib
+merged	fsdp	pytorch-fsdp
+merged	roce-v2	roce
+merged	rovo	atlassian-rovo
+merged	red-hat	red-hat-enterprise-linux
+merged	citrix	citrix-virtual-apps-and-desktops
+merged	temporal-io	temporal
+merged	triton-inference-server	nvidia-triton-inference-server
+merged	litert	tensorflow-lite
+merged	vcenter	vmware-vcenter
+merged	windows-10	microsoft-windows
+merged	codex-cli	openai-codex
+merged	einstein-analytics	salesforce-crm-analytics
+merged	cds-views	abap-cds
+merged	juniper-junos	junos-os
+merged	preempt-rt	linux-preempt-rt
+merged	win32-api	windows-api
+alias moved	Bedrock Agents	amazon-bedrock -> amazon-bedrock-agents
+alias moved	AEM Cloud	adobe-experience-manager -> aem-as-a-cloud-service
+alias moved	JSM	jira -> jira-service-management
+dropped	microsoft-365	consumer, office or browser software
+dropped	microsoft-excel	consumer, office or browser software
+dropped	microsoft-word	consumer, office or browser software
+dropped	microsoft-project	consumer, office or browser software
+dropped	microsoft-visio	consumer, office or browser software
+dropped	microsoft-copilot	consumer, office or browser software
+dropped	microsoft-gcc	consumer, office or browser software
+dropped	microsoft-gcc-high	consumer, office or browser software
+dropped	onedrive	consumer, office or browser software
+dropped	google-sheets	consumer, office or browser software
+dropped	google-workspace	consumer, office or browser software
+dropped	google-notebooklm	consumer, office or browser software
+dropped	miro	consumer, office or browser software
+dropped	monday-com	consumer, office or browser software
+dropped	notion	consumer, office or browser software
+dropped	trello	consumer, office or browser software
+dropped	wrike	consumer, office or browser software
+dropped	smartsheet	consumer, office or browser software
+dropped	clickup	consumer, office or browser software
+dropped	basecamp	consumer, office or browser software
+dropped	lucidchart	consumer, office or browser software
+dropped	klaxoon	consumer, office or browser software
+dropped	docusign	consumer, office or browser software
+dropped	teamviewer	consumer, office or browser software
+dropped	airtable	consumer, office or browser software
+dropped	adobe-workfront	consumer, office or browser software
+dropped	claude-enterprise	consumer, office or browser software
+dropped	claude-design	consumer, office or browser software
+dropped	cowork	consumer, office or browser software
+dropped	slack-ai	consumer, office or browser software
+dropped	xlookup	consumer, office or browser software
+dropped	xlsx	consumer, office or browser software
+dropped	rar	consumer, office or browser software
+dropped	glean	consumer, office or browser software
+dropped	autocad	a technology no software person is hired for
+dropped	autodesk-construction-cloud	a technology no software person is hired for
+dropped	autodesk-revit	a technology no software person is hired for
+dropped	abaqus	a technology no software person is hired for
+dropped	catia	a technology no software person is hired for
+dropped	ptc-creo	a technology no software person is hired for
+dropped	siemens-nx	a technology no software person is hired for
+dropped	siemens-teamcenter	a technology no software person is hired for
+dropped	windchill	a technology no software person is hired for
+dropped	eplan	a technology no software person is hired for
+dropped	altium-designer	a technology no software person is hired for
+dropped	cameo	a technology no software person is hired for
+dropped	magicdraw	a technology no software person is hired for
+dropped	blender	a technology no software person is hired for
+dropped	adobe-photoshop	a technology no software person is hired for
+dropped	adobe-indesign	a technology no software person is hired for
+dropped	adobe-after-effects	a technology no software person is hired for
+dropped	adobe-creative-cloud	a technology no software person is hired for
+dropped	adobe-dreamweaver	a technology no software person is hired for
+dropped	sketch	a technology no software person is hired for
+dropped	invision	a technology no software person is hired for
+dropped	usertesting	a technology no software person is hired for
+dropped	primavera-p6	a technology no software person is hired for
+dropped	procore	a technology no software person is hired for
+dropped	benchling	a technology no software person is hired for
+dropped	labvantage	a technology no software person is hired for
+dropped	imagej	a technology no software person is hired for
+dropped	minitab	a technology no software person is hired for
+dropped	aderant	a technology no software person is hired for
+dropped	adp-workforce-now	a technology no software person is hired for
+dropped	athenahealth	a technology no software person is hired for
+dropped	avalara	a technology no software person is hired for
+dropped	ariba	a technology no software person is hired for
+dropped	sap-ariba	a technology no software person is hired for
+dropped	certinia	a technology no software person is hired for
+dropped	clay	a technology no software person is hired for
+dropped	clearbit	a technology no software person is hired for
+dropped	crossbeam	a technology no software person is hired for
+dropped	customer-io	a technology no software person is hired for
+dropped	braze	a technology no software person is hired for
+dropped	demandbase	a technology no software person is hired for
+dropped	dv360	a technology no software person is hired for
+dropped	marketo	a technology no software person is hired for
+dropped	hubspot	a technology no software person is hired for
+dropped	ringlead	a technology no software person is hired for
+dropped	oracle-eloqua	a technology no software person is hired for
+dropped	factset	a technology no software person is hired for
+dropped	kyriba	a technology no software person is hired for
+dropped	quickbooks	a technology no software person is hired for
+dropped	xero	a technology no software person is hired for
+dropped	workiva	a technology no software person is hired for
+dropped	yardi	a technology no software person is hired for
+dropped	ukg-pro	a technology no software person is hired for
+dropped	onestream	a technology no software person is hired for
+dropped	oracle-epbcs	a technology no software person is hired for
+dropped	oracle-epm	a technology no software person is hired for
+dropped	oracle-epm-automate	a technology no software person is hired for
+dropped	oracle-hyperion	a technology no software person is hired for
+dropped	oracle-hyperion-financial-management	a technology no software person is hired for
+dropped	oracle-health	a technology no software person is hired for
+dropped	meditech	a technology no software person is hired for
+dropped	metatrader-5	a technology no software person is hired for
+dropped	ironclad	a technology no software person is hired for
+dropped	infor-syteline	a technology no software person is hired for
+dropped	highjump	a technology no software person is hired for
+dropped	opower	a technology no software person is hired for
+dropped	veeva	a technology no software person is hired for
+dropped	sap-fico	a technology no software person is hired for
+dropped	sap-hcm	a technology no software person is hired for
+dropped	sap-successfactors	a technology no software person is hired for
+dropped	sap-pp	a technology no software person is hired for
+dropped	sap-pm	a technology no software person is hired for
+dropped	sap-apo	a technology no software person is hired for
+dropped	sap-tm	a technology no software person is hired for
+dropped	sap-ewm	a technology no software person is hired for
+dropped	sap-integrated-business-planning	a technology no software person is hired for
+dropped	sap-bpc	a technology no software person is hired for
+dropped	zuora-billing	a technology no software person is hired for
+dropped	google-search-console	a technology no software person is hired for
+dropped	incontact	a technology no software person is hired for
+dropped	genesys	a technology no software person is hired for
+dropped	zendesk	a technology no software person is hired for
+dropped	kaggle	a technology no software person is hired for
+dropped	hack-the-box	a technology no software person is hired for
+dropped	aveva	a company or vendor, not a technology
+dropped	avaya	a company or vendor, not a technology
+dropped	ambarella	a company or vendor, not a technology
+dropped	dell-emc	a company or vendor, not a technology
+dropped	ddn	a company or vendor, not a technology
+dropped	equinix	a company or vendor, not a technology
+dropped	esri	a company or vendor, not a technology
+dropped	ciena	a company or vendor, not a technology
+dropped	datto	a company or vendor, not a technology
+dropped	hewlett-packard-enterprise	a company or vendor, not a technology
+dropped	mcafee	a company or vendor, not a technology
+dropped	moxa	a company or vendor, not a technology
+dropped	netapp	a company or vendor, not a technology
+dropped	palo-alto-networks	a company or vendor, not a technology
+dropped	palo-alto-networks-cortex	a company or vendor, not a technology
+dropped	ping-identity	a company or vendor, not a technology
+dropped	portswigger	a company or vendor, not a technology
+dropped	xilinx	a company or vendor, not a technology
+dropped	faro-technologies	a company or vendor, not a technology
+dropped	finicity	a company or vendor, not a technology
+dropped	tricentis	a company or vendor, not a technology
+dropped	mosaicml	a company or vendor, not a technology
+dropped	abac	a generic concept or practice, not a named technology
+dropped	acl	a generic concept or practice, not a named technology
+dropped	rbac	a generic concept or practice, not a named technology
+dropped	iam	a generic concept or practice, not a named technology
+dropped	mfa	a generic concept or practice, not a named technology
+dropped	sso	a generic concept or practice, not a named technology
+dropped	pki	a generic concept or practice, not a named technology
+dropped	nat	a generic concept or practice, not a named technology
+dropped	numa	a generic concept or practice, not a named technology
+dropped	simd	a generic concept or practice, not a named technology
+dropped	cdn	a generic concept or practice, not a named technology
+dropped	ajax	a generic concept or practice, not a named technology
+dropped	bm25	a generic concept or practice, not a named technology
+dropped	bleu	a generic concept or practice, not a named technology
+dropped	gan	a generic concept or practice, not a named technology
+dropped	paxos	a generic concept or practice, not a named technology
+dropped	utxo	a generic concept or practice, not a named technology
+dropped	xss	a generic concept or practice, not a named technology
+dropped	waf	a generic concept or practice, not a named technology
+dropped	vpn	a generic concept or practice, not a named technology
+dropped	vpc	a generic concept or practice, not a named technology
+dropped	tde	a generic concept or practice, not a named technology
+dropped	smartnic	a generic concept or practice, not a named technology
+dropped	session-border-controller	a generic concept or practice, not a named technology
+dropped	api-gateway	a generic concept or practice, not a named technology
+dropped	restful-api	a generic concept or practice, not a named technology
+dropped	fpgas	a generic concept or practice, not a named technology
+dropped	bios	a generic concept or practice, not a named technology
+dropped	ash	an ambiguous abbreviation
+dropped	bubble	an ordinary word; the no-code tool is rarely what ads mean
+dropped	alchemy	a spelling of SQLAlchemy written apart; SQL Alchemy is its key now
+alias removed	azure-devops	Azure Azure DevOps
+alias removed	azure-government	Azure Government Azure
+alias removed	aws-govcloud	Cloud AWS GovCloud
+alias removed	eclipse-rcp	RCPs
+alias removed	palo-alto-cortex-xdr	Alto Cortex XDR
+alias removed	microsoft-defender	Defender Microsoft
+alias removed	microsoft-defender	Microsoft Defender Microsoft
+alias removed	microsoft-sentinel	Sentinel Microsoft
+alias removed	microsoft-sentinel	Microsoft Sentinel Microsoft
+alias removed	microsoft-intune	Intune Microsoft
+alias removed	microsoft-purview	Purview Microsoft
+alias removed	microsoft-sharepoint	SharePoint Online Microsoft
+alias removed	microsoft-defender-xdr	Defender XDR Microsoft
+alias removed	microsoft-fabric	BI Microsoft Fabric
+alias removed	microsoft-fabric	Azure Microsoft Fabric
+alias removed	collibra	Catalog Collibra
+alias removed	google-cloud-composer	Composer Google Cloud
+alias removed	pure-storage-flasharray	Storage Flasharray
+alias removed	react-native-testing-library	Native Testing Library
+alias removed	asp-net-core	Core Web API
+alias added	amazon-dynamodb	Dynamo DB
+alias added	amazon-dynamodb	AWS DynamoDB
+alias added	amazon-ecr	AWS ECR
+alias added	amazon-eks	AWS EKS
+alias added	amazon-rds	AWS RDS
+alias added	amazon-ebs	AWS EBS
+alias added	aws-step-functions	Step Functions
+alias added	azure-logic-apps	Logic Apps
+alias added	azure-event-hubs	Event Hubs
+alias added	azure-service-bus	Service Bus
+alias added	azure-application-insights	Application Insights
+alias added	azure-application-insights	App Insights
+alias added	azure-log-analytics	Log Analytics
+alias added	google-cloud-run	Cloud Run
+alias added	google-cloud-functions	Cloud Functions
+alias added	google-compute-engine	Compute Engine
+alias added	visual-studio-code	VS Code
+alias added	java	Java SE
+alias added	c-sharp	C Sharp
+alias added	beautifulsoup	Beautiful Soup
+alias added	beautifulsoup	bs4
+alias added	boto3	boto
+alias added	alpine-js	AlpineJS
+alias added	apollo-graphql	Apollo
+alias added	kong-gateway	Kong
+alias added	android-jetpack	Jetpack
+alias added	canbus	CAN bus
+alias added	canbus	CAN
+alias added	tcp	TCP/IP
+alias added	http	HTTPS
+alias added	agent-2-agent	A2A
+alias added	cpp	C++ 14
+alias added	cpp	C++ 23
+alias added	cpp	C++98
+alias added	cpp	C++03
+alias added	css	CSS 3
+alias added	ibm-mq	MQSeries
+alias added	ibm-mq	WebSphere MQ
+alias added	glacier	Amazon Glacier
+alias added	glacier	S3 Glacier
+alias added	gpfs	IBM Spectrum Scale
+alias added	inferentia	AWS Inferentia
+alias added	citrix-virtual-apps-and-desktops	XenApp
+alias added	citrix-virtual-apps-and-desktops	XenDesktop
+alias added	webflux	Spring WebFlux
+alias added	spring-framework	Spring
+context	amazon-aurora	Aurora
+context	amazon-bedrock	Bedrock
+context	amazon-athena	Athena
+context	aws-lambda	Lambda
+context	aws-lambda	Lambdas
+context	apache-arrow	Arrow
+context	apache-calcite	Calcite
+context	apache-camel	Camel
+context	apache-druid	Druid
+context	apache-doris	Doris
+context	apache-hive	Hive
+context	apache-iceberg	Iceberg
+context	apache-pulsar	Pulsar
+context	apache-sling	Sling
+context	amazon-neptune	Neptune
+context	azure-synapse-analytics	Synapse
+context	azure-traffic-manager	Traffic Manager
+context	azure-application-gateway	Application Gateway
+context	aws-control-tower	Control Tower
+context	amazon-kinesis-data-firehose	Firehose
+context	alpine-linux	Alpine
+context	atlantis	Atlantis
+context	astronomer	Astronomer
+context	astro	Astro
+context	artillery	Artillery
+context	asterisk	Asterisk
+context	babel	Babel
+context	bamboo	Bamboo
+context	barman	Barman
+context	bloc	BLoC
+context	bicep	Bicep
+context	aikido	Aikido
+context	antigravity	Antigravity
+context	autopsy	Autopsy
+context	amplitude	Amplitude
+context	amundsen	Amundsen
+context	aws-certificate-manager	ACM
+context	aws-auto-scaling-group	ASG
+context	aws-systems-manager	SSM
+context	adobe-experience-platform	AEP
+context	a10-networks	A10
+context	apptainer	Singularity
+context	apache-pinot	Pinot
+context	apache-maven	Maven
+context	apache-cassandra	Cassandra
+context	apache-cordova	Cordova
+context	apache-orc	ORC
+context	amazon-macie	Macie
+context	duo-security	Duo
+context	datastax-astra-db	Astra
+context	crunchy-data	Crunchy
+context	drizzle-orm	Drizzle
+context	ember-js	Ember
+context	eclipse-ide	Eclipse
+context	erwin-data-modeler	Erwin
+context	fedora-linux	Fedora
+context	fireworks-ai	Fireworks
+context	feign	Feign
+context	flask	Flask
+context	feast	Feast
+context	flax	Flax
+context	fiddler	Fiddler
+context	envoy	Envoy
+context	espresso	Espresso
+context	expo	Expo
+context	elixir	Elixir
+context	elm	Elm
+context	dagger	Dagger
+context	dapper	Dapper
+context	dart	Dart
+context	delphi	Delphi
+context	detox	Detox
+context	dragonfly	Dragonfly
+context	celery	Celery
+context	chai	Chai
+context	chroma	Chroma
+context	calico	Calico
+context	capacitor	Capacitor
+context	cedar	Cedar
+context	cesiumjs	Cesium
+context	concourse	Concourse
+context	conan	Conan
+context	cursor	Cursor
+context	cypress	Cypress
+context	cinder	Cinder
+context	bruno	Bruno
+context	braintrust	Braintrust
+context	gazebo	Gazebo
+context	firecracker	Firecracker
+context	foxglove	Foxglove
+context	frida	Frida
+context	claude-sonnet	Sonnet
+context	lakeflow-declarative-pipelines	DLT
+context	ecmascript-modules	ESM
+context	cisco-aci	ACI
+context	cisco-asa	ASA
+context	epolicy-orchestrator	ePO
+context	hashicorp-vault	Vault
+context	hashicorp-packer	Packer
+context	hashicorp-nomad	Nomad
+context	hashicorp-consul	Consul
+context	helm	Helm
+context	jasmine	Jasmine
+context	jest	Jest
+context	karma	Karma
+context	karate	Karate
+context	locust	Locust
+context	loki	Loki
+context	luigi	Luigi
+context	lustre	Lustre
+context	lottie	Lottie
+context	leaflet	Leaflet
+context	juniper-mist	Mist
+context	julialang	Julia
+context	kornshell	Korn
+context	kendo-ui	Kendo
+context	gin	Gin
+context	gremlin	Gremlin
+context	groovy	Groovy
+context	guava	Guava
+context	gulp	gulp
+context	gutenberg	Gutenberg
+context	hilt	Hilt
+context	honeycomb	Honeycomb
+context	hotwire	Hotwire
+context	hibernate	Hibernate
+context	insomnia	Insomnia
+context	jetty	Jetty
+context	gnu-octave	Octave
+context	google-security-operations	Chronicle
+context	google-cloud-spanner	Spanner
+context	google-gemini	Gemini
+context	google-cloud-dataflow	Dataflow
+context	google-cloud-deployment-manager	Deployment Manager
+context	google-tag-manager	GTM
+context	hive-metastore	Metastore
+context	language-server-protocol	Language Server
+context	macos	Mac
+context	pants	Pants
+context	ninja	Ninja
+context	mocha	Mocha
+context	mongoose	Mongoose
+context	meson	Meson
+context	newman	Newman
+context	octopus-deploy	Octopus
+context	orca-security	Orca
+context	pinecone	Pinecone
+context	polly	Polly
+context	postman	Postman
+context	panorama	Panorama
+context	palantir-gotham	Gotham
+context	opentofu	Tofu
+context	openstack-ironic	Ironic
+context	mantisbt	Mantis
+context	microsoft-sentinel	Sentinel
+context	microsoft-defender	Defender
+context	microsoft-endpoint-configuration-manager	Configuration Manager
+context	microsoft-windows	Windows
+context	powershell-desired-state-configuration	DSC
+context	pentaho-data-integration	PDI
+context	point-cloud-library	PCL
+context	oracle-cloud-infrastructure	OCI
+context	owasp-zap	ZAP
+context	oracle-data-guard	Data Guard
+context	oracle-rman	Recovery Manager
+context	meta-llama	Llama
+context	nvidia-nim	NIM
+context	nvidia-fabric-manager	Fabric Manager
+context	openai-codex	Codex
+context	openapi	Open API
+context	power-apps-canvas-apps	Canvas Apps
+context	prophet	Prophet
+context	protractor	Protractor
+context	puppet	Puppet
+context	rancher	Rancher
+context	ranger	Ranger
+context	rocky-linux	Rocky
+context	ray	Ray
+context	rook	Rook
+context	remix	Remix
+context	salesforce-aura-framework	Aura
+context	saltstack	Salt
+context	sap-analytics-cloud	SAC
+context	salesforce-cpq	CPQ
+context	salesforce-data-loader	Data Loader
+context	sap-solution-manager	Solution Manager
+context	snowflake	Snowflake
+context	sentry	Sentry
+context	sphinx	Sphinx
+context	spock	Spock
+context	sinatra	Sinatra
+context	squid	Squid
+context	stan	Stan
+context	starburst	Starburst
+context	sora	Sora
+context	yolo	YOLO
+context	zephyr	Zephyr
+context	zeppelin	Zeppelin
+context	toad	Toad
+context	thanos	Thanos
+context	thrift	Thrift
+context	teleport	Teleport
+context	vespa	Vespa
+context	whisper	Whisper
+context	wolverine	Wolverine
+context	wiz	Wiz
+context	swagger	Swagger
+context	tailwind-css	Tailwind
+context	travis-ci	Travis
+context	tricentis-tosca	TOSCA
+context	swift-package-manager	SPM
+context	visual-basic	VB
+context	vmware-site-recovery-manager	SRM
+context	vmware-cloud-foundation	VCF
+context	veritas-netbackup	Veritas
+context	vercel-ai-sdk	AI SDK
+context	oracle-ai-agent-studio	AI Agent Studio
+context	azure-ai-search	AI Search
+context	azure-devops-server	DevOps Server
+context	gpt	GPT
+context	kubernetes-gateway-api	Gateway API
+context	glacier	Glacier
+plain	clang	Clang
+plain	curl	curl
+plain	gameanalytics	GameAnalytics
+new	claude-opus	Claude Opus
+new	arm	ARM
+new	arm-cortex-m	ARM Cortex-M
+new	apache-ant	Apache Ant
+new	mongodb-atlas	MongoDB Atlas
+new	linux-kernel	Linux kernel
+new	pnpm	pnpm
+new	esbuild	esbuild
+new	rollup	Rollup
+new	cert-manager	cert-manager
+new	digitalocean	DigitalOcean
+new	azure-event-grid	Azure Event Grid
+new	prisma-orm	Prisma ORM
+new	composer	Composer
+new	phoenix-framework	Phoenix Framework
+new	unittest	unittest
+new	vagrant	Vagrant
+new	pip	pip
+new	uv	uv
+new	cargo	Cargo
+new	strace	strace
+new	perf	perf
+new	lora	LoRa
+new	core-data	Core Data
+new	realm	Realm
+new	great-expectations	Great Expectations
+new	knime	KNIME
+new	algolia	Algolia
+new	pgvector	pgvector
+new	ant-design	Ant Design

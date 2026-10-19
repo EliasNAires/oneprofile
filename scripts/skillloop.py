@@ -183,14 +183,30 @@ def read_companies():
 
 def read_skill_rows():
     """The rows of skills.tsv, each as id, canonical name, category, keys (the canonical name first)
-    and the keys that are context keys."""
+    and the keys that are context keys. The sixth column, the parent, is read by read_parents()."""
     rows = []
     with open(SKILLS) as lines:
         for line in lines:
-            identifier, canonical, category, aliases, *context = line.rstrip("\n").split("\t")
+            identifier, canonical, category, aliases, context = (line.rstrip("\n").split("\t") + [""])[:5]
             keys = [canonical] + [alias for alias in aliases.split("|") if alias]
-            rows.append((identifier, canonical, category, keys, set(filter(None, "".join(context).split("|")))))
+            rows.append((identifier, canonical, category, keys, set(filter(None, context.split("|")))))
     return rows
+
+
+def read_parents():
+    """The id of each skill's parent in skills.tsv, by the skill's id, for the skills that have one."""
+    with open(SKILLS) as lines:
+        fields = [line.rstrip("\n").split("\t") for line in lines]
+    return {row[0]: row[5] for row in fields if len(row) > 5 and row[5]}
+
+
+def write_skill_rows(rows):
+    """Writes skills.tsv from rows as read_skill_rows gives them, each keeping the parent it has there."""
+    parents = read_parents()
+    with open(SKILLS, "w") as out:
+        for identifier, canonical, category, keys, context in rows:
+            out.write("\t".join([identifier, canonical, category, "|".join(keys[1:]),
+                                 "|".join(key for key in keys if key in context), parents.get(identifier, "")]) + "\n")
 
 
 def read_keys(kind=None, spelled=False):

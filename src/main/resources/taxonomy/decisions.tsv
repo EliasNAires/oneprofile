@@ -14101,3 +14101,288 @@ ai devsecops	drop	5	classified-2026-10-06	session
 let encrypt	drop	5	classified-2026-10-06	session
 argocd gitops	drop	5	classified-2026-10-06	session
 ai bi	drop	5	classified-2026-10-06	session
+microsoft 365	drop	5	classified-2026-10-06	session
+microsoft office	drop	5	classified-2026-10-06	session
+m365	drop	5	classified-2026-10-06	session
+ms office	drop	5	classified-2026-10-06	session
+office 365	drop	5	classified-2026-10-06	session
+o365	drop	5	classified-2026-10-06	session
+ms365	drop	5	classified-2026-10-06	session
+microsoft excel	drop	5	classified-2026-10-06	session
+ms excel	drop	5	classified-2026-10-06	session
+office excel	drop	5	classified-2026-10-06	session
+microsoft 365 excel	drop	5	classified-2026-10-06	session
+microsoft word	drop	5	classified-2026-10-06	session
+ms word	drop	5	classified-2026-10-06	session
+microsoft project	drop	5	classified-2026-10-06	session
+ms project	drop	5	classified-2026-10-06	session
+microsoft visio	drop	5	classified-2026-10-06	session
+ms visio	drop	5	classified-2026-10-06	session
+visio	drop	5	classified-2026-10-06	session
+microsoft copilot	drop	5	classified-2026-10-06	session
+m365 copilot	drop	5	classified-2026-10-06	session
+microsoft gcc	drop	5	classified-2026-10-06	session
+microsoft gcc high	drop	5	classified-2026-10-06	session
+gcc high	drop	5	classified-2026-10-06	session
+onedrive	drop	5	classified-2026-10-06	session
+google sheets	drop	5	classified-2026-10-06	session
+google spreadsheets	drop	5	classified-2026-10-06	session
+google workspace	drop	5	classified-2026-10-06	session
+google apps	drop	5	classified-2026-10-06	session
+g suite	drop	5	classified-2026-10-06	session
+gsuite	drop	5	classified-2026-10-06	session
+google workspaces	drop	5	classified-2026-10-06	session
+google g suite	drop	5	classified-2026-10-06	session
+google workplace	drop	5	classified-2026-10-06	session
+google notebooklm	drop	5	classified-2026-10-06	session
+notebooklm	drop	5	classified-2026-10-06	session
+miro	drop	5	classified-2026-10-06	session
+monday.com	drop	5	classified-2026-10-06	session
+notion	drop	5	classified-2026-10-06	session
+trello	drop	5	classified-2026-10-06	session
+wrike	drop	5	classified-2026-10-06	session
+smartsheet	drop	5	classified-2026-10-06	session
+smartsheets	drop	5	classified-2026-10-06	session
+clickup	drop	5	classified-2026-10-06	session
+basecamp	drop	5	classified-2026-10-06	session
+lucidchart	drop	5	classified-2026-10-06	session
+lucid chart	drop	5	classified-2026-10-06	session
+klaxoon	drop	5	classified-2026-10-06	session
+docusign	drop	5	classified-2026-10-06	session
+teamviewer	drop	5	classified-2026-10-06	session
+airtable	drop	5	classified-2026-10-06	session
+adobe workfront	drop	5	classified-2026-10-06	session
+workfront	drop	5	classified-2026-10-06	session
+claude enterprise	drop	5	classified-2026-10-06	session
+claude design	drop	5	classified-2026-10-06	session
+cowork	drop	5	classified-2026-10-06	session
+slack ai	drop	5	classified-2026-10-06	session
+xlookup	drop	5	classified-2026-10-06	session
+xlsx	drop	5	classified-2026-10-06	session
+rar	drop	5	classified-2026-10-06	session
+glean	drop	5	classified-2026-10-06	session
+autocad	drop	5	classified-2026-10-06	session
+autodesk construction cloud	drop	5	classified-2026-10-06	session
+autodesk revit	drop	5	classified-2026-10-06	session
+revit	drop	5	classified-2026-10-06	session
+abaqus	drop	5	classified-2026-10-06	session
+catia	drop	5	classified-2026-10-06	session
+catia v5	drop	5	classified-2026-10-06	session
+catia v6	drop	5	classified-2026-10-06	session
+ptc creo	drop	5	classified-2026-10-06	session
+creo	drop	5	classified-2026-10-06	session
+siemens nx	drop	5	classified-2026-10-06	session
+siemens teamcenter	drop	5	classified-2026-10-06	session
+teamcenter	drop	5	classified-2026-10-06	session
+siemens teamcenter plm	drop	5	classified-2026-10-06	session
+team center	drop	5	classified-2026-10-06	session
+teamcenter plm	drop	5	classified-2026-10-06	session
+windchill	drop	5	classified-2026-10-06	session
+ptc windchill	drop	5	classified-2026-10-06	session
+eplan	drop	5	classified-2026-10-06	session
+altium designer	drop	5	classified-2026-10-06	session
+altium	drop	5	classified-2026-10-06	session
+cameo	drop	5	classified-2026-10-06	session
+cameo systems modeler	drop	5	classified-2026-10-06	session
+magicdraw	drop	5	classified-2026-10-06	session
+blender	drop	5	classified-2026-10-06	session
+adobe photoshop	drop	5	classified-2026-10-06	session
+photoshop	drop	5	classified-2026-10-06	session
+adobe indesign	drop	5	classified-2026-10-06	session
+indesign	drop	5	classified-2026-10-06	session
+adobe after effects	drop	5	classified-2026-10-06	session
+after effects	drop	5	classified-2026-10-06	session
+adobe creative cloud	drop	5	classified-2026-10-06	session
+creative cloud	drop	5	classified-2026-10-06	session
+adobe cc	drop	5	classified-2026-10-06	session
+adobe creative suite	drop	5	classified-2026-10-06	session
+adobe dreamweaver	drop	5	classified-2026-10-06	session
+dreamweaver	drop	5	classified-2026-10-06	session
+macromedia dreamweaver	drop	5	classified-2026-10-06	session
+sketch	drop	5	classified-2026-10-06	session
+invision	drop	5	classified-2026-10-06	session
+usertesting	drop	5	classified-2026-10-06	session
+primavera p6	drop	5	classified-2026-10-06	session
+p6	drop	5	classified-2026-10-06	session
+procore	drop	5	classified-2026-10-06	session
+benchling	drop	5	classified-2026-10-06	session
+labvantage	drop	5	classified-2026-10-06	session
+imagej	drop	5	classified-2026-10-06	session
+minitab	drop	5	classified-2026-10-06	session
+aderant	drop	5	classified-2026-10-06	session
+adp workforce now	drop	5	classified-2026-10-06	session
+adp workforce	drop	5	classified-2026-10-06	session
+athenahealth	drop	5	classified-2026-10-06	session
+avalara	drop	5	classified-2026-10-06	session
+ariba	drop	5	classified-2026-10-06	session
+sap ariba	drop	5	classified-2026-10-06	session
+certinia	drop	5	classified-2026-10-06	session
+certinia psa	drop	5	classified-2026-10-06	session
+financialforce	drop	5	classified-2026-10-06	session
+clay	drop	5	classified-2026-10-06	session
+clearbit	drop	5	classified-2026-10-06	session
+crossbeam	drop	5	classified-2026-10-06	session
+customer.io	drop	5	classified-2026-10-06	session
+braze	drop	5	classified-2026-10-06	session
+demandbase	drop	5	classified-2026-10-06	session
+dv360	drop	5	classified-2026-10-06	session
+marketo	drop	5	classified-2026-10-06	session
+hubspot	drop	5	classified-2026-10-06	session
+ringlead	drop	5	classified-2026-10-06	session
+oracle eloqua	drop	5	classified-2026-10-06	session
+eloqua	drop	5	classified-2026-10-06	session
+factset	drop	5	classified-2026-10-06	session
+kyriba	drop	5	classified-2026-10-06	session
+quickbooks	drop	5	classified-2026-10-06	session
+quickbooks online	drop	5	classified-2026-10-06	session
+qbo	drop	5	classified-2026-10-06	session
+xero	drop	5	classified-2026-10-06	session
+workiva	drop	5	classified-2026-10-06	session
+yardi	drop	5	classified-2026-10-06	session
+ukg pro	drop	5	classified-2026-10-06	session
+onestream	drop	5	classified-2026-10-06	session
+oracle epbcs	drop	5	classified-2026-10-06	session
+epbcs	drop	5	classified-2026-10-06	session
+oracle enterprise performance management	drop	5	classified-2026-10-06	session
+oracle epm	drop	5	classified-2026-10-06	session
+oracle epm cloud	drop	5	classified-2026-10-06	session
+oracle epm automate	drop	5	classified-2026-10-06	session
+epm automate	drop	5	classified-2026-10-06	session
+oracle hyperion	drop	5	classified-2026-10-06	session
+hyperion	drop	5	classified-2026-10-06	session
+hyperion planning	drop	5	classified-2026-10-06	session
+oracle hyperion financial management	drop	5	classified-2026-10-06	session
+hyperion financial management	drop	5	classified-2026-10-06	session
+hfm	drop	5	classified-2026-10-06	session
+oracle health	drop	5	classified-2026-10-06	session
+meditech	drop	5	classified-2026-10-06	session
+metatrader 5	drop	5	classified-2026-10-06	session
+mt5	drop	5	classified-2026-10-06	session
+ironclad	drop	5	classified-2026-10-06	session
+infor syteline	drop	5	classified-2026-10-06	session
+highjump	drop	5	classified-2026-10-06	session
+körber highjump	drop	5	classified-2026-10-06	session
+opower	drop	5	classified-2026-10-06	session
+veeva	drop	5	classified-2026-10-06	session
+veeva crm	drop	5	classified-2026-10-06	session
+sap fico	drop	5	classified-2026-10-06	session
+sap hcm	drop	5	classified-2026-10-06	session
+sap successfactors	drop	5	classified-2026-10-06	session
+successfactors	drop	5	classified-2026-10-06	session
+sap production planning	drop	5	classified-2026-10-06	session
+sap pp	drop	5	classified-2026-10-06	session
+sap pm	drop	5	classified-2026-10-06	session
+sap apo	drop	5	classified-2026-10-06	session
+sap transportation management	drop	5	classified-2026-10-06	session
+sap tm	drop	5	classified-2026-10-06	session
+sap ewm	drop	5	classified-2026-10-06	session
+ewm	drop	5	classified-2026-10-06	session
+sap integrated business planning	drop	5	classified-2026-10-06	session
+ibp	drop	5	classified-2026-10-06	session
+sap bpc	drop	5	classified-2026-10-06	session
+zuora billing	drop	5	classified-2026-10-06	session
+google search console	drop	5	classified-2026-10-06	session
+incontact	drop	5	classified-2026-10-06	session
+genesys	drop	5	classified-2026-10-06	session
+zendesk	drop	5	classified-2026-10-06	session
+kaggle	drop	5	classified-2026-10-06	session
+hack the box	drop	5	classified-2026-10-06	session
+htb	drop	5	classified-2026-10-06	session
+aveva	drop	5	classified-2026-10-06	session
+avaya	drop	5	classified-2026-10-06	session
+ambarella	drop	5	classified-2026-10-06	session
+dell emc	drop	5	classified-2026-10-06	session
+ddn	drop	5	classified-2026-10-06	session
+equinix	drop	5	classified-2026-10-06	session
+esri	drop	5	classified-2026-10-06	session
+ciena	drop	5	classified-2026-10-06	session
+datto	drop	5	classified-2026-10-06	session
+hewlett packard enterprise	drop	5	classified-2026-10-06	session
+hpe	drop	5	classified-2026-10-06	session
+mcafee	drop	5	classified-2026-10-06	session
+moxa	drop	5	classified-2026-10-06	session
+netapp	drop	5	classified-2026-10-06	session
+palo alto networks	drop	5	classified-2026-10-06	session
+palo alto networks cortex	drop	5	classified-2026-10-06	session
+palo alto cortex	drop	5	classified-2026-10-06	session
+ping identity	drop	5	classified-2026-10-06	session
+portswigger	drop	5	classified-2026-10-06	session
+xilinx	drop	5	classified-2026-10-06	session
+faro technologies	drop	5	classified-2026-10-06	session
+faro	drop	5	classified-2026-10-06	session
+finicity	drop	5	classified-2026-10-06	session
+tricentis	drop	5	classified-2026-10-06	session
+mosaicml	drop	5	classified-2026-10-06	session
+abac	drop	5	classified-2026-10-06	session
+acl	drop	5	classified-2026-10-06	session
+acls	drop	5	classified-2026-10-06	session
+rbac	drop	5	classified-2026-10-06	session
+iam	drop	5	classified-2026-10-06	session
+mfa	drop	5	classified-2026-10-06	session
+sso	drop	5	classified-2026-10-06	session
+pki	drop	5	classified-2026-10-06	session
+nat	drop	5	classified-2026-10-06	session
+numa	drop	5	classified-2026-10-06	session
+simd	drop	5	classified-2026-10-06	session
+cdn	drop	5	classified-2026-10-06	session
+ajax	drop	5	classified-2026-10-06	session
+bm25	drop	5	classified-2026-10-06	session
+bleu	drop	5	classified-2026-10-06	session
+gan	drop	5	classified-2026-10-06	session
+paxos	drop	5	classified-2026-10-06	session
+utxo	drop	5	classified-2026-10-06	session
+xss	drop	5	classified-2026-10-06	session
+waf	drop	5	classified-2026-10-06	session
+vpn	drop	5	classified-2026-10-06	session
+virtual private network	drop	5	classified-2026-10-06	session
+virtual private networking	drop	5	classified-2026-10-06	session
+vpns	drop	5	classified-2026-10-06	session
+vpc	drop	5	classified-2026-10-06	session
+vpcs	drop	5	classified-2026-10-06	session
+tde	drop	5	classified-2026-10-06	session
+smartnic	drop	5	classified-2026-10-06	session
+session border controller	drop	5	classified-2026-10-06	session
+sbcs	drop	5	classified-2026-10-06	session
+sbc	drop	5	classified-2026-10-06	session
+api gateway	drop	5	classified-2026-10-06	session
+restful api	drop	5	classified-2026-10-06	session
+restful	drop	5	classified-2026-10-06	session
+rest api	drop	5	classified-2026-10-06	session
+rest apis	drop	5	classified-2026-10-06	session
+restful apis	drop	5	classified-2026-10-06	session
+restapi	drop	5	classified-2026-10-06	session
+fpgas	drop	5	classified-2026-10-06	session
+bios	drop	5	classified-2026-10-06	session
+ash	drop	5	classified-2026-10-06	session
+bubble	drop	5	classified-2026-10-06	session
+alchemy	drop	5	classified-2026-10-06	session
+azure azure devops	drop	5	classified-2026-10-06	session
+azure government azure	drop	5	classified-2026-10-06	session
+cloud aws govcloud	drop	5	classified-2026-10-06	session
+rcps	drop	5	classified-2026-10-06	session
+alto cortex xdr	drop	5	classified-2026-10-06	session
+defender microsoft	drop	5	classified-2026-10-06	session
+microsoft defender microsoft	drop	5	classified-2026-10-06	session
+sentinel microsoft	drop	5	classified-2026-10-06	session
+microsoft sentinel microsoft	drop	5	classified-2026-10-06	session
+intune microsoft	drop	5	classified-2026-10-06	session
+purview microsoft	drop	5	classified-2026-10-06	session
+sharepoint online microsoft	drop	5	classified-2026-10-06	session
+defender xdr microsoft	drop	5	classified-2026-10-06	session
+bi microsoft fabric	drop	5	classified-2026-10-06	session
+azure microsoft fabric	drop	5	classified-2026-10-06	session
+catalog collibra	drop	5	classified-2026-10-06	session
+composer google cloud	drop	5	classified-2026-10-06	session
+storage flasharray	drop	5	classified-2026-10-06	session
+native testing library	drop	5	classified-2026-10-06	session
+core web api	drop	5	classified-2026-10-06	session
+aws dynamodb	keep	5	classified-2026-10-06	session
+apollo	keep	5	classified-2026-10-06	session
+a2a	keep	5	classified-2026-10-06	session
+arm	keep	5	classified-2026-10-06	session
+arm cortex m	keep	5	classified-2026-10-06	session
+ant	keep	5	classified-2026-10-06	session
+prisma	keep	5	classified-2026-10-06	session
+composer	keep	5	classified-2026-10-06	session
+uv	keep	5	classified-2026-10-06	session
+lora	keep	5	classified-2026-10-06	session

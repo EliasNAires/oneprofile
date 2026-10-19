@@ -29,10 +29,8 @@ MIN_MENTIONS = 10
 def set_kinds(lines):
     rows = skillloop.read_skill_rows()
     context = skillloop.context_keys({key for row in rows for key in row[3]}, lines)
-    with open(skillloop.SKILLS, "w") as out:
-        for identifier, canonical, category, keys, _ in rows:
-            out.write("\t".join([identifier, canonical, category, "|".join(keys[1:]),
-                                 "|".join(key for key in keys if key in context)]) + "\n")
+    skillloop.write_skill_rows([(identifier, canonical, category, keys, context)
+                                for identifier, canonical, category, keys, _ in rows])
     print(f"{len(context)} context keys of {sum(len(row[3]) for row in rows)}: {', '.join(sorted(context))}")
 
 

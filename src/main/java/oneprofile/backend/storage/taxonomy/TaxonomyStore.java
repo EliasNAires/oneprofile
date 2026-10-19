@@ -15,8 +15,9 @@ import java.util.regex.Pattern;
  * The curated set of skills, and the resolution of a name to the skill it names.
  * <p>
  * The taxonomy is read from a file with one skill per line, as
- * {@code id<TAB>canonical_name<TAB>category<TAB>aliases<TAB>context_keys}, its aliases and its
- * context keys separated by {@code |}. A name is looked up by a key, its name form: the name
+ * {@code id<TAB>canonical_name<TAB>category<TAB>aliases<TAB>context_keys<TAB>parent}, its aliases and
+ * its context keys separated by {@code |}, and its parent the id of the skill it belongs to, if any
+ * (Spring Security to the Spring Framework). The parent is not read here yet. A name is looked up by a key, its name form: the name
  * lowercased, each run of spaces, hyphens, underscores and slashes between two other characters one
  * space, the ends trimmed. Discovery's {@code skillloop.name_form} gives the same key, and both are
  * tested on the cases of {@code taxonomy/name-forms.tsv} (#63). The canonical name is a key like any

@@ -102,6 +102,38 @@ Run once by #55 on `classified-2026-10-06` (ADR-0013), before ADR-0016 replaced 
   `decisions.tsv` under revision 5 and source `jev` or `session`; the reviewed rows, each change
   with its reason, are archived in `docs/measurements/skill-run-classified-2026-10-06.tsv`.
 
+## The review of #55 and #56
+
+One session read all 2,864 skills against the criterion on 2026-10-19, after #64's run. Every
+change, with the skill it touched, is archived in `docs/measurements/skill-review-2026-10-19.tsv`.
+`skills.tsv` went from 2,864 skills to 2,670:
+
+- **170 skills removed**, each name form a `drop` in `decisions.tsv` (revision 5, source
+  `session`): office and consumer software (Microsoft 365, Excel, Word, Google Sheets, Google
+  Workspace, OneDrive, Notion), software no software person is hired for (AutoCAD, CATIA, Revit,
+  Photoshop, HubSpot, QuickBooks, the finance and HR modules of SAP and Oracle EPM), vendors
+  (Palo Alto Networks, NetApp, Xilinx) and concepts (RBAC, SSO, VPN, CDN, RESTful API, FPGAs).
+  Alchemy is removed too: its segments write SQL Alchemy, now a key of `sqlalchemy`.
+- **53 skills merged** into another that is the same skill: an old name (Delta Live Tables into
+  Lakeflow Declarative Pipelines, LiteRT into TensorFlow Lite), a version (ES6, Windows 10, FIDO2),
+  or one product held under two ids (Crashlytics, KQL, Temporal.io).
+- **30 skills added** that ads ask for and no key held: Claude Opus (until then a key of
+  `claude`), MongoDB Atlas, Linux kernel, ARM, ARM Cortex-M, Apache Ant, Prisma ORM, Composer,
+  pnpm, esbuild, Rollup, pip, uv, Cargo, DigitalOcean and others.
+- **Keys:** 46 spellings added (Spring for the Spring Framework, VS Code, TCP/IP, HTTPS, Cloud
+  Run, Step Functions), 3 moved to the skill they name (JSM to Jira Service Management), and 20
+  removed as junk or pieces of a longer name (Sentinel Microsoft, Core Web API). 222 keys were
+  marked context and 3 marked plain (Clang, curl and GameAnalytics are no ordinary words).
+- **Parents:** a sixth column of `skills.tsv` holds the id of the skill each one belongs to
+  (Spring Security to `spring-framework`, AWS Lambda to `aws`); 616 skills have one. Nothing reads
+  it yet.
+
+**For a calibration:** the criterion makes a key context only when it is an ordinary word, or C or
+R. The review also marked context the plain keys that fail key safety's 95% for another reason:
+first names (Julia, Cassandra, Bruno), abbreviations that name several things (GTM, OCI, ACM, SSM)
+and product names that are also other things (Lambda, Iceberg, Windows). Revision 5 would drop such
+an alias instead. A calibration decides which.
+
 ## How the taxonomy grows
 
 Each new snapshot (ADR-0006) is one session, run as ADR-0016 says: the script narrows the corpus,

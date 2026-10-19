@@ -309,6 +309,11 @@ An alternative spelling or name for a skill. Without aliases the two sides of a 
 meet.
 _Avoid_: synonym, variant, alternate label
 
+**Parent**:
+The skill another skill belongs to, as a part or product of it: the Spring Framework of Spring
+Security, AWS of AWS Lambda. A skill has at most one.
+_Avoid_: group, family, umbrella, category
+
 **Taxonomy**:
 The curated set of skills and their aliases. It is the vocabulary of matching and the list a
 person picks their own skills from.
