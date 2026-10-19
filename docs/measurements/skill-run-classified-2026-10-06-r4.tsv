@@ -1,0 +1,2125 @@
+name	kind	source	id	canonical	category	aliases	context	reason	note
+100G	drop	skill-decider						a generic concept (a bandwidth speed, not a named technology)	
+100G+	drop	skill-decider						a generic concept (a bandwidth speed, not a named technology)	
+10pm	drop	skill-decider						not a technology at all (a time of day)	
+19c	drop	skill-decider						a piece of a longer name ads never use alone for the product (Oracle's version number)	doubt: written bare in a list of Oracle versions, close to a version-without-vendor keep, but too ambiguous alone
+1Password	drop	skill-decider						software no software person is hired for	
+200G	drop	skill-decider						a generic concept (a bandwidth speed, not a named technology)	
+2FA	drop	skill-decider						a generic concept, not a named technology	
+3D CAD	drop	skill-decider						a generic concept (a category of software, not a named technology)	
+3DEXPERIENCE	drop	skill-decider						software no software person is hired for	
+3D Gaussian Splatting	drop	skill-decider						a technique, not a named technology	
+3D IC	drop	skill-decider						a generic concept (a packaging technique, not a named technology)	
+3PL	drop	skill-decider						not a technology at all (a business/logistics concept)	
+400G	drop	skill-decider						a generic concept (a bandwidth speed, not a named technology)	
+4AM	drop	skill-decider						not a technology at all (a time of day)	
+4D	drop	skill-decider						an ambiguous abbreviation: names several things, none dominant	
+4HANA	drop	session						a piece of a longer name written around it (S/4HANA)	Every segment writes SAP S/4HANA; 4HANA is the piece after the slash, which the criterion drops (Security Command in Security Command Center). The record dropped it under revisions 0 and 5, and taxonomy.md step 6 names this exact reopening as one to undo.
+4HANA Finance	drop	skill-decider						an ordinary word before or after it (S/4HANA plus the qualifier Finance)	
+4HANA Public	drop	skill-decider						an ordinary word before or after it (S/4HANA plus the qualifier Public/Private Cloud)	
+5G SA	drop	skill-decider						a generic concept (a network generation/architecture mode, not a named technology)	doubt: could be read as a specific 3GPP standard rather than a generic label
+60fps	drop	skill-decider						a generic concept (a performance metric, not a named technology)	
+6A	drop	skill-decider						an ambiguous abbreviation: names several things, none dominant	
+6G	drop	skill-decider						a generic concept (a network generation label, not a named technology)	doubt: could be read as a specific standard rather than a generic label
+6sense	drop	skill-decider						software no software person is hired for	doubt: one segment uses 6sense as the employer's name rather than the marketing platform
+6.x	drop	skill-decider						an ambiguous abbreviation: a version fragment applying to several unrelated products, none dominant	
+7AM	drop	skill-decider						not a technology at all (a time of day)	
+800G	drop	skill-decider						a generic concept (a bandwidth speed, not a named technology)	
+A+	drop	skill-decider						a compliance framework, regulation or certification (CompTIA A+)	
+A1	drop	skill-decider						an ambiguous abbreviation: names several things, none dominant	
+a11y	drop	skill-decider						a generic concept, not a named technology	
+A2A	drop	skill-decider						an ambiguous abbreviation: names several things, none dominant	doubt: all three segments here use A2A for the Agent2Agent AI protocol, but the abbreviation also names generic application-to-application integration elsewhere, and abbreviations get no context-key escape
+AAAI	drop	skill-decider						not a technology at all (an academic conference)	
+AAC	drop	skill-decider						an ambiguous abbreviation: names several things, none dominant (audio codec vs. Oracle Advanced Access Controls)	
+aATP	drop	skill-decider						a piece of a longer name (an SAP functional module term, not an independent technology)	
+ABL	drop	skill-decider						an ambiguous abbreviation: names several things, none dominant (Asset-Based Lending vs. the Progress ABL language)	
+Access Manager	drop	skill-decider						a piece of a longer name ads never use alone for the product (Oracle Access Manager), or a generic job title	
+ACD	drop	skill-decider						an ambiguous abbreviation: names several things, none dominant	
+ACH	drop	skill-decider						not a technology at all (a payment network/rail, a business concept)	
+ACK	drop	skill-decider						an ambiguous abbreviation: names several things, none dominant (Alibaba Cloud container service vs. TCP acknowledgement)	
+ACME	drop	session						an ambiguous name: the certificate protocol, and the placeholder company Acme	One segment uses Acme as the placeholder company; the protocol reading is thin (12 mentions). The record holds a revision-5 drop of this name and the criterion has not changed since (ADR-0013: a drop is final), and the criterion says: when in doubt, drop.
+ACMP	drop	skill-decider						a compliance framework, regulation or certification (a change-management certification body)	
+Aconex	drop	skill-decider						software no software person is hired for	
+ACORD	drop	session						obscure: a name few engineers would recognise	An insurance-industry messaging standard in 4 mentions, niche outside insurtech, as the agent's own doubt says. The record holds a revision-5 drop of this name and the criterion has not changed since (ADR-0013: a drop is final).
+Active Workspace	drop	skill-decider						a piece of a longer name ads never use alone for the product (Teamcenter Active Workspace)	doubt: one segment uses \\\"active workspace\\\" in an unrelated ordinary SaaS-metric sense
+Acumatica	drop	skill-decider						software no software person is hired for	
+ADaM	drop	session						a homonym: the first name Adam, and a clinical-data dataset standard	ADaM collides with the name Adam (one segment is a person); it is a CDISC dataset standard used by clinical statistical programmers, like CDASH, which this run drops as a generic concept. The record dropped it under revision 0, and no later revision reopens that reason. The agent's context mark would also not protect a person's name.
+ADC	drop	skill-decider						an ambiguous abbreviation: names several things, none dominant (Application Delivery Controller vs. Analog-to-Digital Converter)	
+ADE	drop	skill-decider						a piece of a longer name (Apple's Automated Device Enrollment feature of Apple Business Manager)	
+ADFDI	drop	skill-decider						a name few engineers would recognise (a narrow Oracle ADF Desktop Integration feature)	
+ADM-2certification	drop	skill-decider						not a technology at all (a garbled fragment of a certification code)	
+ADM-2or	drop	skill-decider						not a technology at all (a garbled fragment of a certification code)	
+administración	drop	skill-decider						an ordinary word, in Spanish, used in its ordinary sense	
+ADO	drop	skill-decider						an ambiguous abbreviation: names several things, none dominant (Azure DevOps vs. ADO.NET vs. generic Agile board reference)	
+Adobe Acrobat	drop	skill-decider						consumer, office or browser software	
+Adobe Captivate	drop	skill-decider						software no software person is hired for	
+Adobe Firefly	drop	skill-decider						software no software person is hired for	
+Adobe Marketing	drop	skill-decider						a piece of a longer name (vendor plus a generic word, not the product's whole name)	
+Adobe Marketing Cloud	drop	session						a vendor umbrella, a product line	Adobe Marketing Cloud is Adobe's umbrella brand for a suite (Analytics, Target, ...), not one technology; the criterion drops vendor umbrellas and product lines. The record holds a revision-5 drop of this name and the criterion has not changed since (ADR-0013: a drop is final); parity with Salesforce Marketing Cloud is not a reason the criterion gives.
+Adobe Sign	drop	skill-decider						software no software person is hired for	
+AdOps	drop	skill-decider						a generic concept (a job function/practice, not a named technology)	
+Ads Data Hub	drop	session						obscure: a name few ads use and few engineers would recognise	3 mentions, a marketing clean-room, as the agent's doubt says. The record holds a revision-5 drop of this name and the criterion has not changed since (ADR-0013: a drop is final).
+Ads Manager	drop	skill-decider						a piece of a longer name ads never use alone for the product	doubt: bare form could mean Meta Ads Manager, Google Ads Manager or the employer's own internal product; none dominant
+ADT	drop	skill-decider						an ambiguous abbreviation	
+Advanced RPA Developer	drop	skill-decider						a fragment of a longer name, a certification title	
+ADW	drop	skill-decider						obscure or historical	doubt: Oracle Autonomous Data Warehouse abbreviation, thin and vendor-attached, few engineers would recognise it bare
+Adwords	drop	skill-decider						a technology no software person is hired for	
+ADX	drop	skill-decider						an ambiguous abbreviation	
+AEC-Q	drop	skill-decider						a compliance framework, regulation or certification	
+AES67	new	skill-decider	aes67	AES67	networking				
+AF	drop	skill-decider						an ambiguous abbreviation	
+AFSIM	drop	skill-decider						a technology no software person is hired for	
+AFT	drop	skill-decider						an ambiguous abbreviation	
+Agent Bricks	new	skill-decider	agent-bricks	Agent Bricks	ml				doubt: two segments clearly name Databricks' Agent Bricks product, but the third uses it with no Databricks context, so it may be an unrelated internal term
+Agent Core	drop	skill-decider						a homonym	doubt: one segment lists it apart from Bedrock as a distinct thing, another ties it to AWS/Bedrock AgentCore, and a third is a generic .NET component; none dominant
+Agentic AI Developer	drop	skill-decider						not a technology at all, a job title and certification	
+Agentic RAG	drop	skill-decider						a generic concept	
+AgentKit	new	skill-decider	agentkit	AgentKit	ml	OpenAI AgentKit			
+Agent Studio	drop	skill-decider						names several things, none dominant	
+Agent Workspace	drop	skill-decider						names several things, none dominant	doubt: mostly a generic CRM term, but one segment ties it to Amazon Connect's own Agent Workspace feature
+Agile Application	drop	skill-decider						a generic concept	
+Agile PLM	drop	skill-decider						a technology no software person is hired for	doubt: a specific named Oracle PLM product, but hired for by PLM/product engineers, not software engineers
+Agile QA	drop	skill-decider						a generic concept	
+Agile Release Train	drop	skill-decider						a generic concept	
+Agile SDLC	drop	skill-decider						a generic concept	
+Agiloft	drop	skill-decider						a technology no software person is hired for	
+Aha	drop	skill-decider						a technology no software person is hired for	doubt: also collides with the ordinary interjection ('aha moment')
+AHJ	drop	skill-decider						not a technology at all	
+Ahrefs	drop	skill-decider						a technology no software person is hired for	
+AHT	drop	skill-decider						a generic concept	
+AHU	drop	skill-decider						not a technology at all	
+AI Agent Governance	drop	skill-decider						a generic concept	
+AI Agents Team	drop	skill-decider						not a technology at all, a team heading	
+AI-assistive	drop	skill-decider						an ordinary word	
+AI Center	drop	skill-decider						not a technology at all, a heading	
+AI Companion	drop	skill-decider						names several things, none dominant	doubt: one segment names Zoom's AI Companion product, the others use it as a generic adjective
+AI DevOps	drop	skill-decider						a generic concept	
+AIDLC	drop	skill-decider						a generic concept	
+AI-enabling	drop	skill-decider						an ordinary word	
+AI-fluent	drop	skill-decider						an ordinary word	
+AI Functions	drop	skill-decider						names several things, none dominant	doubt: Databricks, Snowflake and Sigma each name a different feature this way
+AI Gateway	drop	skill-decider						names several things, none dominant	
+AI-human	drop	skill-decider						an ordinary word	
+AI IDE	drop	skill-decider						a generic concept	
+AI Infrastructure Operations	drop	skill-decider						not a technology at all, a team heading	
+AI-leveraged	drop	skill-decider						an ordinary word	
+AI-natively	drop	skill-decider						an ordinary word	
+AIO	drop	skill-decider						an ambiguous abbreviation	
+AIOps	drop	skill-decider						a generic concept	
+AI Overviews	drop	skill-decider						a technology no software person is hired for	
+AIP	drop	skill-decider						an ambiguous abbreviation	
+AI Platform Operations	drop	skill-decider						not a technology at all, a team heading	
+AI QA	drop	skill-decider						a generic concept	
+Airdrop	drop	skill-decider						names several things, none dominant	
+Airflow DAG	drop	skill-decider						a name glued to an ordinary word	
+AI Security Depth	drop	skill-decider						not a technology at all, a heading	
+AI Studio	drop	skill-decider						names several things, none dominant	
+Aladdin	drop	skill-decider						a technology no software person is hired for	doubt: BlackRock's finance platform, hired for by portfolio/risk staff, not software engineers
+ALE	drop	skill-decider						an ambiguous abbreviation	
+Alexa	drop	skill-decider						a company	doubt: two segments use it as the employer name (Amazon Alexa alumni), one names the actual voice-assistant product
+Allianz	drop	skill-decider						a company	
+Allscripts	drop	skill-decider						a technology no software person is hired for	
+Allvue	drop	skill-decider						software no software person is hired for	
+Amateur	drop	skill-decider						an ordinary word	
+Amazon	drop	skill-decider						a vendor's name	
+Amazon Marketing Cloud	drop	skill-decider						software no software person is hired for	doubt: a marketing clean-room platform; Salesforce Marketing Cloud sits in the taxonomy as a kept tool, so this could fairly go either way
+Ambiq	drop	skill-decider						a company	
+AMC	drop	skill-decider						an ambiguous abbreviation	
+AMD	drop	skill-decider						a vendor's name	
+Amex	drop	skill-decider						a company	
+Amplemarket	drop	skill-decider						software no software person is hired for	
+AMX	drop	skill-decider						an ambiguous abbreviation	
+analyste	drop	skill-decider						an ordinary word	
+Analytics Studio	drop	skill-decider						names several things, none dominant	
+Android POS	drop	skill-decider						a name glued to an ordinary word	
+Anforderungen	drop	skill-decider						an ordinary word	
+Animator	drop	skill-decider						an ordinary word	doubt: also a Unity component name in one segment, but mostly a job title or generic term
+Anna	drop	skill-decider						a person	
+ANOVA	drop	skill-decider						a generic concept	
+Ansa	drop	skill-decider						software no software person is hired for	doubt: names a real CAE pre/post-processor (BETA CAE's ANSA) in two segments, a company in the third; the tool is mechanical-engineering software no software person is hired for
+ANSI	drop	skill-decider						an ambiguous abbreviation	
+ANSYS	drop	skill-decider						names several things, none dominant	
+Ansys HFSS	drop	skill-decider						software no software person is hired for	
+Ant	drop	skill-decider						names several things, none dominant	doubt: Apache Ant build tool in two segments, a fragment of Ant Design in another, and an ordinary word otherwise
+Anthropic	drop	skill-decider						a vendor's name	
+Anti-DDoS	drop	skill-decider						a generic concept	
+Anycast	drop	skill-decider						a generic concept	
+AnyDesk	drop	skill-decider						consumer, office or browser software	doubt: a remote-desktop tool IT support uses, borderline against consumer software like Zoom
+AnyLogic	drop	skill-decider						software no software person is hired for	
+Aon	drop	skill-decider						a company	
+Apex	spelling	session	salesforce-apex				Apex		The bare form of Salesforce Apex (held): all three segments and nearly all 539 mentions use it for the Salesforce language beside SOQL and LWC, so the reason 'none dominant' does not hold; Oracle APEX is written in capitals and kept under its own key. The criterion keeps a bare form where the text uses it for the product, with a context key since apex is an ordinary word. This reopens a revision-5 session drop because that drop contradicts the criterion's bare-form rule outright.
+API Access Management	drop	skill-decider						a generic concept	
+APIand	drop	skill-decider						not a technology at all	
+API REST	drop	skill-decider						a generic concept	
+APISIX	new	skill-decider	apache-apisix	Apache APISIX	devops				
+APIs REST	drop	skill-decider						a generic concept	
+apk	drop	skill-decider						an ambiguous abbreviation	doubt: mostly the generic Android package file extension, once the Alpine apk package manager
+APO	drop	skill-decider						an ambiguous abbreviation	
+Apollo	drop	skill-decider						names several things, none dominant	
+Appfolio	drop	skill-decider						software no software person is hired for	
+Appian Cloud	drop	skill-decider						an ordinary word after the name	
+Apple	drop	skill-decider						a vendor's name	
+Apple App Store	drop	skill-decider						a generic concept	
+Apple Mac	drop	session						a piece of a longer name written around it (Apple Mac OS), or hardware	Two segments write Apple Mac OS / Apple MAC OSX, where Apple Mac is part of a longer name (a drop); the third means the Mac computers, not macOS. The record holds a revision-5 drop of this name and the criterion has not changed since (ADR-0013: a drop is final).
+Apple MacBook	drop	skill-decider						a product line	
+Apple School Manager	new	skill-decider	apple-school-manager	Apple School Manager	tool				doubt: a prior jev decision under revision 5 dropped it, but it parallels the already-kept Apple Business Manager as a distinct named device-management platform
+Apple Search Ads	drop	skill-decider						software no software person is hired for	
+Apple TV	drop	skill-decider						a product line	
+Apple Wallet	drop	skill-decider						consumer, office or browser software	
+Application DBA	drop	skill-decider						a heading	
+Application Security Manager	new	skill-decider	f5-big-ip-application-security-manager	F5 BIG-IP Application Security Manager	security		Application Security Manager		doubt: only 2 vacancies cite it and the bare name reads like a job title, but both segments given use it for F5's WAF module
+App Store	drop	skill-decider						a generic concept	
+Apptio	drop	skill-decider						software no software person is hired for	
+Apriso	drop	skill-decider						software no software person is hired for	
+AQA	drop	skill-decider						an ambiguous abbreviation	
+Aqua	drop	skill-decider						an ordinary word	doubt: names a real container-security product (Aqua Security) but revision 0 and revision 5 both dropped it as too generic a word, and revision 5 reopens no drop
+Arch	drop	skill-decider						an ordinary word	
+Arctic Wolf	drop	skill-decider						a vendor's name	
+Ardoq	drop	skill-decider						software no software person is hired for	
+Arena	drop	skill-decider						names several things, none dominant	
+Arena PLM	drop	skill-decider						software no software person is hired for	
+Argus	drop	skill-decider						software no software person is hired for	doubt: segments consistently point to the ARGUS real-estate valuation tool, but the name is also a mythological figure and a pharma safety database
+ARIMA	drop	skill-decider						a generic concept	
+ARINC	drop	skill-decider						a fragment of a longer name	
+Arista	drop	skill-decider						a vendor's name	
+Arista Networks	drop	skill-decider						a vendor's name	
+Arize	drop	skill-decider						a vendor's name	
+ARM64	drop	skill-decider						a generic concept	doubt: a CPU architecture (like x86), not clearly a specific product under Keep's categories
+ARM Cortex-M	drop	skill-decider						a vendor umbrella, a product line	doubt: a widely-named microcontroller sub-family, could arguably be its own kept technology rather than an umbrella line
+Arm CPU	drop	skill-decider						a generic concept	
+Aruba	drop	skill-decider						a vendor's name	
+ArXiv	drop	skill-decider						not a technology at all	
+AS9145	drop	skill-decider						a compliance framework, regulation or certification	
+Asana	drop	skill-decider						consumer, office or browser software	
+ASAP	drop	skill-decider						an ordinary word	
+ASCE	drop	skill-decider						not a technology at all	
+ASE	drop	skill-decider						names several things, none dominant	
+ASIL	drop	skill-decider						a generic concept	
+ASLR	drop	skill-decider						a generic concept	
+Aspen	drop	skill-decider						a vendor's name	
+ASPICE	drop	skill-decider						a compliance framework, regulation or certification	
+ASPM	drop	skill-decider						names several things, none dominant	
+ASV	drop	skill-decider						names several things, none dominant	
+ASW	drop	skill-decider						names several things, none dominant	
+Atlassian	drop	skill-decider						a vendor's name	
+Atlassian Cloud	drop	skill-decider						a vendor's name	
+Atlassian Confluence	spelling	skill-decider	confluence						doubt: vendor+product form like Google Cloud Platform, yet an earlier revision dropped it
+Atlassian Intelligence	drop	session						a vendor umbrella, a product line: branding of Atlassian's embedded AI features	Atlassian Intelligence is a brand over features across Atlassian products (since folded into Rovo, which skills.tsv holds), not one technology. The record holds a revision-5 drop of this name and the criterion has not changed since (ADR-0013: a drop is final).
+ATP	drop	skill-decider						names several things, none dominant	
+Attio	drop	skill-decider						software no software person is hired for	
+Attn	drop	skill-decider						an ordinary word	
+AuditBoard	drop	skill-decider						software no software person is hired for	
+Auditoria	drop	skill-decider						an ordinary word	
+Authenticator	drop	skill-decider						an ordinary word	
+AuthN	drop	skill-decider						a generic concept	
+AuthZ	drop	skill-decider						a generic concept	
+Auto CAD	drop	skill-decider						software no software person is hired for	
+Autodesk Inventor	drop	skill-decider						software no software person is hired for	
+Automation Pro	drop	skill-decider						a fragment of a longer name	
+Automation Studio	drop	skill-decider						software no software person is hired for	
+AutoML	drop	skill-decider						a generic concept	
+Autopilot	drop	skill-decider						a homonym	doubt: segments mix Windows Autopilot with generic PX4 autopilot software, none dominant in the bare word
+AUTOSAR Classic	new	skill-decider	autosar-classic	AUTOSAR Classic	tool				doubt: could be read as a version of AUTOSAR rather than its own skill
+autoscaler	drop	skill-decider						a generic concept	
+AVA	drop	skill-decider						names several things, none dominant	
+AvidXchange	drop	skill-decider						a vendor's name	
+AV-over-IP	drop	skill-decider						a generic concept	
+AWC	drop	skill-decider						names several things, none dominant	
+AWQ	drop	skill-decider						a generic concept	
+AWS Advanced Networking	drop	skill-decider						a compliance framework, regulation or certification	
+AWS Cloud Practitioner	drop	skill-decider						a compliance framework, regulation or certification	
+AWS Elemental	drop	skill-decider						a vendor umbrella, a product line	
+AWS Marketplace	drop	skill-decider						not a technology at all	
+AWS PaaS	drop	skill-decider						a generic concept	
+AWS Security Specialty	drop	skill-decider						a compliance framework, regulation or certification	
+AWS Support	drop	skill-decider						not a technology at all	
+AX	drop	skill-decider						names several things, none dominant	
+Axi	spelling	skill-decider	amba-axi						
+Axiom	drop	skill-decider						a homonym	
+Axure	drop	skill-decider						software no software person is hired for	
+Azure Database	drop	skill-decider						a fragment of a longer name	
+Azure-hosted	drop	skill-decider						a name glued to an ordinary word	
+Azure IaaS	drop	skill-decider						a generic concept	
+Azure PaaS	drop	skill-decider						a generic concept	
+Azure Portal	drop	skill-decider						a generic concept	
+Azure Security Specialty	drop	skill-decider						a compliance framework, regulation or certification	
+Azure Well-Architected Framework	drop	skill-decider						a generic concept: a practice or architecture, not a technology	
+B2	drop	skill-decider						not a technology: a language proficiency level	
+B2C	drop	skill-decider						a generic concept: a business model, not the technology here	
+B300	new	skill-decider	nvidia-b300	NVIDIA B300	tool				
+BAA	drop	skill-decider						not a technology: a legal/compliance term	
+Backblaze B2	new	skill-decider	backblaze-b2	Backblaze B2	cloud				
+Backbone	drop	skill-decider						an ordinary word	
+BAI2	drop	skill-decider						obscure: a name few engineers would recognise	doubt: it is a file format, which revision 5 keeps when software implements it, but it is narrow to banking integrations and little recognised outside that niche
+Bain	drop	skill-decider						not a technology: a company	
+balancer	drop	skill-decider						a generic concept	
+BAM	drop	skill-decider						an ambiguous abbreviation	doubt: two of three segments use it for the genomics BAM file format, one for an unrelated regulatory guide, so no form clearly dominates
+Barra	drop	skill-decider						a technology no software person is hired for	doubt: a finance risk-analytics platform that some quant developers build on
+Baseboard	drop	skill-decider						a generic concept	
+Baseboard Management	drop	skill-decider						a generic concept	
+Baseboard Management Controllers	drop	skill-decider						a generic concept	
+BB	drop	skill-decider						an ambiguous abbreviation	
+BCM	drop	skill-decider						an ambiguous abbreviation	
+Beckhoff	drop	skill-decider						a vendor's name	
+BEM	drop	skill-decider						a practice, method or technique	
+Bentley	drop	skill-decider						a vendor's name	
+BFF	drop	skill-decider						an architecture, not a technology	
+Biamp	drop	skill-decider						a vendor's name	
+biases	drop	skill-decider						a piece of a longer name (Weights & Biases) never used alone	
+Bible	drop	skill-decider						an ordinary word	
+BigPicture	drop	skill-decider						a technology no software person is hired for	doubt: a Jira-ecosystem PPM tool, similar in kind to tools this taxonomy keeps
+BigQuery ML	new	skill-decider	bigquery-ml	BigQuery ML	ml				
+Bill.com	drop	skill-decider						a technology no software person is hired for	
+BillingPlatform	drop	skill-decider						a technology no software person is hired for	
+BIP	spelling	session	bi-publisher				BIP		skills.tsv holds BI Publisher as bi-publisher, the draft's alias; BIP is an ambiguous abbreviation, so context
+Bipolar	drop	skill-decider						a generic concept: a transistor technology, not a named product	
+Bird	drop	skill-decider						an ordinary word	
+BISON	drop	skill-decider						a technology no software person is hired for	doubt: a specific named nuclear fuel-performance simulation tool, but hired for by nuclear engineers, not software ones
+BizzDesign	drop	skill-decider						a technology no software person is hired for	
+Blackbaud	drop	skill-decider						a vendor's name	
+Black Duck	spelling	skill-decider	blackduck						
+BlackLine	drop	skill-decider						a technology no software person is hired for	
+Blackrock	drop	skill-decider						not a technology: a company	
+BlackRock Aladdin	drop	session						a technology no software person is hired for	The segments name it among front-office investment platforms for implementation and production-support roles; the run drops Aladdin itself for the same reason, so keeping the vendor form would be inconsistent. The record holds a revision-5 drop of this name and the criterion has not changed since (ADR-0013: a drop is final).
+Blackwell	drop	session						a vendor umbrella, a product line (NVIDIA's GPU generation)	Blackwell names a GPU generation spanning B200, B300, GB300, a product line the criterion drops; the specific GPUs are kept under their own names (H100, H200, and B300 in this run). The record holds a revision-5 drop of this name and the criterion has not changed since (ADR-0013: a drop is final).
+Bloom	drop	skill-decider						an ordinary word / a person's name	
+Bloomberg	drop	skill-decider						not a technology: a company	
+Bloomberg Terminal	drop	skill-decider						a technology no software person is hired for	
+Bluebeam Revu	drop	skill-decider						a technology no software person is hired for	
+Blue Mountain	drop	skill-decider						a technology no software person is hired for	
+Blue Yonder	drop	skill-decider						a technology no software person is hired for	
+BMAD	drop	skill-decider						a practice, method or technique	
+BMC	drop	skill-decider						a generic concept: a hardware management function, not a named product	
+BMP	drop	skill-decider						an ambiguous abbreviation	doubt: two of three segments use it for the BGP Monitoring Protocol, a named network protocol, but BMP also commonly names the bitmap file format and a stormwater term
+BNY	drop	skill-decider						not a technology: a company	
+BO	drop	skill-decider						an ambiguous abbreviation	
+Bob	drop	skill-decider						an ordinary word	doubt: one segment uses it for the HiBob HR platform (commonly just 'Bob'), but the other two use it as a person's name and as a 'book of business' acronym
+Bolt	drop	skill-decider						a homonym of something else	doubt: one segment names a vibe-coding tool (Bolt.new), but 'Bolt' also names a ride-hailing company, a payments company, and is used as an ordinary word ('bolt-on')
+Booking.com	drop	skill-decider						not a technology: a company	
+Boot	drop	skill-decider						an ordinary word	
+Borg	drop	skill-decider						obscure: a name few engineers would recognise	doubt: a real Google-internal cluster manager and ancestor of Kubernetes, but proprietary and rarely hands-on outside Google
+bot	drop	skill-decider						a generic concept	
+Bot Management	drop	skill-decider						a generic concept	
+Bourne	drop	skill-decider						a piece of a longer name (Bourne shell) ads never use alone; obscure/historical	
+BPF LSM	drop	skill-decider						a name few ads use and few engineers would recognise	doubt: a narrow eBPF LSM-hook feature, df 1; unclear it is its own CV skill distinct from eBPF
+BPMN	drop	skill-decider						a practice or notation, not a named technology	
+BR	drop	skill-decider						an ambiguous abbreviation, none dominant	
+Bradstreet	drop	skill-decider						a company, not a technology	
+Braze	new	skill-decider	braze	Braze	tool				
+Bridgewater	drop	skill-decider						a company and a place, not a technology	
+Brightflag	drop	skill-decider						software no software person is hired for	
+Broadcom	drop	skill-decider						a vendor's name	
+Broadridge	drop	skill-decider						a company, not a technology	
+Brocade	drop	skill-decider						a vendor's name	
+Bronze	drop	skill-decider						a generic concept	
+Browser Forum	drop	skill-decider						a piece of a longer name (CA/Browser Forum); an organization, not a technology	
+B.Sc	drop	skill-decider						a heading or field of study, not a technology	
+BSCP	drop	skill-decider						a certification	
+BSL2	drop	skill-decider						not a technology at all	
+BSW	drop	skill-decider						an ambiguous abbreviation	
+BT	drop	skill-decider						an ambiguous abbreviation, none dominant	
+BTL2	drop	skill-decider						a certification	
+BTM	drop	skill-decider						a generic concept	
+Buck	drop	skill-decider						an ordinary word, used in its ordinary sense	
+Build UI	drop	skill-decider						an ordinary phrase, not a named technology	
+Bull	drop	skill-decider						an ambiguous name, none dominant	doubt: segment 2 names the real Bull/BullMQ Redis queue library, but Bull Computing and Red Bull dominate the other mentions
+Burlingame	drop	skill-decider						a place, not a technology	
+BW	drop	skill-decider						an ambiguous abbreviation	
+Bynder	drop	skill-decider						software no software person is hired for	
+BYOK	drop	skill-decider						a generic concept/practice, not a named technology	
+ByteDance	drop	skill-decider						a company, not a technology	
+C+	drop	skill-decider						a name few ads use and few engineers would recognise; not the technology's whole name	
+C4	drop	skill-decider						an ambiguous abbreviation, none dominant	
+CAA	drop	skill-decider						an organization, not a technology	
+CAASM	drop	skill-decider						a generic concept	
+Caboodle	drop	skill-decider						software no software person is hired for	
+Caché	drop	skill-decider						a name few ads use and few engineers would recognise	doubt: InterSystems Caché is a real database, but df 3 and largely superseded by IRIS
+Cadence	drop	skill-decider						an ordinary word, used in its ordinary sense	
+CAF	drop	skill-decider						a generic concept/framework, not a named technology	
+CAI	drop	skill-decider						an ambiguous abbreviation, none dominant	
+Cake	drop	skill-decider						an ambiguous name, none dominant	
+Cameo Systems Modeler	spelling	skill-decider	cameo						
+Campaign Manager	drop	skill-decider						names several things, none dominant	
+CANFD	spelling	skill-decider	can-fd						
+Canva	drop	skill-decider						consumer, office or browser software	
+Canvases	drop	skill-decider						an ordinary word, used in its ordinary sense	
+Capella	drop	skill-decider						names several things, none dominant	
+CAPI	drop	skill-decider						an ambiguous abbreviation, none dominant	
+CapIQ	drop	skill-decider						software no software person is hired for	
+CAPTCHA	drop	skill-decider						a generic concept	
+Captivate	drop	skill-decider						an ordinary word, used in its ordinary sense	
+CaptivateIQ	drop	skill-decider						software no software person is hired for	
+Cartography	drop	skill-decider						a field of study, not a technology	
+CASB	drop	skill-decider						a generic concept	
+CAT5	drop	skill-decider						a technology no software person is hired for	doubt: a real cabling standard, but segments read as cabling-technician work, not software engineering
+Cat5e	drop	skill-decider						a technology no software person is hired for	doubt: a real cabling standard, but segments read as cabling-technician work, not software engineering
+catalog	drop	skill-decider						an ordinary word, used in its ordinary sense	
+CATIA V5	spelling	skill-decider	catia						
+CATIA V6	spelling	skill-decider	catia						
+cATO	drop	skill-decider						a compliance/authorization process, not a named technology	
+Cboe	drop	skill-decider						a company, not a technology	
+CCaaS	drop	skill-decider						a generic concept	
+CCD	drop	skill-decider						an ambiguous abbreviation	doubt: image sensor (Charge-Coupled Device) in two segments, health-record CCD/CCDA document in the third, none dominant
+CCDA	drop	skill-decider						a generic concept	
+CCDP	drop	skill-decider						a compliance framework, regulation or certification	
+CCFA	drop	skill-decider						a compliance framework, regulation or certification	
+CCFR	drop	skill-decider						a compliance framework, regulation or certification	
+CCIE Enterprise Infrastructure	drop	skill-decider						a compliance framework, regulation or certification	
+CCIE Security	drop	skill-decider						a compliance framework, regulation or certification	
+CCNP Enterprise	drop	skill-decider						a compliance framework, regulation or certification	
+CCT	drop	skill-decider						a compliance framework, regulation or certification	
+CDA	drop	skill-decider						names several things, none dominant	
+CDASH	drop	skill-decider						a generic concept	doubt: a clinical data standard like CDISC/SDTM, not software a person implements
+CD DevOps	drop	skill-decider						a generic concept	
+CDD Vault	drop	skill-decider						obscure	doubt: a real research-data platform but df=1, too rare to recognise
+CD Excellence	drop	skill-decider						an ordinary word	
+CDH	drop	skill-decider						an ambiguous abbreviation	
+CDISC	drop	skill-decider						a generic concept	
+CD Mastery	drop	skill-decider						an ordinary word	
+CDMC	drop	skill-decider						a compliance framework, regulation or certification	
+CDNA	drop	skill-decider						names several things, none dominant	
+CDT	drop	skill-decider						names several things, none dominant	
+CDW	drop	skill-decider						a generic concept	
+CER	drop	skill-decider						names several things, none dominant	
+Ceres	new	skill-decider	ceres-solver	Ceres Solver	framework		Ceres		doubt: niche robotics/SLAM optimization library, bare form used throughout, but ordinary-word ambiguity
+Cerner	drop	skill-decider						software no software person is hired for	
+CEST	drop	skill-decider						not a technology at all	
+CF	drop	skill-decider						names several things, none dominant	
+CFCE	drop	skill-decider						a compliance framework, regulation or certification	
+CFI	drop	skill-decider						names several things, none dominant	
+CFor	drop	skill-decider						a fragment of a longer name	
+CGEIT	drop	skill-decider						a compliance framework, regulation or certification	
+Chandler	drop	skill-decider						not a technology at all	
+Channel SAN	drop	skill-decider						a fragment of a longer name	
+CHAPS	drop	skill-decider						not a technology at all	
+Chargebee	drop	skill-decider						software no software person is hired for	doubt: a billing API some integration engineers use, but named here among RevOps/finance billing systems
+Chariot	drop	skill-decider						obscure	doubt: a specific employer's proprietary product name, two different companies even
+Charles River	drop	skill-decider						names several things, none dominant	doubt: a consulting firm, a river, and a portfolio-management platform (Charles River IMS) all written as just \\\"Charles River\\\"
+ChatOps	drop	skill-decider						a generic concept	
+Checker	drop	skill-decider						a fragment of a longer name	
+CHEMCAD	drop	skill-decider						software no software person is hired for	
+Chili Piper	drop	skill-decider						software no software person is hired for	
+Chisel	new	skill-decider	chisel	Chisel	language		Chisel		doubt: a real hardware-construction language (paired with SystemC/XLS/FPGA tooling) but also an ordinary carving tool
+Chrome Enterprise	drop	session						consumer, office or browser software	Chrome Enterprise is the managed Chrome browser; the criterion drops Chrome, and the enterprise edition of a browser is the same software. The record holds a revision-5 drop of this name and the criterion has not changed since (ADR-0013: a drop is final).
+Chrome Extension	drop	skill-decider						a generic concept	
+ChromeOS	new	skill-decider	chromeos	ChromeOS	os	Chrome OS			doubt: a mainstream OS administered alongside macOS/Windows/Linux, not browser software, though previously dropped
+ChurnZero	drop	skill-decider						software no software person is hired for	
+CICD	drop	skill-decider						a generic concept	
+CI-CD	drop	skill-decider						a generic concept	
+CICS TS	spelling	skill-decider	cics						
+CIDR	drop	skill-decider						a generic concept	
+CIEM	drop	skill-decider						a generic concept	
+CIF	drop	skill-decider						names several things, none dominant	doubt: SAP Core Interface (CIF) is a real integration module in two of three segments, but CIF is also an unrelated forensics/other acronym
+CI-integrated	drop	skill-decider						an ordinary word	
+cipher	drop	skill-decider						a generic concept	
+Circle	drop	skill-decider						not a technology at all	
+Cisco	drop	skill-decider						a vendor's name	
+Cisco CCNA	drop	skill-decider						a compliance framework, regulation or certification	
+Cisco CCNP	drop	skill-decider						a compliance framework, regulation or certification	
+Cisco DNA	join	skill-decider						a fragment of Cisco DNA Center	
+Cisco DNA	whole	skill-decider	cisco-dna-center						
+CISCO LAN	drop	skill-decider						a name glued to an ordinary word	
+Cisco Secure	drop	skill-decider						a fragment of a longer name	
+Cisco Systems	drop	skill-decider						a vendor's name	
+CIS-ITSM	drop	skill-decider						a compliance framework, regulation or certification	
+Citadel	drop	skill-decider						not a technology at all: a company	
+Civil3D	drop	skill-decider						a technology no software person is hired for	
+CJA	drop	skill-decider						software no software person is hired for	
+CL	drop	skill-decider						an ambiguous abbreviation	
+Clari	drop	skill-decider						software no software person is hired for	
+Class D	drop	skill-decider						a compliance framework, regulation or certification	
+Claude.ai	drop	skill-decider						consumer, office or browser software	
+Claude Design	new	skill-decider	claude-design	Claude Design	tool				doubt: unfamiliar product name, but segments repeatedly name it as a distinct AI prototyping tool alongside confirmed real ones (Figma Make, Cursor, Lovable)
+CLAUDE.md	drop	skill-decider						a generic concept	
+Claude Opus	spelling	skill-decider	claude						
+ClearanceJobs	drop	skill-decider						not a technology at all: a company	
+Cloud+	drop	skill-decider						a compliance framework, regulation or certification	
+Cloud AutoML	new	skill-decider	cloud-automl	Cloud AutoML	ml	Google Cloud AutoML			doubt: Google has largely folded AutoML into Vertex AI; unclear if still a distinct hired-for skill or legacy branding
+Cloud CX	drop	skill-decider						a piece of a longer name that ads never use alone for the product	
+Cloud DevOps	drop	skill-decider						a generic concept	
+Cloud FinOps	drop	skill-decider						a generic concept	
+Cloud Manager	drop	skill-decider						names several things, none dominant	
+CloudOps	drop	skill-decider						a generic concept	
+Cloud PC	drop	skill-decider						a generic concept	
+Cloud Portal	drop	skill-decider						names several things, none dominant	
+CloudSec	drop	skill-decider						a generic concept	
+Cloud SME	drop	skill-decider						not a technology at all: a heading	
+CM360	drop	skill-decider						software no software person is hired for	
+CMD	drop	skill-decider						an ambiguous abbreviation	
+CMDB	drop	skill-decider						a generic concept	
+CMEK	drop	skill-decider						a generic concept	
+CMK	drop	skill-decider						an ambiguous abbreviation	
+CNA	drop	skill-decider						an ambiguous abbreviation	
+CNAPP	drop	skill-decider						a generic concept	
+CNCF	drop	skill-decider						not a technology at all: a vendor umbrella	
+CNCF Kubernetes	drop	skill-decider						a compliance framework, regulation or certification	
+CNE	drop	skill-decider						a generic concept	
+CNG	drop	skill-decider						an ambiguous abbreviation	
+CNN	drop	skill-decider						a generic concept	
+CNO Developer	drop	skill-decider						not a technology at all: a heading	
+CNSA	drop	skill-decider						a compliance framework, regulation or certification	doubt: could be read as a cryptographic standard software implements, like OAuth, rather than a compliance suite
+Coalesce	drop	session						an ordinary word	Only one of the 3 mentions uses it for the ETL product; the other two are the verb and an event name. A name this thin that is mostly an ordinary word is a drop under 'when in doubt, drop'. The record holds a revision-5 drop of this name and the criterion has not changed since (ADR-0013: a drop is final).
+Cockpit	drop	skill-decider						an ordinary word	
+Coda	drop	skill-decider						consumer, office or browser software	
+Codeforces	drop	skill-decider						software no software person is hired for	
+CodeMirror	new	skill-decider	codemirror	CodeMirror	framework				
+Code Ocean	new	skill-decider	code-ocean	Code Ocean	tool				
+Code V	drop	skill-decider						a technology no software person is hired for	
+Coefficient	drop	skill-decider						an ordinary word	
+cog	drop	session						an ambiguous abbreviation: names several things, none dominant	Only one of the segments uses COG for Cloud Optimized GeoTIFF; others are an organisation and the ordinary word. COG also names center of gravity, cost of goods, Council of Governments. The criterion drops an ambiguous abbreviation, and a context key does not rescue an abbreviation that is not a bare form.
+Coil	drop	skill-decider						an ordinary word	
+COMM	drop	skill-decider						an ambiguous abbreviation	
+CommCare	drop	session						software no software person is hired for	session: reverts a reopened revision-5 drop. The segments use it as a survey/data-collection platform that program staff configure (with SurveyCTO) and as the employer's own product; the criterion drops a technology no software person is hired for, and nothing in the current revision reopens the earlier session drop.
+Compose	drop	skill-decider						an ordinary word	
+Composer	drop	skill-decider						names several things, none dominant	
+CompTIA A+	drop	skill-decider						a compliance framework, regulation or certification	
+CompTIA CASP+	drop	skill-decider						a compliance framework, regulation or certification	
+CompTIA Cloud+	drop	skill-decider						a compliance framework, regulation or certification	
+CompTIA CySA+	drop	skill-decider						a compliance framework, regulation or certification	
+CompTIA Linux+	drop	skill-decider						a compliance framework, regulation or certification	
+CompTIA Network+	drop	skill-decider						a compliance framework, regulation or certification	
+CompTIA Security	drop	skill-decider						a compliance framework, regulation or certification	
+CompTIA Security+	drop	skill-decider						a compliance framework, regulation or certification	
+CompTIA Security+ CE	drop	skill-decider						a compliance framework, regulation or certification	
+CompTIA Server+	drop	skill-decider						a compliance framework, regulation or certification	
+Computação	drop	skill-decider						not a technology at all: a heading or field of study	
+Comscore	drop	skill-decider						a technology no software person is hired for	
+COMSOL	drop	skill-decider						a technology no software person is hired for	
+COMSOL Multiphysics	drop	skill-decider						a technology no software person is hired for	
+Concur	drop	skill-decider						a technology no software person is hired for	
+Conductor	drop	skill-decider						names several things, none dominant	
+ConfigMaps	drop	skill-decider						a generic concept	
+ConnectWise Manage	drop	skill-decider						a technology no software person is hired for	
+Contentsquare	drop	skill-decider						a technology no software person is hired for	
+Content Strategist	drop	skill-decider						not a technology at all: a heading	
+controller	drop	skill-decider						a generic concept	
+COOP	drop	skill-decider						an ambiguous abbreviation	
+Copilot	drop	skill-decider						names several things, none dominant	
+Copilot Agent	drop	skill-decider						a fragment of a longer name	doubt: may name GitHub Copilot's 'Agent Mode' feature, but segments never give 'Copilot Agent' alone, always with 'Mode'
+Copilot Chat	drop	skill-decider						names several things, none dominant	
+Core DevOps	drop	skill-decider						not a technology at all: a team	
+Core Web Vitals	drop	skill-decider						a generic concept	
+CoRL	drop	skill-decider						not a technology at all: a heading or field of study	
+CorpSec	drop	skill-decider						not a technology at all: a heading	
+Cortex-A	drop	skill-decider						a fragment of a longer name	doubt: ARM Cortex-A is a real processor family engineers specify, but segments only ever write it with the ARM/Arm prefix, and it is unclear it counts as a software skill at all
+CoStar	drop	skill-decider						a technology no software person is hired for	
+Costpoint	drop	skill-decider						a technology no software person is hired for	
+Coupa	drop	skill-decider						a technology no software person is hired for	doubt: procurement software some integration roles name
+co-work	drop	skill-decider						an ordinary word	
+Cp	drop	skill-decider						a generic concept	
+Cpk	drop	skill-decider						a generic concept	
+CPSM	drop	skill-decider						a compliance framework, regulation or certification	
+CPU	drop	skill-decider						a generic concept	
+CQL	drop	skill-decider						an ambiguous abbreviation	
+CQRS	drop	skill-decider						a generic concept	
+Cradlepoint	drop	skill-decider						a vendor's name	
+CRDT	drop	skill-decider						a generic concept	
+CRI	drop	skill-decider						an ambiguous abbreviation	
+Criteo	drop	skill-decider						not a technology at all: a company	
+CRL	drop	skill-decider						a generic concept	
+CRMA	spelling	session	salesforce-crm-analytics						session: all three segments use CRMA for Salesforce CRM Analytics, which skills.tsv holds (category data). A name that names an existing skill by another spelling is a keep, as that skill; the drop's reason contradicts the held skill.
+Cromwell	drop	skill-decider						obscure or historical	doubt: a real bioinformatics workflow engine, but very low df and one segment uses it as a company name
+CRT	drop	skill-decider						an ambiguous abbreviation	
+CRTL	drop	skill-decider						a compliance framework, regulation or certification	
+CRV	drop	skill-decider						not a technology at all: a company	
+CSC	drop	skill-decider						an ambiguous abbreviation	
+CSD	drop	skill-decider						an ambiguous abbreviation	
+CSRF	drop	skill-decider						a generic concept	
+CSS-in-JS	drop	skill-decider						a generic concept	
+CTE	drop	skill-decider						an ambiguous abbreviation	
+CTS-D	drop	skill-decider						a compliance framework, regulation or certification	
+CU	drop	skill-decider						an ambiguous abbreviation	
+Cube	drop	skill-decider						names several things, none dominant	
+CUE	drop	skill-decider						obscure or historical	doubt: CUE is a real configuration language, but very low df and prior reviews treated it as too obscure
+Cumulus	drop	skill-decider						a vendor's name	doubt: could be the bare form of Cumulus Linux, but segments also read as the vendor/company name and prior reviews dropped it
+CUR	drop	skill-decider						a generic concept	doubt: AWS Cost and Usage Report is a specific named AWS feature; borderline whether a billing report counts as a skill
+CustomerSuccess	drop	skill-decider						not a technology at all: a heading	
+CVE	drop	skill-decider						a generic concept	
+Cvent	drop	skill-decider						a technology no software person is hired for	
+CVPR	drop	skill-decider						not a technology at all: a heading or field of study	
+CWE	drop	skill-decider						a generic concept	
+CWNA	drop	skill-decider						a compliance framework, regulation or certification	
+CWPP	drop	skill-decider						a generic concept	
+CycloneDDS	new	skill-decider	cyclonedds	CycloneDDS	framework	Eclipse Cyclone DDS			
+D	drop	skill-decider						a single letter	
+D1	drop	skill-decider						an ambiguous abbreviation, names several things none dominant	doubt: two of three segments clearly mean Cloudflare D1, one means something else
+D2D	drop	skill-decider						a generic concept, not a named technology	
+D365 F	drop	skill-decider						a piece of a longer name ads never use alone	doubt: piece of either D365 F&O or D365 F&SCM, no single whole dominant
+D3FEND	drop	skill-decider						a generic concept or a practice, not a named technology	
+DAI	drop	skill-decider						an ambiguous abbreviation, names several things none dominant	
+DAL	drop	skill-decider						an ambiguous abbreviation, names several things none dominant	
+DAL A	drop	skill-decider						an ambiguous abbreviation, names several things none dominant	
+DAMA	drop	skill-decider						a compliance framework, not a technology	
+d'API	drop	skill-decider						a generic concept, not a named technology	
+DApp	drop	skill-decider						a generic concept, not a named technology	
+Dash	drop	skill-decider						an ambiguous bare form, names several things none dominant	doubt: could be MPEG-DASH or Plotly Dash depending on context, like Compose
+Dassault	drop	skill-decider						a vendor's name	
+Dassault 3DEXPERIENCE	drop	skill-decider						software no software person is hired for	doubt: CAD/PLM platform administered by engineering IT, borderline
+Dassault Systèmes 3DEXPERIENCE	drop	skill-decider						software no software person is hired for	doubt: CAD/PLM platform administered by engineering IT, borderline
+dataanalytics	drop	skill-decider						a generic concept, not a named technology	
+Databrick	spelling	skill-decider	databricks						
+Data Explorer	drop	skill-decider						names several things none dominant, a piece of a longer name	
+Data Flows	drop	skill-decider						a generic concept, not a named technology	
+DataFrame	drop	skill-decider						a generic concept, not a named technology	
+Data Hub	drop	skill-decider						names several things none dominant, a piece of a longer name	
+DataLake	drop	skill-decider						a generic concept, not a named technology	
+datastore	drop	skill-decider						a generic concept, not a named technology	
+Dataviz	drop	skill-decider						a generic concept, not a named technology	
+Datawarehouse	drop	skill-decider						a generic concept, not a named technology	
+Datorama	drop	skill-decider						software no software person is hired for	doubt: marketing BI tool, could be read as a data/BI platform
+DB	drop	skill-decider						a generic concept, not a named technology	
+DBA	drop	skill-decider						an ambiguous abbreviation, names several things none dominant	
+DBaaS	drop	skill-decider						a generic concept, not a named technology	
+DBC	drop	skill-decider						an ambiguous abbreviation, names several things none dominant	doubt: could be read as the specific CAN database file format
+DBM	drop	skill-decider						an ambiguous abbreviation, names several things none dominant	
+DBRE	drop	skill-decider						not a technology at all, a job title	
+DCC	drop	skill-decider						an ambiguous abbreviation, names several things none dominant	
+DCI	drop	skill-decider						an ambiguous abbreviation, names several things none dominant	
+DCM	drop	skill-decider						an ambiguous abbreviation, names several things none dominant	
+DCQCN	new	skill-decider	dcqcn	DCQCN	networking	Data Center Quantized Congestion Notification			
+DDL	drop	skill-decider						a generic concept, not a named technology	
+DDM	drop	skill-decider						an ambiguous abbreviation, names several things none dominant	
+DDoS	drop	skill-decider						a generic concept, not a named technology	
+DDP	drop	skill-decider						a generic concept or a practice, not a named technology	
+DDR5	spelling	session	ddr						session: skills.tsv holds DDR (and DDR4, LPDDR, GDDR), so the 'no software person is hired for' reason contradicts the taxonomy. A version of a skill is that skill (HTTP/2 is HTTP), so DDR5 is a spelling of ddr.
+DealHub	drop	skill-decider						software no software person is hired for	
+Decagon	drop	skill-decider						not a technology at all, a company	doubt: also used as a support-bot platform name in some segments
+dedupe	drop	skill-decider						a generic concept, not a named technology	doubt: one segment may name the Python dedupe library specifically
+DeepMind	drop	skill-decider						not a technology at all, a company	
+DEF	drop	skill-decider						an ambiguous abbreviation, names several things none dominant	
+define.xml	new	skill-decider	define-xml	Define-XML	data				doubt: a CDISC submission standard, unclear a software person is hired for it
+Delinea	drop	skill-decider						a vendor's name	
+Dell	drop	skill-decider						a vendor's name	
+DELMIA	drop	skill-decider						software no software person is hired for	
+Deltek Costpoint	drop	skill-decider						software no software person is hired for	
+Deltek Vision	drop	skill-decider						software no software person is hired for	
+D Engineering	drop	skill-decider						not a technology at all, a fragment of a heading	
+DEP	drop	skill-decider						an ambiguous abbreviation, names several things none dominant	
+Descope	drop	skill-decider						an ordinary word used in its ordinary sense	
+Descript	drop	skill-decider						not a technology at all, a company	
+Deutsche Telekom	drop	skill-decider						not a technology at all, a company	
+DeviceNet	new	skill-decider	devicenet	DeviceNet	networking				
+Devin	drop	session						a person's name as much as a product	session: reverts a reopened revision-5 drop. Devin is a common first name; a person's name is an unsafe key, and a context key is for an ordinary word or C or R, not a name. When in doubt, drop. Devin AI could be kept later as a candidate in its own right.
+DevOps	drop	skill-decider						a generic concept	
+DevOps Center	new	session	devops-center	DevOps Center	devops		DevOps Center		DevOps Center is an ordinary phrase (a DevOps center of excellence): context
+DevRel	drop	skill-decider						not a technology at all: a field of practice	
+DevSecOps	drop	skill-decider						a generic concept	
+DevTools	drop	skill-decider						names several things, none dominant	
+Dewesoft	drop	skill-decider						a technology no software person is hired for	
+DFAR	drop	skill-decider						a compliance framework, regulation or certification	
+DFC	drop	skill-decider						names several things, none dominant	
+DFD	drop	skill-decider						names several things, none dominant	
+DFMA	drop	skill-decider						a generic concept	
+DHL	drop	skill-decider						not a technology at all: a company	
+Diamond Model	drop	skill-decider						a generic concept	
+Dijkstra	drop	skill-decider						a generic concept	
+Diode	drop	skill-decider						an ordinary word	
+Director+	drop	skill-decider						not a technology at all: a heading	
+DISA	drop	skill-decider						not a technology at all: a company	
+DISA STIG	drop	skill-decider						a compliance framework, regulation or certification	
+Discoverer	drop	skill-decider						an ordinary word	
+Disney	drop	skill-decider						not a technology at all: a company	
+dispatcher	drop	skill-decider						a generic concept	
+Disruptor	drop	skill-decider						an ordinary word	
+Division Multiplexing	drop	skill-decider						a fragment of a longer name	
+dlthub	new	skill-decider	dlthub	dltHub	data				
+DMA	drop	skill-decider						a generic concept	
+DME	drop	skill-decider						not a technology at all	
+DML	drop	skill-decider						a generic concept	
+DMO	drop	skill-decider						names several things, none dominant	
+DMTF	drop	skill-decider						not a technology at all: a standards organization	
+DNA Center	spelling	skill-decider	cisco-dna-center						
+DNN	drop	skill-decider						a generic concept	
+DNV	drop	skill-decider						not a technology at all: a company	
+DO-326A	drop	skill-decider						a compliance framework, regulation or certification	
+Docebo	drop	skill-decider						a technology no software person is hired for	
+Dockerized	drop	skill-decider						not a technology at all: a name glued to a word	
+DocuSign CLM	drop	skill-decider						a technology no software person is hired for	
+DOCX	drop	skill-decider						a generic concept	doubt: segments use it as a filename extension or incidental file format, not clearly as a technology asked for; could also be the docx npm library
+DoD-approved	drop	skill-decider						not a technology at all: a name glued to a word	
+DoD Architecture Framework	drop	skill-decider						a generic concept	
+DoD CIO	drop	skill-decider						not a technology at all	
+DoD IL	drop	skill-decider						a compliance framework, regulation or certification	
+DoD Operations	drop	skill-decider						not a technology at all	
+DoD SAP	drop	skill-decider						a homonym of something else, where the text means the other thing	
+DoD STIG	drop	skill-decider						a compliance framework, regulation or certification	
+DoD TS	drop	skill-decider						a homonym of something else, where the text means the other thing	
+DOM	drop	skill-decider						a generic concept	
+Domain Controller	drop	skill-decider						a generic concept	
+doppler	drop	skill-decider						a homonym of something else, where the text means the other thing	
+Dovetail	drop	skill-decider						a technology no software person is hired for	doubt: a specific UX research tool, but all segments show it used by researchers/designers rather than something a software engineer is hired for
+DoW-approved	drop	skill-decider						not a technology at all: a name glued to a word	
+Doxygen	new	skill-decider	doxygen	Doxygen	tool				
+DP	drop	skill-decider						names several things, none dominant	
+DPC	drop	skill-decider						names several things, none dominant	
+DPE	drop	skill-decider						names several things, none dominant	
+DPU	drop	skill-decider						a generic concept	
+DQN	drop	skill-decider						a generic concept	
+Drake	drop	skill-decider						names several things, none dominant	
+DRAM	drop	skill-decider						a generic concept	
+draw.io	drop	skill-decider						consumer, office or browser software	doubt: a real diagramming tool, but segments group it with Visio/Lucid/Miro as general-purpose diagramming used by many non-engineering roles
+Dropbox	drop	skill-decider						consumer, office or browser software	
+DSCP	drop	skill-decider						a generic concept	
+DSCR	drop	skill-decider						a generic concept, not a named technology	
+D Security	drop	skill-decider						a piece of a longer name; not a technology	
+DSF	drop	skill-decider						a generic concept: a laboratory technique, not a technology	
+DSI	join	skill-decider						a fragment of MIPI DSI	
+DSI	whole	skill-decider	mipi-dsi	MIPI DSI	networking				
+DST	drop	skill-decider						not a technology: a company's name, and a generic practice	
+DTC eCommerce	drop	skill-decider						a generic concept	
+Duality	drop	skill-decider						an ordinary word used in its ordinary sense	
+Duck Creek	drop	skill-decider						a technology no software person is hired for	doubt: ads ask for Duck Creek integration experience like an engineering skill, but it is administrative insurance-platform software, like Epic EHR
+Dun	drop	skill-decider						a piece of a longer name (Dun & Bradstreet); a place	
+Dune	drop	skill-decider						a homonym of something else, where the text means the other thing	
+DVP	drop	skill-decider						an ambiguous abbreviation	
+DWD	drop	skill-decider						a generic concept: a data-layering convention	
+DWH	drop	skill-decider						a generic concept	
+D-wide	drop	skill-decider						a piece of a longer name; a name glued to an ordinary word	
+DX	drop	skill-decider						an ambiguous abbreviation	
+DXP	drop	skill-decider						a generic concept	
+Dynamo	drop	skill-decider						an ambiguous abbreviation: names several things, none dominant	
+E2E	drop	skill-decider						a generic concept	
+E5	drop	skill-decider						a piece of a longer name (Microsoft E5); an ambiguous abbreviation	
+Eagle	drop	skill-decider						an ambiguous abbreviation; obscure where it is written	
+EAM	drop	skill-decider						a generic concept	
+Eaton	drop	skill-decider						a vendor's name	
+EB	drop	skill-decider						an ambiguous abbreviation	
+eBay	drop	skill-decider						not a technology at all: a company	
+EBC	drop	skill-decider						not a technology at all; a generic concept	
+ECC	drop	skill-decider						an ambiguous abbreviation	
+ECCV	drop	skill-decider						a heading or field of study: an academic conference	
+ECL	drop	skill-decider						a generic concept	
+ECMA	drop	skill-decider						a piece of a longer name; a standards body's name	
+ECMP	drop	skill-decider						a generic concept: a routing technique	
+ECN	drop	skill-decider						an ambiguous abbreviation, none dominant	doubt: can be the Explicit Congestion Notification protocol, but most segments use it for Engineering Change Notice
+eComm	drop	skill-decider						a generic concept	
+Edition	drop	skill-decider						a piece of a longer name; an ordinary word	
+EEPROM	drop	skill-decider						a generic concept: a memory type, not a named product	
+EF	drop	skill-decider						an ambiguous abbreviation	
+Egg	drop	skill-decider						a piece of a longer name; an ordinary word	
+Egnyte	drop	skill-decider						consumer, office or browser software	
+EHR-integrated	drop	skill-decider						a name glued to an ordinary word	
+EIC	drop	skill-decider						an ambiguous abbreviation	
+Einstein	drop	skill-decider						an ambiguous abbreviation: names several Einstein products, none dominant	
+Elastic	drop	skill-decider						an ambiguous abbreviation: names several Elastic products, none dominant	
+Elastic Security	drop	skill-decider						not a technology at all: names a company's product team	doubt: one segment lists it as a SIEM platform alongside Splunk/Sentinel, which would be a keep
+Elementary	drop	skill-decider						an ordinary word used in its ordinary sense	
+eletrônica	drop	skill-decider						an ordinary word used in its ordinary sense	
+ELINT	drop	skill-decider						a generic concept: an intelligence discipline, not a technology	
+Ellucian Banner	drop	session						software no software person is hired for	session: reverts a reopened revision-5 drop. A higher-education administrative ERP is the criterion's Epic EHR case (a technology no software person is hired for); the agent's own doubt names that parallel, and nothing in the current revision reopens the drop.
+Email Studio	drop	skill-decider						a technology no software person is hired for	doubt: a named module of Salesforce Marketing Cloud ads ask for by name, but it is marketing tooling, not an engineering skill
+EMC	drop	skill-decider						a generic concept: an electromagnetic-compliance standard; ambiguous with Dell EMC	
+EME	drop	skill-decider						an ambiguous abbreviation	
+eMMC	new	skill-decider	emmc	eMMC	networking				
+EMNLP	drop	skill-decider						a heading or field of study: an academic conference	
+Emplifi	drop	skill-decider						a technology no software person is hired for	
+EMR	drop	skill-decider						an ambiguous abbreviation, none dominant	doubt: the given segments all use Amazon EMR, but EMR is dominantly Electronic Medical Record across the wider corpus
+ENA	drop	skill-decider						an ambiguous abbreviation	
+EndNote	drop	skill-decider						a technology no software person is hired for	
+English Being	drop	skill-decider						not a technology at all: a sentence fragment	
+Enovia	drop	skill-decider						a technology no software person is hired for	
+Enterprise Microsoft	drop	skill-decider						a name glued to an ordinary word	
+Entrata	drop	skill-decider						a technology no software person is hired for	doubt: a property-management platform, like Duck Creek, that some roles are hired to integrate with
+EPG	drop	skill-decider						an ambiguous abbreviation	
+Epicor	drop	skill-decider						software no software person is hired for	
+Epicor ERP	drop	skill-decider						software no software person is hired for	
+ePrivacy	drop	skill-decider						a compliance framework, regulation or certification	
+ERDAS IMAGINE	drop	skill-decider						software no software person is hired for	
+ERP Finance	drop	skill-decider						a generic concept, not a named technology	
+ESB	drop	skill-decider						a generic concept, not a named technology	
+ESMFold	new	skill-decider	esmfold	ESMFold	ml				
+ETAP	drop	skill-decider						software no software person is hired for	
+Etcd	new	skill-decider	etcd	etcd	database				
+EtherCAT	new	skill-decider	ethercat	EtherCAT	networking				
+Ethernet LAN	drop	skill-decider						an ordinary word after the name	
+Ethernet PHY	drop	skill-decider						an ordinary word after the name	
+ETL Mastery	drop	skill-decider						an ordinary word after the name	
+ETM	drop	skill-decider						a generic concept, not a named technology	
+eTOM	drop	skill-decider						a practice or framework, not a named technology	
+ETQ	drop	skill-decider						software no software person is hired for	
+ETSI	drop	skill-decider						not a technology at all: a standards body	
+EUC	drop	skill-decider						an ambiguous abbreviation, names several things, none dominant	
+Eve	drop	skill-decider						not a technology at all: a company, or an ordinary word in its ordinary sense	
+Everstage	drop	skill-decider						software no software person is hired for	
+Evo	drop	skill-decider						names several things, none dominant where it is written	
+EWA	drop	skill-decider						an ambiguous abbreviation, names several things, none dominant	
+Excel	drop	skill-decider						consumer, office or browser software	doubt: bare form of Microsoft Excel reads as a keep by the bare-form rule, but Office apps are the criterion's own office-software drop example
+expedia	drop	skill-decider						not a technology at all: a company	
+Expensify	drop	skill-decider						software no software person is hired for	
+Experian	drop	skill-decider						not a technology at all: a company	
+Experience Cloud	drop	skill-decider						names several things, none dominant where it is written	doubt: segments mix Adobe Experience Cloud and Salesforce Experience Cloud with neither dominant
+Express Route	spelling	skill-decider	azure-expressroute				Express Route		
+Extender	drop	skill-decider						an ordinary word used in its ordinary sense	
+Extron	drop	skill-decider						a vendor's name	
+EY	drop	skill-decider						not a technology at all: a company	
+F	drop	skill-decider						a single letter	
+F5	drop	skill-decider						a vendor's name	
+FAANG	drop	skill-decider						not a technology at all: a group of companies	
+FactoryTalk View	spelling	session	factorytalk						session: 'View' is not an ordinary word glued to the name but part of the product's own name (FactoryTalk View SE/ME), which every segment lists as an HMI/SCADA product. A named feature or product of a held skill that ads ask for by its own name is a keep, as that skill (FactoryTalk is held).
+Falcon	drop	skill-decider						names several things, none dominant where it is written	
+Fannie	drop	skill-decider						a piece of a longer name, a company's name	
+FAQ	drop	skill-decider						a generic concept, not a named technology	
+FastDDS	new	skill-decider	fast-dds	Fast DDS	framework				doubt: df of 2 is low; recognised chiefly within ROS 2/robotics engineering
+Fathom	drop	skill-decider						names several things, none dominant where it is written	doubt: segments split between AFT Fathom (engineering sim) and Fathom (sales call AI), neither dominant
+Fax	drop	skill-decider						an ordinary word used in its ordinary sense	
+FB	drop	skill-decider						an ambiguous abbreviation, names several things, none dominant	
+FC	drop	skill-decider						an ambiguous abbreviation, names several things, none dominant	
+FCP	drop	skill-decider						an ambiguous abbreviation, names several things, none dominant	
+FD	drop	skill-decider						an ambiguous abbreviation, names several things, none dominant	
+FDA QMSR	drop	skill-decider						a compliance framework, regulation or certification	
+FDPM	drop	skill-decider						not a technology at all: a job title	
+FedNow	drop	skill-decider						a generic concept, a payment network not a technology product	doubt: could be read as a protocol/service software integrates with, like RTP or ACH
+FEMAP	drop	skill-decider						software no software person is hired for	
+FFI	drop	skill-decider						a generic concept, not a named technology	
+FGA	drop	skill-decider						a generic concept, not a named technology	
+FI	drop	skill-decider						a piece of a longer name ads never use alone for the product	
+Fibersim	drop	skill-decider						software no software person is hired for	
+Fibre	drop	skill-decider						a piece of a longer name, or an ordinary word in its ordinary sense	
+FICAM	drop	skill-decider						a compliance framework, regulation or certification	
+FICC	drop	skill-decider						a generic concept, not a named technology	
+fierce	drop	skill-decider						an ordinary word used in its ordinary sense	
+Fierce Healthcare	drop	skill-decider						not a technology at all: a company	
+FigJam	drop	skill-decider						software no software person is hired for	doubt: Figma-adjacent whiteboard tool, borderline whether engineers list it as a CV skill
+FIM	drop	skill-decider						a generic concept, or an ordinary word in its ordinary sense	
+Finance Engineering	drop	skill-decider						not a technology: a team/department	
+Financial Crimes Operations	drop	skill-decider						not a technology: a department	
+Fiona	drop	skill-decider						a company's product name	doubt: one segment lists Fiona among GeoPandas/Shapely/Rasterio as the real geospatial library, but the other two use it for the company's own 'predictive analytics platform'; none dominant
+FIPS-validated	drop	skill-decider						an ordinary word after the name	
+Five9	drop	skill-decider						software no software person is hired for	
+FlashArray	spelling	skill-decider	pure-storage-flasharray						
+FlashBlade	new	skill-decider	pure-storage-flashblade	Pure Storage FlashBlade	tool				
+FlexSim	drop	skill-decider						software no software person is hired for	
+Flo	drop	skill-decider						a company's name	
+FloQast	drop	skill-decider						software no software person is hired for	
+Flux	drop	skill-decider						names several things, none dominant	
+FM	drop	skill-decider						an ambiguous abbreviation	
+FOCP	drop	skill-decider						a certification	
+Forest	drop	skill-decider						a fragment of a longer name	
+Fort Collins	drop	skill-decider						a place	
+Fortinet	drop	skill-decider						a vendor's name	
+Fortinet NSE	drop	skill-decider						a vendor's certification	
+Fortune	drop	skill-decider						not a technology: a company ranking	
+Foundry	drop	skill-decider						names several things, none dominant	
+FP16	drop	skill-decider						a generic concept	
+FP4	drop	skill-decider						a generic concept	
+FPD-Link	new	skill-decider	fpd-link	FPD-Link	networking				doubt: niche automotive/camera serial-link standard; unclear how widely recognised outside that domain
+Frame.io	drop	skill-decider						software no software person is hired for	
+Framer	drop	skill-decider						software no software person is hired for	
+Fraud Examiner	drop	skill-decider						a certification	
+Freddie Mac	drop	skill-decider						a company	
+Freshdesk	drop	skill-decider						software no software person is hired for	
+Friday-night	drop	skill-decider						an ordinary phrase	
+FS-ISAC	drop	skill-decider						not a technology: an organization	
+FSM	drop	skill-decider						a generic concept	
+FSMO	drop	skill-decider						a generic concept	
+FSQA	drop	skill-decider						not a technology: a department	
+FTTH	drop	session						a generic concept	session: fiber to the home is a kind of network deployment, not one named technology (the criterion drops a kind of system or architecture), and the segments are outside-plant design and construction work, which no software person is hired for.
+fullstack	drop	skill-decider						a generic concept	
+Fullstack Developer	drop	skill-decider						not a technology: a job title	
+FW	drop	skill-decider						an ambiguous abbreviation	
+G2	drop	skill-decider						not a technology: a company	
+GAA	drop	skill-decider						an ambiguous abbreviation	
+Gage R	drop	skill-decider						a generic concept	
+Gaia	drop	skill-decider						names several things, none dominant	
+Gainsight	drop	skill-decider						software no software person is hired for	
+Galaxy	drop	skill-decider						names several things, none dominant	
+Galileo	drop	skill-decider						names several things, none dominant	
+GameAnalytics	new	session	gameanalytics	GameAnalytics	data		GameAnalytics		session: keys match in any case and spacing, so GameAnalytics also matches the ordinary phrase 'game analytics' (the field). Its key must be a context key; the alias 'Game Analytics' is the same name form and is removed as redundant and unsafe.
+Gantt	drop	skill-decider						a generic concept	
+Gartner MQ	drop	skill-decider						not a technology: an analyst framework	
+Gateway	drop	skill-decider						names several things, none dominant	
+GB200	drop	skill-decider						a vendor's product line	doubt: could be read as the product's own name (like PAN-OS) rather than an umbrella line; dropped per earlier rev5 decision and the when-in-doubt rule
+GB300	drop	skill-decider						a vendor's product line	doubt: same tension as GB200 between product name and product line
+GBM	drop	skill-decider						a generic concept	
+GCD	drop	skill-decider						an ambiguous abbreviation	doubt: segments spell out Grand Central Dispatch, a real Apple framework, but GCD is also commonly read as greatest common divisor
+GCLP	drop	skill-decider						a compliance framework	
+GCP Cloud Operations	spelling	session	stackdriver						Google Cloud Operations is the renamed Stackdriver, which skills.tsv holds; the draft's alias Stackdriver is its key
+GCP Vertex	spelling	skill-decider	google-vertex-ai						doubt: one segment is the bare truncation of 'GCP Vertex AI', but another ('AzureML, GCP Vertex, AWS Sagemaker') uses it standalone the way the full product name is used elsewhere
+GCR	drop	skill-decider						an ambiguous abbreviation	
+GDC	drop	skill-decider						names several things, none dominant	
+GDM	drop	skill-decider						an ambiguous abbreviation	
+GDSA	drop	skill-decider						a certification	
+Gecko	drop	skill-decider						names several things, none dominant	
+Gemini Enterprise	spelling	skill-decider	google-gemini						
+GEMM	drop	skill-decider						a generic concept	
+Gen5	drop	skill-decider						a fragment of a longer name	
+GenAI	drop	skill-decider						a generic concept	
+Genesis	drop	skill-decider						names several things, none dominant	
+Genie	drop	skill-decider						names several things, none dominant	
+Geodatabases	drop	skill-decider						a generic concept	
+gesture	drop	skill-decider						a generic concept	
+GFEBS	drop	skill-decider						a technology no software person is hired for	
+GFSSP	drop	skill-decider						a technology no software person is hired for	
+GIAC	drop	skill-decider						a compliance framework, regulation or certification	
+GIAC Security Essentials	drop	skill-decider						a compliance framework, regulation or certification	
+GIC	drop	skill-decider						names several things, none dominant	
+Gigabit Ethernet	spelling	session	ethernet						session: a version of a skill is that skill (HTTP/2 is HTTP); Gigabit Ethernet is a speed version of Ethernet, which skills.tsv holds. This also drops the alias GbE, which would match inside '10 GbE' and '25GbE' mentions of other skills.
+G-Invoicing	drop	skill-decider						a technology no software person is hired for	doubt: federal integration roles name it as a required system skill
+GitFlow	drop	skill-decider						a generic concept	
+GitHub PRs	drop	skill-decider						a name glued to an ordinary word	
+GitLab Ultimate	drop	skill-decider						a product line	
+GitOps	drop	skill-decider						a generic concept	
+GLB	drop	skill-decider						names several things, none dominant	
+Glide	drop	skill-decider						a fragment of a longer name	
+GLM	drop	session						an ambiguous abbreviation	session: GLM also names generalized linear models, common in data-science ads, and OpenGL Mathematics; the agent's doubt says so. A context key is for an ordinary word or C or R, not an abbreviation, and as a plain key it fails the 95% bar. Consistent with the drops of EMR and HCL in this slice. When in doubt, drop.
+GMON	drop	skill-decider						a compliance framework, regulation or certification	
+GN	drop	skill-decider						names several things, none dominant	
+GNSS	drop	skill-decider						a generic concept	
+GNU	drop	skill-decider						a vendor umbrella	
+gold	drop	skill-decider						a generic concept	
+Golden Gate	drop	skill-decider						names several things, none dominant	
+Goliath	drop	skill-decider						names several things, none dominant	
+Gong	drop	skill-decider						software no software person is hired for	
+Google Ad Manager	drop	skill-decider						software no software person is hired for	
+Google AI Overviews	drop	skill-decider						a generic concept	
+Google Antigravity	spelling	skill-decider	antigravity						
+Google Campaign Manager	drop	skill-decider						software no software person is hired for	
+Google Chrome	drop	skill-decider						consumer, office or browser software	
+Google Cloud Pub	join	skill-decider						a fragment of Google Cloud Pub/Sub	
+Google Cloud Pub	whole	skill-decider	google-cloud-pub-sub						
+Google Drive	drop	skill-decider						consumer, office or browser software	
+Google Earth	drop	skill-decider						software no software person is hired for	
+Google G-Suite	spelling	skill-decider	google-workspace						
+Google Identity	drop	skill-decider						a fragment of a longer name	
+Google IT Support	drop	skill-decider						a compliance framework, regulation or certification	
+Google Play	spelling	skill-decider	google-play-store						
+Google Play Console	spelling	skill-decider	google-play-store						doubt: could be its own distinct developer console rather than a key of the Play Store skill
+Google Pub	join	skill-decider						a fragment of Google Pub/Sub	
+Google Search	drop	skill-decider						consumer, office or browser software	
+Google Sheet	drop	skill-decider						consumer, office or browser software	
+Google SRE	drop	skill-decider						a generic concept	
+Google Vault	drop	skill-decider						software no software person is hired for	doubt: some IT/compliance roles may treat it as a hired-for tool
+Google Workplace	spelling	skill-decider	google-workspace						
+Gorgias	drop	skill-decider						software no software person is hired for	doubt: some integration/backend roles name it as an API they build against
+Gov	drop	skill-decider						a fragment of a longer name	
+Gov Cloud	drop	skill-decider						names several things, none dominant	
+GPIO	drop	skill-decider						a generic concept	doubt: could be read as a hardware interface standard like SPI/I2C rather than a generic concept
+GPL	drop	skill-decider						not a technology	
+GPO	drop	skill-decider						names several things, none dominant	doubt: clearly Windows Group Policy in context, could be a named AD feature worth keeping
+GPT-OSS	new	skill-decider	gpt-oss	gpt-oss	ml	GPT OSS			
+GPTQ	drop	skill-decider						a generic concept	doubt: also used as a concrete quantization tool/library name, not just a method
+GPU-dense	drop	skill-decider						a generic concept	
+GPU Direct	drop	skill-decider						names several things, none dominant	
+GPU-intensive	drop	skill-decider						a generic concept	
+GR	drop	skill-decider						names several things, none dominant	
+granola	drop	skill-decider						an ordinary word, used in its ordinary sense	
+Graph DB	drop	skill-decider						a generic concept	
+Graphite	drop	skill-decider						a homonym of something else, where the text means the other thing	
+GraphPad Prism	drop	skill-decider						a technology no software person is hired for	
+GraphRAG	drop	skill-decider						a generic concept, not a named technology	
+Graph RAG	drop	skill-decider						a generic concept, not a named technology	
+Greenhouse	drop	skill-decider						a technology no software person is hired for	doubt: one segment is People Technology admin of Greenhouse alongside Workday, close to a kept HR platform
+GRP	drop	skill-decider						an ambiguous abbreviation	
+GS1	drop	skill-decider						not a technology at all, a standards organization	
+Gsheet	drop	skill-decider						consumer, office or browser software	
+GSM	drop	skill-decider						an ambiguous abbreviation	
+GSP	drop	skill-decider						an ambiguous abbreviation	
+GTA	drop	skill-decider						not a technology at all, a place	
+Guard	drop	skill-decider						an ordinary word, and a piece of a longer name never used alone	
+Guru	drop	skill-decider						an ordinary word	
+GWEB	drop	skill-decider						a compliance framework, regulation or certification	
+Habu	drop	skill-decider						obscure, a name few ads use and few engineers would recognise	doubt: could be read as a data clean-room platform like InfoSum, but very low df
+Haifa	drop	skill-decider						not a technology at all, a place	
+Haiku	new	skill-decider	claude-haiku	Claude Haiku	ml		Haiku		
+Halo	drop	skill-decider						names several things, none dominant	doubt: Omni's own Halo API appears twice but is company-specific, and a third segment names an unrelated Halo PSA/ITSM tool
+HAM	drop	skill-decider						an ambiguous abbreviation	
+Hamiltonian	drop	skill-decider						a generic concept, a physics term not a technology	
+Handler	drop	skill-decider						an ordinary word, and a piece of a longer name never used alone	
+HAR	drop	skill-decider						an ambiguous abbreviation	doubt: HAR files is a real network-trace format, but the key collides with the Danish word \\\"har\\\"
+Harness	drop	skill-decider						an ordinary word, used in its ordinary sense	
+Harvey	drop	skill-decider						a technology no software person is hired for	doubt: a named legal-AI platform, but built for lawyers, not engineers
+HBA	drop	skill-decider						a generic concept, a hardware category not a specific product	
+HCL	drop	skill-decider						an ambiguous abbreviation	doubt: segments here all use it for HashiCorp Configuration Language, but HCL also names HCL Technologies
+HCM	drop	skill-decider						a generic concept, a software category not a specific product	
+HCM Data Loader	new	skill-decider	oracle-hcm-data-loader	Oracle HCM Data Loader	data				
+HDD	drop	skill-decider						a generic concept, a hardware category not a specific product	
+HDL	drop	skill-decider						an ambiguous abbreviation	
+HDMI	drop	skill-decider						a generic concept, a hardware interface not implemented by software	doubt: a real standard, but a hardware one software does not implement, and revision 5 reopens no drop
+HDR	drop	skill-decider						an ambiguous abbreviation	
+Heap	new	skill-decider	heap	Heap	data		Heap		doubt: \\\"heap\\\" is also the ordinary CS data-structure/memory term, but two of three segments name the Heap analytics product
+HEDIS	drop	skill-decider						a compliance framework, regulation or certification	
+Helix	drop	skill-decider						names several things, none dominant	doubt: one segment names a specific robotics model called Helix, the others are company team/business-line names
+Hello	drop	skill-decider						a fragment of a longer name, and an ordinary word	
+Heredia	drop	skill-decider						not a technology at all, a place	
+Hermes	drop	skill-decider						names several things, none dominant	doubt: paired with OpenClaw as an AI agent, but looks like a company-internal name, obscure beyond that employer
+Hex	new	skill-decider	hex	Hex	data		Hex		doubt: \\\"hex\\\" is also the ordinary hexadecimal/magic-spell word, but all three segments name the Hex analytics/notebook platform
+Hexagon	drop	skill-decider						a vendor's name	
+HFM	new	session	oracle-hyperion-financial-management	Oracle Hyperion Financial Management	tool	Hyperion Financial Management	HFM		HFM is an ambiguous abbreviation: context
+HGX	new	skill-decider	nvidia-hgx	NVIDIA HGX	tool				doubt: a specific NVIDIA hardware reference platform named consistently, but borderline whether a software person is hired for it
+HIC	drop	skill-decider						a generic concept, a lab chromatography technique not a technology	
+HIE	drop	skill-decider						a generic concept, a kind of network not a named technology	
+HighJump	new	session	highjump	HighJump	tool	Körber HighJump	HighJump		in name form HighJump is the athletics term high jump: context
+Highspot	drop	skill-decider						a technology no software person is hired for	
+HIP	new	skill-decider	hip	HIP	framework		HIP		doubt: \\\"hip\\\" is also an ordinary word, but all three segments name AMD ROCm's HIP GPU programming interface
+Hitachi	drop	skill-decider						a vendor's name	
+HIV	drop	skill-decider						not a technology at all	
+HockeyStack	drop	skill-decider						a technology no software person is hired for	
+Hopper	drop	skill-decider						an ordinary word, used in its ordinary sense	doubt: one segment names the Hopper disassembler, but two of three segments use \\\"hopper\\\" ordinarily
+Horde	new	skill-decider	horde	Horde	devops		Horde		doubt: \\\"Horde\\\" is also an ordinary/gaming word, but all three segments name Unreal Engine's Horde build system
+hotspot	drop	skill-decider						an ordinary word, used in its ordinary sense	
+Houdini	drop	session						software no software person is hired for (3D, VFX)	Reverts a reopened drop: the record dropped Houdini under revision 5 as 3D/design software no software person is hired for, and Maya was dropped for the same reason in that run; no revision reopens that reason, and the segments are 3D modeling and VFX pipelines.
+HP	drop	skill-decider						a vendor's name	
+HRIS Manager	drop	skill-decider						not a technology at all, a heading	
+HRM	drop	skill-decider						a generic concept, a field of study not a technology	
+HSDL	drop	skill-decider						a fragment of a longer name	
+HSI	drop	skill-decider						an ambiguous abbreviation, names several things, none dominant	
+HSPICE	drop	skill-decider						software no software person is hired for	
+HSX	drop	skill-decider						an ambiguous abbreviation, names several things, none dominant	
+Huawei	drop	skill-decider						a vendor's name	
+Hubble	drop	skill-decider						software no software person is hired for	
+Huel	drop	skill-decider						not a technology at all, a company	
+Hunter	drop	skill-decider						a piece of a longer name; an ordinary word	
+Hurricane	drop	skill-decider						a piece of a longer name; not a technology at all	
+Husky	new	skill-decider	husky	Husky	tool		Husky		
+HydroCAD	drop	skill-decider						software no software person is hired for	
+Hyperautomation	drop	skill-decider						a generic concept	
+Hypermesh	drop	skill-decider						software no software person is hired for	
+IaaC	drop	skill-decider						a generic concept	
+IaC	drop	skill-decider						a generic concept	
+IA Générative	drop	skill-decider						a generic concept	
+IAVA	drop	skill-decider						a compliance framework, regulation or certification	
+IAVM	drop	skill-decider						a compliance framework, regulation or certification	
+IB	drop	skill-decider						an ambiguous abbreviation	
+IBM	drop	skill-decider						a vendor's name	
+IBM Planning Analytics	drop	skill-decider						software no software person is hired for	
+ICAM	drop	skill-decider						a generic concept	
+Icarus	drop	skill-decider						names several things, none dominant	
+ICCV	drop	skill-decider						not a technology at all, a field of study	
+ICL	drop	skill-decider						an ambiguous abbreviation	
+ICLR	drop	skill-decider						not a technology at all, a field of study	
+ICML	drop	skill-decider						not a technology at all, a field of study	
+ICPC	drop	skill-decider						not a technology at all	
+ICP-MS	drop	skill-decider						a technology no software person is hired for	
+ICU	drop	skill-decider						a homonym of something else	doubt: two segments use the real ICU i18n library, the third means the hospital unit
+ID	drop	skill-decider						a piece of a longer name	
+IDaaS	drop	skill-decider						a generic concept	
+IDC MarketScape	drop	skill-decider						not a technology at all, an analyst report	
+IDL	drop	skill-decider						a generic concept	doubt: one segment lists it as the IDL language beside Python/MATLAB/C
+IEEE	drop	skill-decider						not a technology at all, a standards body	
+IETF	drop	skill-decider						not a technology at all, a standards body	
+IEX	drop	skill-decider						an ambiguous abbreviation	
+Ignition SCADA	drop	skill-decider						a technology no software person is hired for	
+IL2	drop	skill-decider						a compliance framework, regulation or certification	
+IL4	drop	skill-decider						a compliance framework, regulation or certification	
+ILA	drop	skill-decider						an ambiguous abbreviation	
+iLevel	drop	skill-decider						a technology no software person is hired for	
+illuminate	drop	skill-decider						an ordinary word	
+Illustrator	drop	skill-decider						a technology no software person is hired for	
+Imagen	drop	skill-decider						a homonym of something else	doubt: two segments name the Google Imagen model, the Spanish segment means the ordinary word 'image'
+iManage	drop	skill-decider						a technology no software person is hired for	doubt: a named legal document-management platform some integration roles name
+IMINT	drop	skill-decider						a generic concept	
+Implementierung	drop	skill-decider						an ordinary word	
+Importer	drop	skill-decider						a generic concept; a piece of a longer name	
+INCOSE CSEP	drop	skill-decider						a compliance framework, regulation or certification	
+Inductive	drop	skill-decider						an ordinary word; a piece of a longer name	
+Infoblox	drop	session						not a technology at all: a vendor's name	Reverts a reopened drop: the record dropped Infoblox under revision 5 as a vendor's name, and the criterion drops a vendor's name even where ads use it for its products (Palo Alto, Juniper); Infoblox's products (NIOS, BloxOne) would be kept under their own names.
+Infor SyteLine	new	skill-decider	infor-syteline	Infor SyteLine	tool				doubt: ERP generically drops, but an ad names an ERP Developer role built directly on this named system
+InfoSum	new	skill-decider	infosum	InfoSum	data				
+InfraOps	drop	skill-decider						a generic concept	
+Infrastrukturen	drop	skill-decider						an ordinary word	
+Inmon	drop	skill-decider						not a technology at all, a person	
+INP	drop	skill-decider						an ambiguous abbreviation	
+INT4	drop	skill-decider						a generic concept	
+INT8	drop	skill-decider						a generic concept	
+Intapp	drop	skill-decider						a piece of a longer name; a vendor's name	
+integer	drop	skill-decider						a generic concept, not a named technology	
+Intel	drop	skill-decider						a vendor's name	
+Intelligent Assistant	drop	skill-decider						a generic concept	
+Intercom	drop	skill-decider						software no software person is hired for	
+intermediário	drop	skill-decider						an ordinary word	
+Internetworking	drop	skill-decider						a generic concept	
+Intuit	drop	skill-decider						a vendor's name	
+Inventor	drop	skill-decider						a technology no software person is hired for	
+IOMMU	drop	skill-decider						a generic concept, not a named technology	
+iOS App Store	drop	skill-decider						consumer software, not what an engineer is hired for	
+iOS UI	drop	skill-decider						an ordinary word after the name	
+iPaaS	drop	skill-decider						a generic concept, not one named technology	
+iPad	drop	skill-decider						consumer hardware, not what an engineer is hired for	
+IPAM	drop	skill-decider						a generic concept	
+iPhone	drop	skill-decider						consumer hardware, not what an engineer is hired for	
+Ipopt	new	skill-decider	ipopt	Ipopt	tool				
+IQVIA	drop	skill-decider						not a technology at all: a company	
+IRAD	drop	skill-decider						not a technology at all: a heading, not a technology	
+IRQ	drop	skill-decider						a generic concept	
+Iru	spelling	session	kandji						Iru is Kandji's current name (Kandji rebranded as Iru), and the first segment writes Kandji/Iru; a name that names a held skill by another name is a keep as that skill. With 47 mentions, all for the MDM, it is not obscure, which was the record's reason.
+ISC	drop	skill-decider						an ambiguous abbreviation	
+ISC2 CISSP	drop	skill-decider						a compliance framework, regulation or certification	
+ISE	drop	skill-decider						an ambiguous abbreviation	doubt: Cisco ISE is already keyed only by its full name; bare ISE reads ambiguous here
+ISO20022	spelling	skill-decider	iso-20022						doubt: earlier revision dropped this before ISO 20022 existed as a kept skill
+ISO26262	drop	skill-decider						a compliance framework, regulation or certification	
+ISPM	drop	skill-decider						a generic concept	
+ISTQB	drop	skill-decider						a compliance framework, regulation or certification	
+ITAM	drop	skill-decider						a generic concept	
+IT DevOps	drop	skill-decider						a generic concept, a name glued to ordinary words	
+Iterable	drop	skill-decider						software no software person is hired for	
+ITIL-aligned	drop	skill-decider						a generic concept, a name glued to an ordinary word	
+ITIL Best Practice	drop	skill-decider						a generic concept	
+ITIL v3	drop	skill-decider						a compliance framework, regulation or certification	
+ITIL v4	drop	skill-decider						a compliance framework, regulation or certification	
+ITOM	drop	skill-decider						a generic concept	
+ITSM	drop	skill-decider						a generic concept	
+Ivanti	drop	skill-decider						a vendor's name	
+IVD	drop	skill-decider						a technology no software person is hired for	
+I’ve	drop	skill-decider						not a technology at all	
+I've	drop	skill-decider						not a technology at all	
+IVI	drop	skill-decider						a generic concept	
+IVR	drop	skill-decider						a generic concept	
+IX	drop	skill-decider						an ambiguous abbreviation	
+IXP	drop	skill-decider						an ambiguous abbreviation	
+J1939	new	skill-decider	j1939	J1939	networking	SAE J1939			doubt: borderline between a protocol software implements and an industry standard
+Jackson	drop	skill-decider						not a technology at all: a place	
+Jama Connect	spelling	skill-decider	jama						doubt: may be its own product name rather than a spelling of Jama
+James	drop	skill-decider						not a technology at all: a person	
+Jamstack	drop	skill-decider						a generic concept, an architecture	
+Jasper	drop	skill-decider						an ambiguous abbreviation, names several things, none dominant	
+JasperGold	new	skill-decider	jaspergold	JasperGold	tool	Cadence JasperGold			
+JavaScript-based Three.js	drop	skill-decider						a name glued to an ordinary word	
+JavaScript SEO	drop	skill-decider						a generic concept glued to the name	
+JavaScript Tag	drop	skill-decider						an ordinary word after the name	
+JD	drop	skill-decider						an ambiguous abbreviation	
+JDE	drop	skill-decider						software no software person is hired for	
+JEDEC	drop	skill-decider						not a technology at all: a standards organization	
+JEMA	drop	skill-decider						obscure: a name few engineers would recognise	
+JetBrains	drop	skill-decider						a vendor's name	
+Jira Query	join	skill-decider						a fragment of Jira Query Language	
+Jira Query	whole	session	jql						the whole is the held skill jql; drafting jira-query-language anew duplicates the new row of the same name and the held jql
+Jira Query Language	spelling	session	jql						skills.tsv holds this skill as jql (JQL); the draft's alias JQL is a key of jql
+JIT	drop	skill-decider						a generic concept	
+JLPT N1	drop	skill-decider						a compliance framework, regulation or certification	
+JNCIA	drop	skill-decider						a compliance framework, regulation or certification	
+JNCIP	drop	skill-decider						a compliance framework, regulation or certification	
+JPD	spelling	session	jira-product-discovery				JPD		JPD is Jira Product Discovery, held as jira-product-discovery; an abbreviation, so a context key
+JPL	drop	skill-decider						a company	
+JSF	drop	skill-decider						an ambiguous abbreviation, names several things, none dominant	
+JSI	drop	skill-decider						a generic concept, an architecture inside React Native, not a named product	
+jumpstart	drop	skill-decider						an ordinary word	
+Junie	new	session	junie	Junie	tool	JetBrains Junie	Junie		Junie is a person's name: context
+Juniper	drop	skill-decider						a vendor's name	
+Juniper Networks	drop	skill-decider						a vendor's name	
+Jupiter	drop	skill-decider						a homonym of something else, where the text means the other thing	
+JWICS	drop	skill-decider						not a technology at all, a classified network/environment designation	doubt: a specific named DoD network, but reads as an accreditation environment rather than a product
+Kai	drop	skill-decider						an ambiguous abbreviation, names several things, none dominant	
+Kantar	drop	skill-decider						a vendor's name	
+Kantata	drop	skill-decider						software no software person is hired for	
+Kenntnisse	drop	skill-decider						an ordinary word	
+Kettle	drop	skill-decider						a homonym of something else, where the text means the other thing	doubt: one segment uses Kettle for the Pentaho ETL tool, the others for a company name and a chips brand
+Keychain	drop	skill-decider						a generic concept, an OS security feature, not an independent named product	
+Keysight	drop	skill-decider						a vendor's name	
+Keysight ADS	drop	skill-decider						software no software person is hired for	doubt: a real RF/analog EDA tool, but hired for by hardware engineers, like AutoCAD
+keystone	drop	skill-decider						an ordinary word	
+Keystore	drop	skill-decider						a generic concept, an OS security storage feature, not an independent named product	
+KG-250x	drop	skill-decider						a technology no software person is hired for	
+KiCad	drop	skill-decider						software no software person is hired for	
+Kimball	drop	skill-decider						a practice, method, technique or architecture, not a named technology	
+Kimi	new	session	kimi	Kimi	ml		Kimi		Kimi is a person's name: context
+Kinaxis	drop	skill-decider						a vendor's name	
+Kinetica	new	skill-decider	kinetica	Kinetica	database				
+KISS	drop	skill-decider						a generic concept	
+kit	drop	skill-decider						a piece of a longer name that ads never use alone for the product	
+Klaviyo	drop	skill-decider						software no software person is hired for	doubt: engineers build API integrations with Klaviyo, but it is primarily a marketing-team tool
+KLayout	drop	skill-decider						software no software person is hired for	
+KMZ	new	skill-decider	kmz	KMZ	data				
+kNN	drop	skill-decider						a generic concept, a machine-learning method, not a named technology	
+Kno2	drop	skill-decider						software no software person is hired for	
+Kochava	drop	skill-decider						software no software person is hired for	
+Kramer	drop	skill-decider						a vendor's name	
+Kronos	drop	skill-decider						software no software person is hired for	
+KSA	drop	skill-decider						not a technology at all, a place	
+Kubernetes Application Developer	drop	skill-decider						a compliance framework, regulation or certification	
+Kubernetes Mastery	drop	skill-decider						an ordinary word before or after the name	
+Kubestronaut	drop	skill-decider						a compliance framework, regulation or certification	
+L2	drop	skill-decider						a generic concept	
+L2VPN	drop	skill-decider						a generic concept	
+L3	drop	skill-decider						a generic concept	
+L3VPN	drop	skill-decider						a generic concept	
+L3VPN MPLS	drop	skill-decider						a generic concept	doubt: names an MPLS VPN technique rather than the MPLS product alone
+L4	drop	skill-decider						a generic concept	
+L6 Staff	drop	skill-decider						not a technology at all, a job level/heading	
+L7	drop	skill-decider						a generic concept	
+LabVantage	new	skill-decider	labvantage	LabVantage	tool				doubt: a LIMS platform administered/integrated against, like Dataiku/Databricks, but could read as lab-scientist software no engineer is hired for
+Lac	drop	skill-decider						an ordinary word	
+Lagrangian	drop	skill-decider						a generic concept, a mathematical concept, not a named technology	
+Lake	drop	skill-decider						a generic concept	
+Lake City	drop	skill-decider						not a technology at all, a place	
+Lakeflow	spelling	skill-decider	databricks-lakeflow						doubt: previously dropped, but segments use Lakeflow as Databricks' product name (Lakeflow Connect, DLT/Lakeflow, Lakeflow Jobs)
+lakehouse	drop	skill-decider						a generic concept	
+Lance	drop	skill-decider						obscure, few engineers would recognise; an ordinary word	doubt: Lance is a real ML data format (like Parquet/Iceberg) but df is tiny and the name collides with the common word
+LastPass	drop	session						consumer, office or browser software	A password manager is consumer software anyone uses, not a technology an engineer is hired for; 1Password, named beside it in a segment, was dropped under revision 5. The third segment names LastPass as an employer. When in doubt, drop.
+latte	drop	skill-decider						an ordinary word used in its ordinary sense	
+Lauterbach	drop	skill-decider						a vendor's name	
+Lawson	drop	skill-decider						a vendor's name; software no software person is hired for	
+Lazada	drop	skill-decider						not a technology at all: a company	
+LCAT	drop	skill-decider						not a technology at all	
+LCD	drop	skill-decider						a generic concept; an ambiguous abbreviation	
+LCM	drop	skill-decider						an ambiguous abbreviation, none dominant	
+Leaderboard	drop	skill-decider						a generic concept	
+LeanData	drop	skill-decider						software no software person is hired for	
+LeCroy	drop	skill-decider						a vendor's name	
+Lego	drop	skill-decider						not a technology at all: a company	
+Lenovo	drop	skill-decider						a vendor's name	
+LexisNexis	drop	skill-decider						a vendor's name; software no software person is hired for	
+LGTM	drop	skill-decider						names several things, none dominant	
+LI-DNI	drop	skill-decider						not a technology at all	
+Lightbend	drop	skill-decider						a vendor's name	
+Lighthouse	new	skill-decider	lighthouse	Lighthouse	testing	Google Lighthouse	Lighthouse		
+Lightning	drop	skill-decider						names several things, none dominant; part of a longer name	
+Lightning Design	join	skill-decider						a fragment of Lightning Design System	
+Lightning Design	whole	skill-decider	lightning-design-system						
+Lightspeed	drop	skill-decider						not a technology at all: a company	
+LI-MS1	drop	skill-decider						not a technology at all	
+l'Infrastructure	drop	skill-decider						an ordinary word used in its ordinary sense	
+LinkedIn Ads	drop	skill-decider						software no software person is hired for	
+LinkedIn Sales Navigator	drop	skill-decider						software no software person is hired for	
+Linux+	drop	skill-decider						a certification	
+Linux CLI	drop	skill-decider						an ordinary word after the name	
+LIT	drop	skill-decider						names several things, none dominant	
+Lite	drop	skill-decider						an ordinary word; part of a longer name	
+Litify	drop	skill-decider						a vendor's name; software no software person is hired for	
+Litmus	drop	skill-decider						a homonym, where the text often means the other thing	
+LiveRamp	drop	skill-decider						a vendor's name	
+LLMOps	drop	skill-decider						a practice, not a named technology	
+LLM-orchestrated	drop	skill-decider						a practice, not a named technology	
+llms.txt	new	skill-decider	llms-txt	llms.txt	tool				
+LM	drop	skill-decider						names several things, none dominant	
+LOB	drop	skill-decider						a generic concept, not a named technology	
+LOD	drop	skill-decider						names several things, none dominant	
+LOE	drop	skill-decider						a generic concept, not a named technology	
+Logitech	drop	skill-decider						a vendor's name	
+Loom	drop	skill-decider						consumer, office or browser software	
+Loopio	drop	skill-decider						a vendor's name; software no software person is hired for	
+LoRA	drop	skill-decider						a technique, not a named technology	
+L’Oreal	drop	skill-decider						not a technology at all: a company	
+L’Oréal	drop	skill-decider						not a technology at all: a company	
+Lovable	drop	skill-decider						an ordinary word used in its ordinary sense	doubt: lower-case mentions read as the ordinary adjective, but Lovable is also a real AI app-builder product
+LPC	drop	skill-decider						a certification	
+LPQ	drop	skill-decider						a certification	
+LPR	drop	skill-decider						a generic concept, not a named technology	
+LSEG	drop	skill-decider						not a technology at all: a company	
+LSM	drop	skill-decider						an ambiguous abbreviation, none dominant	
+LSTM	drop	skill-decider						an architecture, not a named technology	
+LTSSM	drop	skill-decider						obscure, a piece of a longer spec	
+Lucid	drop	skill-decider						not a technology at all: a company	
+LUN	drop	skill-decider						a generic concept, not a named technology	
+Luna	drop	skill-decider						a homonym, none dominant where it is written	
+LVDS	new	skill-decider	lvds	LVDS	networking	Low-Voltage Differential Signaling			doubt: a physical-layer electrical standard, borderline against standards software implements like Bluetooth
+M2M	drop	skill-decider						a generic concept, not a named technology	
+M3	drop	skill-decider						an ambiguous abbreviation, none dominant	
+Macintosh	drop	skill-decider						not a technology at all: a product line	
+Maestro	drop	skill-decider						names several things, none dominant	
+MagicDraw	new	session	magicdraw	MagicDraw	tool				A specific named modeling tool, written beside Cameo, IBM DOORS and Rhapsody, all of which skills.tsv holds as tools; the drop's reason (no software person is hired for it) contradicts that case law. 44 mentions, all for the product.
+magnet	drop	skill-decider						an ordinary word	
+Mailchimp	drop	skill-decider						a technology no software person is hired for	
+Majestic	drop	skill-decider						an ordinary word	
+MALS	drop	skill-decider						a generic concept	
+ManageEngine	drop	skill-decider						a vendor's name	
+Manufacturo	drop	skill-decider						a technology no software person is hired for	
+Mapper	drop	skill-decider						an ordinary word	
+Marketing Cloud Developer	drop	skill-decider						an ordinary word after it	
+Martin	drop	skill-decider						not a technology at all: a person	
+Marvell	drop	skill-decider						a vendor's name	
+MasterControl	drop	skill-decider						a technology no software person is hired for	
+Maxio	drop	skill-decider						a technology no software person is hired for	
+Maxwell	drop	skill-decider						a fragment of a longer name	doubt: segments write it only as Ansys Maxwell or as a person's name, never alone for the product
+Maya	drop	skill-decider						a technology no software person is hired for	
+May-August	drop	skill-decider						not a technology at all	
+MBIST	drop	skill-decider						a generic concept	
+MC	drop	skill-decider						an ambiguous abbreviation	
+MCI	drop	skill-decider						an ambiguous abbreviation	
+MCITP	drop	skill-decider						a compliance framework, regulation or certification	
+McKinsey	drop	skill-decider						not a technology at all: a company	
+MCM	drop	skill-decider						an ambiguous abbreviation	
+MCP-connected	drop	skill-decider						a name glued to an ordinary word	
+MCR	drop	skill-decider						an ambiguous abbreviation	
+MCU	drop	skill-decider						a generic concept	
+MD5	new	skill-decider	md5	MD5	security	Message Digest 5|Message Digest Algorithm			doubt: a hash algorithm/standard, unclear it is a CV skill rather than a generic cryptographic concept
+MDG	drop	skill-decider						a generic concept	
+MDX	drop	skill-decider						an ambiguous abbreviation	
+MEC	drop	skill-decider						an ambiguous abbreviation	
+MEDDICC	drop	skill-decider						a generic concept	
+MEDDPICC	drop	skill-decider						a generic concept	
+MedDRA	drop	skill-decider						a technology no software person is hired for	
+Media Server	drop	skill-decider						a generic concept	
+MediaTek	drop	skill-decider						a vendor's name	
+Medidata Rave	drop	skill-decider						a technology no software person is hired for	
+Mellanox	drop	skill-decider						a vendor's name	
+Meltwater	drop	skill-decider						a technology no software person is hired for	
+Merkle	drop	skill-decider						a generic concept	
+MERN	drop	skill-decider						names several things, none dominant	
+MES-to-ERP	drop	skill-decider						a generic concept	
+Meta	drop	skill-decider						not a technology at all: a company	
+Meta Ads	drop	skill-decider						a technology no software person is hired for	
+Meta Ads Manager	drop	skill-decider						a technology no software person is hired for	
+Meta CAPI	drop	skill-decider						an ambiguous abbreviation	doubt: CAPI is listed as an ambiguous abbreviation, but with Meta as qualifier it reads as one specific API some ad-tech engineers integrate against
+microfabrication	drop	skill-decider						a generic concept	
+Microsoft	drop	skill-decider						not a technology at all: a company	
+Microsoft Advertising	drop	skill-decider						a technology no software person is hired for	
+Microsoft Business Central	drop	skill-decider						a technology no software person is hired for	
+Microsoft Dynamics CRM	spelling	skill-decider	microsoft-dynamics						doubt: CRM is listed elsewhere as a generic concept, so this could read as Microsoft Dynamics plus an ordinary word after it, but Dynamics CRM is already a key of the held skill and was the product's own former full name
+Microsoft Forms	drop	skill-decider						consumer, office or browser software	
+Microsoft OneDrive	drop	session						consumer, office or browser software	Reverts a reopened drop: the record dropped it under revision 5, and the criterion drops consumer and office software (Google Drive, Box, Microsoft Word), with Google Drive itself dropped in the same run; the segments list it beside Box, Dropbox and Google Drive.
+Microsoft Planner	drop	skill-decider						consumer, office or browser software	
+Microsoft Teams	drop	skill-decider						consumer, office or browser software	
+microVM	drop	skill-decider						a generic concept	
+Midjourney	drop	skill-decider						a technology no software person is hired for	
+MIG	drop	skill-decider						an ambiguous abbreviation	
+MII	drop	skill-decider						an ambiguous abbreviation	
+MIPI	drop	session						part of a longer name written there	Every segment writes MIPI as part of a longer name (MIPI DSI, MIPI CSI/DSI, MIPI CSI-2), and MIPI alone is the standards body's umbrella for several interfaces; revision 5 drops part of a longer name written around it. MIPI CSI and MIPI DSI are drafted as their own skills.
+MIPI CSI	new	skill-decider	mipi-csi	MIPI CSI	networking	MIPI CSI-2			
+MISP	new	skill-decider	misp	MISP	security				
+MISRA	drop	skill-decider						a compliance framework, regulation or certification	
+MK	drop	skill-decider						a fragment of a longer name, an ambiguous abbreviation	
+ML Familiarity	drop	skill-decider						an ordinary word	
+ML-guided	drop	skill-decider						a name glued to an ordinary word	
+ML-integrated	drop	skill-decider						a name glued to an ordinary word	
+MLOps	drop	skill-decider						a practice, not a named technology	
+MLPerf	drop	skill-decider						a benchmark, not a named technology	doubt: a widely-used ML benchmark suite, but not a technology an engineer builds with
+ML Specialty	drop	skill-decider						a certification	
+MLSys	drop	skill-decider						not a technology at all, a conference	
+ML Track	drop	skill-decider						an ordinary word	
+MM	drop	skill-decider						an ambiguous abbreviation	
+MMIO	drop	skill-decider						a generic concept, not a named technology	
+MMU	drop	skill-decider						a generic concept, not a named technology	
+Mobile QA	drop	skill-decider						not a technology at all, a field of practice	
+Mobile Studio	drop	skill-decider						a piece of a vendor's product line, none dominant	doubt: a named module of Salesforce Marketing Cloud, which the criterion keeps when ads ask for it by its own name
+Model Builder	drop	skill-decider						not a technology at all, a job title	
+Modeler	drop	skill-decider						an ordinary word	
+MoE	drop	skill-decider						an architecture, not a named technology	
+MOM	drop	skill-decider						an ambiguous abbreviation	
+Monaco	drop	skill-decider						a homonym of something else, where most text means the other thing	doubt: one segment names the Monaco code editor, but most name the place
+Monarch	drop	skill-decider						a homonym of something else, none dominant	
+Moody	drop	skill-decider						a company's name	
+Mooncake	drop	skill-decider						obscure, a name few ads use	doubt: a real LLM KV-cache project named alongside vLLM/SGLang/Dynamo, but named in very few ads here
+Morningstar	drop	skill-decider						a company's name	
+Moveworks	drop	skill-decider						software no software person is hired for	doubt: an agentic AI ITSM platform; ads mostly name it for IT-ops/helpdesk roles, not engineering
+Mozilla	drop	skill-decider						a vendor's name	
+MPBGP	drop	skill-decider						obscure, a name few ads use	doubt: MP-BGP is a real BGP extension, but named in only one vacancy here
+MQ	drop	skill-decider						an ambiguous abbreviation	
+MQA	drop	skill-decider						an ambiguous abbreviation	
+MRI	drop	skill-decider						an ambiguous abbreviation	
+MSCI	drop	skill-decider						a company's name	
+MS Copilot Studio	spelling	skill-decider	microsoft-copilot-studio						
+MS Dynamics	drop	skill-decider						a vendor's product line, names several things, none dominant	
+MSE	drop	skill-decider						an ambiguous abbreviation	
+MSI	drop	skill-decider						an ambiguous abbreviation	
+MSL	drop	skill-decider						an ambiguous abbreviation	
+MSM	drop	skill-decider						an ambiguous abbreviation	
+MS Outlook	drop	skill-decider						consumer, office or browser software	
+MS Visual Studio	spelling	skill-decider	visual-studio						
+MT5	new	skill-decider	metatrader-5	MetaTrader 5	tool				
+MTU	drop	skill-decider						a generic concept, not a named technology	
+multiplexing	drop	skill-decider						a generic concept, not a named technology	
+Mural	drop	skill-decider						software no software person is hired for	
+Music	drop	skill-decider						an ordinary word	
+Mutex	drop	skill-decider						a generic concept, not a named technology	
+MVCC	drop	skill-decider						a generic concept, not a named technology	
+MVI	drop	skill-decider						an architecture, not a named technology	
+MVT	drop	skill-decider						an ambiguous abbreviation	
+MVVM	drop	skill-decider						an architecture, not a named technology	
+MX	drop	skill-decider						an ambiguous abbreviation	
+Mythos	drop	skill-decider						obscure, a name few engineers would recognise	
+Médaillon	drop	skill-decider						an architecture, not a named technology	
+N	drop	skill-decider						a single letter	
+NAACL	drop	skill-decider						not a technology at all, a conference	
+NACHA	drop	skill-decider						a compliance framework, regulation or certification	
+NAND	drop	skill-decider						a generic concept, not a named technology	
+Nano	drop	skill-decider						an ordinary word	
+nanopb	new	skill-decider	nanopb	nanopb	framework				
+NASTRAN	drop	skill-decider						software no software person is hired for	
+NAV	drop	skill-decider						an ambiguous abbreviation that names several things, none dominant	
+Navan	drop	skill-decider						not a technology at all: a vendor	
+Navigation	drop	skill-decider						a generic concept	
+Navigator	drop	skill-decider						names several things, none dominant	
+NCA	drop	skill-decider						a compliance framework, regulation or certification	
+NDC	drop	skill-decider						a generic concept, not a named technology	
+NEA	drop	skill-decider						not a technology at all: a company	
+Nebula	drop	skill-decider						names several things, none dominant	doubt: segments split between a VPN mesh tool, an internal architecture codename and a datastore, none clearly dominant
+Needham	drop	skill-decider						not a technology at all: a place	
+Neo	drop	skill-decider						not a technology at all: a company	
+Neon	drop	skill-decider						a homonym of something else, where the text means the other thing	doubt: one segment names the Neon database directly, another the unrelated ARM NEON SIMD extension
+NER	drop	skill-decider						a generic concept	
+NeRF	drop	skill-decider						a generic concept, not a named technology	
+NetDevOps	drop	skill-decider						a generic concept	
+NetDocuments	drop	skill-decider						software no software person is hired for	
+Netflix	drop	skill-decider						not a technology at all: a company	
+NetOps	drop	skill-decider						a generic concept	
+Network+	drop	skill-decider						a compliance framework, regulation or certification	
+NetworkPolicies	drop	skill-decider						a generic concept, not a named technology	
+NetworkPolicy	drop	skill-decider						a generic concept, not a named technology	
+NeurIPS	drop	skill-decider						not a technology at all: a heading or field of study	
+New Orleans	drop	skill-decider						not a technology at all: a place	
+NewSQL	drop	skill-decider						a generic concept	
+New York Metro	drop	skill-decider						not a technology at all: a place	
+Nexis	drop	skill-decider						names several things, none dominant	
+Nexthink	drop	skill-decider						software no software person is hired for	doubt: a digital-employee-experience tool bought by IT/support ops more than software engineers
+Nexus	drop	skill-decider						names several things, none dominant	doubt: segments mix Sonatype Nexus (artifact repo), Cisco Nexus and an unrelated internal program name
+NGA	drop	skill-decider						not a technology at all: a company	
+NGFW	drop	skill-decider						a generic concept	
+NG-SIEM	drop	skill-decider						a generic concept	doubt: mostly used as the generic 'next-gen SIEM' category, though CrowdStrike names a product this way
+NI	drop	skill-decider						an ambiguous abbreviation that names several things, none dominant	
+Niagara	drop	skill-decider						software no software person is hired for	doubt: the Niagara/Tridium building-automation framework is a named product, but hired for by controls engineers, not software engineers
+NIC	drop	skill-decider						a generic concept	
+nice	drop	skill-decider						an ordinary word	
+NIPR	drop	skill-decider						a generic concept, not a named technology	
+NIPRNet	drop	skill-decider						not a technology at all	
+NISand	drop	skill-decider						not a technology at all	
+NISP	drop	skill-decider						a compliance framework, regulation or certification	
+NIST PQC	drop	skill-decider						a compliance framework, regulation or certification	doubt: names a family of cryptographic standards rather than one specific protocol
+NIST RMF	drop	skill-decider						a compliance framework, regulation or certification	
+Nitro	drop	skill-decider						names several things, none dominant	
+Nix	new	skill-decider	nix	Nix	devops		Nix		doubt: two of three segments name the real Nix package/build manager, but the name also stands for Unix-like systems (*nix) and the verb 'to nix', and it was dropped twice before
+Nlyte	drop	skill-decider						software no software person is hired for	
+No-Code Data Science	drop	skill-decider						a generic concept	
+Node	spelling	skill-decider	node-js				Node		doubt: segments mostly use it for Node.js, but it also names a generic mesh/graph node
+NOI	drop	skill-decider						names several things, none dominant	
+Nokia	drop	skill-decider						a vendor's name	
+No Magic	drop	skill-decider						not a technology at all: a vendor	
+nonce	drop	skill-decider						a generic concept	
+NoSQL	drop	skill-decider						a generic concept	
+NoSQL DB	drop	skill-decider						a generic concept	
+NPC	drop	skill-decider						names several things, none dominant	
+NPU	drop	skill-decider						a generic concept	
+NR	drop	skill-decider						names several things, none dominant	doubt: mostly the 5G/6G NR standard, but one segment uses it as the Romanian word for 'number'
+NRF	drop	skill-decider						names several things, none dominant	doubt: mostly the Nordic nRF chip family, but one segment names the National Retail Federation event
+NRZ	drop	skill-decider						a generic concept	
+NSA	drop	skill-decider						not a technology at all: a company	
+NSA Type	drop	skill-decider						a piece of a longer name that ads never use alone	
+NSPB	drop	skill-decider						software no software person is hired for	
+NSW	drop	skill-decider						an ambiguous abbreviation	
+NTA	drop	skill-decider						an ambiguous abbreviation	
+NTB	drop	skill-decider						an ambiguous abbreviation	
+Numeric	drop	skill-decider						an ordinary word	
+nutzen	drop	skill-decider						an ordinary word	
+NVD	drop	skill-decider						not a technology at all, a vulnerability catalog	
+NVIDIA	drop	skill-decider						a vendor's name	
+NVIDIA AI Enterprise	new	skill-decider	nvidia-ai-enterprise	NVIDIA AI Enterprise	ml				doubt: distinct enterprise AI software platform, not just the vendor umbrella, though a prior review dropped it
+NVR	drop	skill-decider						a generic concept, a device category	
+NX CAD	drop	skill-decider						an ordinary word after the name	
+NXP	drop	skill-decider						a vendor's name	
+NYSE	drop	skill-decider						not a technology at all, a stock exchange	
+O2C	drop	skill-decider						a generic concept, a business process	
+O9	drop	session						software no software person is hired for (supply chain and FP&A planning)	Reverts a reopened drop: the record dropped o9 under revision 5 as planning software no software person is hired for, and its sibling Kinaxis was dropped the same way in that run; the segments are EPM / FP&A planning roles.
+Oak	drop	skill-decider						not a technology at all, a company name	
+OCR	drop	skill-decider						a generic concept	
+ODA	drop	skill-decider						an ambiguous abbreviation	
+ODE	drop	skill-decider						a generic concept, a numerical method	
+OFDM	drop	skill-decider						a generic concept, a modulation technique	
+Office365	drop	session						consumer, office or browser software	Reverts a reopened drop: dropped twice by the record (#40 as an office productivity suite, then under revision 5), and the criterion drops office software (Microsoft Word, Microsoft Teams); no revision reopens that reason.
+OGA	drop	skill-decider						an ambiguous abbreviation	
+OGC	drop	skill-decider						an ambiguous abbreviation	
+OI	drop	skill-decider						an ambiguous abbreviation	
+OIC	drop	skill-decider						an ambiguous abbreviation	doubt: dominant sense here is Oracle Integration Cloud, but one segment uses it for an unrelated company name
+OIE	drop	skill-decider						an ambiguous abbreviation	
+OIF	drop	skill-decider						not a technology at all, a standards organization	
+OIT	drop	skill-decider						an ambiguous abbreviation	
+Okta Workforce Identity	new	skill-decider	okta-workforce-identity	Okta Workforce Identity	security				doubt: could be read as a named Okta product line (keep) or a mere feature of the base Okta skill
+OLAP	drop	skill-decider						a generic concept	
+OLTP	drop	skill-decider						a generic concept	
+OMA	drop	skill-decider						a generic concept, a measurement metric	
+Omni	drop	skill-decider						an ordinary word	
+Omnibus	drop	skill-decider						an ordinary word	
+One Identity	drop	session						not a technology at all: a vendor's name; elsewhere an ordinary phrase	Two of three segments use the ordinary phrase (one identity system, one identity model), and One Identity is the vendor (Quest) whose products are Identity Manager and Safeguard; the criterion drops a vendor's name even where ads use it for its products.
+OneNote	drop	skill-decider						consumer, office or browser software	
+OneSource	drop	skill-decider						a technology no software person is hired for	
+OnShape	drop	skill-decider						a technology no software person is hired for	
+OOA	drop	skill-decider						a generic concept	
+OOTB	drop	skill-decider						an ordinary word	
+Opal	new	skill-decider	opal	Opal	security		Opal		doubt: 'Opal' is an ordinary word (gemstone), but every segment here names the same IGA/access-management tool, and it was dropped twice before
+Opcenter	drop	skill-decider						a technology no software person is hired for	
+Open AI	spelling	skill-decider	openai						
+OpenAir	drop	skill-decider						a technology no software person is hired for	
+OpenClaw	drop	skill-decider						obscure, a name few engineers would recognise	
+OpenCode	new	skill-decider	opencode	OpenCode	tool				doubt: reads as an emerging real AI coding CLI tool used alongside Claude Code/Copilot/Cursor, though a prior review dropped it
+OpenDRIVE	new	skill-decider	opendrive	OpenDRIVE	data				
+Open Lakehouse	drop	skill-decider						a generic concept	
+OpenText	drop	skill-decider						a vendor's name	
+OpenVLA	new	skill-decider	openvla	OpenVLA	ml				doubt: named consistently among other real VLA models/codebases (RT-2, Octo, LeRobot), though a prior review dropped it as obscure
+Ops Manager	drop	skill-decider						a fragment of a longer name	
+O Psychology	drop	skill-decider						a fragment of a longer name	
+OP-TEE	new	skill-decider	op-tee	OP-TEE	security				
+OpticStudio	drop	skill-decider						a technology no software person is hired for	
+optimizer	drop	skill-decider						a generic concept	
+Optistruct	drop	skill-decider						a technology no software person is hired for	
+Opus	drop	skill-decider						a fragment of a longer name	
+Oracle	drop	skill-decider						a vendor's name	
+Oracle Cloud Financials	drop	skill-decider						a technology no software person is hired for	
+Oracle DBA	drop	skill-decider						not a technology at all, a job title	
+Oracle Fusion	drop	skill-decider						names several things, none dominant	doubt: used as an umbrella/qualifier for several distinct Oracle Fusion apps (Financials, HCM, SCM, EPM), not one specific product
+Oracle Fusion Applications	drop	skill-decider						software no software person is hired for	
+Oracle Fusion Cloud	drop	skill-decider						software no software person is hired for	
+Oracle Fusion ERP	drop	skill-decider						software no software person is hired for	
+Oracle Fusion SCM	drop	skill-decider						software no software person is hired for	
+Oracle HCM	drop	skill-decider						software no software person is hired for	
+Oracle PL	drop	skill-decider						a fragment of a longer name	
+Oracle Primavera	drop	skill-decider						software no software person is hired for	
+Oracle Procurement	drop	skill-decider						software no software person is hired for	
+Oracle SCM	drop	skill-decider						software no software person is hired for	
+Oracle WMS	drop	skill-decider						software no software person is hired for	
+Orb	drop	skill-decider						an ambiguous abbreviation	doubt: standalone feature-descriptor sense in one segment, fragment of ORB-SLAM in the other two
+orchestrator	drop	skill-decider						a generic concept	
+ORD	drop	skill-decider						an ambiguous abbreviation	
+Orin	drop	skill-decider						a fragment of a longer name	
+Orion	drop	skill-decider						a homonym	
+Orleans	drop	skill-decider						a homonym	
+ORM	drop	skill-decider						a generic concept	
+ORU	drop	skill-decider						not a technology at all	
+OSD	drop	skill-decider						an ambiguous abbreviation	
+OSDI	drop	skill-decider						not a technology at all	
+OSFI	drop	skill-decider						not a technology at all	
+OSFP	drop	skill-decider						an ambiguous abbreviation	
+OSI	drop	skill-decider						a generic concept	
+Other ORM	drop	skill-decider						a generic concept	
+OTLP	new	skill-decider	otlp	OTLP	devops	OpenTelemetry Protocol			doubt: one segment's OTLP reads as a typo for OLTP rather than the OpenTelemetry Protocol
+OTP	drop	skill-decider						an ambiguous abbreviation	
+Outbrain	drop	skill-decider						not a technology at all	
+OutSystems	new	skill-decider	outsystems	OutSystems	tool				
+OVA	drop	skill-decider						an ambiguous abbreviation	doubt: virtual-appliance format in two segments, an unrelated photonics term in the third
+overflow	drop	skill-decider						an ordinary word	
+Oversee QA	drop	skill-decider						an ordinary word	
+OWASP ASVS	drop	skill-decider						a compliance framework, regulation or certification	
+OWASP SAMM	drop	skill-decider						a compliance framework, regulation or certification	
+OWASP Testing	drop	skill-decider						a compliance framework, regulation or certification	
+OWASP Top Ten	drop	skill-decider						a compliance framework, regulation or certification	
+OWD	drop	skill-decider						a generic concept	
+OWL	drop	skill-decider						an ambiguous abbreviation	
+oxfmt	drop	skill-decider						obscure	doubt: a real but very new, little-used formatter (df=1)
+Oxlint	drop	skill-decider						obscure	doubt: a real but very new, little-used linter (df=1)
+P2P	drop	skill-decider						a generic concept	
+P4	drop	skill-decider						an ambiguous abbreviation	
+p50	drop	skill-decider						a generic concept	
+PaaS	drop	skill-decider						a generic concept	
+PAC	drop	skill-decider						an ambiguous abbreviation	
+Pacific Northwest	drop	skill-decider						not a technology at all	
+PAI	drop	skill-decider						an ambiguous abbreviation	
+Paint	drop	skill-decider						an ordinary word	
+Palantir	drop	skill-decider						a vendor's name	
+Palette	drop	skill-decider						an ordinary word	
+Palladium	new	session	cadence-palladium	Cadence Palladium	tool		Palladium		Every segment uses Palladium for Cadence's emulation platform, named beside Veloce, which this run keeps, and the taxonomy holds the like verification tools Questa, Xcelium and UVM (case law: decide like names alike). Palladium is also a metal, an ordinary word, so its key is a context key (Key safety).
+Palo Alto	drop	skill-decider						a vendor's name	
+Palo Alto PCNSE	drop	skill-decider						a compliance framework, regulation or certification	
+PAM4	drop	skill-decider						a generic concept	doubt: a signaling/modulation scheme, not a named product
+Panther	new	skill-decider	panther	Panther	security		Panther		doubt: Panther is also an ordinary word (the animal); all three segments here name the SIEM product unambiguously
+Pardot	drop	skill-decider						software no software person is hired for	
+PAS-X	drop	skill-decider						software no software person is hired for	
+Patran	drop	skill-decider						software no software person is hired for	
+PBI	drop	skill-decider						an ambiguous abbreviation	
+PBR	drop	skill-decider						an ambiguous abbreviation	
+PC	drop	skill-decider						an ordinary word	
+PCE	drop	skill-decider						an ambiguous abbreviation, names several things, none dominant	
+PCI Express	spelling	session	pcie						PCI Express is the full name of the held skill pcie (PCIe, networking), so it is that skill by another spelling (Keep). The drop reason, 'no software person is hired for', contradicts the taxonomy holding PCIe; the criterion keeps protocols and standards software implements, and the segments ask for it beside Ethernet, NVMe and USB.
+PCNSE	drop	skill-decider						a certification	
+PDB	drop	skill-decider						an ambiguous abbreviation, names several things	
+PDD	drop	skill-decider						an ambiguous abbreviation, names several things	
+PDF	drop	skill-decider						not a technology: a generic document format	
+PDK	drop	skill-decider						a generic concept, not one named technology	
+PDL	drop	skill-decider						an ambiguous abbreviation, names several things	
+PDQ	drop	skill-decider						software no software person is hired for	doubt: PDQ Deploy is a real IT deployment tool, borderline
+P.E	drop	skill-decider						not a technology: a professional license	
+Pebble	drop	skill-decider						a homonym, names several things, none dominant	
+peek	drop	skill-decider						an ordinary word	
+PELs	drop	skill-decider						an ambiguous abbreviation, names several things	
+Peplink	drop	skill-decider						a vendor's name	
+PERC	drop	skill-decider						an ambiguous abbreviation, names several things	
+Percy	drop	skill-decider						a homonym, a common name	doubt: Percy is also a common first name; ads elsewhere may use it that way
+PerfMon	new	session	perfmon	PerfMon	devops	Windows PerfMon|Performance Monitor	Performance Monitor		The alias 'Performance Monitor' is a phrase of ordinary words ('a performance monitor', 'performance monitor dashboards'), so it is a context key, not a plain one (Key safety).
+Perplexity	drop	skill-decider						consumer software, not what an engineer is hired for	
+Personio	drop	skill-decider						software no software person is hired for	
+PFC	drop	skill-decider						an ambiguous abbreviation, names several things	
+P Global	drop	skill-decider						a piece of a longer name (S&P Global)	
+Phase I	drop	skill-decider						an ordinary phrase	
+PHT	drop	skill-decider						not a technology: a timezone	
+PHY	drop	skill-decider						a generic concept	
+Pigment	drop	skill-decider						software no software person is hired for	
+PIM	drop	skill-decider						an ambiguous abbreviation, names several things	
+Ping	drop	skill-decider						an ordinary word / generic concept	
+Pipelines ETL	drop	skill-decider						a generic concept	
+PIV	drop	skill-decider						not a technology: a credential	
+PivotTables	drop	skill-decider						a generic concept/feature	
+PIX	drop	skill-decider						not a technology: a payment system	
+PKG	drop	skill-decider						an ambiguous abbreviation, names several things	
+PL	drop	skill-decider						a piece of a longer name	
+Plaid	new	skill-decider	plaid	Plaid	tool		Plaid		
+Planful	drop	skill-decider						software no software person is hired for	
+Planhat	drop	skill-decider						software no software person is hired for	
+Platform Developer I	drop	skill-decider						a piece of a certification's name	
+Platform SRE	drop	skill-decider						not a technology: a role/team name	
+Plex	drop	skill-decider						software no software person is hired for	
+PLEXOS	drop	skill-decider						software no software person is hired for	
+PMA	drop	skill-decider						an ambiguous abbreviation, names several things	
+PMC	drop	skill-decider						an ambiguous abbreviation, names several things	
+PMI-PBA	drop	skill-decider						a certification	
+PnP	drop	skill-decider						an ambiguous abbreviation, names several things	
+Pokémon	drop	skill-decider						not a technology: a product/franchise	
+POL	drop	skill-decider						an ambiguous abbreviation, names several things	
+popularity	drop	skill-decider						an ordinary word	
+portal	drop	skill-decider						an ordinary word / generic concept	
+POTS	drop	skill-decider						obscure or historical technology	
+Powerfully	drop	skill-decider						an ordinary word	
+PowerMax	drop	skill-decider						a technology no software person is hired for	
+Power Pivot	spelling	skill-decider	powerpivot						
+Power Platform ALM	drop	skill-decider						an ordinary word glued to a kept name	
+PPC	drop	skill-decider						a generic concept	
+PPR	drop	skill-decider						an ambiguous abbreviation, names several things	
+PPSM	drop	skill-decider						a generic concept / process	
+PPV	drop	skill-decider						not a technology: a quality process	
+Prebid	new	skill-decider	prebid	Prebid	framework	Prebid.js			
+PREEMPT	drop	skill-decider						a homonym, an ordinary word	doubt: PREEMPT_RT is a held skill, but most mentions use preempt as an ordinary verb
+Premiere	drop	skill-decider						software no software person is hired for	
+Premiere Pro	drop	skill-decider						a technology no software person is hired for	
+Prisma	drop	skill-decider						a homonym of something else	doubt: bare form split between Palo Alto Prisma Cloud/Access and an unrelated MediaOcean Prisma product, neither dominant
+Prismatic	drop	skill-decider						obscure or historical	doubt: low df (4), and mixed with the unrelated adjective \\\"prismatic cells\\\"
+PRM	drop	skill-decider						an ambiguous abbreviation	
+Pro	drop	skill-decider						a piece of a longer name	
+Productboard	drop	skill-decider						a technology no software person is hired for	
+Products Group	drop	skill-decider						not a technology at all	
+Profibus	new	skill-decider	profibus	PROFIBUS	networking				
+programmer	drop	skill-decider						not a technology at all	
+Projekten	drop	skill-decider						not a technology at all	
+PROMOD	drop	skill-decider						a technology no software person is hired for	
+PromoMats	drop	skill-decider						a technology no software person is hired for	doubt: a specific Veeva Vault module some pharma regulatory-tech roles configure directly
+promoter	drop	skill-decider						an ordinary word	
+proto	drop	skill-decider						an ordinary word	
+Proton	drop	skill-decider						not a technology at all	
+PSAC	drop	skill-decider						not a technology at all	
+PSCAD	drop	skill-decider						a technology no software person is hired for	
+PSIM	drop	skill-decider						an ambiguous abbreviation	
+PSM I	drop	skill-decider						a compliance framework, regulation or certification	
+PSOC	drop	skill-decider						an ambiguous abbreviation	
+PSPO	drop	skill-decider						a compliance framework, regulation or certification	
+PSTN	drop	skill-decider						a generic concept	
+PTCRB	drop	skill-decider						a compliance framework, regulation or certification	
+Pty	drop	skill-decider						not a technology at all	
+Pub	join	skill-decider						a fragment of Pub/Sub	
+pubsec	drop	skill-decider						not a technology at all	
+Purchase Requisition	drop	skill-decider						a generic concept	
+PVsyst	drop	skill-decider						a technology no software person is hired for	
+PWM	drop	skill-decider						a generic concept	
+Py	join	skill-decider						a fragment of PySpark	
+Py	whole	session	pyspark						pyspark is held; a whole carrying a canonical under a held id is refused by append
+PyData	drop	skill-decider						not a technology at all	
+Pylon	drop	skill-decider						a technology no software person is hired for	doubt: a named ticketing SaaS some support-engineering roles list directly
+Python Mastery	drop	skill-decider						an ordinary word	
+Python NLP	drop	skill-decider						a generic concept	
+Q	drop	skill-decider						a single letter	
+Q2	drop	skill-decider						a homonym of something else	
+Q3	drop	skill-decider						not a technology at all	
+QAM	drop	skill-decider						a generic concept	
+QL	drop	skill-decider						an ambiguous abbreviation	
+QLoRA	drop	skill-decider						a generic concept	
+QM	drop	skill-decider						an ambiguous abbreviation	
+QoS	drop	skill-decider						a generic concept	
+QSA	drop	skill-decider						a compliance framework, regulation or certification	
+QSC	drop	skill-decider						a vendor's name	
+Q-SYS	drop	skill-decider						a technology no software person is hired for	doubt: an AV control platform that does involve Lua scripting, unlike a plain hardware brand
+QTC	drop	skill-decider						an ambiguous abbreviation	
+Qualcomm	drop	skill-decider						a vendor's name	
+Queueable	drop	skill-decider						a piece of a longer name	
+Quilt	drop	skill-decider						obscure or historical	doubt: df=2, could be the data-versioning platform or an unrelated company of the same name
+R2	new	skill-decider	cloudflare-r2	Cloudflare R2	cloud		R2		doubt: \\\"R2\\\" is heavily overloaded (revision numbers, grades) though these segments favor Cloudflare's storage service
+R3	drop	skill-decider						not a technology at all	
+Rackspace	drop	skill-decider						a vendor's name	
+Raft	drop	skill-decider						a generic concept	doubt: a consensus protocol software implements, but named here alongside generic concepts like CRDT/MVCC
+RAII	drop	skill-decider						a generic concept	
+Rainforest	drop	skill-decider						a homonym of something else	
+RAM	drop	skill-decider						a generic concept	
+Random Forest	drop	skill-decider						a generic concept	
+RASP	drop	skill-decider						a generic concept	
+Raspberry	join	skill-decider						a fragment of Raspberry Pi	
+Raspberry	whole	skill-decider	raspberry-pi						
+rats	drop	skill-decider						an ambiguous abbreviation	
+RCDD	drop	skill-decider						a compliance framework, regulation or certification	
+RDC	drop	skill-decider						an ambiguous abbreviation	
+RDE	drop	skill-decider						an ambiguous abbreviation	doubt: one segment names a real DMTF Redfish standard (Device Enablement), the others a generic Research/Development/Engineering unit
+React UI	drop	skill-decider						an ordinary word after the name	
+ReadMe	drop	skill-decider						a homonym of something else, where the text means the other thing	
+RealPage	drop	skill-decider						a technology no software person is hired for	
+ReBAC	drop	skill-decider						a generic concept, not a named technology	
+recursion	drop	skill-decider						a generic concept, not a named technology	
+redefinition	drop	skill-decider						an ordinary word, used in its ordinary sense	
+Redox	drop	skill-decider						not a technology at all: a company, named as a partner or vendor	
+Redpoint	drop	skill-decider						not a technology at all: a company (an investor)	
+Refeição	drop	skill-decider						an ordinary word, used in its ordinary sense	
+Refinitiv	drop	skill-decider						a vendor's name	
+Reflex	drop	skill-decider						a homonym of something else, where the text means the other thing	
+REFPROP	drop	skill-decider						a technology no software person is hired for	
+Rel	drop	skill-decider						an ambiguous abbreviation	
+ReliaSoft	drop	skill-decider						a technology no software person is hired for	
+Relyence	drop	skill-decider						a technology no software person is hired for	
+RemoteView	drop	skill-decider						a technology no software person is hired for	
+rerun	drop	skill-decider						a homonym of something else, where the text means the other thing	doubt: segments split between the Rerun robotics visualization tool and the ordinary verb \\\"rerun\\\"
+ResNet	drop	skill-decider						an architecture, not a named technology	
+Resource Manager	drop	skill-decider						a piece of a longer name that ads never use alone for the product	
+Resource Monitor	drop	skill-decider						a generic concept, not a named technology	doubt: a built-in Windows utility, close to a tool but never built or hired for on its own
+REST	drop	skill-decider						a generic concept, not a named technology	
+RestAPI	spelling	skill-decider	restful-api						
+Reuters	drop	skill-decider						a vendor's name	
+RevOps	drop	skill-decider						a generic concept, not a named technology	
+RevPro	drop	skill-decider						a technology no software person is hired for	
+RevTech	drop	skill-decider						a generic concept, not a named technology	
+RFC	drop	skill-decider						an ambiguous abbreviation	
+RHCSA	drop	skill-decider						a compliance framework, regulation or certification	
+Ribbon	drop	skill-decider						a homonym of something else, where the text means the other thing	
+RICEFW	drop	skill-decider						a generic concept, not a named technology	
+Richardson	drop	skill-decider						not a technology at all: a place	
+Rillet	drop	skill-decider						a technology no software person is hired for	
+RingCentral	drop	skill-decider						consumer, office or browser software	
+Rippit	drop	skill-decider						a technology no software person is hired for	
+Rippling	drop	skill-decider						consumer, office or browser software	
+RJ45	drop	skill-decider						a generic concept, not a named technology	doubt: a generic connector/cabling term rather than a specific protocol like RS232/RS485
+RLC	drop	skill-decider						an ambiguous abbreviation	doubt: names CIQ's Rocky Linux offering in one segment and an RLC circuit in another, neither dominant
+RMM	drop	skill-decider						a generic concept, not a named technology	
+ROA	drop	skill-decider						an ambiguous abbreviation	
+Robotik	drop	skill-decider						an ordinary word, used in its ordinary sense	
+Rocketlane	drop	skill-decider						a technology no software person is hired for	
+Rockwell	drop	skill-decider						a vendor's name	
+RON	drop	skill-decider						not a technology at all	
+Rouge	drop	skill-decider						a homonym of something else, where the text means the other thing	
+RPA	drop	skill-decider						a generic concept, not a named technology	
+RPC	drop	skill-decider						a generic concept, not a named technology	
+RS232	new	skill-decider	rs232	RS232	networking	RS-232			
+RS-422	spelling	skill-decider	rs422						
+RS485	new	skill-decider	rs485	RS485	networking	RS-485			
+R Scripting	drop	skill-decider						an ordinary word after the name	
+RSSI	drop	skill-decider						a generic concept, not a named technology	
+RT	drop	skill-decider						an ambiguous abbreviation	
+RTC	drop	skill-decider						an ambiguous abbreviation	
+RTM	drop	skill-decider						an ambiguous abbreviation	
+RTOSes	drop	skill-decider						a generic concept, not a named technology	
+RTR	drop	skill-decider						an ambiguous abbreviation	
+RTU	drop	skill-decider						a generic concept, not a named technology	
+Rubin	join	skill-decider						a fragment of Vera Rubin	doubt: NVIDIA's hardware/data-center GPU platform codename, never written alone as 'Rubin' - unclear whether a chip-generation name meets the technology bar or is closer to a product line
+Rubin	whole	session	vera-rubin	Vera Rubin	tool		Vera Rubin		Vera Rubin is a person's name, and the Vera C. Rubin Observatory hires engineers: context
+Ruckus	drop	skill-decider						a vendor's name	
+S2	drop	skill-decider						an ambiguous abbreviation	
+SA360	drop	skill-decider						software no software person is hired for	
+Sacramento	drop	skill-decider						a place	
+SAF	drop	skill-decider						an ambiguous abbreviation	
+SafeBase	drop	skill-decider						software no software person is hired for	
+SAFe RTE	drop	skill-decider						a certification	
+SAFe Scrum	drop	skill-decider						a fragment of a longer name	
+SAFe Scrum Master	drop	skill-decider						a certification	
+Saga	drop	skill-decider						a generic concept	
+Sage	drop	skill-decider						software no software person is hired for	
+Sage Intacct	drop	skill-decider						software no software person is hired for	
+SAI	drop	skill-decider						an ambiguous abbreviation	
+Salesforce Cloud	drop	skill-decider						names several things, none dominant	
+Salesforce.com	spelling	skill-decider	salesforce						doubt: taxonomy holds Salesforce itself as a kept tool (not dropped as a vendor name), so Salesforce.com reads as the same product under its legacy domain name
+Salesforce DevOps	drop	skill-decider						a generic concept	
+Salesforce Financial Services	drop	skill-decider						names several things, none dominant	doubt: one segment names a consulting practice area, others the Financial Services Cloud product; the candidate name itself drops the 'Cloud' word
+Salesforce Government Cloud	new	skill-decider	salesforce-government-cloud	Salesforce Government Cloud	tool				doubt: a specific named, FedRAMP-authorized Salesforce deployment (like AWS GovCloud) asked for by its own name in all three segments, though it could be read as a compliance tier rather than a technology
+Salesloft	drop	skill-decider						software no software person is hired for	
+SalesOps	drop	skill-decider						a generic concept	
+Samsung	drop	skill-decider						a company	
+SANS Top	drop	skill-decider						a compliance framework, regulation or certification	
+SAP Activate	drop	skill-decider						a generic concept	
+SAP Concur	drop	skill-decider						software no software person is hired for	
+SAPF	drop	skill-decider						not a technology at all	
+SAP FI	drop	skill-decider						not a technology at all	
+SAP Finance	drop	skill-decider						not a technology at all	
+SAP MM	drop	skill-decider						not a technology at all	
+SAP PLM	drop	skill-decider						a generic concept	
+SAP RISE	drop	skill-decider						not a technology at all	doubt: a bundled cloud-migration/commercial program under SAP's own branding, could be read as a cloud offering rather than a contractual construct
+SAP S	join	skill-decider						a fragment of SAP S/4HANA	
+SAP S	whole	skill-decider	sap-s-4hana						
+Sardine	drop	skill-decider						software no software person is hired for	
+SASE	drop	skill-decider						a generic concept	
+Saudi Arabia	drop	skill-decider						a place	
+SBE	drop	skill-decider						an ambiguous abbreviation	
+SBOM	drop	skill-decider						a generic concept	
+SBU	drop	skill-decider						an ambiguous abbreviation	
+Scaled Agile	drop	skill-decider						a generic concept	
+Scaled Agile Framework	drop	skill-decider						a generic concept	
+SCAPI	drop	skill-decider						obscure or historical	doubt: consistently names Salesforce Commerce Cloud's API across segments, but low frequency and narrow recognition outside that ecosystem
+SCD	drop	skill-decider						a generic concept	
+SceneGraph	drop	skill-decider						a generic concept	
+Schneider EcoStruxure	drop	skill-decider						software no software person is hired for	
+Schneider Electric	drop	skill-decider						a vendor's name	
+Scikit	drop	session						a piece of a longer name written around it (scikit-learn)	In every segment given the name is written as part of scikit-learn, and a name is judged as written: part of a longer name written there is a drop (Keep, revision 5; 'Security Command' in Security Command Center). Bare 'scikit' also names the whole scikit family (scikit-image), so it is no safe key for scikit-learn. The record's drop stands.
+SCIP	drop	skill-decider						an ambiguous abbreviation	doubt: two of three segments name the SCIP optimization solver, a real tool, but the third names an unrelated VA portfolio tool and frequency is very low
+Screaming Frog	drop	skill-decider						software no software person is hired for	
+Scribe	drop	skill-decider						names several things, none dominant	
+Scriptable	drop	skill-decider						an ordinary word	
+Scrum Developer	drop	skill-decider						a certification	
+SD	drop	skill-decider						an ambiguous abbreviation	
+SDF	drop	skill-decider						an ambiguous abbreviation	
+SDIO	new	skill-decider	sdio	SDIO	networking				
+SDL	drop	skill-decider						an ambiguous abbreviation	
+SDLC Ownership	drop	skill-decider						a generic concept	
+SDP	drop	skill-decider						an ambiguous abbreviation	
+SDS-PAGE	drop	skill-decider						software no software person is hired for	
+SDUI	drop	skill-decider						a generic concept	
+Search Ads	drop	skill-decider						a generic concept	
+SE Asia	drop	skill-decider						a place	
+SEC-MALS	drop	skill-decider						a technology no software person is hired for	
+SecOps	drop	skill-decider						a generic concept	
+Secretary	drop	skill-decider						not a technology at all	
+Sectigo	drop	skill-decider						a vendor's name	doubt: a CA vendor whose name may double as the product, like the Databricks pattern
+Secureframe	drop	skill-decider						a technology no software person is hired for	doubt: GRC automation platform some security-adjacent engineers configure
+Security+	drop	skill-decider						a compliance framework, regulation, or certification	
+Security+ CE	drop	skill-decider						a compliance framework, regulation, or certification	
+SEG	drop	skill-decider						an ambiguous abbreviation	
+Semrush	drop	skill-decider						a technology no software person is hired for	
+Seqera	drop	session						a vendor's name	Seqera is the company (Seqera Labs). A vendor's name is a drop even where ads use it for its products (Drop, Not a technology: Palo Alto, Juniper), and the product is kept under its own name, Seqera Platform, which segment 2 writes in full. It is not a bare form like Tempo, which is a product's own name without its vendor.
+Sequencer	drop	skill-decider						names several things, none dominant	
+Server	drop	skill-decider						a generic concept	
+Server+	drop	skill-decider						a compliance framework, regulation, or certification	
+Server-Side Tagging	drop	skill-decider						a generic concept	doubt: also an officially named Google Tag Manager feature, but segments use it as a general technique
+Server Team	drop	skill-decider						not a technology at all	
+ServiceDesk	drop	skill-decider						names several things, none dominant	
+Service Portal	drop	skill-decider						a generic concept	
+SFP	drop	skill-decider						a technology no software person is hired for	
+SFRA	drop	skill-decider						a generic concept	
+SGE	drop	skill-decider						obscure or historical	doubt: Sun Grid Engine is a real scheduler but little hired for now, versus an ambiguous abbreviation
+Shaper	drop	skill-decider						names several things, none dominant	
+shield	drop	skill-decider						names several things, none dominant	
+Shopee	drop	skill-decider						not a technology at all	
+Shopify Plus	spelling	session	shopify						Shopify Plus is the enterprise edition of the held skill Shopify, which engineers build themes and integrations on (segments 2 and 3): a version of a skill is a keep, as that skill (Keep: 'Vue 3 is Vue.js'), like the held Windows 11 under Microsoft Windows. 'Product line' in Drop means a vendor's umbrella, not one product's edition.
+shortcut	drop	skill-decider						an ordinary word	
+SIA	drop	skill-decider						an ambiguous abbreviation	
+SIC	drop	skill-decider						an ambiguous abbreviation	
+sidecar	drop	skill-decider						a generic concept	
+Sidewalk	drop	skill-decider						an ordinary word	
+Siemens OpCenter	drop	skill-decider						a technology no software person is hired for	
+SIGIR	drop	skill-decider						not a technology at all	
+Sigma	drop	skill-decider						names several things, none dominant	
+Silver	drop	skill-decider						an ordinary word	
+Sim	drop	skill-decider						an ambiguous abbreviation	
+Simcenter 3D	drop	skill-decider						a technology no software person is hired for	
+SimCorp	drop	skill-decider						a vendor's name	
+Simio	drop	skill-decider						a technology no software person is hired for	
+Simpack	drop	skill-decider						a technology no software person is hired for	
+Singapore Government	drop	skill-decider						not a technology at all	
+SIP	new	session	sip	SIP	networking	Session Initiation Protocol	SIP		SIP is an ambiguous abbreviation (Systematic Investment Plan) and, case ignored, the word sip: context
+SIPR	drop	skill-decider						not a technology at all	
+SIPRNet	drop	skill-decider						not a technology at all	
+Sitreps	drop	skill-decider						not a technology at all	
+SKAN	spelling	session	skadnetwork						skills.tsv already holds skadnetwork (SKAdNetwork); a new row under a held id is refused
+skillsExperience	drop	skill-decider						not a technology at all	
+SL	drop	skill-decider						an ambiguous abbreviation	
+Slack	drop	skill-decider						consumer, office or browser software	
+Slack Enterprise	drop	skill-decider						a product line	
+Slack Enterprise Grid	drop	skill-decider						a product line	
+Slingshot	drop	skill-decider						names several things, none dominant	
+SLSA	drop	skill-decider						a compliance framework, regulation, or certification	
+SmartBear	drop	skill-decider						a vendor's name	
+Smart TV	drop	skill-decider						a generic concept	
+SMF	drop	skill-decider						an ambiguous abbreviation	
+SN	drop	skill-decider						an ambiguous abbreviation	
+Snap	drop	skill-decider						names several things, none dominant	
+sneak	drop	skill-decider						an ordinary word	
+Sniper	drop	skill-decider						an ordinary word	
+SNOW	drop	skill-decider						an ambiguous abbreviation	
+Snowflake SnowPro	drop	skill-decider						a compliance framework, regulation or certification	
+SnowPro Advanced	drop	skill-decider						a compliance framework, regulation or certification	
+SnowPro Core	drop	skill-decider						a compliance framework, regulation or certification	
+SOCand	drop	skill-decider						not a technology at all: a text fragment, not a named technology	
+SOCET GXP	drop	skill-decider						a technology no software person is hired for	
+Social Studio	drop	skill-decider						obscure or historical: a retired Salesforce product few engineers would recognise	doubt: a real named Salesforce Marketing Cloud tool, but segments mix it with a generic 'social studio' team and it is now retired
+SoD	drop	skill-decider						an ambiguous abbreviation	
+Soda	drop	skill-decider						an ambiguous abbreviation	
+SOE	drop	skill-decider						an ambiguous abbreviation	
+SoftwareDevelopment	drop	skill-decider						a generic concept	
+SOI	drop	skill-decider						an ambiguous abbreviation	
+SolidWorks	drop	skill-decider						a technology no software person is hired for	
+Solumina	drop	skill-decider						a technology no software person is hired for	
+Solution Designer	drop	skill-decider						not a technology at all: a job title or certification level	
+SOX-controlled	drop	skill-decider						a name glued to an ordinary word	
+SOX-regulated	drop	skill-decider						a name glued to an ordinary word	
+SpaceWire	new	skill-decider	spacewire	SpaceWire	networking				
+SPD	drop	skill-decider						an ambiguous abbreviation	
+Speedgoat	drop	skill-decider						a technology no software person is hired for	
+SPI	new	session	serial-peripheral-interface	Serial Peripheral Interface	networking	SPI	SPI		SPI is an ambiguous abbreviation (Service Provider Interface, Stateful Packet Inspection): context
+Spiff	drop	skill-decider						a homonym of something else, where the text means the other thing	
+Spine-and-Leaf	drop	skill-decider						a generic concept, an architecture not a named technology	
+SPL	drop	skill-decider						an ambiguous abbreviation	doubt: could be read as Splunk's bare search language, but the abbreviation names several things elsewhere
+Splash	drop	skill-decider						a homonym of something else, where the text means the other thing	
+SPO	drop	skill-decider						an ambiguous abbreviation	
+Sprache	drop	skill-decider						an ordinary word, used in its ordinary sense	
+Sprinklr	drop	skill-decider						a technology no software person is hired for	
+SQL DB	drop	skill-decider						an ordinary word after the name, not the technology's whole name	
+SQLi	drop	skill-decider						a generic concept, not a named technology	
+SQL-like	drop	skill-decider						a generic concept, not a named technology	
+SQLの実践的なスキルを	drop	skill-decider						not a technology at all: a sentence fragment	
+SRE Manager	drop	skill-decider						not a technology at all: a job title	
+SRT	drop	skill-decider						an ambiguous abbreviation	doubt: two of three segments name the Secure Reliable Transport streaming protocol, one names a different SRT
+SSD	drop	skill-decider						a generic concept: a hardware component, not a named technology	
+SSG	drop	skill-decider						a generic concept	
+SSIDs	drop	skill-decider						a generic concept	
+SSRF	drop	skill-decider						a generic concept	
+STAC	new	skill-decider	stac	STAC	data	SpatioTemporal Asset Catalog			doubt: a geospatial cataloging standard software implements, but niche enough that a prior session dropped it as obscure
+Stack Overflow	drop	skill-decider						not a technology at all: a community site, not what an engineer is hired for	
+Stanford	drop	skill-decider						not a technology at all: a place	
+Star-CCM+	drop	skill-decider						a technology no software person is hired for	
+Star Ratings	drop	skill-decider						a generic concept	
+Stash	drop	skill-decider						an ambiguous abbreviation	
+STAT	drop	skill-decider						an ordinary word, used in its ordinary sense	
+Sterility	drop	skill-decider						an ordinary word, used in its ordinary sense	
+STIG	drop	skill-decider						a compliance framework, regulation or certification	
+STK	drop	skill-decider						a technology no software person is hired for	
+STL	drop	skill-decider						an ambiguous abbreviation	
+STLC	drop	skill-decider						a generic concept	
+STM	drop	skill-decider						a vendor's name	doubt: bare STM here stands for the vendor STMicroelectronics (its products are STM32); also ambiguous with other meanings
+storm	drop	skill-decider						an ordinary word, used in its ordinary sense	
+StratOps	drop	skill-decider						not a technology at all: an internal business unit	
+Stratum	drop	skill-decider						an ambiguous abbreviation, obscure where it names a single company's internal tool	
+Stripe	drop	skill-decider						a vendor's name	
+Studio	drop	skill-decider						a piece of a longer name that ads never use alone for the product	
+Studio Integrations	drop	skill-decider						a piece of a longer name that ads never use alone for the product	
+Studio Pro	drop	skill-decider						an ambiguous abbreviation	
+Stylelint	new	skill-decider	stylelint	Stylelint	tool				
+Subシステム	drop	skill-decider						a generic concept	
+SuiteApps	drop	skill-decider						a generic concept, a category of apps not one named technology	
+Suite Apps	drop	skill-decider						a fragment of a longer name; an ordinary phrase	
+SuiteFoundation	drop	skill-decider						a certification name, not a technology	
+SuiteProjects	drop	skill-decider						a technology no software person is hired for	doubt: a named NetSuite module, could be read as a real product rather than a generic ERP piece
+Sunday-Thursday	drop	skill-decider						not a technology, a work-schedule phrase	
+Supermicro	drop	skill-decider						a vendor's name	
+Supplier Portal	drop	skill-decider						not a technology, a generic business portal	
+Supreme Court	drop	skill-decider						not a technology, an institution	
+Surety	drop	skill-decider						an ordinary word used in its ordinary sense	
+SurveyMonkey	drop	skill-decider						software no software person is hired for	
+SWA	drop	skill-decider						an ambiguous abbreviation	
+SWG	drop	skill-decider						a generic concept, not a named technology	
+Symantec	drop	skill-decider						a vendor's name	
+Symphony	drop	skill-decider						a homonym, text means other things	
+Symphony Health	drop	skill-decider						not a technology, a data vendor's name	
+Synology	drop	skill-decider						a vendor's name	
+Synthesia	drop	skill-decider						software no software person is hired for	
+SysML	new	skill-decider	sysml	SysML	tool				doubt: a modeling standard like UML, but could be read as the architecture practice it supports
+TAA	drop	skill-decider						a regulatory compliance requirement, not a technology	
+tablespaces	drop	skill-decider						a generic database concept	
+Tag	drop	skill-decider						an ordinary word used in its ordinary sense	
+Tage	drop	skill-decider						an ordinary word (German for days)	
+tan	drop	skill-decider						an ordinary word / place name	
+TanStack	drop	skill-decider						a vendor umbrella, names several things none dominant	
+TC	drop	skill-decider						an ambiguous abbreviation	
+TCF	drop	skill-decider						an ambiguous abbreviation	
+TCG	drop	skill-decider						an ambiguous abbreviation	
+TCM	drop	skill-decider						an ambiguous abbreviation	
+TCR	drop	skill-decider						an ambiguous abbreviation	
+TCV	drop	skill-decider						an ambiguous abbreviation	
+TD	drop	skill-decider						an ambiguous abbreviation	
+TDR	drop	skill-decider						a generic measurement technique, not a named product	
+Teamcenter PLM	spelling	skill-decider	siemens-teamcenter						doubt: the bare-form-without-vendor rule matches the held skill's own 'Siemens Teamcenter PLM' key, against the earlier drop as a fragment
+Tec	drop	skill-decider						a fragment / ambiguous abbreviation	
+Tech Alliance	drop	skill-decider						not a technology, a generic business term	
+telco	drop	skill-decider						not a technology, an industry name	
+Teledyne	drop	skill-decider						a vendor's name	
+Telepresence	drop	skill-decider						a homonym, names more than one thing	doubt: segments mix Cisco TelePresence hardware and an unrelated k8s dev tool, neither dominant
+Tencent	drop	skill-decider						a vendor's name	
+Tendency	drop	skill-decider						an ordinary word used in its ordinary sense	
+Terraform-managed	drop	skill-decider						a name glued to an ordinary word	
+Test Complete	spelling	skill-decider	testcomplete				Test Complete		doubt: most segments use it as the ordinary phrase 'test complete X', only one names the tool
+TestFlight	new	skill-decider	testflight	TestFlight	testing				
+Test Manager	drop	skill-decider						a generic role/concept, not a named technology	
+TestOps	drop	skill-decider						a generic concept, not a named technology	
+Texas Instruments	drop	skill-decider						a vendor's name	
+TF	drop	skill-decider						an ambiguous abbreviation	
+TGA	drop	skill-decider						a generic lab technique, not a named technology	
+Thales	drop	skill-decider						a vendor's name	
+Thomson Reuters	drop	skill-decider						a vendor's name	
+Thor	drop	session						a homonym and a person's name; the products named are Jetson and DRIVE	Thor is a person's name (an unsafe key under step 6), and the segments never name a product 'Thor': they write Jetson Thor, a module of the held nvidia-jetson (as Jetson Orin is), and DRIVE AGX Thor. When in doubt, drop; the record's drop stands. The draft's alias Jetson Thor belongs with nvidia-jetson if a later run proposes it.
+TIBCO	drop	skill-decider						a vendor's name	
+Tidal	drop	skill-decider						a homonym, names several things none dominant	
+Tiger Global	drop	skill-decider						not a technology, an investor's name	
+TikTok Ads	drop	skill-decider						software no software person is hired for	doubt: a named ad-platform feature some growth-engineering roles might list
+TikTok Shop	drop	skill-decider						software no software person is hired for	
+Tinder	drop	skill-decider						not a technology, a consumer app/company name	
+TLV	drop	skill-decider						an ambiguous abbreviation / place name	
+TM Forum	drop	skill-decider						not a technology, a standards organization	
+ToF	drop	skill-decider						a generic sensor-technology concept	
+TOGAF	drop	skill-decider						a certification-like architecture framework, not a technology	
+TOM	drop	skill-decider						an ambiguous abbreviation	doubt: segment 3 lists it among named SaaS tools (Salesforce, Ironclad, ZoomInfo, Outreach), but no dominant single technology is identifiable
+Tonkean	drop	skill-decider						software no software person is hired for	
+Top Secret DoD	drop	skill-decider						not a technology at all	
+ToR	drop	skill-decider						an ambiguous abbreviation	
+Totango	drop	skill-decider						software no software person is hired for	
+Touch UI	drop	skill-decider						a generic concept	
+Toyota	drop	skill-decider						not a technology at all	
+TP	drop	skill-decider						an ambiguous abbreviation	
+TPL	drop	skill-decider						an ambiguous abbreviation	
+TPOT	drop	skill-decider						a generic concept	
+Trackwise	drop	skill-decider						software no software person is hired for	
+Tracy	drop	skill-decider						not a technology at all	
+Trailhead	drop	skill-decider						software no software person is hired for	
+TransUnion	drop	skill-decider						not a technology at all	
+Treasury Management System	drop	skill-decider						a generic concept	
+Triton	drop	skill-decider						a homonym of something else, where the text means the other thing	doubt: bare Triton splits between OpenAI's GPU-kernel compiler and NVIDIA Triton Inference Server, neither dominant in the segments
+Tron	drop	skill-decider						not a technology at all	
+Tropic	drop	skill-decider						software no software person is hired for	
+TrustZone	new	skill-decider	arm-trustzone	ARM TrustZone	security				
+tsc	drop	skill-decider						an ambiguous abbreviation	doubt: one segment uses it as the TypeScript compiler CLI, the other two as unrelated committee acronyms
+TSDB	drop	skill-decider						a generic concept	
+TSO	drop	skill-decider						an ambiguous abbreviation	
+TSR	drop	skill-decider						an ambiguous abbreviation	
+TS SCI	drop	skill-decider						not a technology at all	
+TT	drop	skill-decider						an ambiguous abbreviation	
+TTI	drop	skill-decider						a generic concept	
+TUI	drop	skill-decider						a generic concept	
+Turbo	drop	skill-decider						an ordinary word	
+Twitch	drop	skill-decider						not a technology at all	
+Two Sigma	drop	skill-decider						not a technology at all	
+txt	drop	skill-decider						a piece of a longer name that ads never use alone for the product	
+Typelevel	drop	skill-decider						a vendor umbrella, a product line	
+TypeScript UI	drop	skill-decider						an ordinary word before or after the name	
+UAF	drop	skill-decider						a practice, method, technique or architecture	
+UAM	drop	skill-decider						an ambiguous abbreviation	
+Uber	drop	skill-decider						not a technology at all	
+UBS	drop	skill-decider						not a technology at all	
+UCI	drop	skill-decider						an ambiguous abbreviation	
+UCIe	new	skill-decider	ucie	UCIe	networking	Universal Chiplet Interconnect Express			
+UCP	drop	skill-decider						an ambiguous abbreviation	
+UDR	drop	skill-decider						an ambiguous abbreviation	
+UE	drop	skill-decider						an ambiguous abbreviation	
+UI Actions	drop	skill-decider						a generic concept	
+UiARD	drop	skill-decider						a compliance framework, regulation or certification	
+UKG	drop	skill-decider						a vendor umbrella, a product line	
+UK Security Check	drop	skill-decider						not a technology at all	
+UltiPro	drop	skill-decider						software no software person is hired for	
+UMG	drop	skill-decider						an ambiguous abbreviation	doubt: all three segments show it as Unreal Engine's UI system, but UMG elsewhere dominantly names Universal Music Group
+Umgang	drop	skill-decider						an ordinary word	
+UML	drop	skill-decider						a practice, method, technique or architecture	
+Unbounce	drop	skill-decider						software no software person is hired for	
+UniFi	drop	skill-decider						a vendor umbrella, a product line	doubt: segments use it for Ubiquiti's own OS/gateways/cloud products, which could instead read as a single kept platform
+Unigraphics	drop	skill-decider						software no software person is hired for	
+Uniswap	drop	skill-decider						not a technology at all	
+Unity AI Gateway	new	skill-decider	unity-ai-gateway	Unity AI Gateway	ml	Databricks Unity AI Gateway			doubt: could be read as a minor named feature of Databricks rather than a product substantial enough for its own key
+universal	drop	skill-decider						an ordinary word	
+Universal Directory	new	skill-decider	universal-directory	Universal Directory	security	Okta Universal Directory			doubt: a named Okta feature consistently used by name across segments, but could instead be read as too minor a feature for its own key
+UNIX-like	drop	skill-decider						a name glued to an ordinary word	
+unprotected	drop	skill-decider						an ordinary word	
+Upbound	drop	skill-decider						not a technology at all	
+UPF	drop	skill-decider						software no software person is hired for	doubt: a power-intent standard implemented by EDA tools, but hired for by hardware design, not software, engineers
+URL	drop	skill-decider						a generic concept	
+US Army	drop	skill-decider						not a technology at all, an employer	
+USDA	drop	skill-decider						not a technology at all, a government agency	
+USDC	drop	skill-decider						not a technology at all, a currency	
+USDT	drop	skill-decider						not a technology at all, a currency	
+UserGems	drop	skill-decider						software no software person is hired for	
+US EST	drop	skill-decider						not a technology at all, a time zone	
+USPTO	drop	skill-decider						not a technology at all, a government agency	
+US Secret	drop	skill-decider						not a technology at all, a security clearance	
+UT	drop	skill-decider						not a technology at all, a place	
+UTM	drop	skill-decider						a generic concept	
+UV	drop	skill-decider						an ambiguous abbreviation	doubt: segments mix ultraviolet light and the uv Python tool, none clearly dominant
+UV-Vis	drop	skill-decider						a generic concept, an analytical technique	
+UX	drop	skill-decider						a generic concept	
+v0	drop	skill-decider						a homonym of something else, where the text means the other thing	doubt: most segments mean plain \\\"version 0\\\", one may mean the Vercel v0 tool
+v18+	drop	skill-decider						a fragment of a longer name	
+v3	drop	skill-decider						names several things, none dominant	
+V6	drop	skill-decider						a fragment of a longer name	
+ValGenesis	drop	skill-decider						software no software person is hired for	
+VAPT	drop	skill-decider						a generic concept	
+VASP	drop	skill-decider						names several things, none dominant	
+VCN	drop	skill-decider						names several things, none dominant	
+Veloce	new	skill-decider	veloce	Veloce	tool				doubt: a hardware-emulation platform named beside Palladium/Zebu/HAPS, borderline whether hired for by a software person
+Vena	drop	skill-decider						software no software person is hired for	
+Veo	drop	skill-decider						a homonym of something else, where the text means the other thing	doubt: one segment names the employer Veo, others may mean Google's Veo video model
+Verint	drop	skill-decider						software no software person is hired for	
+Verständnis	drop	skill-decider						an ordinary word	
+Vertiv	drop	skill-decider						a vendor's name	
+VHF	drop	skill-decider						a generic concept	
+Videoamp	drop	skill-decider						software no software person is hired for	
+ViewModel	drop	skill-decider						a generic concept, a piece of the MVVM pattern	
+VIF	drop	skill-decider						an ambiguous abbreviation	
+VIPER	drop	skill-decider						a practice, method, architecture or kind of system	
+Vitally	drop	skill-decider						software no software person is hired for	
+VLDB	drop	skill-decider						names several things, none dominant	
+VLOOKUP	drop	skill-decider						consumer, office or browser software	
+VMCE	drop	skill-decider						a compliance framework, regulation or certification	
+VMware VCP	drop	skill-decider						a compliance framework, regulation or certification	
+voicebot	drop	skill-decider						a generic concept	
+VoIP	drop	skill-decider						a generic concept	
+Volcano	new	skill-decider	volcano	Volcano	devops		Volcano		doubt: reverses a prior drop; all three segments name the CNCF batch-scheduling project beside Kueue/YuniKorn/Slurm, but \\\"volcano\\\" is an ordinary word and the tool is niche
+Vorteil	drop	skill-decider						an ordinary word	
+VPA	drop	skill-decider						names several things, none dominant	doubt: two segments mean Kubernetes' Vertical Pod Autoscaler, one means a business \\\"value, pricing & access\\\" strategy
+VPand C	drop	skill-decider						not a technology at all, a fragment of \\\"VP and C-level\\\"	
+VPI	drop	skill-decider						names several things, none dominant	
+VPN Gateway	drop	skill-decider						a name glued to an ordinary word	
+VRAM	drop	skill-decider						a generic concept	
+VRM	drop	skill-decider						an ambiguous abbreviation	
+VSS	drop	skill-decider						names several things, none dominant	
+VULN	drop	skill-decider						a generic concept	
+Vulnerability Manager	drop	skill-decider						not a technology at all, a heading	
+W3C	drop	skill-decider						not a technology at all, a standards body	
+WAL	drop	skill-decider						a generic concept	
+WAP	drop	skill-decider						a generic concept	
+Warden	drop	skill-decider						names several things, none dominant	
+Warp	drop	skill-decider						names several things, none dominant	
+Wasabi	drop	skill-decider						not a technology at all, an employer	
+Wasabi Cloud	new	skill-decider	wasabi-cloud	Wasabi Cloud	cloud				doubt: only one mention (df=1) in the batch, borderline recognisability
+Wave6	drop	skill-decider						software no software person is hired for	
+WCAG	drop	skill-decider						a compliance framework, regulation or certification	
+WDP	drop	skill-decider						obscure or historical: a name few ads use and few engineers would recognise	
+WDR	drop	skill-decider						an ambiguous abbreviation	
+weave	drop	skill-decider						an ordinary word	
+Web API	drop	skill-decider						a fragment of a longer name	
+Webex	drop	skill-decider						consumer, office or browser software	
+WebUI	drop	skill-decider						a generic concept	
+WebView	drop	skill-decider						a generic concept	
+West London	drop	skill-decider						not a technology at all: a place	
+West Sacramento	drop	skill-decider						not a technology at all: a place	
+WFX	drop	skill-decider						software no software person is hired for	
+WGS	drop	skill-decider						an ambiguous abbreviation	
+Whistic	drop	skill-decider						software no software person is hired for	
+WinCC	drop	skill-decider						software no software person is hired for	
+Windows PerfMon	spelling	session	perfmon						session: Windows PerfMon is an alias of the new perfmon skill, so its decision is a spelling, not a drop
+Windows UI	drop	skill-decider						a generic concept	
+Wix	drop	skill-decider						software no software person is hired for	
+Wizard	drop	skill-decider						an ordinary word	
+WLAN	drop	skill-decider						a generic concept	
+WM	drop	skill-decider						an ambiguous abbreviation	
+WOO	drop	skill-decider						an ambiguous abbreviation	
+Words Per Minute	drop	skill-decider						a generic concept	
+Workato Genie	drop	skill-decider						obscure or historical: a name few ads use and few engineers would recognise	doubt: reads like a named feature of Workato (cf. Databricks Unity Catalog pattern), but df=3 and too new to tell it isn't noise
+Workbench	drop	skill-decider						names several things, none dominant	
+Workday	drop	skill-decider						software no software person is hired for	
+Workday Adaptive Planning	drop	skill-decider						software no software person is hired for	
+Workday Finance	drop	skill-decider						software no software person is hired for	
+Workday Systems	drop	skill-decider						a generic concept	
+Workspace	drop	skill-decider						an ordinary word	
+WPM	drop	skill-decider						a generic concept	
+WSD	drop	skill-decider						an ambiguous abbreviation	
+WWDC	drop	skill-decider						not a technology at all: an event	
+WYSIWYG	drop	skill-decider						a generic concept	
+Xactly	drop	skill-decider						software no software person is hired for	
+Xavier	drop	skill-decider						a fragment of a longer name	
+Xbox	drop	skill-decider						not a technology at all: a product line	
+Xbox Series X	drop	skill-decider						not a technology at all: a product line	
+XDR	drop	skill-decider						an ambiguous abbreviation	
+XID	drop	skill-decider						a generic concept	
+XLSX	new	skill-decider	xlsx	XLSX	data				doubt: a file format libraries implement like Parquet, but also Excel's native office format; kept since segments use it as a data-interchange format alongside CSV/JSON
+XM	drop	skill-decider						an ambiguous abbreviation	
+XP	drop	skill-decider						a practice, method, technique, architecture, or kind of system	
+Xpedition	drop	skill-decider						software no software person is hired for	
+XPU	drop	skill-decider						an ambiguous abbreviation	
+XR	drop	skill-decider						a generic concept	
+X-ray	drop	skill-decider						a homonym of something else, where the text means the other thing	
+Xray	drop	skill-decider						a homonym of something else, where the text means the other thing	
+Xstore	drop	skill-decider						software no software person is hired for	doubt: Oracle Retail Xstore has Tech Lead/Business Analyst roles naming it alone, but it parallels Workday-style enterprise platforms dropped as not software-engineer hires
+XTP	drop	skill-decider						an ambiguous abbreviation	
+years+	drop	skill-decider						not a technology at all	
+Yellow	drop	skill-decider						an ordinary word	
+YouGov	drop	skill-decider						not a technology at all: a company	
+YouTrack	new	session	youtrack	YouTrack	tool				YouTrack is JetBrains' issue tracker, the same kind of tool as Jira, which skills.tsv holds as a tool; it is not consumer, office or browser software (Drop's examples are Word, Teams, Zoom). The segments use it for the product, and the name means nothing else, so its key is plain.
+Zalando	drop	skill-decider						a vendor's name	
+Zanzibar	drop	skill-decider						a practice, method, technique, architecture, or kind of system	
+z.B	drop	skill-decider						not a technology at all	
+ZBrush	drop	skill-decider						software no software person is hired for	
+Zebu	drop	skill-decider						software no software person is hired for	
+Zemax	drop	skill-decider						software no software person is hired for	
+ZIA	drop	skill-decider						an ambiguous abbreviation	
+Zoho	drop	skill-decider						a vendor's name, with no one product dominant (Zoho CRM, Zoho Desk)	
+Zoom	drop	skill-decider						consumer, office or browser software	
+Zoom Contact Center	drop	skill-decider						software no software person is hired for	
+ZoomInfo	drop	skill-decider						software no software person is hired for	
+z/OS	new	skill-decider	z-os	z/OS	os				
+ZR	drop	skill-decider						an ambiguous abbreviation	doubt: a real optics standard (400ZR/ZR+) but 'ZR' alone is too terse/ambiguous as a key, and one segment gives no context at all
+Zscaler	drop	skill-decider						a vendor's name, even where ads use it for its products (its products are kept under their own names, Zscaler Private Access, Zscaler ZIA)	
+ZTNA	drop	skill-decider						a generic concept, not a named technology	
+Zuora	drop	skill-decider						a vendor's name; its product is kept under its own name, Zuora Billing	
+Zuora Revenue	drop	skill-decider						software no software person is hired for	
+Zuora RevPro	drop	skill-decider						software no software person is hired for	
+AI DevSecOps	drop	session						mentioned in no segment of the snapshot	
+Let Encrypt	drop	session						mentioned in no segment of the snapshot	
+ArgoCD GitOps	drop	session						mentioned in no segment of the snapshot	
+AI BI	drop	session						mentioned in no segment of the snapshot	

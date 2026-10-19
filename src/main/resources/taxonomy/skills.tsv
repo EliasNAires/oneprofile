@@ -55,9 +55,12 @@ aem-as-a-cloud-service	AEM as a Cloud Service	framework	AEMaaCS
 aem-edge-delivery-services	AEM Edge Delivery Services	framework	AEM Edge|AEM Edge Delivery	
 aeron	Aeron	framework		
 aerospike	Aerospike	database		
+aes67	AES67	networking		
 afl-plus-plus	AFL++	security		
 ag-grid	ag-Grid	framework		
 agent-2-agent	Agent2Agent	security		
+agent-bricks	Agent Bricks	ml		
+agentkit	AgentKit	ml	OpenAI AgentKit	
 agentops	AgentOps	tool		
 agents-md	AGENTS.md	tool		
 agentspace	Agentspace	ml		
@@ -138,7 +141,7 @@ amazon-vpc	Amazon VPC	cloud	AWS VPC
 amazon-workspaces	Amazon WorkSpaces	cloud	AWS WorkSpaces	
 amba	AMBA	tool		
 amba-ahb	AMBA AHB	networking	AHB	
-amba-axi	AMBA AXI	networking		
+amba-axi	AMBA AXI	networking	Axi	
 ambarella	Ambarella	tool		
 amd-instinct	AMD Instinct	tool		
 amdp	AMDP	tool		
@@ -169,12 +172,13 @@ ansible-automation-platform	Ansible Automation Platform	devops
 ansible-tower	Ansible Tower	devops		
 anthos	Anthos	cloud		
 anthropic-api	Anthropic API	ml		
-antigravity	Antigravity	tool		
+antigravity	Antigravity	tool	Google Antigravity	
 anyconnect	Cisco AnyConnect	security	AnyConnect	
 anypoint-studio	Anypoint Studio	tool		
 anyscale	Anyscale	ml		
 apache-accumulo	Apache Accumulo	database	Accumulo	
 apache-airflow	Apache Airflow	data	Airflow	
+apache-apisix	Apache APISIX	devops	APISIX	
 apache-arrow	Apache Arrow	data	Arrow	
 apache-avro	Apache Avro	data	Avro	
 apache-beam	Apache Beam	data	Beam	Beam
@@ -228,6 +232,7 @@ appium	Appium	testing
 appkit	AppKit	framework		
 apple-business-manager	Apple Business Manager	tool		
 apple-mdm	Apple MDM	devops		
+apple-school-manager	Apple School Manager	tool		
 appsflyer	AppsFlyer	tool		
 apptainer	Apptainer	devops	Singularity	
 arangodb	ArangoDB	database		
@@ -248,6 +253,7 @@ ariba	Ariba	tool
 arista-eos	Arista EOS	networking		
 arize-phoenix	Arize Phoenix	devops		
 arm-cortex	ARM Cortex	tool		
+arm-trustzone	ARM TrustZone	security	TrustZone	
 armis	Armis	security		
 arp	ARP	networking		
 artillery	Artillery	testing		
@@ -285,6 +291,7 @@ automq	AutoMQ	data
 autopsy	Autopsy	security		
 autorabit	AutoRABIT	devops		
 autosar	AUTOSAR	tool		
+autosar-classic	AUTOSAR Classic	tool		
 autotask	Autotask	tool		
 av1	AV1	security		
 avalara	Avalara	tool		
@@ -382,7 +389,7 @@ azure-devops-server	Azure DevOps Server	devops	Team Foundation Server|Visual Stu
 azure-dns	Azure DNS	networking		
 azure-event-hub	Azure Event Hub	cloud		
 azure-event-hubs	Azure Event Hubs	data		
-azure-expressroute	Azure ExpressRoute	networking	ExpressRoute	
+azure-expressroute	Azure ExpressRoute	networking	ExpressRoute|Express Route	Express Route
 azure-files	Azure Files	cloud		
 azure-firewall	Azure Firewall	cloud		
 azure-front-door	Azure Front Door	cloud	FrontDoor	
@@ -418,6 +425,7 @@ b200	B200	tool
 b2c-commerce	Salesforce B2C Commerce	tool	B2C Commerce	
 babel	Babel	tool		
 babylon-js	Babylon.js	framework		
+backblaze-b2	Backblaze B2	cloud		
 backstage	Backstage	devops		Backstage
 bacnet	BACnet	networking		
 balena	Balena	devops		
@@ -438,11 +446,12 @@ bettercloud	BetterCloud	tool
 beyondtrust	BeyondTrust	security		
 bgp	BGP	networking	Border Gateway Protocol|eBGP	
 bgp-flowspec	BGP FlowSpec	networking	Flowspec	
-bi-publisher	BI Publisher	data		
+bi-publisher	BI Publisher	data	BIP	BIP
 bicc	BICC	data		
 bicep	Bicep	devops	Azure Bicep	
 bigcommerce	BigCommerce	tool		
 bigfix	BigFix	tool		
+bigquery-ml	BigQuery ML	ml		
 binary-ninja	Binary Ninja	security		
 binwalk	Binwalk	security		
 bios	BIOS	tool		
@@ -453,7 +462,7 @@ bitbucket-pipelines	Bitbucket Pipelines	devops
 bitlocker	BitLocker	security		
 bitrise	Bitrise	devops		
 bizagi	Bizagi	tool		
-blackduck	BlackDuck	security		
+blackduck	BlackDuck	security	Black Duck	
 blazor	Blazor	framework		
 ble	BLE	networking	Bluetooth Low Energy	
 blender	Blender	tool		
@@ -471,6 +480,7 @@ bootstrap	Bootstrap	framework	Twitter Bootstrap	Bootstrap
 boto3	Boto3	framework		
 braintree	Braintree	tool		
 braintrust	Braintrust	ml		
+braze	Braze	tool		
 brightscript	BrightScript	language		
 browserstack	BrowserStack	testing		
 bruno	Bruno	tool		
@@ -488,13 +498,14 @@ burp-suite	Burp Suite	security	Burp Suite Pro
 c	C	language	C language	C
 c-sharp	C#	language	csharp|C#.NET	
 c-shell	C shell	language	csh|tcsh	
+cadence-palladium	Cadence Palladium	tool	Palladium	Palladium
 calico	Calico	devops		
 caliptra	Caliptra	security		
 callkit	CallKit	framework		
-cameo	Cameo	tool		
+cameo	Cameo	tool	Cameo Systems Modeler	
 camerax	CameraX	framework		
 camunda	Camunda	tool		
-can-fd	CAN-FD	networking		
+can-fd	CAN-FD	networking	CANFD	
 canalyzer	CANalyzer	tool		
 canape	CANape	tool		
 canbus	CANbus	networking		
@@ -506,7 +517,7 @@ carla	CARLA	tool
 carplay	CarPlay	tool		
 cartesia	Cartesia	ml		
 catboost	CatBoost	ml		
-catia	CATIA	tool		
+catia	CATIA	tool	CATIA V5|CATIA V6	
 ccsds	CCSDS	networking		
 cdaq	CompactDAQ	tool	cDAQ	
 cdktf	CDKTF	devops		
@@ -520,6 +531,7 @@ celigo	Celigo	tool
 centos	CentOS	os		
 centrify	Centrify	security		
 ceph	Ceph	database	Ceph storage	
+ceres-solver	Ceres Solver	framework	Ceres	Ceres
 certinia	Certinia	tool	Certinia PSA|FinancialForce	
 cesium	Cesium	framework		
 cesiumjs	CesiumJS	framework		
@@ -537,15 +549,17 @@ checkmk	Checkmk	devops
 checkov	Checkov	security		
 chef	Chef	devops	Progress Chef|Chef Infra	Chef
 chef-inspec	Chef InSpec	testing	InSpec	
+chisel	Chisel	language		Chisel
 chroma	Chroma	database	ChromaDB	
 chromatic	Chromatic	testing		Chromatic
 chrome-devtools	Chrome DevTools	tool		
 chrome-devtools-protocol	Chrome DevTools Protocol	tool	DevTools Protocol	
+chromeos	ChromeOS	os	Chrome OS	
 chromium	Chromium	framework		
 chronicle-queue	Chronicle Queue	framework		
 chronicle-siem	Chronicle SIEM	security		
 chronon	Chronon	ml		
-cics	CICS	devops	Customer Information Control System	
+cics	CICS	devops	Customer Information Control System|CICS TS	
 ciena	Ciena	networking		
 cifs	CIFS	networking		
 cilium	Cilium	devops		
@@ -556,7 +570,7 @@ cisco-aci	Cisco ACI	networking	ACI
 cisco-asa	Cisco ASA	security	ASA	
 cisco-catalyst	Cisco Catalyst	networking		
 cisco-devnet	Cisco DevNet	networking	DevNet	
-cisco-dna-center	Cisco DNA Center	networking	DNAC	
+cisco-dna-center	Cisco DNA Center	networking	DNAC|DNA Center	
 cisco-firepower	Cisco Firepower	security	Cisco FTD|Firepower	Firepower
 cisco-firepower-threat-defense	Cisco Firepower Threat Defense	security	FTD	
 cisco-ios	Cisco IOS	networking	Cisco IOS-XE	
@@ -572,11 +586,13 @@ citus	Citus	database
 clair	Clair	security		
 clang	Clang	tool		Clang
 claroty	Claroty	security		
-claude	Claude	ml	Anthropic Claude|Claude AI	
+claude	Claude	ml	Anthropic Claude|Claude AI|Claude Opus	
 claude-agent-sdk	Claude Agent SDK	ml		
 claude-api	Claude API	ml	Anthropic Claude API	
 claude-code	Claude Code	tool	Claude Code CLI|ClaudeCode|Anthropic Claude Code	
+claude-design	Claude Design	tool		
 claude-enterprise	Claude Enterprise	ml		
+claude-haiku	Claude Haiku	ml	Haiku	Haiku
 claude-managed-agents	Claude Managed Agents	ml		
 claude-sonnet	Claude Sonnet	ml	Sonnet	
 clay	Clay	tool		
@@ -588,6 +604,7 @@ cline	Cline	tool
 clojure	Clojure	language		
 closure-templates	Closure Templates	framework		
 cloud-armor	Cloud Armor	cloud		
+cloud-automl	Cloud AutoML	ml	Google Cloud AutoML	
 cloud-custodian	Cloud Custodian	devops		
 cloud-firestore	Cloud Firestore	database		
 cloud-foundry	Cloud Foundry	cloud		
@@ -595,6 +612,7 @@ cloud-wan	Cloud WAN	cloud
 cloudability	Cloudability	cloud		
 cloudera	Cloudera	data		
 cloudflare-dns	Cloudflare DNS	networking		
+cloudflare-r2	Cloudflare R2	cloud	R2	R2
 cloudflare-waf	Cloudflare WAF	security		
 cloudflare-workers	Cloudflare Workers	cloud		
 cloudflare-zero-trust	Cloudflare Zero Trust	security		
@@ -612,7 +630,9 @@ cockroachdb	CockroachDB	database
 cocoa	Cocoa	framework	Apple Cocoa	Cocoa
 cocoapods	CocoaPods	tool		
 cocotb	Cocotb	testing		
+code-ocean	Code Ocean	tool		
 codebeamer	Codebeamer	tool		
+codemirror	CodeMirror	framework		
 codeql	CodeQL	security		
 coderabbit	CodeRabbit	tool		
 codex-cli	Codex CLI	tool		
@@ -625,7 +645,7 @@ compose-multiplatform	Compose Multiplatform	framework
 conan	Conan	tool		
 concourse	Concourse	devops		
 conda	conda	tool		
-confluence	Confluence	tool		
+confluence	Confluence	tool	Atlassian Confluence	
 confluent	Confluent	data		
 conftest	Conftest	testing		
 conjur	Conjur	security		
@@ -682,6 +702,7 @@ cwdm	CWDM	networking
 cxl	CXL	networking		
 cxml	cXML	language		
 cyberark	CyberArk	security		
+cyclonedds	CycloneDDS	framework	Eclipse Cyclone DDS	
 cyclonedx	CycloneDX	security		
 cycode	Cycode	security		
 cyera	Cyera	security		
@@ -697,11 +718,11 @@ dapr	Dapr	framework
 darktrace	Darktrace	security		
 dart	Dart	language		
 dask	Dask	data		
-databricks	Databricks	data	Data Bricks|Databricks Lakehouse	
+databricks	Databricks	data	Data Bricks|Databricks Lakehouse|Databrick	
 databricks-apps	Databricks Apps	data		
 databricks-asset-bundles	Databricks Asset Bundles	devops		
 databricks-genie	Databricks Genie	data		
-databricks-lakeflow	Databricks Lakeflow	data		
+databricks-lakeflow	Databricks Lakeflow	data	Lakeflow	
 databricks-sql	Databricks SQL	data		
 databricks-sql-warehouse	Databricks SQL Warehouse	data	SQL Warehouse	
 databricks-unity-catalog	Databricks Unity Catalog	data	Unity Catalog	
@@ -722,9 +743,10 @@ datazone	DataZone	cloud
 datto	Datto	tool		
 dax	DAX	language		
 dbt	dbt	data	data build tool|dbt Core|dbt Cloud	
+dcqcn	DCQCN	networking	Data Center Quantized Congestion Notification	
 ddi	DDI	networking		
 ddn	DDN	tool		
-ddr	DDR	networking		
+ddr	DDR	networking	DDR5	
 ddr4	DDR4	tool		
 dds	DDS	framework		
 debezium	Debezium	data		
@@ -737,6 +759,7 @@ deepseek	DeepSeek	ml
 deepspeed	DeepSpeed	ml		
 deequ	Deequ	data		
 defectdojo	DefectDojo	security		
+define-xml	Define-XML	data	define.xml	
 dell-emc	Dell EMC	tool		
 dell-poweredge	Dell PowerEdge	tool	PowerEdge	
 dell-powerflex	Dell PowerFlex	tool	PowerFlex	
@@ -752,6 +775,8 @@ detox	Detox	testing
 detr	DETR	ml		
 devexpress	DevExpress	framework		
 device42	Device42	devops		
+devicenet	DeviceNet	networking		
+devops-center	DevOps Center	devops		DevOps Center
 dgl	DGL	ml		
 dgx-cloud	DGX Cloud	cloud		
 dhcp	DHCP	networking	Dynamic Host Configuration Protocol	
@@ -767,6 +792,7 @@ django	Django	framework
 django-orm	Django ORM	framework		
 django-rest-framework	Django REST Framework	framework	Django REST|DRF	
 dkim	DKIM	security		
+dlthub	dltHub	data		
 dmarc	DMARC	security		
 dmvpn	DMVPN	networking		
 dnp3	DNP3	networking		
@@ -781,6 +807,7 @@ docusaurus	Docusaurus	framework
 docusign	DocuSign	tool		
 doip	DoIP	networking		
 domo	Domo	data		
+doxygen	Doxygen	tool		
 dpdk	DPDK	networking		
 dragonfly	Dragonfly	database		
 drata	Drata	security		
@@ -828,6 +855,7 @@ emacs	Emacs	tool
 emass	eMASS	security		
 embedded-c	Embedded C	language		
 ember-js	Ember.js	framework	EmberJS|Ember	
+emmc	eMMC	networking		
 encase	EnCase	security		
 endevor	Endevor	devops		
 enroot	Enroot	devops		
@@ -846,13 +874,16 @@ erlang	Erlang	language
 erwin-data-modeler	erwin Data Modeler	data	Erwin	
 es6	ES6	language	ES6+	
 eslint	ESLint	tool		
+esmfold	ESMFold	ml		
 esp-idf	ESP-IDF	framework		
 esp32	ESP32	tool		
 espresso	Espresso	testing		
 esri	Esri	tool		
 etas-inca	ETAS INCA	tool		
+etcd	etcd	database		
+ethercat	EtherCAT	networking		
 ethereum	Ethereum	tool		
-ethernet	Ethernet	networking		
+ethernet	Ethernet	networking	Gigabit Ethernet	
 ethernet-slash-ip	EtherNet/IP	networking		
 ethers-js	ethers.js	framework		
 event-tracing-for-windows	Event Tracing for Windows	security	ETW	
@@ -864,14 +895,16 @@ express-js	Express.js	framework	Expressjs|Express	Express
 ext4	ext4	os		
 f-sharp	F#	language	F Sharp|FSharp	
 f5-big-ip	F5 BIG-IP	networking	F5 Load Balancer	
+f5-big-ip-application-security-manager	F5 BIG-IP Application Security Manager	security	Application Security Manager	Application Security Manager
 f5-irules	F5 iRules	networking	iRules	
 fabric-data-factory	Fabric Data Factory	data		
 fabric-lakehouse	Fabric Lakehouse	data		
-factorytalk	FactoryTalk	tool	Rockwell FactoryTalk	
+factorytalk	FactoryTalk	tool	Rockwell FactoryTalk|FactoryTalk View	
 factset	FactSet	data		
 faiss	FAISS	ml		
 falco	Falco	security		
 faro-technologies	FARO Technologies	tool	Faro	
+fast-dds	Fast DDS	framework	FastDDS	
 fastapi	FastAPI	framework	Fast API	
 fastify	Fastify	framework		
 fastlane	Fastlane	devops		
@@ -933,6 +966,7 @@ fortimanager	FortiManager	security
 fortios	FortiOS	security		
 fortran	Fortran	language		
 foxglove	Foxglove	tool		
+fpd-link	FPD-Link	networking		
 fpgas	FPGAs	tool		
 framer-motion	Framer Motion	framework		
 freebsd	FreeBSD	os		
@@ -952,6 +986,7 @@ fullstory	FullStory	tool
 g-711	G.711	networking		
 g-729	G.729	networking		
 galera	Galera	database	Galera Cluster	
+gameanalytics	GameAnalytics	data		GameAnalytics
 gameplay-ability-system	Gameplay Ability System	framework	Unreal Gameplay Ability	
 gan	GAN	ml		
 garak	Garak	security		
@@ -1042,25 +1077,26 @@ google-cloud-vpc	Google Cloud VPC	cloud	GCP VPC
 google-colab	Google Colab	tool		
 google-compute-engine	Google Compute Engine	cloud	GCE	
 google-earth-engine	Google Earth Engine	cloud		
-google-gemini	Google Gemini	ml	Gemini|Google Gemini Enterprise	
+google-gemini	Google Gemini	ml	Gemini|Google Gemini Enterprise|Gemini Enterprise	
 google-kubernetes-engine	Google Kubernetes Engine	devops	GKE|Google GKE	
 google-looker-studio	Google Looker Studio	data	Looker Studio|Data Studio|DataStudio|Google Data Studio	
 google-maps-platform	Google Maps Platform	cloud	Google Maps	
 google-notebooklm	Google NotebookLM	tool	NotebookLM	
-google-play-store	Google Play Store	tool		
+google-play-store	Google Play Store	tool	Google Play|Google Play Console	
 google-search-console	Google Search Console	tool		
 google-security-operations	Google Security Operations	security	Google SecOps	
 google-sheets	Google Sheets	data	Google Spreadsheets	
 google-tag-manager	Google Tag Manager	tool	GTM	
 google-tpu	Google TPU	ml	Google TPUs|TPU	
-google-vertex-ai	Google Vertex AI	ml	Vertex AI|GCP Vertex AI|VertexAI|GCP VertexAI	
+google-vertex-ai	Google Vertex AI	ml	Vertex AI|GCP Vertex AI|VertexAI|GCP VertexAI|GCP Vertex	
 google-web-toolkit	Google Web Toolkit	framework	GWT	
-google-workspace	Google Workspace	tool	Google Apps|G Suite|GSuite|Google Workspaces	
+google-workspace	Google Workspace	tool	Google Apps|G Suite|GSuite|Google Workspaces|Google G-Suite|Google Workplace	
 googletest	GoogleTest	testing	gtest|Google Test	
 gorm	GORM	framework		
 gpfs	GPFS	devops		
 gpib	GPIB	networking		
 gpt	GPT	ml		
+gpt-oss	gpt-oss	ml		
 gptp	gPTP	networking	802.1AS	
 gpu-direct-storage	GPU Direct Storage	networking	GPUDirect Storage	
 gpudirect-rdma	GPUDirect RDMA	ml	GPUDirect	
@@ -1117,16 +1153,20 @@ hbm	HBM	tool
 hbss	HBSS	security		
 hdf5	HDF5	data		
 hdfs	HDFS	data		
+heap	Heap	data		Heap
 helm	Helm	devops		
 heroku	Heroku	cloud		
 hevo	Hevo	data		
 hewlett-packard-enterprise	Hewlett Packard Enterprise	tool	HPE	
+hex	Hex	data		Hex
 hexnode	Hexnode	tool		
 hibernate	Hibernate	framework	Hibernate ORM	
 hiera	Hiera	devops		
 highcharts	Highcharts	framework		
+highjump	HighJump	tool	Körber HighJump	HighJump
 hightouch	Hightouch	tool		
 hilt	Hilt	framework		
+hip	HIP	framework		HIP
 hive-metastore	Hive Metastore	data	Metastore	
 hiveql	HiveQL	language		
 hl7	HL7	security	HL7 v2|HL7v2	
@@ -1137,6 +1177,7 @@ hmac	HMAC	security
 homebrew	Homebrew	tool		
 honeycomb	Honeycomb	devops		
 hono	Hono	framework		
+horde	Horde	devops		Horde
 horizontal-pod-autoscaler	Horizontal Pod Autoscaler	devops	HPA	
 horovod	Horovod	ml		
 hotjar	Hotjar	data		
@@ -1154,6 +1195,7 @@ hubspot	HubSpot	tool
 hugging-face	Hugging Face	ml	HuggingFace	
 hugging-face-tgi	Hugging Face TGI	ml	TGI	
 hugging-face-transformers	Hugging Face Transformers	ml	HuggingFace Transformers	
+husky	Husky	tool		Husky
 hyper-v	Hyper-V	devops	Microsoft Hyper-V	
 hyperproof	Hyperproof	security		
 i18next	i18next	framework		
@@ -1196,10 +1238,12 @@ infineon-aurix	Infineon AURIX	tool
 infiniband	InfiniBand	networking		
 infisical	Infisical	security		
 influxdb	InfluxDB	database	Influx	Influx
+infor-syteline	Infor SyteLine	tool		
 informatica	Informatica	data		
 informatica-data-quality	Informatica Data Quality	data	IDQ	
 informatica-mdm	Informatica MDM	data		
 informatica-powercenter	Informatica PowerCenter	data	PowerCenter	
+infosum	InfoSum	data		
 innodb	InnoDB	database		
 insomnia	Insomnia	tool		
 intel-vtune-profiler	Intel VTune Profiler	tool	vtune	
@@ -1213,6 +1257,7 @@ ios-xe	IOS-XE	os
 ipados	iPadOS	os		
 iperf3	iPerf3	networking		
 ipmi	IPMI	networking		
+ipopt	Ipopt	tool		
 ipsec	IPsec	networking		
 iptables	iptables	networking		
 ipv4	IPv4	networking		
@@ -1228,7 +1273,7 @@ isaac-sim	Isaac Sim	tool	NVIDIA Isaac Sim|IsaacSim
 iscsi	iSCSI	networking		
 iseries	iSeries	os		
 isml	ISML	language		
-iso-20022	ISO 20022	data		
+iso-20022	ISO 20022	data	ISO20022	
 iso8583	ISO 8583	security	ISO8583	
 ispf	ISPF	tool	Interactive System Productivity Facility	
 issu	ISSU	networking		
@@ -1236,14 +1281,16 @@ istio	Istio	devops
 itk	ITK	framework	Insight Segmentation and Registration Toolkit	
 itrs-geneos	ITRS Geneos	devops	ITRS|Geneos	
 j-link	J-Link	tool		
+j1939	J1939	networking	SAE J1939	
 ja3	JA3	security		
 jadx	JADX	security		
 jaeger	Jaeger	devops		
 jakarta-ee	Jakarta EE	framework	J2EE|Java EE|JavaEE|Java Enterprise Edition|Java Platform, Enterprise Edition|JEE	
-jama	Jama	tool		
+jama	Jama	tool	Jama Connect	
 jamf	Jamf	tool	Jamf Pro	
 janusgraph	JanusGraph	database		
 jasmine	Jasmine	testing		
+jaspergold	JasperGold	tool	Cadence JasperGold	
 jaspersoft	Jaspersoft	data		
 java	Java	language	Java 21|Java 11|Java 17+|Java 11+|Java 8|Java 8+|Java 17|Java 21+|Java 25	
 java-content-repository	Java Content Repository	framework	JCR	
@@ -1265,7 +1312,7 @@ jetty	Jetty	framework
 jfrog-artifactory	JFrog Artifactory	devops	Artifactory|JFrog	
 jinja	Jinja	framework	jinja2	
 jira	Jira	tool	Jira Software|Atlassian Jira|JSM|Jira Cloud|Jira Assets|Jira Align	
-jira-product-discovery	Jira Product Discovery	tool		
+jira-product-discovery	Jira Product Discovery	tool	JPD	JPD
 jira-service-management	Jira Service Management	tool	Jira Service Desk	
 jitterbit	Jitterbit	tool		
 jmp	JMP	data		
@@ -1275,7 +1322,7 @@ jotai	Jotai	framework
 jpa	JPA	framework		
 jpeg	JPEG	data		
 jq	jq	tool		
-jql	JQL	tool		
+jql	JQL	tool	Jira Query Language	
 jquery	jQuery	framework		
 jreap	JREAP	networking		
 jreview	JReview	tool		
@@ -1288,6 +1335,7 @@ jsonnet	Jsonnet	tool
 jtag	JTAG	tool		
 julialang	JuliaLang	language	The Julia Language|Julia language|Julia	
 jumpcloud	JumpCloud	security		
+junie	Junie	tool	JetBrains Junie	Junie
 juniper-junos	Juniper Junos	networking		
 juniper-mist	Juniper Mist	networking	Mist	
 juniper-qfx	Juniper QFX	networking	QFX	
@@ -1306,7 +1354,7 @@ kafka-streams	Kafka Streams	data
 kaggle	Kaggle	ml		
 kali-linux	Kali Linux	os	Kali Linux OS|Kali	
 kamailio	Kamailio	tool		
-kandji	Kandji	tool	Kandji MDM	
+kandji	Kandji	tool	Kandji MDM|Iru	
 karate	Karate	testing		
 kargo	Kargo	devops		
 karma	Karma	testing		
@@ -1323,11 +1371,14 @@ kerberos	Kerberos	security
 keycloak	Keycloak	security		
 keysight-ixia	Keysight Ixia	testing	IXIA	
 kibana	Kibana	devops		
+kimi	Kimi	ml		Kimi
+kinetica	Kinetica	database		
 kiro	Kiro	tool		
 klaxoon	Klaxoon	tool		
 kling	Kling	ml		
 kmip	KMIP	security		
 kml	KML	data		
+kmz	KMZ	data		
 knative	Knative	devops		
 koa	Koa	framework		
 koin	Koin	framework		
@@ -1358,6 +1409,7 @@ kvm	KVM	devops
 kyriba	Kyriba	tool		
 kyverno	Kyverno	devops		
 l2tp	L2TP	networking		
+labvantage	LabVantage	tool		
 labview	LabVIEW	tool	NI LabVIEW	
 lacework	Lacework	security		
 lacp	LACP	networking		
@@ -1385,6 +1437,7 @@ librenms	LibreNMS	devops
 libvirt	libvirt	devops		
 lightdash	Lightdash	data		
 lightgbm	LightGBM	ml		
+lighthouse	Lighthouse	testing	Google Lighthouse	Lighthouse
 lightning-app-builder	Lightning App Builder	tool		
 lightning-design-system	Lightning Design System	framework	SLDS	
 lightning-web-components	Lightning Web Components	framework	LWC|LWCs|Lightning Web Component	
@@ -1404,6 +1457,7 @@ llama-cpp	llama.cpp	ml
 llamaindex	LlamaIndex	framework	Llama Index	
 lldb	lldb	tool		
 lldp	LLDP	networking		
+llms-txt	llms.txt	tool		
 llvm	LLVM	tool		
 lmcache	LMCache	ml		
 loadrunner	LoadRunner	testing	HP LoadRunner|OpenText LoadRunner|Hewlett Packard LoadRunner	
@@ -1433,6 +1487,7 @@ lucidchart	Lucidchart	tool	Lucid Chart
 luigi	Luigi	data		
 luks	LUKS	security		
 lustre	Lustre	devops		
+lvds	LVDS	networking	Low-Voltage Differential Signaling	
 lvgl	LVGL	framework		
 lxc	LXC	devops	Linux Containers	
 maas	MAAS	devops		
@@ -1440,6 +1495,7 @@ mach-o	Mach-O	security
 macos	macOS	os	OSX|OS X|Mac OS|macOS Monterey|macOS 12|macOS 12 Monterey|Mac|Apple macOS	
 macsec	MACsec	networking		
 magento	Magento	framework		
+magicdraw	MagicDraw	tool		
 make-com	Make.com	tool		
 maltego	Maltego	security		
 manifest-v3	Manifest V3	security	MV3	
@@ -1464,6 +1520,7 @@ mcal	MCAL	framework
 mcap	MCAP	data		
 mcp	MCP	security		
 mctp	MCTP	networking		
+md5	MD5	security	Message Digest 5|Message Digest Algorithm	
 mdio	MDIO	networking		
 mdt	Microsoft Deployment Toolkit	tool	MDT	
 media3	Media3	framework		
@@ -1483,6 +1540,7 @@ metaflow	Metaflow	ml
 metal3	Metal3	devops		
 metaplane	Metaplane	data		
 metasploit	Metasploit	security	Metasploit Framework	
+metatrader-5	MetaTrader 5	tool	MT5	
 metricflow	MetricFlow	data		
 mfa	MFA	security		
 mfc	MFC	framework	Microsoft Foundation Class Library|Microsoft Foundation Classes	
@@ -1493,11 +1551,11 @@ microsoft-access	Microsoft Access	database	MS Access
 microsoft-agent-framework	Microsoft Agent Framework	framework		
 microsoft-clarity	Microsoft Clarity	tool		
 microsoft-copilot	Microsoft Copilot	tool	M365 Copilot	
-microsoft-copilot-studio	Microsoft Copilot Studio	ml	Copilot Studio	
+microsoft-copilot-studio	Microsoft Copilot Studio	ml	Copilot Studio|MS Copilot Studio	
 microsoft-dataverse	Microsoft Dataverse	database	Dataverse	
 microsoft-defender	Microsoft Defender	security	Microsoft Defender Antivirus|Windows Defender|Defender Antivirus|Microsoft Defender for Endpoint|MDE|Defender Microsoft|Microsoft Defender Microsoft|Defender	
 microsoft-defender-xdr	Microsoft Defender XDR	security	Defender XDR Microsoft|Defender XDR	
-microsoft-dynamics	Microsoft Dynamics	tool	Dynamics 365|Dynamics CRM|D365|Microsoft Dynamics 365	
+microsoft-dynamics	Microsoft Dynamics	tool	Dynamics 365|Dynamics CRM|D365|Microsoft Dynamics 365|Microsoft Dynamics CRM	
 microsoft-endpoint-configuration-manager	Microsoft Endpoint Configuration Manager	devops	SCCM|MECM|SCCM MECM|Configuration Manager|Microsoft Configuration Manager	
 microsoft-endpoint-manager	Microsoft Endpoint Manager	tool	Endpoint Manager	
 microsoft-entra-connect	Microsoft Entra Connect	security	Entra Connect	
@@ -1530,9 +1588,12 @@ minimax	MiniMax	ml
 minio	MinIO	cloud		
 minitab	Minitab	data		
 mintlify	Mintlify	tool		
+mipi-csi	MIPI CSI	networking	MIPI CSI-2	
+mipi-dsi	MIPI DSI	networking		
 mips	MIPS	tool		
 miro	Miro	tool		
 mirth-connect	Mirth Connect	tool	Mirth	
+misp	MISP	security		
 misra-c	MISRA C	tool		
 mistral	Mistral	ml		
 mitre-att-ck	MITRE ATT&CK	security		
@@ -1588,6 +1649,7 @@ mybatis	MyBatis	framework
 mysql	MySQL	database		
 n8n	n8n	tool		
 nagios	Nagios	devops		
+nanopb	nanopb	framework		
 napalm	NAPALM	networking		
 nat	NAT	networking		
 nats	NATS	data		
@@ -1641,10 +1703,11 @@ nginx-ingress-controller	NGINX Ingress Controller	devops	NGINX Ingress
 ngrx	NgRx	framework		
 ninja	Ninja	devops		
 ninjaone	NinjaOne	tool		
+nix	Nix	devops		Nix
 nixos	NixOS	os		
 nltk	NLTK	ml	Natural Language Toolkit	
 nmap	Nmap	security	Nmap Security Scanner	
-node-js	Node.js	framework	NodeJS|Node JS	
+node-js	Node.js	framework	NodeJS|Node JS|Node	Node
 nornir	Nornir	framework		
 notion	Notion	tool		
 npm	npm	tool	Node Package Manager	
@@ -1665,6 +1728,8 @@ nutanix	Nutanix	devops	Nutanix AHV
 nuxt	Nuxt	framework	Nuxt.js|NuxtJS	
 nvidia-a100	NVIDIA A100	ml	A100	
 nvidia-agx	NVIDIA AGX	tool	AGX	
+nvidia-ai-enterprise	NVIDIA AI Enterprise	ml		
+nvidia-b300	NVIDIA B300	tool	B300	
 nvidia-bluefield	NVIDIA Bluefield	tool		
 nvidia-dcgm	NVIDIA DCGM	devops	DCGM	
 nvidia-dgx	NVIDIA DGX	ml	DGX	
@@ -1673,6 +1738,7 @@ nvidia-fabric-manager	NVIDIA Fabric Manager	networking	Fabric Manager|UFM Fabric
 nvidia-gpu-operator	NVIDIA GPU Operator	devops	GPU Operator	
 nvidia-h100	NVIDIA H100	tool	H100	
 nvidia-h200	NVIDIA H200	tool	H200	
+nvidia-hgx	NVIDIA HGX	tool	HGX	
 nvidia-isaac	NVIDIA Isaac	ml		
 nvidia-jetson	NVIDIA Jetson	tool	Jetson|Jetson Orin|NVIDIA ORIN	
 nvidia-nim	NVIDIA NIM	ml	NIM	
@@ -1702,6 +1768,7 @@ okta	Okta	security
 okta-identity-governance	Okta Identity Governance	security	OIG	
 okta-verify	Okta Verify	security		
 okta-workflows	Okta Workflows	security		
+okta-workforce-identity	Okta Workforce Identity	security		
 ollama	Ollama	ml		
 ollydbg	OllyDbg	tool		
 omnissa	Omnissa	devops		
@@ -1715,7 +1782,9 @@ onestream	OneStream	tool
 onnx	ONNX	ml		
 onnx-runtime	ONNX Runtime	ml		
 ontotext-graphdb	Ontotext GraphDB	database	GraphDB	
+op-tee	OP-TEE	security		
 opa-gatekeeper	OPA Gatekeeper	devops		
+opal	Opal	security		Opal
 opc	OPC	networking		
 opc-ua	OPC UA	security		
 open-cascade	Open CASCADE	tool	OpenCascade	
@@ -1723,7 +1792,7 @@ open-policy-agent	Open Policy Agent	security	OPA
 open-vswitch	Open vSwitch	networking	OVS	
 open-webui	Open WebUI	ml	OpenWebUI	
 open3d	Open3D	ml		
-openai	OpenAI	ml		
+openai	OpenAI	ml	Open AI	
 openai-api	OpenAI API	ml	OpenAI APIs	
 openai-codex	OpenAI Codex	ml	Codex	
 openai-sdk	OpenAI SDK	ml		
@@ -1731,9 +1800,11 @@ openapi	OpenAPI	tool	Open API
 openbao	OpenBao	security		
 openbmc	OpenBMC	networking		
 opencl	OpenCL	framework	Open Computing Language	
+opencode	OpenCode	tool		
 openconfig	OpenConfig	networking		
 opencti	OpenCTI	security		
 opencv	OpenCV	ml		
+opendrive	OpenDRIVE	data		
 openembedded	OpenEmbedded	framework		
 openfeature	OpenFeature	framework		
 openfga	OpenFGA	security		
@@ -1768,6 +1839,7 @@ openui5	OpenUI5	framework	UI5|UI Development Toolkit for HTML5
 openusd	OpenUSD	framework		
 openvino	OpenVINO	framework		
 openvins	OpenVINS	framework		
+openvla	OpenVLA	ml		
 openvpn	OpenVPN	networking		
 openwrt	OpenWrt	os		
 openxr	OpenXR	framework		
@@ -1792,9 +1864,11 @@ oracle-erp	Oracle ERP	tool
 oracle-erp-cloud	Oracle ERP Cloud	tool		
 oracle-essbase	Oracle Essbase	data	Essbase	
 oracle-goldengate	Oracle GoldenGate	data	GoldenGate	
+oracle-hcm-data-loader	Oracle HCM Data Loader	data	HCM Data Loader	
 oracle-hcm-extracts	Oracle HCM Extracts	data	HCM Extracts	
 oracle-health	Oracle Health	tool		
 oracle-hyperion	Oracle Hyperion	data	Hyperion|Hyperion Planning	
+oracle-hyperion-financial-management	Oracle Hyperion Financial Management	tool	Hyperion Financial Management|HFM	HFM
 oracle-integration-cloud	Oracle Integration Cloud	cloud		
 oracle-linux	Oracle Linux	os		
 oracle-rac	Oracle RAC	database	Real Application Cluster|Real Application Clusters	
@@ -1812,6 +1886,8 @@ osisoft-pi	OSIsoft PI	database	OSIsoft PI System
 osmf	z/OSMF	devops	z/OS Management Facility|OSMF	
 ospf	OSPF	networking	Open Shortest Path First	
 otbi	Oracle OTBI	data	OTBI	
+otlp	OTLP	devops	OpenTelemetry Protocol	
+outsystems	OutSystems	tool		
 oval	OVAL	security	Open Vulnerability Assessment Language	
 ovn	OVN	networking		
 owasp-masvs	OWASP MASVS	security		
@@ -1827,6 +1903,7 @@ palo-alto-networks-cortex	Palo Alto Networks Cortex	security	Palo Alto Cortex
 palo-alto-networks-ngfw	Palo Alto Networks NGFW	security	Palo Alto NGFW	
 pandas	pandas	data		
 panorama	Palo Alto Panorama	security	Panorama	
+panther	Panther	security		Panther
 pants	Pants	devops		
 parameter-store	AWS Systems Manager Parameter Store	cloud	AWS Parameter Store|Parameter Store	
 parasolid	Parasolid	tool		
@@ -1834,7 +1911,7 @@ patroni	Patroni	tool
 paxos	Paxos	tool		
 pcan	PCAN	networking		
 pcap	PCAP	security		
-pcie	PCIe	networking	PCIe Gen5	
+pcie	PCIe	networking	PCIe Gen5|PCI Express	
 peci	PECI	tool		
 peft	PEFT	ml		
 pendo	Pendo	tool		
@@ -1846,6 +1923,7 @@ peoplesoft	PeopleSoft	tool
 peopletools	PeopleTools	tool		
 percona	Percona	database		
 perfetto	Perfetto	tool		
+perfmon	PerfMon	devops	Windows PerfMon|Performance Monitor	Performance Monitor
 perforce	Perforce	tool	Helix Core|Perforce P4	
 perl	Perl	language	Perl 5	
 pester	Pester	testing		
@@ -1877,6 +1955,7 @@ pkcs-11	PKCS#11	security
 pki	PKI	security		
 pl-pgsql	PL/pgSQL	language		
 pl-sql	PL/SQL	language	PLSQL	
+plaid	Plaid	tool		Plaid
 planetscale	PlanetScale	database		
 plantuml	PlantUML	tool		
 play-framework	Play Framework	framework		
@@ -1910,13 +1989,14 @@ power-bi	Power BI	data	Microsoft Power BI|PowerBI|Power BI Service|Power BI Desk
 power-fx	Power Fx	language		
 power-query	Power Query	data	powerquery|Excel Power Query	
 powerpc	PowerPC	tool		
-powerpivot	PowerPivot	data		
+powerpivot	PowerPivot	data	Power Pivot	
 powerscale	PowerScale	tool	Isilon	
 powershell	PowerShell	language	pwsh	
 powershell-desired-state-configuration	PowerShell Desired State Configuration	devops	DSC	
 powershell-dsc	PowerShell DSC	devops		
 ppp	PPP	networking		
 pql	PQL	language		
+prebid	Prebid	framework	Prebid.js	
 precision-time-protocol	Precision Time Protocol	networking	PTP	
 preempt-rt	PREEMPT_RT	os		
 prefect	Prefect	data		
@@ -1925,6 +2005,7 @@ prettier	Prettier	tool		Prettier
 primavera-p6	Primavera P6	tool	P6	
 prisma-cloud	Prisma Cloud	security	Palo Alto Prisma	
 procore	Procore	tool		
+profibus	PROFIBUS	networking		
 profinet	PROFINET	networking		
 profisee	Profisee	tool		
 proguard	ProGuard	tool		
@@ -1945,7 +2026,8 @@ ptx	PTX	language
 pulumi	Pulumi	devops		
 puppet	Puppet	devops		
 puppeteer	Puppeteer	testing		
-pure-storage-flasharray	Pure Storage FlashArray	tool	Storage Flasharray	
+pure-storage-flasharray	Pure Storage FlashArray	tool	Storage Flasharray|FlashArray	
+pure-storage-flashblade	Pure Storage FlashBlade	tool	FlashBlade	
 putty	PuTTY	tool		
 px4	PX4	framework		
 pxe	PXE	networking		
@@ -2052,7 +2134,7 @@ reprise-license-manager	Reprise License Manager	tool	RLM
 resque	Resque	framework		
 restassured	RestAssured	testing	REST Assured	
 restconf	RESTCONF	networking		
-restful-api	RESTful API	tool	RESTful|REST API|REST APIs|RESTful APIs	
+restful-api	RESTful API	tool	RESTful|REST API|REST APIs|RESTful APIs|RestAPI	
 restlets	RESTlets	tool		
 retool	Retool	tool		
 retrofit	Retrofit	framework		Retrofit
@@ -2080,7 +2162,9 @@ rootly	Rootly	devops
 rovo	Rovo	ml		
 rpki	RPKI	networking		
 rpm	RPM	tool		RPM
-rs422	RS422	networking		
+rs232	RS232	networking	RS-232	
+rs422	RS422	networking	RS-422	
+rs485	RS485	networking	RS-485	
 rsa-archer	RSA Archer	security		
 rspack	Rspack	tool		
 rspec	RSpec	testing		
@@ -2103,16 +2187,16 @@ rxnorm	RxNorm	data
 rxswift	RxSwift	framework		
 safertos	SafeRTOS	os		
 sailpoint	SailPoint	security		
-salesforce	Salesforce	tool	Salesforce CRM|SFDC	
+salesforce	Salesforce	tool	Salesforce CRM|SFDC|Salesforce.com	
 salesforce-agentforce	Salesforce Agentforce	ml	Agentforce	
-salesforce-apex	Salesforce Apex	language		
+salesforce-apex	Salesforce Apex	language	Apex	Apex
 salesforce-appexchange	Salesforce AppExchange	tool	AppExchange	
 salesforce-aura-framework	Salesforce Aura Framework	framework	Aura|Aura Components	
 salesforce-billing	Salesforce Billing	tool		
 salesforce-cli	Salesforce CLI	tool		
 salesforce-commerce-cloud	Salesforce Commerce Cloud	cloud	SFCC	
 salesforce-cpq	Salesforce CPQ	tool	CPQ	
-salesforce-crm-analytics	Salesforce CRM Analytics	data	CRM Analytics|Tableau CRM	
+salesforce-crm-analytics	Salesforce CRM Analytics	data	CRM Analytics|Tableau CRM|CRMA	
 salesforce-data-cloud	Salesforce Data Cloud	cloud		
 salesforce-data-loader	Salesforce Data Loader	tool	Data Loader	
 salesforce-dx	Salesforce DX	tool	SFDX	
@@ -2120,6 +2204,7 @@ salesforce-einstein	Salesforce Einstein	ml	Einstein AI
 salesforce-einstein-bots	Salesforce Einstein Bots	tool	Einstein Bots	
 salesforce-experience-cloud	Salesforce Experience Cloud	cloud		
 salesforce-flow	Salesforce Flow	tool		
+salesforce-government-cloud	Salesforce Government Cloud	tool		
 salesforce-health-cloud	Salesforce Health Cloud	tool		
 salesforce-life-sciences-cloud	Salesforce Life Sciences Cloud	tool	Life Sciences Cloud	
 salesforce-lightning	Salesforce Lightning	framework		
@@ -2192,6 +2277,7 @@ scriptrunner	ScriptRunner	tool
 scsi	SCSI	tool		
 scylladb	ScyllaDB	database	Scylla	
 sd-wan	SD-WAN	networking	SDWAN	
+sdio	SDIO	networking		
 sdtm	SDTM	data		
 seaborn	Seaborn	data		
 secoc	SecOC	security		
@@ -2208,6 +2294,7 @@ sentry	Sentry	devops
 sepa	SEPA	tool		
 sequelize	Sequelize	framework		
 serde	Serde	framework		
+serial-peripheral-interface	Serial Peripheral Interface	networking	SPI	SPI
 server-sent-events	Server-Sent Events	networking		
 servicenow	ServiceNow	tool	Service Now	
 servicenow-cmdb	ServiceNow CMDB	tool		
@@ -2228,12 +2315,12 @@ shadow-dom	Shadow DOM	framework
 shapely	Shapely	framework		Shapely
 sharegate	ShareGate	tool	ShareGate Migrate	
 shodan	Shodan	security		
-shopify	Shopify	tool		
+shopify	Shopify	tool	Shopify Plus	
 shopify-functions	Shopify Functions	tool		
 shopify-hydrogen	Shopify Hydrogen	framework		
 sidekiq	Sidekiq	framework		
 siemens-nx	Siemens NX	tool		
-siemens-teamcenter	Siemens Teamcenter	tool	Teamcenter|Siemens Teamcenter PLM|Team Center	
+siemens-teamcenter	Siemens Teamcenter	tool	Teamcenter|Siemens Teamcenter PLM|Team Center|Teamcenter PLM	
 signalfx	SignalFx	devops		
 signalr	SignalR	framework		
 signoz	SigNoz	devops		
@@ -2245,9 +2332,10 @@ simulink	Simulink	tool
 sinatra	Sinatra	framework		
 singlestore	SingleStore	database		
 sinon-js	Sinon.JS	testing	Sinon	
+sip	SIP	networking	Session Initiation Protocol	SIP
 sisense	Sisense	data		
 sitecore	Sitecore	tool		
-skadnetwork	SKAdNetwork	framework		
+skadnetwork	SKAdNetwork	framework	SKAN	
 sketch	Sketch	tool		Sketch
 skypilot	SkyPilot	framework		
 slack-ai	Slack AI	ml		
@@ -2295,6 +2383,7 @@ sora	Sora	ml
 sosl	SOSL	language		
 soti	SOTI	tool		
 spacelift	Spacelift	devops		
+spacewire	SpaceWire	networking		
 spacy	spaCy	ml		
 spark-mllib	Spark MLlib	ml		
 spark-sql	Spark SQL	data	SparkSQL	
@@ -2346,7 +2435,8 @@ ssjs	SSJS	framework
 ssl	SSL	security		
 ssl-vpn	SSL VPN	networking		
 sso	SSO	security		
-stackdriver	Stackdriver	devops		
+stac	STAC	data	SpatioTemporal Asset Catalog	
+stackdriver	Stackdriver	devops	GCP Cloud Operations	
 stan	Stan	language		
 standard-template-library	Standard Template Library	framework	C++ STL|C++ Standard Template Library	
 starburst	Starburst	database		
@@ -2368,6 +2458,7 @@ streamlit	Streamlit	framework
 strimzi	Strimzi	devops	Strimzi Kafka	
 stun	STUN	networking		
 styled-components	Styled Components	framework		
+stylelint	Stylelint	tool		
 subversion	Subversion	tool	SVN	
 suite-billing	SuiteBilling	tool		
 suite-builder	SuiteBuilder	tool		
@@ -2399,6 +2490,7 @@ syft	Syft	security
 symfony	Symfony	framework		
 sysdig	Sysdig	security		
 syslog	syslog	networking		
+sysml	SysML	tool		
 sysmon	Sysmon	security		
 systemc	SystemC	language		
 systemverilog	SystemVerilog	language	System Verilog	
@@ -2448,8 +2540,9 @@ terragrunt	Terragrunt	devops
 terratest	Terratest	testing		
 tesseract	Tesseract	tool		
 testcafe	TestCafe	testing		
-testcomplete	TestComplete	testing		
+testcomplete	TestComplete	testing	Test Complete	Test Complete
 testcontainers	Testcontainers	testing		
+testflight	TestFlight	testing		
 testng	TestNG	testing		
 testrail	TestRail	testing		
 teststand	TestStand	testing	NI TestStand	
@@ -2514,6 +2607,7 @@ u-boot	U-Boot	tool
 u2f	U2F	security		
 uart	UART	networking		
 ubuntu	Ubuntu	os	Canonical Ubuntu|Ubuntu Linux|Ubuntu OS|Ubuntu GNU/Linux	
+ucie	UCIe	networking	Universal Chiplet Interconnect Express	
 udp	UDP	networking		
 uds	UDS	networking		
 uefi	UEFI	tool		
@@ -2523,6 +2617,8 @@ uipath	UiPath	tool	UiPath Studio|UiPath Orchestrator|UiPath RPA
 ukg-pro	UKG Pro	tool		
 unirest	Unirest	framework		
 unity	Unity	framework	Unity3D	
+unity-ai-gateway	Unity AI Gateway	ml	Databricks Unity AI Gateway	
+universal-directory	Universal Directory	security	Okta Universal Directory	
 unix	Unix	os		
 unreal-engine	Unreal Engine	framework	UE4|UE5|Unreal Engine 5|Unreal Engine 4|UE 4|Unreal 4|Unreal 5	
 urdf	URDF	language		
@@ -2547,8 +2643,10 @@ veeva	Veeva	tool	Veeva CRM
 veeva-vault	Veeva Vault	tool		
 vehicle-spy	Vehicle Spy	tool		
 velero	Velero	devops		
+veloce	Veloce	tool		
 velociraptor	Velociraptor	security		
 venafi	Venafi	security		
+vera-rubin	Vera Rubin	tool		Vera Rubin
 veracode	Veracode	security		
 vercel	Vercel	cloud		
 vercel-ai-sdk	Vercel AI SDK	framework	AI SDK	
@@ -2576,7 +2674,7 @@ virustotal	VirusTotal	security
 visual-basic	Visual Basic	language	VB|VB6	
 visual-basic-for-applications	Visual Basic for Applications	language	VBA|Excel VBA	
 visual-basic-net	Visual Basic .NET	language	VB.NET|vbnet	
-visual-studio	Visual Studio	tool	Microsoft Visual Studio	
+visual-studio	Visual Studio	tool	Microsoft Visual Studio|MS Visual Studio	
 visual-studio-code	Visual Studio Code	tool	VSCode	
 visualforce	Visualforce	framework	Visual Force	
 visualvm	VisualVM	tool		
@@ -2602,6 +2700,7 @@ vmware-velocloud	VMware VeloCloud	networking	Velocloud
 vmware-vsan	VMware vSAN	devops	vSAN	
 vmware-vsphere	VMware vSphere	devops	vSphere	
 vmware-workspace-one	VMware Workspace ONE	tool	Workspace ONE	
+volcano	Volcano	devops		Volcano
 vp8	VP8	tool		
 vp9	VP9	tool		
 vpc	VPC	cloud	VPCs	
@@ -2623,6 +2722,7 @@ waf	WAF	security
 wagtail	Wagtail	framework		
 walletconnect	WalletConnect	framework		
 warpstream	WarpStream	data		
+wasabi-cloud	Wasabi Cloud	cloud		
 watchguard	Watchguard	security		
 watchos	watchOS	os		
 wavelength-division-multiplexing	Wavelength Division Multiplexing	networking	Wave Division Multiplexing|WDM	
@@ -2717,6 +2817,7 @@ xilinx	Xilinx	tool
 xilinx-zynq	Xilinx Zynq	tool		
 xla	XLA	ml		
 xlookup	XLOOKUP	data		
+xlsx	XLSX	data		
 xml	XML	language	Extensible Markup Language	
 xpath	XPath	language	XML Path Language	
 xprotect	XProtect	security		
@@ -2733,8 +2834,10 @@ yardi	Yardi	tool
 yarn	Yarn	tool		Yarn
 yocto-project	Yocto Project	tool	Yocto	
 yolo	YOLO	ml		
+youtrack	YouTrack	tool		
 yugabytedb	YugabyteDB	database		
 yum	YUM	devops		
+z-os	z/OS	os		
 zabbix	Zabbix	devops		
 zapier	Zapier	tool		
 zarr	Zarr	data		
