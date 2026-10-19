@@ -2,13 +2,18 @@ package oneprofile.backend.workers.extraction;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.io.StringReader;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import oneprofile.backend.storage.normalizedvacancy.Segment;
 import oneprofile.backend.storage.normalizedvacancy.SegmentKindEnum;
 import oneprofile.backend.storage.taxonomy.TaxonomyStore;
 import oneprofile.backend.storage.vacancyskill.FoundSkill;
 import org.junit.jupiter.api.Test;
+import org.springframework.core.io.ClassPathResource;
 
 class SkillExtractionRuleTest {
 
@@ -24,6 +29,9 @@ class SkillExtractionRuleTest {
 			javascript\tJavaScript\tlanguage\tJS\t\t
 			c-sharp\tC#\tlanguage\t\t\t
 			node-js\tNode.js\truntime\tNode\tNode\t
+			http\tHTTP\tnetworking\tHTTPS\t\t
+			c\tC\tlanguage\tC language\tC\t
+			r\tR\tlanguage\tR language\tR\t
 			""")));
 
 	@Test
@@ -105,6 +113,38 @@ class SkillExtractionRuleTest {
 	@Test
 	void doesNotReadBoilerplate() {
 		assertThat(this.rule.extract("Engineer", List.of(boilerplate("We run Kubernetes.")))).isEmpty();
+	}
+
+	@Test
+	void findsNoKeyInsideAUrl() {
+		assertThat(ids(this.rule.extract("Engineer", List.of(
+				sentence("Read https://example.com/kubernetes, http://go.dev or www.postgresql.org/docs on Java.")))))
+			.containsExactly("java");
+	}
+
+	@Test
+	void findsNoContextKeyInsideAFixedBusinessPhrase() {
+		assertThat(ids(this.rule.extract("Engineer",
+				List.of(item("Report to C-level and C-suite executives and the R&D team, in Java.")))))
+			.containsExactly("java");
+	}
+
+	@Test
+	void stillFindsAContextKeyOutsideAFixedBusinessPhrase() {
+		assertThat(ids(this.rule.extract("Engineer", List.of(item("C, R and Java for the R&D team.")))))
+			.containsExactlyInAnyOrder("c", "r", "java");
+	}
+
+	@Test
+	void findsSapErpByItsProductAndNotByTheVendorsName() throws IOException {
+		SkillExtractionRule shipped;
+		try (Reader tsv = new InputStreamReader(new ClassPathResource("taxonomy/skills.tsv").getInputStream(),
+				StandardCharsets.UTF_8)) {
+			shipped = new SkillExtractionRule(TaxonomyStore.read(tsv));
+		}
+
+		assertThat(ids(shipped.extract("Engineer", List.of(item("Familiarity with SAP technology."))))).isEmpty();
+		assertThat(ids(shipped.extract("Engineer", List.of(item("SAP ECC & S/4HANA."))))).contains("sap-erp");
 	}
 
 	private static List<String> ids(List<FoundSkill> found) {

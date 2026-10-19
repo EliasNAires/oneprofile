@@ -2080,7 +2080,7 @@ sap-business-technology-platform	SAP Business Technology Platform	cloud	BTP|SAP 
 sap-businessobjects	SAP BusinessObjects	data	Business Objects|BusinessObjects|SAP Business Objects		
 sap-bw	SAP BW	data			
 sap-commerce-cloud	SAP Commerce Cloud	tool	SAP Commerce|Hybris		
-sap-erp	SAP ERP	tool	SAP|SAP ECC		
+sap-erp	SAP ERP	tool	SAP ECC		
 sap-fiori	SAP Fiori	framework	Fiori		
 sap-fiori-elements	SAP Fiori Elements	framework	Fiori Elements		sap-fiori
 sap-gateway	SAP Gateway	tool			sap-erp
