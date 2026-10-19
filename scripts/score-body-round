@@ -6,7 +6,8 @@
 
 Needs the application running on the development database (./mvnw spring-boot:run). It runs the
 body pass over the whole pile and times it, draws 200 rows from each state the pass predicted,
-leaving out every row an earlier round drew, has Jev label the drawn rows that have no label yet,
+leaving out every row an earlier round drew (UNKNOWN only when it is over 1% of the pile; below that
+its size is reported and not gated), has Jev label the drawn rows that have no label yet,
 and prints the error of each stratum against the gates, the rows that disagree, and what Jev has
 cost so far.
 
@@ -41,6 +42,10 @@ PER_STATE = 200
 
 # The highest error each stratum may show for the loop to exit, and the longest the pass may take.
 GATES = {"IN": 0.10, "OUT": 0.10, "UNKNOWN": 0.30}
+
+# UNKNOWN stays out of the engineering subset as OUT does, so it is drawn and gated only once the pass
+# leaves more than this share of the pile unknown (ADR-0012, 2026-10-19).
+UNKNOWN_SHARE = 0.01
 SECONDS = 120
 
 EXCERPT = 300
@@ -53,7 +58,13 @@ def read_predictions(path):
     return {int(row[0]): row[1] for row in rows[1:]}
 
 
-def score(drawn, pile, labels, seconds=None):
+def gated(predicted):
+    """The states a round is gated on: IN and OUT, and UNKNOWN when it is over UNKNOWN_SHARE of the pile."""
+    unknown = sum(state == "UNKNOWN" for state in predicted.values())
+    return [state for state in bodyloop.STATES if state != "UNKNOWN" or unknown > UNKNOWN_SHARE * len(predicted)]
+
+
+def score(drawn, pile, labels, predicted, seconds=None):
     """Prints the per-stratum errors against the gates and the disagreeing rows, for one round's
     draw scored against `labels`. `seconds` is the body pass's running time, left out of the
     report (and the pass/fail it adds up to) when there was no pass to time. Returns whether
@@ -63,6 +74,11 @@ def score(drawn, pile, labels, seconds=None):
         print(f"  time     {seconds:6.1f}s  gate {SECONDS}s  {'pass' if passed else 'FAIL'}")
     disagreeing = []
     for state in bodyloop.STATES:
+        if state not in gated(predicted):
+            unknown = sum(said == state for said in predicted.values())
+            print(f"  {state:<8} {unknown} of {len(predicted)} = {unknown / len(predicted):.2%} of the pile, "
+                  f"not gated under {UNKNOWN_SHARE:.0%}")
+            continue
         scored = [vacancy_id for vacancy_id in drawn[state] if vacancy_id in labels]
         wrong = [vacancy_id for vacancy_id in scored if labels[vacancy_id]["label"] != state]
         disagreeing += [(state, vacancy_id) for vacancy_id in wrong]
@@ -111,7 +127,7 @@ if len(sys.argv) >= 2 and sys.argv[1] == "--rescore":
         print(f"  {state}: predicted {sum(said == state for said in predicted.values())}, drawn {len(drawn[state])}")
 
     print(f"\nRound {round_name}, scored against Jev")
-    score(drawn, pile, labels)
+    score(drawn, pile, labels, predicted)
 else:
     if not 2 <= len(sys.argv) <= 3 or not (sys.argv[1] == "trial" or sys.argv[1].isdigit()):
         sys.exit(__doc__.strip())
@@ -146,6 +162,10 @@ else:
 
     drawn = {}
     for state in bodyloop.STATES:
+        if state not in gated(predicted):
+            drawn[state] = []
+            print(f"  {state}: predicted {sum(said == state for said in predicted.values())}, not drawn")
+            continue
         candidates = sorted(vacancy_id for vacancy_id, said in predicted.items() if said == state and vacancy_id not in earlier)
         drawn[state] = random.Random(f"round-{round_name}-{state}").sample(candidates, min(PER_STATE, len(candidates)))
         print(f"  {state}: predicted {sum(said == state for said in predicted.values())}, drew {len(drawn[state])}")
@@ -156,6 +176,6 @@ else:
         bodyloop.record_drawn(round_name, [vacancy_id for state in bodyloop.STATES for vacancy_id in drawn[state]])
 
     print(f"\nRound {round_name}, scored against Jev")
-    score(drawn, pile, labels, seconds)
+    score(drawn, pile, labels, predicted, seconds)
 
 print(f"\nJev has cost ${bodyloop.spend():.4f} over every run, of the ${bodyloop.SPEND_LIMIT:.2f} limit")

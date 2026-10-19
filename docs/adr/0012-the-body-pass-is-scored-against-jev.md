@@ -1,6 +1,6 @@
 # The body pass is scored against Jev's labels, made only for the rows a round draws
 
-Status: accepted (amended 2026-10-02, 2026-10-04, 2026-10-06); partly superseded by ADR-0014,
+Status: accepted (amended 2026-10-02, 2026-10-04, 2026-10-06, 2026-10-19); partly superseded by ADR-0014,
 which overrides the labeller check and the reviewer's criterion edits, as marked below
 
 The body pass of #11 is measured against labels, as the title rules were (ADR-0008), but a
@@ -124,7 +124,8 @@ the cap.
 - **Error.** As in ADR-0008, a mistake is any row whose predicted state differs from the
   label, in either direction, so each stratum yields one error rate.
 - **Exit.** The loop exits when one round holds the **`IN` error at or below 10%**, the
-  **`OUT` error at or below 10%**, the **`UNKNOWN` error at or below 30%**, and the body
+  **`OUT` error at or below 10%**, the **`UNKNOWN` error at or below 30%** while it is gated
+  (*`UNKNOWN` is gated only above 1% of the pile*, below), and the body
   pass runs over the whole pile in **2 minutes or less** on the laptop in dev mode. `IN` is
   the error the rest of the pipeline pays for, because an `IN` row enters the engineering
   subset and every later pass. `OUT` stays out of the subset for good. `UNKNOWN` is looser
@@ -133,6 +134,15 @@ the cap.
   that decides nothing, since such a pass scores this stratum at about the share of the pile
   the labeller decided. The time gate is tight because the corpus is expected to grow about
   fivefold.
+- **`UNKNOWN` is gated only above 1% of the pile** (2026-10-19). Only `IN` enters the
+  engineering subset, so `UNKNOWN` costs the user what `OUT` costs, and only through the
+  software roles it holds. Under the body criterion `UNKNOWN` is for descriptions that do not say
+  what the work is, and the pass leaves few such rows: 25 of 20 519 at round 4's rules. Every one
+  of them had been drawn by round 4, so the stratum could not be drawn again, and a gate on it
+  measured nothing (round 3's Record). So each round's Record reports how many rows the pass
+  left `UNKNOWN`. While that is 1% of the pile or less, the stratum is not drawn and not gated, and
+  the loop exits on `IN`, `OUT` and time. Above 1% it is drawn and gated at 30% as before, so
+  a pass that stops deciding is still caught.
 - **Cap.** The loop stops after **ten rounds**, whatever the numbers say, and reports where
   it stopped.
 
