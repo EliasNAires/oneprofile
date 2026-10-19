@@ -7,6 +7,8 @@ import java.util.Set;
  * One vacancy of the pile, the vacancies the body pass reads: what its title left it, the language
  * it is written in, and its description as cleaning cut it.
  *
+ * @param normalizedVacancyId the normalized vacancy derived from it, which the skills extraction found
+ * belong to
  * @param vacancyId the vacancy it was derived from
  * @param cleanedTitle its title with what is noise in any title taken out
  * @param titleReason why its title was left unknown, which stays on it once the body decides, or
@@ -14,7 +16,7 @@ import java.util.Set;
  * @param language the language its board says it is written in, null if the board said none
  * @param descriptionSegments its cleaned description cut into segments, null until cleaning has cut it
  */
-public record PileVacancy(long vacancyId, String cleanedTitle, UnknownReasonEnum titleReason, String language,
+public record PileVacancy(long normalizedVacancyId, long vacancyId, String cleanedTitle, UnknownReasonEnum titleReason, String language,
 		List<Segment> descriptionSegments) {
 
 	/**

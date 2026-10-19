@@ -7,14 +7,24 @@ import static oneprofile.backend.storage.normalizedvacancy.UnknownReasonEnum.DOM
 import static oneprofile.backend.storage.normalizedvacancy.UnknownReasonEnum.SCOPE_AMBIGUITY;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum;
 import oneprofile.backend.storage.normalizedvacancy.Segment;
 import oneprofile.backend.storage.normalizedvacancy.SegmentKindEnum;
 import oneprofile.backend.storage.normalizedvacancy.UnknownReasonEnum;
+import oneprofile.backend.storage.taxonomy.TaxonomyStore;
 import oneprofile.backend.workers.cleaning.DescriptionSplittingRule;
+import oneprofile.backend.workers.extraction.SkillExtractionRule;
 import org.junit.jupiter.api.Test;
+import org.springframework.core.io.ClassPathResource;
 
 class BodyClassificationRuleTest {
 
@@ -25,7 +35,13 @@ class BodyClassificationRuleTest {
 	/** What a description says around the work, which settles nothing. */
 	private static final String OFFER = " We offer a hybrid schedule, a learning budget and private health cover.";
 
-	private final BodyClassificationRule rule = new BodyClassificationRule();
+	/** The taxonomy the application ships, which extraction finds skills by and the rule reads. */
+	private static final TaxonomyStore TAXONOMY = taxonomy();
+
+	private final BodyClassificationRule rule = new BodyClassificationRule(TAXONOMY);
+
+	/** What finds the skills a description names, the way extraction does before the body pass. */
+	private final SkillExtractionRule extraction = new SkillExtractionRule(TAXONOMY);
 
 	/** What cuts the descriptions written here as one line, the way cleaning cuts a flat one. */
 	private final DescriptionSplittingRule splitting = new DescriptionSplittingRule();
@@ -669,7 +685,7 @@ class BodyClassificationRuleTest {
 		}
 		description.add(item("Nice to have", "Experience with Python."));
 
-		assertThat(this.rule.classify("Data Analyst", SCOPE_AMBIGUITY, description)).isEqualTo(OUT);
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY, description)).isEqualTo(OUT);
 	}
 
 	@Test
@@ -678,7 +694,7 @@ class BodyClassificationRuleTest {
 		description.add(item("Requirements", "Advanced Excel or Looker"));
 		description.add(item("Requirements", "Python or SQL"));
 
-		assertThat(this.rule.classify("Data Analyst", SCOPE_AMBIGUITY, description)).isEqualTo(IN);
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY, description)).isEqualTo(IN);
 	}
 
 	@Test
@@ -687,7 +703,7 @@ class BodyClassificationRuleTest {
 		description.add(new Segment(SegmentKindEnum.SENTENCE, null,
 				"Experience with Python is required for every engineer we hire.", true));
 
-		assertThat(this.rule.classify("Data Analyst", SCOPE_AMBIGUITY, description)).isEqualTo(OUT);
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY, description)).isEqualTo(OUT);
 	}
 
 	@Test
@@ -696,11 +712,232 @@ class BodyClassificationRuleTest {
 			.map((segment) -> new Segment(segment.kind(), segment.under(), segment.text(), true))
 			.toList();
 
-		assertThat(this.rule.classify("Data Analyst", SCOPE_AMBIGUITY, description)).isEqualTo(UNKNOWN);
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY, description)).isEqualTo(UNKNOWN);
+	}
+
+	@Test
+	void aSkillExtractionFoundInARequirementIsAStatedSoftwareBackground() {
+		assertThat(classify("Solutions Consultant", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: hands-on experience with Snowflake and Databricks."))
+			.isEqualTo(IN);
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: 3+ years of experience with Tableau and Power BI."))
+			.isEqualTo(OUT);
+		assertThat(classify("Marketing Manager", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: daily use of ChatGPT and Jira, and fluency on macOS."))
+			.isEqualTo(OUT);
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: experience with Snowflake, ThoughtSpot or Excel."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void knowledgeOfAFieldAskedForInItsOwnRightIsExpertiseOutsideSoftware() {
+		assertThat(classify("Business Analyst", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: deep knowledge of fixed income products. Experience with SQL and Python."))
+			.isEqualTo(OUT);
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: a strong understanding of wholesale power markets. Experience with SQL."))
+			.isEqualTo(OUT);
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: working knowledge of GAAP and a computer science degree."))
+			.isEqualTo(OUT);
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: knowledge of medical device regulations. Experience with SQL."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void knowledgeOfSoftwareOrOfTheBusinessIsNoFieldExpertise() {
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: deep knowledge of B2B SaaS products. Experience with SQL."))
+			.isEqualTo(IN);
+		assertThat(classify("Solutions Engineer", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: strong knowledge of the AWS ecosystem and of Kubernetes."))
+			.isEqualTo(IN);
+		assertThat(classify("Business Analyst", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: experience with SQL. Knowledge of fixed income products is preferred."))
+			.isEqualTo(IN);
+		assertThat(classify("Solutions Engineer", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: knowledge of the industry and experience with SQL."))
+			.isEqualTo(IN);
+		assertThat(classify("Backend Engineer", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: an understanding of the fintech industry and experience with PostgreSQL."))
+			.isEqualTo(IN);
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: knowledge of healthcare data and experience with SQL."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void aDomainRoleOnAPhysicalProductIsOutBesideASoftwareBackground() {
+		assertThat(classify("Test Engineer", DOMAIN_AMBIGUITY,
+				"You will design, build and validate RF test systems for our radios in the lab, and analyse the "
+						+ "results with Python. Requirements: experience with Python and MATLAB." + OFFER))
+			.isEqualTo(OUT);
+		assertThat(classify("Design Engineer", DOMAIN_AMBIGUITY,
+				"You will design and verify the memory subsystem of our next SoC with the architecture team and "
+						+ "own its power and performance targets. Requirements: experience with Python." + OFFER))
+			.isEqualTo(OUT);
+		assertThat(classify("Systems Engineer", DOMAIN_AMBIGUITY,
+				"You will lead MBSE for our navigation products, modelling their behaviour in Simulink and SysML "
+						+ "with the hardware team. Requirements: experience with MATLAB." + OFFER))
+			.isEqualTo(OUT);
+		assertThat(classify("Product Engineer", DOMAIN_AMBIGUITY,
+				"You will design and test heated consumer products from concept to production, working with "
+						+ "suppliers on materials. Requirements: experience with Python for test data." + OFFER))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void aQualitySystemOfProceduresIsQualityWorkNotSoftware() {
+		assertThat(classify("Quality Engineer", DOMAIN_AMBIGUITY,
+				"You will build and maintain the quality management system to ISO 9001 and AS9100, write procedures "
+						+ "and run internal audits across the plant and its suppliers every quarter." + OFFER))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void aSoftwareBackgroundAskedForInWordsIsStated() {
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: 3+ years of experience as a software engineer."))
+			.isEqualTo(IN);
+		assertThat(classify("Program Manager", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: a background in backend development."))
+			.isEqualTo(IN);
+		assertThat(classify("Program Manager", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: experience working in software development teams."))
+			.isEqualTo(OUT);
+		assertThat(classify("Recruiter", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: 3+ years of experience in software development recruiting."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void aManagerOfSoftwareTeamsLeadsSoftwareEngineers() {
+		assertThat(classify("Engineering Manager", DOMAIN_AMBIGUITY,
+				DUTIES + "You will lead two software development teams and grow their managers."))
+			.isEqualTo(IN);
+		assertThat(classify("Analytics Manager", SCOPE_AMBIGUITY,
+				DUTIES + "You will lead the data team and grow its analysts."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void buildingAndShippingTheProductIsTheRolesCode() {
+		assertThat(classify("Product Engineer", SCOPE_AMBIGUITY,
+				DUTIES + "You will build and ship features end to end across our web app."))
+			.isEqualTo(IN);
+		assertThat(classify("Developer Advocate", SCOPE_AMBIGUITY,
+				DUTIES + "You will build sample apps and demo code that show developers what the platform does."))
+			.isEqualTo(IN);
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY,
+				DUTIES + "You will work with engineers to build and ship features our customers love."))
+			.isEqualTo(OUT);
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY,
+				DUTIES + "You will own the roadmap, define requirements and build features customers love."))
+			.isEqualTo(OUT);
+		assertThat(classify("Solutions Engineer", SCOPE_AMBIGUITY,
+				DUTIES + "You will build demos for prospects and answer their questions."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void dataArchitectureAndSchemaDesignAreEngineerFacingWork() {
+		assertThat(classify("Data Architect", SCOPE_AMBIGUITY,
+				DUTIES + "You will own the data architecture and the schema design of our warehouse."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void disasterRecoveryAndMainframeOperationsAreInfrastructureSkills() {
+		assertThat(classify("Systems Specialist", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: experience with disaster recovery planning and testing."))
+			.isEqualTo(IN);
+		assertThat(classify("Systems Specialist", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: experience operating mainframe batch workloads."))
+			.isEqualTo(IN);
+		assertThat(classify("Resilience Manager", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: experience with business continuity and disaster recovery planning."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void aPlatformTheRoleConfiguresAndAutomatesIsLowCodeWork() {
+		assertThat(classify("Implementation Consultant", SCOPE_AMBIGUITY,
+				DUTIES + "You will configure Odoo for each client and automate their invoicing workflows in it."))
+			.isEqualTo(IN);
+		assertThat(classify("Solutions Consultant", SCOPE_AMBIGUITY,
+				DUTIES + "You will configure Microsoft Copilot Studio agents and automate support workflows."))
+			.isEqualTo(IN);
+		assertThat(classify("Operations Analyst", SCOPE_AMBIGUITY,
+				DUTIES + "You will configure Salesforce reports and dashboards for the sales team."))
+			.isEqualTo(OUT);
+		assertThat(classify("Project Manager", SCOPE_AMBIGUITY,
+				DUTIES + "You will configure Jira boards for the delivery team."))
+			.isEqualTo(OUT);
+		assertThat(classify("Account Manager", SCOPE_AMBIGUITY,
+				DUTIES + "You will build a pipeline of renewals and keep it current in Salesforce."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void wirelessProtocolsAreANetworkingBackgroundNotRadioHardware() {
+		assertThat(classify("Firmware Architect", DOMAIN_AMBIGUITY,
+				"You will define the architecture of our Bluetooth and Wi-Fi stacks across products and mentor the "
+						+ "team. Requirements: deep knowledge of RF protocols and experience with C++." + OFFER))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void aBookOfBusinessOrASalesTargetIsSelling() {
+		assertThat(classify("Account Executive", SCOPE_AMBIGUITY,
+				DUTIES + "You will grow your book of business. Requirements: experience with SQL."))
+			.isEqualTo(OUT);
+		assertThat(classify("Solutions Engineer", SCOPE_AMBIGUITY,
+				DUTIES + "You will exceed your quarterly sales targets. Requirements: experience with SQL."))
+			.isEqualTo(OUT);
+		assertThat(classify("Sales Engineer", SCOPE_AMBIGUITY, DUTIES
+				+ "You will help account executives exceed their revenue targets. Requirements: experience with SQL."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void aPlusIsSaidInMoreWordsThanPlus() {
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY, DUTIES + "Bonus: experience with Python."))
+			.isEqualTo(OUT);
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY, DUTIES + "Even better if you know SQL."))
+			.isEqualTo(OUT);
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY, DUTIES + "Extra credit for experience with SQL."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void aDegreeListOpenToTheLifeSciencesAsksForNoSoftwareBackground() {
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: a degree in computer science, life sciences or a related field."))
+			.isEqualTo(OUT);
 	}
 
 	private ClassificationStateEnum classify(String title, UnknownReasonEnum reason, String description) {
-		return this.rule.classify(title, reason, this.splitting.split(description));
+		return classify(title, reason, this.splitting.split(description));
+	}
+
+	/** Classifies segments with the skills extraction finds in them, as the body pass reads them. */
+	private ClassificationStateEnum classify(String title, UnknownReasonEnum reason, List<Segment> segments) {
+		Map<String, List<Integer>> skills = new HashMap<>();
+		this.extraction.extract(title, segments).forEach((found) -> skills.put(found.skillId(), found.segments()));
+		return this.rule.classify(title, reason, segments, skills);
+	}
+
+	private static TaxonomyStore taxonomy() {
+		try (Reader tsv = new InputStreamReader(new ClassPathResource("taxonomy/skills.tsv").getInputStream(),
+				StandardCharsets.UTF_8)) {
+			return TaxonomyStore.read(tsv);
+		}
+		catch (IOException ex) {
+			throw new UncheckedIOException(ex);
+		}
 	}
 
 	private List<Segment> duties() {

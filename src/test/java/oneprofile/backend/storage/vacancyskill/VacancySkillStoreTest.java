@@ -88,6 +88,18 @@ class VacancySkillStoreTest {
 	}
 
 	@Test
+	void readsTheSegmentsEachSkillWasFoundInByVacancy() {
+		this.skills.record(Map.of(this.first, List.of(new FoundSkill("go", List.of(1, 3), true, true),
+				new FoundSkill("postgresql", List.of(), true, false)), this.second,
+				List.of(new FoundSkill("java", List.of(0), false, false))));
+		this.entityManager.flush();
+		this.entityManager.clear();
+
+		assertThat(this.skills.segmentsFoundIn(List.of(this.first, this.second + 1000)))
+			.isEqualTo(Map.of(this.first, Map.of("go", List.of(1, 3), "postgresql", List.of())));
+	}
+
+	@Test
 	void letsGoOfWhatWasFoundInAVacancyThatHasLeftItsBoard() {
 		this.skills.record(Map.of(this.first, List.of(new FoundSkill("go", List.of(1), false, false))));
 		this.entityManager.flush();

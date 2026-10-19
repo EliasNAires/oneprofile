@@ -10,13 +10,15 @@ import java.util.Set;
 import oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum;
 import oneprofile.backend.storage.normalizedvacancy.NormalizedVacancyStore;
 import oneprofile.backend.storage.normalizedvacancy.PileVacancy;
+import oneprofile.backend.storage.vacancyskill.VacancySkillStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
  * Decides from its description what the title left unknown for a corpus reason: the pile. It reads
  * the segments cleaning stored, the same segments the labeller it is scored against reads one a line
- * (ADR-0012), and cleans nothing itself.
+ * (ADR-0012), and cleans nothing itself. With them it reads the skills extraction found in each and
+ * the segments it found them in, so extraction runs before it (ADR-0017).
  * <p>
  * It can be run again on its own: it first puts the pile back to what the title stage left it, so
  * a rule change is measured by running it again, without the title pass. What it decides it
@@ -34,29 +36,36 @@ public class BodyClassificationRun {
 
 	private final NormalizedVacancyStore normalized;
 
+	private final VacancySkillStore skills;
+
 	private final int batch;
 
 	/**
 	 * Classifies the pile in batches of a thousand.
 	 * @param classification the rules to decide each vacancy with
 	 * @param normalized where the pile is read and the decisions recorded
+	 * @param skills where the skills extraction found are read
 	 */
 	@Autowired
-	public BodyClassificationRun(BodyClassificationRule classification, NormalizedVacancyStore normalized) {
-		this(classification, normalized, BATCH);
+	public BodyClassificationRun(BodyClassificationRule classification, NormalizedVacancyStore normalized,
+			VacancySkillStore skills) {
+		this(classification, normalized, skills, BATCH);
 	}
 
 	/**
 	 * @param classification the rules to decide each vacancy with
 	 * @param normalized where the pile is read and the decisions recorded
+	 * @param skills where the skills extraction found are read
 	 * @param batch how many vacancies are read and recorded at a time
 	 */
-	BodyClassificationRun(BodyClassificationRule classification, NormalizedVacancyStore normalized, int batch) {
+	BodyClassificationRun(BodyClassificationRule classification, NormalizedVacancyStore normalized,
+			VacancySkillStore skills, int batch) {
 		if (batch < 1) {
 			throw new IllegalArgumentException("A batch has to hold at least one vacancy");
 		}
 		this.classification = classification;
 		this.normalized = normalized;
+		this.skills = skills;
 		this.batch = batch;
 	}
 
@@ -85,7 +94,11 @@ public class BodyClassificationRun {
 					skipped.add(vacancy.vacancyId());
 				}
 			}
-			List<ClassificationStateEnum> classified = readable.parallelStream().map(this::classify).toList();
+			Map<Long, Map<String, List<Integer>>> found = this.skills
+				.segmentsFoundIn(readable.stream().map(PileVacancy::normalizedVacancyId).toList());
+			List<ClassificationStateEnum> classified = readable.parallelStream()
+				.map((vacancy) -> classify(vacancy, found.getOrDefault(vacancy.normalizedVacancyId(), Map.of())))
+				.toList();
 			Map<Long, ClassificationStateEnum> decided = new LinkedHashMap<>();
 			for (int i = 0; i < readable.size(); i++) {
 				ClassificationStateEnum state = classified.get(i);
@@ -110,11 +123,11 @@ public class BodyClassificationRun {
 	}
 
 	/**
-	 * Decides one vacancy from its segments. The vacancies of a batch are decided in parallel, since
-	 * the rules read each on its own and are what a pass spends its time on.
+	 * Decides one vacancy from its segments and the skills found in them. The vacancies of a batch are
+	 * decided in parallel, since the rules read each on its own and are what a pass spends its time on.
 	 */
-	private ClassificationStateEnum classify(PileVacancy vacancy) {
-		return this.classification.classify(vacancy.cleanedTitle(), vacancy.titleReason(), vacancy.segments());
+	private ClassificationStateEnum classify(PileVacancy vacancy, Map<String, List<Integer>> skills) {
+		return this.classification.classify(vacancy.cleanedTitle(), vacancy.titleReason(), vacancy.segments(), skills);
 	}
 
 	/**

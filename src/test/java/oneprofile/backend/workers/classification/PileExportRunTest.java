@@ -33,12 +33,12 @@ class PileExportRunTest {
 
 	@Test
 	void writesEveryVacancyOfThePileAsOneLineWithItsDescriptionOneSegmentALine() throws IOException {
-		holds(new PileVacancy(7, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "en", List.of(
+		holds(new PileVacancy(7, 7, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "en", List.of(
 				new Segment(SegmentKindEnum.SENTENCE, null, "We build payments.", true),
 				new Segment(SegmentKindEnum.HEADING, null, "Requirements", false),
 				new Segment(SegmentKindEnum.ITEM, "Requirements", "Build APIs in Go.", false),
 				new Segment(SegmentKindEnum.SENTENCE, "Requirements", "You will ship weekly.", false))),
-				new PileVacancy(9, "Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, null, null));
+				new PileVacancy(9, 9, "Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, null, null));
 		Path file = this.directory.resolve("pile.jsonl");
 
 		export(10).exportTo(file);
@@ -53,8 +53,8 @@ class PileExportRunTest {
 
 	@Test
 	void leavesOutWhatTheBodyPassSkipsForItsLanguage() throws IOException {
-		holds(pile(1, "Construire des API."), new PileVacancy(2, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "fr",
-				segments("Construire des API.")), new PileVacancy(3, "Engineer",
+		holds(pile(1, "Construire des API."), new PileVacancy(2, 2, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "fr",
+				segments("Construire des API.")), new PileVacancy(3, 3, "Engineer",
 						UnknownReasonEnum.UNSUPPORTED_LANGUAGE, "de", segments("APIs bauen.")));
 		Path file = this.directory.resolve("pile.jsonl");
 
@@ -95,7 +95,7 @@ class PileExportRunTest {
 	}
 
 	private static PileVacancy pile(long vacancyId, String description) {
-		return new PileVacancy(vacancyId, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "en", segments(description));
+		return new PileVacancy(vacancyId, vacancyId, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "en", segments(description));
 	}
 
 	private static List<Segment> segments(String description) {

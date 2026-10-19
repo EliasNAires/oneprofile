@@ -210,8 +210,9 @@ class NormalizedVacancyStoreTest {
 		this.normalized.recordBodyDecisions(Map.of(second, ClassificationStateEnum.IN));
 
 		assertThat(this.normalized.pileAfter(0, 10)).containsExactly(
-				new PileVacancy(first, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "en", List.of()),
-				new PileVacancy(second, "Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, "en", List.of()));
+				new PileVacancy(normalizedId(first), first, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "en", List.of()),
+				new PileVacancy(normalizedId(second), second, "Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, "en",
+						List.of()));
 		assertThat(this.normalized.pileAfter(first, 10)).extracting(PileVacancy::vacancyId).containsExactly(second);
 	}
 
@@ -344,6 +345,14 @@ class NormalizedVacancyStoreTest {
 		assertThat(this.normalized.extractionScopeAfter(batch.getFirst().vacancyId(), 1))
 			.extracting(ExtractionVacancy::cleanedTitle)
 			.containsExactly("Frontend Engineer");
+	}
+
+	private long normalizedId(long vacancyId) {
+		this.entityManager.flush();
+		return ((Number) this.entityManager.getEntityManager()
+			.createNativeQuery("select id from normalized_vacancy where vacancy_id = :vacancyId")
+			.setParameter("vacancyId", vacancyId)
+			.getSingleResult()).longValue();
 	}
 
 	private List<VacancyText> heldTitles() {

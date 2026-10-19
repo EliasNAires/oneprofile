@@ -15,6 +15,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 
+import java.io.StringReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +26,8 @@ import oneprofile.backend.storage.normalizedvacancy.PileVacancy;
 import oneprofile.backend.storage.normalizedvacancy.Segment;
 import oneprofile.backend.storage.normalizedvacancy.SegmentKindEnum;
 import oneprofile.backend.storage.normalizedvacancy.UnknownReasonEnum;
+import oneprofile.backend.storage.taxonomy.TaxonomyStore;
+import oneprofile.backend.storage.vacancyskill.VacancySkillStore;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InOrder;
@@ -34,11 +37,15 @@ class BodyClassificationRunTest {
 
 	private final NormalizedVacancyStore normalized = mock(NormalizedVacancyStore.class);
 
+	private final VacancySkillStore skills = mock(VacancySkillStore.class);
+
+	private final BodyClassificationRule rules = new BodyClassificationRule(TaxonomyStore.read(new StringReader("")));
+
 	@Test
 	void putsThePileBackToWhatTheTitleLeftItBeforeReadingIt() {
 		holds(pile(1, "en", "Build things."));
 
-		run(new BodyClassificationRule(), 10).classifyPile();
+		run(this.rules, 10).classifyPile();
 
 		InOrder order = inOrder(this.normalized);
 		order.verify(this.normalized).resetPile();
@@ -49,7 +56,7 @@ class BodyClassificationRunTest {
 	void leavesThePileUnknownWhileNoBodyRuleDecides() {
 		holds(pile(1, "en", "Build things."), pile(2, "en", "Own the roadmap."));
 
-		BodyClassificationRun.Report report = run(new BodyClassificationRule(), 10).classifyPile();
+		BodyClassificationRun.Report report = run(this.rules, 10).classifyPile();
 
 		assertThat(report).isEqualTo(new BodyClassificationRun.Report(2, 0, 0, 2, 0));
 		then(this.normalized).should(never()).recordBodyDecisions(anyMap());
@@ -60,10 +67,10 @@ class BodyClassificationRunTest {
 		holds(pile(1, "en", "Ship Go services."), pile(2, "en", "Weld pipes."),
 				pile(3, "en", "We are hiring."));
 		BodyClassificationRule rule = mock(BodyClassificationRule.class);
-		given(rule.classify(anyString(), any(), anyList())).willReturn(ClassificationStateEnum.UNKNOWN);
-		given(rule.classify("Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, segments("Ship Go services.")))
+		given(rule.classify(anyString(), any(), anyList(), anyMap())).willReturn(ClassificationStateEnum.UNKNOWN);
+		given(rule.classify("Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, segments("Ship Go services."), Map.of()))
 			.willReturn(ClassificationStateEnum.IN);
-		given(rule.classify("Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, segments("Weld pipes.")))
+		given(rule.classify("Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, segments("Weld pipes."), Map.of()))
 			.willReturn(ClassificationStateEnum.OUT);
 
 		BodyClassificationRun.Report report = run(rule, 10).classifyPile();
@@ -75,26 +82,41 @@ class BodyClassificationRunTest {
 
 	@Test
 	void readsAVacancyCleaningHasNotCutAsAnEmptyOne() {
-		holds(new PileVacancy(1, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "en", null));
+		holds(new PileVacancy(1, 1, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, "en", null));
 		BodyClassificationRule rule = mock(BodyClassificationRule.class);
-		given(rule.classify(any(), any(), any())).willReturn(ClassificationStateEnum.UNKNOWN);
+		given(rule.classify(any(), any(), any(), any())).willReturn(ClassificationStateEnum.UNKNOWN);
 
 		run(rule, 10).classifyPile();
 
-		then(rule).should().classify("Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, List.of());
+		then(rule).should().classify("Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, List.of(), Map.of());
 	}
 
 	@Test
-	void givesTheRuleTheReasonTheTitleWasLeftUnknown() {
-		holds(new PileVacancy(1, "Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, "en",
-				segments("Own the roadmap.")));
+	void givesTheRuleTheSkillsExtractionFoundInEachVacancy() {
+		holds(pile(1, "en", "Ship Go services."), pile(2, "en", "Weld pipes."));
+		given(this.skills.segmentsFoundIn(List.of(1L, 2L))).willReturn(Map.of(1L, Map.of("golang", List.of(0))));
 		BodyClassificationRule rule = mock(BodyClassificationRule.class);
-		given(rule.classify(any(), any(), any())).willReturn(ClassificationStateEnum.UNKNOWN);
+		given(rule.classify(any(), any(), any(), any())).willReturn(ClassificationStateEnum.UNKNOWN);
 
 		run(rule, 10).classifyPile();
 
 		then(rule).should()
-			.classify("Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, segments("Own the roadmap."));
+			.classify("Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, segments("Ship Go services."),
+					Map.of("golang", List.of(0)));
+		then(rule).should().classify("Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, segments("Weld pipes."), Map.of());
+	}
+
+	@Test
+	void givesTheRuleTheReasonTheTitleWasLeftUnknown() {
+		holds(new PileVacancy(1, 1, "Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, "en",
+				segments("Own the roadmap.")));
+		BodyClassificationRule rule = mock(BodyClassificationRule.class);
+		given(rule.classify(any(), any(), any(), any())).willReturn(ClassificationStateEnum.UNKNOWN);
+
+		run(rule, 10).classifyPile();
+
+		then(rule).should()
+			.classify("Product Manager", UnknownReasonEnum.SCOPE_AMBIGUITY, segments("Own the roadmap."), Map.of());
 	}
 
 	@Test
@@ -102,18 +124,18 @@ class BodyClassificationRunTest {
 		holds(pile(1, "fr", "Développer des services."), pile(2, "es", "Desarrollar servicios."),
 				pile(3, null, "Build services."), pile(4, "de", "Dienste entwickeln."));
 		BodyClassificationRule rule = mock(BodyClassificationRule.class);
-		given(rule.classify(any(), any(), any())).willReturn(ClassificationStateEnum.UNKNOWN);
+		given(rule.classify(any(), any(), any(), any())).willReturn(ClassificationStateEnum.UNKNOWN);
 
 		BodyClassificationRun.Report report = run(rule, 10).classifyPile();
 
 		assertThat(report).isEqualTo(new BodyClassificationRun.Report(4, 0, 0, 2, 2));
-		then(rule).should(times(2)).classify(any(), any(), any());
+		then(rule).should(times(2)).classify(any(), any(), any(), any());
 		then(this.normalized).should().recordUnsupportedLanguage(Set.of(1L, 4L));
 	}
 
 	@Test
 	void skipsAVacancyAnEarlierRunAlreadySkippedForItsLanguage() {
-		holds(new PileVacancy(1, "Engineer", UnknownReasonEnum.UNSUPPORTED_LANGUAGE, "fr", segments("Coder.")));
+		holds(new PileVacancy(1, 1, "Engineer", UnknownReasonEnum.UNSUPPORTED_LANGUAGE, "fr", segments("Coder.")));
 		BodyClassificationRule rule = mock(BodyClassificationRule.class);
 
 		BodyClassificationRun.Report report = run(rule, 10).classifyPile();
@@ -126,7 +148,7 @@ class BodyClassificationRunTest {
 	void walksThePileABatchAtATime() {
 		holds(pile(1, "en", "a"), pile(2, "en", "b"), pile(3, "en", "c"));
 
-		assertThat(run(new BodyClassificationRule(), 2).classifyPile().pile()).isEqualTo(3);
+		assertThat(run(this.rules, 2).classifyPile().pile()).isEqualTo(3);
 
 		then(this.normalized).should().pileAfter(0, 2);
 		then(this.normalized).should().pileAfter(2, 2);
@@ -135,15 +157,15 @@ class BodyClassificationRunTest {
 
 	@Test
 	void refusesABatchThatHoldsNothing() {
-		assertThatThrownBy(() -> run(new BodyClassificationRule(), 0)).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> run(this.rules, 0)).isInstanceOf(IllegalArgumentException.class);
 	}
 
 	private BodyClassificationRun run(BodyClassificationRule rule, int batch) {
-		return new BodyClassificationRun(rule, this.normalized, batch);
+		return new BodyClassificationRun(rule, this.normalized, this.skills, batch);
 	}
 
 	private static PileVacancy pile(long vacancyId, String language, String description) {
-		return new PileVacancy(vacancyId, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, language,
+		return new PileVacancy(vacancyId, vacancyId, "Engineer", UnknownReasonEnum.DOMAIN_AMBIGUITY, language,
 				segments(description));
 	}
 

@@ -1,6 +1,8 @@
 package oneprofile.backend.storage.vacancyskill;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Component;
@@ -27,6 +29,23 @@ public class VacancySkillStore {
 	@Transactional
 	public int clear() {
 		return this.repository.deleteEveryRow();
+	}
+
+	/**
+	 * Reads where the last run found each skill in some vacancies, for the body pass to read with their
+	 * segments (ADR-0018).
+	 * @param normalizedVacancyIds the normalized vacancies
+	 * @return by the id of each normalized vacancy, the indexes of the segments each skill was found
+	 * in, by skill id; a vacancy with no skill found is left out
+	 */
+	@Transactional(readOnly = true)
+	public Map<Long, Map<String, List<Integer>>> segmentsFoundIn(Collection<Long> normalizedVacancyIds) {
+		Map<Long, Map<String, List<Integer>>> found = new HashMap<>();
+		for (VacancySkillEntity row : this.repository.findByNormalizedVacancyIdIn(normalizedVacancyIds)) {
+			found.computeIfAbsent(row.normalizedVacancyId(), (vacancy) -> new HashMap<>())
+				.put(row.skillId(), row.segments());
+		}
+		return found;
 	}
 
 	/**
