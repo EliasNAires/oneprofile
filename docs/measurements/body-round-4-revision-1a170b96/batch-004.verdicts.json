@@ -1,0 +1,18 @@
+{
+ "181705": {"verdict": "a", "clause": "A physical product the role designs, integrates, tests or certifies", "pattern": "physical product hardware systems engineering"},
+ "183465": {"verdict": "b", "clause": "Knowledge of a field the role is about is expertise outside software", "pattern": "domain expertise required field knowledge"},
+ "185868": {"verdict": "b", "clause": "A degree list counts only when every field it accepts is a computing field", "pattern": "single computing degree requirement"},
+ "186282": {"verdict": "b", "clause": "A physical product the role designs, integrates, tests or certifies", "pattern": "physical product hardware systems engineering"},
+ "187380": {"verdict": "a", "clause": "A physical product the role designs, integrates, tests or certifies", "pattern": "physical product hardware systems engineering"},
+ "194484": {"verdict": "a", "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these", "pattern": "leadership role no stated tech skill"},
+ "195243": {"verdict": "b", "clause": "Knowledge of a field the role is about is expertise outside software", "pattern": "domain expertise required field knowledge"},
+ "196830": {"verdict": "a", "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these", "pattern": "leadership role no stated tech skill"},
+ "198527": {"verdict": "b", "clause": "Knowledge of a field the role is about is expertise outside software", "pattern": "domain expertise required field knowledge"},
+ "201891": {"verdict": "b", "clause": "Knowledge of a field the role is about is expertise outside software", "pattern": "domain expertise required field knowledge"},
+ "204189": {"verdict": "a", "clause": "a programming language, by name", "pattern": "developer advocate builds code demos"},
+ "204372": {"verdict": "a", "clause": "Q3 — the role reads or operates on engineer-facing artifacts", "pattern": "support role reads logs and APIs"},
+ "205812": {"verdict": "b", "clause": "A programming language asked for analysis, modelling or simulation of such a product does not move the role into software", "pattern": "physical product modeling simulation language"},
+ "206617": {"verdict": "a", "clause": "Q2 — the role writes code as its primary artifact", "pattern": "QA test automation engineer software"},
+ "210644": {"verdict": "a", "clause": "A degree list counts only when every field it accepts is a computing field", "pattern": "open degree list not computing-only"},
+ "215844": {"verdict": "a", "clause": "The description describes work that is plainly not engineering of any kind", "pattern": "non-engineering domain no tech skill"}
+}

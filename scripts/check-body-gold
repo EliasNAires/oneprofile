@@ -1,0 +1,151 @@
+#!/usr/bin/env python3
+"""Checks Jev, and the adjudicator, against the body-pass gold set under the current criterion
+revision (ADR-0014, #11).
+
+    scripts/check-body-gold
+
+The gold set, docs/measurements/body-gold-set.tsv, lists 200 drawn vacancies with the stratum
+they were predicted, their vacancy id, title reason and title, and the label (and doubt) Elias
+filled in by hand. Every row must carry a label before this runs; a row left blank stops it, so
+the script is a no-op until the gold set is complete.
+
+Once every row has a label, this has Jev label every gold vacancy that has no label yet under the
+current criterion revision (bodyloop.label, appending as it goes and stopping once every label
+stored has cost $4), then reports, for the open and the held-out part apart:
+
+- Jev's agreement with the gold set (n agreeing / n, the % and the 95% Wilson interval), and the
+  3x3 confusion table of the gold label against Jev's.
+
+Each row where Jev and the gold set disagree is written, both answers unattributed, into batches
+of 20 under docs/measurements/body-gold-check-revision-<R>/, open-batch-NNN.json and
+held-batch-NNN.json, for the `adjudicator` agent (text: the title, title reason and cleaned
+description from the pile export); which answer is Jev's is in sides.json. The open part's
+disagreements are also written to open-disagreements.tsv (id, vacancy_id, title, gold, jev, jev's
+probabilities); the calibrating session reads that file and never the held-out batches.
+
+Once the batches carry `.verdicts.json` files, run it again: it reports, per part, how often the
+adjudicator sided with the gold set, with Jev, or with neither. Running it again resumes:
+existing Jev labels are reused, and batch files are not rewritten once any exist for a part.
+"""
+
+import json
+import math
+import random
+import sys
+from collections import Counter
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import bodyloop  # noqa: E402
+
+GOLD = bodyloop.REPO / "docs" / "measurements" / "body-gold-set.tsv"
+CHECK = bodyloop.REPO / "docs" / "measurements" / "body-gold-check-revision-{revision}"
+BATCH = 20
+
+Z = 1.96
+
+
+def wilson(agreed, total):
+    """The 95% Wilson interval of a proportion."""
+    share = agreed / total
+    centre = (share + Z * Z / (2 * total)) / (1 + Z * Z / total)
+    half = Z * math.sqrt(share * (1 - share) / total + Z * Z / (4 * total * total)) / (1 + Z * Z / total)
+    return centre - half, centre + half
+
+
+def share(agreed, total):
+    if not total:
+        return "none"
+    low, high = wilson(agreed, total)
+    return f"{agreed}/{total} = {agreed / total:.1%} (95% interval {low:.1%}-{high:.1%})"
+
+
+def read_gold():
+    with open(GOLD) as lines:
+        header, *rows = [line.rstrip("\n").split("\t") for line in lines if line.strip()]
+    return [dict(zip(header, row)) for row in rows]
+
+
+def main():
+    gold = read_gold()
+    missing = [row["id"] for row in gold if not row["label"].strip()]
+    if missing:
+        sys.exit(f"{len(missing)} of {len(gold)} gold rows have no label yet (the first is id {missing[0]})")
+    bad = [row["id"] for row in gold if row["label"] not in bodyloop.STATES]
+    if bad:
+        sys.exit(f"{len(bad)} gold rows carry a label outside {bodyloop.STATES} (the first is id {bad[0]})")
+
+    revision = bodyloop.criterion_revision()
+    pile = bodyloop.read_pile()
+    bodyloop.label([int(row["vacancy_id"]) for row in gold], pile)
+    labels = bodyloop.read_labels()
+
+    directory = Path(str(CHECK).format(revision=revision))
+    directory.mkdir(parents=True, exist_ok=True)
+    sides_path = directory / "sides.json"
+    sides = json.loads(sides_path.read_text()) if sides_path.exists() else {}
+
+    print(f"Gold set check at criterion revision {revision}, {bodyloop.MODEL}")
+
+    for part in ("open", "held-out"):
+        part_rows = [row for row in gold if row["part"] == part]
+        scored = [row for row in part_rows if int(row["vacancy_id"]) in labels]
+        print(f"\n{part} ({len(part_rows)} rows, {len(scored)} labelled by Jev):")
+        agreeing = sum(1 for row in scored if row["label"] == labels[int(row["vacancy_id"])]["label"])
+        print(f"  Jev agreement: {share(agreeing, len(scored))}")
+
+        counts = Counter((row["label"], labels[int(row["vacancy_id"])]["label"]) for row in scored)
+        print("  confusion (gold rows x Jev columns):")
+        print("              " + "".join(f"{'jev ' + s:>12}" for s in bodyloop.STATES))
+        for gold_state in bodyloop.STATES:
+            print(f"    gold {gold_state:<9}" +
+                  "".join(f"{counts.get((gold_state, jev_state), 0):>12}" for jev_state in bodyloop.STATES))
+
+        disagreeing = sorted(
+            (row for row in scored if row["label"] != labels[int(row["vacancy_id"])]["label"]),
+            key=lambda row: int(row["id"]))
+
+        prefix = "open" if part == "open" else "held"
+        if part == "open":
+            with open(directory / "open-disagreements.tsv", "w") as out:
+                out.write("id\tvacancy_id\ttitle\tgold\tjev\tjev_probabilities\n")
+                for row in disagreeing:
+                    label_row = labels[int(row["vacancy_id"])]
+                    out.write("\t".join([row["id"], row["vacancy_id"], row["title"], row["label"],
+                                          label_row["label"], json.dumps(label_row["probabilities"])]) + "\n")
+
+        if not list(directory.glob(f"{prefix}-batch-*.json")):
+            for start in range(0, len(disagreeing), BATCH):
+                batch = []
+                for row in disagreeing[start:start + BATCH]:
+                    vacancy_id = int(row["vacancy_id"])
+                    label_row = labels[vacancy_id]
+                    pile_row = pile[vacancy_id]
+                    text = (f"Title: {pile_row['cleaned_title']}\n"
+                            f"Title reason: {pile_row['title_reason']}\n\n{pile_row['cleaned_description']}")
+                    jev_side = random.Random(row["id"]).choice("ab")
+                    other = "b" if jev_side == "a" else "a"
+                    sides[row["id"]] = {"jev": jev_side, "gold": other}
+                    batch.append({"id": row["id"], "text": text, jev_side: label_row["label"], other: row["label"]})
+                (directory / f"{prefix}-batch-{start // BATCH + 1:03}.json").write_text(
+                    json.dumps(batch, indent=1, ensure_ascii=False) + "\n")
+
+        verdicts = {}
+        for path in directory.glob(f"{prefix}-batch-*.verdicts.json"):
+            verdicts.update(json.loads(path.read_text()))
+        print(f"  {len(disagreeing)} disagreements in {len(list(directory.glob(f'{prefix}-batch-*[0-9].json')))} "
+              f"batches, {len(verdicts)} adjudicated")
+        if verdicts:
+            gold_side = sum(verdict["verdict"] == sides[row_id]["gold"] for row_id, verdict in verdicts.items())
+            jev_side = sum(verdict["verdict"] == sides[row_id]["jev"] for row_id, verdict in verdicts.items())
+            print(f"  adjudicator with the gold set {share(gold_side, len(verdicts))}, with Jev {jev_side}, "
+                  f"neither {len(verdicts) - gold_side - jev_side}")
+            print(f"  Jev agreement, adjudicated: {share(agreeing + jev_side, len(scored))}")
+
+    sides_path.write_text(json.dumps(sides, indent=1) + "\n")
+    print(f"\nJev has cost ${bodyloop.spend():.4f} over every run of both issues, of the ${bodyloop.SPEND_LIMIT:.2f} limit")
+
+
+if __name__ == "__main__":
+    main()

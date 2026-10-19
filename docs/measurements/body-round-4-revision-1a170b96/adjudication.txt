@@ -1,0 +1,64 @@
+Adjudication of round 4 under criterion revision 1a170b96: rule misses (adjudicator sided with Jev), labeller errors (sided with the rules), neither.
+IN: rule misses 33/200 = 16.5%, labeller errors 16, neither 0
+OUT: rule misses 19/200 = 9.5%, labeller errors 4, neither 0
+UNKNOWN: rule misses 4/13 = 30.8%, labeller errors 0, neither 0
+
+## rule-miss patterns, IN stratum
+- 1753 | Enterprise Imaging Architect SME Manager | required field expertise outside software | Knowledge of a field the role is about is expertise outside software when the description 
+- 5368 | Product Product Manager Korean Speaking Bangkok or Se | bonus skill not required | A background listed only as a plus or a nice-to-have does not count
+- 11658 | Quality Systems Engineer United Kingdom | quality system procedures not software | A quality management system counts only when it is software the role builds or configures
+- 11899 | Systems Integration Test Engineer | physical product other engineering discipline | RF hardware ... is electrical engineering, and requiring it is expertise outside software
+- 20521 | SoC Memory Subsystem Architect | physical product other engineering discipline | A physical product the role designs, integrates, tests or certifies ... is another domain
+- 69430 | Manager Solutions Engineering NorBen Remote | sales role owns quota | Selling is decided by the duties. A role whose main work is selling — carrying a quota, ow
+- 78311 | Associate Data Operations | required field expertise outside software | Knowledge of a field the role is about is expertise outside software when the description 
+- 84997 | Staff Analyst Analytics Jumbo Insights | required field expertise outside software | Knowledge of a field the role is about is expertise outside software when the description 
+- 86177 | Technical Project Manager Agentic AI Delivery | field expertise required beside software skill | The expertise limit on Q4
+- 97182 | Associate Director Business Analytics | field expertise required beside software skill | The expertise limit on Q4
+- 97693 | Manager | field expertise required beside software skill | The expertise limit on Q4
+- 97694 | Consultant | field expertise required beside software skill | The expertise limit on Q4
+- 98472 | MHI Talent Solutions NetSuite Administrator remote | field expertise required beside software skill | The expertise limit on Q4
+- 105340 | Solutions Engineer | sales quota makes selling role | Selling is decided by the duties
+- 108466 | Manager Solutions Engineering SLED | sales quota makes selling role | Selling is decided by the duties
+- 116453 | Product Manager Workflows | bonus-only skill not asked | A background listed only as a plus or a nice-to-have does not count
+- 118756 | Research Analyst | field expertise required beside software skill | The expertise limit on Q4
+- 119576 | Project Director | no software background requested | If none holds, it is OUT
+- 133169 | Quantum Scientist Government Programs QEC | software skill only nice-to-have, research role | A background listed only as a plus or a nice-to-have does not count: ... 'even better if y
+- 134254 | Systems Engineer I Secret Clearance | physical product engineering domain | A physical product the role designs, integrates, tests or certifies ... is another domain
+- 135872 | Engineer OPC Optical Proximity Correction Modeling Pr | physical product engineering domain | A physical product the role designs, integrates, tests or certifies ... is another domain
+- 137213 | OBD Requirements Engineer Generic Scan Tool Lead | physical product engineering domain | A physical product the role designs, integrates, tests or certifies ... is another domain
+- 138917 | Test Engineer Indoor Heated | physical product engineering domain | A physical product the role designs, integrates, tests or certifies ... is another domain
+- 181434 | Manager Product Quality Engineering | hardware quality system procedures | a quality system that is procedures and controlled documents, set up under ISO 9001 or a s
+- 181705 | Systems Engineer | physical product hardware systems engineering | A physical product the role designs, integrates, tests or certifies
+- 183465 | Manager US Power Markets Analytics | domain expertise required field knowledge | Knowledge of a field the role is about is expertise outside software
+- 186282 | Production Systems Test Engineer | physical product hardware systems engineering | A physical product the role designs, integrates, tests or certifies
+- 187380 | System Subsystem Engineer | physical product hardware systems engineering | A physical product the role designs, integrates, tests or certifies
+- 195243 | Engineer Product Investigations | domain expertise required field knowledge | Knowledge of a field the role is about is expertise outside software
+- 198527 | Fractional Product Manager Renewable Energy LG NOVA | domain expertise required field knowledge | Knowledge of a field the role is about is expertise outside software
+- 201891 | Specialist Business Analyst Actimize | domain expertise required field knowledge | Knowledge of a field the role is about is expertise outside software
+- 205812 | Systems Engineer MBSE Simulink | physical product modeling simulation language | A programming language asked for analysis, modelling or simulation of such a product does 
+- 210644 | Associate Project Manager II | open degree list not computing-only | A degree list counts only when every field it accepts is a computing field
+## rule-miss patterns, OUT stratum
+- 15935 | Data Analyst | software background required for analyst | What counts as a stated software background: a programming language, by name; SQL; cloud .
+- 20781 | Chief Product Technology Officer CPTO Aequitas Soluti | executive requires technical practitioner background | Q4 — the description requires or prefers a software background
+- 29458 | Disaster Recovery Business Continuity Engineer | infrastructure or systems engineering work | cloud, container, infrastructure or networking skills
+- 31684 | Data Consultant Architecture Modelling Products | data architecture schema design | Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, sc
+- 43173 | Product Engineer | explicit code writing required | Q2 — the role writes code as its primary artifact
+- 49714 | Engineering Manager New User Experience | engineering manager over software team | The description names software work — a stack, a codebase, APIs, cloud infrastructure, sof
+- 53708 | CICS Systems Programmer | infrastructure or systems engineering work | infrastructure or systems engineering work
+- 80789 | AI Deployment Consultant | hands-on platform configuration automation | Low-code is software work. A role whose main work is building applications, automations or
+- 89419 | Research Scientist LG AI Research Center Ann Arbor | machine learning research writes code | Q2 — the role writes code as its primary artifact
+- 101853 | Engineering Manager | engineering manager requires software engineer experience | What counts as a stated software background
+- 117080 | LATAM Americas ERP Netsuite Solution Consultant Imple | ERP SaaS configuration implementation role | Low-code is software work
+- 130758 | Digital Transformation Lead EPC | digital transformation builds software tools | Q2 — the role writes code as its primary artifact
+- 134852 | Technical Researcher Engineer | research role builds software prototypes | Q2 — the role writes code as its primary artifact
+- 139596 | Commercial Solution Engineer | presales engineer required cloud skill | Q4 — cloud, container, infrastructure or networking skills (named tool counts, e.g. Snowfl
+- 141460 | Integration Consultant | software integration consultant cloud required | domain_ambiguity: the description names software work — a stack, a codebase, APIs, cloud i
+- 142375 | Wireless Protocol Architect Engineer | firmware engineer writes protocol code | Radio is two things: experience with wireless or network protocols for a role that writes 
+- 163916 | Systems Engineer | systems engineer software architecture artifacts | domain_ambiguity settled by 'software system projects', then Q3 — architecture/interface a
+- 174973 | Intern Product Engineer | intern builds and ships code | Q2 — the role writes code as its primary artifact
+- 204189 | Developer Advocate | developer advocate builds code demos | a programming language, by name
+## rule-miss patterns, UNKNOWN stratum
+- 117627 | Security Compliance Advisor Outpost | GRC compliance advisory excluded | security skills in software, cloud or networks ... but not governance, risk and compliance
+- 117628 | IT Consultant San Francisco Bay Area | IT support cloud networking required skill | cloud, container, infrastructure or networking skills
+- 206617 | Staff Quality Engineer | QA test automation engineer software | Q2 — the role writes code as its primary artifact
+- 215844 | Analyst Equity Reporting | non-engineering domain no tech skill | The description describes work that is plainly not engineering of any kind

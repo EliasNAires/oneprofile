@@ -1,0 +1,22 @@
+{
+  "86177": {"verdict": "a", "clause": "The expertise limit on Q4", "pattern": "field expertise required beside software skill"},
+  "89419": {"verdict": "a", "clause": "Q2 — the role writes code as its primary artifact", "pattern": "machine learning research writes code"},
+  "97182": {"verdict": "a", "clause": "The expertise limit on Q4", "pattern": "field expertise required beside software skill"},
+  "97693": {"verdict": "b", "clause": "The expertise limit on Q4", "pattern": "field expertise required beside software skill"},
+  "97694": {"verdict": "b", "clause": "The expertise limit on Q4", "pattern": "field expertise required beside software skill"},
+  "98472": {"verdict": "b", "clause": "The expertise limit on Q4", "pattern": "field expertise required beside software skill"},
+  "99996": {"verdict": "a", "clause": "If none holds, it is OUT", "pattern": "pre-sales support role vague technical requirement"},
+  "101853": {"verdict": "b", "clause": "What counts as a stated software background", "pattern": "engineering manager requires software engineer experience"},
+  "105340": {"verdict": "b", "clause": "Selling is decided by the duties", "pattern": "sales quota makes selling role"},
+  "108466": {"verdict": "a", "clause": "Selling is decided by the duties", "pattern": "sales quota makes selling role"},
+  "108535": {"verdict": "a", "clause": "A named tool of one of these kinds counts as its skill", "pattern": "named cloud tool required skill"},
+  "112304": {"verdict": "b", "clause": "What counts as a stated software background", "pattern": "product manager preferred network security skill"},
+  "115513": {"verdict": "a", "clause": "a choice whose every option is a software skill", "pattern": "disjunctive list all software skills desirable"},
+  "116453": {"verdict": "b", "clause": "A background listed only as a plus or a nice-to-have does not count", "pattern": "bonus-only skill not asked"},
+  "117080": {"verdict": "b", "clause": "Low-code is software work", "pattern": "ERP SaaS configuration implementation role"},
+  "117627": {"verdict": "a", "clause": "security skills in software, cloud or networks ... but not governance, risk and compliance frameworks alone", "pattern": "GRC compliance advisory excluded"},
+  "117628": {"verdict": "a", "clause": "cloud, container, infrastructure or networking skills", "pattern": "IT support cloud networking required skill"},
+  "118756": {"verdict": "b", "clause": "The expertise limit on Q4", "pattern": "field expertise required beside software skill"},
+  "119576": {"verdict": "b", "clause": "If none holds, it is OUT", "pattern": "no software background requested"},
+  "130758": {"verdict": "a", "clause": "Q2 — the role writes code as its primary artifact", "pattern": "digital transformation builds software tools"}
+}

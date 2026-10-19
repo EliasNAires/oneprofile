@@ -1,0 +1,7 @@
+{
+ "7": {"verdict": "a", "clause": "A physical product the role designs, integrates, tests or certifies — unless the role's own work on it is software; a programming language asked for analysis, modelling or simulation of such a product does not move the role into software", "pattern": "defense systems engineer modeling simulation"},
+ "42": {"verdict": "a", "clause": "A background listed only as a plus or a nice-to-have does not count", "pattern": "support role skill listed as plus"},
+ "46": {"verdict": "b", "clause": "If none holds, it is OUT", "pattern": "product manager no required software skill"},
+ "48": {"verdict": "a", "clause": "Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, schemas, logs, specs", "pattern": "support role reads codebase and APIs"},
+ "94": {"verdict": "b", "clause": "A named tool of one of these kinds counts as its skill: a monitoring tool such as Datadog is an infrastructure skill", "pattern": "preferred infrastructure monitoring skill"}
+}

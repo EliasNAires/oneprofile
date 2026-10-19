@@ -1,0 +1,6 @@
+id	vacancy_id	title	gold	jev	jev_probabilities
+7	12316	Systems Engineer Battlespace	IN	OUT	{"IN": 0.41, "OUT": 0.56, "UNKNOWN": 0.03}
+42	68770	Technical Support Engineer Spanish	OUT	IN	{"IN": 0.62, "OUT": 0.37, "UNKNOWN": 0.01}
+46	85365	Product Lead User Lifecycle	IN	OUT	{"IN": 0.16, "OUT": 0.84, "UNKNOWN": 0.0}
+48	80854	Technical Support Specialist	IN	OUT	{"IN": 0.47, "OUT": 0.53, "UNKNOWN": 0.0}
+94	179812	Service Desk Technician II	IN	OUT	{"IN": 0.15, "OUT": 0.85, "UNKNOWN": 0.0}

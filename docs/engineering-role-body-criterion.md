@@ -68,7 +68,9 @@ integrations is a software role whether it builds them in code or in a low-code 
 and flows in Power Apps or Salesforce, an ERP or quality system implemented and configured, a
 marketing and sales tool stack wired together and automated. A role that only reports on data
 in such a tool — reports, dashboards — or administers it day to day — users, permissions, page
-layouts, content — is not. When a role does some of both, its main work decides. A quality
+layouts, content — is not. When a role does some of both, its main work decides. An
+administrator whose work is not software under this paragraph is still decided by Q4: one asked for
+a query or programming language (SOQL, Apex, SQL) has been asked for a software background. A quality
 management system counts only when it is software the role builds or configures; a quality system
 that is procedures and controlled documents, set up under ISO 9001 or a similar standard and kept in
 a document tool, is not software, and building or improving it is quality work.
@@ -77,17 +79,26 @@ a document tool, is not software, and building or improving it is quality work.
 requirement or a preference; a background that would merely help with the duties is not enough.
 It counts when the description asks for any of:
 
-- a degree in computer science or software engineering, or equivalent technical experience;
+- a degree in computer science or software engineering, or equivalent technical experience,
+  which includes a background asked for in those words: "a software engineering background",
+  "experience as a software engineer";
 - a programming language, by name;
 - SQL;
 - cloud, container, infrastructure or networking skills;
+- security skills in software, cloud or networks — application, cloud or network security — but
+  not governance, risk and compliance frameworks alone;
 - technical experience in a field, when that field is software — logs analytics, observability,
   developer tools.
+
+A named tool of one of these kinds counts as its skill: a monitoring tool such as Datadog is an
+infrastructure skill, Terraform an infrastructure skill, Snowflake a cloud data skill. A vague
+"technical" or "technically fluent", with no software named, is none of these.
 
 A background listed only as a plus or a nice-to-have does not count: "a plus", "nice to have",
 "bonus", "extra credit", "even better if", "it's great if you have". A background that is *desired*
 or *desirable* is preferred, and counts: under "Essential" and "Desirable" headings, or "Desired
-qualifications", the second list is what the employer prefers, not a nice-to-have.
+qualifications", the second list is what the employer prefers, not a nice-to-have. So is a skill
+asked for "ideally", "preferably" or as "strongly preferred".
 
 A listed skill counts at whatever level the description asks for it ("a basic understanding of
 SQL"), and it counts when it is the tool the role works with every day: an analyst asked to write
@@ -130,7 +141,9 @@ What is asked of the applicant has to be the software background itself:
   for**: "SQL or BI tools", "Excel, SQL or Looker", "Stata, R, Python or SAS", "SQL or advanced data
   analysis skills", "knowledge of CRM integrations, reporting, analytics, or SQL", a data tool named
   only as an example ("e.g. Eagle RDC, SQL, or similar"). The applicant can meet it without the
-  software skill. A skill joined to the others with "and", or asked for on its own, is asked for.
+  software skill. A skill joined to the others with "and", or asked for on its own, is asked for,
+  and so is a choice whose every option is a software skill: "SQL, Python or R" asks for one of
+  them.
 - **A skill the applicant may learn instead is not asked for**: "SQL or willingness to learn", "fluency
   — or a fast ramp — in SQL", "C or Python, or curiosity about firmware". The applicant can meet it
   without the software skill.
@@ -154,8 +167,8 @@ applicant would lack it, so the role is OUT, even when it also asks for a softwa
 The same holds against Q2: a role that writes code but requires an electrical-engineering degree,
 a clinical licence or an actuarial qualification is OUT. It is the requirement that makes it OUT,
 not the field: verification code written in SystemVerilog, Python or C++ for a role that asks for
-no such degree is Q2. Field knowledge the description lists as a plus, or expects to be learned
-on the job, is not such a requirement.
+no such degree is Q2. Field knowledge the description lists as a plus or only prefers, or expects to be
+learned on the job, is not such a requirement: an applicant without it can still be hired.
 
 Radio is two things. Experience with wireless or network *protocols* — Bluetooth, Wi-Fi, cellular
 or low-latency audio protocol stacks — for a role that writes their firmware or software is a
@@ -193,12 +206,18 @@ team or a plant — and the description has to say which.
 - A physical product the role designs, integrates, tests or certifies — aircraft, rockets,
   satellites, weapons, vehicles, robots, chips, building systems — is another domain, unless the
   role's own work on it is software: writing its code, its software tests or its software's
-  architecture. A programming language asked for analysis, modelling or simulation of such a
+  architecture. Algorithms the role writes to run in or with the product — its signal or image
+  processing, its flight or control software, the pipelines that process its data — are the
+  product's code. A programming language asked for analysis, modelling or simulation of such a
   product does not move the role into software, and neither does a software word in a list of
-  the product's tools. Verification code is code, so the Q2 example under the expertise limit
+  the product's tools. This holds even when the description asks for a software background: the
+  role needs the product's engineering. Verification code is code, so the Q2 example under the expertise limit
   stands.
 - The description describes work that is plainly not engineering of any kind — policy,
-  operations, business analysis — and the vacancy is OUT, whether or not it names a domain.
+  operations, business analysis, investigation — and the domain doubt is settled: the work is not
+  engineering in another discipline. Go on to the questions. Such a role is OUT unless one of them
+  holds, and it is IN when the description asks for a software background: a fraud or policy
+  analyst asked for SQL is the analyst of Q4.
 - The description describes work that could be software or not, and does not say which —
   "maintain the control systems", with nothing to show whether that is code or a plant — and the
   vacancy is UNKNOWN: the title's doubt is still open.
@@ -227,3 +246,18 @@ technical account and programme managers. The description decides, through Q2–
 - **Meaning is read in any language.**
 - **This document and nothing else.** The labeller knows the title's reason, given with the
   vacancy, but not the title rules or anything else the title stage decided.
+
+## Revisions
+
+A label records the revision it was made under, by the hash of this file. Revisions before the
+first calibration were written into the round comments of #11.
+
+- **Calibration 1** (2026-10-19): from the open half of the gold set (ADR-0014). A domain bullet
+  that finds work plainly not engineering settles the domain and leaves the vacancy to the
+  questions, so an analyst asked for SQL stays IN. Algorithms that run in or with a physical
+  product are its code; a physical product is another domain even beside a software background.
+  A choice among software skills only is asked for, and "ideally", "preferably" and "strongly
+  preferred" are preferences. Security skills in software, cloud or networks, a software
+  background asked for in those words, and a named tool of a listed kind count under Q4. An
+  administrator asked for a query or programming language is decided by Q4, and field knowledge
+  that is only preferred does not make a vacancy OUT.

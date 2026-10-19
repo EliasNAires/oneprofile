@@ -1,0 +1,13 @@
+id	vacancy_id	title	gold	jev	jev_probabilities
+1	182882	Analyst Data Policy	IN	OUT	{"IN": 0.45, "OUT": 0.55, "UNKNOWN": 0.0}
+3	134204	Scientist II EO IR Image Analysis	IN	OUT	{"IN": 0.36, "OUT": 0.63, "UNKNOWN": 0.01}
+6	117385	Fraud Analyst	IN	OUT	{"IN": 0.11, "OUT": 0.88, "UNKNOWN": 0.01}
+7	12316	Systems Engineer Battlespace	IN	OUT	{"IN": 0.46, "OUT": 0.49, "UNKNOWN": 0.05}
+10	210754	Salesforce Administrator	IN	OUT	{"IN": 0.17, "OUT": 0.83, "UNKNOWN": 0.0}
+42	68770	Technical Support Engineer Spanish	OUT	IN	{"IN": 0.52, "OUT": 0.47, "UNKNOWN": 0.01}
+46	85365	Product Lead User Lifecycle	IN	OUT	{"IN": 0.12, "OUT": 0.88, "UNKNOWN": 0.0}
+58	173507	Cybersecurity Manager Strategy Advisory	IN	OUT	{"IN": 0.13, "OUT": 0.87, "UNKNOWN": 0.0}
+59	78233	Business Systems Analyst	IN	OUT	{"IN": 0.5, "OUT": 0.5, "UNKNOWN": 0.0}
+72	198378	Lead Analytics Manager	IN	OUT	{"IN": 0.46, "OUT": 0.54, "UNKNOWN": 0.0}
+94	179812	Service Desk Technician II	IN	OUT	{"IN": 0.2, "OUT": 0.8, "UNKNOWN": 0.0}
+99	180935	Business Analyst II	IN	OUT	{"IN": 0.1, "OUT": 0.9, "UNKNOWN": 0.0}

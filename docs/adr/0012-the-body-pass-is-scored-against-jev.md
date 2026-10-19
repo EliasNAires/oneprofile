@@ -136,6 +136,26 @@ the cap.
 - **Cap.** The loop stops after **ten rounds**, whatever the numbers say, and reports where
   it stopped.
 
+## Calibration (ADR-0014)
+
+**The gold set** is `docs/measurements/body-gold-set.tsv`: 200 pile vacancies drawn as a round
+draws, from the body pass's predictions at round 4's rules (100 `IN`, 100 `OUT`; every `UNKNOWN`
+prediction had been drawn already), none drawn by an earlier round, seed 11
+(`scripts/draw-body-gold`). Ids 101–200 are **held out**. Each row was labelled from the criterion
+by a Sonnet `body-labeller` with its close calls noted, and an Opus session per half reviewed the
+noted rows, which is the gold set's correction. **The check** is `scripts/check-body-gold`; the
+adjudication question is the labeller's: applying the criterion, is the vacancy an engineering
+role, `IN`, `OUT` or `UNKNOWN`?
+
+| Calibration | Revision | Jev on held-out rows | Adjudicator with the gold set, held-out disagreements |
+| --- | --- | ---: | ---: |
+| 1 (2026-10-19), before | `7ef09b5e` | 90/100 = 90.0% (82.6–94.5%) | 9/10 |
+| 1 (2026-10-19), frozen | `1a170b96` | 95/100 = 95.0% (88.8–97.8%) | 5/5 |
+
+These figures replace the labeller check's as the measure of the criterion. Gates of 10% on `IN`
+and `OUT` sit about at the reading noise they show (5% raw, with a lower bound of 89%), so a
+round near a gate is decided by adjudication, not by the raw figure.
+
 ## Considered options
 
 - **A Claude Code session labelling a fresh sample every round**, as ADR-0007 does for

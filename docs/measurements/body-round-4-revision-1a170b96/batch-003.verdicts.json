@@ -1,0 +1,22 @@
+{
+  "133169": {"verdict": "b", "clause": "A background listed only as a plus or a nice-to-have does not count: ... 'even better if you have'", "pattern": "software skill only nice-to-have, research role"},
+  "134254": {"verdict": "a", "clause": "A physical product the role designs, integrates, tests or certifies ... is another domain", "pattern": "physical product engineering domain"},
+  "134852": {"verdict": "a", "clause": "Q2 — the role writes code as its primary artifact", "pattern": "research role builds software prototypes"},
+  "135872": {"verdict": "a", "clause": "A physical product the role designs, integrates, tests or certifies ... is another domain", "pattern": "physical product engineering domain"},
+  "136591": {"verdict": "a", "clause": "Q4 — cloud, container, infrastructure or networking skills", "pattern": "presales engineer required cloud skill"},
+  "137213": {"verdict": "a", "clause": "A physical product the role designs, integrates, tests or certifies ... is another domain", "pattern": "physical product engineering domain"},
+  "138917": {"verdict": "a", "clause": "A physical product the role designs, integrates, tests or certifies ... is another domain", "pattern": "physical product engineering domain"},
+  "139596": {"verdict": "a", "clause": "Q4 — cloud, container, infrastructure or networking skills (named tool counts, e.g. Snowflake)", "pattern": "presales engineer required cloud skill"},
+  "141460": {"verdict": "a", "clause": "domain_ambiguity: the description names software work — a stack, a codebase, APIs, cloud infrastructure, software products or teams", "pattern": "software integration consultant cloud required"},
+  "142375": {"verdict": "b", "clause": "Radio is two things: experience with wireless or network protocols for a role that writes their firmware or software is a networking background, not expertise outside software", "pattern": "firmware engineer writes protocol code"},
+  "146025": {"verdict": "b", "clause": "scope_ambiguity: are the duties technical in themselves — owning API specs, reading logs, making architecture calls (Q2/Q3)", "pattern": "PM reads technical specs requirements"},
+  "149174": {"verdict": "b", "clause": "A list that also accepts ... 'engineering' without a discipline ... says a software background is one way in among others, so it asks for none", "pattern": "manager open degree list no software skill"},
+  "155659": {"verdict": "b", "clause": "Low-code is software work: an administrator ... asked for a query or programming language (SOQL, Apex, SQL) has been asked for a software background", "pattern": "analyst SQL preferred"},
+  "155812": {"verdict": "b", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "analyst required SQL skill"},
+  "161602": {"verdict": "a", "clause": "Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, schemas", "pattern": "PM reads technical specs requirements"},
+  "163916": {"verdict": "b", "clause": "domain_ambiguity settled by 'software system projects', then Q3 — architecture/interface artifacts", "pattern": "systems engineer software architecture artifacts"},
+  "170302": {"verdict": "b", "clause": "Q3 — the role reads or operates on engineer-facing artifacts — ... specs", "pattern": "technical writer drafts engineering specs"},
+  "172055": {"verdict": "a", "clause": "Q4 needs the description to say it ... a background that would merely help with the duties is not enough (no named software skill required; open degree list)", "pattern": "PM no software skill required"},
+  "174973": {"verdict": "b", "clause": "Q2 — the role writes code as its primary artifact", "pattern": "intern builds and ships code"},
+  "181434": {"verdict": "b", "clause": "a quality system that is procedures and controlled documents, set up under ISO 9001 or a similar standard ... is not software, and building or improving it is quality work", "pattern": "hardware quality system procedures"}
+}

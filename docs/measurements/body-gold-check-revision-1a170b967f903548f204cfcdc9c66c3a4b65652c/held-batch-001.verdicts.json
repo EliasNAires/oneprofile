@@ -1,0 +1,7 @@
+{
+ "134": {"verdict": "a", "clause": "The expertise limit on Q4: knowledge of a field the role is about is expertise outside software when required", "pattern": "required domain expertise outside software"},
+ "137": {"verdict": "a", "clause": "The expertise limit on Q4: knowledge of a field the role is about is expertise outside software when required", "pattern": "required domain expertise outside software"},
+ "152": {"verdict": "a", "clause": "Once the description asks for a software background, Q4 holds, and the vacancy is IN", "pattern": "program manager preferred SQL stays in"},
+ "174": {"verdict": "a", "clause": "What counts as a stated software background: technical experience in a field, when that field is software", "pattern": "required technical AI software background"},
+ "180": {"verdict": "b", "clause": "domain_ambiguity: describes work that could be software or not, and does not say which", "pattern": "software or physical process unclear"}
+}

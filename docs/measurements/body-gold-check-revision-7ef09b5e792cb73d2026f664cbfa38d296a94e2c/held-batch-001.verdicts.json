@@ -1,0 +1,12 @@
+{
+  "112": {"verdict": "a", "clause": "A physical product the role designs, integrates, tests or certifies", "pattern": "pre-silicon chip modelling in software"},
+  "131": {"verdict": "a", "clause": "Once the description asks for a software background, Q4 holds", "pattern": "basic SQL preferred in ops role"},
+  "137": {"verdict": "a", "clause": "The description describes work that is plainly not engineering of any kind", "pattern": "domain ambiguity resolved as business analytics"},
+  "141": {"verdict": "b", "clause": "an IT support or data-centre manager asked for basic Linux or command-line proficiency", "pattern": "basic networking preferred IT support"},
+  "152": {"verdict": "a", "clause": "Once the description asks for a software background, Q4 holds", "pattern": "SQL preferred in program manager role"},
+  "154": {"verdict": "b", "clause": "Low-code is software work", "pattern": "low-code ERP configuration build"},
+  "160": {"verdict": "a", "clause": "Q3 — the role reads or operates on engineer-facing artifacts", "pattern": "solutions engineer builds API integrations"},
+  "174": {"verdict": "b", "clause": "What counts as a stated software background", "pattern": "UX design role no software skill"},
+  "180": {"verdict": "b", "clause": "describes work that could be software or not, and does not say which", "pattern": "ambiguous engineering tool description"},
+  "194": {"verdict": "b", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "graduate analyst Python or SQL requirement"}
+}

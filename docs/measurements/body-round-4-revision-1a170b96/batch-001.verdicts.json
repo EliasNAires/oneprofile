@@ -1,0 +1,22 @@
+{
+ "1753": {"verdict": "a", "clause": "Knowledge of a field the role is about is expertise outside software when the description requires it", "pattern": "required field expertise outside software"},
+ "5368": {"verdict": "a", "clause": "A background listed only as a plus or a nice-to-have does not count", "pattern": "bonus skill not required"},
+ "11658": {"verdict": "b", "clause": "A quality management system counts only when it is software the role builds or configures", "pattern": "quality system procedures not software"},
+ "11899": {"verdict": "a", "clause": "RF hardware ... is electrical engineering, and requiring it is expertise outside software", "pattern": "physical product other engineering discipline"},
+ "15935": {"verdict": "a", "clause": "What counts as a stated software background: a programming language, by name; SQL; cloud ... skills", "pattern": "software background required for analyst"},
+ "19869": {"verdict": "a", "clause": "A role that supports a sale without carrying its quota ... is decided by Q4 like any other", "pattern": "sales role supports deal"},
+ "20521": {"verdict": "a", "clause": "A physical product the role designs, integrates, tests or certifies ... is another domain", "pattern": "physical product other engineering discipline"},
+ "20781": {"verdict": "b", "clause": "Q4 — the description requires or prefers a software background", "pattern": "executive requires technical practitioner background"},
+ "29458": {"verdict": "b", "clause": "cloud, container, infrastructure or networking skills", "pattern": "infrastructure or systems engineering work"},
+ "31684": {"verdict": "a", "clause": "Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, schemas", "pattern": "data architecture schema design"},
+ "43173": {"verdict": "b", "clause": "Q2 — the role writes code as its primary artifact", "pattern": "explicit code writing required"},
+ "49714": {"verdict": "a", "clause": "The description names software work — a stack, a codebase, APIs, cloud infrastructure, software products or teams — and the domain is software", "pattern": "engineering manager over software team"},
+ "53708": {"verdict": "b", "clause": "infrastructure or systems engineering work", "pattern": "infrastructure or systems engineering work"},
+ "59065": {"verdict": "a", "clause": "Q2 — the role writes code as its primary artifact", "pattern": "explicit code writing required"},
+ "61532": {"verdict": "a", "clause": "it is IN when the description asks for a software background: a fraud or policy analyst asked for SQL is the analyst of Q4", "pattern": "business analyst preferred coding language"},
+ "68121": {"verdict": "a", "clause": "Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, schemas, logs, specs", "pattern": "technical account manager API familiarity"},
+ "69430": {"verdict": "a", "clause": "Selling is decided by the duties. A role whose main work is selling — carrying a quota, owning revenue, closing deals — is OUT", "pattern": "sales role owns quota"},
+ "78311": {"verdict": "b", "clause": "Knowledge of a field the role is about is expertise outside software when the description requires it", "pattern": "required field expertise outside software"},
+ "80789": {"verdict": "a", "clause": "Low-code is software work. A role whose main work is building applications, automations or integrations is a software role", "pattern": "hands-on platform configuration automation"},
+ "84997": {"verdict": "a", "clause": "Knowledge of a field the role is about is expertise outside software when the description requires it", "pattern": "required field expertise outside software"}
+}

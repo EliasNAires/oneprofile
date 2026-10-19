@@ -1,0 +1,14 @@
+{
+  "1": {"verdict": "a", "clause": "What counts as a stated software background — a programming language, by name", "pattern": "required language named outright"},
+  "3": {"verdict": "b", "clause": "domain_ambiguity — a programming language asked for analysis, modelling or simulation of such a product does not move the role into software", "pattern": "programming for simulation of physical product"},
+  "6": {"verdict": "b", "clause": "domain_ambiguity — work that is plainly not engineering of any kind: policy, operations, business analysis", "pattern": "policy and business analysis work"},
+  "7": {"verdict": "b", "clause": "domain_ambiguity — the description names software work ... and the domain is software", "pattern": "named software team plus required language"},
+  "10": {"verdict": "a", "clause": "What counts as a stated software background — a programming language, by name (Apex) / Low-code is software work", "pattern": "admin role with required query language"},
+  "42": {"verdict": "a", "clause": "A background listed only as a plus or a nice-to-have does not count", "pattern": "skill listed only as a plus"},
+  "46": {"verdict": "a", "clause": "Q3 — the role reads or operates on engineer-facing artifacts ... schemas", "pattern": "owns event taxonomy schema"},
+  "58": {"verdict": "b", "clause": "What counts as a stated software background (none of the listed forms is met)", "pattern": "security consulting broad competency list"},
+  "59": {"verdict": "a", "clause": "Q3 — the role reads or operates on engineer-facing artifacts ... API definitions", "pattern": "analyst oversees API integration"},
+  "72": {"verdict": "a", "clause": "What counts as a stated software background — SQL", "pattern": "required expert SQL skill"},
+  "94": {"verdict": "a", "clause": "What counts as a stated software background (none of the listed forms is met)", "pattern": "help desk no technical skill"},
+  "99": {"verdict": "a", "clause": "A skill offered as one choice among tools or skills ... is not asked for", "pattern": "skills offered as alternatives"}
+}

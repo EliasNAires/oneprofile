@@ -1,0 +1,124 @@
+#!/usr/bin/env python3
+"""Draws the body-pass loop's gold set (#11), as a round draws its sample: stratified by the
+predicted state, leaving out every row an earlier round drew and every unsupported_language row,
+with a fixed seed.
+
+    scripts/draw-body-gold [predicted.tsv] [pile export]
+
+Needs no running application: it reads the predicted state of each pile vacancy from a file
+score-body-round's query would produce (vacancy_id, classification_state, classification_reason,
+tab-separated, header included), defaulting to
+~/oneprofile-snapshots/body-gold-set/predicted.tsv.
+
+Draws, leaving out docs/measurements/body-rounds-drawn.tsv and unsupported_language rows: 100 from
+IN; from UNKNOWN, every undrawn row, but at most 20; the remainder, down to 200, from OUT. The 200
+are shuffled and numbered 1..200: 1-100 are part `open`, 101-200 `held-out`.
+
+Writes:
+- docs/measurements/body-gold-set.tsv: id, part, stratum (the predicted state), vacancy_id,
+  title_reason, label, doubt, title — label and doubt empty, for Elias to fill in.
+- ~/oneprofile-snapshots/body-gold-set/batch-001.json .. batch-010.json: 20 rows each in id
+  order (batches 001-005 are the open part), each an array of {vacancy_id, title, title_reason,
+  description} for the body-labeller agent.
+"""
+
+import json
+import random
+import sys
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import bodyloop  # noqa: E402
+
+SEED = 11
+
+PER_IN = 100
+
+PER_TOTAL = 200
+
+UNKNOWN_CAP = 20
+
+BATCH = 20
+
+GOLD_SET = bodyloop.REPO / "docs" / "measurements" / "body-gold-set.tsv"
+
+SNAPSHOT_DIR = Path.home() / "oneprofile-snapshots" / "body-gold-set"
+
+DEFAULT_PREDICTED = SNAPSHOT_DIR / "predicted.tsv"
+
+if not 0 <= len(sys.argv) - 1 <= 2:
+    sys.exit(__doc__.strip())
+predicted_path = Path(sys.argv[1]) if len(sys.argv) >= 2 else DEFAULT_PREDICTED
+pile = bodyloop.read_pile(Path(sys.argv[2]) if len(sys.argv) == 3 else bodyloop.PILE)
+
+
+def read_predicted(path):
+    """Each pile vacancy's predicted state and classification reason, by vacancy id."""
+    with open(path) as lines:
+        next(lines)
+        rows = (line.rstrip("\n").split("\t") for line in lines if line.strip())
+        return {int(vacancy_id): (state, reason) for vacancy_id, state, reason in rows}
+
+
+predicted = read_predicted(predicted_path)
+missing = pile.keys() - predicted.keys()
+if missing:
+    sys.exit(f"{len(missing)} pile vacancies have no predicted state, the first {sorted(missing)[0]}")
+
+drawn = bodyloop.read_drawn()
+
+
+def candidates(state):
+    return sorted(
+        vacancy_id for vacancy_id in pile
+        if predicted[vacancy_id][0] == state
+        and predicted[vacancy_id][1] != "unsupported_language"
+        and vacancy_id not in drawn
+    )
+
+
+in_candidates = candidates("IN")
+out_candidates = candidates("OUT")
+unknown_candidates = candidates("UNKNOWN")
+
+in_drawn = random.Random(f"{SEED}-IN").sample(in_candidates, min(PER_IN, len(in_candidates)))
+unknown_drawn = unknown_candidates if len(unknown_candidates) <= UNKNOWN_CAP else \
+    random.Random(f"{SEED}-UNKNOWN").sample(unknown_candidates, UNKNOWN_CAP)
+out_wanted = PER_TOTAL - len(in_drawn) - len(unknown_drawn)
+out_drawn = random.Random(f"{SEED}-OUT").sample(out_candidates, min(out_wanted, len(out_candidates)))
+
+rows = [(vacancy_id, "IN") for vacancy_id in in_drawn] + \
+       [(vacancy_id, "OUT") for vacancy_id in out_drawn] + \
+       [(vacancy_id, "UNKNOWN") for vacancy_id in unknown_drawn]
+random.Random(SEED).shuffle(rows)
+
+print(f"IN: predicted {sum(s == 'IN' for s, _ in predicted.values())}, candidates {len(in_candidates)}, drawn {len(in_drawn)}")
+print(f"OUT: predicted {sum(s == 'OUT' for s, _ in predicted.values())}, candidates {len(out_candidates)}, drawn {len(out_drawn)}")
+print(f"UNKNOWN: predicted {sum(s == 'UNKNOWN' for s, _ in predicted.values())}, candidates {len(unknown_candidates)}, drawn {len(unknown_drawn)}")
+print(f"Total drawn: {len(rows)}")
+
+
+def clean(text):
+    return " ".join(text.split())
+
+
+GOLD_SET.parent.mkdir(parents=True, exist_ok=True)
+with open(GOLD_SET, "w") as out:
+    out.write("id\tpart\tstratum\tvacancy_id\ttitle_reason\tlabel\tdoubt\ttitle\n")
+    for i, (vacancy_id, stratum) in enumerate(rows, start=1):
+        part = "open" if i <= PER_TOTAL // 2 else "held-out"
+        row = pile[vacancy_id]
+        title = clean(row["cleaned_title"])
+        out.write(f"{i}\t{part}\t{stratum}\t{vacancy_id}\t{row['title_reason']}\t\t\t{title}\n")
+
+SNAPSHOT_DIR.mkdir(parents=True, exist_ok=True)
+for start in range(0, len(rows), BATCH):
+    batch_rows = rows[start:start + BATCH]
+    batch = [{"vacancy_id": vacancy_id, "title": pile[vacancy_id]["cleaned_title"],
+              "title_reason": pile[vacancy_id]["title_reason"],
+              "description": pile[vacancy_id]["cleaned_description"]} for vacancy_id, _ in batch_rows]
+    batch_file = SNAPSHOT_DIR / f"batch-{start // BATCH + 1:03d}.json"
+    batch_file.write_text(json.dumps(batch, ensure_ascii=False, indent=1))
+
+print(f"Wrote {GOLD_SET} and {len(rows) // BATCH} batch files under {SNAPSHOT_DIR}")

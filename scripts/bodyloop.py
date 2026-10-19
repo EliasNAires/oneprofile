@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 import jev
-from jev import SPEND_LIMIT, api_key, spend  # noqa: F401, the names score-body-round reads here
+from jev import DOLLARS_PER_INPUT_TOKEN, SPEND_LIMIT, api_key, spend  # noqa: F401, the names score-body-round reads here
 
 REPO = jev.REPO
 

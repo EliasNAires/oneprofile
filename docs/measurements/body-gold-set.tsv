@@ -1,0 +1,201 @@
+id	part	stratum	vacancy_id	title_reason	label	doubt	title
+1	open	IN	182882	SCOPE_AMBIGUITY	IN		Analyst Data Policy
+2	open	OUT	177951	SCOPE_AMBIGUITY	IN	Q4 stated-background forms: a generic 'strong software background' plus configuring the product; kept IN.	Lead Product Specialist
+3	open	IN	134204	DOMAIN_AMBIGUITY	IN	Physical-product clause vs Q2: the role writes and maintains deployed algorithm code for the payload, so its own work is software; kept IN.	Scientist II EO IR Image Analysis
+4	open	IN	145346	DOMAIN_AMBIGUITY	OUT	Physical-product clause vs preferred Python/C++: main work is hardware vehicle testing, so another domain; kept OUT.	Test Engineer Dragon
+5	open	OUT	149009	SCOPE_AMBIGUITY	OUT	Q3/Q4: PM works with engineering on technical systems but no software background is asked; kept OUT.	Product Manager Internal Tools AI Workflows Customer Success
+6	open	OUT	117385	DOMAIN_AMBIGUITY	IN		Fraud Analyst
+7	open	IN	12316	DOMAIN_AMBIGUITY	IN	Physical-product clause vs Q4: the team builds C2 software and Python is required by name, so Q4 holds; kept IN.	Systems Engineer Battlespace
+8	open	OUT	179966	DOMAIN_AMBIGUITY	OUT		IBOR Operations Analyst
+9	open	IN	101033	DOMAIN_AMBIGUITY	IN		Engineering Manager
+10	open	IN	210754	SCOPE_AMBIGUITY	IN	Low-code clause (administration vs building) vs Q4: required SOQL and Flow debugging are asked, so Q4 holds; kept IN.	Salesforce Administrator
+11	open	IN	36002	DOMAIN_AMBIGUITY	IN		Director Engineering
+12	open	IN	42546	SCOPE_AMBIGUITY	IN		Data Analyst Growth Marketing
+13	open	IN	183274	DOMAIN_AMBIGUITY	IN		Mission Engineer II Saratoga
+14	open	IN	206462	DOMAIN_AMBIGUITY	OUT		Intelligence Analyst Asia Pacific Subject Matter Expert
+15	open	IN	187576	SCOPE_AMBIGUITY	OUT		Product Lead Cards Benefits Global Black Card Líder de Producto Beneficios de Tarjetas Global Black Card LATAM
+16	open	IN	190781	DOMAIN_AMBIGUITY	IN		SOC Engineer I Mexico
+17	open	OUT	59474	SCOPE_AMBIGUITY	OUT		Area Vice President National Security Defense Industrial Base
+18	open	OUT	30143	SCOPE_AMBIGUITY	OUT		Program Director
+19	open	IN	212114	SCOPE_AMBIGUITY	IN	Q3/Q4 forms: API/architecture fluency is vague, but observability and agent-framework familiarity are preferred; kept IN.	Product Manager II Agentic Platform
+20	open	OUT	93242	SCOPE_AMBIGUITY	OUT		Manager IT PMO
+21	open	OUT	49019	DOMAIN_AMBIGUITY	OUT		Product Reliability Engineer
+22	open	OUT	10201	DOMAIN_AMBIGUITY	OUT		Chief Engineer Fury Advanced Concepts
+23	open	OUT	14131	SCOPE_AMBIGUITY	OUT	Degree-list clause and preferred software-consulting experience read as job experience, with account growth duties; kept OUT.	Technical Delivery Manager Top Secret Clearance
+24	open	OUT	82411	SCOPE_AMBIGUITY	OUT		Data Strategist
+25	open	OUT	85661	DOMAIN_AMBIGUITY	OUT		Build Integration Engineer
+26	open	OUT	104689	DOMAIN_AMBIGUITY	OUT		FP&A Analyst
+27	open	IN	163546	DOMAIN_AMBIGUITY	IN		Staff Research Engineer Enterprise Knowledge
+28	open	IN	215782	SCOPE_AMBIGUITY	IN	Q3 specs: the PM defines SDKs, libraries and CLI tools and debates architecture, with PKI/HSM knowledge preferred; changed from OUT.	Product Manager
+29	open	OUT	100742	SCOPE_AMBIGUITY	IN		Manager Technical Services
+30	open	OUT	74119	SCOPE_AMBIGUITY	OUT		Project Manager Critical Environment Group
+31	open	IN	81383	DOMAIN_AMBIGUITY	IN	Q3 logs: digging into application logic and logs is among the core asks for an application support role; kept IN.	Bilingual Application Support Analyst
+32	open	IN	28010	DOMAIN_AMBIGUITY	IN		GPU Engineer
+33	open	OUT	78671	DOMAIN_AMBIGUITY	OUT		Financial Analyst
+34	open	IN	78783	DOMAIN_AMBIGUITY	IN		Performance Engineer
+35	open	IN	140505	SCOPE_AMBIGUITY	IN		Research Scientist
+36	open	IN	185048	DOMAIN_AMBIGUITY	IN		Systems Developer
+37	open	IN	158297	DOMAIN_AMBIGUITY	OUT		Research Analyst Intern Economics Finance Summer 2027
+38	open	OUT	119372	DOMAIN_AMBIGUITY	OUT		P&C Test Engineer
+39	open	OUT	95961	SCOPE_AMBIGUITY	OUT	Q4 plus/learnable clause: SQL is nice-to-have and learnable, and technical PM years are job experience; kept OUT.	Product Manager Digital Risk Protection
+40	open	OUT	68053	DOMAIN_AMBIGUITY	OUT		New Areas Researcher
+41	open	IN	207986	DOMAIN_AMBIGUITY	IN		Support Engineer
+42	open	OUT	68770	DOMAIN_AMBIGUITY	OUT	Q4 forms: 'familiarity with the software development process' is not an enumerated form and SQL/Python are a plus; kept OUT.	Technical Support Engineer Spanish
+43	open	IN	189360	DOMAIN_AMBIGUITY	IN		Staff Engineer
+44	open	IN	163712	SCOPE_AMBIGUITY	IN		Technical Account Manager 3
+45	open	OUT	90177	SCOPE_AMBIGUITY	OUT		Partner Marketing Coordinator AI ISV Programs
+46	open	OUT	85365	SCOPE_AMBIGUITY	IN	Q4 forms: required event-driven architecture understanding and ownership of the event taxonomy are software asks; FinTech is job experience; changed from OUT.	Product Lead User Lifecycle
+47	open	IN	135730	SCOPE_AMBIGUITY	IN		Manager Safety AI
+48	open	IN	80854	SCOPE_AMBIGUITY	IN		Technical Support Specialist
+49	open	OUT	71546	DOMAIN_AMBIGUITY	OUT		Product Developer Accessories
+50	open	IN	88916	DOMAIN_AMBIGUITY	IN		Systems Engineer
+51	open	OUT	89532	DOMAIN_AMBIGUITY	OUT		Sales Performance Analyst
+52	open	IN	179775	SCOPE_AMBIGUITY	OUT	Degree list open to business and low-code requirements work is not building; kept OUT.	ServiceNow SNOW Functional Analyst
+53	open	IN	33366	DOMAIN_AMBIGUITY	IN		Staff Scanning Engineer
+54	open	OUT	202568	DOMAIN_AMBIGUITY	OUT		Collaborative Planning Forecasting Replenishment Analyst
+55	open	IN	101095	DOMAIN_AMBIGUITY	IN		Head of Engineering Supply Chain
+56	open	OUT	12184	DOMAIN_AMBIGUITY	OUT		Staff Reliability Engineer
+57	open	OUT	163107	SCOPE_AMBIGUITY	OUT		Legal Project Manager
+58	open	OUT	173507	SCOPE_AMBIGUITY	IN	Expertise limit vs Q4: cloud and application security are computing skills, not outside expertise; kept IN.	Cybersecurity Manager Strategy Advisory
+59	open	OUT	78233	SCOPE_AMBIGUITY	IN	Q3/Q4: required APIs, XML and database knowledge joined with 'and', and the role oversees API integrations; kept IN.	Business Systems Analyst
+60	open	OUT	108390	SCOPE_AMBIGUITY	OUT	Q3/Q4: technical fluency is vague and the degree list includes Business; kept OUT.	People Technology Product Manager
+61	open	IN	135036	SCOPE_AMBIGUITY	IN	Expertise limit vs Q4: cloud security, Kubernetes and API security are software backgrounds; kept IN.	Staff Platform Product Manager Platform Cloud Security
+62	open	OUT	29676	DOMAIN_AMBIGUITY	OUT		Traffic Engineer EI EIT
+63	open	IN	163214	SCOPE_AMBIGUITY	IN	Expertise limit: EHR years are job experience in a field, and SQL/R/Python are required; kept IN.	Real World Data Analyst Contractor
+64	open	IN	206999	DOMAIN_AMBIGUITY	IN	Domain clause 'operations is OUT' vs Q4's exhaustive list: SQL/Python/R is required, so Q4 holds; kept IN.	Associate Analyst L2
+65	open	OUT	195305	SCOPE_AMBIGUITY	OUT		Associate Director of IT Operations
+66	open	IN	38492	SCOPE_AMBIGUITY	IN	Degree 'related field' and regulatory knowledge vs required Python/PowerShell scripting; security tooling is the job; kept IN.	Data Protection Leader
+67	open	IN	12560	SCOPE_AMBIGUITY	IN		Data Services Analyst
+68	open	OUT	194068	SCOPE_AMBIGUITY	OUT	Radio/expertise limit: automotive electronics and test equipment are required expertise outside software; kept OUT.	Field Service Technical Specialist
+69	open	OUT	196485	SCOPE_AMBIGUITY	OUT		Middle Project Manager Remote Contract
+70	open	IN	207676	SCOPE_AMBIGUITY	IN		Data Analyst Marketing
+71	open	IN	116458	SCOPE_AMBIGUITY	IN		Technical Lead eDiscovery Products
+72	open	IN	198378	SCOPE_AMBIGUITY	IN		Lead Analytics Manager
+73	open	IN	15730	DOMAIN_AMBIGUITY	IN	Physical-product clause: the role's own work is distributed-systems software in Go/C++/Rust; kept IN.	Distinguished Engineer Technical Fellow
+74	open	IN	180442	DOMAIN_AMBIGUITY	IN		Engineering Manager Guest Host Host Listings Quality
+75	open	OUT	52141	DOMAIN_AMBIGUITY	OUT	Physical-product clause: processor design (compilers to hardware), with EE accepted, is the chip domain; kept OUT.	Engineering Manager Architecture
+76	open	OUT	37936	SCOPE_AMBIGUITY	OUT	Q4: no software background is asked of the consulting PM; kept OUT.	Product Manager Consulting
+77	open	OUT	36790	DOMAIN_AMBIGUITY	OUT		Life Sciences Analyst India
+78	open	OUT	170901	SCOPE_AMBIGUITY	OUT	Low-code clause: gathering CMS requirements is neither building nor a stated software background; kept OUT.	Business Analyst Content Systems
+79	open	IN	36603	SCOPE_AMBIGUITY	IN		Data Analyst
+80	open	IN	196359	DOMAIN_AMBIGUITY	OUT	Physical-product/expertise limit: chemical engineering and process control are required; kept OUT.	Refining and Petrochemical Process Optimization Engineer
+81	open	IN	58589	SCOPE_AMBIGUITY	IN		Data Analyst
+82	open	OUT	61655	SCOPE_AMBIGUITY	OUT		Operations Project Manager
+83	open	OUT	75018	DOMAIN_AMBIGUITY	OUT		Quality Engineer
+84	open	OUT	8244	DOMAIN_AMBIGUITY	OUT		Fraud Analyst Fraud Investigations Financial Crimes Monitoring
+85	open	OUT	8942	DOMAIN_AMBIGUITY	OUT		Scientist Biological Sciences
+86	open	OUT	78401	SCOPE_AMBIGUITY	IN	Q4 developer-tools clause: required hands-on AI coding tools and API/data-modelling familiarity; kept IN.	Summer 2027 Associate Product Manager New Grad
+87	open	OUT	184603	DOMAIN_AMBIGUITY	OUT		Financial Analyst Finance
+88	open	IN	155259	SCOPE_AMBIGUITY	IN		Manager Information Security
+89	open	IN	118844	SCOPE_AMBIGUITY	IN		IT Support Specialist III 12 month Fixed Term Contract
+90	open	IN	8815	DOMAIN_AMBIGUITY	OUT	Low-code clause: using and explaining SAP processes is administration, not configuration; kept OUT.	Logistics Systems Analyst
+91	open	OUT	155587	DOMAIN_AMBIGUITY	OUT		Defense Systems Analyst
+92	open	OUT	193478	DOMAIN_AMBIGUITY	OUT	Physical-product clause vs Linux/CLI: main work is aircraft hardware testing with electrical skills essential; kept OUT.	Engineering Technician System Test
+93	open	IN	108554	DOMAIN_AMBIGUITY	IN		Staff Identity Engineer
+94	open	OUT	179812	SCOPE_AMBIGUITY	IN	Q4 preferred heading: preferred infrastructure monitoring tools count as an infrastructure skill; kept IN.	Service Desk Technician II
+95	open	IN	209632	DOMAIN_AMBIGUITY	IN		Solutions Engineer
+96	open	OUT	66490	DOMAIN_AMBIGUITY	OUT		Radiological Protection Engineer
+97	open	OUT	136694	SCOPE_AMBIGUITY	OUT		Estimator Program Lead
+98	open	IN	131638	DOMAIN_AMBIGUITY	IN		Advanced Customer Engineer Level 1
+99	open	IN	180935	SCOPE_AMBIGUITY	IN	Q4 'ideally' wording and expertise limit: 'ideally' SQL/Python/R is a preference that counts, and finance knowledge is only preferred; changed from OUT.	Business Analyst II
+100	open	IN	6092	DOMAIN_AMBIGUITY	IN		Research Engineer Human Influence
+101	held-out	OUT	23764	DOMAIN_AMBIGUITY	OUT	Physical-product clause: semiconductor IP is another domain and the degree list is open beyond computing.	Director of Field Applications Engineering Europe and APAC
+102	held-out	OUT	12326	DOMAIN_AMBIGUITY	OUT		Systems Engineer Launched Effects
+103	held-out	OUT	42315	DOMAIN_AMBIGUITY	OUT		CFS Manager Industrial Engineering L5 Dry Ice FEM
+104	held-out	IN	62848	SCOPE_AMBIGUITY	IN		Director Data Technology
+105	held-out	OUT	185695	DOMAIN_AMBIGUITY	OUT		Project Engineer
+106	held-out	IN	104443	DOMAIN_AMBIGUITY	IN	Selling clause: supports deals without carrying a quota, so Q4 decides.	Solutions Director
+107	held-out	OUT	161873	DOMAIN_AMBIGUITY	OUT	Q3 vs reports: main work is cloud cost analysis and showback; degree list includes finance.	FinOps Engineer
+108	held-out	OUT	9784	DOMAIN_AMBIGUITY	OUT		GEOINT Source Strategies Analyst
+109	held-out	IN	64528	DOMAIN_AMBIGUITY	IN		Guidewire Engage Developer Hybrid US
+110	held-out	IN	95629	SCOPE_AMBIGUITY	IN		Data Analyst Supply Chain Operations
+111	held-out	OUT	83866	DOMAIN_AMBIGUITY	OUT		Project Finance Analyst
+112	held-out	IN	65135	DOMAIN_AMBIGUITY	OUT	Physical-product clause: code written to model or simulate a chip does not move the role into software.	Modelling Engineer
+113	held-out	IN	128522	SCOPE_AMBIGUITY	IN		Data Analytics Manager Product Analytics
+114	held-out	IN	185855	SCOPE_AMBIGUITY	IN	Q4: developer-tools experience is preferred, and Q3 traces and APIs support it.	Product Manager C3 Code
+115	held-out	IN	7229	DOMAIN_AMBIGUITY	IN		Lead Endpoint Engineer
+116	held-out	IN	12748	DOMAIN_AMBIGUITY	IN		Engineering Manager Scheduler and Fleet Efficiency
+117	held-out	IN	156905	SCOPE_AMBIGUITY	IN		Technical Lead Full Time Los Angeles CA Hybrid
+118	held-out	IN	114735	DOMAIN_AMBIGUITY	IN		Vice President of Engineering
+119	held-out	IN	100800	SCOPE_AMBIGUITY	IN		Data Analyst
+120	held-out	OUT	90039	SCOPE_AMBIGUITY	OUT	Low-code clause: configuring the customer platform is onboarding administration, not building.	Project Manager
+121	held-out	IN	186127	SCOPE_AMBIGUITY	IN		Kondor+ Technical Consultant Developer
+122	held-out	OUT	186484	DOMAIN_AMBIGUITY	OUT	Domain clause: duties are described and are plain business work, so not UNKNOWN.	Investment Analyst Samlino Group
+123	held-out	OUT	187933	SCOPE_AMBIGUITY	OUT	Q4: SQL and Python are only bonus points; PM experience is the job itself.	Product Manager Custom Algorithms
+124	held-out	OUT	65078	DOMAIN_AMBIGUITY	OUT		Financial Analyst
+125	held-out	IN	28177	SCOPE_AMBIGUITY	IN	Q3: owns specs and developer docs for an eventing platform, with distributed-systems experience required; changed from OUT.	Product Manager Events Platform
+126	held-out	OUT	178062	DOMAIN_AMBIGUITY	OUT		FP&A Associate Analyst
+127	held-out	IN	128795	SCOPE_AMBIGUITY	IN		Staff AI Automation Data Analyst
+128	held-out	IN	114195	DOMAIN_AMBIGUITY	IN		Forecast Analyst Demand Planning
+129	held-out	IN	194760	DOMAIN_AMBIGUITY	IN		.NET Engineer
+130	held-out	IN	6907	SCOPE_AMBIGUITY	IN	Q3/Q4: requirements for software development in a .NET environment are engineer-facing specs.	Business Analyst Requirements Engineer 884
+131	held-out	IN	210542	SCOPE_AMBIGUITY	IN	Expertise limit: banking understanding is phrased as job experience; basic SQL required.	Product Operations Specialist
+132	held-out	IN	108677	DOMAIN_AMBIGUITY	IN		Engineering Director DBA
+133	held-out	OUT	146007	DOMAIN_AMBIGUITY	OUT		Military Partnerships Analyst
+134	held-out	IN	2642	SCOPE_AMBIGUITY	OUT	Expertise limit: mandatory CSDR policy and compliance expertise is field knowledge required in its own right; changed from IN.	Data Curation Lead
+135	held-out	IN	26487	DOMAIN_AMBIGUITY	OUT		Solutions Consultant
+136	held-out	OUT	44445	SCOPE_AMBIGUITY	IN		Contract IT Specialist
+137	held-out	OUT	44083	DOMAIN_AMBIGUITY	OUT	Expertise limit: required advanced degree and statistics in a social-science field outside software.	People Science Analyst 12 month FTC
+138	held-out	IN	85173	DOMAIN_AMBIGUITY	IN		HPC Operations Engineer
+139	held-out	IN	117259	DOMAIN_AMBIGUITY	IN		Technical Support Engineer III
+140	held-out	OUT	40964	DOMAIN_AMBIGUITY	OUT		People Business Partner Product Engineering
+141	held-out	IN	71787	SCOPE_AMBIGUITY	IN	Q4: a Preferred Qualifications list is a preference and counts; networking skills preferred.	IT MES Support Technician
+142	held-out	OUT	182996	SCOPE_AMBIGUITY	OUT		Survey Project Manager
+143	held-out	IN	44560	DOMAIN_AMBIGUITY	IN		Quality Assurance Engineer
+144	held-out	IN	92040	DOMAIN_AMBIGUITY	IN		Support Engineer
+145	held-out	IN	101077	DOMAIN_AMBIGUITY	IN		Head of Engineering Rewards
+146	held-out	OUT	3365	SCOPE_AMBIGUITY	OUT	Expertise limit: regulated medical-device QMS knowledge is required.	Product Operations and Support Specialist
+147	held-out	OUT	147222	DOMAIN_AMBIGUITY	OUT		Stress Analyst
+148	held-out	OUT	16856	DOMAIN_AMBIGUITY	OUT	Expertise limit and Radio clause: required electronics or physics degree and RF hardware work.	Radio Frequency Engineer Plasma
+149	held-out	IN	205656	SCOPE_AMBIGUITY	IN		Analyst Data Analytics
+150	held-out	OUT	32467	DOMAIN_AMBIGUITY	OUT		Finance and Equity Analyst Rotational Program
+151	held-out	IN	115915	DOMAIN_AMBIGUITY	IN		Growth Engineer
+152	held-out	IN	41707	SCOPE_AMBIGUITY	IN	Q4 one-choice rule: SQL is joined by 'and' and preferred, so it is asked for.	Coupang Program Manager GTM Strategy&Operations for New Ad Products
+153	held-out	OUT	77709	DOMAIN_AMBIGUITY	OUT		Supply Chain Engineering
+154	held-out	IN	75271	DOMAIN_AMBIGUITY	IN	Low-code clause: hands-on D365 and Power Platform build is the main work.	Technical Solutions Analyst Commercial
+155	held-out	IN	59525	DOMAIN_AMBIGUITY	OUT		Supply Chain Risk Analyst
+156	held-out	OUT	192375	SCOPE_AMBIGUITY	OUT		IT EMR Project Manager
+157	held-out	IN	189771	SCOPE_AMBIGUITY	IN	Q4: required experience building mobile apps is technical experience in a software field.	Software Product Manager
+158	held-out	OUT	16	SCOPE_AMBIGUITY	OUT		Manager Retail Analytics Walmart
+159	held-out	OUT	208852	DOMAIN_AMBIGUITY	OUT		Lead Process Safety Engineer
+160	held-out	IN	215201	DOMAIN_AMBIGUITY	IN		Solutions Engineer
+161	held-out	OUT	93360	DOMAIN_AMBIGUITY	OUT		Engineer II NVH
+162	held-out	IN	64614	SCOPE_AMBIGUITY	IN		IT Workplace Operations Lead
+163	held-out	OUT	29114	DOMAIN_AMBIGUITY	OUT		Underwriting Analyst
+164	held-out	IN	81714	DOMAIN_AMBIGUITY	OUT	Expertise limit: portfolio construction and risk management knowledge is required finance expertise.	iSAM Tensor Portfolio Researcher
+165	held-out	OUT	97352	SCOPE_AMBIGUITY	OUT		Group Director Growth Analytics
+166	held-out	IN	97215	DOMAIN_AMBIGUITY	IN		Client Operations Solution Developer Evergreen Req
+167	held-out	IN	155895	DOMAIN_AMBIGUITY	IN		Engineering Manager
+168	held-out	IN	19572	DOMAIN_AMBIGUITY	IN		Deployment Engineer II Fusus
+169	held-out	OUT	106539	SCOPE_AMBIGUITY	IN		Implementation Project Manager Meter Data Management MDM
+170	held-out	IN	179184	SCOPE_AMBIGUITY	IN		Product Manager Infrastructure
+171	held-out	OUT	48007	DOMAIN_AMBIGUITY	OUT		Analyst Financial Planning Analysis
+172	held-out	IN	216072	SCOPE_AMBIGUITY	IN		Product Manager AI Platform
+173	held-out	OUT	207108	SCOPE_AMBIGUITY	OUT		Finance Program Manager
+174	held-out	OUT	51866	SCOPE_AMBIGUITY	IN	Q4: required experience deploying AI/ML solutions is technical experience in a software field.	Director of AI Experience Design
+175	held-out	OUT	133875	DOMAIN_AMBIGUITY	OUT		Development Engineer II Neutron
+176	held-out	OUT	178481	DOMAIN_AMBIGUITY	OUT		System Safety Engineer IV V
+177	held-out	OUT	18816	SCOPE_AMBIGUITY	OUT	Low-code clause: SharePoint permissions and content structure is administration; degree list is open.	Business Analyst SharePoint Implementation
+178	held-out	OUT	16914	SCOPE_AMBIGUITY	OUT		Specialist Technical Training
+179	held-out	IN	53746	DOMAIN_AMBIGUITY	IN		z OS Systems Programmer
+180	held-out	OUT	61080	DOMAIN_AMBIGUITY	UNKNOWN	Domain clause: tool development could be software or not and the text does not say.	Process Engineer
+181	held-out	OUT	108785	SCOPE_AMBIGUITY	OUT		Product Manager Director VIP Growth Operations
+182	held-out	OUT	33374	DOMAIN_AMBIGUITY	IN		Research Engineer Scientist
+183	held-out	IN	14284	DOMAIN_AMBIGUITY	IN		Partner Solutions Engineer
+184	held-out	IN	203313	SCOPE_AMBIGUITY	IN		Technical Account Manager
+185	held-out	IN	156555	SCOPE_AMBIGUITY	IN	Q4: the FAQ requires basic Python or SQL, both software skills.	Analytics Future Leaders Graduate Program
+186	held-out	OUT	62184	SCOPE_AMBIGUITY	IN	Q4: required understanding of APIs, integrations and development frameworks is a software background.	Technical Account Manager Mandarin Speaking Singapore
+187	held-out	IN	45965	DOMAIN_AMBIGUITY	IN	Selling clause: works in partnership with the AE without a quota; cloud and Kubernetes required.	Sales Engineer NorthCentral
+188	held-out	OUT	129786	SCOPE_AMBIGUITY	OUT		Director of Innovation Technology
+189	held-out	OUT	119386	DOMAIN_AMBIGUITY	OUT		P&C Test Engineer II
+190	held-out	OUT	45303	DOMAIN_AMBIGUITY	IN	Q4: technical background in data engineering or databases is required, not a nice-to-have.	Manager Field Engineering
+191	held-out	OUT	205965	SCOPE_AMBIGUITY	OUT	Q4: 'technically fluent' names no software background the applicant must bring.	Product Manager
+192	held-out	OUT	192778	SCOPE_AMBIGUITY	OUT		Product Manager Ecommerce Home Page
+193	held-out	IN	186128	SCOPE_AMBIGUITY	IN		Kondor+ Technical Lead
+194	held-out	IN	156558	SCOPE_AMBIGUITY	IN	Q4: the FAQ requires basic Python or SQL, both software skills.	Analytics Future Leaders Graduate Program
+195	held-out	OUT	43600	SCOPE_AMBIGUITY	OUT		Project Manager Technology Temporary
+196	held-out	OUT	46628	DOMAIN_AMBIGUITY	OUT		Cost Engineer Change Management and Forecasting On site Corsicana TX or Sweetwater TX
+197	held-out	OUT	104941	DOMAIN_AMBIGUITY	IN		Desarrollador CELLS
+198	held-out	OUT	106031	DOMAIN_AMBIGUITY	OUT		Part time Game Tester
+199	held-out	OUT	201624	DOMAIN_AMBIGUITY	OUT		Technical Project Manager
+200	held-out	OUT	83764	DOMAIN_AMBIGUITY	OUT		Facade Engineer
