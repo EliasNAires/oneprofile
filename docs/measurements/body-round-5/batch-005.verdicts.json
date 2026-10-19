@@ -1,0 +1,6 @@
+{
+  "134865": {"verdict": "b", "clause": "What counts as a stated software background: a programming language, by name", "pattern": "programming language named as desired"},
+  "101011": {"verdict": "a", "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these", "pattern": "vague technical no named skill"},
+  "144098": {"verdict": "b", "clause": "domain_ambiguity: unless the role's own work on it is software: writing its code... its flight or control software", "pattern": "control software for physical plant"},
+  "35805": {"verdict": "b", "clause": "A degree list counts only when every field it accepts is a computing field", "pattern": "open degree list no software"}
+}

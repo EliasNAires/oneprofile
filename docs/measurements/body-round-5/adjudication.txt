@@ -1,0 +1,97 @@
+Adjudication of round 5 under criterion revision 1a170b96: rule misses (adjudicator sided with Jev), labeller errors (sided with the rules), neither.
+IN: rule misses 44/200 = 22.0%, labeller errors 17, neither 1
+OUT: rule misses 17/200 = 8.5%, labeller errors 5, neither 0
+
+## labeller error, IN stratum (17)
+- 44856 | Go To Market GTM Digital Natives Program Leader | GTM leader hands-on AI building experience | technical experience in a field, when that field is software
+- 196205 | Analyst Financial Planning Analysis | analyst SQL required job experience only | a data, business or marketing analyst whose requirements include SQL, Python or R
+- 95433 | Research Analyst | analyst required programming language | a data, business or marketing analyst whose requirements include SQL, Python or R
+- 144098 | OT Systems Engineer Mission Systems | control software for physical plant | domain_ambiguity: unless the role's own work on it is software: writing its code... its fl
+- 180623 | VP Product Design | design leader reviews code architecture | Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, sc
+- 112934 | Revenue Operations Analyst | low-code automation building main work | Low-code is software work
+- 196893 | Product Manager Admissions and Finance Systems | low-code building integration work | Low-code is software work
+- 182799 | Mission Operations Engineer | operations role scripting language preferred | describes work that is plainly not engineering of any kind — policy, operations, business 
+- 3104 | Manager Business and HRIS Platforms | platform manager configures integrations main work | Low-code is software work: a role whose main work is building applications, automations or
+- 159104 | Analyst Total Rewards | preferred choice among software skills | a choice whose every option is a software skill... is asked for
+- 68261 | Contract Project Manager | project manager required software experience | Once the description asks for a software background, Q4 holds
+- 193332 | Solutions Consultant | required protocol and schema familiarity | Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, sc
+- 133166 | Quantum Error Correction Researcher qLDPC | research role writes code domain software | The description names software work — a stack, a codebase, APIs, cloud infrastructure, sof
+- 211135 | Staff Research Engineer Exposure Intelligence | security skills in software required | security skills in software, cloud or networks
+- 89883 | Technical Account Manager | technical account manager diagnoses API integrations | Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, sc
+- 65135 | Modelling Engineer | verification code no engineering degree required | Verification code is code, so the Q2 example under the expertise limit stands
+- 193610 | R&D Reliability Test Engineer | writes software tests for hardware | unless the role's own work on it is software: writing its code, its software tests or its 
+
+## neither, IN stratum (1)
+- 63849 | Field Systems Engineer Pipeline | multi-discipline posting, domain undetermined | describes work that could be software or not, and does not say which
+
+## rule miss, IN stratum (44)
+- 89701 | Director of Product Subscriber Value | AI tool use, no named skill | A vague "technical" or "technically fluent", with no software named, is none of these
+- 60243 | Oracle ERP Business Systems Analyst | ERP analyst no software skill named | A degree list counts only when every field it accepts is a computing field
+- 212115 | Product Manager Software Portfolio | PM with no software background | Q4 — the description requires or prefers a software background
+- 60735 | Product Manager Search AI | PM with no software background | Q4 — the description requires or prefers a software background
+- 92144 | Product Strategist | PM with no software background | Q4 — the description requires or prefers a software background
+- 59525 | Supply Chain Risk Analyst | SQL among BI tool choices | A skill offered as one choice among tools or skills that are not software skills is not as
+- 185834 | Data Analyst | analyst requires finance domain background | expertise in the subject named as a requirement apart from the role's experience, such as 
+- 134256 | Systems Test Engineer I | avionics test engineer requires circuit design knowledge | RF hardware ... is electrical engineering, and requiring it is expertise outside software
+- 69476 | Solutions Engineer Spain Remote | bonus-only software background | A background listed only as a plus or a nice-to-have does not count
+- 2264 | Director Data Analytics Value Creation | choice among non-software BI tools | A skill offered as one choice among tools or skills that are not software skills is not as
+- 45871 | Product Strategy and Corporate Development Lead AI | choice includes non-software alternative | A skill offered as one choice among tools or skills that are not software skills is not as
+- 146634 | Product Manager Investigations | domain expertise required, investigations | expertise in the subject named as a requirement apart from the role's experience ... is ex
+- 10273 | Deployment Engineer | dual-track role software optional | A physical product the role designs, integrates, tests or certifies ... is another domain,
+- 119370 | P&C Lead Test Engineer | electrical protection engineer no software | The description names another domain — highways, a plant, body metals, HVAC, construction,
+- 199282 | Test Engineer | engineering degree required physical product | The same holds against Q2: a role that writes code but requires an electrical-engineering 
+- 26439 | AI GTM Program Manager | explicitly non-engineering, bonus LLM only | A background listed only as a plus or a nice-to-have does not count
+- 66037 | Trading Analyst Intern Mortgages | finance domain knowledge required | Knowledge of a field the role is about is expertise outside software when the description 
+- 15693 | 698 Cybersecurity Portfolio Manager | governance framework only, mixed degree | A degree list counts only when every field it accepts is a computing field
+- 131704 | DeltaV Batch Engineer | industrial process control plant domain | The description names another domain — highways, a plant, body metals, HVAC, construction,
+- 188569 | Imagery Intelligence Analyst | intelligence analyst, no named skill | What is asked of the applicant has to be the software background itself
+- 136951 | Director of Product Features Star Trek Fleet Comma | manager role, degree only a plus | A background listed only as a plus or a nice-to-have does not count
+- 74130 | Quality Assurance Quality Control Engineer | mechanical construction QA domain | The description names another domain — ... process equipment
+- 201458 | Associate Mortgage Analytics | mortgage analyst requires deep finance domain knowledge | expertise in the subject named as a requirement apart from the role's experience, such as 
+- 170902 | Business Analyst Content Systems | no named software skill, CMS BA | Only what the applicant must bring counts
+- 183203 | Product Manager | no software background requested | If none holds, it is OUT
+- 45997 | Developer Engagement Lead | no software skill, bonus only | If none holds, it is OUT
+- 106555 | Product Manager III Payment Services | payments domain, no named skill | What is asked of the applicant has to be the software background itself
+- 105107 | UAV Systems Engineer | physical drone hardware assembly | A physical product the role designs, integrates, tests or certifies ... is another domain,
+- 16879 | Snr Engineer Field Service I II | physical equipment field service engineer | A physical product ... is another domain
+- 104619 | Network Planning Technical Project Manager | physical infrastructure project manager | The description names another domain
+- 12597 | R&D Engineer | physical medical device domain | A physical product the role designs, integrates, tests or certifies ... is another domain
+- 182001 | Project Engineer | physical product, engineering degree required | another domain — highways, a plant, body metals, HVAC, construction, process equipment
+- 50021 | Reliability Test Engineer DoorDash Air | physical product, engineering degree required | a role that writes code but requires an electrical-engineering degree ... is OUT
+- 145961 | Counter UAS Counter IED Subject Matter Expert | policy role, no software skill | describes work that is plainly not engineering of any kind — policy, operations ... Go on 
+- 177241 | Staff Product Manager Buyer Experience | product manager writes specs for AI agents | Q3 — the role reads or operates on engineer-facing artifacts ... specs
+- 47919 | Project Manager | project manager no named skill | Only what the applicant must bring counts
+- 64508 | Lead Technical Recruiter | recruiter for technical roles | What counts as a stated software background
+- 187944 | Sales Support Analyst | sales ops analyst SQL only nice to have | A background listed only as a plus or a nice-to-have does not count
+- 41768 | Director Logistics Security Loss Prevention | security loss prevention no software background | If none holds, it is OUT
+- 11549 | Modeling Simulation and Analysis Engineer Air Domi | simulation coding for physical product | A programming language asked for analysis, modelling or simulation of such a product does 
+- 196918 | Interview Engineer Luxembourg | talent-community sign-up, not vacancy | Q1 — it has to be a vacancy ... talent-community sign-ups
+- 5359 | Project Manager Partner Excellence Customer Experi | tool named only as example | a data tool named only as an example
+- 204175 | Analyst Treasury | treasury analyst SQL as one choice among tools | A skill offered as one choice among tools or skills that are not software skills is not as
+- 101011 | VP AI Marketing Strategy | vague technical no named skill | A vague "technical" or "technically fluent", with no software named, is none of these
+
+## labeller error, OUT stratum (5)
+- 59387 | Technical Project Manager | IT competency choice non-software option | A skill offered as one choice among tools or skills that are not software skills is not as
+- 5390 | BI Analyst Supply Analytics Bangkok based | SQL among non-software BI tools | A skill offered as one choice among tools or skills that are not software skills is not as
+- 35805 | Product Manager Agile Master AI and Digital Produc | open degree list no software | A degree list counts only when every field it accepts is a computing field
+- 12931 | Product Manager Safeguards Cyber | product manager vague technical no named skill | A vague 'technical' or 'technically fluent', with no software named, is none of these
+- 63748 | Technical Project Manager | vague non-computing background only | A vague "technical" or "technically fluent", with no software named, is none of these
+
+## rule miss, OUT stratum (17)
+- 8932 | Revenue Operations Analyst LatAm Remote | SQL required, joined with and | A skill joined to the others with "and" ... is asked for
+- 99911 | Business Analyst Portfolio Management | analyst choice of software tools only | a choice whose every option is a software skill
+- 161306 | Risk Analyst Strategy Capabilities | analyst mandatory SQL requirement | a data, business or marketing analyst whose requirements include SQL, Python or R
+- 186095 | Data Protection Consultant | consultant required cloud security skill | security skills in software, cloud or networks
+- 142493 | Technical Account Manager | developer tool experience required | technical experience in a field, when that field is software — logs analytics, observabili
+- 103284 | Technology Intern Hong Kong 2027 | intern builds software systems | a software engineering background, experience as a software engineer
+- 108555 | Staff Identity Governance and Access Engineer | low-code workflow building engineer | Low-code is software work
+- 30018 | Missile Defense Agency MDA NOC Technician | network technician networking skills required | cloud, container, infrastructure or networking skills (a network technician asked for TCP/
+- 195099 | AppSec Sales Engineer | pre-sales engineer required security skill | What counts as a stated software background
+- 37495 | Product Manager Application Protection Governance | product manager application security background preferred | security skills in software, cloud or networks — application, cloud or network security
+- 134865 | Technical Account Manager Nordics | programming language named as desired | What counts as a stated software background: a programming language, by name
+- 183315 | Manager Mission Engineering Operations | required cloud and API skills | cloud, container, infrastructure or networking skills
+- 183389 | Product Manager | required cloud and API skills | cloud, container, infrastructure or networking skills
+- 104974 | Sales Engineer Chicago IL | required cloud network security skill | security skills in software, cloud or networks ... count under Q4
+- 62451 | Sales Engineer | required scripting API skill | a technical support specialist asked for "basic SQL or scripting"
+- 174690 | Project Manager | unfilled template, no duties | The text does not say what the work is when... cut off before it reaches the duties
+- 114553 | Developer Advocate | writes demos and code samples | Q2 — the role writes code as its primary artifact

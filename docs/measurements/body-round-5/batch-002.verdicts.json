@@ -1,0 +1,22 @@
+{
+  "195099": {"verdict": "b", "clause": "What counts as a stated software background", "pattern": "pre-sales engineer required security skill"},
+  "16879": {"verdict": "b", "clause": "A physical product ... is another domain", "pattern": "physical equipment field service engineer"},
+  "95433": {"verdict": "b", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "analyst required programming language"},
+  "11549": {"verdict": "a", "clause": "A programming language asked for analysis, modelling or simulation of such a product does not move the role into software", "pattern": "simulation coding for physical product"},
+  "47919": {"verdict": "b", "clause": "Only what the applicant must bring counts", "pattern": "project manager no named skill"},
+  "136951": {"verdict": "a", "clause": "A background listed only as a plus or a nice-to-have does not count", "pattern": "manager role, degree only a plus"},
+  "2264": {"verdict": "a", "clause": "A skill offered as one choice among tools or skills that are not software skills is not asked for", "pattern": "choice among non-software BI tools"},
+  "5359": {"verdict": "b", "clause": "a data tool named only as an example", "pattern": "tool named only as example"},
+  "45871": {"verdict": "b", "clause": "A skill offered as one choice among tools or skills that are not software skills is not asked for", "pattern": "choice includes non-software alternative"},
+  "106555": {"verdict": "b", "clause": "What is asked of the applicant has to be the software background itself", "pattern": "payments domain, no named skill"},
+  "104619": {"verdict": "b", "clause": "The description names another domain", "pattern": "physical infrastructure project manager"},
+  "68261": {"verdict": "a", "clause": "Once the description asks for a software background, Q4 holds", "pattern": "project manager required software experience"},
+  "161306": {"verdict": "a", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "analyst mandatory SQL requirement"},
+  "64508": {"verdict": "a", "clause": "What counts as a stated software background", "pattern": "recruiter for technical roles"},
+  "15693": {"verdict": "b", "clause": "A degree list counts only when every field it accepts is a computing field", "pattern": "governance framework only, mixed degree"},
+  "99911": {"verdict": "b", "clause": "a choice whose every option is a software skill", "pattern": "analyst choice of software tools only"},
+  "186095": {"verdict": "a", "clause": "security skills in software, cloud or networks", "pattern": "consultant required cloud security skill"},
+  "63849": {"verdict": "neither", "clause": "describes work that could be software or not, and does not say which", "pattern": "multi-discipline posting, domain undetermined"},
+  "69476": {"verdict": "b", "clause": "A background listed only as a plus or a nice-to-have does not count", "pattern": "bonus-only software background"},
+  "188569": {"verdict": "b", "clause": "What is asked of the applicant has to be the software background itself", "pattern": "intelligence analyst, no named skill"}
+}

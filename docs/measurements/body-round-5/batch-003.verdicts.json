@@ -1,0 +1,22 @@
+{
+ "174690": {"verdict": "a", "clause": "The text does not say what the work is when... cut off before it reaches the duties", "pattern": "unfilled template, no duties"},
+ "159104": {"verdict": "b", "clause": "a choice whose every option is a software skill... is asked for", "pattern": "preferred choice among software skills"},
+ "183203": {"verdict": "b", "clause": "If none holds, it is OUT", "pattern": "no software background requested"},
+ "196893": {"verdict": "a", "clause": "Low-code is software work", "pattern": "low-code building integration work"},
+ "63748": {"verdict": "a", "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these", "pattern": "vague non-computing background only"},
+ "114553": {"verdict": "a", "clause": "Q2 — the role writes code as its primary artifact", "pattern": "writes demos and code samples"},
+ "104974": {"verdict": "b", "clause": "security skills in software, cloud or networks ... count under Q4", "pattern": "required cloud network security skill"},
+ "45997": {"verdict": "b", "clause": "If none holds, it is OUT", "pattern": "no software skill, bonus only"},
+ "62451": {"verdict": "a", "clause": "a technical support specialist asked for \"basic SQL or scripting\"", "pattern": "required scripting API skill"},
+ "50021": {"verdict": "b", "clause": "a role that writes code but requires an electrical-engineering degree ... is OUT", "pattern": "physical product, engineering degree required"},
+ "146634": {"verdict": "a", "clause": "expertise in the subject named as a requirement apart from the role's experience ... is expertise outside software", "pattern": "domain expertise required, investigations"},
+ "8932": {"verdict": "a", "clause": "A skill joined to the others with \"and\" ... is asked for", "pattern": "SQL required, joined with and"},
+ "170902": {"verdict": "a", "clause": "Only what the applicant must bring counts", "pattern": "no named software skill, CMS BA"},
+ "145961": {"verdict": "a", "clause": "describes work that is plainly not engineering of any kind — policy, operations ... Go on to the questions", "pattern": "policy role, no software skill"},
+ "89701": {"verdict": "b", "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these", "pattern": "AI tool use, no named skill"},
+ "196918": {"verdict": "b", "clause": "Q1 — it has to be a vacancy ... talent-community sign-ups", "pattern": "talent-community sign-up, not vacancy"},
+ "5390": {"verdict": "a", "clause": "A skill offered as one choice among tools or skills that are not software skills is not asked for", "pattern": "SQL among non-software BI tools"},
+ "182001": {"verdict": "a", "clause": "another domain — highways, a plant, body metals, HVAC, construction, process equipment", "pattern": "physical product, engineering degree required"},
+ "26439": {"verdict": "b", "clause": "A background listed only as a plus or a nice-to-have does not count", "pattern": "explicitly non-engineering, bonus LLM only"},
+ "12597": {"verdict": "b", "clause": "A physical product the role designs, integrates, tests or certifies ... is another domain", "pattern": "physical medical device domain"}
+}

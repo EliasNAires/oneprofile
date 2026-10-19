@@ -1,0 +1,22 @@
+{
+ "60243": {"verdict": "a", "clause": "A degree list counts only when every field it accepts is a computing field", "pattern": "ERP analyst no software skill named"},
+ "133166": {"verdict": "b", "clause": "The description names software work — a stack, a codebase, APIs, cloud infrastructure, software products or teams", "pattern": "research role writes code domain software"},
+ "185834": {"verdict": "a", "clause": "expertise in the subject named as a requirement apart from the role's experience, such as 'a payments domain expert'", "pattern": "analyst requires finance domain background"},
+ "3104": {"verdict": "a", "clause": "Low-code is software work: a role whose main work is building applications, automations or integrations", "pattern": "platform manager configures integrations main work"},
+ "180623": {"verdict": "a", "clause": "Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, schemas, logs, specs", "pattern": "design leader reviews code architecture"},
+ "41768": {"verdict": "a", "clause": "If none holds, it is OUT", "pattern": "security loss prevention no software background"},
+ "182799": {"verdict": "a", "clause": "describes work that is plainly not engineering of any kind — policy, operations, business analysis, investigation — ... Go on to the questions", "pattern": "operations role scripting language preferred"},
+ "30018": {"verdict": "b", "clause": "cloud, container, infrastructure or networking skills (a network technician asked for TCP/IP, BGP, VLANs or DNS)", "pattern": "network technician networking skills required"},
+ "134256": {"verdict": "b", "clause": "RF hardware ... is electrical engineering, and requiring it is expertise outside software", "pattern": "avionics test engineer requires circuit design knowledge"},
+ "37495": {"verdict": "b", "clause": "security skills in software, cloud or networks — application, cloud or network security", "pattern": "product manager application security background preferred"},
+ "119370": {"verdict": "b", "clause": "The description names another domain — highways, a plant, body metals, HVAC, construction, process equipment", "pattern": "electrical protection engineer no software"},
+ "12931": {"verdict": "b", "clause": "A vague 'technical' or 'technically fluent', with no software named, is none of these", "pattern": "product manager vague technical no named skill"},
+ "204175": {"verdict": "a", "clause": "A skill offered as one choice among tools or skills that are not software skills is not asked for", "pattern": "treasury analyst SQL as one choice among tools"},
+ "177241": {"verdict": "a", "clause": "Q3 — the role reads or operates on engineer-facing artifacts ... specs", "pattern": "product manager writes specs for AI agents"},
+ "89883": {"verdict": "a", "clause": "Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, schemas, logs, specs", "pattern": "technical account manager diagnoses API integrations"},
+ "44856": {"verdict": "a", "clause": "technical experience in a field, when that field is software", "pattern": "GTM leader hands-on AI building experience"},
+ "201458": {"verdict": "b", "clause": "expertise in the subject named as a requirement apart from the role's experience, such as ... 'deep knowledge of insurance products'", "pattern": "mortgage analyst requires deep finance domain knowledge"},
+ "196205": {"verdict": "a", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "analyst SQL required job experience only"},
+ "187944": {"verdict": "a", "clause": "A background listed only as a plus or a nice-to-have does not count", "pattern": "sales ops analyst SQL only nice to have"},
+ "65135": {"verdict": "b", "clause": "Verification code is code, so the Q2 example under the expertise limit stands", "pattern": "verification code no engineering degree required"}
+}
