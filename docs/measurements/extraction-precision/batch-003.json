@@ -1,0 +1,266 @@
+[
+ {
+  "row": 41,
+  "skill": "LangChain",
+  "segments": [
+   {
+    "under": "Qualifications",
+    "text": "- Prompt engineering and experimentation tools (e.g., PromptLayer, LangChain, LlamaIndex) to design, test, and optimize AI-assisted workflows"
+   }
+  ]
+ },
+ {
+  "row": 42,
+  "skill": "Linux",
+  "segments": [
+   {
+    "under": "Experience building and bringing-up MCUs or FPGAs",
+    "text": "- Experience developing on embedded Linux platforms"
+   }
+  ]
+ },
+ {
+  "row": 43,
+  "skill": "HTTP",
+  "segments": [
+   {
+    "under": "PEOPLE & CULTURE AT ZETA",
+    "text": "Learn more about our commitment to diversity, equity and inclusion here: https://zetaglobal.com/blog/a-look-into-zetas-ergs/"
+   },
+   {
+    "under": "ZETA IN THE NEWS!",
+    "text": "https://zetaglobal.com/press/?cat=press-releases"
+   }
+  ]
+ },
+ {
+  "row": 44,
+  "skill": "ServiceNow",
+  "title": "Lead ServiceNow Developer",
+  "segments": [
+   {
+    "text": "LightFeather is seeking a ServiceNow Developer with a strong focus on supporting federal clients with modern web technologies."
+   },
+   {
+    "text": "The ideal candidate is passionate about ServiceNow, eager to grow their technical capabilities, and thrives in a fast-paced, client-facing setting."
+   },
+   {
+    "text": "Major responsibilities include helping design, configure, develop, and implement baseline and custom applications and enhancements in ServiceNow."
+   },
+   {
+    "under": "Responsibilities",
+    "text": "- Advise functional and admin teams on design, development and overall ServiceNow best practices"
+   },
+   {
+    "under": "Responsibilities",
+    "text": "- Solution and develop requested enhancements to existing ServiceNow applications"
+   },
+   {
+    "under": "Responsibilities",
+    "text": "- Facilitate and support the rollout of new application and enhancements in ServiceNow"
+   },
+   {
+    "under": "Required Qualifications and Skills",
+    "text": "- 5+ years of experience as a ServiceNow Developer."
+   },
+   {
+    "under": "Required Qualifications and Skills",
+    "text": "- Strong familiarity and working knowledge of ServiceNow Suite of tools (Service Catalog, Service Portal, Reports, Incident and Knowledge Base, etc.)"
+   },
+   {
+    "under": "Required Qualifications and Skills",
+    "text": "- Proven developer independent of the ServiceNow platform, with an emphasis on analytical and problem-solving skills."
+   },
+   {
+    "under": "Preferred",
+    "text": "- ServiceNow CAD (Certified Application Developer)"
+   }
+  ]
+ },
+ {
+  "row": 45,
+  "skill": "Salesforce Apex",
+  "segments": [
+   {
+    "under": "Key Responsibilities",
+    "text": "- Develop custom Salesforce components using Apex, LWC, Visualforce, SOQL, and Flow"
+   },
+   {
+    "under": "Requirements",
+    "text": "- Proficiency in Apex, LWC, Flow Builder, and Salesforce DX"
+   }
+  ]
+ },
+ {
+  "row": 46,
+  "skill": "React",
+  "segments": [
+   {
+    "under": "What is the role?",
+    "text": "You will optimise for second-order effects in a marketplace where participants react to each other, and to us, in real time."
+   }
+  ]
+ },
+ {
+  "row": 47,
+  "skill": "Angular",
+  "segments": [
+   {
+    "text": "- You have 5+ years of experience and have shipped production code recently. Web, Mobile, Backend (Angular, Kotlin, Swift, Python, …)"
+   }
+  ]
+ },
+ {
+  "row": 48,
+  "skill": "Jira",
+  "segments": [
+   {
+    "text": "Using tools such as Atlas Cloud, Jira, Confluence, Claude Code, Microsoft 365, Power Automate and MCP-enabled workflows, you will turn complex information into clear requirements, delivery priorities and product decisions."
+   },
+   {
+    "under": "What you will do",
+    "text": "- Translate customer, operational and technical needs into clear PRDs, Jira backlog items and decision records."
+   },
+   {
+    "under": "What you will bring",
+    "text": "- Proficiency with Jira, Confluence and Microsoft 365."
+   }
+  ]
+ },
+ {
+  "row": 49,
+  "skill": "C",
+  "segments": [
+   {
+    "under": "Key responsibilities",
+    "text": "- Break down complex technical concepts and clearly articulate PagerDuty's business value to stakeholders from DevOps engineers up to C-level executives"
+   }
+  ]
+ },
+ {
+  "row": 50,
+  "skill": "Foxglove",
+  "segments": [
+   {
+    "under": "Preferred Qualifications",
+    "text": "- Familiarity with MCAP data and Foxglove"
+   }
+  ]
+ },
+ {
+  "row": 51,
+  "skill": "gRPC",
+  "segments": [
+   {
+    "under": "What Would be Nice to Have",
+    "text": "- Experience with remote procedure call technologies such as gRPC and JSON-RPC."
+   }
+  ]
+ },
+ {
+  "row": 52,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "WHAT YOU WILL NEED",
+    "text": "- Proficiency in modern scripting, automation and infrastructure as code e.g. Python, Bash, Go, Terraform, or similar."
+   }
+  ]
+ },
+ {
+  "row": 53,
+  "skill": "Node.js",
+  "segments": [
+   {
+    "under": "What you'll be doing in the role",
+    "text": "- Conduct Execution Testing: execute model-generated scripts in appropriate environments (Node.js or Browser consoles) to verify performance and output."
+   },
+   {
+    "under": "Key Technologies",
+    "text": "- Frameworks: extensive experience with React, Node.js, Vue, or Angular."
+   },
+   {
+    "under": "Key Technologies",
+    "text": "- Backend & API: strong understanding of RESTful APIs, GraphQL, and server-side logic in a Node environment."
+   }
+  ]
+ },
+ {
+  "row": 54,
+  "skill": "Azure",
+  "segments": [
+   {
+    "under": "Preferred Qualifications",
+    "text": "- Experience with nuances public cloud features and costs (like compute, storage, networking, data services) on public clouds (AWS, Azure, GCP)"
+   }
+  ]
+ },
+ {
+  "row": 55,
+  "skill": "Loki",
+  "segments": [
+   {
+    "under": "Job Responsibilities",
+    "text": "- Observability: Operate and scale our on-prem observability stack — Mimir (metrics), Loki (logs), Tempo (traces), Grafana (dashboards), OpenTelemetry Collector fleet, and Alertmanager. Drive adoption by onboarding teams, building dashboards, tuning alerts, and scaling ingestion for growing workloads."
+   },
+   {
+    "under": "Requirements",
+    "text": "- Observability: Production experience with Prometheus, Grafana, and alerting. Familiarity with Mimir, Loki, Tempo, or Thanos for scaled metrics, logs, and traces. Understanding of OpenTelemetry (collectors, exporters, instrumentation)."
+   }
+  ]
+ },
+ {
+  "row": 56,
+  "skill": "iOS",
+  "segments": [
+   {
+    "under": "SKILLS & QUALIFICATIONS",
+    "text": "- Working knowledge of Microsoft Office and Apple iOS software"
+   }
+  ]
+ },
+ {
+  "row": 57,
+  "skill": "C",
+  "segments": [
+   {
+    "under": "Good to haves",
+    "text": "- Additional programming knowledge/experience C/C++, Python"
+   }
+  ]
+ },
+ {
+  "row": 58,
+  "skill": "AWS CodeBuild",
+  "segments": [
+   {
+    "under": "Minimum Requirements to be Considered for this Role",
+    "text": "- Experience with source control (e.g. Git) and CI/CD pipeline tools such as GitHub Actions (preferred), GitLab CI, AWS CodeBuild, or Jenkins."
+   }
+  ]
+ },
+ {
+  "row": 59,
+  "skill": "Red Hat Enterprise Linux",
+  "segments": [
+   {
+    "under": "QUALIFICATIONS",
+    "text": "Linux 4+ years hands on administration with RHEL or other Linux environments"
+   },
+   {
+    "under": "QUALIFICATIONS",
+    "text": "Preferred certifications: Microsoft Certified IT Professional ﴾MCITP﴿ / Microsoft Certified Systems Engineer (MCSE) / Microsoft Certified Systems Administrator (MCSA) / Microsoft Certified Professional (MCP) / VMware Certified Professional – VCP / Red Hat Certified Engineer"
+   }
+  ]
+ },
+ {
+  "row": 60,
+  "skill": "Azure Synapse Analytics",
+  "segments": [
+   {
+    "under": "Competencies & Responsibilities",
+    "text": "- Legacy Data Warehouse & Modernization Architecture understanding of legacy EDW systems (any of Teradata, Netezza, Snowflake, Synapse, Redshift, and Exadata) and architectures required to successfully transition workloads to the Databricks Data Intelligence Platform."
+   }
+  ]
+ }
+]

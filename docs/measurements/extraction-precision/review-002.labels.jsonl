@@ -1,0 +1,7 @@
+{"row": 282, "answer": "no", "reason": "wrong_skill", "note": "'familiarity with SAP' names the vendor, not SAP ERP; the criterion drops a vendor's name even where ads use it for its products"}
+{"row": 290, "answer": "no", "reason": "boilerplate", "note": "'products include its iOS app, Android App, Mac App' describes the company's products"}
+{"row": 293, "answer": "no", "reason": "ordinary_word", "note": "'C-level executives'"}
+{"row": 297, "answer": "no", "reason": "wrong_skill", "note": "'What you'll do at Figma', 'At Figma, one of our values': Figma the employer"}
+{"row": 332, "answer": "no", "reason": "wrong_skill", "note": "'Money as a Service (MaaS)', a Stripe organisation"}
+{"row": 343, "answer": "no", "reason": "wrong_skill", "note": "'protein language models (e.g., ESM)', a protein model"}
+{"row": 388, "answer": "no", "reason": "ordinary_word", "note": "'R&D team', research and development"}

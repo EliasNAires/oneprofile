@@ -1,0 +1,224 @@
+[
+ {
+  "row": 61,
+  "skill": "Claude",
+  "segments": [
+   {
+    "under": "Requirements",
+    "text": "- Experience with AI tools Claude, Codex, etc;"
+   }
+  ]
+ },
+ {
+  "row": 62,
+  "skill": "Pinecone",
+  "segments": [
+   {
+    "under": "Candidate Profile",
+    "text": "- MLOps/LLMOps: Containers (Docker/Kubernetes), Git, pipelines (e.g., GitHub Actions/Cloud-native), model serving (FastAPI/TorchServe/Triton), experiment tracking, model registry, vector DBs (FAISS, Pinecone, pgvector, OpenSearch)."
+   }
+  ]
+ },
+ {
+  "row": 63,
+  "skill": "Dagger",
+  "segments": [
+   {
+    "under": "An Ideal Candidate Should Have",
+    "text": "- Rock solid experience with Kotlin, Kotlin Coroutines, Kotlin Flow, Dagger 2, MVVM, Clean Architecture, Background Services, Music Player Service, Android Animations, Jetpack Navigation, JUnit tests"
+   }
+  ]
+ },
+ {
+  "row": 64,
+  "skill": "Google Gemini",
+  "segments": [
+   {
+    "under": "You Will",
+    "text": "- Leverage AI tools such as Claude and Gemini to accelerate requirements documentation, synthesize stakeholder feedback, draft communications, and surface insights from data bringing a modern, AI-augmented approach to everyday PM work"
+   },
+   {
+    "under": "You Have",
+    "text": "- Hands-on experience with AI productivity tools (e.g., Claude, Gemini, ChatGPT) applied to PM workflows such as documentation, research, or analysis."
+   }
+  ]
+ },
+ {
+  "row": 65,
+  "skill": "Python",
+  "segments": [
+   {
+    "under": "The Role",
+    "text": "Pilot’s backend is written in fully typed modern Python, and our frontend is JavaScript, TypeScript, and Vue.js."
+   },
+   {
+    "under": "About you",
+    "text": "- Experience with Python in production"
+   }
+  ]
+ },
+ {
+  "row": 66,
+  "skill": "Scala",
+  "segments": [
+   {
+    "under": "What we look for",
+    "text": "- Production programming experience in Python, R, Scala, or Java"
+   }
+  ]
+ },
+ {
+  "row": 67,
+  "skill": "Google Cloud Platform",
+  "segments": [
+   {
+    "under": "Bonus points",
+    "text": "- Familiar with Cloud Computing Platform security and cloud attack and defense technologies, such as AWS, Azure, GCP, Tencent Cloud, Alibaba Cloud, etc."
+   }
+  ]
+ },
+ {
+  "row": 68,
+  "skill": "Snowflake",
+  "segments": [
+   {
+    "under": "About the Role",
+    "text": "This is a hands-on, high-ownership role for someone who is equally comfortable writing a Workato recipe, querying Snowflake, standing up a small internal application, and jumping into a helpdesk ticket or production incident when it matters."
+   },
+   {
+    "under": "Integration & Automation",
+    "text": "- SQL and Snowflake experience (schemas, views, service accounts, performance/data-quality troubleshooting)"
+   }
+  ]
+ },
+ {
+  "row": 69,
+  "skill": "AWS",
+  "segments": [
+   {
+    "under": "자격 요건",
+    "text": "- AWS, GCP 등 모던 클라우드 컴퓨팅 환경에 대한 높은 이해도와 실무 경험을 갖추신 분"
+   }
+  ]
+ },
+ {
+  "row": 70,
+  "skill": "C",
+  "segments": [
+   {
+    "text": "The ideal candidate has strong experience in low-level programming (C/C++), microcontroller/SoC development, and hardware bring-up, with a proven ability to collaborate with cross-functional teams to deliver robust and efficient firmware solutions."
+   },
+   {
+    "under": "Position Overview",
+    "text": "The ideal candidate has strong experience in low-level programming (C/C++), microcontroller/SoC development, and hardware bring-up, with a proven ability to collaborate with cross-functional teams to deliver robust and efficient firmware solutions."
+   },
+   {
+    "under": "Key Responsibilities",
+    "text": "- Design, develop, and maintain firmware in C/C++ for microcontrollers, SoCs, and embedded platforms."
+   },
+   {
+    "under": "Qualifications",
+    "text": "- Strong proficiency in C/C++ and Python."
+   }
+  ]
+ },
+ {
+  "row": 71,
+  "skill": "Amazon S3",
+  "segments": [
+   {
+    "under": "Must-Haves",
+    "text": "- Deep expertise in modern data platforms and cloud-native architectures, with strong command of AWS data services (S3, Glue, Athena, Redshift, Lake Formation)"
+   }
+  ]
+ },
+ {
+  "row": 72,
+  "skill": "Grafana Tempo",
+  "segments": [
+   {
+    "under": "Technologies you'll work with",
+    "text": "- Grafana ecosystem (Mimir, Loki, Tempo, etc.)"
+   }
+  ]
+ },
+ {
+  "row": 73,
+  "skill": "Prometheus",
+  "segments": [
+   {
+    "under": "What We Look For",
+    "text": "- Proficiency in observability tools (Prometheus, Grafana, Datadog, New Relic)."
+   }
+  ]
+ },
+ {
+  "row": 74,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "We're excited about you because you have…",
+    "text": "- Strong backend fundamentals, especially in Go,Python and the ability to own a service in production"
+   }
+  ]
+ },
+ {
+  "row": 75,
+  "skill": "Microsoft Windows",
+  "segments": [
+   {
+    "under": "Desired",
+    "text": "- Experience automating legacy desktop applications (e.g., Windows/C++) using tools such as WinAppDriver."
+   }
+  ]
+ },
+ {
+  "row": 76,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "What you’ll bring",
+    "text": "- Exceptional software development skills with experience building production-grade tools, services, or platforms (e.g., Go, Python, or similar languages)."
+   }
+  ]
+ },
+ {
+  "row": 77,
+  "skill": "HashiCorp Vault",
+  "segments": [
+   {
+    "under": "Nice to have",
+    "text": "- Secrets management (Hashicorp vault), supply-chain security, and artifact signing."
+   }
+  ]
+ },
+ {
+  "row": 78,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "Skills & Experience",
+    "text": "- Strong software engineering ability in Go and/or Rust, with practical Python and Bash skills; experience building Kubernetes operators, controllers, admission webhooks, CLIs, or platform services."
+   }
+  ]
+ },
+ {
+  "row": 79,
+  "skill": "Vercel",
+  "segments": [
+   {
+    "text": "These include frontend and backend engineers, AI research scientists, and others from Amazon, Microsoft, and Google, leading PhD programs like Stanford, high growth startups like Stripe, Vercel, Bolt, and many founders of their own companies."
+   }
+  ]
+ },
+ {
+  "row": 80,
+  "skill": "Snowflake",
+  "segments": [
+   {
+    "under": "Nice to haves",
+    "text": "- Experience with Snowflake, dbt, CubeJS"
+   }
+  ]
+ }
+]

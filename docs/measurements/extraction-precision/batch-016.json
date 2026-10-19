@@ -1,0 +1,214 @@
+[
+ {
+  "row": 301,
+  "skill": "Dagger",
+  "segments": [
+   {
+    "under": "An Ideal Candidate Should Have",
+    "text": "- Rock solid experience with Kotlin, Kotlin Coroutines, Kotlin Flow, Dagger 2, MVVM, Clean Architecture, Background Services, Music Player Service, Android Animations, Jetpack Navigation, JUnit tests"
+   }
+  ]
+ },
+ {
+  "row": 302,
+  "skill": "C++",
+  "segments": [
+   {
+    "under": "Nice to Haves",
+    "text": "- Experience with Rust, C/C++ or another low-level systems language"
+   }
+  ]
+ },
+ {
+  "row": 303,
+  "skill": "SQL",
+  "segments": [
+   {
+    "under": "Commercial",
+    "text": "- Mastery of Python, SQL, and Spark — and strong opinions on how they should be used in production data pipelines"
+   }
+  ]
+ },
+ {
+  "row": 304,
+  "skill": "Cursor",
+  "segments": [
+   {
+    "under": "Nice-to-Haves",
+    "text": "- Hands-on experience with Claude, Cursor, or similar AI coding/research environments"
+   }
+  ]
+ },
+ {
+  "row": 305,
+  "skill": "Helm",
+  "segments": [
+   {
+    "under": "What you will be doing",
+    "text": "- Containerize and orchestrate applications with Docker, Kubernetes, and Helm."
+   },
+   {
+    "under": "What you bring to the table",
+    "text": "- Experience with containers and orchestration (Docker, Kubernetes, Helm)."
+   }
+  ]
+ },
+ {
+  "row": 306,
+  "skill": "Google Cloud Platform",
+  "segments": [
+   {
+    "under": "What Will Make You Stand Out (Preferred Qualifications)",
+    "text": "- Familiarity with major cloud platforms such as AWS, Microsoft Azure, or Google Cloud and how modern applications and AI workloads are deployed in enterprise environments"
+   }
+  ]
+ },
+ {
+  "row": 307,
+  "skill": "Salesforce Apex",
+  "segments": [
+   {
+    "under": "Experience",
+    "text": "- Experience with development languages like Apex, Visualforce, Lightning Components, SOQL, and SOSL is a plus."
+   }
+  ]
+ },
+ {
+  "row": 308,
+  "skill": "Jira",
+  "segments": [
+   {
+    "under": "Dev Productivity & Enterprise Tooling (Global Scale)",
+    "text": "- Drive Jira workflow design and automation (templates, guardrails, integrations) to provide consistent cross-org visibility and execution."
+   },
+   {
+    "under": "We’re Excited If You Have",
+    "text": "- Jira (workflow design/automation, cross-team visibility)"
+   }
+  ]
+ },
+ {
+  "row": 309,
+  "skill": "SIP",
+  "segments": [
+   {
+    "under": "Desired",
+    "text": "- Understanding of Telecoms and VOIP including WebRTC and SIP"
+   }
+  ]
+ },
+ {
+  "row": 310,
+  "skill": "Snowflake",
+  "segments": [
+   {
+    "under": "What you'll bring",
+    "text": "- Familiarity with BI and analytics tools (Looker, BigQuery, Snowflake)."
+   }
+  ]
+ },
+ {
+  "row": 311,
+  "skill": "Serial Peripheral Interface",
+  "segments": [
+   {
+    "under": "Nice to have",
+    "text": "- Understanding of STM32 (F4/F7/H7), UART/SPI/I2C/CAN"
+   }
+  ]
+ },
+ {
+  "row": 312,
+  "skill": "CMake",
+  "segments": [
+   {
+    "under": "It would also be great if you have",
+    "text": "- Experience with modern C++ build systems such as CMake."
+   }
+  ]
+ },
+ {
+  "row": 313,
+  "skill": "Python",
+  "segments": [
+   {
+    "under": "What You'll Be Building",
+    "text": "- Multi-Tenancy & Authorization. Build secure tenant isolation, authentication, authorization, and audit across customer organizations. Implement the access boundaries and isolation guarantees that enterprise and regulated (e.g. GxP, FedRAMP) deployments require. Build resilient backend services in Python/FastAPI. Own schema design for multi-tenant data, tenant-aware query patterns, and operational correctness in a regulated environment."
+   },
+   {
+    "under": "What You'll Need to Succeed",
+    "text": "- Solid in Python (e.g. FastAPI), Kubernetes, AWS, databases."
+   }
+  ]
+ },
+ {
+  "row": 314,
+  "skill": "Cypress",
+  "segments": [
+   {
+    "under": "Qualificações",
+    "text": "- Vivência prática com automação de testes utilizando frameworks de mercado como Cypress ou Robot Framework para esteiras contínuas."
+   }
+  ]
+ },
+ {
+  "row": 315,
+  "skill": "C",
+  "segments": [
+   {
+    "under": "As an ideal candidate, you will have",
+    "text": "- Minimum of 3 years experience with modern scripting languages (e.g. Python, Node.js, SQL) and/or popular programming languages (e.g. C/C++, Java, C#) in a professional capacity"
+   }
+  ]
+ },
+ {
+  "row": 316,
+  "skill": "Wiz",
+  "segments": [
+   {
+    "under": "Required Qualification and Experience",
+    "text": "- Security Tooling Expertise: Proficiency in embedding SAST/DAST/SCA and secrets scanning tools (Snyk, SonarQube, GitGuardian, OWASP ZAP, Prisma Cloud/Wiz) into developer workflows."
+   }
+  ]
+ },
+ {
+  "row": 317,
+  "skill": "Cursor",
+  "segments": [
+   {
+    "under": "Ideal candidates will have",
+    "text": "- Hands-on experience leveraging AI in the development process (e.g. AI coding assistants and agentic dev tools such as Claude Code, Cursor, or Copilot) and a desire to reshape how a team builds software to better utilize AI."
+   }
+  ]
+ },
+ {
+  "row": 318,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "WHAT YOU BRING",
+    "text": "- Solid grasp of common vulnerability classes (OWASP Top and secure code review in Java plus at least one of TypeScript/JavaScript, Python, Go, or Rust"
+   }
+  ]
+ },
+ {
+  "row": 319,
+  "skill": ".NET",
+  "segments": [
+   {
+    "under": "WHAT WE ARE LOOKING FOR",
+    "text": "- Programming & IaC: high proficiency in Python, paired with strong experience in C# (.NET), Java, C++, or similar and hands-on experience with Infrastructure as Code (Terraform or Bicep)"
+   }
+  ]
+ },
+ {
+  "row": 320,
+  "skill": "Ruby",
+  "segments": [
+   {
+    "under": "About you",
+    "text": "- Deep technical background with hands-on experience building and consuming RESTful APIs, webhooks, and modern SDKs in languages like JavaScript, Python, or Ruby."
+   }
+  ]
+ }
+]

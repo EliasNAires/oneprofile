@@ -1,0 +1,242 @@
+[
+ {
+  "row": 321,
+  "skill": "Internet Information Services",
+  "segments": [
+   {
+    "under": "What You Will Need",
+    "text": "- Experience with the following technologies is expected, but not all are required: General knowledge of .NET, C#, ASP.NET, MVC, Classic ASP, VB Script, Entity Framework, WPF, JavaScript, IIS, HTML, CSS, XML/XSLT, MSMQ, NServiceBus, Visual Studio, Team Foundation Server, Git, or other source control tools required."
+   }
+  ]
+ },
+ {
+  "row": 322,
+  "skill": "React",
+  "segments": [
+   {
+    "under": "You will be",
+    "text": "- working across frontend and backend, with a strong focus on TypeScript, JavaScript, React, and Node.js or Deno,"
+   },
+   {
+    "under": "Your profile",
+    "text": "- strong hands-on expertise in TypeScript and JavaScript, with significant production experience in React and backend runtimes such as Node.js or Deno,"
+   }
+  ]
+ },
+ {
+  "row": 323,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "Who You Are",
+    "text": "- Experienced in programming/scripting with any of the following: Java, Python, Ruby, Go, Node.JS, PHP, and .NET etc."
+   }
+  ]
+ },
+ {
+  "row": 324,
+  "skill": "Google Gemini",
+  "segments": [
+   {
+    "under": "Key Qualifications",
+    "text": "- AI-fluent: high level of comfort with leading AI tools (Claude, ChatGPT, Gemini, etc.) and strong instincts for which workflows to automate"
+   }
+  ]
+ },
+ {
+  "row": 325,
+  "skill": "Azure",
+  "segments": [
+   {
+    "under": "Qualifications",
+    "text": "- Cloud experience in AWS or Azure."
+   }
+  ]
+ },
+ {
+  "row": 326,
+  "skill": "X12",
+  "segments": [
+   {
+    "under": "Desirable",
+    "text": "- Familiarity with healthcare interoperability standards (FHIR, HL7, X12)"
+   }
+  ]
+ },
+ {
+  "row": 327,
+  "skill": "SQL",
+  "segments": [
+   {
+    "under": "Desired Skills",
+    "text": "- Proficiency in Python (pandas, scikit-learn, PyTorch/XGBoost) and SQL; experience working with large-scale datasets."
+   }
+  ]
+ },
+ {
+  "row": 328,
+  "skill": "Snowflake",
+  "segments": [
+   {
+    "under": "Sound a-peeling? Here's what we're looking for",
+    "text": "- Solid knowledge and experience with relational databases and comfortable working with data across various data systems (PostgreSQL, Snowflake, S3)"
+   }
+  ]
+ },
+ {
+  "row": 329,
+  "skill": "Kubernetes",
+  "segments": [
+   {
+    "under": "About the Role",
+    "text": "Our stack runs on AWS, with workloads orchestrated on Kubernetes and data anchored in Aurora RDS (MySQL and Postgres)."
+   },
+   {
+    "under": "What you’ll do",
+    "text": "- Engineer for scale and performance: build capacity models, run load and stress tests, diagnose bottlenecks across compute, networking, Kubernetes, and databases, and validate improvements against throughput, latency, saturation, and cost per workload."
+   },
+   {
+    "under": "What you’ll do",
+    "text": "- Build and operate the Kubernetes platform: improve cluster architecture, lifecycle automation, workload isolation, resource allocation, autoscaling, safe upgrades, and deployment reliability."
+   },
+   {
+    "under": "What We look for",
+    "text": "- Deep expertise with Kubernetes in production: cluster lifecycle, scheduling, resource management, autoscaling, networking, and troubleshooting business-critical workloads. EKS experience is strongly preferred."
+   },
+   {
+    "under": "Sezzle’s Technology Stack",
+    "text": "- DevOps and Cloud: AWS, Kubernetes"
+   }
+  ]
+ },
+ {
+  "row": 330,
+  "skill": "C#",
+  "segments": [
+   {
+    "under": "Nice to have",
+    "text": "- Java, C#, or C++ within legacy enterprise environments."
+   }
+  ]
+ },
+ {
+  "row": 331,
+  "skill": "Terraform",
+  "segments": [
+   {
+    "under": "What you bring",
+    "text": "- Strong automation background infrastructure as code (Terraform, CloudFormation, Bicep), scripting (Python, PowerShell), API-first integration, and CI/CD (Strong Automation Background)"
+   }
+  ]
+ },
+ {
+  "row": 332,
+  "skill": "MAAS",
+  "segments": [
+   {
+    "under": "About the Organization",
+    "text": "Money as a Service (MaaS) oversees a diverse portfolio of Stripe's core platforms and services."
+   }
+  ]
+ },
+ {
+  "row": 333,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "Technology",
+    "text": "We primarily use Go and Python to build and scale backend systems."
+   },
+   {
+    "under": "We expect you to have",
+    "text": "- Strong Python and/or Go programming skills"
+   }
+  ]
+ },
+ {
+  "row": 334,
+  "skill": "Postman",
+  "segments": [
+   {
+    "under": "Do you have experience with…?",
+    "text": "- API testing (Postman, SoapUI, REST/SOAP services)"
+   }
+  ]
+ },
+ {
+  "row": 335,
+  "skill": "Adobe Target",
+  "segments": [
+   {
+    "under": "Experience",
+    "text": "- Experience with website measurement; either Google Analytics or Adobe Analytics, including tag management platforms (GTM, Adobe Launch, Tealium, etc.,) and one or more testing platforms (Optimizely, Adobe Target, etc.). Adobe analytics experience is a plus."
+   }
+  ]
+ },
+ {
+  "row": 336,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "OTHER QUALIFICATIONS",
+    "text": "- Proficiency in C++, Go, CUDA, Rust, and/or Java"
+   }
+  ]
+ },
+ {
+  "row": 337,
+  "skill": "Nix",
+  "segments": [
+   {
+    "under": "What you’ll bring",
+    "text": "- Have used Linux build toolchains such as autotools, make, CMake, and Nix."
+   }
+  ]
+ },
+ {
+  "row": 338,
+  "skill": "Flask",
+  "segments": [
+   {
+    "under": "Build Secure Software for High-Impact Defense Missions",
+    "text": "You will build responsive user interfaces using React and TypeScript, support geospatial visualization using Cesium, and connect frontend components to services built with FastAPI and Flask."
+   },
+   {
+    "under": "What You’ll Do",
+    "text": "- Connect frontend components to APIs and services built with FastAPI and Flask."
+   },
+   {
+    "under": "What You’ll Bring",
+    "text": "- Working with FastAPI and Flask in support of frontend-to-backend integration."
+   },
+   {
+    "under": "Experience That Can Strengthen Your Fit",
+    "text": "- FastAPI, Flask, Python, or API development"
+   }
+  ]
+ },
+ {
+  "row": 339,
+  "skill": "Cypress",
+  "segments": [
+   {
+    "under": "Roles and Responsibilities",
+    "text": "- Triage and maintain automation pipelines using Selenium and Cypress to ensure high-quality software delivery."
+   },
+   {
+    "under": "Skills Required",
+    "text": "- Hands-on experience with test automation tools and frameworks such as Selenium, Cypress, and TestNG."
+   }
+  ]
+ },
+ {
+  "row": 340,
+  "skill": "Amazon ECR",
+  "segments": [
+   {
+    "under": "What You Bring",
+    "text": "- Previous experience administering Kubernetes platforms (EKS and/or AKS) and container registries (ECR and/or ACR), including cluster provisioning, upgrades, networking, RBAC, policy enforcement, workload security, image management, and ongoing operations in production environments."
+   }
+  ]
+ }
+]

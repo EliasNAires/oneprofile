@@ -1,0 +1,218 @@
+[
+ {
+  "row": 201,
+  "skill": "AWS",
+  "segments": [
+   {
+    "under": "About you",
+    "text": "- Strong understanding of cloud infrastructure (AWS, GCP, or Azure) including compute, networking, storage, and orchestration systems."
+   }
+  ]
+ },
+ {
+  "row": 202,
+  "skill": "Apache Hive",
+  "segments": [
+   {
+    "under": "Basic Qualifications",
+    "text": "- Solid proficiency in Python, SQL, and distributed data processing frameworks (e.g., Spark, Hive, or equivalent big data technologies), with proven experience in building and maintaining scalable data pipelines"
+   }
+  ]
+ },
+ {
+  "row": 203,
+  "skill": "Serial Peripheral Interface",
+  "segments": [
+   {
+    "under": "Preferred Qualifications",
+    "text": "- Familiarity with communications busses and protocols (e.g. CAN, CANFD, UART/RS232/RS422/RS485, SPI, QSPI, I2C, Ethernet, ARINC-825, ARINC-429, MIL-STD-1553, etc)."
+   }
+  ]
+ },
+ {
+  "row": 204,
+  "skill": "Google Cloud Platform",
+  "segments": [
+   {
+    "under": "What We’re Looking For",
+    "text": "- Cloud Technologies: Experience working with public cloud platforms (e.g., AWS, GCP, Azure) as well as containerization and orchestration technologies (e.g., Docker and Kubernetes)."
+   }
+  ]
+ },
+ {
+  "row": 205,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "Who you are",
+    "text": "- Strong programming ability (Python at a minimum; Golang/Rust would be beneficial) and software engineering principles."
+   }
+  ]
+ },
+ {
+  "row": 206,
+  "skill": "Hyper-V",
+  "segments": [
+   {
+    "under": "Successful candidate must possess",
+    "text": "- Hands-on experience with technologies such as Cisco IOS, FortiOS, Microsoft 365, Azure, Windows Server, Linux, Active Directory, VMware, Hyper-V, SAN storage, scripting, databases, backup solutions, web services, remote access technologies, and SSL certificates."
+   }
+  ]
+ },
+ {
+  "row": 207,
+  "skill": "Apache Spark",
+  "segments": [
+   {
+    "under": "About the School of Data Science",
+    "text": "- Data Engineering and Streaming (Airflow, Kafka, Spark, Data Lakes/Lakehouses, Data Warehouses)"
+   }
+  ]
+ },
+ {
+  "row": 208,
+  "skill": "CANbus",
+  "segments": [
+   {
+    "under": "What You'll Do",
+    "text": "- Develop and debug low-level drivers and communication interfaces (CAN, SPI, I2C, UART, PWM) between flight controllers, sensors, and actuators"
+   },
+   {
+    "under": "Preferred Qualifications",
+    "text": "- Familiarity with embedded communication protocols such as CAN, SPI, I2C, UART, or PWM"
+   }
+  ]
+ },
+ {
+  "row": 209,
+  "skill": "Oracle Cloud Infrastructure",
+  "segments": [
+   {
+    "under": "Required Qualifications",
+    "text": "- Proven experience building large-scale cloud-native distributed systems using AWS, Azure, Google Cloud, or OCI."
+   }
+  ]
+ },
+ {
+  "row": 210,
+  "skill": "Linux",
+  "segments": [
+   {
+    "under": "Required Qualifications",
+    "text": "- 5+ years of experience in Linux networking, including firewall configuration using netfilter, iptables, and nftables, as well as DNS filtering, traffic shaping, and QoS."
+   },
+   {
+    "under": "Required Qualifications",
+    "text": "- 2+ years of hands-on experience with Linux userspace fast-path frameworks such as VPP and DPDK"
+   },
+   {
+    "under": "Preferred Qualifications",
+    "text": "- Proven experience with data-path Multitenancy like VXLAN, Linux Namespaces and VRFs."
+   }
+  ]
+ },
+ {
+  "row": 211,
+  "skill": "Linux",
+  "segments": [
+   {
+    "under": "Experience & Education",
+    "text": "- Knowledge of Linux and Windows operating systems, command-line tools, and basic scripting (PowerShell, Bash)."
+   }
+  ]
+ },
+ {
+  "row": 212,
+  "skill": "Pact",
+  "segments": [
+   {
+    "under": "Preferred Skills (Good to have)",
+    "text": "- Experience with contract testing tools such as Pact and API specifications such as OpenAPI/Swagger."
+   }
+  ]
+ },
+ {
+  "row": 213,
+  "skill": "Swagger",
+  "segments": [
+   {
+    "under": "No seu dia a dia, você vai",
+    "text": "- Modelar APIs RESTful seguindo a abordagem API First (Swagger/OpenAPI)."
+   }
+  ]
+ },
+ {
+  "row": 214,
+  "skill": "Terraform",
+  "segments": [
+   {
+    "under": "Responsibilities",
+    "text": "- Lead automation and Infrastructure-as-Code (IaC) initiatives, leveraging tools such as Terraform, CloudFormation, or Azure Resource Manager to streamline deployments and enforce governance. — 10%"
+   },
+   {
+    "under": "Requirements",
+    "text": "- Strong automation and scripting experience, including PowerShell and Python; Terraform or CloudFormation highly preferred; CI/CD familiarity a plus."
+   }
+  ]
+ },
+ {
+  "row": 215,
+  "skill": "HashiCorp Vault",
+  "segments": [
+   {
+    "under": "What You'll Bring to Xometry",
+    "text": "- Hands-on familiarity with the Secure Vault pattern: protecting data in a separate, highly restricted AWS account with tight network controls."
+   }
+  ]
+ },
+ {
+  "row": 216,
+  "skill": "Snowflake",
+  "segments": [
+   {
+    "under": "What You’ll Bring",
+    "text": "- Strong proficiency in SQL, Python or R, Excel, Tableau or an equivalent data visualization tool, and Snowflake or similar data warehousing technologies."
+   }
+  ]
+ },
+ {
+  "row": 217,
+  "skill": "Cursor",
+  "segments": [
+   {
+    "under": "What You Bring",
+    "text": "- Technical fluency close to engineering: you can read code, write a script, call an API, and use AI coding tools (Cursor, Claude Code, Copilot) comfortably. You don’t need to ship production code, but you should hold your own with engineers and PMs and translate complex AI features for technical and non-technical audiences alike"
+   }
+  ]
+ },
+ {
+  "row": 218,
+  "skill": "R",
+  "segments": [
+   {
+    "under": "Required Qualifications",
+    "text": "- Expert knowledge of SQL and proficiency in R and/or Python for statistical computing"
+   }
+  ]
+ },
+ {
+  "row": 219,
+  "skill": "AWS",
+  "segments": [
+   {
+    "under": "Minimum Qualifications",
+    "text": "- Working knowledge of two or more common Cloud ecosystems (AWS, Azure, GCP) with expertise in at least one"
+   }
+  ]
+ },
+ {
+  "row": 220,
+  "skill": "Celery",
+  "segments": [
+   {
+    "under": "About You",
+    "text": "- Nice to have: Apollo Federation at scale, GraphQL APIs with Absinthe, Mobile Development for iOS or Android using Swift or Kotlin, hexagonal architecture, domain-driven design, relational databases (PostgreSQL, MySQL), background job processing (Oban, Exq, Sidekiq, Celery), asynchronous event infrastructure (Kafka, RabbitMQ, SQS/SNS, Pub/Sub), open source contributions, startup experience, and a passion for sports or esports."
+   }
+  ]
+ }
+]

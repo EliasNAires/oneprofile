@@ -1,0 +1,75 @@
+[
+ {
+  "row": 282,
+  "skill": "SAP ERP",
+  "segments": [
+   {
+    "under": "What sets you apart",
+    "text": "- Proficiency with Microsoft Word, Excel, SharePoint, and familiarity with SAP"
+   }
+  ]
+ },
+ {
+  "row": 290,
+  "skill": "macOS",
+  "segments": [
+   {
+    "under": "Remote",
+    "text": "Speechify's text-to-speech reading products include its iOS app, Android App, Mac App, Chrome Extension, and Web App."
+   }
+  ]
+ },
+ {
+  "row": 293,
+  "skill": "C",
+  "segments": [
+   {
+    "under": "The Solutions Engineer Team",
+    "text": "We are looking for great teammates who can build and deliver sales presentations and customized product demonstrations to help educate Okta’s Customers (everyone from developers to product managers to C-level executives) on best practices during their cloud security technology journey."
+   }
+  ]
+ },
+ {
+  "row": 297,
+  "skill": "Figma",
+  "segments": [
+   {
+    "text": "# What you’ll do at Figma"
+   },
+   {
+    "under": "While not required, it’s an added plus if you also have",
+    "text": "At Figma, one of our values is Grow as you go."
+   }
+  ]
+ },
+ {
+  "row": 332,
+  "skill": "MAAS",
+  "segments": [
+   {
+    "under": "About the Organization",
+    "text": "Money as a Service (MaaS) oversees a diverse portfolio of Stripe's core platforms and services."
+   }
+  ]
+ },
+ {
+  "row": 343,
+  "skill": "ECMAScript Modules",
+  "segments": [
+   {
+    "under": "Our research spans",
+    "text": "- Frontier molecular modeling, from protein language models (e.g., ESM) to structure prediction (e.g., ESMFold) and beyond."
+   }
+  ]
+ },
+ {
+  "row": 388,
+  "skill": "R",
+  "segments": [
+   {
+    "under": "About the Team",
+    "text": "The Professional Services R&D team is a new, dynamic group at the forefront of innovation within Okta."
+   }
+  ]
+ }
+]

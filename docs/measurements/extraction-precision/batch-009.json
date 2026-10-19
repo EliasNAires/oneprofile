@@ -1,0 +1,227 @@
+[
+ {
+  "row": 161,
+  "skill": "Modbus",
+  "segments": [
+   {
+    "under": "PREFERRED QUALIFICATIONS",
+    "text": "- Familiarity with OT protocols (e.g., Modbus, DNP3, Ethernet/IP) and ICS environments"
+   }
+  ]
+ },
+ {
+  "row": 162,
+  "skill": "SQL",
+  "segments": [
+   {
+    "under": "Responsibilities",
+    "text": "- Use technical skills to scope out customer analyses requests, produce studies and results using SQL, R and Python within an agreed upon deadline."
+   },
+   {
+    "under": "Required Skills",
+    "text": "- Strong proficiency in SQL, R and/or Python for statistical analysis"
+   }
+  ]
+ },
+ {
+  "row": 163,
+  "skill": "Spring Framework",
+  "segments": [
+   {
+    "under": "WHAT YOU'LL DO",
+    "text": "- Build and maintain scalable microservices and APIs using Spring and Spring Boot."
+   },
+   {
+    "under": "WHAT YOU BRING",
+    "text": "- Experience with modern Java development frameworks such as Spring and Spring Boot."
+   }
+  ]
+ },
+ {
+  "row": 164,
+  "skill": "Cursor",
+  "segments": [
+   {
+    "under": "Required Qualifications",
+    "text": "- Demonstrated ownership of AI tooling strategy for a QA org — not just individual use of tools like Claude, ChatGPT, Cursor, or GitHub Copilot — with the ability to evaluate, pilot, and drive adoption."
+   }
+  ]
+ },
+ {
+  "row": 165,
+  "skill": "Linux",
+  "segments": [
+   {
+    "under": "You have",
+    "text": "- Development Environment: Hands-on experience with Linux/Unix environments, build systems, scripting (Python/Bash), and modern CI/CD / version control workflows"
+   }
+  ]
+ },
+ {
+  "row": 166,
+  "skill": "Braintrust",
+  "segments": [
+   {
+    "under": "Our Work Style",
+    "text": "- GenAI & LLMs: Langchain, Azure OpenAI, Gemini, Vertex AI, Braintrust"
+   }
+  ]
+ },
+ {
+  "row": 167,
+  "skill": "Cursor",
+  "segments": [
+   {
+    "under": "Preferred Requirements",
+    "text": "- Familiarity with interoperability standards used in mission systems (e.g., Link 16, TAK/Cursor-on-Target) is a plus"
+   }
+  ]
+ },
+ {
+  "row": 168,
+  "skill": "Ansible",
+  "segments": [
+   {
+    "under": "Essential Functions/Responsibilities",
+    "text": "- Support and maintain automation and Infrastructure-as-Code solutions using technologies such as Ansible, Terraform, PowerShell, Python, or similar tools."
+   },
+   {
+    "under": "Required Education/Experience & Skills",
+    "text": "- Experience with automation, scripting, and Infrastructure-as-Code using PowerShell, Python, Ansible, Terraform, or similar technologies."
+   }
+  ]
+ },
+ {
+  "row": 169,
+  "skill": "SAP ERP",
+  "segments": [
+   {
+    "under": "Bonus Points",
+    "text": "- Familiarity with SAP technology."
+   }
+  ]
+ },
+ {
+  "row": 170,
+  "skill": "macOS",
+  "segments": [
+   {
+    "text": "- Own support tickets in ServiceNow from intake through resolution, with responsibility for issues spanning PC/Mac endpoints, imaging workflows, collaborative tools (Teams/O365), and emerging AI/workstream tooling. Troubleshoot complex endpoint issues across Intune (device compliance, conditional access, app distribution), hybrid identity systems (Okta, AD, Entra), and Exchange Online. Leverage Moveworks for intelligent ticket intake, prioritization, and automated routing to reduce manual triage. Coordinate cross-functionally with remote teams, document root causes and remediation steps in ServiceNow, and drive first-contact resolution rates. Identify automation opportunities—flagging repetitive tickets for workflow automation, knowledge gaps, and tooling inefficiencies that slow resolution. The role is also responsible for monitoring and supporting patch compliance."
+   }
+  ]
+ },
+ {
+  "row": 171,
+  "skill": "scikit-learn",
+  "segments": [
+   {
+    "under": "Your Background",
+    "text": "- Practical hands-on experience with ML development and deployment tooling: Jupyter, PyTorch, TensorFlow, Scikit-learn, Azure Machine Learning, MLFlow, Docker, Kubernetes (AKS), Terraform, Ansible, Datadog."
+   }
+  ]
+ },
+ {
+  "row": 172,
+  "skill": ".NET MAUI",
+  "segments": [
+   {
+    "under": "What you will be doing",
+    "text": "- JavaScript, TypeScript, React, Angular, Next.js, .NET MAUI, Flutter, and Xamarin."
+   }
+  ]
+ },
+ {
+  "row": 173,
+  "skill": "Azure DevOps",
+  "segments": [
+   {
+    "under": "Preferred Skills",
+    "text": "- Familiarity with Azure Devops."
+   }
+  ]
+ },
+ {
+  "row": 174,
+  "skill": "Kubernetes",
+  "segments": [
+   {
+    "under": "Nice to have",
+    "text": "- Experience with container orchestration (Kubernetes, Docker, ECS)"
+   }
+  ]
+ },
+ {
+  "row": 175,
+  "skill": "Postman",
+  "segments": [
+   {
+    "under": "Required Qualifications",
+    "text": "- API testing tooling (Postman, REST Assured, or similar)."
+   }
+  ]
+ },
+ {
+  "row": 176,
+  "skill": "Docker",
+  "segments": [
+   {
+    "under": "Qualifications",
+    "text": "- In-depth knowledge of containerization technologies, such as Docker and Kubernetes."
+   }
+  ]
+ },
+ {
+  "row": 177,
+  "skill": "C",
+  "segments": [
+   {
+    "under": "PREFERRED SKILLS AND EXPERIENCE",
+    "text": "- Experience with Python, MATLAB, or C/C++ programming for data analysis or test equipment interfacing"
+   }
+  ]
+ },
+ {
+  "row": 178,
+  "skill": "Elasticsearch",
+  "segments": [
+   {
+    "under": "Preferred Qualifications",
+    "text": "- Experience with big data technologies like: Hadoop, Spark, PostgreSQL, ElasticSearch, Hive, Drill, Impala, Trino, Presto, etc."
+   }
+  ]
+ },
+ {
+  "row": 179,
+  "skill": "Databricks",
+  "segments": [
+   {
+    "text": "At Databricks, we are passionate about enabling data teams to solve the world's toughest problems — from making the next mode of transportation a reality to accelerating the development of medical breakthroughs."
+   },
+   {
+    "text": "As a software engineer with a backend focus, you will work with your team to build infrastructure for the Databricks platform at scale."
+   },
+   {
+    "under": "The impact you'll have",
+    "text": "- Supporting Databricks' growth by building foundational infrastructure platforms that enable seamless operation across numerous geographic regions and cloud providers."
+   },
+   {
+    "under": "The impact you'll have",
+    "text": "- Implementing cloud-agnostic infrastructure abstractions to help Databricks engineers more efficiently manage and operate their services."
+   },
+   {
+    "under": "The impact you'll have",
+    "text": "- Develop tools and processes that drive engineering efficiency at Databricks. We enhance the developer experience for Databricks engineers across various areas, including programming languages, linters, static analysis, IDEs, remote development environments, automated release pipelines, and test automation frameworks. Our current focus is on optimizing the Rust development experience across the organization."
+   }
+  ]
+ },
+ {
+  "row": 180,
+  "skill": "Temporal",
+  "segments": [
+   {
+    "under": "While not required, it’s an added plus if you also have",
+    "text": "- Experience with workflow orchestration platforms such as Temporal, n8n, or Tines for multi-stage automation"
+   }
+  ]
+ }
+]

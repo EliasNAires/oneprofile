@@ -1,0 +1,217 @@
+[
+ {
+  "row": 361,
+  "skill": "Ansible",
+  "segments": [
+   {
+    "under": "Nice to Have",
+    "text": "- Experience with Terraform, Terrateam, Ansible, Vault, Consul, Kubernetes, ArgoCD, Prometheus/Grafana, Packer, Redis, and GitHub Actions."
+   }
+  ]
+ },
+ {
+  "row": 362,
+  "skill": "Apache Iceberg",
+  "segments": [
+   {
+    "text": "Lakehouse producer experience (Iceberg / S3, CDC); MQTT / IoT ingest at scale (EMQX or comparable)."
+   }
+  ]
+ },
+ {
+  "row": 363,
+  "skill": "SQL",
+  "segments": [
+   {
+    "under": "Preferred Qualifications",
+    "text": "- Advanced Caching & Open Source: Experience optimizing edge media caches, working with relational databases/SQL, or contributing to open-source software initiatives."
+   }
+  ]
+ },
+ {
+  "row": 364,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "About you",
+    "text": "- Strong coding skills (for example in Go/Python/Java/C++ etc) with an emphasis on designing for reliability and scale, and writing well-tested components"
+   }
+  ]
+ },
+ {
+  "row": 365,
+  "skill": "Swift",
+  "segments": [
+   {
+    "under": "What you’ll bring to the team",
+    "text": "- Hands-on background with Node.js, TypeScript, and Google Cloud, plus working knowledge of mobile technologies (Swift, Kotlin, Flutter, or KMP)."
+   }
+  ]
+ },
+ {
+  "row": 366,
+  "skill": "Django",
+  "segments": [
+   {
+    "under": "What you’ll bring",
+    "text": "- Experience using modern programming languages and frameworks – our stack includes Python (Django) and JavaScript/TypeScript (React), but we value adaptability and engineering fundamentals over specific tech"
+   }
+  ]
+ },
+ {
+  "row": 367,
+  "skill": "Google Cloud Platform",
+  "segments": [
+   {
+    "under": "Who You Are",
+    "text": "- Hands-on expertise with cloud platforms (AWS, GCP, or Azure) and Kubernetes."
+   }
+  ]
+ },
+ {
+  "row": 368,
+  "skill": "Dagger",
+  "segments": [
+   {
+    "under": "An Ideal Candidate Should Have",
+    "text": "- Rock solid Kotlin, Kotlin Coroutines, Kotlin Flow, Dagger 2, MVVM, Clean Architecture, Background Services, Music Player Service, Android animations, Jetpack Navigation, and JUnit tests"
+   },
+   {
+    "under": "Technologies we use",
+    "text": "- Kotlin Kotlin Coroutines · Kotlin Flow · Jetpack Navigation · Dagger 2 · Room · Custom Views, Canvas & Paint · Jetpack Compose · JUnit"
+   }
+  ]
+ },
+ {
+  "row": 369,
+  "skill": "Terraform",
+  "segments": [
+   {
+    "under": "Your Background",
+    "text": "- DevOps practices including containerisation (Docker, GKE), Infrastructure as Code (Terraform, Deployment Manager), and automated testing."
+   }
+  ]
+ },
+ {
+  "row": 370,
+  "skill": "CrowdStrike",
+  "segments": [
+   {
+    "under": "We'd Be Delighted If You Also Have",
+    "text": "- Experience with enterprise security technologies such as Splunk, CrowdStrike, Rapid7, Vanta, Okta, and DLP solutions"
+   }
+  ]
+ },
+ {
+  "row": 371,
+  "skill": "Google Gemini",
+  "segments": [
+   {
+    "under": "WHAT YOU WILL DO",
+    "text": "- Support employees with AI tools (Claude, ChatGPT, Gemini and similar) and handling queries, troubleshooting, and providing admin-level guidance to help teams get the most out of AI in their workflows"
+   }
+  ]
+ },
+ {
+  "row": 372,
+  "skill": "GitHub Actions",
+  "segments": [
+   {
+    "under": "Bonus points",
+    "text": "- CI/CD & Automation: Experience building robust deployment pipelines via GitHub Actions."
+   }
+  ]
+ },
+ {
+  "row": 373,
+  "skill": "Snowflake",
+  "segments": [
+   {
+    "under": "Our Tech Stack",
+    "text": "- Fivetran/Snowflake/Looker for the BI insights and Python/Faust/Flask/Tecton + some ML libs for the automated decisioning and risk management"
+   }
+  ]
+ },
+ {
+  "row": 374,
+  "skill": "Ruby on Rails",
+  "segments": [
+   {
+    "under": "About You",
+    "text": "- Experience with modern web frameworks and API development (Phoenix, Ruby on Rails, Fast API, Laravel, Node)"
+   }
+  ]
+ },
+ {
+  "row": 375,
+  "skill": "PyTorch",
+  "segments": [
+   {
+    "under": "What You Bring",
+    "text": "- Experience in Python (native, Pandas, ScikitLearn, Tensorflow or Pytorch, PyStats, Pydantic)"
+   }
+  ]
+ },
+ {
+  "row": 376,
+  "skill": "Kubernetes",
+  "segments": [
+   {
+    "under": "Required Qualifications",
+    "text": "- 3+ years of production experience with containers, Kubernetes, cloud-native service design, autoscaling, resilience patterns, and multi-region deployments."
+   }
+  ]
+ },
+ {
+  "row": 377,
+  "skill": "GDB",
+  "segments": [
+   {
+    "under": "What we are looking for in you",
+    "text": "- Experience with debugging tools such as gdb, crash or other"
+   }
+  ]
+ },
+ {
+  "row": 378,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "Our tech stack",
+    "text": "Primary languages: Go, Python, SQL"
+   },
+   {
+    "under": "Our tech stack",
+    "text": "APIs and application: REST APIs, Python application monolith, Go workers and services, Java Infrastructure: GCP, Kubernetes/GKE, internal Kubernetes deployment tooling"
+   },
+   {
+    "under": "Our tech stack",
+    "text": "Testing: Go and Python unit/integration tests, API and end-to-end automation, performance testing"
+   },
+   {
+    "under": "Technical skills",
+    "text": "- Experience with Go or Python; practical ability in both is a strong advantage."
+   }
+  ]
+ },
+ {
+  "row": 379,
+  "skill": "Snowflake",
+  "segments": [
+   {
+    "under": "Data, Tools & Technical Leadership",
+    "text": "- Prepare and analyze large datasets using cloud platforms such as AWS and Snowflake."
+   }
+  ]
+ },
+ {
+  "row": 380,
+  "skill": "AWS Glue",
+  "segments": [
+   {
+    "under": "The Ideal Match",
+    "text": "- Comfortable with AWS data services (S3, Lambda, ECS, Glue, Redshift, OpenSearch) and event-driven orchestration"
+   }
+  ]
+ }
+]

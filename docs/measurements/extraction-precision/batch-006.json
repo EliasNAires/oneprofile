@@ -1,0 +1,206 @@
+[
+ {
+  "row": 101,
+  "skill": "DNS",
+  "segments": [
+   {
+    "under": "What We’re Looking for (Minimum Qualifications)",
+    "text": "- Proven cybersecurity and networking technical background with hands-on experience in network fundamentals such as TCP/IP, DNS, routing, VPN, and firewalls"
+   }
+  ]
+ },
+ {
+  "row": 102,
+  "skill": "Jest",
+  "segments": [
+   {
+    "under": "Qualifications and Skills",
+    "text": "- Experience with hands-on automation framework development: TestNG/Cypress/Selenium/Rest Assured/Cucumber/Jest etc."
+   }
+  ]
+ },
+ {
+  "row": 103,
+  "skill": "Routing Information Protocol",
+  "segments": [
+   {
+    "under": "Qualifications",
+    "text": "- Knowledge and understanding of the OSI Network Reference Model, Layer 2 and Layer 3 Switching, Spanning Tree Protocols (STP, RSTP, MSTP), TCP/IP, and Routing Protocols (RIP and OSPF) is required. Knowledge of wireless and cellular technology and applications is a plus."
+   }
+  ]
+ },
+ {
+  "row": 104,
+  "skill": "Spring Framework",
+  "segments": [
+   {
+    "under": "What You'll Do",
+    "text": "- Hands-on experience with Core Java and J2EE technologies (Java, Spring, Spring Boot, Hibernate/MyBatis)."
+   }
+  ]
+ },
+ {
+  "row": 105,
+  "skill": "Android Jetpack",
+  "segments": [
+   {
+    "under": "An Ideal Candidate Should Have",
+    "text": "- Rock solid Kotlin, Kotlin Coroutines, Kotlin Flow, Dagger 2, MVVM, Clean Architecture, Background Services, Music Player Service, Android animations, Jetpack Navigation, and JUnit tests"
+   },
+   {
+    "under": "Technologies we use",
+    "text": "- Kotlin Kotlin Coroutines · Kotlin Flow · Jetpack Navigation · Dagger 2 · Room · Custom Views, Canvas & Paint · Jetpack Compose · JUnit"
+   }
+  ]
+ },
+ {
+  "row": 106,
+  "skill": "Rancher",
+  "segments": [
+   {
+    "under": "Desired Skills",
+    "text": "- Experience deploying applications to Kubernetes platforms such as Rancher, Amazon EKS, OpenShift, or other CNCF-compliant Kubernetes distributions."
+   }
+  ]
+ },
+ {
+  "row": 107,
+  "skill": "Apache JMeter",
+  "segments": [
+   {
+    "under": "Nice to haves",
+    "text": "- Knowledge of performance and load testing tools (k6, JMeter, Gatling)"
+   }
+  ]
+ },
+ {
+  "row": 108,
+  "skill": "Swagger",
+  "segments": [
+   {
+    "under": "WHAT YOU’LL NEED",
+    "text": "- Well-versed in OAuth2 authentication, Open API/Swagger documentation, and API testing workflows using Postman."
+   }
+  ]
+ },
+ {
+  "row": 109,
+  "skill": "Cursor",
+  "segments": [
+   {
+    "under": "Mandatory Requirements",
+    "text": "- Daily hands-on experience with AI coding tools such as GitHub Copilot, Cursor, Claude Code, or similar platforms."
+   }
+  ]
+ },
+ {
+  "row": 110,
+  "skill": "VXLAN",
+  "segments": [
+   {
+    "under": "Who You Are",
+    "text": "- Solid working knowledge of network protocols such as BGP, VXLAN/EVPN, and DNS."
+   }
+  ]
+ },
+ {
+  "row": 111,
+  "skill": "JMS",
+  "segments": [
+   {
+    "under": "Qualifications",
+    "text": "Configuring & validating the Comparator, Match tokens, Match & Merge setup and survivorship rules in MDM; Using ETL tools; Cloud-based infrastructure concepts; Programming/analysis/design with Java, Python, or SQL; Data modeling; and SQS or other messaging systems such as JMS."
+   }
+  ]
+ },
+ {
+  "row": 112,
+  "skill": "Linux",
+  "segments": [
+   {
+    "under": "Qualifications",
+    "text": "- Strong knowledge of Python and ML frameworks such as PyTorch or TensorFlow and proficiency in Linux, SQL, Git and Bash scripting"
+   }
+  ]
+ },
+ {
+  "row": 113,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "About You",
+    "text": "- Deep expertise in a general-purpose programming language (e.g., Go, Java, C/C++, Scala, Python) and mastery in applying first principles thinking—actively questioning assumptions to create new knowledge and solutions for core engineering problems."
+   }
+  ]
+ },
+ {
+  "row": 114,
+  "skill": "Chef",
+  "segments": [
+   {
+    "under": "What You’ll Do",
+    "text": "- Use technologies and tools such as: Go, Consul, Kafka, SQL, Chef, Git, Jira, gRPC, Prometheus, Grafana, Lightstep, Docker, DNS, and Kubernetes"
+   }
+  ]
+ },
+ {
+  "row": 115,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "What You’ll Need",
+    "text": "- Strong proficiency in at least one backend language such as Python, Go, Java or Kotlin. Python is preferred."
+   }
+  ]
+ },
+ {
+  "row": 116,
+  "skill": "Google Cloud Platform",
+  "segments": [
+   {
+    "under": "Desired Professional Designations",
+    "text": "- AWS, Azure, or GCP Cloud Architecture certifications"
+   }
+  ]
+ },
+ {
+  "row": 117,
+  "skill": "ThreadX",
+  "segments": [
+   {
+    "under": "Required Skills",
+    "text": "- Professional experience working in C++ and familiarity with RTOS (e.g., FreeRTOS, ThreadX) and bare-metal programming."
+   }
+  ]
+ },
+ {
+  "row": 118,
+  "skill": "Jenkins",
+  "segments": [
+   {
+    "under": "Responsibilities",
+    "text": "- Perform integration testing across cloud providers (AWS, Azure, GCP), IAM platforms (Okta, Ping Identity, Active Directory), and CI/CD systems (Jenkins, GitLab, Azure DevOps)"
+   }
+  ]
+ },
+ {
+  "row": 119,
+  "skill": "Python",
+  "segments": [
+   {
+    "under": "What You’ll Bring",
+    "text": "- Familiarity with the following elements of a modern technology stack: Python, PostgreSQL, API tools such as Insomnia and Postman"
+   }
+  ]
+ },
+ {
+  "row": 120,
+  "skill": "Docker",
+  "segments": [
+   {
+    "under": "Extra awesome",
+    "text": "- Experience with Containerized applications / Docker / Kubernetes"
+   }
+  ]
+ }
+]

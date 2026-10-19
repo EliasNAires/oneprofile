@@ -1,0 +1,293 @@
+[
+ {
+  "row": 261,
+  "skill": "OpenAI Codex",
+  "segments": [
+   {
+    "under": "What We Look For In You",
+    "text": "- Familiarity with mainstream AI coding products, with strong hands-on experience or product understanding of Claude Code, Codex, Cursor, and Copilot, as well as context engineering, knowledge input, tool integration, human-in-the-loop collaboration, and governance considerations."
+   }
+  ]
+ },
+ {
+  "row": 262,
+  "skill": "C",
+  "segments": [
+   {
+    "under": "What you will do",
+    "text": "- Develop software in C/C++ with Python-based automation where appropriate"
+   },
+   {
+    "under": "What we are looking for",
+    "text": "- Strong software fundamentals with solid C/C++ development experience; Python is highly desirable"
+   }
+  ]
+ },
+ {
+  "row": 263,
+  "skill": "Cursor",
+  "segments": [
+   {
+    "under": "Requirement (Must-Haves)",
+    "text": "- Proficiency in AI development environments (e.g., Cursor, Claude Code) and expertise in AI development techniques, such as Spec-Driven Development, are required."
+   }
+  ]
+ },
+ {
+  "row": 264,
+  "skill": "RestAssured",
+  "segments": [
+   {
+    "under": "ROLE & RESPONSIBILITIES",
+    "text": "- Hands automation experience using any of the tools/frameworks like SoapUI/ReadyAPI, Postman, RestAssured, Selenium, Playwright, TestNG, Junit etc."
+   },
+   {
+    "under": "REQUIRED EXPEREINCE",
+    "text": "- Minimum of 3-5 years demonstrated Experience in API testing tools (ReadyAPI, Postman, RestAssured)."
+   }
+  ]
+ },
+ {
+  "row": 265,
+  "skill": "Puppet",
+  "segments": [
+   {
+    "under": "Who You Are",
+    "text": "- Comfortable scripting languages like Python, Javascript, Ruby, Perl, Go, PHP, or Chef/Puppet etc."
+   }
+  ]
+ },
+ {
+  "row": 266,
+  "skill": "C",
+  "segments": [
+   {
+    "under": "Responsibilities",
+    "text": "- Integrating novel autonomy algorithms into UAV flight software, migrating from Python to C/C++ if necessary"
+   },
+   {
+    "under": "Requirements",
+    "text": "- Strong proficiency with C/C++, Python, and Rust"
+   }
+  ]
+ },
+ {
+  "row": 267,
+  "skill": "Kotlin",
+  "segments": [
+   {
+    "under": "An Ideal Candidate Should Have",
+    "text": "- Rock solid Kotlin, Kotlin Coroutines, Kotlin Flow, Dagger 2, MVVM, Clean Architecture, Background Services, Music Player Service, Android animations, Jetpack Navigation, and JUnit tests"
+   },
+   {
+    "under": "Technologies we use",
+    "text": "- Kotlin Kotlin Coroutines · Kotlin Flow · Jetpack Navigation · Dagger 2 · Room · Custom Views, Canvas & Paint · Jetpack Compose · JUnit"
+   }
+  ]
+ },
+ {
+  "row": 268,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "REQUIRED QUALIFICATIONS",
+    "text": "- Strong proficiency in Python or Bash for automation and debugging, and the ability to read and debug service code in a compiled language such as Go."
+   }
+  ]
+ },
+ {
+  "row": 269,
+  "skill": "Serial Peripheral Interface",
+  "segments": [
+   {
+    "under": "Desired Skills",
+    "text": "- Familiarity with avionics data buses and communication protocols (e.g., ARINC-429, MIL-STD-1553, AFDX, CAN, SPI, UART, etc)"
+   }
+  ]
+ },
+ {
+  "row": 270,
+  "skill": "MATLAB",
+  "segments": [
+   {
+    "under": "Your Skills and Experience",
+    "text": "- Experience with programming in Python, R or Matlab is a plus."
+   }
+  ]
+ },
+ {
+  "row": 271,
+  "skill": "Apache Spark",
+  "segments": [
+   {
+    "under": "What we look for",
+    "text": "- Deep experience with distributed computing with Apache Spark and knowledge of Spark runtime internals"
+   }
+  ]
+ },
+ {
+  "row": 272,
+  "skill": "R",
+  "segments": [
+   {
+    "under": "We'd love to hear from you if you have",
+    "text": "- Fluency in SQL and proficiency in a scripting language like Python or R, along with experience working with distributed data systems (e.g., Redshift, Snowflake, Presto, Hive, Spark)"
+   }
+  ]
+ },
+ {
+  "row": 273,
+  "skill": "Helm",
+  "segments": [
+   {
+    "under": "Nice to Have",
+    "text": "- Experience with infrastructure work and other technologies like Helm, Kubernetes, and Rust."
+   }
+  ]
+ },
+ {
+  "row": 274,
+  "skill": "Apache Spark",
+  "segments": [
+   {
+    "under": "What you’ll do",
+    "text": "- Engage with and contribute to open source communities such as Apache Iceberg, Spark, and Flink to help address Pinterest’s scaling challenges."
+   },
+   {
+    "under": "What we’re looking for",
+    "text": "- Experience with big data technologies such as Apache Iceberg, Spark, Flink, Presto/Trino, Hive, or similar systems."
+   }
+  ]
+ },
+ {
+  "row": 275,
+  "skill": "Java",
+  "segments": [
+   {
+    "under": "Technical Skills",
+    "text": "- Programming Proficiency: Strong coding skills in at least one major language (Python, Java, JavaScript, TypeScript), with ability to leverage AI-assisted development tools"
+   },
+   {
+    "under": "Qualifications",
+    "text": "- Experience coding with any of the following, but not limited to: Python, Java, JavaScript, TypeScript, SQL"
+   }
+  ]
+ },
+ {
+  "row": 276,
+  "skill": "Tailwind CSS",
+  "segments": [
+   {
+    "under": "What you’ll do",
+    "text": "- Design, build, and ship a cutting edge identity search platform using TypeScript, React, Tailwind, and Node.js"
+   }
+  ]
+ },
+ {
+  "row": 277,
+  "skill": "SAP ERP",
+  "title": "Engineering manager SAP Delivery",
+  "segments": [
+   {
+    "text": "# Engineering Manager SAP Delivery (f/m/d)"
+   },
+   {
+    "under": "Engineering Manager SAP Delivery (f/m/d)",
+    "text": "Notre SAP Delivery TEAM recherche un·e Engineering Manager (f/m/d) basé·e à Lille."
+   },
+   {
+    "under": "TA FUTURE CONTRIBUTION",
+    "text": "Tu seras responsable d’accompagner et de faire grandir l’équipe (environ 10 personnes internes et partenaires) en définissant la vision et la feuille de route technique de la livraison SAP."
+   },
+   {
+    "under": "TA FUTURE CONTRIBUTION",
+    "text": "- Stratégie de Testing : Piloter la stratégie de tests automatisés et sécuriser les montées de version critiques de SAP pour garantir une continuité de service mondiale."
+   },
+   {
+    "under": "TA FUTURE CONTRIBUTION",
+    "text": "- Gestion des Transports & Releases : Superviser le cycle de mise en production (Transports SAP) pour assurer des déploiements fluides et sécurisés."
+   },
+   {
+    "under": "STACK TECHNIQUE",
+    "text": "- Environnements SAP ECC & S/4HANA"
+   },
+   {
+    "under": "STACK TECHNIQUE",
+    "text": "- Outils de Test Automation (ex: Tricentis Tosca, Selenium ou outils natifs SAP)"
+   },
+   {
+    "under": "STACK TECHNIQUE",
+    "text": "- Solution Manager / Focused Build / SAP Cloud ALM"
+   },
+   {
+    "under": "STACK TECHNIQUE",
+    "text": "- Approches CI/CD appliquées à l’écosystème SAP"
+   },
+   {
+    "text": "# Engineering Manager SAP Delivery (f/m/d)"
+   },
+   {
+    "under": "Engineering Manager SAP Delivery (f/m/d)",
+    "text": "Our SAP Delivery TEAM is looking for an Engineering Manager (f/m/d) based in Lille or Paris."
+   },
+   {
+    "under": "YOUR FUTURE CONTRIBUTION",
+    "text": "10 internal and partner members) by defining the vision and technical roadmap for SAP Delivery."
+   },
+   {
+    "under": "YOUR FUTURE CONTRIBUTION",
+    "text": "- Testing Strategy: Leading the automated testing strategy and securing critical SAP version upgrades to ensure global business continuity."
+   },
+   {
+    "under": "YOUR FUTURE CONTRIBUTION",
+    "text": "- Transport & Release Management: Overseeing the SAP Transport cycle to ensure smooth and secure production deployments."
+   },
+   {
+    "under": "TECHNICAL STACK",
+    "text": "- SAP ECC & S/4HANA environments"
+   },
+   {
+    "under": "TECHNICAL STACK",
+    "text": "- Test Automation tools (e.g., Tricentis Tosca, Selenium, or native SAP tools)"
+   },
+   {
+    "under": "TECHNICAL STACK",
+    "text": "- Solution Manager / Focused Build / SAP Cloud ALM"
+   },
+   {
+    "under": "TECHNICAL STACK",
+    "text": "- CI/CD approaches applied to the SAP ecosystem"
+   }
+  ]
+ },
+ {
+  "row": 278,
+  "skill": "AWS",
+  "segments": [
+   {
+    "under": "What You Bring",
+    "text": "- 8+ years developing go/Python microservices with AWS and participating in on-call."
+   }
+  ]
+ },
+ {
+  "row": 279,
+  "skill": "SIP",
+  "segments": [
+   {
+    "under": "macOS Endpoint Security",
+    "text": "- Implement macOS security controls including system integrity protection (SIP), Gatekeeper, TCC (Transparency, Consent & Control), and secure boot settings."
+   }
+  ]
+ },
+ {
+  "row": 280,
+  "skill": "Microsoft Windows",
+  "segments": [
+   {
+    "under": "Day-to-day responsibilities would include a combination of the following",
+    "text": "- Manage the macOS endpoint environment, including provisioning, configuration, patching, compliance, and lifecycle management through Jamf; support Windows devices through Intune as needed."
+   }
+  ]
+ }
+]

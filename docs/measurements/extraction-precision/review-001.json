@@ -1,0 +1,226 @@
+[
+ {
+  "row": 29,
+  "skill": "Google Tag Manager",
+  "segments": [
+   {
+    "under": "What You'll Do",
+    "text": "- Build and maintain analytics and reporting across Metabase, Tableau, and custom dashboards covering product usage, GTM performance, and customer health"
+   }
+  ]
+ },
+ {
+  "row": 43,
+  "skill": "HTTP",
+  "segments": [
+   {
+    "under": "PEOPLE & CULTURE AT ZETA",
+    "text": "Learn more about our commitment to diversity, equity and inclusion here: https://zetaglobal.com/blog/a-look-into-zetas-ergs/"
+   },
+   {
+    "under": "ZETA IN THE NEWS!",
+    "text": "https://zetaglobal.com/press/?cat=press-releases"
+   }
+  ]
+ },
+ {
+  "row": 46,
+  "skill": "React",
+  "segments": [
+   {
+    "under": "What is the role?",
+    "text": "You will optimise for second-order effects in a marketplace where participants react to each other, and to us, in real time."
+   }
+  ]
+ },
+ {
+  "row": 49,
+  "skill": "C",
+  "segments": [
+   {
+    "under": "Key responsibilities",
+    "text": "- Break down complex technical concepts and clearly articulate PagerDuty's business value to stakeholders from DevOps engineers up to C-level executives"
+   }
+  ]
+ },
+ {
+  "row": 79,
+  "skill": "Vercel",
+  "segments": [
+   {
+    "text": "These include frontend and backend engineers, AI research scientists, and others from Amazon, Microsoft, and Google, leading PhD programs like Stanford, high growth startups like Stripe, Vercel, Bolt, and many founders of their own companies."
+   }
+  ]
+ },
+ {
+  "row": 83,
+  "skill": "HTTP",
+  "segments": [
+   {
+    "under": "Qualifications",
+    "text": "Please review the applicable candidate privacy notice (the “Notice”) available at https://www.eglp.com/legal-and-privacy-notices."
+   }
+  ]
+ },
+ {
+  "row": 99,
+  "skill": "Scala",
+  "segments": [
+   {
+    "under": "Our main Engineering challenges at Teads",
+    "text": "- Rich and diverse tech stack and system architecture to optimize for performance, scalability, resiliency, and cost efficiency. We use mostly Scala and TypeScript, among others."
+   }
+  ]
+ },
+ {
+  "row": 123,
+  "skill": "Android Jetpack",
+  "segments": [
+   {
+    "under": "An Ideal Candidate Should Have",
+    "text": "- Rock solid Kotlin, Kotlin Coroutines, Kotlin Flow, Dagger 2, MVVM, Clean Architecture, Background Services, Music Player Service, Android animations, Jetpack Navigation, and JUnit tests"
+   },
+   {
+    "under": "Technologies we use",
+    "text": "- Kotlin Kotlin Coroutines · Kotlin Flow · Jetpack Navigation · Dagger 2 · Room · Custom Views, Canvas & Paint · Jetpack Compose · JUnit"
+   }
+  ]
+ },
+ {
+  "row": 135,
+  "skill": "Android Jetpack",
+  "segments": [
+   {
+    "under": "An Ideal Candidate Should Have",
+    "text": "- Rock solid experience with Kotlin, Kotlin Coroutines, Kotlin Flow, Dagger 2, MVVM, Clean Architecture, Background Services, Music Player Service, Android Animations, Jetpack Navigation, JUnit tests"
+   },
+   {
+    "under": "Technologies we use",
+    "text": "- Jetpack Navigation"
+   }
+  ]
+ },
+ {
+  "row": 167,
+  "skill": "Cursor",
+  "segments": [
+   {
+    "under": "Preferred Requirements",
+    "text": "- Familiarity with interoperability standards used in mission systems (e.g., Link 16, TAK/Cursor-on-Target) is a plus"
+   }
+  ]
+ },
+ {
+  "row": 169,
+  "skill": "SAP ERP",
+  "segments": [
+   {
+    "under": "Bonus Points",
+    "text": "- Familiarity with SAP technology."
+   }
+  ]
+ },
+ {
+  "row": 170,
+  "skill": "macOS",
+  "segments": [
+   {
+    "text": "- Own support tickets in ServiceNow from intake through resolution, with responsibility for issues spanning PC/Mac endpoints, imaging workflows, collaborative tools (Teams/O365), and emerging AI/workstream tooling. Troubleshoot complex endpoint issues across Intune (device compliance, conditional access, app distribution), hybrid identity systems (Okta, AD, Entra), and Exchange Online. Leverage Moveworks for intelligent ticket intake, prioritization, and automated routing to reduce manual triage. Coordinate cross-functionally with remote teams, document root causes and remediation steps in ServiceNow, and drive first-contact resolution rates. Identify automation opportunities—flagging repetitive tickets for workflow automation, knowledge gaps, and tooling inefficiencies that slow resolution. The role is also responsible for monitoring and supporting patch compliance."
+   }
+  ]
+ },
+ {
+  "row": 179,
+  "skill": "Databricks",
+  "segments": [
+   {
+    "text": "At Databricks, we are passionate about enabling data teams to solve the world's toughest problems — from making the next mode of transportation a reality to accelerating the development of medical breakthroughs."
+   },
+   {
+    "text": "As a software engineer with a backend focus, you will work with your team to build infrastructure for the Databricks platform at scale."
+   },
+   {
+    "under": "The impact you'll have",
+    "text": "- Supporting Databricks' growth by building foundational infrastructure platforms that enable seamless operation across numerous geographic regions and cloud providers."
+   },
+   {
+    "under": "The impact you'll have",
+    "text": "- Implementing cloud-agnostic infrastructure abstractions to help Databricks engineers more efficiently manage and operate their services."
+   },
+   {
+    "under": "The impact you'll have",
+    "text": "- Develop tools and processes that drive engineering efficiency at Databricks. We enhance the developer experience for Databricks engineers across various areas, including programming languages, linters, static analysis, IDEs, remote development environments, automated release pipelines, and test automation frameworks. Our current focus is on optimizing the Rust development experience across the organization."
+   }
+  ]
+ },
+ {
+  "row": 185,
+  "skill": "Prometheus",
+  "segments": [
+   {
+    "under": "You will bring",
+    "text": "- Experience with technologies such as Kafka, Grafana, ELK/OpenSearch, ClickHouse, VictoriaMetrics, InfluxDB, Telegraf, Vector, OpenTelemetry, Prometheus-style systems, or custom telemetry collectors is valued."
+   }
+  ]
+ },
+ {
+  "row": 187,
+  "skill": "Amazon Aurora",
+  "segments": [
+   {
+    "under": "OUR TECH STACK",
+    "text": "- Primary datastores are PostgreSQL via RDS or Aurora (we are heavy AWS users)"
+   }
+  ]
+ },
+ {
+  "row": 199,
+  "skill": "Apache Spark",
+  "segments": [
+   {
+    "under": "About the Team",
+    "text": "Our users span analysts, engineers, operators, and executives across DoorDash, Wolt, and Deliveroo, on a warehouse and OLAP footprint that includes Snowflake,Spark and Clickhouse."
+   }
+  ]
+ },
+ {
+  "row": 215,
+  "skill": "HashiCorp Vault",
+  "segments": [
+   {
+    "under": "What You'll Bring to Xometry",
+    "text": "- Hands-on familiarity with the Secure Vault pattern: protecting data in a separate, highly restricted AWS account with tight network controls."
+   }
+  ]
+ },
+ {
+  "row": 239,
+  "skill": "Temporal",
+  "segments": [
+   {
+    "under": "About Venn",
+    "text": "Our current tech arsenal includes: Go, AWS, Kubernetes, Jenkins, React Native (Expo), React.js, Temporal, SNS, Kinesis, S3, Snowflake, AWS Bedrock, and many more tools that help us build exceptional products."
+   }
+  ]
+ },
+ {
+  "row": 248,
+  "skill": "HTTP",
+  "segments": [
+   {
+    "under": "Preferred but not required",
+    "text": "For information about our benefits, please visit https://benefitsatfanatics.com/"
+   }
+  ]
+ },
+ {
+  "row": 279,
+  "skill": "SIP",
+  "segments": [
+   {
+    "under": "macOS Endpoint Security",
+    "text": "- Implement macOS security controls including system integrity protection (SIP), Gatekeeper, TCC (Transparency, Consent & Control), and secure boot settings."
+   }
+  ]
+ }
+]

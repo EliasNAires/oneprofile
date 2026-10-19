@@ -1,0 +1,20 @@
+{"row": 81, "answer": "yes"}
+{"row": 82, "answer": "yes"}
+{"row": 83, "answer": "no", "reason": "wrong_skill", "note": "'https://www.eglp.com/...' is a URL; the text doesn't name the HTTP protocol, just contains the substring"}
+{"row": 84, "answer": "yes"}
+{"row": 85, "answer": "yes"}
+{"row": 86, "answer": "yes"}
+{"row": 87, "answer": "yes"}
+{"row": 88, "answer": "yes"}
+{"row": 89, "answer": "yes"}
+{"row": 90, "answer": "yes"}
+{"row": 91, "answer": "yes"}
+{"row": 92, "answer": "yes"}
+{"row": 93, "answer": "yes"}
+{"row": 94, "answer": "yes"}
+{"row": 95, "answer": "yes"}
+{"row": 96, "answer": "yes"}
+{"row": 97, "answer": "yes"}
+{"row": 98, "answer": "yes"}
+{"row": 99, "answer": "no", "reason": "boilerplate", "note": "under 'Our main Engineering challenges at Teads', 'We use mostly Scala and TypeScript' describes the org's stack like the criterion's own 'Our platform runs on Kubernetes' example, not an ask of the candidate"}
+{"row": 100, "answer": "yes"}

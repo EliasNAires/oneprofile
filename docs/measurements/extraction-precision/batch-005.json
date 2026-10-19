@@ -1,0 +1,217 @@
+[
+ {
+  "row": 81,
+  "skill": "BLE",
+  "segments": [
+   {
+    "under": "Desired Qualifications",
+    "text": "- Experience with IoT technologies and protocols such as AWS IoT Core, MQTT, Device Shadow, BLE, or GATT."
+   }
+  ]
+ },
+ {
+  "row": 82,
+  "skill": "RabbitMQ",
+  "segments": [
+   {
+    "under": "Experience",
+    "text": "- Messaging & Queuing: Familiarity with message-driven systems such as SQS, RabbitMQ or Kafka"
+   }
+  ]
+ },
+ {
+  "row": 83,
+  "skill": "HTTP",
+  "segments": [
+   {
+    "under": "Qualifications",
+    "text": "Please review the applicable candidate privacy notice (the “Notice”) available at https://www.eglp.com/legal-and-privacy-notices."
+   }
+  ]
+ },
+ {
+  "row": 84,
+  "skill": "Microsoft Windows",
+  "segments": [
+   {
+    "under": "Requirements",
+    "text": "- Strong experience with Windows and Active Directory administration and knowledge of UNIX/Linux"
+   }
+  ]
+ },
+ {
+  "row": 85,
+  "skill": "Microsoft Windows",
+  "segments": [
+   {
+    "under": "Desired Skills and Experience",
+    "text": "- Strong understanding of Linux, Windows, software development, systems, networking, and cloud concepts."
+   }
+  ]
+ },
+ {
+  "row": 86,
+  "skill": "Splunk",
+  "segments": [
+   {
+    "under": "WHAT YOU’LL NEED",
+    "text": "- Observability: Splunk, CloudWatch, Prometheus/Grafana, New Relic, Azure Monitor"
+   }
+  ]
+ },
+ {
+  "row": 87,
+  "skill": "Bicep",
+  "segments": [
+   {
+    "under": "What you bring",
+    "text": "- Strong automation background — infrastructure as code (Terraform, CloudFormation, Bicep), scripting (Python, PowerShell), API-first integration, and CI/CD (Strong Automation Background)"
+   }
+  ]
+ },
+ {
+  "row": 88,
+  "skill": "dbt",
+  "segments": [
+   {
+    "under": "Qualifications",
+    "text": "- 4+ years with a modern data stack (RDS, Databricks, Spark, Redshift, Kafka, Airflow, lakehouse architectures, real-time databases, dbt, etc.)"
+   }
+  ]
+ },
+ {
+  "row": 89,
+  "skill": "Puppet",
+  "segments": [
+   {
+    "under": "What You Will Bring",
+    "text": "- Familiarity with infrastructure-as-code tools such as Terraform, Ansible, Chef, or Puppet to streamline deployments."
+   }
+  ]
+ },
+ {
+  "row": 90,
+  "skill": "SentinelOne",
+  "segments": [
+   {
+    "under": "Preferred Experience and Education",
+    "text": "- SOAR or automation certification from Splunk SOAR, XSOAR, Fusion, SentinelOne HyperAutomation, Torq, or Tines."
+   }
+  ]
+ },
+ {
+  "row": 91,
+  "skill": "Jira",
+  "segments": [
+   {
+    "text": "- Reporting bugs via JIRA"
+   }
+  ]
+ },
+ {
+  "row": 92,
+  "skill": "Concourse",
+  "segments": [
+   {
+    "under": "You will have an advantage if you also have",
+    "text": "- Experience with release pipeline tooling — Concourse, Thoughtworks Go, Octopus Deploy, ElectricFlow, or XebiaLabs."
+   }
+  ]
+ },
+ {
+  "row": 93,
+  "skill": "Domo",
+  "segments": [
+   {
+    "under": "Essential Functions",
+    "text": "- Manage and lead paid media projects involving data aggregation and measurement tools such as Datorama, Google Analytics / GA4, Tag Manager, DOMO, BigQuery, LiveRamp, server-server integrations with media partners. Ensure appropriate site tracking is in place to capture relevant data points to measure marketing effectiveness."
+   },
+   {
+    "under": "Required Qualifications",
+    "text": "- Familiar with reporting, visualization, and analytics tools such as Datorama, DOMO, Google Data Studio."
+   }
+  ]
+ },
+ {
+  "row": 94,
+  "skill": "Django REST Framework",
+  "segments": [
+   {
+    "under": "Key Technologies",
+    "text": "- Backend & API: strong understanding of RESTful APIs, GraphQL, and server-side logic in a Python environment (e.g., with FastAPI or Django REST Framework)."
+   }
+  ]
+ },
+ {
+  "row": 95,
+  "skill": "JuliaLang",
+  "segments": [
+   {
+    "under": "Qualifications",
+    "text": "- Proficiency in numerical modeling and data analysis using Python or Julia."
+   }
+  ]
+ },
+ {
+  "row": 96,
+  "skill": "AWS",
+  "segments": [
+   {
+    "under": "About the job",
+    "text": "As an L2 engineer, you will help build and operate backend services at scale, working alongside more senior engineers on our dual-cloud infrastructure spanning Amazon Web Services (AWS) and Microsoft Azure."
+   },
+   {
+    "under": "In this role, you’ll",
+    "text": "- BE AN OWNER (INFRASTRUCTURE & OBSERVABILITY): Support cloud configurations across AWS and Azure environments using Infrastructure as Code (Terraform). Help maintain observability coverage, including metrics, alerts, and basic distributed tracing, across core data pipelines."
+   },
+   {
+    "under": "Required",
+    "text": "- Cloud Infrastructure: Some experience with cloud environments, ideally basic exposure to AWS core services (such as EC2, S3, EKS) or their Microsoft Azure equivalents (such as Virtual Machines, Blob Storage, AKS). General familiarity with networking concepts (VPC/VNet basics) is a plus."
+   }
+  ]
+ },
+ {
+  "row": 97,
+  "skill": "Apache Spark",
+  "segments": [
+   {
+    "under": "You Have",
+    "text": "- Experience building or maintaining batchor event-driven data pipelines, with exposure to workflow-orchestration technologies (e.g., Airflow, Temporal, Spark, or equivalent) and a working understanding of distributed systems."
+   },
+   {
+    "under": "Nice to Have",
+    "text": "- Experience with cloud data warehouses (e.g., BigQuery, Snowflake) or distributed data systems and tools such as Spark/PySpark, Delta Lake, Kafka, and Hadoop."
+   }
+  ]
+ },
+ {
+  "row": 98,
+  "skill": "CANbus",
+  "segments": [
+   {
+    "under": "Preferred Qualifications",
+    "text": "- Familiarity with communications busses and protocols (e.g. CAN, CANFD, UART/RS232/RS422/RS485, SPI, QSPI, I2C, Ethernet, ARINC-825, ARINC-429, MIL-STD-1553, etc)."
+   }
+  ]
+ },
+ {
+  "row": 99,
+  "skill": "Scala",
+  "segments": [
+   {
+    "under": "Our main Engineering challenges at Teads",
+    "text": "- Rich and diverse tech stack and system architecture to optimize for performance, scalability, resiliency, and cost efficiency. We use mostly Scala and TypeScript, among others."
+   }
+  ]
+ },
+ {
+  "row": 100,
+  "skill": "Python",
+  "segments": [
+   {
+    "under": "Desired Qualifications",
+    "text": "- Languages: Python, SQL"
+   }
+  ]
+ }
+]

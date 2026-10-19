@@ -1,0 +1,218 @@
+[
+ {
+  "row": 181,
+  "skill": "CANbus",
+  "segments": [
+   {
+    "under": "PREFERRED QUALIFICATIONS",
+    "text": "- Understanding of device communication protocols like USB, SPI, I2C, CAN, RS232, RS485, Ethernet, etc."
+   }
+  ]
+ },
+ {
+  "row": 182,
+  "skill": "Postman",
+  "segments": [
+   {
+    "under": "Must-Have Qualifications",
+    "text": "- API Testing: Proven proficiency with API verification using tools like Postman, Charles Proxy, or automated API testing libraries."
+   }
+  ]
+ },
+ {
+  "row": 183,
+  "skill": "TypeScript",
+  "segments": [
+   {
+    "under": "What we are looking for",
+    "text": "- Strong hands-on technical background with Node.js, JavaScript / TypeScript, NoSQL databases, and event-driven systems"
+   }
+  ]
+ },
+ {
+  "row": 184,
+  "skill": "Insomnia",
+  "segments": [
+   {
+    "under": "The opportunity",
+    "text": "- API-first development: Hands-on experience designing and integrating REST APIs and webhooks, working with JSON or XML payloads, using token-based or OAuth authentication, and validating APIs with tools such as Postman, Insomnia, or Swagger."
+   }
+  ]
+ },
+ {
+  "row": 185,
+  "skill": "Prometheus",
+  "segments": [
+   {
+    "under": "You will bring",
+    "text": "- Experience with technologies such as Kafka, Grafana, ELK/OpenSearch, ClickHouse, VictoriaMetrics, InfluxDB, Telegraf, Vector, OpenTelemetry, Prometheus-style systems, or custom telemetry collectors is valued."
+   }
+  ]
+ },
+ {
+  "row": 186,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "Must Haves",
+    "text": "- Proficiency in at least one backend language: Go, Python, Rust, C/C++, or Java."
+   }
+  ]
+ },
+ {
+  "row": 187,
+  "skill": "Amazon Aurora",
+  "segments": [
+   {
+    "under": "OUR TECH STACK",
+    "text": "- Primary datastores are PostgreSQL via RDS or Aurora (we are heavy AWS users)"
+   }
+  ]
+ },
+ {
+  "row": 188,
+  "skill": "Pinecone",
+  "segments": [
+   {
+    "under": "Key Technologies",
+    "text": "- Vector Databases: familiarity with Pinecone, Milvus, or Weaviate for RAG evaluation."
+   }
+  ]
+ },
+ {
+  "row": 189,
+  "skill": "Microsoft Windows",
+  "segments": [
+   {
+    "under": "Members of the DevOps team are responsible for",
+    "text": "- Managing, evaluating, and installing patches on Windows and Linux systems, including Esri software and dependent components"
+   },
+   {
+    "under": "Required",
+    "text": "- Experience with Windows and Linux servers (patching, troubleshooting, security)"
+   }
+  ]
+ },
+ {
+  "row": 190,
+  "skill": "C",
+  "segments": [
+   {
+    "under": "Key Responsibilities",
+    "text": "- Diagnostic Firmware: Write robust C/C++ diagnostic and test firmware to verify the functionality of microcontrollers, communication buses, power systems, and sensors during the manufacturing process."
+   },
+   {
+    "under": "Minimum Qualifications",
+    "text": "- C/C++ Proficiency: Strong ability to write clean, optimized C/C++ for embedded, resource-constrained systems."
+   }
+  ]
+ },
+ {
+  "row": 191,
+  "skill": "Android",
+  "segments": [
+   {
+    "under": "Nice to have",
+    "text": "- Mobile: Familiarity with mobile products (Android and iOS) and design life cycles."
+   }
+  ]
+ },
+ {
+  "row": 192,
+  "skill": "CANbus",
+  "segments": [
+   {
+    "under": "Required Qualifications",
+    "text": "- Familiarity with communications busses and protocols (e.g. CAN, CANFD, UART/RS232/RS422/RS485, SPI, QSPI, I2C, Ethernet, ARINC-825, ARINC-429, MIL-STD-1553, etc)."
+   }
+  ]
+ },
+ {
+  "row": 193,
+  "skill": "Google Gemini",
+  "segments": [
+   {
+    "under": "Technology enablement",
+    "text": "- Act as a technology evangelist. Proactively find ways teams can work better with tools they already have, like AI features in Adobe Creative Cloud, Gemini in Google Workspace, and automation in Slack and Jira. Partner with teams to unlock that potential in their day-to-day work."
+   }
+  ]
+ },
+ {
+  "row": 194,
+  "skill": "Terraform",
+  "segments": [
+   {
+    "under": "Your mission",
+    "text": "- You own and evolve our cloud infrastructure on AWS, driving infrastructure-as-code with Terraform (IaC)"
+   }
+  ]
+ },
+ {
+  "row": 195,
+  "skill": "Argo CD",
+  "segments": [
+   {
+    "under": "Preferred Qualifications",
+    "text": "- Familiarity with progressive delivery tooling (Argo CD, Flux, Spinnaker, LaunchDarkly, Unleash) and GitOps patterns."
+   }
+  ]
+ },
+ {
+  "row": 196,
+  "skill": "Postman",
+  "segments": [
+   {
+    "under": "Our Stack",
+    "text": "- Web: Selenium / Playwright/ Postman"
+   },
+   {
+    "under": "What you'll bring",
+    "text": "- Experience with web debugging and API testing tools (Chrome DevTools, Postman)"
+   }
+  ]
+ },
+ {
+  "row": 197,
+  "skill": "Cypress",
+  "segments": [
+   {
+    "under": "Key Technologies",
+    "text": "- Testing & Tools: proficiency with Jest, Cypress, Webpack, and Vite."
+   }
+  ]
+ },
+ {
+  "row": 198,
+  "skill": "Azure CLI",
+  "segments": [
+   {
+    "under": "Responsibilities",
+    "text": "- Automate security controls and remediation through Terraform, GitHub Actions, PowerShell, Python, or Azure CLI"
+   },
+   {
+    "under": "Qualifications & Skills",
+    "text": "- Experience with scripting and automation using PowerShell, Python, or Azure CLI"
+   }
+  ]
+ },
+ {
+  "row": 199,
+  "skill": "Apache Spark",
+  "segments": [
+   {
+    "under": "About the Team",
+    "text": "Our users span analysts, engineers, operators, and executives across DoorDash, Wolt, and Deliveroo, on a warehouse and OLAP footprint that includes Snowflake,Spark and Clickhouse."
+   }
+  ]
+ },
+ {
+  "row": 200,
+  "skill": "ARM",
+  "segments": [
+   {
+    "under": "What You Must Have",
+    "text": "- Reverse engineering iOS or MacOS apps in ARM or X86"
+   }
+  ]
+ }
+]

@@ -1,0 +1,212 @@
+[
+ {
+  "row": 281,
+  "skill": "C",
+  "segments": [
+   {
+    "under": "Requirements",
+    "text": "- Proficient with one or more programming languages (e.g. C/C++, Golang, Rust, Python)"
+   }
+  ]
+ },
+ {
+  "row": 282,
+  "skill": "SAP ERP",
+  "segments": [
+   {
+    "under": "What sets you apart",
+    "text": "- Proficiency with Microsoft Word, Excel, SharePoint, and familiarity with SAP"
+   }
+  ]
+ },
+ {
+  "row": 283,
+  "skill": "Snowflake",
+  "segments": [
+   {
+    "under": "Technical Skills",
+    "text": "- Proficiency in Analytical SQL (e.g. Analytics Queries, Distributed database queries) and experience working with massive parallel processing (MPP) databases (e.g., Redshift, BigQuery, Snowflake)."
+   }
+  ]
+ },
+ {
+  "row": 284,
+  "skill": "MongoDB",
+  "segments": [
+   {
+    "under": "What can you do for Noonlight?",
+    "text": "- Develop and maintain high-quality, secure, and stable REST APIs using Node.js, Express/Fastify, MongoDB, and API gateways in a microservice architecture"
+   }
+  ]
+ },
+ {
+  "row": 285,
+  "skill": "TypeScript",
+  "segments": [
+   {
+    "under": "Infrastructure, Delivery & Quality",
+    "text": "- Author infrastructure as code with AWS CDK (TypeScript) as the primary tool, CloudFormation, or Terraform where customer environments require them"
+   },
+   {
+    "under": "Your Qualifications",
+    "text": "- Strong Python, Typescript/Node.js, Javascript, and React experience; solid AWS serverless engineering (Lambda, EventBridge, API Gateway, DynamoDB, Step Functions)"
+   }
+  ]
+ },
+ {
+  "row": 286,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "Minimum requirements",
+    "text": "- Experience and familiarity with programming, either through side projects or classwork. We work mostly in Ruby, Java, Javascript, Go, and Scala. We believe new programming languages can be learned if the fundamentals and general knowledge are present."
+   }
+  ]
+ },
+ {
+  "row": 287,
+  "skill": "Kustomize",
+  "segments": [
+   {
+    "under": "What we are looking for",
+    "text": "- Comfortable with GitOps. We use ArgoCD, Helm and Kustomize; Terraform or similar experience transfers."
+   }
+  ]
+ },
+ {
+  "row": 288,
+  "skill": "Salesforce Apex",
+  "segments": [
+   {
+    "under": "What This Role is Not",
+    "text": "- This is not a developer role. There is no requirement for hands-on coding or custom Apex development."
+   }
+  ]
+ },
+ {
+  "row": 289,
+  "skill": "SQL",
+  "segments": [
+   {
+    "under": "Requirements",
+    "text": "- Strong SQL skills; experience querying relational databases and validating data across interconnected tables."
+   }
+  ]
+ },
+ {
+  "row": 290,
+  "skill": "macOS",
+  "segments": [
+   {
+    "under": "Remote",
+    "text": "Speechify's text-to-speech reading products include its iOS app, Android App, Mac App, Chrome Extension, and Web App."
+   }
+  ]
+ },
+ {
+  "row": 291,
+  "skill": "Thanos",
+  "segments": [
+   {
+    "under": "About You",
+    "text": "- Deep hands-on experience with a significant subset of: Prometheus, Thanos, VictoriaMetrics, Grafana, Loki, Tempo, OpenTelemetry, ClickHouse, Elastic."
+   }
+  ]
+ },
+ {
+  "row": 292,
+  "skill": "Android Jetpack",
+  "segments": [
+   {
+    "under": "An Ideal Candidate Should Have",
+    "text": "- Rock solid experience with Kotlin, Kotlin Coroutines, Kotlin Flow, Dagger 2, MVVM, Clean Architecture, Background Services, Music Player Service, Android Animations, Jetpack Navigation, JUnit tests"
+   },
+   {
+    "under": "Technologies we use",
+    "text": "- Jetpack Navigation"
+   }
+  ]
+ },
+ {
+  "row": 293,
+  "skill": "C",
+  "segments": [
+   {
+    "under": "The Solutions Engineer Team",
+    "text": "We are looking for great teammates who can build and deliver sales presentations and customized product demonstrations to help educate Okta’s Customers (everyone from developers to product managers to C-level executives) on best practices during their cloud security technology journey."
+   }
+  ]
+ },
+ {
+  "row": 294,
+  "skill": "TensorFlow",
+  "segments": [
+   {
+    "under": "What You Will Bring",
+    "text": "- Proficiency implementing Machine Learning algorithms and leveraging ML inference frameworks such as LiteRT, CUDA, PyTorch, and TensorFlow"
+   }
+  ]
+ },
+ {
+  "row": 295,
+  "skill": "AWS",
+  "segments": [
+   {
+    "text": "- 3+ years of experience building highly available, scalable, distributed cloud services (AWS or Azure)."
+   }
+  ]
+ },
+ {
+  "row": 296,
+  "skill": "ARM",
+  "segments": [
+   {
+    "under": "Role Expectations",
+    "text": "- Advanced knowledge of x86/x64 and ARM architectures for reading, writing, and analyzing shellcode and disassembled code."
+   }
+  ]
+ },
+ {
+  "row": 297,
+  "skill": "Figma",
+  "segments": [
+   {
+    "text": "# What you’ll do at Figma"
+   },
+   {
+    "under": "While not required, it’s an added plus if you also have",
+    "text": "At Figma, one of our values is Grow as you go."
+   }
+  ]
+ },
+ {
+  "row": 298,
+  "skill": "Snowflake",
+  "segments": [
+   {
+    "under": "What We Look For",
+    "text": "- Analytical Data Platform Depth: Hands-on experience operating a cloud analytical data platform (e.g., Snowflake, Databricks, BigQuery, or similar), including access control design, data masking and governance, compute management, and cost optimization. You're comfortable operating with elevated privileges and understand the governance and blast-radius implications of each action."
+   }
+  ]
+ },
+ {
+  "row": 299,
+  "skill": "gRPC",
+  "segments": [
+   {
+    "under": "REQUIRED QUALIFICATIONS",
+    "text": "- Experience with API technologies including REST, gRPC, GraphQL, and real-time communication protocols (WebSockets, message queues)."
+   }
+  ]
+ },
+ {
+  "row": 300,
+  "skill": "Chef",
+  "segments": [
+   {
+    "under": "Additional skills that you might also bring",
+    "text": "- Experience with configuration management software (Ansible, Chef, Puppet, et al.)"
+   }
+  ]
+ }
+]

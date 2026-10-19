@@ -1,0 +1,216 @@
+[
+ {
+  "row": 341,
+  "skill": "SQL",
+  "segments": [
+   {
+    "under": "What You Bring",
+    "text": "- Strong Python and SQL — fluent with complex, unfamiliar legacy code, not just greenfield work."
+   }
+  ]
+ },
+ {
+  "row": 342,
+  "skill": "Snowflake",
+  "segments": [
+   {
+    "under": "Skills and experience",
+    "text": "- Fluency in advanced concepts in SQL, dimensional modeling, and data warehouse design; experience with Cloud Data Warehouse platforms (Databricks, Snowflake, BigQuery, etc.)"
+   }
+  ]
+ },
+ {
+  "row": 343,
+  "skill": "ECMAScript Modules",
+  "segments": [
+   {
+    "under": "Our research spans",
+    "text": "- Frontier molecular modeling, from protein language models (e.g., ESM) to structure prediction (e.g., ESMFold) and beyond."
+   }
+  ]
+ },
+ {
+  "row": 344,
+  "skill": "C++",
+  "segments": [
+   {
+    "under": "Your role",
+    "text": "- Systems Programming & Scripting – Proficiency in shell scripting, REXX, and programming languages like Python or C/C++ on z/OS or Linux, enabling you to create automation scripts, API endpoints, and system utilities bridging z/OS with distributed systems. Exposure to infrastructure-as-code (e.g., Ansible on z/OS) is a plus, emphasizing code-driven system management."
+   }
+  ]
+ },
+ {
+  "row": 345,
+  "skill": "iOS",
+  "segments": [
+   {
+    "text": "SQL, JavaScript, Java, Python, Android, iOS, RESTful APIs)."
+   }
+  ]
+ },
+ {
+  "row": 346,
+  "skill": "C",
+  "segments": [
+   {
+    "under": "What We Are Looking For",
+    "text": "- Proficiency in Go or other low-level languages (e.g. C/C++, Rust), including a strong grasp of concurrent programming and techniques for optimizing performance."
+   }
+  ]
+ },
+ {
+  "row": 347,
+  "skill": "GitHub Copilot",
+  "segments": [
+   {
+    "under": "Required Qualifications",
+    "text": "- Proficiency using AI-assisted development tools, such as GitHub Copilot or comparable AI coding assistants, to support coding, testing, refactoring, and documentation, including the ability to critically review and validate AI-generated output."
+   }
+  ]
+ },
+ {
+  "row": 348,
+  "skill": "Docker",
+  "segments": [
+   {
+    "text": "Docker and Kubernetes support our build, test, and deployment processes."
+   },
+   {
+    "under": "Preferred",
+    "text": "- Experience with cloud microservices (Azure) and container orchestration (Docker/Kubernetes)."
+   }
+  ]
+ },
+ {
+  "row": 349,
+  "skill": "iOS",
+  "segments": [
+   {
+    "under": "About You",
+    "text": "- 2+ Years of experience designing and evolving GraphQL schemas for product surfaces used by multiple clients (iOS, Android, Web)"
+   }
+  ]
+ },
+ {
+  "row": 350,
+  "skill": "React",
+  "segments": [
+   {
+    "under": "What You'll Do",
+    "text": "- Set direction on interface design (TypeScript/React), backend services (Python or Node), and the agentic and retrieval systems underneath."
+   },
+   {
+    "under": "Required Experience",
+    "text": "- Experience building and consuming APIs, front-end development (React or similar), and at least one backend framework."
+   }
+  ]
+ },
+ {
+  "row": 351,
+  "skill": "Jira",
+  "segments": [
+   {
+    "under": "Desired experience",
+    "text": "- Ticketing systems such as Jira or ServiceNow"
+   }
+  ]
+ },
+ {
+  "row": 352,
+  "skill": "Amazon Kinesis",
+  "segments": [
+   {
+    "under": "자격 요건 : Lv6-1 Engineer",
+    "text": "- AWS 환경에서 대규모 데이터 파이프라인을 구축하고 운영해 본 경험 (Kafka, Kinesis, S3 등)"
+   }
+  ]
+ },
+ {
+  "row": 353,
+  "skill": "Python",
+  "segments": [
+   {
+    "under": "What You Bring",
+    "text": "- Proficiency in at least one common server programming language (Python, Go)"
+   }
+  ]
+ },
+ {
+  "row": 354,
+  "skill": "Power BI",
+  "segments": [
+   {
+    "under": "Ideal candidates will possess the following",
+    "text": "- Experience working with modern data technologies such as Snowflake, dbt, Fivetran, Boomi, MuleSoft, Workato, Matillion, Airflow, Sigma, Power BI, Tableau, Looker, Omni, and other key offerings."
+   },
+   {
+    "under": "Qualifications",
+    "text": "- Experience designing and implementing modern reporting and analytics solutions using tools such as Power BI, Sigma, Tableau, Looker, Omni, or comparable BI platforms."
+   }
+  ]
+ },
+ {
+  "row": 355,
+  "skill": "NCCL",
+  "segments": [
+   {
+    "under": "PREFERRED SKILLS AND EXPERIENCE",
+    "text": "- Familiarity with GPU infrastructure, including NVIDIA drivers, CUDA, NCCL, InfiniBand/RoCE networking."
+   }
+  ]
+ },
+ {
+  "row": 356,
+  "skill": "Snowflake",
+  "segments": [
+   {
+    "under": "Qualifications",
+    "text": "- Familiarity with a cloud-based data stack (e.g. Snowflake, dbt)"
+   }
+  ]
+ },
+ {
+  "row": 357,
+  "skill": "Hibernate",
+  "segments": [
+   {
+    "under": "Technical Skills",
+    "text": "- Proficiency in Java and related frameworks like Spring Boot, Spring MVC, and Hibernate."
+   }
+  ]
+ },
+ {
+  "row": 358,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "Have you got what it takes?",
+    "text": "- Proficiency in at least one programming language (e.g., Python, Go, Java, C#) and experience with scripting languages (e.g., Bash, PowerShell)."
+   }
+  ]
+ },
+ {
+  "row": 359,
+  "skill": "GraphQL",
+  "segments": [
+   {
+    "under": "You may be a good fit if you have",
+    "text": "- Experience building and maintaining GraphQL APIs"
+   }
+  ]
+ },
+ {
+  "row": 360,
+  "skill": "Amazon Bedrock",
+  "segments": [
+   {
+    "under": "Responsibilities / Duties / Tasks",
+    "text": "- Manage and optimize AWS services including ECS, Lambda, Postgres, DynamoDB, S3, Bedrock, and Amplify for scalable AI and platform infrastructure"
+   },
+   {
+    "under": "Job Qualifications / Skill Requirements",
+    "text": "- Required hands-on expertise with AWS platform services (including ECS, Lambda, Postgres, DynamoDB, S3, Bedrock, and Amplify), cloud infrastructure management, and deployment pipelines for scalable AI workloads."
+   }
+  ]
+ }
+]

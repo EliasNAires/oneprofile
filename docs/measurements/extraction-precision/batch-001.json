@@ -1,0 +1,232 @@
+[
+ {
+  "row": 1,
+  "skill": "AWS Glue",
+  "segments": [
+   {
+    "under": "Who You Are",
+    "text": "- Extensive hands-on experience across both the open-source cloud-native/data ecosystem (Kubernetes, Terraform, ArgoCD, Karpenter/KEDA, Prometheus/Grafana/Loki, Trino, Dagster, dbt) and the AWS services that back them (EKS, S3, Glue, IAM/IRSA, ECR, SageMaker, Bedrock, Athena)"
+   },
+   {
+    "under": "What You'll Do",
+    "text": "- Enable the data lakehouse — Trino/Iceberg on Glue + S3, Dagster orchestration, dbt, and search — so teams have reliable, performant data access"
+   }
+  ]
+ },
+ {
+  "row": 2,
+  "skill": "Apache Spark",
+  "segments": [
+   {
+    "under": "What You'll Do",
+    "text": "- Build and evolve real-time and near-real-time data pipelines for impressions, clicks, conversions, and attribution using Kafka, Flink, or Spark."
+   }
+  ]
+ },
+ {
+  "row": 3,
+  "skill": "AWS CloudFormation",
+  "segments": [
+   {
+    "under": "Qualifications",
+    "text": "- Proficient in Infrastructure as Code tools (Terraform, CloudFormation) and configuration management (Ansible, Puppet)"
+   }
+  ]
+ },
+ {
+  "row": 4,
+  "skill": "Vulkan",
+  "segments": [
+   {
+    "under": "Essential Requirements",
+    "text": "- Up to date knowledge of the current APIs such as DirectX 11/12 and OpenGL 4.x and Vulkan."
+   }
+  ]
+ },
+ {
+  "row": 5,
+  "skill": "Docker",
+  "segments": [
+   {
+    "under": "Preferred",
+    "text": "- Experience with Docker, containerized workloads or Kubernetes; Kubernetes is not mandatory."
+   }
+  ]
+ },
+ {
+  "row": 6,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "What skills do I need?",
+    "text": "- Experience with Redux, Node.js, Go, Electron, MongoDB, Postgres, WebSockets (bonus)"
+   }
+  ]
+ },
+ {
+  "row": 7,
+  "skill": "LangGraph",
+  "segments": [
+   {
+    "text": "Agentic and generative tooling: LangGraph, MCP frameworks, vector databases, and inference/serving platforms."
+   }
+  ]
+ },
+ {
+  "row": 8,
+  "skill": "Ruby on Rails",
+  "segments": [
+   {
+    "under": "How We Build",
+    "text": "The architecture is intentionally simple: one Rails monolith, MySQL and few moving parts."
+   },
+   {
+    "under": "The Stack",
+    "text": "- Core app: Rails, Packwerk, React, TypeScript, Sidekiq"
+   }
+  ]
+ },
+ {
+  "row": 9,
+  "skill": "Jira",
+  "segments": [
+   {
+    "under": "What the role involves",
+    "text": "- Utilise best-in-class tools including Notion, Jira Cloud, GitHub, Zoom, Lattice, and Slack"
+   }
+  ]
+ },
+ {
+  "row": 10,
+  "skill": "PostgreSQL",
+  "segments": [
+   {
+    "under": "What we use to make our dish (Our Tech Stack)",
+    "text": "- PostgreSQL and DynamoDB as core persistence."
+   }
+  ]
+ },
+ {
+  "row": 11,
+  "skill": "Angular",
+  "segments": [
+   {
+    "under": ".NET Technical Lead",
+    "text": "We are seeking an experienced .NET Technical Lead with proficiency in Angular or React to join our team."
+   },
+   {
+    "under": "About the Role",
+    "text": "- Provide hands-on technical direction and guidance across backend (.NET) and frontend (Angular or React) technologies."
+   },
+   {
+    "under": "About you",
+    "text": "- At least 5 years of experience with Angular or React."
+   },
+   {
+    "under": "About you",
+    "text": "- Proficiency with technologies such as C#, .NET, .NET Core, Entity Framework, LINQ, and Angular or React."
+   }
+  ]
+ },
+ {
+  "row": 12,
+  "skill": "CrewAI",
+  "segments": [
+   {
+    "under": "Nice to have",
+    "text": "- Experience with multi-agent simulations (AutoGen, CrewAI, OpenAI Swarm)."
+   }
+  ]
+ },
+ {
+  "row": 13,
+  "skill": "HashiCorp Vault",
+  "segments": [
+   {
+    "under": "Tech stack (what you'll actually touch)",
+    "text": "- Platform: Docker/OCI, GitHub Actions, HashiCorp Vault, OpenAPI 3 + Redocly, pytest (unit → e2e), mypy/ruff/black"
+   }
+  ]
+ },
+ {
+  "row": 14,
+  "skill": "Google Analytics",
+  "segments": [
+   {
+    "under": "Nice to have",
+    "text": "- Familiarity with Google Analytics 4 and Google Tag Manager. Product tracking at Fever runs through Dataverse, our in-house unified behavioural event layer built on server-side GTM, so knowing how GA and GTM work is enough to find your way around. We also use Mixpanel."
+   }
+  ]
+ },
+ {
+  "row": 15,
+  "skill": "Linux",
+  "segments": [
+   {
+    "text": "North Point Technology is looking to hire a Systems Engineer with Linux system administration experience to support cloud and on-premise systems within a mission operations environment."
+   },
+   {
+    "under": "Required Skills/Experience",
+    "text": "- Linux system administration, including provisioning end users"
+   },
+   {
+    "under": "Required Skills/Experience",
+    "text": "- Linux cluster administration using Slurm and MPI to support High-Performance Computing (HPC) systems"
+   },
+   {
+    "under": "Preferred Skills/Experience",
+    "text": "- Linux certification(s)"
+   }
+  ]
+ },
+ {
+  "row": 16,
+  "skill": "OAuth",
+  "segments": [
+   {
+    "under": "Preferred Skills/Experience",
+    "text": "- Identity and authorization standards including X.509, SAML, OAuth2, OIDC, and LDAP"
+   }
+  ]
+ },
+ {
+  "row": 17,
+  "skill": "GeoJSON",
+  "segments": [
+   {
+    "under": "What Makes You Stand Out",
+    "text": "- Knowledge of coordinate reference systems, geometry manipulations, and common data formats (GeoTIFF, GeoJSON, etc)."
+   }
+  ]
+ },
+ {
+  "row": 18,
+  "skill": "Prisma ORM",
+  "segments": [
+   {
+    "under": "Preferred Qualifications",
+    "text": "- Knowledge of TypeScript, Node.js, Next.js, Prisma, or similar modern application frameworks."
+   }
+  ]
+ },
+ {
+  "row": 19,
+  "skill": "C",
+  "segments": [
+   {
+    "under": "Position requires experience in",
+    "text": "- Code development using Python, C/C++, and Javascript."
+   }
+  ]
+ },
+ {
+  "row": 20,
+  "skill": "Drizzle ORM",
+  "segments": [
+   {
+    "under": "ORMs & Data Layer",
+    "text": "- Experience with ORMs or Query Builders such as Prisma, Drizzle, TypeORM, or SQLAlchemy."
+   }
+  ]
+ }
+]

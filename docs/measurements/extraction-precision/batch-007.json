@@ -1,0 +1,217 @@
+[
+ {
+  "row": 121,
+  "skill": "Linux",
+  "segments": [
+   {
+    "under": "Qualifications & Skills",
+    "text": "- Experience with Linux/Unix environments (basic command line skills)"
+   }
+  ]
+ },
+ {
+  "row": 122,
+  "skill": "Spring Boot",
+  "segments": [
+   {
+    "under": "Your profile",
+    "text": "- hands-on experience with Spring Boot,"
+   }
+  ]
+ },
+ {
+  "row": 123,
+  "skill": "Android Jetpack",
+  "segments": [
+   {
+    "under": "An Ideal Candidate Should Have",
+    "text": "- Rock solid Kotlin, Kotlin Coroutines, Kotlin Flow, Dagger 2, MVVM, Clean Architecture, Background Services, Music Player Service, Android animations, Jetpack Navigation, and JUnit tests"
+   },
+   {
+    "under": "Technologies we use",
+    "text": "- Kotlin Kotlin Coroutines · Kotlin Flow · Jetpack Navigation · Dagger 2 · Room · Custom Views, Canvas & Paint · Jetpack Compose · JUnit"
+   }
+  ]
+ },
+ {
+  "row": 124,
+  "skill": "AWS Lambda",
+  "segments": [
+   {
+    "under": "Desired Qualifications",
+    "text": "- Deep, hands-on experience with AWS services such as Amazon S3, DynamoDB, EKS, DocumentDB, Lambda, Timestream, CloudWatch, EC2, or ECS"
+   }
+  ]
+ },
+ {
+  "row": 125,
+  "skill": "Node.js",
+  "segments": [
+   {
+    "under": "Qualifications and Skills",
+    "text": "- Full stack engineering experience in Javascript, Typescript, Node or Python"
+   }
+  ]
+ },
+ {
+  "row": 126,
+  "skill": "Terraform",
+  "segments": [
+   {
+    "under": "Profil recherché",
+    "text": "- Stack technique : Maîtrise avancée de l'écosystème tech (Python, FastAPI, dbt, LangGraph, Docker, Terraform, GCP, AWS, Azure, Snowflake, Kubernetes)."
+   }
+  ]
+ },
+ {
+  "row": 127,
+  "skill": "ChatGPT",
+  "segments": [
+   {
+    "text": "- You’ll be a great fit if you: Have strong experience with modern web technologies, especially React, Node.js, and GraphQL Can break down complex problems and own features from idea to release Think deeply about the user experience and how technical decisions show up for the customer Use data to make product decisions and are comfortable working through ambiguity Communicate clearly, proactively, and with empathy across functions Bias toward action and iterative learning — you ship, test, and adapt Are motivated by building systems that drive business impact and user success Growth mindset: are motivated by moving metrics and driving concrete business outcomes while solving customer pain points Use AI tools (like Cursor, ChatGPT or Claude) to accelerate, not replace, your workflow"
+   }
+  ]
+ },
+ {
+  "row": 128,
+  "skill": "Flask",
+  "segments": [
+   {
+    "under": "Nice to have",
+    "text": "- Experience with full stack technologies: React, TypeScript, Flask, Postgres, & ORMs"
+   }
+  ]
+ },
+ {
+  "row": 129,
+  "skill": "Apache Kafka",
+  "segments": [
+   {
+    "under": "Requirements",
+    "text": "- In-depth knowledge of common databases and messaging systems like PostgreSQL/MongoDB/Redis/Kafka/RabbitMQ, etc."
+   }
+  ]
+ },
+ {
+  "row": 130,
+  "skill": "JAX",
+  "segments": [
+   {
+    "under": "What You Bring",
+    "text": "- Bonus: Working knowledge of modern machine learning frameworks (e.g., PyTorch, JAX, TensorFlow) and execution paradigms (LLM inference, pipeline/tensor parallelism, kernel dispatch)."
+   }
+  ]
+ },
+ {
+  "row": 131,
+  "skill": "Bash",
+  "segments": [
+   {
+    "under": "What makes you a great fit",
+    "text": "- Skills in automation and scripting (Python, Bash, Go)."
+   }
+  ]
+ },
+ {
+  "row": 132,
+  "skill": "Gazebo",
+  "segments": [
+   {
+    "under": "What we're looking for",
+    "text": "- Simulation Platforms: Proven experience with at least one major simulator (e.g., CARLA, Gazebo, NVIDIA Isaac Sim, or SVL)."
+   }
+  ]
+ },
+ {
+  "row": 133,
+  "skill": "Claude",
+  "segments": [
+   {
+    "under": "WHAT YOU’LL BRING TO SPLASH",
+    "text": "- Proficiency with AI-powered productivity tools (e.g., Claude, ChatGPT, Copilot, Cursor) to accelerate research, analysis, and documentation."
+   }
+  ]
+ },
+ {
+  "row": 134,
+  "skill": "Datadog RUM",
+  "segments": [
+   {
+    "under": "Preferred Qualifications",
+    "text": "- Familiarity with observability tooling such as Datadog RUM and APM, or comparable tracing and session-replay stacks"
+   }
+  ]
+ },
+ {
+  "row": 135,
+  "skill": "Android Jetpack",
+  "segments": [
+   {
+    "under": "An Ideal Candidate Should Have",
+    "text": "- Rock solid experience with Kotlin, Kotlin Coroutines, Kotlin Flow, Dagger 2, MVVM, Clean Architecture, Background Services, Music Player Service, Android Animations, Jetpack Navigation, JUnit tests"
+   },
+   {
+    "under": "Technologies we use",
+    "text": "- Jetpack Navigation"
+   }
+  ]
+ },
+ {
+  "row": 136,
+  "skill": "Linux",
+  "segments": [
+   {
+    "under": "Qualifications / Experience / Technical Skills",
+    "text": "- Understanding of Linux environment"
+   }
+  ]
+ },
+ {
+  "row": 137,
+  "skill": "Kubernetes",
+  "segments": [
+   {
+    "under": "Requirements",
+    "text": "- Experience with cloud production environments (AWS), Docker and Kubernetes."
+   }
+  ]
+ },
+ {
+  "row": 138,
+  "skill": "Cursor",
+  "segments": [
+   {
+    "under": "Your impact",
+    "text": "- Leverage AI coding assistants such as Claude and Cursor to accelerate test script development, generate test data, and improve defect triage and reporting"
+   }
+  ]
+ },
+ {
+  "row": 139,
+  "skill": "Snowflake",
+  "segments": [
+   {
+    "under": "Qualifications We Need",
+    "text": "- Cloud data warehouse experience Snowflake, Redshift, BigQuery"
+   }
+  ]
+ },
+ {
+  "row": 140,
+  "skill": "Amazon RDS",
+  "segments": [
+   {
+    "under": "The opportunity.",
+    "text": "- A production RDS fleet backing a live trading venue, with performance work that goes deep: we’ve characterized WAL-write contention under concurrent commits down to the fsync level, and are weighing group-commit tuning, dedicated log volumes, and storage-class changes against actual measurements."
+   },
+   {
+    "under": "What you’ll do?",
+    "text": "- Own the durability, recoverability, and performance of the Postgres/RDS fleet across every environment: replication, failover, backup and restore, and storage behavior under load."
+   },
+   {
+    "under": "About you.",
+    "text": "- Five or more years running production PostgreSQL at meaningful scale — ideally on RDS or Aurora — with depth in the internals: replication, WAL mechanics, MVCC and vacuum behavior, query planning and performance."
+   }
+  ]
+ }
+]

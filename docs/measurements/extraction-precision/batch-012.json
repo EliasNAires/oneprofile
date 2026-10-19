@@ -1,0 +1,242 @@
+[
+ {
+  "row": 221,
+  "skill": "Elasticsearch",
+  "segments": [
+   {
+    "under": "Some of the technologies you’ll get to work with",
+    "text": "- PostgreSQL, DynamoDB, Elastic search"
+   }
+  ]
+ },
+ {
+  "row": 222,
+  "skill": "Apache Sling",
+  "segments": [
+   {
+    "under": "THE ROLE",
+    "text": "Some days that means creating a Touch UI, Universal Editor Content model, Sling Model, Servlet, App Builder apps or an OSGi service."
+   },
+   {
+    "under": "WHAT YOU BRING",
+    "text": "- Working knowledge of Sling, OSGi, JCR/Oak, Sling Models, servlets, HTL integration points, workflows, and Maven."
+   }
+  ]
+ },
+ {
+  "row": 223,
+  "skill": "Terraform",
+  "segments": [
+   {
+    "under": "What we look for",
+    "text": "- You can build security tooling, guardrails, and detections with Python or similar, and deploy cloud services and policy-as-code using Infrastructure as Code (Terraform or similar); familiarity with Kubernetes and AWS."
+   }
+  ]
+ },
+ {
+  "row": 224,
+  "skill": "Spring Framework",
+  "segments": [
+   {
+    "under": "The qualifications you need",
+    "text": "- Hands on experience in Java, Spring, Hibernate frameworks."
+   }
+  ]
+ },
+ {
+  "row": 225,
+  "skill": "Google Cloud Platform",
+  "segments": [
+   {
+    "under": "To be successful in this role, you need",
+    "text": "- Strong understanding and knowledge of relevant technologies such as: cloud-based SaaS / PaaS software delivery models and underlying IaaS (e.g. AWS, Azure, GCP), modern cloud native technologies (e.g. Kubernetes, Docker, serverless), operating systems (e.g. Windows, UNIX, Linux), cryptography"
+   }
+  ]
+ },
+ {
+  "row": 226,
+  "skill": "Cursor",
+  "segments": [
+   {
+    "under": "Our Stack",
+    "text": "- AI coding tools such as Claude Code, Cursor, or Code"
+   }
+  ]
+ },
+ {
+  "row": 227,
+  "skill": "Elasticsearch",
+  "segments": [
+   {
+    "under": "Responsibilities",
+    "text": "- Work with engineering teams to design, develop and deliver cloud based infrastructure projects on a modern tech stack (Redis, Elasticsearch, Docker, Terraform on AWS)"
+   },
+   {
+    "under": "Minimum required knowledge, skills and abilities",
+    "text": "- Knowledge of AWS, Redis, Elasticsearch, and Docker"
+   }
+  ]
+ },
+ {
+  "row": 228,
+  "skill": "Apache Spark",
+  "segments": [
+   {
+    "under": "The impact you will have",
+    "text": "- Gain excitement from clients about Databricks through hands-on evaluation and Spark programming, integrating with the wider cloud ecosystem and 3rd party applications."
+   }
+  ]
+ },
+ {
+  "row": 229,
+  "skill": "Amplitude",
+  "segments": [
+   {
+    "under": "Tech Stack",
+    "text": "- Analytics/DWH: SQL, Python, Snowflake, Airflow, Looker, Amplitude, Google Analytics, Google Sheets, DataHub, Git, Statsig, DBT"
+   }
+  ]
+ },
+ {
+  "row": 230,
+  "skill": "Puppet",
+  "segments": [
+   {
+    "under": "REQUIRED QUALIFICATIONS",
+    "text": "- Experience with configuration management tooling (e.g., Ansible, Puppet, Chef)"
+   }
+  ]
+ },
+ {
+  "row": 231,
+  "skill": "AWS Lambda",
+  "segments": [
+   {
+    "under": "You will",
+    "text": "- Design distributed systems using AWS services such as Lambda, DynamoDB, SQS, and S3."
+   },
+   {
+    "under": "What Will Make You Stand Out",
+    "text": "- Experience with AWS services such as Lambda, DynamoDB, SQS, and S3."
+   }
+  ]
+ },
+ {
+  "row": 232,
+  "skill": "Microsoft Windows",
+  "segments": [
+   {
+    "text": "As a Senior Offensive Security Researcher you will join a global team working across Windows, Linux and macOS, spanning Endpoint, Cloud and Identity - and push the boundaries of cybersecurity every day!"
+   }
+  ]
+ },
+ {
+  "row": 233,
+  "skill": "SFTP",
+  "segments": [
+   {
+    "under": "Preferred Qualifications",
+    "text": "- Knowledge of APIs, EDI, XML, Flat Files and AS2, SFTP, HTTP communication protocols."
+   }
+  ]
+ },
+ {
+  "row": 234,
+  "skill": "iOS",
+  "title": "Staff Software Engineer iOS",
+  "segments": [
+   {
+    "under": "What you’ll do",
+    "text": "As a Staff Software Engineer (iOS) on the Digital Products team, you will provide technical leadership for the architecture, development, and evolution of our iOS platform, helping shape the future of the connected vehicle experience."
+   },
+   {
+    "under": "What you’ll do",
+    "text": "You will drive the design and delivery of scalable, high-quality iOS applications and services across key customer-facing products, including vehicle connectivity, mapping and navigation, EV charging experiences, vehicle purchasing journeys, and other strategic digital initiatives."
+   },
+   {
+    "under": "What you’ll do",
+    "text": "In this role, you will partner closely with other engineers, product management, design, and cross-functional stakeholders to define and execute the iOS engineering strategy."
+   },
+   {
+    "under": "What you’ll do",
+    "text": "You will influence technical direction across multiple teams, establish best practices, and ensure architectural consistency, performance, reliability, and maintainability across the iOS ecosystem."
+   },
+   {
+    "under": "What you’ll do",
+    "text": "You will also play a key role in developing engineering talent by mentoring senior and junior engineers, providing technical guidance, fostering collaboration, and elevating the overall effectiveness of the iOS organization."
+   },
+   {
+    "under": "What you’ll do",
+    "text": "- Defining and driving the technical vision, architecture, and long-term strategy for our iOS platform and customer-facing mobile experiences."
+   },
+   {
+    "under": "What you’ll bring",
+    "text": "- 8+ years of hands-on experience in software engineering shipping customer facing applications on iOS."
+   },
+   {
+    "under": "What you’ll bring",
+    "text": "- Deep expertise in Swift, SwiftUI, and modern iOS development practices, with a strong track record of delivering high-quality mobile experiences."
+   }
+  ]
+ },
+ {
+  "row": 235,
+  "skill": "OpenAI Codex",
+  "segments": [
+   {
+    "under": "AI-First Required Qualifications",
+    "text": "- Agentic coding tool proficiency Hands-on experience with agentic coding harnesses (e.g., Claude Code, Cursor, Copilot, Codex) with specific examples of driving an agent through a non-trivial engineering task, verifying output, and recovering from agent errors"
+   }
+  ]
+ },
+ {
+  "row": 236,
+  "skill": "Microsoft Windows",
+  "segments": [
+   {
+    "under": "Responsibilities include",
+    "text": "- Managing, evaluating, and installing patches on Windows and Linux systems"
+   }
+  ]
+ },
+ {
+  "row": 237,
+  "skill": "TypeScript",
+  "segments": [
+   {
+    "under": "Technologies we use",
+    "text": "- Claude Code, Kubernetes, AWS, Airflow, dlt, dbt, Python, TypeScript, React, Go"
+   }
+  ]
+ },
+ {
+  "row": 238,
+  "skill": "JAX",
+  "segments": [
+   {
+    "under": "You may be a good fit if you have",
+    "text": "- Experience with Python, Pytorch, and / or JAX"
+   }
+  ]
+ },
+ {
+  "row": 239,
+  "skill": "Temporal",
+  "segments": [
+   {
+    "under": "About Venn",
+    "text": "Our current tech arsenal includes: Go, AWS, Kubernetes, Jenkins, React Native (Expo), React.js, Temporal, SNS, Kinesis, S3, Snowflake, AWS Bedrock, and many more tools that help us build exceptional products."
+   }
+  ]
+ },
+ {
+  "row": 240,
+  "skill": "Apache Hive",
+  "segments": [
+   {
+    "under": "Desired",
+    "text": "- Experience or familiarity with data warehousing and/or ETL processes, and distributed computing technologies (Hive/Presto/Spark/Zeppelin) is a plus."
+   }
+  ]
+ }
+]

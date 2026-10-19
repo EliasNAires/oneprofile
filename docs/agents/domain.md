@@ -74,4 +74,6 @@ the later ADR wins; the overridden parts are marked below.
 - **0018**: extraction stores each (vacancy, skill) pair with the segments it was found in and
   whether the title names it, and a run leaves no row outside its scope. It reads the title and
   the segments that are not boilerplate. The longest key wins, a child does not add its parent,
-  and a context key counts only in its own casing and where a plain key confirms it.
+  and a context key counts only in its own casing and where a plain key confirms it. Its
+  precision was measured once (#65): 0.945, judged good enough without a rule loop; only the
+  easy wins listed on #65 are taken.

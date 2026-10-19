@@ -1,0 +1,20 @@
+{"row": 181, "answer": "yes"}
+{"row": 182, "answer": "yes"}
+{"row": 183, "answer": "yes"}
+{"row": 184, "answer": "yes"}
+{"row": 185, "answer": "no", "reason": "ordinary_word", "note": "'Prometheus-style systems' — name with an ordinary word ('style') glued after it, like the criterion's own 'Kubernetes-based' example"}
+{"row": 186, "answer": "yes"}
+{"row": 187, "answer": "no", "reason": "boilerplate", "note": "under 'OUR TECH STACK': 'Primary datastores are PostgreSQL via RDS or Aurora (we are heavy AWS users)' — describes the company's own stack, matches the criterion's 'Our platform runs on Kubernetes' example"}
+{"row": 188, "answer": "yes"}
+{"row": 189, "answer": "yes"}
+{"row": 190, "answer": "yes"}
+{"row": 191, "answer": "yes"}
+{"row": 192, "answer": "yes"}
+{"row": 193, "answer": "yes"}
+{"row": 194, "answer": "yes"}
+{"row": 195, "answer": "yes"}
+{"row": 196, "answer": "yes"}
+{"row": 197, "answer": "yes"}
+{"row": 198, "answer": "yes"}
+{"row": 199, "answer": "no", "reason": "boilerplate", "note": "under 'About the Team': 'Our users span ... on a warehouse and OLAP footprint that includes Snowflake,Spark and Clickhouse' — describes the company's product/customers, not this vacancy's work"}
+{"row": 200, "answer": "yes"}

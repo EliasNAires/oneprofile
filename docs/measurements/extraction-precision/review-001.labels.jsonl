@@ -1,0 +1,20 @@
+{"row": 29, "answer": "no", "reason": "wrong_skill", "note": "'GTM performance' is go-to-market, not Google Tag Manager"}
+{"row": 43, "answer": "no", "reason": "boilerplate", "note": "only https:// in company culture and press links"}
+{"row": 46, "answer": "no", "reason": "ordinary_word", "note": "'participants react to each other', the verb"}
+{"row": 49, "answer": "no", "reason": "ordinary_word", "note": "'C-level executives'"}
+{"row": 79, "answer": "no", "reason": "wrong_skill", "note": "'startups like Stripe, Vercel, Bolt', the company where staff used to work"}
+{"row": 83, "answer": "no", "reason": "boilerplate", "note": "https:// in the URL of a privacy notice"}
+{"row": 99, "answer": "no", "reason": "boilerplate", "note": "'We use mostly Scala and TypeScript', the company's stack"}
+{"row": 123, "answer": "yes"}
+{"row": 135, "answer": "yes"}
+{"row": 167, "answer": "no", "reason": "wrong_skill", "note": "'TAK/Cursor-on-Target', a military standard and not the Cursor editor"}
+{"row": 169, "answer": "no", "reason": "wrong_skill", "note": "'SAP technology', the vendor and not SAP ERP"}
+{"row": 170, "answer": "yes"}
+{"row": 179, "answer": "no", "reason": "boilerplate", "note": "every mention is Databricks as the employer or its own platform"}
+{"row": 185, "answer": "yes"}
+{"row": 187, "answer": "no", "reason": "boilerplate", "note": "'OUR TECH STACK: PostgreSQL via RDS or Aurora'"}
+{"row": 199, "answer": "no", "reason": "boilerplate", "note": "'footprint that includes Snowflake,Spark' under About the Team"}
+{"row": 215, "answer": "no", "reason": "ordinary_word", "note": "'Secure Vault pattern', a pattern and not HashiCorp Vault"}
+{"row": 239, "answer": "no", "reason": "boilerplate", "note": "'Our current tech arsenal includes ... Temporal' under About Venn"}
+{"row": 248, "answer": "no", "reason": "boilerplate", "note": "https:// in the URL of a benefits page"}
+{"row": 279, "answer": "no", "reason": "wrong_skill", "note": "'system integrity protection (SIP)' on macOS, not the Session Initiation Protocol"}

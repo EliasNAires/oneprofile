@@ -1,0 +1,144 @@
+#!/usr/bin/env python3
+"""Scores #65's measurement of skill extraction's precision, from the directory
+draw-extraction-sample wrote.
+
+    scripts/score-extraction-precision <directory>
+
+It is run twice. The labels come from the extraction-labeller agent, one reply per batch, saved
+next to its batch as batch-007.labels.jsonl.
+
+1. Once every batch has its labels on Sonnet, it writes the rows Sonnet answered no or unknown into
+   review-001.json onwards, in the batches' format, and stops. Each is labelled by the same agent
+   on Opus, saved as review-001.labels.jsonl.
+2. Once every review has its labels, the reviewed label counts for those rows. It writes
+   labels.tsv, every row with both labels and its group, and prints each group's precision with a
+   95% Wilson interval, the overall precision weighted by each group's share of vacancy_skill, the
+   noes by reason, and whether the pass mark is met: at least 0.95 overall and 0.90 for context rows.
+
+Precision is yes / (yes + no); unknowns are counted apart.
+"""
+
+import json
+import math
+import sys
+from pathlib import Path
+
+BATCH = 20
+
+PASS = {"overall": 0.95, "context": 0.90}
+
+ANSWERS = {"yes", "no", "unknown"}
+
+REASONS = {"boilerplate", "wrong_skill", "ordinary_word"}
+
+if len(sys.argv) != 2:
+    sys.exit(__doc__.strip())
+directory = Path(sys.argv[1])
+
+
+def read_labels(batch):
+    """The labels of one batch file, refused unless every row of it has exactly one valid label."""
+    path = batch.with_suffix(".labels.jsonl")
+    if not path.exists():
+        return None
+    labels = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if line.strip():
+            label = json.loads(line)
+            if label["answer"] not in ANSWERS or (label["answer"] == "no" and label.get("reason") not in REASONS):
+                sys.exit(f"{path}: row {label['row']} has an invalid label: {line}")
+            labels[label["row"]] = label
+    rows = {row["row"] for row in json.loads(batch.read_text(encoding="utf-8"))}
+    if labels.keys() != rows:
+        sys.exit(f"{path} labels rows {sorted(labels.keys() ^ rows)} differently from its batch")
+    return labels
+
+
+def wilson(yes, total, z=1.96):
+    if total == 0:
+        return (math.nan, math.nan)
+    p = yes / total
+    centre = (p + z * z / (2 * total)) / (1 + z * z / total)
+    half = z * math.sqrt(p * (1 - p) / total + z * z / (4 * total * total)) / (1 + z * z / total)
+    return (centre - half, centre + half)
+
+
+key = {}
+for line in (directory / "key.tsv").read_text(encoding="utf-8").splitlines()[1:]:
+    number, vacancy_id, skill_id, group = line.split("\t")
+    key[int(number)] = {"vacancy": vacancy_id, "skill": skill_id, "group": group}
+sizes = json.loads((directory / "groups.json").read_text())
+
+batches = sorted(directory.glob("batch-[0-9][0-9][0-9].json"))
+first = {}
+missing = []
+rows = {}
+for batch in batches:
+    rows.update({row["row"]: row for row in json.loads(batch.read_text(encoding="utf-8"))})
+    labels = read_labels(batch)
+    if labels is None:
+        missing.append(batch.name)
+    else:
+        first.update(labels)
+if missing:
+    sys.exit(f"{len(missing)} batches have no labels yet: {', '.join(missing)}")
+
+to_review = sorted(number for number, label in first.items() if label["answer"] != "yes")
+reviews = sorted(directory.glob("review-[0-9][0-9][0-9].json"))
+if not reviews:
+    for start in range(0, len(to_review), BATCH):
+        batch = [rows[number] for number in to_review[start:start + BATCH]]
+        (directory / f"review-{start // BATCH + 1:03d}.json").write_text(
+            json.dumps(batch, ensure_ascii=False, indent=1), encoding="utf-8")
+    sys.exit(f"Sonnet answered {len(to_review)} rows no or unknown. Wrote them into "
+             f"{-(-len(to_review) // BATCH)} review files: label each with extraction-labeller on Opus, "
+             "then run this again.")
+
+reviewed = {}
+missing = []
+for review in reviews:
+    labels = read_labels(review)
+    if labels is None:
+        missing.append(review.name)
+    else:
+        reviewed.update(labels)
+if missing:
+    sys.exit(f"{len(missing)} reviews have no labels yet: {', '.join(missing)}")
+if sorted(reviewed) != to_review:
+    sys.exit("The review files do not hold exactly the rows Sonnet answered no or unknown")
+
+final = {number: reviewed.get(number, label) for number, label in first.items()}
+
+table = ["row\tnormalized_vacancy_id\tskill_id\tgroup\tsonnet\tfinal\treason\tnote\n"]
+for number in sorted(final):
+    label = final[number]
+    table.append("\t".join([str(number), key[number]["vacancy"], key[number]["skill"], key[number]["group"],
+                            first[number]["answer"], label["answer"], label.get("reason", ""),
+                            label.get("note", "").replace("\t", " ").replace("\n", " ")]) + "\n")
+(directory / "labels.tsv").write_text("".join(table), encoding="utf-8")
+
+print(f"Opus reviewed {len(to_review)} rows and changed "
+      f"{sum(1 for n in to_review if reviewed[n]['answer'] != first[n]['answer'])} answers")
+precision = {}
+variance = {}
+for group in sorted(sizes):
+    answers = [final[n] for n in final if key[n]["group"] == group]
+    yes = sum(1 for a in answers if a["answer"] == "yes")
+    no = [a for a in answers if a["answer"] == "no"]
+    unknown = sum(1 for a in answers if a["answer"] == "unknown")
+    judged = yes + len(no)
+    precision[group] = yes / judged
+    variance[group] = precision[group] * (1 - precision[group]) / judged
+    low, high = wilson(yes, judged)
+    reasons = ", ".join(f"{reason} {sum(1 for a in no if a['reason'] == reason)}" for reason in sorted(REASONS))
+    print(f"{group}: {precision[group]:.3f} [{low:.3f}, {high:.3f}] from {yes} yes and {len(no)} no "
+          f"({reasons}), {unknown} unknown")
+
+total = sum(sizes.values())
+overall = sum(sizes[g] / total * precision[g] for g in sizes)
+spread = 1.96 * math.sqrt(sum((sizes[g] / total) ** 2 * variance[g] for g in sizes))
+print(f"overall, weighted {', '.join(f'{g} {sizes[g] / total:.1%}' for g in sorted(sizes))}: "
+      f"{overall:.3f} [{overall - spread:.3f}, {overall + spread:.3f}]")
+passed = overall >= PASS["overall"] and precision["context"] >= PASS["context"]
+print(f"{'PASS' if passed else 'FAIL'}: overall {overall:.3f} against {PASS['overall']}, "
+      f"context {precision['context']:.3f} against {PASS['context']}")

@@ -1,0 +1,218 @@
+[
+ {
+  "row": 241,
+  "skill": "Python",
+  "segments": [
+   {
+    "under": "Essential Responsibilities",
+    "text": "- Automate recurring tasks through a combination of SQL, PL/SQL, or scripting languages such as Perl, Bash, OCI CLI, Python, etc."
+   },
+   {
+    "under": "Qualifications",
+    "text": "- Strong scripting skills such as OCI CLI, Python, Shell scripting, Perl, etc."
+   }
+  ]
+ },
+ {
+  "row": 242,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "Basic Qualifications",
+    "text": "- 5+ years of professional experience in software development with Python, Go, Java, or similar"
+   }
+  ]
+ },
+ {
+  "row": 243,
+  "skill": "AWS",
+  "segments": [
+   {
+    "under": "Skills & Experience",
+    "text": "- Fluency working across cloud environments (AWS, GCP, or Azure) and modern SaaS ecosystems"
+   }
+  ]
+ },
+ {
+  "row": 244,
+  "skill": "Power Apps",
+  "segments": [
+   {
+    "under": "Responsibilities",
+    "text": "- Lead the technical delivery of Power Platform solutions, covering Power Apps, Dataverse, Power Automate, Power Pages, Copilot Studio, PCF, plug-ins and Azure integrations."
+   }
+  ]
+ },
+ {
+  "row": 245,
+  "skill": "ARM",
+  "segments": [
+   {
+    "under": "Preferred Qualifications",
+    "text": "- Experience with one or more microcontroller cores (ARM, AVR, MSP430, PIC, etc.)"
+   }
+  ]
+ },
+ {
+  "row": 246,
+  "skill": "Weaviate",
+  "segments": [
+   {
+    "under": "Technical Skills",
+    "text": "Vector Databases: Pinecone/Weaviate/Milvus/pgvector/Vertex AI Vector Search/Azure AI Search"
+   }
+  ]
+ },
+ {
+  "row": 247,
+  "skill": "Kubernetes",
+  "segments": [
+   {
+    "under": "Responsibilities",
+    "text": "- Manage Kubernetes-based infrastructure and container orchestration environments"
+   },
+   {
+    "under": "Required Qualifications",
+    "text": "- Experience managing Kubernetes (K8s) environments in production"
+   }
+  ]
+ },
+ {
+  "row": 248,
+  "skill": "HTTP",
+  "segments": [
+   {
+    "under": "Preferred but not required",
+    "text": "For information about our benefits, please visit https://benefitsatfanatics.com/"
+   }
+  ]
+ },
+ {
+  "row": 249,
+  "skill": "Kubernetes",
+  "segments": [
+   {
+    "under": "What you’ll do",
+    "text": "- Review container security: Kubernetes security, container scanning, runtime protection"
+   }
+  ]
+ },
+ {
+  "row": 250,
+  "skill": "Cursor",
+  "segments": [
+   {
+    "under": "What makes you a great fit",
+    "text": "- AI-fluent. You use Claude, Cursor, or similar tools actively in your workflow — for writing specs, synthesizing research, accelerating analysis. This is a baseline, not a differentiator."
+   }
+  ]
+ },
+ {
+  "row": 251,
+  "skill": "macOS",
+  "segments": [
+   {
+    "under": "Responsibilities",
+    "text": "- Support escalated issues across Zscaler, macOS, networking, Google Workspace, and Okta"
+   },
+   {
+    "under": "Responsibilities",
+    "text": "- Serve as Tier 3 support for macOS, hardware, and network-related issues"
+   }
+  ]
+ },
+ {
+  "row": 252,
+  "skill": "TypeScript",
+  "segments": [
+   {
+    "under": "About You",
+    "text": "- You’re experienced in Java, GoLang, Python, PHP, Typescript or Node.js"
+   }
+  ]
+ },
+ {
+  "row": 253,
+  "skill": "Karma",
+  "segments": [
+   {
+    "under": "PREFERRED SKILLS AND EXPERIENCE",
+    "text": "- Experience with observability and security operations tooling (e.g., Prometheus, Grafana, CloudWatch, Karma; SIEM platforms such as Wazuh)"
+   }
+  ]
+ },
+ {
+  "row": 254,
+  "skill": "Hibernate",
+  "segments": [
+   {
+    "under": "Required Knowledge, Skills, And Abilities",
+    "text": "- 15+ years of Software Development in Java, preferably significant experience with Hibernate and Spring Boot"
+   }
+  ]
+ },
+ {
+  "row": 255,
+  "skill": "Node.js",
+  "segments": [
+   {
+    "under": "Bonus",
+    "text": "- Experience with iOS, Web, or NodeJS"
+   }
+  ]
+ },
+ {
+  "row": 256,
+  "skill": "pandas",
+  "segments": [
+   {
+    "under": "Compétences techniques",
+    "text": "- Excellente maîtrise du développement en Python et de la pile scientifique (NumPy, Pandas, SciPy)."
+   },
+   {
+    "under": "Technical Skills",
+    "text": "- Strong Python development with scientific computing stack (NumPy, Pandas, SciPy)"
+   }
+  ]
+ },
+ {
+  "row": 257,
+  "skill": "Tableau",
+  "segments": [
+   {
+    "under": "What You Bring",
+    "text": "- Proficiency in data analysis and GIS tools (Excel, PowerBI, Tableau, ArcGIS, or QGIS)."
+   }
+  ]
+ },
+ {
+  "row": 258,
+  "skill": "Snowflake",
+  "segments": [
+   {
+    "under": "In addition you have",
+    "text": "- Basic exposure to cloud platforms (GCP, AWS, or Azure) and modern data stack tools (e.g., dbt, Airflow, BigQuery, or Snowflake) through projects, coursework, or internships."
+   }
+  ]
+ },
+ {
+  "row": 259,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "About you",
+    "text": "- Strong coding skills (Python, Go, Java, C++, ...)"
+   }
+  ]
+ },
+ {
+  "row": 260,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "What we'd like to see.",
+    "text": "- Deep experience designing and consuming RESTful and GraphQL APIs, backend services (Node.js, Python, or Go), and database design (SQL/NoSQL)."
+   }
+  ]
+ }
+]

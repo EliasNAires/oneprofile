@@ -1,0 +1,142 @@
+#!/usr/bin/env python3
+"""Draws #65's sample of skill extraction's rows: 200 found by plain keys and 200 found only by
+context keys, with a fixed seed, written as batch files of 20 for the labeller.
+
+    scripts/draw-extraction-sample <directory>
+
+Needs the development database up, holding a skill extraction run (POST /skill-extractions). The
+table does not store which rows only context keys found, so the script runs extraction's own rule
+again (ExtractionRerun.java, next to it) over every vacancy that has a row, and refuses to draw if
+what the rule finds now differs from the table: the taxonomy changed since the run, and the run has
+to be repeated first.
+
+Writes to the directory:
+- batch-001.json to batch-020.json: each row's skill, the segments it was found in (under their
+  heading), and the title when the title names it. Both groups are shuffled together, and nothing in
+  a batch says which group a row belongs to.
+- key.tsv: each row's number, vacancy, skill and group, for scoring. The labeller never reads it.
+- groups.json: how many rows of vacancy_skill each group holds, which the overall precision is
+  weighted by.
+"""
+
+import json
+import random
+import subprocess
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+
+SKILLS = REPO / "src" / "main" / "resources" / "taxonomy" / "skills.tsv"
+
+SEED = 65
+
+PER_GROUP = 200
+
+BATCH = 20
+
+MARKS = {"HEADING": "# ", "ITEM": "- ", "SENTENCE": ""}
+
+if len(sys.argv) != 2:
+    sys.exit(__doc__.strip())
+directory = Path(sys.argv[1])
+
+
+def psql(query, **kwargs):
+    return subprocess.Popen(
+        ["docker", "compose", "--project-directory", str(REPO), "exec", "-T", "postgres",
+         "psql", "-v", "ON_ERROR_STOP=1", "-U", "oneprofile", "-d", "oneprofile", "-AtF", "\t", "-c", query],
+        stdout=subprocess.PIPE, text=True, encoding="utf-8", **kwargs)
+
+
+def finished(process):
+    if process.wait() != 0:
+        sys.exit(f"{process.args[0]} failed with exit status {process.returncode}")
+
+
+def vacancies(where):
+    return ("select json_build_object('id', id, 'title', cleaned_title, "
+            "'segments', coalesce(description_segments, '[]'::jsonb)) "
+            f"from normalized_vacancy where {where} order by id")
+
+
+print("Building the classpath", file=sys.stderr)
+classpath_file = REPO / "target" / "classpath.txt"
+subprocess.run([str(REPO / "mvnw"), "-q", "-f", str(REPO / "pom.xml"), "compile", "dependency:build-classpath",
+                f"-Dmdep.outputFile={classpath_file}"], check=True)
+classpath = f"{REPO / 'target' / 'classes'}:{classpath_file.read_text().strip()}"
+
+print("Reading vacancy_skill", file=sys.stderr)
+reading = psql("select normalized_vacancy_id, skill_id, array_to_string(segments, ','), in_title from vacancy_skill")
+stored = {}
+for line in reading.stdout:
+    vacancy_id, skill_id, segments, in_title = line.rstrip("\n").split("\t")
+    stored[(int(vacancy_id), skill_id)] = (segments, in_title)
+finished(reading)
+
+print("Running the extraction rule again", file=sys.stderr)
+export = psql(vacancies("id in (select normalized_vacancy_id from vacancy_skill)"))
+rerun = subprocess.Popen(["java", "-cp", classpath, str(REPO / "scripts" / "ExtractionRerun.java"), str(SKILLS)],
+                         stdin=export.stdout, stdout=subprocess.PIPE, text=True, encoding="utf-8")
+export.stdout.close()
+found = {}
+for line in rerun.stdout:
+    vacancy_id, skill_id, segments, in_title, from_context = line.rstrip("\n").split("\t")
+    found[(int(vacancy_id), skill_id)] = (segments, in_title, from_context == "t")
+finished(rerun)
+finished(export)
+
+differing = [row for row in stored.keys() | found.keys()
+             if row not in stored or row not in found or stored[row] != found[row][:2]]
+if differing:
+    sys.exit(f"The rule now finds {len(differing)} rows other than vacancy_skill holds, such as "
+             f"{sorted(differing)[:5]}. Run POST /skill-extractions again, then draw.")
+
+groups = {"plain": sorted(row for row, (_, _, context) in found.items() if not context),
+          "context": sorted(row for row, (_, _, context) in found.items() if context)}
+drawn = []
+for group, rows in groups.items():
+    random.Random(f"{SEED}-{group}").shuffle(rows)
+    drawn += [(row, group) for row in rows[:PER_GROUP]]
+random.Random(SEED).shuffle(drawn)
+
+names = {}
+for line in SKILLS.read_text(encoding="utf-8").splitlines():
+    columns = line.split("\t")
+    names[columns[0]] = columns[1]
+
+ids = ",".join(str(vacancy_id) for vacancy_id in sorted({row[0] for row, _ in drawn}))
+reading = psql(vacancies(f"id in ({ids})"))
+texts = {vacancy["id"]: vacancy for vacancy in map(json.loads, reading.stdout)}
+finished(reading)
+
+directory.mkdir(parents=True, exist_ok=True)
+key = ["row\tnormalized_vacancy_id\tskill_id\tgroup\n"]
+batches = []
+for number, ((vacancy_id, skill_id), group) in enumerate(drawn, start=1):
+    segments, in_title, _ = found[(vacancy_id, skill_id)]
+    vacancy = texts[vacancy_id]
+    row = {"row": number, "skill": names[skill_id]}
+    if in_title == "t":
+        row["title"] = vacancy["title"]
+    row["segments"] = []
+    for index in map(int, filter(None, segments.split(","))):
+        segment = vacancy["segments"][index]
+        shown = {"text": MARKS[segment["kind"]] + segment["text"]}
+        if segment.get("under"):
+            shown = {"under": segment["under"], **shown}
+        row["segments"].append(shown)
+    if number % BATCH == 1:
+        batches.append([])
+    batches[-1].append(row)
+    key.append(f"{number}\t{vacancy_id}\t{skill_id}\t{group}\n")
+
+(directory / "key.tsv").write_text("".join(key), encoding="utf-8")
+(directory / "groups.json").write_text(json.dumps({group: len(rows) for group, rows in groups.items()}) + "\n")
+for number, batch in enumerate(batches, start=1):
+    (directory / f"batch-{number:03d}.json").write_text(json.dumps(batch, ensure_ascii=False, indent=1),
+                                                         encoding="utf-8")
+
+print(f"vacancy_skill holds {len(found)} rows: {len(groups['plain'])} by plain keys, "
+      f"{len(groups['context'])} only by context keys")
+print(f"Drew {len(drawn)} rows into {directory}: {len(batches)} batch files of {BATCH}, and key.tsv")

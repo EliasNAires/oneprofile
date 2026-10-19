@@ -1,0 +1,20 @@
+{"row": 281, "answer": "yes"}
+{"row": 282, "answer": "no", "reason": "wrong_skill", "note": "'familiarity with SAP' names the vendor, not a specific SAP ERP product"}
+{"row": 283, "answer": "yes"}
+{"row": 284, "answer": "yes"}
+{"row": 285, "answer": "yes"}
+{"row": 286, "answer": "yes", "note": "'Go' bare form of Golang in language list"}
+{"row": 287, "answer": "yes"}
+{"row": 288, "answer": "yes", "note": "'custom Apex development' names Salesforce Apex, though as not required"}
+{"row": 289, "answer": "yes"}
+{"row": 290, "answer": "no", "reason": "boilerplate", "note": "'Mac App' describes the company's own product lineup across platforms, not naming macOS"}
+{"row": 291, "answer": "yes"}
+{"row": 292, "answer": "yes", "note": "'Jetpack Navigation' is a named feature of Android Jetpack"}
+{"row": 293, "answer": "no", "reason": "wrong_skill", "note": "'C-level executives' means chief-level, not the C language"}
+{"row": 294, "answer": "yes"}
+{"row": 295, "answer": "yes"}
+{"row": 296, "answer": "yes", "note": "'ARM architectures' names the ARM technology"}
+{"row": 297, "answer": "no", "reason": "wrong_skill", "note": "both segments use 'Figma' as the employer's name, not the tool"}
+{"row": 298, "answer": "yes"}
+{"row": 299, "answer": "yes"}
+{"row": 300, "answer": "yes"}

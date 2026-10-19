@@ -1,0 +1,20 @@
+{"row": 161, "answer": "yes"}
+{"row": 162, "answer": "yes"}
+{"row": 163, "answer": "yes"}
+{"row": 164, "answer": "yes"}
+{"row": 165, "answer": "yes"}
+{"row": 166, "answer": "yes"}
+{"row": 167, "answer": "no", "reason": "wrong_skill", "note": "'TAK/Cursor-on-Target' is a military interop standard, not the Cursor AI editor"}
+{"row": 168, "answer": "yes"}
+{"row": 169, "answer": "no", "reason": "wrong_skill", "note": "'Familiarity with SAP technology' names the vendor generically, not SAP ERP specifically"}
+{"row": 170, "answer": "no", "reason": "wrong_skill", "note": "'PC/Mac endpoints' means the Mac computer/device, not the macOS operating system"}
+{"row": 171, "answer": "yes"}
+{"row": 172, "answer": "yes"}
+{"row": 173, "answer": "yes"}
+{"row": 174, "answer": "yes"}
+{"row": 175, "answer": "yes"}
+{"row": 176, "answer": "yes"}
+{"row": 177, "answer": "yes"}
+{"row": 178, "answer": "yes"}
+{"row": 179, "answer": "no", "reason": "boilerplate", "note": "every segment is about Databricks the employer/company and its own product, not a requested skill"}
+{"row": 180, "answer": "yes"}

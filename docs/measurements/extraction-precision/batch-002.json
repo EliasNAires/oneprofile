@@ -1,0 +1,226 @@
+[
+ {
+  "row": 21,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "Education, Experience, Knowledge, Skills, and Abilities",
+    "text": "- Can review code, automate tasks, and build security tooling in at least one modern programming language (e.g., Python, Go, Ruby, Java)"
+   }
+  ]
+ },
+ {
+  "row": 22,
+  "skill": "Helm",
+  "segments": [
+   {
+    "under": "Strong Plus",
+    "text": "- Platform breadth: bare-metal operations, Helm or ArgoCD, messaging systems such as Kafka or NATS, observability stacks such as Prometheus, Grafana, Loki, or OpenTelemetry."
+   }
+  ]
+ },
+ {
+  "row": 23,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "What We’re Looking For",
+    "text": "- Proficiency in coding (Python, Go, or similar) and building automation workflows that showcase your technical prowess."
+   }
+  ]
+ },
+ {
+  "row": 24,
+  "skill": "FFmpeg",
+  "segments": [
+   {
+    "under": "Technologies we use",
+    "text": "- ffmpeg"
+   },
+   {
+    "under": "Bonus experience",
+    "text": "- ffmpeg"
+   }
+  ]
+ },
+ {
+  "row": 25,
+  "skill": "AWS",
+  "segments": [
+   {
+    "under": "What you'll need",
+    "text": "- Hands-on experience with cloud-native technologies (AWS, Kubernetes, Docker)"
+   }
+  ]
+ },
+ {
+  "row": 26,
+  "skill": "Google Analytics",
+  "segments": [
+   {
+    "under": "Čo budeš robiť",
+    "text": "- Pokročilá Webová a Aplikačná Analytika (Hands-on): Expertná práca s platformami ako GA4 (príp. Adobe Analytics a Firebase). Hĺbková analýza dát o správaní používateľov na webových stránkach, diagnostická analýza, segmentácia a vyhodnocovanie výsledkov."
+   },
+   {
+    "under": "Čo budeš robiť",
+    "text": "- Komplexné analytické a implementačné audity: Vykonávanie hĺbkových revízií existujúcich nastavení GA4, GTM a dátových vrstiev (dataLayer). Auditovanie a optimalizácia merania konverzií naprieč kľúčovými reklamnými systémami (Google Ads, Meta a pod.) pre zabezpečenie maximálnej dátovej presnosti a výkonu kampaní."
+   },
+   {
+    "under": "Skúsenosti a znalosti",
+    "text": "- Expertná a praktická znalosť Google Analytics 4 (GAa Google Tag Manager (GTM) pre web, vrátane pokročilých nastavení a troubleshootingu."
+   }
+  ]
+ },
+ {
+  "row": 27,
+  "skill": "CANbus",
+  "segments": [
+   {
+    "under": "Requirements",
+    "text": "- Exposure to vehicle network/diagnostic standards (CAN, Ethernet, SOME/IP, UDS) or automotive industry standards such as Adaptive AUTOSAR is a plus."
+   }
+  ]
+ },
+ {
+  "row": 28,
+  "skill": "PySpark",
+  "segments": [
+   {
+    "under": "Who you are",
+    "text": "- You're highly proficient in programming languages and tooling, such as: Python, PySpark, SQL, Airflow, Hadoop, Spark, Kafka, SQL, Git"
+   }
+  ]
+ },
+ {
+  "row": 29,
+  "skill": "Google Tag Manager",
+  "segments": [
+   {
+    "under": "What You'll Do",
+    "text": "- Build and maintain analytics and reporting across Metabase, Tableau, and custom dashboards covering product usage, GTM performance, and customer health"
+   }
+  ]
+ },
+ {
+  "row": 30,
+  "skill": "SMTP",
+  "segments": [
+   {
+    "under": "You might be a good fit as an Infrastructure Engineer if you",
+    "text": "- Have experience with an assortment of common applications and protocols, such as Apache, MySQL, NFS, Squid, Redis, Docker, DHCP, SSH, DNS, LDAP, SMTP, etc."
+   }
+  ]
+ },
+ {
+  "row": 31,
+  "skill": "Groovy",
+  "segments": [
+   {
+    "under": "Qualifications",
+    "text": "- Deep hands-on experience with Java, Groovy, Spring Boot, OpenJDK, GraphQL, REST APIs, MySQL, and PostgreSQL"
+   }
+  ]
+ },
+ {
+  "row": 32,
+  "skill": "Kubernetes",
+  "segments": [
+   {
+    "under": "What you’ll bring",
+    "text": "- Familiarity with containerized deployment environments using Docker and Kubernetes."
+   }
+  ]
+ },
+ {
+  "row": 33,
+  "skill": "Python",
+  "segments": [
+   {
+    "under": "Nice to Haves",
+    "text": "- Demonstrated proficiency writing and reviewing production-grade code across frontend and backend using Python, JavaScript, or comparable stacks."
+   }
+  ]
+ },
+ {
+  "row": 34,
+  "skill": "Apache Spark",
+  "segments": [
+   {
+    "under": "What You’ll Do",
+    "text": "- Experience with real-time stream processing and batch processing (using technologies such as Flink, Spark, Kafka, Druid)"
+   }
+  ]
+ },
+ {
+  "row": 35,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "PREFERRED QUALIFICATIONS",
+    "text": "- Experience with Matlab, Simulink, Python, Go, C++ and/or Linux systems"
+   }
+  ]
+ },
+ {
+  "row": 36,
+  "skill": "Apache Cassandra",
+  "segments": [
+   {
+    "under": "We're excited if you have",
+    "text": "- Experience in SQL / NoSQL (Oracle, Cassandra) database design"
+   }
+  ]
+ },
+ {
+  "row": 37,
+  "skill": "AWS Lambda",
+  "segments": [
+   {
+    "under": "Key Responsibilities",
+    "text": "- Lambda development and deployment using the AWS CDK."
+   }
+  ]
+ },
+ {
+  "row": 38,
+  "skill": "Google Cloud Platform",
+  "segments": [
+   {
+    "under": "Vos missions",
+    "text": "- Vous maitrisez les différents flux de données mis en oeuvre dans la solution ainsi que leur transformation, leur stockage et leur distribution dans un contexte Cloud (GCP et Azure)"
+   },
+   {
+    "under": "Les plus",
+    "text": "- connaissance spécifique pointue des technologies cloud de Google (GCP), Microsoft (Azure) ou Amazon (AWS);"
+   },
+   {
+    "under": "Pourquoi nous rejoindre",
+    "text": "- Stack complète à la pointe de l’innovation : Python, Kubernetes, Kafka, Spark, Google Cloud Platform (BQ, Dataflow, Compute Engine, PubSub, AppEngine…) , Airflow, Docker"
+   }
+  ]
+ },
+ {
+  "row": 39,
+  "skill": "Golang",
+  "segments": [
+   {
+    "under": "What you’ll be doing",
+    "text": "- Build, manage, and evolve IAC using Terraform, Helm and Go CRDs."
+   },
+   {
+    "under": "What are we looking for",
+    "text": "- Proficiency in at least one scripting language such as Python, PowerShell, Go."
+   }
+  ]
+ },
+ {
+  "row": 40,
+  "skill": "CANbus",
+  "segments": [
+   {
+    "under": "Desired Skills",
+    "text": "- Familiarity with avionics data buses and communication protocols (e.g., ARINC-429, MIL-STD-1553, AFDX, CAN, SPI, UART, etc)"
+   }
+  ]
+ }
+]

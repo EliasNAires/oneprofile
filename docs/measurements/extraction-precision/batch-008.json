@@ -1,0 +1,269 @@
+[
+ {
+  "row": 141,
+  "skill": "Temporal",
+  "segments": [
+   {
+    "under": "Our Tech Stack*",
+    "text": "- Backend: tRPC, Node.js, MongoDB, Temporal"
+   }
+  ]
+ },
+ {
+  "row": 142,
+  "skill": "Swagger",
+  "segments": [
+   {
+    "under": "Key Responsibilities",
+    "text": "- Utilize documentation tools and platforms: Confluence, SharePoint, Git-based documentation (Markdown) and API tools (Swagger/OpenAPI)"
+   },
+   {
+    "under": "Qualifications",
+    "text": "- Tools & Technologies: Confluence, SharePoint, Markdown, DITA, Swagger / OpenAPI, Git, Visio, Lucidchart, Jira, Azure DevOps"
+   }
+  ]
+ },
+ {
+  "row": 143,
+  "skill": "Python",
+  "segments": [
+   {
+    "under": "While not required, these are a plus",
+    "text": "- Use Python as the preferred language for scripting and programming"
+   }
+  ]
+ },
+ {
+  "row": 144,
+  "skill": "D3.js",
+  "segments": [
+   {
+    "under": "How you’ll make an impact",
+    "text": "- Tech stack: React, AngularJS, Angular, D3.js, ECharts, Node.js, Java, Spring"
+   }
+  ]
+ },
+ {
+  "row": 145,
+  "skill": "Flask",
+  "segments": [
+   {
+    "under": "Preferred Qualifications",
+    "text": "- Strong Python (Flask / SQLAlchemy) and React / Typescript experience."
+   }
+  ]
+ },
+ {
+  "row": 146,
+  "skill": "XCUITest",
+  "segments": [
+   {
+    "under": "{ your_responsibilities: [",
+    "text": "- Hands-on experience with native mobile test automation frameworks such as XCUITest and/or Espresso, including different testing levels and approaches such as UI, integration, and end-to-end testing."
+   },
+   {
+    "under": "{ your_responsibilities: [",
+    "text": "- Experience with one or more of the following is a plus: XCUITest, Espresso, device farms, mobile CI/CD pipelines, Jira Xray, GitLab."
+   }
+  ]
+ },
+ {
+  "row": 147,
+  "skill": "Apache Spark",
+  "segments": [
+   {
+    "under": "Responsibilities",
+    "text": "- Using SQL and Spark to create, transform, and analyze large datasets"
+   }
+  ]
+ },
+ {
+  "row": 148,
+  "skill": "Ember.js",
+  "segments": [
+   {
+    "under": "What we look for",
+    "text": "- Experience with modern JavaScript frameworks (e.g., React, Angular, or VueJs/Ember)"
+   }
+  ]
+ },
+ {
+  "row": 149,
+  "skill": "Amazon Kinesis",
+  "segments": [
+   {
+    "under": "Cloud & Platforms (Key Requirement) — choose your track",
+    "text": "- Track A: Strong, demonstrable hands-on experience with AWS data services (e.g., S3, Glue, EMR, Redshift, Kinesis, Lambda) and the Databricks Lakehouse Platform"
+   }
+  ]
+ },
+ {
+  "row": 150,
+  "skill": "JuliaLang",
+  "segments": [
+   {
+    "under": "It’d be great if you had these",
+    "text": "- Are a skilled and efficient programmer in scientific programming languages (e.g, JAX, C++, Julia, etc.) with a desire to expand into new areas of coding languages and processes."
+   }
+  ]
+ },
+ {
+  "row": 151,
+  "skill": "AWS",
+  "segments": [
+   {
+    "under": "About The Role",
+    "text": "You’ll join a small infra team that treats AWS, EKS, and GitOps as the default path for new systems, and you’ll spend real time pairing with other teams so - search, Workspace, and data - land in the right Terraform, Helm, and Flux instead of one-off snowflakes."
+   },
+   {
+    "under": "About The Role",
+    "text": "You will design Terraform modules, cut production traffic to EKS, secure traffic with Cloudflare, look for optimizations in our AWS infrastructure, and leave on-call better than you found them."
+   },
+   {
+    "under": "The day-to-day",
+    "text": "- Design, build, and operate the AWS and EKS platform using Terraform, Helm/Kustomize, and Flux GitOps across infra, shared-infra, and app-owned repos (Workspace, search, data)."
+   },
+   {
+    "under": "Qualifications",
+    "text": "- AWS in production: EKS, IAM/IRSA, networking (VPC, NAT, DNS), and at least one of RDS/MySQL, Elasticache/Valkey, or OpenSearch."
+   }
+  ]
+ },
+ {
+  "row": 152,
+  "skill": "Salesforce Revenue Cloud",
+  "segments": [
+   {
+    "text": "As Kaseya advances its transformation, this role will help guide the transition to a more scalable future-state architecture anchored by Salesforce Revenue Cloud Advanced (RCA), Salesforce Commerce Cloud, Oracle ERP, and related boundary applications."
+   },
+   {
+    "under": "Key Responsibilities",
+    "text": "- Serve as the PBS subject matter expert across current and future-state systems, including Salesforce, Salesforce Revenue Cloud Advanced, NetSuite, Oracle ERP, MuleSoft / Oracle Integration Cloud (OIC), Kaseya One, and key boundary applications."
+   },
+   {
+    "under": "Required Qualifications",
+    "text": "- Strong working knowledge of Salesforce CPQ, Salesforce Revenue Cloud / RCA, Software subscription business, payment platforms, integration platforms, or comparable enterprise systems."
+   }
+  ]
+ },
+ {
+  "row": 153,
+  "skill": "SQL",
+  "segments": [
+   {
+    "under": "Skills",
+    "text": "- Strong SQL skills and hands-on Python experience for data transformation, testing, and tooling."
+   }
+  ]
+ },
+ {
+  "row": 154,
+  "skill": "XML",
+  "segments": [
+   {
+    "under": "RESPONSIBILITIES",
+    "text": "- Develop and maintain XML and JSON schemas (XSD, JSON Schema); perform data transformation, validation, and mapping between hierarchical and object-based data models."
+   },
+   {
+    "under": "QUALIFICATIONS",
+    "text": "- Strong background in XML/JSON schema design, data mapping, and transformation."
+   }
+  ]
+ },
+ {
+  "row": 155,
+  "skill": "Palo Alto Panorama",
+  "segments": [
+   {
+    "under": "WHAT YOU’LL TAKE ON",
+    "text": "- Serve as the subject matter expert for Palo Alto Networks firewalls and Panorama management, utilizing advanced features like App-ID, User-ID, and WildFire to maintain a robust security posture."
+   }
+  ]
+ },
+ {
+  "row": 156,
+  "skill": "SaltStack",
+  "segments": [
+   {
+    "under": "WHAT YOU WILL NEED",
+    "text": "- Solid background with configuration management tools. Experience with Saltstack is a plus."
+   }
+  ]
+ },
+ {
+  "row": 157,
+  "skill": "AWS",
+  "segments": [
+   {
+    "under": "Company Overview",
+    "text": "We're all in on AWS, combining deep UX capability with senior engineering talent to get AI into production fast and keep it there."
+   },
+   {
+    "under": "Position Overview",
+    "text": "In this role, you will work as a key contributor on a cross-functional team alongside AWS Professional Services, embedded with a large enterprise client."
+   },
+   {
+    "under": "Craft & Delivery",
+    "text": "- Design, implement, and deploy data and AI/ML systems on AWS end-to-end, from concept through production, including data lake pipelines, observability instrumentation, and optimization for performance, reliability, and cost"
+   },
+   {
+    "under": "Collaboration & Communication",
+    "text": "- Partner closely with AWS Professional Services, client engineering, and data teams to align the work with broader platform and business goals"
+   },
+   {
+    "under": "What You’ll Bring",
+    "text": "- 5+ years professional software or data engineering experience, with 2+ years building data platforms or AI/ML systems in production on AWS"
+   },
+   {
+    "under": "What You’ll Bring",
+    "text": "- AWS Certified Data Engineer – Associate. Candidates without it are considered if there is a clear, near-term path to earning it"
+   },
+   {
+    "under": "What You’ll Bring",
+    "text": "- Hands-on experience building data lakes on AWS, including S3, Lake Formation, Glue, Athena, and Iceberg or Parquet, with exposure to streaming on Kinesis or MSK"
+   },
+   {
+    "under": "What You’ll Bring",
+    "text": "- Working knowledge of agent enablement on AWS, including Amazon Bedrock Knowledge Bases, Guardrails, RAG patterns, and Bedrock Agents"
+   },
+   {
+    "under": "Helpful Extras and Unique Skills",
+    "text": "- Additional AWS certifications such as Machine Learning Engineer – Associate, Security – Specialty, or Solutions Architect – Professional"
+   },
+   {
+    "under": "Helpful Extras and Unique Skills",
+    "text": "- Prior work with AWS Professional Services or other AWS partner delivery teams"
+   }
+  ]
+ },
+ {
+  "row": 158,
+  "skill": "Microsoft Windows",
+  "segments": [
+   {
+    "under": "Desired Qualifications",
+    "text": "- Deep knowledge of networking (TCP/IP, design, traffic flow, protocols, sessions), operating systems (Windows / *nix) and web technologies;"
+   }
+  ]
+ },
+ {
+  "row": 159,
+  "skill": "Cursor",
+  "segments": [
+   {
+    "under": "What skills do I need?",
+    "text": "- Innate comfort in using AI tools (e.g. Claude, Cursor) to write and interpret code and technical problems."
+   }
+  ]
+ },
+ {
+  "row": 160,
+  "skill": "Prometheus",
+  "segments": [
+   {
+    "under": "What You’ll Bring",
+    "text": "- Familiarity with technologies like Docker, Kubernetes, Helm, Grafana, Prometheus, Git."
+   }
+  ]
+ }
+]

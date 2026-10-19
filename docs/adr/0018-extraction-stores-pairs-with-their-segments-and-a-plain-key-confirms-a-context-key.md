@@ -61,6 +61,11 @@ vacancy and how many rows came from context keys. Its precision, which the launc
 (PRD §12.5), is measured once, in #65. Only if that measurement fails does a rule loop open, in an
 issue of its own, and it can reopen the casing rule with data.
 
+#65 measured 0.945 overall (0.940 context, 0.945 plain), 0.005 short of the 0.95 mark. Elias
+judged it good enough on 2026-10-19: no rule loop opens, since broad corrections risk breaking
+more than they fix. Only the easy wins listed on #65 are taken (URLs matching HTTP, the bare SAP
+key, C-level and R&D). The labels are in `docs/measurements/extraction-precision/`.
+
 ## Considered
 
 - **Only the pair**, as PRD §7 had it. The body pass would then run the matcher again to know
