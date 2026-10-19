@@ -58,7 +58,8 @@ Example, a vacancy titled "Senior Go Engineer":
 
 #15 is done when extraction runs over its scope in minutes and reports the skills found per
 vacancy and how many rows came from context keys. Its precision, which the launch gate needs
-(PRD §12.5), is measured in a rule loop of its own, which can reopen the casing rule with data.
+(PRD §12.5), is measured once, in #65. Only if that measurement fails does a rule loop open, in an
+issue of its own, and it can reopen the casing rule with data.
 
 ## Considered
 
