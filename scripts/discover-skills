@@ -9,7 +9,9 @@ decision into the decision record. docs/taxonomy.md holds the procedure; this is
     scripts/discover-skills append
 
 batch reads the candidates scripts/skill_discovery.py wrote, and the names of a file, one a line,
-proposed besides them; a name that is a key of skills.tsv is skipped. It writes every candidate a
+proposed besides them: the names recall scoring found kept but not proposed, which
+scripts/score-skill-round writes next to the snapshot as skill-missed-round-<round>-<snapshot>.txt.
+A name that is a key of skills.tsv is skipped. It writes every candidate a
 segment mentions into the run's folder, next to the snapshot, in batches of BATCH sorted by compact
 name, each with its spellings, three segments, the skills of skills.tsv it may be a spelling of and
 every decision on it in the record. A name no segment mentions cannot be decided, and goes to

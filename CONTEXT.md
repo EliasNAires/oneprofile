@@ -358,8 +358,9 @@ demand fades is never removed.
 _Avoid_: mining, taxonomy build, skill extraction
 
 **Candidate**:
-A name skill discovery proposes as a possible skill: one that is not a key and has never been
-decided.
+A name skill discovery proposes as a possible skill: one that is not a key. Most come from
+narrowing the corpus; the rest are the pieces recall finds kept that narrowing missed, since a
+name never proposed is lost for good (ADR-0016).
 _Avoid_: mined name, n-gram, suggestion
 
 **Decision**:

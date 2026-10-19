@@ -258,13 +258,15 @@ class FilterTest(unittest.TestCase):
         self.assertEqual(self.FILTER([("Google Cloud", 0, 12), ("Go", 23, 25)], [(0, 21)]), {"go": "Go"})
 
 
-class PrecisionVerdictsTest(unittest.TestCase):
+class MissedNamesTest(unittest.TestCase):
 
-    def test_takes_a_drawn_name_the_decision_record_drops_from_jev(self):
+    def test_writes_the_names_kept_in_missed_segments_once_by_name_form(self):
         score_round = load_script("score-skill-round")
-        self.assertEqual(skillloop.read_decisions()["crystal"]["decision"], "drop")
-        drawn = {"crystal": {"name": "Crystal"}, "unlabelled": {"name": "Unlabelled"}}
-        self.assertEqual(score_round.verdicts_of(drawn, {"crystal": {"decision": "keep"}}), {"crystal": "keep"})
+        outcomes = [({"segment": "Kafka Streams and Flink"}, "missed", ["Flink", "Kafka Streams"]),
+                    ({"segment": "Python"}, "covered", []),
+                    ({"segment": "kafka streams, Dagster"}, "missed", ["Dagster", "kafka streams"]),
+                    ({"segment": "Nifi"}, "unjudged", ["Nifi"])]
+        self.assertEqual(score_round.missed_names(outcomes), ["Flink", "Kafka Streams", "Dagster"])
 
 
 class StoplistTest(unittest.TestCase):
