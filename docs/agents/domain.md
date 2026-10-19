@@ -46,7 +46,8 @@ the later ADR wins; the overridden parts are marked below.
   splitting each round into two sessions.
 - **0012**: the body pass (#11) is scored against Jev: the pile, the budget, the gates and the
   ten-round cap. *Overridden by 0014:* the reviewer revising the criterion (§ The loop), and
-  the labeller check, which is now the loop's first calibration.
+  the labeller check, which is now the loop's first calibration. *Overridden by 0017:* the
+  rules moving onto lemmas; they read extraction's skills instead.
 - **0013**: skill discovery (#41, looped in #54) is a script whose candidates Jev filters,
   against the decision record `src/main/resources/taxonomy/decisions.tsv`. Its gates: recall,
   precision and yield. *Overridden by 0015:* how recall is scored, and every key being safe.
@@ -67,3 +68,6 @@ the later ADR wins; the overridden parts are marked below.
   script only narrows the corpus, gated on recall alone; precision and yield are gone. Jev stays
   recall's judge of pieces. The agent marks each key plain or context; how context keys are
   matched is left to a later process.
+- **0017**: the pipeline's order: title classification, skill extraction over the title's in and
+  the pile, the body pass reading those skills, then the other extractions over the engineering
+  subset. Descriptions are not lemmatized (#47); word forms stay in the rules.

@@ -163,6 +163,8 @@ The taxonomy is seeded from **O\*NET Technology Skills**, **GitHub Linguist** an
 **Wikidata**; why not Lightcast, ESCO or Stack Overflow: ADR-0003. It is built:
 `src/main/resources/taxonomy/skills.tsv`, with 2,009 skills (provenance in `docs/taxonomy.md`),
 grown on each new snapshot by skill discovery (#41, ADR-0013). Extraction (#15) is not built.
+It runs before the body pass, over the vacancies the title decided in and the pile, and the body
+pass reads its skills (ADR-0017). Descriptions are not lemmatized.
 A skill is one named technology, and each of its keys is plain or context (ADR-0015): a plain key
 is matched anywhere, a context key such as Go or Kafka only where a context rule says the text
 means the skill.
@@ -362,7 +364,7 @@ The launch gate:
 
 ### 12.6 Order of work
 
-Classification (body pass included) → title normalization → seniority from the body → the
-skill taxonomy → skill extraction → deduplication → explorer endpoints → the explorer page
+The skill taxonomy → skill extraction → the body pass → title normalization → seniority from the
+body → deduplication → explorer endpoints → the explorer page
 and nginx, with Ashby in parallel before launch. The profile and matching come after. The
 schedule and the series follow on their own track, as the pipeline heads toward stability.

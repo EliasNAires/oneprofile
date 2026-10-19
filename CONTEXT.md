@@ -189,8 +189,9 @@ left it unknown, and the signal (title or body) that decided. See ADR-0008.
 _Avoid_: verdict, flag, is_engineering, category
 
 **Engineering Subset**:
-The vacancies classified in. What normalization, seniority, skills and the explorer read; an
-unknown vacancy enters it only if the body pass decides it in.
+The vacancies classified in. What normalization, seniority, eligibility and the explorer read; an
+unknown vacancy enters it only if the body pass decides it in. Skills are extracted earlier, from
+the title's in and the pile, because the body pass reads them (ADR-0017).
 _Avoid_: tech jobs, filtered corpus, in pile
 
 **Body Pass**:
