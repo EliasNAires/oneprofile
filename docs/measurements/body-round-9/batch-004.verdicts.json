@@ -1,0 +1,22 @@
+{
+  "158367": {
+    "verdict": "b",
+    "clause": "A background listed only as a plus or a nice-to-have does not count: \"a plus\", \"nice to have\", \"bonus\"",
+    "pattern": "software skills listed only as bonus"
+  },
+  "26432": {
+    "verdict": "a",
+    "clause": "A role that only reports on data in such a tool ... or administers it day to day — users, permissions, page layouts, content — is not. ... An administrator whose work is not software under this paragraph is still decided by Q4: one asked for a query or programming language (SOQL, Apex, SQL) has been asked for a software background.",
+    "pattern": "administrator with no programming language asked"
+  },
+  "173852": {
+    "verdict": "a",
+    "clause": "It counts when the description asks for any of: ... cloud, container, infrastructure or networking skills",
+    "pattern": "support role requires cloud infrastructure skills"
+  },
+  "208171": {
+    "verdict": "a",
+    "clause": "security skills in software, cloud or networks — application, cloud or network security — but not governance, risk and compliance frameworks alone",
+    "pattern": "compliance lead with GRC framework expertise"
+  }
+}

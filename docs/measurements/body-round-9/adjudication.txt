@@ -1,0 +1,75 @@
+Adjudication of round 9 under criterion revision 1a170b96: rule misses (adjudicator sided with Jev), labeller errors (sided with the rules), neither.
+IN: rule misses 30/200 = 15.0%, labeller errors 16, neither 0
+OUT: rule misses 15/200 = 7.5%, labeller errors 3, neither 0
+
+## labeller error, IN stratum (16)
+- 1965 | SAP Assortment Listing SAP Retail Analyst | Jev OUT | ERP configuration and integration | Low-code is software work ... an ERP or quality system implemented and configured
+- 65218 | IT Program Manager 738 | Jev OUT | IT degree accepted as computing | A degree list counts only when every field it accepts is a computing field... information 
+- 148742 | Staff Product Manager Billing | Jev OUT | PM required to build API integration | Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, sc
+- 144706 | EHS Program Manager | Jev OUT | SQL named among preferred skills | What counts as a stated software background: ...SQL; ... A background that is desired or d
+- 148327 | Design Program Manager Research Operations | Jev OUT | building AI agents and automations | Low-code is software work: a role whose main work is building applications, automations or
+- 50042 | Associate Measurement Ad Tech Marketing Technology | Jev OUT | builds marketing automation tooling | Low-code is software work. A role whose main work is building applications, automations or
+- 167737 | Channel Solutions Engineer | Jev OUT | computing-only degree list sales engineer | A degree list counts only when every field it accepts is a computing field — computer scie
+- 101474 | Finance Analyst | Jev OUT | named cloud data tool analyst | A named tool of one of these kinds counts as its skill (Snowflake a cloud data skill)
+- 183084 | Channel Solution Engineer | Jev OUT | pre-sales engineer required networking/SQL/cloud skills | A listed skill counts at whatever level the description asks for it... and a cloud/infrast
+- 178791 | Solutions Engineer | Jev OUT | pre-sales role with networking skill | Selling is decided by the duties: a role that supports a sale without carrying its quota .
+- 188370 | Solution Engineer | Jev OUT | pre-sales support role decided by API skill | A role that supports a sale without carrying its quota — demos, proofs of concept, archite
+- 181966 | Manager IT SOX | Jev OUT | preferred cloud skill in audit role | under 'Essential' and 'Desirable' headings, or 'Desired qualifications', the second list i
+- 33260 | Applied Value Engineer CPGR CMT NAM | Jev OUT | python and ML libraries named | What counts as a stated software background: a programming language, by name
+- 147428 | Analista De Riscos De Modelos Validação de modelos | Jev OUT | required duty to build automation tools | Q2 — the role writes code as its primary artifact / Low-code is software work
+- 173852 | Application Support Analyst | Jev OUT | support role requires cloud infrastructure skills | It counts when the description asks for any of: ... cloud, container, infrastructure or ne
+- 87185 | Staff Applied Scientist Hyperpod | Jev OUT | writes software processing product's sensor data | Algorithms the role writes to run in or with the product — its signal or image processing,
+
+## labeller error, OUT stratum (3)
+- 181927 | Manager Technical Deployment | Jev IN | manager with no named skill | What is asked of the applicant has to be the software background itself; none of Q2, Q3, Q
+- 81544 | Staff Product Manager Deployment Excellence | Jev IN | open degree list beyond computing | A list that also accepts physics, mathematics, another engineering discipline, "engineerin
+- 188823 | Director of Product Management Onsite Growth | Jev IN | open degree list beyond computing | A list that also accepts physics, mathematics, another engineering discipline, "engineerin
+
+## rule miss, IN stratum (30)
+- 8815 | Logistics Systems Analyst | Jev OUT | ERP admin no named language | An administrator whose work is not software under this paragraph is still decided by Q4: o
+- 205814 | Systems Engineer MBSE Simulink | Jev OUT | MATLAB simulation of physical product | A programming language asked for analysis, modelling or simulation of such a product does 
+- 820 | Technical Operations SME | Jev OUT | RF hardware antenna expertise required | RF hardware — antennas, RF circuits, RF test equipment such as spectrum and network analys
+- 20439 | Staff Product Manager Wishlist | Jev OUT | SQL among non-software choices | A skill offered as one choice among tools or skills that are not software skills is not as
+- 26432 | Salesforce Administrator | Jev OUT | administrator with no programming language asked | A role that only reports on data in such a tool ... or administers it day to day — users, 
+- 197950 | Business Analyst DV Cleared | Jev OUT | business analyst stated non-technical | Q4 needs the description to say it, as a requirement or a preference; a background that wo
+- 17257 | Product Technical Chip Lead Director | Jev OUT | chip design hardware engineering domain | A physical product the role designs, integrates, tests or certifies — aircraft, rockets, s
+- 208171 | Safeguards Security Compliance Lead | Jev OUT | compliance lead with GRC framework expertise | security skills in software, cloud or networks — application, cloud or network security — 
+- 60577 | Product Manager Omni Channel | Jev OUT | degree list open to business | A list that also accepts physics, mathematics, another engineering discipline, 'engineerin
+- 50004 | Product Design Intern Summer 2027 | Jev OUT | degree list open to design fields | A degree list counts only when every field it accepts is a computing field
+- 147105 | Vice President Product Management | Jev OUT | finance degree required outside software | Knowledge of a field the role is about is expertise outside software when the description 
+- 35675 | Corporate Planning Analyst | Jev OUT | finance degree required outside software | Knowledge of a field the role is about is expertise outside software when the description 
+- 171680 | Fundamental Analyst Volatility Full Time | Jev OUT | finance domain expertise overrides software skill | Knowledge of a field the role is about is expertise outside software when the description 
+- 38247 | Complaints Analyst II | Jev OUT | investigation role no software skill | Q3 — as opposed to content, reports or dashboards made in tools built for non-engineers; n
+- 144325 | Regulatory Analyst Product Starlink | Jev OUT | legal/regulatory role with technical skills as a choice | A skill offered as one choice among tools or skills that are not software skills is not as
+- 117027 | Product Manager TwoTwenty | Jev OUT | open degree list beyond computing | A list that also accepts physics, mathematics, another engineering discipline, "engineerin
+- 44896 | Lead Learning Technical Enablement Specialist | Jev OUT | product manager no named skill | A vague "technical" or "technically fluent", with no software named, is none of these
+- 202314 | Fuel Performance Engineer | Jev OUT | programming language for physical-product analysis | A programming language asked for analysis, modelling or simulation of such a product does 
+- 193078 | Researcher Rapid Research | Jev OUT | researcher nice-to-have only | A background listed only as a plus or a nice-to-have does not count
+- 69650 | Power Performance Validation Engineer | Jev OUT | scripting for product analysis not software domain | A programming language asked for analysis, modelling or simulation of such a product does 
+- 9206 | Staff SoC Power Performance Architect | Jev OUT | scripting for product analysis not software domain | A programming language asked for analysis, modelling or simulation of such a product does 
+- 15938 | Data Consultant US | Jev OUT | skill framed as differentiator | A background listed only as a plus or a nice-to-have does not count
+- 158367 | Project Manager GTM Launch | Jev OUT | software skills listed only as bonus | A background listed only as a plus or a nice-to-have does not count: "a plus", "nice to ha
+- 12395 | Technical Writer Maritime | Jev OUT | software spec named only as example | a data tool named only as an example ('e.g. Eagle RDC, SQL, or similar')
+- 1041 | Product Strategist AI Engagement Leader | Jev OUT | strategist partners with engineers no named skill | A vague "technical" or "technically fluent", with no software named, is none of these
+- 187385 | Deployment Engineer | Jev OUT | support/operations work with open technical degree list | The description describes work that is plainly not engineering of any kind — policy, opera
+- 108564 | Staff Product Marketing Manager Security | Jev OUT | technical background listed as extra credit | A background listed only as a plus or a nice-to-have does not count: ... 'extra credit' ..
+- 146798 | Staff Product Manager | Jev OUT | technical skills listed only as plus | A background listed only as a plus or a nice-to-have does not count: "a plus", "nice to ha
+- 56869 | Cost Engineer | Jev OUT | tool choice includes non-software options | A skill offered as one choice among tools or skills that are not software skills is not as
+- 133458 | Head of Developer Relations SEA and OCE | Jev OUT | vague technical no named skill | A vague "technical" or "technically fluent", with no software named, is none of these
+
+## rule miss, OUT stratum (15)
+- 140449 | Manager Business Applications SAP | Jev IN | ERP configuration is software work | Low-code is software work... an ERP or quality system implemented and configured... is sof
+- 19672 | Mission Engineer Miami | Jev IN | building agents and integrations onsite | Low-code is software work: a role whose main work is building applications, automations or
+- 186056 | Alteryx Developer PC | Jev IN | building automation workflows low-code tool | Low-code is software work: a role whose main work is building applications, automations or
+- 107346 | Product Manager Platform | Jev IN | cloud skill named in essentials | What counts as a stated software background: cloud, container, infrastructure or networkin
+- 167987 | Technical Support Engineering Intern Spring 2027 | Jev IN | degree list all computing fields | A degree list counts only when every field it accepts is a computing field
+- 171660 | Engineering Manager Content Discovery | Jev IN | engineering manager explicit software domain | The description names software work — a stack, a codebase, APIs, cloud infrastructure, sof
+- 170317 | 2027 Summer Internship Technical | Jev IN | internship required to automate workflows | Low-code is software work. A role whose main work is building applications, automations or
+- 90233 | Multiple Location Engineering | Jev UNKNOWN | lorem ipsum placeholder description | The text does not say what the work is when the description is empty, cut off before it re
+- 2129 | ServiceNow Technical Lead | Jev IN | low-code platform implementation lead | Low-code is software work. A role whose main work is building applications, automations or
+- 107820 | Solutions Engineer APAC | Jev IN | pre-sales role with networking skill | Selling is decided by the duties: a role that supports a sale without carrying its quota .
+- 203525 | Sales Engineer | Jev IN | sales engineer required SQL | A role that supports a sale without carrying its quota ... is decided by Q4 like any other
+- 19866 | Sales Engineer Dedrone META | Jev IN | sales engineer required networking skills | cloud, container, infrastructure or networking skills ... counts under Q4; A role that sup
+- 130980 | Product Manager XDR Security Solutions | Jev IN | security domain knowledge counts as network security skill | security skills in software, cloud or networks — application, cloud or network security — 
+- 19987 | Technical Support Representative Bilingual French English | Jev IN | support role with networking skill | What counts as a stated software background: cloud, container, infrastructure or networkin
+- 1832 | Systems Engineer | Jev IN | systems engineer reviews engineering docs | Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, sc

@@ -1,0 +1,102 @@
+{
+  "38247": {
+    "verdict": "a",
+    "clause": "Q3 — as opposed to content, reports or dashboards made in tools built for non-engineers; none of Q2, Q3, Q4 holds, so OUT",
+    "pattern": "investigation role no software skill"
+  },
+  "20439": {
+    "verdict": "a",
+    "clause": "A skill offered as one choice among tools or skills that are not software skills is not asked for",
+    "pattern": "SQL among non-software choices"
+  },
+  "202314": {
+    "verdict": "b",
+    "clause": "A programming language asked for analysis, modelling or simulation of such a product does not move the role into software",
+    "pattern": "programming language for physical-product analysis"
+  },
+  "1832": {
+    "verdict": "a",
+    "clause": "Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, schemas, logs, specs",
+    "pattern": "systems engineer reviews engineering docs"
+  },
+  "50042": {
+    "verdict": "b",
+    "clause": "Low-code is software work. A role whose main work is building applications, automations or integrations is a software role",
+    "pattern": "builds marketing automation tooling"
+  },
+  "1965": {
+    "verdict": "a",
+    "clause": "Low-code is software work ... an ERP or quality system implemented and configured",
+    "pattern": "ERP configuration and integration"
+  },
+  "56869": {
+    "verdict": "b",
+    "clause": "A skill offered as one choice among tools or skills that are not software skills is not asked for",
+    "pattern": "tool choice includes non-software options"
+  },
+  "181927": {
+    "verdict": "b",
+    "clause": "What is asked of the applicant has to be the software background itself; none of Q2, Q3, Q4 holds",
+    "pattern": "manager with no named skill"
+  },
+  "108564": {
+    "verdict": "a",
+    "clause": "A background listed only as a plus or a nice-to-have does not count: ... 'extra credit' ... A vague 'technical' or 'technically fluent', with no software named, is none of these",
+    "pattern": "technical background listed as extra credit"
+  },
+  "181966": {
+    "verdict": "b",
+    "clause": "under 'Essential' and 'Desirable' headings, or 'Desired qualifications', the second list is what the employer prefers ... and counts",
+    "pattern": "preferred cloud skill in audit role"
+  },
+  "203525": {
+    "verdict": "b",
+    "clause": "A role that supports a sale without carrying its quota ... is decided by Q4 like any other",
+    "pattern": "sales engineer required SQL"
+  },
+  "12395": {
+    "verdict": "b",
+    "clause": "a data tool named only as an example ('e.g. Eagle RDC, SQL, or similar')",
+    "pattern": "software spec named only as example"
+  },
+  "60577": {
+    "verdict": "a",
+    "clause": "A list that also accepts physics, mathematics, another engineering discipline, 'engineering' without a discipline, any STEM field, policy or business says a software background is one way in among others, so it asks for none",
+    "pattern": "degree list open to business"
+  },
+  "19866": {
+    "verdict": "b",
+    "clause": "cloud, container, infrastructure or networking skills ... counts under Q4; A role that supports a sale without carrying its quota is decided by Q4 like any other",
+    "pattern": "sales engineer required networking skills"
+  },
+  "15938": {
+    "verdict": "b",
+    "clause": "A background listed only as a plus or a nice-to-have does not count",
+    "pattern": "skill framed as differentiator"
+  },
+  "147428": {
+    "verdict": "a",
+    "clause": "Q2 — the role writes code as its primary artifact / Low-code is software work",
+    "pattern": "required duty to build automation tools"
+  },
+  "171660": {
+    "verdict": "a",
+    "clause": "The description names software work — a stack, a codebase, APIs, cloud infrastructure, software products or teams — and the domain is software",
+    "pattern": "engineering manager explicit software domain"
+  },
+  "170317": {
+    "verdict": "a",
+    "clause": "Low-code is software work. A role whose main work is building applications, automations or integrations is a software role",
+    "pattern": "internship required to automate workflows"
+  },
+  "820": {
+    "verdict": "b",
+    "clause": "RF hardware — antennas, RF circuits, RF test equipment such as spectrum and network analysers — is electrical engineering, and requiring it is expertise outside software",
+    "pattern": "RF hardware antenna expertise required"
+  },
+  "17257": {
+    "verdict": "a",
+    "clause": "A physical product the role designs, integrates, tests or certifies — aircraft, rockets, satellites, weapons, vehicles, robots, chips, building systems — is another domain",
+    "pattern": "chip design hardware engineering domain"
+  }
+}

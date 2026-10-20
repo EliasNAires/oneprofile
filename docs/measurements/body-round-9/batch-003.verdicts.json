@@ -1,0 +1,102 @@
+{
+  "107346": {
+    "verdict": "b",
+    "clause": "What counts as a stated software background: cloud, container, infrastructure or networking skills",
+    "pattern": "cloud skill named in essentials"
+  },
+  "8815": {
+    "verdict": "b",
+    "clause": "An administrator whose work is not software under this paragraph is still decided by Q4: one asked for a query or programming language ... has been asked for a software background",
+    "pattern": "ERP admin no named language"
+  },
+  "50004": {
+    "verdict": "a",
+    "clause": "A degree list counts only when every field it accepts is a computing field",
+    "pattern": "degree list open to design fields"
+  },
+  "148327": {
+    "verdict": "b",
+    "clause": "Low-code is software work: a role whose main work is building applications, automations or integrations is a software role",
+    "pattern": "building AI agents and automations"
+  },
+  "19672": {
+    "verdict": "b",
+    "clause": "Low-code is software work: a role whose main work is building applications, automations or integrations is a software role",
+    "pattern": "building agents and integrations onsite"
+  },
+  "193078": {
+    "verdict": "b",
+    "clause": "A background listed only as a plus or a nice-to-have does not count",
+    "pattern": "researcher nice-to-have only"
+  },
+  "101474": {
+    "verdict": "a",
+    "clause": "A named tool of one of these kinds counts as its skill (Snowflake a cloud data skill)",
+    "pattern": "named cloud data tool analyst"
+  },
+  "133458": {
+    "verdict": "b",
+    "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these",
+    "pattern": "vague technical no named skill"
+  },
+  "44896": {
+    "verdict": "b",
+    "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these",
+    "pattern": "product manager no named skill"
+  },
+  "1041": {
+    "verdict": "b",
+    "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these",
+    "pattern": "strategist partners with engineers no named skill"
+  },
+  "144706": {
+    "verdict": "a",
+    "clause": "What counts as a stated software background: ...SQL; ... A background that is desired or desirable is preferred, and counts",
+    "pattern": "SQL named among preferred skills"
+  },
+  "178791": {
+    "verdict": "a",
+    "clause": "Selling is decided by the duties: a role that supports a sale without carrying its quota ... is decided by Q4 like any other",
+    "pattern": "pre-sales role with networking skill"
+  },
+  "197950": {
+    "verdict": "b",
+    "clause": "Q4 needs the description to say it, as a requirement or a preference; a background that would merely help with the duties is not enough",
+    "pattern": "business analyst stated non-technical"
+  },
+  "148742": {
+    "verdict": "b",
+    "clause": "Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, schemas",
+    "pattern": "PM required to build API integration"
+  },
+  "107820": {
+    "verdict": "b",
+    "clause": "Selling is decided by the duties: a role that supports a sale without carrying its quota ... is decided by Q4 like any other",
+    "pattern": "pre-sales role with networking skill"
+  },
+  "167987": {
+    "verdict": "a",
+    "clause": "A degree list counts only when every field it accepts is a computing field",
+    "pattern": "degree list all computing fields"
+  },
+  "186056": {
+    "verdict": "a",
+    "clause": "Low-code is software work: a role whose main work is building applications, automations or integrations is a software role",
+    "pattern": "building automation workflows low-code tool"
+  },
+  "205814": {
+    "verdict": "a",
+    "clause": "A programming language asked for analysis, modelling or simulation of such a product does not move the role into software",
+    "pattern": "MATLAB simulation of physical product"
+  },
+  "19987": {
+    "verdict": "b",
+    "clause": "What counts as a stated software background: cloud, container, infrastructure or networking skills",
+    "pattern": "support role with networking skill"
+  },
+  "33260": {
+    "verdict": "a",
+    "clause": "What counts as a stated software background: a programming language, by name",
+    "pattern": "python and ML libraries named"
+  }
+}
