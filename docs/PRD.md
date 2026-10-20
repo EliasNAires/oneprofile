@@ -262,18 +262,24 @@ Derived data lives in its own tables so rules can be re-run without touching the
 
 The public database holds none of these tables. It holds the **read schema** the publish stage
 rebuilds after each cycle (ADR-0020): one row per vacancy of the engineering subset with what the
-Finder filters, orders and shows, its skills and its country set, and the functions the site
-calls. It is the contract between the two apps.
+Finder filters, orders and shows, its skills and its country set. It sits between the pipeline
+and the read app only; the site never sees it.
 
 ## 8. API
 
-The backend serves no public endpoint. The site calls PostgREST's generated API over the read
-schema; filter rank, the Finder's orders and the counts of what a filter cannot see are Postgres
-functions in it, called as RPC (ADR-0020). The anonymous role reads the read schema and inserts apply
-clicks, nothing else.
+The build is two Spring Boot apps in one repository, as two Maven modules (ADR-0020):
 
-Ingestion remains a set of `/admin/**` trigger endpoints on Elias's server, reachable from nowhere
-else.
+- **`pipeline`**: what the backend is today. Ingestion remains a set of `/admin/**` trigger
+  endpoints on Elias's server, reachable from nowhere else, and the publish stage pushes the read
+  schema to the public Postgres.
+- **`api`**: the read app on the VPS, over the read schema. Its endpoints are the contract with
+  the site, anonymous, fixed in shape so Cloudflare can cache them until the next publish:
+  - the Finder's query: its filters, eligibility for the picked country (ADR-0019), its three
+    orders with filter rank (§12.1), a page of vacancies, and for each filter how many vacancies
+    it cannot see;
+  - one vacancy, with its description, for its panel and its page;
+  - the Explorer's aggregates (§12.2) and the methodology's counts (§12.3);
+  - recording an apply click, its only write.
 
 ## 9. Stack and deployment
 
@@ -289,8 +295,9 @@ byte range spans several.
 
 The pipeline stays on Elias's server and pushes to the public side (ADR-0020):
 
-- **The public database**: Postgres with PostgREST on a 4 GB Hetzner VPS in Ashburn, behind
-  Cloudflare, its answers cached until the next publish. Supabase is added when sessions arrive.
+- **The public side**: Postgres and the read app on a 4 GB Hetzner VPS in Ashburn, behind
+  Cloudflare, its answers cached until the next publish. Sessions, when they come, are Spring
+  Security in the read app.
 - **The site**: an Astro site with React components, in its own repository, on Cloudflare Pages
   under a paid domain. Each publish rebuilds the pages worth ranking for; a vacancy page is
   rendered on request by a Pages Function and cached.
@@ -441,7 +448,8 @@ Three tracks run in parallel:
 
 - **Extraction**: the body pass (#11) → title normalization (#25) → seniority from the body (#8) →
   eligibility and its recall (#13, #12) → deduplication (#27).
-- **The public side**: the VPS (#68) → the publish stage (#28) → the Finder (#69), built against
+- **The public side**: the two modules (#71) and the VPS (#68) → the publish stage (#28) → the
+  read app (#72) → the Finder (#69), built against
   the data as it stands, each filter switched on as its extractor lands.
 - **Volume**: Ashby (#20), then whatever reaches 100k vacancies (#70).
 
