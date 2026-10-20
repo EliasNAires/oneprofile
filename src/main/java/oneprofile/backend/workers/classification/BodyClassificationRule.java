@@ -71,17 +71,22 @@ public class BodyClassificationRule {
 			"oracle-analytics-cloud", "power-bi", "qlik", "qlikview", "redash", "sap-analytics-cloud",
 			"sap-businessobjects", "sas", "sisense", "spotfire", "tableau", "tableau-prep", "thoughtspot");
 
-	/** Chat assistants and the models a person talks to, which using is no software background. */
-	private static final Set<String> CHAT_ASSISTANTS = Set.of("chatgpt", "claude", "claude-haiku", "claude-opus",
-			"claude-sonnet", "deepseek", "elevenlabs", "google-gemini", "gpt", "kimi", "kling", "minimax", "qwen", "sora");
+	/**
+	 * Chat assistants, the models a person talks to and the assistants that write code for them, which using
+	 * is no software background: a recruiter or a marketer is asked for them as tools of the trade.
+	 */
+	private static final Set<String> ASSISTANTS = Set.of("chatgpt", "claude", "claude-haiku", "claude-opus",
+			"claude-sonnet", "deepseek", "elevenlabs", "google-gemini", "gpt", "kimi", "kling", "minimax", "qwen", "sora",
+			"claude-code", "openai-codex", "cursor", "github-copilot", "amazon-codewhisperer", "windsurf", "tabnine",
+			"replit");
 
 	/**
 	 * Skills of a software kind that ask for no software background all the same: reporting products,
-	 * chat assistants, the assistants built into business suites, data catalogues, the operating systems
-	 * of consumer devices, governance, risk and compliance products, the terminologies of a field, and
-	 * the boards that track work and its test cases.
+	 * assistants, the assistants built into business suites, data catalogues, the operating systems
+	 * of consumer devices, governance, risk and compliance products, the terminologies, file formats and
+	 * tools of a field — imaging, maps, content, drones — and the boards that track work and its test cases.
 	 */
-	private static final Set<String> NOT_A_SOFTWARE_BACKGROUND = union(REPORTING_PRODUCTS, CHAT_ASSISTANTS,
+	private static final Set<String> NOT_A_SOFTWARE_BACKGROUND = union(REPORTING_PRODUCTS, ASSISTANTS,
 			Set.of("adobe-experience-platform", "bi-publisher", "birt", "directquery", "gameanalytics", "heap", "hex",
 					"hotjar", "jaspersoft", "oracle-essbase", "otbi", "power-query", "powerpivot", "salesforce-crm-analytics",
 					"sql-server-reporting-services", "suiteanalytics", "tm1", "workday-prism", "amazon-q", "atlassian-rovo",
@@ -89,13 +94,14 @@ public class BodyClassificationRule {
 					"collibra", "alation", "atlan", "microsoft-purview", "microsoft-windows", "macos", "ios", "ipados",
 					"android", "chromeos", "tvos", "watchos", "android-tv", "android-auto", "webos", "tizen",
 					"windows-mobile", "drata", "vanta", "hyperproof", "rsa-archer", "xacta", "emass", "snomed-ct", "loinc",
-					"rxnorm", "sdtm", "define-xml", "azure-devops", "testrail", "qase", "qmetry"));
+					"rxnorm", "sdtm", "define-xml", "dicom", "kml", "kmz", "contentful", "optimizely", "ardupilot", "px4",
+					"azure-devops", "testrail", "qase", "qmetry"));
 
 	/**
-	 * Skills of the platform kinds that track work, hold documents or draw designs, which configuring is
-	 * administration rather than building, and the chat assistants.
+	 * Skills of the platform kinds that track work, hold documents or content or draw designs, which
+	 * configuring is administration rather than building, and the assistants.
 	 */
-	private static final Set<String> NOT_A_PLATFORM = union(CHAT_ASSISTANTS, Set.of("jira", "jira-product-discovery",
+	private static final Set<String> NOT_A_PLATFORM = union(ASSISTANTS, Set.of("optimizely","jira", "jira-product-discovery",
 			"jira-service-management", "confluence", "figma", "adobe-xd", "github-issues", "github-projects", "bugzilla",
 			"redmine", "youtrack", "mantisbt", "versionone", "codebeamer", "jama", "polarion", "ibm-doors", "hp-alm",
 			"markdown", "latex", "mediawiki", "microsoft-sharepoint", "nextcloud", "mintlify", "mkdocs",
@@ -129,6 +135,10 @@ public class BodyClassificationRule {
 					+ "(targets?|goals?)\\b"),
 			"quota", "book of business", "sales", "revenue", "booking", "arr");
 
+	/** A heading over what the company pays and offers, where a revenue target is how commission is earned. */
+	private static final Pattern BENEFITS_HEADING = Pattern.compile("\\b(benefits|perks|compensation|pay|rewards"
+			+ "|what we offer|we offer)\\b");
+
 	/** What a sentence says when the role helps others sell or meet their numbers, rather than selling. */
 	private static final Pattern HELPS_OTHERS_SELL = Pattern.compile("\\b(help\\w*|support\\w*|enabl\\w*|empower\\w*"
 			+ "|coach\\w*|equip\\w*)\\b");
@@ -140,22 +150,35 @@ public class BodyClassificationRule {
 	private static final String DEGREE = "\\b(degree|bachelor\\S*|b\\.?s\\.?c?|b\\.a|m\\.?s\\.?c?|ph\\.?d"
 			+ "|master['’]?s (in|of))\\b";
 
+	/** The engineering disciplines other than software. */
+	private static final String OTHER_DISCIPLINE = "(mechanical|civil|electrical|chemical|structural|aerospace|industrial"
+			+ "|manufacturing|biomedical|nuclear|petroleum|materials|environmental)";
+
 	/**
-	 * Expertise outside software a software applicant would lack: a degree in a field the role is
-	 * about, another engineering discipline among them, or a licence or qualification in one.
+	 * Expertise outside software a software applicant would lack: a degree in another engineering
+	 * discipline, before or after the word degree, or a licence or qualification in a field.
 	 */
 	private static final Anchored FIELD_DEGREE = new Anchored(String.join("|",
-			DEGREE + ".{0,60}?\\b(mechanical|civil|electrical"
-					+ "|chemical|structural|aerospace|industrial|manufacturing|biomedical|nuclear|petroleum|materials"
-					+ "|environmental) engineering\\b",
-			DEGREE + ".{0,60}?\\b(finance|accounting|marketing|law"
-					+ "|medicine|nursing|pharmacy|actuarial science)\\b",
+			DEGREE + ".{0,60}?\\b" + OTHER_DISCIPLINE + " engineering\\b",
+			"\\b" + OTHER_DISCIPLINE + " engineering (degree|bachelor\\S*|b\\.?s\\.?c?)\\b", "\\b(bsee|msee|bsme|msme)\\b",
 			"\\bp\\.?e\\.? (license|licensure|registration)", "\\bprofessional engineer(ing)? (\\(pe\\) )?licen",
 			"\\bregistered nurse\\b", "\\blicensed (attorney|pharmacist|physician|nurse|clinician)",
 			"\\bcpa (license|certification)", "\\bactuarial (exams?|credentials?|designation)"), "mechanical", "civil",
 			"electrical", "chemical", "structural", "aerospace", "industrial", "manufacturing", "biomedical", "nuclear",
-			"petroleum", "materials", "environmental", "finance", "accounting", "marketing", "law", "medicine", "nursing",
-			"pharmacy", "actuarial", "licen", "registration", "registered nurse", "cpa");
+			"petroleum", "materials", "environmental", "bsee", "msee", "bsme", "msme", "actuarial", "licen",
+			"registration", "registered nurse", "cpa");
+
+	/** A degree in a subject the role is about, outside engineering. */
+	private static final Anchored SUBJECT_DEGREE = new Anchored(DEGREE + ".{0,60}?\\b(finance|accounting|marketing|law"
+			+ "|medicine|nursing|pharmacy|actuarial science)\\b", "finance", "accounting", "marketing", "law", "medicine",
+			"nursing", "pharmacy", "actuarial");
+
+	/**
+	 * What a degree list says when it is open to business or quantitative fields, or to any degree, so the
+	 * subject it also names is one way in among others when it offers them as a choice.
+	 */
+	private static final Pattern BROAD_DEGREE_LIST = Pattern.compile("\\b(any|business|economics|math\\w*|statistics"
+			+ "|quantitative|stem|engineering)\\b");
 
 	/** A degree in a natural science, which is field expertise unless the list is a quantitative one. */
 	private static final Anchored SCIENCE_DEGREE = new Anchored(DEGREE + ".{0,60}?\\b(physics|neuroscience|biology"
@@ -205,15 +228,18 @@ public class BodyClassificationRule {
 			+ "|biolog\\w*|life sciences|genomics|physics|" + RADIO + "|satcom|satellite communications?|powertrain"
 			+ "|avionics|flight controls?|pharmac\\w*|pbms?|pharmacy benefits?|healthcare" + NOT_THE_FIELD_ITSELF
 			+ "|chemistry|clinical|medical|imaging" + NOT_THE_FIELD_ITSELF + "|tax|legal|accounting|power markets"
-			+ "|energy markets|renewable energy|media" + NOT_THE_FIELD_ITSELF + "|quantum (hardware|physics|mechanics))";
+			+ "|energy markets|renewable energy|media" + NOT_THE_FIELD_ITSELF + "|quantum (hardware|physics|mechanics)"
+			+ "|financial markets|mortgages?|(rlc |analog |electronic |electrical )?circuits?|circuitry|schematics"
+			+ "|electronics)";
 
 	/**
 	 * The science, engineering, medical and financial fields in which experience is itself field
-	 * expertise.
+	 * expertise, and the instruments of electronics.
 	 */
 	private static final String HARD_FIELD = "(biolog\\w*|genomics|physics\\S*|" + RADIO + "|satcom|powertrain"
 			+ "|avionics|flight controls?|medical (terminology|coding)|medicare|medicaid|icd-?\\d+"
-			+ "|(equity |interest rate |credit |fx )?derivatives?)";
+			+ "|(equity |interest rate |credit |fx )?derivatives?|mortgages?|oscilloscopes?|multimeters?"
+			+ "|(electronic |electrical )?test equipment|circuits?|schematics|soldering)";
 
 	/** The subjects of compliance, whose experience is field expertise for an analyst. */
 	private static final String COMPLIANCE = "((?<!(security|soc ?2|cloud|data|it|pci|pci-dss|iso 27001|fedramp) )compliance|aml|kyc"
@@ -225,11 +251,12 @@ public class BodyClassificationRule {
 	 * after a field ("five years of marketing analytics") are not among them.
 	 */
 	private static final Anchored FIELD_KNOWLEDGE = new Anchored(String.join("|",
-			"\\b(knowledge|understanding|expertise) (of|in) (the |how )?(\\w+ ){0,2}?" + FIELD + "\\b",
+			"\\b(knowledge|understanding|expertise|background)( and [\\w-]+)? (of|in) (the |how )?(\\w+ ){0,2}?" + FIELD
+					+ "\\b",
 			"\\b(subject[- ]matter|domain) expert(ise)? (in|on|for) (the )?(\\w+ ){0,2}?" + FIELD + "\\b",
 			"\\bunderstands? how (\\w+ ){0,2}?" + FIELD + "\\b",
 			"\\b(be|is|are) an? (licensed |board[- ]certified |practicing |practising )?physician\\b"),
-			"knowledge", "understand", "expert", "physician");
+			"knowledge", "understand", "expert", "background", "physician");
 
 	/**
 	 * Knowledge of a subject asked for by its shape rather than by a list of fields: knowledge,
@@ -255,12 +282,13 @@ public class BodyClassificationRule {
 			+ "|user|end-user|product)\\b");
 
 	/**
-	 * A field's expertise named as a noun ("payments domain expert", "insurance knowledge"), which a
+	 * A field's expertise named as a noun ("payments domain expert", "a finance background"), which a
 	 * company also says of itself ("combining technology and trading expertise"), so it counts only
 	 * where the sentence speaks to or of the applicant.
 	 */
 	private static final Anchored FIELD_EXPERTISE = new Anchored(
-			"\\b" + FIELD + " (domain |subject[- ]matter )?(expertise|knowledge|expert)\\b", "expert", "knowledge");
+			"\\b" + FIELD + " (domain |subject[- ]matter )?(expertise|knowledge|expert|background)\\b", "expert",
+			"knowledge", "background");
 
 	/**
 	 * Experience in a science, another engineering, medicine, a financial instrument or compliance,
@@ -272,8 +300,11 @@ public class BodyClassificationRule {
 			"\\b" + COMPLIANCE + "( (or|and) " + COMPLIANCE + "|/" + COMPLIANCE + ")? experience\\b",
 			"\\bexperience in (\\w+ ){0,1}?" + COMPLIANCE + "\\b"), "biolog", "genomics", "physics", "rf",
 			"radio frequency", "satcom", "powertrain", "avionics", "flight control", "medical", "medicare", "medicaid",
-			"icd", "derivative", "compliance", "aml", "kyc", "anti-money", "financial crime", "financial-crime",
-			"sanctions");
+			"icd", "derivative", "mortgage", "oscilloscope", "multimeter", "test equipment", "circuit", "schematic",
+			"solder", "compliance", "aml", "kyc", "anti-money", "financial crime", "financial-crime", "sanctions");
+
+	/** The controls of financial reporting, whose compliance is where an auditor's job is done. */
+	private static final Pattern SOX_CONTROLS = Pattern.compile("\\b(sox|sarbanes[- ]oxley|itgcs?|it general controls)\\b");
 
 	/**
 	 * A computing degree, the first form of a stated software background (Q4). The other computing
@@ -301,20 +332,25 @@ public class BodyClassificationRule {
 	private static final Pattern OTHER_FIELD = Pattern.compile(String.join("|",
 			"\\b(business|finance|economics|marketing|communications?|accounting|humanities|psychology|physics|math\\w*"
 					+ "|statistics|stem|quantitative|policy|life sciences|natural sciences|biolog\\w*|biochemistry"
-					+ "|chemistry)\\b",
+					+ "|chemistry|(program|portfolio|project) management)\\b",
 			"(?<!software |computer )\\bengineering\\b(?! (teams?|managers?|leaders?|leadership|org\\w*|department"
 					+ "|culture|practices|experience|background|roles?|partners?))"));
 
 	/**
 	 * The forms of a stated software background (Q4) the taxonomy holds no skill for: delivery pipelines,
-	 * the protocols of networks and their security, disaster recovery and mainframes among
-	 * infrastructure, and technical experience in a field that is software, distributed systems among
-	 * them. Languages, SQL, cloud, containers and the rest are the skills extraction finds.
+	 * the protocols, topologies and security of networks, the security of applications, APIs and clouds,
+	 * data loss prevention and code scanning, disaster recovery and mainframes among infrastructure, and
+	 * technical experience in a field that is software, distributed systems among them. Languages, SQL,
+	 * cloud, containers and the rest are the skills extraction finds.
 	 */
 	private static final Anchored SOFTWARE_SKILL = new Anchored(String.join("|", "\\bci/cd\\b",
 			"\\b(pki|vpns?|firewalls?|proxies|proxy servers?)\\b", "\\b(disaster recovery|mainframes?)\\b",
-			"\\b(observability|developer tools|devtools|distributed systems)\\b"), "ci/cd", "pki", "vpn", "firewall",
-			"prox", "disaster recovery", "mainframe", "observability", "developer tools", "devtools", "distributed systems");
+			"\\b(observability|developer tools|devtools|distributed systems)\\b",
+			"\\b(application|api|cloud|network) security\\b",
+			"\\b(data loss prevention|dlp|sast|dast)\\b", "\\bnetwork (topolog\\w*|protocols?|fundamentals)\\b"),
+			"ci/cd", "pki", "vpn", "firewall", "prox", "disaster recovery", "mainframe", "observability",
+			"developer tools", "devtools", "distributed systems", "security", "data loss", "dlp", "sast", "dast",
+			"network");
 
 	/**
 	 * Business continuity and emergency planning, whose disaster recovery is a plan for the business
@@ -343,17 +379,49 @@ public class BodyClassificationRule {
 	/** Version control, a software skill unless it only tracks work or stores documents. */
 	private static final Anchored VERSION_CONTROL = new Anchored("\\b(github|gitlab|git)\\b", "git");
 
-	/** What a sentence names when a tool tracks work or publishes documents in it. */
+	/**
+	 * What a sentence names when a tool tracks work or publishes documents in it, or holds the profile an
+	 * application links to.
+	 */
 	private static final Pattern TRACKS_OR_PUBLISHES = Pattern.compile("\\b(jira|confluence|asana|trello|track(s|ed|ing)?(?! record)"
-			+ "|content|documentation|docs|markdown|publish\\w*|cms|wiki)\\b");
+			+ "|content|documentation|docs|markdown|publish\\w*|cms|wiki|links?|profiles?|portfolios?|urls?)\\b");
 
 	/**
-	 * What a sentence says when it asks the applicant for something, rather than describing the
-	 * company or what it offers.
+	 * What a sentence says when it asks the applicant for what follows: experience with it, years, proficiency,
+	 * knowledge or a degree in it, or the role writing or using it every day. Experience said of anything else
+	 * ("a seamless trading experience"), an ability or a duty is not asking for a skill.
 	 */
-	private static final Pattern ASKED_FOR = Pattern.compile("\\b(experience\\w*|proficien\\w*|knowledge|familiar\\w*"
-			+ "|degree|bachelor\\S*|master\\S*|skill\\w*|background|understanding|expertise|years|requir\\w*|must"
-			+ "|hands-on|ability|fluen\\w*|comfortable|exposure|preferred|qualifications|you will|you'll|you have)\\b");
+	private static final Pattern ASKED_FOR = Pattern.compile("\\b(experience\\w* (with|in|as|using|of|on|across|working"
+			+ "|writing|building|developing)|years|proficien\\w*|knowledge|familiar\\w*|fluen\\w*|expertise|understanding"
+			+ "|background|hands-on|skill(s|ed)? (in|with)|exposure|comfortable|competen\\w*|command of|mastery|degree"
+			+ "|bachelor\\S*|master['’]?s|qualifications|you have|you bring|you['’]ve|must|requir\\w*|preferred|preferably"
+			+ "|ideally|certif\\w*|(you will|you['’]ll|you) (\\w+ ){0,3}?(write|writing|use|using|query|querying|script"
+			+ "|scripting|code|coding|program|programming|build|building|develop|developing|design|designing|implement"
+			+ "|implementing|configure|configuring|administer|deploy|deploying|automate|automating))\\b"
+			+ "|^(write|writing|use|using|query|querying|script|code|program|develop|developing|build|building|deploy"
+			+ "|automate)\\b");
+
+	/** What a sentence says after a skill when it asks for it ("SQL is required", "Python preferred"). */
+	private static final Pattern ASKED_AFTER = Pattern.compile("\\b(required|preferred|a must|essential|mandatory"
+			+ "|necessary)\\b");
+
+	/**
+	 * A heading over what the applicant must bring: requirements, qualifications, skills, experience, the
+	 * ideal candidate, what is preferred or desired.
+	 */
+	private static final Pattern REQUIREMENT_HEADING = Pattern.compile("\\b(qualifications?|requirements?|required"
+			+ "|requisitos|must[- ]haves?|you (have|bring|need|will need)|you['’]ll (bring|need|have)|who you are|about you"
+			+ "|skills|experience|expertise|competenc\\w*|knowledge|looking for|ideal candidate|preferred|desired|desirable"
+			+ "|essential|background|profile|perfil|profil|anforderungen|qualifikation\\w*)\\b");
+
+	/**
+	 * The skills the criterion names as a software background in themselves, which an acronym says as
+	 * plainly as the name.
+	 */
+	private static final Set<String> NAMED_BY_THE_CRITERION = Set.of("sql");
+
+	/** A short acronym in capitals, as a segment writes it. */
+	private static final Pattern ACRONYM = Pattern.compile("\\p{Lu}[\\p{Lu}\\d]{1,3}");
 
 	/** What a sentence says when the role does not need what it names. */
 	private static final Pattern NOT_NEEDED = Pattern.compile("\\b(don['’]t|do not|doesn['’]t|does not|won['’]t|will not"
@@ -376,7 +444,8 @@ public class BodyClassificationRule {
 	 * SQL or Looker") can be met without it.
 	 */
 	private static final Pattern NON_SOFTWARE_TOOL = Pattern.compile("\\b(excel|spreadsheets?|bi tools?|looker|tableau"
-			+ "|power bi|stata|sas|spss|alteryx|qlik|google sheets)\\b");
+			+ "|power bi|stata|sas|spss|alteryx|qlik|google sheets|(reconciliation|reporting|analytics|spreadsheet) tools?)"
+			+ "\\b");
 
 	private static final Pattern OR = Pattern.compile("\\bor\\b");
 
@@ -384,37 +453,37 @@ public class BodyClassificationRule {
 
 	/**
 	 * Code as the role's artifact (Q2) and the engineer-facing work of Q3 — source, API definitions
-	 * and calls, SDKs, logs, test suites and the gates of a delivery pipeline. Software alone is not
-	 * among them: a company says it builds software.
+	 * and calls, SDKs, logs, test suites and the gates of a delivery pipeline, and the testbenches that
+	 * verify a chip's design. Software alone is not among them: a company says it builds software.
 	 */
 	private static final Anchored CODE_WORK = new Anchored(String.join("|",
 			"\\b(writ|develop|build|implement|ship)\\w*( [\\w,'+#]+){0,4}? (code|microservices|backend services|firmware"
 					+ "|scripts)\\b",
 			"\\b(source code|review(ing)? (the )?code|code reviews?|application logs|system logs)\\b",
 			"\\b(rest(ful)? )?apis? (specifications?|definitions?|design|documentation|calls|requests)\\b",
-			"\\b(webhooks?|sdks?|code samples?)\\b",
+			"\\b(webhooks?|sdks?|code samples?|uvm|testbench\\w*|verification code)\\b",
 			"\\b(build|develop|writ|implement|creat|maintain|automat)\\w*( [\\w,'/-]+){0,4}? (test suites?"
 					+ "|automated tests?|test automation|quality gates?|ci/cd pipelines?)\\b",
 			"\\b(build|develop|train|deploy|ship|productioni[sz])\\w*( [\\w,'-]+){0,4}? (machine learning|ml|deep learning"
 					+ "|ai|llm) (models?|systems|pipelines)\\b"),
-			"code", "microservices", "backend services", "firmware", "scripts", "logs", "api", "webhook", "sdk",
+			"code", "microservices", "backend services", "firmware", "scripts", "logs", "api", "webhook", "sdk", "uvm",
+			"testbench", "verification code",
 			"test suite", "automated test", "test automation", "quality gate", "ci/cd", "machine learning model",
 			"machine learning system", "machine learning pipeline", "ml model", "ml system", "ml pipeline",
 			"deep learning model", "deep learning system", "deep learning pipeline", "ai model", "ai system",
 			"ai pipeline", "llm model", "llm system", "llm pipeline");
 
 	/**
-	 * Code as the role's own work said in other words: building and shipping, features built, sample and
-	 * demo apps, web, mobile and internal applications and tools. A demo alone is not code: one given to
-	 * support a sale is decided by Q4.
+	 * Code as the role's own work said in other words: building and shipping, features coded, sample and
+	 * demo apps, web, mobile and internal applications and tools, software systems. Features built or
+	 * implemented are a product manager's words as much as an engineer's, and a demo alone is not code: one
+	 * given to support a sale is decided by Q4.
 	 */
 	private static final Anchored BUILDS_THE_PRODUCT = new Anchored(String.join("|",
-			"\\bbuild(s|ing)? and ship(s|ping)?\\b",
-			"\\b(build|builds|building|develop|develops|developing|code|coding|implement|implements|implementing)"
-					+ "( [\\w,'+#-]+){0,4}? features\\b",
-			"\\b(build|builds|building|develop|develops|developing|ship|ships|shipping)( [\\w,'+#-]+){0,4}? ((sample"
+			"\\bbuild(s|ing)? and ship(s|ping)?\\b", "\\b(code|coding)( [\\w,'+#-]+){0,4}? features\\b",
+			"\\b(build|builds|building|develop|develops|developing|ship|ships|shipping):?( [\\w,'+#-]+){0,4}? ((sample"
 					+ "|demo) (apps?|applications|code)|(web|mobile|software|full[- ]stack|internal|ai|llm|agentic) (applications"
-					+ "|apps|tools))\\b"),
+					+ "|apps|tools)|software systems)\\b"),
 			"build", "develop", "code", "coding", "implement", "ship");
 
 	/**
@@ -463,6 +532,13 @@ public class BodyClassificationRule {
 			"architecture", "architectural", "codebase", "rfc", "debt", "schema", "database design", "database schema",
 			"data schema", "data model", "logical", "physical", "conceptual", "canonical", "dimensional");
 
+	/**
+	 * A prototype made with AI tooling, and the metadata, lineage and stewardship of data, where a codebase
+	 * or a data model is what the role points tools at or catalogues rather than designs.
+	 */
+	private static final Pattern NOT_ITS_OWN_DESIGN = Pattern.compile("\\b(prototyp\\w*|tooling|metadata|data lineage"
+			+ "|data governance|data stewardship|data catalog\\w*|master data)\\b");
+
 	/** Business systems, whose architecture is a matter of finance and tax rather than software. */
 	private static final Pattern BUSINESS_SYSTEMS = Pattern.compile("\\b(business systems|erp|tax|finance systems"
 			+ "|financial systems|accounting systems)\\b");
@@ -488,6 +564,9 @@ public class BodyClassificationRule {
 			+ "|implements|implemented|implementing|automate|automates|automated|automating|integrate|integrates"
 			+ "|integrated|integrating";
 
+	/** What follows a platform's name when what is built in it is its reports. */
+	private static final String NOT_ITS_REPORTS = "(?! (reports?|reporting|dashboards?)\\b)";
+
 	/** The verbs of designing or configuring something, as verbs. */
 	private static final String DESIGNS_OR_CONFIGURES = "design|designs|designed|designing|configure|configures"
 			+ "|configured|configuring";
@@ -501,9 +580,9 @@ public class BodyClassificationRule {
 			"\\b(" + BUILDS + "|" + DESIGNS_OR_CONFIGURES + "|customi[sz](e|es|ed|ing))"
 					+ "( (?!reports?\\b|reporting\\b|dashboards?\\b)[\\w,'/-]+){0,6}? (power apps|powerapps|power automate"
 					+ "|dynamics 365|pega|outsystems|mendix|appian|servicenow|salesforce flows?|apex|netsuite|sap|erp"
-					+ "|zapier|workato|n8n|clay|tray\\.io)\\b",
+					+ "|zapier|workato|n8n|clay|tray\\.io)\\b" + NOT_ITS_REPORTS,
 			"\\b(" + BUILDS + ")( (?!reports?\\b|reporting\\b|dashboards?\\b|records?\\b)[\\w,'/-]+){0,6}? (salesforce"
-					+ "|marketo|hubspot|dynamics (365|crm)|eloqua|pardot)\\b"),
+					+ "|marketo|hubspot|dynamics (365|crm)|eloqua|pardot)\\b" + NOT_ITS_REPORTS),
 			"power apps", "powerapps", "power automate", "dynamics", "pega", "outsystems", "mendix", "appian",
 			"servicenow", "salesforce", "apex", "netsuite", "sap", "erp", "zapier", "workato", "n8n", "clay", "tray.io",
 			"marketo", "hubspot", "eloqua", "pardot");
@@ -561,26 +640,45 @@ public class BodyClassificationRule {
 	 */
 	private static final Anchored PRODUCT_WORK = new Anchored(String.join("|",
 			"\\b(design|integrat|test|qualif|certif|validat|verif|assembl|build|manufactur|calibrat|inspect|evaluat"
-					+ "|commission|install|maintain|troubleshoot)\\w*( [\\w,'/-]+){0,5}? (aircraft|airframes?|rockets?"
+					+ "|commission|install|maintain|troubleshoot|servic|repair|model|simulat|analy[sz])\\w*( [\\w,'/-]+){0,5}? "
+					+ "(aircraft|airframes?|drones?|uavs?|unmanned (aerial|aircraft) (systems?|vehicles?)|flight controllers?"
+					+ "|rockets?"
 					+ "|launch vehicles?|spacecraft|satellites?|missiles?|munitions|weapons?|vehicles?|powertrains?"
 					+ "|emissions|robots?|chips?|semiconductors?|asics?|wafers?|building automation|building systems"
 					+ "|hvac systems?|manufacturing execution systems?|plant execution systems?|rf (test )?systems?"
 					+ "|rf hardware|socs?|systems?[- ]on[- ]chips?|memory subsystems?|silicon|photomasks?|scan tools?"
 					+ "|consumer products?|consumer electronics|appliances?|hardware (systems?|products?)"
 					+ "|defen[cs]e systems?|navigation (systems?|products?)|medical devices?)\\b",
-			"\\b(aircraft|rocket|launch vehicle|spacecraft|satellite|missile|weapons?|vehicle|powertrain|emissions|robot"
-					+ "|chip|semiconductor|asic|wafer)s? (design|integration|test(ing)?|qualification|certification"
+			"\\b(aircraft|drone|rocket|launch vehicle|spacecraft|satellite|missile|weapons?|vehicle|powertrain|emissions"
+					+ "|robot|chip|semiconductor|asic|wafer)s? (design|integration|test(ing)?|qualification|certification"
 					+ "|validation|verification|assembly|calibration|inspection|diagnostics?)\\b",
 			"\\bnon-?destructive (evaluation|testing|inspection)\\b",
 			"\\b(lithography|optical proximity correction|mbse|model[- ]based systems engineering|sysml"
 					+ "|hardware systems engineering)\\b"),
-			"aircraft", "airframe", "rocket", "launch vehicle", "spacecraft", "satellite", "missile", "munitions",
+			"aircraft", "airframe", "drone", "uav", "unmanned", "flight controller", "rocket", "launch vehicle",
+			"spacecraft", "satellite", "missile", "munitions",
 			"weapon", "vehicle", "powertrain", "emissions", "robot", "chip", "semiconductor", "asic", "wafer",
 			"building automation", "building system", "hvac", "manufacturing execution", "plant execution",
 			"non-destructive", "nondestructive", "rf", "soc", "system-on", "system on", "systems-on", "systems on",
 			"memory", "silicon", "photomask", "scan tool", "consumer", "appliance", "hardware", "defence", "defense",
 			"navigation", "medical device", "lithography", "optical proximity", "mbse", "model-based", "model based",
 			"sysml");
+
+	/**
+	 * Another domain named by its own work: a process plant and its control system, its piping and
+	 * electrical diagrams, the protection and control of a power grid, welding, and the build-out of a
+	 * telecom network's physical plant.
+	 */
+	private static final Anchored OTHER_DOMAIN_WORK = new Anchored(String.join("|",
+			"\\b(deltav|batch process\\w*|p&ids?|piping and instrumentation|single[- ]line diagrams?)\\b",
+			"\\b(protection and control|protective relay\\w*|relay (testing|settings)|power grid|substations?)\\b",
+			"\\b(welding|weld inspect\\w*|outside plant|cell (towers?|sites?))\\b",
+			"\\b(telecom|fiber|fibre|wireless) network build[- ]?outs?\\b"),
+			"deltav", "batch process", "p&id", "piping", "single", "protection", "protective", "relay", "power grid",
+			"substation", "weld", "outside plant", "cell", "telecom", "fiber", "fibre", "wireless");
+
+	/** Scripts, which test or automate a physical product without being its code. */
+	private static final Pattern SCRIPTS = Pattern.compile("\\bscripts\\b");
 
 	/**
 	 * A product's own software: its code, its software tests, its software's architecture, or the
@@ -625,19 +723,23 @@ public class BodyClassificationRule {
 	 * What an item says of itself when it is only a plus. "Bonus" is also pay, so it counts alone only
 	 * where it starts the item and is not followed by pay's words.
 	 */
-	private static final Pattern PLUS = Pattern.compile("\\b(an? (\\w+ )?plus|nice[- ]to[- ]haves?|bonus points|an? bonus"
+	private static final Pattern PLUS = Pattern.compile("\\b(an? (\\w+ )?plus|an? (\\w+ )?advantage|advantageous"
+			+ "|nice[- ]to[- ]haves?|bonus points|an? bonus"
 			+ "|any history of|even better if|extra credit|it['’]?s great if|un plus|un atout|von vorteil|wünschenswert"
 			+ "|deseable|valorable|diferencial)\\b|^bonus\\b(?! (pay|plan|eligib\\w*|structure|potential|program\\w*))");
 
 	/** A heading that makes every item under it a plus. */
 	private static final Pattern PLUS_HEADING = Pattern.compile("\\s*(nice[- ]to[- ]haves?|bonus points|pluses"
-			+ "|even better if|extra credit|desirable|desired (skills|qualifications|experience))\\b");
+			+ "|even better if|extra credit)\\b");
 
 	private static final Pattern PREFERRED = Pattern.compile("\\bpreferred\\b");
 
-	/** A heading that makes every item under it preferred. */
-	private static final Pattern PREFERRED_HEADING = Pattern.compile("\\s*preferred (qualifications|skills|experience"
-			+ "|requirements)\\b");
+	/**
+	 * A heading that makes every item under it preferred: what is preferred, desired or desirable, which
+	 * the criterion counts as preferred rather than a plus.
+	 */
+	private static final Pattern PREFERRED_HEADING = Pattern.compile("\\s*((preferred|desired) (qualifications|skills"
+			+ "|experience|requirements)|desirable)\\b");
 
 	private final TaxonomyStore taxonomy;
 
@@ -646,6 +748,9 @@ public class BodyClassificationRule {
 
 	/** The skills that are platforms a role can build in without code. */
 	private final Set<String> platforms = new HashSet<>();
+
+	/** Every skill's names, lowercased, by which the rule finds where in a segment extraction found it. */
+	private final Map<String, List<String>> names = new HashMap<>();
 
 	/**
 	 * @param taxonomy the skills extraction finds, which say what kind each found skill is
@@ -659,6 +764,10 @@ public class BodyClassificationRule {
 			if (PLATFORM_KINDS.contains(skill.category()) && !NOT_A_PLATFORM.contains(skill.id())) {
 				this.platforms.add(skill.id());
 			}
+			List<String> named = new ArrayList<>();
+			named.add(skill.canonicalName().strip().toLowerCase(Locale.ROOT));
+			skill.aliases().forEach((alias) -> named.add(alias.strip().toLowerCase(Locale.ROOT)));
+			this.names.put(skill.id(), List.copyOf(named));
 		}
 	}
 
@@ -689,12 +798,14 @@ public class BodyClassificationRule {
 			return ClassificationStateEnum.UNKNOWN;
 		}
 		if (anyMention(description, NO_VACANCY, (around) -> true)
-				|| anyMention(description, CARRIES_A_QUOTA, (around) -> !HELPS_OTHERS_SELL.matcher(around.item()).find())
+				|| anyMention(description, CARRIES_A_QUOTA, (around) -> !HELPS_OTHERS_SELL.matcher(around.item()).find()
+						&& !BENEFITS_HEADING.matcher(around.heading()).find())
 				|| requiresExpertiseOutsideSoftware(description) || requiresKnowledgeOfASubject(description)) {
 			return ClassificationStateEnum.OUT;
 		}
 		if (titleReason == UnknownReasonEnum.DOMAIN_AMBIGUITY
-				&& anyMention(description, PRODUCT_WORK, (around) -> !companyOnly(around.item()))
+				&& (anyMention(description, PRODUCT_WORK, (around) -> !companyOnly(around.item()))
+						|| anyMention(description, OTHER_DOMAIN_WORK, (around) -> !companyOnly(around.item())))
 				&& !writesTheProductsSoftware(description)) {
 			return ClassificationStateEnum.OUT;
 		}
@@ -714,18 +825,23 @@ public class BodyClassificationRule {
 	/**
 	 * Whether the description requires expertise outside software. Expertise it lists as a plus,
 	 * prefers or claims for the company is no requirement, nor is a field's degree offered beside a
-	 * computing one, nor a science offered among the fields of a quantitative list.
+	 * computing one, nor a subject's degree in a list open to business or quantitative fields, nor a
+	 * science offered among the fields of a quantitative list, nor compliance done under SOX controls.
 	 */
 	private static boolean requiresExpertiseOutsideSoftware(List<Around> description) {
 		return anyMention(description, FIELD_DEGREE,
 				(around) -> required(around) && !COMPUTING_FIELD.matcher(around.item()).find())
+				|| anyMention(description, SUBJECT_DEGREE,
+						(around) -> required(around) && !COMPUTING_FIELD.matcher(around.item()).find()
+								&& !(BROAD_DEGREE_LIST.matcher(around.item()).find() && OR.matcher(around.item()).find()))
 				|| anyMention(description, SCIENCE_DEGREE,
 						(around) -> required(around) && !COMPUTING_FIELD.matcher(around.item()).find()
 								&& !QUANTITATIVE_FIELD.matcher(around.item()).find())
 				|| anyMention(description, FIELD_KNOWLEDGE, (around) -> required(around) && !companyOnly(around.item()))
 				|| anyMention(description, FIELD_EXPERTISE,
 						(around) -> required(around) && APPLICANT.matcher(around.item()).find())
-				|| anyMention(description, FIELD_EXPERIENCE, (around) -> required(around) && !companyOnly(around.item()));
+				|| anyMention(description, FIELD_EXPERIENCE, (around) -> required(around) && !companyOnly(around.item())
+						&& !SOX_CONTROLS.matcher(around.item()).find());
 	}
 
 	/**
@@ -777,12 +893,13 @@ public class BodyClassificationRule {
 
 	/**
 	 * Whether the role's own work on the physical product it works on is software: code that is not
-	 * written to analyse, model or simulate the product, its software tests or its software's
-	 * architecture.
+	 * written to analyse, model or simulate the product, nor scripts that test or drive it, its software
+	 * tests or its software's architecture.
 	 */
 	private static boolean writesTheProductsSoftware(List<Around> description) {
 		return anyMention(description, CODE_WORK,
-				(around) -> ownCodeWork(around) && !ANALYSIS.matcher(around.item()).find())
+				(around) -> ownCodeWork(around) && !ANALYSIS.matcher(around.item()).find()
+						&& !SCRIPTS.matcher(around.item()).find())
 				|| anyMention(description, PRODUCT_SOFTWARE, (around) -> !aPlus(around) && !companyOnly(around.item())
 						&& !ANALYSIS.matcher(around.item()).find());
 	}
@@ -792,14 +909,15 @@ public class BodyClassificationRule {
 	 * work: code, engineer-facing artifacts, low-code building or leading software engineers. A software
 	 * skill extraction found counts where the segment it was found in asks for it.
 	 */
-	private static boolean statesASoftwareBackground(List<Around> description) {
-		return description.stream()
-			.anyMatch((around) -> around.softwareSkill() && askedFor(around) && !oneChoiceAmongNonSoftwareTools(around))
+	private boolean statesASoftwareBackground(List<Around> description) {
+		Set<String> found = new HashSet<>();
+		description.forEach((around) -> around.skills().stream().filter(this.softwareSkills::contains).forEach(found::add));
+		return description.stream().anyMatch((around) -> asksForASoftwareSkill(around, found))
 				|| anyMention(description, SOFTWARE_BACKGROUND, BodyClassificationRule::askedFor)
 				|| anyMention(description, CODE_WORK, BodyClassificationRule::ownCodeWork)
 				|| anyMention(description, BUILDS_THE_PRODUCT,
 						(around) -> ownCodeWork(around) && !HELPS_OTHERS_BUILD.matcher(around.item()).find())
-				|| description.stream().anyMatch(BodyClassificationRule::configuresAPlatform)
+				|| description.stream().anyMatch(this::configuresAPlatform)
 				|| anyMention(description, QUALITY_SYSTEM_WORK,
 						(around) -> !aPlus(around) && !NAMES_A_SYSTEM.matcher(around.item()).find())
 						&& !anyMention(description, NAMES_A_QUALITY_STANDARD, (around) -> true)
@@ -808,17 +926,73 @@ public class BodyClassificationRule {
 				|| anyMention(description, DESIGN_WORK,
 						(around) -> !aPlus(around) && !companyOnly(around.item())
 								&& !BESIDE_ENGINEERS.matcher(around.item()).find()
-								&& !BUSINESS_SYSTEMS.matcher(around.item()).find())
+								&& !BUSINESS_SYSTEMS.matcher(around.item()).find()
+								&& !NOT_ITS_OWN_DESIGN.matcher(around.item()).find())
 				|| anyMention(description, LOW_CODE_WORK,
 						(around) -> !aPlus(around) && !NAMES_A_SYSTEM.matcher(around.item()).find())
 				|| anyMention(description, LEADS_ENGINEERS, (around) -> !aPlus(around))
 				|| anyMention(description, SOFTWARE_SKILL,
-						(around) -> askedFor(around) && !oneChoiceAmongNonSoftwareTools(around)
+						(around) -> askedFor(around) && !oneChoiceAmongNonSoftwareTools(around, -1)
 								&& !BUSINESS_CONTINUITY.matcher(around.item()).find())
 				|| anyMention(description, VERSION_CONTROL,
 						(around) -> askedFor(around) && !TRACKS_OR_PUBLISHES.matcher(around.item()).find())
 				|| anyMention(description, SOFTWARE_DEGREE,
 						(around) -> askedFor(around) && !otherFieldAccepted(around.item()));
+	}
+
+	/**
+	 * Whether a segment asks for a software skill extraction found in it: the skill has to be what the
+	 * requirement asks for, not merely share a sentence with an asking word. A skill found only as a short
+	 * acronym is read in its software sense only beside another software skill of the description, since
+	 * the same letters name welding societies, companies, certifications and grades; SQL, which the
+	 * criterion names, is read on its own.
+	 * @param found the software skills found anywhere in the description
+	 */
+	private boolean asksForASoftwareSkill(Around around, Set<String> found) {
+		for (String skill : around.skills()) {
+			if (!this.softwareSkills.contains(skill)) {
+				continue;
+			}
+			List<Span> spans = where(around.item(), skill);
+			if (!NAMED_BY_THE_CRITERION.contains(skill) && onlyAnAcronym(around, spans)
+					&& found.stream().allMatch(skill::equals)) {
+				continue;
+			}
+			int at = spans.isEmpty() ? -1 : spans.get(0).start();
+			if (askedFor(around, at) && !oneChoiceAmongNonSoftwareTools(around, at)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Where in a lowercased segment a skill's names are written, each a span that begins and ends at a
+	 * word's edge. None when extraction found it written in a form of its name that
+	 * differs from the taxonomy's, by its separators.
+	 */
+	private List<Span> where(String item, String skill) {
+		List<Span> spans = new ArrayList<>();
+		for (String name : this.names.getOrDefault(skill, List.of())) {
+			for (int at = item.indexOf(name); at >= 0; at = item.indexOf(name, at + 1)) {
+				int end = at + name.length();
+				if ((at == 0 || !Character.isLetterOrDigit(item.charAt(at - 1)))
+						&& (end == item.length() || !Character.isLetterOrDigit(item.charAt(end)))) {
+					spans.add(new Span(at, end));
+				}
+			}
+		}
+		spans.sort((one, other) -> Integer.compare(one.start(), other.start()));
+		return spans;
+	}
+
+	/** Whether every place a skill is written in a segment is a short acronym in capitals, such as AWS. */
+	private static boolean onlyAnAcronym(Around around, List<Span> spans) {
+		if (spans.isEmpty() || around.written().length() != around.item().length()) {
+			return false;
+		}
+		return spans.stream()
+			.allMatch((span) -> ACRONYM.matcher(around.written().substring(span.start(), span.end())).matches());
 	}
 
 	/**
@@ -833,16 +1007,27 @@ public class BodyClassificationRule {
 				&& !companyOnly(item) && !NOT_THE_ROLES_CODE.matcher(item).find();
 	}
 
-	/**
-	 * Whether an item asks the applicant for what it names: it asks for something, or sits under a
-	 * heading that does, does not call it a plus or say the role does not need it, and is not the
-	 * company speaking of itself.
-	 */
 	private static boolean askedFor(Around around) {
+		return askedFor(around, -1);
+	}
+
+	/**
+	 * Whether an item asks the applicant for what it names at a place in it: it sits under a heading
+	 * over requirements, says after the thing that it is required or preferred, or asks for it before
+	 * the place. It must not call it a plus or say the role does not need it, and must not be the
+	 * company speaking of itself.
+	 * @param at where in the item the thing is named, -1 if anywhere
+	 */
+	private static boolean askedFor(Around around, int at) {
 		String item = around.item();
-		return (ASKED_FOR.matcher(item).find() || ASKED_FOR.matcher(around.heading()).find()) && !aPlus(around)
-				&& !NOT_NEEDED.matcher(item).find()
-				&& !companyOnly(item);
+		if (aPlus(around) || NOT_NEEDED.matcher(item).find() || companyOnly(item)) {
+			return false;
+		}
+		if (REQUIREMENT_HEADING.matcher(around.heading()).find() || ASKED_AFTER.matcher(item).find()) {
+			return true;
+		}
+		Matcher asks = ASKED_FOR.matcher(item);
+		return asks.find() && (at < 0 || asks.start() < at);
 	}
 
 	private static boolean companyOnly(String item) {
@@ -854,20 +1039,37 @@ public class BodyClassificationRule {
 	 * was found in, which is low-code work unless what it builds there is reports or records, or it only
 	 * names the system.
 	 */
-	private static boolean configuresAPlatform(Around around) {
+	private boolean configuresAPlatform(Around around) {
 		String item = around.item();
-		return around.platform() && CONFIGURES.matcher(item).find() && !REPORTS.matcher(item).find()
-				&& !aPlus(around) && !NAMES_A_SYSTEM.matcher(item).find() && !companyOnly(item);
+		return around.skills().stream().anyMatch(this.platforms::contains) && CONFIGURES.matcher(item).find()
+				&& !REPORTS.matcher(item).find() && !aPlus(around) && !NAMES_A_SYSTEM.matcher(item).find()
+				&& !companyOnly(item);
 	}
 
 	/**
 	 * Whether a skill is offered as one choice among tools that are not software skills, named or found
-	 * as a reporting product. A list that joins it to them with "and" asks for it beside them.
+	 * as a reporting product. Only the stretch of the item between the "and"s around the skill is read:
+	 * an "and" that joins the skill to the rest asks for it beside them, and one elsewhere in the item
+	 * leaves its choice standing.
+	 * @param at where in the item the skill is named, -1 if not known, when the whole item is read and any
+	 * "and" in it asks for the skill
 	 */
-	private static boolean oneChoiceAmongNonSoftwareTools(Around around) {
+	private boolean oneChoiceAmongNonSoftwareTools(Around around, int at) {
 		String item = around.item();
-		return (NON_SOFTWARE_TOOL.matcher(item).find() || around.reportingTool()) && OR.matcher(item).find()
-				&& !AND.matcher(item).find();
+		if (at < 0) {
+			return (NON_SOFTWARE_TOOL.matcher(item).find() || around.skills().stream().anyMatch(REPORTING_PRODUCTS::contains))
+					&& OR.matcher(item).find() && !AND.matcher(item).find();
+		}
+		int before = item.lastIndexOf(" and ", at);
+		int from = (before < 0) ? 0 : before + " and ".length();
+		int after = item.indexOf(" and ", at);
+		int to = (after < 0) ? item.length() : after;
+		String stretch = item.substring(from, to);
+		boolean reportingProduct = around.skills()
+			.stream()
+			.filter(REPORTING_PRODUCTS::contains)
+			.anyMatch((product) -> where(item, product).stream().anyMatch((span) -> span.start() >= from && span.start() < to));
+		return (NON_SOFTWARE_TOOL.matcher(stretch).find() || reportingProduct) && OR.matcher(stretch).find();
 	}
 
 	/** Whether a degree list also accepts a field outside computing. */
@@ -899,24 +1101,29 @@ public class BodyClassificationRule {
 	}
 
 	/** A segment read with the skills extraction found in it. */
-	private Around around(Segment segment, Set<String> skills) {
-		return new Around(segment.text().toLowerCase(Locale.ROOT),
-				(segment.under() != null) ? segment.under().toLowerCase(Locale.ROOT) : "",
-				skills.stream().anyMatch(this.softwareSkills::contains), skills.stream().anyMatch(this.platforms::contains),
-				skills.stream().anyMatch(REPORTING_PRODUCTS::contains));
+	private static Around around(Segment segment, Set<String> skills) {
+		return new Around(segment.text().toLowerCase(Locale.ROOT), segment.text(),
+				(segment.under() != null) ? segment.under().toLowerCase(Locale.ROOT) : "", skills);
 	}
 
 	/**
 	 * What a mention is read with.
 	 *
 	 * @param item the segment it is in, lowercased: a sentence, a list item or a heading
+	 * @param written the segment as it is written, whose capitals tell an acronym
 	 * @param heading the heading that segment sits under, lowercased, empty if there is none
-	 * @param softwareSkill whether extraction found a software skill in the segment
-	 * @param platform whether extraction found a platform a role can build in without code in it
-	 * @param reportingTool whether extraction found a reporting or analytics product in it
+	 * @param skills the skills extraction found in the segment, by id
 	 */
-	private record Around(String item, String heading, boolean softwareSkill, boolean platform,
-			boolean reportingTool) {
+	private record Around(String item, String written, String heading, Set<String> skills) {
+	}
+
+	/**
+	 * Where a name is written in a segment.
+	 *
+	 * @param start the index it starts at
+	 * @param end the index after its last character
+	 */
+	private record Span(int start, int end) {
 	}
 
 	/**
