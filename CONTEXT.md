@@ -164,7 +164,7 @@ _Avoid_: run, job, batch, refresh
 
 **Stability**:
 The point at which the corpus is large and steady enough for its history to mean something:
-one million vacancies live in a single sweep, and four consecutive cycles completed without
+one million vacancies live in a single sweep, and 30 consecutive days of cycles completed without
 manual intervention. Series start being recorded here, and not before (ADR-0011).
 _Avoid_: maturity, readiness, launch
 

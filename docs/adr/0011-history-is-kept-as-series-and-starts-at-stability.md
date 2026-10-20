@@ -9,8 +9,11 @@ vacancies per role and seniority, or a skill's share of a role's vacancies — n
 vacancies that produced them. A vacancy stays a mirror.
 
 Series are not recorded until **stability**: one million vacancies live in a single sweep,
-and four consecutive weekly cycles of the scheduled pipeline completed without manual
-intervention. Before stability the explorer shows the live corpus only.
+and 30 consecutive days of the scheduled pipeline completed without manual intervention.
+Before stability the explorer shows the live corpus only.
+
+Amended 2026-10-20: the bar was four consecutive weekly cycles. The cycle became daily
+(ADR-0020), and four days is no test of steadiness, so the bar is counted in days instead.
 
 The two series recorded from the start are the vacancy count per (role × seniority) and a
 skill's share per (role × skill). Any other cut is answered over the live corpus, and is

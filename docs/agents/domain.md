@@ -21,7 +21,8 @@ the later ADR wins; the overridden parts are marked below.
 - **0006**: rules are developed against **snapshots** on the dev machine, never production. Two
   are kept, raw and after classification. A re-sweep cuts a new pair and archives the old one.
 - **0011**: history is kept as **series** (numbers, not vacancies), recorded from **stability**
-  onwards.
+  onwards. Stability's bar is 30 consecutive days without manual intervention, amended from four
+  weekly cycles when the cycle became daily.
 
 **Derivation**
 - **0005**: every derived fact comes from a rule. No LLM is called anywhere in the pipeline.

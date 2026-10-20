@@ -400,7 +400,7 @@ by crawl, the US weight of the corpus, and salary coming only from postings that
 ### 12.4 History
 
 The Explorer shows the live corpus only until **stability**: one million vacancies live in a
-single sweep, and four consecutive cycles without manual intervention. From then on series are
+single sweep, and 30 consecutive days of cycles without manual intervention. From then on series are
 recorded just before each sweep — vacancy count per (role × seniority) and skill share per
 (role × skill) — and trend views are added to the Explorer once there are enough points to show
 one. History is numbers, not vacancies (ADR-0011).
