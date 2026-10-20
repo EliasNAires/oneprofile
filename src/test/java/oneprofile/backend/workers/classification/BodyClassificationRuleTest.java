@@ -1313,6 +1313,156 @@ class BodyClassificationRuleTest {
 			.isEqualTo(IN);
 	}
 
+	@Test
+	void anAcronymCountsOnlyBesideAnotherSkillTheDescriptionAsksFor() {
+		assertThat(classify("Fellow", SCOPE_AMBIGUITY, DUTIES + "The R&I team exists to shape scholarship. "
+				+ "Requirements: deep familiarity with ADF’s work and mission."))
+			.isEqualTo(OUT);
+		assertThat(classify("Director Product Management", SCOPE_AMBIGUITY, DUTIES
+				+ "Requirements: deep understanding of Attack Surface Management (ASM), Internet data or threat intelligence. "
+				+ "Bonus points: hands-on familiarity with network protocols (e.g., TLS, DNS, BGP)."))
+			.isEqualTo(OUT);
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY, DUTIES + "Requirements: experience with AWS and GCP."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void aSkillTheDescriptionNamesAsTheCompanyIsNotAskedFor() {
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY, "At Databricks, we are passionate about helping data "
+				+ "teams solve the world's toughest problems. " + DUTIES
+				+ "Requirements: five years of product management; you will deliver hands-on learning journeys within Databricks."))
+			.isEqualTo(OUT);
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY, "At Databricks, we help data teams. " + DUTIES
+				+ "Requirements: experience with Python."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void aContentToolIsNoSoftwareBackground() {
+		assertThat(classify("Marketing Coordinator", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: experience helping manage websites and using WordPress."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void aBareNiceToHaveItemMakesTheItemsAfterItAPlus() {
+		List<Segment> segments = new ArrayList<>(duties());
+		segments.add(heading("What you bring"));
+		segments.add(item("What you bring", "Five years of experience in operations."));
+		segments.add(item("What you bring", "Nice to have:"));
+		segments.add(item("What you bring", "Experience with Python."));
+		segments.add(item("What you bring", "Familiarity with Kubernetes."));
+		assertThat(classify("Operations Analyst", SCOPE_AMBIGUITY, segments)).isEqualTo(OUT);
+	}
+
+	@Test
+	void aSkillTheApplicantMayLearnInsteadIsNotAskedFor() {
+		assertThat(classify("Product Designer", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: experience with Figma, and React (or willingness to learn)."))
+			.isEqualTo(OUT);
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: experience with Python and React (or willingness to learn)."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void aChoiceWithAnOptionThatIsNotASoftwareSkillIsNotAskedFor() {
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: comfort pulling your own data with SQL or similar tools."))
+			.isEqualTo(OUT);
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: proficiency with Claude Code or a database query language (for example SQL)."))
+			.isEqualTo(OUT);
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY, DUTIES + "Requirements: a background as a software "
+				+ "engineer or the ability to work deeply with engineering teams."))
+			.isEqualTo(OUT);
+		assertThat(classify("Investment Associate", SCOPE_AMBIGUITY, DUTIES + "Requirements: technical knowledge through "
+				+ "past experience (software engineering, product management, VC, etc.) or a degree in computer science."))
+			.isEqualTo(OUT);
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY, DUTIES
+				+ "Requirements: a degree in computer science and five years of product management experience."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void aProductManagersBuildWordsAreNotTheRolesCode() {
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: experience building software in partnership with enterprise customers."))
+			.isEqualTo(OUT);
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY, DUTIES + "Requirements: direct experience building "
+				+ "software, tools, or platforms designed for scientific researchers."))
+			.isEqualTo(OUT);
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY, DUTIES + "You will build and launch an AI-native MVP, "
+				+ "collaborating closely with engineering to build reliable, technical AI systems."))
+			.isEqualTo(OUT);
+		assertThat(classify("AI Data Specialist", SCOPE_AMBIGUITY, DUTIES + "You will own the creation of additional "
+				+ "training data for machine learning models, such as generating new text (paraphrasing, summarization)."))
+			.isEqualTo(OUT);
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY, DUTIES
+				+ "You will partner with research to develop new technologies and product features in application security."))
+			.isEqualTo(OUT);
+		assertThat(classify("ML Engineer", SCOPE_AMBIGUITY,
+				DUTIES + "You will train and deploy machine learning models for fraud detection."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void modellingNamedAsAPlatformsCapabilityOrAManagedProjectIsNotDesignWork() {
+		assertThat(classify("Presales Consultant", SCOPE_AMBIGUITY, DUTIES + "You will be the technical solution expert "
+				+ "across platform capabilities, including AI, data modelling and planning applications."))
+			.isEqualTo(OUT);
+		assertThat(classify("Delivery Lead", SCOPE_AMBIGUITY, DUTIES + "Requirements: experience managing data analytics "
+				+ "and data engineering projects — e.g., BI/reporting platforms, dimensional data modeling."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void aPhysicalProductsTestCodeAndToolsAreNotSoftware() {
+		assertThat(classify("Test Engineer", DOMAIN_AMBIGUITY, DUTIES + "You will test and qualify electromechanical "
+				+ "actuators. Requirements: production-grade Python for test automation, data analysis, and post-processing."))
+			.isEqualTo(OUT);
+		assertThat(classify("Production Test Engineer", DOMAIN_AMBIGUITY, DUTIES + "You will test drones on the "
+				+ "production line. You will develop test automation for the line (Python, LabVIEW/TestStand). "
+				+ "Requirements: experience with CAN, UART and I2C interfaces."))
+			.isEqualTo(OUT);
+		assertThat(classify("Optical Engineer", DOMAIN_AMBIGUITY, DUTIES + "You will design optical transceivers. "
+				+ "Requirements: experience with a computer programming language (e.g. C++, MATLAB, and/or Python)."))
+			.isEqualTo(OUT);
+		assertThat(classify("CMM Programmer", DOMAIN_AMBIGUITY, DUTIES + "Requirements: CMM programming experience. "
+				+ "Python, C++, or VB for data automation or process scripting."))
+			.isEqualTo(OUT);
+		assertThat(classify("Solutions Engineer", DOMAIN_AMBIGUITY, DUTIES + "You will write integrations with Python. "
+				+ "Requirements: a degree in mechanical, electrical, or mechatronics engineering."))
+			.isEqualTo(OUT);
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: experience with Python, R or MATLAB."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void smallerMissesOfRoundSeven() {
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY, DUTIES + "Requirements: fluent in SQL (Python or R a plus)."))
+			.isEqualTo(IN);
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY, DUTIES + "Requirements: strong Excel; Python (a plus)."))
+			.isEqualTo(OUT);
+		assertThat(classify("Enterprise Architect", DOMAIN_AMBIGUITY, DUTIES + "Requirements: working knowledge of "
+				+ "model-based systems engineering (MBSE) processes, tools, and languages; experience with AWS and Kubernetes."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void theNarrowingsOfRoundEightKeepTheirEdges() {
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY, DUTIES
+				+ "Requirements: a degree in computer science; five years of product management, ideally in B2B."))
+			.isEqualTo(IN);
+		assertThat(classify("Forward Deployed Engineer", SCOPE_AMBIGUITY,
+				DUTIES + "You will build software for our customers on site."))
+			.isEqualTo(IN);
+		assertThat(classify("Data Engineer", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: five years at AWS, Google or Microsoft; experience with Spark."))
+			.isEqualTo(IN);
+	}
+
 	private ClassificationStateEnum classify(String title, UnknownReasonEnum reason, String description) {
 		return classify(title, reason, this.splitting.split(description));
 	}
