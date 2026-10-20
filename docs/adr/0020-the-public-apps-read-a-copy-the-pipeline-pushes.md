@@ -33,7 +33,6 @@ serve nobody and carry no public load. Decided by Elias on 2026-10-20.
   admin, crawler or Jev code at all.
 - **The site in a repository of its own**: the endpoints and their one consumer would change in
   two places, and agents would see one side of the contract at a time.
-
 - **PostgREST's generated API over the read schema**, the logic in Postgres functions. Less code,
   but filter rank, the orders and eligibility per country are the Finder's core, and as SQL
   functions they are harder to test and change than Java under Testcontainers. Any client could
