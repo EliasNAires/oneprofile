@@ -7,7 +7,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import java.time.Instant;
+import java.util.List;
 import oneprofile.backend.storage.company.CompanyEntity;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 /**
  * A single open position at a company, held as a mirror of the board it was published on. It is
@@ -28,7 +31,7 @@ public class VacancyEntity {
 	@JoinColumn(name = "company_id")
 	private CompanyEntity company;
 
-	private long externalId;
+	private String externalId;
 
 	private String title;
 
@@ -50,14 +53,23 @@ public class VacancyEntity {
 
 	private String payTitle;
 
+	private String payInterval;
+
 	private Instant firstPublishedAt;
 
 	private Instant updatedAt;
 
+	private String workplaceType;
+
+	private String addressCountry;
+
+	@JdbcTypeCode(SqlTypes.JSON)
+	private List<SecondaryLocation> secondaryLocations;
+
 	protected VacancyEntity() {
 	}
 
-	public VacancyEntity(CompanyEntity company, long externalId) {
+	public VacancyEntity(CompanyEntity company, String externalId) {
 		this.company = company;
 		this.externalId = externalId;
 	}
@@ -77,12 +89,16 @@ public class VacancyEntity {
 		this.payMaxCents = published.payMaxCents();
 		this.payCurrency = published.payCurrency();
 		this.payTitle = published.payTitle();
+		this.payInterval = published.payInterval();
 		this.firstPublishedAt = published.firstPublishedAt();
 		this.updatedAt = published.updatedAt();
+		this.workplaceType = published.workplaceType();
+		this.addressCountry = published.addressCountry();
+		this.secondaryLocations = published.secondaryLocations();
 	}
 
 	/** The id the ATS gives it, unique within its board. */
-	public long externalId() {
+	public String externalId() {
 		return this.externalId;
 	}
 
@@ -136,14 +152,34 @@ public class VacancyEntity {
 		return this.payTitle;
 	}
 
+	/** The interval its pay range is quoted in, as its ATS writes it, or null if the ATS gave none. */
+	public String payInterval() {
+		return this.payInterval;
+	}
+
 	/** When it was first published. */
 	public Instant firstPublishedAt() {
 		return this.firstPublishedAt;
 	}
 
-	/** When the board last changed it. */
+	/** When the board last changed it, or null if its ATS does not say. */
 	public Instant updatedAt() {
 		return this.updatedAt;
+	}
+
+	/** Its work mode as its ATS names it, or null if the ATS gave none. */
+	public String workplaceType() {
+		return this.workplaceType;
+	}
+
+	/** The country of its own address as its ATS writes it, or null if the ATS gave none. */
+	public String addressCountry() {
+		return this.addressCountry;
+	}
+
+	/** The other places it names for the work, or null if its ATS does not provide them. */
+	public List<SecondaryLocation> secondaryLocations() {
+		return this.secondaryLocations;
 	}
 
 }

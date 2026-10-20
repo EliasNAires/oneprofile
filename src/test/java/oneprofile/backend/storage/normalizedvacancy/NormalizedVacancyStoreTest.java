@@ -118,7 +118,7 @@ class NormalizedVacancyStoreTest {
 				new Segment(SegmentKindEnum.ITEM, "Requirements", "5+ years of Java", false),
 				new Segment(SegmentKindEnum.SENTENCE, null, "We offer equity.", true));
 		this.normalized.recordCleanedVacancies(
-				Map.of(vacancyId, new CleanedVacancy(new CleanedTitle("Engineer", Set.of()), segments)));
+				Map.of(vacancyId, new CleanedVacancy(new CleanedTitle("Engineer", Set.of()), segments, null)));
 		this.normalized.recordClassifications(
 				Map.of(vacancyId, Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY)));
 
@@ -133,7 +133,8 @@ class NormalizedVacancyStoreTest {
 		this.normalized.recordCleanedVacancies(Map.of(vacancyId,
 				new CleanedVacancy(new CleanedTitle("Engineer", Set.of()),
 						List.of(new Segment(SegmentKindEnum.HEADING, null, "Requirements", false),
-								new Segment(SegmentKindEnum.ITEM, "Requirements", "Java", true)))));
+								new Segment(SegmentKindEnum.ITEM, "Requirements", "Java", true)),
+						null)));
 		this.entityManager.flush();
 
 		assertThat(this.entityManager.getEntityManager()
@@ -317,6 +318,32 @@ class NormalizedVacancyStoreTest {
 	}
 
 	@Test
+	void readsThePileInTheLanguageCleaningDetectedWhereTheBoardDeclaredNone() {
+		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001, null), published(4002, "en")));
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		this.normalized.recordCleanedVacancies(Map.of(first, detectedIn("de"), second, detectedIn("de")));
+		this.normalized.recordClassifications(Map.of(first, Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY),
+				second, Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY)));
+
+		assertThat(this.normalized.pileAfter(0, 10)).extracting(PileVacancy::language).containsExactly("de", "en");
+	}
+
+	@Test
+	void leavesOutOfExtractionThePileInALanguageCleaningDetectedTheBodyPassDoesNotRead() {
+		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001, null), published(4002, null)));
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		this.normalized.recordCleanedVacancies(Map.of(first, detectedIn("de"), second, detectedIn(null)));
+		this.normalized.recordClassifications(Map.of(first, Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY),
+				second, Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY)));
+		this.entityManager.flush();
+
+		assertThat(this.normalized.extractionScopeAfter(0, 10)).extracting(ExtractionVacancy::vacancyId)
+			.containsExactly(second);
+	}
+
+	@Test
 	void leavesOutOfExtractionWhatTheBodyPassSkippedForItsLanguage() {
 		long vacancyId = heldTitles().getFirst().id();
 		this.normalized.recordCleanedVacancies(Map.of(vacancyId, cleaned("Engineer", Set.of())));
@@ -333,7 +360,7 @@ class NormalizedVacancyStoreTest {
 		long second = heldTitles().get(1).id();
 		List<Segment> segments = List.of(new Segment(SegmentKindEnum.ITEM, null, "Java", false));
 		this.normalized.recordCleanedVacancies(Map.of(first,
-				new CleanedVacancy(new CleanedTitle("Backend Engineer", Set.of()), segments), second,
+				new CleanedVacancy(new CleanedTitle("Backend Engineer", Set.of()), segments, null), second,
 				cleaned("Frontend Engineer", Set.of())));
 		this.normalized.recordClassifications(Map.of(first, Classification.in(), second, Classification.in()));
 
@@ -360,7 +387,11 @@ class NormalizedVacancyStoreTest {
 	}
 
 	private static CleanedVacancy cleaned(String title, Set<SeniorityLevelEnum> titleSeniorities) {
-		return new CleanedVacancy(new CleanedTitle(title, titleSeniorities), List.of());
+		return new CleanedVacancy(new CleanedTitle(title, titleSeniorities), List.of(), null);
+	}
+
+	private static CleanedVacancy detectedIn(String language) {
+		return new CleanedVacancy(new CleanedTitle("Engineer", Set.of()), List.of(), language);
 	}
 
 	private PublishedVacancy published(long externalId) {
@@ -368,9 +399,9 @@ class NormalizedVacancyStoreTest {
 	}
 
 	private PublishedVacancy published(long externalId, String language) {
-		return new PublishedVacancy(externalId, "Senior Backend Engineer", "Remote - Americas", "Engineering",
+		return new PublishedVacancy(String.valueOf(externalId), "Senior Backend Engineer", "Remote - Americas", "Engineering",
 				"Ship payments.", language, "https://job-boards.greenhouse.io/stripe/jobs/" + externalId, null, null, null, null,
-				Instant.parse("2026-09-01T14:00:00Z"), Instant.parse("2026-09-18T16:30:00Z"));
+				null, Instant.parse("2026-09-01T14:00:00Z"), Instant.parse("2026-09-18T16:30:00Z"), null, null, null);
 	}
 
 }

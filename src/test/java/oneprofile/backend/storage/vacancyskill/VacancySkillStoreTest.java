@@ -118,13 +118,13 @@ class VacancySkillStoreTest {
 	}
 
 	private static CleanedVacancy cleaned() {
-		return new CleanedVacancy(new CleanedTitle("Engineer", Set.of()), List.of());
+		return new CleanedVacancy(new CleanedTitle("Engineer", Set.of()), List.of(), null);
 	}
 
 	private PublishedVacancy published(long externalId) {
-		return new PublishedVacancy(externalId, "Senior Backend Engineer", "Remote - Americas", "Engineering",
+		return new PublishedVacancy(String.valueOf(externalId), "Senior Backend Engineer", "Remote - Americas", "Engineering",
 				"Ship payments.", "en", "https://job-boards.greenhouse.io/stripe/jobs/" + externalId, null, null, null, null,
-				Instant.parse("2026-09-01T14:00:00Z"), Instant.parse("2026-09-18T16:30:00Z"));
+				null, Instant.parse("2026-09-01T14:00:00Z"), Instant.parse("2026-09-18T16:30:00Z"), null, null, null);
 	}
 
 }

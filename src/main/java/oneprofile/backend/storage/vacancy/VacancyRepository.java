@@ -17,13 +17,14 @@ public interface VacancyRepository extends ListCrudRepository<VacancyEntity, Lon
 	List<VacancyEntity> findByCompany(CompanyEntity company);
 
 	/**
-	 * The titles and descriptions of the vacancies held after one id, in id order, so that a pass
+	 * The titles, descriptions and declared languages of the vacancies held after one id, in id order, so that a pass
 	 * over the whole corpus can be walked in batches and resumed from the last id it read.
 	 * @param after the id to read past, 0 to start at the first vacancy
 	 * @param limit how many to read at most
-	 * @return their ids, titles and descriptions
+	 * @return their ids, titles, descriptions and declared languages
 	 */
-	@Query("select new oneprofile.backend.storage.vacancy.VacancyText(v.id, v.title, v.description) from Vacancy v "
+	@Query("select new oneprofile.backend.storage.vacancy.VacancyText(v.id, v.title, v.description, v.language) "
+			+ "from Vacancy v "
 			+ "where v.id > :after order by v.id")
 	List<VacancyText> textsAfter(long after, Limit limit);
 

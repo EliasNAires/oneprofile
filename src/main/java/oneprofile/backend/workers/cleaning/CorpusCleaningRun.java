@@ -8,7 +8,6 @@ import java.util.Set;
 import oneprofile.backend.storage.normalizedvacancy.CleanedTitle;
 import oneprofile.backend.storage.normalizedvacancy.CleanedVacancy;
 import oneprofile.backend.storage.normalizedvacancy.NormalizedVacancyStore;
-import oneprofile.backend.storage.normalizedvacancy.Segment;
 import oneprofile.backend.storage.vacancy.VacancyStore;
 import oneprofile.backend.storage.vacancy.VacancyText;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,9 @@ import org.springframework.stereotype.Component;
  * Cleans the title of every vacancy in the corpus, and cuts its cleaned description into segments.
  * Over the whole of it, not over a subset: a clean title is what classification reads, and
  * classification is what decides which vacancies are in scope, so nothing has been ruled out yet.
- * The segments are cut here, once, so that no pass that reads descriptions cleans them again.
+ * The segments are cut here, once, so that no pass that reads descriptions cleans them again. Where
+ * a board declared no language for a vacancy, its language is detected here from the cleaned
+ * description, so that the body pass can tell what it does not read (#20).
  * <p>
  * The run is walked in batches and each batch is its own transaction, because the corpus is far too
  * large to hold one. A run that dies half way through leaves the vacancies it reached cleaned and
@@ -41,6 +42,8 @@ public class CorpusCleaningRun {
 
 	private final DescriptionSplittingRule splitting;
 
+	private final LanguageDetectionRule languageDetection;
+
 	private final VacancyStore vacancies;
 
 	private final NormalizedVacancyStore normalized;
@@ -52,31 +55,36 @@ public class CorpusCleaningRun {
 	 * @param titleCleaning the rules to clean each title with
 	 * @param descriptionCleaning the rule to clean each description with
 	 * @param splitting the rule to cut each cleaned description into segments with
+	 * @param languageDetection the rule to detect the language of a description its board declared none for
 	 * @param vacancies the corpus to read the titles and descriptions from
 	 * @param normalized where the cleaned titles and segments are recorded
 	 */
 	@Autowired
 	public CorpusCleaningRun(TitleCleaningRule titleCleaning, DescriptionCleaningRule descriptionCleaning,
-			DescriptionSplittingRule splitting, VacancyStore vacancies, NormalizedVacancyStore normalized) {
-		this(titleCleaning, descriptionCleaning, splitting, vacancies, normalized, BATCH);
+			DescriptionSplittingRule splitting, LanguageDetectionRule languageDetection, VacancyStore vacancies,
+			NormalizedVacancyStore normalized) {
+		this(titleCleaning, descriptionCleaning, splitting, languageDetection, vacancies, normalized, BATCH);
 	}
 
 	/**
 	 * @param titleCleaning the rules to clean each title with
 	 * @param descriptionCleaning the rule to clean each description with
 	 * @param splitting the rule to cut each cleaned description into segments with
+	 * @param languageDetection the rule to detect the language of a description its board declared none for
 	 * @param vacancies the corpus to read the titles and descriptions from
 	 * @param normalized where the cleaned titles and segments are recorded
 	 * @param batch how many vacancies are read and recorded at a time
 	 */
 	CorpusCleaningRun(TitleCleaningRule titleCleaning, DescriptionCleaningRule descriptionCleaning,
-			DescriptionSplittingRule splitting, VacancyStore vacancies, NormalizedVacancyStore normalized, int batch) {
+			DescriptionSplittingRule splitting, LanguageDetectionRule languageDetection, VacancyStore vacancies,
+			NormalizedVacancyStore normalized, int batch) {
 		if (batch < 1) {
 			throw new IllegalArgumentException("A batch has to hold at least one vacancy");
 		}
 		this.titleCleaning = titleCleaning;
 		this.descriptionCleaning = descriptionCleaning;
 		this.splitting = splitting;
+		this.languageDetection = languageDetection;
 		this.vacancies = vacancies;
 		this.normalized = normalized;
 		this.batch = batch;
@@ -94,6 +102,7 @@ public class CorpusCleaningRun {
 		Set<String> whitelisted = new HashSet<>();
 		Set<String> withoutSeniorityWords = new HashSet<>();
 		int recorded = 0;
+		int languagesDetected = 0;
 		long after = 0;
 		while (true) {
 			List<VacancyText> read = this.vacancies.textsAfter(after, this.batch);
@@ -110,18 +119,23 @@ public class CorpusCleaningRun {
 				withoutGenderMarkers.add(this.titleCleaning.withoutGenderMarkers(title));
 				whitelisted.add(this.titleCleaning.whitelisted(title));
 				withoutSeniorityWords.add(this.titleCleaning.withoutSeniorityWords(title).title());
-				cleanedVacancies.put(vacancy.id(), new CleanedVacancy(cleanedTitle, segments(vacancy.description())));
+				String cleanedDescription = (vacancy.description() != null)
+						? this.descriptionCleaning.clean(vacancy.description()) : null;
+				String detectedLanguage = (vacancy.language() == null && cleanedDescription != null)
+						? this.languageDetection.detect(cleanedDescription).orElse(null) : null;
+				if (detectedLanguage != null) {
+					languagesDetected++;
+				}
+				cleanedVacancies.put(vacancy.id(), new CleanedVacancy(cleanedTitle,
+						(cleanedDescription != null) ? this.splitting.split(cleanedDescription) : List.of(),
+						detectedLanguage));
 				after = vacancy.id();
 			}
 			recorded += this.normalized.recordCleanedVacancies(cleanedVacancies);
 		}
 		return new Report(recorded, titles.size(), cleaned.size(), titles.size() - evenlySpaced.size(),
 				evenlySpaced.size() - withoutGenderMarkers.size(), evenlySpaced.size() - whitelisted.size(),
-				evenlySpaced.size() - withoutSeniorityWords.size());
-	}
-
-	private List<Segment> segments(String description) {
-		return (description != null) ? this.splitting.split(this.descriptionCleaning.clean(description)) : List.of();
+				evenlySpaced.size() - withoutSeniorityWords.size(), languagesDetected);
 	}
 
 	/**
@@ -139,9 +153,11 @@ public class CorpusCleaningRun {
 	 * over and above the spacing it makes even
 	 * @param collapsedBySeniorityWords how many distinct titles removing the seniority words alone
 	 * collapses
+	 * @param languagesDetected how many vacancies whose board declared no language had one detected
 	 */
 	public record Report(int vacancies, int distinctTitles, int distinctCleanedTitles, int collapsedBySpacing,
-			int collapsedByGenderMarkers, int collapsedByWhitelist, int collapsedBySeniorityWords) {
+			int collapsedByGenderMarkers, int collapsedByWhitelist, int collapsedBySeniorityWords,
+			int languagesDetected) {
 	}
 
 }

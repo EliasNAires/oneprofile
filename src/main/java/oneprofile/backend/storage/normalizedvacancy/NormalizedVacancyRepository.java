@@ -31,13 +31,14 @@ public interface NormalizedVacancyRepository extends ListCrudRepository<Normaliz
 	/**
 	 * The pile held after one vacancy id, in id order, with each vacancy's language and segments: every
 	 * vacancy whose title was left unknown for a corpus reason, whatever the body has decided of it since.
+	 * Its language is the one its board declared, or else the one cleaning detected.
 	 * @param reasons the reasons a vacancy of the pile can hold
 	 * @param after the vacancy id to read past, 0 to start at the first
 	 * @param limit how many to read at most
 	 * @return the pile's vacancies, their cleaned titles, reasons, languages and segments
 	 */
 	@Query("select new oneprofile.backend.storage.normalizedvacancy.PileVacancy(n.id, n.vacancyId, "
-			+ "n.cleanedTitle, n.classificationReason, v.language, n.descriptionSegments) "
+			+ "n.cleanedTitle, n.classificationReason, coalesce(v.language, n.detectedLanguage), n.descriptionSegments) "
 			+ "from NormalizedVacancy n join Vacancy v on v.id = n.vacancyId "
 			+ "where n.vacancyId > :after and n.classificationReason in :reasons order by n.vacancyId")
 	List<PileVacancy> pileAfter(Collection<UnknownReasonEnum> reasons, long after, Limit limit);
@@ -47,7 +48,8 @@ public interface NormalizedVacancyRepository extends ListCrudRepository<Normaliz
 	 * and every one of the pile, whatever the body has decided of it since, in a language the body pass
 	 * reads.
 	 * @param pileReasons the title reasons that make the pile
-	 * @param languages the languages the body pass reads; a vacancy whose board names none is read
+	 * @param languages the languages the body pass reads, against the language its board declared or else
+	 * the one cleaning detected; a vacancy with neither is read
 	 * @param after the vacancy id to read past, 0 to start at the first
 	 * @param limit how many to read at most
 	 * @return the vacancies, their cleaned titles and segments
@@ -57,7 +59,8 @@ public interface NormalizedVacancyRepository extends ListCrudRepository<Normaliz
 			+ "from NormalizedVacancy n join Vacancy v on v.id = n.vacancyId where n.vacancyId > :after and ("
 			+ "(n.classificationState = oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum.IN "
 			+ "and n.classificationSignal = oneprofile.backend.storage.normalizedvacancy.ClassificationSignalEnum.TITLE) "
-			+ "or (n.classificationReason in :pileReasons and (v.language is null or v.language in :languages))) "
+			+ "or (n.classificationReason in :pileReasons and (coalesce(v.language, n.detectedLanguage) is null "
+			+ "or coalesce(v.language, n.detectedLanguage) in :languages))) "
 			+ "order by n.vacancyId")
 	List<ExtractionVacancy> extractionScopeAfter(Collection<UnknownReasonEnum> pileReasons,
 			Collection<String> languages, long after, Limit limit);

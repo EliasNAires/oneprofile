@@ -49,6 +49,8 @@ public class NormalizedVacancyEntity {
 	@JdbcTypeCode(SqlTypes.JSON)
 	private List<Segment> descriptionSegments;
 
+	private String detectedLanguage;
+
 	@ElementCollection
 	@CollectionTable(name = "normalized_vacancy_title_seniority",
 			joinColumns = @JoinColumn(name = "normalized_vacancy_id"))
@@ -66,8 +68,8 @@ public class NormalizedVacancyEntity {
 	/**
 	 * Takes on what cleaning made of the vacancy. Cleaning the same vacancy again replaces what the
 	 * last run recorded rather than adding to it.
-	 * @param cleaned the vacancy's title once cleaned with the levels it named, and its description's
-	 * segments
+	 * @param cleaned the vacancy's title once cleaned with the levels it named, its description's
+	 * segments, and the language detected where its board declared none
 	 */
 	public void cleanedAs(CleanedVacancy cleaned) {
 		CleanedTitle title = cleaned.cleanedTitle();
@@ -75,6 +77,7 @@ public class NormalizedVacancyEntity {
 		this.titleSeniorities.clear();
 		this.titleSeniorities.addAll(title.titleSeniorities());
 		this.descriptionSegments = cleaned.descriptionSegments();
+		this.detectedLanguage = cleaned.detectedLanguage();
 	}
 
 	/**
@@ -116,6 +119,14 @@ public class NormalizedVacancyEntity {
 	/** Its cleaned description cut into segments, null until cleaning has cut it. */
 	public List<Segment> descriptionSegments() {
 		return this.descriptionSegments;
+	}
+
+	/**
+	 * The language cleaning detected its description to be in, null where its board declared one or
+	 * the text did not say.
+	 */
+	public String detectedLanguage() {
+		return this.detectedLanguage;
 	}
 
 	/** Every seniority level its title names, empty if it names none. */

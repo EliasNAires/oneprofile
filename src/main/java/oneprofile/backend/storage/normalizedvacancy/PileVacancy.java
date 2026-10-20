@@ -13,7 +13,8 @@ import java.util.Set;
  * @param cleanedTitle its title with what is noise in any title taken out
  * @param titleReason why its title was left unknown, which stays on it once the body decides, or
  * {@code UNSUPPORTED_LANGUAGE} once the body pass has skipped it
- * @param language the language its board says it is written in, null if the board said none
+ * @param language the language its board says it is written in, or else the one cleaning detected,
+ * null if neither says
  * @param descriptionSegments its cleaned description cut into segments, null until cleaning has cut it
  */
 public record PileVacancy(long normalizedVacancyId, long vacancyId, String cleanedTitle, UnknownReasonEnum titleReason, String language,
@@ -26,8 +27,9 @@ public record PileVacancy(long normalizedVacancyId, long vacancyId, String clean
 	static final Set<String> SUPPORTED_LANGUAGES = Set.of("en", "es");
 
 	/**
-	 * Whether the body pass reads it. One whose board names no language is read.
-	 * @return whether it is in English or Spanish, or in no language its board named
+	 * Whether the body pass reads it. One in no language its board declared or cleaning detected is
+	 * read.
+	 * @return whether it is in English or Spanish, or in no language known
 	 */
 	public boolean inSupportedLanguage() {
 		return this.language == null || SUPPORTED_LANGUAGES.contains(this.language);

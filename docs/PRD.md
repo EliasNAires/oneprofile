@@ -38,25 +38,27 @@ search.
 
 ### 4.1 Sources
 
-Two applicant tracking systems: **Greenhouse**, built, and **Ashby**, not yet built. Why
-Ashby and not Workable or Lever: ADR-0002.
+Two applicant tracking systems, both built: **Greenhouse** and **Ashby** (#20). Why Ashby and
+not Workable or Lever: ADR-0002.
 
 ### 4.2 Slug discovery — built
 
 Slugs come from Common Crawl's cluster index over anonymous HTTPS range requests (ADR-0001).
 Backfill depth is **12 crawls**, roughly one year: the newest crawl yielded 77% live boards
-at 31.9 vacancies each, older ones 18–36% live at 3.8 each.
+at 31.9 vacancies each, older ones 18–36% live at 3.8 each. Ashby's twelve crawls name 4597
+boards, 72.5% of them live at 18.3 vacancies each (#20).
 
 ### 4.3 Board probing and vacancy ingestion
 
-Built for Greenhouse. Companies are probed and recorded as `ACTIVE`, `EMPTY` or `NOT_FOUND`;
-only `ACTIVE` companies are swept. `vacancy` is a **mirror of the board**: upsert what is
-returned, delete what has disappeared.
+Built for both ATSs, each at its own pace. Companies are probed and recorded as `ACTIVE`, `EMPTY`
+or `NOT_FOUND`; only `ACTIVE` companies are swept. `vacancy` is a **mirror of the board**: upsert
+what is returned, delete what has disappeared.
 
-Ashby, to build: `GET https://api.ashbyhq.com/posting-api/job-board/{slug}?includeCompensation=true`.
-Unauthenticated, whole board in one response, no pagination. Its structured fields
-(`workplaceType`, `secondaryLocations[]` with per-location countries, compensation) are kept
-— see §7.
+Ashby: `GET https://api.ashbyhq.com/posting-api/job-board/{slug}?includeCompensation=true`.
+Unauthenticated, whole board in one response, no pagination, so a probe reads what a sweep does.
+It names no company, so an Ashby company has no name. Its structured fields (`workplaceType`,
+`secondaryLocations[]` with per-location countries, compensation with its interval) are kept —
+see §7. Its yield: `docs/measurements/2026-10-ashby.md`.
 
 All ingestion is triggered manually by an administrative endpoint today. In production every
 stage runs on a schedule (§12.5), once the real runtimes are measured.
@@ -79,7 +81,9 @@ several. Work-mode words are **not** removed here; they belong to §5.3. The rul
 measured yield: `docs/measurements/2026-09-title-cleaning.md`.
 
 Cleaning also strips decoration from each description and cuts it into **segments** once, with
-boilerplate marked, for every pass that reads descriptions (#46).
+boilerplate marked, for every pass that reads descriptions (#46). Where a board declared no
+language, as Ashby never does, cleaning detects it from the description, by script and by function
+words, so the body pass skips a vacancy it does not read (#20). A declared language is kept.
 
 ### 5.2 Engineering roles — title pass built, body pass in its loop
 
@@ -237,9 +241,10 @@ company is `(ats, slug)`; a vacancy is `(company_id, external_id)`.
 
 - `company` — ats, slug, name, board_status, last_probed_at.
 - `vacancy` — the board mirror: title, location, department, description, url, language,
-  pay fields, dates. Ashby's structured fields (`workplaceType`, `addressCountry`) are
-  added as **nullable columns**; null means this ATS did not provide it, consistent with
-  the existing convention. Discarding Ashby's structured country to match Greenhouse's
+  pay fields, dates. `external_id` is text, since Ashby's ids are UUIDs. Ashby's structured
+  fields (`workplace_type`, `address_country`, `secondary_locations` with their countries,
+  `pay_interval`) are **nullable columns**; null means this ATS did not provide it, consistent
+  with the existing convention. Discarding Ashby's structured country to match Greenhouse's
   weaker free-text shape would throw away the best available eligibility input.
 - `normalized_vacancy` — one row per vacancy holding every derived scalar: cleaned title,
   normalized title, whether it is an engineering role, the signal that classified it, work
@@ -434,7 +439,8 @@ The launch gate:
 4. Titles are normalized and duplicate vacancies are collapsed.
 5. Seniority is read from the body.
 6. Eligibility is extracted, and its recall measured.
-7. **100k engineering vacancies live in one sweep.** The snapshot has 34,360. The figure for one
+7. **100k engineering vacancies live in one sweep.** The snapshot has 55,331 on live boards:
+   34,173 from Greenhouse and 21,158 from Ashby (`docs/measurements/2026-10-ashby.md`). The figure for one
    country, eligible plus unknown, is reported beside it but not gated on. The figures for
    Argentina, Brazil and Mexico decide later whether marketing aims at developers outside the US.
 

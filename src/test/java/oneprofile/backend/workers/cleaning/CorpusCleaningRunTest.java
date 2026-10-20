@@ -45,7 +45,7 @@ class CorpusCleaningRunTest {
 
 	@Test
 	void cutsTheCleanedDescriptionOfEveryVacancyIntoSegments() {
-		holds(new VacancyText(1, "Backend Engineer", "# Requirements\n- 🚀 Java"), titled(2, "Designer"));
+		holds(new VacancyText(1, "Backend Engineer", "# Requirements\n- 🚀 Java", "en"), titled(2, "Designer"));
 
 		cleaning(10).cleanAll();
 
@@ -54,6 +54,18 @@ class CorpusCleaningRunTest {
 					tuple(1L, List.of(new Segment(SegmentKindEnum.HEADING, null, "Requirements", false),
 							new Segment(SegmentKindEnum.ITEM, "Requirements", "Java", false))),
 					tuple(2L, List.of()));
+	}
+
+	@Test
+	void detectsTheLanguageOfADescriptionWhoseBoardDeclaredNoneAndOnlyThen() {
+		String german = "Wir suchen eine Entwicklerin für unser Team. Du arbeitest mit dem Produktteam und bist für die Plattform verantwortlich.";
+		holds(new VacancyText(1, "Entwickler", german, null), new VacancyText(2, "Entwickler", german, "en"),
+				new VacancyText(3, "Engineer", "Java", null));
+
+		assertThat(cleaning(10).cleanAll().languagesDetected()).isEqualTo(1);
+
+		assertThat(recorded()).extracting(Map.Entry::getKey, (entry) -> entry.getValue().detectedLanguage())
+			.containsExactly(tuple(1L, "de"), tuple(2L, null), tuple(3L, null));
 	}
 
 	@Test
@@ -111,7 +123,7 @@ class CorpusCleaningRunTest {
 	void reportsAnEmptyCorpusAsNothingCleaned() {
 		holds();
 
-		assertThat(cleaning(10).cleanAll()).isEqualTo(new CorpusCleaningRun.Report(0, 0, 0, 0, 0, 0, 0));
+		assertThat(cleaning(10).cleanAll()).isEqualTo(new CorpusCleaningRun.Report(0, 0, 0, 0, 0, 0, 0, 0));
 	}
 
 	@Test
@@ -121,12 +133,12 @@ class CorpusCleaningRunTest {
 
 	private CorpusCleaningRun cleaning(int batch) {
 		return new CorpusCleaningRun(new TitleCleaningRule(), new DescriptionCleaningRule(),
-				new DescriptionSplittingRule(), this.vacancies, this.normalized, batch);
+				new DescriptionSplittingRule(), new LanguageDetectionRule(), this.vacancies, this.normalized, batch);
 	}
 
 	/** Answers as the corpus does: the titles held after an id, in id order, at most a batch of them. */
 	private static VacancyText titled(long id, String title) {
-		return new VacancyText(id, title, null);
+		return new VacancyText(id, title, null, null);
 	}
 
 	private void holds(VacancyText... held) {

@@ -22,10 +22,11 @@ import oneprofile.backend.storage.company.CompanyStore;
 import org.junit.jupiter.api.Test;
 
 /**
- * The crawl the discovery is pointed at is a miniature of a real one: a {@code cluster.idx} of six
- * sampled keys over one shard of six blocks, one per Greenhouse host and one on either side.
+ * The crawl the discovery is pointed at is a miniature of a real one: a {@code cluster.idx} of eight
+ * sampled keys over one shard of eight blocks: Ashby's host with one on either side, one per
+ * Greenhouse host, and one after them.
  */
-class GreenhouseDiscoveryRunTest {
+class BoardDiscoveryRunTest {
 
 	private static final String CRAWL = "CC-MAIN-2026-34";
 
@@ -35,7 +36,7 @@ class GreenhouseDiscoveryRunTest {
 
 	private final CompanyStore companies = mock(CompanyStore.class);
 
-	private final GreenhouseDiscoveryRun discovery = new GreenhouseDiscoveryRun(new ClusterIndexParser(this.crawl),
+	private final BoardDiscoveryRun discovery = new BoardDiscoveryRun(new ClusterIndexParser(this.crawl),
 			new CdxBlockParser(this.crawl), this.companies);
 
 	@Test
@@ -43,29 +44,39 @@ class GreenhouseDiscoveryRunTest {
 		TreeSet<String> slugs = new TreeSet<>(List.of("acme", "decathlontechnology", "eikontherapeutics", "rightship"));
 		given(this.companies.record(eq(AtsEnum.GREENHOUSE), eq(slugs))).willReturn(3);
 
-		assertThat(this.discovery.discover(CRAWL)).isEqualTo(new GreenhouseDiscoveryRun.Report(CRAWL, 4, 3));
+		assertThat(this.discovery.discover(AtsEnum.GREENHOUSE, CRAWL))
+			.isEqualTo(new BoardDiscoveryRun.Report(AtsEnum.GREENHOUSE, CRAWL, 4, 3));
+	}
+
+	@Test
+	void recordsTheSlugOfEveryAshbyBoardCapturedAndNoGreenhouseOne() throws IOException {
+		TreeSet<String> slugs = new TreeSet<>(List.of("linear", "ramp"));
+		given(this.companies.record(eq(AtsEnum.ASHBY), eq(slugs))).willReturn(2);
+
+		assertThat(this.discovery.discover(AtsEnum.ASHBY, CRAWL))
+			.isEqualTo(new BoardDiscoveryRun.Report(AtsEnum.ASHBY, CRAWL, 2, 2));
 	}
 
 	@Test
 	void doesNotRecordAnythingWhenTheCrawlCouldNotBeRead() {
-		GreenhouseDiscoveryRun discovery = new GreenhouseDiscoveryRun(new ClusterIndexParser(new UnreachableCrawl()),
+		BoardDiscoveryRun discovery = new BoardDiscoveryRun(new ClusterIndexParser(new UnreachableCrawl()),
 				new CdxBlockParser(new UnreachableCrawl()), this.companies);
 
-		assertThatIOException().isThrownBy(() -> discovery.discover(CRAWL));
+		assertThatIOException().isThrownBy(() -> discovery.discover(AtsEnum.GREENHOUSE, CRAWL));
 		then(this.companies).shouldHaveNoInteractions();
 	}
 
 	@Test
 	void readsEachBlockOnceEvenWhereSeveralHostsNameIt() throws IOException {
-		this.discovery.discover(CRAWL);
+		this.discovery.discover(AtsEnum.GREENHOUSE, CRAWL);
 
 		assertThat(this.crawl.blockReads()).hasSize(6).doesNotHaveDuplicates();
 	}
 
 	/**
 	 * A crawl index of one shard, served as ranges the way {@code data.commoncrawl.org} serves it.
-	 * Its {@code cluster.idx} samples one key before the Greenhouse hosts, one per host, and one
-	 * after them, so that every host's search also reaches its neighbours' blocks.
+	 * Its {@code cluster.idx} samples one key on either side of Ashby's host, one per Greenhouse host,
+	 * and one after them, so that every host's search also reaches its neighbours' blocks.
 	 */
 	private static final class UnreachableCrawl implements RangeReaderPort {
 
@@ -94,6 +105,10 @@ class GreenhouseDiscoveryRunTest {
 		private MiniatureCrawl() {
 			ByteArrayOutputStream shard = new ByteArrayOutputStream();
 			StringBuilder clusterIndex = new StringBuilder();
+			appendBlock(shard, clusterIndex, "com,aaa)/", List.of(capture("https://aaa.com/")));
+			appendBlock(shard, clusterIndex, "com,ashbyhq,jobs)/linear",
+					List.of(capture("https://jobs.ashbyhq.com/linear/2b5c8a1e-0d4f-4c1e-9d0a-1b2c3d4e5f60"),
+							capture("https://jobs.ashbyhq.com/Ramp/application")));
 			appendBlock(shard, clusterIndex, "io,aaa)/", List.of(capture("https://aaa.io/")));
 			appendBlock(shard, clusterIndex, "io,greenhouse,boards)/acme",
 					List.of(capture("https://boards.greenhouse.io/acme/jobs/1"),

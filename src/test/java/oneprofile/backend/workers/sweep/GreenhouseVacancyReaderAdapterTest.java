@@ -63,10 +63,10 @@ class GreenhouseVacancyReaderAdapterTest {
 	void readsEveryOpeningOfABoardAskingForItsContentAndPay() throws IOException {
 		serve((exchange) -> respondWith(exchange, 200, BOARD));
 
-		assertThat(reader().read("stripe")).containsExactly(new PublishedVacancy(4001L, "Backend Engineer",
+		assertThat(reader().read("stripe")).containsExactly(new PublishedVacancy("4001", "Backend Engineer",
 				"Remote - Americas", "Engineering", "Ship payments.", "en",
-				"https://job-boards.greenhouse.io/stripe/jobs/4001", 15000000L, 20000000L, "USD", "Annual Salary",
-				Instant.parse("2026-09-01T14:00:00Z"), Instant.parse("2026-09-18T16:30:00Z")));
+				"https://job-boards.greenhouse.io/stripe/jobs/4001", 15000000L, 20000000L, "USD", "Annual Salary", null,
+				Instant.parse("2026-09-01T14:00:00Z"), Instant.parse("2026-09-18T16:30:00Z"), null, null, null));
 		assertThat(this.queries).containsExactly("/v1/boards/stripe/jobs?content=true&pay_transparency=true");
 	}
 

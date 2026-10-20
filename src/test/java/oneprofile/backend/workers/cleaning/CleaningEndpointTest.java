@@ -20,12 +20,12 @@ class CleaningEndpointTest {
 
 	@Test
 	void reportsWhatTheRunCleanedAndWhatEachRuleCollapsed() {
-		given(this.cleaning.cleanAll()).willReturn(new CorpusCleaningRun.Report(179098, 115286, 104906, 3412, 426, 1921, 4282));
+		given(this.cleaning.cleanAll()).willReturn(new CorpusCleaningRun.Report(179098, 115286, 104906, 3412, 426, 1921, 4282, 812));
 
 		assertThat(this.mvc.post().uri("/cleanings")).hasStatusOk().bodyJson().isEqualTo("""
 				{"vacancies":179098,"distinctTitles":115286,"distinctCleanedTitles":104906,\
 				"collapsedBySpacing":3412,"collapsedByGenderMarkers":426,"collapsedByWhitelist":1921,\
-				"collapsedBySeniorityWords":4282}""");
+				"collapsedBySeniorityWords":4282,"languagesDetected":812}""");
 	}
 
 }

@@ -39,7 +39,7 @@ class BoardSweepRunTest {
 		BoardSweepRun sweep = sweepOf(Map.of("stripe", List.of(published(4001), published(4002), published(4003)),
 				"notion", List.of(published(5001))));
 
-		assertThat(sweep.sweepAll()).isEqualTo(new BoardSweepRun.Report(2, 4, 2, 2, 3, 0));
+		assertThat(sweep.sweepAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardSweepRun.Report(2, 4, 2, 2, 3, 0));
 		then(this.vacancies).should().mirror(AtsEnum.GREENHOUSE, "notion", List.of(published(5001)));
 	}
 
@@ -52,7 +52,7 @@ class BoardSweepRunTest {
 		boards.put("stripe", List.of(published(4001)));
 		boards.put("unreachable", null);
 
-		assertThat(sweepOf(boards).sweepAll()).isEqualTo(new BoardSweepRun.Report(2, 1, 1, 0, 0, 1));
+		assertThat(sweepOf(boards).sweepAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardSweepRun.Report(2, 1, 1, 0, 0, 1));
 
 		then(this.vacancies).should(BDDMockito.never()).mirror(eq(AtsEnum.GREENHOUSE), eq("unreachable"), any());
 	}
@@ -61,14 +61,27 @@ class BoardSweepRunTest {
 	void waitsBetweenBoardsSoThatTheAtsIsNotAskedTooOften() {
 		activeSlugs("stripe", "notion", "figma");
 		given(this.vacancies.mirror(any(), any(), any())).willReturn(new VacancyStore.Reconciliation(0, 0, 0));
-		BoardSweepRun sweep = new BoardSweepRun(AtsEnum.GREENHOUSE,
-				reader(Map.of("stripe", List.of(), "notion", List.of(), "figma", List.of())), this.companies,
-				this.vacancies, Duration.ofMillis(50));
+		BoardSweepRun sweep = new BoardSweepRun(
+				Map.of(AtsEnum.GREENHOUSE, reader(Map.of("stripe", List.of(), "notion", List.of(), "figma", List.of()))),
+				Map.of(AtsEnum.GREENHOUSE, Duration.ofMillis(50)), this.companies, this.vacancies);
 
 		Instant before = Instant.now();
-		sweep.sweepAll();
+		sweep.sweepAll(AtsEnum.GREENHOUSE);
 
 		assertThat(Duration.between(before, Instant.now())).isGreaterThanOrEqualTo(Duration.ofMillis(100));
+	}
+
+	@Test
+	void sweepsTheBoardsOfTheAtsItIsAskedForWithThatAtssReader() {
+		given(this.companies.slugsOf(AtsEnum.ASHBY, BoardStatusEnum.ACTIVE)).willReturn(new TreeSet<>(List.of("ramp")));
+		given(this.vacancies.mirror(eq(AtsEnum.ASHBY), eq("ramp"), any()))
+			.willReturn(new VacancyStore.Reconciliation(1, 0, 0));
+		BoardSweepRun sweep = new BoardSweepRun(
+				Map.of(AtsEnum.GREENHOUSE, reader(Map.of()), AtsEnum.ASHBY, reader(Map.of("ramp", List.of(published(1))))),
+				Map.of(AtsEnum.GREENHOUSE, Duration.ZERO, AtsEnum.ASHBY, Duration.ZERO), this.companies, this.vacancies);
+
+		assertThat(sweep.sweepAll(AtsEnum.ASHBY)).isEqualTo(new BoardSweepRun.Report(1, 1, 1, 0, 0, 0));
+		then(this.vacancies).should().mirror(AtsEnum.ASHBY, "ramp", List.of(published(1)));
 	}
 
 	private void activeSlugs(String... slugs) {
@@ -76,7 +89,8 @@ class BoardSweepRunTest {
 	}
 
 	private BoardSweepRun sweepOf(Map<String, List<PublishedVacancy>> boards) {
-		return new BoardSweepRun(AtsEnum.GREENHOUSE, reader(boards), this.companies, this.vacancies, Duration.ZERO);
+		return new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader(boards)), Map.of(AtsEnum.GREENHOUSE, Duration.ZERO),
+				this.companies, this.vacancies);
 	}
 
 	/** Answers what the map holds, and fails to read the slugs it maps to null. */
@@ -91,9 +105,9 @@ class BoardSweepRunTest {
 	}
 
 	private PublishedVacancy published(long externalId) {
-		return new PublishedVacancy(externalId, "Backend Engineer", "Remote - Americas", "Engineering",
+		return new PublishedVacancy(String.valueOf(externalId), "Backend Engineer", "Remote - Americas", "Engineering",
 				"Ship payments.", "en", "https://job-boards.greenhouse.io/stripe/jobs/" + externalId, null, null, null, null,
-				Instant.parse("2026-09-01T14:00:00Z"), Instant.parse("2026-09-18T16:30:00Z"));
+				null, Instant.parse("2026-09-01T14:00:00Z"), Instant.parse("2026-09-18T16:30:00Z"), null, null, null);
 	}
 
 }

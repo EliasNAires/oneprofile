@@ -44,7 +44,7 @@ public class VacancyStore {
 			.orElseThrow(() -> new IllegalStateException("No %s company is held under %s".formatted(ats, slug)));
 		// Whatever is left once every published opening has been taken out of it is exactly what the
 		// board has stopped publishing.
-		Map<Long, VacancyEntity> held = new HashMap<>();
+		Map<String, VacancyEntity> held = new HashMap<>();
 		for (VacancyEntity vacancy : this.repository.findByCompany(company)) {
 			held.put(vacancy.externalId(), vacancy);
 		}
@@ -65,11 +65,11 @@ public class VacancyStore {
 	}
 
 	/**
-	 * The titles and descriptions of the vacancies held after one id, in id order. Cleaning walks
+	 * The titles, descriptions and declared languages of the vacancies held after one id, in id order. Cleaning walks
 	 * the corpus with this, batch by batch, resuming from the last id it read.
 	 * @param after the id to read past, 0 to start at the first vacancy
 	 * @param batch how many to read at most
-	 * @return their ids, titles and descriptions, empty once there are none left
+	 * @return their ids, titles, descriptions and declared languages, empty once there are none left
 	 */
 	@Transactional(readOnly = true)
 	public List<VacancyText> textsAfter(long after, int batch) {

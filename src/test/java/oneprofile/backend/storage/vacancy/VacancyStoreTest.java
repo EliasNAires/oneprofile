@@ -60,6 +60,37 @@ class VacancyStoreTest {
 	}
 
 	@Test
+	void holdsWhatAnAtsPublishesAsStructuredFieldsAndAnIdThatIsNoNumber() {
+		this.companies.record(AtsEnum.ASHBY, List.of("ramp"));
+		PublishedVacancy published = new PublishedVacancy("34413f8d-26bf-4bbc-8ade-eb309a0e2245",
+				"Security Engineer, Cloud", "New York, NY (HQ)", "Engineering", "Secure the cloud.", null,
+				"https://jobs.ashbyhq.com/ramp/34413f8d-26bf-4bbc-8ade-eb309a0e2245", 21140000L, 29060000L, "USD", null,
+				"1 YEAR", FIRST_PUBLISHED_AT, null, "Hybrid", "USA",
+				List.of(new SecondaryLocation("Remote (Canada)", "Canada"), new SecondaryLocation("Anywhere", null)));
+
+		this.vacancies.mirror(AtsEnum.ASHBY, "ramp", List.of(published));
+
+		VacancyEntity held = this.repository.findAll().getFirst();
+		assertThat(held.externalId()).isEqualTo("34413f8d-26bf-4bbc-8ade-eb309a0e2245");
+		assertThat(held.payInterval()).isEqualTo("1 YEAR");
+		assertThat(held.workplaceType()).isEqualTo("Hybrid");
+		assertThat(held.addressCountry()).isEqualTo("USA");
+		assertThat(held.secondaryLocations()).containsExactly(new SecondaryLocation("Remote (Canada)", "Canada"),
+				new SecondaryLocation("Anywhere", null));
+	}
+
+	@Test
+	void holdsNothingForTheFieldsAnAtsDoesNotProvide() {
+		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001)));
+
+		VacancyEntity held = held(4001);
+		assertThat(held.payInterval()).isNull();
+		assertThat(held.workplaceType()).isNull();
+		assertThat(held.addressCountry()).isNull();
+		assertThat(held.secondaryLocations()).isNull();
+	}
+
+	@Test
 	void addsNothingWhenTheBoardHasNotChanged() {
 		List<PublishedVacancy> board = List.of(published(4001), published(4002));
 		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", board);
@@ -73,9 +104,9 @@ class VacancyStoreTest {
 	void overwritesAVacancyTheBoardHasChanged() {
 		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001)));
 
-		PublishedVacancy renamed = new PublishedVacancy(4001, "Staff Backend Engineer", "Remote - Americas",
+		PublishedVacancy renamed = new PublishedVacancy("4001", "Staff Backend Engineer", "Remote - Americas",
 				"Engineering", "Ship payments.", "en", "https://job-boards.greenhouse.io/stripe/jobs/4001", 15000000L,
-				20000000L, "USD", "Annual Salary", FIRST_PUBLISHED_AT, UPDATED_AT.plusSeconds(3600));
+				20000000L, "USD", "Annual Salary", null, FIRST_PUBLISHED_AT, UPDATED_AT.plusSeconds(3600), null, null, null);
 		assertThat(this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(renamed)))
 			.isEqualTo(new VacancyStore.Reconciliation(0, 1, 0));
 
@@ -92,7 +123,7 @@ class VacancyStoreTest {
 			.isEqualTo(new VacancyStore.Reconciliation(0, 1, 1));
 		assertThat(this.repository.findAll()).singleElement()
 			.extracting(VacancyEntity::externalId)
-			.isEqualTo(4002L);
+			.isEqualTo("4002");
 	}
 
 	@Test
@@ -143,15 +174,15 @@ class VacancyStoreTest {
 	private VacancyEntity held(long externalId) {
 		return this.repository.findAll()
 			.stream()
-			.filter((vacancy) -> vacancy.externalId() == externalId)
+			.filter((vacancy) -> vacancy.externalId().equals(String.valueOf(externalId)))
 			.findFirst()
 			.orElseThrow();
 	}
 
 	private PublishedVacancy published(long externalId) {
-		return new PublishedVacancy(externalId, "Backend Engineer", "Remote - Americas", "Engineering",
+		return new PublishedVacancy(String.valueOf(externalId), "Backend Engineer", "Remote - Americas", "Engineering",
 				"Ship payments.", "en", "https://job-boards.greenhouse.io/stripe/jobs/" + externalId, 15000000L, 20000000L,
-				"USD", "Annual Salary", FIRST_PUBLISHED_AT, UPDATED_AT);
+				"USD", "Annual Salary", null, FIRST_PUBLISHED_AT, UPDATED_AT, null, null, null);
 	}
 
 }
