@@ -1,0 +1,22 @@
+{
+  "43560": {"verdict": "b", "clause": "Q3 — the role reads or operates on engineer-facing artifacts", "pattern": "data engineering duties beyond analytics"},
+  "60337": {"verdict": "b", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "analyst required to use SQL"},
+  "185067": {"verdict": "a", "clause": "A programming language asked for analysis, modelling or simulation of such a product does not move the role into software", "pattern": "programming language for product modeling"},
+  "179766": {"verdict": "b", "clause": "Low-code is software work: an ERP or quality system implemented and configured", "pattern": "ERP system implemented and configured"},
+  "191568": {"verdict": "b", "clause": "Knowledge of a field the role is about is expertise outside software when the description requires it", "pattern": "scientific domain expertise required"},
+  "42356": {"verdict": "a", "clause": "Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, schemas, logs, specs", "pattern": "operates on security logs"},
+  "205935": {"verdict": "b", "clause": "Q2 — the role writes code as its primary artifact", "pattern": "hands-on coding engineering manager"},
+  "163695": {"verdict": "b", "clause": "technical experience in a field, when that field is software — logs analytics, observability, developer tools", "pattern": "desired developer tools experience"},
+  "105441": {"verdict": "b", "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these", "pattern": "vague technical familiarity no named skill"},
+  "215770": {"verdict": "b", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "analyst required to use SQL"},
+  "161829": {"verdict": "a", "clause": "Q1 — it has to be a vacancy: talent-community sign-ups, general applications", "pattern": "general application not a vacancy"},
+  "110012": {"verdict": "b", "clause": "a programming language, by name; ... cloud, container, infrastructure or networking skills", "pattern": "named languages and cloud skills listed"},
+  "129835": {"verdict": "a", "clause": "Q2 — the role writes code as its primary artifact", "pattern": "named backend languages required"},
+  "68750": {"verdict": "b", "clause": "If none holds, it is OUT", "pattern": "support manager no named skill"},
+  "59811": {"verdict": "a", "clause": "A skill offered as one choice among tools or skills that are not software skills is not asked for", "pattern": "SQL or Excel alternative"},
+  "86392": {"verdict": "b", "clause": "A role that supports a sale without carrying its quota ... is decided by Q4 like any other", "pattern": "technical background required for presales role"},
+  "14111": {"verdict": "b", "clause": "a choice whose every option is a software skill ... is asked for", "pattern": "technical background required for presales role"},
+  "51127": {"verdict": "b", "clause": "Knowledge of a field the role is about is expertise outside software when the description requires it", "pattern": "financial crime domain expertise required"},
+  "14342": {"verdict": "a", "clause": "Q3 — the role reads or operates on engineer-facing artifacts", "pattern": "architect works with API and architecture artifacts"},
+  "166015": {"verdict": "a", "clause": "Q1 — it has to be a vacancy: talent-community sign-ups, general applications", "pattern": "general application not a vacancy"}
+}

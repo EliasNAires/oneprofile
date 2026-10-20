@@ -1,0 +1,22 @@
+{
+  "30154": {"verdict": "a", "clause": "Knowledge of a field the role is about is expertise outside software", "pattern": "domain expertise required outside software"},
+  "131519": {"verdict": "b", "clause": "A physical product the role designs, integrates, tests or certifies", "pattern": "writes test software no EE degree required"},
+  "78306": {"verdict": "a", "clause": "Given a vacancy, it is IN if any one of these holds", "pattern": "no software background stated"},
+  "192565": {"verdict": "a", "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these", "pattern": "vague technical fluency no named skill"},
+  "195541": {"verdict": "b", "clause": "If none holds, it is OUT", "pattern": "no software background stated"},
+  "98104": {"verdict": "b", "clause": "A background that is desired or desirable is preferred, and counts", "pattern": "desired qualifications heading counts preferred"},
+  "5222": {"verdict": "a", "clause": "A skill the applicant may learn instead is not asked for", "pattern": "skill offered as learnable not required"},
+  "112896": {"verdict": "b", "clause": "If none holds, it is OUT", "pattern": "no software background stated"},
+  "212076": {"verdict": "a", "clause": "A degree list counts only when every field it accepts is a computing field", "pattern": "degree list open includes bare engineering"},
+  "182040": {"verdict": "b", "clause": "A role that supports a sale without carrying its quota ... is decided by Q4 like any other", "pattern": "named background not software specific"},
+  "178384": {"verdict": "a", "clause": "An administrator whose work is not software under this paragraph is still decided by Q4", "pattern": "platform administrator main work not building"},
+  "59035": {"verdict": "a", "clause": "If none holds, it is OUT", "pattern": "no software background stated"},
+  "14858": {"verdict": "b", "clause": "Knowledge of a field the role is about is expertise outside software", "pattern": "domain expertise required outside software"},
+  "1295": {"verdict": "b", "clause": "Knowledge of a field the role is about is expertise outside software", "pattern": "domain expertise required outside software"},
+  "108875": {"verdict": "a", "clause": "a background asked for in those words: \"a software engineering background\", \"experience as a software engineer\"", "pattern": "stated software development background required"},
+  "163203": {"verdict": "b", "clause": "Knowledge of a field the role is about is expertise outside software", "pattern": "domain expertise required outside software"},
+  "135679": {"verdict": "a", "clause": "Low-code is software work", "pattern": "builds low-code tools and SQL"},
+  "18656": {"verdict": "a", "clause": "An administrator whose work is not software under this paragraph is still decided by Q4", "pattern": "platform administrator main work not building"},
+  "178781": {"verdict": "b", "clause": "cloud, container, infrastructure or networking skills", "pattern": "networking and security skills required"},
+  "215817": {"verdict": "a", "clause": "Low-code is software work", "pattern": "configures SaaS platform no domain requirement"}
+}

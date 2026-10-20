@@ -1,0 +1,102 @@
+{
+  "116765": {
+    "verdict": "b",
+    "clause": "A list that also accepts physics, mathematics, another engineering discipline, 'engineering' without a discipline, any STEM field, policy or business",
+    "pattern": "degree list mixes business and engineering"
+  },
+  "181286": {
+    "verdict": "a",
+    "clause": "A physical product the role designs, integrates, tests or certifies ... is another domain, unless the role's own work on it is software",
+    "pattern": "physical product, no software work stated"
+  },
+  "88821": {
+    "verdict": "a",
+    "clause": "Low-code is software work",
+    "pattern": "administers CRM/ERP tool, no software skill"
+  },
+  "29937": {
+    "verdict": "b",
+    "clause": "A skill offered as one choice among tools or skills that are not software skills is not asked for",
+    "pattern": "SQL or BI tools listed together"
+  },
+  "161856": {
+    "verdict": "b",
+    "clause": "A physical product the role designs, integrates, tests or certifies ... is another domain, unless the role's own work on it is software",
+    "pattern": "pre-sales engineer, no own code written"
+  },
+  "8568": {
+    "verdict": "b",
+    "clause": "A skill joined to the others with \"and\" ... is asked for",
+    "pattern": "PM required SQL joined with and"
+  },
+  "74646": {
+    "verdict": "a",
+    "clause": "Once the description asks for a software background, Q4 holds",
+    "pattern": "PM technical platform, no enumerated skill"
+  },
+  "187360": {
+    "verdict": "b",
+    "clause": "Are the duties technical in themselves — owning API specs, reading logs, making architecture calls, writing queries or code?",
+    "pattern": "PM making architecture interface decisions"
+  },
+  "41067": {
+    "verdict": "b",
+    "clause": "Knowledge of a field the role is about is expertise outside software when the description requires it",
+    "pattern": "code role requires physical-engineering expertise"
+  },
+  "201992": {
+    "verdict": "b",
+    "clause": "The description names another domain — highways, a plant, body metals, HVAC, construction, process equipment",
+    "pattern": "named plant or process domain"
+  },
+  "2260": {
+    "verdict": "a",
+    "clause": "Knowledge of a field the role is about is expertise outside software when the description requires it",
+    "pattern": "ERP builder requires finance expertise"
+  },
+  "74371": {
+    "verdict": "b",
+    "clause": "Selling is decided by the duties",
+    "pattern": "presales support role, cloud skill required"
+  },
+  "1971": {
+    "verdict": "b",
+    "clause": "Knowledge of a field the role is about is expertise outside software when the description requires it",
+    "pattern": "SAP functional role requires finance expertise"
+  },
+  "140080": {
+    "verdict": "a",
+    "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R",
+    "pattern": "marketing analyst SQL core requirement"
+  },
+  "171828": {
+    "verdict": "b",
+    "clause": "Q3 — the role reads or operates on engineer-facing artifacts",
+    "pattern": "role reviews API docs directly"
+  },
+  "44671": {
+    "verdict": "a",
+    "clause": "unless the role's own work on it is software: writing its code, its software tests or its software's architecture",
+    "pattern": "systems engineer does software test evaluation"
+  },
+  "28652": {
+    "verdict": "b",
+    "clause": "Are the duties technical in themselves — owning API specs, reading logs, making architecture calls, writing queries or code?",
+    "pattern": "PM making architecture interface decisions"
+  },
+  "53651": {
+    "verdict": "b",
+    "clause": "A physical product the role designs, integrates, tests or certifies ... is another domain, unless the role's own work on it is software",
+    "pattern": "physical product, no software work stated"
+  },
+  "196355": {
+    "verdict": "b",
+    "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R",
+    "pattern": "SQL strongly preferred for analytics role"
+  },
+  "206553": {
+    "verdict": "b",
+    "clause": "Algorithms the role writes to run in or with the product ... are the product's code",
+    "pattern": "algorithm writing counts as code"
+  }
+}
