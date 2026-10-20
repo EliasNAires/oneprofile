@@ -1,0 +1,118 @@
+Round 7: running the body pass over the pile
+  {'pile': 21246, 'in': 7979, 'out': 12515, 'unknown': 25, 'unsupportedLanguage': 727} in 93.6s
+  IN: predicted 7979, drew 200
+  OUT: predicted 12515, drew 200
+  UNKNOWN: predicted 25, not drawn
+4 already labelled, 396 to label
+  100106	IN	5106 tokens	EOG Enterprise Policy Analyst ESOM
+  82509	IN	4877 tokens	Production Engineer
+  69335	OUT	5157 tokens	Visual Systems Engineer CCD Engineer Cell Line
+  142868	IN	4940 tokens	NOC Engineer
+  136175	IN	6185 tokens	Playwright Specialist Sales Engineer Professional Services Consultant
+  28075	IN	6122 tokens	GTM Engineer
+  128802	IN	5404 tokens	Systems Engineer
+  178760	OUT	6029 tokens	AI Security Specialist UK&I
+  167407	IN	5129 tokens	Engineering Manager CDN
+  178775	IN	5908 tokens	Product Specialist Eastern Time
+  199737	IN	5610 tokens	Technology Summer Internship
+  92156	OUT	5453 tokens	Agile Project Manager Delivery Lead Data Decision Intelligence
+  52286	IN	5104 tokens	Chrome Extension Engineer
+  14007	IN	5973 tokens	Global Partner Technical Success Director
+  92489	IN	5281 tokens	Integration Developer
+  46145	IN	5017 tokens	Cybersecurity Specialist RMF IL 6 ACWS
+  19097	IN	4957 tokens	Product Engineering Lead
+  2171	IN	5926 tokens	Systems Engineer
+  158281	OUT	5472 tokens	Energy Analyst Intern Economics Summer 2027
+  114926	IN	5263 tokens	Product Support Engineer 1 Vigo Spain
+  40939	IN	5801 tokens	Engineer Prime Systems Services
+  167806	IN	5535 tokens	Global Solutions Engineer LATAM
+  38409	IN	5364 tokens	Staff Technical Risk Architect Unified Trading
+  60441	IN	6791 tokens	Product Manager Enterprise Data Products AI
+  137188	OUT	6366 tokens	Lead Engineer ME Integration
+  45455	IN	6042 tokens	Staff Production Engineer Public Sector
+  25881	IN	5267 tokens	Server Engineer
+  186033	IN	5804 tokens	Engineering Manager App Stores
+  19871	OUT	5944 tokens	Sales Engineer Enterprise
+  43639	IN	5938 tokens	Salesforce Technical Administrator
+  100745	IN	5964 tokens	Manager Technical Services Engineering Support
+  30770	IN	5605 tokens	Alliances Field Engineer
+  207014	OUT	5789 tokens	Head of Growth Product
+  165501	OUT	6144 tokens	Product Manager Payments
+  157636	IN	5099 tokens	Acceleration Kernel Developer Lead
+  129210	IN	4751 tokens	Data Support Specialist
+  148482	IN	5001 tokens	Monetization Operations Analyst
+  161023	IN	6059 tokens	Engineering Manager
+  213316	IN	5384 tokens	Solutions Engineer EMEA
+  117437	OUT	4987 tokens	Risk Data Analyst Integrated Risk Management
+  146955	IN	5384 tokens	Technical Lead
+  105836	IN	5372 tokens	Recommendation Engineer
+  178887	OUT	5580 tokens	Sales Engineer Commercial
+  166486	IN	5343 tokens	NodeJS Typescripts OMS Developer
+  212140	IN	5604 tokens	Data Analyst
+  70711	OUT	5885 tokens	Systems Engineer
+  141456	IN	5069 tokens	Functional Tester
+  51137	IN	5910 tokens	Engineering Manager FX Risk
+  148314	OUT	5007 tokens	Data Excellence Manager
+  5218	IN	6070 tokens	Analyst Flights Marketing Bangkok Based relocation provided
+  24064	IN	5192 tokens	Developer
+  195103	IN	5811 tokens	Project Manager Professional Services
+  196152	OUT	5174 tokens	Salesforce Administrator Assistant Vice President
+  206740	IN	5645 tokens	IT Support Specialist
+  180473	IN	5764 tokens	Staff Engineer Guest Host Host Listings Quality
+  118553	IN	5338 tokens	Product Support Specialist Guatemala
+  118763	OUT	5112 tokens	Sector Analyst Proprietary Research
+Traceback (most recent call last):
+  File "/home/elias/Documents/proyectos/oneprofile/backend/scripts/score-body-round", line 173, in <module>
+    bodyloop.label([vacancy_id for state in bodyloop.STATES for vacancy_id in drawn[state]], pile)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/elias/Documents/proyectos/oneprofile/backend/scripts/bodyloop.py", line 133, in label
+    response = ask_jev(key, criterion, row["cleaned_title"], row["title_reason"], row["cleaned_description"])
+  File "/home/elias/Documents/proyectos/oneprofile/backend/scripts/bodyloop.py", line 102, in ask_jev
+    return jev.ask(key, {"title": title, "title_reason": title_reason, "description": description}, {
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        "engineering_role": {
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        },
+        ^^
+    })
+    ^^
+  File "/home/elias/Documents/proyectos/oneprofile/backend/scripts/jev.py", line 60, in ask
+    with urllib.request.urlopen(request, timeout=120) as response:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/urllib/request.py", line 187, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/urllib/request.py", line 487, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.14/urllib/request.py", line 504, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/usr/lib/python3.14/urllib/request.py", line 464, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.14/urllib/request.py", line 1368, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        context=self._context)
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/urllib/request.py", line 1324, in do_open
+    r = h.getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1478, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 343, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 304, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 729, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.14/ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+ssl.SSLError: [SSL: SSLV3_ALERT_BAD_RECORD_MAC] ssl/tls alert bad record mac (_ssl.c:2713)

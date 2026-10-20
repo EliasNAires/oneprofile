@@ -1,0 +1,823 @@
+Round 7: running the body pass over the pile
+  {'pile': 21246, 'in': 7979, 'out': 12515, 'unknown': 25, 'unsupportedLanguage': 727} in 92.0s
+  IN: predicted 7979, drew 200
+  OUT: predicted 12515, drew 200
+  UNKNOWN: predicted 25, not drawn
+61 already labelled, 339 to label
+  206075	IN	5660 tokens	Product Manager Notifications
+  51130	IN	5577 tokens	Data Analyst II Treasury
+  16054	OUT	5131 tokens	Information Security Lead AI Financial Services
+  12900	IN	5810 tokens	Performance Engineer GPU
+  73045	IN	5756 tokens	Manager Marketing Revenue Analytics
+  33202	IN	6503 tokens	Lead Deployment Engineer
+  111908	OUT	5561 tokens	Marketing Program Manager
+  170945	IN	5295 tokens	Marketo Engineer
+  15630	OUT	5562 tokens	AI Solutions Manager East
+  98274	IN	5305 tokens	Systems Engineer III 6706
+  177189	IN	5649 tokens	Sales Operations Analyst
+  189681	IN	5536 tokens	Sales Engineer Majors Central
+  45070	IN	5206 tokens	Solutions Engineer
+  178308	IN	5773 tokens	Risk Analyst
+  80083	OUT	5330 tokens	AI Workflow Associate Flexible Hours
+  214277	OUT	5691 tokens	Digital Manufacturing Lead SCADA MES Data
+  66432	IN	5873 tokens	Enterprise Systems Architect
+  105847	IN	5058 tokens	Venture Intern NexBreak Venture Growth Engineering
+  1854	IN	6181 tokens	Microsoft Intune Architect
+  26092	IN	5588 tokens	Analyst Client Analytics
+  49871	IN	6139 tokens	Data Analyst In Store
+  206623	IN	5396 tokens	Design Engineer
+  9951	OUT	5801 tokens	Solution Consultant
+  100783	IN	5615 tokens	Consulting Engineer
+  202114	IN	5823 tokens	Systems Architect
+  177337	IN	4928 tokens	Staff Research Scientist Dexterous Manipulation
+  14076	IN	5544 tokens	Consultant
+  8717	OUT	8159 tokens	Head of Product Design
+  209684	IN	5781 tokens	Cyber Security Specialist
+  18955	IN	4512 tokens	PowerBuilder Developer
+  117081	OUT	5488 tokens	LATAM E Commerce Operations Analyst
+  190624	IN	5361 tokens	Application Programmer
+  102939	OUT	5297 tokens	People Partner Technology
+  202755	IN	4997 tokens	Data Business Analyst Alibaba Cloud Stack
+  164375	IN	5552 tokens	시니어 데이터 엔지니어 데이터브릭스
+  195119	IN	5530 tokens	Sales Engineer
+  180450	IN	5928 tokens	Analyst Frontline Performance
+  207512	IN	5709 tokens	Solutions Engineer Enterprise TOLA
+  175452	OUT	6116 tokens	Analytics Associate Director
+  71221	IN	5875 tokens	Lead Forecasting Financial Analyst
+  139719	IN	5485 tokens	Forward Deployed Application Developer
+  142822	IN	6591 tokens	Product Manager IC4
+  80370	IN	5852 tokens	Manager Product Operations
+  68173	OUT	5828 tokens	Product Manager Agent Security Governance
+  210221	IN	4992 tokens	Engineering Manager Accounting Products
+  29932	OUT	5243 tokens	Data Analyst
+  85665	IN	5606 tokens	Data Analyst
+  210851	IN	5459 tokens	Engineering Manager Grid Model Management
+  163165	IN	5184 tokens	InfraSec Engineer Contract
+  116824	IN	5737 tokens	Manager Cyber Security
+  16213	OUT	5884 tokens	Lead Product Manager Enterprise Services Management
+  171996	IN	5124 tokens	Product Manager Growth
+  129842	IN	5609 tokens	Staff Engineer
+  19588	OUT	5479 tokens	DSP Engineer Werkstudent
+  38491	IN	5376 tokens	Data Protection Consultant
+  186231	IN	5102 tokens	UAT Tester Mumbai
+  211960	OUT	6011 tokens	Product Lead New Ventures
+  183492	IN	5319 tokens	Solutions Engineer
+  7041	OUT	5403 tokens	Fellow
+  45330	OUT	5324 tokens	Product Manager Databricks Free Edition
+  172092	IN	5306 tokens	Staff Technical Lead Manager In Car Experience
+  88848	IN	6149 tokens	Staff Product Manager Data Products
+  148789	IN	5003 tokens	Technical Account Manager
+  205038	OUT	5202 tokens	Macro Analyst Market Intelligence US
+  9936	IN	5759 tokens	Engineering Intelligence Developer
+  212750	OUT	5100 tokens	Product Manager
+  52996	IN	4644 tokens	Tanzu engineer
+  2248	OUT	5643 tokens	Director Data Analytics
+  163915	IN	5443 tokens	Systems Architect
+  43403	IN	5483 tokens	Partner Solutions Engineer Southern Europe
+  102679	IN	6301 tokens	AV Test Engineer
+  181266	OUT	5721 tokens	Solution Consultant
+  128687	OUT	5408 tokens	SAP SD Analyst O2C
+  88722	IN	6051 tokens	Sales Revenue Analyst
+  45659	IN	5563 tokens	Commercial Sales Engineer 2 AMER West
+  128735	IN	5938 tokens	Pre Sales Systems Engineer SLED MN WI IL
+  198373	IN	5695 tokens	Lead Analytics Manager
+  52633	IN	5199 tokens	Engineering Manager
+  80411	IN	5950 tokens	Manager of IT Operations
+  45913	OUT	5483 tokens	Corporate Development Lead AI
+  64534	OUT	5852 tokens	Salesforce Project Manager PMP Public Sector Govt Cloud
+  64016	OUT	5963 tokens	Production Test Engineer
+  38750	IN	5757 tokens	Product Manager SaaS Applications Protection Cyber Recovery
+  28206	OUT	5035 tokens	Managed Service Support Analyst
+  162898	OUT	5270 tokens	Sales Forecasting Analyst
+  137904	IN	6111 tokens	GTM Engineer Outbound
+  30344	OUT	5882 tokens	Manager Analytics
+  24832	IN	5995 tokens	Staff Engineer
+  149381	IN	5217 tokens	Sales Engineer
+  144094	OUT	5917 tokens	Optical Transceiver Engineer High Speed Links Satellites Starlink
+  183445	IN	5698 tokens	Technical Solutions Consultant
+  14484	OUT	5628 tokens	Staff Test Engineer Actuators
+  44976	OUT	5802 tokens	Customer Enablement AI Programs Manager
+  53197	IN	5555 tokens	Manager Product Analytics
+  106253	OUT	6080 tokens	AI Transformation Strategist
+  65297	OUT	5404 tokens	CMM Programmer
+  186526	IN	6108 tokens	Associate Competitive Value Engineer
+  81497	OUT	6154 tokens	Group Product Manager Quantum Networking
+  16222	OUT	5893 tokens	Product Manager Adapt
+  197196	IN	4939 tokens	IT Security Specialist
+  179757	OUT	5990 tokens	SAP Procurement Functional Consultant 100 onsite in St Louis MO
+  191126	OUT	5342 tokens	Field Application Engineer
+  96072	IN	5557 tokens	Technical Account Manager Federal
+  45899	IN	5455 tokens	Sales Engineer Customer Success
+  107319	IN	6674 tokens	HPC GPU Systems Engineer
+  80820	IN	5817 tokens	Product Engineer
+  30050	IN	5421 tokens	Transport IP TRIP Network Technician
+  194244	IN	6200 tokens	Designated Technical Support Engineer Central East
+  90113	OUT	5527 tokens	Product Lead Software Applied AI
+  74124	OUT	5935 tokens	Project Manager Enterprise Solutions
+  216089	IN	5865 tokens	Product Manager Ad Monetization
+  48085	IN	5831 tokens	Product Manager DNS
+  103026	IN	5886 tokens	Reliability Production Engineer
+  157760	OUT	5376 tokens	Verification Engineer
+  587	IN	5813 tokens	People Technology Integrations Specialist All Genders
+  193379	IN	5535 tokens	HRIS Business Analyst AI Digital Transformation
+  143081	IN	5634 tokens	Business Analyst Customer Success
+  18003	IN	4874 tokens	Staff Engineer Enterprise Search
+  194346	IN	6440 tokens	Technical Account Manager
+  114656	IN	4824 tokens	Verse Developer
+  198454	IN	5670 tokens	MSAT AI Data Analyst
+  204957	OUT	5233 tokens	Salesforce Consultant Core
+  205741	IN	6473 tokens	InfoSec Engineer
+  178909	IN	5488 tokens	Sales Engineer Mexico
+  2195	IN	5931 tokens	Test Engineer
+  42674	IN	5126 tokens	Staff Data Analyst Pricing
+  45324	IN	6026 tokens	Production Engineer Public Sector
+  64659	IN	5378 tokens	Business Systems Analyst
+  192636	IN	5761 tokens	Product Engineer Ads
+  209686	IN	5227 tokens	Engineer DCS
+  41807	IN	5615 tokens	Group Product Manager Retail Product
+  53743	IN	5474 tokens	Virtualization Systems Engineer
+  42363	IN	6273 tokens	Data Analyst Catalog Onboarding 商品目錄分析師
+  8728	OUT	5801 tokens	Technical Delivery Manager Public Sector
+  134871	IN	5455 tokens	Performance Engineer
+  5153	OUT	5640 tokens	Solutions Engineer
+  118614	IN	4768 tokens	Cubist Business Analyst
+  180978	OUT	5494 tokens	Product Manager I
+  172339	IN	5898 tokens	Forensics Engineer
+  78685	IN	5227 tokens	Product Engineer
+  81126	IN	5497 tokens	Sales Engineer Intern
+  66219	OUT	5062 tokens	Security Specialist
+  112248	OUT	5876 tokens	Product Manager Savings R13997
+  72162	OUT	5183 tokens	Retail and Play Program Lead Trust Safety
+  170110	OUT	5224 tokens	Product Support Specialist
+  125776	IN	5590 tokens	Vice President Product Management CTV
+  139585	OUT	5297 tokens	Product Manager
+  211962	OUT	5702 tokens	Retail Solutions Engineer
+  52012	OUT	5340 tokens	Product Manager
+  14635	OUT	5190 tokens	Manager Middle Office Forward Deployed Data Strategy CPD
+  16729	OUT	5523 tokens	Engineer II Field Service
+  95419	OUT	5484 tokens	Portfolio Management Analyst
+  182002	OUT	5588 tokens	Project Manager Interconnection Projects Grid Infrastructure Delivery
+  186466	IN	4951 tokens	AI Implementation Specialist Samlino Group
+  196656	OUT	5533 tokens	Business Applications Manager
+  174849	OUT	5459 tokens	Staff Product Manager Build Experience Agentic
+  142340	OUT	5568 tokens	Director Product Innovation
+  104392	IN	6286 tokens	AI Enabled Revenue Operations Specialist
+  60281	OUT	5548 tokens	Innovation Product Manager
+  16675	OUT	5411 tokens	Engineer Field Service
+  204875	OUT	4739 tokens	Engineering
+  117086	OUT	4714 tokens	Product Manager
+  81546	OUT	5807 tokens	QPU Design Engineer
+  93235	OUT	6112 tokens	Learning Operations Analyst
+  17432	OUT	4997 tokens	Process Engineer
+  37965	OUT	6870 tokens	Emerging Technology AI Governance Enablement Lead
+  9820	IN	5288 tokens	Systems Architect
+  177200	OUT	5216 tokens	Solutions Engineer Injection Molding
+  9776	IN	5362 tokens	Expert Systems Architect
+  186150	OUT	5120 tokens	Project Manager
+  88416	OUT	5474 tokens	Staff Engineer
+  57010	OUT	5115 tokens	Application Analyst I II Lead
+  74416	OUT	6213 tokens	AI Design Lead
+  69197	OUT	5376 tokens	Application Engineer
+  146836	OUT	5426 tokens	Product Manager Parental Leave Cover Fixed Term 12 Months
+  148530	OUT	4965 tokens	Processing cost Analyst
+  186153	OUT	5140 tokens	Project Manager Compliance
+  69272	OUT	5467 tokens	Production Quality Engineer
+  162819	OUT	5415 tokens	Program Manager
+  192838	OUT	5696 tokens	Investor Relations Analyst
+  107563	OUT	5934 tokens	Product Manager of Retention
+  60568	OUT	6744 tokens	Director Product Management Supply Chain Technology
+  108529	OUT	5836 tokens	Solutions Engineer Okta North East
+  181887	OUT	5856 tokens	Commercial Operations Program Manager
+  70284	OUT	5374 tokens	Interim Operations Project Manager all genders
+  79376	OUT	6188 tokens	Capital Project Manager
+  201739	OUT	5606 tokens	Project Manager
+  77371	OUT	6576 tokens	Chief of Staff to the Managing Director of AI
+  180951	OUT	5730 tokens	Regional IT Lead
+  2639	OUT	5370 tokens	Cost Investment and Business Case Analyst
+  61947	OUT	5169 tokens	Associate Strategic Program Manager
+  93357	OUT	5667 tokens	Design Release Engineer Interior Trim
+  86457	OUT	5993 tokens	International Destination Expert
+  53605	OUT	5579 tokens	Remediation Project Engineer
+  189247	OUT	6456 tokens	VP Product Monetization Identity Core Services
+  107909	OUT	5191 tokens	Production Mortgage Analyst
+  196115	OUT	5612 tokens	Field Service Engineer
+  12596	OUT	5981 tokens	Process Development Engineer
+  106789	OUT	6091 tokens	Head of Product
+  181731	OUT	6044 tokens	Weapons Integration Engineer Thunder
+  33148	OUT	6141 tokens	Customer Success Program Manager Scale Team
+  206317	OUT	5718 tokens	Controller
+  17714	OUT	5098 tokens	Associate Scientist I El Paso
+  206223	OUT	5331 tokens	Factory Test Technical Specialist II
+  119361	OUT	6665 tokens	P&C Lead Test Engineer
+  155938	OUT	5298 tokens	Partner Technical Architect
+  52624	OUT	6491 tokens	Product Manager PST Remote
+  11990	OUT	6100 tokens	Signal Processing Engineer Space
+  59018	IN	6157 tokens	Medication Rebate Analyst
+  184161	OUT	5336 tokens	Program Manager
+  87172	OUT	6163 tokens	Drilling Engineer
+  48884	OUT	5521 tokens	Staff Program Manager Creator Partnerships
+  98591	OUT	5172 tokens	Design Engineer Geostructural Mi Tech Services Inc
+  195006	OUT	6051 tokens	Talent Acquisition Analyst Affirmative position for People with Disabilities PwD PcD
+  6367	OUT	5805 tokens	Consulting Manager Financial Services Data AI
+  39353	OUT	5684 tokens	Controller
+  194192	OUT	5724 tokens	Manager Technical Program Management
+  173562	OUT	5977 tokens	Consultant CIO Advisory IT Outsourcing Procurement
+  186514	OUT	6145 tokens	Product Manager Customer Zero
+  193218	OUT	6545 tokens	Head of Product
+  181010	OUT	5230 tokens	ECU Design Release Engineer
+  37937	OUT	5328 tokens	Project Manager
+  92581	OUT	5475 tokens	Project Manager
+  35571	OUT	5553 tokens	Program Manager
+  122111	OUT	5030 tokens	AI Training Experts Wellington New Zealand
+  107672	OUT	6098 tokens	Planning Engineer Resource Planning
+  182597	OUT	5257 tokens	Engineer Technical Program Management
+  60578	OUT	7063 tokens	Product Manager Product Creation
+  66244	OUT	4712 tokens	Security Specialist
+  6917	IN	4607 tokens	Data Manager 826
+  53632	OUT	5553 tokens	Project Manager
+  74696	OUT	4800 tokens	Assistant Project Manager
+  79449	OUT	5582 tokens	Program Lead Safety Wellbeing and Regulatory
+  132092	OUT	4880 tokens	eCommerce Analyst Google Analytics CPC CRO
+  8218	IN	5513 tokens	Director of Engineering Trading
+  42676	UNKNOWN	4998 tokens	Staff Data Analyst I
+  92143	OUT	5582 tokens	Product Manager
+  142516	OUT	5425 tokens	A&R Analyst Sony Music Nashville
+  29573	OUT	5141 tokens	BTIG APAC Technology Vice President Cash Equities Trading Technology
+  19949	OUT	5777 tokens	Planning Analyst I Onsite
+  58508	OUT	5901 tokens	Process Engineer Graphite
+  45306	OUT	5017 tokens	Manager Field Engineering
+  206587	OUT	5823 tokens	Customer Care Program Manager
+  197938	OUT	5741 tokens	UltraLuxe Destination Expert
+  136287	OUT	5678 tokens	Design Build Project Manager
+  212517	OUT	6058 tokens	Technical Support Engineer
+  19392	OUT	5560 tokens	Product Director
+  182782	OUT	5587 tokens	Project Manager Configuration Management
+  102579	OUT	5502 tokens	Project Engineer Airports
+  83837	OUT	5948 tokens	Engineer Facades External Walls
+  14545	OUT	5770 tokens	Thermodynamics Performance Engineer
+  196215	OUT	5589 tokens	Product Manager Trust Platform Digital Identities 1 year fixed contract
+  179099	IN	6726 tokens	Manager DTC Analytics
+  158305	OUT	5480 tokens	Administrator
+  24802	OUT	6210 tokens	Product Manager
+  193119	IN	5518 tokens	Experimentation Analyst
+  8	OUT	6425 tokens	Manager Quality Validation Engineering
+  137717	OUT	5942 tokens	Lead Production Engineer
+  70951	IN	5327 tokens	GPSU Military Federal Fellowship Hybrid
+  9612	OUT	5530 tokens	Product Support Specialist
+  61972	OUT	5482 tokens	Financial Analyst Systems
+  84374	OUT	5758 tokens	M&P Engineer eVTOL
+  1176	OUT	5380 tokens	Plasma Dry Etch Engineer
+  148120	OUT	5685 tokens	Project Engineer
+  132275	OUT	5186 tokens	Business Analyst Internship at Retail Insights
+  176615	OUT	5312 tokens	Fraud Analyst Sat Weds
+  9247	OUT	5335 tokens	Magnetics Engineer
+  146855	OUT	5768 tokens	Marketing Analytics Manager
+  79692	OUT	5157 tokens	Production AI Innovation Lead Contract Remote
+  72523	OUT	5749 tokens	Staff Systems Engineer Plaque
+  144079	OUT	5515 tokens	Operations Engineer Raptor
+  197003	OUT	5907 tokens	Photonic Device Design Engineer
+  98239	OUT	5324 tokens	Business Process Analyst I 6792
+  194124	OUT	5371 tokens	Collaboration Services Analyst
+  115051	OUT	5658 tokens	BSA AML Program Analyst
+  186198	IN	5169 tokens	Technical Functional Analyst
+  30451	OUT	5192 tokens	Project Manager 2
+  88328	OUT	5254 tokens	Project Manager
+  183468	OUT	6284 tokens	Consultant Salesforce Dynamics ServiceNow
+  181777	OUT	6183 tokens	Staff Product Manager Sustainment Solutions
+  56922	OUT	5445 tokens	Business Analyst
+  69696	OUT	5259 tokens	Staff Board Test Operations Engineer
+  193420	OUT	5334 tokens	Deduction and A R Analyst 12 Month Contract
+  11874	OUT	6080 tokens	System Safety Engineer
+  186151	OUT	5001 tokens	Project Manager Banking Domain
+  296	OUT	5338 tokens	Expert Character Concept Artist
+  132625	OUT	6092 tokens	Management Technology Cost Management
+  201393	OUT	5567 tokens	Contract Design Control Scientist
+  148669	OUT	5574 tokens	Workday Analyst Payroll
+  100169	OUT	5303 tokens	Product Manager
+  76712	OUT	4987 tokens	Valuations Analyst
+  105424	OUT	5387 tokens	Controller
+  201740	OUT	6080 tokens	Project Manager
+  66180	OUT	5805 tokens	Systems Safety Engineer Drive by Wire
+  8356	OUT	5917 tokens	Manager
+  138929	OUT	5242 tokens	Associate Financial Analyst
+  160967	OUT	5489 tokens	Project Manager Facilities Maintenance Operations
+  11883	OUT	6346 tokens	Systems Engineer Battlespace
+  108865	OUT	5868 tokens	Product Director Local Growth
+  63881	OUT	5666 tokens	Head of Flight Test Engineering
+  3559	OUT	5604 tokens	Design Engineer 3
+  99981	OUT	4905 tokens	Solution Engineer
+  130756	OUT	5219 tokens	Development Engineering Technician
+  140805	OUT	5278 tokens	Systems Test Engineer
+  212270	OUT	5742 tokens	Product Director Hybrid Casual
+  208580	OUT	5264 tokens	Scaled Customer Success Automation Program Manager
+  164300	OUT	5176 tokens	SI Validation Engineer Switch
+  19332	OUT	5462 tokens	Product Operations Lead
+  185790	OUT	5578 tokens	Financial Crime Intelligence Analyst Crypto
+  83838	OUT	5948 tokens	Engineer Facades External Walls
+  209909	OUT	5351 tokens	Data Operations Lead
+  213167	OUT	6196 tokens	Thermofluids Engineer II
+  103065	OUT	4842 tokens	Project Manager Public Opportunities
+  6364	OUT	5726 tokens	Associate Partner Financial Services Data AI
+  200104	OUT	5693 tokens	Workday Financials Lead
+  101166	IN	5147 tokens	Data Analyst Fraud
+  112493	IN	5205 tokens	2027 Shanghai Performance Researcher Summer Internship
+  26678	OUT	5355 tokens	AI Politics Fellow
+  95183	OUT	5282 tokens	Product Manager
+  156116	OUT	6685 tokens	Responsable de la commercialisation des technologies Technology Commercialization Executive
+  88950	OUT	6178 tokens	Advisor
+  103165	IN	5590 tokens	Product Manager II Spacecraft Software Platform
+  131262	OUT	5394 tokens	Factory Test Technical Specialist II 1st Shift
+  31630	OUT	5373 tokens	AI Product Manager Product Experience
+  138846	OUT	5867 tokens	Product Developer Floorcare
+  103237	OUT	6237 tokens	Staff Mission Lead Systems Engineer Classified Missions
+  40280	OUT	5172 tokens	Financial Analyst Accounting
+  171986	OUT	5255 tokens	People Operations Program Manager People Systems Process Design
+  122083	OUT	5082 tokens	AI Training Experts Oklahoma US
+  142922	OUT	5516 tokens	Machine Design Engineer
+  214180	OUT	5635 tokens	2027 Systems Engineering Intern
+  193759	OUT	5208 tokens	Financial Analyst
+  112255	OUT	5830 tokens	Compensation Analyst
+  1178	OUT	5437 tokens	Process Integration Engineer
+  72479	OUT	4906 tokens	Electric Motor Design Engineer
+  108814	OUT	5426 tokens	Business Intelligence Project Manager User Growth
+  10842	OUT	5852 tokens	Mission Operations Product Manager Group 5 Mission Autonomy
+  81919	OUT	5437 tokens	Project Manager Developer Marketing 6315
+  86480	OUT	5786 tokens	Director Data Strategy Analytics Retail
+Labelled 339. Jev has cost $2.9161 over every run.
+
+Round 7, scored against Jev
+  time       92.0s  gate 120s  pass
+  IN        58/200 =  29.0%  gate 10%  FAIL
+  OUT       17/200 =   8.5%  gate 10%  pass
+  UNKNOWN  25 of 20519 = 0.12% of the pile, not gated under 1%
+  the loop goes on
+
+Rows that disagree (75):
+
+  69335  predicted IN, Jev OUT {'IN': 0.2, 'OUT': 0.79, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Visual Systems Engineer CCD Engineer Cell Line
+  > Gotion Inc. is based in Silicon Valley, CA, currently building a Manufacturing facility in Manteno, IL and has R&D centers in Ohio, China, Japan and Europe.
+> We innovate in the next generation electric vehicle and energy storage technologies (lithium batteries and related systems) with the aim to
+
+  178760  predicted IN, Jev OUT {'IN': 0.49, 'OUT': 0.51, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  AI Security Specialist UK&I
+  > Zscaler (NASDAQ: ZS) accelerates digital transformation so customers can be more agile, efficient, resilient, and secure.
+> The Zscaler Zero Trust Exchange platform protects thousands of customers from cyberattacks and data loss by securely connecting users, devices, and applications in any locati
+
+  92156  predicted IN, Jev OUT {'IN': 0.44, 'OUT': 0.56, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Agile Project Manager Delivery Lead Data Decision Intelligence
+  # Job Description
+We are seeking an experienced Agile Project Manager / Delivery Lead with a strong background in leading agile delivery initiatives across multiple teams and clients, with particular emphasis on Sparkflow , Liventus's proprietary analytics, data engineering, and AI platform — includ
+
+  158281  predicted IN, Jev OUT {'IN': 0.21, 'OUT': 0.79, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Energy Analyst Intern Economics Summer 2027
+  Please note that while we accept applications for our internship position starting in the fall, we will not begin actively contacting candidates for interviews until/after November 2026.
+# Our Summer Internship Opportunity
+This internship program will provide you with the opportunity to apply the ec
+
+  137188  predicted IN, Jev OUT {'IN': 0.19, 'OUT': 0.8, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Lead Engineer ME Integration
+  > Here at Scout Motors, we're carrying forward the heritage of one of the most iconic American vehicles in history.
+> A vehicle dating back to 1960.
+> One that forged the path for future generations of rugged SUVs and trucks and will do so once again.
+> But Scout is more than just a brand, it’s a le
+
+  19871  predicted IN, Jev OUT {'IN': 0.29, 'OUT': 0.7, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Sales Engineer Enterprise
+  > # Join Axon and be a Force for Good.
+> At Axon, we’re on a mission to Protect Life.
+> We’re explorers, pursuing society’s most critical safety and justice issues with our ecosystem of devices and cloud software.
+> Like our products, we work better together.
+> We connect with candor and care, seeki
+
+  207014  predicted IN, Jev OUT {'IN': 0.04, 'OUT': 0.96, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Head of Growth Product
+  This role is part of our Advanced Shipping Manager (ASM) team, one of our brands at saas.group.
+Advanced Shipping Manager gives e-commerce merchants real-time, rules-based shipping rates and accurate delivery estimates at checkout — across parcel and LTL freight, with FedEx, UPS, USPS and other carr
+
+  165501  predicted IN, Jev OUT {'IN': 0.02, 'OUT': 0.98, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Manager Payments
+  > # About Upstart
+> At Upstart, we’re united by a mission that matters: to radically reduce the cost and complexity of borrowing for all Americans.
+> Every day, we bring creativity, experimentation, and advanced AI to reshape access to credit, helping millions move forward financially with clarity a
+
+  117437  predicted IN, Jev OUT {'IN': 0.3, 'OUT': 0.7, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Risk Data Analyst Integrated Risk Management
+  We are looking for a Risk Data Analyst.
+The Integrated Risk Management team is managing risk profile of the company.
+Identifying financial risks and management advisory on their mitigation.
+Providing service of developing forecasting and risk models for the Company's financial portfolio and implemen
+
+  178887  predicted IN, Jev OUT {'IN': 0.37, 'OUT': 0.62, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Sales Engineer Commercial
+  > Zscaler (NASDAQ: ZS) accelerates digital transformation so customers can be more agile, efficient, resilient, and secure.
+> The Zscaler Zero Trust Exchange platform protects thousands of customers from cyberattacks and data loss by securely connecting users, devices, and applications in any locati
+
+  70711  predicted IN, Jev OUT {'IN': 0.29, 'OUT': 0.69, 'UNKNOWN': 0.02}  (DOMAIN_AMBIGUITY)
+  Systems Engineer
+  # What Impact You'll Have
+We are seeking a Systems Engineer to join an agile, multi-team engineering initiative supporting mission-critical satellite ground systems.
+In this role, you will serve as a vital technical bridge between mission operations, system stakeholders, and software development pod
+
+  148314  predicted IN, Jev OUT {'IN': 0.17, 'OUT': 0.83, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Data Excellence Manager
+  # Who we are
+# About Stripe
+Stripe is a financial infrastructure platform for businesses.
+Millions of companies - from the world’s largest enterprises to the most ambitious startups - use Stripe to accept payments, grow their revenue, and accelerate new business opportunities.
+Our mission is to incr
+
+  196152  predicted IN, Jev OUT {'IN': 0.22, 'OUT': 0.78, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Salesforce Administrator Assistant Vice President
+  # About the Role
+iCapital is looking for a Salesforce Administrator to take hands-on ownership of the Salesforce estate, spanning multiple organizations supporting the Distribution, Enterprise, Structured Investments, and Data Solutions teams.
+Working alongside a close-knit team to drive platform st
+
+  118763  predicted IN, Jev OUT {'IN': 0.49, 'OUT': 0.51, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Sector Analyst Proprietary Research
+  # ABOUT PROPRIETARY RESEARCH
+On our proprietary research team—Market Intelligence— you will uncover insights about companies, industries, and the broader economy through deep compliant fundamental research and applying data science and engineering techniques to alternative data sets.
+In partnership 
+
+  16054  predicted IN, Jev OUT {'IN': 0.25, 'OUT': 0.75, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Information Security Lead AI Financial Services
+  The current vacancy is for the Brazilian office and we work in a Free Office model. #LI-Remote
+# Who we are
+Artefact is a new generation of a data service provider, specialising in data consulting and data-driven digital marketing, dedicated to transforming data into business impact across the entir
+
+  111908  predicted IN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Marketing Program Manager
+  # POSITION OVERVIEW
+OpenEye, The Cloud Video Platform, an innovator in the design and development of cloud-centric software solutions for commercial video management systems, is seeking a Marketing Program Manager to join our growing Marketing team in the Liberty Lake, WA office.
+We are looking for 
+
+  15630  predicted IN, Jev OUT {'IN': 0.45, 'OUT': 0.55, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  AI Solutions Manager East
+  > # About Arize
+> AI is rapidly transforming the world.
+> As generative AI reshapes industries, teams need powerful ways to monitor, troubleshoot, and optimize their AI systems.
+> That’s where we come in.
+> Arize AI is the leading AI & Agent Engineering observability and evaluation platform, empower
+
+  80083  predicted IN, Jev OUT {'IN': 0.0, 'OUT': 0.99, 'UNKNOWN': 0.01}  (SCOPE_AMBIGUITY)
+  AI Workflow Associate Flexible Hours
+  > Innodata (Nasdaq: INOD) is a global data engineering company.
+> We believe that data and Artificial Intelligence (AI) are inextricably linked.
+> Our mission is to enable the responsible advancement of artificial intelligence by providing the data, evaluation frameworks, and human expertise require
+
+  214277  predicted IN, Jev OUT {'IN': 0.24, 'OUT': 0.76, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Digital Manufacturing Lead SCADA MES Data
+  Vulcan Elements is manufacturing American rare-earth permanent magnets for a secure, resilient future.
+With a focus on national security and economic resiliency, we serve critical industries such as defense, aerospace, and automotive powering a high-technology future.
+Vulcan Elements is building a t
+
+  9951  predicted IN, Jev OUT {'IN': 0.08, 'OUT': 0.91, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Solution Consultant
+  > At Anaplan, we are a team of innovators focused on optimizing business decision-making through our leading AI-infused scenario planning and analysis platform so our customers can outpace their competition and the market.
+> What unites Anaplanners across teams and geographies is our collective comm
+
+  8717  predicted IN, Jev OUT {'IN': 0.09, 'OUT': 0.91, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Head of Product Design
+  > Altana is the network for trusted trade.
+> Our AI-powered product network empowers governments and businesses to build a more resilient and secure global economy while keeping trade flowing.
+# The Opportunity at Altana
+Altana's mission is to fix globalization.
+We are building a network that brings
+
+  117081  predicted IN, Jev OUT {'IN': 0.09, 'OUT': 0.91, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  LATAM E Commerce Operations Analyst
+  > # Our Commitment to Our Team
+> At Pipe17, our values aren’t just words on a wall.
+> They’re how we operate every day.
+> We are a high-performance team built around ownership, urgency, curiosity, and a strong bias for action.
+> We set bold goals, hold ourselves accountable, and move fast to solve c
+
+  102939  predicted IN, Jev OUT {'IN': 0.04, 'OUT': 0.96, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  People Partner Technology
+  > # About Us
+> Beast Industries is a multifaceted media and entertainment company founded by Jimmy Donaldson, popularly known as MrBeast, the most watched person in the world.
+> Renowned for revolutionizing digital content creation, Beast Industries encompasses a diverse portfolio of ventures that e
+
+  175452  predicted IN, Jev OUT {'IN': 0.44, 'OUT': 0.56, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Analytics Associate Director
+  > # About WPP Media
+> WPP is the trusted growth partner for the world’s leading brands.
+> With exceptional talent, trusted data and intelligence, and world-class partnerships – all united by our pioneering agentic marketing platform, WPP Open – we help clients navigate change, capture opportunity, a
+
+  68173  predicted IN, Jev OUT {'IN': 0.43, 'OUT': 0.57, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Manager Agent Security Governance
+  > # About Glean
+> Glean is the Work AI platform that helps everyone work smarter with AI.
+> What began as the industry’s most advanced enterprise search has evolved into a full-scale Work AI ecosystem, powering intelligent Search, an AI Assistant, and scalable AI agents on one secure, open platform.
+
+  29932  predicted IN, Jev OUT {'IN': 0.25, 'OUT': 0.75, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Data Analyst
+  > # About Us
+> Established in 2018, Bybit is one of the world’s leading cryptocurrency exchanges and digital financial platforms, serving over 80 million users across more than 200 countries and regions.
+> Powered by world-class technology and a user-first mindset, Bybit delivers a seamless ecosyste
+
+  16213  predicted IN, Jev OUT {'IN': 0.07, 'OUT': 0.93, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Lead Product Manager Enterprise Services Management
+  # Lead Product Manager, Enterprise Services Management
+The Product Management team drives Asana’s product strategy and execution, translating customer needs and opportunities into a compelling roadmap and working cross-functionally to deliver impactful solutions for team productivity and collaborati
+
+  19588  predicted IN, Jev OUT {'IN': 0.4, 'OUT': 0.58, 'UNKNOWN': 0.02}  (DOMAIN_AMBIGUITY)
+  DSP Engineer Werkstudent
+  > # Join Axon and be a Force for Good.
+> At Axon, we’re on a mission to Protect Life.
+> We’re explorers, pursuing society’s most critical safety and justice issues with our ecosystem of devices and cloud software.
+> Like our products, we work better together.
+> We connect with candor and care, seeki
+
+  211960  predicted IN, Jev OUT {'IN': 0.12, 'OUT': 0.88, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Lead New Ventures
+  Location(s): US (remote), Boston (hybrid), or New York (hybrid) - EST preferred
+Toast builds technology that helps food and beverage businesses run smoother, serve customers better, and grow with confidence.
+Our platform brings together the tools teams need to power daily operations—while turning co
+
+  7041  predicted IN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Fellow
+  Make a difference with us!
+At Alliance Defending Freedom, we believe God has brought you here for His purpose—to stand for truth and defend the God-given right to live and speak it.
+Together, we protect religious freedom, free speech, the sanctity of life, marriage and family, and parental rights.
+R
+
+  45330  predicted IN, Jev OUT {'IN': 0.07, 'OUT': 0.93, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Manager Databricks Free Edition
+  # RDQ126R51
+# Mission
+At Databricks, we’re on a mission to help data teams solve the world’s toughest problems.
+The Databricks Free Edition makes it easy for students, enthusiasts, and aspiring professionals to explore data and AI hands-on, gaining the skills and confidence to build the future.
+We’r
+
+  205038  predicted IN, Jev OUT {'IN': 0.39, 'OUT': 0.61, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Macro Analyst Market Intelligence US
+  # ABOUT PROPRIETARY RESEARCH
+On our proprietary research team—Market Intelligence— you will uncover insights about markets and the broader economy through deep compliant fundamental research and applying data science and engineering techniques to alternative data sets.
+In partnership with our invest
+
+  212750  predicted IN, Jev OUT {'IN': 0.34, 'OUT': 0.66, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Manager
+  # About Unframe
+Unframe is an AI-first startup helping the world’s largest enterprises bring LLM-powered applications to life in days - not months.
+We combine the speed of a product company with the flexibility of a consultancy, helping customers move from idea to deployed AI systems faster than any
+
+  2248  predicted IN, Jev OUT {'IN': 0.13, 'OUT': 0.87, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Director Data Analytics
+  # Company Overview
+We are the better way to work in finance.
+As private equity’s value creation partner, we sit at the heart of PE—where sponsors and CFOs meet.
+Through financial consulting rooted in data, technology, and AI, we help clients drive value—supporting the office of the CFO to drive end-
+
+  181266  predicted IN, Jev OUT {'IN': 0.07, 'OUT': 0.93, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Solution Consultant
+  > At Anaplan, we are a team of innovators focused on optimizing business decision-making through our leading AI-infused scenario planning and analysis platform so our customers can outpace their competition and the market.
+> What unites Anaplanners across teams and geographies is our collective comm
+
+  128687  predicted IN, Jev OUT {'IN': 0.43, 'OUT': 0.57, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  SAP SD Analyst O2C
+  > Everpure (NYSE: P) has evolved from storage pioneer to data platform, closing fiscal 2026 with $3.7 billion in revenue, its first billion-dollar quarter, and accelerating growth into FY27.
+> Our strategic agenda spans the companies defining the next era of technology - hyperscalers, AI labs, the A
+
+  45913  predicted IN, Jev OUT {'IN': 0.27, 'OUT': 0.73, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Corporate Development Lead AI
+  Datadog is seeking a highly motivated Senior Corporate Development Lead to drive our AI product strategy, build strong relationships across the founder and VC ecosystem, and support high-impact initiatives including acquisitions, venture investments, and startup partnerships.
+You will be part of a s
+
+  64534  predicted IN, Jev OUT {'IN': 0.47, 'OUT': 0.53, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Salesforce Project Manager PMP Public Sector Govt Cloud
+  # SUMMARY
+FormativGroup is seeking an experienced Salesforce Project Manager with deep expertise leading Public Sector and Government Cloud implementations.
+This role is responsible for managing the full project lifecycle across complex Salesforce engagements, including scope, timeline, resources, b
+
+  64016  predicted IN, Jev OUT {'IN': 0.02, 'OUT': 0.98, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Production Test Engineer
+  > # About Zipline
+> Zipline is the world’s largest and most experienced drone delivery service.
+> We are on a mission to serve all humans equally by ensuring access to food, medicine and essential goods anytime, anywhere.
+> We design, build, and operate the world’s largest autonomous logistics syste
+
+  28206  predicted IN, Jev OUT {'IN': 0.47, 'OUT': 0.53, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Managed Service Support Analyst
+  > For us, tech has never been about just hardware or software.
+> It’s about people.
+> It’s our meaningful relationships, deep expertise and practical know-how in technology that drive what we do.
+> We put our customers, our partners and the environment at the heart of everything we do and our people
+
+  162898  predicted IN, Jev OUT {'IN': 0.27, 'OUT': 0.73, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Sales Forecasting Analyst
+  > Trove Brands is a privately-held house of brands including BlenderBottle , Owala , Whiskware , and Eco-Brite .
+> Our patented and best-selling products are designed to simplify and improve everyday life with leading-edge innovation, incomparable quality, and aspirational style.
+> A career at Trove
+
+  30344  predicted IN, Jev OUT {'IN': 0.46, 'OUT': 0.54, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Manager Analytics
+  > At cabi, we’re redefining what it means to build a fashion brand—one rooted in connection, confidence, and purpose.
+> As a women’s retail clothing company, we don’t just design beautiful apparel; we create opportunities for women to express themselves, build community, and thrive both personally a
+
+  144094  predicted IN, Jev OUT {'IN': 0.02, 'OUT': 0.98, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Optical Transceiver Engineer High Speed Links Satellites Starlink
+  > SpaceX was founded under the belief that a future where humanity is out exploring the stars is fundamentally more exciting than one where we are not.
+> Today SpaceX is actively developing the technologies to make this possible, with the ultimate goal of enabling human life on Mars.
+# OPTICAL TRANS
+
+  14484  predicted IN, Jev OUT {'IN': 0.03, 'OUT': 0.97, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Staff Test Engineer Actuators
+  > Apptronik is a human-centered robotics company developing AI-powered robots to support humanity in every facet of life.
+> Our flagship humanoid robot, Apollo, is built to collaborate thoughtfully with people, starting with critical industries such as manufacturing and logistics, with future applic
+
+  44976  predicted IN, Jev OUT {'IN': 0.16, 'OUT': 0.84, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Customer Enablement AI Programs Manager
+  # CSQ426R319
+# Senior Customer Enablement AI Programs Manager
+As a Senior Customer Enablement AI Programs Manager, you will own the AI strategy and roadmap for the Scaled Customer Enablement Agent Suite — bringing together GTM activation, applied AI, and enablement strategy.
+You will define how the 
+
+  106253  predicted IN, Jev OUT {'IN': 0.47, 'OUT': 0.53, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  AI Transformation Strategist
+  > At NiCE, we don’t limit our challenges.
+> We challenge our limits.
+> Always.
+> We’re ambitious.
+> We’re game changers.
+> And we play to win.
+> We set the highest standards and execute beyond them.
+> And if you’re like us, we can offer you the ultimate career opportunity that will light a fire with
+
+  65297  predicted IN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  CMM Programmer
+  # CMM PROGRAMMER (2ND SHIFT)
+Freeform is deploying software-defined, autonomous metal 3D printing factories around the world, bringing the scalability of software to physical production.
+Our proprietary technology stack leverages advanced sensing, real-time controls, and data-driven learning to prod
+
+  81497  predicted IN, Jev OUT {'IN': 0.3, 'OUT': 0.7, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Group Product Manager Quantum Networking
+  > # About IonQ
+> IonQ, Inc. [NYSE: IONQ] is the world’s leading quantum platform and merchant supplier - delivering integrated quantum solutions across computing, networking, sensing, and security.
+> IonQ’s newest generation of quantum computers, the IonQ Tempo, is the latest in a line of cutting-ed
+
+  16222  predicted IN, Jev OUT {'IN': 0.01, 'OUT': 0.99, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Manager Adapt
+  The Product Management team drives Asana’s product strategy and execution, translating customer needs and opportunities into a compelling roadmap and working cross-functionally to deliver impactful solutions for team productivity and collaboration.
+We’re helping to define the Work Management categor
+
+  179757  predicted IN, Jev OUT {'IN': 0.47, 'OUT': 0.53, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  SAP Procurement Functional Consultant 100 onsite in St Louis MO
+  > At Accenture Federal Services, nothing matters more than helping the US federal government make the nation stronger and safer and life better for people.
+> Our 13,000+ people are united in a shared purpose to pursue the limitless potential of technology and ingenuity for clients across defense, na
+
+  191126  predicted IN, Jev OUT {'IN': 0.31, 'OUT': 0.68, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Field Application Engineer
+  > Efficient Computer is rethinking computing from the ground up to solve one of AI's biggest challenges: energy.
+> Our Fabric architecture delivers a 10–100x improvement in energy efficiency for general-purpose computation, including AI, while supporting familiar programming languages and software f
+
+  90113  predicted IN, Jev OUT {'IN': 0.24, 'OUT': 0.76, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Lead Software Applied AI
+  # Overview of the role
+As the Product Manager for Software / Applied AI at Lila, you will help build the first truly AI-native system of record for scientific discovery.
+We are looking for product leaders who can dive deep into a specific domain and own it completely.
+Whether your strengths align be
+
+  74124  predicted IN, Jev OUT {'IN': 0.12, 'OUT': 0.88, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Project Manager Enterprise Solutions
+  Hermanson Company is a standout Mechanical company that has been doing business in the Puget Sound area since 1979.
+Over the last four decades we have grown from a family owned sheet metal contractor to a partner led full service mechanical construction, design and maintenance provider playing a sig
+
+  157760  predicted IN, Jev OUT {'IN': 0.36, 'OUT': 0.63, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Verification Engineer
+  > Tenstorrent is leading the industry on cutting-edge AI technology, revolutionizing performance expectations, ease of use, and cost efficiency.
+> With AI redefining the computing paradigm, solutions must evolve to unify innovations in software models, compilers, platforms, networking, and semicondu
+
+  204957  predicted IN, Jev OUT {'IN': 0.38, 'OUT': 0.62, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Salesforce Consultant Core
+  The Principal Salesforce Consultant is a senior, tech-forward leadership role within the Delivery team.
+This position bridges the gap between functional business consulting and technical architecture, serving as a trusted advisor to enterprise clients.
+You will lead solution design, advise on techni
+
+  8728  predicted IN, Jev OUT {'IN': 0.2, 'OUT': 0.8, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Technical Delivery Manager Public Sector
+  > Altana is the network for trusted trade.
+> Our AI-powered product network empowers governments and businesses to build a more resilient and secure global economy while keeping trade flowing.
+# The Opportunity at Altana
+We’re looking for a dedicated Technical Delivery Manager (TDM) who will have th
+
+  5153  predicted IN, Jev OUT {'IN': 0.14, 'OUT': 0.85, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Solutions Engineer
+  > Agility’s commercially deployed humanoids operate alongside teams in warehouses, manufacturing facilities, and distribution centers—tackling physically demanding and repetitive tasks while enabling workers to focus on higher-value work.
+> With industry-leading safety standards and years of proven 
+
+  180978  predicted IN, Jev OUT {'IN': 0.14, 'OUT': 0.86, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Manager I
+  > # About AlphaSense
+> The world’s most sophisticated companies rely on AlphaSense to remove uncertainty from decision-making.
+> With market intelligence and search built on proven AI, AlphaSense delivers insights that matter from content you can trust.
+> Our universe of public and private content i
+
+  81126  predicted OUT, Jev IN {'IN': 0.62, 'OUT': 0.1, 'UNKNOWN': 0.28}  (DOMAIN_AMBIGUITY)
+  Sales Engineer Intern
+  Are you ready to take the next step in your professional career?
+We invite you to be part of InterSystems’ 2025 Professional Internship Program.
+Here, you will have the opportunity to immerse yourself in the exciting world of technology and contribute to projects that directly impact a variety of in
+
+  125776  predicted OUT, Jev IN {'IN': 0.68, 'OUT': 0.32, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Vice President Product Management CTV
+  # About the Role
+PubMatic is one of the world’s leading scaled digital advertising platforms, offering more transparent advertising solutions to publishers, media buyers, commerce companies and data owners, allowing them to harness the power and potential of the open internet to drive better busines
+
+  186466  predicted OUT, Jev IN {'IN': 0.99, 'OUT': 0.01, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  AI Implementation Specialist Samlino Group
+  Are you ready to thrive in a dynamic and exhilarating environment where you'll be entrusted with significant responsibilities?
+Are you seeking to join an extraordinary team of young, motivated, and highly ambitious individuals?
+If you have a genuine passion for connecting with people and driving rem
+
+  104392  predicted OUT, Jev IN {'IN': 0.58, 'OUT': 0.42, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  AI Enabled Revenue Operations Specialist
+  # THE OPPORTUNITY
+The way B2B revenue teams operate is fundamentally reshaped by AI and most organizations haven’t caught up yet.
+The ones that move now won’t just be more efficient; they’ll see things their competitors can’t see, act on signals others miss, and compound that advantage quarter after
+
+  9820  predicted OUT, Jev IN {'IN': 0.8, 'OUT': 0.19, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Systems Architect
+  > # Company Overview
+> ANSER enhances national and homeland security by strengthening public institutions.
+> We provide thought leadership for complex issues through independent analysis, and we deliver practical, useful solutions.
+> ANSER values collaboration, integrity, and initiative and we are c
+
+  9776  predicted OUT, Jev IN {'IN': 0.86, 'OUT': 0.13, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Expert Systems Architect
+  > # Company Overview
+> ANSER enhances national and homeland security by strengthening public institutions.
+> We provide thought leadership for complex issues through independent analysis, and we deliver practical, useful solutions.
+> ANSER values collaboration, integrity, and initiative and we are c
+
+  59018  predicted OUT, Jev IN {'IN': 0.57, 'OUT': 0.43, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Medication Rebate Analyst
+  > # Evio Overview
+> Evio is a highly unique pharmacy solutions company that was founded by and works closely with health plans to implement transformative (to cost, quality, access and experience) initiatives primarily focused on specialty and other high-cost medication solutions.
+> In 2020, a group
+
+  6917  predicted OUT, Jev IN {'IN': 0.76, 'OUT': 0.24, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Data Manager 826
+  # Data Manager - Senior - #826
+Location: Springfield, VA - 100% onsite
+# TS/SCI REQUIRED
+# Required Experience/Skills
+- 3+ years of experience with people management experience and excellent communication and keen problem-solving skills. Extensive technical project management experience, independent
+
+  8218  predicted OUT, Jev IN {'IN': 0.86, 'OUT': 0.14, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Director of Engineering Trading
+  > # Who We Are
+> Alpaca is a US-headquartered, global leader in agent-first brokerage infrastructure for stocks, ETFs, options, crypto, fixed income, 24/5 trading, and more.
+> Amongst our subsidiaries, Alpaca is a licensed financial services company, serving hundreds of financial institutions across
+
+  42676  predicted OUT, Jev UNKNOWN {'IN': 0.0, 'OUT': 0.0, 'UNKNOWN': 1.0}  (SCOPE_AMBIGUITY)
+  Staff Data Analyst I
+  # Please complete the attached Internal Transfer Request Form and submit.
+# Please make sure to apply with your Coupang e-mail address.
+# Company Introduction
+We exist to wow our customers.
+We know we’re doing the right thing when we hear our customers say, “How did I ever live without Coupang?” Bor
+
+  179099  predicted OUT, Jev IN {'IN': 0.94, 'OUT': 0.06, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Manager DTC Analytics
+  > # About Lume and Mando
+> Founded in 2017, Lume is a transformative personal care brand on a mission to normalize body odor beyond pits and provide people with outrageously effective solutions so they don’t have to think twice about odor.
+> We are pioneers of the whole body deodorant category, with
+
+  193119  predicted OUT, Jev IN {'IN': 0.92, 'OUT': 0.08, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Experimentation Analyst
+  # About Us
+The Financial Times is one of the world’s leading news organisations, globally recognised for its authority, integrity and accuracy, with a mission to deliver quality information and services worldwide.
+At the FT, curiosity thrives and ambitious thinking is rewarded.
+Here, you’re given th
+
+  70951  predicted OUT, Jev IN {'IN': 0.61, 'OUT': 0.34, 'UNKNOWN': 0.05}  (DOMAIN_AMBIGUITY)
+  GPSU Military Federal Fellowship Hybrid
+  > GuidePoint Security provides trusted cybersecurity expertise, solutions and services that help organizations make better decisions and minimize risk.
+> By taking a three-tiered, holistic approach for evaluating security posture and ecosystems, GuidePoint enables some of the nation’s top organizati
+
+  186198  predicted OUT, Jev IN {'IN': 0.95, 'OUT': 0.05, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Technical Functional Analyst
+  # About Capco
+Capco is a global business and technology consultancy specializing in financial services.
+We work with leading financial institutions to solve complex business challenges, modernize technology and deliver meaningful change.
+At Capco, you will join a collaborative and entrepreneurial en
+
+  101166  predicted OUT, Jev IN {'IN': 0.69, 'OUT': 0.31, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Data Analyst Fraud
+  # Who We Are
+Moniepoint Inc. is Africa’s all-in-one financial platform, helping 20 million businesses and individuals access seamless payments, banking, credit, cross-border, and business management tools each month.
+As Nigeria’s largest merchant acquirer, we power most of the country’s point-of-sal
+
+  112493  predicted OUT, Jev IN {'IN': 0.77, 'OUT': 0.23, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  2027 Shanghai Performance Researcher Summer Internship
+  As our Performance Researcher Intern, you’ll spend your summer delving into complex, data-driven problems at one of the world’s leading tech-driven trading firms.
+Under the guidance and mentorship of industry experts, you’ll apply your critical mindset and strong technical skills to drive measurable
+
+  103165  predicted OUT, Jev IN {'IN': 0.91, 'OUT': 0.09, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Manager II Spacecraft Software Platform
+  # About the role
+Muon Space is hiring a Product Manager to own the software that runs on our spacecraft.
+Reporting to a Director of Product Management, you will own the end-to-end capabilities and roadmap for the flight software platform and onboard compute, so that our spacecraft meet customer miss
+
+Jev has cost $2.9161 over every run, of the $4.00 limit

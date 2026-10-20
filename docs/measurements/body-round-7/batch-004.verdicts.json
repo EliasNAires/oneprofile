@@ -1,0 +1,17 @@
+{
+  "111908": {"verdict": "b", "clause": "Low-code is software — administers it day to day (users, permissions, page layouts, content) is not software", "pattern": "CMS content admin not software"},
+  "81497": {"verdict": "a", "clause": "The expertise limit on Q4 — knowledge of a field the role is about is expertise outside software when required", "pattern": "required field expertise outside software"},
+  "117437": {"verdict": "a", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "analyst required SQL and language"},
+  "103165": {"verdict": "b", "clause": "A degree list counts only when every field it accepts is a computing field", "pattern": "manager without required software skill"},
+  "19588": {"verdict": "b", "clause": "Algorithms the role writes to run in or with the product ... are the product's code", "pattern": "signal-processing code not RF hardware"},
+  "165501": {"verdict": "a", "clause": "A degree list counts only when every field it accepts is a computing field", "pattern": "manager without required software skill"},
+  "9776": {"verdict": "a", "clause": "Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, schemas, logs, specs", "pattern": "architect over APIs cloud infrastructure"},
+  "16054": {"verdict": "a", "clause": "security skills in software, cloud or networks — application, cloud or network security", "pattern": "security role named application/cloud security"},
+  "117081": {"verdict": "a", "clause": "Low-code is software — building applications, automations or integrations is a software role", "pattern": "configuring platform integrations low-code"},
+  "106253": {"verdict": "b", "clause": "Low-code is software — building applications, automations or integrations is a software role", "pattern": "building AI agents low-code"},
+  "125776": {"verdict": "b", "clause": "Knowledge of a field the role is about is expertise outside software when the description requires it", "pattern": "required field expertise outside software"},
+  "92156": {"verdict": "a", "clause": "not tools used only to track work or store documents (Jira, Confluence, Azure DevOps boards ...)", "pattern": "manager without required software skill"},
+  "44976": {"verdict": "a", "clause": "Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, schemas, logs, specs", "pattern": "building AI agents low-code"},
+  "179757": {"verdict": "a", "clause": "Low-code is software — an ERP ... implemented and configured", "pattern": "ERP configuration low-code software"},
+  "45913": {"verdict": "a", "clause": "A skill offered as one choice among tools or skills that are not software skills is not asked for", "pattern": "named skill offered as non-software choice"}
+}

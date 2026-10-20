@@ -1,0 +1,22 @@
+{
+  "186198": {"verdict": "a", "clause": "Q3 — the role reads or operates on engineer-facing artifacts", "pattern": "analyst reading engineer artifacts"},
+  "179099": {"verdict": "b", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "analyst required SQL skill"},
+  "45330": {"verdict": "a", "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these", "pattern": "no named software skill"},
+  "28206": {"verdict": "b", "clause": "an IT support or data-centre manager asked for basic Linux or command-line proficiency", "pattern": "IT support infrastructure tools"},
+  "74124": {"verdict": "a", "clause": "a programme or project manager asked for exposure to cloud technologies such as AWS", "pattern": "project manager cloud exposure"},
+  "186466": {"verdict": "a", "clause": "Q4 — cloud, container, infrastructure, or networking skills", "pattern": "AI integration engineer cloud skills"},
+  "112493": {"verdict": "a", "clause": "Q4 — a programming language, by name", "pattern": "quant research named languages"},
+  "158281": {"verdict": "b", "clause": "A skill offered as one choice among tools or skills that are not software skills is not asked for", "pattern": "list of stats tools not required"},
+  "7041": {"verdict": "a", "clause": "describes work that is plainly not engineering of any kind — the work is not engineering in another discipline; OUT unless one of the questions holds", "pattern": "policy fellow no software background"},
+  "16222": {"verdict": "a", "clause": "If none holds, it is OUT (no stated software background)", "pattern": "no named software skill"},
+  "14484": {"verdict": "a", "clause": "A physical product the role designs, integrates, tests or certifies — is another domain", "pattern": "physical product domain engineering"},
+  "6917": {"verdict": "b", "clause": "Q4 — cloud, container, infrastructure, or networking skills", "pattern": "data manager cloud database pipelines"},
+  "175452": {"verdict": "a", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "analyst required SQL skill"},
+  "101166": {"verdict": "a", "clause": "a fraud or policy analyst asked for SQL is the analyst of Q4", "pattern": "analyst required SQL skill"},
+  "207014": {"verdict": "b", "clause": "Selling is decided by the duties — a role whose main work is selling, owning revenue, is OUT", "pattern": "role owns revenue selling"},
+  "8717": {"verdict": "a", "clause": "A skill the applicant may learn instead is not asked for", "pattern": "skill offered as learn instead"},
+  "196152": {"verdict": "a", "clause": "Low-code is software work — when a role does some of both, its main work decides", "pattern": "admin building low-code flows"},
+  "104392": {"verdict": "b", "clause": "Q4 — a programming language, by name / SQL named as a required skill", "pattern": "ops specialist required SQL scripting"},
+  "178760": {"verdict": "a", "clause": "security skills in software, cloud or networks — application, cloud or network security", "pattern": "security specialist cloud skills"},
+  "144094": {"verdict": "a", "clause": "A physical product the role designs, integrates, tests or certifies — is another domain", "pattern": "physical product domain engineering"}
+}

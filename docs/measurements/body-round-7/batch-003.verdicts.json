@@ -1,0 +1,22 @@
+{
+  "178887": {"verdict": "a", "clause": "Once the description asks for a software background, Q4 holds", "pattern": "sales engineer software background required"},
+  "42676": {"verdict": "a", "clause": "The text does not say what the work is", "pattern": "placeholder template description empty"},
+  "68173": {"verdict": "b", "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these", "pattern": "vague technical background no named skill"},
+  "102939": {"verdict": "a", "clause": "What counts as a stated software background", "pattern": "HR role embedded in engineering org"},
+  "16213": {"verdict": "b", "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these", "pattern": "vague technical background no named skill"},
+  "193119": {"verdict": "a", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "analyst required SQL explicit"},
+  "191126": {"verdict": "a", "clause": "A physical product the role designs, integrates, tests or certifies ... is another domain", "pattern": "physical product hardware expertise required"},
+  "90113": {"verdict": "b", "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these", "pattern": "vague technical background no named skill"},
+  "59018": {"verdict": "b", "clause": "Knowledge of a field the role is about is expertise outside software when the description requires it", "pattern": "medical domain knowledge required analyst"},
+  "9820": {"verdict": "a", "clause": "The description names software work ... and the domain is software", "pattern": "enterprise architect software APIs cloud"},
+  "80083": {"verdict": "a", "clause": "If none holds, it is OUT", "pattern": "AI data labeling gig role"},
+  "128687": {"verdict": "a", "clause": "Low-code is software work", "pattern": "ERP configuration software work"},
+  "81126": {"verdict": "neither", "clause": "The text does not say what the work is", "pattern": "generic internship program no duties"},
+  "211960": {"verdict": "b", "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these", "pattern": "vague technical background no named skill"},
+  "70711": {"verdict": "a", "clause": "unless the role's own work on it is software: writing its code, its software tests or its software's architecture", "pattern": "systems engineer writes software specs"},
+  "19871": {"verdict": "a", "clause": "Once the description asks for a software background, Q4 holds", "pattern": "sales engineer software background required"},
+  "205038": {"verdict": "a", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "analyst required SQL explicit"},
+  "8728": {"verdict": "b", "clause": "A background listed only as a plus or a nice-to-have does not count", "pattern": "SQL only a nice-to-have"},
+  "70951": {"verdict": "b", "clause": "A listed skill counts at whatever level the description asks for it", "pattern": "security networking skill required fellowship"},
+  "29932": {"verdict": "a", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "analyst required SQL explicit"}
+}

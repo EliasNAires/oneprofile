@@ -1,0 +1,22 @@
+{
+ "2248": {"verdict": "b", "clause": "A degree list counts only when every field it accepts is a computing field", "pattern": "degree list open to other fields"},
+ "157760": {"verdict": "b", "clause": "Verification code is code, so the Q2 example under the expertise limit stands", "pattern": "chip verification writing testbenches"},
+ "204957": {"verdict": "a", "clause": "Q3 — reads or operates on engineer-facing artifacts", "pattern": "software architecture without hands-on coding"},
+ "214277": {"verdict": "b", "clause": "Q3 — reads or operates on engineer-facing artifacts", "pattern": "industrial data platform architecture role"},
+ "9951": {"verdict": "b", "clause": "Selling is decided by the duties — supports a sale without quota, decided by Q4", "pattern": "presales demos no named skill"},
+ "212750": {"verdict": "b", "clause": "Q3/Q4 — engineer-facing specs and technical experience in software", "pattern": "product manager hands-on technical building"},
+ "65297": {"verdict": "a", "clause": "domain_ambiguity — a physical product the role inspects is another domain", "pattern": "quality inspection of physical product"},
+ "118763": {"verdict": "b", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "analyst required SQL and Python"},
+ "137188": {"verdict": "b", "clause": "unless the role's own work on it is software: writing its code, its software tests", "pattern": "vehicle manufacturing software release testing"},
+ "181266": {"verdict": "b", "clause": "Selling is decided by the duties — supports a sale without quota, decided by Q4", "pattern": "presales demos no named skill"},
+ "64534": {"verdict": "b", "clause": "Q1 — it has to be a vacancy", "pattern": "future openings not a vacancy"},
+ "15630": {"verdict": "b", "clause": "Q4 — a programming language, by name; SQL", "pattern": "technical account manager named skill"},
+ "64016": {"verdict": "b", "clause": "domain_ambiguity — a physical product the role tests is another domain", "pattern": "hardware test equipment for physical product"},
+ "5153": {"verdict": "b", "clause": "a role that writes code but requires an electrical-engineering degree... is OUT", "pattern": "writes code but engineering degree required"},
+ "69335": {"verdict": "a", "clause": "Algorithms the role writes to run in or with the product... are the product's code", "pattern": "develops image-processing software for product"},
+ "8218": {"verdict": "a", "clause": "Experience doing this kind of role, wherever it was done, is the job itself", "pattern": "engineering leader builds domain platform"},
+ "30344": {"verdict": "a", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "analyst SQL BI tools desired"},
+ "162898": {"verdict": "a", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "analyst SQL desired qualifications"},
+ "148314": {"verdict": "a", "clause": "a skill asked for 'ideally', 'preferably' or 'strongly preferred' counts as preferred", "pattern": "ops manager SQL preferred"},
+ "180978": {"verdict": "a", "clause": "Knowledge of a field the role is about is expertise outside software when the description requires it: finance", "pattern": "required finance domain expertise"}
+}

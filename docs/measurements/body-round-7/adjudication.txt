@@ -1,0 +1,90 @@
+Adjudication of round 7 under criterion revision 1a170b96: rule misses (adjudicator sided with Jev), labeller errors (sided with the rules), neither.
+IN: rule misses 29/200 = 14.5%, labeller errors 29, neither 0
+OUT: rule misses 13/200 = 6.5%, labeller errors 3, neither 1
+
+## labeller error, IN stratum (29)
+- 69335 | Visual Systems Engineer CCD Engineer Cell Line | Jev OUT | develops image-processing software for product | Algorithms the role writes to run in or with the product... are the product's code
+- 178760 | AI Security Specialist UK&I | Jev OUT | security specialist cloud skills | security skills in software, cloud or networks — application, cloud or network security
+- 137188 | Lead Engineer ME Integration | Jev OUT | vehicle manufacturing software release testing | unless the role's own work on it is software: writing its code, its software tests
+- 19871 | Sales Engineer Enterprise | Jev OUT | sales engineer software background required | Once the description asks for a software background, Q4 holds
+- 117437 | Risk Data Analyst Integrated Risk Management | Jev OUT | analyst required SQL and language | a data, business or marketing analyst whose requirements include SQL, Python or R
+- 178887 | Sales Engineer Commercial | Jev OUT | sales engineer software background required | Once the description asks for a software background, Q4 holds
+- 70711 | Systems Engineer | Jev OUT | systems engineer writes software specs | unless the role's own work on it is software: writing its code, its software tests or its 
+- 148314 | Data Excellence Manager | Jev OUT | ops manager SQL preferred | a skill asked for 'ideally', 'preferably' or 'strongly preferred' counts as preferred
+- 196152 | Salesforce Administrator Assistant Vice President | Jev OUT | admin building low-code flows | Low-code is software work — when a role does some of both, its main work decides
+- 118763 | Sector Analyst Proprietary Research | Jev OUT | analyst required SQL and Python | a data, business or marketing analyst whose requirements include SQL, Python or R
+- 16054 | Information Security Lead AI Financial Services | Jev OUT | security role named application/cloud security | security skills in software, cloud or networks — application, cloud or network security
+- 15630 | AI Solutions Manager East | Jev OUT | technical account manager named skill | Q4 — a programming language, by name; SQL
+- 214277 | Digital Manufacturing Lead SCADA MES Data | Jev OUT | industrial data platform architecture role | Q3 — reads or operates on engineer-facing artifacts
+- 117081 | LATAM E Commerce Operations Analyst | Jev OUT | configuring platform integrations low-code | Low-code is software — building applications, automations or integrations is a software ro
+- 175452 | Analytics Associate Director | Jev OUT | analyst required SQL skill | a data, business or marketing analyst whose requirements include SQL, Python or R
+- 29932 | Data Analyst | Jev OUT | analyst required SQL explicit | a data, business or marketing analyst whose requirements include SQL, Python or R
+- 19588 | DSP Engineer Werkstudent | Jev OUT | signal-processing code not RF hardware | Algorithms the role writes to run in or with the product ... are the product's code
+- 205038 | Macro Analyst Market Intelligence US | Jev OUT | analyst required SQL explicit | a data, business or marketing analyst whose requirements include SQL, Python or R
+- 212750 | Product Manager | Jev OUT | product manager hands-on technical building | Q3/Q4 — engineer-facing specs and technical experience in software
+- 128687 | SAP SD Analyst O2C | Jev OUT | ERP configuration software work | Low-code is software work
+- 28206 | Managed Service Support Analyst | Jev OUT | IT support infrastructure tools | an IT support or data-centre manager asked for basic Linux or command-line proficiency
+- 162898 | Sales Forecasting Analyst | Jev OUT | analyst SQL desired qualifications | a data, business or marketing analyst whose requirements include SQL, Python or R
+- 30344 | Manager Analytics | Jev OUT | analyst SQL BI tools desired | a data, business or marketing analyst whose requirements include SQL, Python or R
+- 44976 | Customer Enablement AI Programs Manager | Jev OUT | building AI agents low-code | Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, sc
+- 106253 | AI Transformation Strategist | Jev OUT | building AI agents low-code | Low-code is software — building applications, automations or integrations is a software ro
+- 179757 | SAP Procurement Functional Consultant 100 onsite in St Louis MO | Jev OUT | ERP configuration low-code software | Low-code is software — an ERP ... implemented and configured
+- 74124 | Project Manager Enterprise Solutions | Jev OUT | project manager cloud exposure | a programme or project manager asked for exposure to cloud technologies such as AWS
+- 157760 | Verification Engineer | Jev OUT | chip verification writing testbenches | Verification code is code, so the Q2 example under the expertise limit stands
+- 204957 | Salesforce Consultant Core | Jev OUT | software architecture without hands-on coding | Q3 — reads or operates on engineer-facing artifacts
+
+## labeller error, OUT stratum (3)
+- 125776 | Vice President Product Management CTV | Jev IN | required field expertise outside software | Knowledge of a field the role is about is expertise outside software when the description 
+- 59018 | Medication Rebate Analyst | Jev IN | medical domain knowledge required analyst | Knowledge of a field the role is about is expertise outside software when the description 
+- 103165 | Product Manager II Spacecraft Software Platform | Jev IN | manager without required software skill | A degree list counts only when every field it accepts is a computing field
+
+## neither, IN stratum (0)
+
+## neither, OUT stratum (1)
+- 81126 | Sales Engineer Intern | Jev IN | generic internship program no duties | The text does not say what the work is
+
+## rule miss, IN stratum (29)
+- 92156 | Agile Project Manager Delivery Lead Data Decision Intelligence | Jev OUT | manager without required software skill | not tools used only to track work or store documents (Jira, Confluence, Azure DevOps board
+- 158281 | Energy Analyst Intern Economics Summer 2027 | Jev OUT | list of stats tools not required | A skill offered as one choice among tools or skills that are not software skills is not as
+- 207014 | Head of Growth Product | Jev OUT | role owns revenue selling | Selling is decided by the duties — a role whose main work is selling, owning revenue, is O
+- 165501 | Product Manager Payments | Jev OUT | manager without required software skill | A degree list counts only when every field it accepts is a computing field
+- 111908 | Marketing Program Manager | Jev OUT | CMS content admin not software | Low-code is software — administers it day to day (users, permissions, page layouts, conten
+- 80083 | AI Workflow Associate Flexible Hours | Jev OUT | AI data labeling gig role | If none holds, it is OUT
+- 9951 | Solution Consultant | Jev OUT | presales demos no named skill | Selling is decided by the duties — supports a sale without quota, decided by Q4
+- 8717 | Head of Product Design | Jev OUT | skill offered as learn instead | A skill the applicant may learn instead is not asked for
+- 102939 | People Partner Technology | Jev OUT | HR role embedded in engineering org | What counts as a stated software background
+- 68173 | Product Manager Agent Security Governance | Jev OUT | vague technical background no named skill | A vague "technical" or "technically fluent", with no software named, is none of these
+- 16213 | Lead Product Manager Enterprise Services Management | Jev OUT | vague technical background no named skill | A vague "technical" or "technically fluent", with no software named, is none of these
+- 211960 | Product Lead New Ventures | Jev OUT | vague technical background no named skill | A vague "technical" or "technically fluent", with no software named, is none of these
+- 7041 | Fellow | Jev OUT | policy fellow no software background | describes work that is plainly not engineering of any kind — the work is not engineering i
+- 45330 | Product Manager Databricks Free Edition | Jev OUT | no named software skill | A vague "technical" or "technically fluent", with no software named, is none of these
+- 2248 | Director Data Analytics | Jev OUT | degree list open to other fields | A degree list counts only when every field it accepts is a computing field
+- 181266 | Solution Consultant | Jev OUT | presales demos no named skill | Selling is decided by the duties — supports a sale without quota, decided by Q4
+- 45913 | Corporate Development Lead AI | Jev OUT | named skill offered as non-software choice | A skill offered as one choice among tools or skills that are not software skills is not as
+- 64534 | Salesforce Project Manager PMP Public Sector Govt Cloud | Jev OUT | future openings not a vacancy | Q1 — it has to be a vacancy
+- 64016 | Production Test Engineer | Jev OUT | hardware test equipment for physical product | domain_ambiguity — a physical product the role tests is another domain
+- 144094 | Optical Transceiver Engineer High Speed Links Satellites Starlink | Jev OUT | physical product domain engineering | A physical product the role designs, integrates, tests or certifies — is another domain
+- 14484 | Staff Test Engineer Actuators | Jev OUT | physical product domain engineering | A physical product the role designs, integrates, tests or certifies — is another domain
+- 65297 | CMM Programmer | Jev OUT | quality inspection of physical product | domain_ambiguity — a physical product the role inspects is another domain
+- 81497 | Group Product Manager Quantum Networking | Jev OUT | required field expertise outside software | The expertise limit on Q4 — knowledge of a field the role is about is expertise outside so
+- 16222 | Product Manager Adapt | Jev OUT | no named software skill | If none holds, it is OUT (no stated software background)
+- 191126 | Field Application Engineer | Jev OUT | physical product hardware expertise required | A physical product the role designs, integrates, tests or certifies ... is another domain
+- 90113 | Product Lead Software Applied AI | Jev OUT | vague technical background no named skill | A vague "technical" or "technically fluent", with no software named, is none of these
+- 8728 | Technical Delivery Manager Public Sector | Jev OUT | SQL only a nice-to-have | A background listed only as a plus or a nice-to-have does not count
+- 5153 | Solutions Engineer | Jev OUT | writes code but engineering degree required | a role that writes code but requires an electrical-engineering degree... is OUT
+- 180978 | Product Manager I | Jev OUT | required finance domain expertise | Knowledge of a field the role is about is expertise outside software when the description 
+
+## rule miss, OUT stratum (13)
+- 186466 | AI Implementation Specialist Samlino Group | Jev IN | AI integration engineer cloud skills | Q4 — cloud, container, infrastructure, or networking skills
+- 104392 | AI Enabled Revenue Operations Specialist | Jev IN | ops specialist required SQL scripting | Q4 — a programming language, by name / SQL named as a required skill
+- 9820 | Systems Architect | Jev IN | enterprise architect software APIs cloud | The description names software work ... and the domain is software
+- 9776 | Expert Systems Architect | Jev IN | architect over APIs cloud infrastructure | Q3 — the role reads or operates on engineer-facing artifacts — source, API definitions, sc
+- 6917 | Data Manager 826 | Jev IN | data manager cloud database pipelines | Q4 — cloud, container, infrastructure, or networking skills
+- 8218 | Director of Engineering Trading | Jev IN | engineering leader builds domain platform | Experience doing this kind of role, wherever it was done, is the job itself
+- 42676 | Staff Data Analyst I | Jev UNKNOWN | placeholder template description empty | The text does not say what the work is
+- 179099 | Manager DTC Analytics | Jev IN | analyst required SQL skill | a data, business or marketing analyst whose requirements include SQL, Python or R
+- 193119 | Experimentation Analyst | Jev IN | analyst required SQL explicit | a data, business or marketing analyst whose requirements include SQL, Python or R
+- 70951 | GPSU Military Federal Fellowship Hybrid | Jev IN | security networking skill required fellowship | A listed skill counts at whatever level the description asks for it
+- 186198 | Technical Functional Analyst | Jev IN | analyst reading engineer artifacts | Q3 — the role reads or operates on engineer-facing artifacts
+- 101166 | Data Analyst Fraud | Jev IN | analyst required SQL skill | a fraud or policy analyst asked for SQL is the analyst of Q4
+- 112493 | 2027 Shanghai Performance Researcher Summer Internship | Jev IN | quant research named languages | Q4 — a programming language, by name
