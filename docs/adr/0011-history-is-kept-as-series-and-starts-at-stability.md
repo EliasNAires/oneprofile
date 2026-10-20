@@ -8,12 +8,14 @@ disappears is deleted. The explorer's trend views need history, and it is kept a
 vacancies per role and seniority, or a skill's share of a role's vacancies — never as the
 vacancies that produced them. A vacancy stays a mirror.
 
-Series are not recorded until **stability**: one million vacancies live in a single sweep,
+Series are not recorded until **stability**: 100k engineering vacancies live in a single sweep,
 and 30 consecutive days of the scheduled pipeline completed without manual intervention.
 Before stability the explorer shows the live corpus only.
 
-Amended 2026-10-20: the bar was four consecutive weekly cycles. The cycle became daily
-(ADR-0020), and four days is no test of steadiness, so the bar is counted in days instead.
+Amended 2026-10-20, twice. The bar was four consecutive weekly cycles; the cycle became daily
+(ADR-0020), and four days is no test of steadiness, so it is counted in days. And the bar was one
+million vacancies of the whole corpus, a stretch; it is now the Finder's launch figure, 100k
+engineering vacancies, which counts what the explorer charts rather than the corpus around it.
 
 The two series recorded from the start are the vacancy count per (role × seniority) and a
 skill's share per (role × skill). Any other cut is answered over the live corpus, and is
@@ -43,5 +45,5 @@ vacancies are gone; a trend that crosses a rule change mixes the market with the
 is the drift ADR-0006 exists to prevent for measurement, and it is accepted here for history,
 on the grounds that stability is when the rules have stopped moving much.
 
-**Reaching one million live vacancies is a discovery project**: Wayback Machine discovery
-alongside Common Crawl, and five to ten applicant tracking systems rather than two.
+**Reaching 100k live engineering vacancies is a sourcing project**: Ashby, and then Wayback
+Machine discovery alongside Common Crawl or a third applicant tracking system (#70).
