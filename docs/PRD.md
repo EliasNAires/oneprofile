@@ -1,7 +1,7 @@
 # OneProfile — Product Requirements, MVP iteration
 
 Status: agreed 2026-09-19, re-sequenced 2026-09-24 (§12), section statuses brought up to date
-2026-10-07. The spec for what is not built yet. What is built is summarized with pointers to the code, the ADRs and
+2026-10-07, re-scoped 2026-10-20 around the Finder (§12). The spec for what is not built yet. What is built is summarized with pointers to the code, the ADRs and
 `docs/engineering-role-criterion.md`, which own it. Sequencing lives in the issue tracker.
 
 ## 1. The problem
@@ -11,13 +11,15 @@ missing from the tools that exist: there is no single corpus of openings, there 
 to tell whether a "remote" job will actually pay someone in Argentina, and there is no way
 to rank what remains against a specific person's skills.
 
-OneProfile is a backend that solves those three, plus a React SPA in a separate repository
-that consumes it.
+OneProfile is a backend that solves those three, plus a public site in a separate repository
+that reads what the backend publishes (ADR-0020). The first problem is answered first, by the
+Finder (§12): a place to look for engineering vacancies with filters no general job site has.
+Matching follows once the Finder has traction.
 
 ## 2. Users and scope
 
-Matching serves **one user: the developer**. The explorer (§12) is the one public surface,
-and it is anonymous and read-only. There are no accounts, no
+Matching serves **one user: the developer**. The Finder and the Explorer (§12) are the public
+surface, anonymous and read-only. There are no accounts, no
 authentication, no sessions and no `user` table. The `profile` table has its own id and the
 API takes a profile identifier, so adding real users later is a `user` table plus a foreign
 key — but nothing is built for that case now.
@@ -28,8 +30,9 @@ product's eventual purpose and is deliberately deferred.
 
 ## 3. Definition of done
 
-**The top 20 jobs the SPA shows are jobs the developer would actually apply to**, judged by
-hand against one real search. Not a component-completeness bar, not a corpus-size bar.
+**The Finder is public with its launch gate met** (§12.6). Matching's bar comes after it: the
+top 20 matches are jobs the developer would actually apply to, judged by hand against one real
+search.
 
 ## 4. Feature 1 — a meaningful corpus of jobs
 
@@ -56,7 +59,7 @@ Unauthenticated, whole board in one response, no pagination. Its structured fiel
 — see §7.
 
 All ingestion is triggered manually by an administrative endpoint today. In production every
-stage runs on a schedule (§12.4), once the real runtimes are measured.
+stage runs on a schedule (§12.5), once the real runtimes are measured.
 
 ## 5. Feature 2 — classification and eligibility
 
@@ -131,24 +134,26 @@ nothing else.
 
 ### 5.4 Eligibility
 
-The question the system answers is **"will this company pay someone located in Argentina?"**
-— not "is this job remote" and not "am I authorized to work there". Being hired as a
-contractor, through an employer of record or otherwise, counts as eligible.
+The question the system answers is **"will this company pay someone located in this
+country?"** — not "is this job remote" and not "am I authorized to work there". The country is
+the one a Finder visitor picks (ADR-0019); for matching it is the developer's, Argentina. Being
+hired as a contractor, through an employer of record or otherwise, counts as eligible.
 
 The extractor reads the description body and produces **the set of countries or regions the
-posting says it will engage someone in**. The three-state signal is derived by testing
-Argentina's membership in that set:
+posting says it will engage someone in**, and stores it. The three-state signal is derived at
+query time by testing the country's membership in that set:
 
-- `ELIGIBLE` — the set is global, names a region containing Argentina, or names Argentina.
-- `EXCLUDED` — the set is stated and excludes Argentina. Work-authorization language such as
+- `ELIGIBLE` — the set is global, names a region containing the country, or names it.
+- `EXCLUDED` — the set is stated and excludes the country. Work-authorization language such as
   "must be authorized to work in the United States" lands here, because it implies they pay
   only US-based people.
 - `UNKNOWN` — no set is stated.
 
-An explicit timezone requirement that Argentina cannot meet is a separate disqualifier.
+An explicit timezone requirement the country cannot meet is a separate disqualifier.
 
-Extraction is rule-based only (ADR-0005). Eligibility is hard-filtered, which makes recall
-the binding constraint on the product (ADR-0004); recall is measured by hand-labelling a
+Extraction is rule-based only (ADR-0005). Eligibility is hard-filtered for matches, and the
+Finder's toggle narrows to it, which makes recall the binding constraint (ADR-0004, ADR-0019);
+recall is measured by hand-labelling a
 random sample of roughly 200 remote-flagged vacancies, and the missed phrasings are the work
 queue.
 
@@ -171,10 +176,16 @@ is matched anywhere, a context key such as Go or Kafka only in its own casing an
 confirms it, in the same segment or as its parent or child (ADR-0018). Extraction reads the title
 and the segments that are not boilerplate.
 
-This iteration does **not** distinguish required skills from merely mentioned ones.
-Coverage is a rough signal and is accepted as such.
+Whether a vacancy requires a skill or only mentions it is never a filter. The Finder's skill
+filter keeps the vacancies that mention a picked skill, and orders those that require it first
+(filter rank, §12.1), once the requirement reader (#66) gives that status; until then it orders
+by how many picked skills a vacancy mentions. Coverage in matching is a rough signal and is
+accepted as such.
 
 ## 6. Feature 3 — matching
+
+Matching comes after the Finder, once it has traction (§12). How it is served is reopened by
+ADR-0020, which leaves no read API of our own.
 
 ### 6.1 Seniority
 
@@ -249,14 +260,20 @@ company is `(ats, slug)`; a vacancy is `(company_id, external_id)`.
 
 Derived data lives in its own tables so rules can be re-run without touching the ATS APIs.
 
+The public database holds none of these tables. It holds the **read schema** the publish stage
+rebuilds after each cycle (ADR-0020): one row per vacancy of the engineering subset with what the
+Finder filters, orders and shows, its skills and its country set, and the functions the site
+calls. It is the contract between the two apps.
+
 ## 8. API
 
-One read endpoint: `GET /profiles/{id}/matches`, returning a ranked page, with eligibility
-state and seniority available as query parameters. Ranking is profile-relative
-and depends on the skill taxonomy, so it cannot be done in the client.
+The backend serves no public endpoint. The site calls Supabase's generated API over the read
+schema; filter rank, the Finder's orders and the counts of what a filter cannot see are Postgres
+functions in it, called as RPC (ADR-0020). The public key reads the read schema and inserts apply
+clicks, nothing else.
 
-Ingestion remains a set of `/admin/**` trigger endpoints, which are never proxied and stay
-unreachable from outside the Docker network.
+Ingestion remains a set of `/admin/**` trigger endpoints on Elias's server, reachable from nowhere
+else.
 
 ## 9. Stack and deployment
 
@@ -270,12 +287,14 @@ New dependencies: `webarchive-commons` for the ZipNum cluster reader and SURT
 canonicalization, and commons-compress for decompressing concatenated gzip members when a
 byte range spans several.
 
-**nginx** is added in front as a reverse proxy. It serves the SPA's built assets and proxies
-`/api/**` to the application over the Docker network; only the proxy publishes a port. Same
-origin, so CORS does not enter the design, and `/admin/**` is simply not proxied. The
-vertical slice runs as plain HTTP over ZeroTier. The public explorer is reached through a
-Cloudflare tunnel on a paid domain, which also provides TLS, rate limiting and bot protection
-(§12.5).
+The pipeline stays on Elias's server and pushes to the public side (ADR-0020):
+
+- **The public database**: a self-hosted Supabase on a 4 GB Hetzner VPS in Ashburn, behind
+  Cloudflare, its answers cached until the next publish.
+- **The site**: an Astro site with React components, in its own repository, on Cloudflare Pages
+  under a paid domain. Each publish rebuilds the pages worth ranking for; a vacancy page is
+  rendered on request by a Pages Function and cached.
+- **Traction**: Cloudflare Web Analytics, which sets no cookie, and the count of apply clicks.
 
 Two known deployment gaps carried over and not fixed this iteration: images are tagged
 `latest` only, so **a deploy cannot be rolled back**, and deployment is manual.
@@ -288,39 +307,78 @@ Still open:
    vacancies. It is the binding constraint on the product's output.
 2. **Normalizer regression**, by diffing against the 216,868 pre-reset normalized rows still
    on the production server, kept as a validation set.
-3. **Real runtimes** for discovery, probing and sweeping, before anything is scheduled.
+3. **Real runtimes** for discovery, probing, sweeping and publishing, before anything is
+   scheduled.
 
 ## 11. Explicitly out of scope
 
-Authentication and multiple users; role families finer than "engineering"; tech-adjacent
-roles a software background alone would not open; résumé parsing; required-versus-mentioned skill discrimination; multi-dimensional seniority;
-salary-based ranking; LLM extraction of any kind; rollbackable deploys. For the explorer:
-free-text questions, accounts, and static blog pages — the last come after the explorer, for
-search traffic.
+Accounts, sessions and multiple users, until community feedback asks for a feature that needs
+them; role families finer than "engineering"; tech-adjacent roles a software background alone
+would not open; résumé parsing; a filter on whether a skill is required; multi-dimensional
+seniority; salary-based ranking; LLM extraction of any kind; rollbackable deploys. For the Finder
+and the Explorer: free-text questions, and structured data for Google's job search, which is a
+later experiment.
 
-## 12. The explorer — the first public surface
+## 12. The Finder and the Explorer — the public surface
 
-Agreed 2026-09-24. Matching stays the product; the explorer is built first because it shares
-the whole data layer with matching and is cheaper to finish. It is the start of a public
-reputation built on the data: posts about job seeking, in several formats, drawn from what
-the explorer shows. Its audience is job seekers, globally — most of the corpus is US-based,
-and its measurements are presented as such. Everything in it has to look good; the ambition
-is for it to be shared widely.
+Agreed 2026-09-24, re-scoped 2026-10-20. The **Finder** comes first: a place to look for
+engineering vacancies with good filters, no account and nothing to set up, which is an easier
+first sell than matching, whose profile is friction a site without a reputation cannot ask for.
+The **Explorer** comes second: a product of its own, and the way people are brought to the Finder.
+Posts about job seeking, drawn from what the Explorer shows, follow it. Matching follows on
+traction, first as an order of the Finder's results, and accounts only when community feedback
+asks for a feature that needs them.
 
-### 12.1 What it is
+The audience is job seekers, globally: most of the corpus is US-based, and the Explorer's
+measurements are presented as such. Everything has to look good; the ambition is for it to be
+shared widely. How it is served: ADR-0020.
+
+### 12.1 The Finder
+
+It lists the engineering subset, duplicates collapsed, and sends every "apply" to the vacancy's
+board.
+
+**Filters**: role, seniority, skills, country, work mode and salary.
+
+- **Country** defaults to a guess from the visitor's browser, and can be changed and is
+  remembered. It hides the vacancies excluded for that country, shows the eligible and the
+  unknown, the unknown marked as saying nothing, and a toggle narrows it to the eligible
+  (ADR-0019).
+- **Skills** keep the vacancies that mention a picked skill. Whether one is required is never a
+  filter; it orders, through filter rank.
+- **Work mode and salary**: an undeclared value is never guessed. A filter on either hides the
+  vacancies that do not declare it, and says how many it hid.
+
+**Orders**:
+
+- **The default** groups vacancies by the calendar day they were first published, in the
+  visitor's timezone, newest day first, and orders each day by filter rank.
+- **Newest**, by first publication alone. `updated_at` is no measure of recency: 55% of the
+  engineering subset was updated more than 30 days after it was first published.
+- **Filter rank** alone, newest first among ties: vacancies requiring more of the picked skills
+  first, then those only mentioning them. Until the requirement reader (#66) lands, it counts the
+  picked skills a vacancy mentions.
+
+**A vacancy** opens in a panel, and has its own URL for sharing and for search engines. Its
+description is shown as the sweep stores it, as marked lines rendered into paragraphs, headings
+and lists, with the boilerplate set apart. The company is credited, and its request to remove its
+text is honoured.
+
+**Traction** is measured by visits, from Cloudflare Web Analytics, and by apply clicks.
+
+### 12.2 The Explorer
 
 A **structured** explorer: a person picks a measure, a grouping and filters, and gets a
 chart. Every chart is an exact query. There is no free-text question box, which would need an
-LLM at request time.
+LLM at request time. Clicking a bar opens the Finder with that bar's filters.
 
 Launch dimensions: **role** (the normalized title, within engineering roles), **seniority**
-and **skills**. Eligibility comes next, once its extraction is measured. Salary only ever
-appears with the subset it describes stated on the chart, since it exists only where the ATS
-publishes pay.
+and **skills**. Eligibility comes next. Salary only ever appears with the subset it describes
+stated on the chart, since it exists only where the ATS publishes pay.
 
 The query "best stack for a role" is the share of that role's vacancies that name each skill.
 
-### 12.2 How numbers are shown
+How numbers are shown:
 
 - **Shares beside counts.** The denominator is the engineering roles in scope. The corpus is
   a sample of the market, so relative numbers are the honest reading while it is small.
@@ -331,32 +389,35 @@ The query "best stack for a role" is the share of that role's vacancies that nam
 - **Seniority counts each vacancy once**, at the lowest level it names (§6.1).
 - **Small samples.** A cell with fewer than 10 vacancies is hidden. Every other bar carries its
   n and a 95% Wilson interval, which stays well-behaved at small n and near 0% or 100%.
-- **A methodology page**, linked from every chart: the one-line criterion ("jobs you can
-  apply to from a software background"), which ATSs are covered, board and vacancy counts, the
-  as-of date, what unknown means, and the known biases — the selection of companies by ATS and
-  by crawl, the US weight of the corpus, and salary coming only from postings that publish it.
 
-### 12.3 History
+### 12.3 The methodology page
 
-The explorer shows the live corpus only until **stability**: one million vacancies live in a
-single sweep, and four consecutive weekly cycles without manual intervention. From then on
-series are recorded just before each sweep — vacancy count per (role × seniority) and skill
-share per (role × skill) — and trend views are added to the explorer once there are enough
-points to show one. History is numbers, not vacancies (ADR-0011).
+Launched with the Finder, and linked from every chart: the one-line criterion ("jobs you can
+apply to from a software background"), which ATSs are covered, board and vacancy counts, the
+as-of date, what unknown means, and the known biases — the selection of companies by ATS and
+by crawl, the US weight of the corpus, and salary coming only from postings that publish it.
+
+### 12.4 History
+
+The Explorer shows the live corpus only until **stability**: one million vacancies live in a
+single sweep, and four consecutive cycles without manual intervention. From then on series are
+recorded just before each sweep — vacancy count per (role × seniority) and skill share per
+(role × skill) — and trend views are added to the Explorer once there are enough points to show
+one. History is numbers, not vacancies (ADR-0011).
 
 Reaching a million live vacancies needs discovery from Wayback Machine captures as well as
 Common Crawl, and five to ten ATSs in all.
 
-### 12.4 Scheduling
+### 12.5 Scheduling
 
 Every stage runs on a schedule in production: discovery when a new crawl is published,
-probing after discovery and periodically for empty and not-found boards, and a sweep every
-week.
+probing after discovery and periodically for empty and not-found boards, and every day a sweep
+followed by a publish, so a vacancy that closed is gone from the Finder by the next day.
 
-### 12.5 Launch
+### 12.6 Launch
 
-The explorer is only the developer's until the launch gate is met; then it is public,
-anonymous and read-only, behind a Cloudflare tunnel.
+The Finder is only the developer's until the launch gate is met; then it is public, anonymous
+and read-only. The Explorer launches after it.
 
 The launch gate:
 
@@ -364,10 +425,16 @@ The launch gate:
 2. The engineering-role classifier has met its exit criterion.
 3. Skill extraction has a measured precision.
 4. Titles are normalized and duplicate vacancies are collapsed.
+5. Seniority is read from the body.
+6. Eligibility is extracted, and its recall measured.
+7. **100k engineering vacancies live in one sweep.** The snapshot has 34,360. The figure for one
+   country, eligible plus unknown, is reported beside it but not gated on.
 
-### 12.6 Order of work
+### 12.7 Order of work
 
-The skill taxonomy → skill extraction → the body pass → title normalization → seniority from the
-body → deduplication → explorer endpoints → the explorer page
-and nginx, with Ashby in parallel before launch. The profile and matching come after. The
-schedule and the series follow on their own track, as the pipeline heads toward stability.
+The body pass (#11) → title normalization (#25) → seniority from the body (#8) → eligibility and
+its recall (#13, #12) → deduplication (#27) → the publish stage (#28) → the Finder (#69). The VPS
+(#68) is ready before the publish stage. Ashby (#20) runs in parallel, and then whatever reaches
+100k vacancies (#70). The Explorer (#29) comes after the launch, and the profile and matching after
+traction. The schedule (#30) and the series follow on their own track, as the pipeline heads toward
+stability.

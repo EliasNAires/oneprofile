@@ -158,8 +158,8 @@ and why: ADR-0006.
 _Avoid_: backup, dump, export, copy, fixture
 
 **Cycle**:
-One scheduled pass of the pipeline: a probe and a sweep every week, and discovery whenever a
-new crawl has been published.
+One scheduled pass of the pipeline: a probe, a sweep and a publish every day, and discovery
+whenever a new crawl has been published.
 _Avoid_: run, job, batch, refresh
 
 **Stability**:
@@ -278,13 +278,13 @@ _Avoid_: seniority, level, title level
 ### Eligibility
 
 **Eligibility**:
-Whether a company will pay someone located in the user's country. Not a question of work
-authorization, and not implied by a vacancy being remote.
+Whether a company will pay someone located in a given country: the one a Finder visitor picks,
+or the profile's. Not a question of work authorization, and not implied by a vacancy being remote.
 _Avoid_: work authorization, visa status, right to work, availability
 
 **Country Set**:
 The countries or regions a vacancy says it will engage someone in. Eligibility is derived
-by asking whether the user's country belongs to it.
+by asking whether the country belongs to it, for whichever country is asked.
 _Avoid_: allowed locations, regions, geo, markets
 
 **Eligibility State**:
@@ -465,13 +465,24 @@ A change to the frozen revision that a reviewer finds a round calls for, written
 comment instead of into the criterion. Proposals are taken up by the next calibration.
 _Avoid_: criterion change, amendment, revision request
 
-### The Explorer
+### The Finder and the Explorer
+
+**Finder**:
+The public place to look for engineering vacancies: filters over the engineering subset, no
+account, and a link to apply on the vacancy's board. The product launched first.
+_Avoid_: job board, board, search, listings, portal
+
+**Filter Rank**:
+A vacancy's place among the others by how well it answers the skills a visitor picked in the
+Finder: a skill required counts above one only mentioned. No profile is involved, which is what
+sets it apart from a score.
+_Avoid_: relevance, match, score, fit
 
 **Explorer**:
 The public, read-only view of the corpus: how engineering roles divide by role, seniority and
 skill, as it stands now and, after stability, over time. Its one-line promise is "jobs you
-can apply to from a software background".
-_Avoid_: dashboard, analytics, insights, report
+can apply to from a software background". It leads into the Finder, and launches after it.
+_Avoid_: dashboard, analytics, insights, report, oracle
 
 **Share**:
 A count taken as a proportion of the engineering roles in scope, always shown beside the

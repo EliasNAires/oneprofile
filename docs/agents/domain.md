@@ -27,6 +27,8 @@ the later ADR wins; the overridden parts are marked below.
 - **0005**: every derived fact comes from a rule. No LLM is called anywhere in the pipeline.
 - **0004**: eligibility is a hard filter, so recall is the binding constraint. A declared
   location is evidence for eligibility, never against it, and the country set is stored.
+  *Overridden by 0019* for the Finder, which shows unknown eligibility; the hard filter holds for
+  matches.
 - **0003**: skills come from a curated taxonomy (O\*NET, Linguist, Wikidata), not Lightcast.
   Its provenance and licences: `docs/taxonomy.md`.
 
@@ -77,3 +79,10 @@ the later ADR wins; the overridden parts are marked below.
   and a context key counts only in its own casing and where a plain key confirms it. Its
   precision was measured once (#65): 0.945, judged good enough without a rule loop; only the
   easy wins listed on #65 are taken.
+
+**The public site**
+- **0019**: the Finder derives eligibility for the visitor's country from the country set, hides
+  the excluded and shows the eligible and the unknown, with a toggle for the eligible alone.
+- **0020**: the pipeline pushes a read schema into a self-hosted Supabase on a Hetzner VPS in
+  Ashburn; the site calls Supabase's API, with no read API of our own, and is an Astro site on
+  Cloudflare Pages. nginx (#18) and the tunnel (#32) are not built.
