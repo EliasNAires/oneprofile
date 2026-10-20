@@ -1463,6 +1463,140 @@ class BodyClassificationRuleTest {
 			.isEqualTo(IN);
 	}
 
+	@Test
+	void aPhysicalProductsSafetyAndRiskWorkIsNotSoftware() {
+		assertThat(classify("Probabilistic Risk Assessment Engineer", DOMAIN_AMBIGUITY, DUTIES + "You will write Python "
+				+ "code to estimate risk using Bayesian probabilistic models in our probabilistic risk assessment. You will "
+				+ "write C++ code to efficiently search for failure modes in high-dimensional search spaces."))
+			.isEqualTo(OUT);
+		assertThat(classify("Lead Safety Case Engineer", DOMAIN_AMBIGUITY, DUTIES + "You will own a defined scope of the "
+				+ "safety case end-to-end. Requirements: functional programming proficiency (e.g., Python) to analyze "
+				+ "fleet data and engineer local tooling."))
+			.isEqualTo(OUT);
+		assertThat(classify("Safety Engineer", DOMAIN_AMBIGUITY, DUTIES
+				+ "You will own the safety case and write the C++ code of the vehicle's motion planner."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void aDegreeListOfOtherEngineeringDisciplinesIsAnotherDomain() {
+		assertThat(classify("Operations Engineer", DOMAIN_AMBIGUITY, DUTIES + "Requirements: Bachelor’s degree in "
+				+ "mechanical, aerospace, industrial, or other engineering discipline. Experience with SQL, Python, and AI tools."))
+			.isEqualTo(OUT);
+		assertThat(classify("Chief Engineer", DOMAIN_AMBIGUITY,
+				DUTIES + "Requirements: Bachelor’s degree in Aerospace, Mechanical, Electrical or Software engineering."))
+			.isEqualTo(OUT);
+		assertThat(classify("Embedded Engineer", DOMAIN_AMBIGUITY,
+				DUTIES + "Requirements: a degree in electrical engineering or computer science; experience with C++."))
+			.isEqualTo(IN);
+		assertThat(classify("Test Engineer", DOMAIN_AMBIGUITY, DUTIES + "Requirements: a degree in computer, electrical, "
+				+ "aerospace, or a related engineering field; experience with C++."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void opticalHardwareAndAFieldsStandardsAreNoSoftwareBackground() {
+		assertThat(classify("Optical Integration Engineer", DOMAIN_AMBIGUITY, DUTIES + "You will perform precision optical "
+				+ "alignment and integration of components and assemblies. Requirements: computer literacy (Microsoft "
+				+ "Office, data entry systems, basic Linux)."))
+			.isEqualTo(OUT);
+		assertThat(classify("Mission Control Engineer", DOMAIN_AMBIGUITY,
+				DUTIES + "Requirements: knowledge of space industry standards such as CCSDS and ECSS."))
+			.isEqualTo(OUT);
+		assertThat(classify("IT Support Manager", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: computer literacy and basic Linux command-line proficiency."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void theRulesOfCivilProcedureAreExpertiseOutsideSoftware() {
+		assertThat(classify("Legal Technology Consulting Director", SCOPE_AMBIGUITY, DUTIES + "Requirements: hands-on "
+				+ "experience implementing Relativity, Nuix, or other similar systems. Demonstrated knowledge of the "
+				+ "Federal Rules of Civil Procedure (FRCP) and eDiscovery workflows. Experience with Python."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void aSkillHitThatIsNotAskedOfTheApplicantOfRoundEight() {
+		List<Segment> segments = new ArrayList<>(duties());
+		segments.add(heading("Strong Plus"));
+		segments.add(item("Strong Plus", "SQL, Python, R, or similar."));
+		assertThat(classify("Business Analyst", SCOPE_AMBIGUITY, segments)).isEqualTo(OUT);
+		assertThat(classify("Business Analyst", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: proficiency with SQL and Python or are excited to learn."))
+			.isEqualTo(OUT);
+		assertThat(classify("Strategy Associate", SCOPE_AMBIGUITY,
+				DUTIES + "Preferred qualifications: proficiency in SQL or data querying tools."))
+			.isEqualTo(OUT);
+		assertThat(classify("Technology Partner Director", SCOPE_AMBIGUITY, DUTIES + "Requirements: ten years of "
+				+ "partnerships. With Databricks Apps and Lakebase, developers can build with their preferred code-gen tools."))
+			.isEqualTo(OUT);
+		assertThat(classify("Agent Product Manager", SCOPE_AMBIGUITY, "Liberate builds insurance-native AI agents that "
+				+ "complete the downstream work inside core systems like Guidewire and Salesforce. " + DUTIES))
+			.isEqualTo(OUT);
+		assertThat(classify("Analyst", SCOPE_AMBIGUITY,
+				DUTIES + "Requirements: the ability to react quickly and accurately to changing market conditions."))
+			.isEqualTo(OUT);
+		assertThat(classify("Frontend Lead", SCOPE_AMBIGUITY, DUTIES + "Requirements: experience with React."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void workWordsThatAreNotTheRolesOwnCode() {
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY, DUTIES + "You’ll work across engineering, design, "
+				+ "go-to-market, and customers to solve high-impact problems and build scalable software."))
+			.isEqualTo(OUT);
+		assertThat(classify("Partner Development Lead", SCOPE_AMBIGUITY,
+				DUTIES + "You will build the internal tools and processes that let this function scale."))
+			.isEqualTo(OUT);
+		assertThat(classify("Solutions Lead", SCOPE_AMBIGUITY, DUTIES + "Requirements: comfortable working with technical "
+				+ "concepts (APIs, SDKs, webhooks), though not expected to build the solution yourself."))
+			.isEqualTo(OUT);
+		assertThat(classify("Programme Manager", SCOPE_AMBIGUITY, DUTIES + "Please do not submit or present "
+				+ "employer-owned source code, schematics or designs during the application process."))
+			.isEqualTo(OUT);
+		assertThat(classify("Community Engagement Manager", SCOPE_AMBIGUITY, DUTIES
+				+ "Anthropic is building AI systems that will shape the trajectory of the technology."))
+			.isEqualTo(OUT);
+		assertThat(classify("Legal Programme Manager", SCOPE_AMBIGUITY, DUTIES
+				+ "You will address technical debt, and create reusable solutions across legal practices."))
+			.isEqualTo(OUT);
+		assertThat(classify("Internal Tools Engineer", SCOPE_AMBIGUITY,
+				DUTIES + "You will build the internal tools our sales team relies on."))
+			.isEqualTo(IN);
+	}
+
+	@Test
+	void aPlainRequirementAndTheEmployersOwnProductsOfRoundEight() {
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY, DUTIES
+				+ "You know SQL inside out, and you've worked with GCP or another cloud data warehouse."))
+			.isEqualTo(IN);
+		assertThat(classify("Sales Engineer", DOMAIN_AMBIGUITY, "Chainguard is the safe source for open source. " + DUTIES
+				+ "You will apply extensive knowledge of Chainguard products to illustrate how a deal meets the client's "
+				+ "needs. Requirements: experience with Kubernetes."))
+			.isEqualTo(IN);
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY, DUTIES
+				+ "Requirements: strong knowledge of Commodities and Futures products; experience with SQL."))
+			.isEqualTo(OUT);
+		assertThat(classify("Product Manager", SCOPE_AMBIGUITY, DUTIES
+				+ "Requirements: deep knowledge of fixed income products; experience with SQL."))
+			.isEqualTo(OUT);
+	}
+
+	@Test
+	void aTalentCommunityHiresNobody() {
+		assertThat(classify("Interview Engineer", DOMAIN_AMBIGUITY, "Come join Karat's Interview Engineer Community! "
+				+ "If you are interested in being considered for a future Interview Engineer opportunity, please submit "
+				+ "your application to this posting. " + DUTIES + "Requirements: experience with Python."))
+			.isEqualTo(OUT);
+		assertThat(classify("Business Analyst", SCOPE_AMBIGUITY, "We're anticipating future openings and are connecting "
+				+ "now with great talent. " + DUTIES + "Requirements: experience with SQL."))
+			.isEqualTo(OUT);
+		assertThat(classify("Data Analyst", SCOPE_AMBIGUITY, DUTIES + "Requirements: experience with SQL. If you don't see "
+				+ "a posting that matches, submit a general application to be considered for future opportunities!"))
+			.isEqualTo(IN);
+	}
+
 	private ClassificationStateEnum classify(String title, UnknownReasonEnum reason, String description) {
 		return classify(title, reason, this.splitting.split(description));
 	}
