@@ -1,0 +1,262 @@
+Round 6: running the body pass over the pile
+  {'pile': 21246, 'in': 8179, 'out': 12316, 'unknown': 24, 'unsupportedLanguage': 727} in 30.4s
+  IN: predicted 8179, drew 200
+  OUT: predicted 12316, drew 200
+  UNKNOWN: predicted 24, not drawn
+3 already labelled, 397 to label
+  200484	IN	5828 tokens	Customer Engineer LATAM
+  180531	OUT	5591 tokens	DCS BMS Service Engineer
+  85891	OUT	5610 tokens	Privacy Program Analyst
+  164261	IN	5019 tokens	Pre Sales Engineer
+  172265	OUT	5650 tokens	Field Engineer
+  198841	IN	5617 tokens	Systems Analyst II
+  133559	IN	5344 tokens	Product Manager Engineering Acceleration
+  201523	OUT	6037 tokens	Product Manager
+  47901	IN	5330 tokens	Sales Engineer III
+  212470	IN	5918 tokens	Research Scientist STEM
+  206660	IN	5678 tokens	Product Manager Video Generation Roblox Reality
+  12960	IN	5969 tokens	Research Engineer Code RL Reinforcement Learning
+  189410	OUT	6618 tokens	Manager Retail Labor Analytics
+  18898	IN	4728 tokens	Infra Engineer
+  206137	OUT	5463 tokens	Technical Writer
+  212461	IN	5440 tokens	Product Support Engineer HU
+  137225	IN	6190 tokens	DataOps Engineer
+  3469	OUT	6362 tokens	Lead Product Manager Commerce Platform AXS
+  179008	IN	5621 tokens	Technical Success Manager
+  195052	OUT	5608 tokens	Data Analytics Intern
+  30044	IN	5078 tokens	Systems Engineer
+  17253	IN	5366 tokens	Product Applications Engineer NCG 2026
+  112522	OUT	5214 tokens	Equities Operations Analyst
+  170015	IN	5401 tokens	Product Manager Platform
+  140397	IN	5181 tokens	CNO Developer
+  27998	IN	5507 tokens	Presales Systems Engineer
+  62934	IN	6526 tokens	Research Systems Analyst
+  146946	IN	5648 tokens	Quality Engineer
+  2140	IN	5809 tokens	SOA Architect
+  189551	IN	5285 tokens	Product Management Intern 2026 Belgrade
+  116607	IN	5528 tokens	Applied Scientist All Levels
+  1070	IN	5469 tokens	Enterprise Sales Engineer TOLA
+  178712	IN	5660 tokens	Designated Support Engineer III
+  129302	OUT	5222 tokens	Risk and Pnl Production Support Engineer
+  56892	OUT	5304 tokens	Application Support Engineer
+  128632	IN	5405 tokens	MTS Performance Engineering
+  104588	OUT	5974 tokens	IT Risks Control Manager
+  48516	IN	5642 tokens	Engineering Manager
+  173552	IN	5594 tokens	Product Manager
+  133874	OUT	5689 tokens	Development Engineer
+  45465	IN	5723 tokens	Staff Product Operations Lead Marketplace Operations
+  80034	IN	5905 tokens	Manager Application Security
+  138406	IN	4966 tokens	Core Developer Intern
+  130398	OUT	6094 tokens	Technical Account Manager
+  35556	OUT	5912 tokens	Operations Research Analyst Mission Engineering
+  163621	IN	6286 tokens	Engineer
+  44643	IN	5025 tokens	Information Systems Security Manager
+  28805	IN	6651 tokens	Staff Applied Scientist
+  72391	IN	5594 tokens	Analytics Manager
+  193614	OUT	5229 tokens	Robotic Systems Integration Engineer SLA SLS
+  28736	OUT	6872 tokens	Lead Field Architect
+  58590	IN	5719 tokens	Product Analyst
+  130214	OUT	5192 tokens	Product Operations Analyst
+  200481	IN	5828 tokens	Customer Engineer LATAM
+  178518	OUT	5639 tokens	Product Manager Procure to Pay
+  100998	IN	5888 tokens	Technical Services Engineer
+  59334	IN	5040 tokens	Project Manager Data Analysis X
+  129262	IN	4890 tokens	Production Support Engineer Trading Systems
+  194996	IN	5925 tokens	GTM Program Manager Revenue Operations
+  46348	IN	4855 tokens	Trading Systems Engineer
+  1887	IN	5906 tokens	Oracle EPM Integration Lead
+  61070	OUT	5502 tokens	Information System Security Manager
+  215052	OUT	5987 tokens	GeoBase Regional Support Analyst
+  37339	IN	6212 tokens	Systems Engineer DevTools
+  193020	IN	5837 tokens	SEO Technical Lead
+  109190	IN	6239 tokens	Growth Engineer
+  138530	OUT	5556 tokens	Product Design Intern
+  150143	IN	5628 tokens	Technical Solution Lead
+  111110	OUT	5257 tokens	Support Desk Analyst
+  29072	OUT	5474 tokens	Staff Product Manager
+  110814	IN	5711 tokens	Head of Engineering
+  24835	IN	6046 tokens	Staff Engineer User Engagement
+  48467	OUT	5708 tokens	Product Manager Splice
+  179079	IN	5559 tokens	Data Analyst
+  19781	IN	6321 tokens	Director Salesforce
+  8576	OUT	6895 tokens	Risk Analyst
+  202131	IN	5574 tokens	ServiceNow CMDB CSDM Analyst
+  163208	IN	5049 tokens	IT Administrator
+  12928	IN	5760 tokens	Product Manager Research Code
+  172389	IN	5427 tokens	Staff Validation Systems Engineer
+  87150	IN	5458 tokens	Business Analyst Consumer and Merchant Analytics
+  43160	IN	5931 tokens	Developer Relations Engineer
+  28631	IN	6453 tokens	Engineering Manager Landing Pages
+  136575	IN	5017 tokens	Head of Technical Account Management
+  67845	OUT	6699 tokens	Program Manager Go To Market
+  205698	IN	5480 tokens	Data AI Systems Manager
+  30980	IN	5635 tokens	Staff Engineer
+  88864	IN	5665 tokens	Lead Analytics Manager
+  93684	IN	5586 tokens	Staff Systems Engineer
+  65174	IN	6205 tokens	Applications Developer 649
+  201570	IN	5331 tokens	HPC Cluster Engineer
+  37926	IN	5239 tokens	Engineering Manager
+  16474	IN	5195 tokens	Digital Solutions Engineer
+  99909	IN	5746 tokens	Business Analyst Fraud
+  201768	OUT	5677 tokens	Technical Success Manager
+  178315	IN	6263 tokens	Staff Engineer
+  159233	IN	5890 tokens	Summer 2027 AI Applied Research Internship
+  185068	IN	5630 tokens	Image Processing Engineer
+  69585	IN	5320 tokens	Engineering Manager Frameworks
+  196153	OUT	5070 tokens	Salesforce Administrator Assistant Vice President
+  46897	OUT	5314 tokens	Design Verification Engineer
+  1859	IN	6162 tokens	MS Dynamics Developer
+  45328	IN	5453 tokens	Product Manager Databricks AI
+  212879	IN	5899 tokens	Applied Scientist Intern
+  185848	IN	6026 tokens	Technical Services Engineer II Multiple Shifts
+  161034	IN	6215 tokens	Engineering Manager Member Accession Marketing
+  143695	IN	5626 tokens	IT Support Technician
+  158333	IN	4914 tokens	Quality Assurance Engineer
+  47036	OUT	5780 tokens	Associate Director Project Manager
+  40900	IN	5868 tokens	Operations Engineering Manager Fleet Reliability
+  30108	IN	5413 tokens	Release Manager Engineering
+  158283	OUT	5806 tokens	Research Analyst Economics and Finance July 2027
+  106090	IN	6140 tokens	Technical Lead Manager
+  155580	OUT	5682 tokens	Lead Systems Integration and Test Engineer
+  65162	IN	5568 tokens	Verification Engineer
+  108888	IN	5122 tokens	Staff Engineer Decentralize Exchange DEX
+  204240	IN	5633 tokens	Services Engineer
+  205449	OUT	5236 tokens	Field Services Engineer
+  100979	IN	5797 tokens	Staff Product Manager IT Go to Market Partner Management
+  106277	IN	5282 tokens	Escalation and Incident Engineer
+  12978	IN	5637 tokens	Research Engineer Production Model Post Training
+  146758	IN	5911 tokens	Analyst GTM Verticals and Performance
+  129079	IN	5073 tokens	Market Operations Analyst APAC Europe Session
+  208647	OUT	5292 tokens	Product Manager Game Acquisition Engagement
+  647	IN	5462 tokens	Client Outcome Architect
+  130879	OUT	5599 tokens	Marketing Analytics Manager
+  78425	IN	5422 tokens	Dev Ops Engineer
+  156369	IN	5567 tokens	Solutions Engineer
+  175326	IN	5881 tokens	Support Engineer AIOC
+  211134	IN	5991 tokens	Services Architect
+  211709	IN	6171 tokens	Staff Product Manager Data Flows and Governance
+  103380	IN	5813 tokens	Project Manager Remote
+  31271	IN	5150 tokens	Crypto Engineer Contract
+  205686	OUT	5605 tokens	System Engineering Manager SLED West
+  68923	IN	5349 tokens	Associate Marketing Analytics
+  198109	IN	5790 tokens	Solutions Engineer
+  107236	IN	6451 tokens	HPC GPU Systems Engineer
+  43901	IN	5660 tokens	Product Manager Integration Ecosystem
+  136889	IN	4712 tokens	Execution Developer Jersey City NJ
+  186333	IN	5208 tokens	AI Product Stream Lead
+  168035	IN	5136 tokens	Quality Assurance Analyst
+  164274	IN	4977 tokens	Quality Assurance Engineer
+  50747	OUT	6015 tokens	Data Governance Lead
+  41805	IN	6528 tokens	Group Product Manager Compute Platform
+  80821	IN	5818 tokens	Product Engineer
+  1555	IN	6059 tokens	AI Data Analyst
+  39854	IN	5176 tokens	Product Manager EdTech AI
+  117431	IN	5000 tokens	Research Scientist
+  43650	IN	5696 tokens	Identity Engineer
+  215947	IN	5562 tokens	Data Analyst
+  18965	IN	4828 tokens	Project Manager
+  184589	IN	5659 tokens	Enterprise Engineer
+  46329	IN	5926 tokens	Systems Engineer
+  7006	IN	5294 tokens	Systems Architect Expert 901
+  162274	IN	7218 tokens	Practice Director AI Solutions
+  213453	OUT	5917 tokens	Marketing Project Manager
+  107343	IN	5375 tokens	Product Manager Cloud Platform Services
+  45907	IN	5281 tokens	Applied Scientist
+  162058	IN	5649 tokens	HPC Operations Engineer
+  163537	OUT	5499 tokens	Investigations Analyst
+  139971	IN	5622 tokens	Lead Data Analyst
+  162574	IN	5427 tokens	Product Engineer
+  43693	OUT	6403 tokens	SAP Transportation Management TM Event SME
+  46732	IN	5250 tokens	Workday Consultant
+  12922	IN	5788 tokens	Product Manager Cybersecurity
+  105477	IN	5900 tokens	Salesforce Project Manager
+  116022	IN	5615 tokens	Strategic Analyst
+  78985	IN	5653 tokens	IT Support Specialist
+  71712	IN	5964 tokens	Director IT
+  88835	IN	6001 tokens	Growth Marketing Analyst
+  128734	IN	5833 tokens	Pre Sales Systems Engineer SLED California
+  74670	IN	5258 tokens	Manager of Engineering
+  134827	OUT	5019 tokens	Manager of Technical Account Management Country level
+  18035	IN	5181 tokens	IT Consultant mit Schwerpunkt Interfaces
+  75300	IN	5660 tokens	Business Operations Analyst
+  142359	IN	5671 tokens	Lead Character Tools Engineer
+  200597	IN	6452 tokens	IT Support Specialist
+  181571	OUT	6024 tokens	Discovery Engineer Modeling Simulation
+  204187	IN	6382 tokens	Product Manager Platform Security
+  137629	IN	5923 tokens	Data and Analytics Consultant
+  215263	IN	5779 tokens	Bliv AI Praktikant hos WPP Media
+  144667	IN	5526 tokens	Business Analyst Starlink Platform Integrity
+  193807	IN	5572 tokens	Systems Engineer
+  202329	IN	5478 tokens	Associate Solutions Engineer Auth0
+  163660	IN	5975 tokens	Product Manager
+  59801	IN	5941 tokens	Staff Product Engineer Search FX Discovery Experience
+  10695	OUT	6411 tokens	Manager Product Quality RoadRunner
+  162310	OUT	6050 tokens	Technical Account Manager
+  182172	IN	5796 tokens	Consultant
+  89541	OUT	5594 tokens	Service Parts Logistics Analyst
+  203298	IN	6492 tokens	Director of Product Management MD Aether
+  8661	IN	6874 tokens	Risk Governance Engineer
+  170866	OUT	6116 tokens	Adobe Project Manager
+  197074	IN	5476 tokens	Data Analyst V 6330
+  136582	IN	4886 tokens	Product Manager
+  33445	IN	5375 tokens	Quality Engineer
+  212348	OUT	5680 tokens	Mission Architect Missile Defense
+  45918	OUT	6058 tokens	Enablement Program Manager Sales Engineering
+  137435	IN	5447 tokens	Data Analyst Risk Analytics
+  20700	OUT	5866 tokens	Product Manager Expense Management
+  137512	OUT	5546 tokens	Intern Engineering Sciences Summer 2027
+Traceback (most recent call last):
+  File "/home/elias/Documents/proyectos/oneprofile/backend/scripts/score-body-round", line 173, in <module>
+    bodyloop.label([vacancy_id for state in bodyloop.STATES for vacancy_id in drawn[state]], pile)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/elias/Documents/proyectos/oneprofile/backend/scripts/bodyloop.py", line 133, in label
+    response = ask_jev(key, criterion, row["cleaned_title"], row["title_reason"], row["cleaned_description"])
+  File "/home/elias/Documents/proyectos/oneprofile/backend/scripts/bodyloop.py", line 102, in ask_jev
+    return jev.ask(key, {"title": title, "title_reason": title_reason, "description": description}, {
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        "engineering_role": {
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        },
+        ^^
+    })
+    ^^
+  File "/home/elias/Documents/proyectos/oneprofile/backend/scripts/jev.py", line 60, in ask
+    with urllib.request.urlopen(request, timeout=120) as response:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/urllib/request.py", line 187, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/urllib/request.py", line 487, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.14/urllib/request.py", line 504, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/usr/lib/python3.14/urllib/request.py", line 464, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.14/urllib/request.py", line 1368, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        context=self._context)
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/urllib/request.py", line 1324, in do_open
+    r = h.getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1478, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 343, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 304, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 729, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.14/ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+ssl.SSLError: [SSL: SSLV3_ALERT_BAD_RECORD_MAC] ssl/tls alert bad record mac (_ssl.c:2713)

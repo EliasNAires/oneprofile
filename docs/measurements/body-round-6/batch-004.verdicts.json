@@ -1,0 +1,13 @@
+{
+  "205686": {"verdict": "a", "clause": "Once the description asks for a software background, Q4 holds, and the vacancy is IN", "pattern": "pre-sales manager with networking skill"},
+  "130879": {"verdict": "a", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "named exception analyst preferred SQL"},
+  "180531": {"verdict": "b", "clause": "A physical product the role designs, integrates, tests or certifies ... is another domain", "pattern": "physical product needs outside engineering"},
+  "206137": {"verdict": "a", "clause": "Q3 - the role reads or operates on engineer-facing artifacts", "pattern": "technical writer reads API specs"},
+  "155580": {"verdict": "a", "clause": "RF hardware ... is electrical engineering, and requiring it is expertise outside software", "pattern": "physical product needs outside engineering"},
+  "193614": {"verdict": "b", "clause": "A physical product the role designs, integrates, tests or certifies ... is another domain", "pattern": "physical product needs outside engineering"},
+  "89541": {"verdict": "a", "clause": "describes work that is plainly not engineering of any kind ... Such a role is OUT unless one of them holds", "pattern": "analyst with no software skill required"},
+  "64885": {"verdict": "a", "clause": "Knowledge of a field the role is about is expertise outside software when the description requires it", "pattern": "presales role requires domain expertise"},
+  "10695": {"verdict": "b", "clause": "a quality system that is procedures and controlled documents, set up under ISO 9001 ... is not software", "pattern": "manufacturing quality management not software"},
+  "3469": {"verdict": "b", "clause": "Once the description asks for a software background, Q4 holds, and the vacancy is IN", "pattern": "product manager owns software platform"},
+  "35556": {"verdict": "b", "clause": "A programming language asked for analysis, modelling or simulation of such a product does not move the role into software", "pattern": "simulation analyst of physical product"}
+}

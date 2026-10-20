@@ -1,0 +1,654 @@
+Round 6: running the body pass over the pile
+  {'pile': 21246, 'in': 8179, 'out': 12316, 'unknown': 24, 'unsupportedLanguage': 727} in 30.5s
+  IN: predicted 8179, drew 200
+  OUT: predicted 12316, drew 200
+  UNKNOWN: predicted 24, not drawn
+204 already labelled, 196 to label
+  68451	OUT	6043 tokens	Staff Verification Validation Engineer
+  140177	OUT	5636 tokens	Quality Analyst II Quality Batch Review Disposition
+  24054	OUT	5005 tokens	Intermediate Technical Account Manager
+  2999	OUT	5583 tokens	Project Manager 8 12 yrs
+  104933	OUT	5146 tokens	Consultor SAP MM SD Migración a S 4HANA
+  129788	OUT	5350 tokens	Technology Solutions Consultant
+  10453	OUT	5976 tokens	Financial Analyst II AD&S
+  49185	OUT	5535 tokens	Project Architect Education Market
+  17123	OUT	5174 tokens	Condition Monitoring Engineer
+  205361	OUT	5474 tokens	Research Associate Technology Development
+  208004	OUT	5599 tokens	Staff Quality Engineer
+  164281	IN	4773 tokens	Sales Solution Engineer Thailand
+  51063	OUT	5649 tokens	Incident Management Analyst
+  148117	OUT	5842 tokens	Program Manager Development
+  194408	OUT	5464 tokens	Solutions Engineer Mid Market Canada
+  95046	OUT	5463 tokens	Staff Product Manager I Ad Serving
+  84811	OUT	5244 tokens	Assistant Project Manager
+  78293	OUT	5584 tokens	Product Manager
+  9640	IN	6338 tokens	Sales Engineer Enterprise
+  39439	OUT	5728 tokens	Care and Safety Specialist Security Guard Pool PRN
+  98630	OUT	5344 tokens	Engineering Geologist Mi Tech Services Inc
+  194361	OUT	5039 tokens	Design Engineer Chassis Suspension
+  45629	OUT	5589 tokens	Solution Engineer ERP Add On Solutions
+  45333	IN	5419 tokens	Product Manager Data Engineering
+  11401	OUT	5976 tokens	Harness Engineer Omen
+  167440	OUT	5436 tokens	Deal Desk Analyst
+  28081	OUT	6303 tokens	Product Manager AI Receptionist
+  92729	OUT	5855 tokens	1678 Manager Indirect Procurement IT
+  53848	OUT	5121 tokens	Engineering and Operations Intern
+  118650	OUT	5375 tokens	Fundamental Researcher MI Canvas International
+  98912	OUT	5179 tokens	Project Manager Mission Critical Michels Power Inc
+  172319	OUT	6016 tokens	Safety Case Architect
+  135866	OUT	5666 tokens	Research Scientist
+  31960	OUT	5497 tokens	Manager ServiceNow Management Advisory
+  37142	OUT	6074 tokens	Onboarding Project Manager Europe
+  180393	OUT	5553 tokens	Analyst Payroll Bangkok based Relocation Provided
+  112897	IN	5343 tokens	Product Manager
+  196261	OUT	5319 tokens	Financial Analyst
+  186284	OUT	5782 tokens	Product Manager
+  157032	OUT	5372 tokens	Team Lead
+  64885	IN	5755 tokens	Solutions Consultant
+  198207	OUT	5462 tokens	Manager Oklahoma City Security Planning and Liaison
+  207160	OUT	5681 tokens	Product Developer
+  202309	OUT	6242 tokens	Deployment Project Manager
+  19052	IN	5055 tokens	Support Engineer Johor Bahru
+  19597	OUT	6081 tokens	Employee Enablement and Training Program Manager
+  93739	OUT	5364 tokens	Product Support Specialist
+  53227	OUT	5504 tokens	Product Manager Payments
+  110454	OUT	5391 tokens	Project Engineer BESS
+  213063	OUT	5467 tokens	Infrastructure Project Manager
+  185929	OUT	4936 tokens	Procurement Analyst Trainee
+  210721	OUT	5382 tokens	Lead Program Manager
+  16878	OUT	5748 tokens	Snr Engineer Field Service I II
+  61914	OUT	5668 tokens	Project Manager
+  106730	OUT	5570 tokens	Associate R&D Process Engineer Business Sustaining
+  62795	IN	5450 tokens	Technical Account Manager
+  171051	OUT	5086 tokens	Product Manager
+  42594	OUT	8060 tokens	Product Manager Global eCommerce
+  103286	IN	5360 tokens	Technology Intern New York 2027
+  199188	OUT	5876 tokens	Homologation Engineer
+  215751	OUT	5814 tokens	Analyst Power Markets Modeler
+  98922	OUT	5203 tokens	Project Manager Substations Michels Power Inc
+  62455	IN	5257 tokens	Sales Engineer Dubai
+  15868	OUT	4837 tokens	Data Consultant
+  74084	OUT	5797 tokens	Assistant Project Manager
+  135248	OUT	5397 tokens	Project Manager Landscape Architecture
+  37317	OUT	6898 tokens	Customer Engineer Digital Natives
+  207435	OUT	5156 tokens	Engineering Technician
+  40504	OUT	5666 tokens	Sales and Marketing Program Manager
+  160754	OUT	5554 tokens	Project Manager Value Creation Programme
+  133162	OUT	5688 tokens	Lead Quantum Error Correction Researcher
+  181161	OUT	5449 tokens	AMN Project Manager Industrial
+  202171	OUT	5078 tokens	Talent Acquisition Analyst Contract
+  49651	OUT	5337 tokens	Project Engineer
+  122059	OUT	5083 tokens	AI Training Experts Las Vegas US
+  155810	OUT	5257 tokens	Mr D Data Integration Team Leader
+  77887	OUT	5317 tokens	Security ATO Compliance Lead
+  63899	OUT	5441 tokens	Lead Engineering Technician
+  101677	OUT	5272 tokens	Promotional Claims Accrual Analyst
+  142963	OUT	5387 tokens	Antenna Engineer Starlink
+  17281	OUT	5036 tokens	Staff Formal Verification Engineer
+  6433	OUT	5843 tokens	Sales Engineer Northeast
+  67149	OUT	5858 tokens	Scientist Product Development Life Science Biotech Reagents
+  16504	OUT	5217 tokens	Engineer Field Service
+  164504	OUT	6522 tokens	Director Technology Enablement
+  120748	OUT	5229 tokens	LImited Partner Relations Analyst Polish speaking
+  122017	OUT	5082 tokens	AI Training Experts Boston US
+  204105	OUT	6348 tokens	CMF Quality Engineer
+  16906	OUT	5389 tokens	Specialist II Technical Training Day Shift
+  159095	OUT	5636 tokens	Programmatic Analyst
+  206775	OUT	6152 tokens	Integration Test Engineer I
+  129222	IN	4726 tokens	Front Office Core Developer Digital Assets
+  119504	OUT	5185 tokens	Analyst
+  79704	OUT	5157 tokens	Production AI Innovation Lead Contract Remote
+  79437	OUT	5871 tokens	Supply Chain Program Manager Impact Implementation
+  9039	OUT	6299 tokens	Financial Analyst FP&A
+  64485	OUT	5821 tokens	Product Manager ICM Operations
+  180144	OUT	5982 tokens	Manager Project Engineering
+  149898	OUT	5518 tokens	Head of Product Design Manager role
+  18813	OUT	5025 tokens	Business Analyst New Office in Johor Bahru
+  195392	IN	5310 tokens	Analyst Packaging Planning Analytics
+  215603	OUT	5355 tokens	Scientist I II Functional Genomics
+  20565	OUT	5427 tokens	Bridge Engineer
+  25166	OUT	5001 tokens	Stormwater Municipal Utilities Engineering PM
+  102624	OUT	5181 tokens	Security Administrator
+  86124	OUT	5916 tokens	Analyst GTM Strategy Planning
+  179756	OUT	6067 tokens	SAP Procurement Consultant Onsite in St Louis Philadelphia Arlington or Huntington Beach
+  44998	OUT	5861 tokens	Manager Finance Data and AI
+  79019	OUT	6108 tokens	Solution Manager
+  79772	OUT	5191 tokens	Product Manager Remote Contract
+  215559	OUT	5591 tokens	Expert Team Lead Engineering
+  66540	OUT	5660 tokens	Scientist Mechanistic Biology
+  155247	OUT	5386 tokens	Project Manager
+  216005	OUT	5576 tokens	Project Manager
+  84009	OUT	5575 tokens	Aircraft Integration Engineer
+  135043	OUT	5699 tokens	Strategic Sales Engineer
+  37810	OUT	6978 tokens	Director of Product Risk Response
+  83871	OUT	5797 tokens	Technical Director Lead Engineer Fire
+  190814	OUT	5491 tokens	Product Specialist
+  10037	OUT	5300 tokens	Project Manager Co op Spring Summer 2027
+  202377	OUT	6033 tokens	Provisioning Analyst
+  40619	OUT	5927 tokens	Technical Support Specialist
+  96268	IN	6058 tokens	Autonomy Technical Project Manager Release
+  212923	OUT	5410 tokens	Project Manager
+  31307	OUT	5031 tokens	Data Governance Specialist Banking
+  66599	OUT	6396 tokens	Manager Manager Validation CSV Data Integrity
+  59844	OUT	5616 tokens	Project Engineering Intern Summer 2027
+  156342	OUT	5699 tokens	Product Manager Reporting and Measurement
+  213395	IN	5540 tokens	Solutions Engineering Manager Select Territory
+  80179	OUT	5524 tokens	Technical Training Quality Manager
+  46908	OUT	5138 tokens	Package Layout Engineer
+  72684	OUT	5441 tokens	Test Engineer
+  12873	OUT	6304 tokens	Manager Technical Deployment Financial Services
+  108868	IN	5525 tokens	Product Manager AI Risk Strategy Buy Sell Crypto
+  204732	OUT	5445 tokens	Quality and Training Analyst
+  96017	OUT	5354 tokens	Material Researcher
+  108228	OUT	6025 tokens	Core Design Engineer
+  166653	OUT	6338 tokens	Fluid Systems Engineer Payloads
+  86896	OUT	6484 tokens	Financial Analyst Logistics 3PL
+  85587	OUT	5655 tokens	Mission Engineer
+  52719	OUT	5476 tokens	Meetings and Events Project Director
+  105633	OUT	5393 tokens	AV Solutions Engineer
+  97984	OUT	5119 tokens	Optical Test Engineer
+  77774	OUT	4970 tokens	Engineering Co Op Spring 2027
+  33212	OUT	5974 tokens	Lead Project Manager
+  83781	OUT	5763 tokens	Fire Engineers UKI All Levels
+  104215	OUT	6374 tokens	Manager Operational Analytics
+  69576	OUT	5185 tokens	Director AI SoC Validation Bring up lead
+  98896	OUT	5129 tokens	Project Manager Michels Energy Solutions Inc
+  201113	OUT	6205 tokens	Director of Product Management
+  67807	IN	5906 tokens	Engineering Manager Dedicated Integrations Team
+  165403	OUT	5058 tokens	Project Manager
+  172395	OUT	5834 tokens	Systems Engineer Robotaxi
+  100126	OUT	5360 tokens	Business Growth Analyst Project Manager
+  128842	OUT	6210 tokens	Instructor Program Manager
+  204436	OUT	5703 tokens	OSP Field Engineer
+  16778	OUT	4916 tokens	Engineer I Product Intelligence
+  130922	IN	6008 tokens	Product Manager Agents and Context Elasticsearch
+  100826	OUT	5241 tokens	Financial Analyst
+  11121	IN	5717 tokens	Research Scientist
+  193893	OUT	5458 tokens	2027 Fund Data Reporting and Analytics Summer Intern
+  81920	OUT	5555 tokens	Project Manager I 6317
+  138507	OUT	5660 tokens	Practicante en Product Management
+  9777	OUT	5469 tokens	Expert Systems Engineer
+  135252	OUT	5397 tokens	Project Manager Landscape Architecture
+  33032	OUT	5321 tokens	Design Validation Test DVT Engineer
+  47319	OUT	5143 tokens	Partner Program Manager
+  163942	OUT	5527 tokens	Staff Product Manager Design and Intelligence
+  39809	OUT	4942 tokens	Digital Content Engineer
+  186048	OUT	5085 tokens	AI Customer Journey Manager
+  164481	OUT	4902 tokens	Lead System Testing Engineer
+  128642	OUT	5506 tokens	Operations Program Manager
+  62870	OUT	6132 tokens	Lead Product Safety Wellbeing
+  30845	OUT	5445 tokens	Global Treasury Analyst
+  36011	OUT	5727 tokens	Lead Technical Recruiter
+  100335	OUT	5607 tokens	GTM Program Manager
+  43000	IN	5173 tokens	Product Engineering Lead
+  140501	OUT	4764 tokens	Program Manager Data Collection Annotation India
+  103009	OUT	5228 tokens	mthree Hungary Banking Services Analyst
+  62320	OUT	5756 tokens	2027 July Special Executions Group Full Time Analyst
+  43731	OUT	5871 tokens	Plan Check Engineer FT Hybrid
+  143655	OUT	5514 tokens	Integration Test Engineer Starship
+  156377	IN	5428 tokens	Product Manager Search Infrastructure
+  14747	OUT	5652 tokens	Manufacturing Engineering Factory Design
+  29583	OUT	5163 tokens	Finance Risk Analyst Vice President Associate
+  40470	OUT	6268 tokens	Staff Product Manager ChefTech
+  105225	OUT	4842 tokens	SG Campus Recruitment Application Product Manager
+  125556	OUT	5508 tokens	Head of Product Mail
+  172006	OUT	4906 tokens	Program Manager UK Regulatory
+  7110	OUT	5446 tokens	Associate Advisor
+  89507	OUT	6114 tokens	Korean Bilingual Financial Analyst FP&A
+  64749	OUT	4882 tokens	NPI Program Manager
+  28201	IN	6466 tokens	Team Manager Enterprise Solutions Engineering
+  114423	OUT	5565 tokens	Manufacturing Systems Analyst
+  204275	IN	5310 tokens	Lead Solution Engineer CEE
+  72229	OUT	5268 tokens	Space Test Engineer
+Labelled 196. Jev has cost $2.8230 over every run.
+
+Round 6, scored against Jev
+  time       30.5s  gate 120s  pass
+  IN        50/200 =  25.0%  gate 10%  FAIL
+  OUT       21/200 =  10.5%  gate 10%  FAIL
+  UNKNOWN  24 of 20519 = 0.12% of the pile, not gated under 1%
+  the loop goes on
+
+Rows that disagree (71):
+
+  180531  predicted IN, Jev OUT {'IN': 0.08, 'OUT': 0.91, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  DCS BMS Service Engineer
+  > Want to be a part of Asia Pacific & Middle East's (APME) largest, most innovative, and rapidly growing data centre company?
+> AirTrunk is a hyperscale data centre company with a powerful purpose - to scale and sustain the relentless growth of the region’s digital future.
+> We do this by continuous
+
+  85891  predicted IN, Jev OUT {'IN': 0.13, 'OUT': 0.87, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Privacy Program Analyst
+  # ABOUT KALLES GROUP
+Everyone deserves to be secure.
+Our mission at Kalles Group is to help secure the future for companies of all shapes and sizes.
+While our expertise spans multiple disciplines, our method remains consistent: building trust and relationship with people -- whether you are a client,
+
+  172265  predicted IN, Jev OUT {'IN': 0.15, 'OUT': 0.85, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Field Engineer
+  About us Founded in 2017, Wayve is the leading developer of Embodied AI technology.
+Our advanced AI software and foundation models enable vehicles to perceive, understand, and navigate any complex environment, enhancing the usability and safety of automated driving systems.
+Our vision is to create a
+
+  201523  predicted IN, Jev OUT {'IN': 0.04, 'OUT': 0.96, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Manager
+  > # About Nava
+> Nava is a consultancy and public benefit corporation working to make government services simple and effective.
+> Since 2015, federal, state, and local agencies have trusted Nava to help solve highly scrutinized technology modernization challenges.
+> As a client services company, we 
+
+  26487  predicted IN, Jev OUT {'IN': 0.03, 'OUT': 0.97, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Solutions Consultant
+  > Bloomreach is building the world’s premier agentic platform for personalization.We’re revolutionizing how businesses connect with their customers, building and deploying AI agents to personalize the entire customer journey.
+> - We're taking autonomous search mainstream, making product discovery mo
+
+  189410  predicted IN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Manager Retail Labor Analytics
+  > At Curaleaf, we’re redefining the cannabis industry with a strong commitment to quality, expertise, and innovation.
+> As a leading global cannabis provider, our brands—including Curaleaf, Select, and Grassroots—offer premium products and services in both medical and adult-use markets.
+> Join us at
+
+  206137  predicted IN, Jev OUT {'IN': 0.34, 'OUT': 0.66, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Technical Writer
+  # Technical Writer
+Location: Hyderabad, India
+# OUR MISSION
+At Redwood Software, we unleash human potential.
+We empower our customers with lights-out automation for their mission-critical business processes.
+# ABOUT US
+Redwood Software is the leader in full-stack automation for mission-critical busi
+
+  3469  predicted IN, Jev OUT {'IN': 0.14, 'OUT': 0.86, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Lead Product Manager Commerce Platform AXS
+  AXS connects fans with the artists and teams they love.
+Each year we sell millions of tickets to thousands of incredible events – from concerts and festivals to sports and theater – at some of the most iconic venues in the world.
+Since our founding in 2011, we've consistently pushed the industry for
+
+  195052  predicted IN, Jev OUT {'IN': 0.27, 'OUT': 0.73, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Data Analytics Intern
+  # Internship Program Mission
+To attract and engage undergraduate and graduate talent, including students pursuing advanced degrees for specialized roles, by providing meaningful internship opportunities at HAI Group that align with their fields of study and enable them to apply academic knowledge, t
+
+  112522  predicted IN, Jev OUT {'IN': 0.12, 'OUT': 0.88, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Equities Operations Analyst
+  The OES Operations team is critical to our trading business.
+We manage the processes that connect us to exchanges, counterparties, and internal teams — ensuring assets, information, and trades flow accurately and efficiently.
+As our desk expands into ETF and cash equities trading, we need a sharp, d
+
+  129302  predicted IN, Jev OUT {'IN': 0.41, 'OUT': 0.59, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Risk and Pnl Production Support Engineer
+  Qube Research & Technologies (QRT) is a global quantitative and systematic investment manager, operating in all liquid asset classes across the world.
+We are a technology and data driven group implementing a scientific approach to investing.
+Combining data, research, technology and trading expertise
+
+  56892  predicted IN, Jev OUT {'IN': 0.36, 'OUT': 0.64, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Application Support Engineer
+  How do you want to pay?
+It’s a question you’ve answered on-screen or in-person thousands of times, but your choices have always been limited.
+Imagine the flexibility to pay however you want – credit, debit, multiple currencies, frequent flyer miles, loyalty points, or digital payments - all on the s
+
+  104588  predicted IN, Jev OUT {'IN': 0.31, 'OUT': 0.69, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  IT Risks Control Manager
+  > # About Nebius
+> Nebius is leading a new era in cloud infrastructure for the global AI economy.
+> We are building a full-stack AI cloud platform that supports developers and enterprises from data and model training through to production deployment, without the cost and complexity of building large
+
+  133874  predicted IN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Development Engineer
+  > # ABOUT ROCKET LAB
+> Rocket Lab is the end-to-end space company building rockets, spacecraft, and critical subsystems that keep the world connected, protected, expand humanity’s reach to the Moon, Mars, and beyond.
+> We move fast, build real hardware for meaningful missions, and make the impossibl
+
+  130398  predicted IN, Jev OUT {'IN': 0.34, 'OUT': 0.66, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Technical Account Manager
+  > With 1,000+ intelligence professionals serving over 1,900 clients worldwide, Recorded Future is the world’s most advanced, and largest, intelligence company!
+At Recorded Future, we built the world’s largest and most advanced threat intelligence platform - Enabling organizations to outpace, outthin
+
+  35556  predicted IN, Jev OUT {'IN': 0.16, 'OUT': 0.83, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Operations Research Analyst Mission Engineering
+  CHAOS Industries is redefining modern defense with a multi-product portfolio that gives the ultimate advantage—domain dominance.
+The company's products are powered by Coherent Distributed Networks (CDN ), empowering warfighters, commercial air operators, and border protection teams to act faster, ad
+
+  193614  predicted IN, Jev OUT {'IN': 0.04, 'OUT': 0.95, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Robotic Systems Integration Engineer SLA SLS
+  # About Formlabs
+Do you want to change how the world creates?
+At Formlabs, we’re building the tools that make it possible for anyone to bring their ideas to life, from cutting-edge products to life-saving medical devices.
+Our 3D printing technology powers innovation at more than 50,000 industry lead
+
+  28736  predicted IN, Jev OUT {'IN': 0.33, 'OUT': 0.67, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Lead Field Architect
+  > At Braze, we have found our people.
+> We’re a genuinely approachable, exceptionally kind, and intensely passionate crew.
+> We seek to ignite that passion by setting high standards, championing teamwork, and creating work-life harmony as we collectively navigate rapid growth on a global scale while
+
+  130214  predicted IN, Jev OUT {'IN': 0.19, 'OUT': 0.81, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Product Operations Analyst
+  # Product Operations Analyst
+# Bogotá
+MAJORITY is a groundbreaking all-in-one digital financial service app that includes an FDIC-insured account, Visa Prepaid card, money remittance, and international calling.
+We are built for migrants, by migrants.
+Global migration is a 21st-century reality.
+Wheth
+
+  178518  predicted IN, Jev OUT {'IN': 0.02, 'OUT': 0.98, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Manager Procure to Pay
+  > Zone & Company Software Consulting LLC (“Zone”) is the ERP-native AI platform for financial operations, purpose-built for organizations running on Oracle NetSuite.
+> We are redefining how finance teams operate by delivering an AI-powered system that automates, connects, and scales financial workfl
+
+  61070  predicted IN, Jev OUT {'IN': 0.49, 'OUT': 0.51, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Information System Security Manager
+  > FEDITC, LLC is a fast-growing business supporting DoD and other intelligence agencies worldwide.
+> FEDITC develops mission critical national security systems throughout the world directly supporting the Warfighter, DoD Leadership, & the country.
+> We are proud & honored to provide these services.
+
+
+  215052  predicted IN, Jev OUT {'IN': 0.03, 'OUT': 0.96, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  GeoBase Regional Support Analyst
+  > # We seek to move the world forward through innovative thinking.
+> Woolpert is an award-winning, global leader in architecture, engineering, and geospatial services.
+> We blend design excellence with cutting-edge technology to deliver exceptional client value.
+> Our team is passionate about their 
+
+  138530  predicted IN, Jev OUT {'IN': 0.01, 'OUT': 0.99, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Design Intern
+  # About Sezzle
+With a mission to financially empower the next generation, Sezzle is revolutionizing the shopping experience beyond payments, blending cutting-edge tech with seamless, interest-free installment plans that make shopping smarter and more accessible.
+We’re not just transforming payments;
+
+  111110  predicted IN, Jev OUT {'IN': 0.35, 'OUT': 0.65, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Support Desk Analyst
+  > Here at Ooma we empower people to connect in smarter ways.
+> We do this by creating powerful communication experiences through our cloud-based platform to bring people together at work and at home.
+> Our solutions help small business owners stay connected with their customers and manage their busi
+
+  29072  predicted IN, Jev OUT {'IN': 0.37, 'OUT': 0.63, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Staff Product Manager
+  > # Why join us
+> Brex is the intelligent finance platform that enables companies to spend smarter and move faster in more than 200 markets.
+> By combining global corporate cards and banking with intuitive spend management, bill pay, and travel software, Brex enables founders and finance teams to ac
+
+  48467  predicted IN, Jev OUT {'IN': 0.27, 'OUT': 0.73, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Manager Splice
+  > # About Digital Asset & the Canton Network
+> Digital Asset builds the technologies that are reshaping the foundations of financial markets.
+> Our mission is to create the world’s most trusted, privacy-enabled, and interoperable digital infrastructure for global finance.
+> At the heart of this miss
+
+  8576  predicted IN, Jev OUT {'IN': 0.38, 'OUT': 0.62, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Risk Analyst
+  > # About AlphaSense
+> The world’s most sophisticated companies rely on AlphaSense to remove uncertainty from decision-making.
+> With market intelligence and search built on proven AI, AlphaSense delivers insights that matter from content you can trust.
+> Our universe of public and private content i
+
+  67845  predicted IN, Jev OUT {'IN': 0.06, 'OUT': 0.94, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Program Manager Go To Market
+  > GitLab is the intelligent orchestration platform for DevSecOps.
+> GitLab enables organizations to increase developer productivity, improve operational efficiency, reduce security and compliance risk, and accelerate digital transformation.
+> More than 50 million registered users and more than 50% o
+
+  201768  predicted IN, Jev OUT {'IN': 0.29, 'OUT': 0.71, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Technical Success Manager
+  > We are a global team of innovators and pioneers dedicated to shaping the future of observability.
+> At New Relic, we build an intelligent platform that empowers companies to thrive in an AI-first world by giving them unparalleled insight into their complex systems.
+> As we continue to expand our g
+
+  196153  predicted IN, Jev OUT {'IN': 0.26, 'OUT': 0.74, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Salesforce Administrator Assistant Vice President
+  # About the Role
+iCapital is looking for a Salesforce Administrator to take hands-on ownership of the Salesforce estate, spanning multiple organizations supporting the Distribution, Enterprise, Structured Investments, and Data Solutions teams.
+Working alongside a close-knit team to drive platform st
+
+  46897  predicted IN, Jev OUT {'IN': 0.34, 'OUT': 0.65, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Design Verification Engineer
+  # About the role
+We're looking for an experienced Design Verification engineer with at least 5 years of pre-silicon verification experience in end to end verification for complex IP, subsystems, and/or SoC system level verification from plan to functional closure.
+This is a senior individual-contrib
+
+  47036  predicted IN, Jev OUT {'IN': 0.09, 'OUT': 0.91, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Associate Director Project Manager
+  # WHY DEPT ?
+We are a Growth Invention company built to help the world’s most ambitious brands grow faster.
+Operating at the intersection of technology and marketing, we create what is next by pioneering ideas, acting fast, and moving further because standing still just is not in our DNA.
+We are dra
+
+  158283  predicted IN, Jev OUT {'IN': 0.07, 'OUT': 0.93, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Research Analyst Economics and Finance July 2027
+  Please submit your application by September 14, 2026.
+Our secondary deadline is October 12, 2026.
+We strongly recommend applying by September 14, 2026 to be considered for the Analyst role.
+Please note that we will not begin actively contacting candidates for interviews until September 28, 2026.
+The
+
+  155580  predicted IN, Jev OUT {'IN': 0.05, 'OUT': 0.94, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Lead Systems Integration and Test Engineer
+  STR is focused on delivering National Defense capabilities by driving mission-focused strategies to develop advanced technology systems enabling products and solutions focused on achieving the customer vision.
+Our programs deliver sustainable, reliable, and cost-efficient capabilities focused on end
+
+  205449  predicted IN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Field Services Engineer
+  # Who we are
+Pronto AI is a global leader in commercializing autonomous vehicle (AV) technology, deploying Autonomous Haulage Systems (AHS) that automate operations in mines, quarries, and construction sites worldwide.
+While much of the industry remains in R&D, we deliver real, production-ready auto
+
+  208647  predicted IN, Jev OUT {'IN': 0.17, 'OUT': 0.83, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Manager Game Acquisition Engagement
+  > # Why Sony Interactive Entertainment?
+> Sony Interactive Entertainment isn’t just the Best Place to Play — it’s also the Best Place to Work.
+> Sony Interactive Entertainment (SIE) is the company behind the PlayStation brand.
+> As a subsidiary of Sony Group Corporation, we’re part of a proud legacy
+
+  130879  predicted IN, Jev OUT {'IN': 0.11, 'OUT': 0.89, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Marketing Analytics Manager
+  # OUR MISSION
+At Redwood, we empower our customers with lights-out automation for their mission-critical business processes.
+# ABOUT US
+Redwood Software is the leading orchestration platform for the autonomous enterprise, driving business transformation at the lowest total cost of ownership.
+Redwood
+
+  205686  predicted IN, Jev OUT {'IN': 0.34, 'OUT': 0.65, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  System Engineering Manager SLED West
+  > Everpure (NYSE: P) has evolved from storage pioneer to data platform, closing fiscal 2026 with $3.7 billion in revenue, its first billion-dollar quarter, and accelerating growth into FY27.
+> Our strategic agenda spans the companies defining the next era of technology - hyperscalers, AI labs, the A
+
+  50747  predicted IN, Jev OUT {'IN': 0.48, 'OUT': 0.52, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Data Governance Lead
+  dv01 is lifting the curtain on the largest financial market in the world: structured finance.
+The $16+ trillion market is the backbone of everyday activities that empower financial freedom, from consolidating credit card debt and refinancing student loans, to buying a home and starting a small busin
+
+  213453  predicted IN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Marketing Project Manager
+  > Vestwell is the financial technology company powering the new savings economy.
+> Our platform redefines how people save for the critical aspects of life across retirement, education, and healthcare savings needs.
+> Today, Vestwell enables over 350,000 businesses and over 2M active savers, with ove
+
+  163537  predicted IN, Jev OUT {'IN': 0.25, 'OUT': 0.75, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Investigations Analyst
+  > # About Turing
+> Turing’s mission is to accelerate superintelligence to drive real economic progress.
+> Headquartered in San Francisco, Turing works with frontier AI labs to generate high-quality datasets, reinforcement learning environments, and frontier research benchmarks that improve model cap
+
+  43693  predicted IN, Jev OUT {'IN': 0.24, 'OUT': 0.76, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  SAP Transportation Management TM Event SME
+  # Job Description
+CSCI Consulting is looking for a SAP Transportation Management (TM) Event SME to support our DoW client.
+In this role, the consultant will support a large-scale enterprise modernization initiative focused on transforming legacy logistics and transportation management capabilities i
+
+  134827  predicted IN, Jev OUT {'IN': 0.29, 'OUT': 0.71, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Manager of Technical Account Management Country level
+  Location: London - hybrid
+# We Are
+RTB House is a next-generation performance demand-side platform (DSP) that uses proprietary Deep Learning AI algorithms to help brands grow.
+The company is the market leader in driving performance using Deep Learning across the entire purchase funnel.
+Founded in 20
+
+  181571  predicted IN, Jev OUT {'IN': 0.04, 'OUT': 0.95, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Discovery Engineer Modeling Simulation
+  > Anduril Industries is a defense technology company with a mission to transform U.S. and allied military capabilities with advanced technology.
+> By bringing the expertise, technology, and business model of the 21st century’s most innovative companies to the defense industry, Anduril is changing ho
+
+  10695  predicted IN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Manager Product Quality RoadRunner
+  > Anduril Industries is a defense technology company with a mission to transform U.S. and allied military capabilities with advanced technology.
+> By bringing the expertise, technology, and business model of the 21st century’s most innovative companies to the defense industry, Anduril is changing ho
+
+  162310  predicted IN, Jev OUT {'IN': 0.09, 'OUT': 0.91, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Technical Account Manager
+  > Who is Trace3?
+> Trace3 is a leading Transformative IT Authority, providing unique technology solutions and consulting services to our clients.
+> Equipped with elite engineering and dynamic innovation, we empower IT executives and their organizations to achieve competitive advantage through a proc
+
+  89541  predicted IN, Jev OUT {'IN': 0.0, 'OUT': 1.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Service Parts Logistics Analyst
+  > Step into the innovative world of LG Electronics.
+> As a global leader in technology, LG Electronics is dedicated to creating innovative solutions for a better life.
+> Our brand promise, 'Life's Good', embodies our commitment to ensuring a happier life for all.
+> We have a rich history spanning ov
+
+  170866  predicted IN, Jev OUT {'IN': 0.23, 'OUT': 0.77, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Adobe Project Manager
+  > # Who We Are
+> WPP Enterprise Solutions designs, builds, and operates the growth systems that competitive businesses rely on.
+> In a world where Al is reshaping how companies drive growth, we lead clients in business transformation and marketing modernization, connecting strategy directly to execu
+
+  212348  predicted IN, Jev OUT {'IN': 0.02, 'OUT': 0.98, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Mission Architect Missile Defense
+  > Space is a warfighting domain.
+> True Anomaly seeks those with the talent and ambition to build the technology that secures it.
+> # OUR MISSION
+> True Anomaly delivers decisive capabilities for space superiority.
+> We build autonomous spacecraft, advanced payloads, mission software, and space-base
+
+  45918  predicted IN, Jev OUT {'IN': 0.04, 'OUT': 0.96, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Enablement Program Manager Sales Engineering
+  The Technical Solutions (TS) Enablement team empowers Datadog's global post-sales organization—including Support, Customer Success, and Sales Engineering—with the skills, tools, and resources they need to deliver world-class customer outcomes.
+As a Senior TS Enablement Program Manager supporting Sal
+
+  164281  predicted OUT, Jev IN {'IN': 0.62, 'OUT': 0.37, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Sales Solution Engineer Thailand
+  > # About Ubiquiti
+> At Ubiquiti Inc., we create technology platforms for Businesses, Smart Homes, and Internet Service Providers, driven by our goal to connect everyone, everywhere.
+> To date, Ubiquiti has shipped over 100 million devices worldwide, from ISP networking products to next generation o
+
+  9640  predicted OUT, Jev IN {'IN': 0.72, 'OUT': 0.28, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Sales Engineer Enterprise
+  Amplitude is the leading AI analytics platform, helping over 4,700 customers—including Atlassian, Burger King, NBCUniversal, and Square—build better products and digital experiences.
+With powerful AI Agents embedded across our platform, teams can analyze, test, and optimize user experiences faster t
+
+  45333  predicted OUT, Jev IN {'IN': 1.0, 'OUT': 0.0, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Manager Data Engineering
+  P-8
+At Databricks, we are passionate about enabling data teams to solve the world’s toughest problems — from making the next mode of transportation a reality to accelerating the development of medical breakthroughs.
+We do this by building and running the world’s best data and AI infrastructure platf
+
+  112897  predicted OUT, Jev IN {'IN': 0.53, 'OUT': 0.47, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Manager
+  # About Us
+Orkes is a platform for developers to build durable, distributed event driven applications.
+Based on the popular open source orchestration engine Conductor, Orkes lets developers focus on faster go to market with applications, scaling them to handle billions of workflows without having to
+
+  64885  predicted OUT, Jev IN {'IN': 0.52, 'OUT': 0.47, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Solutions Consultant
+  # About the role
+We are on the lookout for a Solutions Consultant to join our team, remotely based in Germany!
+The ideal candidate will be highly motivated, energetic and a solution-focused leader with strong technical skills, e-commerce architecture experience, and a background working with enterpr
+
+  19052  predicted OUT, Jev IN {'IN': 0.97, 'OUT': 0.03, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Support Engineer Johor Bahru
+  # Overview
+We are seeking bright and friendly individuals with excellent communication skills, willingness to learn and apply new technology and a track record for providing great customer service.
+You will have opportunities to work in a variety of challenging IT environments to quickly build up yo
+
+  62795  predicted OUT, Jev IN {'IN': 0.78, 'OUT': 0.22, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Technical Account Manager
+  > Join us in bringing joy to customer experience.
+> Five9 is a leading provider of cloud contact center software, bringing the power of cloud innovation to customers worldwide.
+> Living our values everyday results in our team-first culture and enables us to innovate, grow, and thrive while enjoying 
+
+  103286  predicted OUT, Jev IN {'IN': 0.99, 'OUT': 0.01, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Technology Intern New York 2027
+  # Location: New York, fully in-office (no remote work)
+# Dates: 14th June 2027 – 22nd August 2027
+Join Marshall Wace for the summer and experience first-hand what it means to be a member of the highly innovative and fast-paced technology team that powers one of the world's largest hedge funds.
+Inter
+
+  62455  predicted OUT, Jev IN {'IN': 0.64, 'OUT': 0.35, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Sales Engineer Dubai
+  > Fireblocks is the company bringing global finance onchain.
+> Backed by over $1 billion in capital, we are the premier digital asset infrastructure provider trusted by thousands of industry-defining financial institutions, including banks, payment providers, fintechs, and global corporates such as 
+
+  129222  predicted OUT, Jev IN {'IN': 0.97, 'OUT': 0.03, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Front Office Core Developer Digital Assets
+  Qube Research & Technologies (QRT) is a global quantitative and systematic investment manager, operating in all liquid asset classes across the world.
+We are a technology and data driven group implementing a scientific approach to investing.
+Combining data, research, technology and trading expertise
+
+  195392  predicted OUT, Jev IN {'IN': 0.77, 'OUT': 0.23, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Analyst Packaging Planning Analytics
+  # Come see what's cookin' at HelloFresh!
+At HelloFresh, we want to revolutionize the way we eat by making it more convenient and exciting to cook meals from scratch.
+We have offices all over the world and we deliver delicious meals to millions of people.
+We are the industry leader in meal-kit subscr
+
+  96268  predicted OUT, Jev IN {'IN': 0.56, 'OUT': 0.42, 'UNKNOWN': 0.02}  (DOMAIN_AMBIGUITY)
+  Autonomy Technical Project Manager Release
+  > May Mobility is transforming cities through autonomous technology to create a safer, greener, more accessible world.
+> Based in Ann Arbor, Michigan, May develops and deploys autonomous vehicles (AVs) powered by our innovative Multi-Policy Decision Making (MPDM) technology that literally reimagines
+
+  213395  predicted OUT, Jev IN {'IN': 0.6, 'OUT': 0.39, 'UNKNOWN': 0.01}  (DOMAIN_AMBIGUITY)
+  Solutions Engineering Manager Select Territory
+  > # Who We Are
+> Verkada is transforming how organizations protect their people and places with an integrated, privacy-sensitive AI-powered platform that includes solutions for video security, access control, air quality sensors, alarms, intercoms, and visitor management.
+> We’ve got serious momentu
+
+  108868  predicted OUT, Jev IN {'IN': 0.75, 'OUT': 0.25, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Manager AI Risk Strategy Buy Sell Crypto
+  # Who We Are
+At OKX, we believe that the future will be reshaped by crypto, and ultimately contribute to every individual's freedom.
+OKX is a leading crypto exchange, and the developer of OKX Wallet, giving millions access to crypto trading and decentralized crypto applications (dApps).
+OKX is also 
+
+  67807  predicted OUT, Jev IN {'IN': 1.0, 'OUT': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Engineering Manager Dedicated Integrations Team
+  > GitLab is the intelligent orchestration platform for DevSecOps.
+> GitLab enables organizations to increase developer productivity, improve operational efficiency, reduce security and compliance risk, and accelerate digital transformation.
+> More than 50 million registered users and more than 50% o
+
+  130922  predicted OUT, Jev IN {'IN': 0.67, 'OUT': 0.33, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Manager Agents and Context Elasticsearch
+  > Elastic, the Search AI Company, enables everyone to find the answers they need in real time, using all their data, at scale — unleashing the potential of businesses and people.
+> The Elastic Search AI Platform, used by more than 50% of the Fortune 500, brings together the precision of search and t
+
+  11121  predicted OUT, Jev IN {'IN': 0.52, 'OUT': 0.47, 'UNKNOWN': 0.01}  (SCOPE_AMBIGUITY)
+  Research Scientist
+  > Anduril Industries is a defense technology company with a mission to transform U.S. and allied military capabilities with advanced technology.
+> By bringing the expertise, technology, and business model of the 21st century’s most innovative companies to the defense industry, Anduril is changing ho
+
+  43000  predicted OUT, Jev IN {'IN': 1.0, 'OUT': 0.0, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Product Engineering Lead
+  > Crescendo Health is a venture-backed startup from a seasoned team.
+> We work with sponsors of clinical trials to accelerate medical innovation and fight disease.
+> The time has come to build a new generation of clinical research that makes use of real world health data, so that new treatments can 
+
+  156377  predicted OUT, Jev IN {'IN': 0.93, 'OUT': 0.07, 'UNKNOWN': 0.0}  (SCOPE_AMBIGUITY)
+  Product Manager Search Infrastructure
+  # The role
+Tavily, part of Nebius, is the web access layer for AI agents.
+Over two million developers use us, and our customers include Fortune 500 companies running agents in production.
+We build and run our own index.
+That means we own the hard problems directly: crawl coverage at scale, freshness
+
+  28201  predicted OUT, Jev IN {'IN': 0.5700000000000001, 'OUT': 0.43, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Team Manager Enterprise Solutions Engineering
+  # WHAT IS BOX?
+Box(NYSE: BOX)はインテリジェントコンテンツ管理（ICM）プラットフォームのリーディングカンパニーです。Boxのプラットフォームは、企業のコラボレーション促進や、コンテンツのライフサイクル全体の管理、重要なコンテンツの保護、そしてエンタープライズAIによるビジネスワークフローの変革を実現することを目指しています。2005年に米国で設立され、JLL、モルガン・スタンレーなどを含む大手グローバル企業や、日本では23,000超および日経225の86%の企業の業務効率化を支援しています。
+Boxは、カリフォルニア州レッドウッドシティーに本社を置き、米国、ヨーロ
+
+  204275  predicted OUT, Jev IN {'IN': 0.84, 'OUT': 0.16, 'UNKNOWN': 0.0}  (DOMAIN_AMBIGUITY)
+  Lead Solution Engineer CEE
+  # About Parloa
+Parloa’s mission is to make every customer conversation feel effortless for both customers and the companies serving them.
+As agentic AI accelerates, Parloans are shaping the foundation of a new era in customer experience — one where customer support is no longer transactions, but mea
+
+Jev has cost $2.8230 over every run, of the $4.00 limit

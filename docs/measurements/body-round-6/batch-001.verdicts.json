@@ -1,0 +1,22 @@
+{
+ "189410": {"verdict": "a", "clause": "What counts as a stated software background", "pattern": "operations role, no required skill"},
+ "62795": {"verdict": "b", "clause": "cloud, container, infrastructure or networking skills", "pattern": "networking protocols required for TAM"},
+ "130398": {"verdict": "a", "clause": "Q3 — the role reads or operates on engineer-facing artifacts", "pattern": "TAM operates APIs and data feeds"},
+ "19052": {"verdict": "b", "clause": "a degree in computer science or software engineering", "pattern": "required computing degree listed"},
+ "213453": {"verdict": "b", "clause": "What counts as a stated software background", "pattern": "operations role, no required skill"},
+ "138530": {"verdict": "a", "clause": "A background listed only as a plus or a nice-to-have does not count", "pattern": "software skill listed only as plus"},
+ "50747": {"verdict": "a", "clause": "A named tool of one of these kinds counts as its skill", "pattern": "SQL and cloud tooling required"},
+ "215052": {"verdict": "b", "clause": "The description names another domain", "pattern": "GIS domain, not software"},
+ "129302": {"verdict": "b", "clause": "The expertise limit on Q4", "pattern": "finance domain knowledge required beside SQL"},
+ "28736": {"verdict": "b", "clause": "A named tool of one of these kinds counts as its skill", "pattern": "architect role names cloud tools"},
+ "178518": {"verdict": "a", "clause": "What counts as a stated software background", "pattern": "no named software skill required"},
+ "134827": {"verdict": "b", "clause": "a programming language, by name", "pattern": "programming language named as desired"},
+ "29072": {"verdict": "a", "clause": "owning API specs, reading logs, making architecture calls", "pattern": "PM makes architecture calls"},
+ "112897": {"verdict": "a", "clause": "A background listed only as a plus or a nice-to-have does not count", "pattern": "engineering background listed as plus"},
+ "9640": {"verdict": "a", "clause": "Selling is decided by the duties", "pattern": "sales engineer, hands-on SQL required"},
+ "130214": {"verdict": "a", "clause": "'Would merely help with the duties' is about a background the description does not ask for", "pattern": "coding framed as merely helpful"},
+ "181571": {"verdict": "b", "clause": "A programming language asked for analysis, modelling or simulation of such a product does not move the role into software", "pattern": "scripting for physical-product modeling"},
+ "170866": {"verdict": "b", "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these", "pattern": "vague technical/SDLC, no named skill"},
+ "45333": {"verdict": "a", "clause": "A degree list counts only when every field it accepts is a computing field", "pattern": "degree list open beyond computing"},
+ "108868": {"verdict": "a", "clause": "The expertise limit on Q4", "pattern": "finance domain knowledge required beside SQL"}
+}

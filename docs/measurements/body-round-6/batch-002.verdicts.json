@@ -1,0 +1,22 @@
+{
+  "212348": {"verdict": "a", "clause": "A programming language asked for analysis, modeling or simulation of such a product does not move the role into software", "pattern": "physical product analysis and simulation"},
+  "43693": {"verdict": "a", "clause": "Low-code is software work: an ERP or quality system implemented and configured", "pattern": "ERP system implementation and configuration"},
+  "61070": {"verdict": "a", "clause": "A degree list counts only when every field it accepts is a computing field", "pattern": "computing-only degree list"},
+  "213395": {"verdict": "b", "clause": "A degree list counts only when every field it accepts is a computing field", "pattern": "degree list includes other engineering"},
+  "104588": {"verdict": "b", "clause": "cloud, container, infrastructure or networking skills", "pattern": "named infra/cloud/network skill required"},
+  "43000": {"verdict": "a", "clause": "Q2 — the role writes code as its primary artifact", "pattern": "explicit software stack and code ownership"},
+  "111110": {"verdict": "a", "clause": "A background listed only as a plus or a nice-to-have does not count", "pattern": "networking knowledge listed as optional asset"},
+  "103286": {"verdict": "b", "clause": "Q2 — the role writes code as its primary artifact", "pattern": "intern builds software end to end"},
+  "28201": {"verdict": "a", "clause": "cloud, container, infrastructure or networking skills", "pattern": "named infra/cloud/network skill required"},
+  "195052": {"verdict": "b", "clause": "A skill offered as one choice among tools or skills that are not software skills is not asked for (\"Stata, R, Python or SAS\")", "pattern": "statistical tool choice not asked"},
+  "204275": {"verdict": "b", "clause": "cloud, container, infrastructure or networking skills", "pattern": "named infra/cloud/network skill required"},
+  "164281": {"verdict": "a", "clause": "cloud, container, infrastructure or networking skills", "pattern": "named infra/cloud/network skill required"},
+  "45918": {"verdict": "a", "clause": "Only what the applicant must bring counts... not tools used only to track work (Jira, Confluence...)", "pattern": "enablement manager no software skill required"},
+  "85891": {"verdict": "a", "clause": "Knowledge of a field the role is about is expertise outside software when the description requires it: ... law", "pattern": "legal/regulatory domain knowledge required"},
+  "156377": {"verdict": "a", "clause": "a degree in computer science or software engineering, or equivalent technical experience ... a background asked for in those words", "pattern": "PM explicit engineering background required"},
+  "195392": {"verdict": "a", "clause": "A named tool of one of these kinds counts as its skill: ... Snowflake a cloud data skill", "pattern": "named infra/cloud/network skill required"},
+  "130922": {"verdict": "b", "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these", "pattern": "vague technical fluency no named skill"},
+  "196153": {"verdict": "a", "clause": "Low-code is software work: a role whose main work is building applications, automations or integrations", "pattern": "low-code builder configuration main work"},
+  "172265": {"verdict": "b", "clause": "A named tool of one of these kinds counts as its skill: a monitoring tool such as Datadog is an infrastructure skill", "pattern": "named infra/cloud/network skill required"},
+  "48467": {"verdict": "b", "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these", "pattern": "vague technical fluency no named skill"}
+}

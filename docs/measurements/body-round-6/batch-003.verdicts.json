@@ -1,0 +1,22 @@
+{
+  "205449": {"verdict": "b", "clause": "A physical product the role designs, integrates, tests or certifies", "pattern": "physical product engineering degree required"},
+  "129222": {"verdict": "b", "clause": "Q2 — the role writes code as its primary artifact", "pattern": "developer builds trading software"},
+  "162310": {"verdict": "a", "clause": "cloud, container, infrastructure or networking skills", "pattern": "technical account manager required cloud skills"},
+  "47036": {"verdict": "b", "clause": "What counts as a stated software background", "pattern": "project manager no named software skill"},
+  "201768": {"verdict": "b", "clause": "A skill the applicant may learn instead is not asked for", "pattern": "interest in tool not required"},
+  "201523": {"verdict": "b", "clause": "What counts as a stated software background", "pattern": "project manager no named software skill"},
+  "163537": {"verdict": "a", "clause": "Q3 — the role reads or operates on engineer-facing artifacts", "pattern": "analyst reads engineer artifacts logs"},
+  "11121": {"verdict": "a", "clause": "Q2 — the role writes code as its primary artifact", "pattern": "research scientist implements software algorithms"},
+  "56892": {"verdict": "b", "clause": "a programming language, by name; SQL", "pattern": "support engineer named software skills"},
+  "26487": {"verdict": "b", "clause": "A skill offered as one choice among tools or skills that are not software skills is not asked for", "pattern": "presales consultant no required technical skill"},
+  "67807": {"verdict": "b", "clause": "The description names software work ... and the domain is software", "pattern": "engineering manager leads software infrastructure team"},
+  "8576": {"verdict": "b", "clause": "cloud, container, infrastructure or networking skills", "pattern": "named cloud skill satisfies Q4"},
+  "158283": {"verdict": "a", "clause": "Knowledge of a field the role is about is expertise outside software when the description requires it: finance", "pattern": "field expertise outside software required"},
+  "208647": {"verdict": "a", "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these", "pattern": "general technical fluency insufficient Q4"},
+  "46897": {"verdict": "a", "clause": "Verification code is code, so the Q2 example under the expertise limit stands", "pattern": "verification code counts as Q2"},
+  "133874": {"verdict": "a", "clause": "A physical product the role designs, integrates, tests or certifies", "pattern": "physical product engineering degree required"},
+  "112522": {"verdict": "a", "clause": "A skill the applicant may learn instead is not asked for", "pattern": "interest in tool not required"},
+  "96268": {"verdict": "b", "clause": "What counts as a stated software background", "pattern": "project manager no named software skill"},
+  "62455": {"verdict": "a", "clause": "A role that supports a sale without carrying its quota ... is decided by Q4 like any other", "pattern": "presales required API security proficiency"},
+  "67845": {"verdict": "a", "clause": "not tools used only to track work or store documents (Jira, Confluence, Azure DevOps boards, GitLab or Git ...)", "pattern": "project manager no named software skill"}
+}

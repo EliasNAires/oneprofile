@@ -1,0 +1,86 @@
+Adjudication of round 6 under criterion revision 1a170b96: rule misses (adjudicator sided with Jev), labeller errors (sided with the rules), neither.
+IN: rule misses 31/200 = 15.5%, labeller errors 19, neither 0
+OUT: rule misses 14/200 = 7.0%, labeller errors 7, neither 0
+
+## labeller error, IN stratum (19)
+- 43693 | SAP Transportation Management TM Event SME | ERP system implementation and configuration | Low-code is software work: an ERP or quality system implemented and configured
+- 29072 | Staff Product Manager | PM makes architecture calls | owning API specs, reading logs, making architecture calls
+- 50747 | Data Governance Lead | SQL and cloud tooling required | A named tool of one of these kinds counts as its skill
+- 130398 | Technical Account Manager | TAM operates APIs and data feeds | Q3 — the role reads or operates on engineer-facing artifacts
+- 163537 | Investigations Analyst | analyst reads engineer artifacts logs | Q3 — the role reads or operates on engineer-facing artifacts
+- 28736 | Lead Field Architect | architect role names cloud tools | A named tool of one of these kinds counts as its skill
+- 61070 | Information System Security Manager | computing-only degree list | A degree list counts only when every field it accepts is a computing field
+- 196153 | Salesforce Administrator Assistant Vice President | low-code builder configuration main work | Low-code is software work: a role whose main work is building applications, automations or
+- 8576 | Risk Analyst | named cloud skill satisfies Q4 | cloud, container, infrastructure or networking skills
+- 130879 | Marketing Analytics Manager | named exception analyst preferred SQL | a data, business or marketing analyst whose requirements include SQL, Python or R
+- 104588 | IT Risks Control Manager | named infra/cloud/network skill required | cloud, container, infrastructure or networking skills
+- 172265 | Field Engineer | named infra/cloud/network skill required | A named tool of one of these kinds counts as its skill: a monitoring tool such as Datadog 
+- 205686 | System Engineering Manager SLED West | pre-sales manager with networking skill | Once the description asks for a software background, Q4 holds, and the vacancy is IN
+- 3469 | Lead Product Manager Commerce Platform AXS | product manager owns software platform | Once the description asks for a software background, Q4 holds, and the vacancy is IN
+- 134827 | Manager of Technical Account Management Country level | programming language named as desired | a programming language, by name
+- 56892 | Application Support Engineer | support engineer named software skills | a programming language, by name; SQL
+- 162310 | Technical Account Manager | technical account manager required cloud skills | cloud, container, infrastructure or networking skills
+- 206137 | Technical Writer | technical writer reads API specs | Q3 - the role reads or operates on engineer-facing artifacts
+- 46897 | Design Verification Engineer | verification code counts as Q2 | Verification code is code, so the Q2 example under the expertise limit stands
+
+## labeller error, OUT stratum (7)
+- 213395 | Solutions Engineering Manager Select Territory | degree list includes other engineering | A degree list counts only when every field it accepts is a computing field
+- 45333 | Product Manager Data Engineering | degree list open beyond computing | A degree list counts only when every field it accepts is a computing field
+- 112897 | Product Manager | engineering background listed as plus | A background listed only as a plus or a nice-to-have does not count
+- 108868 | Product Manager AI Risk Strategy Buy Sell Crypto | finance domain knowledge required beside SQL | The expertise limit on Q4
+- 64885 | Solutions Consultant | presales role requires domain expertise | Knowledge of a field the role is about is expertise outside software when the description 
+- 96268 | Autonomy Technical Project Manager Release | project manager no named software skill | What counts as a stated software background
+- 130922 | Product Manager Agents and Context Elasticsearch | vague technical fluency no named skill | A vague "technical" or "technically fluent", with no software named, is none of these
+
+## neither, IN stratum (0)
+
+## neither, OUT stratum (0)
+
+## rule miss, IN stratum (31)
+- 215052 | GeoBase Regional Support Analyst | GIS domain, not software | The description names another domain
+- 89541 | Service Parts Logistics Analyst | analyst with no software skill required | describes work that is plainly not engineering of any kind ... Such a role is OUT unless o
+- 130214 | Product Operations Analyst | coding framed as merely helpful | 'Would merely help with the duties' is about a background the description does not ask for
+- 45918 | Enablement Program Manager Sales Engineering | enablement manager no software skill required | Only what the applicant must bring counts... not tools used only to track work (Jira, Conf
+- 158283 | Research Analyst Economics and Finance July 2027 | field expertise outside software required | Knowledge of a field the role is about is expertise outside software when the description 
+- 129302 | Risk and Pnl Production Support Engineer | finance domain knowledge required beside SQL | The expertise limit on Q4
+- 208647 | Product Manager Game Acquisition Engagement | general technical fluency insufficient Q4 | A vague "technical" or "technically fluent", with no software named, is none of these
+- 201768 | Technical Success Manager | interest in tool not required | A skill the applicant may learn instead is not asked for
+- 112522 | Equities Operations Analyst | interest in tool not required | A skill the applicant may learn instead is not asked for
+- 85891 | Privacy Program Analyst | legal/regulatory domain knowledge required | Knowledge of a field the role is about is expertise outside software when the description 
+- 10695 | Manager Product Quality RoadRunner | manufacturing quality management not software | a quality system that is procedures and controlled documents, set up under ISO 9001 ... is
+- 111110 | Support Desk Analyst | networking knowledge listed as optional asset | A background listed only as a plus or a nice-to-have does not count
+- 178518 | Product Manager Procure to Pay | no named software skill required | What counts as a stated software background
+- 189410 | Manager Retail Labor Analytics | operations role, no required skill | What counts as a stated software background
+- 213453 | Marketing Project Manager | operations role, no required skill | What counts as a stated software background
+- 212348 | Mission Architect Missile Defense | physical product analysis and simulation | A programming language asked for analysis, modeling or simulation of such a product does n
+- 205449 | Field Services Engineer | physical product engineering degree required | A physical product the role designs, integrates, tests or certifies
+- 133874 | Development Engineer | physical product engineering degree required | A physical product the role designs, integrates, tests or certifies
+- 180531 | DCS BMS Service Engineer | physical product needs outside engineering | A physical product the role designs, integrates, tests or certifies ... is another domain
+- 155580 | Lead Systems Integration and Test Engineer | physical product needs outside engineering | RF hardware ... is electrical engineering, and requiring it is expertise outside software
+- 193614 | Robotic Systems Integration Engineer SLA SLS | physical product needs outside engineering | A physical product the role designs, integrates, tests or certifies ... is another domain
+- 26487 | Solutions Consultant | presales consultant no required technical skill | A skill offered as one choice among tools or skills that are not software skills is not as
+- 47036 | Associate Director Project Manager | project manager no named software skill | What counts as a stated software background
+- 201523 | Product Manager | project manager no named software skill | What counts as a stated software background
+- 67845 | Program Manager Go To Market | project manager no named software skill | not tools used only to track work or store documents (Jira, Confluence, Azure DevOps board
+- 181571 | Discovery Engineer Modeling Simulation | scripting for physical-product modeling | A programming language asked for analysis, modelling or simulation of such a product does 
+- 35556 | Operations Research Analyst Mission Engineering | simulation analyst of physical product | A programming language asked for analysis, modelling or simulation of such a product does 
+- 138530 | Product Design Intern | software skill listed only as plus | A background listed only as a plus or a nice-to-have does not count
+- 195052 | Data Analytics Intern | statistical tool choice not asked | A skill offered as one choice among tools or skills that are not software skills is not as
+- 48467 | Product Manager Splice | vague technical fluency no named skill | A vague "technical" or "technically fluent", with no software named, is none of these
+- 170866 | Adobe Project Manager | vague technical/SDLC, no named skill | A vague "technical" or "technically fluent", with no software named, is none of these
+
+## rule miss, OUT stratum (14)
+- 156377 | Product Manager Search Infrastructure | PM explicit engineering background required | a degree in computer science or software engineering, or equivalent technical experience .
+- 129222 | Front Office Core Developer Digital Assets | developer builds trading software | Q2 — the role writes code as its primary artifact
+- 67807 | Engineering Manager Dedicated Integrations Team | engineering manager leads software infrastructure team | The description names software work ... and the domain is software
+- 43000 | Product Engineering Lead | explicit software stack and code ownership | Q2 — the role writes code as its primary artifact
+- 103286 | Technology Intern New York 2027 | intern builds software end to end | Q2 — the role writes code as its primary artifact
+- 28201 | Team Manager Enterprise Solutions Engineering | named infra/cloud/network skill required | cloud, container, infrastructure or networking skills
+- 204275 | Lead Solution Engineer CEE | named infra/cloud/network skill required | cloud, container, infrastructure or networking skills
+- 164281 | Sales Solution Engineer Thailand | named infra/cloud/network skill required | cloud, container, infrastructure or networking skills
+- 195392 | Analyst Packaging Planning Analytics | named infra/cloud/network skill required | A named tool of one of these kinds counts as its skill: ... Snowflake a cloud data skill
+- 62795 | Technical Account Manager | networking protocols required for TAM | cloud, container, infrastructure or networking skills
+- 62455 | Sales Engineer Dubai | presales required API security proficiency | A role that supports a sale without carrying its quota ... is decided by Q4 like any other
+- 19052 | Support Engineer Johor Bahru | required computing degree listed | a degree in computer science or software engineering
+- 11121 | Research Scientist | research scientist implements software algorithms | Q2 — the role writes code as its primary artifact
+- 9640 | Sales Engineer Enterprise | sales engineer, hands-on SQL required | Selling is decided by the duties
