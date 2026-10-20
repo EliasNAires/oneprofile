@@ -84,7 +84,8 @@ the later ADR wins; the overridden parts are marked below.
 **The public site**
 - **0019**: the Finder derives eligibility for the visitor's country from the country set, hides
   the excluded and shows the eligible and the unknown, with a toggle for the eligible alone.
-- **0020**: two Spring Boot apps in one repository, as the Maven modules `pipeline` and `api`.
+- **0020**: one repository holding two Spring Boot apps, the Maven modules `pipeline` and `api`,
+  and the site in `site/`.
   The pipeline pushes a read schema into Postgres on a Hetzner VPS in Ashburn; the read app beside
   it serves the site, and its endpoints are the contract. The site is an Astro site on Cloudflare
   Pages. nginx (#18) and the tunnel (#32) are not built.

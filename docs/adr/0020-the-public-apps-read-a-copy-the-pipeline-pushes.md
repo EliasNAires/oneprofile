@@ -5,9 +5,11 @@ Status: accepted
 The Finder and the Explorer are public; the pipeline runs on Elias's own server, which should
 serve nobody and carry no public load. Decided by Elias on 2026-10-20.
 
-- **Two Spring Boot apps, one repository.** The build becomes two Maven modules: `pipeline`, what
-  the backend is today, and `api`, the read app. The pipeline stays on Elias's server; the read
-  app runs on a 4 GB Hetzner VPS in Ashburn, beside the public Postgres.
+- **One repository: two Spring Boot apps and the site.** The build becomes two Maven modules,
+  `pipeline`, what the backend is today, and `api`, the read app, with the site beside them in
+  `site/`. The pipeline stays on Elias's server; the read app runs on a 4 GB Hetzner VPS in
+  Ashburn, beside the public Postgres. An endpoint and the page that calls it change in one commit,
+  and a session working on either sees both.
 - **The pipeline pushes.** After each cycle, a publish stage rebuilds a **read schema** in the
   public Postgres, in staging tables swapped in one transaction, so a visitor never sees a half
   published day. Elias's server only makes outbound connections.
@@ -16,13 +18,21 @@ serve nobody and carry no public load. Decided by Elias on 2026-10-20.
   Explorer's aggregates, and recording an apply click, its only write. The read schema sits between
   the two apps only, so either side of it can change without the site noticing. Sessions, when they
   come, are Spring Security in the read app.
-- **The site is static where it can be.** An Astro site with React components, in its own
-  repository, on Cloudflare Pages. Each publish rebuilds the pages worth ranking for: the home page,
+- **The site is static where it can be.** An Astro site with React components, in `site/`, on
+  Cloudflare Pages. Each publish rebuilds the pages worth ranking for: the home page,
   a landing page per role and per skill, the methodology, the Explorer and the blog. A vacancy page
   is rendered on request by a Pages Function and cached. The read app sits behind Cloudflare too,
   and its answers are cached until the next publish.
 
 ## Considered options
+
+- **One Spring Boot app deployed twice**, a profile each. One build, but the public deployment
+  would apply the pipeline's Flyway migrations and validate its entities against a database that
+  holds only the read schema; keeping them apart takes per-profile migrations, entity scanning and
+  repositories. Two modules each own their migrations and entities, and the public image holds no
+  admin, crawler or Jev code at all.
+- **The site in a repository of its own**: the endpoints and their one consumer would change in
+  two places, and agents would see one side of the contract at a time.
 
 - **PostgREST's generated API over the read schema**, the logic in Postgres functions. Less code,
   but filter rank, the orders and eligibility per country are the Finder's core, and as SQL

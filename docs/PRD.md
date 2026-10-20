@@ -11,7 +11,7 @@ missing from the tools that exist: there is no single corpus of openings, there 
 to tell whether a "remote" job will actually pay someone in Argentina, and there is no way
 to rank what remains against a specific person's skills.
 
-OneProfile is a backend that solves those three, plus a public site in a separate repository
+OneProfile is a backend that solves those three, plus a public site, in the same repository,
 that reads what the backend publishes (ADR-0020). The first problem is answered first, by the
 Finder (§12): a place to look for engineering vacancies with filters no general job site has.
 Matching follows once the Finder has traction.
@@ -298,7 +298,7 @@ The pipeline stays on Elias's server and pushes to the public side (ADR-0020):
 - **The public side**: Postgres and the read app on a 4 GB Hetzner VPS in Ashburn, behind
   Cloudflare, its answers cached until the next publish. Sessions, when they come, are Spring
   Security in the read app.
-- **The site**: an Astro site with React components, in its own repository, on Cloudflare Pages
+- **The site**: an Astro site with React components, in `site/`, on Cloudflare Pages
   under a paid domain. Each publish rebuilds the pages worth ranking for; a vacancy page is
   rendered on request by a Pages Function and cached.
 - **Traction**: Cloudflare Web Analytics, which sets no cookie, and the count of apply clicks.
