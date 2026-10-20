@@ -267,9 +267,9 @@ calls. It is the contract between the two apps.
 
 ## 8. API
 
-The backend serves no public endpoint. The site calls Supabase's generated API over the read
+The backend serves no public endpoint. The site calls PostgREST's generated API over the read
 schema; filter rank, the Finder's orders and the counts of what a filter cannot see are Postgres
-functions in it, called as RPC (ADR-0020). The public key reads the read schema and inserts apply
+functions in it, called as RPC (ADR-0020). The anonymous role reads the read schema and inserts apply
 clicks, nothing else.
 
 Ingestion remains a set of `/admin/**` trigger endpoints on Elias's server, reachable from nowhere
@@ -289,8 +289,8 @@ byte range spans several.
 
 The pipeline stays on Elias's server and pushes to the public side (ADR-0020):
 
-- **The public database**: a self-hosted Supabase on a 4 GB Hetzner VPS in Ashburn, behind
-  Cloudflare, its answers cached until the next publish.
+- **The public database**: Postgres with PostgREST on a 4 GB Hetzner VPS in Ashburn, behind
+  Cloudflare, its answers cached until the next publish. Supabase is added when sessions arrive.
 - **The site**: an Astro site with React components, in its own repository, on Cloudflare Pages
   under a paid domain. Each publish rebuilds the pages worth ranking for; a vacancy page is
   rendered on request by a Pages Function and cached.
@@ -428,13 +428,23 @@ The launch gate:
 5. Seniority is read from the body.
 6. Eligibility is extracted, and its recall measured.
 7. **100k engineering vacancies live in one sweep.** The snapshot has 34,360. The figure for one
-   country, eligible plus unknown, is reported beside it but not gated on.
+   country, eligible plus unknown, is reported beside it but not gated on. The figures for
+   Argentina, Brazil and Mexico decide later whether marketing aims at developers outside the US.
+
+The gate is frozen as of 2026-10-20: anything new goes after the launch. Each extractor it waits
+on is built and measured once, as skill extraction was (#65), and becomes a rule loop only if that
+first iteration falls short (`docs/agents/rule-loop.md`).
 
 ### 12.7 Order of work
 
-The body pass (#11) → title normalization (#25) → seniority from the body (#8) → eligibility and
-its recall (#13, #12) → deduplication (#27) → the publish stage (#28) → the Finder (#69). The VPS
-(#68) is ready before the publish stage. Ashby (#20) runs in parallel, and then whatever reaches
-100k vacancies (#70). The Explorer (#29) comes after the launch, and the profile and matching after
-traction. The schedule (#30) and the series follow on their own track, as the pipeline heads toward
+Three tracks run in parallel:
+
+- **Extraction**: the body pass (#11) → title normalization (#25) → seniority from the body (#8) →
+  eligibility and its recall (#13, #12) → deduplication (#27).
+- **The public side**: the VPS (#68) → the publish stage (#28) → the Finder (#69), built against
+  the data as it stands, each filter switched on as its extractor lands.
+- **Volume**: Ashby (#20), then whatever reaches 100k vacancies (#70).
+
+The Finder launches when the three meet the gate. The Explorer (#29) comes after the launch, and
+the profile and matching after traction. The schedule (#30) and the series follow on their own track, as the pipeline heads toward
 stability.

@@ -84,6 +84,7 @@ the later ADR wins; the overridden parts are marked below.
 **The public site**
 - **0019**: the Finder derives eligibility for the visitor's country from the country set, hides
   the excluded and shows the eligible and the unknown, with a toggle for the eligible alone.
-- **0020**: the pipeline pushes a read schema into a self-hosted Supabase on a Hetzner VPS in
-  Ashburn; the site calls Supabase's API, with no read API of our own, and is an Astro site on
+- **0020**: the pipeline pushes a read schema into Postgres with PostgREST on a Hetzner VPS in
+  Ashburn, Supabase added when sessions arrive; the site calls PostgREST's API, with no read API
+  of our own, and is an Astro site on
   Cloudflare Pages. nginx (#18) and the tunnel (#32) are not built.

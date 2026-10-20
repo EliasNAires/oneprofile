@@ -5,6 +5,10 @@ whole corpus is run through them, a sample is scored against a labeller, and the
 the next round's work. An issue is worked as a rule loop when its body has a `## Loop` section.
 Why it is shaped this way: ADR-0014.
 
+An extractor does not start as a loop. Its first iteration is built and measured once, as skill
+extraction was (#65), and Elias decides on that measurement whether it is good enough or becomes
+a loop, which is when the issue gains its `## Loop` section.
+
 A loop has two phases:
 
 - **Calibration** makes the criterion fit to score by. It revises the criterion and checks the
