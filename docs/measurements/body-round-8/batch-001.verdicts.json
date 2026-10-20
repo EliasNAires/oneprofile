@@ -1,0 +1,102 @@
+{
+  "10204": {
+    "verdict": "a",
+    "clause": "A physical product the role designs, integrates, tests or certifies",
+    "pattern": "physical product multi-disciplinary oversight"
+  },
+  "175049": {
+    "verdict": "a",
+    "clause": "Knowledge of a field the role is about is expertise outside software",
+    "pattern": "finance domain expertise required"
+  },
+  "176426": {
+    "verdict": "a",
+    "clause": "If none holds, it is OUT",
+    "pattern": "no software background required"
+  },
+  "177977": {
+    "verdict": "a",
+    "clause": "Low-code is software work",
+    "pattern": "software product implementation configuration"
+  },
+  "185510": {
+    "verdict": "b",
+    "clause": "A vague \"technical\" or \"technically fluent\", with no software named, is none of these",
+    "pattern": "program manager oversees not building"
+  },
+  "18826": {
+    "verdict": "a",
+    "clause": "cloud, container, infrastructure or networking skills (What counts as a stated software background)",
+    "pattern": "pre-sales engineer required IT skills"
+  },
+  "1895": {
+    "verdict": "a",
+    "clause": "Q3 — the role reads or operates on engineer-facing artifacts",
+    "pattern": "ERP techno-functional customization role"
+  },
+  "18981": {
+    "verdict": "a",
+    "clause": "An administrator asked for a query or programming language (SOQL, Apex, SQL) has been asked for a software background",
+    "pattern": "administrator query language preferred"
+  },
+  "193765": {
+    "verdict": "a",
+    "clause": "A background that is desired or desirable is preferred, and counts",
+    "pattern": "SQL preferred not required"
+  },
+  "209650": {
+    "verdict": "b",
+    "clause": "A physical product the role designs, integrates, tests or certifies",
+    "pattern": "physical product hardware operations"
+  },
+  "210257": {
+    "verdict": "a",
+    "clause": "If none holds, it is OUT",
+    "pattern": "program manager oversees not building"
+  },
+  "214225": {
+    "verdict": "b",
+    "clause": "An administrator asked for a query or programming language (SOQL, Apex, SQL) has been asked for a software background",
+    "pattern": "administrator query language preferred"
+  },
+  "26041": {
+    "verdict": "b",
+    "clause": "Q3 — the role reads or operates on engineer-facing artifacts",
+    "pattern": "entry-level role querying database"
+  },
+  "2750": {
+    "verdict": "b",
+    "clause": "If none holds, it is OUT",
+    "pattern": "no software background required"
+  },
+  "45433": {
+    "verdict": "a",
+    "clause": "If none holds, it is OUT",
+    "pattern": "business development partnerships no software skill"
+  },
+  "48637": {
+    "verdict": "a",
+    "clause": "Q2 — the role writes code as its primary artifact",
+    "pattern": "technical role requires coding languages"
+  },
+  "52682": {
+    "verdict": "b",
+    "clause": "If none holds, it is OUT",
+    "pattern": "business development partnerships no software skill"
+  },
+  "56914": {
+    "verdict": "b",
+    "clause": "Q3 — the role reads or operates on engineer-facing artifacts",
+    "pattern": "support engineer engineer-facing artifacts"
+  },
+  "71873": {
+    "verdict": "b",
+    "clause": "Knowledge of a field the role is about is expertise outside software when the description requires it",
+    "pattern": "field expertise required law domain"
+  },
+  "87218": {
+    "verdict": "a",
+    "clause": "A programming language asked for analysis, modeling or simulation of such a product does not move the role into software",
+    "pattern": "analysis simulation code physical product"
+  }
+}

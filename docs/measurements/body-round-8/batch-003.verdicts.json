@@ -1,0 +1,22 @@
+{
+  "101239": {"verdict": "a", "clause": "A background listed only as a plus or a nice-to-have does not count", "pattern": "software skill listed only as plus"},
+  "103164": {"verdict": "a", "clause": "technical experience in a field, when that field is software", "pattern": "technical field experience named software"},
+  "11254": {"verdict": "a", "clause": "A physical product the role designs, integrates, tests or certifies ... is another domain", "pattern": "physical product domain not software"},
+  "12674": {"verdict": "b", "clause": "If none holds, it is OUT", "pattern": "no software background requested"},
+  "13297": {"verdict": "a", "clause": "Q3 - reads or operates on engineer-facing artifacts", "pattern": "PM reads architecture API artifacts"},
+  "146381": {"verdict": "a", "clause": "A degree list counts only when every field it accepts is a computing field", "pattern": "degree list open JIRA tool only"},
+  "158297": {"verdict": "b", "clause": "Knowledge of a field the role is about is expertise outside software", "pattern": "finance expertise required outside software"},
+  "172400": {"verdict": "b", "clause": "Q3 - reads or operates on engineer-facing artifacts", "pattern": "configuration management of software artifacts"},
+  "1805": {"verdict": "b", "clause": "security skills in software, cloud or networks", "pattern": "cloud or network security skills required"},
+  "185343": {"verdict": "a", "clause": "but not governance, risk and compliance frameworks alone", "pattern": "governance risk compliance frameworks only"},
+  "196716": {"verdict": "b", "clause": "a technical support specialist asked for basic SQL or scripting", "pattern": "support analyst required SQL"},
+  "202726": {"verdict": "b", "clause": "Q2 - the role writes code as its primary artifact", "pattern": "builds and ships software features"},
+  "206829": {"verdict": "b", "clause": "security skills in software, cloud or networks", "pattern": "cloud or network security skills required"},
+  "38768": {"verdict": "b", "clause": "cloud, container, infrastructure or networking skills", "pattern": "preferred infrastructure skills marketing support role"},
+  "44084": {"verdict": "b", "clause": "Knowledge of a field the role is about is expertise outside software", "pattern": "advanced degree field expertise required"},
+  "45461": {"verdict": "a", "clause": "security skills in software, cloud or networks", "pattern": "domain expertise cloud data security required"},
+  "52321": {"verdict": "a", "clause": "cloud, container, infrastructure or networking skills", "pattern": "infrastructure sysadmin skills required"},
+  "81187": {"verdict": "a", "clause": "Q1 - it has to be a vacancy", "pattern": "talent community signup not vacancy"},
+  "81191": {"verdict": "b", "clause": "Q1 - it has to be a vacancy", "pattern": "talent community signup not vacancy"},
+  "92224": {"verdict": "a", "clause": "technical experience in a field, when that field is software", "pattern": "technical depth AI API integration required"}
+}

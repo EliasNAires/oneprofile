@@ -1,0 +1,22 @@
+{
+  "10274": {"verdict": "b", "clause": "Q3 — the role reads or operates on engineer-facing artifacts", "pattern": "ops engineer telemetry on fielded hardware"},
+  "135006": {"verdict": "a", "clause": "A role that supports a sale without carrying its quota", "pattern": "pre-sales engineer, cloud background required"},
+  "135724": {"verdict": "b", "clause": "Knowledge of a field the role is about is expertise outside software", "pattern": "finance degree required, cloud only preferred"},
+  "144897": {"verdict": "a", "clause": "an engineering degree in another discipline", "pattern": "production engineer, physical-domain degree required"},
+  "149120": {"verdict": "b", "clause": "unless the role's own work on it is software: writing its code", "pattern": "writes control software for building system"},
+  "1568": {"verdict": "b", "clause": "making architecture calls, writing queries or code? That is Q2 or Q3", "pattern": "AI governance role with architecture duties"},
+  "156857": {"verdict": "a", "clause": "A skill the applicant may learn instead is not asked for", "pattern": "SQL or Python or willing to learn"},
+  "191762": {"verdict": "a", "clause": "Selling is decided by the duties", "pattern": "consultant owns revenue and closes deals"},
+  "198107": {"verdict": "a", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "analyst, SQL required, degree list open"},
+  "201304": {"verdict": "b", "clause": "A role that supports a sale without carrying its quota", "pattern": "advisory role, no quota, cloud knowledge required"},
+  "202008": {"verdict": "a", "clause": "its software's architecture", "pattern": "systems engineer, software architecture and specs"},
+  "35506": {"verdict": "b", "clause": "writing its code, its software tests or its software's architecture", "pattern": "writes test automation code for hardware product"},
+  "43925": {"verdict": "a", "clause": "expertise in the subject named as a requirement apart from the role's experience", "pattern": "safety-case engineer, sole domain expertise required"},
+  "5318": {"verdict": "b", "clause": "A skill offered as one choice among tools or skills that are not software skills is not asked for", "pattern": "SQL or data-querying tools, BI only"},
+  "61071": {"verdict": "a", "clause": "A degree list counts only when every field it accepts is a computing field", "pattern": "ISSO, degree list all computing fields"},
+  "71841": {"verdict": "a", "clause": "its software's architecture", "pattern": "systems engineer architects vehicle control pipelines"},
+  "81506": {"verdict": "b", "clause": "an engineering degree in another discipline", "pattern": "optical hardware integration, no software work"},
+  "87623": {"verdict": "a", "clause": "a background asked for in those words: \"a software engineering background\"", "pattern": "explicit computer-science background required"},
+  "89660": {"verdict": "a", "clause": "What counts as a stated software background", "pattern": "product manager, consulting background, no software asked"},
+  "9574": {"verdict": "b", "clause": "If none holds, it is OUT", "pattern": "supply-chain manager, no software skill asked"}
+}

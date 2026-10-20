@@ -1,0 +1,16 @@
+{
+  "116502": {"verdict": "b", "clause": "Low-code is software work", "pattern": "ERP low-code configuration as main work"},
+  "138460": {"verdict": "a", "clause": "a fraud or policy analyst asked for SQL is the analyst of Q4", "pattern": "analyst required SQL and Python"},
+  "155952": {"verdict": "a", "clause": "Low-code is software work", "pattern": "low-code platform implementation main work"},
+  "198845": {"verdict": "b", "clause": "Q3 - reads or operates on engineer-facing artifacts", "pattern": "PM owning API contracts and specs"},
+  "205068": {"verdict": "a", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "analyst required SQL and cloud"},
+  "2267": {"verdict": "b", "clause": "Q3 - reads or operates on engineer-facing artifacts", "pattern": "support engineer reading logs and APIs"},
+  "35407": {"verdict": "a", "clause": "Selling is decided by the duties / Q4 named cloud-security skills", "pattern": "pre-sales engineer with cloud security skills"},
+  "36002": {"verdict": "b", "clause": "domain names software work, then Q4 stated software background", "pattern": "software engineering director explicit stack"},
+  "45326": {"verdict": "a", "clause": "What counts as a stated software background / degree list open to other fields", "pattern": "technical PM open degree no named skill"},
+  "53792": {"verdict": "a", "clause": "a data, business or marketing analyst whose requirements include SQL, Python or R", "pattern": "analyst required Python and R"},
+  "5701": {"verdict": "a", "clause": "technical experience in a field, when that field is software", "pattern": "technical program manager required API fluency"},
+  "68987": {"verdict": "b", "clause": "What counts as a stated software background (none named)", "pattern": "IT leadership role no named technical skill"},
+  "80176": {"verdict": "b", "clause": "technical experience in a field, when that field is software", "pattern": "delivery manager required MLOps knowledge"},
+  "90115": {"verdict": "a", "clause": "technical experience in a field, when that field is software", "pattern": "research PM required AI/ML model expertise"}
+}
