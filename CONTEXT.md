@@ -32,8 +32,9 @@ not found. Unknown until the board has been checked.
 _Avoid_: alive, valid, health
 
 **Discovery**:
-Finding slugs by searching crawls for board URLs. The first stage of a cycle, and the one that
-decides which companies the corpus can hold at all.
+Finding slugs from board URLs, from any source: an archive first, and later others. The first
+stage of a cycle, and the one that decides which companies the corpus can hold at all; a probe
+confirms what it finds.
 _Avoid_: crawling, scraping, slug mining
 
 **Probe**:
@@ -44,10 +45,16 @@ _Avoid_: validate, ping, health check
 Reading every opening from a board and reconciling them against what is already held.
 _Avoid_: fetch, sync, import, scrape
 
+**Archive**:
+A public record of captured web pages that discovery searches for board URLs. There are two:
+Common Crawl, which publishes its record as crawls, and the Wayback Machine, which has no crawls
+and is searched by date instead.
+_Avoid_: dataset, index
+
 **Crawl**:
 One dated snapshot of the public web published by Common Crawl, searched for board URLs to
 discover slugs.
-_Avoid_: dataset, archive
+_Avoid_: dataset, archive (an archive is Common Crawl as a whole, or the Wayback Machine)
 
 ### The Crawl Index
 

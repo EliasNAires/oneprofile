@@ -17,7 +17,13 @@ the later ADR wins; the overridden parts are marked below.
 - **0001**: discovery binary-searches Common Crawl's cluster index over HTTPS range requests.
   It starts reading one block before the prefix, keeps only `/warc/` captures, and builds SURT
   keys with `webarchive-commons`.
-- **0002**: Ashby is the second ATS. Workable is the next one if the eligible pool is too small.
+- **0002**: Ashby is the second ATS. *Overridden by 0022:* Workable being next, and Lever being
+  undiscoverable.
+- **0022**: the next ATSs are chosen by title `IN` vacancies per live board: Lever, then
+  Workable, then Workday only if #70's gap is still open. Each adds its EU host.
+- **0023**: discovery reads two archives, Common Crawl and the Wayback Machine. Common Crawl to
+  the 12 newest crawls that hold the ATS's pages, Wayback whole; each ATS is backfilled once,
+  then runs read only what is new.
 - **0021**: each ATS's vacancy is a class of its own over the one `vacancy` table, keeping what
   that ATS publishes as it publishes it; `Vacancy` holds what any ATS would be expected to
   publish. Facts are derived in passes, never in the sweep. Overrides PRD §7's nullable columns.

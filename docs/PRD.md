@@ -39,7 +39,7 @@ search.
 ### 4.1 Sources
 
 Two applicant tracking systems, both built: **Greenhouse** and **Ashby** (#20). Why Ashby and
-not Workable or Lever: ADR-0002.
+not Workable or Lever: ADR-0002. Which ATSs come next, and in what order: ADR-0022.
 
 ### 4.2 Slug discovery — built
 
@@ -421,8 +421,8 @@ recorded just before each sweep — vacancy count per (role × seniority) and sk
 (role × skill) — and trend views are added to the Explorer once there are enough points to show
 one. History is numbers, not vacancies (ADR-0011).
 
-Reaching 100k needs Ashby, and then discovery from Wayback Machine captures or a third ATS
-(#70).
+Reaching 100k needs Ashby, then discovery from the Wayback Machine for Greenhouse and Ashby, then
+Lever, Workable and, if still short, Workday (#74, ADR-0022, ADR-0023).
 
 ### 12.5 Scheduling
 
