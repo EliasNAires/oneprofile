@@ -53,7 +53,7 @@ public class VacancyStore {
 		for (PublishedVacancy opening : published) {
 			VacancyEntity vacancy = held.remove(opening.externalId());
 			if (vacancy == null) {
-				vacancy = new VacancyEntity(company, opening.externalId());
+				vacancy = VacancyEntity.of(company, opening);
 				added++;
 			}
 			vacancy.publishedAs(opening);

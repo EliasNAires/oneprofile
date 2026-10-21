@@ -1,27 +1,34 @@
 package oneprofile.backend.storage.vacancy;
 
+import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import java.time.Instant;
-import java.util.List;
 import oneprofile.backend.storage.company.CompanyEntity;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 
 /**
  * A single open position at a company, held as a mirror of the board it was published on. It is
  * identified by its company and the id the ATS gives it, which is all that survives a board
  * republishing everything else about it.
  * <p>
+ * Each ATS's vacancy is a class of its own over the one table, told apart by its {@code ats}, which
+ * is always its company's. This class holds what any ATS would be expected to publish, so null here
+ * means the vacancy did not publish it; what one ATS publishes its own way is held by its class, as
+ * that ATS publishes it (ADR-0021).
+ * <p>
  * The link to the company is one way: a company has thousands of openings, so a collection on the
  * other side would be a burden rather than a convenience.
  */
 @Entity(name = "Vacancy")
-public class VacancyEntity {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "ats")
+public abstract class VacancyEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,8 +48,6 @@ public class VacancyEntity {
 
 	private String description;
 
-	private String language;
-
 	private String url;
 
 	private Long payMinCents;
@@ -51,50 +56,48 @@ public class VacancyEntity {
 
 	private String payCurrency;
 
-	private String payTitle;
-
-	private String payInterval;
-
 	private Instant firstPublishedAt;
-
-	private Instant updatedAt;
-
-	private String workplaceType;
-
-	private String addressCountry;
-
-	@JdbcTypeCode(SqlTypes.JSON)
-	private List<SecondaryLocation> secondaryLocations;
 
 	protected VacancyEntity() {
 	}
 
-	public VacancyEntity(CompanyEntity company, String externalId) {
+	protected VacancyEntity(CompanyEntity company, String externalId) {
 		this.company = company;
 		this.externalId = externalId;
 	}
 
 	/**
+	 * A vacancy of a company, of the class of the ATS that published it, holding nothing yet but its
+	 * identity.
+	 * @param company the company whose board publishes it
+	 * @param published the opening as its board publishes it
+	 * @return the vacancy to hold it as
+	 */
+	static VacancyEntity of(CompanyEntity company, PublishedVacancy published) {
+		return switch (published) {
+			case PublishedGreenhouseVacancy greenhouse -> new GreenhouseVacancyEntity(company, greenhouse.externalId());
+			case PublishedAshbyVacancy ashby -> new AshbyVacancyEntity(company, ashby.externalId());
+		};
+	}
+
+	/**
 	 * Takes on everything the board publishes about it, other than the identity it is held under.
 	 * @param published the opening as the board publishes it today
+	 * @throws IllegalArgumentException if another ATS published it
 	 */
-	public void publishedAs(PublishedVacancy published) {
+	public abstract void publishedAs(PublishedVacancy published);
+
+	/** Takes on what any ATS publishes. */
+	protected void publishedAsAnyAts(PublishedVacancy published) {
 		this.title = published.title();
 		this.location = published.location();
 		this.department = published.department();
 		this.description = published.description();
-		this.language = published.language();
 		this.url = published.url();
 		this.payMinCents = published.payMinCents();
 		this.payMaxCents = published.payMaxCents();
 		this.payCurrency = published.payCurrency();
-		this.payTitle = published.payTitle();
-		this.payInterval = published.payInterval();
 		this.firstPublishedAt = published.firstPublishedAt();
-		this.updatedAt = published.updatedAt();
-		this.workplaceType = published.workplaceType();
-		this.addressCountry = published.addressCountry();
-		this.secondaryLocations = published.secondaryLocations();
 	}
 
 	/** The id the ATS gives it, unique within its board. */
@@ -122,11 +125,6 @@ public class VacancyEntity {
 		return this.description;
 	}
 
-	/** The language its board says it is written in, or null if the board said none. */
-	public String language() {
-		return this.language;
-	}
-
 	/** Where it is published. */
 	public String url() {
 		return this.url;
@@ -147,39 +145,9 @@ public class VacancyEntity {
 		return this.payCurrency;
 	}
 
-	/** The heading the company put above its pay range, or null if it publishes none. */
-	public String payTitle() {
-		return this.payTitle;
-	}
-
-	/** The interval its pay range is quoted in, as its ATS writes it, or null if the ATS gave none. */
-	public String payInterval() {
-		return this.payInterval;
-	}
-
 	/** When it was first published. */
 	public Instant firstPublishedAt() {
 		return this.firstPublishedAt;
-	}
-
-	/** When the board last changed it, or null if its ATS does not say. */
-	public Instant updatedAt() {
-		return this.updatedAt;
-	}
-
-	/** Its work mode as its ATS names it, or null if the ATS gave none. */
-	public String workplaceType() {
-		return this.workplaceType;
-	}
-
-	/** The country of its own address as its ATS writes it, or null if the ATS gave none. */
-	public String addressCountry() {
-		return this.addressCountry;
-	}
-
-	/** The other places it names for the work, or null if its ATS does not provide them. */
-	public List<SecondaryLocation> secondaryLocations() {
-		return this.secondaryLocations;
 	}
 
 }

@@ -11,6 +11,7 @@ import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import oneprofile.backend.storage.vacancy.PublishedGreenhouseVacancy;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
 import oneprofile.backend.workers.UserAgent;
 import org.jsoup.parser.Parser;
@@ -117,13 +118,12 @@ public class GreenhouseVacancyReaderAdapter implements VacancyReaderPort {
 	private static PublishedVacancy publishedVacancy(JsonNode opening) {
 		// A board publishes at most one range, and its four fields come and go together.
 		JsonNode pay = opening.path("pay_input_ranges").path(0);
-		return new PublishedVacancy(String.valueOf(opening.path("id").asLong()), text(opening.path("title")),
+		return new PublishedGreenhouseVacancy(String.valueOf(opening.path("id").asLong()), text(opening.path("title")),
 				text(opening.path("location").path("name")), text(opening.path("departments").path(0).path("name")),
-				markedLines(text(opening.path("content"))), text(opening.path("language")),
-				text(opening.path("absolute_url")),
+				markedLines(text(opening.path("content"))), text(opening.path("absolute_url")),
 				number(pay.path("min_cents")), number(pay.path("max_cents")), text(pay.path("currency_type")),
-				text(pay.path("title")), null, timestamp(opening.path("first_published")),
-				timestamp(opening.path("updated_at")), null, null, null);
+				timestamp(opening.path("first_published")), text(pay.path("title")),
+				timestamp(opening.path("updated_at")), text(opening.path("language")));
 	}
 
 	/**

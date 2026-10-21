@@ -12,6 +12,7 @@ import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import oneprofile.backend.storage.vacancy.PublishedAshbyVacancy;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
 import oneprofile.backend.storage.vacancy.SecondaryLocation;
 import oneprofile.backend.workers.UserAgent;
@@ -25,9 +26,8 @@ import tools.jackson.databind.ObjectMapper;
  * Reads every opening of an Ashby board from its public posting API.
  * <p>
  * The whole board comes in one answer, descriptions and compensation included, and needs no key.
- * What Ashby structures and Greenhouse does not — the work mode, the country of each location, the
- * interval a pay range is quoted in — is kept as Ashby writes it. Ashby declares no language for an
- * opening and says nothing of when it last changed one, so both are left null. A board that does
+ * What Ashby structures and Greenhouse does not — its workplace type, the country of each location,
+ * the interval a pay range is quoted in — is kept as Ashby writes it. A board that does
  * not answer with its openings is a failure rather than an answer, as it is on Greenhouse.
  */
 @Component
@@ -121,13 +121,13 @@ public class AshbyVacancyReaderAdapter implements VacancyReaderPort {
 
 	private static PublishedVacancy publishedVacancy(JsonNode opening) {
 		JsonNode pay = salary(opening.path("compensation").path("summaryComponents"));
-		return new PublishedVacancy(text(opening.path("id")), text(opening.path("title")),
+		return new PublishedAshbyVacancy(text(opening.path("id")), text(opening.path("title")),
 				text(opening.path("location")), text(opening.path("department")),
-				DescriptionMarkingRule.markedLines(text(opening.path("descriptionHtml"))), null,
-				text(opening.path("jobUrl")), cents(pay.path("minValue")), cents(pay.path("maxValue")),
-				text(pay.path("currencyCode")), null, text(pay.path("interval")),
-				timestamp(opening.path("publishedAt")), null, text(opening.path("workplaceType")),
-				country(opening.path("address")), secondaryLocations(opening.path("secondaryLocations")));
+				DescriptionMarkingRule.markedLines(text(opening.path("descriptionHtml"))), text(opening.path("jobUrl")),
+				cents(pay.path("minValue")), cents(pay.path("maxValue")), text(pay.path("currencyCode")),
+				timestamp(opening.path("publishedAt")), text(opening.path("workplaceType")),
+				country(opening.path("address")), secondaryLocations(opening.path("secondaryLocations")),
+				text(pay.path("interval")));
 	}
 
 	/**

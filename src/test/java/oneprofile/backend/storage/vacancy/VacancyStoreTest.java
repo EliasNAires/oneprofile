@@ -2,6 +2,7 @@ package oneprofile.backend.storage.vacancy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.tuple;
 
 import java.time.Instant;
 import java.util.List;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
+import org.springframework.boot.jpa.test.autoconfigure.TestEntityManager;
 import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase;
 import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase.Replace;
 import org.springframework.context.annotation.Import;
@@ -34,6 +36,9 @@ class VacancyStoreTest {
 	@Autowired
 	private VacancyRepository repository;
 
+	@Autowired
+	private TestEntityManager entityManager;
+
 	@BeforeEach
 	void holdTheCompany() {
 		this.companies.record(AtsEnum.GREENHOUSE, List.of("stripe", "notion"));
@@ -44,7 +49,7 @@ class VacancyStoreTest {
 		assertThat(this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001), published(4002))))
 			.isEqualTo(new VacancyStore.Reconciliation(2, 0, 0));
 
-		VacancyEntity held = held(4001);
+		GreenhouseVacancyEntity held = (GreenhouseVacancyEntity) held(4001);
 		assertThat(held.title()).isEqualTo("Backend Engineer");
 		assertThat(held.location()).isEqualTo("Remote - Americas");
 		assertThat(held.department()).isEqualTo("Engineering");
@@ -60,34 +65,35 @@ class VacancyStoreTest {
 	}
 
 	@Test
-	void holdsWhatAnAtsPublishesAsStructuredFieldsAndAnIdThatIsNoNumber() {
+	void holdsWhatAshbyPublishesOnAnAshbyVacancyUnderAnIdThatIsNoNumber() {
 		this.companies.record(AtsEnum.ASHBY, List.of("ramp"));
-		PublishedVacancy published = new PublishedVacancy("34413f8d-26bf-4bbc-8ade-eb309a0e2245",
-				"Security Engineer, Cloud", "New York, NY (HQ)", "Engineering", "Secure the cloud.", null,
-				"https://jobs.ashbyhq.com/ramp/34413f8d-26bf-4bbc-8ade-eb309a0e2245", 21140000L, 29060000L, "USD", null,
-				"1 YEAR", FIRST_PUBLISHED_AT, null, "Hybrid", "USA",
-				List.of(new SecondaryLocation("Remote (Canada)", "Canada"), new SecondaryLocation("Anywhere", null)));
+		PublishedAshbyVacancy published = new PublishedAshbyVacancy("34413f8d-26bf-4bbc-8ade-eb309a0e2245",
+				"Security Engineer, Cloud", "New York, NY (HQ)", "Engineering", "Secure the cloud.",
+				"https://jobs.ashbyhq.com/ramp/34413f8d-26bf-4bbc-8ade-eb309a0e2245", 21140000L, 29060000L, "USD",
+				FIRST_PUBLISHED_AT, "Hybrid", "USA",
+				List.of(new SecondaryLocation("Remote (Canada)", "Canada"), new SecondaryLocation("Anywhere", null)),
+				"1 YEAR");
 
 		this.vacancies.mirror(AtsEnum.ASHBY, "ramp", List.of(published));
 
-		VacancyEntity held = this.repository.findAll().getFirst();
-		assertThat(held.externalId()).isEqualTo("34413f8d-26bf-4bbc-8ade-eb309a0e2245");
-		assertThat(held.payInterval()).isEqualTo("1 YEAR");
-		assertThat(held.workplaceType()).isEqualTo("Hybrid");
-		assertThat(held.addressCountry()).isEqualTo("USA");
-		assertThat(held.secondaryLocations()).containsExactly(new SecondaryLocation("Remote (Canada)", "Canada"),
-				new SecondaryLocation("Anywhere", null));
+		assertThat(this.repository.findAll()).singleElement().isInstanceOfSatisfying(AshbyVacancyEntity.class, (held) -> {
+			assertThat(held.externalId()).isEqualTo("34413f8d-26bf-4bbc-8ade-eb309a0e2245");
+			assertThat(held.payMinCents()).isEqualTo(21140000L);
+			assertThat(held.payInterval()).isEqualTo("1 YEAR");
+			assertThat(held.workplaceType()).isEqualTo("Hybrid");
+			assertThat(held.addressCountry()).isEqualTo("USA");
+			assertThat(held.secondaryLocations()).containsExactly(new SecondaryLocation("Remote (Canada)", "Canada"),
+					new SecondaryLocation("Anywhere", null));
+		});
+		assertThat(atsHeld()).containsExactly("ASHBY");
 	}
 
 	@Test
-	void holdsNothingForTheFieldsAnAtsDoesNotProvide() {
+	void holdsAGreenhouseVacancyUnderItsAts() {
 		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001)));
 
-		VacancyEntity held = held(4001);
-		assertThat(held.payInterval()).isNull();
-		assertThat(held.workplaceType()).isNull();
-		assertThat(held.addressCountry()).isNull();
-		assertThat(held.secondaryLocations()).isNull();
+		assertThat(held(4001)).isInstanceOf(GreenhouseVacancyEntity.class);
+		assertThat(atsHeld()).containsExactly("GREENHOUSE");
 	}
 
 	@Test
@@ -104,13 +110,13 @@ class VacancyStoreTest {
 	void overwritesAVacancyTheBoardHasChanged() {
 		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001)));
 
-		PublishedVacancy renamed = new PublishedVacancy("4001", "Staff Backend Engineer", "Remote - Americas",
-				"Engineering", "Ship payments.", "en", "https://job-boards.greenhouse.io/stripe/jobs/4001", 15000000L,
-				20000000L, "USD", "Annual Salary", null, FIRST_PUBLISHED_AT, UPDATED_AT.plusSeconds(3600), null, null, null);
+		PublishedVacancy renamed = new PublishedGreenhouseVacancy("4001", "Staff Backend Engineer", "Remote - Americas",
+				"Engineering", "Ship payments.", "https://job-boards.greenhouse.io/stripe/jobs/4001", 15000000L, 20000000L,
+				"USD", FIRST_PUBLISHED_AT, "Annual Salary", UPDATED_AT.plusSeconds(3600), "en");
 		assertThat(this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(renamed)))
 			.isEqualTo(new VacancyStore.Reconciliation(0, 1, 0));
 
-		VacancyEntity held = held(4001);
+		GreenhouseVacancyEntity held = (GreenhouseVacancyEntity) held(4001);
 		assertThat(held.title()).isEqualTo("Staff Backend Engineer");
 		assertThat(held.updatedAt()).isEqualTo(UPDATED_AT.plusSeconds(3600));
 	}
@@ -164,6 +170,19 @@ class VacancyStoreTest {
 	}
 
 	@Test
+	void readsTheTextsOfEveryAtssVacanciesWithTheLanguageOnlyGreenhouseDeclares() {
+		this.companies.record(AtsEnum.ASHBY, List.of("ramp"));
+		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001)));
+		this.vacancies.mirror(AtsEnum.ASHBY, "ramp", List.of(new PublishedAshbyVacancy(
+				"34413f8d-26bf-4bbc-8ade-eb309a0e2245", "Security Engineer", "New York, NY (HQ)", null,
+				"Secure the cloud.", "https://jobs.ashbyhq.com/ramp/34413f8d-26bf-4bbc-8ade-eb309a0e2245", null, null,
+				null, FIRST_PUBLISHED_AT, null, null, List.of(), null)));
+
+		assertThat(this.vacancies.textsAfter(0, 10)).extracting(VacancyText::title, VacancyText::language)
+			.containsExactly(tuple("Backend Engineer", "en"), tuple("Security Engineer", null));
+	}
+
+	@Test
 	void readsNoTextsOnceThereAreNoneLeft() {
 		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001)));
 		List<VacancyText> all = this.vacancies.textsAfter(0, 10);
@@ -179,10 +198,16 @@ class VacancyStoreTest {
 			.orElseThrow();
 	}
 
+	private List<String> atsHeld() {
+		return this.entityManager.getEntityManager()
+			.createNativeQuery("select ats from vacancy", String.class)
+			.getResultList();
+	}
+
 	private PublishedVacancy published(long externalId) {
-		return new PublishedVacancy(String.valueOf(externalId), "Backend Engineer", "Remote - Americas", "Engineering",
-				"Ship payments.", "en", "https://job-boards.greenhouse.io/stripe/jobs/" + externalId, 15000000L, 20000000L,
-				"USD", "Annual Salary", null, FIRST_PUBLISHED_AT, UPDATED_AT, null, null, null);
+		return new PublishedGreenhouseVacancy(String.valueOf(externalId), "Backend Engineer", "Remote - Americas",
+				"Engineering", "Ship payments.", "https://job-boards.greenhouse.io/stripe/jobs/" + externalId, 15000000L,
+				20000000L, "USD", FIRST_PUBLISHED_AT, "Annual Salary", UPDATED_AT, "en");
 	}
 
 }

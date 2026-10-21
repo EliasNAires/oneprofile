@@ -258,6 +258,8 @@ _Avoid_: annotator, judge, oracle, reviewer
 **Work Mode**:
 Where the work is performed, as declared by the vacancy: remote, hybrid or onsite.
 Undeclared is its own answer and never means onsite.
+`workplace_type` is Ashby's own field, held as Ashby writes it on an Ashby vacancy; the work mode
+is the fact a pass derives, for which that field is evidence (ADR-0021).
 _Avoid_: modality, workplace type, location type, arrangement
 
 **Declared Location**:

@@ -15,7 +15,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import oneprofile.backend.storage.vacancy.PublishedVacancy;
+import oneprofile.backend.storage.vacancy.PublishedAshbyVacancy;
 import oneprofile.backend.storage.vacancy.SecondaryLocation;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -62,11 +62,12 @@ class AshbyVacancyReaderAdapterTest {
 	void readsEveryOpeningOfABoardWithItsStructuredFieldsAskingForItsCompensation() throws IOException {
 		serve((exchange) -> respondWith(exchange, 200, BOARD));
 
-		assertThat(reader().read("ramp")).containsExactly(new PublishedVacancy("34413f8d-26bf-4bbc-8ade-eb309a0e2245",
-				"Security Engineer, Cloud", "New York, NY (HQ)", "Engineering", "# About Ramp\nSecure the cloud.", null,
-				"https://jobs.ashbyhq.com/ramp/34413f8d-26bf-4bbc-8ade-eb309a0e2245", 21140000L, 29060000L, "USD", null,
-				"1 YEAR", Instant.parse("2026-04-07T17:12:35.753Z"), null, "Hybrid", "USA",
-				List.of(new SecondaryLocation("Remote (Canada)", "Canada"), new SecondaryLocation("Anywhere", null))));
+		assertThat(reader().read("ramp")).containsExactly(new PublishedAshbyVacancy(
+				"34413f8d-26bf-4bbc-8ade-eb309a0e2245", "Security Engineer, Cloud", "New York, NY (HQ)", "Engineering",
+				"# About Ramp\nSecure the cloud.", "https://jobs.ashbyhq.com/ramp/34413f8d-26bf-4bbc-8ade-eb309a0e2245",
+				21140000L, 29060000L, "USD", Instant.parse("2026-04-07T17:12:35.753Z"), "Hybrid", "USA",
+				List.of(new SecondaryLocation("Remote (Canada)", "Canada"), new SecondaryLocation("Anywhere", null)),
+				"1 YEAR"));
 		assertThat(this.queries).containsExactly("/posting-api/job-board/ramp?includeCompensation=true");
 	}
 
@@ -76,7 +77,7 @@ class AshbyVacancyReaderAdapterTest {
 				"compensation":{"summaryComponents":[
 				{"compensationType":"Salary","interval":"1 HOUR","currencyCode":"EUR","minValue":45.5,"maxValue":60}]}""");
 
-		PublishedVacancy opening = reader().read("acme").get(0);
+		PublishedAshbyVacancy opening = ashbyOpening();
 		assertThat(opening.payMinCents()).isEqualTo(4550L);
 		assertThat(opening.payMaxCents()).isEqualTo(6000L);
 		assertThat(opening.payCurrency()).isEqualTo("EUR");
@@ -90,7 +91,7 @@ class AshbyVacancyReaderAdapterTest {
 				"compensation":{"summaryComponents":[
 				{"compensationType":"EquityPercentage","interval":"NONE","currencyCode":null,"minValue":null,"maxValue":null}]}""");
 
-		PublishedVacancy opening = reader().read("acme").get(0);
+		PublishedAshbyVacancy opening = ashbyOpening();
 		assertThat(opening.description()).isNull();
 		assertThat(opening.department()).isNull();
 		assertThat(opening.payMinCents()).isNull();
@@ -145,6 +146,10 @@ class AshbyVacancyReaderAdapterTest {
 		serve((exchange) -> respondWith(exchange, 200, "not json"));
 
 		assertThatThrownBy(() -> reader().read("ramp")).isInstanceOf(IOException.class).hasMessageContaining("ramp");
+	}
+
+	private PublishedAshbyVacancy ashbyOpening() throws IOException {
+		return (PublishedAshbyVacancy) reader().read("acme").get(0);
 	}
 
 	private void serveOpening(String fields) {

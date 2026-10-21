@@ -19,11 +19,12 @@ public interface VacancyRepository extends ListCrudRepository<VacancyEntity, Lon
 	/**
 	 * The titles, descriptions and declared languages of the vacancies held after one id, in id order, so that a pass
 	 * over the whole corpus can be walked in batches and resumed from the last id it read.
+	 * Only a Greenhouse vacancy declares a language; every other ATS's is read with none.
 	 * @param after the id to read past, 0 to start at the first vacancy
 	 * @param limit how many to read at most
 	 * @return their ids, titles, descriptions and declared languages
 	 */
-	@Query("select new oneprofile.backend.storage.vacancy.VacancyText(v.id, v.title, v.description, v.language) "
+	@Query("select new oneprofile.backend.storage.vacancy.VacancyText(v.id, v.title, v.description, treat(v as GreenhouseVacancy).language) "
 			+ "from Vacancy v "
 			+ "where v.id > :after order by v.id")
 	List<VacancyText> textsAfter(long after, Limit limit);

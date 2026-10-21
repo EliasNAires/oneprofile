@@ -13,6 +13,7 @@ import oneprofile.backend.storage.company.CompanyStore;
 import oneprofile.backend.storage.normalizedvacancy.CleanedTitle;
 import oneprofile.backend.storage.normalizedvacancy.CleanedVacancy;
 import oneprofile.backend.storage.normalizedvacancy.NormalizedVacancyStore;
+import oneprofile.backend.storage.vacancy.PublishedGreenhouseVacancy;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
 import oneprofile.backend.storage.vacancy.VacancyStore;
 import oneprofile.backend.storage.vacancy.VacancyText;
@@ -122,9 +123,9 @@ class VacancySkillStoreTest {
 	}
 
 	private PublishedVacancy published(long externalId) {
-		return new PublishedVacancy(String.valueOf(externalId), "Senior Backend Engineer", "Remote - Americas", "Engineering",
-				"Ship payments.", "en", "https://job-boards.greenhouse.io/stripe/jobs/" + externalId, null, null, null, null,
-				null, Instant.parse("2026-09-01T14:00:00Z"), Instant.parse("2026-09-18T16:30:00Z"), null, null, null);
+		return new PublishedGreenhouseVacancy(String.valueOf(externalId), "Senior Backend Engineer", "Remote - Americas",
+				"Engineering", "Ship payments.", "https://job-boards.greenhouse.io/stripe/jobs/" + externalId, null, null,
+				null, Instant.parse("2026-09-01T14:00:00Z"), null, Instant.parse("2026-09-18T16:30:00Z"), "en");
 	}
 
 }

@@ -17,6 +17,7 @@ import java.util.TreeSet;
 import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.company.BoardStatusEnum;
 import oneprofile.backend.storage.company.CompanyStore;
+import oneprofile.backend.storage.vacancy.PublishedGreenhouseVacancy;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
 import oneprofile.backend.storage.vacancy.VacancyStore;
 import org.junit.jupiter.api.Test;
@@ -105,9 +106,9 @@ class BoardSweepRunTest {
 	}
 
 	private PublishedVacancy published(long externalId) {
-		return new PublishedVacancy(String.valueOf(externalId), "Backend Engineer", "Remote - Americas", "Engineering",
-				"Ship payments.", "en", "https://job-boards.greenhouse.io/stripe/jobs/" + externalId, null, null, null, null,
-				null, Instant.parse("2026-09-01T14:00:00Z"), Instant.parse("2026-09-18T16:30:00Z"), null, null, null);
+		return new PublishedGreenhouseVacancy(String.valueOf(externalId), "Backend Engineer", "Remote - Americas",
+				"Engineering", "Ship payments.", "https://job-boards.greenhouse.io/stripe/jobs/" + externalId, null, null,
+				null, Instant.parse("2026-09-01T14:00:00Z"), null, Instant.parse("2026-09-18T16:30:00Z"), "en");
 	}
 
 }

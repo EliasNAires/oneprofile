@@ -11,6 +11,8 @@ import java.util.Set;
 import oneprofile.backend.TestcontainersConfiguration;
 import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.company.CompanyStore;
+import oneprofile.backend.storage.vacancy.PublishedAshbyVacancy;
+import oneprofile.backend.storage.vacancy.PublishedGreenhouseVacancy;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
 import oneprofile.backend.storage.vacancy.VacancyStore;
 import oneprofile.backend.storage.vacancy.VacancyText;
@@ -330,6 +332,23 @@ class NormalizedVacancyStoreTest {
 	}
 
 	@Test
+	void readsAnAshbyVacancyOfThePileInTheLanguageCleaningDetected() {
+		this.companies.record(AtsEnum.ASHBY, List.of("ramp"));
+		this.vacancies.mirror(AtsEnum.ASHBY, "ramp", List.of(new PublishedAshbyVacancy(
+				"34413f8d-26bf-4bbc-8ade-eb309a0e2245", "Engineer", "Berlin", null, "Baue Dinge.",
+				"https://jobs.ashbyhq.com/ramp/34413f8d-26bf-4bbc-8ade-eb309a0e2245", null, null, null,
+				Instant.parse("2026-09-01T14:00:00Z"), "OnSite", "Germany", List.of(), null)));
+		long ashby = heldTitles().get(2).id();
+		this.normalized.recordCleanedVacancies(Map.of(ashby, detectedIn("de")));
+		this.normalized.recordClassifications(Map.of(ashby, Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY)));
+		this.entityManager.flush();
+
+		assertThat(this.normalized.pileAfter(0, 10)).extracting(PileVacancy::vacancyId, PileVacancy::language)
+			.containsExactly(tuple(ashby, "de"));
+		assertThat(this.normalized.extractionScopeAfter(0, 10)).isEmpty();
+	}
+
+	@Test
 	void leavesOutOfExtractionThePileInALanguageCleaningDetectedTheBodyPassDoesNotRead() {
 		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001, null), published(4002, null)));
 		long first = heldTitles().get(0).id();
@@ -399,9 +418,9 @@ class NormalizedVacancyStoreTest {
 	}
 
 	private PublishedVacancy published(long externalId, String language) {
-		return new PublishedVacancy(String.valueOf(externalId), "Senior Backend Engineer", "Remote - Americas", "Engineering",
-				"Ship payments.", language, "https://job-boards.greenhouse.io/stripe/jobs/" + externalId, null, null, null, null,
-				null, Instant.parse("2026-09-01T14:00:00Z"), Instant.parse("2026-09-18T16:30:00Z"), null, null, null);
+		return new PublishedGreenhouseVacancy(String.valueOf(externalId), "Senior Backend Engineer", "Remote - Americas",
+				"Engineering", "Ship payments.", "https://job-boards.greenhouse.io/stripe/jobs/" + externalId, null, null,
+				null, Instant.parse("2026-09-01T14:00:00Z"), null, Instant.parse("2026-09-18T16:30:00Z"), language);
 	}
 
 }

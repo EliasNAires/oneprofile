@@ -57,8 +57,10 @@ what is returned, delete what has disappeared.
 Ashby: `GET https://api.ashbyhq.com/posting-api/job-board/{slug}?includeCompensation=true`.
 Unauthenticated, whole board in one response, no pagination, so a probe reads what a sweep does.
 It names no company, so an Ashby company has no name. Its structured fields (`workplaceType`,
-`secondaryLocations[]` with per-location countries, compensation with its interval) are kept —
-see §7. Its yield: `docs/measurements/2026-10-ashby.md`.
+`secondaryLocations[]` with per-location countries, compensation with its interval) are kept as
+Ashby writes them, on its own class of vacancy (§7, ADR-0021). The sweep derives nothing from
+them; the passes of §5.3 and §5.4 may read them as evidence. Its yield:
+`docs/measurements/2026-10-ashby.md`.
 
 All ingestion is triggered manually by an administrative endpoint today. In production every
 stage runs on a schedule (§12.5), once the real runtimes are measured.
@@ -240,12 +242,14 @@ Identity is unchanged from the pre-reset design, which was proven over 216,868 r
 company is `(ats, slug)`; a vacancy is `(company_id, external_id)`.
 
 - `company` — ats, slug, name, board_status, last_probed_at.
-- `vacancy` — the board mirror: title, location, department, description, url, language,
-  pay fields, dates. `external_id` is text, since Ashby's ids are UUIDs. Ashby's structured
-  fields (`workplace_type`, `address_country`, `secondary_locations` with their countries,
-  `pay_interval`) are **nullable columns**; null means this ATS did not provide it, consistent
-  with the existing convention. Discarding Ashby's structured country to match Greenhouse's
-  weaker free-text shape would throw away the best available eligibility input.
+- `vacancy` — the board mirror, one table with a class per ATS told apart by `ats`, its
+  company's (ADR-0021). Every vacancy holds what any ATS would be expected to publish: title,
+  location, department, description, url, the pay range and when it was first published, null
+  where the vacancy did not publish it. `external_id` is text, since Ashby's ids are UUIDs. A
+  Greenhouse vacancy adds `pay_title`, `updated_at` and its declared `language`; an Ashby one
+  adds `workplace_type`, `address_country`, `secondary_locations` with their countries, and
+  `pay_interval`, as Ashby writes them. Discarding Ashby's structured country to match
+  Greenhouse's weaker free-text shape would throw away the best available eligibility input.
 - `normalized_vacancy` — one row per vacancy holding every derived scalar: cleaned title,
   normalized title, whether it is an engineering role, the signal that classified it, work
   mode, declared location, seniority, eligibility state and the extracted country set. A

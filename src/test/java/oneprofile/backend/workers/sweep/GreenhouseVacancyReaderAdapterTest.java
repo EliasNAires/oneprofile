@@ -15,7 +15,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import oneprofile.backend.storage.vacancy.PublishedVacancy;
+import oneprofile.backend.storage.vacancy.PublishedGreenhouseVacancy;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -63,10 +63,10 @@ class GreenhouseVacancyReaderAdapterTest {
 	void readsEveryOpeningOfABoardAskingForItsContentAndPay() throws IOException {
 		serve((exchange) -> respondWith(exchange, 200, BOARD));
 
-		assertThat(reader().read("stripe")).containsExactly(new PublishedVacancy("4001", "Backend Engineer",
-				"Remote - Americas", "Engineering", "Ship payments.", "en",
-				"https://job-boards.greenhouse.io/stripe/jobs/4001", 15000000L, 20000000L, "USD", "Annual Salary", null,
-				Instant.parse("2026-09-01T14:00:00Z"), Instant.parse("2026-09-18T16:30:00Z"), null, null, null));
+		assertThat(reader().read("stripe")).containsExactly(new PublishedGreenhouseVacancy("4001", "Backend Engineer",
+				"Remote - Americas", "Engineering", "Ship payments.", "https://job-boards.greenhouse.io/stripe/jobs/4001",
+				15000000L, 20000000L, "USD", Instant.parse("2026-09-01T14:00:00Z"), "Annual Salary",
+				Instant.parse("2026-09-18T16:30:00Z"), "en"));
 		assertThat(this.queries).containsExactly("/v1/boards/stripe/jobs?content=true&pay_transparency=true");
 	}
 
@@ -74,7 +74,7 @@ class GreenhouseVacancyReaderAdapterTest {
 	void bringsNothingWhereTheBoardPublishedNoDescriptionLanguagePayOrDepartment() throws IOException {
 		serve((exchange) -> respondWith(exchange, 200, WITHOUT_PAY_OR_DESCRIPTION));
 
-		PublishedVacancy designer = reader().read("stripe").get(0);
+		PublishedGreenhouseVacancy designer = (PublishedGreenhouseVacancy) reader().read("stripe").get(0);
 		assertThat(designer.description()).isNull();
 		assertThat(designer.language()).isNull();
 		assertThat(designer.department()).isNull();

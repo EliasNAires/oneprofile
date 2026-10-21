@@ -18,6 +18,9 @@ the later ADR wins; the overridden parts are marked below.
   It starts reading one block before the prefix, keeps only `/warc/` captures, and builds SURT
   keys with `webarchive-commons`.
 - **0002**: Ashby is the second ATS. Workable is the next one if the eligible pool is too small.
+- **0021**: each ATS's vacancy is a class of its own over the one `vacancy` table, keeping what
+  that ATS publishes as it publishes it; `Vacancy` holds what any ATS would be expected to
+  publish. Facts are derived in passes, never in the sweep. Overrides PRD §7's nullable columns.
 - **0006**: rules are developed against **snapshots** on the dev machine, never production. Two
   are kept, raw and after classification. A re-sweep cuts a new pair and archives the old one.
 - **0011**: history is kept as **series** (numbers, not vacancies), recorded from **stability**

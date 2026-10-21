@@ -38,7 +38,7 @@ public interface NormalizedVacancyRepository extends ListCrudRepository<Normaliz
 	 * @return the pile's vacancies, their cleaned titles, reasons, languages and segments
 	 */
 	@Query("select new oneprofile.backend.storage.normalizedvacancy.PileVacancy(n.id, n.vacancyId, "
-			+ "n.cleanedTitle, n.classificationReason, coalesce(v.language, n.detectedLanguage), n.descriptionSegments) "
+			+ "n.cleanedTitle, n.classificationReason, coalesce(treat(v as GreenhouseVacancy).language, n.detectedLanguage), n.descriptionSegments) "
 			+ "from NormalizedVacancy n join Vacancy v on v.id = n.vacancyId "
 			+ "where n.vacancyId > :after and n.classificationReason in :reasons order by n.vacancyId")
 	List<PileVacancy> pileAfter(Collection<UnknownReasonEnum> reasons, long after, Limit limit);
@@ -59,8 +59,8 @@ public interface NormalizedVacancyRepository extends ListCrudRepository<Normaliz
 			+ "from NormalizedVacancy n join Vacancy v on v.id = n.vacancyId where n.vacancyId > :after and ("
 			+ "(n.classificationState = oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum.IN "
 			+ "and n.classificationSignal = oneprofile.backend.storage.normalizedvacancy.ClassificationSignalEnum.TITLE) "
-			+ "or (n.classificationReason in :pileReasons and (coalesce(v.language, n.detectedLanguage) is null "
-			+ "or coalesce(v.language, n.detectedLanguage) in :languages))) "
+			+ "or (n.classificationReason in :pileReasons and (coalesce(treat(v as GreenhouseVacancy).language, n.detectedLanguage) is null "
+			+ "or coalesce(treat(v as GreenhouseVacancy).language, n.detectedLanguage) in :languages))) "
 			+ "order by n.vacancyId")
 	List<ExtractionVacancy> extractionScopeAfter(Collection<UnknownReasonEnum> pileReasons,
 			Collection<String> languages, long after, Limit limit);
