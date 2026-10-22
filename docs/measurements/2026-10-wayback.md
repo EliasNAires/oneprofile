@@ -106,10 +106,8 @@ In September a plain-text line cut short made a false slug.
 - The paged index was fresh: on 2026-10-21 its newest Ashby capture was from 2026-10-17.
 
 So an incremental read costs about what a whole read does. A later run reads the whole archive again
-by resume key and keeps only the slugs it does not already hold. That changes how ADR-0023 says a
-run reads Wayback ("only … Wayback's captures since the last run"): what a run adds is still only
-what is new, but it reads everything to find it, because the server offers no cheaper way.
-Scheduling those runs stays with PRD §12.5.
+by resume key and keeps only the slugs it does not already hold. ADR-0023 first said a run reads
+only Wayback's captures since the last run; it was amended to this on 2026-10-21.
 
 ### `http://` captures
 
@@ -117,3 +115,30 @@ Wayback holds `http://` captures, which Common Crawl does not, and the discovery
 `https://`. In 400,000 Greenhouse lines (three chunks, both non-EU hosts) 20,070 were `http://`
 (5%), and they named 5 slugs absent from the `https://` lines, out of 2,506. September found 77 of
 17,730. The rules stay `https://` only.
+
+## Greenhouse's pace
+
+Measured on 2026-10-21 as `2026-10-ashby.md` § Ashby's pace measured Ashby's: bursts against
+discovered slugs, drawn at random from the 2026-10-20 snapshot (`setseed(0.78)` over every
+Greenhouse company for probes, `setseed(0.79)` over the active ones for sweeps), asking what the
+adapters ask (`/v1/boards/<slug>/jobs` for a probe, with `?content=true&pay_transparency=true` for
+a sweep) and sending the app's user agent. 30 s between bursts.
+
+| Burst | Requests | Wall clock | Rate | Answer, median / 95th / max | Answers |
+| --- | ---: | ---: | ---: | --- | --- |
+| Probe, one after another | 200 | 43 s | 4.7/s | 0.20 / 0.24 / 0.67 s | 164 `200`, 36 `404` |
+| Probe, four at a time | 400 | 23 s | 17.3/s | 0.21 / 0.30 / 0.86 s | 341 `200`, 59 `404` |
+| Sweep, one after another | 150 | 76 s | 2.0/s | 0.23 / 0.84 / 15.8 s | 150 `200`, 159 MB |
+| Sweep, four at a time | 300 | 32 s | 9.3/s | 0.31 / 0.83 / 4.1 s | 300 `200`, 142 MB |
+
+Greenhouse refused none of the 1050 requests. A sweep's answer is a whole board's descriptions, yet
+it was refused no sooner than a probe's: the slow sweeps are the large boards (one of 15.8 s), not
+throttling.
+
+The code paces both at **250 ms a board**, as Ashby is: about the rate it served one after another,
+a quarter of what it served four at a time for probes and under half for sweeps. That replaces 130
+boards a minute for the probe (about 460 ms, carried from before the reset) and 500 ms for the
+sweep. A run asks one board at a time, so a sweep is held back by Greenhouse's answers more than by
+its pace. At this pace the 6890 companies of the 2026-10-20 snapshot probe in about 29 minutes,
+against 55 measured at the old pace. The bursts were short; the run is the longer test, and a
+refusal in it sets the pace back.

@@ -14,11 +14,17 @@ CC-MAIN-2025-47. Decided with Elias on 2026-10-21 (#74).
   CC-MAIN-2025-43 and older.
 - **Wayback is read whole**, every capture back to its first. A dead slug costs one probe and is
   kept as not found; an old slug can still be a live board.
-- **Each ATS is backfilled once**, in the step that adds it (or, for Greenhouse and Ashby, the
-  step that adds Wayback). Afterwards a run reads only a new crawl, and Wayback's captures since
-  the last run. Scheduling those runs is PRD §12.5's, not this ADR's.
-- **How Wayback is read is decided by research before the first run**, so the read takes no
-  longer than it must: its paging, its limits and what it lets a query leave out.
+- **Each ATS's Common Crawl is backfilled once**, in the step that adds it. Afterwards a run
+  reads only a new crawl.
+- **Wayback is read whole on every run**, and a run keeps only the slugs not already held. Its
+  CDX server cannot read only the captures since the last run: `from=` filters after the server
+  has scanned the whole prefix, so it saves no time, and without paging it times out. A whole
+  read is about 25 minutes for Greenhouse and 3 for Ashby. Scheduling runs is PRD §12.5's, not
+  this ADR's.
+- **How Wayback is read was decided by research before the first run**
+  (`docs/measurements/2026-10-wayback.md`): one unpaged query per URL prefix, continued by resume
+  key in chunks of 50,000 lines, one request at a time, as JSON so a cut answer is caught, and a
+  `503` page taken as a refusal to wait out and ask again.
 
 Amends ADR-0001 by adding a second archive; ADR-0001's method for Common Crawl is unchanged.
 
@@ -30,3 +36,6 @@ Amends ADR-0001 by adding a second archive; ADR-0001's method for Common Crawl i
   after the block misses Lever.
 - **Reading every crawl on every run**: the backfill's result is already held, so rereading it
   finds nothing new.
+- **Reading Wayback's captures since the last run with `from=`**, as this ADR first said (amended
+  2026-10-21, #78): measured, it reads no less of the server than a whole read, and the unpaged
+  form fails.

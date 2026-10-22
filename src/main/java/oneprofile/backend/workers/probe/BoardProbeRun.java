@@ -29,12 +29,12 @@ public class BoardProbeRun {
 	private static final Log logger = LogFactory.getLog(BoardProbeRun.class);
 
 	/**
-	 * How long one company takes at most on each ATS: the 130 boards a minute Greenhouse served
-	 * without complaint before the reset, and on Ashby the four boards a second it served one after
-	 * another without refusing one on 2026-10-20, a quarter of what it served four at a time (#20).
+	 * How long one company takes at most on each ATS: about the boards a second each served one
+	 * after another without refusing one, a quarter or less of what each served four at a time.
+	 * Greenhouse served 4.7 a second on 2026-10-21 (#78), Ashby four a second on 2026-10-20 (#20).
 	 */
-	private static final Map<AtsEnum, Duration> PACES = Map.of(AtsEnum.GREENHOUSE,
-			Duration.ofMinutes(1).dividedBy(130), AtsEnum.ASHBY, Duration.ofMillis(250));
+	private static final Map<AtsEnum, Duration> PACES = Map.of(AtsEnum.GREENHOUSE, Duration.ofMillis(250),
+			AtsEnum.ASHBY, Duration.ofMillis(250));
 
 	private final Map<AtsEnum, BoardReaderPort> readers;
 

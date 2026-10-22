@@ -19,8 +19,7 @@ import org.springframework.stereotype.Component;
  * Sweeps every board of one ATS that was last found to have openings, and mirrors each one.
  * <p>
  * Only the active boards are asked: the rest have already said they publish nothing. Requests are
- * paced at what each ATS tolerates, and on Greenhouse more slowly than a probe is, because an answer
- * here carries every description of a board rather than a list of titles. A board that could not be read is skipped whole: the company keeps
+ * paced at what each ATS tolerates. A board that could not be read is skipped whole: the company keeps
  * the vacancies it already had, so a board that went down is not mistaken for a board that emptied.
  */
 @Component
@@ -29,12 +28,12 @@ public class BoardSweepRun {
 	private static final Log logger = LogFactory.getLog(BoardSweepRun.class);
 
 	/**
-	 * How long one board takes at most on each ATS. Greenhouse's is slower than its probe's pace,
-	 * because every answer here carries a whole board's descriptions. Ashby's is its probe's, since
-	 * there a probe reads the whole board too: the four boards a second it served one after another
-	 * without refusing one on 2026-10-20, a quarter of what it served four at a time (#20).
+	 * How long one board takes at most on each ATS: each probe's pace, since neither refused a
+	 * whole board's descriptions any sooner than a list of titles. Greenhouse served 9.3 whole boards
+	 * a second four at a time on 2026-10-21 (#78), Ashby 16 on 2026-10-20 (#20). One after another,
+	 * Greenhouse's answers take half a second on average, so its pace rarely holds a run back.
 	 */
-	private static final Map<AtsEnum, Duration> PACES = Map.of(AtsEnum.GREENHOUSE, Duration.ofMillis(500),
+	private static final Map<AtsEnum, Duration> PACES = Map.of(AtsEnum.GREENHOUSE, Duration.ofMillis(250),
 			AtsEnum.ASHBY, Duration.ofMillis(250));
 
 	private final Map<AtsEnum, VacancyReaderPort> readers;
