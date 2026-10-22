@@ -4,10 +4,11 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.SortedMap;
 import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.company.BoardStatusEnum;
 import oneprofile.backend.storage.company.CompanyStore;
+import oneprofile.backend.storage.company.RegionEnum;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
 import oneprofile.backend.storage.vacancy.VacancyStore;
 import org.apache.commons.logging.Log;
@@ -31,10 +32,11 @@ public class BoardSweepRun {
 	 * How long one board takes at most on each ATS: each probe's pace, since neither refused a
 	 * whole board's descriptions any sooner than a list of titles. Greenhouse served 9.3 whole boards
 	 * a second four at a time on 2026-10-21 (#78), Ashby 16 on 2026-10-20 (#20). One after another,
-	 * Greenhouse's answers take half a second on average, so its pace rarely holds a run back.
+	 * Greenhouse's answers take half a second on average, so its pace rarely holds a run back. Lever's
+	 * take about three seconds (#79), so its pace never does.
 	 */
 	private static final Map<AtsEnum, Duration> PACES = Map.of(AtsEnum.GREENHOUSE, Duration.ofMillis(250),
-			AtsEnum.ASHBY, Duration.ofMillis(250));
+			AtsEnum.ASHBY, Duration.ofMillis(250), AtsEnum.LEVER, Duration.ofMillis(250));
 
 	private final Map<AtsEnum, VacancyReaderPort> readers;
 
@@ -48,13 +50,15 @@ public class BoardSweepRun {
 	 * Sweeps each ATS's boards at the pace it tolerates.
 	 * @param greenhouse reads the openings of Greenhouse boards
 	 * @param ashby reads the openings of Ashby boards
+	 * @param lever reads the openings of Lever boards
 	 * @param companies where the boards to sweep are read from
 	 * @param vacancies where what the boards publish is mirrored
 	 */
 	@Autowired
 	public BoardSweepRun(GreenhouseVacancyReaderAdapter greenhouse, AshbyVacancyReaderAdapter ashby,
-			CompanyStore companies, VacancyStore vacancies) {
-		this(Map.of(AtsEnum.GREENHOUSE, greenhouse, AtsEnum.ASHBY, ashby), PACES, companies, vacancies);
+			LeverVacancyReaderAdapter lever, CompanyStore companies, VacancyStore vacancies) {
+		this(Map.of(AtsEnum.GREENHOUSE, greenhouse, AtsEnum.ASHBY, ashby, AtsEnum.LEVER, lever), PACES, companies,
+				vacancies);
 	}
 
 	/**
@@ -79,17 +83,18 @@ public class BoardSweepRun {
 	public Report sweepAll(AtsEnum ats) {
 		VacancyReaderPort reader = this.readers.get(ats);
 		Duration pace = this.paces.get(ats);
-		Set<String> slugs = this.companies.slugsOf(ats, BoardStatusEnum.ACTIVE);
+		SortedMap<String, RegionEnum> regions = this.companies.regionsOf(ats, BoardStatusEnum.ACTIVE);
 		int published = 0;
 		int added = 0;
 		int updated = 0;
 		int deleted = 0;
 		int unreadable = 0;
 		long nextRequestAt = System.nanoTime();
-		for (String slug : slugs) {
+		for (Map.Entry<String, RegionEnum> company : regions.entrySet()) {
+			String slug = company.getKey();
 			waitUntil(nextRequestAt);
 			nextRequestAt = System.nanoTime() + pace.toNanos();
-			List<PublishedVacancy> openings = read(ats, reader, slug);
+			List<PublishedVacancy> openings = read(ats, reader, slug, company.getValue());
 			if (openings == null) {
 				unreadable++;
 				continue;
@@ -100,13 +105,14 @@ public class BoardSweepRun {
 			updated += reconciliation.updated();
 			deleted += reconciliation.deleted();
 		}
-		return new Report(slugs.size(), published, added, updated, deleted, unreadable);
+		return new Report(regions.size(), published, added, updated, deleted, unreadable);
 	}
 
 	/** What the board publishes, or null if the ATS could not be made to say. */
-	private static List<PublishedVacancy> read(AtsEnum ats, VacancyReaderPort reader, String slug) {
+	private static List<PublishedVacancy> read(AtsEnum ats, VacancyReaderPort reader, String slug,
+			RegionEnum region) {
 		try {
-			return reader.read(slug);
+			return reader.read(slug, region);
 		}
 		catch (IOException ex) {
 			logger.warn("Could not read the openings of the %s board of %s".formatted(ats, slug), ex);

@@ -33,7 +33,9 @@ not for its board count or its fields. Decided with Elias on 2026-10-21 (#74).
   are on `job-boards.eu.greenhouse.io` and `US` on the rest; a Greenhouse EU board never swept stays
   `US`, which no probe or sweep reads. A company is still its ATS and slug: a slug discovered under
   both regions (only Lever's own `lever` and `leverdemo` were found so) keeps the region first
-  recorded, and a 404 from its region's API means not found, with no try on the other.
+  recorded; captured under both in one run, it is recorded in the EU, since only an EU board is
+  published under an EU host. A 404 from its region's API means not found, with no try on the
+  other.
   Measurements: `docs/measurements/2026-10-lever.md` § Lever's API.
 
 Supersedes ADR-0002's consequences (Workable next) and its reason for rejecting Lever.

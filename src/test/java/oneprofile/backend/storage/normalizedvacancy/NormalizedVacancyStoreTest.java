@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Set;
 import oneprofile.backend.TestcontainersConfiguration;
 import oneprofile.backend.storage.company.AtsEnum;
+import oneprofile.backend.storage.company.RegionEnum;
 import oneprofile.backend.storage.company.CompanyStore;
 import oneprofile.backend.storage.vacancy.PublishedAshbyVacancy;
 import oneprofile.backend.storage.vacancy.PublishedGreenhouseVacancy;
@@ -48,7 +49,7 @@ class NormalizedVacancyStoreTest {
 
 	@BeforeEach
 	void holdTheCorpus() {
-		this.companies.record(AtsEnum.GREENHOUSE, List.of("stripe"));
+		this.companies.record(AtsEnum.GREENHOUSE, Map.of("stripe", RegionEnum.US));
 		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001), published(4002)));
 	}
 
@@ -333,7 +334,7 @@ class NormalizedVacancyStoreTest {
 
 	@Test
 	void readsAnAshbyVacancyOfThePileInTheLanguageCleaningDetected() {
-		this.companies.record(AtsEnum.ASHBY, List.of("ramp"));
+		this.companies.record(AtsEnum.ASHBY, Map.of("ramp", RegionEnum.US));
 		this.vacancies.mirror(AtsEnum.ASHBY, "ramp", List.of(new PublishedAshbyVacancy(
 				"34413f8d-26bf-4bbc-8ade-eb309a0e2245", "Engineer", "Berlin", null, "Baue Dinge.",
 				"https://jobs.ashbyhq.com/ramp/34413f8d-26bf-4bbc-8ade-eb309a0e2245", null, null, null,

@@ -3,6 +3,7 @@ package oneprofile.backend.workers.discovery;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+import oneprofile.backend.storage.company.RegionEnum;
 
 /**
  * What slug discovery knows about Ashby: where its boards are published, and how to read a slug out
@@ -40,6 +41,15 @@ final class AshbyUrlRule {
 		// spelt like a slug is no slug at all, rather than something to be cleaned up.
 		String slug = rest.substring(0, end).toLowerCase(Locale.ROOT);
 		return slug.matches("[a-z0-9][a-z0-9._-]*") ? Optional.of(slug) : Optional.empty();
+	}
+
+	/**
+	 * The region of the host a board URL is under: Ashby has one host, so every board is in the US.
+	 * @param url a URL {@link #slugIn} reads a slug from
+	 * @return its region
+	 */
+	static RegionEnum regionIn(String url) {
+		return RegionEnum.US;
 	}
 
 }

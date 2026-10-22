@@ -6,8 +6,10 @@ import static org.assertj.core.api.Assertions.tuple;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Map;
 import oneprofile.backend.TestcontainersConfiguration;
 import oneprofile.backend.storage.company.AtsEnum;
+import oneprofile.backend.storage.company.RegionEnum;
 import oneprofile.backend.storage.company.CompanyStore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -41,7 +43,7 @@ class VacancyStoreTest {
 
 	@BeforeEach
 	void holdTheCompany() {
-		this.companies.record(AtsEnum.GREENHOUSE, List.of("stripe", "notion"));
+		this.companies.record(AtsEnum.GREENHOUSE, Map.of("stripe", RegionEnum.US, "notion", RegionEnum.US));
 	}
 
 	@Test
@@ -66,7 +68,7 @@ class VacancyStoreTest {
 
 	@Test
 	void holdsWhatAshbyPublishesOnAnAshbyVacancyUnderAnIdThatIsNoNumber() {
-		this.companies.record(AtsEnum.ASHBY, List.of("ramp"));
+		this.companies.record(AtsEnum.ASHBY, Map.of("ramp", RegionEnum.US));
 		PublishedAshbyVacancy published = new PublishedAshbyVacancy("34413f8d-26bf-4bbc-8ade-eb309a0e2245",
 				"Security Engineer, Cloud", "New York, NY (HQ)", "Engineering", "Secure the cloud.",
 				"https://jobs.ashbyhq.com/ramp/34413f8d-26bf-4bbc-8ade-eb309a0e2245", 21140000L, 29060000L, "USD",
@@ -86,6 +88,32 @@ class VacancyStoreTest {
 					new SecondaryLocation("Anywhere", null));
 		});
 		assertThat(atsHeld()).containsExactly("ASHBY");
+	}
+
+	@Test
+	void holdsWhatLeverPublishesOnALeverVacancy() {
+		this.companies.record(AtsEnum.LEVER, Map.of("finix", RegionEnum.US));
+		PublishedLeverVacancy published = new PublishedLeverVacancy("d2907c20-a739-4c0b-a10e-94aaf1f72c78",
+				"Account Executive, Direct Merchant", "San Francisco", "Revenue", "Finix is building payments.",
+				"https://jobs.lever.co/finix/d2907c20-a739-4c0b-a10e-94aaf1f72c78", 14000000L, 18000000L, "USD",
+				FIRST_PUBLISHED_AT, "remote", "US", "Full-time", "Sales", List.of("San Francisco", "Toronto"),
+				"per-year-salary");
+
+		this.vacancies.mirror(AtsEnum.LEVER, "finix", List.of(published));
+
+		assertThat(this.repository.findAll()).singleElement()
+			.isInstanceOfSatisfying(LeverVacancyEntity.class, (held) -> {
+				assertThat(held.externalId()).isEqualTo("d2907c20-a739-4c0b-a10e-94aaf1f72c78");
+				assertThat(held.department()).isEqualTo("Revenue");
+				assertThat(held.payMinCents()).isEqualTo(14000000L);
+				assertThat(held.workplaceType()).isEqualTo("remote");
+				assertThat(held.country()).isEqualTo("US");
+				assertThat(held.commitment()).isEqualTo("Full-time");
+				assertThat(held.team()).isEqualTo("Sales");
+				assertThat(held.allLocations()).containsExactly("San Francisco", "Toronto");
+				assertThat(held.payInterval()).isEqualTo("per-year-salary");
+			});
+		assertThat(atsHeld()).containsExactly("LEVER");
 	}
 
 	@Test
@@ -171,7 +199,7 @@ class VacancyStoreTest {
 
 	@Test
 	void readsTheTextsOfEveryAtssVacanciesWithTheLanguageOnlyGreenhouseDeclares() {
-		this.companies.record(AtsEnum.ASHBY, List.of("ramp"));
+		this.companies.record(AtsEnum.ASHBY, Map.of("ramp", RegionEnum.US));
 		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001)));
 		this.vacancies.mirror(AtsEnum.ASHBY, "ramp", List.of(new PublishedAshbyVacancy(
 				"34413f8d-26bf-4bbc-8ade-eb309a0e2245", "Security Engineer", "New York, NY (HQ)", null,

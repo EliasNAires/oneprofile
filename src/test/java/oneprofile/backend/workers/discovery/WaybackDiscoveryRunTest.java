@@ -12,9 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.TreeSet;
+import java.util.TreeMap;
 import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.company.CompanyStore;
+import oneprofile.backend.storage.company.RegionEnum;
 import org.junit.jupiter.api.Test;
 
 /** The Wayback Machine is a miniature: one single-chunk answer per prefix asked. */
@@ -35,6 +36,12 @@ class WaybackDiscoveryRunTest {
 			[["original"],
 			["https://jobs.ashbyhq.com/linear/2b5c8a1e"],
 			["https://jobs.ashbyhq.com/Ramp/application"]]
+			""", "jobs.lever.co/", """
+			[["original"],
+			["https://jobs.lever.co/finix/d2907c20-a739-4c0b-a10e-94aaf1f72c78"]]
+			""", "jobs.eu.lever.co/", """
+			[["original"],
+			["https://jobs.eu.lever.co/kwalee"]]
 			""");
 
 	private final List<String> prefixesAsked = new ArrayList<>();
@@ -43,8 +50,8 @@ class WaybackDiscoveryRunTest {
 
 	@Test
 	void recordsTheSlugOfEveryGreenhouseBoardCapturedOnAnyOfItsHosts() throws IOException {
-		given(this.companies.record(eq(AtsEnum.GREENHOUSE),
-				eq(new TreeSet<>(List.of("acme", "decathlontechnology", "eikontherapeutics")))))
+		given(this.companies.record(eq(AtsEnum.GREENHOUSE), eq(new TreeMap<>(Map.of("acme", RegionEnum.US,
+				"decathlontechnology", RegionEnum.EU, "eikontherapeutics", RegionEnum.US)))))
 			.willReturn(2);
 
 		assertThat(runOver(this::chunkOf).discover(AtsEnum.GREENHOUSE))
@@ -55,11 +62,24 @@ class WaybackDiscoveryRunTest {
 
 	@Test
 	void recordsTheSlugOfEveryAshbyBoardCaptured() throws IOException {
-		given(this.companies.record(eq(AtsEnum.ASHBY), eq(new TreeSet<>(List.of("linear", "ramp"))))).willReturn(1);
+		given(this.companies.record(eq(AtsEnum.ASHBY),
+				eq(new TreeMap<>(Map.of("linear", RegionEnum.US, "ramp", RegionEnum.US)))))
+			.willReturn(1);
 
 		assertThat(runOver(this::chunkOf).discover(AtsEnum.ASHBY))
 			.isEqualTo(new WaybackDiscoveryRun.Report(AtsEnum.ASHBY, 2, 2, 1));
 		assertThat(this.prefixesAsked).containsExactly("jobs.ashbyhq.com/");
+	}
+
+	@Test
+	void recordsTheSlugOfEveryLeverBoardInTheRegionOfItsHost() throws IOException {
+		given(this.companies.record(eq(AtsEnum.LEVER),
+				eq(new TreeMap<>(Map.of("finix", RegionEnum.US, "kwalee", RegionEnum.EU)))))
+			.willReturn(2);
+
+		assertThat(runOver(this::chunkOf).discover(AtsEnum.LEVER))
+			.isEqualTo(new WaybackDiscoveryRun.Report(AtsEnum.LEVER, 2, 2, 2));
+		assertThat(this.prefixesAsked).containsExactly("jobs.lever.co/", "jobs.eu.lever.co/");
 	}
 
 	@Test

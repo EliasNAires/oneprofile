@@ -13,10 +13,13 @@ import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeSet;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.company.BoardStatusEnum;
 import oneprofile.backend.storage.company.CompanyStore;
+import oneprofile.backend.storage.company.RegionEnum;
 import oneprofile.backend.storage.vacancy.PublishedGreenhouseVacancy;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
 import oneprofile.backend.storage.vacancy.VacancyStore;
@@ -74,7 +77,8 @@ class BoardSweepRunTest {
 
 	@Test
 	void sweepsTheBoardsOfTheAtsItIsAskedForWithThatAtssReader() {
-		given(this.companies.slugsOf(AtsEnum.ASHBY, BoardStatusEnum.ACTIVE)).willReturn(new TreeSet<>(List.of("ramp")));
+		given(this.companies.regionsOf(AtsEnum.ASHBY, BoardStatusEnum.ACTIVE))
+			.willReturn(new TreeMap<>(Map.of("ramp", RegionEnum.US)));
 		given(this.vacancies.mirror(eq(AtsEnum.ASHBY), eq("ramp"), any()))
 			.willReturn(new VacancyStore.Reconciliation(1, 0, 0));
 		BoardSweepRun sweep = new BoardSweepRun(
@@ -85,8 +89,28 @@ class BoardSweepRunTest {
 		then(this.vacancies).should().mirror(AtsEnum.ASHBY, "ramp", List.of(published(1)));
 	}
 
+	@Test
+	void readsEachBoardInTheRegionItsCompanyHolds() {
+		given(this.companies.regionsOf(AtsEnum.LEVER, BoardStatusEnum.ACTIVE))
+			.willReturn(new TreeMap<>(Map.of("finix", RegionEnum.US, "kwalee", RegionEnum.EU)));
+		given(this.vacancies.mirror(any(), any(), any())).willReturn(new VacancyStore.Reconciliation(0, 0, 0));
+		Map<String, RegionEnum> asked = new TreeMap<>();
+		VacancyReaderPort reader = (slug, region) -> {
+			asked.put(slug, region);
+			return List.of();
+		};
+		BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.LEVER, reader), Map.of(AtsEnum.LEVER, Duration.ZERO),
+				this.companies, this.vacancies);
+
+		sweep.sweepAll(AtsEnum.LEVER);
+
+		assertThat(asked).isEqualTo(Map.of("finix", RegionEnum.US, "kwalee", RegionEnum.EU));
+	}
+
 	private void activeSlugs(String... slugs) {
-		given(this.companies.slugsOf(AtsEnum.GREENHOUSE, BoardStatusEnum.ACTIVE)).willReturn(new TreeSet<>(List.of(slugs)));
+		given(this.companies.regionsOf(AtsEnum.GREENHOUSE, BoardStatusEnum.ACTIVE))
+			.willReturn(Stream.of(slugs)
+				.collect(Collectors.toMap((slug) -> slug, (slug) -> RegionEnum.US, (a, b) -> a, TreeMap::new)));
 	}
 
 	private BoardSweepRun sweepOf(Map<String, List<PublishedVacancy>> boards) {
@@ -96,7 +120,7 @@ class BoardSweepRunTest {
 
 	/** Answers what the map holds, and fails to read the slugs it maps to null. */
 	private VacancyReaderPort reader(Map<String, List<PublishedVacancy>> boards) {
-		return (slug) -> {
+		return (slug, region) -> {
 			List<PublishedVacancy> published = boards.get(slug);
 			if (published == null) {
 				throw new IOException("boards-api.greenhouse.io answered 503");

@@ -5,10 +5,11 @@ import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Map;
-import java.util.Set;
+import java.util.SortedMap;
 import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.company.BoardStatusEnum;
 import oneprofile.backend.storage.company.CompanyStore;
+import oneprofile.backend.storage.company.RegionEnum;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +33,11 @@ public class BoardProbeRun {
 	 * How long one company takes at most on each ATS: about the boards a second each served one
 	 * after another without refusing one, a quarter or less of what each served four at a time.
 	 * Greenhouse served 4.7 a second on 2026-10-21 (#78), Ashby four a second on 2026-10-20 (#20).
+	 * Lever refused nothing on 2026-10-22 (#79) but takes about three seconds to answer, so its own
+	 * latency, not this pace, sets how fast a run goes.
 	 */
 	private static final Map<AtsEnum, Duration> PACES = Map.of(AtsEnum.GREENHOUSE, Duration.ofMillis(250),
-			AtsEnum.ASHBY, Duration.ofMillis(250));
+			AtsEnum.ASHBY, Duration.ofMillis(250), AtsEnum.LEVER, Duration.ofMillis(250));
 
 	private final Map<AtsEnum, BoardReaderPort> readers;
 
@@ -48,12 +51,14 @@ public class BoardProbeRun {
 	 * Probes each ATS's boards at the pace it tolerates.
 	 * @param greenhouse reads Greenhouse boards
 	 * @param ashby reads Ashby boards
+	 * @param lever reads Lever boards
 	 * @param companies the companies to probe, and where the probes are recorded
 	 */
 	@Autowired
 	public BoardProbeRun(GreenhouseBoardReaderAdapter greenhouse, AshbyBoardReaderAdapter ashby,
-			CompanyStore companies) {
-		this(Map.of(AtsEnum.GREENHOUSE, greenhouse, AtsEnum.ASHBY, ashby), PACES, companies, Clock.systemUTC());
+			LeverBoardReaderAdapter lever, CompanyStore companies) {
+		this(Map.of(AtsEnum.GREENHOUSE, greenhouse, AtsEnum.ASHBY, ashby, AtsEnum.LEVER, lever), PACES, companies,
+				Clock.systemUTC());
 	}
 
 	/**
@@ -79,16 +84,17 @@ public class BoardProbeRun {
 	public Report probeAll(AtsEnum ats) {
 		BoardReaderPort reader = this.readers.get(ats);
 		Duration pace = this.paces.get(ats);
-		Set<String> slugs = this.companies.slugsOf(ats);
+		SortedMap<String, RegionEnum> regions = this.companies.regionsOf(ats);
 		int active = 0;
 		int empty = 0;
 		int notFound = 0;
 		int unreadable = 0;
 		long nextRequestAt = System.nanoTime();
-		for (String slug : slugs) {
+		for (Map.Entry<String, RegionEnum> company : regions.entrySet()) {
+			String slug = company.getKey();
 			waitUntil(nextRequestAt);
 			nextRequestAt = System.nanoTime() + pace.toNanos();
-			BoardReading reading = read(ats, reader, slug);
+			BoardReading reading = read(ats, reader, slug, company.getValue());
 			if (reading == null) {
 				unreadable++;
 				continue;
@@ -105,9 +111,10 @@ public class BoardProbeRun {
 	}
 
 	/** What the board is, or null if the ATS could not be made to say. */
-	private static BoardReading read(AtsEnum ats, BoardReaderPort reader, String slug) {
+	private static BoardReading read(AtsEnum ats, BoardReaderPort reader, String slug,
+			RegionEnum region) {
 		try {
-			return reader.read(slug);
+			return reader.read(slug, region);
 		}
 		catch (IOException ex) {
 			logger.warn("Could not read the %s board of %s".formatted(ats, slug), ex);

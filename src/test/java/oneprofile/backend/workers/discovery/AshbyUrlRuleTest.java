@@ -2,6 +2,7 @@ package oneprofile.backend.workers.discovery;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import oneprofile.backend.storage.company.RegionEnum;
 import org.junit.jupiter.api.Test;
 
 class AshbyUrlRuleTest {
@@ -13,6 +14,11 @@ class AshbyUrlRuleTest {
 		assertThat(AshbyUrlRule.slugIn("https://jobs.ashbyhq.com/ramp")).contains("ramp");
 		assertThat(AshbyUrlRule.slugIn("https://jobs.ashbyhq.com/ramp/")).contains("ramp");
 		assertThat(AshbyUrlRule.slugIn("https://jobs.ashbyhq.com/ramp?utm_source=x")).contains("ramp");
+	}
+
+	@Test
+	void placesEveryBoardInTheUsSinceAshbyHasOneHost() {
+		assertThat(AshbyUrlRule.regionIn("https://jobs.ashbyhq.com/ramp")).isEqualTo(RegionEnum.US);
 	}
 
 	@Test

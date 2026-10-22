@@ -12,10 +12,13 @@ import java.time.ZoneOffset;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeSet;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.company.BoardStatusEnum;
 import oneprofile.backend.storage.company.CompanyStore;
+import oneprofile.backend.storage.company.RegionEnum;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
 
@@ -69,7 +72,8 @@ class BoardProbeRunTest {
 
 	@Test
 	void probesTheBoardsOfTheAtsItIsAskedForWithThatAtssReader() {
-		BDDMockito.given(this.companies.slugsOf(AtsEnum.ASHBY)).willReturn(new TreeSet<>(List.of("ramp")));
+		BDDMockito.given(this.companies.regionsOf(AtsEnum.ASHBY))
+			.willReturn(new TreeMap<>(Map.of("ramp", RegionEnum.US)));
 		BoardProbeRun probe = new BoardProbeRun(
 				Map.of(AtsEnum.GREENHOUSE, reader(Map.of()), AtsEnum.ASHBY,
 						reader(Map.of("ramp", new BoardReading(BoardStatusEnum.ACTIVE, null)))),
@@ -79,8 +83,26 @@ class BoardProbeRunTest {
 		then(this.companies).should().recordProbe(AtsEnum.ASHBY, "ramp", BoardStatusEnum.ACTIVE, null, PROBED_AT);
 	}
 
+	@Test
+	void asksForEachBoardInTheRegionItsCompanyHolds() {
+		BDDMockito.given(this.companies.regionsOf(AtsEnum.LEVER))
+			.willReturn(new TreeMap<>(Map.of("finix", RegionEnum.US, "kwalee", RegionEnum.EU)));
+		Map<String, RegionEnum> asked = new TreeMap<>();
+		BoardReaderPort reader = (slug, region) -> {
+			asked.put(slug, region);
+			return new BoardReading(BoardStatusEnum.ACTIVE, null);
+		};
+		BoardProbeRun probe = new BoardProbeRun(Map.of(AtsEnum.LEVER, reader), Map.of(AtsEnum.LEVER, Duration.ZERO),
+				this.companies, clock());
+
+		assertThat(probe.probeAll(AtsEnum.LEVER)).isEqualTo(new BoardProbeRun.Report(2, 0, 0, 0));
+		assertThat(asked).isEqualTo(Map.of("finix", RegionEnum.US, "kwalee", RegionEnum.EU));
+	}
+
 	private void heldSlugs(String... slugs) {
-		BDDMockito.given(this.companies.slugsOf(AtsEnum.GREENHOUSE)).willReturn(new TreeSet<>(List.of(slugs)));
+		BDDMockito.given(this.companies.regionsOf(AtsEnum.GREENHOUSE))
+			.willReturn(Stream.of(slugs)
+				.collect(Collectors.toMap((slug) -> slug, (slug) -> RegionEnum.US, (a, b) -> a, TreeMap::new)));
 	}
 
 	private BoardProbeRun probeOf(Map<String, BoardReading> boards) {
@@ -90,7 +112,7 @@ class BoardProbeRunTest {
 
 	/** Answers what the map holds, and fails to read the slugs it maps to null. */
 	private BoardReaderPort reader(Map<String, BoardReading> boards) {
-		return (slug) -> {
+		return (slug, region) -> {
 			BoardReading reading = boards.get(slug);
 			if (reading == null) {
 				throw new IOException("boards-api.greenhouse.io answered 503");

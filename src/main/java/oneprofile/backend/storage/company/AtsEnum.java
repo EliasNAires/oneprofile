@@ -7,7 +7,9 @@ public enum AtsEnum {
 
 	GREENHOUSE,
 
-	ASHBY;
+	ASHBY,
+
+	LEVER;
 
 	/**
 	 * The ATS a path names, written in any case, as the endpoints take it.

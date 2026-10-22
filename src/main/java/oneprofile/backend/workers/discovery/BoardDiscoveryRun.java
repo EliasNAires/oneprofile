@@ -5,11 +5,12 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.function.Function;
 import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.company.CompanyStore;
+import oneprofile.backend.storage.company.RegionEnum;
 import org.springframework.stereotype.Component;
 
 /**
@@ -47,22 +48,38 @@ public class BoardDiscoveryRun {
 		List<String> urlPrefixes = switch (ats) {
 			case GREENHOUSE -> GreenhouseUrlRule.BOARD_URL_PREFIXES;
 			case ASHBY -> AshbyUrlRule.BOARD_URL_PREFIXES;
+			case LEVER -> LeverUrlRule.BOARD_URL_PREFIXES;
 		};
 		Function<String, Optional<String>> slugIn = switch (ats) {
 			case GREENHOUSE -> GreenhouseUrlRule::slugIn;
 			case ASHBY -> AshbyUrlRule::slugIn;
+			case LEVER -> LeverUrlRule::slugIn;
+		};
+		Function<String, RegionEnum> regionIn = switch (ats) {
+			case GREENHOUSE -> GreenhouseUrlRule::regionIn;
+			case ASHBY -> AshbyUrlRule::regionIn;
+			case LEVER -> LeverUrlRule::regionIn;
 		};
 		Set<CdxBlock> blocksToRead = new LinkedHashSet<>();
 		for (String urlPrefix : urlPrefixes) {
 			blocksToRead.addAll(this.clusterIndex.locate(crawl, urlPrefix));
 		}
-		SortedSet<String> slugs = new TreeSet<>();
+		SortedMap<String, RegionEnum> slugs = new TreeMap<>();
 		for (CdxBlock block : blocksToRead) {
 			for (String url : this.blockReader.capturedUrls(crawl, block)) {
-				slugIn.apply(url).ifPresent(slugs::add);
+				slugIn.apply(url)
+					.ifPresent((slug) -> slugs.merge(slug, regionIn.apply(url), BoardDiscoveryRun::eitherRegion));
 			}
 		}
 		return new Report(ats, crawl, slugs.size(), this.companies.record(ats, slugs));
+	}
+
+	/**
+	 * The region of a slug captured under both regions' hosts in one run, by Common Crawl or Wayback:
+	 * the EU, since only a board of the EU is published under an EU host (ADR-0022).
+	 */
+	static RegionEnum eitherRegion(RegionEnum one, RegionEnum other) {
+		return (one == RegionEnum.EU || other == RegionEnum.EU) ? RegionEnum.EU : RegionEnum.US;
 	}
 
 	/**

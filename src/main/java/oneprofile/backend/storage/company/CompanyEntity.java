@@ -24,6 +24,9 @@ public class CompanyEntity {
 
 	private String slug;
 
+	@Enumerated(EnumType.STRING)
+	private RegionEnum region;
+
 	private String name;
 
 	@Enumerated(EnumType.STRING)
@@ -34,9 +37,10 @@ public class CompanyEntity {
 	protected CompanyEntity() {
 	}
 
-	public CompanyEntity(AtsEnum ats, String slug) {
+	public CompanyEntity(AtsEnum ats, String slug, RegionEnum region) {
 		this.ats = ats;
 		this.slug = slug;
+		this.region = region;
 	}
 
 	/**
@@ -53,6 +57,16 @@ public class CompanyEntity {
 		if (name != null) {
 			this.name = name;
 		}
+	}
+
+	/** The identifier it is known by within its ATS. */
+	public String slug() {
+		return this.slug;
+	}
+
+	/** The region of the host its board was discovered on, which it keeps once recorded. */
+	public RegionEnum region() {
+		return this.region;
 	}
 
 	/** The readable name its board gave, or null if no probe has read one yet. */

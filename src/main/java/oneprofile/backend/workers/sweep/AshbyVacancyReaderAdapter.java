@@ -12,6 +12,7 @@ import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import oneprofile.backend.storage.company.RegionEnum;
 import oneprofile.backend.storage.vacancy.PublishedAshbyVacancy;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
 import oneprofile.backend.storage.vacancy.SecondaryLocation;
@@ -87,7 +88,7 @@ public class AshbyVacancyReaderAdapter implements VacancyReaderPort {
 	}
 
 	@Override
-	public List<PublishedVacancy> read(String slug) throws IOException {
+	public List<PublishedVacancy> read(String slug, RegionEnum region) throws IOException {
 		HttpRequest request = HttpRequest
 			.newBuilder(this.base.resolve("posting-api/job-board/%s?includeCompensation=true".formatted(slug)))
 			.header("User-Agent", this.userAgent)

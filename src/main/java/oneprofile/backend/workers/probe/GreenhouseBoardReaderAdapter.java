@@ -8,6 +8,7 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.time.Duration;
 import oneprofile.backend.storage.company.BoardStatusEnum;
+import oneprofile.backend.storage.company.RegionEnum;
 import oneprofile.backend.workers.UserAgent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -66,7 +67,7 @@ public class GreenhouseBoardReaderAdapter implements BoardReaderPort {
 	}
 
 	@Override
-	public BoardReading read(String slug) throws IOException {
+	public BoardReading read(String slug, RegionEnum region) throws IOException {
 		HttpRequest request = HttpRequest.newBuilder(this.base.resolve("v1/boards/%s/jobs".formatted(slug)))
 			.header("User-Agent", this.userAgent)
 			.GET()

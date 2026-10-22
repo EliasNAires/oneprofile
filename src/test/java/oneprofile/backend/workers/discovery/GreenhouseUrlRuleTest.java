@@ -2,6 +2,7 @@ package oneprofile.backend.workers.discovery;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import oneprofile.backend.storage.company.RegionEnum;
 import org.junit.jupiter.api.Test;
 
 class GreenhouseUrlRuleTest {
@@ -24,6 +25,14 @@ class GreenhouseUrlRuleTest {
 		assertThat(GreenhouseUrlRule.slugIn("https://job-boards.greenhouse.io/acme/jobs/1")).contains("acme");
 		assertThat(GreenhouseUrlRule.slugIn("https://boards.eu.greenhouse.io/acme/jobs/1")).contains("acme");
 		assertThat(GreenhouseUrlRule.slugIn("https://job-boards.eu.greenhouse.io/acme/jobs/1")).contains("acme");
+	}
+
+	@Test
+	void readsTheRegionFromTheHostAlthoughOneApiHostServesBoth() {
+		assertThat(GreenhouseUrlRule.regionIn("https://boards.greenhouse.io/acme/jobs/1")).isEqualTo(RegionEnum.US);
+		assertThat(GreenhouseUrlRule.regionIn("https://job-boards.greenhouse.io/acme")).isEqualTo(RegionEnum.US);
+		assertThat(GreenhouseUrlRule.regionIn("https://boards.eu.greenhouse.io/acme/jobs/1")).isEqualTo(RegionEnum.EU);
+		assertThat(GreenhouseUrlRule.regionIn("https://job-boards.eu.greenhouse.io/acme")).isEqualTo(RegionEnum.EU);
 	}
 
 	@Test

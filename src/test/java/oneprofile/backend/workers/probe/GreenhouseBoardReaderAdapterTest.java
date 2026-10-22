@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import oneprofile.backend.storage.company.BoardStatusEnum;
+import oneprofile.backend.storage.company.RegionEnum;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -50,7 +51,8 @@ class GreenhouseBoardReaderAdapterTest {
 	void readsABoardWithOpeningsAsActiveAndTakesItsNameFromTheResponse() throws IOException {
 		serve((exchange) -> respondWith(exchange, 200, WITH_OPENINGS));
 
-		assertThat(reader().read("stripe")).isEqualTo(new BoardReading(BoardStatusEnum.ACTIVE, "Stripe"));
+		assertThat(reader().read("stripe", RegionEnum.US))
+			.isEqualTo(new BoardReading(BoardStatusEnum.ACTIVE, "Stripe"));
 		assertThat(this.paths).containsExactly("/v1/boards/stripe/jobs");
 		assertThat(this.userAgents).allMatch((agent) -> agent.contains("oneprofile"));
 	}
@@ -59,7 +61,7 @@ class GreenhouseBoardReaderAdapterTest {
 	void readsABoardWithoutOpeningsAsEmptyAndBringsNoName() throws IOException {
 		serve((exchange) -> respondWith(exchange, 200, WITHOUT_OPENINGS));
 
-		assertThat(reader().read("stripe")).isEqualTo(new BoardReading(BoardStatusEnum.EMPTY, null));
+		assertThat(reader().read("stripe", RegionEnum.US)).isEqualTo(new BoardReading(BoardStatusEnum.EMPTY, null));
 	}
 
 	@Test
@@ -70,7 +72,7 @@ class GreenhouseBoardReaderAdapterTest {
 			respondWith(exchange, 404, "");
 		});
 
-		assertThat(reader().read("stripe")).isEqualTo(new BoardReading(BoardStatusEnum.NOT_FOUND, null));
+		assertThat(reader().read("stripe", RegionEnum.US)).isEqualTo(new BoardReading(BoardStatusEnum.NOT_FOUND, null));
 		assertThat(attempts).hasValue(1);
 	}
 
@@ -86,7 +88,8 @@ class GreenhouseBoardReaderAdapterTest {
 			}, attempt < 3 ? "" : WITH_OPENINGS);
 		});
 
-		assertThat(reader().read("stripe")).isEqualTo(new BoardReading(BoardStatusEnum.ACTIVE, "Stripe"));
+		assertThat(reader().read("stripe", RegionEnum.US))
+			.isEqualTo(new BoardReading(BoardStatusEnum.ACTIVE, "Stripe"));
 		assertThat(attempts).hasValue(3);
 	}
 
@@ -94,14 +97,15 @@ class GreenhouseBoardReaderAdapterTest {
 	void givesUpOnceTheAttemptsAreSpent() {
 		serve((exchange) -> respondWith(exchange, 503, ""));
 
-		assertThatThrownBy(() -> reader().read("stripe")).isInstanceOf(IOException.class).hasMessageContaining("503");
+		assertThatThrownBy(() -> reader().read("stripe", RegionEnum.US)).isInstanceOf(IOException.class)
+			.hasMessageContaining("503");
 	}
 
 	@Test
 	void refusesAnAnswerItCannotRead() {
 		serve((exchange) -> respondWith(exchange, 200, "not json"));
 
-		assertThatThrownBy(() -> reader().read("stripe")).isInstanceOf(IOException.class)
+		assertThatThrownBy(() -> reader().read("stripe", RegionEnum.US)).isInstanceOf(IOException.class)
 			.hasMessageContaining("stripe");
 	}
 

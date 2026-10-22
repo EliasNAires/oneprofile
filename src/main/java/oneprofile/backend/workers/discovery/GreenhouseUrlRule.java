@@ -3,6 +3,7 @@ package oneprofile.backend.workers.discovery;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+import oneprofile.backend.storage.company.RegionEnum;
 
 /**
  * What slug discovery knows about Greenhouse: where its boards are published, and how to read a
@@ -42,6 +43,16 @@ final class GreenhouseUrlRule {
 		String query = rest.contains("?") ? rest.substring(rest.indexOf('?') + 1) : "";
 		String segment = upTo(path, "/");
 		return EMBED.equals(segment) ? slug(parameter(query, "for")) : slug(segment);
+	}
+
+	/**
+	 * The region of the host a board URL is under. Greenhouse's one API host serves both regions, so
+	 * nothing reads it to ask for a board, but it is what the URL says (ADR-0022).
+	 * @param url a URL {@link #slugIn} reads a slug from
+	 * @return its region
+	 */
+	static RegionEnum regionIn(String url) {
+		return hostIn(url).contains(".eu.") ? RegionEnum.EU : RegionEnum.US;
 	}
 
 	/**

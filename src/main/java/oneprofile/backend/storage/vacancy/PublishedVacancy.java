@@ -8,11 +8,12 @@ import java.time.Instant;
  * publishes its own way is read from its own record. A field the board left out is null rather than
  * guessed at.
  */
-public sealed interface PublishedVacancy permits PublishedGreenhouseVacancy, PublishedAshbyVacancy {
+public sealed interface PublishedVacancy permits PublishedGreenhouseVacancy, PublishedAshbyVacancy,
+		PublishedLeverVacancy {
 
 	/**
 	 * The id the ATS gives the vacancy, unique within the board but not across boards: a number on
-	 * Greenhouse, a UUID on Ashby.
+	 * Greenhouse, a UUID on Ashby and Lever.
 	 */
 	String externalId();
 

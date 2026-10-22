@@ -77,6 +77,7 @@ public abstract class VacancyEntity {
 		return switch (published) {
 			case PublishedGreenhouseVacancy greenhouse -> new GreenhouseVacancyEntity(company, greenhouse.externalId());
 			case PublishedAshbyVacancy ashby -> new AshbyVacancyEntity(company, ashby.externalId());
+			case PublishedLeverVacancy lever -> new LeverVacancyEntity(company, lever.externalId());
 		};
 	}
 

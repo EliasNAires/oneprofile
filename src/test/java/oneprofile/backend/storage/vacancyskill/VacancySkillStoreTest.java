@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 import oneprofile.backend.TestcontainersConfiguration;
 import oneprofile.backend.storage.company.AtsEnum;
+import oneprofile.backend.storage.company.RegionEnum;
 import oneprofile.backend.storage.company.CompanyStore;
 import oneprofile.backend.storage.normalizedvacancy.CleanedTitle;
 import oneprofile.backend.storage.normalizedvacancy.CleanedVacancy;
@@ -50,7 +51,7 @@ class VacancySkillStoreTest {
 
 	@BeforeEach
 	void holdTheCorpus(@Autowired CompanyStore companies, @Autowired NormalizedVacancyStore normalized) {
-		companies.record(AtsEnum.GREENHOUSE, List.of("stripe"));
+		companies.record(AtsEnum.GREENHOUSE, Map.of("stripe", RegionEnum.US));
 		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001), published(4002)));
 		List<Long> ids = this.vacancies.textsAfter(0, 10).stream().map(VacancyText::id).toList();
 		normalized.recordCleanedVacancies(Map.of(ids.get(0), cleaned(), ids.get(1), cleaned()));

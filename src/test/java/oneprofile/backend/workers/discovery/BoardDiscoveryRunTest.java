@@ -15,16 +15,17 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeSet;
+import java.util.TreeMap;
 import java.util.zip.GZIPOutputStream;
 import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.company.CompanyStore;
+import oneprofile.backend.storage.company.RegionEnum;
 import org.junit.jupiter.api.Test;
 
 /**
- * The crawl the discovery is pointed at is a miniature of a real one: a {@code cluster.idx} of eight
- * sampled keys over one shard of eight blocks: Ashby's host with one on either side, one per
- * Greenhouse host, and one after them.
+ * The crawl the discovery is pointed at is a miniature of a real one: a {@code cluster.idx} of eleven
+ * sampled keys over one shard of eleven blocks: one before Lever's two hosts, one per Lever host,
+ * Ashby's host with one on either side, one per Greenhouse host, and one after them.
  */
 class BoardDiscoveryRunTest {
 
@@ -40,9 +41,11 @@ class BoardDiscoveryRunTest {
 			new CdxBlockParser(this.crawl), this.companies);
 
 	@Test
-	void recordsTheSlugOfEveryBoardCapturedOnAnyOfTheHostsAndReportsWhatItAdded() throws IOException {
-		TreeSet<String> slugs = new TreeSet<>(List.of("acme", "decathlontechnology", "eikontherapeutics", "rightship"));
-		given(this.companies.record(eq(AtsEnum.GREENHOUSE), eq(slugs))).willReturn(3);
+	void recordsTheSlugOfEveryBoardCapturedOnAnyOfTheHostsInItsRegionAndReportsWhatItAdded() throws IOException {
+		given(this.companies.record(eq(AtsEnum.GREENHOUSE),
+				eq(new TreeMap<>(Map.of("acme", RegionEnum.US, "decathlontechnology", RegionEnum.EU,
+						"eikontherapeutics", RegionEnum.US, "rightship", RegionEnum.EU)))))
+			.willReturn(3);
 
 		assertThat(this.discovery.discover(AtsEnum.GREENHOUSE, CRAWL))
 			.isEqualTo(new BoardDiscoveryRun.Report(AtsEnum.GREENHOUSE, CRAWL, 4, 3));
@@ -50,11 +53,23 @@ class BoardDiscoveryRunTest {
 
 	@Test
 	void recordsTheSlugOfEveryAshbyBoardCapturedAndNoGreenhouseOne() throws IOException {
-		TreeSet<String> slugs = new TreeSet<>(List.of("linear", "ramp"));
-		given(this.companies.record(eq(AtsEnum.ASHBY), eq(slugs))).willReturn(2);
+		given(this.companies.record(eq(AtsEnum.ASHBY),
+				eq(new TreeMap<>(Map.of("linear", RegionEnum.US, "ramp", RegionEnum.US)))))
+			.willReturn(2);
 
 		assertThat(this.discovery.discover(AtsEnum.ASHBY, CRAWL))
 			.isEqualTo(new BoardDiscoveryRun.Report(AtsEnum.ASHBY, CRAWL, 2, 2));
+	}
+
+	@Test
+	void recordsTheSlugOfEveryLeverBoardInTheRegionOfItsHostAndInTheEuWhereCapturedUnderBoth()
+			throws IOException {
+		given(this.companies.record(eq(AtsEnum.LEVER),
+				eq(new TreeMap<>(Map.of("finix", RegionEnum.US, "kwalee", RegionEnum.EU, "leverdemo", RegionEnum.EU)))))
+			.willReturn(3);
+
+		assertThat(this.discovery.discover(AtsEnum.LEVER, CRAWL))
+			.isEqualTo(new BoardDiscoveryRun.Report(AtsEnum.LEVER, CRAWL, 3, 3));
 	}
 
 	@Test
@@ -105,6 +120,13 @@ class BoardDiscoveryRunTest {
 		private MiniatureCrawl() {
 			ByteArrayOutputStream shard = new ByteArrayOutputStream();
 			StringBuilder clusterIndex = new StringBuilder();
+			appendBlock(shard, clusterIndex, "co,aaa)/", List.of(capture("https://aaa.co/")));
+			appendBlock(shard, clusterIndex, "co,lever,eu,jobs)/kwalee",
+					List.of(capture("https://jobs.eu.lever.co/kwalee/5f1c2a4e-0d4f-4c1e-9d0a-1b2c3d4e5f60"),
+							capture("https://jobs.eu.lever.co/leverdemo")));
+			appendBlock(shard, clusterIndex, "co,lever,jobs)/finix",
+					List.of(capture("https://jobs.lever.co/finix/d2907c20-a739-4c0b-a10e-94aaf1f72c78/apply"),
+							capture("https://jobs.lever.co/leverdemo")));
 			appendBlock(shard, clusterIndex, "com,aaa)/", List.of(capture("https://aaa.com/")));
 			appendBlock(shard, clusterIndex, "com,ashbyhq,jobs)/linear",
 					List.of(capture("https://jobs.ashbyhq.com/linear/2b5c8a1e-0d4f-4c1e-9d0a-1b2c3d4e5f60"),

@@ -1,5 +1,6 @@
 package oneprofile.backend.storage.company;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import org.springframework.data.jpa.repository.Query;
@@ -17,13 +18,19 @@ public interface CompanyRepository extends ListCrudRepository<CompanyEntity, Lon
 	Set<String> slugsOf(AtsEnum ats);
 
 	/**
-	 * The slugs held for one ATS whose board was last found to be of one kind.
+	 * The companies held for one ATS.
+	 * @param ats the ATS to read
+	 * @return every company held for it
+	 */
+	List<CompanyEntity> findByAts(AtsEnum ats);
+
+	/**
+	 * The companies held for one ATS whose board was last found to be of one kind.
 	 * @param ats the ATS to read
 	 * @param boardStatus what their boards were last found to be
-	 * @return every slug held for it with that board status
+	 * @return every company held for it with that board status
 	 */
-	@Query("select c.slug from Company c where c.ats = :ats and c.boardStatus = :boardStatus")
-	Set<String> slugsOf(AtsEnum ats, BoardStatusEnum boardStatus);
+	List<CompanyEntity> findByAtsAndBoardStatus(AtsEnum ats, BoardStatusEnum boardStatus);
 
 	/**
 	 * The company a slug names within one ATS.

@@ -3,11 +3,12 @@ package oneprofile.backend.workers.discovery;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.function.Function;
 import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.company.CompanyStore;
+import oneprofile.backend.storage.company.RegionEnum;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Component;
@@ -48,17 +49,25 @@ public class WaybackDiscoveryRun {
 		List<String> urlPrefixes = switch (ats) {
 			case GREENHOUSE -> GreenhouseUrlRule.BOARD_URL_PREFIXES;
 			case ASHBY -> AshbyUrlRule.BOARD_URL_PREFIXES;
+			case LEVER -> LeverUrlRule.BOARD_URL_PREFIXES;
 		};
 		Function<String, Optional<String>> slugIn = switch (ats) {
 			case GREENHOUSE -> GreenhouseUrlRule::slugIn;
 			case ASHBY -> AshbyUrlRule::slugIn;
+			case LEVER -> LeverUrlRule::slugIn;
 		};
-		SortedSet<String> slugs = new TreeSet<>();
+		Function<String, RegionEnum> regionIn = switch (ats) {
+			case GREENHOUSE -> GreenhouseUrlRule::regionIn;
+			case ASHBY -> AshbyUrlRule::regionIn;
+			case LEVER -> LeverUrlRule::regionIn;
+		};
+		SortedMap<String, RegionEnum> slugs = new TreeMap<>();
 		long captures = 0;
 		for (String urlPrefix : urlPrefixes) {
 			// The CDX server matches a prefix across both schemes, and is asked for it without one.
 			String withoutScheme = urlPrefix.substring(SCHEME.length());
-			captures += this.cdx.capturedUrls(withoutScheme, (url) -> slugIn.apply(url).ifPresent(slugs::add));
+			captures += this.cdx.capturedUrls(withoutScheme, (url) -> slugIn.apply(url)
+				.ifPresent((slug) -> slugs.merge(slug, regionIn.apply(url), BoardDiscoveryRun::eitherRegion)));
 			logger.info("Read %s from Wayback: %d captures, %d distinct slugs so far".formatted(withoutScheme,
 					captures, slugs.size()));
 		}

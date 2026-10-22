@@ -20,6 +20,7 @@ import oneprofile.backend.storage.vacancy.SecondaryLocation;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import oneprofile.backend.storage.company.RegionEnum;
 
 /** Exercised against a stub server rather than {@code api.ashbyhq.com}. */
 class AshbyVacancyReaderAdapterTest {
@@ -62,7 +63,7 @@ class AshbyVacancyReaderAdapterTest {
 	void readsEveryOpeningOfABoardWithItsStructuredFieldsAskingForItsCompensation() throws IOException {
 		serve((exchange) -> respondWith(exchange, 200, BOARD));
 
-		assertThat(reader().read("ramp")).containsExactly(new PublishedAshbyVacancy(
+		assertThat(reader().read("ramp", RegionEnum.US)).containsExactly(new PublishedAshbyVacancy(
 				"34413f8d-26bf-4bbc-8ade-eb309a0e2245", "Security Engineer, Cloud", "New York, NY (HQ)", "Engineering",
 				"# About Ramp\nSecure the cloud.", "https://jobs.ashbyhq.com/ramp/34413f8d-26bf-4bbc-8ade-eb309a0e2245",
 				21140000L, 29060000L, "USD", Instant.parse("2026-04-07T17:12:35.753Z"), "Hybrid", "USA",
@@ -109,7 +110,7 @@ class AshbyVacancyReaderAdapterTest {
 				{"jobs":[{"id":"dcae2c8b-8362-48c6-854e-d1e0ea9a3434","title":"",
 				"jobUrl":"https://jobs.ashbyhq.com/acme/dcae2c8b-8362-48c6-854e-d1e0ea9a3434"}]}"""));
 
-		assertThat(reader().read("acme").get(0).title()).isEmpty();
+		assertThat(reader().read("acme", RegionEnum.US).get(0).title()).isEmpty();
 	}
 
 	@Test
@@ -117,7 +118,7 @@ class AshbyVacancyReaderAdapterTest {
 		serveOpening("""
 				"descriptionHtml":"<div class=\\"c-link\\"><h2>About us</h2><ul><li>Remote</li></ul></div>\"""");
 
-		assertThat(reader().read("acme").get(0).description()).isEqualTo("""
+		assertThat(reader().read("acme", RegionEnum.US).get(0).description()).isEqualTo("""
 				# About us
 				- Remote""");
 	}
@@ -130,7 +131,7 @@ class AshbyVacancyReaderAdapterTest {
 			respondWith(exchange, attempt < 3 ? 429 : 200, attempt < 3 ? "" : BOARD);
 		});
 
-		assertThat(reader().read("ramp")).hasSize(1);
+		assertThat(reader().read("ramp", RegionEnum.US)).hasSize(1);
 		assertThat(attempts).hasValue(3);
 	}
 
@@ -138,18 +139,20 @@ class AshbyVacancyReaderAdapterTest {
 	void givesUpOnABoardTheAtsWillNotServe() {
 		serve((exchange) -> respondWith(exchange, 404, "Not Found"));
 
-		assertThatThrownBy(() -> reader().read("ramp")).isInstanceOf(IOException.class).hasMessageContaining("404");
+		assertThatThrownBy(() -> reader().read("ramp", RegionEnum.US)).isInstanceOf(IOException.class)
+			.hasMessageContaining("404");
 	}
 
 	@Test
 	void refusesAnAnswerItCannotRead() {
 		serve((exchange) -> respondWith(exchange, 200, "not json"));
 
-		assertThatThrownBy(() -> reader().read("ramp")).isInstanceOf(IOException.class).hasMessageContaining("ramp");
+		assertThatThrownBy(() -> reader().read("ramp", RegionEnum.US)).isInstanceOf(IOException.class)
+			.hasMessageContaining("ramp");
 	}
 
 	private PublishedAshbyVacancy ashbyOpening() throws IOException {
-		return (PublishedAshbyVacancy) reader().read("acme").get(0);
+		return (PublishedAshbyVacancy) reader().read("acme", RegionEnum.US).get(0);
 	}
 
 	private void serveOpening(String fields) {

@@ -2,9 +2,10 @@ package oneprofile.backend.storage.company;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.entry;
 
 import java.time.Instant;
-import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
@@ -28,14 +29,14 @@ class CompanyStoreTest {
 
 	@Test
 	void holdsOneCompanyPerSlugItIsGiven() {
-		this.companies.record(AtsEnum.GREENHOUSE, List.of("stripe", "notion"));
+		this.companies.record(AtsEnum.GREENHOUSE, Map.of("stripe", RegionEnum.US, "notion", RegionEnum.US));
 
 		assertThat(this.repository.slugsOf(AtsEnum.GREENHOUSE)).containsExactlyInAnyOrder("stripe", "notion");
 	}
 
 	@Test
 	void recordsNothingTheSecondTimeItIsGivenTheSameSlugs() {
-		List<String> discovered = List.of("stripe", "notion");
+		Map<String, RegionEnum> discovered = Map.of("stripe", RegionEnum.US, "notion", RegionEnum.US);
 		this.companies.record(AtsEnum.GREENHOUSE, discovered);
 
 		assertThat(this.companies.record(AtsEnum.GREENHOUSE, discovered)).isZero();
@@ -44,7 +45,7 @@ class CompanyStoreTest {
 
 	@Test
 	void recordsWhatAProbeFoundOnTheCompanyItProbed() {
-		this.companies.record(AtsEnum.GREENHOUSE, List.of("stripe"));
+		this.companies.record(AtsEnum.GREENHOUSE, Map.of("stripe", RegionEnum.US));
 
 		this.companies.recordProbe(AtsEnum.GREENHOUSE, "stripe", BoardStatusEnum.ACTIVE, "Stripe", PROBED_AT);
 
@@ -56,7 +57,7 @@ class CompanyStoreTest {
 
 	@Test
 	void keepsTheNameItAlreadyHasWhenALaterProbeBringsNone() {
-		this.companies.record(AtsEnum.GREENHOUSE, List.of("stripe"));
+		this.companies.record(AtsEnum.GREENHOUSE, Map.of("stripe", RegionEnum.US));
 		this.companies.recordProbe(AtsEnum.GREENHOUSE, "stripe", BoardStatusEnum.ACTIVE, "Stripe", PROBED_AT);
 
 		Instant later = PROBED_AT.plusSeconds(3600);
@@ -79,27 +80,46 @@ class CompanyStoreTest {
 
 	@Test
 	void readsTheSlugsItHoldsInSlugOrder() {
-		this.companies.record(AtsEnum.GREENHOUSE, List.of("stripe", "notion"));
+		this.companies.record(AtsEnum.GREENHOUSE, Map.of("stripe", RegionEnum.US, "notion", RegionEnum.US));
 
-		assertThat(this.companies.slugsOf(AtsEnum.GREENHOUSE)).containsExactly("notion", "stripe");
+		assertThat(this.companies.regionsOf(AtsEnum.GREENHOUSE).keySet()).containsExactly("notion", "stripe");
 	}
 
 	@Test
 	void readsOnlyTheSlugsWhoseBoardWasLastFoundActive() {
-		this.companies.record(AtsEnum.GREENHOUSE, List.of("stripe", "notion", "gone", "unprobed"));
+		this.companies.record(AtsEnum.GREENHOUSE, Map.of("stripe", RegionEnum.US, "notion", RegionEnum.US, "gone",
+				RegionEnum.US, "unprobed", RegionEnum.US));
 		this.companies.recordProbe(AtsEnum.GREENHOUSE, "stripe", BoardStatusEnum.ACTIVE, "Stripe", PROBED_AT);
 		this.companies.recordProbe(AtsEnum.GREENHOUSE, "notion", BoardStatusEnum.EMPTY, null, PROBED_AT);
 		this.companies.recordProbe(AtsEnum.GREENHOUSE, "gone", BoardStatusEnum.NOT_FOUND, null, PROBED_AT);
 
-		assertThat(this.companies.slugsOf(AtsEnum.GREENHOUSE, BoardStatusEnum.ACTIVE)).containsExactly("stripe");
+		assertThat(this.companies.regionsOf(AtsEnum.GREENHOUSE, BoardStatusEnum.ACTIVE))
+			.containsExactly(entry("stripe", RegionEnum.US));
 	}
 
 	@Test
 	void recordsOnlyTheSlugsItDoesNotHoldYet() {
-		this.companies.record(AtsEnum.GREENHOUSE, List.of("stripe"));
+		this.companies.record(AtsEnum.GREENHOUSE, Map.of("stripe", RegionEnum.US));
 
-		assertThat(this.companies.record(AtsEnum.GREENHOUSE, List.of("stripe", "notion"))).isEqualTo(1);
+		assertThat(this.companies.record(AtsEnum.GREENHOUSE, Map.of("stripe", RegionEnum.US, "notion", RegionEnum.US)))
+			.isEqualTo(1);
 		assertThat(this.repository.slugsOf(AtsEnum.GREENHOUSE)).containsExactlyInAnyOrder("stripe", "notion");
+	}
+
+	@Test
+	void holdsEachCompanyInTheRegionItsBoardWasDiscoveredIn() {
+		this.companies.record(AtsEnum.LEVER, Map.of("finix", RegionEnum.US, "kwalee", RegionEnum.EU));
+
+		assertThat(this.companies.regionsOf(AtsEnum.LEVER)).containsExactly(entry("finix", RegionEnum.US),
+				entry("kwalee", RegionEnum.EU));
+	}
+
+	@Test
+	void keepsTheRegionFirstRecordedWhenTheSlugIsDiscoveredInTheOther() {
+		this.companies.record(AtsEnum.LEVER, Map.of("leverdemo", RegionEnum.US));
+
+		assertThat(this.companies.record(AtsEnum.LEVER, Map.of("leverdemo", RegionEnum.EU))).isZero();
+		assertThat(this.companies.regionsOf(AtsEnum.LEVER)).containsExactly(entry("leverdemo", RegionEnum.US));
 	}
 
 }

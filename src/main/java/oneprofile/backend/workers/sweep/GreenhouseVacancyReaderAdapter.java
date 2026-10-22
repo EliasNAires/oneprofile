@@ -11,6 +11,7 @@ import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import oneprofile.backend.storage.company.RegionEnum;
 import oneprofile.backend.storage.vacancy.PublishedGreenhouseVacancy;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
 import oneprofile.backend.workers.UserAgent;
@@ -83,7 +84,7 @@ public class GreenhouseVacancyReaderAdapter implements VacancyReaderPort {
 	}
 
 	@Override
-	public List<PublishedVacancy> read(String slug) throws IOException {
+	public List<PublishedVacancy> read(String slug, RegionEnum region) throws IOException {
 		HttpRequest request = HttpRequest
 			.newBuilder(this.base.resolve("v1/boards/%s/jobs?content=true&pay_transparency=true".formatted(slug)))
 			.header("User-Agent", this.userAgent)

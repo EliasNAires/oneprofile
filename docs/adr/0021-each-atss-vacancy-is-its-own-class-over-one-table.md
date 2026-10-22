@@ -34,6 +34,11 @@ such field. Decided by grilling Elias on 2026-10-21 (#73). Overrides PRD §7's "
   Ashby did not.
   *Amended 2026-10-22 (#79):* `Company` gains its region (ADR-0022), which every ATS's company
   has; the name is still the only field the ATS publishes about the company.
+- **Two ATSs' fields of the same name and meaning share a column** (amended 2026-10-22, #79):
+  Lever's `workplaceType` and its pay interval are held in `workplace_type` and `pay_interval`
+  beside Ashby's, each declared by its own class and holding its own ATS's values. A field of one
+  ATS that means something else, such as Ashby's address country beside Lever's country, gets a
+  column of its own.
 - **Passes do not load `Vacancy` polymorphically over the corpus** when they need only the common
   fields; they read it through a projection, or name the subclass they need.
 

@@ -1,11 +1,11 @@
 package oneprofile.backend.storage.company;
 
 import java.time.Instant;
-import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,43 +23,51 @@ public class CompanyStore {
 	}
 
 	/**
-	 * Records the slugs of one ATS as companies, skipping those already held.
+	 * Records the slugs of one ATS as companies, each in the region its board was discovered in,
+	 * skipping those already held. A company held already keeps the region it was first recorded in.
 	 * @param ats the ATS the slugs belong to
-	 * @param slugs the slugs discovery found
+	 * @param regionsBySlug the slugs discovery found, each with its region
 	 * @return how many companies this added
 	 */
 	@Transactional
-	public int record(AtsEnum ats, Collection<String> slugs) {
+	public int record(AtsEnum ats, Map<String, RegionEnum> regionsBySlug) {
 		Set<String> held = this.repository.slugsOf(ats);
-		List<CompanyEntity> added = slugs.stream()
-			.distinct()
-			.filter((slug) -> !held.contains(slug))
-			.map((slug) -> new CompanyEntity(ats, slug))
+		List<CompanyEntity> added = regionsBySlug.entrySet()
+			.stream()
+			.filter((discovered) -> !held.contains(discovered.getKey()))
+			.map((discovered) -> new CompanyEntity(ats, discovered.getKey(), discovered.getValue()))
 			.toList();
 		this.repository.saveAll(added);
 		return added.size();
 	}
 
 	/**
-	 * The slugs held for one ATS, in slug order, so that a run over them is repeatable.
+	 * The slugs held for one ATS, each with its region, in slug order, so that a run over them is
+	 * repeatable.
 	 * @param ats the ATS to read
-	 * @return every slug held for it
+	 * @return every slug held for it, with the region its board is asked for in
 	 */
 	@Transactional(readOnly = true)
-	public SortedSet<String> slugsOf(AtsEnum ats) {
-		return new TreeSet<>(this.repository.slugsOf(ats));
+	public SortedMap<String, RegionEnum> regionsOf(AtsEnum ats) {
+		return regionsBySlug(this.repository.findByAts(ats));
 	}
 
 	/**
-	 * The slugs held for one ATS whose board was last found to be of one kind, in slug order, so
-	 * that a run over them is repeatable.
+	 * The slugs held for one ATS whose board was last found to be of one kind, each with its region,
+	 * in slug order, so that a run over them is repeatable.
 	 * @param ats the ATS to read
 	 * @param boardStatus what their boards were last found to be
-	 * @return every slug held for it with that board status
+	 * @return every slug held for it with that board status, with the region its board is asked for in
 	 */
 	@Transactional(readOnly = true)
-	public SortedSet<String> slugsOf(AtsEnum ats, BoardStatusEnum boardStatus) {
-		return new TreeSet<>(this.repository.slugsOf(ats, boardStatus));
+	public SortedMap<String, RegionEnum> regionsOf(AtsEnum ats, BoardStatusEnum boardStatus) {
+		return regionsBySlug(this.repository.findByAtsAndBoardStatus(ats, boardStatus));
+	}
+
+	private static SortedMap<String, RegionEnum> regionsBySlug(List<CompanyEntity> companies) {
+		SortedMap<String, RegionEnum> regions = new TreeMap<>();
+		companies.forEach((company) -> regions.put(company.slug(), company.region()));
+		return regions;
 	}
 
 	/**

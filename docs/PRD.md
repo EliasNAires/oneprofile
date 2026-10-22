@@ -38,8 +38,9 @@ search.
 
 ### 4.1 Sources
 
-Two applicant tracking systems, both built: **Greenhouse** and **Ashby** (#20). Why Ashby and
-not Workable or Lever: ADR-0002. Which ATSs come next, and in what order: ADR-0022.
+Three applicant tracking systems: **Greenhouse** and **Ashby** (#20), built and run, and
+**Lever** (#79), built, its first run to come. Why Ashby before Workable and Lever: ADR-0002.
+Which ATSs come next, and in what order: ADR-0022.
 
 ### 4.2 Slug discovery — built
 
@@ -50,7 +51,9 @@ boards, 72.5% of them live at 18.3 vacancies each (#20).
 
 ### 4.3 Board probing and vacancy ingestion
 
-Built for both ATSs, each at its own pace. Companies are probed and recorded as `ACTIVE`, `EMPTY`
+Built for every ATS, each at its own pace. A company keeps the **region** of the host its board
+was discovered on, `US` or `EU`, and is asked for in that region's API where its ATS has one per
+region (ADR-0022). Companies are probed and recorded as `ACTIVE`, `EMPTY`
 or `NOT_FOUND`; only `ACTIVE` companies are swept. `vacancy` is a **mirror of the board**: upsert
 what is returned, delete what has disappeared.
 
@@ -61,6 +64,14 @@ It names no company, so an Ashby company has no name. Its structured fields (`wo
 Ashby writes them, on its own class of vacancy (§7, ADR-0021). The sweep derives nothing from
 them; the passes of §5.3 and §5.4 may read them as evidence. Its yield:
 `docs/measurements/2026-10-ashby.md`.
+
+Lever: `GET https://api.lever.co/v0/postings/{slug}?mode=json`, or `api.eu.lever.co` for a
+company in the EU; each answers 404 for the other region's boards. Unauthenticated, whole board in
+one response; a probe adds `limit=1`. It names no company. Its description comes in parts
+(description, headed lists, pay description, closing), held as its page shows them one after
+another. Its structured fields (`workplaceType`, `country`, `categories` with commitment, team
+and every location, `salaryRange` with its interval) are kept as Lever writes them, on its own
+class of vacancy. Its API and pace: `docs/measurements/2026-10-lever.md`.
 
 All ingestion is triggered manually by an administrative endpoint today. In production every
 stage runs on a schedule (§12.5), once the real runtimes are measured.
@@ -241,14 +252,15 @@ clamped at 0. Rules:
 Identity is unchanged from the pre-reset design, which was proven over 216,868 rows: a
 company is `(ats, slug)`; a vacancy is `(company_id, external_id)`.
 
-- `company` — ats, slug, name, board_status, last_probed_at.
+- `company` — ats, slug, region, name, board_status, last_probed_at.
 - `vacancy` — the board mirror, one table with a class per ATS told apart by `ats`, its
   company's (ADR-0021). Every vacancy holds what any ATS would be expected to publish: title,
   location, department, description, url, the pay range and when it was first published, null
   where the vacancy did not publish it. `external_id` is text, since Ashby's ids are UUIDs. A
   Greenhouse vacancy adds `pay_title`, `updated_at` and its declared `language`; an Ashby one
   adds `workplace_type`, `address_country`, `secondary_locations` with their countries, and
-  `pay_interval`, as Ashby writes them. Discarding Ashby's structured country to match
+  `pay_interval`, as Ashby writes them; a Lever one adds `workplace_type`, `country`,
+  `commitment`, `team`, `all_locations` and `pay_interval`, as Lever writes them. Discarding Ashby's structured country to match
   Greenhouse's weaker free-text shape would throw away the best available eligibility input.
 - `normalized_vacancy` — one row per vacancy holding every derived scalar: cleaned title,
   normalized title, whether it is an engineering role, the signal that classified it, work
