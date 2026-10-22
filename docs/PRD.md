@@ -38,8 +38,8 @@ search.
 
 ### 4.1 Sources
 
-Three applicant tracking systems: **Greenhouse** and **Ashby** (#20), built and run, and
-**Lever** (#79), built, its first run to come. Why Ashby before Workable and Lever: ADR-0002.
+Three applicant tracking systems, built and run: **Greenhouse**, **Ashby** (#20) and **Lever**
+(#79). Why Ashby before Workable and Lever: ADR-0002.
 Which ATSs come next, and in what order: ADR-0022.
 
 ### 4.2 Slug discovery — built
@@ -47,7 +47,10 @@ Which ATSs come next, and in what order: ADR-0022.
 Slugs come from Common Crawl's cluster index over anonymous HTTPS range requests (ADR-0001).
 Backfill depth is **12 crawls**, roughly one year: the newest crawl yielded 77% live boards
 at 31.9 vacancies each, older ones 18–36% live at 3.8 each. Ashby's twelve crawls name 4597
-boards, 72.5% of them live at 18.3 vacancies each (#20).
+boards, 72.5% of them live at 18.3 vacancies each (#20). Lever's twelve are CC-MAIN-2025-43 and
+older, since Cloudflare refuses CCBot after it; the Wayback Machine is read whole beside them for
+every ATS (ADR-0023). Each archive's yield: `docs/measurements/2026-10-wayback.md` and
+`docs/measurements/2026-10-lever.md`.
 
 ### 4.3 Board probing and vacancy ingestion
 
@@ -71,7 +74,7 @@ one response; a probe adds `limit=1`. It names no company. Its description comes
 (description, headed lists, pay description, closing), held as its page shows them one after
 another. Its structured fields (`workplaceType`, `country`, `categories` with commitment, team
 and every location, `salaryRange` with its interval) are kept as Lever writes them, on its own
-class of vacancy. Its API and pace: `docs/measurements/2026-10-lever.md`.
+class of vacancy. Its API, pace and yield: `docs/measurements/2026-10-lever.md`.
 
 All ingestion is triggered manually by an administrative endpoint today. In production every
 stage runs on a schedule (§12.5), once the real runtimes are measured.
