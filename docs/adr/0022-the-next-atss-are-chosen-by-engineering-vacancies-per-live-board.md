@@ -20,7 +20,11 @@ not for its board count or its fields. Decided with Elias on 2026-10-21 (#74).
   CC-MAIN-2025-43; from CC-MAIN-2025-47 Cloudflare answers CCBot with 403. ADR-0002 read only
   crawls after the block. ADR-0023 says how its slugs are read.
 - **Each ATS adds its EU host in its own step** where it has one: `job-boards.eu.greenhouse.io`
-  and `jobs.eu.lever.co`, each with its own API host.
+  and `jobs.eu.lever.co`. Lever's has its own API host. Greenhouse's EU boards are served by its
+  one API host, `boards-api.greenhouse.io`, and their slugs share one namespace with the rest, so a
+  company holds nothing to say it is European (amended 2026-10-21, #78: this ADR first gave
+  Greenhouse's EU host an API host of its own, and `boards-api.eu.greenhouse.io` does not
+  resolve).
 
 Supersedes ADR-0002's consequences (Workable next) and its reason for rejecting Lever.
 
