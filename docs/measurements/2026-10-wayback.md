@@ -142,3 +142,123 @@ sweep. A run asks one board at a time, so a sweep is held back by Greenhouse's a
 its pace. At this pace the 6890 companies of the 2026-10-20 snapshot probe in about 29 minutes,
 against 55 measured at the old pace. The bursts were short; the run is the longer test, and a
 refusal in it sets the pace back.
+
+## The backfill
+
+Run on the development machine on 2026-10-21 and 22, from the `classified-2026-10-20` snapshot
+(Greenhouse 6890 companies and Ashby 4597, all discovered from Common Crawl). Wayback was read whole
+through `POST /discoveries/{ats}/wayback` (4199e8d), Greenhouse's four hosts and then Ashby's one.
+Then every company of both ATSs was probed, both ATSs were swept at the same time, each by its own
+request, and the whole corpus went through cleaning, title classification, skill extraction and the
+body pass. Times are -03:00.
+
+### Snapshots
+
+They supersede the 2026-10-20 pair as what dev restores (ADR-0006); that pair moved to
+`~/oneprofile-snapshots/archive/`.
+
+- `~/oneprofile-snapshots/raw-2026-10-22.dump`, 282 MB: the corpus as the sweeps left it, with the
+  data of `normalized_vacancy`, `normalized_vacancy_title_seniority` and `vacancy_skill` left out.
+- `~/oneprofile-snapshots/classified-2026-10-22.dump`, 600 MB: after cleaning, title
+  classification, skill extraction and the body pass.
+
+Both were cut after the body pass; the raw one leaves the derived tables' data out of the same
+database.
+
+### The run
+
+| Phase | Wall clock | What it reported |
+| --- | --- | --- |
+| Wayback, Greenhouse | 1h 27m (21:50–23:18) | 3 366 600 captures, 18 706 slugs, 12 035 companies added |
+| Wayback, Ashby | 9m 50s | 422 212 captures, 7669 slugs, 3323 companies added |
+| Greenhouse probe | 85m 50s | 7032 active, 1447 empty, 10 446 not found, 0 unreadable |
+| Ashby probe | 35m 37s | 3737 active, 403 empty, 3780 not found, 0 unreadable |
+| Greenhouse sweep | 56m 43s | 7032 boards, 218 617 published: 45 701 added, 172 916 updated, 4934 deleted, 0 unreadable |
+| Ashby sweep, beside it | 22m 41s | 3737 boards, 65 418 published: 5655 added, 59 763 updated, 1202 deleted, 0 unreadable |
+| `POST /cleanings` | 6m 9s | 286 082 vacancies, 177 020 distinct titles, 159 256 once cleaned, 66 139 languages detected |
+| `POST /classifications` | 2m 10s | 49 491 `IN`, 190 098 `OUT`, 46 493 `UNKNOWN` |
+| `POST /skill-extractions` | 49s | 85 691 vacancies, 513 955 rows |
+| `POST /body-classifications` | 55s | pile of 37 498: 14 811 `IN`, 21 330 `OUT`, 59 unknown, 1298 `unsupported_language` |
+| `pg_dump -Fc`, classified | 1m 13s | 600 MB |
+| `pg_dump -Fc`, raw | 34s | 282 MB |
+
+### Wayback's refusals under a whole read
+
+The Greenhouse read took 1h 27m against the 25 minutes estimated above, and the difference is the
+waits. Wayback refused 35 of its requests: 22 with the `503` page and 13 with a `504`, all on
+`boards.greenhouse.io/` and `job-boards.greenhouse.io/`, none on the two EU hosts. A refusal came
+every two to five minutes for the whole read. 24 cleared on the first retry after 30 s; the worst
+was five in a row from 22:40 to 22:49, cleared on the sixth attempt after waits of 30 s, 1, 2, 4 and
+5 minutes. Ashby's read was refused five times (three `503`, two `504`), never more than twice in a
+row. No request reached the tenth attempt, so no read was given up. Before the run, Wayback had
+refused a three-line query five times in three minutes, so a refusal says nothing about the size of
+what is asked.
+
+So a whole read of Greenhouse is about an hour and a half while the server behaves as it did, and
+the reader's ten attempts, about 32 minutes of waiting for one request, were never close to spent.
+
+### Greenhouse and Ashby at the pace of 250 ms
+
+Neither ATS refused a request in the probes or the sweeps: 18 925 Greenhouse boards probed at about
+3.7 a second and 7032 swept, 7920 Ashby boards probed and 3737 swept, with no unreadable board.
+The pace stays at 250 ms a board for both.
+
+### What each archive added
+
+Common Crawl's slugs are the companies held before the run; Wayback's are the run's. "Live" is
+`ACTIVE` at this run's probe.
+
+| | Greenhouse | Ashby |
+| --- | ---: | ---: |
+| Common Crawl slugs (12 crawls) | 6890 | 4597 |
+| Wayback slugs | 18 706 | 7669 |
+| … also in Common Crawl | 6671 | 4346 |
+| Common Crawl only | 219 | 251 |
+| **Wayback only (companies added)** | **12 035** | **3323** |
+| Live, Common Crawl's companies | 5006 (72.7%) | 3328 (72.4%) |
+| Live, Wayback only | 2026 (16.8%) | 409 (12.3%) |
+| Vacancies on Wayback-only boards | 40 448 | 4263 |
+| … per live board | 20.0 | 10.4 |
+| Engineering, Wayback-only boards | 7079 | 1397 |
+| … per live board | 3.5 | 3.4 |
+| Engineering per live board, Common Crawl's | 6.8 | 6.4 |
+
+Wayback names nearly every slug Common Crawl does, and three to four times as many. Most of what
+only it names is dead: September's sample put Wayback-only Greenhouse slugs at 23% live, and the
+whole set probes at 16.8%. The boards that are live are about half the size of Common Crawl's, in
+vacancies and in engineering alike: an archive that reaches back years holds the small and the
+short-lived boards a recent crawl misses. Still, Wayback adds 40% to Greenhouse's live boards (5004
+to 7032) and 12% to Ashby's (3332 to 3737). 33 Greenhouse and 19 Ashby companies held before changed
+board status since 2026-10-20.
+
+Greenhouse's EU boards needed nothing of their own: `boards-api.eu.greenhouse.io` does not resolve,
+and `boards-api.greenhouse.io` serves the EU boards, so the probe and the sweep read them with the
+rest (ADR-0022, amended). A company holds no host, so how many of the live boards are European is
+not counted here.
+
+### Per ATS
+
+| | Greenhouse | Ashby | Both |
+| --- | ---: | ---: | ---: |
+| Companies | 18 925 | 7920 | 26 845 |
+| Live (`ACTIVE`) | 7032 | 3737 | 10 769 |
+| Vacancies | 220 645 | 65 437 | 286 082 |
+| … on live boards | 218 617 | 65 418 | 284 035 |
+| **Engineering subset** | **41 727** (18.9%) | **22 575** (34.5%) | **64 302** |
+| … decided by the title | 32 217 | 17 274 | 49 491 |
+| … decided by the body | 9510 | 5301 | 14 811 |
+| **Live in one sweep** | **41 251** | **22 564** | **63 815** |
+
+As in the Ashby run, vacancies of boards a probe found empty or gone since they were swept stay
+held, since a sweep reads only active boards: 2028 Greenhouse and 19 Ashby vacancies, 487 of them
+engineering. The figure **live in one sweep** that PRD §12.6 gates on leaves them out: one query
+over `vacancy`, `company` and `normalized_vacancy`, counting `classification_state = 'IN'` on
+companies whose board status is `ACTIVE`.
+
+## How far #70 still is
+
+**63 815 engineering vacancies live in one sweep, against 100 000: 36 185 to go.** The 2026-10-20
+snapshot had 55 331, so the Wayback backfill added 8484 (8476 from the boards only Wayback names,
+the rest from the boards held before). ADR-0022 counted about 45 000 to go when it chose Lever,
+Workable and Workday; Wayback for Greenhouse and Ashby closed under a fifth of that, and #70 still
+needs a new ATS. Lever's Wayback and Common Crawl reads come with it (ADR-0023).
