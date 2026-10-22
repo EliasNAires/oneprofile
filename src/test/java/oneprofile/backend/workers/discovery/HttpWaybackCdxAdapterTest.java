@@ -56,7 +56,7 @@ class HttpWaybackCdxAdapterTest {
 
 		assertThat(cdx().chunk("boards.greenhouse.io/", Optional.empty())).isEqualTo(CHUNK);
 		assertThat(this.queries).containsExactly(
-				"url=boards.greenhouse.io%2F&matchType=prefix&limit=50000&showResumeKey=true&output=json&fl=original");
+				"url=boards.greenhouse.io%2F&matchType=prefix&limit=25000&showResumeKey=true&output=json&fl=original");
 		assertThat(this.userAgents).containsExactly("oneprofile-test");
 	}
 

@@ -28,7 +28,9 @@ import tools.jackson.databind.json.JsonMapper;
 /**
  * Asks the Wayback Machine's CDX index, by default at {@code https://web.archive.org/cdx/search/cdx},
  * as {@code docs/measurements/2026-10-wayback.md} § "How Wayback's CDX is read" measured it: one
- * unpaged query per prefix in chunks of 50,000 captures, one request at a time.
+ * unpaged query per prefix, one request at a time, in chunks of 25,000 captures: the backfill's
+ * chunks of 50,000 took 34 s at the median and up to 64 s, close enough to the gateway's 60 s that a
+ * slow one became a {@code 504}.
  * <p>
  * The index refuses with a {@code 503} "Temporarily Offline" page rather than a 429, times out at
  * its gateway with a {@code 504}, and sends no {@code Content-Length}, so a cut answer looks whole
@@ -112,7 +114,7 @@ public class HttpWaybackCdxAdapter implements WaybackCdxPort {
 
 	@Override
 	public String chunk(String urlPrefix, Optional<String> resumeKey) throws IOException {
-		String query = "url=%s&matchType=prefix&limit=50000&showResumeKey=true&output=json&fl=original"
+		String query = "url=%s&matchType=prefix&limit=25000&showResumeKey=true&output=json&fl=original"
 			.formatted(encoded(urlPrefix)) + resumeKey.map((key) -> "&resumeKey=" + encoded(key)).orElse("");
 		HttpRequest request = HttpRequest.newBuilder(URI.create(this.base + "?" + query))
 			.header("User-Agent", this.userAgent)

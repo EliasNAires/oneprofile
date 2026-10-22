@@ -19,12 +19,14 @@ CC-MAIN-2025-47. Decided with Elias on 2026-10-21 (#74).
 - **Wayback is read whole on every run**, and a run keeps only the slugs not already held. Its
   CDX server cannot read only the captures since the last run: `from=` filters after the server
   has scanned the whole prefix, so it saves no time, and without paging it times out. A whole
-  read is about 25 minutes for Greenhouse and 3 for Ashby. Scheduling runs is PRD §12.5's, not
+  read took 1h 27m for Greenhouse and 10 minutes for Ashby in the backfill (#78). Scheduling runs is PRD §12.5's, not
   this ADR's.
 - **How Wayback is read was decided by research before the first run**
   (`docs/measurements/2026-10-wayback.md`): one unpaged query per URL prefix, continued by resume
-  key in chunks of 50,000 lines, one request at a time, as JSON so a cut answer is caught, and a
-  `503` page taken as a refusal to wait out and ask again.
+  key in chunks of 25,000 lines, one request at a time, as JSON so a cut answer is caught, and a
+  `503` page taken as a refusal to wait out and ask again. The research chose chunks of 50,000;
+  the backfill halved them (2026-10-22, #78), because at the server's speed then a chunk came
+  close to the gateway's 60 s timeout and a slow one became a `504`.
 
 Amends ADR-0001 by adding a second archive; ADR-0001's method for Common Crawl is unchanged.
 

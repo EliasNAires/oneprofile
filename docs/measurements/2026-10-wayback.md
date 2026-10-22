@@ -197,6 +197,23 @@ what is asked.
 So a whole read of Greenhouse is about an hour and a half while the server behaves as it did, and
 the reader's ten attempts, about 32 minutes of waiting for one request, were never close to spent.
 
+Where the Greenhouse read's 87 minutes went, from the app's log:
+
+| | Minutes |
+| --- | ---: |
+| 69 requests answered whole, 50,000 captures each | 39 |
+| Waits after a refusal | 33 |
+| Requests refused with `504`, about 60 s each | 13 |
+| Requests refused with `503`, a few seconds each | 2 |
+
+A whole chunk took 34 s at the median, 53 s at the 90th percentile and 64 s at most, against
+20–23 s in the research: the server streamed about 1,400 captures a second, not 2,300. At that
+speed a chunk of 50,000 runs close to the gateway's 60 s, and a slow one is lost as a `504` and then
+waited after. The reader now asks for chunks of 25,000 (about 17 s each at that speed), which should
+leave most of the 13 minutes of `504`s and the waits that followed them out of the next read. The
+`503`s come fast and on queries of any size, so a smaller chunk does nothing for them. Reading
+alone sets the floor, about 40 minutes for Greenhouse.
+
 ### Greenhouse and Ashby at the pace of 250 ms
 
 Neither ATS refused a request in the probes or the sweeps: 18 925 Greenhouse boards probed at about
