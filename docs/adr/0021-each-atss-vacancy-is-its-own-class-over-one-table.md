@@ -32,6 +32,8 @@ such field. Decided by grilling Elias on 2026-10-21 (#73). Overrides PRD §7's "
   each as its entity subclass.
 - **`Company` is unchanged.** A name is something any ATS could publish; null for Ashby means
   Ashby did not.
+  *Amended 2026-10-22 (#79):* `Company` gains its region (ADR-0022), which every ATS's company
+  has; the name is still the only field the ATS publishes about the company.
 - **Passes do not load `Vacancy` polymorphically over the corpus** when they need only the common
   fields; they read it through a projection, or name the subclass they need.
 

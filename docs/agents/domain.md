@@ -21,13 +21,15 @@ the later ADR wins; the overridden parts are marked below.
   undiscoverable.
 - **0022**: the next ATSs are chosen by title `IN` vacancies per live board: Lever, then
   Workable, then Workday only if #70's gap is still open. Each adds its EU host. *Amended:*
-  Greenhouse's EU boards are read through its one API host, with no column for the region.
+  Greenhouse's EU boards are read through its one API host; every company keeps its **region**
+  (`US`/`EU`) from discovery, which picks Lever's API host (#79).
 - **0023**: discovery reads two archives, Common Crawl and the Wayback Machine. Common Crawl to
   the 12 newest crawls that hold the ATS's pages, backfilled once, then a run reads only a new
   crawl. Wayback is read whole on every run, by resume key, and a run keeps the slugs it lacks.
 - **0021**: each ATS's vacancy is a class of its own over the one `vacancy` table, keeping what
   that ATS publishes as it publishes it; `Vacancy` holds what any ATS would be expected to
   publish. Facts are derived in passes, never in the sweep. Overrides PRD §7's nullable columns.
+  *Amended:* `Company` gains its region (0022).
 - **0006**: rules are developed against **snapshots** on the dev machine, never production. Two
   are kept, raw and after classification. A re-sweep cuts a new pair and archives the old one.
 - **0011**: history is kept as **series** (numbers, not vacancies), recorded from **stability**

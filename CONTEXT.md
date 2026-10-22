@@ -26,6 +26,11 @@ An employer that has a board on an ATS. Its readable name comes from the ATS, ne
 the slug.
 _Avoid_: employer, org, account, client
 
+**Region**:
+The region of the ATS host that publishes a board: US or EU. Discovery reads it from the
+board's URL; a probe and a sweep ask that region's API, where an ATS has one per region.
+_Avoid_: host, datacenter, locale
+
 **Board Status**:
 Whether a board was found and whether it had openings when last checked: active, empty, or
 not found. Unknown until the board has been checked.
