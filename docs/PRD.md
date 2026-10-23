@@ -106,7 +106,8 @@ words, so the body pass skips a vacancy it does not read (#20). A declared langu
 A rule over cleaned titles answers whether a vacancy is an engineering role, in three states
 (ADR-0008, ADR-0009, ADR-0010). The criterion is `docs/engineering-role-criterion.md`; the
 rules are code, and nobody signs off on them. Measurement and the loop's exit: ADR-0008.
-Role families finer than "engineering role" are **not modelled** — nothing consumes them.
+Role families finer than "engineering role" are **not modelled**: a vacancy's role is read
+from its title against a list of titles companies write (§5.3, ADR-0024).
 
 The title loop closed with #35, and its rules are frozen. The **body pass** (#11, ADR-0012) is
 in its rule loop: it reads the description of every vacancy in the pile, by rule, and resolves
@@ -117,40 +118,51 @@ the criterion re-applied. An `unruled` title does not reach this pass.
 ### 5.3 Normalization
 
 Over the engineering subset only. Everything in this pass may assume the vocabulary of
-engineering work, which is what makes its rules small.
+engineering work, which is what makes its rules small. It derives the role (#25), the work mode
+(#86) and the rest of the title's seniority. What it decides and why:
+`docs/measurements/2026-10-title-breakdown-probe.md` and ADR-0024.
 
-**Seniority.** The guarded words are read here: `staff`, `mid`, `entry`, and the numbered
-levels `II`, `III`, `IV`. Restricting to the subset is what makes them tractable — probed
-over an engineering-shaped slice of 37,309 vacancies, `staff` appears in 9.4% of titles and
-almost always means the level, so the pre-reset guard against `staff nurse`, `staff
-accountant` and `staff attorney` is **dropped**: those 163 titles are not in the subset. What
-survives is the one guard that still fires inside it, `chief of staff`. `mid` and `entry` are
-down to 0.4% and 0.2%, and `semi senior` to 5 vacancies in the subset and 16 in the whole
-corpus, which is why §5.1 collapses it into mid rather than giving it a level of its own.
+**Role.** The title is broken down into the **normalized title**: title seniority, work-mode
+words, places and the skills the title names go, the function head is read as ADR-0009 reads it,
+and what follows the head goes too unless it names the kind of work, which moves in front of the
+head (`Software Engineer, Backend` → `backend engineer`). A skill that is the only word in front of
+the head goes as well (`Java Developer` → `developer`). The normalized title is then looked up in
+the **role list**, a curated file stable between runs and grown on each new snapshot: a
+normalized title joins it once enough vacancies carry it, synonyms are merged when a candidate
+would expect the same day-to-day work, and the list is flat. A title naming two heads gets both
+roles; a normalized title the list does not hold leaves the vacancy without one, never with a
+guess. Done when the list covers 70% of the subset (ADR-0024). Giving the rest a role from their
+other fields is after the MVP (#87).
+
+Words that name a function rather than a level — `lead`, `director`, `head`, `VP`, `chief` —
+stay in the role. A lead is doing a different job, not the same job one rung up, and
+collapsing the two would recommend a user a role they did not apply for.
+
+**Seniority.** The guarded words are read in the title breakdown, which takes them out anyway:
+`staff`, `mid`, `entry`, and the numbered levels `II`, `III`, `IV`. Restricting to the subset is
+what makes them tractable — probed over an engineering-shaped slice of 37,309 vacancies, `staff`
+appears in 9.4% of titles and almost always means the level, so the pre-reset guard against
+`staff nurse`, `staff accountant` and `staff attorney` is **dropped**: those 163 titles are not in
+the subset. What survives is the one guard that still fires inside it, `chief of staff`. `mid`
+and `entry` are down to 0.4% and 0.2%, and `semi senior` to 5 vacancies in the subset and 16 in
+the whole corpus, which is why §5.1 collapses it into mid rather than giving it a level of its
+own.
 
 The numbered levels are extracted **as they are**, with no claim about where they sit on the
 ladder: the titles do not say whether `Engineer II` is junior or mid, and 4.1% of the subset
 carries one. Resolving them is left to §6.1, where the body's years-of-experience phrasing is
 evidence rather than assumption.
 
-Words that name a function rather than a level — `lead`, `director`, `head`, `VP`, `chief` —
-stay in the title. A lead is doing a different job, not the same job one rung up, and
-collapsing the two would recommend a user a role they did not apply for.
+**Work mode**, one of remote, hybrid or onsite (#86). The location text decides where it names a
+mode; otherwise the work-mode field Ashby and Lever publish decides; otherwise the title.
+Where the location and the field disagree, about 170 vacancies of the subset, the location was
+usually the right one. Null means "not declared" and never "onsite". There is no `FULLY_REMOTE`
+value; work mode and declared location are separate (ADR-0004).
 
-**Work mode**, one of remote, hybrid or onsite. The location field decides and the title
-answers only when the location names nothing: of 16,444 remote vacancies in the pre-reset
-corpus, 14,624 stated it only in the location. Null means "not declared" and never "onsite".
-
-There is no `FULLY_REMOTE` value; work mode and declared location are separate (ADR-0004).
-
-**Declared location**: the location field as the company wrote it, with the work-mode words
-taken out, stored verbatim. Normalizing those 26,290 distinct strings into places is real
-work with its own rules and its own accuracy, and it belongs to the step that derives the
-country set, not here. A named location is **never on its own a reason to rule a vacancy
+The **declared location** is not derived here. The step that derives the country set reads it
+as the ATS publishes it, with Ashby's and Lever's lists of locations, and turning it into places
+is that step's work (#26). A named location is **never on its own a reason to rule a vacancy
 out** (ADR-0004).
-
-What is left of the title once all of this is out is the **normalized title**: the role and
-nothing else.
 
 ### 5.4 Eligibility
 
@@ -267,7 +279,7 @@ company is `(ats, slug)`; a vacancy is `(company_id, external_id)`.
   Greenhouse's weaker free-text shape would throw away the best available eligibility input.
 - `normalized_vacancy` — one row per vacancy holding every derived scalar: cleaned title,
   normalized title, whether it is an engineering role, the signal that classified it, work
-  mode, declared location, seniority, eligibility state and the extracted country set. A
+  mode, seniority, eligibility state and the extracted country set. A
   single wide table is correct here **because** every derivation is a cheap pure-function
   rule pass; had an LLM derivation been in scope, the cost asymmetry would have forced
   separate tables. Columns arrive with the step that fills them, not up front.
@@ -336,9 +348,7 @@ Still open:
 
 1. **Eligibility recall**, measured on a hand-labelled sample of ~200 remote engineering
    vacancies. It is the binding constraint on the product's output.
-2. **Normalizer regression**, by diffing against the 216,868 pre-reset normalized rows still
-   on the production server, kept as a validation set.
-3. **Real runtimes** for discovery, probing, sweeping and publishing, before anything is
+2. **Real runtimes** for discovery, probing, sweeping and publishing, before anything is
    scheduled.
 
 ## 11. Explicitly out of scope
@@ -377,6 +387,8 @@ board.
   (ADR-0019).
 - **Skills** keep the vacancies that mention a picked skill. Whether one is required is never a
   filter; it orders, through filter rank.
+- **Role** takes several roles at once, from the role list (§5.3). A vacancy whose title matches
+  no role has none; the filter hides it and says how many it hid.
 - **Work mode and salary**: an undeclared value is never guessed. A filter on either hides the
   vacancies that do not declare it, and says how many it hid.
 
@@ -403,7 +415,7 @@ A **structured** explorer: a person picks a measure, a grouping and filters, and
 chart. Every chart is an exact query. There is no free-text question box, which would need an
 LLM at request time. Clicking a bar opens the Finder with that bar's filters.
 
-Launch dimensions: **role** (the normalized title, within engineering roles), **seniority**
+Launch dimensions: **role** (from the role list, §5.3), **seniority**
 and **skills**. Eligibility comes next. Salary only ever appears with the subset it describes
 stated on the chart, since it exists only where the ATS publishes pay.
 
@@ -413,11 +425,13 @@ How numbers are shown:
 
 - **Shares beside counts.** The denominator is the engineering roles in scope. The corpus is
   a sample of the market, so relative numbers are the honest reading while it is small.
-- **The unknown share of the charted dimension**, on every chart: unknown classification on
+- **The unknown share of the charted dimension**, on every chart: no role in the title on
   role charts, no stated seniority on seniority charts, no skill found on skill charts.
   Unknowns are not spread evenly, so leaving them out of the denominator biases the shares;
   showing their size says how much the chart cannot see.
 - **Seniority counts each vacancy once**, at the lowest level it names (§6.1).
+- **Role counts a vacancy in every role its title names**, so role shares can add up to more than
+  100% (ADR-0024).
 - **Small samples.** A cell with fewer than 10 vacancies is hidden. Every other bar carries its
   n and a 95% Wilson interval, which stays well-behaved at small n and near 0% or 100%.
 
@@ -455,7 +469,7 @@ The launch gate:
 1. Greenhouse and Ashby both swept.
 2. The engineering-role classifier has met its exit criterion.
 3. Skill extraction has a measured precision.
-4. Titles are normalized and duplicate vacancies are collapsed.
+4. Roles are read from titles, work mode is derived, and duplicate vacancies are collapsed.
 5. Seniority is read from the body.
 6. Eligibility is extracted, and its recall measured.
 7. **100k engineering vacancies live in one sweep.** The snapshot has 55,331 on live boards:
@@ -471,7 +485,7 @@ first iteration falls short (`docs/agents/rule-loop.md`).
 
 Three tracks run in parallel:
 
-- **Extraction**: the body pass (#11) → title normalization (#25) → seniority from the body (#8) →
+- **Extraction**: the body pass (#11) → roles from titles (#25) and work mode (#86) → seniority from the body (#8) →
   eligibility and its recall (#13, #12) → deduplication (#27).
 - **The public side**: the two modules (#71) and the VPS (#68) → the publish stage (#28) → the
   read app (#72) → the Finder (#69), built against

@@ -44,6 +44,10 @@ the later ADR wins; the overridden parts are marked below.
   matches.
 - **0003**: skills come from a curated taxonomy (O\*NET, Linguist, Wikidata), not Lightcast.
   Its provenance and licences: `docs/taxonomy.md`.
+- **0024**: a vacancy's role is read from its title: the title is broken down into its
+  normalized title and looked up in a curated, flat role list. No match means no role, never a
+  guess; filling those from other fields is after the MVP (#87). Done at 70% of the engineering
+  subset.
 
 **Classification**
 - **0008**: three states, and three unknown reasons (`domain_ambiguity`, `scope_ambiguity`,

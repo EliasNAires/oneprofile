@@ -1,0 +1,61 @@
+# A role is read from the title, against a curated list
+
+Status: accepted
+
+The Finder filters by role and builds a landing page for each one, and the Explorer charts by
+role. So a role has to be a short, stable list of values. Over the 76,854 vacancies of the
+engineering subset there are 40,622 distinct cleaned titles, and 33,452 of them appear only
+once. Taking a title's facts out (levels, work mode, places, skills) still leaves 35,149
+(`docs/measurements/2026-10-title-breakdown-probe.md`). Decided with Elias on 2026-10-22.
+
+- **A role is what the title says the work is.** Normalization breaks the title down:
+  - It takes out the title seniority, work-mode words, places and the skills the title names.
+  - It reads the function head as ADR-0009 does, with the words in front of it.
+  - It drops what follows the head, unless those words name the kind of work, which then moves
+    in front: `Software Engineer, Backend` reads as `backend engineer`.
+  - A skill that is the only word in front of the head leaves too: `Java Developer` reads as
+    `developer`.
+  - What is left is the **normalized title**.
+- **The role list is a curated file**, stable between runs so that a role's landing page keeps
+  its URL. It is grown on each new snapshot, the way skill discovery grows the taxonomy.
+  - A normalized title joins the list once enough vacancies carry it. The floor is set by
+    measurement, not as a fixed number of roles.
+  - The list is flat, with no parent roles. The Finder's role filter takes several roles at once.
+  - Two titles are one role when a candidate reading them would expect the same day-to-day work.
+    Where that is unsure, they stay apart. Agents apply the test, and another agent reviews the
+    draft.
+- **Leadership words stay in the role** (PRD §5.3). `lead backend engineer` and `engineering
+  manager` are roles of their own, if they clear the floor.
+- **A title naming two heads gets both roles**: `Data Scientist / Machine Learning Engineer`. Role
+  shares in the Explorer can add up to more than 100%.
+- **A normalized title the list does not hold leaves the vacancy without a role.** No role is
+  guessed. The Finder's role filter says how many vacancies it cannot see, as the work-mode and
+  salary filters do. The Explorer's role charts show the vacancies with no role as their unknown
+  share.
+- **Done when the list covers 70% of the engineering subset.** There is no labelled sample. A
+  role is assigned only by exact match against a reviewed list, so the list review and a report
+  of the most common unmatched normalized titles are the measurement.
+
+## Considered options
+
+- **Role families**, a short list chosen up front and assigned by rule. Rejected: the families
+  would be invented rather than read off the data, and checking whether they fit would need a
+  criterion and a rule loop.
+- **Title search**, with no role derived. Rejected: the Explorer's role × skill and role ×
+  seniority views need a value to group by, and so does a landing page per role.
+- **The N most common cleaned titles as roles.** Rejected: the 1,000 most common cover only
+  35.8%, and synonyms stay apart.
+- **Profiling the rest**: giving a vacancy the role whose profile its other fields (skills,
+  department, domain, practices) look most like. Moved after the MVP. It needs extractors nothing
+  else in the MVP reads, and a scoring method of its own that would have to be measured. If it
+  used skills, the Explorer's "best stack for a role" would partly measure the assignment rule.
+  It only adds roles to vacancies that have none, so it can follow later.
+
+## Consequences
+
+- PRD §5.2's "role families finer than engineering role are not modelled" still holds. The role
+  list is made of titles companies actually write, not of families.
+- `staff` and the numbered levels are read during the title breakdown, because it has to take
+  them out anyway. They cannot move to cleaning: `staff nurse` is only harmless inside the
+  engineering subset.
+- About a quarter of the subset is expected to have no role at launch, by the probe's estimate.

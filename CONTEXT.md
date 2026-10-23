@@ -110,7 +110,7 @@ _Avoid_: content, body, details
 
 **Normalized Vacancy**:
 The facts derived from a vacancy by rule rather than published by the ATS: cleaned and
-normalized titles, classification, work mode, declared location, seniority and skills. Kept
+normalized titles, classification, roles, work mode, seniority and skills. Kept
 apart from the vacancy so rules can be re-run at any time.
 _Avoid_: enriched vacancy, parsed vacancy, processed vacancy
 
@@ -125,9 +125,10 @@ description into segments. Runs before classification.
 _Avoid_: scrubbing, preprocessing, sanitizing
 
 **Normalization**:
-The pass after classification, over the engineering subset alone, that derives the normalized
-title, work mode, declared location and seniority. Its rules may assume the vocabulary of
-engineering work, because nothing else reaches it.
+The pass after classification, over the engineering subset alone, that breaks each title down
+into its normalized title and role, reads the title seniority cleaning leaves, and derives the
+work mode. Its rules may assume the vocabulary of engineering work, because nothing else
+reaches it.
 _Avoid_: cleaning, enrichment, parsing
 
 **Cleaned Description**:
@@ -153,8 +154,23 @@ One lowercased word of a segment's text, as rules match on it. Not a lemma.
 _Avoid_: term, word, lexeme
 
 **Normalized Title**:
-A cleaned title reduced further to its role-bearing words. Only engineering roles have one.
+A cleaned title reduced to its function head and the words in front of it that name the kind of
+work. Its seniority, work mode, places and skills are taken out, and so is what follows the head
+unless it names the kind of work (ADR-0024). Only engineering roles have one. What the role list
+is looked up with.
 _Avoid_: canonical title, title slug
+
+**Role**:
+The kind of work a vacancy's title says it is, as one entry of the role list. A vacancy has one
+role per head its title names, and none where its normalized title is not on the list; none is
+never guessed (ADR-0024). What the Finder's role filter and the Explorer's role charts read.
+_Avoid_: role family, job family, category, position
+
+**Role List**:
+The curated roles and the normalized titles each is read from, stable between runs and grown on
+each new snapshot. A normalized title joins it once enough vacancies carry it; two join one role
+when a candidate would expect the same day-to-day work from both. Flat: no role holds another.
+_Avoid_: role taxonomy, title dictionary, families
 
 ### The Corpus
 
@@ -270,13 +286,15 @@ _Avoid_: annotator, judge, oracle, reviewer
 **Work Mode**:
 Where the work is performed, as declared by the vacancy: remote, hybrid or onsite.
 Undeclared is its own answer and never means onsite.
-`workplace_type` is Ashby's own field, held as Ashby writes it on an Ashby vacancy; the work mode
-is the fact a pass derives, for which that field is evidence (ADR-0021).
+`workplace_type` is Ashby's and Lever's own field, held as each writes it; the work mode is the
+fact normalization derives, for which the location text is the first evidence and that field the
+second (ADR-0021, #86).
 _Avoid_: modality, workplace type, location type, arrangement
 
 **Declared Location**:
-The place a vacancy names for the work, as it wrote it, once its work mode has been taken
-out. Never on its own a reason to rule a vacancy out (ADR-0004).
+The places a vacancy names for the work, as its ATS publishes them: the location field, and
+Ashby's and Lever's lists of locations. Not a derived fact: the country set is derived from it.
+Never on its own a reason to rule a vacancy out (ADR-0004).
 _Avoid_: office, region, geo, country
 
 **Seniority Level**:
