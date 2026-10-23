@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Draws the slugs a pace measurement asks (ADR-0025): every company of one ATS and region for a
+# probe, or only those last found active for a sweep, in an order fixed by a seed, one per line.
+#
+#     scripts/draw-pace-slugs <ats> <region> <probe|sweep> <seed> > slugs.txt
+#     scripts/draw-pace-slugs LEVER EU probe 0.82 > lever-eu-probe.txt
+#
+# Use a different seed for each file, and take each burst's slugs from where the last one stopped,
+# so that no slug is asked twice: a CDN's cache (Ashby's keeps a board for a minute) would
+# otherwise answer for the ATS.
+
+source "$(dirname "$0")/lib.sh"
+
+ats="${1:?usage: draw-pace-slugs <ats> <region> <probe|sweep> <seed>}"
+region="${2:?usage: draw-pace-slugs <ats> <region> <probe|sweep> <seed>}"
+kind="${3:?usage: draw-pace-slugs <ats> <region> <probe|sweep> <seed>}"
+seed="${4:?usage: draw-pace-slugs <ats> <region> <probe|sweep> <seed>}"
+case "$kind" in
+probe) only_active="" ;;
+sweep) only_active="and board_status = 'ACTIVE'" ;;
+*) echo "The kind is probe or sweep, not $kind" >&2; exit 1 ;;
+esac
+
+psql_dev -At -v ats="$ats" -v region="$region" -v seed="$seed" <<SQL
+select setseed(:seed) \gset ignored_
+select slug from company where ats = :'ats' and region = :'region' $only_active order by random();
+SQL

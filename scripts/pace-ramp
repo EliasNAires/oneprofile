@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+"""Ramps one ATS host through bursts at 1, 4, 8, 16 and 32 requests at a time, each on slugs no
+earlier burst asked, 30 s apart, for a pace measurement (ADR-0025). A probe burst is
+max(200, 40 x at-a-time) requests, a sweep burst max(150, 20 x at-a-time).
+
+    scripts/pace-ramp <name> <url-template with {slug}> <slugs-file> <probe|sweep> <out-dir> [levels]
+    scripts/pace-ramp gh-probe 'https://boards-api.greenhouse.io/v1/boards/{slug}/jobs' \
+        gh-probe.txt probe out
+
+Prints each burst's line from pace-burst, and writes its answers and slugs to out-dir. Stops going
+up at the first refusal, or when the median answer is over twice the one-at-a-time median, or
+when the rate grows under 20% over the previous level. After a refusal, asks one fresh
+slug every 5 s until it is answered, and reports how long the refusal lasted.
+"""
+import json, subprocess, sys, time, os, urllib.request
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+name, template, slugs_file, kind, out = sys.argv[1:6]
+levels = [int(x) for x in (sys.argv[6] if len(sys.argv) > 6 else "1,4,8,16,32").split(",")]
+slugs = [s.strip() for s in open(slugs_file) if s.strip()]
+REFUSED = {"403", "429", "503", "520", "521", "522", "523", "524"}
+UA = "oneprofile (+https://github.com/EliasNAires/oneprofile)"
+pos = 0
+base = prev = None
+os.makedirs(out, exist_ok=True)
+for i, c in enumerate(levels):
+    n = max(200, 40 * c) if kind == "probe" else max(150, 20 * c)
+    chunk = slugs[pos:pos + n]
+    pos += n
+    if len(chunk) < n:
+        print(json.dumps({"burst": name, "conc": c, "note": f"only {len(chunk)} slugs left"}), flush=True)
+    f = f"{out}/{name}-c{c}.slugs"
+    open(f, "w").write("\n".join(chunk) + "\n")
+    line = subprocess.run([sys.executable, f"{HERE}/pace-burst", name, template, str(c), f, f"{out}/{name}-c{c}.jsonl"],
+                          capture_output=True, text=True).stdout.strip()
+    print(line, flush=True)
+    s = json.loads(line)
+    refused = sum(v for k, v in s["statuses"].items() if k in REFUSED)
+    if refused:
+        t0 = time.monotonic()
+        while True:
+            time.sleep(5)
+            slug = slugs[pos]; pos += 1
+            try:
+                with urllib.request.urlopen(urllib.request.Request(template.format(slug=slug), headers={"User-Agent": UA}), timeout=60) as r:
+                    st = r.status
+            except urllib.error.HTTPError as e:
+                st = e.code
+            if str(st) not in REFUSED:
+                print(json.dumps({"burst": name, "refusal_lasted_s": round(time.monotonic() - t0, 1), "answered": st}), flush=True)
+                break
+            if time.monotonic() - t0 > 1800:
+                print(json.dumps({"burst": name, "refusal_lasted_s": ">1800"}), flush=True)
+                break
+        print(json.dumps({"burst": name, "stopped": f"refused at {c}"}), flush=True)
+        break
+    if base is None:
+        base = s["median"]
+    elif s["median"] > 2 * base or (prev and s["rate"] < 1.2 * prev):
+        print(json.dumps({"burst": name, "stopped": f"slowed at {c}: median {s['median']} vs {base}, rate {s['rate']} vs {prev}"}), flush=True)
+        break
+    prev = s["rate"]
+    if i < len(levels) - 1:
+        time.sleep(30)
+print(json.dumps({"burst": name, "slugs_used": pos}), flush=True)

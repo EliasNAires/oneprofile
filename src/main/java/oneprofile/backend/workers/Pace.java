@@ -19,7 +19,7 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  * How fast a run asks one ATS: how many requests it keeps open at once, and how many it starts a
- * second at most (docs/measurements/2026-10-pace.md).
+ * second at most, measured for each ATS as ADR-0025 says (docs/measurements/2026-10-pace.md).
  * <p>
  * A run that is refused anyway slows down: each refusal halves both, down to one at a time and one a
  * second, for the rest of the run. The next run starts from the pace again.

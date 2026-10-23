@@ -26,6 +26,12 @@ the later ADR wins; the overridden parts are marked below.
 - **0023**: discovery reads two archives, Common Crawl and the Wayback Machine. Common Crawl to
   the 12 newest crawls that hold the ATS's pages, backfilled once, then a run reads only a new
   crawl. Wayback is read whole on every run, by resume key, and a run keeps the slugs it lacks.
+- **0025**: an ATS's pace is measured to its ceiling before it is probed. The research comes
+  first: its sources, what a refusal looks like, a ramp of 1 to 32 at a time, whether each region
+  host has its own limit, and the link. The settings are half the ceiling, for requests open at
+  once and for starts a second, per region where an ATS has one API per region. Each refusal
+  halves them for the rest of the run, and gateway errors do not. The settings are checked at
+  full scale. Written in one `docs/measurements/` file; the tools are `scripts/pace-*`.
 - **0021**: each ATS's vacancy is a class of its own over the one `vacancy` table, keeping what
   that ATS publishes as it publishes it; `Vacancy` holds what any ATS would be expected to
   publish. Facts are derived in passes, never in the sweep. Overrides PRD §7's nullable columns.
