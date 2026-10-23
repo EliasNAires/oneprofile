@@ -43,7 +43,7 @@ class AshbyBoardReaderAdapterTest {
 		serve((exchange) -> respondWith(exchange, 200, """
 				{"apiVersion":"1","jobs":[{"id":"34413f8d-26bf-4bbc-8ade-eb309a0e2245","title":"Engineer"}]}"""));
 
-		assertThat(reader().read("ramp", RegionEnum.US)).isEqualTo(new BoardReading(BoardStatusEnum.ACTIVE, null));
+		assertThat(reader().read("ramp", RegionEnum.US, () -> {})).isEqualTo(new BoardReading(BoardStatusEnum.ACTIVE, null));
 		assertThat(this.queries).containsExactly("/posting-api/job-board/ramp?includeCompensation=true");
 	}
 
@@ -52,7 +52,7 @@ class AshbyBoardReaderAdapterTest {
 		serve((exchange) -> respondWith(exchange, 200, """
 				{"jobs":[],"apiVersion":"1"}"""));
 
-		assertThat(reader().read("deel", RegionEnum.US)).isEqualTo(new BoardReading(BoardStatusEnum.EMPTY, null));
+		assertThat(reader().read("deel", RegionEnum.US, () -> {})).isEqualTo(new BoardReading(BoardStatusEnum.EMPTY, null));
 	}
 
 	@Test
@@ -63,7 +63,7 @@ class AshbyBoardReaderAdapterTest {
 			respondWith(exchange, 404, "Not Found");
 		});
 
-		assertThat(reader().read("gone", RegionEnum.US)).isEqualTo(new BoardReading(BoardStatusEnum.NOT_FOUND, null));
+		assertThat(reader().read("gone", RegionEnum.US, () -> {})).isEqualTo(new BoardReading(BoardStatusEnum.NOT_FOUND, null));
 		assertThat(attempts).hasValue(1);
 	}
 
@@ -75,7 +75,7 @@ class AshbyBoardReaderAdapterTest {
 			respondWith(exchange, attempt < 3 ? 429 : 200, attempt < 3 ? "" : "{\"jobs\":[]}");
 		});
 
-		assertThat(reader().read("deel", RegionEnum.US)).isEqualTo(new BoardReading(BoardStatusEnum.EMPTY, null));
+		assertThat(reader().read("deel", RegionEnum.US, () -> {})).isEqualTo(new BoardReading(BoardStatusEnum.EMPTY, null));
 		assertThat(attempts).hasValue(3);
 	}
 
@@ -83,7 +83,7 @@ class AshbyBoardReaderAdapterTest {
 	void refusesAnAnswerItCannotRead() {
 		serve((exchange) -> respondWith(exchange, 200, "not json"));
 
-		assertThatThrownBy(() -> reader().read("ramp", RegionEnum.US)).isInstanceOf(IOException.class)
+		assertThatThrownBy(() -> reader().read("ramp", RegionEnum.US, () -> {})).isInstanceOf(IOException.class)
 			.hasMessageContaining("ramp");
 	}
 

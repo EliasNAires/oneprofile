@@ -65,7 +65,7 @@ class LeverVacancyReaderAdapterTest {
 	void readsEveryOpeningOfABoardFromTheApiOfItsRegionWithWhatLeverStructures() throws IOException {
 		serve((exchange) -> respondWith(exchange, 200, BOARD));
 
-		assertThat(reader().read("finix", RegionEnum.US)).containsExactly(new PublishedLeverVacancy(
+		assertThat(reader().read("finix", RegionEnum.US, () -> {})).containsExactly(new PublishedLeverVacancy(
 				"d2907c20-a739-4c0b-a10e-94aaf1f72c78", "Account Executive, Direct Merchant", "San Francisco",
 				"Revenue",
 				"""
@@ -88,7 +88,7 @@ class LeverVacancyReaderAdapterTest {
 	void asksTheEuApiForABoardOfTheEu() throws IOException {
 		serve((exchange) -> respondWith(exchange, 200, "[]"));
 
-		assertThat(reader().read("kwalee", RegionEnum.EU)).isEmpty();
+		assertThat(reader().read("kwalee", RegionEnum.EU, () -> {})).isEmpty();
 		assertThat(this.queries).containsExactly("/eu/v0/postings/kwalee?mode=json");
 	}
 
@@ -101,7 +101,7 @@ class LeverVacancyReaderAdapterTest {
 				"additional":"",
 				"hostedUrl":"https://jobs.eu.lever.co/kwalee/0f0e0d0c-0000-4000-8000-000000000001"}]"""));
 
-		PublishedLeverVacancy opening = (PublishedLeverVacancy) reader().read("kwalee", RegionEnum.EU).get(0);
+		PublishedLeverVacancy opening = (PublishedLeverVacancy) reader().read("kwalee", RegionEnum.EU, () -> {}).get(0);
 		assertThat(opening.description()).isNull();
 		assertThat(opening.department()).isNull();
 		assertThat(opening.payMinCents()).isNull();
@@ -116,15 +116,49 @@ class LeverVacancyReaderAdapterTest {
 	}
 
 	@Test
-	void retriesABadGatewayAndARequestToBackOff() throws IOException {
+	void retriesAGatewayErrorWithoutTellingTheRunOfARefusal() throws IOException {
+		AtomicInteger attempts = new AtomicInteger();
+		serve((exchange) -> {
+			int attempt = attempts.incrementAndGet();
+			respondWith(exchange, (attempt == 1) ? 500 : (attempt == 2) ? 504 : 200, (attempt < 3) ? "" : BOARD);
+		});
+
+		AtomicInteger refusals = new AtomicInteger();
+		assertThat(reader().read("finix", RegionEnum.US, refusals::incrementAndGet)).hasSize(1);
+		assertThat(attempts).hasValue(3);
+		assertThat(refusals).hasValue(0);
+	}
+
+	@Test
+	void retriesARequestToBackOffAndTellsTheRunOfIt() throws IOException {
 		AtomicInteger attempts = new AtomicInteger();
 		serve((exchange) -> {
 			int attempt = attempts.incrementAndGet();
 			respondWith(exchange, (attempt == 1) ? 502 : (attempt == 2) ? 429 : 200, (attempt < 3) ? "" : BOARD);
 		});
 
-		assertThat(reader().read("finix", RegionEnum.US)).hasSize(1);
+		AtomicInteger refusals = new AtomicInteger();
+		assertThat(reader().read("finix", RegionEnum.US, refusals::incrementAndGet)).hasSize(1);
 		assertThat(attempts).hasValue(3);
+		assertThat(refusals).hasValue(1);
+	}
+
+	@Test
+	void waitsAsLongAsARefusalAsksWhenItSays() throws IOException {
+		AtomicInteger attempts = new AtomicInteger();
+		serve((exchange) -> {
+			if (attempts.incrementAndGet() == 1) {
+				exchange.getResponseHeaders().add("Retry-After", "1");
+				respondWith(exchange, 503, "");
+				return;
+			}
+			respondWith(exchange, 200, BOARD);
+		});
+
+		Instant before = Instant.now();
+		reader().read("finix", RegionEnum.US, () -> {});
+
+		assertThat(Duration.between(before, Instant.now())).isGreaterThanOrEqualTo(Duration.ofSeconds(1));
 	}
 
 	@Test
@@ -132,7 +166,7 @@ class LeverVacancyReaderAdapterTest {
 		serve((exchange) -> respondWith(exchange, 404, """
 				{"ok":false,"error":"Document not found"}"""));
 
-		assertThatThrownBy(() -> reader().read("finix", RegionEnum.US)).isInstanceOf(IOException.class)
+		assertThatThrownBy(() -> reader().read("finix", RegionEnum.US, () -> {})).isInstanceOf(IOException.class)
 			.hasMessageContaining("404");
 	}
 
@@ -140,7 +174,7 @@ class LeverVacancyReaderAdapterTest {
 	void refusesAnAnswerItCannotRead() {
 		serve((exchange) -> respondWith(exchange, 200, "not json"));
 
-		assertThatThrownBy(() -> reader().read("finix", RegionEnum.US)).isInstanceOf(IOException.class)
+		assertThatThrownBy(() -> reader().read("finix", RegionEnum.US, () -> {})).isInstanceOf(IOException.class)
 			.hasMessageContaining("finix");
 	}
 

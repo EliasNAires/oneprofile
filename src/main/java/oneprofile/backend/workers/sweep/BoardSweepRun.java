@@ -1,16 +1,17 @@
 package oneprofile.backend.workers.sweep;
 
 import java.io.IOException;
-import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.company.BoardStatusEnum;
 import oneprofile.backend.storage.company.CompanyStore;
 import oneprofile.backend.storage.company.RegionEnum;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
 import oneprofile.backend.storage.vacancy.VacancyStore;
+import oneprofile.backend.workers.Pace;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,10 @@ import org.springframework.stereotype.Component;
  * Sweeps every board of one ATS that was last found to have openings, and mirrors each one.
  * <p>
  * Only the active boards are asked: the rest have already said they publish nothing. Requests are
- * paced at what each ATS tolerates. A board that could not be read is skipped whole: the company keeps
- * the vacancies it already had, so a board that went down is not mistaken for a board that emptied.
+ * paced at what each ATS serves without refusing, with a margin: several are open at once, up to a
+ * limit, and they start no faster than a limit a second. Each board is mirrored as soon as it is
+ * read. A board that could not be read is skipped whole: the company keeps the vacancies it already
+ * had, so a board that went down is not mistaken for a board that emptied.
  */
 @Component
 public class BoardSweepRun {
@@ -29,18 +32,16 @@ public class BoardSweepRun {
 	private static final Log logger = LogFactory.getLog(BoardSweepRun.class);
 
 	/**
-	 * How long one board takes at most on each ATS: each probe's pace, since neither refused a
-	 * whole board's descriptions any sooner than a list of titles. Greenhouse served 9.3 whole boards
-	 * a second four at a time on 2026-10-21 (#78), Ashby 16 on 2026-10-20 (#20). One after another,
-	 * Greenhouse's answers take half a second on average, so its pace rarely holds a run back. Lever's
-	 * take about three seconds (#79), so its pace never does.
+	 * Half of the rate each ATS's sweep served on 2026-10-22, which this machine's link capped before
+	 * any ATS refused (#82, docs/measurements/2026-10-pace.md § The settings). Lever is paced per
+	 * region, since each has an API of its own.
 	 */
-	private static final Map<AtsEnum, Duration> PACES = Map.of(AtsEnum.GREENHOUSE, Duration.ofMillis(250),
-			AtsEnum.ASHBY, Duration.ofMillis(250), AtsEnum.LEVER, Duration.ofMillis(250));
+	private static final Map<AtsEnum, Pace> PACES = Map.of(AtsEnum.GREENHOUSE, new Pace(8, 10, false),
+			AtsEnum.ASHBY, new Pace(8, 20, false), AtsEnum.LEVER, new Pace(8, 9, true));
 
 	private final Map<AtsEnum, VacancyReaderPort> readers;
 
-	private final Map<AtsEnum, Duration> paces;
+	private final Map<AtsEnum, Pace> paces;
 
 	private final CompanyStore companies;
 
@@ -63,11 +64,11 @@ public class BoardSweepRun {
 
 	/**
 	 * @param readers what reads the openings of each ATS
-	 * @param paces how long one board of each ATS takes at most, counted from the start of its request
+	 * @param paces how fast each ATS is asked
 	 * @param companies where the boards to sweep are read from
 	 * @param vacancies where what the boards publish is mirrored
 	 */
-	BoardSweepRun(Map<AtsEnum, VacancyReaderPort> readers, Map<AtsEnum, Duration> paces, CompanyStore companies,
+	BoardSweepRun(Map<AtsEnum, VacancyReaderPort> readers, Map<AtsEnum, Pace> paces, CompanyStore companies,
 			VacancyStore vacancies) {
 		this.readers = Map.copyOf(readers);
 		this.paces = Map.copyOf(paces);
@@ -76,61 +77,45 @@ public class BoardSweepRun {
 	}
 
 	/**
-	 * Sweeps the board of every company of one ATS whose board has openings, in slug order.
+	 * Sweeps the board of every company of one ATS whose board has openings, starting them in slug
+	 * order.
 	 * @param ats the ATS whose boards to sweep
 	 * @return what the run found
 	 */
 	public Report sweepAll(AtsEnum ats) {
 		VacancyReaderPort reader = this.readers.get(ats);
-		Duration pace = this.paces.get(ats);
 		SortedMap<String, RegionEnum> regions = this.companies.regionsOf(ats, BoardStatusEnum.ACTIVE);
-		int published = 0;
-		int added = 0;
-		int updated = 0;
-		int deleted = 0;
-		int unreadable = 0;
-		long nextRequestAt = System.nanoTime();
-		for (Map.Entry<String, RegionEnum> company : regions.entrySet()) {
-			String slug = company.getKey();
-			waitUntil(nextRequestAt);
-			nextRequestAt = System.nanoTime() + pace.toNanos();
-			List<PublishedVacancy> openings = read(ats, reader, slug, company.getValue());
-			if (openings == null) {
-				unreadable++;
-				continue;
-			}
-			VacancyStore.Reconciliation reconciliation = this.vacancies.mirror(ats, slug, openings);
-			published += openings.size();
-			added += reconciliation.added();
-			updated += reconciliation.updated();
-			deleted += reconciliation.deleted();
-		}
-		return new Report(regions.size(), published, added, updated, deleted, unreadable);
+		AtomicInteger published = new AtomicInteger();
+		AtomicInteger added = new AtomicInteger();
+		AtomicInteger updated = new AtomicInteger();
+		AtomicInteger deleted = new AtomicInteger();
+		AtomicInteger unreadable = new AtomicInteger();
+		this.paces.get(ats)
+			.readEach("The %s sweep".formatted(ats), regions,
+					(slug, region, onRefusal) -> read(ats, reader, slug, region, onRefusal), (slug, openings) -> {
+						if (openings == null) {
+							unreadable.incrementAndGet();
+							return;
+						}
+						VacancyStore.Reconciliation reconciliation = this.vacancies.mirror(ats, slug, openings);
+						published.addAndGet(openings.size());
+						added.addAndGet(reconciliation.added());
+						updated.addAndGet(reconciliation.updated());
+						deleted.addAndGet(reconciliation.deleted());
+					});
+		return new Report(regions.size(), published.get(), added.get(), updated.get(), deleted.get(),
+				unreadable.get());
 	}
 
 	/** What the board publishes, or null if the ATS could not be made to say. */
 	private static List<PublishedVacancy> read(AtsEnum ats, VacancyReaderPort reader, String slug,
-			RegionEnum region) {
+			RegionEnum region, Runnable onRefusal) {
 		try {
-			return reader.read(slug, region);
+			return reader.read(slug, region, onRefusal);
 		}
 		catch (IOException ex) {
 			logger.warn("Could not read the openings of the %s board of %s".formatted(ats, slug), ex);
 			return null;
-		}
-	}
-
-	private void waitUntil(long nanoTime) {
-		long remaining = nanoTime - System.nanoTime();
-		if (remaining <= 0) {
-			return;
-		}
-		try {
-			Thread.sleep(Duration.ofNanos(remaining));
-		}
-		catch (InterruptedException ex) {
-			Thread.currentThread().interrupt();
-			throw new IllegalStateException("Interrupted while pacing a sweep run", ex);
 		}
 	}
 

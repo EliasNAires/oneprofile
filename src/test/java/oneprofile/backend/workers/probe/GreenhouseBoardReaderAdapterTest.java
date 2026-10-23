@@ -11,6 +11,7 @@ import java.net.InetSocketAddress;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -51,7 +52,7 @@ class GreenhouseBoardReaderAdapterTest {
 	void readsABoardWithOpeningsAsActiveAndTakesItsNameFromTheResponse() throws IOException {
 		serve((exchange) -> respondWith(exchange, 200, WITH_OPENINGS));
 
-		assertThat(reader().read("stripe", RegionEnum.US))
+		assertThat(reader().read("stripe", RegionEnum.US, () -> {}))
 			.isEqualTo(new BoardReading(BoardStatusEnum.ACTIVE, "Stripe"));
 		assertThat(this.paths).containsExactly("/v1/boards/stripe/jobs");
 		assertThat(this.userAgents).allMatch((agent) -> agent.contains("oneprofile"));
@@ -61,7 +62,7 @@ class GreenhouseBoardReaderAdapterTest {
 	void readsABoardWithoutOpeningsAsEmptyAndBringsNoName() throws IOException {
 		serve((exchange) -> respondWith(exchange, 200, WITHOUT_OPENINGS));
 
-		assertThat(reader().read("stripe", RegionEnum.US)).isEqualTo(new BoardReading(BoardStatusEnum.EMPTY, null));
+		assertThat(reader().read("stripe", RegionEnum.US, () -> {})).isEqualTo(new BoardReading(BoardStatusEnum.EMPTY, null));
 	}
 
 	@Test
@@ -72,7 +73,7 @@ class GreenhouseBoardReaderAdapterTest {
 			respondWith(exchange, 404, "");
 		});
 
-		assertThat(reader().read("stripe", RegionEnum.US)).isEqualTo(new BoardReading(BoardStatusEnum.NOT_FOUND, null));
+		assertThat(reader().read("stripe", RegionEnum.US, () -> {})).isEqualTo(new BoardReading(BoardStatusEnum.NOT_FOUND, null));
 		assertThat(attempts).hasValue(1);
 	}
 
@@ -88,16 +89,36 @@ class GreenhouseBoardReaderAdapterTest {
 			}, attempt < 3 ? "" : WITH_OPENINGS);
 		});
 
-		assertThat(reader().read("stripe", RegionEnum.US))
+		AtomicInteger refusals = new AtomicInteger();
+		assertThat(reader().read("stripe", RegionEnum.US, refusals::incrementAndGet))
 			.isEqualTo(new BoardReading(BoardStatusEnum.ACTIVE, "Stripe"));
 		assertThat(attempts).hasValue(3);
+		assertThat(refusals).as("refusals told to the run").hasValue(2);
+	}
+
+	@Test
+	void waitsAsLongAsARefusalAsksWhenItSays() throws IOException {
+		AtomicInteger attempts = new AtomicInteger();
+		serve((exchange) -> {
+			if (attempts.incrementAndGet() == 1) {
+				exchange.getResponseHeaders().add("Retry-After", "1");
+				respondWith(exchange, 429, "");
+				return;
+			}
+			respondWith(exchange, 200, WITH_OPENINGS);
+		});
+
+		Instant before = Instant.now();
+		reader().read("stripe", RegionEnum.US, () -> {});
+
+		assertThat(Duration.between(before, Instant.now())).isGreaterThanOrEqualTo(Duration.ofSeconds(1));
 	}
 
 	@Test
 	void givesUpOnceTheAttemptsAreSpent() {
 		serve((exchange) -> respondWith(exchange, 503, ""));
 
-		assertThatThrownBy(() -> reader().read("stripe", RegionEnum.US)).isInstanceOf(IOException.class)
+		assertThatThrownBy(() -> reader().read("stripe", RegionEnum.US, () -> {})).isInstanceOf(IOException.class)
 			.hasMessageContaining("503");
 	}
 
@@ -105,7 +126,7 @@ class GreenhouseBoardReaderAdapterTest {
 	void refusesAnAnswerItCannotRead() {
 		serve((exchange) -> respondWith(exchange, 200, "not json"));
 
-		assertThatThrownBy(() -> reader().read("stripe", RegionEnum.US)).isInstanceOf(IOException.class)
+		assertThatThrownBy(() -> reader().read("stripe", RegionEnum.US, () -> {})).isInstanceOf(IOException.class)
 			.hasMessageContaining("stripe");
 	}
 

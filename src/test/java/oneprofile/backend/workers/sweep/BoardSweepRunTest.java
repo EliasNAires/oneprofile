@@ -14,6 +14,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import oneprofile.backend.storage.company.AtsEnum;
@@ -23,10 +25,14 @@ import oneprofile.backend.storage.company.RegionEnum;
 import oneprofile.backend.storage.vacancy.PublishedGreenhouseVacancy;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
 import oneprofile.backend.storage.vacancy.VacancyStore;
+import oneprofile.backend.workers.Pace;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
 
 class BoardSweepRunTest {
+
+	/** Fast enough that no test waits on it. */
+	private static final Pace UNPACED = new Pace(1, 1000, false);
 
 	private final CompanyStore companies = mock(CompanyStore.class);
 
@@ -62,17 +68,68 @@ class BoardSweepRunTest {
 	}
 
 	@Test
-	void waitsBetweenBoardsSoThatTheAtsIsNotAskedTooOften() {
-		activeSlugs("stripe", "notion", "figma");
+	void keepsNoMoreRequestsOpenAtOnceThanItsPaceAllows() {
+		activeSlugs("a", "b", "c", "d", "e", "f", "g", "h", "i");
 		given(this.vacancies.mirror(any(), any(), any())).willReturn(new VacancyStore.Reconciliation(0, 0, 0));
-		BoardSweepRun sweep = new BoardSweepRun(
-				Map.of(AtsEnum.GREENHOUSE, reader(Map.of("stripe", List.of(), "notion", List.of(), "figma", List.of()))),
-				Map.of(AtsEnum.GREENHOUSE, Duration.ofMillis(50)), this.companies, this.vacancies);
+		AtomicInteger open = new AtomicInteger();
+		AtomicInteger mostOpen = new AtomicInteger();
+		VacancyReaderPort reader = (slug, region, onRefusal) -> {
+			mostOpen.accumulateAndGet(open.incrementAndGet(), Math::max);
+			pause(Duration.ofMillis(30));
+			open.decrementAndGet();
+			return List.of();
+		};
+
+		sweepOf(reader, new Pace(3, 1000, false)).sweepAll(AtsEnum.GREENHOUSE);
+
+		assertThat(mostOpen).hasValue(3);
+	}
+
+	@Test
+	void startsNoMoreRequestsASecondThanItsPaceAllows() {
+		activeSlugs("a", "b", "c", "d", "e");
+		given(this.vacancies.mirror(any(), any(), any())).willReturn(new VacancyStore.Reconciliation(0, 0, 0));
 
 		Instant before = Instant.now();
-		sweep.sweepAll(AtsEnum.GREENHOUSE);
+		sweepOf((slug, region, onRefusal) -> List.of(), new Pace(10, 20, false)).sweepAll(AtsEnum.GREENHOUSE);
 
-		assertThat(Duration.between(before, Instant.now())).isGreaterThanOrEqualTo(Duration.ofMillis(100));
+		assertThat(Duration.between(before, Instant.now())).isGreaterThanOrEqualTo(Duration.ofMillis(200));
+	}
+
+	@Test
+	void slowsDownEachTimeItIsRefused() {
+		activeSlugs("a", "b", "c", "d");
+		given(this.vacancies.mirror(any(), any(), any())).willReturn(new VacancyStore.Reconciliation(0, 0, 0));
+		VacancyReaderPort reader = (slug, region, onRefusal) -> {
+			if (slug.equals("a")) {
+				onRefusal.run();
+			}
+			return List.of();
+		};
+
+		Instant before = Instant.now();
+		sweepOf(reader, new Pace(1, 20, false)).sweepAll(AtsEnum.GREENHOUSE);
+
+		// 50 ms before b, whose start was set before the refusal, then 100 ms before each of c and d.
+		assertThat(Duration.between(before, Instant.now())).isGreaterThanOrEqualTo(Duration.ofMillis(250));
+	}
+
+	@Test
+	void leavesAloneABoardStillRefusedAfterItsRetries() {
+		activeSlugs("stripe", "refused");
+		given(this.vacancies.mirror(eq(AtsEnum.GREENHOUSE), eq("stripe"), any()))
+			.willReturn(new VacancyStore.Reconciliation(1, 0, 0));
+		VacancyReaderPort reader = (slug, region, onRefusal) -> {
+			if (slug.equals("refused")) {
+				onRefusal.run();
+				throw new IOException("Asked for the openings of refused and got 429");
+			}
+			return List.of(published(4001));
+		};
+
+		assertThat(sweepOf(reader, new Pace(2, 1000, false)).sweepAll(AtsEnum.GREENHOUSE))
+			.isEqualTo(new BoardSweepRun.Report(2, 1, 1, 0, 0, 1));
+		then(this.vacancies).should(BDDMockito.never()).mirror(eq(AtsEnum.GREENHOUSE), eq("refused"), any());
 	}
 
 	@Test
@@ -83,7 +140,7 @@ class BoardSweepRunTest {
 			.willReturn(new VacancyStore.Reconciliation(1, 0, 0));
 		BoardSweepRun sweep = new BoardSweepRun(
 				Map.of(AtsEnum.GREENHOUSE, reader(Map.of()), AtsEnum.ASHBY, reader(Map.of("ramp", List.of(published(1))))),
-				Map.of(AtsEnum.GREENHOUSE, Duration.ZERO, AtsEnum.ASHBY, Duration.ZERO), this.companies, this.vacancies);
+				Map.of(AtsEnum.GREENHOUSE, UNPACED, AtsEnum.ASHBY, UNPACED), this.companies, this.vacancies);
 
 		assertThat(sweep.sweepAll(AtsEnum.ASHBY)).isEqualTo(new BoardSweepRun.Report(1, 1, 1, 0, 0, 0));
 		then(this.vacancies).should().mirror(AtsEnum.ASHBY, "ramp", List.of(published(1)));
@@ -94,12 +151,12 @@ class BoardSweepRunTest {
 		given(this.companies.regionsOf(AtsEnum.LEVER, BoardStatusEnum.ACTIVE))
 			.willReturn(new TreeMap<>(Map.of("finix", RegionEnum.US, "kwalee", RegionEnum.EU)));
 		given(this.vacancies.mirror(any(), any(), any())).willReturn(new VacancyStore.Reconciliation(0, 0, 0));
-		Map<String, RegionEnum> asked = new TreeMap<>();
-		VacancyReaderPort reader = (slug, region) -> {
+		Map<String, RegionEnum> asked = new ConcurrentHashMap<>();
+		VacancyReaderPort reader = (slug, region, onRefusal) -> {
 			asked.put(slug, region);
 			return List.of();
 		};
-		BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.LEVER, reader), Map.of(AtsEnum.LEVER, Duration.ZERO),
+		BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.LEVER, reader), Map.of(AtsEnum.LEVER, UNPACED),
 				this.companies, this.vacancies);
 
 		sweep.sweepAll(AtsEnum.LEVER);
@@ -114,13 +171,26 @@ class BoardSweepRunTest {
 	}
 
 	private BoardSweepRun sweepOf(Map<String, List<PublishedVacancy>> boards) {
-		return new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader(boards)), Map.of(AtsEnum.GREENHOUSE, Duration.ZERO),
-				this.companies, this.vacancies);
+		return sweepOf(reader(boards), UNPACED);
+	}
+
+	private BoardSweepRun sweepOf(VacancyReaderPort reader, Pace pace) {
+		return new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader), Map.of(AtsEnum.GREENHOUSE, pace), this.companies,
+				this.vacancies);
+	}
+
+	private static void pause(Duration duration) {
+		try {
+			Thread.sleep(duration);
+		}
+		catch (InterruptedException ex) {
+			Thread.currentThread().interrupt();
+		}
 	}
 
 	/** Answers what the map holds, and fails to read the slugs it maps to null. */
 	private VacancyReaderPort reader(Map<String, List<PublishedVacancy>> boards) {
-		return (slug, region) -> {
+		return (slug, region, onRefusal) -> {
 			List<PublishedVacancy> published = boards.get(slug);
 			if (published == null) {
 				throw new IOException("boards-api.greenhouse.io answered 503");

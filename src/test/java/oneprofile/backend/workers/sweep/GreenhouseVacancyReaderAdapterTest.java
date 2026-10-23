@@ -64,7 +64,7 @@ class GreenhouseVacancyReaderAdapterTest {
 	void readsEveryOpeningOfABoardAskingForItsContentAndPay() throws IOException {
 		serve((exchange) -> respondWith(exchange, 200, BOARD));
 
-		assertThat(reader().read("stripe", RegionEnum.US))
+		assertThat(reader().read("stripe", RegionEnum.US, () -> {}))
 			.containsExactly(new PublishedGreenhouseVacancy("4001", "Backend Engineer",
 				"Remote - Americas", "Engineering", "Ship payments.", "https://job-boards.greenhouse.io/stripe/jobs/4001",
 				15000000L, 20000000L, "USD", Instant.parse("2026-09-01T14:00:00Z"), "Annual Salary",
@@ -76,7 +76,7 @@ class GreenhouseVacancyReaderAdapterTest {
 	void bringsNothingWhereTheBoardPublishedNoDescriptionLanguagePayOrDepartment() throws IOException {
 		serve((exchange) -> respondWith(exchange, 200, WITHOUT_PAY_OR_DESCRIPTION));
 
-		PublishedGreenhouseVacancy designer = (PublishedGreenhouseVacancy) reader().read("stripe", RegionEnum.US)
+		PublishedGreenhouseVacancy designer = (PublishedGreenhouseVacancy) reader().read("stripe", RegionEnum.US, () -> {})
 			.get(0);
 		assertThat(designer.description()).isNull();
 		assertThat(designer.language()).isNull();
@@ -208,7 +208,7 @@ class GreenhouseVacancyReaderAdapterTest {
 			respondWith(exchange, attempt < 3 ? 503 : 200, attempt < 3 ? "" : BOARD);
 		});
 
-		assertThat(reader().read("stripe", RegionEnum.US)).hasSize(1);
+		assertThat(reader().read("stripe", RegionEnum.US, () -> {})).hasSize(1);
 		assertThat(attempts).hasValue(3);
 	}
 
@@ -216,7 +216,7 @@ class GreenhouseVacancyReaderAdapterTest {
 	void givesUpOnABoardTheAtsWillNotServe() {
 		serve((exchange) -> respondWith(exchange, 404, ""));
 
-		assertThatThrownBy(() -> reader().read("stripe", RegionEnum.US)).isInstanceOf(IOException.class)
+		assertThatThrownBy(() -> reader().read("stripe", RegionEnum.US, () -> {})).isInstanceOf(IOException.class)
 			.hasMessageContaining("404");
 	}
 
@@ -224,7 +224,7 @@ class GreenhouseVacancyReaderAdapterTest {
 	void refusesAnAnswerItCannotRead() {
 		serve((exchange) -> respondWith(exchange, 200, "not json"));
 
-		assertThatThrownBy(() -> reader().read("stripe", RegionEnum.US)).isInstanceOf(IOException.class)
+		assertThatThrownBy(() -> reader().read("stripe", RegionEnum.US, () -> {})).isInstanceOf(IOException.class)
 			.hasMessageContaining("stripe");
 	}
 
@@ -253,7 +253,7 @@ class GreenhouseVacancyReaderAdapterTest {
 	}
 
 	private String description() throws IOException {
-		return reader().read("acme", RegionEnum.US).get(0).description();
+		return reader().read("acme", RegionEnum.US, () -> {}).get(0).description();
 	}
 
 	private void serve(HttpHandler handler) {

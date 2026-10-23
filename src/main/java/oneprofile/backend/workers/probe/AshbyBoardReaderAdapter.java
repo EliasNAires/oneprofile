@@ -7,8 +7,10 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.time.Duration;
+import java.util.Set;
 import oneprofile.backend.storage.company.BoardStatusEnum;
 import oneprofile.backend.storage.company.RegionEnum;
+import oneprofile.backend.workers.RetryAfter;
 import oneprofile.backend.workers.UserAgent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,6 +30,9 @@ import tools.jackson.databind.ObjectMapper;
 public class AshbyBoardReaderAdapter implements BoardReaderPort {
 
 	private static final URI POSTING_API = URI.create("https://api.ashbyhq.com/");
+
+	/** What an ATS answers when it asks to be given time, which slows the run down. */
+	private static final Set<Integer> REFUSED = Set.of(429, 503);
 
 	private static final int ATTEMPTS = 5;
 
@@ -78,14 +83,14 @@ public class AshbyBoardReaderAdapter implements BoardReaderPort {
 	}
 
 	@Override
-	public BoardReading read(String slug, RegionEnum region) throws IOException {
+	public BoardReading read(String slug, RegionEnum region, Runnable onRefusal) throws IOException {
 		HttpRequest request = HttpRequest
 			.newBuilder(this.base.resolve("posting-api/job-board/%s?includeCompensation=true".formatted(slug)))
 			.header("User-Agent", this.userAgent)
 			.timeout(this.readTimeout)
 			.GET()
 			.build();
-		HttpResponse<String> response = send(request, slug);
+		HttpResponse<String> response = send(request, slug, onRefusal);
 		if (response.statusCode() == 404) {
 			return new BoardReading(BoardStatusEnum.NOT_FOUND, null);
 		}
@@ -109,35 +114,27 @@ public class AshbyBoardReaderAdapter implements BoardReaderPort {
 		return new BoardReading(openings.isEmpty() ? BoardStatusEnum.EMPTY : BoardStatusEnum.ACTIVE, null);
 	}
 
-	private HttpResponse<String> send(HttpRequest request, String slug) throws IOException {
-		IOException lastFailure = null;
-		for (int attempt = 0; attempt < this.attempts; attempt++) {
-			if (attempt > 0) {
-				waitBefore(attempt);
-			}
+	/**
+	 * Asks until the ATS answers, waiting after a refusal as long as it says, or for the back-off if
+	 * it does not.
+	 */
+	private HttpResponse<String> send(HttpRequest request, String slug, Runnable onRefusal) throws IOException {
+		for (int attempt = 1;; attempt++) {
 			try {
 				HttpResponse<String> response = this.http.send(request, BodyHandlers.ofString());
-				if (response.statusCode() != 429 && response.statusCode() != 503) {
+				if (!REFUSED.contains(response.statusCode())) {
 					return response;
 				}
-				lastFailure = new IOException(
-						"Asked for the board of %s and got %d".formatted(slug, response.statusCode()));
+				onRefusal.run();
+				if (attempt == this.attempts) {
+					throw new IOException("Asked for the board of %s and got %d".formatted(slug, response.statusCode()));
+				}
+				Thread.sleep(RetryAfter.or(response, this.backOff.multipliedBy(1L << (attempt - 1))));
 			}
 			catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 				throw new IOException("Interrupted while reading the board of " + slug, ex);
 			}
-		}
-		throw lastFailure;
-	}
-
-	private void waitBefore(int attempt) throws IOException {
-		try {
-			Thread.sleep(this.backOff.multipliedBy(1L << (attempt - 1)));
-		}
-		catch (InterruptedException ex) {
-			Thread.currentThread().interrupt();
-			throw new IOException("Interrupted while backing off", ex);
 		}
 	}
 

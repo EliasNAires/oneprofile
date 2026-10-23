@@ -16,6 +16,7 @@ import java.util.Set;
 import oneprofile.backend.storage.company.RegionEnum;
 import oneprofile.backend.storage.vacancy.PublishedLeverVacancy;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
+import oneprofile.backend.workers.RetryAfter;
 import oneprofile.backend.workers.UserAgent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -40,8 +41,14 @@ public class LeverVacancyReaderAdapter implements VacancyReaderPort {
 	private static final Map<RegionEnum, URI> POSTINGS_APIS = Map.of(RegionEnum.US,
 			URI.create("https://api.lever.co/"), RegionEnum.EU, URI.create("https://api.eu.lever.co/"));
 
-	/** What Lever answers when it asks to be given time, or fails to reach a board's server. */
-	private static final Set<Integer> RETRIED = Set.of(429, 502, 503, 504);
+	/** What Lever answers when it asks to be given time, which slows the run down. */
+	private static final Set<Integer> REFUSED = Set.of(429, 503);
+
+	/**
+	 * What Lever answers now and then when it fails to reach a board's server (#79, #82): retried
+	 * without slowing the run, since nothing tied them to load.
+	 */
+	private static final Set<Integer> GATEWAY_ERRORS = Set.of(500, 502, 504);
 
 	private static final int ATTEMPTS = 5;
 
@@ -93,14 +100,14 @@ public class LeverVacancyReaderAdapter implements VacancyReaderPort {
 	}
 
 	@Override
-	public List<PublishedVacancy> read(String slug, RegionEnum region) throws IOException {
+	public List<PublishedVacancy> read(String slug, RegionEnum region, Runnable onRefusal) throws IOException {
 		HttpRequest request = HttpRequest
 			.newBuilder(this.bases.get(region).resolve("v0/postings/%s?mode=json".formatted(slug)))
 			.header("User-Agent", this.userAgent)
 			.timeout(this.readTimeout)
 			.GET()
 			.build();
-		HttpResponse<String> response = send(request, slug);
+		HttpResponse<String> response = send(request, slug, onRefusal);
 		if (response.statusCode() != 200) {
 			throw new IOException("Asked for the openings of %s and got %d".formatted(slug, response.statusCode()));
 		}
@@ -193,35 +200,32 @@ public class LeverVacancyReaderAdapter implements VacancyReaderPort {
 		return node.isNumber() ? Instant.ofEpochMilli(node.longValue()) : null;
 	}
 
-	private HttpResponse<String> send(HttpRequest request, String slug) throws IOException {
-		IOException lastFailure = null;
-		for (int attempt = 0; attempt < this.attempts; attempt++) {
-			if (attempt > 0) {
-				waitBefore(attempt);
-			}
+	/**
+	 * Asks until the ATS answers, waiting after a refusal as long as it says, or for the back-off if
+	 * it does not.
+	 */
+	private HttpResponse<String> send(HttpRequest request, String slug, Runnable onRefusal) throws IOException {
+		for (int attempt = 1;; attempt++) {
 			try {
 				HttpResponse<String> response = this.http.send(request, BodyHandlers.ofString());
-				if (!RETRIED.contains(response.statusCode())) {
+				int status = response.statusCode();
+				boolean refused = REFUSED.contains(status);
+				if (!refused && !GATEWAY_ERRORS.contains(status)) {
 					return response;
 				}
-				lastFailure = new IOException(
-						"Asked for the openings of %s and got %d".formatted(slug, response.statusCode()));
+				if (refused) {
+					onRefusal.run();
+				}
+				if (attempt == this.attempts) {
+					throw new IOException("Asked for the openings of %s and got %d".formatted(slug, status));
+				}
+				Duration backOff = this.backOff.multipliedBy(1L << (attempt - 1));
+				Thread.sleep(refused ? RetryAfter.or(response, backOff) : backOff);
 			}
 			catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 				throw new IOException("Interrupted while reading the openings of " + slug, ex);
 			}
-		}
-		throw lastFailure;
-	}
-
-	private void waitBefore(int attempt) throws IOException {
-		try {
-			Thread.sleep(this.backOff.multipliedBy(1L << (attempt - 1)));
-		}
-		catch (InterruptedException ex) {
-			Thread.currentThread().interrupt();
-			throw new IOException("Interrupted while backing off", ex);
 		}
 	}
 

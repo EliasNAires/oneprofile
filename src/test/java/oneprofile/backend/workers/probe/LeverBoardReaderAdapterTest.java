@@ -11,6 +11,7 @@ import java.net.InetSocketAddress;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -47,8 +48,8 @@ class LeverBoardReaderAdapterTest {
 		serve((exchange) -> respondWith(exchange, 200, """
 				[{"id":"5f1c2a4e-0d4f-4c1e-9d0a-1b2c3d4e5f60","text":"Game Developer"}]"""));
 
-		assertThat(reader().read("kwalee", RegionEnum.EU)).isEqualTo(new BoardReading(BoardStatusEnum.ACTIVE, null));
-		assertThat(reader().read("finix", RegionEnum.US)).isEqualTo(new BoardReading(BoardStatusEnum.ACTIVE, null));
+		assertThat(reader().read("kwalee", RegionEnum.EU, () -> {})).isEqualTo(new BoardReading(BoardStatusEnum.ACTIVE, null));
+		assertThat(reader().read("finix", RegionEnum.US, () -> {})).isEqualTo(new BoardReading(BoardStatusEnum.ACTIVE, null));
 		assertThat(this.queries).containsExactly("/eu/v0/postings/kwalee?mode=json&limit=1",
 				"/us/v0/postings/finix?mode=json&limit=1");
 	}
@@ -57,7 +58,7 @@ class LeverBoardReaderAdapterTest {
 	void readsABoardWithoutOpeningsAsEmpty() throws IOException {
 		serve((exchange) -> respondWith(exchange, 200, "[]"));
 
-		assertThat(reader().read("nrwl", RegionEnum.US)).isEqualTo(new BoardReading(BoardStatusEnum.EMPTY, null));
+		assertThat(reader().read("nrwl", RegionEnum.US, () -> {})).isEqualTo(new BoardReading(BoardStatusEnum.EMPTY, null));
 	}
 
 	@Test
@@ -65,27 +66,61 @@ class LeverBoardReaderAdapterTest {
 		serve((exchange) -> respondWith(exchange, 404, """
 				{"ok":false,"error":"Document not found"}"""));
 
-		assertThat(reader().read("kwalee", RegionEnum.US)).isEqualTo(new BoardReading(BoardStatusEnum.NOT_FOUND, null));
+		assertThat(reader().read("kwalee", RegionEnum.US, () -> {})).isEqualTo(new BoardReading(BoardStatusEnum.NOT_FOUND, null));
 		assertThat(this.queries).containsExactly("/us/v0/postings/kwalee?mode=json&limit=1");
 	}
 
 	@Test
-	void retriesABadGatewayAndARequestToBackOff() throws IOException {
+	void retriesAGatewayErrorWithoutTellingTheRunOfARefusal() throws IOException {
+		AtomicInteger attempts = new AtomicInteger();
+		serve((exchange) -> {
+			int attempt = attempts.incrementAndGet();
+			respondWith(exchange, (attempt == 1) ? 500 : (attempt == 2) ? 504 : 200, (attempt < 3) ? "" : "[]");
+		});
+
+		AtomicInteger refusals = new AtomicInteger();
+		assertThat(reader().read("finix", RegionEnum.US, refusals::incrementAndGet)).isEqualTo(new BoardReading(BoardStatusEnum.EMPTY, null));
+		assertThat(attempts).hasValue(3);
+		assertThat(refusals).hasValue(0);
+	}
+
+	@Test
+	void retriesARequestToBackOffAndTellsTheRunOfIt() throws IOException {
 		AtomicInteger attempts = new AtomicInteger();
 		serve((exchange) -> {
 			int attempt = attempts.incrementAndGet();
 			respondWith(exchange, (attempt == 1) ? 502 : (attempt == 2) ? 429 : 200, (attempt < 3) ? "" : "[]");
 		});
 
-		assertThat(reader().read("finix", RegionEnum.US)).isEqualTo(new BoardReading(BoardStatusEnum.EMPTY, null));
+		AtomicInteger refusals = new AtomicInteger();
+		assertThat(reader().read("finix", RegionEnum.US, refusals::incrementAndGet)).isEqualTo(new BoardReading(BoardStatusEnum.EMPTY, null));
 		assertThat(attempts).hasValue(3);
+		assertThat(refusals).hasValue(1);
+	}
+
+	@Test
+	void waitsAsLongAsARefusalAsksWhenItSays() throws IOException {
+		AtomicInteger attempts = new AtomicInteger();
+		serve((exchange) -> {
+			if (attempts.incrementAndGet() == 1) {
+				exchange.getResponseHeaders().add("Retry-After", "1");
+				respondWith(exchange, 503, "");
+				return;
+			}
+			respondWith(exchange, 200, "[]");
+		});
+
+		Instant before = Instant.now();
+		reader().read("finix", RegionEnum.US, () -> {});
+
+		assertThat(Duration.between(before, Instant.now())).isGreaterThanOrEqualTo(Duration.ofSeconds(1));
 	}
 
 	@Test
 	void givesUpWhenTheApiKeepsFailing() {
 		serve((exchange) -> respondWith(exchange, 502, ""));
 
-		assertThatThrownBy(() -> reader().read("finix", RegionEnum.US)).isInstanceOf(IOException.class)
+		assertThatThrownBy(() -> reader().read("finix", RegionEnum.US, () -> {})).isInstanceOf(IOException.class)
 			.hasMessageContaining("502");
 	}
 
@@ -93,7 +128,7 @@ class LeverBoardReaderAdapterTest {
 	void refusesAnAnswerItCannotRead() {
 		serve((exchange) -> respondWith(exchange, 200, "{\"ok\":true}"));
 
-		assertThatThrownBy(() -> reader().read("finix", RegionEnum.US)).isInstanceOf(IOException.class)
+		assertThatThrownBy(() -> reader().read("finix", RegionEnum.US, () -> {})).isInstanceOf(IOException.class)
 			.hasMessageContaining("finix");
 	}
 
