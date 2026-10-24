@@ -1,6 +1,5 @@
 package oneprofile.backend.workers;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +13,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.function.BiConsumer;
 import oneprofile.backend.storage.company.RegionEnum;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * How fast a run asks one ATS: how many requests it keeps open at once, and how many it starts a
@@ -30,8 +27,6 @@ import org.apache.commons.logging.LogFactory;
  * region, rather than every company sharing it
  */
 public record Pace(int requestsAtOnce, int startsASecond, boolean perRegion) {
-
-	private static final Log logger = LogFactory.getLog(Pace.class);
 
 	public Pace {
 		if (requestsAtOnce < 1 || startsASecond < 1) {
@@ -56,7 +51,7 @@ public record Pace(int requestsAtOnce, int startsASecond, boolean perRegion) {
 		try (ExecutorService threads = Executors.newVirtualThreadPerTaskExecutor()) {
 			List<Future<?>> starters = new ArrayList<>();
 			for (Map.Entry<String, SortedMap<String, RegionEnum>> region : regions(companies).entrySet()) {
-				Throttle throttle = new Throttle(run + region.getKey());
+				Throttle throttle = new Throttle(run + region.getKey(), this.requestsAtOnce, this.startsASecond);
 				starters.add(threads.submit(() -> {
 					for (Map.Entry<String, RegionEnum> company : region.getValue().entrySet()) {
 						throttle.awaitStart();
@@ -119,54 +114,6 @@ public record Pace(int requestsAtOnce, int startsASecond, boolean perRegion) {
 		 * @return what was read
 		 */
 		T read(String slug, RegionEnum region, Runnable onRefusal);
-
-	}
-
-	/** This pace as one region, or the whole ATS, is asked at during one run, slowed by each refusal. */
-	private final class Throttle {
-
-		private final String name;
-
-		private int requestsAtOnce = Pace.this.requestsAtOnce;
-
-		private int startsASecond = Pace.this.startsASecond;
-
-		private int open;
-
-		private long nextStartAt = System.nanoTime();
-
-		Throttle(String name) {
-			this.name = name;
-		}
-
-		/** Waits until a request may be started, and counts it as open from then on. */
-		void awaitStart() throws InterruptedException {
-			long startAt;
-			synchronized (this) {
-				while (this.open >= this.requestsAtOnce) {
-					wait();
-				}
-				this.open++;
-				startAt = Math.max(System.nanoTime(), this.nextStartAt);
-				this.nextStartAt = startAt + Duration.ofSeconds(1).toNanos() / this.startsASecond;
-			}
-			long remaining = startAt - System.nanoTime();
-			if (remaining > 0) {
-				Thread.sleep(Duration.ofNanos(remaining));
-			}
-		}
-
-		synchronized void finished() {
-			this.open--;
-			notifyAll();
-		}
-
-		synchronized void refused() {
-			this.requestsAtOnce = Math.max(1, this.requestsAtOnce / 2);
-			this.startsASecond = Math.max(1, this.startsASecond / 2);
-			logger.warn("%s was refused, so it slows down to %d requests at once and %d a second"
-				.formatted(this.name, this.requestsAtOnce, this.startsASecond));
-		}
 
 	}
 

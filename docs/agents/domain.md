@@ -26,16 +26,21 @@ the later ADR wins; the overridden parts are marked below.
 - **0023**: discovery reads two archives, Common Crawl and the Wayback Machine. Common Crawl to
   the 12 newest crawls that hold the ATS's pages, backfilled once, then a run reads only a new
   crawl. Wayback is read whole on every run, by resume key, and a run keeps the slugs it lacks.
+  *Amended:* an ATS whose boards are subdomains (Workday) is asked for by domain (#81).
 - **0025**: an ATS's pace is measured to its ceiling before it is probed. The research comes
   first: its sources, what a refusal looks like, a ramp of 1 to 32 at a time, whether each region
   host has its own limit, and the link. The settings are half the ceiling, for requests open at
   once and for starts a second, per region where an ATS has one API per region. Each refusal
   halves them for the rest of the run, and gateway errors do not. The settings are checked at
   full scale. Written in one `docs/measurements/` file; the tools are `scripts/pace-*`.
+  *Amended:* Workday is paced per request at 16 a second and 20 open, by one throttle its probes
+  and sweeps share, and a Cloudflare challenge is waited out from 1 minute (#81).
 - **0021**: each ATS's vacancy is a class of its own over the one `vacancy` table, keeping what
   that ATS publishes as it publishes it; `Vacancy` holds what any ATS would be expected to
   publish. Facts are derived in passes, never in the sweep. Overrides PRD §7's nullable columns.
-  *Amended:* `Company` gains its region (0022).
+  *Amended:* `Company` gains its region (0022). Workday's fields share Lever's columns where they
+  mean the same, and its time type has its own; its sweep runs the title rules to choose which
+  descriptions to ask for, storing nothing they decide (#81).
 - **0006**: rules are developed against **snapshots** on the dev machine, never production. Two
   are kept, raw and after classification. A re-sweep cuts a new pair and archives the old one.
 - **0011**: history is kept as **series** (numbers, not vacancies), recorded from **stability**

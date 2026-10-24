@@ -9,11 +9,11 @@ import java.time.Instant;
  * guessed at.
  */
 public sealed interface PublishedVacancy permits PublishedGreenhouseVacancy, PublishedAshbyVacancy,
-		PublishedLeverVacancy {
+		PublishedLeverVacancy, PublishedWorkdayVacancy {
 
 	/**
 	 * The id the ATS gives the vacancy, unique within the board but not across boards: a number on
-	 * Greenhouse, a UUID on Ashby and Lever.
+	 * Greenhouse, a UUID on Ashby and Lever, the last segment of its path on Workday.
 	 */
 	String externalId();
 

@@ -9,7 +9,9 @@ public enum AtsEnum {
 
 	ASHBY,
 
-	LEVER;
+	LEVER,
+
+	WORKDAY;
 
 	/**
 	 * The ATS a path names, written in any case, as the endpoints take it.

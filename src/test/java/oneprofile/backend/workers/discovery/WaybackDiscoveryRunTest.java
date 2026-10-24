@@ -42,6 +42,13 @@ class WaybackDiscoveryRunTest {
 			""", "jobs.eu.lever.co/", """
 			[["original"],
 			["https://jobs.eu.lever.co/kwalee"]]
+			""", "*.myworkdayjobs.com/", """
+			[["original"],
+			["https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/x_JR1"],
+			["https://www.myworkdayjobs.com/"]]
+			""", "*.myworkdaysite.com/", """
+			[["original"],
+			["https://wd5.myworkdaysite.com/en-US/recruiting/nvidia/NVIDIAExternalCareerSite"]]
 			""");
 
 	private final List<String> prefixesAsked = new ArrayList<>();
@@ -80,6 +87,17 @@ class WaybackDiscoveryRunTest {
 		assertThat(runOver(this::chunkOf).discover(AtsEnum.LEVER))
 			.isEqualTo(new WaybackDiscoveryRun.Report(AtsEnum.LEVER, 2, 2, 2));
 		assertThat(this.prefixesAsked).containsExactly("jobs.lever.co/", "jobs.eu.lever.co/");
+	}
+
+	@Test
+	void recordsTheSlugOfEveryWorkdayBoardCapturedOnEitherDomain() throws IOException {
+		given(this.companies.record(eq(AtsEnum.WORKDAY),
+				eq(new TreeMap<>(Map.of("nvidia.wd5/nvidiaexternalcareersite", RegionEnum.US)))))
+			.willReturn(1);
+
+		assertThat(runOver(this::chunkOf).discover(AtsEnum.WORKDAY))
+			.isEqualTo(new WaybackDiscoveryRun.Report(AtsEnum.WORKDAY, 3, 1, 1));
+		assertThat(this.prefixesAsked).containsExactly("*.myworkdayjobs.com/", "*.myworkdaysite.com/");
 	}
 
 	@Test

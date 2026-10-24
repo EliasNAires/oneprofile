@@ -27,6 +27,10 @@ CC-MAIN-2025-47. Decided with Elias on 2026-10-21 (#74).
   `503` page taken as a refusal to wait out and ask again. The research chose chunks of 50,000;
   the backfill halved them (2026-10-22, #78), because at the server's speed then a chunk came
   close to the gateway's 60 s timeout and a slow one became a `504`.
+  *Amended 2026-10-24 (#81):* an ATS whose boards are subdomains, as Workday's are, is asked for
+  by domain rather than by prefix: written `*.myworkdayjobs.com`, it is the CDX query
+  `url=myworkdayjobs.com&matchType=domain`, and Common Crawl's SURT prefix `com,myworkdayjobs,`.
+  Research: `docs/measurements/2026-10-workday.md` § Wayback.
 
 Amends ADR-0001 by adding a second archive; ADR-0001's method for Common Crawl is unchanged.
 

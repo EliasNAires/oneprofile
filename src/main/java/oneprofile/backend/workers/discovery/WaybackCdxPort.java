@@ -12,7 +12,8 @@ public interface WaybackCdxPort {
 
 	/**
 	 * Asks for one chunk of the captures under a prefix.
-	 * @param urlPrefix the URL prefix without its scheme, such as {@code boards.greenhouse.io/}
+	 * @param urlPrefix the URL prefix without its scheme, such as {@code boards.greenhouse.io/}, or
+	 * {@code *.myworkdayjobs.com/} for every capture on a domain and its subdomains
 	 * @param resumeKey the key the previous chunk closed with, or empty for the first chunk
 	 * @return the chunk as the index answered it: a closed JSON array, or an empty body if nothing
 	 * was captured under the prefix

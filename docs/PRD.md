@@ -39,7 +39,8 @@ search.
 ### 4.1 Sources
 
 Three applicant tracking systems, built and run: **Greenhouse**, **Ashby** (#20) and **Lever**
-(#79). Why Ashby before Workable and Lever: ADR-0002.
+(#79). A fourth, **Workday** (#81), is built, its first run to come. Why Ashby before Workable and
+Lever: ADR-0002.
 Which ATSs come next, and in what order: ADR-0022.
 
 ### 4.2 Slug discovery — built
@@ -49,7 +50,9 @@ Backfill depth is **12 crawls**, roughly one year: the newest crawl yielded 77% 
 at 31.9 vacancies each, older ones 18–36% live at 3.8 each. Ashby's twelve crawls name 4597
 boards, 72.5% of them live at 18.3 vacancies each (#20). Lever's twelve are CC-MAIN-2025-43 and
 older, since Cloudflare refuses CCBot after it; the Wayback Machine is read whole beside them for
-every ATS (ADR-0023). Each archive's yield: `docs/measurements/2026-10-wayback.md` and
+every ATS (ADR-0023). A Workday board is a subdomain, so both archives are asked for every
+subdomain of `myworkdayjobs.com` and `myworkdaysite.com`, and its slug is `<tenant>.<host>/<site>`.
+Each archive's yield: `docs/measurements/2026-10-wayback.md` and
 `docs/measurements/2026-10-lever.md`.
 
 ### 4.3 Board probing and vacancy ingestion
@@ -75,6 +78,15 @@ one response; a probe adds `limit=1`. It names no company. Its description comes
 another. Its structured fields (`workplaceType`, `country`, `categories` with commitment, team
 and every location, `salaryRange` with its interval) are kept as Lever writes them, on its own
 class of vacancy. Its API, pace and yield: `docs/measurements/2026-10-lever.md`.
+
+Workday: `POST https://{tenant}.{host}.myworkdayjobs.com/wday/cxs/{tenant}/{site}/jobs`, 20
+vacancies a page with no description; a probe asks for one. Paging stops at 2000, so a larger
+board is read in parts by facet. A description is a `GET …/job/{path}` a vacancy, asked for only
+where the title is `IN`, or `UNKNOWN` for domain or scope ambiguity; the rest are held from the
+list alone. Its own errors (`400`, `401`, `403`, `404`, `422`) mean no public board. Every request
+of its probes and sweeps shares one pace, 16 a second and 20 open (ADR-0025). Its time type,
+country and every location are kept as Workday writes them, on its own class of vacancy. Its API,
+pace and the boards it holds: `docs/measurements/2026-10-workday.md`.
 
 All ingestion is triggered manually by an administrative endpoint today. In production every
 stage runs on a schedule (§12.5), once the real runtimes are measured.
@@ -275,7 +287,8 @@ company is `(ats, slug)`; a vacancy is `(company_id, external_id)`.
   Greenhouse vacancy adds `pay_title`, `updated_at` and its declared `language`; an Ashby one
   adds `workplace_type`, `address_country`, `secondary_locations` with their countries, and
   `pay_interval`, as Ashby writes them; a Lever one adds `workplace_type`, `country`,
-  `commitment`, `team`, `all_locations` and `pay_interval`, as Lever writes them. Discarding Ashby's structured country to match
+  `commitment`, `team`, `all_locations` and `pay_interval`, as Lever writes them; a Workday one
+  adds `time_type`, `country` and `all_locations`. Discarding Ashby's structured country to match
   Greenhouse's weaker free-text shape would throw away the best available eligibility input.
 - `normalized_vacancy` — one row per vacancy holding every derived scalar: cleaned title,
   normalized title, whether it is an engineering role, the signal that classified it, work

@@ -117,6 +117,29 @@ class VacancyStoreTest {
 	}
 
 	@Test
+	void holdsWhatWorkdayPublishesOnAWorkdayVacancy() {
+		this.companies.record(AtsEnum.WORKDAY, Map.of("nvidia.wd5/nvidiaexternalcareersite", RegionEnum.US));
+		PublishedWorkdayVacancy published = new PublishedWorkdayVacancy("RTL-Design-Engineer--DFT_JR2028303",
+				"RTL Design Engineer, DFT", "Israel, Yokneam", "Design the DFT logic.",
+				"https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/Israel-Yokneam/RTL-Design-Engineer--DFT_JR2028303",
+				FIRST_PUBLISHED_AT, "Full time", "IL", List.of("Israel, Yokneam", "Israel, Tel Aviv"));
+
+		this.vacancies.mirror(AtsEnum.WORKDAY, "nvidia.wd5/nvidiaexternalcareersite", List.of(published));
+
+		assertThat(this.repository.findAll()).singleElement()
+			.isInstanceOfSatisfying(WorkdayVacancyEntity.class, (held) -> {
+				assertThat(held.externalId()).isEqualTo("RTL-Design-Engineer--DFT_JR2028303");
+				assertThat(held.location()).isEqualTo("Israel, Yokneam");
+				assertThat(held.department()).isNull();
+				assertThat(held.payMinCents()).isNull();
+				assertThat(held.timeType()).isEqualTo("Full time");
+				assertThat(held.country()).isEqualTo("IL");
+				assertThat(held.allLocations()).containsExactly("Israel, Yokneam", "Israel, Tel Aviv");
+			});
+		assertThat(atsHeld()).containsExactly("WORKDAY");
+	}
+
+	@Test
 	void holdsAGreenhouseVacancyUnderItsAts() {
 		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001)));
 

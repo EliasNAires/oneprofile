@@ -50,16 +50,19 @@ public class WaybackDiscoveryRun {
 			case GREENHOUSE -> GreenhouseUrlRule.BOARD_URL_PREFIXES;
 			case ASHBY -> AshbyUrlRule.BOARD_URL_PREFIXES;
 			case LEVER -> LeverUrlRule.BOARD_URL_PREFIXES;
+			case WORKDAY -> WorkdayUrlRule.BOARD_URL_PREFIXES;
 		};
 		Function<String, Optional<String>> slugIn = switch (ats) {
 			case GREENHOUSE -> GreenhouseUrlRule::slugIn;
 			case ASHBY -> AshbyUrlRule::slugIn;
 			case LEVER -> LeverUrlRule::slugIn;
+			case WORKDAY -> WorkdayUrlRule::slugIn;
 		};
 		Function<String, RegionEnum> regionIn = switch (ats) {
 			case GREENHOUSE -> GreenhouseUrlRule::regionIn;
 			case ASHBY -> AshbyUrlRule::regionIn;
 			case LEVER -> LeverUrlRule::regionIn;
+			case WORKDAY -> WorkdayUrlRule::regionIn;
 		};
 		SortedMap<String, RegionEnum> slugs = new TreeMap<>();
 		long captures = 0;

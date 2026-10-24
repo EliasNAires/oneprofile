@@ -71,6 +71,15 @@ class ClusterIndexParserTest {
 	}
 
 	@Test
+	void readsAWildcardHostAsEverySubdomainOfTheDomain() throws IOException {
+		List<CdxBlock> blocks = this.clusterIndex.locate(CRAWL, "https://*.greenhouse.io/");
+
+		assertThat(blocks).hasSize(30);
+		assertThat(blocks.getFirst()).isEqualTo(new CdxBlock("cdx-00199.gz", 389267940, 272775));
+		assertThat(blocks.getLast()).isEqualTo(new CdxBlock("cdx-00199.gz", 396094785, 274803));
+	}
+
+	@Test
 	void returnsTheStraddlingBlocksWhenNoSampledKeyCarriesThePrefix() throws IOException {
 		List<CdxBlock> blocks = this.clusterIndex.locate(CRAWL, "https://gpu.greenhouse.io/");
 

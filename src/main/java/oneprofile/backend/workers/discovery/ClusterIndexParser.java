@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import org.archive.url.WaybackURLKeyMaker;
 import org.springframework.stereotype.Component;
 
@@ -37,7 +39,8 @@ public class ClusterIndexParser {
 	/**
 	 * Locates the blocks of one crawl that can hold records for a URL prefix.
 	 * @param crawl the crawl to search, such as {@code CC-MAIN-2026-34}
-	 * @param urlPrefix the URL prefix to look for, such as {@code https://boards.greenhouse.io/}
+	 * @param urlPrefix the URL prefix to look for, such as {@code https://boards.greenhouse.io/}, or
+	 * {@code https://*.myworkdayjobs.com/} for every subdomain of a domain
 	 * @return the blocks to read, in index order, from the one preceding the first match to the one
 	 * following the last
 	 * @throws IOException if the index could not be read
@@ -50,7 +53,20 @@ public class ClusterIndexParser {
 		return blocksFrom(path, size, lastLineStartBelow(path, size, prefix), prefix);
 	}
 
+	/**
+	 * The SURT prefix a URL prefix is searched by. A host written {@code *.} stands for every subdomain
+	 * of the domain after it, as the Wayback Machine's CDX server writes it, whatever their paths: the
+	 * domain's labels reversed and left open, as in {@code com,myworkdayjobs,}.
+	 */
 	private String surt(String urlPrefix) {
+		String wildcard = "://*.";
+		int hostStart = urlPrefix.indexOf(wildcard);
+		if (hostStart >= 0) {
+			String domain = urlPrefix.substring(hostStart + wildcard.length()).split("[/?#]", 2)[0];
+			List<String> labels = new ArrayList<>(List.of(domain.toLowerCase(Locale.ROOT).split("\\.")));
+			Collections.reverse(labels);
+			return String.join(",", labels) + ",";
+		}
 		try {
 			return this.keyMaker.makeKey(urlPrefix);
 		}

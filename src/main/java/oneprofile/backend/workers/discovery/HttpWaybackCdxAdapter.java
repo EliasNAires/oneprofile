@@ -114,8 +114,8 @@ public class HttpWaybackCdxAdapter implements WaybackCdxPort {
 
 	@Override
 	public String chunk(String urlPrefix, Optional<String> resumeKey) throws IOException {
-		String query = "url=%s&matchType=prefix&limit=25000&showResumeKey=true&output=json&fl=original"
-			.formatted(encoded(urlPrefix)) + resumeKey.map((key) -> "&resumeKey=" + encoded(key)).orElse("");
+		String query = "%s&limit=25000&showResumeKey=true&output=json&fl=original".formatted(match(urlPrefix))
+				+ resumeKey.map((key) -> "&resumeKey=" + encoded(key)).orElse("");
 		HttpRequest request = HttpRequest.newBuilder(URI.create(this.base + "?" + query))
 			.header("User-Agent", this.userAgent)
 			.GET()
@@ -205,6 +205,19 @@ public class HttpWaybackCdxAdapter implements WaybackCdxPort {
 			Thread.currentThread().interrupt();
 			throw new IOException("Interrupted while backing off", ex);
 		}
+	}
+
+	/**
+	 * What the index is asked to match: the captures under a prefix, or, for a host written {@code *.},
+	 * every capture on the domain after it and its subdomains, as Workday's boards need
+	 * (docs/measurements/2026-10-workday.md § Wayback).
+	 */
+	private static String match(String urlPrefix) {
+		if (urlPrefix.startsWith("*.")) {
+			String domain = urlPrefix.substring("*.".length()).split("[/?#]", 2)[0];
+			return "url=%s&matchType=domain".formatted(encoded(domain));
+		}
+		return "url=%s&matchType=prefix".formatted(encoded(urlPrefix));
 	}
 
 	private static String encoded(String value) {

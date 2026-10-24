@@ -25,6 +25,10 @@ such field. Decided by grilling Elias on 2026-10-21 (#73). Overrides PRD §7's "
   country set are derived for every ATS by their passes (PRD §5.3, §5.4), which may read an ATS's
   own fields as evidence. `DescriptionMarkingRule` stays in the sweep as the one exception: it
   formats, it derives no fact.
+  *Amended 2026-10-24 (#81):* Workday's sweep also runs the title rules, to decide which
+  descriptions to ask for, a request each: only a title `IN`, or `UNKNOWN` for domain or scope
+  ambiguity (decided with Elias on 2026-10-23 and 2026-10-24). It stores nothing they decide;
+  classification still derives the fact in its pass.
 - **No common interface methods yet.** Each question a pass asks of every vacancy ("what work mode
   does it declare?") becomes a method with the pass that asks it, answered by each subclass.
 - **`PublishedVacancy` is split the same way**: a sealed interface with the common fields,
@@ -39,6 +43,9 @@ such field. Decided by grilling Elias on 2026-10-21 (#73). Overrides PRD §7's "
   beside Ashby's, each declared by its own class and holding its own ATS's values. A field of one
   ATS that means something else, such as Ashby's address country beside Lever's country, gets a
   column of its own.
+  *Amended 2026-10-24 (#81):* Workday's country (its requisition's two-letter code) is held in
+  `country` beside Lever's, and its main and additional locations in `all_locations`, the main one
+  first, as Lever's are. Its time type, named unlike Lever's commitment, gets `time_type`.
 - **Passes do not load `Vacancy` polymorphically over the corpus** when they need only the common
   fields; they read it through a projection, or name the subclass they need.
 

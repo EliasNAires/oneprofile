@@ -44,6 +44,19 @@ every ATS took 4 to 8 minutes against 36 minutes to 2h 17m, and a sweep 6 to 17 
     had.
   - A gateway error (Lever's `500`, `502` and `504`) is retried without slowing the run, since
     nothing has tied it to load.
+- **Workday departs from the above** (amended 2026-10-24, #81; its reasons are in
+  `docs/measurements/2026-10-workday.md` § The setting).
+  - Its settings are 16 requests a second and 20 open, not half its ceiling, which was found only
+    between 15 and 31 a second; 16 held over 34 minutes.
+  - They pace every request rather than every board, since a sweep asks a request a page and one a
+    description, and one throttle, in `WorkdayApiAdapter`, holds them for its probes and sweeps
+    together, since Cloudflare limits this machine across all of them. Its runs' own paces only
+    bound how many boards are read at once.
+  - A refusal is Cloudflare's `429` marked `cf-mitigated: challenge`. It halves the shared throttle
+    as well as the run, and is waited out from 1 minute, doubling, since a challenge cleared in one
+    to five. The throttle takes its full pace back once Workday has been left alone for 10
+    minutes, which is where the runs that share it end. A tenant's own `429`, and `502`, `503`,
+    `504` and `520` from one tenant's server, are retried without slowing anything.
 - **The settings are checked at full scale before they stand.** A probe and a sweep of every
   company of the ATS run on the dev machine with the new settings. Each run's wall clock is
   recorded against the run before, along with every refusal. If the ATS refuses during that

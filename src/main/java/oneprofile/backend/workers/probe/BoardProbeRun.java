@@ -32,9 +32,13 @@ public class BoardProbeRun {
 	 * Half of what each ATS served without refusing one on 2026-10-22 (#82,
 	 * docs/measurements/2026-10-pace.md § The settings). Lever holds 16 open at once, not half its 32,
 	 * because its slow tail rather than its rate binds it, and it is paced per region, since each has an API of its own.
+	 * Workday is asked at 16 a second, 20 at once, as decided on 2026-10-23
+	 * (docs/measurements/2026-10-workday.md § The setting); a probe is one request a board, and its
+	 * requests share one throttle with a Workday sweep's ({@code WorkdayApiAdapter}).
 	 */
 	private static final Map<AtsEnum, Pace> PACES = Map.of(AtsEnum.GREENHOUSE, new Pace(16, 60, false),
-			AtsEnum.ASHBY, new Pace(16, 40, false), AtsEnum.LEVER, new Pace(16, 30, true));
+			AtsEnum.ASHBY, new Pace(16, 40, false), AtsEnum.LEVER, new Pace(16, 30, true), AtsEnum.WORKDAY,
+			new Pace(20, 16, false));
 
 	private final Map<AtsEnum, BoardReaderPort> readers;
 
@@ -49,13 +53,14 @@ public class BoardProbeRun {
 	 * @param greenhouse reads Greenhouse boards
 	 * @param ashby reads Ashby boards
 	 * @param lever reads Lever boards
+	 * @param workday reads Workday boards
 	 * @param companies the companies to probe, and where the probes are recorded
 	 */
 	@Autowired
 	public BoardProbeRun(GreenhouseBoardReaderAdapter greenhouse, AshbyBoardReaderAdapter ashby,
-			LeverBoardReaderAdapter lever, CompanyStore companies) {
-		this(Map.of(AtsEnum.GREENHOUSE, greenhouse, AtsEnum.ASHBY, ashby, AtsEnum.LEVER, lever), PACES, companies,
-				Clock.systemUTC());
+			LeverBoardReaderAdapter lever, WorkdayBoardReaderAdapter workday, CompanyStore companies) {
+		this(Map.of(AtsEnum.GREENHOUSE, greenhouse, AtsEnum.ASHBY, ashby, AtsEnum.LEVER, lever, AtsEnum.WORKDAY,
+				workday), PACES, companies, Clock.systemUTC());
 	}
 
 	/**

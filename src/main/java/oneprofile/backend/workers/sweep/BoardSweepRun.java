@@ -34,10 +34,13 @@ public class BoardSweepRun {
 	/**
 	 * Half of the rate each ATS's sweep served on 2026-10-22, which this machine's link capped before
 	 * any ATS refused (#82, docs/measurements/2026-10-pace.md § The settings). Lever is paced per
-	 * region, since each has an API of its own.
+	 * region, since each has an API of its own. A Workday board is many requests, each paced by the one
+	 * throttle Workday's probes and sweeps share, 16 a second and 20 open ({@code WorkdayApiAdapter}),
+	 * so its sweep reads up to 20 boards at once and lets that throttle hold it.
 	 */
 	private static final Map<AtsEnum, Pace> PACES = Map.of(AtsEnum.GREENHOUSE, new Pace(8, 10, false),
-			AtsEnum.ASHBY, new Pace(8, 20, false), AtsEnum.LEVER, new Pace(8, 9, true));
+			AtsEnum.ASHBY, new Pace(8, 20, false), AtsEnum.LEVER, new Pace(8, 9, true), AtsEnum.WORKDAY,
+			new Pace(20, 16, false));
 
 	private final Map<AtsEnum, VacancyReaderPort> readers;
 
@@ -52,14 +55,16 @@ public class BoardSweepRun {
 	 * @param greenhouse reads the openings of Greenhouse boards
 	 * @param ashby reads the openings of Ashby boards
 	 * @param lever reads the openings of Lever boards
+	 * @param workday reads the openings of Workday boards
 	 * @param companies where the boards to sweep are read from
 	 * @param vacancies where what the boards publish is mirrored
 	 */
 	@Autowired
 	public BoardSweepRun(GreenhouseVacancyReaderAdapter greenhouse, AshbyVacancyReaderAdapter ashby,
-			LeverVacancyReaderAdapter lever, CompanyStore companies, VacancyStore vacancies) {
-		this(Map.of(AtsEnum.GREENHOUSE, greenhouse, AtsEnum.ASHBY, ashby, AtsEnum.LEVER, lever), PACES, companies,
-				vacancies);
+			LeverVacancyReaderAdapter lever, WorkdayVacancyReaderAdapter workday, CompanyStore companies,
+			VacancyStore vacancies) {
+		this(Map.of(AtsEnum.GREENHOUSE, greenhouse, AtsEnum.ASHBY, ashby, AtsEnum.LEVER, lever, AtsEnum.WORKDAY,
+				workday), PACES, companies, vacancies);
 	}
 
 	/**

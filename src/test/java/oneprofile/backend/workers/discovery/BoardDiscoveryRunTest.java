@@ -23,9 +23,10 @@ import oneprofile.backend.storage.company.RegionEnum;
 import org.junit.jupiter.api.Test;
 
 /**
- * The crawl the discovery is pointed at is a miniature of a real one: a {@code cluster.idx} of eleven
- * sampled keys over one shard of eleven blocks: one before Lever's two hosts, one per Lever host,
- * Ashby's host with one on either side, one per Greenhouse host, and one after them.
+ * The crawl the discovery is pointed at is a miniature of a real one: a {@code cluster.idx} of thirteen
+ * sampled keys over one shard of thirteen blocks: one before Lever's two hosts, one per Lever host,
+ * Ashby's host with one on either side, one per Workday domain, one per Greenhouse host, and one after
+ * them.
  */
 class BoardDiscoveryRunTest {
 
@@ -70,6 +71,16 @@ class BoardDiscoveryRunTest {
 
 		assertThat(this.discovery.discover(AtsEnum.LEVER, CRAWL))
 			.isEqualTo(new BoardDiscoveryRun.Report(AtsEnum.LEVER, CRAWL, 3, 3));
+	}
+
+	@Test
+	void recordsTheSlugOfEveryWorkdayBoardCapturedOnAnySubdomainOfEitherDomain() throws IOException {
+		given(this.companies.record(eq(AtsEnum.WORKDAY), eq(new TreeMap<>(Map.of("3m.wd1/search", RegionEnum.US,
+				"nvidia.wd5/nvidiaexternalcareersite", RegionEnum.US, "siemens.wd3/careers", RegionEnum.US)))))
+			.willReturn(3);
+
+		assertThat(this.discovery.discover(AtsEnum.WORKDAY, CRAWL))
+			.isEqualTo(new BoardDiscoveryRun.Report(AtsEnum.WORKDAY, CRAWL, 3, 3));
 	}
 
 	@Test
@@ -131,6 +142,12 @@ class BoardDiscoveryRunTest {
 			appendBlock(shard, clusterIndex, "com,ashbyhq,jobs)/linear",
 					List.of(capture("https://jobs.ashbyhq.com/linear/2b5c8a1e-0d4f-4c1e-9d0a-1b2c3d4e5f60"),
 							capture("https://jobs.ashbyhq.com/Ramp/application")));
+			appendBlock(shard, clusterIndex, "com,myworkdayjobs,nvidia,wd5)/nvidiaexternalcareersite",
+					List.of(capture("https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/x_JR1"),
+							capture("https://3m.wd1.myworkdayjobs.com/en-US/Search")));
+			appendBlock(shard, clusterIndex, "com,myworkdaysite,wd5)/recruiting/nvidia",
+					List.of(capture("https://wd5.myworkdaysite.com/recruiting/nvidia/NVIDIAExternalCareerSite"),
+							capture("https://wd3.myworkdaysite.com/en-US/recruiting/siemens/Careers/job/y")));
 			appendBlock(shard, clusterIndex, "io,aaa)/", List.of(capture("https://aaa.io/")));
 			appendBlock(shard, clusterIndex, "io,greenhouse,boards)/acme",
 					List.of(capture("https://boards.greenhouse.io/acme/jobs/1"),

@@ -61,6 +61,16 @@ class HttpWaybackCdxAdapterTest {
 	}
 
 	@Test
+	void asksForEveryCaptureOnTheDomainForAWildcardHost() throws IOException {
+		serve((exchange) -> respond(exchange, 200, CHUNK));
+
+		cdx().chunk("*.myworkdayjobs.com/", Optional.empty());
+
+		assertThat(this.queries).containsExactly(
+				"url=myworkdayjobs.com&matchType=domain&limit=25000&showResumeKey=true&output=json&fl=original");
+	}
+
+	@Test
 	void continuesFromTheResumeKeyThePreviousChunkClosedWith() throws IOException {
 		serve((exchange) -> respond(exchange, 200, CHUNK));
 
