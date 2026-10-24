@@ -138,6 +138,48 @@ vacancy:
 
 A tenant's several Workday sites can list the same vacancy too, which the 913 000 already leaves out.
 
+### Wayback
+
+Researched on 2026-10-24 against `web.archive.org/cdx/search/cdx`, one request at a time, as
+`2026-10-wayback.md` reads it. Not read whole yet.
+
+- **A board is a subdomain, so the query is the domain's**: `url=myworkdayjobs.com&matchType=domain`,
+  not a host and path prefix as for the other ATSs (`url=<host>/&matchType=prefix`). The reader
+  needs that form.
+- **The page count overstates the read.** `showNumPages` gives 1001 pages for `myworkdayjobs.com`
+  (392 for `wd1` alone) and 32 for `myworkdaysite.com`, but a page of the domain query holds 0 to
+  4916 captures, about 950 on average, against about 6000 for Greenhouse's prefix query. That is
+  about a million captures, a read of 30 minutes to an hour at the 1 to 2.3 million an hour
+  Greenhouse's and Lever's whole reads took.
+
+12 pages drawn at random (seed `wb81`) and read with `page=N`:
+
+| | |
+| --- | ---: |
+| Pages read | 11 of 12 |
+| Captures | 10 430 |
+| Boards | 77 |
+| … not among Common Crawl's 7970 | 43 (56%) |
+
+At 56% new, Wayback would add about 4500 boards; from 77 boards, an order of size only. None was
+probed.
+
+What Wayback added for the ATSs read before, applied to Workday's Common Crawl boards (6006 live,
+81 000 to 92 000 `IN`):
+
+| Like | New live boards, against Common Crawl's | `IN` added |
+| --- | ---: | ---: |
+| Ashby | +12% | 5400 to 6100 |
+| Greenhouse | +40% | 17 000 to 19 000 |
+| Lever | +19% | 22 000 to 25 000 |
+
+Greenhouse is the nearest: its Common Crawl captures are current, as Workday's are, while Lever's
+stop in October 2025.
+
+**Refusals**: Wayback's `503` "Temporarily Offline" page, as before. Most pages were refused once
+and answered after 30 s; from 15:00 to 15:33 every request was refused, and page 821 was given up
+after six attempts over 32 minutes. One `504` came at 60 s.
+
 ## What the sources say
 
 | | Workday |
@@ -219,7 +261,8 @@ pass then never sees.
 
 ## What is left
 
-1. **Wayback** for `*.myworkdayjobs.com` and `*.myworkdaysite.com` (ADR-0023).
+1. **Wayback read whole** by resume key with the domain query, its new boards probed and their
+   titles sampled (§ Wayback).
 2. **What caps it first** beside Workday: the machine's link and `VacancyStore.mirror`, measured
    in the full-scale check.
 3. **Facets for a board of 2000 or more**: which facet splits a board into parts under 2000.
