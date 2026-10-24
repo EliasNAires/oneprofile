@@ -83,7 +83,9 @@ Workday: `POST https://{tenant}.{host}.myworkdayjobs.com/wday/cxs/{tenant}/{site
 vacancies a page with no description; a probe asks for one. Paging stops at 2000, so a larger
 board is read in parts by facet. A description is a `GET …/job/{path}` a vacancy, asked for only
 where the title is `IN`, or `UNKNOWN` for domain or scope ambiguity; the rest are held from the
-list alone. Its own errors (`400`, `401`, `403`, `404`, `422`) mean no public board. Every request
+list alone. Its own errors (`400`, `401`, `403`, `404`, `422`) mean no public board. A Workday
+company has no name: Workday names it only on a vacancy's page, as a legal entity such as "2100
+NVIDIA USA" (decided with Elias on 2026-10-24). Every request
 of its probes and sweeps shares one pace, 16 a second and 20 open (ADR-0025). Its time type,
 country and every location are kept as Workday writes them, on its own class of vacancy. Its API,
 pace and the boards it holds: `docs/measurements/2026-10-workday.md`.
