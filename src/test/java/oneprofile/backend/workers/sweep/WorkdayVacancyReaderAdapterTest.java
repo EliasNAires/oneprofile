@@ -58,7 +58,7 @@ class WorkdayVacancyReaderAdapterTest {
 						- Build the NVLink firmware.""",
 				"https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Senior-Software-Engineer_JR1",
 				Instant.parse("2026-10-23T00:00:00Z"), "Full time", "US",
-				List.of("US, CA, Santa Clara", "Israel, Tel Aviv")));
+				List.of("US, CA, Santa Clara", "Israel, Tel Aviv"), "2100 NVIDIA USA"));
 	}
 
 	@Test
@@ -89,7 +89,7 @@ class WorkdayVacancyReaderAdapterTest {
 		assertThat(reader(workday).read(SLUG, RegionEnum.US, () -> {
 		})).containsExactly(new PublishedWorkdayVacancy("PCT-Med-Surg-Unit_JR9", "PCT Med Surg Unit", "Santa-Clara",
 				null, "https://nvidia.wd5.myworkdayjobs.com/nvidiaexternalcareersite/job/Santa-Clara/PCT-Med-Surg-Unit_JR9",
-				null, null, null, null));
+				null, null, null, null, null));
 		assertThat(this.asked).noneMatch((request) -> request.startsWith("job "));
 	}
 
@@ -155,7 +155,7 @@ class WorkdayVacancyReaderAdapterTest {
 		})).containsExactly(new PublishedWorkdayVacancy("Senior-Software-Engineer_JR1", "Senior Software Engineer",
 				"Santa-Clara", null,
 				"https://nvidia.wd5.myworkdayjobs.com/nvidiaexternalcareersite/job/Santa-Clara/Senior-Software-Engineer_JR1",
-				null, null, null, null));
+				null, null, null, null, null));
 	}
 
 	@Test

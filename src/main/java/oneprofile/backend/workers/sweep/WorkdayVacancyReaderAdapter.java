@@ -43,7 +43,7 @@ import tools.jackson.databind.JsonNode;
  * runs; a vacancy they rule in later has its description read by the next sweep. A vacancy whose
  * page answers {@code 404} has closed since the list was read, and is left out; one whose page
  * Workday answers with another error of its own is held as the list names it, so that one vacancy
- * does not cost its board. Its page also names the company, which nothing reads yet.
+ * does not cost its board. Its page also names the company, which the sweep takes as its name.
  */
 @Component
 public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
@@ -204,7 +204,7 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 		String externalId = path.substring(path.lastIndexOf('/') + 1);
 		String title = text(posting.path("title"));
 		PublishedWorkdayVacancy listed = new PublishedWorkdayVacancy(externalId, title,
-				text(posting.path("locationsText")), null, url(slug, path), null, null, null, null);
+				text(posting.path("locationsText")), null, url(slug, path), null, null, null, null, null);
 		if (!descriptionCalledFor(title)) {
 			return Optional.of(listed);
 		}
@@ -233,7 +233,8 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 				orElse(location, text(posting.path("locationsText"))),
 				DescriptionMarkingRule.markedLines(text(info.path("jobDescription"))), orElse(url, url(slug, path)),
 				day(text(info.path("startDate"))), text(info.path("timeType")),
-				text(info.path("jobRequisitionLocation").path("country").path("alpha2Code")), allLocations));
+				text(info.path("jobRequisitionLocation").path("country").path("alpha2Code")), allLocations,
+				text(answer.body().path("hiringOrganization").path("name"))));
 	}
 
 	/**

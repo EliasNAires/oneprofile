@@ -24,6 +24,7 @@ import oneprofile.backend.storage.company.CompanyStore;
 import oneprofile.backend.storage.company.RegionEnum;
 import oneprofile.backend.storage.vacancy.PublishedGreenhouseVacancy;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
+import oneprofile.backend.storage.vacancy.PublishedWorkdayVacancy;
 import oneprofile.backend.storage.vacancy.VacancyStore;
 import oneprofile.backend.workers.Pace;
 import org.junit.jupiter.api.Test;
@@ -51,6 +52,24 @@ class BoardSweepRunTest {
 
 		assertThat(sweep.sweepAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardSweepRun.Report(2, 4, 2, 2, 3, 0));
 		then(this.vacancies).should().mirror(AtsEnum.GREENHOUSE, "notion", List.of(published(5001)));
+	}
+
+	@Test
+	void recordsTheNameTheVacanciesOfABoardGiveMostOftenAndNoneWhereTheyGiveNone() {
+		given(this.companies.regionsOf(AtsEnum.WORKDAY, BoardStatusEnum.ACTIVE))
+			.willReturn(new TreeMap<>(Map.of("nvidia.wd5/careers", RegionEnum.US, "acme.wd1/careers", RegionEnum.US)));
+		given(this.vacancies.mirror(any(), any(), any())).willReturn(new VacancyStore.Reconciliation(0, 0, 0));
+		Map<String, List<PublishedVacancy>> boards = Map.of("nvidia.wd5/careers",
+				List.of(workday("JR1", "2100 NVIDIA USA"), workday("JR2", null), workday("JR3", "NVIDIA Israel"),
+						workday("JR4", "2100 NVIDIA USA")),
+				"acme.wd1/careers", List.of(workday("JR9", null)));
+
+		new BoardSweepRun(Map.of(AtsEnum.WORKDAY, reader(boards)), Map.of(AtsEnum.WORKDAY, UNPACED), this.companies,
+				this.vacancies)
+			.sweepAll(AtsEnum.WORKDAY);
+
+		then(this.companies).should().recordName(AtsEnum.WORKDAY, "nvidia.wd5/careers", "2100 NVIDIA USA");
+		then(this.companies).should(BDDMockito.never()).recordName(eq(AtsEnum.WORKDAY), eq("acme.wd1/careers"), any());
 	}
 
 	@Test
@@ -162,6 +181,11 @@ class BoardSweepRunTest {
 		sweep.sweepAll(AtsEnum.LEVER);
 
 		assertThat(asked).isEqualTo(Map.of("finix", RegionEnum.US, "kwalee", RegionEnum.EU));
+	}
+
+	private static PublishedVacancy workday(String externalId, String companyName) {
+		return new PublishedWorkdayVacancy(externalId, "Software Engineer", "Santa Clara", null,
+				"https://nvidia.wd5.myworkdayjobs.com/careers/job/" + externalId, null, null, null, null, companyName);
 	}
 
 	private void activeSlugs(String... slugs) {

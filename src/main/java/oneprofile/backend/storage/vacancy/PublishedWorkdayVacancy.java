@@ -23,10 +23,12 @@ import java.util.List;
  * @param country the country of the vacancy's requisition, as a two-letter code, or null if it gave none
  * @param allLocations every location the vacancy names, the main one first, or null if its page was not
  * read
+ * @param companyName the organization its page names as hiring, such as {@code 2100 NVIDIA USA}, or
+ * null if its page was not read or names none
  */
 public record PublishedWorkdayVacancy(String externalId, String title, String location, String description,
-		String url, Instant firstPublishedAt, String timeType, String country,
-		List<String> allLocations) implements PublishedVacancy {
+		String url, Instant firstPublishedAt, String timeType, String country, List<String> allLocations,
+		String companyName) implements PublishedVacancy {
 
 	public PublishedWorkdayVacancy {
 		allLocations = (allLocations != null) ? List.copyOf(allLocations) : null;

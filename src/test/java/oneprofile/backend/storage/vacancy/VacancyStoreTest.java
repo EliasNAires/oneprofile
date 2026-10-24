@@ -122,7 +122,7 @@ class VacancyStoreTest {
 		PublishedWorkdayVacancy published = new PublishedWorkdayVacancy("RTL-Design-Engineer--DFT_JR2028303",
 				"RTL Design Engineer, DFT", "Israel, Yokneam", "Design the DFT logic.",
 				"https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/Israel-Yokneam/RTL-Design-Engineer--DFT_JR2028303",
-				FIRST_PUBLISHED_AT, "Full time", "IL", List.of("Israel, Yokneam", "Israel, Tel Aviv"));
+				FIRST_PUBLISHED_AT, "Full time", "IL", List.of("Israel, Yokneam", "Israel, Tel Aviv"), "NVIDIA Israel");
 
 		this.vacancies.mirror(AtsEnum.WORKDAY, "nvidia.wd5/nvidiaexternalcareersite", List.of(published));
 

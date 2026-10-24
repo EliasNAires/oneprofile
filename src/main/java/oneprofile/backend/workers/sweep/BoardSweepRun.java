@@ -1,10 +1,14 @@
 package oneprofile.backend.workers.sweep;
 
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.SortedMap;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.company.BoardStatusEnum;
 import oneprofile.backend.storage.company.CompanyStore;
@@ -24,7 +28,8 @@ import org.springframework.stereotype.Component;
  * paced at what each ATS serves without refusing, with a margin: several are open at once, up to a
  * limit, and they start no faster than a limit a second. Each board is mirrored as soon as it is
  * read. A board that could not be read is skipped whole: the company keeps the vacancies it already
- * had, so a board that went down is not mistaken for a board that emptied.
+ * had, so a board that went down is not mistaken for a board that emptied. Where its vacancies name
+ * the company, as Workday's do, the company takes the name they give most often.
  */
 @Component
 public class BoardSweepRun {
@@ -103,6 +108,7 @@ public class BoardSweepRun {
 							return;
 						}
 						VacancyStore.Reconciliation reconciliation = this.vacancies.mirror(ats, slug, openings);
+						companyName(openings).ifPresent((name) -> this.companies.recordName(ats, slug, name));
 						published.addAndGet(openings.size());
 						added.addAndGet(reconciliation.added());
 						updated.addAndGet(reconciliation.updated());
@@ -110,6 +116,21 @@ public class BoardSweepRun {
 					});
 		return new Report(regions.size(), published.get(), added.get(), updated.get(), deleted.get(),
 				unreadable.get());
+	}
+
+	/**
+	 * The name a board's vacancies give their company most often, where its ATS names the company on
+	 * a vacancy: a tenant's vacancies can name several of its legal entities.
+	 */
+	private static Optional<String> companyName(List<PublishedVacancy> openings) {
+		return openings.stream()
+			.map(PublishedVacancy::companyName)
+			.filter((name) -> name != null && !name.isBlank())
+			.collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
+			.entrySet()
+			.stream()
+			.max(Map.Entry.comparingByValue())
+			.map(Map.Entry::getKey);
 	}
 
 	/** What the board publishes, or null if the ATS could not be made to say. */

@@ -71,6 +71,22 @@ public class CompanyStore {
 	}
 
 	/**
+	 * Records the name a sweep read off a company's vacancies, where its ATS names the company only
+	 * there, as Workday does.
+	 * @param ats the ATS the slug belongs to
+	 * @param slug the slug whose board was swept
+	 * @param name the name its vacancies give
+	 * @throws IllegalStateException if no company is held under that slug
+	 */
+	@Transactional
+	public void recordName(AtsEnum ats, String slug, String name) {
+		CompanyEntity company = this.repository.findByAtsAndSlug(ats, slug)
+			.orElseThrow(() -> new IllegalStateException("No %s company is held under %s".formatted(ats, slug)));
+		company.named(name);
+		this.repository.save(company);
+	}
+
+	/**
 	 * Records on a company what a probe found on its board. Probing the same slug again replaces
 	 * what the last probe recorded rather than adding anything.
 	 * @param ats the ATS the slug belongs to

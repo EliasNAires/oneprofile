@@ -49,4 +49,13 @@ public sealed interface PublishedVacancy permits PublishedGreenhouseVacancy, Pub
 	/** When the vacancy was first published. */
 	Instant firstPublishedAt();
 
+	/**
+	 * The company the vacancy names as hiring, where its ATS names one on it. Read as the company's
+	 * name, not held on the vacancy.
+	 * @return the company's name as the ATS writes it, or null if it names none here
+	 */
+	default String companyName() {
+		return null;
+	}
+
 }

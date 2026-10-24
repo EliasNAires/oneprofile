@@ -71,6 +71,21 @@ class CompanyStoreTest {
 	}
 
 	@Test
+	void recordsTheNameASweepFoundWithoutTouchingWhatTheProbeFound() {
+		this.companies.record(AtsEnum.WORKDAY, Map.of("nvidia.wd5/nvidiaexternalcareersite", RegionEnum.US));
+		this.companies.recordProbe(AtsEnum.WORKDAY, "nvidia.wd5/nvidiaexternalcareersite", BoardStatusEnum.ACTIVE, null,
+				PROBED_AT);
+
+		this.companies.recordName(AtsEnum.WORKDAY, "nvidia.wd5/nvidiaexternalcareersite", "2100 NVIDIA USA");
+
+		CompanyEntity nvidia = this.repository.findByAtsAndSlug(AtsEnum.WORKDAY, "nvidia.wd5/nvidiaexternalcareersite")
+			.orElseThrow();
+		assertThat(nvidia.name()).isEqualTo("2100 NVIDIA USA");
+		assertThat(nvidia.boardStatus()).isEqualTo(BoardStatusEnum.ACTIVE);
+		assertThat(nvidia.probedAt()).isEqualTo(PROBED_AT);
+	}
+
+	@Test
 	void refusesToRecordAProbeOfASlugItDoesNotHold() {
 		assertThatThrownBy(() -> this.companies.recordProbe(AtsEnum.GREENHOUSE, "stripe", BoardStatusEnum.ACTIVE, "Stripe",
 				PROBED_AT))

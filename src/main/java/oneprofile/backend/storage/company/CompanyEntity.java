@@ -59,6 +59,15 @@ public class CompanyEntity {
 		}
 	}
 
+	/**
+	 * Records the readable name its board gave where a probe could not read one, as a sweep reads it
+	 * off a vacancy.
+	 * @param name the name, never null
+	 */
+	public void named(String name) {
+		this.name = name;
+	}
+
 	/** The identifier it is known by within its ATS. */
 	public String slug() {
 		return this.slug;
