@@ -111,7 +111,9 @@ public class CorpusCleaningRun {
 			}
 			Map<Long, CleanedVacancy> cleanedVacancies = new LinkedHashMap<>(read.size());
 			for (VacancyText vacancy : read) {
-				String title = vacancy.title();
+				// A board can list a vacancy without a title (a few Workday boards do), which cleans as
+				// an empty one.
+				String title = (vacancy.title() != null) ? vacancy.title() : "";
 				CleanedTitle cleanedTitle = this.titleCleaning.clean(title);
 				titles.add(title);
 				evenlySpaced.add(this.titleCleaning.evenlySpaced(title));

@@ -44,6 +44,16 @@ class CorpusCleaningRunTest {
 	}
 
 	@Test
+	void cleansAVacancyItsBoardGaveNoTitleAsAnEmptyTitle() {
+		holds(titled(1, null), titled(2, "Designer"));
+
+		assertThat(cleaning(10).cleanAll().vacancies()).isEqualTo(2);
+
+		assertThat(recorded()).extracting(Map.Entry::getKey, (entry) -> entry.getValue().cleanedTitle())
+			.containsExactly(tuple(1L, new CleanedTitle("", Set.of())), tuple(2L, new CleanedTitle("Designer", Set.of())));
+	}
+
+	@Test
 	void cutsTheCleanedDescriptionOfEveryVacancyIntoSegments() {
 		holds(new VacancyText(1, "Backend Engineer", "# Requirements\n- 🚀 Java", "en"), titled(2, "Designer"));
 
