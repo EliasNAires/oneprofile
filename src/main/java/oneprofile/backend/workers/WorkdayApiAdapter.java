@@ -28,9 +28,10 @@ import tools.jackson.databind.node.MissingNode;
  * half of the ceiling. A run's own pace counts boards, and a sweep asks many requests a board.
  * <p>
  * Cloudflare refuses with a {@code 429} marked {@code cf-mitigated: challenge}, with no
- * {@code Retry-After}; it cleared within one to five minutes. That slows the throttle and the run
- * down, once for the requests it refuses together: a request started before the throttle last
- * slowed was asked at the pace already given up. A tenant's own {@code 429}, with Workday's JSON error body, and a gateway error from one
+ * {@code Retry-After}; it cleared within one to five minutes. Every request then waits it out
+ * together, held by the throttle from one minute, doubling while it still refuses, and the burst
+ * slows the throttle and the run down once: in a sweep on 2026-10-24, each request refused after a
+ * challenge was asked to halve again, and one challenge took the pace from 16 a second to 2. A tenant's own {@code 429}, with Workday's JSON error body, and a gateway error from one
  * tenant's server ({@code 502}, {@code 503} "no healthy upstream", {@code 504}, {@code 520}) are asked
  * again without slowing anything. Workday's other errors ({@code 400}, {@code 401}, {@code 403},
  * {@code 404}, {@code 422}) say a board cannot be read, and are answers.
@@ -54,7 +55,7 @@ public class WorkdayApiAdapter implements WorkdayApiPort {
 
 	private static final int ATTEMPTS = 5;
 
-	/** Cloudflare's challenge cleared within one to five minutes. */
+	/** Cloudflare's challenge cleared within one to five minutes; the throttle holds this long at first. */
 	private static final Duration REFUSAL_BACK_OFF = Duration.ofMinutes(1);
 
 	private static final Duration BACK_OFF = Duration.ofSeconds(1);
@@ -99,7 +100,8 @@ public class WorkdayApiAdapter implements WorkdayApiPort {
 	 * @param userAgent how this client identifies itself
 	 * @param throttle what paces every request
 	 * @param attempts how many times a request is made before it is given up on
-	 * @param refusalBackOff how long to wait after Cloudflare's first refusal, doubling with each further one
+	 * @param refusalBackOff how long every request waits after Cloudflare's first refusal of a burst, doubling
+	 * while it still refuses
 	 * @param backOff how long to wait after any other first failure, doubling with each further one
 	 * @param readTimeout how long a request is given to answer
 	 */
@@ -154,8 +156,8 @@ public class WorkdayApiAdapter implements WorkdayApiPort {
 	}
 
 	/**
-	 * Asks until Workday answers about the board, waiting after a refusal or a gateway error, each
-	 * attempt paced by the throttle.
+	 * Asks until Workday answers about the board, held by the throttle after a refusal and waiting after
+	 * a gateway error, each attempt paced by the throttle.
 	 */
 	private Answer send(HttpRequest request, String slug, Runnable onRefusal) throws IOException {
 		for (int attempt = 1;; attempt++) {
@@ -164,17 +166,22 @@ public class WorkdayApiAdapter implements WorkdayApiPort {
 			int status = response.statusCode();
 			boolean challenged = status == 429
 					&& response.headers().firstValue("cf-mitigated").filter("challenge"::equalsIgnoreCase).isPresent();
+			if (!challenged) {
+				this.throttle.answered(startedAt);
+			}
 			if (status != 429 && !GATEWAY_ERRORS.contains(status)) {
 				return answer(response, request);
 			}
-			if (challenged && this.throttle.refused(startedAt)) {
+			if (challenged && this.throttle.refused(startedAt, this.refusalBackOff, MAX_BACK_OFF)) {
 				onRefusal.run();
 			}
 			if (attempt == this.attempts) {
 				throw new IOException("Asked %s of %s and got %d".formatted(request.uri(), slug, status));
 			}
-			Duration doubled = (challenged ? this.refusalBackOff : this.backOff).multipliedBy(1L << (attempt - 1));
-			wait(RetryAfter.or(response, (doubled.compareTo(MAX_BACK_OFF) > 0) ? MAX_BACK_OFF : doubled), slug);
+			if (!challenged) {
+				Duration doubled = this.backOff.multipliedBy(1L << (attempt - 1));
+				wait(RetryAfter.or(response, (doubled.compareTo(MAX_BACK_OFF) > 0) ? MAX_BACK_OFF : doubled), slug);
+			}
 		}
 	}
 

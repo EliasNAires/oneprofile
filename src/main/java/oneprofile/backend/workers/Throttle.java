@@ -6,7 +6,9 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  * A pace as it is held while requests are asked at it: how many may be open at once, and how many may
- * start a second, each halved by every refusal, down to one at a time and one a second (ADR-0025).
+ * start a second, each halved by every refusal, down to one at a time and one a second (ADR-0025). A
+ * refusal can also hold every start while it is waited out, and then a burst of refusals halves the
+ * limits once.
  * <p>
  * A throttle one run holds for itself keeps its halving for the rest of that run. A throttle that
  * several runs share, as Workday's probes and sweeps share one, cannot tell where a run ends, so it
@@ -35,7 +37,12 @@ public final class Throttle {
 
 	private long lastFinishedAt = System.nanoTime();
 
-	private long lastHalvedAt = Long.MIN_VALUE;
+	/** Whether a refusal is being waited out: no request started after its hold has been answered yet. */
+	private boolean held;
+
+	private long heldUntil;
+
+	private Duration lastHold;
 
 	/**
 	 * A throttle that keeps every halving for as long as it is held.
@@ -68,7 +75,8 @@ public final class Throttle {
 	/**
 	 * Waits until a request may be started, and counts it as open from then on, until
 	 * {@link #finished()}.
-	 * @return when it starts, as {@link System#nanoTime()} reads, for {@link #refused(long)}
+	 * @return when it starts, as {@link System#nanoTime()} reads, for {@link #refused(long, Duration, Duration)}
+	 * and {@link #answered(long)}
 	 * @throws InterruptedException if interrupted while waiting
 	 */
 	public long awaitStart() throws InterruptedException {
@@ -97,19 +105,50 @@ public final class Throttle {
 	}
 
 	/**
-	 * Halves both limits for a refused request, unless the request started before they were last
-	 * halved: it was asked at the pace already given up, so its refusal says nothing new. A limit that
-	 * refuses every request open at once is then one refusal, not one for each of them.
+	 * Takes a refused request and holds every start until the refusal is waited out. The first
+	 * refusal of a burst halves both limits and holds for {@code firstHold}. A request started before
+	 * the hold is over was asked into the same refusal, so its refusal says nothing new. A request
+	 * started after the hold, refused before any such request was answered, finds the refusal still
+	 * standing: the throttle holds again for twice as long, up to {@code longestHold}, without halving.
+	 * A burst of refusals is so one halving, however many requests were open or waiting.
 	 * @param startedAt when the refused request started, as {@link #awaitStart()} returned it
+	 * @param firstHold how long the first refusal of a burst holds every start
+	 * @param longestHold how long a hold lasts at most
 	 * @return whether the limits were halved
 	 */
-	public synchronized boolean refused(long startedAt) {
-		if (this.lastHalvedAt != Long.MIN_VALUE && startedAt - this.lastHalvedAt < 0) {
+	public synchronized boolean refused(long startedAt, Duration firstHold, Duration longestHold) {
+		if (this.held && startedAt - this.heldUntil < 0) {
 			return false;
 		}
-		refused();
-		this.lastHalvedAt = System.nanoTime();
-		return true;
+		boolean halved = !this.held;
+		Duration hold = firstHold;
+		if (halved) {
+			refused();
+		}
+		else if (this.lastHold.multipliedBy(2).compareTo(longestHold) < 0) {
+			hold = this.lastHold.multipliedBy(2);
+		}
+		else {
+			hold = longestHold;
+		}
+		this.held = true;
+		this.lastHold = hold;
+		this.heldUntil = System.nanoTime() + hold.toNanos();
+		if (this.heldUntil - this.nextStartAt > 0) {
+			this.nextStartAt = this.heldUntil;
+		}
+		return halved;
+	}
+
+	/**
+	 * Takes an answer that was no refusal, which ends a burst of refusals once the request was started
+	 * after the hold.
+	 * @param startedAt when the answered request started, as {@link #awaitStart()} returned it
+	 */
+	public synchronized void answered(long startedAt) {
+		if (this.held && startedAt - this.heldUntil >= 0) {
+			this.held = false;
+		}
 	}
 
 	/** Halves both limits, since a request was refused. */

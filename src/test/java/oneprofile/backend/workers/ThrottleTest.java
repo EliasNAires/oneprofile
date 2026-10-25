@@ -23,18 +23,31 @@ class ThrottleTest {
 	}
 
 	@Test
-	void halvesOnceForTheRefusalsOfRequestsStartedBeforeItLastHalved() throws InterruptedException {
+	void halvesOnceForABurstOfRefusalsAndHoldsLongerWhileItStillRefuses() throws InterruptedException {
 		Throttle throttle = new Throttle("The test", 20, 100);
+		Duration hold = Duration.ofMillis(100);
 		long first = throttle.awaitStart();
 		long second = throttle.awaitStart();
 
-		assertThat(throttle.refused(first)).isTrue();
-		assertThat(throttle.refused(second)).isFalse();
+		assertThat(throttle.refused(first, hold, Duration.ofMillis(150))).isTrue();
+		assertThat(throttle.refused(second, hold, Duration.ofMillis(150))).isFalse();
 		assertThat(throttle.requestsAtOnce()).isEqualTo(10);
 
 		throttle.finished();
 		throttle.finished();
-		assertThat(throttle.refused(throttle.awaitStart())).isTrue();
+		long held = System.nanoTime();
+		long afterTheHold = throttle.awaitStart();
+		assertThat(Duration.ofNanos(afterTheHold - held)).isGreaterThan(Duration.ofMillis(80));
+		assertThat(throttle.refused(afterTheHold, hold, Duration.ofMillis(150))).isFalse();
+		assertThat(throttle.requestsAtOnce()).isEqualTo(10);
+
+		throttle.finished();
+		held = System.nanoTime();
+		long afterTheLongerHold = throttle.awaitStart();
+		assertThat(Duration.ofNanos(afterTheLongerHold - held)).isGreaterThan(Duration.ofMillis(130));
+		throttle.answered(afterTheLongerHold);
+		throttle.finished();
+		assertThat(throttle.refused(throttle.awaitStart(), hold, Duration.ofMillis(150))).isTrue();
 		assertThat(throttle.requestsAtOnce()).isEqualTo(5);
 	}
 

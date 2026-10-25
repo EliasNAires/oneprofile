@@ -17,6 +17,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -110,6 +111,44 @@ class WorkdayApiAdapterTest {
 				this.refusals::incrementAndGet);
 
 		assertThat(answer.status()).isEqualTo(200);
+		assertThat(this.refusals).hasValue(1);
+		assertThat(throttle.requestsAtOnce()).isEqualTo(10);
+	}
+
+	@Test
+	void slowsDownOnceForAChallengeEveryCallerMeetsAndWaitsItOutTogether() throws Exception {
+		AtomicLong challengedUntil = new AtomicLong(Long.MIN_VALUE);
+		serve((exchange) -> {
+			long now = System.nanoTime();
+			if (challengedUntil.compareAndSet(Long.MIN_VALUE, now + Duration.ofMillis(300).toNanos())
+					|| now - challengedUntil.get() < 0) {
+				exchange.getResponseHeaders().add("cf-mitigated", "challenge");
+				respond(exchange, 429, CHALLENGE);
+				return;
+			}
+			respond(exchange, 200, PAGE);
+		});
+		Throttle throttle = new Throttle("The test", 20, 100);
+		String base = "http://localhost:%d/%%2$s/%%1$s/wday/cxs/%%1$s/%%3$s/".formatted(this.server.getAddress().getPort());
+		WorkdayApiAdapter api = new WorkdayApiAdapter(base, "oneprofile-test", throttle, 4, Duration.ofMillis(400),
+				Duration.ofMillis(1), Duration.ofSeconds(5));
+
+		try (ExecutorService callers = Executors.newFixedThreadPool(6)) {
+			List<Future<?>> asked = new CopyOnWriteArrayList<>();
+			for (int i = 0; i < 6; i++) {
+				asked.add(callers.submit(() -> {
+					for (int page = 0; page < 10; page++) {
+						assertThat(api.jobs("nvidia.wd5/careers", Map.of(), page * 20, 20, this.refusals::incrementAndGet)
+							.status()).isEqualTo(200);
+					}
+					return null;
+				}));
+			}
+			for (Future<?> caller : asked) {
+				caller.get();
+			}
+		}
+
 		assertThat(this.refusals).hasValue(1);
 		assertThat(throttle.requestsAtOnce()).isEqualTo(10);
 	}
