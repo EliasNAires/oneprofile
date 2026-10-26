@@ -1,6 +1,6 @@
 # A role is read from the title, against a curated list
 
-Status: accepted (amended three times on 2026-10-26)
+Status: accepted (amended four times on 2026-10-26)
 
 The Finder filters by role and builds a landing page for each one, and the Explorer charts by
 role. So a role has to be a short, stable list of values. Over the 76,854 vacancies of the
@@ -172,4 +172,27 @@ developer both ask for Python and SQL. It is used in three places, in this order
   implies its practice (dbt implies data modelling), and the skills already separate the kinds of
   work. The one gap is the quarter of the subset that names two skills or fewer; whether those
   descriptions name practices instead is unmeasured.
+
+## Amended a fourth time on 2026-10-26: a rule over the list, and a blind sample
+
+Decided with Elias after a review of #25's method by an agent outside the project.
+
+- **The roles are given by a rule, and the curated file holds its exceptions.** The agents' sorting
+  of the common normalized titles is what the rule is written from: a head and the words naming the
+  kind of work give the role (`data engineer`, `big data engineer`, `multimodal data engineer` are
+  all data engineering). The file holds the roles and the titles the rule gets wrong. So a title
+  no agent read, in the tail or in a new snapshot, still gets a role by rule, and none is guessed:
+  a title the rule does not reach has none. This replaces a list that holds every title it maps.
+- **Each role has a slug that never changes**, apart from its label, so a label can be renamed
+  without breaking a URL. Splitting a role is a recorded decision.
+- **A kind of work under about 1% of the subset joins a role only where that role's description
+  covers it**; otherwise it has no role and is reported. This narrows "a title goes to the nearest
+  one" (the second amendment): folding QA or embedded work into software engineer would be a guess.
+- **A role over about 25% of the subset is a decision to take**, split or kept, before the list
+  is final.
+- **A blind sample measures the roles.** About 300 vacancies, drawn by role and by ATS, are
+  labelled by two agents against the frozen role descriptions without seeing the rule's answer,
+  and the disagreements are adjudicated. Each role's precision and the labellers' agreement are
+  reported; low agreement between two roles says their edge is badly drawn. This replaces "there is
+  no labelled sample" above, and with it the list review as the only measurement.
 

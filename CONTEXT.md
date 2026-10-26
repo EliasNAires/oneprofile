@@ -169,11 +169,11 @@ never guessed (ADR-0024). What the Finder's role filter and the Explorer's role 
 _Avoid_: role family, job family, category, position
 
 **Role List**:
-The about 25 curated roles and the normalized titles that fall into each, stable between runs and
-grown on each new snapshot. The roles are read off the most common normalized titles; a normalized
-title joins once enough vacancies carry it, in the role whose day-to-day work a candidate would
-expect from it. Flat: no role holds another. The skills two titles' vacancies ask for are evidence for a merge,
-never its rule (ADR-0024).
+The about 25 curated roles, each with a slug that never changes and a description of its
+day-to-day work, and the normalized titles the role rule gets wrong. The rule gives a normalized
+title its role from its head and the words naming its kind of work; the list holds what the rule
+cannot. The roles are read off the most common normalized titles. Flat: no role holds another. The
+skills two titles' vacancies ask for are evidence, never the rule (ADR-0024).
 _Avoid_: role taxonomy, title dictionary, families
 
 **Role Nearness**:

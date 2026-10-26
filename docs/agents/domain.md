@@ -66,6 +66,9 @@ the later ADR wins; the overridden parts are marked below.
   Its later record of 2026-10-26 says what a role is for (statistics, matching, the filter), what
   is settled for the list (one role per title, bare heads to software engineer), and the options
   rejected: many tags per vacancy, roles as skill clusters, practices from descriptions.
+  *Amended a fourth time*: a rule over head and kind words gives the role and the file holds its
+  exceptions; roles have fixed slugs; a blind sample of ~300 measures them, replacing "no labelled
+  sample".
   *Amended again 2026-10-26*: about 25 roles, read off the most common normalized titles; every
   normalized title above the floor is sorted into the nearest one, superseding pairwise merges and
   "when unsure, keep apart". A title that fits no role leaves its vacancies without one.

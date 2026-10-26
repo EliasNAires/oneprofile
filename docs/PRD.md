@@ -149,7 +149,10 @@ roles, the level at which statistics are shown: they are read off the most commo
 titles, and each normalized title is placed in the role whose day-to-day work a candidate would
 expect from it (ADR-0024, amended again 2026-10-26). A title naming two heads gets both
 roles; a normalized title the list does not hold leaves the vacancy without one, never with a
-guess. Done when the list covers 70% of the subset (ADR-0024). Giving the rest a role from their
+guess. Done when 70% of the subset has a role, measured on a blind sample (ADR-0024, amended
+2026-10-26). A rule from the head and its kind-of-work words gives the role, and the curated file
+holds the roles and the rule's exceptions, so a title in the tail or in a new snapshot has a role
+without being read. Giving the rest a role from their
 other fields is after the MVP (#87).
 
 The breakdown (#92) and the role list (#25) are separate pieces of work: many normalized titles map
