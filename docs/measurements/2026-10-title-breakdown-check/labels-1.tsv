@@ -1,0 +1,106 @@
+id	normalized_titles	management_level	note
+399312	website and lifecycle marketing	LEAD	& in area read as "and"; no function head present
+1071521	product management	DIRECTOR	"Tokenized Deposits" dropped as product name
+1231062	tax digital tax infrastructure intern	-	"internship" treated as intern head via yield-word rule; off-cycle/dates dropped; hard case
+1086325	nc programmer	-
+1308857	solution engineer	LEAD
+406038	research engineer	-	"research" moved front as kind-of-work, replacing software; "informatics" dropped as team-like word
+255591	platform engineer	MANAGER	"platform" (from Identity Platform) moved front, replacing engineering default; "identity" dropped
+733264	infrastructure analyst	-	job code and "sr"/"ii" dropped; infrastructure moved front
+435978	data engineer	-
+331611	offensive security	LEAD	area kept literal, no engineering-style conversion for security
+209482	android tech lead	LEAD	matches criterion's "Team Lead, Android Core Product" example
+191447	product qa engineer	-	(m/f/d) dropped as non-title marker
+31127	ai technical architect	-
+1378614	digital product scrum master	-
+282313	software engineer	-	Payments/Acquiring dropped as team name, no kind-of-work found
+697368	crm specialist | marketing automation specialist	-	two front phrases joined by / sharing one head, split by analogy to clause 2; (f/m/x) dropped
+417304	data engineer	-	Databricks dropped as tool, not in platform-stays list
+495230	NOT ENGLISH	-	title is French with no English part to read
+826629	marketing analytics intern	-
+215933	engineering	DIRECTOR	bare area, analogous to "bare Engineering Manager stays engineering"; (The Americas) dropped as place
+1441684	ai advisory	MANAGER	"manager" read as rank over "ai advisory" area, not a fixed job title; hard case
+1897	palantir data scientist	-	"Palantir" kept as front company word; "in California" dropped as place
+1423741	sales engineer	-	"West" dropped as place
+399305	website and lifecycle marketing	LEAD	same reading as row with id 399312
+1507556	atpee engineer	-	"ATPEE" kept, unclear abbreviation not covered by criterion; job code dropped
+244584	growth software engineer	-	"growth" not in software-redundant list (clause 15), so software kept
+223712	desktop engineer	-	"desktop" treated as kind-of-work by analogy to mobile/web; not explicitly listed; hard case
+1499923	technology operations analyst	-
+1003636	software applications engineer	-
+421281	software engineer	-
+798112	geospatial systems software engineer	-	"mid" dropped as seniority; systems not in clause-15 list so software kept
+581256	technology data ai graduate	-	ambiguous punctuation; dashes treated as separators; Malaysia dropped as place; "graduate" as head via yield-word rule
+17249	systems validation engineer	-	"All Levels" dropped as seniority-like; "AI Fabric Switches" dropped since front already names kind of work (systems)
+46087	it and business systems	MANAGER	& in area read as "and"
+26559	network platform engineer	-
+635667	cyber reverse engineer	-
+45472	software engineer	-	"Agentic Applications" dropped as product/team descriptor, not a listed kind of work
+1158927	postdoctoral research associate	-	"associate" kept as head since not beside a function head/person-word, so clause 9 removal does not apply; "Robotics and AI" dropped since front already names kind of work (research); hard case
+1229031	technology audit	MANAGER
+178502	ai software engineer	-	"ai" not in clause-15 software-redundant list, software kept
+87427	game security data scientist	-
+245292	servicenow platform operations engineer	-	ServiceNow kept as platform that stays
+673498	data science analyst | supply chain analyst	-	two front phrases joined by "and" sharing one head, split by analogy to clause 2; hard case
+384735	salesforce developer	-
+1243947	mobile app developer	MANAGER	trailing "Senior Manager" gives management level only, head already present
+943187	global digital platform technology	DIRECTOR	two leadership words (director, lead); highest (director) used for level; inner "lead" folded into area text; hard case
+102684	cybersecurity engineer	-	"Defense Operations" dropped as team/product descriptor
+571280	secure cloud architect	-
+1400720	data engineer	-	Databricks/AWS/Python dropped as tools; "I" dropped as numbered level
+554270	software engineer	-	"Agency" dropped as client/team name
+19069	technical writer	-
+1008347	software engineer	LEAD	matches criterion's "Manager, Software Engineering - Developer Support" example; "II" dropped as numbered level
+576272	retail ai solutions specialist	-
+732547	machine learning ops engineer	-	"ops" kept literal, not explicitly addressed by abbreviation rules
+344951	machine learning data infrastructure engineer	-	full run of three consecutive kind words (ML Data Infrastructure) moves front, replacing bare software; senior/staff dropped
+572614	c4i all source analyst	-	"c4i" kept as digit-exception naming the work, by analogy to 3d/5g/b2b; hyphen in "All-Source" converted to space
+1221337	security architect	-
+657896	technical product management intern	-
+345589	full stack developer	-	"software" dropped before "full stack" per clause 15; (IAM) dropped as team/domain
+330981	ai developer	-	only "AI" recognized as kind-of-work in trailing part; GIS/Indoor/Reality dropped as non-listed descriptors; hard case
+429815	automation platform engineer	-	both kind words in trailing part moved front, replacing software
+272973	software integration and test engineer	-	& in front converted to "and"; trailing "Autonomy & Flight Test" dropped as redundant/team descriptor
+1245885	content data engineer	MANAGER	"Content Data Engineering" reads as engineer per engineering-as-engineer rule, front qualifiers kept
+1532421	software development engineer	-	"intern" dropped since stronger head "engineer" already present (yield-word rule applied regardless of trailing position)
+1356259	performance testing engineer	LEAD	trailing "Team Lead" gives management level only since stronger head "engineer" present
+344934	machine learning engineer	-	"perception" dropped as non-listed descriptor; "ML" moved as sole kind-of-work word found; hard case
+290755	ai performance engineer	-
+329130	integration consultant	-
+1501256	engineering tools and infrastructure	MANAGER	"engineering" modifies "tools" here, not a discipline-naming phrase, so no engineer-conversion applied; hard case
+278825	engineering	LEAD	"team lead" read as area-leader over bare "engineering", analogous to "bare Engineering Manager stays engineering"
+65195	cybersecurity project engineer	-	job code "755" dropped
+1359719	developer	-	Java dropped as language skill, matches "Java Developer -> developer" example
+328933	product design analyst	-	trailing "| Affirmative Job Opening for Diverse Talent" dropped as non-title promotional text
+678517	security governance and compliance specialist	-
+23960	full stack engineer	-
+1167247	cross domain solutions architect	-
+642508	integration software engineer	-
+690969	microsoft security and compliance specialist	-	"365" dropped as digit-word not in exception list
+244117	payroll software consultant	-
+266270	forward deployed engineer	-	FDE expansion already written out
+262465	infrastructure engineer	-	"inference" not in kind-of-work list, dropped; only "infrastructure" moved; hard case
+792699	it services specialist	-	EMEA dropped as place/region
+954600	medtech field service software tech	-	"tech" as head via yield-word rule, no stronger head present; entry level and repeated location dropped
+262833	technical program manager	-	fixed job-title head named explicitly in criterion's None examples; ECU Reliability & Durability Validation dropped
+265179	secops engineer	-	"secops" kept literal, not explicitly covered
+1066457	signals software engineer	-
+282222	mission solutions engineer	-
+616414	technology product owner	-	"principal" dropped as seniority
+653583	threat intelligence engineer	LEAD
+330044	public sector customer architect	-	"Fed Civ" dropped as market-segment/team descriptor
+1243403	agentic diagnostics and insights associate	-	"associate" kept as head (fallback) since not beside a function head or person-word; Bangalore dropped as place
+1067008	e discovery administrator	-	bracketed (Security/FOIA/CAPSTONE) read as dropped program/domain list, not kind-of-work, by analogy to "Principal Engineer, DSP" dropping DSP wholesale; hard case
+215362	data analytics and business intelligence	MANAGER	BI expanded and deduplicated with Business Intelligence; GOC dropped as org code
+319670	-	-	title mixes Portuguese/Spanish "Analista de" with English "Web Analytics"; English part has no head noun per criterion's list; hard case
+570824	supply chain data science and ai operationalization	MANAGER	& read as "and"
+592048	technology product manager	-	"product manager" is a named job-title head, gives None per criterion
+1023986	network engineer	-
+1167669	soc analyst	-	"L2" dropped as a numbered-level-like grade code
+125600	site reliability engineer	-	"Observability" dropped, front already names kind of work (site reliability)
+778737	forensic accounting and advisory	DIRECTOR
+1333654	network development	MANAGER	"development" not extended by the engineering-as-engineer conversion rule, area kept literal
+1008368	servicenow developer	-	"Senior Associate II" dropped as corporate grade beside the function head ServiceNow Developer
+792764	analytics specialist	-	only "Analytics" recognized as kind-of-work; "Process" and "SCM 4B" dropped; hard case
+45948	product manager	-	fixed job-title head; "Fleet and Lifecycle Management" dropped as team/product descriptor
+46559	sap full stack development engineer	-	hard case: SAP and Fullstack found behind head in same part, moved front replacing bare "software" per clause 15; "development" kept as non-kind front word; (f/m/d) dropped

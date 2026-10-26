@@ -156,8 +156,9 @@ _Avoid_: term, word, lexeme
 **Normalized Title**:
 A cleaned title reduced to its function head and the words in front of it that name the kind of
 work. Its seniority, work mode, places and skills are taken out, and so is what follows the head
-unless it names the kind of work (ADR-0024). Only engineering roles have one. What the role list
-is looked up with.
+unless it names the kind of work (ADR-0024). It is written one way: one spelling, one form of an
+abbreviation, one word order (`docs/title-breakdown-criterion.md`). Only engineering roles have
+one. What the role list is looked up with.
 _Avoid_: canonical title, title slug
 
 **Role**:

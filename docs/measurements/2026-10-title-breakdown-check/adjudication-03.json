@@ -1,0 +1,122 @@
+[
+ {
+  "id": "733264:title",
+  "text": "title: RR-0421351  Sr Analyst II Infrastructure Services\nlocation: IND - KA - BANGALORE\ntitle_skills: \nasked: the normalized titles",
+  "a": "infrastructure analyst",
+  "b": "infrastructure rr analyst"
+ },
+ {
+  "id": "1243403:title",
+  "text": "title: Agentic Diagnostics & Insights-Associate-Bangalore\nlocation: Bangalore\ntitle_skills: \nasked: the normalized titles",
+  "a": "agentic diagnostics insights",
+  "b": "agentic diagnostics and insights associate"
+ },
+ {
+  "id": "1067008:title",
+  "text": "title: E-Discovery Administrator (Security/FOIA/CAPSTONE)\nlocation: Suffolk, VA\ntitle_skills: \nasked: the normalized titles",
+  "a": "security discovery administrator",
+  "b": "e discovery administrator"
+ },
+ {
+  "id": "46559:title",
+  "text": "title: Senior Software Development Engineer SAP Fullstack (f/m/d)\nlocation: Lille, Upline, Nord, France; Paris, Paris, France\ntitle_skills: \nasked: the normalized titles",
+  "a": "sap full stack development engineer",
+  "b": "sap full stack engineer"
+ },
+ {
+  "id": "1350815:title",
+  "text": "title: Tendering Engineer Infrastructure\nlocation: Madrid\ntitle_skills: \nasked: the normalized titles",
+  "a": "infrastructure tendering engineer",
+  "b": "tendering infrastructure engineer"
+ },
+ {
+  "id": "1501256:title",
+  "text": "title: Manager, Engineering Tools & Infrastructure\nlocation: Spyce\ntitle_skills: \nasked: the normalized titles",
+  "a": "engineering tools and infrastructure",
+  "b": "engineering tools infrastructure"
+ },
+ {
+  "id": "1476951:title",
+  "text": "title: Ground-to-space Digital telecoms System SEM/Architect\nlocation: Roma\ntitle_skills: \nasked: the normalized titles",
+  "a": "ground to space digital telecoms systems sem | ground to space digital telecoms systems architect",
+  "b": "ground to space digital telecoms systems sem architect"
+ },
+ {
+  "id": "937758:title",
+  "text": "title: Senior Director, PMO Strategic Portfolio Management & AI Innovation\nlocation: NJ Corporate Headquarters\ntitle_skills: \nasked: the normalized titles",
+  "a": "pmo strategic portfolio management and ai innovation",
+  "b": "pmo strategic portfolio management ai innovation"
+ },
+ {
+  "id": "1316254:title",
+  "text": "title: [LTA-IDE] PRINCIPAL/ SNR ENGINEER (COMMON DATA ENVIRONMENT & PLATFORMS)\nlocation: LTA HSO B2 03\ntitle_skills: \nasked: the normalized titles",
+  "a": "engineer",
+  "b": "data snr engineer"
+ },
+ {
+  "id": "1275142:title",
+  "text": "title: Senior Manager SAP Architecture-Cloud-BTP - F/H\nlocation: Neuilly-sur-Seine\ntitle_skills: sap-business-technology-platform\nasked: the normalized titles",
+  "a": "sap architecture cloud",
+  "b": "sap architecture cloud btp"
+ },
+ {
+  "id": "319670:title",
+  "text": "title: Analista de Web Analytics | Marketing\nlocation: São Paulo\ntitle_skills: \nasked: the normalized titles",
+  "a": "-",
+  "b": "web analytics analista"
+ },
+ {
+  "id": "678517:title",
+  "text": "title: Security Governance & Compliance Specialist\nlocation: San Jose, Costa Rica\ntitle_skills: \nasked: the normalized titles",
+  "a": "security governance compliance specialist",
+  "b": "security governance and compliance specialist"
+ },
+ {
+  "id": "46087:title",
+  "text": "title: IT & Business Systems Manager\nlocation: Remote - United States\ntitle_skills: \nasked: the normalized titles",
+  "a": "it business systems",
+  "b": "it and business systems"
+ },
+ {
+  "id": "697368:title",
+  "text": "title: CRM / Marketing Automation Specialist (f/m/x)\nlocation: Madrid Paseo Castellana 18\ntitle_skills: \nasked: the normalized titles",
+  "a": "crm specialist | marketing automation specialist",
+  "b": "crm marketing automation specialist"
+ },
+ {
+  "id": "690969:title",
+  "text": "title: Microsoft 365 Security & Compliance Specialist\nlocation: Washington, DC\ntitle_skills: \nasked: the normalized titles",
+  "a": "microsoft security and compliance specialist",
+  "b": "microsoft security compliance specialist"
+ },
+ {
+  "id": "1103886:title",
+  "text": "title: Specialist IT Product Support\nlocation: Auckland - Customs\ntitle_skills: \nasked: the normalized titles",
+  "a": "it product specialist",
+  "b": "it product support specialist"
+ },
+ {
+  "id": "1056253:title",
+  "text": "title: Ld Developer Analyst IT\nlocation: Pune\ntitle_skills: \nasked: the normalized titles",
+  "a": "it ld developer",
+  "b": "it developer"
+ },
+ {
+  "id": "1056253:level",
+  "text": "title: Ld Developer Analyst IT\nlocation: Pune\ntitle_skills: \nasked: the management level",
+  "a": "LEAD",
+  "b": "-"
+ },
+ {
+  "id": "811686:title",
+  "text": "title: Manager, Cloud & Infrastructure Automation\nlocation: Montreal, Rosemont\ntitle_skills: \nasked: the normalized titles",
+  "a": "cloud and infrastructure automation",
+  "b": "cloud infrastructure automation"
+ },
+ {
+  "id": "1139260:title",
+  "text": "title: Lead Retail & Consumer Analytics, SEA&I\nlocation: South, Singapore, Singapore\ntitle_skills: \nasked: the normalized titles",
+  "a": "retail and consumer analytics",
+  "b": "retail consumer analytics"
+ }
+]

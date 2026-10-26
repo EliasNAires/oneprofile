@@ -118,8 +118,18 @@ public class TitleBreakdownRule {
 
 	private static final Pattern YEAR = Pattern.compile("(?:19|20)\\d\\d");
 
-	/** The spellings that say one thing, written one way, and the abbreviations of a whole title. */
+	/**
+	 * The spellings that say one thing, written one way, and the abbreviations of a whole title. An
+	 * abbreviation and its long form are written the way most of the subset's titles write them (#94).
+	 */
 	private static final Map<String, String> SPELLINGS = Map.ofEntries(Map.entry("fullstack", "full stack"),
+			Map.entry("ml", "machine learning"), Map.entry("ml ops", "mlops"), Map.entry("sre", "site reliability"),
+			Map.entry("bi", "business intelligence"), Map.entry("dba", "database administrator"),
+			Map.entry("quality assurance", "qa"), Map.entry("generative ai", "genai"), Map.entry("gen ai", "genai"),
+			Map.entry("artificial intelligence", "ai"), Map.entry("information technology", "it"),
+			Map.entry("user experience", "ux"), Map.entry("user interface", "ui"),
+			Map.entry("cyber security", "cybersecurity"), Map.entry("system", "systems"),
+			Map.entry("pre sales", "presales"),
 			Map.entry("back end", "backend"), Map.entry("front end", "frontend"), Map.entry("sw", "software"),
 			Map.entry("swe", "software engineer"), Map.entry("sde", "software development engineer"),
 			Map.entry("fde", "forward deployed engineer"), Map.entry("mle", "machine learning engineer"),
@@ -128,6 +138,9 @@ public class TitleBreakdownRule {
 			Map.entry("cto", "chief technology"), Map.entry("cio", "chief information"),
 			Map.entry("ciso", "chief information security"), Map.entry("cdo", "chief data"),
 			Map.entry("cpo", "chief product"), Map.entry("caio", "chief ai"));
+
+	/** The abbreviations that name a whole title where they stand alone, and a kind of work beside a head. */
+	private static final Map<String, String> WHOLE_TITLES = Map.of("sre", "site reliability engineer");
 
 	/** A chief's office is a department, not a chief: {@code Chief Data Office} reads as a data office. */
 	private static final Pattern CHIEF_OFFICE = Pattern.compile("\\bchief ((?:\\S+ ){1,3})office\\b");
@@ -205,14 +218,14 @@ public class TitleBreakdownRule {
 	 * going as a skill.
 	 */
 	private static final Set<String> KINDS = Set.of("software", "software development", "backend", "frontend",
-			"full stack", "data", "data platform", "data infrastructure", "ai", "ml", "ai ml", "machine learning",
-			"deep learning", "applied ai", "generative ai", "genai", "agentic ai", "llm", "nlp", "computer vision",
+			"full stack", "data", "data platform", "data infrastructure", "ai", "ai machine learning", "machine learning",
+			"deep learning", "applied ai", "genai", "agentic ai", "llm", "nlp", "computer vision",
 			"mlops", "platform", "infrastructure", "infra", "cloud", "cloud infrastructure", "devops", "devsecops",
-			"sre", "site reliability", "reliability", "security", "application security", "product security",
-			"cloud security", "network security", "cybersecurity", "cyber security", "offensive security", "detection",
+			"site reliability", "reliability", "security", "application security", "product security",
+			"cloud security", "network security", "cybersecurity", "offensive security", "detection",
 			"identity", "iam", "network", "networking", "mobile", "android", "ios", "react native", "flutter", "web",
 			"embedded", "embedded software", "embedded systems", "firmware", "systems", "distributed systems",
-			"database", "test", "test automation", "qa", "qa automation", "quality assurance", "automation",
+			"database", "test", "test automation", "qa", "qa automation", "automation",
 			"verification", "design verification", "validation", "robotics", "perception", "autonomy", "simulation",
 			"compiler", "gpu", "graphics", "game", "gameplay", "observability", "performance", "storage", "build",
 			"release", "tooling", "developer experience", "developer productivity", "developer tools",
@@ -220,8 +233,33 @@ public class TitleBreakdownRule {
 			"salesforce", "servicenow", "sap", "workday", "blockchain", "quant", "quantitative", "inference", "it",
 			"ux", "ui", "forward deployed", "product");
 
+	/**
+	 * The fronts the subset writes in more than one order for the same work, each in the order most titles
+	 * use (#94). A front whose order changes the work is not here: an {@code application security
+	 * engineer} secures applications, while a {@code security application engineer} builds them for
+	 * security.
+	 */
+	private static final Map<String, String> ORDERS = Stream
+		.of("ai machine learning", "ai data", "qa automation", "software test", "ai software", "cloud infrastructure",
+				"test automation", "agentic ai", "forward deployed ai", "platform software", "full stack ai", "software qa",
+				"platform infrastructure", "cloud devops", "devops platform", "application software", "applied ai",
+				"software infrastructure", "manufacturing automation", "r&d software", "network systems",
+				"software development engineering", "mission software", "software development test",
+				"devops software", "quality automation", "data software", "process automation", "database platform",
+				"enterprise ai", "devops infrastructure", "applied ai software", "platform reliability",
+				"infrastructure systems", "backend ai", "embedded software", "robotics automation",
+				"site reliability devops", "business intelligence data", "full stack web", "ai engineering")
+		.collect(Collectors.toUnmodifiableMap(TitleBreakdownRule::orderKey, (front) -> front));
+
 	/** The kinds a more particular kind from behind the head replaces. */
 	private static final Set<String> GENERIC_KINDS = Set.of("software", "software development");
+
+	/**
+	 * The kinds that are only ever software work, so that a {@code software} beside them adds nothing:
+	 * a {@code Backend Software Engineer} is a backend engineer, as a {@code Software Engineer, Backend} is.
+	 */
+	private static final Set<String> SOFTWARE_WORK = Set.of("backend", "frontend", "full stack", "web", "mobile",
+			"android", "ios", "react native", "flutter", "ui");
 
 	private static final Set<String> WORK_MODES = Set.of("remote", "hybrid", "onsite", "on site", "in office",
 			"work from home", "wfh", "fully remote", "remote first", "telecommute", "telework", "remoto", "remota",
@@ -288,6 +326,8 @@ public class TitleBreakdownRule {
 			Set<String> keys = new HashSet<>();
 			keys.add(nameForm(skill.canonicalName()));
 			skill.aliases().forEach((alias) -> keys.add(nameForm(alias)));
+			// A title's words are respelled before its skills are found in them, so the keys are too.
+			Set.copyOf(keys).forEach((key) -> keys.add(String.join(" ", respelled(List.of(WHITESPACE.split(key))))));
 			this.skillKeys.put(skill.id(), keys);
 		}
 	}
@@ -389,7 +429,7 @@ public class TitleBreakdownRule {
 		}
 		if (second < 0) {
 			List<Item> after = after(parts, head.part(), head.at());
-			return nonEmpty(text(withKindsFrom(after, front)) + " " + items.get(head.at()).text());
+			return nonEmpty(written(withKindsFrom(after, front), items.get(head.at()).text()));
 		}
 		List<Item> secondFront = front(items.subList(head.at() + 1, second));
 		if (secondFront.isEmpty()) {
@@ -397,8 +437,8 @@ public class TitleBreakdownRule {
 		}
 		List<Item> after = after(parts, head.part(), second);
 		List<String> titles = new ArrayList<>();
-		titles.addAll(nonEmpty(text(front) + " " + items.get(head.at()).text()));
-		titles.addAll(nonEmpty(text(withKindsFrom(after, secondFront)) + " " + items.get(second).text()));
+		titles.addAll(nonEmpty(written(front, items.get(head.at()).text())));
+		titles.addAll(nonEmpty(written(withKindsFrom(after, secondFront), items.get(second).text())));
 		return titles.stream().distinct().toList();
 	}
 
@@ -439,7 +479,36 @@ public class TitleBreakdownRule {
 		if (led.size() > 1 && led.getLast().text().equals("engineering")) {
 			led.set(led.size() - 1, Item.of("engineer", WordUse.HEAD));
 		}
-		return nonEmpty(text(led));
+		return nonEmpty(written(led, ""));
+	}
+
+	/**
+	 * A head and the words in front of it, written one way: no word the head names or the word before
+	 * it repeats, no {@code software} beside a kind that is only software work, and the same kinds of
+	 * work in the order most titles write them.
+	 */
+	private static String written(List<Item> front, String head) {
+		Set<String> named = Set.copyOf(List.of(WHITESPACE.split(head)));
+		boolean softwareWork = front.stream().anyMatch((item) -> SOFTWARE_WORK.contains(item.text()));
+		List<Item> kept = front.stream()
+			.filter((item) -> !item.text().equals(JOIN) && !(softwareWork && GENERIC_KINDS.contains(item.text())))
+			.toList();
+		List<String> words = new ArrayList<>();
+		for (Item item : trimmed(kept)) {
+			for (String word : WHITESPACE.split(item.text())) {
+				if (!named.contains(word) && (words.isEmpty() || !words.getLast().equals(word))) {
+					words.add(word);
+				}
+			}
+		}
+		String written = String.join(" ", words);
+		written = ORDERS.getOrDefault(orderKey(written), written);
+		return written + " " + head;
+	}
+
+	/** What two fronts written in another order share: their words, in alphabetical order. */
+	private static String orderKey(String front) {
+		return Stream.of(WHITESPACE.split(front)).sorted().collect(Collectors.joining(" "));
 	}
 
 	/** The words kept in front of a head: all of them but the leadership words, and no connector at either end. */
@@ -593,7 +662,8 @@ public class TitleBreakdownRule {
 		if (words.isEmpty()) {
 			return List.of();
 		}
-		String spelled = String.join(" ", respelled(words));
+		String spelled = (words.size() == 1 && WHOLE_TITLES.containsKey(words.getFirst()))
+				? WHOLE_TITLES.get(words.getFirst()) : String.join(" ", respelled(words));
 		spelled = CHIEF_OFFICER.matcher(spelled).replaceAll("chief $1").trim();
 		spelled = CHIEF_OFFICE.matcher(spelled).replaceAll("$1office");
 		return List.of(WHITESPACE.split(spelled));
@@ -687,7 +757,7 @@ public class TitleBreakdownRule {
 			heads.put(manager + " manager", manager + " manager");
 			heads.put(manager + " managers", manager + " manager");
 		}
-		for (String head : List.of("sdet", "dba", "product owner", "scrum master", "chief of staff",
+		for (String head : List.of("sdet", "product owner", "scrum master", "chief of staff",
 				"member of technical staff", "developer advocate", "ingeniero", "ingeniera", "engenheiro",
 				"engenheira", "desarrollador", "desarrolladora", "desenvolvedor", "desenvolvedora", "programador",
 				"programadora", "analista", "arquitecto", "arquiteto", "consultor", "consultora", "cientista",
@@ -711,7 +781,11 @@ public class TitleBreakdownRule {
 		vocabulary.put("middle office", new Reading(WordUse.WORD, "middle office", null, null));
 		LEVELS.forEach((word, level) -> vocabulary.put(word, new Reading(WordUse.LEVEL, word, null, level)));
 		KINDS.forEach((kind) -> vocabulary.put(kind, new Reading(WordUse.KIND, kind, null, null)));
-		WEAK.forEach((word) -> vocabulary.put(word, new Reading(WordUse.WEAK, word, null, null)));
+		// A plural stage or standing reads as its singular, as a plural head does.
+		WEAK.forEach((word) -> vocabulary.put(word, new Reading(WordUse.WEAK,
+				(word.endsWith("s") && WEAK.contains(word.substring(0, word.length() - 1)))
+						? word.substring(0, word.length() - 1) : word,
+				null, null)));
 		AREAS.forEach((word) -> vocabulary.put(word, new Reading(WordUse.AREA, word, null, null)));
 		RANKS.forEach((word, rank) -> vocabulary.put(word, new Reading(WordUse.RANK, word, rank, null)));
 		// A rank qualified as a group's, an assistant's or a deputy's is the same rank, not an area.

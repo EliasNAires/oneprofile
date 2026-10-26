@@ -20,11 +20,67 @@ class TitleBreakdownRuleTest {
 					android\tAndroid\tplatform\t\t\t
 					react-native\tReact Native\tframework\t\t\t
 					react\tReact\tframework\t\t\t
+					power-bi\tPower BI\ttool\t\t\t
 					""")));
 
 	@Test
 	void movesAKindOfWorkAfterTheHeadInFrontOfIt() {
 		assertThat(normalized("Software Engineer, Backend")).containsExactly("backend engineer");
+	}
+
+	@Test
+	void dropsSoftwareInFrontOfAKindThatIsOnlySoftwareWork() {
+		assertThat(normalized("Backend Software Engineer")).containsExactly("backend engineer");
+		assertThat(normalized("Senior Full Stack Software Engineer")).containsExactly("full stack engineer");
+		assertThat(normalized("Embedded Software Engineer")).containsExactly("embedded software engineer");
+		assertThat(normalized("Software and Web Application Architect")).containsExactly("web application architect");
+	}
+
+	@Test
+	void writesAnAbbreviationAndItsLongFormTheWayMostTitlesDo() {
+		assertThat(normalized("ML Engineer")).containsExactly("machine learning engineer");
+		assertThat(normalized("ML Ops Engineer")).containsExactly("mlops engineer");
+		assertThat(normalized("Quality Assurance Engineer")).containsExactly("qa engineer");
+		assertThat(normalized("Generative AI Engineer")).containsExactly("genai engineer");
+		assertThat(normalized("SRE Engineer")).containsExactly("site reliability engineer");
+		assertThat(normalized("SRE")).containsExactly("site reliability engineer");
+		assertThat(normalized("BI Developer")).containsExactly("business intelligence developer");
+		assertThat(normalized("Oracle DBA")).containsExactly("oracle database administrator");
+	}
+
+	@Test
+	void writesAWordThatIsSpelledSeveralWaysOneWay() {
+		assertThat(normalized("Cyber Security Analyst")).containsExactly("cybersecurity analyst");
+		assertThat(normalized("System Administrator")).containsExactly("systems administrator");
+		assertThat(normalized("Pre-Sales Engineer")).containsExactly("presales engineer");
+		assertThat(normalized("Computer Science Experts")).containsExactly("computer science expert");
+	}
+
+	@Test
+	void writesTheSameKindsOfWorkInOneOrder() {
+		assertThat(normalized("ML/AI Engineer")).containsExactly("ai machine learning engineer");
+		assertThat(normalized("Automation QA Engineer")).containsExactly("qa automation engineer");
+		assertThat(normalized("Infrastructure Cloud Engineer")).containsExactly("cloud infrastructure engineer");
+		assertThat(normalized("Software Engineer, AI/ML")).containsExactly("ai machine learning engineer");
+	}
+
+	@Test
+	void takesOutASkillWhoseNameHoldsAnAbbreviationWrittenOut() {
+		assertThat(normalized("Power BI Developer", "power-bi")).containsExactly("developer");
+	}
+
+	@Test
+	void keepsTheOrderOfKindsWhereTheOrderChangesTheWork() {
+		assertThat(normalized("Business Analytics")).containsExactly("business analytics");
+		assertThat(normalized("Security Application Engineer")).containsExactly("security application engineer");
+		assertThat(normalized("Application Security Engineer")).containsExactly("application security engineer");
+	}
+
+	@Test
+	void doesNotRepeatAWordTheHeadAlreadyNames() {
+		assertThat(normalized("Senior Product Manager, Product Foundations")).containsExactly("product manager");
+		assertThat(normalized("DevOps DevOps Engineer")).containsExactly("devops engineer");
+		assertThat(normalized("Data Analytics Data Scientist")).containsExactly("data analytics data scientist");
 	}
 
 	@Test
@@ -132,7 +188,7 @@ class TitleBreakdownRuleTest {
 
 	@Test
 	void takesACorporateGradeOutWithoutReadingItAsAManagementLevel() {
-		assertThat(breakDown("VP System Analyst")).isEqualTo(new TitleBreakdown(List.of("system analyst"), Set.of(), null));
+		assertThat(breakDown("VP System Analyst")).isEqualTo(new TitleBreakdown(List.of("systems analyst"), Set.of(), null));
 		assertThat(breakDown("Analyst, Vice President")).isEqualTo(new TitleBreakdown(List.of("analyst"), Set.of(), null));
 		assertThat(breakDown("Associate Software Engineer"))
 			.isEqualTo(new TitleBreakdown(List.of("software engineer"), Set.of(), null));
@@ -175,7 +231,7 @@ class TitleBreakdownRuleTest {
 
 	@Test
 	void readsAKindOfWorkWrittenAcrossASlashAsOne() {
-		assertThat(normalized("AI/ML Engineer")).containsExactly("ai ml engineer");
+		assertThat(normalized("AI/ML Engineer")).containsExactly("ai machine learning engineer");
 	}
 
 	@Test

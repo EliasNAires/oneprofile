@@ -1,0 +1,122 @@
+[
+ {
+  "id": "1158927:title",
+  "text": "title: Postdoctoral Research Associate - Robotics and AI\nlocation: University, MS\ntitle_skills: \nasked: the normalized titles",
+  "a": "postdoctoral research associate",
+  "b": "postdoctoral research"
+ },
+ {
+  "id": "1459931:title",
+  "text": "title: Principle Architect - Shopify Specialist\nlocation: Bangalore, KA, India\ntitle_skills: shopify\nasked: the normalized titles",
+  "a": "principle architect",
+  "b": "architect"
+ },
+ {
+  "id": "255591:title",
+  "text": "title:  Engineering Manager, Identity Platform \nlocation: San Francisco\ntitle_skills: \nasked: the normalized titles",
+  "a": "identity platform engineer",
+  "b": "platform engineer"
+ },
+ {
+  "id": "581256:title",
+  "text": "title: Graduate-Technology-Data & AI-Malaysia\nlocation: Malaysia - Kuala Lumpur\ntitle_skills: \nasked: the normalized titles",
+  "a": "technology data ai graduate",
+  "b": "data graduate"
+ },
+ {
+  "id": "1151154:title",
+  "text": "title: MS Engineer L2, Network\nlocation: Chennai, India\ntitle_skills: \nasked: the normalized titles",
+  "a": "ms network engineer",
+  "b": "network ms engineer"
+ },
+ {
+  "id": "661854:title",
+  "text": "title: Lead Building Automation Systems (BAS) Installer\nlocation: Indianapolis, IN (MEP-SOL)\ntitle_skills: \nasked: the normalized titles",
+  "a": "building automation systems installer",
+  "b": "building automation systems"
+ },
+ {
+  "id": "330044:title",
+  "text": "title: Public Sector, Customer Architect - Fed Civ\nlocation: United States\ntitle_skills: \nasked: the normalized titles",
+  "a": "customer architect",
+  "b": "public sector customer architect"
+ },
+ {
+  "id": "272973:title",
+  "text": "title: Software Integration & Test Engineer – Autonomy & Flight Test\nlocation: Cambridge, MA\ntitle_skills: \nasked: the normalized titles",
+  "a": "software integration and test engineer",
+  "b": "software integration test engineer"
+ },
+ {
+  "id": "262465:title",
+  "text": "title: Software Engineer, Inference Infrastructure\nlocation: Mountain View\ntitle_skills: \nasked: the normalized titles",
+  "a": "infrastructure engineer",
+  "b": "inference infrastructure engineer"
+ },
+ {
+  "id": "572614:title",
+  "text": "title: C4I All-Source Analyst\nlocation: Riverdale, MD\ntitle_skills: \nasked: the normalized titles",
+  "a": "all source analyst",
+  "b": "c4i all source analyst"
+ },
+ {
+  "id": "570824:title",
+  "text": "title: Senior Manager, Supply Chain Data Science & AI Operationalization\nlocation: Santa Clara,CA\ntitle_skills: \nasked: the normalized titles",
+  "a": "supply chain data science and ai operationalization",
+  "b": "supply chain data science ai operationalization"
+ },
+ {
+  "id": "1243854:title",
+  "text": "title: LLMOps + MLOps - Manager\nlocation: Bangalore\ntitle_skills: \nasked: the normalized titles",
+  "a": "llmops mlops",
+  "b": "llmops and mlops"
+ },
+ {
+  "id": "342371:title",
+  "text": "title: Senior Finance Operations & Site Reliability Engineer\nlocation: Salt Lake City\ntitle_skills: \nasked: the normalized titles",
+  "a": "finance operations and site reliability engineer",
+  "b": "finance operations site reliability engineer"
+ },
+ {
+  "id": "379895:title",
+  "text": "title: Associate, Investments (Infrastructure Focus)\nlocation: Los Angeles, CA\ntitle_skills: \nasked: the normalized titles",
+  "a": "infrastructure investments",
+  "b": "-"
+ },
+ {
+  "id": "994904:title",
+  "text": "title: Mobilny Technik Serwisu / Mobile Service Engineer - Warszawa\nlocation: Warszawa, Poland\ntitle_skills: \nasked: the normalized titles",
+  "a": "mobilny technik serwisu mobile service engineer",
+  "b": "mobile service engineer"
+ },
+ {
+  "id": "673498:title",
+  "text": "title: Data Science and Supply Chain Analyst\nlocation: Quezon City, Manila, Philippines\ntitle_skills: \nasked: the normalized titles",
+  "a": "data science analyst | supply chain analyst",
+  "b": "data science and supply chain analyst"
+ },
+ {
+  "id": "171444:title",
+  "text": "title: Senior Salesforce & Integration Engineer \nlocation: New York, New York, United States\ntitle_skills: salesforce\nasked: the normalized titles",
+  "a": "salesforce and integration engineer",
+  "b": "salesforce integration engineer"
+ },
+ {
+  "id": "274946:title",
+  "text": "title: Principal Technical Product Manager, Networking\nlocation: Remote - United States\ntitle_skills: \nasked: the normalized titles",
+  "a": "technical network product manager",
+  "b": "networking technical product manager"
+ },
+ {
+  "id": "264888:title",
+  "text": "title: GPU Cluster Engineer, Systems & Platform\nlocation: San Francisco, CA\ntitle_skills: \nasked: the normalized titles",
+  "a": "gpu cluster systems engineer",
+  "b": "gpu cluster engineer"
+ },
+ {
+  "id": "186451:title",
+  "text": "title: Business Process Analyst, Process Automation\nlocation: Toronto, Ontario, Canada\ntitle_skills: \nasked: the normalized titles",
+  "a": "automation business process analyst",
+  "b": "business process analyst"
+ }
+]

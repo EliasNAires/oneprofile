@@ -1,0 +1,102 @@
+{
+  "733264:title": {
+    "verdict": "a",
+    "clause": "The kind of work moves in front",
+    "pattern": "kind of work moved to empty front"
+  },
+  "1243403:title": {
+    "verdict": "neither",
+    "clause": "A title naming no work at all, as a bare Manager, has none",
+    "pattern": "no function head present"
+  },
+  "1067008:title": {
+    "verdict": "b",
+    "clause": "The words in front of the head are kept; what follows it is dropped",
+    "pattern": "front kept, parenthetical dropped"
+  },
+  "46559:title": {
+    "verdict": "b",
+    "clause": "software adds nothing before a kind of work that is only ever software",
+    "pattern": "generic development filler replaced by kind"
+  },
+  "1350815:title": {
+    "verdict": "b",
+    "clause": "The kind of work moves in front",
+    "pattern": "specific front word kept, kind inserted before head"
+  },
+  "1501256:title": {
+    "verdict": "b",
+    "clause": "no punctuation except what belongs to a word",
+    "pattern": "ampersand dropped in area"
+  },
+  "1476951:title": {
+    "verdict": "a",
+    "clause": "Two heads joined by /, &, and or or give two normalized titles",
+    "pattern": "slash joins two heads, shared front"
+  },
+  "937758:title": {
+    "verdict": "b",
+    "clause": "no punctuation except what belongs to a word",
+    "pattern": "ampersand dropped in area"
+  },
+  "1316254:title": {
+    "verdict": "a",
+    "clause": "Seniority: senior, junior, principal, staff, mid",
+    "pattern": "seniority abbreviation removed"
+  },
+  "1275142:title": {
+    "verdict": "a",
+    "clause": "Skills. A language, a framework or a tool the title names goes",
+    "pattern": "flagged skill dropped despite platform"
+  },
+  "319670:title": {
+    "verdict": "a",
+    "clause": "A title not in English is not broken down here",
+    "pattern": "title not in English"
+  },
+  "678517:title": {
+    "verdict": "a",
+    "clause": "no punctuation except what belongs to a word",
+    "pattern": "ampersand dropped in front"
+  },
+  "46087:title": {
+    "verdict": "a",
+    "clause": "no punctuation except what belongs to a word",
+    "pattern": "ampersand dropped in area"
+  },
+  "697368:title": {
+    "verdict": "a",
+    "clause": "Two heads joined by /, &, and or or give two normalized titles",
+    "pattern": "slash joins two fronts, shared head"
+  },
+  "690969:title": {
+    "verdict": "b",
+    "clause": "no punctuation except what belongs to a word",
+    "pattern": "ampersand dropped in front"
+  },
+  "1103886:title": {
+    "verdict": "b",
+    "clause": "a word naming a person is the head before support or operations is",
+    "pattern": "yield word retained as modifier"
+  },
+  "1056253:title": {
+    "verdict": "b",
+    "clause": "the leadership word only gives the management level",
+    "pattern": "leadership abbreviation excluded from title"
+  },
+  "1056253:level": {
+    "verdict": "a",
+    "clause": "LEAD: lead or leader, in front of a head or leading an area",
+    "pattern": "leadership abbreviation gives level"
+  },
+  "811686:title": {
+    "verdict": "b",
+    "clause": "no punctuation except what belongs to a word",
+    "pattern": "ampersand dropped in area"
+  },
+  "1139260:title": {
+    "verdict": "b",
+    "clause": "no punctuation except what belongs to a word",
+    "pattern": "ampersand dropped in area"
+  }
+}

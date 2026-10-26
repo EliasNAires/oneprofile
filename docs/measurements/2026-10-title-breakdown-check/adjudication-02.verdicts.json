@@ -1,0 +1,102 @@
+{
+ "1158927:title": {
+  "verdict": "neither",
+  "clause": "A title naming no work at all, as a bare Manager, has none",
+  "pattern": "no occupation head present"
+ },
+ "1459931:title": {
+  "verdict": "b",
+  "clause": "Seniority: senior, junior, principal...",
+  "pattern": "seniority typo plus dropped tail"
+ },
+ "255591:title": {
+  "verdict": "b",
+  "clause": "The area is the words around the leadership word",
+  "pattern": "engineering manager area domain plus kind"
+ },
+ "581256:title": {
+  "verdict": "b",
+  "clause": "Only the first run of kind words moves, and a slash or an & ends it",
+  "pattern": "ampersand ends kind of work run"
+ },
+ "1151154:title": {
+  "verdict": "a",
+  "clause": "The kind of work moves in front",
+  "pattern": "kind of work moves behind existing modifier"
+ },
+ "661854:title": {
+  "verdict": "a",
+  "clause": "The head is the noun naming what the person does... and the like",
+  "pattern": "occupation noun as head via and the like"
+ },
+ "330044:title": {
+  "verdict": "b",
+  "clause": "kept where the company wrote them in front of it (Equities Data Engineer)",
+  "pattern": "industry term kept in front"
+ },
+ "272973:title": {
+  "verdict": "b",
+  "clause": "written in lowercase... with no punctuation except what belongs to a word",
+  "pattern": "ampersand dropped not spelled and"
+ },
+ "262465:title": {
+  "verdict": "a",
+  "clause": "It replaces a bare software there",
+  "pattern": "kind of work replaces bare software"
+ },
+ "572614:title": {
+  "verdict": "b",
+  "clause": "any word with a digit except those naming the work (3d, 5g, web3, b2b)",
+  "pattern": "digit word naming the work kept"
+ },
+ "570824:title": {
+  "verdict": "b",
+  "clause": "written in lowercase... with no punctuation except what belongs to a word",
+  "pattern": "ampersand dropped not spelled and"
+ },
+ "1243854:title": {
+  "verdict": "a",
+  "clause": "where it stands alone, the part after it, or else the title's first part",
+  "pattern": "bare leader area is first part"
+ },
+ "342371:title": {
+  "verdict": "b",
+  "clause": "written in lowercase... with no punctuation except what belongs to a word",
+  "pattern": "ampersand dropped not spelled and"
+ },
+ "379895:title": {
+  "verdict": "b",
+  "clause": "A title naming no work at all, as a bare Manager, has none",
+  "pattern": "no occupation head present"
+ },
+ "994904:title": {
+  "verdict": "b",
+  "clause": "A title written in English with a translation or a note in another language beside it is read by its English part",
+  "pattern": "bilingual title read by english part"
+ },
+ "673498:title": {
+  "verdict": "b",
+  "clause": "Two heads joined by /, &, and or or give two normalized titles",
+  "pattern": "single head shared domain modifiers with and"
+ },
+ "171444:title": {
+  "verdict": "b",
+  "clause": "written in lowercase... with no punctuation except what belongs to a word",
+  "pattern": "ampersand dropped not spelled and"
+ },
+ "274946:title": {
+  "verdict": "a",
+  "clause": "The kind of work moves in front",
+  "pattern": "kind of work moves behind existing modifier"
+ },
+ "264888:title": {
+  "verdict": "a",
+  "clause": "Only the first run of kind words moves, and a slash or an & ends it",
+  "pattern": "ampersand ends kind of work run"
+ },
+ "186451:title": {
+  "verdict": "a",
+  "clause": "The kind of work moves in front",
+  "pattern": "kind of work moves behind existing modifier"
+ }
+}

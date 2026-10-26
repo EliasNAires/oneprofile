@@ -1,0 +1,101 @@
+
+## title: per vacancy
+| Group | Vacancies | Faults | Rate | 95% interval |
+|---|---:|---:|---:|---:|
+| common | 70 | 2 (0 neither) | 2.9% | 0.8–9.8% |
+| middle | 69 | 18 (1 neither) | 26.1% | 17.2–37.5% |
+| tail | 70 | 14 (1 neither) | 20.0% | 12.3–30.8% |
+| GREENHOUSE | 48 | 4 (0 neither) | 8.3% | 3.3–19.6% |
+| ASHBY | 33 | 8 (0 neither) | 24.2% | 12.8–41.0% |
+| LEVER | 12 | 1 (0 neither) | 8.3% | 1.5–35.4% |
+| non-Workday | 93 | 13 (0 neither) | 14.0% | 8.4–22.5% |
+| WORKDAY | 116 | 21 (2 neither) | 18.1% | 12.2–26.1% |
+| 5+ vacancies (common+middle) | 139 | 20 (1 neither) | 14.4% | 9.5–21.2% |
+subset estimate 8.2% ± 3.5
+per distinct title: {'common': '9.3% (0.0–29.6%)', 'middle': '28.3% (17.5–39.6%)', 'tail': '22.0% (12.2–32.8%)'}
+
+## level: per vacancy
+| Group | Vacancies | Faults | Rate | 95% interval |
+|---|---:|---:|---:|---:|
+| common | 70 | 0 (0 neither) | 0.0% | 0.0–5.2% |
+| middle | 70 | 0 (0 neither) | 0.0% | 0.0–5.2% |
+| tail | 70 | 1 (0 neither) | 1.4% | 0.3–7.7% |
+| GREENHOUSE | 48 | 0 (0 neither) | 0.0% | 0.0–7.4% |
+| ASHBY | 33 | 0 (0 neither) | 0.0% | 0.0–10.4% |
+| LEVER | 12 | 0 (0 neither) | 0.0% | 0.0–24.3% |
+| non-Workday | 93 | 0 (0 neither) | 0.0% | 0.0–4.0% |
+| WORKDAY | 117 | 1 (0 neither) | 0.9% | 0.2–4.7% |
+| 5+ vacancies (common+middle) | 140 | 0 (0 neither) | 0.0% | 0.0–2.7% |
+subset estimate 0.3% ± 0.6
+per distinct title: {'common': '0.0% (0.0–0.0%)', 'middle': '0.0% (0.0–0.0%)', 'tail': '1.9% (0.0–5.9%)'}
+
+not english rows: [('495230', "STAGE - Ingénieure / Ingénieur développement logiciel DATA et IA pour la surveillance de l'espace", 'data ingénieure ingénieur')]
+
+## faults
+- title / associate only no head (2)
+    middle/WO `Capital Projects and Infrastructure Senior Associate` rule=`capital projects and infrastructure` label=`-` [fault]
+    middle/WO `Associate - Forensic Technology, Investigations & Discovery` rule=`forensic technology` label=`-` [fault]
+- title / no occupation head present (2)
+    middle/WO `Postdoctoral Research Associate - Robotics and AI` rule=`postdoctoral research` label=`postdoctoral research associate` [neither]
+    tail/LE `Associate, Investments (Infrastructure Focus)` rule=`infrastructure investments` label=`-` [fault]
+- title / kind of work moves behind existing modifier (2)
+    middle/WO `MS Engineer L2, Network` rule=`network ms engineer` label=`ms network engineer` [fault]
+    tail/AS `Principal Technical Product Manager, Networking` rule=`networking technical product manager` label=`technical network product manager` [fault]
+- title / kind of work replaces software (1)
+    common/AS `Software Engineer, Desktop` rule=`software engineer` label=`desktop engineer` [fault]
+- title / ampersand blocks kind word scan (1)
+    common/AS `Staff Software Engineer, Quality & Reliability Platform` rule=`platform reliability engineer` label=`software engineer` [fault]
+- title / slash cuts kind word run (1)
+    middle/WO `Advisor - AI/ML Generative Foundation Models for Biotherapeutics` rule=`advisor` label=`ai advisor` [fault]
+- title / team name after head dropped (1)
+    middle/AS `Member of Technical Staff, Performance and Scale` rule=`performance member of technical staff` label=`member of technical staff` [fault]
+- title / department words in front kept (1)
+    middle/WO `Tax - Digital Tax (Infrastructure) Off-Cycle Internship (Jan - Jun 27)` rule=`off cycle internship` label=`tax digital tax infrastructure intern` [fault]
+- title / kind word among non-kind words moves (1)
+    middle/GR `Senior Software Engineer, Perception ML` rule=`perception machine learning engineer` label=`machine learning engineer` [fault]
+- title / product name after head dropped (1)
+    middle/WO `Technical Support Engineer - Sales Cloud` rule=`cloud technical support engineer` label=`technical support engineer` [fault]
+- title / specific qualifier in front blocks move (1)
+    middle/GR `Mission Software Engineer, Mission Systems, Networking` rule=`systems mission engineer` label=`mission software engineer` [fault]
+- title / leadership word with function head present (1)
+    middle/WO `Sr. Lead, SW Full Stack Eng` rule=`full stack eng` label=`full stack engineer` [fault]
+- title / attribute word not a kind of work (1)
+    middle/AS `Senior Technical Program Manager, ECU Reliability & Durability Validation` rule=`reliability technical program manager` label=`technical program manager` [fault]
+- title / seniority typo plus dropped tail (1)
+    middle/WO `Principle Architect - Shopify Specialist` rule=`principle architect` label=`architect` [fault]
+- title / engineering manager area domain plus kind (1)
+    middle/AS ` Engineering Manager, Identity Platform ` rule=`identity platform engineer` label=`platform engineer` [fault]
+- title / occupation noun as head via and the like (1)
+    middle/WO `Lead Building Automation Systems (BAS) Installer` rule=`building automation systems` label=`building automation systems installer` [fault]
+- title / industry term kept in front (1)
+    middle/GR `Public Sector, Customer Architect - Fed Civ` rule=`customer architect` label=`public sector customer architect` [fault]
+- title / kind of work replaces bare software (1)
+    middle/AS `Software Engineer, Inference Infrastructure` rule=`inference infrastructure engineer` label=`infrastructure engineer` [fault]
+- title / digit word naming the work kept (1)
+    middle/WO `C4I All-Source Analyst` rule=`all source analyst` label=`c4i all source analyst` [fault]
+- title / bilingual title read by english part (1)
+    tail/WO `Mobilny Technik Serwisu / Mobile Service Engineer - Warszawa` rule=`mobilny technik serwisu mobile service engineer` label=`mobile service engineer` [fault]
+- title / ampersand ends kind of work run (1)
+    tail/AS `GPU Cluster Engineer, Systems & Platform` rule=`gpu cluster engineer` label=`gpu cluster systems engineer` [fault]
+- title / kind of work moved to empty front (1)
+    tail/WO `RR-0421351  Sr Analyst II Infrastructure Services` rule=`infrastructure rr analyst` label=`infrastructure analyst` [fault]
+- title / no function head present (1)
+    tail/WO `Agentic Diagnostics & Insights-Associate-Bangalore` rule=`agentic diagnostics insights` label=`agentic diagnostics and insights associate` [neither]
+- title / front kept, parenthetical dropped (1)
+    tail/WO `E-Discovery Administrator (Security/FOIA/CAPSTONE)` rule=`security discovery administrator` label=`e discovery administrator` [fault]
+- title / specific front word kept, kind inserted before head (1)
+    tail/WO `Tendering Engineer Infrastructure` rule=`infrastructure tendering engineer` label=`tendering infrastructure engineer` [fault]
+- title / slash joins two heads, shared front (1)
+    tail/WO `Ground-to-space Digital telecoms System SEM/Architect` rule=`ground to space digital telecoms systems sem architect` label=`ground to space digital telecoms systems sem | ground to space digital telecoms systems architect` [fault]
+- title / seniority abbreviation removed (1)
+    tail/WO `[LTA-IDE] PRINCIPAL/ SNR ENGINEER (COMMON DATA ENVIRONMENT & PLATFORMS)` rule=`data snr engineer` label=`engineer` [fault]
+- title / title not in English (1)
+    tail/GR `Analista de Web Analytics | Marketing` rule=`web analytics analista` label=`-` [fault]
+- title / slash joins two fronts, shared head (1)
+    tail/WO `CRM / Marketing Automation Specialist (f/m/x)` rule=`crm marketing automation specialist` label=`crm specialist | marketing automation specialist` [fault]
+- title / yield word retained as modifier (1)
+    tail/WO `Specialist IT Product Support` rule=`it product specialist` label=`it product support specialist` [fault]
+- title / leadership abbreviation excluded from title (1)
+    tail/WO `Ld Developer Analyst IT` rule=`it ld developer` label=`it developer` [fault]
+- level / leadership abbreviation gives level (1)
+    tail/WO `Ld Developer Analyst IT` rule=`-` label=`LEAD` [fault]

@@ -1,0 +1,122 @@
+[
+ {
+  "id": "223712:title",
+  "text": "title: Software Engineer, Desktop\nlocation: United Kingdom\ntitle_skills: \nasked: the normalized titles",
+  "a": "desktop engineer",
+  "b": "software engineer"
+ },
+ {
+  "id": "278825:title",
+  "text": "title: Team Lead, Engineering \nlocation: Brooklyn, NY\ntitle_skills: \nasked: the normalized titles",
+  "a": "engineering",
+  "b": "team lead"
+ },
+ {
+  "id": "399305:title",
+  "text": "title: Website & Lifecycle Marketing Lead\nlocation: Portugal\ntitle_skills: \nasked: the normalized titles",
+  "a": "website and lifecycle marketing",
+  "b": "website lifecycle marketing"
+ },
+ {
+  "id": "399312:title",
+  "text": "title: Website & Lifecycle Marketing Lead\nlocation: Argentina\ntitle_skills: \nasked: the normalized titles",
+  "a": "website lifecycle marketing",
+  "b": "website and lifecycle marketing"
+ },
+ {
+  "id": "312908:title",
+  "text": "title: Staff Software Engineer, Quality & Reliability Platform\nlocation: Toronto\ntitle_skills: \nasked: the normalized titles",
+  "a": "software engineer",
+  "b": "platform reliability engineer"
+ },
+ {
+  "id": "1069162:title",
+  "text": "title: Sr. Business Manager, ICT Americas Region-led markets\nlocation: Miami, Florida, United States of America\ntitle_skills: \nasked: the normalized titles",
+  "a": "business",
+  "b": "ict americas region led markets"
+ },
+ {
+  "id": "1015824:title",
+  "text": "title: Advisor - AI/ML Generative Foundation Models for Biotherapeutics\nlocation: US, San Diego CA\ntitle_skills: \nasked: the normalized titles",
+  "a": "ai advisor",
+  "b": "advisor"
+ },
+ {
+  "id": "1261213:title",
+  "text": "title: Capital Projects and Infrastructure Senior Associate\nlocation: Makati\ntitle_skills: \nasked: the normalized titles",
+  "a": "capital projects and infrastructure",
+  "b": "-"
+ },
+ {
+  "id": "1019720:title",
+  "text": "title: Intern - Quantitative Services\nlocation: Boston, Massachusetts\ntitle_skills: \nasked: the normalized titles",
+  "a": "quantitative intern",
+  "b": "intern"
+ },
+ {
+  "id": "344035:title",
+  "text": "title:  Staff Engineer – Enterprise IT Automation\nlocation: Bengaluru, Karnataka, India\ntitle_skills: \nasked: the normalized titles",
+  "a": "it automation engineer",
+  "b": "engineer"
+ },
+ {
+  "id": "215362:title",
+  "text": "title: Manager, Data Analytics & Business Intelligence (BI), GOC\nlocation: Barranquilla, Colombia; Bogota, Colombia; Medellin, Colombia; Mexico City, Mexico\ntitle_skills: \nasked: the normalized titles",
+  "a": "data analytics business intelligence",
+  "b": "data analytics and business intelligence"
+ },
+ {
+  "id": "243726:title",
+  "text": "title: Member of Technical Staff, Performance and Scale\nlocation: San Francisco\ntitle_skills: \nasked: the normalized titles",
+  "a": "member of technical staff",
+  "b": "performance member of technical staff"
+ },
+ {
+  "id": "1231062:title",
+  "text": "title: Tax - Digital Tax (Infrastructure) Off-Cycle Internship (Jan - Jun 27)\nlocation: Singapore\ntitle_skills: \nasked: the normalized titles",
+  "a": "off cycle internship",
+  "b": "tax digital tax infrastructure intern"
+ },
+ {
+  "id": "344934:title",
+  "text": "title: Senior Software Engineer, Perception ML\nlocation: Mountain View, California (HQ)\ntitle_skills: \nasked: the normalized titles",
+  "a": "perception machine learning engineer",
+  "b": "machine learning engineer"
+ },
+ {
+  "id": "1309973:title",
+  "text": "title: Technical Support Engineer - Sales Cloud\nlocation: Indiana - Indianapolis\ntitle_skills: \nasked: the normalized titles",
+  "a": "cloud technical support engineer",
+  "b": "technical support engineer"
+ },
+ {
+  "id": "1376718:title",
+  "text": "title: Associate - Forensic Technology, Investigations & Discovery\nlocation: Singapore\ntitle_skills: \nasked: the normalized titles",
+  "a": "forensic technology",
+  "b": "-"
+ },
+ {
+  "id": "382105:title",
+  "text": "title: Platform & SRE Engineer Intern (Digital Workplace)\nlocation: Singapore, Singapore\ntitle_skills: \nasked: the normalized titles",
+  "a": "platform and site reliability engineer",
+  "b": "platform site reliability engineer"
+ },
+ {
+  "id": "279220:title",
+  "text": "title: Mission Software Engineer, Mission Systems, Networking\nlocation: Costa Mesa, California, United States\ntitle_skills: \nasked: the normalized titles",
+  "a": "systems mission engineer",
+  "b": "mission software engineer"
+ },
+ {
+  "id": "1151525:title",
+  "text": "title: Sr. Lead, SW Full Stack Eng\nlocation: Chicago, IL\ntitle_skills: \nasked: the normalized titles",
+  "a": "full stack eng",
+  "b": "full stack engineer"
+ },
+ {
+  "id": "262833:title",
+  "text": "title: Senior Technical Program Manager, ECU Reliability & Durability Validation\nlocation: Palo Alto, California\ntitle_skills: \nasked: the normalized titles",
+  "a": "technical program manager",
+  "b": "reliability technical program manager"
+ }
+]

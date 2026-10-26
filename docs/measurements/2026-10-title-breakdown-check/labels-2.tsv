@@ -1,0 +1,106 @@
+id	normalized_titles	management_level	note
+342371	finance operations and site reliability engineer	-	kind-words front joined by &, not two heads; kept as compound front
+461747	technical systems analyst	-
+68406	localisation qa engineer	-
+312908	software engineer	-	trailing "Quality & Reliability Platform" read as team name, not kind of work
+249632	security engineer	-
+339377	it enterprise applications	MANAGER
+236549	forward deployed systems integration engineer	-	"(UAV Robotics)" is two parts behind head, stays dropped per clause 4
+265215	frontend developer	-
+327291	product engineer	-
+1487472	product support	-	no stronger head than "support" once associate (grade) removed; "(Voice)" dropped
+379895	-	-	"associate" is only a grade; no function head word present
+930852	software qa engineer	-
+1484517	domain architect	-
+674783	software engineer	-
+1056253	it developer	LEAD	"Ld" read as abbreviation of Lead, uncertain; "Developer Analyst" compound head, first wins
+1469502	web developer	-	.net removed as framework (title_skills confirms)
+1121621	internal audit it issue management	EXECUTIVE	no function head present so VP reads as leader, not as a grade; area taken as whole remainder
+1447799	ai advisory	DIRECTOR
+1135804	service desk specialist	-
+218071	it support analyst	-
+291476	mobile product engineer	-
+243726	member of technical staff	-
+1459931	architect	-	ambiguous split by dash with "Shopify Specialist"; Shopify removed as skill, dash does not split per clause 2, kept first head
+1262493	-	-	associate only, no function head
+1139260	retail and consumer analytics	LEAD	no function head noun present; lead reads area
+245457	digital infrastructure	EXECUTIVE
+937758	pmo strategic portfolio management and ai innovation	DIRECTOR
+260121	product manager	-	explicit job-title head, no management level
+1151525	full stack engineer	LEAD	"SW"/"Eng" read as Software/Engineer abbreviations, uncertain; software dropped before full stack
+1015824	ai advisor	-	slash after AI ends the kind-of-work run, ML left behind per clause 4
+406577	data scientist	-
+50592	systems engineer	-	Microsoft dropped as tool, not a staying platform
+1423907	navigation and machine learning engineering	-	follows "Software Engineering Intern" pattern; Intern dropped
+13182	technical program manager	-	explicit job title, no management level
+266216	security engineer	-	dash does not trigger a two-head split (only /, &, and, or do); second phrase dropped
+234030	frontend engineer	-
+279220	mission software engineer	-	"Mission Systems"/"Networking" kind words not at start of their parts, so nothing moves
+1494511	analyst	-	"API Governance" not a recognized kind of work, dropped with rest
+240713	frontend platform engineer	-
+80775	forward deployed data scientist	-
+167991	technical support engineer	-
+657192	full stack engineer	MANAGER	function head present, Manager only sets level; "People Leader" lower than Manager
+1103886	it product support specialist	-	reordered per IT Support Specialist pattern (clause 17)
+1307776	photo reticle engineer	-
+1376718	-	-	associate only, no function head word
+994904	mobile service engineer	-	non-English part has an English translation, read by it per clause 18
+242702	technical seo	LEAD	"Lead" not an explicit compound head here, reads as leader over whole title
+896812	gis intern	-
+265271	web product manager	-	matches "Product Manager, AI" pattern exactly
+1243854	llmops and mlops	MANAGER	"+" treated as a joiner, not a word character
+1336585	data security	LEAD
+1470715	identity platform engineer	LEAD
+344035	engineer	-	"Enterprise" not a recognized kind of work, so nothing moves from "Enterprise IT Automation"
+812231	it sap product lifecycle and quality	DIRECTOR
+938497	data security developer	-
+398743	full stack engineer	-
+277028	research engineer	-
+550872	data warehouse engineer	-	SAP BW/Databricks/(f/m/d) all dropped as skills/noise
+171444	salesforce and integration engineer	-
+1261213	-	-	associate only, no function head word
+1316254	engineer	-	bracketed code and seniority removed; "Common" starts the trailing part so no kind word moves
+661854	building automation systems installer	LEAD	"(BAS)" dropped as duplicate of the words it abbreviates
+1257939	ai cyber	LEAD	no function head noun; "cyber" kept literally, not expanded
+326380	backend developer	-	"Developer Intern" compound head, first wins; cohort season+year dropped
+1121669	it service management	DIRECTOR	two leadership words (Director, Lead); highest kept
+382105	platform and site reliability engineer	-	SRE expanded; "Engineer Intern" compound head, first wins
+673068	engineer	LEAD	"Collaboration Platforms" kind word not at the very start of its part, so nothing moves
+473569	application analyst	-
+924881	field plm architect	-
+1217443	threat strategy	MANAGER	"Threat Strategy Manager" not in the explicit job-title list, read as rank
+1309458	salesforce technical product owner	-
+540447	systems configuration analyst	-
+61090	network engineer	-
+245934	deployed architect	-
+811686	cloud and infrastructure automation	MANAGER
+256111	trading infrastructure engineer	-
+1069162	ict americas region led markets	MANAGER	"Business Manager" not an explicit job title; area taken from the part after the comma, uncertain split with "Business"
+358482	sales systems engineer	-
+678667	customer trust analyst	-
+1309973	technical support engineer	-	"Sales Cloud" dropped, "Sales" is not a recognized kind of work
+107264	network operations center specialist	-
+1151154	ms network engineer	-	"MS" left unexpanded, uncertain abbreviation; moved kind word placed just before head
+1326717	machine learning infrastructure engineer	-
+1146431	mixed signal design architect	-	HBM dropped as skill (title_skills confirms)
+917522	qa test engineer	-	parenthetical duplicate of QA dropped
+264888	gpu cluster systems engineer	-	only "Systems" moves, & ends the run before "Platform"; placement of moved word uncertain
+252606	robot platform engineer	-	"(Mensch)" dropped as foreign-language noise beside an English title
+1220987	devops engineer	-	"AIOps" not a recognized kind of work, dropped
+343123	backend engineer	-
+1476951	ground to space digital telecoms systems sem | ground to space digital telecoms systems architect	-	"SEM" read as an unexplained second head split by slash, uncertain
+369516	compiler performance engineer	-
+267536	frontend engineer	-
+1275142	sap architecture cloud btp	MANAGER	no function head noun present ("architecture" is not "architect"); French gender note dropped
+916361	platform software engineer	-	"platform" is not in the software-redundant list, so "software" stays
+1401112	automation scientist	-
+1276716	solution architect	MANAGER	function head present earlier in the title; trailing Manager only sets the level
+186451	business process analyst	-	"Process" is not a recognized kind of work, so nothing moves
+1362131	computer support specialist	-
+1077285	security analyst	-
+1019720	intern	-	"Quantitative" is not a recognized kind of work, so nothing moves; loses most of the title
+258763	data scientist | data analyst	-
+274946	technical network product manager	-	"networking" normalized to "network"; explicit job title, no management level
+1350815	tendering infrastructure engineer	-	"Infrastructure" trails the head with no separator, read as within the head's own part and moved
+1146355	test solutions engineer	-
+881657	agile delivery	LEAD	"Delivery Lead" not an explicit compound head

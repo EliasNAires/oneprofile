@@ -1,0 +1,108 @@
+#!/usr/bin/env python3
+"""Looks for fragmentation in the title breakdown (#94): one job landing on several normalized titles.
+Reads the engineering subset's normalized titles and skills from the development database.
+
+    scripts/title-fragmentation [similarity, default 0.95]
+
+Prints three things:
+
+- the top 2,000 normalized titles that share the same set of words (`backend software engineer`,
+  `software backend engineer`);
+- pairs of them with the same last word whose skill profiles are at least as similar as asked, by the
+  cosine of the share of their vacancies naming each skill. Most such pairs are different work that
+  asks for the same skills; the list is for reading, not for merging;
+- by ATS: vacancies, distinct normalized titles, and what the top 100, 300 and 1,000 cover. A vacancy
+  with two normalized titles is covered if either is in the top N.
+"""
+
+import collections
+import math
+import subprocess
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+
+TOP = 2000
+
+# A pair needs this many vacancies on its smaller side for its profile to say anything.
+MIN_VACANCIES = 20
+
+ATSS = ("GREENHOUSE", "ASHBY", "LEVER", "WORKDAY")
+
+
+def psql(query):
+    return subprocess.run(
+        ["docker", "compose", "--project-directory", str(REPO), "exec", "-T", "postgres", "psql", "-v",
+         "ON_ERROR_STOP=1", "-U", "oneprofile", "-d", "oneprofile", "-AtF", "\t", "-c", query],
+        check=True, capture_output=True, text=True, encoding="utf-8").stdout.splitlines()
+
+
+if len(sys.argv) > 2:
+    sys.exit(__doc__.strip())
+similarity = float(sys.argv[1]) if len(sys.argv) == 2 else 0.95
+
+vacancies = []
+for line in psql("select n.id, v.ats, array_to_string(n.normalized_titles, '|') from normalized_vacancy n"
+                 " join vacancy v on v.id = n.vacancy_id where n.classification_state = 'IN'"):
+    id_, ats, titles = line.split("\t")
+    vacancies.append((id_, ats, [title for title in titles.split("|") if title]))
+skills = collections.defaultdict(list)
+for line in psql("select s.normalized_vacancy_id, s.skill_id from vacancy_skill s join normalized_vacancy n"
+                 " on n.id = s.normalized_vacancy_id where n.classification_state = 'IN'"):
+    id_, skill = line.split("\t")
+    skills[id_].append(skill)
+
+count = collections.Counter()
+profile = collections.defaultdict(collections.Counter)
+for id_, _, titles in vacancies:
+    for title in titles:
+        count[title] += 1
+        profile[title].update(skills[id_])
+top = [title for title, _ in count.most_common(TOP)]
+
+print(f"== Top {TOP} normalized titles sharing the same set of words")
+by_words = collections.defaultdict(list)
+for title in top:
+    by_words[frozenset(title.split())].append(title)
+groups = sorted((titles for titles in by_words.values() if len(titles) > 1), key=lambda titles: -sum(count[t] for t in titles))
+for titles in groups:
+    print("  " + " ; ".join(f"{title} {count[title]}" for title in titles))
+print(f"  {len(groups)} groups\n")
+
+
+def cosine(a, b):
+    shares_a = {skill: n / count[a] for skill, n in profile[a].items()}
+    shares_b = {skill: n / count[b] for skill, n in profile[b].items()}
+    dot = sum(share * shares_b.get(skill, 0) for skill, share in shares_a.items())
+    norm = math.sqrt(sum(s * s for s in shares_a.values())) * math.sqrt(sum(s * s for s in shares_b.values()))
+    return dot / norm if norm else 0
+
+
+print(f"== Same last word, other words, skill profiles at least {similarity}")
+by_head = collections.defaultdict(list)
+for title in top:
+    by_head[title.split()[-1]].append(title)
+pairs = []
+for titles in by_head.values():
+    for i, a in enumerate(titles):
+        for b in titles[i + 1:]:
+            if frozenset(a.split()) != frozenset(b.split()) and count[b] >= MIN_VACANCIES:
+                score = cosine(a, b)
+                if score >= similarity:
+                    pairs.append((score, a, b))
+for score, a, b in sorted(pairs, reverse=True):
+    print(f"  {score:.3f}  {a} {count[a]}  ~  {b} {count[b]}")
+print(f"  {len(pairs)} pairs\n")
+
+print("== Coverage")
+print("  ats\tvacancies\tdistinct\ttop 100\ttop 300\ttop 1000")
+for ats in ATSS + ("ALL",):
+    rows = [titles for _, a, titles in vacancies if ats in ("ALL", a)]
+    counted = collections.Counter(title for titles in rows for title in titles)
+    ranked = [title for title, _ in counted.most_common()]
+    covers = []
+    for n in (100, 300, 1000):
+        chosen = set(ranked[:n])
+        covers.append(f"{100 * sum(1 for titles in rows if chosen.intersection(titles)) / len(rows):.1f}%")
+    print(f"  {ats}\t{len(rows)}\t{len(counted)}\t" + "\t".join(covers))

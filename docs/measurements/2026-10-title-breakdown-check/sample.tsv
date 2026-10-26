@@ -1,0 +1,211 @@
+id	ats	band	title_vacancies	title	location	title_skills	detected_language	normalized_titles	management_level
+674783	WORKDAY	common	12948	Senior Software Engineer	Sydney (AU)		en	software engineer	-
+223712	ASHBY	common	12948	Software Engineer, Desktop	United Kingdom		en	software engineer	-
+167991	GREENHOUSE	common	347	Technical Support Engineer - University Graduate 2027	San Mateo, CA United States			technical support engineer	-
+1469502	WORKDAY	common	114	.NET Web Developer	Washington DC	net	en	web developer	-
+267536	ASHBY	common	921	Frontend Engineer	Europe		en	frontend engineer	-
+278825	GREENHOUSE	common	60	Team Lead, Engineering 	Brooklyn, NY			team lead	LEAD
+399305	LEVER	common	42	Website & Lifecycle Marketing Lead	Portugal		en	website lifecycle marketing	LEAD
+17249	GREENHOUSE	common	12	System Validation Engineer - All Levels (AI Fabric Switches)	San Jose, California, United States			systems validation engineer	-
+1071521	WORKDAY	common	235	Director, Product Management - Tokenized Deposits	New York City, New York		en	product management	DIRECTOR
+554270	WORKDAY	common	12948	Software Engineer - Agency	Mexico City		en	software engineer	-
+343123	GREENHOUSE	common	2711	Sr. Backend Engineer (Remote)	Remote			backend engineer	-
+282313	GREENHOUSE	common	12948	Staff Software Engineer, Payments Acquiring	Bay Area, CA, United States of America			software engineer	-
+398743	LEVER	common	3077	Senior+ Full-Stack Engineer	Spain		en	full stack engineer	-
+792764	WORKDAY	common	15	Specialist - Process Analytics - SCM 4B	1401-GIPL: Prestige Technology Park IV, Bangalore		en	analytics specialist	-
+1494511	WORKDAY	common	844	Principal Analyst I - API Governance, Data Quality and Reporting	Columbus, OH		en	analyst	-
+265215	ASHBY	common	167	Mid/Senior Frontend Developer	Krakow, Poland		en	frontend developer	-
+657192	WORKDAY	common	3077	Sr. Manager Full-stack Engineer (People Leader)	New York, NY		en	full stack engineer	MANAGER
+23960	GREENHOUSE	common	3077	Senior Full-Stack Engineer	Israel			full stack engineer	-
+406038	LEVER	common	418	Senior Software Engineer I, Research Informatics	Brisbane, CA		en	research engineer	-
+13182	GREENHOUSE	common	753	Technical Program Manager, Compute 	San Francisco, CA | New York City, NY | Seattle, WA			technical program manager	-
+1220987	WORKDAY	common	1489	Senior DevOps Engineer, AIOps	Israel, Raanana		en	devops engineer	-
+406577	LEVER	common	2734	Data Scientist III (Team- Valmo)	Bangalore, Karnataka		en	data scientist	-
+330981	GREENHOUSE	common	265	Software Developer II - Indoor GIS AI and Reality	Redlands, CA			ai developer	-
+421281	LEVER	common	12948	Senior Software Engineer	London		en	software engineer	-
+327291	ASHBY	common	1040	Product Engineer — Marketplace	Los Angeles		en	product engineer	-
+1359719	WORKDAY	common	1620	Senior Java Developer	Canada, AB Remote	java	en	developer	-
+234030	ASHBY	common	921	Front-End Engineer (WebXR / VR)	San Francisco, CA		en	frontend engineer	-
+1023986	WORKDAY	common	1087	Network Engineer	PECAL03 - Lima - Av. Contralmirante Raygada 111 Entrada del Puerto - Muelle Norte		en	network engineer	-
+1167669	WORKDAY	common	68	SOC Analyst L2	Delhi, India		en	soc analyst	-
+50592	GREENHOUSE	common	1585	Senior Systems Engineer - Microsoft	Chicago			systems engineer	-
+384735	LEVER	common	253	Salesforce Developer	Greater Cincinnati (Preferred)	salesforce	en	salesforce developer	-
+435978	WORKDAY	common	3603	Data Engineer	Romania-Cluj Office		en	data engineer	-
+1532421	WORKDAY	common	623	Software Development Engineer - Intern	Seattle-WA-2nd Ave		en	software development engineer	-
+930852	WORKDAY	common	100	Software Quality Assurance Engineer - HPE Networking (Westford, MA)	Westford, Massachusetts, United States of America		en	software qa engineer	-
+1487472	WORKDAY	common	13	Product Support Associate (Voice)	Cebu, Philippines		en	product support	-
+209482	GREENHOUSE	common	247	Tech Lead, Android Core Product - Helsinki, Finland	Helsinki, Finland	android		android tech lead	LEAD
+258763	ASHBY	common	2734	Senior Data Scientist / Analyst, Fraud & Risk	New York		en	data scientist | data analyst	-
+178502	GREENHOUSE	common	171	AI Software Engineer	Spain			ai software engineer	-
+125600	GREENHOUSE	common	1247	 Site Reliability Engineer - Observability	Geneva; Paris			site reliability engineer	-
+1008347	WORKDAY	common	12948	Lead II, Software Engineering - Development	Bangalore, Karnataka, India		en	software engineer	LEAD
+277028	ASHBY	common	418	Research Engineer - Language Model Pre-Training	San Francisco		en	research engineer	-
+473569	WORKDAY	common	48	Senior Application Analyst	United States of America : Remote		en	application analyst	-
+1077285	WORKDAY	common	209	Analyst I - Security (Program)	CO - Boulder		en	security analyst	-
+266270	ASHBY	common	1435	Forward Deployed Engineer	Palo Alto		en	forward deployed engineer	-
+102684	GREENHOUSE	common	432	Senior Cybersecurity Engineer, Defense Operations	Singapore, Central, Singapore			cybersecurity engineer	-
+1400720	WORKDAY	common	3603	Data Engineer I (Databricks, AWS, Python)	CT - Hartford	databricks,aws,python	en	data engineer	-
+345589	GREENHOUSE	common	948	Senior Fullstack Software Developer (IAM)	Noida			full stack developer	-
+399312	LEVER	common	42	Website & Lifecycle Marketing Lead	Argentina		en	website lifecycle marketing	LEAD
+1326717	WORKDAY	common	55	Software Engineer, ML infrastructure, Core Inference, Level 4	Palo Alto - 395 Page Mill Rd		en	machine learning infrastructure engineer	-
+916361	WORKDAY	common	77	Platform Software Engineer II	US-MA-WOBURN-WB1 ~ 235 Presidential Way ~ SPENCER BLDG		en	platform software engineer	-
+326380	GREENHOUSE	common	308	Backend Developer Intern, Winter 2027	Montreal (Province of Quebec, Canada)			backend developer	-
+45472	GREENHOUSE	common	12948	Staff Software Engineer, Agentic Applications	Mountain View, California			software engineer	-
+673068	WORKDAY	common	2260	Lead Engineer, Collaboration Platforms, Cloud & Digital Workplace	Toronto		en	engineer	LEAD
+1276716	WORKDAY	common	710	ETIC, Solution Architect (Lending), Financial Services- Manager	Cairo - ETIC		en	solution architect	MANAGER
+19069	GREENHOUSE	common	97	Technical Writer 	Singapore			technical writer	-
+266216	ASHBY	common	1423	Security Engineer - Member of Technical Staff	San Francisco		en	security engineer	-
+1008368	WORKDAY	common	201	Senior Associate II, ServiceNow Developer	Bangalore, Karnataka, India	servicenow	en	servicenow developer	-
+240713	ASHBY	common	12	Staff Software Engineer - Frontend Platform	New York City		en	frontend platform engineer	-
+45948	GREENHOUSE	common	1272	Senior Product Manager - Fleet and Lifecycle Management	Boston, Massachusetts, USA; New York, New York, USA			product manager	-
+417304	LEVER	common	3603	Senior Data Engineer -Databricks	Coimbatore	databricks	en	data engineer	-
+312908	ASHBY	common	15	Staff Software Engineer, Quality & Reliability Platform	Toronto		en	platform reliability engineer	-
+249632	ASHBY	common	1423	Senior Security Engineer - Vulnerability & Data/SaaS Security	Remote - Ontario OR British Columbia		en	security engineer	-
+260121	ASHBY	common	1272	Senior / Staff Product Manager, Fraud	New York 		en	product manager	-
+218071	ASHBY	common	46	IT Support Analyst	Gdańsk, Poland		en	it support analyst	-
+61090	GREENHOUSE	common	1087	Senior Network Engineer 	Springfield			network engineer	-
+1423741	WORKDAY	common	397	Sales Engineer, West	Mumbai		en	sales engineer	-
+215933	GREENHOUSE	common	1597	Director, Engineering (The Americas) 	United States			engineering	DIRECTOR
+1069162	WORKDAY	common	15	Sr. Business Manager, ICT Americas Region-led markets	Miami, Florida, United States of America		en	business	MANAGER
+1308857	WORKDAY	common	156	Lead Solution Engineer	Mexico - Mexico City		en	solution engineer	LEAD
+1221337	WORKDAY	common	134	Senior Security Architect	Israel, Tel Aviv		en	security architect	-
+1015824	WORKDAY	middle	10	Advisor - AI/ML Generative Foundation Models for Biotherapeutics	US, San Diego CA		en	advisor	-
+1261213	WORKDAY	middle	5	Capital Projects and Infrastructure Senior Associate	Makati		en	capital projects and infrastructure	-
+344951	GREENHOUSE	middle	5	Senior/Staff Software Engineer, ML Data Infrastructure	Mountain View, California (HQ)			machine learning data infrastructure engineer	-
+1019720	WORKDAY	middle	6	Intern - Quantitative Services	Boston, Massachusetts		en	quantitative intern	-
+31127	GREENHOUSE	middle	7	AI Technical Architect	US - New York			ai technical architect	-
+344035	GREENHOUSE	middle	8	 Staff Engineer – Enterprise IT Automation	Bengaluru, Karnataka, India			it automation engineer	-
+1243947	WORKDAY	middle	8	Mobile App Developer - Senior Manager	Bangalore		en	mobile app developer	MANAGER
+1135804	WORKDAY	middle	9	Service Desk Specialist	North Sydney, New South Wales		en	service desk specialist	-
+215362	GREENHOUSE	middle	6	Manager, Data Analytics & Business Intelligence (BI), GOC	Barranquilla, Colombia; Bogota, Colombia; Medellin, Colombia; Mexico City, Mexico			data analytics business intelligence	MANAGER
+1507556	WORKDAY	middle	5	MNM522 ATPEE Sr Engineer	越南河南省 維先鎮 同文坊 同文三工業區		en	atpee engineer	-
+1362131	WORKDAY	middle	6	Computer Support Specialist	Texarkana, TX		en	computer support specialist	-
+1336585	WORKDAY	middle	5	Data Security Lead	Hyderabad, Telangana		en	data security	LEAD
+495230	WORKDAY	middle	5	STAGE - Ingénieure / Ingénieur développement logiciel DATA et IA pour la surveillance de l'espace	Les Mureaux		fr	data ingénieure ingénieur	-
+80775	GREENHOUSE	middle	8	Forward Deployed Data Scientist	San Francisco, California			forward deployed data scientist	-
+243726	ASHBY	middle	11	Member of Technical Staff, Performance and Scale	San Francisco		en	performance member of technical staff	-
+1231062	WORKDAY	middle	5	Tax - Digital Tax (Infrastructure) Off-Cycle Internship (Jan - Jun 27)	Singapore		en	off cycle internship	-
+1484517	WORKDAY	middle	7	Domain Architect – Shipping	Lysaker, Norway		en	domain architect	-
+245934	ASHBY	middle	8	Deployed Architect, Professional Services (NYC)	New York, NY		en	deployed architect	-
+344934	GREENHOUSE	middle	6	Senior Software Engineer, Perception ML	Mountain View, California (HQ)			perception machine learning engineer	-
+329130	GREENHOUSE	middle	10	Integration Consultant	CN-Shanghai			integration consultant	-
+68406	GREENHOUSE	middle	11	Localisation QA Engineer with Polish	Cork			localisation qa engineer	-
+881657	WORKDAY	middle	10	Agile Delivery Lead	York		en	agile delivery	LEAD
+1309973	WORKDAY	middle	10	Technical Support Engineer - Sales Cloud	Indiana - Indianapolis		en	cloud technical support engineer	-
+1376718	WORKDAY	middle	6	Associate - Forensic Technology, Investigations & Discovery	Singapore		en	forensic technology	-
+1441684	WORKDAY	middle	5	AI Advisory Manager	London		en	ai advisory	MANAGER
+290755	GREENHOUSE	middle	9	Senior AI Performance Engineer	Austin, Texas, United States			ai performance engineer	-
+369516	LEVER	middle	10	Compiler Performance Engineer	Bangalore		en	compiler performance engineer	-
+291476	GREENHOUSE	middle	6	Senior Mobile Product Engineer, Menu Discovery	Warszawa, Masovian Voivodeship, Poland			mobile product engineer	-
+382105	LEVER	middle	10	Platform & SRE Engineer Intern (Digital Workplace)	Singapore, Singapore		en	platform site reliability engineer	-
+1066457	WORKDAY	middle	5	Senior Signals Software Engineer	Annapolis Junction, MD		en	signals software engineer	-
+279220	GREENHOUSE	middle	5	Mission Software Engineer, Mission Systems, Networking	Costa Mesa, California, United States			systems mission engineer	-
+1151525	WORKDAY	middle	7	Sr. Lead, SW Full Stack Eng	Chicago, IL		en	full stack eng	LEAD
+917522	WORKDAY	middle	8	Sr. QA Test Engineer (Quality Assurance)	Chicago - 550 Van Buren		en	qa test engineer	-
+358482	GREENHOUSE	middle	5	Sales Systems Engineer II	Alpharetta, GA, USA			sales systems engineer	-
+653583	WORKDAY	middle	7	Lead Threat Intelligence Engineer	Remote - Canada		en	threat intelligence engineer	LEAD
+732547	WORKDAY	middle	8	Senior Machine Learning Ops Engineer	Singapore		en	machine learning ops engineer	-
+896812	WORKDAY	middle	6	GIS Intern - Summer 2027	Nashville, TN (City Center)		en	gis intern	-
+262833	ASHBY	middle	5	Senior Technical Program Manager, ECU Reliability & Durability Validation	Palo Alto, California		en	reliability technical program manager	-
+1158927	WORKDAY	middle	7	Postdoctoral Research Associate - Robotics and AI	University, MS		en	postdoctoral research	-
+1333654	WORKDAY	middle	8	Network Development Manager	Gloucester		en	network development	MANAGER
+242702	ASHBY	middle	6	Technical SEO Lead	Poland		en	technical seo	LEAD
+1447799	WORKDAY	middle	5	Director, AI Advisory	USA - CA - Palo Alto		en	ai advisory	DIRECTOR
+592048	WORKDAY	middle	8	Technology Product Manager	USA-CA - Promontory B		en	technology product manager	-
+1459931	WORKDAY	middle	5	Principle Architect - Shopify Specialist	Bangalore, KA, India	shopify	en	principle architect	-
+924881	WORKDAY	middle	9	Field PLM Principal Architect	All, New York, United States of America		en	field plm architect	-
+255591	ASHBY	middle	5	 Engineering Manager, Identity Platform 	San Francisco		en	identity platform engineer	MANAGER
+1003636	WORKDAY	middle	11	Software Applications Engineer	Taoyuan, Taiwan		en	software applications engineer	-
+265179	ASHBY	middle	9	Senior SecOps Engineer	Tel Aviv		en	secops engineer	-
+1229031	WORKDAY	middle	7	Technology Audit Manager	US KS Overland Park		en	technology audit	MANAGER
+642508	WORKDAY	middle	5	Senior Integration Software Engineer	Bengaluru, Karnataka, India		en	integration software engineer	-
+581256	WORKDAY	middle	6	Graduate-Technology-Data & AI-Malaysia	Malaysia - Kuala Lumpur		en	data graduate	-
+550872	WORKDAY	middle	7	Data Warehouse Engineer - SAP BW, SAP Business Data Cloud, Databricks (f/m/d)	Köln, Germany	databricks,sap-bw	de	data warehouse engineer	-
+1151154	WORKDAY	middle	6	MS Engineer L2, Network	Chennai, India		en	network ms engineer	-
+107264	GREENHOUSE	middle	5	Network Operations Center Specialist - Glomfjord	Norway			network operations center specialist	-
+1470715	WORKDAY	middle	5	Lead Identity Platform Engineer	Malvern, PA		en	identity platform engineer	LEAD
+616414	WORKDAY	middle	5	Principal Technology Product Owner	VIC CBD Melbourne Area		en	technology product owner	-
+661854	WORKDAY	middle	5	Lead Building Automation Systems (BAS) Installer	Indianapolis, IN (MEP-SOL)		en	building automation systems	LEAD
+330044	GREENHOUSE	middle	7	Public Sector, Customer Architect - Fed Civ	United States			customer architect	-
+1401112	WORKDAY	middle	11	Senior Scientist – Automation	Collegeville, Pennsylvania, USA		en	automation scientist	-
+26559	GREENHOUSE	middle	8	Network Platform Engineer 	London, England, United Kingdom			network platform engineer	-
+1146355	WORKDAY	middle	8	TEST SOLUTIONS ENGINEER	Taichung - Fab 16, Taiwan		en	test solutions engineer	-
+272973	ASHBY	middle	7	Software Integration & Test Engineer – Autonomy & Flight Test	Cambridge, MA		en	software integration test engineer	-
+331611	ASHBY	middle	11	Offensive Security Lead	Jakarta		en	offensive security	LEAD
+1499923	WORKDAY	middle	10	Technology Operations Analyst	Taguig City, Philippines		en	technology operations analyst	-
+1307776	WORKDAY	middle	5	Photo Reticle Engineer - All Shifts	1530 FM 973 Taylor, TX, USA		en	photo reticle engineer	-
+262465	ASHBY	middle	5	Software Engineer, Inference Infrastructure	Mountain View		en	inference infrastructure engineer	-
+245457	ASHBY	middle	7	Managing Director, Digital Infrastructure	San Francisco		en	digital infrastructure	EXECUTIVE
+572614	WORKDAY	middle	8	C4I All-Source Analyst	Riverdale, MD		en	all source analyst	-
+1121669	WORKDAY	middle	5	Director, IT Service Management Lead	Singapore Office OCC		en	it service management	DIRECTOR
+954600	WORKDAY	middle	7	MedTech Field Service Software Tech Entry level - Batesville, IN	Batesville, Indiana, United States		en	medtech field service software tech	-
+570824	WORKDAY	tail	1	Senior Manager, Supply Chain Data Science & AI Operationalization	Santa Clara,CA		en	supply chain data science ai operationalization	MANAGER
+65195	GREENHOUSE	tail	1	Cyber Security Project Engineer 755	Herndon, VA			cybersecurity project engineer	-
+1243854	WORKDAY	tail	2	LLMOps + MLOps - Manager	Bangalore		en	llmops mlops	MANAGER
+1146431	WORKDAY	tail	1	Mixed-signal Design Architect, HBM Architecture	Folsom, CA	hbm	en	mixed signal design architect	-
+1086325	WORKDAY	tail	1	Senior NC Programmer	Torrance, CA		en	nc programmer	-
+265271	ASHBY	tail	4	Product Manager - Web Insights 	Vancouver, Canada		en	web product manager	-
+1897	GREENHOUSE	tail	4	Palantir Data Scientist in California	Point Mugu, CA			palantir data scientist	-
+342371	GREENHOUSE	tail	1	Senior Finance Operations & Site Reliability Engineer	Salt Lake City			finance operations site reliability engineer	-
+379895	LEVER	tail	1	Associate, Investments (Infrastructure Focus)	Los Angeles, CA		en	infrastructure investments	-
+994904	WORKDAY	tail	1	Mobilny Technik Serwisu / Mobile Service Engineer - Warszawa	Warszawa, Poland		pl	mobilny technik serwisu mobile service engineer	-
+673498	WORKDAY	tail	1	Data Science and Supply Chain Analyst	Quezon City, Manila, Philippines		en	data science and supply chain analyst	-
+1167247	WORKDAY	tail	1	Cross Domain Senior Solutions Architect	Kallang, Singapore		en	cross domain solutions architect	-
+244584	ASHBY	tail	1	Growth Software Engineer	Paris		en	growth software engineer	-
+171444	GREENHOUSE	tail	1	Senior Salesforce & Integration Engineer 	New York, New York, United States	salesforce		salesforce integration engineer	-
+274946	ASHBY	tail	1	Principal Technical Product Manager, Networking	Remote - United States		en	networking technical product manager	-
+264888	ASHBY	tail	3	GPU Cluster Engineer, Systems & Platform	San Francisco, CA		en	gpu cluster engineer	-
+186451	GREENHOUSE	tail	4	Business Process Analyst, Process Automation	Toronto, Ontario, Canada			automation business process analyst	-
+1257939	WORKDAY	tail	1	AI Cyber Lead	NEW YORK		en	ai cyber	LEAD
+236549	ASHBY	tail	3	Forward Deployed System Integration Engineer - L2 (UAV Robotics) - Ukraine	Ukraine		en	forward deployed systems integration engineer	-
+1262493	WORKDAY	tail	0	Senior Associate	Mumbai Shivaji Park		en	-	-
+733264	WORKDAY	tail	3	RR-0421351  Sr Analyst II Infrastructure Services	IND - KA - BANGALORE		en	infrastructure rr analyst	-
+282222	GREENHOUSE	tail	1	Staff Mission Solutions Engineer	Remote-USA; Seattle, WA; Herndon, VA			mission solutions engineer	-
+826629	WORKDAY	tail	1	Marketing Analytics Intern	Dayton, Minnesota, USA (French Lake)		en	marketing analytics intern	-
+1243403	WORKDAY	tail	2	Agentic Diagnostics & Insights-Associate-Bangalore	Bangalore		en	agentic diagnostics insights	-
+1067008	WORKDAY	tail	1	E-Discovery Administrator (Security/FOIA/CAPSTONE)	Suffolk, VA		en	security discovery administrator	-
+1245885	WORKDAY	tail	2	Manager Content Data Engineering	Remote - USA - Nationwide		en	content data engineer	MANAGER
+46559	GREENHOUSE	tail	2	Senior Software Development Engineer SAP Fullstack (f/m/d)	Lille, Upline, Nord, France; Paris, Paris, France			sap full stack engineer	-
+461747	WORKDAY	tail	1	Technical Systems Analyst	Banglore, India		en	technical systems analyst	-
+1350815	WORKDAY	tail	1	Tendering Engineer Infrastructure	Madrid		en	infrastructure tendering engineer	-
+778737	WORKDAY	tail	2	Director, Forensic Accounting and Advisory	Paris, France		fr	forensic accounting and advisory	DIRECTOR
+1217443	WORKDAY	tail	1	Threat Strategy Manager	Melbourne, Australia		en	threat strategy	MANAGER
+938497	WORKDAY	tail	1	Senior Software Developer, Data Security Project	Toronto, 700 University Avenue		en	data security developer	-
+87427	GREENHOUSE	tail	2	Game Security Data Scientist	El Segundo, CA			game security data scientist	-
+244117	ASHBY	tail	1	Payroll Software Consultant	IRIS Remote, UK		en	payroll software consultant	-
+256111	ASHBY	tail	1	Trading Infrastructure Engineer – Algorithmic Power Trading	Berlin / Remote		en	trading infrastructure engineer	-
+678667	WORKDAY	tail	1	Senior Customer Trust Analyst	Krakow, Poland		en	customer trust analyst	-
+1501256	WORKDAY	tail	1	Manager, Engineering Tools & Infrastructure	Spyce		en	engineering tools infrastructure	MANAGER
+657896	WORKDAY	tail	3	Technical Product Management Intern	Office - London		en	technical product management intern	-
+812231	WORKDAY	tail	2	Director, IT SAP Product Lifecycle and Quality	United States - California - Foster City		en	it sap product lifecycle and quality	DIRECTOR
+1476951	WORKDAY	tail	1	Ground-to-space Digital telecoms System SEM/Architect	Roma		en	ground to space digital telecoms systems sem architect	-
+1356259	WORKDAY	tail	3	Senior Performance Testing Engineer - Team Lead	Hyderabad, India		en	performance testing engineer	LEAD
+1378614	WORKDAY	tail	3	Digital Product Scrum Master	Amstelveen		en	digital product scrum master	-
+937758	WORKDAY	tail	2	Senior Director, PMO Strategic Portfolio Management & AI Innovation	NJ Corporate Headquarters		en	pmo strategic portfolio management ai innovation	DIRECTOR
+1316254	WORKDAY	tail	1	[LTA-IDE] PRINCIPAL/ SNR ENGINEER (COMMON DATA ENVIRONMENT & PLATFORMS)	LTA HSO B2 03		en	data snr engineer	-
+245292	ASHBY	tail	1	ServiceNow Platform Operations Engineer	United States | Arlington, VA	servicenow	en	servicenow platform operations engineer	-
+1275142	WORKDAY	tail	3	Senior Manager SAP Architecture-Cloud-BTP - F/H	Neuilly-sur-Seine	sap-business-technology-platform	fr	sap architecture cloud	MANAGER
+319670	GREENHOUSE	tail	1	Analista de Web Analytics | Marketing	São Paulo			web analytics analista	-
+798112	WORKDAY	tail	2	Geospatial Systems Software Engineer, Mid	USA VA Springfield		en	geospatial systems software engineer	-
+678517	WORKDAY	tail	1	Security Governance & Compliance Specialist	San Jose, Costa Rica		en	security governance compliance specialist	-
+46087	GREENHOUSE	tail	3	IT & Business Systems Manager	Remote - United States			it business systems	MANAGER
+191447	GREENHOUSE	tail	4	Product QA Engineer (m/f/d) 	Munich			product qa engineer	-
+697368	WORKDAY	tail	1	CRM / Marketing Automation Specialist (f/m/x)	Madrid Paseo Castellana 18		en	crm marketing automation specialist	-
+252606	ASHBY	tail	4	Robot Platform Engineer (Mensch)	Metzingen / Riederich		de	robot platform engineer	-
+576272	WORKDAY	tail	1	Senior Retail AI Solutions Specialist	Corporate Headquarters Manchester CT		en	retail ai solutions specialist	-
+429815	LEVER	tail	4	Software Engineer - Automation Platform	India - Hyderabad		en	automation platform engineer	-
+1121621	WORKDAY	tail	1	VP - Internal Audit IT Issue Management	MUFG Global Service Private Ltd. - Bengaluru (BCIT)		en	internal audit it issue management	EXECUTIVE
+690969	WORKDAY	tail	1	Microsoft 365 Security & Compliance Specialist	Washington, DC		en	microsoft security compliance specialist	-
+540447	WORKDAY	tail	1	Senior System Configuration Analyst	Hybrid Flex - Durham		en	systems configuration analyst	-
+1103886	WORKDAY	tail	2	Specialist IT Product Support	Auckland - Customs		en	it product specialist	-
+943187	WORKDAY	tail	1	Director, Global Digital Platform Technology Lead	New York, New York		en	global digital platform technology	DIRECTOR
+339377	GREENHOUSE	tail	1	Senior Manager, IT Enterprise Applications, Digital Workplace	US Remote			it enterprise applications	MANAGER
+792699	WORKDAY	tail	2	IT Services Specialist EMEA	Budapest, Hungary		en	it services specialist	-
+1056253	WORKDAY	tail	1	Ld Developer Analyst IT	Pune		en	it ld developer	-
+635667	WORKDAY	tail	3	Cyber Reverse Engineer	Sterling, VA, US		en	cyber reverse engineer	-
+328933	GREENHOUSE	tail	1	Product Design Analyst | Affirmative Job Opening for Diverse Talent	Curitiba | Hybrid			product design analyst	-
+811686	WORKDAY	tail	1	Manager, Cloud & Infrastructure Automation	Montreal, Rosemont		en	cloud infrastructure automation	MANAGER
+1309458	WORKDAY	tail	2	Salesforce Senior Technical Product Owner	Brazil - Sao Paulo	salesforce	en	salesforce technical product owner	-
+571280	WORKDAY	tail	2	Secure Cloud Architect	Annapolis Junction, MD		en	secure cloud architect	-
+1139260	WORKDAY	tail	1	Lead Retail & Consumer Analytics, SEA&I	South, Singapore, Singapore		en	retail consumer analytics	LEAD
+1423907	WORKDAY	tail	1	Navigation & Machine Learning Engineering Intern (16 Months)	Canada - Richmond Hill, Ontario (Applanix)		en	navigation machine learning engineering	-

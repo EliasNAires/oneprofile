@@ -1,0 +1,22 @@
+{
+ "223712:title": {"verdict": "a", "clause": "4. The kind of work moves in front... It replaces a bare software there: Software Engineer, Backend -> backend engineer", "pattern": "kind of work replaces software"},
+ "278825:title": {"verdict": "b", "clause": "1. Several words can be one head... team lead", "pattern": "team lead as fixed head"},
+ "399305:title": {"verdict": "b", "clause": "The normalized title... written... with no punctuation except what belongs to a word", "pattern": "ampersand dropped not spelled out"},
+ "399312:title": {"verdict": "a", "clause": "The normalized title... written... with no punctuation except what belongs to a word", "pattern": "ampersand dropped not spelled out"},
+ "312908:title": {"verdict": "a", "clause": "4. Only the first run of kind words moves, and a slash or an & ends it", "pattern": "ampersand blocks kind word scan"},
+ "1069162:title": {"verdict": "a", "clause": "12. The area is the words around the leadership word", "pattern": "adjective before manager is area"},
+ "1015824:title": {"verdict": "a", "clause": "4. Only the first run of kind words moves, and a slash or an & ends it", "pattern": "slash cuts kind word run"},
+ "1261213:title": {"verdict": "b", "clause": "9. Corporate grades: associate (never a head or level)", "pattern": "associate only no head"},
+ "1019720:title": {"verdict": "a", "clause": "4. The kind of work moves in front... other fields of the same sort", "pattern": "kind of work before yield word"},
+ "344035:title": {"verdict": "a", "clause": "4. Only the first run of kind words moves", "pattern": "kind phrase with leading qualifier"},
+ "215362:title": {"verdict": "a", "clause": "The normalized title... written... with no punctuation except what belongs to a word", "pattern": "ampersand dropped not spelled out"},
+ "243726:title": {"verdict": "a", "clause": "3. What follows it is dropped... usually a team, a product, a client, a place or a code", "pattern": "team name after head dropped"},
+ "1231062:title": {"verdict": "b", "clause": "3. The words in front of the head are kept (Equities Data Engineer); 8. shift or hours words taken out", "pattern": "department words in front kept"},
+ "344934:title": {"verdict": "b", "clause": "4. The kind of work moves in front... It replaces a bare software there", "pattern": "kind word among non-kind words moves"},
+ "1309973:title": {"verdict": "b", "clause": "3. What follows it is dropped... usually a team, a product, a client, a place or a code", "pattern": "product name after head dropped"},
+ "1376718:title": {"verdict": "b", "clause": "9. Corporate grades: associate (never a head or level)", "pattern": "associate only no head"},
+ "382105:title": {"verdict": "b", "clause": "The normalized title... written... with no punctuation except what belongs to a word", "pattern": "ampersand dropped not spelled out"},
+ "279220:title": {"verdict": "b", "clause": "3. The words in front of the head are kept", "pattern": "specific qualifier in front blocks move"},
+ "1151525:title": {"verdict": "b", "clause": "12. Where a function head is present, the head is read... the leadership word only gives the management level", "pattern": "leadership word with function head present"},
+ "262833:title": {"verdict": "a", "clause": "4. ...other fields of the same sort (reliability, unlike site reliability, is not listed)", "pattern": "attribute word not a kind of work"}
+}
