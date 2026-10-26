@@ -86,11 +86,23 @@ class TitleBreakdownRuleTest {
 	@Test
 	void takesALeadershipWordOutAsTheManagementLevelAndKeepsTheAreaItLeads() {
 		assertThat(breakDown("Engineering Manager, Backend"))
-			.isEqualTo(new TitleBreakdown(List.of("backend engineering"), Set.of(), ManagementLevelEnum.MANAGER));
+			.isEqualTo(new TitleBreakdown(List.of("backend engineer"), Set.of(), ManagementLevelEnum.MANAGER));
 		assertThat(breakDown("Chief Technology Officer"))
 			.isEqualTo(new TitleBreakdown(List.of("technology"), Set.of(), ManagementLevelEnum.EXECUTIVE));
 		assertThat(breakDown("VP Engineering"))
 			.isEqualTo(new TitleBreakdown(List.of("engineering"), Set.of(), ManagementLevelEnum.EXECUTIVE));
+	}
+
+	@Test
+	void readsALeaderOfEngineeringAsAnEngineer() {
+		assertThat(normalized("Head of Data Engineering")).containsExactly("data engineer");
+		assertThat(normalized("Software Engineering Manager")).containsExactly("software engineer");
+	}
+
+	@Test
+	void leavesABareEngineeringLeaderTheAreaOfEngineering() {
+		assertThat(breakDown("Engineering Manager"))
+			.isEqualTo(new TitleBreakdown(List.of("engineering"), Set.of(), ManagementLevelEnum.MANAGER));
 	}
 
 	@Test
@@ -152,6 +164,13 @@ class TitleBreakdownRuleTest {
 	@Test
 	void readsTwoAdjacentHeadsAsOneCompoundHead() {
 		assertThat(normalized("Programmer Analyst II")).containsExactly("programmer");
+	}
+
+	@Test
+	void joinsTwoHeadsWithAnAmpersandAndLeavesNoneInATitle() {
+		assertThat(normalized("Principal Software Engineer & Architect"))
+			.containsExactly("software engineer", "software architect");
+		assertThat(normalized("Principal Automation & AI Engineer")).containsExactly("automation ai engineer");
 	}
 
 	@Test

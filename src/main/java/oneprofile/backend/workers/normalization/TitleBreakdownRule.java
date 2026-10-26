@@ -41,7 +41,9 @@ import org.springframework.stereotype.Component;
  * management level; a vice president or a managing director beside a function head is a corporate
  * grade and is only taken out.</li>
  * <li>A leadership word with no function head leads an area: the words around it, or the part after
- * it when it stands alone ({@code Senior Manager, Data Applications}), are what is left.</li>
+ * it when it stands alone ({@code Senior Manager, Data Applications}), are what is left. A kind
+ * of engineering reads as its engineer: {@code Head of Data Engineering} is a {@code data
+ * engineer}, while a bare {@code Engineering Manager} keeps {@code engineering}.</li>
  * <li>Two function heads in one part give two normalized titles.</li>
  * </ul>
  */
@@ -103,11 +105,10 @@ public class TitleBreakdownRule {
 
 	private static final Pattern WHITESPACE = Pattern.compile("\\s+");
 
-	private static final Pattern SLASH = Pattern.compile("/");
+	/** A slash, or an ampersand with a space on either side; {@code R&D} is one word. */
+	private static final Pattern JOINING = Pattern.compile("/|\\s&\\s");
 
-	private static final Pattern SPACED_AMPERSAND = Pattern.compile("\\s&\\s");
-
-	/** The slash, kept as a word: what joins two heads. */
+	/** A slash or a spaced ampersand, kept as a word: what joins two heads. */
 	private static final String JOIN = "/";
 
 	/** The words that join two heads into two titles, where adjacent heads are one compound head. */
@@ -385,7 +386,15 @@ public class TitleBreakdownRule {
 			return List.of();
 		}
 		List<Item> after = (next < parts.size()) ? parts.get(next) : List.of();
-		return nonEmpty(text(withKindsFrom(after, area)));
+		List<Item> led = new ArrayList<>(withKindsFrom(after, area));
+		// Whoever leads a kind of engineering leads engineers of that kind, and that is the work the
+		// area names: a Head of Data Engineering reads as a data engineer. A bare engineering is left
+		// as it is, because the engineer it would read as names no kind at all; which role it is, is
+		// the role list's to say (#25).
+		if (led.size() > 1 && led.getLast().text().equals("engineering")) {
+			led.set(led.size() - 1, Item.of("engineer", WordUse.HEAD));
+		}
+		return nonEmpty(text(led));
 	}
 
 	/** The words kept in front of a head: all of them but the leadership words, and no connector at either end. */
@@ -520,9 +529,9 @@ public class TitleBreakdownRule {
 	/** The words of one part as cleaning leaves them, lowercased and spelled one way. */
 	private List<String> words(String part) {
 		// Cleaning takes a slash and a spaced ampersand out, and they are what tells two heads from one
-		// compound head, so the slash is kept as a word of its own and the ampersand read as "and".
+		// compound head, so either is kept as a word of its own.
 		List<String> words = new ArrayList<>();
-		for (String piece : SLASH.split(SPACED_AMPERSAND.matcher(part).replaceAll(" and "))) {
+		for (String piece : JOINING.split(part)) {
 			String cleaned = this.cleaning.clean(piece).title().toLowerCase(Locale.ROOT);
 			if (!cleaned.isEmpty()) {
 				if (!words.isEmpty()) {

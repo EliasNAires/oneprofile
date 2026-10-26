@@ -109,3 +109,31 @@ How the rule read what #92 did not spell out:
 - **Storage.** The guarded levels are kept in their own table beside cleaning's, so that each pass
   replaces only its own. The numbered levels are in `SeniorityLevelEnum`, declared after the scale
   and given no place on it (#8).
+
+## Run again: a leader of a kind of engineering
+
+Decided with Elias the same day: a leader whose area is a kind of engineering is read as an
+engineer of that kind. `Software Engineering Manager` → `software engineer` and `Head of Data
+Engineering` → `data engineer`, each with its management level. A bare `Engineering Manager` keeps
+`engineering`. The engineer it would read as names no kind at all, and which role it is belongs to
+the role list (#25). In the same run, a spaced `&` stopped leaving `and` in a title: `Automation & AI
+Engineer` is an `automation ai engineer` again. The levels are unchanged.
+
+| ATS | Distinct | Top 100 cover | Top 300 cover | Top 1,000 cover | Titles for 70% | Floor there | Head alone |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Greenhouse | 7,569 | 56.7% | 68.9% | 79.6% | 341 | 11 | 4.4% |
+| Ashby | 3,318 | 68.6% | 80.3% | 89.5% | 115 | 22 | 4.7% |
+| Lever | 2,738 | 58.3% | 73.2% | 86.4% | 234 | 7 | 6.7% |
+| Workday | 19,834 | 42.3% | 53.0% | 63.9% | 2,021 | 4 | 5.5% |
+| **All** | **27,963** | **49.1%** | **60.4%** | **70.3%** | **986** | **12** | **5.2%** |
+
+The tail is the normalized titles that fewer than 5 vacancies carry: 25,327 titles over 34,613
+vacancies (22.2%). In a random 60 of them, about three in four are real titles that are simply
+specific: `cyber resiliency analyst`, `mainframe zos systems administrator`, `multimodal data
+engineer`. The rest are faults:
+
+- **Company and programme names:** `Website Lead at Private Equity Insights`, `College to
+  Corporate IT Internship`, and `Atlas Network`, whose `network` was moved in front as a kind of work.
+- **`middle` as a level:** `Middle Full-Stack Engineer`, written for mid.
+- **Words out of order:** `systems marketing operations`.
+- **Titles not in English:** `Estágio em Engenharia de Análise de Dados`.

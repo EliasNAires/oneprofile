@@ -94,6 +94,9 @@ about 786 normalized titles are needed for 70% of the subset, against about 300 
   - A title that names a job rather than a rank keeps its word: `product manager`, `technical
     program manager`, `account manager`. The role list claims those titles whole.
   - A bare `Manager` has a management level and no role, and does not count toward the 70%.
+  - A leader of a kind of engineering is read as an engineer of that kind (decided with Elias in
+    #92): a `Head of Data Engineering` is a `data engineer`. A bare `Engineering Manager` keeps
+    `engineering`, which the role list maps.
   - `lead` is a level of its own: a tech lead often manages no one, a team lead often does, and
     the title does not tell them apart.
   - The management level is not the seniority level: a `Senior Engineering Manager` has both.
