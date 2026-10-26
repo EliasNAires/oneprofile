@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import oneprofile.backend.storage.normalizedvacancy.Classification;
 import oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum;
-import oneprofile.backend.storage.normalizedvacancy.NormalizedTitle;
+import oneprofile.backend.storage.normalizedvacancy.ClassificationVacancy;
 import oneprofile.backend.storage.normalizedvacancy.NormalizedVacancyStore;
 import oneprofile.backend.storage.normalizedvacancy.UnknownReasonEnum;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,19 +70,19 @@ public class CorpusClassificationRun {
 		int recorded = 0;
 		long after = 0;
 		while (true) {
-			List<NormalizedTitle> read = this.normalized.cleanedTitlesAfter(after, this.batch);
+			List<ClassificationVacancy> read = this.normalized.cleanedTitlesAfter(after, this.batch);
 			if (read.isEmpty()) {
 				break;
 			}
 			Map<Long, Classification> classified = new LinkedHashMap<>(read.size());
-			for (NormalizedTitle title : read) {
-				Classification decided = this.classification.classify(title.cleanedTitle());
+			for (ClassificationVacancy vacancy : read) {
+				Classification decided = this.classification.classify(vacancy.cleanedTitle());
 				states.merge(decided.state(), 1, Integer::sum);
 				if (decided.reason() != null) {
 					reasons.merge(decided.reason(), 1, Integer::sum);
 				}
-				classified.put(title.vacancyId(), decided);
-				after = title.vacancyId();
+				classified.put(vacancy.vacancyId(), decided);
+				after = vacancy.vacancyId();
 			}
 			recorded += this.normalized.recordClassifications(classified);
 		}

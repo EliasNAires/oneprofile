@@ -3,8 +3,10 @@ package oneprofile.backend.storage.vacancyskill;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,6 +48,22 @@ public class VacancySkillStore {
 				.put(row.skillId(), row.segments());
 		}
 		return found;
+	}
+
+	/**
+	 * Reads the skills the last run found in the titles of some vacancies, for the title breakdown to
+	 * take out of them.
+	 * @param normalizedVacancyIds the normalized vacancies
+	 * @return by the id of each normalized vacancy, the ids of the skills its title names; a vacancy
+	 * whose title names none is left out
+	 */
+	@Transactional(readOnly = true)
+	public Map<Long, Set<String>> titleSkillIds(Collection<Long> normalizedVacancyIds) {
+		Map<Long, Set<String>> named = new HashMap<>();
+		for (VacancySkillEntity row : this.repository.findByNormalizedVacancyIdInAndInTitleTrue(normalizedVacancyIds)) {
+			named.computeIfAbsent(row.normalizedVacancyId(), (vacancy) -> new HashSet<>()).add(row.skillId());
+		}
+		return named;
 	}
 
 	/**

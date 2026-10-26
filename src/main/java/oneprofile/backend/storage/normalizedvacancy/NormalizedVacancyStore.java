@@ -30,7 +30,7 @@ public class NormalizedVacancyStore {
 	 * @return their vacancy ids and cleaned titles, empty once there are none left
 	 */
 	@Transactional(readOnly = true)
-	public List<NormalizedTitle> cleanedTitlesAfter(long after, int batch) {
+	public List<ClassificationVacancy> cleanedTitlesAfter(long after, int batch) {
 		return this.repository.cleanedTitlesAfter(after, Limit.of(batch));
 	}
 
@@ -115,6 +115,45 @@ public class NormalizedVacancyStore {
 	public int recordUnsupportedLanguage(Set<Long> skipped) {
 		List<NormalizedVacancyEntity> recorded = this.repository.findByVacancyIdIn(skipped);
 		recorded.forEach((normalized) -> normalized.classifiedAs(Classification.unsupportedLanguage()));
+		this.repository.saveAll(recorded);
+		return recorded.size();
+	}
+
+	/**
+	 * The engineering subset held after one vacancy id, in id order, each with its title as published
+	 * and its location field: what the title breakdown reads, walked batch by batch like the titles are.
+	 * @param after the vacancy id to read past, 0 to start at the first
+	 * @param batch how many to read at most
+	 * @return the vacancies, empty once there are none left
+	 */
+	@Transactional(readOnly = true)
+	public List<BreakdownVacancy> breakdownScopeAfter(long after, int batch) {
+		return this.repository.breakdownScopeAfter(after, Limit.of(batch));
+	}
+
+	/**
+	 * Lets go of what every title breakdown recorded, so that after a run only the vacancies it read
+	 * hold one: a vacancy that has left the engineering subset keeps none.
+	 * @return how many vacancies had been broken down
+	 */
+	@Transactional
+	public int clearTitleBreakdowns() {
+		this.repository.clearGuardedTitleSeniorities();
+		return this.repository.clearTitleBreakdowns();
+	}
+
+	/**
+	 * Records what the title breakdown made of a batch of vacancies.
+	 * @param brokenDown the breakdown of each vacancy's title, by vacancy id
+	 * @return how many vacancies this recorded a breakdown for
+	 */
+	@Transactional
+	public int recordTitleBreakdowns(Map<Long, TitleBreakdown> brokenDown) {
+		List<NormalizedVacancyEntity> recorded = new ArrayList<>(brokenDown.size());
+		for (NormalizedVacancyEntity normalized : this.repository.findByVacancyIdIn(brokenDown.keySet())) {
+			normalized.brokenDownAs(brokenDown.get(normalized.vacancyId()));
+			recorded.add(normalized);
+		}
 		this.repository.saveAll(recorded);
 		return recorded.size();
 	}

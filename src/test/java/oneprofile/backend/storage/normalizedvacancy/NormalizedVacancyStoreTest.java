@@ -293,9 +293,9 @@ class NormalizedVacancyStoreTest {
 				cleaned("Frontend Engineer", Set.of())));
 
 		assertThat(this.normalized.cleanedTitlesAfter(0, 10)).containsExactly(
-				new NormalizedTitle(first, "Backend Engineer"), new NormalizedTitle(second, "Frontend Engineer"));
+				new ClassificationVacancy(first, "Backend Engineer"), new ClassificationVacancy(second, "Frontend Engineer"));
 		assertThat(this.normalized.cleanedTitlesAfter(first, 10))
-			.containsExactly(new NormalizedTitle(second, "Frontend Engineer"));
+			.containsExactly(new ClassificationVacancy(second, "Frontend Engineer"));
 		assertThat(this.normalized.cleanedTitlesAfter(second, 10)).isEmpty();
 	}
 
@@ -392,6 +392,56 @@ class NormalizedVacancyStoreTest {
 		assertThat(this.normalized.extractionScopeAfter(batch.getFirst().vacancyId(), 1))
 			.extracting(ExtractionVacancy::cleanedTitle)
 			.containsExactly("Frontend Engineer");
+	}
+
+	@Test
+	void readsForTheTitleBreakdownTheEngineeringSubsetWithEachTitleAsPublishedAndItsLocation() {
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		this.normalized.recordCleanedVacancies(
+				Map.of(first, cleaned("Backend Engineer", Set.of()), second, cleaned("Backend Engineer", Set.of())));
+		this.normalized.recordClassifications(Map.of(first, Classification.out(), second, Classification.in()));
+		this.entityManager.flush();
+
+		assertThat(this.normalized.breakdownScopeAfter(0, 10)).containsExactly(
+				new BreakdownVacancy(normalizedId(second), second, "Senior Backend Engineer", "Remote - Americas"));
+	}
+
+	@Test
+	void holdsATitleBreakdownBesideTheLevelsCleaningRead() {
+		long vacancyId = heldTitles().getFirst().id();
+		this.normalized.recordCleanedVacancies(
+				Map.of(vacancyId, cleaned("Staff Engineering Manager", Set.of(SeniorityLevelEnum.SENIOR))));
+
+		assertThat(this.normalized.recordTitleBreakdowns(Map.of(vacancyId, new TitleBreakdown(List.of("engineering"),
+				Set.of(SeniorityLevelEnum.STAFF), ManagementLevelEnum.MANAGER))))
+			.isEqualTo(1);
+
+		assertThat(this.repository.findAll()).singleElement().satisfies((held) -> {
+			assertThat(held.normalizedTitles()).containsExactly("engineering");
+			assertThat(held.managementLevel()).isEqualTo(ManagementLevelEnum.MANAGER);
+			assertThat(held.titleSeniorities()).containsExactlyInAnyOrder(SeniorityLevelEnum.SENIOR,
+					SeniorityLevelEnum.STAFF);
+		});
+	}
+
+	@Test
+	void letsGoOfEveryTitleBreakdownAndKeepsTheLevelsCleaningRead() {
+		long vacancyId = heldTitles().getFirst().id();
+		this.normalized.recordCleanedVacancies(
+				Map.of(vacancyId, cleaned("Staff Engineering Manager", Set.of(SeniorityLevelEnum.SENIOR))));
+		this.normalized.recordTitleBreakdowns(Map.of(vacancyId, new TitleBreakdown(List.of("engineering"),
+				Set.of(SeniorityLevelEnum.STAFF), ManagementLevelEnum.MANAGER)));
+		this.entityManager.flush();
+
+		assertThat(this.normalized.clearTitleBreakdowns()).isEqualTo(1);
+		this.entityManager.clear();
+
+		assertThat(this.repository.findAll()).singleElement().satisfies((held) -> {
+			assertThat(held.normalizedTitles()).isNull();
+			assertThat(held.managementLevel()).isNull();
+			assertThat(held.titleSeniorities()).containsExactly(SeniorityLevelEnum.SENIOR);
+		});
 	}
 
 	private long normalizedId(long vacancyId) {

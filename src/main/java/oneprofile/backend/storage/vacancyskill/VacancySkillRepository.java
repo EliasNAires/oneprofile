@@ -17,6 +17,13 @@ public interface VacancySkillRepository extends ListCrudRepository<VacancySkillE
 	List<VacancySkillEntity> findByNormalizedVacancyIdIn(Collection<Long> normalizedVacancyIds);
 
 	/**
+	 * The skills found in the titles of some vacancies.
+	 * @param normalizedVacancyIds the normalized vacancies
+	 * @return their rows whose skill the title names
+	 */
+	List<VacancySkillEntity> findByNormalizedVacancyIdInAndInTitleTrue(Collection<Long> normalizedVacancyIds);
+
+	/**
 	 * Deletes every row in one statement, rather than one per row.
 	 * @return how many rows it deleted
 	 */

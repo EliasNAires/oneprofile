@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import oneprofile.backend.storage.normalizedvacancy.Classification;
-import oneprofile.backend.storage.normalizedvacancy.NormalizedTitle;
+import oneprofile.backend.storage.normalizedvacancy.ClassificationVacancy;
 import oneprofile.backend.storage.normalizedvacancy.NormalizedVacancyStore;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -25,7 +25,7 @@ class CorpusClassificationRunTest {
 
 	@Test
 	void classifiesTheCleanedTitleOfEveryVacancyHeld() {
-		holds(new NormalizedTitle(1, "Backend Engineer"), new NormalizedTitle(2, "Registered Nurse"));
+		holds(new ClassificationVacancy(1, "Backend Engineer"), new ClassificationVacancy(2, "Registered Nurse"));
 
 		assertThat(classification(10).classifyAll().vacancies()).isEqualTo(2);
 
@@ -35,8 +35,8 @@ class CorpusClassificationRunTest {
 
 	@Test
 	void walksTheWholeCorpusABatchAtATime() {
-		holds(new NormalizedTitle(1, "Backend Engineer"), new NormalizedTitle(2, "Frontend Engineer"),
-				new NormalizedTitle(3, "Data Engineer"));
+		holds(new ClassificationVacancy(1, "Backend Engineer"), new ClassificationVacancy(2, "Frontend Engineer"),
+				new ClassificationVacancy(3, "Data Engineer"));
 
 		assertThat(classification(2).classifyAll().vacancies()).isEqualTo(3);
 
@@ -47,9 +47,9 @@ class CorpusClassificationRunTest {
 
 	@Test
 	void countsWhatItDecidedAndWhyItDidNot() {
-		holds(new NormalizedTitle(1, "Backend Engineer"), new NormalizedTitle(2, "Civil Engineer"),
-				new NormalizedTitle(3, "Engineer"), new NormalizedTitle(4, "Security Roboticist"),
-				new NormalizedTitle(5, "Data Analyst"));
+		holds(new ClassificationVacancy(1, "Backend Engineer"), new ClassificationVacancy(2, "Civil Engineer"),
+				new ClassificationVacancy(3, "Engineer"), new ClassificationVacancy(4, "Security Roboticist"),
+				new ClassificationVacancy(5, "Data Analyst"));
 
 		CorpusClassificationRun.Report report = classification(10).classifyAll();
 
@@ -70,7 +70,7 @@ class CorpusClassificationRunTest {
 		return new CorpusClassificationRun(new TitleClassificationRule(), this.normalized, batch);
 	}
 
-	private void holds(NormalizedTitle... titles) {
+	private void holds(ClassificationVacancy... titles) {
 		given(this.normalized.cleanedTitlesAfter(anyLong(), anyInt())).willAnswer((invocation) -> {
 			long after = invocation.getArgument(0);
 			int batch = invocation.getArgument(1);

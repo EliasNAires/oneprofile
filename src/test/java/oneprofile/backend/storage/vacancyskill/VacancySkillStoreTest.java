@@ -90,6 +90,18 @@ class VacancySkillStoreTest {
 	}
 
 	@Test
+	void readsTheSkillsTheTitleNamesByVacancy() {
+		this.skills.record(Map.of(this.first, List.of(new FoundSkill("go", List.of(1), true, true),
+				new FoundSkill("postgresql", List.of(2), false, false)), this.second,
+				List.of(new FoundSkill("java", List.of(0), false, false))));
+		this.entityManager.flush();
+		this.entityManager.clear();
+
+		assertThat(this.skills.titleSkillIds(List.of(this.first, this.second)))
+			.isEqualTo(Map.of(this.first, Set.of("go")));
+	}
+
+	@Test
 	void readsTheSegmentsEachSkillWasFoundInByVacancy() {
 		this.skills.record(Map.of(this.first, List.of(new FoundSkill("go", List.of(1, 3), true, true),
 				new FoundSkill("postgresql", List.of(), true, false)), this.second,

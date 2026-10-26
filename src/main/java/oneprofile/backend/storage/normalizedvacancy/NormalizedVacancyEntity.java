@@ -58,6 +58,18 @@ public class NormalizedVacancyEntity {
 	@Enumerated(EnumType.STRING)
 	private Set<SeniorityLevelEnum> titleSeniorities = new HashSet<>();
 
+	private String[] normalizedTitles;
+
+	@Enumerated(EnumType.STRING)
+	private ManagementLevelEnum managementLevel;
+
+	@ElementCollection
+	@CollectionTable(name = "normalized_vacancy_guarded_title_seniority",
+			joinColumns = @JoinColumn(name = "normalized_vacancy_id"))
+	@Column(name = "title_seniority")
+	@Enumerated(EnumType.STRING)
+	private Set<SeniorityLevelEnum> guardedTitleSeniorities = new HashSet<>();
+
 	protected NormalizedVacancyEntity() {
 	}
 
@@ -100,6 +112,19 @@ public class NormalizedVacancyEntity {
 		classifiedAs(Classification.byBody(state, this.classificationReason));
 	}
 
+	/**
+	 * Takes on what the title breakdown made of the vacancy, replacing what the last run recorded. The
+	 * levels cleaning read are kept: the breakdown reads only the guarded words cleaning leaves.
+	 * @param breakdown its normalized titles, the levels its guarded seniority words name and its
+	 * management level
+	 */
+	public void brokenDownAs(TitleBreakdown breakdown) {
+		this.normalizedTitles = breakdown.normalizedTitles().toArray(String[]::new);
+		this.managementLevel = breakdown.managementLevel();
+		this.guardedTitleSeniorities.clear();
+		this.guardedTitleSeniorities.addAll(breakdown.titleSeniorities());
+	}
+
 	/** The vacancy these facts were derived from. */
 	public long vacancyId() {
 		return this.vacancyId;
@@ -129,9 +154,24 @@ public class NormalizedVacancyEntity {
 		return this.detectedLanguage;
 	}
 
-	/** Every seniority level its title names, empty if it names none. */
+	/**
+	 * Every seniority level its title names, empty if it names none: those cleaning read, and those
+	 * the title breakdown read from the guarded words.
+	 */
 	public Set<SeniorityLevelEnum> titleSeniorities() {
-		return Set.copyOf(this.titleSeniorities);
+		Set<SeniorityLevelEnum> named = new HashSet<>(this.titleSeniorities);
+		named.addAll(this.guardedTitleSeniorities);
+		return Set.copyOf(named);
+	}
+
+	/** Its normalized titles, one per head its title names, null until the title breakdown has run. */
+	public List<String> normalizedTitles() {
+		return (this.normalizedTitles == null) ? null : List.of(this.normalizedTitles);
+	}
+
+	/** The rank of the leadership word its title names over an area, null if it names none. */
+	public ManagementLevelEnum managementLevel() {
+		return this.managementLevel;
 	}
 
 }

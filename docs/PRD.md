@@ -150,10 +150,12 @@ roles; a normalized title the list does not hold leaves the vacancy without one,
 guess. Done when the list covers 70% of the subset (ADR-0024). Giving the rest a role from their
 other fields is after the MVP (#87).
 
-The breakdown (#92) and the role list (#25) are separate pieces of work: many normalized titles
-map to one role. How alike the skills of two titles' vacancies are is shown to the agents that
-draft and review a merge, as evidence, never as the rule. **Role nearness**, how near two roles
-are by their skills, is computed beside the list on each snapshot (ADR-0024, amended 2026-10-26).
+The breakdown (#92) and the role list (#25) are separate pieces of work: many normalized titles map
+to one role. The breakdown is built (`POST /title-breakdowns`, after skill extraction); its first
+run is `docs/measurements/2026-10-title-breakdown.md`. How alike the skills of two titles' vacancies
+are is shown to the agents that draft and review a merge, as evidence, never as the rule. **Role
+nearness**, how near two roles are by their skills, is computed beside the list on each snapshot
+(ADR-0024, amended 2026-10-26).
 
 **Management level.** A leadership word that leads an area — `lead`, `manager`, `director`,
 `head`, `VP`, `chief` — is taken out of the title as the vacancy's management level (lead,
