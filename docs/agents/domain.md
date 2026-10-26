@@ -63,6 +63,9 @@ the later ADR wins; the overridden parts are marked below.
   profiles are evidence for merges, never the rule; role nearness is computed beside the list; a
   leadership word is taken out as the management level and the role is the area it leads,
   superseding "leadership words stay in the role".
+  *Amended again 2026-10-26*: about 25 roles, read off the most common normalized titles; every
+  normalized title above the floor is sorted into the nearest one, superseding pairwise merges and
+  "when unsure, keep apart". A title that fits no role leaves its vacancies without one.
 
 **Classification**
 - **0008**: three states, and three unknown reasons (`domain_ambiguity`, `scope_ambiguity`,

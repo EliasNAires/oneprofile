@@ -144,8 +144,10 @@ and what follows the head goes too unless it names the kind of work, which moves
 head (`Software Engineer, Backend` → `backend engineer`). A skill that is the only word in front of
 the head goes as well (`Java Developer` → `developer`). The normalized title is then looked up in
 the **role list**, a curated file stable between runs and grown on each new snapshot: a
-normalized title joins it once enough vacancies carry it, synonyms are merged when a candidate
-would expect the same day-to-day work, and the list is flat. A title naming two heads gets both
+normalized title joins it once enough vacancies carry it, and the list is flat. It holds about 25
+roles, the level at which statistics are shown: they are read off the most common normalized
+titles, and each normalized title is placed in the role whose day-to-day work a candidate would
+expect from it (ADR-0024, amended again 2026-10-26). A title naming two heads gets both
 roles; a normalized title the list does not hold leaves the vacancy without one, never with a
 guess. Done when the list covers 70% of the subset (ADR-0024). Giving the rest a role from their
 other fields is after the MVP (#87).

@@ -161,16 +161,18 @@ is looked up with.
 _Avoid_: canonical title, title slug
 
 **Role**:
-The kind of work a vacancy's title says it is, as one entry of the role list. A leader's role is
+The kind of work a vacancy's title says it is, as one of the about 25 entries of the role list,
+the level at which statistics are shown. A leader's role is
 the area they lead; the leading is their management level. A vacancy has one
 role per head its title names, and none where its normalized title is not on the list; none is
 never guessed (ADR-0024). What the Finder's role filter and the Explorer's role charts read.
 _Avoid_: role family, job family, category, position
 
 **Role List**:
-The curated roles and the normalized titles each is read from, stable between runs and grown on
-each new snapshot. A normalized title joins it once enough vacancies carry it; two join one role
-when a candidate would expect the same day-to-day work from both. Flat: no role holds another. The skills two titles' vacancies ask for are evidence for a merge,
+The about 25 curated roles and the normalized titles that fall into each, stable between runs and
+grown on each new snapshot. The roles are read off the most common normalized titles; a normalized
+title joins once enough vacancies carry it, in the role whose day-to-day work a candidate would
+expect from it. Flat: no role holds another. The skills two titles' vacancies ask for are evidence for a merge,
 never its rule (ADR-0024).
 _Avoid_: role taxonomy, title dictionary, families
 

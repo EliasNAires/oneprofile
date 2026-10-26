@@ -1,6 +1,6 @@
 # A role is read from the title, against a curated list
 
-Status: accepted (amended 2026-10-26)
+Status: accepted (amended twice on 2026-10-26)
 
 The Finder filters by role and builds a landing page for each one, and the Explorer charts by
 role. So a role has to be a short, stable list of values. Over the 76,854 vacancies of the
@@ -105,3 +105,23 @@ about 786 normalized titles are needed for 70% of the subset, against about 300 
   (Airflow, Dagster and Prefect are all orchestration) may serve matching later, as a mapping
   over the taxonomy rather than an extractor.
 
+
+## Amended again 2026-10-26: about 25 roles
+
+Decided with Elias in #25's grilling, and written down only later the same day.
+
+- **There are about 25 roles.** Roles are what a visitor is shown when statistics are given by
+  role, which is the point of keeping them apart from titles: a chart or a list of a thousand
+  titles tells nobody anything. The normalized titles are the fine level, many and close to what
+  employers write; the roles are the few that every normalized title falls into.
+- **The roles are read off the data, then the titles are sorted into them.** The roles are taken
+  from the most common normalized titles and the kinds of work they name, not invented up front.
+  Then each normalized title above the floor is placed in the role whose day-to-day work a
+  candidate reading it would expect. This replaces growing the list by pairwise merges, and with
+  it "where that is unsure, they stay apart": with about 25 roles, a title goes to the nearest
+  one. Skill profiles stay evidence, never the rule.
+- **A normalized title that fits no role leaves its vacancies without one**, as one the list does
+  not hold does. So coverage no longer follows from the floor alone, and the 70% is measured after
+  the titles are sorted.
+- The "role families" option above was rejected because the families would be invented. These
+  roles are not: they are named from the most common titles and checked by the same review.
