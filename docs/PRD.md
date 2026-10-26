@@ -155,9 +155,13 @@ map to one role. How alike the skills of two titles' vacancies are is shown to t
 draft and review a merge, as evidence, never as the rule. **Role nearness**, how near two roles
 are by their skills, is computed beside the list on each snapshot (ADR-0024, amended 2026-10-26).
 
-Words that name a function rather than a level — `lead`, `director`, `head`, `VP`, `chief` —
-stay in the role. A lead is doing a different job, not the same job one rung up, and
-collapsing the two would recommend a user a role they did not apply for.
+**Management level.** A leadership word that leads an area — `lead`, `manager`, `director`,
+`head`, `VP`, `chief` — is taken out of the title as the vacancy's management level (lead,
+manager, director or executive), and the role is read from the area it leads: `Engineering
+Manager, Backend` is a manager whose role is backend engineering. A title naming a job rather than
+a rank keeps its word (`product manager`, `technical program manager`). The level is separate
+from the seniority level, so a match or a filter can keep a manager's job from someone who did
+not apply for one (ADR-0024, amended 2026-10-26). How the Finder shows the level is open.
 
 **Seniority.** The guarded words are read in the title breakdown, which takes them out anyway:
 `staff`, `mid`, `entry`, and the numbered levels `II`, `III`, `IV`. Restricting to the subset is

@@ -60,7 +60,9 @@ the later ADR wins; the overridden parts are marked below.
   guess; filling those from other fields is after the MVP (#87). Done at 70% of the engineering
   subset.
   *Amended 2026-10-26*: the breakdown and the role list are separate pieces of work; skill
-  profiles are evidence for merges, never the rule; role nearness is computed beside the list.
+  profiles are evidence for merges, never the rule; role nearness is computed beside the list; a
+  leadership word is taken out as the management level and the role is the area it leads,
+  superseding "leadership words stay in the role".
 
 **Classification**
 - **0008**: three states, and three unknown reasons (`domain_ambiguity`, `scope_ambiguity`,

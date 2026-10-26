@@ -82,6 +82,21 @@ about 786 normalized titles are needed for 70% of the subset, against about 300 
 - **Role nearness is computed beside the list.** It is how near two roles are, from their skill
   profiles, computed again on each snapshot and allowed to change. It is what shows a visitor the
   roles near the one they picked. It never moves a title from one role to another.
+- **Management is a fact of its own, and the role is what is left.** A leadership word that leads
+  an area (`Engineering Manager, Backend`, `Director of Cybersecurity`, `Head of Security`, `VP
+  Engineering`) is taken out of the title as its **management level**: lead, manager, director or
+  executive. The area it leads is what the role is read from. This replaces "leadership words stay
+  in the role" above. The worry behind it, recommending a manager's job to someone who did not
+  apply for one, is met by the level being its own field, which a filter or a match can hold
+  apart; skills cannot, since `engineering manager` and `software engineer` ask for nearly the
+  same ones. Stored apart, the facts can be shown as titles, roles, levels or any mix of them as
+  the Finder's presentation changes, without deriving them again.
+  - A title that names a job rather than a rank keeps its word: `product manager`, `technical
+    program manager`, `account manager`. The role list claims those titles whole.
+  - A bare `Manager` has a management level and no role, and does not count toward the 70%.
+  - `lead` is a level of its own: a tech lead often manages no one, a team lead often does, and
+    the title does not tell them apart.
+  - The management level is not the seniority level: a `Senior Engineering Manager` has both.
 - **Practices are not extracted from descriptions** for roles. Most skills imply their practice:
   dbt implies data modelling, Airflow implies orchestration. Grouping skills by function
   (Airflow, Dagster and Prefect are all orchestration) may serve matching later, as a mapping

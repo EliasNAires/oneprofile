@@ -161,7 +161,8 @@ is looked up with.
 _Avoid_: canonical title, title slug
 
 **Role**:
-The kind of work a vacancy's title says it is, as one entry of the role list. A vacancy has one
+The kind of work a vacancy's title says it is, as one entry of the role list. A leader's role is
+the area they lead; the leading is their management level. A vacancy has one
 role per head its title names, and none where its normalized title is not on the list; none is
 never guessed (ADR-0024). What the Finder's role filter and the Explorer's role charts read.
 _Avoid_: role family, job family, category, position
@@ -307,6 +308,13 @@ _Avoid_: office, region, geo, country
 The experience level a vacancy asks for, on one ordinal scale from entry to principal.
 Where a vacancy names several, the lowest applies.
 _Avoid_: level, grade, rank, band, experience
+
+**Management Level**:
+The rank of a leadership word a vacancy's title names over an area: lead, manager, director or
+executive. Taken out of the title so that the role is read from the area it leads; a title that
+names a job rather than a rank (`product manager`) has none. Not the seniority level: a vacancy
+can have both (ADR-0024).
+_Avoid_: leadership, track, rank, grade
 
 **Title Seniority**:
 Every level a vacancy's title names, kept as found: evidence for the seniority level, not
