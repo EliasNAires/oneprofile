@@ -113,6 +113,10 @@ the later ADR wins; the overridden parts are marked below.
   the excluded and shows the eligible and the unknown, with a toggle for the eligible alone.
 - **0020**: one repository holding two Spring Boot apps, the Maven modules `pipeline` and `api`,
   and the site in `site/`.
-  The pipeline pushes a read schema into Postgres on a Hetzner VPS in Ashburn; the read app beside
-  it serves the site, and its endpoints are the contract. The site is an Astro site on Cloudflare
-  Pages. nginx (#18) and the tunnel (#32) are not built.
+  The pipeline pushes a read schema into a public Postgres; the read app beside it serves the
+  site, and its endpoints are the contract. The site is an Astro site on Cloudflare Pages. nginx
+  (#18) is not built. *Overridden by 0026:* the public side being on a Hetzner VPS, and the tunnel
+  not being built.
+- **0026**: the public Postgres and the read app start on Elias's server, in containers apart
+  from the pipeline's database, the read app reached through a Cloudflare tunnel. They move to
+  the VPS when the public side needs availability, which may wait until there is traffic.

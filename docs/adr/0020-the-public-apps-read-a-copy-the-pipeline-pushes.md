@@ -1,6 +1,6 @@
 # The public apps read a copy the pipeline pushes
 
-Status: accepted
+Status: accepted; where the public side is hosted superseded by ADR-0026, as marked below
 
 The Finder and the Explorer are public; the pipeline runs on Elias's own server, which should
 serve nobody and carry no public load. Decided by Elias on 2026-10-20.
@@ -8,7 +8,9 @@ serve nobody and carry no public load. Decided by Elias on 2026-10-20.
 - **One repository: two Spring Boot apps and the site.** The build becomes two Maven modules,
   `pipeline`, what the backend is today, and `api`, the read app, with the site beside them in
   `site/`. The pipeline stays on Elias's server; the read app runs on a 4 GB Hetzner VPS in
-  Ashburn, beside the public Postgres. An endpoint and the page that calls it change in one commit,
+  Ashburn, beside the public Postgres. *Superseded by ADR-0026:* both start on Elias's server, the read app
+  reached through a Cloudflare tunnel, and the public side moves to the VPS when it needs
+  availability. An endpoint and the page that calls it change in one commit,
   and a session working on either sees both.
 - **The pipeline pushes.** After each cycle, a publish stage rebuilds a **read schema** in the
   public Postgres, in staging tables swapped in one transaction, so a visitor never sees a half
@@ -54,6 +56,7 @@ serve nobody and carry no public load. Decided by Elias on 2026-10-20.
 
 ## Consequences
 
-- nginx in front of the app (#18) and the tunnel (#32) are not built.
+- nginx in front of the app (#18) and the tunnel (#32) are not built. *Superseded by ADR-0026:*
+  the tunnel is built, for the read app only.
 - Descriptions are shown as the sweep stores them, as marked lines rendered into paragraphs,
   headings and lists, with the boilerplate set apart. The original HTML is not kept.

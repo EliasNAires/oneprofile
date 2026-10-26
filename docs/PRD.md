@@ -38,8 +38,8 @@ search.
 
 ### 4.1 Sources
 
-Three applicant tracking systems, built and run: **Greenhouse**, **Ashby** (#20) and **Lever**
-(#79). A fourth, **Workday** (#81), is built, its first run to come. Why Ashby before Workable and
+Four applicant tracking systems, built and run: **Greenhouse**, **Ashby** (#20), **Lever** (#79)
+and **Workday** (#81, `docs/measurements/2026-10-workday-run.md`). Why Ashby before Workable and
 Lever: ADR-0002.
 Which ATSs come next, and in what order: ADR-0022.
 
@@ -325,7 +325,7 @@ The build is two Spring Boot apps in one repository, as two Maven modules (ADR-0
 - **`pipeline`**: what the backend is today. Ingestion remains a set of `/admin/**` trigger
   endpoints on Elias's server, reachable from nowhere else, and the publish stage pushes the read
   schema to the public Postgres.
-- **`api`**: the read app on the VPS, over the read schema. Its endpoints are the contract with
+- **`api`**: the read app, over the read schema. Its endpoints are the contract with
   the site, anonymous, fixed in shape so Cloudflare can cache them until the next publish:
   - the Finder's query: its filters, eligibility for the picked country (ADR-0019), its three
     orders with filter rank (§12.1), a page of vacancies, and for each filter how many vacancies
@@ -346,10 +346,12 @@ New dependencies: `webarchive-commons` for the ZipNum cluster reader and SURT
 canonicalization, and commons-compress for decompressing concatenated gzip members when a
 byte range spans several.
 
-The pipeline stays on Elias's server and pushes to the public side (ADR-0020):
+The pipeline pushes to the public side (ADR-0020):
 
-- **The public side**: Postgres and the read app on a 4 GB Hetzner VPS in Ashburn, behind
-  Cloudflare, its answers cached until the next publish. Sessions, when they come, are Spring
+- **The public side**: Postgres and the read app, in containers of their own on Elias's server,
+  the read app reached through a Cloudflare tunnel and its answers cached until the next publish.
+  They move to a 4 GB Hetzner VPS in Ashburn when they need availability, which may wait until
+  there is traffic (ADR-0026, #91). Sessions, when they come, are Spring
   Security in the read app.
 - **The site**: an Astro site with React components, in `site/`, on Cloudflare Pages
   under a paid domain. Each publish rebuilds the pages worth ranking for; a vacancy page is
@@ -500,15 +502,17 @@ first iteration falls short (`docs/agents/rule-loop.md`).
 
 ### 12.7 Order of work
 
-Three tracks run in parallel:
+Volume is done: Ashby (#20), then whatever reached 100k vacancies (#70). The rest runs in sequence
+(decided 2026-10-26):
 
-- **Extraction**: the body pass (#11) → roles from titles (#25) and work mode (#86) → seniority from the body (#8) →
-  eligibility and its recall (#13, #12) → deduplication (#27).
-- **The public side**: the two modules (#71) and the VPS (#68) → the publish stage (#28) → the
-  read app (#72) → the Finder (#69), built against
-  the data as it stands, each filter switched on as its extractor lands.
-- **Volume**: Ashby (#20), then whatever reaches 100k vacancies (#70).
+1. **Extraction**: roles from titles (#25) and work mode (#86) → seniority from the body (#8) →
+   eligibility and its recall (#13, #12) → deduplication (#27).
+2. **Data quality**: the corpus fixes ready for an agent (#83, #85, #49).
+3. **Scheduling**: the schedule (#30), with the passes and the Workday sweep fitted to the server
+   (#89, #90, #88).
+4. **The public side**: the two modules (#71) and the public side on Elias's server (#68) → the
+   publish stage (#28) → the read app (#72) → the Finder (#69). It waits for extraction rather than
+   publishing columns left null.
 
-The Finder launches when the three meet the gate. The Explorer (#29) comes after the launch, and
-the profile and matching after traction. The schedule (#30) and the series follow on their own track, as the pipeline heads toward
-stability.
+The Finder launches when the gate is met. The Explorer (#29) comes after the launch, and the
+profile and matching after traction. The series follow once the pipeline reaches stability.
