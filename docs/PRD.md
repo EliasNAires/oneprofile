@@ -150,6 +150,11 @@ roles; a normalized title the list does not hold leaves the vacancy without one,
 guess. Done when the list covers 70% of the subset (ADR-0024). Giving the rest a role from their
 other fields is after the MVP (#87).
 
+The breakdown (#92) and the role list (#25) are separate pieces of work: many normalized titles
+map to one role. How alike the skills of two titles' vacancies are is shown to the agents that
+draft and review a merge, as evidence, never as the rule. **Role nearness**, how near two roles
+are by their skills, is computed beside the list on each snapshot (ADR-0024, amended 2026-10-26).
+
 Words that name a function rather than a level — `lead`, `director`, `head`, `VP`, `chief` —
 stay in the role. A lead is doing a different job, not the same job one rung up, and
 collapsing the two would recommend a user a role they did not apply for.
@@ -234,6 +239,15 @@ accepted as such.
 
 Matching comes after the Finder, once it has traction (§12). How it is served is reopened by
 ADR-0020, which leaves no read API of our own.
+
+**Skill functions, not yet decided.** A candidate who knows Prefect is a near match for a vacancy
+asking for Airflow, and skill overlap alone scores it as a miss. A relation from each skill to the
+function it serves (Airflow, Dagster and Prefect are orchestration; Pinecone, Weaviate and pgvector
+are vector stores) would let matching count it. The taxonomy has neither: a category is too coarse
+(dbt is `data` too) and a parent is a part, not a kind (pgvector's is PostgreSQL). It would be a
+new column of the taxonomy, kept by hand, and could make role nearness more robust as well. It
+replaces extracting practices from descriptions, which is not done: most skills imply their
+practice (ADR-0024, amended 2026-10-26).
 
 ### 6.1 Seniority
 
@@ -408,6 +422,8 @@ board.
   filter; it orders, through filter rank.
 - **Role** takes several roles at once, from the role list (§5.3). A vacancy whose title matches
   no role has none; the filter hides it and says how many it hid.
+  The roles nearest to the ones picked are offered from role nearness (§5.3). They are added only
+  when the visitor picks them, never on their own.
 - **Work mode and salary**: an undeclared value is never guessed. A filter on either hides the
   vacancies that do not declare it, and says how many it hid.
 
