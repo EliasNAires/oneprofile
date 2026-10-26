@@ -165,7 +165,9 @@ manager, director or executive), and the role is read from the area it leads: `E
 Manager, Backend` is a manager whose role is backend engineering. A title naming a job rather than
 a rank keeps its word (`product manager`, `technical program manager`). The level is separate
 from the seniority level, so a match or a filter can keep a manager's job from someone who did
-not apply for one (ADR-0024, amended 2026-10-26). How the Finder shows the level is open.
+not apply for one (ADR-0024, amended 2026-10-26). How the Finder shows the level is open; one
+proposal is a single ordered list made from both fields (Entry, Mid, Senior, Staff+, Lead, Manager,
+Director, Executive), the way Himalayas splits a role's page.
 
 **Seniority.** The guarded words are read in the title breakdown, which takes them out anyway:
 `staff`, `mid`, `entry`, and the numbered levels `II`, `III`, `IV`. Restricting to the subset is
@@ -247,6 +249,18 @@ accepted as such.
 
 Matching comes after the Finder, once it has traction (§12). How it is served is reopened by
 ADR-0020, which leaves no read API of our own.
+
+**Roles in matching, not yet decided** (ADR-0024's record of 2026-10-26). The roles a developer
+held say what experience they bring, and the roles they pick say where they want to go. Role
+nearness says how far a vacancy's role is from both. Two things it does not say, to settle when
+matching starts:
+
+- **Experience carries over one way more easily than the other**: a data scientist moves into ML
+  engineering more easily than the reverse, and nearness is the same both ways. A direction would
+  come from a table kept by hand over the roles, or from moves seen on CVs.
+- **Management levels**: whether a vacancy with a management level is matched only to a profile
+  that shows one. Skills cannot tell them apart, since a manager's vacancies ask for an engineer's
+  skills.
 
 **Skill functions, not yet decided.** A candidate who knows Prefect is a near match for a vacancy
 asking for Airflow, and skill overlap alone scores it as a miss. A relation from each skill to the
@@ -432,6 +446,9 @@ board.
   no role has none; the filter hides it and says how many it hid.
   The roles nearest to the ones picked are offered from role nearness (§5.3). They are added only
   when the visitor picks them, never on their own.
+  A visitor who searches a title is shown its role's vacancies (ADR-0024). With about 25 roles a
+  role is broad, so how far a title search reaches is open (#25): one proposal shows the vacancies
+  of that normalized title first, and widens to its role as a step the visitor sees.
 - **Work mode and salary**: an undeclared value is never guessed. A filter on either hides the
   vacancies that do not declare it, and says how many it hid.
 

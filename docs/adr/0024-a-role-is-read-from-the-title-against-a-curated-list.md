@@ -1,6 +1,6 @@
 # A role is read from the title, against a curated list
 
-Status: accepted (amended twice on 2026-10-26)
+Status: accepted (amended three times on 2026-10-26)
 
 The Finder filters by role and builds a landing page for each one, and the Explorer charts by
 role. So a role has to be a short, stable list of values. Over the 76,854 vacancies of the
@@ -125,3 +125,51 @@ Decided with Elias in #25's grilling, and written down only later the same day.
   the titles are sorted.
 - The "role families" option above was rejected because the families would be invented. These
   roles are not: they are named from the most common titles and checked by the same review.
+
+## Recorded later on 2026-10-26: what a role is for, and what is settled
+
+Discussed with Elias in #25's triage and confirmed by him; figures in
+`docs/measurements/2026-10-title-breakdown-probe-workday.md` §3 and §4.
+
+**What a role is for.** It tells the kind of work, which skills cannot: a data engineer and a web
+developer both ask for Python and SQL. It is used in three places, in this order of weight:
+
+- **The Explorer's statistics.** "What do data engineers' vacancies ask for" needs one group per
+  vacancy; skills counted over the whole subset mostly measure its mix of roles.
+- **Matching.** A CV is a list of roles held, and experience is asked for by role ("three years as a
+  data engineer"). The roles a person held say what experience they bring; the roles they pick say
+  where they want to go, which a CV does not (a backend engineer moving into AI picks AI engineer).
+- **The Finder's filter**, the first one a visitor reaches for.
+
+**Settled for the role list:**
+
+- **A normalized title falls into one role**, the one whose day-to-day work is nearest
+  (`ml platform engineer` into one of ML engineer or platform engineer). A vacancy has two roles
+  only where its title names two heads.
+- **The roles and their names are drafted by an agent and reviewed by another**, from the most
+  common normalized titles. Elias sets the goal; he does not settle each name.
+- **Bare heads that are no rank fall into software engineer**: `engineer`, `developer`, and
+  `engineering` with its manager's level (a bare `Engineering Manager`). Within the subset a bare
+  `engineer` asks for the skills of `software engineer` (0.88). A bare rank (`Manager`) has no role.
+- **Role nearness stays** with about 25 roles: roles near each other are still worth showing
+  (backend and full stack), and matching needs it to say whether experience carries over.
+
+## Considered options, added later on 2026-10-26
+
+- **Many role tags on a vacancy**, as Himalayas shows 7 to 15 overlapping, generated ones on each
+  posting. Rejected: a vacancy counted under every tag makes counts by role mean nothing, and the
+  same posting turns up under every filter. What is worth taking from it is splitting a role's
+  vacancies by level. Reaching the vacancies of near roles is role nearness's work, done when a
+  visitor asks for it.
+- **Roles as clusters of skill profiles.** Rejected: the skills tell the kinds of work apart but
+  not who does what in them (`engineering manager` ~ `software engineer` 0.93), similarity has no
+  natural cut and chains one title to the next, and membership that followed it would move
+  between snapshots and break a role's series.
+- **Leadership kept in the role** (`engineering manager` as a role of its own), as the first
+  version of this ADR said. Superseded by the management level: the role can be shown with the
+  level as one label, but a role holding the rank cannot say which area it leads.
+- **Extracting practices from descriptions** (MVC, ETL, API design). Not done: a distinctive skill
+  implies its practice (dbt implies data modelling), and the skills already separate the kinds of
+  work. The one gap is the quarter of the subset that names two skills or fewer; whether those
+  descriptions name practices instead is unmeasured.
+

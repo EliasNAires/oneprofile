@@ -114,3 +114,85 @@ after the head, and in the sample most of them are of this kind: `Software Engin
 The sample also shows titles the classifier let into the subset that no engineering role list
 holds: `Technical Writing Intern`, `KIP Spring 2027 - Events Intern`, `Fluid Mechanics and Lab –
 Adjunct Faculty`, `Warehouse Specialist - Transportation - 2nd Shift`.
+
+## 3. Read for the role list (#25), later the same day
+
+Throwaway queries over the same snapshot, behind the decisions in ADR-0024's amendments.
+
+**How alike the skills of two normalized titles' vacancies are.** Cosine similarity of the share
+of each title's vacancies that name each skill, with each skill weighted by how few vacancies of
+the subset name it (inverse document frequency), so that Python and SQL count less. Titles are the
+probe's cut of §1.
+
+| Pair | Similarity |
+|---|---:|
+| `devops engineer` ~ `platform engineer` | 0.93 |
+| `engineering` (mostly `engineering manager`) ~ `software engineer` | 0.93 |
+| `devops engineer` ~ `site reliability engineer` | 0.91 |
+| `engineer` ~ `software engineer` | 0.88 |
+| `manager` ~ `director` | 0.87 |
+| `software engineer` ~ `backend engineer` | 0.86 |
+| `forward deployed engineer` ~ `software engineer` | 0.71 |
+| `data analyst` ~ `data scientist` | 0.69 |
+| `ai engineer` ~ `machine learning engineer` | 0.67 |
+| `developer` ~ `software engineer` | 0.65 |
+| `site reliability engineer` ~ `software engineer` | 0.63 |
+| `solutions architect` ~ `software engineer` | 0.62 |
+| `sales engineer` ~ `solutions architect` | 0.61 |
+| `data engineer` ~ `data scientist` | 0.60 |
+| `frontend engineer` ~ `full stack engineer` | 0.59 |
+| `security engineer` ~ `devops engineer` | 0.57 |
+| `data analyst` ~ `data engineer` | 0.57 |
+| `software engineer` ~ `ai engineer` | 0.53 |
+| `product manager` ~ `technical program manager` | 0.49 |
+| `product manager` ~ `software engineer` | 0.47 |
+| `director` ~ `software engineer` | 0.45 |
+| `qa engineer` ~ `software engineer` | 0.43 |
+| `data engineer` ~ `backend engineer` | 0.40 |
+| `security engineer` ~ `network engineer` | 0.17 |
+| `frontend engineer` ~ `data engineer` | 0.08 |
+
+The most distinctive skills: `ai engineer` LangChain, LangGraph, PyTorch, Pinecone, MCP; `data
+engineer` Spark, Airflow, Databricks, dbt, Snowflake; `frontend engineer` React, TypeScript, CSS,
+Next.js; `software engineer` Java, React, TypeScript, Go, Kubernetes. So the skills tell the kinds
+of work apart, but not who does what in it: a manager's vacancies ask for an engineer's skills.
+
+**Skills per vacancy.** 12.5% of the subset names no skill, 7.0% one and 7.1% two; 30.8% name ten
+or more. For about a quarter, the skills say little about the work.
+
+**The department field beside a bare leader.** Of the vacancies whose probe cut left a rank alone
+(`manager`, `director`, `head`, `lead` and the like), every one on Greenhouse (2,435), Ashby (1,871)
+and Lever (540) has a department or a team, and none of Workday's 4,712 does. The values are
+coarse: `Engineering`, `Tech`, `Global`, `Shared Services Corporate`. The title's own area is the
+better evidence (`Manager, Application Security`).
+
+**Himalayas**, read on 2026-10-26 as the one other job site seen modelling roles. A posting carries
+7 to 15 overlapping role tags that look generated: one Canonical posting has `Software Engineer`,
+`Linux Engineer`, `Linux Software Engineer`, `Linux Software Engineering`, `Open Source Engineer`,
+`DevOps`, `Backend Development`, `Developer` and more, and an Askable one mixes in employment type
+(`Contract Software Engineer`, `Freelance AI Software Engineer`). Each tag is a browse page
+(`/jobs/<tag>`). The browse page of a role splits it by level: Entry, Mid, Senior, Manager,
+Director, Executive.
+
+## 4. The normalized titles after #92's run
+
+Read from the dev database after `2026-10-title-breakdown.md`'s last run, for the role list's
+floor. A vacancy counts if any of its normalized titles is in the set.
+
+| Normalized titles | Vacancies they cover | Fewest vacancies on one |
+|---|---:|---:|
+| Top 25 | 51,179 (32.9%) | 826 |
+| Top 50 | 64,594 (41.5%) | 354 |
+| Top 100 | 76,467 (49.1%) | 176 |
+| Top 200 | 87,840 (56.4%) | 79 |
+| Top 500 | 100,518 (64.5%) | 27 |
+
+| Floor | Titles at or over it | Vacancies they cover |
+|---:|---:|---:|
+| 20 | 658 | 104,053 (66.8%) |
+| 12 | 1,039 | 109,709 (70.4%) |
+| 10 | 1,276 | 112,163 (72.0%) |
+| 8 | 1,601 | 114,867 (73.7%) |
+| 5 | 2,633 | 120,794 (77.5%) |
+
+At floor 12 the titles reach 70.4%, so the 70% holds only if nearly every one of them fits a role.

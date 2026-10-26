@@ -63,6 +63,9 @@ the later ADR wins; the overridden parts are marked below.
   profiles are evidence for merges, never the rule; role nearness is computed beside the list; a
   leadership word is taken out as the management level and the role is the area it leads,
   superseding "leadership words stay in the role".
+  Its later record of 2026-10-26 says what a role is for (statistics, matching, the filter), what
+  is settled for the list (one role per title, bare heads to software engineer), and the options
+  rejected: many tags per vacancy, roles as skill clusters, practices from descriptions.
   *Amended again 2026-10-26*: about 25 roles, read off the most common normalized titles; every
   normalized title above the floor is sorted into the nearest one, superseding pairwise merges and
   "when unsure, keep apart". A title that fits no role leaves its vacancies without one.
