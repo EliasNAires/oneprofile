@@ -169,8 +169,14 @@ _Avoid_: role family, job family, category, position
 **Role List**:
 The curated roles and the normalized titles each is read from, stable between runs and grown on
 each new snapshot. A normalized title joins it once enough vacancies carry it; two join one role
-when a candidate would expect the same day-to-day work from both. Flat: no role holds another.
+when a candidate would expect the same day-to-day work from both. Flat: no role holds another. The skills two titles' vacancies ask for are evidence for a merge,
+never its rule (ADR-0024).
 _Avoid_: role taxonomy, title dictionary, families
+
+**Role Nearness**:
+How near two roles are, from the skills their vacancies ask for, computed again on each snapshot.
+It shows the roles near the one a visitor picked; it never moves a title into a role (ADR-0024).
+_Avoid_: role similarity, related roles, adjacency
 
 ### The Corpus
 

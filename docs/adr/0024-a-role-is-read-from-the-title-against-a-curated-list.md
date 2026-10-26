@@ -1,6 +1,6 @@
 # A role is read from the title, against a curated list
 
-Status: accepted
+Status: accepted (amended 2026-10-26)
 
 The Finder filters by role and builds a landing page for each one, and the Explorer charts by
 role. So a role has to be a short, stable list of values. Over the 76,854 vacancies of the
@@ -59,3 +59,31 @@ once. Taking a title's facts out (levels, work mode, places, skills) still leave
   them out anyway. They cannot move to cleaning: `staff nurse` is only harmless inside the
   engineering subset.
 - About a quarter of the subset is expected to have no role at launch, by the probe's estimate.
+
+## Amended 2026-10-26
+
+Decided with Elias in #25's triage, after the breakdown was measured again on
+`classified-2026-10-25` with Workday (`docs/measurements/2026-10-title-breakdown-probe-workday.md`):
+about 786 normalized titles are needed for 70% of the subset, against about 300 before Workday.
+
+- **A role is the employer's word for the work, not a cluster of skills.** It is read from the
+  title. What a role is for: it tells a visitor the kind of work, which skills do not. A data
+  engineer and a web developer both ask for Python and SQL.
+- **Titles and roles are kept apart.** Breaking a title down into its normalized title is one
+  piece of work, and the role list, which maps normalized titles to roles, is another. Many
+  normalized titles map to one role. A visitor who searches a title is shown the vacancies of its
+  role, and the Explorer counts by role, not by title.
+- **Skill profiles are evidence for the role list, never its rule.** Two normalized titles join
+  one role by the test above, the same day-to-day work. The similarity of the skills their
+  vacancies ask for is shown to the agent that drafts the merges and to the one that reviews them.
+  It does not decide a merge, because it cannot tell who does what: `engineering manager` and
+  `software engineer` ask for nearly the same skills (0.93) and are different work. Membership
+  that followed similarity would also change between snapshots and break a role's series.
+- **Role nearness is computed beside the list.** It is how near two roles are, from their skill
+  profiles, computed again on each snapshot and allowed to change. It is what shows a visitor the
+  roles near the one they picked. It never moves a title from one role to another.
+- **Practices are not extracted from descriptions** for roles. Most skills imply their practice:
+  dbt implies data modelling, Airflow implies orchestration. Grouping skills by function
+  (Airflow, Dagster and Prefect are all orchestration) may serve matching later, as a mapping
+  over the taxonomy rather than an extractor.
+

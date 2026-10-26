@@ -59,6 +59,8 @@ the later ADR wins; the overridden parts are marked below.
   normalized title and looked up in a curated, flat role list. No match means no role, never a
   guess; filling those from other fields is after the MVP (#87). Done at 70% of the engineering
   subset.
+  *Amended 2026-10-26*: the breakdown and the role list are separate pieces of work; skill
+  profiles are evidence for merges, never the rule; role nearness is computed beside the list.
 
 **Classification**
 - **0008**: three states, and three unknown reasons (`domain_ambiguity`, `scope_ambiguity`,
