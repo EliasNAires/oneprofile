@@ -452,6 +452,8 @@ board.
   A visitor who searches a title is shown its role's vacancies (ADR-0024). With about 25 roles a
   role is broad, so how far a title search reaches is open (#25): one proposal shows the vacancies
   of that normalized title first, and widens to its role as a step the visitor sees.
+  Whatever it reaches, the query goes through the same breakdown as titles, with the abbreviations
+  titles use (`SWE`, `SDE`, `Sr. Backend Dev`), or the exact step finds nothing.
 - **Work mode and salary**: an undeclared value is never guessed. A filter on either hides the
   vacancies that do not declare it, and says how many it hid.
 
@@ -495,6 +497,9 @@ How numbers are shown:
 - **Seniority counts each vacancy once**, at the lowest level it names (§6.1).
 - **Role counts a vacancy in every role its title names**, so role shares can add up to more than
   100% (ADR-0024).
+- **Statistics by role and management level.** A role's vacancies include its managers', whose
+  vacancies ask for the same skills as its engineers' (ADR-0024). Whether a role's charts show only
+  individual contributors by default, and say so, is open.
 - **Small samples.** A cell with fewer than 10 vacancies is hidden. Every other bar carries its
   n and a 95% Wilson interval, which stays well-behaved at small n and near 0% or 100%.
 
