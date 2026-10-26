@@ -549,7 +549,7 @@ first iteration falls short (`docs/agents/rule-loop.md`).
 Volume is done: Ashby (#20), then whatever reached 100k vacancies (#70). The rest runs in sequence
 (decided 2026-10-26):
 
-1. **Extraction**: the title breakdown (#92) → roles from titles (#25), beside work mode (#86) → seniority from the body (#8) →
+1. **Extraction**: the title breakdown (#92) and its check (#94) → roles from titles (#25), beside work mode (#86) → seniority from the body (#8) →
    eligibility and its recall (#13, #12) → deduplication (#27).
 2. **Data quality**: the corpus fixes ready for an agent (#83, #85, #49).
 3. **Scheduling**: the schedule (#30), with the passes and the Workday sweep fitted to the server
