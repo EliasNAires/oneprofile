@@ -196,6 +196,50 @@ class TitleBreakdownRuleTest {
 		assertThat(normalized("Night Shift Network Engineer")).containsExactly("network engineer");
 	}
 
+	@Test
+	void readsALeadersAreaBeforeAHeadInALaterPart() {
+		assertThat(breakDown("Manager, Software Engineering - Developer Support"))
+			.isEqualTo(new TitleBreakdown(List.of("software engineer"), Set.of(), ManagementLevelEnum.MANAGER));
+		assertThat(breakDown("Manager, Solutions Architect"))
+			.isEqualTo(new TitleBreakdown(List.of("solutions architect"), Set.of(), ManagementLevelEnum.MANAGER));
+	}
+
+	@Test
+	void dropsTheCompanyATitleNamesAfterAt() {
+		assertThat(breakDown("AI Engineering Lead at AIOS"))
+			.isEqualTo(new TitleBreakdown(List.of("ai engineer"), Set.of(), ManagementLevelEnum.LEAD));
+	}
+
+	@Test
+	void movesOnlyTheFirstOfTwoKindsJoinedByAnAmpersand() {
+		assertThat(normalized("Software Engineer, AI & Data")).containsExactly("ai engineer");
+	}
+
+	@Test
+	void readsAChiefOfficeAsADepartmentRatherThanAnExecutive() {
+		assertThat(breakDown("TDI Chief Data Office - Production Support Specialist - AVP"))
+			.isEqualTo(new TitleBreakdown(List.of("production support specialist"), Set.of(), null));
+	}
+
+	@Test
+	void readsAVicePresidentBesideAQuantAsAGrade() {
+		assertThat(breakDown("Vice President - Inflation Quant"))
+			.isEqualTo(new TitleBreakdown(List.of("inflation quant"), Set.of(), null));
+		assertThat(normalized("Quant Developer")).containsExactly("quant developer");
+	}
+
+	@Test
+	void readsIntermediateMediorAndMiddleAsMid() {
+		assertThat(breakDown("Intermediate Appian Developer"))
+			.isEqualTo(new TitleBreakdown(List.of("appian developer"), Set.of(SeniorityLevelEnum.MID), null));
+		assertThat(breakDown("Medior Backend Engineer").titleSeniorities()).containsExactly(SeniorityLevelEnum.MID);
+		assertThat(breakDown("Middle Full-Stack Engineer"))
+			.isEqualTo(new TitleBreakdown(List.of("full stack engineer"), Set.of(SeniorityLevelEnum.MID), null));
+		assertThat(breakDown("Middle Office Engineer"))
+			.isEqualTo(new TitleBreakdown(List.of("middle office engineer"), Set.of(), null));
+		assertThat(breakDown("Support Engineer, Middle East").titleSeniorities()).isEmpty();
+	}
+
 	private List<String> normalized(String title, String... titleSkillIds) {
 		return this.rule.breakDown(title, "", Set.of(titleSkillIds)).normalizedTitles();
 	}

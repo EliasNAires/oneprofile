@@ -137,3 +137,58 @@ engineer`. The rest are faults:
 - **`middle` as a level:** `Middle Full-Stack Engineer`, written for mid.
 - **Words out of order:** `systems marketing operations`.
 - **Titles not in English:** `Estágio em Engenharia de Análise de Dados`.
+
+## A blind check of 200 vacancies, and its fixes
+
+Run the same day. 200 vacancies were drawn uniformly from the subset, so the common titles weigh as
+they do in the subset. Two agents labelled 100 each, blind to the rule. They read a criterion written
+from #92, ADR-0024 and the decisions above, and wrote each vacancy's normalized titles and management
+level. Every disagreement was then read and laid either to the rule or to the labeller.
+
+| Output | Labeller agreed | The rule's faults | Debatable |
+|---|---:|---:|---:|
+| Normalized title | 171 of 200 | 7 (3.5%) | 3 |
+| Management level | 198 of 200 | 2 (1%) | 0 |
+
+The other 19 title disagreements were the labeller's:
+
+- **Translations:** it translated `ingénieur` and `architekt`.
+- **Spellings:** it kept `fullstack` and `sw` as written.
+- **Abbreviations:** it missed that `FDE` is a forward deployed engineer.
+- **Kinds of work:** it read a shorter list of them than the rule (`computer vision`).
+
+The debatable three are kinds of work two parts behind the head, such as `Product Owner,
+Technical - AI Finance`. They are left as they are, because reaching that far would also move a
+company's name, as the `network` of `Atlas Network`.
+
+Fixed:
+
+- **A head after a leader's area.** A head in a later part no longer overrides the area a leader
+  leads: `Manager, Software Engineering - Developer Support` → `software engineer`, MANAGER.
+- **A company after `at`.** What a title names after `at` goes: `AI Engineering Lead at AIOS` → `ai
+  engineer`, LEAD.
+- **A chief's office.** `Chief Data Office` is a department, not an executive.
+- **Grades beside a person.** A corporate grade beside a head that names a person (`specialist`,
+  `quant`, `intern`) is a grade too: `Vice President - Inflation Quant` has no level. Such a head is
+  also read before `support` or `operations`: `IT Support Specialist` → `it support specialist`.
+- **More words for mid.** `intermediate`, `medior` and `middle` name mid (decided with Elias), except
+  in `Middle East` and `Middle Office`.
+
+One fault the labeller saw is left by choice. In `Software Engineer, AI & Data` only the first kind
+moves (`ai engineer`). Carrying the whole run across a slash or an `&` was tried, and it split titles
+that are one kind of work (`infra data engineer`, `simulation robotics engineer`), raising the
+distinct titles from 27,948 to 28,223.
+
+After the fixes:
+
+| ATS | Distinct | Top 100 cover | Top 300 cover | Top 1,000 cover | Titles for 70% | Floor there | Head alone |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Greenhouse | 7,537 | 56.9% | 68.9% | 79.7% | 338 | 11 | 4.4% |
+| Ashby | 3,326 | 68.6% | 80.2% | 89.5% | 115 | 21 | 4.7% |
+| Lever | 2,723 | 58.5% | 73.3% | 86.5% | 231 | 7 | 6.8% |
+| Workday | 19,844 | 42.3% | 52.9% | 63.8% | 2,029 | 4 | 5.5% |
+| **All** | **27,948** | **49.2%** | **60.4%** | **70.4%** | **983** | **12** | **5.2%** |
+
+`mid` is now named by 1,022 vacancies (751 before), and 13,972 (9.0%) name a guarded level. The
+executives fell from 1,268 to 1,206, as grades beside a person stopped counting; the other levels are
+unchanged.

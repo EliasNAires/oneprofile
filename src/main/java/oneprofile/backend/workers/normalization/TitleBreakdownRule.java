@@ -129,6 +129,9 @@ public class TitleBreakdownRule {
 			Map.entry("ciso", "chief information security"), Map.entry("cdo", "chief data"),
 			Map.entry("cpo", "chief product"), Map.entry("caio", "chief ai"));
 
+	/** A chief's office is a department, not a chief: {@code Chief Data Office} reads as a data office. */
+	private static final Pattern CHIEF_OFFICE = Pattern.compile("\\bchief ((?:\\S+ ){1,3})office\\b");
+
 	/** A chief officer is read as a chief over the area named between the two words. */
 	private static final Pattern CHIEF_OFFICER = Pattern.compile("\\bchief ((?:\\S+ ){1,3})officer\\b");
 
@@ -147,7 +150,16 @@ public class TitleBreakdownRule {
 
 	private static final Set<String> WEAK = Set.of("intern", "interns", "internship", "specialist",
 			"specialists", "expert", "experts", "member", "fellow", "graduate", "trainee", "apprentice", "student",
-			"werkstudent", "praktikant", "stagiaire", "support", "operations", "tech", "partner", "co op");
+			"werkstudent", "praktikant", "stagiaire", "support", "operations", "tech", "partner", "co op", "quant",
+			"quants");
+
+	/**
+	 * The stages and standings that name a person rather than a department, and so are read as the head
+	 * before {@code support} or {@code operations} is, and are what a corporate grade stands beside.
+	 */
+	private static final Set<String> PEOPLE = Set.of("intern", "interns", "internship", "specialist", "specialists",
+			"expert", "experts", "member", "fellow", "graduate", "trainee", "apprentice", "student", "werkstudent",
+			"praktikant", "stagiaire", "partner", "quant", "quants");
 
 	/** The leadership words and the level each names. */
 	private static final Map<String, ManagementLevelEnum> RANKS = Map.ofEntries(
@@ -179,7 +191,9 @@ public class TitleBreakdownRule {
 	private static final Map<String, SeniorityLevelEnum> LEVELS = Map.ofEntries(
 			Map.entry("staff", SeniorityLevelEnum.STAFF), Map.entry("staff+", SeniorityLevelEnum.STAFF),
 			Map.entry("mid", SeniorityLevelEnum.MID), Map.entry("mid level", SeniorityLevelEnum.MID),
-			Map.entry("midlevel", SeniorityLevelEnum.MID), Map.entry("entry", SeniorityLevelEnum.ENTRY),
+			Map.entry("midlevel", SeniorityLevelEnum.MID), Map.entry("intermediate", SeniorityLevelEnum.MID),
+			Map.entry("medior", SeniorityLevelEnum.MID), Map.entry("middle", SeniorityLevelEnum.MID),
+			Map.entry("entry", SeniorityLevelEnum.ENTRY),
 			Map.entry("entry level", SeniorityLevelEnum.ENTRY), Map.entry("ii", SeniorityLevelEnum.II),
 			Map.entry("iii", SeniorityLevelEnum.III), Map.entry("iv", SeniorityLevelEnum.IV),
 			Map.entry("level ii", SeniorityLevelEnum.II), Map.entry("level iii", SeniorityLevelEnum.III),
@@ -296,7 +310,7 @@ public class TitleBreakdownRule {
 			}
 		}
 		Head head = head(parts);
-		return new TitleBreakdown(normalizedTitles(parts, head), levels, managementLevel(parts, head));
+		return new TitleBreakdown(normalizedTitles(parts, head), levels, managementLevel(parts));
 	}
 
 	/** Where the head was read: its part and its place there, and what it is. */
@@ -308,17 +322,48 @@ public class TitleBreakdownRule {
 	 * then leads an area; else the first department or stage. Null if the title names none of them.
 	 */
 	private static Head head(List<List<Item>> parts) {
-		for (WordUse use : List.of(WordUse.HEAD, WordUse.RANK, WordUse.AREA, WordUse.WEAK)) {
-			for (int part = 0; part < parts.size(); part++) {
-				List<Item> items = parts.get(part);
-				for (int at = 0; at < items.size(); at++) {
-					if (items.get(at).is(use)) {
-						return new Head(part, at, use);
-					}
+		Head function = first(parts, (item) -> item.is(WordUse.HEAD));
+		boolean graded = gradeYields(parts);
+		Head leader = first(parts, (item) -> item.is(WordUse.RANK) && !(graded && GRADES.contains(item.text())));
+		if (function != null) {
+			// A leader standing in an earlier part leads the area named between it and the head, as in
+			// "Manager, Software Engineering - Developer Support"; with nothing between, the head is read.
+			boolean areaBetween = leader != null && leader.part() < function.part()
+					&& (!front(parts.get(leader.part())).isEmpty() || leader.part() + 1 < function.part());
+			return areaBetween ? leader : function;
+		}
+		if (leader != null) {
+			return leader;
+		}
+		Head area = first(parts, (item) -> item.is(WordUse.AREA));
+		if (area != null) {
+			return area;
+		}
+		Head person = first(parts, (item) -> item.is(WordUse.WEAK) && PEOPLE.contains(item.text()));
+		return (person != null) ? person : first(parts, (item) -> item.is(WordUse.WEAK));
+	}
+
+	/** Where the first word or phrase that passes a test stands, null if none does. */
+	private static Head first(List<List<Item>> parts, java.util.function.Predicate<Item> test) {
+		for (int part = 0; part < parts.size(); part++) {
+			List<Item> items = parts.get(part);
+			for (int at = 0; at < items.size(); at++) {
+				if (test.test(items.get(at))) {
+					return new Head(part, at, items.get(at).use());
 				}
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * Whether a corporate grade in the title is only a grade: where the title names a function head,
+	 * or a stage or standing that names a person ({@code specialist}, {@code quant}), the grade says
+	 * where the post sits in the bank, and leads nothing.
+	 */
+	private static boolean gradeYields(List<List<Item>> parts) {
+		return first(parts, (item) -> item.is(WordUse.HEAD) || (item.is(WordUse.WEAK) && PEOPLE.contains(item.text())))
+				!= null;
 	}
 
 	private static List<String> normalizedTitles(List<List<Item>> parts, Head head) {
@@ -408,7 +453,8 @@ public class TitleBreakdownRule {
 	 */
 	private static List<Item> withKindsFrom(List<Item> after, List<Item> front) {
 		// Only the first run of kinds: a word that is not one ends it, as "Core" does in "Team Lead,
-		// Android Core Product".
+		// Android Core Product", and so does a slash or an ampersand, which joins two kinds of which
+		// the first is kept ("AI & Data"): carrying both would split titles that are one kind of work.
 		List<Item> kinds = after.stream()
 			.dropWhile((item) -> !item.is(WordUse.KIND))
 			.takeWhile((item) -> item.is(WordUse.KIND))
@@ -424,15 +470,15 @@ public class TitleBreakdownRule {
 	}
 
 	/**
-	 * The highest rank the title names. A corporate grade beside a function head names none; a tech or
-	 * team lead names a lead.
+	 * The highest rank the title names. A corporate grade beside a head that names a person names
+	 * none; a tech or team lead names a lead.
 	 */
-	private static ManagementLevelEnum managementLevel(List<List<Item>> parts, Head head) {
-		boolean functionHead = head != null && head.use() == WordUse.HEAD;
+	private static ManagementLevelEnum managementLevel(List<List<Item>> parts) {
+		boolean graded = gradeYields(parts);
 		ManagementLevelEnum highest = null;
 		for (List<Item> items : parts) {
 			for (Item item : items) {
-				if (item.rank() == null || (functionHead && GRADES.contains(item.text()))) {
+				if (item.rank() == null || (graded && GRADES.contains(item.text()))) {
 					continue;
 				}
 				if (highest == null || item.rank().compareTo(highest) > 0) {
@@ -490,6 +536,10 @@ public class TitleBreakdownRule {
 				levels.add(item.level());
 				continue;
 			}
+			if (item.text().equals("at") && !kept.isEmpty()) {
+				// What a title names after "at" is the company or the team it is at.
+				break;
+			}
 			if (item.is(WordUse.NOISE) || (item.is(WordUse.WORD) && isNoise(items, at))) {
 				continue;
 			}
@@ -545,6 +595,7 @@ public class TitleBreakdownRule {
 		}
 		String spelled = String.join(" ", respelled(words));
 		spelled = CHIEF_OFFICER.matcher(spelled).replaceAll("chief $1").trim();
+		spelled = CHIEF_OFFICE.matcher(spelled).replaceAll("$1office");
 		return List.of(WHITESPACE.split(spelled));
 	}
 
@@ -655,6 +706,9 @@ public class TitleBreakdownRule {
 		PLACES.forEach((place) -> vocabulary.put(place, NOISE));
 		WORK_MODES.forEach((mode) -> vocabulary.put(mode, NOISE));
 		SHIFTS.forEach((shift) -> vocabulary.put(shift, NOISE));
+		// "middle" is mid, except in the region and the bank's middle office.
+		vocabulary.put("middle east", NOISE);
+		vocabulary.put("middle office", new Reading(WordUse.WORD, "middle office", null, null));
 		LEVELS.forEach((word, level) -> vocabulary.put(word, new Reading(WordUse.LEVEL, word, null, level)));
 		KINDS.forEach((kind) -> vocabulary.put(kind, new Reading(WordUse.KIND, kind, null, null)));
 		WEAK.forEach((word) -> vocabulary.put(word, new Reading(WordUse.WEAK, word, null, null)));

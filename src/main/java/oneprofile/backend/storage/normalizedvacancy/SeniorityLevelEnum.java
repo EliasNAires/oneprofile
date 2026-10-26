@@ -18,7 +18,8 @@ public enum SeniorityLevelEnum {
 
 	/**
 	 * Named by {@code semi senior} and {@code ssr}, which ask for less than a senior, and by
-	 * {@code mid}, which the title breakdown reads.
+	 * {@code mid}, {@code intermediate}, {@code medior} and {@code middle}, which the title
+	 * breakdown reads.
 	 */
 	MID,
 
