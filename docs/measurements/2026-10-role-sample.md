@@ -144,3 +144,27 @@ would place.
 
 Run again after the assignment. Each role's three nearest are the same roles as in
 `docs/measurements/2026-10-role-assignment.md`, each within 0.01, so its table stands.
+
+## Is it enough
+
+Enough to close #25: coverage and precision meet ADR-0024's bar, and the misses fall into a few
+causes rather than noise. Readable statistics by role do not need more. What would raise precision,
+in the order of what it buys for its cost:
+
+1. **Rule 4 against rule 9** (9 misses). A criterion decision before a rule change. Proposed: a kind
+   word gives its role only with a head that role's description covers (`data analyst`, `security
+   analyst`), and a head of rule 9 or a `technician` keeps no role (`web analyst`, `robotics product
+   specialist`). It raises `robotics-engineer` and `data-analyst` and costs a little coverage.
+2. **A team or product after the head read as the kind of work** (most of the breakdown's 10).
+   `Software Engineer, Data Acquisition` has the shape of `Software Engineer, Backend`; only the
+   words tell them apart. It is most of `data-engineer`'s misses, and it is #95's, since search
+   reads the normalized title too.
+3. **Two kind words** (10): one-off placements, each a line of the role list when it is met.
+
+Two things this sample does not measure:
+
+- **Recall.** The 22% without a role were not sampled. Some of the commonest plainly have one
+  (`android team lead` 248, `application developer` 122, `technical product` 178), each a line of the
+  role list.
+- **Agreement between kinds of reader.** Both labellers were Sonnet; a later sample should draw its
+  second labeller from another model.
