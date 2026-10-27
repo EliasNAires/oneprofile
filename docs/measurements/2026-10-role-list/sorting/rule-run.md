@@ -68,8 +68,39 @@ Rule faults the comparison found were fixed before this run: `systems software d
 engineer`, `automation engineer`, `systems engineer`, `verification engineer`) read as heads with no
 role, so that a kind in front of them decides (`web design engineer` is frontend).
 
+## The agent pass (2026-10-27)
+
+For #25, step 2's agent pass adjudicated the 27 titles above where the rule and the pilot's labels
+disagree. Two adjudicators (`.claude/agents/adjudicator.md`, Sonnet; 38k and 45k tokens) read each
+title's raw titles and skills against the criterion, blind to which answer was the rule's. The
+batches, the key to which answer was which, and the verdicts are in `adjudication/`.
+
+- **The label stands on 25.** Each became a line of the role list: in `words.tsv`, `dataops`
+  (data engineer), `cyber defense` (security engineer, and security analyst beside `analyst`),
+  `desktop` and `endpoint` (systems administrator), `escalation` (support engineer), `demo` and
+  `customer engagement` beside `engineer` (sales engineer), `deployed` beside `engineer` (forward
+  deployed engineer), and `erp` deciding wherever it stands, as the vendor platforms do (enterprise
+  platform engineer); in `titles.tsv`, the 15 titles no word generalizes.
+- **The rule stands on 1**: `test and evaluation engineer` stays QA; its skills are software test
+  automation.
+- **Neither on 1**: `software and data engineer` names two heads, so it is two normalized titles, a
+  fault of the title breakdown (#95). The rule's `data-engineer` is left.
+
+Re-run over the 2,541 titles, the rule agrees with 95 of the 97 pilot labels (from 70). Thirty
+titles changed role: the 25 adjudicated, and five the new words reach beyond them, checked by hand:
+`cyber defense` and `cyber defense analyst` (security engineer and analyst), `erp solution
+architect`, `erp systems administrator` and `erp analyst` (enterprise platform engineer).
+
+| | titles | vacancies | share of these |
+|---|---:|---:|---:|
+| placed | 1,586 | 104,441 | 85.4% |
+| no role, by a rule | 101 | 6,770 | 5.5% |
+| unreached | 854 | 11,027 | 9.0% |
+| contested (within the above) | 241 | 3,505 | 2.9% |
+
 ## Next
 
-The contested and unreached titles, and a sample of the placed, go to an agent under the criterion;
-each title it corrects becomes a line of `titles.tsv` or `words.tsv`. Not run yet: 244 contested and
-871 unreached titles.
+Step 6, by another session. The roles in the dev database are still the old rule's: first `POST
+/roles` and `POST /role-nearness` again, then `scripts/draw-role-sample` (written, run once into a
+scratch directory to check it) draws the blind sample, two labellers label `batch-1.tsv` and
+`batch-2.tsv`, and `scripts/score-role-sample` (written, not yet run on labels) scores them.

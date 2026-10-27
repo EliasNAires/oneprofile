@@ -1,0 +1,80 @@
+[
+ {
+  "id": "15",
+  "text": "normalized title: test development engineer\nraw titles: Test Development Engineer | Lead Test Development Engineer | [Intern] Test Development Engineer Intern\nvacancies: 38\ndistinctive skills (evidence, never the reason): teststand, labview, spirent, keysight-ixia, pcie, i2c, serial-peripheral-interface, canbus",
+  "a": "none",
+  "b": "qa-engineer"
+ },
+ {
+  "id": "16",
+  "text": "normalized title: device engineer\nraw titles: Senior Device Engineer | Device Engineer II | Device Engineering Manager\nvacancies: 8\ndistinctive skills (evidence, never the reason): lora, threadx, openwrt, strace, android-automotive, buildroot, pcap, bluetooth",
+  "a": "none",
+  "b": "embedded-engineer"
+ },
+ {
+  "id": "17",
+  "text": "normalized title: ai devops engineer\nraw titles: AI DevOps Engineer | Senior AI DevOps Engineer | Sr. AI DevOps Engineer\nvacancies: 14\ndistinctive skills (evidence, never the reason): aws-device-farm, dependabot, testflight, xcuitest, cron, elastic-load-balancing, espresso, amazon-cloudfront",
+  "a": "platform-engineer",
+  "b": "ai-engineer"
+ },
+ {
+  "id": "18",
+  "text": "normalized title: network devops engineer\nraw titles: Network / DevOps Engineer | Network DevOps Engineer, RDMA Fabric Automation - Multiple Openings | Sr Network DevOps Engineer - Operations\nvacancies: 6\ndistinctive skills (evidence, never the reason): napalm, cloud-wan, netmiko, nornir, nautobot, mlag, ovn, f5-big-ip",
+  "a": "network-engineer",
+  "b": "platform-engineer"
+ },
+ {
+  "id": "19",
+  "text": "normalized title: distinguished engineer\nraw titles: Distinguished Engineer | Distinguished Engineer / Technical Fellow | Sr. Distinguished Engineer\nvacancies: 25\ndistinctive skills (evidence, never the reason): rust, golang, java, cpp, google-cloud-platform, kubernetes, python, javascript",
+  "a": "software-engineer",
+  "b": "none"
+ },
+ {
+  "id": "20",
+  "text": "normalized title: edge engineer\nraw titles: Lead Edge Engineer | Edge Engineer | Senior Edge Engineer\nvacancies: 6\ndistinctive skills (evidence, never the reason): nvidia-tegra, rs485, aws-iot-core, nvidia-jetson, x86, profinet, protocol-buffers, usb",
+  "a": "none",
+  "b": "embedded-engineer"
+ },
+ {
+  "id": "21",
+  "text": "normalized title: embedded systems emulation engineer\nraw titles: Embedded Systems Emulation Engineer | Associate Embedded Systems Emulation Engineer\nvacancies: 5\ndistinctive skills (evidence, never the reason): binary-ninja, ida-pro, ghidra, qemu, arm, c, git, cpp",
+  "a": "embedded-engineer",
+  "b": "security-engineer"
+ },
+ {
+  "id": "22",
+  "text": "normalized title: endpoint engineer\nraw titles: Endpoint Engineer | Senior Endpoint Engineer | Endpoint Engineer - Windows\nvacancies: 36\ndistinctive skills (evidence, never the reason): zsh, windows-api, windows-autopilot, apple-business-manager, azure-virtual-desktop, microsoft-graph, jamf, group-policy",
+  "a": "none",
+  "b": "systems-administrator"
+ },
+ {
+  "id": "23",
+  "text": "normalized title: customer engagement engineer\nraw titles: Lead Customer Engagement Engineer | Customer Engagement Engineer II | Lead Customer Engagement Engineer -  Voltus\nvacancies: 6\ndistinctive skills (evidence, never the reason): c-shell, kornshell, systemverilog-assertions, xcelium, vhdl, systemc, amba, verilog",
+  "a": "sales-engineer",
+  "b": "none"
+ },
+ {
+  "id": "24",
+  "text": "normalized title: erp engineer\nraw titles: ERP Engineer II | Manager, ERP Engineering (BTPAI) | Manager, ERP Engineering (EDI)\nvacancies: 9\ndistinctive skills (evidence, never the reason): sap-ai-core, sap-pi, ansi-x12, as2, edifact, precision-time-protocol, sap-integration-suite, ibm-mq",
+  "a": "enterprise-platform-developer",
+  "b": "none"
+ },
+ {
+  "id": "25",
+  "text": "normalized title: escalation engineer\nraw titles: Escalation Engineer- Dallas | Escalation Engineer- Toronto | Senior Escalation Engineer\nvacancies: 7\ndistinctive skills (evidence, never the reason): coralogix, chromium, pure-storage-flashblade, traceroute, sentry, ssl, new-relic, nfs",
+  "a": "none",
+  "b": "support-engineer"
+ },
+ {
+  "id": "26",
+  "text": "normalized title: test and evaluation engineer\nraw titles: Test and Evaluation Engineer | Lead Test and Evaluation Engineer\nvacancies: 6\ndistinctive skills (evidence, never the reason): syft, grype, fortify, cypress, openshift, playwright, aws-cloudformation, confluence",
+  "a": "none",
+  "b": "qa-engineer"
+ },
+ {
+  "id": "27",
+  "text": "normalized title: ai developer experience engineer\nraw titles: Senior Software Engineer, AI Developer Experience | AI Developer Experience Engineer | Engineering Director, AI Developer Experience (AIDE)\nvacancies: 7\ndistinctive skills (evidence, never the reason): llms-txt, claude-opus, planetscale, vitess, netlify, as2, sqlite, heroku",
+  "a": "ai-engineer",
+  "b": "platform-engineer"
+ }
+]

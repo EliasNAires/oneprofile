@@ -1,0 +1,16 @@
+{
+ "1": {"verdict": "neither", "clause": "One role per normalized title... A vacancy has two roles only where its title names two heads", "pattern": "title names two heads"},
+ "2": {"verdict": "a", "clause": "A kind word in front of the head decides, whatever the head", "pattern": "business intelligence overrides data engineer"},
+ "3": {"verdict": "a", "clause": "A kind word in front of the head decides, whatever the head", "pattern": "storage kind word platform work"},
+ "4": {"verdict": "b", "clause": "A kind word in front of the head decides, whatever the head", "pattern": "cloud kind word platform work"},
+ "5": {"verdict": "b", "clause": "Builds and runs the pipelines, warehouses and lakes that move... data", "pattern": "dataflow names pipeline work"},
+ "6": {"verdict": "a", "clause": "Builds and runs the pipelines, warehouses and lakes that move... data", "pattern": "dataops names pipeline work"},
+ "7": {"verdict": "b", "clause": "Builds and runs the defences of systems and data", "pattern": "cyber defense security engineering"},
+ "8": {"verdict": "a", "clause": "Helps sell and keep a technical product: runs demos and proofs of concept", "pattern": "demo engineer runs demos"},
+ "9": {"verdict": "b", "clause": "forward deployed engineer... implementation engineer, deployment engineer", "pattern": "deployed shorthand for forward-deployed"},
+ "10": {"verdict": "b", "clause": "network security engineer → network engineer: the day is firewalls, VPNs and routing. This is an exception to rule 4", "pattern": "network kind word overrides deployment"},
+ "11": {"verdict": "a", "clause": "A title that does not say one kind of work has no role", "pattern": "data center design hardware"},
+ "12": {"verdict": "a", "clause": "A title that does not say one kind of work has no role", "pattern": "generic systems design no role"},
+ "13": {"verdict": "a", "clause": "A kind word in front of the head decides, whatever the head", "pattern": "desktop kind word systems admin"},
+ "14": {"verdict": "b", "clause": "Keeps an organization's own servers, databases, identities and devices running", "pattern": "desktop devices management"}
+}

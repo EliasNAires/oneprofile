@@ -1,0 +1,123 @@
+#!/usr/bin/env python3
+"""Scores step 6's blind sample of the role assignment (#25).
+
+    scripts/score-role-sample DIRECTORY
+
+DIRECTORY is where scripts/draw-role-sample drew the sample. Reads the two labellers' answers,
+labels-a-N.tsv and labels-b-N.tsv (id, roles, reason; roles comma-separated, or none), and the
+adjudicator's, adjudicated.tsv (id, roles, reason), which settles every vacancy the labellers gave
+different roles. Without adjudicated.tsv, prints the labellers' agreement and writes
+DIRECTORY/disagreements.tsv for the adjudicator.
+
+With it, prints each role's precision (of the vacancies drawn under a role, the share whose settled
+roles hold it), with a 95% Wilson interval, the precision on tail titles, the bare heads by ATS, and the
+pairs of roles the rule and the settled labels split on.
+"""
+
+import math
+import sys
+from collections import Counter
+from pathlib import Path
+
+Z = 1.96
+
+
+def rows(path):
+    with open(path, encoding="utf-8") as tsv:
+        header = tsv.readline().rstrip("\n").split("\t")
+        return [dict(zip(header, line.rstrip("\n").split("\t"))) for line in tsv if line.strip()]
+
+
+def labels(directory, labeller):
+    read = {}
+    for path in sorted(directory.glob(f"labels-{labeller}-*.tsv")):
+        for row in rows(path):
+            read[row["id"]] = row
+    return read
+
+
+def roles(answer):
+    return frozenset(role.strip() for role in answer.split(",") if role.strip() and role.strip() != "none")
+
+
+def software_heads():
+    """The bare heads of rule 8: those the role list gives software-engineer alone."""
+    with open(Path(__file__).resolve().parent.parent / "src/main/resources/rolelist/words.tsv",
+              encoding="utf-8") as tsv:
+        lines = [line.rstrip("\n").split("\t") for line in tsv][1:]
+    return {phrase for phrase, use, _, role in lines if use == "head" and role == "software-engineer"}
+
+
+def wilson(hits, total):
+    share = hits / total
+    centre = (share + Z * Z / (2 * total)) / (1 + Z * Z / total)
+    half = Z * math.sqrt(share * (1 - share) / total + Z * Z / (4 * total * total)) / (1 + Z * Z / total)
+    return centre - half, centre + half
+
+
+def line(name, hits, total):
+    low, high = wilson(hits, total)
+    return f"  {name:32} {hits:3} of {total:3}  {hits / total:6.1%}  ({low:.0%} to {high:.0%})"
+
+
+def main():
+    if len(sys.argv) != 2:
+        sys.exit(__doc__)
+    directory = Path(sys.argv[1])
+    sample = {row["id"]: row for row in rows(directory / "sample.tsv")}
+    a, b = labels(directory, "a"), labels(directory, "b")
+    missing = [id for id in sample if id not in a or id not in b]
+    if missing:
+        sys.exit(f"{len(missing)} vacancies lack a label, as {missing[:5]}")
+
+    differing = [id for id in sample if roles(a[id]["roles"]) != roles(b[id]["roles"])]
+    print(f"labellers agree on {len(sample) - len(differing)} of {len(sample)}"
+          f" ({(len(sample) - len(differing)) / len(sample):.1%})")
+    split = Counter(" ~ ".join(sorted([",".join(sorted(roles(a[id]["roles"]))) or "none",
+                                       ",".join(sorted(roles(b[id]["roles"]))) or "none"])) for id in differing)
+    for pair, count in split.most_common():
+        print(f"  {count:3}  {pair}")
+
+    adjudicated = directory / "adjudicated.tsv"
+    if not adjudicated.exists():
+        with open(directory / "disagreements.tsv", "w", encoding="utf-8") as out:
+            out.write("id\ttitle\ta\ta_reason\tb\tb_reason\n")
+            for id in differing:
+                out.write("\t".join([id, sample[id]["title"], a[id]["roles"], a[id]["reason"], b[id]["roles"],
+                                     b[id]["reason"]]) + "\n")
+        print(f"\nwrote {len(differing)} disagreements for the adjudicator")
+        return
+
+    settled = {id: roles(a[id]["roles"]) for id in sample}
+    for row in rows(adjudicated):
+        settled[row["id"]] = roles(row["roles"])
+    unsettled = [id for id in differing if id not in {row["id"] for row in rows(adjudicated)}]
+    if unsettled:
+        sys.exit(f"{len(unsettled)} disagreements are not adjudicated, as {unsettled[:5]}")
+
+    drawn = [row for row in sample.values() if row["drawn"] != "bare"]
+    print("\nprecision by role")
+    for role in sorted({row["drawn"] for row in drawn}):
+        under = [row for row in drawn if row["drawn"] == role]
+        print(line(role, sum(role in settled[row["id"]] for row in under), len(under)))
+    print(line("all roles, one per role", sum(row["drawn"] in settled[row["id"]] for row in drawn), len(drawn)))
+    tail = [row for row in drawn if row["tail"] == "yes"]
+    print(line("titles on 1 to 4 vacancies", sum(row["drawn"] in settled[row["id"]] for row in tail), len(tail)))
+    head = [row for row in drawn if row["tail"] == "no"]
+    print(line("titles on 5 or more", sum(row["drawn"] in settled[row["id"]] for row in head), len(head)))
+
+    bare = [row for row in sample.values() if row["normalized"] in software_heads()]
+    print("\nbare heads by ATS (rule: software-engineer)")
+    for ats in sorted({row["ats"] for row in bare}):
+        held = [row for row in bare if row["ats"] == ats]
+        print(line(ats, sum("software-engineer" in settled[row["id"]] for row in held), len(held)))
+
+    print("\nwhere the rule and the settled labels split (drawn role -> settled)")
+    pairs = Counter(f"{row['drawn']} -> {','.join(sorted(settled[row['id']])) or 'none'}"
+                    for row in drawn if row["drawn"] not in settled[row["id"]])
+    for pair, count in pairs.most_common():
+        print(f"  {count:3}  {pair}")
+
+
+if __name__ == "__main__":
+    main()

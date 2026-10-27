@@ -1,0 +1,110 @@
+{
+ "1": {
+  "rule": "a",
+  "label": "b"
+ },
+ "2": {
+  "label": "a",
+  "rule": "b"
+ },
+ "3": {
+  "label": "a",
+  "rule": "b"
+ },
+ "4": {
+  "rule": "a",
+  "label": "b"
+ },
+ "5": {
+  "rule": "a",
+  "label": "b"
+ },
+ "6": {
+  "label": "a",
+  "rule": "b"
+ },
+ "7": {
+  "rule": "a",
+  "label": "b"
+ },
+ "8": {
+  "label": "a",
+  "rule": "b"
+ },
+ "9": {
+  "rule": "a",
+  "label": "b"
+ },
+ "10": {
+  "rule": "a",
+  "label": "b"
+ },
+ "11": {
+  "label": "a",
+  "rule": "b"
+ },
+ "12": {
+  "label": "a",
+  "rule": "b"
+ },
+ "13": {
+  "label": "a",
+  "rule": "b"
+ },
+ "14": {
+  "rule": "a",
+  "label": "b"
+ },
+ "15": {
+  "label": "a",
+  "rule": "b"
+ },
+ "16": {
+  "rule": "a",
+  "label": "b"
+ },
+ "17": {
+  "rule": "a",
+  "label": "b"
+ },
+ "18": {
+  "label": "a",
+  "rule": "b"
+ },
+ "19": {
+  "label": "a",
+  "rule": "b"
+ },
+ "20": {
+  "rule": "a",
+  "label": "b"
+ },
+ "21": {
+  "rule": "a",
+  "label": "b"
+ },
+ "22": {
+  "rule": "a",
+  "label": "b"
+ },
+ "23": {
+  "label": "a",
+  "rule": "b"
+ },
+ "24": {
+  "label": "a",
+  "rule": "b"
+ },
+ "25": {
+  "rule": "a",
+  "label": "b"
+ },
+ "26": {
+  "label": "a",
+  "rule": "b"
+ },
+ "27": {
+  "label": "a",
+  "rule": "b"
+ }
+}

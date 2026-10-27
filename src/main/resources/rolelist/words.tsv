@@ -68,6 +68,7 @@ salesforce	override		enterprise-platform-developer
 servicenow	override		enterprise-platform-developer
 sap	override		enterprise-platform-developer
 workday	override		enterprise-platform-developer
+erp	override		enterprise-platform-developer
 quantitative	kind	developer	software-engineer
 quant	kind	developer	software-engineer
 integration	kind		software-engineer
@@ -129,6 +130,7 @@ security operations	kind		security-engineer
 penetration	kind		security-engineer
 vulnerability	kind		security-engineer
 information security	kind		security-engineer
+cyber defense	kind		security-engineer
 network security	kind		network-engineer
 security	kind	analyst	security-analyst
 cybersecurity	kind	analyst	security-analyst
@@ -138,10 +140,12 @@ security operations	kind	analyst	security-analyst
 incident response	kind	analyst	security-analyst
 threat intelligence	kind	analyst	security-analyst
 exploitation	kind	analyst	security-analyst
+cyber defense	kind	analyst	security-analyst
 data	kind		data-engineer
 analytics	kind	engineer	data-engineer
 data platform	kind		data-engineer
 data infrastructure	kind		data-engineer
+dataops	kind		data-engineer
 database	kind	developer	data-engineer
 data	kind	analyst	data-analyst
 analytics	kind	analyst	data-analyst
@@ -174,6 +178,8 @@ systems	kind	administrator	systems-administrator
 it systems	kind		systems-administrator
 it	kind		systems-administrator
 database	kind		systems-administrator
+desktop	kind		systems-administrator
+endpoint	kind		systems-administrator
 network	kind		network-engineer
 networking	kind		network-engineer
 support	kind		support-engineer
@@ -184,10 +190,13 @@ production support	kind		support-engineer
 it support	kind		support-engineer
 service desk	kind		support-engineer
 help desk	kind		support-engineer
+escalation	kind		support-engineer
 it	kind	analyst	support-engineer
 solutions	kind	engineer	sales-engineer
 solution	kind	engineer	sales-engineer
 customer success	kind	engineer	sales-engineer
+customer engagement	kind	engineer	sales-engineer
+demo	kind	engineer	sales-engineer
 solutions	kind	architect	solutions-architect
 solution	kind	architect	solutions-architect
 enterprise	kind	architect	solutions-architect
@@ -196,6 +205,7 @@ systems	kind	architect	solutions-architect
 technical	kind	consultant	none
 implementation	kind	engineer	forward-deployed-engineer
 deployment	kind	engineer	forward-deployed-engineer
+deployed	kind	engineer	forward-deployed-engineer
 business	kind	analyst	business-analyst
 business systems	kind		business-analyst
 systems	kind	analyst	business-analyst

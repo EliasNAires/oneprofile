@@ -355,7 +355,7 @@ platform member of technical staff	38	platform-engineer	kind
 test developer	38	qa-engineer	kind	
 offensive security engineer	38	security-engineer	kind	
 enterprise solutions engineer	38	sales-engineer	kind	
-test development engineer	38	qa-engineer	kind	
+test development engineer	38	none	listed	
 systems engineering	38	none	bare	
 security platform engineer	38	security-engineer	kind	
 data solution architect	38	solutions-architect	kind	data-engineer
@@ -370,7 +370,7 @@ infrastructure architect	37	platform-engineer	kind
 cloud systems administrator	37	systems-administrator	kind	platform-engineer
 engineering team lead	36	none	unreached	
 reverse engineer	36	none	unreached	
-endpoint engineer	36	none	unreached	
+endpoint engineer	36	systems-administrator	kind	
 machine learning	36	machine-learning-engineer	area	
 product member of technical staff	36	none	unreached	
 network systems engineer	36	network-engineer	kind	
@@ -505,7 +505,7 @@ quantitative finance analyst	26	none	unreached
 software technical program manager	25	program-manager	job	
 infrastructure product manager	25	product-manager	job	
 ai member of technical staff	25	ai-engineer	kind	
-distinguished engineer	25	none	unreached	
+distinguished engineer	25	software-engineer	listed	
 partner solutions engineer	25	sales-engineer	override	
 ai evaluation engineer	25	ai-engineer	kind	
 gameplay programmer	25	none	unreached	
@@ -553,7 +553,7 @@ quant researcher	23	none	unreached
 data software engineer	23	data-engineer	kind	
 software verification engineer	23	software-engineer	kind	
 sap engineer	23	enterprise-platform-developer	override	
-deployed engineer	23	none	unreached	
+deployed engineer	23	forward-deployed-engineer	kind	
 logistics analyst	23	none	unreached	
 inference member of technical staff	22	none	unreached	
 manufacturing systems engineer	22	none	unreached	
@@ -743,7 +743,7 @@ robotics subject matter expert	17	none	unreached
 ai benchmark engineer	17	ai-engineer	kind	
 applied value engineer	17	none	unreached	
 student	17	none	stage	
-ai infrastructure dc design engineer	17	ai-engineer	kind	
+ai infrastructure dc design engineer	17	none	listed	
 technology support analyst	17	support-engineer	kind	
 etl developer	17	none	unreached	
 account solution engineer	17	sales-engineer	kind	
@@ -794,7 +794,7 @@ research data scientist	15	data-scientist	kind	research-scientist
 it service desk analyst	15	support-engineer	kind	
 product marketing	15	none	unreached	
 ai data	15	none	unreached	
-desktop engineer	15	none	unreached	
+desktop engineer	15	systems-administrator	kind	
 enterprise solutions architect	15	solutions-architect	kind	
 ai integration engineer	15	software-engineer	kind	ai-engineer
 react native developer	15	mobile-engineer	kind	
@@ -865,7 +865,7 @@ ai data architect	14	data-engineer	kind	ai-engineer
 product engineering	14	none	unreached	
 digital architect	14	none	unreached	
 product line	14	none	unreached	
-ai devops engineer	14	platform-engineer	kind	ai-engineer
+ai devops engineer	14	ai-engineer	listed	
 genai developer	14	ai-engineer	kind	
 release train engineer	14	none	unreached	
 cloud infrastructure architect	14	platform-engineer	kind	
@@ -1036,7 +1036,7 @@ systems technical consultant	11	none	kind
 offensive security	11	none	unreached	
 detection response engineer	11	security-engineer	kind	
 integration	11	software-engineer	area	
-desktop support engineer	11	support-engineer	kind	
+desktop support engineer	11	support-engineer	kind	systems-administrator
 it security specialist	11	security-engineer	kind	systems-administrator
 machine learning performance engineer	11	machine-learning-engineer	kind	
 program	11	none	unreached	
@@ -1090,7 +1090,7 @@ frontend team lead	11	none	unreached
 developer experience product manager	11	product-manager	job	
 quantitative scientist	11	none	unreached	
 channel solution engineer	11	sales-engineer	kind	
-cyber defense engineer	11	none	unreached	
+cyber defense engineer	11	security-engineer	kind	
 backend desarrollador	11	backend-engineer	kind	
 modeling and simulation engineer	11	robotics-engineer	kind	
 specialist sap architect	11	enterprise-platform-developer	override	
@@ -1117,13 +1117,13 @@ firmware validation engineer	10	embedded-engineer	kind
 it tech lead	10	systems-administrator	kind	
 client platform engineer	10	platform-engineer	kind	
 ui ux designer	10	none	unreached	
-network deployment engineer	10	forward-deployed-engineer	kind	network-engineer
+network deployment engineer	10	network-engineer	listed	
 experienced software engineer	10	software-engineer	kind	
 account solutions architect	10	solutions-architect	kind	
 cloud technical support engineer	10	support-engineer	kind	platform-engineer
 mission operations engineer	10	none	unreached	
 smart contract engineer	10	none	unreached	
-desktop support analyst	10	support-engineer	kind	
+desktop support analyst	10	support-engineer	kind	systems-administrator
 consulting architect	10	none	unreached	
 integration consultant	10	software-engineer	kind	
 gis industry solutions	10	none	unreached	
@@ -1161,7 +1161,7 @@ data strategy	10	none	unreached
 devops specialist	10	platform-engineer	kind	
 cloud and storage engineer	10	platform-engineer	kind	
 cloud systems architect	10	solutions-architect	kind	platform-engineer
-desktop workstation design engineer	10	none	unreached	
+desktop workstation design engineer	10	systems-administrator	kind	
 enterprise systems administrator	10	systems-administrator	kind	
 litigation graphics consultant	10	none	kind	
 litigation systems analyst	10	business-analyst	kind	
@@ -1212,7 +1212,7 @@ offensive security consultant	10	security-engineer	kind
 analytics insights	10	none	unreached	
 technology graduate	10	software-engineer	bare	
 salesforce solutions architect	10	enterprise-platform-developer	override	
-cloud database engineer	10	systems-administrator	kind	platform-engineer
+cloud database engineer	10	platform-engineer	listed	
 application development	10	none	unreached	
 expert systems engineer	10	none	unreached	
 operations	10	none	unreached	
@@ -1223,7 +1223,7 @@ mobile specialist	10	mobile-engineer	kind
 network and cybersecurity engineer	10	security-engineer	kind	network-engineer
 systems design engineer	10	none	unreached	
 quantitative masters internship	10	none	unreached	
-cyber defense analyst	10	none	unreached	
+cyber defense analyst	10	security-analyst	kind	
 flight simulation software engineer	10	robotics-engineer	kind	embedded-engineer
 games systems engineer	10	none	unreached	
 software technical	10	none	unreached	
@@ -1253,7 +1253,7 @@ automated test engineer	9	qa-engineer	kind
 it service desk	9	none	unreached	
 data product engineer	9	full-stack-engineer	kind	data-engineer
 technical solutions	9	none	unreached	
-endpoint security engineer	9	security-engineer	kind	
+endpoint security engineer	9	security-engineer	kind	systems-administrator
 quantitative trading analyst	9	none	unreached	
 middleware engineer	9	none	unreached	
 ui programmer	9	none	unreached	
@@ -1278,14 +1278,14 @@ channel solutions engineer	9	sales-engineer	kind
 techops engineer	9	none	unreached	
 services engineer	9	none	unreached	
 ai red team engineer	9	ai-engineer	kind	
-business intelligence data engineer	9	data-engineer	kind	data-analyst
+business intelligence data engineer	9	data-analyst	listed	
 microsoft engineer	9	none	unreached	
-cyber defense	9	none	unreached	
+cyber defense	9	security-engineer	area	
 core software engineer	9	software-engineer	kind	
 team leader	9	none	unreached	
 product developer	9	none	unreached	
 cloud site reliability engineer	9	platform-engineer	kind	
-erp engineer	9	none	unreached	
+erp engineer	9	enterprise-platform-developer	override	
 data information architect	9	data-engineer	kind	
 ai machine learning platform engineer	9	machine-learning-engineer	kind	
 software specialist	9	software-engineer	kind	
@@ -1353,7 +1353,7 @@ gtm systems engineer	8	none	kind
 simulation infrastructure engineer	8	robotics-engineer	kind	
 marketing technology	8	none	unreached	
 software project manager	8	program-manager	job	
-erp solution architect	8	solutions-architect	kind	
+erp solution architect	8	enterprise-platform-developer	override	
 software engineering team lead	8	none	unreached	
 systems integration test engineer	8	qa-engineer	kind	software-engineer
 account solution architect	8	solutions-architect	kind	
@@ -1375,7 +1375,7 @@ forward deployed data scientist	8	data-scientist	kind
 security developer	8	security-engineer	kind	
 machine learning data scientist	8	data-scientist	kind	research-scientist
 strategic finance analyst	8	none	unreached	
-device engineer	8	none	unreached	
+device engineer	8	embedded-engineer	listed	
 ai qa engineer	8	qa-engineer	kind	ai-engineer
 tester	8	none	unreached	
 security solutions engineer	8	sales-engineer	kind	security-engineer
@@ -1560,7 +1560,7 @@ ai product analyst	7	data-analyst	kind	ai-engineer
 search engineer	7	none	unreached	
 operations research analyst	7	research-scientist	kind	
 firmware architect	7	embedded-engineer	kind	
-ai developer experience engineer	7	platform-engineer	kind	ai-engineer
+ai developer experience engineer	7	ai-engineer	listed	
 network product manager	7	product-manager	job	
 manufacturing software engineer	7	software-engineer	kind	
 research program manager	7	program-manager	job	
@@ -1581,7 +1581,7 @@ genai platform engineer	7	ai-engineer	kind
 it applications analyst	7	support-engineer	kind	
 threat detection engineer	7	security-engineer	kind	
 customer architect	7	none	unreached	
-dataops engineer	7	none	unreached	
+dataops engineer	7	data-engineer	kind	
 partner development	7	none	unreached	
 partner solution architect	7	sales-engineer	override	
 technical implementation specialist	7	none	unreached	
@@ -1593,7 +1593,7 @@ ce solution architect	7	solutions-architect	kind
 ai technical architect	7	solutions-architect	kind	ai-engineer
 it support intern	7	support-engineer	area	
 control systems developer	7	none	unreached	
-escalation engineer	7	none	unreached	
+escalation engineer	7	support-engineer	kind	
 it sox	7	none	unreached	
 machine learning product manager	7	product-manager	job	
 web	7	frontend-engineer	area	
@@ -1669,7 +1669,7 @@ gpu software engineer	7	software-engineer	kind
 applied ai machine learning engineer	7	machine-learning-engineer	kind	
 technical product engineer	7	full-stack-engineer	kind	
 performance qa engineer	7	qa-engineer	kind	
-demo engineer	7	none	unreached	
+demo engineer	7	sales-engineer	kind	
 data technical architect	7	solutions-architect	kind	data-engineer
 pam engineer	7	none	unreached	
 cybersecurity engineering	7	security-engineer	kind	
@@ -1760,7 +1760,7 @@ sap advisory	7	none	unreached
 sap ps enterprise apps sap advisory	7	none	unreached	
 etic	7	none	unreached	
 robotics product specialist	7	robotics-engineer	kind	
-mission data systems design engineer	7	data-engineer	kind	
+mission data systems design engineer	7	none	listed	
 technical service desk analyst	7	support-engineer	kind	
 quantitative analytics specialist	7	none	unreached	
 it helpdesk specialist	6	systems-administrator	kind	
@@ -1803,7 +1803,7 @@ ot security engineer	6	security-engineer	kind
 security compliance	6	none	unreached	
 firewall engineer	6	none	unreached	
 low latency engineer	6	none	unreached	
-edge engineer	6	none	unreached	
+edge engineer	6	embedded-engineer	listed	
 cloud product marketing manager	6	none	unreached	
 enterprise engineer	6	none	unreached	
 quantitative trading intern	6	none	unreached	
@@ -1849,7 +1849,7 @@ data analytics consulting intern	6	none	unreached
 security intelligence analyst	6	security-analyst	kind	
 manufacturing engineering	6	none	unreached	
 networking product manager	6	product-manager	job	
-erp systems administrator	6	systems-administrator	kind	
+erp systems administrator	6	enterprise-platform-developer	override	
 full stack platform engineer	6	full-stack-engineer	kind	
 network savvy cno developer	6	network-engineer	kind	
 end user support engineer	6	support-engineer	kind	
@@ -1942,7 +1942,7 @@ distinguished software engineer	6	software-engineer	kind
 ai delivery manager	6	program-manager	job	
 data program manager	6	program-manager	job	
 enterprise application engineer	6	none	unreached	
-network devops engineer	6	platform-engineer	kind	network-engineer
+network devops engineer	6	network-engineer	listed	
 ai application architect	6	ai-engineer	kind	
 data management and business intelligence executive	6	none	unreached	
 detection analyst	6	security-engineer	kind	
@@ -2012,7 +2012,7 @@ data management analyst	6	data-analyst	kind
 data graduate	6	none	listed	
 solutions developer	6	none	unreached	
 cybersecurity systems administrator	6	systems-administrator	kind	security-engineer
-customer engagement engineer	6	none	unreached	
+customer engagement engineer	6	sales-engineer	kind	
 automated logic bas bms field engineer	6	none	unreached	
 development operations engineer	6	none	unreached	
 security consulting engineer	6	security-engineer	kind	
@@ -2064,7 +2064,7 @@ validation solution engineer	6	sales-engineer	kind
 storage specialist	6	platform-engineer	kind	
 networking resident engineer	6	network-engineer	kind	
 federal government technical service advisor	6	none	unreached	
-storage data engineer	6	data-engineer	kind	platform-engineer
+storage data engineer	6	platform-engineer	listed	
 hpc technical consultant	6	none	kind	
 network software test engineer	6	qa-engineer	kind	network-engineer
 storage presales architect	6	sales-engineer	override	
@@ -2117,7 +2117,7 @@ martech engineer	5	none	unreached
 fraud analytics	5	none	unreached	
 cloud team lead	5	none	unreached	
 finance data analyst	5	data-analyst	kind	
-dataflow engineer	5	none	unreached	
+dataflow engineer	5	data-engineer	listed	
 integration product manager	5	product-manager	job	
 research engineering	5	research-scientist	kind	
 mobile ios engineer	5	mobile-engineer	kind	
@@ -2168,7 +2168,7 @@ detection platform engineer	5	security-engineer	kind
 data protection engineer	5	data-engineer	kind	
 technical operations	5	none	unreached	
 data centre engineer	5	data-engineer	kind	
-deployed ai engineer	5	ai-engineer	kind	
+deployed ai engineer	5	ai-engineer	kind	forward-deployed-engineer
 ai infra engineer	5	ai-engineer	kind	
 robotics platform engineer	5	robotics-engineer	kind	
 salesforce product manager	5	product-manager	job	
@@ -2201,7 +2201,7 @@ software machine learning engineer	5	machine-learning-engineer	kind
 npi technical program manager	5	program-manager	job	
 it field support specialist	5	support-engineer	kind	systems-administrator
 data science and analytics	5	none	unreached	
-embedded systems emulation engineer	5	embedded-engineer	kind	
+embedded systems emulation engineer	5	security-engineer	listed	
 experienced full stack engineer	5	full-stack-engineer	kind	
 ai automation developer	5	none	kind	ai-engineer
 platforms technology consultant	5	none	unreached	
@@ -2386,7 +2386,7 @@ secdevops engineer	5	none	unreached
 palantir data engineer	5	data-engineer	kind	
 business data	5	none	unreached	
 infrastructure technical lead	5	platform-engineer	kind	
-erp analyst	5	none	unreached	
+erp analyst	5	enterprise-platform-developer	override	
 software product management	5	none	unreached	
 quality development engineer	5	qa-engineer	kind	
 avionics embedded software engineer	5	embedded-engineer	kind	

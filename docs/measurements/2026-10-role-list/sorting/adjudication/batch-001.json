@@ -1,0 +1,86 @@
+[
+ {
+  "id": "1",
+  "text": "normalized title: software and data engineer\nraw titles: Mid Level Software and Data Engineer | Director, Software and Data Engineering | Senior Software and Data Engineer\nvacancies: 5\ndistinctive skills (evidence, never the reason): palantir-foundry, azure-devops, net, c-sharp, jira, dns, git, javascript",
+  "a": "data-engineer",
+  "b": "none"
+ },
+ {
+  "id": "2",
+  "text": "normalized title: business intelligence data engineer\nraw titles: BI Data Engineer (w/m/d) | BI Data Engineer | Hybrid BI & Azure Data Engineer\nvacancies: 9\ndistinctive skills (evidence, never the reason): sql-server-management-studio, qlikview, amazon-quicksight, dataform, google-cloud-secret-manager, lookml, google-cloud-spanner, visual-basic",
+  "a": "data-analyst",
+  "b": "data-engineer"
+ },
+ {
+  "id": "3",
+  "text": "normalized title: storage data engineer\nraw titles: Principal Engineer, Storage Data Science and Analytics | Senior Principal Engineer \u2013 Storage Data path  -  HPE Alletra MP X10000  (Object Storage product development)\nvacancies: 6\ndistinctive skills (evidence, never the reason): tcp, apache-spark, c, apache-kafka, golang, cpp, kubernetes, python",
+  "a": "platform-engineer",
+  "b": "data-engineer"
+ },
+ {
+  "id": "4",
+  "text": "normalized title: cloud database engineer\nraw titles: Senior Specialist, Cloud Database Engineer | Senior Cloud Database Engineer | Cloud Database Engineer\nvacancies: 10\ndistinctive skills (evidence, never the reason): percona, spacelift, amazon-elasticache, amazon-aurora, azure-cosmos-db, azure-monitor, azure-sql-database, openstack",
+  "a": "systems-administrator",
+  "b": "platform-engineer"
+ },
+ {
+  "id": "5",
+  "text": "normalized title: dataflow engineer\nraw titles: Senior Dataflow Engineer III  with TS/SCI + Poly | 394 - Senior Dataflow Engineer | Dataflow Engineer (Senior) - FULLY CLEARED with POLYGRAPH REQUIRED\nvacancies: 5\ndistinctive skills (evidence, never the reason): apache-nifi, google-cloud-dataflow, kibana, regex, elasticsearch, red-hat-enterprise-linux, apache-kafka, splunk",
+  "a": "none",
+  "b": "data-engineer"
+ },
+ {
+  "id": "6",
+  "text": "normalized title: dataops engineer\nraw titles: Senior DataOps Engineer | DataOps Engineer | Staff DataOps Engineer (x/f/m)\nvacancies: 7\ndistinctive skills (evidence, never the reason): amazon-macie, erwin-data-modeler, amazon-kinesis-data-firehose, aws-glue-data-catalog, core-data, coralogix, databricks-asset-bundles, amazon-documentdb",
+  "a": "data-engineer",
+  "b": "none"
+ },
+ {
+  "id": "7",
+  "text": "normalized title: cyber defense engineer\nraw titles: Cyber Defense Engineer | Senior Cyber Defense Engineer | Principal Cyber Defense Engineer\nvacancies: 11\ndistinctive skills (evidence, never the reason): beyondtrust, kusto-query-language, mitre-att-ck, powershell, microsoft-entra-id, python, sql, aws",
+  "a": "none",
+  "b": "security-engineer"
+ },
+ {
+  "id": "8",
+  "text": "normalized title: demo engineer\nraw titles: Demo Engineer | Demo Engineer, EMEA | Sr. Demo Engineer\nvacancies: 7\ndistinctive skills (evidence, never the reason): amazon-bedrock-agents, aws-systems-manager, amazon-machine-image, replit, sailpoint, azure-ai-foundry, microsoft-copilot-studio, netsuite",
+  "a": "sales-engineer",
+  "b": "none"
+ },
+ {
+  "id": "9",
+  "text": "normalized title: deployed engineer\nraw titles: Deployed Engineer | Founding Deployed Engineer | Head of Deployed Engineering\nvacancies: 23\ndistinctive skills (evidence, never the reason): vanta, trl, langsmith, hugging-face-transformers, langgraph, langchain, javascript, google-cloud-platform",
+  "a": "none",
+  "b": "forward-deployed-engineer"
+ },
+ {
+  "id": "10",
+  "text": "normalized title: network deployment engineer\nraw titles: Deployment Engineer, Network | Network Deployment Engineer | Network Deployment Engineer - APJC\nvacancies: 10\ndistinctive skills (evidence, never the reason): cwdm, netmiko, rsvp-te, arista-eos, cumulus-linux, saltstack, jinja, ipmi",
+  "a": "forward-deployed-engineer",
+  "b": "network-engineer"
+ },
+ {
+  "id": "11",
+  "text": "normalized title: ai infrastructure dc design engineer\nraw titles: AI Infrastructure DC Design Engineer II | AI Infrastructure DC Design Engineer IV | AI Infrastructure DC Design Engineer III\nvacancies: 17\ndistinctive skills (evidence, never the reason): ",
+  "a": "none",
+  "b": "ai-engineer"
+ },
+ {
+  "id": "12",
+  "text": "normalized title: mission data systems design engineer\nraw titles: Mission Data Systems Design Engineer | Mission Data System Design Engineer | Mission Data Systems Design Engineer SME\nvacancies: 7\ndistinctive skills (evidence, never the reason): matlab, java, python",
+  "a": "none",
+  "b": "data-engineer"
+ },
+ {
+  "id": "13",
+  "text": "normalized title: desktop workstation design engineer\nraw titles: Desktop/Workstation Design Engineer\nvacancies: 10\ndistinctive skills (evidence, never the reason): bigfix, mdt, vbscript, microsoft-exchange, visual-basic, citrix-virtual-apps-and-desktops, microsoft-endpoint-configuration-manager, visual-basic-for-applications",
+  "a": "systems-administrator",
+  "b": "none"
+ },
+ {
+  "id": "14",
+  "text": "normalized title: desktop engineer\nraw titles: Desktop Engineer | Senior Desktop Engineer | Principal Desktop Engineer\nvacancies: 15\ndistinctive skills (evidence, never the reason): amazon-workspaces, vmware-horizon, flexera, azure-virtual-desktop, windows-api, windows-autopilot, microsoft-endpoint-configuration-manager, group-policy",
+  "a": "none",
+  "b": "systems-administrator"
+ }
+]

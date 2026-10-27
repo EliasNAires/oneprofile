@@ -1,0 +1,15 @@
+{
+  "15": {"verdict": "a", "clause": "Kinds of work left without a role: hardware and chip design and verification", "pattern": "hardware test instruments no role"},
+  "16": {"verdict": "b", "clause": "embedded-engineer: writes software that runs on or drives hardware, tested on the device", "pattern": "device head reads as embedded"},
+  "17": {"verdict": "b", "clause": "Rule 5: platform/infrastructure/software yield to a kind word in front that has a role (ai platform engineer -> AI engineer)", "pattern": "ai kind word redirects platform head"},
+  "18": {"verdict": "a", "clause": "Rule 4: a kind word in front of the head decides, whatever the head (network security engineer -> network engineer precedent)", "pattern": "network kind word overrides devops head"},
+  "19": {"verdict": "a", "clause": "software-engineer worked examples: tech lead, and the bare heads of rule 8", "pattern": "rank title bare engineer head"},
+  "20": {"verdict": "b", "clause": "embedded-engineer: writes software that runs on or drives hardware, tested on the device", "pattern": "device head reads as embedded"},
+  "21": {"verdict": "b", "clause": "security-engineer worked examples: security researcher, vulnerability researcher", "pattern": "reverse engineering toolkit signals security research"},
+  "22": {"verdict": "b", "clause": "systems-administrator: keeps an organization's own servers, databases, identities and devices running", "pattern": "endpoint device management tools"},
+  "23": {"verdict": "a", "clause": "sales-engineer: answers customers' technical questions and looks after accounts technically after the sale", "pattern": "customer engagement role title"},
+  "24": {"verdict": "a", "clause": "enterprise-platform-developer: configures, extends and integrates a vendor's business platform (SAP, ...)", "pattern": "ERP vendor platform word"},
+  "25": {"verdict": "b", "clause": "support-engineer: solves users' technical problems, takes tickets, troubleshoots, and escalates to engineering", "pattern": "escalation ticket handling role"},
+  "26": {"verdict": "b", "clause": "qa-engineer: tests software, writes test plans and automated tests, runs them in CI", "pattern": "software test automation tools"},
+  "27": {"verdict": "a", "clause": "Rule 5: platform/infrastructure/software yield to a kind word in front that has a role (ai platform engineer -> AI engineer); developer experience engineer listed under platform-engineer", "pattern": "ai kind word redirects platform head"}
+}
