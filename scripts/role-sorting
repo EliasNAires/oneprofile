@@ -1,0 +1,79 @@
+#!/usr/bin/env python3
+"""Runs the role rule over the exported normalized titles (#25, step 2), and compares it with labels.
+
+    scripts/role-sorting TITLES.tsv OUTPUT.tsv [LABELS.tsv ...]
+
+TITLES.tsv is what scripts/role-titles writes. The rule is run as the application ships it
+(RoleSorting.java, next to it, over src/main/resources/rolelist/). Writes one row per title to
+OUTPUT.tsv, as title, vacancies, role, reading and competing: the reading is which rule of
+docs/role-criterion.md gave the role (listed, job, override, kind, bare, area, or unreached), and
+competing names the roles other kind words of the title give, where they disagree with the one that
+decided.
+
+Prints how many titles and vacancies are placed, left without a role by a rule, unreached and
+contested. Each LABELS.tsv (title, role, reason; an agent's answers) is compared with the rule, and
+the titles they disagree on are printed.
+"""
+
+import collections
+import subprocess
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+
+
+def classpath():
+    file = REPO / "target" / "classpath.txt"
+    subprocess.run([str(REPO / "mvnw"), "-q", "-f", str(REPO / "pom.xml"), "compile", "dependency:build-classpath",
+                    f"-Dmdep.outputFile={file}"], check=True)
+    return f"{REPO / 'target' / 'classes'}:{file.read_text().strip()}"
+
+
+def rows(path):
+    with open(path, encoding="utf-8") as tsv:
+        header = tsv.readline().rstrip("\n").split("\t")
+        return [dict(zip(header, line.rstrip("\n").split("\t"))) for line in tsv if line.strip()]
+
+
+def main():
+    if len(sys.argv) < 3:
+        sys.exit(__doc__)
+    titles = rows(sys.argv[1])
+    run = subprocess.run(["java", "-cp", classpath(), str(REPO / "scripts" / "RoleSorting.java")],
+                         input="".join(t["title"] + "\n" for t in titles), capture_output=True, text=True,
+                         encoding="utf-8", check=True)
+    read = {}
+    for line in run.stdout.splitlines():
+        title, role, reading, competing = line.split("\t")
+        read[title] = (role, reading, competing)
+    with open(sys.argv[2], "w", encoding="utf-8") as out:
+        out.write("title\tvacancies\trole\treading\tcompeting\n")
+        for t in titles:
+            out.write("\t".join([t["title"], t["vacancies"], *read[t["title"]]]) + "\n")
+
+    groups = collections.Counter()
+    vacancies = collections.Counter()
+    total = sum(int(t["vacancies"]) for t in titles)
+    for t in titles:
+        role, reading, competing = read[t["title"]]
+        group = "unreached" if reading == "unreached" else ("no role" if role == "none" else "placed")
+        for g in [group] + (["contested"] if competing else []):
+            groups[g] += 1
+            vacancies[g] += int(t["vacancies"])
+    print(f"{len(titles)} titles, {total} vacancies")
+    for g in ["placed", "no role", "unreached", "contested"]:
+        print(f"  {g:10} {groups[g]:5} titles  {vacancies[g]:6} vacancies  {vacancies[g] / total:6.1%}")
+
+    for path in sys.argv[3:]:
+        labels = [l for l in rows(path) if l["title"] in read]
+        differing = [l for l in labels if l["role"] != read[l["title"]][0]]
+        print(f"\n{path}: {len(labels) - len(differing)} of {len(labels)} agree")
+        for l in differing:
+            role, reading, competing = read[l["title"]]
+            print(f"  {l['title']}: rule {role} ({reading}{', ' + competing if competing else ''}),"
+                  f" label {l['role']}: {l['reason']}")
+
+
+if __name__ == "__main__":
+    main()

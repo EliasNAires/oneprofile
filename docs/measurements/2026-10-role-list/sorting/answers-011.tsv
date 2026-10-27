@@ -1,0 +1,98 @@
+title	role	reason
+data engineer	data-engineer	rule 3/8: worked example, builds pipelines and warehouses
+ai data engineer	data-engineer	worked example under data-engineer: ai data engineer
+analytics data engineer	data-engineer	same family as data engineer, analytics qualifier doesn't change the pipeline work
+software and data engineer	none	doubt: names two heads (software and data), rule 1/9, no single kind of work
+big data engineer	data-engineer	big-data pipeline tooling (hadoop, spark, airflow), same family as data engineer
+cloud data engineer	data-engineer	cloud qualifier on data engineer, pipeline tooling in the cloud
+customer data engineer	data-engineer	rule 4: data engineering work (airflow, spark) for a customer-data domain
+forward deployed data engineer	forward-deployed-engineer	forward deployed prefix dominates, like forward deployed ai engineer example
+enterprise data engineer	data-engineer	pipeline tooling (databricks, dbt, spark), enterprise is not a sale or kind word
+business intelligence data engineer	data-analyst	worked example: business intelligence engineer/developer goes to data analyst
+it data engineer	data-engineer	pipeline tooling (hadoop, spark, dbt, power bi); it qualifier doesn't change the work
+machine learning data engineer	data-engineer	builds data pipelines (pyarrow, duckdb, streaming), not model training
+ai machine learning data engineer	data-engineer	data pipeline tooling (glue, rds, pyspark, snowflake)
+palantir data engineer	data-engineer	vendor qualifier over data engineer, pipeline/foundry tooling
+platform data engineer	data-engineer	reordering of data platform engineer worked example
+robotics data engineer	data-engineer	data pipeline tooling in a robotics domain, same as data engineer family
+snowflake data engineer	data-engineer	vendor tool qualifier over data engineer
+full stack data engineer	data-engineer	doubt: not a listed example; analogous to full stack ai engineer sending the domain word to its role
+storage data engineer	platform-engineer	doubt: raw titles are object storage product work (HPE Alletra), reads as storage engineer not data pipelines
+database engineer	systems-administrator	rule 4/worked example: database engineer listed under systems administrator
+cloud database engineer	platform-engineer	doubt: cloud-managed database operations (rds, aurora, cosmos db), closer to database reliability/platform work than on-prem admin
+dataflow engineer	data-engineer	doubt: title names data-flow pipeline work; raw titles' clearance and splunk/kibana skills hint at intel work instead
+dataops engineer	data-engineer	ETL/pipeline tooling (glue data catalog, kinesis, documentdb)
+cyber defense engineer	security-engineer	builds defences, same as the detection engineer worked example
+delivery engineer	none	doubt: bare "delivery" names no single kind of work, rule 9
+ai delivery engineer	ai-engineer	rule 4: ai kind word decides; builds on foundation models (vertex ai, hugging face)
+mission delivery engineer	none	rule 9: "mission delivery" is a generic government-contractor title, no single kind of work
+demo engineer	sales-engineer	runs demos, matches the sales engineer description directly
+deployed engineer	forward-deployed-engineer	doubt: short form of forward deployed engineer; ai tooling (langchain, langsmith) matches that pattern
+forward deployed engineer	forward-deployed-engineer	rule 3: worked example
+deployment engineer	forward-deployed-engineer	worked example under forward deployed engineer
+ai deployment engineer	forward-deployed-engineer	doubt: deployment engineer head maps here explicitly; ai qualifies the deployment domain rather than redirecting to ai engineer
+forward deployment engineer	forward-deployed-engineer	variant of forward deployed engineer
+network deployment engineer	network-engineer	rule 4: network kind word decides, network automation tooling
+design engineer	none	rule 9: worked example, UI and chip design engineers share it
+automation design engineer	none	rule 9: automation engineer has no role, design engineer has no role
+ai infrastructure dc design engineer	none	data-center physical/hardware design, no role covers it
+logic design engineer	none	chip design, under 1% kind with no role
+network design engineer	network-engineer	rule 4: network kind word decides
+product design engineer	none	UI design engineer variant per the design engineer worked example, rule 9
+soc design engineer	none	system-on-chip design, under 1% kind with no role
+software design engineer	software-engineer	doubt: classic generic developer title (historically synonymous with software engineer); nearest neighbours weak
+systems design engineer	none	rule 9: systems engineer variant, no single kind of work
+mission data systems design engineer	none	defence systems/algorithm engineering, no role covers it
+web design engineer	frontend-engineer	doubt: web kind word narrows design engineer to frontend work (brand/web, not UI design engineer generally)
+desktop workstation design engineer	systems-administrator	endpoint/device management tooling (bigfix, mdt, endpoint configuration manager)
+service desk engineer	support-engineer	service desk/ticket work, same family as service desk analyst
+it service desk engineer	support-engineer	service desk/ticket work
+desktop engineer	systems-administrator	runs the organization's device fleet (workspaces, autopilot, endpoint config)
+detection engineer	security-engineer	rule 4/worked example: builds the detections analysts run
+security detection engineer	security-engineer	same pattern as detection engineer
+threat detection engineer	security-engineer	same pattern as detection engineer
+networking dev engineer	network-engineer	rule 4/embedded-engineer note: networking names networks even when the day is device software
+software dev engineer	software-engineer	doubt: same family as software development engineer, rule 8; skills (opsgenie, pagerduty) are noisy for n=5
+development engineer	software-engineer	doubt: generic bare developer title, extension of rule 8
+software application development engineer	software-engineer	generic full-stack/software developer title; career-stage words (graduate, intern) read past, rule 7
+backend development engineer	backend-engineer	rule 4: backend kind word decides
+product development engineer	none	hardware/mechanical product R&D (surgical robotics, AR hardware), not software
+rotational program development engineer	none	rule 9: rotational program spans many engineering areas
+quality development engineer	qa-engineer	rule 4: quality kind word decides, QA automation tooling (cypress, pytest, playwright)
+software development engineer	software-engineer	rule 8: bare head, direct match
+cloud software development engineer	software-engineer	worked example: cloud developer builds cloud software rather than infrastructure
+systems software development engineer	embedded-engineer	worked example: systems software engineer
+full stack development engineer	full-stack-engineer	rule 4: full stack kind word decides
+systems development engineer	none	rule 9: systems engineer variant, no single kind of work
+technology development engineer	none	rule 9: chip packaging/hardware process engineering (hybrid bonding), not software
+test development engineer	none	hardware test engineering (labview, teststand, keysight), not software QA
+tools development engineer	none	doubt: generic "tools" head, low-confidence match, hardware-level skills
+infrastructure devex engineer	platform-engineer	worked example: developer experience engineer; infrastructure reinforces, doesn't redirect
+device engineer	embedded-engineer	embedded Linux/RTOS tooling (threadx, buildroot, openwrt)
+devops engineer	platform-engineer	rule: devops is bundled with platform engineer
+ai devops engineer	ai-engineer	doubt: analogy to ai platform engineer -> AI engineer, since devops is bundled with platform
+cloud devops engineer	platform-engineer	rule: devops/cloud bundled with platform engineer explicitly
+network devops engineer	network-engineer	rule 4: network kind word decides, network automation tooling
+site reliability devops engineer	platform-engineer	rule: site reliability/devops bundled with platform engineer explicitly
+devrel engineer	none	developer relations, listed kind with no role
+devsecops engineer	platform-engineer	worked example: devsecops is pipelines with security scanning
+cloud devsecops engineer	platform-engineer	same as devsecops engineer, cloud qualifier
+digital engineer	none	rule 9: "digital" names no single kind of work (sysml, verilog, matlab tooling)
+distinguished engineer	software-engineer	rule 7/8: distinguished is a rank, bare engineer falls to software engineer
+ai distinguished engineer	ai-engineer	rule 4: ai kind word decides, rank read past; LLM/RAG tooling (qdrant, weaviate, mistral)
+dsp engineer	none	doubt: signal-processing/chip algorithm engineering, no role description covers it
+edge engineer	embedded-engineer	doubt: edge-compute hardware (jetson, tegra), matches "runs on or drives hardware"
+embedded engineer	embedded-engineer	rule 3/8: worked example
+emulation engineer	none	chip emulation/verification tooling (veloce, palladium), under 1% kind with no role
+embedded systems emulation engineer	security-engineer	doubt: raw titles and skills (ida pro, ghidra, qemu) are reverse-engineering/vulnerability research, not chip emulation
+ai enablement engineer	ai-engineer	doubt: builds AI tooling/agentic workflows (mcp, claude code, cursor) for teams, close to the excluded developer-relations kind
+endpoint engineer	systems-administrator	runs the organization's device fleet (same as desktop/endpoint tooling)
+customer engagement engineer	sales-engineer	doubt: title names customer-facing work matching sales engineer; skills (chip verification tools) are an odd mismatch
+enterprise engineer	none	doubt: rule 9, "enterprise" alone names no platform or single kind of work
+erp engineer	enterprise-platform-developer	rule 4: SAP-related ERP integration tooling (sap pi, sap integration suite, edifact)
+escalation engineer	support-engineer	escalated support tickets, matches support engineer description
+ai evaluation engineer	ai-engineer	evaluation is explicit day-to-day of ai engineer (langsmith, deepeval, arize phoenix)
+test and evaluation engineer	none	rule 9: defence "test and evaluation" spans many kinds of work
+design evaluation engineer	none	doubt: hardware design validation/verification work despite embedded-like skills (arduino, uart, i2c)
+developer experience engineer	platform-engineer	rule: worked example
+ai developer experience engineer	ai-engineer	doubt: rule 4 applied literally (ai kind word decides) though day-to-day reads more like platform/DX work

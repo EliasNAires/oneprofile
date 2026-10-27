@@ -1,0 +1,202 @@
+phrase	use	head	role
+engineer	head		software-engineer
+engineering	head		software-engineer
+developer	head		software-engineer
+development engineer	head		software-engineer
+technology	head		software-engineer
+member of technical staff	head		software-engineer
+tech lead	head		software-engineer
+technical lead	head		software-engineer
+ingénieur	head		software-engineer
+ingenieur	head		software-engineer
+ingeniero	head		software-engineer
+ingeniera	head		software-engineer
+engenheiro	head		software-engineer
+engenheira	head		software-engineer
+développeur	head		software-engineer
+développeuse	head		software-engineer
+desarrollador	head		software-engineer
+desarrolladora	head		software-engineer
+desenvolvedor	head		software-engineer
+desenvolvedora	head		software-engineer
+architect	head		solutions-architect
+administrator	head		systems-administrator
+analyst	head		none
+analista	head		none
+consultant	head		none
+specialist	head		none
+scientist	head		none
+cientista	head		none
+tester	head		
+systems engineer	head		none
+systems engineering	head		none
+automation engineer	head		none
+design engineer	head		none
+verification engineer	head		none
+design verification engineer	head		none
+researcher	head		
+technician	head		
+product manager	job		product-manager
+product owner	job		product-manager
+program manager	job		program-manager
+programme manager	job		program-manager
+project manager	job		program-manager
+delivery manager	job		program-manager
+scrum master	job		program-manager
+sdet	job		qa-engineer
+account manager	job		none
+developer advocate	job		none
+writer	job		none
+intern	stage		
+internship	stage		
+trainee	stage		
+graduate	stage		
+apprentice	stage		
+student	stage		
+stage	stage		
+stagiaire	stage		
+platform	yielding		platform-engineer
+infrastructure	yielding		platform-engineer
+infra	yielding		platform-engineer
+software	yielding		software-engineer
+software development	yielding		software-engineer
+presales	override	engineer|architect	sales-engineer
+sales	override	engineer|architect	sales-engineer
+partner	override	engineer|architect	sales-engineer
+forward deployed	override	engineer	forward-deployed-engineer
+salesforce	override		enterprise-platform-developer
+servicenow	override		enterprise-platform-developer
+sap	override		enterprise-platform-developer
+workday	override		enterprise-platform-developer
+quantitative	kind	developer	software-engineer
+quant	kind	developer	software-engineer
+integration	kind		software-engineer
+integrations	kind		software-engineer
+cloud	kind	developer	software-engineer
+cloud	kind	development engineer	software-engineer
+game	kind		none
+gameplay	kind		none
+graphics	kind		none
+developer relations	kind		none
+devrel	kind		none
+gtm	kind		none
+go to market	kind		none
+blockchain	kind		none
+hardware	kind		none
+chip	kind		none
+backend	kind		backend-engineer
+distributed systems	kind		backend-engineer
+frontend	kind		frontend-engineer
+web	kind		frontend-engineer
+ui	kind		frontend-engineer
+full stack	kind		full-stack-engineer
+product	kind	engineer	full-stack-engineer
+mobile	kind		mobile-engineer
+android	kind		mobile-engineer
+ios	kind		mobile-engineer
+react native	kind		mobile-engineer
+flutter	kind		mobile-engineer
+embedded	kind		embedded-engineer
+embedded software	kind		embedded-engineer
+embedded systems	kind		embedded-engineer
+firmware	kind		embedded-engineer
+systems software	kind		embedded-engineer
+flight	kind		embedded-engineer
+robotics	kind		robotics-engineer
+autonomy	kind		robotics-engineer
+perception	kind		robotics-engineer
+simulation	kind		robotics-engineer
+devops	kind		platform-engineer
+site reliability	kind		platform-engineer
+cloud	kind		platform-engineer
+cloud infrastructure	kind		platform-engineer
+devsecops	kind		platform-engineer
+storage	kind		platform-engineer
+observability	kind		platform-engineer
+database reliability	kind		platform-engineer
+developer experience	kind		platform-engineer
+developer productivity	kind		platform-engineer
+developer platform	kind		platform-engineer
+security	kind		security-engineer
+cybersecurity	kind		security-engineer
+application security	kind		security-engineer
+product security	kind		security-engineer
+cloud security	kind		security-engineer
+identity	kind		security-engineer
+iam	kind		security-engineer
+detection	kind		security-engineer
+security operations	kind		security-engineer
+penetration	kind		security-engineer
+vulnerability	kind		security-engineer
+information security	kind		security-engineer
+network security	kind		network-engineer
+security	kind	analyst	security-analyst
+cybersecurity	kind	analyst	security-analyst
+information security	kind	analyst	security-analyst
+soc	kind	analyst	security-analyst
+security operations	kind	analyst	security-analyst
+incident response	kind	analyst	security-analyst
+threat intelligence	kind	analyst	security-analyst
+exploitation	kind	analyst	security-analyst
+data	kind		data-engineer
+analytics	kind	engineer	data-engineer
+data platform	kind		data-engineer
+data infrastructure	kind		data-engineer
+database	kind	developer	data-engineer
+data	kind	analyst	data-analyst
+analytics	kind	analyst	data-analyst
+product	kind	analyst	data-analyst
+business intelligence	kind		data-analyst
+financial	kind		none
+data	kind	scientist	data-scientist
+data science	kind		data-scientist
+quantitative	kind	researcher	data-scientist
+machine learning	kind		machine-learning-engineer
+ai machine learning	kind		machine-learning-engineer
+mlops	kind		machine-learning-engineer
+computer vision	kind		machine-learning-engineer
+applied	kind	scientist	machine-learning-engineer
+ai	kind		ai-engineer
+applied ai	kind		ai-engineer
+agentic ai	kind		ai-engineer
+genai	kind		ai-engineer
+research	kind		research-scientist
+machine learning	kind	scientist	research-scientist
+ai	kind	scientist	research-scientist
+ux	kind		none
+qa	kind		qa-engineer
+test	kind		qa-engineer
+qa automation	kind		qa-engineer
+quality	kind		qa-engineer
+test automation	kind		qa-engineer
+automation	kind		none
+systems	kind	administrator	systems-administrator
+it systems	kind		systems-administrator
+it	kind		systems-administrator
+database	kind		systems-administrator
+network	kind		network-engineer
+networking	kind		network-engineer
+support	kind		support-engineer
+technical support	kind		support-engineer
+product support	kind		support-engineer
+application support	kind		support-engineer
+production support	kind		support-engineer
+it support	kind		support-engineer
+service desk	kind		support-engineer
+help desk	kind		support-engineer
+it	kind	analyst	support-engineer
+solutions	kind	engineer	sales-engineer
+solution	kind	engineer	sales-engineer
+customer success	kind	engineer	sales-engineer
+solutions	kind	architect	solutions-architect
+solution	kind	architect	solutions-architect
+enterprise	kind	architect	solutions-architect
+technical	kind	architect	solutions-architect
+systems	kind	architect	solutions-architect
+technical	kind	consultant	none
+implementation	kind	engineer	forward-deployed-engineer
+deployment	kind	engineer	forward-deployed-engineer
+business	kind	analyst	business-analyst
+business systems	kind		business-analyst
+systems	kind	analyst	business-analyst
+functional	kind	analyst	business-analyst
