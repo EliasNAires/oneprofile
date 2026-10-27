@@ -195,7 +195,10 @@ carries one. Resolving them is left to §6.1, where the body's years-of-experien
 evidence rather than assumption.
 
 **Work mode**, one of remote, hybrid or onsite (#86). The location text decides where it names a
-mode; otherwise the work-mode field Ashby and Lever publish decides; otherwise the title.
+mode; otherwise the work-mode field Ashby, Lever and Workday publish decides; otherwise the title.
+The description is not read before the launch (decided 2026-10-27): it would give most of Workday
+a mode, but its bare words often name the company's culture or a benefit, not the vacancy's
+mode, which likely needs a rule loop (#98).
 Where the location and the field disagree, about 170 vacancies of the subset, the location was
 usually the right one. Null means "not declared" and never "onsite". There is no `FULLY_REMOTE`
 value; work mode and declared location are separate (ADR-0004).

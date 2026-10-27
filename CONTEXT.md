@@ -297,9 +297,9 @@ _Avoid_: annotator, judge, oracle, reviewer
 **Work Mode**:
 Where the work is performed, as declared by the vacancy: remote, hybrid or onsite.
 Undeclared is its own answer and never means onsite.
-`workplace_type` is Ashby's and Lever's own field, held as each writes it; the work mode is the
-fact normalization derives, for which the location text is the first evidence and that field the
-second (ADR-0021, #86).
+`workplace_type` is Ashby's and Lever's own field and `remoteType` Workday's, held as each writes
+it; the work mode is the fact normalization derives, for which the location text is the first
+evidence and that field the second (ADR-0021, #86).
 _Avoid_: modality, workplace type, location type, arrangement
 
 **Declared Location**:
