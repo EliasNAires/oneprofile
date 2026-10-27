@@ -1,6 +1,6 @@
 # A role is read from the title, against a curated list
 
-Status: accepted (amended four times on 2026-10-26)
+Status: accepted (amended five times on 2026-10-26)
 
 The Finder filters by role and builds a landing page for each one, and the Explorer charts by
 role. So a role has to be a short, stable list of values. Over the 76,854 vacancies of the
@@ -196,3 +196,18 @@ Decided with Elias after a review of #25's method by an agent outside the projec
   reported; low agreement between two roles says their edge is badly drawn. This replaces "there is
   no labelled sample" above, and with it the list review as the only measurement.
 
+
+## Decided later on 2026-10-26: every kind of work in the subset, and the breakdown as it is
+
+Decided by Elias in #25.
+
+- **Every kind of work the subset holds is a candidate role, not only work that writes code.** The
+  subset is what `docs/engineering-role-criterion.md` admits: a role that writes code (Q2), works
+  on engineer-facing artifacts (Q3), or that a software background alone opens (Q4). A product
+  manager, a data analyst, a sales engineer or a scrum master is in it on the same footing as a
+  backend engineer, and gets a role of its own where its kind of work clears about 1% of the
+  subset, as any kind of work does.
+- **The role list is built on the title breakdown as it is.** #94's check
+  (`docs/measurements/2026-10-title-breakdown-check.md`) found faults in 26.1% of the normalized
+  titles carried by 5 to 11 vacancies. #92 does not become a loop first. Those faults are watched
+  through the sorting's inconsistency flags and the blind sample's precision by role.

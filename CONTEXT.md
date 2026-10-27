@@ -173,8 +173,9 @@ _Avoid_: role family, job family, category, position
 The about 25 curated roles, each with a slug that never changes and a description of its
 day-to-day work, and the normalized titles the role rule gets wrong. The rule gives a normalized
 title its role from its head and the words naming its kind of work; the list holds what the rule
-cannot. The roles are read off the most common normalized titles. Flat: no role holds another. The
-skills two titles' vacancies ask for are evidence, never the rule (ADR-0024).
+cannot. The roles are read off the most common normalized titles, and what each holds is written in
+`docs/role-criterion.md`. Flat: no role holds another. The skills two titles' vacancies ask for are
+evidence, never the rule (ADR-0024).
 _Avoid_: role taxonomy, title dictionary, families
 
 **Role Nearness**:

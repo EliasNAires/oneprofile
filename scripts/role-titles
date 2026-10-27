@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+"""Exports the normalized titles the role list is made from (#25, step 1). Reads the engineering subset's
+normalized titles, management levels, skills and raw titles from the development database.
+
+    scripts/role-titles OUTPUT.tsv [floor, default 5]
+
+Writes one row per normalized title carried by at least `floor` vacancies, most common first:
+
+- `title`, `vacancies`, and `share`, of the subset;
+- `levels`: the share of its vacancies at each management level, `none` for no level;
+- `skills`: its most distinctive skills, those named by at least 10% of its vacancies, by how many times
+  more often its vacancies name them than the subset's do;
+- `nearest`: the normalized titles nearest it by skills, with the similarity. The similarity is the
+  cosine of the share of their vacancies naming each skill, each skill weighted by how few vacancies of
+  the subset name it, so Python and SQL count less. It is evidence for the agents, never the rule;
+- `raw`: its three most common raw titles.
+
+Prints how many titles were written and what share of the subset they cover.
+"""
+
+import collections
+import math
+import subprocess
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+
+# A skill named by fewer of a title's vacancies than this says little about the title.
+SKILL_SHARE = 0.10
+SKILLS_SHOWN = 8
+NEAREST_SHOWN = 5
+# Each title's skill vector is cut to its heaviest components before the nearness is computed, which
+# keeps the pairwise pass short and changes only the far decimals.
+VECTOR_SIZE = 60
+RAW_SHOWN = 3
+
+
+def psql(query):
+    return subprocess.run(
+        ["docker", "compose", "--project-directory", str(REPO), "exec", "-T", "postgres", "psql", "-v",
+         "ON_ERROR_STOP=1", "-U", "oneprofile", "-d", "oneprofile", "-AtF", "\t", "-c", query],
+        check=True, capture_output=True, text=True, encoding="utf-8").stdout.splitlines()
+
+
+if len(sys.argv) not in (2, 3):
+    sys.exit(__doc__.strip())
+output = Path(sys.argv[1])
+floor = int(sys.argv[2]) if len(sys.argv) == 3 else 5
+
+vacancies = {}
+for line in psql("select n.id, coalesce(n.management_level, ''), array_to_string(n.normalized_titles, '|'),"
+                 " replace(replace(v.title, E'\\t', ' '), E'\\n', ' ') from normalized_vacancy n"
+                 " join vacancy v on v.id = n.vacancy_id where n.classification_state = 'IN'"):
+    id_, level, titles, raw = line.split("\t")
+    vacancies[id_] = (level.lower() or "none", [title for title in titles.split("|") if title], raw.strip())
+skills = collections.defaultdict(set)
+for line in psql("select s.normalized_vacancy_id, s.skill_id from vacancy_skill s join normalized_vacancy n"
+                 " on n.id = s.normalized_vacancy_id where n.classification_state = 'IN'"):
+    id_, skill = line.split("\t")
+    skills[id_].add(skill)
+
+total = len(vacancies)
+count = collections.Counter()
+levels = collections.defaultdict(collections.Counter)
+profile = collections.defaultdict(collections.Counter)
+raws = collections.defaultdict(collections.Counter)
+subset_skills = collections.Counter()
+for id_, (level, titles, raw) in vacancies.items():
+    subset_skills.update(skills[id_])
+    for title in titles:
+        count[title] += 1
+        levels[title][level] += 1
+        profile[title].update(skills[id_])
+        raws[title][raw] += 1
+
+chosen = [title for title, n in count.most_common() if n >= floor]
+idf = {skill: math.log(total / n) for skill, n in subset_skills.items()}
+
+
+def vector(title):
+    weights = {skill: n / count[title] * idf[skill] for skill, n in profile[title].items()}
+    heaviest = sorted(weights.items(), key=lambda item: -item[1])[:VECTOR_SIZE]
+    norm = math.sqrt(sum(w * w for _, w in heaviest))
+    return {skill: w / norm for skill, w in heaviest} if norm else {}
+
+
+vectors = {title: vector(title) for title in chosen}
+by_skill = collections.defaultdict(list)
+for title, weights in vectors.items():
+    for skill, w in weights.items():
+        by_skill[skill].append((title, w))
+
+
+def nearest(title):
+    dots = collections.Counter()
+    for skill, w in vectors[title].items():
+        for other, v in by_skill[skill]:
+            if other != title:
+                dots[other] += w * v
+    return dots.most_common(NEAREST_SHOWN)
+
+
+def distinctive(title):
+    shares = {skill: n / count[title] for skill, n in profile[title].items() if n / count[title] >= SKILL_SHARE}
+    lift = {skill: share / (subset_skills[skill] / total) for skill, share in shares.items()}
+    return sorted(lift, key=lambda skill: -lift[skill])[:SKILLS_SHOWN]
+
+
+with output.open("w", encoding="utf-8") as out:
+    out.write("title\tvacancies\tshare\tlevels\tskills\tnearest\traw\n")
+    for title in chosen:
+        level_shares = ", ".join(f"{level} {100 * n / count[title]:.0f}%" for level, n in levels[title].most_common())
+        near = ", ".join(f"{other} {score:.2f}" for other, score in nearest(title))
+        raw = " | ".join(raw for raw, _ in raws[title].most_common(RAW_SHOWN))
+        out.write(f"{title}\t{count[title]}\t{100 * count[title] / total:.2f}%\t{level_shares}\t"
+                  f"{', '.join(distinctive(title))}\t{near}\t{raw}\n")
+
+covered = sum(1 for _, titles, _ in vacancies.values() if set(titles) & set(chosen))
+print(f"{len(chosen)} normalized titles on at least {floor} vacancies, covering {covered} of {total} vacancies"
+      f" ({100 * covered / total:.1f}%) -> {output}")
