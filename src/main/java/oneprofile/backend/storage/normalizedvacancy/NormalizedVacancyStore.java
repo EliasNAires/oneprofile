@@ -159,6 +159,45 @@ public class NormalizedVacancyStore {
 	}
 
 	/**
+	 * The engineering subset held after one vacancy id, in id order, each with the normalized titles the
+	 * title breakdown wrote for it: what the role assignment reads, walked batch by batch like the titles
+	 * are. A vacancy the breakdown has not reached is left out.
+	 * @param after the vacancy id to read past, 0 to start at the first
+	 * @param batch how many to read at most
+	 * @return the vacancies, empty once there are none left
+	 */
+	@Transactional(readOnly = true)
+	public List<RoleVacancy> roleScopeAfter(long after, int batch) {
+		return this.repository.roleScopeAfter(after, Limit.of(batch));
+	}
+
+	/**
+	 * Lets go of the roles every assignment recorded, so that after a run only the vacancies it read hold
+	 * any: a vacancy that has left the engineering subset keeps none.
+	 * @return how many vacancies had been given roles
+	 */
+	@Transactional
+	public int clearRoles() {
+		return this.repository.clearRoles();
+	}
+
+	/**
+	 * Records the roles the role rule gave a batch of vacancies.
+	 * @param assigned the slugs of each vacancy's roles, empty for one with none, by vacancy id
+	 * @return how many vacancies this recorded roles for
+	 */
+	@Transactional
+	public int recordRoles(Map<Long, List<String>> assigned) {
+		List<NormalizedVacancyEntity> recorded = new ArrayList<>(assigned.size());
+		for (NormalizedVacancyEntity normalized : this.repository.findByVacancyIdIn(assigned.keySet())) {
+			normalized.assignedRoles(assigned.get(normalized.vacancyId()));
+			recorded.add(normalized);
+		}
+		this.repository.saveAll(recorded);
+		return recorded.size();
+	}
+
+	/**
 	 * Records what cleaning made of a batch of vacancies. A batch is one transaction, because a pass
 	 * over the corpus is too large to be one and is re-runnable anyway.
 	 * @param cleaned the cleaned title and description segments of each vacancy, by vacancy id

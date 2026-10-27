@@ -70,6 +70,8 @@ public class NormalizedVacancyEntity {
 	@Enumerated(EnumType.STRING)
 	private Set<SeniorityLevelEnum> guardedTitleSeniorities = new HashSet<>();
 
+	private String[] roles;
+
 	protected NormalizedVacancyEntity() {
 	}
 
@@ -125,6 +127,14 @@ public class NormalizedVacancyEntity {
 		this.guardedTitleSeniorities.addAll(breakdown.titleSeniorities());
 	}
 
+	/**
+	 * Takes on the roles the role rule gave the vacancy, replacing what the last run recorded.
+	 * @param roles the slugs of its roles, empty if none of its normalized titles has one
+	 */
+	public void assignedRoles(List<String> roles) {
+		this.roles = roles.toArray(String[]::new);
+	}
+
 	/** The vacancy these facts were derived from. */
 	public long vacancyId() {
 		return this.vacancyId;
@@ -172,6 +182,11 @@ public class NormalizedVacancyEntity {
 	/** The rank of the leadership word its title names over an area, null if it names none. */
 	public ManagementLevelEnum managementLevel() {
 		return this.managementLevel;
+	}
+
+	/** The slugs of its roles, one per normalized title that has one, null until the role assignment has run. */
+	public List<String> roles() {
+		return (this.roles == null) ? null : List.of(this.roles);
 	}
 
 }

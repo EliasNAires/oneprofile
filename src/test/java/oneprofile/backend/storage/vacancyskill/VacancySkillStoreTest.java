@@ -11,6 +11,7 @@ import oneprofile.backend.TestcontainersConfiguration;
 import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.company.RegionEnum;
 import oneprofile.backend.storage.company.CompanyStore;
+import oneprofile.backend.storage.normalizedvacancy.Classification;
 import oneprofile.backend.storage.normalizedvacancy.CleanedTitle;
 import oneprofile.backend.storage.normalizedvacancy.CleanedVacancy;
 import oneprofile.backend.storage.normalizedvacancy.NormalizedVacancyStore;
@@ -122,6 +123,31 @@ class VacancySkillStoreTest {
 		this.entityManager.flush();
 
 		assertThat(this.repository.count()).isZero();
+	}
+
+	@Test
+	void countsTheVacanciesOfTheSubsetAndOfEachRoleThatNameEachSkill(@Autowired NormalizedVacancyStore normalized) {
+		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe",
+				List.of(published(4001), published(4002), published(4003), published(4004)));
+		List<Long> ids = this.vacancies.textsAfter(0, 10).stream().map(VacancyText::id).toList();
+		normalized.recordCleanedVacancies(Map.of(ids.get(2), cleaned(), ids.get(3), cleaned()));
+		normalized.recordClassifications(Map.of(ids.get(0), Classification.in(), ids.get(1), Classification.in(),
+				ids.get(2), Classification.out(), ids.get(3), Classification.in()));
+		normalized.recordRoles(Map.of(ids.get(0), List.of("data-engineer", "data-scientist"), ids.get(1),
+				List.of("data-engineer"), ids.get(3), List.of("frontend-engineer")));
+		this.entityManager.flush();
+		this.skills.record(Map.of(this.first,
+				List.of(new FoundSkill("spark", List.of(1), false, false),
+						new FoundSkill("python", List.of(1), false, false)),
+				this.second, List.of(new FoundSkill("python", List.of(0), false, false)), normalizedId(ids.get(2)),
+				List.of(new FoundSkill("python", List.of(0), false, false))));
+		this.entityManager.flush();
+
+		assertThat(this.skills.subsetProfile()).isEqualTo(new SkillProfile(3, Map.of("spark", 1, "python", 2)));
+		assertThat(this.skills.roleProfiles()).isEqualTo(Map.of("data-engineer",
+				new SkillProfile(2, Map.of("spark", 1, "python", 2)), "data-scientist",
+				new SkillProfile(1, Map.of("spark", 1, "python", 1)), "frontend-engineer",
+				new SkillProfile(1, Map.of())));
 	}
 
 	private long normalizedId(long vacancyId) {

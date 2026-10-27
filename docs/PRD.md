@@ -164,7 +164,9 @@ run is `docs/measurements/2026-10-title-breakdown.md`. It answers to
 titles' vacancies are is shown to the agents that draft and review a merge, as evidence, never as
 the rule. **Role
 nearness**, how near two roles are by their skills, is computed beside the list on each snapshot
-(ADR-0024, amended 2026-10-26).
+(ADR-0024, amended 2026-10-26). The rule and the assignment are built (`POST /roles`, after the
+breakdown), and so is role nearness (`POST /role-nearness`, after the assignment); their first run is
+`docs/measurements/2026-10-role-assignment.md`.
 
 **Management level.** A leadership word that leads an area — `lead`, `manager`, `director`,
 `head`, `VP`, `chief` — is taken out of the title as the vacancy's management level (lead,

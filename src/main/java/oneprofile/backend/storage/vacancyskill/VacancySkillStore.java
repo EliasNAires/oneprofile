@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Component
 public class VacancySkillStore {
+
+	/** The classification state of the engineering subset, as the database writes it. */
+	private static final String SUBSET = ClassificationStateEnum.IN.name();
 
 	private final VacancySkillRepository repository;
 
@@ -67,6 +71,34 @@ public class VacancySkillStore {
 	}
 
 	/**
+	 * The skills the engineering subset asks for, for role nearness to weigh each skill by how few of
+	 * the subset's vacancies name it.
+	 * @return how many vacancies the subset holds, and how many of them name each skill
+	 */
+	@Transactional(readOnly = true)
+	public SkillProfile subsetProfile() {
+		return new SkillProfile(this.repository.countSubset(SUBSET), counts(this.repository.countSubsetNaming(SUBSET)));
+	}
+
+	/**
+	 * The skills each role's vacancies ask for, as the last role assignment gave the roles. A vacancy
+	 * with two roles counts in each.
+	 * @return by role slug, how many vacancies hold the role, and how many of them name each skill
+	 */
+	@Transactional(readOnly = true)
+	public Map<String, SkillProfile> roleProfiles() {
+		Map<String, Map<String, Integer>> naming = new HashMap<>();
+		for (Object[] row : this.repository.countRolesNaming(SUBSET)) {
+			naming.computeIfAbsent((String) row[0], (role) -> new HashMap<>())
+				.put((String) row[1], ((Number) row[2]).intValue());
+		}
+		Map<String, SkillProfile> profiles = new HashMap<>();
+		counts(this.repository.countRoles(SUBSET)).forEach((role, vacancies) -> profiles.put(role,
+				new SkillProfile(vacancies, naming.getOrDefault(role, Map.of()))));
+		return profiles;
+	}
+
+	/**
 	 * Records what extraction found in a batch of vacancies, one row per vacancy and skill.
 	 * @param found the skills found in each vacancy, by the id of its derived facts
 	 * @return how many rows this recorded
@@ -78,6 +110,12 @@ public class VacancySkillStore {
 			.forEach((skill) -> rows.add(new VacancySkillEntity(normalizedVacancyId, skill))));
 		this.repository.saveAll(rows);
 		return rows.size();
+	}
+
+	private static Map<String, Integer> counts(List<Object[]> rows) {
+		Map<String, Integer> counts = new HashMap<>();
+		rows.forEach((row) -> counts.put((String) row[0], ((Number) row[1]).intValue()));
+		return counts;
 	}
 
 }

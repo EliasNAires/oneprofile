@@ -96,6 +96,27 @@ public interface NormalizedVacancyRepository extends ListCrudRepository<Normaliz
 	int clearGuardedTitleSeniorities();
 
 	/**
+	 * The engineering subset held after one vacancy id, in id order, with the normalized titles of each
+	 * vacancy the title breakdown has reached.
+	 * @param after the vacancy id to read past, 0 to start at the first
+	 * @param limit how many to read at most
+	 * @return the vacancies and their normalized titles
+	 */
+	@Query("select new oneprofile.backend.storage.normalizedvacancy.RoleVacancy(n.vacancyId, n.normalizedTitles) "
+			+ "from NormalizedVacancy n where n.vacancyId > :after "
+			+ "and n.classificationState = oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum.IN "
+			+ "and n.normalizedTitles is not null order by n.vacancyId")
+	List<RoleVacancy> roleScopeAfter(long after, Limit limit);
+
+	/**
+	 * Lets go of every vacancy's roles.
+	 * @return how many vacancies had been given roles
+	 */
+	@Modifying
+	@Query("update NormalizedVacancy n set n.roles = null where n.roles is not null")
+	int clearRoles();
+
+	/**
 	 * Puts every vacancy of the pile back to what its title left it: unknown, decided by the title.
 	 * @param reasons the title reasons that make the pile
 	 * @return how many vacancies the pile holds

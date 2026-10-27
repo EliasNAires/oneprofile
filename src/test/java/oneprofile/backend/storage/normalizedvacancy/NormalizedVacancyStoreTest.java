@@ -444,6 +444,67 @@ class NormalizedVacancyStoreTest {
 		});
 	}
 
+	@Test
+	void readsForTheRoleAssignmentTheNormalizedTitlesOfTheEngineeringSubset() {
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		this.normalized.recordCleanedVacancies(
+				Map.of(first, cleaned("Backend Engineer", Set.of()), second, cleaned("Backend Engineer", Set.of())));
+		this.normalized.recordClassifications(Map.of(first, Classification.out(), second, Classification.in()));
+		this.normalized.recordTitleBreakdowns(Map.of(first, breakdown("backend engineer"), second,
+				breakdown("data scientist", "machine learning engineer")));
+		this.entityManager.flush();
+
+		assertThat(this.normalized.roleScopeAfter(0, 10))
+			.containsExactly(new RoleVacancy(second, List.of("data scientist", "machine learning engineer")));
+	}
+
+	@Test
+	void leavesOutOfTheRoleAssignmentAVacancyTheBreakdownHasNotReached() {
+		long vacancyId = heldTitles().getFirst().id();
+		this.normalized.recordCleanedVacancies(Map.of(vacancyId, cleaned("Backend Engineer", Set.of())));
+		this.normalized.recordClassifications(Map.of(vacancyId, Classification.in()));
+		this.entityManager.flush();
+
+		assertThat(this.normalized.roleScopeAfter(0, 10)).isEmpty();
+	}
+
+	@Test
+	void holdsTheRolesOfAVacancyAndThatAnotherHasNone() {
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		this.normalized.recordCleanedVacancies(
+				Map.of(first, cleaned("Backend Engineer", Set.of()), second, cleaned("Game Developer", Set.of())));
+
+		assertThat(this.normalized.recordRoles(
+				Map.of(first, List.of("data-scientist", "machine-learning-engineer"), second, List.of())))
+			.isEqualTo(2);
+		this.entityManager.flush();
+		this.entityManager.clear();
+
+		assertThat(this.repository.findByVacancyIdIn(List.of(first, second)))
+			.extracting(NormalizedVacancyEntity::vacancyId, NormalizedVacancyEntity::roles)
+			.containsExactlyInAnyOrder(tuple(first, List.of("data-scientist", "machine-learning-engineer")),
+					tuple(second, List.of()));
+	}
+
+	@Test
+	void letsGoOfEveryVacancysRoles() {
+		long vacancyId = heldTitles().getFirst().id();
+		this.normalized.recordCleanedVacancies(Map.of(vacancyId, cleaned("Backend Engineer", Set.of())));
+		this.normalized.recordRoles(Map.of(vacancyId, List.of("backend-engineer")));
+		this.entityManager.flush();
+
+		assertThat(this.normalized.clearRoles()).isEqualTo(1);
+		this.entityManager.clear();
+
+		assertThat(this.repository.findAll()).singleElement().extracting(NormalizedVacancyEntity::roles).isNull();
+	}
+
+	private static TitleBreakdown breakdown(String... normalizedTitles) {
+		return new TitleBreakdown(List.of(normalizedTitles), Set.of(), null);
+	}
+
 	private long normalizedId(long vacancyId) {
 		this.entityManager.flush();
 		return ((Number) this.entityManager.getEntityManager()
