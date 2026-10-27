@@ -1,0 +1,107 @@
+id	mode	reason
+1168502	remote	rule 3: location specifies remote
+396427	remote	rule 3: field and description both specify remote
+380683	remote	rule 3: location over field
+401486	remote	rule 3: title specifies remote
+253202	hybrid	rule 3: location over field
+1157018	onsite	rule 3: title and description specify onsite
+1196689	remote	rule 4: remote with occasional office visits
+19915	remote	rule 3: title and location specify remote
+916206	hybrid	rule 3: title and description specify hybrid
+283017	remote	rule 3: title specifies remote (remoto)
+432085	remote	rule 3: location over field
+926696	remote	rule 3: title and description specify remote
+210620	remote	rule 3: location and description specify remote
+396426	remote	rule 3: field and description specify remote
+417354	remote	rule 3: location and field specify remote
+242517	remote	rule 3: location and description specify remote
+268763	hybrid	rule 3: location statement and description specify hybrid
+475381	remote	rule 3: location and description specify remote
+172398	hybrid	rule 3: description specifies hybrid work policy
+401443	remote	rule 3: title specifies remote
+256919	onsite,remote	rule 5: location offers both in-person and remote
+230621	onsite	rule 3: field specifies onsite
+418756	remote	rule 3: location and field specify remote
+1506776	remote	rule 4: remote with occasional onsite visits
+1068890	onsite	rule 3: title and description specify onsite
+399387	remote	rule 3: location and description specify remote
+1132148	onsite	rule 3: description's explicit statement over location
+1156986	onsite	rule 3: title and description specify onsite role
+245243	remote,onsite	rule 5: location offers both remote and onsite
+405216	remote	rule 3: field specifies remote
+344384	hybrid	rule 3: title and description specify hybrid with schedule
+387419	remote	rule 3: location and field specify remote
+1501693	remote	rule 3: location specifies remote
+253145	hybrid	rule 3: field specifies hybrid
+261386	hybrid	rule 3: description specifies hybrid setup (over field)
+289182	remote	rule 3: title specifies remote
+43691	remote	rule 3: location specifies remote
+167482	remote,hybrid	rule 5: location offers multiple modes
+409590	onsite	rule 3: field specifies onsite
+106997	onsite	rule 3: title specifies onsite
+234608	remote	rule 3: location and description specify remote
+67869	remote	rule 3: location and description specify remote
+121194	hybrid	rule 3: location specifies hybrid with schedule
+247102	hybrid	rule 3: field specifies hybrid
+362536	hybrid	rule 3: field specifies hybrid
+417346	remote	rule 3: location, field, and description specify remote
+472913	remote	rule 3: title specifies remote
+426679	remote	rule 3: field and description specify remote
+927908	remote	rule 3: location implies home office based
+216976	hybrid,remote	rule 5: location offers both hybrid and remote
+660085	remote	rule 3: location and description specify remote
+232627	remote	rule 3: location over field
+259029	onsite	rule 3: title and description clarify onsite (not remote/desk)
+145506	remote,hybrid	rule 5: location offers both options
+1138404	remote	rule 3: location specifies remote
+257391	remote	rule 3: title and description specify remote
+217878	remote	rule 3: field specifies remote
+313810	remote	rule 3: location and description over field
+687514	hybrid	rule 3: title and description specify hybrid with schedule
+283016	remote	rule 3: title specifies remote (remoto)
+32100	hybrid	rule 3: title, location, and description specify hybrid
+257396	remote	rule 3: title and description specify remote
+385699	remote	rule 3: title, location, and field specify remote
+592438	hybrid	rule 3: title and field specify hybrid
+345983	hybrid	rule 3: title specifies hybrid (híbrido)
+325400	hybrid	rule 3: title and description specify hybrid with schedule
+136627	hybrid,remote	rule 5: location offers both hybrid and remote
+219804	hybrid	rule 3: field specifies hybrid
+246134	remote	rule 3: title specifies remote
+253195	onsite	rule 3: field specifies onsite
+274742	hybrid	rule 3: field specifies hybrid
+291328	hybrid	rule 3: title specifies hybrid
+257394	remote	rule 3: title and description specify remote
+657441	remote	rule 3: description emphasizes remote regardless of location
+61023	remote	rule 3: location specifies remote
+411676	hybrid	rule 3: description specifies hybrid with schedule
+687183	hybrid	rule 3: title and description specify hybrid with schedule
+212446	remote	rule 3: location specifies remote
+408293	remote	rule 3: title, location, and field specify remote
+926563	remote	rule 3: title and description specify remote
+236840	onsite	rule 3: field specifies onsite
+415099	onsite	rule 3: field and description specify onsite
+733370	onsite	rule 3: title and description specify onsite role
+103374	remote	rule 3: title specifies remote
+257200	remote	rule 3: title, location, and field specify remote
+687507	hybrid	rule 3: title and description specify hybrid with schedule
+368693	hybrid	rule 3: location and field specify hybrid
+396937	remote	rule 3: field and description specify remote
+677276	remote	rule 3: location specifies remote
+80128	remote	rule 3: location and description specify remote
+249556	onsite	rule 3: field specifies onsite
+303900	remote,hybrid	rule 5: location offers both options
+397086	remote	rule 3: field and description specify remote
+43183	remote,hybrid	rule 5: location offers both modes
+23869	remote	rule 3: location and description specify remote
+1253825	remote	rule 3: location and description specify remote
+93809	remote	rule 3: location specifies remote
+223444	remote	rule 3: location specifies remote
+247951	remote	rule 3: location and field specify remote
+121200	hybrid	rule 3: location specifies hybrid with schedule
+411984	hybrid	rule 3: field specifies hybrid
+1532518	remote	rule 3: location and description specify remote
+97958	remote	rule 3: location specifies EU remote
+265212	onsite	rule 3: title specifies onsite
+229502	remote	rule 3: title specifies remote
+52241	remote	rule 3: location specifies remote

@@ -203,7 +203,8 @@ mode, which likely needs a rule loop (#98).
 Where the location and the field disagree, about 170 vacancies of the subset, the location was
 usually the right one. A location or title naming two modes reads as hybrid where hybrid is one of
 them (`Hybrid (3x in office/week)`), else as remote (`Nashville (Onsite) or Remote`). Null means "not declared" and never "onsite". There is no `FULLY_REMOTE`
-value; work mode and declared location are separate (ADR-0004).
+value; work mode and declared location are separate (ADR-0004). Its first run and its precision on a blind sample
+(95.6%, against `docs/work-mode-criterion.md`) are `docs/measurements/2026-10-work-mode.md`.
 
 The **declared location** is not derived here. The step that derives the country set reads it
 as the ATS publishes it, with Ashby's and Lever's lists of locations, and turning it into places

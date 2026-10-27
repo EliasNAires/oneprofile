@@ -1,0 +1,172 @@
+#!/usr/bin/env python3
+"""Draws the blind sample that measures the work mode's precision (#86) from the development database.
+
+    scripts/draw-work-mode-sample DIRECTORY [per cell, default 20]
+
+Run after POST /work-modes. The work mode is stored without the step of the order of evidence that
+decided it, so the draw reads it again from the location, the field and the title, by the rule's words
+(WorkModeRule), and keeps only the vacancies where its reading gives the stored mode; it prints how many
+it left out.
+
+Draws, seeded, two strata first: the vacancies whose location names a mode other than the one their
+field names (location over field), and those whose location names two modes. Then that many vacancies
+of each cell of ATS by step (location, field, title), all of a cell that holds fewer.
+
+Writes DIRECTORY/sample.tsv, every drawn vacancy with its ATS, its step, its stratum, the rule's mode,
+its title, its location and its field; DIRECTORY/cells.tsv, the size of each cell, which weighs it; and
+DIRECTORY/batch-1.tsv and batch-2.tsv, the same vacancies shuffled and split in two, with only what a
+labeller sees (docs/work-mode-criterion.md): an id, the company, the title, the location, the field and
+the description's sentences that name where work is done, joined by " ¶ ".
+"""
+
+import csv
+import json
+import random
+import re
+import subprocess
+import sys
+from collections import Counter
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+
+SEED = 86
+
+BATCHES = 2
+
+STRATUM = 15
+
+SENTENCES = 6
+
+SENTENCE_LENGTH = 300
+
+# WorkModeRule.WORDS, SUBJECTS and FIELD_VALUES.
+WORDS = {"remote": "REMOTE", "fully remote": "REMOTE", "remote first": "REMOTE", "work from home": "REMOTE",
+         "wfh": "REMOTE", "telecommute": "REMOTE", "telework": "REMOTE", "remoto": "REMOTE", "remota": "REMOTE",
+         "home office": "REMOTE", "home based": "REMOTE", "hybrid": "HYBRID", "híbrido": "HYBRID",
+         "hibrido": "HYBRID", "onsite": "ONSITE", "on site": "ONSITE", "in office": "ONSITE",
+         "presencial": "ONSITE", "office based": "ONSITE"}
+SUBJECTS = ["hybrid cloud", "hybrid infrastructure", "hybrid it", "hybrid deployment", "hybrid deployments",
+            "remote sensing", "remote access"]
+FIELD_VALUES = {"remote": "REMOTE", "fully remote": "REMOTE", "hybrid": "HYBRID", "hybrid working": "HYBRID",
+                "onsite": "ONSITE", "on site": "ONSITE", "fully onsite": "ONSITE", "onsite job": "ONSITE",
+                "office": "ONSITE", "in office": "ONSITE", "office worker not remote": "ONSITE"}
+
+# A sentence of the description that may say where the work is done.
+PLACE = re.compile(r"remot|hybrid|h[íi]brid|on-?\s?site|in[- ]office|in[- ]person|office|from home|wfh|telecommut"
+                   r"|telework|home[- ]based|days? (a|per) week|presencial|t[ée]l[ée]travail|mobiles? arbeit"
+                   r"|relocat|commut", re.IGNORECASE)
+
+QUERY = """
+copy (
+  select v.id, c.ats, coalesce(c.name, c.slug), v.title, v.location,
+    coalesce(v.workplace_type, v.remote_type), n.work_mode, n.description_segments
+  from normalized_vacancy n join vacancy v on v.id = n.vacancy_id join company c on c.id = v.company_id
+  where n.work_mode is not null
+) to stdout with (format csv, header false)
+"""
+
+
+def vacancies():
+    out = subprocess.run(["docker", "compose", "--project-directory", str(REPO), "exec", "-T", "postgres", "psql",
+                          "-v", "ON_ERROR_STOP=1", "-U", "oneprofile", "-d", "oneprofile", "-c", QUERY],
+                         capture_output=True, text=True, encoding="utf-8", check=True).stdout
+    return [{"id": r[0], "ats": r[1], "company": r[2], "title": r[3], "location": r[4] or None,
+             "field": r[5] or None, "mode": r[6], "segments": json.loads(r[7]) if r[7] else []}
+            for r in csv.reader(out.splitlines(keepends=True))]
+
+
+def words(text):
+    return " ".join(re.sub(r"[^\w]|_", " ", text.lower()).split())
+
+
+def modes_in(text):
+    """The modes a text names by the rule's words, its subjects taken out."""
+    if not text:
+        return set()
+    spaced = f" {words(text)} "
+    for subject in SUBJECTS:
+        spaced = spaced.replace(f" {subject} ", " ")
+    return {mode for word, mode in WORDS.items() if f" {word} " in spaced}
+
+
+def first(modes):
+    return next((mode for mode in ("HYBRID", "REMOTE", "ONSITE") if mode in modes), None)
+
+
+def reading(row):
+    """The rule's mode and step, read again."""
+    if first(modes_in(row["location"])):
+        return first(modes_in(row["location"])), "location"
+    if row["field"] and FIELD_VALUES.get(words(row["field"])):
+        return FIELD_VALUES[words(row["field"])], "field"
+    return first(modes_in(row["title"])), "title"
+
+
+def place_sentences(segments):
+    said = [" ".join(segment["text"].split()) for segment in segments
+            if segment.get("kind") == "SENTENCE" and PLACE.search(segment["text"])]
+    return " ¶ ".join(sentence[:SENTENCE_LENGTH] for sentence in said[:SENTENCES])
+
+
+def flat(text):
+    return " ".join((text or "").split()) or "-"
+
+
+def main():
+    if not 2 <= len(sys.argv) <= 3:
+        sys.exit(__doc__)
+    directory = Path(sys.argv[1])
+    per_cell = int(sys.argv[2]) if len(sys.argv) == 3 else 20
+    directory.mkdir(parents=True, exist_ok=True)
+    rows = []
+    left_out = 0
+    for row in vacancies():
+        mode, step = reading(row)
+        if mode != row["mode"]:
+            left_out += 1
+            continue
+        rows.append({**row, "step": step})
+    generator = random.Random(SEED)
+
+    drawn = {}
+    strata = {
+        "location over field": lambda row: row["step"] == "location" and row["field"] is not None
+        and FIELD_VALUES.get(words(row["field"])) not in (None, row["mode"]),
+        "two modes": lambda row: row["step"] == "location" and len(modes_in(row["location"])) > 1,
+    }
+    for stratum, holds in strata.items():
+        pool = [row for row in rows if holds(row) and row["id"] not in drawn]
+        for row in generator.sample(pool, min(STRATUM, len(pool))):
+            drawn[row["id"]] = {**row, "stratum": stratum}
+    cells = Counter((row["ats"], row["step"]) for row in rows)
+    for ats, step in sorted(cells):
+        pool = [row for row in rows if (row["ats"], row["step"]) == (ats, step) and row["id"] not in drawn]
+        for row in generator.sample(pool, min(per_cell, len(pool))):
+            drawn[row["id"]] = {**row, "stratum": "cell"}
+
+    sample = sorted(drawn.values(), key=lambda row: (row["stratum"], row["ats"], row["step"], int(row["id"])))
+    with open(directory / "sample.tsv", "w", encoding="utf-8") as out:
+        out.write("id\tats\tstep\tstratum\tmode\ttitle\tlocation\tfield\n")
+        for row in sample:
+            out.write("\t".join([row["id"], row["ats"], row["step"], row["stratum"], row["mode"].lower(),
+                                 flat(row["title"]), flat(row["location"]), flat(row["field"])]) + "\n")
+    with open(directory / "cells.tsv", "w", encoding="utf-8") as out:
+        out.write("ats\tstep\tvacancies\n")
+        for (ats, step), count in sorted(cells.items()):
+            out.write(f"{ats}\t{step}\t{count}\n")
+    shuffled = sample[:]
+    generator.shuffle(shuffled)
+    size = -(-len(shuffled) // BATCHES)
+    for batch in range(BATCHES):
+        with open(directory / f"batch-{batch + 1}.tsv", "w", encoding="utf-8") as out:
+            out.write("id\tcompany\ttitle\tlocation\tfield\tdescription\n")
+            for row in shuffled[batch * size:(batch + 1) * size]:
+                out.write("\t".join([row["id"], flat(row["company"]), flat(row["title"]), flat(row["location"]),
+                                     flat(row["field"]), place_sentences(row["segments"]) or "-"]) + "\n")
+    print(f"{len(sample)} vacancies drawn of {len(rows)}; {left_out} left out where the reading differs from the"
+          f" stored mode")
+
+
+if __name__ == "__main__":
+    main()

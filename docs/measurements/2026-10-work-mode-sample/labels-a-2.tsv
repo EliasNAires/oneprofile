@@ -1,0 +1,107 @@
+id	mode	reason
+257395	remote	rule 3: description states location is remote
+341224	remote,hybrid	rule 5: location tags each city remote or hybrid
+257400	remote	rule 3: description states remote work from home
+268844	hybrid	rule 3: location label over field
+1020601	remote	location states remote, nothing else speaks
+229501	remote	title and description (LI-remote) agree
+136904	remote	rule 1: company flexibility statement doesn't override title's remote label
+380687	remote	rule 3: location label over field; description is a benefit (rule 1)
+257406	remote	title states remote, description agrees
+677704	remote	rule 3: description states this is a US remote role
+229498	remote	title and description agree remote
+238768	remote	location and field agree remote
+387106	remote	location and field agree remote
+370741	hybrid	field states hybrid, nothing else speaks
+408922	remote	rule 3: location label over field
+24810	remote	occasional travel/offsite doesn't change remote
+224080	remote	rule 3: description states role is remote; country requirement doesn't change it
+275188	hybrid	rule 2: "Remote Assist" names function not mode; description states hybrid model
+472922	remote	title states remote
+236205	hybrid	rule 3/4: description states regular on-site days, overrides location label
+172470	remote,hybrid	rule 5: location lists remote and hybrid options
+250632	onsite	field states onsite
+270328	remote	rule 3: location label over field
+1208731	remote	description states workplace type remote
+413988	remote	rule 3: description (most specific) states remote with occasional on-site, overrides field
+275774	onsite	field and description state onsite
+30172	remote	location states remote
+290275	remote	rule 1: company-wide hybrid statement doesn't override title's remote label
+379159	hybrid	field states hybrid
+26587	remote	location and description agree remote, tied to Germany
+192801	remote	title states remote; description is about interviews only
+915604	onsite	title and description state onsite
+1519692	remote	rule 1: company-wide hybrid-culture statement doesn't override location's remote label
+278799	remote	location/description state remote; "hybrid" names tech not mode (rule 2)
+331703	remote	field states remote
+273190	hybrid	description states hybrid explicitly for this role
+222011	remote	location, field, and company statement agree remote
+267146	remote	location and field agree remote
+206997	remote	location states remote
+289183	remote	title states remote
+241297	hybrid	location, field, and description agree hybrid with schedule
+259028	onsite	rule 3: description (most specific) states onsite, overrides title's hybrid
+272736	remote	field states remote
+397013	remote	field states remote
+216314	remote	rule 3: description states this is a remote opportunity; occasional travel doesn't change it
+269221	remote	location states remote
+13931	remote	rule 3: description's final statement says role is fully remote with optional office
+434824	remote	field states remote
+368714	remote	rule 2: "hybrid role" names blended job scope, not location; location/field say remote
+1042849	onsite	title states on site
+1310359	remote	description says office reporting only as needed, not a regular schedule
+222920	hybrid	field states hybrid
+434178	onsite	field states onsite
+236661	remote	location lists regions for an otherwise remote role; bare place names don't declare a mode
+290704	remote	description explicitly states fully remote position
+368717	remote	location and field agree remote
+229854	remote	location and field agree remote
+273662	remote	rule 3: location label over field
+112823	onsite	title and description explicitly state onsite, no remote work
+730985	remote	location states remote; description is company background only
+244779	hybrid	rule 3: location label over field
+257402	remote	title states remote
+396400	remote	description states fully remote role
+229523	remote	title and description agree remote
+313953	onsite	title states on site; description's on-site mention is about interviews only
+369598	remote	title and field agree remote
+405993	remote	location and field agree remote
+351379	hybrid	title and description state hybrid
+245778	hybrid,onsite	rule 5: description states choice of 5-days-onsite or hybrid options
+938758	hybrid	title and description state hybrid, requires some on-site work
+145497	remote,hybrid	rule 5: location states remote or hybrid conditional choice
+254655	remote	field and location state remote; description is a general team-variation statement
+309067	hybrid	rule 3: description states working hybrid from Amsterdam office
+412520	remote	location and field state remote; occasional in-office events don't change it
+263669	remote	location and field agree remote
+430105	remote	location and field agree remote
+392051	remote	location and field agree remote
+927880	remote	location states home office (remote); company statement doesn't count (rule 1)
+156896	remote	title states remote, description agrees
+435129	remote	location and field agree remote
+468343	onsite	title states on-site
+408772	remote	rule 3: location label over field
+1303163	remote	location states remote
+274282	remote	location and field agree remote
+265413	hybrid	field and description agree hybrid
+274285	remote,hybrid	rule 5: field/location state hybrid, description confirms remote option
+416667	hybrid	field states hybrid; description is a general company statement (rule 1)
+265099	remote	location and field agree remote
+222843	onsite	field states onsite
+165480	remote	rule 3: description states "Position location: Remote"; onsite cadence is occasional travel
+31095	remote,hybrid	rule 5: location states choice of remote or hybrid
+303899	remote,hybrid	rule 5: location states remote or hybrid choice
+828465	remote	location states remote
+320202	remote	title and location state remote
+15570	remote	rule 3: description declares a remote position; frequent travel is like the customer-visit exception
+434329	onsite	field states onsite
+433509	remote	location and field agree remote
+260070	remote	description states this position can be performed remotely
+752139	hybrid	description states hybrid with schedule (rule 4)
+229504	remote	title and description agree remote
+338675	remote	rule 3: description explicitly states "this role is remote"
+420603	remote,hybrid	rule 5: field states hybrid for city option, location names remote alternative
+412479	remote	field states remote; location's alternate city carries no explicit mode word
+176440	remote	location states remote; description's hybrid statement is company-wide (rule 1)
+270448	onsite	title states onsite
+254613	remote	location and field agree remote

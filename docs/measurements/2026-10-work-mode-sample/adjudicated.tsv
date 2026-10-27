@@ -1,0 +1,11 @@
+id	mode	reason
+245778	hybrid,onsite	rule 5: description states a choice (5 days onsite or hybrid options), outweighing field's bare "OnSite" label; a's reading
+236661	remote	rule 3: location is the only signal read; bare place names (Berlin, Greece) don't declare a mode, only "Remote" does; a's reading
+26587	remote	rule 3: location and description agree on remote, qualified by a country which doesn't change remote; a's reading
+368714	remote	rule 2: "hybrid role" names a blended job scope, not a location mode; location and field say remote; a's reading
+927908	none	rule 6: no mode word stated for this job; rule 1: the description is a generic company-wide statement that doesn't plainly cover every role; a's reading
+733370	onsite	onsite definition: a job whose work is travelling to client sites is onsite (home base plus travel to/work on client sites), confirmed by the title's "on-site Erskine"; b's reading
+274285	remote,hybrid	rule 5: field/location offer hybrid, and the description explicitly confirms "this role can be remote"; a's reading
+420603	remote,hybrid	rule 5: location explicitly offers "or Remote" alongside the hybrid city option; a's reading
+216976	remote,hybrid	rule 5: location and field offer hybrid and remote; "Lausanne" is a bare place name, not a third mode; b's reading
+268763	remote,hybrid	rule 5: hybrid is preferred, but remote is explicitly offered case by case, which is still an offered mode; a's reading

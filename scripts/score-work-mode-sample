@@ -1,0 +1,148 @@
+#!/usr/bin/env python3
+"""Scores the blind sample that measures the work mode's precision (#86).
+
+    scripts/score-work-mode-sample DIRECTORY
+
+DIRECTORY is where scripts/draw-work-mode-sample drew the sample. Reads the two labellers' answers,
+labels-a-N.tsv and labels-b-N.tsv (id, mode, reason; mode is remote, hybrid or onsite, several
+comma-separated for a choice, or none or unclear), and the adjudicator's, adjudicated.tsv (id, mode,
+reason), which settles every vacancy the labellers answered differently. Without adjudicated.tsv, prints
+the labellers' agreement and writes DIRECTORY/disagreements.tsv for the adjudicator, each row as the
+labellers saw it.
+
+With it, prints the rule's precision (the share of vacancies whose settled label holds the rule's mode)
+by cell of ATS by step, by step, by ATS, over every cell and weighted by each cell's size, each with a
+95% Wilson interval; then the two strata, the choices, and where the rule and the settled labels split.
+An unclear label is left out of every share; none counts against the rule.
+"""
+
+import math
+import sys
+from collections import Counter
+from pathlib import Path
+
+Z = 1.96
+
+MODES = ("remote", "hybrid", "onsite")
+
+
+def rows(path):
+    with open(path, encoding="utf-8") as tsv:
+        header = tsv.readline().rstrip("\n").split("\t")
+        return [dict(zip(header, line.rstrip("\n").split("\t"))) for line in tsv if line.strip()]
+
+
+def labels(directory, labeller):
+    read = {}
+    for path in sorted(directory.glob(f"labels-{labeller}-*.tsv")):
+        for row in rows(path):
+            read[row["id"]] = row
+    return read
+
+
+def answer(text):
+    """A label as remote, hybrid or onsite, several for a choice; or none, or unclear."""
+    said = {word.strip() for word in text.split(",") if word.strip()}
+    if said & set(MODES):
+        return ",".join(mode for mode in MODES if mode in said)
+    return "unclear" if "unclear" in said else "none"
+
+
+def wilson(hits, total):
+    share = hits / total
+    centre = (share + Z * Z / (2 * total)) / (1 + Z * Z / total)
+    half = Z * math.sqrt(share * (1 - share) / total + Z * Z / (4 * total * total)) / (1 + Z * Z / total)
+    return centre - half, centre + half
+
+
+def line(name, judged):
+    """judged: whether the rule was right, for each vacancy whose label is not unclear."""
+    hits, total = sum(judged), len(judged)
+    if not total:
+        return f"  {name:32}   none judged"
+    low, high = wilson(hits, total)
+    return f"  {name:32} {hits:3} of {total:3}  {hits / total:6.1%}  ({low:.0%} to {high:.0%})"
+
+
+def main():
+    if len(sys.argv) != 2:
+        sys.exit(__doc__)
+    directory = Path(sys.argv[1])
+    sample = {row["id"]: row for row in rows(directory / "sample.tsv")}
+    seen = {row["id"]: row for batch in sorted(directory.glob("batch-*.tsv")) for row in rows(batch)}
+    a, b = labels(directory, "a"), labels(directory, "b")
+    missing = [id for id in sample if id not in a or id not in b]
+    if missing:
+        sys.exit(f"{len(missing)} vacancies lack a label, as {missing[:5]}")
+
+    differing = [id for id in sample if answer(a[id]["mode"]) != answer(b[id]["mode"])]
+    print(f"labellers agree on {len(sample) - len(differing)} of {len(sample)}"
+          f" ({(len(sample) - len(differing)) / len(sample):.1%})")
+    split = Counter(" ~ ".join(sorted([answer(a[id]["mode"]), answer(b[id]["mode"])])) for id in differing)
+    for pair, count in split.most_common():
+        print(f"  {count:3}  {pair}")
+
+    adjudicated = directory / "adjudicated.tsv"
+    if not adjudicated.exists():
+        with open(directory / "disagreements.tsv", "w", encoding="utf-8") as out:
+            out.write("id\tcompany\ttitle\tlocation\tfield\tdescription\ta\ta_reason\tb\tb_reason\n")
+            for id in differing:
+                row = seen[id]
+                out.write("\t".join([id, row["company"], row["title"], row["location"], row["field"],
+                                     row["description"], answer(a[id]["mode"]), a[id]["reason"],
+                                     answer(b[id]["mode"]), b[id]["reason"]]) + "\n")
+        print(f"\nwrote {len(differing)} disagreements for the adjudicator")
+        return
+
+    settled = {id: answer(a[id]["mode"]) for id in sample}
+    verdicts = {row["id"]: answer(row["mode"]) for row in rows(adjudicated)}
+    unsettled = [id for id in differing if id not in verdicts]
+    if unsettled:
+        sys.exit(f"{len(unsettled)} disagreements are not adjudicated, as {unsettled[:5]}")
+    settled.update(verdicts)
+
+    def judged(held):
+        return [row["mode"] in settled[row["id"]].split(",") for row in held if settled[row["id"]] != "unclear"]
+
+    cells = [row for row in sample.values() if row["stratum"] == "cell"]
+    print(f"\nunclear, left out: {sum(settled[id] == 'unclear' for id in sample)}")
+    print("\nprecision by ATS and step")
+    for ats, step in sorted({(row["ats"], row["step"]) for row in cells}):
+        print(line(f"{ats} {step}", judged([row for row in cells if (row["ats"], row["step"]) == (ats, step)])))
+    print("\nby step")
+    for step in ("location", "field", "title"):
+        print(line(step, judged([row for row in cells if row["step"] == step])))
+    print("\nby ATS")
+    for ats in sorted({row["ats"] for row in cells}):
+        print(line(ats, judged([row for row in cells if row["ats"] == ats])))
+    print()
+    print(line("every cell", judged(cells)))
+    sizes = {(row["ats"], row["step"]): int(row["vacancies"]) for row in rows(directory / "cells.tsv")}
+    weighted = total = 0
+    for cell, size in sizes.items():
+        right = judged([row for row in cells if (row["ats"], row["step"]) == cell])
+        if right:
+            weighted += size * sum(right) / len(right)
+            total += size
+    print(f"  {'weighted by cell size':32} {weighted / total:6.1%}")
+
+    print("\nstrata")
+    for stratum in sorted({row["stratum"] for row in sample.values()} - {"cell"}):
+        print(line(stratum, judged([row for row in sample.values() if row["stratum"] == stratum])))
+
+    choices = [row for row in sample.values() if "," in settled[row["id"]]]
+    print(f"\nchoices of modes: {len(choices)}, the rule's mode among them in"
+          f" {sum(row['mode'] in settled[row['id']].split(',') for row in choices)}")
+    for row in choices:
+        print(f"  {row['id']}  {row['mode']} in {settled[row['id']]}  {row['location']} | {row['field']}"
+              f" | {row['title']}")
+
+    print("\nwhere the rule and the settled labels split (rule -> settled)")
+    for row in sorted(sample.values(), key=lambda row: (row["stratum"], row["ats"], row["step"])):
+        if settled[row["id"]] != "unclear" and row["mode"] not in settled[row["id"]].split(","):
+            print(f"  {row['id']}  {row['stratum']} {row['ats']} {row['step']}  {row['mode']} -> "
+                  f"{settled[row['id']]}  {row['title']} | {row['location']} | {row['field']}")
+
+
+if __name__ == "__main__":
+    main()

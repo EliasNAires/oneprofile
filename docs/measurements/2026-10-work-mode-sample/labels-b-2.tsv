@@ -1,0 +1,107 @@
+id	mode	reason
+257395	remote	rule 3: title says (Remote)
+341224	remote,hybrid	rule 5: choice of modes offered (locations list remote and hybrid options)
+257400	remote	rule 3: title says (Remote), rule 4: occasional travel doesn't change remote
+268844	hybrid	rule 3: location label (Hybrid) outweighs field
+1020601	remote	rule 3: location label (Remote)
+229501	remote	rule 3: title says (remote)
+136904	remote	rule 3: title explicitly says (Remote)
+380687	remote	rule 3: location label (Remote) outweighs field (hybrid)
+257406	remote	rule 3: title says (Remote)
+677704	remote	rule 3: title says (Remote), description confirms
+229498	remote	rule 3: title says (remote)
+238768	remote	rule 3: location and field both say (Remote)
+387106	remote	rule 3: location and field both say (remote)
+370741	hybrid	rule 3: field says (hybrid)
+408922	remote	rule 3: location label (Remote) outweighs field (hybrid)
+24810	remote	rule 4: remote with occasional travel (3x/year office visits) is remote
+224080	remote	rule 4: remote with geographic requirement is still remote
+275188	hybrid	rule 3: description is most specific, says hybrid working model with office days
+472922	remote	rule 4: title says (Remote), geographic requirement doesn't change remote
+236205	hybrid	rule 3: description is most specific, says 2 to 4 days per week on-site
+172470	hybrid,remote	rule 5: location offers choice (San Francisco hybrid or US remote)
+250632	onsite	rule 3: field says (OnSite)
+270328	remote	rule 3: location label (Remote) outweighs field (Hybrid)
+1208731	remote	rule 3: location and description both say (Remote)
+413988	remote	rule 3: description is most specific, says remote preferred with occasional on-site
+275774	onsite	rule 3: field and description both say (OnSite)
+30172	remote	rule 3: location label (Remote)
+290275	remote	rule 3: title says (Remote)
+379159	hybrid	rule 3: field says (hybrid)
+26587	hybrid	rule 3: description says linked with Berlin but flexible about remote work in Germany
+192801	remote	rule 3: title says (Remote), rule 1: cultural event is not work arrangement
+915604	onsite	rule 3: title and description both say (Onsite)
+1519692	remote	rule 3: location label (Remote)
+278799	remote	rule 3: location says (Remote)
+331703	remote	rule 3: field says (Remote)
+273190	hybrid	rule 3: field and description both specify hybrid
+222011	remote	rule 3: location and field both say (Remote)
+267146	remote	rule 3: location and field both say (Remote)
+206997	remote	rule 3: location label (Remote)
+289183	remote	rule 3: title says (REMOTE)
+241297	hybrid	rule 4: three days a week in office is hybrid
+259028	onsite	rule 3: description is most specific, explicitly says on-site (factory floor, test lab)
+272736	remote	rule 3: field says (Remote)
+397013	remote	rule 3: field says (remote)
+216314	remote	rule 4: remote-first with travel for engagement is remote
+269221	remote	rule 3: location says (Remote)
+13931	remote	rule 4: fully remote within Poland with option to visit office is remote
+434824	remote	rule 3: field says (remote)
+368714	hybrid	rule 3: description is most specific, says hybrid role
+1042849	onsite	rule 3: title says (On Site)
+1310359	remote	rule 4: remote with possible occasional office visits is remote
+222920	hybrid	rule 3: field says (Hybrid)
+434178	onsite	rule 3: field says (onsite)
+236661	unclear	rule 6: location lists Berlin / Greece / Remote but unclear if offering modes or just locations
+290704	remote	rule 3: location and field both say (Remote), description confirms fully remote
+368717	remote	rule 3: location and field both say (remote)
+229854	remote	rule 3: location and field both say (Remote)
+273662	remote	rule 3: location label (Remote) outweighs field (OnSite)
+112823	onsite	rule 3: title says (Onsite), description explicitly says no remote work
+730985	remote	rule 3: location says (Remote)
+244779	hybrid	rule 3: location label (Hybrid) outweighs field (Remote)
+257402	remote	rule 3: title says (Remote)
+396400	remote	rule 3: field and description both say (fully remote)
+229523	remote	rule 3: title says (US Remote)
+313953	onsite	rule 3: title says (on site)
+369598	remote	rule 4: remote with geographic restriction is still remote
+405993	remote	rule 3: location and field both say (remote)
+351379	hybrid	rule 3: title mentions (Hybrid), description confirms
+245778	onsite	rule 3: field says (OnSite), description confirms 5 days onsite
+938758	hybrid	rule 3: title says (Hybrid), description confirms hybrid arrangements
+145497	remote,hybrid	rule 5: location offers choice (Remote/Hybrid if local to Maryland)
+254655	remote	rule 3: location and field both say (Remote)
+309067	hybrid	rule 3: title indicates hybrid, description confirms hybrid from Amsterdam office
+412520	remote	rule 4: remote with in-office events required for remote roles is remote
+263669	remote	rule 3: location says (Remote), field says (Remote)
+430105	remote	rule 3: location and field both say (remote)
+392051	remote	rule 3: location and field both say (remote)
+927880	remote	rule 3: location says (Home Office)
+156896	remote	rule 3: title says (Remote)
+435129	remote	rule 3: location and field both say (remote)
+468343	onsite	rule 3: title says (On-Site)
+408772	remote	rule 3: location label (Remote) outweighs field (hybrid)
+1303163	remote	rule 3: location says (US Remote)
+274282	remote	rule 3: title, location, and field all say (Remote)
+265413	hybrid	rule 3: field says (Hybrid), description confirms
+274285	hybrid	rule 3: field says (Hybrid), description confirms (can be remote but with timezone constraint suggests hybrid arrangement)
+416667	hybrid	rule 3: field says (hybrid)
+265099	remote	rule 3: location and field both say (Remote)
+222843	onsite	rule 3: field says (OnSite)
+165480	remote	rule 4: remote with quarterly onsites (occasional) is remote
+31095	remote,hybrid	rule 5: location offers choice (Remote US or Hybrid NYC metro)
+303899	remote,hybrid	rule 5: location offers choice (Remote/Hybrid if local to Maryland)
+828465	remote	rule 3: location says (Remote Location)
+320202	remote	rule 3: title and location both say (Work-from-Home and Work Remotely)
+15570	remote	rule 4: remote position with frequent travel is remote
+434329	onsite	rule 3: field says (onsite)
+433509	remote	rule 3: location and field both say (remote)
+260070	remote	rule 3: title, location, field all say (Remote)
+752139	hybrid	rule 3: title says (Hybrid), description confirms (3 days in office / 2 days remote)
+229504	remote	rule 3: title says (remote)
+338675	remote	rule 3: description explicitly says (This role is remote)
+420603	hybrid	rule 3: field says (hybrid)
+412479	remote	rule 3: field clarifies remote option from location choice
+176440	remote	rule 3: location says (Remote)
+270448	onsite	rule 3: title says (Onsite - Winnipeg)
+254613	remote	rule 3: location and field both say (Remote)
