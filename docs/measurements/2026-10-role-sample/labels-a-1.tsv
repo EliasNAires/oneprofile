@@ -1,0 +1,157 @@
+id	roles	reason
+599628	none	grocery chain checkout, not web work (company context)
+1329816	support-engineer	rule 2: leader's area is Technical Support
+968091	embedded-engineer	"Embedded Software Engineer" head
+1036492	data-engineer,ai-engineer	rule 1: two heads named, Data and AI
+274106	frontend-engineer	rule 5: Frontend decides over Software
+236655	ai-engineer	AI kind word, cf. AI member of technical staff
+266825	software-engineer	rule 8: bare head, Stablecoin is product not area
+2067	data-analyst	Data Analyst head, location read past
+1532658	frontend-engineer	Frontend head, location read past
+655931	data-scientist	rule 2: leader's area is Data Scientist
+99057	product-manager	rule 3: data product manager is a job read whole
+318188	frontend-engineer	Frontend Engineer head, team read past
+105476	enterprise-platform-developer	rule 4: Salesforce decides
+502489	product-manager	Product Manager head
+87244	robotics-engineer	Autonomy Engineer, perception work
+248012	full-stack-engineer	Full-stack Engineer head
+176894	full-stack-engineer	Full-stack Engineer head
+796330	none	rule 9: bare analyst head, no one kind of work
+508198	software-engineer	rule 7: Intern read past, bare Engineering (rule 8)
+428956	ai-engineer	rule 7: Stage read past, IA decides
+101159	business-analyst	Business Analyst head
+339671	software-engineer	bare Software Engineer
+256861	frontend-engineer	Frontend Engineer head, Lead is rank
+276513	mobile-engineer	Mobile Engineer head
+77845	qa-engineer	Test Automation Engineer, explicit example
+326779	data-analyst	Data Analyst head
+1309352	sales-engineer	Solutions Engineer, explicit example
+1484221	business-analyst	Systems Analyst, explicit example
+230273	forward-deployed-engineer	Forward Deployed Engineer head
+1107379	solutions-architect	Enterprise Architect, explicit example
+40810	solutions-architect	bare Solutions Architect, Account not a rule 6 sale word
+673469	qa-engineer	Quality Assurance Engineer
+706750	business-analyst	Business Analyst head, Mortgage domain read past
+926161	qa-engineer	QA Automation Engineer
+330388	none	rule 7: Intern read past, bare Machine Learning names no one job
+94890	business-analyst	Business Systems Engineer, explicit example
+1257069	enterprise-platform-developer	rule 4: ServiceNow decides
+437365	enterprise-platform-developer	rule 5: ServiceNow decides over Platform
+12843	support-engineer	IT Support Engineer
+435169	software-engineer	bare Software Engineer
+1174823	business-analyst	Systems Analyst, explicit example
+705401	backend-engineer	Backend Engineer decides, AI Platforms team read past
+1227701	systems-administrator	rule 7: Intern read past
+768286	support-engineer	Technical Support Engineer
+254807	software-engineer	bare Software Engineer, Data Acquisition is team
+109939	sales-engineer	Solutions Engineer, region read past
+591500	data-scientist	Data Scientist head
+810717	platform-engineer	Infrastructure kind word
+1268269	security-engineer	rule 2: leader's area is Cybersecurity
+49041	program-manager	Technical Program Manager, explicit example
+11300	embedded-engineer	Embedded kind word
+80808	research-scientist	Machine Learning Scientist: scientist head names research
+140775	enterprise-platform-developer	rule 4: ServiceNow decides
+1360904	network-engineer	Network Engineer head
+765954	software-engineer	bare Software Engineer, Flutter Studios is a team/brand name
+1119714	software-engineer	bare Software Engineer
+1494177	qa-engineer	parenthetical names the job: QA Engineer
+379771	data-engineer	rule 4: Data Architect decides
+257377	research-scientist	Research Scientist head
+216875	research-scientist	Research Engineer, explicit example
+395417	ai-engineer,machine-learning-engineer	rule 1: two heads named, AI and ML
+309425	security-engineer	Cloud Security Engineer, explicit example
+371259	business-analyst	Business Analyst head
+260126	platform-engineer	rule 2: leader's area is Platform
+925763	security-analyst	Security Analyst head
+399051	systems-administrator	System Administrator head
+276448	embedded-engineer	rule 2: leader's area is Flight Software Engineering, explicit example
+1442264	solutions-architect	Solution Architect head, location read past
+320849	software-engineer	rule 8: bare Developer, Java is a language not an area
+1473920	full-stack-engineer	Full Stack kind word decides
+425985	none	Robotics Technician, not engineering work (cf. mech and robotics tech)
+52687	research-scientist	Research Engineer, explicit example
+987100	network-engineer	rule 2: leader's area is Network Control
+4032	none	AI training freelance work, listed no-role kind
+979938	solutions-architect	Solutions Architect head, product name read past
+925870	product-manager	Technical Product Manager, explicit example
+337317	data-engineer	rule 5: Data Platform Engineer decides
+254839	forward-deployed-engineer	Forward Deployed Software Engineer
+650784	data-analyst	Reporting & Analytics work from data
+189594	solutions-architect	AI solutions architect exception collapses to here
+313810	security-analyst	SOC Analyst, explicit example
+276085	frontend-engineer	rule 2: leader's area is Frontend
+166855	systems-administrator	System Administrator head
+1275688	none	rule 9: Web Analyst not a listed analyst kind
+428678	network-engineer	Network Engineer head decides
+1244262	product-manager	Product Owner, explicit example
+1201359	research-scientist	Research Scientist head
+291316	software-engineer	rule 8: bare Engineering Manager, Billing is a team not a kind word
+391402	business-analyst	Business Analyst head
+505281	data-analyst	Data Analyst head, Research is domain qualifier
+89873	sales-engineer	AI Solutions Engineer, explicit example
+304238	software-engineer	rule 8: bare rank, Staff Engineer
+1476243	data-scientist	rule 3: Data Scientist is a job read whole
+253216	qa-engineer	SDET, explicit example
+566261	support-engineer	Service Desk Analyst, explicit example
+687107	program-manager	Technical Project Manager, explicit example
+267058	sales-engineer	Solution Engineer, explicit example
+111094	platform-engineer	Site Reliability Engineer
+245212	software-engineer	rule 8: leader's area Credit Risk is not a kind word, bare Engineering
+407181	program-manager	Project Manager head
+306448	embedded-engineer	rule 4: Embedded decides for the architect head
+270129	forward-deployed-engineer	Forward Deployed Engineer head
+705228	business-analyst	IT Business Analyst, explicit example
+1431840	network-engineer	network security exception (security-engineer rule 4 exception)
+620861	product-manager	AI Product Manager, explicit example
+307511	software-engineer	rule 8: bare Developer, C# is a language not an area
+412394	mobile-engineer	Android Developer, explicit example
+836465	enterprise-platform-developer	rule 4: ServiceNow decides whatever the head
+329572	solutions-architect	Solutions Architect head, SIEM is a product read past
+279701	none	reinsurance specialist, non-engineering leak
+655994	business-analyst	Business Analyst head
+1163572	embedded-engineer	Embedded kind word
+304051	software-engineer	bare Software Engineer, AI Data is a team
+672229	data-scientist	Data Scientist head
+1287845	enterprise-platform-developer	Salesforce Developer, explicit example
+733370	enterprise-platform-developer	rule 4: ServiceNow decides
+271180	backend-engineer	Backend Engineer head
+726103	frontend-engineer	Frontend Focus kind word
+242662	backend-engineer	Backend Engineer head, team read past
+409590	security-analyst	Defensive Security Analyst
+217066	backend-engineer	Backend kind word decides
+495659	none	rule 9: Systems Engineer ambiguous head, Cloud does not resolve it
+258537	program-manager	Program Manager head, domain read past
+268896	ai-engineer	AI Engineer head
+81567	program-manager	Technical Program Manager, explicit example
+292434	full-stack-engineer	Full Stack Developer head
+655872	data-scientist	rule 2: leader's area is Data Science
+1220463	embedded-engineer	Firmware Engineer, explicit example
+129919	sales-engineer	Solutions Engineer, explicit example
+946648	enterprise-platform-developer	rule 4: Salesforce decides whatever the head
+223961	backend-engineer	Backend Developer head
+1275463	security-analyst	Cybersecurity Operations Analyst, explicit example
+1352597	none	Product Specialist, sales/support leak not robotics engineering
+432859	qa-engineer	Software Development Engineer in Test, SDET pattern
+1167422	network-engineer	network security exception
+593579	enterprise-platform-developer	rule 4: Workday decides
+975541	program-manager	Scrum Master, explicit example
+929270	qa-engineer	Test Automation Engineer
+1277695	mobile-engineer	rule 2: leader's area is ReactNative
+407349	embedded-engineer	Embedded Software Engineer
+108902	mobile-engineer	Mobile names the area
+1276690	data-engineer	rule 4: Data decides
+18869	forward-deployed-engineer	Forward Deployed Engineer, AI area read past
+62531	platform-engineer	Platform Reliability Engineer
+1494691	security-engineer	Information Security Engineer
+226400	software-engineer	rule 8: bare CTO
+1169912	full-stack-engineer	Full Stack kind word decides
+387005	frontend-engineer	Frontend Software Engineer head
+1244131	platform-engineer	Azure cloud engineer
+227035	machine-learning-engineer	Machine Learning Engineer head, Platform team read past
+252240	forward-deployed-engineer	Forward Deployed Software Engineer
+591829	forward-deployed-engineer	Forward Deployed Engineer head
+734453	network-engineer	Network Operations Engineer
+675015	data-analyst	Reporting & Analytics work from data
+892732	systems-administrator	rule 8: bare IT, explicit example (an IT Manager)
+346025	data-scientist	Data Scientist head

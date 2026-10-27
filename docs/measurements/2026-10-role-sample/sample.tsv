@@ -1,0 +1,313 @@
+id	ats	drawn	roles	tail	normalized	title
+236655	ASHBY	ai-engineer	ai-engineer	no	applied ai member of technical staff	Member of Technical Staff, Applied AI
+268896	ASHBY	ai-engineer	ai-engineer	no	ai engineer	Staff AI Engineer
+189978	GREENHOUSE	ai-engineer	ai-engineer	no	ai engineer	AI Engineer
+4032	GREENHOUSE	ai-engineer	ai-engineer	no	ai coding specialist	Bash Coding Specialist - Freelance AI Trainer Project
+5652	GREENHOUSE	ai-engineer	ai-engineer	no	ai engineer	Lead AI Engineer
+397345	LEVER	ai-engineer	ai-engineer	yes	backend ai pessoa desenvolvedor	Pessoa Desenvolvedor Back-end Senior (AI Advocate)
+1246133	WORKDAY	ai-engineer	software-engineer,ai-engineer	no	software engineer | ai engineer	Senior Software Engineer / Senior AI Engineer
+1383118	WORKDAY	ai-engineer	ai-engineer	no	ai engineer	Staff Software Engineer - AI
+507636	WORKDAY	ai-engineer	ai-engineer	no	ai engineering	AI Engineering, Business Systems Intern- Summer 2027
+566978	WORKDAY	ai-engineer	ai-engineer	no	ai platform engineer	Lead Engineer - AI Platform
+568641	WORKDAY	ai-engineer	ai-engineer	no	ai developer	Senior Software Developer - AI Implementation
+217066	ASHBY	backend-engineer	backend-engineer	no	go backend developer	Senior Go Backend Developer (f/m/d)
+223961	ASHBY	backend-engineer	backend-engineer	no	backend developer	Backend Developer
+242662	ASHBY	backend-engineer	backend-engineer	no	backend engineer	Senior Backend Engineer, Growth & MSSP
+271180	ASHBY	backend-engineer	backend-engineer	no	backend engineer	Backend Engineer
+130915	GREENHOUSE	backend-engineer	backend-engineer	no	distributed systems engineer	Principal Java Engineer - Distributed Systems, Serverless - Elasticsearch
+14195	GREENHOUSE	backend-engineer	backend-engineer	no	data backend engineer	Senior Software Engineer, Data Backend (Ad Cloud)
+148156	GREENHOUSE	backend-engineer	backend-engineer	no	backend engineer	Software Engineer, Backend
+330991	GREENHOUSE	backend-engineer	backend-engineer	no	backend engineer	Software Development Engineer II – Back-End (Mission-Focused | ArcGIS)
+417301	LEVER	backend-engineer	backend-engineer	no	backend developer	Senior Backend Developer
+1047683	WORKDAY	backend-engineer	backend-engineer	no	backend developer	Backend Developer (Hybrid)
+705401	WORKDAY	backend-engineer	backend-engineer	no	backend engineer	Lead Java Python Backend Engineer – AI Platforms - Vice President
+226400	ASHBY	bare	software-engineer	no	technology	Chief Technology Officer
+245212	ASHBY	bare	software-engineer	no	engineering	Engineering Lead (Credit Risk)
+260342	ASHBY	bare	software-engineer	no	engineering	Engineering Lead
+266193	ASHBY	bare	software-engineer	no	engineer	Convexity - Founding Engineer (Relocation to San Francisco)
+267643	ASHBY	bare	software-engineer	no	developer	Senior Golang Developer
+187583	GREENHOUSE	bare	software-engineer	no	engineer	Staff Engineer (Ingeniero Staff) - Remote First
+291316	GREENHOUSE	bare	software-engineer	no	engineering	Engineering Manager, Billing
+304238	GREENHOUSE	bare	software-engineer	no	engineer	IC5 - Staff Engineer
+307373	GREENHOUSE	bare	software-engineer	no	tech lead	FR - Tech Lead Coremedia
+320849	GREENHOUSE	bare	software-engineer	no	developer	Senior Java Developer
+393801	LEVER	bare	software-engineer	no	developer	Lead Python Developer, New York
+414421	LEVER	bare	software-engineer	no	technical lead	Technical Lead
+418097	LEVER	bare	systems-administrator	no	administrator	Senior Linux Administrator
+428956	LEVER	bare	software-engineer	no	développeur	Stage - Développeur(euse) IA Générative (H/F/X) - Janvier 2027
+514575	WORKDAY	bare	software-engineer	no	engineering	Systems Integration - Engineering Intern
+101159	GREENHOUSE	business-analyst	business-analyst	no	business analyst	Senior Business Analyst
+94890	GREENHOUSE	business-analyst	business-analyst	no	business systems engineer	Business Systems Engineer, Oracle STP
+371259	LEVER	business-analyst	business-analyst	no	business analyst	Senior Business Analyst - Remote, Latin America
+391402	LEVER	business-analyst	business-analyst	no	business analyst	Business Analyst, Deploy Models
+1174823	WORKDAY	business-analyst	business-analyst	no	systems analyst	Systems Analyst
+1185555	WORKDAY	business-analyst	business-analyst	no	business systems analyst	Business Systems Analyst-SCM
+1198600	WORKDAY	business-analyst	business-analyst	yes	cybersecurity systems analyst	Cybersecurity Systems Analyst, Senior
+1484221	WORKDAY	business-analyst	business-analyst	no	systems analyst	Sr. Systems Analyst, Enterprise Applications
+655994	WORKDAY	business-analyst	business-analyst	yes	network business analyst	Sr. Business Analyst - Global Payment Network
+705228	WORKDAY	business-analyst	business-analyst	no	it business analyst	IT Business Lead Analyst
+706750	WORKDAY	business-analyst	business-analyst	no	business analyst	Business Sr. Analyst, AVP -Mortgage
+239809	ASHBY	data-analyst	data-analyst	no	business intelligence data analyst	Senior Data & BI Analyst
+2067	GREENHOUSE	data-analyst	data-analyst	no	data analyst	Senior Data Analyst in St. Louis, MO
+290546	GREENHOUSE	data-analyst	data-analyst	no	data analyst	1171 - Senior Data Analyst
+326779	GREENHOUSE	data-analyst	data-analyst	no	data analyst	Senior Data Analyst, Data Analytics
+400448	LEVER	data-analyst	data-analyst	no	data analyst	Senior Data Analyst, Pricing
+1499596	WORKDAY	data-analyst	data-analyst	no	data management analyst	Senior Lead Data Management Analyst
+505281	WORKDAY	data-analyst	data-analyst	yes	research data analyst	Research Data Analyst
+650784	WORKDAY	data-analyst	data-analyst	yes	data measurement reporting analyst	Data Measurement & Reporting Analyst - Cigna Healthcare
+675015	WORKDAY	data-analyst	data-analyst	yes	hr workforce reporting analytics analyst	HR Workforce Reporting & Analytics Analyst | Full Time
+731557	WORKDAY	data-analyst	data-analyst	no	analytics analyst	Analyst II, Analytics
+769310	WORKDAY	data-analyst	data-analyst	yes	data transformation analyst	Senior Transformation Analyst, Data & Value
+254807	ASHBY	data-engineer	data-engineer	no	data engineer	Software Engineer, Data Acquisition
+304051	GREENHOUSE	data-engineer	data-engineer	no	ai data engineer	Software Engineer, AI Data - Honolulu, HI, USA
+307511	GREENHOUSE	data-engineer	data-engineer	no	data developer	Middle C# Developer (Data Management)
+337317	GREENHOUSE	data-engineer	data-engineer	no	data platform engineer	Data Platform Engineer
+351389	GREENHOUSE	data-engineer	data-engineer	yes	cleared data architect	Cleared Sr. Data Architect (5719)
+379771	LEVER	data-engineer	data-engineer	no	data architect	[Job-30949] Principal Data Architect, Brazil
+1036492	WORKDAY	data-engineer	data-engineer	no	data engineer	Lead Engineer - Data & AI
+1128235	WORKDAY	data-engineer	data-engineer	no	cloud data engineer	Cloud Data Engineer
+1141034	WORKDAY	data-engineer	data-engineer	no	data architect	Senior Data Architect
+1276690	WORKDAY	data-engineer	data-engineer	yes	cloud data modelling engineer	Cloud Data Modelling Engineer
+1476243	WORKDAY	data-engineer	data-engineer	no	data ingénieur	Ingénieur Data Scientist F/H
+259166	ASHBY	data-scientist	data-scientist	no	data scientist	Staff Data Scientist - Marketing
+118642	GREENHOUSE	data-scientist	data-scientist	no	data scientist	Data Scientist, Proprietary Research
+331662	GREENHOUSE	data-scientist	data-scientist,data-engineer	no	data scientist | data researcher	Senior Data Scientist / Researcher (Client Relationships & Service)
+346025	GREENHOUSE	data-scientist	data-scientist	no	data scientist	Senior Data Scientist, Pharmacy
+359038	GREENHOUSE	data-scientist	data-scientist	no	data scientist	Lead Data Scientist, Revenue - Ads
+396995	LEVER	data-scientist	data-scientist	no	data scientist	Lead Data Scientist
+591500	WORKDAY	data-scientist	data-scientist	no	data scientist	Data Scientist, Sr. Specialist, Supply Risk Analytics
+655872	WORKDAY	data-scientist	data-scientist	no	data science	Manager Data Science - Global Payment Network AI Foundations
+655931	WORKDAY	data-scientist	data-scientist	no	data scientist	Manager, Data Scientist -Advanced Recommenders and Personalization Systems (Transformers, LLMs & Reinforcement Learning)
+672229	WORKDAY	data-scientist	data-scientist	no	data scientist	Senior Data Scientist
+763523	WORKDAY	data-scientist	ai-engineer,data-scientist	no	ai engineer | data scientist	AI Engineer / Data Scientist Expérimenté F/H
+276448	ASHBY	embedded-engineer	embedded-engineer	no	flight software engineer	Director of Flight Software Engineering
+11300	GREENHOUSE	embedded-engineer	embedded-engineer	no	embedded engineer	Senior Embedded NixOS Engineer
+306448	GREENHOUSE	embedded-engineer	embedded-engineer	yes	embedded field application engineer	Senior Field Application Engineer – Embedded Solutions Architect
+407349	LEVER	embedded-engineer	embedded-engineer	no	embedded software engineer	Senior Embedded Software Engineer
+1163572	WORKDAY	embedded-engineer	embedded-engineer	yes	automotive embedded engineer	Automotive Embedded Engineer
+1220463	WORKDAY	embedded-engineer	embedded-engineer	no	firmware engineer	Firmware Engineer
+1221443	WORKDAY	embedded-engineer	embedded-engineer	no	systems software engineer	Senior System Software Engineer - SoC Power
+513530	WORKDAY	embedded-engineer	embedded-engineer	no	embedded software engineer	Senior Engineer, Embedded Software
+615102	WORKDAY	embedded-engineer	embedded-engineer	no	firmware engineer	Sr. Engineer, Firmware & Embedded Software
+928699	WORKDAY	embedded-engineer	embedded-engineer	no	storage systems software engineer	Storage Systems/Software Engineer
+968091	WORKDAY	embedded-engineer	embedded-engineer	yes	digital embedded software engineer	Staff Digital Embedded Software Engineer
+105476	GREENHOUSE	enterprise-platform-developer	enterprise-platform-developer	yes	salesforce experience architect	Salesforce Experience Architect, AI and Agentforce (Solution Architect)
+140775	GREENHOUSE	enterprise-platform-developer	enterprise-platform-developer	no	servicenow developer	Sr. ServiceNow Developer
+430106	LEVER	enterprise-platform-developer	enterprise-platform-developer	no	salesforce developer	Salesforce Developer
+1257069	WORKDAY	enterprise-platform-developer	enterprise-platform-developer	yes	servicenow pod technology	Americas Delivery Center ServiceNow Pod Lead-Technology
+1287845	WORKDAY	enterprise-platform-developer	enterprise-platform-developer	no	salesforce developer	Salesforce Developer
+437365	WORKDAY	enterprise-platform-developer	enterprise-platform-developer	yes	it servicenow platform engineer	IT ServiceNow Platform Engineer, Senior (952)
+593579	WORKDAY	enterprise-platform-developer	enterprise-platform-developer	yes	workday integrations analyst	Analyst – Workday Integrations & Workato
+733370	WORKDAY	enterprise-platform-developer	enterprise-platform-developer	no	servicenow technical consultant	Senior ServiceNow Technical Consultant (on-site Erskine)
+836465	WORKDAY	enterprise-platform-developer	enterprise-platform-developer	no	servicenow business analyst	ServiceNow Business Analyst
+946648	WORKDAY	enterprise-platform-developer	enterprise-platform-developer	no	salesforce	Software Development Manager, Salesforce
+957734	WORKDAY	enterprise-platform-developer	enterprise-platform-developer	no	workday engineer	Staff Workday Engineer
+230273	ASHBY	forward-deployed-engineer	forward-deployed-engineer	no	forward deployed engineer	Forward Deployed Engineer, Agentic Platform (Korea)
+252240	ASHBY	forward-deployed-engineer	forward-deployed-engineer	no	forward deployed software engineer	Senior Forward Deployed Software Engineer
+254839	ASHBY	forward-deployed-engineer	forward-deployed-engineer	no	forward deployed software engineer	Forward Deployed Software Engineer - SF
+267654	ASHBY	forward-deployed-engineer	forward-deployed-engineer	no	forward deployed engineer	Forward Deployed Engineer
+270129	ASHBY	forward-deployed-engineer	forward-deployed-engineer	no	forward deployed engineer	Founding Forward Deployed Engineer
+18869	GREENHOUSE	forward-deployed-engineer	forward-deployed-engineer	no	forward deployed engineer	Forward Deployed Engineer - AI
+351347	GREENHOUSE	forward-deployed-engineer	forward-deployed-engineer	no	forward deployed engineer	Forward Deployed Engineer (EMEA)
+98275	GREENHOUSE	forward-deployed-engineer	forward-deployed-engineer	no	forward deployed engineer	Forward Deployed Engineer III (6706)
+384749	LEVER	forward-deployed-engineer	forward-deployed-engineer	no	forward deployed engineer	Forward Deployed Engineer
+1123468	WORKDAY	forward-deployed-engineer	forward-deployed-engineer	no	forward deployed engineer	Forward Deployed Engineer - Vice President
+591829	WORKDAY	forward-deployed-engineer	forward-deployed-engineer	no	forward deployed engineer	Forward Deployed Engineer (Principal)
+256861	ASHBY	frontend-engineer	frontend-engineer	no	frontend engineer	Lead Frontend Engineer
+274106	ASHBY	frontend-engineer	frontend-engineer	no	frontend engineer	Senior Frontend Software Engineer
+276085	ASHBY	frontend-engineer	frontend-engineer	no	frontend engineer	Manager, Engineering - Frontend
+165719	GREENHOUSE	frontend-engineer	frontend-engineer	no	frontend engineer	Software Engineer II - Front End
+318188	GREENHOUSE	frontend-engineer	frontend-engineer	no	frontend engineer	Frontend Engineer - KYC
+35381	GREENHOUSE	frontend-engineer	frontend-engineer	no	web developer	Wordpress Web Developer at CFO Insights
+387005	LEVER	frontend-engineer	frontend-engineer	no	frontend engineer	Sr. Frontend Software Engineer
+1275688	WORKDAY	frontend-engineer	frontend-engineer	no	web analyst	IN-Manager- Web Analyst _D&A-Advisory-Bangalore
+1532658	WORKDAY	frontend-engineer	frontend-engineer	no	frontend engineer	Frontend Software Development Engineer - Mexico
+599628	WORKDAY	frontend-engineer	frontend-engineer	no	frontend	Front End Lead
+726103	WORKDAY	frontend-engineer	frontend-engineer	no	frontend engineer	Software Engineer (Frontend Focus) | E-commerce
+219824	ASHBY	full-stack-engineer	full-stack-engineer	no	full stack engineer	Full-Stack Software Engineer
+248012	ASHBY	full-stack-engineer	full-stack-engineer	no	full stack engineer	Senior Full-stack Engineer
+318921	ASHBY	full-stack-engineer	full-stack-engineer	no	full stack engineer	Senior Full-stack Engineer (NextJS, Java, AI-native)
+176894	GREENHOUSE	full-stack-engineer	full-stack-engineer	no	full stack engineer	Full-stack Engineer (Python + GCP)
+292434	GREENHOUSE	full-stack-engineer	full-stack-engineer	no	full stack developer	Full Stack Developer, Digital Services
+46309	GREENHOUSE	full-stack-engineer	full-stack-engineer	no	full stack engineer	Senior Full Stack Engineer
+384135	LEVER	full-stack-engineer	full-stack-engineer	no	ai product engineer	Senior AI Product Engineer | REMOTE
+1169912	WORKDAY	full-stack-engineer	full-stack-engineer	no	full stack concepteur développeur	Concepteur Développeur JAVA Full Stack H/F
+1473920	WORKDAY	full-stack-engineer	full-stack-engineer	no	full stack engineer	Senior Engineer - Java Full Stack
+657332	WORKDAY	full-stack-engineer	full-stack-engineer	no	full stack engineer	Full Stack Engineer 4 (Java, AWS)
+657476	WORKDAY	full-stack-engineer	full-stack-engineer	no	full stack engineer	Full-Stack Engineer 4 (Java, Python, AWS, Spark)
+220838	ASHBY	machine-learning-engineer	machine-learning-engineer	no	machine learning engineer	Software Engineer - ML Framework
+227035	ASHBY	machine-learning-engineer	machine-learning-engineer	no	machine learning engineer	Machine Learning Engineer, Platform
+263717	ASHBY	machine-learning-engineer	machine-learning-engineer	yes	machine learning platform member of technical staff	Member of Technical Staff, ML Platform
+104616	GREENHOUSE	machine-learning-engineer	machine-learning-engineer	no	machine learning infrastructure engineer	ML Infrastructure Engineer
+171968	GREENHOUSE	machine-learning-engineer	machine-learning-engineer	no	machine learning engineer | applied scientist	Machine Learning Engineer / Applied Scientist, Prediction & Planning
+19821	GREENHOUSE	machine-learning-engineer	machine-learning-engineer	no	machine learning engineer	Senior Machine Learning Engineer
+330388	GREENHOUSE	machine-learning-engineer	machine-learning-engineer	no	machine learning intern	Machine Learning Intern
+395417	LEVER	machine-learning-engineer	machine-learning-engineer	no	ai machine learning	AI/ML Lead
+571471	WORKDAY	machine-learning-engineer	machine-learning-engineer	no	ai and machine learning engineer	AI and ML Engineer, Lead
+655701	WORKDAY	machine-learning-engineer	machine-learning-engineer	no	machine learning engineer	Senior Manager, Machine Learning Engineer (People Leader)
+657661	WORKDAY	machine-learning-engineer	machine-learning-engineer	no	machine learning engineer	Staff Software Engineer - Machine Learning
+227570	ASHBY	mobile-engineer	mobile-engineer	no	android engineer	Senior Android Engineer
+245258	ASHBY	mobile-engineer	mobile-engineer	no	ios engineer	Senior iOS Engineer
+276513	ASHBY	mobile-engineer	mobile-engineer	no	mobile engineer	Senior Mobile Engineer (Food Tracking)
+101808	GREENHOUSE	mobile-engineer	mobile-engineer	no	android engineer	Android Engineer
+108902	GREENHOUSE	mobile-engineer	mobile-engineer	no	mobile engineer	Senior / Staff Software Engineer, Mobile — Core (Account & Risk)
+209515	GREENHOUSE	mobile-engineer	mobile-engineer	no	android tech lead	Tech Lead, Android Core Product - Lyon, France
+209555	GREENHOUSE	mobile-engineer	mobile-engineer	no	android tech lead	Tech Lead, Android Core Product - Poznań, Poland
+412394	LEVER	mobile-engineer	mobile-engineer	no	android developer	Senior Android Developer (Remote)
+1277695	WORKDAY	mobile-engineer	mobile-engineer	no	mobile	ETIC, Mobile Manager - ReactNative
+470945	WORKDAY	mobile-engineer	mobile-engineer	yes	security mobile engineer	Lead Security Mobile Engineer
+765954	WORKDAY	mobile-engineer	mobile-engineer	no	flutter engineer	Software Engineer - Flutter Studios, Hybrid
+104794	GREENHOUSE	network-engineer	network-engineer	no	network software engineer	Staff Network Software Engineer
+16962	GREENHOUSE	network-engineer	network-engineer	no	network engineer	Network Engineer
+286917	GREENHOUSE	network-engineer	network-engineer	no	network engineer	Senior Software Engineer I, Network Products + LBaaS
+428678	LEVER	network-engineer	network-engineer	no	cloud network engineer	Senior Cloud Network Engineer
+1164295	WORKDAY	network-engineer	network-engineer	no	network operations engineer	Network Operations Engineer
+1167422	WORKDAY	network-engineer	network-engineer	no	network security specialist	Network Security Specialist
+1309265	WORKDAY	network-engineer	network-engineer	no	network infrastructure engineer	Senior Software Engineer- Network Infrastructure
+1360904	WORKDAY	network-engineer	network-engineer	no	network engineer	Network Engineer
+1431840	WORKDAY	network-engineer	network-engineer	no	network security specialist	Network Security Specialist Senior (SWG)
+734453	WORKDAY	network-engineer	network-engineer	no	network operations engineer	Staff Network Operations Engineer
+987100	WORKDAY	network-engineer	network-engineer	no	network engineer	Chief Engineer / Head of Architecture & Engineering — Network Control Japan
+249685	ASHBY	platform-engineer	platform-engineer	no	platform engineer	Principal Engineer - Platform & Data
+260126	ASHBY	platform-engineer	platform-engineer	no	platform engineer	Engineering Manager, Platform
+111094	GREENHOUSE	platform-engineer	platform-engineer	no	site reliability engineer	Site Reliability Engineer III
+279701	GREENHOUSE	platform-engineer	platform-engineer	yes	platform ceded reinsurance specialist	Ceded Reinsurance Specialist, Platform Partner Syndicates
+62531	GREENHOUSE	platform-engineer	platform-engineer	no	platform reliability engineer	Senior Platform Reliability Engineer
+380326	LEVER	platform-engineer	platform-engineer	no	devops engineer	DevOps Engineer
+1195953	WORKDAY	platform-engineer	platform-engineer	no	site reliability engineer	Sr Staff Site Reliability Engineer
+495659	WORKDAY	platform-engineer	platform-engineer	no	cloud systems engineer	Sr. Cloud Systems Engineer
+733193	WORKDAY	platform-engineer	platform-engineer	no	platform infrastructure architect	Infrastructure / Platform Architect (Solution Design Team)
+763355	WORKDAY	platform-engineer	platform-engineer	no	cloud engineer	AWS Cloud Engineer (H/F)
+810717	WORKDAY	platform-engineer	platform-engineer	no	infrastructure engineer	Engineer - Infrastructure Services N 4A
+226020	ASHBY	product-manager	product-manager	no	ai technical product manager	Technical Product Manager - AI Investing App
+230336	ASHBY	product-manager	product-manager	no	product manager	Product Manager, Managed North
+204131	GREENHOUSE	product-manager	product-manager	no	product owner	[OVERDARE] Product Owner (PO)
+291326	GREENHOUSE	product-manager	product-manager	no	product manager	Senior Product Manager, Revenue Cycle
+99057	GREENHOUSE	product-manager	product-manager	no	data product manager	Staff Data Product Manager
+380631	LEVER	product-manager	product-manager	no	platform product manager	Principal Product Manager - Compliance / AML / Risk Platform
+1244262	WORKDAY	product-manager	product-manager	no	product owner	Product Owner - Manager
+502489	WORKDAY	product-manager	product-manager	no	product manager	Product Manager - athenaClinicals
+620861	WORKDAY	product-manager	product-manager	no	ai product manager	AI Product Manager
+911103	WORKDAY	product-manager	product-manager	no	ai product manager	Principal Product Manager, AI
+925870	WORKDAY	product-manager	product-manager	no	technical product manager	Technical Product Manager - Kubernetes & Containers
+258537	ASHBY	program-manager	program-manager	yes	payment program manager	Payment Program Manager – Card Issuing (m/f/d)
+103218	GREENHOUSE	program-manager	program-manager	no	technical program manager	Senior Technical Program Manager, Earth Observation
+30838	GREENHOUSE	program-manager	program-manager	yes	enterprise project manager	Enterprise Project Manager
+49041	GREENHOUSE	program-manager	program-manager	no	technical program manager	Staff Technical Program Manager, Machine Development
+81567	GREENHOUSE	program-manager	program-manager	no	platform technical program manager	Senior Staff Technical Program Manager - Compute Platform
+407181	LEVER	program-manager	program-manager	no	project manager	Project Manager - Senior / Senior Project Manager
+678491	WORKDAY	program-manager	program-manager	no	technical program manager	2025124 Technical Program Manager
+687107	WORKDAY	program-manager	program-manager	yes	is technical project manager	Senior IS Technical Project Manager - Project Management Office
+810963	WORKDAY	program-manager	program-manager	no	scrum master	Scrum Master 4B
+929506	WORKDAY	program-manager	program-manager	no	program manager	CPQ Program Manager
+975541	WORKDAY	program-manager	program-manager	yes	agile coordinator scrum master	Agile Coordinator / Scrum Master
+253216	ASHBY	qa-engineer	qa-engineer	no	test engineer	Senior Software Development Engineer in Test (SDET), QA - AI Systems
+167933	GREENHOUSE	qa-engineer	qa-engineer	no	test engineer	Senior Test Engineer – Alarms
+214507	GREENHOUSE	qa-engineer	qa-engineer	yes	software quality operations specialist	Software Quality Operations Specialist - European Specialism
+77845	GREENHOUSE	qa-engineer	qa-engineer	no	test automation engineer	Test Automation Engineer
+432859	LEVER	qa-engineer	qa-engineer	no	test engineer	Software Development Engineer in Test
+1206035	WORKDAY	qa-engineer	qa-engineer	no	software test engineer	Software Test Engineer - Surgical Robotics (Cambridge, MA)
+1494177	WORKDAY	qa-engineer	qa-engineer	no	qa engineer	Senior Associate, Solution Engineering (QA Engineer)
+673469	WORKDAY	qa-engineer	qa-engineer	no	qa engineer	Quality Assurance Engineer
+699223	WORKDAY	qa-engineer	qa-engineer	yes	regional qa engineer	Regional QA Engineer, Integrated Solutions
+926161	WORKDAY	qa-engineer	qa-engineer	no	qa automation engineer	QA Automation Engineer - Networking (Python, L2/L3 Protocols)
+929270	WORKDAY	qa-engineer	qa-engineer	no	test automation engineer	Test Automation Engineer III
+216875	ASHBY	research-scientist	research-scientist	no	machine learning research engineer	Machine Learning Research Engineer (MLRE) - Research
+248694	ASHBY	research-scientist	research-scientist	no	research scientist | research engineer	Research Scientist / Engineer – Training Infrastructure
+257377	ASHBY	research-scientist	research-scientist	no	research scientist	Research Scientist – Reinforcement Learning (RL)
+265479	ASHBY	research-scientist	research-scientist	no	research scientist	Senior Research Scientist (m/f/d)
+311031	GREENHOUSE	research-scientist	research-scientist	no	machine learning scientist	Senior or Principal Machine Learning Scientist
+52687	GREENHOUSE	research-scientist	research-scientist	no	ai research engineer	Senior AI Research Engineer
+80808	GREENHOUSE	research-scientist	research-scientist	no	machine learning scientist	Senior Machine Learning Scientist
+1156816	WORKDAY	research-scientist	research-scientist	no	vulnerability research engineer	Senior Vulnerability Research Engineer
+1201359	WORKDAY	research-scientist	research-scientist	no	research scientist	Senior Research Scientist
+1470810	WORKDAY	research-scientist	research-scientist	yes	quantitative mbs research analyst	Senior Quantitative MBS Research Analyst
+796330	WORKDAY	research-scientist	research-scientist	yes	research development technology management analyst	Research & Development Technology Management Analyst
+234452	ASHBY	robotics-engineer	robotics-engineer	no	robotics software engineer	Robotics Software Engineer
+327898	ASHBY	robotics-engineer	robotics-engineer	no	simulation software engineer	Simulation Software Engineer
+178478	GREENHOUSE	robotics-engineer	robotics-engineer	yes	robotics perception engineer	Robotics Perception Engineer I/II – Perception Systems & Integration
+41067	GREENHOUSE	robotics-engineer	robotics-engineer	yes	robotics specialist field engineer	Staff Specialist Field Engineer, Robotics
+87244	GREENHOUSE	robotics-engineer	robotics-engineer	no	autonomy engineer	Staff Autonomy Engineer, Perception
+386676	LEVER	robotics-engineer	robotics-engineer	no	robotics autonomy engineer	Robotics Autonomy Engineer, Perception
+425985	LEVER	robotics-engineer	robotics-engineer	no	robotics operations technician	Robotics Operations Technician
+1352597	WORKDAY	robotics-engineer	robotics-engineer	no	robotics product specialist	Robotics Product Specialist
+567468	WORKDAY	robotics-engineer	robotics-engineer	no	autonomy software systems engineer	HLS Autonomy Software Systems Engineer ll - Lunar Permanence
+623741	WORKDAY	robotics-engineer	robotics-engineer	yes	autonomy systems engineer	Autonomy Systems Engineer
+723421	WORKDAY	robotics-engineer	robotics-engineer	no	robotics software engineer	Lead Robotics Software Engineer - IoT
+261206	ASHBY	sales-engineer	sales-engineer	no	ai solutions engineer	AI Solutions Engineer (Tel Aviv)
+267058	ASHBY	sales-engineer	sales-engineer	no	solution engineer	Principal Solution Engineer - FSI
+106311	GREENHOUSE	sales-engineer	sales-engineer	yes	product presales engineer	Product Pre-Sales Engineer, AI
+109939	GREENHOUSE	sales-engineer	sales-engineer	no	solutions engineer	Solutions Engineer, APAC
+129919	GREENHOUSE	sales-engineer	sales-engineer	no	solutions engineer	Senior Solutions Engineer (Enterprise & Federal)
+89873	GREENHOUSE	sales-engineer	sales-engineer	no	ai solutions engineer	Senior AI Solutions Engineer for Revenue & Go-To-Market
+398584	LEVER	sales-engineer	sales-engineer	no	solutions engineer	Senior Solutions Engineer
+1220803	WORKDAY	sales-engineer	sales-engineer	no	solution engineer	Senior Solution Engineer
+1309352	WORKDAY	sales-engineer	sales-engineer	no	account solution engineer	Account Solution Engineer,Tableau
+1329809	WORKDAY	sales-engineer	sales-engineer	no	technical account manager	Technical Account Manager
+444115	WORKDAY	sales-engineer	sales-engineer	yes	solutions platform engineer	Solutions Platform Engineer
+313810	ASHBY	security-analyst	security-analyst	no	soc analyst	SOC Analyst
+191759	GREENHOUSE	security-analyst	security-analyst	no	information security analyst	Information Security Analyst
+209024	GREENHOUSE	security-analyst	security-analyst	no	security analyst	Sr. Security Analyst
+409590	LEVER	security-analyst	security-analyst	yes	defensive security analyst	Defensive Security Analyst
+1041211	WORKDAY	security-analyst	security-analyst	no	information security analyst	Information Security Analyst
+1247889	WORKDAY	security-analyst	security-analyst	yes	security soc analyst	SOC Analyst — Security Operations
+1273221	WORKDAY	security-analyst	security-analyst	yes	info security governance analyst	Info Security Governance Analyst
+1275463	WORKDAY	security-analyst	security-analyst	no	cybersecurity operations analyst	Associate - Cybersecurity Operations Analyst (L1)
+1295867	WORKDAY	security-analyst	security-analyst	no	cybersecurity analyst	Cyber Security Analyst III (Gestão de Identidades)
+697298	WORKDAY	security-analyst	security-analyst	no	information security analyst	Information Security Analyst (f/m/x)
+925763	WORKDAY	security-analyst	security-analyst	no	security analyst	Security Analyst
+266179	ASHBY	security-engineer	security-engineer	no	identity engineer	Scribd - Senior SWE (Identity)
+275995	ASHBY	security-engineer	security-engineer	no	it security engineer	IT Security Engineer
+180966	GREENHOUSE	security-engineer	security-engineer	no	product security engineer	Senior Product Security Engineer
+206985	GREENHOUSE	security-engineer	security-engineer	no	security engineer	Security Engineer
+309425	GREENHOUSE	security-engineer	security-engineer	no	cloud security engineer	Senior Cloud Security Engineer
+434689	LEVER	security-engineer	security-engineer	no	security engineer	Security Engineer
+1268269	WORKDAY	security-engineer	security-engineer	no	cybersecurity	Director Cybersecurity
+1494691	WORKDAY	security-engineer	security-engineer	no	information security engineer	Senior Information Security Engineer
+658024	WORKDAY	security-engineer	security-engineer	no	security specialist	Security Specialist III
+732906	WORKDAY	security-engineer	security-engineer	no	security	Oracle Cloud Security Manager
+823745	WORKDAY	security-engineer	security-engineer	yes	operational technology security specialist	Operational Technology Security Specialist
+266825	ASHBY	software-engineer	software-engineer	no	software engineer	Software Engineer, Stablecoin
+272930	ASHBY	software-engineer	software-engineer	no	software engineer	Director, Software Engineering
+297813	GREENHOUSE	software-engineer	software-engineer	no	software development	Manager, Software Development (EMS BMS Technologies)
+339671	GREENHOUSE	software-engineer	software-engineer	no	software engineer	Senior Software Engineer
+38418	GREENHOUSE	software-engineer	software-engineer	no	software engineer	Staff Software Engineer
+435169	LEVER	software-engineer	software-engineer	no	software engineer	Senior Software Engineer
+1071546	WORKDAY	software-engineer	software-engineer	no	software engineer	Senior Software Engineer
+1119714	WORKDAY	software-engineer	software-engineer	no	software engineer	Software Engineer
+1244131	WORKDAY	software-engineer	software-engineer	no	engineer	Azure Engineer Senior Associate (AC Manila)
+508198	WORKDAY	software-engineer	software-engineer	no	engineering	Engineering Intern
+931918	WORKDAY	software-engineer	software-engineer	no	developer	Oracle Database Developer II (PL/SQL)
+228998	ASHBY	solutions-architect	solutions-architect	no	solutions architect	Solutions Architect
+189594	GREENHOUSE	solutions-architect	solutions-architect	no	specialist solutions architect	Sr. Specialist Solutions Architect -AI&ML Engineer
+329572	GREENHOUSE	solutions-architect	solutions-architect	no	solutions architect	Senior Solutions Architect - SIEM
+40810	GREENHOUSE	solutions-architect	solutions-architect	no	account solution architect	Account Solution Architect
+376483	LEVER	solutions-architect	solutions-architect	no	architect	Architect - R01568834
+1107379	WORKDAY	solutions-architect	solutions-architect	no	enterprise architect	Enterprise Architect for Financial Crimes
+1172873	WORKDAY	solutions-architect	solutions-architect	no	technical architect	Senior Technical Architect
+1442264	WORKDAY	solutions-architect	solutions-architect	no	solution architect	Solution Architect - Columbia, MD
+478592	WORKDAY	solutions-architect	solutions-architect	no	analytics solution architect	Analytics Solution Architect
+810726	WORKDAY	solutions-architect	solutions-architect	no	architect	Architect - Enterprise Application - SAP N 4D
+979938	WORKDAY	solutions-architect	solutions-architect	no	solutions architect	Sr. Solutions Architect - Enovia 3DExperience
+265380	ASHBY	support-engineer	support-engineer	no	technical support engineer	Senior Technical Support Engineer
+110727	GREENHOUSE	support-engineer	support-engineer	no	support analyst	Senior Support Analyst
+12843	GREENHOUSE	support-engineer	support-engineer	no	it support engineer	IT Support Engineer
+137969	GREENHOUSE	support-engineer	support-engineer	no	technical support engineer	Staff Technical Support Engineer
+386345	LEVER	support-engineer	support-engineer	no	technical support engineer	TECHNICAL SUPPORT ENGINEER-10010
+1025797	WORKDAY	support-engineer	support-engineer	yes	cargowise support engineer	Cargowise Support Engineer
+1119862	WORKDAY	support-engineer	support-engineer	no	technical support analyst	Technical Support Analyst (Hybrid)
+1329816	WORKDAY	support-engineer	support-engineer	no	technical support	Manager, Technical Support
+566261	WORKDAY	support-engineer	support-engineer	no	service desk analyst	Service Desk Analyst
+639354	WORKDAY	support-engineer	support-engineer	no	it support	IT Support Tech I
+768286	WORKDAY	support-engineer	support-engineer	no	technical support engineer	Technical Support Engineer I
+272794	ASHBY	systems-administrator	systems-administrator	no	it	IT Lead
+133955	GREENHOUSE	systems-administrator	systems-administrator	no	it systems engineer	IT Systems Engineer
+166855	GREENHOUSE	systems-administrator	systems-administrator	no	it systems administrator	Senior IT System Administrator
+194628	GREENHOUSE	systems-administrator	systems-administrator	no	it operations engineer	Associate IT Operations Engineer
+399051	LEVER	systems-administrator	systems-administrator	no	systems administrator	System Administrator I
+1227701	WORKDAY	systems-administrator	systems-administrator	no	systems administrator	Systems Administrator Intern
+1397713	WORKDAY	systems-administrator	systems-administrator	no	it engineer	Lead IT Engineer - Aegon AM
+765925	WORKDAY	systems-administrator	systems-administrator	yes	hr technology systems administrator	HR Technology System Administrator
+795623	WORKDAY	systems-administrator	systems-administrator	no	systems administrator	System Administrator I
+892732	WORKDAY	systems-administrator	systems-administrator	no	it	Senior Manager, IT - Bill to Cash
+926372	WORKDAY	systems-administrator	systems-administrator	yes	maconomy systems administrator	Maconomy Systems Administrator

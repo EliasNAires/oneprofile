@@ -1,0 +1,157 @@
+id	roles	reason
+38418	software-engineer	rule 8: bare software engineer, rank stripped
+926372	systems-administrator	bare administrator, Maconomy not a listed platform
+430106	enterprise-platform-developer	rule 4: Salesforce decides
+35381	frontend-engineer	"web developer" listed, Wordpress doesn't move it
+19821	machine-learning-engineer	bare ML engineer, rank stripped
+263717	machine-learning-engineer	rule 5: ML before Platform
+386676	robotics-engineer	autonomy and perception name robotics
+30838	program-manager	project manager, Enterprise stripped
+655701	machine-learning-engineer	ML engineer head, rank and People Leader stripped
+1185555	business-analyst	"business systems analyst" listed
+167933	qa-engineer	"test engineer" listed
+1383118	ai-engineer	rule 4: AI before the engineer head
+137969	support-engineer	"technical support engineer" listed
+272794	systems-administrator	rule 2: bare IT is the area led
+290546	data-analyst	bare data analyst, rank and code stripped
+657661	machine-learning-engineer	rule 5: Machine Learning before the head
+261206	sales-engineer	"ai solutions engineer" listed
+219824	full-stack-engineer	"full stack" names the head
+699223	qa-engineer	"QA engineer" head, region stripped
+16962	network-engineer	"network engineer" listed
+566978	ai-engineer	rule 5: AI platform engineer
+148156	backend-engineer	"backend" suffix decides over bare engineer
+398584	sales-engineer	"solutions engineer" listed
+204131	product-manager	"product owner" listed
+1309265	network-engineer	network names the work even as software
+567468	robotics-engineer	autonomy names robotics, program/place stripped
+1195953	platform-engineer	"site reliability engineer" listed
+397345	backend-engineer	back-end desenvolvedor, parenthetical ignored
+228998	solutions-architect	bare "solutions architect"
+209555	mobile-engineer	Android names the work, place stripped
+810963	program-manager	"scrum master" listed
+957734	enterprise-platform-developer	"workday engineer" listed
+1206035	qa-engineer	"software test engineer" listed, product/place stripped
+795623	systems-administrator	"system administrator" head, rank stripped
+331662	data-scientist	data scientist head decides over bare researcher
+615102	embedded-engineer	"firmware & embedded software" listed
+180966	security-engineer	"product security engineer" listed
+234452	robotics-engineer	"robotics software engineer" listed
+470945	security-engineer	security kind word over mobile
+267654	forward-deployed-engineer	listed title
+110727	support-engineer	support kind word over bare analyst
+1246133	software-engineer,ai-engineer	rule 1: two heads, Software/AI Engineer
+733193	platform-engineer	infrastructure/platform architect pattern
+928699	platform-engineer	"storage...engineer" listed
+1172873	solutions-architect	"technical architect" listed
+380631	product-manager	rule 3: job read whole, area stripped
+104794	network-engineer	network names the work even as software
+171968	machine-learning-engineer	rule 1 heads coincide: applied scientist is ML engineer
+178478	robotics-engineer	"perception engineer" listed, rank/place stripped
+165719	frontend-engineer	Front End suffix decides over bare engineer
+265380	support-engineer	"technical support engineer" listed
+307373	software-engineer	bare tech lead, Coremedia not a listed platform
+639354	support-engineer	IT support variant, rank stripped
+1164295	network-engineer	network operations names the work
+98275	forward-deployed-engineer	listed title, code stripped
+763355	platform-engineer	"cloud engineer" listed
+191759	security-analyst	"information security analyst" listed
+259166	data-scientist	bare data scientist, team stripped
+723421	robotics-engineer	"robotics software engineer" listed, IoT stripped
+245258	mobile-engineer	"iOS engineer" listed
+1221443	embedded-engineer	"systems software engineer" listed
+810726	enterprise-platform-developer	rule 4: SAP decides
+206985	security-engineer	bare "security engineer"
+414421	software-engineer	bare technical lead, no area named
+1295867	security-analyst	cyber security analyst, rank/team stripped
+230336	product-manager	bare product manager, team stripped
+823745	security-engineer	security kind word over specialist
+226020	product-manager	rule 3: technical product manager read whole
+1025797	support-engineer	support engineer head, product name stripped
+297813	software-engineer	rule 2: area led is software development
+929506	program-manager	program manager head, CPQ stripped
+1071546	software-engineer	bare software engineer, rank stripped
+1329809	sales-engineer	"technical account manager" listed
+209515	mobile-engineer	Android names the work, place stripped
+731557	data-analyst	"analytics analyst" listed, reordered
+1198600	security-analyst	cybersecurity kind word over systems analyst
+267643	software-engineer	bare developer, Golang is a language not an area
+623741	robotics-engineer	"autonomy systems engineer" listed
+444115	platform-engineer	platform engineer head, solutions names no sale
+227570	mobile-engineer	"Android engineer" listed, rank stripped
+266193	software-engineer	bare engineer, founding is a stage not work
+46309	full-stack-engineer	"full stack engineer" listed, rank stripped
+130915	backend-engineer	"distributed systems engineer" listed
+1247889	security-analyst	"SOC analyst" listed
+1041211	security-analyst	"information security analyst" listed
+101808	mobile-engineer	"Android engineer" listed
+327898	robotics-engineer	"simulation engineer" listed
+351347	forward-deployed-engineer	listed title, region stripped
+765925	systems-administrator	system administrator head, HR Technology is the team
+1470810	data-scientist	quantitative research matches quantitative researcher
+513530	embedded-engineer	"embedded software" listed, rank stripped
+118642	data-scientist	bare data scientist head
+1119862	support-engineer	technical support head, arrangement stripped
+1123468	forward-deployed-engineer	listed title, rank stripped
+931918	data-engineer	"database developer" listed
+41067	none	rule 9: field engineer is a no-role head, builds/repairs machines
+571471	ai-engineer,machine-learning-engineer	rule 1: two heads, AI and ML Engineer
+1128235	data-engineer	data kind word over cloud
+697298	security-analyst	"information security analyst" listed
+732906	security-engineer	cloud security kind word decides, rank stripped
+657332	full-stack-engineer	"full stack engineer" listed
+380326	platform-engineer	"DevOps engineer" listed
+1220803	sales-engineer	solution engineer head decides
+769310	none	rule 9: transformation analyst names no one kind of work
+396995	data-scientist	"data scientist" head, rank stripped
+911103	product-manager	bare product manager, AI area stripped
+275995	security-engineer	security kind word decides
+260342	software-engineer	rule 2+8: bare engineering is the area led
+1397713	systems-administrator	"IT engineer" listed
+103218	program-manager	"technical program manager" listed, area stripped
+507636	ai-engineer	rule 4+7: AI before engineering, intern stripped
+657476	full-stack-engineer	"full stack engineer" listed
+194628	systems-administrator	IT operations names the sysadmin work
+266179	security-engineer	Identity matches identity engineer
+763523	ai-engineer,data-scientist	rule 1: two heads, AI Engineer/Data Scientist
+1141034	data-engineer	"data architect" listed, rank stripped
+658024	security-engineer	security kind word over specialist
+133955	systems-administrator	"IT systems engineer" listed
+376483	solutions-architect	bare "architect", code stripped
+214507	qa-engineer	quality kind word names the QA work
+272930	software-engineer	rule 2: area led is software engineering
+1499596	data-analyst	data kind word over analyst
+104616	machine-learning-engineer	"ML infrastructure engineer" listed
+434689	security-engineer	bare "security engineer"
+239809	data-analyst	"BI analyst" listed
+351389	data-engineer	"data architect" listed, clearance/code stripped
+330991	backend-engineer	Back-End suffix decides
+209024	security-analyst	bare "security analyst", rank stripped
+417301	backend-engineer	"backend developer" listed
+400448	data-analyst	"data analyst" head, team stripped
+189978	ai-engineer	bare "AI engineer"
+187583	software-engineer	bare staff engineer, place stripped
+514575	software-engineer	systems integration matches integration engineer, intern stripped
+384749	forward-deployed-engineer	listed title
+249685	platform-engineer,data-engineer	rule 1: two heads, Platform & Data
+418097	systems-administrator	Linux administrator runs own servers
+386345	support-engineer	"technical support engineer" listed, code stripped
+311031	research-scientist	machine learning scientist head names research
+5652	ai-engineer	rule 2: leader's area is AI engineer
+678491	program-manager	"technical program manager" listed, code stripped
+220838	machine-learning-engineer	ML suffix decides over software engineer
+478592	data-engineer	analytics kind word decides over architect
+1047683	backend-engineer	"backend developer" listed
+318921	full-stack-engineer	"full stack engineer" listed
+106311	sales-engineer	rule 6: pre-sales sends engineer to sales engineering
+1273221	security-analyst	governance analyst over a security word, listed
+1156816	security-engineer	vulnerability research listed
+393801	software-engineer	bare developer, language and place stripped
+14195	data-engineer	data kind word over backend
+286917	network-engineer	network names the work even as software
+384135	ai-engineer	AI kind word over product engineer
+265479	research-scientist	bare "research scientist"
+248694	research-scientist	research scientist/engineer listed, infrastructure stripped
+291326	product-manager	bare product manager, team stripped
+568641	ai-engineer	AI Implementation suffix decides
+359038	data-scientist	bare data scientist, team stripped

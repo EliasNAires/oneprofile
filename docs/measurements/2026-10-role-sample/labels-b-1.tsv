@@ -1,0 +1,157 @@
+id	roles	reason
+599628	none	grocery chain: front end is the checkout, not web work
+1329816	support-engineer	rank stripped, Technical Support is the job
+968091	embedded-engineer	rank stripped, Embedded Software Engineer
+1036492	data-engineer,ai-engineer	rule 1: two heads named (Data & AI)
+274106	frontend-engineer	rank stripped, Frontend Software Engineer
+236655	ai-engineer	Applied AI kind word, cf. AI member of technical staff
+266825	none	rule 10: Stablecoin names blockchain work, listed with no role
+2067	data-analyst	rank and place stripped, Data Analyst
+1532658	frontend-engineer	place stripped, Frontend ... Engineer
+655931	data-scientist	rank and team stripped, Data Scientist head
+99057	product-manager	rule 3: Data Product Manager read whole
+318188	frontend-engineer	team KYC stripped, Frontend Engineer
+105476	enterprise-platform-developer	rule 4: Salesforce decides
+502489	product-manager	product name stripped, Product Manager
+87244	robotics-engineer	rank and team stripped, Autonomy Engineer
+248012	full-stack-engineer	rank stripped
+176894	full-stack-engineer	tech stack stripped
+796330	none	rule 9: no single kind of work named
+508198	software-engineer	rule 7 and 8: intern stripped, bare engineering
+428956	ai-engineer	rule 7: career stage stripped, IA Générative kind word
+101159	business-analyst	rank stripped
+339671	software-engineer	rank stripped
+256861	frontend-engineer	rule 2: rank stripped
+276513	mobile-engineer	rank and team stripped
+77845	qa-engineer	explicit: test automation engineer
+326779	data-analyst	rank and team stripped
+1309352	sales-engineer	Account names post-sale work, cf. technical account manager
+1484221	business-analyst	explicit: systems analyst
+230273	forward-deployed-engineer	rank, team and place stripped
+1107379	solutions-architect	explicit: enterprise architect
+40810	sales-engineer	Account names post-sale account work
+673469	qa-engineer	Quality Assurance Engineer
+706750	business-analyst	rank stripped, Mortgage is the team
+926161	qa-engineer	explicit: QA Automation Engineer
+330388	machine-learning-engineer	rule 7: intern stripped, bare ML reads as ML engineer
+94890	business-analyst	explicit: business systems engineer
+1257069	enterprise-platform-developer	rule 4/5: ServiceNow decides
+437365	enterprise-platform-developer	rule 4/5: ServiceNow decides
+12843	support-engineer	explicit exception: IT support engineer
+435169	software-engineer	rank stripped
+1174823	business-analyst	explicit: systems analyst
+705401	backend-engineer	rank, stack and team stripped
+1227701	systems-administrator	rule 7: intern stripped
+768286	support-engineer	rank stripped
+254807	software-engineer	team named after the head does not decide
+109939	sales-engineer	explicit: solutions engineer
+591500	data-scientist	rank and team stripped
+810717	platform-engineer	explicit: infrastructure engineer
+1268269	security-engineer	rank stripped, Cybersecurity like a CISO
+49041	program-manager	explicit: technical program manager
+11300	embedded-engineer	rank and stack stripped
+80808	research-scientist	explicit: machine learning scientist
+140775	enterprise-platform-developer	explicit: servicenow developer
+1360904	network-engineer	Network Engineer
+765954	software-engineer	Flutter Studios read as team name
+1119714	software-engineer	bare head
+1494177	qa-engineer	parenthetical names QA Engineer directly
+379771	data-engineer	rule 4: Data Architect
+257377	research-scientist	domain RL stripped
+216875	research-scientist	Research Engineer with ML kind word
+395417	ai-engineer,machine-learning-engineer	rule 1: two heads named (AI/ML)
+309425	security-engineer	explicit: cloud security engineer
+371259	business-analyst	rank and place stripped
+260126	platform-engineer	rule 2: area led is Platform
+925763	security-analyst	Security Analyst
+399051	systems-administrator	rank stripped
+276448	embedded-engineer	explicit: flight software engineer
+1442264	solutions-architect	place stripped
+320849	software-engineer	rule 8: bare developer
+1473920	full-stack-engineer	Full Stack decides
+425985	none	robotics technician, cf. mech and robotics tech no-role example
+52687	research-scientist	AI Research Engineer
+987100	network-engineer	rule 2: area led is Network Control
+4032	none	rule 10: AI trainer post, listed with no role
+979938	solutions-architect	rank and product stripped
+925870	product-manager	rule 3: technical product manager read whole
+337317	data-engineer	rule 5: data platform engineer
+254839	forward-deployed-engineer	place stripped
+650784	data-analyst	reporting and analytics work, team stripped
+189594	solutions-architect	AI solutions architect collapses here
+313810	security-analyst	explicit: SOC analyst
+276085	frontend-engineer	rule 2: area led is Frontend
+166855	systems-administrator	explicit: IT systems administrator
+1275688	none	Web Analyst, no kind word for bare analyst
+1244262	product-manager	explicit: product owner
+1201359	research-scientist	rank stripped
+291316	software-engineer	Billing is not a role-deciding word
+391402	business-analyst	team stripped
+505281	data-analyst	Research Data Analyst reads as data analyst
+89873	sales-engineer	explicit: AI solutions engineer
+304238	software-engineer	rule 8: bare engineer
+1476243	data-scientist	Ingénieur Data Scientist, gender marker stripped
+253216	qa-engineer	explicit: SDET
+566261	support-engineer	explicit: service desk analyst
+687107	program-manager	explicit: technical project manager
+267058	sales-engineer	Solution Engineer, rank and domain stripped
+111094	platform-engineer	explicit: site reliability engineer
+245212	software-engineer	Credit Risk is not a role-deciding word
+407181	program-manager	rank stripped
+306448	sales-engineer,solutions-architect	rule 1: two heads (Field App Engineer / Embedded Solutions Architect)
+270129	forward-deployed-engineer	rank (Founding) stripped
+705228	business-analyst	explicit: IT business analyst
+1431840	network-engineer	network security exception to rule 4
+620861	product-manager	explicit: AI product manager
+307511	software-engineer	rule 8: bare developer
+412394	mobile-engineer	Android Developer
+836465	enterprise-platform-developer	rule 4/5: ServiceNow decides
+329572	solutions-architect	domain SIEM after head does not decide
+279701	none	insurance specialist, no engineering work named
+655994	business-analyst	rank and team stripped
+1163572	embedded-engineer	Automotive is industry, not a role change
+304051	software-engineer	place and team stripped
+672229	data-scientist	rank stripped
+1287845	enterprise-platform-developer	explicit: salesforce developer
+733370	enterprise-platform-developer	rule 4/5: ServiceNow decides over consultant
+271180	backend-engineer	Backend Engineer
+726103	frontend-engineer	"(Frontend Focus)" names the area
+242662	backend-engineer	rank and team stripped
+409590	security-analyst	Defensive Security Analyst
+217066	backend-engineer	rank, language and marker stripped
+495659	platform-engineer	rule 4: Cloud decides over Systems Engineer
+258537	program-manager	domain and team stripped
+81567	program-manager	explicit: technical program manager
+292434	full-stack-engineer	team stripped
+655872	data-scientist	rule 2: area led is Data Science
+1220463	embedded-engineer	explicit: firmware engineer
+129919	sales-engineer	explicit: solutions engineer
+946648	enterprise-platform-developer	rule 2: area led is Salesforce
+223961	backend-engineer	Backend Developer
+1275463	security-analyst	Cybersecurity Operations Analyst
+1352597	none	Product Specialist is a commercial role, not robot software
+432859	qa-engineer	Software Development Engineer in Test = SDET
+1167422	network-engineer	network security exception to rule 4
+593579	enterprise-platform-developer	rule 4: Workday decides whatever the head
+975541	program-manager	explicit: scrum master
+929270	qa-engineer	rank stripped, Test Automation Engineer
+1277695	mobile-engineer	rule 2: area led is Mobile
+407349	embedded-engineer	rank stripped
+108902	mobile-engineer	area named is Mobile, rank and team stripped
+1276690	data-engineer	rule 5: Data decides over Cloud
+18869	forward-deployed-engineer	explicit: forward deployed AI engineer
+62531	platform-engineer	Platform Reliability Engineer
+1494691	security-engineer	rank stripped
+226400	software-engineer	rule 8: bare Technology (CTO)
+1169912	full-stack-engineer	French Concepteur Développeur, Full Stack decides
+1244131	platform-engineer	Azure is a cloud platform
+227035	machine-learning-engineer	team Platform does not change the ML Engineer head
+252240	forward-deployed-engineer	rank stripped
+591829	forward-deployed-engineer	rank stripped
+734453	network-engineer	rank stripped, Network Operations Engineer
+675015	data-analyst	reporting and analytics work, team and time stripped
+892732	systems-administrator	rule 2: area led is bare IT
+346025	data-scientist	rank and domain stripped
+268896	ai-engineer	rank stripped, AI Engineer
+387005	frontend-engineer	rank stripped, Frontend Software Engineer
+428678	network-engineer	rank stripped, Network decides over Cloud, cf. network security engineer exception

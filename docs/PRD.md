@@ -166,7 +166,8 @@ the rule. **Role
 nearness**, how near two roles are by their skills, is computed beside the list on each snapshot
 (ADR-0024, amended 2026-10-26). The rule and the assignment are built (`POST /roles`, after the
 breakdown), and so is role nearness (`POST /role-nearness`, after the assignment); their first run is
-`docs/measurements/2026-10-role-assignment.md`.
+`docs/measurements/2026-10-role-assignment.md`, and the blind sample that measures the roles'
+precision is `docs/measurements/2026-10-role-sample.md`.
 
 **Management level.** A leadership word that leads an area — `lead`, `manager`, `director`,
 `head`, `VP`, `chief` — is taken out of the title as the vacancy's management level (lead,

@@ -1,0 +1,9 @@
+id	title	a	a_reason	b	b_reason
+1499596	Senior Lead Data Management Analyst	none	rule 9: data management is not one of the data roles	data-analyst	data kind word over analyst
+769310	Senior Transformation Analyst, Data & Value	data-analyst	rule 4: data decides, suffix names area	none	rule 9: transformation analyst names no one kind of work
+306448	Senior Field Application Engineer – Embedded Solutions Architect	embedded-engineer	rule 4: Embedded decides for the architect head	sales-engineer,solutions-architect	rule 1: two heads (Field App Engineer / Embedded Solutions Architect)
+330388	Machine Learning Intern	none	rule 7: Intern read past, bare Machine Learning names no one job	machine-learning-engineer	rule 7: intern stripped, bare ML reads as ML engineer
+495659	Sr. Cloud Systems Engineer	none	rule 9: Systems Engineer ambiguous head, Cloud does not resolve it	platform-engineer	rule 4: Cloud decides over Systems Engineer
+41067	Staff Specialist Field Engineer, Robotics	robotics-engineer	Robotics names the field engineer's area	none	rule 9: field engineer is a no-role head, builds/repairs machines
+266825	Software Engineer, Stablecoin	software-engineer	rule 8: bare head, Stablecoin is product not area	none	rule 10: Stablecoin names blockchain work, listed with no role
+40810	Account Solution Architect	solutions-architect	bare Solutions Architect, Account not a rule 6 sale word	sales-engineer	Account names post-sale account work

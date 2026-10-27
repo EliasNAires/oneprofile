@@ -1,0 +1,157 @@
+id	roles	reason
+38418	software-engineer	rule 8: bare staff engineer
+926372	systems-administrator	Maconomy is the ERP, Systems Administrator decides
+430106	enterprise-platform-developer	rule 4: Salesforce decides
+35381	frontend-engineer	Web Developer named
+19821	machine-learning-engineer	Machine Learning Engineer named
+263717	machine-learning-engineer	rule 5: ML Platform decides
+386676	robotics-engineer	Robotics Autonomy, Perception named
+30838	program-manager	Project Manager named
+655701	machine-learning-engineer	rule 2: leader's area is ML engineering
+1185555	business-analyst	Business Systems Analyst named
+167933	qa-engineer	Test Engineer named
+1383118	ai-engineer	rule 4: AI decides
+137969	support-engineer	Technical Support Engineer named
+272794	systems-administrator	rule 2+8: bare IT leads to sysadmin
+290546	data-analyst	Data Analyst named
+657661	machine-learning-engineer	rule 4: Machine Learning decides
+261206	sales-engineer	AI Solutions Engineer listed under sales engineer
+219824	full-stack-engineer	Full-Stack named
+699223	qa-engineer	QA Engineer named
+16962	network-engineer	Network Engineer named
+566978	ai-engineer	rule 5+2: AI Platform is leader's area
+148156	backend-engineer	Backend named
+398584	sales-engineer	Solutions Engineer named
+204131	product-manager	Product Owner named
+1309265	network-engineer	rule 4: network infrastructure decides
+567468	robotics-engineer	Autonomy Software named
+1195953	platform-engineer	Site Reliability Engineer named
+397345	backend-engineer	Desenvolvedor Back-end named
+228998	solutions-architect	rule 6: bare Solutions Architect
+209555	mobile-engineer	rule 2: Android is leader's area
+810963	program-manager	Scrum Master named
+957734	enterprise-platform-developer	rule 4: Workday decides
+1206035	qa-engineer	Software Test Engineer named
+795623	systems-administrator	System Administrator named
+331662	data-scientist	Data Scientist named, researcher elaborates
+615102	embedded-engineer	Firmware & Embedded Software named
+180966	security-engineer	Product Security Engineer named
+234452	robotics-engineer	Robotics Software Engineer named
+470945	security-engineer	rule 4: security overrides mobile head
+267654	forward-deployed-engineer	named directly
+110727	support-engineer	rule 4: support decides over analyst head
+1246133	software-engineer,ai-engineer	rule 1: two heads named
+733193	platform-engineer	rule 4: infrastructure/platform architect
+928699	platform-engineer	Storage engineer named
+1172873	solutions-architect	Technical Architect named
+380631	product-manager	Product Manager named
+104794	network-engineer	rule 4: network decides
+171968	machine-learning-engineer	Applied Scientist maps to ML engineer
+178478	robotics-engineer	Perception Engineer named
+165719	frontend-engineer	Front End decides over bare software engineer
+265380	support-engineer	Technical Support Engineer named
+307373	software-engineer	rule 8: bare Tech Lead, Coremedia is the product
+639354	support-engineer	IT Support named
+1164295	network-engineer	Network Operations named
+98275	forward-deployed-engineer	named directly
+763355	platform-engineer	Cloud Engineer named
+191759	security-analyst	Information Security Analyst named
+259166	data-scientist	Data Scientist named
+723421	robotics-engineer	Robotics Software Engineer named
+245258	mobile-engineer	iOS Engineer named
+1221443	embedded-engineer	Systems Software Engineer named
+810726	enterprise-platform-developer	rule 4: SAP decides
+206985	security-engineer	named directly
+414421	software-engineer	rule 8: bare Technical Lead
+1295867	security-analyst	Cyber Security Analyst named
+230336	product-manager	Product Manager named
+823745	security-engineer	rule 4: security decides over specialist head
+226020	product-manager	Technical Product Manager named
+1025797	support-engineer	Cargowise Support Engineer named
+297813	software-engineer	rule 2: Software Development is leader's area
+1071546	software-engineer	rule 8: bare software engineer
+929506	program-manager	Program Manager named
+1329809	sales-engineer	Technical Account Manager named
+209515	mobile-engineer	rule 2: Android is leader's area
+731557	data-analyst	Analytics Analyst named
+1198600	security-analyst	Cybersecurity Analyst named
+267643	software-engineer	rule 8: bare developer, Golang is a language
+623741	robotics-engineer	Autonomy named robotics
+444115	platform-engineer	Platform Engineer head, no sale word
+227570	mobile-engineer	Android Engineer named
+266193	software-engineer	rule 8: bare engineer, Founding is a stage
+46309	full-stack-engineer	Full Stack named
+130915	backend-engineer	Distributed Systems named
+1247889	security-analyst	SOC Analyst named
+1041211	security-analyst	Information Security Analyst named
+101808	mobile-engineer	Android Engineer named
+327898	robotics-engineer	Simulation Engineer named
+351347	forward-deployed-engineer	named directly
+765925	systems-administrator	System Administrator named, HR tech is the scope
+1470810	data-scientist	rule: quantitative research of markets
+513530	embedded-engineer	Embedded Software named
+118642	data-scientist	Data Scientist named
+1119862	support-engineer	rule 4: technical support decides over analyst head
+1123468	forward-deployed-engineer	named directly, VP rank stripped
+931918	data-engineer	Database Developer named
+41067	robotics-engineer	Robotics names the field engineer's area
+571471	ai-engineer,machine-learning-engineer	rule 1: AI and ML name two heads
+1128235	data-engineer	rule 5: data decides over cloud
+697298	security-analyst	Information Security Analyst named
+732906	security-engineer	rule 2+4: security decides, manager rank stripped
+657332	full-stack-engineer	Full Stack named
+380326	platform-engineer	DevOps Engineer named
+1220803	sales-engineer	Solution Engineer named
+769310	data-analyst	rule 4: data decides, suffix names area
+396995	data-scientist	Data Scientist named
+911103	product-manager	rule 3: AI Product Manager named whole
+275995	security-engineer	rule 4: security decides over IT
+260342	software-engineer	rule 8: bare Engineering (Lead)
+1397713	systems-administrator	IT Engineer named
+103218	program-manager	Technical Program Manager named
+507636	ai-engineer	rule 7: intern stripped, AI Engineering decides
+657476	full-stack-engineer	Full-Stack named
+194628	systems-administrator	IT Operations named
+266179	security-engineer	rule 4: Identity decides over SWE head
+763523	ai-engineer,data-scientist	rule 1: two heads named
+1141034	data-engineer	Data Architect named
+658024	security-engineer	rule 4: security decides over specialist head
+133955	systems-administrator	IT Systems Engineer named
+376483	solutions-architect	bare Architect named
+214507	qa-engineer	rule 4: quality decides over specialist head
+272930	software-engineer	rule 2: Software Engineering is leader's area
+1499596	none	rule 9: data management is not one of the data roles
+104616	machine-learning-engineer	rule 5: ML Infrastructure Engineer named
+434689	security-engineer	named directly
+239809	data-analyst	BI Analyst named
+351389	data-engineer	Data Architect named
+330991	backend-engineer	Back-End decides
+209024	security-analyst	Security Analyst named
+417301	backend-engineer	Backend Developer named
+400448	data-analyst	Data Analyst named
+189978	ai-engineer	named directly
+187583	software-engineer	rule 8: bare Staff Engineer
+514575	software-engineer	rule 7+8: intern stripped, integration engineer
+384749	forward-deployed-engineer	named directly
+249685	platform-engineer,data-engineer	rule 1: Platform and Data name two heads
+418097	systems-administrator	Administrator named
+386345	support-engineer	Technical Support Engineer named
+311031	research-scientist	Machine Learning Scientist named
+5652	ai-engineer	AI Engineer named
+678491	program-manager	Technical Program Manager named
+220838	machine-learning-engineer	rule 4: ML decides over software engineer
+478592	data-engineer	rule 4: Analytics decides
+1047683	backend-engineer	Backend Developer named
+318921	full-stack-engineer	Full-stack named
+106311	sales-engineer	rule 6: Pre-Sales decides
+1273221	security-analyst	governance analyst over a security word
+1156816	security-engineer	Vulnerability Research named
+393801	software-engineer	rule 8: bare developer, Python is a language
+14195	data-engineer	rule 5: data decides over backend
+286917	network-engineer	rule 4: network decides
+384135	ai-engineer	rule: AI decides over product engineer
+265479	research-scientist	Research Scientist named
+248694	research-scientist	research engineer and scientist both map here
+291326	product-manager	Product Manager named
+568641	ai-engineer	rule 4: AI decides over software developer
+359038	data-scientist	Data Scientist named

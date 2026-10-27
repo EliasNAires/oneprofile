@@ -1,0 +1,9 @@
+id	roles	reason
+1499596	none	rule 9: data management fits no data role's description, not just "analyst"; a's reading
+769310	none	rule 9: "Data & Value" is a team suffix, not a kind word in front of the head; b's reading
+306448	sales-engineer,solutions-architect	rule 1 two heads: field application engineer is sales-engineer work; embedded solutions architect stays solutions-architect, per the ai-solutions-architect precedent; b's reading
+330388	none	rule 7 strips intern; bare "machine learning" has no job head, unlike the listed "data science"; a's reading
+495659	platform-engineer	rule 4: cloud decides over the ambiguous systems-engineer head, as data decides over analyst; b's reading
+41067	none	rule 9 field engineer, and robotics-engineer's own build/repair exclusion (mech and robotics tech); b's reading
+266825	none	rule 10: stablecoin names blockchain, a listed no-role kind, like game/graphics for software engineer; b's reading
+40810	solutions-architect	rule 6: account is not a listed sale word, so the bare solutions architect stays; a's reading
