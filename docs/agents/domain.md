@@ -39,7 +39,7 @@ the later ADR wins; the overridden parts are marked below.
   that ATS publishes as it publishes it; `Vacancy` holds what any ATS would be expected to
   publish. Facts are derived in passes, never in the sweep. Overrides PRD §7's nullable columns.
   *Amended:* `Company` gains its region (0022). Workday's fields share Lever's columns where they
-  mean the same, and its time type has its own; its sweep runs the title rules to choose which
+  mean the same, and its time type and remote type have their own; its sweep runs the title rules to choose which
   descriptions to ask for, storing nothing they decide (#81).
 - **0006**: rules are developed against **snapshots** on the dev machine, never production. Two
   are kept, raw and after classification. A re-sweep cuts a new pair and archives the old one.

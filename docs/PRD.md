@@ -89,7 +89,7 @@ give most often, as Workday writes it (a legal entity such as "2100 NVIDIA USA")
 pages were not read keeps none. A company takes its name wherever its ATS gives one, and has none
 where it does not (decided with Elias on 2026-10-24). Every request
 of its probes and sweeps shares one pace, 16 a second and 20 open (ADR-0025). Its time type,
-country and every location are kept as Workday writes them, on its own class of vacancy. Its API,
+remote type, country and every location are kept as Workday writes them, on its own class of vacancy. Its API,
 pace and the boards it holds: `docs/measurements/2026-10-workday.md`.
 
 All ingestion is triggered manually by an administrative endpoint today. In production every
@@ -194,13 +194,15 @@ ladder: the titles do not say whether `Engineer II` is junior or mid, and 4.1% o
 carries one. Resolving them is left to §6.1, where the body's years-of-experience phrasing is
 evidence rather than assumption.
 
-**Work mode**, one of remote, hybrid or onsite (#86). The location text decides where it names a
+**Work mode**, one of remote, hybrid or onsite (#86), built (`POST /work-modes`, any time after
+classification). The location text decides where it names a
 mode; otherwise the work-mode field Ashby, Lever and Workday publish decides; otherwise the title.
 The description is not read before the launch (decided 2026-10-27): it would give most of Workday
 a mode, but its bare words often name the company's culture or a benefit, not the vacancy's
 mode, which likely needs a rule loop (#98).
 Where the location and the field disagree, about 170 vacancies of the subset, the location was
-usually the right one. Null means "not declared" and never "onsite". There is no `FULLY_REMOTE`
+usually the right one. A location or title naming two modes reads as hybrid where hybrid is one of
+them (`Hybrid (3x in office/week)`), else as remote (`Nashville (Onsite) or Remote`). Null means "not declared" and never "onsite". There is no `FULLY_REMOTE`
 value; work mode and declared location are separate (ADR-0004).
 
 The **declared location** is not derived here. The step that derives the country set reads it
@@ -341,7 +343,7 @@ company is `(ats, slug)`; a vacancy is `(company_id, external_id)`.
   adds `workplace_type`, `address_country`, `secondary_locations` with their countries, and
   `pay_interval`, as Ashby writes them; a Lever one adds `workplace_type`, `country`,
   `commitment`, `team`, `all_locations` and `pay_interval`, as Lever writes them; a Workday one
-  adds `time_type`, `country` and `all_locations`. Discarding Ashby's structured country to match
+  adds `time_type`, `remote_type`, `country` and `all_locations`. Discarding Ashby's structured country to match
   Greenhouse's weaker free-text shape would throw away the best available eligibility input.
 - `normalized_vacancy` — one row per vacancy holding every derived scalar: cleaned title,
   normalized title, whether it is an engineering role, the signal that classified it, work

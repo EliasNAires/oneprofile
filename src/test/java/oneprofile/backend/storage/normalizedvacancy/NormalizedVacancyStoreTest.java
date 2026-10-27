@@ -15,6 +15,7 @@ import oneprofile.backend.storage.company.CompanyStore;
 import oneprofile.backend.storage.vacancy.PublishedAshbyVacancy;
 import oneprofile.backend.storage.vacancy.PublishedGreenhouseVacancy;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
+import oneprofile.backend.storage.vacancy.PublishedWorkdayVacancy;
 import oneprofile.backend.storage.vacancy.VacancyStore;
 import oneprofile.backend.storage.vacancy.VacancyText;
 import org.junit.jupiter.api.BeforeEach;
@@ -499,6 +500,59 @@ class NormalizedVacancyStoreTest {
 		this.entityManager.clear();
 
 		assertThat(this.repository.findAll()).singleElement().extracting(NormalizedVacancyEntity::roles).isNull();
+	}
+
+	@Test
+	void readsForTheWorkModeTheEngineeringSubsetWithEachLocationAndWorkModeField() {
+		this.companies.record(AtsEnum.ASHBY, Map.of("ramp", RegionEnum.US));
+		this.vacancies.mirror(AtsEnum.ASHBY, "ramp", List.of(new PublishedAshbyVacancy(
+				"34413f8d-26bf-4bbc-8ade-eb309a0e2245", "Engineer", "Berlin", null, "Baue Dinge.",
+				"https://jobs.ashbyhq.com/ramp/34413f8d-26bf-4bbc-8ade-eb309a0e2245", null, null, null,
+				Instant.parse("2026-09-01T14:00:00Z"), "OnSite", "Germany", List.of(), null)));
+		this.companies.record(AtsEnum.WORKDAY, Map.of("nvidia.wd5/nvidiaexternalcareersite", RegionEnum.US));
+		this.vacancies.mirror(AtsEnum.WORKDAY, "nvidia.wd5/nvidiaexternalcareersite",
+				List.of(new PublishedWorkdayVacancy("RTL-Design-Engineer_JR1", "RTL Design Engineer", "Israel, Yokneam",
+						null, "https://nvidia.wd5.myworkdayjobs.com/x/job/RTL-Design-Engineer_JR1", null, "Full time",
+						"Hybrid Working", "IL", null, null)));
+		List<VacancyText> held = heldTitles();
+		Map<Long, CleanedVacancy> cleaned = new HashMap<>();
+		Map<Long, Classification> classified = new HashMap<>();
+		held.forEach((vacancy) -> {
+			cleaned.put(vacancy.id(), cleaned("Engineer", Set.of()));
+			classified.put(vacancy.id(), Classification.in());
+		});
+		classified.put(held.get(1).id(), Classification.out());
+		this.normalized.recordCleanedVacancies(cleaned);
+		this.normalized.recordClassifications(classified);
+		this.entityManager.flush();
+
+		assertThat(this.normalized.workModeScopeAfter(0, 10)).containsExactly(
+				new WorkModeVacancy(held.get(0).id(), AtsEnum.GREENHOUSE, "Senior Backend Engineer", "Remote - Americas",
+						null),
+				new WorkModeVacancy(held.get(2).id(), AtsEnum.ASHBY, "Engineer", "Berlin", "OnSite"),
+				new WorkModeVacancy(held.get(3).id(), AtsEnum.WORKDAY, "RTL Design Engineer", "Israel, Yokneam",
+						"Hybrid Working"));
+	}
+
+	@Test
+	void holdsTheWorkModeOfAVacancyAndLetsGoOfEveryWorkMode() {
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		this.normalized.recordCleanedVacancies(
+				Map.of(first, cleaned("Backend Engineer", Set.of()), second, cleaned("Backend Engineer", Set.of())));
+
+		assertThat(this.normalized.recordWorkModes(Map.of(first, WorkModeEnum.REMOTE))).isEqualTo(1);
+		this.entityManager.flush();
+		this.entityManager.clear();
+
+		assertThat(this.repository.findByVacancyIdIn(List.of(first, second)))
+			.extracting(NormalizedVacancyEntity::vacancyId, NormalizedVacancyEntity::workMode)
+			.containsExactlyInAnyOrder(tuple(first, WorkModeEnum.REMOTE), tuple(second, null));
+
+		assertThat(this.normalized.clearWorkModes()).isEqualTo(1);
+		this.entityManager.clear();
+
+		assertThat(this.repository.findAll()).extracting(NormalizedVacancyEntity::workMode).containsOnlyNulls();
 	}
 
 	private static TitleBreakdown breakdown(String... normalizedTitles) {

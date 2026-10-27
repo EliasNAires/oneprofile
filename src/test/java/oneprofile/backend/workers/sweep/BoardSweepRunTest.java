@@ -185,7 +185,7 @@ class BoardSweepRunTest {
 
 	private static PublishedVacancy workday(String externalId, String companyName) {
 		return new PublishedWorkdayVacancy(externalId, "Software Engineer", "Santa Clara", null,
-				"https://nvidia.wd5.myworkdayjobs.com/careers/job/" + externalId, null, null, null, null, companyName);
+				"https://nvidia.wd5.myworkdayjobs.com/careers/job/" + externalId, null, null, null, null, null, companyName);
 	}
 
 	private void activeSlugs(String... slugs) {

@@ -117,6 +117,30 @@ public interface NormalizedVacancyRepository extends ListCrudRepository<Normaliz
 	int clearRoles();
 
 	/**
+	 * The engineering subset held after one vacancy id, in id order, with each vacancy's ATS, title as
+	 * published, location field and the work-mode field its ATS publishes: Ashby's and Lever's workplace
+	 * type, Workday's remote type.
+	 * @param after the vacancy id to read past, 0 to start at the first
+	 * @param limit how many to read at most
+	 * @return the vacancies and what they declare of their work mode
+	 */
+	@Query("select new oneprofile.backend.storage.normalizedvacancy.WorkModeVacancy(n.vacancyId, c.ats, v.title, v.location, "
+			+ "coalesce(treat(v as AshbyVacancy).workplaceType, treat(v as LeverVacancy).workplaceType, "
+			+ "treat(v as WorkdayVacancy).remoteType)) "
+			+ "from NormalizedVacancy n join Vacancy v on v.id = n.vacancyId join v.company c where n.vacancyId > :after "
+			+ "and n.classificationState = oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum.IN "
+			+ "order by n.vacancyId")
+	List<WorkModeVacancy> workModeScopeAfter(long after, Limit limit);
+
+	/**
+	 * Lets go of every vacancy's work mode.
+	 * @return how many vacancies had one
+	 */
+	@Modifying
+	@Query("update NormalizedVacancy n set n.workMode = null where n.workMode is not null")
+	int clearWorkModes();
+
+	/**
 	 * Puts every vacancy of the pile back to what its title left it: unknown, decided by the title.
 	 * @param reasons the title reasons that make the pile
 	 * @return how many vacancies the pile holds

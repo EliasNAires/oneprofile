@@ -20,6 +20,8 @@ import java.util.List;
  * read
  * @param timeType how the work is held, such as {@code Full time}, as Workday writes it, or null if it
  * gave none
+ * @param remoteType where the work is done, such as {@code Hybrid}, as the tenant writes it, or null if
+ * it gave none or its page was not read
  * @param country the country of the vacancy's requisition, as a two-letter code, or null if it gave none
  * @param allLocations every location the vacancy names, the main one first, or null if its page was not
  * read
@@ -27,7 +29,7 @@ import java.util.List;
  * null if its page was not read or names none
  */
 public record PublishedWorkdayVacancy(String externalId, String title, String location, String description,
-		String url, Instant firstPublishedAt, String timeType, String country, List<String> allLocations,
+		String url, Instant firstPublishedAt, String timeType, String remoteType, String country, List<String> allLocations,
 		String companyName) implements PublishedVacancy {
 
 	public PublishedWorkdayVacancy {

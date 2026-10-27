@@ -46,6 +46,8 @@ such field. Decided by grilling Elias on 2026-10-21 (#73). Overrides PRD §7's "
   *Amended 2026-10-24 (#81):* Workday's country (its requisition's two-letter code) is held in
   `country` beside Lever's, and its main and additional locations in `all_locations`, the main one
   first, as Lever's are. Its time type, named unlike Lever's commitment, gets `time_type`.
+  *Amended 2026-10-27 (#86):* Workday's `remoteType`, the tenant's own text and named unlike
+  Ashby's and Lever's workplace type, gets `remote_type`.
 - **Passes do not load `Vacancy` polymorphically over the corpus** when they need only the common
   fields; they read it through a projection, or name the subclass they need.
 

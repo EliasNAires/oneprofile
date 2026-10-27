@@ -204,7 +204,7 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 		String externalId = path.substring(path.lastIndexOf('/') + 1);
 		String title = text(posting.path("title"));
 		PublishedWorkdayVacancy listed = new PublishedWorkdayVacancy(externalId, title,
-				text(posting.path("locationsText")), null, url(slug, path), null, null, null, null, null);
+				text(posting.path("locationsText")), null, url(slug, path), null, null, null, null, null, null);
 		if (!descriptionCalledFor(title)) {
 			return Optional.of(listed);
 		}
@@ -232,7 +232,7 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 		return Optional.of(new PublishedWorkdayVacancy(externalId, orElse(text(info.path("title")), title),
 				orElse(location, text(posting.path("locationsText"))),
 				DescriptionMarkingRule.markedLines(text(info.path("jobDescription"))), orElse(url, url(slug, path)),
-				day(text(info.path("startDate"))), text(info.path("timeType")),
+				day(text(info.path("startDate"))), text(info.path("timeType")), text(info.path("remoteType")),
 				text(info.path("jobRequisitionLocation").path("country").path("alpha2Code")), allLocations,
 				text(answer.body().path("hiringOrganization").path("name"))));
 	}

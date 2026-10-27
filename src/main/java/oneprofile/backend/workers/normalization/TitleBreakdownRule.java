@@ -261,10 +261,6 @@ public class TitleBreakdownRule {
 	private static final Set<String> SOFTWARE_WORK = Set.of("backend", "frontend", "full stack", "web", "mobile",
 			"android", "ios", "react native", "flutter", "ui");
 
-	private static final Set<String> WORK_MODES = Set.of("remote", "hybrid", "onsite", "on site", "in office",
-			"work from home", "wfh", "fully remote", "remote first", "telecommute", "telework", "remoto", "remota",
-			"híbrido", "hibrido", "presencial", "home office", "home based", "office based");
-
 	/** The places a title names that its location field may not: regions, countries and the commonest cities. */
 	private static final Set<String> PLACES = Set.of("us", "usa", "u.s", "united states", "america", "americas",
 			"north america", "latin america", "latam", "south america", "central america", "emea", "apac", "amer",
@@ -774,7 +770,7 @@ public class TitleBreakdownRule {
 	private static Map<String, Reading> vocabulary() {
 		Map<String, Reading> vocabulary = new HashMap<>();
 		PLACES.forEach((place) -> vocabulary.put(place, NOISE));
-		WORK_MODES.forEach((mode) -> vocabulary.put(mode, NOISE));
+		WorkModeRule.WORDS.keySet().forEach((mode) -> vocabulary.put(mode, NOISE));
 		SHIFTS.forEach((shift) -> vocabulary.put(shift, NOISE));
 		// "middle" is mid, except in the region and the bank's middle office.
 		vocabulary.put("middle east", NOISE);

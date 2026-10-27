@@ -72,6 +72,9 @@ public class NormalizedVacancyEntity {
 
 	private String[] roles;
 
+	@Enumerated(EnumType.STRING)
+	private WorkModeEnum workMode;
+
 	protected NormalizedVacancyEntity() {
 	}
 
@@ -135,6 +138,14 @@ public class NormalizedVacancyEntity {
 		this.roles = roles.toArray(String[]::new);
 	}
 
+	/**
+	 * Takes on the work mode the work-mode rule read for the vacancy, replacing what the last run recorded.
+	 * @param workMode its work mode
+	 */
+	public void workingAs(WorkModeEnum workMode) {
+		this.workMode = workMode;
+	}
+
 	/** The vacancy these facts were derived from. */
 	public long vacancyId() {
 		return this.vacancyId;
@@ -187,6 +198,11 @@ public class NormalizedVacancyEntity {
 	/** The slugs of its roles, one per normalized title that has one, null until the role assignment has run. */
 	public List<String> roles() {
 		return (this.roles == null) ? null : List.of(this.roles);
+	}
+
+	/** Where it says its work is done, null where it declares none or the work-mode run has not reached it. */
+	public WorkModeEnum workMode() {
+		return this.workMode;
 	}
 
 }
