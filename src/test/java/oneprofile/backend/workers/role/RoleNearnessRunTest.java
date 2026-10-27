@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import oneprofile.backend.storage.rolenearness.RoleNearness;
 import oneprofile.backend.storage.rolenearness.RoleNearnessStore;
-import oneprofile.backend.storage.vacancyskill.SkillProfile;
+import oneprofile.backend.storage.vacancyskill.SkillCounts;
 import oneprofile.backend.storage.vacancyskill.VacancySkillStore;
 import org.junit.jupiter.api.Test;
 
@@ -24,9 +24,9 @@ class RoleNearnessRunTest {
 
 	@Test
 	void replacesTheNearnessHeldWithThatOfTheRolesTheSubsetHoldsNow() {
-		given(this.skills.subsetProfile()).willReturn(new SkillProfile(4, Map.of("spark", 2, "react", 2)));
-		given(this.skills.roleProfiles()).willReturn(Map.of("data-engineer", new SkillProfile(2, Map.of("spark", 2)),
-				"frontend-engineer", new SkillProfile(2, Map.of("react", 2))));
+		given(this.skills.subsetSkillCounts()).willReturn(new SkillCounts(4, Map.of("spark", 2, "react", 2)));
+		given(this.skills.roleSkillCounts()).willReturn(Map.of("data-engineer", new SkillCounts(2, Map.of("spark", 2)),
+				"frontend-engineer", new SkillCounts(2, Map.of("react", 2))));
 		given(this.nearness.replace(anyList())).willAnswer((invocation) -> invocation.<List<?>>getArgument(0).size());
 
 		assertThat(this.run.computeNearness()).isEqualTo(new RoleNearnessRun.Report(2, 1));

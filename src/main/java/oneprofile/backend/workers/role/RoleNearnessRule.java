@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import oneprofile.backend.storage.rolenearness.RoleNearness;
-import oneprofile.backend.storage.vacancyskill.SkillProfile;
+import oneprofile.backend.storage.vacancyskill.SkillCounts;
 import org.springframework.stereotype.Component;
 
 /**
@@ -26,10 +26,10 @@ public class RoleNearnessRule {
 	 * @param roles the skills each role's vacancies ask for, by slug
 	 * @return each pair once, its roles in order of slug
 	 */
-	public List<RoleNearness> nearness(SkillProfile subset, Map<String, SkillProfile> roles) {
+	public List<RoleNearness> nearness(SkillCounts subset, Map<String, SkillCounts> roles) {
 		Map<String, Map<String, Double>> vectors = new TreeMap<>();
-		roles.forEach((role, profile) -> {
-			Map<String, Double> vector = vector(subset, profile);
+		roles.forEach((role, counts) -> {
+			Map<String, Double> vector = vector(subset, counts);
 			if (!vector.isEmpty()) {
 				vectors.put(role, vector);
 			}
@@ -46,7 +46,7 @@ public class RoleNearnessRule {
 	}
 
 	/** A role's weighted shares, of length one; empty where no skill it names has a weight. */
-	private static Map<String, Double> vector(SkillProfile subset, SkillProfile role) {
+	private static Map<String, Double> vector(SkillCounts subset, SkillCounts role) {
 		Map<String, Double> vector = new HashMap<>();
 		role.vacanciesNaming().forEach((skill, naming) -> {
 			double weight = (double) naming / role.vacancies()

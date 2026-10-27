@@ -76,8 +76,8 @@ public class VacancySkillStore {
 	 * @return how many vacancies the subset holds, and how many of them name each skill
 	 */
 	@Transactional(readOnly = true)
-	public SkillProfile subsetProfile() {
-		return new SkillProfile(this.repository.countSubset(SUBSET), counts(this.repository.countSubsetNaming(SUBSET)));
+	public SkillCounts subsetSkillCounts() {
+		return new SkillCounts(this.repository.countSubset(SUBSET), counts(this.repository.countSubsetNaming(SUBSET)));
 	}
 
 	/**
@@ -86,16 +86,16 @@ public class VacancySkillStore {
 	 * @return by role slug, how many vacancies hold the role, and how many of them name each skill
 	 */
 	@Transactional(readOnly = true)
-	public Map<String, SkillProfile> roleProfiles() {
+	public Map<String, SkillCounts> roleSkillCounts() {
 		Map<String, Map<String, Integer>> naming = new HashMap<>();
 		for (Object[] row : this.repository.countRolesNaming(SUBSET)) {
 			naming.computeIfAbsent((String) row[0], (role) -> new HashMap<>())
 				.put((String) row[1], ((Number) row[2]).intValue());
 		}
-		Map<String, SkillProfile> profiles = new HashMap<>();
-		counts(this.repository.countRoles(SUBSET)).forEach((role, vacancies) -> profiles.put(role,
-				new SkillProfile(vacancies, naming.getOrDefault(role, Map.of()))));
-		return profiles;
+		Map<String, SkillCounts> byRole = new HashMap<>();
+		counts(this.repository.countRoles(SUBSET)).forEach((role, vacancies) -> byRole.put(role,
+				new SkillCounts(vacancies, naming.getOrDefault(role, Map.of()))));
+		return byRole;
 	}
 
 	/**

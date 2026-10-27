@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import oneprofile.backend.storage.rolenearness.RoleNearness;
 import oneprofile.backend.storage.rolenearness.RoleNearnessStore;
-import oneprofile.backend.storage.vacancyskill.SkillProfile;
+import oneprofile.backend.storage.vacancyskill.SkillCounts;
 import oneprofile.backend.storage.vacancyskill.VacancySkillStore;
 import org.springframework.stereotype.Component;
 
@@ -38,8 +38,8 @@ public class RoleNearnessRun {
 	 * @return what the run computed
 	 */
 	public Report computeNearness() {
-		Map<String, SkillProfile> roles = this.skills.roleProfiles();
-		List<RoleNearness> pairs = this.rule.nearness(this.skills.subsetProfile(), roles);
+		Map<String, SkillCounts> roles = this.skills.roleSkillCounts();
+		List<RoleNearness> pairs = this.rule.nearness(this.skills.subsetSkillCounts(), roles);
 		return new Report(roles.size(), this.nearness.replace(pairs));
 	}
 

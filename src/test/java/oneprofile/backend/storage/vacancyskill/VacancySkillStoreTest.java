@@ -143,11 +143,11 @@ class VacancySkillStoreTest {
 				List.of(new FoundSkill("python", List.of(0), false, false))));
 		this.entityManager.flush();
 
-		assertThat(this.skills.subsetProfile()).isEqualTo(new SkillProfile(3, Map.of("spark", 1, "python", 2)));
-		assertThat(this.skills.roleProfiles()).isEqualTo(Map.of("data-engineer",
-				new SkillProfile(2, Map.of("spark", 1, "python", 2)), "data-scientist",
-				new SkillProfile(1, Map.of("spark", 1, "python", 1)), "frontend-engineer",
-				new SkillProfile(1, Map.of())));
+		assertThat(this.skills.subsetSkillCounts()).isEqualTo(new SkillCounts(3, Map.of("spark", 1, "python", 2)));
+		assertThat(this.skills.roleSkillCounts()).isEqualTo(Map.of("data-engineer",
+				new SkillCounts(2, Map.of("spark", 1, "python", 2)), "data-scientist",
+				new SkillCounts(1, Map.of("spark", 1, "python", 1)), "frontend-engineer",
+				new SkillCounts(1, Map.of())));
 	}
 
 	private long normalizedId(long vacancyId) {
