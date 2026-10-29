@@ -2,6 +2,7 @@
 """Draws the blind sample that measures seniority's precision (#99) from the development database.
 
     scripts/draw-seniority-sample DIRECTORY [per cell, default 20]
+    scripts/draw-seniority-sample DIRECTORY --no-years [per group, default 20]
 
 Run after POST /seniorities. Every vacancy of the engineering subset falls in one cell, by where its
 level came from: title (a level word in its title), one cell per level its required years give (years
@@ -15,6 +16,11 @@ and required years, its title, and the phrases the rule accepted (the one that s
 DIRECTORY/cells.tsv, the size of each cell, which weighs it; and DIRECTORY/batch-N.tsv, the same
 vacancies shuffled and split, with only what a labeller sees (docs/seniority-criterion.md): an id, the
 company, the title and the description's segments that name years or a level, joined by " ¶ ".
+
+With --no-years, adds to a sample already drawn in DIRECTORY a stratum that measures how many experience
+requirements the rule misses: that many vacancies with no required years, of each of the two groups that
+hold them (no level, and a level from the title), none already drawn. Appends them to sample.tsv as the
+stratum no years, writes them to the next batch-N.tsv, and prints each group's size, which weighs it.
 """
 
 import csv
@@ -129,13 +135,59 @@ def flat(text):
     return " ".join((text or "").split()) or "-"
 
 
+def sample_line(row, segments):
+    return "\t".join([row["id"], row["ats"], row["cell"], row["stratum"], (row["level"] or "none").lower(),
+                      str(row["years"]) if row["years"] is not None else "none", flat(row["title"]),
+                      phrases(row, segments[row["id"]]) or "-"]) + "\n"
+
+
+def write_batch(path, rows, segments):
+    with open(path, "w", encoding="utf-8") as out:
+        out.write("id\tcompany\ttitle\tdescription\n")
+        for row in rows:
+            out.write("\t".join([row["id"], flat(row["company"]), flat(row["title"]),
+                                 excerpt(segments[row["id"]]) or "-"]) + "\n")
+
+
+def segments_of(drawn):
+    return {r[0]: json.loads(r[1]) if r[1] else [] for r in psql(SEGMENTS_QUERY.format(ids=",".join(drawn)))}
+
+
+def add_no_years(directory, rows, per_group):
+    """Draws the no-years stratum into a sample already drawn, and appends it."""
+    with open(directory / "sample.tsv", encoding="utf-8") as tsv:
+        already = {line.split("\t", 1)[0] for line in tsv}
+    generator = random.Random(SEED)
+    groups = Counter(row["cell"] for row in rows if row["years"] is None)
+    drawn = {}
+    for name in sorted(groups):
+        pool = [row for row in rows if row["years"] is None and row["cell"] == name and row["id"] not in already]
+        for row in generator.sample(pool, min(per_group, len(pool))):
+            drawn[row["id"]] = {**row, "stratum": "no years"}
+    segments = segments_of(drawn)
+    added = sorted(drawn.values(), key=lambda row: (row["cell"], int(row["id"])))
+    with open(directory / "sample.tsv", "a", encoding="utf-8") as out:
+        for row in added:
+            out.write(sample_line(row, segments))
+    generator.shuffle(added)
+    batch = len(list(directory.glob("batch-*.tsv"))) + 1
+    write_batch(directory / f"batch-{batch}.tsv", added, segments)
+    print(f"{len(added)} vacancies with no required years drawn into batch-{batch}.tsv; groups: "
+          + ", ".join(f"{name} {count}" for name, count in sorted(groups.items())))
+
+
 def main():
-    if not 2 <= len(sys.argv) <= 3:
+    if not 2 <= len(sys.argv) <= 4:
         sys.exit(__doc__)
     directory = Path(sys.argv[1])
-    per_cell = int(sys.argv[2]) if len(sys.argv) == 3 else 20
+    no_years = sys.argv[2:3] == ["--no-years"]
+    count = sys.argv[3 if no_years else 2:]
+    per_cell = int(count[0]) if count else 20
     directory.mkdir(parents=True, exist_ok=True)
     rows = [{**row, "cell": cell(row)} for row in vacancies()]
+    if no_years:
+        add_no_years(directory, rows, per_cell)
+        return
     generator = random.Random(SEED)
 
     drawn = {}
@@ -153,14 +205,12 @@ def main():
         for row in generator.sample(pool, min(per_cell, len(pool))):
             drawn[row["id"]] = {**row, "stratum": "cell"}
 
-    segments = {r[0]: json.loads(r[1]) if r[1] else [] for r in psql(SEGMENTS_QUERY.format(ids=",".join(drawn)))}
+    segments = segments_of(drawn)
     sample = sorted(drawn.values(), key=lambda row: (row["stratum"], row["cell"], int(row["id"])))
     with open(directory / "sample.tsv", "w", encoding="utf-8") as out:
         out.write("id\tats\tcell\tstratum\tlevel\tyears\ttitle\tphrases\n")
         for row in sample:
-            out.write("\t".join([row["id"], row["ats"], row["cell"], row["stratum"], (row["level"] or "none").lower(),
-                                 str(row["years"]) if row["years"] is not None else "none", flat(row["title"]),
-                                 phrases(row, segments[row["id"]]) or "-"]) + "\n")
+            out.write(sample_line(row, segments))
     with open(directory / "cells.tsv", "w", encoding="utf-8") as out:
         out.write("cell\tvacancies\n")
         for name, count in sorted(cells.items()):
@@ -169,11 +219,7 @@ def main():
     generator.shuffle(shuffled)
     size = -(-len(shuffled) // BATCHES)
     for batch in range(BATCHES):
-        with open(directory / f"batch-{batch + 1}.tsv", "w", encoding="utf-8") as out:
-            out.write("id\tcompany\ttitle\tdescription\n")
-            for row in shuffled[batch * size:(batch + 1) * size]:
-                out.write("\t".join([row["id"], flat(row["company"]), flat(row["title"]),
-                                     excerpt(segments[row["id"]]) or "-"]) + "\n")
+        write_batch(directory / f"batch-{batch + 1}.tsv", shuffled[batch * size:(batch + 1) * size], segments)
     print(f"{len(sample)} vacancies drawn of {len(rows)}")
 
 

@@ -11,11 +11,14 @@ labellers' agreement and writes the disagreements as JSON batches of 20 for the 
 (.claude/agents/adjudicator.md): each row's id, what the labellers read and their two answers. A
 verdict of neither settles the vacancy as unclear.
 
+Disagreements already written are not written again, so a stratum added later gets batches of its own.
+
 With them, prints by cell and stratum how often the rule's level is the settled one, how often it is
 too high and too low, and how often its required years are the settled ones, each with a 95% Wilson
-interval; the share right weighted by each cell's size; why the vacancies with no level have none;
-and every vacancy where the rule and the settled label split, with the phrases the rule accepted.
-An unclear label is left out of every share.
+interval; the share right weighted by each cell's size; why the vacancies with no level have none; how
+many of the vacancies with no required years ask for years, by cell; and every vacancy where the rule
+and the settled label split, with the phrases the rule accepted. An unclear label is left out of every
+share.
 """
 
 import json
@@ -101,15 +104,19 @@ def main():
     verdicts = {}
     for path in sorted(disagreements.glob("batch-*.verdicts.json")):
         verdicts.update(json.loads(path.read_text(encoding="utf-8")))
-    if not verdicts:
+    written = {row["id"] for path in disagreements.glob("batch-*.json") if not path.name.endswith(".verdicts.json")
+               for row in json.loads(path.read_text(encoding="utf-8"))}
+    unwritten = [id for id in differing if id not in verdicts and id not in written]
+    if unwritten:
         disagreements.mkdir(exist_ok=True)
-        for start in range(0, len(differing), BATCH):
+        first = len(list(disagreements.glob("batch-*.json"))) - len(list(disagreements.glob("batch-*.verdicts.json")))
+        for start in range(0, len(unwritten), BATCH):
             batch = [{"id": id, "text": f"company: {seen[id]['company']} | title: {seen[id]['title']} | description: "
                       f"{seen[id]['description']}", "a": f"{said(answer(a[id]))} ({a[id]['reason']})",
-                      "b": f"{said(answer(b[id]))} ({b[id]['reason']})"} for id in differing[start:start + BATCH]]
-            (disagreements / f"batch-{start // BATCH + 1:03}.json").write_text(
+                      "b": f"{said(answer(b[id]))} ({b[id]['reason']})"} for id in unwritten[start:start + BATCH]]
+            (disagreements / f"batch-{first + start // BATCH + 1:03}.json").write_text(
                 json.dumps(batch, ensure_ascii=False, indent=1), encoding="utf-8")
-        print(f"wrote {len(differing)} disagreements for the adjudicator")
+        print(f"wrote {len(unwritten)} disagreements for the adjudicator")
         return
     unsettled = [id for id in differing if id not in verdicts]
     if unsettled:
@@ -159,6 +166,12 @@ def main():
                       else "(c) states nothing" for row in nothing)
     for reason, count in sorted(reasons.items()):
         print(f"  {reason:28} {count:3} of {len(nothing)}")
+
+    print("\nno required years: how many ask for years the rule missed, by cell")
+    yearless = [row for row in judged.values() if row["years"] == "none"]
+    for name in sorted({row["cell"] for row in yearless}):
+        held = [row for row in yearless if row["cell"] == name]
+        print(f"  {name:22} {share(sum(settled[row['id']][0] != 'none' for row in held), len(held))}")
 
     print("\nwhere the rule and the settled labels split (rule -> settled)")
     for row in sorted(judged.values(), key=lambda row: (row["stratum"], row["cell"])):

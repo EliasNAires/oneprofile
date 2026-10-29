@@ -1,0 +1,41 @@
+id	years	level	body_level	reason
+1156711	12	senior	-	title "Senior"; years "Twelve (12) years of relevant professional experience providing Network Engineering support"
+379720	none	none	-	no level word in title; no description text shown
+912549	none	none	-	no level word in title; "for years" is the company's own tenure, excluded
+343418	none	none	-	no level word in title; no experience-years text (salary range only)
+1214112	none	none	entry	no level word in title, no numeric years; body states "entry level position"
+8511	none	principal	-	title "Principal"; no years required
+172347	none	senior	senior	title "Senior"; no years required; body "as a Senior Software Engineer"
+280341	none	senior	senior/staff	title "Sr/Staff" lowest is "Senior"; years "6+ years of experience..." under Preferred Qualifications, excluded
+238448	none	none	-	no level word in title; no description text shown
+379853	none	mid	-	title "Mid Level"; no years (Diferencial item names no figure)
+439031	1	senior	senior	title "Senior"; years "1-2 years in business analysis, CX research, or survey analytics"
+1356591	none	none	-	no level word in title; no description text shown
+1300567	10	principal	-	title "Principal"; years "Ten (10)+ or more years of software engineering experience"
+382087	none	none	-	no level word in title ("Intern"); "Year 1" is schooling, excluded
+323580	none	none	-	"Manager" not on ladder; years under "Desired Qualifications", excluded
+249703	none	senior	-	title "Senior"; no description text shown
+210906	none	none	-	"Lead" not on ladder; no description text shown
+268627	none	none	-	"Manager" not on ladder; no experience years (benefit/policy text only)
+379193	none	senior	senior	title "Senior"; years none ("seven years" is company's own history, excluded)
+39647	none	none	-	"Sr." modifies "Manager", not on ladder; no description text shown
+977274	none	none	-	numbered title ("Coordinator II") placed by years; years none ("60 years" is company's own history, excluded)
+194448	none	senior	senior	title "Senior"; no numeric years
+1380040	none	none	-	no level word in title; no description text shown
+816947	none	none	-	"OJT" not a level word; no description text shown
+998591	none	senior	senior	title "Sr"; no numeric years ("first year" is tenure, not an experience requirement)
+810933	none	senior	senior	title "Sr."; no numeric years
+80799	none	senior	-	title "Senior"; no description text shown
+316434	none	none	-	"Manager" not on ladder; no description text shown
+292948	none	none	-	"Internship" not a level word; no description text shown
+775260	none	none	-	no level word in title; no description text shown
+216500	none	none	-	no level word in title; no description text shown
+853086	none	senior	senior	title "Senior"; no numeric years ("recent years", "each year" are non-numeric/non-experience)
+805586	none	none	-	"Team Leader" not on ladder; years is "18 years of age", excluded; "principal" used as "main duty", not a level word
+551358	none	senior	senior	title "Senior"; years none ("3-year fixed term contract" is a contract duration, excluded)
+329363	none	principal	principal	title "Principal"; no numeric years (benefits lines marked ">" are board footer, excluded)
+294303	none	none	-	"Internship" not a level word; no description text shown
+579194	none	principal	principal	title "Principal"; years none ("60 years" is company's own history, excluded)
+88997	none	staff	staff	title "Staff"; no numeric years
+810849	none	none	-	"Lead" not on ladder; no description text shown
+271744	none	senior	senior	title "Senior"; years none (company growth/recognition history, excluded)
