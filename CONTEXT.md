@@ -309,8 +309,8 @@ Never on its own a reason to rule a vacancy out (ADR-0004).
 _Avoid_: office, region, geo, country
 
 **Seniority Level**:
-The experience level a vacancy asks for, on one ordinal scale from entry to principal.
-Where a vacancy names several, the lowest applies.
+The experience level a vacancy asks for, on one ordinal scale from entry to principal. A level
+word in the title sets it; otherwise its required years do (PRD §6.1).
 _Avoid_: level, grade, rank, band, experience
 
 **Management Level**:
@@ -319,6 +319,18 @@ executive. Taken out of the title so that the role is read from the area it lead
 names a job rather than a rank (`product manager`) has none. Not the seniority level: a vacancy
 can have both (ADR-0024).
 _Avoid_: leadership, track, rank, grade
+
+**Experience Requirement**:
+A phrase in a description that requires some years of professional experience, for the role or
+for a skill (`5+ years of software engineering`, `3+ years of Java`). Not one marked optional,
+and not a number about something else (`founded 12 years ago`).
+_Avoid_: YOE, years phrase, experience mention
+
+**Required Years**:
+The years of professional experience a vacancy requires: the floor of each experience
+requirement, and the highest of those floors. Evidence for the seniority level, which it sets
+only when the title names no level.
+_Avoid_: YOE, years of experience, experience level
 
 **Title Seniority**:
 Every level a vacancy's title names, kept as found: evidence for the seniority level, not

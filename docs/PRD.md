@@ -290,18 +290,40 @@ practice (ADR-0024, amended 2026-10-26).
 ### 6.1 Seniority
 
 One ordinal axis, derived from the evidence the earlier steps gathered rather than extracted
-afresh. The title contributes a list of levels (§5.1, §5.3); the description body
-contributes level tokens wherever they appear and years-of-experience phrasing, mapped as:
-0–1 entry, 2–3 junior, 3–5 mid, 5–8 senior, 8+ staff.
+afresh. The title contributes a list of levels (§5.1, §5.3); the description body contributes
+level tokens wherever they appear and its **experience requirements**, from which it derives
+the vacancy's **required years**, mapped as: 0–1 entry, 2 junior, 3–4 mid, 5–7 senior, 8+
+staff.
 
 Body extraction matters because the pre-reset measurement showing 96,734 of 128,953
 vacancies with no detectable seniority was **title-only**, and says nothing about what the
 body contains.
 
-This step is the only one that collapses several levels into one, and it does so by taking
-the **lowest**, because a vacancy naming a range publishes the floor it will accept. It is
-also where the numbered levels are resolved: `Engineer II` carries no place on the ladder
-until the body's years-of-experience phrasing gives it one.
+This step is the only one that collapses several levels into one. Decided by Elias on
+2026-10-29:
+
+- **Any experience requirement counts as professional experience**, whether it is asked for
+  the role or for a skill: "3+ years of Java" means three years of working. Years are never
+  summed.
+- **Lowest wins within one requirement, highest wins across distinct ones.** A range ("3–5
+  years"), an alternative ("BS and 5 years, or MS and 3") or a title naming two levels
+  ("Senior/Staff") states one requirement, and its floor is what the vacancy accepts. Distinct
+  requirements all hold at once, so the highest binds: "3+ years of Java" and "2+ years with
+  AWS" give 3 years.
+- **A level word in the title wins; body years fill the gap.** "Senior Engineer" asking for
+  "2+ years" is senior. The required years set the level only when the title names none, or
+  only a numbered level: this is where `Engineer II` gets its place on the ladder.
+- **Only requirements count.** A phrase marked optional ("is a plus", "preferred", a
+  "Preferred qualifications" heading) and a number that is not experience ("founded 12 years
+  ago", "4-year vesting") are not experience requirements. Under highest-wins one stray large
+  number makes a vacancy staff, so this is where the pass's precision is decided, and its
+  measurement reports levels that came out too high apart from those that came out too low.
+
+Both the level and the required years are kept, since what the Finder shows is open. Years are
+not attributed to skills (multi-dimensional seniority is out of scope, §11), but each
+experience requirement the pass accepts is stored with its segment, so the level can be
+inspected and per-skill years can later be read by joining it to `vacancy_skill`'s segments
+without extracting again.
 
 ### 6.2 Ranking
 
@@ -355,6 +377,8 @@ company is `(ats, slug)`; a vacancy is `(company_id, external_id)`.
 - `normalized_vacancy_title_seniority` — the levels a title names, one row each, because a
   title may name more than one and the counting these reports need is a join rather than an
   unnest.
+- The experience requirements §6.1 accepts, one row each: the vacancy, the segment it was read
+  in, its lower and upper years, and whether it set the required years.
 - `vacancy_skill` — join table, one row per (vacancy, skill), unique on the pair so
   re-extraction is idempotent, indexed on both columns. Each row also holds the segments the
   skill was found in and whether the title names it, which the body pass reads (ADR-0018). At roughly 10–15 skills per vacancy
@@ -507,7 +531,7 @@ How numbers are shown:
   role charts, no stated seniority on seniority charts, no skill found on skill charts.
   Unknowns are not spread evenly, so leaving them out of the denominator biases the shares;
   showing their size says how much the chart cannot see.
-- **Seniority counts each vacancy once**, at the lowest level it names (§6.1).
+- **Seniority counts each vacancy once**, at the one level §6.1 derives.
 - **Role counts a vacancy in every role its title names**, so role shares can add up to more than
   100% (ADR-0024).
 - **Statistics by role and management level.** A role's vacancies include its managers', whose
