@@ -67,6 +67,18 @@ class SeniorityRunTest {
 	}
 
 	@Test
+	void readsTheRequirementsKnowingWhichCompanyPublishedThem() {
+		holds(new SeniorityVacancy(1, "opentable", Set.of(), List.of(
+				new Segment(SegmentKindEnum.SENTENCE, null,
+						"With 25+ years of experience, OpenTable is an industry leader with a passion for restaurants.", false),
+				new Segment(SegmentKindEnum.ITEM, "Requirements", "5+ years of hands-on Linux experience", false))));
+
+		run(10).readSeniorities();
+
+		assertThat(recorded().get(1L).requiredYears()).isEqualTo(5);
+	}
+
+	@Test
 	void walksTheSubsetABatchAtATime() {
 		holds(vacancy(1, Set.of()), vacancy(2, Set.of()), vacancy(3, Set.of()));
 
@@ -87,7 +99,7 @@ class SeniorityRunTest {
 	}
 
 	private static SeniorityVacancy vacancy(long vacancyId, Set<SeniorityLevelEnum> titleSeniorities, String... items) {
-		return new SeniorityVacancy(vacancyId, titleSeniorities,
+		return new SeniorityVacancy(vacancyId, "acme", titleSeniorities,
 				List.of(items).stream().map((text) -> new Segment(SegmentKindEnum.ITEM, "Requirements", text, false)).toList());
 	}
 

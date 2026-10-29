@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Scores the blind sample that measures seniority's precision (#99).
 
-    scripts/score-seniority-sample DIRECTORY
+    scripts/score-seniority-sample DIRECTORY [ANSWERS]
 
-DIRECTORY is where scripts/draw-seniority-sample drew the sample. Reads the two labellers' answers,
-labels-a-N.tsv and labels-b-N.tsv (id, years, level, body_level, reason, as docs/seniority-criterion.md
-says), and the adjudicator's verdicts, disagreements/batch-NNN.verdicts.json, which settle every vacancy
+DIRECTORY is where scripts/draw-seniority-sample drew the sample. The rule's answers are read from ANSWERS
+in it: sample.tsv, or a file re-read after the rule changed (draw-seniority-sample --reread). Reads the two
+labellers' answers, labels-a-N.tsv and labels-b-N.tsv (id, years, level, body_level, reason, as
+docs/seniority-criterion.md says), and the adjudicator's verdicts, disagreements/batch-NNN.verdicts.json, which settle every vacancy
 the labellers answered differently in its years or its level. Without the verdicts, prints the
 labellers' agreement and writes the disagreements as JSON batches of 20 for the adjudicator
 (.claude/agents/adjudicator.md): each row's id, what the labellers read and their two answers. A
@@ -85,10 +86,10 @@ def direction(rule, settled):
 
 
 def main():
-    if len(sys.argv) != 2:
+    if not 2 <= len(sys.argv) <= 3:
         sys.exit(__doc__)
     directory = Path(sys.argv[1])
-    sample = {row["id"]: row for row in rows(directory / "sample.tsv")}
+    sample = {row["id"]: row for row in rows(directory / (sys.argv[2] if len(sys.argv) == 3 else "sample.tsv"))}
     seen = {row["id"]: row for batch in sorted(directory.glob("batch-*.tsv")) for row in rows(batch)}
     a, b = labels(directory, "a"), labels(directory, "b")
     missing = [id for id in sample if id not in a or id not in b]

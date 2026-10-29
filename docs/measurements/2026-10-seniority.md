@@ -212,3 +212,68 @@ that is the company's own years, which a wider company voice (the company's name
 team-bio lines) would remove; the rest are alternatives joined by `;` or commas without an `or`. About 8% of the vacancies with
 no required years ask for some, half of them in a number written out before its digits (`Twelve (12) years`). Whether
 this is enough, or seniority becomes a rule loop (PRD §12.6), is not decided here.
+
+## After #100
+
+2026-10-29, on the same snapshot: `POST /seniorities` again, after two fixes to
+`ExperienceRequirementRule` for the two causes above, one per direction of error. The 220 were then
+scored again with the rule's new answers for the same ids (`scripts/draw-seniority-sample --reread`,
+into `2026-10-seniority-sample/sample-100.tsv`); no labelling was redone, and `sample.tsv` keeps the
+first answers.
+
+**What changed in the rule.**
+
+- **The company's own years**, wider than `we` and the company headings: the company named by its
+  name, read from its board's slug (`opentable`, `rocketlab`, `dxcjobs`), where the years sit in a
+  phrase fronted before it (`With … 25+ years of experience, OpenTable … is`) or follow it having them
+  (`DXC … has over 20 years`); a segment that opens with `Its`; an award (`14 years in a row`); and
+  the headings `Our team`, `Meet the team` and `… facts & figures`. The company named anywhere was
+  tried first and dropped: it left out `10+ years implementing Salesforce` at Salesforce and `5+ years
+  with Esri technology` at Esri. `its` anywhere, `What we offer` and `The team` were dropped too,
+  each for the real requirements it held (`Java and its ecosystem`, `Typically requires … 8 years`).
+- **A number written out before its digits**: `Twelve (12) years`, `Ten (10)+ or more years`,
+  `three (3) to five (5) years`, and `zero` as a number (`zero to four (4) years` gives 0).
+- **Two things the written-out numbers brought in**, which the criterion already settles. Many are
+  substitutions (`Sixteen (16) years … may be substituted in lieu of a degree`), which rule 5 says
+  are no requirement of their own: years whose clause says they may be substituted or are in lieu of
+  something, or that follow `substituted for` or `In lieu of …`, are left out. The clause ends at an
+  `or` or a parenthesis, so `8 years … or MS with 6 years …, or 4 additional years … in lieu of a
+  degree` keeps 8 and 6. And `Also acceptable is no degree and eight (8) years` is an alternative.
+
+**The pass.**
+
+| | before | after |
+|---|---:|---:|
+| required years | 103,517 | 103,751 |
+| a seniority level | 118,612 (76.1%) | 118,694 (76.2%) |
+| neither | 37,155 | 37,073 |
+| required years of 20 or more | 284 | 173 |
+
+1,570 vacancies changed their required years and 1,050 their level: 568 gained years, 334 lost them,
+579 went lower and 89 higher. Read in samples of each: those that lost them are the company's years
+(the award, `Its track record`, DXC, ZEISS) and substitutions standing alone (`Bachelor's degree; OR
+2+ years … in lieu of a degree`); those that gained them are written-out requirements (`Eight (8)
+years of experience in Agile software development`); lower are the company's years dropped and
+written-out alternatives now joined (`; OR PhD with two (2) years`); higher are written-out
+requirements over a stray lower one (`Bachelor's degree and five (5) years` over a 1).
+
+**The 220.**
+
+| | before | after |
+|---|---:|---:|
+| every cell with a level | 118 of 120, 98.3% | 119 of 120, 99.2% |
+| weighted by cell size, with a level | 98.9% | 99.5% |
+| weighted by cell size, all | 96.8% | 97.2% |
+| years staff | 18 of 20 | 19 of 20 |
+| 20 years or more | 15 of 20, 75.0% | 20 of 20, 100% |
+| years right, every cell with a level | 115 of 120 | 117 of 119 |
+| years right, no years stratum | 17 of 20 | 19 of 20 |
+
+The splits fall from 29 to 14, and no vacancy that was right is wrong: too high from 11 to 5, too low
+2 as before, years alone from 16 to 7. Gone are all 6 levels too high from the company's own years and
+6 of its 8 wrong years, and the 3 written-out numbers. The other 2 of the company's are two Rocket Lab
+postings, which now read 8 and 12 for 2 and 5 by another cause: `Bachelor's degree with 8+ years,
+master's degree with 5+ years, or Ph.D. with 2+ years`, alternatives joined by commas. The 14 left are
+the causes above outside these two: alternatives the rule does not join (9), the range without its
+dash, `Sr. Manager`, the heading read as the company's, the years after their words, and `1-2 years in
+business analysis`.

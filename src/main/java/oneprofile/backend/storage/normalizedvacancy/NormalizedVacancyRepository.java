@@ -142,13 +142,14 @@ public interface NormalizedVacancyRepository extends ListCrudRepository<Normaliz
 	int clearWorkModes();
 
 	/**
-	 * The engineering subset held after one vacancy id, in id order, with each vacancy's description
-	 * segments.
+	 * The engineering subset held after one vacancy id, in id order, with each vacancy's board slug and
+	 * description segments.
 	 * @param after the vacancy id to read past, 0 to start at the first
 	 * @param limit how many to read at most
-	 * @return each vacancy's id and its segments, in that order
+	 * @return each vacancy's id, its board's slug and its segments, in that order
 	 */
-	@Query("select n.vacancyId, n.descriptionSegments from NormalizedVacancy n where n.vacancyId > :after "
+	@Query("select n.vacancyId, c.slug, n.descriptionSegments from NormalizedVacancy n join Vacancy v on v.id = n.vacancyId "
+			+ "join v.company c where n.vacancyId > :after "
 			+ "and n.classificationState = oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum.IN "
 			+ "order by n.vacancyId")
 	List<Tuple> seniorityScopeAfter(long after, Limit limit);

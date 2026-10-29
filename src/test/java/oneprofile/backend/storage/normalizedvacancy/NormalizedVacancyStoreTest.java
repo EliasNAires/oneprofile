@@ -570,7 +570,7 @@ class NormalizedVacancyStoreTest {
 		this.entityManager.clear();
 
 		assertThat(this.normalized.seniorityScopeAfter(0, 10)).containsExactly(
-				new SeniorityVacancy(first, Set.of(SeniorityLevelEnum.SENIOR, SeniorityLevelEnum.II), segments));
+				new SeniorityVacancy(first, "stripe", Set.of(SeniorityLevelEnum.SENIOR, SeniorityLevelEnum.II), segments));
 	}
 
 	@Test

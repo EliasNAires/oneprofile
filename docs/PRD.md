@@ -332,7 +332,10 @@ level and the required years disagree on half the vacancies that have both
 `docs/seniority-criterion.md`) is 98.9% weighted where a level is given and 96.8% over the subset, too
 high outweighing too low 11 to 2; where the error was expected it is higher, 75% at 20 years or more,
 mostly the company's own years read as a requirement. Its recall is about 96% for the required years and
-98% for the level: about 8% of the vacancies with no required years ask for some the rule does not read. Whether that is enough or seniority becomes a
+98% for the level: about 8% of the vacancies with no required years ask for some the rule does not read. #100
+then left out the company's own years named by its name, `Its`, awards and team bios, and read numbers
+written out before their digits: 99.5% weighted where a level is given, 97.2% over the subset, 20 of 20 at
+20 years or more, with no new miss in the sample. Whether that is enough or seniority becomes a
 rule loop (§12.6) is not yet decided. The
 body's level words (`a senior-level role`) are not read: decided by Elias on 2026-10-29, they are an
 angle of improvement only if #99 shows the levels fall short, since they would likely bring many false

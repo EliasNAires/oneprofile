@@ -264,8 +264,8 @@ public class NormalizedVacancyStore {
 		for (Tuple row : read) {
 			long vacancyId = row.get(0, Long.class);
 			@SuppressWarnings("unchecked")
-			List<Segment> segments = (List<Segment>) row.get(1);
-			scope.add(new SeniorityVacancy(vacancyId, named.getOrDefault(vacancyId, Set.of()),
+			List<Segment> segments = (List<Segment>) row.get(2);
+			scope.add(new SeniorityVacancy(vacancyId, row.get(1, String.class), named.getOrDefault(vacancyId, Set.of()),
 					(segments != null) ? segments : List.of()));
 		}
 		return scope;

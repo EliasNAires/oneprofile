@@ -75,7 +75,7 @@ public class SeniorityRun {
 			}
 			Map<Long, VacancySeniority> derived = new HashMap<>();
 			for (SeniorityVacancy vacancy : read) {
-				ExperienceReading reading = this.requirements.read(vacancy.segments());
+				ExperienceReading reading = this.requirements.read(vacancy.slug(), vacancy.segments());
 				SeniorityLevelEnum named = this.seniority.namedSeniorityLevel(vacancy.titleSeniorities());
 				SeniorityLevelEnum seniorityLevel = this.seniority.seniorityLevel(vacancy.titleSeniorities(), reading.requiredYears());
 				if (seniorityLevel != null || reading.requiredYears() != null) {

@@ -3,6 +3,7 @@
 
     scripts/draw-seniority-sample DIRECTORY [per cell, default 20]
     scripts/draw-seniority-sample DIRECTORY --no-years [per group, default 20]
+    scripts/draw-seniority-sample DIRECTORY --reread FILE
 
 Run after POST /seniorities. Every vacancy of the engineering subset falls in one cell, by where its
 level came from: title (a level word in its title), one cell per level its required years give (years
@@ -21,6 +22,10 @@ With --no-years, adds to a sample already drawn in DIRECTORY a stratum that meas
 requirements the rule misses: that many vacancies with no required years, of each of the two groups that
 hold them (no level, and a level from the title), none already drawn. Appends them to sample.tsv as the
 stratum no years, writes them to the next batch-N.tsv, and prints each group's size, which weighs it.
+
+With --reread, after a later POST /seniorities, writes DIRECTORY/FILE as sample.tsv is written, for the same
+vacancies in the same cells and strata, with the rule's level, required years and phrases as they now are, so
+scripts/score-seniority-sample can score the labels against them. sample.tsv is left as drawn.
 """
 
 import csv
@@ -176,10 +181,32 @@ def add_no_years(directory, rows, per_group):
           + ", ".join(f"{name} {count}" for name, count in sorted(groups.items())))
 
 
+def reread(directory, name):
+    """Writes the rule's answers as they now are for the vacancies already drawn, keeping their cells and strata."""
+    with open(directory / "sample.tsv", encoding="utf-8") as tsv:
+        header = tsv.readline().rstrip("\n").split("\t")
+        drawn = [dict(zip(header, line.rstrip("\n").split("\t"))) for line in tsv if line.strip()]
+    ids = {row["id"] for row in drawn}
+    now = {row["id"]: row for row in vacancies() if row["id"] in ids}
+    segments = segments_of([row["id"] for row in drawn])
+    with open(directory / name, "w", encoding="utf-8") as out:
+        out.write("\t".join(header) + "\n")
+        for row in drawn:
+            current = now.get(row["id"], {"level": None, "years": None, "requirements": []})
+            out.write(sample_line({**row, "level": current["level"], "years": current["years"],
+                                   "requirements": current["requirements"]}, segments))
+    print(f"{len(drawn)} vacancies re-read into {name}, {len(drawn) - len(now)} no longer in the subset")
+
+
 def main():
     if not 2 <= len(sys.argv) <= 4:
         sys.exit(__doc__)
     directory = Path(sys.argv[1])
+    if sys.argv[2:3] == ["--reread"]:
+        if len(sys.argv) != 4:
+            sys.exit(__doc__)
+        reread(directory, sys.argv[3])
+        return
     no_years = sys.argv[2:3] == ["--no-years"]
     count = sys.argv[3 if no_years else 2:]
     per_cell = int(count[0]) if count else 20
