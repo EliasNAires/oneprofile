@@ -156,6 +156,13 @@ too low today; in the title group the level stands and only the stored years are
 see only the segments that name `year` or `yr`, so a requirement written without either (`Experience:
 3+`) is not counted here.
 
+**Recall.** Of the vacancies that ask for years, the rule reads them in about 96%: 103,517 of about
+107,800, between 90% and 99% from the two intervals. Of the vacancies that should have a level, it
+gives one to about 98%: only the no-level group's misses count, since a title's level stands without
+years, so 118,612 of about 120,500, between 95% and 99.7%. Both are upper bounds, by the segments the
+labellers do not see. A level stated only in body words is not counted as missed, since the criterion
+does not let it set the level; counted, it would bring the level's recall to about 95%.
+
 ## Where the rule and the labels split
 
 29 vacancies, 13 by level (11 too high, 2 too low) and 16 by their years alone, the level being right.
