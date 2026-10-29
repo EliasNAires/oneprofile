@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -74,6 +75,16 @@ public class NormalizedVacancyEntity {
 
 	@Enumerated(EnumType.STRING)
 	private WorkModeEnum workMode;
+
+	@Enumerated(EnumType.STRING)
+	private SeniorityLevelEnum seniorityLevel;
+
+	private Integer requiredYears;
+
+	@ElementCollection
+	@CollectionTable(name = "normalized_vacancy_experience_requirement",
+			joinColumns = @JoinColumn(name = "normalized_vacancy_id"))
+	private Set<ExperienceRequirement> experienceRequirements = new HashSet<>();
 
 	protected NormalizedVacancyEntity() {
 	}
@@ -146,6 +157,17 @@ public class NormalizedVacancyEntity {
 		this.workMode = workMode;
 	}
 
+	/**
+	 * Takes on the seniority the seniority pass derived for the vacancy, replacing what the last run recorded.
+	 * @param seniority its seniority level, its required years and the experience requirements they come from
+	 */
+	public void placedAt(VacancySeniority seniority) {
+		this.seniorityLevel = seniority.seniorityLevel();
+		this.requiredYears = seniority.requiredYears();
+		this.experienceRequirements.clear();
+		this.experienceRequirements.addAll(seniority.requirements());
+	}
+
 	/** The vacancy these facts were derived from. */
 	public long vacancyId() {
 		return this.vacancyId;
@@ -203,6 +225,18 @@ public class NormalizedVacancyEntity {
 	/** Where it says its work is done, null where it declares none or the work-mode run has not reached it. */
 	public WorkModeEnum workMode() {
 		return this.workMode;
+	}
+
+	/**
+	 * What the seniority pass derived for it, its experience requirements in the order written; nothing
+	 * where the pass has not reached it.
+	 */
+	public VacancySeniority seniority() {
+		return new VacancySeniority(this.seniorityLevel, this.requiredYears,
+				this.experienceRequirements.stream()
+					.sorted(Comparator.comparingInt(ExperienceRequirement::segment)
+						.thenComparingInt(ExperienceRequirement::position))
+					.toList());
 	}
 
 }

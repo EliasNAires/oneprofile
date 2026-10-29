@@ -287,7 +287,7 @@ new column of the taxonomy, kept by hand, and could make role nearness more robu
 replaces extracting practices from descriptions, which is not done: most skills imply their
 practice (ADR-0024, amended 2026-10-26).
 
-### 6.1 Seniority
+### 6.1 Seniority — built, precision in #99
 
 One ordinal axis, derived from the evidence the earlier steps gathered rather than extracted
 afresh. The title contributes a list of levels (§5.1, §5.3); the description body contributes
@@ -324,6 +324,12 @@ not attributed to skills (multi-dimensional seniority is out of scope, §11), bu
 experience requirement the pass accepts is stored with its segment, so the level can be
 inspected and per-skill years can later be read by joining it to `vacancy_skill`'s segments
 without extracting again.
+
+Built (`POST /seniorities`, after the title breakdown, #8). Its first run gives 76.1% of the subset a
+level, against 37.5% from the title alone, and places 79.2% of the numbered-level titles; the title's
+level and the required years disagree on half the vacancies that have both
+(`docs/measurements/2026-10-seniority.md`). Whether the levels are right is measured in #99. The
+body's level tokens are not read.
 
 ### 6.2 Ranking
 
@@ -377,8 +383,9 @@ company is `(ats, slug)`; a vacancy is `(company_id, external_id)`.
 - `normalized_vacancy_title_seniority` — the levels a title names, one row each, because a
   title may name more than one and the counting these reports need is a join rather than an
   unnest.
-- The experience requirements §6.1 accepts, one row each: the vacancy, the segment it was read
-  in, its lower and upper years, and whether it set the required years.
+- `normalized_vacancy_experience_requirement` — the experience requirements §6.1 accepts, one row
+  each: the vacancy, the segment it was read in and where in it the phrase starts, its lower and
+  upper years, and whether it set the required years.
 - `vacancy_skill` — join table, one row per (vacancy, skill), unique on the pair so
   re-extraction is idempotent, indexed on both columns. Each row also holds the segments the
   skill was found in and whether the title names it, which the body pass reads (ADR-0018). At roughly 10–15 skills per vacancy

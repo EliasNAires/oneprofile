@@ -1,6 +1,8 @@
 package oneprofile.backend.storage.normalizedvacancy;
 
+import jakarta.persistence.Tuple;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -230,6 +232,66 @@ public class NormalizedVacancyStore {
 		List<NormalizedVacancyEntity> recorded = new ArrayList<>(read.size());
 		for (NormalizedVacancyEntity normalized : this.repository.findByVacancyIdIn(read.keySet())) {
 			normalized.workingAs(read.get(normalized.vacancyId()));
+			recorded.add(normalized);
+		}
+		this.repository.saveAll(recorded);
+		return recorded.size();
+	}
+
+	/**
+	 * The engineering subset held after one vacancy id, in id order, each with every level its title names
+	 * and its description's segments: what the seniority pass reads, walked batch by batch like the titles
+	 * are.
+	 * @param after the vacancy id to read past, 0 to start at the first
+	 * @param batch how many to read at most
+	 * @return the vacancies, empty once there are none left
+	 */
+	@Transactional(readOnly = true)
+	public List<SeniorityVacancy> seniorityScopeAfter(long after, int batch) {
+		// The levels a title names are two collections, which no constructor expression can carry beside the
+		// segments, so they are read for the whole batch apart and joined here.
+		List<Tuple> read = this.repository.seniorityScopeAfter(after, Limit.of(batch));
+		if (read.isEmpty()) {
+			return List.of();
+		}
+		Map<Long, Set<SeniorityLevelEnum>> named = new HashMap<>();
+		List<Long> vacancyIds = read.stream().map((row) -> row.get(0, Long.class)).toList();
+		for (Tuple row : this.repository.titleSenioritiesOf(vacancyIds)) {
+			named.computeIfAbsent(row.get(0, Long.class), (vacancyId) -> EnumSet.noneOf(SeniorityLevelEnum.class))
+				.add(SeniorityLevelEnum.valueOf(row.get(1, String.class)));
+		}
+		List<SeniorityVacancy> scope = new ArrayList<>(read.size());
+		for (Tuple row : read) {
+			long vacancyId = row.get(0, Long.class);
+			@SuppressWarnings("unchecked")
+			List<Segment> segments = (List<Segment>) row.get(1);
+			scope.add(new SeniorityVacancy(vacancyId, named.getOrDefault(vacancyId, Set.of()),
+					(segments != null) ? segments : List.of()));
+		}
+		return scope;
+	}
+
+	/**
+	 * Lets go of the seniority every run recorded, so that after a run only the vacancies it read hold one:
+	 * a vacancy that has left the engineering subset keeps none.
+	 * @return how many vacancies had a seniority level or required years
+	 */
+	@Transactional
+	public int clearSeniorities() {
+		this.repository.clearExperienceRequirements();
+		return this.repository.clearSeniorities();
+	}
+
+	/**
+	 * Records the seniority the seniority pass derived for a batch of vacancies.
+	 * @param derived the seniority of each vacancy, by vacancy id
+	 * @return how many vacancies this recorded a seniority for
+	 */
+	@Transactional
+	public int recordSeniorities(Map<Long, VacancySeniority> derived) {
+		List<NormalizedVacancyEntity> recorded = new ArrayList<>(derived.size());
+		for (NormalizedVacancyEntity normalized : this.repository.findByVacancyIdIn(derived.keySet())) {
+			normalized.placedAt(derived.get(normalized.vacancyId()));
 			recorded.add(normalized);
 		}
 		this.repository.saveAll(recorded);

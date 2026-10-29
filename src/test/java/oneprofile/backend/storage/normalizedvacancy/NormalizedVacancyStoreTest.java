@@ -555,6 +555,66 @@ class NormalizedVacancyStoreTest {
 		assertThat(this.repository.findAll()).extracting(NormalizedVacancyEntity::workMode).containsOnlyNulls();
 	}
 
+	@Test
+	void readsForTheSeniorityTheEngineeringSubsetWithEveryLevelItsTitleNamesAndItsSegments() {
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		List<Segment> segments = List.of(new Segment(SegmentKindEnum.ITEM, null, "5+ years of Java", false));
+		this.normalized.recordCleanedVacancies(Map.of(first,
+				new CleanedVacancy(new CleanedTitle("Engineer", Set.of(SeniorityLevelEnum.SENIOR)), segments, null),
+				second, cleaned("Engineer", Set.of())));
+		this.normalized.recordClassifications(Map.of(first, Classification.in(), second, Classification.out()));
+		this.normalized.recordTitleBreakdowns(Map.of(first,
+				new TitleBreakdown(List.of("engineer"), Set.of(SeniorityLevelEnum.II), null)));
+		this.entityManager.flush();
+		this.entityManager.clear();
+
+		assertThat(this.normalized.seniorityScopeAfter(0, 10)).containsExactly(
+				new SeniorityVacancy(first, Set.of(SeniorityLevelEnum.SENIOR, SeniorityLevelEnum.II), segments));
+	}
+
+	@Test
+	void walksTheSeniorityScopeABatchAtATime() {
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		this.normalized.recordCleanedVacancies(
+				Map.of(first, cleaned("Engineer", Set.of()), second, cleaned("Engineer", Set.of())));
+		this.normalized.recordClassifications(Map.of(first, Classification.in(), second, Classification.in()));
+		this.entityManager.flush();
+
+		assertThat(this.normalized.seniorityScopeAfter(0, 1)).extracting(SeniorityVacancy::vacancyId)
+			.containsExactly(first);
+		assertThat(this.normalized.seniorityScopeAfter(first, 1)).extracting(SeniorityVacancy::vacancyId)
+			.containsExactly(second);
+	}
+
+	@Test
+	void holdsTheSeniorityOfAVacancyAndLetsGoOfEverySeniority() {
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		this.normalized.recordCleanedVacancies(
+				Map.of(first, cleaned("Engineer", Set.of()), second, cleaned("Engineer", Set.of())));
+		List<ExperienceRequirement> requirements = List.of(new ExperienceRequirement(0, 0, 3, 5, true),
+				new ExperienceRequirement(2, 10, 2, null, false));
+
+		assertThat(this.normalized.recordSeniorities(
+				Map.of(first, new VacancySeniority(SeniorityLevelEnum.MID, 3, requirements))))
+			.isEqualTo(1);
+		this.entityManager.flush();
+		this.entityManager.clear();
+
+		assertThat(this.repository.findByVacancyIdIn(List.of(first, second)))
+			.extracting(NormalizedVacancyEntity::vacancyId, NormalizedVacancyEntity::seniority)
+			.containsExactlyInAnyOrder(tuple(first, new VacancySeniority(SeniorityLevelEnum.MID, 3, requirements)),
+					tuple(second, new VacancySeniority(null, null, List.of())));
+
+		assertThat(this.normalized.clearSeniorities()).isEqualTo(1);
+		this.entityManager.clear();
+
+		assertThat(this.repository.findAll()).extracting(NormalizedVacancyEntity::seniority)
+			.containsOnly(new VacancySeniority(null, null, List.of()));
+	}
+
 	private static TitleBreakdown breakdown(String... normalizedTitles) {
 		return new TitleBreakdown(List.of(normalizedTitles), Set.of(), null);
 	}

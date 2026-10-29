@@ -1,6 +1,7 @@
 package oneprofile.backend.storage.normalizedvacancy;
 
 import java.util.Collection;
+import jakarta.persistence.Tuple;
 import java.util.List;
 import org.springframework.data.domain.Limit;
 import org.springframework.data.jpa.repository.Modifying;
@@ -139,6 +140,48 @@ public interface NormalizedVacancyRepository extends ListCrudRepository<Normaliz
 	@Modifying
 	@Query("update NormalizedVacancy n set n.workMode = null where n.workMode is not null")
 	int clearWorkModes();
+
+	/**
+	 * The engineering subset held after one vacancy id, in id order, with each vacancy's description
+	 * segments.
+	 * @param after the vacancy id to read past, 0 to start at the first
+	 * @param limit how many to read at most
+	 * @return each vacancy's id and its segments, in that order
+	 */
+	@Query("select n.vacancyId, n.descriptionSegments from NormalizedVacancy n where n.vacancyId > :after "
+			+ "and n.classificationState = oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum.IN "
+			+ "order by n.vacancyId")
+	List<Tuple> seniorityScopeAfter(long after, Limit limit);
+
+	/**
+	 * Every level the titles of a batch of vacancies name, both those cleaning read and those the title
+	 * breakdown read.
+	 * @param vacancyIds the vacancies to read
+	 * @return one vacancy id and one level it names per row, in that order
+	 */
+	@Query(value = "select n.vacancy_id, t.title_seniority from normalized_vacancy n "
+			+ "join normalized_vacancy_title_seniority t on t.normalized_vacancy_id = n.id where n.vacancy_id in :vacancyIds "
+			+ "union select n.vacancy_id, g.title_seniority from normalized_vacancy n "
+			+ "join normalized_vacancy_guarded_title_seniority g on g.normalized_vacancy_id = n.id "
+			+ "where n.vacancy_id in :vacancyIds", nativeQuery = true)
+	List<Tuple> titleSenioritiesOf(Collection<Long> vacancyIds);
+
+	/**
+	 * Lets go of every vacancy's seniority level and required years.
+	 * @return how many vacancies had either
+	 */
+	@Modifying
+	@Query("update NormalizedVacancy n set n.seniorityLevel = null, n.requiredYears = null "
+			+ "where n.seniorityLevel is not null or n.requiredYears is not null")
+	int clearSeniorities();
+
+	/**
+	 * Lets go of every experience requirement the seniority pass accepted, in one statement.
+	 * @return how many it let go of
+	 */
+	@Modifying
+	@Query(value = "delete from normalized_vacancy_experience_requirement", nativeQuery = true)
+	int clearExperienceRequirements();
 
 	/**
 	 * Puts every vacancy of the pile back to what its title left it: unknown, decided by the title.
