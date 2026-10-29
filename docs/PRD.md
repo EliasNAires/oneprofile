@@ -291,7 +291,7 @@ practice (ADR-0024, amended 2026-10-26).
 
 One ordinal axis, derived from the evidence the earlier steps gathered rather than extracted
 afresh. The title contributes a list of levels (§5.1, §5.3); the description body contributes
-level tokens wherever they appear and its **experience requirements**, from which it derives
+its **experience requirements**, from which it derives
 the vacancy's **required years**, mapped as: 0–1 entry, 2 junior, 3–4 mid, 5–7 senior, 8+
 staff.
 
@@ -329,7 +329,9 @@ Built (`POST /seniorities`, after the title breakdown, #8). Its first run gives 
 level, against 37.5% from the title alone, and places 79.2% of the numbered-level titles; the title's
 level and the required years disagree on half the vacancies that have both
 (`docs/measurements/2026-10-seniority.md`). Whether the levels are right is measured in #99. The
-body's level tokens are not read.
+body's level words (`a senior-level role`) are not read: decided by Elias on 2026-10-29, they are an
+angle of improvement only if #99 shows the levels fall short, since they would likely bring many false
+positives.
 
 ### 6.2 Ranking
 
