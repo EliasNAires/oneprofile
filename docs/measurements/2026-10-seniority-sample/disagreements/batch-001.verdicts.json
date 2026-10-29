@@ -1,0 +1,4 @@
+{
+ "180300": {"verdict": "a", "clause": "None — title names no level, description asks no years", "pattern": "foreign level word not listed"},
+ "1132157": {"verdict": "a", "clause": "Highest across distinct requirements, they all hold at once", "pattern": "plus joins distinct requirements"}
+}

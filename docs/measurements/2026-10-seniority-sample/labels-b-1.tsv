@@ -1,0 +1,91 @@
+id	years	level	body_level	reason
+253554	6	staff	-	"Staff" (title)
+1066973	4	mid	-	"4+ years of experience"
+1343251	2	junior	-	"2+ years experience"
+408194	1	entry	-	"1-4 years of experience" (floor)
+635221	none	none	-	no level word; only company's own years shown
+274282	3	mid	-	"3+ years of professional software engineering experience"
+1198625	20	staff	-	"20 years' experience as a SWE...is required"
+926309	8	staff	-	"Eight years of network contract or practice management administrative experience required"
+1171439	2	junior	entry	"two years of job-related IT experience"
+306661	2	principal	-	"Principal" (title)
+406980	5	senior	-	"5+ years as an analytics engineer..."
+770297	3	principal	-	"Principal" (title)
+797405	10	senior	senior	"Sr." (title)
+385206	1	entry	-	"+1 year of work experience"
+222868	3	mid	-	"3+ years of experience in ML engineering..."
+1262232	4	mid	-	"Year of experience required- 4+"
+302172	2	junior	-	"2 years of experience with Microsoft Word, Excel"
+315351	none	none	-	no level word; only the team's own years shown
+13191	none	none	-	no level word; only vague/boilerplate years shown
+448247	5	senior	-	"5 years of relevant work experience is required"
+797970	5	senior	senior	"5 + years of related experience"
+150	3	mid	-	"3+ years managing/leading engineering teams"
+728541	8	staff	senior	"8+ years of overall IT/software experience"
+610524	8	principal	-	"Principal" (title)
+1192853	3	mid	principal	"Master's degree and 3 years of experience" (lowest, level-3 track)
+217302	2	junior	-	"2+ years in Product Analytics..."
+554192	10	staff	-	"10+ years of experience in information security"
+952666	5	senior	-	"5 8 years of experience" (floor 5)
+230901	none	none	-	"Staff" means personnel (Member of Technical Staff); no description
+45039	5	senior	senior	"Senior" (title)
+705503	12	staff	mid-senior	"12+ years relevant experience in data analytics and/or automation"
+188991	none	none	senior-most	"Head" not a level word; only preferred/optional years shown
+134089	2	senior	senior	"Senior" (title)
+1222581	none	none	-	not a listed level word (Intern); no years required
+139905	2	junior	-	"minimum of 2 years of relevant embedded system software development experience"
+1086286	none	none	-	no description shown; no level word
+95185	10	staff	senior staff-level	"10+ years of software engineering experience"
+1221387	2	junior	-	"2+ years of hands-on industry experience"
+1151119	5	senior	-	"5+ years of ServiceNow development experience"
+943875	none	none	-	no description shown; no level word
+224109	3	mid	-	"3+ years of iOS development experience"
+203248	5	senior	-	"5+ years of hands-on Linux experience"
+485113	10	staff	-	"10-15+ years of progressive experience"
+1491719	4	mid	-	"4 years of work experience with a PhD" (lowest alt)
+1275521	1	entry	-	"Around 1–2 years of experience in IT operations"
+465850	10	staff	-	"Ten or more years of progressively responsible leadership experience"
+1304752	2	junior	-	"Typically 2+ years of experience in setup and configuration"
+103968	2	junior	-	"2–5 years of experience in laboratory automation engineering"
+1008422	3	mid	-	"3+ years of experience in SAP BPC and SAP BW"
+686288	1	entry	-	"1–3+ years of software development or related technical experience"
+289344	1	entry	-	"1+ years of experience in similar roles"
+395357	none	none	-	no description shown; no level word
+635225	5	senior	senior	"Senior" (title)
+315350	none	none	-	no level word; only the team's own years shown
+282130	7	senior	senior	"Typically 7–10+ years of experience in information security GRC"
+655711	2	junior	-	"plus 2 years of experience in Applied..."
+144665	5	senior	senior	"Sr." (title)
+1041588	3	mid	-	"A minimum of 3–5 years of related experience"
+253175	none	senior	-	"Senior" (title)
+301788	12	principal	principal	"Principal" (title)
+1129636	10	staff	-	"10+ years in Technology generally"
+319199	4	mid	-	"4+ years of experience"
+1343271	12	principal	principal	"Principal" (title)
+1140173	none	none	-	no description shown; no level word
+330373	none	none	-	"Lead" not a level word; no years asked (boilerplate excluded)
+733257	4	senior	-	"Senior" (title)
+571719	1	entry	-	"1+ years of experience performing research..."
+301790	5	principal	principal	"Principal" (title)
+795617	5	senior	-	"5 years of project management experience"
+390310	5	senior	-	"Senior" (title)
+733991	none	none	junior to senior	no level word in title; no numeric years given
+517491	2	junior	-	"At least 2 years of customer service experience"
+225920	7	senior	-	"7+ years of software engineering experience"
+478781	none	none	-	no level word; no numeric years-of-experience requirement shown
+243	none	senior	senior	"Senior" (title)
+1200554	0	entry	entry	"0-3 years of experience..." (floor 0)
+1190550	3	mid	-	"BS + 5 years of exp...; MS + 3 years of exp" (lowest 3)
+217950	3	mid	-	"Around 3+ years of experience in DevOps"
+1120336	8	senior	-	"Senior" (title)
+953873	1	entry	-	"1 year of relevant work experience"
+757006	10	staff	-	"10+ years of product management experience"
+243461	2	junior	-	"2+ years building distributed & scalable software and systems"
+687530	4	mid	-	"4+ years of experience in threat research"
+304239	1	entry	-	"1-3+ years of experience in a Data Analyst or Business Analyst role"
+209505	5	senior	senior	"5+ years of software engineering experience" ("Lead" in title excluded)
+661915	7	senior	-	"7+ years of professional software engineering experience"
+1132157	1	entry	-	"1 year of network design or installation..." (lowest)
+657333	9	senior	-	"Senior" (title)
+219808	5	senior	-	"5+ years working as a product manager on fintech products"
+348000	none	none	senior	no level word in title field; no years requirement shown

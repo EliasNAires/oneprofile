@@ -2,8 +2,8 @@
 
 2026-10-29, on `classified-2026-10-25`, with the rules as first built (`ExperienceRequirementRule`,
 `SeniorityRule`): `POST /seniorities` over the engineering subset, 155,767 vacancies, in 4 min 35 s
-(11 min 47 s on a cold database). Whether the levels are right is measured in #99; this file reports
-what the pass reached.
+(11 min 47 s on a cold database). What the pass reached comes first; its
+precision on a blind sample (#99) is under *Precision*.
 
 ## Coverage
 
@@ -88,3 +88,94 @@ item before it; the figures above are after those fixes. Left as they are, for #
 `normalized_vacancy.seniority_level` and `required_years`, and one row per accepted requirement in
 `normalized_vacancy_experience_requirement`: the segment's index, where the phrase starts in its
 text, its lower and upper years (upper null outside a range), and whether it set the required years.
+
+## Precision
+
+Measured on a blind sample (#99): `scripts/draw-seniority-sample` and `scripts/score-seniority-sample`
+into `2026-10-seniority-sample/`, against `docs/seniority-criterion.md`. The draw (`sample.tsv`), each
+cell's size (`cells.tsv`), what the labellers saw (`batch-1.tsv`, `batch-2.tsv`), their labels
+(`labels-a-*.tsv`, `labels-b-*.tsv`), the disagreements and their verdicts (`disagreements/`).
+
+**How it was drawn.** 20 vacancies of each cell, by where the level came from: the title, one cell per
+level the required years give (entry, junior, mid, senior, staff), and no level; 140 in all. Then two
+strata of 20 drawn first, where a level comes out too high: required years of 20 or more, and several
+accepted requirements whose highest floor is not the lowest. 180 vacancies, seeded (99). The query
+that drew them had no order, which the script now gives (`order by v.id`), so a re-run need not draw
+the same 180.
+
+**Who labelled.** Both labellers were Sonnet, as one agent (`.claude/agents/seniority-labeller.md`)
+run twice, blind, on both batches, with only the Read and Write tools. Per vacancy they read the
+company, the title and the description's segments that name years or a level, never the rule's answer.
+A Sonnet adjudicator settled the 2 they split on (both as a). About 350k tokens in all: 326k the four
+labelling runs, 24k the adjudication.
+
+**Agreement: 178 of 180 (98.9%)**, between two runs of one model, so weaker evidence than the work
+mode's two models. The splits: `Pleno` (Portuguese for mid) is not a level word of the criterion, and
+`1 year … plus 2 years` is one path of two requirements, not two alternatives.
+
+**Precision.** The share whose settled level is the rule's:
+
+| | right | precision | 95% interval | too high | too low | years right |
+|---|---:|---:|---|---:|---:|---:|
+| every cell with a level, 20 each | 118 of 120 | 98.3% | 94% to 100% | 2 | 0 | 115 of 120 |
+| weighted by cell size, with a level | | 98.9% | | | | |
+| weighted by cell size, all | | 96.8% | | | | |
+| title | 20 of 20 | 100% | 84% to 100% | 0 | 0 | 17 of 20 |
+| years entry | 20 of 20 | 100% | 84% to 100% | 0 | 0 | 20 of 20 |
+| years junior | 20 of 20 | 100% | 84% to 100% | 0 | 0 | 20 of 20 |
+| years mid | 20 of 20 | 100% | 84% to 100% | 0 | 0 | 20 of 20 |
+| years senior | 20 of 20 | 100% | 84% to 100% | 0 | 0 | 20 of 20 |
+| years staff | 18 of 20 | 90.0% | 70% to 97% | 2 | 0 | 18 of 20 |
+| no level | 18 of 20 | 90.0% | 70% to 97% | 0 | 2 | |
+| 20 years or more | 15 of 20 | 75.0% | 53% to 89% | 5 | 0 | 6 of 20 |
+| several requirements | 17 of 20 | 85.0% | 64% to 95% | 3 | 0 | 16 of 20 |
+
+The strata are drawn from inside the cells, mostly years staff and title, so the weighted figures
+already hold them at their size: 284 vacancies have 20 years or more.
+
+**No level.** Of the 20 with none, 16 state nothing, 2 ask for years the rule missed, and 2 state a
+level only in body words. The body's level words (`88e1037`) would place about one in ten of the
+37,155 with no level, before the false positives they would bring.
+
+## Where the rule and the labels split
+
+25 vacancies, 12 by level (10 too high, 2 too low) and 13 by their years alone, the level being right.
+
+**Too high (10).**
+
+- **The company's own years (6).** Not left out because neither the heading nor the voice marks them
+  as the company's: `With millions of diners … and 25+ years of experience, OpenTable … is an industry
+  leader` (the company named, not `we`); `Its track record is built on more than 20 years of industry
+  experience` under `What We Offer`; `DXC … has over 20 years of Enterprise Service Management
+  Experience`; `Microsoft Global Alliance Partner of the Year (14 years in a row)`; two team bios
+  (`25+ years in Finance, Strategy, M&A`). Five of the six are the 20-years stratum's misses, which
+  makes this the cause of most of what reads at 20 years or more.
+- **An alternative the rule does not join (3).** `BS + 5 years of exp …; MS + 3 years of exp.` (a `;`
+  with no `or`); `10+ years … with a Bachelor's …, 7 years … with an Advanced degree …, 4 years … with a
+  PhD` (commas); and two tracks of one posting, `Level 3 or 4`, each with its own qualifications.
+- **A range without its dash (1).** `5 8 years of experience` reads as 8.
+
+**Too low (2).**
+
+- **A heading read as the company's (1).** `About this roll* (Responsibilities)` matches the company
+  headings' `About …`, so `2–4 years of professional backend software development` is left out.
+- **The years after their words (1).** `Year of experience required- 4+`.
+
+**Years wrong, level right (13).** The company's own years in 8 (`20 years of electro-optical and
+infrared systems innovation`, `23+ years of expertise Gradion builds…`), alternatives not joined in 4
+(`Also acceptable are a Doctoral degree (PH.D.) and seven (7) years`, `or an Advanced Degree … and
+minimum 5 years`, an `or no degree + 21 years` path), and `five (5) years` not read in 1. A title's
+word decides these, so only the stored years are wrong.
+
+**The three cases left by the first run.** None was found in the 180 (at most 2.1% of the sample, by
+the interval): no level or years came out too low by an optional part decided per segment, an `, or`
+inside a list, or a requirement in the company's voice. The two too-low misses are other causes.
+
+## Is it enough
+
+No pass mark was set ahead. The cells read 98.9% weighted where a level is given and 96.8% over the
+subset; every cell is at 90% or more, and too high outweighs too low 10 to 2. Where the error was
+expected, it is: the 20-years stratum reads 75% and several requirements 85%, both too high. Most of
+that is the company's own years, which a wider company voice (the company's name, `its`, award and
+team-bio lines) would remove; the rest are alternatives joined by `;` or commas without an `or`. Whether
+this is enough, or seniority becomes a rule loop (PRD §12.6), is not decided here.

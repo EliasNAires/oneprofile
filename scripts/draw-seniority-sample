@@ -1,0 +1,181 @@
+#!/usr/bin/env python3
+"""Draws the blind sample that measures seniority's precision (#99) from the development database.
+
+    scripts/draw-seniority-sample DIRECTORY [per cell, default 20]
+
+Run after POST /seniorities. Every vacancy of the engineering subset falls in one cell, by where its
+level came from: title (a level word in its title), one cell per level its required years give (years
+entry, years junior, years mid, years senior, years staff), or none. Draws, seeded, two strata first:
+the vacancies whose required years are 20 or more, and those with several accepted experience
+requirements where the highest floor is not the lowest. Then that many vacancies of each cell, all of a
+cell that holds fewer.
+
+Writes DIRECTORY/sample.tsv, every drawn vacancy with its ATS, its cell, its stratum, the rule's level
+and required years, its title, and the phrases the rule accepted (the one that set the years marked *);
+DIRECTORY/cells.tsv, the size of each cell, which weighs it; and DIRECTORY/batch-N.tsv, the same
+vacancies shuffled and split, with only what a labeller sees (docs/seniority-criterion.md): an id, the
+company, the title and the description's segments that name years or a level, joined by " ¶ ".
+"""
+
+import csv
+import json
+import random
+import re
+import subprocess
+import sys
+from collections import Counter
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+
+SEED = 99
+
+BATCHES = 2
+
+STRATUM = 20
+
+SEGMENTS = 14
+
+SEGMENT_LENGTH = 400
+
+LADDER = ("ENTRY", "JUNIOR", "MID", "SENIOR", "STAFF", "PRINCIPAL")
+
+# A segment that may state years of experience, and one that may state the job's level in words.
+YEARS = re.compile(r"\b(?:years?|yrs?)\b", re.IGNORECASE)
+LEVEL = re.compile(r"\b(?:entry[- ]level|junior|jr|mid[- ]level|mid[- ]senior|senior|sr|staff"
+                   r"|principal|seniority|graduate|new grad)\b", re.IGNORECASE)
+
+QUERY = """
+copy (
+  select v.id, c.ats, coalesce(c.name, c.slug), v.title, n.seniority_level, n.required_years,
+    (select string_agg(t.level, ',') from (
+       select t.title_seniority as level from normalized_vacancy_title_seniority t where t.normalized_vacancy_id = n.id
+       union select g.title_seniority from normalized_vacancy_guarded_title_seniority g
+       where g.normalized_vacancy_id = n.id) t),
+    (select min(e.lower_years) from normalized_vacancy_experience_requirement e where e.normalized_vacancy_id = n.id),
+    (select json_agg(json_build_object('segment', e.segment, 'position', e.position, 'lower', e.lower_years,
+       'upper', e.upper_years, 'sets', e.sets_required_years) order by e.segment, e.position)
+     from normalized_vacancy_experience_requirement e where e.normalized_vacancy_id = n.id)
+  from normalized_vacancy n join vacancy v on v.id = n.vacancy_id join company c on c.id = v.company_id
+  where n.classification_state = 'IN'
+  order by v.id
+) to stdout with (format csv, header false)
+"""
+
+SEGMENTS_QUERY = """
+copy (
+  select n.vacancy_id, n.description_segments from normalized_vacancy n where n.vacancy_id in ({ids})
+) to stdout with (format csv, header false)
+"""
+
+
+def psql(query):
+    out = subprocess.run(["docker", "compose", "--project-directory", str(REPO), "exec", "-T", "postgres", "psql",
+                          "-v", "ON_ERROR_STOP=1", "-U", "oneprofile", "-d", "oneprofile", "-c", query],
+                         capture_output=True, text=True, encoding="utf-8", check=True).stdout
+    return list(csv.reader(out.splitlines(keepends=True)))
+
+
+def vacancies():
+    return [{"id": r[0], "ats": r[1], "company": r[2], "title": r[3], "level": r[4] or None,
+             "years": int(r[5]) if r[5] else None, "title_levels": set(r[6].split(",")) if r[6] else set(),
+             "lowest": int(r[7]) if r[7] else None, "requirements": json.loads(r[8]) if r[8] else []}
+            for r in psql(QUERY)]
+
+
+def cell(row):
+    if row["level"] is None:
+        return "none"
+    if row["title_levels"] & set(LADDER):
+        return "title"
+    return f"years {row['level'].lower()}"
+
+
+def marked(segment):
+    text = " ".join(segment["text"].split())[:SEGMENT_LENGTH]
+    if segment.get("kind") == "HEADING":
+        text = "# " + text
+    elif segment.get("kind") == "ITEM":
+        text = "- " + text
+    if segment.get("under"):
+        text = f"[under: {' '.join(segment['under'].split())}] {text}"
+    return "> " + text if segment.get("boilerplate") else text
+
+
+def excerpt(segments):
+    """The segments that name years, then those that name a level, as many as fit, in order, with … where segments
+    are left out between them."""
+    years = [index for index, segment in enumerate(segments) if YEARS.search(segment["text"])][:SEGMENTS]
+    levels = [index for index, segment in enumerate(segments)
+              if index not in years and LEVEL.search(segment["text"])][:SEGMENTS - len(years)]
+    shown = sorted(years + levels)
+    parts = []
+    for place, index in enumerate(shown):
+        if place and index > shown[place - 1] + 1:
+            parts.append("…")
+        parts.append(marked(segments[index]))
+    return " ¶ ".join(parts)
+
+
+def phrases(row, segments):
+    said = []
+    for requirement in row["requirements"]:
+        text = " ".join(segments[requirement["segment"]]["text"][requirement["position"]:].split())[:60]
+        said.append(("*" if requirement["sets"] else "") + text)
+    return " | ".join(said)
+
+
+def flat(text):
+    return " ".join((text or "").split()) or "-"
+
+
+def main():
+    if not 2 <= len(sys.argv) <= 3:
+        sys.exit(__doc__)
+    directory = Path(sys.argv[1])
+    per_cell = int(sys.argv[2]) if len(sys.argv) == 3 else 20
+    directory.mkdir(parents=True, exist_ok=True)
+    rows = [{**row, "cell": cell(row)} for row in vacancies()]
+    generator = random.Random(SEED)
+
+    drawn = {}
+    strata = {
+        "20 years or more": lambda row: row["years"] is not None and row["years"] >= 20,
+        "several requirements": lambda row: row["lowest"] is not None and row["years"] > row["lowest"],
+    }
+    for stratum, holds in strata.items():
+        pool = [row for row in rows if holds(row) and row["id"] not in drawn]
+        for row in generator.sample(pool, min(STRATUM, len(pool))):
+            drawn[row["id"]] = {**row, "stratum": stratum}
+    cells = Counter(row["cell"] for row in rows)
+    for name in sorted(cells):
+        pool = [row for row in rows if row["cell"] == name and row["id"] not in drawn]
+        for row in generator.sample(pool, min(per_cell, len(pool))):
+            drawn[row["id"]] = {**row, "stratum": "cell"}
+
+    segments = {r[0]: json.loads(r[1]) if r[1] else [] for r in psql(SEGMENTS_QUERY.format(ids=",".join(drawn)))}
+    sample = sorted(drawn.values(), key=lambda row: (row["stratum"], row["cell"], int(row["id"])))
+    with open(directory / "sample.tsv", "w", encoding="utf-8") as out:
+        out.write("id\tats\tcell\tstratum\tlevel\tyears\ttitle\tphrases\n")
+        for row in sample:
+            out.write("\t".join([row["id"], row["ats"], row["cell"], row["stratum"], (row["level"] or "none").lower(),
+                                 str(row["years"]) if row["years"] is not None else "none", flat(row["title"]),
+                                 phrases(row, segments[row["id"]]) or "-"]) + "\n")
+    with open(directory / "cells.tsv", "w", encoding="utf-8") as out:
+        out.write("cell\tvacancies\n")
+        for name, count in sorted(cells.items()):
+            out.write(f"{name}\t{count}\n")
+    shuffled = sample[:]
+    generator.shuffle(shuffled)
+    size = -(-len(shuffled) // BATCHES)
+    for batch in range(BATCHES):
+        with open(directory / f"batch-{batch + 1}.tsv", "w", encoding="utf-8") as out:
+            out.write("id\tcompany\ttitle\tdescription\n")
+            for row in shuffled[batch * size:(batch + 1) * size]:
+                out.write("\t".join([row["id"], flat(row["company"]), flat(row["title"]),
+                                     excerpt(segments[row["id"]]) or "-"]) + "\n")
+    print(f"{len(sample)} vacancies drawn of {len(rows)}")
+
+
+if __name__ == "__main__":
+    main()

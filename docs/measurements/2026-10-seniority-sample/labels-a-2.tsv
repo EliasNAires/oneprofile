@@ -1,0 +1,91 @@
+id	years	level	body_level	reason
+419405	1	entry	-	"1-3 years of experience in using Unity" → 1
+795982	20	senior	-	"Sr." in title
+15913	none	none	-	no level word in title; no years stated
+262754	2	junior	-	"2+ years' experience working with control systems" → 2
+43123	1	entry	-	"1-5 Years relevant experience" → 1
+45662	2	junior	-	"minimum of 2+ years in a Sales Engineering..." → 2
+238335	7	senior	-	"7+ years in network engineering" → 7
+85379	1	entry	-	"At least 1+ year hands-on experience" → 1
+180300	none	none	-	"Pleno" not a recognized level word; no years stated
+309696	14	principal	-	"Principal" in title
+354829	8	staff	-	"Director" not a level; "8-10+ years of experience" → 8
+20681	10	staff	-	"Distinguished" not a ladder word; "10+ years designing and operating data storage technology" → 10
+197852	10	staff	staff	"Staff" in title; body "we are looking for a Staff Software Engineer"
+1008099	none	none	-	"Lead" not a level; no description shown
+818691	5	senior	senior	no level word in title; "5+ years experience in working with similar technologies" → 5; body names "Senior Project Engineer"
+687418	none	none	-	no level word in title; no years stated
+297269	7	principal	senior	"Principal" in title; alternatives lowest "a Doctoral degree (PH.D.) and seven (7)" → 7; body "a senior technical developer"
+226169	5	senior	-	"5+ years of product management experience" → 5
+432625	2	junior	-	"2+ years in network security, cybersecurity..." → 2
+947348	1	entry	-	"Proven experience (1-3 years)" → 1
+549568	8	senior	-	"Sr" in title; alternatives lowest "Master's degree with 8+ years" → 8
+331885	5	senior	-	"5+ years of experience leading software engineering" → 5
+405673	2	junior	-	"(Associate)" excluded as title; highest "2+ years of experience writing ETL jobs" / "2+ years of experience with SQL" → 2
+1250327	10	staff	-	"Director" not a level; "10+ years of progressive experience in data science" → 10
+229889	3	mid	-	"Minimum 3 years of experience in applied ML research" → 3
+335204	3	mid	-	"Minimum 3-5 years of experience in data engineering" → 3
+814475	none	staff	-	"Staff" in title; no years stated
+1007951	3	mid	-	"3+ years of experience in PKI, certificate management" → 3
+207001	6	senior	-	"6–8 years in infrastructure or data center operations" → 6
+572117	12	staff	staff	"Lead" not a level; "12+ years of experience with professional software engineering" → 12; body "As a Staff Software Engineer"
+636831	12	staff	-	no level word in title; alternatives lowest "MS + 12 Years of experience" → 12
+672285	10	staff	-	"At least 10 years of experience" → 10
+1221064	5	senior	-	"Senior" in title
+924648	none	none	-	numbered "I" not a level word; no years stated
+80153	none	none	-	"Associate" excluded as title; only the company's own "36+ year legacy" (footer), excluded
+293660	5	senior	-	"5+ years of experience in UX/UI design" → 5
+18834	15	staff	-	no level word in title; "15+ years of progressive leadership experience" → 15
+117252	4	mid	-	numbered "I" not a level word; "4+ years of relevant work experience" → 4
+211986	2	junior	-	numbered "II" not a level word; "2–4 years of professional backend software development" → 2
+916182	5	senior	-	"Senior" in title
+916528	5	principal	-	"Principal" in title; alternatives lowest "Advanced Degree...minimum 5 years" → 5
+1120777	2	junior	-	highest "2–4 years of experience in full-stack development" / "2+ years of ServiceNow development" → 2
+1249028	1	entry	-	"Minimum of ONE year's experience in providing crisis management services" → 1
+435225	10	staff	-	"Lead" not a level; "10+ years of hands-on experience in Data Platform Engineering" → 10
+352828	20	staff	principal	numbered "III" not a level word; substitution "five years of additional...in lieu of degree" excluded; "20+ years of experience as a software engineer" → 20; body "seeking to hire a Principal Software Engineer"
+677604	5	senior	senior	"Senior" in title; alternatives lowest "Masters in STEM with 5+ years" → 5; body "As a Senior QA Automation Engineer, you will be responsible"
+1355986	20	staff	-	"Managing Director" not a level; "20+ years of software and data engineering experience" → 20
+1325545	1	entry	-	"Level 5" not a ladder word; alternatives lowest "PhD...+ 1 years of post-grad" → 1
+223964	none	none	-	no level word in title; no description shown
+380255	20	principal	-	"Principal" in title; substitution "Four years of additional SWE experience" excluded; "20 years' of experience as a SWE" → 20
+815080	10	staff	-	"Lead" not a level; "Minimum of 10 years of experience" → 10
+1172993	1	entry	-	"1–3 years of experience or equivalent practical background" → 1
+700769	6	senior	-	"Minimum 6-8 years of front line client experience" → 6
+1493611	3	mid	-	"Approximately 3-5 years of relevant professional experience" → 3
+331082	5	senior	-	"Sr." in title
+414720	1	entry	-	"1+ years of relevant, post-college software engineering" → 1
+388993	12	principal	senior	"Principal" in title; "12+ years of product management experience" → 12; body "a senior individual-contributor product leadership role"
+555997	3	mid	senior	no level word in title; "3+ years of experience in software engineering, data engineering..." → 3; body "at the Associate or Senior Associate level"
+395930	5	senior	-	"At least 5 years of experience as a QA Engineer" → 5
+178620	7	senior	-	"Senior" in title
+1472581	1	entry	-	"1–2 years of dedicated experience" → 1
+647874	7	senior	-	"Manager" not a level; highest "7 or more years of experience with software engineering" → 7
+1221656	10	staff	-	"Lead" not a level; "10+ years industry experience as a software developer" → 10
+380688	5	senior	-	"Senior" in title; company's "over 11 years of industry experience" excluded; "Experience (5+ years) in object-oriented PHP" → 5
+797876	7	senior	-	"7 + years of related experience" → 7
+294347	6	senior	senior	"Lead" not a level; "6+ years of experience scoping, building" → 6; body "needs a senior scientist"
+316284	none	none	-	no level word in title; no description shown
+112100	7	staff	staff	"Staff" in title; company's "25+ years of experience" excluded; "7+ years of professional software engineering experience" → 7; body "As a Staff Machine Learning Engineer"
+177761	3	mid	-	"3+ years experience with writing software for microprocessors" → 3
+636523	10	staff	-	"Expert" not a ladder word; alternatives lowest "10+ years...with at least 3 years as a DevOps Engineer" → 10
+220399	3	mid	-	"3–7 years of professional software engineering experience" → 3
+1486967	5	staff	senior	"Staff" in title; "5+ years of experience in developing and releasing software products" → 5; body "looking for a Senior Software Developer"
+224102	3	mid	-	"3+ years of iOS development experience" → 3
+412500	1	entry	-	"1-2 years of SaaS support experience" → 1
+381388	5	senior	senior	"Senior" in title; highest "5+ years of hands-on Salesforce development experience" → 5; body "The Senior Salesforce Developer role"
+238686	none	senior	senior	"Senior" in title; no years stated; body "Senior, Staff or Principal-level engineer" (lowest: senior)
+388967	8	staff	-	"Manager" and numbered "II" not a level; "8+ years in software engineering" → 8
+1242957	1	entry	-	"Minimum 1-2 years of KYC/AML Capital Markets experience" → 1
+429235	2	junior	-	"2+ years of proven experience in data science" → 2
+131646	20	principal	-	"Principal" in title; "20+ years in product/platform architecture" → 20
+376325	2	junior	-	"Around 2-5 years of professional engineering experience" → 2
+342874	3	senior	senior	"Sr." in title; alternatives lowest "Master's Degree...AND 3+ years experience" → 3; body "looking for a senior engineer"
+272393	2	junior	-	"2+ years of software engineering experience" → 2
+1260947	2	junior	-	"Associate" excluded as title; floor "2-4 years of experience" (repeated) → 2
+326914	6	staff	-	"Staff" in title; "6+ years professional experience developing statistical models" → 6
+434204	4	mid	-	numbered "3" not a level word; alternatives lowest "Four years of experience and an Doctorate Degree" → 4
+379512	3	mid	mid	no level word in title; highest "3-7 years related experience" → 3; body "Employment Type: Full-Time, Mid-level"
+1243823	8	staff	-	"Manager" not a level; "At least 8 years of experience" → 8
+917699	8	staff	-	highest "8+ years of experience delivering Oracle ERP solutions" → 8
+15893	8	staff	-	"Director" not a level; "8+ years of experience, including at least 2–3 years working on LLM architecture" → 8

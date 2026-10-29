@@ -1,0 +1,173 @@
+#!/usr/bin/env python3
+"""Scores the blind sample that measures seniority's precision (#99).
+
+    scripts/score-seniority-sample DIRECTORY
+
+DIRECTORY is where scripts/draw-seniority-sample drew the sample. Reads the two labellers' answers,
+labels-a-N.tsv and labels-b-N.tsv (id, years, level, body_level, reason, as docs/seniority-criterion.md
+says), and the adjudicator's verdicts, disagreements/batch-NNN.verdicts.json, which settle every vacancy
+the labellers answered differently in its years or its level. Without the verdicts, prints the
+labellers' agreement and writes the disagreements as JSON batches of 20 for the adjudicator
+(.claude/agents/adjudicator.md): each row's id, what the labellers read and their two answers. A
+verdict of neither settles the vacancy as unclear.
+
+With them, prints by cell and stratum how often the rule's level is the settled one, how often it is
+too high and too low, and how often its required years are the settled ones, each with a 95% Wilson
+interval; the share right weighted by each cell's size; why the vacancies with no level have none;
+and every vacancy where the rule and the settled label split, with the phrases the rule accepted.
+An unclear label is left out of every share.
+"""
+
+import json
+import math
+import sys
+from collections import Counter
+from pathlib import Path
+
+Z = 1.96
+
+BATCH = 20
+
+LADDER = ("entry", "junior", "mid", "senior", "staff", "principal")
+
+
+def rows(path):
+    with open(path, encoding="utf-8") as tsv:
+        header = tsv.readline().rstrip("\n").split("\t")
+        return [dict(zip(header, line.rstrip("\n").split("\t"))) for line in tsv if line.strip()]
+
+
+def labels(directory, labeller):
+    read = {}
+    for path in sorted(directory.glob(f"labels-{labeller}-*.tsv")):
+        for row in rows(path):
+            read[row["id"]] = row
+    return read
+
+
+def answer(row):
+    """A label as its years and its level: years a number or none, level on the ladder, none or unclear."""
+    years = row.get("years", "").strip().lower()
+    level = row.get("level", "").strip().lower()
+    return (years if years.isdigit() else "none", level if level in LADDER + ("none",) else "unclear")
+
+
+def said(pair):
+    return f"years {pair[0]}, level {pair[1]}"
+
+
+def wilson(hits, total):
+    share = hits / total
+    centre = (share + Z * Z / (2 * total)) / (1 + Z * Z / total)
+    half = Z * math.sqrt(share * (1 - share) / total + Z * Z / (4 * total * total)) / (1 + Z * Z / total)
+    return centre - half, centre + half
+
+
+def share(hits, total):
+    if not total:
+        return "        -        "
+    low, high = wilson(hits, total)
+    return f"{hits:3} of {total:3} {hits / total:6.1%} ({low:.0%}–{high:.0%})"
+
+
+def direction(rule, settled):
+    """right, too high or too low: a level where the settled label has none is too high, and the reverse too low."""
+    if rule == settled:
+        return "right"
+    if settled == "none":
+        return "too high"
+    if rule == "none":
+        return "too low"
+    return "too high" if LADDER.index(rule) > LADDER.index(settled) else "too low"
+
+
+def main():
+    if len(sys.argv) != 2:
+        sys.exit(__doc__)
+    directory = Path(sys.argv[1])
+    sample = {row["id"]: row for row in rows(directory / "sample.tsv")}
+    seen = {row["id"]: row for batch in sorted(directory.glob("batch-*.tsv")) for row in rows(batch)}
+    a, b = labels(directory, "a"), labels(directory, "b")
+    missing = [id for id in sample if id not in a or id not in b]
+    if missing:
+        sys.exit(f"{len(missing)} vacancies lack a label, as {missing[:5]}")
+
+    differing = [id for id in sample if answer(a[id]) != answer(b[id])]
+    agree = len(sample) - len(differing)
+    print(f"labellers agree on {agree} of {len(sample)} ({agree / len(sample):.1%}), on the level alone on"
+          f" {sum(answer(a[id])[1] == answer(b[id])[1] for id in sample)}")
+
+    disagreements = directory / "disagreements"
+    verdicts = {}
+    for path in sorted(disagreements.glob("batch-*.verdicts.json")):
+        verdicts.update(json.loads(path.read_text(encoding="utf-8")))
+    if not verdicts:
+        disagreements.mkdir(exist_ok=True)
+        for start in range(0, len(differing), BATCH):
+            batch = [{"id": id, "text": f"company: {seen[id]['company']} | title: {seen[id]['title']} | description: "
+                      f"{seen[id]['description']}", "a": f"{said(answer(a[id]))} ({a[id]['reason']})",
+                      "b": f"{said(answer(b[id]))} ({b[id]['reason']})"} for id in differing[start:start + BATCH]]
+            (disagreements / f"batch-{start // BATCH + 1:03}.json").write_text(
+                json.dumps(batch, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(f"wrote {len(differing)} disagreements for the adjudicator")
+        return
+    unsettled = [id for id in differing if id not in verdicts]
+    if unsettled:
+        sys.exit(f"{len(unsettled)} disagreements are not adjudicated, as {unsettled[:5]}")
+
+    settled = {id: answer(a[id]) for id in sample}
+    for id in differing:
+        verdict = verdicts[id]["verdict"]
+        settled[id] = answer(a[id]) if verdict == "a" else answer(b[id]) if verdict == "b" else ("none", "unclear")
+    print(f"adjudicated {len(differing)}: " + ", ".join(f"{count} {verdict}" for verdict, count in
+                                                         Counter(verdicts[id]["verdict"] for id in differing).items()))
+    judged = {id: row for id, row in sample.items() if settled[id][1] != "unclear"}
+    print(f"unclear, left out: {len(sample) - len(judged)}")
+
+    def report(name, held):
+        held = [row for row in held if row["id"] in judged]
+        ways = Counter(direction(row["level"], settled[row["id"]][1]) for row in held)
+        levelled = [row for row in held if row["level"] != "none"]
+        years = sum(row["years"] == settled[row["id"]][0] for row in levelled)
+        print(f"  {name:22} level {share(ways['right'], len(held))}  too high {ways['too high']:2}  too low"
+              f" {ways['too low']:2}  years {share(years, len(levelled))}")
+
+    cells = [row for row in sample.values() if row["stratum"] == "cell"]
+    print("\nby cell")
+    for name in sorted({row["cell"] for row in cells}):
+        report(name, [row for row in cells if row["cell"] == name])
+    report("every cell with a level", [row for row in cells if row["cell"] != "none"])
+    sizes = {row["cell"]: int(row["vacancies"]) for row in rows(directory / "cells.tsv")}
+    for scope, names in (("with a level", [name for name in sizes if name != "none"]), ("all", list(sizes))):
+        right = total = 0
+        for name in names:
+            held = [row for row in cells if row["cell"] == name and row["id"] in judged]
+            if held:
+                right += sizes[name] * sum(row["level"] == settled[row["id"]][1] for row in held) / len(held)
+                total += sizes[name]
+        print(f"  {'weighted, ' + scope:22} level {right / total:6.1%}")
+
+    print("\nstrata")
+    for stratum in sorted({row["stratum"] for row in sample.values()} - {"cell"}):
+        report(stratum, [row for row in sample.values() if row["stratum"] == stratum])
+
+    print("\nno level: why")
+    nothing = [row for row in cells if row["cell"] == "none" and row["id"] in judged]
+    reasons = Counter("(a) asks for years" if settled[row["id"]][0] != "none"
+                      else "(b) a level in body words" if (a[row["id"]]["body_level"].strip() not in ("", "-")
+                                                           or b[row["id"]]["body_level"].strip() not in ("", "-"))
+                      else "(c) states nothing" for row in nothing)
+    for reason, count in sorted(reasons.items()):
+        print(f"  {reason:28} {count:3} of {len(nothing)}")
+
+    print("\nwhere the rule and the settled labels split (rule -> settled)")
+    for row in sorted(judged.values(), key=lambda row: (row["stratum"], row["cell"])):
+        years, level = settled[row["id"]]
+        if (row["level"], row["years"]) != (level, years) and not (row["level"] == "none" == level):
+            print(f"  {row['id']}  {row['stratum']}/{row['cell']}  {direction(row['level'], level)}  {row['level']}"
+                  f" {row['years']}y -> {level} {years}y  {row['title']}\n      rule: {row['phrases']}"
+                  f"\n      a: {a[row['id']]['reason']}\n      b: {b[row['id']]['reason']}")
+
+
+if __name__ == "__main__":
+    main()

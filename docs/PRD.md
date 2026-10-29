@@ -287,7 +287,7 @@ new column of the taxonomy, kept by hand, and could make role nearness more robu
 replaces extracting practices from descriptions, which is not done: most skills imply their
 practice (ADR-0024, amended 2026-10-26).
 
-### 6.1 Seniority — built, precision in #99
+### 6.1 Seniority — built, precision measured
 
 One ordinal axis, derived from the evidence the earlier steps gathered rather than extracted
 afresh. The title contributes a list of levels (§5.1, §5.3); the description body contributes
@@ -328,7 +328,11 @@ without extracting again.
 Built (`POST /seniorities`, after the title breakdown, #8). Its first run gives 76.1% of the subset a
 level, against 37.5% from the title alone, and places 79.2% of the numbered-level titles; the title's
 level and the required years disagree on half the vacancies that have both
-(`docs/measurements/2026-10-seniority.md`). Whether the levels are right is measured in #99. The
+(`docs/measurements/2026-10-seniority.md`). Its precision on a blind sample (#99, against
+`docs/seniority-criterion.md`) is 98.9% weighted where a level is given and 96.8% over the subset, too
+high outweighing too low 10 to 2; where the error was expected it is higher, 75% at 20 years or more,
+mostly the company's own years read as a requirement. Whether that is enough or seniority becomes a
+rule loop (§12.6) is not yet decided. The
 body's level words (`a senior-level role`) are not read: decided by Elias on 2026-10-29, they are an
 angle of improvement only if #99 shows the levels fall short, since they would likely bring many false
 positives.
