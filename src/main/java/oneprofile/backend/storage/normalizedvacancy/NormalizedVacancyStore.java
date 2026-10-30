@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import oneprofile.backend.storage.company.AtsEnum;
+import oneprofile.backend.storage.vacancy.SecondaryLocation;
 import org.springframework.data.domain.Limit;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -292,6 +294,72 @@ public class NormalizedVacancyStore {
 		List<NormalizedVacancyEntity> recorded = new ArrayList<>(derived.size());
 		for (NormalizedVacancyEntity normalized : this.repository.findByVacancyIdIn(derived.keySet())) {
 			normalized.placedAt(derived.get(normalized.vacancyId()));
+			recorded.add(normalized);
+		}
+		this.repository.saveAll(recorded);
+		return recorded.size();
+	}
+
+	/**
+	 * The engineering subset held after one vacancy id, in id order, each with every string of its declared
+	 * location: what the place run reads, walked batch by batch like the titles are. The location field comes
+	 * first, with the country Ashby gives its address; then Ashby's secondary locations, each with its
+	 * country, or Lever's and Workday's every location past the first, which is the location field.
+	 * @param after the vacancy id to read past, 0 to start at the first
+	 * @param batch how many to read at most
+	 * @return the vacancies, empty once there are none left
+	 */
+	@Transactional(readOnly = true)
+	public List<PlaceVacancy> placeScopeAfter(long after, int batch) {
+		List<PlaceVacancy> scope = new ArrayList<>();
+		for (Tuple row : this.repository.placeScopeAfter(after, Limit.of(batch))) {
+			List<LocationString> locations = new ArrayList<>();
+			String location = row.get(2, String.class);
+			if (location != null && !location.isBlank()) {
+				locations.add(new LocationString(LocationListEnum.LOCATION, 0, location, row.get(3, String.class)));
+			}
+			@SuppressWarnings("unchecked")
+			List<SecondaryLocation> secondary = (List<SecondaryLocation>) row.get(4);
+			if (secondary != null) {
+				for (int i = 0; i < secondary.size(); i++) {
+					locations.add(new LocationString(LocationListEnum.SECONDARY_LOCATIONS, i,
+							secondary.get(i).location(), secondary.get(i).country()));
+				}
+			}
+			@SuppressWarnings("unchecked")
+			List<String> all = (List<String>) ((row.get(5) != null) ? row.get(5) : row.get(6));
+			if (all != null) {
+				for (int i = 0; i < all.size(); i++) {
+					if (i > 0 || !all.get(i).equals(location)) {
+						locations.add(new LocationString(LocationListEnum.ALL_LOCATIONS, i, all.get(i), null));
+					}
+				}
+			}
+			scope.add(new PlaceVacancy(row.get(0, Long.class), row.get(1, AtsEnum.class), locations));
+		}
+		return scope;
+	}
+
+	/**
+	 * Lets go of the places every run recorded, so that after a run only the vacancies it read hold any: a
+	 * vacancy that has left the engineering subset keeps none.
+	 * @return how many location strings had been read
+	 */
+	@Transactional
+	public int clearPlaces() {
+		return this.repository.clearPlaces();
+	}
+
+	/**
+	 * Records the places the place rule read in the location strings of a batch of vacancies.
+	 * @param read each vacancy's location strings with their places, by vacancy id
+	 * @return how many vacancies this recorded places for
+	 */
+	@Transactional
+	public int recordPlaces(Map<Long, List<LocationPlaces>> read) {
+		List<NormalizedVacancyEntity> recorded = new ArrayList<>(read.size());
+		for (NormalizedVacancyEntity normalized : this.repository.findByVacancyIdIn(read.keySet())) {
+			normalized.locatedAt(read.get(normalized.vacancyId()));
 			recorded.add(normalized);
 		}
 		this.repository.saveAll(recorded);

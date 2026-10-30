@@ -1,0 +1,151 @@
+id	places	reason
+69	city: Irvine, California, US
+103	city: Bangalore, Karnataka, IN
+110	city: Dallas, Texas, US
+253	country: ZA ; country: BG ; country: PL ; country: ES
+170	city: Huntsville, Alabama, US
+231	city: Cork, Cork, IE
+263	city: Atlanta, Georgia, US
+239	city: Hong Kong, HK ; city: Singapore, SG
+90	city: Plano, Texas, US
+195	country: US
+237	city: Bangalore, Karnataka, IN	tech park is not a place
+182	city: Bengaluru, Karnataka, IN
+241	city: Hyderabad, Telangana, IN	business hub is not a place
+141	city: Aberdeen, Maryland, US
+216	city: Atlanta, Georgia, US
+202	city: San Jose, California, US
+222	region: Worldwide	Global becomes Worldwide
+33	city: Joinville, Santa Catarina, BR
+138	city: Amsterdam, North Holland, NL
+281	city: Quantico, Virginia, US
+284	city: San Francisco, California, US
+200	city: San Francisco, California, US
+175	country: US	Remote is not a place
+240	city: Santa Clara, California, US
+178	city: Chicago, Illinois, US
+28	subdivision: Pennsylvania, US	Remote is not a place
+83	city: San Francisco, California, US
+134	city: Bangalore, Karnataka, IN	tech park is not a place
+296	city: Grand Rapids, Michigan, US
+62	city: Wilmington, North Carolina, US
+116	city: Raleigh, North Carolina, US
+165	city: Atlanta, Georgia, US
+19	city: Boulder, Colorado, US
+288	city: Chicago, Illinois, US
+292	city: Austin, Texas, US
+166	city: Tampa, Florida, US
+242	city: Las Vegas, Nevada, US
+233	subdivision: New Jersey, US	work phrase is not a place
+102	city: Warsaw, Masovia, PL
+251	city: Geneva, Geneva, CH ; city: Paris, Île-de-France, FR
+261	city: Winchester, Virginia, US
+146	city: St. Paul, Minnesota, US
+81	city: Chesapeake, Virginia, US
+199	country: US
+168	country: GB
+125	city: Boston, Massachusetts, US
+266	city: São Paulo, São Paulo, BR
+84	city: Toronto, Ontario, CA
+122	city: Chicago, Illinois, US
+248	city: South San Francisco, California, US
+23	city: Richardson, Texas, US
+161	city: Rugby, Warwickshire, GB
+5	city: Irvine, California, US
+115	city: Mumbai, Maharashtra, IN	neighborhood is not a place
+129	city: Salt Lake City, Utah, US
+229	city: New York, New York, US
+282	city: Warsaw, Masovia, PL
+35	city: Richmond, British Columbia, CA
+295	city: London, England, GB
+238	none	work word only
+185	city: Pune, Maharashtra, IN	business park is not a place
+169	subdivision: New Jersey, US	office and address are not places
+154	city: Austin, Texas, US
+274	city: Andover, Massachusetts, US
+40	city: Sylmar, California, US
+18	city: Edinburgh, Scotland, GB
+149	none	work word only
+58	city: Columbus, Ohio, US
+156	country: BR	Remote is not a place
+227	city: New York, New York, US
+213	city: Bangalore, Karnataka, IN
+74	city: Springfield, Virginia, US
+287	city: Singapore, SG
+104	city: Moscow, Moscow, RU
+10	none	neighborhood alone names no place
+135	city: Rosemont, Illinois, US
+183	subdivision: New York, US	Remote is not a place
+230	city: Brampton, Ontario, CA
+61	country: ZA
+273	city: San Antonio, Texas, US	home office is not a place
+285	country: IE	Remote is not a place
+100	city: Chennai, Tamil Nadu, IN
+108	city: Lahore, Punjab, PK
+193	city: Warren, Michigan, US
+45	city: Hong Kong, HK
+2	none	remote is not a place; ATS country is also remote
+257	city: London, England, GB
+184	subdivision: Iowa, US	any city is not specific
+271	city: London, England, GB
+145	city: San Francisco, California, US
+65	none	remote is not a place
+275	subdivision: Nevada, US	virtual is not a place
+43	city: Asunción, Central, PY
+164	city: Manila, National Capital Region, PH
+186	city: Rome, New York, US
+219	none	remoto (remote in Spanish) is not a place
+181	city: Sydney, New South Wales, AU
+151	country: ES	remote is not a place
+13	city: Parsdorf, Bavaria, DE
+26	country: CL	remote is not a place
+289	city: Downers Grove, Illinois, US
+174	city: Tel Aviv, Tel Aviv, IL
+29	city: London, England, GB
+111	city: Barcelona, Catalonia, ES
+221	city: Stockholm, Stockholm, SE
+140	country: US	remote is not a place
+105	city: Prague, Prague, CZ
+67	country: GB	remote is not a place
+208	country: IN
+75	country: US	remote is not a place
+293	city: Jersey City, New Jersey, US
+57	city: Charleston, South Carolina, US
+247	country: US	remote is not a place
+3	city: Singapore, SG	fab building is not a place
+194	city: Pune, Maharashtra, IN
+290	city: Limassol, Limassol, CY
+70	city: Mississauga, Ontario, CA
+97	city: New York, New York, US ; city: San Francisco, California, US
+300	city: Paris, Île-de-France, FR
+157	city: Milpitas, California, US
+211	city: New York, New York, US
+48	subdivision: Idaho, US	work phrase is not a place
+128	city: San Francisco, California, US	metro rule: Bay Area → SF
+114	city: Oak Brook, Illinois, US
+52	region: North America	US or Canada = North America; remote is not a place
+14	city: Columbus, Ohio, US
+12	city: Reston, Virginia, US
+249	city: London, England, GB
+53	subdivision: Penang, MY	string gives state, not specific city
+215	city: Seattle, Washington, US
+112	country: PL ; country: UA
+55	country: AU	remote is not a place; AC likely Australian Capital Territory
+276	city: Chennai, Tamil Nadu, IN
+80	subdivision: Mississippi, US	work phrase is not a place
+42	city: Cholet, Pays de la Loire, FR
+217	city: Melville, New York, US	
+82	city: Philadelphia, Pennsylvania, US	
+212	subdivision: Karnataka, IN	
+63	subdivision: Massachusetts, US	
+162	city: Chennai, Tamil Nadu, IN	
+121	city: San Diego, California, US	
+32	city: Munich, Bavaria, DE	
+172	city: San Francisco, California, US	
+190	country: US	
+223	city: Singapore, SG	
+39	subdivision: Kentucky, US	Remote is not a place
+294	city: San Francisco, California, US	Hybrid is not a place
+137	city: San Diego, California, US	
+279	city: Redmond, Washington, US	
+258	city: Wallisellen, Zurich, CH	

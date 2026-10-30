@@ -304,7 +304,7 @@ _Avoid_: modality, workplace type, location type, arrangement
 
 **Declared Location**:
 The places a vacancy names for the work, as its ATS publishes them: the location field, and
-Ashby's and Lever's lists of locations. Not a derived fact: its places are derived from it.
+Ashby's, Lever's and Workday's lists of locations. Not a derived fact: its places are derived from it.
 For a remote vacancy or one whose work mode is undeclared, never on its own a reason
 to rule it out (ADR-0004); for an onsite or hybrid one, it is the country set (ADR-0027), and its
 cities are judged by distance to the person's (ADR-0028).
@@ -315,6 +315,26 @@ What one string of a declared location names, as precisely as the string gives i
 then a state or province, then a city; or a region kept as named (`EMEA`). A string can name
 several places, or none (`Remote`) (#26).
 _Avoid_: geo, location, locality
+
+**Location String**:
+One entry of a declared location: the location field, or one entry of the ATS's list of locations,
+with the country the ATS names for it where it names one (Ashby's). Its places are read and stored
+string by string, so a vacancy offered in several locations is read option by option and a wrong
+place is traced to its string (#26).
+_Avoid_: location entry, location text
+
+**Place List**:
+What a location string's places are read against: GeoNames' countries, first-level subdivisions
+and cities of more than 15,000 people, and a hand table of other names (`Bangalore`), regions,
+the towns the residue shows often, words that are never a place, and what a name means alone.
+The hand table grows from the residue: the strings that name no place the rule could read (#26).
+_Avoid_: gazetteer, geo database
+
+**Place Residue**:
+The location strings that name no place the rule could read and hold words it could not read
+(`DLF CYBERCITY 12B`), reported by frequency as the input for growing the place list's hand table.
+A string that names no place at all (`Remote`) is not residue. Not the pile's residue (#26).
+_Avoid_: unparsed locations, misses
 
 **Seniority Level**:
 The experience level a vacancy asks for, on one ordinal scale from entry to principal. A level

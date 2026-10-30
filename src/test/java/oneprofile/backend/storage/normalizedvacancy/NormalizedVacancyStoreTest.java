@@ -14,8 +14,10 @@ import oneprofile.backend.storage.company.RegionEnum;
 import oneprofile.backend.storage.company.CompanyStore;
 import oneprofile.backend.storage.vacancy.PublishedAshbyVacancy;
 import oneprofile.backend.storage.vacancy.PublishedGreenhouseVacancy;
+import oneprofile.backend.storage.vacancy.PublishedLeverVacancy;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
 import oneprofile.backend.storage.vacancy.PublishedWorkdayVacancy;
+import oneprofile.backend.storage.vacancy.SecondaryLocation;
 import oneprofile.backend.storage.vacancy.VacancyStore;
 import oneprofile.backend.storage.vacancy.VacancyText;
 import org.junit.jupiter.api.BeforeEach;
@@ -553,6 +555,78 @@ class NormalizedVacancyStoreTest {
 		this.entityManager.clear();
 
 		assertThat(this.repository.findAll()).extracting(NormalizedVacancyEntity::workMode).containsOnlyNulls();
+	}
+
+	@Test
+	void readsForThePlacesTheEngineeringSubsetWithEveryLocationString() {
+		this.companies.record(AtsEnum.ASHBY, Map.of("ramp", RegionEnum.US));
+		this.vacancies.mirror(AtsEnum.ASHBY, "ramp", List.of(new PublishedAshbyVacancy(
+				"34413f8d-26bf-4bbc-8ade-eb309a0e2245", "Engineer", "Berlin", null, "Baue Dinge.",
+				"https://jobs.ashbyhq.com/ramp/34413f8d-26bf-4bbc-8ade-eb309a0e2245", null, null, null,
+				Instant.parse("2026-09-01T14:00:00Z"), "OnSite", "Germany",
+				List.of(new SecondaryLocation("Remote (Canada)", "Canada"), new SecondaryLocation("Lisbon", null)),
+				null)));
+		this.companies.record(AtsEnum.LEVER, Map.of("plaid", RegionEnum.US));
+		this.vacancies.mirror(AtsEnum.LEVER, "plaid", List.of(new PublishedLeverVacancy(
+				"5ac21346-8e0c-4494-8e7a-3eb92ff77902", "Engineer", "Seattle, WA", null, "Build things.",
+				"https://jobs.lever.co/plaid/5ac21346-8e0c-4494-8e7a-3eb92ff77902", null, null, null,
+				Instant.parse("2026-09-01T14:00:00Z"), "hybrid", "US", null, null, List.of("Seattle, WA", "Toronto"),
+				null)));
+		this.companies.record(AtsEnum.WORKDAY, Map.of("nvidia.wd5/nvidiaexternalcareersite", RegionEnum.US));
+		this.vacancies.mirror(AtsEnum.WORKDAY, "nvidia.wd5/nvidiaexternalcareersite",
+				List.of(new PublishedWorkdayVacancy("RTL-Design-Engineer_JR1", "RTL Design Engineer", "Israel, Yokneam",
+						null, "https://nvidia.wd5.myworkdayjobs.com/x/job/RTL-Design-Engineer_JR1", null, "Full time",
+						"Hybrid Working", "IL", List.of("Israel, Yokneam"), null)));
+		List<VacancyText> held = heldTitles();
+		Map<Long, CleanedVacancy> cleaned = new HashMap<>();
+		Map<Long, Classification> classified = new HashMap<>();
+		held.forEach((vacancy) -> {
+			cleaned.put(vacancy.id(), cleaned("Engineer", Set.of()));
+			classified.put(vacancy.id(), Classification.in());
+		});
+		classified.put(held.get(1).id(), Classification.out());
+		this.normalized.recordCleanedVacancies(cleaned);
+		this.normalized.recordClassifications(classified);
+		this.entityManager.flush();
+
+		assertThat(this.normalized.placeScopeAfter(0, 10)).containsExactly(
+				new PlaceVacancy(held.get(0).id(), AtsEnum.GREENHOUSE,
+						List.of(new LocationString(LocationListEnum.LOCATION, 0, "Remote - Americas", null))),
+				new PlaceVacancy(held.get(2).id(), AtsEnum.ASHBY,
+						List.of(new LocationString(LocationListEnum.LOCATION, 0, "Berlin", "Germany"),
+								new LocationString(LocationListEnum.SECONDARY_LOCATIONS, 0, "Remote (Canada)", "Canada"),
+								new LocationString(LocationListEnum.SECONDARY_LOCATIONS, 1, "Lisbon", null))),
+				new PlaceVacancy(held.get(3).id(), AtsEnum.LEVER,
+						List.of(new LocationString(LocationListEnum.LOCATION, 0, "Seattle, WA", null),
+								new LocationString(LocationListEnum.ALL_LOCATIONS, 1, "Toronto", null))),
+				new PlaceVacancy(held.get(4).id(), AtsEnum.WORKDAY,
+						List.of(new LocationString(LocationListEnum.LOCATION, 0, "Israel, Yokneam", null))));
+	}
+
+	@Test
+	void holdsThePlacesOfEachLocationStringAndLetsGoOfThem() {
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		this.normalized.recordCleanedVacancies(
+				Map.of(first, cleaned("Engineer", Set.of()), second, cleaned("Engineer", Set.of())));
+		List<LocationPlaces> read = List.of(
+				new LocationPlaces(LocationListEnum.LOCATION, 0, "Paris, TX",
+						List.of(Place.city("US", "Texas", "Paris", 33.66094, -95.55551))),
+				new LocationPlaces(LocationListEnum.ALL_LOCATIONS, 1, "Remote - EMEA", List.of(Place.region("EMEA"))),
+				new LocationPlaces(LocationListEnum.ALL_LOCATIONS, 2, "Remote", List.of()));
+
+		assertThat(this.normalized.recordPlaces(Map.of(first, read))).isEqualTo(1);
+		this.entityManager.flush();
+		this.entityManager.clear();
+
+		assertThat(this.repository.findByVacancyIdIn(List.of(first, second)))
+			.extracting(NormalizedVacancyEntity::vacancyId, NormalizedVacancyEntity::locations)
+			.containsExactlyInAnyOrder(tuple(first, read), tuple(second, List.of()));
+
+		assertThat(this.normalized.clearPlaces()).isEqualTo(3);
+		this.entityManager.clear();
+
+		assertThat(this.repository.findAll()).flatExtracting(NormalizedVacancyEntity::locations).isEmpty();
 	}
 
 	@Test

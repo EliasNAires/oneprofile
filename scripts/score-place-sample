@@ -1,0 +1,326 @@
+#!/usr/bin/env python3
+"""Scores the blind sample that measures the places read from declared locations (#26).
+
+    scripts/score-place-sample DIRECTORY
+
+DIRECTORY is where scripts/draw-place-sample drew the sample. Works in three steps, each run picking up
+where the files on disk leave it:
+
+1. Reads the two labellers' answers, labels-a-N.tsv and labels-b-N.tsv (id, places, reason, as
+   docs/place-criterion.md says), prints how often they agree, and writes the strings they answered
+   differently as JSON batches of 20 for the adjudicator (.claude/agents/adjudicator.md) into
+   disagreements/labellers/: each row's id, the string with the ATS's country, and the two answers.
+2. Once every labellers' batch has its verdicts (batch-NNN.verdicts.json), settles each string (a verdict
+   of neither leaves it unclear) and compares the rule's places with the settled ones. Where they differ,
+   writes the two answers, in an order drawn so the adjudicator cannot tell the rule's, into
+   disagreements/rule/.
+3. Once every rule batch has its verdicts, a string's truth is the answer the adjudicator chose; neither
+   leaves it unclear. Prints, overall and by ATS, with 95% Wilson intervals:
+   - precision: the share of the rule's places that are right at the most precise level the string
+     gives; beside it, how many more agree with a true place but are less precise (`Malvern, PA` read as
+     Pennsylvania), and how many are wrong;
+   - recall: the share of the true places the rule found, at any level that agrees with them;
+   and every string where the rule and the truth differ. An unclear string is left out of every share.
+
+Two places are the same where their kind and country are, and their names are: a city's or a
+subdivision's names are the same where the shipped place list (src/main/resources/places) reads both as
+one GeoNames entry, or where they are spelled alike without accents, case or a last word `City`; a region's where the hand
+table gives both one label.
+"""
+
+import json
+import math
+import random
+import sys
+import unicodedata
+from collections import defaultdict
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+PLACES = REPO / "src/main/resources/places"
+Z = 1.96
+BATCH = 20
+SEED = 26
+QUESTION = "Which places does this location string name, by the criterion?"
+SHORT_FORMS = {"saint": "st", "st": "saint", "fort": "ft", "ft": "fort", "mount": "mt", "mt": "mount"}
+PRECISION = {"region": 0, "country": 1, "subdivision": 2, "city": 3}
+
+
+def key(name):
+    text = unicodedata.normalize("NFD", name)
+    text = "".join(c for c in text if not unicodedata.combining(c))
+    for a, b in (("ł", "l"), ("ø", "o"), ("đ", "d"), ("ı", "i"), ("ß", "ss"), ("æ", "ae")):
+        text = text.replace(a, b)
+    text = text.lower().replace(".", "").replace("'", "").replace("’", "").replace("-", " ")
+    return " ".join(text.split())
+
+
+def variants(name):
+    k = key(name)
+    out = {k}
+    first, _, rest = k.partition(" ")
+    if rest and first in SHORT_FORMS:
+        out.add(SHORT_FORMS[first] + " " + rest)
+    out |= {name[:-len(" city")] for name in out if name.endswith(" city")}
+    return out
+
+
+def tsv(path):
+    with open(path, encoding="utf-8") as lines:
+        header = lines.readline().rstrip("\n").split("\t")
+        return [dict(zip(header, line.rstrip("\n").split("\t"))) for line in lines if line.strip()]
+
+
+class PlaceList:
+    """What the shipped place list says two names are."""
+
+    def __init__(self):
+        self.cities = defaultdict(set)
+        self.subdivisions = defaultdict(set)
+        self.regions = {}
+        names = {}
+        for row in tsv(PLACES / "subdivisions.tsv"):
+            country = row["code"].split(".")[0]
+            for name in (row["name"], row["ascii"]):
+                for k in variants(name):
+                    self.subdivisions[(country, k)].add(row["code"])
+        for row in tsv(PLACES / "cities.tsv"):
+            names[row["id"]] = row["country"]
+            for name in (row["name"], row["ascii"]):
+                for k in variants(name):
+                    self.cities[(row["country"], k)].add(row["id"])
+        for row in tsv(PLACES / "hand.tsv"):
+            if row["kind"] == "city":
+                for k in variants(row["name"]):
+                    self.cities[(names[row["target"]], k)].add(row["target"])
+            elif row["kind"] == "subdivision":
+                for k in variants(row["name"]):
+                    self.subdivisions[(row["target"].split(".")[0], k)].add(row["target"])
+            elif row["kind"] == "region":
+                self.regions[key(row["name"])] = row["target"]
+                self.regions[key(row["target"])] = row["target"]
+
+    def same_name(self, index, country, a, b):
+        if a is None or b is None:
+            return a is None and b is None
+        if variants(a) & variants(b):
+            return True
+        ids_a = set().union(*(index.get((country, k), set()) for k in variants(a)))
+        ids_b = set().union(*(index.get((country, k), set()) for k in variants(b)))
+        return bool(ids_a & ids_b)
+
+    def same(self, a, b):
+        """Whether two places are one, at the same precision."""
+        if a["kind"] != b["kind"]:
+            return False
+        if a["kind"] == "region":
+            return self.regions.get(key(a["region"]), key(a["region"])) == self.regions.get(key(b["region"]), key(b["region"]))
+        if a["country"] != b["country"]:
+            return False
+        if a["kind"] == "city":
+            return self.same_name(self.cities, a["country"], a["city"], b["city"])
+        if a["kind"] == "subdivision":
+            return self.same_name(self.subdivisions, a["country"], a["subdivision"], b["subdivision"])
+        return True
+
+    def coarser(self, found, true):
+        """Whether a place agrees with a true one, but names it less precisely."""
+        if found["kind"] == "region" or PRECISION[found["kind"]] >= PRECISION[true["kind"]]:
+            return False
+        if found["country"] != true["country"]:
+            return False
+        if found["kind"] == "country":
+            return True
+        return true["subdivision"] is None or self.same_name(self.subdivisions, true["country"],
+                                                             found["subdivision"], true["subdivision"])
+
+    def same_answer(self, a, b):
+        if a is None or b is None:
+            return a is None and b is None
+        return len(a) == len(b) and all(any(self.same(x, y) for y in b) for x in a) \
+            and all(any(self.same(x, y) for x in a) for y in b)
+
+
+def parse(text):
+    """A written answer as places; None where it is unclear."""
+    text = text.strip()
+    if text.lower() == "unclear":
+        return None
+    if text.lower() in ("none", ""):
+        return []
+    places = []
+    for part in text.split(" ; "):
+        kind, _, rest = part.partition(":")
+        kind = kind.strip().lower()
+        fields = [field.strip() for field in rest.split(",")]
+        if kind == "region":
+            places.append({"kind": kind, "region": rest.strip()})
+        elif kind == "country":
+            places.append({"kind": kind, "country": fields[-1].upper()})
+        elif kind == "subdivision":
+            places.append({"kind": kind, "country": fields[-1].upper(), "subdivision": ", ".join(fields[:-1])})
+        elif kind == "city":
+            subdivision = fields[-2] if len(fields) > 2 and fields[-2] not in ("-", "") else None
+            places.append({"kind": kind, "country": fields[-1].upper(), "subdivision": subdivision,
+                           "city": ", ".join(fields[:-2]) if len(fields) > 2 else fields[0]})
+        else:
+            raise ValueError(f"cannot read the place '{part}'")
+    return places
+
+
+def labels(directory, labeller):
+    read = {}
+    for path in sorted(directory.glob(f"labels-{labeller}-*.tsv")):
+        for row in tsv(path):
+            read[row["id"]] = row["places"]
+    return read
+
+
+def wilson(hits, total):
+    if total == 0:
+        return "—"
+    p = hits / total
+    centre = (p + Z * Z / (2 * total)) / (1 + Z * Z / total)
+    half = Z * math.sqrt(p * (1 - p) / total + Z * Z / (4 * total * total)) / (1 + Z * Z / total)
+    return f"{100 * p:.1f}% [{100 * (centre - half):.1f}, {100 * (centre + half):.1f}]"
+
+
+def text(row):
+    return row["location"] + (f" | ATS country: {row['country']}" if row["country"] else "")
+
+
+def write_batches(folder, rows):
+    folder.mkdir(parents=True, exist_ok=True)
+    for start in range(0, len(rows), BATCH):
+        path = folder / f"batch-{start // BATCH + 1:03d}.json"
+        if not path.exists():
+            path.write_text(json.dumps(rows[start:start + BATCH], indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(f"{len(rows)} rows for the adjudicator in {folder}, asking: {QUESTION}")
+
+
+def verdicts(folder):
+    """Every verdict of a folder's batches, or None while a batch has none."""
+    batches = sorted(p for p in folder.glob("batch-*.json") if not p.name.endswith(".verdicts.json"))
+    read = {}
+    for batch in batches:
+        verdict = batch.with_name(batch.stem + ".verdicts.json")
+        if not verdict.exists():
+            return None
+        read.update(json.loads(verdict.read_text(encoding="utf-8")))
+    return read
+
+
+def main():
+    directory = Path(sys.argv[1])
+    places = PlaceList()
+    sample = {row["id"]: row for row in tsv(directory / "sample.tsv")}
+    a, b = labels(directory, "a"), labels(directory, "b")
+    missing = [i for i in sample if i not in a or i not in b]
+    if missing:
+        sys.exit(f"{len(missing)} strings lack a label, such as {missing[:5]}")
+
+    split = [i for i in sample if not places.same_answer(parse(a[i]), parse(b[i]))]
+    print(f"labellers agree on {len(sample) - len(split)} of {len(sample)} strings ({wilson(len(sample) - len(split), len(sample))})")
+    folder = directory / "disagreements" / "labellers"
+    settled_by = verdicts(folder) if folder.exists() else None
+    if settled_by is None:
+        write_batches(folder, [{"id": i, "text": text(sample[i]), "a": a[i], "b": b[i]} for i in split])
+        return
+
+    settled = {}
+    for i in sample:
+        if i in split:
+            verdict = settled_by[i]["verdict"]
+            settled[i] = parse({"a": a[i], "b": b[i]}.get(verdict, "unclear"))
+        else:
+            settled[i] = parse(a[i])
+    written = {i: (" ; ".join(part for part in a[i].split(" ; ")) if i not in split else
+                   {"a": a[i], "b": b[i]}.get(settled_by[i]["verdict"], "unclear")) for i in sample}
+
+    differ = [i for i in sample if settled[i] is not None and not places.same_answer(parse(sample[i]["rule"]), settled[i])]
+    folder = directory / "disagreements" / "rule"
+    truth_by = verdicts(folder) if folder.exists() else None
+    if truth_by is None:
+        order = random.Random(SEED)
+        rows = []
+        for i in differ:
+            rule_first = order.random() < 0.5
+            pair = (sample[i]["rule"], written[i]) if rule_first else (written[i], sample[i]["rule"])
+            rows.append({"id": i, "text": text(sample[i]), "a": pair[0], "b": pair[1]})
+        (directory / "disagreements" / "rule-order.json").write_text(
+            json.dumps({row["id"]: ("a" if row["a"] == sample[row["id"]]["rule"] else "b") for row in rows}, indent=1) + "\n",
+            encoding="utf-8")
+        write_batches(folder, rows)
+        return
+
+    rule_side = json.loads((directory / "disagreements" / "rule-order.json").read_text(encoding="utf-8"))
+    truth = dict(settled)
+    for i in differ:
+        verdict = truth_by[i]["verdict"]
+        if verdict == "neither":
+            truth[i] = None
+        elif verdict == rule_side[i]:
+            truth[i] = parse(sample[i]["rule"])
+    score(sample, truth, places)
+
+
+def score(sample, truth, places):
+    totals = defaultdict(lambda: defaultdict(int))
+    wrong_rows = []
+    for i, row in sample.items():
+        true = truth[i]
+        for group in ("all", row["ats"]):
+            totals[group]["strings"] += 1
+        if true is None:
+            for group in ("all", row["ats"]):
+                totals[group]["unclear"] += 1
+            continue
+        found = parse(row["rule"])
+        counts = defaultdict(int)
+        for place in found:
+            if any(places.same(place, t) for t in true):
+                counts["right"] += 1
+            elif any(places.coarser(place, t) for t in true):
+                counts["coarser"] += 1
+            else:
+                counts["wrong"] += 1
+        for t in true:
+            counts["true"] += 1
+            if any(places.same(place, t) or places.coarser(place, t) for place in found):
+                counts["found"] += 1
+            if any(places.same(place, t) for place in found):
+                counts["found exactly"] += 1
+        counts["read"] = len(found)
+        for group in ("all", row["ats"]):
+            for name, count in counts.items():
+                totals[group][name] += count
+        if counts["right"] != len(found) or counts["found exactly"] != len(true):
+            wrong_rows.append((row, true))
+
+    print()
+    print("| ATS | strings | unclear | places read | right | coarser | wrong | precision | true places | found | recall | found exactly |")
+    print("|---|---:|---:|---:|---:|---:|---:|---|---:|---:|---|---|")
+    for group in ["all"] + sorted(g for g in totals if g != "all"):
+        t = totals[group]
+        print(f"| {group} | {t['strings']} | {t['unclear']} | {t['read']} | {t['right']} | {t['coarser']} | {t['wrong']} "
+              f"| {wilson(t['right'], t['read'])} | {t['true']} | {t['found']} | {wilson(t['found'], t['true'])} "
+              f"| {wilson(t['found exactly'], t['true'])} |")
+    print()
+    print(f"{len(wrong_rows)} strings where the rule and the truth differ:")
+    for row, true in wrong_rows:
+        written = " ; ".join(place_text(p) for p in true) or "none"
+        print(f"- {row['id']} `{row['location']}`{' (' + row['country'] + ')' if row['country'] else ''}: rule {row['rule']} | truth {written}")
+
+
+def place_text(place):
+    if place["kind"] == "region":
+        return "region: " + place["region"]
+    if place["kind"] == "country":
+        return "country: " + place["country"]
+    if place["kind"] == "subdivision":
+        return f"subdivision: {place['subdivision']}, {place['country']}"
+    return f"city: {place['city']}, {place['subdivision'] or '-'}, {place['country']}"
+
+
+if __name__ == "__main__":
+    main()

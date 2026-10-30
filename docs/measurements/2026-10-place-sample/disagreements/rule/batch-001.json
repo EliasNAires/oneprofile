@@ -1,0 +1,104 @@
+[
+ {
+  "id": "10",
+  "text": "Osterley",
+  "a": "none",
+  "b": "city: Osterley, England, GB"
+ },
+ {
+  "id": "13",
+  "text": "Parsdorf, Bavaria, Germany",
+  "a": "subdivision: Bavaria, DE",
+  "b": "city: Parsdorf, Bavaria, DE"
+ },
+ {
+  "id": "27",
+  "text": "Taguig City, National Capital Region (Manila)",
+  "a": "city: Taguig, National Capital Region, PH ; city: Manila, National Capital Region, PH",
+  "b": "city: Taguig City, National Capital Region, PH"
+ },
+ {
+  "id": "40",
+  "text": "United States - California - Sylmar",
+  "a": "subdivision: California, US",
+  "b": "city: Sylmar, California, US"
+ },
+ {
+  "id": "52",
+  "text": "United States or Canada, EST (Remote)",
+  "a": "country: US ; country: CA ; country: EE",
+  "b": "country: US ; country: CA"
+ },
+ {
+  "id": "89",
+  "text": "China, Hong Kong",
+  "a": "city: Hong Kong, -, CN",
+  "b": "country: CN ; city: Hong Kong, -, HK"
+ },
+ {
+  "id": "126",
+  "text": "IL-Rosemont",
+  "a": "city: Rosemont, Illinois, US",
+  "b": "subdivision: Illinois, US"
+ },
+ {
+  "id": "135",
+  "text": "Rosemont IL",
+  "a": "subdivision: Illinois, US",
+  "b": "city: Rosemont, Illinois, US"
+ },
+ {
+  "id": "136",
+  "text": "US-HI-Waimea",
+  "a": "city: Waimea, Hawaii, US",
+  "b": "subdivision: Hawaii, US"
+ },
+ {
+  "id": "148",
+  "text": "Cardiff, London or Remote (UK)",
+  "a": "city: Cardiff, Wales, GB ; city: London, England, GB",
+  "b": "city: Cardiff, Wales, GB ; city: London, England, GB ; country: GB"
+ },
+ {
+  "id": "183",
+  "text": "Remote - New York",
+  "a": "subdivision: New York, US",
+  "b": "city: New York City, New York, US"
+ },
+ {
+  "id": "241",
+  "text": "IND-TG-Hyderabad, Avance Business Hub",
+  "a": "city: Hyderabad, Telangana, IN",
+  "b": "country: IN ; country: TG ; city: Hyderabad, Telangana, IN"
+ },
+ {
+  "id": "244",
+  "text": "Burlington, WA",
+  "a": "city: Burlington, Washington, US",
+  "b": "subdivision: Washington, US"
+ },
+ {
+  "id": "252",
+  "text": "Pasay City (PH-PSC-02) for 924",
+  "a": "city: Pasay, National Capital Region, PH",
+  "b": "city: Pasay City, National Capital Region, PH"
+ },
+ {
+  "id": "269",
+  "text": "Monterrey, NL",
+  "a": "city: Monterrey, Nuevo León, MX",
+  "b": "subdivision: Newfoundland and Labrador, CA"
+ },
+ {
+  "id": "274",
+  "text": "Andover, Massachusetts, United States of America",
+  "a": "city: Andover, Massachusetts, US",
+  "b": "subdivision: Massachusetts, US"
+ },
+ {
+  "id": "281",
+  "text": "Quantico, VA",
+  "a": "city: Quantico, Virginia, US",
+  "b": "subdivision: Virginia, US"
+ }
+]

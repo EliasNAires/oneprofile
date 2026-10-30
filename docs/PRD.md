@@ -211,7 +211,10 @@ as the ATS publishes it, with Ashby's and Lever's lists of locations, and turnin
 is that step's work (#26): each string becomes places, as precise as it gives them (country,
 state or province, city), from GeoNames' cities of more than 15,000 people and a hand table of
 regions, aliases and the smaller towns the residue shows often (`Fort Meade, MD`). A named location is **never on its own a reason to rule a vacancy
-out** (ADR-0004).
+out** (ADR-0004). Built (`POST /places`, any time after classification): each location string is
+stored with the list it came from and its places; the place list is `src/main/resources/places/`
+and the rule answers to `docs/place-criterion.md`. Its first run, the residue by frequency and its
+precision and recall on a blind sample are `docs/measurements/2026-10-places.md`.
 
 ### 5.4 Eligibility
 
@@ -413,6 +416,10 @@ company is `(ats, slug)`; a vacancy is `(company_id, external_id)`.
 - `normalized_vacancy_title_seniority` — the levels a title names, one row each, because a
   title may name more than one and the counting these reports need is a join rather than an
   unnest.
+- `normalized_vacancy_location` — one row per location string of a vacancy of the subset (#26): the
+  list it came from (the location field, Ashby's secondary locations, or Lever's and Workday's every
+  location), its position there, the string, and the places it names as a JSON array, each a
+  region, a country, a subdivision or a city with its coordinates.
 - `normalized_vacancy_experience_requirement` — the experience requirements §6.1 accepts, one row
   each: the vacancy, the segment it was read in and where in it the phrase starts, its lower and
   upper years, and whether it set the required years.

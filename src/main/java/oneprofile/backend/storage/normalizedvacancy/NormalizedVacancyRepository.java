@@ -185,6 +185,31 @@ public interface NormalizedVacancyRepository extends ListCrudRepository<Normaliz
 	int clearExperienceRequirements();
 
 	/**
+	 * The engineering subset held after one vacancy id, in id order, with each vacancy's ATS, location field
+	 * and the lists of locations its ATS publishes: Ashby's address country and secondary locations, Lever's
+	 * and Workday's every location.
+	 * @param after the vacancy id to read past, 0 to start at the first
+	 * @param limit how many to read at most
+	 * @return each vacancy's id, ATS, location, Ashby's address country, Ashby's secondary locations, Lever's
+	 * every location and Workday's every location, in that order
+	 */
+	@Query("select n.vacancyId, c.ats, v.location, treat(v as AshbyVacancy).addressCountry, "
+			+ "treat(v as AshbyVacancy).secondaryLocations, treat(v as LeverVacancy).allLocations, "
+			+ "treat(v as WorkdayVacancy).allLocations "
+			+ "from NormalizedVacancy n join Vacancy v on v.id = n.vacancyId join v.company c where n.vacancyId > :after "
+			+ "and n.classificationState = oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum.IN "
+			+ "order by n.vacancyId")
+	List<Tuple> placeScopeAfter(long after, Limit limit);
+
+	/**
+	 * Lets go of the places of every location string, in one statement.
+	 * @return how many location strings it let go of
+	 */
+	@Modifying
+	@Query(value = "delete from normalized_vacancy_location", nativeQuery = true)
+	int clearPlaces();
+
+	/**
 	 * Puts every vacancy of the pile back to what its title left it: unknown, decided by the title.
 	 * @param reasons the title reasons that make the pile
 	 * @return how many vacancies the pile holds

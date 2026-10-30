@@ -1,0 +1,37 @@
+{
+  "27": {
+    "verdict": "a",
+    "clause": "Its places are what it names, each as precisely as the string gives it",
+    "pattern": "subdivision named explicitly in string"
+  },
+  "40": {
+    "verdict": "a",
+    "clause": "Not places: ... a neighbourhood or district of a city",
+    "pattern": "neighbourhood of a city, city unnamed"
+  },
+  "52": {
+    "verdict": "a",
+    "clause": "One place per place named",
+    "pattern": "two countries named, not a region"
+  },
+  "87": {
+    "verdict": "a",
+    "clause": "The ATS's country is taken",
+    "pattern": "ATS country kept beside named region"
+  },
+  "148": {
+    "verdict": "b",
+    "clause": "One place per place named (New York, New York, United States is one)",
+    "pattern": "cities with trailing country context"
+  },
+  "180": {
+    "verdict": "a",
+    "clause": "Worldwide, Global and Anywhere are the region Worldwide",
+    "pattern": "bare Global named region"
+  },
+  "252": {
+    "verdict": "a",
+    "clause": "A place is one of four kinds, the most precise the string gives (city, with state or province it lies in)",
+    "pattern": "known city's region filled by knowledge"
+  }
+}

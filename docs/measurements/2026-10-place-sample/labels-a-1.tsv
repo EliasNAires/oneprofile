@@ -1,0 +1,151 @@
+id	places	reason
+69	city: Irvine, California, US
+103	city: Bangalore, Karnataka, IN
+110	city: Dallas, Texas, US	best-known Dallas, Texas
+253	country: ZA ; country: BG ; country: PL ; country: ES
+170	city: Huntsville, Alabama, US
+231	city: Cork, Cork, IE	best-known Cork, Ireland
+263	city: Atlanta, Georgia, US
+239	city: Hong Kong, -, HK ; city: Singapore, -, SG	Hong Kong and Singapore alone are the city
+90	city: Plano, Texas, US	TX_TP3 is a site code, not a place
+195	country: US
+237	city: Bangalore, Karnataka, IN	Prestige Technology Park is a business park, not a place
+182	city: Bengaluru, Karnataka, IN
+241	city: Hyderabad, Telangana, IN	Avance Business Hub is a business park, not a place
+141	city: Aberdeen, Maryland, US
+216	city: Atlanta, Georgia, US	best-known Atlanta, Georgia
+202	city: San Jose, California, US
+222	region: Worldwide	Global is the region Worldwide
+33	city: Joinville, Santa Catarina, BR	Joinville is in Santa Catarina
+138	city: Amsterdam, North Holland, NL	Amsterdam is in North Holland
+281	city: Quantico, Virginia, US
+284	city: San Francisco, California, US
+200	city: San Francisco, California, US
+175	country: US
+240	city: Santa Clara, California, US
+178	city: Chicago, Illinois, US
+28	subdivision: Pennsylvania, US
+83	city: San Francisco, California, US
+134	city: Bangalore, Karnataka, IN	BLR is Bangalore; Divyasree Technopolis is a business park
+296	city: Grand Rapids, Michigan, US
+62	city: Wilmington, North Carolina, US
+116	city: Raleigh, North Carolina, US
+165	city: Atlanta, Georgia, US
+19	city: Boulder, Colorado, US
+288	city: Chicago, Illinois, US
+292	city: Austin, Texas, US	best-known Austin, Texas
+166	city: Tampa, Florida, US	best-known Tampa, Florida
+242	city: Las Vegas, Nevada, US
+233	subdivision: New Jersey, US
+102	city: Warsaw, Masovian Voivodeship, PL
+251	city: Geneva, Geneva, CH ; city: Paris, Paris, FR	best-known Geneva and Paris; each also names its canton/department
+261	city: Winchester, Virginia, US
+146	city: Saint Paul, Minnesota, US
+81	city: Chesapeake, Virginia, US
+199	country: US
+168	country: GB
+125	city: Boston, Massachusetts, US	best-known Boston, Massachusetts
+266	city: São Paulo, São Paulo, BR	best-known São Paulo, the city; also the state's name
+84	city: Toronto, Ontario, CA	best-known Toronto, Ontario
+122	city: Chicago, Illinois, US	best-known Chicago, Illinois
+248	city: South San Francisco, California, US
+23	city: Richardson, Texas, US
+161	city: Rugby, England, GB	GBR is the UK's country code; Rugby is in England
+5	city: Irvine, California, US
+115	city: Mumbai, Maharashtra, IN	Shivaji Park is a locality of Mumbai
+129	city: Salt Lake City, Utah, US
+229	city: New York, New York, US	NYC is New York City
+282	city: Warsaw, Masovian Voivodeship, PL	best-known Warsaw is in Masovian Voivodeship
+35	city: Richmond, British Columbia, CA	BC is British Columbia, Canada, not Richmond, Virginia
+295	city: London, England, GB	London is in England
+238	none
+185	city: Pune, Maharashtra, IN	Trion Business Park is a business park, not a place
+169	subdivision: New Jersey, US	Office and the street address are not places
+154	city: Austin, Texas, US	best-known Austin, Texas
+274	city: Andover, Massachusetts, US
+40	subdivision: California, US	Sylmar is a neighbourhood of Los Angeles, not named here
+18	city: Edinburgh, Scotland, GB	Edinburgh is in Scotland
+149	none
+58	city: Columbus, Ohio, US
+156	country: BR
+227	city: New York, New York, US
+213	city: Bangalore, Karnataka, IN	best-known Bangalore, Karnataka
+74	city: Springfield, Virginia, US	VA is Virginia, distinguishing from other Springfields
+287	city: Singapore, -, SG
+104	city: Moscow, Moscow, RU	best-known Moscow; Moscow is its own federal subject
+10	none	Osterley is a district of London, not named here
+135	city: Rosemont, Illinois, US
+183	subdivision: New York, US	read as the state, matching other Remote - <state> entries
+230	city: Brampton, Ontario, CA	CA is Canada's country code here, not California
+61	country: ZA
+273	city: San Antonio, Texas, US	Home Office I is a work word/site label, not a place
+285	country: IE
+100	city: Chennai, Tamil Nadu, IN	Chennai is in Tamil Nadu
+108	city: Lahore, Punjab, PK	PER is a code, not a place; PK is Pakistan
+193	city: Warren, Michigan, US
+45	city: Hong Kong, -, HK	Hong Kong alone is the city
+2	none	Remote is a work word; the ATS's country field is not an actual country
+257	city: London, England, GB	London is in England
+184	subdivision: Iowa, US	"(Any City)" means no specific city is named
+271	city: London, England, GB	London is in England; best-known London
+145	city: San Francisco, California, US
+65	none
+275	subdivision: Nevada, US
+43	city: Asunción, -, PY	Asunción is its own capital district, with no further subdivision
+164	city: Manila, -, PH	best-known Manila
+186	city: Rome, New York, US	NY distinguishes this from Rome, Italy
+219	none	Remoto is "Remote" in Spanish/Portuguese
+181	city: Sydney, New South Wales, AU
+151	country: ES
+13	city: Parsdorf, Bavaria, DE
+26	country: CL
+289	city: Downers Grove, Illinois, US
+174	city: Tel Aviv, Tel Aviv, IL	Tel Aviv is also its own district's name
+29	city: London, England, GB	London is in England
+111	city: Barcelona, Catalonia, ES	best-known Barcelona, Catalonia
+221	city: Stockholm, Stockholm, SE	Stockholm is also its own county's name
+140	country: US
+105	city: Prague, Prague, CZ	Prague is its own administrative region
+67	country: GB
+208	country: IN
+75	country: US
+293	city: Jersey City, New Jersey, US	best-known Jersey City, New Jersey
+57	city: Charleston, South Carolina, US	CSN is a code and Campus is not a place; best-known Charleston is in South Carolina
+247	country: US
+3	city: Singapore, -, SG	Fab 10W is a facility name, not a place
+194	city: Pune, Maharashtra, IN	best-known Pune, Maharashtra
+290	city: Limassol, Limassol, CY	Limassol is also its own district's name
+70	city: Mississauga, Ontario, CA
+97	city: New York, New York, US ; city: San Francisco, California, US
+300	city: Paris, Paris, FR
+157	city: Milpitas, California, US
+211	city: New York, New York, US	best-known New York, New York
+48	subdivision: Idaho, US
+128	city: San Francisco, California, US	a metro area is its main city, San Francisco
+114	city: Oak Brook, Illinois, US
+52	country: US ; country: CA	EST is a timezone, not a place
+14	city: Columbus, Ohio, US
+217	city: Melville, New York, US
+12	city: Reston, Virginia, US
+249	city: London, England, GB	London is in England
+82	city: Philadelphia, Pennsylvania, US
+212	subdivision: Karnataka, IN
+63	subdivision: Massachusetts, US
+162	city: Chennai, Tamil Nadu, IN	Chennai is in Tamil Nadu
+121	city: San Diego, California, US
+32	city: Munich, Bavaria, DE	Munich is in Bavaria
+172	city: San Francisco, California, US
+190	country: US
+223	city: Singapore, -, SG	best-known Singapore, the city
+39	subdivision: Kentucky, US
+294	city: San Francisco, California, US
+53	subdivision: Penang, MY	Penang names the state; no specific city is given
+215	city: Seattle, Washington, US
+112	country: PL ; country: UA
+55	country: AU	AC is unclear, possibly the Australian Capital Territory
+276	city: Chennai, Tamil Nadu, IN
+137	city: San Diego, California, US
+80	subdivision: Mississippi, US
+42	city: Cholet, -, FR	"2" is a site number, not a place
+279	city: Redmond, Washington, US
+258	city: Wallisellen, Zürich, CH	Wallisellen is in canton Zürich

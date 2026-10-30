@@ -1,0 +1,151 @@
+id	places	reason
+72	city: Ashburn, Virginia, US
+95	city: Oklahoma City, Oklahoma, US
+153	city: Delhi, Delhi, IN
+160	city: Huntsville, Alabama, US
+260	city: McLean, Virginia, US
+197	city: San Francisco, California, US
+267	city: Kuala Lumpur, Kuala Lumpur, MY
+206	city: Dublin, California, US
+36	city: Dallas, Texas, US
+60	city: Colorado Springs, Colorado, US
+187	city: Charleston, South Carolina, US
+21	country: US	United States named
+167	city: Halifax, Nova Scotia, CA
+210	city: Singapore, Singapore, SG	district name removed
+11	country: ES
+255	city: San Francisco, California, US
+250	none	work word only
+99	city: Hsinchu, Hsinchu, TW
+85	city: Reston, Virginia, US
+50	country: IE	ATS country takes precedence
+98	city: Shanghai, Shanghai, CN
+59	city: Washington, District of Columbia, US
+188	city: Herndon, Virginia, US
+159	city: Oslo, Oslo, NO
+243	country: EE	ATS country names it
+244	city: Burlington, Washington, US
+47	city: Managua, Managua, NI
+192	city: London, England, GB ; city: Sunnyvale, California, US	two cities
+118	city: San Antonio, Texas, US
+106	city: Mumbai, Maharashtra, IN
+109	city: London, England, GB	best-known place of name
+144	city: Newark, New Jersey, US
+9	city: Dusseldorf, North Rhine-Westphalia, DE
+25	city: Oberkochen, Baden-Württemberg, DE
+158	city: New York, New York, US	best-known is the city
+278	city: New York, New York, US
+76	none	work word only
+49	city: Springfield, Virginia, US
+96	city: Atlanta, Georgia, US
+220	country: US	United States named
+152	city: Austin, Texas, US
+1	city: Denver, Colorado, US
+203	country: US	United States named
+176	city: Singapore, Singapore, SG
+139	city: Bengaluru, Karnataka, IN
+299	city: Copenhagen, Copenhagen, DK
+286	city: Singapore, Singapore, SG	office park removed
+198	city: Fort Bragg, North Carolina, US
+56	city: Austin, Texas, US
+205	city: Sao Paulo, Sao Paulo, BR
+6	city: Ann Arbor, Michigan, US
+150	city: Alexandria, Virginia, US
+31	city: Paris, Ile-de-France, FR
+132	city: Hyderabad, Telangana, IN	building/floor removed
+270	city: Toronto, Ontario, CA	company name and remote removed
+119	city: Munich, Bavaria, DE
+272	city: Bangalore, Karnataka, IN
+77	city: Washington, District of Columbia, US	metro area rule
+22	city: Orlando, Florida, US
+177	country: US	work word and US named
+179	city: London, England, GB	best-known place of name
+235	city: Alcobendas, Madrid, ES
+204	city: Mexico City, Mexico City, MX
+66	city: Limassol, Limassol, CY
+256	city: Portland, Oregon, US
+30	city: Kentwood, Michigan, US
+163	city: Taipei, Taipei, TW
+264	city: Frankfurt, Hesse, DE
+297	subdivision: Oregon, US	remote work phrase with state
+15	city: Beavercreek, Ohio, US
+254	city: Fairfax, Virginia, US
+87	region: North America	region named with country ATS
+86	city: Alexandria, Virginia, US
+24	city: Boston, Massachusetts, US
+143	city: Budapest, Budapest, HU
+126	city: Rosemont, Illinois, US
+189	city: Chicago, Illinois, US
+196	subdivision: Texas, US	remote word with state
+54	city: San Francisco, California, US
+265	city: Austin, Texas, US
+64	city: Seattle, Washington, US	modifier removed
+234	city: Paris, Ile-de-France, FR
+16	city: Westminster, Colorado, US
+133	city: Austin, Texas, US
+225	city: Sao Paulo, Sao Paulo, BR
+92	subdivision: Texas, US	work phrase with state
+124	city: Atlanta, Georgia, US
+46	city: Bangalore, Karnataka, IN
+68	country: US	work word with country ATS
+268	city: New York, New York, US
+283	city: San Diego, California, US
+93	city: Boston, Massachusetts, US
+4	country: IT	work word with country ATS
+91	city: Denver, Colorado, US
+120	city: Madison, Wisconsin, US
+209	country: AT	work phrase with country
+224	city: Raleigh, North Carolina, US
+113	city: Palo Alto, California, US
+79	country: TH	ATS country names it
+17	subdivision: Connecticut, US
+107	city: Bengaluru, Karnataka, IN
+148	city: Cardiff, Wales, GB ; city: London, England, GB	two cities, remote removed
+298	country: AU	code and country name
+228	city: Seattle, Washington, US
+259	city: Bangalore, Karnataka, IN	address and office park removed
+262	country: BR	work word with country
+232	city: Cincinnati, Ohio, US
+8	city: Lehi, Utah, US
+89	city: Hong Kong, Hong Kong, CN	rule 5 special case
+280	country: US	remote and country ATS
+136	city: Waimea, Hawaii, US
+78	city: New York, New York, US
+236	city: Bellevue, Washington, US	office word removed
+88	city: Bengaluru, Karnataka, IN
+44	city: Bengaluru, Karnataka, IN
+20	city: Tokyo, Tokyo, JP
+155	city: Houston, Texas, US
+201	country: HR	remote word with country ATS
+51	city: Palo Alto, California, US
+73	city: Sydney, New South Wales, AU
+269	city: Monterrey, Nuevo Leon, MX
+117	city: Hyderabad, Telangana, IN
+173	city: Boston, Massachusetts, US
+71	city: Cambridge, England, GB	best-known place of name
+291	city: San Francisco, California, US
+245	city: Geneva, Geneva, CH
+7	subdivision: South Dakota, US	work phrase with state
+180	none	region as work word
+226	city: Toronto, Ontario, CA	company name and address removed
+27	city: Taguig, Metro Manila, PH	city in NCR
+214	city: Houston, Texas, US ; city: New York, New York, US ; city: San Francisco, California, US ; city: Seattle, Washington, US	four cities
+218	city: Seattle, Washington, US	remote word removed
+41	none	work word only
+37	city: Amarillo, Texas, US	
+252	city: Pasay, Metro Manila, PH	city code and address removed
+123	city: Dallas, Texas, US
+127	city: Madrid, Madrid, ES
+94	city: Washington, District of Columbia, US
+207	city: Washington, District of Columbia, US
+191	city: Holmdel, New Jersey, US
+130	city: Newark, New Jersey, US	best-known place of name
+171	city: Suzhou, Jiangsu, CN
+277	city: Edinburgh, Scotland, GB
+131	city: San Francisco, California, US ; city: New York, New York, US ; city: Seattle, Washington, US	three cities
+34	city: New York, New York, US
+38	city: Stevens Point, Wisconsin, US
+101	city: Bloomington, Minnesota, US
+147	city: San Francisco, California, US
+142	city: Chennai, Tamil Nadu, IN
+246	city: Amsterdam, North Holland, NL

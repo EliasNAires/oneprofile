@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+"""Cuts the GeoNames files the place list ships (#26) from GeoNames' daily dump.
+
+    scripts/fetch-geonames [DIRECTORY, default src/main/resources/places]
+
+Downloads cities15000.zip, admin1CodesASCII.txt and countryInfo.txt from
+https://download.geonames.org/export/dump/ (CC BY 4.0, https://www.geonames.org/) and writes, each with
+a header line:
+
+- countries.tsv: code, iso3, name: every country GeoNames lists.
+- subdivisions.tsv: code, name, ascii name: every first-level subdivision, its code GeoNames' own
+  (`US.TX`, `CA.08`).
+- cities.tsv: id, name, ascii name, country, subdivision, latitude, longitude, population: every
+  populated place of more than 15,000 people, without those GeoNames marks historical, abandoned or
+  destroyed (PPLH, PPLQ, PPLW). Its subdivision is the bare first-level code (`TX`), empty where it
+  has none.
+
+The hand table beside them (hand.tsv) is kept by hand and is not touched.
+"""
+
+import io
+import sys
+import urllib.request
+import zipfile
+from pathlib import Path
+
+DUMP = "https://download.geonames.org/export/dump/"
+GONE = {"PPLH", "PPLQ", "PPLW"}
+
+
+def fetch(name):
+    with urllib.request.urlopen(DUMP + name) as response:
+        return response.read()
+
+
+def write(path, header, rows):
+    with path.open("w", encoding="utf-8", newline="\n") as out:
+        out.write("\t".join(header) + "\n")
+        for row in rows:
+            out.write("\t".join(row) + "\n")
+
+
+def main():
+    directory = Path(sys.argv[1] if len(sys.argv) > 1 else "src/main/resources/places")
+    directory.mkdir(parents=True, exist_ok=True)
+
+    countries = []
+    for line in fetch("countryInfo.txt").decode("utf-8").splitlines():
+        if line.startswith("#") or not line.strip():
+            continue
+        fields = line.split("\t")
+        countries.append((fields[0], fields[1], fields[4]))
+    write(directory / "countries.tsv", ("code", "iso3", "name"), sorted(countries))
+
+    subdivisions = []
+    for line in fetch("admin1CodesASCII.txt").decode("utf-8").splitlines():
+        fields = line.split("\t")
+        subdivisions.append((fields[0], fields[1], fields[2]))
+    write(directory / "subdivisions.tsv", ("code", "name", "ascii"), sorted(subdivisions))
+
+    cities = []
+    with zipfile.ZipFile(io.BytesIO(fetch("cities15000.zip"))) as archive:
+        for line in archive.read("cities15000.txt").decode("utf-8").splitlines():
+            fields = line.split("\t")
+            if fields[7] in GONE:
+                continue
+            cities.append((fields[0], fields[1], fields[2], fields[8], fields[10], fields[4], fields[5], fields[14]))
+    cities.sort(key=lambda city: int(city[0]))
+    write(directory / "cities.tsv",
+          ("id", "name", "ascii", "country", "subdivision", "latitude", "longitude", "population"), cities)
+    print(f"{len(countries)} countries, {len(subdivisions)} subdivisions, {len(cities)} cities")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,44 @@
+[
+ {
+  "id": "27",
+  "text": "Taguig City, National Capital Region (Manila)",
+  "a": "city: Taguig City, National Capital Region, PH",
+  "b": "city: Taguig, Metro Manila, PH"
+ },
+ {
+  "id": "40",
+  "text": "United States - California - Sylmar",
+  "a": "subdivision: California, US",
+  "b": "city: Sylmar, California, US"
+ },
+ {
+  "id": "52",
+  "text": "United States or Canada, EST (Remote)",
+  "a": "country: US ; country: CA",
+  "b": "region: North America"
+ },
+ {
+  "id": "87",
+  "text": "North America | ATS country: United States",
+  "a": "region: North America ; country: US",
+  "b": "region: North America"
+ },
+ {
+  "id": "148",
+  "text": "Cardiff, London or Remote (UK)",
+  "a": "city: Cardiff, Wales, GB ; city: London, England, GB ; country: GB",
+  "b": "city: Cardiff, Wales, GB ; city: London, England, GB"
+ },
+ {
+  "id": "180",
+  "text": "Global",
+  "a": "region: Worldwide",
+  "b": "none"
+ },
+ {
+  "id": "252",
+  "text": "Pasay City (PH-PSC-02) for 924",
+  "a": "city: Pasay City, National Capital Region, PH",
+  "b": "city: Pasay, Metro Manila, PH"
+ }
+]

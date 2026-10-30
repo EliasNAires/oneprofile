@@ -1,0 +1,19 @@
+{
+  "10": {"verdict": "a", "clause": "Not places: a neighbourhood or district of a city; where it names such a thing alone, the place is what else the string names, or nothing", "pattern": "district without its city"},
+  "13": {"verdict": "b", "clause": "Every level the string gives is part of the place", "pattern": "city with named state"},
+  "27": {"verdict": "b", "clause": "One place per place named", "pattern": "parenthetical names same region"},
+  "40": {"verdict": "a", "clause": "Not places: a neighbourhood or district of a city; where it names such a thing alone, the place is what else the string names, or nothing", "pattern": "district without its city"},
+  "52": {"verdict": "b", "clause": "No place for a string that names none", "pattern": "timezone misread as place"},
+  "89": {"verdict": "a", "clause": "The ATS's country is taken: every place is read within it", "pattern": "nested country then city"},
+  "126": {"verdict": "a", "clause": "Every level the string gives is part of the place", "pattern": "state code drops the city"},
+  "135": {"verdict": "b", "clause": "Every level the string gives is part of the place", "pattern": "state code drops the city"},
+  "136": {"verdict": "a", "clause": "Every level the string gives is part of the place", "pattern": "state code drops the city"},
+  "148": {"verdict": "b", "clause": "The ATS's country is taken: the country itself is the place where the string names nothing more precise in it", "pattern": "remote option takes the country"},
+  "183": {"verdict": "b", "clause": "A name alone is the place a job seeker would take it for", "pattern": "ambiguous name defaults to city"},
+  "241": {"verdict": "a", "clause": "One place per place named", "pattern": "state code wrongly made a country"},
+  "244": {"verdict": "a", "clause": "Every level the string gives is part of the place", "pattern": "state code drops the city"},
+  "252": {"verdict": "a", "clause": "Write names in English, as an atlas would", "pattern": "same place, spelling"},
+  "269": {"verdict": "a", "clause": "The string's own context decides an ambiguous name", "pattern": "ambiguous code resolved by context"},
+  "274": {"verdict": "a", "clause": "Every level the string gives is part of the place", "pattern": "state code drops the city"},
+  "281": {"verdict": "a", "clause": "Every level the string gives is part of the place", "pattern": "state code drops the city"}
+}

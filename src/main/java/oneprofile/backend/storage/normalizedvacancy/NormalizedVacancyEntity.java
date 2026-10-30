@@ -86,6 +86,10 @@ public class NormalizedVacancyEntity {
 			joinColumns = @JoinColumn(name = "normalized_vacancy_id"))
 	private Set<ExperienceRequirement> experienceRequirements = new HashSet<>();
 
+	@ElementCollection
+	@CollectionTable(name = "normalized_vacancy_location", joinColumns = @JoinColumn(name = "normalized_vacancy_id"))
+	private Set<LocationPlaces> locations = new HashSet<>();
+
 	protected NormalizedVacancyEntity() {
 	}
 
@@ -168,6 +172,16 @@ public class NormalizedVacancyEntity {
 		this.experienceRequirements.addAll(seniority.requirements());
 	}
 
+	/**
+	 * Takes on the places the place rule read in each string of the vacancy's declared location, replacing
+	 * what the last run recorded.
+	 * @param locations each of its location strings with its places
+	 */
+	public void locatedAt(List<LocationPlaces> locations) {
+		this.locations.clear();
+		this.locations.addAll(locations);
+	}
+
 	/** The vacancy these facts were derived from. */
 	public long vacancyId() {
 		return this.vacancyId;
@@ -237,6 +251,16 @@ public class NormalizedVacancyEntity {
 					.sorted(Comparator.comparingInt(ExperienceRequirement::segment)
 						.thenComparingInt(ExperienceRequirement::position))
 					.toList());
+	}
+
+	/**
+	 * Each string of its declared location with the places it names, by list and position; empty where the
+	 * place run has not reached it.
+	 */
+	public List<LocationPlaces> locations() {
+		return this.locations.stream()
+			.sorted(Comparator.comparing(LocationPlaces::list).thenComparingInt(LocationPlaces::position))
+			.toList();
 	}
 
 }

@@ -1,0 +1,452 @@
+name	kind	target	latitude	longitude
+USA	country	US		
+U.S.	country	US		
+U.S.A.	country	US		
+United States of America	country	US		
+America	country	US		
+UK	country	GB		
+U.K.	country	GB		
+Great Britain	country	GB		
+Britain	country	GB		
+Netherlands	country	NL		
+Holland	country	NL		
+Czech Republic	country	CZ		
+Korea	country	KR		
+Republic of Korea	country	KR		
+UAE	country	AE		
+Deutschland	country	DE		
+España	country	ES		
+Brasil	country	BR		
+México	country	MX		
+Türkiye	country	TR		
+Turkiye	country	TR		
+Viet Nam	country	VN		
+Russian Federation	country	RU		
+Macedonia	country	MK		
+Côte d'Ivoire	country	CI		
+Bosnia	country	BA		
+Slovak Republic	country	SK		
+Hong Kong SAR	country	HK		
+Polska	country	PL		
+Italia	country	IT		
+Österreich	country	AT		
+Schweiz	country	CH		
+Suisse	country	CH		
+Belgique	country	BE		
+België	country	BE		
+Sverige	country	SE		
+Danmark	country	DK		
+Norge	country	NO		
+Suomi	country	FI		
+Éire	country	IE		
+Perú	country	PE		
+Philippine	country	PH		
+Kingdom of Saudi Arabia	country	SA		
+KSA	country	SA		
+Taiwan ROC	country	TW		
+Macau	country	MO		
+Puerto Rico	country	PR		
+ON	subdivision	CA.08		
+BC	subdivision	CA.02		
+QC	subdivision	CA.10		
+AB	subdivision	CA.01		
+MB	subdivision	CA.03		
+NS	subdivision	CA.07		
+NB	subdivision	CA.04		
+SK	subdivision	CA.11		
+NL	subdivision	CA.05		
+PE	subdivision	CA.09		
+NSW	subdivision	AU.02		
+VIC	subdivision	AU.07		
+QLD	subdivision	AU.04		
+WA	subdivision	AU.08		
+SA	subdivision	AU.05		
+TAS	subdivision	AU.06		
+ACT	subdivision	AU.01		
+D.C.	subdivision	US.DC		
+Washington DC	subdivision	US.DC		
+Washington D.C.	subdivision	US.DC		
+KA	subdivision	IN.19		
+TN	subdivision	IN.25		
+MH	subdivision	IN.16		
+TS	subdivision	IN.40		
+Telengana	subdivision	IN.40		
+Karnatka	subdivision	IN.19		
+Delhi NCR	subdivision	IN.07		
+NCR	subdivision	IN.07		
+Bavaria	subdivision	DE.02		
+Region Metropolitana	subdivision	CL.12		
+Región Metropolitana	subdivision	CL.12		
+CDMX	subdivision	MX.09		
+Ciudad de México	subdivision	MX.09		
+Bangalore	city	1277333		
+Gurgaon	city	1270642		
+NYC	city	5128581		
+New York City	city	5128581		
+SF	city	5391959		
+SF Bay Area	city	5391959		
+San Francisco Bay Area	city	5391959		
+Bay Area	city	5391959		
+Warszawa	city	756135		
+Praha	city	3067696		
+München	city	2867714		
+Kiev	city	703448		
+Saigon	city	1566083		
+HCMC	city	1566083		
+Lisboa	city	2267057		
+København	city	2618425		
+Wien	city	2761369		
+Roma	city	3169070		
+Milano	city	3173435		
+Bruxelles	city	2800866		
+Den Haag	city	2747373		
+Göteborg	city	2711537		
+Nürnberg	city	2861650		
+Bombay	city	1275339		
+Madras	city	1264527		
+Calcutta	city	1275004		
+Trivandrum	city	1254163		
+Cochin	city	1273874		
+Mysore	city	1262321		
+Baroda	city	1253573		
+Krakow	city	3094802		
+Cracow	city	3094802		
+Zurich	city	2657896		
+Genève	city	2660646		
+Beograd	city	792680		
+Bogota	city	3688689		
+Sao Paulo	city	3448439		
+Tel Aviv-Yafo	city	293397		
+Tel-Aviv	city	293397		
+St Petersburg	city	498817		
+Frankfurt	city	2925533		
+Dusseldorf	city	2934246		
+Malmo	city	2692969		
+LA	city	5368361		
+DC	city	4140963		
+KL	city	1735161		
+EMEA	region	EMEA		
+APAC	region	APAC		
+APJ	region	APAC		
+Asia Pacific	region	APAC		
+Asia-Pacific	region	APAC		
+LATAM	region	Latin America		
+Latin America	region	Latin America		
+LAC	region	Latin America		
+Europe	region	Europe		
+European Union	region	European Union		
+EU	region	European Union		
+North America	region	North America		
+NA	region	North America		
+NORAM	region	North America		
+NAMER	region	North America		
+AMER	region	Americas		
+Americas	region	Americas		
+South America	region	South America		
+Central America	region	Central America		
+Caribbean	region	Caribbean		
+Asia	region	Asia		
+Southeast Asia	region	Southeast Asia		
+SEA	region	Southeast Asia		
+South Asia	region	South Asia		
+Middle East	region	Middle East		
+MENA	region	MENA		
+Africa	region	Africa		
+Sub-Saharan Africa	region	Africa		
+Oceania	region	Oceania		
+ANZ	region	ANZ		
+DACH	region	DACH		
+Nordics	region	Nordics		
+Nordic	region	Nordics		
+Scandinavia	region	Nordics		
+Benelux	region	Benelux		
+CEE	region	CEE		
+Central Eastern Europe	region	CEE		
+Eastern Europe	region	Eastern Europe		
+Western Europe	region	Western Europe		
+Central Europe	region	Central Europe		
+Southern Europe	region	Southern Europe		
+Northern Europe	region	Northern Europe		
+CIS	region	CIS		
+UKI	region	UKI		
+UK&I	region	UKI		
+Worldwide	region	Worldwide		
+Global	region	Worldwide		
+Anywhere	region	Worldwide		
+Remote	ignored			
+Hybrid	ignored			
+Office	ignored			
+Home	ignored			
+Work	ignored			
+Working	ignored			
+HQ	ignored			
+Headquarters	ignored			
+Park	ignored			
+Area	ignored			
+Location	ignored			
+Campus	ignored			
+Center	ignored			
+Centre	ignored			
+Tower	ignored			
+Building	ignored			
+BLDG	ignored			
+Street	ignored			
+St	ignored			
+Road	ignored			
+Rd	ignored			
+Avenue	ignored			
+Ave	ignored			
+Blvd	ignored			
+Drive	ignored			
+Dr	ignored			
+Floor	ignored			
+Site	ignored			
+Onsite	ignored			
+On-site	ignored			
+Offsite	ignored			
+Virtual	ignored			
+Telecommuter	ignored			
+Nationwide	ignored			
+Hub	ignored			
+Metro	ignored			
+Greater	ignored			
+Corporate	ignored			
+Field	ignored			
+Job	ignored			
+Posting	ignored			
+Only	ignored			
+based	ignored			
+Employees	ignored			
+Any	ignored			
+All	ignored			
+Tech	ignored			
+Technology	ignored			
+Digital	ignored			
+Business	ignored			
+International	ignored			
+Corp	ignored			
+House	ignored			
+Place	ignored			
+Square	ignored			
+Valley	ignored			
+County	ignored			
+District	ignored			
+State	ignored			
+Region	ignored			
+Main	ignored			
+Downtown	ignored			
+Flexible	ignored			
+Multiple Locations	ignored			
+Various	ignored			
+TBD	ignored			
+LA	bare	5368361		
+Singapore	bare	1880252		
+Hong Kong	bare	1819729		
+Luxembourg	bare	2960316		
+Monaco	bare	2993458		
+in	ignored			
+at	ignored			
+from	ignored			
+the	ignored			
+of	ignored			
+to	ignored			
+within	ignored			
+near	ignored			
+across	ignored			
+for	ignored			
+with	ignored			
+via	ignored			
+WFH	ignored			
+Work From Home	ignored			
+Work at Home	ignored			
+Home Based	ignored			
+Homebased	ignored			
+In-Office	ignored			
+100%	ignored			
+Central Region	ignored			
+Remoto	ignored			
+N/A	ignored			
+Distributed	ignored			
+Fab	ignored			
+SEZ	ignored			
+CBD	ignored			
+AFB	ignored			
+Fort Meade	town	US.MD	39.10815	-76.74323
+Ft Meade	town	US.MD	39.10815	-76.74323
+Ft. Meade	town	US.MD	39.10815	-76.74323
+Fort Meade	town	US.FL	27.75225	-81.80175
+Fort Belvoir	town	US.VA	38.7119	-77.14589
+Ft Belvoir	town	US.VA	38.7119	-77.14589
+Riverwoods	town	US.IL	42.16753	-87.89701
+Florham Park	town	US.NJ	40.78788	-74.38821
+Berkeley Heights	town	US.NJ	40.68343	-74.44265
+Fort Mill	town	US.SC	35.00737	-80.94508
+Lone Tree	town	US.CO	39.55171	-104.8863
+Raritan	town	US.NJ	40.56955	-74.63294
+Chippewa Falls	town	US.WI	44.93691	-91.39293
+Mechanicsburg	town	US.PA	40.21426	-77.00859
+Montpelier	town	US.VT	44.26006	-72.57539
+Shiloh	town	US.IL	38.56144	-89.89732
+Bastrop	town	US.TX	30.11049	-97.31527
+Bastrop	town	US.LA	32.77828	-91.91144
+Oberkochen	town	DE.01	48.78379	10.10519
+Niskayuna	town	US.NY	42.805	-73.893
+Annapolis Junction	town	US.MD	39.1187	-76.7905
+Ft Collins	city	5577147		
+Ft. Collins	city	5577147		
+Ft Worth	city	4691930		
+Ft. Worth	city	4691930		
+Ft Lauderdale	city	4155966		
+Ft. Lauderdale	city	4155966		
+Ho Chi Minh	city	1566083		
+Thanh pho Ho Chi Minh	city	1566083		
+Makati	city	1703417		
+Petah Tikva	city	293918		
+Petach Tikva	city	293918		
+Petach Tikvah	city	293918		
+Torino	city	3165524		
+Napoli	city	3172394		
+Firenze	city	3176959		
+Padova	city	3171728		
+Seville	city	2510911		
+Cologne	city	2886242		
+Ghent	city	2797656		
+Aarhus	city	2624652		
+St Gallen	city	2658822		
+St. Gallen	city	2658822		
+Sofia	city	727011		
+София	city	727011		
+Bexhill	city	2655777		
+Hanover	city	2910831		
+Den Bosch	city	2747351		
+Lucerne	city	2659811		
+Iasi	city	675810		
+Banglore	city	1277333		
+Bangaluru	city	1277333		
+Newyork	city	5128581		
+BLR	city	1277333		
+HYD	city	1269843		
+GGN	city	1270642		
+BLR	bare	1277333		
+HYD	bare	1269843		
+World Wide	region	Worldwide		
+European Region	region	Europe		
+Latinoamérica	region	Latin America		
+Latinoamerica	region	Latin America		
+Hill AFB	town	US.UT	41.124	-111.973
+Scott AFB	town	US.IL	38.5452	-89.8352
+Schriever AFB	town	US.CO	38.8033	-104.5255
+MacDill AFB	town	US.FL	27.8493	-82.5212
+Hanscom AFB	town	US.MA	42.4596	-71.2759
+Joint Base Lewis-McChord	town	US.WA	47.0855	-122.581
+Joint Base Lewis McChord	town	US.WA	47.0855	-122.581
+Research Triangle Park	town	US.NC	35.8992	-78.8636
+RTP	town	US.NC	35.8992	-78.8636
+Pennington	town	US.NJ	40.3284	-74.7907
+Holmdel	town	US.NJ	40.3451	-74.184
+Yokneam	town	IL.03	32.6594	35.1097
+Ft George G Meade	town	US.MD	39.10815	-76.74323
+Fort George G Meade	town	US.MD	39.10815	-76.74323
+Silicon Valley	town	US.CA	37.3688	-122.0363
+Pearl Harbor	town	US.HI	21.3649	-157.95
+Linthicum Heights	town	US.MD	39.20511	-76.65275
+Linthicum	town	US.MD	39.20511	-76.65275
+Riederich	town	DE.01	48.56029	9.26883
+Jessup	town	US.MD	39.14927	-76.77525
+Emeryville	town	US.CA	37.83132	-122.28525
+Osterley	town	GB.ENG	51.48026	-0.35401
+Falls Church	town	US.VA	38.88233	-77.17109
+Oak Brook	town	US.IL	41.83281	-87.92895
+Conshohocken	town	US.PA	40.07928	-75.30157
+Short Hills	town	US.NJ	40.74788	-74.32543
+Dahlgren	town	US.VA	38.33124	-77.05109
+Knutsford	town	GB.ENG	53.30289	-2.37482
+Mounds View	town	US.MN	45.10497	-93.20856
+Purchase	town	US.NY	41.04093	-73.71457
+Gratkorn	town	AT.06	47.13333	15.35
+Rosslyn	town	US.VA	38.89678	-77.07248
+Devens	town	US.MA	42.5447	-71.61318
+Whippany	town	US.NJ	40.82454	-74.4171
+Century City	town	US.CA	34.05557	-118.41786
+Sophia Antipolis	town	FR.93	43.62235	7.04721
+Sophia-Antipolis	town	FR.93	43.62235	7.04721
+Raynham	town	US.MA	41.94871	-71.0731
+Wallisellen	town	CH.ZH	47.41499	8.59672
+Scoresby	town	AU.07	-37.9	145.23333
+Audubon	town	US.PA	40.12788	-75.43185
+Warrenville	town	US.IL	41.81781	-88.1734
+Limours	town	FR.11	48.64625	2.07688
+Fulton	town	US.MD	39.15094	-76.92303
+Chestnut Ridge	town	US.NY	41.08426	-74.0557
+Ford Island	town	US.HI	21.34981	-157.95924
+Diegem	town	BE.VLG	50.89727	4.43354
+Lincolnshire	town	US.IL	42.19002	-87.9084
+Cape Canaveral	town	US.FL	28.40584	-80.60477
+Marina Del Rey	town	US.CA	33.98162	-118.45371
+Evendale	town	US.OH	39.25617	-84.418
+Lanham	town	US.MD	38.96875	-76.8634
+Morris Plains	town	US.NJ	40.82177	-74.48099
+Westwood	town	US.MA	42.21399	-71.2245
+Winnersh	town	GB.ENG	51.42747	-0.87994
+Flowood	town	US.MS	32.30959	-90.13898
+Assago	town	IT.09	45.40887	9.12565
+Ringaskiddy	town	IE.M	51.83389	-8.31694
+Prairie View	town	US.TX	30.09327	-95.98773
+Veldhoven	town	NL.06	51.41833	5.40278
+Rungis	town	FR.11	48.74607	2.35275
+Tarrytown	town	US.NY	41.07621	-73.85875
+Maynard	town	US.MA	42.43343	-71.44951
+Rensselaer	town	US.NY	42.64258	-73.7429
+Davidson	town	US.NC	35.50233	-80.83912
+Migdal HaEmek	town	IL.03	32.6719	35.2409
+Crane	town	US.IN	38.8906	-86.8358
+Earth City	town	US.MO	38.7731	-90.4593
+North	ignored			
+South	ignored			
+East	ignored			
+West	ignored			
+Central	ignored			
+North East	ignored			
+North West	ignored			
+South East	ignored			
+South West	ignored			
+North-East	ignored			
+South-West	ignored			
+Northeast	ignored			
+Northwest	ignored			
+Southeast	ignored			
+Southwest	ignored			
+Bay	ignored			
+Avon	ignored			
+GCC	ignored			
+AIA	ignored			
+FM	ignored			
+SO	ignored			
+Business Bay	ignored			
+Distrito Federal	subdivision	MX.09		
+D.F.	subdivision	MX.09		
+MG	subdivision	BR.15		
+SP	subdivision	BR.27		
+RJ	subdivision	BR.21		
+MZ	subdivision	PL.78		
+Wright-Patterson AFB	town	US.OH	39.8137	-84.0537
+East Hanover	town	US.NJ	40.8201	-74.36487
+MA	subdivision	PL.77		
+PM	subdivision	PL.82		
+DS	subdivision	PL.72		
+WP	subdivision	PL.86		
+LD	subdivision	PL.74		
+SL	subdivision	PL.83		
+HR	subdivision	IN.10		
+UP	subdivision	IN.36		
+DL	subdivision	IN.07		
+GJ	subdivision	IN.09		
+WB	subdivision	IN.28		
+PB	subdivision	IN.23		
+KL	subdivision	IN.13		
+AP	subdivision	IN.02		
+OD	subdivision	IN.21		
+MP	subdivision	IN.35		
+PER	ignored			
+New York	city	5128581		
+Florida	bare	US.FL		

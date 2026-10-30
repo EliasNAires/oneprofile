@@ -1,0 +1,90 @@
+#!/usr/bin/env python3
+"""Draws the blind sample that measures the places read from declared locations (#26) from the
+development database.
+
+    scripts/draw-place-sample DIRECTORY [size, default 300]
+
+Run after POST /places. Draws, seeded, location strings of the engineering subset at random from
+normalized_vacancy_location: each row is one string of one vacancy, so a string is drawn as often as
+vacancies carry it (the sample is weighted by vacancy count). Strings that name no place are drawn too.
+
+Writes DIRECTORY/sample.tsv, every drawn string with its vacancy, its ATS, the list it came from, the
+country the ATS names for it and the rule's places, written as docs/place-criterion.md asks a labeller to
+write them; and DIRECTORY/batch-1.tsv and batch-2.tsv, the same strings shuffled and split in two, with
+only what a labeller sees: an id, the string and the ATS's country.
+"""
+
+import csv
+import json
+import random
+import subprocess
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+SEED = 26
+
+QUERY = """
+copy (
+  select n.vacancy_id, c.ats, l.list, l.position, l.location,
+    case when l.list = 'LOCATION' then v.address_country
+         when l.list = 'SECONDARY_LOCATIONS' then v.secondary_locations -> l.position ->> 'country' end,
+    l.places
+  from normalized_vacancy_location l join normalized_vacancy n on n.id = l.normalized_vacancy_id
+    join vacancy v on v.id = n.vacancy_id join company c on c.id = v.company_id
+  order by n.vacancy_id, l.list, l.position
+) to stdout with (format csv, header false)
+"""
+
+
+def strings():
+    out = subprocess.run(["docker", "compose", "--project-directory", str(REPO), "exec", "-T", "postgres", "psql",
+                          "-v", "ON_ERROR_STOP=1", "-U", "oneprofile", "-d", "oneprofile", "-c", QUERY],
+                         capture_output=True, text=True, encoding="utf-8", check=True).stdout
+    return [{"vacancy": r[0], "ats": r[1], "list": r[2], "position": r[3], "location": r[4],
+             "country": r[5] or "", "places": json.loads(r[6])}
+            for r in csv.reader(out.splitlines(keepends=True))]
+
+
+def written(place):
+    """A place as docs/place-criterion.md asks a labeller to write it."""
+    if place["kind"] == "REGION":
+        return "region: " + place["region"]
+    if place["kind"] == "COUNTRY":
+        return "country: " + place["country"]
+    if place["kind"] == "SUBDIVISION":
+        return f"subdivision: {place['subdivision']}, {place['country']}"
+    return f"city: {place['city']}, {place['subdivision'] or '-'}, {place['country']}"
+
+
+def clean(text):
+    return " ".join(text.split())
+
+
+def main():
+    directory = Path(sys.argv[1])
+    size = int(sys.argv[2]) if len(sys.argv) > 2 else 300
+    directory.mkdir(parents=True, exist_ok=True)
+    held = strings()
+    drawn = random.Random(SEED).sample(held, size)
+    for number, row in enumerate(drawn, start=1):
+        row["id"] = str(number)
+    with (directory / "sample.tsv").open("w", encoding="utf-8") as out:
+        out.write("id\tvacancy\tats\tlist\tposition\tlocation\tcountry\trule\n")
+        for row in drawn:
+            rule = " ; ".join(written(place) for place in row["places"]) or "none"
+            out.write("\t".join((row["id"], row["vacancy"], row["ats"], row["list"], row["position"],
+                                 clean(row["location"]), clean(row["country"]), rule)) + "\n")
+    shuffled = drawn[:]
+    random.Random(SEED + 1).shuffle(shuffled)
+    half = (len(shuffled) + 1) // 2
+    for number, part in ((1, shuffled[:half]), (2, shuffled[half:])):
+        with (directory / f"batch-{number}.tsv").open("w", encoding="utf-8") as out:
+            out.write("id\tlocation\tcountry\n")
+            for row in part:
+                out.write(f"{row['id']}\t{clean(row['location'])}\t{clean(row['country'])}\n")
+    print(f"{len(held)} strings held, {size} drawn into {directory}")
+
+
+if __name__ == "__main__":
+    main()
