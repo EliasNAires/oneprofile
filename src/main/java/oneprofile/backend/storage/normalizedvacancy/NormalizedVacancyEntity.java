@@ -73,8 +73,7 @@ public class NormalizedVacancyEntity {
 
 	private String[] roles;
 
-	@Enumerated(EnumType.STRING)
-	private WorkModeEnum workMode;
+	private String[] workModes;
 
 	@Enumerated(EnumType.STRING)
 	private SeniorityLevelEnum seniorityLevel;
@@ -162,11 +161,11 @@ public class NormalizedVacancyEntity {
 	}
 
 	/**
-	 * Takes on the work mode the work-mode rule read for the vacancy, replacing what the last run recorded.
-	 * @param workMode its work mode
+	 * Takes on the work modes the work-mode rule read for the vacancy, replacing what the last run recorded.
+	 * @param workModes its work mode, or every mode it offers a choice of
 	 */
-	public void workingAs(WorkModeEnum workMode) {
-		this.workMode = workMode;
+	public void workingAs(Set<WorkModeEnum> workModes) {
+		this.workModes = workModes.stream().sorted().map(WorkModeEnum::name).toArray(String[]::new);
 	}
 
 	/**
@@ -255,9 +254,12 @@ public class NormalizedVacancyEntity {
 		return (this.roles == null) ? null : List.of(this.roles);
 	}
 
-	/** Where it says its work is done, null where it declares none or the work-mode run has not reached it. */
-	public WorkModeEnum workMode() {
-		return this.workMode;
+	/**
+	 * Where it says its work is done: one mode, or every mode it offers a choice of; empty where it declares
+	 * none or the work-mode run has not reached it.
+	 */
+	public Set<WorkModeEnum> workModes() {
+		return WorkModeEnum.setOf(this.workModes);
 	}
 
 	/**

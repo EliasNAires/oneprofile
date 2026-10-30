@@ -1,0 +1,226 @@
+#!/usr/bin/env python3
+"""Counts and draws the blind sample that measures the work mode read from the description (#98) from the
+development database.
+
+    scripts/draw-work-mode-description-sample DIRECTORY --count
+    scripts/draw-work-mode-description-sample DIRECTORY
+
+Run after POST /work-modes. A vacancy of the engineering subset is undeclared where its location, its field and
+its title name no mode, read by the application's own rule (WorkModeSteps.java, next to it): only the
+description can give it one.
+
+With --count, prints, per ATS, the undeclared vacancies, how many the description gives a mode, and ADR-0029's
+count: among the undeclared vacancies whose location options name only cities, subdivisions or countries and
+whose description states a mode, the share that is remote.
+
+Otherwise draws, seeded, the strata of #98's measurement: the undeclared vacancies the description gives each
+mode, or a choice of modes (precision), and those it gives none whose description names remote (remote recall).
+Writes DIRECTORY/sample.tsv, every drawn vacancy with its ATS, its stratum, the rule's modes, its title and its
+location; DIRECTORY/strata.tsv, each stratum's size, which weighs it; DIRECTORY/batch-N.txt, the labelled
+vacancies shuffled in batches of 50 with only what a labeller sees (docs/work-mode-criterion.md): a block per
+vacancy, headed `=== id`, with the company, the title, the location, the ATS's work-mode field and the
+description's segments with a mode cue, each under its heading (ADR-0029); and DIRECTORY/same.tsv, the drawn
+vacancies whose shown text repeats one already in a batch, which take its label.
+"""
+
+import csv
+import json
+import random
+import re
+import subprocess
+import sys
+from collections import Counter, defaultdict
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+
+SEED = 98
+
+# How many vacancies each stratum draws.
+DESCRIBED = {"REMOTE": 40, "HYBRID": 40, "ONSITE": 40, "CHOICE": 15}
+SILENT_REMOTE = 65
+
+BATCH = 50
+
+SEGMENT_LENGTH = 400
+
+# A segment that may say where the work is done, as #86's sample cut them.
+CUE = re.compile(r"remot|hybrid|h[íi]brid|on-?\s?site|in[- ]office|in[- ]person|office|from home|wfh|telecommut"
+                 r"|telework|home[- ]based|days? (a|per) week|presencial|t[ée]l[ée]travail|mobiles? arbeit"
+                 r"|homeoffice", re.IGNORECASE)
+
+# A description that names working remotely, which the recall stratum is drawn from (as a Postgres regex).
+REMOTE_CUE = r"\mremote|work(ing)? from home|\mwfh\M|telecommut|telework|home[- ]based"
+
+QUERY = """
+copy (
+  select v.id, c.ats, coalesce(c.name, c.slug), v.title, v.location,
+    coalesce(v.workplace_type, v.remote_type), array_to_string(n.work_modes, ','),
+    n.description_segments::text ~* '{remote}'
+  from normalized_vacancy n join vacancy v on v.id = n.vacancy_id join company c on c.id = v.company_id
+  where n.classification_state = 'IN'
+  order by v.id
+) to stdout with (format csv, header false)
+""".format(remote=REMOTE_CUE)
+
+PLACES_QUERY = """
+copy (
+  select n.vacancy_id, bool_and(p->>'kind' in ('CITY', 'SUBDIVISION', 'COUNTRY'))
+  from normalized_vacancy n join normalized_vacancy_location l on l.normalized_vacancy_id = n.id,
+    jsonb_array_elements(l.places) p
+  where n.classification_state = 'IN'
+  group by n.vacancy_id
+) to stdout with (format csv, header false)
+"""
+
+SEGMENTS_QUERY = """
+copy (
+  select n.vacancy_id, n.description_segments from normalized_vacancy n where n.vacancy_id in ({ids})
+) to stdout with (format csv, header false)
+"""
+
+
+def psql(query):
+    out = subprocess.run(["docker", "compose", "--project-directory", str(REPO), "exec", "-T", "postgres", "psql",
+                          "-v", "ON_ERROR_STOP=1", "-U", "oneprofile", "-d", "oneprofile", "-c", query],
+                         capture_output=True, text=True, encoding="utf-8", check=True).stdout
+    return list(csv.reader(out.splitlines(keepends=True)))
+
+
+def classpath():
+    file = REPO / "target" / "classpath.txt"
+    subprocess.run([str(REPO / "mvnw"), "-q", "-f", str(REPO / "pom.xml"), "compile", "dependency:build-classpath",
+                    f"-Dmdep.outputFile={file}"], check=True)
+    return f"{REPO / 'target' / 'classes'}:{file.read_text().strip()}"
+
+
+def undeclared():
+    """The undeclared vacancies of the subset, with what the description gave them."""
+    print("Reading the subset", file=sys.stderr)
+    rows = {r[0]: {"id": r[0], "ats": r[1], "company": r[2], "title": r[3], "location": r[4] or None,
+                   "field": r[5] or None, "modes": r[6], "remote_cue": r[7] == "t"} for r in psql(QUERY)}
+    print("Reading which step decides each", file=sys.stderr)
+    stdin = "".join(json.dumps({"id": int(r["id"]), "location": r["location"], "field": r["field"],
+                                "title": r["title"]}) + "\n" for r in rows.values())
+    out = subprocess.run(["java", "-cp", classpath(), str(REPO / "scripts" / "WorkModeSteps.java")],
+                         input=stdin, capture_output=True, text=True, encoding="utf-8", check=True).stdout
+    steps = dict(line.split("\t") for line in out.splitlines())
+    return [row for vacancy, row in rows.items() if steps[vacancy] == "NONE"], len(rows)
+
+
+def stratum(row):
+    if not row["modes"]:
+        return None
+    return row["modes"] if "," not in row["modes"] else "CHOICE"
+
+
+def count(rows, subset):
+    located = {r[0]: r[1] == "t" for r in psql(PLACES_QUERY)}
+    by_ats = defaultdict(Counter)
+    for row in rows:
+        tally = by_ats[row["ats"]]
+        tally["undeclared"] += 1
+        if row["modes"]:
+            tally["described"] += 1
+            if located.get(row["id"]):
+                tally["placed"] += 1
+                tally["placed remote"] += "REMOTE" in row["modes"].split(",")
+    print(f"subset {subset}, undeclared {len(rows)}")
+    print("ats\tundeclared\tdescribed\tplaced\tplaced remote\tshare")
+    for ats, tally in sorted(by_ats.items()):
+        share = tally["placed remote"] / tally["placed"] if tally["placed"] else 0
+        print(f"{ats}\t{tally['undeclared']}\t{tally['described']}\t{tally['placed']}\t{tally['placed remote']}"
+              f"\t{share:.1%}")
+
+
+def flat(text):
+    return " ".join((text or "-").split())
+
+
+def marked(segment):
+    text = flat(segment["text"])[:SEGMENT_LENGTH]
+    if segment.get("kind") == "HEADING":
+        text = "# " + text
+    elif segment.get("kind") == "ITEM":
+        text = "- " + text
+    if segment.get("under"):
+        text = f"[under: {flat(segment['under'])}] {text}"
+    return "> " + text if segment.get("boilerplate") else text
+
+
+def shown(row, segments):
+    cued = [marked(s) for s in segments if CUE.search(s["text"])]
+    return (f"company: {flat(row['company'])}\ntitle: {flat(row['title'])}\nlocation: {flat(row['location'])}\n"
+            f"field: {flat(row['field'])}\ndescription:\n" + ("\n".join(cued) or "-") + "\n")
+
+
+def draw(directory, rows):
+    rng = random.Random(SEED)
+    drawn = []
+    strata = []
+
+    def take(name, pool, size):
+        pool = sorted(pool, key=lambda row: int(row["id"]))
+        chosen = rng.sample(pool, min(size, len(pool)))
+        strata.append((name, len(pool), len(chosen)))
+        drawn.extend((row, name) for row in chosen)
+
+    for name, size in DESCRIBED.items():
+        take(f"described {name.lower()}", [r for r in rows if stratum(r) == name], size)
+    take("silent remote", [r for r in rows if not r["modes"] and r["remote_cue"]], SILENT_REMOTE)
+
+    with open(directory / "strata.tsv", "w", encoding="utf-8") as out:
+        out.write("stratum\tvacancies\tdrawn\n")
+        for name, size, chosen in strata:
+            out.write(f"{name}\t{size}\t{chosen}\n")
+    with open(directory / "sample.tsv", "w", encoding="utf-8") as out:
+        out.write("id\tats\tstratum\trule\ttitle\tlocation\n")
+        for row, name in sorted(drawn, key=lambda item: int(item[0]["id"])):
+            out.write("\t".join([row["id"], row["ats"], name, row["modes"].lower() or "none", flat(row["title"]),
+                                 flat(row["location"])]) + "\n")
+
+    segments = segments_of([row["id"] for row, _ in drawn])
+    order = [row for row, _ in drawn]
+    rng.shuffle(order)
+    first = {}
+    labelled = []
+    with open(directory / "same.tsv", "w", encoding="utf-8") as out:
+        out.write("id\tsame_as\n")
+        for row in order:
+            text = shown(row, segments.get(row["id"], []))
+            if text in first:
+                out.write(f"{row['id']}\t{first[text]}\n")
+                continue
+            first[text] = row["id"]
+            labelled.append((row["id"], text))
+    for number, start in enumerate(range(0, len(labelled), BATCH), 1):
+        batch = labelled[start:start + BATCH]
+        body = "".join(f"=== {vacancy}\n{text}\n" for vacancy, text in batch)
+        (directory / f"batch-{number}.txt").write_text(body, encoding="utf-8")
+        print(f"batch-{number}.txt: {len(batch)} vacancies, {len(body.encode()) / 1024:.1f} KB")
+    print(f"{len(drawn)} vacancies drawn, {len(labelled)} to label")
+
+
+def segments_of(ids):
+    found = {}
+    ids = list(ids)
+    for start in range(0, len(ids), 5000):
+        for r in psql(SEGMENTS_QUERY.format(ids=",".join(ids[start:start + 5000]))):
+            found[r[0]] = json.loads(r[1]) if r[1] else []
+    return found
+
+
+def main():
+    if len(sys.argv) < 2:
+        sys.exit(__doc__)
+    directory = Path(sys.argv[1])
+    directory.mkdir(parents=True, exist_ok=True)
+    rows, subset = undeclared()
+    if "--count" in sys.argv:
+        count(rows, subset)
+    else:
+        draw(directory, rows)
+
+
+if __name__ == "__main__":
+    main()

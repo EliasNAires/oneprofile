@@ -4,6 +4,7 @@ import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.normalizedvacancy.NormalizedVacancyStore;
 import oneprofile.backend.storage.normalizedvacancy.WorkModeEnum;
@@ -12,7 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * Gives every vacancy of the engineering subset the work mode it declares, by the work-mode rule (#86).
+ * Gives every vacancy of the engineering subset the work mode it declares, by the work-mode rule (#86), or
+ * every mode it offers a choice of (#98).
  * It reads what the ATS published and nothing the other passes derive, so it can run any time after
  * classification. It clears what the last run recorded first, so a vacancy that has left the subset
  * keeps no work mode.
@@ -20,8 +22,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class WorkModeRun {
 
-	/** A vacancy's title, location and field weigh little, so a batch is as large as the breakdown's. */
-	private static final int BATCH = 5000;
+	/** A batch carries each vacancy's description segments, so it is as large as the seniority pass's. */
+	private static final int BATCH = 1000;
 
 	private final WorkModeRule rule;
 
@@ -30,7 +32,7 @@ public class WorkModeRun {
 	private final int batch;
 
 	/**
-	 * Reads work modes in batches of five thousand.
+	 * Reads work modes in batches of a thousand.
 	 * @param rule the rule that reads a vacancy's work mode
 	 * @param normalized where the subset is read and the work modes recorded
 	 */
@@ -67,11 +69,12 @@ public class WorkModeRun {
 			if (read.isEmpty()) {
 				break;
 			}
-			Map<Long, WorkModeEnum> declared = new HashMap<>();
+			Map<Long, Set<WorkModeEnum>> declared = new HashMap<>();
 			for (WorkModeVacancy vacancy : read) {
-				WorkModeReading reading = this.rule.read(vacancy.location(), vacancy.workModeField(), vacancy.title());
-				if (reading.mode() != null) {
-					declared.put(vacancy.vacancyId(), reading.mode());
+				WorkModeReading reading = this.rule.read(vacancy.location(), vacancy.workModeField(), vacancy.title(),
+						vacancy.segments());
+				if (!reading.modes().isEmpty()) {
+					declared.put(vacancy.vacancyId(), reading.modes());
 				}
 				decidedBy.computeIfAbsent(vacancy.ats(), (ats) -> new EnumMap<>(WorkModeEvidenceEnum.class))
 					.merge(reading.evidence(), 1, Integer::sum);

@@ -70,14 +70,14 @@ BROAD_CUE = re.compile(
 
 QUERY = """
 copy (
-  select v.id, c.ats, c.id, coalesce(c.name, c.slug), v.title, n.work_mode,
+  select v.id, c.ats, c.id, coalesce(c.name, c.slug), v.title, array_to_string(n.work_modes, ','),
     json_agg(json_build_object('position', s.position, 'source', s.source, 'kind', s.kind, 'workMode', s.work_mode,
       'segment', s.segment, 'text', s.text, 'places', s.places, 'utcFrom', s.utc_from, 'utcTo', s.utc_to)
       order by s.position) filter (where s.position is not null)
   from normalized_vacancy n join vacancy v on v.id = n.vacancy_id join company c on c.id = v.company_id
     left join normalized_vacancy_stated_set s on s.normalized_vacancy_id = n.id
   where n.classification_state = 'IN'
-  group by v.id, c.ats, c.id, c.name, c.slug, v.title, n.work_mode
+  group by v.id, c.ats, c.id, c.name, c.slug, v.title, n.work_modes
   order by v.id
 ) to stdout with (format csv, header false)
 """

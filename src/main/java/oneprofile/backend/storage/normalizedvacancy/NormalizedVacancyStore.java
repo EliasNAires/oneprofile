@@ -203,8 +203,8 @@ public class NormalizedVacancyStore {
 	}
 
 	/**
-	 * The engineering subset held after one vacancy id, in id order, each with its ATS, title, location
-	 * and work-mode field: what the work-mode run reads, walked batch by batch like the titles are.
+	 * The engineering subset held after one vacancy id, in id order, each with its ATS, title, location,
+	 * work-mode field and description segments: what the work-mode run reads, walked batch by batch like the titles are.
 	 * @param after the vacancy id to read past, 0 to start at the first
 	 * @param batch how many to read at most
 	 * @return the vacancies, empty once there are none left
@@ -215,7 +215,7 @@ public class NormalizedVacancyStore {
 	}
 
 	/**
-	 * Lets go of the work mode every run recorded, so that after a run only the vacancies it gave one hold
+	 * Lets go of the work modes every run recorded, so that after a run only the vacancies it gave one hold
 	 * one: a vacancy that has left the engineering subset keeps none.
 	 * @return how many vacancies had a work mode
 	 */
@@ -227,11 +227,12 @@ public class NormalizedVacancyStore {
 	/**
 	 * Records the work modes the work-mode rule read for a batch of vacancies. A vacancy that declares none
 	 * is not given, and keeps none.
-	 * @param read the work mode of each vacancy that declares one, by vacancy id
-	 * @return how many vacancies this recorded a work mode for
+	 * @param read the work modes of each vacancy that declares one, every mode it offers a choice of, by
+	 * vacancy id
+	 * @return how many vacancies this recorded work modes for
 	 */
 	@Transactional
-	public int recordWorkModes(Map<Long, WorkModeEnum> read) {
+	public int recordWorkModes(Map<Long, Set<WorkModeEnum>> read) {
 		List<NormalizedVacancyEntity> recorded = new ArrayList<>(read.size());
 		for (NormalizedVacancyEntity normalized : this.repository.findByVacancyIdIn(read.keySet())) {
 			normalized.workingAs(read.get(normalized.vacancyId()));
@@ -368,7 +369,7 @@ public class NormalizedVacancyStore {
 	}
 
 	/**
-	 * The engineering subset held after one vacancy id, in id order, each with its work mode, title, the places
+	 * The engineering subset held after one vacancy id, in id order, each with its work modes, title, the places
 	 * of its location strings and its description's segments: what the country-set run reads, walked batch by
 	 * batch like the titles are. It reads the places the last place run recorded.
 	 * @param after the vacancy id to read past, 0 to start at the first
@@ -396,7 +397,7 @@ public class NormalizedVacancyStore {
 			locations.sort(Comparator.comparing(LocationPlaces::list).thenComparingInt(LocationPlaces::position));
 			@SuppressWarnings("unchecked")
 			List<Segment> segments = (List<Segment>) row.get(3);
-			scope.add(new CountrySetVacancy(vacancyId, row.get(1, WorkModeEnum.class), row.get(2, String.class),
+			scope.add(new CountrySetVacancy(vacancyId, WorkModeEnum.setOf(row.get(1, String[].class)), row.get(2, String.class),
 					locations, (segments != null) ? segments : List.of()));
 		}
 		return scope;

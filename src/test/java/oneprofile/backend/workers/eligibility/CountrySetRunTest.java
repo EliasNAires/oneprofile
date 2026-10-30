@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import oneprofile.backend.storage.normalizedvacancy.CountrySet;
 import oneprofile.backend.storage.normalizedvacancy.CountrySetVacancy;
 import oneprofile.backend.storage.normalizedvacancy.LocationListEnum;
@@ -123,7 +124,8 @@ class CountrySetRunTest {
 		for (String text : description) {
 			segments.add(new Segment(SegmentKindEnum.SENTENCE, null, text, false));
 		}
-		return new CountrySetVacancy(vacancyId, workMode, "Software Engineer", locations, segments);
+		return new CountrySetVacancy(vacancyId, (workMode != null) ? Set.of(workMode) : Set.of(), "Software Engineer",
+				locations, segments);
 	}
 
 	private void holds(CountrySetVacancy... scope) {

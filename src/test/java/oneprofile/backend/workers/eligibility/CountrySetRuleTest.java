@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 import oneprofile.backend.storage.normalizedvacancy.CountrySet;
 import oneprofile.backend.storage.normalizedvacancy.CountrySetVacancy;
@@ -45,6 +46,17 @@ class CountrySetRuleTest {
 			assertThat(option.workMode()).isNull();
 			assertThat(option.places()).extracting(Place::city).containsExactly("Berlin");
 		});
+	}
+
+	@Test
+	void aLocationStringWithoutAWorkModeIsAnOptionOfEachModeAVacancyOfferingAChoiceOffers() {
+		CountrySet set = this.rule.read(new CountrySetVacancy(1, Set.of(WorkModeEnum.HYBRID, WorkModeEnum.REMOTE),
+				"Software Engineer", List.of(new LocationPlaces(LocationListEnum.LOCATION, 0, "Berlin, Germany",
+						PLACES.read("Berlin, Germany", null).places())), List.of()));
+
+		assertThat(set.statedSets()).extracting(StatedSet::text, StatedSet::workMode, StatedSet::position)
+			.containsExactly(Tuple.tuple("Berlin, Germany", WorkModeEnum.REMOTE, 0),
+					Tuple.tuple("Berlin, Germany", WorkModeEnum.HYBRID, 1));
 	}
 
 	@Test
@@ -339,7 +351,7 @@ class CountrySetRuleTest {
 		for (String text : description) {
 			segments.add(new Segment(SegmentKindEnum.SENTENCE, null, text, false));
 		}
-		return new CountrySetVacancy(1, workMode, title, located, segments);
+		return new CountrySetVacancy(1, (workMode != null) ? Set.of(workMode) : Set.of(), title, located, segments);
 	}
 
 }

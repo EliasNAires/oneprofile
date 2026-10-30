@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import oneprofile.backend.storage.normalizedvacancy.CountrySet;
 import oneprofile.backend.storage.normalizedvacancy.CountrySetVacancy;
 import oneprofile.backend.storage.normalizedvacancy.NormalizedVacancyStore;
@@ -97,10 +98,11 @@ public class CountrySetRun {
 			for (CountrySetVacancy vacancy : read) {
 				CountrySet countrySet = this.rule.read(vacancy);
 				stated.put(vacancy.vacancyId(), countrySet);
-				String workMode = (vacancy.workMode() != null) ? vacancy.workMode().name() : UNDECLARED;
+				String workMode = vacancy.workModes().isEmpty() ? UNDECLARED
+						: vacancy.workModes().stream().sorted().map(WorkModeEnum::name).collect(Collectors.joining(","));
 				countries.forEach((country, tally) -> tally.count(workMode,
 						this.eligibility.eligibility(countrySet, country, null)));
-				if (vacancy.workMode() == WorkModeEnum.ONSITE || vacancy.workMode() == WorkModeEnum.HYBRID) {
+				if (vacancy.workModes().contains(WorkModeEnum.ONSITE) || vacancy.workModes().contains(WorkModeEnum.HYBRID)) {
 					onsite++;
 					precisions.merge(precisionOf(countrySet), 1, Integer::sum);
 				}
@@ -199,7 +201,8 @@ public class CountrySetRun {
 	 * The states the subset's vacancies take for one country.
 	 *
 	 * @param states how many take each state
-	 * @param byWorkMode the same, by the vacancy's work mode, {@code UNDECLARED} where it declares none
+	 * @param byWorkMode the same, by the vacancy's work modes, comma-separated where it offers a choice
+	 * ({@code REMOTE,HYBRID}), {@code UNDECLARED} where it declares none
 	 * @param bySource the same, by where the stated set that decided the state was read, {@code NONE} where none
 	 * decided it
 	 */
@@ -226,7 +229,7 @@ public class CountrySetRun {
 	 * How precisely the onsite and hybrid vacancies' onsite and hybrid options name where they are: those with a
 	 * city are judged by distance once the person's city is known (ADR-0028), the others by country.
 	 *
-	 * @param vacancies how many vacancies of the subset are onsite or hybrid
+	 * @param vacancies how many vacancies of the subset offer onsite or hybrid work
 	 * @param withCity how many of them name a city
 	 * @param countryOnly how many name a country, a subdivision or a region, and no city
 	 * @param neither how many name no place

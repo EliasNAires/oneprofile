@@ -12,8 +12,11 @@ import static org.mockito.Mockito.mock;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.normalizedvacancy.NormalizedVacancyStore;
+import oneprofile.backend.storage.normalizedvacancy.Segment;
+import oneprofile.backend.storage.normalizedvacancy.SegmentKindEnum;
 import oneprofile.backend.storage.normalizedvacancy.WorkModeEnum;
 import oneprofile.backend.storage.normalizedvacancy.WorkModeVacancy;
 import oneprofile.backend.workers.cleaning.TitleCleaningRule;
@@ -30,7 +33,7 @@ class WorkModeRunTest {
 
 	@Test
 	void clearsWhatTheLastRunRecordedBeforeReadingTheSubset() {
-		holds(new WorkModeVacancy(1, AtsEnum.GREENHOUSE, "Engineer", "Remote", null));
+		holds(new WorkModeVacancy(1, AtsEnum.GREENHOUSE, "Engineer", "Remote", null, List.of()));
 
 		run(10).readWorkModes();
 
@@ -41,23 +44,32 @@ class WorkModeRunTest {
 
 	@Test
 	void recordsTheWorkModeOfEachVacancyThatDeclaresOne() {
-		holds(new WorkModeVacancy(1, AtsEnum.GREENHOUSE, "Engineer", "Remote - USA", null),
-				new WorkModeVacancy(2, AtsEnum.ASHBY, "Engineer", "Berlin", "OnSite"),
-				new WorkModeVacancy(3, AtsEnum.GREENHOUSE, "Engineer", "London", null),
-				new WorkModeVacancy(4, AtsEnum.LEVER, "Engineer (Hybrid)", "Paris", "unspecified"));
+		holds(new WorkModeVacancy(1, AtsEnum.GREENHOUSE, "Engineer", "Remote - USA", null, List.of()),
+				new WorkModeVacancy(2, AtsEnum.ASHBY, "Engineer", "Berlin", "OnSite", List.of()),
+				new WorkModeVacancy(3, AtsEnum.GREENHOUSE, "Engineer", "London", null, List.of()),
+				new WorkModeVacancy(4, AtsEnum.LEVER, "Engineer (Hybrid)", "Paris", "unspecified", List.of()));
 
 		run(10).readWorkModes();
 
-		assertThat(recorded()).isEqualTo(Map.of(1L, WorkModeEnum.REMOTE, 2L, WorkModeEnum.ONSITE, 4L,
-				WorkModeEnum.HYBRID));
+		assertThat(recorded()).isEqualTo(Map.of(1L, Set.of(WorkModeEnum.REMOTE), 2L, Set.of(WorkModeEnum.ONSITE), 4L,
+				Set.of(WorkModeEnum.HYBRID)));
+	}
+
+	@Test
+	void recordsEveryModeAVacancyOffersAChoiceOf() {
+		holds(new WorkModeVacancy(1, AtsEnum.GREENHOUSE, "Engineer", "Nashville, TN (Onsite) or Remote", null, List.of()));
+
+		run(10).readWorkModes();
+
+		assertThat(recorded()).isEqualTo(Map.of(1L, Set.of(WorkModeEnum.ONSITE, WorkModeEnum.REMOTE)));
 	}
 
 	@Test
 	void reportsByAtsWhichStepDecidedEachVacancy() {
-		holds(new WorkModeVacancy(1, AtsEnum.GREENHOUSE, "Engineer", "Remote - USA", null),
-				new WorkModeVacancy(2, AtsEnum.GREENHOUSE, "Engineer", "London", null),
-				new WorkModeVacancy(3, AtsEnum.ASHBY, "Engineer", "Berlin", "OnSite"),
-				new WorkModeVacancy(4, AtsEnum.ASHBY, "Engineer", "Berlin", "Hybrid"));
+		holds(new WorkModeVacancy(1, AtsEnum.GREENHOUSE, "Engineer", "Remote - USA", null, List.of()),
+				new WorkModeVacancy(2, AtsEnum.GREENHOUSE, "Engineer", "London", null, List.of()),
+				new WorkModeVacancy(3, AtsEnum.ASHBY, "Engineer", "Berlin", "OnSite", List.of()),
+				new WorkModeVacancy(4, AtsEnum.ASHBY, "Engineer", "Berlin", "Hybrid", List.of()));
 
 		assertThat(run(10).readWorkModes()).isEqualTo(new WorkModeRun.Report(4,
 				Map.of(AtsEnum.GREENHOUSE, Map.of(WorkModeEvidenceEnum.LOCATION, 1, WorkModeEvidenceEnum.NONE, 1),
@@ -65,10 +77,20 @@ class WorkModeRunTest {
 	}
 
 	@Test
+	void readsTheDescriptionWhereNothingElseDeclaresAMode() {
+		holds(new WorkModeVacancy(1, AtsEnum.WORKDAY, "Engineer", "Austin, TX", null,
+				List.of(new Segment(SegmentKindEnum.SENTENCE, null, "This role is fully remote.", false))));
+
+		assertThat(run(10).readWorkModes().decidedBy())
+			.isEqualTo(Map.of(AtsEnum.WORKDAY, Map.of(WorkModeEvidenceEnum.DESCRIPTION, 1)));
+		assertThat(recorded()).isEqualTo(Map.of(1L, Set.of(WorkModeEnum.REMOTE)));
+	}
+
+	@Test
 	void walksTheSubsetABatchAtATime() {
-		holds(new WorkModeVacancy(1, AtsEnum.GREENHOUSE, "Engineer", null, null),
-				new WorkModeVacancy(2, AtsEnum.GREENHOUSE, "Engineer", null, null),
-				new WorkModeVacancy(3, AtsEnum.GREENHOUSE, "Engineer", null, null));
+		holds(new WorkModeVacancy(1, AtsEnum.GREENHOUSE, "Engineer", null, null, List.of()),
+				new WorkModeVacancy(2, AtsEnum.GREENHOUSE, "Engineer", null, null, List.of()),
+				new WorkModeVacancy(3, AtsEnum.GREENHOUSE, "Engineer", null, null, List.of()));
 
 		assertThat(run(2).readWorkModes().vacancies()).isEqualTo(3);
 
@@ -94,11 +116,11 @@ class WorkModeRunTest {
 		});
 	}
 
-	private Map<Long, WorkModeEnum> recorded() {
+	private Map<Long, Set<WorkModeEnum>> recorded() {
 		@SuppressWarnings("unchecked")
-		ArgumentCaptor<Map<Long, WorkModeEnum>> captor = ArgumentCaptor.forClass(Map.class);
+		ArgumentCaptor<Map<Long, Set<WorkModeEnum>>> captor = ArgumentCaptor.forClass(Map.class);
 		then(this.normalized).should(Mockito.atLeastOnce()).recordWorkModes(captor.capture());
-		Map<Long, WorkModeEnum> all = new HashMap<>();
+		Map<Long, Set<WorkModeEnum>> all = new HashMap<>();
 		captor.getAllValues().forEach(all::putAll);
 		return all;
 	}

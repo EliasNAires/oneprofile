@@ -60,9 +60,9 @@ PLACE = re.compile(r"remot|hybrid|h[íi]brid|on-?\s?site|in[- ]office|in[- ]pers
 QUERY = """
 copy (
   select v.id, c.ats, coalesce(c.name, c.slug), v.title, v.location,
-    coalesce(v.workplace_type, v.remote_type), n.work_mode, n.description_segments
+    coalesce(v.workplace_type, v.remote_type), array_to_string(n.work_modes, ','), n.description_segments
   from normalized_vacancy n join vacancy v on v.id = n.vacancy_id join company c on c.id = v.company_id
-  where n.work_mode is not null
+  where n.work_modes is not null
 ) to stdout with (format csv, header false)
 """
 

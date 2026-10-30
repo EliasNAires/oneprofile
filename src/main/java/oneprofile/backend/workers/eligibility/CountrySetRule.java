@@ -27,7 +27,8 @@ import org.springframework.stereotype.Component;
  * it at query time, by the eligibility rule.
  * <p>
  * Each string of the declared location is an option, with the places the place run read in it (#26) and its own
- * work mode: the mode its words name, otherwise the vacancy's. A string offering remote beside another mode
+ * work mode: the mode its words name, otherwise the vacancy's, one option for each mode a vacancy offering a
+ * choice offers. A string offering remote beside another mode
  * ({@code NYC (Hybrid); United States (Remote)}) is a choice, and is cut at its semicolons and its {@code or}s
  * into options, each read again for its places and its own mode; one naming remote among others is remote, and
  * one naming none is undeclared.
@@ -239,6 +240,10 @@ public class CountrySetRule {
 	/** How long the words naming a statement's place may be, in characters. */
 	private static final int LONGEST_PLACE = 100;
 
+	/** The work modes, the one that excludes the fewest people first. */
+	private static final List<WorkModeEnum> MOST_OPEN_FIRST = List.of(WorkModeEnum.REMOTE, WorkModeEnum.HYBRID,
+			WorkModeEnum.ONSITE);
+
 	private final PlaceRule places;
 
 	private final WorkModeRule workModes;
@@ -260,7 +265,7 @@ public class CountrySetRule {
 	public CountrySet read(CountrySetVacancy vacancy) {
 		List<StatedSet> stated = new ArrayList<>();
 		for (LocationPlaces location : vacancy.locations()) {
-			options(location, vacancy.workMode(), stated);
+			options(location, vacancy.workModes(), stated);
 		}
 		title(vacancy, stated);
 		boolean visaSponsorship = false;
@@ -290,8 +295,11 @@ public class CountrySetRule {
 		return new CountrySet(positioned, visaSponsorship, relocation);
 	}
 
-	/** The options one location string offers, each with its own work mode. */
-	private void options(LocationPlaces location, WorkModeEnum declared, List<StatedSet> stated) {
+	/**
+	 * The options one location string offers, each with its own work mode. A string naming no mode is an option
+	 * of each mode the vacancy offers, so that its eligibility is the best of them (ADR-0027).
+	 */
+	private void options(LocationPlaces location, Set<WorkModeEnum> declared, List<StatedSet> stated) {
 		Set<WorkModeEnum> named = this.workModes.modesNamedIn(location.location());
 		if (named.contains(WorkModeEnum.REMOTE) && named.size() > 1) {
 			for (String option : OPTIONS.split(location.location())) {
@@ -302,7 +310,15 @@ public class CountrySetRule {
 			}
 			return;
 		}
-		stated.add(option(location.location(), modeOf(named, declared), location.places()));
+		if (!named.isEmpty() || declared.isEmpty()) {
+			stated.add(option(location.location(), modeOf(named, null), location.places()));
+			return;
+		}
+		for (WorkModeEnum mode : MOST_OPEN_FIRST) {
+			if (declared.contains(mode)) {
+				stated.add(option(location.location(), mode, location.places()));
+			}
+		}
 	}
 
 	private static StatedSet option(String text, WorkModeEnum workMode, List<Place> places) {
@@ -311,7 +327,7 @@ public class CountrySetRule {
 
 	/** The mode of an option naming these modes: remote where it is among them, then hybrid, then onsite. */
 	private static WorkModeEnum modeOf(Set<WorkModeEnum> named, WorkModeEnum otherwise) {
-		for (WorkModeEnum mode : List.of(WorkModeEnum.REMOTE, WorkModeEnum.HYBRID, WorkModeEnum.ONSITE)) {
+		for (WorkModeEnum mode : MOST_OPEN_FIRST) {
 			if (named.contains(mode)) {
 				return mode;
 			}

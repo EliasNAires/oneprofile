@@ -119,26 +119,26 @@ public interface NormalizedVacancyRepository extends ListCrudRepository<Normaliz
 
 	/**
 	 * The engineering subset held after one vacancy id, in id order, with each vacancy's ATS, title as
-	 * published, location field and the work-mode field its ATS publishes: Ashby's and Lever's workplace
-	 * type, Workday's remote type.
+	 * published, location field, the work-mode field its ATS publishes (Ashby's and Lever's workplace
+	 * type, Workday's remote type) and description segments.
 	 * @param after the vacancy id to read past, 0 to start at the first
 	 * @param limit how many to read at most
 	 * @return the vacancies and what they declare of their work mode
 	 */
 	@Query("select new oneprofile.backend.storage.normalizedvacancy.WorkModeVacancy(n.vacancyId, c.ats, v.title, v.location, "
 			+ "coalesce(treat(v as AshbyVacancy).workplaceType, treat(v as LeverVacancy).workplaceType, "
-			+ "treat(v as WorkdayVacancy).remoteType)) "
+			+ "treat(v as WorkdayVacancy).remoteType), n.descriptionSegments) "
 			+ "from NormalizedVacancy n join Vacancy v on v.id = n.vacancyId join v.company c where n.vacancyId > :after "
 			+ "and n.classificationState = oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum.IN "
 			+ "order by n.vacancyId")
 	List<WorkModeVacancy> workModeScopeAfter(long after, Limit limit);
 
 	/**
-	 * Lets go of every vacancy's work mode.
-	 * @return how many vacancies had one
+	 * Lets go of every vacancy's work modes.
+	 * @return how many vacancies had any
 	 */
 	@Modifying
-	@Query("update NormalizedVacancy n set n.workMode = null where n.workMode is not null")
+	@Query("update NormalizedVacancy n set n.workModes = null where n.workModes is not null")
 	int clearWorkModes();
 
 	/**
@@ -210,13 +210,13 @@ public interface NormalizedVacancyRepository extends ListCrudRepository<Normaliz
 	int clearPlaces();
 
 	/**
-	 * The engineering subset held after one vacancy id, in id order, with each vacancy's work mode, title as
+	 * The engineering subset held after one vacancy id, in id order, with each vacancy's work modes, title as
 	 * published and description segments.
 	 * @param after the vacancy id to read past, 0 to start at the first
 	 * @param limit how many to read at most
-	 * @return each vacancy's id, work mode, title and segments, in that order
+	 * @return each vacancy's id, work modes as stored, title and segments, in that order
 	 */
-	@Query("select n.vacancyId, n.workMode, v.title, n.descriptionSegments from NormalizedVacancy n "
+	@Query("select n.vacancyId, n.workModes, v.title, n.descriptionSegments from NormalizedVacancy n "
 			+ "join Vacancy v on v.id = n.vacancyId where n.vacancyId > :after "
 			+ "and n.classificationState = oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum.IN "
 			+ "order by n.vacancyId")

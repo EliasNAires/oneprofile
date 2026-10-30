@@ -505,7 +505,7 @@ class NormalizedVacancyStoreTest {
 	}
 
 	@Test
-	void readsForTheWorkModeTheEngineeringSubsetWithEachLocationAndWorkModeField() {
+	void readsForTheWorkModeTheEngineeringSubsetWithEachLocationWorkModeFieldAndSegments() {
 		this.companies.record(AtsEnum.ASHBY, Map.of("ramp", RegionEnum.US));
 		this.vacancies.mirror(AtsEnum.ASHBY, "ramp", List.of(new PublishedAshbyVacancy(
 				"34413f8d-26bf-4bbc-8ade-eb309a0e2245", "Engineer", "Berlin", null, "Baue Dinge.",
@@ -524,16 +524,19 @@ class NormalizedVacancyStoreTest {
 			classified.put(vacancy.id(), Classification.in());
 		});
 		classified.put(held.get(1).id(), Classification.out());
+		List<Segment> segments = List.of(new Segment(SegmentKindEnum.SENTENCE, null, "This role is hybrid.", false));
+		cleaned.put(held.get(0).id(), new CleanedVacancy(new CleanedTitle("Engineer", Set.of()), segments, null));
 		this.normalized.recordCleanedVacancies(cleaned);
 		this.normalized.recordClassifications(classified);
 		this.entityManager.flush();
+		this.entityManager.clear();
 
 		assertThat(this.normalized.workModeScopeAfter(0, 10)).containsExactly(
 				new WorkModeVacancy(held.get(0).id(), AtsEnum.GREENHOUSE, "Senior Backend Engineer", "Remote - Americas",
-						null),
-				new WorkModeVacancy(held.get(2).id(), AtsEnum.ASHBY, "Engineer", "Berlin", "OnSite"),
+						null, segments),
+				new WorkModeVacancy(held.get(2).id(), AtsEnum.ASHBY, "Engineer", "Berlin", "OnSite", List.of()),
 				new WorkModeVacancy(held.get(3).id(), AtsEnum.WORKDAY, "RTL Design Engineer", "Israel, Yokneam",
-						"Hybrid Working"));
+						"Hybrid Working", List.of()));
 	}
 
 	@Test
@@ -543,18 +546,20 @@ class NormalizedVacancyStoreTest {
 		this.normalized.recordCleanedVacancies(
 				Map.of(first, cleaned("Backend Engineer", Set.of()), second, cleaned("Backend Engineer", Set.of())));
 
-		assertThat(this.normalized.recordWorkModes(Map.of(first, WorkModeEnum.REMOTE))).isEqualTo(1);
+		assertThat(this.normalized.recordWorkModes(Map.of(first, Set.of(WorkModeEnum.REMOTE, WorkModeEnum.HYBRID))))
+			.isEqualTo(1);
 		this.entityManager.flush();
 		this.entityManager.clear();
 
 		assertThat(this.repository.findByVacancyIdIn(List.of(first, second)))
-			.extracting(NormalizedVacancyEntity::vacancyId, NormalizedVacancyEntity::workMode)
-			.containsExactlyInAnyOrder(tuple(first, WorkModeEnum.REMOTE), tuple(second, null));
+			.extracting(NormalizedVacancyEntity::vacancyId, NormalizedVacancyEntity::workModes)
+			.containsExactlyInAnyOrder(tuple(first, Set.of(WorkModeEnum.REMOTE, WorkModeEnum.HYBRID)),
+					tuple(second, Set.of()));
 
 		assertThat(this.normalized.clearWorkModes()).isEqualTo(1);
 		this.entityManager.clear();
 
-		assertThat(this.repository.findAll()).extracting(NormalizedVacancyEntity::workMode).containsOnlyNulls();
+		assertThat(this.repository.findAll()).extracting(NormalizedVacancyEntity::workModes).containsOnly(Set.of());
 	}
 
 	@Test
@@ -697,7 +702,7 @@ class NormalizedVacancyStoreTest {
 		this.normalized.recordCleanedVacancies(Map.of(first, new CleanedVacancy(new CleanedTitle("Engineer", Set.of()),
 				segments, null), second, cleaned("Engineer", Set.of())));
 		this.normalized.recordClassifications(Map.of(first, Classification.in(), second, Classification.out()));
-		this.normalized.recordWorkModes(Map.of(first, WorkModeEnum.REMOTE));
+		this.normalized.recordWorkModes(Map.of(first, Set.of(WorkModeEnum.REMOTE)));
 		List<LocationPlaces> located = List.of(
 				new LocationPlaces(LocationListEnum.LOCATION, 0, "Remote - Americas", List.of(Place.region("Americas"))),
 				new LocationPlaces(LocationListEnum.ALL_LOCATIONS, 1, "Remote", List.of()));
@@ -706,7 +711,7 @@ class NormalizedVacancyStoreTest {
 		this.entityManager.clear();
 
 		assertThat(this.normalized.countrySetScopeAfter(0, 10)).containsExactly(
-				new CountrySetVacancy(first, WorkModeEnum.REMOTE, "Senior Backend Engineer", located, segments));
+				new CountrySetVacancy(first, Set.of(WorkModeEnum.REMOTE), "Senior Backend Engineer", located, segments));
 		assertThat(this.normalized.countrySetScopeAfter(first, 10)).isEmpty();
 	}
 
