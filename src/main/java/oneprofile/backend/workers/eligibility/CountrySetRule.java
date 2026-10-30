@@ -108,13 +108,16 @@ public class CountrySetRule {
 			+ "(?:candidates|applicants|residents|individuals|people|those|talent)\\s+(?:who\\s+(?:are|live|reside)\\s+)?"
 			+ "(?:currently\\s+)?(?:(?:based|located|residing|living)\\s+)?(?:in|within|of|from)\\s+", IGNORING_CASE);
 
+	/** What may stand between anywhere and the place it is in: {@code anywhere you like in}. */
+	private static final String YOU_LIKE = "(?:you\\s+(?:like|want|choose|wish)\\s+)?";
+
 	/** Where the person may be anywhere in: {@code employees may live anywhere in}. */
 	private static final Pattern ANYWHERE_IN = Pattern.compile("\\b(?:live|work|working|based|located|remote|remotely|"
-			+ "hire|hiring)\\s+(?:from\\s+)?anywhere\\s+(?:in|within|across)\\s+", IGNORING_CASE);
+			+ "hire|hiring)\\s+(?:from\\s+)?anywhere\\s+" + YOU_LIKE + "(?:in|within|across)\\s+", IGNORING_CASE);
 
 	/** That the person may work from anywhere at all. */
 	private static final Pattern FROM_ANYWHERE = Pattern.compile("\\b(?:live|work|working|remote|remotely|hire|hiring)\\s+"
-			+ "(?:remotely\\s+)?from\\s+anywhere\\b(?!\\s+(?:in|within|across)\\b)", IGNORING_CASE);
+			+ "(?:remotely\\s+)?from\\s+anywhere\\b(?!\\s+" + YOU_LIKE + "(?:in|within|across)\\b)", IGNORING_CASE);
 
 	/**
 	 * Where the company hires, as employees or contractors, or the vacancy is remote: {@code we only hire in},
@@ -134,13 +137,12 @@ public class CountrySetRule {
 			+ "able)\\s+to\\s+(?:legally\\s+)?work|right\\s+to\\s+work|work\\s+(?:authori[sz]ation|permit|visa|rights))"
 			+ "\\s+(?:full[- ]time\\s+|permanently\\s+)?(?:for\\s+any\\s+employer\\s+)?(?:in|within|for)\\s+", IGNORING_CASE);
 
-	/** Work authorization a country is named before: {@code U.S. work authorization}. */
+	/**
+	 * Work authorization a country is named before: {@code U.S. work authorization}. Not where sponsorship follows,
+	 * which is a policy on visas: {@code U.S. work authorization sponsorship (H-1B, TN, J) is offered}.
+	 */
 	private static final Pattern PLACE_AUTHORIZATION = Pattern.compile(
-			"((?:U\\.S\\.|[A-Z][\\w.]*)(?: [A-Z][\\w.]*){0,2})\\s+(?i:work\\s+(?:authori[sz]ation|permit|rights))\\b");
-
-	/** Work authorization for employment in a country: {@code employment in the US must have work authorization}. */
-	private static final Pattern EMPLOYMENT_AUTHORIZATION = Pattern
-		.compile("\\bemployment\\s+in\\s+(?:the\\s+)?([^,;:.]{1,40}?)\\s+must\\s+have\\s+work\\s+authori[sz]ation", IGNORING_CASE);
+			"((?:U\\.S\\.|[A-Z][\\w.]*)(?: [A-Z][\\w.]*){0,2})\\s+(?i:work\\s+(?:authori[sz]ation|permit|rights))\\b(?!\\s+sponsorship)");
 
 	/** Citizenship of a country named before it: {@code US citizenship}, {@code U.S. person}. */
 	private static final Pattern PLACE_CITIZENSHIP = Pattern.compile("((?:U\\.S\\.|[A-Z][\\w.]*)(?: [A-Z][\\w.]*){0,2})\\s+"
@@ -162,8 +164,9 @@ public class CountrySetRule {
 	private static final Pattern NEGATION = Pattern.compile("\\b(?:not|no|unable|cannot|can't|won't|except|excluding|"
 			+ "nor|without)\\b|n't\\b", IGNORING_CASE);
 
-	/** A condition, under which a requirement holds for some vacancies only. */
+	/** A condition, under which a requirement holds for some vacancies only: {@code for US based roles}. */
 	private static final Pattern CONDITION = Pattern.compile("\\b(?:if|where applicable|when required|for all positions|"
+			+ "for\\s+[\\w.]+[- ]based\\s+(?:roles|positions)|"
 			+ "certain (?:other )?(?:positions|roles)|some positions|may be required|may require)\\b", IGNORING_CASE);
 
 	/** What lists the grounds a company does not discriminate by, where citizenship is one of them. */
@@ -176,7 +179,7 @@ public class CountrySetRule {
 			+ "time|from|except|excluding|and\\s+(?:must|will|be|have|are|reside|live))\\b", IGNORING_CASE);
 
 	/** A time working from anywhere is allowed for, which makes it a benefit rather than where the vacancy hires. */
-	private static final Pattern BENEFIT = Pattern.compile("\\b(?:\\d+|a few|few|several|one|two|three|four|six)\\s+"
+	private static final Pattern BENEFIT = Pattern.compile("\\b(?:\\d+|a few|few|several|a|one|two|three|four|six)\\s+"
 			+ "(?:days?|weeks?|months?)\\b|\\b(?:per|a|each|every)\\s+year\\b|\\b(?:policy|scheme|program|programme)\\b", IGNORING_CASE);
 
 	/** A UTC offset: {@code UTC}, {@code GMT+5:30}, {@code UTC -6}. */
@@ -420,13 +423,11 @@ public class CountrySetRule {
 				}
 			}
 		}
-		for (Pattern before : List.of(PLACE_AUTHORIZATION, EMPLOYMENT_AUTHORIZATION)) {
-			Matcher matcher = before.matcher(text);
-			while (matcher.find()) {
-				List<Place> places = countries(placesNamedOnly(matcher.group(1)));
-				if (!places.isEmpty() && !negatedBefore(text, matcher.start())) {
-					stated.add(described(StatedSetKindEnum.AUTHORIZATION, segment, text, places));
-				}
+		Matcher before = PLACE_AUTHORIZATION.matcher(text);
+		while (before.find()) {
+			List<Place> places = countries(placesNamedOnly(before.group(1)));
+			if (!places.isEmpty() && !negatedBefore(text, before.start())) {
+				stated.add(described(StatedSetKindEnum.AUTHORIZATION, segment, text, places));
 			}
 		}
 	}

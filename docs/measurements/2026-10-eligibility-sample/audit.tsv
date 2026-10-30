@@ -1,0 +1,101 @@
+rank	vacancies	state	source	kind	places	text	example
+1	213	ELIGIBLE	LOCATION	LOCATION	AR	Argentina	4096
+2	114	ELIGIBLE	LOCATION	LOCATION	Buenos Aires/Buenos Aires F.D./AR	Buenos Aires	26399
+3	103	ELIGIBLE	LOCATION	REGION	Latin America	Latin America	2968
+4	94	ELIGIBLE	TITLE	REGION	Latin America	Laravel Developer + React - Remote, Latin America	370880
+5	94	ELIGIBLE	TITLE	REGION	Latin America	React Engineer - Remote, Latin America	370982
+6	93	ELIGIBLE	TITLE	REGION	Latin America	Full Stack Laravel + React Developer - Remote, Latin America	370776
+7	93	ELIGIBLE	TITLE	REGION	Latin America	Senior Business Analyst - Latin America, Remote	371084
+8	93	ELIGIBLE	TITLE	REGION	Latin America	Senior Business Analyst - Remote, Latin America	371185
+9	93	ELIGIBLE	TITLE	REGION	Latin America	Senior Python/Flask+React Fullstack Engineer - Remote, Latin America	371286
+10	93	ELIGIBLE	TITLE	REGION	Latin America	Senior Software Engineer (Python/Flask+React) - Remote, Latin America	371387
+11	76	ELIGIBLE	LOCATION	REGION	Latin America	LATAM	14299
+12	71	ELIGIBLE	LOCATION	REGION	Worldwide	Home based - Worldwide	30770
+13	2099	EXCLUDED	LOCATION	LOCATION	San Francisco/California/US	San Francisco	216714
+14	905	EXCLUDED	LOCATION	LOCATION	London/England/GB	London	183046
+15	763	EXCLUDED	DESCRIPTION	CITIZENSHIP	US	US Citizenship Required	1788
+16	735	EXCLUDED	LOCATION	LOCATION	New York City/New York/US	New York City	216929
+17	610	EXCLUDED	DESCRIPTION	CITIZENSHIP	US	To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permanent resident (aka green card holder), (iii) Refugee under 8 U.S.C. § 1157, or (iv) Asylee under 8 U.S.C. § 1158, or be eligible to obtain the required authorizations from the U.S. Department of State. Learn more about the ITAR here.	137732
+18	587	EXCLUDED	DESCRIPTION	CLEARANCE	US	CLEARANCE REQUIRED FOR START: Yes	1189229
+19	562	EXCLUDED	LOCATION	LOCATION	San Francisco/California/US	San Francisco, CA	112037
+20	557	EXCLUDED	LOCATION	LOCATION	New York City/New York/US	New York	215145
+21	500	EXCLUDED	DESCRIPTION	AUTHORIZATION	US	Applicants for employment in the US must have work authorization that does not now or in the future require sponsorship of a visa for employment authorization in the United States.	1552
+22	422	EXCLUDED	LOCATION	LOCATION	Paris/Île-de-France/FR	Paris	219647
+23	380	EXCLUDED	LOCATION	LOCATION	New York City/New York/US	New York, NY	18220
+24	323	EXCLUDED	DESCRIPTION	CLEARANCE	US	Active and transferable U.S. government issued security clearance is required prior to start date.	812286
+25	304	EXCLUDED	DESCRIPTION	CITIZENSHIP	US	U.S. citizenship is required, as only U.S. citizens are eligible for a security clearance &#xa;&#xa;	812286
+26	286	EXCLUDED	DESCRIPTION	CLEARANCE	US	Applicants selected will be subject to a security investigation and may need to meet eligibility requirements for access to classified information; Secret clearance is required.	571116
+27	263	EXCLUDED	DESCRIPTION	CLEARANCE	US	Applicants selected will be subject to a security investigation and may need to meet eligibility requirements for access to classified information; TS/SCI clearance with polygraph is required.	571125
+28	229	EXCLUDED	DESCRIPTION	CITIZENSHIP	US	Due to federal contract requirements, United States Citizenship and position appropriate security clearance is required.	434147
+29	229	EXCLUDED	DESCRIPTION	CLEARANCE	US	Due to federal contract requirements, United States Citizenship and position appropriate security clearance is required.	434147
+30	216	EXCLUDED	LOCATION	LOCATION	Berlin/State of Berlin/DE	Berlin	217040
+31	215	EXCLUDED	LOCATION	LOCATION	Toronto/Ontario/CA	Toronto	216899
+32	206	EXCLUDED	DESCRIPTION	CITIZENSHIP	US	To conform to U.S. Government export regulations applicable to that information, applicant must either be (A) a U.S. person, defined as a (i) U.S. citizen or national, (ii) U.S. lawful permanent resident (green card holder), (iii) refugee under 8 U.S.C. § 1157, or (iv) asylee under 8 U.S.C. § 1158, (B) eligible to access the export controlled information without a required export authorization, or (C) eligible and reasonably likely to obtain the required export authorization from the applicable U.S. government agency.	40810
+33	203	EXCLUDED	DESCRIPTION	CLEARANCE	US	Minimum Clearance Required to Start: TS/SCI with Polygraph	635374
+34	195	EXCLUDED	DESCRIPTION	CLEARANCE	US	Clearance Required	46151
+35	192	EXCLUDED	DESCRIPTION	AUTHORIZATION	US	For US based roles only, please note the Company may not be able to employ candidates for this role who have United States work authorization related to certain U.S. visa categories, or support future H-1B sponsorship at this time.	133419
+36	184	EXCLUDED	DESCRIPTION	CLEARANCE	US	Ability to obtain a Secret clearance	514728
+37	182	EXCLUDED	LOCATION	LOCATION	Boston/Massachusetts/US	Boston, MA	223262
+38	181	EXCLUDED	LOCATION	LOCATION	Bengaluru/Karnataka/IN	Bengaluru	217455
+39	179	EXCLUDED	DESCRIPTION	CLEARANCE	US	The ability to obtain and maintain a U.S. government issued security clearance is required.	812291
+40	174	EXCLUDED	LOCATION	LOCATION	Munich/Bavaria/DE	Munich	220889
+41	171	EXCLUDED	LOCATION	LOCATION	Austin/Texas/US	Austin, TX	216601
+42	170	EXCLUDED	DESCRIPTION	CITIZENSHIP	US	U.S. citizenship is required, as only U.S. citizens are eligible for a security clearance&#xa;&#xa;	812291
+43	164	EXCLUDED	DESCRIPTION	CLEARANCE	US	Minimum Clearance Required to Start: Secret	635371
+44	160	EXCLUDED	LOCATION	LOCATION	Seattle/Washington/US	Seattle, WA	106997
+45	154	EXCLUDED	DESCRIPTION	CLEARANCE	US	Applicants selected will be subject to a security investigation and may need to meet eligibility requirements for access to classified information; TS/SCI clearance is required.	571112
+46	154	EXCLUDED	DESCRIPTION	CLEARANCE	US	Minimum Clearance Required to Start: TS/SCI	635386
+47	153	EXCLUDED	DESCRIPTION	AUTHORIZATION	US	GE Vernova will only employ those who are legally authorized to work in the United States for this opening.	814436
+48	152	EXCLUDED	LOCATION	LOCATION	Bengaluru/Karnataka/IN	Bangalore	217978
+49	147	EXCLUDED	LOCATION	LOCATION	Singapore/SG	Singapore	218789
+50	141	EXCLUDED	LOCATION	LOCATION	GB	United Kingdom	222059
+51	138	EXCLUDED	DESCRIPTION	CITIZENSHIP	US	Applicants for employment at Blue Origin must be a U.S. citizen or national, U.S. permanent resident (i.e. current Green Card holder), or lawfully admitted into the U.S. as a refugee or granted asylum.	567179
+52	134	EXCLUDED	LOCATION	LOCATION	Foster City/California/US	Foster City, CA	261968
+53	130	EXCLUDED	LOCATION	LOCATION	Palo Alto/California/US	Palo Alto	220525
+54	128	EXCLUDED	DESCRIPTION	AUTHORIZATION	US	Must be legally permitted to work in the United States.	901715
+55	127	EXCLUDED	LOCATION	LOCATION	Sunnyvale/California/US	Sunnyvale	220787
+56	126	EXCLUDED	LOCATION	LOCATION	Barcelona/Catalonia/ES	Barcelona	217249
+57	121	EXCLUDED	DESCRIPTION	CLEARANCE	US	Active TS/SCI clearance; willingness to take a polygraph exam	70944
+58	116	EXCLUDED	LOCATION	LOCATION	Tel Aviv/Tel Aviv/IL	Tel Aviv	221126
+59	112	EXCLUDED	LOCATION	LOCATION	Metzingen/Baden-Wurttemberg/DE, Riederich/Baden-Wurttemberg/DE	Metzingen / Riederich	252565
+60	110	EXCLUDED	LOCATION	LOCATION	Stockholm/Stockholm/SE	Stockholm	220828
+61	107	EXCLUDED	DESCRIPTION	AUTHORIZATION	US	Applicants must be currently authorized to work in the United States on a full-time basis.	30511
+62	107	EXCLUDED	DESCRIPTION	CITIZENSHIP	US	U.S. citizenship is required, as only U.S. citizens are authorized to access information under this program/contract.&#xa;&#xa;	812358
+63	106	EXCLUDED	LOCATION	LOCATION	San Francisco/California/US	San Francisco, California	217027
+64	106	EXCLUDED	LOCATION	LOCATION	Amsterdam/North Holland/NL	Amsterdam	221907
+65	105	EXCLUDED	DESCRIPTION	AUTHORIZATION	US	Candidates must be authorized to work in the United States without sponsorship.	971453
+66	101	EXCLUDED	DESCRIPTION	CLEARANCE	US	Eligible to obtain and maintain an active U.S. Secret security clearance	10273
+67	101	EXCLUDED	LOCATION	LOCATION	Palo Alto/California/US	Palo Alto, CA	231846
+68	101	EXCLUDED	DESCRIPTION	CLEARANCE	ID	Government Clearance Required?	1231219
+69	100	EXCLUDED	DESCRIPTION	AUTHORIZATION	US	Applicants must be authorized to work in the U.S. without the need for employment-based visa sponsorship now or in the future.	157405
+70	96	EXCLUDED	LOCATION	LOCATION	Seattle/Washington/US	Seattle	217409
+71	94	EXCLUDED	DESCRIPTION	CLEARANCE	US	Applicants selected will be subject to a security investigation and may need to meet eligibility requirements for access to classified information; Top Secret clearance is required.	571133
+72	93	EXCLUDED	LOCATION	LOCATION	San Francisco/California/US	San Francisco HQ	218794
+73	93	EXCLUDED	LOCATION	LOCATION	Tokyo/Tokyo/JP	Tokyo	220839
+74	93	EXCLUDED	LOCATION	LOCATION	San Francisco/California/US	San Francisco Bay Area	222001
+75	92	EXCLUDED	LOCATION	LOCATION	San Francisco/California/US	San Francisco Office	216872
+76	92	EXCLUDED	LOCATION	LOCATION	Tokyo/Tokyo/JP	Tokyo, Japan	223509
+77	90	EXCLUDED	LOCATION	LOCATION	London/England/GB	London, UK	220281
+78	89	EXCLUDED	DESCRIPTION	CITIZENSHIP	US	Must be a US Citizen	1691
+79	89	EXCLUDED	LOCATION	LOCATION	Hyderabad/Telangana/IN	Hyderabad	221903
+80	88	EXCLUDED	LOCATION	LOCATION	MY	Malaysia	223545
+81	87	EXCLUDED	LOCATION	LOCATION	Sunnyvale/California/US	Sunnyvale, CA	34914
+82	85	EXCLUDED	LOCATION	LOCATION	Taipei/Taiwan/TW	Taipei, Taiwan	223561
+83	84	EXCLUDED	DESCRIPTION	CITIZENSHIP	US	To conform to U.S. Government space technology export regulations, including the International Traffic in Arms Regulations (ITAR) you must be a U.S. citizen, lawful permanent resident of the U.S., protected individual as defined by 8 U.S.C. 1324b(a)(3), or eligible to obtain the required authorizations from the U.S. Department of State.	25915
+84	84	EXCLUDED	DESCRIPTION	LOCATION	US	US based applicants only	116916
+85	84	EXCLUDED	LOCATION	LOCATION	Mountain View/California/US	Mountain View, CA	219067
+86	82	EXCLUDED	LOCATION	LOCATION	New York City/New York/US	New York City, NY	219235
+87	82	EXCLUDED	LOCATION	LOCATION	Vilnius/Vilnius/LT	Vilnius	242697
+88	80	EXCLUDED	LOCATION	LOCATION	Sydney/New South Wales/AU	Sydney	221907
+89	80	EXCLUDED	LOCATION	LOCATION	New York City/New York/US	New York, New York	229992
+90	79	EXCLUDED	LOCATION	LOCATION	New York City/New York/US	New York Office	216872
+91	79	EXCLUDED	LOCATION	LOCATION	San Francisco/California/US	San Francisco, CA - US	231299
+92	78	EXCLUDED	LOCATION	LOCATION	Boston/Massachusetts/US	Boston	216786
+93	76	EXCLUDED	DESCRIPTION	AUTHORIZATION	US	Applicants must be authorized to work for any employer in the U.S. We are unable to sponsor or take over sponsorship of an employment Visa at this time.	13302
+94	76	EXCLUDED	LOCATION	LOCATION	Irvine/California/US	Irvine, CA	250069
+95	74	EXCLUDED	DESCRIPTION	CITIZENSHIP	US	You must be a U.S. citizen to apply.	1219752
+96	70	EXCLUDED	LOCATION	LOCATION	Singapore/SG	SG - Singapore	218076
+97	70	EXCLUDED	LOCATION	LOCATION	Warsaw/Mazovia/PL	Warsaw	221463
+98	69	EXCLUDED	DESCRIPTION	AUTHORIZATION	US	Applicants must be legally authorized to work in the United States.	748
+99	69	EXCLUDED	DESCRIPTION	AUTHORIZATION	US	In alignment with our enterprise-wide workforce planning approach, U.S. work authorization sponsorship (H-1B, TN, J, etc.) is offered exclusively for Principal-level roles and above, where specialized expertise aligns with long-term business needs.	1063803
+100	67	EXCLUDED	DESCRIPTION	CITIZENSHIP	US	To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permanent resident (aka green card holder), (iii) Refugee under 8 U.S.C. § 1157, or (iv) Asylee under 8 U.S.C. § 1158, or be eligible to obtain the required authorizations from the U.S. Department of State.	132031

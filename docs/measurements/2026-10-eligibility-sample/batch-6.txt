@@ -1,0 +1,597 @@
+=== 189492
+company: Dark Wolf Solutions
+title: Cloud Security GRC Consultant
+options: Herndon, VA [undeclared]
+description:
+Dark Wolf’s Google Cloud Security Governance, Risk, and Compliance (GRC) Consultants are innovative security professionals responsible for applying federal security frameworks (such as the National Institute of Standards and Technology (NIST) Risk Management Framework (RMF) and Federal Risk and Authorization Management Program (FedRAMP)) to modern, complex Google Cloud environments.
+We are looking for tech-forward consultants who want to move beyond checklist compliance.
+This role requires a solid understanding of Google Cloud services and the ability to bridge the gap between engineering and security.
+The ideal candidate will help navigate the Assessment & Authorization (A&A) lifecycle, partnering directly with cloud architects to integrate compliance into system design and translating complex cloud architecture into verifiable evidence to achieve an Authorization to Operate (ATO).
+# Responsibilities
+# Responsibilities
+[under: Responsibilities] - Work collaboratively within a fast paced Agile team environment
+[under: Responsibilities] - Stay up-to-date on the latest Google Cloud services and technologies
+[under: Responsibilities] - Implement security best practices for Google Cloud solutions
+[under: Responsibilities] - Serve as a key contributor for federal compliance requirements, including FedRAMP, NIST SP 800-53, and agency-specific security overlays
+[under: Responsibilities] - Support development and implementation of innovative methods to achieve compliance with government and commercial cybersecurity frameworks
+[under: Responsibilities] - Conduct detailed technical security control assessments against system components and configurations within the GCP environment, identifying gaps, risks, and recommended mitigations
+[under: Responsibilities] - Actively contribute to the development and finalization of authorization artifacts
+[under: Responsibilities] - Partner with cloud architecture and engineering teams to provide actionable compliance guidance, ensuring security is built-in from system design through deployment
+[under: Responsibilities] - Utilize Google Cloud native tools and features to aid in continuous monitoring (ConMon) activities, vulnerability management, and security posture management
+[under: Responsibilities] - Support reviews with the Authorizing Official (AO), security assessors (e.g., 3PAOs), and federal agency security teams during control assessments and authorization reviews
+[under: Responsibilities] - Develop clear, compelling Plan of Action and Milestones (POA&M) entries, helping the team communicate system risks, impact, and mitigation strategies to stakeholders
+[under: Responsibilities] - Support strategic consulting efforts on evolving federal cloud security policy and best practices
+# Qualifications
+[under: Qualifications] - 2+ years of relevant experience
+[under: Qualifications] - At least one Google Cloud Professional Certification
+[under: Qualifications] - Experience supporting RMF processes, acting as an ISSO, Security Controls Validator, or performing information assurance engineering
+[under: Qualifications] - Hands-on with eGRC tools like eMASS and XACTA
+[under: Qualifications] - Ability to clearly communicate complex security concepts to both technical and non-technical stakeholders
+[under: Qualifications] - Strong problem-solving skills with a proven ability to quickly learn and apply new technologies to solve complex client challenges
+[under: Qualifications] - Familiarity with cloud automation, Infrastructure as Code (e.g., Terraform), or scripting to help automate compliance tasks
+[under: Qualifications] - Understanding of Google Cloud services and technologies
+[under: Qualifications] - B.A. or B.S. Information Security, Computer Science, or related discipline
+[under: Qualifications] - US Citizenship and clearable up to a Secret Security Clearance
+# Preferred Qualifications
+[under: Preferred Qualifications] - Experience working within Agile teams
+[under: Preferred Qualifications] - Experience working with Google Cloud compliance products such as Security Command Center and Assured Workloads
+[under: Preferred Qualifications] - Hands-on experience with modern compliance automation, OSCAL, Python, or Infrastructure as Code (e.g., Terraform)
+[under: Preferred Qualifications] - Experience working with customers in the U.S. Public Sector
+[under: Preferred Qualifications] - U.S. Federal Government security clearance
+[under: Preferred Qualifications] - Experience with DoD/DISA cybersecurity policies
+[under: Preferred Qualifications] This position will be a hybrid role based out of Herndon, VA.
+[under: Preferred Qualifications] The salary range for this position is estimated to be between $100,000.00 - $140,000.00, commensurate on experience and technical skillset.
+[under: Preferred Qualifications] We are proud to be an EEO/AA employer Minorities/Women/Veterans/Disabled and other protected categories.
+[under: Preferred Qualifications] In compliance with federal law, all persons hired will be required to verify identity and eligibility to work in the United States and to complete the required employment eligibility verification form upon hire.
+[under: Preferred Qualifications] We are strictly looking for direct, full-time W2 employees.
+[under: Preferred Qualifications] We do not engage with third-party staffing agencies, C2C, or 1099 independent contractors for this role.
+
+=== 687662
+company: Darktrace Holdings Ltd
+title: Solutions Engineer, Acquisition
+options: New York Office, United States [undeclared] | Boston Office, United States [undeclared]
+description:
+Darktrace is a global leader in AI-driven cybersecurity, helping organizations stay ahead of evolving threats every day.
+Darktrace was built on a genuinely differentiated idea: that Adaptive AI could detect and respond to novel, real-time cyber threats.
+That approach matters more than ever in the era of AI.
+Today, our customers depend on us to stay ahead.
+At Darktrace, we are energized by that responsibility.
+We work across teams and rally around a shared goal.
+We own outcomes end to end - step in, step up and see things through without waiting to be asked.
+We make decisions with urgency, say the hard thing, and hold each other to high standards with care and directness.
+We move first and learn fast anticipating where our customers are going next, continuously challenging ourselves.
+We invest in the skills, learning and opportunities that help people deliver at the level their roles demand, and reward the aptitude and curiosity to grow beyond them.
+Our Values: Own It | Win as One | Raise Our Bar | Move First.
+Learn Fast
+&#xa;&#xa;
+# Job Description
+[under: Job Description] Advertising Job Description
+[under: Job Description] As a Solutions Engineer on the Acquisition Team, you will partner with Account Executives to drive net-new business and lead the technical sales process from discovery through evaluation, solution design, and business justification.
+[under: Job Description] In this customer-facing pre-sales role, you will serve as a trusted advisor, uncovering customer challenges, align Darktrace’s AI-powered platform to their needs, and demonstrate measurable security and business outcomes.
+[under: Job Description] Through technical discovery, solution architecture, and value-driven storytelling, you will translate complex cybersecurity risks into clear impact across network, cloud, and hybrid environments.
+# Key Responsibilities
+# Technical Ownership
+[under: Technical Ownership] - Lead all technical aspects of new business deals from discovery to close, owning momentum and progression at each stage
+[under: Technical Ownership] - Build early credibility with Security, IT, and Cloud stakeholders
+[under: Technical Ownership] - Drive technical win strategy and guide solution validation
+# Discovery & Value Alignment
+[under: Discovery & Value Alignment] - Align solutions to SOC workflows (triage, investigation, response)
+[under: Discovery & Value Alignment] - Lead structured discovery aligned to MEDDPICC, identifying pain, impact, and urgency
+[under: Discovery & Value Alignment] - Translate requirements into solution designs aligned to ROI and business outcomes
+# Solution Design
+[under: Solution Design] - Architect scalable solutions across Darktrace’s platform (Network, Email, Cloud, Identity, Endpoint, ASM, PEM, IRR)
+[under: Solution Design] - Advise on deployments, integrations (SIEM, SOAR, EDR), and visibility (SPAN/TAP, APIs)
+[under: Solution Design] - Clearly communicate trade-offs (performance, cost, coverage)
+[under: Solution Design] - Ensure solution design supports fast deployment and meaningful evaluation outcomes
+# Customer Engagement
+[under: Customer Engagement] - Deliver high-impact demos and technical storytelling to SOC teams, leaders, and executives
+[under: Customer Engagement] - Translate complex cybersecurity concepts into clear, outcome-driven narratives for both technical and executive audiences
+[under: Customer Engagement] - Handle objections and position against competitors
+# Deal Strategy & Collaboration
+[under: Deal Strategy & Collaboration] - Partner with AEs to qualify opportunities, mitigate risks, and progress pipeline
+[under: Deal Strategy & Collaboration] - Collaborate with Sales, Product, Engineering, and Customer Success to resolve blockers and accelerate deals
+[under: Deal Strategy & Collaboration] - Share market feedback to improve product and go-to-market strategy
+# Skills & Experience
+[under: Skills & Experience] Background in pre-sales/solutions engineering in cybersecurity or SaaS with a track record of supporting net-new business
+[under: Skills & Experience] - Strong knowledge of networking, cloud (AWS/Azure/GCP), and security architectures
+[under: Skills & Experience] - Experience with SOC tools (SIEM, SOAR, EDR/XDR) and hybrid environments
+[under: Skills & Experience] - Ability to design solutions, run demos/PoCs, and influence diverse stakeholders
+[under: Skills & Experience] - Strong communication, consultative selling, and business acumen
+[under: Skills & Experience] - Fundamental understanding of AI technologies (LLM, ML, NLP)
+[under: Skills & Experience] - Bachelor’s degree or higher preferred (or equivalent experience)
+[under: Skills & Experience] - Relevant Cloud, Security, and/or AI certifications are a plus
+[under: Skills & Experience] - Operates with urgency, ownership, and a bias for execution
+[under: Skills & Experience] Compensation: Total on-target earnings (base salary + commission) of up to $230,000.
+[under: Skills & Experience] Final compensation will be based on factors including experience, skills, and geographic location.
+[under: Skills & Experience] &#xa;&#xa;
+# Benefits
+[under: Benefits] - 100% medical, dental and vision insurance, plus dependents
+[under: Benefits] - Paid parental leave
+[under: Benefits] - Pet insurance Discount
+[under: Benefits] - Life insurance
+[under: Benefits] - Commuter benefits
+[under: Benefits] - 401(k)
+[under: Benefits] - Employee Assistance Program
+[under: Benefits] &#xa;&#xa;
+[under: Benefits] As a growing business strengthening its governance and controls, this role plays a part in supporting high standards of integrity and accountability.
+[under: Benefits] &#xa;&#xa;
+[under: Benefits] Darktrace is an Equal Opportunity Employer.
+[under: Benefits] We consider all qualified applicants for employment without regard to race, color, religion, sex (including pregnancy, childbirth, and related medical conditions), sexual orientation, gender identity or expression, national origin, age, disability, genetic information, marital status, veteran or military status, or any other characteristic protected by applicable federal, state, or local law.
+[under: Benefits] Darktrace is committed to providing reasonable accommodations to qualified individuals with disabilities in accordance with applicable laws.
+[under: Benefits] If you require a reasonable accommodation to participate in the application or interview process, please contact your Talent Partner.
+[under: Benefits] Employment with Darktrace is at-will, meaning either the employee or Darktrace may terminate the employment relationship at any time, with or without cause or notice, except where prohibited by law or governed by a separate written agreement.
+
+=== 1120755
+company: DPR GP
+title: IT Field Engineer Baltimore
+options: Baltimore, MD [undeclared]
+description:
+# Job Description
+[under: Job Description] At DPR, roles and responsibilities are more than describing a job title—they are a commitment to building great things together.
+[under: Job Description] The job description(s) below defines core responsibilities and the scope of the role and is a starting point.
+[under: Job Description] Every employee is expected to lead from where they are, take ownership of outcomes, and always act in the best interest of the team, customer, project and organization.
+[under: Job Description] As a purpose-driven organization on a journey to be most admired, we rely on trust, shared leadership, open communication, disciplined action and a deep respect for the individual to drive exceptional performance.
+[under: Job Description] Success is not just about what we build, but who we build and how we build it: with integrity, enjoyment, uniqueness and an ever-forward mindset.
+# Job Summary
+[under: Job Summary] Deploys, supports, and maintains standardized technology environments at job sites and offices.
+[under: Job Summary] Implements Meraki network equipment, conference room systems, and endpoint configurations in accordance with enterprise standards.
+# Key Responsibilities
+[under: Key Responsibilities] Deploys and configures jobsite network equipment and connectivity solutions.
+[under: Key Responsibilities] Installs and maintains field hardware, workstations, mobile devices, and site infrastructure.
+[under: Key Responsibilities] Troubleshoots and resolves site-level technical issues per service standards.
+[under: Key Responsibilities] Maintains asset tracking, recovery, and documentation within established systems.
+[under: Key Responsibilities] Supports project startup and closeout technology requirements.
+[under: Key Responsibilities] Coordinates escalations with Infrastructure and Service Delivery teams.
+[under: Key Responsibilities] Ensures field environments adhere to enterprise security and configuration standards.
+# Education Qualifications
+[under: Education Qualifications] Associate’s degree in information technology, computer science, or a related field preferred, or equivalent experience considered.
+# Work Experience
+[under: Work Experience] 2–4 years of experience in IT field support, networking, or systems administration required.
+# Certifications and Licenses
+[under: Certifications and Licenses] Networking or IT service management certification preferred.
+[under: Certifications and Licenses] Successful completion of a background check is required.
+# Anticipated starting pay range
+[under: Anticipated starting pay range] Nothing is more important than your health and wellness.
+[under: Anticipated starting pay range] DPR offers a variety of medical, dental, vision and wellness benefits to keep you healthy.
+[under: Anticipated starting pay range] Read more about eligibility and available benefits programs
+[under: Anticipated starting pay range] for skilled craft and labor or experienced professionals and recent graduates.
+[under: Anticipated starting pay range] DPR Construction is a forward-thinking, self-performing general contractor specializing in technically complex and sustainable projects for the advanced technology, life sciences, healthcare, higher education and commercial markets.
+[under: Anticipated starting pay range] Founded in 1990, DPR is a great story of entrepreneurial success as a private, employee-owned company that has grown into a multi-billion-dollar family of companies with offices around the world.
+[under: Anticipated starting pay range] Working at DPR, you'll have the chance to try new things, explore unique paths and shape your future.
+[under: Anticipated starting pay range] Here, we build opportunity together—by harnessing our talents, enabling curiosity and pursuing our collective ambition to make the best ideas happen.
+[under: Anticipated starting pay range] We are proud to be recognized as a great place to work by our talented teammates and leading news organizations like U.S. News and World Report, Forbes, Fast Company and Newsweek.
+[under: Anticipated starting pay range] Explore our open opportunities at www.dpr.com/careers.
+
+=== 338491
+company: INFUSE
+title: Senior DevOps Engineer (Remote, Contract)
+options: Georgia [remote]
+description:
+> # OUR HIRING PROCESS
+> [under: OUR HIRING PROCESS] - We will review your application against our job requirements. We do not employ machine learning technologies during this phase as we believe every human deserves attention from another human. We do not think machines can evaluate your application quite like our seasoned recruiting professionals—every person is unique. We promise to give your candidacy a fair and detailed assessment.
+> [under: OUR HIRING PROCESS] - We may then invite you to submit a video interview for the review of the hiring manager. This video interview is often followed by a test or short project that allows us to determine whether you will be a good fit for the team.
+> [under: OUR HIRING PROCESS] - At this point, we will invite you to interview with our hiring manager and/or the interview team. Please note: We do not conduct interviews via text message, Telegram, etc. and we never hire anyone into our organization without having met you face-to-face (or via Zoom). You will be invited to come to a live meeting or Zoom, where you will meet our INFUSE team.
+> [under: OUR HIRING PROCESS] - From there on, it’s decision time! If you are still excited to join INFUSE and we like you as much, we will have a conversation about your offer. We do not make offers without giving you the opportunity to speak with us live.
+> [under: OUR HIRING PROCESS] - INFUSE is committed to complying with applicable data privacy and security laws and regulations. For more information, please see our Privacy Policy
+INFUSE is looking for a Senior DevOps Engineer to own and evolve our AWS infrastructure, CI/CD pipelines, and observability stack.
+You will bridge cloud engineering and software development across our entire product suite, including production LLM products and legacy systems requiring modernization.
+We need a proactive technical partner to lead our transition to EKS and GitHub Actions, enforce zero-trust security baselines, and mentor engineering teams along the way.
+# As part of our dynamic team, your responsibilities in this role will include
+[under: As part of our dynamic team, your responsibilities in this role will include] - Design, build and run secure AWS infrastructure (EC2 with Docker Compose, EKS) with Terraform and Ansible; move suitable workloads from EC2 to EKS
+[under: As part of our dynamic team, your responsibilities in this role will include] - Build and maintain CI/CD in GitHub Actions; move remaining Jenkins jobs to GitHub Actions
+[under: As part of our dynamic team, your responsibilities in this role will include] - Keep new and existing services at our security baseline: Cloudflare proxy with WAF and rate limiting, origins open only to Cloudflare, SSM access, no public SSH, least-privilege IAM, secrets rotation, regular patching and rebuilds, no containers running as root
+[under: As part of our dynamic team, your responsibilities in this role will include] - Own monitoring, alerting and logs on our standard stack (Grafana, OpenTelemetry, Sentry); on-call, incident response, post-incident reviews
+[under: As part of our dynamic team, your responsibilities in this role will include] - Own backups and regular restore tests
+[under: As part of our dynamic team, your responsibilities in this role will include] - Control AWS cost: tags, rightsizing, removing unused resources, estimates for new projects
+[under: As part of our dynamic team, your responsibilities in this role will include] - Regularly review the infrastructure we run, find risks and waste, and come with a plan without waiting for a ticket
+[under: As part of our dynamic team, your responsibilities in this role will include] - Take over infrastructure that is undocumented or run by contractors; document it and bring it under IaC, CI/CD and our standards
+[under: As part of our dynamic team, your responsibilities in this role will include] - Join new projects at kickoff: review hosting design, estimate cost, prepare infrastructure for the production-readiness review
+[under: As part of our dynamic team, your responsibilities in this role will include] - Work with internal teams and contractors; set and enforce standards; mentor other engineers.
+# Our ideal candidate possesses the following skills
+[under: Our ideal candidate possesses the following skills] - 5+ Years in DevOps / SRE: Proven background operating mission-critical production environments, including 3+ years of hands-on experience running AWS at scale
+[under: Our ideal candidate possesses the following skills] - IaC & CI/CD Mastery: Expert with Terraform, highly proficient with Ansible, and experienced in designing production workflows with GitHub Actions
+[under: Our ideal candidate possesses the following skills] - Containerization & Kubernetes: Strong production experience with Docker and Kubernetes (specifically managed AWS EKS and Helm)
+[under: Our ideal candidate possesses the following skills] - Production Security & Incident Management: Hands-on practice with platform hardening, zero-trust patterns, automated secrets management, system patching, and Cloudflare WAF/proxy configuration. Comfortable with on-call rotations, incident response, and executing verified backup restore drills
+[under: Our ideal candidate possesses the following skills] - English proficiency at B2 level or higher.
+# What Else We Expect & Value
+[under: What Else We Expect & Value] - Application Ecosystem Familiarity: Experience supporting Node.js and Python microservices paired with PostgreSQL and Redis, as well as web stacks (WordPress, Nginx, PHP-FPM, MySQL) behind Cloudflare
+[under: What Else We Expect & Value] - Modern Observability: Practical setup and maintenance of Grafana, Prometheus, and OpenTelemetry pipelines
+[under: What Else We Expect & Value] - Core Scripting & Systems: Deep fluency in Linux administration, Bash, and Python scripting.
+[under: What Else We Expect & Value] - Collaborative Leadership: Ability to effectively manage, document, and standardize work across internal teams and external contractor groups.
+[under: What Else We Expect & Value] - AI-Augmented Workflow: Daily experience leveraging modern AI developer tools and agents (Claude Code preferred) to accelerate engineering output.
+[under: What Else We Expect & Value] - Proactive & Autonomous Mindset: A self-starter who actively audits environments, catches vulnerabilities before they become outages, and brings actionable proposals to the table.
+# Nice to have
+[under: Nice to have] - Kafka (MSK), Jenkins, ClickHouse, Backstage, Sentry, Langfuse, SonarQube/Trivy/gitleaks, Cloudflare Zero Trust, AIOps, leading a small DevOps team, AWS/CKA certifications.
+# What we offer
+[under: What we offer] - Fully remote work format
+[under: What we offer] - Schedule: Monday–Friday, 2 PM – 11 PM Eastern European Time (including 1 hour break)
+[under: What we offer] - A collaborative, innovation-first environment that values initiative and experimentation
+[under: What we offer] - Paid time off and sick leave
+[under: What we offer] - Reduced working hours on Fridays during the summer
+[under: What we offer] - Days off on US national holidays and your birthday.
+# Hiring process
+[under: Hiring process] - Interview with Recruiter
+[under: Hiring process] - Interview with Hiring Manager
+[under: Hiring process] - Technical Interview
+[under: Hiring process] - Offer.
+[under: Hiring process] If you meet these criteria and are excited about contributing to our team, we encourage you to apply.
+# We look forward to meeting you!
+
+=== 1246647
+company: LexisNexis Risk Solutions FL Inc. Company
+title: Senior Software Engineer II
+options: Chennai [undeclared]
+description:
+# Senior Software Engineer II
+[under: Senior Software Engineer II] Are you ready to take the next step in your engineering career and help shape the future of aviation analytics?
+[under: Senior Software Engineer II] Do you enjoy mentoring others, solving complex technical challenges, and delivering innovative data solutions at scale?
+# About the Business
+[under: About the Business] At Cirium, our goal is to keep the world connected.
+[under: About the Business] We are the industry leader in aviation analytics; helping our customers understand the past, present, and predicting what will happen tomorrow.
+[under: About the Business] Our mission is to transform the aviation industry by enabling airlines, airports, travel companies, tech giants, aircraft manufacturers, financial institutions, and many more accelerate their own digital transformation.
+[under: About the Business] You can learn more about Cirium at https://www.cirium.com.
+# About the Team
+[under: About the Team] Our teams operate in collaborative squads that include a Squad Lead, Business Analyst, Development Lead, Developers, and Testers.
+[under: About the Team] This structure promotes teamwork, connectivity, and efficient delivery by aligning diverse skills around shared objectives.
+# About the Role
+[under: About the Role] This role performs complex research, design, and software development assignments within a software functional area or product line.
+[under: About the Role] You will contribute to the design and delivery of scalable data and software solutions, mentor team members, and work closely with stakeholders to translate business requirements into technical outcomes.
+[under: About the Role] The position offers the opportunity to influence technical direction while supporting the growth and success of the engineering team.
+# Responsibilities
+[under: Responsibilities] - Interface with other technical personnel or team members to finalize requirements.
+[under: Responsibilities] - Write and review portions of detailed specifications for the development of complex system components.
+[under: Responsibilities] - Complete complex bug fixes and work closely with other development team members to understand complex product requirements and translate them into software designs.
+[under: Responsibilities] - Successfully implement development processes, coding best practices, and code reviews.
+[under: Responsibilities] - Operate in various development environments (Agile, Waterfall, etc.) while collaborating with key stakeholders. Resolve complex technical issues as necessary.
+[under: Responsibilities] - Train entry-level software engineers as directed by department management, ensuring they are knowledgeable in critical aspects of their roles.
+[under: Responsibilities] - Design and work with complex data models.
+[under: Responsibilities] - Mentor less-senior software developers on development methodologies and optimization techniques and all other duties as assigned.
+# Requirements
+[under: Requirements] - Must have expertise in Snowflake, PySpark, Python and SQL.
+[under: Requirements] - Hands on Experience in Github, Jetstream and AWS.
+[under: Requirements] - Knowledge on AI development tools and good to have knowledge in SDD (Spec Driven Development), AWS AI-DLC.
+[under: Requirements] - Excellent critical thinking and problem-solving skills with familiarity with databases, data warehousing, and ETL processes.
+[under: Requirements] - Experience with machine learning models or statistical analysis.
+[under: Requirements] - Advanced knowledge of software development methodologies (e.g., Agile, Waterfall).
+[under: Requirements] - Strong proficiency with data manipulation language including optimization techniques, understanding of normalized/dimensional data modeling principles, research skills, knowledge in industry best practices in development.
+[under: Requirements] - Ability to interface competently with other technical personnel or team members to finalize requirements to work well with internal and external technology resources. Write and review portions of detailed specifications for the development of complex system components, complete complex bug fixes.
+# Our Commitment to Inclusion
+[under: Our Commitment to Inclusion] We welcome applications from individuals of all backgrounds, including underrepresented groups, people with disabilities, career changers, and candidates with non-traditional education or experience.
+[under: Our Commitment to Inclusion] If you require accommodations at any stage of the recruitment process, please let us know.
+[under: Our Commitment to Inclusion] We are committed to supporting your success.
+# Learn more about the LexisNexis Risk Solutions team and how we work
+[under: Learn more about the LexisNexis Risk Solutions team and how we work] &#xa;&#xa;&#xa;&#xa;&#xa;&#xa;
+[under: Learn more about the LexisNexis Risk Solutions team and how we work] We know your well-being and happiness are key to a long and successful career.
+[under: Learn more about the LexisNexis Risk Solutions team and how we work] We are delighted to offer country specific benefits.
+[under: Learn more about the LexisNexis Risk Solutions team and how we work] Click here to access benefits specific to your location.
+[under: Learn more about the LexisNexis Risk Solutions team and how we work] We are committed to providing a fair and accessible hiring process.
+[under: Learn more about the LexisNexis Risk Solutions team and how we work] If you have a disability or other need that requires accommodation or adjustment, please let us know by completing our Applicant Request Support Form or please contact 1-855-833-5120.
+[under: Learn more about the LexisNexis Risk Solutions team and how we work] Criminals may pose as recruiters asking for money or personal information.
+[under: Learn more about the LexisNexis Risk Solutions team and how we work] We never request money or banking details from job applicants.
+[under: Learn more about the LexisNexis Risk Solutions team and how we work] Learn more about spotting and avoiding scams here.
+[under: Learn more about the LexisNexis Risk Solutions team and how we work] Please read our Candidate Privacy Policy.
+[under: Learn more about the LexisNexis Risk Solutions team and how we work] We are an equal opportunity employer: qualified applicants are considered for and treated during employment without regard to race, color, creed, religion, sex, national origin, citizenship status, disability status, protected veteran status, age, marital status, sexual orientation, gender identity, genetic information, or any other characteristic protected by law.
+# USA Job Seekers
+[under: USA Job Seekers] EEO Know Your Rights.
+
+=== 257548
+company: perk
+title: Engineering Manager - London
+options: London [undeclared]
+description:
+# About Us
+[under: About Us] Perk (formerly TravelPerk) is the intelligent platform for travel and spend management.
+[under: About Us] Built to tackle the time-consuming, manual work that gets in the way of real work, our tools automate everything from travel bookings to expenses, invoice processing, and more.
+[under: About Us] By eliminating this shadow work that wastes hours, erodes morale, and saps innovation, we're on a mission to power real work, with real impact.
+[under: About Us] We're trusted by more than 12,000 companies worldwide, including Bolt, GoCardless, and Fabletics, and we're tackling the 7 hours of lost productivity per employee each week, a $1.7 trillion problem.
+[under: About Us] Founded in 2015, Perk has grown into a global company of more than 1,800 people across 12 offices globally, with headquarters in London and Boston.
+[under: About Us] We combine innovation, control, and simplicity to transform how businesses work and how people feel at work.
+[under: About Us] At Perk, we're driven by our values, like being an owner, delivering a 7-star experience, and working as one team.
+[under: About Us] We value curiosity, purpose, and mindset, not just knowledge, to unlock the power in your potential.
+[under: About Us] Our talent team brings together leading minds from the travel, fintech, and SaaS industries, representing over 70 countries.
+[under: About Us] If you're excited about having a real impact and shaping how millions of people experience work, we'd love you on the team.
+[under: About Us] Visit www.perk.com to learn more.
+# As an Engineering Manager, you will
+[under: As an Engineering Manager, you will] - Be accountable for the delivery and personal development of your team(s)
+[under: As an Engineering Manager, you will] - Act as servant leader to your engineers and adapting your leadership style to the needs of the situation
+[under: As an Engineering Manager, you will] - Take care of individuals' performance in the organisation and supporting their journey and ownership of their career using coaching and mentoring where appropriate
+[under: As an Engineering Manager, you will] - Act as a technical champion, ensuring that the team has the time and context to build systems that meet the needs and standards of our organisation
+[under: As an Engineering Manager, you will] - Enable fluent and effective collaboration within the team, and supporting them through challenges in system architecture, design or implementation
+[under: As an Engineering Manager, you will] - Develop and evolve a long-term strategy and roadmap for the team, working with the Product Manager and aligned with the Tribe mission.
+[under: As an Engineering Manager, you will] - Strategic team building and planning for delivering highly available features that scale with our growth
+[under: As an Engineering Manager, you will] - Be a key part of the recruitment and growth of the engineering team.
+[under: As an Engineering Manager, you will] - Work with the business and team metrics to deliver a 7 star experience to our customers.
+[under: As an Engineering Manager, you will] - An understanding of how engineering impacts product and business needs
+[under: As an Engineering Manager, you will] - Provide feedback to stakeholders within Builders (Product and Eng) and sometimes the wider business
+# AI at Perk
+[under: AI at Perk] AI is embedded in how we work and what we build.
+[under: AI at Perk] On the engineering side, it spans the whole workflow: our Notion, Jira, GitHub and Slack are AI-connected so you get up to speed fast, and day-to-day it helps with specifying features, writing and reviewing code, and automated AI PR review on every pull request.
+[under: AI at Perk] When something goes wrong in production, AI surfaces context across systems quickly.
+[under: AI at Perk] We also embrace agentic coding, using AI as an active collaborator, not just a prompt-by-prompt co-pilot.
+[under: AI at Perk] We expect candidates to use AI tools in our coding interviews.
+[under: AI at Perk] The bar is understanding your code and owning what you produce.
+[under: AI at Perk] That reflects how we work every day.
+# Required skills and experience
+[under: Required skills and experience] - For this role, we’re looking for someone who has managed (and will continue to) around 8-10 software engineers.
+[under: Required skills and experience] - You come from a technical background ideally in software engineering, where you were a hands-on IC.
+[under: Required skills and experience] - You are a people manager who builds an effective work culture that improves the working lives of your team.
+[under: Required skills and experience] - You have experience managing larger teams where it’s necessary to build processes and systems of delegation to get work done.
+[under: Required skills and experience] - You act as a problem finder and solver technically and organisationally, helping the team to overcome any issue that prevents your engineering fellows to perform at their best.
+[under: Required skills and experience] - You run effective performance reviews that celebrate achievements and help your team identify where to grow next in line with their aspirations and the needs of the business.
+[under: Required skills and experience] - Pragmatism and obsession for simplicity, efficiency, and performance.
+[under: Required skills and experience] - You have the ability to adapt and react fast to an ever-changing environment.
+[under: Required skills and experience] - Managing AI-Driven Development: Experience with—or a strong interest in—modern AI-augmented workflows. This includes driving your team to leverage agentic workflows, develop custom agentic skills to extend AI capabilities.
+# AI at Perk
+[under: AI at Perk] AI is embedded in how we work across every function.
+[under: AI at Perk] The tools you'll use day-to-day are AI-enabled so you can move faster and spend more time on the work that matters.
+[under: AI at Perk] In practice, that means using AI to research and prioritise accounts, draft and refine outreach, handle customer interactions more effectively, synthesise information, and cut through shadow work - the invisible tasks that pull people away from the work only they can do - so you can focus on relationships and outcomes.
+# How We Work
+[under: How We Work] At Perk, we take an IRL-first approach to work, where our team works together in-person 3 days a week.
+[under: How We Work] As such, this role requires you to be based within commuting distance of our hubs.
+[under: How We Work] We fundamentally believe in the value of meeting in real life to improve connectivity, productivity, creativity and ultimately making us a great place to work.
+[under: How We Work] For certain roles, we can help with relocation from anywhere in the world, English is the official language at the office.
+[under: How We Work] Please submit your resume in English if you choose to apply.
+[under: How We Work] Do not forget to submit an updated portfolio and/or resume.
+[under: How We Work] Perk is a global company with a diverse customer base, and we want to make sure the people behind our product reflect that.
+[under: How We Work] We’re an equal opportunity employer, which means you’re welcome at Perk regardless of how you look, where you’re from, or anything else that makes you, well, you.
+# Protect Yourself from Recruitment Scams
+[under: Protect Yourself from Recruitment Scams] All official communication from Perk will always come from email addresses ending in @perk.com or @externalperk.com, our verified social media channels, or recruiters listed on our official LinkedIn page.
+[under: Protect Yourself from Recruitment Scams] We will never ask you to pay for equipment, training, or fees, request sensitive personal information such as bank details early in the process, or communicate through unofficial apps like WhatsApp, Telegram, or Signal.
+[under: Protect Yourself from Recruitment Scams] If you receive a message claiming to be from Perk that seems suspicious, please do not respond.
+[under: Protect Yourself from Recruitment Scams] Forward it to security [at] perk .com, and we will confirm whether it is legitimate.
+[under: Protect Yourself from Recruitment Scams] LI-Hybrid
+
+=== 1105768
+company: MSA Murex S.A.S.
+title: Integration Consultant - Fintech, Banking Technology
+options: Hô Chi Minh [undeclared]
+description:
+Murex is a global fintech leader in trading, risk management and processing solutions for capital markets.
+Operating from our 19 offices, 3 400 Murexians from over 65 different nationalities ensure the development, implementation and support of our platform which is used by banks, asset managers, corporations and utilities, across the world.
+Join Murex and work on the challenges of an industry at the forefront of innovation and thrive in a people-centric environment.
+You’ll be part of one global team where you can learn fast and stay true to yourself.
+# Your Team
+[under: Your Team] The Solutions for Customization team (S4C - Integration) is accountable for incorporating the Murex software into the information system frameworks of our Capital Markets customers.
+[under: Your Team] Throughout the lifecycle of the product, from pre-sales support to implementation as well as training and product support, Murex S4C consultants are our clients' trusted IT partners.
+[under: Your Team] We deliver innovative solutions and provide state-of-the-art recommendations and advice.
+[under: Your Team] We help the clients integrate Murex with other systems by proposing or designing solutions:
+[under: Your Team] - Design reports and extractions out of murex for regulatory purposes or as input to other systems
+[under: Your Team] - Integrate murex with other systems in the bank
+[under: Your Team] - Configure murex to retrieve market data from other markets systems (Bloomberg, Reuters).
+[under: Your Team] Note: This is not a pure coding role.
+[under: Your Team] While scripting, configuration, and code analysis are important, the primary focus is on understanding systems, diagnosing issues, supporting production environments, and ensuring service reliability.
+[under: Your Team] Ideal candidates bring strong Linux, networking, cloud, and database fundamentals (SQL), plus coding skills (Java preferred) used as a tool.
+# Your Role
+# With training and senior support, you will
+[under: With training and senior support, you will] - Develop expertise in Murex interface and reporting solutions and general knowledge of the platform
+[under: With training and senior support, you will] - Provide technical support (phone, email, CRM, on-site) to Murex customers, ensuring successful follow-up of issues from notification to resolution and validation
+[under: With training and senior support, you will] - Validate solutions with co-workers within the team and seek advice and expertise of other teams on other domains
+[under: With training and senior support, you will] - Participate in implementation projects for the delivery of interfaces for electronic communication network (for example online trading platform), clearing systems, customer’s internal systems (e.g. core banking), reporting solutions and trade migrations
+[under: With training and senior support, you will] - Participate in implementation projects for the delivery of customized solutions to client-specific requirements
+[under: With training and senior support, you will] - Maintain good understanding and knowledge of the best practices
+[under: With training and senior support, you will] - Participate in the Murex solution enrichment process by reporting issues and suggestions to the development centre
+[under: With training and senior support, you will] - Proactively ensure customer satisfaction and follow-up on the interface and reporting related activities
+[under: With training and senior support, you will] - Deliver trainings to customers and partners
+# Your Profile
+# Required
+[under: Required] - A bachelor’s degree in Computer Science, Computer Engineering, IT, Software Engineering, or related.
+[under: Required] - 1-8 years of relevant functional/technical experience in software projects, such as user requirements gathering and specification, development, testing, documentation, or support.
+[under: Required] - Basic understanding in programming language (Preferrably in Java, Python)
+[under: Required] - Knowledgeable of some SQL databases (Oracle/PostgreSQL/SQL Server)
+[under: Required] - Experience in Unix/Linux, Windows OS, able to develop scripting/batch files.
+[under: Required] - Understanding of computer network basics troubleshooting
+[under: Required] - Curiosity, willingness to learn, and strong teamwork
+[under: Required] - Very good English communication skills to handle effective client facing and working with regional team
+# Nice to Have
+[under: Nice to Have] - Experience with J2EE, Apache Camel, BIRT (or other reporting solutions), UML, XSLT
+# Success Milestones
+[under: Success Milestones] First 3 months
+[under: Success Milestones] - Learn basics of application integration or Datamart reporting
+[under: Success Milestones] - Shadow BAU supports activities or simple inquiries
+[under: Success Milestones] 3–6 months
+[under: Success Milestones] - Independently analyze and resolve basic or medium BAU support issues with minimum guidance
+[under: Success Milestones] - Contribute to documentation and support article
+[under: Success Milestones] 6–12 months
+[under: Success Milestones] - Independently handle BAU support cases with collaboration with senior S4C consultants. Start contributing to new projects under senior stream lead guidance.
+[under: Success Milestones] - Able to handle configurations or interface building or batch reports in project delivery
+# Benefits & Perks
+[under: Benefits & Perks] - Competitive compensation package, with 13th salary and annual performance bonus
+[under: Benefits & Perks] - Comprehensive insurance package (SH/UH/IH based on 100% salary) and premium health insurance for employees and dependents
+[under: Benefits & Perks] - 25 days of annual leave
+[under: Benefits & Perks] - Opportunities for onsite training in Singapore (Regional Office) upon successful completion of probation
+[under: Benefits & Perks] - Structured onboarding program with mentorship from experienced Senior Consultants
+[under: Benefits & Perks] - Continuous learning and development through our Learning Management Platform and tech/finance upskilling program
+[under: Benefits & Perks] - Exposure to global teams and international projects
+[under: Benefits & Perks] - Collaborative and inclusive culture that fosters growth, innovation, and diversity
+[under: Benefits & Perks] - Modern office environment with food and beverages in the office pantry
+[under: Benefits & Perks] - Quarterly team-building and employee engagement activities
+
+=== 343766
+company: mthree
+title: Solution Architect
+options: UK [undeclared]
+description:
+# Solution Architect
+# Permanent | Hybrid, Dorset | System Integration | Software
+[under: Permanent | Hybrid, Dorset | System Integration | Software] We are seeking a Solution Architect to define, assure and govern end-to-end technology solutions within a complex operational environment.
+[under: Permanent | Hybrid, Dorset | System Integration | Software] In this role, you will be responsible for shaping solution architecture from initial customer engagement through to deployment and operational acceptance, ensuring solutions are secure, scalable, supportable and aligned to both business and customer requirements.
+[under: Permanent | Hybrid, Dorset | System Integration | Software] Working closely with Product Management, Engineering, Operations, Delivery and commercial stakeholders, you will act as the technical authority for solution design and integration.
+[under: Permanent | Hybrid, Dorset | System Integration | Software] This is an excellent opportunity for an experienced architect who enjoys solving complex business challenges, influencing technical direction and delivering high-quality outcomes across multiple stakeholders
+# Responsibilities
+[under: Responsibilities] - Define and assure end-to-end solutions across software, infrastructure and third-party integrations.
+[under: Responsibilities] - Act as the technical authority for solution architecture, systems integration and key technical decisions.
+[under: Responsibilities] - Capture and translate business, regulatory and customer requirements into scalable technical solutions.
+[under: Responsibilities] - Establish and maintain architecture artefacts, technical standards and solution documentation.
+[under: Responsibilities] - Support bids, tenders and customer engagements by assessing technical feasibility and solution fit.
+[under: Responsibilities] - Lead technical reviews, governance activities and solution approval processes.
+[under: Responsibilities] - Identify and manage technical risks, dependencies and architectural challenges throughout delivery.
+[under: Responsibilities] - Communicate complex technical concepts effectively to both technical and non-technical stakeholders.
+# Skills & Experience
+[under: Skills & Experience] - Proven experience in Solution Architecture, Enterprise Architecture or Technical Architecture roles.
+[under: Skills & Experience] - Strong understanding of systems integration, distributed systems and end-to-end solution design.
+[under: Skills & Experience] - Experience defining non-functional requirements including security, scalability, resilience, maintainability and performance.
+[under: Skills & Experience] - Ability to create and maintain architecture documentation, solution designs and technical standards.
+[under: Skills & Experience] - Experience supporting technical bids, customer engagements and solution assessments.
+[under: Skills & Experience] - Strong stakeholder management skills with the ability to engage technical teams, customers and senior leaders.
+[under: Skills & Experience] - Excellent communication and presentation skills, with the ability to simplify complex technical concepts.
+[under: Skills & Experience] - Experience working across the full solution lifecycle from concept through to operational acceptance.
+[under: Skills & Experience] - Demonstrable experience identifying and managing technical risks, assumptions and dependencies.
+# Desirable Skills
+[under: Desirable Skills] - Experience within regulated, transport, traffic management or enforcement environments.
+[under: Desirable Skills] - Knowledge of accreditation, compliance or assurance processes.
+[under: Desirable Skills] - Exposure to commercial bid and tender activities.
+[under: Desirable Skills] - Understanding of operational support and service management principles.
+[under: Desirable Skills] - Professional architecture certifications such as TOGAF, BCS or cloud architecture certifications.
+[under: Desirable Skills] - Experience working within complex multi-vendor environments.
+[under: Desirable Skills] Success in this role means delivering robust, secure and commercially viable solutions that meet customer needs and business objectives while maintaining architectural integrity throughout the solution lifecycle.
+[under: Desirable Skills] You'll provide clear technical leadership, guide informed decision-making, and ensure solutions meet key non-functional requirements such as security, resilience, scalability and supportability.
+[under: Desirable Skills] By building strong relationships across business and technology teams, supporting successful customer engagements and approvals, and proactively identifying and mitigating risks, you'll enable the consistent delivery of high-quality outcomes.
+[under: Desirable Skills] A strong focus on governance, standards and best practice will ensure solutions remain aligned with strategic objectives and are delivered in a sustainable, supportable and scalable manner.
+# About Peregrine
+[under: About Peregrine] We build workforces that deliver tech and change programmes at leading UK organisations.
+[under: About Peregrine] By combining data science from Peregrine Intelligence, our industry-accredited Peregrine Academy, and market-leading attraction and diversity initiatives, we bridge capability gaps at all levels in public and private sector organisations.
+[under: About Peregrine] We work closely with our clients to understand their challenges and deliver flexible, long-term solutions that make a real difference.
+[under: About Peregrine] When you join Peregrine, you become part of a team that’s focused on growth, both yours, our clients’, and the sectors we support.
+[under: About Peregrine] You’ll also get access to a full range of benefits alongside your salary.
+# How Specialist Talent Works
+[under: How Specialist Talent Works] As a permanent employee at Peregrine, you’ll be part of our Specialist Talent team.
+[under: How Specialist Talent Works] That means you’ll work on-site or remotely with our clients, supporting them on complex, high-impact projects in Data, Digital and Business Transformation.
+[under: How Specialist Talent Works] You’ll get the variety and challenge of consultancy work, with the stability and support of a permanent role.
+[under: How Specialist Talent Works] You’re not a contractor - you’re a valued member of our team, with access to all the same benefits, learning opportunities, and community.
+# Our Culture
+[under: Our Culture] We’re curious, open, and always learning.
+[under: Our Culture] We believe in doing great work and doing it with integrity.
+[under: Our Culture] We support each other, share ideas freely, and celebrate progress big and small.
+[under: Our Culture] And we care about the impact we make, whether that’s helping clients solve tough problems or creating opportunities for people from all walks of life.
+# Diversity and Inclusion
+[under: Diversity and Inclusion] We’re proud to be a diverse team, with 20+ nationalities represented across Peregrine.
+[under: Diversity and Inclusion] We welcome people from all backgrounds and experiences, and we’re committed to building an inclusive workplace where everyone can thrive.
+[under: Diversity and Inclusion] Through our partnerships and internal initiatives, we’re working to improve social mobility, reduce our environmental impact, and help our clients build more inclusive teams too.
+[under: Diversity and Inclusion] Find out more: peregrine.global or check out our LinkedIn page: peregrine-resourcing
+
+=== 704251
+company: 12542 Citicorp Services India Private Limited
+title: Oracle EBS P2P Senior App Developer - Assistant Vice President
+options: Pune Maharashtra India [undeclared] | Chennai Tamil Nadu India [undeclared]
+description:
+The Applications Development Senior Programmer Analyst is an intermediate level position responsible for participation in the establishment and implementation of new or revised application systems and programs in coordination with the Technology team.
+The overall objective of this role is to contribute to applications systems analysis and programming activities.
+# Responsibilities
+[under: Responsibilities] - Conduct tasks related to feasibility studies, time and cost estimates, IT planning, risk technology, applications development, model development, and establish and implement new or revised applications systems and programs to meet specific business needs or user areas
+[under: Responsibilities] - Monitor and control all phases of development process and analysis, design, construction, testing, and implementation as well as provide user and operational support on applications to business users
+[under: Responsibilities] - Utilize in-depth specialty knowledge of applications development to analyze complex problems/issues, provide evaluation of business process, system process, and industry standards, and make evaluative judgement
+[under: Responsibilities] - Recommend and develop security measures in post implementation analysis of business usage to ensure successful system design and functionality
+[under: Responsibilities] - Consult with users/clients and other technology groups on issues, recommend advanced programming solutions, and install and assist customer exposure systems
+[under: Responsibilities] - Ensure essential procedures are followed and help define operating standards and processes
+[under: Responsibilities] - Serve as advisor or coach to new or lower level analysts
+[under: Responsibilities] - Has the ability to operate with a limited level of direct supervision.
+[under: Responsibilities] - Can exercise independence of judgement and autonomy.
+[under: Responsibilities] - Acts as SME to senior stakeholders and /or other team members.
+[under: Responsibilities] - Appropriately assess risk when business decisions are made, demonstrating particular consideration for the firm's reputation and safeguarding Citigroup, its clients and assets, by driving compliance with applicable laws, rules and regulations, adhering to Policy, applying sound ethical judgment regarding personal behavior, conduct and business practices, and escalating, managing and reporting control issues with transparency.
+# Recommended Qualifications
+[under: Recommended Qualifications] - 8+ years of relevant experience
+[under: Recommended Qualifications] - Experience in systems analysis and programming of software applications
+[under: Recommended Qualifications] - Experience in managing and implementing successful projects
+[under: Recommended Qualifications] - Working knowledge of consulting/project management techniques/methods
+[under: Recommended Qualifications] - Ability to work under pressure and manage deadlines or unexpected changes in expectations or requirements
+# Education
+[under: Education] - Bachelor’s degree/University degree or equivalent experience
+[under: Education] This job description provides a high-level review of the types of work performed.
+[under: Education] Other job-related duties may be assigned as required.
+[under: Education] - Strong Technical and Functional knowledge of Oracle EBS 12.2.9 Oracle Payments, iSupplier, General Ledger, Fixed Assets, Payables and Project Accounting
+[under: Education] - Strong Experience with AOL, PL/SQL, PL SQL JSON, Shell Scripting and RICE components
+[under: Education] - Strong Experience with XML and XML / BI Publisher
+[under: Education] - Strong Experience with Oracle Workflows, AOL, Oracle Forms, Reports
+[under: Education] - Experience with OAF (Oracle Application Framework)
+[under: Education] - Experience with SOAP and RESTful web services
+[under: Education] - Use Gen AI‑enabled development and productivity tools to improve code quality, velocity, and reliability.
+[under: Education] - Work effectively with AI‑assisted and automated systems to design, build, and maintain software solutions.
+[under: Education] - Apply professional judgment when leveraging AI outputs, ensuring accuracy, security, and maintainability.
+[under: Education] - Continuously explores new tools and approaches that enhance engineering workflows and delivery outcomes.
+# Job Family Group
+[under: Job Family Group] Technology
+# Job Family
+[under: Job Family] Applications Development
+# Time Type
+[under: Time Type] Full time
+# Most Relevant Skills
+[under: Most Relevant Skills] Please see the requirements listed above.
+# Other Relevant Skills
+[under: Other Relevant Skills] For complementary skills, please see above and/or contact the recruiter.
+[under: Other Relevant Skills] Citi is an equal opportunity employer, and qualified candidates will receive consideration without regard to their race, color, religion, sex, sexual orientation, gender identity, national origin, disability, status as a protected veteran, or any other characteristic protected by law.
+[under: Other Relevant Skills] If you are a person with a disability and need a reasonable accommodation to use our search tools and/or apply for a career opportunity review Accessibility at Citi.
+[under: Other Relevant Skills] View Citi’s EEO Policy Statement and the Know Your Rights poster.
+
+=== 346879
+company: phData
+title: Business Systems Architect
+options: US - Remote [remote]
+description:
+> Join phData, a remote-first data and AI consultancy company with employees across the United States, Latin America, and India.
+> We partner with industry leaders, including Snowflake, AWS, Anthropic, Glean, and dbt, to solve the complex data and AI challenges that slow large enterprises.
+> We're growing fast, and we give our people real ownership over their work.
+> We hire top performers and trust them to deliver results.
+> # Why phData?
+> [under: Why phData?] - Snowflake Implementation Partner of the Year — 7 consecutive years, and 2026 Snowflake AI Partner of the Year
+> [under: Why phData?] - AWS Premier Tier Services Partner — the highest tier of recognition in the AWS Partner Network
+> [under: Why phData?] - 2025 Fivetran Partner of the Year (4th consecutive year)
+> [under: Why phData?] - 2025 dbt Labs Partner of the Year (3x winner) with Visionary partner status
+> [under: Why phData?] - 2026 KNIME Customer Excellence Partner of the Year
+> [under: Why phData?] - Preferred Partner in the Anthropic Claude Partner Network
+> [under: Why phData?] - 1 Partner in Snowflake Advanced Certifications
+> [under: Why phData?] - 600+ Expert Cloud Certifications (Sigma, AWS, Azure, Dataiku, and more)
+> [under: Why phData?] - Recognized as an award-winning workplace in the US, India and LATAM
+# About The Role
+[under: About The Role] The Business Systems Architect is responsible for designing, implementing, and evolving enterprise platform architecture solutions that support scalable, secure, and efficient business operations.
+[under: About The Role] This role partners with IT and business teams to solve complex technical challenges, lead architecture initiatives aligned with defined functional strategies, and support modernization efforts, including AI enablement, automation, integrations, and cloud transformation.
+[under: About The Role] This role exists to create a more connected, reliable, and scalable operating platform across the systems that run our Finance, People/HR, Revenue Operations, and IT processes.
+[under: About The Role] The architect will lead through ambiguous cross-functional problem so teams can operate with greater speed, visibility, and confidence.
+[under: About The Role] The architect must operate with a high degree of independence, providing technical leadership for architectural decisions while aligning solutions to business objectives, security requirements, and operational standards.
+# Primary Responsibilities and Duties
+[under: Primary Responsibilities and Duties] - Convert ambiguous stakeholder needs into prioritized projects with measurable success criteria.
+[under: Primary Responsibilities and Duties] - Own requirements intake, discovery, process mapping, impact analysis, and scoping for cross-functional business systems initiatives.
+[under: Primary Responsibilities and Duties] - Finalize solution designs and coordinate end-to-end technical implementation, including test planning, end-user UAT, defect resolution, deployment, post-deployment validation, and historical data reconciliation.
+[under: Primary Responsibilities and Duties] - Own ongoing data quality, including establishing monitoring, cleansing, validation, migration/backloading, and reconciliation as gaps are identified or data models evolve.
+[under: Primary Responsibilities and Duties] - Design and maintain enterprise architecture solutions for IT-owned systems and platforms
+[under: Primary Responsibilities and Duties] - Lead architecture efforts for moderately complex cross-functional initiatives
+[under: Primary Responsibilities and Duties] - Translate business and operational requirements into scalable technical solutions
+[under: Primary Responsibilities and Duties] - Define integration approaches across various SaaS and cloud platforms
+[under: Primary Responsibilities and Duties] - Support AI and automation initiatives through architecture guidance and implementation support
+[under: Primary Responsibilities and Duties] - Evaluate emerging technologies and provide recommendations aligned to business needs
+[under: Primary Responsibilities and Duties] - Ensure architecture solutions align with security, compliance, and governance standards
+[under: Primary Responsibilities and Duties] - Collaborate with IT and business teams on solution delivery
+[under: Primary Responsibilities and Duties] - Identify opportunities to optimize system performance, scalability, resiliency, and cost
+[under: Primary Responsibilities and Duties] - Provide technical mentorship and guidance to team members and project teams
+[under: Primary Responsibilities and Duties] - Contribute to architectural standards, documentation, and best practices
+[under: Primary Responsibilities and Duties] - Support vendor evaluations and technology selection activities
+[under: Primary Responsibilities and Duties] - Governance and administration of enterprise platforms, including role-based access controls, license management, and cost optimization
+# About You
+[under: About You] - You’re a collaborative and solutions-focused technologist with a strong foundation in enterprise architecture and modern platforms.
+[under: About You] - You enjoy solving complex problems, working across teams, and building scalable, secure solutions that drive real impact.
+[under: About You] - You take extreme ownership of outcomes, are comfortable leading through ambiguity, and can move between executive-level business conversations and detailed technical decisions.
+[under: About You] - You build trust by making complexity understandable, surfacing risks early, and following problems through from discovery to measurable results.
+[under: About You] - You care deeply about the quality and usefulness of the systems you build.
+[under: About You] - You are willing to challenge assumptions and adapt quickly as requirements change.
+# What You Bring
+[under: What You Bring] - Experience with enterprise systems, cloud/hybrid environments, and integration design (API, SaaS)
+[under: What You Bring] - Experience with enterprise systems such as Salesforce, Certinia, Rippling, and Greenhouse
+[under: What You Bring] - Strong problem-solving skills and the ability to troubleshoot complex technical issues
+[under: What You Bring] - Ability to communicate clearly with both technical and non-technical stakeholders
+[under: What You Bring] - A thoughtful approach to security, governance, and performance optimization
+[under: What You Bring] - A balance of hands-on execution and long-term architectural thinking
+# Core Experience
+[under: Core Experience] - 8+ years in systems, application, or enterprise architecture (or similar roles)
+[under: Core Experience] - Experience designing and delivering enterprise technology solutions
+[under: Core Experience] - Solid understanding of infrastructure, system design, and security principles
+[under: Core Experience] - Proven ability to partner with cross-functional teams and evaluate technical solutions
+[under: Core Experience] - Familiarity with architecture frameworks or security/compliance standards
+[under: Core Experience] - Exposure to vendor selection or mentoring team members
+# Preferred Additional Experience
+[under: Preferred Additional Experience] - Experience with AI, automation, or modernization initiatives
+> phData celebrates diversity and is committed to creating an inclusive environment for all employees.
+> Our approach helps us to build a winning team that represents a variety of backgrounds, perspectives, and abilities.
+> So, regardless of how your diversity expresses itself, you can find a home here at phData.
+> We are proud to be an equal opportunity employer.
+> We prohibit discrimination and harassment of any kind based on race, color, religion, national origin, sex (including pregnancy), sexual orientation, gender identity, gender expression, age, veteran status, genetic information, disability, or other applicable legally protected characteristics.
+> If you would like to request an accommodation due to a disability, please contact us at People Operations.
+

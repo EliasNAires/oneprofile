@@ -139,6 +139,8 @@ class CountrySetRuleTest {
 				Place.region("EMEA")));
 		assertThat(described("Employees may live anywhere in Mexico, with travel to Mexico City."))
 			.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("MX")));
+		assertThat(described("We are remote-first, so you may work from anywhere you like in the U.S."))
+			.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("US")));
 	}
 
 	@Test
@@ -172,6 +174,8 @@ class CountrySetRuleTest {
 		assertThat(described("Work from anywhere in the world for up to 60 days per year.")).isEmpty();
 		assertThat(described("4 weeks Work From Anywhere per year")).isEmpty();
 		assertThat(described("Hybrid roles have the flexibility to work from anywhere for up to 4 weeks.")).isEmpty();
+		assertThat(described("Flexible PTO and the freedom to work from anywhere in the world for up to a month."))
+			.isEmpty();
 	}
 
 	@Test
@@ -190,6 +194,23 @@ class CountrySetRuleTest {
 			.containsExactly(stated(StatedSetKindEnum.AUTHORIZATION, Place.country("US")));
 		assertThat(described("Applicants must be authorized to work in the country in which they apply.")).isEmpty();
 		assertThat(described("We use E-Verify to confirm that you are authorized to work in the U.S.")).isEmpty();
+	}
+
+	@Test
+	void workAuthorizationForSomeOfTheCompanysRolesIsNoStatedSet() {
+		assertThat(described("Applicants for employment in the US must have work authorization that does not now or "
+				+ "in the future require sponsorship of a visa for employment authorization in the United States."))
+			.isEmpty();
+		assertThat(described("For US based roles only, please note the Company may not be able to employ candidates "
+				+ "for this role who have United States work authorization related to certain U.S. visa categories."))
+			.isEmpty();
+	}
+
+	@Test
+	void aSponsorshipPolicyIsNoStatedSet() {
+		assertThat(described("U.S. work authorization sponsorship (H-1B, TN, J, etc.) is offered exclusively for "
+				+ "Principal-level roles and above, where specialized expertise aligns with long-term business needs."))
+			.isEmpty();
 	}
 
 	@Test

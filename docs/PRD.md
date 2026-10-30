@@ -216,7 +216,7 @@ stored with the list it came from and its places; the place list is `src/main/re
 and the rule answers to `docs/place-criterion.md`. Its first run, the residue by frequency and its
 precision and recall on a blind sample are `docs/measurements/2026-10-places.md`.
 
-### 5.4 Eligibility — country set built
+### 5.4 Eligibility — country set built, measured
 
 The question the system answers is **"will this company pay someone located in this
 country?"** — not "is this job remote" and not "am I authorized to work there". The country is
@@ -264,8 +264,13 @@ come from GeoNames' time zones. Its first run is `docs/measurements/2026-10-coun
 
 Extraction is rule-based only (ADR-0005). Eligibility is hard-filtered for matches, and the
 Finder's toggle narrows to it, which makes recall the binding constraint (ADR-0004, ADR-0019);
-it is measured once on a blind, stratified sample of every work mode, labelled by agents
-(#12), and the missed phrasings are the work queue.
+it was measured once on a blind, stratified sample of every work mode, labelled by agents
+(#12, `docs/measurements/2026-10-eligibility.md`), against `docs/eligibility-criterion.md`.
+Eligible precision for Argentina is 78.4%: the location 88% and the title 100%, but the
+description 22%, where a perk's `work from anywhere` is read as Worldwide, alone or beside a
+stated place. Of the default feed an Argentine visitor is shown, 6% is really open to them. By
+the gates of #12, the description is to become a rule loop and the feed's default view or ranking
+is to change; the missed phrasings listed there are the work queue.
 
 ### 5.5 Skills — taxonomy and extraction built, precision measured
 

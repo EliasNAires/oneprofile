@@ -1,0 +1,318 @@
+#!/usr/bin/env python3
+"""Audits, sizes and draws the blind sample that measures eligibility (#12) from the development database.
+
+    scripts/draw-eligibility-sample DIRECTORY --audit [how many texts, default 100]
+    scripts/draw-eligibility-sample DIRECTORY --concentration
+    scripts/draw-eligibility-sample DIRECTORY
+
+Run after POST /country-sets. Every vacancy of the engineering subset is given its eligibility state for
+Argentina and the United States, with the person's city unknown, by the application's own rule
+(EligibilityStates.java, next to it), with the stated sets that decided it.
+
+With --audit, writes DIRECTORY/audit.tsv: the texts that decided a state for Argentina, grouped by the state,
+where the text was read, its kind and the text itself, the most frequent by vacancies, eligible first, each
+with its places and one vacancy that holds it.
+
+With --concentration, prints how many companies supply the vacancies eligible for Argentina, the share of the
+largest five, and how many of them repeat another's company, title and options, and another's company and title.
+
+Otherwise draws, seeded, the strata of #12's method, and writes DIRECTORY/sample.tsv, every drawn vacancy with
+its strata, its states and the texts that decided Argentina's; DIRECTORY/strata.tsv, the size of each stratum,
+which weighs it; DIRECTORY/checks.tsv, the strata checked from their stored sets with no labeller (excluded
+by an onsite or hybrid option, and every timezone requirement); and DIRECTORY/batch-N.txt, the labelled
+vacancies shuffled and split, with only what a labeller sees (docs/eligibility-criterion.md): a block per
+vacancy, headed `=== id`, with the company, the title, the options with their work modes, and the description
+a segment a line, whole for the recall strata and otherwise the segments holding a broad cue with the segment
+before and after each.
+"""
+
+import csv
+import json
+import random
+import re
+import subprocess
+import sys
+from collections import Counter, defaultdict
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+
+SEED = 12
+
+COUNTRIES = ("AR", "US")
+
+SEGMENT_LENGTH = 600
+
+# How many vacancies each labelled stratum draws, as #12's method sets them.
+ELIGIBLE = {"LOCATION": 50, "TITLE": 50, "DESCRIPTION": 50}
+UNKNOWN_RANDOM = 50
+UNKNOWN_CUE = 50
+FEED = 50
+EXCLUDED_KINDS = {"LOCATION": 10, "AUTHORIZATION": 10, "CITIZENSHIP": 10, "CLEARANCE": 10}
+ONSITE = 10
+
+# Vacancies to a batch, so that one is read whole at once: a whole description weighs about three times the
+# segments around a cue.
+WHOLE_BATCH = 10
+CUE_BATCH = 25
+
+# The cheap cues that point an unknown vacancy's description at a missed phrasing (#12, decided 2026-10-30).
+RECALL_CUE = re.compile(r"\bLATAM\b|\bAmericas\b|UTC\s*-\s*3\b|\bcontractors?\b|\bDeel\b|\banywhere\b",
+                        re.IGNORECASE)
+
+# A segment that may say where the person must be or where the company hires.
+BROAD_CUE = re.compile(
+    r"\bremote|\blocation|\blocated\b|\bbased\b|\bvisa\b|relocat|authori[sz]|\bcitizen|clearance|time ?zones?\b"
+    r"|\bUTC\b|\bGMT\b|\bcontract|\banywhere\b|\bcountr(?:y|ies)\b|\bregion|\bworldwide\b|\bglobal(?:ly)?\b"
+    r"|\bLATAM\b|\bAmericas?\b|\bEurope\b|\bEMEA\b|\bAPAC\b|\bU\.?S\.?A?\b|\bUnited States\b|\bCanada\b"
+    r"|\bUK\b|\bUnited Kingdom\b|\bArgentin|\bBrazil|\bMexic|\bIndia\b|\bGerman|\breside|\bresiden",
+    re.IGNORECASE)
+
+QUERY = """
+copy (
+  select v.id, c.ats, c.id, coalesce(c.name, c.slug), v.title, n.work_mode,
+    json_agg(json_build_object('position', s.position, 'source', s.source, 'kind', s.kind, 'workMode', s.work_mode,
+      'segment', s.segment, 'text', s.text, 'places', s.places, 'utcFrom', s.utc_from, 'utcTo', s.utc_to)
+      order by s.position) filter (where s.position is not null)
+  from normalized_vacancy n join vacancy v on v.id = n.vacancy_id join company c on c.id = v.company_id
+    left join normalized_vacancy_stated_set s on s.normalized_vacancy_id = n.id
+  where n.classification_state = 'IN'
+  group by v.id, c.ats, c.id, c.name, c.slug, v.title, n.work_mode
+  order by v.id
+) to stdout with (format csv, header false)
+"""
+
+SEGMENTS_QUERY = """
+copy (
+  select n.vacancy_id, n.description_segments from normalized_vacancy n where n.vacancy_id in ({ids})
+) to stdout with (format csv, header false)
+"""
+
+
+def psql(query):
+    out = subprocess.run(["docker", "compose", "--project-directory", str(REPO), "exec", "-T", "postgres", "psql",
+                          "-v", "ON_ERROR_STOP=1", "-U", "oneprofile", "-d", "oneprofile", "-c", query],
+                         capture_output=True, text=True, encoding="utf-8", check=True).stdout
+    return list(csv.reader(out.splitlines(keepends=True)))
+
+
+def classpath():
+    file = REPO / "target" / "classpath.txt"
+    subprocess.run([str(REPO / "mvnw"), "-q", "-f", str(REPO / "pom.xml"), "compile", "dependency:build-classpath",
+                    f"-Dmdep.outputFile={file}"], check=True)
+    return f"{REPO / 'target' / 'classes'}:{file.read_text().strip()}"
+
+
+def vacancies():
+    """Every vacancy of the subset, with its stated sets and the state the rule gives each country."""
+    print("Reading the subset's stated sets", file=sys.stderr)
+    rows = {r[0]: {"id": r[0], "ats": r[1], "company_id": r[2], "company": r[3], "title": r[4],
+                   "work_mode": r[5] or "UNDECLARED", "sets": json.loads(r[6]) if r[6] else []}
+            for r in psql(QUERY)}
+    print("Deriving their states", file=sys.stderr)
+    stdin = "".join(json.dumps({"id": int(row["id"]), "statedSets": row["sets"]}) + "\n" for row in rows.values())
+    out = subprocess.run(["java", "-cp", classpath(), str(REPO / "scripts" / "EligibilityStates.java"), *COUNTRIES],
+                         input=stdin, capture_output=True, text=True, encoding="utf-8", check=True).stdout
+    for line in out.splitlines():
+        vacancy, country, state, source, positions = line.split("\t")
+        rows[vacancy][country] = {"state": state, "source": source,
+                                  "positions": [int(p) for p in positions.split(",")] if positions else []}
+    return list(rows.values())
+
+
+def deciding(row, country="AR"):
+    by_position = {s["position"]: s for s in row["sets"]}
+    return [by_position[p] for p in row[country]["positions"]]
+
+
+def flat(text):
+    return " ".join((text or "").split()) or "-"
+
+
+def places(stated):
+    named = []
+    for place in stated["places"]:
+        if place["kind"] == "REGION":
+            named.append(place["region"])
+        else:
+            named.append("/".join(p for p in (place.get("city"), place.get("subdivision"), place["country"]) if p))
+    if stated["kind"] == "TIMEZONE":
+        named.append(f"UTC{stated['utcFrom'] / 60:+g}..{stated['utcTo'] / 60:+g}")
+    return ", ".join(named) or "-"
+
+
+def audit(directory, rows, size):
+    groups = defaultdict(list)
+    for row in rows:
+        for stated in deciding(row):
+            groups[(row["AR"]["state"], stated["source"], stated["kind"], flat(stated["text"]))].append(
+                (row, stated))
+    top = sorted(groups.items(), key=lambda item: -len(item[1]))[:size]
+    order = {"ELIGIBLE": 0, "EXCLUDED": 1, "UNKNOWN": 2}
+    top.sort(key=lambda item: (order[item[0][0]], -len(item[1])))
+    with open(directory / "audit.tsv", "w", encoding="utf-8") as out:
+        out.write("rank\tvacancies\tstate\tsource\tkind\tplaces\ttext\texample\n")
+        for rank, ((state, source, kind, text), held) in enumerate(top, 1):
+            row, stated = held[0]
+            out.write("\t".join([str(rank), str(len(held)), state, source, kind, places(stated), text, row["id"]])
+                      + "\n")
+    covered = sum(len(held) for _, held in top)
+    decided = sum(1 for row in rows if row["AR"]["positions"])
+    print(f"{len(top)} texts hold {covered} of the {decided} vacancies a stated set decides for Argentina")
+
+
+def concentration(rows):
+    eligible = [row for row in rows if row["AR"]["state"] == "ELIGIBLE"]
+    companies = Counter(row["company"] for row in eligible)
+    largest = companies.most_common(5)
+    print(f"{len(eligible)} vacancies eligible for Argentina, from {len(companies)} companies")
+    print(f"the largest five hold {sum(n for _, n in largest)} ({sum(n for _, n in largest) / len(eligible):.1%}):")
+    for company, count in largest:
+        print(f"  {company}\t{count}")
+    single = sum(1 for n in companies.values() if n == 1)
+    print(f"{single} companies offer one eligible vacancy")
+    keys = Counter((row["company_id"], flat(row["title"]).lower(),
+                    tuple(sorted(flat(s["text"]) for s in row["sets"] if s["source"] == "LOCATION")))
+                   for row in eligible)
+    repeats = sum(n - 1 for n in keys.values() if n > 1)
+    print(f"{repeats} repeat another's company, title and options; {len(keys)} are distinct")
+    titles = Counter((row["company_id"], flat(row["title"]).lower()) for row in eligible)
+    print(f"{sum(n - 1 for n in titles.values() if n > 1)} repeat another's company and title; {len(titles)} are "
+          f"distinct")
+
+
+def marked(segment):
+    text = " ".join(segment["text"].split())[:SEGMENT_LENGTH]
+    if segment.get("kind") == "HEADING":
+        text = "# " + text
+    elif segment.get("kind") == "ITEM":
+        text = "- " + text
+    if segment.get("under"):
+        text = f"[under: {' '.join(segment['under'].split())}] {text}"
+    return "> " + text if segment.get("boilerplate") else text
+
+
+def excerpt(segments, whole):
+    if whole:
+        shown = range(len(segments))
+    else:
+        cued = [index for index, segment in enumerate(segments) if BROAD_CUE.search(segment["text"])]
+        shown = sorted({near for index in cued for near in (index - 1, index, index + 1)
+                        if 0 <= near < len(segments)})
+    parts = []
+    for place, index in enumerate(shown):
+        if place and index > shown[place - 1] + 1:
+            parts.append("…")
+        parts.append(marked(segments[index]))
+    return parts
+
+
+def options(row):
+    shown = [f"{flat(s['text'])} [{(s['workMode'] or 'undeclared').lower()}]"
+             for s in row["sets"] if s["source"] == "LOCATION"]
+    return " | ".join(shown) or "-"
+
+
+def draw(directory, rows):
+    rng = random.Random(SEED)
+    drawn = {}
+    strata = []
+
+    def take(name, pool, size):
+        pool = sorted(pool, key=lambda row: int(row["id"]))
+        chosen = rng.sample(pool, min(size, len(pool)))
+        strata.append((name, len(pool), len(chosen)))
+        for row in chosen:
+            drawn.setdefault(row["id"], (row, []))[1].append(name)
+        return chosen
+
+    for source, size in ELIGIBLE.items():
+        take(f"eligible {source.lower()}",
+             [r for r in rows if r["AR"]["state"] == "ELIGIBLE" and r["AR"]["source"] == source], size)
+    unknown = [r for r in rows if r["AR"]["state"] == "UNKNOWN"]
+    segments = segments_of([r["id"] for r in unknown])
+    cued = {r["id"] for r in unknown if any(RECALL_CUE.search(s["text"]) for s in segments.get(r["id"], []))}
+    random_unknown = take("unknown random", unknown, UNKNOWN_RANDOM)
+    taken = {r["id"] for r in random_unknown}
+    take("unknown cue", [r for r in unknown if r["id"] in cued and r["id"] not in taken], UNKNOWN_CUE)
+    take("feed", [r for r in rows if r["AR"]["state"] in ("ELIGIBLE", "UNKNOWN")], FEED)
+    excluded = [r for r in rows if r["AR"]["state"] == "EXCLUDED" and r["AR"]["source"] == "DESCRIPTION"]
+    for kind, size in EXCLUDED_KINDS.items():
+        kinds = {"LOCATION": ("LOCATION", "REGION")}.get(kind, (kind,))
+        take(f"excluded {kind.lower()}",
+             [r for r in excluded if any(s["kind"] in kinds for s in deciding(r))], size)
+    checked_onsite = take("excluded onsite", [r for r in rows if r["AR"]["state"] == "EXCLUDED"
+                                              and r["AR"]["source"] == "LOCATION"], ONSITE)
+    timezones = [r for r in rows if any(s["kind"] == "TIMEZONE" for s in r["sets"])]
+    strata.append(("timezone", len(timezones), len(timezones)))
+
+    with open(directory / "strata.tsv", "w", encoding="utf-8") as out:
+        out.write("stratum\tvacancies\tdrawn\n")
+        for name, size, chosen in strata:
+            out.write(f"{name}\t{size}\t{chosen}\n")
+
+    checked = {r["id"] for r in checked_onsite}
+    labelled = [(row, names) for row, names in drawn.values() if row["id"] not in checked]
+    every = segments_of([row["id"] for row, _ in labelled])
+    with open(directory / "sample.tsv", "w", encoding="utf-8") as out:
+        out.write("id\tats\tstrata\twork_mode\tar\tar_source\tus\tus_source\ttitle\toptions\tdecided_by\n")
+        for row, names in sorted(drawn.values(), key=lambda item: int(item[0]["id"])):
+            out.write("\t".join([row["id"], row["ats"], ",".join(names), row["work_mode"].lower(),
+                                 row["AR"]["state"].lower(), row["AR"]["source"].lower(), row["US"]["state"].lower(),
+                                 row["US"]["source"].lower(), flat(row["title"]), options(row),
+                                 " | ".join(f"{s['kind'].lower()}: {flat(s['text'])[:200]}" for s in deciding(row))
+                                 or "-"]) + "\n")
+    with open(directory / "checks.tsv", "w", encoding="utf-8") as out:
+        out.write("id\tcheck\tar\tus\tset\tplaces\ttext\n")
+        for row in checked_onsite:
+            for stated in (s for s in row["sets"] if s["source"] == "LOCATION"):
+                out.write("\t".join([row["id"], "onsite", row["AR"]["state"].lower(), row["US"]["state"].lower(),
+                                     (stated["workMode"] or "undeclared").lower(), places(stated),
+                                     flat(stated["text"])]) + "\n")
+        for row in timezones:
+            for stated in (s for s in row["sets"] if s["kind"] == "TIMEZONE"):
+                out.write("\t".join([row["id"], "timezone", row["AR"]["state"].lower(), row["US"]["state"].lower(),
+                                     "timezone", places(stated), flat(stated["text"])]) + "\n")
+
+    whole = [(row, names) for row, names in labelled if any(n.startswith("unknown") for n in names)]
+    cue = [(row, names) for row, names in labelled if not any(n.startswith("unknown") for n in names)]
+    batches = []
+    for group, size in ((whole, WHOLE_BATCH), (cue, CUE_BATCH)):
+        group = [row for row, _ in group]
+        rng.shuffle(group)
+        batches += [(group[i:i + size], size == WHOLE_BATCH) for i in range(0, len(group), size)]
+    for number, (batch, is_whole) in enumerate(batches, 1):
+        with open(directory / f"batch-{number}.txt", "w", encoding="utf-8") as out:
+            for row in batch:
+                out.write(f"=== {row['id']}\ncompany: {flat(row['company'])}\ntitle: {flat(row['title'])}\n"
+                          f"options: {options(row)}\ndescription:\n")
+                out.write("\n".join(excerpt(every.get(row["id"], []), is_whole) or ["-"]) + "\n\n")
+    print(f"{len(drawn)} vacancies drawn, {len(labelled)} to label in {len(batches)} batches")
+
+
+def segments_of(ids):
+    found = {}
+    ids = list(ids)
+    for start in range(0, len(ids), 5000):
+        for r in psql(SEGMENTS_QUERY.format(ids=",".join(ids[start:start + 5000]))):
+            found[r[0]] = json.loads(r[1]) if r[1] else []
+    return found
+
+
+def main():
+    if len(sys.argv) < 2:
+        sys.exit(__doc__)
+    directory = Path(sys.argv[1])
+    directory.mkdir(parents=True, exist_ok=True)
+    rows = vacancies()
+    if "--audit" in sys.argv:
+        rest = [a for a in sys.argv[2:] if a != "--audit"]
+        audit(directory, rows, int(rest[0]) if rest else 100)
+    elif "--concentration" in sys.argv:
+        concentration(rows)
+    else:
+        draw(directory, rows)
+
+
+if __name__ == "__main__":
+    main()

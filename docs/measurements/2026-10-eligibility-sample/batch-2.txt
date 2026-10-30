@@ -1,0 +1,632 @@
+=== 1120772
+company: DPR GP
+title: IT Field Engineer
+options: Raleigh-Durham, NC [undeclared]
+description:
+# Job Description
+[under: Job Description] At DPR, roles and responsibilities are more than describing a job title—they are a commitment to building great things together.
+[under: Job Description] The job description(s) below defines core responsibilities and the scope of the role and is a starting point.
+[under: Job Description] Every employee is expected to lead from where they are, take ownership of outcomes, and always act in the best interest of the team, customer, project and organization.
+[under: Job Description] As a purpose-driven organization on a journey to be most admired, we rely on trust, shared leadership, open communication, disciplined action and a deep respect for the individual to drive exceptional performance.
+[under: Job Description] Success is not just about what we build, but who we build and how we build it: with integrity, enjoyment, uniqueness and an ever-forward mindset.
+# Job Summary
+[under: Job Summary] Deploys, supports, and maintains standardized technology environments at job sites and offices.
+[under: Job Summary] Implements Meraki network equipment, conference room systems, and endpoint configurations in accordance with enterprise standards.
+# Key Responsibilities
+[under: Key Responsibilities] Deploys and configures jobsite network equipment and connectivity solutions.
+[under: Key Responsibilities] Installs and maintains field hardware, workstations, mobile devices, and site infrastructure.
+[under: Key Responsibilities] Troubleshoots and resolves site-level technical issues per service standards.
+[under: Key Responsibilities] Maintains asset tracking, recovery, and documentation within established systems.
+[under: Key Responsibilities] Supports project startup and closeout technology requirements.
+[under: Key Responsibilities] Coordinates escalations with Infrastructure and Service Delivery teams.
+[under: Key Responsibilities] Ensures field environments adhere to enterprise security and configuration standards.
+# Education Qualifications
+[under: Education Qualifications] Associate’s degree in information technology, computer science, or a related field preferred, or equivalent experience considered.
+# Work Experience
+[under: Work Experience] 2–4 years of experience in IT field support, networking, or systems administration required.
+# Certifications and Licenses
+[under: Certifications and Licenses] Networking or IT service management certification preferred.
+[under: Certifications and Licenses] Successful completion of a background check is required.
+# Additional Job Description
+[under: Additional Job Description] - Based at an office in Raleigh-Durham, NC supporting the local Business Unit and surrounding jobsites, including travel between locations as required.
+[under: Additional Job Description] - Provide hands-on technical support for end-user and field technologies, including laptops, mobile devices, conference room technology, printers, peripherals, and related systems.
+[under: Additional Job Description] - Install, configure, and troubleshoot networking technologies, including firewalls, switches, access points, VLANs, DHCP/DNS, and other jobsite network infrastructure.
+[under: Additional Job Description] - Own technical issues through resolution, including troubleshooting, escalation, and coordination with other IT teams or vendors as needed.
+[under: Additional Job Description] - Partner with Business Unit and project team leadership to support technology needs associated with mobilizations, site changes, workforce growth, and ongoing operations.
+[under: Additional Job Description] - Build strong relationships with project teams, regional leadership, and other business partners by providing responsive support and taking ownership of the overall technology experience.
+[under: Additional Job Description] - On-Site position, no remote or hybrid option.
+[under: Additional Job Description] - This position includes a company vehicle for commuting to and from work locations.
+[under: Additional Job Description] - Ability to lift 50 lbs.
+[under: Additional Job Description] DPR Construction is a forward-thinking, self-performing general contractor specializing in technically complex and sustainable projects for the advanced technology, life sciences, healthcare, higher education and commercial markets.
+[under: Additional Job Description] Founded in 1990, DPR is a great story of entrepreneurial success as a private, employee-owned company that has grown into a multi-billion-dollar family of companies with offices around the world.
+[under: Additional Job Description] Working at DPR, you'll have the chance to try new things, explore paths and shape your future.
+[under: Additional Job Description] Here, we build opportunity together—by harnessing our talents, enabling curiosity and pursuing our collective ambition to make the best ideas happen.
+[under: Additional Job Description] We are proud to be recognized as a great place to work by our talented teammates and leading news organizations like U.S. News and World Report, Forbes, Fast Company and Newsweek.
+[under: Additional Job Description] Explore our open opportunities at www.dpr.com/careers.
+
+=== 258297
+company: plane
+title: Software Engineer, Frontend (React)
+options: India [undeclared]
+description:
+# About Plane
+[under: About Plane] Plane's mission is to build the infrastructure the world's work runs on.
+[under: About Plane] Every organization runs on three things: the projects it's driving, the knowledge it keeps, and the requests it fields.
+[under: About Plane] Plane brings all three into one open, adaptable platform: simple enough for any team to adopt, dependable enough for organizations to build on.
+[under: About Plane] And we are building it for a future where humans and AI agents do that work together.
+[under: About Plane] Plane began in public on GitHub at the end of 2022.
+[under: About Plane] Since then it has grown into a work management platform used by teams around the world: 55,000+ stars, 5,000+ forks, and a contributor community that reads our code and files our issues.
+[under: About Plane] Organizations run Plane as a managed Cloud service, on their own infrastructure, or inside fully isolated environments.
+[under: About Plane] Building in the open keeps us close to users and raises the standard for everything we ship.
+[under: About Plane] Plane is the #1 work infrastructure in aerospace, defense, financial services, and other regulated industries: organizations whose requirements for control, auditability, and data residency rule most software out.
+[under: About Plane] When the strictest buyers pick a system of record, that choice means something.
+[under: About Plane] Adoption is growing fastest on Plane Cloud and in sovereign clouds, deployments that keep everything inside a country's own borders and rules.
+[under: About Plane] Plane is backed by top investors and built across San Francisco, London, and Hyderabad.
+[under: About Plane] We work in tightly knit teams, stay close to users, and care about the visible product as much as the unglamorous details that make software dependable.
+[under: About Plane] People own problems end to end, and we add process only when it helps the work.
+# Humans and agents
+[under: Humans and agents] We believe the next decade of work will be done by humans and AI agents together.
+[under: Humans and agents] Not agents replacing people, and not a chat window bolted onto software built for humans clicking around, but both working in one system of action, where an agent's work is as visible and as accountable as a person's.
+[under: Humans and agents] Most software treats AI as a feature.
+[under: Humans and agents] We treat agents as a kind of worker, and that changes what the system underneath has to be.
+[under: Humans and agents] Agents are only as good as the context they can see and the state they are allowed to change, so shared context, explicit state, durable history, and accountable action are not items on our roadmap.
+[under: Humans and agents] They are the product.
+[under: Humans and agents] Plane is built so that when an agent acts, the humans responsible can see what happened, why, and on whose authority, and the record survives.
+[under: Humans and agents] This is what the infrastructure is for: making the future where humans and agents work together useful, legible, and fully within the organization's control.
+[under: Humans and agents] Every role at Plane is some part of building that.
+# About the role
+[under: About the role] Plane's client is local-first, so state lives in the browser, syncs when the network allows, and has to stay correct when two people edit the same document at once or when a customer's cluster never touches the internet.
+[under: About the role] Agents now act inside those same workspaces, which means the interface has to render a change made by a machine as legibly as one made by a colleague.
+[under: About the role] You will own frontend surfaces across that client: the dense views that hold tens of thousands of issues, the collaborative editor, the offline and caching layer under both, and the design system components the rest of the product is built from.
+[under: About the role] You will work with designers, product, and backend engineers in San Francisco and Hyderabad, and your commits land in a public repository where contributors read them.
+# What you'll do
+[under: What you'll do] - Own user-facing surfaces from design review through component work to rollout, starting with scoped ones and taking on larger ones as you learn the client.
+[under: What you'll do] - Extend the local-first sync and collaborative editing layer alongside the engineers who built it: serialization, conflict resolution, and what the interface does when the two disagree.
+[under: What you'll do] - Keep dense views fast. Virtualization, memoization, and render paths in workspaces holding tens of thousands of issues are yours to profile and fix.
+[under: What you'll do] - Make Plane usable offline and on slow networks with Service Workers and IndexedDB, including for customers whose machines never reach the internet.
+[under: What you'll do] - Work daily with designers and backend engineers across San Francisco and Hyderabad, and review community pull requests from contributors you will never meet.
+[under: What you'll do] - Chase visual and behavioral bugs you cannot reproduce, across browsers, screen sizes, and self-hosted versions running months behind ours.
+# What you'll bring
+[under: What you'll bring] - You have shipped React and TypeScript to production. Point us to something you built, and tell us one decision in it you would make differently now.
+[under: What you'll bring] - You reason about state, not just hooks. You know when state belongs local, when it belongs global, and how reactivity moves through an app (MobX, Redux, Zustand, or similar).
+[under: What you'll bring] - You write CSS with intent. Responsive, themeable interfaces in Tailwind or a comparable system, and an eye that catches a misaligned element before review does.
+[under: What you'll bring] - You have worked inside a shared component library. You know what breaks when a component is used in ways its author did not plan for.
+# Nice to haves
+[under: Nice to haves] - You have made a slow interface fast, and you can quote the measurement.
+[under: Nice to haves] - You have contributed to Plane, run it self-hosted, or maintained another open project people rely on.
+[under: Nice to haves] - You have worked inside a rich-text editor framework (ProseMirror, CodeMirror, Lexical, Tiptap) rather than only on top of one.
+[under: Nice to haves] - You have built offline-first or CRDT-backed applications and have opinions about conflict resolution.
+[under: Nice to haves] - You have built interfaces where AI agents act on real data, and you have thought about how to show authorship and authority.
+# Tech
+[under: Tech] - Frontend: React, TypeScript, Tailwind CSS, MobX, React Router
+[under: Tech] - Editing and sync: ProseMirror based editor, local-first sync, Service Workers, IndexedDB
+[under: Tech] - Desktop: Electron
+[under: Tech] - Build and design system: Vite, Rolldown, internal React component library
+[under: Tech] - Services you will call: Python/Django, Golang, Elixir, Postgres, Redis, public REST and GraphQL APIs
+[under: Tech] - Observability: Datadog, Sentry
+[under: Tech] - Everyday tools: GitHub, Plane (yes, we run on it), Figma, Slack
+# Why Plane?
+[under: Why Plane?] Every company says it is different.
+[under: Why Plane?] We will try evidence instead.
+[under: Why Plane?] The scope is real.
+[under: Why Plane?] We are a passion team serving companies of every size, including some of the largest in the world.
+[under: Why Plane?] Something you ship this month will run inside a Fortune 500 company and a 50-person startup in the same week, and you will hear from both.
+[under: Why Plane?] The constraints make you better.
+[under: Why Plane?] Plane runs in our cloud, in customers' clouds, and on machines that will never touch the internet.
+[under: Why Plane?] Much of the work happens in the open, where the issues, the fixes, and the roadmap conversations are public.
+[under: Why Plane?] Building software that survives all of that is harder than building an ordinary SaaS product, and it is a better education than most companies can offer.
+[under: Why Plane?] The people-and-agents future is being built here, in production.
+[under: Why Plane?] We think humans and AI agents will share one system of action for work.
+[under: Why Plane?] We are building that system now, for customers who already depend on it, and you will work on that problem directly whatever your role.
+[under: Why Plane?] Your name is on the work.
+[under: Why Plane?] The teams are deeply connected enough that credit and responsibility both find you fast.
+[under: Why Plane?] That is some pressure.
+[under: Why Plane?] Mostly it is the fun part.
+[under: Why Plane?] If that sounds like your kind of place, we would like to meet you.
+[under: Why Plane?] Plane is an equal opportunity employer.
+[under: Why Plane?] We do not discriminate based on race, color, religion, gender identity or expression, sexual orientation, national origin, age, disability, veteran status, or any other protected characteristic under applicable law.
+
+=== 6403
+company: Alarm.com
+title: Database Engineer
+options: Taoyuan, Taiwan [undeclared]
+description:
+Alarm.com is a rapidly expanding technology company developing innovative cloud and device solutions across a wide range of cutting-edge technologies that provide a unified, connected service to millions of residential and commercial properties in the US and abroad.
+We are seeking a Database Engineer to manage SQL Server databases through multiple product lifecycle environments, from development to life-safety/mission critical production systems.
+Configure and maintain database servers and processes, including monitoring of system health and performance, to ensure high levels of performance, availability, and security.
+# RESPONSIBILITIES
+# Primary job responsibilities include
+[under: Primary job responsibilities include] - Design and implement multi-site Microsoft SQL Server Always On.
+[under: Primary job responsibilities include] - Own, track and resolve database related incidents and requests within SLAs
+[under: Primary job responsibilities include] - Plan and perform automated and attended database maintenance activities via planned and unplanned windows
+[under: Primary job responsibilities include] - Implement monitoring, auditing, data backup and recovery solutions.
+[under: Primary job responsibilities include] - Maintain the integrity of the company’s security and compliance programs as it relates to the database infrastructure
+[under: Primary job responsibilities include] - Provide technical direction to Engineering teams on best practices for deploying applications. Serve as the company’s inhouse Microsoft SQL Server evangelist and expert advisor.
+# REQUIREMENTS
+[under: REQUIREMENTS] - A. or B.S. (or higher-level degree) in Computer Science or a similar engineering
+[under: REQUIREMENTS] - 10+ years of experience in database implementations and support of Microsoft SQL Server in highly available/highly transactional and OLAP environments
+[under: REQUIREMENTS] - Experience in Database Administration in Microsoft SQL Server (2022 and 2025)
+[under: REQUIREMENTS] - Mastery in SQL Server Always On and all other high availability database features is a must
+[under: REQUIREMENTS] - Experience in troubleshooting and resolving database integrity issues, migration issues, performance issues, blocking and deadlocking issues, replication issues, log shipping issues, connectivity issues, security issues etc.
+[under: REQUIREMENTS] - Experience in Performance Tuning, Query Optimization, using Performance Monitor, SQL Profiler and other related monitoring and troubleshooting tool
+[under: REQUIREMENTS] - Ability to detect and troubleshoot SQL Server related CPU, memory, I/O, storage and other resource contention
+[under: REQUIREMENTS] - Strong knowledge of backups, restores, recovery models, database shrink operations, Dynamic Management Views, Clustering, Database mirroring, auditing and replication
+[under: REQUIREMENTS] - Expert experience in implementing operational automation
+[under: REQUIREMENTS] - Strong knowledge of how indexes, index management, integrity checks, configuration, encryption, patching. How statistics work, how indexes are stored, how they can be created and managed effectively
+[under: REQUIREMENTS] - SQL Development – ability to write and troubleshoot SQL Code and design (stored procs, functions, tables, views, triggers, indexes, constraints)
+[under: REQUIREMENTS] - Documentation skills for processes and procedures
+[under: REQUIREMENTS] - SQL Database Operational support to tech users
+[under: REQUIREMENTS] - On call availability
+# WHY WORK FOR ALARM.COM?
+[under: WHY WORK FOR ALARM.COM?] - Collaborate with outstanding people: We hire only the best. Our standards are high and our employees enjoy working alongside other high achievers.
+[under: WHY WORK FOR ALARM.COM?] - Make an immediate impact: New employees can expect to be given real responsibility for bringing new technologies to the marketplace. You are empowered to perform as soon as you join the Alarm.com team!
+[under: WHY WORK FOR ALARM.COM?] - Gain well rounded experience: Alarm.com offers a diverse and dynamic environment where you will get the chance to work directly with executives and develop expertise across multiple areas of the business.
+[under: WHY WORK FOR ALARM.COM?] - Community and Camaraderie: One of our core values is to 'Keep It Fun,' which to us means fostering a strong sense of community. Our culture is built on collaboration and connection, where we celebrate our successes and believe that a positive, engaging environment is key to doing our best work.
+# COMPANY INFO
+[under: COMPANY INFO] Alarm.com is the leading platform for intelligently connected properties.
+[under: COMPANY INFO] Millions of homeowners and businesses rely on Alarm.com's technology to secure, monitor, and manage their environments from anywhere.
+[under: COMPANY INFO] Our comprehensive suite of solutions—including security, video surveillance, access control, active shooter detection, intelligent automation, energy management, and wellness—is delivered exclusively through a trusted network of thousands of professional service providers and commercial integrators across North America and worldwide.
+[under: COMPANY INFO] Alarm.com's common stock is traded on Nasdaq under the ticker symbol ALRM.
+[under: COMPANY INFO] Alarm.com delivers serious security for serious people.
+[under: COMPANY INFO] For more information, please visit www.alarm.com.
+# Alarm.com is an Equal Opportunity Employer
+[under: Alarm.com is an Equal Opportunity Employer] In connection with your application, we collect information that identifies, reasonably relates to or describes you ("Personal Information").
+[under: Alarm.com is an Equal Opportunity Employer] The categories of Personal Information that we may collect include your name, government-issued identification number(s), email address, mailing address, other contact information, emergency contact information, employment history, educational history, criminal record, and demographic information.
+[under: Alarm.com is an Equal Opportunity Employer] We collect and use those categories of Personal Information about you for human resources and other business management purposes, including identifying and evaluating you as a candidate for potential or future employment or future positions, recordkeeping in relation to recruiting and hiring, conducting criminal background checks as permitted by law, conducting analytics, and ensuring compliance with applicable legal requirements and Company policies.
+[under: Alarm.com is an Equal Opportunity Employer] By submitting your application, you acknowledge that we may retain some of the personal data that you provide in your application for our internal operations such as managing our recruitment system and ensuring that we comply with labor laws and regulations even after we have made our employment decision.
+
+=== 189289
+company: ATOMS Careers page
+title: IT Operations Specialist
+options: San Francisco, CA [undeclared]
+description:
+# Who we are
+[under: Who we are] Atoms is building the machines that power the next era of progress.
+[under: Who we are] Over the last decade, software has transformed the digital world.
+[under: Who we are] But the physical world, where food is made, minerals are mined, goods are moved, and industries are run, remains far less intelligent, far less efficient, and far more constrained.
+[under: Who we are] We’re changing that.
+[under: Who we are] Atoms builds Physical AI— real-world robots for the industries that move civilization forward, starting with food, mining, and transport.
+[under: Who we are] Our systems are designed to understand, predict, and control the real world with precision, turning complex physical operations into something more reliable, more scalable, and more productive.
+[under: Who we are] This work requires more than robotics.
+[under: Who we are] It requires deep integration across hardware, software, AI, operations, manufacturing, and real estate.
+[under: Who we are] We don’t just build machines in a lab.
+[under: Who we are] We deploy them into real environments, operate them, learn from them, and improve them until they work at scale.
+[under: Who we are] We are roboticists, engineers, operators, and builders.
+[under: Who we are] We believe the next great technology companies will not only transform information, but the physical systems that shape everyday life.
+[under: Who we are] If you want to work on hard problems with real-world impact, join us.
+# What you'll do
+[under: What you'll do] - Be the Go-To for IT Support: Respond to first and second-level requests and issues across workstation hardware and software, network connectivity, and audio, video, and web conferencing systems.
+[under: What you'll do] - Own the Service Desk: Actively handle Service Desk tickets, incoming calls, and emails, escalating end user requests within established Service Level Agreements.
+[under: What you'll do] - Run High-Stakes AV: Set up and support AV for conference rooms and high-profile presentations, including audio mixers, microphones, camera management, and meeting and webinar settings. Stay calm under pressure during live broadcasts and executive-facing events.
+[under: What you'll do] - Onboarding & Workstation Deployment: Onboard new employees, create accounts, and configure their hardware and software; help train new staff on the tools they use. Procure and deploy Windows workstations.
+[under: What you'll do] - Administer Modern Tech: Perform basic administration of software and service licensing for our SaaS stack, including O365, Teams, Google Workspace, Jira, Confluence, Zoom, and Slack.
+[under: What you'll do] - Secure the Environment: Implement and monitor security measures, certificates, and company compliance requirements. Support and maintain LAN/WiFi, MDM, EDR, and related technologies to keep IT assets secure.
+[under: What you'll do] - Keep Systems Healthy: Review diagnostics, assess the functionality and efficiency of systems, and handle configuration, maintenance, upgrades, and troubleshooting of workstations, laptops, mobile devices, and printers.
+[under: What you'll do] - Build the Blueprint: Accurately document hardware failures, repairs, installations, and removals by recording service desk problem-solving responses.
+# What we're looking for
+[under: What we're looking for] - The "Initiator" Mindset: We are a startup environment. We need someone independent and autonomous who identifies problems and takes charge without waiting for a manual.
+[under: What we're looking for] - Proven Experience: 5+ years of relevant work experience, including 3–5+ years in IT Operations or Support.
+[under: What we're looking for] - The Right Background: Experience at SaaS, e-commerce, real estate, sales or product-driven, consulting, or technology companies, ideally with global scope and large operations teams.
+[under: What we're looking for] - AV & Connectivity Expertise: Hands-on experience with conferencing systems, live event AV, and networking (LAN/WiFi).
+[under: What we're looking for] - Security Know-How: Familiarity with MDM, EDR, certificates, and compliance requirements.
+[under: What we're looking for] - Grace Under Pressure: Comfortable supporting live, executive-facing events where things have to work the first time.
+[under: What we're looking for] - Future-Focused: You are well-versed in (or eager to master) AI and Prompt Engineering to increase efficiency.
+[under: What we're looking for] - Personable & Proactive: You enjoy interacting with people and can translate complex technical issues into easy-to-understand solutions for your colleagues.
+# Why join us
+[under: Why join us] At Atoms, you’ll work on one of the defining challenges of our time—bringing automation into the physical world to drive real, lasting impact.
+[under: Why join us] We exist to uncover valuable unknown truths and turn them into progress, which means constantly pushing beyond what’s known and building what doesn’t yet exist.
+[under: Why join us] The work is ambitious and often challenging, but it’s grounded in a shared sense of purpose and a team committed to seeing it through together.
+[under: Why join us] Our work only matters if it serves others, and we know that meaningful progress depends on the trust of the people we serve and the strength of our team—so we invest in both, creating an environment where you can do your best work and grow.
+# What else you need to know
+[under: What else you need to know] This role is based in our San Francisco office.
+[under: What else you need to know] Atoms is a company driven by invention and continuous change - we are constantly reimagining our industries, building new products, and refining how we operate.
+[under: What else you need to know] We do our best work together.
+[under: What else you need to know] That’s why all of our office-based teams work onsite, five days a week.
+[under: What else you need to know] The base salary range for this role is $93,000 - $110,000 per year.
+[under: What else you need to know] Actual compensation will be determined on an individual basis and may vary depending on experience, skills, and qualifications.
+[under: What else you need to know] Base salary is just one part of your total rewards package.
+[under: What else you need to know] You may also be eligible for equity awards and an annual performance-based bonus.
+# Benefits Summary (USA Full-Time Exempt Employees)
+[under: Benefits Summary (USA Full-Time Exempt Employees)] - Medical, dental, and vision insurance (multiple plans, incl. HSA options).
+[under: Benefits Summary (USA Full-Time Exempt Employees)] - Company-paid life and disability insurance (shortand long-term).
+[under: Benefits Summary (USA Full-Time Exempt Employees)] - Voluntary insurance: accident, critical illness, hospital indemnity.
+[under: Benefits Summary (USA Full-Time Exempt Employees)] - Optional supplemental life insurance for self, spouse, and children.
+[under: Benefits Summary (USA Full-Time Exempt Employees)] - Pet insurance discount.
+[under: Benefits Summary (USA Full-Time Exempt Employees)] - 401(k).
+[under: Benefits Summary (USA Full-Time Exempt Employees)] - Health Savings Account (HSA)
+[under: Benefits Summary (USA Full-Time Exempt Employees)] - Flexible Spending Accounts (Healthcare, Dependent Care, Commuter)
+[under: Benefits Summary (USA Full-Time Exempt Employees)] - Time Off policies:
+[under: Benefits Summary (USA Full-Time Exempt Employees)] - Discretionary vacation days
+[under: Benefits Summary (USA Full-Time Exempt Employees)] - 8 paid holidays per year
+[under: Benefits Summary (USA Full-Time Exempt Employees)] - Paid sick time
+[under: Benefits Summary (USA Full-Time Exempt Employees)] - Paid Bereavement leave
+[under: Benefits Summary (USA Full-Time Exempt Employees)] - Paid Parental Leave
+[under: Benefits Summary (USA Full-Time Exempt Employees)] Benefits are subject to change at the company's discretion.
+[under: Benefits Summary (USA Full-Time Exempt Employees)] Atoms accepts applications on an ongoing basis.
+# Ready to join us as we serve those who serve others?
+[under: Ready to join us as we serve those who serve others?] LI-Onsite
+
+=== 1316756
+company: LTA Land Transport Authority
+title: [LTA-RAOM] SNR / EXEC / ENGINEER (DATA STANDARDS & INFORMATION)
+options: LTA HSO B11 1B [undeclared]
+description:
+# [What the role is]
+[under: [What the role is]] [LTA-RAOM] SENIOR / EXECUTIVE / ENGINEER (DATA STANDARDS AND INFORMATION)
+# [What you will be working on]
+[under: [What you will be working on]] An exciting opportunity has arisen to join our asset management team and help develop and enhance LTA’s digital asset management platforms.
+[under: [What you will be working on]] These platforms bring together rail asset information to support a comprehensive and trustworthy view of asset health, performance, condition, supportability and renewal needs across the MRT network, enabling better maintenance and lifecycle decisions.
+[under: [What you will be working on]] This is a hands-on role for someone who enjoys wearing several hats.
+[under: [What you will be working on]] As a business analyst, you'll work with rail engineers to understand asset management needs and translate them into clear requirements.
+[under: [What you will be working on]] As a scrum master, you'll run the delivery rhythm, planning sprints, unblocking the team, and keeping developers and citizen developers moving.
+[under: [What you will be working on]] You'll also help establish the data standards that underpin reliable asset information, and take on the broader tasks a fast-moving programme demands.
+[under: [What you will be working on]] We are looking for someone who is genuinely curious about technology, keen to explore new tools and modern data platforms, and willing to get hands-on to identify more effective and efficient ways of working.
+[under: [What you will be working on]] You will collaborate with cross-functional teams across LTA, rail operators, contractors and system manufacturers to ensure that the platforms integrate effectively with the wider rail asset management landscape and deliver useful, trusted information to their users.
+[under: [What you will be working on]] Fresh graduates are welcome to apply, what matters most is curiosity, aptitude and the drive to learn.
+# [What we are looking for]
+[under: [What we are looking for]] - Knowledge in Engineering (Electrical/Electronic, Civil, Mechanical), Computer Science, Sustainable Infrastructure Engineering, or an equivalent field.
+[under: [What we are looking for]] - Experience in business analysis and/or Agile delivery, requirements gathering, scrum master, product owner, or similar, is highly valued (though not essential for fresh graduates with the right aptitude).
+[under: [What we are looking for]] - Genuine interest in technology and a willingness to learn and experiment with new tools and data platforms.
+[under: [What we are looking for]] - Comfort working with data, data models, data standards and dashboards.
+[under: [What we are looking for]] - Excellent writing, presentation, communication and interpersonal skills.
+[under: [What we are looking for]] - Team player with critical and logical thinking skills, able to work independently when necessary.
+[under: [What we are looking for]] - Previous experience in railway system design, operation and maintenance will be an advantage.
+[under: [What we are looking for]] - Familiarity with tools such as Figma, Snowflake or Databricks will be an added advantage.
+[under: [What we are looking for]] - Knowledge or experience with BIM / Asset Information Modelling (AIM) processes or data standards will be an added advantage.
+[under: [What we are looking for]] The successful candidate will help build a critical system that supports the safety, reliability and long-term value of our railway network.
+[under: [What we are looking for]] If you are a proactive, results-driven individual with a passion for excellence, we strongly encourage you to apply.
+[under: [What we are looking for]] As part of the shortlisting process for the role, you may be required to complete a medical declaration and / or undergo further assessment.
+
+=== 980654
+company: 8080-Johnson & Johnson Private Limited Legal Entity
+title: IM Transcend- Program Manager, Signavio
+options: Leiden, South Holland, Netherlands [undeclared]
+description:
+At Johnson & Johnson, we believe health is everything.
+Our strength in healthcare innovation empowers us to build a world where complex diseases are prevented, treated, and cured, where treatments are smarter and less invasive, and solutions are personal.
+Through our expertise in Innovative Medicine and MedTech, we are uniquely positioned to innovate across the full spectrum of healthcare solutions today to deliver the breakthroughs of tomorrow, and profoundly impact health for humanity.
+Learn more at jnj.com.
+As guided by Our Credo, Johnson & Johnson is responsible to our employees who work with us throughout the world.
+We provide an inclusive work environment where each person is considered as an individual.
+At Johnson & Johnson, we respect the diversity and dignity of our employees and recognize their merit.
+# Job Function
+[under: Job Function] Technology Product & Platform Management
+# Job Sub Function
+[under: Job Sub Function] Technical Product Management
+# Job Category
+[under: Job Category] People Leader
+# All Job Posting Locations
+[under: All Job Posting Locations] Leiden, South Holland, Netherlands
+# Job Description
+# About Innovative Medicine
+[under: About Innovative Medicine] Our expertise in Innovative Medicine is informed and inspired by patients, whose insights fuel our science-based advancements.
+[under: About Innovative Medicine] Visionaries like you work on teams that save lives by developing the medicines of tomorrow.
+[under: About Innovative Medicine] Join us in developing treatments, finding cures, and pioneering the path from lab to life while championing patients every step of the way.
+[under: About Innovative Medicine] Learn more at https://www.jnj.com/innovative-medicine.
+[under: About Innovative Medicine] Transcend is a global business transformation program that will modernize our foundational transactional processes and harmonize them into one “clean” ERP as a standardized platform for growth and efficiency gains.
+[under: About Innovative Medicine] This program will simplify the Pharmaceutical ERP landscape from 7 to 1, standardizing processes to have a cost-effective, fit-for-purpose digital backbone that will enable us to support the Pharmaceutical business with agility.
+[under: About Innovative Medicine] Additionally, the program will remediate the end-of-life system exposure that we risk towards the end of this decade.
+[under: About Innovative Medicine] Please note that this role is available across multiple countries and may be posted under different requisition numbers to comply with local requirements.
+[under: About Innovative Medicine] While you are welcome to apply to any or all of the postings, we recommend focusing on the specific country(s) that align with your preferred location(s):
+[under: About Innovative Medicine] United States - Requisition Number: R-072616
+[under: About Innovative Medicine] Belgium, Ireland, and Italy - Requisition Number: R-072110
+[under: About Innovative Medicine] Canada- Requisition Number: R-072610
+[under: About Innovative Medicine] Netherlands- Requisition Number: R-107016
+[under: About Innovative Medicine] Remember, whether you apply to one or all of these requisition numbers, your applications will be considered as a single submission.
+[under: About Innovative Medicine] We are searching for the best talent for a Transcend: Signavio Program Manager!
+[under: About Innovative Medicine] This hybrid position will be located in Latina, Italy.
+[under: About Innovative Medicine] Alternate hybrid locations may be considered in Titusville, New Jersey; Raritan, New Jersey; Toronto, Canada; Latina, Italy; Cork, Ireland; Beerse, Belgium.
+[under: About Innovative Medicine] Alternate locations and Remote work may be considered for the right candidate.
+[under: About Innovative Medicine] Are you ready to be part of a multi-year global business transformation initiative that will transform and standardize our core business processes and products across Plan, Source, Make, Quality, Deliver, and Data, and enable our integrated data strategy through a single SAP S/4 HANA instance?
+[under: About Innovative Medicine] Apply today for this exciting opportunity to shape and set the future direction for supporting and improving our new process across all areas.
+[under: About Innovative Medicine] We are seeking an experienced, hands-on Manager to lead the deployment, ongoing support, and adoption of our Signavio process management program.
+[under: About Innovative Medicine] This role combines technical delivery, vendor and stakeholder management, process governance, and change management to ensure Signavio enables consistent, measurable process excellence across the organization.
+# Key Responsibilities
+[under: Key Responsibilities] - Lead end-to-end deployment of Signavio (configuration, integrations, testing, cutover, and post-go-live support).
+[under: Key Responsibilities] - Own the production stability and day-to-day support model (incident management, triage, root cause analysis, and SLA tracking).
+[under: Key Responsibilities] - Partner with process owners, IT, security, and business teams to design governance, roles, and lifecycle processes for process documentation and change.
+[under: Key Responsibilities] - Configure and maintain platform settings, libraries, templates, process repositories, and user access controls.
+[under: Key Responsibilities] - Design and implement integrations with core systems (ERP, identity, reporting tools) and APIs; coordinate with engineering/IT teams for secure and performant solutions.
+[under: Key Responsibilities] - Develop and deliver training, adoption programs, playbooks, knowledge base articles, and user enablement materials.
+[under: Key Responsibilities] - Manage the vendor relationship with Signavio (or program vendor), including escalation, roadmap alignment, licensing, and periodic reviews.
+[under: Key Responsibilities] - Measure program success and report KPIs (uptake/adoption, availability, time-to-resolution, process coverage, compliance metrics).
+[under: Key Responsibilities] - Drive continuous improvement by collecting user feedback, prioritizing enhancements, and coordinating release management.
+[under: Key Responsibilities] - Supervise and coach direct reports and contractors supporting deployments, integrations, and application support.
+# Qualifications
+# Education
+[under: Education] - Minimum of High School or equivalent diploma/degree is required; Bachelor’s / University or equivalent degree strongly preferred
+# Experience and skills
+# Required
+[under: Required] - 8 years of relevant work experience including 5 years experience leading SaaS deployment/support programs, preferably in Business Process Mapping (BPM)/process management tools.
+[under: Required] - Demonstrable experience with Signavio or similar process management platforms (process modeling/BPM tools).
+[under: Required] - Strong technical understanding of integrations (APIs, webhooks), identity and access controls, and enterprise application architecture.
+[under: Required] - Experience with IT service management and support practices (incident/change/problem management, SLAs).
+[under: Required] - Proven ability to engage stakeholders and drive cross-functional change and adoption.
+[under: Required] - Excellent written and verbal communication; experience building training and documentation materials.
+# Preferred Qualifications
+[under: Preferred Qualifications] - Certifications in BPM, ITIL, PMP/Prince2, or Agile/Scrum.
+[under: Preferred Qualifications] - Experience integrating with SAP or other ERP systems.
+[under: Preferred Qualifications] - Familiarity with process mining, RPA, or analytics tools.
+[under: Preferred Qualifications] - Prior experience in regulated industries or large global organizations.
+# Other
+[under: Other] - Requires proficiency in English (written and verbal) to communicate effectively and professionally; proficiency in German, Dutch, or Italian is helpful
+[under: Other] - May require up to 30% domestic and international travel depending on work location and business needs
+# Required Skills
+# Preferred Skills
+[under: Preferred Skills] Analytical Reasoning, Consulting, Cost Management, Creating Purpose, Cross-Functional Collaboration, Developing Others, Human-Computer Interaction (HCI), Inclusive Leadership, Leadership, Performance Measurement, Product Development, Product Strategies, Project Management Methodology (PMM), Research and Development, Software Development Management, Strategic Supply Chain Management, Team Management
+# The anticipated base pay range for this position is
+[under: The anticipated base pay range for this position is] €82,900.00 - €144,210.00
+# Benefits
+[under: Benefits] In addition to base pay, we offer the following benefits*: an annual bonus with set target (% of pay) depending on pay grade / location, where the actual amount is based on the employees’ and companies’ performance of the previous calendar year, or sales commissions.
+[under: Benefits] Moreover, we offer vacation days, parental leave for a minimum of 12 weeks, bereavement leave, caregiver leave, volunteer leave, well-being reimbursement, programs for financial, physical and mental health.
+[under: Benefits] We also offer service anniversary and recognition awards, and subject to the terms of their respective plans, employees - and in some location’s eligible dependents - can participate in several insurance plans.
+[under: Benefits] For more information, visit Employee benefits | Supporting well-being & career growth | Johnson & Johnson Careers.
+[under: Benefits] *This is for informative purposes only.
+[under: Benefits] Amounts and actual benefits may vary by location and are subject to change.
+# Additional information
+[under: Additional information] The NL: 8%.The annual base pay includes an 8% holiday allowance
+
+=== 1129418
+company: NOIP Nasdaq Corporate Solutions (India) Private Limited
+title: Senior Product Owner
+options: Lithuania - Vilnius [undeclared]
+description:
+As a Senior Product Owner reporting to Director of Product Delivery, you'll play a critical role in shaping the user experience and product direction of Nasdaq's Trade Surveillance platform — a leading compliance solution used by teams across the globe.
+You'll thrive in this position if you're curious, client-focused, and data-driven, with a passion for fintech and a talent for turning complex problems into clear, actionable solutions.
+# Key Responsibilities
+[under: Key Responsibilities] - Own and evolve the product roadmap, translating strategy into a prioritized backlog that balances client needs, business value, and technical feasibility.
+[under: Key Responsibilities] - Serve as the voice of the customer — engaging directly with clients to gather insights and converting their challenges into well-defined requirements for the development team.
+[under: Key Responsibilities] - Partner closely with software developers, QA engineers, and delivery specialists to ensure high-quality, on-time product increments aligned with the roadmap.
+[under: Key Responsibilities] - Define and communicate clear acceptance criteria, reviewing completed work to maintain quality standards throughout the product lifecycle.
+[under: Key Responsibilities] - Align product strategy with broader business objectives by collaborating with stakeholders across technology and business functions.
+# Required Qualifications
+[under: Required Qualifications] - Bachelor's degree in Business, Finance, or a related field, or equivalent practical experience.
+[under: Required Qualifications] - Several years of experience as a Product Owner, Product Manager, or in a comparable client-facing product role.
+[under: Required Qualifications] - Strong analytical and problem-solving skills with the ability to prioritize effectively in a fast-paced environment.
+[under: Required Qualifications] - Clear communicator with experience working in agile, cross-functional teams.
+[under: Required Qualifications] - Proven ability to manage multiple stakeholders and translate complex business needs into actionable deliverables.
+# Preferred Qualifications
+[under: Preferred Qualifications] - Experience in financial services, capital markets, or a regulated industry.
+[under: Preferred Qualifications] - Familiarity with agile methodologies and ceremonies (e.g., Scrum).
+[under: Preferred Qualifications] - Exposure to global teams and cross-border collaboration.
+[under: Preferred Qualifications] This position is located in Vilnius and offers a hybrid work environment with at least 3 days per week in-office, subject to change, providing flexibility and accessibility for qualified candidates.
+[under: Preferred Qualifications] Please note: A valid EU work permit is required for this role.
+[under: Preferred Qualifications] Individuals applying for or occupying this position must have no previous unspent convictions for criminal offences under the Criminal Code of the Republic of Lithuania, with the exception of offences solely related to minor road traffic violations.
+# Benefits & Rewards
+[under: Benefits & Rewards] We offer a competitive, well-rounded rewards package designed to support the financial, physical, and emotional well-being of our employees and their families (where applicable).
+[under: Benefits & Rewards] The base pay for this role is €3,500–€4,600 gross/month.
+[under: Benefits & Rewards] The actual pay depends on factors like your skills, experience, qualifications, and location.
+[under: Benefits & Rewards] In addition to base pay, we offer short-term incentives (bonus or commission) and long-term incentives (equity), where applicable.
+[under: Benefits & Rewards] We utilize a structured job architecture and career framework to ensure growth opportunities are transparent, fair, and accessible to all employees.
+[under: Benefits & Rewards] The pay range you see reflects the full salary band for this job level, including room for progression over time.
+[under: Benefits & Rewards] For more information, visit Nasdaq Benefits & Rewards Career Page.
+# Come as You Are
+[under: Come as You Are] Nasdaq is an equal opportunity employer.
+[under: Come as You Are] We welcome applications from candidates of all backgrounds and identities.
+[under: Come as You Are] We are committed to fostering an inclusive workplace where diverse perspectives, experiences, and identities are valued and celebrated.
+[under: Come as You Are] We ensure that individuals with disabilities are provided with reasonable accommodation throughout the hiring process.
+
+=== 768388
+company: Forrester Research, Inc. (US)
+title: Principal Analyst, Public Cloud
+options: Cambridge, MA [undeclared] | CT - Connecticut Remote [remote] | Chicago, IL [undeclared] | Washington, D.C. Remote [remote] | Philadelphia, PA [undeclared] | Washington [undeclared] | Atlanta, GA [undeclared] | New York, NY [undeclared] | CA - California Remote [remote] | Charlotte, NC [undeclared]
+description:
+At Forrester, we’re trusted to work on trailblazing, mission critical problems that business and technology leaders face today.
+That’s why we’re always looking to empower talented individuals to perform at their best every single day.
+We’re proud of our community of smart people and vibrant voices who come together to do what’s right by our clients and each other.
+Our success is driven by curiosity, courage and customer obsession.
+The confidence and drive to be bold at work.
+Join us and build an extraordinary future.
+# About This Role
+[under: About This Role] Forrester Research is seeking a Principal Analyst to lead research on public cloud platforms and the strategies, architectures, operating models, and market dynamics shaping enterprise cloud adoption.
+[under: About This Role] This role serves technology executives and leaders responsible for cloud strategy, architecture, infrastructure, operations, and application platforms, helping them use public cloud to deliver stronger business outcomes while managing cost, complexity, risk, resilience, and organizational change.
+[under: About This Role] The Principal Analyst will examine the rapidly evolving public cloud market, including hyperscale and alternative cloud platforms; multicloud and hybrid cloud strategies; cloud-native infrastructure and application services; containers and Kubernetes; serverless computing; AI infrastructure and platform services; cloud operations; governance; and application migration and modernization.
+[under: About This Role] The ideal candidate combines strategic perspective with credible technical and delivery experience and can translate complex market and technology shifts into clear, provocative, and actionable guidance for senior leaders.
+# Job Description
+[under: Job Description] The Principal Analyst works as part of a high-performing team with a strong emphasis on collaboration in all aspects of the role.
+[under: Job Description] The Principal Analyst is expected to:
+[under: Job Description] - Lead Forrester’s public cloud platform research, working across research teams and with sales, product, and customer success to build a cohesive portfolio that helps clients make better technology and business decisions.
+[under: Job Description] - Develop a deep understanding of what technology executives, cloud leaders, architects, infrastructure and operations leaders, platform teams, and application development leaders require to succeed with public cloud.
+[under: Job Description] - Conduct primary research through interviews, surveys, vendor briefings, and market analysis on public cloud strategy, platform selection, workload placement, multicloud and hybrid cloud, cloud-native development, AI infrastructure and services, sovereign cloud, cloud operations, governance, migration, and modernization.
+[under: Job Description] - Analyze the strategies, capabilities, differentiation, and market position of major and emerging public cloud providers and translate market developments into implications for enterprise customers and technology vendors.
+[under: Job Description] - Help clients navigate strategic and technical trade-offs involving cost, performance, resilience, security, data sovereignty, portability, skills, operating models, ecosystem choices, and vendor concentration.
+[under: Job Description] - Create approximately eight to 12 high-quality, actionable, analytically deep, and fact-based research projects per year, including written reports, tools, webinars, videos, blogs, podcasts, infographics, and other intellectual property.
+[under: Job Description] - Drive and lead key Forrester Wave and Landscape research in public cloud and adjacent markets.
+[under: Job Description] - Develop decision frameworks, maturity models, best practices, and practical guidance that help clients define cloud strategy, select platforms and partners, modernize applications, govern cloud use, and improve the value delivered by cloud investments.
+[under: Job Description] - Consult with clients to apply Forrester’s research in the context of their business and technology environments through inquiry, guidance, advisory, and consulting engagements.
+[under: Job Description] - Present at Forrester-sponsored and industry events and deliver compelling client webinars, workshops, and executive presentations.
+[under: Job Description] - Establish a visible industry presence as an influential speaker and thinker; build relationships with senior technology leaders, cloud providers, ecosystem partners, and journalists; and participate in vendor briefings and press inquiries.
+[under: Job Description] - Support business development and prospect conversations as arranged by Forrester’s account leadership teams.
+[under: Job Description] - Foster a culture of cross-team collaboration, mentorship, intellectual rigor, integrity, and positive pursuit of client impact.
+# Job Requirements
+[under: Job Requirements] - A strong record of academic achievement; a BA/BS degree or equivalent professional experience is required.
+[under: Job Requirements] - At least 10 years’ experience in a mix of roles as a senior practitioner, cloud architect, platform or infrastructure leader, consultant, technology strategist, vendor executive, or research analyst focused on public cloud or closely related domains.
+[under: Job Requirements] - Deep knowledge of the public cloud market, including the major hyperscale platforms and the evolving ecosystem of alternative, sovereign, industry, and specialized cloud providers.
+[under: Job Requirements] - Demonstrated experience with cloud strategy, architecture, platform selection, migration, modernization, cloud-native development, or cloud operations in complex enterprise environments.
+[under: Job Requirements] - Strong working knowledge across several of the following areas: infrastructure as a service; containers and Kubernetes; serverless and application platform services; data and AI platform services; hybrid and multicloud management; cloud networking, storage, compute, security, resilience, observability, and automation.
+[under: Job Requirements] - Understanding of the organizational and operating-model changes required for cloud success, including platform engineering, cloud centers of excellence, product-centric delivery, governance, skills development, and collaboration across architecture, development, operations, security, finance, and sourcing teams.
+[under: Job Requirements] - The ability to evaluate technology platforms and markets through both a technical and business lens, including economics, ecosystem strength, strategic risk, and long-term customer implications.
+[under: Job Requirements] - Demonstrated ability to advise senior management and C-level clients and to translate technical complexity into clear business choices and outcomes.
+[under: Job Requirements] - Superior client-facing communication, listening, interviewing, critical thinking, collaboration, analytical, writing, editing, and presentation skills.
+[under: Job Requirements] - The ability to take complex, disparate ideas and distill them into simple, provocative concepts, with a willingness to take a well-supported stand on markets, vendors, and outcomes.
+[under: Job Requirements] - The ability to travel up to 30% of the time.
+# Preferred Experience
+[under: Preferred Experience] - Experience in advising or delivering cloud programs for large enterprises, regulated industries, or global organizations.
+[under: Preferred Experience] - Hands-on or leadership experience with one or more major public cloud platforms and familiarity with cloud architecture frameworks and modern delivery practices.
+[under: Preferred Experience] - Experience in leading comparative market evaluations, vendor selection, product strategy, consulting engagements, or executive-level thought leadership.
+[under: Preferred Experience] - An established network among enterprise cloud leaders, cloud providers, service partners, or industry media.
+# Here’s What You’ll Get
+[under: Here’s What You’ll Get] - Exposure to industry experts and to top business leaders within Fortune 1000 companies.
+[under: Here’s What You’ll Get] - Access to research that influences global leaders every day.
+[under: Here’s What You’ll Get] - World-class learning and development opportunities.
+[under: Here’s What You’ll Get] - Global reach: Forrester has research centers and sales offices in more than 25 cities internationally, spanning six continents.
+[under: Here’s What You’ll Get] - Colleagues who are intellectually curious, hard-working, and collaborative.
+[under: Here’s What You’ll Get] - Cool perks:
+[under: Here’s What You’ll Get] - All the cappuccino you can drink.
+[under: Here’s What You’ll Get] - The opportunity to rock out with guitars in our Cambridge headquarters’ lobby and take piano lessons on Friday.
+[under: Here’s What You’ll Get] - Onsite massages.
+[under: Here’s What You’ll Get] - Fierce foosball and ping-pong rivalry.
+[under: Here’s What You’ll Get] - A top-notch fitness center and new pickleball courts.
+[under: Here’s What You’ll Get] - Zagster bike-sharing and rental program.
+[under: Here’s What You’ll Get] - A competitive benefits package.
+[under: Here’s What You’ll Get] - The chance to work in a LEED Goldand LEED Platinum-certified building.
+[under: Here’s What You’ll Get] Please note that the base salary range indicated here is inclusive of all applicable US geographies listed in this requisition, with the exception of New York City.
+[under: Here’s What You’ll Get] This salary range is based upon the position as described in the job listing.
+[under: Here’s What You’ll Get] The offered compensation may vary within this range and is dependent upon the successful candidate’s primary work location, experience, training, education, and credentials.
+[under: Here’s What You’ll Get] Base salary range: $141,000 - $229,000
+[under: Here’s What You’ll Get] Base salary range for New York City, NY: $161,000 - $263,000
+[under: Here’s What You’ll Get] For employees based in Washington State, the percentage listed here is an estimated bonus target as a percentage of base salary, in accordance with the Forrester Employee Bonus plan.
+[under: Here’s What You’ll Get] Individual and company performance, as well as other eligibility criteria, will determine the actual incentive amount.
+[under: Here’s What You’ll Get] Bonus target: 15%
+[under: Here’s What You’ll Get] For information on benefits, please visit: https://forresterbenefits.com/
+[under: Here’s What You’ll Get] The application deadline is November 30, 2026.
+[under: Here’s What You’ll Get] Please refer to the job posting on Forrester.com careers page if the deadline has been extended.
+[under: Here’s What You’ll Get] We’re a network of knowledge and experience leading to richer, fuller careers.
+[under: Here’s What You’ll Get] Here, we’re always learning.
+[under: Here’s What You’ll Get] Whether you want to hone your strengths or discover new ones, Forrester is the place to go for it.
+[under: Here’s What You’ll Get] It’s a place where everyone is given the tools, support, and runway they need to go far.
+[under: Here’s What You’ll Get] We’ll be right there beside you, every step of the way.
+[under: Here’s What You’ll Get] Let’s be bold, together.
+# Explore #ForresterLife on
+[under: Explore #ForresterLife on] Instagram
+[under: Explore #ForresterLife on] LinkedIn
+[under: Explore #ForresterLife on] Glassdoor
+# FLSA Status
+[under: FLSA Status] Exempt
+[under: FLSA Status] Here at Forrester, we welcome people from all backgrounds and perspectives.
+[under: FLSA Status] Our aim is for all candidates to be able to fully participate in Forrester’s recruitment process.
+[under: FLSA Status] If you would like to discuss a reasonable accommodation, please reach out to accommodationrequest@forrester.com.
+[under: FLSA Status] Forrester Research, Inc. is an Equal Employment Opportunity Employer.
+[under: FLSA Status] As a federal contractor, Forrester encourages veterans and individuals with disabilities to apply for employment.
+[under: FLSA Status] Forrester will consider all qualified applicants with criminal histories in a manner consistent with the requirements of the San Francisco Fair Chance Ordinance.
+# Benefits at a Glance
+
+=== 1182554
+company: 1725 Parexel International (India) Private Ltd.
+title: Safety Technology Analyst
+options: India-Hyderabad-Remote [remote] | India-Mohali-Remote [remote]
+description:
+# When our values align, there's no limit to what we can achieve.
+[under: When our values align, there's no limit to what we can achieve.] At Parexel, we all share the same goal - to improve the world's health.
+[under: When our values align, there's no limit to what we can achieve.] From clinical trials to regulatory, consulting, and market access, every clinical development solution we provide is underpinned by something special - a deep conviction in what we do.
+[under: When our values align, there's no limit to what we can achieve.] Each of us, no matter what we do at Parexel, contributes to the development of a therapy that ultimately will benefit a patient.
+[under: When our values align, there's no limit to what we can achieve.] We take our work personally, we do it with empathy and we're committed to making a difference.
+# About Parexel
+[under: About Parexel] Parexel is a leading global clinical development partner delivering insights-driven clinical and consulting solutions to the life sciences industry.
+[under: About Parexel] With 22,000+ employees worldwide, we partner with biopharmaceutical companies and research sites to design and deliver patient-focused clinical trials that broaden access and make research a care option for anyone, anywhere.
+[under: About Parexel] We work with focus, agility, and shared purpose -- moving with urgency to address patient needs and accelerate the delivery of new therapies.
+[under: About Parexel] We embrace bold thinking, adapt quickly to change, and continually raise the bar for the speed and quality of clinical research.
+[under: About Parexel] We are expanding our team and seeking talented individuals to help drive industry leading innovation, With Heart(R).
+# About the Role
+[under: About the Role] We are seeking a Safety Technology Analyst (STA) to join our team.
+[under: About the Role] As a Safety Technology Analyst, you will support critical pharmacovigilance operations and safety database management that advance patient safety and regulatory compliance.
+[under: About the Role] This position plays a key role in safety technology support, system administration, regulatory adherence, and operational excellence.
+[under: About the Role] You'll collaborate with cross-functional teams across Safety Services, IT, Quality, and external clients, follow industry-standard processes, and contribute to safety operations from study setup through closeout.
+[under: About the Role] Responsibilities include configuring and maintaining safety databases, supporting system handovers, managing technical issues, and driving process improvements through technology solutions.
+[under: About the Role] With diverse teams and continuous learning opportunities in emerging pharmacovigilance technologies, the Safety Technology Administrator can explore career paths and expand skills across clinical research and safety technology innovation.
+# Key Responsibilities
+[under: Key Responsibilities] - Conduct setup and support activities for Parexel safety databases and associated systems, including new study configuration, periodic and ad-hoc report generation, expedited report rule configuration, and comprehensive end-user support
+[under: Key Responsibilities] - Support the planning and delivery of safety database handovers from client to Parexel when taking over pharmacovigilance operations, and from Parexel to client at study closeout
+[under: Key Responsibilities] - Contribute to the development and maintenance of standard operating procedures and controlled documents related to safety technology systems
+[under: Key Responsibilities] - Support the delivery of integration solutions between Parexel safety technologies and other applications to enhance operational efficiency and service capabilities
+[under: Key Responsibilities] - Represent Safety Technology Management with cross-functional Parexel teams (TQM, QA, IT) and external auditors to ensure adequate management of database systems, hardware, network security, quality standards, and project services
+[under: Key Responsibilities] - Collaborate with Parexel IT, vendors, Safety Services staff, and clients to analyze, resolve, and close technical issues for supported systems
+[under: Key Responsibilities] - Support change management activities including impact assessments, testing methodologies, system validation, and software updates in accordance with Software Development Life Cycle standards
+[under: Key Responsibilities] - Provide training and mentoring to new or developing staff on safety technology systems and support activities
+[under: Key Responsibilities] - Ensure adherence to pharmaceutical regulations including 21 CFR Part 11 compliance, computer system validation, and quality standards
+# You'll thrive in this role if you bring
+[under: You'll thrive in this role if you bring] - Strong interpersonal, verbal, and written communication skills with the ability to work effectively across matrix teams
+[under: You'll thrive in this role if you bring] - Intermediate system administration and application support skills in pharmacovigilance safety technology (safety databases, gateway/E2B, report development, or signal detection)
+[under: You'll thrive in this role if you bring] - Intermediate technical writing capability and experience with industry-standard Service Desk Tools
+[under: You'll thrive in this role if you bring] - Analytical and problem-solving skills with a client-focused approach and strong attention to detail
+[under: You'll thrive in this role if you bring] - Experience with software development lifecycle (SDLC) processes, change management, and Agile methodology
+[under: You'll thrive in this role if you bring] - Knowledge of computer system regulations including 21 CFR Part 11, EMA Annex 11, and GAMP guidelines
+[under: You'll thrive in this role if you bring] - Intermediate knowledge of pharmacovigilance roles, standards, practices, GVP, and GCP
+[under: You'll thrive in this role if you bring] - Intermediate SQL scripting skills and interest in emerging pharmacovigilance safety technologies including AI
+[under: You'll thrive in this role if you bring] - Flexible attitude toward work assignments, new learning, and ability to manage multiple tasks with enthusiasm
+# Required Qualifications
+[under: Required Qualifications] - 2+ years of experience in all functional areas of safety supportive applications (Argus, Vault Safety, EDC, Safety ERP) including secondary tools and processes
+[under: Required Qualifications] - 2+ years of experience working closely with operational teams to manage issues, gather requirements, and deliver safety business process solutions
+[under: Required Qualifications] - Demonstrated experience with computerized system validation methodologies and processes
+[under: Required Qualifications] - Fluent in English with demonstrated ability to write technical documentation and deliver clear presentations to stakeholders
+[under: Required Qualifications] - Experience supporting team members through peer oversight, coaching, and training
+# Preferred Qualifications
+[under: Preferred Qualifications] - BA/BSc in Engineering or Computer Science; master’s degree or equivalent preferred
+[under: Preferred Qualifications] - Demonstrable participation in system or process improvement initiatives
+[under: Preferred Qualifications] - Experience working with cross-functional teams as a safety technology representative
+[under: Preferred Qualifications] We believe in flexibility, growth, and creating space for people to do their best work.
+[under: Preferred Qualifications] Join us and be part of a team where your contributions help shape the future of clinical research.
+[under: Preferred Qualifications] If this job doesn't sound like the next step in your career, but perhaps you know of someone who'd be perfect fit, send them the link to apply!
+
+=== 65242
+company: Freedom Technology Solutions Group
+title: React Software Developer 659
+options: Laurel, MD [undeclared]
+description:
+We are seeking a React Software Developer for one of our PRIME CONTRACTS that offers exciting opportunities to support essential services and mission critical activities across the enterprise and the opportunity to Telework one day a week!
+Our mission supports the Government Corporate Management Services (CMS) by providing full life cycle support services through the sustainment, modernization, and transformation of the enterprise corporate applications.
+As soon as an employee enters a customer facility, they touch one of these applications which are critical to the daily functions of thousands of users across acquisition, business, finance, HR, training, recruitment, program management, security, logistics and more.
+Come join our diverse and growing team with lots of opportunities!
+- Serve as the primary React Software Developer responsible for maintaining and enhancing a production collaboration and business process application that supports information exchange between DoD and Industry Partners.
+- Develop, test, and implement application enhancements, bug fixes, and usability improvements while ensuring the stability, reliability, and performance of the production environment. Support ongoing operations and maintenance activities, including troubleshooting application issues, analyzing root causes, and implementing corrective actions.
+- Collaborate with government stakeholders to understand operational needs, prioritize enhancement requests, refine requirements, and provide technical recommendations for future improvements.
+- Translate user feedback and evolving business requirements into scalable, maintainable front-end solutions that improve functionality and user experience.
+- Maintain and enhance React-based user interfaces supporting registration, tracking, workflow management, reporting, and other mission-critical business processes.
+- Work closely with system engineers, developers, testers, and product stakeholders to evaluate change requests, support releases, and ensure successful deployment of enhancements.
+- Integrate front-end components with backend services and APIs, ensuring secure, reliable, and efficient data exchange across systems.
+- Apply modern front-end development practices using React, JavaScript/TypeScript, HTML, CSS, and component-based design patterns to maintain a high-quality user experience.
+- Support Agile planning activities, including backlog refinement, sprint planning, estimation, and release preparation for operational enhancements and defect remediation.
+- Operate independently in a fast-paced environment, managing priorities and balancing production support activities with enhancement development efforts.
+- Telework up to one day per week is offered for this effort.
+# Required Qualifications
+[under: Required Qualifications] - TS/SCI with Polygraph
+[under: Required Qualifications] - A bachelor's degree in a technical discipline and six years of experience in software development/engineering. Ten (10) years of experience in software development/engineering may be substituted in lieu of a degree.
+[under: Required Qualifications] - Experience with one of the following JavaScript or CSS frameworks: React, Bootstrap, with the willingness and ability to pivot to one of the others.
+[under: Required Qualifications] - Working understanding of SQL and/or NoSQL databases
+[under: Required Qualifications] - Ability to work during core hours of 10AM-2PM Monday – Friday. Exceptions will be considered on a caseby-case basis.
+[under: Required Qualifications] Technology Stack of application(s) with which this role will interact:
+[under: Required Qualifications] - React
+[under: Required Qualifications] - JavaScript
+[under: Required Qualifications] - AWS
+[under: Required Qualifications] - Java
+[under: Required Qualifications] - Linux
+[under: Required Qualifications] - Git
+[under: Required Qualifications] - JIRA
+[under: Required Qualifications] - Confluence
+# Desired Qualifications
+[under: Desired Qualifications] - Experience with GitLab
+[under: Desired Qualifications] - Experience with Agile methodologies
+[under: Desired Qualifications] - Experience with various JavaScript frameworks (React, Node, Angular)
+[under: Desired Qualifications] The estimated salary range for this position is between $150,000-$200,000 (annualized USD).
+[under: Desired Qualifications] This range reflects the typical pay for the role and is one part of the company's comprehensive compensation package.
+[under: Desired Qualifications] Actual salaries are influenced by several factors, such as location, the individual’s education, skills, experience, and competencies, as well as contract affordability and organizational needs.
+> # What’s in It for You?
+> [under: What’s in It for You?] Flexible work environment
+> [under: What’s in It for You?] A team mentality – work with friendly, like-minded professionals
+> [under: What’s in It for You?] Work with innovative, cutting edge technologies
+> [under: What’s in It for You?] Enjoy extremely competitive compensation and benefits
+> [under: What’s in It for You?] A work-life balance you can count on
+> [under: What’s in It for You?] Opportunities to grow and advance your career on our dime
+> # The Benefits You Get with Freedom
+> [under: The Benefits You Get with Freedom] Amazing benefits including matching 401k, fully paid medical, and more
+> [under: The Benefits You Get with Freedom] Generous paid time off – including paid site closure days
+> [under: The Benefits You Get with Freedom] Competitive salary offerings
+> [under: The Benefits You Get with Freedom] Paid training and tuition reimbursement
+> [under: The Benefits You Get with Freedom] Referral bonuses
+> [under: The Benefits You Get with Freedom] Fully paid life and disability
+> [under: The Benefits You Get with Freedom] Annual logo wear allowance
+> [under: The Benefits You Get with Freedom] Company sponsored events (game nights, holiday party, summer party, happy hours)
+> [under: The Benefits You Get with Freedom] Interested in learning more about Freedom and our culture?
+> [under: The Benefits You Get with Freedom] Contact us today!
+> [under: The Benefits You Get with Freedom] We’re constantly hosting hiring events in our office and elsewhere, to help you get a sense of what life is like at Freedom before joining the team.
+> [under: The Benefits You Get with Freedom] As an Equal Opportunity Employer, we do not discriminate on the basis of race, color, religion, sex, age, marital status, disability or veteran status
+> [under: The Benefits You Get with Freedom] Applicant Federal & E-Verify Postings
+> [under: The Benefits You Get with Freedom] VEVRAA Federal Contractor
+> [under: The Benefits You Get with Freedom] Accessibility: If you need an accommodation as part of the employment process, please contact Human Resources at
+> # Phone: 410-290-9035
+> # Email: recruiting@goftsg.com
+> # Equal Opportunity Employer, including disabled and veterans.
+> [under: Equal Opportunity Employer, including disabled and veterans.] If you want to view the EEO Law poster, please choose your language: English - Spanish - Arabic - Chinese
+> [under: Equal Opportunity Employer, including disabled and veterans.] If you want to view the EEO Law Supplement poster, please choose your language: English - Spanish - Chinese
+> [under: Equal Opportunity Employer, including disabled and veterans.] If you want to view the Pay Transparency Policy Statement, please click the link: English
+

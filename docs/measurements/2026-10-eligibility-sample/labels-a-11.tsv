@@ -1,0 +1,26 @@
+id	ar	us	reader	mode	reason
+399310	excluded	excluded	no	remote	"based in Turkey"
+370885	eligible	unknown	yes	remote	"Remote, Latin America"
+581065	unknown	unknown	no	hybrid	-
+397970	excluded	excluded	no	remote	"based in India"
+190156	unknown	unknown	yes	remote	-
+38006	eligible	unknown	yes	remote	"Latin America"
+506456	unknown	unknown	unclear	remote	-
+259722	eligible	unknown	yes	remote	"Remote Latam"
+371296	eligible	unknown	yes	remote	"Remote, Latin America"
+300481	eligible	unknown	yes	remote	"UTC -6 to UTC+2"
+242263	excluded	unknown	no	remote	"US Time Zones (EST–PST)"
+399309	excluded	excluded	no	remote	"based in United Arab Emirates"
+269281	unknown	eligible	yes	remote	-
+263518	eligible	excluded	yes	remote	"± 4 hours of CET"
+274999	eligible	excluded	yes	hybrid	"Buenos Aires"
+371119	eligible	unknown	yes	remote	"Latin America, Remote"
+1104437	unknown	unknown	no	hybrid	-
+318951	unknown	eligible	unclear	remote	-
+256030	unknown	unknown	no	remote	-
+1007517	eligible	eligible	yes	unclear	"Americas"
+238690	eligible	eligible	yes	remote	"LATAM"
+414464	eligible	excluded	yes	hybrid	"Buenos Aires"
+435147	unknown	eligible	no	remote	-
+578084	excluded	eligible	no	onsite	"U.S. Citizenship Required"
+313508	excluded	eligible	no	onsite	"San Francisco [onsite]"

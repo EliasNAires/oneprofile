@@ -1,0 +1,16 @@
+id	ar	us	reader	mode	reason
+269281	unknown	eligible	yes	remote	-
+272410	unknown	eligible	yes	remote	-
+272424	unknown	eligible	yes	remote	-
+277255	unknown	eligible	yes	remote	-
+277681	excluded	eligible	no	unclear	"U.S. Citizen"
+318951	unknown	eligible	unclear	remote	-
+319342	unknown	unknown	unclear	remote	-
+333813	unknown	eligible	unclear	unclear	-
+377420	unknown	unknown	no	remote	-
+383642	unknown	eligible	yes	remote	-
+395353	excluded	excluded	no	remote	"based in Germany"
+395356	excluded	excluded	no	remote	"based in Saudi Arabia"
+395361	excluded	excluded	no	remote	"based in Israel"
+395464	excluded	excluded	no	remote	"based in Sweden"
+397025	eligible	eligible	yes	remote	"Latin America"

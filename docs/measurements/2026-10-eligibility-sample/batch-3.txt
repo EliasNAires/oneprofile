@@ -1,0 +1,630 @@
+=== 341224
+company: Launch Potato
+title: Staff Applied Scientist, AdTech
+options: Asheville, NC (remote) [remote] | Atlanta, GA (remote) [remote] | Boynton Beach, FL (remote) [remote] | Charleston, SC (remote) [remote] | Charlotte, NC (remote) [remote] | Delray Beach, FL (hybrid) [hybrid] | Fort Lauderdale, FL (hybrid) [hybrid] | Miami, FL (hybrid) [hybrid] | Raleigh, NC (remote) [remote]
+description:
+> # WHO ARE WE?
+> [under: WHO ARE WE?] Launch Potato is the discovery and conversion company.
+> [under: WHO ARE WE?] We reach tens of millions of people every month through our brands, including FinanceBuzz, All About Cookies, and OnlyInYourState.
+> [under: WHO ARE WE?] We turn that attention into real outcomes for our partners, some of the world's leading companies.
+> [under: WHO ARE WE?] Our mission: create predictable, high-value customer acquisition at scale by connecting discovery, intent, and performance across category-leading consumer brands in finance, travel, and entertainment.
+> [under: WHO ARE WE?] We run profitable and bootstrapped, with a South Florida HQ and a remote-first team across 18 countries.
+> # WHY JOIN US?
+> [under: WHY JOIN US?] You own outcomes here, not tasks.
+> [under: WHY JOIN US?] We measure work by impact, not activity.
+> [under: WHY JOIN US?] The pace is real, and change is constant, so the people who do best turn change into opportunity instead of waiting for it to settle.
+> [under: WHY JOIN US?] Feedback runs direct and lands with respect.
+> [under: WHY JOIN US?] Ordinary people make themselves extraordinary at Launch Potato.
+BASE SALARY: $175,000 to $200,000 per year, paid semi-monthly
+# YOUR ROLE
+[under: YOUR ROLE] You'll build the models that decide which carrier each auto insurance shopper sees on our click wall.
+[under: YOUR ROLE] The goal is to send every user to the carrier most likely to convert them, so carriers see our traffic convert and raise their bids.
+[under: YOUR ROLE] You'll also own the buying models behind our media spend, which are held to ROAS.
+[under: YOUR ROLE] Carrier conversion data (quotes, policies and acquisition cost) is now coming back to us, and you'll be the one who puts it to work in production.
+[under: YOUR ROLE] The hard part is the data.
+[under: YOUR ROLE] Outcomes land weeks or months after the click, many sessions are sparse, the same shoppers come back, and the market drifts.
+[under: YOUR ROLE] Our bids also decide which users we win, so the model shapes the data it learns from next.
+[under: YOUR ROLE] This is a hands-on individual contributor role.
+[under: YOUR ROLE] You frame problems directly with the business, find your own data, build and validate the model, and stay with it through deployment and monitoring.
+[under: YOUR ROLE] An ML engineer works alongside you on the production side.
+[under: YOUR ROLE] Auto insurance takes most of your time to start, and scope broadens to other verticals over time.
+[under: YOUR ROLE] We're remote first, and most of the company works East Coast hours.
+# WHAT SUCCESS LOOKS LIKE
+[under: WHAT SUCCESS LOOKS LIKE] By day 60, you run our insurance marketplace media buying on your own.
+# By the end of your first year
+[under: By the end of your first year] - Click wall serving that matches each user to the right carrier
+[under: By the end of your first year] - Carrier conversion data running in production models
+[under: By the end of your first year] - Automated marketplace bidding taken from proof of concept to scale
+[under: By the end of your first year] - A clear approach for repeat users and sparse sessions
+[under: By the end of your first year] - Production models that hold up through drift and changing objectives
+[under: By the end of your first year] - Output the business trusts and uses without rework
+# MUST HAVE
+[under: MUST HAVE] - 5+ years of hands-on applied data science with measurable business impact
+[under: MUST HAVE] - Your models drove paid media decisions: spend, bidding or ad serving. Attribution and reporting alone don't qualify.
+[under: MUST HAVE] - You built what's on your resume and can explain it down to the loss function and architecture choice, neural network fundamentals included
+[under: MUST HAVE] - You see how today's bids shape tomorrow's training data, and you've handled late labels, sparse features or drift
+[under: MUST HAVE] - You own models end to end: you find your own data, build through deployment and monitoring, and bring a point of view
+[under: MUST HAVE] - Expert Python and SQL
+# NICE TO HAVES
+[under: NICE TO HAVES] - Real ad budget spent in live auctions
+[under: NICE TO HAVES] - Large-scale ranking or recommendation systems
+[under: NICE TO HAVES] - Explaining tradeoffs to non-technical partners in plain terms
+[under: NICE TO HAVES] - Designing for auction feedback loops, selection bias and exploration
+[under: NICE TO HAVES] - Hands-on neural network work, such as embeddings of text, creative or user behavior
+[under: NICE TO HAVES] - AWS for data science: ECS, S3, Athena, SageMaker
+[under: NICE TO HAVES] - CI/CD deployment
+# TOTAL COMPENSATION
+[under: TOTAL COMPENSATION] Base salary is set according to market rates for the nearest major metro and varies based on Launch Potato’s Levels Framework.
+[under: TOTAL COMPENSATION] Your compensation package includes a base salary, profit-sharing bonus, and competitive benefits.
+[under: TOTAL COMPENSATION] Launch Potato is a performance-driven company, which means once you are hired, future increases will be based on company and personal performance, not annual cost of living adjustments.
+> # Want to accelerate your career? Apply now!
+> [under: Want to accelerate your career? Apply now!] Since day one, we've been committed to having a diverse, inclusive team and culture.
+> [under: Want to accelerate your career? Apply now!] We are proud to be an Equal Employment Opportunity company.
+> [under: Want to accelerate your career? Apply now!] We value diversity, equity, and inclusion.
+> [under: Want to accelerate your career? Apply now!] We do not discriminate based on race, religion, color, national origin, gender (including pregnancy, childbirth, or related medical conditions), sexual orientation, gender identity, gender expression, age, status as a protected veteran, status as an individual with a disability, or other applicable legally protected characteristics.
+
+=== 17757
+company: Athletics - Business Operations
+title: Senior Network & Systems Engineer
+options: Las Vegas, Nevada, United States [undeclared]
+description:
+# Position
+[under: Position] Senior Network & Systems Engineer
+# Department
+[under: Department] Information Technology
+# Reporting Manager
+[under: Reporting Manager] Director, Technology
+# Status
+[under: Status] Full-Time
+# Job Classification
+[under: Job Classification] Exempt
+# Location
+[under: Location] Las Vegas, NV
+# About the A's
+[under: About the A's] The A's are a baseball team founded in 1901.
+[under: About the A's] They have a rich history, having won nine World Series championships and 15 American League pennants.
+[under: About the A's] The A's are known for pioneering the "Moneyball" approach to team-building, which focuses on using statistical analysis to identify undervalued players.
+[under: About the A's] In addition to their success on the field, the A's also have a positive and dynamic work culture.
+[under: About the A's] They have been recognized twice as the Front Office Sports, Best Employers in Sports.
+[under: About the A's] The A’s are defined by their core pillars of being Dynamic, Innovative, and Inclusive.
+[under: About the A's] Working for the A's offers the opportunity to be part of an innovative organization that values its employees and strives to create a positive work environment.
+# Description
+[under: Description] The Senior Engineer, Network & Systems is responsible for the design, implementation, administration, security, and support of the organization's enterprise network and server infrastructure.
+[under: Description] This role serves as a technical leader, ensuring the reliability, scalability, and performance of critical systems supporting business operations, stadium technology, broadcasting, guest services, and corporate functions.
+[under: Description] The ideal candidate combines deep expertise in networking, systems administration, cybersecurity, cloud technologies, and infrastructure architecture.
+[under: Description] This role will work closely with various business units to assist with new initiatives and projects.
+[under: Description] In this role, you are expected to implement technology best practices while also emphasizing a continuous improvement mindset.
+# Responsibilities
+[under: Responsibilities] - Design, deploy, manage, and optimize enterprise LAN, WAN, Wi-Fi, and data center networks.
+[under: Responsibilities] - Administer core network technologies including routing, switching, firewalls, VPNs, SD-WAN, and network access control solutions.
+[under: Responsibilities] - Lead network architecture planning for stadium operations, corporate offices, and event-based environments.
+[under: Responsibilities] - Monitor network performance, troubleshoot complex issues, and implement proactive improvements.
+[under: Responsibilities] - Ensure high availability and redundancy for mission-critical systems.
+[under: Responsibilities] - Manage Windows and Linux server environments, virtualization platforms, and storage systems.
+[under: Responsibilities] - Administer Active Directory, Azure Active Directory, DNS, DHCP, Group Policy, and identity management solutions.
+[under: Responsibilities] - Maintain server, application, and database infrastructure supporting business and operational systems.
+[under: Responsibilities] - Oversee backup, disaster recovery, and business continuity planning.
+[under: Responsibilities] - Implement and manage cloud infrastructure in Microsoft Azure and/or AWS environments.
+[under: Responsibilities] - Implement security best practices across network and server environments.
+[under: Responsibilities] - Manage endpoint protection, vulnerability remediation, patch management, and security monitoring.
+[under: Responsibilities] - Collaborate with internal stakeholders and external partners to maintain compliance with organizational and industry security standards.
+[under: Responsibilities] - Participate in incident response, forensic investigations, and security audits.
+[under: Responsibilities] - Lead infrastructure projects from planning through deployment and operational support.
+[under: Responsibilities] - Evaluate emerging technologies and make recommendations aligned with organizational goals.
+[under: Responsibilities] - Coordinate with vendors, consultants, contractors, and technology partners.
+[under: Responsibilities] - Develop technical standards, documentation, diagrams, and operating procedures.
+[under: Responsibilities] - Participate in on-call support rotations and provide event-day technical support when required.
+[under: Responsibilities] - Maintain accurate asset inventories and lifecycle management plans.
+[under: Responsibilities] - Other duties as assigned.
+# Qualifications/Requirements
+[under: Qualifications/Requirements] - Bachelor's degree in Information Technology, Computer Science, Engineering, or related field, or equivalent experience.
+[under: Qualifications/Requirements] - 7+ years of progressive experience in enterprise network and systems engineering.
+[under: Qualifications/Requirements] - Enterprise networking expertise with Cisco (experience with Aruba, Juniper, Palo Alto, Fortinet, or similar platforms also preferred); industry certifications such as CCNP, Palo Alto PCNSE, Fortinet NSE, VMware VCP, Microsoft Azure Administrator, or AWS Solutions Architect preferred.
+[under: Qualifications/Requirements] - Strong experience with VMware, Hyper-V, or comparable virtualization technologies.
+[under: Qualifications/Requirements] - Advanced knowledge of Windows Server and Linux administration.
+[under: Qualifications/Requirements] - Experience with Azure, AWS, or hybrid cloud environments.
+[under: Qualifications/Requirements] - Strong understanding of cybersecurity principles and infrastructure hardening.
+[under: Qualifications/Requirements] - Experience with scripting and automation using PowerShell, Python, or similar tools.
+[under: Qualifications/Requirements] - Excellent troubleshooting, analytical, and communication skills.
+[under: Qualifications/Requirements] - Willing and able to work a non-traditional schedule, including evenings, weekends, and holidays, as required to support events and critical business operations.
+[under: Qualifications/Requirements] - Willingness to travel as needed, including to conferences, conventions, Spring Training in Arizona, and Athletics game operations in West Sacramento during the 2026 and 2027 seasons.
+[under: Qualifications/Requirements] - Willingness to travel throughout the Las Vegas area as needed to support business operations across multiple locations.
+[under: Qualifications/Requirements] - Willing and able to lift and install network and server equipment up to 50 pounds.
+[under: Qualifications/Requirements] - Willing and able to work in data centers, telecommunications rooms, and stadium operational environments.
+[under: Qualifications/Requirements] - Experience supporting sports, entertainment, hospitality, venue, or large public-facing environments preferred.
+[under: Qualifications/Requirements] - Familiarity with broadcast, IPTV, digital signage, AV-over-IP, or stadium technology systems preferred.
+[under: Qualifications/Requirements] - Experience with large-scale wireless deployments and high-density network environments preferred.
+# The A’s Social Impact & Belonging Statement
+[under: The A’s Social Impact & Belonging Statement] Social Impact & Belonging are in our organizational DNA.
+[under: The A’s Social Impact & Belonging Statement] Our commitment to these values is unwavering – on and off the field.
+[under: The A’s Social Impact & Belonging Statement] Together, we continue to build an inclusive, innovative, and dynamic culture that encourages, supports, and celebrates belonging and amplifies all voices.
+[under: The A’s Social Impact & Belonging Statement] Combining a collaborative and innovative work environment with talented team members, we've created a workforce in which every team member has the tools to reach their full potential.
+# Equal Opportunity Consideration
+[under: Equal Opportunity Consideration] We are an equal opportunity employer and all qualified applicants will receive consideration for employment without regard to race, color, religion, national origin, sex, sexual orientation, age, disability, gender identity, marital or veteran status, or any other protected class.
+
+=== 37205
+company: Cloud Chamber
+title: Gameplay Engineer
+options: Novato, California, United States [undeclared]
+description:
+As a Gameplay Engineer at Cloud Chamber you will bridge the gap between technical execution and creative vision, ensuring that our player-centric gameplay feels as impactful as it looks.
+You will work in close collaboration with a talented development team, report to our Associate Technical Director, and be responsible for helping the team craft compelling and immersive gameplay systems that support our creative ambitions, ultimately bringing the world of BioShock to life.
+# What You’ll Do
+[under: What You’ll Do] - Work closely and constructively with design and art teams to realize creative ambitions.
+[under: What You’ll Do] - Architect and coordinate the implementation of new Gameplay systems and features for player verbs, camera, weapon, etc.
+[under: What You’ll Do] - Work within Unreal 5 engine, both adapting existing systems and building new technology, in order to fulfill the project’s technical needs and achieve its creative goals.
+[under: What You’ll Do] - Keep current on technological developments and advancements in the game industry.
+[under: What You’ll Do] - Identify technical and developmental risks/obstacles and generate solutions to overcome identified risks.
+[under: What You’ll Do] - Partner closely with design, engineering, animation, and audio to further the goals of the project.
+# What We’ll Do Together
+[under: What We’ll Do Together] At Cloud Chamber, we are champions of high standards, pushing for progress and embracing change.
+[under: What We’ll Do Together] We will work closely and constructively across design, art, engineering, animation, and audio teams to realize our creative ambitions.
+[under: What We’ll Do Together] Together, we will stay current on technological advancements and identify solutions to overcome developmental obstacles.
+# Skills & Experiences
+[under: Skills & Experiences] - 3+ years industry or related experience.
+[under: Skills & Experiences] - Previous experience being a contributor to a gameplay engineering team.
+[under: Skills & Experiences] - Strong 3D Math skills with C/C++ experience.
+[under: Skills & Experiences] - Experience with the C/C++ programming language along with a strong familiarity of Object-Oriented (OO) design principles.
+[under: Skills & Experiences] - Commitment to code quality, documentation and sound testing procedures.
+[under: Skills & Experiences] - Debugging/Problem-Solving Skills.
+[under: Skills & Experiences] - Understanding of current data structures, algorithms and methodologies.
+[under: Skills & Experiences] - Experience working with player-centric systems, such as character, camera, and control (3Cs).
+[under: Skills & Experiences] - Current console experience.
+[under: Skills & Experiences] - Strong understanding and familiarity with current Unreal Engine technology is desired.
+# Who You Are
+[under: Who You Are] - A reliable, positive force multiplier, actively seeking opportunities to integrate work across disciplines and contribute to a healthy, supportive team environment.
+[under: Who You Are] - A solid communicator with excellent written and verbal communication skills, with the ability to articulate complex ideas clearly, package information for diverse audiences, and deliver difficult feedback with empathy and professionalism.
+[under: Who You Are] - A persistent and self-motivated person with a proactive mindset.
+[under: Who You Are] - Able to maintain effectiveness and quality under pressure, ambiguity, and fast-changing priorities.
+[under: Who You Are] - An active listener able to build and maintain trust-based relationships across all levels of the organization, understand differing perspectives, and navigate organizational complexity with tact and emotional intelligence.
+[under: Who You Are] - Highly open to feedback and direction, possessing a desire to learn new skills, and capable of producing quick, quality revisions based on new insights or constraints.
+[under: Who You Are] - A strong owner of your tasks, who strives to drive their work forward autonomously while maintaining a critical eye for detail and organization, ensuring high standards of quality.
+[under: Who You Are] - Dedicated to upholding Cloud Chamber’s core values, contributing to a positive and respectful company culture while striving for excellence in all endeavors.
+# Who We Are
+[under: Who We Are] At Cloud Chamber we strive to make BioShock games that move people: evocative, immersive, and meaningful experiences that stay with you long after you’ve rolled credits.
+[under: Who We Are] Great games are born from great collaborations, supported by a culture that brings out the best in our teams.
+[under: Who We Are] We work openly, learn through play, take ownership, push ourselves to be better, and deliver for our players.
+# For candidates located in Quebec
+[under: For candidates located in Quebec] This position requires professional proficiency in both French and English.
+[under: For candidates located in Quebec] Proficiency in English is required to collaborate with our U.S. teams and international partners, as well as to handle specialized technical documentation (reading, writing, and communication).
+[under: For candidates located in Quebec] LI-Onsite
+[under: For candidates located in Quebec] The pay range for this position in California at the start of employment is expected to be between $85,700 and $126,860 per Year.
+[under: For candidates located in Quebec] However, base pay offered is based on market location, and may vary further depending on individualized factors for job candidates, such as job-related knowledge, skills, experience, and other objective business considerations.
+[under: For candidates located in Quebec] Subject to those same considerations, the total compensation package for this position may also include other elements, including a bonus and/or equity awards and eligibility to participate in our 401(K) plan and Employee Stock Purchase Program.
+[under: For candidates located in Quebec] Regular, full-time employees are also eligible for a range of benefits at the Company, including: medical, dental, vision, and basic life insurance coverage; 14 paid holidays per calendar year; paid vacation time per calendar year (ranging from 15 to 25 days) or eligibility to participate in the Company's discretionary time off program; up to 10 paid sick days per calendar year; paid parental and compassionate leave; wellbeing programs for mental health and other wellness support; family planning support through Maven; commuter benefits; and reimbursements for fitness-related expenses.
+> As an equal opportunity employer, we are committed to ensuring that qualified individuals with disabilities are provided reasonable accommodation to participate in the job application or interview process, perform their essential job functions, and receive other benefits and privileges of employment.
+> Please contact us if you need reasonable accommodation.
+> Please note that 2K Games and its studios never use instant messaging apps or personal email accounts to contact prospective employees or conduct interviews.
+> When emailing prospective employees, we only use 2K.com accounts
+
+=== 702513
+company: Dentsu Global Services Private Limited
+title: (Senior) Data Engineer
+options: Belgrade [undeclared] | Prague [undeclared] | Brno [undeclared]
+description:
+# Job Description
+# We Dream. We Do. We Deliver.
+[under: We Dream. We Do. We Deliver.] Merkle, a dentsu company, powers the experience economy.
+[under: We Dream. We Do. We Deliver.] For more than 35 years, the company has put people at the heart of its approach to digital business transformation.
+[under: We Dream. We Do. We Deliver.] As the only integrated experience consultancy in the world with a heritage in data science and business performance, Merkle delivers holistic, end-to-end experiences that drive growth, engagement, and loyalty.
+[under: We Dream. We Do. We Deliver.] Merkle's expertise has earned recognition as a "Leader" by top industry analyst firms, in categories such as digital transformation and commerce, experience design, engineering and technology integration, digital marketing, data science, CRM and loyalty, and customer data management.
+[under: We Dream. We Do. We Deliver.] With more than 16,000 employees, Merkle operates in 30+ countries throughout the Americas, EMEA, and APAC.
+[under: We Dream. We Do. We Deliver.] For more information, visit www.merkle.com.
+# Who are we looking for
+[under: Who are we looking for] We are now looking for a savvy Data Engineer to join our team of data heroes!
+[under: Who are we looking for] We are open to both mid level and senior profiles.
+[under: Who are we looking for] You will be responsible for designing and building big data architecture pipelines for data lake houses in cloud, as well as optimizing and productionizing machine learning and predictive models.
+[under: Who are we looking for] The ideal candidate is an experienced software engineer and data wrangler who enjoys building complex platforms from the ground up, using the latest technologies in cloud.
+[under: Who are we looking for] You will cooperate with data architects and data scientists on large data projects for the biggest international brands, as well as build an internal platform framework to ensure consistent & optimal delivery.
+[under: Who are we looking for] You should be a versatile self-starter eager to roll out next-gen data architectures, comfortable supporting multiple technologies/teams/solutions/clients, and also a great team player able to work within our international team with a positive, startup-minded attitude.
+# What will you do
+[under: What will you do] - Design and implement data ingestion and processing of various data sources using public cloud services.
+[under: What will you do] - Work with stakeholders to assist with data-related technical issues and support their data infrastructure needs, like optimizing existing data delivery, re-designing infrastructure for greater scalability, etc.
+[under: What will you do] - Collaborate with Business Intelligence consultants and assemble large and complex data sets that meet functional and non-functional business requirements for data lakehouse.
+[under: What will you do] - Support machine learning teams in deployment and optimization of AI / Machine Learning models and other data algorithms.
+[under: What will you do] - Develop data pipelines to provide actionable insights into marketing automation, customer acquisition and other key businesses areas.
+[under: What will you do] - Use infrastructure as a code and CI/CD tools to automate release automation pipelines.
+[under: What will you do] - Document data pipelines and logic in a structured manner using Confluence, plan your activities using Agile methodology in Jira.
+[under: What will you do] - Support pre-sales by proposing technical solutions and accurate effort estimation.
+# What do we expect
+[under: What do we expect] - Experience in building and productionizing big data architectures, pipelines and data sets.
+[under: What do we expect] - Understanding data concepts and patterns of big data, data lake, lambda architecture, stream processing, DWH, and BI.
+[under: What do we expect] - 3-7 years of experience in a Data Engineer role, who has attained experience using the following software/tools:
+[under: What do we expect] - Advanced Python programming.
+[under: What do we expect] - Experience with other object-oriented / functional / scripting languages like Bash, Scala, Java, R, PowerShell etc.
+[under: What do we expect] - Data related services from Azure, AWS, and GCP public clouds.
+[under: What do we expect] - Big data technologies like Databricks, Fabricm, AWS Glue, Snowflake, Dataproc, BigQuery, etc.
+[under: What do we expect] - Extensive working experience with relational databases like MS SQL, Postgres, Aurora DB and NoSQL databases like DynamoDB, MongoDB, Elasticsearch, Redis, etc.
+[under: What do we expect] - Streaming technology services like Kafka, Event Hubs, and Kinesis, etc.
+[under: What do we expect] - Orchestration, compute, and ETL services like dbt, Airflow, Cloud Composer, AWS Step Functions, AWS Lambda, Azure Functions etc.
+[under: What do we expect] - Strong analytic skills related to working with structured and unstructured datasets.
+[under: What do we expect] - Build processes supporting data transformation, data structures, metadata, dependency and workload management.
+[under: What do we expect] - Experience in setting up and using CI/CD automation tools like Azure DevOps, GitHub actions, Jenkins, etc.
+[under: What do we expect] - Person who is precise, well organized, has good communication skills, can adapt to changing circumstances and is not afraid of responsibility for his / her work will do great in this role.
+# We will be over the moon if you also have
+[under: We will be over the moon if you also have] - Experience in delivery of business intelligence projects, using tools like Power BI, Tableau, Looker.
+[under: We will be over the moon if you also have] - Understanding of web-tracking frameworks such as Adobe Analytics and Google Analytics.
+[under: We will be over the moon if you also have] - Experience with Salesforce Cloud services.
+# Why choose Merkle?
+[under: Why choose Merkle?] Innovation at Our Core: As part of dentsu’s global network, Merkle pushes the boundaries of customer experience, integrating creativity, technology, and data to drive real-world impact.
+[under: Why choose Merkle?] For over 35 years, we’ve been innovating to meet the changing needs of our clients.
+[under: Why choose Merkle?] Global Reach with Local Expertise: With over 16,000 employees across 30+ countries, and part of a 70,000 employees network at dentsu, Merkle blends global insights with a deep understanding of local markets to deliver personalized, effective solutions.
+[under: Why choose Merkle?] Collaborative Culture: At Merkle, your ideas and contributions truly matter.
+[under: Why choose Merkle?] You’ll join a team that fosters innovation, collaboration, and creative problem-solving.
+[under: Why choose Merkle?] Together, we work on impactful international projects, making meaningful connections every step of the way.
+# What’s in It for You?
+[under: What’s in It for You?] Global Perspective: As part of a dentsu company, collaborate with over 70,000 talented colleagues across 145 countries to drive innovation on a global scale.
+[under: What’s in It for You?] Flexibility & Balance: Enjoy hybrid work models, adaptable hours, and home office options.
+[under: What’s in It for You?] Inclusive & Supportive Culture: We celebrate diversity and foster a respectful workplace where every team member’s unique perspective is valued, and everyone is welcome.
+[under: What’s in It for You?] Well-balanced reward package: We offer competitive salaries, volunteer days, wellness days, modern offices, and a multi-cultural environment that fosters creativity and innovation.
+[under: What’s in It for You?] Innovation-Driven Work: Contribute to projects that are reshaping industries and driving transformation with next-generation technologies and strategies.
+[under: What’s in It for You?] Purpose-Driven Culture: Be part of an organization that fosters sustainable growth for brands, people, and society—where every contribution makes a meaningful impact.
+[under: What’s in It for You?] Growth Opportunities: Expand your skills through training, mentorship, and data-driven projects that reshape customer experience and business outcomes.
+[under: What’s in It for You?] Explore opportunities in the whole dentsu network to expand your reach.
+[under: What’s in It for You?] *many more attractive benefits are waiting for you, for more details regarding additional benefits, please ask your recruiter.
+[under: What’s in It for You?] Ready to join the team?
+[under: What’s in It for You?] Shape your unique career and reach your full potential.
+[under: What’s in It for You?] Apply now and join us in transforming the future together.
+[under: What’s in It for You?] *At dentsu, Diversity, Equity, and Inclusion (DEI) is central to our vision: "To be at the forefront of people-centered transformations that shape society."
+[under: What’s in It for You?] We cherish the unique talents and perspectives of all individuals, welcoming applicants regardless of gender, gender identity, nationality, religion, ethnicity, cultural background, sexual orientation, age, physical or mental ability.
+[under: What’s in It for You?] By embracing diverse perspectives, we create meaningful change and sustainable growth for our people, clients, and society.
+[under: What’s in It for You?] Our hiring decisions are guided by qualifications and role-specific requirements, ensuring a workplace free from discrimination and harassment.
+# LI-MERKLE #LI-SOFI
+# Location
+[under: Location] Belgrade
+# Brand
+[under: Brand] Merkle
+# Time Type
+[under: Time Type] Full time
+# Contract Type
+[under: Contract Type] Permanent
+
+=== 985990
+company: 5100 Kyndryl Solutions Private Limited
+title: Early Professional – Infrastructure & Systems Administrator
+options: Mexico City, Distrito Federal, Mexico [undeclared]
+description:
+# Who We Are
+[under: Who We Are] At Kyndryl, we run and reimagine the mission-critical technology systems that drive advantage for the world’s leading businesses.
+[under: Who We Are] We are at the heart of progress; with proven expertise and a continuous flow of AI-powered insight, enabling smarter decisions, faster innovation, and a lasting competitive edge.
+[under: Who We Are] For our people—Kyndryls—that means doing purposeful work that powers human progress.
+[under: Who We Are] Join us and experience a flexible, supportive environment where your well-being is prioritized and your potential can thrive.
+# The Role
+# Education & Experience
+[under: Education & Experience] - Recent graduate or final-year student in Computer Science, Information Technology, Systems Engineering, Software Engineering, Telecommunications, Electronics, Data Science, Artificial Intelligence, or a related technical discipline.
+[under: Education & Experience] - 0–1 year of professional experience.
+[under: Education & Experience] - Internships, university projects, laboratories, technical certifications and bootcamps are considered relevant experience.
+[under: Education & Experience] - Previous production experience is not required.
+# Technical Foundations
+[under: Technical Foundations] Candidates should have basic academic or practical knowledge in some of the following areas:
+[under: Technical Foundations] - Linux and/or Windows operating systems
+[under: Technical Foundations] - Computer architecture and infrastructure fundamentals
+[under: Technical Foundations] - Networking fundamentals: TCP/IP, DNS and connectivity
+[under: Technical Foundations] - Basic troubleshooting and log analysis
+[under: Technical Foundations] - Virtualization and Cloud fundamentals
+[under: Technical Foundations] - Basic database and SQL concepts
+[under: Technical Foundations] - Application and client/server architecture fundamentals
+[under: Technical Foundations] - Monitoring and IT operations fundamentals
+# Programming & Automation Fundamentals
+[under: Programming & Automation Fundamentals] Candidates should demonstrate interest or foundational knowledge in programming and automation, ideally including:
+[under: Programming & Automation Fundamentals] - Python fundamentals
+[under: Programming & Automation Fundamentals] - Basic Bash and/or PowerShell scripting
+[under: Programming & Automation Fundamentals] - Programming logic, variables, functions, loops and data structures
+[under: Programming & Automation Fundamentals] - Basic object-oriented programming concepts
+[under: Programming & Automation Fundamentals] - Basic API and REST concepts
+[under: Programming & Automation Fundamentals] - JSON and structured data
+[under: Programming & Automation Fundamentals] - Git / version control fundamentals
+[under: Programming & Automation Fundamentals] - Ability to create simple scripts to automate repetitive operational tasks
+[under: Programming & Automation Fundamentals] - Interest in Infrastructure as Code and configuration automation
+# Artificial Intelligence Fundamentals
+[under: Artificial Intelligence Fundamentals] Candidates should also demonstrate curiosity and basic awareness of Artificial Intelligence technologies, including:
+[under: Artificial Intelligence Fundamentals] - Basic understanding of Artificial Intelligence, Machine Learning and Generative AI
+[under: Artificial Intelligence Fundamentals] - Familiarity with Large Language Models (LLMs) and their potential applications
+[under: Artificial Intelligence Fundamentals] - Basic understanding of prompt engineering
+[under: Artificial Intelligence Fundamentals] - Interest in using AI to support troubleshooting, knowledge retrieval, documentation and operational activities
+[under: Artificial Intelligence Fundamentals] - Interest in AIOps, intelligent monitoring, event correlation and automation
+[under: Artificial Intelligence Fundamentals] - Ability to use AI tools responsibly as an accelerator while validating technical outputs
+[under: Artificial Intelligence Fundamentals] - Interest in combining AI + Automation + Infrastructure Operations
+[under: Artificial Intelligence Fundamentals] Deep experience in AI or Machine Learning is not required.
+[under: Artificial Intelligence Fundamentals] The objective is to identify candidates with the aptitude and curiosity to develop these capabilities.
+# Skills & Behaviors
+[under: Skills & Behaviors] We should prioritize potential, curiosity and learning agility over previous experience:
+[under: Skills & Behaviors] - Strong logical and analytical thinking
+[under: Skills & Behaviors] - Technical curiosity
+[under: Skills & Behaviors] - Problem-solving mindset
+[under: Skills & Behaviors] - Interest in AI, programming and automation
+[under: Skills & Behaviors] - Ability to learn new technologies quickly
+[under: Skills & Behaviors] - Attention to detail
+[under: Skills & Behaviors] - Ability to follow established procedures
+[under: Skills & Behaviors] - Ownership and accountability
+[under: Skills & Behaviors] - Teamwork and collaboration
+[under: Skills & Behaviors] - Service-oriented mindset
+[under: Skills & Behaviors] - Effective communication
+[under: Skills & Behaviors] - English skills appropriate for regional/global environments
+# Desirable Technology Exposure
+[under: Desirable Technology Exposure] Infrastructure: Linux | Windows | VMware | Cloud | Networking | Monitoring
+[under: Desirable Technology Exposure] Programming & Automation: Python | Bash | PowerShell | SQL | Git | REST APIs | JSON | Ansible
+[under: Desirable Technology Exposure] Cloud Native: Docker | Kubernetes | OpenShift | CI/CD
+[under: Desirable Technology Exposure] AI: Generative AI | LLM Fundamentals | Prompt Engineering | AI-assisted Automation | AIOps concepts
+# Who You Are
+[under: Who You Are] Recent graduate or final-year student in Computer Science, Information Technology, Systems Engineering, Software Engineering, Telecommunications, Electronics, Data Science, Artificial Intelligence or related field, 0–1 year of professional experience (internships, university projects, labs, certifications, or bootcamps accepted), Linux and Windows operating systems, Computer architecture and infrastructure fundamentals, Networking fundamentals (TCP/IP, DNS, connectivity), Basic troubleshooting and log analysis, Virtualization and Cloud fundamentals, Basic database and SQL concepts, Application
+# Being You
+[under: Being You] The “Kyn” in Kyndryl means kinship, which represents the strong bonds we have with each other, our customers and our communities.
+[under: Being You] We focus on ensuring all Kyndryls feel included and we welcome people of all cultures, backgrounds, and experiences.
+[under: Being You] Even if you don’t meet every requirement, we encourage you to apply.
+[under: Being You] We believe in growth, and we’re excited to see what you can bring.
+[under: Being You] At Kyndryl, employee feedback has told us that our number one driver of employee engagement is belonging.
+[under: Being You] That sense of belonging — being a valued, respected, trusted member of the team — is fundamental to our culture and fueling great experiences for our customers.
+[under: Being You] This dedication to welcoming everyone into our company means that Kyndryl gives you the ability to thrive and contribute to our culture of empathy and shared success.
+[under: Being You] That’s The Kyndryl Way.
+# What You Can Expect
+[under: What You Can Expect] Your career with us isn’t just a job—it’s an adventure with purpose.
+[under: What You Can Expect] We offer a dynamic, hybrid-friendly culture that supports your well-being and empowers you to grow.
+[under: What You Can Expect] Our Be Well programs are thoughtfully designed to support your financial, mental, physical, and social health—because we know that when you feel your best, you do your best.
+[under: What You Can Expect] From your very first day, you’ll dive into impactful work that powers the systems our customers rely on every day.
+[under: What You Can Expect] You won’t just contribute—you’ll make a difference, tackling meaningful projects that sharpen your skills and fuel your growth.
+[under: What You Can Expect] We’re here to champion your journey.
+[under: What You Can Expect] With powerful tools to chart your career path, personalized development goals aligned with your ambitions, and continuous feedback to keep you inspired and on track, you’ll have everything you need to thrive and evolve.
+[under: What You Can Expect] You’ll develop in-demand skills to grow your career and achieve your ambitions with access to cutting-edge learning opportunities—from certifications with Microsoft, Google, and Amazon to coaching and hands-on experiences.
+[under: What You Can Expect] And through it all, you’ll be part of a culture that values empathy, restless learning, and a devotion to shared success.
+[under: What You Can Expect] We want you to thrive here—and we’re committed to helping you do just that.
+[under: What You Can Expect] Ready to make an impact?
+[under: What You Can Expect] Join us and help shape what’s next.
+# Get Referred!
+[under: Get Referred!] If you know someone that works at Kyndryl, when asked ‘How Did You Hear About Us’ during the application process, select ‘Employee Referral’ and enter your contact's Kyndryl email address.
+
+=== 852788
+company: Altera Digital Health (India) LLP
+title: Software Architect
+options: Pennsylvania, United States [undeclared]
+description:
+Harris Digital Learning helps school districts build and run successful digital learning programs.
+At the heart of our work is eSchoolware , our proprietary learning management system.
+It brings together everything districts need to manage, deliver, and support online and hybrid learning in a single platform.
+eSchoolware serves students, teachers, parents, and administrators alike.
+It offers age-appropriate learning experiences for middle and high school students, mastery-based course progression, tools for communication and collaboration, and a reporting system with more than 200 standard reports, so educators always have the data they need to support student success.
+Our mission is simple: empower educators and engage every learner at every stage of their education.
+# What you will own
+# Year one
+[under: Year one] - Define the target architecture and the sequence to reach it. The platform has no module seams today, so this is strangler-fig work around functional verticals on a shared foundation.
+[under: Year one] - Specify and accept our modernization partner’s deliverables against defined criteria. You are the technical counterpart holding a fixed-price statement of work to account.
+[under: Year one] - Lead the data-layer modernization: retire the XDoclet-generated Hibernate mappings in favour of JPA, and oversee the Oracle to PostgreSQL conversion alongside a specialist contractor.
+[under: Year one] - Stand up the REST API façade and the identity, organization and enrollment foundation that everything else depends on.
+[under: Year one] - Establish engineering practice from close to zero — CI/CD, code review, and characterization tests on a system with almost no test coverage today.
+[under: Year one] - Recommend the shape of the team, and help us hire it.
+# Ongoing
+[under: Ongoing] - Architecture standards, design patterns and technical governance
+[under: Ongoing] - Mentoring engineers and contractors
+[under: Ongoing] - Making AI-assisted development a normal part of how the team works
+[under: Ongoing] - Ensuring quality, maintainability, accessibility and security are built in rather than retrofitted
+# WHAT GOOD LOOKS LIKE AT 90 DAYS
+[under: WHAT GOOD LOOKS LIKE AT 90 DAYS] A validated target architecture and a sequenced roadmap that leadership can fund
+[under: WHAT GOOD LOOKS LIKE AT 90 DAYS] - acceptance criteria agreed in writing with our modernization partner
+[under: WHAT GOOD LOOKS LIKE AT 90 DAYS] - your recommendation on the team we should build and in what order.
+# What we need
+# MUST HAVE
+[under: MUST HAVE] - 8+ years building enterprise software, including 5+ leading engineering teams or owning architecture on significant programs
+[under: MUST HAVE] - You have actually modernized a large legacy system — decomposed a monolith, replaced a data layer, migrated a platform off an unsupported stack. We care far more that you have done it than which technologies it happened to be.
+[under: MUST HAVE] - Strong Java and Spring Boot, and genuine comfort in a modern front-end stack. We are targeting Angular, React, and TypeScript.
+[under: MUST HAVE] - Relational database depth — schema design, ORM behaviour, query performance. Oracle and PostgreSQL are both in play.
+[under: MUST HAVE] - Experience owning a vendor or systems-integrator relationship: writing the specification, defining acceptance, and holding the line when delivery drifts.
+[under: MUST HAVE] - Cloud-native delivery on Azure or equivalent — CI/CD, infrastructure as code, monitoring and observability.
+[under: MUST HAVE] - Building to WCAG 2.2 AA. Accessibility is a contractual obligation passed to us by the districts we serve, not a nice-to-have.
+[under: MUST HAVE] - Experience working with Linux servers
+# GENUINELY HELPFUL, AND NOT REQUIRED
+[under: GENUINELY HELPFUL, AND NOT REQUIRED] - K–12 or higher-education technology, and the 1EdTech standards — LTI 1.3, Common Cartridge and Thin Common Cartridge, OneRoster, QTI
+[under: GENUINELY HELPFUL, AND NOT REQUIRED] - Oracle-to-PostgreSQL migration, ora2pg, cutover planning and rollback strategy
+[under: GENUINELY HELPFUL, AND NOT REQUIRED] - Establishing test coverage on systems that have none
+[under: GENUINELY HELPFUL, AND NOT REQUIRED] - Remediating security findings in legacy code — secrets management, dependency CVEs, audit logging
+[under: GENUINELY HELPFUL, AND NOT REQUIRED] - Student data privacy: FERPA, COPPA, and district data-protection agreements
+[under: GENUINELY HELPFUL, AND NOT REQUIRED] - Portal frameworks such as Liferay. We are migrating away from it, so we are interested in the experience rather than a plan to keep it.
+[under: GENUINELY HELPFUL, AND NOT REQUIRED] - Gamified learning experiences and engagement mechanics
+[under: GENUINELY HELPFUL, AND NOT REQUIRED] - Fluent use of AI-assisted development tools in real delivery work, not just experimentation
+# A NOTE ON THE LIST ABOVE
+[under: A NOTE ON THE LIST ABOVE] We do not expect one person to bring all of this.
+[under: A NOTE ON THE LIST ABOVE] If the first list describes you and two or three items in the second look familiar, please apply — we would rather talk to you than guess.
+# Education
+[under: Education] Bachelor’s degree in software engineering, computer science or a related field, or the equivalent in demonstrated experience.
+[under: Education] We mean the second half of that sentence.
+[under: Education] Salary range: $115,000 - $125,000 USD per year.
+
+=== 1074403
+company: Mizuho Securities USA LLC
+title: 2026 Commercial Lending Technology Summer Internship
+options: NYC (1285) [undeclared]
+description:
+Mizuho is a bank on the rise climbing the league tables, disrupting the status quo and attracting top talent.
+Positions are available across investment and corporate banking, capital markets, advisory, research, sales & trading, derivatives and corporate functions.
+We are looking for candidates who want to contribute to our entrepreneurial culture where people at all levels are inspired to share ideas.
+Our creativity sets us apart, and our commitment drives results in creating bespoke, client-focused solutions.
+If you are interested in working for an organization with a growth mindset that is a global leader in financial services, we would like to hear from you.
+# General
+[under: General] The Commercial Lending Technology Intern will be part of the Lending Solution team in the Corporate Technology Services group.
+[under: General] This position is responsible for working closely with the team and will participate in weekly intern cohort programming and collaborate with other interns on a group project.
+# Role Description
+[under: Role Description] As the Commercial Lending Technology .Net Developer Intern, you will assist the Lending Solutions Technology team in analysis, development, program design and development, testing, and implementation of banking related systems, with a focus on lending and trading technologies.
+[under: Role Description] This internship will be hands on.
+[under: Role Description] You will be involved in discussions and processes for multi-million-dollar decisions.
+[under: Role Description] A general understanding of lending systems, preparation of documentation, spreadsheets & presentations to enhance executive reporting capabilities are part of the role.
+# Functional Responsibilities
+[under: Functional Responsibilities] - Analysis, design, software development and testing of .NET developments
+[under: Functional Responsibilities] - Unit testing, integration testing, support and troubleshooting for the systems under management
+[under: Functional Responsibilities] - Documentation
+# Job Knowledge Requirements
+[under: Job Knowledge Requirements] - .NET architecture and best practices implementation experience
+[under: Job Knowledge Requirements] - Azure DevOps, CI/CD (Cloud)
+[under: Job Knowledge Requirements] - Automated testing tools
+[under: Job Knowledge Requirements] - Familiarity with any or all of these: VB.NET, C#.NET, MS SQL Server/T-SQL, Java script, ASP.NET, SSRS/SSIS, Bootstrap
+[under: Job Knowledge Requirements] - Experience with software installations and configurations; knowledge of web-based applications
+[under: Job Knowledge Requirements] - Experience with Java 8 console applications is a plus
+[under: Job Knowledge Requirements] - Ability to write and test SQL Queries
+[under: Job Knowledge Requirements] - Familiarity with how technology supports the banking/financial services industry
+[under: Job Knowledge Requirements] - Awareness of lending and trading practices
+[under: Job Knowledge Requirements] - Ability to communicate with business users
+# Qualifications
+[under: Qualifications] - Current students with an expected graduation date of May/June 2027
+[under: Qualifications] - Preferred majors: Computer Science, Computer Engineering, Information Systems, or related fields
+[under: Qualifications] Salary: $35/hr
+# Other requirements
+[under: Other requirements] Mizuho has in place a hybrid working program, with varying opportunities for remote work depending on the nature of the role, needs of your department, as well as local laws and regulatory obligations.
+[under: Other requirements] Roles in some of our departments have greater in-office requirements that will be communicated to you as part of the recruitment process.
+# Company Overview
+[under: Company Overview] Mizuho Financial Group, Inc. is the 15th largest bank in the world as measured by total assets of ~$2 trillion.
+[under: Company Overview] Mizuho's 60,000 employees worldwide offer comprehensive financial services to clients in 35 countries and 800 offices throughout the Americas, EMEA and Asia.
+[under: Company Overview] Mizuho Americas is a leading provider of corporate and investment banking services to clients in the US, Canada, and Latin America.
+[under: Company Overview] Through its acquisition of Greenhill , Mizuho provides M&A, restructuring and private capital advisory capabilities across Americas, Europe and Asia.
+[under: Company Overview] Mizuho Americas employs approximately 3,500 professionals, and its capabilities span corporate and investment banking, capital markets, equity and fixed income sales & trading, derivatives, FX, custody and research.
+[under: Company Overview] Visit www.mizuhoamericas.com.
+[under: Company Overview] Mizuho Americas offers a competitive total rewards package.
+[under: Company Overview] We are an EEO/AA Employer - M/F/Disability/Veteran.
+[under: Company Overview] We participate in the E-Verify program.
+[under: Company Overview] We maintain a drug-free workplace and reserve the right to require pre- and post-hire drug testing as permitted by applicable law.
+
+=== 957758
+company: 00266 Blue Yonder India Private Limited
+title: Solution Architect
+options: Bangalore [undeclared] | IND - Coimbatore (708) [undeclared]
+description:
+# Required Qualifications
+[under: Required Qualifications] - 10+ years of experience in Supply Chain Planning implementations and consulting.
+[under: Required Qualifications] - Proven hands-on implementation experience in BY ESP, Demand Supply Planning, Inventory Optimization, Order Promising, and Advanced Supply Chain Planning solutions.
+[under: Required Qualifications] - Strong implementation experience in similar planning platforms such as Kinaxis, o9, OMP, SAP APO / IBP, and Oracle Supply Chain Planning will be considered an added advantage.
+[under: Required Qualifications] - Proven track record of architecting and delivering complex global supply chain transformations across CPG, Hi-Tech, Process Manufacturing, Automotive, and Industrial Manufacturing industries.
+[under: Required Qualifications] - Strong supply chain domain expertise is mandatory and non-negotiable.
+[under: Required Qualifications] - Strong customer-facing consulting and stakeholder management capabilities.
+[under: Required Qualifications] - Ability to independently drive solutioning discussions and architect scalable solutions for complex customer requirements.
+# Technical Skills
+# Good to have
+[under: Good to have] - Experience in SQL Python
+[under: Good to have] - Experience with ORACLE and SNOWFLAKE databases
+[under: Good to have] - Strong understanding of Supply Chain data models
+[under: Good to have] - Experience with cloud-native planning architectures
+[under: Good to have] - API and Integration architecture understanding
+[under: Good to have] - BY Platform / Data Cloud / BYDM exposure
+# AI / Digital Skills
+[under: AI / Digital Skills] - Understanding of AI/ML-driven planning capabilities in Supply Chain.
+[under: AI / Digital Skills] - Exposure to ML-based forecasting and intelligent planning solutions.
+[under: AI / Digital Skills] - Knowledge or experience in Agentic AI, AI-driven automation, or GenAI-based implementation accelerators will be a strong advantage.
+# Preferred Profile
+[under: Preferred Profile] - Strong architecting and deep solutioning mindset.
+[under: Preferred Profile] - Ability to think beyond standard product functionality to solve customer business challenges.
+[under: Preferred Profile] - Strong analytical and problem-solving skills.
+[under: Preferred Profile] - Excellent communication, presentation, and executive stakeholder management skills.
+[under: Preferred Profile] - Ability to lead customer discussions independently.
+[under: Preferred Profile] - Experience working in global consulting or supply chain transformation programs preferred.
+[under: Preferred Profile] - APICS / Supply Chain certifications preferred.
+# What Success Looks Like
+[under: What Success Looks Like] - Successfully leading large-scale supply chain planning implementations.
+[under: What Success Looks Like] - Delivering scalable and optimized planning solutions with measurable business value.
+[under: What Success Looks Like] - Driving customer confidence through strong architecture and consulting capabilities.
+[under: What Success Looks Like] - Enabling faster deployments and improved customer adoption through modern AI-enabled implementation approaches.
+[under: What Success Looks Like] Acting as a trusted advisor to customers for supply chain transformation initiatives
+# Our Values
+[under: Our Values] If you want to know the heart of a company, take a look at their values.
+[under: Our Values] Ours unite us.
+[under: Our Values] They are what drive our success – and the success of our customers.
+[under: Our Values] Does your heart beat like ours?
+[under: Our Values] Find out here: Core Values
+[under: Our Values] All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, disability or protected veteran status.
+
+=== 78763
+company: IMC
+title: Machine Learning Engineer
+options: Hong Kong, Hong Kong; Sydney, Australia [undeclared]
+description:
+Machine Learning Engineers at IMC play a pivotal role in building the systems that drive training and deployment of large-scale ML models across IMC's global operations.
+They collaborate with quantitative researchers, hardware specialists and software engineers to build robust systems that get the most out of GPU acceleration, distributed computing and the broader open-source ML ecosystem.
+ML Engineers' work directly shapes how fast we can experiment, iterate and deploy, accelerating the cycle that turns a research idea into a live trading strategy.
+This is a unique opportunity to solve problems at the intersection of advanced machine learning and trading, where your contributions will shape the future of IMC's technology and trading capabilities.
+As a team, our Machine Learning Engineers broadly work across two areas: ML Research Engineering, focused on the systems and frameworks researchers use to train, evaluate and iterate on models at scale; and ML Performance Engineering, focused on making ML workloads execute as efficiently as possible, typically through GPU and low-level systems optimisation.
+These aren't rigid tracks, and there is overlap between them.
+You will bring depth of expertise in at least one of these focus areas and collaborate closely with global team members.
+# Your Core Responsibilities
+# ML Research Engineering
+[under: ML Research Engineering] - Develop large-scale distributed training pipelines that manage complex datasets and models.
+[under: ML Research Engineering] - Partner with quantitative researchers to automate ML experiments, hyperparameter tuning and model retraining.
+[under: ML Research Engineering] - Work with HPC specialists to optimise workflows, improve training speed and reduce compute cost.
+# ML Performance Engineering
+[under: ML Performance Engineering] - Build and optimise low-latency inference pipelines, ensuring models deliver real-time predictions in production systems.
+[under: ML Performance Engineering] - Maximise performance in training and inference using GPU hardware and acceleration libraries.
+# Across both areas
+[under: Across both areas] - Extend and improve the internals of machine learning frameworks and open-source tools to raise their performance for our workloads.
+[under: Across both areas] - Design scalable model infrastructure capable of handling high-volume trading data and delivering real-time, high-accuracy predictions.
+[under: Across both areas] - Evaluate and roll out third-party tools that enhance model development, training and inference capabilities.
+# Your Skills and Experience
+# Core, regardless of focus area
+[under: Core, regardless of focus area] - 3+ years' experience in machine learning, with a focus on training or inference systems.
+[under: Core, regardless of focus area] - Production software engineering: Python, testing discipline and genuine ownership of systems once they ship.
+[under: Core, regardless of focus area] - Machine learning fundamentals: you understand modern ML workloads beyond high-level APIs and can reason about model behaviour, correctness and performance at the level relevant to your area of expertise.
+[under: Core, regardless of focus area] - A systems mindset: you reach for measurement before opinion on performance, scale or reliability issues, and can make sound build-versus-buy decisions.
+[under: Core, regardless of focus area] - Strong collaboration: comfortable explaining the reasoning behind your technical decisions, working through differing perspectives with researchers and adapting your approach when the evidence supports it.
+# Depth in one or more of the following
+[under: Depth in one or more of the following] - Distributed training and large-scale systems: parallelism strategy, data pipelines and checkpointing; frameworks such as PyTorch, TensorFlow or JAX.
+[under: Depth in one or more of the following] - GPU performance and low-level optimisation: reasoning about memory, compute and latency at the device level, and optimising performance across kernels, compilers and hardware (e.g. CUDA, Triton or equivalent).
+[under: Depth in one or more of the following] - Production inference systems: hands-on experience building and hardening real-time, low-latency prediction pipelines in high-performance environments.
+[under: Depth in one or more of the following] - Numerics and correctness at scale: low-precision effects, KV caching, batching, and knowing which optimisations stay bit-exact.
+# Also a plus
+[under: Also a plus] - Exposure to cloud platforms and orchestration tools.
+[under: Also a plus] - A track record of contributing to open-source projects in machine learning, data science or distributed systems.
+> # About Us
+> [under: About Us] IMC is a research-driven trading firm where quantitative modeling, machine learning, and engineering shape how modern markets are traded.
+> [under: About Us] A stabilizing force in markets since 1989, we provide liquidity across trading venues, delivering the best outcome in value and risk management to investors.
+> [under: About Us] Using our own technology and capital, we build proprietary systems and algorithms that operate across global markets.
+> [under: About Us] Our researchers, traders, and engineers work as a collective, combining rapid experimentation, advanced infrastructure, and real-time feedback to turn insight into execution and execution into advantage.
+
+=== 1352223
+company: Stryker Employment Company, LLC
+title: Staff Systems Engineer, Robotics
+options: Portage, Michigan [undeclared]
+description:
+Work Flexibility: Onsite
+# It's Time to Join Stryker!
+[under: It's Time to Join Stryker!] Stryker is seeking a Staff Systems Engineer, Robotics to lead systems engineering activities for critical electromechanical components within a complex robotic medical platform.
+[under: It's Time to Join Stryker!] In this role, you will serve as a systems engineering owner for robotic end effectors, including powered surgical tools and future attachments that interface directly with the robotic system.
+[under: It's Time to Join Stryker!] You will help translate user and clinical needs into system architecture and requirements, define interfaces across electrical, mechanical, and software disciplines, and guide the product from requirements development through integration and verification.
+[under: It's Time to Join Stryker!] This role requires a highly collaborative engineer who can bring together input from multiple technical disciplines and maintain a system-level view throughout development.
+# What You Will Do
+# Systems Engineering
+[under: Systems Engineering] - Own systems engineering activities for robotic end effectors and related electromechanical subsystems.
+[under: Systems Engineering] - Translate user, clinical, and product needs into clear, verifiable system requirements and design inputs.
+[under: Systems Engineering] - Develop and refine system architectures, interfaces, and functional requirements across electrical, mechanical, software, and controls disciplines.
+[under: Systems Engineering] - Allocate and decompose system requirements to appropriate subsystems and engineering disciplines.
+[under: Systems Engineering] - Lead technical trade studies, design assessments, performance analyses, and other systems engineering activities used to guide design decisions.
+[under: Systems Engineering] - Support concept development and architecture definition for new end effectors, features, and product capabilities.
+# Requirements, Integration, and Verification
+[under: Requirements, Integration, and Verification] - Establish and maintain requirements traceability throughout the product development lifecycle.
+[under: Requirements, Integration, and Verification] - Develop system-level verification strategies and ensure requirements can be objectively verified.
+[under: Requirements, Integration, and Verification] - Lead system integration activities across multiple engineering disciplines.
+[under: Requirements, Integration, and Verification] - Investigate and help resolve complex system-level design and integration issues.
+[under: Requirements, Integration, and Verification] - Lead or support system verification and validation activities as development progresses.
+[under: Requirements, Integration, and Verification] - Contribute to product risk management and ensure appropriate linkage between risks, requirements, mitigations, and verification evidence.
+[under: Requirements, Integration, and Verification] - Create and maintain engineering documentation supporting the Design History File.
+# Cross-Functional Leadership
+[under: Cross-Functional Leadership] - Collaborate with Electrical, Mechanical, Software, Systems, Clinical, Quality, Regulatory, Manufacturing, and other stakeholders to ensure successful system development.
+[under: Cross-Functional Leadership] - Support Voice of Customer activities and translate clinical workflows and customer needs into actionable engineering inputs.
+[under: Cross-Functional Leadership] - Mentor engineers in systems engineering, requirements development, design controls, risk management, and verification practices.
+[under: Cross-Functional Leadership] - Identify and implement improvements to systems engineering processes, tools, and practices.
+# What You Will Need
+# Minimum Qualifications
+[under: Minimum Qualifications] - Bachelor of Science degree in Software Engineering, Electrical Engineering, Mechanical Engineering, Systems Engineering, Biomedical Engineering, or a related engineering discipline.
+[under: Minimum Qualifications] - 4+ years of applicable engineering experience.
+# Preferred Qualifications
+[under: Preferred Qualifications] - Experience developing or managing system requirements for complex products.
+[under: Preferred Qualifications] - Experience working across multiple engineering disciplines such as electrical, mechanical, software, systems, or test.
+[under: Preferred Qualifications] - Experience developing medical devices or other complex regulated products.
+[under: Preferred Qualifications] - Experience with systems architecture, requirements development, decomposition, interface definition, integration, and verification.
+[under: Preferred Qualifications] - Experience translating user or customer needs into system-level design inputs and requirements.
+[under: Preferred Qualifications] - Experience developing verification strategies and supporting system integration and testing.
+[under: Preferred Qualifications] - Experience with robotic systems, powered surgical tools, power tools, or other precision electromechanical products.
+[under: Preferred Qualifications] - Experience with requirements management tools such as Jama, IBM DOORS, or equivalent.
+[under: Preferred Qualifications] - Working knowledge of ISO 13485, ISO 14971, design controls, and medical device development practices.
+[under: Preferred Qualifications] - INCOSE CSEP certification or equivalent systems engineering certification.
+[under: Preferred Qualifications] - Strong communication and relationship-building skills with the ability to influence across technical disciplines.
+[under: Preferred Qualifications] - $102,600 $171,000 USD Annual
+[under: Preferred Qualifications] Travel Percentage: 10%
+[under: Preferred Qualifications] Stryker Corporation is an equal opportunity employer.
+[under: Preferred Qualifications] Qualified applicants will receive consideration for employment without regard to race, ethnicity, color, religion, sex, gender identity, sexual orientation, national origin, disability, or protected veteran status.
+[under: Preferred Qualifications] Stryker is an EO employer – M/F/Veteran/Disability.
+[under: Preferred Qualifications] Stryker Corporation will not discharge or in any other manner discriminate against employees or applicants because they have inquired about, discussed, or disclosed their own pay or the pay of another employee or applicant.
+[under: Preferred Qualifications] However, employees who have access to the compensation information of other employees or applicants as a part of their essential job functions cannot disclose the pay of other employees or applicants to individuals who do not otherwise have access to compensation information, unless the disclosure is (a) in response to a formal complaint or charge, (b) in furtherance of an investigation, proceeding, hearing, or action, including an investigation conducted by the employer, or (c) consistent with the contractor’s legal duty to furnish information.
+

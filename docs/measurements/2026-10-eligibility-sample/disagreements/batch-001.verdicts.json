@@ -1,0 +1,19 @@
+{
+  "96070": {"verdict": "a", "clause": "A security clearance, held or obtainable", "pattern": "conditional clearance stays unknown"},
+  "242263": {"verdict": "a", "clause": "A timezone requirement", "pattern": "timezone window excludes despite options"},
+  "264347": {"verdict": "a", "clause": "Where the person must be, or the company hires", "pattern": "description names hiring countries excludes"},
+  "264364": {"verdict": "a", "clause": "Where the person must be, or the company hires", "pattern": "description names hiring countries excludes"},
+  "397025": {"verdict": "b", "clause": "Where the person must be, or the company hires", "pattern": "description names Latin America region eligible"},
+  "397089": {"verdict": "a", "clause": "Where the person must be, or the company hires", "pattern": "description names hiring countries excludes"},
+  "397535": {"verdict": "a", "clause": "Where the person must be, or the company hires", "pattern": "description names hiring countries excludes"},
+  "397970": {"verdict": "a", "clause": "Where the person must be, or the company hires", "pattern": "description names hiring countries excludes"},
+  "398004": {"verdict": "b", "clause": "Where the person must be, or the company hires", "pattern": "description names Latin America region eligible"},
+  "399282": {"verdict": "a", "clause": "Where the person must be, or the company hires", "pattern": "description names hiring countries excludes"},
+  "399287": {"verdict": "a", "clause": "Where the person must be, or the company hires", "pattern": "description names hiring countries excludes"},
+  "399305": {"verdict": "a", "clause": "Where the person must be, or the company hires", "pattern": "description names hiring countries excludes"},
+  "399308": {"verdict": "a", "clause": "Where the person must be, or the company hires", "pattern": "description names hiring countries excludes"},
+  "399309": {"verdict": "a", "clause": "Where the person must be, or the company hires", "pattern": "description names hiring countries excludes"},
+  "399310": {"verdict": "a", "clause": "Where the person must be, or the company hires", "pattern": "description names hiring countries excludes"},
+  "980654": {"verdict": "a", "clause": "Where the person must be, or the company hires", "pattern": "description names hiring countries excludes"},
+  "275520": {"verdict": "b", "clause": "A remote or undeclared option", "pattern": "region word absent from holding list"}
+}

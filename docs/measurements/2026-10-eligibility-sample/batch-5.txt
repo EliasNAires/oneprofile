@@ -1,0 +1,626 @@
+=== 214504
+company: Waymo
+title: Silicon Emulation Engineer
+options: Taipei, Taiwan; Hsinchu, Taiwan [undeclared]
+description:
+> Waymo is an autonomous driving technology company with the mission to be the world's most trusted driver.
+> Since its start as the Google Self-Driving Car Project in 2009, Waymo has focused on building the Waymo Driver—The World's Most Experienced Driver —to improve access to mobility while saving thousands of lives now lost to traffic crashes.
+> The Waymo Driver powers Waymo’s fully autonomous ride-hail service and can also be applied to a range of vehicle platforms and product use cases.
+> The Waymo Driver has provided over ten million rider-only trips, enabled by its experience autonomously driving over 100 million miles on public roads and tens of billions in simulation across 15+ U.S. states.
+Waymo's Compute Team is tasked with a critical and exciting mission: We deliver the compute platform responsible for running the fully autonomous vehicle’s software stack.
+To achieve our mission, we architect and create high-performance custom silicon; we develop system-level compute architectures that push the boundaries of performance, power, and latency; and we collaborate closely with many other teammates to ensure we design and optimize hardware and software for maximum performance.
+We are a multidisciplinary team seeking curious and talented teammates to work on one of the world’s highest performance automotive compute platforms.
+This role follows a hybrid work schedule and you will report to a Silicon Engineering Lead.
+# You will
+[under: You will] - Collaborate with the Design, Verification, and Software teams to simulate future silicon designs and software on an emulation platform, targeting functional and performance validation and left-shift of software development
+[under: You will] - Design, implement, and optimize emulation testbenches, balancing performance and debug capabilities based on user needs and hardware constraints
+[under: You will] - Write end-to-end synthesizable transactors to interact with emulated designs through software APIs and C-DPI
+[under: You will] - Triage and root-cause failures alongside emulation users, leveraging waveforms, software logging, and custom-built emulation monitors
+[under: You will] - Assist with post-silicon bring-up, debug, and characterization
+[under: You will] - Build infrastructure to support the emulation user base, including tools for model build, regression, automation, continuous integration, data analysis, and training
+# You have
+[under: You have] - BS degree in Computer Science / Electrical Engineering or related field and 5 years of silicon development experience.
+[under: You have] - Experience with at least one major hardware emulation platform (Palladium, Zebu, Veloce, Protium, HAPS).
+[under: You have] - High level of proficiency with one or more of the following emulation approaches: virtual prototyping, testbench acceleration, hybrid emulation, in-circuit emulation (speed bridge), QEMU, or VirtualBox
+[under: You have] - Experience with SystemVerilog and design verification methodologies
+[under: You have] - Programming and scripting (C++, Python, or TCL) for automation, test development, debug flows, and release process.
+[under: You have] - Strong debug and problem-solving ability across hardware and software
+# We prefer
+[under: We prefer] - Experience with AXI/AMBA, PCIe, DRAM, and Ethernet interfaces
+[under: We prefer] - Performance and power analysis techniques
+[under: We prefer] - Experience with JTAG, DFT, UART, SPI, GPIO and other test/low-speed interfaces
+[under: We prefer] - Knowledge of advanced design verification methods (coverage, gate-level simulation, assertions, and UVM).
+[under: We prefer] - Post-silicon debug software (e.g. Trace32, OpenOCD, TARMAC) and lab bench tools (analyzers, scopes, meters)
+[under: We prefer] - Understanding of bare metal programming, embedded systems, Linux internals, operating systems, boot loaders, drivers, and firmware
+> The expected base salary range for this full-time position is listed below.
+> Actual starting pay will be based on job-related factors, including exact work location, experience, relevant training and education, and skill level.
+> Waymo employees are also eligible to participate in Waymo’s discretionary annual bonus program, equity incentive plan, and generous Company benefits program, subject to eligibility requirements.
+> Salary Range
+> $2,600,000—$2,990,000 TWD
+
+=== 759846
+company: Fifth Third Bank, National Association
+title: Financial Crimes Product Owner – AML Monitoring
+options: Cincinnati, OH [undeclared]
+description:
+# Make banking a Fifth Third better
+[under: Make banking a Fifth Third better] We connect great people to great opportunities.
+[under: Make banking a Fifth Third better] Are you ready to take the next step?
+[under: Make banking a Fifth Third better] Discover a career in banking at Fifth Third Bank.
+# GENERAL FUNCTION
+[under: GENERAL FUNCTION] The Financial Crimes (FC) Data and Product Management – Product Owner position is a leadership role that is responsible for assisting in the definition and implementation of Fifth Third's Anti-Money Laundering (AML) and Economic Sanctions strategies.
+[under: GENERAL FUNCTION] The position will oversee the defining, building, and executing technology enhancements aimed at improving Fifth Third’s AML and Economic Sanctions programs.
+[under: GENERAL FUNCTION] This product owner position will focus on managing the technology and delivering technology solutions that are used to identify money laundering and predicate crimes.
+[under: GENERAL FUNCTION] This role will focus
+[under: GENERAL FUNCTION] on maintaining and improving these monitoring technologies while also improving end user experience and efficiency.
+[under: GENERAL FUNCTION] Responsible and accountable for core strategic initiatives by openly exchanging ideas and opinions, elevating concerns, and personally following policies and procedures as defined.
+[under: GENERAL FUNCTION] Accountable for doing the right thing for customers and colleagues and ensures that actions and behaviors drive a positive customer experience while operating within the Bank's risk appetite.
+[under: GENERAL FUNCTION] This position is the product owner overseeing the enhancement and ongoing support of the bank's Anti-money Laundering tool (SAS AML).
+[under: GENERAL FUNCTION] In this role, the financial crimes manager will set priority and direction for the squad supporting AML.
+[under: GENERAL FUNCTION] This person will work closely with technology and Financial Crimes Investigations’ Management and the Financial Crimes Intelligence Unit (FIU) to help prioritize and set direction for the platform.
+[under: GENERAL FUNCTION] The PO is also responsible for working with other squads in the bank to set schedules and ensure that work for AML is properly aligned with those groups.
+[under: GENERAL FUNCTION] The candidate should understand the bank’s payments processes and systems as well as have a background in analytics and analysis.
+# ESSENTIAL DUTIES AND RESPONSIBILITIES
+[under: ESSENTIAL DUTIES AND RESPONSIBILITIES] - Oversee and ensure timely and accurate completion of projects implementing or enhancing technology to support financial crimes as a product owner on a financial crimes squad.
+[under: ESSENTIAL DUTIES AND RESPONSIBILITIES] - Sets priorities for the squad, balancing timeline, strategic goals, production issue resolution and other items.
+[under: ESSENTIAL DUTIES AND RESPONSIBILITIES] - Regular reporting of squad status, accomplishments, and challenges.
+[under: ESSENTIAL DUTIES AND RESPONSIBILITIES] - Work with subject matter experts in financial crimes to ensure that all project requirements are accurately captured and delivered.
+[under: ESSENTIAL DUTIES AND RESPONSIBILITIES] - Develop roadmap to support new or enhanced monitoring use cases for the platform and work with partners in various areas to coordinate delivery with other squads.
+[under: ESSENTIAL DUTIES AND RESPONSIBILITIES] - Responsible for developing, strengthening, and implementing the Line of Business compliance program in compliance with existing laws and regulations, including governance, policies and procedures, monitoring, reporting, communications, and education.
+[under: ESSENTIAL DUTIES AND RESPONSIBILITIES] - Work with leaders of other squads to explain and prioritize critical AML projects.
+[under: ESSENTIAL DUTIES AND RESPONSIBILITIES] - Able to prioritize both technical and business needs to ensure a highly available system that meets bank standards for security and availability.
+[under: ESSENTIAL DUTIES AND RESPONSIBILITIES] - Be able to articulate to the Aegis squad why things are important and help train engineers and other members on the business value and reasoning for projects or efforts.
+[under: ESSENTIAL DUTIES AND RESPONSIBILITIES] - Work with subject matter experts in financial crimes to ensure that all project requirements are accurately captured and delivered.
+[under: ESSENTIAL DUTIES AND RESPONSIBILITIES] - Communicates significant issues to senior management.
+[under: ESSENTIAL DUTIES AND RESPONSIBILITIES] - Liaisons with regulators as appropriate.
+[under: ESSENTIAL DUTIES AND RESPONSIBILITIES] - Builds industry knowledge and relationships through industry networking.
+[under: ESSENTIAL DUTIES AND RESPONSIBILITIES] - Maintains a cutting-edge awareness of division goals, regulatory and legislative developments, and industry trends.
+[under: ESSENTIAL DUTIES AND RESPONSIBILITIES] - Works with Sr. Leadership to set strategic direction for department and then execute on those goals and objectives.
+[under: ESSENTIAL DUTIES AND RESPONSIBILITIES] - Participates and/or leads regular meetings with peers to build and maintain knowledge of current and emerging issues and risk in the environment
+[under: ESSENTIAL DUTIES AND RESPONSIBILITIES] - Reviewing and implementing approved solutions for the Regulatory Monitoring and Change Management program ownership.
+# BANK SECRECY ACT REQUIREMENTS
+[under: BANK SECRECY ACT REQUIREMENTS] Responsible for adhering to the reporting and record keeping requirements of the Bank Secrecy Act and Anti-Money Laundering rules and regulations, observing economic sanctions by prohibiting transactions as specified by the Office of Foreign Asset Control (OFAC), following the bank’s customer identification program (CIP) rules, observing all Bank policies and procedures relating to BSA, OFAC, CIP, and related acts, and participation in ongoing related training.
+# SUPERVISORY RESPONSIBILITIES
+[under: SUPERVISORY RESPONSIBILITIES] Overseeing a squad to ensure optimal performance in meeting the Financial Crimes division's goals and the objectives of contributing to Bancorp’s continued success in the Financial Services industry.
+[under: SUPERVISORY RESPONSIBILITIES] Assists in the recruiting process; conducts interviews and provides candid, timely feedback.
+[under: SUPERVISORY RESPONSIBILITIES] Ensures proper orientation, both formal and informal, for assigned employees.
+[under: SUPERVISORY RESPONSIBILITIES] Identifies challenging work assignments and mentoring and education programs to give employees exposure to proactive problem solving throughout the company.
+[under: SUPERVISORY RESPONSIBILITIES] Develops and maintains ongoing two-way timely and clear performance feedback to maintain healthy, proactive work relationships.
+[under: SUPERVISORY RESPONSIBILITIES] Encourages open dialogue that promotes creative and out of the box problem solving skills.
+# MINIMUM KNOWLEDGE, SKILLS AND ABILITIES REQUIRED
+[under: MINIMUM KNOWLEDGE, SKILLS AND ABILITIES REQUIRED] - Education: Bachelor's degree or equivalent work experience required.
+[under: MINIMUM KNOWLEDGE, SKILLS AND ABILITIES REQUIRED] - Computer/Technical: Demonstrates working or functional proficiency sufficient to apply the use of software applications (Microsoft Office Suite) without assistance and minimal supervision.
+[under: MINIMUM KNOWLEDGE, SKILLS AND ABILITIES REQUIRED] - Able to understand and conceptualize basic statistical analysis and theories.
+[under: MINIMUM KNOWLEDGE, SKILLS AND ABILITIES REQUIRED] - Solid experience manipulating (validating, correcting, reformatting, and transforming) data into multiple formats (e.g. spreadsheets, flat files, databases, etc.)
+[under: MINIMUM KNOWLEDGE, SKILLS AND ABILITIES REQUIRED] - Ability to oversee and manage technology budgets and plan for future business needs
+[under: MINIMUM KNOWLEDGE, SKILLS AND ABILITIES REQUIRED] - Strong analytical skills required to gather, assess and present quantitative and qualitative data.
+[under: MINIMUM KNOWLEDGE, SKILLS AND ABILITIES REQUIRED] - Able to develop and support conclusions and make practical recommendations to the business lines.
+[under: MINIMUM KNOWLEDGE, SKILLS AND ABILITIES REQUIRED] - Ability to develop and implement controlled, systematic step-by-step processes based on guidance and procedures.
+[under: MINIMUM KNOWLEDGE, SKILLS AND ABILITIES REQUIRED] - Ability to work independently and in a team to plan and accomplish a project or elements of a project (complexity of project scope to depend on seniority), identifying responsibilities, tasks, deadlines and pursuing their timely completion.
+[under: MINIMUM KNOWLEDGE, SKILLS AND ABILITIES REQUIRED] - Ability to work with a team, to identify and solve problems or resolve issues, including members from other units such as the Legal Department, Audit Department, or Business Unit.
+[under: MINIMUM KNOWLEDGE, SKILLS AND ABILITIES REQUIRED] - Excellent oral and written communication skills. Effectively communicates upward, downward, and laterally.
+[under: MINIMUM KNOWLEDGE, SKILLS AND ABILITIES REQUIRED] - Displays a positive business presence with both management and external contacts.
+[under: MINIMUM KNOWLEDGE, SKILLS AND ABILITIES REQUIRED] - Must be able to demonstrate sound judgment and apply logical and critical thought processes when developing and recommending solutions.
+# OTHER SKILLS
+[under: OTHER SKILLS] - Knowledge of the bank’s payments flow process, systems, and teams.
+[under: OTHER SKILLS] - Ability to network with those teams to accomplish project goals.
+[under: OTHER SKILLS] - Possesses the ability to maintain professional composure in a dynamic work environment that often requires management of multiple and competing priorities.
+[under: OTHER SKILLS] - Strong SQL and data skills to support research into issues and answer regulator, audit and management questions.
+[under: OTHER SKILLS] - Demonstrates willingness to be a contributing and engaged member of team by sharing knowledge, working towards common goals and maintaining a positive attitude, capable of establishing effective working relationships with peers and establishes credibility with superiors and customers.
+[under: OTHER SKILLS] - Establish, foster, and maintain working relationships with peers and supervisory management within the Division, business lines and Information Technology support.
+[under: OTHER SKILLS] - Full adherence to Fifth Third's Core Values of Integrity, Teamwork and Collaboration, Respect and Inclusion, and Accountability required.
+# WORKING CONDITIONS
+[under: WORKING CONDITIONS] - Normal office environment with little exposure to dust, noise, temperature, and the like.
+[under: WORKING CONDITIONS] - Extended viewing of a CRT screen.
+[under: WORKING CONDITIONS] Financial Crimes Product Owner – AML Monitoring
+[under: WORKING CONDITIONS] At Fifth Third, we understand the importance of recognizing our employees for the role they play in improving the lives of our customers, communities and each other.
+[under: WORKING CONDITIONS] Our Total Rewards include comprehensive benefits and differentiated compensation offerings to give each employee the opportunity to be their best every day.
+[under: WORKING CONDITIONS] The base salary for this position is reflective of the range of salary levels for all roles within this pay grade across the U.S. Individual salaries within this range will vary based on factors such as role, relevant skillset, relevant experience, education and geographic location.
+[under: WORKING CONDITIONS] In addition to the base salary, this role is eligible to participate in an incentive compensation plan, with any such payment based upon company, line of business and/or individual performance.
+[under: WORKING CONDITIONS] Our extensive benefits programs are designed to support the individual needs of our employees and their families, encompassing physical, financial, emotional and social well-being.
+[under: WORKING CONDITIONS] You can learn more about those programs on our 53.com Careers page at: https://www.53.com/content/fifth-third/en/careers/benefits.html or by consulting with your talent acquisition partner.
+[under: WORKING CONDITIONS] LOCATION -- Cincinnati, Ohio 45227
+[under: WORKING CONDITIONS] Attention search firms and staffing agencies: do not submit unsolicited resumes for this posting.
+[under: WORKING CONDITIONS] Fifth Third does not accept resumes from any agency that does not have an active agreement with Fifth Third.
+[under: WORKING CONDITIONS] Any unsolicited resumes – no matter how they are submitted – will be considered the property of Fifth Third and Fifth Third will not be responsible for any associated fee.
+[under: WORKING CONDITIONS] Fifth Third Bank, National Association is proud to have an engaged and inclusive culture and to promote and ensure equal employment opportunity in all employment decisions regardless of race, color, gender, national origin, religion, age, disability, sexual orientation, gender identity, military status, veteran status or any other legally protected status.
+
+=== 452128
+company: US11345-AIRGAS Airgas USA, LLC
+title: SA Data Solutions Architect
+options: Germantown, WI (LLC Support) [undeclared]
+description:
+R10097676 SA Data Solutions Architect (Open)
+# Location
+[under: Location] Germantown, WI (LLC Support) - Management
+# How will you CONTRIBUTE and GROW?
+[under: How will you CONTRIBUTE and GROW?] At Airgas, we are committed to building a diverse and inclusive workplace that embraces the diversity of our employees, our customers, patients, community stakeholders and cultures across the world.
+# Airgas is Hiring for a SA Data Solutions Architect in Germantown, WI!
+# We are looking for you !
+[under: We are looking for you !] - Hybrid, 3 days in office
+[under: We are looking for you !] - Comprehensive Family Benefits: Airgas offers a full benefits package designed to support your whole life, including Medical, Dental, Vision, Life, AD&D, and Disability Insurance.
+[under: We are looking for you !] - Support for Parents: We offer up to 14-week paid child birth benefits to support growing families.
+[under: We are looking for you !] - Future Security: 401(k) Retirement Plan with company match, Tuition Assistance, Paid Holidays, Vacation, and Sick time.
+[under: We are looking for you !] - Early Access: Your benefits start after just 30 days of employment.
+[under: We are looking for you !] Recruiter: Roseanne Khachikyan / Roseanne.Khachikyan@airliquide.com / 424-318-0169
+[under: We are looking for you !] The SA Data Solutions Architect will build sophisticated data models and dashboards that directly support smarter business strategies, driving growth and contributing to the company’s ability to scale.
+[under: We are looking for you !] This role focuses on streamlining operations and developing data-based solutions that allow for improved efficiency or increased productivity.
+[under: We are looking for you !] This role continually broadens access to reliable, accurate, and timely data to improve decision making for both the SA administrative teams as well as SA commercial teams and stakeholders.
+[under: We are looking for you !] - Serve as a thought leader for technical data connections that ultimately increase efficiency, decrease errors, and enhance productivity.
+[under: We are looking for you !] - Create and implement management plans for every project, with attention to transparent communication at all levels. Maintain documentation and version control regarding various projects, processes and operations.
+[under: We are looking for you !] - Perform data discovery, cleaning, analysis and modeling. Create reports, dashboards and visualizations to help others understand business performance and streamline processes. Identify automation opportunities and build automations for routine or repeated tasks.
+[under: We are looking for you !] - Conduct daily systems analytics to maximize effectiveness and troubleshoot problems. Define alerting requirements. Analyze process issues and bottlenecks to make improvements.
+[under: We are looking for you !] - Collaborate with stakeholders on user requirements, validation, and cross train teams and associates. Educate non-technical stakeholders on data utilization strategies.
+[under: We are looking for you !] - Partner with stakeholders across business units to develop analyses and documentation in a collaborative way, communicating effectively and efficiently.
+[under: We are looking for you !] - Create data models, dashboards, reports, and visualizations while maintaining data integrity and accuracy. Use tools such as PowerBI Desktop, DAX Studio, Power Query, SQL server(s), Python, etc. Ensure the data architecture aligns with key business objectives and that accurate and up-to-date data is available to stakeholders.
+[under: We are looking for you !] - Work closely with the SABM team to support their current technical needs and identify new technologies which will be valuable for the team and its mission. Adjust processes and tools when necessary.
+[under: We are looking for you !] - Identify and implement process improvements to enhance data collection and analysis methods.
+[under: We are looking for you !] - Validate and confirm data accuracy, both within the model and within produced visualizations.
+# Are you a MATCH?
+# Required Qualifications
+[under: Required Qualifications] - High School Diploma or equivalent
+[under: Required Qualifications] - Combination of 3-5 years of experience &/or work in an elevated role with emphasis on pricing, data modeling, economics, &/or finance
+[under: Required Qualifications] - 1 or more years previous experience with SQL or other database management tools, PowerBI or other visualization software, statistical modeling, PowerQuery, DAX, and M code
+# Preferred Qualifications
+[under: Preferred Qualifications] - Bachelor’s degree in Business, Finance, Statistics/Data Analysis or other related field or combination of equivalent education and experience working in a related role
+# Benefits
+[under: Benefits] We care about and support our Airgas Families.
+[under: Benefits] This is evident not only through our competitive compensation but also through a comprehensive benefits package that includes medical, dental, and vision plans, short-term and long-term disability, life and accidental death and dismemberment (AD&D) insurance, Employee Assistance Program (EAP), pre-tax commuter transportation benefit, parental leave, vacation, sick time, floating holidays, jury duty and funeral/bereavement leave, and paid holidays for all eligible full-time employees.
+[under: Benefits] Additionally, we offer our eligible employees a 401k plan with company matching funds, tuition reimbursement, discounted college tuition for eligible employees’ dependents, and an Airgas Scholarship Program for dependent children.
+[under: Benefits] Associates who are members of collective bargaining units should review their bargaining agreement to determine whether they are eligible for some or all of the benefits described here and to see any special terms or conditions for eligibility.
+# Your DIFFERENCES enhance our PERFORMANCE
+[under: Your DIFFERENCES enhance our PERFORMANCE] At Airgas, we are committed to building a workplace that embraces the diversity of our employees, our customers, patients, community stakeholders and cultures across the world.
+[under: Your DIFFERENCES enhance our PERFORMANCE] We welcome and consider applications from all qualified applicants, regardless of their race, gender, sexual orientation, religion, disability or any other protected characteristic.
+[under: Your DIFFERENCES enhance our PERFORMANCE] We strongly believe a diverse organization opens up opportunities for people to express their talent, both individually and collectively and it helps foster our ability to innovate by living our fundamentals, acting for our success and creating an engaging environment in a changing world.
+# About Airgas
+[under: About Airgas] Airgas, an Air Liquide company, is a leading U.S. supplier of industrial, medical and specialty gases, as well as hardgoods and related products; one of the largest U.S. suppliers of safety products; and a leading U.S. supplier of ammonia products and process chemicals.
+[under: About Airgas] Through the passion and diversity of its 18,000 associates, Airgas fosters a culture of safety, customer success, sustainability and innovation.
+[under: About Airgas] Airgas associates are empowered to share ideas, take initiative and make decisions.
+[under: About Airgas] Airgas is a subsidiary of Air Liquide, a world leader in gases, technologies and services for industry and healthcare.
+[under: About Airgas] Present in 60 countries with approximately 66,500 employees, Air Liquide serves more than 4 million customers and patients.
+[under: About Airgas] Join us for a stimulating experience: At Airgas, you matter and so does the work you do.
+[under: About Airgas] As a member of our team, you play an important role in the success of your team, making sure our products are created sustainably and delivered safely and efficiently.
+[under: About Airgas] In turn, you’ll find a welcoming workplace where you’re valued for who you are and where you can fill your potential while growing a fulfilling career — whatever path you choose.
+# Equal Employment Opportunity Information
+[under: Equal Employment Opportunity Information] We are an equal opportunity employer.
+[under: Equal Employment Opportunity Information] We welcome all qualified applicants regardless of race, color, religion, sex, sexual orientation, gender identity, national origin, disability, veteran status, or any other protected characteristic.
+[under: Equal Employment Opportunity Information] Airgas, an Air Liquide Company is a Government contractor subject to the Vietnam Era Veterans’ Readjustment Assistance Act of 1974 and Section 503 of the Rehabilitation Act of 1973.
+[under: Equal Employment Opportunity Information] Airgas does not discriminate against qualified applicants with disabilities, and is committed to providing reasonable accommodations to the known disabilities of such individuals so as to ensure equal access to benefits and privileges of employment.
+[under: Equal Employment Opportunity Information] If you are an individual with a disability and would like to request a reasonable accommodation as part of the employment selection process, please contact us by email at us-accommodationrequest@airgas.com.
+[under: Equal Employment Opportunity Information] California Privacy Notice
+
+=== 807651
+company: 94-1687665 Bank of America, National Association
+title: GFC Threat Identification & Liaison Manager
+options: McLean [undeclared] | Washington [undeclared] | Jersey City [undeclared] | Atlanta [undeclared] | New York [undeclared] | Charlotte [undeclared]
+description:
+# Job Description
+[under: Job Description] At Bank of America, we are guided by a common purpose to help make financial lives better through the power of every connection.
+[under: Job Description] We do this by driving Responsible Growth and delivering for our clients, teammates, communities and shareholders every day.
+[under: Job Description] Being a Great Place to Work and providing a culture of caring is core to how we drive Responsible Growth.
+[under: Job Description] We are intentional about fostering an inclusive workplace where every teammate has the opportunity to succeed, build a career and contribute to our shared success.
+[under: Job Description] This includes attracting and developing exceptional talent, recognizing and rewarding performance, and supporting our teammates’ physical, emotional, and financial wellness through affordable, competitive and flexible benefits.
+[under: Job Description] We value the unique perspectives individuals bring from all backgrounds and career paths - whether shaped by military service, community college education, or a wide range of work and life experiences.
+[under: Job Description] These journeys foster resilience, leadership and innovation, strengthening our workforce and positively impact the communities we serve.
+[under: Job Description] Bank of America is committed to an in-office culture that supports collaboration, engagement, and career development.
+[under: Job Description] Our approach includes clear in-office expectations, while providing an appropriate level of flexibility based on role-specific responsibilities and business needs.
+[under: Job Description] At Bank of America, you can build a successful career with opportunities to learn, grow, and make an impact.
+[under: Job Description] Join us!
+# Job Description
+[under: Job Description] The Global Financial Crimes Threat Identification & Liaison Manager is a subject matter expert on financial crime National Priority areas (corruption, cybercrime and misuse of virtual currencies, terrorist financing, fraud, transnational organized crime and third-party money laundering, drug trafficking organizations, human trafficking/human smuggling, and proliferation financing) and is responsible for executing enterprise financial crime threat identification practices consistent with applicable laws, rules, regulations and regulatory guidance.
+[under: Job Description] Key responsibilities include researching and assessing emerging financial crime threats and typologies, providing advisory support to Front Line Unit (FLU) and Control Function (CF) compliance and operational risk officers, supporting information sharing across stakeholders, and maintaining working-level external partnerships that strengthen threat intelligence and public-private collaboration.
+[under: Job Description] Job expectations include exercising sound independent judgment within established frameworks, conducting proactive threat identification activities, escalating significant threats and issues to appropriate governance routines, and ensuring threats and trends are clearly documented and communicated to senior leaders and impacted stakeholders.
+# Responsibilities
+[under: Responsibilities] - Conducts identification and assessment of emerging financial crime threats, typologies, and illicit finance risks within an assigned National Priority coverage area, and recommends risk mitigation priorities
+[under: Responsibilities] - Maintains working-level relationships with law enforcement, regulatory agencies, and industry organizations to support intelligence sharing, public-private collaboration, and threat awareness
+[under: Responsibilities] - Translates internal and external intelligence into threat assessments, targeted risk analyses, and actionable recommendations for review by senior leadership
+[under: Responsibilities] - Advises FLU/CF compliance and operational risk officers and prepares materials for governance routines on significant financial crime threats, regulatory developments, and emerging risk trends
+[under: Responsibilities] - Supports enhancements to financial crime prevention, detection, monitoring, and surveillance capabilities by partnering with business, risk, and investigations teams
+[under: Responsibilities] - Executes financial crime risk governance activities, including reporting, issue identification and remediation tracking, and escalation of significant risks and concerns to management and board-level committees
+[under: Responsibilities] - Reviews and challenges risk management frameworks, controls, assessments, and coverage strategies to ensure financial crime and sanctions risks are appropriately addressed
+[under: Responsibilities] - Monitors changes in regulations, industry forums, emerging legislation, and political and litigation developments applicable to Global Financial Crimes to identify and mitigate emerging risks
+# Required Qualifications
+[under: Required Qualifications] - 7+ years of relevant experience in Global Financial Crimes, Compliance, Operational Risk, or related risk management disciplines
+[under: Required Qualifications] - Knowledge of anti-money laundering (AML) and related AML legislation, financial crime typologies, and regulatory expectations related to fraud, economic sanctions, and illicit finance risks
+[under: Required Qualifications] - Experience identifying, assessing, and mitigating financial crime risks through threat detection, monitoring, and investigative practices
+[under: Required Qualifications] - Experience building and leveraging relationships with law enforcement, regulatory, and industry partners to support information sharing and public-private collaboration
+[under: Required Qualifications] - Ability to influence and communicate effectively with senior leaders, government agencies, law enforcement partners, and external stakeholders
+[under: Required Qualifications] - Proven ability to analyze complex data, identify trends and insights, and communicate recommendations clearly in writing
+[under: Required Qualifications] - Strong critical-thinking, problem-solving, and decision-making skills with the ability to exercise sound judgment in a dynamic risk environment
+[under: Required Qualifications] - Proficiency in Microsoft Office applications, including Excel and PowerPoint, and experience leveraging data analytics and emerging technologies to support risk management objectives
+# Desired Qualifications
+[under: Desired Qualifications] - Bachelor's degree in a related field; experience in financial services and/or a related government entity
+[under: Desired Qualifications] - Certified Anti-Money Laundering Specialist (CAMS)
+# Skills
+[under: Skills] - Financial Crimes Risk Programs
+[under: Skills] - Risk Identification & Assessment
+[under: Skills] - Credible Challenge
+[under: Skills] - AML Regulatory Knowledge
+[under: Skills] - Regulatory Compliance
+[under: Skills] - Regulatory Relations
+[under: Skills] - Risk Monitoring & Testing
+[under: Skills] - Strategy Planning and Development
+[under: Skills] - Change Management
+[under: Skills] - Issue Management
+[under: Skills] - Policies, Procedures, and Guidelines Management
+[under: Skills] - Fraud Management
+[under: Skills] - Investigation Management
+[under: Skills] - Decision Making
+[under: Skills] - Written Communications
+# Shift
+[under: Shift] 1st shift (United States of America)
+# Hours Per Week
+[under: Hours Per Week] 40
+# Pay Transparency details
+[under: Pay Transparency details] US - DC - Washington - 1800 K St NW - 1800 K Street NW (DC1842), US - NJ - Jersey City - 525 Washington Blvd (NJ2525), US - NY - New York - 1114 Avenue Of The Americas - Grace (NY1544), US - VA - Mclean - 8300 Greensboro Dr - Westpark (VA9200)
+[under: Pay Transparency details] Pay and benefits information
+[under: Pay Transparency details] Pay range
+[under: Pay Transparency details] $105,000.00 - $175,000.00 annualized salary, offers to be determined based on experience, education and skill set.
+[under: Pay Transparency details] Discretionary incentive eligible
+[under: Pay Transparency details] This role is eligible to participate in the annual discretionary plan.
+[under: Pay Transparency details] Employees are eligible for an annual discretionary award based on their overall individual performance results and behaviors, the performance and contributions of their line of business and/or group; and the overall success of the Company.
+# Benefits
+[under: Benefits] This role is currently benefits eligible.
+[under: Benefits] We provide industry-leading benefits, access to paid time off, resources and support to our employees so they can make a genuine impact and contribute to the sustainable growth of our business and the communities we serve.
+
+=== 5292
+company: Agoda
+title: Fast track 1-Day Program (29th October): Staff Software Engineer - Back End (Bangkok Based, Relocation Provided)
+options: Bangkok, Thailand [undeclared]
+description:
+> # About Agoda
+> [under: About Agoda] At Agoda, we bridge the world through travel.
+> [under: About Agoda] Our story began in 2005, when two lifelong friends and entrepreneurs, driven by their passion for travel, launched Agoda to make it easier for everyone to explore the world.
+> [under: About Agoda] Today, we are part of Booking Holdings [NASDAQ: BKNG], with a diverse team of over 7,000 people from 90 countries, working together in offices around the globe.
+> [under: About Agoda] Every day, we connect people to destinations and experiences, with our great deals across our millions of hotels and holiday properties, flights, and experiences worldwide.
+> [under: About Agoda] No two days are the same at Agoda.
+> [under: About Agoda] Data and technology are at the heart of our culture, fueling our curiosity and innovation.
+> [under: About Agoda] If you’re ready to begin your best journey and help build travel for the world, join us.
+# Get to Know Our Team
+[under: Get to Know Our Team] In Agoda's Back-End Engineering department, we build scalable, fault-tolerant systems and APIs that host our core business logic.
+[under: Get to Know Our Team] Our systems cover all major areas of our business: inventory and pricing, product information, customer data, communications, partner data, booking systems, payments, and more.
+[under: Get to Know Our Team] We employ state-of-the-art CI/CD and testing techniques to ensure everything works without downtime.
+[under: Get to Know Our Team] Our systems are self-healing, responding gracefully to extreme loads or unexpected input.
+[under: Get to Know Our Team] We use modern languages like Kotlin and Scala, data technologies Kafka, Spark, MLflow, Kubeflow, VastStorage, StarRocks, and agile development practices.
+[under: Get to Know Our Team] Most importantly, we hire great people from around the world and empower them to be successful.
+# Fast-Track Opportunity: 1-Day Interview Program
+# Upcoming Interview Day: 29th October 2026
+[under: Upcoming Interview Day: 29th October 2026] We're currently running a special 1-Day Interview Program for this role — a fast-track hiring format where you complete your entire interview process in a single day and receive an outcome within 24–48 hours.
+# What this means for you
+[under: What this means for you] - Complete all 4 interview rounds in one day — no waiting weeks between rounds
+[under: What this means for you] - Get a decision within 24–48 hours after Interview Day
+[under: What this means for you] - Skip the drawn-out back-and-forth of a traditional process
+[under: What this means for you] - Full support from our TA team before, during, and after Interview Day
+# What we need from you
+[under: What we need from you] - Full-day availability on 29th October 2026 (interviews run morning through afternoon)
+[under: What we need from you] - Ability to confirm your participation within 24 hours of being invited
+[under: What we need from you] - Comfort with a fast-paced process — progression between rounds is confirmed same-day
+[under: What we need from you] If you'd like to be considered for this track, simply indicate your interest when you apply.
+[under: What we need from you] Our TA team will reach out with full details and next steps.
+[under: What we need from you] If the date doesn't work for you, you'll simply continue through our standard interview process instead.
+# The Opportunity
+[under: The Opportunity] Agoda's Platform team is looking for developers to work on mission-critical systems that serve millions of users daily.
+[under: The Opportunity] You will have the chance to work on innovative projects, using cutting-edge technologies, and make a significant impact on our business and the travel industry.
+# In This Role, You'll Get to
+[under: In This Role, You'll Get to] - Think and own the full life cycle of our products, not just a single piece of code – from business requirements, technology selection, coding standards, agile development, unit and application testing, to CI/CD and proper monitoring
+[under: In This Role, You'll Get to] - Design, develop and maintain platforms and data pipelines
+[under: In This Role, You'll Get to] - Boost System Performance: build systems that are stable, scalable, and highly performant to meet the dynamic demands
+[under: In This Role, You'll Get to] - Write great code and help others write great code – mentor people in your team and wider
+[under: In This Role, You'll Get to] - Exceptional problem-solving skills coupled with a strategic mindset are essential. You possess the ability to adapt to new changes and the foresight to anticipate future needs.
+[under: In This Role, You'll Get to] - Foster Cross-Functional Collaboration: work with diverse teams to drive forward product and technology goals
+# What You'll Need to Succeed
+[under: What You'll Need to Succeed] - 8+ years of experience developing performance-critical applications in a production environment using Scala, Java, Kotlin or relevant modern programming languages
+[under: What You'll Need to Succeed] - Strong RDBMS knowledge (SQL Server, Oracle, MySQL, or other)
+[under: What You'll Need to Succeed] - Ability to direct significant company-wide projects and sets technical vision
+[under: What You'll Need to Succeed] - Good command of the English language
+[under: What You'll Need to Succeed] - Deeply involved in making architectural decisions, setting the standard and direction for the team
+[under: What You'll Need to Succeed] - Implement advanced CI/CD pipelines and robust testing strategies to ensure seamless integration, deployment, and high code quality
+[under: What You'll Need to Succeed] - Passion for software development and continuous improvement of your knowledge and skills
+# It's Great if You Have
+[under: It's Great if You Have] - Knowledge in NoSQL, Queueing systems (Kafka, RabbitMQ, ActiveMQ, MSMQ), and Play framework
+# THIS POSITION IS BASED IN BANGKOK, THAILAND (RELOCATION PROVIDED)
+[under: THIS POSITION IS BASED IN BANGKOK, THAILAND (RELOCATION PROVIDED)] Bengaluru #Hyderabad #Gurgaon #SouthKorea #Berlin #London #Pakistan #Pune #SanFrancisco #SanJose #Seattle #TelAviv #Jakarta #Colombia #NewYork #Vietnam #Russia #Madrid #SaoPaulo #Noida #Toronto #Chennai #Singapore #Ukraine #UAE #Sunnyvale #BuenosAires #Austin #Barcelona #Nigeria #Mumbai #Paris #Egypt #Stockholm #Amsterdam #Romania #Serbia #NewDelhi #MountainView #Chile #Warsaw #Sydney #Bangladesh #Peru #SantaClara #Chicago #Munich #Montreal #Bangkok #Tallinn #Vilnius #Riga #Dublin #LosAngeles #SanDiego #Oakland #Denver #Miami #Orlando #Atlanta #Boston #Detroit #Portland #Philadelphia #Dallas #
+> Please review our Hiring Process Guidelines before your interview — click here to learn how interviewing at Agoda works.
+> # Discover more about working at Agoda
+> [under: Discover more about working at Agoda] - Agoda Careers https://careersatagoda.com
+> [under: Discover more about working at Agoda] - Facebook https://www.facebook.com/agodacareers/
+> [under: Discover more about working at Agoda] - LinkedIn https://www.linkedin.com/company/agoda
+> [under: Discover more about working at Agoda] - YouTube https://www.youtube.com/agodalife
+> # Equal Opportunity Employer
+> [under: Equal Opportunity Employer] At Agoda, we pride ourselves on being a company represented by people of all different backgrounds and orientations.
+> [under: Equal Opportunity Employer] We prioritize attracting diverse talent and cultivating an inclusive environment that encourages collaboration and innovation.
+> [under: Equal Opportunity Employer] Employment at Agoda is based solely on a person’s merit and qualifications.
+> [under: Equal Opportunity Employer] We are committed to providing equal employment opportunity regardless of sex, age, race, color, national origin, religion, marital status, pregnancy, sexual orientation, gender identity, disability, citizenship, veteran or military status, and other legally protected characteristics.
+> [under: Equal Opportunity Employer] We will keep your application on file so that we can consider you for future vacancies and you can always ask to have your details removed from the file.
+> [under: Equal Opportunity Employer] For more details please read our privacy policy.
+> # Disclaimer
+> [under: Disclaimer] We do not accept any terms or conditions, nor do we recognize any agency’s representation of a candidate, from unsolicited third-party or agency submissions.
+> [under: Disclaimer] If we receive unsolicited or speculative CVs, we reserve the right to contact and hire the candidate directly without any obligation to pay a recruitment fee.
+
+=== 313092
+company: Amach
+title: DBRE SME (Database Reliability Engineering) – Remote
+options: Bucharest, Bucharest, Romania [remote]
+description:
+> # About us
+> [under: About us] Amach is an industry-leading technology driven company with headquarters located in Dublin and remote teams in UK and Europe.
+> [under: About us] Our blended teams of local and nearshore talent are optimised to deliver high quality and collaborative solutions.
+> [under: About us] Founded in 2013, Amach was created to solve a specific problem in aviation: too much complexity, too little usable intelligence.
+> [under: About us] We help airlines modernise their operating model using cloud, data and Al-delivered by teams with deep aviation domain expertise.
+> [under: About us] Our goal is to maximize airlines' operational efficiency by optimizing resource use, reduce costs and increase customer experience and satisfaction.
+We're looking for an experienced Database Reliability Engineering (DBRE) SME to join our team and work with a leading aviation customer.
+This is a fully remote role where you'll play a key part in improving the reliability, performance and scalability of critical database platforms.
+As the Database Reliability Engineering SME, you'll be the technical expert across open-source database technologies, with a particular focus on Percona/MySQL and MongoDB.
+You'll work closely with engineering teams to optimise database performance, improve resilience, support high availability and implement best practice monitoring and disaster recovery strategies.
+# Key responsibilities & Duties Include
+[under: Key responsibilities & Duties Include] - Optimising the performance, availability and reliability of production databases.
+[under: Key responsibilities & Duties Include] - Supporting and improving MongoDB and Percona/MySQL environments.
+[under: Key responsibilities & Duties Include] - Reviewing and improving replica sets, sharding, replication and clustering.
+[under: Key responsibilities & Duties Include] - Troubleshooting database issues and carrying out root cause analysis.
+[under: Key responsibilities & Duties Include] - Designing and validating backup and disaster recovery solutions.
+[under: Key responsibilities & Duties Include] - Building and improving database monitoring, observability and alerting.
+[under: Key responsibilities & Duties Include] - Leading database upgrades, migrations and optimisation projects.
+[under: Key responsibilities & Duties Include] - Working closely with DevOps, infrastructure and application teams to deliver reliable database platforms.
+[under: Key responsibilities & Duties Include] - Creating documentation, runbooks and sharing best practices with the wider engineering team.
+# Required Skills
+[under: Required Skills] - 7+ years' experience in Database Engineering or Database Reliability Engineering.
+[under: Required Skills] - Strong hands-on experience with Percona/MySQL.
+[under: Required Skills] - Commercial experience supporting MongoDB (including replica sets, sharding, indexing and performance tuning).
+[under: Required Skills] - Experience with PostgreSQL is beneficial.
+[under: Required Skills] - Strong understanding of replication, clustering and high availability.
+[under: Required Skills] - Experience with backup and disaster recovery, including Percona XtraBackup.
+[under: Required Skills] - Experience using monitoring tools such as Percona Monitoring and Management (PMM), Prometheus and Grafana.
+[under: Required Skills] - Good Linux/Unix administration and scripting skills.
+[under: Required Skills] - Experience working with AWS, Azure or GCP database services is an advantage
+> # What’s in it for you
+> [under: What’s in it for you] - An opportunity to join a fast-growing company
+> [under: What’s in it for you] - Options for career advancement
+> [under: What’s in it for you] - Learning and development opportunities
+> [under: What’s in it for you] - Flexible working environment
+> [under: What’s in it for you] - Competitive salaries based on experience
+> # Equal Opportunity Employer
+> [under: Equal Opportunity Employer] Amach is an equal opportunity employer and makes employment decisions on the basis of merit.
+> [under: Equal Opportunity Employer] We celebrate diversity and are committed to creating an inclusive environment for all employees.
+> [under: Equal Opportunity Employer] This job description is intended to convey essential responsibilities and qualifications for this role, but it is not an exhaustive list of tasks that an employee may be required to perform.
+> [under: Equal Opportunity Employer] If you are passionate about driving customer success, advising on strategic solutions, and contributing to product innovation, we would love to hear from you!
+> # Not for you?
+> [under: Not for you?] Check out all of our open positions in our careers page and follow us on LinkedIn for future opportunities.
+> [under: Not for you?] P.S. Share this with friends and co-workers!
+> [under: Not for you?] Don't be afraid they'll steal it from you, if you're amazing and smart we'll find a role for you.
+> [under: Not for you?] We are growing fast and we are always looking for talented people.
+> [under: Not for you?] At Amach, we strive to be an inclusive community of open-minded individuals with different backgrounds and we are committed to fostering, cultivating and preserving a culture of diversity, equity and inclusion.
+> [under: Not for you?] We strongly believe that a diversity of experience and background is essential to create a fulfilling environment and better solutions for our people and our customers.
+> [under: Not for you?] All Amach employees and contractors are expected to honour this policy and act to ensure that every individual is respected in the workplace.
+> # Your personal data
+> [under: Your personal data] Amach will process your personal information in accordance with the EU's General Data Protection Regulation (GDPR).
+> [under: Your personal data] We will comply with data protection law and principles, which means that your data will be:
+> [under: Your personal data] - Used lawfully, fairly and in a transparent way
+> [under: Your personal data] - Collected only for valid purposes and not used in any way that is incompatible with those purposes
+> [under: Your personal data] - Relevant to the purposes we have told you about and limited only to those purposes
+> [under: Your personal data] - Accurate and kept up to date
+> [under: Your personal data] - Kept only as long as necessary for the purposes we have told you about
+> [under: Your personal data] - Kept securely
+> [under: Your personal data] If you would like to contact us about your data, please use the following address: info@amach.com
+
+=== 1317013
+company: LTA Land Transport Authority
+title: [LTA-TRO] ENGINEER, KPE/MCE MANAGEMENT
+options: Singapore [undeclared]
+description:
+# [What the role is]
+# ENGINEER, KPE/MCE MANAGEMENT
+# [What you will be working on]
+[under: [What you will be working on]] Play a key role in ensuring the safe and efficient operations of Singapore’s road tunnels.
+[under: [What you will be working on]] You will be part of a team to oversee the integration of operational technology (OT) and information technology (IT) systems — from project planning and design review through to site supervision, installation, testing and commissioning.
+[under: [What you will be working on]] You will collaborate closely with key stakeholders on interfacing design and manage contractors and system vendors throughout project development to ensure timely and successful system commissioning.
+# Your key responsibilities include
+[under: Your key responsibilities include] - Engage stakeholders to gather, define, and translate business requirements into workable technical solutions.
+[under: Your key responsibilities include] - Lead or participate in the design and review of integration solutions between various systems, applications, and databases using APIs, middleware, and other relevant technologies.
+[under: Your key responsibilities include] - Identify potential integration risks, assess their implications, and recommend mitigating measures to minimise operational impact to support smooth and timely project delivery.
+[under: Your key responsibilities include] - Identify key business processes for improvement to achieve greater efficacy and better support tunnel operations.
+# [What we are looking for]
+[under: [What we are looking for]] - Knowledge in Information Technology, Computer Engineering, Electronic Engineering, or a related field.
+[under: [What we are looking for]] - Good understanding of Industrial Control Systems (ICS), SCADA systems, OT communication protocols (e.g. Modbus or Profinet) and middleware or integration platforms that bridge OT and IT environments.
+[under: [What we are looking for]] - Working knowledge of OT cybersecurity principles, risks, controls, and industry best practices to ICS will be an advantage.
+[under: [What we are looking for]] - Experience with data analytics tools such as Python, Snowflake, or Tableau will be an advantage.
+[under: [What we are looking for]] - Strong written and verbal communication skills, with the ability to work effectively in cross-functional teams.
+[under: [What we are looking for]] - A proactive and resourceful approach to problem-solving, with a strong sense of ownership and analytical thinking.
+[under: [What we are looking for]] As part of the shortlisting process for the role, you may be required to complete a medical declaration and / or undergo further assessment.
+
+=== 180455
+company: Airbnb
+title: Senior Fullstack Software Engineer, Quality Platform
+options: Brazil [undeclared]
+description:
+> Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe.
+> Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.
+# The Community You Will Join
+[under: The Community You Will Join] The Quality Engineering team helps Airbnb build high-quality software efficiently.
+[under: The Community You Will Join] We enable Airbnb engineers to build highly testable systems by building and using tools leveraging AI.
+[under: The Community You Will Join] We own and continuously improve product test cases, automation coverage, test automation tools, environments, and frameworks.
+[under: The Community You Will Join] We navigate Airbnb’s massive codebase, identifying weak spots, and help design and implement testable, fault-tolerant systems.
+# The Difference You Will Make
+[under: The Difference You Will Make] - Be a leader in Airbnb leveraging AI to redefine and accelerate Quality Engineering.
+[under: The Difference You Will Make] - As a Senior Software Engineer Fullstack, you will help us meet this challenge by building and evolving comprehensive automation coverage for features and releases. You will work directly with the product engineering team to develop and maintain our test tools, write and test product code, participate in design reviews to architect testable systems, and guide designs and code to enhance modularity and testability.
+[under: The Difference You Will Make] - You are eager to understand complex systems top to bottom and thrive working across technologies and codebases. In addition, you excel at working through ambiguity, concept validation, and implementing best-in-class solutions.
+[under: The Difference You Will Make] - As a global company, our mission is to develop and maintain the necessary quality engineering processes that scale to meet the needs of both our external customers and internal teams. We strive to ensure that our product and support workflows deliver a seamless experience for guests, hosts, and support agents.
+# A Typical Day
+[under: A Typical Day] - Leverage AI and tooling to lead the implementation of a test automation strategy, covering the entire testing pyramid (unit, service, integration, and end-to-end testing) to verify feature functionality for customer use cases
+[under: A Typical Day] - Lead building, maintaining, and effective utilization of automated tests, collaborating closely with engineering teams to ensure robust test coverage for features and releases, and actively participating in the continuous improvement of testing processes
+[under: A Typical Day] - Contribute to improving existing automation frameworks to support new functionalities and optimize quality and efficiency
+[under: A Typical Day] - Collaborate with CI/CD team to integrate automated testing into CI/CD pipelines, ensuring thorough test coverage at every stage of development
+[under: A Typical Day] - Demonstrate excellent troubleshooting abilities, isolate issues, and verify bug fixes. Debug issues found during testing and after release
+[under: A Typical Day] - Be a player of our high-performance team to ensure code quality, commitment to craft and operational excellence
+[under: A Typical Day] - Work closely with cross-functional teams, including product management, development, and other QE teams, in a fast-paced environment with short release cycles
+# Your Expertise
+[under: Your Expertise] - 5+ years of industry experience in software engineering and testing
+[under: Your Expertise] - Demonstrable knowledge in at least one language used for web development (e.g., TypeScript, JavaScript) and comfort working in a backend language (e.g., Java, Kotlin, Python, Go)
+[under: Your Expertise] - Strong knowledge of test automation methodologies, tools, and frameworks
+[under: Your Expertise] - Strong hands-on experience with automation frameworks (e.g., Playwright, Cypress)
+[under: Your Expertise] - Experience integrating automated tests into CI/CD pipelines (e.g., Buildkite, Spinnaker, Jenkins) and version control systems (Git)
+[under: Your Expertise] - Experience using quality signals such as coverage, flaky test rate, suite execution time, and escaped defects to prioritize work and demonstrate impact
+[under: Your Expertise] - Excellent communication skills towards facilitating interactions with cross-functional teams
+[under: Your Expertise] - Expertise developing solutions to ambiguous problems, and integrations across multiple teams with significant impact
+[under: Your Expertise] - Curiosity about applying AI/LLMs to testing and developer productivity
+[under: Your Expertise] - Comfortable collaborating in English
+[under: Your Expertise] - Bachelor’s degree in computer science/engineering or equivalent
+# Our Commitment To Inclusion & Belonging
+[under: Our Commitment To Inclusion & Belonging] Airbnb is committed to working with the broadest talent pool possible.
+[under: Our Commitment To Inclusion & Belonging] We believe diverse ideas foster innovation and engagement, and allow us to attract creatively-led people, and to develop the best products, services and solutions.
+[under: Our Commitment To Inclusion & Belonging] All qualified individuals are encouraged to apply.
+[under: Our Commitment To Inclusion & Belonging] We strive to also provide a disability inclusive application and interview process.
+[under: Our Commitment To Inclusion & Belonging] If you are a candidate with a disability and require reasonable accommodation in order to submit an application, please contact us at: reasonableaccommodations@airbnb.com.
+[under: Our Commitment To Inclusion & Belonging] Please include your full name, the role you’re applying for and the accommodation necessary to assist you with the recruiting process.
+[under: Our Commitment To Inclusion & Belonging] We ask that you only reach out to us if you are a candidate whose disability prevents you from being able to complete our online application.
+> Reasonable Accommodations: We are committed to providing reasonable accommodations throughout the recruitment process for applicants with disabilities.
+> If you need assistance, or an accommodation, please let your recruiter know once you are contacted about a role.
+> A Note on Recruiting Scams: Scammers sometimes pose as Airbnb recruiters to get money or personal information from candidates.
+> A few things that will always be true for Airbnb’s hiring process: our open roles are posted on Airbnb’s Career’s Page at careers.airbnb.com, and our recruiters correspond only from @airbnb.com or @ext.airbnb.com email addresses.
+> Our recruiters will never ask for your Social Security number, bank account details, passport, or payment app information while you are interviewing.
+> We’ll also never ask you to pay a fee, send money, deposit or cash a check, or purchase work-related equipment (such as a company laptop) during the interview process.
+> We encourage candidates to remain vigilant of these recruiting scams and not share sensitive information if you do not believe an individual is actually affiliated with Airbnb.
+
+=== 661889
+company: Collinson (Central Services) Ltd
+title: EUC Infrastructure Support Engineer
+options: Dallas [undeclared]
+description:
+# Job Description
+[under: Job Description] Purpose of Job
+[under: Job Description] The role is focused on supporting our Team Members with IT services and infrastructure in our Americas region and will involve working as part of a cross-functional global technology team.
+[under: Job Description] The ideal candidate will manage and support PC’s, mobility, server, and network systems within the Americas region in compliance with Collinson policies and PCI-DSS controls.
+[under: Job Description] The candidate will work alongside other Collinson technical teams, personnel, and external suppliers to contribute to and continuously improve upon our service and infrastructure support capabilities.
+[under: Job Description] In addition, the candidate will work with first- and second-line internal customer support enquiries, ad-hoc operational support and be responsible for training Team Members of Collinson services as appropriate.
+[under: Job Description] This position also contributes to the overall governance and success to maintaining yearly PCI-DSS certification.
+# Key Responsibilities
+# What You'll Do
+# The ideal candidate must demonstrate the ability to
+[under: The ideal candidate must demonstrate the ability to] - Respond to user requests for service; troubleshoot incidents and problems, develop solutions; make minor repairs to equipment and arrange for other service needs as appropriate
+[under: The ideal candidate must demonstrate the ability to] - Manage the day-to-day incidents and service requests resolving them in a timely manner utilizing the ITSM tool of record
+[under: The ideal candidate must demonstrate the ability to] - Verify scheduled backups have completed as expected as part of maintaining a working end user compute environment
+[under: The ideal candidate must demonstrate the ability to] - Refine and document the build and deployment processes, ensuring these are transparent, reliable, efficient, and repeatable as part of the deployment lifecycle
+[under: The ideal candidate must demonstrate the ability to] - Install and support Microsoft Office applications including Exchange and Office 365 software and additional approved, as needed, software
+[under: The ideal candidate must demonstrate the ability to] - Ensure software and support license details are logged and assets are tracked
+[under: The ideal candidate must demonstrate the ability to] - Perform basic PC, network, and mobility troubleshooting
+[under: The ideal candidate must demonstrate the ability to] - Analyze server and network activity and maintain performance monitoring systems as well as other software programs e.g., intrusion detection, virus scanning applications, etc.
+[under: The ideal candidate must demonstrate the ability to] - Assist with maintaining local servers, VPNs, and system backups ensuring compliance with Collinson requirements and PCI-DSS controls
+[under: The ideal candidate must demonstrate the ability to] - Assist with creating, editing, and maintaining user accounts, permissions, and passwords
+[under: The ideal candidate must demonstrate the ability to] - Ability to identify problems and proactively suggest ways to improve processes as applicable
+[under: The ideal candidate must demonstrate the ability to] - Communicate with other Collinson IT teams, awareness of new or revised solutions, improved security processes and the development of new attacks and threats
+[under: The ideal candidate must demonstrate the ability to] - Training – help develop and lead an on-going training (Tech Bar) program based on end-user feedback requests
+[under: The ideal candidate must demonstrate the ability to] - Contribute to Knowledge Base content in line with writing styles and content guidelines
+[under: The ideal candidate must demonstrate the ability to] - Create / Maintain / appropriate User Guides and publish updates as needed
+[under: The ideal candidate must demonstrate the ability to] - Submit a weekly status report to Line Manager
+[under: The ideal candidate must demonstrate the ability to] Knowledge, skills, and experience required
+# What You'll Need
+[under: What You'll Need] - Bachelor’s Degree in MIS or CS or s Degree or Applicable Trade School Degree and 3-5 years applicable working history
+[under: What You'll Need] - Microsoft Certified Professional preferred
+[under: What You'll Need] - ITIL Foundations v4 preferred
+[under: What You'll Need] - CompTIA A+ preferred
+[under: What You'll Need] - CompTIA Network + preferred
+[under: What You'll Need] - CCNET a plus
+[under: What You'll Need] - Both AWS and Azure applicable Foundation’s certifications preferred
+[under: What You'll Need] - HDI Support Centre Analyst and / or Desktop Support Technician and / or Technical Support Professional preferred
+[under: What You'll Need] - Experience with MDM technology
+[under: What You'll Need] - Experience in supporting MACs in an enterprise environment a plus
+[under: What You'll Need] - Experience working with Avaya VOIP and Omni Chanel technologies
+[under: What You'll Need] - Ability to speak Spanish and or Portuguese is a plus
+# Additional Experience Plus
+[under: Additional Experience Plus] - Must have excellent interpersonal skills and provide a positive customer experience
+[under: Additional Experience Plus] - Maintain and enhance a balanced multi-platform technical skillset (participate in applicable skillset training)
+[under: Additional Experience Plus] - Ability to prioritize and perform multiple tasks
+[under: Additional Experience Plus] - Excellent attention to detail
+[under: Additional Experience Plus] - A caring attitude, high standards of conduct and professionalism
+[under: Additional Experience Plus] - Flexible in work schedule knowing there will be times service restoration, updates or other work may need to take place outside of normal working hours and / or days, both scheduled and un-scheduled
+[under: Additional Experience Plus] - Participate in rotating on-call schedule for weekend incidents as needed
+[under: Additional Experience Plus] - Self-motivated and able to work within a local, regional, and global team
+[under: Additional Experience Plus] - Active group participation (i.e., be a team player)
+[under: Additional Experience Plus] - Ability to work in an open office environment and remote
+[under: Additional Experience Plus] - Must maintain composure and demonstrate a real can-do attitude when faced with challenges
+[under: Additional Experience Plus] - Ability to work independently with minimum supervision and exercise sound judgment within established guidelines; interpret, apply, explain, and reach sound decisions.
+# About us: Our story
+[under: About us: Our story] Collinson Group is a global leader in driving loyalty and engagement for many of the world’s largest companies.
+[under: About us: Our story] Predominantly through the provision of travel related benefits within a market leading digital travel ecosystem.
+[under: About us: Our story] The group offers a unique blend of industry and sector specialists who together provide market-leading experience in delivering products and services across four core capabilities: Loyalty, Lifestyle Benefits and Insurance.
+[under: About us: Our story] The group provides unrivalled insight and expertise around affluent consumers and frequent travellers, creating and delivering products and services now accessible to over 400m end consumers.
+[under: About us: Our story] We have more than 25 years’ experience, with 28 global locations, servicing over 800 clients in 170 countries, employing 1,800 people.
+[under: About us: Our story] We have been bringing innovation to the market since inception – from launching the first independent global VIP lounge access Programme, Priority Pass to being the first to sell direct travel insurance in the UK through Columbus Direct and creating the first loyalty agency of its kind in the travel sector with ICLP.
+[under: About us: Our story] Today we still invest heavily in innovation to ensure that we continue to deliver superior customer experiences.
+[under: About us: Our story] Key clients include: Visa, Mastercard, American Express, Cathay Pacific, British Airways, LATAM, Flying Blue, Accor, EasyJet, HSBC, Chase, HDFC.
+[under: About us: Our story] Our mission is focused on doing good beyond profit, which for us means we seek out opportunities for our people to share in our success and that we give back to the communities and people within which we work.
+[under: About us: Our story] Never short of ambition, the success of our business is delivered through the diverse and talented team of over 1,800 colleagues globally.
+# Equal Opportunities: Our commitment to inclusion
+[under: Equal Opportunities: Our commitment to inclusion] Collinson is an equal opportunity employer and welcomes differences in all their forms including: colour, race, ethnicity, gender identity, sexual orientation, neurodivergence, family status, age, individuals with disabilities and people from all backgrounds, cultures and experiences as we strongly believe this contributes to our on-going success.
+[under: Equal Opportunities: Our commitment to inclusion] We are focused on continually evolving our purpose driven, high performing culture, providing an environment where our people have the opportunity to achieve their full potential and do interesting and meaningful work.
+[under: Equal Opportunities: Our commitment to inclusion] Our company values are: Act smarter, Do the right thing, One team and Be insight led.
+[under: Equal Opportunities: Our commitment to inclusion] These help guide everything we do internally in terms of how we think, act and interact, right through to how we deliver value to our customers and clients.
+[under: Equal Opportunities: Our commitment to inclusion] If you need any extra support throughout the interview process, then please email us at recruitment@collinson.com
+# Reward & Benefits: What's in it for me?
+[under: Reward & Benefits: What's in it for me?] You can look forward to a competitive salary and benefit plan including but not limited to:
+[under: Reward & Benefits: What's in it for me?] - 100% employer paid medical, dental, life & LTD insurance for employees
+[under: Reward & Benefits: What's in it for me?] - 100% match to your 401k deferrals (limited) with 100% vesting at 6 months
+[under: Reward & Benefits: What's in it for me?] - Supplemental Insurance including STD, additional Life
+[under: Reward & Benefits: What's in it for me?] - Priority Pass Membership
+[under: Reward & Benefits: What's in it for me?] - Global Mentoring Program
+[under: Reward & Benefits: What's in it for me?] - Wellness Programs
+[under: Reward & Benefits: What's in it for me?] - Lifestyle Benefits
+
+=== 178485
+company: Zone 5 Technologies
+title: Software Engineering Manager – Embedded Software
+options: San Luis Obispo, California [undeclared]
+description:
+> At Zone 5 Technologies, we're redefining what's possible in unmanned aircraft systems.
+> Our team of engineers and innovators is developing cutting-edge autonomous solutions that push the boundaries of UAS technology - solving complex challenges that matter.
+> We're building the future of UAS capabilities, and we're looking for exceptional talent to join us.
+> If you're driven by hard problems, energized by rapid innovation, and ready to make an impact on next-generation flight systems, you belong here.
+We're looking for a people-first Software Engineering manager to oversee the development, integration, and maintenance of software systems for unmanned aerial vehicles (UAVs).
+This role involves leading a team of software engineers, collaborating with cross-functional teams (hardware, systems, and flight operations), and ensuring that all software complies with safety, performance, and regulatory requirements.
+The candidate will be responsible for the entire software development lifecycle, from requirements gathering through design, implementation, and validation.
+# Software Engineering Manager – Embedded Software (UAV Systems)
+# Responsibilities
+[under: Responsibilities] - Team Leadership & Management: Build, mentor, and manage a high-performing software engineering team developing mission-critical embedded software for UAV flight control, communications, mission planning, and data processing.
+[under: Responsibilities] - Technical Direction & Architecture Oversight: Provide technical leadership and architectural guidance for embedded software systems, ensuring scalability, safety, reliability, and regulatory compliance.
+[under: Responsibilities] - Project & Execution Coordination: Coordinate with product and program managers to define project scope, allocate resources, set priorities, and manage software development schedules for flight control, mission management, and payload software programs.
+[under: Responsibilities] - Systems Integration & Delivery: Collaborate with cross-functional engineering groups to ensure seamless integration of software with hardware, sensors, communication systems, and ground control systems.
+[under: Responsibilities] - Quality Assurance & Safety: Oversee verification and validation activities, including unit testing, simulation, hardware-in-the-loop (HITL), and flight testing to ensure performance, robustness, and safety of delivered software.
+[under: Responsibilities] - Compliance & Certification Leadership: Ensure development follows certification frameworks and safety standards such as DO-178C, ARP4754, and other UAV regulatory requirements.
+[under: Responsibilities] - Innovation & Technology Strategy: Evaluate emerging technologies and drive adoption into product roadmaps, supporting advancement in autonomy, communications, and mission capabilities.
+[under: Responsibilities] - Process Improvement: Help refine development best practices, coding standards, test methodologies, and documentation processes to support scalability and efficiency.
+[under: Responsibilities] - Stakeholder Collaboration: Align software engineering goals with product, business, and operational requirements by coordinating closely with program and product management, systems engineering, hardware engineering, and flight operations teams.
+[under: Responsibilities] - Documentation Oversight: Ensure creation and maintenance of high-quality documentation including design artifacts, test plans, certification documentation, and user manuals.
+# Qualifications
+[under: Qualifications] - Bachelor’s degree in Computer Science, Software Engineering, Electrical Engineering, or a related field (Master’s degree preferred).
+[under: Qualifications] - Minimum of 7+ years of software engineering experience, including at least 3 years in a leadership, management, or team-lead role.
+[under: Qualifications] - Strong background in embedded or aerospace software development, with experience in UAV systems strongly preferred.
+[under: Qualifications] - Familiarity with programming languages and modeling tools used in embedded and control systems (e.g., C, C++, C#, Python, MATLAB, Simulink).
+[under: Qualifications] - Understanding of real-time operating systems (RTOS), flight control systems, and communication protocols (e.g., STANAG-4586, ARINC-825, MAVLink).
+[under: Qualifications] - Experience with network protocols (UDP, TCP, DNS, DHCP) and working with networked embedded devices.
+[under: Qualifications] - Knowledge of software development lifecycle tools and workflow systems (Git, GitHub, JIRA, CI/CD).
+[under: Qualifications] - Demonstrated ability to lead diverse technical teams, communicate effectively, and drive results in a fast-paced engineering environment.
+[under: Qualifications] - Familiarity with safety-critical systems and certification standards such as DO-178C and ARP4754.
+# Preferred Qualifications
+[under: Preferred Qualifications] - Experience with autonomy-enabling technologies such as machine learning, computer vision, or advanced sensor fusion.
+[under: Preferred Qualifications] - Knowledge of satellite or long-range communication technologies relevant to UAV platforms.
+[under: Preferred Qualifications] - Prior involvement in scaling engineering teams or multi-program software organizations.
+> Pay range for this role
+> $170,000—$220,000 USD
+> # What's in it for you
+> # Benefits
+> [under: Benefits] - Competitive total compensation package
+> [under: Benefits] - Comprehensive benefit package options include medical, dental, vision, life, and more.
+> [under: Benefits] - 401k with company-match
+> [under: Benefits] - 3 weeks of paid time off each year
+> [under: Benefits] - 40 hours of sick time
+> [under: Benefits] - 12 annual company holidays
+> [under: Benefits] Why Join Zone 5 Technologies?
+> [under: Benefits] - Innovative Environment: Work on cutting-edge technology that is shaping the future of defense and aerospace.
+> [under: Benefits] - Collaborative Culture: Join a team of passionate professionals dedicated to pushing the boundaries of what’s possible.
+> [under: Benefits] - Career Growth: Opportunities for professional development and career advancement.
+> [under: Benefits] If you are passionate about unmanned aircraft technology and want to be a part of a dynamic and growing company, we would love to hear from you.
+> [under: Benefits] Apply today and join the Zone 5 Technologies team!
+> [under: Benefits] In compliance with federal law, all persons hired will be required to verify identity and eligibility to work in the United States and to complete the required employment eligibility verification form upon hire.
+> [under: Benefits] Zone 5 Technologies is a federal contractor and participates in E-Verify to confirm employment eligibility.
+> [under: Benefits] As required by law, we will verify the identity and employment authorization of all new employees using the E-Verify system.
+> [under: Benefits] Learn more about your rights and responsibilities under E-Verify: https://www.e-verify.gov.
+

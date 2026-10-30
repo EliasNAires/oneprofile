@@ -1,0 +1,218 @@
+#!/usr/bin/env python3
+"""Scores the blind sample that measures eligibility (#12).
+
+    scripts/score-eligibility-sample DIRECTORY
+
+DIRECTORY is where scripts/draw-eligibility-sample drew the sample. Reads the rule's states from sample.tsv, the
+first labeller's answers, labels-a-N.tsv (id, ar, us, reader, mode, reason, as docs/eligibility-criterion.md
+says), the second's, labels-b-N.tsv, and the adjudicator's verdicts, disagreements/batch-NNN.verdicts.json.
+
+The second labeller reads every vacancy whose first label for Argentina differs from the rule, and 30 of the
+eligible strata where it agrees. Until it has, writes those vacancies, as the batches showed them, to
+second-N.txt, and stops. Then, where the two labels for Argentina differ, writes them as JSON batches of 20 for
+the adjudicator (.claude/agents/adjudicator.md), each row's id, what the labellers read and their two answers,
+and stops until every one is settled. A verdict of neither settles the vacancy as unclear.
+
+Then prints, by stratum, how often the rule's state for Argentina is the settled one, each error by where the
+vacancy should have gone (a gem lost, a promise broken, unknown but excluded, excluded but unknown), each with a
+95% Wilson interval; the eligible precision weighted by each source's size; the share of the feed and of the
+unknowns the reader judges open to Argentina, and of the unknowns whose text says onsite or hybrid; the rule
+verdict beside the reader's; the United States in one line; and every vacancy where the rule and the settled
+label split, with what the labeller quoted. An unclear label is left out of every share.
+"""
+
+import json
+import math
+import random
+import re
+import sys
+from collections import Counter, defaultdict
+from pathlib import Path
+
+Z = 1.96
+
+BATCH = 20
+
+SECOND_BATCH = 15
+
+AGREEING = 30
+
+SEED = 12
+
+STATES = ("eligible", "excluded", "unknown")
+
+QUESTION = ("What is this vacancy's rule verdict for Argentina by the criterion's The rule verdict: eligible, excluded "
+            "or unknown?")
+
+
+def rows(path):
+    with open(path, encoding="utf-8") as tsv:
+        header = tsv.readline().rstrip("\n").split("\t")
+        return [dict(zip(header, line.rstrip("\n").split("\t"))) for line in tsv if line.strip()]
+
+
+def labels(directory, labeller):
+    read = {}
+    for path in sorted(directory.glob(f"labels-{labeller}-*.tsv")):
+        for row in rows(path):
+            read[row["id"].strip()] = row
+    return read
+
+
+def state(row, field="ar"):
+    said = row.get(field, "").strip().lower()
+    return said if said in STATES else "unclear"
+
+
+def blocks(directory):
+    """What the labellers read of each vacancy, by its id, as the batches showed it."""
+    read = {}
+    for path in sorted(directory.glob("batch-*.txt")):
+        for block in re.split(r"(?m)^(?==== )", path.read_text(encoding="utf-8")):
+            if block.startswith("=== "):
+                read[block[4:block.index("\n")].strip()] = block.rstrip("\n") + "\n"
+    return read
+
+
+def wilson(hits, total):
+    share = hits / total
+    centre = (share + Z * Z / (2 * total)) / (1 + Z * Z / total)
+    half = Z * math.sqrt(share * (1 - share) / total + Z * Z / (4 * total * total)) / (1 + Z * Z / total)
+    return centre - half, centre + half
+
+
+def share(hits, total):
+    if not total:
+        return "        -        "
+    low, high = wilson(hits, total)
+    return f"{hits:3} of {total:3} {hits / total:6.1%} ({low:.0%}–{high:.0%})"
+
+
+def error(rule, settled):
+    """Where a vacancy the rule got wrong should have gone, by #12's weighting of errors."""
+    if rule == settled:
+        return None
+    if settled == "eligible":
+        return "gem lost"
+    if rule == "eligible":
+        return "promise broken"
+    return "unknown, really excluded" if rule == "unknown" else "excluded, really unknown"
+
+
+ERRORS = ("gem lost", "promise broken", "unknown, really excluded", "excluded, really unknown")
+
+
+def second(sample, first):
+    """The vacancies the second labeller reads: every one the first labels apart from the rule, and some that agree."""
+    differing = sorted((id for id in first if state(first[id]) != sample[id]["ar"]), key=int)
+    agreeing = sorted((id for id in first if state(first[id]) == sample[id]["ar"]
+                       and any(s.startswith("eligible") for s in sample[id]["strata"].split(","))), key=int)
+    return differing + random.Random(SEED).sample(agreeing, min(AGREEING, len(agreeing)))
+
+
+def main():
+    if len(sys.argv) != 2:
+        sys.exit(__doc__)
+    directory = Path(sys.argv[1])
+    sample = {row["id"]: row for row in rows(directory / "sample.tsv")}
+    shown = blocks(directory)
+    labelled = [id for id in sample if id in shown]
+    first = labels(directory, "a")
+    missing = [id for id in labelled if id not in first]
+    if missing:
+        sys.exit(f"{len(missing)} vacancies have no first label, as {missing[:5]}")
+
+    chosen = second(sample, first)
+    secondly = labels(directory, "b")
+    if not secondly:
+        for start in range(0, len(chosen), SECOND_BATCH):
+            (directory / f"second-{start // SECOND_BATCH + 1}.txt").write_text(
+                "\n".join(shown[id] for id in chosen[start:start + SECOND_BATCH]), encoding="utf-8")
+        sys.exit(f"wrote {len(chosen)} vacancies for the second labeller")
+    missing = [id for id in chosen if id not in secondly]
+    if missing:
+        sys.exit(f"{len(missing)} vacancies have no second label, as {missing[:5]}")
+
+    differing = [id for id in chosen if state(first[id]) != state(secondly[id])]
+    print(f"the labellers agree on Argentina for {len(chosen) - len(differing)} of {len(chosen)}")
+    agreeing_rule = [id for id in chosen if state(first[id]) == sample[id]["ar"]]
+    print(f"  of those where the first agrees with the rule: "
+          f"{share(sum(1 for id in agreeing_rule if state(secondly[id]) == state(first[id])), len(agreeing_rule))}")
+    disagreements = directory / "disagreements"
+    verdicts = {}
+    for path in sorted(disagreements.glob("batch-*.verdicts.json")):
+        verdicts.update(json.loads(path.read_text(encoding="utf-8")))
+    if differing and not disagreements.exists():
+        disagreements.mkdir()
+        for start in range(0, len(differing), BATCH):
+            (disagreements / f"batch-{start // BATCH + 1:03}.json").write_text(json.dumps(
+                [{"id": int(id), "text": shown[id], "a": state(first[id]), "b": state(secondly[id])}
+                 for id in differing[start:start + BATCH]], ensure_ascii=False, indent=1), encoding="utf-8")
+        (disagreements / "question.txt").write_text(QUESTION + "\n", encoding="utf-8")
+        sys.exit(f"wrote {len(differing)} disagreements for the adjudicator")
+    unsettled = [id for id in differing if id not in verdicts]
+    if unsettled:
+        sys.exit(f"{len(unsettled)} disagreements are not adjudicated, as {unsettled[:5]}")
+    print("adjudicated: " + ", ".join(f"{v} {n}" for v, n in
+                                       sorted(Counter(verdicts[id]["verdict"] for id in differing).items())))
+
+    settled = {}
+    for id in labelled:
+        if id not in secondly:
+            settled[id] = state(first[id])
+        elif state(first[id]) == state(secondly[id]):
+            settled[id] = state(first[id])
+        else:
+            verdict = verdicts[id]["verdict"]
+            settled[id] = {"a": state(first[id]), "b": state(secondly[id])}.get(verdict, "unclear")
+
+    strata = defaultdict(list)
+    for id in labelled:
+        for name in sample[id]["strata"].split(","):
+            strata[name].append(id)
+    sizes = {row["stratum"]: int(row["vacancies"]) for row in rows(directory / "strata.tsv")}
+
+    print("\nArgentina, by stratum: the rule right, and each error where the vacancy should have gone")
+    for name, held in strata.items():
+        judged = [id for id in held if settled[id] != "unclear"]
+        right = sum(1 for id in judged if settled[id] == sample[id]["ar"])
+        errors = Counter(error(sample[id]["ar"], settled[id]) for id in judged)
+        print(f"  {name:24} right {share(right, len(judged))}  " + ", ".join(
+            f"{kind} {errors[kind]}" for kind in ERRORS if errors[kind]) + f"  (of {sizes.get(name, '?')})")
+
+    eligible = [name for name in strata if name.startswith("eligible")]
+    weighted = sum(sizes[name] * sum(1 for id in strata[name] if settled[id] == "eligible")
+                   / max(1, sum(1 for id in strata[name] if settled[id] != "unclear")) for name in eligible)
+    print(f"\neligible precision for Argentina, weighted by source: {weighted / sum(sizes[n] for n in eligible):.1%}")
+
+    def reader_share(name, test, field="reader"):
+        return share(sum(1 for id in strata[name] if test(first[id].get(field, "").strip().lower())), len(strata[name]))
+
+    print("\nby the first labeller's reader verdict and mode:")
+    for name in ("feed", "unknown random", "unknown cue"):
+        print(f"  {name:16} open {reader_share(name, lambda said: said == 'yes')}  "
+              f"closed {reader_share(name, lambda said: said == 'no')}  "
+              f"onsite or hybrid {reader_share(name, lambda said: said in ('onsite', 'hybrid'), 'mode')}")
+
+    print("\nthe rule verdict for Argentina beside the reader's, over every labelled vacancy:")
+    beside = Counter((sample[id]["ar"], first[id].get("reader", "").strip().lower()) for id in labelled)
+    for rule in STATES:
+        print(f"  rule {rule:9} " + "  ".join(f"{reader} {beside[(rule, reader)]:3}" for reader in ("yes", "no",
+                                                                                                  "unclear")))
+
+    us = [id for id in labelled if state(first[id], "us") != "unclear"]
+    print(f"\nthe United States: the rule is the first label on {share(sum(1 for id in us if state(first[id], 'us') == sample[id]['us']), len(us))}; "
+          + ", ".join(f"{kind} {n}" for kind, n in Counter(
+              error(sample[id]["us"], state(first[id], "us")) for id in us).items() if kind))
+
+    print("\nwhere the rule and the settled label split, for Argentina:")
+    for id in sorted(labelled, key=int):
+        kind = error(sample[id]["ar"], settled[id])
+        if kind and settled[id] != "unclear":
+            row = sample[id]
+            print(f"  {id}\t{row['strata']}\t{kind}\trule {row['ar']} ({row['ar_source']})\tlabel {settled[id]}\t"
+                  f"{row['title'][:60]}\t{first[id].get('reason', '-')[:160]}")
+
+
+if __name__ == "__main__":
+    main()

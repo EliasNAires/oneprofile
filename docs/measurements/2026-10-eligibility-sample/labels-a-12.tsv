@@ -1,0 +1,26 @@
+id	ar	us	reader	mode	reason
+106765	eligible	unknown	yes	remote	"Latin America - Remote"
+397089	excluded	excluded	no	remote	"based in Australia"
+399131	excluded	excluded	no	remote	"based in Mexico; Sub-Saharan Africa or South Asia"
+226235	eligible	eligible	yes	remote	"We hire globally"
+765201	unknown	unknown	no	hybrid	-
+12054	excluded	eligible	no	unclear	"U.S. Person status is required"
+476374	unknown	eligible	no	remote	-
+226172	eligible	eligible	yes	remote	"We hire globally"
+796853	unknown	eligible	no	hybrid	-
+371436	eligible	unknown	yes	remote	"Remote, Latin America"
+370941	eligible	unknown	yes	remote	"Remote, Latin America"
+376729	eligible	excluded	yes	remote	"Buenos Aires"
+370819	eligible	unknown	yes	remote	"Remote, Latin America"
+269225	excluded	eligible	no	hybrid	"based in San Francisco"
+264364	excluded	excluded	no	remote	"Remote United Kingdom"
+300479	eligible	unknown	yes	remote	"UTC-6 to UTC+2"
+371141	eligible	unknown	yes	remote	"Latin America, Remote"
+96070	unknown	eligible	no	remote	-
+855458	unknown	eligible	no	remote	-
+129815	unknown	eligible	no	unclear	-
+433063	eligible	eligible	yes	remote	"Remote, Worldwide"
+266163	eligible	unknown	yes	remote	"Argentina"
+30980	eligible	eligible	yes	remote	"Home based - Worldwide"
+1163340	excluded	excluded	no	unclear	"Location: Bucharest, Romania"
+549085	excluded	eligible	no	remote	"must be located in the United States"

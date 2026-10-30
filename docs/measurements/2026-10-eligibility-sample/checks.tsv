@@ -1,0 +1,48 @@
+id	check	ar	us	set	places	text
+414498	onsite	excluded	eligible	onsite	Arlington/Virginia/US	Arlington, VA
+221811	onsite	excluded	eligible	onsite	Alameda/California/US	Alameda
+384900	onsite	excluded	excluded	onsite	Lahore/Punjab/PK	Lahore
+312911	onsite	excluded	eligible	hybrid	Los Angeles/California/US	Los Angeles
+264699	onsite	excluded	excluded	hybrid	Milan/Lombardy/IT	Milan, Italy
+370475	onsite	excluded	excluded	onsite	Sherwood Park/Alberta/CA	Sherwood Park, Alberta
+264081	onsite	excluded	excluded	hybrid	KZ	Kazakhstan
+264081	onsite	excluded	excluded	hybrid	KG	Kyrgyzstan
+264081	onsite	excluded	excluded	hybrid	UZ	Uzbekistan
+333224	onsite	excluded	excluded	hybrid	Bengaluru/Karnataka/IN	Bangalore (India)
+270547	onsite	excluded	excluded	onsite	Chennai/Tamil Nadu/IN	Chennai Regional Office
+270547	onsite	excluded	excluded	onsite	Chennai/Tamil Nadu/IN	Chennai Regional Office
+240502	onsite	excluded	excluded	hybrid	BR	Brazil
+117323	timezone	excluded	excluded	timezone	UTC-2..+5	Flexible work from one of our offices or remotely within time zones from GMT-2 to GMT+5
+117431	timezone	excluded	excluded	timezone	UTC-2..+5	Flexible work from one of our offices or remotely within time zones from GMT-2 to GMT+5
+134754	timezone	eligible	excluded	timezone	UTC-3..+2	100% Remote Work working within a Central European to Argentinian time-zone window (UTC-3 to UTC+2, with about an hour's flexibility either side), and with access to global coworking spaces.
+204925	timezone	eligible	unknown	timezone	UTC-8..-3	Flexible work: hybrid or full-time from our office in Mexico or or remotely within time zones from GMT-8 to GMT-3
+205352	timezone	eligible	unknown	timezone	UTC-6..+2	You live in a timezone between UTC -6 to UTC+2 (North American Central Time through Central European Summer Time).
+209948	timezone	excluded	eligible	timezone	UTC-8..-5	You must be physically based in a US time zone (UTC-8 to UTC-5), whether in the US, Canada, or Latin America.
+228715	timezone	eligible	excluded	timezone	UTC-3..+3	FULLY remote role, within the UTC-3 to UTC+3 time zones. You need to be able to travel to (other) European countries without having to wait for a visa appointment, for our annual kickoff, a team meetup or a conference.
+249047	timezone	excluded	excluded	timezone	UTC-1..+3	Fully remote role within UTC -1 to UTC +3 time zones
+249048	timezone	excluded	excluded	timezone	UTC-1..+3	Fully remote role within UTC -1 to UTC +3 time zones
+250588	timezone	excluded	excluded	timezone	UTC-1..+3	Europe & Africa: Locations within European timezones (typically UTC-1 to UTC+3).
+250589	timezone	eligible	eligible	timezone	UTC-6..+1	You can be based anywhere in the UK, Americas, or Europe within a UTC-6 to UTC+1 timezone.
+250591	timezone	eligible	eligible	timezone	UTC-7..+3	You can be based anywhere in the UK, Europe, or the Americas within a UTC-7 to UTC+3 timezone.
+250596	timezone	excluded	excluded	timezone	UTC-1..+3	Europe & Africa: Locations within European timezones (typically UTC-1 to UTC+3).
+256416	timezone	eligible	eligible	timezone	UTC-6..+3	To create the best experience for our new hire, this role requires you to be based within UTC−6 to UTC+3.
+262097	timezone	eligible	eligible	timezone	UTC-3..-8	This role is fully remote based in UTC-3 to UTC-8 time zones, with some expected travel for team offsites, conferences, meetups, and more.
+267877	timezone	excluded	eligible	timezone	UTC-8..-5	Live between GMT-8 and GMT-5 (North American timezones)
+267878	timezone	excluded	eligible	timezone	UTC-8..-5	Live between GMT-8 and GMT-5 (North American timezones)
+268387	timezone	excluded	eligible	timezone	UTC-5..-10	Work from anywhere within US time zones (GMT-5 to GMT-10)
+272462	timezone	eligible	unknown	timezone	UTC+1..-5	If you are remote you must be within CET to ET timezones (GMT+1:00 to GMT-5:00). We will arrange in-person events throughout the year
+300136	timezone	excluded	excluded	timezone	UTC+0..+5	Flexible work from one of our offices or remotely within GMT-0 to GMT+5 time zones
+300473	timezone	eligible	unknown	timezone	UTC-6..+2	You live in a timezone between UTC -6 to UTC+2 (North American Central Time through Central European Summer Time).
+300474	timezone	eligible	unknown	timezone	UTC-6..+2	You live in a timezone between UTC -6 to UTC+2 (North American Central Time through Central European Summer Time).
+300475	timezone	eligible	unknown	timezone	UTC-6..+2	You live in a timezone between UTC -6 to UTC+2 (North American Central Time through Central European Summer Time).
+300476	timezone	eligible	unknown	timezone	UTC-6..+2	You live in a timezone between UTC -6 to UTC+2 (North American Central Time through Central European Summer Time).
+300477	timezone	eligible	unknown	timezone	UTC-6..+2	You live in a timezone between UTC -6 to UTC+2 (North American Central Time through Central European Summer Time).
+300478	timezone	eligible	unknown	timezone	UTC-6..+2	You live in a timezone between UTC -6 to UTC+2 (North American Central Time through Central European Summer Time).
+300479	timezone	eligible	unknown	timezone	UTC-6..+2	You live in a timezone between UTC -6 to UTC+2 (North American Central Time through Central European Summer Time).
+300480	timezone	eligible	unknown	timezone	UTC-6..+2	You live in a timezone between UTC -6 to UTC+2 (North American Central Time through Central European Summer Time).
+300481	timezone	eligible	unknown	timezone	UTC-6..+2	You live in a timezone between UTC -6 to UTC+2 (North American Central Time through Central European Summer Time).
+300482	timezone	eligible	unknown	timezone	UTC-6..+2	You live in a timezone between UTC -6 to UTC+2 (North American Central Time through Central European Summer Time).
+300483	timezone	eligible	unknown	timezone	UTC-6..+2	You live in a timezone between UTC -6 to UTC+2 (North American Central Time through Central European Summer Time).
+300484	timezone	eligible	unknown	timezone	UTC-6..+2	You live in a timezone between UTC -6 to UTC+2 (North American Central Time through Central European Summer Time).
+300485	timezone	eligible	unknown	timezone	UTC-6..+2	You live in a timezone between UTC -6 to UTC+2 (North American Central Time through Central European Summer Time).
+1376036	timezone	eligible	eligible	timezone	UTC-8..+3	Stakeholders are located across multiple time zones (GMT-8 to GMT+3), which may require occasional early or late meetings.
