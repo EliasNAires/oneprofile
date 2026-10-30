@@ -218,23 +218,32 @@ country?"** — not "is this job remote" and not "am I authorized to work there"
 the one a Finder visitor picks (ADR-0019); for matching it is the developer's, Argentina. Being
 hired as a contractor, through an employer of record or otherwise, counts as eligible.
 
-The extractor reads the description body and produces **the set of countries or regions the
-posting says it will engage someone in**, and stores it. The three-state signal is derived at
+The extractor produces **the set of countries or regions the posting says it will engage someone
+in**, and stores it. It reads the declared location, the title and the description body: an onsite
+or hybrid vacancy's declared location is its country set, and a remote or undeclared one's counts
+only for eligibility (ADR-0004, ADR-0027). A vacancy offered in more than one work mode
+takes, for each country, the best state of its options. The three-state signal is derived at
 query time by testing the country's membership in that set:
 
 - `ELIGIBLE` — the set is global, names a region containing the country, or names it.
 - `EXCLUDED` — the set is stated and excludes the country. Work-authorization language such as
   "must be authorized to work in the United States" lands here, because it implies they pay
-  only US-based people.
+  only US-based people, and so do citizenship and security clearance ("US citizens only",
+  "TS/SCI"). The visitor gives a country and nothing else: one with US work rights picks the
+  United States (decided by Elias on 2026-10-29, #13). Each stated set is stored with the
+  sentence that stated it and its kind (location, region, authorization, citizenship,
+  clearance, timezone), so that a later input for work rights needs no new reading.
 - `UNKNOWN` — no set is stated.
 
-An explicit timezone requirement the country cannot meet is a separate disqualifier.
+A **timezone requirement**, a window of UTC offsets the person must be located in ("candidates
+in UTC-5 to UTC+1"), counts both ways: a country inside it is eligible, one outside it excluded. A
+schedule ("work US Eastern hours") says nothing about where the person lives and counts neither way
+(decided by Elias on 2026-10-29, #13).
 
 Extraction is rule-based only (ADR-0005). Eligibility is hard-filtered for matches, and the
 Finder's toggle narrows to it, which makes recall the binding constraint (ADR-0004, ADR-0019);
-recall is measured by hand-labelling a
-random sample of roughly 200 remote-flagged vacancies, and the missed phrasings are the work
-queue.
+it is measured once on a blind, stratified sample of every work mode, labelled by agents
+(#12), and the missed phrasings are the work queue.
 
 ### 5.5 Skills — taxonomy and extraction built, precision measured
 
@@ -609,7 +618,7 @@ Volume is done: Ashby (#20), then whatever reached 100k vacancies (#70). The res
 (decided 2026-10-26):
 
 1. **Extraction**: the title breakdown (#92) and its check (#94) → roles from titles (#25), beside work mode (#86) → seniority from the body (#8) →
-   eligibility and its recall (#13, #12) → deduplication (#27).
+   places from declared locations (#26) → eligibility and its measurement (#13, #12) → deduplication (#27).
 2. **Data quality**: the corpus fixes ready for an agent (#83, #85, #49).
 3. **Scheduling**: the schedule (#30), with the passes and the Workday sweep fitted to the server
    (#89, #90, #88).

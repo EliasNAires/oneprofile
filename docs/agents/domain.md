@@ -53,6 +53,10 @@ the later ADR wins; the overridden parts are marked below.
   location is evidence for eligibility, never against it, and the country set is stored.
   *Overridden by 0019* for the Finder, which shows unknown eligibility; the hard filter holds for
   matches.
+  *Amended by 0027:* "never against" is for remote and undeclared vacancies only.
+- **0027**: an onsite or hybrid vacancy's declared location is its country set; every other
+  country is excluded. A vacancy offered in several work modes takes the best state of its
+  options. Visa sponsorship and relocation are a fact of their own, not a country.
 - **0003**: skills come from a curated taxonomy (O\*NET, Linguist, Wikidata), not Lightcast.
   Its provenance and licences: `docs/taxonomy.md`.
 - **0024**: a vacancy's role is read from its title: the title is broken down into its

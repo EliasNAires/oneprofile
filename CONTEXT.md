@@ -305,7 +305,8 @@ _Avoid_: modality, workplace type, location type, arrangement
 **Declared Location**:
 The places a vacancy names for the work, as its ATS publishes them: the location field, and
 Ashby's and Lever's lists of locations. Not a derived fact: the country set is derived from it.
-Never on its own a reason to rule a vacancy out (ADR-0004).
+For a remote vacancy or one whose work mode is undeclared, never on its own a reason
+to rule it out (ADR-0004); for an onsite or hybrid one, it is the country set (ADR-0027).
 _Avoid_: office, region, geo, country
 
 **Seniority Level**:
@@ -355,8 +356,9 @@ vacancy said nothing, and is expected to be the most common answer.
 _Avoid_: eligible flag, status, verdict
 
 **Timezone Requirement**:
-An explicit demand for working-hours overlap with a given region. Disqualifies a vacancy
-independently of its country set.
+A window of UTC offsets the vacancy says the person must be located in ("candidates in UTC-5
+to UTC+1"). It counts like the country set: a country inside the window is eligible, one outside it
+excluded. A schedule ("work US Eastern hours") is not one, and counts neither way.
 _Avoid_: hours, overlap, availability window
 
 ### Matching

@@ -21,7 +21,9 @@ region that leaves Argentina out, or work-authorization language that implies it
   Rejected: a US-based company can and routinely does engage people abroad as contractors or
   through an employer of record, which is what eligibility asks about. Reading the location
   field as a geographic restriction manufactures exclusions the posting never stated, and each
-  one is silent.
+  one is silent. Confirmed by Elias on 2026-10-29, when eligibility was designed again (#13): a
+  remote vacancy declaring `Remote - US` with a description silent on where it hires is unknown
+  for Argentina, not excluded.
 - **A `FULLY_REMOTE` work mode** meaning remote *and* naming no place, as the pre-reset system
   had. Rejected: it answers a question about eligibility in the vocabulary of work mode, where
   nothing can act on it. Work mode and declared location are extracted separately instead.
