@@ -216,7 +216,7 @@ stored with the list it came from and its places; the place list is `src/main/re
 and the rule answers to `docs/place-criterion.md`. Its first run, the residue by frequency and its
 precision and recall on a blind sample are `docs/measurements/2026-10-places.md`.
 
-### 5.4 Eligibility
+### 5.4 Eligibility — country set built
 
 The question the system answers is **"will this company pay someone located in this
 country?"** — not "is this job remote" and not "am I authorized to work there". The country is
@@ -256,6 +256,11 @@ schedule ("work US Eastern hours") says nothing about where the person lives and
 is inside that window, Los Angeles (UTC-8) outside. Otherwise the country decides: eligible when all
 of its offsets are inside, excluded when all are outside, unknown when only some are (decided by
 Elias on 2026-10-30, #13).
+
+The country set is built (`POST /country-sets`, after the work-mode and place runs): each stated set
+is stored with its kind and text, and the state is derived at query time for the country and city
+asked. Regions expand into countries through `src/main/resources/places/regions.tsv`, and offsets
+come from GeoNames' time zones. Its first run is `docs/measurements/2026-10-country-sets.md`.
 
 Extraction is rule-based only (ADR-0005). Eligibility is hard-filtered for matches, and the
 Finder's toggle narrows to it, which makes recall the binding constraint (ADR-0004, ADR-0019);
@@ -423,6 +428,11 @@ company is `(ats, slug)`; a vacancy is `(company_id, external_id)`.
   list it came from (the location field, Ashby's secondary locations, or Lever's and Workday's every
   location), its position there, the string, and the places it names as a JSON array, each a
   region, a country, a subdivision or a city with its coordinates.
+- `normalized_vacancy_stated_set` — the country set (#13), one row per stated set: its position, where
+  it was read (a location option, the title, the description), its kind, a location option's work mode,
+  the description segment and the text that stated it, its places as a JSON array, and a timezone
+  requirement's window in minutes of UTC offset. `normalized_vacancy` holds whether the description
+  offers visa sponsorship or relocation.
 - `normalized_vacancy_experience_requirement` — the experience requirements §6.1 accepts, one row
   each: the vacancy, the segment it was read in and where in it the phrase starts, its lower and
   upper years, and whether it set the required years.

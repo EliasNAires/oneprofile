@@ -12,7 +12,8 @@ package oneprofile.backend.storage.placelist;
  * @param latitude its latitude
  * @param longitude its longitude
  * @param population how many people live in it
+ * @param timeZone the IANA id of its time zone, such as {@code America/New_York}, empty where none is known
  */
 public record City(long id, String name, String ascii, String country, String subdivision, double latitude,
-		double longitude, long population) {
+		double longitude, long population, String timeZone) {
 }

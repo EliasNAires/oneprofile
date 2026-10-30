@@ -120,7 +120,7 @@ public class PlaceRule {
 					String country = hand.target().contains(".") ? hand.target().substring(0, 2) : hand.target();
 					String subdivision = hand.target().contains(".") ? hand.target().substring(3) : "";
 					add(hand.name(), Candidate.city(new City(0, hand.name(), hand.name(), country, subdivision,
-							hand.latitude(), hand.longitude(), 0)));
+							hand.latitude(), hand.longitude(), 0, "")));
 				}
 				case REGION -> add(hand.name(), Candidate.region(hand.target()));
 				case IGNORED -> this.ignored.add(lookup(hand.name()));

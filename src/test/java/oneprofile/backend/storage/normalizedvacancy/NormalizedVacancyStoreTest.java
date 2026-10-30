@@ -689,6 +689,57 @@ class NormalizedVacancyStoreTest {
 			.containsOnly(new VacancySeniority(null, null, List.of()));
 	}
 
+	@Test
+	void readsForTheCountrySetTheEngineeringSubsetWithItsWorkModeTitlePlacesAndSegments() {
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		List<Segment> segments = List.of(new Segment(SegmentKindEnum.SENTENCE, null, "US citizens only.", false));
+		this.normalized.recordCleanedVacancies(Map.of(first, new CleanedVacancy(new CleanedTitle("Engineer", Set.of()),
+				segments, null), second, cleaned("Engineer", Set.of())));
+		this.normalized.recordClassifications(Map.of(first, Classification.in(), second, Classification.out()));
+		this.normalized.recordWorkModes(Map.of(first, WorkModeEnum.REMOTE));
+		List<LocationPlaces> located = List.of(
+				new LocationPlaces(LocationListEnum.LOCATION, 0, "Remote - Americas", List.of(Place.region("Americas"))),
+				new LocationPlaces(LocationListEnum.ALL_LOCATIONS, 1, "Remote", List.of()));
+		this.normalized.recordPlaces(Map.of(first, located));
+		this.entityManager.flush();
+		this.entityManager.clear();
+
+		assertThat(this.normalized.countrySetScopeAfter(0, 10)).containsExactly(
+				new CountrySetVacancy(first, WorkModeEnum.REMOTE, "Senior Backend Engineer", located, segments));
+		assertThat(this.normalized.countrySetScopeAfter(first, 10)).isEmpty();
+	}
+
+	@Test
+	void holdsTheCountrySetOfAVacancyAndLetsGoOfEveryCountrySet() {
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		this.normalized.recordCleanedVacancies(
+				Map.of(first, cleaned("Engineer", Set.of()), second, cleaned("Engineer", Set.of())));
+		CountrySet countrySet = new CountrySet(List.of(
+				new StatedSet(0, StatedSetSourceEnum.LOCATION, StatedSetKindEnum.LOCATION, WorkModeEnum.HYBRID, null,
+						"NYC (Hybrid)", List.of(Place.city("US", "New York", "New York City", 40.71427, -74.00597)),
+						null, null),
+				new StatedSet(1, StatedSetSourceEnum.DESCRIPTION, StatedSetKindEnum.TIMEZONE, null, 3,
+						"You live between UTC-5 and UTC+1.", List.of(), -300, 60)),
+				true, false);
+
+		assertThat(this.normalized.recordCountrySets(Map.of(first, countrySet))).isEqualTo(1);
+		this.entityManager.flush();
+		this.entityManager.clear();
+
+		assertThat(this.repository.findByVacancyIdIn(List.of(first, second)))
+			.extracting(NormalizedVacancyEntity::vacancyId, NormalizedVacancyEntity::countrySet)
+			.containsExactlyInAnyOrder(tuple(first, countrySet),
+					tuple(second, new CountrySet(List.of(), false, false)));
+
+		assertThat(this.normalized.clearCountrySets()).isEqualTo(1);
+		this.entityManager.clear();
+
+		assertThat(this.repository.findAll()).extracting(NormalizedVacancyEntity::countrySet)
+			.containsOnly(new CountrySet(List.of(), false, false));
+	}
+
 	private static TitleBreakdown breakdown(String... normalizedTitles) {
 		return new TitleBreakdown(List.of(normalizedTitles), Set.of(), null);
 	}

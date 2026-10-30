@@ -210,6 +210,44 @@ public interface NormalizedVacancyRepository extends ListCrudRepository<Normaliz
 	int clearPlaces();
 
 	/**
+	 * The engineering subset held after one vacancy id, in id order, with each vacancy's work mode, title as
+	 * published and description segments.
+	 * @param after the vacancy id to read past, 0 to start at the first
+	 * @param limit how many to read at most
+	 * @return each vacancy's id, work mode, title and segments, in that order
+	 */
+	@Query("select n.vacancyId, n.workMode, v.title, n.descriptionSegments from NormalizedVacancy n "
+			+ "join Vacancy v on v.id = n.vacancyId where n.vacancyId > :after "
+			+ "and n.classificationState = oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum.IN "
+			+ "order by n.vacancyId")
+	List<Tuple> countrySetScopeAfter(long after, Limit limit);
+
+	/**
+	 * The location strings the place run read for a batch of vacancies, with their places.
+	 * @param vacancyIds the vacancies to read
+	 * @return one vacancy id and one of its location strings per row, in that order
+	 */
+	@Query("select n.vacancyId, l from NormalizedVacancy n join n.locations l where n.vacancyId in :vacancyIds")
+	List<Tuple> locationsOf(Collection<Long> vacancyIds);
+
+	/**
+	 * Lets go of every vacancy's offers of visa sponsorship and relocation.
+	 * @return how many vacancies had been read by the country-set run
+	 */
+	@Modifying
+	@Query("update NormalizedVacancy n set n.offersVisaSponsorship = null, n.offersRelocation = null "
+			+ "where n.offersVisaSponsorship is not null or n.offersRelocation is not null")
+	int clearOffers();
+
+	/**
+	 * Lets go of every stated set, in one statement.
+	 * @return how many it let go of
+	 */
+	@Modifying
+	@Query(value = "delete from normalized_vacancy_stated_set", nativeQuery = true)
+	int clearStatedSets();
+
+	/**
 	 * Puts every vacancy of the pile back to what its title left it: unknown, decided by the title.
 	 * @param reasons the title reasons that make the pile
 	 * @return how many vacancies the pile holds

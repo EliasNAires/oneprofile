@@ -1,0 +1,734 @@
+region	country
+Africa	AO
+Africa	BF
+Africa	BI
+Africa	BJ
+Africa	BW
+Africa	CD
+Africa	CF
+Africa	CG
+Africa	CI
+Africa	CM
+Africa	CV
+Africa	DJ
+Africa	DZ
+Africa	EG
+Africa	EH
+Africa	ER
+Africa	ET
+Africa	GA
+Africa	GH
+Africa	GM
+Africa	GN
+Africa	GQ
+Africa	GW
+Africa	KE
+Africa	KM
+Africa	LR
+Africa	LS
+Africa	LY
+Africa	MA
+Africa	MG
+Africa	ML
+Africa	MR
+Africa	MU
+Africa	MW
+Africa	MZ
+Africa	NA
+Africa	NE
+Africa	NG
+Africa	RE
+Africa	RW
+Africa	SC
+Africa	SD
+Africa	SH
+Africa	SL
+Africa	SN
+Africa	SO
+Africa	SS
+Africa	ST
+Africa	SZ
+Africa	TD
+Africa	TG
+Africa	TN
+Africa	TZ
+Africa	UG
+Africa	YT
+Africa	ZA
+Africa	ZM
+Africa	ZW
+Americas	AG
+Americas	AI
+Americas	AN
+Americas	AR
+Americas	AW
+Americas	BB
+Americas	BL
+Americas	BM
+Americas	BO
+Americas	BQ
+Americas	BR
+Americas	BS
+Americas	BZ
+Americas	CA
+Americas	CL
+Americas	CO
+Americas	CR
+Americas	CU
+Americas	CW
+Americas	DM
+Americas	DO
+Americas	EC
+Americas	FK
+Americas	GD
+Americas	GF
+Americas	GL
+Americas	GP
+Americas	GT
+Americas	GY
+Americas	HN
+Americas	HT
+Americas	JM
+Americas	KN
+Americas	KY
+Americas	LC
+Americas	MF
+Americas	MQ
+Americas	MS
+Americas	MX
+Americas	NI
+Americas	PA
+Americas	PE
+Americas	PM
+Americas	PR
+Americas	PY
+Americas	SR
+Americas	SV
+Americas	SX
+Americas	TC
+Americas	TT
+Americas	US
+Americas	UY
+Americas	VC
+Americas	VE
+Americas	VG
+Americas	VI
+ANZ	AU
+ANZ	NZ
+APAC	AF
+APAC	AS
+APAC	AU
+APAC	BD
+APAC	BN
+APAC	BT
+APAC	CC
+APAC	CK
+APAC	CN
+APAC	CX
+APAC	FJ
+APAC	FM
+APAC	GU
+APAC	HK
+APAC	ID
+APAC	IN
+APAC	IO
+APAC	JP
+APAC	KH
+APAC	KI
+APAC	KP
+APAC	KR
+APAC	LA
+APAC	LK
+APAC	MH
+APAC	MM
+APAC	MN
+APAC	MO
+APAC	MP
+APAC	MV
+APAC	MY
+APAC	NC
+APAC	NF
+APAC	NP
+APAC	NR
+APAC	NU
+APAC	NZ
+APAC	PF
+APAC	PG
+APAC	PH
+APAC	PK
+APAC	PN
+APAC	PW
+APAC	SB
+APAC	SG
+APAC	TH
+APAC	TK
+APAC	TL
+APAC	TO
+APAC	TV
+APAC	TW
+APAC	UM
+APAC	VN
+APAC	VU
+APAC	WF
+APAC	WS
+Asia	AE
+Asia	AF
+Asia	AM
+Asia	AZ
+Asia	BD
+Asia	BH
+Asia	BN
+Asia	BT
+Asia	CC
+Asia	CN
+Asia	GE
+Asia	HK
+Asia	ID
+Asia	IL
+Asia	IN
+Asia	IO
+Asia	IQ
+Asia	IR
+Asia	JO
+Asia	JP
+Asia	KG
+Asia	KH
+Asia	KP
+Asia	KR
+Asia	KW
+Asia	KZ
+Asia	LA
+Asia	LB
+Asia	LK
+Asia	MM
+Asia	MN
+Asia	MO
+Asia	MV
+Asia	MY
+Asia	NP
+Asia	OM
+Asia	PH
+Asia	PK
+Asia	PS
+Asia	QA
+Asia	SA
+Asia	SG
+Asia	SY
+Asia	TH
+Asia	TJ
+Asia	TM
+Asia	TR
+Asia	TW
+Asia	UZ
+Asia	VN
+Asia	YE
+Benelux	BE
+Benelux	LU
+Benelux	NL
+Caribbean	AG
+Caribbean	AI
+Caribbean	AN
+Caribbean	AW
+Caribbean	BB
+Caribbean	BL
+Caribbean	BQ
+Caribbean	BS
+Caribbean	CU
+Caribbean	CW
+Caribbean	DM
+Caribbean	DO
+Caribbean	GD
+Caribbean	GP
+Caribbean	HT
+Caribbean	JM
+Caribbean	KN
+Caribbean	KY
+Caribbean	LC
+Caribbean	MF
+Caribbean	MQ
+Caribbean	MS
+Caribbean	PR
+Caribbean	SX
+Caribbean	TC
+Caribbean	TT
+Caribbean	VC
+Caribbean	VG
+Caribbean	VI
+CEE	AL
+CEE	BA
+CEE	BG
+CEE	BY
+CEE	CZ
+CEE	EE
+CEE	HR
+CEE	HU
+CEE	LT
+CEE	LV
+CEE	MD
+CEE	ME
+CEE	MK
+CEE	PL
+CEE	RO
+CEE	RS
+CEE	SI
+CEE	SK
+CEE	UA
+CEE	XK
+Central America	BZ
+Central America	CR
+Central America	GT
+Central America	HN
+Central America	NI
+Central America	PA
+Central America	SV
+Central Europe	AT
+Central Europe	CH
+Central Europe	CZ
+Central Europe	DE
+Central Europe	HU
+Central Europe	LI
+Central Europe	PL
+Central Europe	SI
+Central Europe	SK
+CIS	AM
+CIS	AZ
+CIS	BY
+CIS	KG
+CIS	KZ
+CIS	MD
+CIS	RU
+CIS	TJ
+CIS	TM
+CIS	UZ
+DACH	AT
+DACH	CH
+DACH	DE
+DACH	LI
+Eastern Europe	BG
+Eastern Europe	BY
+Eastern Europe	CZ
+Eastern Europe	EE
+Eastern Europe	HU
+Eastern Europe	LT
+Eastern Europe	LV
+Eastern Europe	MD
+Eastern Europe	PL
+Eastern Europe	RO
+Eastern Europe	RU
+Eastern Europe	SK
+Eastern Europe	UA
+EMEA	AD
+EMEA	AE
+EMEA	AL
+EMEA	AO
+EMEA	AT
+EMEA	AX
+EMEA	BA
+EMEA	BE
+EMEA	BF
+EMEA	BG
+EMEA	BH
+EMEA	BI
+EMEA	BJ
+EMEA	BW
+EMEA	BY
+EMEA	CD
+EMEA	CF
+EMEA	CG
+EMEA	CH
+EMEA	CI
+EMEA	CM
+EMEA	CS
+EMEA	CV
+EMEA	CY
+EMEA	CZ
+EMEA	DE
+EMEA	DJ
+EMEA	DK
+EMEA	DZ
+EMEA	EE
+EMEA	EG
+EMEA	EH
+EMEA	ER
+EMEA	ES
+EMEA	ET
+EMEA	FI
+EMEA	FO
+EMEA	FR
+EMEA	GA
+EMEA	GB
+EMEA	GG
+EMEA	GH
+EMEA	GI
+EMEA	GM
+EMEA	GN
+EMEA	GQ
+EMEA	GR
+EMEA	GW
+EMEA	HR
+EMEA	HU
+EMEA	IE
+EMEA	IL
+EMEA	IM
+EMEA	IQ
+EMEA	IR
+EMEA	IS
+EMEA	IT
+EMEA	JE
+EMEA	JO
+EMEA	KE
+EMEA	KM
+EMEA	KW
+EMEA	LB
+EMEA	LI
+EMEA	LR
+EMEA	LS
+EMEA	LT
+EMEA	LU
+EMEA	LV
+EMEA	LY
+EMEA	MA
+EMEA	MC
+EMEA	MD
+EMEA	ME
+EMEA	MG
+EMEA	MK
+EMEA	ML
+EMEA	MR
+EMEA	MT
+EMEA	MU
+EMEA	MW
+EMEA	MZ
+EMEA	NA
+EMEA	NE
+EMEA	NG
+EMEA	NL
+EMEA	NO
+EMEA	OM
+EMEA	PL
+EMEA	PS
+EMEA	PT
+EMEA	QA
+EMEA	RE
+EMEA	RO
+EMEA	RS
+EMEA	RU
+EMEA	RW
+EMEA	SA
+EMEA	SC
+EMEA	SD
+EMEA	SE
+EMEA	SH
+EMEA	SI
+EMEA	SJ
+EMEA	SK
+EMEA	SL
+EMEA	SM
+EMEA	SN
+EMEA	SO
+EMEA	SS
+EMEA	ST
+EMEA	SY
+EMEA	SZ
+EMEA	TD
+EMEA	TG
+EMEA	TN
+EMEA	TR
+EMEA	TZ
+EMEA	UA
+EMEA	UG
+EMEA	VA
+EMEA	XK
+EMEA	YE
+EMEA	YT
+EMEA	ZA
+EMEA	ZM
+EMEA	ZW
+Europe	AD
+Europe	AL
+Europe	AT
+Europe	AX
+Europe	BA
+Europe	BE
+Europe	BG
+Europe	BY
+Europe	CH
+Europe	CS
+Europe	CY
+Europe	CZ
+Europe	DE
+Europe	DK
+Europe	EE
+Europe	ES
+Europe	FI
+Europe	FO
+Europe	FR
+Europe	GB
+Europe	GG
+Europe	GI
+Europe	GR
+Europe	HR
+Europe	HU
+Europe	IE
+Europe	IM
+Europe	IS
+Europe	IT
+Europe	JE
+Europe	LI
+Europe	LT
+Europe	LU
+Europe	LV
+Europe	MC
+Europe	MD
+Europe	ME
+Europe	MK
+Europe	MT
+Europe	NL
+Europe	NO
+Europe	PL
+Europe	PT
+Europe	RO
+Europe	RS
+Europe	RU
+Europe	SE
+Europe	SI
+Europe	SJ
+Europe	SK
+Europe	SM
+Europe	UA
+Europe	VA
+Europe	XK
+European Union	AT
+European Union	BE
+European Union	BG
+European Union	CY
+European Union	CZ
+European Union	DE
+European Union	DK
+European Union	EE
+European Union	ES
+European Union	FI
+European Union	FR
+European Union	GR
+European Union	HR
+European Union	HU
+European Union	IE
+European Union	IT
+European Union	LT
+European Union	LU
+European Union	LV
+European Union	MT
+European Union	NL
+European Union	PL
+European Union	PT
+European Union	RO
+European Union	SE
+European Union	SI
+European Union	SK
+Latin America	AG
+Latin America	AI
+Latin America	AN
+Latin America	AR
+Latin America	AW
+Latin America	BB
+Latin America	BL
+Latin America	BO
+Latin America	BQ
+Latin America	BR
+Latin America	BS
+Latin America	BZ
+Latin America	CL
+Latin America	CO
+Latin America	CR
+Latin America	CU
+Latin America	CW
+Latin America	DM
+Latin America	DO
+Latin America	EC
+Latin America	FK
+Latin America	GD
+Latin America	GF
+Latin America	GP
+Latin America	GT
+Latin America	GY
+Latin America	HN
+Latin America	HT
+Latin America	JM
+Latin America	KN
+Latin America	KY
+Latin America	LC
+Latin America	MF
+Latin America	MQ
+Latin America	MS
+Latin America	MX
+Latin America	NI
+Latin America	PA
+Latin America	PE
+Latin America	PR
+Latin America	PY
+Latin America	SR
+Latin America	SV
+Latin America	SX
+Latin America	TC
+Latin America	TT
+Latin America	UY
+Latin America	VC
+Latin America	VE
+Latin America	VG
+Latin America	VI
+MENA	AE
+MENA	BH
+MENA	CY
+MENA	DZ
+MENA	EG
+MENA	EH
+MENA	IL
+MENA	IQ
+MENA	IR
+MENA	JO
+MENA	KW
+MENA	LB
+MENA	LY
+MENA	MA
+MENA	MR
+MENA	OM
+MENA	PS
+MENA	QA
+MENA	SA
+MENA	SD
+MENA	SY
+MENA	TN
+MENA	TR
+MENA	YE
+Middle East	AE
+Middle East	BH
+Middle East	CY
+Middle East	EG
+Middle East	IL
+Middle East	IQ
+Middle East	IR
+Middle East	JO
+Middle East	KW
+Middle East	LB
+Middle East	OM
+Middle East	PS
+Middle East	QA
+Middle East	SA
+Middle East	SY
+Middle East	TR
+Middle East	YE
+Nordics	AX
+Nordics	DK
+Nordics	FI
+Nordics	FO
+Nordics	GL
+Nordics	IS
+Nordics	NO
+Nordics	SE
+North America	CA
+North America	MX
+North America	US
+Northern Europe	AX
+Northern Europe	DK
+Northern Europe	EE
+Northern Europe	FI
+Northern Europe	FO
+Northern Europe	GB
+Northern Europe	IE
+Northern Europe	IS
+Northern Europe	LT
+Northern Europe	LV
+Northern Europe	NO
+Northern Europe	SE
+Oceania	AS
+Oceania	AU
+Oceania	CK
+Oceania	CX
+Oceania	FJ
+Oceania	FM
+Oceania	GU
+Oceania	KI
+Oceania	MH
+Oceania	MP
+Oceania	NC
+Oceania	NF
+Oceania	NR
+Oceania	NU
+Oceania	NZ
+Oceania	PF
+Oceania	PG
+Oceania	PN
+Oceania	PW
+Oceania	SB
+Oceania	TK
+Oceania	TL
+Oceania	TO
+Oceania	TV
+Oceania	UM
+Oceania	VU
+Oceania	WF
+Oceania	WS
+South America	AR
+South America	BO
+South America	BR
+South America	CL
+South America	CO
+South America	EC
+South America	FK
+South America	GF
+South America	GY
+South America	PE
+South America	PY
+South America	SR
+South America	UY
+South America	VE
+South Asia	AF
+South Asia	BD
+South Asia	BT
+South Asia	IN
+South Asia	LK
+South Asia	MV
+South Asia	NP
+South Asia	PK
+Southeast Asia	BN
+Southeast Asia	ID
+Southeast Asia	KH
+Southeast Asia	LA
+Southeast Asia	MM
+Southeast Asia	MY
+Southeast Asia	PH
+Southeast Asia	SG
+Southeast Asia	TH
+Southeast Asia	TL
+Southeast Asia	VN
+Southern Europe	AD
+Southern Europe	AL
+Southern Europe	BA
+Southern Europe	CY
+Southern Europe	ES
+Southern Europe	GR
+Southern Europe	HR
+Southern Europe	IT
+Southern Europe	ME
+Southern Europe	MK
+Southern Europe	MT
+Southern Europe	PT
+Southern Europe	RS
+Southern Europe	SI
+Southern Europe	SM
+Southern Europe	VA
+Southern Europe	XK
+UKI	GB
+UKI	IE
+Western Europe	AT
+Western Europe	BE
+Western Europe	CH
+Western Europe	DE
+Western Europe	FR
+Western Europe	GB
+Western Europe	IE
+Western Europe	LI
+Western Europe	LU
+Western Europe	MC
+Western Europe	NL
+Worldwide	*

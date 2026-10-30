@@ -90,6 +90,14 @@ public class NormalizedVacancyEntity {
 	@CollectionTable(name = "normalized_vacancy_location", joinColumns = @JoinColumn(name = "normalized_vacancy_id"))
 	private Set<LocationPlaces> locations = new HashSet<>();
 
+	private Boolean offersVisaSponsorship;
+
+	private Boolean offersRelocation;
+
+	@ElementCollection
+	@CollectionTable(name = "normalized_vacancy_stated_set", joinColumns = @JoinColumn(name = "normalized_vacancy_id"))
+	private Set<StatedSet> statedSets = new HashSet<>();
+
 	protected NormalizedVacancyEntity() {
 	}
 
@@ -182,6 +190,17 @@ public class NormalizedVacancyEntity {
 		this.locations.addAll(locations);
 	}
 
+	/**
+	 * Takes on the country set the country-set pass read for the vacancy, replacing what the last run recorded.
+	 * @param countrySet its stated sets, and the offers that add no country
+	 */
+	public void statingAs(CountrySet countrySet) {
+		this.statedSets.clear();
+		this.statedSets.addAll(countrySet.statedSets());
+		this.offersVisaSponsorship = countrySet.offersVisaSponsorship();
+		this.offersRelocation = countrySet.offersRelocation();
+	}
+
 	/** The vacancy these facts were derived from. */
 	public long vacancyId() {
 		return this.vacancyId;
@@ -261,6 +280,15 @@ public class NormalizedVacancyEntity {
 		return this.locations.stream()
 			.sorted(Comparator.comparing(LocationPlaces::list).thenComparingInt(LocationPlaces::position))
 			.toList();
+	}
+
+	/**
+	 * Its country set, its stated sets in the order of their positions; nothing stated, and no offers, where the
+	 * country-set run has not reached it.
+	 */
+	public CountrySet countrySet() {
+		return new CountrySet(this.statedSets.stream().sorted(Comparator.comparingInt(StatedSet::position)).toList(),
+				Boolean.TRUE.equals(this.offersVisaSponsorship), Boolean.TRUE.equals(this.offersRelocation));
 	}
 
 }

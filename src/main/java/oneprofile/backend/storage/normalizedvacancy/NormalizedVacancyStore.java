@@ -2,6 +2,7 @@ package oneprofile.backend.storage.normalizedvacancy;
 
 import jakarta.persistence.Tuple;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
@@ -360,6 +361,68 @@ public class NormalizedVacancyStore {
 		List<NormalizedVacancyEntity> recorded = new ArrayList<>(read.size());
 		for (NormalizedVacancyEntity normalized : this.repository.findByVacancyIdIn(read.keySet())) {
 			normalized.locatedAt(read.get(normalized.vacancyId()));
+			recorded.add(normalized);
+		}
+		this.repository.saveAll(recorded);
+		return recorded.size();
+	}
+
+	/**
+	 * The engineering subset held after one vacancy id, in id order, each with its work mode, title, the places
+	 * of its location strings and its description's segments: what the country-set run reads, walked batch by
+	 * batch like the titles are. It reads the places the last place run recorded.
+	 * @param after the vacancy id to read past, 0 to start at the first
+	 * @param batch how many to read at most
+	 * @return the vacancies, empty once there are none left
+	 */
+	@Transactional(readOnly = true)
+	public List<CountrySetVacancy> countrySetScopeAfter(long after, int batch) {
+		// The location strings are a collection, which no constructor expression can carry beside the segments,
+		// so they are read for the whole batch apart and joined here.
+		List<Tuple> read = this.repository.countrySetScopeAfter(after, Limit.of(batch));
+		if (read.isEmpty()) {
+			return List.of();
+		}
+		Map<Long, List<LocationPlaces>> located = new HashMap<>();
+		List<Long> vacancyIds = read.stream().map((row) -> row.get(0, Long.class)).toList();
+		for (Tuple row : this.repository.locationsOf(vacancyIds)) {
+			located.computeIfAbsent(row.get(0, Long.class), (vacancyId) -> new ArrayList<>())
+				.add(row.get(1, LocationPlaces.class));
+		}
+		List<CountrySetVacancy> scope = new ArrayList<>(read.size());
+		for (Tuple row : read) {
+			long vacancyId = row.get(0, Long.class);
+			List<LocationPlaces> locations = new ArrayList<>(located.getOrDefault(vacancyId, List.of()));
+			locations.sort(Comparator.comparing(LocationPlaces::list).thenComparingInt(LocationPlaces::position));
+			@SuppressWarnings("unchecked")
+			List<Segment> segments = (List<Segment>) row.get(3);
+			scope.add(new CountrySetVacancy(vacancyId, row.get(1, WorkModeEnum.class), row.get(2, String.class),
+					locations, (segments != null) ? segments : List.of()));
+		}
+		return scope;
+	}
+
+	/**
+	 * Lets go of the country set every run recorded, so that after a run only the vacancies it read hold one: a
+	 * vacancy that has left the engineering subset keeps none.
+	 * @return how many vacancies had been read
+	 */
+	@Transactional
+	public int clearCountrySets() {
+		this.repository.clearStatedSets();
+		return this.repository.clearOffers();
+	}
+
+	/**
+	 * Records the country sets the country-set pass read for a batch of vacancies.
+	 * @param read the country set of each vacancy, by vacancy id
+	 * @return how many vacancies this recorded a country set for
+	 */
+	@Transactional
+	public int recordCountrySets(Map<Long, CountrySet> read) {
+		List<NormalizedVacancyEntity> recorded = new ArrayList<>(read.size());
+		for (NormalizedVacancyEntity normalized : this.repository.findByVacancyIdIn(read.keySet())) {
+			normalized.statingAs(read.get(normalized.vacancyId()));
 			recorded.add(normalized);
 		}
 		this.repository.saveAll(recorded);

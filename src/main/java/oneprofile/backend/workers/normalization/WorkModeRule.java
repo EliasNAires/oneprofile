@@ -82,21 +82,32 @@ public class WorkModeRule {
 		return (named != null) ? new WorkModeReading(named, WorkModeEvidenceEnum.TITLE) : WorkModeReading.NONE;
 	}
 
-	/** The mode a text names, by its work-mode words, or null if it names none. */
-	private WorkModeEnum namedIn(String text) {
+	/**
+	 * Every mode a text names by its work-mode words, which a location string offering a choice of modes
+	 * names more than one of ({@code NYC (Hybrid); United States (Remote)}).
+	 * @param text a location string or a title, or null
+	 * @return the modes it names, empty where it names none
+	 */
+	public Set<WorkModeEnum> modesNamedIn(String text) {
+		Set<WorkModeEnum> modes = EnumSet.noneOf(WorkModeEnum.class);
 		if (text == null) {
-			return null;
+			return modes;
 		}
 		String spaced = " " + words(text) + " ";
 		for (String subject : SUBJECTS) {
 			spaced = spaced.replace(" " + subject + " ", " ");
 		}
-		Set<WorkModeEnum> modes = EnumSet.noneOf(WorkModeEnum.class);
 		for (Map.Entry<String, WorkModeEnum> word : WORDS.entrySet()) {
 			if (spaced.contains(" " + word.getKey() + " ")) {
 				modes.add(word.getValue());
 			}
 		}
+		return modes;
+	}
+
+	/** The mode a text names, by its work-mode words, or null if it names none. */
+	private WorkModeEnum namedIn(String text) {
+		Set<WorkModeEnum> modes = modesNamedIn(text);
 		for (WorkModeEnum mode : List.of(WorkModeEnum.HYBRID, WorkModeEnum.REMOTE, WorkModeEnum.ONSITE)) {
 			if (modes.contains(mode)) {
 				return mode;

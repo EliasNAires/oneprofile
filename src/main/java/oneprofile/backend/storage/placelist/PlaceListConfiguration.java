@@ -24,6 +24,10 @@ public class PlaceListConfiguration {
 
 	private static final String HAND = "places/hand.tsv";
 
+	private static final String TIME_ZONES = "places/timezones.tsv";
+
+	private static final String REGIONS = "places/regions.tsv";
+
 	@Bean
 	PlaceListStore placeList() {
 		return shipped();
@@ -35,8 +39,8 @@ public class PlaceListConfiguration {
 	 */
 	public static PlaceListStore shipped() {
 		try (Reader countries = open(COUNTRIES); Reader subdivisions = open(SUBDIVISIONS); Reader cities = open(CITIES);
-				Reader hand = open(HAND)) {
-			return PlaceListStore.read(countries, subdivisions, cities, hand);
+				Reader hand = open(HAND); Reader timeZones = open(TIME_ZONES); Reader regions = open(REGIONS)) {
+			return PlaceListStore.read(countries, subdivisions, cities, hand, timeZones, regions);
 		}
 		catch (IOException ex) {
 			throw new UncheckedIOException(ex);

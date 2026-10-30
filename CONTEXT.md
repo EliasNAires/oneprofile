@@ -379,6 +379,13 @@ The countries or regions a vacancy says it will engage someone in. Eligibility i
 by asking whether the country belongs to it, for whichever country is asked.
 _Avoid_: allowed locations, regions, geo, markets
 
+**Stated Set**:
+One set of places a vacancy states, stored with the text that stated it and its kind: an option of its
+declared location, with that option's work mode, or a location, region, work authorization,
+citizenship, clearance or timezone requirement its title or description states. A vacancy's country
+set is all of its stated sets (#13).
+_Avoid_: constraint, restriction, rule hit
+
 **Eligibility State**:
 The three answers eligibility can take: eligible, excluded, or unknown. Unknown means the
 vacancy said nothing, and is expected to be the most common answer.
