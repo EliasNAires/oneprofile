@@ -1,6 +1,6 @@
 # An onsite or hybrid vacancy's declared location is its country set
 
-Status: accepted
+Status: accepted; amended by ADR-0028
 
 ADR-0004 lets a declared location count only for eligibility, never against it. It was written
 with remote vacancies in mind, where `Remote - US` often says where the company is and not where it

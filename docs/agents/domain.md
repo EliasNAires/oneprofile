@@ -57,6 +57,11 @@ the later ADR wins; the overridden parts are marked below.
 - **0027**: an onsite or hybrid vacancy's declared location is its country set; every other
   country is excluded. A vacancy offered in several work modes takes the best state of its
   options. Visa sponsorship and relocation are a fact of their own, not a country.
+  *Amended by 0028:* where both cities are known, onsite and hybrid are judged by distance.
+- **0028**: an onsite or hybrid vacancy is eligible when one of its cities lies within a fixed
+  radius (50 km to start) of the person's city, excluded otherwise; with either city unknown, it
+  is judged by country. The person's city is never asked: a visitor's defaults from metadata
+  and can be changed; matching uses the profile's.
 - **0003**: skills come from a curated taxonomy (O\*NET, Linguist, Wikidata), not Lightcast.
   Its provenance and licences: `docs/taxonomy.md`.
 - **0024**: a vacancy's role is read from its title: the title is broken down into its

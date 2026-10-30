@@ -208,7 +208,9 @@ value; work mode and declared location are separate (ADR-0004). Its first run an
 
 The **declared location** is not derived here. The step that derives the country set reads it
 as the ATS publishes it, with Ashby's and Lever's lists of locations, and turning it into places
-is that step's work (#26). A named location is **never on its own a reason to rule a vacancy
+is that step's work (#26): each string becomes places, as precise as it gives them (country,
+state or province, city), from GeoNames' cities of more than 15,000 people and a hand table of
+regions, aliases and the smaller towns the residue shows often (`Fort Meade, MD`). A named location is **never on its own a reason to rule a vacancy
 out** (ADR-0004).
 
 ### 5.4 Eligibility
@@ -234,6 +236,15 @@ query time by testing the country's membership in that set:
   sentence that stated it and its kind (location, region, authorization, citizenship,
   clearance, timezone), so that a later input for work rights needs no new reading.
 - `UNKNOWN` — no set is stated.
+
+For an onsite or hybrid vacancy, the **city** counts too: someone in Buenos Aires cannot take an
+onsite job in Córdoba. Where the vacancy's places include a city and the person's city is known,
+the vacancy is eligible when one of its cities lies within a fixed radius of the person's (50 km
+to start), measured between coordinates, and excluded otherwise; with either city unknown, it is
+judged by country. The person's city is never asked: a visitor's is a default guessed from the
+request's metadata, changeable and remembered like the country; the profile's comes from the
+profile (decided by Elias on 2026-10-29, ADR-0028). Places,
+cities included, come from the declared location (#26).
 
 A **timezone requirement**, a window of UTC offsets the person must be located in ("candidates
 in UTC-5 to UTC+1"), counts both ways: a country inside it is eligible, one outside it excluded. A

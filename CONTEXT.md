@@ -304,10 +304,17 @@ _Avoid_: modality, workplace type, location type, arrangement
 
 **Declared Location**:
 The places a vacancy names for the work, as its ATS publishes them: the location field, and
-Ashby's and Lever's lists of locations. Not a derived fact: the country set is derived from it.
+Ashby's and Lever's lists of locations. Not a derived fact: its places are derived from it.
 For a remote vacancy or one whose work mode is undeclared, never on its own a reason
-to rule it out (ADR-0004); for an onsite or hybrid one, it is the country set (ADR-0027).
+to rule it out (ADR-0004); for an onsite or hybrid one, it is the country set (ADR-0027), and its
+cities are judged by distance to the person's (ADR-0028).
 _Avoid_: office, region, geo, country
+
+**Place**:
+What one string of a declared location names, as precisely as the string gives it: a country,
+then a state or province, then a city; or a region kept as named (`EMEA`). A string can name
+several places, or none (`Remote`) (#26).
+_Avoid_: geo, location, locality
 
 **Seniority Level**:
 The experience level a vacancy asks for, on one ordinal scale from entry to principal. A level
@@ -342,7 +349,9 @@ _Avoid_: seniority, level, title level
 
 **Eligibility**:
 Whether a company will pay someone located in a given country: the one a Finder visitor picks,
-or the profile's. Not a question of work authorization, and not implied by a vacancy being remote.
+or the profile's. For an onsite or hybrid vacancy, also whether the person's city is within reach
+of its own (ADR-0028). Not a question of work authorization, and not implied by a vacancy being
+remote.
 _Avoid_: work authorization, visa status, right to work, availability
 
 **Country Set**:
