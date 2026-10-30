@@ -197,9 +197,11 @@ evidence rather than assumption.
 **Work mode**, one of remote, hybrid or onsite (#86), built (`POST /work-modes`, any time after
 classification). The location text decides where it names a
 mode; otherwise the work-mode field Ashby, Lever and Workday publish decides; otherwise the title.
-The description is not read before the launch (decided 2026-10-27): it would give most of Workday
-a mode, but its bare words often name the company's culture or a benefit, not the vacancy's
-mode, which likely needs a rule loop (#98).
+The description is read for it next (#98), before the eligibility loop: its bare words often
+name the company's culture or a benefit, not the vacancy's mode, which likely needs a rule loop.
+It was left for after the launch on 2026-10-27, and taken up on 2026-10-30 (Elias): #12 found
+48% of the unknowns for Argentina onsite or hybrid by their text, and with the mode known the
+eligibility rules can assume where the job is and read only where the company hires.
 Where the location and the field disagree, about 170 vacancies of the subset, the location was
 usually the right one. A location or title naming two modes reads as hybrid where hybrid is one of
 them (`Hybrid (3x in office/week)`), else as remote (`Nashville (Onsite) or Remote`). Null means "not declared" and never "onsite". There is no `FULLY_REMOTE`
@@ -270,7 +272,8 @@ Eligible precision for Argentina is 78.4%: the location 88% and the title 100%, 
 description 22%, where a perk's `work from anywhere` is read as Worldwide, alone or beside a
 stated place. Of the default feed an Argentine visitor is shown, 6% is really open to them. By
 the gates of #12, the description is to become a rule loop and the feed's default view or ranking
-is to change; the missed phrasings listed there are the work queue.
+is to change; the missed phrasings listed there are the work queue. The loop, its gates and its
+labelling are ADR-0029, after #98.
 
 ### 5.5 Skills — taxonomy and extraction built, precision measured
 
@@ -539,9 +542,10 @@ board.
 **Filters**: role, seniority, skills, country, work mode and salary.
 
 - **Country** defaults to a guess from the visitor's browser, and can be changed and is
-  remembered. It hides the vacancies excluded for that country, shows the eligible and the
-  unknown, the unknown marked as saying nothing, and a toggle narrows it to the eligible
-  (ADR-0019).
+  remembered. It hides the vacancies excluded for that country and shows the eligible first.
+  The unknown, marked as saying nothing, follows them only once a measurement shows it truly
+  unknown: #12 found 93% of the unknowns closed to a visitor in Argentina, so until then the
+  default is the eligible alone (decided by Elias on 2026-10-30, ADR-0019).
 - **Skills** keep the vacancies that mention a picked skill. Whether one is required is never a
   filter; it orders, through filter rank.
 - **Role** takes several roles at once, from the role list (§5.3). A vacancy whose title matches

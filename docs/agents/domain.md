@@ -54,6 +54,8 @@ the later ADR wins; the overridden parts are marked below.
   *Overridden by 0019* for the Finder, which shows unknown eligibility; the hard filter holds for
   matches.
   *Amended by 0027:* "never against" is for remote and undeclared vacancies only.
+  *May be amended by 0029:* a silent undeclared city abroad counts as an office for the ATSs whose
+  count after #98 allows it.
 - **0027**: an onsite or hybrid vacancy's declared location is its country set; every other
   country is excluded. A vacancy offered in several work modes takes the best state of its
   options. Visa sponsorship and relocation are a fact of their own, not a country.
@@ -62,6 +64,11 @@ the later ADR wins; the overridden parts are marked below.
   radius (50 km to start) of the person's city, excluded otherwise; with either city unknown, it
   is judged by country. The person's city is never asked: a visitor's defaults from metadata
   and can be changed; matching uses the profile's.
+- **0029**: eligibility from the description is a rule loop (#12's gates failed), blocked by #98.
+  Gates: description promises at least 90% eligible, unknowns at most 30% closed to the reader; five
+  rounds; 150k tokens a round, labelled cheaply (cue segments, one answer a row, batches of 50, labels
+  kept). A silent city abroad counts as an office per ATS where, after #98, 10% or less of such
+  vacancies stating a mode are remote.
 - **0003**: skills come from a curated taxonomy (O\*NET, Linguist, Wikidata), not Lightcast.
   Its provenance and licences: `docs/taxonomy.md`.
 - **0024**: a vacancy's role is read from its title: the title is broken down into its
@@ -133,6 +140,8 @@ the later ADR wins; the overridden parts are marked below.
 **The public site**
 - **0019**: the Finder derives eligibility for the visitor's country from the country set, hides
   the excluded and shows the eligible and the unknown, with a toggle for the eligible alone.
+  *Amended 2026-10-30:* the default shows the eligible first, and the unknown after them only once
+  a measurement shows it truly unknown; until then the eligible alone (#12 found 6% of the feed open).
 - **0020**: one repository holding two Spring Boot apps, the Maven modules `pipeline` and `api`,
   and the site in `site/`.
   The pipeline pushes a read schema into a public Postgres; the read app beside it serves the
