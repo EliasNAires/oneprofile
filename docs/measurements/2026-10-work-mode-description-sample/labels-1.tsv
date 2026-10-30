@@ -1,0 +1,51 @@
+id	mode	reason
+1039969	hybrid	field under heading states Hybrid for this role
+40309	hybrid	partial remote plus reports to office, rule 4
+42713	hybrid	most specific statement gives 3 office/2 home days
+259275	remote,onsite	benefit names remote or in-person at job's own SF office
+1246729	remote,hybrid	explicit choice, remote in US or hybrid from office
+563749	hybrid	hybrid model states 4 office days, 1 WFH day
+60769	hybrid	LI-Hybrid tag names this job's mode
+172070	hybrid	LI-Hybrid tag, salary line is generic not a mode
+25789	onsite,remote	explicit onsite and/or remote work, a choice
+31097	none	only remote-first/culture and benefit statements, rule 1
+349578	hybrid	team-specific statement: hybrid of remote and in-office
+797972	onsite	Telecommuting Options field states Onsite
+1144606	remote	explicit remote; office visits for meetings are occasional
+938731	hybrid	explicit hybrid position stated for this role
+1510061	none	company flex policy varies by role, nothing job-specific
+330922	onsite	LI-Onsite tag names this job's mode
+592003	onsite	explicit 100% on-site attendance required
+1019613	none	hybrid model varies per employee/team, not this job
+1120090	remote	explicit: role is primarily remote, occasional travel
+1017787	none	generic telecommuting-pursuant-to-policy boilerplate
+277929	onsite	based out of office; company states no remote-only roles
+183083	none	remote/on-site/hybrid name duties or tech, not mode, rule 2
+186546	none	flexible hybrid work model reads as culture/benefit statement
+342756	hybrid	perk plainly covers every role: hybrid working options
+1167093	onsite	Workplace type field states On-site Working
+925731	remote	explicit remote/teleworker; customer travel doesn't change it
+1246782	unclear	vague remote workdays and flexibility possible, no category
+1296277	none	only duty descriptions (in-person/remote support), rule 2
+100104	onsite	Location field states Government Site (On-Site)
+1228201	onsite	explicit: working location will be fully on-site
+1255076	remote,hybrid	explicit choice, remote in US or hybrid from office
+330815	onsite	LI-onsite tag names this job's mode
+1074596	hybrid	LI-Hybrid tag plus hybrid working program
+1502449	none	generic telecommuting-pursuant-to-policy boilerplate
+1265571	hybrid	LI-Hybrid plus explicit 3-day office schedule
+929076	hybrid	explicit hybrid, 2 office days per week on average
+797019	onsite	Telecommuting Options field states Onsite
+350275	remote	remote support named for job's own country, Italy
+971590	onsite	Location field states On-site, Spokane WA
+810806	hybrid	Remote Type field states Hybrid
+468972	onsite,remote	explicit: on-site in Fort Worth or remote in the US
+1008333	remote	explicit remote statement; hybrid-friendly is a culture note
+1167545	onsite	Workplace type field states On-site Working, rule 3
+572889	none	Work Model section defines categories, none chosen for this job
+1167690	onsite	Workplace type field states On-site Working
+1025965	none	only remote DC/hybrid cloud, naming tech not mode, rule 2
+92102	hybrid	LI-Hybrid tag names this job's mode
+26468	remote,onsite	explicit choice: office cities or from home, outweighs LI-Remote
+928589	onsite	explicit onsite, primarily at partner/customer office
+36469	remote	remote-first role stated for this job outweighs company hybrid note

@@ -197,18 +197,19 @@ evidence rather than assumption.
 **Work mode**, one of remote, hybrid or onsite (#86), built (`POST /work-modes`, any time after
 classification). The location text decides where it names a
 mode; otherwise the work-mode field Ashby, Lever and Workday publish decides; otherwise the title.
-The description is read for it next (#98), before the eligibility loop, last in that order:
-only where the location, the field and the title are all silent. Its bare words often name the
-company's culture or a benefit, not the vacancy's mode, so it is built and measured once, and
-becomes a rule loop only if it falls short of #98's gates.
+Last, the description decides (#98), only where the location, the field and the title are all
+silent, reading a statement about the role and never the bare word, which often names the company's
+culture or a benefit. Built and measured once (`docs/measurements/2026-10-work-mode-description.md`):
+it gives a mode to 21,534 vacancies of the subset, raising the share with a mode from 30.6% to 44.4%,
+at 97.7% precision; its remote recall on undeclared vacancies is 56.6%, short of #98's 90% gate,
+mostly a choice whose remote option it does not read, so #98 becomes a rule loop.
 It was left for after the launch on 2026-10-27, and taken up on 2026-10-30 (Elias): #12 found
 48% of the unknowns for Argentina onsite or hybrid by their text, and with the mode known the
 eligibility rules can assume where the job is and read only where the company hires.
 Where the location and the field disagree, about 170 vacancies of the subset, the location was
 usually the right one. A vacancy offering a choice of modes (`Nashville (Onsite) or Remote`,
 `Hybrid or Remote depending on location`) keeps every mode it offers, so a filter on any of them
-finds it (decided by Elias on 2026-10-30, #98); built with #98, until then it reads as hybrid where
-hybrid is one of them, else as remote. A mode word qualified by days in the office (`Hybrid (3x in
+finds it (decided by Elias on 2026-10-30, #98; built). A mode word qualified by days in the office (`Hybrid (3x in
 office/week)`, `ONSITE 2X Week`) is one mode, hybrid. Null means "not declared" and never "onsite". There is no `FULLY_REMOTE`
 value; work mode and declared location are separate (ADR-0004). Its first run and its precision on a blind sample
 (95.6%, against `docs/work-mode-criterion.md`) are `docs/measurements/2026-10-work-mode.md`.

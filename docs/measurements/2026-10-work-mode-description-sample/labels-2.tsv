@@ -1,0 +1,51 @@
+id	mode	reason
+132539	onsite	explicit no remote, office Mon-Fri
+657655	hybrid	schedule stated: 3 days office, 2 remote
+673469	onsite	regular on-site presence required
+1155197	hybrid	Work Mode: Hybrid (3/2) stated
+734421	hybrid	LI-HYBRID tag
+732603	hybrid,remote	location choice: Portugal Hybrid or Remote
+39647	none	only product description, no mode stated
+1110223	hybrid	LI-Hybrid tag
+1054604	onsite	must work onsite, remote not an option
+637333	remote	team described as home based
+3321	onsite	role based out of office, no remote-only
+134370	onsite	explicit in-office position
+137866	hybrid,remote	choice: hybrid Prague/Brno or remote CZ/SK
+931805	onsite,remote	title lists Office-Based/Home-Based choice
+1492153	hybrid	explicitly stated hybrid position
+768389	remote	explicitly stated role is remote
+470945	onsite,hybrid,remote	variable options onsite/hybrid/remote stated
+331077	onsite	LI-ONSITE tag; hybrid cloud is topic word
+795892	onsite	explicit onsite position
+12072	none	remotely deployed describes product, not mode
+447796	none	remote field devices is equipment term
+650040	hybrid	arrangement mixes on-site and remote work
+511380	onsite	full-time onsite 5 days/week stated
+67499	hybrid	3 days in-office schedule stated
+1362928	none	only limited travel mentioned, no mode declared
+770285	unclear	rollout names multiple modes, none resolved for role
+38159	remote	remote-first/fully remote stated, travel occasional
+50342	remote	LI-REMOTE tag, remote-first team
+42098	hybrid	specific hybrid schedule outweighs generic heading
+930633	hybrid	designed as Hybrid, 2 days/week office
+332354	remote	LI-Remote tag
+490158	remote	LI-Remote tag, remote-based option noted
+1132120	hybrid	standard hybrid schedule for external candidates
+918009	remote	description states Location: Remote
+1466987	none	remote access is topic word; hybrid is generic benefit
+912755	hybrid	Position Role Type: Hybrid stated
+1288907	hybrid,remote	explicit choice Hybrid or Remote
+1120851	onsite	explicit on-site, no remote or hybrid option
+32166	onsite	LI-Onsite tag
+307151	hybrid	explicit hybrid schedule, onsite Tue/Thu
+706028	hybrid	schedule stated: 3 days office, 2 remote
+1366322	hybrid	explicit hybrid work model stated
+1103594	hybrid	explicit hybrid role, 3 days/week office
+278895	hybrid	explicit hybrid role, 3 days/week office
+1001199	onsite	performed in office/data center/operational environment
+1123506	hybrid	explicit hybrid schedule, 3 days/week office
+967919	remote	LI-REMOTE tag; Hybrid Clouds is skill topic
+709382	none	Remote Update Technology is product name, not mode
+1219500	onsite	explicit in-office position Monday-Friday
+918036	remote	location Home indicates remote; hybrid mention is adjustment

@@ -1,0 +1,22 @@
+{
+ "25789": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "explicit onsite-or-remote choice"},
+ "36592": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "list of modes, specific hybrid schedule decides"},
+ "42098": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "list of modes, specific hybrid schedule decides"},
+ "42713": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "list of modes, specific hybrid schedule decides"},
+ "137866": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "named offices and schedule under perks heading"},
+ "141066": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "office statement outweighs stray LI tag"},
+ "206851": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "office days plus flexible day is hybrid"},
+ "259275": {"verdict": "a", "clause": "This vacancy, not the company", "pattern": "benefit-framed flexible option excluded"},
+ "294415": {"verdict": "b", "clause": "This vacancy, not the company", "pattern": "job-details field outweighs flexible-culture benefit"},
+ "329513": {"verdict": "a", "clause": "This vacancy, not the company", "pattern": "team described as remote, not this job"},
+ "344475": {"verdict": "a", "clause": "This vacancy, not the company", "pattern": "benefit-framed flexible option excluded"},
+ "350275": {"verdict": "b", "clause": "This vacancy, not the company", "pattern": "company-wide office benefits across countries"},
+ "468972": {"verdict": "a", "clause": "A choice of modes is a choice", "pattern": "explicit onsite-or-remote choice"},
+ "470945": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "explicit three-mode choice, no elaboration"},
+ "637333": {"verdict": "a", "clause": "This vacancy, not the company", "pattern": "team plainly all home-based"},
+ "732603": {"verdict": "a", "clause": "A choice of modes is a choice", "pattern": "location-specific option is itself a choice"},
+ "918036": {"verdict": "b", "clause": "What is read", "pattern": "home location field states remote"},
+ "931805": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "title states two-mode choice"},
+ "938731": {"verdict": "b", "clause": "A hybrid vacancy that names its office and its remote days is one mode", "pattern": "hybrid schedule includes onsite days"},
+ "1081052": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "hybrid schedule includes onsite days"}
+}

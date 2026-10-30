@@ -1,0 +1,224 @@
+#!/usr/bin/env python3
+"""Scores the blind sample that measures the work mode read from the description (#98).
+
+    scripts/score-work-mode-description-sample DIRECTORY
+
+DIRECTORY is where scripts/draw-work-mode-description-sample drew the sample. Reads the rule's modes and
+each vacancy's stratum from sample.tsv, each stratum's size from strata.tsv, the labeller's answers from
+labels-N.tsv (id, mode, reason, as docs/work-mode-criterion.md says), and the vacancies that take another's
+label from same.tsv.
+
+A vacancy the description gives modes is right where its label holds every one of them. A vacancy is a
+disagreement where it is not right, or where its label holds remote and the rule's modes do not: those are
+the vacancies the two gates turn on. Without verdicts for them, writes the disagreements as JSON batches of
+20 for the adjudicator (.claude/agents/adjudicator.md), disagreements/batch-NNN.json: each row's id, what
+the labeller read and the two answers, the rule's and the labeller's, bare and in a seeded random order as
+`a` and `b`. Disagreements already written are not written again.
+
+With the verdicts, disagreements/batch-NNN.verdicts.json, settles each one: the answer the adjudicator
+chose, or neither. Then prints:
+
+- precision, the share of the described vacancies whose settled label holds the rule's modes, by stratum
+  with a 95% Wilson interval and weighted by each stratum's size, with a 95% interval from a seeded
+  bootstrap within the strata. A vacancy settled as neither counts against the rule;
+- remote recall on undeclared vacancies: of the undeclared vacancies whose settled label holds remote, the
+  share whose rule's modes hold it, weighted the same way. A vacancy settled as neither is left out.
+  Undeclared vacancies whose description names no remote word are assumed not remote: the sample does not
+  read them;
+- every vacancy where the rule and the settled label split, with the adjudicator's pattern.
+
+An unclear label is left out of every share.
+"""
+
+import json
+import math
+import random
+import sys
+from collections import Counter
+from pathlib import Path
+
+Z = 1.96
+
+BATCH = 20
+
+SEED = 98
+
+DRAWS = 10000
+
+MODES = ("remote", "hybrid", "onsite")
+
+
+def rows(path):
+    with open(path, encoding="utf-8") as tsv:
+        header = tsv.readline().rstrip("\n").split("\t")
+        return [dict(zip(header, line.rstrip("\n").split("\t"))) for line in tsv if line.strip()]
+
+
+def answer(text):
+    """A label as remote, hybrid or onsite, several for a choice; or none, or unclear."""
+    said = {word.strip().lower() for word in text.split(",") if word.strip()}
+    if said & set(MODES):
+        return ",".join(mode for mode in MODES if mode in said)
+    return "unclear" if "unclear" in said else "none"
+
+
+def modes(text):
+    return set(text.split(",")) & set(MODES)
+
+
+def holds(label, rule):
+    """Whether a label holds every mode the rule gave."""
+    return modes(rule) <= modes(label)
+
+
+def blocks(directory):
+    """What the labeller saw of each vacancy, by id."""
+    seen = {}
+    for path in sorted(directory.glob("batch-*.txt")):
+        for block in path.read_text(encoding="utf-8").split("=== ")[1:]:
+            id, _, text = block.partition("\n")
+            seen[id.strip()] = text.strip()
+    return seen
+
+
+def wilson(hits, total):
+    share = hits / total
+    centre = (share + Z * Z / (2 * total)) / (1 + Z * Z / total)
+    half = Z * math.sqrt(share * (1 - share) / total + Z * Z / (4 * total * total)) / (1 + Z * Z / total)
+    return centre - half, centre + half
+
+
+def line(name, hits, total):
+    if not total:
+        return f"  {name:24}   none judged"
+    low, high = wilson(hits, total)
+    return f"  {name:24} {hits:3} of {total:3}  {hits / total:6.1%}  ({low:.0%} to {high:.0%})"
+
+
+def weighted(strata, sizes, measure):
+    """measure(rows of each stratum) -> (numerator, denominator) shares; the estimate and a bootstrap interval."""
+    def estimate(held):
+        top = bottom = 0
+        for stratum, drawn in held.items():
+            if drawn:
+                numerator, denominator = measure(drawn)
+                top += sizes[stratum] * numerator / len(drawn)
+                bottom += sizes[stratum] * denominator / len(drawn)
+        return top / bottom if bottom else float("nan")
+
+    shuffle = random.Random(SEED)
+    draws = sorted(estimate({stratum: shuffle.choices(drawn, k=len(drawn)) if drawn else []
+                             for stratum, drawn in strata.items()}) for _ in range(DRAWS))
+    draws = [draw for draw in draws if not math.isnan(draw)]
+    return estimate(strata), draws[int(0.025 * len(draws))], draws[int(0.975 * len(draws)) - 1]
+
+
+def main():
+    if len(sys.argv) != 2:
+        sys.exit(__doc__)
+    directory = Path(sys.argv[1])
+    sample = {row["id"]: row for row in rows(directory / "sample.tsv")}
+    sizes = {row["stratum"]: int(row["vacancies"]) for row in rows(directory / "strata.tsv")}
+    labels = {row["id"]: row for path in sorted(directory.glob("labels-*.tsv")) for row in rows(path)}
+    for row in rows(directory / "same.tsv"):
+        labels[row["id"]] = labels[row["same_as"]]
+    missing = [id for id in sample if id not in labels]
+    if missing:
+        sys.exit(f"{len(missing)} vacancies lack a label, as {missing[:5]}")
+    label = {id: answer(labels[id]["mode"]) for id in sample}
+
+    def splits(id):
+        rule, said = sample[id]["rule"], label[id]
+        if said == "unclear":
+            return False
+        if sample[id]["stratum"].startswith("described") and not holds(said, rule):
+            return True
+        return "remote" in modes(said) and "remote" not in modes(rule)
+
+    differing = [id for id in sample if splits(id)]
+    print(f"labelled {len(sample)}, unclear {sum(said == 'unclear' for said in label.values())},"
+          f" the rule and the labeller split on {len(differing)}")
+
+    disagreements = directory / "disagreements"
+    verdicts = {}
+    for path in sorted(disagreements.glob("batch-*.verdicts.json")):
+        verdicts.update(json.loads(path.read_text(encoding="utf-8")))
+    written = {row["id"] for path in disagreements.glob("batch-*.json") if not path.name.endswith(".verdicts.json")
+               for row in json.loads(path.read_text(encoding="utf-8"))}
+    unwritten = [id for id in differing if id not in verdicts and id not in written]
+    if unwritten:
+        disagreements.mkdir(exist_ok=True)
+        seen = blocks(directory)
+        order = random.Random(SEED)
+        first = len([path for path in disagreements.glob("batch-*.json") if not path.name.endswith(".verdicts.json")])
+        for start in range(0, len(unwritten), BATCH):
+            batch = []
+            for id in unwritten[start:start + BATCH]:
+                rule = sample[id]["rule"]
+                labeller = label[id]
+                a, b = (rule, labeller) if order.random() < 0.5 else (labeller, rule)
+                batch.append({"id": id, "text": seen[id], "a": a, "b": b})
+            (disagreements / f"batch-{first + start // BATCH + 1:03}.json").write_text(
+                json.dumps(batch, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(f"wrote {len(unwritten)} disagreements for the adjudicator")
+        return
+    unsettled = [id for id in differing if id not in verdicts]
+    if unsettled:
+        sys.exit(f"{len(unsettled)} disagreements are not adjudicated, as {unsettled[:5]}")
+
+    batches = {row["id"]: row for path in disagreements.glob("batch-*.json") if not path.name.endswith(".verdicts.json")
+               for row in json.loads(path.read_text(encoding="utf-8"))}
+    settled = dict(label)
+    winner = {}
+    for id in differing:
+        verdict = verdicts[id]["verdict"]
+        if verdict == "neither":
+            settled[id] = "neither"
+            winner[id] = "neither"
+            continue
+        chosen = batches[id][verdict]
+        winner[id] = "rule" if chosen == sample[id]["rule"] else "labeller"
+        settled[id] = sample[id]["rule"] if winner[id] == "rule" else label[id]
+    print(f"adjudicated {len(differing)}: " + ", ".join(f"{count} {who}" for who, count in
+                                                         Counter(winner.values()).most_common()))
+
+    def right(row):
+        return settled[row["id"]] != "neither" and holds(settled[row["id"]], row["rule"])
+
+    strata = {stratum: [row for row in sample.values() if row["stratum"] == stratum
+                        and settled[row["id"]] != "unclear"] for stratum in sizes}
+
+    print("\nprecision")
+    described = {stratum: held for stratum, held in strata.items() if stratum.startswith("described")}
+    for stratum, held in described.items():
+        print(line(stratum, sum(right(row) for row in held), len(held)))
+    every = [row for held in described.values() for row in held]
+    print(line("every described", sum(right(row) for row in every), len(every)))
+    estimate, low, high = weighted(described, sizes, lambda held: (sum(right(row) for row in held), len(held)))
+    print(f"  {'weighted by stratum size':24} {estimate:6.1%}  ({low:.0%} to {high:.0%})")
+
+    print("\nremote recall on undeclared vacancies")
+    recall = {stratum: [row for row in held if settled[row["id"]] != "neither"] for stratum, held in strata.items()}
+    remote = {stratum: [row for row in held if "remote" in modes(settled[row["id"]])] for stratum, held in recall.items()}
+    for stratum, held in remote.items():
+        found = sum("remote" in modes(row["rule"]) for row in held)
+        print(f"  {stratum:24} {len(held):3} of {len(recall[stratum]):3} remote, the rule gives remote to {found}")
+    estimate, low, high = weighted(recall, sizes, lambda held: (
+        sum("remote" in modes(settled[row["id"]]) and "remote" in modes(row["rule"]) for row in held),
+        sum("remote" in modes(settled[row["id"]]) for row in held)))
+    print(f"  {'weighted by stratum size':24} {estimate:6.1%}  ({low:.0%} to {high:.0%})")
+    silent = recall.get("silent remote", [])
+    others = Counter(settled[row["id"]] for row in silent if "remote" not in modes(settled[row["id"]]))
+    print("  silent vacancies not remote: " + ", ".join(f"{count} {said}" for said, count in others.most_common()))
+
+    print("\nwhere the rule and the settled label split (rule -> settled)")
+    for id in sorted(differing, key=lambda id: (sample[id]["stratum"], verdicts[id].get("pattern", ""))):
+        if winner[id] == "rule":
+            continue
+        row = sample[id]
+        print(f"  {id}  {row['stratum']} {row['ats']}  {row['rule']} -> {settled[id]}"
+              f"  [{verdicts[id].get('pattern', '')}]  {row['title']} | {row['location']}")
+
+
+if __name__ == "__main__":
+    main()

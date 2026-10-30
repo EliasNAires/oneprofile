@@ -1,0 +1,8 @@
+{
+ "1101971": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "remote with occasional onsite as needed"},
+ "1120851": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "explicit onsite no remote option"},
+ "1123247": {"verdict": "b", "clause": "A hybrid vacancy that names its office and its remote days is one mode, hybrid, not a choice", "pattern": "hybrid model office days plus remote choice"},
+ "1123506": {"verdict": "a", "clause": "A hybrid vacancy that names its office and its remote days is one mode, hybrid, not a choice", "pattern": "hybrid model office days plus remote choice"},
+ "1143342": {"verdict": "a", "clause": "Hybrid: days a week or a month in the office", "pattern": "office day count labeled hybrid"},
+ "1288907": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "choice of hybrid locations or remote"}
+}
