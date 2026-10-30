@@ -250,9 +250,12 @@ profile (decided by Elias on 2026-10-29, ADR-0028). Places,
 cities included, come from the declared location (#26).
 
 A **timezone requirement**, a window of UTC offsets the person must be located in ("candidates
-in UTC-5 to UTC+1"), counts both ways: a country inside it is eligible, one outside it excluded. A
+in UTC-5 to UTC+1"), counts both ways: a person inside it is eligible, one outside it excluded. A
 schedule ("work US Eastern hours") says nothing about where the person lives and counts neither way
-(decided by Elias on 2026-10-29, #13).
+(decided by Elias on 2026-10-29, #13). The person's city decides where it is known: New York (UTC-5)
+is inside that window, Los Angeles (UTC-8) outside. Otherwise the country decides: eligible when all
+of its offsets are inside, excluded when all are outside, unknown when only some are (decided by
+Elias on 2026-10-30, #13).
 
 Extraction is rule-based only (ADR-0005). Eligibility is hard-filtered for matches, and the
 Finder's toggle narrows to it, which makes recall the binding constraint (ADR-0004, ADR-0019);

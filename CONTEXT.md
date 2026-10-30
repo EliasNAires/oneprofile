@@ -386,8 +386,9 @@ _Avoid_: eligible flag, status, verdict
 
 **Timezone Requirement**:
 A window of UTC offsets the vacancy says the person must be located in ("candidates in UTC-5
-to UTC+1"). It counts like the country set: a country inside the window is eligible, one outside it
-excluded. A schedule ("work US Eastern hours") is not one, and counts neither way.
+to UTC+1"). It counts like the country set: a person inside the window is eligible, one outside it
+excluded. The person's city decides where it is known; otherwise the country, unknown when only some of
+its offsets are inside. A schedule ("work US Eastern hours") is not one, and counts neither way.
 _Avoid_: hours, overlap, availability window
 
 ### Matching
