@@ -1,0 +1,22 @@
+{
+  "183321": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "schedule gives office and remote days"},
+  "186392": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "location parenthetical mode label"},
+  "188199": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "location field states onsite"},
+  "193164": {"verdict": "a", "clause": "This vacancy, not the company", "pattern": "company fact plus listed benefit"},
+  "193667": {"verdict": "a", "clause": "Ruled out is not offered", "pattern": "stated mode rules out others"},
+  "196035": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "direct logistics statement remote"},
+  "205641": {"verdict": "a", "clause": "Onsite", "pattern": "statement of daily office expectation"},
+  "207401": {"verdict": "b", "clause": "This vacancy, not the company", "pattern": "company-wide remote team claim"},
+  "218440": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "explicit five days in office"},
+  "238589": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "not remote requires relocation facility"},
+  "275400": {"verdict": "a", "clause": "A word naming what the work is about is not a mode", "pattern": "single hybrid statement not choice"},
+  "279551": {"verdict": "b", "clause": "This vacancy, not the company", "pattern": "company floor policy every role"},
+  "284708": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "plain fact states 100% remote"},
+  "284868": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "requirement to work onsite stated"},
+  "286207": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "heading names location and mode"},
+  "292103": {"verdict": "a", "clause": "Onsite", "pattern": "onsite at client facilities travel"},
+  "297446": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "location field states remote"},
+  "304750": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "requirement to work onsite stated"},
+  "310965": {"verdict": "a", "clause": "Offered, not excepted", "pattern": "location label with case-by-case exception"},
+  "310994": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "consistent site travel overrides label"}
+}

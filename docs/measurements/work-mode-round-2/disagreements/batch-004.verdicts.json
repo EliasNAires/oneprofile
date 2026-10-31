@@ -1,0 +1,22 @@
+{
+  "313636": {"verdict": "a", "clause": "Rule 1: a policy setting a floor for every role covers every role", "pattern": "company floor policy for every role"},
+  "315301": {"verdict": "a", "clause": "Rule 4: a mode word with a schedule is read with its schedule", "pattern": "heading names mode with schedule"},
+  "315302": {"verdict": "a", "clause": "Rule 3: the most specific statement about this job decides", "pattern": "explicit statement every workday onsite"},
+  "315303": {"verdict": "b", "clause": "Rule 3: the most specific statement about this job decides", "pattern": "explicit statement every workday onsite"},
+  "323158": {"verdict": "b", "clause": "Rule 3: the most specific statement about this job decides", "pattern": "explicit statement every workday onsite"},
+  "323638": {"verdict": "a", "clause": "Rule 3: the most specific statement about this job decides", "pattern": "explicit statement every workday onsite"},
+  "326986": {"verdict": "a", "clause": "Onsite: a job whose work is travelling to sites is onsite", "pattern": "job duty implies onsite presence"},
+  "336280": {"verdict": "a", "clause": "Rule 1: a hedged one (most roles, depending on the role) does not", "pattern": "hedged benefit not vacancy's mode"},
+  "340073": {"verdict": "b", "clause": "Rule 3: a value under a job-details heading counts", "pattern": "job-details heading value"},
+  "340074": {"verdict": "a", "clause": "Rule 3: a value under a job-details heading counts", "pattern": "job-details heading value"},
+  "340076": {"verdict": "b", "clause": "Rule 3: a value under a job-details heading counts", "pattern": "job-details heading value"},
+  "343895": {"verdict": "a", "clause": "Rule 4: a mode word with a schedule is read with its schedule", "pattern": "heading names mode with schedule"},
+  "344422": {"verdict": "a", "clause": "Rule 1: modes listed as a perk or a flexibility declare nothing", "pattern": "flexibility perk declares nothing"},
+  "344493": {"verdict": "a", "clause": "Rule 1: modes listed as a perk or a flexibility declare nothing", "pattern": "flexibility perk declares nothing"},
+  "344998": {"verdict": "b", "clause": "Rule 3: the most specific statement about this job decides", "pattern": "specific statement overrides general flexibility"},
+  "347082": {"verdict": "a", "clause": "Rule 3: a heading that names only the mode, standing alone", "pattern": "standalone heading names mode"},
+  "350807": {"verdict": "a", "clause": "Onsite: a job whose work is travelling to sites is onsite", "pattern": "job duty implies onsite presence"},
+  "352040": {"verdict": "a", "clause": "Rule 3: the most specific statement about this job decides", "pattern": "explicit statement every workday onsite"},
+  "352868": {"verdict": "a", "clause": "Rule 3: a value under a job-details heading counts", "pattern": "job-details heading value"},
+  "459301": {"verdict": "a", "clause": "Rule 1: this vacancy, not the company", "pattern": "company culture statement not vacancy's"}
+}

@@ -1,0 +1,51 @@
+id	mode	reason
+1130660	remote	remote stated, only occasional office required
+571952	none	template defines all modes, none chosen
+288302	none	conditional "for remote/hybrid positions" clause
+807662	none	hedged company statement, not vacancy-specific
+926253	hybrid	explicit role statement with schedule
+37994	remote	location label "100% Remote"
+1270973	none	hybrid cloud/remote access are not modes
+1007681	none	hedged company culture benefit
+193164	remote	company states it has no offices
+207401	remote	statement about the team is remote
+1086288	hybrid	specific hybrid arrangement with schedule
+277677	none	office location is a pay factor only
+1140233	unclear	hybrid label contradicts optional office access
+186392	hybrid	location label "(hybrid)" for this role
+1103838	hybrid	explicit role statement with schedule
+1357902	none	hedged hybrid culture benefit
+306638	onsite	explicit "not hybrid, not remote", in-office
+512804	hybrid	job-details field "Employment Type: hybrid"
+733787	none	vague culture statement, no mode word
+1257469	none	hedged, varies by client/project
+186543	none	hybrid listed as perk/flexibility
+490662	none	about on-camera interview policy only
+1364943	hybrid	location label "(Hybrid)" confirmed
+438443	onsite	job-details field "Work model: Onsite"
+81168	onsite	based at office, travels to sites
+756938	hybrid	company-wide floor policy, 4 days/fortnight
+930449	onsite	explicit role statement "designed as Onsite"
+61342	none	home office setup is a benefit
+1119963	hybrid	explicit mode with schedule
+561579	none	vague value statement, no mode word
+1225650	none	hybrid connectivity tech term, perk opportunity
+32789	remote	company plainly states fully remote
+678694	none	in-person/remote are meeting channels
+31420	none	remote work listed as flexibility perk
+636133	none	"Microsoft Office" is software, unrelated
+181725	none	travel to remote sites, no declared mode
+211158	none	describes deployment type, not this role's mode
+765158	none	hybrid cloud is a tech term
+572035	none	template defines all modes, none chosen
+1202227	onsite	internship located at office, full-time there
+49891	none	legal notice conditional on NYC jobs
+85338	none	remote work listed as a perk
+44796	none	"Remote UDFs" names a product feature
+182382	none	remote work culture is a perk
+1229763	none	front/middle office are business units
+139633	onsite	company floor: in-office at all offices
+69668	none	unrelated office benefit, different city
+1355464	remote	explicit remote statement, occasional travel
+1397721	none	"Office" names an organizational unit
+181743	none	remotely deployed describes software, not role

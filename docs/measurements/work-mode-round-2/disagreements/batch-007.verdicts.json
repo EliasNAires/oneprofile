@@ -1,0 +1,22 @@
+{
+  "1065801": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "explicit onsite statement for role"},
+  "1065855": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "work stated in company office"},
+  "1066262": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "primarily onsite occasional remote"},
+  "1067179": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "work stated in company office"},
+  "1068344": {"verdict": "b", "clause": "This vacancy, not the company", "pattern": "hedged company-wide course formats"},
+  "1086288": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "hybrid schedule listed as benefit"},
+  "1119803": {"verdict": "a", "clause": "A job whose work is travelling to sites is onsite", "pattern": "field engineer travels to sites"},
+  "1119963": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "hybrid schedule listed as benefit"},
+  "1126051": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "hybrid label plus team statement"},
+  "1130660": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "remote with occasional office need"},
+  "1131167": {"verdict": "a", "clause": "None where nothing read declares a mode for this job", "pattern": "conditional remote no base mode"},
+  "1132703": {"verdict": "b", "clause": "A job whose work is travelling to sites is onsite", "pattern": "candidate trait implies onsite work"},
+  "1155469": {"verdict": "b", "clause": "Offered, not excepted", "pattern": "remote role temporary training exception"},
+  "1159194": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "position located at office"},
+  "1190438": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "explicit hybrid work schedule stated"},
+  "1190755": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "explicit onsite statement for role"},
+  "1190844": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "no telecommute willing onsite statement"},
+  "1190973": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "no telecommute willing onsite statement"},
+  "1191633": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "no telecommute willing onsite statement"},
+  "1192805": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "no telecommute willing onsite statement"}
+}

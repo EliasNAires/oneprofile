@@ -1,0 +1,51 @@
+id	mode	reason
+678338	none	"hybrid" names the tech, not a mode (rule 2)
+81170	none	on-site training/implementation only "if required", no regular mode
+50702	remote	job-details label (Location: Remote) plus LI-Remote tag (rule 3)
+571656	none	template defines what each model means, no designation made (rule 5)
+650838	onsite	primary office base, remote "as required" names no regular days (rule 4)
+1066228	none	"hybrid environments" names the tech stack, not a mode (rule 2)
+1592	hybrid,remote,onsite	modes offered depending on program needs, a choice (rule 5)
+917168	onsite	most specific statement: job is onsite in McKinney (rule 3)
+2093	none	only a company-wide compensation statement, no mode
+1224444	none	"MS Office" is software, not a mode (rule 2)
+1007913	none	"remote access" names the work's topic; hybrid-friendly culture is a perk (rules 1-2)
+340188	none	hybrid/remote listed as a flexibility perk under benefits (rule 1)
+1537611	none	remote days listed among flexible working benefits (rule 1)
+836619	onsite	onsite at client location five days per week
+796737	hybrid	"Remote/Hybrid" label carries one schedule (office 3x/week), one mode (rule 4)
+699242	onsite	explicitly "will be an on-site role"
+1444082	none	"hybrid systems" names the tech; site readiness isn't the work's location (rule 2)
+286207	hybrid	heading "Location: London, United Kingdom - Hybrid" is a label (rule 3)
+250740	none	hedged company statement, "most of our roles" (rule 1)
+1345996	none	hybrid-organization statement is a hedged flexibility, not this role's (rule 1)
+1425101	none	no regular schedule stated, nothing decides a mode
+1345586	none	"MS Office" is software, not a mode (rule 2)
+705863	hybrid	explicit schedule: 3 days office, 2 days remote (rule 4)
+1200777	none	only a location heading and a compensation statement, no mode
+1192805	onsite	explicit on-site full-time, no telecommute option
+1190973	onsite	explicit on-site full-time, no telecommute option
+807610	none	hedged in-office policy, "role-specific responsibilities" (rule 1)
+317991	none	"remote-first" is a company statement, not this vacancy's (rule 1)
+1244972	none	"Multi Hybrid Cloud" names the tech stack, not a mode (rule 2)
+142485	none	hybrid listed as a benefit/flexmode perk (rule 1)
+359606	none	office/culture statements, no mode declared for this job
+1366922	remote,hybrid	"Remote or Hybrid work" is a choice offered (rule 5)
+1120176	none	"Remote Sites" names technical systems, not the employee's mode (rule 2)
+467271	onsite	explicit "requires 100% onsite work", most specific statement (rule 3)
+183299	hybrid	explicit hybrid schedule: onsite Tue-Fri, remote Mondays
+1462939	none	"remote...locations" names the business's geography, not a mode (rule 2)
+437144	none	hybrid/remote listed among flexible working-model benefits (rule 1)
+989985	remote	heading "# Remote" standing alone is a label (rule 3)
+660061	remote	LI-Remote recruiting tag is a label (rule 3)
+144436	none	occasional travel to on-site testing, not a regular mode
+968206	none	rules out remote only, does not state the actual mode (rule 5)
+166899	none	"onsite barista" is a perk/amenity, not a mode (rule 2)
+1381043	none	"office equipment" names a physical item, not a mode (rule 2)
+950779	hybrid	company policy sets a 3-day floor, covers every role (rule 1)
+571538	none	template defines what each model means, no designation made (rule 5)
+63383	onsite	LI-onsite recruiting tag is a label (rule 3)
+448207	onsite	"(On-Site)" label plus LI-Onsite tag (rule 3)
+257979	none	company's mixed office/remote team statement, not this role's (rule 1)
+591600	none	company's own work-model categories, a template nothing narrows (rule 5)
+1002950	none	nothing read declares a mode for this job

@@ -1,0 +1,13 @@
+{
+  "1368593": {"verdict": "b", "clause": "None — nothing read declares a mode for this job", "pattern": "office mention without schedule"},
+  "1400978": {"verdict": "b", "clause": "This vacancy, not the company — hedged flexibility statement", "pattern": "company flexibility model statement"},
+  "1424061": {"verdict": "b", "clause": "A value under a job-details heading", "pattern": "job-details heading names office"},
+  "1445482": {"verdict": "a", "clause": "Onsite — a job whose work is travelling to sites is onsite", "pattern": "work performed at field sites"},
+  "1453927": {"verdict": "a", "clause": "The most specific statement about this job decides — label in description", "pattern": "explicit on-site label"},
+  "1465361": {"verdict": "b", "clause": "Hybrid — days a week or a month in the office", "pattern": "office days stated without mode word"},
+  "1477487": {"verdict": "b", "clause": "A label in the location outweighs the field; heading naming only the mode", "pattern": "heading pairs location with mode"},
+  "1480488": {"verdict": "b", "clause": "Hybrid — any of the employer's or a client's sites counts as the office", "pattern": "travel to client sites plus remote time"},
+  "1482085": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "explicit choice between two named modes"},
+  "1501388": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "specific in-person internship statement"},
+  "1532724": {"verdict": "b", "clause": "Onsite — work done at the employer's site on every working day, or nearly", "pattern": "explicit office attendance percentage"}
+}

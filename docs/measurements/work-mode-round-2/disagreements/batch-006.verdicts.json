@@ -1,0 +1,22 @@
+{
+ "726732": {"verdict": "b", "clause": "Onsite: at employer's or client's site every working day, or nearly", "pattern": "explicit daily office requirement"},
+ "742916": {"verdict": "a", "clause": "What is read: sentences naming where the work is done", "pattern": "home setup requirement implies remote"},
+ "756938": {"verdict": "b", "clause": "Rule 1: modes listed as a perk or flexibility declare nothing", "pattern": "flexibility perk ignored, specific hybrid schedule decides"},
+ "774726": {"verdict": "a", "clause": "Rule 2: a word naming what the work is about is not a mode", "pattern": "task described as onsite or remote, not job"},
+ "775880": {"verdict": "b", "clause": "Onsite: at employer's or client's site every working day, or nearly", "pattern": "explicit daily office requirement"},
+ "785752": {"verdict": "a", "clause": "Onsite: in an office ... on every working day, or nearly", "pattern": "in-person on-campus statement"},
+ "787422": {"verdict": "a", "clause": "Onsite: the work is done at the employer's site", "pattern": "works from office providing remote assistance"},
+ "796644": {"verdict": "a", "clause": "Rule 4: a mode word with a schedule is read with its schedule", "pattern": "explicit hybrid schedule stated"},
+ "796660": {"verdict": "b", "clause": "Rule 4: several modes carrying one schedule between them are one mode", "pattern": "remote slash hybrid with schedule"},
+ "796737": {"verdict": "a", "clause": "Rule 4: several modes carrying one schedule between them are one mode", "pattern": "remote slash hybrid with schedule"},
+ "836619": {"verdict": "a", "clause": "Onsite: any of the employer's or a client's site counts", "pattern": "explicit onsite at client site daily"},
+ "892775": {"verdict": "b", "clause": "Rule 3: the most specific statement about this job decides", "pattern": "specific schedule under benefits heading"},
+ "895262": {"verdict": "a", "clause": "Rule 3: a label in the location outweighs the field", "pattern": "working at home location field"},
+ "924982": {"verdict": "b", "clause": "Rule 3: the most specific statement about this job decides", "pattern": "explicit onsite designation statement"},
+ "943602": {"verdict": "b", "clause": "Rule 3: a label in the location outweighs the field", "pattern": "location field labeled onsite"},
+ "950779": {"verdict": "b", "clause": "Rule 1: a company policy that sets a floor for every role covers every role", "pattern": "company floor policy at least three days"},
+ "1016485": {"verdict": "a", "clause": "Rule 3: a value under a job-details heading ... counts", "pattern": "bare value under working mode heading"},
+ "1019348": {"verdict": "a", "clause": "Rule 3: a label in the location outweighs the field", "pattern": "virtual location label"},
+ "1024577": {"verdict": "b", "clause": "Hybrid: an office the person must come into regularly", "pattern": "explicit hybrid label with minimal office requirement"},
+ "1039307": {"verdict": "b", "clause": "Rule 3: the most specific statement about this job decides", "pattern": "based at headquarters regular onsite presence"}
+}

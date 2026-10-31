@@ -1,0 +1,22 @@
+{
+  "716": {"verdict": "b", "clause": "Rule 1: a company policy that sets a floor for every role plainly covers every role", "pattern": "company policy covers every role"},
+  "1592": {"verdict": "a", "clause": "Rule 5: several modes this role may take, depending on the organisation, are a choice", "pattern": "choice depending on program needs"},
+  "6450": {"verdict": "b", "clause": "Rule 1: a company policy that sets a floor for every role plainly covers every role", "pattern": "company policy covers every role"},
+  "12724": {"verdict": "b", "clause": "Rule 1: a floor covers every role even where some groups may ask for more", "pattern": "floor despite some roles more"},
+  "20516": {"verdict": "b", "clause": "Rule 1: a statement about the team this role joins is this vacancy's", "pattern": "statement about team's office"},
+  "30191": {"verdict": "a", "clause": "Rule 3: the most specific statement about this job decides", "pattern": "explicit onsite requirement stated"},
+  "31681": {"verdict": "a", "clause": "Rule 3: a value under a job-details heading is a label, counts where nothing more specific speaks", "pattern": "location label job details"},
+  "32789": {"verdict": "b", "clause": "Rule 1: a company policy that sets a floor for every role plainly covers every role", "pattern": "company policy covers every role"},
+  "35779": {"verdict": "b", "clause": "Rule 4: a mode word with a schedule is read with its schedule", "pattern": "schedule implies hybrid"},
+  "35941": {"verdict": "a", "clause": "Rule 1: a hedged company policy (`most roles`) does not cover every role", "pattern": "hedged company statement"},
+  "37994": {"verdict": "b", "clause": "Rule 3: a label in the location outweighs nothing more specific", "pattern": "location label job details"},
+  "50596": {"verdict": "a", "clause": "Rule 1: a statement about the team this role joins is this vacancy's", "pattern": "statement about team's office"},
+  "57610": {"verdict": "a", "clause": "Rule 1: a statement about the team this role joins is this vacancy's", "pattern": "statement about team's office"},
+  "59021": {"verdict": "b", "clause": "Rule 3: the most specific statement about this job decides", "pattern": "explicit onsite requirement stated"},
+  "59090": {"verdict": "a", "clause": "Rule 1: modes listed as a perk or a flexibility declare nothing", "pattern": "mode listed as perk"},
+  "66551": {"verdict": "a", "clause": "Rule 5: a choice of modes is offered up front", "pattern": "choice offered up front"},
+  "72028": {"verdict": "b", "clause": "Rule 4: a mode word with a schedule is read with its schedule", "pattern": "schedule implies hybrid"},
+  "81168": {"verdict": "b", "clause": "Onsite: a job whose work is travelling to sites is onsite", "pattern": "travel to sites is onsite"},
+  "84984": {"verdict": "b", "clause": "Rule 3: a heading that names only the mode, or the job family and the mode, standing alone", "pattern": "heading naming mode schedule"},
+  "85142": {"verdict": "b", "clause": "Rule 1: a statement about the team this role joins is this vacancy's", "pattern": "statement about team's office"}
+}

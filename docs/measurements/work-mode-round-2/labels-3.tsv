@@ -1,0 +1,51 @@
+id	mode	reason
+1190844	onsite	explicit onsite statement, no telecommute
+1356900	none	only team/company description, no mode
+1207522	none	MS Office is a tool, not a mode (rule 2)
+571894	none	template declares nothing (rule 5)
+1019801	none	hedged benefit and tech terms (rule 1/2)
+627677	onsite	based in office/dedicated lab stated
+1244842	none	flexibility perk declares nothing (rule 1)
+572095	none	template declares nothing (rule 5)
+6450	onsite	unhedged floor covers every role (rule 1)
+1043230	none	"hybrid" names tech, not mode (rule 2)
+567107	onsite	role stated as located in office
+578070	none	"hybrid" names Agile model, not mode (rule 2)
+284708	remote	explicit "100% Remote" job-detail label (rule 3)
+115818	hybrid	role based in office plus in-office floor schedule (rule 1/4)
+475969	onsite	must come into office during role
+478206	none	"Hybrid Identity" tech term, not mode (rule 2)
+5384	none	company-wide statement, not this vacancy's (rule 1)
+206627	none	hedged, conditional on being office-based
+161527	none	flexibility perk declares nothing (rule 1)
+303531	none	"hybrid environments" tech term, not mode (rule 2)
+572313	none	template declares nothing (rule 5)
+1532460	remote	teleworker, no permanent office
+1066262	onsite	majority onsite, occasional remote not regular (rule 4)
+1191633	onsite	explicit onsite statement, no telecommute
+1319272	hybrid	heading label plus remote-days schedule (rule 3/4)
+100208	onsite	explicit "Onsite (5 days/week)" job-detail value
+190239	remote	explicit remote statement and LI-Remote tag
+1295338	none	flexibility perk declares nothing (rule 1)
+636007	onsite	must work onsite at facility
+134771	onsite	role performed within office stated
+1003884	none	describes interview format, not work location
+459301	onsite	unhedged expectation to be primarily in office (rule 1/4)
+540369	none	"Flex Persona" names no mode word
+229559	none	hedged "remote-friendly" perk, not a declaration (rule 1)
+571307	none	template declares nothing (rule 5)
+799721	none	no mode stated, contact info only
+157999	hybrid	explicit hybrid with in-office days schedule (rule 4)
+1244863	none	flexibility perk declares nothing (rule 1)
+787422	onsite	work carried out mainly from company site
+748262	none	hedged "for most roles" (rule 1)
+2094	none	office location cited only as a comp factor
+284868	onsite	explicit willingness to work onsite
+35941	hybrid	team hybrid policy with named exception, not this role
+145066	onsite	daily office shuttle implies onsite work
+567986	onsite	willingness to embed on-site, travel between sites
+183086	none	remote/on-site describe work channels, not mode (rule 2)
+128547	onsite	primarily in-office, expected to work from office
+352040	onsite	explicit on-site statement with days-per-week schedule
+1424061	onsite	job-details value "In Office" (rule 3)
+167179	none	company offices statement and tech terms, not mode (rule 1/2)

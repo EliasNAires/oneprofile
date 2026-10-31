@@ -1,0 +1,22 @@
+{
+ "1198418": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "full week onsite schedule"},
+ "1202227": {"verdict": "a", "clause": "This vacancy, not the company", "pattern": "internship located at office"},
+ "1209852": {"verdict": "b", "clause": "A company policy that sets a floor for every role plainly covers every role", "pattern": "company-wide onsite floor policy"},
+ "1222479": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "full week onsite schedule"},
+ "1230301": {"verdict": "b", "clause": "A label in the location outweighs the field", "pattern": "mode label in location field"},
+ "1234011": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "dominant onsite statement no schedule"},
+ "1237089": {"verdict": "a", "clause": "A label in the location outweighs the field", "pattern": "mode label in location field"},
+ "1239737": {"verdict": "a", "clause": "This vacancy, not the company", "pattern": "explicit work-model statement"},
+ "1248734": {"verdict": "b", "clause": "A word naming what the work is about is not a mode", "pattern": "duties imply presence no statement"},
+ "1284259": {"verdict": "b", "clause": "A label in the location outweighs the field", "pattern": "mode label in location field"},
+ "1295465": {"verdict": "a", "clause": "Modes listed as a perk or a flexibility ... declare nothing", "pattern": "flexibility perk declares nothing"},
+ "1307619": {"verdict": "b", "clause": "A company policy that sets a floor for every role plainly covers every role", "pattern": "company-wide onsite floor policy"},
+ "1308606": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "minimum days hybrid schedule"},
+ "1309560": {"verdict": "b", "clause": "What is read: sentences that name where the work is done", "pattern": "explicit remote responsibility statement"},
+ "1319272": {"verdict": "a", "clause": "A hedged [policy] does not [cover every role]", "pattern": "flexibility perk declares nothing"},
+ "1333305": {"verdict": "a", "clause": "A statement about the team this role joins is about this vacancy", "pattern": "explicit work-model statement"},
+ "1336573": {"verdict": "b", "clause": "What is read: its location as the ATS publishes it", "pattern": "virtual location label remote"},
+ "1345996": {"verdict": "a", "clause": "Modes listed as a perk or a flexibility ... declare nothing", "pattern": "flexibility perk declares nothing"},
+ "1360940": {"verdict": "a", "clause": "A template is not a choice", "pattern": "unfilled template declares nothing"},
+ "1364943": {"verdict": "a", "clause": "A label in the location outweighs the field", "pattern": "mode label in location field"}
+}

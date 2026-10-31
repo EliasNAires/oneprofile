@@ -1,0 +1,51 @@
+id	mode	reason
+136908	none	modes offered as flexibility/perk, declares nothing (rule 1)
+1477315	none	company offices list and skill requirement, not this vacancy
+50596	onsite	role stated for the Tel Aviv office
+344493	none	flexible format listed under "We offer" as perk
+1067179	onsite	hiring for the Beavercreek Ohio office
+136527	remote	explicit "fully remote" statement
+329540	remote	statement about the team this role joins (rule 1)
+1324854	none	nothing read names where work is done
+193667	onsite	states "Work is on-site", rules out remote/hybrid
+613125	none	"hybrid cloud" names what work is about, not mode (rule 2)
+699031	none	non-uniform team-location statement, no mode for this job
+1889	none	office location named only as a pay factor
+326198	none	privacy notice sentences, nothing about mode
+548047	none	hybrid/multi-cloud is what work is about, not mode (rule 2)
+1510173	none	flex-work policy hedged "(depending on role)" (rule 1)
+971491	onsite	"Location: On-site" job-details heading value
+1500768	none	nothing read names where work is done
+661508	none	"remote offices"/"in person" are descriptors and channels, not mode
+20083	none	office-provided meals is a benefit, not mode (rule 1)
+85249	remote	explicit "modelo remoto" plus #LI-REMOTE tag
+672442	onsite	mobile tech job travelling to sites is onsite (definition)
+1126051	hybrid	heading label "London / Hybrid"
+566720	hybrid	#LI-Hybrid tag; office statement names no mode
+1403717	none	"Environmental Conditions: Office" is the setting, not mode (rule 2)
+573068	none	Work Model is a template, nothing narrows which applies (rule 5)
+343895	hybrid	heading "Hybrid — 3 days onsite" names mode with schedule
+572611	none	Work Model is a template, nothing narrows which applies (rule 5)
+4077	remote	"Workplace type: Remote" field-like value
+279551	hybrid	company floor policy (25% office time) covers every role (rule 1)
+341354	onsite	"based in our Southlake, TX office" standalone statement
+170382	remote	explicit "fully remote role" statement
+924982	onsite	"designed as Onsite" explicit statement
+490645	none	on-camera interview policy, not work mode
+31681	hybrid	"Location: London (Hybrid)" label
+1706	none	office location named only as a pay factor
+172255	hybrid	company hybrid policy (no hedge) covers every role (rule 1)
+928011	onsite	"designed as Onsite" explicit statement
+609371	onsite	explicit "onsite role ... regular in-person presence"
+313636	hybrid	company floor policy (25% office time) covers every role (rule 1)
+326986	onsite	explicit "provide on-site ... support" statement
+294391	remote	explicit "Remote Position"/"Fully Remote"
+289656	hybrid	"based in Warsaw (hybrid model)" explicit statement
+335351	none	"on-site visitor engagement" about the product's users, not this job (rule 2)
+495524	none	"office culture" is atmosphere, not a mode statement
+1248734	onsite	role operates the Korea office (active statement)
+893115	none	location field repeated, no mode word
+704947	onsite	"work in our New York office" standalone statement
+66551	onsite,remote	choice offered: Somerville office or fully remote (rule 5)
+1221147	remote	"LI-Remote" recruiting tag label (rule 3)
+307568	none	"remote-first company" statement, not plainly covering every role (rule 1)

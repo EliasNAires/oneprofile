@@ -1,0 +1,122 @@
+[
+ {
+  "id": "313636",
+  "text": "company: Anthropic\ntitle: Staff Software Engineer, Finance Engineering\nlocation: San Francisco, CA | Seattle, WA\nfield: -\ndescription:\n> [under: Logistics] Location-based hybrid policy: Currently, we expect all staff to be in one of our offices at least 25% of the time.\n> [under: Logistics] However, some roles may require more time in our offices.\n> [under: Come work with us!] We offer competitive compensation and benefits, optional equity donation matching, generous vacation and parental leave, flexible working hours, and a lovely office space in which to collaborate with colleagues.",
+  "a": "hybrid",
+  "b": "none"
+ },
+ {
+  "id": "315301",
+  "text": "company: Avathon\ntitle: Senior AI Engineer - Product Engineering\nlocation: Bengaluru, Karnataka, India\nfield: -\ndescription:\n# Five Days onsite\n[under: Interview Process] Expect atleast two-three rounds of Technical interviewing rounds and one onsite round.",
+  "a": "onsite",
+  "b": "none"
+ },
+ {
+  "id": "315302",
+  "text": "company: Avathon\ntitle: Senior AI Scientist, Planning\nlocation: Pleasanton, California, United States\nfield: -\ndescription:\n[under: Compensation] Location: This role is not remote.\n[under: Compensation] Candidates must be based in the Bay Area, CA and are expected to report to our Pleasanton office 5 days a week.",
+  "a": "onsite",
+  "b": "none"
+ },
+ {
+  "id": "315303",
+  "text": "company: Avathon\ntitle: Senior AI Scientist, Transportation & Logistics\nlocation: Pleasanton, California, United States\nfield: -\ndescription:\n[under: Compensation] Location: This role is not remote.\n[under: Compensation] Candidates must be based in the Bay Area, CA and are expected to report to our Pleasanton office 5 days a week.",
+  "a": "none",
+  "b": "onsite"
+ },
+ {
+  "id": "323158",
+  "text": "company: Castelion Corporation\ntitle: Senior Cybersecurity Analyst\nlocation: Torrance, CA\nfield: -\ndescription:\n[under: Additional Requirements] - This role is based in Torrance, CA and requires full-time onsite presence",
+  "a": "none",
+  "b": "onsite"
+ },
+ {
+  "id": "323638",
+  "text": "company: CFD Research Corporation\ntitle: Senior Computer Vision Engineer (TS/SCI)\nlocation: Dayton\nfield: -\ndescription:\n> Based in Huntsville, Alabama where laboratory facilities and headquarters are located, CFD Research also has office and laboratory facilities in Dayton, Ohio, prototyping test and evaluation facilities in Hollywood, Alabama, and office facilities in Fort Walton Beach, Florida.\nCFD Research values first-principles reasoning and physically interpretable models, so experience developing hybrid systems that combine calibrated sensor models, deterministic algorithms, probabilistic inference, and learned components is particularly desirable.\n[under: Basic Qualifications] - 6+ years of experience developing computer vision algorithms for detection, tracking, or multi‑sensor fusion in remote sensing or GEOINT‑relevant environments\n[under: Desired Qualifications] - Knowledge of geospatial data formats, sensor phenomenology, or remote‑sensing exploitation workflows\n# Location: This role is based in the Dayton, OH area, and is 100% onsite.",
+  "a": "onsite",
+  "b": "none"
+ },
+ {
+  "id": "326986",
+  "text": "company: D2 Technical Services\ntitle: Systems Administrator\nlocation: Springfield, VA\nfield: -\ndescription:\n[under: **ACTIVE TS/SCI SECURITY CLEARANCE REQUIRED**] The successful candidate will provide on-site, on the floor, technical and system administration support through troubleshooting and implementing appropriate solutions to software/hardware anomalies as they occur.\n[under: What you need] - Experience with Microsoft Office Suite (Excel, Word, PowerPoint)",
+  "a": "onsite",
+  "b": "none"
+ },
+ {
+  "id": "336280",
+  "text": "company: Helsing\ntitle: Software Engineer, Rust\nlocation: Washington, DC\nfield: -\ndescription:\n[under: What we offer] - A generous compensation and benefits package (in addition to base salary) that includes, but may not be limited to, insurance coverage (medical and travel), flexible paid time off, paid holidays, and remote and/or hybrid work available depending on position. All compensation and benefits are subject to the terms and conditions of the underlying plans or programs, as applicable and as may be amende",
+  "a": "none",
+  "b": "remote,hybrid"
+ },
+ {
+  "id": "340073",
+  "text": "company: KeyData Cyber\ntitle: Okta Services Architect (Contract)\nlocation: Canada\nfield: -\ndescription:\nEmployment Type: Remote, 6 months contract with a possibility of extension",
+  "a": "none",
+  "b": "remote"
+ },
+ {
+  "id": "340074",
+  "text": "company: KeyData Cyber\ntitle: Okta Technical Consultant (OCI/OWI)\nlocation: USA\nfield: -\ndescription:\nEmployment Type: Full-Time, Remote",
+  "a": "remote",
+  "b": "none"
+ },
+ {
+  "id": "340076",
+  "text": "company: KeyData Cyber\ntitle: Okta Technical Consultant (OCI/OWI) (Contract)\nlocation: USA\nfield: -\ndescription:\nEmployment Type: Contract (Till December 2026), Remote",
+  "a": "none",
+  "b": "remote"
+ },
+ {
+  "id": "343895",
+  "text": "company: Nasuni\ntitle: Software Engineering Manager - C#.NET Distributed Systems\nlocation: Hyderabad, Telangana, India\nfield: -\ndescription:\n# Hyderabad, India | Hybrid — 3 days onsite\n[under: Benefits] As part of our commitment to your well-being and growth, Nasuni offers competitive benefits designed to support every stage of your life and career, including competitive compensation programs, flexible time off and leave policies, comprehensive health and wellness coverage, hybrid and flexible work arrangements, employee referral and recognition programs, professional development and learning sup",
+  "a": "hybrid",
+  "b": "none"
+ },
+ {
+  "id": "344422",
+  "text": "company: N-iX\ntitle: Junior PowerBi Engineer\nlocation: Ukraine\nfield: -\ndescription:\n> [under: We offer*] - Flexible working format remote, office-based or flexible",
+  "a": "none",
+  "b": "remote,onsite"
+ },
+ {
+  "id": "344493",
+  "text": "company: N-iX\ntitle: Senior/Lead Data Engineer\nlocation: Poland\nfield: -\ndescription:\n> [under: We offer*] - Flexible working format remote, office-based or flexible",
+  "a": "none",
+  "b": "remote,onsite"
+ },
+ {
+  "id": "344998",
+  "text": "company: NYISO Internship Program\ntitle: Intern - Energy Market Research & Engineering\nlocation: Rensselaer, New York, United States\nfield: -\ndescription:\n[under: Qualifications] The NYISO offers the flexibility to work both in the office and remotely, providing our employees with an enhanced work life balance.\n[under: Qualifications] This internship will be a hybrid program, with the expectation that employees will be local to the Albany, NY area.",
+  "a": "none",
+  "b": "hybrid"
+ },
+ {
+  "id": "347082",
+  "text": "company: Placer.ai\ntitle: Senior Backend Engineer- Data Platform\nlocation: Ramat Gan, Israel\nfield: -\ndescription:\n# Excellent benefitsFully remote\n[under: NOTEWORTHY LINKS TO LEARN MORE ABOUT PLACER] Placer.ai is an equal opportunity employer and has a global remote workforce.",
+  "a": "remote",
+  "b": "none"
+ },
+ {
+  "id": "350807",
+  "text": "company: Seneca Holdings\ntitle: Systems Administrator - Azure Cloud (OCONUS) (SECRET Clearance Required)\nlocation: Saudi Arabia\nfield: -\ndescription:\nIn this role, you would be part of a 9-person team that provides onsite support to users and customers.\n[under: Responsibilities include, but are not limited to] - Co-Author and execute an overall Microsoft Office 365 and Azure cloud strategy\n[under: Responsibilities include, but are not limited to] - Configure, manage, troubleshoot, and optimize device management tools, establishing policies and procedures for device management, including provisioning, de-provisioning, remote support, diagnosis, and troubleshooting.\n[under: Basic Qualifications] - Experience in working with Endpoint Management related services such as Azure AD, Endpoint Manager, Active Directory, Office365, GPO Management, Windows Desktop/Server Operating Systems, and PowerShell",
+  "a": "onsite",
+  "b": "none"
+ },
+ {
+  "id": "352040",
+  "text": "company: Space Programs\ntitle: DevSecOps Engineer (5470) (Boulder, CO) (Secret)\nlocation: Boulder, CO\nfield: -\ndescription:\nAre you interested in the next generation of Space Force Remote Sensing capabilities?\nAt Outside Analytics we're on the ground floor of helping across the future remote sensing ecosystem across all orbital regimes (LEO, MEO, HEO, and GEO)!\n# Position is on-site in Boulder, CO 5 days per week.",
+  "a": "onsite",
+  "b": "none"
+ },
+ {
+  "id": "352868",
+  "text": "company: St. Michael's Inc\ntitle: Senior Financial Analyst (Secret Clearance Required)\nlocation: Tampa, FL\nfield: -\ndescription:\n[under: LOCATION] MacDill AFB, Tampa, FL (on site)\n[under: PRIMARY RESPONSIBILITIES] - Tri-Annual Review Perform as a coordinating focal point for all accounting actions and issues between SOF AT&L Program offices, SOF AT&L-K, HQ USSOCOM, Defense Finance and Accounting Service (DFAS), and the 6th Comptroller Squadron.\n[under: PRIMARY RESPONSIBILITIES] - Prepare and execute Funding Authorization Documents (FADs), 7600B, Military Interdepartmental Purchase Requests (MIPRs), AF Form 9s, Fund Cite Authorizations, and other documentation. Maintain Program Office contract execution files, including contracts, cost reports, vouchers, change orders, and correspondence with vendors.",
+  "a": "onsite",
+  "b": "none"
+ },
+ {
+  "id": "459301",
+  "text": "company: AIG PC Global Services, Inc.\ntitle: IT Technical Lead\nlocation: NJ-Jersey City\nfield: -\ndescription:\n[under: LI-NK1] At AIG, we value in-person collaboration as a vital part of our culture, which is why we ask our team members to be primarily in the office.",
+  "a": "none",
+  "b": "onsite"
+ }
+]

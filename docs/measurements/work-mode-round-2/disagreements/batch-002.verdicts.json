@@ -1,0 +1,22 @@
+{
+ "85339": {"verdict": "neither", "clause": "Unclear where declared modes contradict (rule 6)", "pattern": "remote start then relocation onsite"},
+ "95297": {"verdict": "b", "clause": "a hedged one (`most roles`, `depending on the role`) does not", "pattern": "hedged company-wide mode policy"},
+ "115818": {"verdict": "b", "clause": "a policy that sets a floor for every role plainly covers every role", "pattern": "office floor unless designated remote"},
+ "128547": {"verdict": "a", "clause": "This vacancy, not the company", "pattern": "role-specific onsite expectation"},
+ "129061": {"verdict": "a", "clause": "This vacancy, not the company (unhedged company-wide statement)", "pattern": "unhedged hybrid mix description"},
+ "133674": {"verdict": "b", "clause": "A word naming what the work is about is not a mode", "pattern": "remote jargon vs explicit onsite days"},
+ "134771": {"verdict": "b", "clause": "the physical surroundings of the work... not where the work is done", "pattern": "office environment as physical setting"},
+ "136908": {"verdict": "a", "clause": "Modes listed as a perk or a flexibility... declare nothing", "pattern": "flexibility offer of every mode"},
+ "139633": {"verdict": "b", "clause": "a policy that sets a floor for every role plainly covers every role", "pattern": "unhedged in-office statement across offices"},
+ "145066": {"verdict": "b", "clause": "a benefit (`home office stipend`, `WFH equipment`) is not this vacancy's mode", "pattern": "shuttle benefit implies nothing"},
+ "155548": {"verdict": "b", "clause": "Hybrid: an office the person must come into regularly", "pattern": "role-specific hybrid with remote option"},
+ "158286": {"verdict": "a", "clause": "Onsite: the work is done at the employer's... site on every working day, or nearly", "pattern": "role based at named office"},
+ "158428": {"verdict": "a", "clause": "a policy that sets a floor for every role plainly covers every role", "pattern": "floor of in-office days for all"},
+ "162637": {"verdict": "b", "clause": "Hybrid: days a week... in the office", "pattern": "hybrid label with concrete day allowance"},
+ "164483": {"verdict": "b", "clause": "a heading that names only the mode, or the job family and the mode, standing alone", "pattern": "heading names job family and mode"},
+ "167108": {"verdict": "a", "clause": "A recruiting tag in the description... is a label of this vacancy", "pattern": "recruiting tag names mode"},
+ "172255": {"verdict": "a", "clause": "This vacancy, not the company (unhedged company-wide statement)", "pattern": "unhedged hybrid mix description"},
+ "174123": {"verdict": "a", "clause": "A country, region or time zone the person must live in does not change it", "pattern": "telecommute permitted nationwide"},
+ "181704": {"verdict": "b", "clause": "A job whose work is travelling to sites is onsite", "pattern": "travel to sites is onsite"},
+ "183299": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "hybrid schedule with named days"}
+}

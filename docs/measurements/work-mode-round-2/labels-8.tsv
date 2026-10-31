@@ -1,0 +1,51 @@
+id	mode	reason
+700707	none	department name, not a location/mode statement
+4632	remote	job-details value, Workplace type: Remote
+943602	onsite	most specific statement, on-site support at site
+340074	remote	job-details value, Full-Time Remote
+238589	onsite	not remote, must be local to facility
+572762	none	Work Model template, nothing narrows it
+728058	none	hybrid listed as a benefit/perk
+309068	none	company/product description, not this role
+1243705	none	Hybrid RAG names what work is about
+1532724	onsite	categorized Office, 80-100% of time at office
+302528	none	hybrid models names what work is about
+318009	none	company statement not plain, hedged by office mention
+345018	none	flexible working offered as a perk
+1446306	onsite	stated on-site, hybrid possible is an exception
+650876	onsite	primarily office-based, remote as needed is exception
+170359	none	no mode statement, office lunch is a benefit
+30191	onsite	requires in-person availability
+608718	none	physical/ergonomic office description
+732603	hybrid,remote	policy naming mode per location, Portugal
+129061	hybrid	company states current hybrid practice, unhedged
+949186	hybrid	explicit Work Model for this Role heading
+1019348	remote	Virtual Location is a location label
+1007861	none	hybrid cloud is a technical term; culture is hedged perk
+318004	none	company remote-first statement not plain
+986463	hybrid	most specific statement outweighs heading label
+33190	none	hybrid listed as a benefit/perk
+1403616	none	Environmental Conditions: Office is a setting
+1159194	onsite	position stated as located at state office
+1445482	onsite	work conducted at lab/observatory sites
+1155469	remote	primary ongoing mode, hybrid is onboarding exception
+1400978	hybrid	company states hybrid work model, unhedged
+1176588	none	physical office setting description
+796	none	company office locations; hybrid names environment type
+1119803	onsite	job's work is travelling to sites
+719290	hybrid	company states hybrid work model, unhedged
+1510104	none	flex work policy hedged, depending on role
+1403720	none	Environmental Conditions: Office is a setting
+297446	remote	location label Remote, confirmed by benefit line
+926787	hybrid	specific statement, hybrid three days in office
+1403757	none	Environmental Conditions: Office is a setting
+571368	none	Work Model template, nothing narrows it
+1480488	hybrid	regular split, client-site travel and remote/office
+573218	none	Work Model template, nothing narrows it
+1151503	none	front/middle office are department terms
+355723	none	remote names network infrastructure, not mode
+90161	none	benefit for a subset, office based employees
+1276482	none	flexible working arrangements listed as a benefit
+468192	hybrid	explicit hybrid under Work Environment heading
+1383354	none	hybrid model hedged to office-based roles
+717215	remote	company choice is flexibility, declares nothing; LI-Remote tag decides

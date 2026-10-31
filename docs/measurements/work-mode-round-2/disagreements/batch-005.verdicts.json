@@ -1,0 +1,22 @@
+{
+  "467271": {"verdict": "b", "clause": "3. The most specific statement about this job decides", "pattern": "explicit onsite overrides benefit mention"},
+  "468192": {"verdict": "a", "clause": "3. ...a value under a job-details heading", "pattern": "job-detail heading names hybrid"},
+  "475969": {"verdict": "b", "clause": "What is read: sentences that name where the work is done", "pattern": "requirement to attend office"},
+  "512804": {"verdict": "a", "clause": "3. ...a value under a job-details heading", "pattern": "job-detail heading names hybrid"},
+  "512988": {"verdict": "b", "clause": "3. A label in the location outweighs the field", "pattern": "location label names hybrid"},
+  "547820": {"verdict": "b", "clause": "Onsite: a job whose work is travelling to sites is onsite", "pattern": "job travels to customer sites"},
+  "566720": {"verdict": "a", "clause": "3. A recruiting tag... counts only where nothing more specific speaks", "pattern": "office sentence outranks recruiting tag"},
+  "567986": {"verdict": "a", "clause": "Onsite: a job whose work is travelling to sites is onsite", "pattern": "job travels to customer sites"},
+  "606253": {"verdict": "a", "clause": "3. ...a value under a job-details heading", "pattern": "job-detail heading names onsite"},
+  "627677": {"verdict": "b", "clause": "What is read: sentences that name where the work is done", "pattern": "requirement to attend office"},
+  "636007": {"verdict": "b", "clause": "3. The most specific statement about this job decides", "pattern": "explicit onsite requirement statement"},
+  "650305": {"verdict": "b", "clause": "Remote: nor does travel now and then", "pattern": "remote with occasional onsite visits"},
+  "650838": {"verdict": "a", "clause": "4. A mode word with a schedule is read with its schedule", "pattern": "primarily onsite, remote as needed"},
+  "650876": {"verdict": "a", "clause": "4. A mode word with a schedule is read with its schedule", "pattern": "primarily onsite, remote as needed"},
+  "672442": {"verdict": "b", "clause": "Onsite: a job whose work is travelling to sites is onsite", "pattern": "job travels to customer sites"},
+  "686305": {"verdict": "b", "clause": "3. A label in the location outweighs the field", "pattern": "location label names onsite"},
+  "699242": {"verdict": "a", "clause": "3. The most specific statement about this job decides", "pattern": "explicit onsite requirement statement"},
+  "704947": {"verdict": "a", "clause": "What is read: sentences that name where the work is done", "pattern": "sentence names office as workplace"},
+  "713321": {"verdict": "b", "clause": "5. A hybrid vacancy that names its office... is one mode, hybrid, not a choice", "pattern": "hybrid intensity note, not a choice"},
+  "719290": {"verdict": "b", "clause": "1. This vacancy, not the company", "pattern": "company work-model statement, not plain"}
+}

@@ -812,3 +812,520 @@ cccfa8e6def643ed95c20df57d83f05e7f0c20d2	3	hybrid	"Hybrid Work Environment", 4 d
 7268d306821d91bebef7b7c40340ea744512892a	3	none	no mode statement in description
 f6fd35817022e83a33a9ba404c96021ebd38af86	3	hybrid	positions "follow a hybrid work model"
 6dbf4f6269ddeb7a8e73ee95f132fb747464366a	3	none	"flexible hybrid work model" listed as a benefit, rule 1
+d93dd69aa6591736964019d68e5fee7fabbd46b1	3	none	hedged company policy, role-specific flexibility
+664e632f67a499a6fb8a0dd787d91519688a01a4	3	none	hedged "for most roles" policy
+48febd3cafdc6aee19a1c9485c191c590e4a6d89	3	none	mode listed as a perk (What we offer)
+fc6d4cb5c5fe217eebf6559ea2c386820838db94	3	none	company network description, not this role
+3e7d525d91e1f522ebabd9f79b45ac5c5e78914a	3	remote	location label "Working at Home"
+18e9790ca8700f76aaf3995f49d99154fff3a236	3	hybrid	heading label and #LI-Hybrid tag
+0d0e86977259cd8199ac8e5abc58247c2c89eca1	3	none	hedged office-first culture statement
+92771766466a88eb85f027ee9fe36c4e8a2adeff	3	hybrid	#LI-HYBRID recruiting tag as label
+40db60291f17311edf5f1a97186df4c8055ea0f9	3	none	company offices fact, "remote state" is a tech term
+711b6f2020b7d15aac34d289f072129bdc2f4bbc	3	onsite	in-person program statement for this role
+a75ee4a9245829e922f542bffeef14e0fa467325	3	hybrid	mandatory office days with schedule
+f55d9b78a157a26bbcc1fa1c0d19f55683efa7fb	3	remote	"Virtual" location label
+a44a81340ed3a1f969ab4a475bca41d3e8dcc5d2	3	hybrid	role statement with schedule (3 days/week)
+d604fccced5f6ee0e5e36d7f42483ea12cd4a830	3	none	Working Conditions physical setting, not mode
+f1fa489c955c78bb15544103cf8300baf0d1fcbc	3	remote	Employment Type field label
+8516f987f9e8563570d008d786078b4c131d0c2e	3	none	template Work Model definitions, nothing narrows
+e9b2c03ef194f8b045ee28001a3453f5763f10bd	3	onsite	Position Role Type field label
+2a1b9751dc1e8757abcd4425dbc8d209f5ba3823	3	none	"Office" tool/compensation factor, not mode
+9435f50ef367c65c751526ec0d77080645c53c33	3	onsite	daily office presence required
+f288c144c6eeaa511df9bd9bbca22976f102d644	3	remote,hybrid	choice of modes depending on position
+857a29027a13b12e9de99b107c6ce40496f5747e	3	remote,hybrid	choice of modes by candidate location
+0e53bfb38f57445e7e0cff4b2b91fefe5dfa3ca3	3	none	"remote sensing" names work domain
+75c25f907674eb13bbffcad5dab6abdcfbd13f76	3	none	"Remote Desktop Services" is a tech term
+421ac754eabbd45ac504a15cbf222e8b2245a251	3	onsite	travel for on-site support, travelling job is onsite
+0be1b814056f92f057c1a2e91bcaeded45b4c9d7	3	none	"hybrid cloud" is a tech term
+d14eace6c158654cd28ea8051f5e8c611bd61ab2	3	remote	heading label and #LI-Remote tag
+4d692b363a7d1b14002069229f9659b2592bf652	3	none	mode listed as a perk (Flexibility)
+72d015fc9492c98ccf9628a7f3d4bed03526fed1	3	none	"hybrid" storage/cloud tech term
+5b0c3b1a1ce5d13bd6d31221b4ff49e2788ebd33	3	hybrid	specific statement: WFH% with office schedule
+6a0dbb6476d38ec83301d1494832e60ff8070c49	3	none	head office requirement, not this role's location
+2cceabbc78bfddabcbb1670b07e3012767c477e9	3	onsite	location field label "on-site"
+a471b391a7bb5b853fc7969b4965ddd57936a57b	3	onsite	relocation after remote trial implies onsite
+b5c2bdb84a3bd41d8f5a42a07262eb77645756d0	3	none	unfilled template placeholder, nothing narrows
+c60e8a59ac39a52a2325f469506d8d1b66d78bc5	3	hybrid	remote label with regular travel schedule to sites
+65fe31de9f9de06cf9ea6dff16f9f3c140c01825	3	onsite	explicit "work onsite" statement
+531059f46df297f3aab122365be7edc97bd631a1	3	remote	remote work with only occasional on-site
+ba03e9e6d62e39590f406d651b0e702f2903d948	3	none	hedged "vary based on business area"
+23a44003a7b0d6675d0c35bce8a81db5a59a0075	3	none	mode listed as a perk (flexible hybrid work model)
+81bad2472cc680c5929aa036757c45869cc69ab0	3	remote	Workplace type field label
+95585e96f83c8da74934620c4c434a166c3e0ab7	3	onsite	location label "(in-office)"
+c3c78c298b8facaf50bb1cf6245dcce15dda198a	3	none	template Work Model definitions, nothing narrows
+4a6125116dc97535028afdbfb2b2afe4cd3b6fdd	3	none	"hybrid cloud" is a tech term
+c4ed4b598c56875224466957c086470d1258f4e5	3	onsite	on-site at client facility, occasional travel is exception
+04279ac4b5ee9a6dc038653d0863ec4e76f271d0	3	none	Environmental Conditions physical setting, not mode
+1c2b21b25a8d36c3423437b9eea29af33eb7c3a6	3	none	Work Environment physical setting, not mode
+4e693fef65e2ffaf4d4f9e5f97d835783793dc16	3	onsite	"majority of tasking is performed on-site"
+19d9eda85f1caf67f6c5f0c79b899bf695d972e0	3	none	mode listed as a perk/benefit (What we offer)
+7785124e214c28605aed028caa0e7d4b0ac78f1b	3	none	benefit perks, no base mode stated
+8bc67ef82b6c29e0a26197bf8644bbf2d5412635	3	remote,onsite	choice of modes by venue/location
+bd2addcb5fb1b4e505eea6f7e1dd4a8d24b2c3a7	3	onsite	company-wide floor: "all positions ... on-site"
+2f6cb19e4b9dd4ef81b1be9d0d4bfc1020696454	3	none	rule2 remote sensing is not a mode
+14020fb2568302394574ce3910942a0eb10d48c0	3	none	nothing read declares a mode
+1602db2322d8889dd0881b4ed4088d03a494c1fa	3	none	rule2 remotely control tech describes product
+59dc85f429be283dd7f5e68ae4784b57b01dc92b	3	none	rule1 hybrid listed as perk under Our Perks
+0ec0ab07bcd28b2e78ff88775535bccba449c064	3	none	rule5 Work Model template, nothing narrows
+0aad7bfae8d7f288e9a66951483b58ff7aa378cd	3	hybrid,onsite	rule5 choice offered On-site/Hybrid
+508700bb26135b0cecd31fdb56c4749bbbad3a2e	3	none	rule2 hybrid environments is a technical term
+ec665b23d8e9b5b45d84df6c164c3fa227b1735a	3	remote	telecommuting permitted anywhere in US
+e1d6d5aad9744e6feb5082024bd42d7342c53ee7	3	hybrid	rule4 onsite Tue-Fri plus remote Monday schedule
+eedfc6d1e9ede9d801c401f8e66b3a0cf24855f3	3	none	rule1 Hybrid working model listed as benefit
+6b9184a6412da3b42cf7e8d50009ab2a08fc6786	3	none	rule2 remote desktop is a support channel
+4bb1ddc6ff112da2e3de989155d564ee001ebafb	3	none	describes on-site/remote users, not the employee
+1953dae5949b40d6aac9cad2c117cd3ae4c5a92f	3	none	rule2 hybrid environments is a technical term
+72e45d9d357eaef5c1735c1e9b04388e0d00f64e	3	none	rule2 remotely deployed systems is the work's subject
+692c6dc819cd010d1c96edc582bd049ca508e630	3	hybrid	rule3 job-details heading label Job Location (Hybrid)
+4a317b5445d68d7e2a5894328600a026399ba646	3	remote	mandatory home-network setup for remote work
+a81fa6bc26247393d1b57276a76283f2aef4dc8f	3	none	rule5 Work Model template, nothing narrows
+122e6437d4cd93e28e6f75d224326109ef67b440	3	onsite	rule3 label Onsite: Eglin AFB
+4e3698a4ef92720c58acb34b576328680442230c	3	none	rule1 flexible hybrid model listed as benefit
+1e8847f653d13b48a142e74fdd2b6936acbedc03	3	none	on-site gym is a benefit/amenity, not a mode
+4f49e5bd7452c758329798dbcaf04e191fffcafe	3	hybrid	rule3 standalone heading # Hybrid Working
+076bf49f40419e3749c17981d5a757c3c6c6fbbd	3	onsite	rule1 floor set for all roles, 5 days in office
+9a4db31da92a5f05cc705572f53f2f5aee27b80d	3	hybrid	rule4 2 days office / 3 home schedule stated
+adf4ce6267f6d4f7154ee1844590260e2b2727d5	3	none	rule2 remote/on-site describes support channel
+3ee13a80614d60c4d9103f24b217295bdf129d79	3	hybrid	most specific statement, 3 office days a week
+7223f51e40fae68b1fc00a6e402359fedbc74c57	3	unclear	remote stated at start, hybrid expected later, contradicts
+454ecc96d07020786411e398c71bb6f6aca64d3d	3	none	rule5 Work Model template, nothing narrows
+94a3fe8d1ae1c47d7ae101d0f14946d626722f9a	3	none	rule1 work from home listed as benefit
+94d0083cd68029ccb89f172d7a084a23ad4a6701	3	none	company-wide offices statement, not this role
+914fc00673d413af420b40b901876eff9143df3f	3	none	rule1 hedged most roles does not cover every role
+6b32e788aacfe1788f5c190d748d97383738af3e	3	none	hedged company rollout, varies by role/location
+51e076351d99b040e9611c2a2b10e479235cd324	3	onsite	rule3 job-details heading Workplace type: On-site Working
+5e2b058ea16e9b85eb52173410d93f4961c994d7	3	none	compensation varies by office location, not mode
+cd94beee47f0d54933c02fceb681d36a683e0195	3	none	rule1 hybrid working listed as benefit/flexibility
+606bde248a4cd5dbd7ade594728665f1074405b3	3	remote	rule3 job-details-style label Employment Type ..., Remote
+cf2a182884ceba9cc956d0a2c1430a1282a30cb3	3	hybrid	rule4 one schedule, onsite plus remote flexibility
+1f8ae340bc01f3a04ae012e6a5f1e84e9329f9c7	3	none	rule2 remote-access technology is the work's subject
+0ce4779bb8a85f6cda532f4408f64341892295a9	3	none	rule1 Hybrid approach listed as benefit
+2dc4879b99f7e3a8ab462477b64f03ddedb5a1f9	3	none	rule1 Hybrid work arrangement listed as benefit
+af81175f464501b4bcf56362f5b948294a31d1a9	3	hybrid	explicit statement, regular presence plus remote as needed
+873ed2b61053fd4a7b3a90c76ba92e9a7e3e2c81	3	none	casual office is a benefit, not a mode
+f2b0b22cebb0c094b88dd160d528e355ebbbbd09	3	hybrid	rule4 remote category plus 3x/week onsite schedule
+c7352d7278e211ac429bdc0d51e002b2784190b1	3	none	occasional remote allowance, no baseline mode stated
+2f4388dc62be55525e710625f57033ac857801f1	3	none	rule1 hedged role-specific company statement
+5aa2230852d1f8d2eb6c47cd32d102d301401b2b	3	none	rule1 flexibility in remote work listed as benefit
+68fec3486da5fd331e3e2a12534af58b00787b48	3	none	compensation varies by office location, not mode
+8cf3c8a3b081a48430db290f6ae48dd0e6e3572a	3	none	describes interview format, not work location
+7a30b3d980eaa7b0ec4348c460f0cd3a913789df	3	onsite	rule3 specific in-person internship overrides hedged policy
+0081d8d9fb0d14a6f783b623943c21c7496ea501	3	remote	explicit statement eligible to work fully remote
+d99b8b190efadbc39ad5435509b0fa2a8d8a738c	3	remote	explicit statement working remotely in responsibilities
+97ef2daf4618be96d10cdf1d5e4317966a41213a	3	none	hedged company flexibility statements, rule 1
+e6a67e08c227cebc4aa9c3c7e5b3c5879493f22e	3	onsite	specific statement, onsite 5 days a week
+14a7cfc72e55f34578b1b412b2b4cb52c0931f25	3	hybrid	policy floor for every role, rule 1
+bf40e956b89fe095b05f7f9e9e472c0f6fac3ae3	3	onsite	role described as providing onsite support
+72c0fc238dc9bce27e0c86b53cd54c64f4ae01f5	3	none	hedged hybrid-friendly culture statement, rule 1
+d0a4f6c0430e17f43c9968a4dd660dc5d0566ee9	3	none	mode listed as benefit/flexibility, rule 1
+d85397119836a033f9199c29f5bb159ea6b6d769	3	onsite	value under job-details heading, rule 3
+6c47bb50ce30dd134ee25580c0442ce951e526f3	3	none	hybrid cloud names work's subject, rule 2
+8395350f6d11b4d5cfa1a36475156bc64b06d842	3	none	hedged policy varies by role, rule 1
+1edde6e5625f533e8d60aa61896779c708d83a84	3	remote	direct statement, occasional travel allowed
+a4573de7669352187524d2d0688c635a3fb1292e	3	unclear	remote and on-site both stated, no schedule, rule 6
+2f1de029f54b89bb93288301a42d53580ce7772d	3	none	only office description, no mode statement
+893bcfee56d8ff8893874ef60e0d53ee1c457ae3	3	none	hedged company work-model statement, rule 1
+13d1a90b3b651b3da0446b1195acd023aa898de0	3	onsite	specific statement, office 5 days a week
+4949a1e480b39b20df22f88604b523fc214b069f	3	none	hedged company work-model statement, rule 1
+e9c4d6abee1ab8e4bd66f39c3ce4f38e4b8b1bd0	3	onsite	label in location heading, rule 3
+5c82b756cc6d97f52ec9e06ec3c56ade2d905c51	3	none	only denies remote, no mode affirmed
+97da2852793b4204d047389555d189aafcfc2a0d	3	remote	remote stated, only occasional office required
+bd69863ff7359277b11dda7831026c772a44a368	3	none	template defines all modes, none chosen
+24a0583ad05a04dae6b2d8c77c02e2aec57f9467	3	none	conditional "for remote/hybrid positions" clause
+145d04b92fe454fd681252bc71ddb945d5920b7d	3	none	hedged company statement, not vacancy-specific
+8d71bcb2600eaafe2ea5ff8e74293e77c415ad49	3	hybrid	explicit role statement with schedule
+00111f4d1f81e51acfd37c0e8c22b902eb87c3d5	3	remote	location label "100% Remote"
+d2891e9c24f76baca304857084f0ced7be4c3909	3	none	hybrid cloud/remote access are not modes
+b2415568d4b2f979212694dccf595b8fb23f2575	3	none	hedged company culture benefit
+5b16dabc5c19f6ef27410d935673905b9d0956bc	3	remote	company states it has no offices
+33526e84d0cb954175f744b70732489ebda9241c	3	remote	statement about the team is remote
+641f0da521d601bb805ec8173a0a2d1cff17807e	3	hybrid	specific hybrid arrangement with schedule
+97d4a7e52418da591d059c281d4f6934c40fa162	3	none	office location is a pay factor only
+84644e12d7d263fb6418f9b0ea6d2d7a531b4ad4	3	unclear	hybrid label contradicts optional office access
+b584a3ea2cafbda6dab703916465f7e5479443f7	3	hybrid	location label "(hybrid)" for this role
+663d272631b5233c74b0968e396932fab9ca01d7	3	hybrid	explicit role statement with schedule
+6ea6902cce821f6063c8a183cfbfd55c9bee4b50	3	none	hedged hybrid culture benefit
+353b9ae3b7577e5517e3e75224745b2b6467374c	3	onsite	explicit "not hybrid, not remote", in-office
+4ef353fc95ba8749cce0224f1a334f485da6ba90	3	hybrid	job-details field "Employment Type: hybrid"
+334a374812944bcc0491561ab0693f5f3dfb9faf	3	none	vague culture statement, no mode word
+75aeff5076ecd28315670c8c190458abeb426aa7	3	none	hedged, varies by client/project
+c2f307b67d102f960eec84116326cae844a652f1	3	none	hybrid listed as perk/flexibility
+274faa0607ebd389a7576a51af7518ec783b1318	3	none	about on-camera interview policy only
+19ae4f3b33fb72be63aec7b2fdfb5693394ed1e9	3	hybrid	location label "(Hybrid)" confirmed
+f918c103b24dd00f399f188aad543a1c13502a16	3	onsite	job-details field "Work model: Onsite"
+02c9ff4faef1d288e7ae1caaf8cab0129905b9ec	3	onsite	based at office, travels to sites
+af3946a957fb045704ea4c5a34998210c89ea3c3	3	hybrid	company-wide floor policy, 4 days/fortnight
+2e45c306eec4e85e1345bc9c1a62b230ebcbb38c	3	onsite	explicit role statement "designed as Onsite"
+662d61873466bc3a42e15dda3bfb4425e7af6562	3	none	home office setup is a benefit
+9fdd6d12099758168fa0c58051d65d5485487039	3	hybrid	explicit mode with schedule
+b5567f1ddb7d229fc67407324505ccd04bd557ee	3	none	vague value statement, no mode word
+525e33d02b2e8c27d16a64bcb5305fe23d3bc205	3	none	hybrid connectivity tech term, perk opportunity
+1133783cc532ffb6dd599261a0dcdd342cc4b7eb	3	remote	company plainly states fully remote
+e19816588ee068eac44a7684f700fd5adaef31d9	3	none	in-person/remote are meeting channels
+fa51d3c6b7553076120a46abbf653a5a035a7423	3	none	remote work listed as flexibility perk
+d90119313e724b09d822cd5d204fd44f815a00aa	3	none	"Microsoft Office" is software, unrelated
+9160bd01a758f42679500a6cf53ade0b8137b2b7	3	none	travel to remote sites, no declared mode
+0cf184a3120a56b2782ddb5fa20760cefafe457a	3	none	describes deployment type, not this role's mode
+7cca7ee75632c9032ffc388d7c6ef4aa11dee471	3	none	hybrid cloud is a tech term
+b0f7d3acc9f2f08a605f85442854dd14ea5cc60f	3	none	template defines all modes, none chosen
+f135d8abd5fb26c07918dce9b49cb7dbd498efc3	3	onsite	internship located at office, full-time there
+f92f5b74cfdbd3451ff15f857ccddb392d965e14	3	none	legal notice conditional on NYC jobs
+1ec19a970ee2ea448998f1c575cf9cb08b4593cc	3	none	remote work listed as a perk
+d386abd72d8d7a69f2155eebb9f2a9609156e251	3	none	"Remote UDFs" names a product feature
+f5b034ca8370333383e16e35b2a9c4c69f38ba4e	3	none	remote work culture is a perk
+33348091a621bba4dcd9caedc3073bc49cccbfbf	3	none	front/middle office are business units
+c9158e8001e504b935f6a81ed7251f3d6c52d7a4	3	onsite	company floor: in-office at all offices
+8ebc3aa65cc66809f637e5c8f3dbb0cd812ab604	3	none	unrelated office benefit, different city
+c91ec4adb77a4e18badd369cfccd3e47a0045397	3	remote	explicit remote statement, occasional travel
+d6037e7cf27f95955e865f1c5fa917a00d164f64	3	none	"Office" names an organizational unit
+537743c967a079e718cb91766116299edea7b380	3	none	remotely deployed describes software, not role
+aafb6644c5f74b3e2a2f8b684aebd9776be544b2	3	onsite	explicit onsite statement, no telecommute
+24632c16ebdafacd13182c76d1a941cf51d64f42	3	none	only team/company description, no mode
+8df54090510d5c192d3019d72103da64398740c2	3	none	MS Office is a tool, not a mode (rule 2)
+ab065e37ea9fff4e69ded63227950ef19dc994ef	3	none	template declares nothing (rule 5)
+b1512f000d0cfa03917a84a4d7bdd64f648dcc1b	3	none	hedged benefit and tech terms (rule 1/2)
+21dc93de7951d668228e67d55d4ff0c6745f93d5	3	onsite	based in office/dedicated lab stated
+5c8b8b35e2c199aac610e841cbb72d512ad9172c	3	none	flexibility perk declares nothing (rule 1)
+ff69f41f1bdb90c1ed4015587d9d8b904f58b4ec	3	none	template declares nothing (rule 5)
+1b0e3d162948fd7736969a420bfd0c88642de2a3	3	onsite	unhedged floor covers every role (rule 1)
+1cce7e4a92457fb26128c0188aa34a3d2f050baf	3	none	"hybrid" names tech, not mode (rule 2)
+feab8dfbbfe48746c7b9f1c5e877491264af6edb	3	onsite	role stated as located in office
+9183071ebdd2468b425103d0ebceccf14e642d29	3	none	"hybrid" names Agile model, not mode (rule 2)
+54229eb8d6de467094245e230e3f2dda13ec4c96	3	remote	explicit "100% Remote" job-detail label (rule 3)
+87da9ffebe0ce47d212069f1cfe4d59162913a66	3	hybrid	role based in office plus in-office floor schedule (rule 1/4)
+868ebe8195eac7112758e6e2994e65f43c525170	3	onsite	must come into office during role
+819243512e1b8274627c780e167647a5dbc45dbb	3	none	"Hybrid Identity" tech term, not mode (rule 2)
+cedfa8d076a5aaf943c2976918f1f1b6b3c9be01	3	none	company-wide statement, not this vacancy's (rule 1)
+797043b0df4a008bc85d9dd84cc93a984d64786b	3	none	hedged, conditional on being office-based
+9e185aae2bc25066d165bb704bdb2fdb71a13e02	3	none	flexibility perk declares nothing (rule 1)
+65848bf3d80f3d1d97b27073f87c0f676547930c	3	none	"hybrid environments" tech term, not mode (rule 2)
+72efab031501fb2b0b049f79701bf5a259816444	3	none	template declares nothing (rule 5)
+f73d8140ed48c1544d6648e9610f8b099d788cf3	3	remote	teleworker, no permanent office
+0ac19f8757b053b31bb08afc3e1feea611b6c6bf	3	onsite	majority onsite, occasional remote not regular (rule 4)
+aad077f022af0c6aca70593fd71651a79dfef1df	3	onsite	explicit onsite statement, no telecommute
+88eea876e2fccfc694e05d299bd8b8c0f4c7cfd0	3	hybrid	heading label plus remote-days schedule (rule 3/4)
+ac7f4bdc8b865a392be3f10970887a92ef656091	3	onsite	explicit "Onsite (5 days/week)" job-detail value
+a20eeecf4b941263620d1af3d5c5925dbecaa4d4	3	remote	explicit remote statement and LI-Remote tag
+8f06fe70ce54ca044a7f86a084a72c739a992164	3	none	flexibility perk declares nothing (rule 1)
+6595222a2535236b269af924dd48e8bc77117dad	3	onsite	must work onsite at facility
+4699a04a2d19e73f82b994eda06bf74652597f3f	3	onsite	role performed within office stated
+1eb452016f3f4ac558744ebcb979d59c2af68b5f	3	none	describes interview format, not work location
+fe95d0b727ccb8ae4915ad4c2fc994d0700457e0	3	onsite	unhedged expectation to be primarily in office (rule 1/4)
+eca5ce07f1d647a8e4601cbbb2f31830270aff58	3	none	"Flex Persona" names no mode word
+6f0328b53ad7f189bd7d522b933cf8ec1228b47d	3	none	hedged "remote-friendly" perk, not a declaration (rule 1)
+72789e1f8923a597e76d3c99b127287c6e91a10e	3	none	template declares nothing (rule 5)
+702f44fc4441566bd4b501a071f5ba2d39841119	3	none	no mode stated, contact info only
+9a3773c0e930748d60e9d3ee707d74cbfefcef9f	3	hybrid	explicit hybrid with in-office days schedule (rule 4)
+ebbaf03dddee2d3c7b5e143f98db7ab3869b06b1	3	none	flexibility perk declares nothing (rule 1)
+9ab6b3dcf7ec6b731b4264e6ecd2a0ed71912e07	3	onsite	work carried out mainly from company site
+d0cd35531407fe540478acb68aa0e3cc981560d8	3	none	hedged "for most roles" (rule 1)
+ba706b67572c3037c744e0e9b9fc58f23e9d7b64	3	none	office location cited only as a comp factor
+5d6750ad3655de4028fe6723849152726a5c0e7e	3	onsite	explicit willingness to work onsite
+5d4ddf86c85172ec361ab9de46d85f9e8c7ca6a6	3	hybrid	team hybrid policy with named exception, not this role
+9148e61686465cd0cb703919191e8ea7c127b6f2	3	onsite	daily office shuttle implies onsite work
+66e6d13af5d940809eb0bf15334794889cb80aae	3	onsite	willingness to embed on-site, travel between sites
+5a33dbbd63907cc5f927770e50b45e6445daac2d	3	none	remote/on-site describe work channels, not mode (rule 2)
+eb7bff1dacce64d0228ba2aeae3d868e43bad795	3	onsite	primarily in-office, expected to work from office
+e737b6929e4554da56be62a418fd08b3efe60748	3	onsite	explicit on-site statement with days-per-week schedule
+8d17bbe920b31601410de57f4e1b59c580427f46	3	onsite	job-details value "In Office" (rule 3)
+9236495c645265b9bbeada78adb994b1e54aaebf	3	none	company offices statement and tech terms, not mode (rule 1/2)
+eb0b074d8b4b20fa462ecd2ffb0b3fcbdb17a3ad	3	none	"hybrid" names the tech, not a mode (rule 2)
+bffda3150e65c7a96d0112248876be97312f0989	3	none	on-site training/implementation only "if required", no regular mode
+0e2a57d6ad2992e214da139da8143229165ac459	3	remote	job-details label (Location: Remote) plus LI-Remote tag (rule 3)
+ac73ad1b33dd0ee26ed005063f044e3f1337ca0b	3	none	template defines what each model means, no designation made (rule 5)
+aa0c83d8bf429fb5912a0c5004bcd6eadf2cbee6	3	onsite	primary office base, remote "as required" names no regular days (rule 4)
+49a988ade9d8c51a207804104495a11a9b5658f2	3	none	"hybrid environments" names the tech stack, not a mode (rule 2)
+dc8c32e41f16f81de1ae9ef41afc6ff8f4eaed35	3	hybrid,remote,onsite	modes offered depending on program needs, a choice (rule 5)
+4c130b8f21dede1f126a8186016b7e557e4627da	3	onsite	most specific statement: job is onsite in McKinney (rule 3)
+4b9cdcd969bdba75e35fc4ae2e475d13e82bda2c	3	none	only a company-wide compensation statement, no mode
+970b11bcfb89d9fce8257371e03232fd18e0cbef	3	none	"MS Office" is software, not a mode (rule 2)
+66d2507a27f07e71ba0bcc8ae8664e627cb022d5	3	none	"remote access" names the work's topic; hybrid-friendly culture is a perk (rules 1-2)
+7c26ed737923caa15168eda4db4c875857ed5dac	3	none	hybrid/remote listed as a flexibility perk under benefits (rule 1)
+5343364cd226ebe7156be903257f4b7ef4cb63f7	3	none	remote days listed among flexible working benefits (rule 1)
+61b25c03d927abb71c3199350d515c4845385e72	3	onsite	onsite at client location five days per week
+7e78e1fe69b3d8eab4250c9c429f548231c3a865	3	hybrid	"Remote/Hybrid" label carries one schedule (office 3x/week), one mode (rule 4)
+084c33b22f64eaf5279c607196b76c8eb9c9f40d	3	onsite	explicitly "will be an on-site role"
+3c10dda0a85fbaa8facb55bf72472d5ad649bda1	3	none	"hybrid systems" names the tech; site readiness isn't the work's location (rule 2)
+8a27be842018331298d7f6dee3fe92c5d044f4b5	3	hybrid	heading "Location: London, United Kingdom - Hybrid" is a label (rule 3)
+e79f261efe459cdfb0d3a22b5e986a53baf02a59	3	none	hedged company statement, "most of our roles" (rule 1)
+d3de24c5b4a2da317ee03b502defb3c5fd149a57	3	none	hybrid-organization statement is a hedged flexibility, not this role's (rule 1)
+9b0b853897012bc837b2204bb139e3a6ec18850d	3	none	no regular schedule stated, nothing decides a mode
+8cced40f0de79cd16ef804a1bba2b1a691e9e6f2	3	none	"MS Office" is software, not a mode (rule 2)
+4c51b605ab0aa65fcd1676fcd0d336bd2cd1a249	3	hybrid	explicit schedule: 3 days office, 2 days remote (rule 4)
+b7053f8fc713ce1dcae0282307ed680e12d70f57	3	none	only a location heading and a compensation statement, no mode
+14cf655e3a5a14092c3f6664838bd765aac3af02	3	onsite	explicit on-site full-time, no telecommute option
+36a7b8ec011ed133732ffcb36efe098ac1a7fa8f	3	onsite	explicit on-site full-time, no telecommute option
+765604ae633992c167f3ce9ed543c5f384e76b2a	3	none	hedged in-office policy, "role-specific responsibilities" (rule 1)
+296932cbbd3580bf1bb8484ad7fb44fee0a2c7ad	3	none	"remote-first" is a company statement, not this vacancy's (rule 1)
+ac063eaa7498ccb0576cea588da5315746591a1a	3	none	"Multi Hybrid Cloud" names the tech stack, not a mode (rule 2)
+0d3c72801a19d1c77bc98ba3291d11742091c42a	3	none	hybrid listed as a benefit/flexmode perk (rule 1)
+620dd90fa56ef230c803c7b2c000550da13b4863	3	none	office/culture statements, no mode declared for this job
+4f31e018633333eaade754be124425953b556164	3	remote,hybrid	"Remote or Hybrid work" is a choice offered (rule 5)
+4578a27dec2cdac991ee10a587e51ba54341a548	3	none	"Remote Sites" names technical systems, not the employee's mode (rule 2)
+cc89156428aaaf986fe936d9a14c60a80a9f7c6b	3	onsite	explicit "requires 100% onsite work", most specific statement (rule 3)
+587880adc3bf0a10f42b973b8d28bebfb6966f24	3	hybrid	explicit hybrid schedule: onsite Tue-Fri, remote Mondays
+5226d982c7b045d52b7a9e3aec04b53b1c9e4788	3	none	"remote...locations" names the business's geography, not a mode (rule 2)
+e20b47f274709bad225d7bd5989b1577616000b4	3	none	hybrid/remote listed among flexible working-model benefits (rule 1)
+4197fac464edab41a947726c2406a3ad00308b33	3	remote	heading "# Remote" standing alone is a label (rule 3)
+f0c1cae89b8860ac8460e229e77f541778cd2a26	3	remote	LI-Remote recruiting tag is a label (rule 3)
+560f30353c3f4db90a7c4e34fa5e9100262f3744	3	none	occasional travel to on-site testing, not a regular mode
+c8f35aac58bb399b9f6ac440187c62d95e47c04f	3	none	rules out remote only, does not state the actual mode (rule 5)
+b7d1d9b9d340256523f62bc6653281e3dd49bd5b	3	none	"onsite barista" is a perk/amenity, not a mode (rule 2)
+f5a6170cbe3101884b13b94c168131cc7afd26b0	3	none	"office equipment" names a physical item, not a mode (rule 2)
+4cbf3151340cc4028baaf5e751a6c61309181772	3	hybrid	company policy sets a 3-day floor, covers every role (rule 1)
+997cf02e1757e467208b363582a91f03ad591800	3	none	template defines what each model means, no designation made (rule 5)
+b59b01ae433705e86717baa0ef3c5ad50d5d0dd6	3	onsite	LI-onsite recruiting tag is a label (rule 3)
+060e62f6d655815f8e718be400f730de9e9a2402	3	onsite	"(On-Site)" label plus LI-Onsite tag (rule 3)
+cc07a08e97e478f58807446838a25db72d635581	3	none	company's mixed office/remote team statement, not this role's (rule 1)
+75d4b7255aeb36b5ce97a9226fc9d4c487b3800c	3	none	company's own work-model categories, a template nothing narrows (rule 5)
+f9d3042c7852a66e0a2fa1873c975b0824f55d79	3	none	nothing read declares a mode for this job
+2e3123c2abcd4bef1e6597a4dd339e9622393b55	3	none	company offices overview, not this vacancy
+f9823c4e6bd3f4cbe782abc2087be39d7caf73f5	3	none	remote access/state are rule 2 tech terms
+9d639208d26ee3476b31554726eed065dc041484	3	onsite	explicit based at HQ, regular onsite presence
+19562a9c8f252385bf73e387af94b6030d831c90	3	none	no mode stated
+c024066d7eb7b237ec2b07a615b769367340429b	3	none	remote file server is rule 2 tech term
+e7a63135a321943d419d1b8dfe8988f836d8f675	3	none	company offices overview, not this vacancy
+328649fe9b921dc2998c9dc012e1fb19a416c199	3	hybrid	explicit designed as Hybrid with 2 days/week office
+687000ed929ca0dd28dfd72e9478090931d834d0	3	onsite	explicit designed as Onsite, primarily from office
+0c03a918fba22e4701cb035aab7a0910798c3e1d	3	none	remote caching is rule 2 tech term
+114882d7ab8a2adc66473a74593e2ab12493faec	3	onsite	team joins at named office
+dcc1d6b69185d921b1701963c955361b8e73d106	3	none	company offices overview, not this vacancy
+c42096b4a75cf605e2b215d5e73a041a8f1409a3	3	hybrid	office days per week schedule, rule 4
+df8f3fc0fdf0ac046edbeee9f8cb3fb742283475	3	hybrid	explicit hybrid role statement
+1cf80a569de2ab7eec18c3ded9bbada1c52e13f4	3	unclear	contradicting hybrid vs remote statements
+3a98c7b16172b81049ff23ecab9ddf8d8336c228	3	none	modes listed as flexibility perk, rule 1
+0b60830c7c7116d81b04e2a1ddccb1f82b6730bb	3	none	onsite/remote names audit channel, rule 2
+5b3b0416d01a4df35f3a20a8e14faa31db08e56b	3	none	hybrid-cloud tech term, not mode
+b1e626fec0d39612626677ea1ab3841692a12085	3	hybrid,remote	choice of hybrid or fully remote offered
+beb6757f98af324bc05d74e7ab25e643470fb061	3	none	hedged depending on role, rule 1
+4e7e7e73108c27b444df121fe0a22d2ee433dad0	3	hybrid	LI-Hybrid recruiting tag label, rule 3
+05ecde0825f443ef554fa71eab87109441fc48de	3	onsite	onsite attendance needed day to day
+ae386db3ad7341641c8269e35ab31a7db4202d8e	3	hybrid	onsite label read with 3-day schedule, rule 4
+01282504cf52037a733e64e0e2dff059783f9685	3	onsite	work out of Chicago office statement
+73a2a55e63d3ba41d1b623217a1cbf8e61eff3fc	3	none	template listing modes, nothing narrows, rule 5
+3ee7802c7a37da7d7a73de308fde23240a363de8	3	none	office mention is a benefit, not mode
+b3bbbab1b61652e870d0ac184a3cf949e26eb891	3	none	remote working patterns as flexibility, rule 1
+01788702f806bf48653fc926d5a212d962d8fb9c	3	remote	heading naming only the mode, rule 3
+3a70d65c0f5163b8c5577d176d86eb753bdaf874	3	remote	explicit fully remote statement
+57b0bf1cce52bc0eca029bed7696baace2dc0038	3	none	Remote View is tool name, rule 2
+5e6d74e8be8c57d3b4a641e5325d25508370cdbf	3	hybrid	telecommute plus several office days a week
+c915d678ff6e494ef0340fd8905257025a1eb8a6	3	onsite	unconditional company floor, 5-day in-office, rule 1
+d635dea51bbe057c36159e39968c09c621fd226b	3	onsite	location field label, rule 3
+159a35da698404b24f142a4f1a27572a6ad07096	3	none	onsite describes interview stage, not mode
+278ee37c4ccd8fc73c0281e210166802834bd766	3	none	Microsoft Office is software, not mode
+fbf3a8291c94004b33abe2f0245f4b72bff7a9c5	3	none	template of mode definitions, nothing narrows, rule 5
+1a9e970d7f0dfca047df561498a497e2507d9922	3	hybrid	explicit hybrid schedule stated
+a4a33b5c5c5bdf9beaad3ddcd4301fa1a5b4842e	3	hybrid	LI tag Hybrid label, rule 3
+f0b867be86543b9945b924e9cb1f99a02fc1f26d	3	none	template of mode definitions, nothing narrows, rule 5
+e3fdfca80e7c17d1e552d7fc042e1ae368dac071	3	none	on-site fitness facility is a benefit
+1e65583d27e16c6284168895f649798412736876	3	none	Mobile and Remote Access is rule 2 tech term
+0cb7383da23fe8422ad9b25f2e4491f813443fac	3	onsite,remote	heading offers onsite or remote choice, rule 5
+c2d0c1f4d07934987ca36cfe704224eb7eebcb22	3	remote	primarily remote, onsite as needed, rule 4
+18992800f44842c386c953b1d59cbd2743190760	3	onsite	explicit designed as Onsite, primarily from office
+3e78892d0cf76c46e29bbbc2da6df2787c72b46b	3	onsite	heading naming only the mode, rule 3
+668fb5b831a32b8c229288ac5da686fdeaf53de3	3	none	modes listed as flexibility perk, rule 1
+7f79d2820c09ad68311ed727deb4c1080b5d9f94	3	hybrid	location heading labelled hybrid, rest hedged
+f091da8b88a5b946d89a140d98bb91761097ed00	3	none	hybrid-cloud tech term, WFH is a benefit
+8ffc4d976494d5de79c2fa402791041d09545990	3	remote	explicit remote position, travel now and then
+e2e7712b554bf7fcfb6c6d5c1d5101a8b0daba6d	3	onsite	unconditional company floor, 4-5 days in office, rule 1
+3a53113cf1ce5d7de788893c56bab946dfecb86c	3	none	modes listed as flexibility perk, rule 1
+9a279629e684220b2f325c084fef44154d3392f5	3	none	modes offered as flexibility/perk, declares nothing (rule 1)
+cdfbdba8fe5ddd1128c9dad8416630b289b6e118	3	none	company offices list and skill requirement, not this vacancy
+d92f8d3d6187e1905daa2ad0875c1539aab2467e	3	onsite	role stated for the Tel Aviv office
+b27a46a1083fade13f1c1857768ee47adb3e4f9e	3	none	flexible format listed under "We offer" as perk
+0ab04b041a1c0d7a0b8015a0f36ea3cfa3b9cfd9	3	onsite	hiring for the Beavercreek Ohio office
+3ec3e20535aa5293d73ad6e72458aed7ca9d5a3b	3	remote	explicit "fully remote" statement
+e2780ebb36283cdcc3a5c914e8526b9210a5b6ea	3	remote	statement about the team this role joins (rule 1)
+0772a07fd0cf3a10de30fd5d65692ca7308002cf	3	none	nothing read names where work is done
+66b37444be83958bd35afcefc65c5f7bf4faf262	3	onsite	states "Work is on-site", rules out remote/hybrid
+841d6fe20b8e4c42f1a54da80bd1f7724b112787	3	none	"hybrid cloud" names what work is about, not mode (rule 2)
+c1f4850ff74d07ad37e6ce48869319f515cfcc7c	3	none	non-uniform team-location statement, no mode for this job
+ded1adfa50c01ddd5a8bd44691ff7ed9704f106a	3	none	office location named only as a pay factor
+7ae307a4f3f3601671204a40cd0fcc070a354d23	3	none	privacy notice sentences, nothing about mode
+b45375a7002db9e6d4796df9972834ddf174c735	3	none	hybrid/multi-cloud is what work is about, not mode (rule 2)
+0f78e01d759abe62104e34303787c500379950c7	3	none	flex-work policy hedged "(depending on role)" (rule 1)
+d67a4fc8ce282c791b0bd2e34e71c0a135eb590d	3	onsite	"Location: On-site" job-details heading value
+a0be00fbf803a1102bd88fadb8198e8b9e4ef155	3	none	nothing read names where work is done
+4b65dfb9eea8e48e40f9df65369fa66e5d57165d	3	none	"remote offices"/"in person" are descriptors and channels, not mode
+f1cd2ea86970e36ab8e5bfd813687309f98022bc	3	none	office-provided meals is a benefit, not mode (rule 1)
+1a4decf8a90c6c5c9c4a06b5b3bec4fb5adeeaff	3	remote	explicit "modelo remoto" plus #LI-REMOTE tag
+e249169e537ff53633d2607d14c482e71e160b62	3	onsite	mobile tech job travelling to sites is onsite (definition)
+48967b7cd64877ee06cafdeb229e46c2caa11ea2	3	hybrid	heading label "London / Hybrid"
+c0f6669e565a0b5fe8738f75125cb0f51285bd83	3	hybrid	#LI-Hybrid tag; office statement names no mode
+f23eb12286d7adccea9d5201988a1cae811c45e8	3	none	"Environmental Conditions: Office" is the setting, not mode (rule 2)
+dbecbb47ca8d0bd778d714eb8b1f3284a0b4cd61	3	none	Work Model is a template, nothing narrows which applies (rule 5)
+26c19138232bc1cb159e2c2f949cffc5ddded362	3	hybrid	heading "Hybrid — 3 days onsite" names mode with schedule
+e89971adc4448bb322a77216889f2f8004429cfd	3	none	Work Model is a template, nothing narrows which applies (rule 5)
+e27aab929e8a2b77f1bafde724cae54a50bca29d	3	remote	"Workplace type: Remote" field-like value
+5cb5f484b3149570e63e002387d321c72c961af1	3	hybrid	company floor policy (25% office time) covers every role (rule 1)
+275d3bc6070272b36501fc379b62a8a199750043	3	onsite	"based in our Southlake, TX office" standalone statement
+35525cf93c1e14cf1490ccae20944b7fd689904d	3	remote	explicit "fully remote role" statement
+edb597316c77c6ce21d97fc42f0862ba00a7bd4c	3	onsite	"designed as Onsite" explicit statement
+be40bf12f615fe7da3d27ee6972c29a3a155ce8f	3	none	on-camera interview policy, not work mode
+6cd83d0e843534bbd0f6a151c8815b096a3ada62	3	hybrid	"Location: London (Hybrid)" label
+9ff34c4ea9744ee87e897e8238c71ae51356e944	3	none	office location named only as a pay factor
+e2804c3310d0182509ae8fe7ec299e44dc29fc8a	3	hybrid	company hybrid policy (no hedge) covers every role (rule 1)
+36b6c9d3b80edb594733428eb2466babddf2f2da	3	onsite	"designed as Onsite" explicit statement
+c2081e323e3fb510864ce8469c7ad04703b59c73	3	onsite	explicit "onsite role ... regular in-person presence"
+8b3048233e4503b551949fb5b67e3f8d999bb3e6	3	hybrid	company floor policy (25% office time) covers every role (rule 1)
+1742b5dd147ae32b9a44fc948ad2b00d3524cc9c	3	onsite	explicit "provide on-site ... support" statement
+467f28f3912acba7ee2c9eda92a4603c058e688a	3	remote	explicit "Remote Position"/"Fully Remote"
+f8a98aea0bef50992d7ca3062026b803badc1b8f	3	hybrid	"based in Warsaw (hybrid model)" explicit statement
+e15688db448896e0eaf8416caa9ae8fb289710b4	3	none	"on-site visitor engagement" about the product's users, not this job (rule 2)
+c5f8dd6cd49a48309db864640bd8fb3b0b472314	3	none	"office culture" is atmosphere, not a mode statement
+6975642b0e0cfdffdd0b1b3d19b3383eecba75ef	3	onsite	role operates the Korea office (active statement)
+022854b02805bc9d2811a549c7a114e085e69004	3	none	location field repeated, no mode word
+9a0fbe644c4c2a63b08b6dd46a25d2b2789acccd	3	onsite	"work in our New York office" standalone statement
+c871699004cab336c75d4329733b0b00ad50733b	3	onsite,remote	choice offered: Somerville office or fully remote (rule 5)
+4f34fa0fa104bc461c3e2627d79d7cf55ab57ad6	3	remote	"LI-Remote" recruiting tag label (rule 3)
+6d3e137458789faaca4ec118a6b70263ed88ddbc	3	none	"remote-first company" statement, not plainly covering every role (rule 1)
+55c57e33bc9b70f56ddde2c8b7f448b25139c1e9	3	none	hedged company policy (rule 1)
+15d198acdfca5014bf9ab0d97f5f06466b8b67a1	3	none	perk/flexibility framing (rule 1)
+5c0c64d6047059d2ad8fbb90df21f1f01b42cc91	3	hybrid	team statement with schedule (rule 1)
+fb7e36d973bbd03974c6e38e871465a2b4678629	3	hybrid	specific statement with schedule (rule 3)
+7e002e0364ce9b55f858e2d62e25d0ec26155f0f	3	onsite	recruiting tag (rule 3)
+ea28a95de3487a0a84407550eaf4f92a40db3733	3	none	template, nothing narrows (rule 5)
+f0a8079074bf42915737b97f2fdaf1aff46fd6f9	3	hybrid	recruiting tag (rule 3)
+b3c1fc7a79851edad965ec530f90434047ef6cf5	3	none	tech term, not a mode (rule 2)
+4e03319c9b9e1b0a12a30580a401df3fe598d551	3	none	hedged company policy (rule 1)
+85f43e6401113d312570f764a7ef6f6c4ac6da06	3	none	tech term, not a mode (rule 2)
+0f59f9b68b0aaa93dd8c020a01a3cb0cb430528c	3	none	flexibility framing (rule 1)
+a96c94c18751b84e1b0a48ecf4f8aadda3fdb255	3	hybrid	heading names mode with schedule (rule 3)
+d4f70b0d47b9369f340ea42ba2389a26c40d964b	3	none	vague benefit, no mode
+3675d46d7a04194d39c716b8fc990e49035b8903	3	hybrid	specific statement overrides hedge (rule 3)
+a5c130fa4b9b4a42e01b79afb19be8e7d3d4384a	3	none	tech term, not a mode (rule 2)
+e868b4051fb58fe8554d6ab5a127633fd556b261	3	hybrid	specific statement (rule 3)
+9ac06666d6489d52aa1426472fc72784058de46a	3	none	interview process, not work location
+4e35450342c24fda0aa9b1e70b97bb8f7ae548a9	3	remote	location-conditioned policy (rule 1)
+63a7423b707855bca44771152fa90a37d829870a	3	onsite	specific statement, modes ruled out (rule 5)
+ad82260c94065f1632233d8b468f7fdb0cef2fc5	3	none	interview policy, not a mode
+93ac15d3c417546ad4b8fca9d9125270876ca831	3	hybrid	specific statement (rule 3)
+1531b696a8b4661e75c01510fbc97887dacfc35f	3	hybrid,onsite	choice offered (rule 5)
+c2e7c1f3fff0953df5546f65c7522209b4218854	3	remote	specific statement, occasional travel allowed
+a9becdae9298e6f0a9e5f91e356f64766873c619	3	none	flexibility framing (rule 1)
+37dc2f017d685d7d2a0b493de4035c397d1d9b1b	3	onsite	location label (rule 3)
+11206e3685b167628ed9304071c53090b7152982	3	hybrid	specific statement with schedule (rule 4)
+73892b716ee4ec817cd6a3363524c2bf31931dc3	3	none	benefit list, flexibility framing (rule 1)
+77bbada0f2fa4113d2c62e6b3299b572f56c2e98	3	hybrid	specific statement with schedule (rule 4)
+1c8da465b703bdc8bd737640c548bd35c2108211	3	hybrid	specific statement with schedule (rule 4)
+c4332a31a2186722eece57ebb3c34f0d1a9ed0c1	3	none	fraud alert, not a mode
+0f356d5ffa85a7cb762b53b3d066cb2143eadccd	3	onsite	title names campus, most specific (rule 3)
+317b3fe064c497ed74f4230eacd4c833b9ff94ba	3	none	benefit mention, not a mode (rule 1)
+fd0826fe399dbf56aac911267e182196ed2a1829	3	none	candidate experience, not this job's mode
+719b791f5f419c9e5954482460644ef4ab75732f	3	hybrid,remote	choice depending on circumstances (rule 5)
+760d48cd217155e9294904a4052c3f673c5fe7a3	3	onsite	job-details heading value (rule 3)
+111beca1f653be76a8fb3f7fd02fd21467761716	3	none	benefit mention, not a mode (rule 2)
+648b69cde57e17cd69fdadd4c766dcc62a72d158	3	onsite	title names campus, most specific (rule 3)
+f84cda15dc567271a73b01f1762619db463de805	3	hybrid,remote	location-based policy, choice (rule 1)
+1da6843f8bd14883adca44d8a0ea843b7af024f2	3	none	business-unit terms, not a mode (rule 2)
+310b880deab900a07d21354a130069fca38c4b68	3	remote	heading names mode alone (rule 3)
+05be3d61f52e28dd299f674c2cbac686268f8277	3	none	benefit/interview mention, not a mode
+8fae8ecd9140080849e4e5d885433e41706e254d	3	onsite	location label (rule 3)
+14be713ab7b058457727d32a730ad9177d5264db	3	hybrid,onsite	choice stated (rule 5)
+a292d11c1e21e12361f418b7273a1f46ae5525ae	3	none	hedged company statement (rule 1)
+7ea2478f67f7839c80cb0f7947fb3685e92691a4	3	onsite	specific statement with schedule (rule 4)
+e312380eac7d0c63c579358b7ddd757e57423456	3	none	business term, not a mode (rule 2)
+0878e7b01030bb249c44d9e795ae9e2ef5bbbf81	3	none	flexibility framing (rule 1)
+0fe47a7141ae1ac28bc102119e982c88f33fa4e1	3	hybrid	specific statement with schedule (rule 4)
+9231ca3879a8ccf68a587a2fc706e8e3538f05d8	3	onsite	location is company HQ (rule 3)
+80c44c821d5019194dbcaa5a3d736905c0f32807	3	onsite	specific statement (rule 3)
+a5570ac3bd8cc5748b63ae15e07eebed8a8f9375	3	none	department name, not a location/mode statement
+4332735d4a3584210990ba10f7d9c1a61600da29	3	remote	job-details value, Workplace type: Remote
+1a58491a0ab623da570e260fc6384a0754f3cfc2	3	onsite	most specific statement, on-site support at site
+805064aca1d4e536a04d366bb1e0a1bc51125af1	3	remote	job-details value, Full-Time Remote
+31bc417cf2fc7a84b91f11b692d7753aa3142ac8	3	onsite	not remote, must be local to facility
+a47b46eb8b89dbe33ece010c8d5137cff566127d	3	none	Work Model template, nothing narrows it
+59f32b81abf2072c0d2982d21bed4a9412695c67	3	none	hybrid listed as a benefit/perk
+d08107c5dd21f0400548c701b13161ddbdd48bf7	3	none	company/product description, not this role
+27b60b2ca4b34537b6818288bc9e1e41eb292797	3	none	Hybrid RAG names what work is about
+71e42a2a48207073f92ce1f4c3f388d179761fbf	3	onsite	categorized Office, 80-100% of time at office
+02b0e4a9ce2dcd1955d3ae67601289f84bee0573	3	none	hybrid models names what work is about
+59605c90dcd10eeb76082b741cda70ebbf76a809	3	none	company statement not plain, hedged by office mention
+6703419be00ed8714bdc00b4de8f6c29d9df02c7	3	none	flexible working offered as a perk
+a472e14a9cde8d17b75a5b4e565fb1cab2a91db2	3	onsite	stated on-site, hybrid possible is an exception
+624d06ea3f1f5b896a11a64af5f090a59619b2b1	3	onsite	primarily office-based, remote as needed is exception
+8c97de2fb2d1294c087b4ef289ee3cf19f5d0967	3	none	no mode statement, office lunch is a benefit
+1b76fd8467e11618272f3c7cdde1cde06cca18da	3	onsite	requires in-person availability
+5621bcc2e75c9ff23792ce2dc1af56fc330d061a	3	none	physical/ergonomic office description
+dbf669fdd42e8293a893148fb2c1b24c3b2935f2	3	hybrid,remote	policy naming mode per location, Portugal
+e0d877e4d4754ea2998011f9d583f034897c8a1a	3	hybrid	company states current hybrid practice, unhedged
+10368c29b102810fd5960939da8c4be46bcc8f9e	3	hybrid	explicit Work Model for this Role heading
+be4bc7890d90a248618490da6bf9a336a35a2bba	3	remote	Virtual Location is a location label
+0ec8aa7b425663603e8c1ddb7ddde72f7d0bae1e	3	none	hybrid cloud is a technical term; culture is hedged perk
+3ee59ca8cb9a4163a8be6371e6e193e22969a466	3	none	company remote-first statement not plain
+f37e56e0c19055ff69cb84e280422f71e23f82da	3	hybrid	most specific statement outweighs heading label
+2b985d16a47c6da38f7ced1e98a3632c3d767d07	3	none	hybrid listed as a benefit/perk
+c608e446ce53951c11ba4314bcb63b0439315870	3	none	Environmental Conditions: Office is a setting
+cb69fc6f43adea6314cf88b403c7dda7449cbc19	3	onsite	position stated as located at state office
+a1b55ec853d744a505f5b7f42d63fe9b22fe5eb4	3	onsite	work conducted at lab/observatory sites
+2483b04d3845b850bd2f033e6d4150ae9a9b2362	3	remote	primary ongoing mode, hybrid is onboarding exception
+8ad7cde8371b938521396c7946faaee0e8d886ad	3	hybrid	company states hybrid work model, unhedged
+8941f117f3e6988e1f649b1f76b3ba132b0a37ca	3	none	physical office setting description
+f8ddaaa5b58cfdc1cfd743a6509c5b7a8e2d3cc5	3	none	company office locations; hybrid names environment type
+bee71462b2d251c0e37839c04b47343611b4aa45	3	onsite	job's work is travelling to sites
+fbc95b1702c457c5ad99eb24265def24e9758694	3	hybrid	company states hybrid work model, unhedged
+67e7d5758eb23fb5150d68e28c478ef43e0bfa9a	3	none	flex work policy hedged, depending on role
+9a26e2f1c53043340da51cf8e725ba9d8045e34a	3	none	Environmental Conditions: Office is a setting
+0c22b6f8008684cb179c8600be7ce37cc80dda9b	3	remote	location label Remote, confirmed by benefit line
+552d4c0c47a15672c6ae4bd17023d6dc404d69e7	3	hybrid	specific statement, hybrid three days in office
+e001b645f82cfac69629e624c6efe8f187b490ce	3	none	Environmental Conditions: Office is a setting
+fb2a0f0a28192d353d6c9a545bf3107b5ecc8368	3	none	Work Model template, nothing narrows it
+248cf961cdc630d7606133c65ef581527afbde77	3	hybrid	regular split, client-site travel and remote/office
+e740acda147532fe149f81eff4d9fe8b42d55ad1	3	none	Work Model template, nothing narrows it
+4beed5ef88fbd99a974dc83711ef3036979f63bb	3	none	front/middle office are department terms
+d7cca89882606317eb8f0d2853ff394fe1b27167	3	none	remote names network infrastructure, not mode
+4806747c547b4e92bd17fc9281deb2e5dfdbcd7a	3	none	benefit for a subset, office based employees
+7fc2549077e4eb7f0cbd606ede959e1585417f23	3	none	flexible working arrangements listed as a benefit
+c5fe710e87aebd9f609a39644c56ba87ab59abc8	3	hybrid	explicit hybrid under Work Environment heading
+a6accf03d83618b25a8493b1ec12b40eaf7e070d	3	none	hybrid model hedged to office-based roles
+07e866e1ddf689f2ec9e40ac12041b8bf2a34b79	3	remote	company choice is flexibility, declares nothing; LI-Remote tag decides
+84ffa5d1d99e8bbec77eb4402d0d77862a76c205	3	none	template defines labels, none assigned to role
+eb1b17f4377df1d8ef097e19aba8f32d2c4b9d78	3	none	company statement, not plainly every role
+4fac6dc8141363ce1d580370f1110c3eab74e6c0	3	onsite	role stated full-time onsite presence
+7cdb98183834850e8ebc7325978dc7c77b2f3f5f	3	none	WFH named as perk/flexibility
+28cac0afc7b1dae1a6182dcdd391484780f9945a	3	onsite	role described as onsite work
+6b827014e9e14f4ba0dd6f88ccd1d793d3965756	3	hybrid	floor policy, all colleagues 3 days/week
+a048bb174508641de839caf79649bc0432010e2e	3	none	remote/onsite describe job content, not mode
+c54d47d050c254974097c1d160622749117f013f	3	none	hybrid cloud names what work is about
+d02b0285957cbdb28807419c6532d7c54d152646	3	hybrid	most specific statement, hybrid 2 office days
+006b0b8f8235575c64261036ceec24466b5e25c6	3	onsite	expected to work from office regularly
+3d1d220d1422388de2c8838dd02eb3a07b965a0c	3	hybrid	floor policy, individuals 3-4 days/week
+e7c8e7639f8c654e49349dc814da8f3f9957cb7f	3	onsite	5 days/week in-office required
+4170281792773c5be84720d7acede6f1521ed5a2	3	none	hybrid cloud architectures names work's subject
+c9cfaf019edfd0b8df9772b72bde948a86e1f7a0	3	none	hybrid named within benefits/flexibility
+2fa897b26f2c2915425fbac8fba5d23f31db5f68	3	none	Office of the CFO is not a location statement
+6c41075c90d91d0c338fca12be4e28045abe80d1	3	none	template defines labels, none assigned to role
+0866fbf595860dc28561d398e18f67a4abbf645e	3	none	nothing read names a mode
+c18ea867297b0663a690d7ed95db4893969b329b	3	hybrid	most specific statement, hybrid 3 office days
+fd241a2bfceb3606af418fc6f6be9b493e6dba3e	3	none	template defines labels, none assigned to role
+d418eaa66106f31244ba59219f5abd2409b06b57	3	onsite	heading names mode with schedule, five days onsite
+017c0bb8f3e18a2868ff85926565c8028b6ab229	3	onsite	team/role statement, joins Lexington office
+1762d5ec5b56525ef0563cdc5fbd26e369136570	3	none	hybrid named as perk/flexibility
+53dbdc2c51d39d8ee3c37f606ad937f0acec6e78	3	onsite	label in location, (onsite)
+0c19aa95e42834d9692c0638b4efeff22fe1c928	3	onsite	job travels to sites for commissioning
+ccbafad06e8943fecbdbd163dcdec20149271c19	3	none	hybrid search names a technique, not mode
+096433a5ab7e8acc547cab05a1473f7744d7d2ac	3	onsite	must work from site 5 days/week
+cf1a976715367bc30465fcf8442b80b8f73abece	3	onsite	role explicitly stated on-site
+b5909d4038c5e0da10b6c042c66fd4cd0bd3ddbb	3	none	hybrid governance model names work's subject
+fda946c98967e6060c30139918b88785b3ffc724	3	remote	LI-remote recruiting tag
+2807c068a7d67f3023fcb80592c853f11f656e2a	3	none	hedged most roles, not every role
+3f30c3e80d50dea343762407b5291e2e93e602bd	3	onsite	explicitly required to work onsite
+8a87677b5f4d508aaefd8e3425920f755a94632b	3	onsite	works from office five days/week
+02c525c933b23067ff974bc4742540c84114be61	3	none	store/office content describes duties, not mode
+cbe9949a413c8fe7b655e796b805a5cc3966df0c	3	none	office productivity tools, not mode
+4a0b5469fe14801903109bae0429e5e71323b0ac	3	remote	LI-Remote recruiting tag
+02c4237766655b06b5cbdf6db33d3442665e0dcb	3	onsite	team/role statement, works in Huntsville office
+10cdbbfafbf6c342968165befd05f84ae5a9daeb	3	none	hedged hybrid model, varies by group
+3a59a04a08538a320115259aa1ceacb58b1a860c	3	none	hybrid cloud infrastructure names work's subject
+e41c8be0c398fe1a88fe4abc48aa3d4504bd8839	3	none	leads remote teams, not own work mode
+1583ba2aa78244754d0bdbfe888655a9bc110517	3	remote	role explicitly stated remote position
+f7827aa8467a2a139252de6f12041edf25af827e	3	none	hedged most of our locations
+2bc2186506bd4ed6876724909da80d44eea3d921	3	none	MS Office tools, not mode
+3a3c628b90f0560c8d51131a798c9b8f45ecf393	3	none	template defines labels, none assigned to role
+a98d97a69377ab4b3b70f1b1b8bbb852b8deec26	3	remote	company fully distributed, plainly every role
+18fdb8d185095ba24a32c7f886bd56f1bcd00cc2	3	none	hybrid named within benefits highlights
+68eb72f206b137ff6ab1809ec0b82bee39bc1a4d	3	hybrid	value under Working Conditions heading
+e16606c46622c41a98c025e4a78294e138592442	3	none	nothing read names a mode
+1a897646919b156ddaf12d3f8ffd95354b2add17	3	none	hybrid/flexible named within benefits
+6e26d1298ace1166172e4109119ab022f297b37f	3	onsite	label in location, (Onsite)
+14be0072a744ee4828a3b6e280e6b3f76ba3733c	3	none	hedged majority of crew members

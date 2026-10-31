@@ -1,0 +1,122 @@
+[
+ {
+  "id": "726732",
+  "text": "company: (IND) Ecolab Global Services Private Limited\ntitle: IT Trainee\nlocation: ESP - Catalonia - Barcelona\nfield: -\ndescription:\n[under: The Role] Join our IT team in Ecolab as an IT Trainee based in our office in Sant Joan Despi (Barcelona).\n[under: What you will do] - Using remote control software, you will provide onsite and cross-border support.\n[under: Qualifications & Skills] - Proficient with MS Office 365 & Windows 11.\n[under: Familiarity with desktop applications, including the following] - VPN, remote/wireless access connectivity configuration and maintenance\n[under: Familiarity with desktop applications, including the following] - Remote Software like GoToAssist or Bomgar.\n[under: What we offer] - Work schedule: 9AM to 6PM (daily presence at the office is needed for the role).",
+  "a": "none",
+  "b": "onsite"
+ },
+ {
+  "id": "742916",
+  "text": "company: Evolent Health LLC\ntitle: Platform Engineer - Internal Developer Platform\nlocation: Pune\nfield: -\ndescription:\n[under: Why This Role Matters] You will turn approved designs into provisioned, automated, and documented platforms, and you will do it transparently, through formal handoffs, Office Hours reviews, and documentation your peers can actually rely on.\n[under: What You'll Be Doing] We conduct identity verification during interviews, and final interviews may require onsite attendance.\n[under: What You'll Be Doing] All candidates must complete a comprehensive background check, in-person I-9 verification, and may be subject to drug screening prior to employment.\n[under: Mandatory Requirements] Employees must have a high-speed broadband internet connection with a minimum speed of 50 Mbps and the ability to set up a wired connection to their home network to ensure effective remote work.",
+  "a": "remote",
+  "b": "none"
+ },
+ {
+  "id": "756938",
+  "text": "company: Financial Ombudsman Service\ntitle: Network Engineer\nlocation: London - Exchange Tower\nfield: -\ndescription:\n[under: Network Engineer] By joining our team, you'll enjoy the best of both worlds – hybrid working and the collaboration of a great office environment.\n[under: Network Engineer] Our permanent hybrid policy sees us all working at least four days across a fortnight in the office.\n[under: Technical minimum criteria] - Strong hands-on experience with Cisco networking technologies, including routing and switches (Nexus and Catalyst), SD-WAN, Wireless, and remote access solutions (e.g. Cisco Secure Client/AnyConnect and ASAv), with the ability to implement, support and troubleshoot in a complex environment.\n[under: Why You'll Love Working With Us] - Flexibility: Work your way — remote, hybrid, or in-office\n[under: Why You'll Love Working With Us] - Gym membership discounts, and a fully equipped on-site gym open 24/7 in London only",
+  "a": "remote,hybrid,onsite",
+  "b": "hybrid"
+ },
+ {
+  "id": "774726",
+  "text": "company: ETLA Limited\ntitle: QA Engineer\nlocation: Singapore, Singapore\nfield: -\ndescription:\n[under: Audits and Compliance] - Support or lead customer audits (onsite or remote).",
+  "a": "none",
+  "b": "remote,onsite"
+ },
+ {
+  "id": "775880",
+  "text": "company: 300 FLEXTRONICS MANUFACTURING MEX, SA DE CV.\ntitle: Business System Analyst\nlocation: Mexico, Guadalajara\nfield: -\ndescription:\n[under: What a typical day looks like] - Ensure staff attendance is needed on site to support day to day",
+  "a": "none",
+  "b": "onsite"
+ },
+ {
+  "id": "785752",
+  "text": "company: Grand Canyon University\ntitle: Programming in C# III – Adjunct Faculty – Traditional Campus - (Spring 2027) – College of Engineering and Technology\nlocation: AZ Phoenix\nfield: -\ndescription:\n[under: GCU Traditional Campus – Phoenix, AZ] - Courses are in-person and on-campus for the Spring 2027 Semester (01/04/2027 04/23/2027)",
+  "a": "onsite",
+  "b": "none"
+ },
+ {
+  "id": "787422",
+  "text": "company: US04 GEA Systems North America LLC\ntitle: Automation Engineer Field Support\nlocation: Colognola ai Colli\nfield: -\ndescription:\n[under: Responsibilities / Tasks] L’attività viene svolta principalmente dalla sede aziendale, fornendo assistenza tecnica da remoto.\n[under: Responsibilities / Tasks] - Fornire assistenza tecnica remota ai tecnici presenti in cantiere per problematiche relative a PLC, HMI, inverter ed azionamenti, reti industriali Profinet o ETH IP;\n[under: Responsibilities / Tasks] - Analizzare anomalie e malfunzionamenti software attraverso connessioni remote, log diagnostici e confronti con il personale di campo;\n[under: Your Profile / Qualifications] - Conoscenza dei sistemi di accesso remoto e teleassistenza industriale;",
+  "a": "onsite",
+  "b": "none"
+ },
+ {
+  "id": "796644",
+  "text": "company: General Motors LLC\ntitle: Senior Software Engineer\nlocation: Warren, Michigan, United States of America\nfield: -\ndescription:\n[under: DUTIES] Develop applications on back-office microservices, mobile, web, and in-vehicle customer platforms.\n[under: DUTIES] Leverage the company’s private Pivotal Cloud Foundry, Hybrid Cloud environment, Notification Platforms, Customer domain applications and Big Data backend services, allowing opportunities to work in numerous technologies on applications achieving continuous availability.\n[under: DUTIES] Hybrid Work Policy - 3 days In-office, 2 days remote - Must be able to report to local office.",
+  "a": "hybrid",
+  "b": "none"
+ },
+ {
+  "id": "796660",
+  "text": "company: General Motors LLC\ntitle: Technical Lead Manager, Sensing Systems Design & Validation\nlocation: Sunnyvale, California, United States of America\nfield: -\ndescription:\n[under: Work Arrangement] This role is categorized as Remote/hybrid.\n[under: Work Arrangement] Remote: This role is based remotely but if you live within a 50-mile radius of [Austin, Detroit, Seattle, Warren, Milford, Sunnyvale ], you are expected to report to that location three times per week, at minimum.",
+  "a": "none",
+  "b": "hybrid"
+ },
+ {
+  "id": "796737",
+  "text": "company: General Motors LLC\ntitle: Staff Software Engineer - Networking\nlocation: Sunnyvale, California, United States of America\nfield: -\ndescription:\n[under: Job Description] As a Staff/Senior Software Engineer - Networking in the AV (Autonomous Vehicle) Core Infrastructure organization, you will build and maintain software systems that automate, manage, and operate the secure hybrid network fabric supporting the global AV development pipeline.\n[under: Network Software Systems] - Build telemetry and observability capabilities that provide actionable insight into hybrid connectivity and network-service health.\n# Hybrid Network Architecture & Strategy\n[under: Data Ingestion & On-Prem Connectivity] - Optimize end-to-end network paths from hardware ingestion points through secure hybrid connectivity and into cloud storage and compute environments.\n[under: Security, Performance & Reliability] - Participate in an on-call rotation and incident response for network services and hybrid connectivity.\n[under: Technical Domain Knowledge] - Hands-on experience with GCP networking, such as VPCs, Shared VPCs, routing, firewall policies, load balancing, and hybrid connectivity.\n[under: Qualifications] - Remote/Hybrid: This role is based in Sunnyvale, CA or Austin, TX if you live within a 50-mile radius of an office location you are expected to report to that location three times a week, at minimum.",
+  "a": "hybrid",
+  "b": "none"
+ },
+ {
+  "id": "836619",
+  "text": "company: US101 Guidehouse Inc.\ntitle: Staff II - Fraud Analytics Consultant (Senior Consultant)\nlocation: US - VA, Arlington\nfield: -\ndescription:\n[under: What You Will Do] - Work onsite at the client location in Lanham, Maryland five days per week and collaborate closely with government personnel and contractor team members.\n[under: What You Will Need] - Ability and willingness to work onsite at the client location in Verbal and Written Communication Skills\n[under: What You Will Need] - Ability and willingness to work onsite at the client location in Lanham, Maryland five days per week.",
+  "a": "onsite",
+  "b": "none"
+ },
+ {
+  "id": "892775",
+  "text": "company: U025 Kraft Foods Group Brands LLC Company\ntitle: Growth Platform Manager - Mayo & Condiments\nlocation: London - The Shard\nfield: -\ndescription:\n[under: What we offer you] - A hybrid working model: we believe the future of work is built on a modern, adaptable and agile workplace culture. You’ll work 3 days from our office in London or Amsterdam and 2 days from home, with an additional 20 days per year to work from anywhere you want.\n[under: What we offer you] - Additional benefits such as Commuting Allowance, Hybrid Work Allowance & Reimbursements, Bicycle & Gym Discount Plan, Employee Assistance Program and Supplemental Health Insurance.",
+  "a": "none",
+  "b": "hybrid"
+ },
+ {
+  "id": "895262",
+  "text": "company: Highmark Health\ntitle: Principal Architect\nlocation: PA, Working at Home - Pennsylvania\nfield: -\ndescription:\n[under: Position Type] Office- or Remote-based\n[under: Position Type] Travel from the office to various work sites or from site-to-site\n[under: Position Type] Works primarily out-of-the office selling products/services (sales employees)",
+  "a": "remote",
+  "b": "none"
+ },
+ {
+  "id": "924982",
+  "text": "company: hpe.wd5/acjobsite\ntitle: Senior Cloud Developer\nlocation: Hyderabad, Telangana, India\nfield: -\ndescription:\nThis role has been designed as ‘’Onsite’ with an expectation that you will primarily work from an HPE office.\n[under: Job Description] In the HPE Hybrid Cloud, we lead the innovation agenda and technology roadmap for all of HPE.\n[under: Management Level Definition] Joining our Hybrid Cloud HPE team and working as part of our OpsRamp team is a chance to make history and be a driving force in the industry.\n[under: Management Level Definition] We are revolutionizing cloud computing by building a large-scale, enterprise-ready platform that powers a hybrid edge-to-cloud world.\n[under: Management Level Definition] We do this through hybrid discovery and monitoring, event and incident management, remediation, and automation, powered by AI.\n[under: What You’ll do] - Demonstrated abilities to work with Product management, QA, and remote teams.\n[under: Let's Stay Connected] hybridcloud\n[under: Recruitment Fraud Alert] These scams may occur through false websites, emails, social media, or chat-based applications and often aim to obtain personal information or money.",
+  "a": "none",
+  "b": "onsite"
+ },
+ {
+  "id": "943602",
+  "text": "company: 55820 Iron Mountain Services S.A.S.\ntitle: Systems Engineer\nlocation: US | MD | Jessup | 8200 Preston Court Suites A-K\nfield: -\ndescription:\n[under: THE OPPORTUNITY] Location: Jessup, MD (On-site)\n[under: Job Summary] The Systems Engineer will be responsible for providing on-site support at our Jessup imaging center as well as\n[under: In this role, you will] - Provide Critical Site Support: Deliver on-site support at our Royersford imaging center and provide support for our central imaging and file transfer environments (FISMA/IMGS).\n[under: The ideal candidate will have] - Technical System Expertise: Extensive experience with remote control tools, Windows 10, Windows 11, Windows Server 2016, SQL Database, and Active Directory.\n[under: The ideal candidate will have] - IT Infrastructure Knowledge: Deep understanding of the various IT functions (Desktop, Server, Network), with providing on-site technical support and hardware/software installation.",
+  "a": "none",
+  "b": "onsite"
+ },
+ {
+  "id": "950779",
+  "text": "company: IME Mediabrands Worldwide, Inc.\ntitle: Manager Analytics and Insights\nlocation: New York, New York, United States of America\nfield: -\ndescription:\n[under: What you will need] Omnicom’s policy requires employees to work in the office for a minimum of three days a week, unless additional in-office days are directed by their agency or manager.\n[under: What you will need] Our objective is to increase this requirement over time, and many of our agencies as well as Omnicom’s corporate group already require five days of in-office attendance.",
+  "a": "none",
+  "b": "hybrid"
+ },
+ {
+  "id": "1016485",
+  "text": "company: Leonardo UK Ltd\ntitle: Software Engineer Graduate Apprenticeship\nlocation: GB - Edinburgh\nfield: -\ndescription:\n[under: Key Responsibility Areas] During the teaching semesters, you will be required to attend University classes, seminars and labs on one day a week and, in addition, will be allowed another day to complete University projects and assignments.\n# Hybrid Working\n[under: Hybrid Working] Hybrid",
+  "a": "hybrid",
+  "b": "none"
+ },
+ {
+  "id": "1019348",
+  "text": "company: Logicalis, Inc.\ntitle: Service Desk Technician - Bilingual Mandarin/English\nlocation: US Virtual Location\nfield: -\ndescription:\n[under: Experience / Technical Requirements] - Troubleshooting and/or configuration experience with IT Service Desk functions including Windows Operating Systems, Microsoft Office products, as well as general networking knowledge.",
+  "a": "remote",
+  "b": "none"
+ },
+ {
+  "id": "1024577",
+  "text": "company: Department of Administrative and Financial Services\ntitle: Senior Programmer Analyst\nlocation: Augusta, Maine\nfield: -\ndescription:\n# Office of Information Technology\n[under: MaineIT DHHS Support Team] Telework: Available\n[under: OVERVIEW] The Department of Administrative and Financial Services (DAFS) Office of Information Technology (OIT) provides information technology support to over 13,000 employees.\n[under: DESCRIPTION] Hybrid Work Opportunity – This position currently has the opportunity to work from home as much as 90% of the time.\n[under: DESCRIPTION] There is a requirement that the employee be in the office at least once every two weeks and the remote work location must be in the State of Maine.\n[under: Knowledge] - SDLC management in an iterative hybrid environment\n[under: BENEFITS OF WORKING FOR THE STATE OF MAINE] - Health Insurance Premium Credit – Participation decreases employee-only premiums by 5%. Visit the Office of Employee Health and Wellness for more information about program requirements.\n[under: BENEFITS OF WORKING FOR THE STATE OF MAINE] - Public Service Student Loan Forgiveness – The State of Maine is a qualified employer for this federal program. For more information, visit the Federal Student Aid office.\n[under: BENEFITS OF WORKING FOR THE STATE OF MAINE] Learn about additional wellness benefits for State employees from the Office of Employee Health and Wellness.",
+  "a": "remote",
+  "b": "hybrid"
+ },
+ {
+  "id": "1039307",
+  "text": "company: Delta Faucet Company\ntitle: Sr. OT Network Engineer\nlocation: US - Indiana - Indianapolis\nfield: -\ndescription:\n[under: Your Role at Delta Faucet] WORK ENVIRONMENT: This position is based at Delta Faucet Company's Indianapolis, Indiana headquarters and requires regular onsite presence.\n[under: Enterprise OT Network Architecture and Strategy] - Establish lifecycle management standards for OT networking infrastructure, network management platforms, and remote access solutions.\n[under: OT Cybersecurity and Risk Management] - Support secure remote access solutions that balance operational requirements with cybersecurity best practices.\n[under: Required] - Strong understanding of routing, switching, firewalls, wireless technologies, remote connectivity, and network segmentation.Experience implementing OT cybersecurity controls, segmentation strategies, and secure remote access solutions.",
+  "a": "none",
+  "b": "onsite"
+ }
+]

@@ -1,0 +1,51 @@
+id	mode	reason
+805042	none	hedged company policy, role-specific flexibility
+30493	none	hedged "for most roles" policy
+271279	none	mode listed as a perk (What we offer)
+1463776	none	company network description, not this role
+895262	remote	location label "Working at Home"
+1477487	hybrid	heading label and #LI-Hybrid tag
+163138	none	hedged office-first culture statement
+734421	hybrid	#LI-HYBRID recruiting tag as label
+1233639	none	company offices fact, "remote state" is a tech term
+85142	onsite	in-person program statement for this role
+162637	hybrid	mandatory office days with schedule
+1336573	remote	"Virtual" location label
+892773	hybrid	role statement with schedule (3 days/week)
+1366708	none	Working Conditions physical setting, not mode
+340073	remote	Employment Type field label
+572017	none	template Work Model definitions, nothing narrows
+914244	onsite	Position Role Type field label
+1846	none	"Office" tool/compensation factor, not mode
+726732	onsite	daily office presence required
+336280	remote,hybrid	choice of modes depending on position
+105621	remote,hybrid	choice of modes by candidate location
+249077	none	"remote sensing" names work domain
+502164	none	"Remote Desktop Services" is a tech term
+181704	onsite	travel for on-site support, travelling job is onsite
+613205	none	"hybrid cloud" is a tech term
+664239	remote	heading label and #LI-Remote tag
+1338282	none	mode listed as a perk (Flexibility)
+485050	none	"hybrid" storage/cloud tech term
+1024577	hybrid	specific statement: WFH% with office schedule
+1121847	none	head office requirement, not this role's location
+188199	onsite	location field label "on-site"
+85339	onsite	relocation after remote trial implies onsite
+1360940	none	unfilled template placeholder, nothing narrows
+310994	hybrid	remote label with regular travel schedule to sites
+1065801	onsite	explicit "work onsite" statement
+650305	remote	remote work with only occasional on-site
+943828	none	hedged "vary based on business area"
+33094	none	mode listed as a perk (flexible hybrid work model)
+1151169	remote	Workplace type field label
+1237089	onsite	location label "(in-office)"
+571421	none	template Work Model definitions, nothing narrows
+1156953	none	"hybrid cloud" is a tech term
+292103	onsite	on-site at client facility, occasional travel is exception
+1402640	none	Environmental Conditions physical setting, not mode
+1480963	none	Work Environment physical setting, not mode
+1234011	onsite	"majority of tasking is performed on-site"
+282597	none	mode listed as a perk/benefit (What we offer)
+7147	none	benefit perks, no base mode stated
+498485	remote,onsite	choice of modes by venue/location
+1307619	onsite	company-wide floor: "all positions ... on-site"
