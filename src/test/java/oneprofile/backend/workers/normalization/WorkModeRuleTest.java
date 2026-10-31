@@ -171,6 +171,66 @@ class WorkModeRuleTest {
 	}
 
 	@ParameterizedTest
+	@CsvSource(delimiter = '|', value = { "Hybrid in Towson, MD or Columbia, MD, or Remote | HYBRID,REMOTE",
+			"United States (Hybrid or Remote) | HYBRID,REMOTE",
+			"Hybrid work in London, with a desk in our Shoreditch office, or remote in Germany or Spain | HYBRID,REMOTE",
+			"Office-Based (Leeds) / Home-Based | ONSITE,REMOTE",
+			"Hybrid or Remote depending on your location | HYBRID,REMOTE",
+			"Work location is variable with onsite, hybrid, or remote options | ONSITE,HYBRID,REMOTE",
+			"This role is on-site in our Fort Worth (or remote in the US) location. | ONSITE,REMOTE",
+			"This position will be onsite at the Sunnyvale plant and/or remote work. | ONSITE,REMOTE" })
+	void keepsEveryModeAChoiceOffersInTheShapesADescriptionWritesIt(String text, String modes) {
+		assertThat(modesIn(text)).containsExactlyInAnyOrderElementsOf(modes(modes));
+	}
+
+	@ParameterizedTest
+	@CsvSource(delimiter = '|', value = { "On-Site position, no remote or hybrid option | ONSITE",
+			"This is a hybrid role, with at least three days per week in the office or onsite with clients. | HYBRID",
+			"This role is in the office 3 days a week, choosing to work remotely or in the office the remaining days. | HYBRID",
+			"Location: Hybrid (onsite/remote) | HYBRID",
+			"Workplace type: Hybrid; Primarily remote with flexibility to come on site as needed | REMOTE",
+			"This position is 4 days in office. | HYBRID" })
+	void readsOneModeWhereATextNamingSeveralOffersNoChoice(String text, WorkModeEnum mode) {
+		assertThat(modesIn(text)).containsExactly(mode);
+	}
+
+	@Test
+	void readsATemplateListingEveryModeByWhatFollowsIt() {
+		assertThat(modesIn("Type of work model: Hybrid / Onsite / Remote", "Our Hybrid work model: 3 days in the office."))
+			.containsExactly(WorkModeEnum.HYBRID);
+		assertThat(modesIn("Type of work model: Hybrid / Onsite / Remote", "We build payments software.")).isEmpty();
+		assertThat(modesIn("Workplace type", "Remote / Onsite", "You will be onsite 3-4 days per week."))
+			.containsExactly(WorkModeEnum.HYBRID);
+	}
+
+	@ParameterizedTest
+	@CsvSource(delimiter = '|', value = { "The teams are all home based in different countries.",
+			"You will work as part of a remote, globally distributed team." })
+	void readsTheModeOfTheTeamThisRoleJoins(String text) {
+		assertThat(modesIn(text)).containsExactly(WorkModeEnum.REMOTE);
+	}
+
+	@Test
+	void readsAModeLabelUnderTheJobDetailsHeading() {
+		List<Segment> segments = List.of(new Segment(SegmentKindEnum.HEADING, null, "Job Details", false),
+				new Segment(SegmentKindEnum.ITEM, "Job Details", "Full-time / Remote", false));
+		assertThat(this.rule.read("Austin, TX", null, "Engineer", segments).modes()).containsExactly(WorkModeEnum.REMOTE);
+		List<Segment> benefits = List.of(new Segment(SegmentKindEnum.HEADING, null, "Benefits", false),
+				new Segment(SegmentKindEnum.ITEM, "Benefits", "Remote work", false));
+		assertThat(this.rule.read("Austin, TX", null, "Engineer", benefits).modes()).isEmpty();
+	}
+
+	@ParameterizedTest
+	@CsvSource(delimiter = '|', value = { "We offer hybrid or remote working for most roles.",
+			"You will collaborate with the onsite team in Austin.", "Remote / Hybrid / Onsite",
+			"Remote or hybrid roles enjoy a generous travel budget for team meetups.",
+			"We offer flexible work: hybrid or remote, depending on team needs.",
+			"Benefits include a home office stipend or hybrid commuter pass for eligible staff." })
+	void readsNoChoiceTheVacancyDoesNotOffer(String text) {
+		assertThat(modesIn(text)).isEmpty();
+	}
+
+	@ParameterizedTest
 	@CsvSource(delimiter = '|', value = { "Our culture pioneered hybrid work trends.", "Free on-site parking",
 			"Hybrid/flexible working options", "Experience building hybrid search over vector stores.",
 			"Support onsite and remote end users.", "We're a remote-first company.",
@@ -209,6 +269,10 @@ class WorkModeRuleTest {
 
 	private Set<WorkModeEnum> modesIn(String... description) {
 		return this.rule.read("Austin, TX", null, "Engineer", described(description)).modes();
+	}
+
+	private static List<WorkModeEnum> modes(String names) {
+		return List.of(names.split(",")).stream().map(WorkModeEnum::valueOf).toList();
 	}
 
 	private static List<Segment> described(String... texts) {
