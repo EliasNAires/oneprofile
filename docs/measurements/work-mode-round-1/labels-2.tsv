@@ -1,0 +1,51 @@
+id	mode	reason
+1024035	onsite	specific statement: based onsite
+772561	remote	location statement names remote
+64022	onsite	regular on-site presence, 5 days/week schedule
+1466351	onsite	most specific statement: location details onsite
+205673	onsite	in-office policy statement plus LI-ONSITE tag
+571635	none	work model template, nothing narrows it
+302664	none	hedged company/benefit statement, nothing decides
+125738	hybrid	company floor policy with schedule covers every role
+571913	none	work model template, nothing narrows it
+29041	hybrid	most specific statement, 3 office days/week schedule
+102170	onsite	explicit onsite location and in-office arrangement
+926669	remote	remote with occasional onsite is remote
+278339	hybrid	explicit statement this role is hybrid
+205651	onsite	in-office policy statement plus LI-ONSITE tag
+1196885	remote	most specific statement plus LI-Remote tag
+324120	hybrid	4 days/week office schedule plus LI-HYBRID tag
+926757	hybrid	mode word with schedule (2 days WFH)
+32329	hybrid,onsite	choice of modes by location
+572494	none	work model template, nothing narrows it
+940685	hybrid	specific statement with schedule, 2 remote/3 office
+789433	onsite	explicit onsite every workday, remote/hybrid ruled out
+307495	remote	remote eligibility statement; hybrid-cloud is a term not a mode
+653450	hybrid	specific workplace type with schedule
+825992	hybrid	recruiting tag, nothing more specific speaks
+1220604	none	remotely manage describes work subject, not location
+1105144	hybrid	company floor policy, at least 3 days/week in office
+797061	onsite	explicit onsite statement and telecommuting label
+1490879	remote	remote with occasional travel is remote
+571657	none	work model template, nothing narrows it
+160460	remote	statement about the team this role joins
+1159202	onsite	on-site attendance stated essential function
+1350491	hybrid	role type label states hybrid
+44711	remote	specific statement: open to remote locations
+1147116	none	hybrid names the role's blended function, not location
+797384	onsite	telecommuting options label states onsite
+39857	remote,hybrid	choice of modes offered by location
+275400	hybrid	specific statement: preferably hybrid/in-office
+310106	hybrid	recruiting tag, nothing more specific speaks
+271683	none	hybrid infrastructure is a technical term, not a mode
+334681	hybrid	specific statement, 3 days/week in person
+769616	none	hedged company transition statement, nothing decides
+572966	none	hybrid environments is a technical term; template, nothing narrows
+916968	remote	consistent remote statements across fields
+331751	none	remote access/remote hands are technical terms, not a mode
+185709	hybrid	explicit statement: hybrid work-model
+571947	none	work model template, nothing narrows it
+1161514	remote,hybrid	choice of modes by residency
+467572	onsite	most specific statement: full time on-site
+19822	hybrid	specific schedule, onsite Tue-Fri remote Monday
+1494967	none	remote control of systems is a technical term, not a mode

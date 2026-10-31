@@ -1,0 +1,44 @@
+#98 work-mode round 1, commit 22e7bd4, criterion revision 2
+
+labelled 200, unclear 0, the rule and the labeller split on 22
+adjudicated 22: 21 labeller, 1 rule
+
+precision
+  described remote          29 of  30   96.7%  (83% to 99%)
+  described hybrid          24 of  25   96.0%  (80% to 99%)
+  described onsite          24 of  25   96.0%  (80% to 99%)
+  described choice          11 of  20   55.0%  (34% to 74%)
+  every described           88 of 100   88.0%  (80% to 93%)
+  weighted by stratum size  94.3%  (89% to 98%)
+
+remote recall on undeclared vacancies
+  described remote          29 of  30 remote, the rule gives remote to 29
+  described hybrid           0 of  25 remote, the rule gives remote to 0
+  described onsite           0 of  25 remote, the rule gives remote to 0
+  described choice           9 of  20 remote, the rule gives remote to 9
+  silent remote              9 of 100 remote, the rule gives remote to 0
+  weighted by stratum size  72.2%  (61% to 86%)
+  silent vacancies not remote: 48 none, 31 hybrid, 12 onsite
+
+where the rule and the settled label split (rule -> settled)
+  707327  described choice WORKDAY  remote,hybrid -> hybrid  [combined modes under one schedule]  IT Service Desk Specialist 2 | Taguig, Philippines
+  1061256  described choice WORKDAY  remote,hybrid,onsite -> none  [hedged dependency not offered upfront]  Security Architect | Cork
+  275400  described choice ASHBY  hybrid,onsite -> hybrid  [slash-combined mode words one arrangement]  Product Manager, Payments & RCM | Weave - Headquarters (Lehi, UT)
+  288930  described choice GREENHOUSE  remote,hybrid,onsite -> hybrid  [specific field overrides generic template]  Senior Data Analyst (Finance) | São Paulo, Brazil
+  1080634  described choice WORKDAY  remote,hybrid -> hybrid  [specific office statement overrides generic phrase]  Network Engineer | Toronto Office
+  1080657  described choice WORKDAY  remote,hybrid -> hybrid  [specific office statement overrides generic phrase]  Systems Administrator III (Linux) | Toronto
+  16962  described choice GREENHOUSE  remote,hybrid,onsite -> none  [template listing modes unnarrowed]  Network Engineer | LATAM
+  59630  described choice GREENHOUSE  remote,hybrid,onsite -> none  [template listing modes unnarrowed]  Senior Salesforce Developer | Bulgaria, Poland
+  460018  described choice WORKDAY  remote,hybrid -> none  [template listing modes unnarrowed]  Implementation Analyst - Grad Program 2027 | Royal Oak, Michigan (USA)
+  1147116  described hybrid WORKDAY  hybrid -> none  [hybrid describes job function not location]  Senior Manager, AI Engineering | Hyderabad - Phoenix Aquila, India
+  926090  described onsite WORKDAY  onsite -> hybrid  [mode label contradicted by schedule]  Backend Intern | Herzliya, Israel
+  444765  described remote WORKDAY  remote -> onsite  [specific statement overrides recruiting tag]  Lead Integration Architect, Finance Systems Automation | 100 Ottawa Ave Sw - GRAND RAPIDS, MI
+  1094251  silent remote WORKDAY  none -> remote  [explicit fully remote statement]  Director - Adtech Operations Lowe's Media Network | Mooresville, NC (SSC) 1999
+  39857  silent remote GREENHOUSE  none -> remote,hybrid  [location-conditioned choice with schedule]  Senior Product Manager (EdTech & AI) | Serbia
+  44711  silent remote GREENHOUSE  none -> remote  [open to remote phrasing]  AI Engineer – Forward Deployed Engineering (AI FDE) | United States
+  130993  silent remote GREENHOUSE  none -> remote  [statement about the team joined]  Senior Software Engineer - Storage Engine - Elasticsearch | Ireland
+  160460  silent remote GREENHOUSE  none -> remote  [statement about the team joined]  C++ Developer | Armenia
+  1296034  silent remote WORKDAY  none -> remote  [team named remote directly]  Back-End Software Engineer | Boadilla del Monte
+  343287  silent remote GREENHOUSE  none -> remote  [title tag naming mode]  AI Platform Engineer | Brazil
+  988657  silent remote WORKDAY  none -> remote  [title tag naming mode]  IT Support Engineer | Mexico City, Distrito Federal, Mexico
+  1366351  silent remote WORKDAY  none -> remote  [working conditions state remote]  Presales Systems Engineer (HPE Networking) - CCA | Miramar, Florida, United States

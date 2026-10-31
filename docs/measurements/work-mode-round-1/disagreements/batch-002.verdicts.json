@@ -1,0 +1,4 @@
+{
+ "1296034": {"verdict": "a", "clause": "A statement about the team this role joins is about this vacancy", "pattern": "team named remote directly"},
+ "1366351": {"verdict": "a", "clause": "Remote: the work is done away from the employer's offices", "pattern": "working conditions state remote"}
+}

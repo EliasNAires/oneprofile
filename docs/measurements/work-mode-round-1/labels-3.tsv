@@ -1,0 +1,51 @@
+id	mode	reason
+707327	hybrid	specific statement with schedule, LI-Hybrid tag
+513747	none	no statement of this job's own location
+811238	onsite	remote-type field value Office
+571616	none	work-model template, nothing narrows
+1080634	hybrid	specific location statement, LI-Hybrid tag
+981318	none	only rules out remote, nothing declared
+548924	none	hedged company benefit statement
+1061604	remote,hybrid	heading offers a choice
+732669	hybrid	most specific statement, schedule given
+926090	hybrid	specific schedule outweighs bare onsite label
+325255	hybrid	specific schedule statement
+563736	hybrid	company floor covers every role
+925446	onsite	only statement, designed onsite
+444765	onsite	specific statement outweighs LI-Remote tag
+67323	none	company-wide statement, not vacancy-specific
+215617	hybrid	specific schedule, one day a week onsite
+1196944	none	hedged "most teams" statement
+19990	hybrid	specific schedule, most specific statement
+1353726	hybrid	LI-Hybrid tag, nothing more specific
+1285661	remote	LI-Remote tag, nothing more specific
+129704	remote	team statement, optional office not regular
+28068	remote	explicit fully remote statements
+571943	none	work-model template, nothing narrows
+657640	hybrid	company floor-schedule covers every role
+46449	remote,hybrid	explicit choice offered
+833087	none	remote access is a tech term
+764910	onsite	explicit onsite schedule statement
+339479	none	remote teams refers to collaborators
+988657	remote	field-like heading states Remote
+810939	hybrid	remote-type field value Hybrid
+1121492	hybrid	specific schedule statement
+657610	hybrid	explicit hybrid location and schedule
+571803	none	work-model template, nothing narrows
+641656	hybrid	explicit hybrid work model statement
+1061256	none	hedged choice, depending on requirements
+231178	none	flexible-working-culture statement, company-wide
+1296034	remote	explicit remote statement, team statement
+188652	none	remote troubleshooting is a duty, lunch is benefit
+778233	none	names office location only, no attendance stated
+155517	hybrid	explicit hybrid environment statement
+81014	none	company-wide statement, not vacancy-specific
+1366351	remote	explicit remote statement
+1183943	none	hedged "most roles" statement
+1094251	remote	explicit fully remote statement
+16962	none	template listing modes, nothing narrows
+1190498	onsite	explicit full-time onsite, rules out others
+572018	none	work-model template, nothing narrows
+315905	remote,hybrid	explicit choice offered
+8511	hybrid	specific statement, meets at office weekly
+437138	none	hedged benefit, opportunity to work remotely

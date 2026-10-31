@@ -1,0 +1,51 @@
+id	mode	reason
+318111	none	hedged company statement
+810812	hybrid	field states Hybrid
+1376378	hybrid	specific schedule, 2 days remote
+1069394	remote	explicit "this position is remote"
+1001237	remote	remote with occasional travel
+1320926	onsite	team stated onsite; hybrid line hedged
+306875	hybrid	explicit hybrid role with schedule
+1322043	hybrid	specific 2-day office schedule
+14838	remote	explicit "fully remote role"
+142396	remote	role stated as can be remote
+460018	none	generic benefit statement, not vacancy's
+130993	remote	team stated fully remote
+196073	remote	explicit Location: Remote label
+132538	onsite	explicit in-person, no remote statement
+1078636	none	nothing declares a mode
+498574	onsite	explicit "this is an on-site position"
+59630	none	generic benefits flexibility statement
+798179	onsite	explicit Work Location: Onsite
+573010	none	template defines modes, nothing narrows
+81369	onsite	explicit in-office presence required
+1152230	hybrid	explicit Role Type: Hybrid field
+14002	hybrid	specific office-days schedule (4-5/wk)
+170986	remote	explicit Location: Remote label
+835173	hybrid	specific 2-day office schedule
+1140086	hybrid	specific once-a-week office schedule
+25812	onsite,remote	choice stated onsite/remote
+141050	onsite,remote	choice stated office or remote
+36060	onsite	LI-Onsite tag; policy hedged
+288930	hybrid	explicit Work Type: Hybrid field
+616561	hybrid	specific 4-day office schedule
+911034	remote	explicit "this is a remote position"
+1020619	hybrid	schedule: 1 day WFH/week
+1139960	none	"remote" names tool, not mode
+217	onsite	LI-Onsite tag, nothing else specific
+1510171	none	policy hedged "depending on role"
+645196	hybrid	mode word with schedule (onsite 4 days/wk)
+171741	onsite,hybrid	choice stated onsite or hybrid
+972232	hybrid,remote	Posting Type choice
+343892	remote	explicit Location: Remote, no office attendance
+875318	onsite	explicit "this is an on-site role"
+65821	none	generic benefit policy statement
+914069	onsite	explicit Position Role Type: Onsite
+792661	remote	explicit Location: Remote label
+1443407	remote,hybrid	explicit choice stated
+275240	hybrid	explicit hybrid working model statement
+48583	remote	explicit "this is a remote role"
+664202	none	hedged general policy, nothing specific
+1020481	hybrid	LI-Hybrid tag; others are tech terms
+1080657	hybrid	specific statement: office + remote balance
+1086327	onsite	specific sentence outweighs bare label

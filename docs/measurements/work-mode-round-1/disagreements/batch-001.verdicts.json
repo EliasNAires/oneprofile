@@ -1,0 +1,22 @@
+{
+  "14002": {"verdict": "a", "clause": "Onsite: every working day, or nearly", "pattern": "office nearly every day"},
+  "16962": {"verdict": "a", "clause": "A template is not a choice", "pattern": "template listing modes unnarrowed"},
+  "39857": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "location-conditioned choice with schedule"},
+  "44711": {"verdict": "b", "clause": "Remote: the work is done away from the employer's offices", "pattern": "open to remote phrasing"},
+  "59630": {"verdict": "b", "clause": "A template is not a choice", "pattern": "template listing modes unnarrowed"},
+  "130993": {"verdict": "a", "clause": "A statement about the team this role joins is about this vacancy", "pattern": "statement about the team joined"},
+  "160460": {"verdict": "a", "clause": "A statement about the team this role joins is about this vacancy", "pattern": "statement about the team joined"},
+  "275400": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "slash-combined mode words one arrangement"},
+  "288930": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "specific field overrides generic template"},
+  "343287": {"verdict": "b", "clause": "A recruiting tag/label counts where nothing more specific speaks", "pattern": "title tag naming mode"},
+  "444765": {"verdict": "b", "clause": "The most specific statement about this job decides, outweighs a bare label", "pattern": "specific statement overrides recruiting tag"},
+  "460018": {"verdict": "a", "clause": "A template is not a choice", "pattern": "template listing modes unnarrowed"},
+  "707327": {"verdict": "a", "clause": "Several modes carrying one schedule between them are one mode, the schedule's", "pattern": "combined modes under one schedule"},
+  "926090": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "mode label contradicted by schedule"},
+  "988657": {"verdict": "a", "clause": "A recruiting tag/label counts where nothing more specific speaks", "pattern": "title tag naming mode"},
+  "1061256": {"verdict": "a", "clause": "Offered, not excepted: a choice is offered to the candidate up front", "pattern": "hedged dependency not offered upfront"},
+  "1080634": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "specific office statement overrides generic phrase"},
+  "1080657": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "specific office statement overrides generic phrase"},
+  "1094251": {"verdict": "b", "clause": "Remote: the work is done away from the employer's offices", "pattern": "explicit fully remote statement"},
+  "1147116": {"verdict": "b", "clause": "A word naming what the work is about is not a mode", "pattern": "hybrid describes job function not location"}
+}

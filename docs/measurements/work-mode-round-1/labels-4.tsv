@@ -1,0 +1,51 @@
+id	mode	reason
+571988	none	template no narrowing, rule 5
+17649	none	remote describes review sessions not location, rule 2
+660221	onsite	role-specific onsite expectation, rule 3
+1245196	hybrid	1 day WFH rest office, rule 4
+287219	remote	explicit fully remote role, rule 3
+68132	hybrid	explicit hybrid schedule, rule 4
+286917	hybrid	explicit hybrid statement
+144438	onsite	explicit onsite, remote/hybrid ruled out, rule 5
+1358636	none	generic benefits list not vacancy-specific, rule 1
+351836	none	remote session is support channel not location, rule 2
+339533	none	conditional hedged remote offer, rule 1
+573365	none	template no narrowing, rule 5
+538794	remote,hybrid,onsite	explicit choice for this position, rule 5
+104446	remote	explicit remote statement
+343287	remote	role label Remote, rule 3
+116019	onsite	explicit 100% onsite statement, rule 3
+136888	remote,hybrid,onsite	unhedged choice offered, rule 5
+490612	none	remote describes interview mode not location, rule 2
+1167118	hybrid	workplace type field = Hybrid
+1170941	hybrid	flexible office/remote combination
+280744	hybrid	explicit 3 days a week onsite requirement, rule 4
+26462	remote,onsite	explicit office-or-home choice, rule 5
+895021	remote	explicit Remote-based plus location, rule 3
+1197396	onsite	performs duties in office environment, rule 3
+340833	hybrid	1 day WFH per week schedule, rule 4
+928438	remote	explicit remote/teleworker designation
+795308	onsite	telecommuting options field = Onsite
+103426	none	only benefit/company office mentions
+1077278	none	remotely support describes duty not location, rule 2
+1211609	hybrid	explicit 2 days in-office statement, rule 4
+810761	onsite	Remote Type field = Office, rule 3
+981299	remote	recruiting tag, nothing more specific, rule 3
+573168	none	template no narrowing, rule 5
+1376406	hybrid	floor policy plus intern hybrid statement, rules 1 and 4
+814610	remote	explicit this is a remote position
+832023	hybrid	explicit hybrid 2 days onsite per week, rule 4
+1078629	none	hedged some roles statement, rule 1
+320224	remote	explicit this role is a remote role overrides hedge, rule 3
+1074535	hybrid	recruiting tag decides, nothing more specific, rule 3
+181693	none	remotely deployed describes systems not location, rule 2
+493572	hybrid	specific onsite 4 days a week schedule, rule 4
+1167201	hybrid	workplace type field = Hybrid
+137350	hybrid	1-3 days a week office schedule, rule 4
+290290	hybrid	company-wide hybrid working model unhedged, rule 1
+1167674	onsite	workplace type field = On-site
+576997	onsite	explicit 100% onsite statement
+345590	onsite	recruiting tag LI-Onsite, rule 3
+1190176	onsite	explicit on-site full-time, no telecommute
+133636	hybrid	office-based role fixed 3-day schedule, rule 4
+302571	remote	explicit fully remote statement
