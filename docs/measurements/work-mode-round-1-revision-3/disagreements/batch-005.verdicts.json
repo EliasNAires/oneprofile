@@ -1,0 +1,22 @@
+{
+  "311293": {"verdict": "b", "clause": "a value under a job-details heading (Job Details, Working Conditions) is a label", "pattern": "value under job-details heading"},
+  "311802": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "schedule stated under role heading"},
+  "312391": {"verdict": "b", "clause": "A statement about the team this role joins is about this vacancy, not the company", "pattern": "statement about team the role joins"},
+  "319945": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "schedule stated as a qualification"},
+  "320209": {"verdict": "b", "clause": "Offered, not excepted: a role stated in one mode that may later be granted another, case by case, is the mode it states", "pattern": "exception granted case by case"},
+  "323638": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "explicit onsite statement"},
+  "325255": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "schedule stated under minimum requirements"},
+  "334681": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "schedule stated under location heading"},
+  "337306": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "hybrid stated directly for this role"},
+  "337742": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "schedule stated under role heading"},
+  "339533": {"verdict": "b", "clause": "A policy that says which mode applies where ... is a choice of those modes where nothing else speaks", "pattern": "policy naming mode by condition"},
+  "340459": {"verdict": "b", "clause": "A statement about the team this role joins is about this vacancy, not the company", "pattern": "statement about team the role joins"},
+  "343287": {"verdict": "a", "clause": "a heading that names only the mode, or the job family and the mode, standing alone", "pattern": "heading naming job family and mode"},
+  "350680": {"verdict": "a", "clause": "A label in the location outweighs the field where nothing else speaks", "pattern": "bare onsite label in location"},
+  "351776": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "office days per week implies hybrid"},
+  "353647": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "schedule stated under role heading"},
+  "353906": {"verdict": "a", "clause": "A label in the location outweighs the field where nothing else speaks", "pattern": "schedule label in location field"},
+  "361281": {"verdict": "a", "clause": "A policy that sets a floor for every role plainly covers every role", "pattern": "company policy setting floor for every role"},
+  "444765": {"verdict": "b", "clause": "The most specific statement about this job decides ... outweighs a bare label", "pattern": "recruiting tag outweighed by specific statement"},
+  "460018": {"verdict": "a", "clause": "Modes listed as a perk or a flexibility ... declare nothing", "pattern": "modes listed as a perk or flexibility"}
+}

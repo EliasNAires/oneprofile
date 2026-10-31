@@ -1,0 +1,22 @@
+{
+  "205634": {"verdict": "a", "clause": "Onsite: work done at the employer's site on every working day, or nearly", "pattern": "specific office requirement overrides"},
+  "207490": {"verdict": "a", "clause": "A policy that says which mode applies where ... is a choice of those modes", "pattern": "location-based policy is choice"},
+  "207810": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "qualification states remote specifically"},
+  "209429": {"verdict": "b", "clause": "even then only where it plainly covers every role", "pattern": "no office company wide"},
+  "215617": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "weekly day count sets hybrid"},
+  "216623": {"verdict": "a", "clause": "A company policy that sets a floor for every role plainly covers every role", "pattern": "floor schedule for all employees"},
+  "221258": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "weekly day count sets hybrid"},
+  "232757": {"verdict": "a", "clause": "A sentence about how the company works ... is not this vacancy's mode", "pattern": "company identity statement only"},
+  "235905": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "explicit in-person opportunity statement"},
+  "239696": {"verdict": "a", "clause": "A statement about the team this role joins ... is about this vacancy, not the company", "pattern": "team schedule statement"},
+  "245012": {"verdict": "b", "clause": "A statement about the team this role joins ... is about this vacancy, not the company", "pattern": "team fully remote stated"},
+  "248326": {"verdict": "a", "clause": "A job whose work is travelling to sites is onsite", "pattern": "travel to customer sites"},
+  "275240": {"verdict": "b", "clause": "A sentence about how the company works ... is not this vacancy's mode", "pattern": "generic how-we-work boilerplate"},
+  "275400": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "position stated hybrid directly"},
+  "280744": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "weekly day count sets hybrid"},
+  "284263": {"verdict": "a", "clause": "A choice of modes is a choice", "pattern": "sequential remote then hybrid timeline"},
+  "286453": {"verdict": "a", "clause": "A label in the location ... outweighs the field where nothing else speaks", "pattern": "location field in-person label"},
+  "288930": {"verdict": "a", "clause": "Modes listed as a perk or a flexibility ... declare nothing", "pattern": "field label plus perk list"},
+  "297958": {"verdict": "a", "clause": "A recruiting tag in the description ... is a label of this vacancy", "pattern": "platform workplace tag label"},
+  "302326": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "role explicitly joins on hybrid basis"}
+}

@@ -1,0 +1,22 @@
+{
+  "686990": {"verdict": "b", "clause": "A job whose work is travelling to sites is onsite", "pattern": "travel to sites is onsite"},
+  "692593": {"verdict": "a", "clause": "Modes listed as a perk or a flexibility ... declare nothing", "pattern": "flexibility phrase declares nothing"},
+  "696848": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "hybrid schedule stated specifically"},
+  "697575": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "bare hybrid statement for role"},
+  "705406": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "hybrid schedule stated specifically"},
+  "707327": {"verdict": "b", "clause": "Several modes carrying one schedule between them are one mode, the schedule's", "pattern": "modes under one schedule"},
+  "713441": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "hybrid schedule stated specifically"},
+  "717211": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "specific schedule overrides flexibility"},
+  "719347": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "direct hybrid statement for positions"},
+  "727897": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "statement names office as workplace"},
+  "732669": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "specific schedule overrides flexibility"},
+  "736797": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "hybrid schedule stated specifically"},
+  "747692": {"verdict": "b", "clause": "A policy that sets a floor for every role plainly covers every role", "pattern": "hybrid schedule stated specifically"},
+  "764943": {"verdict": "a", "clause": "a value under a job-details heading ... is a label", "pattern": "job-details heading names onsite"},
+  "776240": {"verdict": "b", "clause": "Offered, not excepted: ... granted another, case by case, is the mode it states", "pattern": "primarily onsite case-by-case exception"},
+  "778233": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "statement names office as workplace"},
+  "789433": {"verdict": "a", "clause": "Onsite: work done at employer's site every working day", "pattern": "explicit onsite every day stated"},
+  "810761": {"verdict": "b", "clause": "a value under a job-details heading ... Remote Type: Office, where Office is onsite", "pattern": "job-details heading names onsite"},
+  "811238": {"verdict": "a", "clause": "a value under a job-details heading ... Remote Type: Office, where Office is onsite", "pattern": "job-details heading names onsite"},
+  "811351": {"verdict": "a", "clause": "a value under a job-details heading ... Remote Type: Office, where Office is onsite", "pattern": "job-details heading names onsite"}
+}

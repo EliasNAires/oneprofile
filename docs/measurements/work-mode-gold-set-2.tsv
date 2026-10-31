@@ -1,0 +1,101 @@
+id	part	stratum	label	doubt
+3285	held-out	silent remote	hybrid	
+13714	held-out	described choice	remote,onsite	a vaguer "unique blend of remote/hybrid work" against the specific "Work Location/Travel: Remote ... or on-site" field
+17562	open	silent remote	none	
+17571	held-out	silent office	none	
+19868	held-out	described remote	remote	
+28763	held-out	silent hybrid	none	
+38110	open	described hybrid	hybrid	
+38138	open	described remote	remote	
+40941	open	silent office	none	
+43982	held-out	described onsite	onsite	
+59131	open	described choice	none	
+66397	open	silent office	none	
+69860	held-out	silent remote	none	
+102988	held-out	silent office	none	
+106686	held-out	silent remote	remote	
+134679	held-out	silent remote	hybrid	rule1 "none" against the hedge-worded "generally" floor of Mon-Thu office days
+139452	held-out	silent hybrid	none	
+139642	held-out	silent office	onsite	
+139647	open	silent office	onsite	
+163040	open	described onsite	onsite	
+164393	open	silent remote	none	
+178727	held-out	described hybrid	hybrid	
+179963	open	silent remote	none	
+182108	open	described choice	remote,onsite	a vaguer "unique blend of remote/hybrid work" against the specific "Work Location/Travel" field
+192603	open	described choice	none	
+227194	held-out	silent office	onsite	
+229879	held-out	silent remote	hybrid	
+234917	open	silent office	hybrid	rule4 remote via "occasional travel" against the regular "weekly syncs in our Bay Area office"
+257538	open	described hybrid	hybrid	
+266127	open	silent remote	remote	
+286477	held-out	silent hybrid	none	
+288853	open	silent office	none	
+289165	open	described remote	remote	
+298810	open	silent office	onsite	rule1 "none" (no explicit schedule) against "teams ... in our Chicago office"
+299793	open	silent office	onsite	rule6 "none" against the converging "work... onsite" and "open to working in office" lines, neither naming every day
+310978	held-out	silent office	none	
+315378	held-out	silent hybrid	none	
+329709	open	silent hybrid	hybrid	
+359035	held-out	silent remote	hybrid	rule6 "none" against "recommended" 2-day office hedge under "# Hybrid work"
+359096	open	silent hybrid	hybrid	rule6 "none" against the "recommended but not enforced" 2-day office hedge under "# Hybrid Work"
+436469	held-out	silent hybrid	hybrid	
+453334	held-out	silent remote	remote	
+468362	held-out	silent office	onsite	
+468459	held-out	silent office	none	
+481568	held-out	silent hybrid	none	
+481600	held-out	silent hybrid	none	
+512782	held-out	silent remote	hybrid	the hedged company-wide "~50% onsite, some positions... certain roles may be remote" against the role's own "Employment Type: hybrid work arrangement" field
+563866	held-out	silent remote	hybrid	
+566576	held-out	silent office	onsite	rule6 "none" against "based in our London office" naming no explicit schedule
+571689	held-out	silent remote	none	
+571708	open	silent remote	none	
+572098	open	silent remote	none	
+572499	open	silent remote	none	
+576933	held-out	described onsite	onsite	
+597098	open	silent remote	hybrid	
+598324	open	described hybrid	hybrid	
+647651	held-out	silent office	onsite	
+659560	held-out	silent hybrid	hybrid	the location tag "(Office)" read as onsite against the more specific "2-3 days a week" schedule
+699994	open	silent remote	none	
+810704	held-out	silent remote	onsite	
+821872	held-out	described choice	remote,hybrid	rule1 flexibility/perk carve-out ("none") against reading "may be considered for remote or hybrid ... based on business needs and geographic location" as rule5's organisation-dependent choice
+832122	open	silent office	hybrid	
+938567	open	described remote	remote	rule1 "none" against benefit-section "hybrid work model" line, set aside since LI-Remote tag is this vacancy's own label
+949118	open	described onsite	onsite	
+978103	open	described onsite	onsite	
+983216	held-out	silent hybrid	none	
+986426	held-out	silent remote	remote	
+987225	held-out	silent remote	remote	
+988054	open	silent remote	hybrid	
+1003585	open	silent office	none	
+1008013	open	silent hybrid	none	
+1019689	open	silent remote	none	
+1047702	open	silent office	hybrid	
+1061292	held-out	described choice	remote,hybrid,onsite	
+1071592	held-out	silent office	none	
+1104438	open	silent remote	hybrid	
+1104740	held-out	described hybrid	hybrid	
+1104795	open	silent remote	hybrid	
+1151519	held-out	silent office	none	
+1161546	held-out	described hybrid	hybrid	
+1164475	held-out	silent hybrid	none	
+1167684	held-out	described onsite	onsite	
+1185365	open	silent hybrid	none	
+1192895	open	silent office	onsite	
+1206703	open	silent hybrid	hybrid	
+1231758	held-out	silent office	none	
+1254373	held-out	described remote	remote	
+1309690	open	silent hybrid	none	
+1310417	open	silent hybrid	hybrid	
+1329787	open	silent hybrid	hybrid	
+1342263	held-out	silent office	none	
+1345929	open	described choice	none	
+1350857	held-out	silent office	none	
+1352937	held-out	described choice	hybrid,onsite	rule1 flexibility carve-out ("none") against reading "Work Flexibility: Hybrid or Onsite" as a job-details field naming a two-mode choice
+1356724	open	silent office	none	
+1400574	open	silent hybrid	none	
+1402533	open	silent office	none	
+1403821	open	silent hybrid	none	
+1445537	open	silent office	none	
+1495028	held-out	described remote	remote	

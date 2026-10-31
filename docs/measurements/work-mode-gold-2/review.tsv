@@ -1,0 +1,101 @@
+id	label	doubt
+178727	hybrid
+1151519	none
+40941	none
+1104438	hybrid
+1329787	hybrid
+298810	onsite	rule1 "none" (no explicit schedule) against "teams ... in our Chicago office"
+1254373	remote
+234917	hybrid	rule4 remote via "occasional travel" against the regular "weekly syncs in our Bay Area office"
+832122	hybrid
+1104795	hybrid
+453334	remote
+563866	hybrid
+597098	hybrid
+481600	none
+19868	remote
+938567	remote	rule1 "none" against benefit-section "hybrid work model" line, set aside since LI-Remote tag is this vacancy's own label
+571708	none
+576933	onsite
+988054	hybrid
+102988	none
+38138	remote
+17571	none
+359035	hybrid	rule6 "none" against "recommended" 2-day office hedge under "# Hybrid work"
+647651	onsite
+13714	remote,onsite	a vaguer "unique blend of remote/hybrid work" against the specific "Work Location/Travel: Remote ... or on-site" field
+481568	none
+1192895	onsite
+192603	none
+3285	hybrid
+315378	none
+134679	hybrid	rule1 "none" against the hedge-worded "generally" floor of Mon-Thu office days
+66397	none
+512782	hybrid	the hedged company-wide "~50% onsite, some positions... certain roles may be remote" against the role's own "Employment Type: hybrid work arrangement" field
+699994	none
+821872	remote,hybrid	rule1 flexibility/perk carve-out ("none") against reading "may be considered for remote or hybrid ... based on business needs and geographic location" as rule5's organisation-dependent choice
+1104740	hybrid
+163040	onsite
+182108	remote,onsite	a vaguer "unique blend of remote/hybrid work" against the specific "Work Location/Travel" field
+1164475	none
+257538	hybrid
+1071592	none
+1167684	onsite
+1310417	hybrid
+1161546	hybrid
+164393	none
+1008013	none
+329709	hybrid
+69860	none
+1345929	none
+106686	remote
+139452	none
+987225	remote
+1342263	none
+1400574	none
+289165	remote
+598324	hybrid
+299793	onsite	rule6 "none" against the converging "work... onsite" and "open to working in office" lines, neither naming every day
+468362	onsite
+179963	none
+229879	hybrid
+266127	remote
+810704	onsite
+572098	none
+572499	none
+1206703	hybrid
+978103	onsite
+28763	none
+1003585	none
+43982	onsite
+1495028	remote
+359096	hybrid	rule6 "none" against the "recommended but not enforced" 2-day office hedge under "# Hybrid Work"
+659560	hybrid	the location tag "(Office)" read as onsite against the more specific "2-3 days a week" schedule
+1403821	none
+310978	none
+286477	none
+288853	none
+17562	none
+1350857	none
+949118	onsite
+139642	onsite
+1185365	none
+227194	onsite
+1402533	none
+468459	none
+1445537	none
+1231758	none
+59131	none
+436469	hybrid
+1019689	none
+139647	onsite
+983216	none
+38110	hybrid
+1352937	hybrid,onsite	rule1 flexibility carve-out ("none") against reading "Work Flexibility: Hybrid or Onsite" as a job-details field naming a two-mode choice
+571689	none
+1047702	hybrid
+1309690	none
+1356724	none
+986426	remote
+1061292	remote,hybrid,onsite
+566576	onsite	rule6 "none" against "based in our London office" naming no explicit schedule

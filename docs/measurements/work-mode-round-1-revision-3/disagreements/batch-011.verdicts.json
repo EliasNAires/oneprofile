@@ -1,0 +1,22 @@
+{
+  "1254660": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "specific role statement names hybrid"},
+  "1256780": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "telecommute days per week implies hybrid"},
+  "1275241": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "fit attribute states hybrid setup"},
+  "1277603": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "work format remote or office choice"},
+  "1282256": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "rotations explicitly at the office"},
+  "1296034": {"verdict": "b", "clause": "A statement about the team this role joins ... is about this vacancy", "pattern": "role and team named remote"},
+  "1296180": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "role based in named office"},
+  "1307649": {"verdict": "a", "clause": "A policy that sets a floor for every role plainly covers every role", "pattern": "company statement covers every role onsite"},
+  "1320926": {"verdict": "a", "clause": "A statement about the team this role joins ... is about this vacancy", "pattern": "team named onsite overrides hedge"},
+  "1325618": {"verdict": "a", "clause": "A policy that sets a floor for every role plainly covers every role", "pattern": "default together floor for every team member"},
+  "1326851": {"verdict": "b", "clause": "A policy that sets a floor for every role plainly covers every role", "pattern": "default together floor for every team member"},
+  "1336286": {"verdict": "b", "clause": "A value under a job-details heading ... is a label", "pattern": "work arrangement heading states onsite"},
+  "1343687": {"verdict": "neither", "clause": "Offered, not excepted: a mode may later be granted case by case is the mode it states", "pattern": "remote considered as case-by-case exception"},
+  "1366351": {"verdict": "b", "clause": "A value under a job-details heading ... is a label", "pattern": "working conditions heading states remote"},
+  "1376378": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "hybrid work environment with remote days"},
+  "1376379": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "hybrid work environment with remote days"},
+  "1376406": {"verdict": "a", "clause": "A policy that sets a floor for every role plainly covers every role", "pattern": "hybrid work program floor and intern statement"},
+  "1425129": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "onsite days of week schedule implies hybrid"},
+  "1425489": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "onsite days of week schedule implies hybrid"},
+  "1444517": {"verdict": "a", "clause": "A policy that sets a floor for every role plainly covers every role", "pattern": "company statement covers every role onsite"}
+}

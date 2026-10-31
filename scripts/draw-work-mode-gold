@@ -3,51 +3,65 @@
 
     scripts/draw-work-mode-gold
 
-Run once, after POST /work-modes at the rules as they stand. Draws 100 undeclared vacancies, as a round draws
-them (scripts/draw-work-mode-description-sample) at half a round's size, excluding the measurement's 200
-(2026-10-work-mode-description-sample/sample.tsv), into docs/measurements/work-mode-gold/: sample.tsv,
-strata.tsv, same.tsv and batch-N.txt, what the labeller reads. Holds out half of each stratum, seeded, and
-writes docs/measurements/work-mode-gold-set.tsv: each drawn vacancy's id, its part (open or held-out), its
-stratum, and the label and doubt columns, empty until the gold set is labelled and reviewed.
+Run once, after POST /work-modes at the rules as they stand. Draws 100 undeclared vacancies in a round's seven
+strata (scripts/score-work-mode-round), weighted towards the silent ones: 6 the description gives remote, 6
+hybrid, 6 onsite, 8 a choice, 26 silent remote, 20 silent hybrid and 28 silent office. It excludes every vacancy
+drawn before: the measurement's 200 (2026-10-work-mode-description-sample/sample.tsv), the first gold set's 100
+(work-mode-gold/sample.tsv) and the 525 that re-score round 1 in the seven strata, as score-work-mode-round draws
+them with round 1's seed. Writes, into docs/measurements/work-mode-gold-2/, sample.tsv, strata.tsv, same.tsv and
+batch-N.txt, what the labeller reads. Holds out half of each stratum, seeded, and writes
+docs/measurements/work-mode-gold-set-2.tsv: each drawn vacancy's id, its part (open or held-out), its stratum,
+and the label and doubt columns, empty until the gold set is labelled and reviewed.
 
-Refuses to run where the gold set exists: redrawing it would throw away its labels.
+The first gold set (work-mode-gold-set.tsv, five strata, 100 vacancies) was drawn for revisions 1 and 2 and is
+kept as it was. Refuses to run where the second exists: redrawing it would throw away its labels.
 """
 
 import random
 import sys
+import tempfile
 from importlib.machinery import SourceFileLoader
 from pathlib import Path
 
 sys.dont_write_bytecode = True
 SCRIPTS = Path(__file__).resolve().parent
 sampler = SourceFileLoader("sampler", str(SCRIPTS / "draw-work-mode-description-sample")).load_module()
+round = SourceFileLoader("round", str(SCRIPTS / "score-work-mode-round")).load_module()
 
 MEASUREMENTS = sampler.REPO / "docs" / "measurements"
-DIRECTORY = MEASUREMENTS / "work-mode-gold"
-GOLD = MEASUREMENTS / "work-mode-gold-set.tsv"
-MEASURED = MEASUREMENTS / "2026-10-work-mode-description-sample" / "sample.tsv"
+DIRECTORY = MEASUREMENTS / "work-mode-gold-2"
+GOLD = MEASUREMENTS / "work-mode-gold-set-2.tsv"
+DRAWN = [MEASUREMENTS / "2026-10-work-mode-description-sample" / "sample.tsv",
+         MEASUREMENTS / "work-mode-gold" / "sample.tsv"]
 
-SEED = 3098
+SEED = 3198
 
-DESCRIBED = {"REMOTE": 15, "HYBRID": 12, "ONSITE": 13, "CHOICE": 10}
-SILENT_REMOTE = 50
+DESCRIBED = {"REMOTE": 6, "HYBRID": 6, "ONSITE": 6, "CHOICE": 8}
+SILENTS = {"remote": 26, "hybrid": 20, "office": 28}
+
+
+def ids(path):
+    return [line.split("\t")[0] for line in path.read_text(encoding="utf-8").splitlines()[1:]]
 
 
 def main():
     if GOLD.exists():
         sys.exit(f"{GOLD} exists; the gold set is drawn once")
-    measured = [line.split("\t")[0] for line in MEASURED.read_text(encoding="utf-8").splitlines()[1:]]
-    DIRECTORY.mkdir(parents=True, exist_ok=True)
     rows, _ = sampler.undeclared()
-    sampler.draw(DIRECTORY, rows, DESCRIBED, SILENT_REMOTE, SEED, measured)
+    drawn = [vacancy for path in DRAWN for vacancy in ids(path)]
+    with tempfile.TemporaryDirectory() as rescore:
+        sampler.draw(Path(rescore), rows, round.DESCRIBED, round.SILENTS, 9800 + 1)
+        drawn += ids(Path(rescore) / "sample.tsv")
+    DIRECTORY.mkdir(parents=True, exist_ok=True)
+    sampler.draw(DIRECTORY, rows, DESCRIBED, SILENTS, SEED, drawn)
 
     drawn = [line.split("\t") for line in (DIRECTORY / "sample.tsv").read_text(encoding="utf-8").splitlines()[1:]]
     held = random.Random(SEED)
     part = {}
     for stratum in sorted({row[2] for row in drawn}):
-        ids = [row[0] for row in drawn if row[2] == stratum]
-        out = set(held.sample(ids, len(ids) // 2))
-        part.update({vacancy: "held-out" if vacancy in out else "open" for vacancy in ids})
+        members = [row[0] for row in drawn if row[2] == stratum]
+        out = set(held.sample(members, len(members) // 2))
+        part.update({vacancy: "held-out" if vacancy in out else "open" for vacancy in members})
     with open(GOLD, "w", encoding="utf-8") as gold:
         gold.write("id\tpart\tstratum\tlabel\tdoubt\n")
         for row in drawn:

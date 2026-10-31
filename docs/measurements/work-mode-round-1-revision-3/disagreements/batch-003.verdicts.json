@@ -1,0 +1,22 @@
+{
+ "137040": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "choice of modes offered"},
+ "139634": {"verdict": "b", "clause": "A company policy that sets a floor for every role plainly covers every role", "pattern": "company policy covers every role"},
+ "140643": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "mode with schedule"},
+ "141050": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "choice of modes offered"},
+ "155517": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "role-specific mode statement"},
+ "160460": {"verdict": "a", "clause": "A statement about the team this role joins is about this vacancy, not the company", "pattern": "statement about the team"},
+ "162362": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "role-specific mode statement"},
+ "162571": {"verdict": "a", "clause": "a heading that names only the mode ... standing alone", "pattern": "bare mode label under heading"},
+ "164148": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "role-specific mode statement"},
+ "164286": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "mode with schedule"},
+ "170015": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "mode with schedule"},
+ "171723": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "mode with schedule"},
+ "172291": {"verdict": "a", "clause": "A sentence about how the company works ... is not this vacancy's mode", "pattern": "vague company culture claim"},
+ "172335": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "mode with schedule"},
+ "174836": {"verdict": "a", "clause": "None where nothing read declares a mode for this job", "pattern": "weak indirect remote mention"},
+ "176964": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "role-specific mode statement"},
+ "181861": {"verdict": "a", "clause": "A statement about the team this role joins is about this vacancy, not the company", "pattern": "statement about the team"},
+ "181982": {"verdict": "b", "clause": "A company policy that sets a floor for every role plainly covers every role", "pattern": "company policy covers every role"},
+ "193075": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "role-specific mode statement"},
+ "205367": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "mode with schedule"}
+}

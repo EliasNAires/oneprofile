@@ -1,0 +1,44 @@
+id	mode	reason
+1493520	hybrid	LOCATION states 4 days office, 1 remote
+940163	none	flexibility/perk benefit, not this vacancy
+1196320	onsite	location field label "Office", rule 3
+696993	none	"hybrid cloud" names job content, rule 2
+245249	none	office mentioned as amenity, no mode stated
+571803	none	template of mode definitions, nothing picks one
+142396	remote	role statement "can be remote", rule 3
+645196	hybrid	onsite four days a week, schedule implies hybrid
+988657	remote	standalone heading "# Remote" is a label, rule 3
+1007697	none	"hybrid-friendly culture" vague company claim
+653450	hybrid	Workplace type Hybrid with 3/2 day schedule
+567085	onsite	stated "located in our ... office"
+657640	hybrid	hybrid model, 3 days in office per week
+950628	hybrid	company floor of 3 days min in office, rule 1
+972232	hybrid,remote	"Posting Type: Hybrid/Remote" is a choice, rule 5
+1398048	none	"posibilidad" of teleworking is flexibility/perk, rule 1
+1376406	hybrid	interns explicitly work in hybrid environment
+28106	hybrid	Boxers floor of min 3 days office/week, rule 1
+103426	none	no job-specific mode statement
+1425129	hybrid	"Monday to Thursday, work onsite" implies hybrid
+981299	remote	standalone heading "# LI-REMOTE" is a label, rule 3
+59630	none	"in-office, hybrid, or remote flexibility" is a perk, rule 1
+102706	hybrid	"come into office 2-3 days a week at a minimum"
+185709	none	"Hybrid work-model" listed as a benefit item, rule 1
+1510171	none	"depending on role" is a hedge, rule 1
+235905	onsite	"this is an in-person opportunity in London"
+1326851	hybrid	floor expecting office 4+ days/week, rule 1
+1491554	hybrid	"requires at least 3 days in office"
+1170941	none	team/office statement too weak after perk discounted
+1322043	hybrid	2 days/week office stated, plus LI-Hybrid tag
+1376378	hybrid	up to 2 days/week remote work stated
+319945	hybrid	explicit WFH/office day-of-week schedule
+1167118	hybrid	Workplace type: Hybrid Working, label rule 3
+307251	none	no mode statement in description
+1353726	hybrid	"LI-Hybrid" recruiting tag is a label, rule 3
+134817	remote,onsite	choice of 100% remote or an office, rule 5
+1505564	none	"remote access" names a job duty, rule 2
+317987	none	"we're remote-first" is a company statement, rule 1
+239696	hybrid	"Hybrid Work Environment", 4 days/week in office
+1183943	none	"hybrid work schedule for most roles" is hedged, rule 1
+336684	none	no mode statement in description
+719347	hybrid	positions "follow a hybrid work model"
+186539	none	"flexible hybrid work model" listed as a benefit, rule 1

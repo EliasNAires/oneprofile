@@ -1,0 +1,101 @@
+id	ats	stratum	rule	title	location
+3285	GREENHOUSE	silent remote	none	Software Engineer (Java)	Sao Jose dos Campos
+13714	GREENHOUSE	described choice	remote,hybrid	Oracle CPQ Senior Consultant	Colombia
+17562	GREENHOUSE	silent remote	none	OSS & Automation Architect	Lanham, Maryland, United States
+17571	GREENHOUSE	silent office	none	Principal Automation and AI Operations Engineer	Dallas, Texas, United States
+19868	GREENHOUSE	described remote	remote	Senior Sales Engineer, Enterprise	Dallas, TX
+28763	GREENHOUSE	silent hybrid	none	Senior Security Engineer II	Toronto
+38110	GREENHOUSE	described hybrid	hybrid	Staff Software Engineer, Backend	Bellevue, WA
+38138	GREENHOUSE	described remote	remote	Lead Software Engineer - Integrations	United States
+40941	GREENHOUSE	silent office	none	Senior Software Engineer, Object Storage	Livingston, NJ / New York, NY / Sunnyvale, CA / Bellevue, WA
+43982	GREENHOUSE	described onsite	onsite	Senior Software Engineer - Machine Learning Infrastructure	San Francisco, CA
+59131	GREENHOUSE	described choice	remote,hybrid,onsite	QA Engineer (AxiomSL)	Bulgaria, Lithuania, Poland, Romania
+66397	GREENHOUSE	silent office	none	Full Stack Software Engineer	United States
+69860	GREENHOUSE	silent remote	none	Senior Software Engineer	Ontario
+102988	GREENHOUSE	silent office	none	Junior Data Scientist	Canada
+106686	GREENHOUSE	silent remote	none	Engineering Manager	DC, MD, VA, CA
+134679	GREENHOUSE	silent remote	none	Staff Machine Learning Engineer, Ad Serving	Boston, Massachusetts
+139452	GREENHOUSE	silent hybrid	none	Senior Product Manager, Data Intelligence & Knowledge Graph	Ghent
+139642	GREENHOUSE	silent office	none	Staff AI/ML Engineer	New York City, NY
+139647	GREENHOUSE	silent office	none	Staff Software Engineer - Frontend	San Francisco, CA
+163040	GREENHOUSE	described onsite	onsite	Senior Manager, Infrastructure Engineering	Denver, CO; Long Beach, CA
+164393	GREENHOUSE	silent remote	none	Senior Databricks Consulting Engineer (m/f/*)	Magdeburg, Saxony-Anhalt, Germany
+178727	GREENHOUSE	described hybrid	hybrid	Escalation Engineer - Cloud	Mohali, IND
+179963	GREENHOUSE	silent remote	none	Engineering Manager, Product Platform	Poland
+182108	GREENHOUSE	described choice	remote,hybrid	Salesforce Integration Developer	Colombia
+192603	GREENHOUSE	described choice	remote,hybrid,onsite	Middle Full-Stack Developer (Node.js/Python, React)	Bulgaria, Hungary, Poland
+227194	ASHBY	silent office	none	Forward Deployed Engineer - MEX	Mexico
+229879	ASHBY	silent remote	none	Risk Manager – Major Infrastructure Project	London
+234917	ASHBY	silent office	none	AI Application Engineer (Contractor role)	San Francisco Bay Area
+257538	ASHBY	described hybrid	hybrid	Staff Software Engineer - Flights	London
+266127	ASHBY	silent remote	none	Technical Support Engineer	India
+286477	GREENHOUSE	silent hybrid	none	Staff Engineer / Architecte Solution SAP (H/F)	Lille, Upline, Nord, France
+288853	GREENHOUSE	silent office	none	Product Marketing Intern - AI & Automation	New York, NY
+289165	GREENHOUSE	described remote	remote	Senior Software Engineer - Distributed Systems, Fanatics Markets	New York, NY, United States
+298810	GREENHOUSE	silent office	none	Software Engineer - Trading Strategies	Chicago, Illinois, United States
+299793	GREENHOUSE	silent office	none	Staff Software Engineer, Applied AI	New York, NY
+310978	GREENHOUSE	silent office	none	Senior/Staff Software Engineer (Data Platform)	San Francisco, California, United States
+315378	GREENHOUSE	silent hybrid	none	Staff Engineer - Software Development (Cloud Networking & Network Security)	Bengaluru, Karnataka, India (APAC)
+329709	GREENHOUSE	silent hybrid	none	Full-stack DevOps engineer	Broomfield, Colorado, United States
+359035	GREENHOUSE	silent remote	none	Lead Backend Engineer, Incident Management	Kaunas, Lithuania
+359096	GREENHOUSE	silent hybrid	none	Senior Data Scientist, Buyer	Berlin, Germany
+436469	WORKDAY	silent hybrid	none	Postdoctoral researcher in Cloud and Network Computing	Otaniemi, Espoo, Finland
+453334	WORKDAY	silent remote	none	Senior Software Engineer, Cloud	United States - Illinois - Abbott Park
+468362	WORKDAY	silent office	none	Salesforce Administrator	Houston, TX
+468459	WORKDAY	silent office	none	Mixed Signal Design Verification Engineer	Manchester, NH
+481568	WORKDAY	silent hybrid	none	Senior Platform Engineer	Lisbon - Carnaxide
+481600	WORKDAY	silent hybrid	none	Seamless Travel Senior Solution Architect	Lisbon
+512782	WORKDAY	silent remote	none	R&D Senior Member of Technical Staff	Bangalore, India
+563866	WORKDAY	silent remote	none	Associate, Software Engineer - Aladdin Graph	New York, NY
+566576	WORKDAY	silent office	none	Product Owner	Canary Wharf, 1 Churchill Place
+571689	WORKDAY	silent remote	none	Data Scientist, Senior	Langley AFB, VA
+571708	WORKDAY	silent remote	none	AI/ML Engineer	Monterey, CA
+572098	WORKDAY	silent remote	none	DevOps Engineer	Chantilly, VA
+572499	WORKDAY	silent remote	none	Cloud Cybersecurity Engineer	Rome, NY
+576933	WORKDAY	described onsite	onsite	Experienced Quality Engineer (Core Quality)	USA - Ridley Park, PA
+597098	WORKDAY	silent remote	none	Technical Lead	Salford Quays
+598324	WORKDAY	described hybrid	hybrid	Cybersecurity Architect - Threat and Vulnerability Management	Nashville, TN
+647651	WORKDAY	silent office	none	IT Operations Intern - Service Desk, Infrastructure, Prod Support	Fairfield, IA
+659560	WORKDAY	silent hybrid	none	Technical Director	Bangalore - India (Office)
+699994	WORKDAY	silent remote	none	Product Owner, Product management	Montréal
+810704	WORKDAY	silent remote	none	Architect - Enterprise Application - SAP N 4D	1401-G-India: Floor 1 to 12, Hafeezpet Phoenix, Hyderabad
+821872	WORKDAY	described choice	remote,hybrid	Principal Network Architect (Active CCIE Required)	Minneapolis, MN
+832122	WORKDAY	silent office	none	Principal Solution Architect, Data (FPRS & CSWM)	Holmdel
+938567	WORKDAY	described remote	remote	Expert Forensic Engineer, Fire and Explosion	Calgary, Alberta, CAN
+949118	WORKDAY	described onsite	onsite	Triton Compiler Engineering Manager	Canada, Toronto
+978103	WORKDAY	described onsite	onsite	Cybersecurity Incident Response Team Security Analyst II	St. Petersburg/Tampa, FL
+983216	WORKDAY	silent hybrid	none	IAM Engineer	Fredericktown, OH
+986426	WORKDAY	silent remote	none	System Administrator	Cairo, Cairo, Egypt
+987225	WORKDAY	silent remote	none	Field Service Engineer – Gas Insulated Switchgear (GIS)	Mount Pleasant, Pennsylvania, United States of America
+988054	WORKDAY	silent remote	none	Senior Yield Control Technology Engineer (MAD-MT-OR)	(HTA) NCP (Hillsboro, OR)
+1003585	WORKDAY	silent office	none	Software Engineering Intern	Shanghai, China
+1008013	WORKDAY	silent hybrid	none	Infrastructure Cloud Architect	Seoul, Republic of Korea
+1019689	WORKDAY	silent remote	none	Sr. Audio DSP Machine Learning Engineer	Chennai, India
+1047702	WORKDAY	silent office	none	Senior Software Test Engineer (TS/SCI)	Herndon, VA
+1061292	WORKDAY	described choice	remote,hybrid,onsite	Lead IGA Solution Architect	CAN, ON, Mississauga
+1071592	WORKDAY	silent office	none	Manager, Product Development - EMV and Payment Technology	Pune, India
+1104438	WORKDAY	silent remote	none	Oliver Wyman - Internship - Data & Analytics - Spain	Madrid - Castellana
+1104740	WORKDAY	described hybrid	hybrid	Solutions Architect - Employee Health and Benefits	Golden Valley - Golden
+1104795	WORKDAY	silent remote	none	Oliver Wyman - Lead Data Engineer - Data and Analytics (DNA) - Gurugram, India	Gurugram - Horizon
+1151519	WORKDAY	silent office	none	Lead, Enterprise Architect	Bangalore, India
+1161546	WORKDAY	described hybrid	hybrid	Senior Software Engineer	Mountain View, California Office
+1164475	WORKDAY	silent hybrid	none	AI/ML Scientist – Reinforcement Learning, Simulation & Optimization	PCT
+1167684	WORKDAY	described onsite	onsite	MS Technical Specialist - Windows and VMWare	Chennai, India
+1185365	WORKDAY	silent hybrid	none	Data Scientist - Payments Risk Management & Data analytics	San Jose, California, United States of America
+1192895	WORKDAY	silent office	none	Sr. Principal Cyber Systems / Network Engineer	United States-Virginia-Fairfax
+1206703	WORKDAY	silent hybrid	none	Utilities Vulnerability Assessment Engineer	US - VA, Fort Belvoir
+1231758	WORKDAY	silent office	none	Associate - Tax Technology Analyst	Ho Chi Minh City
+1254373	WORKDAY	described remote	remote	Salesforce Marketing Cloud Administrator	Argentina
+1309690	WORKDAY	silent hybrid	none	Senior Technical Program Manager, IT Experience Engineering	New York - New York
+1310417	WORKDAY	silent hybrid	none	Sr. Manager - IT Architecture	Somerset, NJ USA
+1329787	WORKDAY	silent hybrid	none	Technical Support Specialist, Level 3	Mulgrave, VIC Australia
+1342263	WORKDAY	silent office	none	Senior FinOps Analyst, AVP	Quincy, Massachusetts
+1345929	WORKDAY	described choice	hybrid,onsite	Senior Data Scientist	Toronto, Ontario
+1350857	WORKDAY	silent office	none	ServiceNow Development Lead	Pune
+1352937	WORKDAY	described choice	hybrid,onsite	Senior Manager, Infrastructure, EDT	Tokyo, Japan
+1356724	WORKDAY	silent office	none	Senior Technical Consultant	Hyderabad, India
+1400574	WORKDAY	silent hybrid	none	Senior Software Engineer	US, California, San Jose
+1402533	WORKDAY	silent office	none	Salesforce Developer II	Bangalore, India
+1403821	WORKDAY	silent hybrid	none	Algorithm and AI Senior/Staff Engineer	Singapore, Singapore
+1445537	WORKDAY	silent office	none	Ground Software Systems Engineer	Chantilly, Virginia
+1495028	WORKDAY	described remote	remote	Senior Full-Stack Engineer (Java / Spring Boot)	Portland, ME

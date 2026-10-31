@@ -1,0 +1,22 @@
+{
+ "2632": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "specific hybrid schedule overrides policy"},
+ "5928": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "job requirement states hybrid schedule"},
+ "6919": {"verdict": "b", "clause": "Onsite: every working day, or nearly", "pattern": "explicit onsite percentage statement"},
+ "8511": {"verdict": "a", "clause": "Modes listed as a perk or a flexibility ... declare nothing", "pattern": "distributed company flexible arrangements perk"},
+ "14002": {"verdict": "a", "clause": "Onsite: every working day, or nearly", "pattern": "near-full days in office"},
+ "14858": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "minimum days in office"},
+ "16962": {"verdict": "a", "clause": "A template is not a choice", "pattern": "template listing all modes"},
+ "19822": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "explicit hybrid schedule for role"},
+ "19990": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "explicit hybrid schedule for role"},
+ "26462": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "office or home choice"},
+ "28106": {"verdict": "b", "clause": "A company policy that sets a floor for every role plainly covers every role", "pattern": "company-wide office days floor"},
+ "29041": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "minimum days in office"},
+ "36760": {"verdict": "a", "clause": "A company policy that sets a floor for every role plainly covers every role", "pattern": "company-wide office days floor"},
+ "39857": {"verdict": "b", "clause": "A policy that says which mode applies where ... is a choice", "pattern": "policy mode by location"},
+ "40324": {"verdict": "a", "clause": "A recruiting tag in the description ... is a label", "pattern": "recruiting tag as label"},
+ "44711": {"verdict": "a", "clause": "Remote: the work is done away from the employer's offices", "pattern": "open to remote locations"},
+ "46573": {"verdict": "a", "clause": "Modes listed as a perk or a flexibility ... declare nothing", "pattern": "hybrid mode in benefits list"},
+ "47419": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "role-specific days-per-week policy"},
+ "47439": {"verdict": "b", "clause": "a value under a job-details heading ... is a label", "pattern": "remote label in pay heading"},
+ "59630": {"verdict": "b", "clause": "Modes listed as a perk or a flexibility ... declare nothing", "pattern": "modes listed as benefit flexibility"}
+}

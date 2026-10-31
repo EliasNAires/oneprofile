@@ -1,0 +1,51 @@
+id	mode	reason
+139452	none	"hybrid" names retrieval method, rule 2
+987225	remote	heading-only label "# Remote", rule 3
+1342263	none	nothing read declares a mode
+1400574	none	"hybrid" names product environments, rule 2
+289165	remote	LI-Remote tag, nothing more specific, rule 3
+598324	hybrid	most specific role statement, rule 3
+299793	onsite	team statement plus in-office requirement, rule 1
+468362	onsite	explicit onsite five days a week
+179963	none	company office list, not vacancy's own mode
+229879	hybrid	explicit onsite/remote day split, hybrid definition
+266127	remote	"completely remote, no offices" covers every role, rule 1
+810704	onsite	"Remote Type: Office" field value is onsite, rule 3
+572098	none	Work Model template, nothing narrows it, rule 5
+572499	none	Work Model template, nothing narrows it, rule 5
+1206703	hybrid	explicit hybrid role statement
+978103	onsite	explicit on-site statement
+28763	none	modes as perk/flexibility declare nothing, rule 1
+1003585	none	days-per-week statement names no location
+43982	onsite	explicit office-based statement plus LI-Onsite tag
+1495028	remote	explicit remote, residency restriction doesn't change it
+359096	hybrid	heading plus in-office day schedule
+659560	hybrid	specific in-office day schedule outweighs location label, rule 3
+1403821	none	"Environmental Conditions: Office" is not a mode, rule 2
+310978	none	office mention is a perk, not this vacancy's mode
+286477	none	hybrid mentions are technical/perk, nothing specific
+288853	none	"in-office" perk mention only
+17562	none	duty description and flexibility phrasing declare nothing
+1350857	none	office facilities is a perk, mismatched location
+949118	onsite	explicit "on-site presence" statement for this role
+139642	onsite	floor statement covering all offices, rule 1
+1185365	none	hedged "majority of employees" policy, rule 1
+227194	onsite	location label "(On Site)", rule 3
+1402533	none	"Environmental Conditions: Office" is not a mode, rule 2
+468459	none	residency eligibility names no mode
+1445537	none	"Office" names org units, not location, rule 2
+1231758	none	Microsoft Office tool, not a mode
+59131	none	modes listed as flexibility declare nothing, rule 1
+436469	hybrid	team statement "we work in a hybrid way", rule 1
+1019689	none	hedged company-wide statements, nothing specific to role
+139647	onsite	floor statement covering all offices, rule 1
+983216	none	"hybrid" names tech environments, rule 2
+38110	hybrid	explicit office/remote day schedule
+1352937	hybrid,onsite	choice of modes offered, rule 5
+571689	none	Work Model template, nothing narrows it, rule 5
+1047702	hybrid	client-site presence days a week, hybrid definition
+1309690	none	"hybrid delivery model" names methodology, rule 2
+1356724	none	"Office" names departments, not location, rule 2
+986426	remote	heading-only label "# Remote", rule 3
+1061292	remote,hybrid,onsite	choice depending on organizational requirements, rule 5
+566576	onsite	explicit "based in our London office" statement

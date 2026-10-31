@@ -1,0 +1,51 @@
+id	mode	reason
+155517	hybrid	role states flexible hybrid, remote when no facility need
+1196727	onsite	location label "Office" over hedged company statement
+1282256	onsite	rotations based at Farnborough office
+805197	none	hedged in-office policy, no fixed floor
+172217	none	conditional "if role can be performed remote"
+170986	remote	heading label "Location: Remote"
+778233	onsite	opening based in Singapore office
+341627	none	"hybrid observability platform" names product
+107772	none	"remote work options" listed as perk
+571913	none	work-model list is a template, nothing narrows
+1061256	remote,hybrid,onsite	choice depending on organizational requirements
+104446	remote	explicit "full-time remote opportunity"
+205673	onsite	expected to work from Prague office plus LI-ONSITE tag
+635489	onsite	desired trait "working on site with government clients"
+1080634	hybrid	based in Toronto office, balancing remote flexibility
+571219	none	work-model list is a template, nothing narrows
+1369696	none	"office hours" names an activity, not mode
+36060	onsite	LI-Onsite tag over general company policy
+696848	hybrid	"hybrid working model with 40% remote work"
+659581	hybrid	core offices 2-3 days a week schedule
+1196539	onsite	location label "Office" over hedged company statement
+231178	none	flexible model combining modes is a perk
+160460	remote	welcomes remote developers in role's timezone
+334681	hybrid	based in office, at least 3 days a week in person
+772561	remote	heading label "Location: Remote"
+320209	onsite	role based in NYC office, in-person valued; exception excepted
+1042179	none	physical surroundings of work, not mode
+139634	onsite	blanket in-office environment in all offices
+1254660	hybrid	"hybrid (3x week)" stated for this role
+207490	hybrid,remote	choice by location, Prague/Brno vs CZ/SK
+926090	unclear	"Onsite" label contradicts hybrid schedule statement
+1152230	hybrid	"Role Type: Hybrid working" value, LI-Hybrid tag
+548924	none	hedged "remote work arrangements, where possible"
+692593	hybrid	role based in Dublin office, offering hybrid arrangements
+68107	none	nothing read declares a mode
+10828	none	describes customer duties, not a mode declaration
+1069832	hybrid	"we support a hybrid work model" under LiHybrid heading
+1470884	none	hedged "majority of our crew members"
+112632	none	office perks, not a mode statement
+1336286	onsite	"full-time, 100% onsite" stated twice
+650879	none	"hybrid working environment" listed as perk
+1069122	onsite	"role will be based in our Edinburgh office"
+350680	onsite	"Location: Sunnyvale, CA (onsite)" label
+1161514	hybrid,remote	"Location Type: Remote/Hybrid" choice
+164286	hybrid	working from Prague office at least two days per week
+302664	none	ambiguous "hybrid model" company statement, perk framing
+566968	onsite	"role is located in our Whippany, NJ office"
+14858	hybrid	"minimum of 3 days onsite" schedule
+1451184	none	only an office-snack benefit mentioned
+306875	hybrid	"hybrid role... in-office 3 days a week"

@@ -1,0 +1,22 @@
+{
+  "467572": {"verdict": "b", "clause": "The most specific statement about this job decides.", "pattern": "explicit onsite requirement stated"},
+  "475549": {"verdict": "a", "clause": "Hybrid: days a week or a month in the office.", "pattern": "explicit hybrid schedule stated"},
+  "477560": {"verdict": "b", "clause": "A value under a job-details heading... is a label.", "pattern": "job-details heading value label"},
+  "503504": {"verdict": "a", "clause": "A heading that names only the mode, or the job family and the mode, standing alone.", "pattern": "heading names job family mode"},
+  "542035": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule.", "pattern": "explicit hybrid schedule stated"},
+  "546365": {"verdict": "a", "clause": "A policy that sets a floor for every role plainly covers every role.", "pattern": "company floor covers every role"},
+  "546404": {"verdict": "a", "clause": "A policy that sets a floor for every role plainly covers every role.", "pattern": "company floor covers every role"},
+  "563736": {"verdict": "a", "clause": "A policy that sets a floor for every role plainly covers every role.", "pattern": "company floor covers every role"},
+  "566968": {"verdict": "a", "clause": "None where nothing read declares a mode for this job.", "pattern": "bare office location statement"},
+  "567085": {"verdict": "b", "clause": "None where nothing read declares a mode for this job.", "pattern": "bare office location statement"},
+  "570815": {"verdict": "a", "clause": "A value under a job-details heading... is a label.", "pattern": "job-details heading value label"},
+  "635489": {"verdict": "b", "clause": "the sentences of its description that name where the work is done", "pattern": "sentence names onsite work site"},
+  "641656": {"verdict": "b", "clause": "Modes listed as a perk or a flexibility... declare nothing, wherever they sit.", "pattern": "mode listed as a perk"},
+  "645146": {"verdict": "b", "clause": "The most specific statement about this job decides.", "pattern": "rotating onsite remote schedule"},
+  "657610": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule.", "pattern": "explicit hybrid schedule stated"},
+  "657614": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule.", "pattern": "explicit hybrid schedule stated"},
+  "657640": {"verdict": "a", "clause": "A policy that sets a floor for every role plainly covers every role.", "pattern": "company floor covers every role"},
+  "659581": {"verdict": "a", "clause": "A policy that sets a floor for every role plainly covers every role.", "pattern": "company floor covers every role"},
+  "660221": {"verdict": "a", "clause": "None where nothing read declares a mode for this job.", "pattern": "hedged onsite expectation by commute"},
+  "675702": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule.", "pattern": "explicit hybrid schedule stated"}
+}

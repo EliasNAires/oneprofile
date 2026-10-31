@@ -9,8 +9,8 @@ labels-N.tsv (id, mode, reason, as docs/work-mode-criterion.md says), and the va
 label from same.tsv.
 
 A vacancy the description gives modes is right where its label holds every one of them. A vacancy is a
-disagreement where it is not right, or where its label holds remote and the rule's modes do not: those are
-the vacancies the two gates turn on. Without verdicts for them, writes the disagreements as JSON batches of
+disagreement where it is not right, or where its label holds a mode the rule's modes do not: those are the
+vacancies the gates turn on. Without verdicts for them, writes the disagreements as JSON batches of
 20 for the adjudicator (.claude/agents/adjudicator.md), disagreements/batch-NNN.json: each row's id, what
 the labeller read and the two answers, the rule's and the labeller's, bare and in a seeded random order as
 `a` and `b`. Disagreements already written are not written again.
@@ -21,10 +21,11 @@ chose, or neither. Then prints:
 - precision, the share of the described vacancies whose settled label holds the rule's modes, by stratum
   with a 95% Wilson interval and weighted by each stratum's size, with a 95% interval from a seeded
   bootstrap within the strata. A vacancy settled as neither counts against the rule;
-- remote recall on undeclared vacancies: of the undeclared vacancies whose settled label holds remote, the
-  share whose rule's modes hold it, weighted the same way. A vacancy settled as neither is left out.
-  Undeclared vacancies whose description names no remote word are assumed not remote: the sample does not
-  read them;
+- recall on undeclared vacancies, for remote, hybrid and onsite apart: of the undeclared vacancies whose
+  settled label holds the mode, the share whose rule's modes hold it, weighted the same way. A vacancy
+  settled as neither is left out. Undeclared vacancies whose description names no cue of a silent stratum
+  drawn are assumed to have no mode: the sample does not read them (ADR-0030). Where only the silent remote
+  stratum is drawn, as in the measurement and round 1, hybrid and onsite recall are overstated;
 - every vacancy where the rule and the settled label split, with the adjudicator's pattern.
 
 An unclear label is left out of every share.
@@ -133,7 +134,7 @@ def main():
             return False
         if sample[id]["stratum"].startswith("described") and not holds(said, rule):
             return True
-        return "remote" in modes(said) and "remote" not in modes(rule)
+        return bool(modes(said) - modes(rule))
 
     differing = [id for id in sample if splits(id)]
     print(f"labelled {len(sample)}, unclear {sum(said == 'unclear' for said in label.values())},"
@@ -197,19 +198,21 @@ def main():
     estimate, low, high = weighted(described, sizes, lambda held: (sum(right(row) for row in held), len(held)))
     print(f"  {'weighted by stratum size':24} {estimate:6.1%}  ({low:.0%} to {high:.0%})")
 
-    print("\nremote recall on undeclared vacancies")
     recall = {stratum: [row for row in held if settled[row["id"]] != "neither"] for stratum, held in strata.items()}
-    remote = {stratum: [row for row in held if "remote" in modes(settled[row["id"]])] for stratum, held in recall.items()}
-    for stratum, held in remote.items():
-        found = sum("remote" in modes(row["rule"]) for row in held)
-        print(f"  {stratum:24} {len(held):3} of {len(recall[stratum]):3} remote, the rule gives remote to {found}")
-    estimate, low, high = weighted(recall, sizes, lambda held: (
-        sum("remote" in modes(settled[row["id"]]) and "remote" in modes(row["rule"]) for row in held),
-        sum("remote" in modes(settled[row["id"]]) for row in held)))
-    print(f"  {'weighted by stratum size':24} {estimate:6.1%}  ({low:.0%} to {high:.0%})")
-    silent = recall.get("silent remote", [])
-    others = Counter(settled[row["id"]] for row in silent if "remote" not in modes(settled[row["id"]]))
-    print("  silent vacancies not remote: " + ", ".join(f"{count} {said}" for said, count in others.most_common()))
+    for mode in MODES:
+        print(f"\n{mode} recall on undeclared vacancies")
+        for stratum, held in recall.items():
+            of = [row for row in held if mode in modes(settled[row["id"]])]
+            found = sum(mode in modes(row["rule"]) for row in of)
+            print(f"  {stratum:24} {len(of):3} of {len(held):3} {mode}, the rule gives {mode} to {found}")
+        estimate, low, high = weighted(recall, sizes, lambda held: (
+            sum(mode in modes(settled[row["id"]]) and mode in modes(row["rule"]) for row in held),
+            sum(mode in modes(settled[row["id"]]) for row in held)))
+        print(f"  {'weighted by stratum size':24} {estimate:6.1%}  ({low:.0%} to {high:.0%})")
+    for stratum, held in recall.items():
+        if stratum.startswith("silent"):
+            said = Counter(settled[row["id"]] for row in held)
+            print(f"  {stratum}, settled: " + ", ".join(f"{count} {label}" for label, count in said.most_common()))
 
     print("\nwhere the rule and the settled label split (rule -> settled)")
     for id in sorted(differing, key=lambda id: (sample[id]["stratum"], verdicts[id].get("pattern", ""))):

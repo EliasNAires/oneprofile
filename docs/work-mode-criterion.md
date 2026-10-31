@@ -13,7 +13,8 @@ Where the work of this vacancy is done, as the vacancy declares it: **remote**, 
   does travel now and then: a quarterly offsite, a yearly meetup, a visit to a customer.
 - **Hybrid.** Part of the work is done in an office on a regular schedule, and part away from it:
   days a week or a month in the office (`3 days in office`, `Hybrid`), or an office the person must
-  come into regularly.
+  come into regularly. Any of the employer's or a client's sites counts as the office here
+  (`SCIF presence a minimum of 3 days per week`).
 - **Onsite.** The work is done at the employer's or a client's site on every working day, or
   nearly: in an office, a lab, a plant, a customer's premises. A job whose work is travelling to
   sites is onsite.
@@ -32,15 +33,24 @@ that name where the work is done.
    (`everyone is in the office at least 3 days a week`) plainly covers every role, even where some
    groups may ask for more; a hedged one (`most roles`, `depending on the role`) does not. A
    statement about the team this role joins (`The teams are all home based`) is about this vacancy,
-   not the company.
+   not the company. Modes listed as a perk or a flexibility (`In-office, hybrid, or remote
+   flexibility`, `Thrive in a Hybrid or Remote Model`) do not plainly cover every role, so they declare
+   nothing, wherever they sit. A policy that says which mode applies where (`Remote work in locations
+   without our offices; hybrid work, 2 days in office, where we have one`) plainly covers every role,
+   and is a choice of those modes where nothing else speaks.
 2. **A word naming what the work is about is not a mode**: `hybrid cloud`, `remote sensing`,
-   `remote access`, `in-person events` the person organises.
+   `remote access`, `in-person events` the person organises, channels the work covers (`onsite,
+   offsite, social and in-store`), or the physical surroundings of the work (`Environmental
+   Conditions: Office`, read as the setting's noise and safety, not where the work is done).
 3. **The most specific statement about this job decides.** A sentence that states this role's
    arrangement (`This role is hybrid, with 3 days a week in our Austin office`) outweighs a bare
    label in the location or the field. A label in the location (`New York (Hybrid)`) outweighs the
    field (`Remote`) where nothing else speaks. A recruiting tag in the description (`#LI-Remote`,
    `#LI-Hybrid`) is a label of this vacancy, as the location is: it counts where nothing more specific
-   speaks.
+   speaks. So are a value under a job-details heading (`Job Details: Full-time / Remote`,
+   `Working Conditions`, `Remote Type: Office`, where `Office` is onsite) and a heading that names only
+   the mode, or the job family and the mode, standing alone (`# Remote`, `# Consultant | Remote`). A
+   heading with a theme in it (`# Innovate Remotely`, `# Why remote work at X`) is not a label.
 4. **A mode word with a schedule is read with its schedule.** `Onsite 2x week` and `Remote with 2
    office days a week` are hybrid; `Remote, occasional travel` is remote; `Primarily remote, on site
    as needed` is remote, as it names no regular days. Several modes carrying one schedule between
@@ -58,7 +68,8 @@ that name where the work is done.
      schedule or statement that follows gives the one mode (`Our Hybrid work model: 3 days in the
      office`). Where nothing follows that narrows it, the template declares nothing: `none`. A
      sentence offering this role in several modes (`Work location is variable with onsite, hybrid, or
-     remote options`) is a choice, not a template.
+     remote options`, `This position may be remote, hybrid, or office-based depending on
+     organizational requirements`) is a choice, not a template.
 6. **None** where nothing read declares a mode for this job. **Unclear** where what is read
    declares modes for this job that contradict each other and none of rules 1 to 5 decides.
 
@@ -77,3 +88,9 @@ naming the rule that decided it.
   Rule 4: `primarily remote, on site as needed` is remote; several modes under one schedule are the
   schedule's mode. Rule 5: an exception granted case by case is not a choice; a mode ruled out is not
   offered; a template listing every mode is not a choice, and declares nothing where nothing narrows it.
+- **Revision 3**, 2026-10-31, the recalibration after round 1 (ADR-0030), from the second gold set's
+  review and round 1's adjudication. Hybrid: any of the employer's or a client's sites counts as the
+  office. Rule 1: modes listed as a perk or a flexibility declare nothing; a policy saying which mode
+  applies where is a choice. Rule 2: channels and the physical surroundings of the work are not modes.
+  Rule 3: a value under a job-details heading, and a heading naming only the mode, are labels. Rule 5:
+  several modes this role may take, depending on the organisation, are a choice.

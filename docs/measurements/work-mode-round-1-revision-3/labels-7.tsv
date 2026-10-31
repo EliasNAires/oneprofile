@@ -1,0 +1,51 @@
+id	mode	reason
+1466833	onsite	most specific statement outweighs flexibility perk
+1902	none	no mode stated, only compensation factor
+988819	remote	heading naming only the mode
+1510140	none	hedged company policy, depending on role
+343892	remote	location/heading label, no regular office attendance
+1403707	none	environmental conditions, not mode
+1460817	none	physical surroundings, not mode
+319246	none	benefit/company statement, not every role
+158329	none	benefit statement, hedged
+573365	none	template listing every mode, nothing narrows it
+736797	hybrid	schedule stated, 4 days office 1 remote
+353906	hybrid	location label with schedule
+6919	onsite	explicit 100% onsite
+176964	onsite	explicit onsite role statement
+912127	onsite	job-details field value plus office location statement
+810939	hybrid	value under Remote Type heading
+287163	none	generic notice, not role-specific mode
+1329026	none	mode listed as perk/flexibility
+129704	remote	statement about the team, office use optional not regular
+563736	hybrid	company floor policy covers every role
+792661	remote	Location: Remote label
+245012	remote	statement about the team, fully-remote team
+205367	hybrid	onsite three days a week stated
+1067423	none	no mode mentioned
+1139946	none	no mode mentioned
+351945	none	describes support channels, not work location
+133598	none	hedged, roles that are based in an office
+572127	none	template listing every mode, nothing narrows it
+825992	hybrid	recruiting tag LI-Hybrid
+475549	hybrid	explicit hybrid modality with schedule
+179670	none	no mode stated, only compensation factor
+902745	onsite	job is travelling to sites
+239291	none	no clear mode statement
+132538	onsite	explicit in-person, no remote work
+341503	none	hybrid cloud names what work is about
+162362	onsite	statement about the team, in-office team
+311293	onsite	location label On Site
+1017143	onsite	job-details heading value Onsite most specific
+881698	hybrid	schedule stated, two to three days a week office
+1402694	none	environmental conditions, not mode
+171741	onsite,hybrid	choice offered after probation
+1156894	onsite	job whose work is travelling to sites
+164148	hybrid	hybrid approach stated for office
+188652	none	benefit mention only, no mode statement
+732874	none	hedged company statement, no schedule
+179864	none	benefit/perk, hedged, no mode
+828580	onsite	stated mode is headquarters-based, remote/hybrid case-by-case exception
+1172810	none	company-wide statement, not role-specific
+1256780	hybrid	telecommute schedule implies rest onsite
+1314070	none	office amenities benefit, not mode

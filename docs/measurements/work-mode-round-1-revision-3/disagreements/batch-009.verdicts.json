@@ -1,0 +1,22 @@
+{
+ "1024035": {"verdict": "a", "clause": "Onsite: the work is done at the employer's or a client's site on every working day", "pattern": "explicit onsite statement for role"},
+ "1040473": {"verdict": "a", "clause": "Rule 4: A mode word with a schedule is read with its schedule", "pattern": "hybrid with office days stated"},
+ "1064591": {"verdict": "b", "clause": "Onsite: a job whose work is travelling to sites is onsite", "pattern": "job travelling to sites is onsite"},
+ "1066801": {"verdict": "a", "clause": "Onsite: the work is done at the employer's or a client's site on every working day", "pattern": "explicit onsite statement for role"},
+ "1067272": {"verdict": "a", "clause": "Onsite: the work is done at the employer's or a client's site on every working day", "pattern": "explicit onsite statement for role"},
+ "1069122": {"verdict": "b", "clause": "What is read: sentences of its description that name where the work is done", "pattern": "office-based statement implies onsite"},
+ "1069832": {"verdict": "b", "clause": "Rule 3: a recruiting tag in the description is a label of this vacancy", "pattern": "recruiting tag plus statement"},
+ "1080634": {"verdict": "b", "clause": "Rule 1: modes listed as a perk or a flexibility declare nothing", "pattern": "location statement outweighs perk phrase"},
+ "1080657": {"verdict": "b", "clause": "Rule 1: modes listed as a perk or a flexibility declare nothing", "pattern": "location statement outweighs perk phrase"},
+ "1094251": {"verdict": "b", "clause": "Rule 3: a heading with a theme in it is not a label", "pattern": "direct statement despite theme heading"},
+ "1105144": {"verdict": "b", "clause": "Rule 1: a company policy that sets a floor for every role plainly covers every role", "pattern": "company floor policy sets days"},
+ "1121492": {"verdict": "b", "clause": "Rule 4: A mode word with a schedule is read with its schedule", "pattern": "explicit days split hybrid schedule"},
+ "1121627": {"verdict": "b", "clause": "Hybrid: any of the employer's or a client's sites counts as the office here", "pattern": "explicit days split hybrid schedule"},
+ "1132072": {"verdict": "a", "clause": "Onsite: a job whose work is travelling to sites is onsite", "pattern": "job travelling to sites is onsite"},
+ "1132332": {"verdict": "a", "clause": "Rule 1: a company policy that sets a floor for every role plainly covers every role", "pattern": "company floor policy sets days"},
+ "1133922": {"verdict": "b", "clause": "Rule 1: a company policy that sets a floor for every role plainly covers every role", "pattern": "company floor policy sets days"},
+ "1140086": {"verdict": "b", "clause": "Rule 1: a statement about the team this role joins is about this vacancy", "pattern": "statement about the team schedule"},
+ "1147116": {"verdict": "a", "clause": "Rule 2: a word naming what the work is about is not a mode", "pattern": "hybrid describes job duties not location"},
+ "1156878": {"verdict": "a", "clause": "Onsite: a job whose work is travelling to sites is onsite", "pattern": "job travelling to sites is onsite"},
+ "1156894": {"verdict": "a", "clause": "Onsite: a job whose work is travelling to sites is onsite", "pattern": "job travelling to sites is onsite"}
+}

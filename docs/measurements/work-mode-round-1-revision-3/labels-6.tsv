@@ -1,0 +1,51 @@
+id	mode	reason
+811351	onsite	job-details heading value, Remote Type: Office
+352788	none	no sentence names where work is done
+140643	hybrid	schedule, in-office 3 days a week
+215617	hybrid	most specific statement, 1 day/week in office
+1094251	remote	explicit statement, fully remote
+174836	remote	role statement, readiness to work remotely
+659354	none	site visits described, not this job's own location
+323638	onsite	most specific statement, 100% onsite
+1487837	hybrid	mode word with schedule read as hybrid
+1176117	none	remote access names what work is about
+701699	none	hybrid mentioned as culture/benefit, not a floor
+1245672	hybrid	most specific statement, commute 2 days/week
+651876	none	manages local support, not this job's own site
+1509991	none	company policy hedged, depending on role
+1140086	hybrid	explicit schedule, office once a week
+118662	none	middle office names a function, not a location
+65588	none	on-site work names a channel, not this job's location
+264930	none	flexibility plus occasional in-person, no mode stated
+14838	remote	explicit statement, fully remote role
+542035	hybrid	explicit statement, hybrid 3 days/week in office
+1466351	onsite	location-details heading, Onsite
+460018	none	flexibility perk, declares nothing
+61979	onsite	most specific statement, located at the office
+290290	none	flexible hybrid framed as optional culture, not a floor
+134026	onsite	explicit statement, full-time on-site
+324120	hybrid	schedule and LI-Hybrid tag agree
+571824	none	work-model section is a template, nothing narrows it
+179194	unclear	contradicting tags, LI-Onsite and LI-Hybrid
+878098	hybrid	job-details heading, Work location: Bangalore (Hybrid)
+1492132	hybrid	floor statement, at least 3 days in office
+1381534	none	hybrid connectivity names what work is about
+924336	onsite	recruiting tag, LI-OFFICE
+1444517	onsite	company policy covering every role, all positions on-site
+1327580	none	office description and hedged policy, no mode stated
+16962	none	flexible work model framed as perk, declares nothing
+1358636	none	flexible/opportunities framing, declares nothing
+133792	hybrid	floor for every full-time employee, 1 day/week home
+340459	onsite	statement about the team, based and working in-office
+337306	hybrid	explicit label, Hybride werken
+1211609	hybrid	explicit statement, hybrid model two days in-office
+196073	remote	location heading, Remote US
+835173	hybrid	explicit statement, hybrid minimum two days/week
+1403695	none	Environmental Conditions: Office is the setting, not the location
+1506369	none	hybrid environment/operations names what work is about
+881790	none	remote access requests names what work is about
+477560	remote	job-details heading, Role Designation: Remote
+193075	onsite	most specific statement, based in hub offices
+1067272	onsite	explicit statement, 100% on-site
+1008353	none	hybrid-friendly culture is hedged, declares nothing
+1078629	none	hedged statement, for some roles, not this job

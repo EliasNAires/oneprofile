@@ -118,6 +118,13 @@ From the recalibration after round 1, the gold set is redrawn in the seven strat
 rules as they stand then, so that the agreement covers the silent hybrid and silent office strata. Its
 size and its held-out share are the calibration's to set.
 
+**The second gold set (recalibration, 2026-10-31).** 100 vacancies, `docs/measurements/work-mode-gold-set-2.tsv`,
+drawn by `scripts/draw-work-mode-gold` at round 1's rules, weighted to the silent strata: 6 described remote,
+6 hybrid, 6 onsite, 8 a choice, 26 silent remote, 20 silent hybrid, 28 silent office. Half of each stratum is
+held out. It excludes every vacancy drawn before: the measurement's, the first gold set's and the 525 that
+re-score round 1. Labelled by the work-mode labeller under revision 2, then corrected by a Sonnet review under
+revision 3 (6 rows changed). The first gold set is kept as it was.
+
 Until then, drawn fresh, as a round draws, at the rules as they stand when calibration runs: **100 vacancies** in the
 same strata at half a round's size (15 remote, 12 hybrid, 13 onsite, 10 choice, 50 silent), excluding the
 measurement's 200, with **half of each stratum held out**. The measurement's rows are not reused: its
@@ -143,6 +150,19 @@ labeller run under it:
 
 Both are near the gates' 90% line from above, so a round's adjudicated figures can tell rules from
 noise, if barely. The labeller's misses are single cases, not a clause read two ways.
+
+### Agreement (recalibration, 2026-10-31)
+
+On the second gold set, with revision 3 frozen. Checked by `scripts/check-work-mode-gold` with a fresh labeller
+run under it:
+
+| part | rows | labeller | adjudicator with the gold set |
+|---|---:|---|---|
+| open | 50 | 50 (100%, 93–100%) | none to settle |
+| held-out | 50 | 49 (98.0%, 89–100%) | 0 of 1: it sided with the labeller |
+
+The held-out figure is the same as revision 2's on the first gold set, now on rows that are mostly silent
+hybrid and silent office. Both are near the gates' 90% line from above.
 
 ## Considered options
 

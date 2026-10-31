@@ -1,0 +1,10 @@
+{
+  "1465957": {"verdict": "a", "clause": "Rule 3: a value under a job-details heading", "pattern": "value under job-details heading"},
+  "1466351": {"verdict": "a", "clause": "Rule 3: a value under a job-details heading", "pattern": "value under job-details heading"},
+  "1466833": {"verdict": "a", "clause": "Rule 3: the most specific statement about this job decides", "pattern": "specific statement overrides hedged perk"},
+  "1487837": {"verdict": "a", "clause": "Rule 4: a mode word with a schedule is read with its schedule", "pattern": "mode with schedule is hybrid"},
+  "1491554": {"verdict": "b", "clause": "Rule 4: a mode word with a schedule is read with its schedule", "pattern": "mode with schedule is hybrid"},
+  "1491960": {"verdict": "a", "clause": "Rule 4: a mode word with a schedule is read with its schedule", "pattern": "mode with schedule is hybrid"},
+  "1492132": {"verdict": "b", "clause": "Rule 4: a mode word with a schedule is read with its schedule", "pattern": "mode with schedule is hybrid"},
+  "1493520": {"verdict": "b", "clause": "Rule 1: a company policy that sets a floor for every role plainly covers every role", "pattern": "policy floor covers every role"}
+}

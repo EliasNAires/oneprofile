@@ -1,0 +1,51 @@
+id	mode	reason
+178727	hybrid	rule 3: most specific statement ("This is a Hybrid role")
+1151519	none	rule 1: office description is company's, not vacancy's
+40941	none	rule 1: office lunch is a benefit, not mode
+1104438	hybrid	rule 1: floor covers every role (3 days/week office)
+1329787	hybrid	rule 3: recruiting tag (LI-Hybrid)
+298810	onsite	rule 1: statement about team's office; doubt: no explicit schedule, considered none
+1254373	remote	rule 3: most specific statement ("begin as remote")
+234917	hybrid	rule 4: schedule (weekly office syncs); doubt: weekly sync read as occasional travel (remote), set aside
+832122	hybrid	rule 4: schedule (3 days/week at location)
+1104795	hybrid	rule 1: floor covers every role (3 days/week office)
+453334	remote	rule 3: most specific statement, location label agrees
+563866	hybrid	rule 1: floor covers every role (4 days office, 1 day WFH)
+597098	hybrid	rule 4: schedule ("up to 3 days WFH"); doubt: header line, not a full description sentence
+481600	none	rule 2: "hybrid infrastructure" names tech, not mode
+19868	remote	rule 3: location label, region doesn't change remote
+938567	remote	rule 3: tag decides; doubt: benefit "hybrid work model" line set aside as not vacancy-specific
+571708	none	rule 5: template lists every mode, nothing narrows
+576933	onsite	rule 3: explicit statement ("100% onsite")
+988054	hybrid	rule 3/4: specific schedule (80/20) outweighs bare "Remote" heading
+102988	none	rule 6: nothing read declares a mode
+38138	remote	rule 4: remote with occasional travel
+17571	none	rule 1: generic office-environment requirement, not a location statement
+359035	hybrid	rule 1: statement about team's schedule (2 days/week office); doubt: "recommended" hedge, considered none
+647651	onsite	rule 1: floor covers every role (all internships onsite)
+13714	remote,onsite	rule 5: choice offered (remote in Colombia or onsite at client); doubt: vaguer "remote/hybrid" lines set aside as less specific
+481568	none	rule 1: hedged company benefit, no schedule given
+1192895	onsite	rule 3: explicit "onsite" in duties
+192603	none	rule 5: template-like benefit list, nothing narrows; doubt: could read as choice offered (remote,hybrid,onsite)
+3285	hybrid	rule 4: explicit schedule ("3 days in person")
+315378	none	rule 2: "hybrid" names tech (multi-cloud), not mode
+134679	hybrid	rule 1: floor covers every role (Mon-Thu office, exceptions ask more)
+66397	none	rule 1: home office stipend is a benefit
+512782	hybrid	rule 3: explicit field ("Employment Type: hybrid work arrangement"); doubt: hedged "most roles" text set aside as less specific
+699994	none	rule 1: telework equipment is a benefit
+821872	remote,hybrid	rule 5: choice offered (remote or hybrid by business need); doubt: "based on needs" hedge weighed, kept as offered choice
+1104740	hybrid	rule 3: benefit specific to this role, tag agrees
+163040	onsite	rule 3: explicit statement, tag agrees
+182108	remote,onsite	rule 5: choice offered (remote or onsite at client); doubt: vaguer "remote/hybrid" lines set aside as less specific
+1164475	none	rule 2: "hybrid AI-OR" names a method, not mode
+257538	hybrid	rule 1: statement about team's schedule (3 days/week in person), tag agrees
+1071592	none	rule 2: "Microsoft Office" is software, not location
+1167684	onsite	rule 3: explicit field ("Workplace type: On-site Working")
+1310417	hybrid	rule 3: explicit statement ("hybrid basis")
+1161546	hybrid	rule 3: explicit field ("Location Type: hybrid")
+164393	none	rule 1: hedged culture statement ("remote-friendly")
+1008013	none	rule 1: hedged culture statement ("hybrid-friendly")
+329709	hybrid	rule 3: explicit label with schedule ("Hybrid", 50% onsite)
+69860	none	rule 1: "remote-first company" statement excluded
+1345929	none	rule 1: hedged company-wide statement ("based on needs"); doubt: explicit "hybrid organization" wording considered as hybrid
+106686	remote	rule 4: "Primarily Remote", no regular onsite days named

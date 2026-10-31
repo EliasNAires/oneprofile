@@ -15,6 +15,9 @@ whose description states a mode, the share that is remote.
 
 Otherwise draws, seeded, the strata of #98's measurement: the undeclared vacancies the description gives each
 mode, or a choice of modes (precision), and those it gives none whose description names remote (remote recall).
+Another sampler may also draw the silent hybrid stratum, those given none whose description names hybrid and no
+remote word, and the silent office stratum, those that name an office, onsite or in-person word or days a week
+and neither of the above (ADR-0030).
 Writes DIRECTORY/sample.tsv, every drawn vacancy with its ATS, its stratum, the rule's modes, its title and its
 location; DIRECTORY/strata.tsv, each stratum's size, which weighs it; DIRECTORY/batch-N.txt, the labelled
 vacancies shuffled in batches of 50 with only what a labeller sees (docs/work-mode-criterion.md): a block per
@@ -52,16 +55,22 @@ CUE = re.compile(r"remot|hybrid|h[íi]brid|on-?\s?site|in[- ]office|in[- ]person
 # A description that names working remotely, which the recall stratum is drawn from (as a Postgres regex).
 REMOTE_CUE = r"\mremote|work(ing)? from home|\mwfh\M|telecommut|telework|home[- ]based"
 
+# A description that names hybrid, or an office, onsite or in-person word or days a week (as Postgres regexes),
+# which the silent hybrid and silent office strata are drawn from.
+HYBRID_CUE = r"hybrid|h[íi]brid"
+OFFICE_CUE = r"on-?\s?site|in[- ]office|in[- ]person|\moffice\M|days? (a|per) week|presencial"
+
 QUERY = """
 copy (
   select v.id, c.ats, coalesce(c.name, c.slug), v.title, v.location,
     coalesce(v.workplace_type, v.remote_type), array_to_string(n.work_modes, ','),
-    n.description_segments::text ~* '{remote}'
+    n.description_segments::text ~* '{remote}', n.description_segments::text ~* '{hybrid}',
+    n.description_segments::text ~* '{office}'
   from normalized_vacancy n join vacancy v on v.id = n.vacancy_id join company c on c.id = v.company_id
   where n.classification_state = 'IN'
   order by v.id
 ) to stdout with (format csv, header false)
-""".format(remote=REMOTE_CUE)
+""".format(remote=REMOTE_CUE, hybrid=HYBRID_CUE, office=OFFICE_CUE)
 
 PLACES_QUERY = """
 copy (
@@ -98,7 +107,8 @@ def undeclared():
     """The undeclared vacancies of the subset, with what the description gave them."""
     print("Reading the subset", file=sys.stderr)
     rows = {r[0]: {"id": r[0], "ats": r[1], "company": r[2], "title": r[3], "location": r[4] or None,
-                   "field": r[5] or None, "modes": r[6], "remote_cue": r[7] == "t"} for r in psql(QUERY)}
+                   "field": r[5] or None, "modes": r[6], "remote_cue": r[7] == "t",
+                   "hybrid_cue": r[8] == "t", "office_cue": r[9] == "t"} for r in psql(QUERY)}
     print("Reading which step decides each", file=sys.stderr)
     stdin = "".join(json.dumps({"id": int(r["id"]), "location": r["location"], "field": r["field"],
                                 "title": r["title"]}) + "\n" for r in rows.values())
@@ -154,11 +164,24 @@ def shown(row, segments):
             f"field: {flat(row['field'])}\ndescription:\n" + ("\n".join(cued) or "-") + "\n")
 
 
-def draw(directory, rows, described=None, silent_remote=SILENT_REMOTE, seed=SEED, exclude=(), kept=None):
-    """Draws the strata into directory, as the module's docstring says. Another sampler passes its own sizes, seed,
+def silent(row):
+    """The silent stratum of a vacancy the description gives no mode, by the first cue it names, or None."""
+    if row["modes"]:
+        return None
+    if row["remote_cue"]:
+        return "remote"
+    if row["hybrid_cue"]:
+        return "hybrid"
+    return "office" if row["office_cue"] else None
+
+
+def draw(directory, rows, described=None, silents=None, seed=SEED, exclude=(), kept=None):
+    """Draws the strata into directory, as the module's docstring says. Another sampler passes its own sizes (the
+    silent ones by cue, remote, hybrid and office), seed,
     the ids it must not draw, and kept(text), a label already kept for a shown text: such a vacancy is written to
     batch-0.txt and labels-0.tsv instead of a batch to label."""
     described = described or DESCRIBED
+    silents = silents or {"remote": SILENT_REMOTE}
     rng = random.Random(seed)
     exclude = set(exclude)
     rows = [row for row in rows if row["id"] not in exclude]
@@ -173,7 +196,8 @@ def draw(directory, rows, described=None, silent_remote=SILENT_REMOTE, seed=SEED
 
     for name, size in described.items():
         take(f"described {name.lower()}", [r for r in rows if stratum(r) == name], size)
-    take("silent remote", [r for r in rows if not r["modes"] and r["remote_cue"]], silent_remote)
+    for name, size in silents.items():
+        take(f"silent {name}", [r for r in rows if silent(r) == name], size)
 
     with open(directory / "strata.tsv", "w", encoding="utf-8") as out:
         out.write("stratum\tvacancies\tdrawn\n")

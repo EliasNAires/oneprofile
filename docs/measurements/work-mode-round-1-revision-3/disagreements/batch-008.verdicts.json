@@ -1,0 +1,22 @@
+{
+  "814439": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "hybrid label with onsite schedule"},
+  "828580": {"verdict": "a", "clause": "Offered, not excepted", "pattern": "onsite base with case-by-case exception"},
+  "835173": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "schedule under working-schedule heading"},
+  "836548": {"verdict": "b", "clause": "Hybrid: part of the work done in office on a regular schedule, part away", "pattern": "ability to work hybrid stated"},
+  "878098": {"verdict": "b", "clause": "A label in the location outweighs the field", "pattern": "location heading with mode in parens"},
+  "881698": {"verdict": "a", "clause": "A statement about the team this role joins is about this vacancy", "pattern": "anticipated in-office days for candidate"},
+  "902745": {"verdict": "a", "clause": "A job whose work is travelling to sites is onsite", "pattern": "field job attending onsite meetings"},
+  "912127": {"verdict": "a", "clause": "Remote Type: Office, where Office is onsite", "pattern": "workplace type field office"},
+  "924336": {"verdict": "a", "clause": "A recruiting tag in the description is a label", "pattern": "recruiting tag LI-office"},
+  "926777": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "hybrid schedule under perks heading"},
+  "940685": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "hybrid schedule in physical demands"},
+  "950628": {"verdict": "b", "clause": "A company policy that sets a floor for every role plainly covers every role", "pattern": "company floor of in-office days"},
+  "954600": {"verdict": "a", "clause": "A job whose work is travelling to sites is onsite", "pattern": "travelling assignment onsite weeks"},
+  "988657": {"verdict": "b", "clause": "A heading that names only the mode, standing alone", "pattern": "remote heading with support channels"},
+  "988699": {"verdict": "b", "clause": "A heading that names only the mode, standing alone", "pattern": "remote heading with WFH benefit"},
+  "988819": {"verdict": "a", "clause": "A heading that names only the mode, standing alone", "pattern": "bare remote heading alone"},
+  "1008373": {"verdict": "a", "clause": "A word naming what the work is about is not a mode", "pattern": "hybrid job-type not location"},
+  "1017143": {"verdict": "a", "clause": "a value under a job-details heading counts as a label", "pattern": "hybrid-working field valued onsite"},
+  "1020619": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "work-from-home one day option"},
+  "1020630": {"verdict": "a", "clause": "the work-mode field its ATS publishes", "pattern": "workplace type field hybrid"}
+}

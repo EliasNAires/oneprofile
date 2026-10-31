@@ -4,13 +4,14 @@ revision (#98, ADR-0030).
 
     scripts/check-work-mode-gold
 
-The gold set, docs/measurements/work-mode-gold-set.tsv, lists each drawn vacancy's id, its part (open or
+The gold set, docs/measurements/work-mode-gold-set-2.tsv, lists each drawn vacancy's id, its part (open or
 held-out), its stratum, its label and the doubt the review noted; what the labeller reads of each is in
-docs/measurements/work-mode-gold/batch-N.txt (scripts/draw-work-mode-gold). Every row must carry a label.
+docs/measurements/work-mode-gold-2/batch-N.txt (scripts/draw-work-mode-gold). Every row must carry a label. The
+first gold set, checked under revisions 1 and 2 in work-mode-gold-check-revision-<R>/, is kept as it was.
 
 The revision is the highest `**Revision N**` in docs/work-mode-criterion.md's change log. The check lives in
-docs/measurements/work-mode-gold-check-revision-<R>/. Where it lacks labels-N.tsv for a gold batch, this prints
-the labelling to do and stops: the `work-mode-labeller` agent labels docs/measurements/work-mode-gold/batch-N.txt
+docs/measurements/work-mode-gold-2-check-revision-<R>/. Where it lacks labels-N.tsv for a gold batch, this prints
+the labelling to do and stops: the `work-mode-labeller` agent labels docs/measurements/work-mode-gold-2/batch-N.txt
 into the check's labels-N.tsv. Once every batch is labelled, it reports, for the open and the held-out part apart,
 the labeller's agreement with the gold set (the same modes, or both none, or both unclear) with a 95% Wilson
 interval.
@@ -34,9 +35,9 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 MEASUREMENTS = REPO / "docs" / "measurements"
-GOLD = MEASUREMENTS / "work-mode-gold-set.tsv"
-BATCHES = MEASUREMENTS / "work-mode-gold"
-CHECK = MEASUREMENTS / "work-mode-gold-check-revision-{revision}"
+GOLD = MEASUREMENTS / "work-mode-gold-set-2.tsv"
+BATCHES = MEASUREMENTS / "work-mode-gold-2"
+CHECK = MEASUREMENTS / "work-mode-gold-2-check-revision-{revision}"
 CRITERION = REPO / "docs" / "work-mode-criterion.md"
 
 BATCH = 20

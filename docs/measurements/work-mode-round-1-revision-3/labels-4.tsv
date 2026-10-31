@@ -1,0 +1,51 @@
+id	mode	reason
+1066801	onsite	specific statement "must work onsite" (rule 3)
+1189302	none	flexible working/hybrid listed as perk (rule 1)
+1465957	onsite	"100% on-site" working conditions
+686990	onsite	travel to work onsite at sites is onsite
+1176488	none	nothing read declares a mode
+170015	hybrid	"Hybrid 3 days/week" mode with schedule (rule 4)
+1167201	hybrid	job-details heading value "Hybrid Working" (rule 3)
+320224	remote	most specific statement "this role is a remote role" overrides hedged company hybrid (rule 3)
+2871	none	nothing read declares a mode
+926757	none	hybrid listed as a perk under "The perks" (rule 1)
+1251945	onsite	travels to sites throughout county is onsite
+926777	hybrid	direct statement "we work hybrid, three days in office" (rule 4)
+1071851	none	only benefits mentioned, no mode stated
+1222962	onsite	"willingness to work on-site" specific statement (rule 3)
+714894	none	"hybrid cloud" names what work is about, not a mode (rule 2)
+776240	onsite	regular on-site presence required; remote only by arrangement, exception not offered (rule 5)
+836294	none	offices mention is company-wide, no vacancy mode stated
+664205	none	hedged company policy "in most cases" (rule 1)
+121235	hybrid	"in-office three days weekly" required (rule 4)
+571947	none	template listing every mode, nothing narrows it (rule 5)
+919284	none	hedged in-office culture statement (rule 1)
+1228144	onsite	"working location will be fully on-site" stated; remote an exception not offered (rule 5)
+2190	none	"hybrid cloud" tech term (rule 2); office location only a pay factor
+1320926	onsite	specific "onsite ... shift team" outweighs general hybrid mention (rule 3)
+1451230	none	no mode stated; office snacks is a benefit
+503504	onsite	heading names the mode "Client Onsite" (rule 3)
+1325618	hybrid	company floor "4+ days/week in office" covers every role (rule 1)
+1133922	hybrid	"guideline at least half the time at office" schedule (rule 4)
+664202	none	hedged company policy "in most cases" (rule 1)
+641656	hybrid	"Hybrid work model" stated for this vacancy (rule 4)
+172291	hybrid	role based in office plus hybrid working policy (rule 1/4)
+351776	hybrid	"in-office approximately 1 day per week" schedule (rule 4)
+353647	hybrid	"onsite minimum 3 days/week" schedule (rule 4)
+65821	remote	"Fully remote work policy" plainly covers the role (rule 1)
+572018	none	template listing every mode, nothing narrows it (rule 5)
+498574	onsite	"This is an on-site position" direct statement (rule 3)
+727897	onsite	states work is at the office, no remote/hybrid named
+44711	remote	"Open to remote locations" direct statement
+1350491	hybrid	job-details heading value "Role Type: Hybrid" (rule 3)
+441707	none	offices and interview format are not this vacancy's mode
+1246110	none	"remote state" names what work is about (rule 2); transport is a benefit
+288920	none	"office IT infrastructure" names what work is about (rule 2)
+172335	hybrid	"2 days a week in the office" schedule (rule 4)
+571148	none	template listing every mode, nothing narrows it (rule 5)
+1003198	none	nothing read declares a mode
+764943	onsite	job-details value "Full-time/On-site" (rule 3)
+1196147	onsite	location label "Office" decides over hedged company statement (rule 3)
+808452	none	hedged in-office culture statement (rule 1)
+1897	none	office location only a pay factor, no mode stated
+657614	hybrid	explicit "3 days in-office and 2 days remote" schedule (rule 4)

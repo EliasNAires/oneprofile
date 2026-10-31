@@ -1,0 +1,22 @@
+{
+  "61979": {"verdict": "a", "clause": "Onsite: the work is done at the employer's or a client's site", "pattern": "office location implies onsite"},
+  "65821": {"verdict": "a", "clause": "This vacancy, not the company: plainly covers every role", "pattern": "company remote policy covers all roles"},
+  "80804": {"verdict": "b", "clause": "A company policy that sets a floor for every role plainly covers every role", "pattern": "company policy sets office floor"},
+  "89011": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "hybrid schedule for candidate's location"},
+  "92772": {"verdict": "a", "clause": "A statement about the team this role joins is about this vacancy", "pattern": "team described as fully remote"},
+  "99191": {"verdict": "a", "clause": "None where nothing read declares a mode", "pattern": "hedged preference for in-person"},
+  "100882": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "hiring for hybrid model by location"},
+  "100901": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "hiring for hybrid model by location"},
+  "102706": {"verdict": "b", "clause": "Hybrid: days a week in the office", "pattern": "required office days minimum"},
+  "106296": {"verdict": "a", "clause": "A company policy that sets a floor for every role plainly covers every role", "pattern": "company-wide hybrid schedule unhedged"},
+  "121235": {"verdict": "a", "clause": "None where nothing read declares a mode", "pattern": "office commitment marked not necessary"},
+  "125738": {"verdict": "a", "clause": "A company policy that sets a floor for every role plainly covers every role", "pattern": "company-wide hybrid schedule unhedged"},
+  "130993": {"verdict": "a", "clause": "A statement about the team this role joins is about this vacancy", "pattern": "team described as fully remote"},
+  "132538": {"verdict": "b", "clause": "Onsite: work done at the site on every working day", "pattern": "explicit every-day office statement"},
+  "133326": {"verdict": "b", "clause": "Hybrid, with 3 days a week in our office (rule 3 example)", "pattern": "required office days minimum"},
+  "133636": {"verdict": "a", "clause": "Hybrid: any of the employer's sites counts as the office", "pattern": "hybrid schedule for office-based roles"},
+  "133792": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "home office day benefit schedule"},
+  "134026": {"verdict": "a", "clause": "Onsite: work done at the site on every working day, or nearly", "pattern": "explicit onsite requirement stated"},
+  "134817": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "choice between remote and office"},
+  "136888": {"verdict": "a", "clause": "A choice of modes is a choice", "pattern": "three modes explicitly offered"}
+}

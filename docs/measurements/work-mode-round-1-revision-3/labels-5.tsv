@@ -1,0 +1,51 @@
+id	mode	reason
+1132332	hybrid	schedule states 3 office days (rule 4)
+763201	none	nothing read names where work is done
+133326	hybrid	3 days/week in-person is a schedule (rule 4)
+1270362	none	describes other teams' location, not this role's
+1246080	hybrid	title states hybrid working (rule 3)
+326789	none	onsite fitness center is a benefit (rule 2)
+232757	onsite	company statement plainly covers every role (rule 1)
+538631	none	office equipment is physical surroundings (rule 2)
+1491960	hybrid	company floor of 3 days in office (rule 1/4)
+1084006	none	department name, not a mode
+733554	none	hedged flexibility statement, no mode (rule 1)
+705406	hybrid	explicit hybrid schedule stated (rule 4)
+1376379	hybrid	up to 2 days remote is the schedule (rule 4)
+1167674	onsite	job-details heading value (rule 3)
+286453	onsite	location label "(In-person)" (rule 3)
+1198672	none	Microsoft Office is a tool, not a mode (rule 2)
+171723	hybrid	work-mode heading with schedule (rule 3/4)
+1080657	hybrid	statement balances in-office and remote work
+1198521	onsite	explicit onsite requirement at client site
+1156153	none	hybrid listed among benefits, a perk (rule 1)
+894285	none	"on-site" names a channel, not a mode (rule 2)
+100882	hybrid	explicit hybrid working model for this role
+8511	hybrid	meets at office once a week is a schedule
+1425489	hybrid	Mon-Thu onsite is a partial-week schedule (rule 4)
+1008373	hybrid	explicit statement this is a hybrid role
+954600	onsite	job of travelling to sites is onsite
+764882	none	"hybrid environments" names IT infra, not mode (rule 2)
+162571	hybrid	standalone "Hybrid" label decides, perk hedged (rule 1/3)
+952671	none	onsite/offshore names team structure, not mode
+19990	hybrid	hybrid schedule with named office/remote days (rule 4)
+837014	none	clerical office setting is physical surroundings (rule 2)
+733858	none	hedged flexibility statement, no mode (rule 1)
+45582	none	"hybrid methodologies" names work content, not mode (rule 2)
+1190176	onsite	explicit onsite, no telecommute options
+318111	none	remote-first is hedged, depends on role/team (rule 1)
+572384	none	template listing every mode, nothing narrows it (rule 5)
+217	onsite	recruiting tag LI-Onsite, nothing more specific (rule 3)
+108922	none	only company-wide office/timezone statements
+1337002	none	office address only, no stated mode
+988699	remote	heading naming only the mode (rule 3)
+181861	remote	statement about the team this role joins (rule 1)
+359635	none	only vague company culture/office statements
+45491	none	"remote development environments" names work content (rule 2)
+717211	hybrid	specific 2-3 days/week in office outweighs generic choice (rule 3)
+1040473	hybrid	explicit 3 days from office (rule 4)
+212697	none	"hybrid local-cloud" names tech, not mode (rule 2)
+444765	onsite	specific on-site requirement outweighs recruiting tag (rule 3)
+1200995	none	heading names office building, perk phrasing declares nothing (rule 1/3)
+297958	hybrid	recruiting-style tag label, nothing more specific (rule 3)
+546365	hybrid	unhedged company floor mixing office/client/virtual (rule 1)

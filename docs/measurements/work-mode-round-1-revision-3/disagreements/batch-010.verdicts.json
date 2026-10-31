@@ -1,0 +1,22 @@
+{
+  "1173034": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "office days plus remote option"},
+  "1190176": {"verdict": "a", "clause": "Onsite: the work is done at the employer's or a client's site on every working day", "pattern": "explicit onsite requirement stated"},
+  "1190498": {"verdict": "b", "clause": "Onsite: the work is done at the employer's or a client's site on every working day", "pattern": "explicit onsite requirement stated"},
+  "1196147": {"verdict": "a", "clause": "A value under a job-details heading (Remote Type: Office, where Office is onsite)", "pattern": "location field labeled Office"},
+  "1196320": {"verdict": "a", "clause": "A value under a job-details heading (Remote Type: Office, where Office is onsite)", "pattern": "location field labeled Office"},
+  "1196539": {"verdict": "b", "clause": "A value under a job-details heading (Remote Type: Office, where Office is onsite)", "pattern": "location field labeled Office"},
+  "1196694": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "remote with occasional office visits"},
+  "1196727": {"verdict": "a", "clause": "A value under a job-details heading (Remote Type: Office, where Office is onsite)", "pattern": "location field labeled Office"},
+  "1196944": {"verdict": "b", "clause": "A value under a job-details heading (Remote Type: Office, where Office is onsite)", "pattern": "location field labeled Office"},
+  "1197396": {"verdict": "b", "clause": "The physical surroundings of the work are not a mode", "pattern": "support channels not a mode"},
+  "1198521": {"verdict": "b", "clause": "Onsite: the work is done at the employer's or a client's site on every working day", "pattern": "explicit onsite requirement stated"},
+  "1219435": {"verdict": "a", "clause": "This vacancy, not the company", "pattern": "vague company description not vacancy"},
+  "1222962": {"verdict": "b", "clause": "Onsite: the work is done at the employer's or a client's site on every working day", "pattern": "explicit onsite requirement stated"},
+  "1227977": {"verdict": "a", "clause": "Offered, not excepted", "pattern": "onsite with case-by-case exception"},
+  "1228144": {"verdict": "b", "clause": "Offered, not excepted", "pattern": "onsite with case-by-case exception"},
+  "1228165": {"verdict": "a", "clause": "Onsite: the work is done at the employer's or a client's site on every working day", "pattern": "explicit onsite requirement stated"},
+  "1245196": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "office days plus remote option"},
+  "1245672": {"verdict": "b", "clause": "Hybrid: part of the work is done in an office on a regular schedule", "pattern": "office days alone imply hybrid"},
+  "1246080": {"verdict": "b", "clause": "A heading that names only the mode", "pattern": "heading names the mode"},
+  "1251945": {"verdict": "a", "clause": "A job whose work is travelling to sites is onsite", "pattern": "travel to sites is onsite"}
+}

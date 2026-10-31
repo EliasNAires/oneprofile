@@ -1,0 +1,51 @@
+id	mode	reason
+139452	none	rule 2: "hybrid" names retrieval method, not mode
+987225	none	rule 6: bare heading, no sentence declares mode -- doubt: heading "Remote" alone tempts reading as label
+1342263	none	nothing read names a mode
+1400574	none	rule 2: "hybrid" names environment type, not mode
+289165	remote	rule 3: LI-Remote tag, nothing more specific speaks
+598324	hybrid	rule 3: most specific statement, "this role is hybrid"
+299793	onsite	rule 3: "work onsite" plus "open to working in office" converge -- doubt: neither states daily presence explicitly
+468362	onsite	explicit "onsite ... five days per week"
+179963	none	"remote interviews" names a recruiting scam, rule 2-like -- doubt: surface "remote" keyword could mislead
+229879	hybrid	rule 4: one schedule combining onsite and remote days
+266127	remote	rule 1: unhedged "completely remote, no offices" covers every role
+810704	onsite	field-like "Remote Type - Office" names in-office value
+572098	none	rule 5: generic Work Model template, nothing narrows it
+572499	none	rule 5: generic Work Model template, nothing narrows it
+1206703	hybrid	explicit "hybrid role", in-office days variable
+978103	onsite	explicit "located on-site"
+28763	none	rule 1: vague culture/benefit lines, not a plain declaration -- doubt: "fostering hybrid ways of working" plus "in-office experience" hint at hybrid but are hedged, not plain
+1003585	none	no location word, only a days-per-week figure -- doubt: schedule may hint hybrid but no mode word given
+43982	onsite	"office-based teams work onsite, five days a week" plus LI-Onsite
+1495028	remote	explicit "remote position"; residency radius does not change it
+359096	hybrid	explicit "adopted a hybrid workplace model, 2 days in office"
+659560	hybrid	rule 1: unhedged policy of 2-3 office days a week covers role -- doubt: location tag "(Office)" suggests onsite, set aside for the more specific schedule
+1403821	none	"Office" is the Environmental Conditions field, not a work-mode field -- doubt: could misread "Office" as onsite
+310978	none	"Cozy Office in NYC" is a benefit mention, mismatched city, rule 1
+286477	hybrid	rule 1: unhedged "Organisation de travail hybride" benefit line covers role -- doubt: reads like a generic benefit similar to excluded "home office stipend", set aside
+288853	none	"in-office" perk mention only, rule 1 benefit, no mode stated
+17562	none	boilerplate physical-requirements clause, not a declared mode -- doubt: "office or remote home-office" could read as a choice, but reads as generic ADA-style boilerplate
+1350857	none	benefit text names a mismatched office city, not this role's mode
+949118	onsite	explicit "will require an on-site presence"
+139642	onsite	rule 1: unhedged "in-office work environment in all our offices" names matching NYC office
+1185365	none	rule 1: hedged "for the majority of employees" does not plainly cover every role
+227194	onsite	location label "(On Site)"
+1402533	none	"Office" is the Environmental Conditions field, not a work-mode field -- doubt: could misread "Office" as onsite
+468459	none	residency-near-office requirement, no mode word stated
+1445537	none	"Office" names an organizational unit (Program Office), rule 2
+1231758	none	"Office" names Microsoft Office software, rule 2
+59131	onsite,hybrid,remote	rule 5: sentence offers a choice of all three modes
+436469	hybrid	rule 1: statement about the team's workplace, "we work in a hybrid way"
+1019689	none	rule 1: hedged company-wide statements, none specific to this role -- doubt: split-team language tempts "unclear" but hedged statements are excluded first
+139647	onsite	rule 1: unhedged "in-office work environment in all our offices" names matching SF office
+983216	none	rule 2: "hybrid identity/enterprise" names technical architecture, not mode
+38110	hybrid	explicit "hybrid work schedule of 3 days in office ... 2 days remote"
+1352937	hybrid,onsite	rule 5: "Work Flexibility: Hybrid or Onsite" offers a choice
+571689	none	rule 5: generic Work Model template, nothing narrows it
+1047702	none	schedule given ("SCIF presence 3 days/week") but no mode word used -- doubt: suggests hybrid but is never stated as such
+1309690	none	rule 2: "hybrid delivery model" names a project methodology, not mode
+1356724	none	"Front, Middle, or Back Office" names business functions, rule 2
+986426	none	rule 6: bare heading, no sentence declares mode -- doubt: heading "Remote" alone tempts reading as label
+1061292	unclear	rule 6: "may be remote, hybrid, or office-based depending on org requirements" leaves it contradicted and undecided -- doubt: could be read as an offered choice, but it is contingent on a later org decision, not offered up front
+566576	onsite	rule 3: most specific statement, "role will be based in our London office" -- doubt: "based in" does not explicitly state every day
