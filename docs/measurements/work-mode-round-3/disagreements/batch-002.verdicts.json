@@ -1,0 +1,22 @@
+{
+ "104537": {"verdict": "a", "clause": "Onsite: a job whose work is travelling to sites is onsite", "pattern": "travel-based onsite duties"},
+ "115940": {"verdict": "b", "clause": "None where nothing read declares a mode for this job", "pattern": "vague office openness, no schedule"},
+ "125719": {"verdict": "b", "clause": "This vacancy, not the company: a policy that sets a floor for every role plainly covers every role", "pattern": "company hybrid policy as floor"},
+ "133562": {"verdict": "a", "clause": "This vacancy, not the company: a policy that says which mode applies where is a choice of those modes", "pattern": "conditional office policy with schedule"},
+ "135898": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "daily onsite presence stated"},
+ "136986": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "role stated hybrid directly"},
+ "137052": {"verdict": "a", "clause": "A choice of modes is a choice", "pattern": "choice of modes by location"},
+ "138396": {"verdict": "a", "clause": "Onsite: the work is done at the employer's or a client's site on every working day, or nearly", "pattern": "explicit office days, no remote"},
+ "139250": {"verdict": "a", "clause": "This vacancy, not the company: a sentence about how the company works", "pattern": "company culture statement, not vacancy's"},
+ "144069": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "explicit onsite overrides stray word"},
+ "144415": {"verdict": "a", "clause": "This vacancy, not the company: or a benefit, is not this vacancy's mode", "pattern": "shuttle benefit, no mode stated"},
+ "144475": {"verdict": "b", "clause": "This vacancy, not the company: or a benefit, is not this vacancy's mode", "pattern": "shuttle benefit, no mode stated"},
+ "144670": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "not remote plus relocation"},
+ "146016": {"verdict": "b", "clause": "The most specific statement about this job decides: a value under a job-details heading ... counts as a label", "pattern": "label under job-details heading"},
+ "155408": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "regular remote day in schedule"},
+ "162362": {"verdict": "a", "clause": "Onsite: the work is done at the employer's or a client's site on every working day, or nearly", "pattern": "in-office team collaboration stated"},
+ "162612": {"verdict": "a", "clause": "Remote: nor does travel now and then: a quarterly offsite, a yearly meetup", "pattern": "remote-first with periodic gatherings"},
+ "164299": {"verdict": "a", "clause": "What is read: the sentences of its description that name where the work is done", "pattern": "hybrid label under benefits heading"},
+ "168203": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "role stated hybrid directly"},
+ "169148": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "regular office days in schedule"}
+}

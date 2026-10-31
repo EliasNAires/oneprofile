@@ -1,0 +1,22 @@
+{
+ "1107759": {"verdict": "a", "clause": "Hybrid.", "pattern": "partial weekly office days"},
+ "1115690": {"verdict": "b", "clause": "A word naming what the work is about is not a mode", "pattern": "onsite names work not mode"},
+ "1130576": {"verdict": "b", "clause": "Onsite.", "pattern": "location heading states basis"},
+ "1132105": {"verdict": "b", "clause": "The most specific statement about this job decides.", "pattern": "specific schedule narrows policy"},
+ "1139908": {"verdict": "a", "clause": "This vacancy, not the company.", "pattern": "benefit section flexibility"},
+ "1155528": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule.", "pattern": "mode word with schedule"},
+ "1168474": {"verdict": "a", "clause": "A choice of modes is a choice.", "pattern": "accepting candidates multiple modes"},
+ "1190152": {"verdict": "a", "clause": "Onsite.", "pattern": "explicit onsite denies remote hybrid"},
+ "1192779": {"verdict": "b", "clause": "A word naming what the work is about is not a mode", "pattern": "onsite names work not mode"},
+ "1198418": {"verdict": "b", "clause": "Onsite.", "pattern": "full weekly days at office"},
+ "1206017": {"verdict": "a", "clause": "A word naming what the work is about is not a mode", "pattern": "onsite names work not mode"},
+ "1208228": {"verdict": "b", "clause": "Hybrid.", "pattern": "office base with optional remote days"},
+ "1217513": {"verdict": "b", "clause": "A word naming what the work is about is not a mode", "pattern": "onsite names work not mode"},
+ "1234711": {"verdict": "b", "clause": "A sentence offering this role in several modes ... is a choice, not a template.", "pattern": "location heading offers two modes"},
+ "1259183": {"verdict": "a", "clause": "A choice of modes is a choice.", "pattern": "choose your own model"},
+ "1268293": {"verdict": "b", "clause": "This vacancy, not the company.", "pattern": "company office description"},
+ "1277603": {"verdict": "b", "clause": "So are a value under a job-details heading", "pattern": "job-details field offers choice"},
+ "1342715": {"verdict": "a", "clause": "So are a value under a job-details heading", "pattern": "job-details field names mode"},
+ "1345929": {"verdict": "a", "clause": "Modes listed as a perk or a flexibility ... do not plainly cover every role", "pattern": "flexibility language covers no role"},
+ "1356029": {"verdict": "a", "clause": "A job whose work is travelling to sites is onsite.", "pattern": "travelling to client sites"}
+}

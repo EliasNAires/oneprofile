@@ -1,0 +1,51 @@
+id	mode	reason
+811148	hybrid	job-details field label (Remote Type: Hybrid)
+489283	none	meal benefit only, no mode stated
+179982	none	company offices/scam line, not this job
+1459654	hybrid	specific schedule, 3 telework days/week
+636368	onsite	explicit onsite at client site
+467466	hybrid	Work Model: 4+ onsite days plus remote flexibility
+804221	none	"Home Office" is a building name
+145003	none	shuttle benefit, not a mode statement
+121342	none	remote listed as a perk among benefits
+4101	remote	job-details label, Workplace type: Remote
+209577	remote	company has no office, unhedged, covers all roles
+172242	hybrid	unhedged company hybrid policy, covers every role
+1326740	hybrid	unhedged floor, 4+ office days a week expected
+792637	none	modes listed as flexibility/perk, declares nothing
+585913	none	"on-site" names the work's topic, not location
+650044	remote	primarily remote, onsite occasional basis
+149741	none	"office tour" heading, not a mode
+355886	none	"hybrid computing" names the work, not mode
+1243180	none	"hybrid infrastructures" names the work, not mode
+186427	remote	unhedged, fully remote global company
+1008312	none	vague hybrid-friendly culture, no schedule
+1196414	none	hedged "most of our teams"; hybrid elsewhere is tech topic
+1151764	none	office amenities description, not this job's mode
+700142	none	"office users" names tool's users, not this job
+287299	none	WFH kit/commute support are benefits
+572067	none	template of modes, nothing narrows which applies
+1067178	onsite	explicit, all work performed onsite
+278343	none	vague org trait, hedged "time to time"
+145084	none	shuttle benefit, not a mode statement
+289081	hybrid	partial telecommute, onsite rest of time
+1162143	none	"hybrid domains" names the work, not mode
+736387	none	salary by office location, no mode statement
+180257	onsite	job-details label, Modelo de trabalho: Presencial
+65255	none	"Remote View" is a tool name, not mode
+981045	none	ambiguous site/campus phrase, no clear mode
+733504	none	vague in-person/flexibility statement, no schedule
+49438	hybrid	job-details label, hybrid setup with remote days
+550249	none	"Microsoft Office" is software, not mode
+578044	none	"Office 365" is software, not mode
+27777	none	hybrid approach deferred to this role later
+757427	hybrid	states this role's flexible hybrid schedule
+277632	none	office location is a pay factor, not mode
+1519703	hybrid	unhedged, remote part of week stated plainly
+697383	hybrid	specific schedule, 40% remote work stated
+1007985	none	vague hybrid-friendly culture, no schedule
+1105825	none	heading has a theme, benefit framing underneath
+347257	remote	most specific statement: this role is remote
+1210250	none	communication channels, not location
+699061	onsite	explicit, will be an on-site role
+134090	none	onsite names amenity; office headings route candidates

@@ -1,0 +1,51 @@
+id	mode	reason
+650770	none	hybrid Agile/Scrum names work, rule 2
+1208187	none	no statement of where work is done
+211723	hybrid	role schedule stated, rule 4
+1217513	onsite	job travels to customer sites
+571561	none	Work Model list is a template, rule 5
+1192112	none	remote cloud architecture names work, rule 2
+1381295	none	no statement of where work is done
+1352364	hybrid,onsite	choice of modes offered, rule 5
+1444825	onsite	"all positions" sets a floor, rule 1
+178620	hybrid	LI-Hybrid tag is a label, rule 3
+1328501	none	only remote is ruled out, nothing offered
+1168474	hybrid,remote	accepting hybrid and remote candidates, rule 5
+283338	none	physical conditions and perk, rules 1/2
+7148	onsite,remote	Paris or full remote is a choice, rule 5
+571865	none	Work Model list is a template, rule 5
+1257345	none	hedged company-wide statement, rule 1
+1077968	none	in-person interview only, not work mode
+810722	hybrid	Remote Type heading names mode, rule 3
+330022	hybrid	Modalidad: Hibrida is a direct label
+212864	hybrid	remote is a case-by-case exception, rule 5
+653730	none	hybrid cloud names work; WFH is a perk, rules 1/2
+155408	hybrid	WFH Friday schedule stated, rule 4
+312145	hybrid	ability to work office and remote stated for role
+944327	none	cloud or hybrid environments names work, rule 2
+968085	hybrid	LI-Hybrid tag is a label, rule 3
+875093	none	hedged "positions that can be", rule 1
+24056	remote	"Work Type: Remote" heading label, rule 3
+249434	remote	Location/Hybrid Policy label and LI-Remote, rule 3
+39168	none	office network type, not a mode, rule 2
+178849	hybrid,remote	hybrid in San Jose or remote in Denver, rule 5
+938282	none	hybrid product development names work, rule 2
+798010	hybrid	telework schedule and Hybrid label, rules 3/4
+1274342	hybrid	LI-Hybrid tag is a label, rule 3
+518513	none	Apoyo de Home Office is a perk, rule 1
+144415	onsite	shuttle implies daily office commute
+1510266	onsite	5 days a week in office stated, rule 4
+1132105	hybrid	hybrid policy for office-based role; remote is an exception, rules 1/5
+1003490	none	in-person interview only, not work mode
+1382924	hybrid	hybrid policy tied to role's eligible offices, rule 1
+196157	hybrid	4 office days, 1 remote day stated, rule 4
+636599	none	no statement of where work is done
+571417	none	Work Model list is a template, rule 5
+594018	onsite	onsite support at customer facilities
+11555	none	remote site locations names travel, not mode, rule 2
+1273155	none	hedged "most roles"/"some roles", rule 1
+589460	none	describes who is supported, not this job's mode, rule 2
+181265	none	in-person interview only, not work mode
+572048	none	Work Model list is a template, rule 5
+144670	onsite	explicitly not remote, requires local presence
+315375	remote	heading states remote role with schedule, rules 3/4

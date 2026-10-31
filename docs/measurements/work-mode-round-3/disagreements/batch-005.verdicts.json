@@ -1,0 +1,22 @@
+{
+  "337497": {"verdict": "b", "clause": "Onsite: work at a client's site every day", "pattern": "onsite at client facility"},
+  "342861": {"verdict": "a", "clause": "1. This vacancy, not the company - a statement about the team this role joins, with a floor of office days", "pattern": "team floor requires office days"},
+  "343020": {"verdict": "a", "clause": "1. This vacancy, not the company - a hedged statement (\"most of our colleagues\") does not cover every role", "pattern": "hedged company hybrid statement"},
+  "351776": {"verdict": "a", "clause": "Hybrid: days a week in the office, stated as this role's responsibility", "pattern": "role responsibility states office day"},
+  "359088": {"verdict": "a", "clause": "1. This vacancy, not the company - a mode listed as a flexibility (employees decide if and when) declares nothing", "pattern": "hybrid framed as flexibility"},
+  "359150": {"verdict": "a", "clause": "1. This vacancy, not the company - a mode listed as a flexibility (employees decide if and when) declares nothing", "pattern": "hybrid framed as flexibility"},
+  "359884": {"verdict": "b", "clause": "Hybrid: a bare \"hybrid work model\" named for this job's own residency requirement", "pattern": "hybrid model tied to residency"},
+  "359930": {"verdict": "a", "clause": "Hybrid: a bare \"hybrid work model\" named for this job's own residency requirement", "pattern": "hybrid model tied to residency"},
+  "438128": {"verdict": "b", "clause": "1. This vacancy, not the company - a benefit (telework offered as an optional ceiling, \"jusqu'à\") is not this vacancy's mode", "pattern": "telework ceiling listed as benefit"},
+  "467466": {"verdict": "b", "clause": "3. The most specific statement about this job decides - a Work Model heading states regular onsite days", "pattern": "work model heading states onsite days"},
+  "467498": {"verdict": "b", "clause": "3. The most specific statement about this job decides - a Work Model heading states regular onsite days", "pattern": "work model heading states onsite days"},
+  "475023": {"verdict": "b", "clause": "3. The most specific statement about this job decides - a value under a job-details heading (Job Schedule: Hybrid)", "pattern": "job-details heading labels hybrid"},
+  "475088": {"verdict": "a", "clause": "Onsite: work is done at the employer's or client's site, required here as an ability to work onsite", "pattern": "required qualification states onsite"},
+  "478797": {"verdict": "b", "clause": "2. A word naming what the work is about is not a mode - describes the channel of collaboration across project phases", "pattern": "mode words describe collaboration channel"},
+  "489283": {"verdict": "b", "clause": "1. This vacancy, not the company - a benefit (meals), not a statement of where the work is done", "pattern": "meal benefit implies office days"},
+  "500488": {"verdict": "b", "clause": "3. The most specific statement about this job decides - a label in the location outweighs an unrelated field", "pattern": "location label outweighs stray word"},
+  "502503": {"verdict": "a", "clause": "3. The most specific statement about this job decides - the \"in-person role\" statement over a vague hedge elsewhere", "pattern": "in-person role statement decides"},
+  "508296": {"verdict": "a", "clause": "Hybrid: a named mode with a concrete minimum remote-day entitlement, not a flexibility menu", "pattern": "named hybrid benefit with floor"},
+  "546364": {"verdict": "a", "clause": "1. This vacancy, not the company - a vague company-wide statement names no regular schedule", "pattern": "vague company statement lacks schedule"},
+  "594018": {"verdict": "a", "clause": "Onsite: a job whose work is travelling to sites is onsite", "pattern": "onsite at client facility"}
+}

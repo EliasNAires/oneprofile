@@ -1,0 +1,22 @@
+{
+ "5360": {"verdict": "a", "clause": "This vacancy, not the company.", "pattern": "company-wide statement not floored"},
+ "6205": {"verdict": "b", "clause": "This vacancy, not the company.", "pattern": "company-wide statement not floored"},
+ "6458": {"verdict": "b", "clause": "A company policy that sets a floor for every role", "pattern": "company policy floor for every role"},
+ "7148": {"verdict": "b", "clause": "A choice of modes is a choice.", "pattern": "explicit choice stated for this role"},
+ "10486": {"verdict": "b", "clause": "Ruled out is not offered.", "pattern": "explicit onsite, remote ruled out"},
+ "12922": {"verdict": "a", "clause": "A company policy that sets a floor for every role", "pattern": "company policy floor for every role"},
+ "13191": {"verdict": "a", "clause": "A company policy that sets a floor for every role", "pattern": "company policy floor for every role"},
+ "16072": {"verdict": "b", "clause": "A recruiting tag in the description ... is a label", "pattern": "recruiting tag label"},
+ "18454": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule.", "pattern": "explicit schedule with office days"},
+ "35741": {"verdict": "b", "clause": "A company policy that sets a floor for every role", "pattern": "company policy floor for every role"},
+ "36039": {"verdict": "a", "clause": "A recruiting tag ... is a label ... it counts where nothing more specific speaks", "pattern": "recruiting tag outweighs hedged policy"},
+ "42618": {"verdict": "a", "clause": "A template is not a choice.", "pattern": "template narrowed by following schedule"},
+ "44036": {"verdict": "b", "clause": "a hedged one (`most roles`, `depending on the role`) does not", "pattern": "hedged company statement"},
+ "45659": {"verdict": "a", "clause": "This vacancy, not the company.", "pattern": "company-wide statement not floored"},
+ "49438": {"verdict": "a", "clause": "a value under a job-details heading", "pattern": "job details heading value with schedule"},
+ "62169": {"verdict": "a", "clause": "the sentences of its description that name where the work is done", "pattern": "based in office statement"},
+ "65163": {"verdict": "b", "clause": "the sentences of its description that name where the work is done", "pattern": "based in office statement"},
+ "70570": {"verdict": "b", "clause": "Onsite.", "pattern": "explicit onsite statement with schedule"},
+ "72028": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule.", "pattern": "explicit schedule with office days"},
+ "100852": {"verdict": "b", "clause": "A choice of modes is a choice.", "pattern": "explicit choice stated for this role"}
+}

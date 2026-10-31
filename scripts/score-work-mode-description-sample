@@ -150,6 +150,8 @@ def main():
     if unwritten:
         disagreements.mkdir(exist_ok=True)
         seen = blocks(directory)
+        for row in rows(directory / "same.tsv"):
+            seen[row["id"]] = seen[row["same_as"]]
         order = random.Random(SEED)
         first = len([path for path in disagreements.glob("batch-*.json") if not path.name.endswith(".verdicts.json")])
         for start in range(0, len(unwritten), BATCH):

@@ -1,0 +1,22 @@
+{
+ "810722": {"verdict": "b", "clause": "Rule 3: a value under a job-details heading", "pattern": "Remote Type field value"},
+ "811003": {"verdict": "b", "clause": "Rule 3: a value under a job-details heading", "pattern": "Remote Type field value"},
+ "811120": {"verdict": "a", "clause": "Rule 3: a value under a job-details heading", "pattern": "Remote Type field value"},
+ "811148": {"verdict": "a", "clause": "Rule 3: a value under a job-details heading", "pattern": "Remote Type field value"},
+ "811281": {"verdict": "a", "clause": "Rule 3: a value under a job-details heading", "pattern": "Remote Type field value"},
+ "811286": {"verdict": "b", "clause": "Rule 3: a value under a job-details heading", "pattern": "Remote Type field value"},
+ "833192": {"verdict": "a", "clause": "Hybrid: days a week or a month in the office", "pattern": "specific weekly office schedule"},
+ "850979": {"verdict": "a", "clause": "Rule 2: a word naming what the work is about is not a mode", "pattern": "support type phrase not mode"},
+ "857950": {"verdict": "a", "clause": "Remote: nor does travel now and then, a visit to a customer", "pattern": "occasional visit stays remote"},
+ "917756": {"verdict": "a", "clause": "Rule 3: a heading that names only the mode, or the job family and the mode", "pattern": "heading names job and mode"},
+ "919401": {"verdict": "a", "clause": "Rule 1: a hedged policy does not plainly cover every role", "pattern": "hedged policy plus case-by-case exception"},
+ "939760": {"verdict": "b", "clause": "Rule 3: a heading that names only the mode, or the job family and the mode", "pattern": "heading names job and mode"},
+ "942101": {"verdict": "b", "clause": "Rule 1: a company policy that sets a floor for every role plainly covers every role", "pattern": "company policy floor for every role"},
+ "943040": {"verdict": "b", "clause": "Rule 1: modes listed as a perk or a flexibility declare nothing", "pattern": "mode listed as perk"},
+ "1020361": {"verdict": "b", "clause": "Rule 3: the most specific statement about this job decides", "pattern": "specific weekly office schedule"},
+ "1023211": {"verdict": "a", "clause": "Rule 3: a label in the location outweighs the field where nothing else speaks", "pattern": "office label in location"},
+ "1040473": {"verdict": "a", "clause": "Rule 4: a mode word with a schedule is read with its schedule", "pattern": "specific weekly office schedule"},
+ "1067178": {"verdict": "b", "clause": "Rule 3: the most specific statement about this job decides", "pattern": "explicit onsite statement"},
+ "1077813": {"verdict": "a", "clause": "Rule 1: modes listed as a perk or a flexibility declare nothing", "pattern": "mode listed as perk"},
+ "1079509": {"verdict": "a", "clause": "Rule 1: a company policy that sets a floor for every role plainly covers every role", "pattern": "company policy floor for every role"}
+}

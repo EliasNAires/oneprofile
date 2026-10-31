@@ -1,0 +1,51 @@
+id	mode	reason
+490937	none	rule2 hybrid endpoint, word about the work not a mode
+561335	none	rule1 hedged most-roles and company-culture statements
+918797	none	rule1 hedged company statement, role-specific considerations
+1402384	none	rule2 environmental conditions is physical surroundings
+833192	hybrid	rule4 schedule, 3 days a week office attendance
+215665	onsite	explicit onsite Monday-Friday
+438128	hybrid	rule4 schedule, up to 2.5 remote days a week
+623481	onsite	explicit onsite five days a week
+760414	none	rule1 benefit, hybrid working arrangements as perk
+573255	none	rule5 template work model, nothing narrows it
+101445	remote	rule3 location label and LI-Remote tag
+572392	none	rule5 template work model, nothing narrows it
+1008138	none	rule1 hedged hybrid-friendly culture statement
+1234283	none	rule2 on-site implementation is a duty channel
+146913	none	occasional travel only, no mode stated
+1079993	none	rule2 on-site facility describes the center, not this vacancy
+568927	none	rule2 Microsoft Office is software, not a mode
+810642	hybrid	rule3 job-details heading value
+1602	none	no mode declared
+209921	none	rule1 hybrid listed as a flexibility perk
+707483	remote	rule1 this vacancy's own statement, fully remote
+466319	none	rule2 Microsoft Office is software, not a mode
+1215578	remote	rule3 heading naming only the mode
+690293	none	rule1 hedged policy, varies by business group
+680751	none	rule2 hybrid product development, word about the work
+1042075	none	rule2 physical environment and duty description
+209941	remote,onsite	rule5 choice of base location, Boston or Remote US
+1234711	hybrid,remote	rule5 choice, hybrid and fully remote both offered
+571327	none	rule5 template work model, nothing narrows it
+571218	none	rule5 template work model, nothing narrows it
+1451131	remote,onsite	rule5 choice, based in Montreal or remote
+1019375	none	rule1 remote listed as a flexibility perk
+169148	hybrid	rule4 schedule, two days a week in office
+654107	unclear	rule6 contradicting LI-Hybrid and LI-Remote tags
+244597	remote,onsite	rule5 choice, office or home with no constraints
+180151	none	rule1 hybrid listed as a flexibility perk
+571595	none	rule5 template work model, nothing narrows it
+185039	remote,onsite	rule5 choice, onsite and/or remote work
+703930	none	rule2 Microsoft Office is software, not a mode
+1259183	none	rule1 hybrid/remote listed as a flexibility perk
+277657	onsite	explicit willingness to work onsite
+354362	hybrid	rule3 LI-Hybrid recruiting tag, hedged majority statement
+207517	none	rule1 home office allowance is a benefit
+702991	none	rule2 Pack Office is software, not a mode
+121329	none	rule2 hybrid workloads, word about the work
+1246056	none	rule2 remote state, technical term not a mode
+807556	none	rule1 hedged company statement, role-specific responsibilities
+309394	none	rule1 hybrid and remote listed as flexibility perk
+283336	onsite	explicit statement, located onsite at headquarters
+1355725	none	no mode declared, Middle Office is a department

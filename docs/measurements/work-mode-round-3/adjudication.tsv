@@ -1,0 +1,172 @@
+id	stratum	rule	labeller	winner	clause	pattern
+5360	silent office	none	onsite	rule	This vacancy, not the company.	company-wide statement not floored
+6205	silent remote	none	remote	rule	This vacancy, not the company.	company-wide statement not floored
+6458	silent remote	none	onsite	labeller	A company policy that sets a floor for every role	company policy floor for every role
+7148	silent remote	none	remote,onsite	labeller	A choice of modes is a choice.	explicit choice stated for this role
+10486	silent remote	none	onsite	labeller	Ruled out is not offered.	explicit onsite, remote ruled out
+12922	silent hybrid	none	hybrid	labeller	A company policy that sets a floor for every role	company policy floor for every role
+13191	silent hybrid	none	hybrid	labeller	A company policy that sets a floor for every role	company policy floor for every role
+16072	silent office	none	remote	labeller	A recruiting tag in the description ... is a label	recruiting tag label
+18454	silent remote	none	hybrid	labeller	A mode word with a schedule is read with its schedule.	explicit schedule with office days
+35741	silent remote	none	hybrid	labeller	A company policy that sets a floor for every role	company policy floor for every role
+36039	described onsite	onsite	hybrid	rule	A recruiting tag ... is a label ... it counts where nothing more specific speaks	recruiting tag outweighs hedged policy
+42618	described choice	remote,hybrid,onsite	hybrid	labeller	A template is not a choice.	template narrowed by following schedule
+44036	silent hybrid	none	hybrid	rule	a hedged one (`most roles`, `depending on the role`) does not	hedged company statement
+45659	silent hybrid	none	hybrid	rule	This vacancy, not the company.	company-wide statement not floored
+49438	silent remote	none	hybrid	labeller	a value under a job-details heading	job details heading value with schedule
+62169	silent office	none	onsite	labeller	the sentences of its description that name where the work is done	based in office statement
+65163	silent office	none	onsite	labeller	the sentences of its description that name where the work is done	based in office statement
+70570	silent office	none	onsite	labeller	Onsite.	explicit onsite statement with schedule
+72028	silent remote	none	hybrid	labeller	A mode word with a schedule is read with its schedule.	explicit schedule with office days
+100852	silent remote	none	remote,onsite	labeller	A choice of modes is a choice.	explicit choice stated for this role
+104537	silent remote	none	onsite	labeller	Onsite: a job whose work is travelling to sites is onsite	travel-based onsite duties
+115940	silent office	none	onsite	rule	None where nothing read declares a mode for this job	vague office openness, no schedule
+125719	silent remote	none	hybrid	labeller	This vacancy, not the company: a policy that sets a floor for every role plainly covers every role	company hybrid policy as floor
+133562	silent office	none	hybrid	labeller	This vacancy, not the company: a policy that says which mode applies where is a choice of those modes	conditional office policy with schedule
+135898	silent office	none	onsite	labeller	The most specific statement about this job decides	daily onsite presence stated
+136986	silent hybrid	none	hybrid	labeller	The most specific statement about this job decides	role stated hybrid directly
+137052	silent remote	none	remote,hybrid	labeller	A choice of modes is a choice	choice of modes by location
+138396	silent remote	none	onsite	labeller	Onsite: the work is done at the employer's or a client's site on every working day, or nearly	explicit office days, no remote
+139250	silent remote	none	remote	rule	This vacancy, not the company: a sentence about how the company works	company culture statement, not vacancy's
+144069	silent remote	none	onsite	labeller	The most specific statement about this job decides	explicit onsite overrides stray word
+144415	silent office	none	onsite	rule	This vacancy, not the company: or a benefit, is not this vacancy's mode	shuttle benefit, no mode stated
+144475	silent office	none	onsite	rule	This vacancy, not the company: or a benefit, is not this vacancy's mode	shuttle benefit, no mode stated
+144670	silent remote	none	onsite	labeller	The most specific statement about this job decides	not remote plus relocation
+146016	silent office	none	onsite	labeller	The most specific statement about this job decides: a value under a job-details heading ... counts as a label	label under job-details heading
+155408	silent remote	none	hybrid	labeller	A mode word with a schedule is read with its schedule	regular remote day in schedule
+162362	silent office	none	onsite	labeller	Onsite: the work is done at the employer's or a client's site on every working day, or nearly	in-office team collaboration stated
+162612	silent remote	none	remote	labeller	Remote: nor does travel now and then: a quarterly offsite, a yearly meetup	remote-first with periodic gatherings
+164299	silent hybrid	none	hybrid	labeller	What is read: the sentences of its description that name where the work is done	hybrid label under benefits heading
+168203	silent hybrid	none	hybrid	labeller	The most specific statement about this job decides	role stated hybrid directly
+169148	silent office	none	hybrid	labeller	A mode word with a schedule is read with its schedule	regular office days in schedule
+172242	silent remote	none	hybrid	rule	This vacancy, not the company	company policy without every-role statement
+180257	silent hybrid	none	onsite	labeller	a value under a job-details heading	job-details field value
+181928	silent hybrid	none	hybrid	labeller	A company policy that sets a floor for every role	every-role floor statement
+181983	silent hybrid	none	hybrid	labeller	A company policy that sets a floor for every role	every-role floor statement
+186415	silent remote	none	remote	rule	This vacancy, not the company / a benefit is not this vacancy's mode	company remote claim plus benefit listing
+186427	silent remote	none	remote	rule	This vacancy, not the company / a benefit is not this vacancy's mode	company remote claim plus benefit listing
+192605	described choice	remote,hybrid,onsite	remote	labeller	Modes listed as a perk or a flexibility ... declare nothing	perk flexibility list declares nothing
+194201	silent remote	none	remote	labeller	A company policy that sets a floor for every role	every-role floor statement
+196285	silent hybrid	none	hybrid	labeller	A mode word with a schedule is read with its schedule	mode word with explicit schedule
+200413	silent remote	none	hybrid	labeller	The most specific statement about this job decides	specific statement outside benefits section
+200517	silent remote	none	onsite	rule	A word naming what the work is about is not a mode	channels of work not a mode
+201950	silent remote	none	remote	labeller	A statement about the team this role joins ... is about this vacancy	team statement plus remote declaration
+207944	silent remote	none	remote	labeller	nor does travel now and then / a word naming what the work is about is not a mode	hybrid referring to technology not mode
+209941	silent remote	none	remote,onsite	labeller	A choice of modes is a choice	location field offering choice
+210506	silent office	none	onsite	labeller	A statement about the team this role joins ... is about this vacancy	office-first statement about team
+211723	silent hybrid	none	hybrid	labeller	A mode word with a schedule is read with its schedule	mode word with explicit schedule
+212864	silent remote	none	hybrid	labeller	Offered, not excepted	case-by-case exception not a choice
+215665	silent office	none	onsite	labeller	A mode word with a schedule is read with its schedule	mode word with explicit schedule
+233307	silent remote	none	remote	rule	This vacancy, not the company	remote-first company statement
+238228	silent office	none	onsite	labeller	A company policy that sets a floor for every role	every-role floor statement
+244597	silent remote	none	remote,onsite	rule	Modes listed as a perk or a flexibility	flexibility perk choice of location
+249434	described choice	remote,hybrid	remote	labeller	a value under a job-details heading	value under job-details heading
+249442	described choice	remote,hybrid	remote	labeller	A recruiting tag in the description	recruiting tag decides
+277961	described onsite	onsite	hybrid	labeller	A mode word with a schedule is read with its schedule	explicit office days per week
+278343	described choice	remote,hybrid	none	labeller	This vacancy, not the company	vague org mode description
+278806	silent remote	none	remote	rule	This vacancy, not the company	generic company remote pitch
+283336	silent office	none	onsite	labeller	The most specific statement about this job decides	direct statement job is onsite
+289081	silent remote	none	hybrid	labeller	Hybrid: part of the work is done in an office on a regular schedule	partial telecommuting onsite fallback
+289407	silent office	none	onsite	labeller	What is read: sentences naming where the work is done	role based in named office
+304232	silent office	none	onsite	labeller	a value under a job-details heading	value under job-details heading
+305217	silent office	none	onsite	labeller	The most specific statement about this job decides	direct statement job is onsite
+312145	silent remote	none	hybrid	labeller	A company policy that sets a floor for every role	hybrid model plus job requirement
+315310	silent remote	none	onsite	labeller	A mode word with a schedule is read with its schedule	explicit office days per week
+315375	silent remote	none	remote	labeller	A mode word with a schedule is read with its schedule	remote role with workweek schedule
+319831	silent hybrid	none	hybrid	labeller	A mode word with a schedule is read with its schedule	explicit office days per week
+329234	described choice	remote,onsite	hybrid	labeller	Hybrid: any of the employer's or a client's sites counts as the office	consulting blend remote and onsite
+329236	described choice	remote,onsite	remote	labeller	The most specific statement about this job decides	qualifications statement names remote
+330022	silent hybrid	none	hybrid	labeller	a value under a job-details heading	value under job-details heading
+332257	silent remote	none	hybrid	labeller	Offered, not excepted	hybrid preference with remote exception
+332417	silent remote	none	remote	rule	This vacancy, not the company	generic company remote pitch
+337497	silent remote	none	onsite	labeller	Onsite: work at a client's site every day	onsite at client facility
+342861	silent office	none	hybrid	labeller	1. This vacancy, not the company - a statement about the team this role joins, with a floor of office days	team floor requires office days
+343020	silent remote	none	hybrid	rule	1. This vacancy, not the company - a hedged statement ("most of our colleagues") does not cover every role	hedged company hybrid statement
+351776	silent office	none	hybrid	labeller	Hybrid: days a week in the office, stated as this role's responsibility	role responsibility states office day
+359088	silent remote	none	hybrid	rule	1. This vacancy, not the company - a mode listed as a flexibility (employees decide if and when) declares nothing	hybrid framed as flexibility
+359150	silent remote	none	hybrid	rule	1. This vacancy, not the company - a mode listed as a flexibility (employees decide if and when) declares nothing	hybrid framed as flexibility
+359884	silent hybrid	none	hybrid	labeller	Hybrid: a bare "hybrid work model" named for this job's own residency requirement	hybrid model tied to residency
+359930	silent hybrid	none	hybrid	labeller	Hybrid: a bare "hybrid work model" named for this job's own residency requirement	hybrid model tied to residency
+438128	silent office	none	hybrid	rule	1. This vacancy, not the company - a benefit (telework offered as an optional ceiling, "jusqu'à") is not this vacancy's mode	telework ceiling listed as benefit
+467466	silent remote	none	hybrid	labeller	3. The most specific statement about this job decides - a Work Model heading states regular onsite days	work model heading states onsite days
+467498	silent remote	none	hybrid	labeller	3. The most specific statement about this job decides - a Work Model heading states regular onsite days	work model heading states onsite days
+475023	silent hybrid	none	hybrid	labeller	3. The most specific statement about this job decides - a value under a job-details heading (Job Schedule: Hybrid)	job-details heading labels hybrid
+475088	silent office	none	onsite	labeller	Onsite: work is done at the employer's or client's site, required here as an ability to work onsite	required qualification states onsite
+478797	silent remote	none	remote,onsite	rule	2. A word naming what the work is about is not a mode - describes the channel of collaboration across project phases	mode words describe collaboration channel
+489283	described hybrid	hybrid	none	labeller	1. This vacancy, not the company - a benefit (meals), not a statement of where the work is done	meal benefit implies office days
+500488	silent remote	none	onsite	labeller	3. The most specific statement about this job decides - a label in the location outweighs an unrelated field	location label outweighs stray word
+502503	silent office	none	onsite	labeller	3. The most specific statement about this job decides - the "in-person role" statement over a vague hedge elsewhere	in-person role statement decides
+508296	silent remote	none	hybrid	labeller	Hybrid: a named mode with a concrete minimum remote-day entitlement, not a flexibility menu	named hybrid benefit with floor
+546364	silent office	none	hybrid	rule	1. This vacancy, not the company - a vague company-wide statement names no regular schedule	vague company statement lacks schedule
+594018	silent office	none	onsite	labeller	Onsite: a job whose work is travelling to sites is onsite	onsite at client facility
+596118	silent office	none	onsite	labeller	A value under a job-details heading (rule 3)	value under job-details heading
+636368	silent office	none	onsite	labeller	Onsite: work done at the employer's or a client's site on every working day	role located at onsite facility
+650044	silent remote	none	remote	labeller	A mode word with a schedule is read with its schedule	remote with occasional onsite
+650079	silent remote	none	remote	labeller	A mode word with a schedule is read with its schedule	remote with occasional onsite
+650088	silent remote	none	remote	labeller	A mode word with a schedule is read with its schedule	remote with occasional onsite
+650935	described onsite	onsite	none	labeller	None: where nothing read declares a mode for this job	colleagues' location not own mode
+687680	silent hybrid	none	onsite	rule	A word naming what the work is about is not a mode	hybrid cloud not work mode
+697383	silent remote	none	hybrid	labeller	A mode word with a schedule is read with its schedule	specific hybrid schedule stated
+707483	silent remote	none	remote	labeller	A mode word with a schedule is read with its schedule (primarily remote, on site as needed)	remote with occasional onsite
+727882	silent remote	none	hybrid	labeller	A company policy that sets a floor for every role plainly covers every role	company policy floor for every role
+742043	silent remote	none	onsite	labeller	Offered, not excepted	exception granted case by case
+757162	silent hybrid	none	hybrid	rule	Modes listed as a perk or a flexibility ... declare nothing	mode listed as a perk
+757427	silent hybrid	none	hybrid	labeller	A mode word with a schedule is read with its schedule	specific hybrid schedule stated
+770320	described onsite	onsite	none	labeller	A hedged one (most roles, depending on the role) does not plainly cover every role	hedged company policy not every role
+770321	described onsite	onsite	none	labeller	A hedged one (most roles, depending on the role) does not plainly cover every role	hedged company policy not every role
+777938	silent remote	none	hybrid	rule	A sentence about how the company works ... or a benefit ... is not this vacancy's mode	benefit without schedule
+792722	silent office	none	remote	labeller	A heading that names only the mode ... standing alone	mode word heading label
+803453	silent remote	none	hybrid	labeller	A company policy that sets a floor for every role plainly covers every role	company policy floor for every role
+810642	described remote	remote	hybrid	labeller	A value under a job-details heading (Remote Type: Office, where Office is onsite)	remote type field value
+810719	described remote	remote	hybrid	labeller	A value under a job-details heading (Remote Type: Office, where Office is onsite)	remote type field value
+810722	described remote	remote	hybrid	labeller	Rule 3: a value under a job-details heading	Remote Type field value
+811003	described remote	remote	onsite	labeller	Rule 3: a value under a job-details heading	Remote Type field value
+811120	described remote	remote	onsite	labeller	Rule 3: a value under a job-details heading	Remote Type field value
+811148	described remote	remote	hybrid	labeller	Rule 3: a value under a job-details heading	Remote Type field value
+811281	described remote	remote	hybrid	labeller	Rule 3: a value under a job-details heading	Remote Type field value
+811286	described remote	remote	hybrid	labeller	Rule 3: a value under a job-details heading	Remote Type field value
+833192	silent remote	none	hybrid	labeller	Hybrid: days a week or a month in the office	specific weekly office schedule
+850979	silent office	none	onsite	rule	Rule 2: a word naming what the work is about is not a mode	support type phrase not mode
+857950	silent remote	none	remote	labeller	Remote: nor does travel now and then, a visit to a customer	occasional visit stays remote
+917756	silent remote	none	remote	labeller	Rule 3: a heading that names only the mode, or the job family and the mode	heading names job and mode
+919401	silent remote	none	hybrid	rule	Rule 1: a hedged policy does not plainly cover every role	hedged policy plus case-by-case exception
+939760	silent hybrid	none	hybrid	labeller	Rule 3: a heading that names only the mode, or the job family and the mode	heading names job and mode
+942101	silent remote	none	hybrid	labeller	Rule 1: a company policy that sets a floor for every role plainly covers every role	company policy floor for every role
+943040	silent hybrid	none	hybrid	rule	Rule 1: modes listed as a perk or a flexibility declare nothing	mode listed as perk
+1020361	described onsite	onsite	hybrid	labeller	Rule 3: the most specific statement about this job decides	specific weekly office schedule
+1023211	silent office	none	onsite	labeller	Rule 3: a label in the location outweighs the field where nothing else speaks	office label in location
+1040473	silent hybrid	none	hybrid	labeller	Rule 4: a mode word with a schedule is read with its schedule	specific weekly office schedule
+1067178	silent office	none	onsite	labeller	Rule 3: the most specific statement about this job decides	explicit onsite statement
+1077813	described choice	remote,hybrid,onsite	none	labeller	Rule 1: modes listed as a perk or a flexibility declare nothing	mode listed as perk
+1079509	silent office	none	hybrid	labeller	Rule 1: a company policy that sets a floor for every role plainly covers every role	company policy floor for every role
+1107759	described onsite	onsite	hybrid	labeller	Hybrid.	partial weekly office days
+1115690	silent office	none	onsite	rule	A word naming what the work is about is not a mode	onsite names work not mode
+1130576	silent office	none	onsite	labeller	Onsite.	location heading states basis
+1132105	silent remote	none	hybrid	labeller	The most specific statement about this job decides.	specific schedule narrows policy
+1139908	silent office	none	remote	rule	This vacancy, not the company.	benefit section flexibility
+1155528	silent remote	none	hybrid	labeller	A mode word with a schedule is read with its schedule.	mode word with schedule
+1168474	silent remote	none	remote,hybrid	labeller	A choice of modes is a choice.	accepting candidates multiple modes
+1190152	silent remote	none	onsite	labeller	Onsite.	explicit onsite denies remote hybrid
+1192779	silent hybrid	none	onsite	rule	A word naming what the work is about is not a mode	onsite names work not mode
+1198418	silent office	none	onsite	labeller	Onsite.	full weekly days at office
+1206017	silent office	none	onsite	rule	A word naming what the work is about is not a mode	onsite names work not mode
+1208228	silent remote	none	hybrid	labeller	Hybrid.	office base with optional remote days
+1217513	silent office	none	onsite	rule	A word naming what the work is about is not a mode	onsite names work not mode
+1234711	silent remote	none	remote,hybrid	labeller	A sentence offering this role in several modes ... is a choice, not a template.	location heading offers two modes
+1259183	described choice	remote,hybrid	none	rule	A choice of modes is a choice.	choose your own model
+1268293	silent office	none	onsite	rule	This vacancy, not the company.	company office description
+1277603	silent remote	none	remote,onsite	labeller	So are a value under a job-details heading	job-details field offers choice
+1342715	silent remote	none	hybrid	labeller	So are a value under a job-details heading	job-details field names mode
+1345929	described choice	hybrid,onsite	none	labeller	Modes listed as a perk or a flexibility ... do not plainly cover every role	flexibility language covers no role
+1356029	silent remote	none	onsite	labeller	A job whose work is travelling to sites is onsite.	travelling to client sites
+1356903	silent remote	none	hybrid	rule	Modes listed as a perk or a flexibility	flexibility perk declares nothing
+1382924	silent remote	none	hybrid	rule	Modes listed as a perk or a flexibility	flexibility perk declares nothing
+1437536	silent remote	none	onsite	rule	None where nothing read declares a mode	team description not own mode
+1444266	silent remote	none	hybrid	labeller	A company policy that sets a floor for every role	policy floor covers every role
+1444825	silent office	none	onsite	labeller	A company policy that sets a floor for every role	policy floor covers every role
+1451131	silent remote	none	remote,onsite	labeller	A choice of modes is a choice	choice of city or remote
+1459603	silent hybrid	none	hybrid	rule	Modes listed as a perk or a flexibility	flexibility perk declares nothing
+1459654	silent hybrid	none	hybrid	labeller	A mode word with a schedule is read with its schedule	hybrid schedule stated directly
+1464216	silent hybrid	none	hybrid	labeller	The most specific statement about this job decides	specific requirement heading decides
+1504044	silent hybrid	none	hybrid	labeller	A company policy that sets a floor for every role	policy floor covers every role
+1519703	silent remote	none	hybrid	rule	Modes listed as a perk or a flexibility	flexibility perk declares nothing

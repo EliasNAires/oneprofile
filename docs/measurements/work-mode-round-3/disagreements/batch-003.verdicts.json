@@ -1,0 +1,22 @@
+{
+  "172242": {"verdict": "a", "clause": "This vacancy, not the company", "pattern": "company policy without every-role statement"},
+  "180257": {"verdict": "b", "clause": "a value under a job-details heading", "pattern": "job-details field value"},
+  "181928": {"verdict": "b", "clause": "A company policy that sets a floor for every role", "pattern": "every-role floor statement"},
+  "181983": {"verdict": "b", "clause": "A company policy that sets a floor for every role", "pattern": "every-role floor statement"},
+  "186415": {"verdict": "b", "clause": "This vacancy, not the company / a benefit is not this vacancy's mode", "pattern": "company remote claim plus benefit listing"},
+  "186427": {"verdict": "b", "clause": "This vacancy, not the company / a benefit is not this vacancy's mode", "pattern": "company remote claim plus benefit listing"},
+  "192605": {"verdict": "a", "clause": "Modes listed as a perk or a flexibility ... declare nothing", "pattern": "perk flexibility list declares nothing"},
+  "194201": {"verdict": "a", "clause": "A company policy that sets a floor for every role", "pattern": "every-role floor statement"},
+  "196285": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "mode word with explicit schedule"},
+  "200413": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "specific statement outside benefits section"},
+  "200517": {"verdict": "b", "clause": "A word naming what the work is about is not a mode", "pattern": "channels of work not a mode"},
+  "201950": {"verdict": "b", "clause": "A statement about the team this role joins ... is about this vacancy", "pattern": "team statement plus remote declaration"},
+  "207944": {"verdict": "b", "clause": "nor does travel now and then / a word naming what the work is about is not a mode", "pattern": "hybrid referring to technology not mode"},
+  "209941": {"verdict": "a", "clause": "A choice of modes is a choice", "pattern": "location field offering choice"},
+  "210506": {"verdict": "b", "clause": "A statement about the team this role joins ... is about this vacancy", "pattern": "office-first statement about team"},
+  "211723": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "mode word with explicit schedule"},
+  "212864": {"verdict": "a", "clause": "Offered, not excepted", "pattern": "case-by-case exception not a choice"},
+  "215665": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "mode word with explicit schedule"},
+  "233307": {"verdict": "b", "clause": "This vacancy, not the company", "pattern": "remote-first company statement"},
+  "238228": {"verdict": "b", "clause": "A company policy that sets a floor for every role", "pattern": "every-role floor statement"}
+}

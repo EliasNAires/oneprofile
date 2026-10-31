@@ -1,0 +1,51 @@
+id	mode	reason
+209576	remote	company has no office, covers every role (rule 1)
+17407	none	on-site meals is a benefit (rule 1/2)
+186415	remote	"fully remote company" covers every role (rule 1)
+1244424	none	"Remote Agents" names a tool, not a mode (rule 2)
+494687	none	"office demands" is physical surroundings (rule 2)
+42376	none	"Onsite" names an interview stage, not this job's mode
+266343	none	in-person sales is the subject of the work (rule 2)
+359150	hybrid	hybrid heading with 2 office days a week (rule 3/4)
+50099	none	generic notice title, not this job's mode
+706	none	flexibility/perk language, hedged (rule 1)
+1207021	none	"remote sites" names what the systems are, not this job (rule 2)
+475088	onsite	explicit "work onsite" requirement
+329234	hybrid	required remote support plus required on-site client work
+278183	none	home office stipend is a benefit (rule 1)
+437469	hybrid	explicit office days a week plus LI-HYBRID tag (rule 3/4)
+112274	none	"hybrid AI architectures" names a technology, not a mode (rule 2)
+500488	onsite	location label "Office" decides, nothing more specific (rule 3)
+571268	none	Work Model is a template defining all modes, nothing narrows it (rule 5)
+1167489	onsite	Workplace type heading value "On-site Working" (rule 3)
+1120224	none	modes listed under Nice to Have as flexibility (rule 1)
+186527	none	"flexible hybrid work model" is a benefit description (rule 1)
+797375	onsite	job-details heading value "Onsite" (rule 3)
+139250	remote	team statement: remote-first culture, office optional (rule 1)
+948963	onsite	explicit "on-site presence" required for this role
+911974	onsite	LI-Onsite tag and Workplace Type "Office" (rule 3)
+135898	onsite	explicit "daily onsite presence" statement
+62169	onsite	role is based in the hub offices
+336238	none	remote-during-pregnancy is a temporary benefit, not the regular mode (rule 1)
+1048852	none	nothing read names where the work is done
+359088	hybrid	hybrid heading with 2 office days a week (rule 3/4)
+940177	none	"flexible hybrid work model" is a benefit (rule 1)
+1129626	none	"Hybrid working model" sits in a perks list (rule 1)
+603323	none	office environment is physical surroundings; hybrid-cloud/remote name tech, not mode (rule 2)
+18869	none	describes the role's function, not where the work is done
+811120	onsite	job-details heading value "Remote Type - Office" (rule 3)
+6458	onsite	works fully from office, occasional remote doesn't change it
+144475	onsite	company shuttle to office Monday to Friday implies daily onsite work
+51360	none	remote-work award is about the company, not this vacancy (rule 1)
+230378	none	office amenity is a perk, not a mode statement
+342861	hybrid	floor policy for this team, at least 4 office days a week (rule 1/4)
+687629	none	"hybrid" names a deployment model; home-office is a hedged benefit (rule 1/2)
+172030	none	hedged, conditional recruiting boilerplate
+708933	hybrid	explicit hybrid schedule statement plus LI-Hybrid tag
+168214	none	vague in-person culture statement, no schedule stated
+1444266	hybrid	division-wide floor: in-person component with weekly expected time (rule 1)
+207944	remote	onsite/hybrid stated "as needed", no regular days named (rule 4)
+70570	onsite	5 days a week at customer site, client site counts as office
+919417	none	hedged policy: flexibility based on role-specific needs (rule 1)
+161028	none	"remote first" is the excluded company-statement example; rest is subject matter/perks (rule 1/2)
+200413	hybrid	most specific statement: up to 2 remote days permitted per month (rule 3/4)

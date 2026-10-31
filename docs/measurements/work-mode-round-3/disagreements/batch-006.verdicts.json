@@ -1,0 +1,22 @@
+{
+  "596118": {"verdict": "b", "clause": "A value under a job-details heading (rule 3)", "pattern": "value under job-details heading"},
+  "636368": {"verdict": "a", "clause": "Onsite: work done at the employer's or a client's site on every working day", "pattern": "role located at onsite facility"},
+  "650044": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "remote with occasional onsite"},
+  "650079": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "remote with occasional onsite"},
+  "650088": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "remote with occasional onsite"},
+  "650935": {"verdict": "a", "clause": "None: where nothing read declares a mode for this job", "pattern": "colleagues' location not own mode"},
+  "687680": {"verdict": "b", "clause": "A word naming what the work is about is not a mode", "pattern": "hybrid cloud not work mode"},
+  "697383": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "specific hybrid schedule stated"},
+  "707483": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule (primarily remote, on site as needed)", "pattern": "remote with occasional onsite"},
+  "727882": {"verdict": "a", "clause": "A company policy that sets a floor for every role plainly covers every role", "pattern": "company policy floor for every role"},
+  "742043": {"verdict": "a", "clause": "Offered, not excepted", "pattern": "exception granted case by case"},
+  "757162": {"verdict": "a", "clause": "Modes listed as a perk or a flexibility ... declare nothing", "pattern": "mode listed as a perk"},
+  "757427": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "specific hybrid schedule stated"},
+  "770320": {"verdict": "b", "clause": "A hedged one (most roles, depending on the role) does not plainly cover every role", "pattern": "hedged company policy not every role"},
+  "770321": {"verdict": "b", "clause": "A hedged one (most roles, depending on the role) does not plainly cover every role", "pattern": "hedged company policy not every role"},
+  "777938": {"verdict": "a", "clause": "A sentence about how the company works ... or a benefit ... is not this vacancy's mode", "pattern": "benefit without schedule"},
+  "792722": {"verdict": "a", "clause": "A heading that names only the mode ... standing alone", "pattern": "mode word heading label"},
+  "803453": {"verdict": "a", "clause": "A company policy that sets a floor for every role plainly covers every role", "pattern": "company policy floor for every role"},
+  "810642": {"verdict": "b", "clause": "A value under a job-details heading (Remote Type: Office, where Office is onsite)", "pattern": "remote type field value"},
+  "810719": {"verdict": "b", "clause": "A value under a job-details heading (Remote Type: Office, where Office is onsite)", "pattern": "remote type field value"}
+}

@@ -1,0 +1,51 @@
+id	mode	reason
+179666	none	compensation factor, not a mode (rule 1/2)
+76793	none	hybrid architectures, word about the work (rule 2)
+999019	none	physical office requirements, not a mode (rule 2)
+354845	none	hybrid work listed as a perk (rule 1)
+359930	hybrid	hybrid work model tied to assigned office (rule 1/3)
+591827	none	hybrid teams, word about the work (rule 2)
+827171	hybrid	structured hybrid, 3 days office stated (rule 3)
+202032	remote	fully remote work position stated
+478797	remote,onsite	remote oder onsite, choice offered (rule 5)
+1357053	none	remote sensing is the work's subject; hybrid is a benefit (rule 1/2)
+35741	hybrid	company floor of 3-4 days in office (rule 1)
+115940	onsite	open to working in the office (rule 3)
+1130576	onsite	based onsite, requires regular in-person collaboration
+490680	none	remote refers to interview, not work mode
+328305	remote	LI-Remote recruiting tag (rule 3)
+1380652	none	no sentence names where work is done
+305217	onsite	work must be performed onsite, stated
+811281	hybrid	Remote Type field value Hybrid (rule 3)
+742043	onsite	default near-office, remote granted case by case (rule 5)
+1198267	none	physical environment list, not a mode (rule 2)
+794057	none	off-office hours names shift timing, not location
+551594	none	Home Office is a platform name, not a mode
+200517	onsite	primarily onsite, remote only when on-call (rule 4)
+1132219	none	MS Office is software, not a mode
+613414	none	Hybrid solution, word about the work (rule 2)
+1342715	hybrid	Remote Work Capability field value Hybrid (rule 3)
+201950	remote	statement about the team plus 100% remote stated (rule 1)
+653728	none	Flexible WFH Policy listed as flexibility (rule 1)
+1356903	hybrid	hybrid stated for this role's telecommuting policy
+572142	none	template listing every mode, nothing narrows it (rule 5)
+571399	none	template listing every mode, nothing narrows it (rule 5)
+1115690	onsite	in-person deskside support duty stated
+31285	none	flexibility to work remotely, listed as perk (rule 1)
+500614	none	hybrid working options listed as flexibility (rule 1)
+329236	remote	remote support with required client visit, not a regular office (remote definition)
+277961	hybrid	hybrid work model, 3 days in office stated (rule 3)
+1243307	none	hybrid IT landscape, word about the work (rule 2)
+146016	onsite	Working Policy field value On-Site (rule 3)
+814954	remote	LI-Remote tag plus explicit remote position stated
+1485872	remote	remote role stated, office travel is occasional (remote definition)
+192605	remote	remote work environment required for this role (rule 1)
+489843	none	MS Office Suite is software, not a mode
+650088	remote	remote work, onsite only on occasional basis (rule 4)
+138396	onsite	office daily, explicitly no remote work offered
+512659	none	office environment is physical surroundings (rule 2)
+125719	hybrid	company-wide hybrid schedule stated, covers every role (rule 1)
+278819	remote,hybrid	remote or hybrid, choice stated (rule 5)
+16072	remote	LI-Remoto recruiting tag (rule 3)
+136986	hybrid	hybrid basis stated for this role
+1215210	remote	this role will be remote, stated

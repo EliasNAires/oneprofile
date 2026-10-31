@@ -1,0 +1,13 @@
+{
+ "1356903": {"verdict": "b", "clause": "Modes listed as a perk or a flexibility", "pattern": "flexibility perk declares nothing"},
+ "1382924": {"verdict": "b", "clause": "Modes listed as a perk or a flexibility", "pattern": "flexibility perk declares nothing"},
+ "1437536": {"verdict": "a", "clause": "None where nothing read declares a mode", "pattern": "team description not own mode"},
+ "1444266": {"verdict": "a", "clause": "A company policy that sets a floor for every role", "pattern": "policy floor covers every role"},
+ "1444825": {"verdict": "a", "clause": "A company policy that sets a floor for every role", "pattern": "policy floor covers every role"},
+ "1451131": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "choice of city or remote"},
+ "1459603": {"verdict": "a", "clause": "Modes listed as a perk or a flexibility", "pattern": "flexibility perk declares nothing"},
+ "1459654": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "hybrid schedule stated directly"},
+ "1464216": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "specific requirement heading decides"},
+ "1504044": {"verdict": "b", "clause": "A company policy that sets a floor for every role", "pattern": "policy floor covers every role"},
+ "1519703": {"verdict": "a", "clause": "Modes listed as a perk or a flexibility", "pattern": "flexibility perk declares nothing"}
+}

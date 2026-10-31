@@ -1,0 +1,22 @@
+{
+  "244597": {"verdict": "b", "clause": "Modes listed as a perk or a flexibility", "pattern": "flexibility perk choice of location"},
+  "249434": {"verdict": "a", "clause": "a value under a job-details heading", "pattern": "value under job-details heading"},
+  "249442": {"verdict": "a", "clause": "A recruiting tag in the description", "pattern": "recruiting tag decides"},
+  "277961": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "explicit office days per week"},
+  "278343": {"verdict": "b", "clause": "This vacancy, not the company", "pattern": "vague org mode description"},
+  "278806": {"verdict": "b", "clause": "This vacancy, not the company", "pattern": "generic company remote pitch"},
+  "283336": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "direct statement job is onsite"},
+  "289081": {"verdict": "b", "clause": "Hybrid: part of the work is done in an office on a regular schedule", "pattern": "partial telecommuting onsite fallback"},
+  "289407": {"verdict": "b", "clause": "What is read: sentences naming where the work is done", "pattern": "role based in named office"},
+  "304232": {"verdict": "a", "clause": "a value under a job-details heading", "pattern": "value under job-details heading"},
+  "305217": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "direct statement job is onsite"},
+  "312145": {"verdict": "a", "clause": "A company policy that sets a floor for every role", "pattern": "hybrid model plus job requirement"},
+  "315310": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "explicit office days per week"},
+  "315375": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "remote role with workweek schedule"},
+  "319831": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "explicit office days per week"},
+  "329234": {"verdict": "a", "clause": "Hybrid: any of the employer's or a client's sites counts as the office", "pattern": "consulting blend remote and onsite"},
+  "329236": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "qualifications statement names remote"},
+  "330022": {"verdict": "a", "clause": "a value under a job-details heading", "pattern": "value under job-details heading"},
+  "332257": {"verdict": "a", "clause": "Offered, not excepted", "pattern": "hybrid preference with remote exception"},
+  "332417": {"verdict": "a", "clause": "This vacancy, not the company", "pattern": "generic company remote pitch"}
+}
