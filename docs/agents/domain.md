@@ -69,7 +69,7 @@ the later ADR wins; the overridden parts are marked below.
   rounds; 150k tokens a round, labelled cheaply (cue segments, one answer a row, batches of 50, labels
   kept). A silent city abroad counts as an office per ATS where, after #98, 10% or less of such
   vacancies stating a mode are remote.
-- **0030**: the work mode from the description is a rule loop (#98's remote recall failed at 56.6%).
+- **0030**: the work mode from the description is a rule loop (#98's remote recall failed at 56.6%). Amended after round 1: recall of each mode is a gate, and the draw grows silent hybrid and office strata.
   Gates: precision and remote recall on undeclared vacancies, both 90%; hybrid and onsite recall
   reported, not gated; the rules are all of `WorkModeRule`. Five rounds; 200 rows a round weighted
   towards the silent stratum, 200k tokens, labelled as ADR-0029 shapes it; a fresh 100-row gold set,
