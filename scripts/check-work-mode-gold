@@ -1,0 +1,164 @@
+#!/usr/bin/env python3
+"""Checks the work-mode labeller, and the adjudicator, against the gold set under the criterion's current
+revision (#98, ADR-0030).
+
+    scripts/check-work-mode-gold
+
+The gold set, docs/measurements/work-mode-gold-set.tsv, lists each drawn vacancy's id, its part (open or
+held-out), its stratum, its label and the doubt the review noted; what the labeller reads of each is in
+docs/measurements/work-mode-gold/batch-N.txt (scripts/draw-work-mode-gold). Every row must carry a label.
+
+The revision is the highest `**Revision N**` in docs/work-mode-criterion.md's change log. The check lives in
+docs/measurements/work-mode-gold-check-revision-<R>/. Where it lacks labels-N.tsv for a gold batch, this prints
+the labelling to do and stops: the `work-mode-labeller` agent labels docs/measurements/work-mode-gold/batch-N.txt
+into the check's labels-N.tsv. Once every batch is labelled, it reports, for the open and the held-out part apart,
+the labeller's agreement with the gold set (the same modes, or both none, or both unclear) with a 95% Wilson
+interval.
+
+Each disagreeing row is written, both answers unattributed, into batches of 20, open-batch-NNN.json and
+held-batch-NNN.json, for the `adjudicator` agent; which answer is the gold set's is in sides.json. The open
+part's disagreements are also written to open-disagreements.tsv (id, stratum, gold, labeller, the labeller's
+reason, the gold set's doubt): the calibrating session reads that file and never the held-out batches.
+
+Once the batches carry `.verdicts.json` files, run it again: it reports, per part, how often the adjudicator
+sided with the gold set, with the labeller, or with neither. Batch files are not rewritten once any exist for
+a part.
+"""
+
+import json
+import math
+import random
+import re
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+MEASUREMENTS = REPO / "docs" / "measurements"
+GOLD = MEASUREMENTS / "work-mode-gold-set.tsv"
+BATCHES = MEASUREMENTS / "work-mode-gold"
+CHECK = MEASUREMENTS / "work-mode-gold-check-revision-{revision}"
+CRITERION = REPO / "docs" / "work-mode-criterion.md"
+
+BATCH = 20
+
+Z = 1.96
+
+MODES = ("remote", "hybrid", "onsite")
+
+
+def revision():
+    """The criterion's current revision, the highest in its change log."""
+    return max(map(int, re.findall(r"\*\*Revision (\d+)\*\*", CRITERION.read_text(encoding="utf-8"))), default=1)
+
+
+def rows(path):
+    with open(path, encoding="utf-8") as tsv:
+        header = tsv.readline().rstrip("\n").split("\t")
+        return [dict(zip(header, line.rstrip("\n").split("\t"))) for line in tsv if line.strip()]
+
+
+def answer(text):
+    """A label as remote, hybrid or onsite, several for a choice; or none, or unclear."""
+    said = {word.strip().lower() for word in text.split(",") if word.strip()}
+    if said & set(MODES):
+        return ",".join(mode for mode in MODES if mode in said)
+    return "unclear" if "unclear" in said else "none"
+
+
+def wilson(agreed, total):
+    share = agreed / total
+    centre = (share + Z * Z / (2 * total)) / (1 + Z * Z / total)
+    half = Z * math.sqrt(share * (1 - share) / total + Z * Z / (4 * total * total)) / (1 + Z * Z / total)
+    return centre - half, centre + half
+
+
+def share(agreed, total):
+    if not total:
+        return "none"
+    low, high = wilson(agreed, total)
+    return f"{agreed}/{total} = {agreed / total:.1%} (95% interval {low:.1%}-{high:.1%})"
+
+
+def blocks():
+    """What the labeller saw of each gold vacancy, by id."""
+    seen = {}
+    for path in sorted(BATCHES.glob("batch-*.txt")):
+        for block in path.read_text(encoding="utf-8").split("=== ")[1:]:
+            vacancy, _, text = block.partition("\n")
+            seen[vacancy.strip()] = text.strip()
+    return seen
+
+
+def main():
+    gold = rows(GOLD)
+    missing = [row["id"] for row in gold if not row["label"].strip()]
+    if missing:
+        sys.exit(f"{len(missing)} of {len(gold)} gold rows have no label yet (the first is id {missing[0]})")
+
+    current = revision()
+    directory = Path(str(CHECK).format(revision=current))
+    directory.mkdir(parents=True, exist_ok=True)
+    unlabelled = [path for path in sorted(BATCHES.glob("batch-*.txt")) if not (directory / f"labels-{path.stem[6:]}.tsv").exists()]
+    if unlabelled:
+        print(f"Label with the work-mode-labeller agent, under revision {current}:")
+        for path in unlabelled:
+            print(f"  {path.relative_to(REPO)} -> {(directory / f'labels-{path.stem[6:]}.tsv').relative_to(REPO)}")
+        return
+
+    labels = {row["id"]: row for path in sorted(directory.glob("labels-*.tsv")) for row in rows(path)}
+    for row in rows(BATCHES / "same.tsv"):
+        labels[row["id"]] = labels[row["same_as"]]
+    lacking = [row["id"] for row in gold if row["id"] not in labels]
+    if lacking:
+        sys.exit(f"{len(lacking)} gold rows lack the labeller's label, as {lacking[:5]}")
+
+    seen = blocks()
+    sides_path = directory / "sides.json"
+    sides = json.loads(sides_path.read_text()) if sides_path.exists() else {}
+    print(f"Gold set check at criterion revision {current}")
+
+    for part in ("open", "held-out"):
+        part_rows = [row for row in gold if row["part"] == part]
+        said = {row["id"]: answer(labels[row["id"]]["mode"]) for row in part_rows}
+        disagreeing = [row for row in part_rows if said[row["id"]] != answer(row["label"])]
+        agreeing = len(part_rows) - len(disagreeing)
+        print(f"\n{part} ({len(part_rows)} rows):")
+        print(f"  labeller agreement: {share(agreeing, len(part_rows))}")
+
+        prefix = "open" if part == "open" else "held"
+        if part == "open":
+            with open(directory / "open-disagreements.tsv", "w", encoding="utf-8") as out:
+                out.write("id\tstratum\tgold\tlabeller\treason\tdoubt\n")
+                for row in disagreeing:
+                    out.write("\t".join([row["id"], row["stratum"], answer(row["label"]), said[row["id"]],
+                                         labels[row["id"]]["reason"], row["doubt"]]) + "\n")
+
+        if not list(directory.glob(f"{prefix}-batch-*.json")):
+            for start in range(0, len(disagreeing), BATCH):
+                batch = []
+                for row in disagreeing[start:start + BATCH]:
+                    labeller_side = random.Random(row["id"]).choice("ab")
+                    gold_side = "b" if labeller_side == "a" else "a"
+                    sides[row["id"]] = {"labeller": labeller_side, "gold": gold_side}
+                    batch.append({"id": row["id"], "text": seen[row["id"]], labeller_side: said[row["id"]],
+                                  gold_side: answer(row["label"])})
+                (directory / f"{prefix}-batch-{start // BATCH + 1:03}.json").write_text(
+                    json.dumps(batch, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+
+        verdicts = {}
+        for path in directory.glob(f"{prefix}-batch-*.verdicts.json"):
+            verdicts.update(json.loads(path.read_text(encoding="utf-8")))
+        batches = len([path for path in directory.glob(f"{prefix}-batch-*.json") if ".verdicts" not in path.name])
+        print(f"  {len(disagreeing)} disagreements in {batches} batches, {len(verdicts)} adjudicated")
+        if verdicts:
+            with_gold = sum(verdict["verdict"] == sides[row]["gold"] for row, verdict in verdicts.items())
+            with_labeller = sum(verdict["verdict"] == sides[row]["labeller"] for row, verdict in verdicts.items())
+            print(f"  adjudicator with the gold set {share(with_gold, len(verdicts))}, with the labeller "
+                  f"{with_labeller}, neither {len(verdicts) - with_gold - with_labeller}")
+            print(f"  labeller agreement, adjudicated: {share(agreeing + with_labeller, len(part_rows))}")
+
+    sides_path.write_text(json.dumps(sides, indent=1) + "\n")
+
+
+if __name__ == "__main__":
+    main()

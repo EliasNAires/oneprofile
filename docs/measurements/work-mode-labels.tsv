@@ -1,0 +1,90 @@
+text	revision	mode	reason
+ca9fac2f3f9fa3ff51566a83cca23742fd604dbc	2	hybrid	template narrowed by hybrid floor schedule
+4bce66a4e9d3f8d3cedc804d061f015f8be56b8a	2	remote,onsite	choice of remote or in-person offered
+bb8022bff3dceaecfa258a9cd59253fc8755a74b	2	hybrid	hybrid policy floor covers every role
+303e16505e1b6ab397dddbeebe683f0da08e4d41	2	hybrid	LI-Hybrid tag, nothing more specific
+0a7f0c17ce9c951dacf69e377d62dd38e25d615b	2	hybrid	LI-Hybrid tag, nothing more specific
+53f39c6f38e4fdd36409a1a8d54d90d8818311e9	2	remote,onsite	onsite and/or remote choice stated
+2e5c9cd6baa1b3966a14d60b90b495467b4af937	2	hybrid	team's hybrid statement is vacancy's
+c11562f77be09c61cbe381eb44ab1842d9128b77	2	hybrid	explicit hybrid statement, this role
+6607cedbd251602ad2acb7846cdf03f2a7346922	2	none	team office mention plus hedged flex policy, nothing decides
+e9884b86fcc18e9180a470481ea73db28f35fb91	2	onsite	LI-Onsite tag, nothing more specific
+1e995947ed53eb42d37db4938a3a6b66be502a35	2	none	hedged company-wide flexibility, none specific
+4be36ce208a162c3e77047c2d53835bbb4751bf1	2	remote	primarily remote, occasional office travel
+bb3005cc381f02b1a5867846f8b48e2d30aa724d	2	remote	remote designation, travel to customers only
+c6568fb853980585eb72ab84fd8c5c7206a7b7c2	2	none	hedged "remote workdays possible", no commitment
+77fa15862da4c5eaec7d7e137c19769407ff24c5	2	onsite	LI-onsite tag, nothing more specific
+09a7c14f09d692a411764c751eee862d42a7e7f4	2	hybrid	hedged policy excluded, LI-Hybrid tag decides
+b2bac8bf897c34d17add4f99ba0cf70b22af6a80	2	hybrid	hybrid policy floor with named schedule
+7d92123b467ce1898b7c40e61d0922ca76f0a45f	2	remote	location-specific remote support for Italy
+727dbf1f1d297ba1bd52fa687e973fbc226d8f9f	2	onsite,remote	explicit onsite-or-remote choice stated
+de58cc31b41da1f60ef0a7a5340ab0bf2cece1ec	2	hybrid	LI-Hybrid tag, nothing more specific
+7117306ab9eb36c2b02f0d91088b4bf15c89edf2	2	onsite,remote	explicit choice of office or home
+550b987c6fe719f641b1b6516b806cf3fb8f9f33	2	remote	most specific remote-first statement wins
+92771766466a88eb85f027ee9fe36c4e8a2adeff	2	hybrid	LI-Hybrid tag, nothing more specific
+dbf669fdd42e8293a893148fb2c1b24c3b2935f2	2	hybrid,remote	location-matched hybrid-or-remote choice
+f688d69f678f121324798940e16a6058aaf00f47	2	hybrid	LI-Hybrid tag, nothing more specific
+7a37915693cbd6e7a2f9ad9ed6e2083809ce583e	2	remote	team home-based statement is vacancy's
+8085144663646b473c2a830f2c000d255f7e78a2	2	hybrid,remote	location-matched hybrid-or-remote choice
+1ead288a47ff637fa45d880f5e0a8675a009d19b	2	onsite,remote	title states office-or-home choice
+21f2384aec5c0363328e7fe2c3dd0bd2fadb6fca	2	onsite,hybrid,remote	explicit variable-location choice sentence
+6dcaa97b30e502a201f9f89cc82596f20a35bfaa	2	onsite	LI-ONSITE tag, tech term ignored
+ec9d49572ccf71cb3ddb3c056b782f7df8726705	2	hybrid	explicit hybrid schedule, tag confirms
+8d71378769074be37cf57a96236abf28d10bf8a7	2	none	hedged onsite transition, varies by role
+e09476c9865e8803e97ec8fd9ec790ccd911067c	2	remote	remote-first, occasional travel only
+2824bd9092881d7c292f846ddd9b8ac5f58dfc8d	2	remote	team remote-first statement, tag confirms
+c096ca0771ac81cde83ace0ca88c0b731ab35284	2	hybrid	template narrowed by hybrid floor schedule
+93305496421485e9be4bf243f44a04084f743689	2	remote	LI-Remote tag, nothing more specific
+16c6c04d825d804bbdd7fdf563c33d9ae4bf04ba	2	remote	LI-Remote tag, consistent remote note
+605c9f0e21482dd2509c8f61675f651f9b060ac5	2	hybrid,remote	explicit choice of hybrid or remote
+5fef88c37ce65c1c347ce85f7789099f68904a2f	2	onsite	explicit onsite, no remote/hybrid option
+0d43fdd54060ffd6bbc1c35fc54203cee36695bd	2	onsite	LI-Onsite tag, nothing more specific
+cfa662094cae7b655c5b822d533c818585d54cb4	2	hybrid	explicit hybrid schedule, tag confirms
+56e90ab688e0cce527f91a0b29865810f8126414	2	hybrid	explicit hybrid schedule, this role
+d5eeb29d7eb55042747c2859b51e133b04a1cf03	2	remote	LI-Remote tag, tech term ignored
+c84a47b0bb3e827c7e4e83c02bb9f160b34beb8b	2	remote	location label "Home", hedged hybrid excepted
+f37d3aed8298eef1f06ddc8200c94bc2a6e02194	2	hybrid	recruiting tag, nothing else speaks
+ecbeec2744e40f01734175d90a3fcee185088661	2	hybrid	specific statement with schedule
+2a792dede4bde3bff25f1d9a89ea8e37dd561e6f	2	onsite	specific full-time on-site statement
+92c07029b9383688ca52a0cbde158292e9dbf094	2	hybrid	role-specific hybrid work model statement
+9aabdf52ca20b2f2941c7d5f651862eb5c245bf1	2	hybrid	specific hybrid statement, 3 days/week
+4d921393af8853ea11643ebb21c3f37124e954b1	2	remote,onsite,hybrid	choice of work formats offered
+41ca3f0ed1526d3a11ecd9c52d1624960ab2756b	2	hybrid	specific hybrid schedule statement
+f682aa3b3ec10429959d6c5b9fcd384e63fc4e03	2	remote	primarily remote, no regular days (rule 4)
+253096d63a2a1b0955577ecad2eadb873126b521	2	remote	recruiting tag, nothing else speaks
+ff363c82cbc1f4acc1e2e56d073b9a3f63cdfff6	2	hybrid	role/team statement, company stmts excluded
+8f5b8e5b029e9077c0eb837b596fb1ce66e821a3	2	hybrid	team floor statement with schedule
+d941bfe45bf57e61f2b2e8dfcef10742e25aede5	2	hybrid	specific schedule, office Mon-Thu
+fec2180c6fd0d2ccae1ad3336908c9153ba58d8a	2	none	hedged "most teams" statement excluded
+b0fd0807cc7e75bc8394319e6a5dcd890283caf3	2	hybrid	recruiting tag, nothing else speaks
+80534e7b8d07bc1d1c8e25b2c4242eee74ac280b	2	onsite	case-by-case exception is not a choice
+60b11c55341625ed0b39e230cac4463ccf80700d	2	hybrid	template narrowed by schedule requirement
+e410692598864a65bc675fda6315a9e4208edcb1	2	hybrid	explicit "this is a hybrid role"
+575e17ab15ae59134aed6d6792b78c0ce3c86fef	2	remote	team described as remote (rule 1)
+d0a006520b65f93ec8ac7749bf3f3df93d41e591	2	hybrid	recruiting tag, nothing else speaks
+f6bf4f613b8be2eaa91bc9638ac8c33fecb7a505	2	hybrid	specific hybrid statement with schedule
+d09a608382b320618cc155e9e19a9c18c83c8366	2	hybrid	recruiting tag, nothing else speaks
+36c7b9bf3b6137ba8ba00da9903a4a878a9c0e39	2	remote	tag decides, "most positions" hedge excluded
+899639c10cbb957b035e2b2e8c1f410ab5233c21	2	remote	explicit "this is a remote role"
+c35307a738c8820f46da48618bb97fc84a218b70	2	hybrid	team schedule statement, 1 day/week
+889eab2789991937b0b616fe7e092f2b28c17ddc	2	hybrid	specific schedule plus hybrid label
+d0801d1acbf72b4fdf0b3f43eb1bf8fb853fc43e	2	remote	recruiting tag, nothing else speaks
+cf69aeb10408bd15c78894d43369872a4f85b872	2	onsite	recruiting tag decides
+614d51f9862163b1c14b8e6d97516862910c97af	2	hybrid	specific hybrid schedule statement
+c7b75f6abf0a4802d53617fde90496e13a7e02b5	2	hybrid	specific hybrid statement with schedule
+3ca6a72dd9cb0794a0f956faaa84aa8e2c633219	2	onsite	specific office statement outweighs tag
+4f2c6ea1f2b9c334ebfa6bc49c6e4856917e42e4	2	remote	recruiting tag, nothing else speaks
+dc74776ed0fc8328d3e75c5aa0b34e0753242c6a	2	remote	tag decides, hybrid cloud excluded (rule 2)
+927a03f7083576b633804c91a185bbfa58aaf159	2	onsite	5 days a week in office
+da906252b29dc6e4b5a4387a4e5905537a94becd	2	remote	tag; occasional travel still remote
+e2b1499aaaf7480846abdc750d2f57989aad6d46	2	onsite	explicit onsite statement
+52450fdf21d0ea604cbdada7b97c556804eb0caa	2	onsite,hybrid	choice of modes listed (rule 5)
+5918ee28a7111731c3267666d9335d2efde55b01	2	hybrid,remote	explicit choice of modes
+caee58e3a7a35987934da09f42147dd6723a7393	2	remote	job-detail field states remote
+5c8d607c8f89fb485c29a90bcab8c51d8422d8c3	2	none	only remote-access content (rule 2)
+7f0a69f0668976c6dbcbaacf08d4472c2fcdfc13	2	onsite	recruiting tag, nothing else speaks
+4a7e7b0712506e1a24112a86651bc429ee92e6ca	2	remote	tag; hybrid cloud product excluded (rule 2)
+40a9a75deebad55432d718a372b510582079bab3	2	remote	explicit remote/teleworker statement
+0149914c72edf595b9f189e3b974584888a48110	2	remote	tag decides; onboarding is one-time
+0efc2d18377268880ee7b7d89495035b0d3d8cdf	2	remote	explicit "this is a remote role"
+2fc50f9f5d379388eb77521fc4b1c643ca87bd15	2	hybrid,onsite	choice of modes listed (rule 5)

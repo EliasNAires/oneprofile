@@ -1,0 +1,112 @@
+id	mode	reason
+1039969	hybrid	field under heading states Hybrid for this role
+40309	hybrid	partial remote plus reports to office, rule 4
+1246729	remote,hybrid	explicit choice, remote in US or hybrid from office
+31097	none	only remote-first/culture and benefit statements, rule 1
+797972	onsite	Telecommuting Options field states Onsite
+1144606	remote	explicit remote; office visits for meetings are occasional
+592003	onsite	explicit 100% on-site attendance required
+1017787	none	generic telecommuting-pursuant-to-policy boilerplate
+277929	onsite	based out of office; company states no remote-only roles
+183083	none	remote/on-site/hybrid name duties or tech, not mode, rule 2
+186546	none	flexible hybrid work model reads as culture/benefit statement
+342756	hybrid	perk plainly covers every role: hybrid working options
+1167093	onsite	Workplace type field states On-site Working
+1296277	none	only duty descriptions (in-person/remote support), rule 2
+100104	onsite	Location field states Government Site (On-Site)
+1228201	onsite	explicit: working location will be fully on-site
+1255076	remote,hybrid	explicit choice, remote in US or hybrid from office
+1502449	none	generic telecommuting-pursuant-to-policy boilerplate
+929076	hybrid	explicit hybrid, 2 office days per week on average
+797019	onsite	Telecommuting Options field states Onsite
+971590	onsite	Location field states On-site, Spokane WA
+810806	hybrid	Remote Type field states Hybrid
+1008333	remote	explicit remote statement; hybrid-friendly is a culture note
+1167545	onsite	Workplace type field states On-site Working, rule 3
+572889	none	Work Model section defines categories, none chosen for this job
+1167690	onsite	Workplace type field states On-site Working
+1025965	none	only remote DC/hybrid cloud, naming tech not mode, rule 2
+928589	onsite	explicit onsite, primarily at partner/customer office
+132539	onsite	explicit no remote, office Mon-Fri
+657655	hybrid	schedule stated: 3 days office, 2 remote
+673469	onsite	regular on-site presence required
+1155197	hybrid	Work Mode: Hybrid (3/2) stated
+39647	none	only product description, no mode stated
+1054604	onsite	must work onsite, remote not an option
+3321	onsite	role based out of office, no remote-only
+134370	onsite	explicit in-office position
+1492153	hybrid	explicitly stated hybrid position
+768389	remote	explicitly stated role is remote
+795892	onsite	explicit onsite position
+12072	none	remotely deployed describes product, not mode
+447796	none	remote field devices is equipment term
+650040	hybrid	arrangement mixes on-site and remote work
+511380	onsite	full-time onsite 5 days/week stated
+1362928	none	only limited travel mentioned, no mode declared
+930633	hybrid	designed as Hybrid, 2 days/week office
+1132120	hybrid	standard hybrid schedule for external candidates
+918009	remote	description states Location: Remote
+1466987	none	remote access is topic word; hybrid is generic benefit
+912755	hybrid	Position Role Type: Hybrid stated
+706028	hybrid	schedule stated: 3 days office, 2 remote
+1366322	hybrid	explicit hybrid work model stated
+1103594	hybrid	explicit hybrid role, 3 days/week office
+278895	hybrid	explicit hybrid role, 3 days/week office
+1001199	onsite	performed in office/data center/operational environment
+709382	none	Remote Update Technology is product name, not mode
+1219500	onsite	explicit in-office position Monday-Friday
+573258	none	generic Work Model definitions, no stated mode for this role
+1282120	hybrid	hybrid work from home/office offered for this role
+161622	hybrid	hybrid, at least 3 days a week in office stated
+347439	remote	100% remote within the U.S. stated
+538794	remote,hybrid,onsite	eligible to work remote, hybrid or onsite, a choice
+48122	onsite	role is on-site at Exeter or Bristol office stated
+767453	onsite	fully onsite, remote work not available stated
+678231	remote	role can be performed remote within the US stated
+191309	remote	Work Mode: Remote stated
+833277	hybrid	hybrid working model, balance remote/office stated for this role
+200675	remote	role will be based remotely in Barcelona stated
+1399759	hybrid	hybrid position, minimum two office days a week stated
+795769	onsite	Telecommuting Options: Onsite field stated
+925139	onsite	role designed as Onsite stated
+1103822	hybrid	in office or onsite with clients at least 3 days/week stated
+1069262	onsite	role designated as Onsite stated
+925836	hybrid	role designed as Hybrid, 2 days/week stated
+132070	none	benefit statement for a category, not plainly every role
+926690	remote	remote-friendly with occasional onsite, occasional does not change remote
+1108320	hybrid	Flexible Work Arrangements: Hybrid field stated
+805019	none	in-office culture statement varies by role, not every role
+571245	none	generic Work Model definitions, no stated mode for this role
+343878	hybrid	location Hybrid, 3 days per week stated
+4031	remote	Workplace type: Remote field stated
+507667	hybrid	work model Hybrid, 3 days per week stated
+677718	hybrid	hybrid position, requires 2-3 days in office per week stated
+623324	onsite	stated full-time onsite five days (rule 3)
+795828	onsite	Telecommuting Options field: Onsite; hybrid cloud is about tech (rule 2/3)
+224013	remote	role stated remote; country doesn't change it (remote def)
+797482	onsite	Telecommuting Options field: Onsite (rule 3)
+655962	hybrid	role stated Hybrid, 3 days/week in office (rule 3)
+1077892	hybrid	stated hybrid role (rule 3)
+167947	onsite	onsite 5 days/week at HQ stated (rule 3)
+623584	onsite	100% on-site stated explicitly (rule 3)
+982794	onsite	onsite five days/week stated repeatedly (rule 3)
+194736	hybrid	flexible hybrid work stated for role; off/on-site is about product (rule 2/3)
+1442245	remote	stated REMOTE opportunity (rule 3)
+571901	none	only generic mode definitions, none applied to this job (rule 6)
+1022165	onsite	Position Type field: Onsite (rule 3)
+811214	hybrid	Remote Type field: Hybrid (rule 3)
+179302	hybrid	stated hybrid working basis (rule 3)
+903847	none	remote support is about duties, not mode (rule 2)
+1371294	none	remote work mentioned only as a benefit (rule 1)
+142974	onsite	stated onsite, remote/hybrid excluded explicitly (rule 3)
+4087	remote	Workplace type field: Remote (rule 3)
+452473	remote	stated field-based remote role repeatedly (rule 3)
+928256	remote	designated Remote/Teleworker, work from home (rule 3)
+172225	hybrid	stated hybrid working policy for role (rule 3)
+351945	none	in person/remotely describes support delivery, not own mode (rule 2)
+931017	onsite	designated Onsite, primarily work from office (rule 3)
+769710	none	onsite transition policy varies by role, not stated for this job (rule 1)
+967649	hybrid	flex role, 3 days/week on site (rule 4)
+351479	hybrid	onsite 4 days/week stated; remote sensing is about tech (rule 2/4)
+1532460	remote	teleworker, no permanent office, occasional travel (rule 3/4)
+52973	none	telecommuting permitted too vague for a mode (rule 6)

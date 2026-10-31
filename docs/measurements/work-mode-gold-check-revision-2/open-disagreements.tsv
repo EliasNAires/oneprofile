@@ -1,0 +1,4 @@
+id	stratum	gold	labeller	reason	doubt
+81027	silent remote	unclear	remote	optional attendance, rule 3	labelled "flexible hybrid working model" but described as optional ("come into offices as often as you like"), not a regular schedule — the label and the description contradict and no rule settles which controls
+1196445	silent remote	onsite	none	hedge company statement, rule 1	location label "Office - ..." read as a mode-bearing field (rule 3) vs it being just a facility/campus name
+1310051	silent remote	onsite	none	duties don't name mode	"visiting office setups" read as travel-to-sites, which the onsite definition names directly, vs there being no explicit mode statement for this role

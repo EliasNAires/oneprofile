@@ -1,0 +1,45 @@
+id	mode	reason
+42713	hybrid	template narrowed by hybrid floor schedule
+259275	remote,onsite	choice of remote or in-person offered
+563749	hybrid	hybrid policy floor covers every role
+60769	hybrid	LI-Hybrid tag, nothing more specific
+172070	hybrid	LI-Hybrid tag, nothing more specific
+25789	remote,onsite	onsite and/or remote choice stated
+349578	hybrid	team's hybrid statement is vacancy's
+938731	hybrid	explicit hybrid statement, this role
+1510061	none	team office mention plus hedged flex policy, nothing decides
+330922	onsite	LI-Onsite tag, nothing more specific
+1019613	none	hedged company-wide flexibility, none specific
+1120090	remote	primarily remote, occasional office travel
+925731	remote	remote designation, travel to customers only
+1246782	none	hedged "remote workdays possible", no commitment
+330815	onsite	LI-onsite tag, nothing more specific
+1074596	hybrid	hedged policy excluded, LI-Hybrid tag decides
+1265571	hybrid	hybrid policy floor with named schedule
+350275	remote	location-specific remote support for Italy
+468972	onsite,remote	explicit onsite-or-remote choice stated
+92102	hybrid	LI-Hybrid tag, nothing more specific
+26468	onsite,remote	explicit choice of office or home
+36469	remote	most specific remote-first statement wins
+734421	hybrid	LI-Hybrid tag, nothing more specific
+732603	hybrid,remote	location-matched hybrid-or-remote choice
+1110223	hybrid	LI-Hybrid tag, nothing more specific
+637333	remote	team home-based statement is vacancy's
+137866	hybrid,remote	location-matched hybrid-or-remote choice
+931805	onsite,remote	title states office-or-home choice
+470945	onsite,hybrid,remote	explicit variable-location choice sentence
+331077	onsite	LI-ONSITE tag, tech term ignored
+67499	hybrid	explicit hybrid schedule, tag confirms
+770285	none	hedged onsite transition, varies by role
+38159	remote	remote-first, occasional travel only
+50342	remote	team remote-first statement, tag confirms
+42098	hybrid	template narrowed by hybrid floor schedule
+332354	remote	LI-Remote tag, nothing more specific
+490158	remote	LI-Remote tag, consistent remote note
+1288907	hybrid,remote	explicit choice of hybrid or remote
+1120851	onsite	explicit onsite, no remote/hybrid option
+32166	onsite	LI-Onsite tag, nothing more specific
+307151	hybrid	explicit hybrid schedule, tag confirms
+1123506	hybrid	explicit hybrid schedule, this role
+967919	remote	LI-Remote tag, tech term ignored
+918036	remote	location label "Home", hedged hybrid excepted

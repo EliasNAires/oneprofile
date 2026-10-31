@@ -1,0 +1,10 @@
+{
+  "1081052": {"verdict": "a", "clause": "3. The most specific statement about this job decides", "pattern": "hybrid role, in-person days at client site"},
+  "1101971": {"verdict": "a", "clause": "4. A mode word with a schedule is read with its schedule", "pattern": "primarily remote, onsite as needed"},
+  "1120851": {"verdict": "b", "clause": "Ruled out is not offered", "pattern": "modes named only to rule out"},
+  "1123247": {"verdict": "a", "clause": "4. A mode word with a schedule is read with its schedule", "pattern": "hybrid model, flexible remaining days"},
+  "1123506": {"verdict": "a", "clause": "4. A mode word with a schedule is read with its schedule", "pattern": "hybrid model, flexible remaining days"},
+  "1143342": {"verdict": "b", "clause": "3. The most specific statement about this job decides", "pattern": "days-in-office schedule stated"},
+  "1246782": {"verdict": "a", "clause": "6. None where nothing read declares a mode", "pattern": "hedged flexibility phrase, no mode"},
+  "1288907": {"verdict": "a", "clause": "5. A choice of modes is a choice", "pattern": "choice of hybrid location or remote"}
+}

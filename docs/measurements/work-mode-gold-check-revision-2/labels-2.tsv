@@ -1,0 +1,51 @@
+id	mode	reason
+643299	onsite	specific statement in description
+284714	none	company statement, not vacancy
+212353	onsite	specific statement, onsite role
+149117	remote	specific label; hedged benefit excluded
+59526	hybrid,remote	choice offered (hybrid or remote)
+551505	remote	telecommuting option stated for role
+315900	hybrid,remote	choice offered
+811283	onsite	remote-type field value Office
+929343	hybrid	mode with schedule (2 days/week)
+345646	remote	recruiting tag label, nothing more specific
+696448	hybrid	recruiting tag label, nothing more specific
+986132	remote	label in description; benefit excluded
+919203	none	hedged company policy (role-specific)
+130707	hybrid,remote	choice offered
+292187	none	remote/onsite mentions are benefit/culture only
+572093	none	template lists every mode, nothing narrows it
+1104848	hybrid	company floor covers every role
+796670	hybrid	specific statement with schedule
+929961	onsite	specific statement, onsite role
+797081	onsite	telecommuting-options field: Onsite
+1423686	hybrid	recruiting tag label; other mention is work's subject
+926445	remote	most specific statement ("remote position")
+1398176	hybrid	mode with schedule given
+1042140	none	hybrid/remote mentions not about this vacancy's location
+461755	none	conditional compliance clause, not a declared mode
+797677	onsite	telecommuting-options field: Onsite
+493561	none	nothing read declares a mode
+674851	hybrid	specific schedule (4 office, WFH Friday)
+1133924	hybrid	specific statement with schedule
+748240	none	hedged policy ("most roles")
+918980	none	hedged policy; duties describe work, not mode
+206480	hybrid	specific statement with schedule
+574556	hybrid	direct statement
+359474	onsite	direct, repeated statement
+1478380	remote	direct statement
+320764	onsite	specific statement outweighs generic benefit list
+925831	onsite	specific statement; other mentions are product name
+1259545	hybrid	company floor covers every role
+320566	none	hedged benefit statement ("depending on role")
+11781	none	about deployed systems, not this vacancy's location
+702888	hybrid,remote	choice offered
+42626	hybrid	template narrowed by following schedule
+571699	none	template lists every mode, nothing narrows it
+998560	hybrid	hybrid work model with schedule
+290811	remote	location field states remote
+450714	onsite	specific schedule (5 days/week office)
+28200	hybrid	company floor covers every role; tag agrees
+117018	remote	recruiting tag label, nothing else speaks
+165341	remote	recruiting tag label, nothing else speaks
+987104	remote	label in description, nothing else speaks

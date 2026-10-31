@@ -83,6 +83,21 @@ template labels listing every mode followed by a schedule; `primarily remote, on
 `on-site role` later `eligible for a remote work arrangement`; and a statement about the whole team
 (`The teams are all home based`) under rule 1.
 
+### Agreement (calibration, 2026-10-31)
+
+Recorded beside the gates, not a gate (ADR-0012). Drawn by `scripts/draw-work-mode-gold`, labelled by the
+work-mode labeller under revision 1 and corrected by a Sonnet review (6 rows changed, 4 of them only the
+order of a choice's modes). Revision 2 is frozen. Checked by `scripts/check-work-mode-gold` with a fresh
+labeller run under it:
+
+| part | rows | labeller | adjudicator with the gold set |
+|---|---:|---|---|
+| open | 51 | 48 (94.1%, 84–98%) | 2 of 3, 1 neither |
+| held-out | 49 | 48 (98.0%, 89–100%) | 1 of 1 |
+
+Both are near the gates' 90% line from above, so a round's adjudicated figures can tell rules from
+noise, if barely. The labeller's misses are single cases, not a clause read two ways.
+
 ## Considered options
 
 - **Amending ADR-0029** for this loop: it already shapes a loop's labelling, but it is the eligibility

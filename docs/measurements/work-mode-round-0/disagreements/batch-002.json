@@ -1,0 +1,50 @@
+[
+ {
+  "id": "1081052",
+  "text": "company: US063 Oliver Wyman, LLC\ntitle: Oliver Wyman — Software Developer — Data & Analytics (DNA) — Montreal\nlocation: Montreal - 1 Place Ville Marie\nfield: -\ndescription:\n[under: Qui sommes-nous?] Il s’agit d’un poste hybride, nécessitant une présence d’au moins trois jours par semaine au bureau de Montréal ou sur place chez les clients.\n[under: Who we are] This is a hybrid role, with at least three days per week spent in the Montreal office or onsite with clients.\n[under: Eligibility] Marsh is committed to hybrid work, which includes the flexibility of working remotely and the collaboration, connections and professional development benefits of working together in the office.\n[under: Eligibility] All Marsh colleagues are expected to be in their local office or working onsite with clients at least three days per week.\n[under: Eligibility] Office-based teams will identify at least one “anchor day” per week on which their full team will be together in person.",
+  "a": "hybrid",
+  "b": "hybrid,onsite"
+ },
+ {
+  "id": "1101971",
+  "text": "company: Memorial Sloan Kettering Cancer Center\ntitle: QA Engineer II - Marketing\nlocation: New York, NY\nfield: -\ndescription:\n[under: Additional Information] - Location: Hybrid; Primarily remote with flexibility to come on site to meet stakeholders as needed; NYC",
+  "a": "remote",
+  "b": "remote,hybrid"
+ },
+ {
+  "id": "1120851",
+  "text": "company: DPR GP\ntitle: Site IT Field Engineer\nlocation: Raleigh-Durham, NC\nfield: -\ndescription:\n[under: Job Summary] Deploys, supports, and maintains standardized technology environments at job sites and offices.\n[under: Additional Job Description] - On-Site position, no remote or hybrid option.\n[under: Additional Job Description] Founded in 1990, DPR is a great story of entrepreneurial success as a private, employee-owned company that has grown into a multi-billion-dollar family of companies with offices around the world.",
+  "a": "hybrid,onsite",
+  "b": "onsite"
+ },
+ {
+  "id": "1123247",
+  "text": "company: 711 MS Smith Barney, LLC\ntitle: Java Software Engineer -Vice President - Parametric\nlocation: Mumbai, India\nfield: -\ndescription:\n[under: ABOUT MORGAN STANLEY] With offices in more than 41 countries, the Firm's employees serve clients worldwide including corporations, governments, institutions and individuals.\n[under: ABOUT PARAMETRIC] This role is part of Parametric's hybrid working model, which includes working in the office 3 days a week and choosing to work remotely or in the office the remaining days of the week.\n[under: WHAT YOU CAN EXPECT FROM MORGAN STANLEY] Our values - putting clients first, doing the right thing, leading with exceptional ideas, committing to diversity and inclusion, and giving back - aren’t just beliefs, they guide the decisions we make every day to do what's best for our clients, communities and more than 80,000 employees in 1,200 offices across 42 countries.\n[under: WHAT YOU CAN EXPECT FROM MORGAN STANLEY] To learn more about our offices across the globe, please copy and paste https://www.morganstanley.com/about-us/global-offices into your browser.",
+  "a": "hybrid",
+  "b": "hybrid,onsite"
+ },
+ {
+  "id": "1123506",
+  "text": "company: 711 MS Smith Barney, LLC\ntitle: Manager, Software Engineering - Parametric\nlocation: Minneapolis, Minnesota, United States of America\nfield: -\ndescription:\n[under: ABOUT MORGAN STANLEY] With offices in more than 41 countries, the Firm's employees serve clients worldwide including corporations, governments, institutions and individuals.\n[under: ABOUT PARAMETRIC] This role is part of Parametric's hybrid working model, which includes working in the office 3 days a week and choosing to work remotely or in the office the remaining days of the week.\n[under: WHAT YOU CAN EXPECT FROM MORGAN STANLEY] Our values - putting clients first, doing the right thing, leading with exceptional ideas, committing to diversity and inclusion, and giving back - aren’t just beliefs, they guide the decisions we make every day to do what's best for our clients, communities and more than 80,000 employees in 1,200 offices across 42 countries.\n[under: WHAT YOU CAN EXPECT FROM MORGAN STANLEY] To learn more about our offices across the globe, please copy and paste https://www.morganstanley.com/about-us/global-offices into your browser.",
+  "a": "hybrid",
+  "b": "hybrid,onsite"
+ },
+ {
+  "id": "1143342",
+  "text": "company: Services OR LP/SEC\ntitle: SAP Functional Analyst\nlocation: Montréal\nfield: -\ndescription:\n# This position is 4 days in office\n[under: Why join our team] - Hybrid work environment",
+  "a": "onsite",
+  "b": "hybrid"
+ },
+ {
+  "id": "1246782",
+  "text": "company: LexisNexis Risk Solutions FL Inc. Company\ntitle: Senior Quality Test Engineer\nlocation: Chennai\nfield: -\ndescription:\nDon’t miss this power-packed career breakthrough—apply now and meet us for an in-person interview on 29th Nov in Chennai and 6th Dec 2025 in Mumbai!\n[under: About the Team] The position is full time; remote workdays and other flexibility is possible.\n[under: Requirements] - Demonstrated experience in automating complex mobile applications both Hybrid and native is required.",
+  "a": "none",
+  "b": "remote"
+ },
+ {
+  "id": "1288907",
+  "text": "company: Black & Decker (U.S.) Inc.\ntitle: Senior Business Analyst - Product Master Data Processes\nlocation: Towson, MD, United States\nfield: -\ndescription:\n[under: Senior Business Analyst - Product Master Data Processes] Hybrid in Towson, MD or New Britain, CT, or Remote\n[under: The Person] - Advanced Microsoft Excel skills; experienced in MS Office Suite.\n# LI-HYBRID\n# LI-REMOTE",
+  "a": "remote,hybrid",
+  "b": "none"
+ }
+]

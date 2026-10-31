@@ -1,0 +1,7 @@
+{
+ "1197125": {
+  "verdict": "b",
+  "clause": "A label in the location outweighs the field where nothing else speaks",
+  "pattern": "office named in location field"
+ }
+}

@@ -154,8 +154,14 @@ def shown(row, segments):
             f"field: {flat(row['field'])}\ndescription:\n" + ("\n".join(cued) or "-") + "\n")
 
 
-def draw(directory, rows):
-    rng = random.Random(SEED)
+def draw(directory, rows, described=None, silent_remote=SILENT_REMOTE, seed=SEED, exclude=(), kept=None):
+    """Draws the strata into directory, as the module's docstring says. Another sampler passes its own sizes, seed,
+    the ids it must not draw, and kept(text), a label already kept for a shown text: such a vacancy is written to
+    batch-0.txt and labels-0.tsv instead of a batch to label."""
+    described = described or DESCRIBED
+    rng = random.Random(seed)
+    exclude = set(exclude)
+    rows = [row for row in rows if row["id"] not in exclude]
     drawn = []
     strata = []
 
@@ -165,9 +171,9 @@ def draw(directory, rows):
         strata.append((name, len(pool), len(chosen)))
         drawn.extend((row, name) for row in chosen)
 
-    for name, size in DESCRIBED.items():
+    for name, size in described.items():
         take(f"described {name.lower()}", [r for r in rows if stratum(r) == name], size)
-    take("silent remote", [r for r in rows if not r["modes"] and r["remote_cue"]], SILENT_REMOTE)
+    take("silent remote", [r for r in rows if not r["modes"] and r["remote_cue"]], silent_remote)
 
     with open(directory / "strata.tsv", "w", encoding="utf-8") as out:
         out.write("stratum\tvacancies\tdrawn\n")
@@ -184,6 +190,7 @@ def draw(directory, rows):
     rng.shuffle(order)
     first = {}
     labelled = []
+    known = []
     with open(directory / "same.tsv", "w", encoding="utf-8") as out:
         out.write("id\tsame_as\n")
         for row in order:
@@ -192,7 +199,19 @@ def draw(directory, rows):
                 out.write(f"{row['id']}\t{first[text]}\n")
                 continue
             first[text] = row["id"]
-            labelled.append((row["id"], text))
+            label = kept(text) if kept else None
+            if label:
+                known.append((row["id"], text, label))
+            else:
+                labelled.append((row["id"], text))
+    if known:
+        (directory / "batch-0.txt").write_text("".join(f"=== {vacancy}\n{text}\n" for vacancy, text, _ in known),
+                                              encoding="utf-8")
+        with open(directory / "labels-0.tsv", "w", encoding="utf-8") as out:
+            out.write("id\tmode\treason\n")
+            for vacancy, _, (mode, reason) in known:
+                out.write(f"{vacancy}\t{mode}\t{reason}\n")
+        print(f"batch-0.txt: {len(known)} vacancies whose shown text keeps a label")
     for number, start in enumerate(range(0, len(labelled), BATCH), 1):
         batch = labelled[start:start + BATCH]
         body = "".join(f"=== {vacancy}\n{text}\n" for vacancy, text in batch)

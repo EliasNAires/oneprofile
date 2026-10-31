@@ -1,0 +1,51 @@
+id	mode	reason
+1196445	none	hedge company statement, rule 1
+346500	onsite	recruiting tag decides, rule 3
+930414	remote	role stated remote
+1161516	hybrid,remote	choice by residency, rule 5
+292047	remote	location label and tag
+48819	hybrid	role statement with schedule
+795201	onsite	field-like statement
+931026	onsite	role stated onsite
+563803	hybrid	floor policy covers role, rule 1
+1458132	onsite	on-site helpdesk duties named
+573328	none	template not narrowed, rule 5
+280743	hybrid	3 days a week onsite schedule, rule 4
+1197125	none	hedge company statement, rule 1
+796790	hybrid,remote	choice by residency, rule 5
+733269	none	template not narrowed, rule 5
+4699	remote	workplace type stated
+344553	onsite	role stated onsite
+742061	onsite,remote	choice offered, rule 5
+215105	none	award, not a mode statement
+1239388	none	hedge depending on role, rule 1
+1184834	onsite	field-like statement
+811217	hybrid	remote type field value
+928781	remote	role stated remote
+282314	onsite,remote	choice offered, rule 5
+796217	hybrid	schedule decides, rule 4
+835175	none	hedged options statement, rule 1
+1352958	hybrid,onsite	choice offered, rule 5
+1120772	onsite	explicit onsite, others ruled out
+1246040	none	research method, not mode, rule 2
+26477	onsite,remote	unhedged company choice, rule 1/5
+571384	none	template not narrowed, rule 5
+70609	none	remote sensing, rule 2
+699085	remote	role stated remote
+472122	hybrid	WFO/WFH schedule
+930700	onsite	role stated onsite
+1361826	none	no mode named, channels only
+1196859	remote	most specific role statement, rule 3
+29039	hybrid	office days per week schedule
+87132	none	hedge most of our people, rule 1
+162634	none	remote days are a perk, rule 1
+1310051	none	duties don't name mode
+146018	hybrid	role stated hybrid
+81027	remote	optional attendance, rule 3
+1285653	hybrid	recruiting tag decides, rule 3
+6534	remote	role stated remote
+31418	none	WFH flexibility is a perk, rule 1
+594304	none	hybrid/remote describe network, rule 2
+929703	remote	role stated remote
+129061	hybrid	unhedged company statement, rule 1
+176418	hybrid	role statement with schedule

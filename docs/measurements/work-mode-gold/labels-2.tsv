@@ -1,0 +1,51 @@
+id	mode	reason
+643299	onsite	specific "On-Site" location statement (rule 3)
+284714	none	close: company-wide "remote-first" statement vs it plainly covering every role (rule 1)
+212353	onsite	specific "onsite role" statement
+149117	remote	specific "work modality: Remote" outweighs generic hybrid-friendly benefit (rule 3)
+59526	hybrid,remote	explicit "Hybrid or Remote" choice for this role (rule 5)
+551505	remote	"full-time telecommuting is an option" states remote for this job
+315900	hybrid,remote	explicit "remote or hybrid candidates" choice (rule 5)
+811283	onsite	"Remote Type" field value is "Office"
+929343	hybrid	"designed as Hybrid" statement with 2 days/week schedule (rule 4)
+345646	remote	"LI-Remote" tag, nothing else speaks for this role
+696448	hybrid	"LI-Hybrid" tag, nothing else speaks for this role
+986132	remote	"Remote" heading declares mode, nothing else speaks
+919203	none	company-wide statement explicitly varies by role (rule 1 exception not met)
+130707	hybrid,remote	explicit "remote or hybrid candidates" choice (rule 5)
+292187	none	close: "we make your remote work comfy" perk vs rule 1 benefit exclusion
+572093	none	generic Work Model definitions, no designation given for this job
+1104848	hybrid	"All Marsh colleagues" plainly-every-role statement (rule 1) with 3-day schedule (rule 4)
+796670	hybrid	"this role is categorized as hybrid" statement
+929961	onsite	"designed as Onsite" statement
+797081	onsite	"Telecommuting Options: Onsite" field
+1423686	hybrid	"LI-Hybrid" tag; install description names work type not location (rule 2)
+926445	remote	close: explicit "this is a remote position" statement vs required office commute/travel
+1398176	hybrid	close: generic "Office Environment" tag vs specific hybrid schedule Tue/Wed/Thu (rule 3)
+1042140	none	"remote work" is a generic benefits-list item, not role-specific (rule 1)
+461755	none	conditional pay-transparency language, no mode stated for this job
+797677	onsite	"Telecommuting Options: Onsite" field
+493561	none	no mode stated; "remote diagnostic tools" names a duty, not location (rule 2)
+674851	hybrid	specific "in office 4 days, WFH Friday" schedule (rule 3/4)
+1133924	hybrid	company-wide guideline "half the time at the office" plainly-every-role (rule 1)
+748240	none	close: "most roles" onsite hedge vs rule 1's every-role requirement not met
+918980	none	company-wide hedge (role-specific) plus duty descriptions of service type (rule 2)
+206480	hybrid	specific "Hybrid 2 days per week" location statement (rule 3/4)
+574556	hybrid	direct statement "this is a Hybrid role"
+359474	onsite	consistent explicit onsite statements (rule 3)
+1478380	remote	direct "this is a remote role" statement
+320764	onsite	close: "require an in-office presence" statement vs "remote work options" benefit (rule 1 excludes)
+925831	onsite	"designed as Onsite" statement; "Hybrid Cloud" is a product name (rule 2)
+1259545	hybrid	"Everyone... on site minimum three days per week" plainly-every-role (rule 1) with schedule (rule 4)
+320566	none	"work from home policy depending on role" is a hedged benefit (rule 1), nothing specific
+11781	none	"remotely deployed" names what the systems are, not this role's location (rule 2)
+702888	hybrid,remote	explicit "hybrid in-office or fully remote" choice (rule 5)
+42626	hybrid	close: header lists "Hybrid/Onsite/Remote" vs the only elaboration given being the hybrid model (rule 3)
+571699	none	generic Work Model definitions, no designation given for this job
+998560	hybrid	"hybrid work model... up to two days WFH" schedule (rule 4)
+290811	remote	specific "Location: Argentina (remote)" statement (rule 3)
+450714	onsite	specific "5 days per week in our Manila office" statement
+28200	hybrid	"Boxers expected... minimum 3 days/week" plainly-every-role (rule 1) with schedule, LI-Hybrid confirms
+117018	remote	"LI-REMOTE" tag, nothing else speaks
+165341	remote	"LI-REMOTE" tag, nothing else speaks
+987104	remote	"Remote" heading declares mode, nothing else speaks

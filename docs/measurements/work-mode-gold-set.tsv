@@ -1,0 +1,101 @@
+id	part	stratum	label	doubt
+4699	held-out	described remote	remote	
+6534	held-out	described remote	remote	
+11781	open	silent remote	none	
+26477	open	described remote	remote,onsite	"work from anywhere... or meet you in our offices... full-time" as this role's own choice (rule 3) vs the later "LI-Remote" tag suggesting a single mode
+28200	held-out	described hybrid	hybrid	
+29039	open	silent remote	hybrid	
+31418	held-out	silent remote	none	
+42626	open	described choice	hybrid	"Hybrid/Onsite/Remote" header followed only by an elaborated "Our Hybrid work model" (3+2 schedule) read as the template-then-one-mode case (rule 5), not a three-way choice; its own hedge ("some businesses may require more") weighed against the concrete schedule the same way as a similar case elsewhere in the set
+48819	open	described hybrid	hybrid	
+59526	held-out	described choice	remote,hybrid	changed from hybrid,remote: reordered to the required remote,hybrid,onsite sequence; content (explicit "Hybrid or Remote" choice for this role) unchanged
+70609	held-out	silent remote	none	
+81027	open	silent remote	none	revision 2 check: the adjudicator read the flexible hybrid model as a company policy with no floor (rule 1), so nothing names this role's mode; was unclear
+87132	open	silent remote	none	
+117018	open	described remote	remote	
+129061	held-out	silent remote	hybrid	company's stated current practice ("hybrid mix... regular in-person touchpoints") taken under rule 1's exception (nothing else speaks, no hedge) vs it still reading as general company description rather than role-specific
+130707	open	described choice	remote,hybrid	changed from hybrid,remote: reordered to the required sequence; content unchanged
+146018	open	described hybrid	hybrid	
+149117	held-out	silent remote	remote	
+162634	open	silent remote	none	
+165341	held-out	described remote	remote	
+176418	held-out	silent remote	hybrid	
+206480	open	silent remote	hybrid	
+212353	open	described onsite	onsite	
+215105	open	silent remote	none	
+280743	held-out	silent remote	hybrid	
+282314	open	silent remote	remote,onsite	
+284714	held-out	silent remote	none	"remote-first agency... won't make you visit" closely echoes rule 1's own "remote-first company" example of what does not count, but it is addressed to the candidate directly ("you") rather than being pure company description
+290811	held-out	silent remote	remote	
+292047	held-out	described remote	remote	
+292187	held-out	silent remote	none	"we make your remote work comfy" reads like rule 1's excluded WFH-equipment benefit vs it also implying the role is actually remote-based
+315900	open	described choice	remote,hybrid	changed from hybrid,remote: reordered to the required sequence; content unchanged
+320566	held-out	silent remote	none	
+320764	open	described onsite	onsite	"require an in-office presence" (rule 3, no schedule given) vs the later generic "remote work options" benefit (rule 1, excluded)
+344553	open	described onsite	onsite	
+345646	held-out	described remote	remote	
+346500	open	described onsite	onsite	LI-Onsite tag for this req vs the hedged "most roles onsite" company-wide statement (rule 1)
+359474	held-out	described onsite	onsite	
+450714	held-out	silent remote	onsite	
+461755	open	silent remote	none	
+472122	held-out	silent remote	hybrid	
+493561	held-out	silent remote	none	
+551505	held-out	silent remote	remote	
+563803	open	silent remote	hybrid	"some business groups may require more time in office" hedge vs the stated 4+1 schedule plainly covering every role (rule 1)
+571384	open	silent remote	none	
+571699	held-out	silent remote	none	
+572093	held-out	silent remote	none	
+573328	held-out	silent remote	none	
+574556	open	described hybrid	hybrid	
+594304	open	silent remote	none	
+643299	held-out	described onsite	onsite	
+674851	held-out	described hybrid	hybrid	
+696448	open	described hybrid	hybrid	
+699085	open	described remote	remote	
+702888	held-out	described choice	remote,hybrid	changed from hybrid,remote: reordered to the required sequence; content unchanged
+733269	open	described choice	none	revision 2: a template listing every mode with nothing narrowing it declares nothing (rule 5); was unclear under revision 1
+742061	open	described remote	remote,onsite	"in Brooklyn, NY or for remote candidates" as this role's own choice (rule 3) vs the company's "three work modes" list suggesting its Flex/hybrid mode could also reach this req
+748240	held-out	silent remote	none	
+795201	held-out	described onsite	onsite	
+796217	held-out	described choice	hybrid	changed from remote,hybrid: "categorized as Remote/hybrid" carries a uniform "report... three times per week" schedule, which rule 4 reads as plain hybrid rather than a genuine choice between two arrangements
+796670	open	described hybrid	hybrid	
+796790	held-out	described hybrid	remote,hybrid	conditional "remotely, but report 3x/week if near a hub" read as a residency choice (rule 5) vs a remote+schedule reading that rule 4 collapses to plain hybrid
+797081	held-out	described onsite	onsite	
+797677	open	described onsite	onsite	
+811217	held-out	described hybrid	hybrid	
+811283	open	silent remote	onsite	
+835175	open	silent remote	none	
+918980	open	silent remote	none	
+919203	open	silent remote	none	
+925831	open	described onsite	onsite	
+926445	open	described remote	remote	explicit "this is a remote position" (rule 3) vs the travel/commute requirements described, which may exceed the "travel now and then" the remote definition allows
+928781	open	described remote	remote	
+929343	open	described hybrid	hybrid	
+929703	held-out	described remote	remote	
+929961	held-out	described onsite	onsite	
+930414	open	described remote	remote	
+930700	held-out	described onsite	onsite	
+931026	open	described onsite	onsite	
+986132	open	silent remote	remote	
+987104	held-out	silent remote	remote	
+998560	open	silent remote	hybrid	
+1042140	held-out	silent remote	none	
+1104848	held-out	silent remote	hybrid	
+1120772	held-out	described choice	onsite	
+1133924	held-out	silent remote	hybrid	company guideline ("half the time at office") has no explicit "all employees" wording and no stated exception, so it is read under rule 1's exception by default
+1161516	held-out	described choice	remote,hybrid	"REMOTE / HYBRID for Atlanta residents" read as a residency-based choice (rule 5) vs an unresolved template
+1184834	open	silent remote	onsite	
+1196445	open	silent remote	onsite	location label "Office - ..." read as a mode-bearing field (rule 3) vs it being just a facility/campus name
+1196859	open	described remote	remote	"this role is remote" (rule 3) vs "our hybrid teams collaborate," which may describe team composition rather than this role's own mode
+1197125	held-out	silent remote	onsite	location label "Office - ..." vs the hedged "most teams work from office full time" company statement (rule 1/3)
+1239388	open	silent remote	none	
+1246040	open	silent remote	none	"remote / in person / unmoderated / moderated" names research-methodology contexts (rule 2), not the researcher's own mode
+1259545	open	silent remote	hybrid	
+1285653	held-out	described hybrid	hybrid	
+1310051	open	silent remote	onsite	"visiting office setups" read as travel-to-sites, which the onsite definition names directly, vs there being no explicit mode statement for this role
+1352958	open	described choice	hybrid,onsite	
+1361826	open	silent remote	none	
+1398176	held-out	silent remote	hybrid	a bare "Office Environment" bullet precedes the specific "Hybrid office environment (Tue/Wed/Thu)" line; read as two listed conditions where the more specific one decides (rule 3)
+1423686	held-out	described hybrid	hybrid	
+1458132	held-out	silent remote	onsite	"dedicated on-site helpdesk" names where the work is done (rule 3) vs it listing one support channel among several (rule 2)
+1478380	held-out	described remote	remote	

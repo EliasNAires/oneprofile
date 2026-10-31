@@ -1,0 +1,51 @@
+id	mode	reason
+1196445	onsite	close: location "Office -..." label vs company-wide "most teams" statement
+346500	onsite	close: LI-Onsite tag vs generic "most roles onsite" boilerplate
+930414	remote	explicit remote/teleworker statement (rule 3)
+1161516	remote,hybrid	choice: remote or hybrid by Atlanta residency (rule 5)
+292047	remote	location field "Remote US" plus BI-Remote tag (rule 3)
+48819	hybrid	explicit hybrid model, 50% onsite schedule (rule 3/4)
+795201	onsite	Telecommuting Options field: Onsite (rule 3)
+931026	onsite	explicit "designed as Onsite" statement (rule 3)
+563803	hybrid	close: company hybrid policy for employees vs some groups need more office time
+1458132	onsite	close: on-site helpdesk duty description vs no explicit role statement
+573328	none	only conditional "if listed as X" definitions, no mode declared (rule 6)
+280743	hybrid	onsite three days a week schedule reads as hybrid (rule 4)
+1197125	onsite	close: location "Office -..." label vs company-wide culture statement
+796790	remote,hybrid	close: "based remotely" vs hub-proximity onsite requirement as a choice
+733269	hybrid,onsite,remote	close: "Hybrid / Onsite / Remote" three-way choice vs unfilled template
+4699	remote	Workplace type field: Remote (rule 3)
+344553	onsite	Work Model field: On-site (rule 3)
+742061	remote,onsite	close: Brooklyn-or-remote choice vs Etsy's Flex hybrid-like mode
+215105	none	award mention about remote workers, not a role statement (rule 1)
+1239388	none	company statement explicitly varies by role (rule 1)
+1184834	onsite	Work Setting field: Onsite (rule 3)
+811217	hybrid	Remote Type field: Hybrid (rule 3)
+928781	remote	explicit remote/teleworker statement (rule 3)
+282314	remote,onsite	choice: from offices or remotely (rule 5)
+796217	remote,hybrid	explicit "categorized as Remote/hybrid" (rule 5)
+835175	none	flexible-working/culture phrasing, no role-specific statement (rule 1)
+1352958	hybrid,onsite	Work Flexibility field: Hybrid or Onsite (rule 5)
+1120772	onsite	explicit "On-Site position, no remote or hybrid option" (rule 3)
+1246040	none	close: remote/in-person as research methodology (rule 2) vs employee's own mode
+26477	remote,onsite	choice: work from anywhere or office full-time (rule 5)
+571384	none	only conditional "if listed as X" definitions, no mode declared (rule 6)
+70609	none	"remote sensing" names what the work is about (rule 2)
+699085	remote	explicit "The position is remote." (rule 3)
+472122	hybrid	3 days WFO, 2 days WFH schedule reads as hybrid (rule 4)
+930700	onsite	explicit "designed as Onsite" statement (rule 3)
+1361826	none	"remote desktop" names a support channel, not employee's mode (rule 2)
+1196859	remote	close: explicit "this role is remote" vs "hybrid teams" mention
+29039	hybrid	minimum three coordinated office days a week reads as hybrid (rule 4)
+87132	none	company statement is explicitly heterogeneous, not every role (rule 1)
+162634	none	remote days described as a benefit/perk, not the base mode (rule 1)
+1310051	onsite	close: office-visiting hardware-support duties imply onsite vs no explicit statement
+146018	hybrid	explicit "this hybrid role requires regular presence" (rule 3)
+81027	unclear	close: labelled "hybrid" vs optional, non-regular office attendance described
+1285653	hybrid	LI-Hybrid tag (rule 3)
+6534	remote	explicit "this role is remote in Mexico" (rule 3)
+31418	none	benefit/culture phrasing "flexibility to work remotely" (rule 1)
+594304	none	"hybrid"/"remote access" name network technology, not mode (rule 2)
+929703	remote	explicit remote/teleworker statement (rule 3)
+129061	hybrid	close: company-wide "hybrid mix" statement vs generic culture talk
+176418	hybrid	in-person 2-3 days a week for Prague hub reads as hybrid (rule 4)

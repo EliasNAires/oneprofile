@@ -1,0 +1,125 @@
+#!/usr/bin/env python3
+"""Scores one round of the work-mode loop (#98, ADR-0030) on the development database.
+
+    scripts/score-work-mode-round ROUND
+
+Run after POST /work-modes at the round's commit. Each run takes the round one step further, in
+docs/measurements/work-mode-round-<ROUND>/, and says what is left to do:
+
+1. **Draws** the round, as scripts/draw-work-mode-description-sample draws (seeded by the round): 200 undeclared
+   vacancies, 30 the description gives remote, 25 hybrid, 25 onsite, 20 a choice and 100 silent remote. A
+   vacancy whose shown text keeps a label under the criterion's current revision
+   (docs/measurements/work-mode-labels.tsv) takes it, in batch-0.txt and labels-0.tsv; the rest go to
+   batch-N.txt, which the `work-mode-labeller` agent labels into labels-N.tsv. The revision is kept in
+   revision.txt.
+2. **Keeps** the new labels, each under its shown text and the round's revision, for any later round that draws
+   that text again.
+3. **Scores** the round, as scripts/score-work-mode-description-sample scores: the first time it writes the
+   disagreements for the `adjudicator`, then, once they carry verdicts, it prints both gates and the rows where
+   the rule and the settled label split, and writes the same into docs/measurements/work-mode-round-<ROUND>.txt,
+   the round's archive, headed by the round, the commit and the revision.
+"""
+
+import hashlib
+import io
+import subprocess
+import sys
+from contextlib import redirect_stdout
+from importlib.machinery import SourceFileLoader
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+SCRIPTS = Path(__file__).resolve().parent
+sampler = SourceFileLoader("sampler", str(SCRIPTS / "draw-work-mode-description-sample")).load_module()
+scorer = SourceFileLoader("scorer", str(SCRIPTS / "score-work-mode-description-sample")).load_module()
+gold = SourceFileLoader("gold", str(SCRIPTS / "check-work-mode-gold")).load_module()
+
+MEASUREMENTS = sampler.REPO / "docs" / "measurements"
+KEPT = MEASUREMENTS / "work-mode-labels.tsv"
+
+DESCRIBED = {"REMOTE": 30, "HYBRID": 25, "ONSITE": 25, "CHOICE": 20}
+SILENT_REMOTE = 100
+
+
+def digest(text):
+    return hashlib.sha1(text.strip().encode("utf-8")).hexdigest()
+
+
+def kept():
+    """The labels kept, by shown text's digest and revision."""
+    if not KEPT.exists():
+        return {}
+    return {(row["text"], row["revision"]): (row["mode"], row["reason"]) for row in scorer.rows(KEPT)}
+
+
+def unlabelled(directory):
+    return [path for path in sorted(directory.glob("batch-*.txt"))
+            if not (directory / f"labels-{path.stem[6:]}.tsv").exists()]
+
+
+def ask(directory, revision, batches):
+    print(f"Label with the work-mode-labeller agent, under revision {revision}:")
+    for path in batches:
+        print(f"  {path.relative_to(sampler.REPO)} -> {(directory / f'labels-{path.stem[6:]}.tsv').relative_to(sampler.REPO)}")
+
+
+def keep(directory, revision):
+    store = kept()
+    seen = scorer.blocks(directory)
+    new = []
+    for path in sorted(directory.glob("labels-*.tsv")):
+        if path.stem == "labels-0":
+            continue
+        for row in scorer.rows(path):
+            key = (digest(seen[row["id"]]), revision)
+            if key not in store:
+                store[key] = (row["mode"], row["reason"])
+                new.append(key)
+    if new:
+        exists = KEPT.exists()
+        with open(KEPT, "a", encoding="utf-8") as out:
+            if not exists:
+                out.write("text\trevision\tmode\treason\n")
+            for key in new:
+                out.write("\t".join([*key, *store[key]]) + "\n")
+        print(f"kept {len(new)} new labels under revision {revision}")
+
+
+def main():
+    if len(sys.argv) != 2 or not sys.argv[1].isdigit():
+        sys.exit(__doc__)
+    round = int(sys.argv[1])
+    directory = MEASUREMENTS / f"work-mode-round-{round}"
+    if not (directory / "sample.tsv").exists():
+        revision = str(gold.revision())
+        directory.mkdir(parents=True, exist_ok=True)
+        (directory / "revision.txt").write_text(revision + "\n")
+        store = kept()
+        rows, _ = sampler.undeclared()
+        sampler.draw(directory, rows, DESCRIBED, SILENT_REMOTE, 9800 + round,
+                     kept=lambda text: store.get((digest(text), revision)))
+    revision = (directory / "revision.txt").read_text().strip()
+    batches = unlabelled(directory)
+    if batches:
+        ask(directory, revision, batches)
+        return
+    keep(directory, revision)
+
+    out = io.StringIO()
+    try:
+        with redirect_stdout(out):
+            sys.argv = [sys.argv[0], str(directory)]
+            scorer.main()
+    finally:
+        print(out.getvalue(), end="")
+    if "where the rule and the settled label split" in out.getvalue():
+        commit = subprocess.run(["git", "-C", str(sampler.REPO), "rev-parse", "--short", "HEAD"],
+                                capture_output=True, text=True, check=True).stdout.strip()
+        archive = MEASUREMENTS / f"work-mode-round-{round}.txt"
+        archive.write_text(f"#98 work-mode round {round}, commit {commit}, criterion revision {revision}\n\n"
+                           + out.getvalue(), encoding="utf-8")
+        print(f"\nwrote {archive.relative_to(sampler.REPO)}")
+
+
+if __name__ == "__main__":
+    main()

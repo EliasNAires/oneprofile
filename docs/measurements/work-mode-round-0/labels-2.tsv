@@ -1,0 +1,46 @@
+id	mode	reason
+707306	hybrid	recruiting tag, nothing else speaks
+1507361	hybrid	specific statement with schedule
+467199	onsite	specific full-time on-site statement
+949465	hybrid	role-specific hybrid work model statement
+1491507	hybrid	specific hybrid statement, 3 days/week
+344475	remote,onsite,hybrid	choice of work formats offered
+113230	hybrid	specific hybrid schedule statement
+1101971	remote	primarily remote, no regular days (rule 4)
+437487	remote	recruiting tag, nothing else speaks
+1123247	hybrid	role/team statement, company stmts excluded
+338426	hybrid	team floor statement with schedule
+206851	hybrid	specific schedule, office Mon-Thu
+1196075	none	hedged "most teams" statement excluded
+355856	hybrid	recruiting tag, nothing else speaks
+699213	onsite	case-by-case exception is not a choice
+36592	hybrid	template narrowed by schedule requirement
+48601	hybrid	explicit "this is a hybrid role"
+329513	remote	team described as remote (rule 1)
+299646	hybrid	recruiting tag, nothing else speaks
+1081052	hybrid	specific hybrid statement with schedule
+20119	hybrid	recruiting tag, nothing else speaks
+1347273	remote	tag decides, "most positions" hedge excluded
+190232	remote	explicit "this is a remote role"
+965016	hybrid	team schedule statement, 1 day/week
+1143342	hybrid	specific schedule plus hybrid label
+967916	remote	recruiting tag, nothing else speaks
+163044	onsite	recruiting tag decides
+280006	hybrid	specific hybrid schedule statement
+1498687	hybrid	specific hybrid statement with schedule
+141066	onsite	specific office statement outweighs tag
+310354	remote	recruiting tag, nothing else speaks
+653677	remote	tag decides, hybrid cloud excluded (rule 2)
+1247057	onsite	5 days a week in office
+302019	remote	tag; occasional travel still remote
+1152472	onsite	explicit onsite statement
+192599	onsite,hybrid	choice of modes listed (rule 5)
+178174	hybrid,remote	explicit choice of modes
+294415	remote	job-detail field states remote
+1356826	none	only remote-access content (rule 2)
+331048	onsite	recruiting tag, nothing else speaks
+206900	remote	tag; hybrid cloud product excluded (rule 2)
+929449	remote	explicit remote/teleworker statement
+202371	remote	tag decides; onboarding is one-time
+48624	remote	explicit "this is a remote role"
+1161599	hybrid,onsite	choice of modes listed (rule 5)

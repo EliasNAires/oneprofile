@@ -1,0 +1,47 @@
+#98 work-mode round 0, commit fd60c1f, criterion revision 2
+
+labelled 200, unclear 0, the rule and the labeller split on 28
+adjudicated 28: 24 labeller, 4 rule
+
+precision
+  described remote          36 of  40   90.0%  (77% to 96%)
+  described hybrid          40 of  40  100.0%  (91% to 100%)
+  described onsite          39 of  40   97.5%  (87% to 100%)
+  described choice           6 of  15   40.0%  (20% to 64%)
+  every described          121 of 135   89.6%  (83% to 94%)
+  weighted by stratum size  97.1%  (95% to 99%)
+
+remote recall on undeclared vacancies
+  described remote          36 of  40 remote, the rule gives remote to 36
+  described hybrid           0 of  40 remote, the rule gives remote to 0
+  described onsite           2 of  40 remote, the rule gives remote to 0
+  described choice           5 of  15 remote, the rule gives remote to 5
+  silent remote              8 of  65 remote, the rule gives remote to 0
+  weighted by stratum size  55.7%  (43% to 73%)
+  silent vacancies not remote: 33 none, 18 hybrid, 6 onsite
+
+where the rule and the settled label split (rule -> settled)
+  938731  described choice WORKDAY  hybrid,onsite -> hybrid  [explicit hybrid position label]  Sr. PHP Web Developer | Aviacon, Tijuana
+  1123247  described choice WORKDAY  hybrid,onsite -> hybrid  [hybrid model, flexible remaining days]  Java Software Engineer -Vice President - Parametric | Mumbai, India
+  1123506  described choice WORKDAY  hybrid,onsite -> hybrid  [hybrid model, flexible remaining days]  Manager, Software Engineering - Parametric | Minneapolis, Minnesota, United States of America
+  1081052  described choice WORKDAY  hybrid,onsite -> hybrid  [hybrid role, in-person days at client site]  Oliver Wyman — Software Developer — Data & Analytics (DNA) — Montreal | Montreal - 1 Place Ville Marie
+  1120851  described choice WORKDAY  hybrid,onsite -> onsite  [modes named only to rule out]  Site IT Field Engineer | Raleigh-Durham, NC
+  1101971  described choice WORKDAY  remote,hybrid -> remote  [primarily remote, onsite as needed]  QA Engineer II - Marketing | New York, NY
+  36592  described choice GREENHOUSE  remote,onsite -> hybrid  [schedule narrows mode template]  Principal Platform Engineer | Herndon, VA
+  42098  described choice GREENHOUSE  remote,hybrid,onsite -> hybrid  [template narrowed by hybrid schedule]  Senior Technical Program Manager | Bengaluru
+  42713  described choice GREENHOUSE  remote,hybrid,onsite -> hybrid  [template narrowed by hybrid schedule]  Technical Program Manager | Bengaluru
+  1143342  described onsite WORKDAY  onsite -> hybrid  [days-in-office schedule stated]  SAP Functional Analyst | Montréal
+  25789  described onsite GREENHOUSE  onsite -> remote,onsite  [onsite and/or remote stated]  Full Stack Developer - Python/Django/ReactJS | Bethesda, Maryland
+  468972  described onsite WORKDAY  onsite -> remote,onsite  [onsite or remote stated choice]  Director, Statistical Innovation and Data Science | Fort Worth, Texas
+  1246782  described remote WORKDAY  remote -> none  [hedged flexibility phrase, no mode]  Senior Quality Test Engineer | Chennai
+  206851  described remote GREENHOUSE  remote -> hybrid  [office days with flexible day]  Software Engineer, Early Careers AI/UI | San Jose, California
+  699213  described remote WORKDAY  remote -> onsite  [onsite role eligible later remote]  Data Analytics Intern Summer 2027 | Logan, Utah, United States
+  141066  described remote GREENHOUSE  remote -> onsite  [specific office statement outweighs tag]  Senior Machine Learning Operations Engineer | Bangalore, INDIA
+  1288907  silent remote WORKDAY  none -> remote,hybrid  [choice of hybrid location or remote]  Senior Business Analyst - Product Master Data Processes | Towson, MD, United States
+  294415  silent remote GREENHOUSE  none -> remote  [job details label over benefit]  Senior Technical Account Manager | Barcelona, Spain
+  137866  silent remote GREENHOUSE  none -> remote,hybrid  [location-based choice of modes]  Senior Software Engineer (Go, Java) - 3rd Party Integrations | Czech Republic
+  732603  silent remote WORKDAY  none -> remote,hybrid  [location-specific hybrid or remote]  Senior ML Engineer, Doc Extraction | Portugal - Lisbon
+  931805  silent remote WORKDAY  none -> remote,onsite  [office-based or home-based choice]  Statistical Analyst | India, Bangalore
+  637333  silent remote WORKDAY  none -> remote  [team described as home based]  Solution Architect, Retail Planning | Lisbon, Portugal
+  329513  silent remote GREENHOUSE  none -> remote  [team described as remote]  Senior Software Engineer - Integrations 3P - Platform | Romania
+  470945  silent remote WORKDAY  none -> remote,hybrid,onsite  [work location variable sentence]  Lead Security Mobile Engineer | Golden, CO

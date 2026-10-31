@@ -1,0 +1,2 @@
+id	stratum	gold	labeller	reason	doubt
+733269	described choice	unclear	remote,hybrid,onsite	close: "Hybrid / Onsite / Remote" three-way choice vs unfilled template	changed from hybrid,onsite,remote: "Location: Hybrid / Onsite / Remote" lists every mode with nothing afterward narrowing to one (unlike a template that goes on to describe one, rule 5); the only other line is a generic "in-person... flexibility" statement naming no specific mode, so the field's three modes are left contradicting (rule 6)

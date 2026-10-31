@@ -1,0 +1,22 @@
+{
+ "25789": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "onsite and/or remote stated"},
+ "36592": {"verdict": "a", "clause": "A template is not a choice", "pattern": "schedule narrows mode template"},
+ "42098": {"verdict": "b", "clause": "A template is not a choice", "pattern": "template narrowed by hybrid schedule"},
+ "42713": {"verdict": "b", "clause": "A template is not a choice", "pattern": "template narrowed by hybrid schedule"},
+ "137866": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "location-based choice of modes"},
+ "141066": {"verdict": "a", "clause": "A recruiting tag in the description", "pattern": "specific office statement outweighs tag"},
+ "206851": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "office days with flexible day"},
+ "259275": {"verdict": "a", "clause": "A sentence about how the company works ... or a benefit", "pattern": "benefit perk not plainly every role"},
+ "294415": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "job details label over benefit"},
+ "329513": {"verdict": "b", "clause": "A statement about the team this role joins", "pattern": "team described as remote"},
+ "344475": {"verdict": "a", "clause": "A sentence about how the company works ... or a benefit", "pattern": "we offer flexible format vague benefit"},
+ "350275": {"verdict": "b", "clause": "A sentence about how the company works ... or a benefit", "pattern": "we offer flexible format vague benefit"},
+ "468972": {"verdict": "a", "clause": "A choice of modes is a choice", "pattern": "onsite or remote stated choice"},
+ "470945": {"verdict": "b", "clause": "A sentence offering this role in several modes ... is a choice, not a template", "pattern": "work location variable sentence"},
+ "637333": {"verdict": "a", "clause": "A statement about the team this role joins", "pattern": "team described as home based"},
+ "699213": {"verdict": "a", "clause": "Offered, not excepted", "pattern": "onsite role eligible later remote"},
+ "732603": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "location-specific hybrid or remote"},
+ "918036": {"verdict": "a", "clause": "A sentence about how the company works ... or a benefit", "pattern": "reasonable adjustments accommodation hedge"},
+ "931805": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "office-based or home-based choice"},
+ "938731": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "explicit hybrid position label"}
+}

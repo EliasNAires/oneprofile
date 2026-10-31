@@ -1,0 +1,5 @@
+{
+  "81027": {"verdict": "neither", "clause": "This vacancy, not the company: a hedged one does not count", "pattern": "hedged flexible company policy"},
+  "1196445": {"verdict": "b", "clause": "A label in the location outweighs the field where nothing else speaks", "pattern": "location labeled office building"},
+  "1310051": {"verdict": "b", "clause": "A job whose work is travelling to sites is onsite", "pattern": "support work travelling to sites"}
+}

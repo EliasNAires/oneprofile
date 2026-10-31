@@ -1,0 +1,8 @@
+[
+ {
+  "id": "796217",
+  "text": "company: General Motors LLC\ntitle: Principal Software Engineer - Vehicle AI\nlocation: Mountain View, California, United States of America\nfield: -\ndescription:\n[under: Work Arrangement] This role is categorized as Remote/hybrid.\n[under: Work Arrangement] This means the successful candidate is expected to report to Austin, TX, Mountain View, CA or Remote (Washington State) three times per week at minimum or other frequency dictated by the business.\n[under: The Role] In this high-impact role based out of our Mountain View, CA or Seattle, WA offices, you will shape the multi-year technical vision for our in-cabin assistant platform.\n[under: What You’ll Do] - Architect the hybrid edge-cloud orchestration layer, optimizing trade-offs between on-device latency, network bandwidth, cloud compute cost, and offline reliability.\n[under: What Can Give You a Competitive Advantage (Preferred Qualifications)] - Background in edge-cloud hybrid computing, including client-side machine learning execution and server-side model streaming.",
+  "b": "remote,hybrid",
+  "a": "hybrid"
+ }
+]
