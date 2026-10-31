@@ -262,6 +262,22 @@ class WorkModeRuleTest {
 	}
 
 	@ParameterizedTest
+	@CsvSource(delimiter = '|', value = {
+			"Team members work onsite Tuesdays through Fridays, with the flexibility to work remotely on Mondays, unless there is an approved workplace accommodation.",
+			"We expect 3 days onsite." })
+	void readsASchedulesExceptionAndDaysWithNoWeekAsHybrid(String text) {
+		assertThat(modesIn(text)).containsExactly(WorkModeEnum.HYBRID);
+	}
+
+	@Test
+	void readsNoChoiceFromModesListedAsAPerkOrAPlaceholder() {
+		List<Segment> perks = List.of(new Segment(SegmentKindEnum.HEADING, null, "We offer", false),
+				new Segment(SegmentKindEnum.ITEM, "We offer", "Flexible working format remote, office-based or flexible", false));
+		assertThat(this.rule.read("Austin, TX", null, "Engineer", perks).modes()).isEmpty();
+		assertThat(modesIn("Work arrangement [office/remote/hybrid/field]")).isEmpty();
+	}
+
+	@ParameterizedTest
 	@CsvSource(delimiter = '|', value = { "Most roles spend 3 days a week in the office.",
 			"We have recommended office days, 2 days per week.",
 			"You will not need to be in the office 3 days a week.",
@@ -285,6 +301,170 @@ class WorkModeRuleTest {
 			"LOCATION/WORK MODEL: Full-time/On-site | ONSITE", "LOCATION DETAILS: Onsite Austin | ONSITE" })
 	void readsTheJobDetailsLabelsADescriptionWritesOnsiteIn(String label, WorkModeEnum mode) {
 		assertThat(modesIn(label)).containsExactly(mode);
+	}
+
+	@ParameterizedTest
+	@CsvSource(delimiter = '|', value = {
+			"The selected candidate will be required to work on-site, full-time at our Melbourne, FL location.",
+			"Ability to work onsite due to the nature of the classified systems.",
+			"Applicants will be considered only if they are willing to work on-site.",
+			"Engineers must work onsite at the facility.", "This will be an on-site role.",
+			"The work requires 100% onsite work." })
+	void readsOnsiteStatedAsARequirement(String text) {
+		assertThat(modesIn(text)).containsExactly(WorkModeEnum.ONSITE);
+	}
+
+	@ParameterizedTest
+	@CsvSource(delimiter = '|', value = { "You may be required to work onsite occasionally.",
+			"You will not be required to work onsite.", "Ability to work onsite as needed.",
+			"You are expected to be in the office regularly.",
+			"Applicants should expect that the role will require the ability to attend in-person meetings." })
+	void readsNoModeFromAnOnsiteRequirementAHedgeQualifies(String text) {
+		assertThat(modesIn(text)).isEmpty();
+	}
+
+	@ParameterizedTest
+	@CsvSource(delimiter = '|', value = { "You are excited to work in our New York office.",
+			"You will work out of our Chicago office.", "Join our team at Acme's Sunnyvale office.",
+			"Acme is hiring a Software Engineer to join the platform group in our Beavercreek Ohio Office." })
+	void readsTheOfficeTheWorkIsInAsOnsite(String text) {
+		assertThat(modesIn(text)).containsExactly(WorkModeEnum.ONSITE);
+	}
+
+	@ParameterizedTest
+	@CsvSource(delimiter = '|', value = { "You will work in an office environment.",
+			"You will work out of our Chicago office or remotely.",
+			"You may occasionally work in our New York office." })
+	void readsNoModeFromAnOfficeTheWorkIsInThatIsNotItsPlace(String text) {
+		assertThat(modesIn(text)).isEmpty();
+	}
+
+	@Test
+	void takesALabelOverTheOfficeTheWorkIsInAndThatOfficeOverATag() {
+		assertThat(modesIn("Workplace type: Hybrid", "You will work out of our Chicago office."))
+			.containsExactly(WorkModeEnum.HYBRID);
+		assertThat(modesIn("#LI-Remote", "You will work out of our Chicago office.")).containsExactly(WorkModeEnum.ONSITE);
+	}
+
+	@ParameterizedTest
+	@CsvSource(delimiter = '|', value = { "Requires 5 days/week in-office collaboration.",
+			"You will be onsite at the client location five days per week.", "We work 5 days a week in the office for all roles.",
+			"All positions at Acme are full-time on-site.", "Our employees work fully from the office.",
+			"Primarily based in the Innovation Hub, with flexibility to work remotely as required.",
+			"Majority of tasking is performed on-site." })
+	void readsEveryWorkingDayInTheOfficeAsOnsite(String text) {
+		assertThat(modesIn(text)).containsExactly(WorkModeEnum.ONSITE);
+	}
+
+	@ParameterizedTest
+	@CsvSource(delimiter = '|', value = { "Willing to travel on site/test bed for commissioning.",
+			"The engineer travels to customer sites for on-site implementations.",
+			"Travels in personal car to computer sites throughout the County." })
+	void readsAJobWhoseWorkIsAtSitesAsOnsite(String text) {
+		assertThat(modesIn(text)).containsExactly(WorkModeEnum.ONSITE);
+	}
+
+	@ParameterizedTest
+	@CsvSource(delimiter = '|', value = { "Occasional travel to customer sites.",
+			"Travel up to 25% to customer sites.", "Most roles are in the office 5 days a week.",
+			"You will not be onsite 5 days a week." })
+	void readsNoModeFromSiteTravelOrAFullWeekAHedgeQualifies(String text) {
+		assertThat(modesIn(text)).isEmpty();
+	}
+
+	@Test
+	void takesAHybridScheduleOverAFullWeekFloor() {
+		assertThat(modesIn("Our employees work fully from the office.", "This team is in the office 3 days a week."))
+			.containsExactly(WorkModeEnum.HYBRID);
+	}
+
+	@Test
+	void takesARemoteTagOverSiteTravel() {
+		assertThat(modesIn("#LI-Remote", "Occasionally travels to customer sites for on-site implementations."))
+			.containsExactly(WorkModeEnum.REMOTE);
+	}
+
+	@ParameterizedTest
+	@CsvSource(delimiter = '|', value = { "Mostly remote, primarily based in the US.", "Primarily based in Austin, TX.",
+			"Some travel to customer sites.", "Limited travel to client sites.", "Willing to travel to customer sites.",
+			"You are expected to be in the office for team events.", "Willing to work in-office during training.",
+			"Attend 3 days in-person onboarding training.", "Hybrid: No", "Onsite: Not required",
+			"Our employees working in our offices worldwide enjoy free lunch.", "You will work in the front office.",
+			"You will work in the Program Management Office.", "Location: New York; this is not a remote role" })
+	void readsNoModeFromTextThatOnlyResemblesAnOnsiteOrALabel(String text) {
+		assertThat(modesIn(text)).isEmpty();
+	}
+
+	@ParameterizedTest
+	@CsvSource({ "Remote-first culture", "Remote: why we work this way", "Hybrid (and why we love it)" })
+	void readsNoLabelFromAHeadingOpeningWithAModeAndATheme(String heading) {
+		List<Segment> segments = List.of(new Segment(SegmentKindEnum.HEADING, null, heading, false),
+				new Segment(SegmentKindEnum.SENTENCE, heading, "We build payments software.", false));
+		assertThat(this.rule.read("Austin, TX", null, "Engineer", segments).modes()).isEmpty();
+	}
+
+	@Test
+	void takesAHybridLabelOrTagOverAnOnsiteRequirementOrFloor() {
+		assertThat(modesIn("Workplace type: Hybrid", "Must be able to work onsite.")).containsExactly(WorkModeEnum.HYBRID);
+		assertThat(modesIn("#LI-Hybrid", "Must be able to work onsite.")).containsExactly(WorkModeEnum.HYBRID);
+		assertThat(modesIn("Workplace type: Hybrid", "Our employees work fully from the office."))
+			.containsExactly(WorkModeEnum.HYBRID);
+		assertThat(modesIn("Workplace type: Remote", "Must work onsite.")).containsExactly(WorkModeEnum.ONSITE);
+	}
+
+	@Test
+	void takesOfficeDaysOverAnOnsiteRequirement() {
+		assertThat(modesIn("Must be able to work onsite.", "Team members are in the office 3 days a week."))
+			.containsExactly(WorkModeEnum.HYBRID);
+	}
+
+	@Test
+	void readsNoModeFromRemoteRuledOutAlone() {
+		assertThat(modesIn("This position does not offer any virtual or telecommute working options.")).isEmpty();
+		assertThat(modesIn("Must work onsite.", "This position does not offer any virtual or telecommute working options."))
+			.containsExactly(WorkModeEnum.ONSITE);
+	}
+
+	@ParameterizedTest
+	@CsvSource(delimiter = ';', value = {
+			"Location: London (Hybrid) | Practice Area: Corporate | Type: Permanent; HYBRID",
+			"Location: Philomath, Oregon (Onsite); ONSITE", "Location: London, United Kingdom - Hybrid; HYBRID",
+			"London / Hybrid; HYBRID", "Job Location (Hybrid); HYBRID", "Onsite: Eglin AFB; ONSITE",
+			"Employment Type: Remote, 6 months contract with extension; REMOTE",
+			"Employment Type: Full-time, hybrid work arrangement; HYBRID",
+			"Work Environment: Collaborative, hybrid work arrangement; HYBRID",
+			"Logistics / Location: Dayton, OH, In Office; ONSITE" })
+	void readsALabelWhoseValueNamesAPlaceBeforeTheMode(String label, WorkModeEnum mode) {
+		assertThat(modesIn(label)).containsExactly(mode);
+	}
+
+	@ParameterizedTest
+	@CsvSource(delimiter = '|', value = { "Remote: If this position is listed as remote, there may be occasions in person.",
+			"Customer support across remote and onsite channels", "Employment Type: Full-time" })
+	void readsNoLabelFromASegmentThatOnlyMentionsAMode(String text) {
+		assertThat(modesIn(text)).isEmpty();
+	}
+
+	@ParameterizedTest
+	@CsvSource(delimiter = ';', value = {
+			"Hybrid 3 days (office locations are New York City, Denver, and Charlotte); HYBRID",
+			"Hybrid — 3 days onsite; HYBRID", "Remote - United States; REMOTE" })
+	void readsAHeadingNamingTheModeWithAScheduleOrAPlaceAsALabel(String heading, WorkModeEnum mode) {
+		List<Segment> segments = List.of(new Segment(SegmentKindEnum.HEADING, null, heading, false),
+				new Segment(SegmentKindEnum.SENTENCE, heading, "We build payments software.", false));
+		assertThat(this.rule.read("Austin, TX", null, "Engineer", segments).modes()).containsExactly(mode);
+	}
+
+	@ParameterizedTest
+	@CsvSource({ "US Virtual Location", "Working at Home - Pennsylvania" })
+	void readsTheLocationsWordsForWorkingFromHomeAsRemote(String location) {
+		assertThat(read(location, null, "Engineer"))
+			.isEqualTo(new WorkModeReading(Set.of(WorkModeEnum.REMOTE), WorkModeEvidenceEnum.LOCATION));
+	}
+
+	@Test
+	void readsNoModeFromVirtualInATitle() {
+		assertThat(read(null, null, "Virtual Reality Engineer")).isEqualTo(WorkModeReading.NONE);
 	}
 
 	@Test

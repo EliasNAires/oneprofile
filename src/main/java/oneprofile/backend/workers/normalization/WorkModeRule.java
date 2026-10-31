@@ -26,7 +26,8 @@ import org.springframework.stereotype.Component;
  * (docs/title-breakdown-criterion.md, rule 7), one list for both. A field is read by its whole value,
  * because a tenant's own text can name a mode it is not ({@code Office Worker (NOT Remote)}); a value the
  * vocabulary does not hold is no answer. A location that opens with its mode, as Workday writes one, is a
- * label of it: {@code Home - UK- England} is remote, {@code Office - United Kingdom - Edinburgh} onsite.
+ * label of it: {@code Home - UK- England} is remote, {@code Office - United Kingdom - Edinburgh} onsite, and so is a
+ * location named virtual ({@code US Virtual Location}), remote.
  * <p>
  * A text offering a choice of modes keeps every mode it offers, so a filter on any of them finds the vacancy
  * (#98): its options are cut at an {@code or} or a slash with a mode beside it, and at semicolons
@@ -48,10 +49,15 @@ import org.springframework.stereotype.Component;
  * remote software team}, {@code looking for a remote Back End Engineer}); then a short segment offering a choice
  * of modes ({@code United States (Hybrid or Remote)}, {@code Open to remote locations}); then office days short of
  * the week, whoever their subject, unhedged, as a floor for every role covers this one ({@code at least 3 days in
- * office}); then a label of the work mode with its value ({@code Workplace type: Remote}, {@code Telecommuting
- * Options} followed by {@code Onsite}, a mode under a {@code Job Details} or {@code Working Conditions} heading, or a
- * heading naming only the mode); then a LinkedIn tag ({@code #LI-Hybrid}); then a company with no office, which is
- * remote. A list of modes alone ({@code Hybrid / Onsite / Remote}) is read by the schedule after it, and a list of
+ * office}); then onsite stated as what the job requires, every working day or primarily, whoever its subject
+ * ({@code required to work on-site}, {@code 5 days/week in-office}, {@code Majority of tasking is performed on-site});
+ * then a label of the work mode with its value ({@code Workplace type: Remote}, {@code Location: London (Hybrid)},
+ * {@code London / Hybrid}, {@code Telecommuting Options} followed by {@code Onsite}, a mode under a {@code Job Details}
+ * or {@code Working Conditions} heading, or a heading naming only the mode, or the mode with its schedule or place);
+ * then the office the work is in, naming no mode, as onsite ({@code work out of our Chicago office}); then a LinkedIn
+ * tag ({@code #LI-Hybrid}); then a company with no office, which is remote; then a job whose work is travelling to
+ * sites, which is onsite. Modes listed under a heading of what the company offers are a perk, never a choice. A list
+ * of modes alone ({@code Hybrid / Onsite / Remote}) is read by the schedule after it, and a list of
  * every mode with none after it declares nothing. Where the statements of the strongest kind found disagree, it
  * gives none.
  */
@@ -74,18 +80,24 @@ public class WorkModeRule {
 	private static final Set<String> SUBJECTS = Set.of("hybrid cloud", "hybrid infrastructure", "hybrid it",
 			"hybrid deployment", "hybrid deployments", "remote sensing", "remote access", "remote assist");
 
-	/** A location that opens with its mode, as Workday writes one: {@code Home - UK- England}, {@code Office - …}. */
-	private static final Pattern LOCATION_LABEL = Pattern.compile("^\\W*(?:(?<home>home)|office)\\s*-", Pattern.CASE_INSENSITIVE);
+	/**
+	 * A location that opens with its mode, as Workday writes one: {@code Home - UK- England}, {@code Working at Home -
+	 * Pennsylvania}, {@code Office - …}.
+	 */
+	private static final Pattern LOCATION_LABEL = Pattern.compile("^\\W*(?:(?<home>(?:work(?:ing)?\\s+(?:at|from)\\s+)?home)"
+			+ "|office)\\s*-", Pattern.CASE_INSENSITIVE);
+
+	/** A location named virtual, which is remote: {@code US Virtual Location}. */
+	private static final Pattern VIRTUAL_LOCATION = Pattern.compile("\\bvirtual\\s+location\\b", Pattern.CASE_INSENSITIVE);
 
 	/** Up to four days a week, as an option qualifies its mode by them: {@code 3 days a week}, {@code 2X Week}. */
 	private static final Pattern DAYS_A_WEEK = Pattern.compile(
 			"\\b(?:[1-4]|one|two|three|four)\\s*\\+?\\s*(?:x|days?|times)\\b[^.;]{0,30}?\\bweeks?\\b",
 			Pattern.CASE_INSENSITIVE);
 
-	/** Up to four days in the office, with no week named: {@code 4 days in office}. */
-	private static final Pattern OFFICE_DAYS = Pattern.compile(
-			"\\b(?:[1-4]|one|two|three|four)\\s+days?\\s+(?:in|at)\\s+(?:the\\s+|our\\s+|an?\\s+)?office\\b",
-			Pattern.CASE_INSENSITIVE);
+	/** Up to four days in the office, with no week named: {@code 4 days in office}, {@code 3 days onsite}. */
+	private static final Pattern OFFICE_DAYS = Pattern.compile("\\b(?:[1-4]|one|two|three|four)\\s+days?\\s+(?:(?:in|at)\\s+"
+			+ "(?:the\\s+|our\\s+|an?\\s+)?office|on[- ]?site|in[- ]person)\\b", Pattern.CASE_INSENSITIVE);
 
 	/**
 	 * The words that name a work mode in a statement of the description: those of a title or a location, and
@@ -117,9 +129,9 @@ public class WorkModeRule {
 
 	/**
 	 * A mode named only to rule it out, with the modes listed after it: {@code no remote or hybrid option},
-	 * {@code not remote}.
+	 * {@code not remote}, {@code not a remote role}.
 	 */
-	private static final Pattern RULED_OUT = Pattern.compile("\\b(?:no|not|non|never|without)[\\s-]+"
+	private static final Pattern RULED_OUT = Pattern.compile("\\b(?:no|not|non|never|without)[\\s-]+(?:an?\\s+)?"
 			+ "(?:remote(?:ly)?|hybrid|on[- ]?site|in[- ]office)(?:\\s*(?:,|/|or|and|and/or|nor)\\s*"
 			+ "(?:remote(?:ly)?|hybrid|on[- ]?site|in[- ]office))*\\b", Pattern.CASE_INSENSITIVE);
 
@@ -144,7 +156,7 @@ public class WorkModeRule {
 	/** What a description labels a vacancy's work mode by. */
 	private static final String LABEL = "(?:work(?:place|site|ing)?\\s*(?:type|model|arrangement|style|location|mode|"
 			+ "environment|setting|flexibility|options?|pattern|schedule|conditions)|workstyle|"
-			+ "(?:job\\s+)?location(?:\\s+(?:type|details))?|remote\\s+type|"
+			+ "(?:job\\s+)?location(?:\\s+(?:type|details))?|remote\\s+type|employment\\s+type|"
 			+ "telecommut\\w*\\s+options?|position\\s+(?:role\\s+)?type|type\\s+of\\s+work(?:\\s+model)?|"
 			+ "worksite\\s+flexibility|flexible\\s+work(?:ing)?\\s+arrangements?|remote\\s+option\\s+availability)";
 
@@ -156,6 +168,32 @@ public class WorkModeRule {
 	/** A label with its value in one segment: {@code Workplace type: Remote}. */
 	private static final Pattern LABELLED = Pattern.compile("^\\W*" + LABEL + "(?:\\s*/\\s*" + LABEL + ")?\\s*[:\\-–—]\\s*" + MODE_FIRST + "(.+)$",
 			Pattern.CASE_INSENSITIVE);
+
+	/**
+	 * A label whose short value names its mode after a place, up to the next label on its line: {@code Location: London
+	 * (Hybrid) | Practice Area: …}, {@code Logistics / Location: Dayton, OH, In Office}.
+	 */
+	private static final Pattern PLACED_LABEL = Pattern.compile("^\\W*(?:\\p{L}+\\s*/\\s*)?" + LABEL + "(?:\\s*/\\s*" + LABEL
+			+ ")?\\s*[:\\-–—]\\s*([^|]+)", Pattern.CASE_INSENSITIVE);
+
+	/** The most words a label's value naming a place before its mode holds. */
+	private static final int PLACED_VALUE_WORDS = 8;
+
+	/**
+	 * A short segment that is a place or a label, then its mode: {@code London / Hybrid}, {@code Job Location (Hybrid)},
+	 * {@code London, United Kingdom - Hybrid}.
+	 */
+	private static final Pattern PLACE_MODE = Pattern.compile("^\\W*(?<place>(?:[\\p{L}.'’-]+,?\\s+){0,4}?[\\p{L}.'’-]+)"
+			+ "\\s*(?:[/(|]|\\s[-–—])\\s*(?:fully\\s+|100\\s*%\\s*)?(?<mode>remote|hybrid|on[- ]?site|in[- ]office)\\s*\\)?\\W*$",
+			Pattern.CASE_INSENSITIVE);
+
+	/** What a mode's value is where it answers whether the mode applies, not where: {@code Hybrid: No}. */
+	private static final Set<String> NOT_A_PLACE = Set.of("no", "not", "yes", "n", "a", "required", "optional", "available",
+			"none", "possible", "considered");
+
+	/** A short segment that is a mode, then its place: {@code Onsite: Eglin AFB}. */
+	private static final Pattern MODE_PLACE = Pattern.compile("^\\W*(?:fully\\s+|100\\s*%\\s*)?(?<mode>remote|hybrid|"
+			+ "on[- ]?site)\\s*:\\s*(?<place>(?:[\\p{L}.'’-]+,?\\s*){1,4})$", Pattern.CASE_INSENSITIVE);
 
 	/** A label alone, whose value is the next segment: {@code Telecommuting Options}. */
 	private static final Pattern LABEL_ALONE = Pattern.compile("^\\W*" + LABEL + "\\s*[:\\-–—]?\\s*$",
@@ -201,6 +239,13 @@ public class WorkModeRule {
 	private static final Pattern DEPENDING = Pattern.compile("\\bdepending\\s+on\\s+(?:the\\s+|your\\s+)?(?:role|team|"
 			+ "position|business|needs)", Pattern.CASE_INSENSITIVE);
 
+	/** A heading of what the company offers, under which modes listed are a perk: {@code We offer}, {@code Benefits}. */
+	private static final Pattern PERKS = Pattern.compile("^\\W*(?:(?:what\\s+)?we\\s+offer|benefits?|perks?)\\b",
+			Pattern.CASE_INSENSITIVE);
+
+	/** A placeholder of a template, listing modes between brackets: {@code [office/remote/hybrid/field]}. */
+	private static final Pattern PLACEHOLDER = Pattern.compile("\\[[^\\]]*/[^\\]]*\\]");
+
 	/** The heading a vacancy's own labels sit under: {@code Job Details}. */
 	private static final Pattern DETAILS = Pattern.compile("^\\W*(?:(?:job|position|role)\\s+(?:details|information|summary)"
 			+ "|work(?:ing)?\\s+conditions)\\W*$", Pattern.CASE_INSENSITIVE);
@@ -219,6 +264,15 @@ public class WorkModeRule {
 	 */
 	private static final Pattern MODE_HEADING = Pattern.compile("^\\W*(?:[^|]+\\|\\s*)?(?:fully\\s+|100\\s*%\\s*)?"
 			+ "(?:remote|hybrid|on[- ]?site|in[- ]office)\\W*$", Pattern.CASE_INSENSITIVE);
+
+	/**
+	 * A heading that opens with the mode and goes on with its schedule or its place: {@code # Hybrid 3 days (office
+	 * locations are …)}, {@code # Hybrid — 3 days onsite}, {@code # Remote - United States}; never a theme
+	 * ({@code # Remote-first culture}, {@code # Hybrid (and why we love it)}).
+	 */
+	private static final Pattern MODE_HEADING_WITH_DETAILS = Pattern.compile("^\\W*(?:fully\\s+|100\\s*%\\s*)?(?:remote|hybrid|"
+			+ "on[- ]?site|in[- ]office)(?:\\s+[-–—]\\s+|\\s*[:(]\\s*|\\s+)(?:[1-5]\\b|(?:one|two|three|four|five)\\b|(?-i:\\p{Lu}))"
+			+ "(?!.*\\b(?:why|how|what|culture|love)\\b)", Pattern.CASE_INSENSITIVE);
 
 	/** The most words a segment offering a choice holds. */
 	private static final int OFFER_WORDS = 30;
@@ -263,9 +317,81 @@ public class WorkModeRule {
 
 	/**
 	 * What keeps office days from covering this role: a policy for some roles, a recommendation, a negation, a
-	 * condition, a possibility ({@code most roles}, {@code recommended office days}, {@code you will not need}).
+	 * condition, a possibility ({@code most roles}, {@code recommended office days}, {@code you will not need}); never
+	 * {@code unless}, an exception granted case by case ({@code unless there is an approved accommodation}).
 	 */
 	private static final Set<String> SCHEDULE_HEDGES = scheduleHedges();
+
+	/**
+	 * Onsite stated as what the job requires, whoever its subject: {@code required to work on-site}, {@code Ability to
+	 * work onsite}, {@code must work onsite}, {@code will be an on-site role}, {@code requires 100% onsite work}.
+	 */
+	private static final Pattern REQUIRED_ONSITE = Pattern.compile("\\b(?:required|requires?|requirement|must|"
+			+ "need(?:s|ed)?\\s+to|ability|able|willing(?:ness)?|expected|will\\s+be(?:\\s+an?)?)\\s+(?:to\\s+)?(?:be\\s+)?"
+			+ "(?:work(?:ing)?\\s+|report(?:ing)?\\s+)?(?:100\\s*%\\s*|fully\\s+|full[- ]time\\s+)?"
+			+ "(?:on[- ]?site|in[- ]office|in\\s+the\\s+office)\\b", Pattern.CASE_INSENSITIVE);
+
+	/**
+	 * Every working day at the office or a site, whoever its subject: {@code 5 days/week in-office}, {@code full-time
+	 * on-site}, {@code work fully from the office}.
+	 */
+	private static final Pattern EVERY_DAY = Pattern.compile("\\b(?:5|five)\\s*(?:x|days?)\\b(?=[^.;]*?(?:\\boffices?\\b"
+			+ "|\\bon[- ]?site\\b|\\bin[- ]person\\b))|\\b(?:full[- ]time|fully|100\\s*%|entirely)\\s*(?:(?:from|in|at|out\\s+of)"
+			+ "\\s+(?:the|our|an?)\\s+offices?|on[- ]?site|in[- ]office|in[- ]person)\\b", Pattern.CASE_INSENSITIVE);
+
+	/**
+	 * The work primarily at the office or a site, whatever it allows away from it: {@code Primarily based in the
+	 * Innovation Hub … with flexibility to work remotely as required}, {@code Majority of tasking is performed on-site};
+	 * never primarily based in a place, which is where the person lives ({@code primarily based in the US}).
+	 */
+	private static final Pattern PRIMARILY_ONSITE = Pattern.compile("\\b(?:primarily|mainly|mostly|predominantly)\\s+"
+			+ "(?:(?:an?\\s+)?(?:on[- ]?site|in[- ]office|in\\s+the\\s+office|office[- ]based)|based\\s+(?:in|at|out\\s+of)\\s+"
+			+ "(?:the|our|an?)\\s+(?:[\\p{L}.,-]+\\s+){0,3}?(?:office|hub|facility|site|campus|lab|plant|headquarters|hq)\\b)\\b"
+			+ "|\\bmajority\\s+of\\s+(?:the\\s+)?(?:\\p{L}+\\s+){0,2}?(?:is|are|will\\s+be)\\s+(?:performed|done|spent|"
+			+ "conducted|completed)\\s+(?:on[- ]?site|in\\s+the\\s+office|in[- ]office)\\b", Pattern.CASE_INSENSITIVE);
+
+	/**
+	 * A job whose work is travelling to sites, which is onsite: {@code travel on site/test bed for commissioning},
+	 * {@code travels to customer sites for on-site implementations}, {@code to computer sites throughout the County};
+	 * never a visit to a customer ({@code travel to customer sites}), nor travel now and then or for a share of the
+	 * time ({@code some travel}, {@code up to 25%}).
+	 */
+	private static final Pattern SITE_WORK = Pattern.compile("^(?!.*(?:\\d\\s*%|\\bup\\s+to\\b|\\b(?:may|might|could|not|no|"
+			+ "some|limited|minimal|light)\\b)).*?\\btravel(?:s|ling|ing|led)?\\b[^.;]{0,40}?\\b(?:on[- ]?site|(?:customer|client|"
+			+ "computer|field|job|project|work)\\s+sites?\\s+(?:for|throughout|across)\\b)", Pattern.CASE_INSENSITIVE);
+
+	/**
+	 * The office the work is in, which a sentence naming no mode states as onsite: {@code work in our New York office},
+	 * {@code work out of our Chicago office}, {@code join our team at Acme's Sunnyvale office}, {@code hiring a … in our
+	 * Beavercreek Ohio Office}; never an office as the work's surroundings ({@code work in an office environment}), a
+	 * unit of the organisation ({@code the Program Management Office}), or the company's offices ({@code our offices
+	 * worldwide}).
+	 */
+	private static final Pattern WORKS_IN_AN_OFFICE = Pattern.compile("\\b(?:work(?:s|ing)?|join(?:ing)?\\s+(?:our|the)"
+			+ "\\s+(?:[\\p{L}-]+\\s+){0,3}?team|hiring\\b[^.;]{0,120}?)\\s+(?:in|at|out\\s+of|from)\\s+(?:one\\s+of\\s+)?"
+			+ "(?:our|the|[\\p{L}&.-]+['’]s)\\s+(?:[\\p{L}.,-]+\\s+){0,4}?"
+			+ "(?<!\\b(?:front|back|management|program|project|executive|post|home)\\s)office\\b"
+			+ "|\\bwork(?:s|ing)?\\s+(?:in|at|out\\s+of|from)\\s+one\\s+of\\s+our\\s+offices\\b"
+			+ "(?!\\s+(?:environment|setting|hours|equipment|culture|supplies|space)\\b)", Pattern.CASE_INSENSITIVE);
+
+	/**
+	 * What makes an onsite statement a visit, not the job's mode ({@code as needed}, {@code occasionally}), or regular
+	 * days in the office, which are hybrid ({@code in the office regularly}).
+	 */
+	private static final Pattern NOW_AND_THEN = Pattern.compile("\\bas\\s+(?:needed|required|necessary)\\b"
+			+ "|\\bregular(?:ly)?\\b"
+			+ "|\\bwhen\\s+(?:needed|required|necessary)\\b|\\boccasional(?:ly)?\\b|\\bperiodic(?:al(?:ly)?)?\\b"
+			+ "|\\bat\\s+times\\b|\\bsometimes\\b|\\bfrom\\s+time\\s+to\\s+time\\b", Pattern.CASE_INSENSITIVE);
+
+	/**
+	 * An event the person attends, whose days are not the job's schedule or mode: {@code onboarding training},
+	 * {@code team events}, {@code during kickoff}.
+	 */
+	private static final Pattern EVENT = Pattern.compile("\\b(?:events?|training|onboarding|orientation|kick-?off)\\b",
+			Pattern.CASE_INSENSITIVE);
+
+	/** What before an onsite statement keeps it from stating it: a negation, a possibility, a policy for some roles. */
+	private static final Set<String> NOT_REQUIRED = notRequired();
 
 	/** Where one sentence of a segment ends. */
 	private static final Pattern SENTENCE_END = Pattern.compile("[.!?](?=\\s|$)|&#xa;");
@@ -328,6 +454,9 @@ public class WorkModeRule {
 		Matcher label = LOCATION_LABEL.matcher(text);
 		if (label.find()) {
 			return EnumSet.of((label.group("home") != null) ? WorkModeEnum.REMOTE : WorkModeEnum.ONSITE);
+		}
+		if (VIRTUAL_LOCATION.matcher(text).find()) {
+			return EnumSet.of(WorkModeEnum.REMOTE);
 		}
 		return offered(text, WORDS, SUBJECTS);
 	}
@@ -452,34 +581,57 @@ public class WorkModeRule {
 	}
 
 	/**
-	 * The modes a description states for this vacancy: those of its sentences about this role, else of the
-	 * choices it offers, else of its labels, else of its tags; none where the statements of that kind disagree.
+	 * The modes a description states for this vacancy, by the strongest kind of statement it holds: its sentences about
+	 * this role, the choices it offers, its office days, onsite stated as required, its labels, the office the work is in,
+	 * its tags, a company with no office, a job travelling to sites; none where the statements of that kind disagree.
+	 * Onsite stated as required, or as the office the work is in, gives way to a hybrid label or tag, which names the
+	 * office days it leaves out.
 	 */
 	private Set<WorkModeEnum> stated(List<Segment> segments) {
 		List<Set<WorkModeEnum>> sentences = new ArrayList<>();
 		List<Set<WorkModeEnum>> offers = new ArrayList<>();
 		List<Set<WorkModeEnum>> schedules = new ArrayList<>();
+		List<Set<WorkModeEnum>> requirements = new ArrayList<>();
 		List<Set<WorkModeEnum>> labels = new ArrayList<>();
+		List<Set<WorkModeEnum>> offices = new ArrayList<>();
 		List<Set<WorkModeEnum>> tags = new ArrayList<>();
 		List<Set<WorkModeEnum>> policies = new ArrayList<>();
+		List<Set<WorkModeEnum>> sites = new ArrayList<>();
 		for (int i = 0; i < segments.size(); i++) {
-			String text = segments.get(i).text();
+			Segment segment = segments.get(i);
+			String text = segment.text();
 			if (text == null || text.isBlank()) {
 				continue;
 			}
 			Set<WorkModeEnum> said = sentence(text);
 			add(sentences, said);
-			if (said.isEmpty()) {
+			if (said.isEmpty() && (segment.under() == null || !PERKS.matcher(segment.under()).find())) {
 				add(offers, offer(text, segments, i));
 			}
 			add(schedules, scheduled(text));
-			Segment segment = segments.get(i);
+			add(requirements, onsite(text, REQUIRED_ONSITE, EnumSet.of(WorkModeEnum.ONSITE)));
+			add(requirements, onsite(text, EVERY_DAY, EnumSet.of(WorkModeEnum.ONSITE)));
+			add(requirements, primarilyOnsite(text));
+			add(sites, onsite(text, SITE_WORK, EnumSet.of(WorkModeEnum.ONSITE)));
+			add(offices, onsite(text, WORKS_IN_AN_OFFICE, EnumSet.noneOf(WorkModeEnum.class)));
 			Matcher labelled = LABELLED.matcher(text);
+			Matcher placed = PLACED_LABEL.matcher(text);
+			String placedMode = placedMode(text);
 			if (segment.kind() == SegmentKindEnum.HEADING && MODE_HEADING.matcher(text).find()) {
 				add(labels, listed(text.replaceFirst("^[^|]*\\|", ""), segments, i));
 			}
+			else if (segment.kind() == SegmentKindEnum.HEADING && MODE_HEADING_WITH_DETAILS.matcher(text).find()) {
+				add(labels, offered(text, DESCRIPTION_WORDS, DESCRIPTION_SUBJECTS));
+			}
 			else if (labelled.find()) {
 				add(labels, listed(labelled.group(1), segments, i));
+			}
+			else if (placed.find() && placed.group(1).strip().split("\\s+").length <= PLACED_VALUE_WORDS
+					&& !wordsNamedIn(placed.group(1), DESCRIPTION_WORDS, DESCRIPTION_SUBJECTS).isEmpty()) {
+				add(labels, listed(placed.group(1), segments, i));
+			}
+			else if (placedMode != null) {
+				add(labels, offered(placedMode, DESCRIPTION_WORDS, DESCRIPTION_SUBJECTS));
 			}
 			else if (i + 1 < segments.size() && LABEL_ALONE.matcher(text).find()) {
 				String value = segments.get(i + 1).text();
@@ -500,12 +652,33 @@ public class WorkModeRule {
 				add(policies, EnumSet.of(WorkModeEnum.REMOTE));
 			}
 		}
-		for (List<Set<WorkModeEnum>> kind : List.of(sentences, offers, schedules, labels, tags, policies)) {
+		boolean labelledHybrid = labels.contains(EnumSet.of(WorkModeEnum.HYBRID)) || tags.contains(EnumSet.of(WorkModeEnum.HYBRID));
+		for (List<Set<WorkModeEnum>> kind : List.of(sentences, offers, schedules, requirements, labels, offices, tags,
+				policies, sites)) {
+			if ((kind == requirements || kind == offices) && !kind.isEmpty() && labelledHybrid) {
+				return EnumSet.of(WorkModeEnum.HYBRID);
+			}
 			if (!kind.isEmpty()) {
 				return (new HashSet<>(kind).size() == 1) ? kind.getFirst() : EnumSet.noneOf(WorkModeEnum.class);
 			}
 		}
 		return EnumSet.noneOf(WorkModeEnum.class);
+	}
+
+	/**
+	 * The mode a short segment names beside a place or a label ({@code London / Hybrid}, {@code Onsite: Eglin AFB}), or
+	 * null where it is no such segment, or its place is itself a mode ({@code Onsite / Hybrid}) or an answer
+	 * ({@code Hybrid: No}, {@code Onsite: Not required}).
+	 */
+	private String placedMode(String text) {
+		for (Pattern placed : List.of(PLACE_MODE, MODE_PLACE)) {
+			Matcher matcher = placed.matcher(text);
+			if (matcher.find() && wordsNamedIn(matcher.group("place"), DESCRIPTION_WORDS, DESCRIPTION_SUBJECTS).isEmpty()
+					&& List.of(words(matcher.group("place")).split(" ")).stream().noneMatch(NOT_A_PLACE::contains)) {
+				return matcher.group("mode");
+			}
+		}
+		return null;
 	}
 
 	private static void add(List<Set<WorkModeEnum>> statements, Set<WorkModeEnum> modes) {
@@ -522,6 +695,9 @@ public class WorkModeRule {
 	private Set<WorkModeEnum> offer(String text, List<Segment> segments, int at) {
 		if (OPEN_TO_REMOTE.matcher(text).find()) {
 			return EnumSet.of(WorkModeEnum.REMOTE);
+		}
+		if (PLACEHOLDER.matcher(text).find()) {
+			return EnumSet.noneOf(WorkModeEnum.class);
 		}
 		String spaced = spaced(text, DESCRIPTION_SUBJECTS);
 		List<String> words = List.of(spaced.strip().split(" "));
@@ -546,7 +722,8 @@ public class WorkModeRule {
 	/**
 	 * Hybrid where a sentence of a segment names office days short of the week, whoever its subject
 	 * ({@code Visa requires at least 3 days in office}, {@code Monday to Thursday, work onsite}): a floor for every
-	 * role covers this one. Empty where none does, or where a hedge, a negation or a condition qualifies it.
+	 * role covers this one. Empty where none does, where a hedge, a negation or a condition qualifies it, or where the
+	 * days are an event's ({@code 3 days in-person onboarding training}).
 	 */
 	private Set<WorkModeEnum> scheduled(String text) {
 		for (String sentence : SENTENCE_END.split(text)) {
@@ -554,11 +731,54 @@ public class WorkModeRule {
 					|| partOfTheWeek(sentence);
 			boolean office = OFFICE.matcher(spaced(sentence, DESCRIPTION_SUBJECTS)).find()
 					|| !wordsNamedIn(sentence, DESCRIPTION_WORDS, DESCRIPTION_SUBJECTS).isEmpty();
-			if (days && office && List.of(words(sentence).split(" ")).stream().noneMatch(SCHEDULE_HEDGES::contains)) {
+			if (days && office && !EVENT.matcher(sentence).find() && List.of(words(sentence).split(" ")).stream().noneMatch(SCHEDULE_HEDGES::contains)) {
 				return EnumSet.of(WorkModeEnum.HYBRID);
 			}
 		}
 		return EnumSet.noneOf(WorkModeEnum.class);
+	}
+
+	/**
+	 * Onsite where a sentence of a segment states it by this pattern, whoever its subject: as what the job requires
+	 * ({@code The selected candidate will be required to work on-site}) or as the office the work is in. The sentence
+	 * names no mode but those it may name and no schedule, which the steps before read, and no negation or possibility
+	 * comes before the statement, nor a visit now and then anywhere in it ({@code as needed}).
+	 * @param named the modes the sentence's words may name
+	 */
+	private Set<WorkModeEnum> onsite(String text, Pattern statement, Set<WorkModeEnum> named) {
+		for (String sentence : SENTENCE_END.split(text)) {
+			sentence = RULED_OUT.matcher(sentence).replaceAll(" ");
+			Matcher stated = statement.matcher(sentence);
+			if (!stated.find() || SCHEDULE.matcher(sentence).find() || DAYS_A_WEEK.matcher(sentence).find()
+					|| NOW_AND_THEN.matcher(sentence).find() || EVENT.matcher(sentence).find()
+					|| !named.containsAll(wordsNamedIn(sentence, DESCRIPTION_WORDS, DESCRIPTION_SUBJECTS))) {
+				continue;
+			}
+			if (unqualified(sentence, stated)) {
+				return EnumSet.of(WorkModeEnum.ONSITE);
+			}
+		}
+		return EnumSet.noneOf(WorkModeEnum.class);
+	}
+
+	/**
+	 * Onsite where a sentence of a segment states the work as primarily at the office or a site, whatever it allows away
+	 * from it, with no negation or possibility before it.
+	 */
+	private Set<WorkModeEnum> primarilyOnsite(String text) {
+		for (String sentence : SENTENCE_END.split(text)) {
+			Matcher stated = PRIMARILY_ONSITE.matcher(sentence);
+			if (stated.find() && !SCHEDULE.matcher(sentence).find() && !DAYS_A_WEEK.matcher(sentence).find()
+					&& unqualified(sentence, stated)) {
+				return EnumSet.of(WorkModeEnum.ONSITE);
+			}
+		}
+		return EnumSet.noneOf(WorkModeEnum.class);
+	}
+
+	/** Whether no negation, possibility or policy for some roles comes before a statement in its sentence. */
+	private boolean unqualified(String sentence, MatchResult statement) {
+		return List.of(words(sentence.substring(0, statement.start())).split(" ")).stream().noneMatch(NOT_REQUIRED::contains);
 	}
 
 	/**
@@ -680,10 +900,17 @@ public class WorkModeRule {
 		return Set.copyOf(words);
 	}
 
+	private static Set<String> notRequired() {
+		Set<String> words = new HashSet<>(NEGATIONS);
+		words.addAll(Set.of("may", "might", "could", "most", "some", "many", "certain", "select"));
+		return Set.copyOf(words);
+	}
+
 	private static Set<String> scheduleHedges() {
 		Set<String> words = new HashSet<>(NOT_STATED);
 		words.addAll(Set.of("most", "some", "many", "certain", "select", "recommended", "encouraged", "optional",
 				"depending"));
+		words.remove("unless");
 		return Set.copyOf(words);
 	}
 
