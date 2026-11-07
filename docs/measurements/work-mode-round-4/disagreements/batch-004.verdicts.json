@@ -1,0 +1,22 @@
+{
+  "332184": {"verdict": "a", "clause": "3. The most specific statement about this job decides", "pattern": "explicit remote role arrangement"},
+  "335652": {"verdict": "a", "clause": "1. This vacancy, not the company: A company's statement of how its people work", "pattern": "unhedged company remote arrangement"},
+  "344020": {"verdict": "a", "clause": "1. This vacancy, not the company: A company's statement of how its people work", "pattern": "unhedged company hybrid schedule"},
+  "348062": {"verdict": "b", "clause": "5. A choice of modes is a choice: Offered, not excepted", "pattern": "telecommuting permitted for role"},
+  "350938": {"verdict": "b", "clause": "2. A word naming what the work is about is not a mode", "pattern": "collaboration across distributed teams"},
+  "438869": {"verdict": "neither", "clause": "1. This vacancy, not the company: Modes listed as a perk or a flexibility", "pattern": "mode offered as benefit"},
+  "453204": {"verdict": "a", "clause": "3. The most specific statement about this job decides", "pattern": "explicit remote role arrangement"},
+  "467355": {"verdict": "b", "clause": "Hybrid: Office on some days of the week and away on the rest", "pattern": "four regular office days"},
+  "478259": {"verdict": "a", "clause": "2. A word naming what the work is about is not a mode", "pattern": "collaboration across distributed teams"},
+  "486953": {"verdict": "a", "clause": "1. This vacancy, not the company: A floor covers every role", "pattern": "company minimum office schedule"},
+  "512388": {"verdict": "b", "clause": "Onsite: The work is done at the employer's or a client's site on every working day", "pattern": "five required office days"},
+  "547060": {"verdict": "a", "clause": "3. An office this role is based in", "pattern": "role located in office"},
+  "570287": {"verdict": "a", "clause": "Onsite: one whose own work is done at its users' or customers' site", "pattern": "dedicated work at customer site"},
+  "582792": {"verdict": "a", "clause": "2. A word naming what the work is about is not a mode: one whose own work it is makes the job onsite", "pattern": "dedicated support at user site"},
+  "643460": {"verdict": "b", "clause": "3. The most specific statement about this job decides", "pattern": "explicit remote role arrangement"},
+  "651599": {"verdict": "a", "clause": "3. The most specific statement about this job decides: a value under a job-details heading", "pattern": "hybrid job details label"},
+  "670888": {"verdict": "b", "clause": "6. None where nothing read declares a mode for this job", "pattern": "assigned workspace without attendance"},
+  "672442": {"verdict": "a", "clause": "3. The most specific statement about this job decides", "pattern": "explicit remote role arrangement"},
+  "694426": {"verdict": "a", "clause": "Onsite: The work is done at the employer's or a client's site", "pattern": "location names client site"},
+  "701669": {"verdict": "b", "clause": "1. This vacancy, not the company: A company's statement of how its people work", "pattern": "unhedged company hybrid arrangement"}
+}

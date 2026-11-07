@@ -1,0 +1,15 @@
+{
+  "1308815": {"verdict": "a", "clause": "An office this role is based in", "pattern": "role located in named office"},
+  "1325319": {"verdict": "a", "clause": "An office this role is based in", "pattern": "role located in named office"},
+  "1365570": {"verdict": "b", "clause": "Offered, not excepted", "pattern": "onsite with discretionary hybrid exception"},
+  "1371060": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "explicit mandatory onsite work setup"},
+  "1398036": {"verdict": "b", "clause": "This vacancy, not the company", "pattern": "unhedged company hybrid work model"},
+  "1400622": {"verdict": "a", "clause": "This vacancy, not the company", "pattern": "unhedged company hybrid work model"},
+  "1427724": {"verdict": "a", "clause": "Onsite", "pattern": "role explicitly performs work onsite"},
+  "1464940": {"verdict": "a", "clause": "Hybrid", "pattern": "required weekly office attendance floor"},
+  "1465738": {"verdict": "a", "clause": "Onsite", "pattern": "remote work only infrequently allowed"},
+  "1484829": {"verdict": "a", "clause": "Ruled out is not offered", "pattern": "only excludes remote and hybrid"},
+  "1501718": {"verdict": "a", "clause": "This vacancy, not the company", "pattern": "workplace left to employee choice"},
+  "1524684": {"verdict": "b", "clause": "An office this role is based in", "pattern": "role located in named office"},
+  "1531873": {"verdict": "a", "clause": "This vacancy, not the company", "pattern": "company modes vary by role"}
+}

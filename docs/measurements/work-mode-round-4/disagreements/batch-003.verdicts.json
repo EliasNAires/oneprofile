@@ -1,0 +1,22 @@
+{
+  "199268": {"verdict": "b", "clause": "Onsite", "pattern": "five days in office"},
+  "202259": {"verdict": "b", "clause": "Onsite", "pattern": "own work at site"},
+  "205752": {"verdict": "b", "clause": "This vacancy, not the company", "pattern": "unhedged company hybrid model"},
+  "206303": {"verdict": "b", "clause": "Remote", "pattern": "explicit remote role arrangement"},
+  "206515": {"verdict": "a", "clause": "This vacancy, not the company", "pattern": "required count with chosen days"},
+  "207943": {"verdict": "neither", "clause": "A mode word with a schedule is read with its schedule", "pattern": "onsite only as needed"},
+  "209976": {"verdict": "a", "clause": "Onsite", "pattern": "full time in office"},
+  "238407": {"verdict": "a", "clause": "This vacancy, not the company", "pattern": "unhedged company hybrid model"},
+  "259291": {"verdict": "a", "clause": "Onsite", "pattern": "five days in office"},
+  "270315": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "explicit hybrid role arrangement"},
+  "277626": {"verdict": "a", "clause": "Onsite", "pattern": "own work at site"},
+  "279727": {"verdict": "b", "clause": "This vacancy, not the company", "pattern": "unhedged company remote arrangement"},
+  "287807": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "remote job details label"},
+  "287835": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "remote job details label"},
+  "290723": {"verdict": "b", "clause": "An office this role is based in", "pattern": "role based in office"},
+  "292251": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "specific office schedule decides"},
+  "297208": {"verdict": "a", "clause": "Remote", "pattern": "explicit remote role arrangement"},
+  "302665": {"verdict": "b", "clause": "This vacancy, not the company", "pattern": "unhedged company hybrid model"},
+  "310501": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "explicit hybrid role arrangement"},
+  "312367": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "multiple modes offered upfront"}
+}

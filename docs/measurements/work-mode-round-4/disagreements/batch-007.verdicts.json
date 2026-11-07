@@ -1,0 +1,22 @@
+{
+  "1130403": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "role explicitly offers hybrid work"},
+  "1166916": {"verdict": "b", "clause": "Onsite", "pattern": "client site in vacancy location"},
+  "1166918": {"verdict": "a", "clause": "Onsite", "pattern": "client site in vacancy location"},
+  "1169896": {"verdict": "a", "clause": "This vacancy, not the company", "pattern": "unhedged company offers multiple modes"},
+  "1187594": {"verdict": "b", "clause": "This vacancy, not the company: Modes listed as a perk or a flexibility", "pattern": "remote flexibility listed as benefit"},
+  "1189769": {"verdict": "b", "clause": "Ruled out is not offered", "pattern": "onsite with other modes excluded"},
+  "1191117": {"verdict": "a", "clause": "Ruled out is not offered", "pattern": "onsite with other modes excluded"},
+  "1191207": {"verdict": "b", "clause": "Onsite", "pattern": "daily onsite attendance explicitly required"},
+  "1193720": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "explicit work location assignment label"},
+  "1196897": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "role arrangement outweighs company statement"},
+  "1197072": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "role arrangement outweighs company statement"},
+  "1206017": {"verdict": "b", "clause": "This vacancy, not the company: A statement about the team this role joins", "pattern": "role works within onsite team"},
+  "1215546": {"verdict": "b", "clause": "The most specific statement about this job decides: a heading that names only the mode", "pattern": "standalone heading names remote work"},
+  "1236770": {"verdict": "a", "clause": "An office this role is based in", "pattern": "role based in named office"},
+  "1239737": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "role explicitly offers hybrid work"},
+  "1244008": {"verdict": "a", "clause": "This vacancy, not the company: The same hedges hold for this role's own statement", "pattern": "site work with conditional flexibility"},
+  "1255713": {"verdict": "a", "clause": "This vacancy, not the company: A company's statement of how its people work", "pattern": "unhedged company hybrid work model"},
+  "1257152": {"verdict": "b", "clause": "This vacancy, not the company: A company's statement of how its people work", "pattern": "unhedged company hybrid work model"},
+  "1258515": {"verdict": "b", "clause": "A word naming what the work is about is not a mode", "pattern": "onsite describes projects being led"},
+  "1269895": {"verdict": "a", "clause": "An office this role is based in", "pattern": "role based in named office"}
+}

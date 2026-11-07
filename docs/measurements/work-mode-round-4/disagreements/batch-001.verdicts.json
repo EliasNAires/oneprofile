@@ -1,0 +1,22 @@
+{
+  "10927": {"verdict": "b", "clause": "What a work mode is — Remote", "pattern": "role explicitly works remotely"},
+  "12911": {"verdict": "a", "clause": "This vacancy, not the company — A floor covers every role", "pattern": "company minimum office attendance"},
+  "13185": {"verdict": "b", "clause": "This vacancy, not the company — A floor covers every role", "pattern": "company minimum office attendance"},
+  "13952": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "office or remote offered"},
+  "29297": {"verdict": "a", "clause": "This vacancy, not the company — A statement does not count where it is hedged", "pattern": "geographically limited company arrangement"},
+  "29531": {"verdict": "b", "clause": "This vacancy, not the company — Modes listed as a perk or a flexibility", "pattern": "mode listed as perk"},
+  "30007": {"verdict": "a", "clause": "What a work mode is — Onsite", "pattern": "role explicitly at site"},
+  "30036": {"verdict": "b", "clause": "What a work mode is — Onsite", "pattern": "own work is onsite support"},
+  "30191": {"verdict": "b", "clause": "What a work mode is — Onsite", "pattern": "role explicitly at site"},
+  "40322": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "bare onsite job label"},
+  "57089": {"verdict": "b", "clause": "What a work mode is — Remote", "pattern": "role explicitly works remotely"},
+  "64049": {"verdict": "a", "clause": "What a work mode is — Onsite", "pattern": "role explicitly at site"},
+  "64667": {"verdict": "a", "clause": "This vacancy, not the company — Modes listed as a perk or a flexibility", "pattern": "mode listed as perk"},
+  "67848": {"verdict": "b", "clause": "This vacancy, not the company — A statement about the team this role joins", "pattern": "role joins remote team"},
+  "67926": {"verdict": "a", "clause": "This vacancy, not the company — A company's statement of how its people work", "pattern": "all roles explicitly remote"},
+  "77880": {"verdict": "a", "clause": "What a work mode is — Onsite", "pattern": "role explicitly at site"},
+  "81608": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "explicit role arrangement overrides boilerplate"},
+  "81687": {"verdict": "b", "clause": "What a work mode is — Onsite", "pattern": "own work visits sites"},
+  "100897": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "explicit hybrid role arrangement"},
+  "100998": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule — A mode that changes on a set plan", "pattern": "onsite onboarding then hybrid"}
+}

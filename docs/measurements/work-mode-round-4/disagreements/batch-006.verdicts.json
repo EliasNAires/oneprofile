@@ -1,0 +1,22 @@
+{
+  "937056": {"verdict": "b", "clause": "An office this role is based in", "pattern": "role based in named office"},
+  "942360": {"verdict": "a", "clause": "This vacancy, not the company", "pattern": "unhedged hybrid work model"},
+  "943953": {"verdict": "b", "clause": "Hybrid", "pattern": "agreed office and home work"},
+  "952679": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "remote job location label"},
+  "968839": {"verdict": "b", "clause": "Onsite", "pattern": "office stated as work location"},
+  "968930": {"verdict": "a", "clause": "An office this role is based in", "pattern": "role based in named office"},
+  "972250": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "remote job details label"},
+  "994845": {"verdict": "a", "clause": "Hybrid", "pattern": "specified share working from home"},
+  "1007217": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "explicit onsite role statement"},
+  "1017395": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "onsite job location label"},
+  "1019331": {"verdict": "b", "clause": "This vacancy, not the company: Modes listed as a perk or a flexibility", "pattern": "hybrid offered as flexible perk"},
+  "1020642": {"verdict": "b", "clause": "An office this role is based in", "pattern": "office base beside hybrid statement"},
+  "1023982": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "onsite job details label"},
+  "1042501": {"verdict": "b", "clause": "Hybrid", "pattern": "required minimum weekly office days"},
+  "1044956": {"verdict": "b", "clause": "An office this role is based in", "pattern": "role based in named office"},
+  "1065764": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "portion of work in person"},
+  "1066550": {"verdict": "a", "clause": "Onsite", "pattern": "own work provides onsite support"},
+  "1084945": {"verdict": "b", "clause": "This vacancy, not the company", "pattern": "optional collaboration and hedged schedule"},
+  "1086286": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "hybrid with specified home days"},
+  "1101914": {"verdict": "a", "clause": "None", "pattern": "telecommuting permission without work arrangement"}
+}

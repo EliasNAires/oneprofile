@@ -1,0 +1,51 @@
+id	mode	reason
+1128988	none	Remote names a product
+1144559	none	No work arrangement declared
+942360	hybrid	Hybrid model with office and remote days
+571942	none	Conditional work model template
+1308815	onsite	Role works out of Dublin office
+340184	none	Modes offered as location flexibility
+1503649	none	Home office benefit only
+1239737	hybrid	Explicit role hybrid model
+292251	hybrid	Specific regular onsite schedule
+1465738	onsite	Remote work only infrequently
+1467614	hybrid	Company minimum three onsite days
+163920	onsite	Own work provides onsite installation support
+1257152	hybrid	Unhedged company hybrid model
+1360763	none	Hybrid names technical environments
+286912	remote	Explicit remote role
+952679	remote	Remote location label
+1484829	onsite	Role excludes remote and hybrid
+512388	onsite	Five office days required
+473471	onsite	Role based in named office
+205968	remote	Standalone remote role heading
+350970	none	Travel qualification declares no arrangement
+206059	none	Remote-first culture and benefits only
+1358151	none	Hybrid culture only
+287835	remote	Explicit mode label
+209436	remote	All staff work fully distributed
+674894	none	Onsite restaurant benefit only
+1042501	hybrid	Minimum three presence days
+1347283	remote	Recruiting tag decides
+573316	none	Conditional work model template
+183184	hybrid	Company hybrid working model
+310501	hybrid	Explicit hybrid schedule
+70577	none	Office names software
+1350031	onsite	Explicit primarily onsite position
+312367	remote,hybrid,onsite	All three modes offered upfront
+1179220	none	Physical demands declare no arrangement
+1329958	none	Ability requirement declares no arrangement
+919280	none	Culture and hedged flexibility only
+162049	none	Company office location only
+636915	none	Office names organizational function
+182178	onsite	Explicit onsite work model
+1524684	onsite	Job location names home office
+908026	none	Hybrid names AI technology
+57089	remote	Role works remotely with teams
+438869	hybrid	Hybrid remote and office environment
+39648	none	Remote describes product functionality
+1242334	none	Office names organizational group
+1003940	none	Interview format only
+1258515	onsite	Own work leads onsite implementations
+37880	none	Remote interviews only
+1023982	onsite	Explicit onsite job type

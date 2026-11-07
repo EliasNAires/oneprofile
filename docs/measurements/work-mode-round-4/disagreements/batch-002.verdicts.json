@@ -1,0 +1,22 @@
+{
+  "106692": {"verdict": "a", "clause": "Remote", "pattern": "remote with geographic restriction"},
+  "106942": {"verdict": "a", "clause": "5. A choice of modes is a choice", "pattern": "multiple modes in job details"},
+  "114656": {"verdict": "b", "clause": "4. A mode word with a schedule is read with its schedule", "pattern": "remote start then office work"},
+  "129838": {"verdict": "a", "clause": "3. The most specific statement about this job decides", "pattern": "mode in job details"},
+  "135988": {"verdict": "a", "clause": "Hybrid", "pattern": "regular days at client sites"},
+  "144070": {"verdict": "b", "clause": "2. A word naming what the work is about is not a mode", "pattern": "hybrid duties explicit onsite requirement"},
+  "144071": {"verdict": "a", "clause": "2. A word naming what the work is about is not a mode", "pattern": "hybrid duties explicit onsite requirement"},
+  "155516": {"verdict": "a", "clause": "3. The most specific statement about this job decides", "pattern": "role uses hybrid working environment"},
+  "155519": {"verdict": "b", "clause": "3. The most specific statement about this job decides", "pattern": "role uses hybrid working environment"},
+  "163856": {"verdict": "a", "clause": "1. This vacancy, not the company", "pattern": "remote work within role responsibilities"},
+  "163920": {"verdict": "b", "clause": "Onsite", "pattern": "own work at customer sites"},
+  "171756": {"verdict": "a", "clause": "Remote", "pattern": "remote candidates expressly accepted"},
+  "172289": {"verdict": "a", "clause": "3. The most specific statement about this job decides", "pattern": "explicit hybrid role arrangement"},
+  "172409": {"verdict": "b", "clause": "3. The most specific statement about this job decides", "pattern": "explicit hybrid role arrangement"},
+  "176998": {"verdict": "b", "clause": "3. The most specific statement about this job decides", "pattern": "mode in job details"},
+  "177952": {"verdict": "a", "clause": "3. The most specific statement about this job decides", "pattern": "mode in job details"},
+  "180257": {"verdict": "a", "clause": "2. A word naming what the work is about is not a mode", "pattern": "hybrid duties explicit onsite requirement"},
+  "182178": {"verdict": "a", "clause": "3. The most specific statement about this job decides", "pattern": "mode in job details"},
+  "182180": {"verdict": "b", "clause": "3. The most specific statement about this job decides", "pattern": "mode in job details"},
+  "183184": {"verdict": "b", "clause": "1. This vacancy, not the company", "pattern": "hybrid model offered as flexibility"}
+}

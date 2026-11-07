@@ -1,0 +1,22 @@
+{
+  "701675": {"verdict": "b", "clause": "This vacancy, not the company: A company's statement of how its people work, its model or its schedule, stated without a hedge, covers every role", "pattern": "unhedged company hybrid workplace"},
+  "723573": {"verdict": "a", "clause": "An office this role is based in", "pattern": "role based in office"},
+  "732866": {"verdict": "b", "clause": "Onsite: The work is done at the employer's or a client's site on every working day", "pattern": "explicit full time onsite"},
+  "732873": {"verdict": "a", "clause": "Onsite: with remote days only now and then", "pattern": "onsite with minimal remote"},
+  "734069": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "four onsite days weekly"},
+  "748231": {"verdict": "b", "clause": "An office this role is based in", "pattern": "role based in office"},
+  "748273": {"verdict": "b", "clause": "An office this role is based in", "pattern": "role based in office"},
+  "749457": {"verdict": "a", "clause": "This vacancy, not the company: A floor covers every role even where some groups may ask for more", "pattern": "company minimum office attendance"},
+  "765427": {"verdict": "a", "clause": "Hybrid: Part of the work is done in an office on a regular schedule, and part away from it", "pattern": "explicit weekly hybrid schedule"},
+  "766913": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "in person cohort setting"},
+  "769645": {"verdict": "b", "clause": "This vacancy, not the company: A statement about the team this role joins is about this vacancy", "pattern": "current team hybrid arrangement"},
+  "785511": {"verdict": "a", "clause": "None where nothing read declares a mode for this job", "pattern": "limited duty requires presence"},
+  "792604": {"verdict": "a", "clause": "The most specific statement about this job decides: A label in the location", "pattern": "virtual office location label"},
+  "797363": {"verdict": "a", "clause": "Onsite: The work is done at the employer's or a client's site on every working day", "pattern": "explicit full time onsite"},
+  "817049": {"verdict": "b", "clause": "Hybrid: Part of the work is done in an office on a regular schedule, and part away from it", "pattern": "explicit weekly hybrid schedule"},
+  "829567": {"verdict": "a", "clause": "A word naming what the work is about is not a mode: the physical surroundings of the work", "pattern": "physical setting and benefits"},
+  "833234": {"verdict": "a", "clause": "The most specific statement about this job decides: A recruiting tag in the description is a label of this vacancy", "pattern": "remote recruiting tag label"},
+  "836730": {"verdict": "a", "clause": "A word naming what the work is about is not a mode: channels the work covers", "pattern": "project modes as capabilities"},
+  "903533": {"verdict": "b", "clause": "An office this role is based in", "pattern": "role based in office"},
+  "937055": {"verdict": "a", "clause": "This vacancy, not the company: A company's statement of how its people work, its model or its schedule, stated without a hedge, covers every role", "pattern": "unhedged company hybrid workplace"}
+}

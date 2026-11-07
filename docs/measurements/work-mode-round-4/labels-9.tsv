@@ -1,0 +1,51 @@
+id	mode	reason
+1325319	onsite	Rule 3 office location
+144071	onsite	Explicit onsite; other modes excluded
+162125	none	Rule 1 benefits only
+332184	remote	Explicit fully remote role
+176998	remote	Rule 3 working arrangement
+807323	none	Rule 1 hedged company culture
+1230808	none	No mode declared
+207943	remote,hybrid	Rule 5 local hybrid or remote
+920002	none	Rule 1 hedged company culture
+809124	onsite	Rule 3 role works from office
+254944	none	Rule 3 city without office
+1167112	remote	Explicit remote role
+1166916	onsite	Client site location
+1140552	none	Rule 2 equipment location only
+277861	none	Company offices and interview references
+933986	remote,onsite	Rule 5 office or remote work
+1151383	none	Rule 1 company office description
+112627	none	Future role and office perks
+1403646	none	Rule 2 environmental conditions
+1039108	none	Rule 2 infrastructure and access
+643460	remote	Explicit fully remote position
+765427	hybrid	Rule 4 three office days
+12911	hybrid	Rule 1 universal office floor
+582792	onsite	Own work includes deskside support
+344020	hybrid	Rule 4 weekly office schedule
+64667	none	Rule 1 mode listed as perk
+1176605	none	Rule 2 physical surroundings
+162062	none	Rule 1 benefits only
+506493	none	Onboarding only; no ongoing mode
+249358	none	Rule 1 office perks only
+989739	remote	Rule 3 standalone mode heading
+820887	none	Rule 2 hybrid infrastructure
+796810	none	Past experience; no role arrangement
+573319	none	Rule 5 conditional mode template
+484901	none	Rule 2 hybrid infrastructure
+187718	remote	Rule 1 fully remote team
+59589	none	Rule 1 flexibility perk
+957734	remote	Rule 3 description location label
+1371429	none	Rule 2 hybrid connectivity
+1501662	none	Conditional internet requirement only
+105792	none	Rule 1 workplace flexibility
+547060	onsite	Rule 3 position in office
+706414	none	Rule 2 software name
+326567	unclear	Rule 6 conflicting recruiting tags
+572057	none	Rule 5 conditional mode template
+310316	hybrid	Rule 4 two office days
+571669	none	Rule 5 conditional mode template
+1187594	hybrid	Rule 4 up to two remote days
+734362	none	Rule 2 physical surroundings
+1400622	hybrid	Rule 1 company hybrid model

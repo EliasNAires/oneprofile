@@ -1,0 +1,122 @@
+[
+ {
+  "id": "1130403",
+  "text": "company: 100 The Nebraska Medical Center\ntitle: Sr Integration Engineer\nlocation: Omaha, NE\nfield: -\ndescription:\n[under: Details: Sr Integration Engineer] - Monday Friday; first shift. This role has the opportunity to work from home in a hybrid capacity, but not fully remote",
+  "a": "remote",
+  "b": "hybrid"
+ },
+ {
+  "id": "1166916",
+  "text": "company: NTT India Private Limited\ntitle: Storage Solutions specialist L2–L5\nlocation: NLD, Client Site\nfield: -\ndescription:\n[under: Third parties fraudulently posing as NTT DATA recruiters] Please remain vigilant of third parties who may attempt to impersonate NTT DATA recruiters whether in writing or by phone in order to deceptively obtain personal data or money from you.",
+  "a": "none",
+  "b": "onsite"
+ },
+ {
+  "id": "1166918",
+  "text": "company: NTT India Private Limited\ntitle: PostgreSQL specialist L2–L5\nlocation: NLD, Client Site\nfield: -\ndescription:\n[under: Third parties fraudulently posing as NTT DATA recruiters] Please remain vigilant of third parties who may attempt to impersonate NTT DATA recruiters whether in writing or by phone in order to deceptively obtain personal data or money from you.",
+  "a": "onsite",
+  "b": "none"
+ },
+ {
+  "id": "1169896",
+  "text": "company: Open SAS\ntitle: Développeur C# / .Net H/F\nlocation: Levallois-Perret\nfield: -\ndescription:\nNous travaillons en direct chez nos clients Grands Comptes, dans leurs locaux, au sein de notre centre de services, ou en télétravail.\n[under: Nous renforçons nos équipes !] Intégré(e) au sein d’une équipe travaillant pour le Front-Office, Middle-office, Back-office, vous interviendrez plus particulièrement sur des missions de :\n[under: Nous renforçons nos équipes !] - Développer des outils d’aide à la décision pour le Front Office (traders, sales et structureurs).",
+  "a": "remote,onsite",
+  "b": "none"
+ },
+ {
+  "id": "1187594",
+  "text": "company: Pernod Ricard SA\ntitle: Solution Architect - Agentic AI\nlocation: Paris\nfield: -\ndescription:\n[under: Wait, there’s more…] We offer you an outstanding and collaborative workplace that embodies our sharing & conviviality culture, the possibility to work remotely (up to 2 days a week), a very complete mutual insurance, an attractive compensation including profit‑sharing, continuous learning opportunities, employee events, and more.",
+  "a": "hybrid",
+  "b": "none"
+ },
+ {
+  "id": "1189769",
+  "text": "company: 0090 CORP-Corporate Office\ntitle: Software Engineer/Principal Software Engineer - Java\nlocation: United States-California-San Diego\nfield: -\ndescription:\n[under: Description] Northrop Grumman Aeronautics Systems is looking to add a Software Engineer - Java or Principal Software Engineer - Java to join our team on site in San Diego, CA or El Segundo, CA.\n[under: Roles and Responsibilities will include] The selected candidate will be required to work full-time, on-site at our facility.\n[under: Roles and Responsibilities will include] There is no remote / hybrid / telework available for this position.",
+  "a": "none",
+  "b": "onsite"
+ },
+ {
+  "id": "1191117",
+  "text": "company: 0090 CORP-Corporate Office\ntitle: Staff Software Engineer - MOSA SME\nlocation: United States-Florida-Melbourne\nfield: -\ndescription:\n[under: Description] This position will support a 9/80 schedule and is based in Melbourne, FL and will be primarily based on site within our office spaces to support the program and business needs.\n[under: Description] The position does not have remote or Hybrid work available.",
+  "a": "onsite",
+  "b": "remote,hybrid"
+ },
+ {
+  "id": "1191207",
+  "text": "company: 0090 CORP-Corporate Office\ntitle: Principal / Sr Principal Embedded Software Engineer\nlocation: United States-Georgia-Warner Robins\nfield: -\ndescription:\n[under: Description] This is a full-time salaried position in Warner Robins, GA and requires that you work on-site daily.",
+  "a": "none",
+  "b": "onsite"
+ },
+ {
+  "id": "1193720",
+  "text": "company: 140 Pfizer Inc\ntitle: Senior Digital Forensic Analyst\nlocation: Greece-Thessaloniki Chortiatis\nfield: -\ndescription:\n[under: ROLE SUMMARY] Our Global Cyber Defense team is responsible for safeguarding Pfizer's digital assets and infrastructure through proactive threat detection, incident response, and risk mitigation across on-premises, cloud, and hybrid environments.\n[under: BASIC QUALIFICATIONS] - Experience using physical, local, and remote acquisition tools across multiple OS systems.\n[under: BASIC QUALIFICATIONS] Work Location Assignment: Hybrid",
+  "a": "hybrid",
+  "b": "none"
+ },
+ {
+  "id": "1196897",
+  "text": "company: Palo Alto Networks, Inc.\ntitle: Sr. Director Field Technology Office and Advisory, Senior Director\nlocation: Chicago, United States of America\nfield: -\ndescription:\n[under: Who We Are] This role is remote, but distance is no barrier to impact.\n[under: Who We Are] Our hybrid teams collaborate across geographies to solve big problems, stay close to our customers, and grow together.\n[under: Job Summary] As a Senior Director in the Identity Field Technology office, you will lead our global Technical Sales strategy for Palo Alto Networks’ identity solutions.",
+  "a": "remote",
+  "b": "none"
+ },
+ {
+  "id": "1197072",
+  "text": "company: Palo Alto Networks, Inc.\ntitle: Principal Engineer Software - Developer Experience, Backend (Chronosphere)\nlocation: New York City, United States of America\nfield: -\ndescription:\n[under: Who We Are] This role is remote, but distance is no barrier to impact.\n[under: Who We Are] Our hybrid teams collaborate across geographies to solve big problems, stay close to our customers, and grow together.\n[under: You have] - An ability to operate effectively in a remote first environment\n[under: You have] Location: US - Remote\n[under: You have] LI-Remote",
+  "a": "none",
+  "b": "remote"
+ },
+ {
+  "id": "1206017",
+  "text": "company: NL9A NL Best Industrial\ntitle: Intern Data Scientist\nlocation: Taipei\nfield: -\ndescription:\n[under: Job Responsibilities] - Contributes to activities within the on-site engineer team, providing the whole deployment plan and pipelines.",
+  "a": "none",
+  "b": "onsite"
+ },
+ {
+  "id": "1215546",
+  "text": "company: LE001 Prometeia SpA\ntitle: Information Security Architect\nlocation: Bologna\nfield: -\ndescription:\n# REMOTE WORKING\n[under: TRAINING] We provide an average of 11 days of training per year to our people, in person and online.\n[under: PHYGITAL MANAGEMENT] Access to the office, smart working, workstations, meeting rooms, car pooling... everything is just a click away.",
+  "a": "none",
+  "b": "remote"
+ },
+ {
+  "id": "1236770",
+  "text": "company: Razer (Asia-Pacific) Pte. Ltd\ntitle: Senior AI Engineer (Applied)\nlocation: Singapore\nfield: -\ndescription:\n[under: Essential Duties and Responsibilities] - Lead technical exploration and market scanning of emerging AI, GenAI, and agentic tools, providing data-backed recommendations on build vs partner vs hybrid approaches\n[under: Travel Requirements] - Role based in Singapore office, with occasional travel (up to 1 trip per year) for conferences, research collaborations, or business meetings.",
+  "a": "onsite",
+  "b": "none"
+ },
+ {
+  "id": "1239737",
+  "text": "company: Regal-Beloit Asia Pte. Ltd.\ntitle: IT ERP Product Analyst III\nlocation: Hyderabad, Telangana, India\nfield: -\ndescription:\nWork Model: You’ll work in a hybrid model, onsite at your designated Regal Rexnord location, with flexibility to work remotely.\n[under: Major Responsibilities] - Coordinate among onsite and offshore members of Oracle EBS Manufacturing technical developers to design, build, unit test and support solutions that are on-time, first-time-right and within budget.\n[under: About Regal Rexnord] Regal Rexnord has offices and manufacturing, sales and service facilities worldwide.",
+  "a": "none",
+  "b": "hybrid"
+ },
+ {
+  "id": "1244008",
+  "text": "company: PricewaterhouseCoopers Service Delivery Center (Bangalore) Private Limited\ntitle: Senior Consultant Technology Deals (M&A)\nlocation: Amsterdam\nfield: -\ndescription:\n[under: What we offer] - You work at client locations and our office, with flexibility for hybrid working where possible;",
+  "a": "onsite",
+  "b": "none"
+ },
+ {
+  "id": "1255713",
+  "text": "company: 200 Protiviti Inc.\ntitle: Charlotte Technology Consulting Intern - 2027\nlocation: CHARLOTTE\nfield: -\ndescription:\n[under: HOW WE WORK] Protiviti practices a hybrid model, combining in-person with purpose and remote work to best support excellent work, connection and collaboration.\n[under: HOW WE WORK] Our people work both in-person in local Protiviti offices and on client sites, which can include local or out-of-state travel based on our projects and client requests and commitments.",
+  "a": "hybrid",
+  "b": "none"
+ },
+ {
+  "id": "1257152",
+  "text": "company: 200 Protiviti Inc.\ntitle: Microsoft 365 Architect Senior Manager\nlocation: NEW YORK CITY\nfield: -\ndescription:\n[under: Your Educational and Professional Qualifications] - Proficiency in Microsoft Office suite applications with specific emphasis on Word, Excel and PowerPoint. Secondary emphasis on Visio and Access.\n# Our Hybrid Workplace\n[under: Our Hybrid Workplace] Protiviti practices a hybrid model, which is a combination of working in person with a purpose and working remotely.\n[under: Our Hybrid Workplace] The ratio of remote to in-person requirements vary by client, project, team, and other business factors.\n[under: Our Hybrid Workplace] Our people work both in-person in local Protiviti offices and on client sites, which can include local or out-of-state travel based on our projects and client requests and commitments.",
+  "a": "none",
+  "b": "hybrid"
+ },
+ {
+  "id": "1258515",
+  "text": "company: PT05 RIC TCC, Unipessoal LDA\ntitle: Logistics Digital Transformation Manager\nlocation: TOKYO\nfield: -\ndescription:\n[under: Project Management and Leadership] - Lead on-site implementation projects in collaboration with external stakeholders (automation and IT specialists)\n[under: IT TOOLS] Microsoft Office (Excel, Outlook, PowerPoint), SAP, BI, Neptune, Tulip, UIPath, Pega, AI, FlexSim",
+  "a": "onsite",
+  "b": "none"
+ },
+ {
+  "id": "1269895",
+  "text": "company: 1609 Roche Farma, S.A.\ntitle: Industrial Placement Student CS CoE DDC Data Capability\nlocation: Welwyn\nfield: -\ndescription:\n[under: Computational Sciences Center of Excellence] Location(s): Welwyn office based\n[under: Application Process] Phase III: Final Assessment Center at Roche UK head office (Welwyn Garden City, Hertfordshire).",
+  "a": "onsite",
+  "b": "none"
+ }
+]
