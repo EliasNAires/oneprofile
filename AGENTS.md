@@ -51,6 +51,11 @@ The five canonical names, used verbatim: `needs-triage`, `needs-info`, `ready-fo
 Packages split into `storage/` and `workers/`, and every class is named by its role (`Run`,
 `Rule`, `Store`, …). See `docs/agents/code-layout.md`.
 
+### Delegation
+
+The main session plans and supervises; Codex models audit plans (Astra) and execute steps (Sol)
+through `codex exec`. Read `docs/agents/delegation.md` before planning any implementation.
+
 ### Rule loops
 
 An issue whose body has a `## Loop` section is calibrated (`/calibrate-loop #N`), then worked in
