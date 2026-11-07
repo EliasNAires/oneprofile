@@ -1,0 +1,4 @@
+{
+  "299793": {"verdict": "b", "clause": "6. None — nothing read declares a mode", "pattern": "vague onsite opportunity, no schedule"},
+  "1003585": {"verdict": "a", "clause": "6. None — nothing read declares a mode", "pattern": "day count without location named"}
+}

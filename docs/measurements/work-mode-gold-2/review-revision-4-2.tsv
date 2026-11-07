@@ -1,0 +1,51 @@
+id	label	changed	doubt
+139452	none	no
+987225	remote	no
+1342263	none	no
+1400574	none	no
+289165	remote	no
+598324	hybrid	no
+299793	onsite	no	rule6 close call: neither "work...onsite" nor "open to working in office" names every day
+468362	onsite	no
+179963	none	no
+229879	hybrid	no
+266127	remote	no
+810704	onsite	no
+572098	none	no
+572499	none	no
+1206703	hybrid	no
+978103	onsite	no
+28763	none	no
+1003585	none	no
+43982	onsite	no
+1495028	remote	no
+359096	none	yes	rule1: "2 days...recommended but not enforced" is a preference, not an arrangement
+659560	hybrid	no	office tag "(Office)" outweighed by the specific "2-3 days a week" schedule, rule3
+1403821	none	no
+310978	none	no
+286477	none	no
+288853	none	no
+17562	none	no
+1350857	none	no
+949118	onsite	no
+139642	onsite	no
+1185365	none	no
+227194	onsite	no
+1402533	none	no
+468459	none	no
+1445537	none	no
+1231758	none	no
+59131	none	no
+436469	hybrid	no
+1019689	none	no
+139647	onsite	no
+983216	none	no
+38110	hybrid	no
+1352937	hybrid,onsite	no	rule1 flexibility carve-out vs rule3 job-details field, unresolved by rev4
+571689	none	no
+1047702	hybrid	no
+1309690	none	no
+1356724	none	no
+986426	remote	no
+1061292	remote,hybrid,onsite	no
+566576	onsite	no

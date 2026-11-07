@@ -1,0 +1,22 @@
+{
+  "337497": {"verdict": "b", "clause": "Onsite: the work is done at the employer's or a client's site on every working day", "pattern": "onsite at client facilities"},
+  "342861": {"verdict": "a", "clause": "Hybrid: a range or floor that leaves room for days away", "pattern": "floor of office days, team policy"},
+  "343020": {"verdict": "a", "clause": "Rule 1: hedge, limited to some (`most roles`)", "pattern": "hedged most-colleagues schedule"},
+  "351776": {"verdict": "a", "clause": "Revision 5: a required count whose days the person picks is not a hedge", "pattern": "required office day, flexible timing"},
+  "359884": {"verdict": "a", "clause": "Rule 1: a sentence about the company's culture is not this vacancy's mode", "pattern": "company culture hybrid phrase"},
+  "438128": {"verdict": "a", "clause": "Rule 1: a benefit (home office stipend) is not this vacancy's mode", "pattern": "telework listed as benefit"},
+  "467466": {"verdict": "b", "clause": "Hybrid: a range or floor that leaves room for days away (4+ days)", "pattern": "floor of onsite days, remote flex"},
+  "467498": {"verdict": "a", "clause": "Hybrid: a range or floor that leaves room for days away (4+ days)", "pattern": "floor of onsite days, remote flex"},
+  "475023": {"verdict": "a", "clause": "Rule 3: a value under a job-details heading counts where nothing more specific speaks", "pattern": "job schedule field label"},
+  "475088": {"verdict": "b", "clause": "Onsite: the work is done at the employer's or a client's site on every working day", "pattern": "required ability to work onsite"},
+  "478797": {"verdict": "a", "clause": "Rule 2: channels the work covers are not a mode (onsite or remote support)", "pattern": "remote or onsite as collaboration channel"},
+  "489283": {"verdict": "b", "clause": "Rule 6: none, where nothing read declares a mode for this job", "pattern": "office perk implies no schedule"},
+  "500488": {"verdict": "a", "clause": "Rule 3: a label in the location outweighs the field where nothing else speaks", "pattern": "location field office label"},
+  "502503": {"verdict": "a", "clause": "Rule 3: the most specific statement about this job decides", "pattern": "in-person role based in office"},
+  "508296": {"verdict": "b", "clause": "Hybrid: part of the work done in office on a regular schedule", "pattern": "hybrid stated with remote day count"},
+  "594018": {"verdict": "b", "clause": "Rule 2/Onsite: one whose own work is support at a user's or customer's site", "pattern": "primary duty is onsite customer support"},
+  "596118": {"verdict": "a", "clause": "Rule 3: a heading that names only the mode, standing alone", "pattern": "heading naming only the mode"},
+  "636368": {"verdict": "a", "clause": "Onsite: the work is done at the employer's or a client's site on every working day", "pattern": "located onsite at client site"},
+  "650044": {"verdict": "b", "clause": "Rule 4: primarily remote, on site as needed, is remote", "pattern": "primarily remote, occasional onsite"},
+  "650079": {"verdict": "a", "clause": "Rule 4: primarily remote, on site as needed, is remote", "pattern": "primarily remote, occasional onsite"}
+}

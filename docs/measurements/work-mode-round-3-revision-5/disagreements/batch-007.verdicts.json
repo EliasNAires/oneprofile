@@ -1,0 +1,22 @@
+{
+  "811120": {"verdict": "b", "clause": "a value under a job-details heading (`Remote Type: Office`, where `Office` is onsite)", "pattern": "Remote Type field value"},
+  "811148": {"verdict": "b", "clause": "a value under a job-details heading", "pattern": "Remote Type field value"},
+  "811281": {"verdict": "a", "clause": "a value under a job-details heading", "pattern": "Remote Type field value"},
+  "811286": {"verdict": "a", "clause": "a value under a job-details heading", "pattern": "Remote Type field value"},
+  "833192": {"verdict": "a", "clause": "Hybrid: office on some days of the week, however many days it names", "pattern": "named office days per week"},
+  "850979": {"verdict": "b", "clause": "Onsite: one whose own work is done at its users' or customers' site", "pattern": "job's own work is onsite support"},
+  "857950": {"verdict": "a", "clause": "Remote: travel now and then (a quarterly offsite) does not change it", "pattern": "quarterly visits remote work from home"},
+  "917756": {"verdict": "b", "clause": "Rule 3 heading naming job family and mode standing alone, vs rule 1 hedge (flexibility/perk)", "pattern": "heading label vs vague benefit"},
+  "939760": {"verdict": "a", "clause": "a heading that names... the job family and the mode, standing alone", "pattern": "heading job family and mode"},
+  "942101": {"verdict": "a", "clause": "a company's unhedged statement of its schedule covers every role (Invenergy example)", "pattern": "unhedged company schedule statement"},
+  "943040": {"verdict": "a", "clause": "Modes listed as a perk or a flexibility declare nothing, wherever they sit", "pattern": "perk list under what we offer"},
+  "943043": {"verdict": "a", "clause": "Modes listed as a perk or a flexibility declare nothing, wherever they sit", "pattern": "perk list under what we offer"},
+  "1020361": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "varying pod specific hybrid schedule"},
+  "1023211": {"verdict": "a", "clause": "A label in the location outweighs the field where nothing else speaks", "pattern": "office label in location field"},
+  "1040473": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "hybrid schedule stated under odd heading"},
+  "1067178": {"verdict": "a", "clause": "Onsite: work done at the employer's site on every working day", "pattern": "explicit onsite statement"},
+  "1077813": {"verdict": "a", "clause": "Modes listed as a perk or a flexibility declare nothing, wherever they sit", "pattern": "modes listed as perk flexibility"},
+  "1079509": {"verdict": "b", "clause": "a company's unhedged statement... embracing a 70/30 work model", "pattern": "unhedged company schedule statement"},
+  "1107759": {"verdict": "a", "clause": "Hybrid however many days it names (`Onsite 4 days per week` example)", "pattern": "named days per week office"},
+  "1115690": {"verdict": "a", "clause": "Onsite: one whose own work is done at its users' or customers' site", "pattern": "job's own work is onsite support"}
+}

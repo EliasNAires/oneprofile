@@ -1,0 +1,51 @@
+id	label	changed	doubt
+178727	hybrid	no
+1151519	none	no
+40941	none	no
+1104438	hybrid	no
+1329787	hybrid	no
+298810	onsite	no	rule3 office-named team location, no schedule, defaults onsite
+1254373	remote	no
+234917	hybrid	no	rule4 weekly office sync is a regular day, hybrid
+832122	hybrid	no
+1104795	hybrid	no
+453334	remote	no
+563866	hybrid	no
+597098	hybrid	no
+481600	none	no
+19868	remote	no
+938567	remote	no	rule1 benefit-list "hybrid work model" set aside; LI-Remote tag decides
+571708	none	no
+576933	onsite	no
+988054	hybrid	no
+102988	none	no
+38138	remote	no
+17571	none	no
+359035	none	yes	rule1 hedge: "recommended" days plus "flexibility to decide if and when" is a preference, not a stated arrangement
+647651	onsite	no
+13714	remote,onsite	no	rule3 specific Work Location/Travel field outweighs vaguer "remote/hybrid blend" line
+481568	none	no
+1192895	onsite	no	rule2 job's own work is onsite support, not occasional
+192603	none	no
+3285	hybrid	no	rule3 office based-in plus 3-days-in-person schedule
+315378	none	no
+134679	hybrid	no	rule1 "generally" is not an enumerated hedge; Mon-Thu floor stands
+66397	none	no
+512782	hybrid	no	rule1 "most roles"/"some positions" hedge set aside; specific hybrid field decides
+699994	none	no
+821872	remote,hybrid	no	rule5 need/geography-dependent choice, offered up front
+1104740	hybrid	no	rule1 benefit-list "Hybrid work" set aside; LI-Hybrid tag decides
+163040	onsite	no
+182108	remote,onsite	no	rule3 specific Work Location/Travel field outweighs vaguer "remote/hybrid blend" line
+1164475	none	no
+257538	hybrid	no
+1071592	none	no
+1167684	onsite	no	rule2 job's own work is onsite support to clients
+1310417	hybrid	no
+1161546	hybrid	no
+164393	none	no	rule1 "remote-friendly" is the hedge example itself
+1008013	none	no	rule1 "hybrid-friendly" preference hedge
+329709	hybrid	no
+69860	none	no	rule1 "remote-first" is the hedge example itself
+1345929	none	no	rule1 "flexibility" hedge; employee's own choice, not a stated arrangement
+106686	remote	no

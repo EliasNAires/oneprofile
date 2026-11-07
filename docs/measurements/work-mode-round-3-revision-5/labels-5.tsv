@@ -1,0 +1,51 @@
+id	mode	reason
+1257420	hybrid	unhedged company hybrid statement, rule 1
+29286	remote	unhedged company statement despite perk heading, rule 1
+1431328	none	onsite names perk facility, not work, rule 2
+1345929	none	choice left to employee's discretion, hedge rule 1
+69283	onsite	onsite every working day, 5 days/week
+571187	none	template with no mode field to narrow it, rule 5
+294459	none	benefit mention, not this role's own mode
+144069	onsite	specific requirement overrides generic label, rule 3
+194423	none	describes who is supported, not this job's mode
+1019505	none	hedged "most jobs"/"some employees", rule 1
+786146	none	hedge, work virtually when productive, rule 1
+992294	none	remote support is a channel, not a mode, rule 2
+12922	hybrid	unhedged floor covers every role, rule 1
+770321	none	change still underway, hedge rule 1
+596118	onsite	job-details heading names only the mode, rule 3
+65276	none	"hybrid Agile" names work's subject, rule 2
+1192779	onsite	own work performed onsite, rule onsite
+118934	none	mode listed as a perk/flexibility, rule 1
+1190152	onsite	explicit full-time onsite, others ruled out
+573254	none	template with no mode field to narrow it, rule 5
+917756	remote	heading label; hybrid line is a perk, rule 1/3
+501997	remote	LI-Remote recruiting tag is a label, rule 3
+581132	hybrid	office named beside a hybrid statement, rule 3
+6205	remote	unhedged statement about the team, rule 1
+332257	none	hedged "most roles"/preference/exception, rule 1/5
+701993	none	company culture "hybrid and flexible", rule 1
+920030	none	flexibility by role-specific considerations, hedge
+572160	none	template with no mode field to narrow it, rule 5
+1261843	none	describes supported employees, not this role
+461760	none	conditional pay-disclosure boilerplate
+571998	none	template with no mode field to narrow it, rule 5
+603859	hybrid	specific statement, hybrid onsite in Trenton
+42618	hybrid	template narrowed by a regular schedule, rule 5
+5223	none	company's offices-around-globe statement, rule 1
+1464216	hybrid	role's own requirement statement
+45659	hybrid	unhedged "operate as a hybrid workplace", rule 1
+46738	none	conditional pay-disclosure boilerplate
+40993	none	office-lunch perk, not a mode statement
+73052	none	vague office collaboration, no schedule named
+13191	hybrid	unhedged floor covers every role, rule 1
+116645	none	modes listed under "What We Offer" as perks, rule 1
+128583	onsite	expected to work from office plus LI-ONSITE tag
+8366	none	boilerplate pay-zone text, no clear statement
+176862	none	flexible working offered as a perk, rule 1
+1329026	none	hybrid workplace listed among benefits, rule 1
+571163	none	template with no mode field to narrow it, rule 5
+727882	hybrid	office named beside hybrid schedule statement, rule 3
+1209861	onsite	settles into 5 days/week on a set plan, rule 4
+1456947	none	hedge limited to military spouses, rule 1
+1202291	none	"front office" names a business unit, rule 2

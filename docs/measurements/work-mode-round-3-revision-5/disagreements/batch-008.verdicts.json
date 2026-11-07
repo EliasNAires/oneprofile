@@ -1,0 +1,22 @@
+{
+  "1129626": {"verdict": "b", "clause": "Modes listed as a perk or a flexibility declare nothing", "pattern": "mode listed among workplace perks"},
+  "1130576": {"verdict": "b", "clause": "`Based in <city>` with no office named, names no mode", "pattern": "city named, no office stated"},
+  "1132105": {"verdict": "b", "clause": "A company's statement of how its people work, stated without a hedge, covers every role", "pattern": "company schedule split stated"},
+  "1155528": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "role statement with named remote days"},
+  "1168474": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "choice of hybrid and remote stated"},
+  "1190152": {"verdict": "a", "clause": "Onsite: work done at employer's site on every working day", "pattern": "explicit onsite no remote option"},
+  "1192779": {"verdict": "a", "clause": "one whose own work is done at its users' or customers' site", "pattern": "own work is onsite support"},
+  "1198418": {"verdict": "a", "clause": "Onsite: work done at employer's site on every working day", "pattern": "required days per week at office"},
+  "1206017": {"verdict": "b", "clause": "A word naming what the work is about is not a mode", "pattern": "team named on-site, not own mode"},
+  "1208228": {"verdict": "neither", "clause": "An office this role is based in ... is onsite where nothing else speaks; office days left to the person's choice is a hedge", "pattern": "office named with hedged optional wfh"},
+  "1209861": {"verdict": "b", "clause": "A mode that changes on a set plan is the mode it settles into", "pattern": "schedule changing on set plan settles"},
+  "1217513": {"verdict": "b", "clause": "A job whose work is travelling to sites is onsite", "pattern": "sales role traveling to customer sites"},
+  "1234711": {"verdict": "a", "clause": "A choice of modes is a choice", "pattern": "hybrid or fully remote offered"},
+  "1257345": {"verdict": "b", "clause": "A company's statement of how its people work, stated without a hedge, covers every role", "pattern": "company unhedged hybrid model statement"},
+  "1257420": {"verdict": "a", "clause": "A statement does not count where it is hedged (limited to some)", "pattern": "hybrid statement hedged by variation"},
+  "1276577": {"verdict": "b", "clause": "Modes listed as a perk or a flexibility declare nothing", "pattern": "mode listed among workplace perks"},
+  "1277603": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "remote or office you choose"},
+  "1342715": {"verdict": "a", "clause": "a value under a job-details heading ... counts where nothing more specific speaks", "pattern": "value under job details field"},
+  "1345929": {"verdict": "a", "clause": "leaving the office to the person's choice is a hedge", "pattern": "flexibility to choose where you work"},
+  "1356029": {"verdict": "a", "clause": "An office this role is based in ... is onsite where nothing else speaks", "pattern": "office locations named, client travel"}
+}

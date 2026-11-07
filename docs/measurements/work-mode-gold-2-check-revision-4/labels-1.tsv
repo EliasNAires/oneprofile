@@ -1,0 +1,51 @@
+id	mode	reason
+178727	hybrid	rule3 role stated hybrid
+1151519	none	office description not a mode statement
+40941	none	office perk not a mode
+1104438	hybrid	rule1 unhedged company floor 3+ days office
+1329787	hybrid	rule3 tag label hybrid
+298810	onsite	rule3 office this role's team is based in
+1254373	remote	stated current mode is remote
+234917	hybrid	weekly office sync is regular office day
+832122	hybrid	3 days a week at office stated
+1104795	hybrid	rule1 unhedged company floor 3+ days office
+453334	remote	role and location field both state remote
+563866	hybrid	rule1 floor 4 days office 1 day home
+597098	hybrid	up to 3 days WFH leaves days in office
+481600	none	rule2 hybrid infrastructure is a topic word
+19868	remote	heading label names remote
+938567	remote	rule3 LI-Remote tag, benefit line hedged as perk
+571708	none	rule5c template, nothing narrows which mode
+576933	onsite	100% onsite stated explicitly
+988054	hybrid	rule3 most specific line gives 80/20 split
+102988	none	no sentence names a mode
+38138	remote	fully remote stated, travel occasional
+17571	none	rule2 physical surroundings not a mode
+359035	hybrid	hybrid model with 2 office days a week schedule
+647651	onsite	explicit onsite location for internships
+13714	remote,onsite	explicit choice of remote or onsite at client
+481568	hybrid	hybrid working model stated for this role
+1192895	onsite	rule2 own work is support onsite, not occasional
+192603	none	rule1 modes listed as flexibility declare nothing
+3285	hybrid	3 days in person at named office stated
+315378	none	rule2 hybrid connectivity is a topic word
+66397	none	rule1 home office stipend is a benefit
+512782	hybrid	employment type field states hybrid arrangement
+699994	none	rule1 telework equipment is a benefit
+821872	remote,hybrid	explicit choice of remote or hybrid arrangements
+1104740	hybrid	rule3 LI-Hybrid tag, benefit line declares nothing
+163040	onsite	fully onsite stated, LI-Onsite tag confirms
+134679	hybrid	office Monday-Thursday, remote Friday schedule
+182108	remote,onsite	explicit choice of remote or onsite at client
+1164475	none	rule2 hybrid AI-OR is a topic word
+257538	hybrid	in-person 3 days a week stated, LI-Hybrid tag
+1071592	none	Microsoft Office is unrelated software skill
+1167684	onsite	onsite support duty plus workplace type onsite
+1310417	hybrid	reports to office on a hybrid basis stated
+1161546	hybrid	location type field states hybrid
+164393	none	rule1 remote-friendly is a hedge
+1008013	none	rule1 hybrid-friendly is a hedge
+329709	hybrid	hybrid label with onsite-at-least-50% schedule
+69860	none	rule1 remote-first is a hedge
+1345929	hybrid	rule1 unhedged hybrid organization statement
+106686	remote	rule4 primarily remote names no regular days

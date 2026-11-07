@@ -1,0 +1,22 @@
+{
+  "72028": {"verdict": "a", "clause": "Hybrid: days a week or a month in the office", "pattern": "telecommute with required office days"},
+  "87360": {"verdict": "b", "clause": "A sentence about the company's culture or reach (`our culture pioneered hybrid work`)", "pattern": "culture statement using hybrid word"},
+  "90277": {"verdict": "b", "clause": "What is read: the vacancy's location as the ATS publishes it", "pattern": "anywhere location as remote"},
+  "100852": {"verdict": "a", "clause": "A choice of modes is a choice", "pattern": "choice of office or remote"},
+  "104537": {"verdict": "a", "clause": "Onsite: one whose own work is done at its users' or customers' site", "pattern": "own work done on-site"},
+  "116625": {"verdict": "a", "clause": "This vacancy, not the company: covers every role only where it says nothing more specific", "pattern": "hybrid model tied to other office"},
+  "125719": {"verdict": "a", "clause": "A company's statement of how its people work, stated without a hedge, covers every role", "pattern": "company-wide schedule stated plainly"},
+  "133562": {"verdict": "a", "clause": "Hybrid: office on some days of the week and away on the rest, however many days it names", "pattern": "mandatory days plus optional days"},
+  "135898": {"verdict": "b", "clause": "Onsite: the work is done at the employer's site on every working day", "pattern": "daily onsite presence stated"},
+  "136986": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "role stated hybrid basis"},
+  "137052": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "choice of remote or hybrid by location"},
+  "138396": {"verdict": "a", "clause": "Onsite: the work is done at the employer's site on every working day", "pattern": "explicit five-day office schedule"},
+  "144069": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "specific requirement overrides generic label"},
+  "144415": {"verdict": "a", "clause": "This vacancy, not the company: a benefit is not this vacancy's mode", "pattern": "shuttle benefit not a mode"},
+  "144670": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "remote ruled out plus relocation"},
+  "145003": {"verdict": "b", "clause": "This vacancy, not the company: a benefit is not this vacancy's mode", "pattern": "shuttle benefit not a mode"},
+  "146016": {"verdict": "a", "clause": "A value under a job-details heading ... counts where nothing more specific speaks", "pattern": "label under policy heading"},
+  "155408": {"verdict": "a", "clause": "Hybrid: days a week or a month in the office", "pattern": "named day of work from home"},
+  "155853": {"verdict": "a", "clause": "Modes listed as a perk or a flexibility declare nothing, wherever they sit", "pattern": "mode listed among culture perks"},
+  "162362": {"verdict": "a", "clause": "A statement about the team this role joins is about this vacancy, not the company", "pattern": "in-office team descriptor"}
+}

@@ -1,0 +1,51 @@
+id	mode	reason
+571595	none	template labels, nothing narrows it (rule 5)
+1259183	hybrid,remote	choose your own model is a choice (rule 5)
+354362	hybrid	LI-Hybrid tag label, majority-of-roles hedged (rules 1,3)
+207517	none	home office allowance is a benefit (rule 1)
+807556	none	in-office culture statement hedged by role-specific flexibility (rule 1)
+309394	none	hybrid/remote listed as flexibility perk (rule 1)
+283336	onsite	states located onsite at HQ (criterion: onsite)
+1355725	none	nothing read names a mode
+1122714	none	hybrid-cloud names the work, not a mode (rule 2)
+5360	none	company's offices around the globe, not this role
+155853	hybrid	unhedged company statement offers hybrid model (rule 1)
+1268293	none	office existence and shifts, no mode named
+777938	hybrid	WFH permitted plus must live near office implies hybrid
+508296	hybrid	hybrid work with remote days stated
+212139	none	hybrid listed as a benefit/perk (rule 1)
+687202	none	office culture is a benefit, not a mode
+572074	none	template labels, nothing narrows it (rule 5)
+326377	none	remote-first company reach, remote listed as perk (rule 1)
+732654	none	modes listed as flexibility declare nothing (rule 1)
+194201	remote	unhedged "all of our roles are remote" (rule 1)
+359884	hybrid	unhedged hybrid work model statement (rule 1)
+289407	onsite	role based in named hub offices (rule 3)
+286345	none	office breakfasts benefit, not a mode
+571909	none	template labels, nothing narrows it (rule 5)
+181983	hybrid	floor of 25% office time covers all staff (rule 1)
+1356029	onsite	role based in named office locations (rule 3)
+942101	hybrid	explicit office Mon-Thu, remote Friday schedule
+103176	none	remote sensing names the work, not a mode (rule 2)
+1077813	none	flexible work setup listed as perk (rule 1)
+572135	none	template labels, nothing narrows it (rule 5)
+1446525	none	WFH listed among flexible benefits (rule 1)
+1079509	hybrid	70/30 work model, unhedged company statement
+651840	none	onsite perks describe amenities, not work mode (rule 2)
+571315	none	template labels, nothing narrows it (rule 5)
+942345	hybrid	four in-office days Monday-Thursday stated
+943040	hybrid	hybrid work schedule stated for this role
+850979	onsite	job's own work is onsite support (rule 2)
+133562	hybrid	onsite mandatory days plus optional days (criterion: hybrid)
+502503	onsite	most specific statement: in-person role based in Pune (rule 3)
+717027	none	heavy hedging, change still underway, no settled schedule (rule 1)
+437706	none	remotely troubleshoot is a support channel, not a mode (rule 2)
+919401	none	in-office culture hedged, remote exception case by case (rules 1,5)
+489283	none	office meals benefit, not a mode statement
+179982	none	company offices list and scam warning, not this role's mode
+161527	none	flexibility in remote work is a hedge (rule 1)
+636368	onsite	located onsite at client facility
+467466	hybrid	4+ onsite days a week is a floor leaving room away
+804221	onsite	intern at named Home Office location
+145003	onsite	shuttle to office Monday-Friday implies onsite
+121342	none	remote working listed among perks (rule 1)

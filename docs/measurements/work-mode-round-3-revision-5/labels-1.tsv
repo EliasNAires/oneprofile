@@ -1,0 +1,51 @@
+id	mode	reason
+137052	remote,hybrid	rule 5, choice offered by location
+1163932	none	rule 1, benefit/hedge, no role statement
+549661	none	rule 1, hedged "where possible"
+494647	hybrid	rule 3, role statement with schedule
+198148	remote,hybrid	rule 5, choice stated for this role
+943043	hybrid	rule 1, unhedged schedule statement
+1378825	none	rule 1, company reach only
+572682	none	rule 5, template, nothing narrows
+571199	none	rule 5, template, nothing narrows
+20441	none	rule 1, hedge "remote-first"
+571128	none	rule 5, template, nothing narrows
+323621	onsite	rule 3, explicit location heading
+1239474	none	rule 1, hedge "depending on...role"
+1234038	none	rule 1, hedge "most roles"
+650935	none	rule 2, team members' sites, not this job's
+171508	remote	rule 3, explicit role statement
+1376501	remote,hybrid	rule 5, choice offered
+724733	none	rule 1, benefit among perks
+1362642	remote,hybrid	rule 5, choice depending on needs
+45665	hybrid	rule 1, unhedged company statement
+1276577	hybrid	rule 1, unhedged statement
+1504044	hybrid	rule 1/4, schedule 8 days a month
+351776	hybrid	hybrid def, office some days a week
+20247	none	rule 1, hedge, not role-specific
+571594	none	rule 5, template, nothing narrows
+1265658	hybrid	rule 3, explicit role statement + schedule
+315310	onsite	rule 3, explicit statement, 5 days a week
+467498	hybrid	rule 4, floor 4+ days is hybrid
+1257376	none	rule 1, hedge "varies by...team"
+561335	none	rule 1, hedge "most roles"
+918797	none	rule 1, hedge "role-specific considerations"
+833192	hybrid	rule 3/4, most specific schedule 3 days
+623481	onsite	rule 3, explicit 5 days a week onsite
+573255	none	rule 5, template, nothing narrows
+572392	none	rule 5, template, nothing narrows
+1008138	none	rule 1, hedge "hybrid-friendly"
+1234283	none	rule 2, duty channel, not overall mode
+146913	none	no mode stated, only travel
+209921	none	rule 1, hedge "option of hybrid"
+707483	remote	rule 3, explicit role statement
+690293	none	rule 1, hedge "varies by...group"
+209941	remote	rule 3, city names no mode, remote stands
+1234711	remote,hybrid	rule 5, choice offered
+571327	none	rule 5, template, nothing narrows
+571218	none	rule 5, template, nothing narrows
+1451131	remote	rule 3, city names no mode, remote stands
+1019375	none	rule 1, hedge, office left to choice
+169148	hybrid	hybrid def, 2 days a week in office
+244597	none	rule 1, hedge, person's choice
+180151	none	rule 1, hedge "flexible"

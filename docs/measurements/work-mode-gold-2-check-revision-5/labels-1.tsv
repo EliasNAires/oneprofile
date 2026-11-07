@@ -1,0 +1,51 @@
+id	mode	reason
+178727	hybrid	role's own statement, rule 3
+1151519	none	office amenities only, not a mode
+40941	none	office perk, rule 1 benefit
+1104438	hybrid	company floor, 3 days onsite, rule 1
+1329787	hybrid	standalone tag label, rule 3
+298810	onsite	team-in-office statement, rule 1
+1254373	remote	stated current mode, future unnamed
+234917	hybrid	weekly office sync, regular schedule
+832122	hybrid	3 days a week at office, floor
+1104795	hybrid	company floor, 3 days onsite, rule 1
+453334	remote	explicit role statement plus field
+563866	hybrid	4-day floor leaves 1 day away, rule
+597098	hybrid	up to 3 days WFH, rest in office
+481600	none	hybrid infrastructure, rule 2 not a mode
+19868	remote	heading label, rule 3
+938567	remote	LI-Remote tag; hybrid phrase hedged perk
+571708	none	template defining labels, nothing narrows
+576933	onsite	explicit 100% onsite statement
+988054	hybrid	80/20 schedule overrides heading, rule 4
+102988	none	no mode stated
+38138	remote	fully remote stated, unhedged
+17571	none	office environment, rule 2 setting only
+359035	none	2 recommended days, person's choice, hedge
+647651	onsite	explicit on-site internship location
+13714	remote,onsite	remote or on-site at client, choice
+481568	hybrid	unhedged company hybrid model statement
+1192895	onsite	own work is support performed onsite
+192603	none	modes listed as flexibility, rule 1
+3285	hybrid	role based in office, 3 days in person
+315378	none	hybrid connectivity, rule 2 not a mode
+134679	hybrid	4-day office floor, Friday flexible
+66397	none	home office stipend, rule 1 benefit
+512782	hybrid	explicit employment-type field, hybrid
+699994	none	telework equipment benefit only
+821872	remote,hybrid	remote or hybrid depending on needs, choice
+1104740	hybrid	LI-Hybrid tag; perk bullet declares nothing
+163040	onsite	explicit fully onsite statement, tag confirms
+182108	remote,onsite	remote or on-site at client, choice
+1164475	none	hybrid AI-OR method, rule 2 not a mode
+257538	hybrid	company 3-days-in-person statement, tag
+1071592	none	MS Office software, unrelated to mode
+1167684	onsite	own support work onsite; field confirms
+1310417	hybrid	explicit hybrid reporting statement
+1161546	hybrid	explicit location-type field, hybrid
+164393	none	remote-friendly hedge, no arrangement
+1008013	none	hybrid-friendly culture hedge
+329709	hybrid	50% onsite floor over pay period
+69860	none	remote-first hedge, company statement
+1345929	none	choose where you work, person's choice hedge
+106686	remote	primarily remote, no regular office days

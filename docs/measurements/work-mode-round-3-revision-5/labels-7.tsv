@@ -1,0 +1,31 @@
+id	mode	reason
+1356361	hybrid	role's own hybrid statement, rule 3
+803453	hybrid	company floor schedule unhedged, rule 1
+188652	none	rule 2 channel words, no mode
+168203	hybrid	role's own hybrid statement, rule 1
+9830	none	hedged statements only, rule 1
+1504421	none	rule 2 words, interview not work
+1403619	none	rule 2 physical surroundings/benefit
+44036	none	hedged "most teams", rule 1
+1107759	hybrid	4 days office implies hybrid
+87213	none	office location/benefit only
+792722	remote	heading label "Virtual Office", rule 3
+183353	none	hedged/general statements, rule 1
+948179	onsite	based at corporate office, rule 3
+249442	remote	LI-Remote tag; perk declares nothing
+541324	unclear	contradictory location descriptors
+29203	hybrid	4 days onsite per week, hybrid rule
+212182	none	office locations/perk only
+233307	none	hedged "remote-first", rule 1
+743262	none	office description only, not mode
+53254	none	hedged statements, rule 1
+571979	none	template glossary, nothing narrows, rule 5
+36039	hybrid	policy maps to role's site, outweighs tag
+166927	none	benefits/perks only
+919094	none	hedged "depending on role", rule 1
+593698	none	sector/software words, rule 2
+332417	remote	role's own statement, rule 1
+732584	none	modes as perk/flexibility, rule 1
+1198418	onsite	5 days per week at site
+352548	remote	LI-REMOTE tag; remote-first hedge
+110459	none	rule 2 "remote access" words

@@ -1,0 +1,22 @@
+{
+  "650088": {"verdict": "b", "clause": "Remote: nor does travel now and then", "pattern": "occasional onsite, remote work"},
+  "650935": {"verdict": "a", "clause": "None where nothing read declares a mode for this job", "pattern": "team member locations only"},
+  "687680": {"verdict": "a", "clause": "A word naming what the work is about is not a mode", "pattern": "hybrid as technology term"},
+  "697383": {"verdict": "a", "clause": "Hybrid: a floor that leaves room for days away", "pattern": "mode stated under benefits heading"},
+  "707483": {"verdict": "b", "clause": "A mode word with a schedule: Primarily remote, on site as needed is remote", "pattern": "remote with office visits as needed"},
+  "727882": {"verdict": "a", "clause": "Hybrid: a range or floor that leaves room for days away", "pattern": "hybrid floor with remote percentage"},
+  "757162": {"verdict": "a", "clause": "Hybrid: days a week or a month in the office", "pattern": "mode stated under benefits heading"},
+  "757427": {"verdict": "a", "clause": "Hybrid: days a week or a month in the office, stated for this role", "pattern": "hybrid schedule with flexibility word"},
+  "768559": {"verdict": "b", "clause": "A company's unhedged statement of how its people work covers every role", "pattern": "company-wide remote statement"},
+  "770320": {"verdict": "a", "clause": "A statement does not count where it is hedged: a change still underway (transitioning to a full-time onsite working model through a phased rollout)", "pattern": "change still underway"},
+  "770321": {"verdict": "a", "clause": "A statement does not count where it is hedged: a change still underway (transitioning to a full-time onsite working model through a phased rollout)", "pattern": "change still underway"},
+  "777938": {"verdict": "a", "clause": "A statement does not count where it is hedged: leaving the office to the person's choice", "pattern": "permitted not required hedge"},
+  "792637": {"verdict": "a", "clause": "A sentence offering this role in several modes is a choice, not a template", "pattern": "choice of modes offered"},
+  "792722": {"verdict": "b", "clause": "A value under a job-details heading ... counts where nothing more specific speaks", "pattern": "job-details heading label remote"},
+  "803453": {"verdict": "b", "clause": "A floor covers every role even where some groups may ask for more", "pattern": "company-wide onsite days floor"},
+  "804221": {"verdict": "b", "clause": "An office this role is based in ... is onsite where nothing else speaks", "pattern": "role based at named office"},
+  "810642": {"verdict": "a", "clause": "A value under a job-details heading (Remote Type: Office, where Office is onsite)", "pattern": "remote type field hybrid"},
+  "810719": {"verdict": "a", "clause": "A value under a job-details heading (Remote Type: Office, where Office is onsite)", "pattern": "remote type field hybrid"},
+  "810722": {"verdict": "b", "clause": "A value under a job-details heading (Remote Type: Office, where Office is onsite)", "pattern": "remote type field hybrid"},
+  "811003": {"verdict": "b", "clause": "A value under a job-details heading (Remote Type: Office, where Office is onsite)", "pattern": "remote type field onsite"}
+}

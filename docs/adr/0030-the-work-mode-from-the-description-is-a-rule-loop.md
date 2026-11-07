@@ -164,6 +164,22 @@ run under it:
 The held-out figure is the same as revision 2's on the first gold set, now on rows that are mostly silent
 hybrid and silent office. Both are near the gates' 90% line from above.
 
+### Agreement (recalibration after round 3, 2026-11-06)
+
+On the second gold set, with revision 5 frozen. Before the check, a Sonnet review relabelled all 100 rows under
+revision 4 (2 changed, 1 open and 1 held-out). Revision 4 was checked first: 96.0% on each part, the two open
+disagreements being office days left to the person's choice, which revision 5 writes in. Checked by
+`scripts/check-work-mode-gold` with a fresh labeller run under revision 5:
+
+| part | rows | labeller | adjudicator with the gold set |
+|---|---:|---|---|
+| open | 50 | 48 (96.0%, 87–99%) | 1 of 2, 1 with the labeller |
+| held-out | 50 | 49 (98.0%, 90–100%) | 1 of 1 |
+
+The open row the adjudicator settled against the gold set (an `open to working in office` line, gold onsite) was
+corrected to `none` afterwards. Revision 5's main change, a company's unhedged statement of its model, is in few
+gold rows, so this agreement says little about it; round 3's re-score, where it is common, is its test.
+
 ## Considered options
 
 - **Amending ADR-0029** for this loop: it already shapes a loop's labelling, but it is the eligibility

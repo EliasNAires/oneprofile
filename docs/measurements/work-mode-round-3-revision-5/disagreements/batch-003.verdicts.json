@@ -1,0 +1,22 @@
+{
+  "164299": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "hybrid stated under benefits heading"},
+  "168203": {"verdict": "b", "clause": "An office this role is based in", "pattern": "role based in office hybrid stated"},
+  "168214": {"verdict": "a", "clause": "A sentence about the company's culture ... is not this vacancy's mode", "pattern": "culture statement no schedule"},
+  "169148": {"verdict": "b", "clause": "Hybrid: part of the work is done in an office on a regular schedule", "pattern": "explicit days per week stated"},
+  "172242": {"verdict": "a", "clause": "stated without a hedge, covers every role", "pattern": "unhedged company hybrid policy"},
+  "180257": {"verdict": "a", "clause": "A word naming what the work is about is not a mode", "pattern": "word describes work field states onsite"},
+  "181928": {"verdict": "a", "clause": "A floor covers every role even where some groups may ask for more", "pattern": "unhedged floor percentage policy"},
+  "181983": {"verdict": "a", "clause": "A floor covers every role even where some groups may ask for more", "pattern": "unhedged floor percentage policy"},
+  "186415": {"verdict": "a", "clause": "stated without a hedge, covers every role", "pattern": "unhedged fully remote company statement"},
+  "186427": {"verdict": "b", "clause": "stated without a hedge, covers every role", "pattern": "unhedged fully remote company statement"},
+  "192605": {"verdict": "a", "clause": "Modes listed as a perk or a flexibility ... declare nothing", "pattern": "flexibility perk excluded remote stated"},
+  "194201": {"verdict": "b", "clause": "stated without a hedge, covers every role", "pattern": "unhedged all-roles-remote statement"},
+  "196285": {"verdict": "b", "clause": "Hybrid: days a week or a month in the office", "pattern": "explicit days per week stated"},
+  "200413": {"verdict": "a", "clause": "with remote days only now and then", "pattern": "occasional remote days onsite"},
+  "200517": {"verdict": "b", "clause": "one whose own work is done at its users' or customers' site", "pattern": "own work done on site"},
+  "201950": {"verdict": "a", "clause": "stated without a hedge, covers every role", "pattern": "explicit 100 percent remote statement"},
+  "207944": {"verdict": "b", "clause": "leaving the office to the person's choice", "pattern": "as needed hedge no schedule"},
+  "209941": {"verdict": "b", "clause": "A city alone names no mode", "pattern": "city alone no mode remote listed"},
+  "211723": {"verdict": "a", "clause": "Hybrid: part of the work is done in an office on a regular schedule", "pattern": "explicit days per week stated"},
+  "212864": {"verdict": "a", "clause": "naming a preference rather than an arrangement", "pattern": "preference hedge no firm mode"}
+}

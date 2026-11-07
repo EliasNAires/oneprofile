@@ -1,0 +1,12 @@
+{
+  "1382924": {"verdict": "b", "clause": "naming a preference rather than an arrangement", "pattern": "hedged perk, support channel mentioned"},
+  "1437536": {"verdict": "b", "clause": "None where nothing read declares a mode", "pattern": "vague on-the-ground management description"},
+  "1444266": {"verdict": "b", "clause": "a floor covers every role / leaves room for days away", "pattern": "department floor weekly in-person"},
+  "1444825": {"verdict": "a", "clause": "a company's statement stated without a hedge covers every role", "pattern": "unhedged all positions onsite"},
+  "1451131": {"verdict": "a", "clause": "Based in <city> with no office named names no mode", "pattern": "based in city vs remote option"},
+  "1459603": {"verdict": "a", "clause": "naming a preference rather than an arrangement", "pattern": "supported hedge plus benefit mention"},
+  "1459654": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "named hybrid model with day count"},
+  "1464216": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "role-specific hybrid requirement heading"},
+  "1504044": {"verdict": "b", "clause": "a company's statement stated without a hedge covers every role", "pattern": "unhedged policy with monthly day count"},
+  "1519703": {"verdict": "a", "clause": "A sentence about the company's culture is not this vacancy's mode", "pattern": "hybrid culture flexibility statement"}
+}

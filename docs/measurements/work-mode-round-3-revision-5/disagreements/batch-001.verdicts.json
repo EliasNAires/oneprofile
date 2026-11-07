@@ -1,0 +1,22 @@
+{
+  "6205": {"verdict": "b", "clause": "A company's statement of how its people work, stated without a hedge, covers every role", "pattern": "unhedged fully remote team"},
+  "6458": {"verdict": "a", "clause": "Onsite: fully from the office, with the possibility to work remotely occasionally", "pattern": "office with occasional remote"},
+  "7148": {"verdict": "b", "clause": "A choice of modes is a choice: answer every mode offered", "pattern": "based in city or full remote"},
+  "9830": {"verdict": "b", "clause": "A statement does not count where it is hedged: limited to some (`most roles`)", "pattern": "hedged most roles statement"},
+  "10486": {"verdict": "b", "clause": "Onsite: the work is done at the employer's or a client's site on every working day", "pattern": "role based onsite not eligible remote"},
+  "12922": {"verdict": "a", "clause": "A floor covers every role even where some groups may ask for more", "pattern": "floor policy covers every role"},
+  "13191": {"verdict": "a", "clause": "A floor covers every role even where some groups may ask for more", "pattern": "floor policy covers every role"},
+  "16072": {"verdict": "b", "clause": "A company's statement of how its people work, stated without a hedge, covers every role", "pattern": "unhedged free-office model remote"},
+  "18454": {"verdict": "b", "clause": "Hybrid: days a week or a month in the office", "pattern": "explicit days a week in office"},
+  "27777": {"verdict": "a", "clause": "A statement does not count where it is hedged: limited to some", "pattern": "this role's mode deferred later"},
+  "29286": {"verdict": "a", "clause": "A statement does not count where it is hedged: limited to some", "pattern": "geographic hedge excludes role"},
+  "35741": {"verdict": "a", "clause": "a range or floor that leaves room for days away [is hybrid]", "pattern": "floor leaving days away"},
+  "36039": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "specific schedule outweighs recruiting tag"},
+  "42618": {"verdict": "b", "clause": "A template is not a choice: the rest of the vacancy decides", "pattern": "template narrowed by hybrid schedule"},
+  "45659": {"verdict": "a", "clause": "A company's statement of how its people work, stated without a hedge, covers every role (`We operate as a hybrid workplace`)", "pattern": "unhedged operate as hybrid"},
+  "45665": {"verdict": "a", "clause": "A company's statement of how its people work, stated without a hedge, covers every role (`We operate as a hybrid workplace`)", "pattern": "unhedged operate as hybrid"},
+  "49438": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "job-details heading hybrid setup"},
+  "62169": {"verdict": "b", "clause": "An office this role is based in: `based in either our Bristol or London office`", "pattern": "based in either office"},
+  "65163": {"verdict": "b", "clause": "An office this role is based in: `based in either our Bristol or London office`", "pattern": "based in either office"},
+  "70570": {"verdict": "b", "clause": "Onsite: the work is done at the employer's or a client's site on every working day", "pattern": "explicit onsite customer site"}
+}

@@ -1,0 +1,51 @@
+id	mode	reason
+139452	none	hybrid names retrieval method, rule 2
+987225	remote	heading naming only the mode, rule 3
+1342263	none	nothing read declares a mode
+1400574	none	hybrid names tech environments, rule 2
+289165	remote	LI-Remote tag, rule 3; onsite hedged "depending on the role"
+598324	hybrid	role's own statement, rule 3
+299793	none	preference-like phrasing, no arrangement stated
+468362	onsite	explicit five days per week onsite
+179963	none	company office list and scam warning, not this vacancy
+229879	hybrid	office some days, remote the rest
+266127	remote	unhedged company statement, rule 1
+810704	onsite	Remote Type: Office field, rule 3
+572098	none	template defines terms, none stated as listed
+572499	none	template defines terms, none stated as listed
+1206703	hybrid	explicitly named hybrid role
+978103	onsite	explicit on-site statement
+28763	none	hedged culture/perk framing, rule 1
+1003585	hybrid	floor "at least 3 days" leaves days away
+43982	onsite	office named plus explicit five days onsite and LI-Onsite
+1495028	remote	remote stated, residency constraint doesn't change it
+359096	none	office days recommended not enforced, hedge (rev 5)
+659560	hybrid	required count, days of their choosing (rev 5)
+1403821	none	Environmental Conditions: Office, rule 2
+310978	none	office named as benefit, no schedule
+286477	none	hybrid listed under what-we-offer perk, rule 1
+288853	none	in-office perk mention, no schedule
+17562	none	ambiguous duty wording, physical requirement not a mode
+1350857	none	office facilities benefit mention
+949118	onsite	explicit on-site presence required
+139642	onsite	unhedged company in-office statement, rule 1
+1185365	none	hedged "for the majority of employees"
+227194	onsite	location label (On Site)
+1402533	none	Environmental Conditions: Office, rule 2
+468459	none	residency constraint, no mode stated
+1445537	none	"office" names org unit, not worksite
+1231758	none	Microsoft Office software, not a mode
+59131	none	modes listed as flexibility, rule 1
+436469	hybrid	team's unhedged hybrid statement, rule 1
+1019689	none	hedged "most jobs"/role-dependent statements
+139647	onsite	unhedged company in-office statement, rule 1
+983216	none	hybrid names infrastructure, rule 2
+38110	hybrid	explicit hybrid schedule stated
+1352937	hybrid,onsite	job-details field, choice of modes
+571689	none	template defines terms, none stated as listed
+1047702	hybrid	SCIF presence 3 days/week, hybrid definition
+1309690	none	hybrid delivery model is methodology, rule 2
+1356724	none	Front/Middle/Back Office are departments
+986426	remote	heading naming only the mode, rule 3
+1061292	remote,hybrid,onsite	explicit choice of modes, rule 5
+566576	onsite	based in our London office, rule 3

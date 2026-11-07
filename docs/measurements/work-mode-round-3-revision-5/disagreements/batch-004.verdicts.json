@@ -1,0 +1,22 @@
+{
+  "215665": {"verdict": "a", "clause": "Onsite: work done at the employer's site every working day", "pattern": "explicit onsite statement every day"},
+  "238228": {"verdict": "a", "clause": "Rule 1: a company's unhedged statement covers every role", "pattern": "unhedged company in-person statement"},
+  "249434": {"verdict": "a", "clause": "Rule 3: the most specific statement about this job decides", "pattern": "specific policy line overrides flexibility text"},
+  "249442": {"verdict": "b", "clause": "Rule 1: modes listed as a perk or flexibility declare nothing", "pattern": "flexibility text declares nothing, tag decides"},
+  "277961": {"verdict": "b", "clause": "Hybrid: a range or floor that leaves room for days away", "pattern": "explicit hybrid floor schedule"},
+  "278343": {"verdict": "a", "clause": "Rule 1: naming a preference rather than an arrangement is a hedge", "pattern": "vague preference not arrangement"},
+  "278806": {"verdict": "a", "clause": "Rule 1: a company's unhedged statement of how its people work", "pattern": "unhedged fully remote statement"},
+  "283336": {"verdict": "b", "clause": "Rule 3: the most specific statement about this job decides", "pattern": "specific statement located onsite"},
+  "289081": {"verdict": "b", "clause": "Hybrid: part of the work done in office, part away from it", "pattern": "partial telecommuting plus onsite address"},
+  "289407": {"verdict": "a", "clause": "Rule 3: an office this role is based in", "pattern": "office named as role's base"},
+  "304232": {"verdict": "b", "clause": "Rule 3: a value under a job-details heading", "pattern": "value under job-details heading"},
+  "305217": {"verdict": "a", "clause": "Onsite: work done at the employer's site every working day", "pattern": "explicit onsite statement every day"},
+  "312145": {"verdict": "a", "clause": "Rule 1: a company's unhedged statement of how its people work", "pattern": "unhedged company hybrid model statement"},
+  "315310": {"verdict": "a", "clause": "Onsite: work done at the employer's site every working day", "pattern": "explicit full week office statement"},
+  "315375": {"verdict": "b", "clause": "Remote: the work is done away from the employer's offices", "pattern": "explicit remote role statement"},
+  "319831": {"verdict": "a", "clause": "Hybrid: days a week in the office named", "pattern": "explicit hybrid schedule stated"},
+  "329234": {"verdict": "neither", "clause": "Rule 2: channels the work covers are not a mode", "pattern": "channels of work not mode"},
+  "329236": {"verdict": "a", "clause": "Rule 1: a statement about the team this role joins", "pattern": "statement about team's remote nature"},
+  "330022": {"verdict": "a", "clause": "Rule 3: a label naming only the mode", "pattern": "direct modality label stated"},
+  "332417": {"verdict": "b", "clause": "Rule 1: a company's unhedged statement of how its people work", "pattern": "unhedged fully remote statement"}
+}
