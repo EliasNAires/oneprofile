@@ -1,0 +1,22 @@
+{
+  "718": {"verdict": "b", "clause": "This vacancy, not the company: A company's statement of how its people work, its model or its schedule", "pattern": "company declares office every day"},
+  "1630": {"verdict": "a", "clause": "A template is not a choice: A sentence offering this role in several modes", "pattern": "modes depend on program needs"},
+  "19976": {"verdict": "b", "clause": "Hybrid: an office the person must come into regularly", "pattern": "required regular office attendance"},
+  "33192": {"verdict": "b", "clause": "Onsite: A job whose work is travelling to sites is onsite", "pattern": "work travelling to client sites"},
+  "33264": {"verdict": "a", "clause": "This vacancy, not the company: Modes listed as a perk or a flexibility", "pattern": "hybrid flexibility offered as perk"},
+  "39077": {"verdict": "a", "clause": "This vacancy, not the company: A company's statement of how its people work, its model or its schedule", "pattern": "company declares hybrid work model"},
+  "39805": {"verdict": "b", "clause": "A word naming what the work is about is not a mode", "pattern": "supported technology spans physical locations"},
+  "62159": {"verdict": "b", "clause": "A choice of modes is a choice", "pattern": "office or remote explicitly offered"},
+  "64054": {"verdict": "b", "clause": "Hybrid: an office the person must come into regularly", "pattern": "required regular office attendance"},
+  "67087": {"verdict": "b", "clause": "Remote: A country, region or time zone the person must live in does not change it", "pattern": "remote work with residence restriction"},
+  "72790": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "role explicitly declares hybrid work"},
+  "77266": {"verdict": "a", "clause": "Hybrid: Part of the work is done in an office on a regular schedule, and part away from it", "pattern": "required office majority with remote"},
+  "77268": {"verdict": "a", "clause": "Hybrid: Part of the work is done in an office on a regular schedule, and part away from it", "pattern": "required office majority with remote"},
+  "80698": {"verdict": "b", "clause": "Onsite: The work is done at the employer's or a client's site on every working day", "pattern": "role explicitly requires presencial work"},
+  "88902": {"verdict": "a", "clause": "Hybrid: an office the person must come into regularly", "pattern": "required regular office attendance"},
+  "88903": {"verdict": "a", "clause": "Hybrid: an office the person must come into regularly", "pattern": "required regular office attendance"},
+  "100851": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "role explicitly declares hybrid work"},
+  "104739": {"verdict": "b", "clause": "An office this role is based in: Beside a schedule or a hybrid statement", "pattern": "office named beside hybrid statement"},
+  "125770": {"verdict": "b", "clause": "This vacancy, not the company: A company's statement of how its people work, its model or its schedule", "pattern": "company declares hybrid work model"},
+  "129064": {"verdict": "b", "clause": "This vacancy, not the company: A company's statement of how its people work, its model or its schedule", "pattern": "company declares hybrid work model"}
+}

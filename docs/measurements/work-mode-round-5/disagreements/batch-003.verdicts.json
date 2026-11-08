@@ -1,0 +1,22 @@
+{
+  "231183": {"verdict": "b", "clause": "This vacancy, not the company: A company's statement of how its people work", "pattern": "company declares combined work model"},
+  "231188": {"verdict": "b", "clause": "This vacancy, not the company: A company's statement of how its people work", "pattern": "company declares combined work model"},
+  "238591": {"verdict": "a", "clause": "Ruled out is not offered; None", "pattern": "remote excluded without affirmative arrangement"},
+  "244775": {"verdict": "b", "clause": "This vacancy, not the company: A company's statement of how its people work", "pattern": "company requires regular office days"},
+  "253381": {"verdict": "a", "clause": "Onsite: A job whose work is travelling to sites is onsite", "pattern": "own work requires site execution"},
+  "277626": {"verdict": "a", "clause": "Onsite: The work is done at the employer's or a client's site", "pattern": "own work in lab environments"},
+  "278033": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule: the mode it settles into; A choice of modes is a choice", "pattern": "initial arrangement then offered choice"},
+  "278433": {"verdict": "a", "clause": "Onsite: with remote days only now and then", "pattern": "office with occasional remote days"},
+  "278804": {"verdict": "a", "clause": "This vacancy, not the company: A company's statement of how its people work", "pattern": "company declares fully remote work"},
+  "279672": {"verdict": "b", "clause": "The most specific statement about this job decides; A choice of modes is a choice", "pattern": "hybrid with primary office presence"},
+  "286143": {"verdict": "a", "clause": "Hybrid: Part of the work is done in an office on a regular schedule", "pattern": "required partial attendance at office"},
+  "292260": {"verdict": "b", "clause": "This vacancy, not the company; Remote", "pattern": "remote arrangement under benefits heading"},
+  "293146": {"verdict": "b", "clause": "An office this role is based in", "pattern": "role requires named office presence"},
+  "293660": {"verdict": "a", "clause": "Remote: A country, region or time zone the person must live in does not change it", "pattern": "remote candidates within eligible states"},
+  "294479": {"verdict": "b", "clause": "A word naming what the work is about is not a mode", "pattern": "onsite and remote delivery channels"},
+  "298442": {"verdict": "a", "clause": "This vacancy, not the company: A statement does not count where it is hedged", "pattern": "company attendance statement limits coverage"},
+  "300981": {"verdict": "a", "clause": "The most specific statement about this job decides: a value under a job-details heading", "pattern": "hybrid label under work details"},
+  "301849": {"verdict": "b", "clause": "An office this role is based in", "pattern": "role based onsite at facility"},
+  "302755": {"verdict": "a", "clause": "Onsite: The work is done at the employer's or a client's site on every working day", "pattern": "in person throughout internship duration"},
+  "304851": {"verdict": "b", "clause": "This vacancy, not the company: A statement does not count where it is hedged", "pattern": "company attendance statement limits coverage"}
+}

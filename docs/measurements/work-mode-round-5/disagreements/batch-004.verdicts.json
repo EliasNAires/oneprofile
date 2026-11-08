@@ -1,0 +1,22 @@
+{
+  "313099": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "explicit role hybrid arrangement"},
+  "315444": {"verdict": "a", "clause": "The most specific statement about this job decides: a value under a job-details heading", "pattern": "mode under job details"},
+  "318391": {"verdict": "a", "clause": "This vacancy, not the company: A statement about the team this role joins", "pattern": "remote work with team"},
+  "329826": {"verdict": "b", "clause": "The most specific statement about this job decides: a heading that names only the mode, or the job family and the mode", "pattern": "job heading names mode"},
+  "330001": {"verdict": "b", "clause": "Remote: A country, region or time zone the person must live in does not change it", "pattern": "remote with country restriction"},
+  "338824": {"verdict": "a", "clause": "Offered, not excepted", "pattern": "later remote arrangement conditional"},
+  "340461": {"verdict": "a", "clause": "This vacancy, not the company: A statement about the team this role joins", "pattern": "team works in office"},
+  "344074": {"verdict": "b", "clause": "Onsite: The work is done at the employer's or a client's site", "pattern": "role based at client site"},
+  "359545": {"verdict": "b", "clause": "Remote: The work is done away from the employer's offices, with no regular days in one", "pattern": "explicit fully remote position"},
+  "453287": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "onsite label partial week"},
+  "469728": {"verdict": "b", "clause": "An office this role is based in: Beside a schedule or a hybrid statement", "pattern": "office base with hybrid schedule"},
+  "503493": {"verdict": "a", "clause": "Onsite: one whose own work is done at its users' or customers' site", "pattern": "own work is onsite support"},
+  "503608": {"verdict": "a", "clause": "The most specific statement about this job decides: a heading that names only the mode, or the job family and the mode", "pattern": "job heading names mode"},
+  "504972": {"verdict": "a", "clause": "This vacancy, not the company: A company's statement of how its people work, its model or its schedule, stated without a hedge", "pattern": "unhedged company hybrid model"},
+  "509790": {"verdict": "b", "clause": "An office this role is based in", "pattern": "role assigned named office"},
+  "514544": {"verdict": "a", "clause": "An office this role is based in", "pattern": "role assigned named office"},
+  "514705": {"verdict": "a", "clause": "An office this role is based in", "pattern": "role assigned named office"},
+  "547619": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule: Primarily remote, on site as needed", "pattern": "remote with office as needed"},
+  "591945": {"verdict": "a", "clause": "Ruled out is not offered", "pattern": "onsite required remote ruled out"},
+  "635664": {"verdict": "b", "clause": "Onsite: The work is done at the employer's or a client's site", "pattern": "required onsite work location"}
+}

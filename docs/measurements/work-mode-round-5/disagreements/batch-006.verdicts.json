@@ -1,0 +1,22 @@
+{
+  "832984": {"verdict": "b", "clause": "This vacancy, not the company: A company's statement of how its people work", "pattern": "unhedged shared hybrid arrangement"},
+  "906839": {"verdict": "a", "clause": "Onsite: The work is done at the employer's or a client's site", "pattern": "work at customer sites"},
+  "924428": {"verdict": "b", "clause": "The most specific statement about this job decides: A recruiting tag", "pattern": "recruiting tag declares mode"},
+  "944467": {"verdict": "a", "clause": "This vacancy, not the company: A company's statement of how its people work", "pattern": "unhedged shared hybrid arrangement"},
+  "954111": {"verdict": "b", "clause": "Onsite: A job whose work is travelling to sites", "pattern": "work at customer sites"},
+  "971457": {"verdict": "a", "clause": "The most specific statement about this job decides: a value under a job-details heading", "pattern": "job details declare mode"},
+  "988681": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "role arrangement outweighs label"},
+  "995033": {"verdict": "a", "clause": "Onsite: The work is done at the employer's or a client's site", "pattern": "work at customer sites"},
+  "995365": {"verdict": "b", "clause": "Onsite: A job whose work is travelling to sites", "pattern": "work at customer sites"},
+  "1007210": {"verdict": "a", "clause": "Onsite: one whose own work is done at its users' or customers' site", "pattern": "support at users sites"},
+  "1008243": {"verdict": "a", "clause": "Hybrid: Part of the work is done in an office on a regular schedule", "pattern": "office and home schedule"},
+  "1008345": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "role arrangement declares remote"},
+  "1065698": {"verdict": "a", "clause": "Ruled out is not offered", "pattern": "onsite with alternatives excluded"},
+  "1066559": {"verdict": "b", "clause": "Onsite: one whose own work is done at its users' or customers' site", "pattern": "support at users sites"},
+  "1074039": {"verdict": "a", "clause": "This vacancy, not the company: Modes listed as a perk or a flexibility", "pattern": "mode listed as perk"},
+  "1086291": {"verdict": "a", "clause": "This vacancy, not the company: Modes listed as a perk or a flexibility", "pattern": "mode listed as perk"},
+  "1102963": {"verdict": "a", "clause": "This vacancy, not the company: A company's statement of how its people work", "pattern": "unhedged shared hybrid arrangement"},
+  "1119929": {"verdict": "b", "clause": "A word naming what the work is about is not a mode: channels the work covers", "pattern": "onsite and remote channels"},
+  "1155167": {"verdict": "b", "clause": "This vacancy, not the company: A company's statement of how its people work", "pattern": "unhedged shared hybrid arrangement"},
+  "1164254": {"verdict": "b", "clause": "Onsite: The work is done at the employer's or a client's site", "pattern": "customer sites or office"}
+}

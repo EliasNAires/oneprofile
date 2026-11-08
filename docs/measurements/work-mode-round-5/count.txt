@@ -1,0 +1,11 @@
+ADR-0029's count on the snapshot after POST /work-modes at 549de0c (scripts/draw-work-mode-description-sample DIR --count).
+
+subset 155767, undeclared 107467
+ats	undeclared	described	placed	placed remote	share
+ASHBY	2102	555	534	76	14.2%
+GREENHOUSE	32740	11899	11661	2093	17.9%
+LEVER	198	1	1	0	0.0%
+WORKDAY	72427	20620	20227	2057	10.2%
+
+POST /work-modes report:
+{"vacancies":155767,"decidedBy":{"ASHBY":{"LOCATION":3080,"FIELD":17370,"TITLE":23,"DESCRIPTION":555,"NONE":1547},"GREENHOUSE":{"LOCATION":8634,"TITLE":353,"DESCRIPTION":11899,"NONE":20841},"LEVER":{"LOCATION":784,"FIELD":11568,"TITLE":2,"DESCRIPTION":1,"NONE":197},"WORKDAY":{"LOCATION":4871,"TITLE":1615,"DESCRIPTION":20620,"NONE":51807}}}

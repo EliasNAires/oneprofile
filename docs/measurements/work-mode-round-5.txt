@@ -1,0 +1,183 @@
+#98 work-mode round 5, commit 549de0c, criterion revision 5
+
+labelled 525, unclear 2, the rule and the labeller split on 145
+adjudicated 145: 134 labeller, 9 rule, 2 neither
+
+precision
+  described remote          26 of  30   86.7%  (70% to 95%)
+  described hybrid          22 of  24   91.7%  (74% to 98%)
+  described onsite          20 of  24   83.3%  (64% to 93%)
+  described choice          12 of  20   60.0%  (39% to 78%)
+  every described           80 of  98   81.6%  (73% to 88%)
+  weighted by stratum size  87.9%  (79% to 95%)
+
+remote recall on undeclared vacancies
+  described remote          26 of  29 remote, the rule gives remote to 26
+  described hybrid           0 of  23 remote, the rule gives remote to 0
+  described onsite           0 of  24 remote, the rule gives remote to 0
+  described choice          11 of  20 remote, the rule gives remote to 10
+  silent remote             15 of 200 remote, the rule gives remote to 0
+  silent hybrid              1 of  75 remote, the rule gives remote to 0
+  silent office              3 of 150 remote, the rule gives remote to 0
+  weighted by stratum size  77.2%  (69% to 86%)
+
+hybrid recall on undeclared vacancies
+  described remote           2 of  29 hybrid, the rule gives hybrid to 0
+  described hybrid          22 of  23 hybrid, the rule gives hybrid to 22
+  described onsite           2 of  24 hybrid, the rule gives hybrid to 0
+  described choice          13 of  20 hybrid, the rule gives hybrid to 12
+  silent remote             31 of 200 hybrid, the rule gives hybrid to 0
+  silent hybrid             18 of  75 hybrid, the rule gives hybrid to 0
+  silent office              4 of 150 hybrid, the rule gives hybrid to 0
+  weighted by stratum size  78.9%  (73% to 84%)
+
+onsite recall on undeclared vacancies
+  described remote           1 of  29 onsite, the rule gives onsite to 0
+  described hybrid           0 of  23 onsite, the rule gives onsite to 0
+  described onsite          20 of  24 onsite, the rule gives onsite to 20
+  described choice          10 of  20 onsite, the rule gives onsite to 9
+  silent remote             15 of 200 onsite, the rule gives onsite to 0
+  silent hybrid              1 of  75 onsite, the rule gives onsite to 0
+  silent office             30 of 150 onsite, the rule gives onsite to 0
+  weighted by stratum size  69.6%  (62% to 76%)
+  silent remote, settled: 141 none, 30 hybrid, 14 onsite, 13 remote, 1 remote,onsite, 1 remote,hybrid
+  silent hybrid, settled: 55 none, 18 hybrid, 1 onsite, 1 remote
+  silent office, settled: 113 none, 30 onsite, 4 hybrid, 3 remote
+
+where the rule and the settled label split (rule -> settled)
+  1164254  described choice WORKDAY  remote,onsite -> onsite  [customer sites or office]  Sr Software Installation Engineer | BUH IV
+  188186  described choice GREENHOUSE  hybrid,onsite -> hybrid  [hybrid arrangement with remote allowance]  Senior Infrastructure Engineer - Network | IL-Bloomington; MN-Lakeville; MN-Mankato; WI-Sun Prairie
+  279672  described choice GREENHOUSE  hybrid,onsite -> hybrid  [hybrid with primary office presence]  Information Technology Director | Corporate
+  278033  described choice GREENHOUSE  hybrid,onsite -> remote,hybrid,onsite  [initial arrangement then offered choice]  Software Engineer, Early Career (NYC) | New York, New York, United States
+  1630  described choice GREENHOUSE  remote,hybrid -> remote,hybrid,onsite  [modes depend on program needs]  Cloud Platform Engineer | Washington, DC
+  104739  described choice GREENHOUSE  hybrid,onsite -> hybrid  [office named beside hybrid statement]  Senior Software Engineer (Serverless) | Amsterdam, Netherlands; London, United Kingdom
+  294479  described choice GREENHOUSE  remote,onsite -> none  [onsite and remote delivery channels]  Enterprise Sales Engineer | London
+  782456  described choice WORKDAY  remote,onsite -> remote,hybrid  [remote or scheduled hybrid choice]  Claims Specialist/Senior Claims Specialist – Cyber Risk | Cincinnati, OH (USA)
+  547619  described choice WORKDAY  remote,onsite -> remote  [remote with office as needed]  Digital Technology Specialist - Product Security | IN-KA-BANGALORE-NEON BUILDING WEST TOWER
+  77268  described choice GREENHOUSE  remote,hybrid -> hybrid  [required office majority with remote]  Software Engineer II - Global Football & Rugby | Chiavari, Italy
+  298442  described hybrid GREENHOUSE  hybrid -> none  [company attendance statement limits coverage]  Senior AI Systems Engineer | Atlanta, Georgia
+  137859  described hybrid GREENHOUSE  hybrid -> neither  [modes offered as work flexibility]  Senior Software Engineer - AI Platform | Slovakia
+  304851  described onsite GREENHOUSE  onsite -> none  [company attendance statement limits coverage]  Software Engineer, Payin | Bengaluru
+  1383036  described onsite WORKDAY  onsite -> none  [company schedule hedged by role]  Privacy Operations Analyst | Philippines, Manila
+  172256  described onsite GREENHOUSE  onsite -> hybrid  [office base beside hybrid policy]  Engineering Manager, SRE – AV Fleet, Japan | Japan
+  453287  described onsite WORKDAY  onsite -> hybrid  [onsite label partial week]  Senior Sales Operations Analyst | United States - California - Alameda
+  200413  described remote GREENHOUSE  remote -> neither  [monthly remote days alongside office]  Data Scientist - Intern | Paris, France
+  253381  described remote ASHBY  remote -> onsite  [own work requires site execution]  Forward-Deployed Solution Engineer - International | Qatar
+  988681  described remote WORKDAY  remote -> hybrid  [role arrangement outweighs label]  Multiple IT Business Systems Analysts Specializations Entry Professional | Barcelona, Spain
+  1432042  described remote WORKDAY  remote -> hybrid  [weekly homeworking after probation]  Internal IT Users Support Technician | PRAGUE, , CZECHIA
+  216615  silent hybrid ASHBY  none -> hybrid  [company minimum weekly office schedule]  Backend Engineer | London
+  1330296  silent hybrid WORKDAY  none -> hybrid  [explicit role hybrid arrangement]  Military Fellowship Program: Software Engineer | Fort Worth, TX
+  166615  silent hybrid GREENHOUSE  none -> hybrid  [explicit role hybrid label]  Senior Data Scientist | Washington D.C. / New York
+  200690  silent hybrid GREENHOUSE  none -> hybrid  [explicit role hybrid label]  Staff Engineer | Gurugram
+  1343256  silent hybrid WORKDAY  none -> hybrid  [hybrid label in work location]  Cloud & DevSecOps Engineer | Huntsville, AL
+  300981  silent hybrid GREENHOUSE  none -> hybrid  [hybrid label under work details]  Senior Engineer | Tampa, FL
+  191353  silent hybrid GREENHOUSE  none -> hybrid  [hybrid with weekly office schedule]  Quality Engineering Performance | Peru
+  315444  silent hybrid GREENHOUSE  none -> hybrid  [mode under job details]  Staff Software Engineer (Backend) | Boston, US
+  1369219  silent hybrid WORKDAY  none -> hybrid  [monthly minimum office days]  Senior Analyst, Microsoft 365 Platform Engineering | MEX - Santa Fe
+  1008243  silent hybrid WORKDAY  none -> hybrid  [office and home schedule]  Senior Elastic Security & Observability Engineer | Hoofddorp, North Holland, Netherlands
+  469728  silent hybrid WORKDAY  none -> hybrid  [office base with hybrid schedule]  Director - IT PMO and Agile Delivery | Memphis, TN
+  757172  silent hybrid WORKDAY  none -> onsite  [office named as job location]  Senior Network Engineer | Singapore Office
+  286143  silent hybrid GREENHOUSE  none -> hybrid  [required partial attendance at office]  Platform Engineer | Northern Virginia
+  653625  silent hybrid WORKDAY  none -> hybrid  [required regular office attendance]  Software Development Manager(Burnaby) | Vancouver
+  1008345  silent hybrid WORKDAY  none -> remote  [role arrangement declares remote]  Mainframe Platform & Infrastructure Engineer | All Cities - Brazil
+  72790  silent hybrid GREENHOUSE  none -> hybrid  [role explicitly declares hybrid work]  Director, WMS Product Design/Development [OPERATIONS TECHNOLOGY] | Aurora, IL, United States; Goodyear, AZ, United States; Irving, TX, United States; New York, NY, United States; Newark, NJ, United States; Phoenix, AZ, United States
+  100851  silent hybrid GREENHOUSE  none -> hybrid  [role explicitly declares hybrid work]  Senior Product Manager, Atlas Agent Engine | Gurugram
+  171094  silent hybrid GREENHOUSE  none -> hybrid  [unhedged company working arrangement]  Lead technique en ingénierie de données (Tech Lead data engineer) | Montréal, Quebec, Canada; Québec, Quebec, Canada
+  832984  silent hybrid WORKDAY  none -> hybrid  [unhedged shared hybrid arrangement]  Software Engineer III | Canada - Mississauga, ON
+  1155167  silent hybrid WORKDAY  none -> hybrid  [unhedged shared hybrid arrangement]  Software Engineer (React.js, Python) | Krakow
+  718  silent office GREENHOUSE  none -> onsite  [company declares office every day]  Lead Agile Delivery- Merchandising Capabilities (P3081) - Cincinnati | Cincinnati, OH
+  1367958  silent office WORKDAY  none -> onsite  [explicit office work statement]  Associate Director- API Process Science | Zurich, Switzerland
+  166643  silent office GREENHOUSE  none -> onsite  [explicit role onsite statement]  Manufacturing Engineering Internship - Spring 2027 | El Segundo, California, United States
+  188713  silent office GREENHOUSE  none -> onsite  [explicit role onsite statement]  Senior Developer, MS Dynamics 365 F&O - Atlanta, GA | Atlanta, GA
+  196276  silent office GREENHOUSE  none -> remote  [explicit role remote statement]  PL/SR Desenvolvimento Fullstack (Java e React) | Brasil
+  1358287  silent office WORKDAY  none -> onsite  [five days at client office]  Software Developer | US.FL.Tallahassee.3522 Thomasville Rd
+  742896  silent office WORKDAY  none -> remote  [home work location label]  Full-Stack AI Engineer (AI Service Engines & Integration) | Work at Home
+  302755  silent office GREENHOUSE  none -> onsite  [in person throughout internship duration]  Software Engineering Intern (Summer 2027) | New York, NY
+  503608  silent office WORKDAY  none -> onsite  [job heading names mode]  Network Operations Engineer II | Denver, CO
+  1245432  silent office WORKDAY  none -> onsite  [named office as work location]  Project Manager - Company CIO Office (CIOO) | Tokyo, Japan
+  635881  silent office WORKDAY  none -> onsite  [own work at customer site]  Integrated Operations (IO) Bridge Analyst - Night Shift | Denver, CO, US
+  636955  silent office WORKDAY  none -> onsite  [own work at customer site]  Shipboard Network Engineering Implementation Support | Washington, DC, US
+  503493  silent office WORKDAY  none -> onsite  [own work is onsite support]  Desktop / mobile Support | Cleveland, OH
+  924428  silent office WORKDAY  none -> onsite  [recruiting tag declares mode]  2027 Technology, Cyber & Data Internship Program | United States Of America, Connecticut, Orange
+  292260  silent office GREENHOUSE  none -> remote  [remote arrangement under benefits heading]  SR Desenvolvimento Back-end (Java + Node) | Brasil
+  635664  silent office WORKDAY  none -> onsite  [required onsite work location]  AI Prompt Engineer | Indianapolis, IN, US
+  19976  silent office GREENHOUSE  none -> hybrid  [required regular office attendance]  Sr. Technical Program Manager I - Enterprise | Boston, Massachusetts, United States
+  64054  silent office GREENHOUSE  none -> hybrid  [required regular office attendance]  Sr. Software Engineer, Financial Platform | South San Francisco, California, USA
+  88902  silent office GREENHOUSE  none -> hybrid  [required regular office attendance]  Machine Learning Engineer | Boston or NYC
+  88903  silent office GREENHOUSE  none -> hybrid  [required regular office attendance]  ML Research Engineer | Boston or NYC
+  815203  silent office WORKDAY  none -> onsite  [required work from named office]  Post Doctoral Researcher - AI | Niskayuna
+  509790  silent office WORKDAY  none -> onsite  [role assigned named office]  Senior Software Systems Engineer | Beverly, MA
+  514544  silent office WORKDAY  none -> onsite  [role assigned named office]  Director, Network Solutions | New York - Broadway
+  514705  silent office WORKDAY  none -> onsite  [role assigned named office]  AI Engineer, PE | Boston
+  344074  silent office GREENHOUSE  none -> onsite  [role based at client site]  Entry Level Support Engineer | New Zealand - Northcote
+  793942  silent office WORKDAY  none -> onsite  [role based in named office]  Analyst I, Agentic Search | Powai, Mumbai, MH
+  301849  silent office GREENHOUSE  none -> onsite  [role based onsite at facility]  Senior Software Engineer - Data Engineering | Auckland, NZ
+  80698  silent office GREENHOUSE  none -> onsite  [role explicitly requires presencial work]  SOFTWARE DEVELOPER SPECIALIST I | Belo Horizonte, MG
+  293146  silent office GREENHOUSE  none -> onsite  [role requires named office presence]  Senior Software Engineer, DevOps | San Mateo, CA
+  1066559  silent office WORKDAY  none -> onsite  [support at users sites]  Media Malware Analyst, Journeyman | Odenton, MD
+  785769  silent office WORKDAY  none -> onsite  [teaching in person on campus]  Operating Systems Fundamentals – Adjunct Faculty – Traditional Campus - (Spring 2027) – College of Engineering and Technology | AZ Phoenix
+  340461  silent office GREENHOUSE  none -> onsite  [team works in office]  Lead Engineer, Applied AI (Customer Agent) | Boston, MA
+  1219525  silent office WORKDAY  none -> onsite  [unhedged company office model]  Product Owner Senior (LoadRunner) | PA - Pittsburgh (15219)
+  906839  silent office WORKDAY  none -> onsite  [work at customer sites]  Insurance Advisor, Community Branch Network | Fort Langley, BC
+  954111  silent office WORKDAY  none -> onsite  [work at customer sites]  MedTech Field Service Software Tech Entry level - Southeast US | Orlando, FL
+  995033  silent office WORKDAY  none -> onsite  [work at customer sites]  Resident Engineer | Newport, United Kingdom
+  995365  silent office WORKDAY  none -> onsite  [work at customer sites]  Control Design Engineer | Banbury, United Kingdom
+  231183  silent remote ASHBY  none -> hybrid  [company declares combined work model]  Technical Product Manager, Integrations | San Francisco
+  231188  silent remote ASHBY  none -> hybrid  [company declares combined work model]  AI Automation Engineer | São Paulo
+  278804  silent remote GREENHOUSE  none -> remote  [company declares fully remote work]  Senior Full-stack Engineer (Angular&Python) | Ukraine
+  39077  silent remote GREENHOUSE  none -> hybrid  [company declares hybrid work model]  Intern Engineering | IL-Bloomington; WI-SunPrairie
+  125770  silent remote GREENHOUSE  none -> hybrid  [company declares hybrid work model]  Senior Software Engineer - UI | Pune, IN
+  129064  silent remote GREENHOUSE  none -> hybrid  [company declares hybrid work model]  Senior Infrastructure Engineer (OpenTofu) | Washington, D.C.
+  244775  silent remote ASHBY  none -> hybrid  [company requires regular office days]  Backend Developer - Golang (f/m/d) | Hamburg
+  359545  silent remote GREENHOUSE  none -> remote  [explicit fully remote position]  Software Engineer | PERM - N/A
+  655464  silent remote WORKDAY  none -> hybrid  [explicit hybrid work arrangement]  Site Reliability Engineer III (Multiple Openings) | Chicago - 20 S. Wacker
+  636445  silent remote WORKDAY  none -> onsite  [explicit onsite work requirement]  Software Engineer | Ypsilanti, MI, US
+  733531  silent remote WORKDAY  none -> remote  [explicit remote work arrangement]  SAP EWM Lead Consultant | USA - GA - ALPHARETTA
+  313099  silent remote GREENHOUSE  none -> hybrid  [explicit role hybrid arrangement]  Network Manager | Dublin, Ireland
+  1229022  silent remote WORKDAY  none -> hybrid  [explicit role hybrid arrangement]  Pre-Sales Engineer | Nashville
+  1239793  silent remote WORKDAY  none -> hybrid  [explicit role hybrid arrangement]  IT Software Engineer I | Hyderabad, Telangana, India
+  1196327  silent remote WORKDAY  none -> remote  [explicit role remote arrangement]  Consulting Director, DFIR, Reactive Services (Unit 42) | Burbank, United States of America
+  185182  silent remote GREENHOUSE  none -> remote  [explicit role remote statement]  Software Engineer, Privacy Engineering | Bay Area, CA, United States of America
+  197021  silent remote GREENHOUSE  none -> hybrid  [hybrid arrangement with remote allowance]  Staff QA Software Engineer | Santa Clara, California, United States
+  971457  silent remote WORKDAY  none -> onsite  [job details declare mode]  Senior Automation Engineer | Kenosha, WI
+  329826  silent remote GREENHOUSE  none -> remote  [job heading names mode]  SRE Manager | India
+  338824  silent remote GREENHOUSE  none -> onsite  [later remote arrangement conditional]  Accubid Anywhere Systems & Database Manager | Sioux Center, IA
+  702128  silent remote WORKDAY  none -> remote,hybrid  [multiple recruiting mode tags]  CDP Architect | New York - 150 E 42nd
+  1386569  silent remote WORKDAY  none -> onsite  [office named in vacancy location]  Technology Specialist I | TG - HQ - Dallas Office
+  62159  silent remote GREENHOUSE  none -> remote,onsite  [office or remote explicitly offered]  Software Engineer - Application Platform | San Francisco, CA • New York, NY • United States
+  1374137  silent remote WORKDAY  none -> onsite  [office shifts with occasional homeworking]  Senior Citrix Engineer | Kuala Lumpur - GOC (No PHs)
+  278433  silent remote GREENHOUSE  none -> onsite  [office with occasional remote days]  Junior Software Engineer | Kraków, Lesser Poland Voivodeship, Poland
+  1255650  silent remote WORKDAY  none -> onsite  [office work remote expressly prohibited]  Next Gen Quant Equity Researcher | Robeco Institutional Asset Management US Inc. - Boston
+  591945  silent remote WORKDAY  none -> onsite  [onsite required remote ruled out]  ASIC Implementation Engineer PD | USA-CA San Jose Innovation Drive
+  1065698  silent remote WORKDAY  none -> onsite  [onsite with alternatives excluded]  UAS Systems Integration Engineer | Huntsville, AL
+  662801  silent remote WORKDAY  none -> onsite  [own work at user offices]  IT Support Specialist II | Ghana
+  277626  silent remote GREENHOUSE  none -> onsite  [own work in lab environments]  Embedded Software Engineer | Fairmont, WV
+  1540996  silent remote WORKDAY  none -> onsite  [own work is onsite support]  Associate Technical Support Analyst - Storage/Backups/Linux | Information Technology Center
+  722871  silent remote WORKDAY  none -> hybrid  [partial telecommuting near office]  Software Engineer 3 | Austin
+  293660  silent remote GREENHOUSE  none -> remote  [remote candidates within eligible states]  UX/UI Conversion Specialist | Arlington, VA
+  191366  silent remote GREENHOUSE  none -> remote  [remote with country eligibility restriction]  Senior Full Stack Java + Angular Developer | Costa Rica
+  330001  silent remote GREENHOUSE  none -> remote  [remote with country restriction]  Senior Full Stack Java + Angular Developer | Costa Rica
+  67087  silent remote GREENHOUSE  none -> remote  [remote work with residence restriction]  Revenue Operations Analyst (Bosnia and Herzegovina) | Bosnia and Herzegovina
+  318391  silent remote GREENHOUSE  none -> remote  [remote work with team]  Senior Software Engineer - Rust | Noida, Delhi NCR
+  672504  silent remote WORKDAY  none -> hybrid  [required hybrid work arrangement]  Sr. Mobile Engineer | Atlanta GA
+  77266  silent remote GREENHOUSE  none -> hybrid  [required office majority with remote]  Senior Systems Analyst | Lincoln, NE, United States; Omaha, NE, United States
+  1355448  silent remote WORKDAY  none -> hybrid  [required regular office engagement]  VP, Senior Cloud Data Architecture & Migration Leader | Stamford Hub
+  1007210  silent remote WORKDAY  none -> onsite  [support at users sites]  Site Support Engineer | Noida
+  504972  silent remote WORKDAY  none -> hybrid  [unhedged company hybrid model]  Senior Business Intelligence Developer - 20-Month Contract | Mississauga
+  1257083  silent remote WORKDAY  none -> hybrid  [unhedged company hybrid model]  Databricks Solutions Architect Senior Manager | NEW YORK CITY
+  1257102  silent remote WORKDAY  none -> hybrid  [unhedged company hybrid model]  Legal, Risk & Compliance - Investigations & Forensic Senior Consultant | NEW YORK CITY
+  1257173  silent remote WORKDAY  none -> hybrid  [unhedged company hybrid model]  San Francisco Technology Audit & Advisory Senior Manager | SAN FRANCISCO
+  1257189  silent remote WORKDAY  none -> hybrid  [unhedged company hybrid model]  AI ML Solution Architect & Developer Senior Manager | LOS ANGELES
+  1257355  silent remote WORKDAY  none -> hybrid  [unhedged company hybrid model]  Atlanta Technology Consulting Intern - 2027 | ATLANTA - PEACHTREE RD
+  1257359  silent remote WORKDAY  none -> hybrid  [unhedged company hybrid model]  Legal, Risk & Compliance - Investigations & Forensic Senior Consultant | NEW YORK CITY
+  1366322  silent remote WORKDAY  none -> hybrid  [unhedged company hybrid model]  Solutions Architect - Networking & Security | Barcelona, Spain
+  186420  silent remote GREENHOUSE  none -> remote  [unhedged company working arrangement]  Principal Data Architect | BRAZIL
+  186425  silent remote GREENHOUSE  none -> remote  [unhedged company working arrangement]  Senior Cloud Architect | MEXICO
+  944467  silent remote WORKDAY  none -> hybrid  [unhedged shared hybrid arrangement]  Principal Frontend Developer | Istanbul (VADI ISTANBUL PARK)
+  1102963  silent remote WORKDAY  none -> hybrid  [unhedged shared hybrid arrangement]  Consultant Conversion - Software Eng III : Job Level - Director | Montreal
+  1187613  silent remote WORKDAY  none -> hybrid  [weekly days working from home]  Salesforce Platform Engineer | Paris
+  635923  silent remote WORKDAY  none -> hybrid  [weekly office and remote days]  Senior DevOps Engineer | Arlington, VA, US
+  796638  silent remote WORKDAY  none -> hybrid  [weekly office and remote days]  Senior Software Engineer | Milford, Michigan, United States of America
+  696655  silent remote WORKDAY  none -> hybrid  [work model with remote proportion]  KYC IT Product Owner (f/m/x) | Bucharest, 6A Dimitrie Pompeiu Blvd
+  697295  silent remote WORKDAY  none -> hybrid  [work model with remote proportion]  Information Security Analyst (f/m/x) | Bucharest, 6A Dimitrie Pompeiu Blvd
+  33192  silent remote GREENHOUSE  none -> onsite  [work travelling to client sites]  Lead Applied Value Engineer - High Tech | New York, US, New York

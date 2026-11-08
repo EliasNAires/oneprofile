@@ -1,0 +1,22 @@
+{
+  "137859": {"verdict": "neither", "clause": "This vacancy, not the company: Modes listed as a perk or a flexibility", "pattern": "modes offered as work flexibility"},
+  "166615": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "explicit role hybrid label"},
+  "166643": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "explicit role onsite statement"},
+  "171094": {"verdict": "a", "clause": "This vacancy, not the company: A company's statement of how its people work", "pattern": "unhedged company working arrangement"},
+  "172256": {"verdict": "a", "clause": "An office this role is based in", "pattern": "office base beside hybrid policy"},
+  "185182": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "explicit role remote statement"},
+  "186019": {"verdict": "b", "clause": "This vacancy, not the company: Modes listed as a perk or a flexibility", "pattern": "modes offered as work flexibility"},
+  "186420": {"verdict": "a", "clause": "This vacancy, not the company: A company's statement of how its people work", "pattern": "unhedged company working arrangement"},
+  "186425": {"verdict": "b", "clause": "This vacancy, not the company: A company's statement of how its people work", "pattern": "unhedged company working arrangement"},
+  "187389": {"verdict": "b", "clause": "This vacancy, not the company: naming a preference rather than an arrangement", "pattern": "location preference without work arrangement"},
+  "188186": {"verdict": "b", "clause": "A choice of modes is a choice: A hybrid vacancy that names its office and its remote days", "pattern": "hybrid arrangement with remote allowance"},
+  "188713": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "explicit role onsite statement"},
+  "191353": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "hybrid with weekly office schedule"},
+  "191366": {"verdict": "b", "clause": "Remote: A country, region or time zone the person must live in does not change it", "pattern": "remote with country eligibility restriction"},
+  "196276": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "explicit role remote statement"},
+  "196989": {"verdict": "b", "clause": "This vacancy, not the company: Modes listed as a perk or a flexibility", "pattern": "mode listed as a benefit"},
+  "197021": {"verdict": "a", "clause": "A choice of modes is a choice: A hybrid vacancy that names its office and its remote days", "pattern": "hybrid arrangement with remote allowance"},
+  "200413": {"verdict": "neither", "clause": "Hybrid: days a week or a month in the office", "pattern": "monthly remote days alongside office"},
+  "200690": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "explicit role hybrid label"},
+  "216615": {"verdict": "a", "clause": "This vacancy, not the company: A floor covers every role even where some groups may ask for more", "pattern": "company minimum weekly office schedule"}
+}

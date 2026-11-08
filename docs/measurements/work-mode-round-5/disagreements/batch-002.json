@@ -1,0 +1,122 @@
+[
+ {
+  "id": "137859",
+  "text": "company: SentinelOne\ntitle: Senior Software Engineer - AI Platform\nlocation: Slovakia\nfield: -\ndescription:\n[under: Work Perks & Flexibility] - Global home office allowance\n[under: Work Perks & Flexibility] - Hybrid work in Prague (Karlin), Brno (Clubco) or remote in CZ/SK. Only Prague-based employees are required to work from the office at least 2 days/week.",
+  "a": "remote,hybrid",
+  "b": "hybrid"
+ },
+ {
+  "id": "166615",
+  "text": "company: VantageScore\ntitle: Senior Data Scientist\nlocation: Washington D.C. / New York\nfield: -\ndescription:\n[under: Senior AI Engineer] Hybrid - Washington D.C. (preferred) or New York, NY",
+  "a": "hybrid",
+  "b": "none"
+ },
+ {
+  "id": "166643",
+  "text": "company: Varda Space Industries\ntitle: Manufacturing Engineering Internship - Spring 2027\nlocation: El Segundo, California, United States\nfield: -\ndescription:\n> [under: About Varda] Varda is headquartered in El Segundo, California, where we have offices and a production facility where our vehicles, equipment, and materials are built, integrated, and tested.\n> [under: About Varda] Varda also has offices in Washington, DC and Huntsville, AL.\n[under: About This Role] Internships are full-time and on-site in El Segundo, CA.",
+  "a": "none",
+  "b": "onsite"
+ },
+ {
+  "id": "171094",
+  "text": "company: Vooban\ntitle: Lead technique en ingénierie de données (Tech Lead data engineer)\nlocation: Montréal, Quebec, Canada; Québec, Quebec, Canada\nfield: -\ndescription:\n[under: Les avantages de te joindre à la gang] Nous travaillons en formule hybride.",
+  "a": "hybrid",
+  "b": "none"
+ },
+ {
+  "id": "172256",
+  "text": "company: Wayve\ntitle: Engineering Manager, SRE – AV Fleet, Japan\nlocation: Japan\nfield: -\ndescription:\nSet technical direction for observability, SLI/SLOs, production readiness, release safety, automation, remote diagnostics and fleet tooling; participate directly in design and code reviews and challenge failure assumptions.\nBuild scalable tooling and automation Guide the design and delivery of tools, services and APIs that improve fleet visibility, health monitoring, remote diagnosis, configuration, release safety and operational control.\nWillingness to work regularly onsite in the Yokohama area and join an engineering escalation rotation.\nThis position is based in Japan and is not fully remote.\nThe role requires regular presence with the team and fleet, occasional work outside standard office hours for critical operational events, and domestic or international travel as programme needs require.\nThis is a full-time role based in our office in Yokohama, Japan.\nAt Wayve we want the best of all worlds so we operate a hybrid working policy that combines time together in our offices and workshops to fuel innovation, culture, relationships and learning, and time spent working from home.",
+  "a": "hybrid",
+  "b": "onsite"
+ },
+ {
+  "id": "185182",
+  "text": "company: Block\ntitle: Software Engineer, Privacy Engineering\nlocation: Bay Area, CA, United States of America\nfield: -\ndescription:\n[under: The Role] You will be fully remote and report to the Data Foundations Engineering Manager.\n> [under: Use of AI in Our Hiring Process] Remote work, medical insurance, flexible time off, retirement savings plans, and modern family planning are just some of our offering.",
+  "a": "none",
+  "b": "remote"
+ },
+ {
+  "id": "186019",
+  "text": "company: Cambridge Consultants\ntitle: Principal Engineer - Human-Centric Technologies (Defence & Security)\nlocation: United Kingdom\nfield: -\ndescription:\n[under: The Role] We offer a flexible approach to hybrid working, although some of the projects you will be working on will require full-time working in the office.",
+  "a": "hybrid",
+  "b": "none"
+ },
+ {
+  "id": "186420",
+  "text": "company: Caylent\ntitle: Principal Data Architect\nlocation: BRAZIL\nfield: -\ndescription:\n> We are a fully remote global company with employees in Canada, the United States and Latin America.\nWe are a fully remote global company with employees in Canada, the United States and Latin America.\n[under: Benefits] - 100% remote work\n[under: Benefits] - Equipment & Office Stipend",
+  "a": "remote",
+  "b": "none"
+ },
+ {
+  "id": "186425",
+  "text": "company: Caylent\ntitle: Senior Cloud Architect\nlocation: MEXICO\nfield: -\ndescription:\n> We are a fully remote global company with employees in Canada, the United States and Latin America.\n[under: Benefits] - 100% remote work\n[under: Benefits] - Equipment & Office Stipend",
+  "a": "none",
+  "b": "remote"
+ },
+ {
+  "id": "187389",
+  "text": "company: ChargePoint\ntitle: Senior Endpoint Security Engineer\nlocation: IN-HR-Gurugram-418-419\nfield: -\ndescription:\n[under: Nice to Have] Gurgaon/Bangalore/Remote",
+  "a": "remote",
+  "b": "none"
+ },
+ {
+  "id": "188186",
+  "text": "company: Compeer Financial\ntitle: Senior Infrastructure Engineer - Network\nlocation: IL-Bloomington; MN-Lakeville; MN-Mankato; WI-Sun Prairie\nfield: -\ndescription:\n> [under: Empowered to live. Inspired to work.] Join us in a culture that not only promotes meaningful work and professional development, but provides a flexible, hybrid work environment and excellent benefits, which empower you to thrive both personally and professionally.\n> [under: How we support you] - Hybrid model – up to 50% work from home\nWhere you will work: This position offers a hybrid work option up to 50% remote and is based out of the Bloomington, IL; Sun Prairie, WI; Lakeville, MN; Mankato, MN office locations.",
+  "a": "hybrid,onsite",
+  "b": "hybrid"
+ },
+ {
+  "id": "188713",
+  "text": "company: Cortland\ntitle: Senior Developer, MS Dynamics 365 F&O - Atlanta, GA\nlocation: Atlanta, GA\nfield: -\ndescription:\nThe onsite Senior Developer is responsible for the ongoing development, integration and support of Microsoft Dynamics 365 Finance & Operations at Cortland.\n> [under: GDPR Statement] Controller’s data protection officer is Greg Shultz, who can be contacted at Greg.Shultz@cortland.com.",
+  "a": "onsite",
+  "b": "none"
+ },
+ {
+  "id": "191353",
+  "text": "company: Encora\ntitle: Quality Engineering Performance\nlocation: Peru\nfield: -\ndescription:\nModalidad: Híbrida, 2 veces por semana en oficina.",
+  "a": "hybrid",
+  "b": "none"
+ },
+ {
+  "id": "191366",
+  "text": "company: Encora\ntitle: Senior Full Stack Java + Angular Developer\nlocation: Costa Rica\nfield: -\ndescription:\nModality: Remote only in Costa Rica or Peru.",
+  "a": "none",
+  "b": "remote"
+ },
+ {
+  "id": "196276",
+  "text": "company: ília\ntitle: PL/SR Desenvolvimento Fullstack (Java e React)\nlocation: Brasil\nfield: -\ndescription:\n[under: Benefícios e Incentivos] Nossa contratação é CLT- 40h semanais com jornada flexível, sendo executada de forma remota.\n[under: Para Saúde e bem-estar] - Auxílio Home-Office em cartão flexível Caju benefícios;",
+  "a": "none",
+  "b": "remote"
+ },
+ {
+  "id": "196989",
+  "text": "company: IONOS EN\ntitle: Staff Reliability Engineer (f/m/d) Ceph Storage Platform\nlocation: Revaler Straße 28-31, 10245 Berlin\nfield: -\ndescription:\n[under: Your tasks] - Solid understanding of server hardware (disks, controllers, NICs) and how it affects storage performance, so you can diagnose hardware-related issues remotely\n[under: Benefits] - Hybrid working model.\n[under: Benefits] - Modern office space with very good transport connections.",
+  "a": "hybrid",
+  "b": "none"
+ },
+ {
+  "id": "197021",
+  "text": "company: IonQ\ntitle: Staff QA Software Engineer\nlocation: Santa Clara, California, United States\nfield: -\ndescription:\nLocation: This role is based at our Santa Clara, CA office, with the option to work a few days a week remotely.\n> [under: Wage Transparency] Compensation will vary based on individual factors such as education, qualifications, and experience of the final candidate(s), specific office location, and calibration against relevant market data and internal team equity.",
+  "a": "hybrid",
+  "b": "none"
+ },
+ {
+  "id": "200413",
+  "text": "company: Mirakl - Labs\ntitle: Data Scientist - Intern\nlocation: Paris, France\nfield: -\ndescription:\n> [under: Mirakl in Numbers] - 750+ employees in 9 offices worldwide: Paris, Barcelona, Bordeaux, Boston, London, Munich, New York, Sydney, Tokyo\n[under: Perks & Benefits] - 2 remote work days per month\n[under: Perks & Benefits] - Modern offices in the heart of Paris (near the Eiffel Tower)\n[under: 7. Our Hiring Process] This is an internship position based in Paris, with up to two days of remote work permitted per month.",
+  "a": "onsite",
+  "b": "remote"
+ },
+ {
+  "id": "200690",
+  "text": "company: MongoDB\ntitle: Staff Engineer\nlocation: Gurugram\nfield: -\ndescription:\nWe are looking to speak to candidates who are based in Gurugram for our hybrid working model.\n[under: About MongoDB] With offices worldwide and over 67,000 customers, including AI-native startups and approximately 75% of the Fortune 100, relying on MongoDB for their most important applications, we’re powering the next era of software.",
+  "a": "none",
+  "b": "hybrid"
+ },
+ {
+  "id": "216615",
+  "text": "company: 9fin\ntitle: Backend Engineer\nlocation: London\nfield: -\ndescription:\n# Hybrid Policy\n[under: Hybrid Policy] 9fin is a hybrid company, and the office is a regular part of how we work.\n[under: Hybrid Policy] From January 2027, all employees will work from their designated 9fin office on Tuesdays and Wednesdays.\n[under: Hybrid Policy] Some teams may be asked to be in the office more often, where the nature of their work calls for it.\n[under: Hybrid Policy] Your Talent Partner will share hybrid working details for this role.",
+  "a": "hybrid",
+  "b": "none"
+ }
+]

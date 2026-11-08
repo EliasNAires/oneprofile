@@ -1,0 +1,22 @@
+{
+  "1187613": {"verdict": "b", "clause": "Hybrid. Part of the work is done in an office on a regular schedule, and part away from it", "pattern": "weekly days working from home"},
+  "1196327": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "explicit role remote arrangement"},
+  "1219525": {"verdict": "a", "clause": "This vacancy, not the company. A company's statement of how its people work, its model or its schedule, stated without a hedge, covers every role", "pattern": "unhedged company office model"},
+  "1229022": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "explicit role hybrid arrangement"},
+  "1239793": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "explicit role hybrid arrangement"},
+  "1245432": {"verdict": "b", "clause": "An office this role is based in", "pattern": "named office as work location"},
+  "1255650": {"verdict": "a", "clause": "Ruled out is not offered", "pattern": "office work remote expressly prohibited"},
+  "1257083": {"verdict": "b", "clause": "This vacancy, not the company. A company's statement of how its people work, its model or its schedule, stated without a hedge, covers every role", "pattern": "unhedged company hybrid model"},
+  "1257102": {"verdict": "a", "clause": "This vacancy, not the company. A company's statement of how its people work, its model or its schedule, stated without a hedge, covers every role", "pattern": "unhedged company hybrid model"},
+  "1257173": {"verdict": "a", "clause": "This vacancy, not the company. A company's statement of how its people work, its model or its schedule, stated without a hedge, covers every role", "pattern": "unhedged company hybrid model"},
+  "1257189": {"verdict": "b", "clause": "This vacancy, not the company. A company's statement of how its people work, its model or its schedule, stated without a hedge, covers every role", "pattern": "unhedged company hybrid model"},
+  "1257355": {"verdict": "b", "clause": "This vacancy, not the company. A company's statement of how its people work, its model or its schedule, stated without a hedge, covers every role", "pattern": "unhedged company hybrid model"},
+  "1257359": {"verdict": "b", "clause": "This vacancy, not the company. A company's statement of how its people work, its model or its schedule, stated without a hedge, covers every role", "pattern": "unhedged company hybrid model"},
+  "1330296": {"verdict": "a", "clause": "Hybrid. Part of the work is done in an office on a regular schedule, and part away from it", "pattern": "explicit role hybrid arrangement"},
+  "1343256": {"verdict": "b", "clause": "The most specific statement about this job decides", "pattern": "hybrid label in work location"},
+  "1355448": {"verdict": "a", "clause": "Hybrid. An office the person must come into regularly", "pattern": "required regular office engagement"},
+  "1358287": {"verdict": "a", "clause": "Onsite. The work is done at the employer's or a client's site on every working day", "pattern": "five days at client office"},
+  "1366322": {"verdict": "b", "clause": "This vacancy, not the company. A company's statement of how its people work, its model or its schedule, stated without a hedge, covers every role", "pattern": "unhedged company hybrid model"},
+  "1367958": {"verdict": "a", "clause": "Onsite. The work is done at the employer's or a client's site on every working day", "pattern": "explicit office work statement"},
+  "1369219": {"verdict": "a", "clause": "Hybrid. Days a week or a month in the office", "pattern": "monthly minimum office days"}
+}

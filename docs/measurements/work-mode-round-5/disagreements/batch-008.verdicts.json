@@ -1,0 +1,7 @@
+{
+  "1374137": {"verdict": "a", "clause": "Onsite.", "pattern": "office shifts with occasional homeworking"},
+  "1383036": {"verdict": "a", "clause": "This vacancy, not the company.", "pattern": "company schedule hedged by role"},
+  "1386569": {"verdict": "b", "clause": "The most specific statement about this job decides.", "pattern": "office named in vacancy location"},
+  "1432042": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule.", "pattern": "weekly homeworking after probation"},
+  "1540996": {"verdict": "b", "clause": "Onsite.", "pattern": "own work is onsite support"}
+}

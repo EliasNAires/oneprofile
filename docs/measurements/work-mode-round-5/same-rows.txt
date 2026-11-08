@@ -1,0 +1,9 @@
+Round 5's rules (549de0c, from the database after POST /work-modes) scored on round 4's 525 rows against round 4's settled labels.
+Computed by the review's own script, not the scorer: same-text rows (same.tsv) are left out, so round 4's figures differ from its archive by up to a point.
+
+round-4 rules: precision 94.6%  remote 70.6%  hybrid 82.2%  onsite 64.7%
+round-5 rules: precision 94.6%  remote 81.2%  hybrid 85.8%  onsite 73.3%
+changed rows 38 now right 35 were right 2
+  81687 silent remote none -> remote settled onsite
+  490715 silent remote none -> onsite settled none
+  512816 silent remote none -> hybrid settled none

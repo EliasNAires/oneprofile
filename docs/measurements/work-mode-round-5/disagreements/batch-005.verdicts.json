@@ -1,0 +1,22 @@
+{
+  "635881": {"verdict": "b", "clause": "Onsite: one whose own work is done at its users' or customers' site", "pattern": "own work at customer site"},
+  "635923": {"verdict": "a", "clause": "A mode word with a schedule is read with its schedule", "pattern": "weekly office and remote days"},
+  "636445": {"verdict": "b", "clause": "What a work mode is: Onsite", "pattern": "explicit onsite work requirement"},
+  "636955": {"verdict": "a", "clause": "Onsite: one whose own work is done at its users' or customers' site", "pattern": "own work at customer site"},
+  "653625": {"verdict": "b", "clause": "Hybrid: an office the person must come into regularly", "pattern": "required regular office attendance"},
+  "655464": {"verdict": "b", "clause": "What a work mode is: Hybrid", "pattern": "explicit hybrid work arrangement"},
+  "662801": {"verdict": "b", "clause": "Onsite: one whose own work is done at its users' or customers' site", "pattern": "own work at user offices"},
+  "672504": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "required hybrid work arrangement"},
+  "696655": {"verdict": "a", "clause": "This vacancy, not the company: a company's statement of how its people work, its model or its schedule, stated without a hedge", "pattern": "work model with remote proportion"},
+  "697295": {"verdict": "b", "clause": "This vacancy, not the company: a company's statement of how its people work, its model or its schedule, stated without a hedge", "pattern": "work model with remote proportion"},
+  "702128": {"verdict": "b", "clause": "The most specific statement about this job decides: a recruiting tag in the description", "pattern": "multiple recruiting mode tags"},
+  "722871": {"verdict": "b", "clause": "What a work mode is: Hybrid", "pattern": "partial telecommuting near office"},
+  "733531": {"verdict": "a", "clause": "The most specific statement about this job decides", "pattern": "explicit remote work arrangement"},
+  "742896": {"verdict": "a", "clause": "The most specific statement about this job decides: a label in the location", "pattern": "home work location label"},
+  "757172": {"verdict": "b", "clause": "An office this role is based in", "pattern": "office named as job location"},
+  "782456": {"verdict": "b", "clause": "A choice of modes is a choice; A mode word with a schedule is read with its schedule", "pattern": "remote or scheduled hybrid choice"},
+  "785769": {"verdict": "a", "clause": "What a work mode is: Onsite", "pattern": "teaching in person on campus"},
+  "793942": {"verdict": "a", "clause": "An office this role is based in", "pattern": "role based in named office"},
+  "796638": {"verdict": "b", "clause": "A mode word with a schedule is read with its schedule", "pattern": "weekly office and remote days"},
+  "815203": {"verdict": "a", "clause": "An office this role is based in", "pattern": "required work from named office"}
+}
