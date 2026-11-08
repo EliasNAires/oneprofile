@@ -44,6 +44,8 @@ whose description states a mode, the share that is remote, **per ATS**. Where an
 **10% or less**, a silent city of that ATS counts as an office: its declared location is its country
 set, as an onsite one's is (ADR-0027). Elsewhere it stays unknown. The next calibration after #98
 closes runs the count and writes the outcome here.
+#98 closed on 2026-11-08 without passing its gates; ADR-0030's *Consequences* say why the count's outcome holds
+anyway, and lets it run.
 
 The count leans safe: a remote job usually says so, an office job often does not, so the silent
 vacancies are likely remote less often than the ones that state a mode. What would make it unsafe is

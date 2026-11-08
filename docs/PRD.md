@@ -203,6 +203,9 @@ culture or a benefit. Built and measured once (`docs/measurements/2026-10-work-m
 it gives a mode to 21,534 vacancies of the subset, raising the share with a mode from 30.6% to 44.4%,
 at 97.7% precision; its remote recall on undeclared vacancies is 56.6%, short of #98's 90% gate,
 mostly a choice whose remote option it does not read, so #98 becomes a rule loop (ADR-0030).
+The loop stopped at its cap of five rounds with every gate failing: precision 87.9%, remote recall 77.2%,
+hybrid 78.9%, onsite 69.6%, with 52.2% of the subset given a mode (`docs/measurements/work-mode-round-5.txt`).
+Elias accepted it and kept the rule as it stands (2026-11-08); how to raise the figures is #104.
 It was left for after the launch on 2026-10-27, and taken up on 2026-10-30 (Elias): #12 found
 48% of the unknowns for Argentina onsite or hybrid by their text, and with the mode known the
 eligibility rules can assume where the job is and read only where the company hires.

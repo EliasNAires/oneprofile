@@ -194,7 +194,18 @@ gold rows, so this agreement says little about it; round 3's re-score, where it 
   wide, too wide to tell a round at 85% from one at 92%.
 - **Reusing the measurement's 200 rows as the gold set**: cheaper, but none could be held out.
 
+## Stopped at the cap (Elias, 2026-11-08)
+
+The loop stopped after round 5 with every gate failing on its fresh draw (`docs/measurements/work-mode-round-5.txt`):
+precision 87.9%, remote recall 77.2%, hybrid 78.9%, onsite 69.6%, against round 1's 95.8%, 63.9%, 51.9% and 49.1%
+under revision 3. The share of the subset given a mode is 52.2%. Elias accepted the failed gates and closed #98 rather
+than run more rounds: recall gains had flattened, each round's fixes reached the rows they were drawn from (on round
+4's rows, round 5's rules reach remote 81.2% and hybrid 85.8%) further than a fresh draw, and a round cost a 93-minute
+run and about 1.3M Codex tokens. The rule stays as it stands. How to raise the figures is #104's to discuss.
+
 ## Consequences
 
-- #103 waits on this loop. Its count of silent cities (ADR-0029) runs once this loop passes, and the
-  per-ATS shares of the measurement are not used before then.
+- #103 no longer waits on this loop. ADR-0029's count was conditional on remote recall passing, which it did not. Its
+  outcome holds anyway: on the snapshot at round 5 every ATS's share is above the 10% line (Workday 10.2%, Greenhouse
+  17.9%, Ashby 14.2%; `work-mode-round-5/count.txt`), and missed remote statements only lower the shares, so better
+  recall could not bring any below it. No ATS's silent cities count as offices.
