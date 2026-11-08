@@ -1,0 +1,328 @@
+#!/usr/bin/env python3
+"""Scores one eligibility rule-loop round (#103, ADR-0029).
+
+    scripts/score-eligibility-round ROUND [NAME]
+
+Run after POST /country-sets. Each invocation advances docs/measurements/eligibility-round-ROUND[-NAME]:
+draw 50 description promises and 50 unknowns (seed 10300 + ROUND), ask eligibility-labeller to write
+labels-N.tsv (id, verdict, reason), keep completed labels by shown text and criterion revision, then
+write blind disagreements for adjudication in disagreements/batch-NNN.json, 20 rows a batch.
+The adjudicator writes batch-NNN.verdicts.json: {id: {verdict: a|b|neither, clause, pattern}}.
+Once all are settled, print both gates with Wilson 95% intervals, raw labeller figures, winners and
+patterns, and archive the report beside the round directory, headed by round, commit and revision.
+
+Only cue segments are shown, capped at the existing sampler's segment length, without neighbours.
+Identical shown texts share one label through same.tsv. Revision-matched kept labels go into batch-0.txt
+and labels-0.tsv; new texts go into batches of 50. Every batch reports its rows and estimated tokens
+(characters / 4), including the mean per row, before labelling. The reusable draw accepts excluded ids;
+rounds exclude none. No gold-set labels are read here.
+"""
+
+import csv
+import hashlib
+import io
+import json
+import math
+import random
+import re
+import subprocess
+import sys
+from collections import Counter, defaultdict
+from contextlib import redirect_stdout
+from importlib.machinery import SourceFileLoader
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+SCRIPTS = Path(__file__).resolve().parent
+sampler = SourceFileLoader("eligibility_sampler", str(SCRIPTS / "draw-eligibility-sample")).load_module()
+REPO = sampler.REPO
+MEASUREMENTS = REPO / "docs" / "measurements"
+KEPT = MEASUREMENTS / "eligibility-labels.tsv"
+CRITERION = REPO / "docs" / "eligibility-criterion.md"
+BATCH = 50
+ADJUDICATION_BATCH = 20
+SEED = 10300
+Z = 1.96
+
+
+def rows(path):
+    with open(path, encoding="utf-8", newline="") as source:
+        return list(csv.DictReader(source, delimiter="\t"))
+
+
+def write_rows(path, header, data):
+    with open(path, "w", encoding="utf-8", newline="") as out:
+        writer = csv.writer(out, delimiter="\t", lineterminator="\n")
+        writer.writerow(header)
+        writer.writerows(data)
+
+
+def revision():
+    return max(map(int, re.findall(r"\*\*Revision (\d+)\*\*", CRITERION.read_text(encoding="utf-8"))), default=1)
+
+
+def cues():
+    names = ["LATAM", "Latin America", "South America", "Americas", "AMER", "Worldwide", "Global",
+             "Anywhere", "EMEA", "APAC", "ANZ", "North America", "Europe"]
+    places = REPO / "src" / "main" / "resources" / "places"
+    if (places / "countries.tsv").exists():
+        names.extend(row["name"] for row in rows(places / "countries.tsv"))
+    if (places / "regions.tsv").exists():
+        names.extend(row["region"] for row in rows(places / "regions.tsv"))
+    return re.compile(sampler.BROAD_CUE.pattern + r"|\boffice|\bon-?site|\bhybrid|\bhire|"
+                      + r"\b(?:" + "|".join(re.escape(name) for name in sorted(set(names))) + r")\b", re.I)
+
+
+CUE = cues()
+
+
+def shown(row, segments, stratum):
+    """The block whose digest identifies a label; no id or rule prediction is included."""
+    stated = {s.get("segment") for s in row["sets"] if s["source"] == "DESCRIPTION"
+              and s.get("segment") is not None}
+    texts = [sampler.marked(s) for index, s in enumerate(segments)
+             if CUE.search(s["text"]) or index in stated]
+    ask = "rule" if stratum == "promise" else "reader"
+    return (f"ask: {ask}\ncompany: {sampler.flat(row['company'])}\ntitle: {sampler.flat(row['title'])}\n"
+            f"options: {sampler.options(row)}\ndescription:\n" + ("\n".join(texts) or "-")).strip()
+
+
+def digest(text):
+    return hashlib.sha1(text.strip().encode("utf-8")).hexdigest()
+
+
+def kept():
+    return {(row["digest"], row["revision"]): (row["verdict"], row["reason"])
+            for row in rows(KEPT)} if KEPT.exists() else {}
+
+
+def draw(directory, vacancies, seed=SEED, exclude=(), kept=None):
+    """Draw 50 promises and 50 unknowns; kept(text), if supplied, returns (verdict, reason)."""
+    directory.mkdir(parents=True, exist_ok=True)
+    rng = random.Random(seed)
+    excluded = set(map(str, exclude))
+    available = [row for row in vacancies if row["id"] not in excluded]
+    drawn = []
+    for stratum in ("promise", "unknown"):
+        pool = [row for row in available if (row["AR"]["state"] == "UNKNOWN" if stratum == "unknown" else
+                row["AR"]["state"] == "ELIGIBLE" and row["AR"]["source"] == "DESCRIPTION")]
+        pool.sort(key=lambda row: int(row["id"]))
+        drawn.extend((row, stratum) for row in rng.sample(pool, min(50, len(pool))))
+    write_rows(directory / "sample.tsv", ["id", "stratum", "ats", "title", "options", "rule"],
+               ([row["id"], stratum, row["ats"], sampler.flat(row["title"]), sampler.options(row),
+                 "eligible" if stratum == "promise" else "unclear"]
+                for row, stratum in sorted(drawn, key=lambda item: int(item[0]["id"]))))
+    segments = sampler.segments_of([row["id"] for row, _ in drawn])
+    rng.shuffle(drawn)
+    first, same, known, fresh = {}, [], [], []
+    for row, stratum in drawn:
+        text = shown(row, segments.get(row["id"], []), stratum)
+        if text in first:
+            same.append((row["id"], first[text]))
+            continue
+        first[text] = row["id"]
+        label = kept(text) if kept else None
+        if label is not None:
+            known.append((row["id"], text, label))
+        else:
+            fresh.append((row["id"], text))
+    write_rows(directory / "same.tsv", ["id", "same_as"], same)
+    if known:
+        write_batch(directory / "batch-0.txt", [(id, text) for id, text, _ in known])
+        write_rows(directory / "labels-0.tsv", ["id", "verdict", "reason"],
+                   ([id, *label] for id, _, label in known))
+    for number, start in enumerate(range(0, len(fresh), BATCH), 1):
+        write_batch(directory / f"batch-{number}.txt", fresh[start:start + BATCH])
+    print(f"{len(drawn)} vacancies drawn, {len(same)} reuse a twin, {len(known)} kept, {len(fresh)} to label")
+
+
+def write_batch(path, batch):
+    body = "".join(f"=== {id}\n{text}\n\n" for id, text in batch)
+    path.write_text(body, encoding="utf-8")
+    tokens = len(body) / 4
+    print(f"{path.name}: {len(batch)} rows, estimated {tokens:.0f} tokens, mean {tokens / len(batch):.1f} per row")
+
+
+def blocks(directory):
+    seen = {}
+    for path in sorted(directory.glob("batch-*.txt")):
+        for block in re.split(r"^=== ", path.read_text(encoding="utf-8"), flags=re.M)[1:]:
+            id, _, text = block.partition("\n")
+            seen[id.strip()] = text.strip()
+    for row in rows(directory / "same.tsv"):
+        seen[row["id"]] = seen[row["same_as"]]
+    return seen
+
+
+def labels(directory, sample, same):
+    found = {row["id"]: row for path in sorted(directory.glob("labels-*.tsv")) for row in rows(path)}
+    for row in rows(same):
+        if row["same_as"] in found:
+            found[row["id"]] = found[row["same_as"]]
+    missing = sum(row["id"] not in found for row in sample)
+    if missing:
+        sys.exit(f"{missing} rows lack a labeller's label")
+    for row in sample:
+        allowed = ("eligible", "excluded", "unknown") if row["stratum"] == "promise" else ("open", "closed", "unclear")
+        if found[row["id"]]["verdict"] not in allowed:
+            sys.exit("Invalid labeller verdict for a stratum")
+    return found
+
+
+def keep(directory, current):
+    store, seen, new = kept(), blocks(directory), []
+    for path in sorted(directory.glob("labels-*.tsv")):
+        if path.stem == "labels-0":
+            continue
+        for row in rows(path):
+            key = (digest(seen[row["id"]]), str(current))
+            if key not in store:
+                store[key] = (row["verdict"], row["reason"])
+                new.append((*key, *store[key]))
+    if new:
+        exists = KEPT.exists()
+        with open(KEPT, "a", encoding="utf-8", newline="") as out:
+            writer = csv.writer(out, delimiter="\t", lineterminator="\n")
+            if not exists:
+                writer.writerow(["digest", "revision", "verdict", "reason"])
+            writer.writerows(new)
+        print(f"kept {len(new)} new labels under revision {current}")
+
+
+def wilson(hits, total):
+    share = hits / total
+    centre = (share + Z * Z / (2 * total)) / (1 + Z * Z / total)
+    half = Z * math.sqrt(share * (1 - share) / total + Z * Z / (4 * total * total)) / (1 + Z * Z / total)
+    return centre - half, centre + half
+
+
+def share(hits, total):
+    if not total:
+        return "none judged"
+    low, high = wilson(hits, total)
+    return f"{hits}/{total} = {hits / total:.1%} (95% Wilson {low:.1%}-{high:.1%})"
+
+
+def batches(directory, prefix):
+    return sorted(path for path in directory.glob(f"{prefix}-*.json") if not path.name.endswith(".verdicts.json"))
+
+
+def adjudicate(directory, prefix, differing, seen, answers, sides, owner, seed=SEED):
+    """Write a part once, shuffled with unattributed answers, and keep its side mapping."""
+    if batches(directory, prefix):
+        return
+    rng = random.Random(seed)
+    order = list(differing)
+    rng.shuffle(order)
+    for start in range(0, len(order), ADJUDICATION_BATCH):
+        batch = []
+        for id in order[start:start + ADJUDICATION_BATCH]:
+            first, second = rng.sample("ab", 2)
+            sides[id] = {owner: first, "labeller": second}
+            a, b = answers[id]
+            batch.append({"id": id, "text": seen[id], first: a, second: b})
+        (directory / f"{prefix}-{start // ADJUDICATION_BATCH + 1:03}.json").write_text(
+            json.dumps(batch, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+
+
+def verdicts(directory, prefix, sides, owner):
+    found = {}
+    for path in directory.glob(f"{prefix}-*.verdicts.json"):
+        found.update(json.loads(path.read_text(encoding="utf-8")))
+    written = {row["id"] for path in batches(directory, prefix) for row in json.loads(path.read_text(encoding="utf-8"))}
+    if set(found) - written:
+        sys.exit("Verdicts contain rows outside their adjudication batches")
+    for id, row in found.items():
+        if row["verdict"] not in (sides[id][owner], sides[id]["labeller"], "neither"):
+            sys.exit("Invalid adjudicator verdict")
+    return found
+
+
+def score(directory, sample, labelled, seed=SEED):
+    by_id = {row["id"]: row for row in sample}
+    differing = [id for id, row in by_id.items() if labelled[id]["verdict"] != row["rule"]]
+    disagreements = directory / "disagreements"
+    disagreements.mkdir(exist_ok=True)
+    sides_path = disagreements / "sides.json"
+    sides = json.loads(sides_path.read_text()) if sides_path.exists() else {}
+    adjudicate(disagreements, "batch", differing, blocks(directory),
+               {id: (by_id[id]["rule"], labelled[id]["verdict"]) for id in differing}, sides, "rule", seed)
+    sides_path.write_text(json.dumps(sides, indent=1) + "\n", encoding="utf-8")
+    judged = verdicts(disagreements, "batch", sides, "rule")
+    missing = set(differing) - judged.keys()
+    if missing:
+        print(f"{len(differing)} disagreements; {len(missing)} still need adjudicator .verdicts.json files in {disagreements}")
+        return False
+    settled = {id: row["rule"] for id, row in by_id.items()}
+    winners = {}
+    for id in differing:
+        verdict = judged[id]["verdict"]
+        winner = "neither" if verdict == "neither" else "rule" if verdict == sides[id]["rule"] else "labeller"
+        winners[id] = winner
+        if winner == "labeller":
+            settled[id] = labelled[id]["verdict"]
+        elif winner == "neither":
+            settled[id] = ("neither" if by_id[id]["stratum"] == "promise" else
+                           ({"open", "closed", "unclear"} - {by_id[id]["rule"], labelled[id]["verdict"]}).pop())
+    for stratum, answer, number, limit in (("promise", "eligible", 1, .9), ("unknown", "closed", 2, .3)):
+        ids = [row["id"] for row in sample if row["stratum"] == stratum]
+        hits = sum(settled[id] == answer for id in ids)
+        raw = sum(labelled[id]["verdict"] == answer for id in ids)
+        holds = bool(ids) and (hits / len(ids) >= limit if number == 1 else hits / len(ids) <= limit)
+        print(f"Gate {number}, {'promises eligible' if number == 1 else 'truly unknown: closed'}: "
+              f"{share(hits, len(ids))}; {'HOLDS' if holds else 'FAILS'} ({'>=' if number == 1 else '<='} {limit:.0%})")
+        print(f"  labeller raw: {share(raw, len(ids))}")
+        counts = Counter(winners[id] for id in differing if by_id[id]["stratum"] == stratum)
+        print(f"  {stratum} adjudication: " + ", ".join(f"{who} {counts[who]}" for who in ("rule", "labeller", "neither")))
+    patterns = defaultdict(list)
+    for id in differing:
+        patterns[judged[id].get("pattern", "")].append(id)
+    print("Adjudication patterns:")
+    for pattern, ids in sorted(patterns.items()):
+        print(f"  {pattern or '-'}: {len(ids)}")
+        for id in ids:
+            print(f"    {id} {by_id[id]['stratum']}: rule {by_id[id]['rule']}; labeller {labelled[id]['verdict']}; "
+                  f"reason {labelled[id]['reason']}; {winners[id]} [{judged[id].get('clause', '')}]")
+    return True
+
+
+def main():
+    if len(sys.argv) not in (2, 3) or not sys.argv[1].isdigit():
+        sys.exit(__doc__)
+    number = int(sys.argv[1])
+    name = f"eligibility-round-{number}" + (f"-{sys.argv[2]}" if len(sys.argv) == 3 else "")
+    directory = MEASUREMENTS / name
+    if not (directory / "sample.tsv").exists():
+        current = str(revision())
+        store = kept()
+        draw(directory, sampler.vacancies(), SEED + number,
+             kept=lambda text: store.get((digest(text), current)))
+        (directory / "revision.txt").write_text(current + "\n", encoding="utf-8")
+    current = (directory / "revision.txt").read_text().strip()
+    missing = [path for path in sorted(directory.glob("batch-*.txt"))
+               if not (directory / f"labels-{path.stem[6:]}.tsv").exists()]
+    if missing:
+        print(f"Label with the eligibility-labeller agent under revision {current}:")
+        for path in missing:
+            print(f"  {path} -> {directory / f'labels-{path.stem[6:]}.tsv'}")
+        return
+    sample = rows(directory / "sample.tsv")
+    labelled = labels(directory, sample, directory / "same.tsv")
+    keep(directory, current)
+    out = io.StringIO()
+    with redirect_stdout(out):
+        complete = score(directory, sample, labelled, SEED + number)
+    if complete:
+        commit = subprocess.run(["git", "-C", str(REPO), "rev-parse", "--short", "HEAD"],
+                                capture_output=True, text=True, check=True).stdout.strip()
+        report = f"#103 eligibility round {number}, commit {commit}, criterion revision {current}\n\n" + out.getvalue()
+        archive = MEASUREMENTS / f"{name}.txt"
+        archive.write_text(report, encoding="utf-8")
+        print(report, end="")
+        print(f"wrote {archive}")
+    else:
+        print(out.getvalue(), end="")
+
+
+if __name__ == "__main__":
+    main()

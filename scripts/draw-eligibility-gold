@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+"""Draws the eligibility loop's gold set once (#103, ADR-0029).
+
+    scripts/draw-eligibility-gold
+
+Run after POST /country-sets. Refuses if docs/measurements/eligibility-gold-set.tsv exists.
+Through score-eligibility-round's draw, samples 50 description promises and 50 unknowns (seed 10300),
+excluding #12's ids in 2026-10-eligibility-sample/sample.tsv. Writes sample.tsv, same.tsv and batches
+of 50 into docs/measurements/eligibility-gold/, without reading or writing kept labels. Holds out
+half of each stratum, seeded, and writes eligibility-gold-set.tsv (id, part, stratum, label, doubt),
+with label and doubt empty for labelling and review. Identical shown texts take their twin's label.
+"""
+
+import random
+import sys
+from importlib.machinery import SourceFileLoader
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+SCRIPTS = Path(__file__).resolve().parent
+round = SourceFileLoader("eligibility_round", str(SCRIPTS / "score-eligibility-round")).load_module()
+MEASUREMENTS = round.MEASUREMENTS
+DIRECTORY = MEASUREMENTS / "eligibility-gold"
+GOLD = MEASUREMENTS / "eligibility-gold-set.tsv"
+DRAWN = MEASUREMENTS / "2026-10-eligibility-sample" / "sample.tsv"
+SEED = 10300
+
+
+def main():
+    if GOLD.exists():
+        sys.exit(f"{GOLD} exists; the gold set is drawn once")
+    exclude = [row["id"] for row in round.rows(DRAWN)]
+    round.draw(DIRECTORY, round.sampler.vacancies(), seed=SEED, exclude=exclude)
+    sample = round.rows(DIRECTORY / "sample.tsv")
+    rng = random.Random(SEED)
+    part = {}
+    for stratum in ("promise", "unknown"):
+        ids = [row["id"] for row in sample if row["stratum"] == stratum]
+        held = set(rng.sample(ids, len(ids) // 2))
+        part.update({id: "held-out" if id in held else "open" for id in ids})
+    round.write_rows(GOLD, ["id", "part", "stratum", "label", "doubt"],
+                     ([row["id"], part[row["id"]], row["stratum"], "", ""] for row in sample))
+    print(f"{GOLD}: {len(sample)} vacancies, {sum(p == 'held-out' for p in part.values())} held out")
+
+
+if __name__ == "__main__":
+    main()

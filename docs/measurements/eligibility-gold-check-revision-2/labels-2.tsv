@@ -1,0 +1,51 @@
+id	verdict	reason
+1262219	closed	"Kolkata DN 57" undeclared, silent city abroad
+308520	excluded	country list US/Canada/UK/.../Ghana, no Argentina
+785748	closed	"AZ Phoenix" undeclared, silent city abroad
+395463	excluded	"based in Israel"
+1333443	closed	"Denver, CO" undeclared, silent city abroad
+1152544	closed	"Hyderabad (Office)"
+225092	open	"We hire globally"
+892592	closed	"Local Office" Mexico City
+1511740	closed	"Science Park Bldg 25" hybrid
+324908	eligible	"hiring across the world"
+104657	closed	"Tel Aviv, Israel" undeclared
+225905	open	"We hire globally"
+1221630	closed	"China, Beijing"/"Shanghai" undeclared
+256707	eligible	"work from anywhere you choose"
+399321	excluded	"based in Germany"
+1275621	closed	"Bengaluru Millenia" undeclared
+315350	unknown	"Spain" remote, no hiring statement
+265053	eligible	"Remote - Argentina" option
+399280	excluded	"based in Belgium"
+687595	closed	"in-office collaboration in NYC"
+730640	closed	"based out of our ... office"
+227763	eligible	"hired via Remote.com (our global employer partner)"
+399303	excluded	"based in Greece"
+509224	closed	"Bangalore" undeclared, silent city abroad
+1526567	closed	"Marshalls Store ... Mountain View CA"
+1138681	closed	"based in Amsterdam"
+199006	closed	"US Citizen. TS clearance"
+383650	unknown	options Mexico/Colombia remote, no statement
+1221599	closed	"Israel, Yokneam" undeclared
+276175	eligible	"Remote Argentina" option
+1080035	closed	"Magnolia Hospital" undeclared
+1071601	closed	"Pune, India" undeclared
+315360	unknown	"Romania" remote, no hiring statement
+1220643	closed	options only US states/remote
+191146	closed	"Atlanta, GA" undeclared
+1036171	closed	"Bengaluru" undeclared
+274157	unknown	options Remote/United States
+329481	closed	"Bangalore, India" undeclared
+269265	eligible	"We hire globally"
+306294	closed	"Delhi NCR" undeclared
+256268	excluded	"required to ... designated geohubs"
+399296	excluded	"based in South Africa"
+687246	closed	"Singapore" remote, APJ region scope
+1478556	closed	"Greensboro ... VFC" undeclared
+551644	eligible	"hire globally ... anywhere in the world"
+246221	unknown	"work from anywhere" option Remote, no place
+399315	excluded	"based in Colombia"
+376725	eligible	"must be located in Argentina or Brazil"
+246218	unknown	option "Remote" names no place
+177330	closed	"Santa Clara, CA" undeclared, "all US locations"

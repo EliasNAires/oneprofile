@@ -1,0 +1,101 @@
+id	part	stratum	label	doubt
+3545	held-out	promise	unknown
+26477	held-out	promise	excluded	region statement sits outside Benefits heading, still a required place
+58133	open	promise	unknown
+58143	open	promise	unknown
+59131	open	unknown	closed	undeclared options abroad vs benefits mentioning hybrid/remote flexibility
+101057	open	unknown	closed
+104657	open	unknown	closed
+129948	held-out	unknown	closed
+177330	open	unknown	closed
+191146	open	unknown	closed	hybrid/remote support vs federal onsite context
+191369	held-out	unknown	closed
+199006	open	unknown	closed
+223444	open	promise	unknown
+225092	open	unknown	open
+225905	held-out	unknown	open
+227763	held-out	promise	unknown	'hired via Remote.com' names no place
+227776	held-out	promise	unknown
+227785	held-out	promise	unknown	'hired via Remote.com if based elsewhere' names no place
+246218	open	promise	unknown	'work from anywhere' vs 'hybrid onsite', no place named
+246221	open	promise	unknown
+256033	open	promise	unknown
+256268	held-out	promise	excluded	options alone give unknown; geohub requirement excludes
+256707	open	promise	unknown
+263537	held-out	promise	eligible	±4h of CET puts Argentina's UTC-3 at the window's edge
+264359	held-out	promise	excluded
+265053	open	promise	eligible
+265056	held-out	promise	eligible
+269265	open	promise	eligible	option tagged APAC, but 'We hire globally' holds Argentina
+272731	held-out	promise	eligible
+274157	open	promise	unknown
+274158	open	promise	unknown
+276175	open	promise	eligible
+276647	open	promise	unknown
+300482	held-out	promise	eligible
+306294	open	unknown	closed	WOO 90-day work-from-abroad is a time-limited perk
+308520	open	promise	excluded	'anywhere' qualified by a named country list
+315350	open	promise	unknown
+315360	open	promise	unknown
+324908	held-out	promise	eligible	'hiring across the world' sits under Preferred Qualifications, not Benefits
+329481	held-out	unknown	closed
+337640	held-out	unknown	closed
+376725	held-out	promise	eligible
+383650	held-out	promise	unknown	'distributed throughout LATAM' reads as team culture, not a hire statement
+388527	held-out	promise	unknown
+393887	held-out	unknown	unclear	remote, worldwide clients; no explicit hiring-place statement
+395349	open	promise	excluded	'fully remote, globally distributed' phrasing outside Benefits, close to unknown
+395454	held-out	promise	excluded
+395456	open	promise	excluded
+395463	open	promise	excluded
+395470	open	promise	excluded
+395477	held-out	promise	excluded
+395480	open	promise	excluded
+396424	open	promise	eligible	'based in UK' vs Benefits granting Latin America/Europe; rule 7 combines both
+397088	held-out	promise	excluded
+397360	held-out	promise	excluded
+399280	held-out	promise	excluded
+399289	held-out	promise	excluded
+399296	open	promise	excluded
+399303	held-out	promise	excluded
+399315	held-out	promise	excluded
+399321	open	promise	excluded
+407895	open	promise	unknown
+501916	open	unknown	closed
+508304	held-out	unknown	closed
+509224	held-out	unknown	closed
+551644	held-out	promise	eligible	'based in Basel' vs explicit 'hire globally...anywhere'; rule 7 combines both
+687246	open	unknown	closed
+687595	held-out	unknown	closed
+730640	open	unknown	closed
+762723	held-out	unknown	unclear	Remote/Hybrid options with no place vs named German offices
+785748	held-out	unknown	closed
+892592	held-out	unknown	closed
+911131	open	unknown	closed	'Remote Nationwide' ambiguous among named US states
+1036171	held-out	unknown	closed	'hybrid' means cloud architecture, not work mode
+1071601	held-out	unknown	closed	'200+ countries' is company scope, not hiring
+1080035	held-out	unknown	closed
+1126054	open	unknown	closed
+1138681	open	unknown	closed
+1152544	open	unknown	closed
+1169859	held-out	unknown	closed
+1196680	held-out	promise	unknown
+1202227	open	unknown	closed
+1220643	open	unknown	closed	state-scoped Remote options, no explicit exclusion stated
+1221599	open	unknown	closed
+1221630	held-out	unknown	closed
+1222552	held-out	unknown	closed
+1229233	open	unknown	closed
+1230819	held-out	unknown	closed	remote tied only to Dubai/Saudi Arabia, no explicit exclusion
+1248370	held-out	unknown	closed
+1260371	open	unknown	closed
+1262219	held-out	unknown	closed
+1275621	held-out	unknown	closed
+1309466	held-out	unknown	closed
+1333443	open	unknown	closed	Argentina named as mining-asset location, not hiring scope
+1429457	open	unknown	closed
+1465609	held-out	unknown	closed
+1475012	open	unknown	closed
+1478556	open	unknown	closed	'hybrid' means IAM/cloud tech, not work mode
+1511740	open	unknown	closed
+1526567	held-out	unknown	closed

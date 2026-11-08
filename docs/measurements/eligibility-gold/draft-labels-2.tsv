@@ -1,0 +1,51 @@
+id	verdict	reason	doubt
+1262219	closed	Kolkata DN 57, undeclared
+308520	excluded	internet access in the US, Canada...Ghana	'anywhere' qualified by named country list
+785748	closed	AZ Phoenix, undeclared
+395463	excluded	based in Israel	Benefits: work remotely from anywhere in the world
+1333443	closed	Denver, CO, undeclared	Argentina named as mining-asset location, not hiring scope
+1152544	closed	Hyderabad (Office)
+225092	open	We hire globally	option says United States [remote]
+892592	closed	Mexico City...Local Office
+1511740	closed	Work Model: Hybrid, New Haven
+324908	eligible	hiring across the world	under Preferred Qualifications heading
+104657	closed	Tel Aviv, Israel, undeclared
+225905	open	We hire globally	option says Sydney, Australia [remote]
+1221630	closed	Beijing/Shanghai, undeclared
+256707	unknown	Remote, no place named	'work from anywhere you choose' perk vs hire-scope
+399321	excluded	based in Germany	Benefits: work remotely from anywhere globally
+1275621	closed	Bengaluru Millenia, undeclared
+315350	unknown	Spain [remote], not Argentina
+265053	eligible	Remote - Argentina
+399280	excluded	based in Belgium	Benefits: work remotely from anywhere globally
+687595	closed	in-office collaboration in NYC
+730640	closed	based out of our Morristown, NJ...office
+227763	unknown	Wilmington, undeclared	hired via Remote.com, global employer partner
+399303	excluded	based in Greece	Benefits: work remotely from anywhere globally
+509224	closed	Bangalore, undeclared
+1526567	closed	Marshalls Store...Mountain View CA
+1138681	closed	based in Amsterdam
+199006	closed	US Citizen. TS clearance
+383650	unknown	Mexico City/Bogotá, not Argentina	'distributed throughout LATAM' is team culture
+1221599	closed	Israel, Yokneam, undeclared
+276175	eligible	Remote Argentina
+1080035	closed	Cancer Center based in Florida
+1071601	closed	Pune, India, undeclared	'200+ countries' is company scope, not hiring
+315360	unknown	Romania [remote], not Argentina
+1220643	closed	US, GA/TX/CA, Remote (US-only)	state-scoped Remote options, no explicit exclusion
+191146	closed	Atlanta, GA, undeclared	Hybrid/remote support vs federal on-site context
+1036171	closed	Bengaluru, undeclared	'hybrid' means cloud infra, not work mode
+274157	unknown	Remote / United States, not Argentina
+329481	closed	coverage across the India region
+269265	eligible	We hire globally	option tagged Remote, APAC
+306294	closed	Delhi NCR, undeclared	WOO 90-day work-from-abroad is a time-limited perk
+256268	excluded	designated geohubs: SF/NY/Boston	options alone give unknown; geohub requirement excludes
+399296	excluded	based in South Africa	Benefits: work remotely from anywhere globally
+687246	closed	Singapore, APJ region
+1478556	closed	Greensboro, NC, undeclared	'hybrid' means IAM/cloud tech, not work mode
+551644	eligible	hire globally...anywhere in the world	vs 'This role is based in Basel, Switzerland'
+246221	unknown	Remote, no place named	'work from anywhere' perk vs hire-scope
+399315	excluded	based in Colombia	Benefits: work remotely from anywhere globally
+376725	eligible	Buenos Aires / Argentina or Brazil
+246218	unknown	Remote, no place named	'work from anywhere' vs 'hybrid onsite', no place named
+177330	closed	Santa Clara, CA, undeclared / US locations

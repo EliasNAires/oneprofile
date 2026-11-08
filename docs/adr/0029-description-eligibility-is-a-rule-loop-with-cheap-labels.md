@@ -45,7 +45,10 @@ whose description states a mode, the share that is remote, **per ATS**. Where an
 set, as an onsite one's is (ADR-0027). Elsewhere it stays unknown. The next calibration after #98
 closes runs the count and writes the outcome here.
 #98 closed on 2026-11-08 without passing its gates; ADR-0030's *Consequences* say why the count's outcome holds
-anyway, and lets it run.
+anyway, and lets it run. The count ran on #98's round 5
+(`work-mode-round-5/count.txt`): every ATS's share is above 10% (Workday 10.2%, Greenhouse 17.9%,
+Ashby 14.2%), so no ATS's silent cities count as offices. A silent city stays unknown for the rules,
+and closed for a reader, so it counts against gate 2.
 
 The count leans safe: a remote job usually says so, an office job often does not, so the silent
 vacancies are likely remote less often than the ones that state a mode. What would make it unsafe is
@@ -91,6 +94,16 @@ The calibration that freezes the first revision takes up what #12 left open in
 in our London office`, `Location: Bucharest`) is required; that a perk's `anywhere` says nothing; region
 names beyond the list (`Global`, `AMER`); and the reader verdict of a silent city abroad, which for
 gate 2 is closed.
+
+**Agreement**, recorded at each calibration and not itself a gate (ADR-0012):
+
+| revision | labeller, held-out | adjudicator, held-out disagreements |
+|---|---|---|
+| 2 (2026-11-08) | 49 of 50, 98% (89.5–99.6%) | 1: sided with the labeller |
+
+The first gold set (`eligibility-gold-set.tsv`, 100 vacancies, seed 10300, #12's sample excluded) was drawn
+at the rules of #12's audit. Its labels are themselves round 0's figures under revision 2: of the 50
+promises, 11 eligible (22%); of the 50 unknowns, 46 closed (92%).
 
 ## Considered options
 
