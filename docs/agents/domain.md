@@ -65,15 +65,18 @@ the later ADR wins; the overridden parts are marked below.
   is judged by country. The person's city is never asked: a visitor's defaults from metadata
   and can be changed; matching uses the profile's.
 - **0029**: eligibility from the description is a rule loop (#12's gates failed), blocked by #98.
-  Gates: description promises at least 90% eligible, unknowns at most 30% closed to the reader; five
-  rounds; 150k tokens a round, labelled cheaply (cue segments, one answer a row, batches of 50, labels
-  kept). A silent city abroad counts as an office per ATS where, after #98, 10% or less of such
-  vacancies stating a mode are remote.
+  Labelled cheaply (cue segments, batches of 50, labels kept); five rounds. *Superseded by 0031:* its
+  gates (Argentina's promises, unknowns at most 30% closed), its 150k cap and its Argentina-only
+  labelling. The silent-city count ran: no ATS's silent cities count as offices.
 - **0030**: the work mode from the description is a rule loop (#98's remote recall failed at 56.6%). Amended after round 1: recall of each mode is a gate, and the draw grows silent hybrid and office strata. Stopped at the cap after round 5 with every gate failing (Elias accepted it, 2026-11-08); raising the figures is #104.
   Gates: precision and remote recall on undeclared vacancies, both 90%; hybrid and onsite recall
   reported, not gated; the rules are all of `WorkModeRule`. Five rounds; 200 rows a round weighted
   towards the silent stratum, 200k tokens, labelled as ADR-0029 shapes it; a fresh 100-row gold set,
   half held out.
+- **0031**: #103 is gated per visitor group (LATAM: AR, BR, MX, CO, CL; US; English-speaking: UK,
+  CA, AU, NZ, IE): description promises at least 90% eligible, and reach (the share of really open
+  vacancies shown eligible) at least a line Elias sets after the recalibration measures it. The Finder
+  shows the eligible alone for good. 250k tokens a round.
 - **0003**: skills come from a curated taxonomy (O\*NET, Linguist, Wikidata), not Lightcast.
   Its provenance and licences: `docs/taxonomy.md`.
 - **0024**: a vacancy's role is read from its title: the title is broken down into its

@@ -552,9 +552,9 @@ board.
 
 - **Country** defaults to a guess from the visitor's browser, and can be changed and is
   remembered. It hides the vacancies excluded for that country and shows the eligible first.
-  The unknown, marked as saying nothing, follows them only once a measurement shows it truly
-  unknown: #12 found 93% of the unknowns closed to a visitor in Argentina, so until then the
-  default is the eligible alone (decided by Elias on 2026-10-30, ADR-0019).
+  It shows the eligible alone: #12 found 93% of the unknowns closed to a visitor in Argentina, and
+  the open jobs a visitor is not shown are measured as reach instead (decided by Elias on
+  2026-10-30 and 2026-11-08, ADR-0019, ADR-0031).
 - **Skills** keep the vacancies that mention a picked skill. Whether one is required is never a
   filter; it orders, through filter rank.
 - **Role** takes several roles at once, from the role list (§5.3). A vacancy whose title matches

@@ -1,6 +1,6 @@
 # Eligibility from the description is a rule loop, labelled cheaply
 
-Status: accepted
+Status: accepted; its gates, cap and Argentina-only labelling superseded by ADR-0031
 
 #12 measured eligibility once (`docs/measurements/2026-10-eligibility.md`) and two of its gates
 failed. Eligible precision for Argentina was 78.4%, under 90%: the title held 100% and the location
