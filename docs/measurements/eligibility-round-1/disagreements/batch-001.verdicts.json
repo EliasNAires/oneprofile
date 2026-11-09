@@ -1,0 +1,52 @@
+{
+  "204925:english": {
+    "verdict": "a",
+    "clause": "11. A timezone requirement; A group's verdict is the best of its countries': Canada's UTC-8 to UTC-3:30 is wholly inside the permitted GMT-8 to GMT-3 window.",
+    "pattern": "permitted window includes Canada"
+  },
+  "278031:us": {
+    "verdict": "a",
+    "clause": "7. Where the person must be, or the company hires: open only to residents of the listed Canadian provinces excludes the United States.",
+    "pattern": "required location outside group"
+  },
+  "1346518:us": {
+    "verdict": "a",
+    "clause": "10. A security clearance: the required Reliability Security Clearance is Canada's, the one country the options name, and excludes the United States.",
+    "pattern": "required foreign security clearance"
+  },
+  "272415:english": {
+    "verdict": "b",
+    "clause": "These say nothing: Working from anywhere offered as a perk or a culture. The Americas statement is a role perk; the United States remote option leaves english unknown under rule 2.",
+    "pattern": "work anywhere as perk"
+  },
+  "360346:us": {
+    "verdict": "b",
+    "clause": "These say nothing: Working from anywhere offered as a perk or a culture. The company-wide statements under What Makes Wonderlic Different? and About Us do not establish a required location for this vacancy; rule 3 leaves Remote unknown.",
+    "pattern": "work anywhere as perk"
+  },
+  "272414:latam": {
+    "verdict": "a",
+    "clause": "These say nothing: Working from anywhere offered as a perk or a culture. The Americas statement is a role perk; the United States remote option leaves latam unknown under rule 2.",
+    "pattern": "work anywhere as perk"
+  },
+  "709425:english": {
+    "verdict": "a",
+    "clause": "7. Where the person must be, or the company hires: Location : Whitefield, Bangalore states this vacancy's location in India and excludes every english country.",
+    "pattern": "required location outside group"
+  },
+  "340576:us": {
+    "verdict": "a",
+    "clause": "These say nothing: What is preferred, prioritised or a plus. Secret Clearance eligible appears under Preferred Qualifications, so rule 3 leaves Remote unknown.",
+    "pattern": "clearance is only preferred"
+  },
+  "176440:us": {
+    "verdict": "a",
+    "clause": "2. A remote or undeclared option: Canada - Remote is unknown for the United States. Company background, pay ranges and general work culture add no required vacancy location.",
+    "pattern": "remote option outside group"
+  },
+  "208320:us": {
+    "verdict": "a",
+    "clause": "7. Where the person must be, or the company hires: the description heading Porto, Portugal | Product Engineering states this vacancy's location outside the United States.",
+    "pattern": "required location outside group"
+  }
+}

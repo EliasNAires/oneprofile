@@ -1,0 +1,42 @@
+{
+ "204925:english": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "278031:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "1346518:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "272415:english": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "360346:us": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "272414:latam": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "709425:english": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "340576:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "176440:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "208320:us": {
+  "rule": "b",
+  "labeller": "a"
+ }
+}

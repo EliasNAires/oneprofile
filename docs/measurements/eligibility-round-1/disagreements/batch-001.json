@@ -1,0 +1,82 @@
+[
+ {
+  "id": "204925:english",
+  "text": "company: Plata Card\ntitle: Incident Manager - Senior [Customer IT Support]\noptions: Mexico [undeclared]\ndescription:\n[under: Challenges that await you] - Demonstrate leadership and seamless coordination with global teams, both technical and business\n[under: Our benefits] - Relocation support to Mexico with assistance for the employee and their family\n[under: Our benefits] - Flexible work: hybrid or full-time from our office in Mexico or or remotely within time zones from GMT-8 to GMT-3",
+  "a": "eligible",
+  "b": "unknown",
+  "group": "english",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "278031:us",
+  "text": "company: Affirm\ntitle: Senior Technical Account Manager (Strategic Alliances)\noptions: Remote Canada [remote]\ndescription:\n[under: What You'll Do] - Partner with Product and Engineering leads to identify, plan, and prioritize projects based on team goals and resources, acting as the voice of the merchant to influence the roadmap.\n[under: Nice to Have] Affirm focuses on providing a simple and transparent pay structure which is based on a variety of factors, including location, experience and job-related skills.\n# Location - Remote Canada\n[under: Location - Remote Canada] This remote role is open only to candidates residing in Alberta, British Columbia, Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia, Ontario, Prince Edward Island, or Saskatchewan.\n# LI-Remote\n> # Remote-first with flexibility built in\n> [under: Remote-first with flexibility built in] Affirm is proud to be a remote-first company.\n> [under: Remote-first with flexibility built in] Most roles can be done from almost anywhere within the country of employment.\n> [under: Remote-first with flexibility built in] Some positions may occasionally require in-person work at an Affirm office, and a few are office-based due to the nature of the work.\n> [under: Remote-first with flexibility built in] All new hires will be invited to attend an in-person onboarding experience.\n> [under: Benefits designed for you] For positions based in San Francisco or Los Angeles: Affirm considers qualified applicants with arrest and conviction records, as required by law.\n> [under: Benefits designed for you] By clicking \"Submit Application,\" you acknowledge that you have read Affirm's Global Candidate Privacy Notice and consent to the use of your personal information as described.",
+  "b": "eligible",
+  "a": "excluded",
+  "group": "us",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "1346518:us",
+  "text": "company: Sun Life of Canada - Corporate\ntitle: Senior Software Engineer, Operations – Core Java & iOS focus\noptions: Waterloo, Ontario [undeclared] | Toronto, Ontario [undeclared] | North York, Ontario [undeclared]\ndescription:\n[under: Additional role requirements] This role requires Reliability Security Clearance.\n[under: Additional role requirements] In addition to a law enforcement inquiry and a credit check, as part of your application, the Government of Canada will ask if you lived or travelled outside of Canada for 6-consecutive months during the last 5 years, and you must account for all activities during this time.\n[under: Additional role requirements] LI-Hybrid #LI-remote\n[under: Additional role requirements] The Base Pay range is for the primary location for which the job is posted.\n[under: Additional role requirements] It may vary depending on the work location of the successful candidate or other factors.\n[under: Additional role requirements] Certain sales focused roles have sales incentive plans based on individual or group sales results.\n[under: Additional role requirements] A diverse workforce with wide perspectives and creative ideas benefits our Clients, the communities where we operate and all of us as colleagues.\n[under: Additional role requirements] We are proud to be a hybrid organization that offers our employees the choice and flexibility to work from both the office and virtually based on the needs of the business, our Clients and you.",
+  "b": "eligible",
+  "a": "excluded",
+  "group": "us",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "272415:english",
+  "text": "company: tremendous\ntitle: Senior Data Analyst\noptions: United States [remote]\ndescription:\nTremendous is the global platform built for businesses to send thousands of payouts to anyone, anywhere, for free.\nWe're trusted by 20,000 organizations like Atlassian, MIT, and United Way to deliver gift cards and money to millions of recipients worldwide.\nWe're a fully remote, high-documentation, low-meeting culture, which means more time for what matters in both your professional and personal life.\n[under: About the role] Tremendous values data as a first-class citizen and believes insights unlock significant growth.\n[under: What's cool about the role] - Real benefits. 100% covered health (US), unlimited PTO, 12-16 weeks paid parental leave.\n[under: What's cool about the role] - Fully remote. Work from anywhere in the Americas.",
+  "a": "eligible",
+  "b": "unknown",
+  "group": "english",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "360346:us",
+  "text": "company: Wonderlic\ntitle: Senior Research Scientist, AI & Workforce Intelligence - Remote, 4-Day Work Week\noptions: Remote [remote]\ndescription:\n> [under: What Makes Wonderlic Different?] - Fully Remote: Anywhere in the U.S; Chicago HQ\n> # About Us\n> # Do meaningful work. Work from anywhere. Enjoy a four-day workweek.\n> [under: Do meaningful work. Work from anywhere. Enjoy a four-day workweek.] We’re a remote-first company offering a full-time, 32-hour workweek across four days, giving our team more time to focus on what matters at work and beyond it.\n> [under: Do meaningful work. Work from anywhere. Enjoy a four-day workweek.] Our mission is to create a world where everyone finds and thrives in their best job—and that starts with us.\n> [under: Do meaningful work. Work from anywhere. Enjoy a four-day workweek.] We combine decades of science-based assessment expertise with industrial-organizational (I-O) psychology, machine learning, and artificial intelligence to deliver evidence-based insights that help organizations make smarter employment decisions.\n> [under: Do meaningful work. Work from anywhere. Enjoy a four-day workweek.] We’re proud to bring the same thoughtful, evidence-based approach to how we work as we do to the solutions we create.\n> # What Sets Us Apart\n> [under: What Sets Us Apart] - Lasting Impact: By integrating I-O psychology and evidence-based insights, we help organizations hire more effectively, develop talent, and improve long-term employee success and retention.\n[under: What You’ll Do] Drive Scientific Rigor: Apply I-O psychology principles - adverse impact consideration, norm group construction, and evidence-based evaluation standards - to every system you build.\n[under: Skills & Capabilities] - Generative AI evaluation skills: rubric-based review, groundedness checks, error analysis, regression testing, and evaluation of LLM-generated job descriptions, work-context summaries, and assessment result contextualization.\n[under: Qualifications] - Experience applying modern NLP methods to behavioral, assessment-based, or labor market data\n[under: Compensation] - $130,000 to $150,000 based on experience and expertise.\n> [under: Our Policy] Here, diversity is valued and celebrated, and this is what makes us such a successful team.\n> [under: Our Policy] Please get in touch with us at jobs@wonderlic.com to request an accommodation.\n> [under: Our Policy] BI-Remote #LI-Remote",
+  "a": "eligible",
+  "b": "unknown",
+  "group": "us",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "272414:latam",
+  "text": "company: tremendous\ntitle: Senior Data Analyst, GTM\noptions: United States [remote]\ndescription:\nTremendous is the fast, free, flexible way to send bulk payouts to people in over 230 countries and regions.\nTremendous is a fully remote, high-documentation, low-meeting culture, which means more time for what matters in both your professional and personal life.\nJoin us before our next international offsite.\n[under: About the role] Tremendous values data as a first-class citizen and believes insights unlock significant growth.\n[under: What's cool about the role] - Real benefits. 100% covered health (US), unlimited PTO, 12-16 weeks paid parental leave.\n[under: What's cool about the role] - Fully remote. Work from anywhere in the Americas.",
+  "b": "eligible",
+  "a": "unknown",
+  "group": "latam",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "709425:english",
+  "text": "company: embIND Embitel Technologies (India) Private Limited\ntitle: Senior Software Engineer - AOS - C++\noptions: Bangalore [undeclared]\ndescription:\n[under: About the Company] VW is a German multinational automotive manufacturing corporation headquartered in Wolfsburg, Germany.\n[under: About the Company] The group comprises of 12 brands from seven European Countries: Volkswagen, Audi, Lamborghini, Porsche, Bugatti, Bentley, Ducati (motorcycles), Skoda, SEAT, Scania, MAN and Volkswagen commercial vehicles.\n[under: About the Company] The first vehicles based on PPE will be the electric Porsche Macan and Audi Q6 e-tron.\n[under: About the Company] CARIAD COE (Centre of Excellence) is setup in Bangalore, India working exclusively with CARIAD and associated VW groups with the focus on development of ‘VW.OS”.\n[under: About the Company] The areas of work involve development of platform components such as firmware, boot loaders, AUTOSAR, Linux/QNX BSP, Service oriented architecture-based middleware components.\n[under: Job Description] Location : Whitefield, Bangalore\n[under: Job Description] Business Unit: Cariad India\n[under: Job Description] - Excellent communication skills with the ability to interface effectively with globally distributed engineering teams.\n[under: Job Description] - Experience in Git-based or open-source workflows is a must.\n[under: Working with Embitel] To explore an exciting & progressive Career development at Embitel India:\n[under: Working with Embitel] - Visit us at: www.embitel.com\n[under: Working with Embitel] - Follow us at LinkedIn: https://www.linkedin.com/company/embitel-technologies-india",
+  "b": "eligible",
+  "a": "excluded",
+  "group": "english",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "340576:us",
+  "text": "company: K.L. Scott & Associates\ntitle: SAP Process Integration (PI) Process Orchestration (PO) Integration Engineer\noptions: Remote [remote]\ndescription:\n[under: Preferred Qualifications] - Secret Clearance eligible.",
+  "b": "eligible",
+  "a": "unknown",
+  "group": "us",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "176440:us",
+  "text": "company: Weight Watchers\ntitle: Senior iOS Engineer\noptions: Canada - Remote [remote]\ndescription:\n> Weight Watchers is the global leader in science-backed weight management, offering an integrated support system built for the GLP-1 era that combines scientific expertise, medication, cutting-edge technology, and human connection.\n> With more than 60 years of experience, Weight Watchers is the most studied commercial weight management program in the world, delivered through its No. 1 U.S. doctor-recommended weight-loss program.\n> Its holistic, personalized approach also includes U.S.-based clinical interventions and access to GLP-1 medications when clinically appropriate, and a global network of coaches and community support.\n> Base salary may vary depending on, but not limited to: skills, experience, and location.\n> US Pay Range\n> At WeightWatchers, our mission is to build a worldwide community connected by healthy habits.\n> We have a hybrid work environment to allow our employees to find the right work-life balance.\n> Under Maryland law, an employer may not require or demand, as a condition of employment, prospective employment, or continued employment, that an individual submit to or take a polygraph examination or similar test.",
+  "b": "eligible",
+  "a": "unknown",
+  "group": "us",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "208320:us",
+  "text": "company: Sofico\ntitle: Software Developer - Java Backend\noptions: Porto, Portugal [undeclared]\ndescription:\n# Porto, Portugal | Product Engineering\n[under: Why SOFICO?] Miles supports complex business processes throughout the full lifecycle of a finance or leasing contract — from quotation and pricing to contract management, billing, assets, services and integrations.\n[under: Your role] This is a hands-on product development role where you’ll translate business and domain requirements into Java services, APIs and microservice-based solutions.\n[under: Your role] You’ll be working in a complex enterprise domain where maintainability, scalability, reliability and long-term product evolution matter.\n[under: What’s in it for you...] - Hybrid working and flexible hours, giving you the freedom to shape your workday;\n[under: What’s in it for you...] - Join an international, multicultural company with more than 35 years of experience, doubling in size every 5 years. We hold on to a horizontal, open culture where career development and personal growth stay central, with ongoing learning opportunities well beyond your onboarding. Our office is modern and easily accessible, with charging stations for electric cars and bikes, plus free shared bikes to grab lunch.",
+  "b": "eligible",
+  "a": "excluded",
+  "group": "us",
+  "asks": "rule verdict for the group"
+ }
+]

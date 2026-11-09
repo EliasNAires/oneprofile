@@ -1,0 +1,4 @@
+id	latam-rule	latam-reader	us-rule	us-reader	english-rule	english-reader	reason
+234595	eligible	open	excluded	closed	excluded	closed	"based in Brazil; ""executed from anywhere in Colombia"""
+402749	excluded	closed	eligible	open	eligible	open	Must be authorized to work in the United States or Canada
+453465	unknown	closed	unknown	closed	unknown	closed	Kuala Lumpur, AIA Digital+ Malaysia [undeclared]

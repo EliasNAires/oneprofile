@@ -1,0 +1,43 @@
+#103 eligibility round 1, commit f63a1c8, criterion revision 4
+
+latam promises: 34/35 = 97.1% (95% Wilson 85.5%-99.5%); HOLDS (>= 90%)
+latam reach: 100.0% (95% bootstrap 100.0%-100.0%); target 70%, met (not deciding); gate 2: HOLDS (>= baseline 85.5% - 5%)
+latam overall: HOLDS (both gates)
+  labeller raw promises: 34/35 = 97.1% (95% Wilson 85.5%-99.5%); reach: 100.0%
+us promises: 29/35 = 82.9% (95% Wilson 67.3%-91.9%); FAILS (>= 90%)
+us reach: 100.0% (95% bootstrap 100.0%-100.0%); target 90%, met (not deciding); gate 2: HOLDS (>= baseline 100.0% - 5%)
+us overall: FAILS (both gates)
+  labeller raw promises: 29/35 = 82.9% (95% Wilson 67.3%-91.9%); reach: 100.0%
+english promises: 33/35 = 94.3% (95% Wilson 81.4%-98.4%); HOLDS (>= 90%)
+english reach: 100.0% (95% bootstrap 100.0%-100.0%); target 80%, met (not deciding); gate 2: HOLDS (>= baseline 84.2% - 5%)
+english overall: HOLDS (both gates)
+  labeller raw promises: 32/35 = 91.4% (95% Wilson 77.6%-97.0%); reach: 100.0%
+  latam promise adjudication: rule 0, labeller 1, neither 0
+  latam eligible-other adjudication: rule 0, labeller 0, neither 0
+  latam rest-cued adjudication: rule 0, labeller 0, neither 0
+  latam rest-plain adjudication: rule 0, labeller 0, neither 0
+  us promise adjudication: rule 0, labeller 6, neither 0
+  us eligible-other adjudication: rule 0, labeller 0, neither 0
+  us rest-cued adjudication: rule 0, labeller 0, neither 0
+  us rest-plain adjudication: rule 0, labeller 0, neither 0
+  english promise adjudication: rule 1, labeller 2, neither 0
+  english eligible-other adjudication: rule 0, labeller 0, neither 0
+  english rest-cued adjudication: rule 0, labeller 0, neither 0
+  english rest-plain adjudication: rule 0, labeller 0, neither 0
+Adjudication patterns:
+  clearance is only preferred: 1
+    340576:us us promise: rule eligible; labeller unknown; reason Preferred Qualifications; "Secret Clearance eligible"; labeller [These say nothing: What is preferred, prioritised or a plus. Secret Clearance eligible appears under Preferred Qualifications, so rule 3 leaves Remote unknown.]
+  permitted window includes Canada: 1
+    204925:english english promise: rule eligible; labeller unknown; reason remotely within time zones from GMT-8 to GMT-3; rule [11. A timezone requirement; A group's verdict is the best of its countries': Canada's UTC-8 to UTC-3:30 is wholly inside the permitted GMT-8 to GMT-3 window.]
+  remote option outside group: 1
+    176440:us us promise: rule eligible; labeller unknown; reason Canada - Remote; labeller [2. A remote or undeclared option: Canada - Remote is unknown for the United States. Company background, pay ranges and general work culture add no required vacancy location.]
+  required foreign security clearance: 1
+    1346518:us us promise: rule eligible; labeller excluded; reason requires Reliability Security Clearance; "Government of Canada"; labeller [10. A security clearance: the required Reliability Security Clearance is Canada's, the one country the options name, and excludes the United States.]
+  required location outside group: 3
+    208320:us us promise: rule eligible; labeller excluded; reason Porto, Portugal | Product Engineering; "Hybrid working"; labeller [7. Where the person must be, or the company hires: the description heading Porto, Portugal | Product Engineering states this vacancy's location outside the United States.]
+    278031:us us promise: rule eligible; labeller excluded; reason open only to candidates residing in Alberta, British Columbia; labeller [7. Where the person must be, or the company hires: open only to residents of the listed Canadian provinces excludes the United States.]
+    709425:english english promise: rule eligible; labeller excluded; reason Location : Whitefield, Bangalore; labeller [7. Where the person must be, or the company hires: Location : Whitefield, Bangalore states this vacancy's location in India and excludes every english country.]
+  work anywhere as perk: 3
+    272414:latam latam promise: rule eligible; labeller unknown; reason United States [remote]; perk "anywhere in the Americas"; labeller [These say nothing: Working from anywhere offered as a perk or a culture. The Americas statement is a role perk; the United States remote option leaves latam unknown under rule 2.]
+    272415:english english promise: rule eligible; labeller unknown; reason United States [remote]; perk "anywhere in the Americas"; labeller [These say nothing: Working from anywhere offered as a perk or a culture. The Americas statement is a role perk; the United States remote option leaves english unknown under rule 2.]
+    360346:us us promise: rule eligible; labeller unknown; reason Fully Remote: Anywhere in the U.S under "What Makes Wonderlic Different?"; labeller [These say nothing: Working from anywhere offered as a perk or a culture. The company-wide statements under What Makes Wonderlic Different? and About Us do not establish a required location for this vacancy; rule 3 leaves Remote unknown.]
