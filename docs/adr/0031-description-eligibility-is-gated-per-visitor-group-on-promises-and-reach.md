@@ -129,3 +129,11 @@ group holds both gates, so the loop exits on round 2.
 Decided by Elias on 2026-11-09, after the third calibration: the loop runs **one more round**, round 3,
 to act on the re-scored round 2's Feedback, under revision 5 and the same gates and cap. It is the last
 round whatever its numbers, and the issue stays open until Elias closes it.
+
+## A fourth round, for us (2026-11-09)
+
+Round 3 scored us promises at 27/35, 77.1%, against round 2's 32/35 under revision 5. Pooled, the two
+draws give 59/70, about 84%: round 2's exit rested on a favourable draw. Decided by Elias on 2026-11-09,
+after round 3's review: the loop runs **one more round**, round 4, aimed at bringing us promises close to
+the gate, under revision 5 and the same gates, draw and cap. It is the last round whatever its numbers,
+and the issue stays open until Elias closes it.
