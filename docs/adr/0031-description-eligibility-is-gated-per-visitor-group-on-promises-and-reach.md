@@ -123,3 +123,9 @@ revision 4; the adjudicator sided with the gold set on the one disagreement. The
 **Round 2 re-scored under revision 5** (`eligibility-round-2-revision-5.txt`, seed 10302): promises
 91.4% for latam, 91.4% for us and 94.3% for english, reach at or within a point of each baseline. Every
 group holds both gates, so the loop exits on round 2.
+
+## One round past the exit (2026-11-09)
+
+Decided by Elias on 2026-11-09, after the third calibration: the loop runs **one more round**, round 3,
+to act on the re-scored round 2's Feedback, under revision 5 and the same gates and cap. It is the last
+round whatever its numbers, and the issue stays open until Elias closes it.
