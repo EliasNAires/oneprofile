@@ -200,6 +200,24 @@ class CountrySetRuleTest {
 		assertThat(described("You'll work in a fast-paced team")).isEmpty();
 		assertThat(described("You'll work from anywhere")).isEmpty();
 		assertThat(described("You won't work in the US")).isEmpty();
+		assertThat(described("You'll be working in a complex enterprise domain where maintainability matters"))
+			.isEmpty();
+		assertThat(described("You'll work in Agile teams serving customers in Berlin")).isEmpty();
+		assertCityStatement("You'll work in our Vilnius office", "LT", "Vilnius");
+	}
+
+	/** A name of places in several countries is read in the one its list, or the vacancy's options, share. */
+	@Test
+	void aPlaceIsReadInTheCountryItsListOrTheOptionsShare() {
+		assertThat(described("This position is open only to candidates residing in Alberta, British Columbia, Ontario"))
+			.singleElement()
+			.satisfies((stated) -> assertThat(((List<?>) stated.toList().get(1))).extracting("country")
+				.containsOnly("CA"));
+		CountrySet set = this.rule.read(vacancy(WorkModeEnum.REMOTE, "Software Engineer", List.of("Remote - Canada"),
+				"Candidates must reside in Ontario."));
+		assertThat(set.statedSets()).filteredOn((stated) -> stated.source() == StatedSetSourceEnum.DESCRIPTION)
+			.singleElement()
+			.satisfies((stated) -> assertThat(stated.places()).extracting(Place::country).containsExactly("CA"));
 	}
 
 	/** Looking for a person based somewhere states that place, beside a separate perk too. */
@@ -391,6 +409,25 @@ class CountrySetRuleTest {
 		assertThat(described("This position does not require a security clearance.")).isEmpty();
 		assertThat(described("U.S. Citizenship is required for all positions with a government clearance and certain other restricted positions."))
 			.isEmpty();
+		assertThat(described("Under Maryland law, an employer may not require or demand, as a condition of employment, "
+				+ "that an individual submit to a polygraph examination.")).isEmpty();
+		assertThat(described("Under federal law, you must hold an active Secret clearance."))
+			.containsExactly(stated(StatedSetKindEnum.CLEARANCE, Place.country("US")));
+	}
+
+	/** What a segment under a preferred or nice-to-have heading says is no requirement. */
+	@Test
+	void aSegmentUnderAPreferredHeadingStatesNothing() {
+		for (String heading : List.of("Preferred Qualifications", "Nice to have", "Bonus points")) {
+			CountrySet set = this.rule.read(new CountrySetVacancy(1, Set.of(WorkModeEnum.REMOTE), "Software Engineer",
+					List.of(), List.of(new Segment(SegmentKindEnum.ITEM, heading, "Secret Clearance eligible", false),
+							new Segment(SegmentKindEnum.ITEM, heading, "Must be based in the US", false))));
+			assertThat(set.statedSets()).as(heading).isEmpty();
+		}
+		CountrySet required = this.rule.read(new CountrySetVacancy(1, Set.of(WorkModeEnum.REMOTE), "Software Engineer",
+				List.of(), List.of(new Segment(SegmentKindEnum.ITEM, "Requirements", "Active Secret clearance required",
+						false))));
+		assertThat(required.statedSets()).extracting(StatedSet::kind).containsExactly(StatedSetKindEnum.CLEARANCE);
 	}
 
 	@Test

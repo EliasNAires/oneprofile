@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Pattern;
 import oneprofile.backend.storage.normalizedvacancy.Place;
@@ -37,7 +36,9 @@ import org.springframework.stereotype.Component;
  * starts a place of its own ({@code Chicago, IL, Cleveland, OH}), as it does after a semicolon, a slash, an
  * ampersand, {@code and} or {@code or}. A region is always a place of its own, kept as named.
  * <p>
- * Of the readings of one place, the most precise wins, then the most populous city. A name alone that the
+ * Of the readings of one place, one in a country the string's other places are in wins
+ * ({@code Alberta, Ontario} is the province, not the city in California), unless the other is a city of more
+ * than a million people; then the most precise wins, then the most populous city. A name alone that the
  * hand table gives a meaning has that one ({@code Singapore}, the city); otherwise a name alone that is a
  * country's is the country ({@code Mexico}), and any other is its most populous match.
  * <p>
@@ -59,11 +60,17 @@ public class PlaceRule {
 	/** The hand table's label of the region that is every country, kept only where nothing narrows it. */
 	private static final String WORLDWIDE = "Worldwide";
 
-	/** How many people a city holds for its name to outweigh an outdated subdivision written beside it. */
-	private static final long CITY_OVER_OUTDATED_STATE = 1_000_000;
+	/**
+	 * How many people a great city holds: its name outweighs an outdated subdivision written beside it, the
+	 * country of the places beside it, and a small town written before it.
+	 */
+	private static final long GREAT_CITY = 1_000_000;
 
-	/** How many people a city holds for its name alone to outweigh a subdivision's of the same name. */
-	private static final long CITY_OVER_SAME_NAME = 100_000;
+	/**
+	 * How many people a large city holds: its name alone outweighs a subdivision's of the same name, and a town
+	 * of fewer is no district of a great city.
+	 */
+	private static final long LARGE_CITY = 100_000;
 
 	/** The short forms a name's first word is also written in, both ways: {@code St Louis}, {@code Ft Worth}. */
 	private static final Map<String, String> SHORT_FORMS = Map.of("saint", "st", "fort", "ft", "mount", "mt");
@@ -138,26 +145,40 @@ public class PlaceRule {
 	 * @return the places it names, and the words it read as nothing
 	 */
 	public PlaceReading read(String location, String country) {
+		return read(location, country, Set.of());
+	}
+
+	/**
+	 * Reads the places a text names, a name of several countries' places read in one of the countries given
+	 * where nothing else decides it.
+	 * @param location the text
+	 * @param country the country the ATS names for it, or null where it names none
+	 * @param near the countries a name is read in before others, as the vacancy's declared options name them
+	 * @return the places it names, and the words it read as nothing
+	 */
+	public PlaceReading read(String location, String country, Set<String> near) {
 		if (location == null || location.isBlank()) {
 			return new PlaceReading(List.of(), List.of());
 		}
 		String own = ownCountry(country);
 		List<String> unread = new ArrayList<>();
 		List<Mention> mentions = mentions(words(location), own, unread);
-		Set<Place> places = new LinkedHashSet<>();
+		if (district(mentions)) {
+			mentions = List.of(mentions.getLast());
+		}
+		List<Item> items = new ArrayList<>();
 		List<Mention> group = new ArrayList<>();
 		for (Mention mention : mentions) {
 			Candidate region = mention.region();
 			if (region != null) {
 				if (!mention.beside()) {
-					resolve(group, own).ifPresent(places::add);
-					group.clear();
-					places.add(Place.region(region.region()));
+					group = close(group, items);
+					items.add(new Item(Place.region(region.region()), null));
 				}
 				continue;
 			}
 			if (!group.isEmpty() && !mention.separated()) {
-				if (best(append(group, mention)) != null) {
+				if (best(append(group, mention), Set.of()) != null) {
 					group.add(mention);
 					continue;
 				}
@@ -165,14 +186,17 @@ public class PlaceRule {
 					continue;
 				}
 			}
-			if (mention.beside() && !(group.isEmpty() && places.isEmpty())) {
+			if (mention.beside() && !(group.isEmpty() && items.isEmpty())) {
 				continue;
 			}
-			resolve(group, own).ifPresent(places::add);
-			group.clear();
+			group = close(group, items);
 			group.add(mention);
 		}
-		resolve(group, own).ifPresent(places::add);
+		close(group, items);
+		Set<Place> places = new LinkedHashSet<>();
+		for (Place place : placesOf(items, own, near)) {
+			places.add(place);
+		}
 		if (places.size() > 1) {
 			// Anywhere followed by a place is anywhere in it (Anywhere in the U.S., Anywhere in Latin America).
 			places.remove(Place.region(WORLDWIDE));
@@ -201,7 +225,7 @@ public class PlaceRule {
 		if (mention.qualifier()) {
 			Set<String> countries = new HashSet<>();
 			mention.candidates().forEach((candidate) -> countries.add(candidate.country()));
-			if (last.candidates().stream().anyMatch((candidate) -> candidate.population() >= CITY_OVER_OUTDATED_STATE
+			if (last.candidates().stream().anyMatch((candidate) -> candidate.population() >= GREAT_CITY
 					&& countries.contains(candidate.country()))) {
 				return true;
 			}
@@ -209,7 +233,7 @@ public class PlaceRule {
 		if (last.onlyCities() && mention.qualifier()) {
 			List<Mention> mended = new ArrayList<>(group.subList(0, group.size() - 1));
 			mended.add(mention.asQualifier());
-			if (best(mended) != null) {
+			if (best(mended, Set.of()) != null) {
 				group.clear();
 				group.addAll(mended);
 				return true;
@@ -217,11 +241,28 @@ public class PlaceRule {
 			return false;
 		}
 		if (group.size() == 1 && last.qualifier() && mention.onlyCities()
-				&& mention.candidates().stream().allMatch((candidate) -> candidate.population() < CITY_OVER_OUTDATED_STATE)) {
+				&& mention.candidates().stream().allMatch((candidate) -> candidate.population() < GREAT_CITY)) {
 			group.set(0, last.asQualifier());
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * Whether a string names only a city of fewer than a hundred thousand people and, after a comma, one of more
+	 * than a million in a country the first is in no reading of ({@code Whitefield, Bangalore}): the first is a
+	 * district of the greater city, which alone is the place.
+	 */
+	private static boolean district(List<Mention> mentions) {
+		if (mentions.size() != 2 || mentions.getLast().separated()) {
+			return false;
+		}
+		Mention district = mentions.getFirst();
+		Mention city = mentions.getLast();
+		return district.onlyCities() && city.onlyCities()
+				&& district.candidates().stream().allMatch((candidate) -> candidate.population() < LARGE_CITY)
+				&& city.candidates().stream().anyMatch((great) -> great.population() >= GREAT_CITY
+						&& district.candidates().stream().noneMatch((candidate) -> candidate.country().equals(great.country())));
 	}
 
 	/** The code of the country the ATS names, null where it names none or one the list does not know. */
@@ -319,23 +360,56 @@ public class PlaceRule {
 		return marked;
 	}
 
-	/** The place a group of names makes, nothing for an empty group. */
-	private Optional<Place> resolve(List<Mention> group, String own) {
-		if (group.isEmpty()) {
-			return Optional.empty();
+	/** Ends a group of names as an item of the string, and starts the next. */
+	private static List<Mention> close(List<Mention> group, List<Item> items) {
+		if (!group.isEmpty()) {
+			items.add(new Item(null, group));
 		}
+		return new ArrayList<>();
+	}
+
+	/**
+	 * The places a string's items make, in order. Each group is read first alone, then again beside the
+	 * countries the others are in, so that a name of several countries' places is read in the one the string
+	 * shares ({@code Alberta, British Columbia, Ontario}) or one of the countries given.
+	 */
+	private List<Place> placesOf(List<Item> items, String own, Set<String> given) {
+		List<String> alone = new ArrayList<>(items.size());
+		for (Item item : items) {
+			alone.add((item.region() != null) ? null : resolve(item.group(), own, given).country());
+		}
+		List<Place> places = new ArrayList<>(items.size());
+		for (int i = 0; i < items.size(); i++) {
+			Item item = items.get(i);
+			if (item.region() != null) {
+				places.add(item.region());
+				continue;
+			}
+			Set<String> near = new HashSet<>(given);
+			for (int j = 0; j < items.size(); j++) {
+				if (j != i && alone.get(j) != null) {
+					near.add(alone.get(j));
+				}
+			}
+			places.add(resolve(item.group(), own, near));
+		}
+		return places;
+	}
+
+	/** The place a group of names makes, read beside the countries the string's other places are in. */
+	private Place resolve(List<Mention> group, String own, Set<String> near) {
 		Candidate alone = (group.size() == 1 && own == null) ? this.bare.get(group.getFirst().key()) : null;
-		Place place = place((alone != null) ? List.of(alone) : best(group));
+		Place place = place((alone != null) ? List.of(alone) : best(group, near));
 		if (place.kind() == PlaceKindEnum.COUNTRY) {
 			// A city-state named twice (Singapore, Singapore) is the city its name means alone.
 			for (Mention mention : group) {
 				Candidate city = this.bare.get(mention.key());
 				if (city != null && city.kind() == PlaceKindEnum.CITY && city.country().equals(place.country())) {
-					return Optional.of(place(List.of(city)));
+					return place(List.of(city));
 				}
 			}
 		}
-		return Optional.of(place);
+		return place;
 	}
 
 	private Place place(List<Candidate> reading) {
@@ -367,13 +441,18 @@ public class PlaceRule {
 	 * a country's is read as the country wherever that fits, unless it follows words that were not read
 	 * ({@code Riverwoods, IL}); then the most precise reading wins, then the most populous city. A name alone
 	 * that is also a subdivision's is read as a city of fewer than a hundred thousand people only where the
-	 * city lies in it ({@code Florida} is the state, not the town in Cuba).
+	 * city lies in it ({@code Florida} is the state, not the town in Cuba). Before precision, a reading in a
+	 * country near it wins over one that is not, unless that one is a city of more than a million people
+	 * ({@code London} beside Toronto is still London, England).
+	 * @param near the countries the string's other places are in
 	 */
-	private static List<Candidate> best(List<Mention> group) {
+	private static List<Candidate> best(List<Mention> group, Set<String> near) {
 		List<List<Candidate>> readings = new ArrayList<>();
 		readings(group, 0, new ArrayList<>(), readings);
 		return readings.stream()
 			.max(Comparator.<List<Candidate>>comparingInt((reading) -> countriesRead(group, reading))
+				.thenComparing((reading) -> near.contains(reading.getLast().country())
+						|| population(reading) >= GREAT_CITY)
 				.thenComparingInt(PlaceRule::precision)
 				.thenComparingLong(PlaceRule::population))
 			.orElse(null);
@@ -391,7 +470,7 @@ public class PlaceRule {
 				.forEach((candidate) -> subdivisions.add(candidate.subdivision()));
 		}
 		for (Candidate candidate : mention.candidates()) {
-			if (candidate.kind() == PlaceKindEnum.CITY && !subdivisions.isEmpty() && candidate.population() < CITY_OVER_SAME_NAME
+			if (candidate.kind() == PlaceKindEnum.CITY && !subdivisions.isEmpty() && candidate.population() < LARGE_CITY
 					&& !subdivisions.contains(candidate.country() + "." + candidate.city().subdivision())) {
 				continue;
 			}
@@ -592,6 +671,14 @@ public class PlaceRule {
 	}
 
 	/**
+	 * One item of a string: a region, or a group of names that make one place.
+	 * @param region the region, null for a group
+	 * @param group the names, null for a region
+	 */
+	private record Item(Place region, List<Mention> group) {
+	}
+
+	/**
 	 * One name a string holds.
 	 * @param key the name's key, by which the hand table says what it means alone
 	 * @param candidates what it may be, the most populous city first
@@ -612,14 +699,16 @@ public class PlaceRule {
 
 		/** Whether it may be a subdivision or a country, as a town's state is. */
 		boolean qualifier() {
-			return this.candidates.stream()
-				.anyMatch((candidate) -> candidate.kind() == PlaceKindEnum.SUBDIVISION
-						|| candidate.kind() == PlaceKindEnum.COUNTRY);
+			return this.candidates.stream().anyMatch(Candidate::qualifies);
 		}
 
-		/** The same name, read as a town's qualifier: a code is a subdivision before it is a country. */
+		/**
+		 * The same name, read as a town's qualifier: a subdivision or a country, never a city
+		 * ({@code North York, Ontario} is the province), and a code a subdivision before it is a country.
+		 */
 		Mention asQualifier() {
-			return new Mention(this.key, this.candidates, this.separated, true, this.beside);
+			List<Candidate> qualifiers = this.candidates.stream().filter(Candidate::qualifies).toList();
+			return new Mention(this.key, qualifiers, this.separated, true, this.beside);
 		}
 
 		Candidate region() {
@@ -657,6 +746,11 @@ public class PlaceRule {
 
 		long population() {
 			return (this.city == null) ? 0 : this.city.population();
+		}
+
+		/** Whether it is a subdivision or a country, which may qualify a town. */
+		boolean qualifies() {
+			return this.kind == PlaceKindEnum.SUBDIVISION || this.kind == PlaceKindEnum.COUNTRY;
 		}
 
 	}

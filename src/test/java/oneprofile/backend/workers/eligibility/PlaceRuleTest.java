@@ -129,6 +129,27 @@ class PlaceRuleTest {
 	}
 
 	@Test
+	void readsANameByTheCountryTheOtherPlacesOfTheStringShare() {
+		assertPlaces("Alberta, British Columbia, Ontario", "Alberta, CA", "British Columbia, CA", "Ontario, CA");
+		assertPlaces("Ontario", "Ontario, California, US");
+		assertPlaces("New York, London, Toronto", "New York City, New York, US", "London, England, GB",
+				"Toronto, Ontario, CA");
+	}
+
+	@Test
+	void readsAQualifierAfterAnUnknownTownAsTheQualifier() {
+		assertPlaces("North York, Ontario", "Ontario, CA");
+	}
+
+	@Test
+	void readsASmallCityBeforeAGreatCityOfAnotherCountryAsADistrictOfIt() {
+		assertPlaces("Whitefield, Bangalore", "Bengaluru, Karnataka, IN");
+		assertPlaces("Paris, London", "Paris, Île-de-France, FR", "London, England, GB");
+		assertPlaces("Whitefield, Paris, London", "Whitefield, England, GB", "Paris, Île-de-France, FR",
+				"London, England, GB");
+	}
+
+	@Test
 	void readsTheStringsOfWorkdayAndItsDots() {
 		assertPlaces("USA.VA.Reston", "Reston, Virginia, US");
 		assertPlaces("United States-Colorado-Schriever AFB", "Schriever AFB, Colorado, US");

@@ -43,8 +43,8 @@ import org.springframework.stereotype.Component;
  * that the company hires or the person may be located anywhere ({@code we hire from anywhere}, a global set).
  * Worldwide is kept only when the statement's own sentence names hiring or the person's location; working
  * from anywhere as a perk or culture states nothing. A statement of where this role is done requires no
- * must: {@code you are based in}, {@code this role is located in}, {@code you'll work in}, or
- * {@code looking for an engineer based in}. A location label at a segment's start also states its places,
+ * must: {@code you are based in}, {@code this role is located in}, {@code you'll work in} where its object is a
+ * place, or {@code looking for an engineer based in}. A location label at a segment's start also states its places,
  * unless it offers a choice including remote. A
  * place it names in passing ({@code our offices in London}, {@code for candidates based in the United States,
  * the pay range is}) states nothing, and neither does one after a negation ({@code we are not able to hire in
@@ -53,10 +53,12 @@ import org.springframework.stereotype.Component;
  * and a clearance where it requires one; never where it is conditional ({@code for all positions with a
  * government clearance}) or a list of what the company does not discriminate by. A label is read with its
  * answer: {@code Government Clearance Required?} followed by {@code No}, or {@code Clearance Required to Start:
- * None}, requires nothing. It states a timezone
+ * None}, requires nothing, and so does a legal notice of what an employer may not require. A segment under a
+ * heading of what is preferred ({@code Preferred Qualifications}) states nothing. It states a timezone
  * requirement where it says the person lives or works within a window of UTC offsets ({@code working from
  * UTC-1 to UTC+4}); a window of hours to overlap or attend is a schedule and states nothing. The place a
- * statement names is read from the words after it, up to the end of its clause, by the place rule.
+ * statement names is read from the words after it, up to the end of its clause, by the place rule, a name of
+ * several countries' places in a country the declared options name.
  * <p>
  * A clearance is a set of the country it is of: the United States for one only the United States grants
  * ({@code TS/SCI}, a polygraph, public trust), otherwise the one country the declared location names, and the
@@ -121,6 +123,13 @@ public class CountrySetRule {
 	/** Where the person will work, with or without be. */
 	private static final Pattern YOU_WORK_IN = Pattern.compile("\\byou(?:['’]ll|\\s+will)\\s+(?:be\\s+)?work(?:ing)?\\s+"
 			+ "(?:in|from|out\\s+of)\\s+", IGNORING_CASE);
+
+	/**
+	 * The words that may stand beside the places {@code you'll work in} names, which names nothing else:
+	 * {@code You'll work in our Vilnius office}.
+	 */
+	private static final Set<String> BESIDE_WORK_PLACES = Set.of("the", "our", "and", "or", "office", "offices", "hub",
+			"hubs", "hq", "headquarters", "studio", "campus");
 
 	/** Looking for a person based somewhere states where that person must be. */
 	private static final Pattern LOOKING_FOR_IN = Pattern.compile("\\blooking\\s+for\\s+(?:(?:a|an)\\s+)?"
@@ -211,6 +220,21 @@ public class CountrySetRule {
 	private static final Pattern CLEARANCE = Pattern.compile("\\bTS\\s*/\\s*SCI\\b|\\bTS-SCI\\b|\\btop\\s+secret\\b|"
 			+ "\\bpolygraph\\b|\\b(?:security|secret|government|federal|dod|active|interim|public\\s+trust)\\s+clearance\\b|"
 			+ "\\bclearance\\s+(?:is\\s+)?required\\b", IGNORING_CASE);
+
+	/**
+	 * A legal notice of what an employer may not require, in whose sentence a clearance or polygraph is required
+	 * of no one: {@code Under Maryland law, an employer may not require … a polygraph examination}.
+	 */
+	private static final Pattern LEGAL_NOTICE = Pattern.compile("\\b(?:(?:may|shall|"
+			+ "must|can|will|do|does)\\s+not\\s+(?:\\w+\\s+){0,2}?(?:require|demand)|cannot\\s+(?:require|demand)|"
+			+ "prohibit\\w*)\\b", IGNORING_CASE);
+
+	/**
+	 * A heading over what is preferred rather than required ({@code Preferred Qualifications}, {@code Nice to
+	 * have}, {@code Bonus points}), under which a segment requires nothing.
+	 */
+	private static final Pattern PREFERRED_HEADING = Pattern.compile("\\b(?:prefer\\w*|nice[- ]to[- ]haves?|desired|"
+			+ "desirable|pluses|a plus|bonus\\s+(?:points?|skills?|qualifications?|if))\\b|^\\s*bonus\\W*$", IGNORING_CASE);
 
 	/** A requirement, which a statement of authorization, citizenship or clearance needs beside it. */
 	private static final Pattern REQUIRED = Pattern.compile("\\b(?:must|required|requires|require|need|needs|only|should|"
@@ -331,13 +355,17 @@ public class CountrySetRule {
 		boolean relocation = false;
 		Set<List<Object>> read = new HashSet<>();
 		List<Segment> segments = vacancy.segments();
+		Set<String> near = optionCountries(vacancy);
 		for (int i = 0; i < segments.size(); i++) {
 			Segment segment = segments.get(i);
 			if (!mayState(segment.text())) {
 				continue;
 			}
 			String next = (i + 1 < segments.size()) ? segments.get(i + 1).text() : null;
-			for (StatedSet set : statements(segment.text(), next, i, vacancy)) {
+			// What a segment under a preferred heading names is a preference, which states nothing.
+			List<StatedSet> statements = (segment.under() != null && PREFERRED_HEADING.matcher(segment.under()).find())
+					? List.of() : statements(segment.text(), next, i, vacancy, near);
+			for (StatedSet set : statements) {
 				if (read.add(List.of(set.kind(), set.places(), String.valueOf(set.utcFrom()), String.valueOf(set.utcTo())))) {
 					stated.add(set);
 				}
@@ -443,8 +471,10 @@ public class CountrySetRule {
 	 * for the last
 	 * @param segment the segment's index
 	 * @param vacancy the vacancy it is of
+	 * @param near the countries its options name, in which a name of several countries' places is read first
 	 */
-	private List<StatedSet> statements(String text, String next, int segment, CountrySetVacancy vacancy) {
+	private List<StatedSet> statements(String text, String next, int segment, CountrySetVacancy vacancy,
+			Set<String> near) {
 		List<StatedSet> stated = new ArrayList<>();
 		for (Pattern statement : List.of(MUST_BE_IN, YOU_ARE_IN, ROLE_IN, YOU_WORK_IN, LOOKING_FOR_IN,
 				LOCATION_LABEL, OPEN_TO, ANYWHERE_IN, HIRES_IN)) {
@@ -459,7 +489,9 @@ public class CountrySetRule {
 					continue;
 				}
 				if (!negatedBefore(text, matcher.start())) {
-					List<Place> places = hiringPlaces(text, matcher.start(), placesAfter(text, matcher.end()));
+					// Where you'll work names a place only where its object is one: not a complex enterprise domain.
+					List<Place> places = hiringPlaces(text, matcher.start(), (statement == YOU_WORK_IN)
+							? workPlaces(clauseAfter(text, matcher.end()), near) : placesAfter(text, matcher.end(), near));
 					if (!places.isEmpty()) {
 						stated.add(described(kindOf(places), segment, text, places));
 					}
@@ -498,11 +530,12 @@ public class CountrySetRule {
 		}
 		boolean required = REQUIRED.matcher(text).find() && !CONDITION.matcher(text).find();
 		if (required) {
-			authorization(text, segment, stated);
+			authorization(text, segment, near, stated);
 			if (!NON_DISCRIMINATION.matcher(text).find()) {
-				citizenship(text, segment, stated);
+				citizenship(text, segment, near, stated);
 			}
-			if (CLEARANCE.matcher(text).find() && !negatedBefore(text, clearanceAt(text)) && answeredYes(text, next)) {
+			if (CLEARANCE.matcher(text).find() && !negatedBefore(text, clearanceAt(text))
+					&& !LEGAL_NOTICE.matcher(sentenceAt(text, clearanceAt(text))).find() && answeredYes(text, next)) {
 				stated.add(described(StatedSetKindEnum.CLEARANCE, segment, text,
 						List.of(Place.country(clearanceCountry(text, vacancy)))));
 			}
@@ -542,11 +575,11 @@ public class CountrySetRule {
 		return text.substring(start, end);
 	}
 
-	private void authorization(String text, int segment, List<StatedSet> stated) {
+	private void authorization(String text, int segment, Set<String> near, List<StatedSet> stated) {
 		Matcher after = AUTHORIZED_IN.matcher(text);
 		while (after.find()) {
 			if (!negatedBefore(text, after.start())) {
-				List<Place> places = countries(placesAfter(text, after.end()));
+				List<Place> places = countries(placesAfter(text, after.end(), near));
 				if (!places.isEmpty()) {
 					stated.add(described(StatedSetKindEnum.AUTHORIZATION, segment, text, places));
 				}
@@ -561,7 +594,7 @@ public class CountrySetRule {
 		}
 	}
 
-	private void citizenship(String text, int segment, List<StatedSet> stated) {
+	private void citizenship(String text, int segment, Set<String> near, List<StatedSet> stated) {
 		Matcher before = PLACE_CITIZENSHIP.matcher(text);
 		while (before.find()) {
 			List<Place> places = countries(placesNamedOnly(before.group(1)));
@@ -571,7 +604,7 @@ public class CountrySetRule {
 		}
 		Matcher after = CITIZENS_OF.matcher(text);
 		while (after.find()) {
-			List<Place> places = countries(placesAfter(text, after.end()));
+			List<Place> places = countries(placesAfter(text, after.end(), near));
 			if (!places.isEmpty() && !negatedBefore(text, after.start())) {
 				stated.add(described(StatedSetKindEnum.CITIZENSHIP, segment, text, places));
 			}
@@ -630,8 +663,20 @@ public class CountrySetRule {
 		return NEGATION.matcher(clause).find() || CONDITION.matcher(clause).find();
 	}
 
-	/** The places the words after a statement name, up to the end of its clause. */
-	private List<Place> placesAfter(String text, int from) {
+	/**
+	 * The places the words after a statement name, up to the end of its clause, a name of several countries'
+	 * places read in one of those near first.
+	 */
+	private List<Place> placesAfter(String text, int from, Set<String> near) {
+		String clause = clauseAfter(text, from);
+		if (clause.strip().toLowerCase(Locale.ROOT).matches("(?:the\\s+)?world\\b.*")) {
+			return List.of(Place.region(WORLDWIDE));
+		}
+		return this.places.read(clause, null, near).places();
+	}
+
+	/** The words after a statement, up to the end of its clause. */
+	private static String clauseAfter(String text, int from) {
 		StringBuilder words = new StringBuilder();
 		for (int i = from; i < text.length() && words.length() < LONGEST_PLACE; i++) {
 			char c = text.charAt(i);
@@ -646,11 +691,32 @@ public class CountrySetRule {
 			words.append(c);
 		}
 		Matcher end = CLAUSE_END.matcher(words);
-		String clause = end.find() ? words.substring(0, end.start()) : words.toString();
-		if (clause.strip().toLowerCase(Locale.ROOT).matches("(?:the\\s+)?world\\b.*")) {
-			return List.of(Place.region(WORLDWIDE));
+		return end.find() ? words.substring(0, end.start()) : words.toString();
+	}
+
+	/**
+	 * The places a clause names where every word of it is a place, a town the list does not hold, capitalized, or
+	 * an office's: {@code Hyvinkää, Finland}, {@code our Vilnius office}.
+	 */
+	private List<Place> workPlaces(String clause, Set<String> near) {
+		PlaceReading reading = this.places.read(clause, null, near);
+		boolean onlyPlaces = reading.unread().stream()
+			.allMatch((word) -> Character.isUpperCase(word.charAt(0))
+					|| BESIDE_WORK_PLACES.contains(word.toLowerCase(Locale.ROOT)));
+		return onlyPlaces ? reading.places() : List.of();
+	}
+
+	/** The countries the vacancy's declared options name. */
+	private static Set<String> optionCountries(CountrySetVacancy vacancy) {
+		Set<String> countries = new HashSet<>();
+		for (LocationPlaces location : vacancy.locations()) {
+			for (Place place : location.places()) {
+				if (place.country() != null) {
+					countries.add(place.country());
+				}
+			}
 		}
-		return this.places.read(clause, null).places();
+		return countries;
 	}
 
 	/** The places some words name, where every word of them is read as a place or a word beside one. */
@@ -702,14 +768,7 @@ public class CountrySetRule {
 		if (US_CLEARANCE.matcher(text).find()) {
 			return UNITED_STATES;
 		}
-		Set<String> countries = new LinkedHashSet<>();
-		for (LocationPlaces location : vacancy.locations()) {
-			for (Place place : location.places()) {
-				if (place.country() != null) {
-					countries.add(place.country());
-				}
-			}
-		}
+		Set<String> countries = optionCountries(vacancy);
 		return (countries.size() == 1) ? countries.iterator().next() : UNITED_STATES;
 	}
 
