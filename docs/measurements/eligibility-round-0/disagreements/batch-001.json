@@ -1,0 +1,162 @@
+[
+ {
+  "id": "388526:us",
+  "text": "company: getwingapp\ntitle: Web Presence Specialist\noptions: Vancouver [remote]\ndescription:\n# About Us\n[under: About Us] We are a venture-backed scaleup, based in Silicon Valley, but operate fully remote.\n[under: Benefits] - Performance-based bonuses\n[under: Benefits] - Remote-first culture work from anywhere in the world",
+  "b": "eligible",
+  "a": "unknown",
+  "group": "us",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "182379:us",
+  "text": "company: Arionkoder\ntitle: Full Stack Engineer\noptions: LATAM [undeclared]\ndescription:\n[under: Code quality and working within the architecture] - Implement against the boundaries, contracts, and patterns the architecture defines, flag when a contract or requirement doesn't hold up, and escalate the decisions that aren't yours to make.\n[under: Required Qualifications] - Comfortable with modern CI/CD and Git workflows — GitHub Actions (or equivalent), PR-based review, branching, and automated testing as part of how you ship.\n[under: Required Qualifications] - Reads and works within an existing architecture — implements against defined contracts and guardrails, and knows when to challenge them vs. when to escalate.\n[under: Required Qualifications] - Advanced English; comfortable in a fully remote, distributed team.\n[under: Nice to have] - Experience working in multi-tenant or enterprise-facing products with real security and data-residency constraints.\n> [under: Perks] A dynamic remote work culture.\n> [under: Perks] You can work from anywhere!\n> # About us\n> [under: About us] We scaled globally, launched AI Labs and Reshape Studios, and claimed our space as an AI consulting firm — helping organizations move from pilots to production through accountable AI.",
+  "a": "eligible",
+  "b": "unknown",
+  "group": "us",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "399289:latam",
+  "text": "company: jobgether\ntitle: Website & Lifecycle Marketing Lead\noptions: Czechia [remote]\ndescription:\nOur partner is looking for a Website & Lifecycle Marketing Lead based in Czechia.\nIn a fast-paced, fully remote environment, your work will directly influence conversion rates, customer retention, and recurring revenue.\n[under: Requirements] - Experimentation and Analytics: Solid understanding of A/B testing principles, including sample sizes, primary success metrics, and minimum detectable or practically meaningful effects. Ability to interpret results and make evidence-based decisions.\n[under: Requirements] - Preferred Qualifications: Experience with hybrid self-service and sales-led funnels; hands-on knowledge of CRM systems such as HubSpot or Pipedrive and email marketing platforms; experience developing prompts or knowledge bases for AI sales or support agents; and familiarity with custom manufacturing, branded merchandise, or print-on-demand businesses.\n[under: Benefits] - Fully Remote Work: Work remotely from anywhere globally, with flexible working hours and no requirement to report to a physical office.\n[under: Benefits] - Full-Time Engagement: An exclusive, full-time independent contractor arrangement offering substantial responsibility and autonomy.\n[under: How Jobgether works] This processing is based on legitimate interest and pre-contractual measures under applicable data protection laws (including GDPR).",
+  "a": "eligible",
+  "b": "excluded",
+  "group": "latam",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "395355:latam",
+  "text": "company: jobgether\ntitle: AI Evaluation Engineer\noptions: Australia [remote]\ndescription:\nOur partner is looking for an AI Evaluation Engineer based in Australia.\nThis is an opportunity to take ownership of an evaluation architecture from the ground up while working with modern AI technologies in a fully remote, globally distributed environment.\n[under: Requirements] - Availability to overlap with US Central Time business hours for at least three hours each day.\n[under: Requirements] - Strong understanding of embedding models, vector databases, and their applications in AI evaluation and similarity-based testing.\n[under: Benefits] - Fully remote work: Work from anywhere with a reliable internet connection, with the flexibility to choose your preferred time zone and working hours.\n[under: Benefits] - Flexible schedule: Organize your working day around your productivity while maintaining the required overlap with US Central Time.\n[under: Benefits] - Negotiable compensation: Your starting hourly rate will be determined based on your skills, experience, and qualifications.\n[under: Benefits] - Independent contractor arrangement: Compensation is based on hours worked, with payments made monthly via wire transfer.\n[under: How Jobgether works] This processing is based on legitimate interest and pre-contractual measures under applicable data protection laws (including GDPR).",
+  "a": "eligible",
+  "b": "excluded",
+  "group": "latam",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "399314:latam",
+  "text": "company: jobgether\ntitle: Website & Lifecycle Marketing Lead\noptions: Croatia [remote]\ndescription:\nOur partner is looking for a Website & Lifecycle Marketing Lead based in Croatia.\nIn a fast-paced, fully remote environment, your work will directly influence conversion rates, customer retention, and recurring revenue.\n[under: Requirements] - Experimentation and Analytics: Solid understanding of A/B testing principles, including sample sizes, primary success metrics, and minimum detectable or practically meaningful effects. Ability to interpret results and make evidence-based decisions.\n[under: Requirements] - Preferred Qualifications: Experience with hybrid self-service and sales-led funnels; hands-on knowledge of CRM systems such as HubSpot or Pipedrive and email marketing platforms; experience developing prompts or knowledge bases for AI sales or support agents; and familiarity with custom manufacturing, branded merchandise, or print-on-demand businesses.\n[under: Benefits] - Fully Remote Work: Work remotely from anywhere globally, with flexible working hours and no requirement to report to a physical office.\n[under: Benefits] - Full-Time Engagement: An exclusive, full-time independent contractor arrangement offering substantial responsibility and autonomy.\n[under: How Jobgether works] This processing is based on legitimate interest and pre-contractual measures under applicable data protection laws (including GDPR).",
+  "b": "eligible",
+  "a": "excluded",
+  "group": "latam",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "269225:latam",
+  "text": "company: supabase\ntitle: Developer Relations Engineer\noptions: Remote, San Francisco, CA [remote]\ndescription:\n[under: About the Role] We’re looking for a Developer Relations Engineer based in San Francisco to join our team and to help more developers discover, learn, and build with Supabase.\n[under: Requirements] This role is based in San Francisco to support regular in-person devrel video shoots, attend local events, and be an active presence in the SF tech ecosystem.\n[under: What We Offer] - Fully Remote\n[under: What We Offer] - We hire globally. We believe you can do your best work from anywhere. There are no Supabase offices, but we provide a WeWork membership or co-working allowance you can use anywhere in the world.\n[under: What We Offer] - Supabase covers 100% of health insurance for employees and 80% for dependents, wherever you are. Your wellbeing and your family’s health are important to us.\n[under: About the Team] Supabase was born-remote and open-source-first.\n[under: About the Team] We believe our globally distributed team is our secret weapon in building tools developers love.\n[under: About the Team] - 60+ countries",
+  "a": "eligible",
+  "b": "excluded",
+  "group": "latam",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "58137:english",
+  "text": "company: Eqvilent\ntitle: DL Researcher\noptions: Remote [remote]\ndescription:\n[under: What You’ll Be Doing] - The team you’ll join is working on developing solutions based on DL with state-of-the-art performance in terms of accuracy/speed/scalability.\n[under: Why Should You Join Our Team?] - Work remotely from anywhere in the world\n[under: Why Should You Join Our Team?] - Access any of our global offices anytime",
+  "b": "eligible",
+  "a": "unknown",
+  "group": "english",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "407903:english",
+  "text": "company: muttdata\ntitle: Data Engineer Databricks - Mexico\noptions: Mexico [remote]\ndescription:\n# Join Our Remote Data Products & Machine Learning Startup!\n[under: Join Our Remote Data Products & Machine Learning Startup!] As a fast-growing, remote-first startup, we're passionate about technology, collaboration, and continuous learning.\n[under: Join Our Remote Data Products & Machine Learning Startup!] This opportunity is with a leading multinational beverage company based in Mexico City.\n[under: Join Our Remote Data Products & Machine Learning Startup!] We are looking for an Data Engineer Engineer to join our team and work on high-impact projects for a major multinational beverage company based in Mexico .\n[under: What We Do] - Offering comprehensive Data Engineering and custom AI solutions, we optimize cloud-based systems.\n[under: Responsibilities] - Defines and maintains data contracts, quality rules, and data SLOs for each data product.\n[under: Perks] - Remote-first culture – work from anywhere!\n[under: Perks] - Referral bonuses – help us grow the team & get rewarded!",
+  "b": "eligible",
+  "a": "unknown",
+  "group": "english",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "246173:latam",
+  "text": "company: lazer\ntitle: Director of Engineering\noptions: Canada [remote] | USA [remote]\ndescription:\nWe are a remote-first organization headquartered in Toronto, Ontario, with employees worldwide.\nJoin Lazer and help us solve problems and build the next generation of products!\n[under: AI in our hiring process] We use AI to help us review and shortlist applications based on job-related criteria.\n# Why Work With Us\n[under: Benefits & Perks] - Work From Anywhere: Choose your workspace — all you need is strong wifi and a passion for building!\n[under: Benefits & Perks] - Employee Care: We provide full benefits (healthcare, dental, vision) for our employees (401k for our US employees)\n[under: Benefits & Perks] - Regular Team Retreat: Join us for a week of team bonding at amazing destinations. Recent trips include the Dominican Republic, Cancun, and Hawaii — plus ones welcome.",
+  "b": "eligible",
+  "a": "unknown",
+  "group": "latam",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "395460:english",
+  "text": "company: jobgether\ntitle: App Security Expert\noptions: Luxembourg [remote]\ndescription:\nOur partner is looking for an App Security Expert based in Luxembourg.\nYou will also contribute to advancing AI-powered static analysis and agent-based security architectures.\nWorking in a remote, technically driven environment, you will collaborate with security specialists to refine testing methodologies and improve evaluation quality.\n[under: Accountabilities] - Contribute to the design and evaluation of security architectures for traditional applications and agent-based systems.\n[under: Requirements] - Experience designing or evaluating security architectures for traditional software applications and agent-based systems.\n[under: Requirements] - Ability to work independently, manage technical tasks effectively, and deliver high-quality contributions in a fully remote environment.\n[under: Benefits] - Fully remote work: Work remotely from anywhere in the world.\n[under: Benefits] - Long-term contract: Initial 12-month engagement, offering the opportunity to contribute to ongoing security evaluation initiatives.\n[under: Benefits] - Flexible independent engagement: Work as a freelancer or independent contractor.\n[under: Benefits] - Cutting-edge technical challenges: Work on application security, LLM vulnerabilities, AI-powered security analysis, and agent-based architectures.\n[under: Benefits] - Collaborative remote environment: Share expertise, exchange technical feedback, and contribute to continuous improvements alongside other security professionals.\n[under: How Jobgether works] This processing is based on legitimate interest and pre-contractual measures under applicable data protection laws (including GDPR).",
+  "a": "eligible",
+  "b": "excluded",
+  "group": "english",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "176945:english",
+  "text": "company: Poland and Central-Eastern Europe\ntitle: Senior Program Manager\noptions: Bulgaria; Poland; Romania [undeclared]\ndescription:\nXebia is a global AI-first, digital transformation, and engineering partner.\nWith over 25 years of experience and a team of 5,000 professionals across 16 countries, we help organizations design and build scalable products, platforms, and data-driven solutions.\nIn the CEE region, we’re a team of nearly 1,000 experts delivering modern applications, data platforms, and AI solutions for clients such as Millennium, ING, Play, Edenred, Arabian Drilling, FedEx, Leroy Merlin, Truecaller, Volotea, Schmitz Cargobull, and many, many more.\n[under: You will be] - establishing and executing structured change management processes, ensuring full traceability between requirements, scope, budget, and contractual agreements,\n[under: You will be] - building strong, trust-based relationships with clients, sponsors, and key internal stakeholders,\n[under: Your profile] - Work from the European Union region and a work permit are required.",
+  "a": "not open",
+  "b": "open",
+  "group": "english",
+  "asks": "reader verdict for the group: open or not open"
+ },
+ {
+  "id": "397105:us",
+  "text": "company: jobgether\ntitle: Magneto Developer\noptions: Austria [remote]\ndescription:\nOur partner is looking for a Magento Developer based in Austria.\nIn this remote, part-time role, you will work on project-based assignments or monthly contracts, helping deliver reliable, secure, and high-performing online shopping experiences.\n[under: Accountabilities] - Support ongoing improvements and technical enhancements based on project priorities and evolving business needs.\n[under: Requirements] - Good time management skills and the ability to deliver assigned tasks within agreed timelines in a remote working environment.\n[under: Requirements] - Availability for part-time contractual work, with flexibility to support project-based or monthly engagements. Immediate availability is preferred.\n[under: Benefits] - Remote work: Work from anywhere, subject to the engagement requirements.\n[under: Benefits] - Part-time flexibility: Balance professional commitments with flexible working hours based on project needs.\n[under: Benefits] - Contractual engagement: Choose from project-based assignments or monthly contract arrangements, depending on business requirements.\n[under: Benefits] - Experience-based compensation: Compensation is determined by your experience, technical expertise, and the scope of work.\n[under: How Jobgether works] This processing is based on legitimate interest and pre-contractual measures under applicable data protection laws (including GDPR).",
+  "b": "eligible",
+  "a": "excluded",
+  "group": "us",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "272406:english",
+  "text": "company: tremendous\ntitle: Senior Software Engineer\noptions: Brazil [remote]\ndescription:\nTremendous is the global platform built for businesses to send payouts - gift cards and money - to anyone, anywhere, instantly.\nWe're trusted by 20,000+ organizations, from startups to giants like Google, GitHub, and Notion, to reach millions of recipients worldwide.\nWe're fully remote, with a high-documentation, low-meeting culture that leaves more time for the work that matters - and for your life outside it.\n[under: About the role] We move billions of dollars through our platform, manage a catalog of 2,500+ redemption options, and deliver to recipients in 200+ countries.\n[under: What's cool about the role] - Fully remote. Work from anywhere in the Americas.",
+  "b": "eligible",
+  "a": "unknown",
+  "group": "english",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "399302:us",
+  "text": "company: jobgether\ntitle: Website & Lifecycle Marketing Lead\noptions: Denmark [remote]\ndescription:\nOur partner is looking for a Website & Lifecycle Marketing Lead based in Denmark.\nIn a fast-paced, fully remote environment, your work will directly influence conversion rates, customer retention, and recurring revenue.\n[under: Requirements] - Experimentation and Analytics: Solid understanding of A/B testing principles, including sample sizes, primary success metrics, and minimum detectable or practically meaningful effects. Ability to interpret results and make evidence-based decisions.\n[under: Requirements] - Preferred Qualifications: Experience with hybrid self-service and sales-led funnels; hands-on knowledge of CRM systems such as HubSpot or Pipedrive and email marketing platforms; experience developing prompts or knowledge bases for AI sales or support agents; and familiarity with custom manufacturing, branded merchandise, or print-on-demand businesses.\n[under: Benefits] - Fully Remote Work: Work remotely from anywhere globally, with flexible working hours and no requirement to report to a physical office.\n[under: Benefits] - Full-Time Engagement: An exclusive, full-time independent contractor arrangement offering substantial responsibility and autonomy.\n[under: How Jobgether works] This processing is based on legitimate interest and pre-contractual measures under applicable data protection laws (including GDPR).",
+  "b": "eligible",
+  "a": "excluded",
+  "group": "us",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "58152:us",
+  "text": "company: Eqvilent\ntitle: Systems Engineer (Trading Infrastructure)\noptions: Remote [remote]\ndescription:\nWe’re looking for a Systems Engineer to join our globally distributed Trading Infrastructure team.\n[under: What You’ll be doing] - Deliver end-to-end infrastructure setups across regions/colocations: bring-up, validation, and go-live readiness\n[under: Why should you join our team?] - Work remotely from anywhere in the world\n[under: Why should you join our team?] - Access any of our global offices anytime",
+  "b": "eligible",
+  "a": "unknown",
+  "group": "us",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "225087:english",
+  "text": "company: bjakcareer\ntitle: Lead Engineer - AI-Native Email App\noptions: United States [remote]\ndescription:\n[under: About Doit] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.\n[under: About Doit] We have teams working around the world, with over 20 nationalities and growing from our offices and remotely.\n[under: About Doit] Join us and build a better future for our society.\n[under: About Doit] In 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.\n[under: About Doit] Today, it's the leading insurance platform in Southeast Asia.\n# Location\n[under: Location] This is a remote role.\n[under: Location] We hire globally and work across multiple countries and time zones.\n[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.\n[under: Language] English is our main working language across global teams.",
+  "a": "not open",
+  "b": "open",
+  "group": "english",
+  "asks": "reader verdict for the group: open or not open"
+ },
+ {
+  "id": "58141:latam",
+  "text": "company: Eqvilent\ntitle: ML Engineer\noptions: Remote [remote]\ndescription:\n[under: WHY SHOULD YOU JOIN OUR TEAM?] - Work remotely from anywhere in the world\n[under: WHY SHOULD YOU JOIN OUR TEAM?] - Access any of our global offices anytime\n[under: WHY SHOULD YOU JOIN OUR TEAM?] - Competitive salary and performance-based bonuses",
+  "a": "eligible",
+  "b": "unknown",
+  "group": "latam",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "397089:us",
+  "text": "company: jobgether\ntitle: Magneto Developer\noptions: Australia [remote]\ndescription:\nOur partner is looking for a Magento Developer based in Australia.\nIn this remote, part-time role, you will work on project-based assignments or monthly contracts, helping deliver reliable, secure, and high-performing online shopping experiences.\n[under: Accountabilities] - Support ongoing improvements and technical enhancements based on project priorities and evolving business needs.\n[under: Requirements] - Good time management skills and the ability to deliver assigned tasks within agreed timelines in a remote working environment.\n[under: Requirements] - Availability for part-time contractual work, with flexibility to support project-based or monthly engagements. Immediate availability is preferred.\n[under: Benefits] - Remote work: Work from anywhere, subject to the engagement requirements.\n[under: Benefits] - Part-time flexibility: Balance professional commitments with flexible working hours based on project needs.\n[under: Benefits] - Contractual engagement: Choose from project-based assignments or monthly contract arrangements, depending on business requirements.\n[under: Benefits] - Experience-based compensation: Compensation is determined by your experience, technical expertise, and the scope of work.\n[under: How Jobgether works] This processing is based on legitimate interest and pre-contractual measures under applicable data protection laws (including GDPR).",
+  "b": "eligible",
+  "a": "excluded",
+  "group": "us",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "264362:latam",
+  "text": "company: sardine\ntitle: Software Engineer - Backend\noptions: India [remote]\ndescription:\n[under: Who we are] Sardine’s platform is strengthened by one of the fastest-growing fraud consortiums in the market, spanning more than 6 billion profiled devices, 800 million consumers, and 3 million businesses worldwide.\n[under: Our culture] - We hire talented, self-motivated individuals with extreme ownership and high growth orientation.\n[under: Our culture] - We're a remote-first team spread across time zones, so no office to report to work from wherever helps you do your best work. Just a couple of things to keep in mind: pay is based on where you're located, and you'll need to keep a home base in the country you're hired in. So while we love the \"coffee shop today, mountains tomorrow\" life, this isn't a passport-optional, work-from-anywhere-on-Earth kind of remote - think flexible within your country, not borderless.\n[under: Our culture] Location: Remote - India\n[under: Our culture] To be considered for this position, you must reside in one of the following cities:\n[under: Benefits we offer] - Work from anywhere: Remote-first Culture\n[under: Benefits we offer] - Health insurance, dental, and vision coverage for employees and dependents US and Canada specific\n[under: Benefits we offer] - 4% matching in 401k / RRSP US and Canada specific\n[under: Benefits we offer] - One-time stipend to set up a home office — desk, chair, screen, etc.",
+  "a": "eligible",
+  "b": "excluded",
+  "group": "latam",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "272424:latam",
+  "text": "company: tremendous\ntitle: Senior Product Manager - Special Projects\noptions: United States [remote] | Canada [remote]\ndescription:\nTremendous is the global platform built for businesses to send thousands of payouts to anyone, anywhere, for free.\nWe're trusted by 20,000 organizations like Atlassian, MIT, and United Way to deliver gift cards and money to millions of recipients worldwide.\nWe’re a fully remote, high-documentation, low-meeting culture, which means more time for what matters in both your professional and personal life.\n[under: You have] - Founder, founding PM, or first-product-hire experience is a strong plus.\n[under: What’s cool about the role] - Real benefits. 100% covered health (US), unlimited PTO, 12-16 weeks paid parental leave.\n[under: What’s cool about the role] - Fully remote. Work from anywhere in the Americas.",
+  "b": "eligible",
+  "a": "unknown",
+  "group": "latam",
+  "asks": "rule verdict for the group"
+ }
+]

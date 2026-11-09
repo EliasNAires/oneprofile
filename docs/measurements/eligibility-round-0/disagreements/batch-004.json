@@ -1,0 +1,18 @@
+[
+ {
+  "id": "399301:latam",
+  "text": "company: jobgether\ntitle: Website & Lifecycle Marketing Lead\noptions: France [remote]\ndescription:\nOur partner is looking for a Website & Lifecycle Marketing Lead based in France.\nIn a fast-paced, fully remote environment, your work will directly influence conversion rates, customer retention, and recurring revenue.\n[under: Requirements] - Experimentation and Analytics: Solid understanding of A/B testing principles, including sample sizes, primary success metrics, and minimum detectable or practically meaningful effects. Ability to interpret results and make evidence-based decisions.\n[under: Requirements] - Preferred Qualifications: Experience with hybrid self-service and sales-led funnels; hands-on knowledge of CRM systems such as HubSpot or Pipedrive and email marketing platforms; experience developing prompts or knowledge bases for AI sales or support agents; and familiarity with custom manufacturing, branded merchandise, or print-on-demand businesses.\n[under: Benefits] - Fully Remote Work: Work remotely from anywhere globally, with flexible working hours and no requirement to report to a physical office.\n[under: Benefits] - Full-Time Engagement: An exclusive, full-time independent contractor arrangement offering substantial responsibility and autonomy.\n[under: How Jobgether works] This processing is based on legitimate interest and pre-contractual measures under applicable data protection laws (including GDPR).",
+  "a": "eligible",
+  "b": "excluded",
+  "group": "latam",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "395481:english",
+  "text": "company: jobgether\ntitle: App Security Expert\noptions: Italy [remote]\ndescription:\nOur partner is looking for an App Security Expert based in Italy.\nYou will also contribute to advancing AI-powered static analysis and agent-based security architectures.\nWorking in a remote, technically driven environment, you will collaborate with security specialists to refine testing methodologies and improve evaluation quality.\n[under: Accountabilities] - Contribute to the design and evaluation of security architectures for traditional applications and agent-based systems.\n[under: Requirements] - Experience designing or evaluating security architectures for traditional software applications and agent-based systems.\n[under: Requirements] - Ability to work independently, manage technical tasks effectively, and deliver high-quality contributions in a fully remote environment.\n[under: Benefits] - Fully remote work: Work remotely from anywhere in the world.\n[under: Benefits] - Long-term contract: Initial 12-month engagement, offering the opportunity to contribute to ongoing security evaluation initiatives.\n[under: Benefits] - Flexible independent engagement: Work as a freelancer or independent contractor.\n[under: Benefits] - Cutting-edge technical challenges: Work on application security, LLM vulnerabilities, AI-powered security analysis, and agent-based architectures.\n[under: Benefits] - Collaborative remote environment: Share expertise, exchange technical feedback, and contribute to continuous improvements alongside other security professionals.\n[under: How Jobgether works] This processing is based on legitimate interest and pre-contractual measures under applicable data protection laws (including GDPR).",
+  "b": "eligible",
+  "a": "excluded",
+  "group": "english",
+  "asks": "rule verdict for the group"
+ }
+]

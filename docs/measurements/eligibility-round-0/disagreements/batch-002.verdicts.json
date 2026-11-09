@@ -1,0 +1,22 @@
+{
+  "319345:english": {"verdict": "a", "clause": "These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "work anywhere as perk"},
+  "797104:us": {"verdict": "a", "clause": "1. An onsite or hybrid option; 12. Every requirement must hold", "pattern": "international onsite despite US citizenship"},
+  "263537:us": {"verdict": "a", "clause": "11. A timezone requirement", "pattern": "required timezone window excludes group"},
+  "269233:latam": {"verdict": "b", "clause": "11. A timezone requirement; 12. Every requirement must hold", "pattern": "required timezone window excludes group"},
+  "795177:us": {"verdict": "b", "clause": "1. An onsite or hybrid option; 12. Every requirement must hold", "pattern": "international onsite despite US citizenship"},
+  "399302:latam": {"verdict": "b", "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "required location overrides anywhere perk"},
+  "256049:english": {"verdict": "b", "clause": "These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "work anywhere as perk"},
+  "251846:english": {"verdict": "a", "clause": "The description: a statement about this vacancy; These say nothing: Where the company or its offices or customers are", "pattern": "company footprint without vacancy permission"},
+  "1518692:english": {"verdict": "a", "clause": "The reader verdict: open; A group's verdict is the best of its countries'", "pattern": "UK allowed within hybrid offer"},
+  "233949:latam": {"verdict": "a", "clause": "7. Where the person must be, or the company hires; 12. Every requirement must hold", "pattern": "required location overrides anywhere perk"},
+  "197017:us": {"verdict": "a", "clause": "7. Where the person must be, or the company hires; 12. Every requirement must hold", "pattern": "explicit role location outside group"},
+  "265047:us": {"verdict": "a", "clause": "These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "work anywhere as perk"},
+  "395484:us": {"verdict": "a", "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "required location overrides anywhere perk"},
+  "387419:latam": {"verdict": "a", "clause": "These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "work anywhere as perk"},
+  "407909:english": {"verdict": "b", "clause": "These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "work anywhere as perk"},
+  "399313:latam": {"verdict": "b", "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "required location overrides anywhere perk"},
+  "165480:english": {"verdict": "a", "clause": "The description: a statement about this vacancy; These say nothing: A requirement for some of the company's roles only", "pattern": "company footprint without vacancy permission"},
+  "395454:latam": {"verdict": "b", "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "required location overrides anywhere perk"},
+  "395363:latam": {"verdict": "a", "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "required location overrides anywhere perk"},
+  "395479:latam": {"verdict": "a", "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "required location overrides anywhere perk"}
+}

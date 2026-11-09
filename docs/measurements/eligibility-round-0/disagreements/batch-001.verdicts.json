@@ -1,0 +1,22 @@
+{
+  "388526:us": {"verdict": "a", "clause": "These say nothing: Working from anywhere offered as a perk or a culture; The options, 2", "pattern": "worldwide work offered as perk"},
+  "182379:us": {"verdict": "b", "clause": "These say nothing: Working from anywhere offered as a perk or a culture; The options, 2", "pattern": "worldwide work offered as perk"},
+  "399289:latam": {"verdict": "b", "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "required location overrides worldwide perk"},
+  "395355:latam": {"verdict": "b", "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "required location overrides worldwide perk"},
+  "399314:latam": {"verdict": "a", "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "required location overrides worldwide perk"},
+  "269225:latam": {"verdict": "a", "clause": "7. Where the person must be, or the company hires: All such places in one description are one set; These say nothing: unless the segment says the company hires, or the person may be located, anywhere", "pattern": "explicit global hiring includes group"},
+  "58137:english": {"verdict": "a", "clause": "These say nothing: Working from anywhere offered as a perk or a culture; The options, 3", "pattern": "worldwide work offered as perk"},
+  "407903:english": {"verdict": "a", "clause": "These say nothing: Working from anywhere offered as a perk or a culture; Where the company or its offices or customers are; The options, 2", "pattern": "worldwide work offered as perk"},
+  "246173:latam": {"verdict": "a", "clause": "These say nothing: Working from anywhere offered as a perk or a culture; The description: a statement about this vacancy; The options, 2", "pattern": "worldwide work offered as perk"},
+  "395460:english": {"verdict": "b", "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "required location overrides worldwide perk"},
+  "176945:english": {"verdict": "b", "clause": "A group's verdict is the best of its countries'; The reader verdict: open", "pattern": "required region includes group member"},
+  "397105:us": {"verdict": "a", "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "required location overrides worldwide perk"},
+  "272406:english": {"verdict": "a", "clause": "These say nothing: Working from anywhere offered as a perk or a culture; The options, 2", "pattern": "regional work offered as perk"},
+  "399302:us": {"verdict": "a", "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "required location overrides worldwide perk"},
+  "58152:us": {"verdict": "a", "clause": "These say nothing: Working from anywhere offered as a perk or a culture; The options, 3", "pattern": "worldwide work offered as perk"},
+  "225087:english": {"verdict": "b", "clause": "The reader verdict: open", "pattern": "explicit global hiring includes group"},
+  "58141:latam": {"verdict": "b", "clause": "These say nothing: Working from anywhere offered as a perk or a culture; The options, 3", "pattern": "worldwide work offered as perk"},
+  "397089:us": {"verdict": "a", "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "required location overrides worldwide perk"},
+  "264362:latam": {"verdict": "b", "clause": "7. Where the person must be, or the company hires: Location; These say nothing: Working from anywhere offered as a perk or a culture", "pattern": "required location overrides worldwide perk"},
+  "272424:latam": {"verdict": "a", "clause": "These say nothing: Working from anywhere offered as a perk or a culture; The options, 2", "pattern": "regional work offered as perk"}
+}

@@ -1,0 +1,102 @@
+{
+  "276086:us": {
+    "verdict": "a",
+    "clause": "The options, 2. A remote or undeclared option; These say nothing: Working from anywhere offered as a perk or a culture",
+    "pattern": "anywhere offered as perk"
+  },
+  "326244:us": {
+    "verdict": "b",
+    "clause": "The description: required; 9. Citizenship; The options, 2. A remote or undeclared option. US person status is only one of several export-access alternatives, not a required citizenship.",
+    "pattern": "alternative export access qualifications"
+  },
+  "1243589:us": {
+    "verdict": "a",
+    "clause": "These say nothing: Working from anywhere offered as a perk or a culture, or in the company's voice about how it works; The options, 2. A remote or undeclared option",
+    "pattern": "anywhere as company culture"
+  },
+  "603505:us": {
+    "verdict": "a",
+    "clause": "The options, 1. An onsite or hybrid option; 9. Citizenship; 10. A security clearance",
+    "pattern": "foreign office citizenship clearance"
+  },
+  "26476:latam": {
+    "verdict": "b",
+    "clause": "7. Where the person must be, or the company hires. Work is within Central & Eastern Europe or the named offices.",
+    "pattern": "required location outside group"
+  },
+  "253522:english": {
+    "verdict": "a",
+    "clause": "These say nothing: Working from anywhere offered as a perk or a culture; The options, 2. A remote or undeclared option",
+    "pattern": "anywhere offered as perk"
+  },
+  "399288:latam": {
+    "verdict": "b",
+    "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture. The role is based in Sweden.",
+    "pattern": "required location outside group"
+  },
+  "68009:latam": {
+    "verdict": "a",
+    "clause": "7. Where the person must be, or the company hires. This is a remote-first role based in the U.S.",
+    "pattern": "required location outside group"
+  },
+  "239245:latam": {
+    "verdict": "b",
+    "clause": "These say nothing: Working from anywhere offered as a perk or a culture; The options, 2. A remote or undeclared option",
+    "pattern": "anywhere offered as perk"
+  },
+  "397396:english": {
+    "verdict": "a",
+    "clause": "7. Where the person must be, or the company hires; 12. Every requirement must hold. US-based excludes Canada despite the US-or-Canada authorization alternative.",
+    "pattern": "location overrides authorization alternative"
+  },
+  "399284:latam": {
+    "verdict": "a",
+    "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture. The role is based in Saudi Arabia.",
+    "pattern": "required location outside group"
+  },
+  "250162:latam": {
+    "verdict": "a",
+    "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture. Only hiring in the United States or Canada excludes all latam countries.",
+    "pattern": "required location outside group"
+  },
+  "278027:us": {
+    "verdict": "a",
+    "clause": "7. Where the person must be, or the company hires. Open only to residents of the listed Canadian provinces.",
+    "pattern": "required location outside group"
+  },
+  "236343:latam": {
+    "verdict": "b",
+    "clause": "The reader verdict: open. Remote (International), hiring remotely in most countries, and EOR or contractor employment outside the USA or Singapore give reason to believe someone in latam can be paid.",
+    "pattern": "international hiring through contractors"
+  },
+  "399280:english": {
+    "verdict": "a",
+    "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture. The role is based in Belgium.",
+    "pattern": "required location outside group"
+  },
+  "15613:english": {
+    "verdict": "b",
+    "clause": "These say nothing: Working from anywhere offered as a perk or a culture; The options, 2. A remote or undeclared option",
+    "pattern": "anywhere offered as perk"
+  },
+  "1161608:english": {
+    "verdict": "b",
+    "clause": "The description: about this vacancy, about where the person must be or where the company hires; The options, 2. A remote or undeclared option. The mission concerns customers' employees, and travel names no required residence.",
+    "pattern": "mission and travel references"
+  },
+  "268070:english": {
+    "verdict": "a",
+    "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture. The role requires a U.S.-based Solution Architect.",
+    "pattern": "required location outside group"
+  },
+  "87759:latam": {
+    "verdict": "a",
+    "clause": "7. Where the person must be, or the company hires. The role is based in one of 23 named US states.",
+    "pattern": "required location outside group"
+  },
+  "305573:latam": {
+    "verdict": "b",
+    "clause": "The description: about this vacancy; These say nothing: Where the company or its offices or customers are; The options, 2. A remote or undeclared option. Existing team locations do not state where this vacancy hires.",
+    "pattern": "existing team locations only"
+  }
+}

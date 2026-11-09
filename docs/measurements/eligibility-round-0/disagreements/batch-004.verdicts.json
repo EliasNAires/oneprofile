@@ -1,0 +1,12 @@
+{
+  "399301:latam": {
+    "verdict": "b",
+    "clause": "The description, 7: Where the person must be, or the company hires; These say nothing: working from anywhere offered as a perk or a culture",
+    "pattern": "role based outside group"
+  },
+  "395481:english": {
+    "verdict": "a",
+    "clause": "The description, 7: Where the person must be, or the company hires; These say nothing: working from anywhere offered as a perk or a culture",
+    "pattern": "role based outside group"
+  }
+}

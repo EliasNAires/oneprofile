@@ -104,3 +104,7 @@ promises precision for every eligible vacancy. So, until the Finder launches:
 After launch, reach becomes a fixed line at the targets, measured on a larger draw of the uncued strata
 and a fixed sample, so that rounds compare. What this risks: the Finder may launch hiding open vacancies,
 latam's most; non-regression keeps reach from falling, not from being too low.
+
+**The baseline** (`eligibility-round-0.txt`, commit fae00fb, revision 4, seed 10300): reach **85.5%**
+for latam (66–100%), **100%** for us (no open vacancy among the rest drawn), **84.2%** for english
+(73–100%). Promises at the same rules: 31%, 51% and 54%.

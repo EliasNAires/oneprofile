@@ -1,0 +1,250 @@
+{
+ "388526:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "182379:us": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "399289:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "395355:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "399314:latam": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "269225:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "58137:english": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "407903:english": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "246173:latam": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "395460:english": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "176945:english": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "397105:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "272406:english": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "399302:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "58152:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "225087:english": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "58141:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "397089:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "264362:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "272424:latam": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "319345:english": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "797104:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "263537:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "269233:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "795177:us": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "399302:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "256049:english": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "251846:english": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "1518692:english": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "233949:latam": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "197017:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "265047:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "395484:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "387419:latam": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "407909:english": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "399313:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "165480:english": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "395454:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "395363:latam": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "395479:latam": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "276086:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "326244:us": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "1243589:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "603505:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "26476:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "253522:english": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "399288:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "68009:latam": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "239245:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "397396:english": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "399284:latam": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "250162:latam": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "278027:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "236343:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "399280:english": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "15613:english": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "1161608:english": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "268070:english": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "87759:latam": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "305573:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "399301:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "395481:english": {
+  "rule": "b",
+  "labeller": "a"
+ }
+}

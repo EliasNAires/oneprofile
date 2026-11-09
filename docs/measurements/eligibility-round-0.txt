@@ -1,0 +1,111 @@
+#103 eligibility round 0, commit fae00fb, criterion revision 4
+
+latam promises: 11/35 = 31.4% (95% Wilson 18.6%-48.0%); FAILS (>= 90%)
+latam reach: 85.5% (95% bootstrap 66.1%-100.0%); target 70%, met (not deciding); gate 2: unassessed (this round sets the baseline)
+latam overall: unassessed (this round sets the baseline)
+  labeller raw promises: 10/35 = 28.6% (95% Wilson 16.3%-45.1%); reach: 85.5%
+us promises: 18/35 = 51.4% (95% Wilson 35.6%-67.0%); FAILS (>= 90%)
+us reach: 100.0% (95% bootstrap 100.0%-100.0%); target 90%, met (not deciding); gate 2: unassessed (this round sets the baseline)
+us overall: unassessed (this round sets the baseline)
+  labeller raw promises: 18/35 = 51.4% (95% Wilson 35.6%-67.0%); reach: 100.0%
+english promises: 19/35 = 54.3% (95% Wilson 38.2%-69.5%); FAILS (>= 90%)
+english reach: 84.2% (95% bootstrap 72.6%-100.0%); target 80%, met (not deciding); gate 2: unassessed (this round sets the baseline)
+english overall: unassessed (this round sets the baseline)
+  labeller raw promises: 19/35 = 54.3% (95% Wilson 38.2%-69.5%); reach: 84.2%
+  latam promise adjudication: rule 1, labeller 24, neither 0
+  latam eligible-other adjudication: rule 0, labeller 0, neither 0
+  latam rest-cued adjudication: rule 0, labeller 1, neither 0
+  latam rest-plain adjudication: rule 0, labeller 0, neither 0
+  us promise adjudication: rule 0, labeller 17, neither 0
+  us eligible-other adjudication: rule 0, labeller 0, neither 0
+  us rest-cued adjudication: rule 0, labeller 0, neither 0
+  us rest-plain adjudication: rule 0, labeller 0, neither 0
+  english promise adjudication: rule 0, labeller 16, neither 0
+  english eligible-other adjudication: rule 0, labeller 0, neither 0
+  english rest-cued adjudication: rule 0, labeller 3, neither 0
+  english rest-plain adjudication: rule 0, labeller 0, neither 0
+Adjudication patterns:
+  UK allowed within hybrid offer: 1
+    1518692:english english rest-cued: rule not open; labeller open; reason within Germany or the UK; labeller [The reader verdict: open; A group's verdict is the best of its countries']
+  alternative export access qualifications: 1
+    326244:us us promise: rule eligible; labeller unknown; reason Warsaw, Poland; "or" export authorization; labeller [The description: required; 9. Citizenship; The options, 2. A remote or undeclared option. US person status is only one of several export-access alternatives, not a required citizenship.]
+  anywhere as company culture: 1
+    1243589:us us promise: rule eligible; labeller unknown; reason Sydney; "We work from anywhere"; labeller [These say nothing: Working from anywhere offered as a perk or a culture, or in the company's voice about how it works; The options, 2. A remote or undeclared option]
+  anywhere offered as perk: 4
+    15613:english english promise: rule eligible; labeller unknown; reason LATAM; "You can work from anywhere!"; labeller [These say nothing: Working from anywhere offered as a perk or a culture; The options, 2. A remote or undeclared option]
+    239245:latam latam promise: rule eligible; labeller unknown; reason Remote (Ukraine); "work anywhere in the world"; labeller [These say nothing: Working from anywhere offered as a perk or a culture; The options, 2. A remote or undeclared option]
+    253522:english english promise: rule eligible; labeller unknown; reason Poland [remote]; "Work from anywhere"; labeller [These say nothing: Working from anywhere offered as a perk or a culture; The options, 2. A remote or undeclared option]
+    276086:us us promise: rule eligible; labeller unknown; reason Remote - Canada Only; labeller [The options, 2. A remote or undeclared option; These say nothing: Working from anywhere offered as a perk or a culture]
+  company footprint without vacancy permission: 2
+    165480:english english promise: rule eligible; labeller unknown; reason United States | Remote; "U.S or Canada"; labeller [The description: a statement about this vacancy; These say nothing: A requirement for some of the company's roles only]
+    251846:english english promise: rule eligible; labeller unknown; reason Forward Deployed Engineer - US East Coast; labeller [The description: a statement about this vacancy; These say nothing: Where the company or its offices or customers are]
+  existing team locations only: 1
+    305573:latam latam promise: rule eligible; labeller unknown; reason Munich, Germany [undeclared]; labeller [The description: about this vacancy; These say nothing: Where the company or its offices or customers are; The options, 2. A remote or undeclared option. Existing team locations do not state where this vacancy hires.]
+  explicit global hiring includes group: 2
+    225087:english english rest-cued: rule not open; labeller open; reason We hire globally; labeller [The reader verdict: open]
+    269225:latam latam promise: rule eligible; labeller excluded; reason This role is based in San Francisco; rule [7. Where the person must be, or the company hires: All such places in one description are one set; These say nothing: unless the segment says the company hires, or the person may be located, anywhere]
+  explicit role location outside group: 1
+    197017:us us promise: rule eligible; labeller excluded; reason Location: Oxford, UK; "Office commitment: Hybrid"; labeller [7. Where the person must be, or the company hires; 12. Every requirement must hold]
+  foreign office citizenship clearance: 1
+    603505:us us promise: rule eligible; labeller excluded; reason Australian Citizenship is required; labeller [The options, 1. An onsite or hybrid option; 9. Citizenship; 10. A security clearance]
+  international hiring through contractors: 1
+    236343:latam latam rest-cued: rule not open; labeller open; reason Remote (International); "can hire remotely in most countries"; labeller [The reader verdict: open. Remote (International), hiring remotely in most countries, and EOR or contractor employment outside the USA or Singapore give reason to believe someone in latam can be paid.]
+  international onsite despite US citizenship: 2
+    795177:us us promise: rule eligible; labeller excluded; reason International [onsite]; "VDI Engineer - Ramstein"; labeller [1. An onsite or hybrid option; 12. Every requirement must hold]
+    797104:us us promise: rule eligible; labeller excluded; reason International [onsite]; "Germany TESA eligibility/certification required"; labeller [1. An onsite or hybrid option; 12. Every requirement must hold]
+  location overrides authorization alternative: 1
+    397396:english english promise: rule eligible; labeller excluded; reason based in the United States; "United States or Canada"; labeller [7. Where the person must be, or the company hires; 12. Every requirement must hold. US-based excludes Canada despite the US-or-Canada authorization alternative.]
+  mission and travel references: 1
+    1161608:english english promise: rule eligible; labeller unknown; reason Remote - Netherlands; labeller [The description: about this vacancy, about where the person must be or where the company hires; The options, 2. A remote or undeclared option. The mission concerns customers' employees, and travel names no required residence.]
+  regional work offered as perk: 2
+    272406:english english promise: rule eligible; labeller unknown; reason Brazil; "Work from anywhere in the Americas"; labeller [These say nothing: Working from anywhere offered as a perk or a culture; The options, 2]
+    272424:latam latam promise: rule eligible; labeller unknown; reason United States; "Canada"; "Work from anywhere in the Americas"; labeller [These say nothing: Working from anywhere offered as a perk or a culture; The options, 2]
+  required location outside group: 9
+    26476:latam latam promise: rule eligible; labeller excluded; reason for the respective region (Central & Eastern Europe); labeller [7. Where the person must be, or the company hires. Work is within Central & Eastern Europe or the named offices.]
+    68009:latam latam promise: rule eligible; labeller excluded; reason role based in the U.S.; labeller [7. Where the person must be, or the company hires. This is a remote-first role based in the U.S.]
+    87759:latam latam promise: rule eligible; labeller excluded; reason remote role based in one of the 23 States; labeller [7. Where the person must be, or the company hires. The role is based in one of 23 named US states.]
+    250162:latam latam promise: rule eligible; labeller excluded; reason only hiring candidates in the United States or Canada; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture. Only hiring in the United States or Canada excludes all latam countries.]
+    268070:english english promise: rule eligible; labeller excluded; reason U.S.-based Solution Architect; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture. The role requires a U.S.-based Solution Architect.]
+    278027:us us promise: rule eligible; labeller excluded; reason open only to candidates residing in Alberta; "Ontario"; labeller [7. Where the person must be, or the company hires. Open only to residents of the listed Canadian provinces.]
+    399280:english english promise: rule eligible; labeller excluded; reason based in Belgium; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture. The role is based in Belgium.]
+    399284:latam latam promise: rule eligible; labeller excluded; reason based in Saudi Arabia; "anywhere globally"; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture. The role is based in Saudi Arabia.]
+    399288:latam latam promise: rule eligible; labeller excluded; reason based in Sweden; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture. The role is based in Sweden.]
+  required location overrides anywhere perk: 7
+    233949:latam latam promise: rule eligible; labeller excluded; reason For this role, you must be based in the US; labeller [7. Where the person must be, or the company hires; 12. Every requirement must hold]
+    395363:latam latam promise: rule eligible; labeller excluded; reason based in Sweden; "Work from anywhere"; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture]
+    395454:latam latam promise: rule eligible; labeller excluded; reason based in United Kingdom; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture]
+    395479:latam latam promise: rule eligible; labeller excluded; reason based in Bulgaria; "anywhere in the world"; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture]
+    395484:us us promise: rule eligible; labeller excluded; reason based in Mexico; "Work remotely from anywhere in the world"; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture]
+    399302:latam latam promise: rule eligible; labeller excluded; reason based in Denmark; "anywhere globally"; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture]
+    399313:latam latam promise: rule eligible; labeller excluded; reason based in Bulgaria; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture]
+  required location overrides worldwide perk: 8
+    264362:latam latam promise: rule eligible; labeller excluded; reason Location: Remote - India; labeller [7. Where the person must be, or the company hires: Location; These say nothing: Working from anywhere offered as a perk or a culture]
+    395355:latam latam promise: rule eligible; labeller excluded; reason based in Australia; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture]
+    395460:english english promise: rule eligible; labeller excluded; reason based in Luxembourg; "Work remotely from anywhere in the world"; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture]
+    397089:us us promise: rule eligible; labeller excluded; reason based in Australia; "subject to the engagement requirements"; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture]
+    397105:us us promise: rule eligible; labeller excluded; reason based in Austria; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture]
+    399289:latam latam promise: rule eligible; labeller excluded; reason based in Czechia; "Work remotely from anywhere globally"; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture]
+    399302:us us promise: rule eligible; labeller excluded; reason based in Denmark; "anywhere globally"; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture]
+    399314:latam latam promise: rule eligible; labeller excluded; reason based in Croatia; "Work remotely from anywhere globally"; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture]
+  required region includes group member: 1
+    176945:english english rest-cued: rule not open; labeller open; reason Work from the European Union region ... required; labeller [A group's verdict is the best of its countries'; The reader verdict: open]
+  required timezone window excludes group: 2
+    263537:us us promise: rule eligible; labeller excluded; reason located within approximately ± 4 hours of CET; labeller [11. A timezone requirement]
+    269233:latam latam promise: rule eligible; labeller excluded; reason Required residency/location within EMEA time zones; labeller [11. A timezone requirement; 12. Every requirement must hold]
+  role based outside group: 2
+    395481:english english promise: rule eligible; labeller excluded; reason based in Italy; "anywhere in the world"; labeller [The description, 7: Where the person must be, or the company hires; These say nothing: working from anywhere offered as a perk or a culture]
+    399301:latam latam promise: rule eligible; labeller excluded; reason based in France; labeller [The description, 7: Where the person must be, or the company hires; These say nothing: working from anywhere offered as a perk or a culture]
+  work anywhere as perk: 5
+    256049:english english promise: rule eligible; labeller unknown; reason Remote-first culture — work from anywhere; labeller [These say nothing: Working from anywhere offered as a perk or a culture]
+    265047:us us promise: rule eligible; labeller unknown; reason Remote - Argentina; "Remote - Canada"; "Work from anywhere"; labeller [These say nothing: Working from anywhere offered as a perk or a culture]
+    319345:english english promise: rule eligible; labeller unknown; reason Greece (Remote); "Remote-first: work from anywhere"; labeller [These say nothing: Working from anywhere offered as a perk or a culture]
+    387419:latam latam promise: rule eligible; labeller unknown; reason Remote (US); "Work from anywhere with a flexible schedule"; labeller [These say nothing: Working from anywhere offered as a perk or a culture]
+    407909:english english promise: rule eligible; labeller unknown; reason Argentina [remote]; "work from anywhere!"; labeller [These say nothing: Working from anywhere offered as a perk or a culture]
+  worldwide work offered as perk: 7
+    58137:english english promise: rule eligible; labeller unknown; reason Work remotely from anywhere in the world; labeller [These say nothing: Working from anywhere offered as a perk or a culture; The options, 3]
+    58141:latam latam promise: rule eligible; labeller unknown; reason Work remotely from anywhere in the world; labeller [These say nothing: Working from anywhere offered as a perk or a culture; The options, 3]
+    58152:us us promise: rule eligible; labeller unknown; reason Work remotely from anywhere in the world; labeller [These say nothing: Working from anywhere offered as a perk or a culture; The options, 3]
+    182379:us us promise: rule eligible; labeller unknown; reason LATAM; "You can work from anywhere!"; labeller [These say nothing: Working from anywhere offered as a perk or a culture; The options, 2]
+    246173:latam latam promise: rule eligible; labeller unknown; reason Canada; "USA"; "Work From Anywhere"; labeller [These say nothing: Working from anywhere offered as a perk or a culture; The description: a statement about this vacancy; The options, 2]
+    388526:us us promise: rule eligible; labeller unknown; reason Vancouver [remote]; "work from anywhere in the world"; labeller [These say nothing: Working from anywhere offered as a perk or a culture; The options, 2]
+    407903:english english promise: rule eligible; labeller unknown; reason Mexico [remote]; "Remote-first culture – work from anywhere!"; labeller [These say nothing: Working from anywhere offered as a perk or a culture; Where the company or its offices or customers are; The options, 2]
