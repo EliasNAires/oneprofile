@@ -4,12 +4,21 @@
     scripts/score-eligibility-round ROUND [NAME]
 
 Run after POST /country-sets. Each invocation advances docs/measurements/eligibility-round-ROUND[-NAME]:
-draw up to 35 description promises, 25 cued rest and 10 plain rest per visitor group (seed 10300 + ROUND),
+draw up to 35 description promises, 10 eligible from location or title, 25 cued rest and 10 plain rest
+per visitor group (seed 10300 + ROUND),
 ask eligibility-labeller for both verdicts per group, then write blind disagreements in
 disagreements/batch-NNN.json, 20 items a batch. The adjudicator writes batch-NNN.verdicts.json:
 {id: {verdict: a|b|neither, clause, pattern}}. Items have vacancy:group ids and name the question.
 Once settled, print each group's promises (Wilson 95%) and population-weighted reach (bootstrap 95%),
 raw labeller figures, winners and patterns. Archive beside the round, with commit and revision.
+
+Gate 1 scores only description promises at 90%. Reach weights eligible shares separately by the
+description and eligible-other populations, over those plus population-weighted open shares in the
+rest strata. The bootstrap resamples all four strata. Older draws without eligible-other use promises
+precision for every eligible source; their reach is not comparable with round baselines.
+Gate 2 guards non-regression: reach must be at least the group's round-0 baseline minus 5 points.
+Round 0 sets that baseline and leaves gate 2 unassessed; later rounds fail if it is unset.
+Targets (latam 70%, us 90%, english 80%) are reported but do not decide whether a round holds.
 
 Only cue segments are shown, capped at the sampler's segment length, without neighbours. A vacancy
 drawn for several groups is labelled once. Identical shown texts share labels through same.tsv.
@@ -47,11 +56,14 @@ GROUPS = {"latam": ("AR", "BR", "MX", "CO", "CL"), "us": ("US",),
           "english": ("GB", "CA", "AU", "NZ", "IE")}
 sampler.COUNTRIES = tuple(code for codes in GROUPS.values() for code in codes)
 PROMISES = 35
+OTHERS = 10
 CUED = 25
 PLAIN = 10
 PROMISE_LINE = .9
-REACH_LINE = None
-STRATA = ("promise", "rest-cued", "rest-plain")
+REACH_TARGETS = {"latam": .70, "us": .90, "english": .80}
+REACH_BASELINE = {"latam": None, "us": None, "english": None}
+REACH_TOLERANCE = .05
+STRATA = ("promise", "eligible-other", "rest-cued", "rest-plain")
 VERDICTS = [f"{group}-{kind}" for group in GROUPS for kind in ("rule", "reader")]
 LABEL_HEADER = ["id", *VERDICTS, "reason"]
 
@@ -136,7 +148,11 @@ def kept():
 
 
 def draw(directory, vacancies, seed=SEED, exclude=(), kept=None):
-    """Draw each group's strata independently; kept(text) returns six verdicts and a reason."""
+    """Draw each group's strata independently; kept(text) returns six verdicts and a reason.
+
+    Promise and eligible-other are disjoint: group_state's LOCATION, TITLE, DESCRIPTION source
+    order assigns a group eligible through location or title to eligible-other alone.
+    """
     directory.mkdir(parents=True, exist_ok=True)
     rng = random.Random(seed)
     excluded = set(map(str, exclude))
@@ -157,9 +173,11 @@ def draw(directory, vacancies, seed=SEED, exclude=(), kept=None):
             cued[id][group] |= bool(GROUP_CUES[group].search(text))
     drawn, strata = {}, []
     for group in GROUPS:
-        for stratum, size in zip(STRATA, (PROMISES, CUED, PLAIN)):
+        for stratum, size in zip(STRATA, (PROMISES, OTHERS, CUED, PLAIN)):
             pool = [row for row in available if
                     (states[row["id"]][group] == ("ELIGIBLE", "DESCRIPTION") if stratum == "promise" else
+                     states[row["id"]][group][0] == "ELIGIBLE" and
+                     states[row["id"]][group][1] in ("LOCATION", "TITLE") if stratum == "eligible-other" else
                      states[row["id"]][group][0] != "ELIGIBLE" and
                      cued[row["id"]][group] == (stratum == "rest-cued"))]
             chosen = rng.sample(pool, min(size, len(pool)))
@@ -316,33 +334,38 @@ def items(sample, labelled):
     for row in sample:
         for name in row["drawn"].split():
             group, stratum = name.split(":")
-            promise = stratum == "promise"
-            answer = labelled[row["id"]][f"{group}-{'rule' if promise else 'reader'}"]
+            eligible = stratum in ("promise", "eligible-other")
+            answer = labelled[row["id"]][f"{group}-{'rule' if eligible else 'reader'}"]
             found[f"{row['id']}:{group}"] = {
                 "vacancy": row["id"], "group": group, "stratum": stratum,
-                "rule": "eligible" if promise else "not open",
-                "answer": answer if promise else "open" if answer == "open" else "not open",
-                "asks": "rule verdict for the group" if promise else "reader verdict for the group: open or not open"}
+                "rule": "eligible" if eligible else "not open",
+                "answer": answer if eligible else "open" if answer == "open" else "not open",
+                "asks": "rule verdict for the group" if eligible else "reader verdict for the group: open or not open"}
     return found
 
 
 def gates(scored, settled, strata, group):
-    """Promises and population-weighted reach from settled item answers; None means no estimate."""
+    """Promises and source-weighted reach; older draws use promises precision for all eligible."""
     sizes = {row["stratum"]: int(row["size"]) for row in strata if row["group"] == group}
+    legacy = "eligible-other" not in sizes
+    eligible = ("promise",) if legacy else ("promise", "eligible-other")
+    rest = ("rest-cued", "rest-plain")
     counts = {}
     for stratum in STRATA:
         ids = [id for id, item in scored.items() if item["group"] == group and item["stratum"] == stratum]
-        answer = "eligible" if stratum == "promise" else "open"
+        answer = "eligible" if stratum in eligible else "open"
         counts[stratum] = (sum(settled[id] == answer for id in ids), len(ids))
     hits, total = counts["promise"]
     promise = hits / total if total else None
     # An unjudged nonempty population cannot supply a share.
-    if (sizes["eligible"] and promise is None) or any(
-            sizes[name] and not counts[name][1] for name in STRATA):
+    if (legacy and sizes["eligible"] and promise is None) or any(
+            sizes[name] and not counts[name][1] for name in (*eligible, *rest)):
         return {"hits": hits, "total": total, "promise": promise, "reach": None}
-    numerator = sizes["eligible"] * (promise or 0)
+    numerator = sizes["eligible"] * (promise or 0) if legacy else sum(
+        sizes[name] * (counts[name][0] / counts[name][1] if counts[name][1] else 0)
+        for name in eligible)
     denominator = numerator + sum(sizes[name] * (counts[name][0] / counts[name][1] if counts[name][1] else 0)
-                                  for name in STRATA[1:])
+                                  for name in rest)
     return {"hits": hits, "total": total, "promise": promise,
             "reach": numerator / denominator if denominator else None}
 
@@ -364,7 +387,7 @@ def bootstrap(scored, settled, strata, group, seed=SEED, resamples=2000):
     return estimates[int(.025 * (len(estimates) - 1))], estimates[int(.975 * (len(estimates) - 1))]
 
 
-def report_gates(scored, settled, strata, seed=SEED, raw=None):
+def report_gates(scored, settled, strata, seed=SEED, raw=None, round_number=None):
     for group in GROUPS:
         result = gates(scored, settled, strata, group)
         holds = result["promise"] is not None and result["promise"] >= PROMISE_LINE
@@ -375,16 +398,36 @@ def report_gates(scored, settled, strata, seed=SEED, raw=None):
         figure = "none judged" if reach is None else f"{reach:.1%}"
         if interval:
             figure += f" (95% bootstrap {interval[0]:.1%}-{interval[1]:.1%})"
-        status = "line not set" if REACH_LINE is None else (
-            f"{'HOLDS' if reach is not None and reach >= REACH_LINE else 'FAILS'} (>= {REACH_LINE:.0%})")
-        print(f"{group} reach: {figure}; {status}")
+        legacy = not any(row["group"] == group and row["stratum"] == "eligible-other" for row in strata)
+        if legacy:
+            figure += " (legacy estimator: promises precision for every source; not comparable with round baselines)"
+        target = REACH_TARGETS[group]
+        met = reach is not None and reach >= target
+        baseline = REACH_BASELINE[group]
+        reach_holds = (reach is not None and baseline is not None and
+                       reach + 1e-9 >= baseline - REACH_TOLERANCE)
+        if round_number is None:
+            status = "not a round: baseline not applied"
+        elif round_number == 0:
+            status = "unassessed (this round sets the baseline)"
+        elif baseline is None:
+            status = "FAILS (baseline not set)"
+        else:
+            status = (f"{'HOLDS' if reach_holds else 'FAILS'} "
+                      f"(>= baseline {baseline:.1%} - {REACH_TOLERANCE:.0%})")
+        print(f"{group} reach: {figure}; target {target:.0%}, {'met' if met else 'not met'} "
+              f"(not deciding); gate 2: {status}")
+        if round_number == 0:
+            print(f"{group} overall: unassessed (this round sets the baseline)")
+        elif round_number is not None:
+            print(f"{group} overall: {'HOLDS' if holds and reach_holds else 'FAILS'} (both gates)")
         if raw is not None:
             result = gates(scored, raw, strata, group)
             reach = "none judged" if result["reach"] is None else f"{result['reach']:.1%}"
             print(f"  labeller raw promises: {share(result['hits'], result['total'])}; reach: {reach}")
 
 
-def score(directory, sample, labelled, seed=SEED):
+def score(directory, sample, labelled, seed=SEED, round_number=None):
     scored = items(sample, labelled)
     differing = [id for id, item in scored.items() if item["answer"] != item["rule"]]
     disagreements = directory / "disagreements"
@@ -411,9 +454,9 @@ def score(directory, sample, labelled, seed=SEED):
         if winner == "labeller":
             settled[id] = scored[id]["answer"]
         elif winner == "neither":
-            settled[id] = "not eligible" if scored[id]["stratum"] == "promise" else "not open"
+            settled[id] = "not eligible" if scored[id]["stratum"] in ("promise", "eligible-other") else "not open"
     report_gates(scored, settled, rows(directory / "strata.tsv"), seed,
-                 raw={id: item["answer"] for id, item in scored.items()})
+                 raw={id: item["answer"] for id, item in scored.items()}, round_number=round_number)
     for group in GROUPS:
         for stratum in STRATA:
             counts = Counter(winners[id] for id in differing
@@ -458,7 +501,7 @@ def main():
     keep(directory, current)
     out = io.StringIO()
     with redirect_stdout(out):
-        complete = score(directory, sample, labelled, SEED + number)
+        complete = score(directory, sample, labelled, SEED + number, round_number=number)
     if complete:
         commit = subprocess.run(["git", "-C", str(REPO), "rev-parse", "--short", "HEAD"],
                                 capture_output=True, text=True, check=True).stdout.strip()

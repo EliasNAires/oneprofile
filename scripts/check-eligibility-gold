@@ -35,7 +35,7 @@ CHECK = MEASUREMENTS / "eligibility-gold-groups-check-revision-{revision}"
 
 
 def scored_answer(item):
-    if item["stratum"] == "promise":
+    if item["stratum"] in ("promise", "eligible-other"):
         return "eligible" if item["answer"] == "eligible" else "not eligible"
     return item["answer"]
 
@@ -99,7 +99,7 @@ def main():
                                                for who in ("gold", "labeller", "neither")))
     sides_path.write_text(json.dumps(sides, indent=1) + "\n", encoding="utf-8")
     print("\nThe gold set at the rules as they stand:")
-    round.report_gates(gold_items, gold_answers, round.rows(BATCHES / "strata.tsv"))
+    round.report_gates(gold_items, gold_answers, round.rows(BATCHES / "strata.tsv"), round_number=None)
 
 
 if __name__ == "__main__":

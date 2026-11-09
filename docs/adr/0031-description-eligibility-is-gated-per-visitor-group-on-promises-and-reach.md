@@ -34,7 +34,7 @@ A round holds when, adjudicated, for each group:
    the Finder shows 650 of them, reach is 65%. It counts the eligible from every source, the location
    and the title included, since that is what a visitor is shown.
 
-X is set by Elias once the recalibration has measured reach at the rules as they stand.
+X is not a gate for now: see *Reach guards, it does not gate* below.
 
 Reach is estimated from two strata weighted by their sizes: the vacancies eligible for the group (the
 promises' precision) and a draw of the rest, unknown and excluded, asked whether each is open. Open
@@ -86,3 +86,21 @@ are the same model, so the figure is an upper bound on agreement with an indepen
 
 Reach's intervals are wide because open rows among the rest are few and the uncued strata are large;
 X is Elias's to set from them.
+
+## Reach guards, it does not gate (2026-11-08)
+
+Decided by Elias on 2026-11-08, from the recalibration's figures, with Astra's advice. Reach as measured
+cannot carry a fixed line: its intervals run from 34% to 100% for latam, and it borrowed the description's
+promises precision for every eligible vacancy. So, until the Finder launches:
+
+- **Gate 2 is non-regression.** A round holds reach for a group when its reach is no more than **5
+  points** below the group's **baseline**: reach scored as a round scores it, on the rules as they stood
+  before round 1 (`eligibility-round-0`).
+- **The targets** are **70%** for latam, **90%** for us and **80%** for english. Each round reports them;
+  none decides whether it holds. Gate 1, promises at 90%, is unchanged.
+- **Reach weighs precision by source.** Each round also draws 10 vacancies per group eligible from the
+  location or the title, and reach uses their precision for those, the promises' for the description's.
+
+After launch, reach becomes a fixed line at the targets, measured on a larger draw of the uncued strata
+and a fixed sample, so that rounds compare. What this risks: the Finder may launch hiding open vacancies,
+latam's most; non-regression keeps reach from falling, not from being too low.
