@@ -38,27 +38,37 @@ import org.springframework.stereotype.Component;
  * left to the location. It states a clearance where it names one ({@code TS/SCI w/ Poly}).
  * <p>
  * The description states a set where a segment requires where the person is: that candidates must be based,
- * located or living somewhere ({@code candidates must be based in Poland}), that the vacancy is open only to
- * those in a place, that it hires or is remote within one, that it is for a place only ({@code US only}), or
- * that the company hires or the person may be located anywhere ({@code we hire from anywhere}, a global set).
- * Worldwide is kept only when the statement's own sentence names hiring or the person's location; working
- * from anywhere as a perk or culture states nothing. A statement of where this role is done requires no
- * must: {@code you are based in}, {@code this role is located in}, {@code you'll work in} where its object is a
- * place, or {@code looking for an engineer based in}. A location label at a segment's start also states its places,
- * unless it offers a choice including remote. A
- * place it names in passing ({@code our offices in London}, {@code for candidates based in the United States,
- * the pay range is}) states nothing, and neither does one after a negation ({@code we are not able to hire in
- * Quebec}). It states work authorization where it requires authorization or the right to work in a country,
- * citizenship where it requires a country's citizens ({@code US Citizenship Required}, a {@code U.S. person}),
- * and a clearance where it requires one; never where it is conditional ({@code for all positions with a
- * government clearance}) or a list of what the company does not discriminate by. A label is read with its
- * answer: {@code Government Clearance Required?} followed by {@code No}, or {@code Clearance Required to Start:
- * None}, requires nothing, and so does a legal notice of what an employer may not require. A segment under a
- * heading of what is preferred ({@code Preferred Qualifications}) states nothing. It states a timezone
- * requirement where it says the person lives or works within a window of UTC offsets ({@code working from
- * UTC-1 to UTC+4}); a window of hours to overlap or attend is a schedule and states nothing. The place a
- * statement names is read from the words after it, up to the end of its clause, by the place rule, a name of
- * several countries' places in a country the declared options name.
+ * located or living somewhere ({@code candidates must be based in Poland}), that the vacancy is open only to those
+ * in a place, that it hires or is remote within one, that it is for a place only ({@code US only}), or that the
+ * company hires or the person may be located anywhere ({@code we hire from anywhere}, a global set). Worldwide is
+ * kept only when the statement's own sentence names hiring or the person's location; joining alone supplies no
+ * such context, while joining from any country is itself global hiring. A sentence welcoming, accepting,
+ * encouraging or inviting applications or applicants drops Worldwide while keeping other places it names. Working
+ * from anywhere as a perk or culture states nothing. Hiring managers, teams, processes and partners are not hiring
+ * words. A statement of where this role is done requires no must: {@code you are based in},
+ * {@code this role is based at}, {@code this role is located in}, {@code you'll work in} where its object is a
+ * place, or {@code looking for an engineer based in}, including a title with a comma before {@code based}. A
+ * location label at a segment's start also states its places, across brackets and semicolons up to a newline or a
+ * sentence's end, stopping before headquarters, HQ or head office. A bare remote option, including one beside a
+ * semicolon, makes it a choice that states nothing. A place it names in passing ({@code our offices in London},
+ * {@code for candidates based in the United States, the pay range is}) states nothing, and neither does one after
+ * a negation ({@code we are not able to hire in Quebec}). A team's location states nothing: a team before a remote
+ * or anywhere statement in its own clause, or inside the words naming the role or person being sought, is not the
+ * person's location. It states work authorization where it requires authorization or the right to work in a
+ * country, citizenship where it requires a country's citizens ({@code US Citizenship Required}, a
+ * {@code U.S. person}), and a clearance where it requires one; never where it is conditional ({@code for all
+ * positions with a government clearance}) or a list of what the company does not discriminate by. A label is read
+ * with its answer: {@code Government Clearance Required?} followed by {@code No}, or
+ * {@code Clearance Required to Start: None}, requires nothing, and so does a legal notice of what an employer may
+ * not require. A segment under a heading of what is preferred ({@code Preferred Qualifications}) states nothing. A
+ * perk or culture heading also states nothing unless its segment names hiring or the person's location; visa
+ * sponsorship and relocation offers are still recorded. It states a timezone requirement where it says the person
+ * lives or works within a window of UTC offsets ({@code working from UTC-1 to UTC+4}); a window of hours to
+ * overlap or attend is a schedule and states nothing. The place a statement names is read from the words after it,
+ * up to the end of its clause, by the place rule, a name of several countries' places in a country the declared
+ * options name. Most, many, several or numerous countries name no place. An employer of record in most countries
+ * or outside its home countries states Worldwide only where its sentence also names hiring or employment;
+ * elsewhere and other countries keep their reading.
  * <p>
  * A clearance is a set of the country it is of: the United States for one only the United States grants
  * ({@code TS/SCI}, a polygraph, public trust), otherwise the one country the declared location names, and the
@@ -117,7 +127,7 @@ public class CountrySetRule {
 
 	/** Where this role is done, required by the nature of the statement. */
 	private static final Pattern ROLE_IN = Pattern.compile("\\b(?:role|position|job|opportunity)\\s+"
-			+ "(?:(?:is|will\\s+be)\\s+)?(?:\\w+\\s+){0,3}?(?:based|located)\\s+(?:in|within|out\\s+of)\\s+",
+			+ "(?:(?:is|will\\s+be)\\s+)?(?:\\w+\\s+){0,3}?(?:based|located)\\s+(?:at|in|within|out\\s+of)\\s+",
 			IGNORING_CASE);
 
 	/** Where the person will work, with or without be. */
@@ -133,7 +143,7 @@ public class CountrySetRule {
 
 	/** Looking for a person based somewhere states where that person must be. */
 	private static final Pattern LOOKING_FOR_IN = Pattern.compile("\\blooking\\s+for\\s+(?:(?:a|an)\\s+)?"
-			+ "(?:\\w+\\s+){0,10}?based\\s+(?:in|within)\\s+", IGNORING_CASE);
+			+ "(?:\\w+,?\\s+){0,10}?based\\s+(?:in|within)\\s+", IGNORING_CASE);
 
 	/** A location label at the start of a description segment. */
 	private static final Pattern LOCATION_LABEL = Pattern.compile("^\\s*(?:(?:job|work|role)\\s+)?locations?\\s*:\\s*",
@@ -143,8 +153,12 @@ public class CountrySetRule {
 	 * A location value offering remote as an alternative to its places ({@code San Francisco or Remote}), which
 	 * requires none of them; {@code Remote, US or Canada} offers a choice of places only.
 	 */
-	private static final Pattern REMOTE_CHOICE = Pattern.compile("\\b(?:or|/)\\s*remote\\b|\\bremote\\s*(?:or\\b|/)",
+	private static final Pattern REMOTE_CHOICE = Pattern.compile("\\b(?:or|/)\\s*remote\\b|\\bremote\\s*(?:or\\b|/)"
+			+ "|(?:^|;)\\s*remote\\s*(?=;|$)",
 			IGNORING_CASE);
+
+	/** The company location after which a location label no longer names the person's places. */
+	private static final Pattern HEADQUARTERS = Pattern.compile("\\b(?:headquarters|HQ|head\\s+office)\\b", IGNORING_CASE);
 
 	/** A preference, which states nothing: {@code This role is preferably based in the US}. */
 	private static final Pattern PREFERRED = Pattern.compile("\\b(?:prefer\\w*|ideally|typically|usually)\\b", IGNORING_CASE);
@@ -167,21 +181,33 @@ public class CountrySetRule {
 	private static final Pattern FROM_ANYWHERE = Pattern.compile("\\b(?:live|work|working|remote|remotely|hire|hiring)\\s+"
 			+ "(?:remotely\\s+)?from\\s+anywhere\\b(?!\\s+" + YOU_LIKE + "(?:in|within|across)\\b)", IGNORING_CASE);
 
+	/** Hiring rather than the people or process doing it. */
+	private static final String HIRING = "(?:hire|hires|hired|hiring(?!\\s+(?:managers?|team|process|partners?)\\b))";
+
 	/** Hiring or the person's location, which a worldwide statement needs in its own sentence. */
-	private static final Pattern WORLDWIDE_CONTEXT = Pattern.compile("\\b(?:hire|hires|hiring|hired|employ|employs|"
-			+ "employing|recruit\\w*|employer of record|join|candidates|applicants|(?:can|may|will|'ll|’ll)\\s+(?:be\\s+)?"
+	private static final Pattern WORLDWIDE_CONTEXT = Pattern.compile("\\b(?:" + HIRING + "|employ|employs|employed|employing|"
+			+ "recruit\\w*|employer of record|candidates|applicants|(?:can|may|will|'ll|’ll)\\s+(?:be\\s+)?"
 			+ "(?:located|based)|(?:can|may)\\s+(?:live|reside))\\b", IGNORING_CASE);
 
+	/** Welcoming applications anywhere does not state worldwide hiring. */
+	private static final Pattern WELCOMING_APPLICATIONS = Pattern.compile("\\b(?:welcom\\w*|accept\\w*|encourag\\w*|"
+			+ "invit\\w*)\\s+(?:\\w+,?\\s+){0,4}?(?:applications|applicants)\\b", IGNORING_CASE);
+
 	/** Hiring globally or joining from any country states a global set. */
-	private static final Pattern GLOBAL_HIRING = Pattern.compile("\\b(?:(?:hire|hires|hiring|recruit|recruiting)\\s+"
-			+ "(?:\\w+\\s+){0,3}?(?:globally|worldwide)|(?:hire|hiring|join)\\s+(?:\\w+\\s+){0,4}?from\\s+"
+	private static final Pattern GLOBAL_HIRING = Pattern.compile("\\b(?:(?:" + HIRING + "|recruit|recruiting)\\s+"
+			+ "(?:\\w+\\s+){0,3}?(?:globally|worldwide)|(?:" + HIRING + "|join)\\s+(?:\\w+\\s+){0,4}?from\\s+"
 			+ "(?:(?:almost|nearly|virtually|practically)\\s+)?any\\s+country)\\b", IGNORING_CASE);
 
 	/** Hiring through an employer of record may reach countries outside those already named. */
 	private static final Pattern EMPLOYER_OF_RECORD = Pattern.compile("\\b(?:employer\\s+of\\s+record|EOR)\\b", IGNORING_CASE);
 
-	/** Where the employer of record lets the person be outside the places already named. */
-	private static final Pattern ELSEWHERE = Pattern.compile("\\b(?:(?:based|located)\\s+elsewhere|in\\s+other\\s+countries)\\b",
+	/** Where the employer of record reaches; the captured phrasings also need a hiring word in the sentence. */
+	private static final Pattern ELSEWHERE = Pattern.compile("\\b(?:(?:based|located)\\s+elsewhere|in\\s+other\\s+countries|"
+			+ "(in\\s+most\\s+countries|outside\\s+(?:of\\s+)?(?:our|the|its)\\s+(?:(?:home|core|main)\\s+)?countr(?:y|ies)))\\b",
+			IGNORING_CASE);
+
+	/** A vague number of countries, which names no place even where Most is a town's name. */
+	private static final Pattern VAGUE_COUNTRIES = Pattern.compile("^\\s*(?:the\\s+)?(?:most|many|several|numerous)\\s+countries\\b",
 			IGNORING_CASE);
 
 	/**
@@ -191,6 +217,10 @@ public class CountrySetRule {
 	private static final Pattern HIRES_IN = Pattern.compile("\\b(?:(?:only\\s+|currently\\s+|able\\s+to\\s+)?(?:hire|hiring|employ|"
 			+ "employing)\\s+(?:candidates\\s+|people\\s+|talent\\s+|contractors\\s+|freelancers\\s+)?(?:only\\s+)?(?:in|from|"
 			+ "within|across)|remote(?:ly)?\\s+(?:only\\s+)?(?:within|in|from|across)|employer\\s+of\\s+record\\s+(?:in|across))\\s+",
+			IGNORING_CASE);
+
+	/** A team or company location, rather than the person whose location the vacancy states. */
+	private static final Pattern TEAM = Pattern.compile("\\b(?:teams?|members|colleagues|workforce|managers|headquarters|HQ)\\b",
 			IGNORING_CASE);
 
 	/** A place a vacancy is for only: {@code US only}, {@code UK-based candidates only}. */
@@ -235,6 +265,18 @@ public class CountrySetRule {
 	 */
 	private static final Pattern PREFERRED_HEADING = Pattern.compile("\\b(?:prefer\\w*|nice[- ]to[- ]haves?|desired|"
 			+ "desirable|pluses|a plus|bonus\\s+(?:points?|skills?|qualifications?|if))\\b|^\\s*bonus\\W*$", IGNORING_CASE);
+
+	/** A heading over perks or culture, under which places need hiring or the person's location. */
+	private static final Pattern PERK_HEADING = Pattern.compile("\\b(?:benefits|perks|why join|why work|what we offer|"
+			+ "our culture|culture|life at|what makes\\b.*\\bdifferent)\\b", IGNORING_CASE);
+
+	/** Hiring or employment, excluding the employer whose presence alone does not say it hires. */
+	private static final Pattern HIRING_WORD = Pattern.compile("\\b(?:" + HIRING + "|employ(?!ers?\\b)\\w*)\\b", IGNORING_CASE);
+
+	/** Hiring or the person's location permits a statement under a perk heading. */
+	private static final Pattern PERK_CONTEXT = Pattern.compile(HIRING_WORD.pattern()
+			+ "|\\b(?:employer of record|recruit\\w*|candidates|applicants|(?:can|may|will|'ll|’ll)\\s+(?:be\\s+)?(?:located|based)|"
+			+ "(?:can|may)\\s+(?:live|reside))\\b", IGNORING_CASE);
 
 	/** A requirement, which a statement of authorization, citizenship or clearance needs beside it. */
 	private static final Pattern REQUIRED = Pattern.compile("\\b(?:must|required|requires|require|need|needs|only|should|"
@@ -362,8 +404,9 @@ public class CountrySetRule {
 				continue;
 			}
 			String next = (i + 1 < segments.size()) ? segments.get(i + 1).text() : null;
-			// What a segment under a preferred heading names is a preference, which states nothing.
-			List<StatedSet> statements = (segment.under() != null && PREFERRED_HEADING.matcher(segment.under()).find())
+			// Preferences and perks state nothing unless the perk's text names hiring or the person's location.
+			List<StatedSet> statements = (segment.under() != null && (PREFERRED_HEADING.matcher(segment.under()).find()
+					|| PERK_HEADING.matcher(segment.under()).find() && !PERK_CONTEXT.matcher(segment.text()).find()))
 					? List.of() : statements(segment.text(), next, i, vacancy, near);
 			for (StatedSet set : statements) {
 				if (read.add(List.of(set.kind(), set.places(), String.valueOf(set.utcFrom()), String.valueOf(set.utcTo())))) {
@@ -483,15 +526,19 @@ public class CountrySetRule {
 			}
 			Matcher matcher = statement.matcher(text);
 			while (matcher.find()) {
-				if (statement == LOCATION_LABEL && REMOTE_CHOICE.matcher(text.substring(matcher.end())).find()
+				if (statement == LOCATION_LABEL && REMOTE_CHOICE.matcher(labelValue(text, matcher.end())).find()
 						|| statement == ROLE_IN && NEGATION.matcher(matcher.group()).find()
+						|| (statement == ROLE_IN || statement == LOOKING_FOR_IN) && TEAM.matcher(matcher.group()).find()
+						|| (statement == HIRES_IN || statement == ANYWHERE_IN) && teamBefore(text, matcher.start())
 						|| PREFERRED.matcher(matcher.group()).find()) {
 					continue;
 				}
 				if (!negatedBefore(text, matcher.start())) {
 					// Where you'll work names a place only where its object is one: not a complex enterprise domain.
-					List<Place> places = hiringPlaces(text, matcher.start(), (statement == YOU_WORK_IN)
-							? workPlaces(clauseAfter(text, matcher.end()), near) : placesAfter(text, matcher.end(), near));
+					List<Place> places = hiringPlaces(text, matcher.start(), (statement == LOCATION_LABEL)
+							? this.places.read(locationValue(text, matcher.end()), null, near).places()
+							: (statement == YOU_WORK_IN) ? workPlaces(clauseAfter(text, matcher.end()), near)
+									: placesAfter(text, matcher.end(), near));
 					if (!places.isEmpty()) {
 						stated.add(described(kindOf(places), segment, text, places));
 					}
@@ -500,22 +547,29 @@ public class CountrySetRule {
 		}
 		Matcher anywhere = FROM_ANYWHERE.matcher(text);
 		while (anywhere.find()) {
-			if (!negatedBefore(text, anywhere.start()) && !BENEFIT.matcher(text).find()) {
+			if (!negatedBefore(text, anywhere.start()) && !BENEFIT.matcher(text).find()
+					&& !teamBefore(text, anywhere.start())) {
 				worldwide(text, anywhere.start(), segment, stated);
 			}
 		}
 		Matcher global = GLOBAL_HIRING.matcher(text);
 		while (global.find()) {
-			if (!negatedBefore(text, global.start())) {
-				worldwide(text, global.start(), segment, stated);
+			if (!negatedBefore(text, global.start())
+					&& !WELCOMING_APPLICATIONS.matcher(sentenceAt(text, global.start())).find()) {
+				stated.add(described(StatedSetKindEnum.REGION, segment, text, List.of(Place.region(WORLDWIDE))));
 			}
 		}
 		Matcher employer = EMPLOYER_OF_RECORD.matcher(text);
 		while (employer.find()) {
 			// Those based elsewhere are hired only where the employer of record's own sentence says so, unnegated.
 			String sentence = sentenceAt(text, employer.start());
-			if (ELSEWHERE.matcher(sentence).find() && !NEGATION.matcher(sentence).find()) {
-				worldwide(text, employer.start(), segment, stated);
+			Matcher elsewhere = ELSEWHERE.matcher(sentence);
+			while (elsewhere.find()) {
+				if ((elsewhere.group(1) == null || HIRING_WORD.matcher(sentence).find())
+						&& !NEGATION.matcher(sentence).find()) {
+					worldwide(text, employer.start(), segment, stated);
+					break;
+				}
 			}
 		}
 		Matcher only = PLACE_ONLY.matcher(text);
@@ -552,9 +606,10 @@ public class CountrySetRule {
 		}
 	}
 
-	/** Removes Worldwide unless the sentence containing this match says hiring or the person's location. */
+	/** Removes Worldwide from application welcomes, or without hiring or the person's location in its sentence. */
 	private static List<Place> hiringPlaces(String text, int at, List<Place> places) {
-		if (WORLDWIDE_CONTEXT.matcher(sentenceAt(text, at)).find()) {
+		String sentence = sentenceAt(text, at);
+		if (WORLDWIDE_CONTEXT.matcher(sentence).find() && !WELCOMING_APPLICATIONS.matcher(sentence).find()) {
 			return places;
 		}
 		return places.stream().filter((place) -> !Place.region(WORLDWIDE).equals(place)).toList();
@@ -655,6 +710,15 @@ public class CountrySetRule {
 		return window.group(group).equals("+") ? minutes : -minutes;
 	}
 
+	/** Whether a team stands before a statement in its own clause, bounded by a dot, semicolon, comma or colon. */
+	private static boolean teamBefore(String text, int at) {
+		int start = at;
+		while (start > 0 && ".;,:".indexOf(text.charAt(start - 1)) < 0) {
+			start--;
+		}
+		return TEAM.matcher(text.substring(start, at)).find();
+	}
+
 	/** Whether a negation or a condition stands in the same sentence shortly before a statement. */
 	private static boolean negatedBefore(String text, int at) {
 		String before = text.substring(Math.max(0, at - BEFORE), at);
@@ -669,10 +733,34 @@ public class CountrySetRule {
 	 */
 	private List<Place> placesAfter(String text, int from, Set<String> near) {
 		String clause = clauseAfter(text, from);
+		if (VAGUE_COUNTRIES.matcher(clause).find()) {
+			return List.of();
+		}
 		if (clause.strip().toLowerCase(Locale.ROOT).matches("(?:the\\s+)?world\\b.*")) {
 			return List.of(Place.region(WORLDWIDE));
 		}
 		return this.places.read(clause, null, near).places();
+	}
+
+	/** The places of a label's value: its words up to headquarters, which name the company's place. */
+	private static String locationValue(String text, int from) {
+		String value = labelValue(text, from);
+		Matcher headquarters = HEADQUARTERS.matcher(value);
+		return headquarters.find() ? value.substring(0, headquarters.start()) : value;
+	}
+
+	/** A label's value across brackets and semicolons, up to a newline or a sentence's end. */
+	private static String labelValue(String text, int from) {
+		StringBuilder words = new StringBuilder();
+		for (int i = from; i < text.length() && words.length() < LONGEST_PLACE * 2; i++) {
+			char c = text.charAt(i);
+			if (c == '\n' || c == '.' && !(i >= 1 && Character.isLetter(text.charAt(i - 1))
+					&& (i < 2 || !Character.isLetter(text.charAt(i - 2))))) {
+				break;
+			}
+			words.append(c);
+		}
+		return words.toString();
 	}
 
 	/** The words after a statement, up to the end of its clause. */

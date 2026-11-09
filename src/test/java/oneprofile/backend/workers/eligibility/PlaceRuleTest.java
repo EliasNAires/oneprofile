@@ -107,6 +107,21 @@ class PlaceRuleTest {
 	}
 
 	@Test
+	void readsAPointOfTheCompassAsNoPlaceUnlessItIsPartOfAName() {
+		assertPlaces("Western PA", "PA");
+		assertPlaces("Upstate NY", "New York, US");
+		assertPlaces("the Eastern or Central");
+		assertPlaces("Western Australia", "Western Australia, AU");
+		assertPlaces("Eastern Europe", "Eastern Europe");
+		assertPlaces("Western Cape", "Western Cape, ZA");
+	}
+
+	@Test
+	void readsNewEnglandAsTheUnitedStates() {
+		assertPlaces("New England", "New England, US");
+	}
+
+	@Test
 	void readsAStateAfterATownTheListDoesNotHold() {
 		assertPlaces("Malvern, PA", "Pennsylvania, US");
 		assertPlaces("Westlake, TX", "Texas, US");

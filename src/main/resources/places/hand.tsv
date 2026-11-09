@@ -348,6 +348,7 @@ Yokneam	town	IL.03	32.6594	35.1097
 Ft George G Meade	town	US.MD	39.10815	-76.74323
 Fort George G Meade	town	US.MD	39.10815	-76.74323
 Silicon Valley	town	US.CA	37.3688	-122.0363
+New England	town	US	43.9654	-70.8227
 Pearl Harbor	town	US.HI	21.3649	-157.95
 Linthicum Heights	town	US.MD	39.20511	-76.65275
 Linthicum	town	US.MD	39.20511	-76.65275
@@ -406,6 +407,9 @@ South	ignored
 East	ignored			
 West	ignored			
 Central	ignored			
+Eastern	ignored			
+Western	ignored			
+Upstate	ignored			
 North East	ignored			
 North West	ignored			
 South East	ignored			

@@ -175,6 +175,7 @@ class CountrySetRuleTest {
 	/** A statement of where this role is done needs no must. */
 	@Test
 	void aDescriptionStatesWhereTheRoleIsDone() {
+		assertCityStatement("This role is based at our Oxford, England (UK) office", "GB", "Oxford");
 		assertCityStatement("This role is based in our San Francisco office", "US", "San Francisco");
 		assertCityStatement("This position is located in Vilnius", "LT", "Vilnius");
 		assertCityStatement("THIS POSITION IS BASED IN BANGKOK", "TH", "Bangkok");
@@ -223,6 +224,8 @@ class CountrySetRuleTest {
 	/** Looking for a person based somewhere states that place, beside a separate perk too. */
 	@Test
 	void lookingForAPersonBasedSomewhereStatesWhere() {
+		assertThat(described("We are looking for a Senior Engineering Manager, Dev Tools based in Portugal."))
+			.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("PT")));
 		assertThat(described("Our partner is looking for a Senior Backend Engineer based in Netherlands"))
 			.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("NL")));
 		CountrySet set = this.rule.read(new CountrySetVacancy(1, Set.of(WorkModeEnum.REMOTE), "Software Engineer",
@@ -233,6 +236,57 @@ class CountrySetRuleTest {
 			assertThat(stated.kind()).isEqualTo(StatedSetKindEnum.LOCATION);
 			assertThat(stated.places()).containsExactly(Place.country("SE"));
 		});
+	}
+
+	/** Perk headings state no places without hiring or the person's location, but still record offers. */
+	@Test
+	void aSegmentUnderAPerkHeadingStatesNothingUnlessItNamesHiring() {
+		for (String[] example : List.of(
+				new String[] { "Perks", "401k retirement plan + company match (US only)" },
+				new String[] { "Benefits", "Opportunity to work remotely from Europe" },
+				new String[] { "Why join us?", "Work from anywhere in the Americas." },
+				new String[] { "What Makes Acme Different?", "Fully Remote: Anywhere in the U.S" })) {
+			CountrySet set = this.rule.read(new CountrySetVacancy(1, Set.of(WorkModeEnum.REMOTE), "Software Engineer",
+					List.of(), List.of(new Segment(SegmentKindEnum.SENTENCE, example[0], example[1], false))));
+			assertThat(set.statedSets()).as(example[0]).isEmpty();
+		}
+		CountrySet hiring = this.rule.read(new CountrySetVacancy(1, Set.of(WorkModeEnum.REMOTE), "Software Engineer",
+				List.of(), List.of(new Segment(SegmentKindEnum.SENTENCE, "Benefits",
+						"We hire from anywhere in the world.", false))));
+		assertThat(hiring.statedSets()).singleElement().satisfies((stated) -> {
+			assertThat(stated.kind()).isEqualTo(StatedSetKindEnum.REGION);
+			assertThat(stated.places()).containsExactly(Place.region("Worldwide"));
+		});
+		CountrySet separate = this.rule.read(new CountrySetVacancy(1, Set.of(WorkModeEnum.REMOTE), "Software Engineer",
+				List.of(), List.of(new Segment(SegmentKindEnum.SENTENCE, null, "This role is based in Italy.", false),
+						new Segment(SegmentKindEnum.SENTENCE, "Benefits", "Opportunity to work remotely from Europe", false))));
+		assertThat(separate.statedSets()).singleElement().satisfies((stated) -> {
+			assertThat(stated.kind()).isEqualTo(StatedSetKindEnum.LOCATION);
+			assertThat(stated.places()).containsExactly(Place.country("IT"));
+		});
+		CountrySet offers = this.rule.read(new CountrySetVacancy(1, Set.of(WorkModeEnum.REMOTE), "Software Engineer",
+				List.of(), List.of(new Segment(SegmentKindEnum.SENTENCE, "Benefits",
+						"Visa sponsorship is available. Relocation assistance is available.", false))));
+		assertThat(offers.statedSets()).isEmpty();
+		assertThat(offers.offersVisaSponsorship()).isTrue();
+		assertThat(offers.offersRelocation()).isTrue();
+	}
+
+	/** A team's location states nothing, while the person's location still states a place. */
+	@Test
+	void aDescriptionOfTheTeamStatesNoPlaceForThePerson() {
+		for (String text : List.of("Team members working remotely across North America and Europe.",
+				"We are looking for an engineer to join our fully remote team based in Europe.",
+				"This role joins our team based in Europe.",
+				"Our colleagues work anywhere in Brazil.", "Our candidates join a team working from anywhere.")) {
+			assertThat(described(text)).as(text).isEmpty();
+		}
+		assertThat(described("We are looking for an engineer based in Spain to join our team."))
+			.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("ES")));
+		assertThat(described("As a member of our team, you will work remotely from anywhere in the US."))
+			.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("US")));
+		assertThat(described("Candidates must be based in the US."))
+			.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("US")));
 	}
 
 	/** Location labels state places unless they offer a choice including remote. */
@@ -248,6 +302,26 @@ class CountrySetRuleTest {
 		assertThat(described("Location: San Francisco or Remote")).isEmpty();
 		assertThat(described("Location: Remote / NYC")).isEmpty();
 		assertThat(described("Our office location: Bucharest, Romania")).isEmpty();
+	}
+
+	/** A label keeps its bracketed and semicolon-separated places, but no remote choice or headquarters. */
+	@Test
+	void aDescriptionLocationLabelReadsItsWholeValue() {
+		CountrySet set = this.rule.read(vacancy(WorkModeEnum.REMOTE, "Software Engineer", List.of(),
+				"Location: Prague (Hybrid); Czech Republic (Remote); UK (Remote)"));
+		assertThat(set.statedSets()).singleElement().satisfies((stated) -> {
+			assertThat(stated.kind()).isEqualTo(StatedSetKindEnum.LOCATION);
+			assertThat(stated.places()).extracting(Place::country).containsExactly("CZ", "CZ", "GB");
+			assertThat(stated.places().getFirst().city()).isEqualTo("Prague");
+		});
+		for (String text : List.of("Location: Remote - Headquarters located in Burlington, MA",
+				"Location: Remote; NYC", "Location: NYC; Remote", "Location: Remote - HQ in Burlington, MA",
+				"Location: Remote - head office in Burlington, MA", "Location: London (HQ) or Remote")) {
+			assertThat(described(text)).as(text).isEmpty();
+		}
+		assertCityStatement("Location: Washington, D.C. Hybrid three days a week.", "US", "Washington");
+		assertCityStatement("Location: London\nParis", "GB", "London");
+		assertCityStatement("Location: London. Paris", "GB", "London");
 	}
 
 	/** Anywhere within named countries also permits other verbs and punctuation after remote. */
@@ -295,6 +369,21 @@ class CountrySetRuleTest {
 			.containsExactly(stated(StatedSetKindEnum.REGION, Place.region("Worldwide")));
 	}
 
+	/** Welcoming applications worldwide states no hiring place, while a named country still counts. */
+	@Test
+	void aDescriptionWelcomingApplicationsDropsWorldwide() {
+		for (String verb : List.of("welcome", "accept", "encourage", "invite")) {
+			for (String object : List.of("applications", "applicants")) {
+				assertThat(described("We " + verb + " " + object + " from candidates based anywhere in the world."))
+					.as(verb + " " + object).isEmpty();
+				assertThat(described("We " + verb + " " + object + " from candidates based anywhere in Brazil."))
+					.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("BR")));
+			}
+		}
+		assertThat(described("We welcome qualified, experienced applicants based anywhere in the world.")).isEmpty();
+		assertThat(described("We welcome applicants to join us from any country.")).isEmpty();
+	}
+
 	/** Working from anywhere as a perk states no hiring place. */
 	@Test
 	void workingFromAnywhereAsAPerkIsNoStatedSet() {
@@ -312,9 +401,21 @@ class CountrySetRuleTest {
 			.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("SE")));
 	}
 
+	/** Hiring managers, teams, processes and partners describe hiring work rather than worldwide hiring. */
+	@Test
+	void aHiringManagersLocationStatesNothing() {
+		for (String subject : List.of("Manager", "Managers", "team", "process", "partner", "partners")) {
+			assertThat(described("Some of our Hiring " + subject + " are globally distributed.")).as(subject).isEmpty();
+			assertThat(described("Our hiring " + subject + " work from anywhere in the world.")).as(subject).isEmpty();
+		}
+	}
+
 	/** Global hiring and hiring through an employer of record elsewhere state Worldwide. */
 	@Test
 	void globalHiringStatesWorldwide() {
+		assertThat(described("Join our remote-first global workforce and work from anywhere in the world."))
+			.isEmpty();
+		assertThat(described("Join us and work from anywhere in the world.")).isEmpty();
 		for (String text : List.of("We hire globally", "We are hiring worldwide", "Our company hires talent globally",
 				"We recruit skilled engineers worldwide", "We are recruiting globally",
 				"We hire from any country", "We are hiring talented engineers from virtually any country",
@@ -334,6 +435,25 @@ class CountrySetRuleTest {
 		assertThat(described("No EOR is offered in other countries.")).isEmpty();
 		assertThat(described("We use an employer of record in Canada; candidates based elsewhere are not eligible."))
 			.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("CA")));
+	}
+
+	/** Vague country counts name no place; an employer of record reaches them only when the sentence hires. */
+	@Test
+	void anEmployerOfRecordInMostCountriesNeedsHiring() {
+		for (String amount : List.of("most", "many", "several", "numerous", "the most", "the many", "the several",
+				"the numerous")) {
+			assertThat(described("We can hire remotely in " + amount + " countries.")).as(amount).isEmpty();
+		}
+		for (String elsewhere : List.of("in most countries", "outside our country", "outside of the home country",
+				"outside its core countries", "outside of our main countries")) {
+			assertThat(described("We can hire remotely " + elsewhere + " through our employer of record."))
+				.as(elsewhere).containsExactly(stated(StatedSetKindEnum.REGION, Place.region("Worldwide")));
+			assertThat(described("You will be employed through an EOR " + elsewhere + "."))
+				.as(elsewhere).containsExactly(stated(StatedSetKindEnum.REGION, Place.region("Worldwide")));
+			assertThat(described("Deel is an employer of record " + elsewhere + ".")).as(elsewhere).isEmpty();
+			assertThat(described("Our hiring manager discusses an employer of record " + elsewhere + "."))
+				.as(elsewhere).isEmpty();
+		}
 	}
 
 	@Test
