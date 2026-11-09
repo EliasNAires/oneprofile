@@ -74,6 +74,13 @@ class PlaceRuleTest {
 		assertThat(remote.residue()).isFalse();
 	}
 
+	/** Time names a timezone word rather than the town of that name. */
+	@Test
+	void timeNamesNoPlace() {
+		assertPlaces("Time");
+		assertPlaces("time");
+	}
+
 	@Test
 	void reportsAStringItCannotReadAsResidue() {
 		PlaceReading unknown = this.rule.read("PICKLE RESEARCH CAMPUS", null);

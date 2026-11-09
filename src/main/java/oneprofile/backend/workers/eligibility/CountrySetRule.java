@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -49,7 +50,8 @@ import org.springframework.stereotype.Component;
  * {@code this role is based at}, {@code this role is located in}, {@code you'll work in} where its object is a
  * place, or {@code looking for an engineer based in}, including a title with a comma before {@code based}. A
  * location label at a segment's start also states its places, across brackets and semicolons up to a newline or a
- * sentence's end, stopping before headquarters, HQ or head office. A bare remote option, including one beside a
+ * sentence's end, stopping before headquarters, HQ or head office. A label whose value holds requires,
+ * required, must, will or should names no place. A bare remote option, including one beside a
  * semicolon, makes it a choice that states nothing. A place it names in passing ({@code our offices in London},
  * {@code for candidates based in the United States, the pay range is}) states nothing, and neither does one after
  * a negation ({@code we are not able to hire in Quebec}). A team's location states nothing: a team before a remote
@@ -57,13 +59,17 @@ import org.springframework.stereotype.Component;
  * person's location. It states work authorization where it requires authorization or the right to work in a
  * country, citizenship where it requires a country's citizens ({@code US Citizenship Required}, a
  * {@code U.S. person}), and a clearance where it requires one; never where it is conditional ({@code for all
- * positions with a government clearance}) or a list of what the company does not discriminate by. A label is read
- * with its answer: {@code Government Clearance Required?} followed by {@code No}, or
+ * positions with a government clearance}), for some roles only, or a list of what the company does not
+ * discriminate by. A citizenship statement offering an export licence, authorization or licence exemption
+ * as an alternative states no citizenship. A label is read with its answer: {@code Government Clearance
+ * Required?} followed by {@code No}, or
  * {@code Clearance Required to Start: None}, requires nothing, and so does a legal notice of what an employer may
  * not require. A segment under a heading of what is preferred ({@code Preferred Qualifications}) states nothing. A
  * perk or culture heading also states nothing unless its segment names hiring or the person's location; visa
  * sponsorship and relocation offers are still recorded. It states a timezone requirement where it says the person
- * lives or works within a window of UTC offsets ({@code working from UTC-1 to UTC+4}); a window of hours to
+ * lives or works within a window of UTC offsets ({@code working from UTC-1 to UTC+4}), or requires a named
+ * zone ({@code APAC time zones}, {@code US Eastern or Central time}). Each named alternative keeps its
+ * sentence and offsets; a US zone also names the United States alone. A window of hours to
  * overlap or attend is a schedule and states nothing. The place a statement names is read from the words after it,
  * up to the end of its clause, by the place rule, a name of several countries' places in a country the declared
  * options name. Most, many, several or numerous countries name no place. An employer of record in most countries
@@ -71,8 +77,12 @@ import org.springframework.stereotype.Component;
  * elsewhere and other countries keep their reading.
  * <p>
  * A clearance is a set of the country it is of: the United States for one only the United States grants
- * ({@code TS/SCI}, a polygraph, public trust), otherwise the one country the declared location names, and the
- * United States where it names none or several.
+ * ({@code TS/SCI}, a polygraph, public trust), then the country named within three words before clearance
+ * or by its scheme ({@code SC}, {@code DV}, {@code BPSS} for the United Kingdom; {@code Baseline}, {@code NV1},
+ * {@code NV2} for Australia), otherwise the one country the declared location names, and the United States
+ * where it names none or several. American, Australian, British, Canadian and Irish name their countries in
+ * a clearance phrase or before citizenship. Each clearance in a segment is read on its own; one preferred
+ * in its own sentence states nothing.
  * <p>
  * Visa sponsorship and relocation add no country (ADR-0027): a description offering either, in a sentence
  * that does not negate it, is recorded as offering it.
@@ -147,6 +157,10 @@ public class CountrySetRule {
 
 	/** A location label at the start of a description segment. */
 	private static final Pattern LOCATION_LABEL = Pattern.compile("^\\s*(?:(?:job|work|role)\\s+)?locations?\\s*:\\s*",
+			IGNORING_CASE);
+
+	/** A label value describing a requirement rather than directly naming a place. */
+	private static final Pattern LOCATION_VERB = Pattern.compile("\\b(?:requires|required|must|will|should)\\b",
 			IGNORING_CASE);
 
 	/**
@@ -246,9 +260,32 @@ public class CountrySetRule {
 	/** Citizenship of a country named after it: {@code citizens of}. */
 	private static final Pattern CITIZENS_OF = Pattern.compile("\\bcitizens?(?:hip)?\\s+of\\s+", IGNORING_CASE);
 
+	/** Demonyms that name a country before citizenship or within a clearance phrase. */
+	private static final Map<String, String> DEMONYMS = Map.of("american", "US", "australian", "AU", "british", "GB",
+			"canadian", "CA", "irish", "IE");
+
+	/** A demonym inside a clearance's own phrase. */
+	private static final Pattern DEMONYM = Pattern.compile("\\b(?:American|Australian|British|Canadian|Irish)\\b",
+			IGNORING_CASE);
+
+	/** The clearance noun and up to three words naming whose clearance it is. */
+	private static final Pattern CLEARANCE_PHRASE = Pattern.compile("\\b(?:[\\p{L}\\d./-]+\\s+){0,3}clearance\\b",
+			IGNORING_CASE);
+
+	/** Clearance schemes of the United Kingdom. */
+	private static final Pattern GB_CLEARANCE = Pattern.compile("\\b(?:SC|DV|BPSS)\\b", IGNORING_CASE);
+
+	/** Clearance schemes of Australia. */
+	private static final Pattern AU_CLEARANCE = Pattern.compile("\\b(?:Baseline|NV1|NV2)\\b", IGNORING_CASE);
+
+	/** An alternative after citizenship that admits people through export permission instead. */
+	private static final Pattern EXPORT_ALTERNATIVE = Pattern.compile("\\bor\\b[^;!?]*?\\b(?:export\\s+"
+			+ "(?:licen[cs]e|authori[sz]ation)|licen[cs]e\\s+exemption)\\b", IGNORING_CASE);
+
 	/** A clearance. */
-	private static final Pattern CLEARANCE = Pattern.compile("\\bTS\\s*/\\s*SCI\\b|\\bTS-SCI\\b|\\btop\\s+secret\\b|"
+	private static final Pattern CLEARANCE = Pattern.compile("\\b(?:TS\\s*/\\s*SCI|TS-SCI|top\\s+secret)\\b(?:\\s+clearance\\b)?|"
 			+ "\\bpolygraph\\b|\\b(?:security|secret|government|federal|dod|active|interim|public\\s+trust)\\s+clearance\\b|"
+			+ "\\b(?:SC|DV|NV1|NV2|BPSS|Baseline)\\s+(?:security\\s+)?clearance\\b|"
 			+ "\\bclearance\\s+(?:is\\s+)?required\\b", IGNORING_CASE);
 
 	/**
@@ -288,7 +325,8 @@ public class CountrySetRule {
 
 	/** A condition, under which a requirement holds for some vacancies only: {@code for US based roles}. */
 	private static final Pattern CONDITION = Pattern.compile("\\b(?:if|where applicable|when required|for all positions|"
-			+ "for\\s+[\\w.]+[- ]based\\s+(?:roles|positions)|"
+			+ "for\\s+(?:[\\w.]+[- ]){1,3}based\\s+(?:roles|positions|jobs)|"
+			+ "applicants\\s+for\\s+(?:employment|positions|roles)\\s+(?:in|within)|"
 			+ "certain (?:other )?(?:positions|roles)|some positions|may be required|may require)\\b", IGNORING_CASE);
 
 	/** What lists the grounds a company does not discriminate by, where citizenship is one of them. */
@@ -310,9 +348,26 @@ public class CountrySetRule {
 	/** A window of UTC offsets. */
 	private static final Pattern WINDOW = Pattern.compile(OFFSET + "\\s*(?:to|-|–|—|and|through|until)\\s*" + OFFSET);
 
+	/**
+	 * Zone names, longer names before their parts so Asia-Pacific never reads as Pacific. Codes are matched in
+	 * capitals only, so that {@code give us time} names no zone.
+	 */
+	private static final String ZONE_NAME = "(?:Central European|Asia-Pacific|Asia Pacific|United States|"
+			+ "(?-i:US) Eastern|(?-i:US) Central|(?-i:US) Mountain|(?-i:US) Pacific|Los Angeles|San Francisco|New York|"
+			+ "European|Eastern|Central|Mountain|Pacific|Chicago|Denver|Europe|U\\.S\\.|"
+			+ "(?-i:APAC|CET|EST|CST|MST|PST|US|EU|ET|CT|MT|PT))";
+
+	/** One named zone in a list of alternatives. */
+	private static final Pattern ZONE = Pattern.compile(ZONE_NAME, IGNORING_CASE);
+
+	/** A list of names followed by time, time zone or timezone, singular or plural. */
+	private static final Pattern NAMED_ZONES = Pattern.compile("\\b(" + ZONE_NAME
+			+ "(?:\\s*(?:or\\b|and\\b|,|/|&)\\s*" + ZONE_NAME + ")*)\\s+time(?:\\s*zones?)?\\b", IGNORING_CASE);
+
 	/** That the person lives or works within a window, as a timezone requirement says. */
 	private static final Pattern LOCATED = Pattern.compile("\\b(?:live|lives|living|located|based|reside|residing|"
-			+ "working from|work from|within|be in|in a time ?zone|time ?zones? (?:between|from|within|of))\\b", IGNORING_CASE);
+			+ "working from|work from|within|be in|require|requires|required|must|in a time ?zone|"
+			+ "time ?zones? (?:between|from|within|of))\\b", IGNORING_CASE);
 
 	/**
 	 * That a window is a schedule, hours to overlap, attend or be available in, or no requirement at all: a
@@ -337,8 +392,8 @@ public class CountrySetRule {
 	/** Where a segment is cut into sentences, each of which an offer is negated in or not. */
 	private static final Pattern SENTENCES = Pattern.compile("(?<=[.!?])\\s+");
 
-	/** Where a segment is cut into sentences and the clauses after its semicolons. */
-	private static final Pattern CLAUSES = Pattern.compile("(?<=[.!?;])\\s+");
+	/** Where a segment is cut into sentences and semicolon clauses, keeping the dots of U.S. inside its sentence. */
+	private static final Pattern CLAUSES = Pattern.compile("(?<=[.!?;])(?<!\\b[A-Za-z]\\.)\\s+");
 
 	/**
 	 * The words one of the statements or offers needs, lowercased: a segment holding none of them states
@@ -348,7 +403,7 @@ public class CountrySetRule {
 			"available", "limited", "restricted", "anywhere", "hire", "hiring", "employ", "remote", "only", "to work",
 			"legally work", "work authori", "work permit", "work visa", "work rights", "citizen", "person", "clearance",
 			"secret", "sci", "polygraph", "utc", "gmt", "sponsor", "relocation", "recruit", "join", "eor", "location",
-			"ll work", "will work", "ll be work", "will be work");
+			"ll work", "will work", "ll be work", "will be work", "time");
 
 	/** A label's answer of no, after its colon: {@code CLEARANCE REQUIRED FOR START: No}. */
 	private static final Pattern ANSWERED_NO = Pattern.compile(":\\s*(?:no|none|n/?a|not required)\\W*$", IGNORING_CASE);
@@ -409,7 +464,14 @@ public class CountrySetRule {
 					|| PERK_HEADING.matcher(segment.under()).find() && !PERK_CONTEXT.matcher(segment.text()).find()))
 					? List.of() : statements(segment.text(), next, i, vacancy, near);
 			for (StatedSet set : statements) {
-				if (read.add(List.of(set.kind(), set.places(), String.valueOf(set.utcFrom()), String.valueOf(set.utcTo())))) {
+				List<Object> key = new ArrayList<>(List.of(set.kind(), set.places(), String.valueOf(set.utcFrom()),
+						String.valueOf(set.utcTo())));
+				// Equal windows in different statements still belong to separate requirements.
+				if (set.kind() == StatedSetKindEnum.TIMEZONE) {
+					key.add(set.segment());
+					key.add(set.text());
+				}
+				if (read.add(key)) {
 					stated.add(set);
 				}
 			}
@@ -526,7 +588,8 @@ public class CountrySetRule {
 			}
 			Matcher matcher = statement.matcher(text);
 			while (matcher.find()) {
-				if (statement == LOCATION_LABEL && REMOTE_CHOICE.matcher(labelValue(text, matcher.end())).find()
+				if (statement == LOCATION_LABEL && (REMOTE_CHOICE.matcher(labelValue(text, matcher.end())).find()
+						|| LOCATION_VERB.matcher(labelValue(text, matcher.end())).find())
 						|| statement == ROLE_IN && NEGATION.matcher(matcher.group()).find()
 						|| (statement == ROLE_IN || statement == LOOKING_FOR_IN) && TEAM.matcher(matcher.group()).find()
 						|| (statement == HIRES_IN || statement == ANYWHERE_IN) && teamBefore(text, matcher.start())
@@ -588,10 +651,15 @@ public class CountrySetRule {
 			if (!NON_DISCRIMINATION.matcher(text).find()) {
 				citizenship(text, segment, near, stated);
 			}
-			if (CLEARANCE.matcher(text).find() && !negatedBefore(text, clearanceAt(text))
-					&& !LEGAL_NOTICE.matcher(sentenceAt(text, clearanceAt(text))).find() && answeredYes(text, next)) {
-				stated.add(described(StatedSetKindEnum.CLEARANCE, segment, text,
-						List.of(Place.country(clearanceCountry(text, vacancy)))));
+			Matcher clearance = CLEARANCE.matcher(text);
+			while (clearance.find()) {
+				String sentence = sentenceAt(text, clearance.start());
+				if (!negatedBefore(text, clearance.start())
+						&& !LEGAL_NOTICE.matcher(sentence).find() && !PREFERRED.matcher(sentence).find()
+						&& answeredYes(text, next)) {
+					stated.add(described(StatedSetKindEnum.CLEARANCE, segment, text,
+							List.of(Place.country(clearanceCountry(clearancePhrase(text, clearance), vacancy)))));
+				}
 			}
 		}
 		timezone(text, segment, stated);
@@ -613,6 +681,12 @@ public class CountrySetRule {
 			return places;
 		}
 		return places.stream().filter((place) -> !Place.region(WORLDWIDE).equals(place)).toList();
+	}
+
+	/** The rest of the sentence, or of the clause after a semicolon, from a position on. */
+	private static String restOfSentence(String text, int from) {
+		Matcher boundary = CLAUSES.matcher(text);
+		return boundary.find(from) ? text.substring(from, boundary.start()) : text.substring(from);
 	}
 
 	/** The sentence of a segment, or the clause after a semicolon, that a position lies in. */
@@ -649,18 +723,23 @@ public class CountrySetRule {
 		}
 	}
 
+	/** Reads required citizenship, except where an export alternative admits noncitizens. */
 	private void citizenship(String text, int segment, Set<String> near, List<StatedSet> stated) {
 		Matcher before = PLACE_CITIZENSHIP.matcher(text);
 		while (before.find()) {
-			List<Place> places = countries(placesNamedOnly(before.group(1)));
-			if (!places.isEmpty() && !negatedBefore(text, before.start())) {
+			String demonym = DEMONYMS.get(before.group(1).toLowerCase(Locale.ROOT));
+			List<Place> places = (demonym != null) ? List.of(Place.country(demonym))
+					: countries(placesNamedOnly(before.group(1)));
+			if (!places.isEmpty() && !negatedBefore(text, before.start())
+					&& !EXPORT_ALTERNATIVE.matcher(restOfSentence(text, before.end())).find()) {
 				stated.add(described(StatedSetKindEnum.CITIZENSHIP, segment, text, places));
 			}
 		}
 		Matcher after = CITIZENS_OF.matcher(text);
 		while (after.find()) {
 			List<Place> places = countries(placesAfter(text, after.end(), near));
-			if (!places.isEmpty() && !negatedBefore(text, after.start())) {
+			if (!places.isEmpty() && !negatedBefore(text, after.start())
+					&& !EXPORT_ALTERNATIVE.matcher(restOfSentence(text, after.end())).find()) {
 				stated.add(described(StatedSetKindEnum.CITIZENSHIP, segment, text, places));
 			}
 		}
@@ -682,11 +761,18 @@ public class CountrySetRule {
 		return next == null || !NO.matcher(next).matches();
 	}
 
-	private static int clearanceAt(String text) {
-		Matcher matcher = CLEARANCE.matcher(text);
-		return matcher.find() ? matcher.start() : 0;
+	/** The noun phrase holding one clearance match, or the match itself where no clearance noun follows it. */
+	private static String clearancePhrase(String text, Matcher clearance) {
+		Matcher phrase = CLEARANCE_PHRASE.matcher(text);
+		while (phrase.find()) {
+			if (phrase.start() <= clearance.start() && phrase.end() >= clearance.end()) {
+				return phrase.group();
+			}
+		}
+		return clearance.group();
 	}
 
+	/** Reads numeric windows and required named zones; a numeric window already supplies its sentence's offsets. */
 	private static void timezone(String text, int segment, List<StatedSet> stated) {
 		Matcher window = WINDOW.matcher(text);
 		while (window.find()) {
@@ -696,6 +782,31 @@ public class CountrySetRule {
 			if (LOCATED.matcher(before).find() && !SCHEDULE.matcher(text.substring(sentence, window.end())).find()) {
 				stated.add(new StatedSet(0, StatedSetSourceEnum.DESCRIPTION, StatedSetKindEnum.TIMEZONE, null, segment,
 						text, List.of(), offset(window, 1), offset(window, 4)));
+			}
+		}
+		Matcher named = NAMED_ZONES.matcher(text);
+		while (named.find()) {
+			String sentence = sentenceAt(text, named.start());
+			String before = sentenceAt(text.substring(0, named.start()), named.start());
+			if (!LOCATED.matcher(before).find() || SCHEDULE.matcher(before + named.group()).find()
+					|| negatedBefore(text, named.start()) || WINDOW.matcher(sentence).find()) {
+				continue;
+			}
+			Matcher zone = ZONE.matcher(named.group(1));
+			while (zone.find()) {
+				List<Integer> offsets = switch (zone.group().toLowerCase(Locale.ROOT)) {
+					case "apac", "asia-pacific", "asia pacific" -> List.of(300, 780);
+					case "european", "europe", "eu" -> List.of(-60, 180);
+					case "central european", "cet" -> List.of(60, 60);
+					case "us", "u.s.", "united states" -> List.of(-600, -300);
+					case "us eastern", "eastern", "et", "est", "new york" -> List.of(-300, -300);
+					case "us central", "central", "ct", "cst", "chicago" -> List.of(-360, -360);
+					case "us mountain", "mountain", "mt", "mst", "denver" -> List.of(-420, -420);
+					default -> List.of(-480, -480);
+				};
+				List<Place> places = offsets.get(1) < 0 ? List.of(Place.country(UNITED_STATES)) : List.of();
+				stated.add(new StatedSet(0, StatedSetSourceEnum.DESCRIPTION, StatedSetKindEnum.TIMEZONE, null, segment,
+						sentence, places, offsets.get(0), offsets.get(1)));
 			}
 		}
 	}
@@ -852,9 +963,30 @@ public class CountrySetRule {
 	}
 
 	/** The country a clearance the text names is of. */
-	private static String clearanceCountry(String text, CountrySetVacancy vacancy) {
+	private String clearanceCountry(String text, CountrySetVacancy vacancy) {
 		if (US_CLEARANCE.matcher(text).find()) {
 			return UNITED_STATES;
+		}
+		Matcher phrase = CLEARANCE_PHRASE.matcher(text);
+		if (phrase.find()) {
+			String words = phrase.group();
+			Matcher demonym = DEMONYM.matcher(words);
+			if (demonym.find()) {
+				return DEMONYMS.get(demonym.group().toLowerCase(Locale.ROOT));
+			}
+			// A scheme such as SC names a clearance here, rather than a country with the same code.
+			String countryWords = GB_CLEARANCE.matcher(AU_CLEARANCE.matcher(words).replaceAll("")).replaceAll("");
+			for (Place place : this.places.read(countryWords, null).places()) {
+				if (place.kind() == PlaceKindEnum.COUNTRY) {
+					return place.country();
+				}
+			}
+			if (GB_CLEARANCE.matcher(words).find()) {
+				return "GB";
+			}
+			if (AU_CLEARANCE.matcher(words).find()) {
+				return "AU";
+			}
 		}
 		Set<String> countries = optionCountries(vacancy);
 		return (countries.size() == 1) ? countries.iterator().next() : UNITED_STATES;

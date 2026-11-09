@@ -179,6 +179,51 @@ class EligibilityRuleTest {
 			.isEqualTo(EligibilityStateEnum.EXCLUDED);
 	}
 
+	/** A broad hiring set cannot override a required APAC window. */
+	@Test
+	void anApacWindowRestrictsWorldwideHiring() {
+		CountrySet set = countrySet(stated(StatedSetSourceEnum.DESCRIPTION, StatedSetKindEnum.REGION,
+				"We hire worldwide.", Place.region("Worldwide")), timezone("APAC time zones", 300, 780));
+		assertThat(this.rule.eligibility(set, "US", null).state()).isEqualTo(EligibilityStateEnum.EXCLUDED);
+		assertThat(this.rule.eligibility(set, "AU", null).state()).isEqualTo(EligibilityStateEnum.ELIGIBLE);
+	}
+
+	/** A country-named zone excludes matching offsets in another country. */
+	@Test
+	void aNewYorkZoneRestrictsItsWindowToTheUnitedStates() {
+		CountrySet set = countrySet(timezone("New York time", -300, -300, 0, Place.country("US")));
+		assertThat(this.rule.eligibility(set, "CO", null).state()).isEqualTo(EligibilityStateEnum.EXCLUDED);
+		assertThat(this.rule.eligibility(set, "US", null)).isEqualTo(Eligibility.UNKNOWN);
+	}
+
+	/** Alternatives in one sentence are one requirement, beside the vacancy's remote option. */
+	@Test
+	void timezoneAlternativesTakeTheirBestState() {
+		CountrySet set = countrySet(option(WorkModeEnum.REMOTE, "Latin America", Place.region("Latin America")),
+				timezone("EU or New York", -60, 180, 0),
+				timezone("EU or New York", -300, -300, 0, Place.country("US")));
+		assertThat(this.rule.eligibility(set, "AR", null).state()).isEqualTo(EligibilityStateEnum.EXCLUDED);
+		assertThat(this.rule.eligibility(set, "CO", null).state()).isEqualTo(EligibilityStateEnum.EXCLUDED);
+		assertThat(this.rule.eligibility(set, "US", null)).isEqualTo(Eligibility.UNKNOWN);
+		assertThat(this.rule.eligibility(set, "DE", null).state()).isEqualTo(EligibilityStateEnum.ELIGIBLE);
+		CountrySet us = countrySet(stated(StatedSetSourceEnum.DESCRIPTION, StatedSetKindEnum.LOCATION,
+				"Remote within the United States", Place.country("US")),
+				timezone("US Eastern or Central", -300, -300, 0, Place.country("US")),
+				timezone("US Eastern or Central", -360, -360, 0, Place.country("US")));
+		assertThat(this.rule.eligibility(us, "US", null).state()).isEqualTo(EligibilityStateEnum.ELIGIBLE);
+	}
+
+	/** Windows in different segments or sentences remain independent requirements. */
+	@Test
+	void separateTimezoneStatementsMustBothHold() {
+		CountrySet segments = countrySet(timezone("Required window", -60, 180, 0),
+				timezone("Required window", -300, -300, 1, Place.country("US")));
+		assertThat(this.rule.eligibility(segments, "DE", null).state()).isEqualTo(EligibilityStateEnum.EXCLUDED);
+		CountrySet sentences = countrySet(timezone("European time", -60, 180, 0),
+				timezone("New York time", -300, -300, 0, Place.country("US")));
+		assertThat(this.rule.eligibility(sentences, "DE", null).state()).isEqualTo(EligibilityStateEnum.EXCLUDED);
+	}
+
 	@Test
 	void aVacancyThatStatesNothingIsUnknown() {
 		assertThat(this.rule.eligibility(countrySet(), "AR", null)).isEqualTo(Eligibility.UNKNOWN);
@@ -207,6 +252,12 @@ class EligibilityRuleTest {
 	private static StatedSet timezone(String text, int from, int to) {
 		return new StatedSet(0, StatedSetSourceEnum.DESCRIPTION, StatedSetKindEnum.TIMEZONE, null, 0, text, List.of(),
 				from, to);
+	}
+
+	/** A timezone with the sentence and segment that group its alternatives, and optional country restrictions. */
+	private static StatedSet timezone(String text, int from, int to, int segment, Place... places) {
+		return new StatedSet(0, StatedSetSourceEnum.DESCRIPTION, StatedSetKindEnum.TIMEZONE, null, segment, text,
+				List.of(places), from, to);
 	}
 
 	private static CountrySet countrySet(StatedSet... sets) {

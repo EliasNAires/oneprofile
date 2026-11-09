@@ -512,6 +512,31 @@ class CountrySetRuleTest {
 			.isEmpty();
 	}
 
+	/** An export alternative admits noncitizens; a separate licence statement does not. */
+	@Test
+	void anExportAlternativeStatesNoCitizenship() {
+		CountrySet set = this.rule.read(vacancy(WorkModeEnum.REMOTE, "Software Engineer", List.of("London, UK"),
+				"Applicant must either be (A) a U.S. person, defined as a U.S. citizen or permanent resident, "
+						+ "or (B) eligible for an export license or other authorization from the U.S. government."));
+		assertThat(set.statedSets()).noneMatch((stated) -> stated.kind() == StatedSetKindEnum.CITIZENSHIP);
+		assertThat(described("US citizens only."))
+			.contains(stated(StatedSetKindEnum.CITIZENSHIP, Place.country("US")));
+		assertThat(described("Must be a US citizen. We may also need an export license for some customers."))
+			.containsExactly(stated(StatedSetKindEnum.CITIZENSHIP, Place.country("US")));
+		assertThat(described("US citizenship required. For shipments, obtain an export license or licence exemption."))
+			.containsExactly(stated(StatedSetKindEnum.CITIZENSHIP, Place.country("US")));
+	}
+
+	/** A role scope states no authorization for this vacancy. */
+	@Test
+	void authorizationForRegionalRolesStatesNothing() {
+		assertThat(described("Applicants for North American based positions with Acme must be legally authorized "
+				+ "to work in the United States or Canada.")).isEmpty();
+		assertThat(described("Applicants for employment in the US must have work authorization.")).isEmpty();
+		assertThat(described("You must be authorized to work in the US."))
+			.containsExactly(stated(StatedSetKindEnum.AUTHORIZATION, Place.country("US")));
+	}
+
 	@Test
 	void citizenshipIsASetOfItsCountry() {
 		assertThat(described("US Citizenship Required")).containsExactly(stated(StatedSetKindEnum.CITIZENSHIP,
@@ -520,6 +545,66 @@ class CountrySetRuleTest {
 			.containsExactly(stated(StatedSetKindEnum.CITIZENSHIP, Place.country("US")));
 		assertThat(described("We hire without regard to race, national origin, citizenship status or age.")).isEmpty();
 		assertThat(described("Employment is verified with the U.S. Citizenship and Immigration Services.")).isEmpty();
+	}
+
+	/** A clearance's own country and a citizen's demonym outweigh the declared location. */
+	@Test
+	void aClearanceAndCitizenshipNameTheirOwnCountry() {
+		String text = "Ability to obtain or maintain an Australian Defence Security Clearance – "
+				+ "must be an Australian citizen!";
+		for (String location : List.of("Sydney, Australia", "Remote")) {
+			List<StatedSet> requirements = this.rule.read(vacancy(WorkModeEnum.REMOTE, "Engineer",
+					List.of(location), text)).statedSets().stream()
+				.filter((set) -> set.source() == StatedSetSourceEnum.DESCRIPTION).toList();
+			assertThat(requirements).extracting(StatedSet::kind)
+				.containsExactlyInAnyOrder(StatedSetKindEnum.CLEARANCE, StatedSetKindEnum.CITIZENSHIP);
+			assertThat(requirements).allSatisfy((set) ->
+				assertThat(set.places()).containsExactly(Place.country("AU")));
+		}
+		assertThat(described("Based in Australia; UK SC clearance required."))
+			.containsExactly(stated(StatedSetKindEnum.CLEARANCE, Place.country("GB")));
+		assertThat(described("TS/SCI clearance required."))
+			.containsExactly(stated(StatedSetKindEnum.CLEARANCE, Place.country("US")));
+	}
+
+	/** National schemes and country words belong to the clearance phrase, not elsewhere in the segment. */
+	@Test
+	void clearanceSchemesAndDemonymsNameTheirCountries() {
+		for (String scheme : List.of("SC", "DV", "BPSS", "SC security", "DV security", "BPSS security")) {
+			assertThat(described("Based in Australia; " + scheme + " clearance required."))
+				.as(scheme).containsExactly(stated(StatedSetKindEnum.CLEARANCE, Place.country("GB")));
+		}
+		for (String scheme : List.of("Baseline", "NV1", "NV2", "Baseline security", "NV1 security", "NV2 security")) {
+			assertThat(described(scheme + " clearance required."))
+				.as(scheme).containsExactly(stated(StatedSetKindEnum.CLEARANCE, Place.country("AU")));
+		}
+		for (List<String> country : List.of(List.of("American", "US"), List.of("Australian", "AU"),
+				List.of("British", "GB"), List.of("Canadian", "CA"), List.of("Irish", "IE"))) {
+			assertThat(described("Must be a " + country.get(0) + " citizen."))
+				.containsExactly(stated(StatedSetKindEnum.CITIZENSHIP, Place.country(country.get(1))));
+			assertThat(described(country.get(0) + " security clearance required."))
+				.containsExactly(stated(StatedSetKindEnum.CLEARANCE, Place.country(country.get(1))));
+		}
+		assertThat(described("Canadian TS/SCI clearance required."))
+			.containsExactly(stated(StatedSetKindEnum.CLEARANCE, Place.country("US")));
+		assertThat(described("Australian security clearance required. UK SC clearance required."))
+			.containsExactlyInAnyOrder(stated(StatedSetKindEnum.CLEARANCE, Place.country("AU")),
+					stated(StatedSetKindEnum.CLEARANCE, Place.country("GB")));
+	}
+
+	/** A clearance preferred in its own sentence states nothing beside a required clearance. */
+	@Test
+	void eachClearancesOwnSentenceDecidesItsPreference() {
+		assertThat(clearances("Active Secret clearance strongly preferred.")).isEmpty();
+		assertThat(clearances("Active Secret clearance required.")).containsExactly(0);
+		assertThat(clearances("Active Secret clearance required. Top Secret clearance preferred."))
+			.containsExactly(0);
+		assertThat(clearances("Top Secret clearance preferred. Active Secret clearance required."))
+			.containsExactly(0);
+		assertThat(described("Australian security clearance required. UK SC clearance preferred."))
+			.containsExactly(stated(StatedSetKindEnum.CLEARANCE, Place.country("AU")));
+		assertThat(described("Australian security clearance preferred. UK SC clearance required."))
+			.containsExactly(stated(StatedSetKindEnum.CLEARANCE, Place.country("GB")));
 	}
 
 	@Test
@@ -569,6 +654,95 @@ class CountrySetRuleTest {
 			.filter((stated) -> stated.kind() == StatedSetKindEnum.CLEARANCE)
 			.map(StatedSet::segment)
 			.toList();
+	}
+
+	/** A label describing a timezone requirement is no location; a label naming London still is. */
+	@Test
+	void aLocationLabelWithAVerbStatesNoPlace() {
+		assertThat(this.rule.read(vacancy(WorkModeEnum.REMOTE, "Engineer", List.of(),
+				"Location: This role requires a location within APAC time zones")).statedSets())
+			.singleElement().satisfies((set) -> {
+				assertThat(set.kind()).isEqualTo(StatedSetKindEnum.TIMEZONE);
+				assertThat(set.utcFrom()).isEqualTo(300);
+				assertThat(set.utcTo()).isEqualTo(780);
+			});
+		assertCityStatement("Location: London, European time zone", "GB", "London");
+		for (String verb : List.of("required", "must", "will", "should")) {
+			assertThat(described("Location: London " + verb + " be considered.")).as(verb).isEmpty();
+		}
+	}
+
+	/** Required names state windows, each alternative keeping its sentence and country. */
+	@Test
+	void namedTimezoneRequirementsStateWindows() {
+		assertThat(timezones("This role requires a location within APAC time zones.")).containsExactly(300, 780);
+		assertThat(timezones("You must be located in European time zones.")).containsExactly(-60, 180);
+		assertThat(timezones("You must be based in a US time zone.")).containsExactly(-600, -300);
+		assertThat(timezones("Must reside in US Eastern or Central time."))
+			.containsExactly(-300, -300, -360, -360);
+		assertThat(timezones("Applicants must be patient and give us time to review.")).isEmpty();
+		String sentence = "Based in the EU or New York timezone.";
+		List<StatedSet> zones = this.rule.read(vacancy(WorkModeEnum.REMOTE, "Engineer", List.of(),
+				"We build tools. " + sentence)).statedSets();
+		assertThat(zones).hasSize(2).allSatisfy((zone) -> {
+			assertThat(zone.kind()).isEqualTo(StatedSetKindEnum.TIMEZONE);
+			assertThat(zone.text()).isEqualTo(sentence);
+		});
+		assertThat(zones.get(0).utcFrom()).isEqualTo(-60);
+		assertThat(zones.get(0).utcTo()).isEqualTo(180);
+		assertThat(zones.get(0).places()).isEmpty();
+		assertThat(zones.get(1).utcFrom()).isEqualTo(-300);
+		assertThat(zones.get(1).utcTo()).isEqualTo(-300);
+		assertThat(zones.get(1).places()).containsExactly(Place.country("US"));
+		for (String text : List.of("Daily collaboration overlap with colleagues in European time zones.",
+				"Work US Eastern hours.", "Preferably based in European time zones.",
+				"You must not be based in European time zones.")) {
+			assertThat(timezones(text)).as(text).isEmpty();
+		}
+	}
+
+	/** A window repeated in a separate segment must keep that separate requirement. */
+	@Test
+	void repeatedTimezoneWindowsKeepTheirStatements() {
+		CountrySet set = this.rule.read(vacancy(WorkModeEnum.REMOTE, "Engineer", List.of(),
+				"Based in the EU or New York timezone.", "Based in the EU timezone."));
+		assertThat(set.statedSets()).extracting(StatedSet::segment).containsExactly(0, 0, 1);
+		assertThat(new EligibilityRule(PlaceListConfiguration.shipped()).eligibility(set, "US", null).state())
+			.isEqualTo(EligibilityStateEnum.EXCLUDED);
+	}
+
+	/** Every supported alias keeps its full name and the offsets of that zone. */
+	@Test
+	void timezoneAliasesKeepTheirOffsetsAndCountries() {
+		assertZoneAliases(300, 780, false, "APAC", "Asia-Pacific", "Asia Pacific");
+		assertZoneAliases(-60, 180, false, "European", "Europe", "EU");
+		assertZoneAliases(60, 60, false, "Central European", "CET");
+		assertZoneAliases(-600, -300, true, "US", "U.S.", "United States");
+		assertZoneAliases(-300, -300, true, "US Eastern", "Eastern", "ET", "EST", "New York");
+		assertZoneAliases(-360, -360, true, "US Central", "Central", "CT", "CST", "Chicago");
+		assertZoneAliases(-420, -420, true, "US Mountain", "Mountain", "MT", "MST", "Denver");
+		assertZoneAliases(-480, -480, true, "US Pacific", "Pacific", "PT", "PST", "Los Angeles", "San Francisco");
+		for (String separator : List.of(" or ", " and ", ", ", "/", " & ")) {
+			assertThat(timezones("Must reside in Eastern" + separator + "Central time."))
+				.as(separator).containsExactly(-300, -300, -360, -360);
+		}
+		assertThat(timezones("We require European time zones.")).containsExactly(-60, 180);
+		assertThat(timezones("Required: European timezones.")).containsExactly(-60, 180);
+	}
+
+	/** Asserts the window and country restriction of each alias without reading unrelated location sets. */
+	private void assertZoneAliases(int from, int to, boolean us, String... aliases) {
+		for (String alias : aliases) {
+			String text = "You must be based in " + alias + " time zones.";
+			assertThat(this.rule.read(vacancy(WorkModeEnum.REMOTE, "Engineer", List.of(), text)).statedSets()
+				.stream().filter((set) -> set.kind() == StatedSetKindEnum.TIMEZONE).toList())
+				.as(alias).singleElement().satisfies((zone) -> {
+					assertThat(zone.utcFrom()).isEqualTo(from);
+					assertThat(zone.utcTo()).isEqualTo(to);
+					assertThat(zone.places()).isEqualTo(us ? List.of(Place.country("US")) : List.of());
+					assertThat(zone.text()).isEqualTo(text);
+				});
+		}
 	}
 
 	@Test

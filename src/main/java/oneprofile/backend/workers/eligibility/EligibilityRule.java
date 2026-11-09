@@ -1,7 +1,9 @@
 package oneprofile.backend.workers.eligibility;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import oneprofile.backend.storage.normalizedvacancy.CountrySet;
 import oneprofile.backend.storage.normalizedvacancy.Place;
@@ -32,7 +34,9 @@ import org.springframework.stereotype.Component;
  * eligible. A region or place the title names counts only for eligibility, as the location does for a
  * remote option. A timezone requirement is judged by the person's city where its time zone is known, otherwise
  * by the country: inside where all of its offsets are, outside where none is, and saying nothing where only
- * some are.
+ * some are. A timezone naming places first excludes countries those places do not hold. Timezone sets in
+ * the same segment with the same text are alternatives: their best state counts as one requirement;
+ * windows in separate statements must each hold.
  * <p>
  * A vacancy offered in several options takes the best state of them: eligible over unknown over excluded.
  */
@@ -60,6 +64,7 @@ public class EligibilityRule {
 	public Eligibility eligibility(CountrySet countrySet, String country, City city) {
 		List<StatedSet> options = new ArrayList<>();
 		List<Place> hiresIn = new ArrayList<>();
+		Set<StatedSet> timezones = new HashSet<>();
 		Eligibility excluded = null;
 		Eligibility required = null;
 		Eligibility named = null;
@@ -74,6 +79,18 @@ public class EligibilityRule {
 				continue;
 			}
 			EligibilityStateEnum state = requirement(set, country, city);
+			if (set.kind() == StatedSetKindEnum.TIMEZONE) {
+				if (timezones.contains(set)) {
+					continue;
+				}
+				List<StatedSet> alternatives = countrySet.statedSets().stream()
+					.filter((other) -> other.kind() == StatedSetKindEnum.TIMEZONE && other.source() == set.source()
+							&& Objects.equals(other.segment(), set.segment()) && Objects.equals(other.text(), set.text()))
+					.toList();
+				timezones.addAll(alternatives);
+				state = alternatives.stream().map((other) -> requirement(other, country, city))
+					.min(EligibilityStateEnum::compareTo).orElseThrow();
+			}
 			if (places) {
 				// A place the title names counts only for eligibility, as the location of a remote option does.
 				if (state == EligibilityStateEnum.ELIGIBLE && named == null) {
@@ -143,7 +160,11 @@ public class EligibilityRule {
 				: EligibilityStateEnum.EXCLUDED;
 	}
 
+	/** A timezone first restricts its countries, then judges the person's city or the country's offsets. */
 	private EligibilityStateEnum timezone(StatedSet set, String country, City city) {
+		if (!set.places().isEmpty() && set.places().stream().noneMatch((place) -> holds(place, country))) {
+			return EligibilityStateEnum.EXCLUDED;
+		}
 		int from = Math.min(set.utcFrom(), set.utcTo());
 		int to = Math.max(set.utcFrom(), set.utcTo());
 		Integer offset = (city != null) ? this.placeList.offsetOf(city.timeZone()) : null;
