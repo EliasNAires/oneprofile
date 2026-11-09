@@ -1,0 +1,7 @@
+{
+  "230610:english": {
+    "verdict": "b",
+    "clause": "11. A timezone requirement: a zone named by a country is that country's offsets only, and excludes every other country",
+    "pattern": "required US time zone location"
+  }
+}

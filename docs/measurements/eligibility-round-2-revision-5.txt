@@ -1,0 +1,52 @@
+#103 eligibility round 2, commit 131e115, criterion revision 5
+
+latam promises: 32/35 = 91.4% (95% Wilson 77.6%-97.0%); HOLDS (>= 90%)
+latam reach: 85.5% (95% bootstrap 64.1%-100.0%); target 70%, met (not deciding); gate 2: HOLDS (>= baseline 85.5% - 5%)
+latam overall: HOLDS (both gates)
+  labeller raw promises: 32/35 = 91.4% (95% Wilson 77.6%-97.0%); reach: 85.5%
+us promises: 32/35 = 91.4% (95% Wilson 77.6%-97.0%); HOLDS (>= 90%)
+us reach: 100.0% (95% bootstrap 100.0%-100.0%); target 90%, met (not deciding); gate 2: HOLDS (>= baseline 100.0% - 5%)
+us overall: HOLDS (both gates)
+  labeller raw promises: 32/35 = 91.4% (95% Wilson 77.6%-97.0%); reach: 100.0%
+english promises: 33/35 = 94.3% (95% Wilson 81.4%-98.4%); HOLDS (>= 90%)
+english reach: 83.2% (95% bootstrap 68.9%-100.0%); target 80%, met (not deciding); gate 2: HOLDS (>= baseline 84.2% - 5%)
+english overall: HOLDS (both gates)
+  labeller raw promises: 33/35 = 94.3% (95% Wilson 81.4%-98.4%); reach: 83.2%
+  latam promise adjudication: rule 0, labeller 3, neither 0
+  latam eligible-other adjudication: rule 0, labeller 1, neither 0
+  latam rest-cued adjudication: rule 0, labeller 1, neither 0
+  latam rest-plain adjudication: rule 0, labeller 0, neither 0
+  us promise adjudication: rule 0, labeller 3, neither 0
+  us eligible-other adjudication: rule 0, labeller 0, neither 0
+  us rest-cued adjudication: rule 0, labeller 0, neither 0
+  us rest-plain adjudication: rule 0, labeller 0, neither 0
+  english promise adjudication: rule 0, labeller 2, neither 0
+  english eligible-other adjudication: rule 0, labeller 1, neither 0
+  english rest-cued adjudication: rule 0, labeller 3, neither 0
+  english rest-plain adjudication: rule 0, labeller 0, neither 0
+Adjudication patterns:
+  existing team without hiring permission: 1
+    211161:latam latam promise: rule eligible; labeller unknown; reason Munich, Germany [undeclared]; labeller [The description: a statement about this vacancy, about where the person must be or where the company hires. Existing remote team members do not establish this vacancy's hiring locations; rule 2 leaves the foreign undeclared option unknown.]
+  foreign remote options without restriction: 2
+    420399:latam latam promise: rule eligible; labeller unknown; reason Flexible, Spain; "Flexible - Serbia" [remote]; labeller [2. A remote or undeclared option: eligible where its places lie, unknown otherwise. Flexible does not name a region holding latam, and globally distributed hiring managers do not state this vacancy's hiring locations.]
+    680835:english english eligible-other: rule eligible; labeller unknown; reason PA - Work from home; "CA - Work from home"; labeller [2. A remote or undeclared option: eligible where its places lie, unknown otherwise; These say nothing: Visa sponsorship and relocation, offered or refused.]
+  global culture and local benefits: 1
+    409007:us us promise: rule eligible; labeller unknown; reason Remote-first global workforce; labeller [These say nothing: Working from anywhere offered as a perk or a culture; Where the company or its offices or customers are. Benefits coverage does not state this vacancy's hiring locations; rule 3 leaves Remote unknown.]
+  group country explicitly offered: 1
+    1468656:english english rest-cued: rule not open; labeller open; reason Location:; "UK (Remote)"; labeller [The reader verdict — open: the country is named as a place the person may be; A group's verdict is the best of its countries'. UK remote locations make english open.]
+  headquarters location without hiring location: 1
+    119681:us us promise: rule eligible; labeller unknown; reason Location: Remote - Headquarters located in Burlington, MA; labeller [These say nothing: Where the company or its offices or customers are, and pay ranges for some places; 3. An option that names no place is unknown.]
+  international hiring through EOR: 1
+    236355:latam latam rest-cued: rule not open; labeller open; reason Remote (International); "can hire remotely in most countries"; labeller [The reader verdict — open: the text gives a reason to believe so. Remote international hiring in most countries, with EOR or contractor employment outside the USA or Singapore, supports someone in latam.]
+  region narrowed to foreign country: 1
+    506494:latam latam eligible-other: rule eligible; labeller unknown; reason AMER - Canada - British Columbia - Remote; labeller [2. A remote or undeclared option: A region before a narrower place gives the narrower place. AMER - Canada - British Columbia names Canada, leaving latam unknown.]
+  regional remote work permission: 1
+    412400:english english rest-cued: rule not open; labeller open; reason Cyprus [remote]; "working remotely ... across Europe"; labeller [The reader verdict — open: a region holding the country is named as a place the person may be. Working remotely across Europe gives a reason to believe someone in Ireland could be paid.]
+  role based outside group: 3
+    81594:us us promise: rule eligible; labeller excluded; reason based at our Oxford, England (UK) office; labeller [7. Where the person must be, or the company hires; 12. Every requirement must hold: the role is based at the Oxford office, excluding the US.]
+    398112:english english promise: rule eligible; labeller excluded; reason based in Italy; "work remotely from Europe"; labeller [7. Where the person must be, or the company hires: based in Italy; 12. Every requirement must hold. The broader remote-work benefit does not remove the Italy requirement.]
+    931004:english english promise: rule eligible; labeller excluded; reason Location: New England, Upstate NY, and Western PA; labeller [7. Where the person must be, or the company hires: Location: New England, Upstate NY, and Western PA; 12. Every requirement must hold.]
+  role explicitly offers worldwide work: 1
+    80157:english english rest-cued: rule not open; labeller open; reason shape the future of AI from anywhere in the world; labeller [The reader verdict — open: anywhere is named as a place the person may be. This role offers work from anywhere in the world.]
+  worldwide applications without hiring permission: 1
+    926449:latam latam promise: rule eligible; labeller unknown; reason London; "hybrid working policy"; labeller [The description: about where the person must be or where the company hires; These say nothing: A requirement for some of the company's roles only. Welcoming applications worldwide does not state where the person may work; the undeclared London option leaves latam unknown under rule 2.]

@@ -1,0 +1,10 @@
+[
+ {
+  "id": "230610:english",
+  "text": "company: composio\ntitle: Technical Support Engineer\noptions: Remote (US: PST or EST) [remote]\ndescription:\nAt Composio, we are building infrastructure that allows agents to communicate with the tools you use for work including Github, Gmail, Notion, Salesforce, etc. We are a small team of engineers wrangling problems from context to search, that help us provide the most capable bridge between your agents and your tools.\nLocation: Remote in North America, PST or EST hours.\n[under: \"Must haves\"] - timezone you are based in North America in PST or EST hours",
+  "b": "not eligible",
+  "a": "eligible",
+  "group": "english",
+  "asks": "rule verdict for the group"
+ }
+]

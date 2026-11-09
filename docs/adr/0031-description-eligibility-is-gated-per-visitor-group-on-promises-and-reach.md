@@ -108,3 +108,18 @@ latam's most; non-regression keeps reach from falling, not from being too low.
 **The baseline** (`eligibility-round-0.txt`, commit fae00fb, revision 4, seed 10300): reach **85.5%**
 for latam (66–100%), **100%** for us (no open vacancy among the rest drawn), **84.2%** for english
 (73–100%). Promises at the same rules: 31%, 51% and 54%.
+
+## The third calibration (2026-11-09)
+
+Round 2's review read rule 11 two ways against rule 12 for a partial timezone beside a place holding the
+country (`remote within the United States; must reside in Eastern or Central time`), and us's gate 1
+turned on it. Revision 5 rules that a window holding only some of a country's offsets neither holds nor
+excludes it, as a city inside it would not, and that a zone named by a country is that country's alone.
+
+**Agreement on the held-out half, revision 5**: the labeller agrees with the gold set on 102 of 103
+scored answers, **99.0%** (94.7–99.8%), and on all six verdicts of 89 of 101 rows (88.1%), as under
+revision 4; the adjudicator sided with the gold set on the one disagreement. The open half has none.
+
+**Round 2 re-scored under revision 5** (`eligibility-round-2-revision-5.txt`, seed 10302): promises
+91.4% for latam, 91.4% for us and 94.3% for english, reach at or within a point of each baseline. Every
+group holds both gates, so the loop exits on round 2.

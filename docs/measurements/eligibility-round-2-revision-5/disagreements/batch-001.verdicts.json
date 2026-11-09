@@ -1,0 +1,72 @@
+{
+  "81594:us": {
+    "verdict": "a",
+    "clause": "7. Where the person must be, or the company hires; 12. Every requirement must hold: the role is based at the Oxford office, excluding the US.",
+    "pattern": "role based outside group"
+  },
+  "119681:us": {
+    "verdict": "b",
+    "clause": "These say nothing: Where the company or its offices or customers are, and pay ranges for some places; 3. An option that names no place is unknown.",
+    "pattern": "headquarters location without hiring location"
+  },
+  "398112:english": {
+    "verdict": "a",
+    "clause": "7. Where the person must be, or the company hires: based in Italy; 12. Every requirement must hold. The broader remote-work benefit does not remove the Italy requirement.",
+    "pattern": "role based outside group"
+  },
+  "926449:latam": {
+    "verdict": "a",
+    "clause": "The description: about where the person must be or where the company hires; These say nothing: A requirement for some of the company's roles only. Welcoming applications worldwide does not state where the person may work; the undeclared London option leaves latam unknown under rule 2.",
+    "pattern": "worldwide applications without hiring permission"
+  },
+  "412400:english": {
+    "verdict": "b",
+    "clause": "The reader verdict — open: a region holding the country is named as a place the person may be. Working remotely across Europe gives a reason to believe someone in Ireland could be paid.",
+    "pattern": "regional remote work permission"
+  },
+  "236355:latam": {
+    "verdict": "a",
+    "clause": "The reader verdict — open: the text gives a reason to believe so. Remote international hiring in most countries, with EOR or contractor employment outside the USA or Singapore, supports someone in latam.",
+    "pattern": "international hiring through EOR"
+  },
+  "211161:latam": {
+    "verdict": "b",
+    "clause": "The description: a statement about this vacancy, about where the person must be or where the company hires. Existing remote team members do not establish this vacancy's hiring locations; rule 2 leaves the foreign undeclared option unknown.",
+    "pattern": "existing team without hiring permission"
+  },
+  "680835:english": {
+    "verdict": "a",
+    "clause": "2. A remote or undeclared option: eligible where its places lie, unknown otherwise; These say nothing: Visa sponsorship and relocation, offered or refused.",
+    "pattern": "foreign remote options without restriction"
+  },
+  "931004:english": {
+    "verdict": "a",
+    "clause": "7. Where the person must be, or the company hires: Location: New England, Upstate NY, and Western PA; 12. Every requirement must hold.",
+    "pattern": "role based outside group"
+  },
+  "420399:latam": {
+    "verdict": "a",
+    "clause": "2. A remote or undeclared option: eligible where its places lie, unknown otherwise. Flexible does not name a region holding latam, and globally distributed hiring managers do not state this vacancy's hiring locations.",
+    "pattern": "foreign remote options without restriction"
+  },
+  "1468656:english": {
+    "verdict": "b",
+    "clause": "The reader verdict — open: the country is named as a place the person may be; A group's verdict is the best of its countries'. UK remote locations make english open.",
+    "pattern": "group country explicitly offered"
+  },
+  "506494:latam": {
+    "verdict": "a",
+    "clause": "2. A remote or undeclared option: A region before a narrower place gives the narrower place. AMER - Canada - British Columbia names Canada, leaving latam unknown.",
+    "pattern": "region narrowed to foreign country"
+  },
+  "409007:us": {
+    "verdict": "a",
+    "clause": "These say nothing: Working from anywhere offered as a perk or a culture; Where the company or its offices or customers are. Benefits coverage does not state this vacancy's hiring locations; rule 3 leaves Remote unknown.",
+    "pattern": "global culture and local benefits"
+  },
+  "80157:english": {
+    "verdict": "b",
+    "clause": "The reader verdict — open: anywhere is named as a place the person may be. This role offers work from anywhere in the world.",
+    "pattern": "role explicitly offers worldwide work"
+  }
+}

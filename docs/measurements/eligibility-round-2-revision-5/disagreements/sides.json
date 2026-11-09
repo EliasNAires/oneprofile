@@ -1,0 +1,58 @@
+{
+ "81594:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "119681:us": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "398112:english": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "926449:latam": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "412400:english": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "236355:latam": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "211161:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "680835:english": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "931004:english": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "420399:latam": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "1468656:english": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "506494:latam": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "409007:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "80157:english": {
+  "rule": "a",
+  "labeller": "b"
+ }
+}

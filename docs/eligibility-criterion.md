@@ -97,9 +97,13 @@ to candidates in`, `we hire in`, `you will be based in`.
     in UTC-5 to UTC+1`, `must be based in a US time zone`). Each country's offsets, standard time:
     Argentina UTC-3; Brazil UTC-5 to UTC-2; Mexico UTC-8 to UTC-5; Colombia UTC-5; Chile UTC-6 to UTC-3;
     the United States UTC-10 to UTC-5; the United Kingdom and Ireland UTC+0; Canada UTC-8 to UTC-3:30;
-    Australia UTC+8 to UTC+10; New Zealand UTC+12. A country is eligible where every offset of it is
-    inside, excluded where none is, unknown where some are: `must be in US Eastern or Central time`
-    leaves the United States unknown, Colombia excluded. Several windows given as alternatives (`Europe & Africa: UTC-1 to UTC+3` / `The Americas:
+    Australia UTC+8 to UTC+10; New Zealand UTC+12. A window holds a country where every offset of it is
+    inside, and excludes it where none is. A zone named by a country (`US Eastern`, `Pacific`, `a US
+    time zone`) is that country's offsets only, and excludes every other country. A window holding only
+    some of a country's offsets neither holds nor excludes it, as a city inside it would not: where
+    another statement holds the country, it is eligible (`remote within the United States; must reside
+    in Eastern or Central time` is eligible for us); alone, it leaves the country unknown (`must be in
+    US Eastern or Central time` leaves the United States unknown, Colombia excluded). Several windows given as alternatives (`Europe & Africa: UTC-1 to UTC+3` / `The Americas:
     UTC-8 to UTC-3`) are a choice: the best of them holds. A schedule (`work US Eastern hours`, `4 hours
     of overlap with PST`, colleagues across `GMT-8 to GMT+3`) is not one, and says nothing.
 12. **Every requirement must hold.** One that excludes the country excludes the vacancy, whatever the
@@ -178,3 +182,7 @@ One line per vacancy, tab-separated, in this order:
 - **Revision 4**, 2026-11-08, the same calibration: rule 12 says rules 8 to 10 hold the country they
   name, so work authorization, citizenship or a clearance in a country makes an unknown vacancy eligible
   for it. The check under revision 3 read it two ways.
+- **Revision 5**, 2026-11-09, the third calibration (#103, round 2's proposal): rule 11 says a window
+  holding only some of a country's offsets neither holds nor excludes it, so another statement holding
+  the country makes it eligible, and that a zone named by a country is that country's alone. Round 2
+  read the clause two ways against rule 12 and the *State* section.

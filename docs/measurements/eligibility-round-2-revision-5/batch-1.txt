@@ -1,0 +1,753 @@
+=== 115938
+company: Peregrine Technologies
+title: Senior Software Engineer
+options: Washington, DC [undeclared]
+description:
+> Today Peregrine supports hundreds of customers across 30+ states and two countries, serving more than 125 million people — and we’re amplifying our impact as we expand into the enterprise and internationally.
+[under: Our Team] Engineers will have the opportunity to work closely with our team onsite to understand the variety of use cases that Peregrine serves.
+[under: Role] Our stack is constantly evolving but based on a backend foundation of Python, Django, Celery, Airflow, and Kafka; a frontend built in React, Redux, and Mapbox; data stores including PostgreSQL and Elasticsearch; machine learning models hosted in Bedrock and Sagemaker; and with AWS, Pulumi, Terraform, and Kubernetes as our underlying infrastructure.
+[under: What We Look For] - Located in Washington, D.C. and open to working in office
+> Actual compensation is influenced by a wide array of factors including but not limited to skill set, level of experience, certifications or licenses, and specific work location.
+
+=== 326720
+company: Culture Biosciences
+title: Software Engineer, Automation and Control
+options: Remote [remote]
+description:
+# About Us
+[under: About Us] This platform enables high-throughput process development projects to be rapidly and seamlessly executed directly by our customers in their own facilities, in our service laboratories, or both, all driven by our cloud-connected web application, accessible from anywhere, for designing, managing and analyzing experiments.
+[under: The Opportunity] theory, and comes with a strong focus in controls, closed-loop system behavior, and PID-based control strategies.
+# Location & Schedule
+[under: Location & Schedule] - This is a fully remote position. The successful candidate will work remotely and must be able to effectively collaborate with team members across locations.
+[under: Base Salary Range] - Culture Biosciences's compensation package includes market competitive salary, equity for all full time roles, and great benefits. Our expected base salary range for this role is $130,000-$165,0We are hiring for multiple levels and backgrounds so final offers may vary within the range provided based on experience, expertise, and other factors.
+[under: Benefits] - Medical and Dependent Care FSA (prorated based on start-date)
+[under: Benefits] - Responsible Time Off (non-accrual based) policy, 11 paid company holidays and a week-long winter break
+
+=== 224812
+company: bjakcareer
+title: Engineering Manager - AI-native email App
+options: Hong Kong [remote]
+description:
+[under: About Doit] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: About Doit] We have teams working around the world, with over 20 nationalities and growing from our offices and remotely.
+[under: About Doit] Join us and build a better future for our society.
+[under: About Doit] In 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About Doit] Today, it's the leading insurance platform in Southeast Asia.
+[under: The Role] We are looking for an Engineering Manager to lead a high-performing engineering team building and scaling products used by millions of users across the region.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 230459
+company: commonware
+title: Engineer
+options: United States [remote]
+description:
+[under: Setting the Stage: 8 People and $30M+ Raised] Backed by Haun Ventures, Dragonfly Capital, Mert Mumtaz, Nick White, Dan Romero, Sreeram Kannan, and other experienced operators, Commonware is now hiring for ambitious engineers that can help us expand the Commonware Library to a broader set of applications and support customers, like Tempo, with novel infrastructure built for it.
+[under: Setting the Stage: 8 People and $30M+ Raised] Today, we are a lean team of 8 focused on staying small, nimble, and accountable: Patrick O’Grady (Founder, ex-VP Engineering at Ava Labs, designed Coinbase Rosetta/Mesh), Brendan Chou (First Hire and Head of Engineering at dYdX), Roberto Bayardo (Distinguished Engineer at Google and Coinbase), Dan Laine (Engineer at Ava Labs), Lucas Meier (Cryptographer at Penumbra Labs), Ben Clabby (Engineer at Optimism), André Silva (Consensus at Parity), Andrew Lewis-Pye (Researcher at LSE).
+[under: Setting the Stage: 8 People and $30M+ Raised] We are spread around the globe but assemble at our new office in Palo Alto every few months to fill whiteboards and play arcade games.
+[under: The Role] We don't hire engineers for specific tasks.
+[under: The Role] We hire great people with differentiated experience in a specific area and expect them to direct their focus to the highest priority task.
+[under: The Role] - Streaming unstructured data over globally distributed infrastructure
+[under: Ideal Candidate] We consider each candidate on a case-by-case basis and don't have a minimum set of requirements any individual must satisfy (other than being based in the United States).
+
+=== 413624
+company: provectus
+title: Senior AI/ML Engineer (GenAI, AWS)
+options: Ukraine [remote] | Spain [remote] | Slovakia [remote] | Serbia [remote] | Yerevan [remote] | Slovenia [remote] | Poland [remote]
+description:
+- Provectus is an AWS Premier Partner and an Anthropic Strategic Partner, working at the frontier of applied AI. We help enterprises turn Claude, agentic systems, and their own data into measurable business outcomes — through bespoke applications, managed services, and advisory engagements. With offices in North America, LATAM, and EMEA, we partner with clients worldwide.
+[under: Technical depth] - Agentic orchestration: multi-step workflows, graph-based orchestration, tool use, state management, and recovery from partial failure
+[under: Responsibilities] - Build and ship production GenAI systems into the customer’s environment (cloud-native data, LLM-based, and agentic AI solutions).
+[under: What We Offer] - The chance to shape how leading enterprises across LATAM, Europe, and North America adopt AI, from strategy through first deployment
+[under: What We Offer] - Remote-friendly culture
+# How we hire
+
+=== 226296
+company: bjakcareer
+title: Technical Product Lead - AI Finance
+options: Germany [remote]
+description:
+[under: About BJAK] Started in 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About BJAK] Today, its the leading insurance platform in Southeast Asia.
+[under: About BJAK] Today, we are expanding ways to help people in the region — this includes spending, saving, investing, exchanging, travelling, and more.
+[under: About BJAK] We have teams working around the world, with over 20 nationalities from our offices and remotely, who truly enjoys their work.
+[under: About BJAK] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: The Role] BJAK is building a AI Finance Superapp for Southeast Asia across payments, remittance, insurance, wealth, and trading.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 45368
+company: Databricks
+title: Sr. Solutions Architect
+options: Northeast - United States [undeclared]
+description:
+Locations: NY, NJ, OH, MI, IN
+[under: Outcomes] - Gain the respect of your peers based on your experience, insight, and contributions.
+[under: Competencies] - Experience working very large (> $1m ARR), global accounts.
+> [under: Pay Range Transparency] Actual compensation packages are based on several factors that are unique to each candidate, including but not limited to job-related skills, depth of experience, relevant certifications and training, and specific work location.
+> [under: Pay Range Transparency] Based on the factors above, Databricks anticipates utilizing the full width of the range.
+> [under: Pay Range Transparency] For more information regarding which range your location is in visit our page here.
+> [under: About Databricks] More than 20,000 organizations worldwide — including adidas, AT&T, Bayer, Block, Mastercard, Rivian, Unilever, and 70% of the Fortune 500 — rely on the Databricks Data + AI Platform to build and scale data and AI apps, analytics and agents.
+> [under: About Databricks] Headquartered in San Francisco with 30+ offices around the globe, Databricks offers a unified platform that includes Genie, Lakebase, Agent Bricks, Lakeflow, Lakehouse, and Unity Catalog.
+> [under: Benefits] For specific details on the benefits offered in your region click here.
+> [under: Compliance] If access to export-controlled technology or source code is required for performance of job duties, it is within Employer's discretion whether to apply for a U.S. government license for such positions, and Employer may decline to proceed with an applicant on this basis alone.
+
+=== 59711
+company: Factored
+title: Senior Data Analyst (Tableau)
+options: Colombia [undeclared]
+description:
+> # Fully remote | Complete engagement job
+> [under: Fully remote | Complete engagement job] Founded in Palo Alto by Dr. Andrew Ng and Israel Niezen, Factored helps U.S. companies build and scale world-class AI, ML, and Data teams, powered by the top 1% of LATAM talent, with a defining purpose: To empower brilliant humans, unleash their potential, and amplify their impact in the world.
+As a Data Analyst, you will transform complex, multi-source datasets into strategic insights that drive decision-making for global organizations.
+> [under: Our Benefits] Once we hire you, we will invest in you and support your career and professional growth in many meaningful ways.
+> [under: Our Benefits] We hire people who are supremely intelligent and talented, but we recognize that intelligence is not enough.
+> [under: Our Benefits] We are a transparent workplace, where EVERYBODY has a voice in building OUR company, and where learning and growth are available to everyone based on their merits, not just on stamps on their resume.
+> [under: Our Benefits] All of us are dedicated doers and are highly energetic, focusing vehemently on execution because we know that the best learning happens by doing.
+> [under: Our Benefits] We recognize that we are creating OUR COMPANY TOGETHER, which is not only a high-performing fast-growing business but is changing the way the world perceives the quality of technical talent in Latin America.
+> [under: Our Benefits] In short, our business is about people, so we hire the best people and invest as much as possible in making them fall in love with their work, their learning, and their mission.
+
+=== 657156
+company: capitalone.wd12/capital_one
+title: Full-stack Engineer 4
+options: Richmond, VA [undeclared] | New York, NY [undeclared]
+description:
+[under: What You’ll Do] - Collaborate with digital product managers, and deliver robust cloud-based solutions that drive powerful experiences to help millions of Americans achieve financial empowerment
+[under: Basic Qualifications] - At least 2 years of experience with public cloud platforms (AWS, GCP, Azure), cloud-based productivity tools, or virtualization technologies
+[under: Preferred Qualifications] - 3+ years of experience with AWS, GCP, Azure, or cloud-based productivity tools or virtualization technologies
+[under: Preferred Qualifications] - 3+ years of experience using Git-based version-control systems (e.g., Git, GitHub, Bitbucket)
+[under: Preferred Qualifications] - Experience leveraging modern AI-based coding tools and IDE copilots
+[under: Preferred Qualifications] At this time, Capital One will not sponsor a new applicant for employment authorization, or offer any immigration related support for this position (e.g.
+[under: Preferred Qualifications] H1B, F-1 OPT, F-1 STEM OPT, F-1 CPT, J-1, TN, E-3, and O-1, or any other forms of work authorization that require immigration support from an employer).
+[under: Preferred Qualifications] The minimum and maximum full-time annual salaries for this role are listed below, by location.
+[under: Preferred Qualifications] Please note that this salary information is solely for candidates hired to perform work within one of these locations, and refers to the amount Capital One is willing to pay at the time of this posting.
+[under: Preferred Qualifications] Salaries for part-time roles will be prorated based upon the agreed upon number of hours to be regularly worked.
+[under: Preferred Qualifications] Candidates hired to work in other locations will be subject to the pay range associated with that location, and the actual annualized salary amount offered to any candidate at the time of hire will be reflected solely in the candidate’s offer letter.
+[under: Preferred Qualifications] This role is also eligible to earn performance based incentive compensation, which may include cash bonus(es) and/or long term incentives (LTI).
+[under: Preferred Qualifications] Eligibility varies based on full or part-time status, exempt or non-exempt status, and management level.
+[under: Preferred Qualifications] Please note that any position posted in Canada is for Capital One Canada, any position posted in the United Kingdom is for Capital One Europe and any position posted in the Philippines is for Capital One Philippines Service Corp. (COPSSC).
+
+=== 415632
+company: safran-ai
+title: Ingénieur Système Linux (H/F)
+options: Paris [hybrid]
+description:
+[under: Environnement technique] - Sécurité et conformité : CIS, ANSSI, ISO.
+[under: Compétences appréciées] →Vous avez déjà implémenté des référentiels de sécurité ou de bonnes pratique (CIS, ANSSI, ISO, etc.).
+
+=== 412400
+company: pnlfin
+title: Senior Backend Engineer - Product (Remote)
+options: Cyprus [remote]
+description:
+[under: About Finom] Finom is a European tech startup headquartered in Amsterdam, and we’re on a journey towards revolutionizing the financial landscape for entrepreneurs worldwide.
+[under: About Finom] We're actively expanding our reach across key EU markets like Germany, France, the Netherlands, Italy, and Spain.
+[under: About Finom] You'll be part of a domain team where various engineering crafts (Backend, Frontend, Mobile, ML/AI engineers, and QA) work together to own and evolve a shared product area that delivers real value to hundreds of thousands of businesses across Europe.
+[under: Make a genuine impact on the product] Join our upward trajectory, and grow with us.
+[under: Work in the EU] Embark on this exciting journey with us and enjoy the flexibility of traveling and working remotely or in a hybrid model across Europe.
+[under: Work & Swim program] Spend one month in a comfortable corporate apartment in enchanting Cyprus.
+[under: Equal Opportunity Statement] We do not discriminate based on race, religion, color, national origin, gender, sexual orientation, age, marital status, disability status, or other applicable legally protected characteristics.
+
+=== 226233
+company: bjakcareer
+title: Technical Product Manager - AI Stockbroking
+options: Spain [remote]
+description:
+[under: About BJAK] Started in 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About BJAK] Today, its the leading insurance platform in Southeast Asia.
+[under: About BJAK] Today, we are expanding ways to help people in the region — this includes spending, saving, investing, exchanging, travelling, and more.
+[under: About BJAK] We have teams working around the world, with over 20 nationalities from our offices and remotely, who truly enjoys their work.
+[under: About BJAK] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: The Role] BJAK is building a AI Stockbroking Superapp for Southeast Asia across payments, remittance, insurance, wealth, and trading.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 285997
+company: ATOMS Careers page
+title: Software Engineer Intern - Winter 2027
+options: Multiple Locations Available [undeclared]
+description:
+[under: Who we are] If you want to work on hard problems with real-world impact, join us.
+[under: What you’ll do] - You will build foundational software systems to enable globally scaled kitchen infrastructure and real estate innovations
+# Why join us
+[under: What else you need to know] This role can be based in New York, Seattle, Los Angeles, Mountain View or San Francisco.
+[under: What else you need to know] That’s why all of our office-based teams work onsite, five days a week.
+
+=== 928543
+company: hpe.wd5/jobsathpe
+title: Firmware Architect
+options: Houston, Texas, United States of America [hybrid] | Fort Collins, Colorado [hybrid] | Chippewa Falls, Wisconsin, United States of America [hybrid]
+description:
+This role has been designed as 'Hybrid' with a requirement that you will work on average 2 days per week from an HPE office.
+[under: Who We Are] Hewlett Packard Enterprise is the global edge-to-cloud company advancing the way people live and work.
+[under: Responsibilities] - Develops organization-wide architectures and methodologies for software systems design and development across multiple platforms and organizations within the Global Business Unit.
+[under: Job Level] Actual offer may vary from this range based upon geographic location, work experience, education/training, and/or skill level.
+[under: Job Level] – United States of America: Annual Salary USD 165,000 - 313,500 in Colorado // 157,000 - 361,000 in Texas & Wisconsin
+[under: Job Level] Information about employee benefits offered in the US can be found at https://myhperewards.com/main/new-hire-enrollment.html
+[under: Job Level] Our goal is to be one global team that is representative of our customers, in an inclusive environment where we can continue to innovate and grow together.
+[under: Recruitment Fraud Alert] We have become aware of an increase in fraudulent recruitment activities in which individuals impersonate our company or authorized recruitment agencies to offer fake employment opportunities.
+[under: Recruitment Fraud Alert] These scams may occur through false websites, emails, social media, or chat-based applications and often aim to obtain personal information or money.
+[under: Recruitment Fraud Alert] Please note that Hewlett Packard Enterprise (HPE), its direct and indirect subsidiaries and affiliated companies, and its authorized recruitment agencies/vendors will never charge a candidate a registration fee, hiring fee, or any other fee in connection with its recruitment and hiring process.
+
+=== 268844
+company: stora
+title: Software Engineer II - (Ruby)
+options: Belfast, Hybrid [hybrid] | Belfast, Remote [remote] | United Kingdom [hybrid] | Remote - EU [remote]
+description:
+[under: About the role] You’ll work alongside experienced engineers to build and improve our Rails-based platform, contributing to customer-facing features, internal tools and the ongoing stability and performance of the product.
+# Why join us?
+[under: Why join us?] We encourage everyone to contribute ideas, take ownership of their role and help us improve the way we build.
+[under: Benefits and compensation] - Remote work: Fully remote within the UK or EU. Candidates must be based in either the United Kingdom or the European Union.
+[under: Benefits and compensation] - Office access: Use of our Belfast office for those who live locally.
+[under: Benefits and compensation] - Leave: 35 days paid annual leave inclusive of public holidays (dependent on location)
+
+=== 248034
+company: linear
+title: Senior / Staff Fullstack Engineer
+options: North America [remote]
+description:
+Today, our team is distributed across North America, Europe, and Australia, and we’re continuing to grow internationally.
+What unites us is relentless focus, fast execution, and a deep care for software craftsmanship.
+We’re looking for experienced engineers that thrive in an environment of autonomy and individual responsibility to help us build the future of product development.
+# Location & work mode
+[under: Location & work mode] Linear is a remote-first company, with optional co-working offices in San Francisco, New York, and London.
+[under: Location & work mode] This role is open to candidates based in the US and Europe.
+[under: Location & work mode] You can work from anywhere within those regions.
+[under: What we're looking for] - Thrives in a remote, async-first environment with a lean, high-output team
+[under: What we offer] - Employee-friendly equity terms including early exercise in the US and extended exercise windows
+[under: What we offer] - Health coverage (based on country requirements)
+[under: What we offer] - Remote-first with no required commute
+[under: Learn how we think and work] - Our hiring process: How we hire at Linear
+[under: Learn how we think and work] - How we work: Designing remote work at Linear
+[under: Learn how we think and work] We do not discriminate based on race, color, religion, gender identity or expression, sexual orientation, national origin, age, disability, veteran status, or any other protected characteristic under applicable law.
+
+=== 636756
+company: 02 CACI, INC.-FEDERAL
+title: Senior Cloud Security & Cryptography Engineer
+options: Remote (Any State) [remote]
+description:
+Minimum Clearance Required to Start: TS/SCI
+Type of Travel: Outside Continental US
+[under: The Opportunity] As a Cloud Cryptographic/Key Management Engineer you will develop solutions to operate in a large-scale infrastructure cloud environment securely supporting Special Operations Command Europe (SOCEUR) Hybrid Threat Action Platform (HTAP).
+[under: Responsibilities] - Design robust, reliable data-centric security and authentication protocols across global, hyper-scale cloud data centers. Implement Client-Side Encryption (CSE) for Google Workspace and ensure mutually authenticated TLS 1.3 communications.
+[under: Pay Range] There are a host of factors that can influence final salary including, but not limited to, geographic location, Federal Government contract labor categories and contract wage rates, relevant prior work experience, specific skills and competencies, education, and certifications.
+[under: Pay Range] Since this position can be worked in more than one location, the range shown is the national average for the position.
+
+=== 224946
+company: bjakcareer
+title: Engineering Manager - Travel FX App
+options: United Kingdom [hybrid]
+description:
+[under: About BJAK] Started in 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About BJAK] Today, its the leading insurance platform in Southeast Asia.
+[under: About BJAK] Today, we are expanding ways to help people in the region — this includes spending, saving, investing, exchanging, travelling, and more.
+[under: About BJAK] We have teams working around the world, with over 20 nationalities from our offices and remotely, who truly enjoys their work.
+[under: About BJAK] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: The Role] We are looking for an Engineering Manager to lead a high-performing engineering team building and scaling products used by millions of users across the region.
+# Location
+[under: Location] This is a hybrid role.
+[under: Location] You are expected to work from our local office at least 3 days per week, with the remaining days offering flexibility to work remotely.
+[under: Location] Candidates should be based in, or able to work from, the location where the role is advertised.
+[under: Language] English is our main working language across global teams.
+
+=== 301712
+company: Robots and Pencils
+title: Staff Data Engineer
+options: Lviv, Ukraine [undeclared]
+description:
+We’ve earned the trust of leaders across Consumer Products and Retail, Education, Energy, Financial Services, Healthcare, and Manufacturing and more, and earned a reputation as the nimble alternative to traditional global systems integrators.
+Founded in 2009, with delivery centers in Canada, the United States, Eastern Europe, and Latin America, we are smaller, faster, and more senior by design.
+[under: Craft & Delivery] - Design and implement data contracts and event flows in collaboration with backend, platform, and engineering teams
+[under: You’ll Do Well Here if You Are] - Glad to be in the room with people who care as much as you do. Our teams average fifteen-plus years of experience. We hire people who push each other to do better work.
+[under: We Offer] - Cooperation under a gig-contract.
+
+=== 220484
+company: anyone-ai
+title: Backend Developer (Brazil)
+options: Brazil [remote]
+description:
+[under: Qualifications] Engagement: Part-time, project-based expert evaluation work
+[under: Qualifications] Work Type: Remote
+[under: Qualifications] This is a project-based consultant role.
+[under: Qualifications] Consultants will be paid on a per-project basis; hourly rates are estimates based on anticipated completion time.
+
+=== 226159
+company: bjakcareer
+title: Technical Product Manager - AI Neobank
+options: Ireland [remote]
+description:
+[under: About BJAK] Started in 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About BJAK] Today, its the leading insurance platform in Southeast Asia.
+[under: About BJAK] Today, we are expanding ways to help people in the region — this includes spending, saving, investing, exchanging, travelling, and more.
+[under: About BJAK] We have teams working around the world, with over 20 nationalities from our offices and remotely, who truly enjoys their work.
+[under: About BJAK] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: The Role] BJAK is building a AI Neobank Superapp for Southeast Asia across payments, remittance, insurance, wealth, and trading.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 311837
+company: berlitz
+title: Senior Integrations Engineer (m/f/d)
+options: Germany Remote [remote] | Colombia Remote [remote]
+description:
+We're building a new global Berlitz, and this is your opportunity to help shape it.
+If you are the kind of person who thrives in a fast-paced environment, isn’t afraid of a blank page, and is excited to help shape the future of a global company undergoing a significant transformation, you might belong at Berlitz!
+[under: What you'll bring] - A clear understanding of identity and people data privacy, including GDPR and handling employee data across multiple countries.
+[under: Why Join Berlitz?] - Be part of an exciting global transformation that is truly rare
+[under: Why Join Berlitz?] Our global workplace reflects the diverse world we serve, bringing together different backgrounds, experiences and perspectives.
+[under: Why Join Berlitz?] Join us and help build the future with us.
+
+=== 224956
+company: bjakcareer
+title: Lead Engineer - Stock Trading App
+options: China [remote]
+description:
+[under: About BJAK] Started in 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About BJAK] Today, its the leading insurance platform in Southeast Asia.
+[under: About BJAK] Today, we are expanding ways to help people in the region — this includes spending, saving, investing, exchanging, travelling, and more.
+[under: About BJAK] We have teams working around the world, with over 20 nationalities from our offices and remotely, who truly enjoys their work.
+[under: About BJAK] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 433412
+company: westernacher
+title: SAP Logistics Solution Architect
+options: Malaysia, Malaysia [remote]
+description:
+A global SAP consulting leader, Westernacher Consulting has been delivering successful business transformation projects for over 55 years.
+With more than 30 years as an SAP Gold Partner and a presence across 28 countries, we combine deep industry expertise with global delivery capabilities.
+As we continue to strengthen our team in Southeast Asia, we are seeking an experienced SAP Logistics Solution Architect to lead strategic transformation programs and drive successful project delivery across local, regional, and global engagements.
+[under: Why Join Westernacher?] - Flexible working hours and a hybrid working model.
+[under: This is Westernacher] Founded in 1969, Westernacher Consulting is a global business and SAP consulting company represented in 28 countries, with 1,400 consultants across Europe, Asia-Pacific and the Americas.
+[under: This is Westernacher] We welcome applications from all qualified candidates and make employment decisions based on qualifications, experience and business needs, in accordance with applicable local law.
+
+=== 224895
+company: bjakcareer
+title: Engineering Manager - Wealth Management App
+options: Vietnam [remote]
+description:
+[under: About BJAK] Started in 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About BJAK] Today, its the leading insurance platform in Southeast Asia.
+[under: About BJAK] Today, we are expanding ways to help people in the region — this includes spending, saving, investing, exchanging, travelling, and more.
+[under: About BJAK] We have teams working around the world, with over 20 nationalities from our offices and remotely, who truly enjoys their work.
+[under: About BJAK] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: The Role] We are looking for an Engineering Manager to lead a high-performing engineering team building and scaling products used by millions of users across the region.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 278150
+company: Agile Robots SE
+title: IT Administrator (all genders)
+options: Munich, Bavaria, Germany [undeclared]
+description:
+[under: Essential Skills] - Not being a stranger to occasional physical work, mainly involving cabling and setup of new workspaces and locations
+> [under: What we offer] - Modern office facilities with a rooftop terrace overlooking Munich, free drinks & fruits, and regular company events contribute to a good working environment
+> # About us
+> [under: About us] Agile Robots SE is an international high-tech company based in Munich, Germany with a production site in Kaufbeuren and more than 3500 employees worldwide.
+> [under: About us] This unique combination of technologies allows us to provide user-friendly and affordable robotic solutions that enable intelligent precision assembly.
+> [under: About us] Become part of this team and shape the future of robotics with us!
+
+=== 399971
+company: kobie
+title: SDET
+options: St. Petersburg, Florida [remote] | Dallas, Texas [remote] | Atlanta Georgia [remote] | Baton Rouge, Louisiana [remote] | Detroit, Michigan [remote] | Indianapolis, Indiana [remote] | Minneapolis, Minnesota [remote] | Raleigh, North Carolina [remote] | Richmond, Virginia [remote] | Philadelphia, Pennsylvania [remote] | Nashville, Tennessee [remote] | Hartford, Connecticut [remote] | Boston, Massachusetts [remote] | Chicago, Illinois [remote] | Jackson, Mississippi [remote]
+description:
+[under: Join a National Top Workplace] Named a Top Workplace in the USA and Top Remote Workplace, Kobie is where the best minds in loyalty come together, driven by passion and innovation.
+# Join Us from Anywhere
+[under: Join Us from Anywhere] While our headquarters are nestled in sunny St. Petersburg, Florida, Kobie embraces a flexible work environment, offering teammates the freedom to work remotely.
+[under: Travel Requirements] As a remote-first organization headquartered in St. Petersburg, Florida, Kobie values meaningful in-person connection and collaboration that strengthens our teams, supports our clients, and enhances our culture.
+[under: About the team and what we'll build together] As part of this team you’ll help us deliver software more predictably, more reliably, and with higher quality than we ever have before.
+[under: What you need to be successful] We believe that our team's passion and expertise are the driving forces behind our success and are proud to be named a Top Workplaces in the USA, where the best and brightest in loyalty drive our mission of growing enterprise value through loyalty.
+[under: What you need to be successful] Employment at Kobie is based solely on an individual's merit and qualifications, which are directly related to professional competence.
+[under: What you need to be successful] Ready to join us?
+
+=== 225874
+company: bjakcareer
+title: Technical Product Manager - AI Finance App
+options: Indonesia [remote]
+description:
+[under: About KIRA] In 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About KIRA] Today, it's the leading insurance platform in Southeast Asia.
+[under: About KIRA] Today, we are expanding ways to help people in Asia and it includes spending, saving, investing, exchanging, travelling, and more.
+[under: About KIRA] We believe AI will help us achieve this in our generation.
+[under: About KIRA] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: About KIRA] We have teams working around the world, with over 20 nationalities and growing from our offices and remotely.
+[under: About KIRA] Join us and build a better future.
+[under: The Role] KIRA is building a AI Finance Superapp for Southeast Asia across payments, remittance, insurance, wealth, and trading.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 224839
+company: bjakcareer
+title: Engineering Manager - Stock Trading App
+options: Thailand [remote]
+description:
+[under: About BJAK] Started in 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About BJAK] Today, its the leading insurance platform in Southeast Asia.
+[under: About BJAK] Today, we are expanding ways to help people in the region — this includes spending, saving, investing, exchanging, travelling, and more.
+[under: About BJAK] We have teams working around the world, with over 20 nationalities from our offices and remotely, who truly enjoys their work.
+[under: About BJAK] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: The Role] We are looking for an Engineering Manager to lead a high-performing engineering team building and scaling products used by millions of users across the region.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 226007
+company: bjakcareer
+title: Technical Product Manager - AI Neobank App
+options: Poland [remote]
+description:
+[under: About KIRA] In 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About KIRA] Today, it's the leading insurance platform in Southeast Asia.
+[under: About KIRA] Today, we are expanding ways to help people in Asia and it includes spending, saving, investing, exchanging, travelling, and more.
+[under: About KIRA] We believe AI will help us achieve this in our generation.
+[under: About KIRA] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: About KIRA] We have teams working around the world, with over 20 nationalities and growing from our offices and remotely.
+[under: About KIRA] Join us and build a better future.
+[under: The Role] KIRA is building a AI Neobank Superapp for Southeast Asia across payments, remittance, insurance, wealth, and trading.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 3759
+company: Affirm
+title: Senior Software Engineer, Back-end (Fraud)
+options: Remote Spain [remote]
+description:
+We’re looking for a Senior Software Engineer to join our fully remote team based in Europe.
+You’ll collaborate closely with stakeholders across North America - including teams in Product, Compliance, Machine Learning, Fraud Operations, Fraud Strategy, and other Fraud Engineering teams.
+The Fraud International Team (FIT) leads the engineering effort to extend Affirm's Fraud Decisioning System into markets beyond the US - Canada, the UK, Australia, and growing rapidly.
+We own real-time fraud decisioning for these markets, integrate region-specific risk vendors, and are building the platform that lets Affirm stand up fraud protection in a new country quickly and safely.
+As Affirm expands globally, FIT scales with it.
+We're looking for a Senior Software Engineer to join our fully remote team based in Europe.
+You'll collaborate closely with stakeholders across North America - including teams in Product, Compliance, Machine Learning, Fraud Operations, Fraud Strategy, and other Fraud Engineering teams.
+[under: What You'll Do] - You will design and implement real-time fraud decisioning services and APIs in Python or Kotlin, extending Affirm's Fraud Decisioning System to markets beyond the US.
+[under: What You'll Do] - You will build and evolve the platform and tooling that let Affirm launch fraud decisioning in a new country quickly—turning market-by-market setup (rules, models, and vendor configuration) into a repeatable, low-friction path so launches scale sub-linearly with the number of markets.
+[under: What You'll Do] - You will integrate region-specific fraud and risk vendors and help operationalize the machine learning and AI signals that power real-time decisioning, while using modern AI tooling to move faster as an engineer.
+[under: What We Look For] - Experience building for multiple markets or regions internationalization or localization (nice to have)
+[under: Equity Grade - 4] Affirm focuses on providing a simple and transparent pay structure which is based on a variety of factors, including location, experience and job-related skills.
+[under: Additional benefits include] We are able to offer visa sponsorship for this role, but do require that someone is based in Spain for the role.
+# Location - Remote Spain
+# LI-Remote
+> # Remote-first with flexibility built in
+> [under: Remote-first with flexibility built in] Affirm is proud to be a remote-first company.
+> [under: Remote-first with flexibility built in] Most roles can be done from almost anywhere within the country of employment.
+> [under: Remote-first with flexibility built in] Some positions may occasionally require in-person work at an Affirm office, and a few are office-based due to the nature of the work.
+> [under: Remote-first with flexibility built in] All new hires will be invited to attend an in-person onboarding experience.
+> [under: Benefits designed for you] For positions based in San Francisco or Los Angeles: Affirm considers qualified applicants with arrest and conviction records, as required by law.
+> [under: Benefits designed for you] By clicking "Submit Application," you acknowledge that you have read Affirm's Global Candidate Privacy Notice and consent to the use of your personal information as described.
+
+=== 225998
+company: bjakcareer
+title: Technical Product Manager - AI Neobank App
+options: Sydney, Australia [remote]
+description:
+[under: About KIRA] In 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About KIRA] Today, it's the leading insurance platform in Southeast Asia.
+[under: About KIRA] Today, we are expanding ways to help people in Asia and it includes spending, saving, investing, exchanging, travelling, and more.
+[under: About KIRA] We believe AI will help us achieve this in our generation.
+[under: About KIRA] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: About KIRA] We have teams working around the world, with over 20 nationalities and growing from our offices and remotely.
+[under: About KIRA] Join us and build a better future.
+[under: The Role] KIRA is building a AI Neobank Superapp for Southeast Asia across payments, remittance, insurance, wealth, and trading.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 395361
+company: jobgether
+title: AI Evaluation Engineer
+options: Israel [remote]
+description:
+Our partner is looking for an AI Evaluation Engineer based in Israel.
+This is an opportunity to take ownership of an evaluation architecture from the ground up while working with modern AI technologies in a fully remote, globally distributed environment.
+[under: Requirements] - Availability to overlap with US Central Time business hours for at least three hours each day.
+[under: Requirements] - Strong understanding of embedding models, vector databases, and their applications in AI evaluation and similarity-based testing.
+[under: Benefits] - Fully remote work: Work from anywhere with a reliable internet connection, with the flexibility to choose your preferred time zone and working hours.
+[under: Benefits] - Flexible schedule: Organize your working day around your productivity while maintaining the required overlap with US Central Time.
+[under: Benefits] - Negotiable compensation: Your starting hourly rate will be determined based on your skills, experience, and qualifications.
+[under: Benefits] - Independent contractor arrangement: Compensation is based on hours worked, with payments made monthly via wire transfer.
+[under: How Jobgether works] This processing is based on legitimate interest and pre-contractual measures under applicable data protection laws (including GDPR).
+
+=== 226011
+company: bjakcareer
+title: Technical Product Manager - AI Neobank App
+options: Spain [remote]
+description:
+[under: About KIRA] In 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About KIRA] Today, it's the leading insurance platform in Southeast Asia.
+[under: About KIRA] Today, we are expanding ways to help people in Asia and it includes spending, saving, investing, exchanging, travelling, and more.
+[under: About KIRA] We believe AI will help us achieve this in our generation.
+[under: About KIRA] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: About KIRA] We have teams working around the world, with over 20 nationalities and growing from our offices and remotely.
+[under: About KIRA] Join us and build a better future.
+[under: The Role] KIRA is building a AI Neobank Superapp for Southeast Asia across payments, remittance, insurance, wealth, and trading.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 893412
+company: GB.540 Houlihan Lokey UK Limited
+title: IT GRC Analyst
+options: London, UK [undeclared]
+description:
+[under: Overview] Houlihan Lokey, Inc. (NYSE:HLI) is a leading global investment bank recognized for delivering independent strategic and financial advice to corporations, financial sponsors, and governments.
+[under: About the Team] We believe that as we grow individually, we also grow as an Information Technology team allowing us to contribute to the overall growth of Houlihan Lokey.
+[under: About the Team] We deliver technology products and services enabled everywhere, so business can happen anywhere.
+[under: Description] IT governance, risk, and compliance sit at the center of how Houlihan Lokey protects client trust and operates as a global financial institution.
+
+=== 224257
+company: bjakcareer
+title: Staff Software Engineer
+options: Austria [remote]
+description:
+[under: The Role] BJAK builds technology products used by millions of users across Southeast Asia.
+[under: Nice to have] - Experience operating across multiple products, markets or countries.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 874754
+company: C200 Heartland Bank Limited
+title: Data Engineer (Projects)
+options: Newmarket - Teed [undeclared]
+description:
+[under: Is this your next role?] At Heartland, we're looking for a Data Engineer - Projects to help shape and deliver strategic data initiatives across both New Zealand and Australia.
+[under: Why this role is exciting] - Gain exposure to both New Zealand and Australian banking environments.
+# A bit about us and what we do
+[under: A bit about us and what we do] Heartland owns both Heartland Bank in New Zealand and Heartland Bank in Australia.
+[under: A bit about us and what we do] Heartland's strategy is to digitalise everything we do, enabling us to provide customers with what they need in a scalable way.
+[under: Diversity & Inclusion] At Heartland, we're proud to celebrate the many characteristics that make each of us different.
+[under: Diversity & Inclusion] We are committed to improving the inclusiveness of our workplace, enabling our people to be authentic and helping us better understand and respond to our customers.
+[under: Diversity & Inclusion] Please let us know if you need any adjustments throughout the application or interview process including a sign language interpreter or speech-to-text reporter.
+[under: Diversity & Inclusion] In your application, feel free to let us know what your pronouns are (for example, she/her, he/him, they/them etc).
+[under: Keen to learn more?] For an insight into life at Heartland, check out our Instagram @heartlandbanknz or follow us on LinkedIn www.linkedin.com/company/heartland-bank-nz.
+[under: Keen to learn more?] Please note you must be eligible to work in New Zealand.
+
+=== 1307856
+company: Samsung Austin Semiconductor, LLC.
+title: STD Cell QA Engineer
+options: SSIR, Goldstone, Bangalore, India [undeclared]
+description:
+[under: Position Summary] About Samsung Semiconductor India Research (SSIR)
+[under: Position Summary] Our engineers get to work across diverse domains, projects, products, clients, people and countries, and conduct research in new and emerging technology areas.
+[under: Disclaimer] Samsung Semiconductor India Research (SSIR), a division of Samsung R&D India - Bangalore Pvt.
+[under: Disclaimer] - Please visit Samsung membership to see Privacy Policy, which defaults according to your location. You can change Country/Language at the bottom of the page. If you are European Economic Resident, please click here.
+
+=== 786346
+company: gartner.wd5/ext
+title: Sr Director Analyst - AI Driven Compute Architecture and Custom Silicon
+options: Irving, TX [remote] | Remote - United States [remote]
+description:
+This is an individual contributor role, based remotely in North America.
+[under: About the role] A Senior Director Analyst serves as a leader within Gartner’s Emerging Market Dynamics Group, establishing oneself as a credible voice within their designated market at local, regional and global levels.
+[under: What you will need] - Deep knowledge of the global and competitive landscape within subject area as well as the interplay in that market
+[under: What you will need] - Ability to work independently, while also being intrinsically motivated to collaborate across teams and support the workflow of others, in a multicultural global team
+[under: What you will need] LI-Remote
+[under: Who are we?] Since our founding in 1979, we’ve grown to 20,000 associates globally who support over 13,000 client enterprises in ~90 countries and territories.
+[under: Who are we?] That’s why we hire associates with the intellectual curiosity, energy and drive to want to make a difference.
+[under: What makes Gartner a great place to work?] We hire remarkable people who collaborate and win as a team.
+[under: What makes Gartner a great place to work?] We invest in great leaders who bring out the best in you and the company, enabling us to multiply our impact and results.
+[under: What makes Gartner a great place to work?] This is why, year after year, we are recognized worldwide as a great place to work.
+[under: What do we offer?] In our hybrid work environment, we provide the flexibility and support for you to thrive — working virtually when it's productive to do so and getting together with colleagues in a vibrant community that is purposeful, engaging and inspiring.
+[under: What do we offer?] Join us.
+[under: What do we offer?] Please note that actual salaries may vary within the range, or be above or below the range, based on factors including, but not limited to, education, training, experience, professional achievement, business need, and location.
+[under: What do we offer?] In addition to base salary, employees will participate in either an annual bonus plan based on company and individual performance, or a role-based, uncapped sales incentive plan.
+[under: What do we offer?] The policy of Gartner is to provide equal employment opportunities to all applicants and employees without regard to race, color, creed, religion, sex, sexual orientation, gender identity, marital status, citizenship status, age, national origin, ancestry, disability, veteran status, or any other legally protected status and to seek to advance the principles of equal employment opportunity.
+[under: What do we offer?] By submitting your information and application, you confirm that you have read and agree to the country or regional recruitment notice linked below applicable to your place of residence.
+
+=== 161031
+company: Careers at Tide
+title: Engineering Manager - Manage Money
+options: Bulgaria [remote]
+description:
+> [under: ABOUT TIDE] Tide is transforming the small business banking market and now supports over 2 million members globally across the UK, India, Germany and France.
+> [under: Tide facts] - Tide is available for UK, Indian, German and French SMEs
+> [under: Tide facts] - Over 2 million members globally and rapidly growing
+> [under: Tide facts] - 3,000 Tideans globally
+> [under: Tide facts] - Recognised with Great Place to Work certification three years in a row, and among India’s Top 50 Best Workplaces in Banking, Financial Services, and Insurance in 2026
+> [under: Tide facts] - We have offices in Central London, with a member support and technology centre in Sofia, Bulgaria, technology centres in Serbia, Romania, Lithuania and Hyderabad and offices in Gurugram, New Delhi, Berlin, Paris and Luxembourg
+[under: ABOUT THE TEAM] The team builds global products, operating across the UK, India, and EU, with the different payment schemes, regulatory obligations, and banking partners each market brings.
+[under: ABOUT THE ROLE] Standing orders and sweep rules are time-based, rule-driven systems where there is no margin for error.
+[under: WHAT YOU WILL BE DOING] - Leading a team of 7 engineers (backend and mobile) across Lithuania and Bulgaria
+[under: Experience and background] - Experience leading distributed, remote-first teams across time zones
+[under: WHAT YOU’LL GET IN RETURN] - Snacks, light food, drinks in the office
+[under: TIDEAN WAYS OF WORKING] At Tide, we champion a flexible workplace model that supports both in-person and remote work to cater to the specific needs of our different teams.
+[under: TIDEAN WAYS OF WORKING] While remote work is supported, we believe in the power of face-to-face interactions to foster team spirit and collaboration.
+[under: TIDEAN WAYS OF WORKING] Our offices are designed as hubs for innovation and team-building, where we encourage regular in-person gatherings to foster a strong sense of community.
+# LI-Remote
+> [under: TIDE IS A PLACE FOR EVERYONE] Our commitment to a broad spectrum of ideas and backgrounds is what enables us to build products that resonate with our members’ diverse needs and lives.
+> [under: TIDE IS A PLACE FOR EVERYONE] Our inclusive culture is key to our success, helping us build products that meet our members' diverse needs.
+> [under: Disclaimer] - Tide does not work with agencies or recruiters without prior formal engagement, and we do not authorize third parties to make job offers on our behalf.
+> [under: Disclaimer] If you are contacted by anyone misrepresenting Tide or requesting payment, please treat it as fraudulent and report it to us immediately at talent@tide.co
+> [under: Disclaimer] Your safety and trust are important to us, and we are committed to ensuring a fair and transparent recruitment process.
+
+=== 749959
+company: Farm Credit Canada
+title: Senior Product Owner, People Technology and Experience
+options: Regina, Saskatchewan [undeclared]
+description:
+[under: Term Duration (in months)] Salary Range (plus eligible to receive a performance based incentive, applicable to position) :
+[under: Here’s what you can expect when you join our team] - Competitive total rewards packages: market-aligned and performance-based salary and incentive programs, flexible and comprehensive group benefit and savings plans, and well-being support through benefits and wellness programs
+[under: Here’s what you can expect when you join our team] - Hybrid work options
+[under: How you’ll make an impact] Your work will span a diverse portfolio that may include HR platforms, employee devices, meeting-room technology, workplace tools and technology-enabled office initiatives.
+[under: Preferred qualifications] - Experience supporting workplace logistics, facilities, real estate, office construction or renovation initiatives
+[under: Accessibility and accommodations] To support an inclusive and accessible candidate experience, we encourage anyone needing an adjustment or accommodation during any stage of the recruitment process to email us at: TalentSupplyRecherch@fcc-fac.ca.
+
+=== 1309921
+company: 100 Salesforce, Inc.
+title: AI Engineer - Forward Deployed Engineer
+options: Argentina - Buenos Aires [undeclared]
+description:
+[under: You're Our Forward Deployed Engineer If…] - You have 3+ years of software engineering or technical delivery experience, with at least one production system you'd be proud to walk us through ideally in an AI tech stack, full-stack development, or working with frontier models
+[under: Nice-to-Haves] Recruiting, hiring, and promotion decisions at Salesforce are fair and based on merit.
+
+=== 1322118
+company: SimCorp India LLP
+title: Lead Software Engineer
+options: Noida [hybrid]
+description:
+# WHAT MAKES US, US
+# WHY THIS ROLE IS IMPORTANT TO US
+[under: WHY THIS ROLE IS IMPORTANT TO US] As a Lead Software Engineer, you will become part of the Valuation & Market Data product area within SimCorp's Product Division, responsible for delivering functionality that enables clients to make investment decisions with our back-office applications.
+[under: WHY THIS ROLE IS IMPORTANT TO US] The Valuation & Market Data product area consists of four teams spread across several geographical locations.
+[under: WHAT WE VALUE] - Ability work in a hybrid setup (virtual and physical work environments)
+[under: WHAT WE VALUE] - Comfortable working/collaborating within a team primarily based in Europe.
+[under: BENEFITS] Therefore, in addition to the traditional benefit scheme, we provide a good work-life balance: flexible working hours and a hybrid model.
+[under: BENEFITS] Simcorp follows a global hybrid policy, asking employees to work from the office two days each week while allowing remote work on other days.
+[under: NEXT STEPS] Please send us your application in English via our career site as soon as possible, we process incoming applications continually.
+[under: NEXT STEPS] Thank you for aiding us in our endeavor to mitigate biases in our recruitment process.
+[under: WHO WE ARE] Li-Hybrid
+
+=== 1044102
+company: Royal Canin S.A.S
+title: SAP GRC Senior Lead
+options: BRA-Sao Paulo-Guararema [undeclared]
+description:
+[under: SAP GRC Senior Lead] Step into a high-impact leadership role as SAP GRC Senior Lead within Mars Global Services, our shared services division, and help shape the future of Mars Inc. through our Digital Core transformation.
+[under: SAP GRC Senior Lead] The Digital Core is Mars’ strategic initiative to modernize and unify our SAP landscape, leveraging S/4HANA on RISE to drive operational excellence, security, and compliance across our global business.
+[under: What are we looking for?] - Deep knowledge of SAP security role-based access controls, IT General Computer Controls, segregation of duties, sensitive access risks, and mitigating controls
+
+=== 225964
+company: bjakcareer
+title: Technical Lead
+options: Sweden [remote]
+description:
+[under: About Doit] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: About Doit] We have teams working around the world, with over 20 nationalities and growing from our offices and remotely.
+[under: About Doit] Join us and build a better future for our society.
+[under: About Doit] In 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About Doit] Today, it's the leading insurance platform in Southeast Asia.
+[under: The Role] Doit builds technology products used by millions of users across Southeast Asia.
+[under: Nice to have] - Experience operating across multiple products, markets or countries.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 409007
+company: offchainlabs
+title: Senior Penetration Tester (AWS)
+options: Remote [remote]
+description:
+[under: Nice-to-haves] - Web3 / blockchain security exposure: smart contract auditing, bug bounty hunting (e.g., Immunefi, Code4rena), or DeFi protocol review.
+[under: Perks] - Remote-first global workforce + NY office
+[under: Perks] - Medical, dental & vision coverage (US + some other countries)
+[under: Perks] - 401k retirement plan + company match (US only)
+[under: Perks] - Home office set up / ergonomic equipment program
+
+=== 146768
+company: StackAdapt
+title: Senior Quality Engineer
+options: Canada; United States [remote]
+description:
+StackAdapt is a remote-first company; we are open to candidates located anywhere in North America for this position.
+[under: What You'll Bring to the Table] - Strong understanding of scalable system design for web-based APIs and backend processing systems
+> The compensation range listed for this role reflects the expected base salary for candidates located in the posting country based on a global rate.
+> StackAdapt maintains different compensation ranges for roles across other countries and regions, and final offers will be aligned to the candidate’s current location.
+> [under: Factors Influencing Final Compensation] Canada Base Salary Band
+> [under: Factors Influencing Final Compensation] USA Base Salary Band
+> [under: StackAdapter's Enjoy] - Retirement/ 401K/ Pension Savings globally
+> [under: StackAdapter's Enjoy] - Optional global WeWork membership for those who want a change from their home office and hubs in London and Toronto
+> [under: StackAdapter's Enjoy] Please note: Benefits and perks may vary depending on your country of employment and the nature of your engagement.
+> [under: StackAdapter's Enjoy] In locations where StackAdapt does not have a legal entity, employment and benefits are administered in accordance with local regulations and partner policies.
+> [under: StackAdapter's Enjoy] No matter who you are, where you are from, who you love, follow in faith, disability, superpower status, ethnicity, or the gender you identify with (if you’re comfortable, let us know your pronouns), you are welcome at StackAdapt.
+> [under: StackAdapter's Enjoy] If you require an accommodation, please let us know.
+> [under: StackAdapter's Enjoy] We use artificial intelligence (AI) to streamline the resume reviews of candidates and assess their fit based on the criteria outlined in the job posting.
+> [under: About StackAdapt] 2026 Best Workplaces for Young Talent and in Canada by Great Place to Work
+> # LI-REMOTE
+
+=== 226154
+company: bjakcareer
+title: Technical Product Lead - AI Finance App
+options: Spain [remote]
+description:
+[under: About KIRA] In 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About KIRA] Today, it's the leading insurance platform in Southeast Asia.
+[under: About KIRA] Today, we are expanding ways to help people in Asia and it includes spending, saving, investing, exchanging, travelling, and more.
+[under: About KIRA] We believe AI will help us achieve this in our generation.
+[under: About KIRA] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: About KIRA] We have teams working around the world, with over 20 nationalities and growing from our offices and remotely.
+[under: About KIRA] Join us and build a better future.
+[under: The Role] KIRA is building a AI Finance Superapp for Southeast Asia across payments, remittance, insurance, wealth, and trading.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 190786
+company: DYOPATH
+title: Systems Engineer I
+options: Remote [remote]
+description:
+[under: Why You’ll Love Working Here] - Room to Engineer Your Future: Build hands-on experience with servers, system maintenance, remote support, security updates, and infrastructure operations.
+[under: Role Overview] - Location: Remote
+# This role is open to applicants in Mexico only.
+> DYOPATH recruits and hires without regard to age, color, disability, gender, gender identity, genetic information, marital status, military status, national origin, race, religion, sexual orientation, veteran status, or any other legally protected characteristic.
+
+=== 326464
+company: pencil
+title: Lead Technical Program Manager - Remote
+options: USA [remote] | Canada [remote]
+description:
+Remote, based in Canada, the US or LATAM, with regular working-hours overlap with our London-based teams.
+[under: Benefits] - Remote — work from anywhere in your home country within Canada, the US or LATAM.
+[under: Benefits] - Access to our Pencil office in The Shard, London, when you're there.
+[under: About The Brandtech Group] The Brandtech Group's mission is to be the best company in the world at helping leading global brands drive growth by connecting content, data and media using technology.
+[under: About The Brandtech Group] Today it generates more than $1BN in revenue and is a leading global digital content partner for many of the world's biggest brands and companies, often using its unique in-housing model.
+[under: About The Brandtech Group] It works with a majority of the world's top global advertisers.
+
