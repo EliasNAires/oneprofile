@@ -1,0 +1,65 @@
+#103 eligibility round 3, commit 53fcaa9, criterion revision 5
+
+latam promises: 33/35 = 94.3% (95% Wilson 81.4%-98.4%); HOLDS (>= 90%)
+latam reach: 84.0% (95% bootstrap 61.0%-100.0%); target 70%, met (not deciding); gate 2: HOLDS (>= baseline 85.5% - 5%)
+latam overall: HOLDS (both gates)
+  labeller raw promises: 33/35 = 94.3% (95% Wilson 81.4%-98.4%); reach: 84.0%
+us promises: 27/35 = 77.1% (95% Wilson 61.0%-87.9%); FAILS (>= 90%)
+us reach: 97.3% (95% bootstrap 92.2%-100.0%); target 90%, met (not deciding); gate 2: HOLDS (>= baseline 100.0% - 5%)
+us overall: FAILS (both gates)
+  labeller raw promises: 27/35 = 77.1% (95% Wilson 61.0%-87.9%); reach: 97.3%
+english promises: 33/35 = 94.3% (95% Wilson 81.4%-98.4%); HOLDS (>= 90%)
+english reach: 78.7% (95% bootstrap 64.5%-94.2%); target 80%, not met (not deciding); gate 2: FAILS (>= baseline 84.2% - 5%)
+english overall: FAILS (both gates)
+  labeller raw promises: 33/35 = 94.3% (95% Wilson 81.4%-98.4%); reach: 78.7%
+  latam promise adjudication: rule 0, labeller 2, neither 0
+  latam eligible-other adjudication: rule 0, labeller 2, neither 0
+  latam rest-cued adjudication: rule 0, labeller 1, neither 0
+  latam rest-plain adjudication: rule 0, labeller 0, neither 0
+  us promise adjudication: rule 0, labeller 8, neither 0
+  us eligible-other adjudication: rule 0, labeller 0, neither 0
+  us rest-cued adjudication: rule 0, labeller 1, neither 0
+  us rest-plain adjudication: rule 0, labeller 0, neither 0
+  english promise adjudication: rule 0, labeller 2, neither 0
+  english eligible-other adjudication: rule 0, labeller 1, neither 0
+  english rest-cued adjudication: rule 0, labeller 4, neither 0
+  english rest-plain adjudication: rule 0, labeller 0, neither 0
+Adjudication patterns:
+  Australian citizenship and clearance required: 1
+    603418:us us promise: rule eligible; labeller excluded; reason must be an Australian citizen; labeller [The description — 9. Citizenship; 10. A security clearance; 12. Every requirement must hold]
+  authorization conditional on role location: 1
+    1468627:us us promise: rule eligible; labeller unknown; reason Pune, India; "Applicants for North American based positions"; labeller [These say nothing — A requirement for some of the company’s roles only]
+  clearance preferred not required: 1
+    691049:us us promise: rule eligible; labeller unknown; reason Active Secret clearance strongly preferred; labeller [These say nothing — What is preferred, prioritised or a plus]
+  domestic hospital office location: 1
+    458401:us us rest-cued: rule not open; labeller open; reason Advocate Lutheran General Hospital - 1775 Dempster St; labeller [The reader verdict — closed: a silent city inside the country reads as open]
+  explicit hiring in Canada: 2
+    332581:english english rest-cued: rule not open; labeller open; reason Remote, based in Canada; labeller [The reader verdict — open; A group’s verdict is the best of its countries’]
+    418095:english english rest-cued: rule not open; labeller open; reason can hire remote candidates ... Arizona ... and Canada; labeller [The reader verdict — open; A group’s verdict is the best of its countries’]
+  explicit hiring locations exclude group: 1
+    1376036:latam latam promise: rule eligible; labeller excluded; reason open to candidates located ... United States ... United Kingdom, and Kenya; labeller [The description — 7. Where the person must be, or the company hires; 8. Work authorization in a country]
+  export authorization alternatives allow foreigners: 2
+    326203:us us promise: rule eligible; labeller unknown; reason London, UK; labeller [The description — required; 9. Citizenship; The options — 2. A remote or undeclared option]
+    326237:us us promise: rule eligible; labeller unknown; reason London, UK; labeller [The description — required; 9. Citizenship; The options — 2. A remote or undeclared option]
+  fully remote from elsewhere: 1
+    409190:english english rest-cued: rule not open; labeller open; reason Vilnius, Lithuania [hybrid]; "Fully remote if you’re based elsewhere"; labeller [The reader verdict — open: the person may be located anywhere; Fully remote if you’re based elsewhere]
+  named country timezone excludes: 1
+    243824:latam latam eligible-other: rule eligible; labeller excluded; reason Based in the EU or New York timezone; "Remote (US)"; labeller [The description — 11. A timezone requirement; 12. Every requirement must hold]
+  office option within group: 1
+    677104:english english rest-cued: rule not open; labeller open; reason Yardley, PA (USA) or Wantage (UK); "office daily"; labeller [The reader verdict — open; A group’s verdict is the best of its countries’]
+  onsite option outside country: 1
+    795151:us us promise: rule eligible; labeller excluded; reason International [onsite]; "US Citizenship Required"; labeller [The options — 1. An onsite or hybrid option; The state — excluded]
+  remote options outside group: 1
+    855457:latam latam eligible-other: rule eligible; labeller unknown; reason TX - Work from home; US state options; labeller [The options — 2. A remote or undeclared option]
+  required regional timezone excludes: 2
+    269221:us us promise: rule eligible; labeller excluded; reason required location in European time zones; labeller [The description — 11. A timezone requirement; 12. Every requirement must hold]
+    269234:us us promise: rule eligible; labeller excluded; reason requires a location within APAC time zones; labeller [The description — 11. A timezone requirement; 12. Every requirement must hold]
+  team geography not hiring requirement: 1
+    677509:latam latam promise: rule eligible; labeller unknown; reason Canada; "remote across North America"; labeller [The description — statement about this vacancy, about where the person must be or where the company hires, and required]
+  undeclared options outside group: 1
+    1504275:english english eligible-other: rule eligible; labeller unknown; reason USA - Dallas, TX; US city options; labeller [The options — 2. A remote or undeclared option]
+  work anywhere company culture: 1
+    214853:latam latam rest-cued: rule not open; labeller open; reason United States (Remote); "remote-first, work-anywhere"; labeller [The reader verdict — open]
+  work anywhere offered as perk: 2
+    272409:english english promise: rule eligible; labeller unknown; reason United States; "Work from anywhere in the Americas"; labeller [These say nothing — Working from anywhere offered as a perk or a culture]
+    272410:english english promise: rule eligible; labeller unknown; reason United States; "Work from anywhere in the Americas"; labeller [These say nothing — Working from anywhere offered as a perk or a culture]

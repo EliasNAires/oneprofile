@@ -1,0 +1,7 @@
+id	latam-rule	latam-reader	us-rule	us-reader	english-rule	english-reader	reason
+1242933	excluded	closed	excluded	closed	eligible	open	Country: Canada
+226204	eligible	open	eligible	open	eligible	open	We hire globally
+300480	eligible	open	unknown	open	eligible	open	You live in a timezone between UTC -6 to UTC+2
+225496	eligible	open	eligible	open	eligible	open	We hire globally
+636298	excluded	closed	eligible	open	excluded	closed	Must be a U.S. citizen
+225939	eligible	open	eligible	open	eligible	open	We hire globally

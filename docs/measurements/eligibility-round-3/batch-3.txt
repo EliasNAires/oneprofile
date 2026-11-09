@@ -1,0 +1,748 @@
+=== 235381
+company: ent-security
+title: Test Engineer, Features
+options: Remote [remote]
+description:
+[under: About Ent] Founded by Lou Manousos and Brandon Dixon, co-founders of RiskIQ (acquired by Microsoft) and the team behind Microsoft Security Copilot, Ent is in production with Global 2000 customers across hospitality, financial services, and defense, and backed by Decibel, Sequoia, Crosspoint Capital, Craft Ventures, Shield Capital, Felicis, and In-Q-Tel.
+[under: How We Work] Every roadmap conversation starts with what a CISO told us last week.
+[under: How We Work] We hire people who share the mission and trust each other to deliver.
+[under: What You’ll Achieve] - Cover the full journey across portal, platform, and endpoint agent — including the APIs and contracts between them, so an upstream break shows up before a consumer hits it.
+[under: Required] - API and contract testing (Pytest, OpenAPI-driven; Postman or similar a plus), with the judgment to anticipate schema-drift risk.
+[under: Our Benefits] - Distributed workplace. While we have positions we hire for in our SF office, we also hire remotely across North America.
+[under: Our Benefits] - Set up your space. A $500 home office stipend when you join as a remote employee.
+
+=== 225521
+company: bjakcareer
+title: Engineering Lead
+options: Vietnam [remote]
+description:
+[under: The Role] BJAK builds technology products used by millions of users across Southeast Asia.
+[under: Nice to have] - Experience operating across multiple products, markets or countries.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 326203
+company: CoreWeave Europe
+title: Principal Engineer
+options: London, UK [undeclared]
+description:
+> Trusted by leading AI labs, startups, and global enterprises, CoreWeave combines superior infrastructure performance with deep technical expertise to accelerate breakthroughs and turn compute into capability.
+[under: About the role] You will define the overarching product and technical strategy, shaping the roadmap for GPU-based simulation alongside product, research, and commercial stakeholders.
+[under: Why CoreWeave?] Come join us!
+[under: Why CoreWeave?] The starting salary will be determined by job-related knowledge, skills, experience, and the market location.
+[under: Why CoreWeave?] In addition to base salary, our total rewards package includes a discretionary bonus, equity awards, and a comprehensive benefits program (all based on eligibility).
+> [under: What We Offer] Benefits may vary by location.
+> [under: Recruitment Agencies] Any unsolicited CVs sent by your company to us – that is to say, in any situation where we have not directly engaged your company in writing to supply candidates for a specific vacancy – will be considered by us to be a “free gift”, leaving us liable for no fees whatsoever should we choose to contact the candidate directly and engage the candidate’s services, and will in no way establish any prior claim by your company to representation of that candidate should the candidate’s details also be submitted by any other party.
+> [under: Export Control Compliance] To conform to U.S. Government export regulations applicable to that information, applicant must either be (A) a U.S. person, defined as a (i) U.S. citizen or national, (ii) U.S. lawful permanent resident (green card holder), (iii) refugee under 8 U.S.C. § 1157, or (iv) asylee under 8 U.S.C. § 1158, (B) eligible to access the export controlled information without a required export authorization, or (C) eligible and reasonably likely to obtain the required export authorization from the applicable U.S. government agency.
+> # Updated privacy notice - UK and EU Job Applications
+> [under: Updated privacy notice - UK and EU Job Applications] When you apply to a job on this site, the personal data contained in your application will be collected by CoreWeave UK Ltd. (“Controller”), which is located at
+> [under: Updated privacy notice - UK and EU Job Applications] Controller’s data protection officer can be contacted at privacy@coreweave.com.
+> [under: Updated privacy notice - UK and EU Job Applications] 6(1)(f) of (i) Regulation (EU) 2016/679 (General Data Protection Regulation (“GDPR”) and (ii) the GDPR as it forms part of the laws of the UK (“UK GDPR”), as necessary for the purposes of the legitimate interests pursued by the Controller, which are the solicitation, evaluation, and selection of applicants for employment.
+> [under: Updated privacy notice - UK and EU Job Applications] Your personal data will be shared with Greenhouse Software, Inc., a cloud services provider located in the United States of America and engaged by Controller to help manage its recruitment and hiring process on Controller’s behalf.
+> [under: Updated privacy notice - UK and EU Job Applications] With respect to transfers originating from the UK or the European Economic Area ("EEA") to a country outside the UK or the EEA, we implement the appropriate transfer mechanism(s) and other appropriate solutions to address cross-border transfers as required by applicable law.
+> [under: Updated privacy notice - UK and EU Job Applications] You may request a copy of the suitable mechanisms we have in place by contacting us at privacy@coreweave.com
+> [under: Updated privacy notice - UK and EU Job Applications] Under the GDPR and the UK GDPR, you have the right to request access to your personal data, to request that your personal data be rectified or erased, and to request that processing of your personal data be restricted.
+> [under: Updated privacy notice - UK and EU Job Applications] In addition, you may lodge a complaint with the relevant supervisory authority: (i) A list of Europe’s data protection authorities can be found here; and (ii) for the UK, this is the Information Commissioner's Office.
+
+=== 262101
+company: resend
+title: Backend Engineer
+options: Europe [remote]
+description:
+This role is fully remote based in Americas or European timezones, with some expected travel for team offsites, conferences, meetups, and more.
+# Read more about how we work, how we hire, and what we value here.
+[under: You will be a great fit if you...] - Communicate clearly in written and spoken English and can consistently work with overlap during Americas working hours
+[under: You will be an exceptional fit if you also...] - Have built and operated services on AWS, using serverless or container-based infrastructure
+[under: What it means to join the team] - Remote work: Work with a fully remote team, with flexibility around shared working hours
+[under: What it means to join the team] - Comp: $140,000 $180,000 USD, commensurate with location and experience
+[under: About Resend] Our fully remote team of 50 spans 15 countries and counting.
+
+=== 1246556
+company: Remitly, Inc.
+title: AI Native Software Engineer II
+options: Seattle, Washington United States [hybrid] | Arlington Virginia, United States [hybrid]
+description:
+[under: Job Description] Since 2011, we've tirelessly delivered on our promise to customers sending money globally, providing secure, simple, and reliable ways to manage their money, ensuring true peace of mind.
+[under: Job Description] Whether it's supporting loved ones back home, growing a business across continents, or pursuing new opportunities abroad, we're not just here to move money— we're here to move our global customers forward.
+[under: Job Description] We're looking for builders, reimaginers, and global thinkers who want to work at the intersection of technology, trust, and transformation.
+[under: Job Description] If that's you and you're ready to do the most meaningful work of your career—we invite you to join over 2,800 passionate Remitlians worldwide who are united by our vision to transform lives with trusted financial services that transcend borders.
+[under: What You Bring] - Understanding of distributed systems tradeoffs and cloud-based infrastructure design
+[under: What You Bring] In the U.S., Remitly employees are shareholders in our Company and equity is part of our total compensation plan.
+[under: Our Connected Work Culture: Driving Innovation, Together] For corporate team members, we have an in-office expectation of at least 50% of the time monthly, typically achieved by coming in three days a week.
+[under: Our Connected Work Culture: Driving Innovation, Together] Managers also have the flexibility to set higher expectations based on their team's specific needs.
+[under: Our Connected Work Culture: Driving Innovation, Together] These intentional in-office moments are vital for deepening relationships, fueling creativity, and ensuring your impact is felt where it matters most.
+
+=== 957749
+company: 00266 Blue Yonder India Private Limited
+title: Staff Software Engineer II - React Native, Mobile App Development, Microservices,& Cloud
+options: Hyderabad [undeclared] | Bangalore [undeclared]
+description:
+[under: What you’ll do] - Hands on develop the mobile and UI applications, which includes building parity with the existing legacy systems and migration of the existing ExtJS based User Interface to newer platforms.
+[under: What we are looking for] - Demonstrable experience with microservices based architecture on Cloud at scale.
+[under: Our Values] Ours unite us.
+
+=== 326485
+company: Credigy
+title: Production Support Engineer
+options: Norcross, GA [undeclared]
+description:
+Please note that we are unable to provide visa sponsorship for this role.
+Candidates must be legally authorized to work in the United States now and in the future without employer sponsorship.
+[under: The Credigy Experience] You’ll also have access to a 401(k) with company match, generous PTO, paid parental leave, volunteer time off through Credigy Cares, and a range of workplace perks designed to support how you work best — from a thoughtfully equipped office environment to the technology and tools that help you do your best work.
+[under: Where & How You’ll Work] This role is based at Credigy’s corporate headquarters in Norcross, GA.
+[under: About Credigy] Founded in 2001, Credigy is a global specialty finance company with flexibility across the capital structure to acquire or finance a broad range of consumer assets.
+[under: About Credigy] We are a wholly-owned subsidiary of National Bank of Canada (NBC) and our $9.1B+ portfolio represents 400+ deals and $32B+ in total investments life-to-date.
+[under: About Credigy] If you haven’t heard of us yet, we’re okay with that — we focus on serving our business partners, not making a name for ourselves.
+[under: About Credigy] What matters to you, matters to us so we go beyond the usual benefits to offer meaningful perks that support professional growth, personal connection, and a life outside the office.
+[under: Equal Opportunity Employer] We are proud to be an Equal Opportunity Employer and commit to ensuring all applicants and employees are considered based on their qualifications and merit, without regard to race, ethnicity, religion, national origin, sex, sexual orientation, gender identity, age, veteran status, citizenship, disability, pregnancy, or any other status protected by law.
+> Founded in 2001, Credigy is a global specialty finance company with flexibility across the capital structure to acquire or finance a broad range of consumer assets.
+> We are a wholly-owned subsidiary of National Bank of Canada (NBC) and our $9.1B+ portfolio represents 400+ deals and $32B+ in total investments life-to-date.
+> If you haven’t heard of us yet, we’re okay with that — we focus on serving our business partners, not making a name for ourselves.
+> What matters to you, matters to us so we go beyond the usual benefits to offer meaningful perks that support professional growth, personal connection, and a life outside the office.
+> We are proud to be an Equal Opportunity Employer and commit to ensuring all applicants and employees are considered based on their qualifications and merit, without regard to race, ethnicity, religion, national origin, sex, sexual orientation, gender identity, age, veteran status, citizenship, disability, pregnancy, or any other status protected by law.
+
+=== 1153364
+company: Nanyang Technological University
+title: Research Associate (Computer Science)
+options: NTU Main Campus, Singapore [undeclared]
+description:
+Young and research-intensive, Nanyang Technological University, Singapore (NTU Singapore) is ranked among the world’s top universities.
+Located in the heart of Asia, NTU’s College of Computing and Data Science is an exciting place to learn and grow.
+[under: Key Responsibilities] - Engineer software based on the research outcomes of the project and distribute this on the group’s web.
+
+=== 371639
+company: bounteous
+title: Senior Full Stack Engineer
+options: Mexico [remote]
+description:
+Bounteous is a global AI Services firm where agentic engineering and human experience converge to deliver transformative business outcomes for the enterprise.
+With more than 5,000 team members worldwide, Bounteous delivers AI that sticks, powering adoption and outcomes that move organizations from experimentation to true transformation.
+Bounteous is backed by New Mountain Capital, a New York-based growth-oriented investment firm that emphasizes business building.
+# Contract
+# Location: Mexico, Canada
+[under: Must-Have Skills] - Node.js: Backend/service development, REST APIs, asynchronous programming, authentication/authorization, error handling, and logging.
+[under: Information Security Responsibilities] We invite you to stay connected with us by subscribing to our monthly job openings alert here.
+
+=== 481207
+company: American National Red Cross
+title: Service to the Armed Forces (SAF) Specialist, Mobile
+options: Virginia Beach, VA [onsite]
+description:
+# Join us—Where your Career is a Force for Good!
+# WHY CHOOSE US?
+[under: WHY CHOOSE US?] You align your life’s work with an ongoing mission that’s bigger than all of us.
+[under: Where Your Career is a Force for Good!] The American Red Cross is currently seeking a Mobile SAF-IS Regional Program Specialist at the Naval Station Oceana Base and surrounding area to support the Service to Armed Forces mission.
+[under: Where Your Career is a Force for Good!] This position is regional, but also part of our mobile staff which requires meeting strict medical and security clearances prior to employment.
+[under: Where Your Career is a Force for Good!] In this role worldwide deployment is a condition of employment.
+[under: Where Your Career is a Force for Good!] Relocation assistance is only available for current employees within a 50-mile radius within the division.
+[under: Where Your Career is a Force for Good!] Remote work is not available for this position; on‑site attendance is required.
+[under: WHAT YOU NEED TO KNOW] Manages and administers the delivery of American Red Cross services to meet the needs of United States military members, veterans, and their families in accordance with Red Cross policies and procedures.
+[under: WHAT YOU NEED TO KNOW] Also responsible for the management and administration of American Red Cross Service to the Armed Forces (SAF) and International Services (IS) U.S. programs and services to include International Humanitarian Law (IHL), Youth Action Campaign (YAC), and Restoring Family Links (RFL), within their area of jurisdiction.
+[under: Mobile Deployment Readiness and Operational Support] - Support U.S. military operations across the Middle East, Africa, and Eastern Europe.
+[under: Mobile Deployment Readiness and Operational Support] - Maintain full deployment readiness, including required medical clearances, training certifications, and security standards.
+[under: Physical Requirements] Physical requirements are those present in normal office environment conditions.
+[under: Physical Requirements] Ability to use a personal computer, applicable software, and office equipment for sustained periods of time.
+[under: Physical Requirements] In addition to routine job responsibilities, employees may be assigned to deployment activities that require the ability to safely perform the physical demands associated with domestic and international travel and work in austere, remote, or resource-limited environments.
+[under: Mobility Requirements] - U.S. citizenship is required. Must be able to obtain a secret security clearance and a no-fee U.S. passport.
+[under: Mobility Requirements] - Worldwide mobility is a condition of employment and an essential function of this position. The ability to meet the medical and physical requirements for deployment to any international installation where the American Red Cross supports U.S. military operations is a condition of employment and an essential function of this position. Must accept work assignments anywhere in the world, including conflict areas, where the American Red Cross is providing services to members of the military and their families.
+[under: Mobility Requirements] - Must meet strict medical and physical requirements, including immunizations required by the U.S. military (including physical examination, laboratory testing, hearing, vision, and dental examination, and required immunizations). May be required to wear military uniforms and live and work in harsh and stressful environment in conflict areas.
+[under: BENEFITS FOR YOU] As a mission-based organization, we believe our team needs great support to do great work.
+[under: BENEFITS FOR YOU] - PTO: Starting at 15 days a year; based on type of job and tenure
+
+=== 1056315
+company: Medline Industries India Pvt. Ltd.
+title: Senior Administrator - SAP BASIS - 2213
+options: Pune [undeclared]
+description:
+# About Medline India
+[under: About Medline India] Medline India was setup in 2010 in Pune, primarily as an offshore Development centre and to augment resources for Medline Industries LP headquartered in Chicago, USA.
+[under: About Medline India] We are a 1500+ strong and growing team of technology, finance & and business support professionals who support our businesses worldwide towards a mission to make healthcare run better.
+[under: About Medline India] We are proud to be certified as a ‘Great Place to Work’ by the Great Place to Work Institute (India) for the duration May 2023 – May 2024.
+[under: About Medline Industries, LP] Established in 1966, Medline Industries LP is a renowned global healthcare organization boasting 56 years of consecutive sales growth, exceeding $21 billion in annual sales.
+[under: About Medline Industries, LP] With a workforce of over 36,000 professionals spread across the globe, we operate in more than 125 countries and territories.
+[under: About Medline Industries, LP] As the largest privately held manufacturer and distributor of medical supplies in the United States, Medline is uniquely positioned to offer comprehensive products, education, and support across the continuum of care.
+[under: About Medline Industries, LP] Our clientele includes hospitals, extended care facilities, surgery centres, physician offices, home care agencies, providers, and retailers.
+[under: About Medline Industries, LP] We are proud to be recognized by Forbes as one of America’s Best Large Employers and Best Employers for Women.
+[under: About Medline Industries, LP] Additionally, the Chicago Tribune has consistently named us a Top Workplace for the past 12 years.
+
+=== 1131037
+company: neso.wd103/careers
+title: Lead Architect - Control Centre Ops
+options: Warwick, CV34 6DA [undeclared] | Wokingham - St Catherine's Lodge [undeclared]
+description:
+[under: About the Role] This role can be based from Wokingham, Warwick, Glasgow, and we continue to offer hybrid working from office and home as well as flexible working arrangements.
+[under: About the Role] This role is designated as requiring a National Security Vetting (NSV) clearance.
+[under: About the Role] You will usually need to have been a resident in the UK for the last five years to apply for the required level of clearance.
+[under: About the Role] We would invite any applicants who do not currently meet this residency requirement to still express an interest in the role.
+[under: Leadership, Coaching & Capability Building] Applicants must have the right to work in the UK by the start of employment.
+[under: Leadership, Coaching & Capability Building] Visa sponsorship may not be available for this role and will be considered in line with business requirements.
+[under: Desirable Experience] - Exposure to hybrid IT/OT architectures and legacy modernisation.
+# About Us
+[under: About Us] National Energy System Operator (NESO) recognises the potential of bright and talented individuals, and we encourage you to join us as Great Britain’s energy system undergoes an ambitious, exciting, and vital transformation.
+
+=== 320570
+company: Cambridge Mobile Telematics
+title: Principal Technical Program Manager
+options: Cambridge, MA [undeclared]
+description:
+Your leadership will ensure the timely and efficient delivery of our technology to partners and customers, impacting and enhancing safety on a global scale.
+CMT is looking for a Principal Technical Program Manager I to help us change the world.
+CMT has helped protect over 65 million drivers and prevent over 126,000 crashes worldwide.
+[under: Nice to Haves] - Experience translating customer requirements or contractual commitments into coordinated engineering, product, and delivery plans, then driving the program through delivery
+[under: Nice to Haves] - Demonstrated success leading distributed teams across time zones and organizational boundaries
+[under: Compensation and Benefits] - Fair and competitive salary based on skills and experience, and annual performance bonus
+[under: Additional Perks] - Join an industry leader — 65 million drivers protected, powering 140+ programs across 25 countries
+[under: Commitment to Diversity and Inclusion] We do not discriminate based on race, religion, color, national origin, gender, sexual orientation, age, marital status, veteran status or disability state.
+[under: Commitment to Diversity and Inclusion] To learn more, visit www.cmtelematics.com and follow us on Instagram @cmt.ai
+[under: About Cambridge Mobile Telematics] To date, CMT’s technology has helped prevent over 126,000 crashes worldwide.
+[under: About Cambridge Mobile Telematics] Headquartered in Cambridge, MA, CMT operates globally with offices in Budapest, Hungary; Chennai, India; Seattle, Washington; Tokyo, Japan; and Zagreb, Croatia.
+
+=== 250589
+company: mimica
+title: Staff/Senior Backend Engineer (Node.js)
+options: London [remote] | Netherlands [remote] | Germany [remote] | Warsaw [remote] | Edinburgh [remote] | Czech Republic [remote] | Brazil [remote] | Dublin [remote] | Amsterdam [remote] | London [remote] | Lisbon [remote] | Barcelona [remote] | Toronto [remote] | Poland [remote]
+description:
+[under: Our team] Behind our platform is a team of exceptionally talented people, remote-first and globally distributed across 16+ countries.
+[under: Our approach to engineering] - We work in small, project-based teams
+# Location
+[under: Location] This is a fully remote position.
+[under: Location] You can be based anywhere in the UK, Americas, or Europe within a UTC-6 to UTC+1 timezone.
+[under: What we offer] Distributed work: Work from anywhere - fully remote, in our hubs, or a mix.
+[under: What we offer] Company-issued laptop, remote setup stipend, and co-working budget
+[under: What we offer] Flexible schedules and location
+[under: Health & retirement benefits] Note: Some benefits may vary depending on location and role
+
+=== 226054
+company: bjakcareer
+title: Technical Product Manager - AI Stockbroking App
+options: Philippines [remote]
+description:
+[under: About KIRA] In 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About KIRA] Today, it's the leading insurance platform in Southeast Asia.
+[under: About KIRA] Today, we are expanding ways to help people in Asia and it includes spending, saving, investing, exchanging, travelling, and more.
+[under: About KIRA] We believe AI will help us achieve this in our generation.
+[under: About KIRA] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: About KIRA] We have teams working around the world, with over 20 nationalities and growing from our offices and remotely.
+[under: About KIRA] Join us and build a better future.
+[under: The Role] KIRA is building a AI Stockbroking Superapp for Southeast Asia across payments, remittance, insurance, wealth, and trading.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 255422
+company: openai
+title: Applied AI Engineer, Government, International
+options: London, UK [hybrid]
+description:
+[under: About the Role] You’ll partner with their technical teams, subject matter experts, regional cloud providers, systems integrators, and implementation partners to move from prototype through production.
+[under: About the Role] You will collaborate closely with regional Sales and Solutions Engineering, Global Affairs, Applied Research, Product, Legal, and Security teams.
+[under: About the Role] This role is based in London.
+[under: About the Role] We use a hybrid work model of 3 days in the office per week and offer relocation assistance to new employees.
+[under: You will thrive in this role if you] - Bring substantial technical consulting or hands-on delivery experience with international public-sector or similarly regulated customers, bridging regional technical teams and senior stakeholders.
+[under: You will thrive in this role if you] - Understand network and cloud architecture, including on-premise deployments, and show practical judgment about privacy, data residency, model-inference location, sovereign or regulated environments, identity, procurement, and customer authorization.
+[under: You will thrive in this role if you] - Are an effective and polished communicator who can translate business and technical topics to all audiences, including cross-cultural communication with public-sector executives, regional delivery partners, and legal/security stakeholders.
+[under: You will thrive in this role if you] - Can work with stakeholders in the target region's business hours and travel when required for customer delivery.
+[under: You will thrive in this role if you] - Existing UK Developed Vetting (DV) clearance is strongly preferred, particularly for work with UK intelligence and defense customers.
+[under: About OpenAI] Background checks for applicants will be administered in accordance with applicable law, and qualified applicants with arrest or conviction records will be considered for employment consistent with those laws, including the San Francisco Fair Chance Ordinance, the Los Angeles County Fair Chance Ordinance for Employers, and the California Fair Chance Act, for US-based candidates.
+[under: About OpenAI] OpenAI Global Applicant Privacy Policy
+[under: About OpenAI] At OpenAI, we believe artificial intelligence has the potential to help people solve immense global challenges, and we want the upside of AI to be widely shared.
+[under: About OpenAI] Join us in shaping the future of technology.
+
+=== 225889
+company: bjakcareer
+title: Staff Software Engineer
+options: Ireland [remote]
+description:
+[under: About Doit] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: About Doit] We have teams working around the world, with over 20 nationalities and growing from our offices and remotely.
+[under: About Doit] Join us and build a better future for our society.
+[under: About Doit] In 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About Doit] Today, it's the leading insurance platform in Southeast Asia.
+[under: The Role] Doit builds technology products used by millions of users across Southeast Asia.
+[under: Nice to have] - Experience operating across multiple products, markets or countries.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 224841
+company: bjakcareer
+title: Engineering Manager - Stock Trading App
+options: Singapore [remote]
+description:
+[under: About BJAK] Started in 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About BJAK] Today, its the leading insurance platform in Southeast Asia.
+[under: About BJAK] Today, we are expanding ways to help people in the region — this includes spending, saving, investing, exchanging, travelling, and more.
+[under: About BJAK] We have teams working around the world, with over 20 nationalities from our offices and remotely, who truly enjoys their work.
+[under: About BJAK] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: The Role] We are looking for an Engineering Manager to lead a high-performing engineering team building and scaling products used by millions of users across the region.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 1424148
+company: troweprice.wd5/trowepriceinternational
+title: Senior Business Analyst - Fixed Income Technology
+options: London, Warwick Court [hybrid]
+description:
+As a premier global asset management organization with more than 85 years of experience, we provide investment solutions and a broad range of equity, fixed income, and multi-asset capabilities to individuals, advisors, institutions, and retirement plan sponsors.
+Join us for the opportunity to grow and make a difference in ways that matter to you.
+[under: Overview] Members of the team partner with front office engineering teams to deliver high quality software products to investment staff.
+[under: Preferred Qualifications/Experience] - Systems analysis or experience working with and analyzing data for Front Office functions
+[under: Work Flexibility] This position is eligible for hybrid working with up to three day from home per week.
+[under: Commitment to Diversity, Equity, and Inclusion] The backgrounds, talents, and experiences of our global associates allow us to embrace new ideas and perspectives that move our business priorities forward and enable us to deliver strong client outcomes.
+[under: Commitment to Diversity, Equity, and Inclusion] We believe our continued success depends upon the equal treatment of all associates and applicants for employment without discrimination on the basis of race, religion, creed, colour, national origin, sex, gender, age, mental or physical disability, marital status, sexual orientation, gender identity or expression, citizenship status, military or veteran status, pregnancy, or any other classification protected by country, federal, state, or local law.
+
+=== 691049
+company: DINE SOURCE LLC
+title: Mainframe Solutions Architect
+options: Remote [remote]
+description:
+Red Canyon Technologies is seeking a Mainframe Solutions Architect to serve as the primary technical authority on mainframe and legacy system modernization engagements under the DISA Reforged contract.
+# *This position is contingent upon contract award.*
+[under: Responsibilities] - Support and tune DB2 for z/OS environments (connectivity, performance, backup/recovery coordination, and operational support) and CICS regions including configuration, performance tuning, and outage resolution.
+[under: Responsibilities] - Design solution architectures for modernization scenarios including code refactoring, rehosting, API enablement, hybrid cloud integration, and workload offloading.
+[under: Qualifications] - Active Secret clearance strongly preferred.
+[under: Qualifications] - Familiarity with hybrid cloud architectures and their intersection with mainframe environments (IBM z/OS Connect, cloud-native integration, workload offloading).
+[under: Preferred] - Active TS/SCI clearance.
+# About Us
+[under: EEO Statement] This contractor and subcontractor shall abide by the requirements of 41 CFR 60-1.4(a), 60-300.5(a) and 60-741.5(a).
+[under: EEO Statement] These regulations prohibit discrimination against qualified individuals based on their status as protected veterans or individuals with disabilities, and prohibit discrimination against all individuals based on their race, color, religion, sex, sexual orientation, gender identity, national origin, or for inquiring about, discussing, or disclosing information about compensation, or any other basis prohibited by law.
+
+=== 224357
+company: bjakcareer
+title: Staff Software Engineer
+options: Seoul, Korea [remote]
+description:
+[under: The Role] BJAK builds technology products used by millions of users across Southeast Asia.
+[under: Nice to have] - Experience operating across multiple products, markets or countries.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 405678
+company: mactores
+title: AWS DevOps Engineer (Freelancer)
+options: Mumbai, MH [remote]
+description:
+Forward-deployed engineers own the rest: architecture, judgment, and cutover, on dates we commit to in the contract.
+Customers come to us with hand-built environments, release cycles that depend on heroics, and big data workloads that outgrew their monitoring years ago.
+[under: How we work?] This is a remote freelance engagement, so we'll be straight about the shape: you work project-by-project inside that model, with Aedeon absorbing the repetitive layer so your time goes to infrastructure judgment, not checklist work.
+[under: Pre-Employment Assessment] We don't discriminate based on race, religion, gender, national origin, age, disability, marital status, military status, genetic information, or any other category protected by federal, state, and local laws.
+
+=== 247459
+company: lightspeedhq
+title: Staff Technical Program Manager - PDLC
+options: Montreal [hybrid]
+description:
+[under: Evolve the model] - Treat the framework as a living system review it periodically and adjust based on what's actually working.
+[under: What you need to bring] - As a global company with employees and clients outside of Quebec, fluency in English as a working language is required for this position
+[under: You’ll enjoy] - Flexible paid time off and remote work policies
+[under: You’ll enjoy] We invest in you with continuous learning opportunities, global mobility and benefits designed to support you—all within a driven, diverse and inclusive team that’s passionate about empowering our communities.
+[under: Who we are] Powering the businesses that are the backbone of the global economy, Lightspeed's one-stop commerce platform helps merchants innovate to simplify, scale, and provide exceptional customer experiences.
+[under: Who we are] Our cloud commerce solution transforms and unifies online and physical operations, multichannel sales, expansion to new locations, global payments, financial solutions, and connection to supplier networks.
+[under: Who we are] Founded in Montréal, Canada in 2005, Lightspeed is dual-listed on the New York Stock Exchange (NYSE: LSPD) and Toronto Stock Exchange (TSX: LSPD).
+[under: Who we are] With teams across North America, Europe, and Asia Pacific, the company serves retail, hospitality, and golf businesses in over 100 countries.
+
+=== 414076
+company: quantinuum
+title: Advanced Software Engineer – Hybrid Quantum-HPC Orchestration - 860
+options: Singapore [hybrid]
+description:
+We are seeking a talented and innovative Software Engineer/Developer to design and develop a hybrid workflow orchestrator between Quantinuum quantum processors and classical supercomputing resources in Singapore.
+[under: Key Responsibilities] - Design & Development: Build and maintain scalable orchestration software to manage hybrid quantum-classical workflows.
+[under: Key Responsibilities] - System Reliability: Ensure high availability, monitoring, and debugging of distributed hybrid systems.
+[under: Required Qualifications] With active engagements spanning pharmaceuticals, material science, financial services, government, industrial sectors, and leading academic and research institutions worldwide, we are helping organizations unlock the transformative potential of quantum computing.
+[under: Required Qualifications] Our global team of more than 800 employees includes many of the world's leading scientists, engineers, and researchers, with more than 70% of our technology team holding advanced degrees at the Master's or PhD level.
+[under: Required Qualifications] Headquartered in Broomfield, Colorado, Quantinuum operates across the United States, United Kingdom, Germany, Japan, and Singapore.
+[under: Equal Opportunity Employer] If you require any reasonable adjustments at any stage of the application or interview process, please let us know use the Lets talk contact form.
+
+=== 265114
+company: secureframe
+title: Staff Software Engineer
+options: New York, NY [hybrid]
+description:
+With a robust portfolio of products that safeguard thousands of businesses worldwide, we have been featured in major publications such as Forbes’ next billion dollar startups, TechCrunch, and The Wall Street Journal for our transformative impact on the way companies achieve and maintain compliance standards.
+Secureframe is backed by top VCs including Kleiner Perkins, Accomplice, Gradient Ventures (Google’s AI Fund), BoxGroup, Village Global, and many more.
+Secureframe highly values having employees working in-office to foster a collaborative work environment and company culture.
+For office-based employees (employees who live within a defined radius of a Secureframe office), Secureframe considers working in the office, approximately 30% of the time under current policy, to be an essential function of the employee's role.
+
+=== 206517
+company: Ripple
+title: Senior Manager, Marketing Analytics
+options: San Francisco, CA, United States [hybrid]
+description:
+> Through our crypto solutions for financial institutions, businesses, governments and developers, we are improving the global financial system and creating greater economic fairness and opportunity for more people, in more places around the world.
+> If you’re ready to see your impact and unlock incredible career growth opportunities, join us, and build real world value.
+> For positions that will be based in CA, the annual salary range for this position is below.
+> Actual salaries may vary based on numerous factors including, among other things, an individual applicant’s experience and qualifications for the position.
+> [under: WHO WE ARE] - In-office collaboration for moments that matter is important to our culture, and we give managers and teams the flexibility to decide which 10+ days a month they come in.
+> [under: WHO WE ARE] - Generous wellness reimbursement and weekly onsite & virtual programming
+> [under: WHO WE ARE] We do not discriminate against qualified employees or applicants because of race, color, religion, gender identity, sex, sexual identity, pregnancy, national origin, ancestry, citizenship, age, marital status, physical disability, mental disability, medical condition, military status, or any other characteristic protected by local law or ordinance.
+> [under: WHO WE ARE] Please find our California, UK/EU, Singapore, DIFC, ADGM, Australia, and Switzerland Applicant Privacy Notice for reference.
+
+=== 275143
+company: wayve
+title: Senior/Staff Data Scientist
+options: Sunnyvale, California USA [hybrid]
+description:
+Before the detail, here's the challenge you'd help us solve.
+[under: Your day-to-day] - Map the driving competencies required in each region, quantifying their complexity and frequency using traffic data and real-world observations.
+[under: What you’ll be working on] - Scenario coverage and scaling: Create a framework to prioritize combinations of ODD conditions and behavioral competencies, optimizing data collection and identifying the minimum data slices needed to support safe, predictable performance in new regions.
+[under: More about Wayve] Wayve’s mapless and hardware agnostic AI platform integrates with global OEM partners, enabling continuous software evolution and unlocking advanced levels of automation from L2 plus through to L4 as our core AI model scales.
+[under: More about Wayve] In a race increasingly defined by intelligence and real world learning, Wayve is taking a distinct approach, building a generalisable driving intelligence that can power any vehicle, anywhere.
+# How we work - Locations & Flexible Working
+# This is a full-time role based in Sunnyvale, CA, with a hybrid working model.
+[under: This is a full-time role based in Sunnyvale, CA, with a hybrid working model.] We operate a hybrid working model that combines in-person collaboration in our dedicated office spaces with focused time working remotely.
+# What’s in it for you (Location dependant)
+[under: What’s in it for you (Location dependant)] Relocation support and visa sponsorship where applicable
+[under: What’s in it for you (Location dependant)] Hybrid working, core hours and the chance to work hands on in vehicle workshops and labs
+[under: What’s in it for you (Location dependant)] At Wayve we're committed to creating a diverse, fair and respectful culture that is inclusive of everyone based on their unique skills and perspectives, and regardless of sex, race, religion or belief, ethnic or national origin, disability, age, citizenship, marital, domestic or civil partnership status, sexual orientation, gender identity, veteran status, pregnancy or related condition (including breastfeeding) or any other basis as protected by applicable law.
+[under: What’s in it for you (Location dependant)] To learn more about what drives us, visit Values at Wayve
+[under: What’s in it for you (Location dependant)] However, we do look to capture information about care responsibilities, and disabilities among other diversity information as part of an optional DEI Monitoring form to help us identify areas of improvement in our hiring process and ensure that the process is inclusive and non-discriminatory.
+
+=== 330102
+company: spade
+title: Data Scientist - AI/ML (Mid & Sr Levels)
+options: Remote (US/Canada) [remote]
+description:
+[under: What is Spade?] Spade is a data and AI platform that turns messy transaction strings into structured, verified records — and gives teams the tools to act on it across authorization, attribution, analytics, and AI initiatives.
+[under: What is Spade?] We’re a lean and execution-oriented hybrid team, passionate about building exceptional products for our growing customer base.
+[under: The Opportunity] As a Data Scientist, you'll build the real-time ML/AI systems that power how top fintechs and financial institutions understand every transaction: from traditional ML and NLP models to AI agents, all running on our proprietary merchant, location, and transaction datasets.
+[under: Must Have] - Are able to work remotely within the US or Canada. We are also open to NYC-based candidates who would prefer to work hybrid (2 days/week) out of our Flatiron HQ.
+[under: Nice to have] - Fintech experience — especially transaction, merchant, or location data
+[under: Benefits at Spade] - Comprehensive Health Benefits. 100% paid medical, mental, dental, and vision premium option plus One Medical membership (for US-based employees).
+[under: Benefits at Spade] - Flexible In-Person Culture. NYC HQ (hybrid and dog-friendly) with remote opportunities for certain roles in US/Canada.
+[under: Diversity & Inclusion at Spade] We believe that having people with different backgrounds, experiences, abilities, and perspectives not only helps us build the best products for our customers, but also helps us be the best version of ourselves.
+
+=== 1468654
+company: Esko-Graphics India Private Limited
+title: Senior AI Platform Engineer - Knowledge & Reasoning
+options: CZE - Remote [remote] | Lodz, Poland [remote] | Poznań, Poland [remote] | Prague, Czechia [remote] | Warsaw, Poland [remote] | Gdansk, Poland [remote] | York, United Kingdom [remote] | Bucharest, Romania [remote] | Budapest, Hungary [remote] | Krakow, Poland [remote] | Constanța, Romania [remote] | Sint-Denijs-Westrem, Belgium [remote] | Londonderry, United Kingdom [remote] | Brașov, Romania [remote] | Timișoara, Romania [remote]
+description:
+[under: Senior AI Platform Engineer - Knowledge & Reasoning] Location: Prague (Hybrid); Czech Republic (Remote); UK (Remote); Ghent (Hybrid), Poland (Remote), Hungary (Remote), Romania (Remote)
+[under: About the role] The Esko AI team is a group of specialists focused on leveraging AI to solve valuable and often challenging customer problems that have historically resisted automation via purely rule-based approaches.
+[under: What We Offer] Create unique technology solutions for the packaging value chain, bring new ideas to life, make and influence decisions, and experience career growth, rewards, and recognition in our global Packaging & Color organizations.
+[under: What We Offer] Veralto is a $5B global leader in essential technology solutions made up of over 16,000 associates across our Water Quality and Product Identification segments all united by a powerful purpose: Safeguarding the World’s Most Vital Resources.
+[under: LI-SP1] LI-Remote
+[under: Unsolicited Assistance] No fee will be paid in the event the candidate is hired by Veralto and its companies because of the unsolicited referral.
+
+=== 491678
+company: Arriva London North Limited
+title: IT Infrastructure Engineer
+options: Cross Country [hybrid]
+description:
+[under: IT Infrastructure Engineer] Location: Birmingham / Hybrid | Network-wide collaboration 12-Month FTC
+[under: IT Infrastructure Engineer] At CrossCountry, our timetable sits at the heart of everything we do — connecting communities across the length and breadth of the UK.
+[under: IT Infrastructure Engineer] We’re proud of the service we provide to our passengers, and we’re now looking for an Infrastructure Engineer / Systems Administrator to join us to join us on a 12-Month FTC, supporting the day-to-day operation and routine maintenance and optimisation of CrossCountry Trains’ IT technology tools and utilities.
+[under: The Role] As Infrastructure Engineer / Systems Administrator, you’ll be responsible for the maintenance and administration of CrossCountry’s M365 stack and all supporting tools and utilities, ensuring they are fit for purpose and enhance productivity whilst protecting business data and managing Azure AD, authentication policies and role-based access controls
+
+=== 398501
+company: jobgether
+title: Senior Security Engineer - xStocks
+options: Brazil [remote]
+description:
+Our partner is looking for a Senior Security Engineer – xStocks based in Brazil.
+Join a globally distributed engineering team building secure infrastructure for tokenized real-world assets and blockchain-based financial products.
+You will take ownership of security initiatives from threat modeling and penetration testing to smart contract audits and incident response.
+[under: Accountabilities] - Lead security initiatives: Own security deliverables from assessment through remediation, including coordinating smart contract audits, responding to security questionnaires, supporting due diligence, and collaborating with security leadership and compliance teams.
+[under: Accountabilities] - Review code and architecture: Act as a security-focused reviewer for changes involving authentication, authorization, cryptography, custody, transaction signing, and the movement of funds across supported blockchain networks.
+[under: Requirements] - Application and infrastructure security: Solid understanding of common application vulnerabilities and secure design principles, including OWASP-related risks, authentication and authorization, injection attacks, server-side request forgery (SSRF), and software supply-chain threats.
+[under: Requirements] - Smart contract analysis: Ability to read and assess smart contract code, identify potential vulnerabilities, and reason about how implementation flaws or protocol interactions could affect security.
+[under: Requirements] - Additional advantageous experience: Familiarity with third-party smart contract audits, custody and signing infrastructure, MPC and HSM technologies, cloud security in AWS or GCP, IAM, container hardening, runtime security, SIEM, and security observability. Relevant certifications such as OSCP, OSWE, or GWAPT, as well as experience in regulated fintech, tokenization, or decentralized finance, are beneficial.
+[under: Benefits] - Remote work: Opportunity to work remotely from Brazil within a globally distributed organization.
+[under: Benefits] - Professional growth: Expand your expertise in blockchain security, cryptography, smart contract assessments, custody infrastructure, and offensive security.
+[under: How Jobgether works] This processing is based on legitimate interest and pre-contractual measures under applicable data protection laws (including GDPR).
+
+=== 116641
+company: PhysicsX
+title: Senior Machine Learning Engineer
+options: New York, United States [undeclared]
+description:
+> # About us
+> [under: Re-architecting Engineering for the Age of Intelligence] PhysicsX is headquartered in the United Kingdom, with offices in London, New York, and Singapore and an expanding presence in the Bay Area.
+[under: Who We're Looking For] You are someone who can grasp advanced engineering concepts across multiple industries, lead technical initiatives, and excel at working directly with customers (and often side-by-side with them on-site) to embed cutting-edge AI models into tools that are useful and used.
+[under: Who We're Looking For] Note: This position may require access to information protected under U.S. export control laws and regulations, including the Export Administration Regulations (EAR) and the International Traffic in Arms Regulations (ITAR).
+[under: Who We're Looking For] Please note that any offer for employment may be conditioned on authorization to receive software or technology controlled under these U.S. export control laws and regulations without sponsorship for an export license.
+[under: You'll] - Travel to customer sites in North America, Europe, Asia, Oceania, for an average of 3-4 weeks per quarter, where you'll collaborate closely with customers to build solutions on-site.
+[under: Sustainable pace, long-term ambition] Our hybrid model blends time together in our New York office with work-from-home days, giving you the flexibility to work sustainably while staying connected in person.
+
+=== 245984
+company: langchain
+title: Order Management Operations & Automation
+options: San Francisco, CA [onsite]
+description:
+# About Us
+[under: About the role] The ways customers buy from us are multiplying as fast as the business is growing.
+[under: About the role] A self-serve business running on usage-based pricing, with commits, drawdowns, and true-ups behind it.
+[under: What we're looking for] - Real experience with usage-based pricing. Per-seat is straightforward; metered consumption, commits, drawdowns, overages, and true-ups are where order ops gets interesting, and that's most of our business
+[under: What we're looking for] - A history of automating your own job. We'll ask you to walk us through a manual process you deleted: what it cost before, what you built, and what it costs now
+[under: Nice to have] - Experience building agents or LLM workflows for internal operations. We'd like to run more of our own back office on the LangSmith Platform, wherever it's the right tool and meets the same accuracy bar as the rest of order-to-cash
+[under: Compensation Philosophy] Team members in the EU, UK, and APAC receive locally competitive benefits aligned with regional norms and regulations.
+[under: Benefits] Benefits include medical, dental, and vision coverage, flexible vacation, a 401(k) plan, meals on in-office days in the US and more.
+
+=== 328369
+company: DoorDash USA
+title: Staff Software Engineer, Planner
+options: United States - Remote [remote]
+description:
+[under: You’re excited about this opportunity because you will…] - Build scalable evaluation, simulation, and validation frameworks to ensure safe rollout to new geo-fenced regions.
+> [under: Compensation] The successful candidate’s starting pay will fall within the pay range listed below and is determined based on job-related factors including, but not limited to, skills, experience, qualifications, work location, and market conditions.
+> [under: Compensation] Base salary is localized according to an employee’s work location.
+> [under: See below for paid time off details] The national base pay range for this position within the United States, including Illinois and Colorado.
+> [under: About DoorDash] We are a technology and logistics company that started by enabling door-to-door delivery, and we are looking for team members who can help us go from a company that is known as the place you order food to a company that people turn to for any and all goods.
+> [under: Our Commitment to Diversity and Inclusion] That’s why we hire and cultivate diverse teams of people from all backgrounds, experiences, and perspectives.
+> [under: Our Commitment to Diversity and Inclusion] Statement of Non-Discrimination: In keeping with our beliefs and goals, no employee or applicant will face discrimination or harassment based on: race, color, ancestry, national origin, religion, age, gender, marital/domestic partner status, sexual orientation, gender identity or expression, disability status, or veteran status.
+> [under: Our Commitment to Diversity and Inclusion] Above and beyond discrimination and harassment based on “protected categories,” we also strive to prevent other subtler forms of inappropriate behavior (i.e., stereotyping) from ever gaining a foothold in our office.
+> [under: Our Commitment to Diversity and Inclusion] Notice to Applicants for Jobs Located in NYC or Remote Jobs Associated With Office in NYC Only
+
+=== 458401
+company: 107 The Charlotte-Mecklenburg Hospital Authority
+title: Telemetry Tech-Emergency Department-Part Time-7p-7a
+options: Advocate Lutheran General Hospital - 1775 Dempster St [undeclared]
+description:
+[under: Major Responsibilities] 3)Monitors department office equipment and troubleshoots minor problems.
+[under: Compensation] - Base compensation listed within the listed pay range based on factors such as qualifications, skills, relevant experience, and/or training
+[under: Compensation] - Premium pay such as shift, on call, and more based on a teammate's job
+[under: Compensation] - Opportunity for annual increases based on performance
+[under: About Advocate Health] Advocate Health is the third-largest nonprofit, integrated health system in the United States, created from the combination of Advocate Aurora Health and Atrium Health.
+[under: About Advocate Health] Providing care under the names Advocate Health Care in Illinois; Atrium Health in the Carolinas, Georgia and Alabama; and Aurora Health Care in Wisconsin, Advocate Health is a national leader in clinical innovation, health outcomes, consumer experience and value-based care.
+[under: About Advocate Health] Advocate Health employs 155,000 teammates across 69 hospitals and over 1,000 care locations, and offers one of the nation’s largest graduate medical education programs with over 2,000 residents and fellows across more than 200 programs.
+
+=== 225071
+company: bjakcareer
+title: Principal Software Engineer
+options: Poland [remote]
+description:
+[under: The Role] BJAK builds technology products used by millions of users across Southeast Asia.
+[under: Nice to have] - Experience operating across multiple products, markets or countries.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 225517
+company: bjakcareer
+title: Engineering Lead
+options: Seoul, Korea [remote]
+description:
+[under: The Role] BJAK builds technology products used by millions of users across Southeast Asia.
+[under: Nice to have] - Experience operating across multiple products, markets or countries.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 224602
+company: bjakcareer
+title: Technical Product Manager
+options: Indonesia [remote]
+description:
+[under: About BJAK] Started in 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About BJAK] Today, its the leading insurance platform in Southeast Asia.
+[under: About BJAK] Today, we are expanding ways to help people in the region — this includes spending, saving, investing, exchanging, travelling, and more.
+[under: About BJAK] We have teams working around the world, with over 20 nationalities from our offices and remotely, who truly enjoys their work.
+[under: About BJAK] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: The Role] BJAK is building a Neobank Superapp for Southeast Asia.
+[under: What you'll be doing] - Treat regulated constraints as first-class product inputs — licensing scope, CDD/KYC and limits, sanctions/PEP screening, transaction monitoring, data residency and privacy. Know which are hard launch gates and which are forward-readiness.
+[under: What you'll need] - AI judgement — hands-on with LLM-based products; can frame a feature as eval-able (offline, online, human feedback); realistic on hallucination/drift/data gaps, including data-blocked vs model-blocked and when a model must not be in the loop at all.
+# Location
+[under: Location] This role is remote, but candidates must be based in Indonesia.
+[under: Location] We are hiring specifically for this market, so applicants should already be based in Indonesia.
+[under: Language] English is our main working language across global teams.
+
+=== 957319
+company: JINGDONG RETAIL (UK) LIMITED
+title: Software Engineer
+options: GBR-London [undeclared]
+description:
+[under: Who We Are] What started as a bold idea in China has evolved into a NASDAQ-listed, Fortune 44 global enterprise serving over 700 million active customers.
+# Our Global Reach
+[under: Our Global Reach] JD.com is expanding its international footprint through a digitally intelligent, cross-border supply chain and world-class logistics network, supported by platforms such as Joybuy, which brings trusted products to customers worldwide.
+[under: Our Global Reach] Today, our teams operate across China, the U.S., U.K., Netherlands, France, Germany, Spain, Brazil, Hungary, Japan, South Korea, Australia, Thailand, Vietnam, Malaysia, Indonesia, Saudi Arabia, the UAE and beyond, reaching customers in every corner of the world.
+[under: What We Offer] We offer a competitive salary, a great location, and a supportive, people-first culture where your growth truly matters.
+[under: What We Offer] With access to global projects, learning opportunities, and an inclusive environment that values every voice, you’ll have the space to shape the future with us.
+[under: Key Responsibilities] - Identify integration opportunities between emerging technologies and global system architectures to drive the team’s technical growth and strengthen architectural foresight.
+[under: Key Responsibilities] - Work onsite in London.
+[under: Preferred Qualifications] - Experience in UK and European business.
+
+=== 225080
+company: bjakcareer
+title: Engineering Manager - Wealth Management App
+options: Seoul, Korea [remote]
+description:
+[under: About Doit] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: About Doit] We have teams working around the world, with over 20 nationalities and growing from our offices and remotely.
+[under: About Doit] Join us and build a better future for our society.
+[under: About Doit] In 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About Doit] Today, it's the leading insurance platform in Southeast Asia.
+[under: The Role] We are looking for an Engineering Manager to lead a high-performing engineering team building and scaling products used by millions of users across the region.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 1171531
+company: OUTFRONT Media, LLC
+title: Director of Product Management, Core Systems
+options: New York, NY [undeclared] | Boston, MA [undeclared] | Fairfield, NJ [undeclared]
+description:
+[under: About OUTFRONT] We are one of North America’s most innovative media companies.
+[under: About OUTFRONT] We leverage the power of creative excellence, unbeatable locations and smart audience data to change the game for advertisers.
+[under: About OUTFRONT] To do this, we make meaningful connections between brands and people when they are outside of their homes through one of the largest and most diverse sets of out-of-home assets including billboards, transit and mobile displays across the U.S. We connect diverse audiences across over 150 markets and conduct our business considering all our stakeholders, from clients and employees, to the communities where we operate.
+[under: Qualifications] Please do not forward resumes to our OUTFRONT Media employees or any other company location.
+
+=== 351434
+company: SMX
+title: Network Administrator (5296)
+options: Patuxent River, MD [onsite]
+description:
+This position will provide onsite support at Patuxent River NAS in southern Maryland and requires a DoD Top Secret Security clearance which requires US citizenship for work on DoD contracts.
+[under: Required Skills and Experience] - Clearance Required: Top Secret
+[under: Desired Skills & Experience] cjpost #LI-Onsite
+> The SMX salary determination process takes into account a number of factors, including but not limited to, geographic location, Federal Government contract labor categories, relevant prior work experience, specific skills, education and certifications.
+> [under: The proposed salary for this position is] SMX does not sponsor a new applicant for employment authorization or immigration related support for this position (i.e.
+> [under: The proposed salary for this position is] H1B, F-1 OPT, F-1 STEM OPT, F-1 CPT, J-1, TN, E-2, E-3, L-1 and O-1, or any EADs or other forms of work authorization that require immigration support from an employer).
+
+=== 1239445
+company: Red Hat Asia-Pacific PTE LTD
+title: Senior Software Engineer
+options: Tysons Corner [undeclared]
+description:
+*Telecommuting permitted: work may be performed within the normal commuting distance from Red Hat, LLC office in McLean, VA.
+[under: What You Will Bring] - Master’s degree (U.S. or foreign equivalent) in Computer Science, Information Technology or related field and three years of experience in the job offered or related role OR Bachelor’s degree (U.S. or foreign equivalent) in Computer Science, Information Technology or related field and five (5) years of experience in the job offered or related role.
+[under: LI-DNI] Actual offer will be based on your qualifications.
+[under: Pay Transparency] Red Hat determines compensation based on several factors including but not limited to job location, experience, applicable skills and training, external market value, and internal pay equity.
+[under: Pay Transparency] For positions with Remote-US locations, the actual salary range for the position may differ based on location but will be commensurate with job duties and relevant work experience.
+[under: About Red Hat] Spread across 40+ countries, our associates work flexibly across work environments, from in-office, to office-flex, to fully remote, depending on the requirements of their role.
+[under: About Red Hat] We hire creative, passionate people ready to contribute their ideas, help solve complex problems, and make an impact.
+[under: Inclusion at Red Hat] Red Hat’s culture is built on the open source principles of transparency, collaboration, and inclusion, where the best ideas can come from anywhere and anyone.
+[under: Inclusion at Red Hat] We hope you will join our celebration, and we welcome and encourage applicants from all the beautiful dimensions that compose our global village.
+[under: Equal Opportunity Policy (EEO)] We review applications for employment without regard to their race, color, religion, sex, sexual orientation, gender identity, national origin, ancestry, citizenship, age, veteran status, genetic information, physical or mental disability, medical condition, marital status, or any other basis prohibited by law.
+[under: Equal Opportunity Policy (EEO)] We are not responsible for, and will not pay, any fees, commissions, or any other payment related to unsolicited resumes or CVs except as required in a written contract between Red Hat and the recruitment agency or party requesting payment of a fee.
+
+=== 1494802
+company: World Food Programme
+title: IT Operations Assistant (G5)
+options: Kabul, Afghanistan,The Islamic Re [undeclared]
+description:
+[under: DEADLINE FOR APPLICATIONS] 27 October 2026-23:59-GMT+04:30 Afghanistan Time (Kabul)
+[under: ABOUT WFP] To learn more about WFP, visit our website: https://www.wfp.org and follow us on social media to keep up with our latest news: YouTube, LinkedIn, Instagram, Facebook, Twitter, TikTok.
+[under: WHY JOIN WFP?] - A career path in WFP provides an exciting opportunity to work across the various country, regional and global offices around the world, and with passionate colleagues who work tirelessly to ensure that effective humanitarian assistance reaches millions of people across the globe.
+[under: JOB PURPOSE] To provide technical support for ICT operations, infrastructure, telecommunications, cybersecurity, identity management, and digital solutions, ensuring reliable and secure technology services that enable WFP's humanitarian operations across Afghanistan.
+[under: REASONABLE ACCOMMODATION] If you require a reasonable accommodation, please contact: global.inclusion@wfp.org
+[under: REMINDERS BEFORE YOU SUBMIT YOUR APPLICATION] - If you experience technical issues while submitting your application, you may contact us at global.hrerecruitment@wfp.org. Please note that this email is only for technical issues with an application unsolicited applications or documents sent to this inbox will not receive a reply.
+[under: REMINDERS BEFORE YOU SUBMIT YOUR APPLICATION] No appointment under any kind of contract will be offered to members of the UN Advisory Committee on Administrative and Budgetary Questions (ACABQ), International Civil Service Commission (ICSC), FAO Finance Committee, WFP External Auditor, WFP Audit Committee, Joint Inspection Unit (JIU) and other similar bodies within the United Nations system with oversight responsibilities over WFP, both during their service and within three years of ceasing that service.
+
+=== 224681
+company: bjakcareer
+title: Lead Software Engineer
+options: Netherlands [remote]
+description:
+[under: The Role] BJAK builds technology products used by millions of users across Southeast Asia.
+[under: Nice to have] - Experience operating across multiple products, markets or countries.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 256614
+company: parallel
+title: Member of Technical Staff, Search Ranking
+options: San Francisco or Palo Alto [onsite]
+description:
+# About us
+[under: Life at Parallel] Our team works fully in-person, between our Palo Alto HQ and San Francisco office.
+[under: Life at Parallel] - Own customer impact: It’s on us to ensure real-world outcomes for our customers.
+[under: Compensation & benefits] - Visa sponsorships
+[under: Compensation & benefits] - Daily lunch & office snacks
+[under: Compensation & benefits] - Dinner at the office
+
+=== 225955
+company: bjakcareer
+title: Technical Lead
+options: Hong Kong [remote]
+description:
+[under: About Doit] Who cares about redefining how everyone around us can get the best financial applications, not for an exclusive few.
+[under: About Doit] We have teams working around the world, with over 20 nationalities and growing from our offices and remotely.
+[under: About Doit] Join us and build a better future for our society.
+[under: About Doit] In 2019, we built the first mobile-first, insurance platform, enabling insurance to be accessible online by millions in the region.
+[under: About Doit] Today, it's the leading insurance platform in Southeast Asia.
+[under: The Role] Doit builds technology products used by millions of users across Southeast Asia.
+[under: Nice to have] - Experience operating across multiple products, markets or countries.
+# Location
+[under: Location] This is a remote role.
+[under: Location] We hire globally and work across multiple countries and time zones.
+[under: Location] Candidates should be comfortable working effectively in a distributed, fast-moving international team and collaborating with colleagues across different locations.
+[under: Language] English is our main working language across global teams.
+
+=== 195931
+company: Horizon Industries
+title: Senior Application Developer (DAAS API GW)
+options: Remote [remote]
+description:
+[under: APPLICATION DEVELOPER - SENIOR] Location: Remote.
+[under: APPLICATION DEVELOPER - SENIOR] Clearance Required: Active Secret Clearance Required
+[under: APPLICATION DEVELOPER - SENIOR] Salary Range : There are various factors that are considered in determining final pay for a position, including, but not limited to, relevant work experience, skills, education, certifications, and competencies that align with the specified role, as well as contract provisions regarding labor categories that are specific to the position.
+[under: Who we are] Horizon Industries Limited (Horizon) is a dynamic IT and Management Consulting firm based in the Washington, DC area.
+[under: Who we are] Horizon’s culture is based on our core values, and we PRIDE ourselves on a diverse, employee- and family-centric approach.
+[under: What we are looking for] Develops software based on requirements developed by Business Analysts to meet the needed business solution at the enterprise, large-scale level.
+[under: What we are looking for] Utilizes web-based software such as Java, HTML, .NET, AngularJS, JavaScript, SOAP, REST API, mobile development, and Web Based API in the building of software applications
+[under: Minimum Experience] - Experience developing application/process automation software based on BPMN models; experience using software tools such as Appian, Salesforce, Nintex, etc., with Microsoft SQL Server databases and Microsoft .NET development environment.
+[under: Minimum Experience] - Experience in agile and hybrid low-code application development.
+[under: Minimum Experience] - Experience in MuleSoft Anypoint Platform-based development.
+[under: Required Skills] The contractor shall meet the certification requirements within 3 months after the onboarding start date.
+[under: Why you will succeed at Horizon] As we continue to expand and grow the Horizon brand around the globe, we want to ensure our team members grow with us, as you are a vital part of our success story.
+[under: Why you will succeed at Horizon] This is a great opportunity for us to invest in our employees by supporting them with the right skills and tools to be successful in their careers.
+# Why you will love working with us/ Perks
+
+=== 297099
+company: NPR
+title: Senior IT Security Engineer
+options: Remote [remote]
+description:
+> [under: OVERVIEW] Every day, our employees and member stations touch the lives of millions worldwide.
+# Work Location & Requirements
+[under: Work Location & Requirements] - NPR Remote-Permitted: This is a remote-permitted role. This role is based out of our Washington, D.C. office, but the employee may choose to work on a remote basis from a location that NPR approves. You will have the option of working (a) remotely from a location of your choosing within the United States that is supported by NPR; (b) on-site at an NPR facility, based on the availability of desks and approval from NPR; or (c) a combination of both. Regardless of where you choose to work from, you may be expected to travel to other locations from time to time to perform the duties of your positi
+[under: Compensation] Salary Range: The U.S.-based anticipated salary range for this opportunity is $125,000-152,000 plus benefits.
+[under: Compensation] The range displayed reflects the minimum and maximum salaries NPR expects to provide for new hires for the position across all US locations.
+# LI-REMOTE
+> The range displayed reflects the minimum and maximum salaries NPR expects to provide for new hires for the position across all US locations.
+> Qualified applicants receive consideration for employment without regard to race, color, ethnicity, national origin, ancestry, age, religion, religious belief, sex (including pregnancy, childbirth and related medical conditions, lactation, and reproductive health decisions), sexual orientation, gender, gender identity or expression, transgender status, gender non-conforming status, intersex status, sexual stereotypes, nationality, citizenship status, personal appearance, marital status, family status, family responsibilities, military status, veteran status, mental and physical disability, med
+
+=== 1383139
+company: USA018 Thomson Reuters Holdings Inc.
+title: Lead Software Engineer
+options: United States of America, Ann Arbor, Michigan [undeclared] | United States of America, Frisco, Texas [undeclared] | United States of America, Eagan, Minnesota [undeclared]
+description:
+[under: Key Responsibilities] - Lead the design and implementation of microservice-based architectures, including service decomposition, API contracts, event-driven patterns, observability, resiliency, and performance optimization.
+[under: Required Qualifications] - Strong experience building and operating microservices-based architectures, including service communication patterns, scalability, resiliency, monitoring, and troubleshooting.
+[under: Required Qualifications] - Strong proficiency with Angular (Angular 16+ preferred), TypeScript, component-based architecture, state management, routing, and API integration.
+[under: What’s in it For You?] - Hybrid Work Model: We’ve adopted a flexible hybrid working environment for our office-based roles while delivering a seamless experience that is digitally and physically connected.
+[under: What’s in it For You?] - Flexibility & Work-Life Balance: Flex My Way is a set of supportive workplace policies designed to help manage personal and professional responsibilities, whether caring for family, giving back to the community, or finding time to refresh and reset. This builds upon our flexible work arrangements, including work from anywhere for up to 8 weeks per year, empowering employees to achieve a better work-life balance.
+[under: What’s in it For You?] - Culture: Globally recognized, award-winning reputation for inclusion and belonging, flexibility, work-life balance, and more. We live by our values: Obsess over our Customers, Compete to Win, Challenge (Y)our Thinking, Act Fast / Learn Fast, and Stronger Together.
+[under: What’s in it For You?] - Making a Real-World Impact: We are one of the few companies globally that helps its customers pursue justice, truth, and transparency. Together, with the professionals and institutions we serve, we help uphold the rule of law, turn the wheels of commerce, catch bad actors, report the facts, and provide trusted, unbiased information to people all over the world.
+[under: What’s in it For You?] In the United States, Thomson Reuters offers a comprehensive benefits package to our employees.
+[under: What’s in it For You?] The base compensation range varies across locations.&#xa;&#xa;For any eligible US locations, unless otherwise noted, the base compensation range for this role is $118,400 USD - $219,800 USD.&#xa;&#xa;Base pay is positioned within the range based on several factors including an individual’s knowledge, skills and experience with consideration given to internal equity.
+[under: What’s in it For You?] Base pay is one part of a comprehensive Total Reward program which also includes flexible and supportive benefits and other wellbeing programs.&#xa;This role may also be eligible for an Annual Bonus based on a combination of enterprise and individual performance.&#xa;
+# About Us
+[under: About Us] We are powered by the talents of 26,000 employees across more than 70 countries, where everyone has a chance to contribute and grow professionally in flexible work environments.
+[under: About Us] Join us and help shape the industries that move society forward.
+[under: About Us] As a global business, we rely on the unique backgrounds, perspectives, and experiences of all employees to deliver on our business goals.
+[under: About Us] To ensure we can do that, we seek talented, qualified employees in all our operations around the world regardless of race, color, sex/gender, including pregnancy, gender identity and expression, national origin, religion, sexual orientation, disability, age, marital status, citizen status, veteran status, or any other protected classification under applicable law.
+[under: About Us] If you reside in the United States and require an accommodation in the recruiting process, you may contact our Human Resources Department at HR.Leave-Expert@thomsonreuters.com.
+

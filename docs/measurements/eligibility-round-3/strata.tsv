@@ -1,0 +1,16 @@
+group	stratum	size	drawn
+latam	promise	825	35
+latam	eligible-other	6475	10
+latam	rest-cued	28301	25
+latam	rest-plain	120166	10
+latam	eligible	7300	
+us	promise	1946	35
+us	eligible-other	74361	10
+us	rest-cued	53107	25
+us	rest-plain	26353	10
+us	eligible	76307	
+english	promise	1111	35
+english	eligible-other	19864	10
+english	rest-cued	32006	25
+english	rest-plain	102786	10
+english	eligible	20975	

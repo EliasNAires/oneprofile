@@ -1,0 +1,102 @@
+{
+  "332581:english": {
+    "verdict": "a",
+    "clause": "The reader verdict — open; A group’s verdict is the best of its countries’",
+    "pattern": "explicit hiring in Canada"
+  },
+  "677104:english": {
+    "verdict": "b",
+    "clause": "The reader verdict — open; A group’s verdict is the best of its countries’",
+    "pattern": "office option within group"
+  },
+  "691049:us": {
+    "verdict": "b",
+    "clause": "These say nothing — What is preferred, prioritised or a plus",
+    "pattern": "clearance preferred not required"
+  },
+  "1468627:us": {
+    "verdict": "b",
+    "clause": "These say nothing — A requirement for some of the company’s roles only",
+    "pattern": "authorization conditional on role location"
+  },
+  "855457:latam": {
+    "verdict": "a",
+    "clause": "The options — 2. A remote or undeclared option",
+    "pattern": "remote options outside group"
+  },
+  "269221:us": {
+    "verdict": "b",
+    "clause": "The description — 11. A timezone requirement; 12. Every requirement must hold",
+    "pattern": "required regional timezone excludes"
+  },
+  "418095:english": {
+    "verdict": "a",
+    "clause": "The reader verdict — open; A group’s verdict is the best of its countries’",
+    "pattern": "explicit hiring in Canada"
+  },
+  "243824:latam": {
+    "verdict": "b",
+    "clause": "The description — 11. A timezone requirement; 12. Every requirement must hold",
+    "pattern": "named country timezone excludes"
+  },
+  "795151:us": {
+    "verdict": "b",
+    "clause": "The options — 1. An onsite or hybrid option; The state — excluded",
+    "pattern": "onsite option outside country"
+  },
+  "458401:us": {
+    "verdict": "b",
+    "clause": "The reader verdict — closed: a silent city inside the country reads as open",
+    "pattern": "domestic hospital office location"
+  },
+  "326237:us": {
+    "verdict": "b",
+    "clause": "The description — required; 9. Citizenship; The options — 2. A remote or undeclared option",
+    "pattern": "export authorization alternatives allow foreigners"
+  },
+  "272410:english": {
+    "verdict": "b",
+    "clause": "These say nothing — Working from anywhere offered as a perk or a culture",
+    "pattern": "work anywhere offered as perk"
+  },
+  "214853:latam": {
+    "verdict": "a",
+    "clause": "The reader verdict — open",
+    "pattern": "work anywhere company culture"
+  },
+  "269234:us": {
+    "verdict": "b",
+    "clause": "The description — 11. A timezone requirement; 12. Every requirement must hold",
+    "pattern": "required regional timezone excludes"
+  },
+  "603418:us": {
+    "verdict": "a",
+    "clause": "The description — 9. Citizenship; 10. A security clearance; 12. Every requirement must hold",
+    "pattern": "Australian citizenship and clearance required"
+  },
+  "272409:english": {
+    "verdict": "a",
+    "clause": "These say nothing — Working from anywhere offered as a perk or a culture",
+    "pattern": "work anywhere offered as perk"
+  },
+  "1504275:english": {
+    "verdict": "a",
+    "clause": "The options — 2. A remote or undeclared option",
+    "pattern": "undeclared options outside group"
+  },
+  "677509:latam": {
+    "verdict": "a",
+    "clause": "The description — statement about this vacancy, about where the person must be or where the company hires, and required",
+    "pattern": "team geography not hiring requirement"
+  },
+  "1376036:latam": {
+    "verdict": "b",
+    "clause": "The description — 7. Where the person must be, or the company hires; 8. Work authorization in a country",
+    "pattern": "explicit hiring locations exclude group"
+  },
+  "326203:us": {
+    "verdict": "a",
+    "clause": "The description — required; 9. Citizenship; The options — 2. A remote or undeclared option",
+    "pattern": "export authorization alternatives allow foreigners"
+  }
+}
