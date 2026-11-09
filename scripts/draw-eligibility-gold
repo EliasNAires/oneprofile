@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
-"""Draws the eligibility loop's gold set once (#103, ADR-0029).
+"""Draws the eligibility loop's second gold set once (#103, ADR-0031).
 
     scripts/draw-eligibility-gold
 
-Run after POST /country-sets. Refuses if docs/measurements/eligibility-gold-set.tsv exists.
-Through score-eligibility-round's draw, samples 50 description promises and 50 unknowns (seed 10300),
-excluding #12's ids in 2026-10-eligibility-sample/sample.tsv. Writes sample.tsv, same.tsv and batches
-of 50 into docs/measurements/eligibility-gold/, without reading or writing kept labels. Holds out
-half of each stratum, seeded, and writes eligibility-gold-set.tsv (id, part, stratum, label, doubt),
-with label and doubt empty for labelling and review. Identical shown texts take their twin's label.
+Run after POST /country-sets. Refuses if docs/measurements/eligibility-gold-set-groups.tsv exists.
+Through score-eligibility-round's draw, samples each visitor group's promises, cued rest and plain
+rest (seed 10399), excluding ids from 2026-10-eligibility-sample/sample.tsv and eligibility-gold-set.tsv.
+Writes sample.tsv, strata.tsv, same.tsv and batches of 50 into eligibility-gold-groups/, without
+reading or writing kept labels. Holds out half of each primary stratum (the first drawn pair), seeded.
+Writes eligibility-gold-set-groups.tsv (id, part, drawn, six verdicts, doubt), with verdicts and doubt
+empty for labelling and review. Identical shown texts take their twin's labels.
 """
 
+import csv
 import random
 import sys
 from importlib.machinery import SourceFileLoader
@@ -20,26 +22,35 @@ sys.dont_write_bytecode = True
 SCRIPTS = Path(__file__).resolve().parent
 round = SourceFileLoader("eligibility_round", str(SCRIPTS / "score-eligibility-round")).load_module()
 MEASUREMENTS = round.MEASUREMENTS
-DIRECTORY = MEASUREMENTS / "eligibility-gold"
-GOLD = MEASUREMENTS / "eligibility-gold-set.tsv"
+DIRECTORY = MEASUREMENTS / "eligibility-gold-groups"
+GOLD = MEASUREMENTS / "eligibility-gold-set-groups.tsv"
 DRAWN = MEASUREMENTS / "2026-10-eligibility-sample" / "sample.tsv"
-SEED = 10300
+PREVIOUS = MEASUREMENTS / "eligibility-gold-set.tsv"
+SEED = 10399
+
+
+def ids(path):
+    with open(path, encoding="utf-8", newline="") as source:
+        reader = csv.reader(source, delimiter="\t")
+        column = next(reader).index("id")
+        return [row[column] for row in reader]
 
 
 def main():
     if GOLD.exists():
         sys.exit(f"{GOLD} exists; the gold set is drawn once")
-    exclude = [row["id"] for row in round.rows(DRAWN)]
+    exclude = ids(DRAWN) + ids(PREVIOUS)
     round.draw(DIRECTORY, round.sampler.vacancies(), seed=SEED, exclude=exclude)
     sample = round.rows(DIRECTORY / "sample.tsv")
     rng = random.Random(SEED)
     part = {}
-    for stratum in ("promise", "unknown"):
-        ids = [row["id"] for row in sample if row["stratum"] == stratum]
-        held = set(rng.sample(ids, len(ids) // 2))
-        part.update({id: "held-out" if id in held else "open" for id in ids})
-    round.write_rows(GOLD, ["id", "part", "stratum", "label", "doubt"],
-                     ([row["id"], part[row["id"]], row["stratum"], "", ""] for row in sample))
+    for group in round.GROUPS:
+        for stratum in round.STRATA:
+            members = [row["id"] for row in sample if row["drawn"].split()[0] == f"{group}:{stratum}"]
+            held = set(rng.sample(members, len(members) // 2))
+            part.update({id: "held-out" if id in held else "open" for id in members})
+    round.write_rows(GOLD, ["id", "part", "drawn", *round.VERDICTS, "doubt"],
+                     ([row["id"], part[row["id"]], row["drawn"], *([""] * 7)] for row in sample))
     print(f"{GOLD}: {len(sample)} vacancies, {sum(p == 'held-out' for p in part.values())} held out")
 
 

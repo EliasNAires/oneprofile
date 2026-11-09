@@ -1,0 +1,208 @@
+id	part	drawn	latam-rule	latam-reader	us-rule	us-reader	english-rule	english-reader	doubt
+914	open	english:promise	unknown	closed	eligible	open	unknown	closed	
+8986	open	latam:rest-cued	excluded	closed	eligible	open	excluded	closed	
+14623	open	english:rest-cued	excluded	closed	eligible	open	excluded	closed	
+16781	open	us:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+18035	held-out	english:promise	excluded	closed	excluded	closed	eligible	open	
+37304	held-out	us:rest-cued	excluded	closed	eligible	open	excluded	closed	
+43660	held-out	english:rest-cued	excluded	closed	excluded	closed	excluded	closed	
+44637	held-out	us:promise	excluded	closed	eligible	open	excluded	closed	
+45298	open	english:rest-cued	unknown	closed	eligible	open	unknown	closed	
+46655	open	english:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+65425	open	latam:rest-cued	excluded	closed	excluded	closed	excluded	closed	All rule verdicts: Location invites the person to Hamburg or Berlin, rule 7
+68009	open	latam:promise	excluded	closed	eligible	open	excluded	closed	
+70277	open	us:promise english:promise	excluded	closed	excluded	closed	eligible	open	
+71385	open	latam:rest-plain	excluded	closed	eligible	open	excluded	closed	
+80257	open	us:promise	excluded	closed	eligible	open	excluded	closed	
+81003	open	english:rest-cued	excluded	closed	excluded	closed	excluded	closed	All rule verdicts: position in Singapore states location despite Nice to have heading.
+92040	open	english:promise	excluded	closed	eligible	open	eligible	open	
+100887	open	latam:rest-cued	excluded	closed	excluded	closed	eligible	open	
+104801	held-out	latam:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+108551	held-out	us:rest-cued	excluded	closed	excluded	closed	excluded	closed	
+128462	held-out	latam:promise	excluded	closed	eligible	open	excluded	closed	
+134754	held-out	latam:promise	eligible	open	excluded	closed	eligible	open	Timezone verdicts: interpreting working within the timezone window as a location restriction; hours-only reading is possible
+140974	held-out	us:rest-cued	excluded	closed	excluded	closed	excluded	closed	
+165338	open	latam:rest-cued	unknown	unclear	eligible	open	unknown	unclear	
+167108	held-out	latam:rest-cued	excluded	closed	excluded	closed	excluded	closed	
+173816	open	us:rest-plain	unknown	closed	unknown	closed	eligible	open	
+175828	open	us:rest-cued	excluded	closed	excluded	closed	excluded	closed	
+177678	open	english:rest-cued	excluded	closed	excluded	closed	excluded	closed	
+180428	open	english:rest-cued	unknown	unclear	eligible	open	unknown	unclear	
+182379	open	english:promise	eligible	open	unknown	unclear	unknown	unclear	
+182677	open	english:promise	unknown	unclear	eligible	open	unknown	open	latam-reader: US option is not exclusive; remote team locations do not require residence there.
+186377	open	us:rest-plain	unknown	closed	unknown	closed	unknown	closed	
+201950	open	english:promise	eligible	open	unknown	unclear	unknown	unclear	
+204925	held-out	english:promise	eligible	open	unknown	unclear	eligible	open	
+206807	held-out	us:promise	excluded	closed	excluded	closed	eligible	open	us-rule: role is based in Auckland (rule 7).
+209631	open	us:rest-cued	excluded	closed	excluded	closed	eligible	open	
+218155	held-out	us:rest-cued	excluded	closed	excluded	closed	eligible	closed	
+225524	open	english:rest-cued	eligible	open	eligible	open	eligible	open	
+227764	held-out	latam:promise	eligible	open	eligible	open	eligible	open	
+227769	held-out	us:promise	eligible	open	eligible	open	eligible	open	
+227778	open	latam:promise	eligible	open	eligible	open	eligible	open	
+227780	open	latam:promise	eligible	open	eligible	open	eligible	open	
+228169	held-out	latam:promise	eligible	open	excluded	closed	excluded	closed	
+230610	held-out	english:promise	unknown	open	unknown	open	unknown	open	All rule verdicts: based-timezone requirement covers only some offsets in Mexico, US and Canada; hours wording is ambiguous.
+232088	held-out	english:rest-plain	excluded	closed	excluded	closed	excluded	closed	
+233214	open	latam:promise	unknown	unclear	unknown	unclear	eligible	open	
+235450	held-out	english:rest-plain	excluded	closed	eligible	open	excluded	closed	
+235639	held-out	english:rest-plain	excluded	closed	eligible	open	excluded	closed	
+236189	held-out	latam:rest-plain	excluded	closed	eligible	open	excluded	closed	
+239118	open	english:rest-plain	excluded	closed	eligible	open	excluded	closed	
+239237	open	english:promise	unknown	unclear	unknown	unclear	unknown	unclear	
+240493	open	english:rest-cued	excluded	closed	eligible	open	excluded	closed	
+240875	open	latam:rest-plain	excluded	closed	eligible	open	excluded	closed	
+241146	open	latam:promise	eligible	open	excluded	closed	excluded	closed	
+243180	held-out	english:rest-cued	excluded	closed	excluded	closed	excluded	closed	
+248074	held-out	english:promise	unknown	closed	unknown	closed	unknown	closed	
+250176	open	latam:promise	eligible	open	eligible	open	eligible	open	
+251511	open	latam:rest-plain	excluded	closed	eligible	open	eligible	open	
+251804	held-out	english:promise	eligible	open	eligible	open	eligible	open	
+251830	held-out	english:promise	unknown	closed	unknown	closed	eligible	open	
+252446	held-out	english:rest-plain	excluded	closed	excluded	closed	excluded	closed	
+253514	held-out	latam:promise	unknown	unclear	unknown	unclear	unknown	unclear	
+253520	held-out	latam:rest-cued	excluded	closed	excluded	closed	excluded	closed	
+253550	held-out	english:promise	unknown	unclear	unknown	unclear	unknown	unclear	
+256032	held-out	english:promise	unknown	unclear	unknown	unclear	eligible	open	
+256046	held-out	english:promise	unknown	unclear	unknown	unclear	eligible	open	latam-reader, us-reader: anywhere is a culture perk; US insurance does not establish a hiring location.
+256352	open	latam:promise	excluded	closed	eligible	open	eligible	open	
+256359	held-out	latam:promise	excluded	closed	eligible	open	eligible	open	
+256369	open	english:promise	excluded	closed	eligible	open	eligible	open	
+256426	open	latam:promise	excluded	closed	excluded	closed	eligible	open	
+258571	open	us:promise	excluded	closed	excluded	closed	eligible	open	
+260064	open	english:promise	excluded	closed	eligible	open	eligible	open	
+263524	open	english:promise	eligible	open	excluded	closed	eligible	open	
+264325	held-out	latam:promise	excluded	closed	excluded	closed	eligible	open	
+264355	held-out	latam:promise	excluded	closed	excluded	closed	excluded	closed	All rule verdicts: Remote Dubai states the role location (rule 7).
+264581	open	latam:rest-plain	excluded	closed	eligible	open	excluded	closed	
+267903	open	english:promise	eligible	open	unknown	unclear	unknown	unclear	
+268070	held-out	latam:promise	excluded	closed	eligible	open	excluded	closed	
+269234	held-out	latam:promise	excluded	closed	excluded	closed	eligible	open	
+269287	open	latam:promise	unknown	unclear	eligible	open	eligible	open	
+270635	open	latam:promise	eligible	open	eligible	open	eligible	open	
+270637	open	latam:promise	eligible	open	eligible	open	eligible	open	
+271321	held-out	english:promise	excluded	closed	eligible	open	eligible	open	
+271449	open	latam:promise	unknown	unclear	unknown	unclear	eligible	open	latam-reader, us-reader: anywhere is a remote-first perk; listed places omit both groups.
+274722	held-out	english:rest-cued	excluded	closed	excluded	closed	excluded	closed	
+274995	open	us:promise	excluded	closed	eligible	open	excluded	closed	
+275230	open	english:rest-cued	excluded	closed	excluded	closed	excluded	closed	
+275897	open	latam:promise	excluded	closed	eligible	open	excluded	closed	
+276260	open	english:rest-cued	excluded	closed	excluded	closed	excluded	open	
+294573	held-out	latam:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+296165	open	latam:promise	eligible	open	eligible	open	eligible	open	
+297209	held-out	english:rest-cued	excluded	closed	eligible	open	excluded	closed	
+300478	open	latam:promise	eligible	open	unknown	unclear	eligible	open	
+300965	open	us:promise	excluded	closed	eligible	open	excluded	closed	
+302109	held-out	us:promise	excluded	closed	eligible	open	excluded	closed	
+309050	held-out	latam:rest-cued	unknown	closed	eligible	open	unknown	closed	
+311478	held-out	us:promise	excluded	closed	excluded	closed	eligible	open	
+313073	open	us:promise	eligible	open	eligible	open	eligible	open	All rule verdicts: explicit hiring elsewhere via Remote.com includes every group
+315345	held-out	latam:promise	unknown	unclear	unknown	unclear	unknown	unclear	All reader verdicts: Work From Anywhere is a perk; remote Germany alone does not close other countries.
+315354	open	english:promise	unknown	closed	unknown	closed	unknown	closed	
+315359	held-out	latam:promise	unknown	unclear	unknown	unclear	unknown	unclear	
+315839	held-out	latam:promise	unknown	unclear	eligible	open	unknown	unclear	latam-reader, english-reader: anywhere describes company culture, not hiring locations.
+316901	held-out	english:promise	unknown	unclear	unknown	unclear	unknown	unclear	All reader verdicts: anywhere is an employee culture benefit, not a hiring-location statement.
+317918	held-out	us:promise	excluded	closed	eligible	open	excluded	closed	
+325346	open	latam:promise	eligible	open	eligible	open	eligible	open	
+326232	held-out	us:promise	unknown	closed	unknown	closed	eligible	open	Latam/US reader: silent London city option reads as an office abroad; export authorization alternatives allow non-US persons.
+332187	held-out	latam:rest-plain	unknown	closed	unknown	closed	eligible	open	
+332300	held-out	us:promise	excluded	closed	eligible	open	excluded	closed	
+332788	open	latam:rest-cued	eligible	open	eligible	open	eligible	open	
+335324	held-out	us:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+335767	held-out	us:promise	excluded	closed	eligible	open	excluded	closed	
+337315	open	us:rest-cued	excluded	closed	excluded	closed	eligible	open	latam-rule and us-rule: Location: London or Manchester (rule 7).
+345892	held-out	english:rest-plain	unknown	closed	unknown	closed	unknown	closed	
+346114	open	us:promise	excluded	closed	eligible	open	eligible	open	
+352328	open	english:promise	excluded	closed	eligible	open	eligible	closed	
+353050	held-out	latam:rest-plain	excluded	closed	excluded	closed	excluded	closed	All rule verdicts: description's Location states Hungary for this role (rule 7).
+362139	open	us:promise	unknown	unclear	unknown	unclear	unknown	unclear	
+371378	open	english:rest-plain	eligible	open	unknown	unclear	unknown	unclear	
+392287	held-out	latam:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+394119	held-out	latam:rest-cued	excluded	closed	eligible	open	excluded	closed	
+395366	held-out	us:promise	excluded	closed	excluded	closed	excluded	closed	
+395453	held-out	english:promise	excluded	closed	excluded	closed	excluded	closed	
+395474	held-out	latam:promise	excluded	closed	excluded	closed	excluded	closed	
+396412	held-out	latam:promise us:promise	excluded	closed	excluded	closed	excluded	closed	
+396413	held-out	us:promise	eligible	open	excluded	closed	excluded	closed	
+396429	held-out	latam:promise	excluded	closed	excluded	closed	excluded	closed	
+397086	open	latam:promise	excluded	closed	excluded	closed	excluded	closed	
+397094	held-out	latam:promise english:promise	excluded	closed	excluded	closed	excluded	closed	
+397098	held-out	english:promise	excluded	closed	excluded	closed	excluded	closed	All rule verdicts: developer based in Spain; anywhere is a perk.
+397107	open	latam:promise	excluded	closed	excluded	closed	excluded	closed	
+398756	held-out	english:rest-cued	excluded	closed	excluded	closed	excluded	closed	
+398944	open	english:promise	excluded	closed	excluded	closed	eligible	open	
+399118	held-out	english:rest-cued	eligible	open	excluded	closed	excluded	closed	
+399283	held-out	english:promise	excluded	closed	excluded	closed	excluded	closed	
+399318	held-out	us:promise	excluded	closed	excluded	closed	excluded	closed	
+426762	held-out	latam:rest-cued	excluded	closed	eligible	open	excluded	closed	
+428679	held-out	us:promise	excluded	closed	eligible	open	excluded	closed	
+429690	open	latam:rest-cued	unknown	unclear	eligible	open	unknown	unclear	
+430138	held-out	english:rest-cued	excluded	closed	excluded	closed	excluded	closed	
+468185	open	us:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+508383	held-out	us:rest-cued	excluded	closed	excluded	closed	excluded	closed	
+569780	open	english:rest-plain	excluded	closed	excluded	closed	excluded	closed	All rule verdicts: Location: Bangalore is explicit (rule 7).
+571674	open	us:promise	excluded	closed	eligible	closed	excluded	closed	US rule: UK option says nothing about US hiring; TS/SCI only excludes others. English rule/reader: TS/SCI is US clearance.; us-rule set eligible by the revision 3 check's adjudication (rule 12)
+616464	held-out	english:rest-cued	excluded	closed	excluded	closed	excluded	closed	
+647802	held-out	us:rest-cued	unknown	closed	unknown	closed	eligible	open	
+657501	open	english:rest-cued	unknown	closed	eligible	open	unknown	closed	Latam/english reader: silent Plano city option reads as an office abroad.
+678482	open	english:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+701594	held-out	us:rest-plain	unknown	closed	unknown	closed	unknown	closed	
+707507	open	latam:rest-cued	unknown	unclear	eligible	open	unknown	unclear	Latam and english reader: explicit home office defeats silent-city inference; office visits leave location unclear
+723122	held-out	us:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+723877	open	english:rest-plain	unknown	closed	unknown	closed	unknown	closed	
+741900	open	english:promise	excluded	closed	eligible	open	eligible	open	
+747616	open	us:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+760389	open	english:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+764914	held-out	latam:rest-cued	excluded	closed	eligible	open	excluded	closed	
+777506	open	english:promise	excluded	closed	excluded	closed	eligible	open	
+777792	held-out	us:rest-plain	unknown	closed	unknown	closed	unknown	closed	
+788400	held-out	us:rest-plain	unknown	closed	unknown	closed	unknown	closed	
+789549	open	us:rest-plain	unknown	closed	unknown	closed	unknown	closed	
+795311	held-out	us:promise	excluded	closed	eligible	open	excluded	closed	
+795817	open	us:promise	excluded	closed	excluded	closed	excluded	closed	
+795819	open	us:promise	excluded	closed	excluded	closed	excluded	closed	
+797075	held-out	latam:rest-cued	excluded	closed	eligible	open	excluded	closed	
+797883	open	us:promise	excluded	closed	excluded	closed	excluded	closed	
+798091	held-out	us:promise	excluded	closed	excluded	closed	excluded	closed	
+804919	held-out	us:rest-cued	unknown	closed	unknown	closed	eligible	open	
+810645	open	us:rest-cued	excluded	closed	excluded	closed	excluded	closed	
+828498	open	us:promise	excluded	closed	eligible	open	excluded	closed	
+828501	held-out	us:promise	excluded	closed	eligible	open	excluded	closed	
+897655	open	latam:rest-plain	excluded	closed	eligible	open	excluded	closed	
+937674	open	latam:rest-cued	unknown	closed	eligible	open	unknown	closed	
+943785	held-out	latam:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+978156	open	us:rest-cued	eligible	open	unknown	closed	unknown	closed	
+986175	open	latam:rest-cued	excluded	closed	eligible	open	excluded	closed	
+1015462	open	latam:rest-cued	excluded	closed	eligible	open	excluded	closed	
+1019365	open	us:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+1019381	open	latam:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+1056313	open	us:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+1065927	held-out	latam:rest-cued	excluded	closed	eligible	open	excluded	closed	
+1080348	open	us:promise	excluded	closed	eligible	open	excluded	closed	
+1120238	open	us:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+1143863	open	us:promise	excluded	closed	eligible	open	excluded	closed	
+1167288	held-out	us:rest-cued	excluded	closed	excluded	closed	excluded	closed	
+1183274	open	english:promise	excluded	closed	eligible	open	eligible	open	
+1196129	open	english:rest-plain	excluded	closed	eligible	open	excluded	closed	
+1232695	held-out	latam:rest-plain	unknown	closed	eligible	open	unknown	closed	latam/english-reader: option names only US, so it leaves the other countries out (closed), not unclear
+1233807	held-out	us:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+1245600	open	us:rest-plain	unknown	closed	unknown	closed	unknown	closed	
+1246410	held-out	us:rest-cued	excluded	closed	excluded	closed	excluded	closed	
+1246419	open	latam:rest-cued	excluded	closed	eligible	open	excluded	closed	
+1253944	open	us:promise	excluded	closed	eligible	open	excluded	closed	
+1261278	open	us:rest-plain	unknown	closed	unknown	closed	unknown	closed	
+1265163	held-out	english:promise	excluded	closed	excluded	closed	eligible	open	
+1276701	held-out	english:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+1279092	open	english:promise	excluded	closed	eligible	open	eligible	open	
+1351971	held-out	us:rest-plain	excluded	closed	excluded	closed	excluded	closed	
+1363889	held-out	us:promise	excluded	closed	eligible	open	excluded	closed	
+1397697	held-out	english:rest-cued	excluded	closed	eligible	open	excluded	closed	latam-rule and english-rule: Location: Plano, TX (rule 7).
+1402667	held-out	us:rest-plain	unknown	closed	unknown	closed	eligible	closed	
+1427428	held-out	english:rest-cued	excluded	closed	excluded	closed	excluded	closed	All rule verdicts: work-location heading specifies Yokohama headquarters (rule 7).
+1444776	open	latam:rest-cued	excluded	closed	eligible	open	excluded	closed	
+1448672	held-out	latam:rest-plain	unknown	closed	eligible	open	unknown	closed	
+1452771	open	us:promise	excluded	closed	eligible	open	excluded	closed	
+1463433	open	us:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+1466959	open	us:rest-cued	excluded	closed	excluded	closed	excluded	closed	
+1467582	held-out	english:rest-cued	unknown	closed	unknown	closed	unknown	closed	
+1468749	held-out	english:promise	excluded	closed	eligible	open	eligible	open	

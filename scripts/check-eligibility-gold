@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
-"""Checks the eligibility labeller and adjudicator against the gold set (#103, ADR-0029).
+"""Checks the eligibility labeller and adjudicator against the group gold set (#103, ADR-0031).
 
     scripts/check-eligibility-gold
 
-Works in docs/measurements/eligibility-gold-check-revision-<R>/, R the highest criterion revision.
-Missing labels-N.tsv prompt eligibility-labeller to label eligibility-gold/batch-N.txt into the check.
-Once every batch is labelled, each row in same.tsv takes its twin's label. Every gold row must carry
-its gold label. Reports agreement and Wilson 95% intervals per part and stratum. Disagreements go
-unattributed to open-batch-NNN.json and held-batch-NNN.json in batches of 20; sides.json records the
-gold and labeller sides. The open rows also go into open-disagreements.tsv (id, stratum, gold,
-labeller, reason, doubt). No batch files are rewritten once any exist for that part.
+Works in docs/measurements/eligibility-gold-groups-check-revision-<R>/, R the highest criterion revision.
+Missing labels-N.tsv prompt eligibility-labeller to label eligibility-gold-groups/batch-N.txt into
+this check. Each row in same.tsv takes its twin's labels. Every gold row must carry all six verdicts.
+Reports scored agreement per part and group, and exact agreement on all six verdicts, with Wilson
+95% intervals. Disagreements go unattributed to open-batch-NNN.json and held-batch-NNN.json, 20 items
+a batch; sides.json records gold and labeller sides. Open items also go into open-disagreements.tsv
+(id, group, stratum, gold, labeller, reason, doubt). Existing adjudication batches are preserved.
 
 The adjudicator supplies matching .verdicts.json files ({id: {verdict: a|b|neither, clause, pattern}}).
-Subsequent runs report per part how often it chose gold, labeller or neither. Held-out rows' ids,
-texts and labels are never printed, including when labels are missing or invalid: counts only.
+Subsequent runs report per part how often it chose gold, labeller or neither. The gold labels as
+settled answers also measure each group's promises and reach at the rules as they stand, using strata.tsv.
+Held-out rows' ids, texts and labels are never printed, including failures: counts and figures only.
 No kept-label store is used or written.
 """
 
@@ -28,9 +29,15 @@ SCRIPTS = Path(__file__).resolve().parent
 round = SourceFileLoader("eligibility_round", str(SCRIPTS / "score-eligibility-round")).load_module()
 REPO = round.REPO
 MEASUREMENTS = round.MEASUREMENTS
-GOLD = MEASUREMENTS / "eligibility-gold-set.tsv"
-BATCHES = MEASUREMENTS / "eligibility-gold"
-CHECK = MEASUREMENTS / "eligibility-gold-check-revision-{revision}"
+GOLD = MEASUREMENTS / "eligibility-gold-set-groups.tsv"
+BATCHES = MEASUREMENTS / "eligibility-gold-groups"
+CHECK = MEASUREMENTS / "eligibility-gold-groups-check-revision-{revision}"
+
+
+def scored_answer(item):
+    if item["stratum"] == "promise":
+        return "eligible" if item["answer"] == "eligible" else "not eligible"
+    return item["answer"]
 
 
 def main():
@@ -45,36 +52,42 @@ def main():
             print(f"  {path} -> {directory / f'labels-{path.stem[6:]}.tsv'}")
         return
     gold = round.rows(GOLD)
-    if any(not row["label"].strip() for row in gold):
-        sys.exit(f"{sum(not row['label'].strip() for row in gold)} gold rows have no label yet")
-    for row in gold:
-        allowed = ("eligible", "excluded", "unknown") if row["stratum"] == "promise" else ("open", "closed", "unclear")
-        if row["label"] not in allowed:
-            sys.exit("Invalid gold label for a stratum")
-    labels = round.labels(directory, gold, BATCHES / "same.tsv")
+    round.validate_labels(gold, "gold")
+    labelled = round.labels(directory, gold, BATCHES / "same.tsv")
+    gold_items = round.items(gold, {row["id"]: row for row in gold})
+    labeller_items = round.items(gold, labelled)
+    gold_answers = {id: scored_answer(item) for id, item in gold_items.items()}
+    labeller_answers = {id: scored_answer(item) for id, item in labeller_items.items()}
     seen = round.blocks(BATCHES)
     sides_path = directory / "sides.json"
     sides = json.loads(sides_path.read_text(encoding="utf-8")) if sides_path.exists() else {}
     print(f"Gold set check at criterion revision {current}")
     for part in ("open", "held-out"):
         members = [row for row in gold if row["part"] == part]
-        differing = [row for row in members if labels[row["id"]]["verdict"] != row["label"]]
+        member_ids = {row["id"] for row in members}
+        scored = {id: item for id, item in gold_items.items() if item["vacancy"] in member_ids}
+        differing = [id for id in scored if gold_answers[id] != labeller_answers[id]]
         print(f"\n{part} ({len(members)} rows):")
-        print(f"  labeller agreement: {round.share(len(members) - len(differing), len(members))}")
-        for stratum in ("promise", "unknown"):
-            held = [row for row in members if row["stratum"] == stratum]
-            hits = sum(labels[row["id"]]["verdict"] == row["label"] for row in held)
-            print(f"  {stratum}: {round.share(hits, len(held))}")
+        print(f"  scored agreement: {round.share(len(scored) - len(differing), len(scored))}")
+        for group in round.GROUPS:
+            ids = [id for id, item in scored.items() if item["group"] == group]
+            hits = sum(gold_answers[id] == labeller_answers[id] for id in ids)
+            print(f"  {group}: {round.share(hits, len(ids))}")
+        exact = sum(all(row[column] == labelled[row["id"]][column] for column in round.VERDICTS)
+                    for row in members)
+        print(f"  exact six-verdict agreement: {round.share(exact, len(members))}")
         prefix = "open-batch" if part == "open" else "held-batch"
         if part == "open":
+            by_id = {row["id"]: row for row in members}
             round.write_rows(directory / "open-disagreements.tsv",
-                             ["id", "stratum", "gold", "labeller", "reason", "doubt"],
-                             ([row["id"], row["stratum"], row["label"], labels[row["id"]]["verdict"],
-                               labels[row["id"]]["reason"], row["doubt"]] for row in differing))
-        ids = [row["id"] for row in differing]
-        round.adjudicate(directory, prefix, ids, seen,
-                         {row["id"]: (row["label"], labels[row["id"]]["verdict"]) for row in differing},
-                         sides, "gold")
+                             ["id", "group", "stratum", "gold", "labeller", "reason", "doubt"],
+                             ([id, scored[id]["group"], scored[id]["stratum"], gold_answers[id],
+                               labeller_answers[id], labelled[scored[id]["vacancy"]]["reason"],
+                               by_id[scored[id]["vacancy"]]["doubt"]] for id in differing))
+        round.adjudicate(directory, prefix, differing,
+                         {id: seen[item["vacancy"]] for id, item in scored.items()},
+                         {id: (gold_answers[id], labeller_answers[id]) for id in differing},
+                         sides, "gold", items=scored)
         judged = round.verdicts(directory, prefix, sides, "gold")
         print(f"  {len(differing)} disagreements in {len(round.batches(directory, prefix))} batches, "
               f"{len(judged)} adjudicated")
@@ -85,6 +98,8 @@ def main():
             print("  adjudicator: " + "; ".join(f"{who} {round.share(counts[who], len(judged))}"
                                                for who in ("gold", "labeller", "neither")))
     sides_path.write_text(json.dumps(sides, indent=1) + "\n", encoding="utf-8")
+    print("\nThe gold set at the rules as they stand:")
+    round.report_gates(gold_items, gold_answers, round.rows(BATCHES / "strata.tsv"))
 
 
 if __name__ == "__main__":

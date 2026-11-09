@@ -1,0 +1,6 @@
+id	latam-rule	latam-reader	us-rule	us-reader	english-rule	english-reader	doubt
+1120238	unknown	closed	unknown	closed	unknown	closed
+239118	excluded	closed	eligible	open	excluded	closed
+71385	excluded	closed	eligible	open	excluded	closed
+1463433	unknown	closed	unknown	closed	unknown	closed
+1232695	unknown	closed	eligible	open	unknown	closed	latam/english-reader: option names only US, so it leaves the other countries out (closed), not unclear

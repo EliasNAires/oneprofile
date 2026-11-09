@@ -9,6 +9,12 @@ Delegate a step when its edits or runs take more reading than its spec takes wri
 across several files, test-first work of several items, long test or script runs. A small
 single edit stays with the main session.
 
+Every delegated task goes to Codex, never to a Claude subagent: labelling, drafting and reviewing a
+gold set, adjudication and a run's stages as well as edits (Elias, 2026-11-08). Where a skill, an ADR
+or a `.claude/agents/*.md` file names an agent for a role, that file is the role's instructions, and
+Sol runs them: its prompt points at the file and names the batch, the output and the paths it must
+not open.
+
 ## Roles
 
 - **Astra** (`gpt-6-astra`) audits a plan before any step runs. Only plans of three or more

@@ -1,0 +1,6 @@
+id	latam-rule	latam-reader	us-rule	us-reader	english-rule	english-reader	reason
+1120238	unknown	closed	unknown	closed	unknown	closed	Bangalore, India [undeclared]
+239118	excluded	closed	eligible	open	excluded	closed	San Mateo, CA / New York, NY [hybrid]
+71385	excluded	closed	eligible	open	excluded	closed	Denver, CO / New York, NY / San Francisco, CA [hybrid]
+1463433	unknown	closed	unknown	closed	unknown	closed	Bangkok (City Area) [undeclared]
+1232695	unknown	unclear	eligible	open	unknown	unclear	US-Work from Home [remote]

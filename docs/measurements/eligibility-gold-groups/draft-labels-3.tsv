@@ -1,0 +1,51 @@
+id	latam-rule	latam-reader	us-rule	us-reader	english-rule	english-reader	reason
+243180	excluded	closed	excluded	closed	excluded	closed	Berlin or Espoo hybrid
+264355	unknown	closed	unknown	closed	unknown	closed	Remote Dubai
+569780	unknown	closed	unknown	closed	unknown	closed	Location: Bangalore
+206807	excluded	closed	unknown	closed	eligible	open	citizenship of Australia, Japan, New Zealand...NATO
+337315	unknown	closed	unknown	closed	eligible	open	London or Manchester
+1015462	excluded	closed	eligible	open	excluded	closed	authorized to work in the United States
+251804	eligible	open	eligible	open	eligible	open	hiring across the world
+248074	unknown	closed	unknown	closed	unknown	closed	Remote Germany or Hungary
+430138	excluded	closed	excluded	closed	excluded	closed	Paris [hybrid]
+335324	unknown	closed	unknown	closed	unknown	closed	Singapore [undeclared]
+233214	unknown	unclear	unknown	unclear	eligible	open	UK (Remote)
+1466959	excluded	closed	excluded	closed	excluded	closed	resident of The Netherlands
+678482	unknown	closed	unknown	closed	unknown	closed	Singapore, Singapore [undeclared]
+897655	excluded	closed	eligible	open	excluded	closed	Must be a U.S. Citizen
+252446	excluded	closed	excluded	closed	excluded	closed	onsite...based in Bengaluru or Chennai
+804919	unknown	closed	unknown	closed	eligible	open	Sydney [undeclared]
+468185	unknown	closed	unknown	closed	unknown	closed	Normal office environment, hybrid
+256426	excluded	closed	excluded	closed	eligible	open	based within the EMEA region
+1452771	excluded	closed	eligible	open	excluded	closed	authorized to work in the United States
+1019381	unknown	closed	unknown	closed	unknown	closed	Kuala Lumpur, MY [undeclared]
+44637	excluded	closed	eligible	open	excluded	closed	US Citizenship and active Secret clearance
+1246419	excluded	closed	eligible	open	excluded	closed	hybrid role based in Seattle, WA
+209631	excluded	closed	excluded	closed	eligible	open	Cambridge, England, United Kingdom [hybrid]
+81003	unknown	closed	unknown	closed	unknown	closed	Singapore [undeclared]
+297209	excluded	closed	eligible	open	excluded	closed	work remotely from the United States
+1196129	excluded	closed	eligible	open	excluded	closed	authorized to work in the United States
+828501	excluded	closed	eligible	open	excluded	closed	US citizenship
+332788	eligible	open	eligible	open	eligible	open	join our workforce from almost any country
+108551	excluded	closed	excluded	closed	excluded	closed	Bengaluru, India [hybrid]
+227764	eligible	open	eligible	open	eligible	open	hired via Remote.com
+394119	excluded	closed	eligible	open	excluded	closed	U.S. Citizen
+1448672	unknown	closed	eligible	open	unknown	closed	Worcester, MA [undeclared]
+37304	excluded	closed	eligible	open	excluded	closed	Available Locations: Atlanta, US...
+264581	excluded	closed	eligible	open	excluded	closed	Austin, TX [onsite]
+235639	excluded	closed	eligible	open	excluded	closed	San Jose [onsite]
+325346	eligible	open	eligible	open	eligible	open	fully remote in North America
+300965	excluded	closed	eligible	open	excluded	closed	Location: United States
+267903	eligible	open	unknown	unclear	unknown	unclear	Latin America [remote]
+798091	excluded	closed	excluded	closed	excluded	closed	LOCATION : Gunsan, South Korea
+225524	eligible	open	eligible	open	eligible	open	We hire globally
+1397697	unknown	closed	eligible	open	unknown	closed	Plano, Texas [undeclared]
+294573	unknown	closed	unknown	closed	unknown	closed	India [undeclared]
+397098	unknown	closed	unknown	closed	unknown	closed	based in Spain
+986175	excluded	closed	eligible	open	excluded	closed	Raleigh, North Carolina, United States [hybrid]
+128462	excluded	closed	eligible	open	excluded	closed	located remotely in the San Francisco, CA
+315354	unknown	closed	unknown	closed	unknown	closed	Full Remote - Croatia
+8986	excluded	closed	eligible	open	excluded	closed	Los Angeles, CA [hybrid]
+978156	eligible	open	unknown	closed	unknown	closed	Chihuahua [undeclared]
+914	unknown	closed	eligible	open	unknown	closed	United States [undeclared]
+1167288	excluded	closed	excluded	closed	excluded	closed	Mumbai, India [hybrid]

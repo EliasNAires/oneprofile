@@ -1,0 +1,42 @@
+[
+ {
+  "id": "1363889:us",
+  "text": "company: US6469 Sysco Payroll, Division of Sysco Resources Services, LLC\ntitle: Senior Finance Analyst\noptions: Sysco Corporate [undeclared]\ndescription:\n[under: COMPENSATION INFORMATION] Factors that may be used to determine rate of pay include specific skills, work location, work experience and other individualized factors\n[under: DUTIES AND RESPONSIBILITIES] - Support Annual Operating Plan (AOP) for the US Foodservice organization\n[under: DUTIES AND RESPONSIBILITIES] - Use VBA and other tools to create excel based standardized reporting with flexibility for multi-dimensional use\n[under: OVERVIEW] Sysco is the global leader in foodservice distribution.\n[under: OVERVIEW] With over 71,000 colleagues and a fleet of over 13,000 vehicles, Sysco operates approximately 333 distribution facilities worldwide and serves more than 700,000 customer locations.\n[under: OVERVIEW] Come grow with us and let us show you why Sysco is at the heart of food and service.\n[under: AFFIRMATIVE ACTION STATEMENT] Applicants must be currently authorized to work in the United States.",
+  "a": "eligible",
+  "b": "not eligible",
+  "group": "us",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "332300:us",
+  "text": "company: Feanix Biotechnologies\ntitle: Senior Software Engineer, Infrastructure & Release\noptions: Remote [remote]\ndescription:\n> [under: About Feanix Bio] In a short time, we’ve grown to serve roughly 1% of the U.S. dairy industry, with many customers in the pipeline.\n[under: About The Role] Today we work with 30 of the roughly 150 largest dairies in the country, ~250,000+ cows.\n[under: How We Work] Nobody has this fully figured out, and that includes us.\n[under: How We Work] Bring yours and argue them out with us.\n[under: Preferred Qualifications] That title matters less to us than two other things: that you think creatively about how agents are changing this job, and that you're motivated by supporting other people through your own technical work.\n[under: Logistics] - Remote, with 10am–2pm Pacific core hours regardless of where you're based\n[under: Logistics] - West-coast based candidates preferred!\n# Why You'll Enjoy Working With Us\n> [under: Compensation and Benefits] Applicants must be authorized to work in the United States.\n> [under: Compensation and Benefits] We are unable to offer visa sponsorship or transfers at this time.\n> [under: Compensation and Benefits] Actual starting pay for this role is determined by a variety of factors including but not limited to qualifications, experience, relevant skills, education, and geographic location.\n> [under: Compensation and Benefits] We offer a flexible, remote-friendly work environment for most roles, along with a growing benefits package that includes medical, dental, and vision coverage; 401k, pet insurance, flexible paid time off; and paid parental leave, including up to twelve weeks of paid leave and/or supplemental pay coordination with applicable state benefits.\n> [under: Compensation and Benefits] Applicants must be authorized to work in the United States.\n> [under: Compensation and Benefits] We are unable to offer visa sponsorship or transfers at this time.\n> [under: Compensation and Benefits] Compensation is based on factors including experience, skills, qualifications, and location.\n> [under: Compensation and Benefits] Feanix Biotechnologies is an equal opportunity employer and does not discriminate based on any characteristic protected by applicable law.",
+  "b": "eligible",
+  "a": "not eligible",
+  "group": "us",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "230610:english",
+  "text": "company: composio\ntitle: Technical Support Engineer\noptions: Remote (US: PST or EST) [remote]\ndescription:\nAt Composio, we are building infrastructure that allows agents to communicate with the tools you use for work including Github, Gmail, Notion, Salesforce, etc. We are a small team of engineers wrangling problems from context to search, that help us provide the most capable bridge between your agents and your tools.\nLocation: Remote in North America, PST or EST hours.\n[under: \"Must haves\"] - timezone you are based in North America in PST or EST hours",
+  "a": "not eligible",
+  "b": "eligible",
+  "group": "english",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "204925:english",
+  "text": "company: Plata Card\ntitle: Incident Manager - Senior [Customer IT Support]\noptions: Mexico [undeclared]\ndescription:\n[under: Challenges that await you] - Demonstrate leadership and seamless coordination with global teams, both technical and business\n[under: Our benefits] - Relocation support to Mexico with assistance for the employee and their family\n[under: Our benefits] - Flexible work: hybrid or full-time from our office in Mexico or or remotely within time zones from GMT-8 to GMT-3",
+  "a": "eligible",
+  "b": "not eligible",
+  "group": "english",
+  "asks": "rule verdict for the group"
+ },
+ {
+  "id": "428679:us",
+  "text": "company: uvcyber\ntitle: Senior Cloud Security & Compliance Engineer\noptions: Remote [remote]\ndescription:\n[under: Make a difference here.] UltraViolet Cyber is headquartered in McLean, Virginia, with global offices across the U.S. and in India.\n[under: Make a difference here.] Experience with FedRAMP or NIST SP 800-53 is preferred but not required; however, candidates must satisfy applicable U.S. regulatory requirements for work in FedRAMP environments.\n[under: What You Have] US Citizenship is Required\n[under: What You Have] UltraViolet Cyber maintains broad salary ranges for its roles in order to account for variations in knowledge, skills, experience, market conditions and locations, as well as reflect our company's differing products, services, industries and lines of business.\n[under: What You Have] Candidates are typically placed into the range based on the preceding factors.",
+  "a": "eligible",
+  "b": "not eligible",
+  "group": "us",
+  "asks": "rule verdict for the group"
+ }
+]

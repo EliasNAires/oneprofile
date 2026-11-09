@@ -1,0 +1,27 @@
+{
+  "1363889:us": {
+    "verdict": "a",
+    "clause": "8. Work authorization in a country; 12. Every requirement must hold: one that holds it makes an unknown vacancy eligible",
+    "pattern": "authorization in visitor country"
+  },
+  "332300:us": {
+    "verdict": "b",
+    "clause": "8. Work authorization in a country; 12. Every requirement must hold: one that holds it makes an unknown vacancy eligible",
+    "pattern": "authorization in visitor country"
+  },
+  "230610:english": {
+    "verdict": "neither",
+    "clause": "11. A timezone requirement: unknown where some offsets are inside; A group's verdict is the best of its countries': Canada is partly within PST or EST, so english is unknown",
+    "pattern": "partial country timezone coverage"
+  },
+  "204925:english": {
+    "verdict": "a",
+    "clause": "11. A timezone requirement: eligible where every offset is inside; A group's verdict is the best of its countries': Canada's UTC-8 to UTC-3:30 is within GMT-8 to GMT-3",
+    "pattern": "full country timezone coverage"
+  },
+  "428679:us": {
+    "verdict": "a",
+    "clause": "9. Citizenship; 12. Every requirement must hold: one that holds it makes an unknown vacancy eligible",
+    "pattern": "citizenship in visitor country"
+  }
+}

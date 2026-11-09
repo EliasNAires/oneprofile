@@ -1,0 +1,6 @@
+id	group	stratum	gold	labeller	reason	doubt
+80257:us	us	promise	eligible	not eligible	"Multiple Locations [onsite]; ""authorized to work in the U.S."""	
+352328:english	english	promise	eligible	not eligible	"Chicago, IL [undeclared]; ""authorized to work in the US or Canada"""	
+571674:us	us	promise	not eligible	eligible	"Cambridgeshire; ""TS/SCI clearance is required"""	US rule: UK option says nothing about US hiring; TS/SCI only excludes others. English rule/reader: TS/SCI is US clearance.
+1080348:us	us	promise	eligible	not eligible	must be U.S. Citizens or Legal Permanent Residents	
+1143863:us	us	promise	eligible	not eligible	all applicants must be eligible to work in the United States	

@@ -10,7 +10,7 @@ it alone keeps the gate above its line (46 of 50 unknowns closed at revision 2).
 2026-11-08, after the first calibration froze revision 2.
 
 This supersedes ADR-0029's gates, its cap, and its Argentina-only labelling and gold set. The rest of
-ADR-0029 holds: the cue segments, batches of 50, labels kept and reused, Sonnet, no second labeller,
+ADR-0029 holds: the cue segments, batches of 50, labels kept and reused, no second labeller,
 five rounds, and the silent-city count's outcome.
 
 ## The visitor groups
@@ -49,6 +49,10 @@ shown, which reach measures.
 
 ## The labelling
 
+**The labeller and the adjudicator run on Codex** (Sol, `docs/agents/delegation.md`), following
+`.claude/agents/eligibility-labeller.md` and `.claude/agents/adjudicator.md`, in place of ADR-0029's
+Sonnet agents. Decided by Elias on 2026-11-08, during the recalibration.
+
 **The cap** is **250k tokens a round**, labelling and adjudication together, for the three groups.
 About 250 rows a round once rows shared by the groups' draws are labelled once.
 
@@ -59,3 +63,26 @@ About 250 rows a round once rows shared by the groups' draws are labelled once.
   (`eligibility-gold-set.tsv`, Argentina) is kept as it was.
 - Round 0's Feedback stands for round 1; it is mostly about the perk's `anywhere` and the place stated
   for the role, which hold for every group.
+
+## The recalibration (2026-11-08)
+
+The criterion was revised to revision 4: every vacancy asked both verdicts for each group, a group's
+verdict the best of its countries'. A gold set of 207 vacancies was drawn across the groups
+(`eligibility-gold-set-groups.tsv`), 35 promises, 25 rest rows with a cue of the group and 10 without
+per group, half held out, labelled and reviewed on Codex (one batch reviewed by Sonnet before the switch).
+
+**Agreement on the held-out half, revision 4**: the labeller agrees with the gold set on 102 of 103
+scored answers, **99.0%** (94.7–99.8%), and on all six verdicts of 89 of 101 rows (88.1%); the
+adjudicator sided with the gold set on the one disagreement. The labeller and the gold set's reviewer
+are the same model, so the figure is an upper bound on agreement with an independent reader.
+
+**At the rules as they stand** (the gold set's own labels):
+
+| group | promises eligible | reach |
+|---|---|---|
+| latam | 12/35, 34% (21–51%) | 67.5% (34–100%) |
+| us | 21/35, 60% (44–74%) | 95.6% (86–100%) |
+| english | 20/35, 57% (41–72%) | 82.2% (64–100%) |
+
+Reach's intervals are wide because open rows among the rest are few and the uncued strata are large;
+X is Elias's to set from them.

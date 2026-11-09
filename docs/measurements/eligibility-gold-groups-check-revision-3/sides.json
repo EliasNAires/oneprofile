@@ -1,0 +1,42 @@
+{
+ "1143863:us": {
+  "gold": "a",
+  "labeller": "b"
+ },
+ "571674:us": {
+  "gold": "b",
+  "labeller": "a"
+ },
+ "352328:english": {
+  "gold": "a",
+  "labeller": "b"
+ },
+ "80257:us": {
+  "gold": "a",
+  "labeller": "b"
+ },
+ "1080348:us": {
+  "gold": "a",
+  "labeller": "b"
+ },
+ "1363889:us": {
+  "gold": "a",
+  "labeller": "b"
+ },
+ "332300:us": {
+  "gold": "b",
+  "labeller": "a"
+ },
+ "230610:english": {
+  "gold": "a",
+  "labeller": "b"
+ },
+ "204925:english": {
+  "gold": "a",
+  "labeller": "b"
+ },
+ "428679:us": {
+  "gold": "a",
+  "labeller": "b"
+ }
+}

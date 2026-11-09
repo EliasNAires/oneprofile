@@ -1,0 +1,51 @@
+id	latam-rule	latam-reader	us-rule	us-reader	english-rule	english-reader	doubt
+1444776	excluded	closed	eligible	open	excluded	closed	
+508383	excluded	closed	excluded	closed	excluded	closed	
+165338	unknown	unclear	eligible	open	unknown	unclear	
+313073	eligible	open	eligible	open	eligible	open	All rule verdicts: explicit hiring elsewhere via Remote.com includes every group
+296165	eligible	open	eligible	open	eligible	open	
+1467582	unknown	closed	unknown	closed	unknown	closed	
+228169	eligible	open	excluded	closed	excluded	closed	
+392287	unknown	closed	unknown	closed	unknown	closed	
+741900	excluded	closed	eligible	open	eligible	open	
+182379	eligible	open	unknown	unclear	unknown	unclear	
+271321	excluded	closed	eligible	open	eligible	open	
+251830	unknown	closed	unknown	closed	eligible	open	
+275230	excluded	closed	excluded	closed	excluded	closed	
+399283	excluded	closed	excluded	closed	excluded	closed	
+428679	excluded	closed	eligible	open	excluded	closed	
+43660	excluded	closed	excluded	closed	excluded	closed	
+256359	excluded	closed	eligible	open	eligible	open	
+268070	excluded	closed	eligible	open	excluded	closed	
+309050	unknown	closed	eligible	open	unknown	closed	
+270637	eligible	open	eligible	open	eligible	open	
+253550	unknown	unclear	unknown	unclear	unknown	unclear	
+201950	eligible	open	unknown	unclear	unknown	unclear	
+1019365	unknown	closed	unknown	closed	unknown	closed	
+1279092	excluded	closed	eligible	open	eligible	open	
+186377	unknown	closed	unknown	closed	unknown	closed	
+1080348	excluded	closed	eligible	open	excluded	closed	
+332300	excluded	closed	eligible	open	excluded	closed	
+46655	unknown	closed	unknown	closed	unknown	closed	
+65425	excluded	closed	excluded	closed	excluded	closed	All rule verdicts: Location invites the person to Hamburg or Berlin, rule 7
+260064	excluded	closed	eligible	open	eligible	open	
+723877	unknown	closed	unknown	closed	unknown	closed	
+395474	excluded	closed	excluded	closed	excluded	closed	
+647802	unknown	closed	unknown	closed	eligible	open	
+397094	excluded	closed	excluded	closed	excluded	closed	
+80257	excluded	closed	eligible	open	excluded	closed	
+140974	excluded	closed	excluded	closed	excluded	closed	
+1143863	excluded	closed	eligible	open	excluded	closed	
+204925	eligible	open	unknown	unclear	eligible	open	
+270635	eligible	open	eligible	open	eligible	open	
+747616	unknown	closed	unknown	closed	unknown	closed	
+274722	excluded	closed	excluded	closed	excluded	closed	
+16781	unknown	closed	unknown	closed	unknown	closed	
+253520	excluded	closed	excluded	closed	excluded	closed	
+707507	unknown	unclear	eligible	open	unknown	unclear	Latam and english reader: explicit home office defeats silent-city inference; office visits leave location unclear
+1065927	excluded	closed	eligible	open	excluded	closed	
+810645	excluded	closed	excluded	closed	excluded	closed	
+134754	eligible	open	excluded	closed	eligible	open	Timezone verdicts: interpreting working within the timezone window as a location restriction; hours-only reading is possible
+180428	unknown	unclear	eligible	open	unknown	unclear	
+258571	excluded	closed	excluded	closed	eligible	open	
+1363889	excluded	closed	eligible	open	excluded	closed	

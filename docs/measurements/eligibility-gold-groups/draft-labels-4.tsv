@@ -1,0 +1,51 @@
+id	latam-rule	latam-reader	us-rule	us-reader	english-rule	english-reader	reason
+1444776	excluded	closed	eligible	open	excluded	closed	All positions are on-site
+508383	excluded	closed	excluded	closed	excluded	closed	located at TCI Bengaluru
+165338	unknown	unclear	eligible	open	unknown	unclear	San Francisco, California, United States [remote]
+313073	unknown	open	unknown	open	unknown	open	hired via Remote.com if based elsewhere
+296165	eligible	open	eligible	open	eligible	open	remotely in the North America region
+1467582	unknown	closed	unknown	closed	unknown	closed	Bangalore, Karnataka [undeclared]
+228169	eligible	open	excluded	closed	excluded	closed	open to candidates in the Philippines, Latin America, and South Africa
+392287	unknown	closed	unknown	closed	unknown	closed	options only Berlin/Hamburg/Munich, Germany
+741900	excluded	closed	eligible	open	eligible	open	based anywhere in the United States or Canada
+182379	eligible	open	unknown	unclear	unknown	unclear	LATAM [undeclared]
+271321	excluded	closed	eligible	open	eligible	open	authorized to work for any employer in the U.S. or Canada
+251830	unknown	closed	unknown	closed	eligible	open	United Kingdom [remote] | Ireland [remote]
+275230	excluded	closed	excluded	closed	excluded	closed	Herzliya, Israel [hybrid]
+399283	excluded	closed	excluded	closed	excluded	closed	based in Italy
+428679	excluded	closed	eligible	open	excluded	closed	US Citizenship is Required
+43660	excluded	closed	excluded	closed	excluded	closed	Hyderabad, Telangana, India [hybrid]
+256359	excluded	closed	eligible	open	eligible	open	based anywhere in the United States or Canada
+268070	excluded	closed	eligible	open	excluded	closed	U.S.-based Solution Architect
+309050	unknown	closed	eligible	open	unknown	closed	Palo Alto, California [undeclared]
+270637	eligible	open	eligible	open	eligible	open	Work From Anywhere (Remote) capacity
+253550	unknown	unclear	unknown	unclear	unknown	unclear	Poland [remote]
+201950	eligible	open	unknown	unclear	unknown	unclear	Latin America [undeclared]
+1019365	unknown	closed	unknown	closed	unknown	closed	Mapletree Business City, SG [undeclared]
+1279092	excluded	closed	eligible	open	eligible	open	eligible to work in the United States or Canada
+186377	unknown	closed	unknown	closed	unknown	closed	Shenzhen [undeclared]
+1080348	excluded	closed	eligible	open	excluded	closed	must be U.S. Citizens or Legal Permanent Residents
+332300	excluded	closed	eligible	open	excluded	closed	authorized to work in the United States
+46655	unknown	closed	unknown	closed	unknown	closed	Belgrade, Serbia [undeclared]
+65425	unknown	closed	unknown	closed	unknown	closed	join us in Hamburg or Berlin
+260064	excluded	closed	eligible	open	eligible	open	remotely from anywhere in Canada or the United States
+723877	unknown	closed	unknown	closed	unknown	closed	Mumbai [undeclared]
+395474	excluded	closed	excluded	closed	excluded	closed	based in India
+647802	unknown	closed	unknown	closed	eligible	open	Ottawa [undeclared]
+397094	excluded	closed	excluded	closed	excluded	closed	based in Turkey
+80257	excluded	closed	eligible	open	excluded	closed	authorized to work in the U.S.
+140974	excluded	closed	excluded	closed	excluded	closed	Helsinki, Uusimaa, Finland [hybrid]
+1143863	excluded	closed	eligible	open	excluded	closed	eligible to work in the United States without sponsorship
+204925	eligible	open	unknown	unclear	eligible	open	time zones from GMT-8 to GMT-3
+270635	eligible	open	eligible	open	eligible	open	Télétravail complet (Work From Anywhere)
+747616	unknown	closed	unknown	closed	unknown	closed	Spain - Madrid [undeclared]
+274722	excluded	closed	excluded	closed	excluded	closed	Paris [onsite]
+16781	unknown	closed	unknown	closed	unknown	closed	Netherlands > Almere [undeclared]
+253520	excluded	closed	excluded	closed	excluded	closed	Vilnius [hybrid]
+707507	unknown	closed	eligible	open	unknown	closed	San Diego, California [undeclared]
+1065927	excluded	closed	eligible	open	excluded	closed	U.S. citizenship, active Secret Clearance
+810645	excluded	closed	excluded	closed	excluded	closed	Noida [hybrid]
+134754	eligible	open	excluded	closed	eligible	open	Argentinian time-zone window (UTC-3 to UTC+2)
+180428	unknown	unclear	eligible	open	unknown	unclear	US [undeclared]
+258571	excluded	closed	excluded	closed	eligible	open	Australia-based candidates only
+1363889	excluded	closed	eligible	open	excluded	closed	authorized to work in the United States

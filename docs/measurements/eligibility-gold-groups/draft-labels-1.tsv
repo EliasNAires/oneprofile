@@ -1,0 +1,51 @@
+id	latam-rule	latam-reader	us-rule	us-reader	english-rule	english-reader	reason
+302109	excluded	closed	eligible	open	excluded	closed	open to candidates residing in the US
+230610	eligible	open	eligible	open	eligible	open	Remote in North America
+269287	unknown	unclear	eligible	open	eligible	open	Canada [remote] | United States [remote]
+227780	eligible	open	eligible	open	eligible	open	hired via Remote.com
+1056313	unknown	closed	unknown	closed	unknown	closed	Pune [undeclared]
+300478	eligible	open	unknown	unclear	eligible	open	timezone between UTC-6 to UTC+2
+1427428	unknown	closed	unknown	closed	unknown	closed	Yokohama [undeclared]
+104801	unknown	closed	unknown	closed	unknown	closed	Zurich, Switzerland [undeclared]
+235450	excluded	closed	eligible	open	excluded	closed	San Francisco, CA [onsite]
+701594	unknown	closed	unknown	closed	unknown	closed	Taipei Hub [undeclared]
+239237	unknown	unclear	unknown	unclear	unknown	unclear	Remote (Ukraine) [remote]
+45298	unknown	closed	eligible	open	unknown	closed	United States [undeclared]
+256352	excluded	closed	eligible	open	eligible	open	anywhere in the United States or Canada
+396413	eligible	open	excluded	closed	excluded	closed	based in Brazil
+315359	unknown	unclear	unknown	unclear	unknown	unclear	Norway [remote]
+789549	unknown	closed	unknown	closed	unknown	closed	Bengaluru [undeclared]
+371378	eligible	open	unknown	unclear	unknown	unclear	Remote, Latin America
+263524	eligible	open	excluded	closed	eligible	open	within approximately ± 4 hours of CET
+275897	excluded	closed	eligible	open	excluded	closed	You are based in the US
+1245600	unknown	closed	unknown	closed	unknown	closed	Tokyo, Japan [undeclared]
+177678	excluded	closed	excluded	closed	excluded	closed	based in India
+395453	excluded	closed	excluded	closed	excluded	closed	based in Poland
+253514	unknown	unclear	unknown	unclear	unknown	unclear	Poland [remote]
+399318	excluded	closed	excluded	closed	excluded	closed	based in Kenya
+353050	unknown	closed	unknown	closed	unknown	closed	Hungary (In-person) or Hungary (Hybrid/Remote)
+241146	eligible	open	excluded	closed	excluded	closed	open to candidates located in Eastern Europe or LATAM
+797075	excluded	closed	eligible	open	excluded	closed	US Citizenship Required
+251511	excluded	closed	eligible	open	eligible	open	within the United States and Canada
+14623	excluded	closed	eligible	open	excluded	closed	New York [hybrid]
+264325	excluded	closed	excluded	closed	eligible	open	Remote UK, Bulgaria,... Ireland,... Spain
+92040	excluded	closed	eligible	open	eligible	open	located in the United States, Canada...
+232088	excluded	closed	excluded	closed	excluded	closed	Singapore [onsite]
+70277	excluded	closed	excluded	closed	eligible	open	work remotely from anywhere from EU
+795819	excluded	closed	excluded	closed	excluded	closed	International [onsite]
+167108	excluded	closed	excluded	closed	excluded	closed	Warsaw R&D office
+1183274	excluded	closed	eligible	open	eligible	open	United States, Philippines and United Kingdom
+362139	unknown	unclear	unknown	unclear	unknown	unclear	Remote [remote]
+256032	unknown	unclear	unknown	unclear	eligible	open	Remote - Canada [remote]
+429690	unknown	unclear	eligible	open	unknown	unclear	Massachusetts - Boston [remote]
+571674	excluded	closed	excluded	closed	eligible	open	TS/SCI clearance; Cambridgeshire
+943785	unknown	closed	unknown	closed	unknown	closed	Manila (One Ayala Tower 2) [undeclared]
+1468749	excluded	closed	eligible	open	eligible	open	based in Vancouver, BC or Loveland, CO
+175828	excluded	closed	excluded	closed	excluded	closed	Manila, Philippines [hybrid]
+345892	unknown	closed	unknown	closed	unknown	closed	Tel Aviv-Yafo... Israel [undeclared]
+398944	excluded	closed	excluded	closed	eligible	open	hybrid arrangement in... Dublin, or London
+657501	unknown	unclear	eligible	open	unknown	unclear	Plano, TX [undeclared]
+236189	excluded	closed	eligible	open	excluded	closed	San Francisco, CA [onsite]
+788400	unknown	closed	unknown	closed	unknown	closed	Montreuil [undeclared]
+240875	excluded	closed	eligible	open	excluded	closed	based in San Francisco, CA
+326232	unknown	unclear	unknown	unclear	eligible	open	London, UK [undeclared]

@@ -1,0 +1,51 @@
+id	latam-rule	latam-reader	us-rule	us-reader	english-rule	english-reader	doubt
+243180	excluded	closed	excluded	closed	excluded	closed	
+264355	excluded	closed	excluded	closed	excluded	closed	All rule verdicts: Remote Dubai states the role location (rule 7).
+569780	excluded	closed	excluded	closed	excluded	closed	All rule verdicts: Location: Bangalore is explicit (rule 7).
+206807	excluded	closed	excluded	closed	eligible	open	us-rule: role is based in Auckland (rule 7).
+337315	excluded	closed	excluded	closed	eligible	open	latam-rule and us-rule: Location: London or Manchester (rule 7).
+1015462	excluded	closed	eligible	open	excluded	closed	
+251804	eligible	open	eligible	open	eligible	open	
+248074	unknown	closed	unknown	closed	unknown	closed	
+430138	excluded	closed	excluded	closed	excluded	closed	
+335324	unknown	closed	unknown	closed	unknown	closed	
+233214	unknown	unclear	unknown	unclear	eligible	open	
+1466959	excluded	closed	excluded	closed	excluded	closed	
+678482	unknown	closed	unknown	closed	unknown	closed	
+897655	excluded	closed	eligible	open	excluded	closed	
+252446	excluded	closed	excluded	closed	excluded	closed	
+804919	unknown	closed	unknown	closed	eligible	open	
+468185	unknown	closed	unknown	closed	unknown	closed	
+256426	excluded	closed	excluded	closed	eligible	open	
+1452771	excluded	closed	eligible	open	excluded	closed	
+1019381	unknown	closed	unknown	closed	unknown	closed	
+44637	excluded	closed	eligible	open	excluded	closed	
+1246419	excluded	closed	eligible	open	excluded	closed	
+209631	excluded	closed	excluded	closed	eligible	open	
+81003	excluded	closed	excluded	closed	excluded	closed	All rule verdicts: position in Singapore states location despite Nice to have heading.
+297209	excluded	closed	eligible	open	excluded	closed	
+1196129	excluded	closed	eligible	open	excluded	closed	
+828501	excluded	closed	eligible	open	excluded	closed	
+332788	eligible	open	eligible	open	eligible	open	
+108551	excluded	closed	excluded	closed	excluded	closed	
+227764	eligible	open	eligible	open	eligible	open	
+394119	excluded	closed	eligible	open	excluded	closed	
+1448672	unknown	closed	eligible	open	unknown	closed	
+37304	excluded	closed	eligible	open	excluded	closed	
+264581	excluded	closed	eligible	open	excluded	closed	
+235639	excluded	closed	eligible	open	excluded	closed	
+325346	eligible	open	eligible	open	eligible	open	
+300965	excluded	closed	eligible	open	excluded	closed	
+267903	eligible	open	unknown	unclear	unknown	unclear	
+798091	excluded	closed	excluded	closed	excluded	closed	
+225524	eligible	open	eligible	open	eligible	open	
+1397697	excluded	closed	eligible	open	excluded	closed	latam-rule and english-rule: Location: Plano, TX (rule 7).
+294573	unknown	closed	unknown	closed	unknown	closed	
+397098	excluded	closed	excluded	closed	excluded	closed	All rule verdicts: developer based in Spain; anywhere is a perk.
+986175	excluded	closed	eligible	open	excluded	closed	
+128462	excluded	closed	eligible	open	excluded	closed	
+315354	unknown	closed	unknown	closed	unknown	closed	
+8986	excluded	closed	eligible	open	excluded	closed	
+978156	eligible	open	unknown	closed	unknown	closed	
+914	unknown	closed	eligible	open	unknown	closed	
+1167288	excluded	closed	excluded	closed	excluded	closed	

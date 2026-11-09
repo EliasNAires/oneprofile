@@ -1,0 +1,7 @@
+{
+  "204925:english": {
+    "verdict": "b",
+    "clause": "11. A timezone requirement; A group's verdict is the best of its countries': Canada's full standard-time offset range lies within GMT-8 to GMT-3.",
+    "pattern": "timezone window includes all Canada"
+  }
+}

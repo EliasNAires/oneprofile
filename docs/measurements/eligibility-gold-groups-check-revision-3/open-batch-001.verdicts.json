@@ -1,0 +1,27 @@
+{
+  "1143863:us": {
+    "verdict": "a",
+    "clause": "8. Work authorization in a country; 12. Every requirement must hold",
+    "pattern": "authorization establishes an unknown country"
+  },
+  "571674:us": {
+    "verdict": "a",
+    "clause": "10. A security clearance; 12. Every requirement must hold",
+    "pattern": "clearance establishes an unknown country"
+  },
+  "352328:english": {
+    "verdict": "a",
+    "clause": "8. Work authorization in a country; 12. Every requirement must hold; A group's verdict is the best of its countries'",
+    "pattern": "authorization establishes an unknown country"
+  },
+  "80257:us": {
+    "verdict": "a",
+    "clause": "3. An option that names no place; 8. Work authorization in a country; 12. Every requirement must hold",
+    "pattern": "authorization establishes an unknown country"
+  },
+  "1080348:us": {
+    "verdict": "a",
+    "clause": "9. Citizenship; 12. Every requirement must hold",
+    "pattern": "citizenship establishes an unknown country"
+  }
+}
