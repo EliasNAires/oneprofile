@@ -155,6 +155,110 @@ class CountrySetRuleTest {
 			.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("US")));
 	}
 
+	/** The person's stated location is required without must. */
+	@Test
+	void aDescriptionStatesWhereYouAreBased() {
+		for (String text : List.of("You are based in the US", "You're currently located in the US",
+				"You’re primarily based within the US", "You will be located in the US")) {
+			assertThat(described(text)).as(text)
+				.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("US")));
+		}
+		for (String text : List.of("you'll be based within the EMEA region", "you’ll be located in EMEA")) {
+			assertThat(described(text)).as(text)
+				.containsExactly(stated(StatedSetKindEnum.REGION, Place.region("EMEA")));
+		}
+		assertThat(described("If you are based in the US, the pay range is below.")).isEmpty();
+		assertThat(described("For candidates located in the US, the pay range is below.")).isEmpty();
+		assertThat(described("You will not be based in the US.")).isEmpty();
+	}
+
+	/** A statement of where this role is done needs no must. */
+	@Test
+	void aDescriptionStatesWhereTheRoleIsDone() {
+		assertCityStatement("This role is based in our San Francisco office", "US", "San Francisco");
+		assertCityStatement("This position is located in Vilnius", "LT", "Vilnius");
+		assertCityStatement("THIS POSITION IS BASED IN BANGKOK", "TH", "Bangkok");
+		assertCityStatement("This hybrid position will be located in Latina, Italy", "IT", "Latina");
+		assertCityStatement("This role is based in either our Nottingham or London offices", "GB", "Nottingham");
+		assertCityStatement("This job will be primarily located out of London", "GB", "London");
+		assertThat(described("a remote-first role based in the U.S."))
+			.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("US")));
+		assertThat(described("This opportunity is based within Canada"))
+			.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("CA")));
+		assertThat(described("This role is not based in the US.")).isEmpty();
+		assertThat(described("This role is preferably based in the US.")).isEmpty();
+	}
+
+	/** Where the person will work is a statement, including work without be. */
+	@Test
+	void aDescriptionStatesWhereYouWillWork() {
+		assertThat(described("You'll work in Hyvinkää, Finland"))
+			.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("FI")));
+		assertCityStatement("You’ll be working from London", "GB", "London");
+		assertCityStatement("You will work out of Vilnius", "LT", "Vilnius");
+		assertCityStatement("You'll work  in Vilnius", "LT", "Vilnius");
+		assertThat(described("You'll work in a fast-paced team")).isEmpty();
+		assertThat(described("You'll work from anywhere")).isEmpty();
+		assertThat(described("You won't work in the US")).isEmpty();
+	}
+
+	/** Looking for a person based somewhere states that place, beside a separate perk too. */
+	@Test
+	void lookingForAPersonBasedSomewhereStatesWhere() {
+		assertThat(described("Our partner is looking for a Senior Backend Engineer based in Netherlands"))
+			.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("NL")));
+		CountrySet set = this.rule.read(new CountrySetVacancy(1, Set.of(WorkModeEnum.REMOTE), "Software Engineer",
+				List.of(), List.of(new Segment(SegmentKindEnum.SENTENCE, null,
+						"Our partner is looking for a Data Engineer based in Sweden.", false),
+						new Segment(SegmentKindEnum.SENTENCE, "Benefits", "Work from anywhere globally", false))));
+		assertThat(set.statedSets()).singleElement().satisfies((stated) -> {
+			assertThat(stated.kind()).isEqualTo(StatedSetKindEnum.LOCATION);
+			assertThat(stated.places()).containsExactly(Place.country("SE"));
+		});
+	}
+
+	/** Location labels state places unless they offer a choice including remote. */
+	@Test
+	void aDescriptionLocationLabelStatesWhere() {
+		assertCityStatement("Location: Bucharest, Romania", "RO", "Bucharest");
+		assertThat(described("Location: Remote, US or Canada"))
+			.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("US"), Place.country("CA")));
+		for (String text : List.of("Location: Remote, US", "Job location: US", "Work locations: US", "Role location: US")) {
+			assertThat(described(text)).as(text)
+				.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("US")));
+		}
+		assertThat(described("Location: San Francisco or Remote")).isEmpty();
+		assertThat(described("Location: Remote / NYC")).isEmpty();
+		assertThat(described("Our office location: Bucharest, Romania")).isEmpty();
+	}
+
+	/** Anywhere within named countries also permits other verbs and punctuation after remote. */
+	@Test
+	void anywhereWithinAPlaceStatesWhere() {
+		for (String text : List.of("You may be anywhere in Mexico", "You may reside anywhere in Mexico",
+				"Candidates residing anywhere in Mexico", "Work may be performed anywhere in Mexico",
+				"Work can be done anywhere in Mexico", "Remote from anywhere in Mexico")) {
+			assertThat(described(text)).as(text)
+				.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("MX")));
+		}
+		for (String punctuation : List.of(" ", ", ", ": ", "– ", "— ", "- ")) {
+			assertThat(described("Remote" + punctuation + "anywhere in the United States or Canada"))
+				.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("US"), Place.country("CA")));
+		}
+		assertThat(described("Australia-based candidates only"))
+			.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("AU")));
+	}
+
+	/** Asserts one location statement's country and cities without coupling to coordinates. */
+	private void assertCityStatement(String text, String country, String... cities) {
+		assertThat(this.rule.read(vacancy(WorkModeEnum.REMOTE, "Software Engineer", List.of(), text)).statedSets())
+			.as(text).singleElement().satisfies((stated) -> {
+				assertThat(stated.kind()).isEqualTo(StatedSetKindEnum.LOCATION);
+				assertThat(stated.places()).allSatisfy((place) -> assertThat(place.country()).isEqualTo(country));
+				assertThat(stated.places()).extracting(Place::city).containsExactly(cities);
+			});
+	}
+
 	@Test
 	void contractorAndEmployerOfRecordHiringStatesWhere() {
 		assertThat(described("We hire contractors in Latin America.")).containsExactly(stated(StatedSetKindEnum.REGION,
@@ -165,8 +269,53 @@ class CountrySetRuleTest {
 
 	@Test
 	void aDescriptionMayHireAnywhere() {
-		assertThat(described("Fully remote work: work remotely from anywhere in the world."))
+		assertThat(described("We hire from anywhere in the world."))
 			.containsExactly(stated(StatedSetKindEnum.REGION, Place.region("Worldwide")));
+		assertThat(described("Candidates may be located anywhere in the world."))
+			.containsExactly(stated(StatedSetKindEnum.REGION, Place.region("Worldwide")));
+		assertThat(described("You will be based anywhere in the world."))
+			.containsExactly(stated(StatedSetKindEnum.REGION, Place.region("Worldwide")));
+	}
+
+	/** Working from anywhere as a perk states no hiring place. */
+	@Test
+	void workingFromAnywhereAsAPerkIsNoStatedSet() {
+		for (String text : List.of("Work from anywhere – flexibility to fit your life",
+				"Remote-first – Work from anywhere",
+				"Fully Remote Environment: Work from anywhere, with normal business hours.",
+				"Work From Anywhere: Fully remote.", "Remote first, you can work from anywhere you choose.",
+				"Our team works remotely across the globe.",
+				"Fully remote work: work remotely from anywhere in the world.",
+				"Work from anywhere. Candidates must be based in a suitable time zone.",
+				"Our employees work from anywhere.")) {
+			assertThat(described(text)).as(text).isEmpty();
+		}
+		assertThat(described("We hire in Sweden. Work from anywhere."))
+			.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("SE")));
+	}
+
+	/** Global hiring and hiring through an employer of record elsewhere state Worldwide. */
+	@Test
+	void globalHiringStatesWorldwide() {
+		for (String text : List.of("We hire globally", "We are hiring worldwide", "Our company hires talent globally",
+				"We recruit skilled engineers worldwide", "We are recruiting globally",
+				"We hire from any country", "We are hiring talented engineers from virtually any country",
+				"join our workforce from almost any country", "Join us from nearly any country",
+				"We hire people from practically any country",
+				"you will be hired via an employer of record if based elsewhere",
+				"You may be located elsewhere and hired through an EOR",
+				"If based elsewhere, we employ you through an EOR",
+				"We use an employer of record in other countries")) {
+			assertThat(described(text)).as(text)
+				.containsExactly(stated(StatedSetKindEnum.REGION, Place.region("Worldwide")));
+		}
+		assertThat(described("We do not hire globally.")).isEmpty();
+		assertThat(described("Our customers are worldwide.")).isEmpty();
+		assertThat(described("We cannot hire from any country.")).isEmpty();
+		assertThat(described("We do not use an employer of record if based elsewhere.")).isEmpty();
+		assertThat(described("No EOR is offered in other countries.")).isEmpty();
+		assertThat(described("We use an employer of record in Canada; candidates based elsewhere are not eligible."))
+			.containsExactly(stated(StatedSetKindEnum.LOCATION, Place.country("CA")));
 	}
 
 	@Test
