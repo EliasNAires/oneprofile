@@ -1,0 +1,82 @@
+{
+  "236355:latam": {
+    "verdict": "b",
+    "clause": "The reader verdict: open; A group's verdict is the best of its countries'",
+    "pattern": "international hiring through EOR"
+  },
+  "211161:latam": {
+    "verdict": "b",
+    "clause": "The options, 2; The description: a statement about this vacancy",
+    "pattern": "team geography is not hiring"
+  },
+  "81594:us": {
+    "verdict": "b",
+    "clause": "7. Where the person must be, or the company hires; 12. Every requirement must hold",
+    "pattern": "role based outside group"
+  },
+  "680835:english": {
+    "verdict": "b",
+    "clause": "The options, 2; These say nothing: Visa sponsorship and relocation",
+    "pattern": "remote options outside group"
+  },
+  "80157:english": {
+    "verdict": "a",
+    "clause": "The reader verdict: open",
+    "pattern": "worldwide remote role offered"
+  },
+  "119681:us": {
+    "verdict": "a",
+    "clause": "The options, 3; These say nothing: Where the company or its offices or customers are",
+    "pattern": "headquarters and pay geography"
+  },
+  "506494:latam": {
+    "verdict": "a",
+    "clause": "The options, 2: A region before a narrower place gives the narrower place",
+    "pattern": "region narrowed by country"
+  },
+  "926449:latam": {
+    "verdict": "b",
+    "clause": "The description: where the person must be or where the company hires; These say nothing: A requirement for some of the company's roles only",
+    "pattern": "worldwide applications conditional requirements"
+  },
+  "409007:us": {
+    "verdict": "b",
+    "clause": "The options, 3; These say nothing: Working from anywhere offered as a perk or a culture; Where the company or its offices or customers are",
+    "pattern": "perks and company geography"
+  },
+  "752099:us": {
+    "verdict": "b",
+    "clause": "11. A timezone requirement: unknown where some are",
+    "pattern": "partial country timezone coverage"
+  },
+  "931004:english": {
+    "verdict": "b",
+    "clause": "7. Where the person must be, or the company hires: Location",
+    "pattern": "role based outside group"
+  },
+  "412400:english": {
+    "verdict": "b",
+    "clause": "The reader verdict: open; A group's verdict is the best of its countries'",
+    "pattern": "European remote work offered"
+  },
+  "1468656:english": {
+    "verdict": "b",
+    "clause": "The reader verdict: open; A group's verdict is the best of its countries'",
+    "pattern": "group country explicitly offered"
+  },
+  "420399:latam": {
+    "verdict": "b",
+    "clause": "The options, 2; The description: a statement about this vacancy",
+    "pattern": "remote options outside group"
+  },
+  "398111:english": {
+    "verdict": "b",
+    "clause": "7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture",
+    "pattern": "role location overrides perk"
+  },
+  "3759:english": {
+    "verdict": "b",
+    "clause": "7. Where the person must be, or the company hires; 12. Every requirement must hold",
+    "pattern": "role based outside group"
+  }
+}

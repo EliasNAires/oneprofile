@@ -1,0 +1,9 @@
+id	latam-rule	latam-reader	us-rule	us-reader	english-rule	english-reader	reason
+226159	eligible	open	eligible	open	eligible	open	We hire globally
+226154	eligible	open	eligible	open	eligible	open	We hire globally
+191377	eligible	open	excluded	closed	excluded	closed	Legal residents of Peru, Colombia, Bolivia, Costa Rica, Mexico, and Brazil
+226350	eligible	open	eligible	open	eligible	open	We hire globally
+165480	unknown	closed	eligible	open	unknown	open	"United States | Remote; ""U.S or Canada"""
+300482	eligible	open	unknown	open	eligible	open	You live in a timezone between UTC -6 to UTC+2
+224277	eligible	open	eligible	open	eligible	open	We hire globally
+225496	eligible	open	eligible	open	eligible	open	We hire globally

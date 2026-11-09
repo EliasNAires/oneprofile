@@ -1,0 +1,56 @@
+#103 eligibility round 2, commit eb5dc1d, criterion revision 4
+
+latam promises: 32/35 = 91.4% (95% Wilson 77.6%-97.0%); HOLDS (>= 90%)
+latam reach: 85.5% (95% bootstrap 64.1%-100.0%); target 70%, met (not deciding); gate 2: HOLDS (>= baseline 85.5% - 5%)
+latam overall: HOLDS (both gates)
+  labeller raw promises: 32/35 = 91.4% (95% Wilson 77.6%-97.0%); reach: 85.5%
+us promises: 31/35 = 88.6% (95% Wilson 74.0%-95.5%); FAILS (>= 90%)
+us reach: 100.0% (95% bootstrap 100.0%-100.0%); target 90%, met (not deciding); gate 2: HOLDS (>= baseline 100.0% - 5%)
+us overall: FAILS (both gates)
+  labeller raw promises: 31/35 = 88.6% (95% Wilson 74.0%-95.5%); reach: 100.0%
+english promises: 32/35 = 91.4% (95% Wilson 77.6%-97.0%); HOLDS (>= 90%)
+english reach: 83.2% (95% bootstrap 68.9%-100.0%); target 80%, met (not deciding); gate 2: HOLDS (>= baseline 84.2% - 5%)
+english overall: HOLDS (both gates)
+  labeller raw promises: 32/35 = 91.4% (95% Wilson 77.6%-97.0%); reach: 83.2%
+  latam promise adjudication: rule 0, labeller 3, neither 0
+  latam eligible-other adjudication: rule 0, labeller 1, neither 0
+  latam rest-cued adjudication: rule 0, labeller 1, neither 0
+  latam rest-plain adjudication: rule 0, labeller 0, neither 0
+  us promise adjudication: rule 0, labeller 4, neither 0
+  us eligible-other adjudication: rule 0, labeller 0, neither 0
+  us rest-cued adjudication: rule 0, labeller 0, neither 0
+  us rest-plain adjudication: rule 0, labeller 0, neither 0
+  english promise adjudication: rule 0, labeller 3, neither 0
+  english eligible-other adjudication: rule 0, labeller 1, neither 0
+  english rest-cued adjudication: rule 0, labeller 3, neither 0
+  english rest-plain adjudication: rule 0, labeller 0, neither 0
+Adjudication patterns:
+  European remote work offered: 1
+    412400:english english rest-cued: rule not open; labeller open; reason Cyprus remote; "working remotely or in a hybrid model across Europe"; labeller [The reader verdict: open; A group's verdict is the best of its countries']
+  group country explicitly offered: 1
+    1468656:english english rest-cued: rule not open; labeller open; reason Location: Prague (Hybrid); Czech Republic (Remote); UK (Remote); labeller [The reader verdict: open; A group's verdict is the best of its countries']
+  headquarters and pay geography: 1
+    119681:us us promise: rule eligible; labeller unknown; reason Location: Remote - Headquarters located in Burlington, MA; labeller [The options, 3; These say nothing: Where the company or its offices or customers are]
+  international hiring through EOR: 1
+    236355:latam latam rest-cued: rule not open; labeller open; reason Remote (International); "can hire remotely in most countries"; labeller [The reader verdict: open; A group's verdict is the best of its countries']
+  partial country timezone coverage: 1
+    752099:us us promise: rule eligible; labeller unknown; reason remote within the United States; "must reside in the Eastern or Central time zones"; labeller [11. A timezone requirement: unknown where some are]
+  perks and company geography: 1
+    409007:us us promise: rule eligible; labeller unknown; reason Remote; "Remote-first global workforce" under Perks; labeller [The options, 3; These say nothing: Working from anywhere offered as a perk or a culture; Where the company or its offices or customers are]
+  region narrowed by country: 1
+    506494:latam latam eligible-other: rule eligible; labeller unknown; reason AMER - Canada - British Columbia - Remote; labeller [The options, 2: A region before a narrower place gives the narrower place]
+  remote options outside group: 2
+    420399:latam latam promise: rule eligible; labeller unknown; reason Flexible, Spain [remote]; "Flexible - Serbia [remote]"; labeller [The options, 2; The description: a statement about this vacancy]
+    680835:english english eligible-other: rule eligible; labeller unknown; reason PA - Work from home and other US states; labeller [The options, 2; These say nothing: Visa sponsorship and relocation]
+  role based outside group: 3
+    3759:english english promise: rule eligible; labeller excluded; reason require that someone is based in Spain for the role; labeller [7. Where the person must be, or the company hires; 12. Every requirement must hold]
+    81594:us us promise: rule eligible; labeller excluded; reason role is based at our Oxford, England (UK) office; labeller [7. Where the person must be, or the company hires; 12. Every requirement must hold]
+    931004:english english promise: rule eligible; labeller excluded; reason Location: New England, Upstate NY, and Western PA; labeller [7. Where the person must be, or the company hires: Location]
+  role location overrides perk: 1
+    398111:english english promise: rule eligible; labeller excluded; reason based in Portugal; labeller [7. Where the person must be, or the company hires; These say nothing: Working from anywhere offered as a perk or a culture]
+  team geography is not hiring: 1
+    211161:latam latam promise: rule eligible; labeller unknown; reason Munich, Germany [undeclared]; labeller [The options, 2; The description: a statement about this vacancy]
+  worldwide applications conditional requirements: 1
+    926449:latam latam promise: rule eligible; labeller unknown; reason London (GB80); "physically present in that country by their first day"; labeller [The description: where the person must be or where the company hires; These say nothing: A requirement for some of the company's roles only]
+  worldwide remote role offered: 1
+    80157:english english rest-cued: rule not open; labeller open; reason from anywhere in the world; labeller [The reader verdict: open]
