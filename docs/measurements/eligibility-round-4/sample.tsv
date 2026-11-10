@@ -1,0 +1,240 @@
+id	ats	title	options	drawn	latam	us	english
+5999	GREENHOUSE	Tech Lead, Embedded Platform	Copenhagen OR Remote [remote]	english:promise	excluded	excluded	eligible
+10854	GREENHOUSE	Mission Software Engineer - Undersea Reconnaissance & Strike	Quincy, Massachusetts, United States [undeclared]	us:eligible-other	unknown	eligible	unknown
+12722	GREENHOUSE	DevOps / AgentOps Engineer, GTM Systems	San Francisco, CA [hybrid]	english:rest-plain	excluded	eligible	excluded
+13936	GREENHOUSE	Java Tech Lead	Poland [remote]	english:rest-cued	excluded	excluded	excluded
+17236	GREENHOUSE	Principal Product Application Engineer - PCIe	San Jose, California, United States [onsite]	english:rest-cued	excluded	eligible	excluded
+19304	GREENHOUSE	Software Engineer – Simulation Backend	Austin, Texas [undeclared]	latam:rest-plain	excluded	eligible	excluded
+19892	GREENHOUSE	Senior Site Reliability Engineer I	Boston, Massachusetts, United States [hybrid]	latam:rest-plain	excluded	eligible	excluded
+23869	GREENHOUSE	Algorithm Engineer	Remote [remote]	us:promise	excluded	eligible	excluded
+26499	GREENHOUSE	Staff Software Engineer - Python, Java / Spring or Go	Czechia [remote]	us:promise	excluded	eligible	eligible
+26560	GREENHOUSE	Windows Platform Engineer	London, England, United Kingdom [undeclared]	us:rest-plain	unknown	unknown	eligible
+33252	GREENHOUSE	Senior AI Transformation & Innovation Consultant	Munich, Germany [undeclared]	latam:rest-cued	unknown	unknown	unknown
+45121	GREENHOUSE	Solutions Architect	Queensland, Australia [undeclared]	latam:rest-cued	excluded	excluded	eligible
+45143	GREENHOUSE	Solutions Architect - Digital Native Business, Named Accounts	Nevada; Remote - California; Remote - Colorado; Remote - Oregon; Remote - Washington [remote]	us:eligible-other	unknown	eligible	unknown
+46449	GREENHOUSE	Security Operations Engineer	Belgrade, Serbia [remote] | Belgrade, Serbia [hybrid]	english:promise	excluded	excluded	eligible
+50548	GREENHOUSE	Quantitative Researcher Futures	New York [undeclared]	english:rest-cued	unknown	eligible	unknown
+62121	GREENHOUSE	Manager, Software Engineering - Billing	San Francisco, CA • New York, NY • United States [undeclared]	english:rest-cued	excluded	eligible	excluded
+63614	GREENHOUSE	HIPAA Security Engineer	London [hybrid]	us:rest-cued	excluded	excluded	excluded
+63985	GREENHOUSE	Senior Data Engineer - Data Platform	South San Francisco, California, USA [undeclared]	latam:rest-cued	excluded	eligible	excluded
+69475	GREENHOUSE	Senior Solutions Engineer | Spain | Arabic Speaker | Remote	Spain (Remote) [remote]	latam:rest-cued	excluded	excluded	excluded
+76791	GREENHOUSE	Lead Software Engineer, Cloud Services	San Francisco, CA [undeclared]	us:eligible-other	unknown	eligible	unknown
+82487	GREENHOUSE	Machine Learning Researcher	New York, New York, United States [undeclared]	english:rest-plain	unknown	eligible	unknown
+92036	GREENHOUSE	Senior Software Engineer, Product Platform	Remote [remote]	us:promise	excluded	eligible	eligible
+104895	GREENHOUSE	Software Engineering - Clustering & Distributed Systems	London [hybrid]	us:rest-cued	excluded	excluded	eligible
+105119	GREENHOUSE	Senior DevOps Engineer (Development Operations Engineer, SaaS)	Hyderabad, India | Hybrid [hybrid]	english:rest-cued	excluded	excluded	excluded
+105295	GREENHOUSE	Engineering Director, Foundation Services	Santa Clara, California, United States [undeclared]	latam:rest-plain	unknown	eligible	unknown
+105492	GREENHOUSE	Salesforce Solution Engineer, RCA & RCB	Remote - Canada (Alberta, British Columbia, Ontario Only) [remote]	us:promise	excluded	eligible	excluded
+117237	GREENHOUSE	Senior Software Engineer, Storage Infrastructure	Canada, Remote [remote]	us:promise	excluded	eligible	eligible
+121278	GREENHOUSE	Head of Digital Product Platform (m/f/d)	Dusseldorf [hybrid]	english:rest-cued	excluded	excluded	excluded
+129760	GREENHOUSE	AI/ML Engineer — Generative AI Mission Systems	Remote [remote]	us:promise	excluded	eligible	excluded
+135372	GREENHOUSE	Backend Developer	North America/Remote [remote]	latam:eligible-other	eligible	eligible	eligible
+136417	GREENHOUSE	Product Manager of AI Applications, Global Public Sector	Doha, Qatar ; Dubai, UAE [undeclared]	latam:rest-plain	unknown	unknown	unknown
+143345	GREENHOUSE	Embedded Software Engineer, Laser Mesh Routing (Starlink)	Redmond, WA [undeclared]	latam:rest-cued	excluded	eligible	excluded
+161130	GREENHOUSE	Senior Partner Solutions Engineer, Public Sector	United States - East (Remote) [remote]	latam:rest-cued	excluded	eligible	excluded
+162439	GREENHOUSE	Software Engineer, Modem BSP	San Diego, California [hybrid]	latam:rest-cued	excluded	eligible	excluded
+173604	GREENHOUSE	Senior Product Manager	Costa Rica [undeclared]	us:rest-plain	unknown	unknown	unknown
+175099	GREENHOUSE	Senior C++ Software Engineer	London [undeclared]	latam:rest-cued	unknown	unknown	eligible
+177986	GREENHOUSE	Sr. Product Specialist - Implementation/Onboarding	Hyderabad, Telangana, India [undeclared]	english:rest-cued	unknown	unknown	unknown
+189345	GREENHOUSE	Software Engineering Manager	Remote in Philippines [remote]	english:rest-cued	excluded	excluded	excluded
+192761	GREENHOUSE	Senior Full-Stack Engineer	Ciudad de México, Mexico [undeclared]	latam:eligible-other	eligible	unknown	unknown
+198128	GREENHOUSE	Product Support Analyst	Remote [remote]	us:promise	excluded	eligible	excluded
+201760	GREENHOUSE	Manager, Software Engineering	Bangalore, India [undeclared]	us:rest-cued	unknown	unknown	unknown
+201786	GREENHOUSE	Educational Data Analyst	Remote - US [remote]	english:rest-plain	unknown	eligible	unknown
+207032	GREENHOUSE	Technical Account Manager (TAM)	United States [undeclared]	latam:promise	eligible	eligible	eligible
+218722	ASHBY	Fullstack Software Engineer (x/f/m) - Ops AI Platform	Anywhere in France, Belgium, Spain [undeclared]	english:promise	excluded	excluded	eligible
+221581	ASHBY	Senior Software Engineer, Data	New York [onsite]	us:eligible-other	excluded	eligible	excluded
+221906	ASHBY	Senior Software Engineer, Platform	Dublin [remote]	english:eligible-other	unknown	unknown	eligible
+224270	ASHBY	Staff Software Engineer	Germany [remote]	latam:promise	eligible	eligible	eligible
+224626	ASHBY	Lead Software Engineer	Sydney, Australia [remote]	latam:promise	eligible	eligible	eligible
+224812	ASHBY	Engineering Manager - AI-native email App	Hong Kong [remote]	latam:promise	eligible	eligible	eligible
+224817	ASHBY	Lead Engineer - AI-Native Email App	Indonesia [remote]	english:promise	eligible	eligible	eligible
+224865	ASHBY	Lead Engineer - Stock Trading App	Vietnam [remote]	latam:promise	eligible	eligible	eligible
+224911	ASHBY	Engineering Manager - AI Payments App	China [remote]	latam:promise	eligible	eligible	eligible
+224917	ASHBY	Engineering Manager	Singapore [remote]	us:promise	eligible	eligible	eligible
+224922	ASHBY	Engineering Manager	Vietnam [remote]	latam:promise	eligible	eligible	eligible
+224938	ASHBY	Lead Engineer - Travel FX App	Thailand [remote]	english:promise	eligible	eligible	eligible
+224954	ASHBY	Lead Engineer - Travel FX App	Indonesia [remote]	english:promise	eligible	eligible	eligible
+224990	ASHBY	Lead Engineer - Vietnam	Vietnam [remote]	latam:promise	eligible	eligible	eligible
+224994	ASHBY	Lead Engineer - Travel FX App	Indonesia [remote]	english:promise	eligible	eligible	eligible
+225078	ASHBY	Engineering Manager - Stock Trading App	Philippines [remote]	latam:promise	eligible	eligible	eligible
+225083	ASHBY	Engineering Manager - Wealth Management App	Seoul, Korea [remote]	us:promise	eligible	eligible	eligible
+225106	ASHBY	Engineering Manager - Travel FX App	Philippines [remote]	latam:promise	eligible	eligible	eligible
+225128	ASHBY	Engineering Manager - AI Payments App	Seoul, Korea [remote]	us:promise	eligible	eligible	eligible
+225133	ASHBY	Engineering Manager	United States [remote]	english:promise	eligible	eligible	eligible
+225152	ASHBY	Engineering Manager - AI Payments App	Seoul, Korea [remote]	english:promise	eligible	eligible	eligible
+225378	ASHBY	Technical Lead	United States [remote]	latam:promise	eligible	eligible	eligible
+225500	ASHBY	Technical Lead	China [remote]	us:promise	eligible	eligible	eligible
+225505	ASHBY	Technical Lead	Sydney, Australia [remote]	us:promise	eligible	eligible	eligible
+225510	ASHBY	Engineering Lead	Austria [remote]	english:promise	eligible	eligible	eligible
+225511	ASHBY	Engineering Lead	Germany [remote]	english:promise	eligible	eligible	eligible
+225517	ASHBY	Engineering Lead	Seoul, Korea [remote]	latam:promise	eligible	eligible	eligible
+225519	ASHBY	Engineering Lead	Poland [remote]	latam:promise	eligible	eligible	eligible
+225868	ASHBY	Technical Product Manager - AI Finance App	Hong Kong [remote]	us:promise	eligible	eligible	eligible
+225871	ASHBY	Technical Product Manager - AI Finance App	Philippines [remote]	latam:promise	eligible	eligible	eligible
+225875	ASHBY	Technical Product Manager - AI Finance App	Singapore [remote]	us:promise	eligible	eligible	eligible
+225899	ASHBY	Staff Software Engineer	Thailand [remote]	us:promise	eligible	eligible	eligible
+225901	ASHBY	Staff Software Engineer	Vietnam [remote]	english:promise	eligible	eligible	eligible
+225917	ASHBY	Lead Software Engineer	Singapore [remote]	english:promise	eligible	eligible	eligible
+225918	ASHBY	Lead Software Engineer	Spain [remote]	us:promise	eligible	eligible	eligible
+225961	ASHBY	Technical Lead	Indonesia [remote]	english:promise	eligible	eligible	eligible
+225977	ASHBY	Engineering Lead	Seoul, Korea [remote]	latam:promise	eligible	eligible	eligible
+225984	ASHBY	Engineering Lead	Spain [remote]	latam:promise	eligible	eligible	eligible
+226000	ASHBY	Technical Product Manager - AI Neobank App	Austria [remote]	us:promise	eligible	eligible	eligible
+226006	ASHBY	Technical Product Manager - AI Neobank App	Philippines [remote]	english:promise	eligible	eligible	eligible
+226091	ASHBY	Technical Product Manager - AI Finance	Sydney, Australia [remote]	latam:promise english:eligible-other	eligible	eligible	eligible
+226136	ASHBY	Technical Product Lead - AI Finance App	Austria [remote]	english:promise	eligible	eligible	eligible
+226139	ASHBY	Technical Product Lead - AI Finance App	Hong Kong [remote]	latam:promise	eligible	eligible	eligible
+226148	ASHBY	Technical Product Lead - AI Finance App	Poland [remote]	latam:promise	eligible	eligible	eligible
+226159	ASHBY	Technical Product Manager - AI Neobank	Ireland [remote]	latam:promise	eligible	eligible	eligible
+226171	ASHBY	Technical Product Manager - AI Neobank	Spain [remote]	us:promise	eligible	eligible	eligible
+226187	ASHBY	Technical Product Lead - AI Neobank App	Sydney, Australia [remote]	latam:promise	eligible	eligible	eligible
+226188	ASHBY	Technical Product Manager - AI Investing	Hong Kong [remote]	latam:promise	eligible	eligible	eligible
+226245	ASHBY	Technical Product Manager - AI Stockbroking	Netherlands [remote]	english:promise	eligible	eligible	eligible
+226250	ASHBY	Technical Product Manager - AI Stockbroking	Hong Kong [remote]	english:promise	eligible	eligible	eligible
+226253	ASHBY	Technical Product Lead - AI Investing App	Seoul, Korea [remote]	us:promise	eligible	eligible	eligible
+226256	ASHBY	Technical Product Lead - AI Investing App	Netherlands [remote]	latam:promise	eligible	eligible	eligible
+226272	ASHBY	Technical Product Lead - AI Stockbroking App	Sydney, Australia [remote]	us:promise	eligible	eligible	eligible
+226276	ASHBY	Technical Product Lead - AI Stockbroking App	Ireland [remote]	latam:promise	eligible	eligible	eligible
+226286	ASHBY	Technical Product Lead - AI Stockbroking App	Thailand [remote]	latam:promise	eligible	eligible	eligible
+226304	ASHBY	Technical Product Lead - AI Finance	Indonesia [remote]	english:promise	eligible	eligible	eligible
+226307	ASHBY	Technical Product Lead - AI Finance	Sweden [remote]	latam:promise	eligible	eligible	eligible
+226308	ASHBY	Technical Product Lead - AI Finance	Thailand [remote]	english:promise	eligible	eligible	eligible
+226310	ASHBY	Technical Product Manager - AI Finance	Vietnam [remote]	english:promise	eligible	eligible	eligible
+226318	ASHBY	Technical Product Lead - AI Neobank	Germany [remote]	latam:promise	eligible	eligible	eligible
+226327	ASHBY	Technical Product Lead - AI Neobank	Singapore [remote]	english:promise	eligible	eligible	eligible
+226343	ASHBY	Technical Product Lead - AI Investing	Ireland [remote]	latam:promise	eligible	eligible	eligible
+226361	ASHBY	Technical Product Lead - AI Stockbroking	Austria [remote]	us:promise	eligible	eligible	eligible
+228340	ASHBY	Senior Runtime Engineer	United States and Canada [undeclared]	english:eligible-other	unknown	eligible	eligible
+228458	ASHBY	Forward Deployed Engineer	India [undeclared]	latam:promise	eligible	eligible	eligible
+229428	ASHBY	Senior Platform Software Engineer	remote [remote]	english:promise	excluded	excluded	eligible
+232191	ASHBY	Senior Infrastructure Engineer	Remote [remote]	latam:rest-plain	excluded	eligible	excluded
+232217	ASHBY	Senior Software Engineer, Back-End	United States [remote]	english:promise	excluded	eligible	eligible
+233608	ASHBY	Principal Product Manager, DHI	San Francisco, CA or Seattle, WA [remote]	latam:rest-plain	unknown	eligible	unknown
+239027	ASHBY	Senior Principal Backend Engineer, Conversational AI	USA - Remote [remote]	english:promise	excluded	eligible	eligible
+239801	ASHBY	Forward Deployed Engineer	New York City [hybrid] | Remote (United States) [remote]	english:promise	excluded	eligible	eligible
+240501	ASHBY	Forward Deployed Engineer	Argentina [hybrid]	us:rest-cued	eligible	excluded	excluded
+244709	ASHBY	Data Scientist	EDT / EST (US East Coast only) [remote] | New York City Metro (Remote) [remote]	us:rest-cued	excluded	excluded	excluded
+255653	ASHBY	Software Engineer, Backend and Infrastructure	Miami [onsite]	latam:rest-cued	excluded	eligible	excluded
+255655	ASHBY	Software Engineer, Site Reliability	Miami [onsite] | Remote [remote] | San Francisco [onsite]	english:rest-cued	unknown	eligible	unknown
+257390	ASHBY	PostgreSQL Database Support Engineer - EMEA (Remote)	EMEA [remote] | Bucharest [remote] | Dublin [remote] | UK [remote] | Warsaw [remote] | Lisbon [remote] | Frankfurt [remote] | Paris [remote]	latam:promise	eligible	eligible	eligible
+257964	ASHBY	Head of GenAI Platform	Paris [hybrid]	latam:rest-cued	excluded	excluded	excluded
+260277	ASHBY	Member of Technical Staff, Post-Training	San Francisco [onsite] | Tokyo [onsite]	us:eligible-other	excluded	eligible	excluded
+261089	ASHBY	Staff Software Engineer	North Kingstown, Rhode Island, USA [onsite]	us:eligible-other	excluded	eligible	excluded
+263759	ASHBY	Senior Business Intelligence Analyst	Remote - U.S. [remote] | Seattle, WA | Remote [remote] | Chicago, IL | Remote [remote] | Austin, TX | Remote [remote] | Tampa, FL | Remote [remote] | Philadelphia, PA | Remote [remote] | Salt Lake City, UT | Remote [remote] | Providence, RI | Remote [remote] | Portland, OR | Remote [remote] | Atlanta, GA | Remote [remote] | Raleigh, NC | Remote [remote] | Nashville, TN | Remote [remote] | Dallas, TX | Remote [remote] | Columbus, OH | Remote [remote] | Phoenix, AZ | Remote [remote]	latam:promise	eligible	eligible	eligible
+265375	ASHBY	Staff Software Engineer, Issues	San Francisco, California [hybrid]	english:rest-plain	excluded	eligible	excluded
+269494	ASHBY	Deployment and Test Engineer	Remote [remote]	us:promise	excluded	eligible	excluded
+271309	ASHBY	Gameplay Engineer	Remote - US [remote]	english:promise	excluded	eligible	eligible
+271718	ASHBY	Senior Software Engineer II	United Kingdom, London [hybrid]	english:eligible-other	excluded	excluded	eligible
+272227	ASHBY	Senior Backend Engineer	Romania [remote]	english:rest-cued	unknown	unknown	unknown
+272231	ASHBY	Senior Backend Engineer	Spain [remote]	english:rest-cued	unknown	unknown	unknown
+274209	ASHBY	Principal Security Engineer	Paris [hybrid]	us:rest-cued	excluded	excluded	excluded
+275499	ASHBY	Senior Product Engineer - Supply Team	Bulgaria [remote] | Estonia [remote] | Sweden [remote] | Portugal [remote] | Italy [remote] | Hungary [remote] | Poland [remote] | Spain [remote] | Ireland [remote] | Lithuania [remote]	english:promise	excluded	excluded	eligible
+282531	GREENHOUSE	Manager, SEO & Data Analytics	Argentina [hybrid]	latam:eligible-other	eligible	excluded	excluded
+284144	GREENHOUSE	Security Analyst (Governance and Trust)	United States - Remote [remote]	english:promise	excluded	eligible	eligible
+287915	GREENHOUSE	Senior Site Reliability Engineer (SRE)	Peru [remote]	latam:promise	eligible	excluded	excluded
+288298	GREENHOUSE	IT Operations Analyst	Virginia [undeclared]	us:rest-cued	unknown	unknown	unknown
+289381	GREENHOUSE	IT Operations Engineer	Schaumburg, IL [undeclared]	english:rest-cued	unknown	eligible	unknown
+294480	GREENHOUSE	Enterprise Sales Engineer	Berlin; Munich [remote] | Berlin; Munich [onsite]	english:promise	excluded	excluded	eligible
+295260	GREENHOUSE	CSS Support Operations Analyst	Remote - No clearance required [remote]	us:promise	excluded	eligible	excluded
+300481	GREENHOUSE	Senior Software Engineer | Remote | AI SaaS Software Role	Remote | UTC-6 to UTC+2 [remote]	latam:promise	eligible	unknown	eligible
+302570	GREENHOUSE	Senior Software Engineer, Security Platform	Türkiye, Remote [remote]	us:promise	eligible	eligible	eligible
+326201	GREENHOUSE	Operations Engineering Manager, Fleet Reliability	Warsaw, Poland [undeclared]	english:rest-cued	unknown	unknown	unknown
+331513	GREENHOUSE	AI Technical Lead (Principal Engineer)	Remote [remote]	us:promise	excluded	eligible	excluded
+332774	ASHBY	Senior Engineering Manager, Risk Platform	San Francisco [hybrid] | New York [hybrid]	english:rest-cued	excluded	eligible	excluded
+332795	GREENHOUSE	Senior Data Warehouse Engineer	Remote [remote]	english:promise	eligible	eligible	eligible
+333049	GREENHOUSE	Partner Solutions Architect	Remote, Any, United States, AMER [remote]	latam:eligible-other	eligible	eligible	eligible
+338529	GREENHOUSE	Frontend Developer-Adobe Experience Manager	Gurugram, India [undeclared]	us:rest-plain	unknown	unknown	unknown
+340078	GREENHOUSE	Project Manager- CyberArk Secrets Manager (Contract)	USA [remote]	english:rest-cued	excluded	eligible	excluded
+355869	GREENHOUSE	Senior DevOps Engineer	San Francisco, California [undeclared]	english:promise	excluded	excluded	eligible
+355900	GREENHOUSE	IT System Analyst	100% Remote [remote]	us:promise	excluded	eligible	excluded
+370876	LEVER	Full Stack Laravel + React Developer - Remote, Latin America	Hermosillo, Sonora, Mexico [remote]	latam:eligible-other	eligible	unknown	unknown
+377243	LEVER	Senior Software Engineer, DevOps	São Paulo [remote]	us:promise	excluded	eligible	excluded
+377513	LEVER	Staff Software Engineer, Modeling Platform	Remote [remote] | Toronto [remote]	latam:rest-cued	unknown	unknown	eligible
+383722	LEVER	Automation Engineer	Zaragoza, Spain [onsite]	us:rest-plain	excluded	excluded	excluded
+390986	LEVER	Senior Flight Software Engineer	Atlanta, GA [onsite]	english:rest-plain	excluded	eligible	excluded
+397607	LEVER	QA Automation Engineer - Digital Media & Advertising	Brazil [remote]	latam:eligible-other	eligible	unknown	unknown
+398714	LEVER	Senior Unity VR Engineer	Spain [remote]	us:rest-cued	excluded	excluded	excluded
+399084	LEVER	Tech Lead iGaming	Brazil [remote]	latam:eligible-other	eligible	unknown	unknown
+399089	LEVER	Technical Account Manager - Mid-Market (Hebrew Speaking)	Netherlands [remote]	us:rest-plain	unknown	unknown	unknown
+405871	LEVER	Vulnerability Researcher	United Kingdom [remote] | Canada [remote] | Sweden [remote] | Germany [remote] | France [remote] | Spain [remote]	latam:promise	eligible	eligible	eligible
+412133	LEVER	Senior System Engineer	Multiple Locations [remote]	us:promise	excluded	eligible	excluded
+416828	LEVER	Senior Generative AI Application Engineer, Learning & Development (R5856)	San Diego, California [onsite] | Dallas, Texas [onsite] | Washington, D.C. [onsite]	latam:rest-cued	excluded	eligible	excluded
+416932	LEVER	Senior Staff Software Engineer, Autonomous Pilot Integration – Expeditionary (R5193)	Washington, D.C. [onsite] | Boston, Massachusetts [onsite] | San Diego, California [onsite] | Dallas, Texas [onsite]	latam:rest-cued	excluded	eligible	excluded
+417001	LEVER	Staff Business Systems Analyst – Procure to Pay (R5879)	San Mateo, California [hybrid]	latam:rest-cued	excluded	eligible	excluded
+432726	LEVER	Software Engineer, Frontend	Palo Alto, CA [hybrid] | San Francisco, CA [hybrid] | New York City, NY [hybrid] | Seattle, WA [hybrid]	us:eligible-other	excluded	eligible	excluded
+435971	WORKDAY	C# Software Engineer	Cebu-8x8 Asia [undeclared]	latam:rest-cued	unknown	unknown	unknown
+438176	WORKDAY	Firmware Engineering Lead	United Kingdom London [undeclared]	us:rest-cued	unknown	unknown	eligible
+466327	WORKDAY	Process Control Engineer	Burns Harbor [undeclared]	us:promise	excluded	eligible	excluded
+478279	WORKDAY	Software Developer (backend, frontend, full-stack, DevOps)	Amsterdam [undeclared]	us:rest-plain	unknown	unknown	unknown
+481595	WORKDAY	Software Development Engineer	Bogota [hybrid]	latam:eligible-other	eligible	excluded	excluded
+490633	WORKDAY	Staff Developer ( Mac )	Bengaluru, IND [undeclared]	english:rest-cued	unknown	unknown	unknown
+508128	WORKDAY	Engineering Intern	CAN Kanata (2), ON - WR [hybrid]	english:eligible-other	excluded	excluded	eligible
+510166	WORKDAY	Senior Data Engineer	Spain - Barcelona [hybrid]	english:rest-cued	excluded	excluded	excluded
+516985	WORKDAY	CRT Firmware Engineer	Beijing, China [undeclared]	us:rest-cued	unknown	unknown	unknown
+574851	WORKDAY	Senior Analyst, Data Foundations and Infrastructure	Toronto, ON, CAN [undeclared]	english:eligible-other	unknown	unknown	eligible
+592019	WORKDAY	Product Manager	IND-Bangalore-Kalyani Vista II [undeclared]	us:rest-cued	unknown	unknown	unknown
+603880	WORKDAY	Senior Financials ERP Business Analyst	DE-CLIENT-STATE [hybrid]	latam:rest-cued	excluded	excluded	excluded
+634452	WORKDAY	Manager, IT Program Management	Remote-MO [remote] | Remote-VA [remote] | Remote-PA [remote] | Remote-FL [remote] | Remote-NJ [remote] | Remote-NY [remote] | Remote-TX [remote] | Remote-IL [remote] | Remote-MN [remote]	us:promise	excluded	eligible	excluded
+635978	WORKDAY	Data Engineer	Arlington, VA, US [undeclared]	us:eligible-other	excluded	eligible	excluded
+637321	WORKDAY	PostgreSQL Database Administrator (Production DBA)	Toronto, ON [remote]	us:promise	excluded	eligible	eligible
+648788	WORKDAY	Deskside Analyst	Offices at Vernon Place [undeclared]	english:eligible-other	unknown	unknown	eligible
+657141	WORKDAY	Full Stack Engineer 4 (Go, AWS)	McLean, VA [undeclared]	english:rest-cued	unknown	eligible	unknown
+664525	WORKDAY	CCaaS Support Engineer	PHL Work-at-Home [undeclared]	english:promise	excluded	excluded	eligible
+668942	WORKDAY	Manager - Application Security	Dallas, TX - Headquarters [undeclared]	english:promise	eligible	eligible	eligible
+677509	WORKDAY	Software Technical Leader	Calgary, Alberta, Canada [undeclared] | Toronto, Ontario, Canada [undeclared] | Vancouver, British Columbia, Canada [undeclared] | Winnipeg, Manitoba, Canada [undeclared]	latam:promise	eligible	eligible	eligible
+678927	WORKDAY	Consulting Engineer - Collaboration (Japanese speaking)	Kuala Lumpur, Malaysia [undeclared]	us:rest-cued	unknown	unknown	unknown
+713566	WORKDAY	Manager, Production Engineering (ILM-San Francisco)	San Francisco, CA, USA [hybrid]	us:eligible-other	excluded	eligible	excluded
+732795	WORKDAY	Business Analyst - Secure, on-site Hampshire	GBR - HAM - FARNBOROUGH [onsite]	english:eligible-other	excluded	excluded	eligible
+742562	WORKDAY	AI & Automation Specialist til Europcars Hovedkontor i Aarhus	Headquarters Denmark [undeclared]	latam:rest-plain	unknown	unknown	unknown
+742890	WORKDAY	Lead Software Engineer	Work at Home [undeclared]	us:rest-plain	unknown	unknown	unknown
+747497	WORKDAY	Android Mobile Engineer III	Washington - Seattle Campus [undeclared]	english:rest-plain	unknown	eligible	unknown
+786275	WORKDAY	Sr. Director, Analyst AI Integration & API Management- Software Development Advisory	Remote - Texas [remote]	english:promise	eligible	eligible	eligible
+795579	WORKDAY	System Administrator	USA NC Fort Liberty [onsite]	english:rest-cued	excluded	eligible	excluded
+796738	WORKDAY	Senior Systems Configurator, SAP Functional Analyst	Warren, Michigan, United States of America [hybrid] | Austin, Texas, United States of America [hybrid]	english:rest-plain	excluded	eligible	excluded
+797200	WORKDAY	Senior DevOps Engineer (AWS/Windows)	Any Location / Remote [remote]	us:promise	excluded	eligible	excluded
+797436	WORKDAY	ArcGIS Geospatial Engineer	USA DC Washington [hybrid]	english:rest-cued	excluded	eligible	excluded
+797442	WORKDAY	Automation Tester	Any Location / Remote [remote]	us:promise	excluded	eligible	excluded
+814903	WORKDAY	AI & LLM Engineer	Noida [undeclared] | Pallavaram [undeclared]	latam:rest-plain	unknown	unknown	unknown
+818283	WORKDAY	Staff AI Engineer	Chennai [undeclared]	english:rest-plain	unknown	unknown	unknown
+818677	WORKDAY	Site AI Partner (f/m/d)	Oberentfelden [undeclared]	us:rest-cued	unknown	unknown	unknown
+897806	WORKDAY	Senior Data Solutions Engineer	Toronto, Ontario, Canada [undeclared]	english:eligible-other	unknown	unknown	eligible
+901945	WORKDAY	Senior Principal Software Engineer - Generative AI & Mobile Platforms (Remote)	GEORGIA - VIRTUAL - GA01 [remote]	us:promise	excluded	eligible	excluded
+903837	WORKDAY	HR Automation Developer	Tlaquepaque, Jalisco, Mexico [undeclared]	us:rest-cued	eligible	unknown	unknown
+917389	WORKDAY	GEOINT Sensor Support Engineer (Ramstein AFB, Germany)	US-VA-REMOTE [remote]	us:rest-cued	excluded	excluded	excluded
+928991	WORKDAY	Inside Solution Architect	London, London, United Kingdom [hybrid] | Manchester, Lancashire, United Kingdom [hybrid] | Erskine, Renfrewshire, United Kingdom [hybrid] | Bristol, Avon, United Kingdom [hybrid] | Winnersh, Berkshire, United Kingdom [hybrid]	us:rest-plain	excluded	excluded	eligible
+944412	WORKDAY	Principal Data Scientist	Istanbul (VADI ISTANBUL PARK) [hybrid]	us:rest-cued	excluded	excluded	excluded
+960482	WORKDAY	Senior Analyst, Commercial Finance & Strategy - Transportation	FL: Customer Central - Indianapolis, Indiana [undeclared]	latam:rest-cued	unknown	eligible	unknown
+979906	WORKDAY	Sr. Technology Enablement Engineer	Ann Arbor, MI [undeclared]	latam:rest-plain	unknown	eligible	unknown
+1000511	WORKDAY	Power Platform Solutions & Adoption Specialist	Massy [hybrid]	us:rest-cued	excluded	excluded	excluded
+1005119	WORKDAY	Manager, ERP Engineering (SACDS)	Office, Mexico, D.F., Mexico [undeclared]	us:rest-cued	eligible	unknown	unknown
+1071386	WORKDAY	Principal Software Engineer	Pune, India [undeclared]	latam:rest-cued	unknown	unknown	unknown
+1072129	WORKDAY	Principal Applied AI App Engineer	Pune, India [undeclared]	english:rest-cued	unknown	unknown	unknown
+1072461	WORKDAY	Software Engineer I	Great Britain - London [hybrid]	latam:rest-cued	excluded	excluded	eligible
+1108305	WORKDAY	Senior. Specialist, Software Engineering (CIAM)	IND - Telangana - Hyderabad (Hitec City Raidurg) [undeclared] | CZE - Central Bohemian - Prague (Five) [undeclared]	us:rest-cued	unknown	unknown	unknown
+1140265	WORKDAY	OT Engineer	Careers: Hamburg, Germany [hybrid]	english:rest-cued	excluded	excluded	excluded
+1156746	WORKDAY	Principal Software Reverse Engineer/Vulnerability Researcher	Indialantic, FL [undeclared]	english:rest-plain	excluded	eligible	excluded
+1163019	WORKDAY	AI/ML Scientist – Reinforcement Learning, Simulation & Optimization	PCT [undeclared]	latam:rest-cued	unknown	unknown	unknown
+1164147	WORKDAY	QA Engineer	DWL T [undeclared]	us:rest-cued	unknown	unknown	unknown
+1168571	WORKDAY	Full Stack Engineer (Java/React)	Remote, United States [remote] | Remote, Canada [remote]	english:eligible-other	unknown	eligible	eligible
+1172888	WORKDAY	Senior Security Engineer - Cloud Security	Portugal - Remote [remote]	english:rest-cued	unknown	unknown	unknown
+1177961	WORKDAY	Senior Product Intelligence Analyst, Product Management	LOC3347:9-10/F, Building N1, Fusion New Bund, No. 8, Lane 131, New Bund Avenue, Pudong, Shanghai, China [undeclared]	english:rest-cued	unknown	unknown	unknown
+1196672	WORKDAY	Manager, SW Engineering	Office - India - Bangalore Bagmane Tech Park [onsite]	us:rest-cued	excluded	excluded	excluded
+1227525	WORKDAY	Manufacturing Technology Engineer	Electro-Optics Center in Freeport, PA [undeclared]	us:promise	excluded	eligible	excluded
+1232493	WORKDAY	Principal Engineer — Graph & API	Remote - Michigan [remote]	us:eligible-other	unknown	eligible	unknown
+1244955	WORKDAY	Development Director (Frontend development direction) - Platform Strategy Supervisory Department (PFSD)	Tokyo, Japan [undeclared]	us:rest-cued	unknown	unknown	unknown
+1246437	WORKDAY	Senior Financial Crimes Intelligence Analyst	Sydney, Australia [hybrid]	latam:rest-cued	excluded	excluded	eligible
+1247832	WORKDAY	Product Owner, Workday, Compensation & Advance Compensation	Bengaluru [undeclared]	latam:rest-cued	unknown	unknown	unknown
+1274447	WORKDAY	AI Builder Intern [Brazil]	Brazil - Sao Paulo [undeclared]	latam:eligible-other	eligible	unknown	unknown
+1274915	WORKDAY	Desenvolvedor Front-end React (DTS) | Senior Associate [tag01]	Piracicaba [undeclared]	latam:eligible-other	eligible	unknown	unknown
+1277679	WORKDAY	ETIC, Software Testing (SAP), Senior Associate	Cairo - ETIC [undeclared]	us:rest-plain	unknown	unknown	unknown
+1279133	WORKDAY	Senior Software Engineer	Pune, India [hybrid]	us:rest-plain	excluded	excluded	excluded
+1310508	WORKDAY	Presales Solutions Engineer - Network	US - NY - Home Office [remote]	latam:rest-cued	excluded	eligible	excluded
+1328462	WORKDAY	Data Scientist Intern (Jan 2027 12 Months)	Mississauga, Canada – Meadowvale Office (HQ) [hybrid]	latam:rest-cued	excluded	excluded	eligible
+1375515	WORKDAY	AI Compute Intern	Singapore-CapitaSky [undeclared]	us:rest-cued	unknown	unknown	unknown
+1376911	WORKDAY	IT Application Engineer Intern, Investments - Summer 2027	Mpls-Investments Office [hybrid]	us:rest-cued	unknown	unknown	unknown
+1382152	WORKDAY	Business Analyst	Charlotte NC - 600 S Tryon St. [undeclared] | Remote - Georgia [remote] | Remote - Virginia [remote] | Remote - North Carolina [remote]	english:rest-plain	unknown	eligible	unknown
+1423676	WORKDAY	Threat Research Leader	Taipei [undeclared]	latam:rest-plain	unknown	unknown	unknown
+1451212	WORKDAY	Senior Machine Learning Engineer	Mountain View, CA, USA [undeclared]	english:rest-cued	unknown	eligible	unknown
+1472983	WORKDAY	Platform Software Architect - Camera module	CHENNAI - CHE7-2 [undeclared]	latam:rest-cued	unknown	unknown	unknown
+1492017	WORKDAY	Sr SW Engineer--4 yrs- 6 yrs (Oracle EPM Cloud, Oracle Fusion Cloud ERP)	IN - Bengaluru, India [hybrid]	us:rest-cued	excluded	excluded	excluded

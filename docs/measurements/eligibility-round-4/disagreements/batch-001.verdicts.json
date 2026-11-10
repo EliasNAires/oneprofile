@@ -1,0 +1,62 @@
+{
+  "1168571:english": {
+    "verdict": "a",
+    "clause": "8. Work authorization in a country; 12. Every requirement must hold",
+    "pattern": "required United States work authorization"
+  },
+  "263759:latam": {
+    "verdict": "b",
+    "clause": "7. Where the person must be, or the company hires",
+    "pattern": "role restricted to United States"
+  },
+  "26499:us": {
+    "verdict": "b",
+    "clause": "7. Where the person must be, or the company hires; These say nothing: Where the company or its offices or customers are",
+    "pattern": "role location overrides team geography"
+  },
+  "648788:english": {
+    "verdict": "a",
+    "clause": "7. Where the person must be, or the company hires",
+    "pattern": "primary location at foreign office"
+  },
+  "288298:us": {
+    "verdict": "a",
+    "clause": "The reader verdict: a silent city inside the country reads as open",
+    "pattern": "silent location within visitor group"
+  },
+  "333049:latam": {
+    "verdict": "a",
+    "clause": "7. Where the person must be, or the company hires",
+    "pattern": "role restricted to United States"
+  },
+  "1376911:us": {
+    "verdict": "b",
+    "clause": "The reader verdict: open",
+    "pattern": "domestic office with work authorization"
+  },
+  "207032:latam": {
+    "verdict": "b",
+    "clause": "11. A timezone requirement: A zone named by a country; 12. Every requirement must hold",
+    "pattern": "location restricted to Eastern timezone"
+  },
+  "668942:english": {
+    "verdict": "a",
+    "clause": "2. A remote or undeclared option; These say nothing: Authorization or legal text naming no country",
+    "pattern": "foreign undeclared location without requirements"
+  },
+  "677509:latam": {
+    "verdict": "b",
+    "clause": "The description: What the description states counts only where it is a statement about this vacancy; 2. A remote or undeclared option",
+    "pattern": "team geography without hiring statement"
+  },
+  "377243:us": {
+    "verdict": "b",
+    "clause": "11. A timezone requirement: A schedule; These say nothing: A requirement for some of the company's roles only",
+    "pattern": "conditional hires and schedule overlap"
+  },
+  "244709:us": {
+    "verdict": "b",
+    "clause": "The reader verdict: open; A group's verdict is the best of its countries'",
+    "pattern": "domestic location within timezone restriction"
+  }
+}

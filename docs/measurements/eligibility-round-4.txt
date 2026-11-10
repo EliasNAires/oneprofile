@@ -1,0 +1,50 @@
+#103 eligibility round 4, commit 9ce334b, criterion revision 5
+
+latam promises: 32/35 = 91.4% (95% Wilson 77.6%-97.0%); HOLDS (>= 90%)
+latam reach: 100.0% (95% bootstrap 100.0%-100.0%); target 70%, met (not deciding); gate 2: HOLDS (>= baseline 85.5% - 5%)
+latam overall: HOLDS (both gates)
+  labeller raw promises: 32/35 = 91.4% (95% Wilson 77.6%-97.0%); reach: 100.0%
+us promises: 33/35 = 94.3% (95% Wilson 81.4%-98.4%); HOLDS (>= 90%)
+us reach: 92.3% (95% bootstrap 83.7%-100.0%); target 90%, met (not deciding); gate 2: FAILS (>= baseline 100.0% - 5%)
+us overall: FAILS (both gates)
+  labeller raw promises: 33/35 = 94.3% (95% Wilson 81.4%-98.4%); reach: 92.3%
+english promises: 34/35 = 97.1% (95% Wilson 85.5%-99.5%); HOLDS (>= 90%)
+english reach: 100.0% (95% bootstrap 100.0%-100.0%); target 80%, met (not deciding); gate 2: HOLDS (>= baseline 84.2% - 5%)
+english overall: HOLDS (both gates)
+  labeller raw promises: 34/35 = 97.1% (95% Wilson 85.5%-99.5%); reach: 100.0%
+  latam promise adjudication: rule 0, labeller 3, neither 0
+  latam eligible-other adjudication: rule 0, labeller 1, neither 0
+  latam rest-cued adjudication: rule 0, labeller 0, neither 0
+  latam rest-plain adjudication: rule 0, labeller 0, neither 0
+  us promise adjudication: rule 0, labeller 2, neither 0
+  us eligible-other adjudication: rule 0, labeller 0, neither 0
+  us rest-cued adjudication: rule 0, labeller 3, neither 0
+  us rest-plain adjudication: rule 0, labeller 0, neither 0
+  english promise adjudication: rule 0, labeller 1, neither 0
+  english eligible-other adjudication: rule 0, labeller 2, neither 0
+  english rest-cued adjudication: rule 0, labeller 0, neither 0
+  english rest-plain adjudication: rule 0, labeller 0, neither 0
+Adjudication patterns:
+  conditional hires and schedule overlap: 1
+    377243:us us promise: rule eligible; labeller unknown; reason São Paulo [remote]; "Candidates based outside the US"; labeller [11. A timezone requirement: A schedule; These say nothing: A requirement for some of the company's roles only]
+  domestic location within timezone restriction: 1
+    244709:us us rest-cued: rule not open; labeller open; reason physically based in GMT and EST timezones; labeller [The reader verdict: open; A group's verdict is the best of its countries']
+  domestic office with work authorization: 1
+    1376911:us us rest-cued: rule not open; labeller open; reason Ability to work in the United States; "Minneapolis, MN (Hybrid)"; labeller [The reader verdict: open]
+  foreign undeclared location without requirements: 1
+    668942:english english promise: rule eligible; labeller unknown; reason Dallas, TX - Headquarters; labeller [2. A remote or undeclared option; These say nothing: Authorization or legal text naming no country]
+  location restricted to Eastern timezone: 1
+    207032:latam latam promise: rule eligible; labeller excluded; reason North America (Eastern Time Zone); labeller [11. A timezone requirement: A zone named by a country; 12. Every requirement must hold]
+  primary location at foreign office: 1
+    648788:english english eligible-other: rule eligible; labeller excluded; reason Primary Location ... Offices at Vernon Place; "United States of America"; labeller [7. Where the person must be, or the company hires]
+  required United States work authorization: 1
+    1168571:english english eligible-other: rule eligible; labeller excluded; reason must be legally authorized to be employed in the United States; labeller [8. Work authorization in a country; 12. Every requirement must hold]
+  role location overrides team geography: 1
+    26499:us us promise: rule eligible; labeller excluded; reason You will work remotely first (from Central & Eastern Europe); labeller [7. Where the person must be, or the company hires; These say nothing: Where the company or its offices or customers are]
+  role restricted to United States: 2
+    263759:latam latam promise: rule eligible; labeller excluded; reason only applies to the continental U.S.; labeller [7. Where the person must be, or the company hires]
+    333049:latam latam eligible-other: rule eligible; labeller excluded; reason either remote (US) or hybrid depending on location; labeller [7. Where the person must be, or the company hires]
+  silent location within visitor group: 1
+    288298:us us rest-cued: rule not open; labeller open; reason Virginia [undeclared]; labeller [The reader verdict: a silent city inside the country reads as open]
+  team geography without hiring statement: 1
+    677509:latam latam promise: rule eligible; labeller unknown; reason Canada; "remote across North America"; labeller [The description: What the description states counts only where it is a statement about this vacancy; 2. A remote or undeclared option]

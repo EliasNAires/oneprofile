@@ -1,0 +1,50 @@
+{
+ "1168571:english": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "263759:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "26499:us": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "648788:english": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "288298:us": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "333049:latam": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "1376911:us": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "207032:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "668942:english": {
+  "rule": "b",
+  "labeller": "a"
+ },
+ "677509:latam": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "377243:us": {
+  "rule": "a",
+  "labeller": "b"
+ },
+ "244709:us": {
+  "rule": "a",
+  "labeller": "b"
+ }
+}
