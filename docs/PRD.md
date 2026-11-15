@@ -652,7 +652,7 @@ The launch gate:
 4. Roles are read from titles, work mode is derived, and duplicate vacancies are collapsed.
 5. Seniority is read from the body.
 6. Eligibility is extracted, and its recall measured.
-7. **100k engineering vacancies live in one sweep.** The snapshot has 55,331 on live boards:
+7. **100k engineering vacancies live in one sweep**, counted as vacancy groups (#27). The snapshot has 55,331 on live boards:
    34,173 from Greenhouse and 21,158 from Ashby (`docs/measurements/2026-10-ashby.md`). The figure for one
    country, eligible plus unknown, is reported beside it but not gated on. The figures for
    Argentina, Brazil and Mexico decide later whether marketing aims at developers outside the US.

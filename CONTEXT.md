@@ -108,6 +108,19 @@ The free-text body of a vacancy. The only place where eligibility and much of th
 seniority evidence appears.
 _Avoid_: content, body, details
 
+**Duplicate**:
+A vacancy that repeats another one: the same requisition on a second board of its company, or a
+repost. Only one of them is kept, the company's own board's over an aggregator's or a staffing
+firm's, and the other is never shown or counted (#27).
+_Avoid_: copy, clone, repost
+
+**Vacancy Group**:
+The vacancies that are one position posted once per location: remote once per country or state,
+onsite once per city, or both. Folded into one, while each vacancy keeps its own location, work
+mode, pay and apply link. The Finder lists groups and the Explorer and the launch gate count them;
+a group matches a filter when one of its vacancies meets all of it (#27).
+_Avoid_: cluster, family, folded vacancy
+
 **Normalized Vacancy**:
 The facts derived from a vacancy by rule rather than published by the ATS: cleaned and
 normalized titles, classification, roles, work mode, seniority and skills. Kept
