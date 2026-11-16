@@ -75,6 +75,10 @@ public class NormalizedVacancyEntity {
 
 	private String[] workModes;
 
+	private Long groupId;
+
+	private Long duplicateOfVacancyId;
+
 	@Enumerated(EnumType.STRING)
 	private SeniorityLevelEnum seniorityLevel;
 
@@ -166,6 +170,31 @@ public class NormalizedVacancyEntity {
 	 */
 	public void workingAs(Set<WorkModeEnum> workModes) {
 		this.workModes = workModes.stream().sorted().map(WorkModeEnum::name).toArray(String[]::new);
+	}
+
+	/**
+	 * Takes on the vacancy group or duplicate mark the run gave it, replacing what the last run recorded.
+	 * @param mark its group or the vacancy it repeats
+	 */
+	public void groupedAs(GroupMark mark) {
+		this.groupId = mark.groupId();
+		this.duplicateOfVacancyId = mark.duplicateOfVacancyId();
+	}
+
+	/**
+	 * Its vacancy group's id, null for a duplicate or before the run.
+	 * @return its group id, null for a duplicate or before the run
+	 */
+	public Long groupId() {
+		return this.groupId;
+	}
+
+	/**
+	 * The vacancy it repeats, null for a group member or once that vacancy closes.
+	 * @return the kept vacancy's id, null for a group member or once that vacancy closes
+	 */
+	public Long duplicateOfVacancyId() {
+		return this.duplicateOfVacancyId;
 	}
 
 	/**

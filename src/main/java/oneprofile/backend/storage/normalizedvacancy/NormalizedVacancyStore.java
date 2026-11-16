@@ -1,7 +1,9 @@
 package oneprofile.backend.storage.normalizedvacancy;
 
 import jakarta.persistence.Tuple;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -25,6 +27,104 @@ public class NormalizedVacancyStore {
 
 	public NormalizedVacancyStore(NormalizedVacancyRepository repository) {
 		this.repository = repository;
+	}
+
+	/**
+	 * Lets go of vacancy groups and duplicate marks outside the engineering subset, so a vacancy that
+	 * has left it keeps neither. Vacancies still in the subset keep what the last run recorded.
+	 * @return how many vacancies outside the subset held a group or duplicate mark
+	 */
+	@Transactional
+	public int clearVacancyGroupsOutsideSubset() {
+		return this.repository.clearVacancyGroupsOutsideSubset();
+	}
+
+	/**
+	 * Records the vacancy groups and duplicates a run found, replacing each vacancy's previous mark.
+	 * @param marks the group or the vacancy repeated, by vacancy id
+	 * @return how many vacancies this recorded a group or duplicate mark for
+	 */
+	@Transactional
+	public int recordVacancyGroups(Map<Long, GroupMark> marks) {
+		List<NormalizedVacancyEntity> recorded = new ArrayList<>(marks.size());
+		for (NormalizedVacancyEntity normalized : this.repository.findByVacancyIdIn(marks.keySet())) {
+			normalized.groupedAs(marks.get(normalized.vacancyId()));
+			recorded.add(normalized);
+		}
+		this.repository.saveAll(recorded);
+		return recorded.size();
+	}
+
+	/**
+	 * Reserves ids for new vacancy groups, independent of the vacancies that will belong to them.
+	 * @param count how many new groups need ids
+	 * @return fresh ids in increasing order, empty when none are needed
+	 */
+	@Transactional
+	public List<Long> nextGroupIds(int count) {
+		return (count == 0) ? List.of() : this.repository.nextGroupIds(count);
+	}
+
+	/**
+	 * How many open vacancies each company holds: a vacancy is held only while it remains on its board.
+	 * @return the count by company id, including zero for a board holding none
+	 */
+	@Transactional(readOnly = true)
+	public Map<Long, Integer> openVacanciesByCompany() {
+		Map<Long, Integer> counts = new HashMap<>();
+		for (Tuple row : this.repository.openVacanciesByCompany()) {
+			counts.put(row.get(0, Long.class), Math.toIntExact(row.get(1, Long.class)));
+		}
+		return counts;
+	}
+
+	/**
+	 * The description segments of the given vacancies, read apart from the light vacancy-group scope.
+	 * @param vacancyIds the vacancies whose descriptions the pass needs
+	 * @return their segments by vacancy id, empty where cleaning has cut none
+	 */
+	@Transactional(readOnly = true)
+	public Map<Long, List<Segment>> segmentsOf(Collection<Long> vacancyIds) {
+		Map<Long, List<Segment>> segments = new HashMap<>();
+		if (vacancyIds.isEmpty()) {
+			return segments;
+		}
+		vacancyIds.forEach((vacancyId) -> segments.put(vacancyId, List.of()));
+		for (Tuple row : this.repository.segmentsOf(vacancyIds)) {
+			@SuppressWarnings("unchecked")
+			List<Segment> held = (List<Segment>) row.get(1);
+			segments.put(row.get(0, Long.class), (held != null) ? held : List.of());
+		}
+		return segments;
+	}
+
+	/**
+	 * The whole engineering subset in vacancy id order, with the title evidence and declared locations
+	 * the vacancy-group pass reads. Descriptions are read apart, only for the vacancies it needs.
+	 * @return every vacancy of the subset, with its stored group where it has one
+	 */
+	@Transactional(readOnly = true)
+	public List<GroupVacancy> vacancyGroupScope() {
+		List<Tuple> read = this.repository.vacancyGroupScope();
+		if (read.isEmpty()) {
+			return List.of();
+		}
+		Map<Long, Set<SeniorityLevelEnum>> named = new HashMap<>();
+		for (Tuple row : this.repository.vacancyGroupTitleSeniorities()) {
+			named.computeIfAbsent(row.get(0, Long.class), (vacancyId) -> EnumSet.noneOf(SeniorityLevelEnum.class))
+				.add(SeniorityLevelEnum.valueOf(row.get(1, String.class)));
+		}
+		List<GroupVacancy> scope = new ArrayList<>(read.size());
+		for (Tuple row : read) {
+			long vacancyId = row.get(0, Long.class);
+			String[] titles = row.get(10, String[].class);
+			scope.add(new GroupVacancy(vacancyId, row.get(7, Long.class), row.get(1, AtsEnum.class),
+					row.get(8, String.class), row.get(9, String.class), (titles != null) ? List.of(titles) : null,
+					row.get(11, ManagementLevelEnum.class), named.getOrDefault(vacancyId, Set.of()),
+					declaredLocations(row).stream().map(LocationString::location).toList(),
+					WorkModeEnum.setOf(row.get(12, String[].class)), row.get(13, Instant.class), row.get(14, Long.class)));
+		}
+		return scope;
 	}
 
 	/**
@@ -315,31 +415,40 @@ public class NormalizedVacancyStore {
 	public List<PlaceVacancy> placeScopeAfter(long after, int batch) {
 		List<PlaceVacancy> scope = new ArrayList<>();
 		for (Tuple row : this.repository.placeScopeAfter(after, Limit.of(batch))) {
-			List<LocationString> locations = new ArrayList<>();
-			String location = row.get(2, String.class);
-			if (location != null && !location.isBlank()) {
-				locations.add(new LocationString(LocationListEnum.LOCATION, 0, location, row.get(3, String.class)));
-			}
-			@SuppressWarnings("unchecked")
-			List<SecondaryLocation> secondary = (List<SecondaryLocation>) row.get(4);
-			if (secondary != null) {
-				for (int i = 0; i < secondary.size(); i++) {
-					locations.add(new LocationString(LocationListEnum.SECONDARY_LOCATIONS, i,
-							secondary.get(i).location(), secondary.get(i).country()));
-				}
-			}
-			@SuppressWarnings("unchecked")
-			List<String> all = (List<String>) ((row.get(5) != null) ? row.get(5) : row.get(6));
-			if (all != null) {
-				for (int i = 0; i < all.size(); i++) {
-					if (i > 0 || !all.get(i).equals(location)) {
-						locations.add(new LocationString(LocationListEnum.ALL_LOCATIONS, i, all.get(i), null));
-					}
-				}
-			}
-			scope.add(new PlaceVacancy(row.get(0, Long.class), row.get(1, AtsEnum.class), locations));
+			scope.add(new PlaceVacancy(row.get(0, Long.class), row.get(1, AtsEnum.class), declaredLocations(row)));
 		}
 		return scope;
+	}
+
+	/**
+	 * Assembles the location field and the ATS's location lists in publication order.
+	 * @param row the tuple with the location field and ATS location fields at positions 2 through 6
+	 * @return every declared location string, skipping the first list entry when it repeats the field
+	 */
+	private static List<LocationString> declaredLocations(Tuple row) {
+		List<LocationString> locations = new ArrayList<>();
+		String location = row.get(2, String.class);
+		if (location != null && !location.isBlank()) {
+			locations.add(new LocationString(LocationListEnum.LOCATION, 0, location, row.get(3, String.class)));
+		}
+		@SuppressWarnings("unchecked")
+		List<SecondaryLocation> secondary = (List<SecondaryLocation>) row.get(4);
+		if (secondary != null) {
+			for (int i = 0; i < secondary.size(); i++) {
+				locations.add(new LocationString(LocationListEnum.SECONDARY_LOCATIONS, i,
+						secondary.get(i).location(), secondary.get(i).country()));
+			}
+		}
+		@SuppressWarnings("unchecked")
+		List<String> all = (List<String>) ((row.get(5) != null) ? row.get(5) : row.get(6));
+		if (all != null) {
+			for (int i = 0; i < all.size(); i++) {
+				if (i > 0 || !all.get(i).equals(location)) {
+					locations.add(new LocationString(LocationListEnum.ALL_LOCATIONS, i, all.get(i), null));
+				}
+			}
+		}
+		return locations;
 	}
 
 	/**

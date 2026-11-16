@@ -56,6 +56,189 @@ class NormalizedVacancyStoreTest {
 		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001), published(4002)));
 	}
 
+	/** The group pass reads the whole subset with its title evidence and declared locations. */
+	@Test
+	void readsTheVacancyGroupScopeWithItsTitlesLocationsAndStoredGroup() {
+		this.companies.record(AtsEnum.ASHBY, Map.of("ramp", RegionEnum.US));
+		this.vacancies.mirror(AtsEnum.ASHBY, "ramp", List.of(new PublishedAshbyVacancy(
+				"34413f8d-26bf-4bbc-8ade-eb309a0e2245", "Engineer", "Berlin", null, "Build things.",
+				"https://jobs.ashbyhq.com/ramp/34413f8d-26bf-4bbc-8ade-eb309a0e2245", null, null, null,
+				Instant.parse("2026-09-01T14:00:00Z"), "OnSite", "Germany",
+				List.of(new SecondaryLocation("Lisbon", "Portugal")), null)));
+		this.companies.record(AtsEnum.LEVER, Map.of("plaid", RegionEnum.US));
+		this.vacancies.mirror(AtsEnum.LEVER, "plaid", List.of(new PublishedLeverVacancy(
+				"5ac21346-8e0c-4494-8e7a-3eb92ff77902", "Engineer", "Seattle, WA", null, "Build things.",
+				"https://jobs.lever.co/plaid/5ac21346-8e0c-4494-8e7a-3eb92ff77902", null, null, null,
+				Instant.parse("2026-09-01T14:00:00Z"), "hybrid", "US", null, null,
+				List.of("Seattle, WA", "Toronto"), null)));
+		List<VacancyText> held = heldTitles();
+		for (VacancyText vacancy : held) {
+			this.normalized.recordCleanedVacancies(
+					Map.of(vacancy.id(), cleaned("Engineer", Set.of(SeniorityLevelEnum.SENIOR))));
+			this.normalized.recordClassifications(Map.of(vacancy.id(), Classification.in()));
+		}
+		this.normalized.recordClassifications(Map.of(held.get(1).id(), Classification.out()));
+		long ashby = held.get(2).id();
+		this.normalized.recordTitleBreakdowns(Map.of(ashby,
+				new TitleBreakdown(List.of("software engineer"), Set.of(SeniorityLevelEnum.II), ManagementLevelEnum.LEAD)));
+		this.normalized.recordWorkModes(Map.of(ashby, Set.of(WorkModeEnum.REMOTE, WorkModeEnum.HYBRID)));
+		NormalizedVacancyEntity member = this.repository.findByVacancyIdIn(List.of(ashby)).getFirst();
+		member.groupedAs(GroupMark.inGroup(7));
+		this.entityManager.flush();
+		this.entityManager.clear();
+		long companyId = ((Number) this.entityManager.getEntityManager()
+			.createNativeQuery("select id from company where slug = 'ramp'").getSingleResult()).longValue();
+		List<GroupVacancy> scope = this.normalized.vacancyGroupScope();
+
+		assertThat(scope).extracting(GroupVacancy::vacancyId)
+			.containsExactly(held.get(0).id(), ashby, held.get(3).id());
+		assertThat(scope.get(1)).isEqualTo(new GroupVacancy(ashby, companyId,
+				AtsEnum.ASHBY, "ramp", "Engineer", List.of("software engineer"), ManagementLevelEnum.LEAD,
+				Set.of(SeniorityLevelEnum.SENIOR, SeniorityLevelEnum.II), List.of("Berlin", "Lisbon"),
+				Set.of(WorkModeEnum.REMOTE, WorkModeEnum.HYBRID), Instant.parse("2026-09-01T14:00:00Z"), 7L));
+		assertThat(scope.get(2)).satisfies((vacancy) -> {
+			assertThat(vacancy.locations()).containsExactly("Seattle, WA", "Toronto");
+			assertThat(vacancy.groupId()).isNull();
+			assertThat(vacancy.workModes()).isEmpty();
+		});
+	}
+
+	/** Descriptions are read only for the requested vacancies, with null segments read as none. */
+	@Test
+	void readsTheSegmentsOfTheGivenVacancies() {
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		List<Segment> segments = List.of(new Segment(SegmentKindEnum.ITEM, "Requirements", "Java", false));
+		this.normalized.recordCleanedVacancies(Map.of(first,
+				new CleanedVacancy(new CleanedTitle("Engineer", Set.of()), segments, null), second,
+				cleaned("Engineer", Set.of())));
+		this.entityManager.flush();
+		this.entityManager.getEntityManager()
+			.createNativeQuery("update normalized_vacancy set description_segments = null where vacancy_id = :id")
+			.setParameter("id", second)
+			.executeUpdate();
+		this.entityManager.flush();
+		this.entityManager.clear();
+
+		assertThat(this.normalized.segmentsOf(List.of(first, second)))
+			.containsExactlyInAnyOrderEntriesOf(Map.of(first, segments, second, List.of()));
+		assertThat(this.normalized.segmentsOf(List.of(first))).containsOnlyKeys(first);
+		assertThat(this.normalized.segmentsOf(List.of())).isEmpty();
+	}
+
+	/** Every board's open vacancies are counted, including vacancies cleaning has not reached. */
+	@Test
+	void countsTheOpenVacanciesOfEveryCompany() {
+		this.companies.record(AtsEnum.GREENHOUSE, Map.of("ramp", RegionEnum.US, "empty", RegionEnum.US));
+		this.vacancies.mirror(AtsEnum.GREENHOUSE, "ramp", List.of(published(5001)));
+		this.entityManager.flush();
+		Map<Long, Integer> expected = new HashMap<>();
+		for (Object value : this.entityManager.getEntityManager()
+			.createNativeQuery("select id, slug from company").getResultList()) {
+			Object[] row = (Object[]) value;
+			expected.put(((Number) row[0]).longValue(), switch ((String) row[1]) {
+				case "stripe" -> 2;
+				case "ramp" -> 1;
+				default -> 0;
+			});
+		}
+
+		assertThat(this.normalized.openVacanciesByCompany()).containsExactlyInAnyOrderEntriesOf(expected);
+		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001)));
+		long stripe = ((Number) this.entityManager.getEntityManager()
+			.createNativeQuery("select id from company where slug = 'stripe'").getSingleResult()).longValue();
+		assertThat(this.normalized.openVacanciesByCompany()).containsEntry(stripe, 1);
+	}
+
+	/** Group ids come from one sequence and are never reused by the next reservation. */
+	@Test
+	void reservesFreshIncreasingVacancyGroupIds() {
+		assertThat(this.normalized.nextGroupIds(0)).isEmpty();
+		List<Long> first = this.normalized.nextGroupIds(3);
+		assertThat(first).hasSize(3).doesNotHaveDuplicates().isSorted();
+		List<Long> second = this.normalized.nextGroupIds(2);
+		assertThat(second).hasSize(2).doesNotHaveDuplicates().isSorted();
+		assertThat(second.getFirst()).isGreaterThan(first.getLast());
+	}
+
+	/** A new run replaces both parts of each vacancy's previous mark. */
+	@Test
+	void recordsAndReplacesVacancyGroupsAndDuplicates() {
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		this.normalized.recordCleanedVacancies(Map.of(first, cleaned("Engineer", Set.of()),
+				second, cleaned("Engineer", Set.of())));
+
+		assertThat(this.normalized.recordVacancyGroups(Map.of(first, GroupMark.inGroup(7),
+				second, GroupMark.duplicateOf(first)))).isEqualTo(2);
+		this.entityManager.flush();
+		this.entityManager.clear();
+		assertThat(this.repository.findAll())
+			.extracting(NormalizedVacancyEntity::vacancyId, NormalizedVacancyEntity::groupId,
+					NormalizedVacancyEntity::duplicateOfVacancyId)
+			.containsExactlyInAnyOrder(tuple(first, 7L, null), tuple(second, null, first));
+
+		assertThat(this.normalized.recordVacancyGroups(Map.of(first, GroupMark.duplicateOf(second),
+				second, GroupMark.inGroup(8)))).isEqualTo(2);
+		this.entityManager.flush();
+		this.entityManager.clear();
+		assertThat(this.repository.findAll())
+			.extracting(NormalizedVacancyEntity::vacancyId, NormalizedVacancyEntity::groupId,
+					NormalizedVacancyEntity::duplicateOfVacancyId)
+			.containsExactlyInAnyOrder(tuple(first, null, second), tuple(second, 8L, null));
+	}
+
+	/** Closing the repeated vacancy makes its duplicate visible again. */
+	@Test
+	void letsGoOfTheVacancyADuplicateRepeatsWhenItLeavesItsBoard() {
+		long first = heldTitles().get(0).id();
+		long second = heldTitles().get(1).id();
+		this.normalized.recordCleanedVacancies(Map.of(first, cleaned("Engineer", Set.of()),
+				second, cleaned("Engineer", Set.of())));
+		this.normalized.recordVacancyGroups(Map.of(first, GroupMark.inGroup(7), second, GroupMark.duplicateOf(first)));
+		this.entityManager.flush();
+
+		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4002)));
+		this.entityManager.flush();
+		this.entityManager.clear();
+
+		assertThat(this.repository.findAll()).singleElement().satisfies((held) -> {
+			assertThat(held.vacancyId()).isEqualTo(second);
+			assertThat(held.groupId()).isNull();
+			assertThat(held.duplicateOfVacancyId()).isNull();
+		});
+	}
+
+	/** Leaving the subset clears either kind of mark, including when classification is absent. */
+	@Test
+	void clearsVacancyGroupsOnlyOutsideTheEngineeringSubset() {
+		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe",
+				List.of(published(4001), published(4002), published(4003), published(4004)));
+		List<VacancyText> held = heldTitles();
+		for (VacancyText vacancy : held) {
+			this.normalized.recordCleanedVacancies(Map.of(vacancy.id(), cleaned("Engineer", Set.of())));
+		}
+		long first = held.get(0).id();
+		long second = held.get(1).id();
+		long third = held.get(2).id();
+		long fourth = held.get(3).id();
+		this.normalized.recordClassifications(Map.of(first, Classification.in(), second, Classification.in(),
+				fourth, Classification.unknown(UnknownReasonEnum.DOMAIN_AMBIGUITY)));
+		this.normalized.recordVacancyGroups(Map.of(first, GroupMark.inGroup(7), second, GroupMark.inGroup(8),
+				third, GroupMark.duplicateOf(first), fourth, GroupMark.duplicateOf(first)));
+		this.normalized.recordClassifications(Map.of(second, Classification.out()));
+		this.entityManager.flush();
+
+		assertThat(this.normalized.clearVacancyGroupsOutsideSubset()).isEqualTo(3);
+		this.entityManager.clear();
+		assertThat(this.repository.findAll())
+			.extracting(NormalizedVacancyEntity::vacancyId, NormalizedVacancyEntity::groupId,
+					NormalizedVacancyEntity::duplicateOfVacancyId)
+			.containsExactlyInAnyOrder(tuple(first, 7L, null), tuple(second, null, null),
+					tuple(third, null, null), tuple(fourth, null, null));
+		assertThat(this.normalized.clearVacancyGroupsOutsideSubset()).isZero();
+	}
+
 	@Test
 	void holdsTheCleanedTitleAndEveryLevelItNames() {
 		long vacancyId = heldTitles().getFirst().id();
