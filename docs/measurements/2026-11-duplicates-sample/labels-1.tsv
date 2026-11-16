@@ -1,0 +1,21 @@
+pair	answer	reason
+98	different position	CXL/PCIe switches vs Protium place-and-route tools
+71	different position	Nitro infrastructure vs ZeroDev wallet signing
+130	same group	Same duties, other location and work mode
+157	different position	AI strategy vs compute architecture and custom silicon
+255	duplicate	Same duties, requirements, location and hybrid mode
+73	different position	Big Data platform vs HPC platform
+273	duplicate	Same FX trading reliability role and location
+276	duplicate	Same Python expert pool, same declared remote location
+105	same group	Same duties and requirements, other country
+271	same group	Same network role, other city
+30	different position	S/4HANA logistics architecture vs EWM specialization
+104	different position	Check fraud team vs multiple products; different experience requirements
+49	different position	Data platform reliability vs Vehicle Autonomy SRE practice
+75	different position	Manipulation vs locomotion specialization
+290	same group	Same payments engineering role, other country
+119	same group	Same Data Sources duties, other locations and mode
+5	different position	Money platform backend vs onboard vehicle software
+2	different position	Senior vs regular engineer; five vs one year experience
+300	duplicate	Same Protection and Control duties and location
+291	same group	Same PSW team and requirements, other city

@@ -1,0 +1,21 @@
+pair	answer	reason
+14	different position	Different levels: Staff vs Senior Staff
+234	duplicate	Same ground systems role, same place and mode
+256	duplicate	Same storage duties and requirements, same place
+48	different position	Web extraction infrastructure vs clinical AI backend
+87	different position	Drupal development vs Power BI analytics
+191	duplicate	Same infrastructure advisory role, both name no place
+163	different position	Agentic content orchestration vs mainframe systems
+25	unclear	A has no description
+208	different position	Different levels: Engineer 5 vs Engineer 4
+117	same group	Same sales engineering role, US vs UK
+37	different position	Starlink consumer devices vs Starshield RF payloads
+168	different position	Testing vs development and testing; different experience requirements
+148	different position	Federal team and US government customers vs general customers
+23	different position	Bioinformatics tools vs energy management product
+69	different position	Application support vs DB2 database administration
+187	different position	Multicloud data security vs Federal SharePoint solutions
+236	same group	Same Insights backend role, Bucharest vs Iasi
+196	same group	Same technical lead role, Nicosia vs London
+45	different position	CMP solutions vs selective wet etch and clean
+131	different position	Cloud infrastructure platform vs VNDLY application development

@@ -1,0 +1,21 @@
+pair	answer	reason
+252	same group	Same backend QA duties; different declared city and mode
+164	duplicate	Same senior data science job, location and mode
+66	different position	New graduate level and requirements differ
+60	same group	Same engineering duties and stack; different declared modes
+183	different position	Different teams: Internal Applications versus Cohere Dashboard
+169	same group	Same Ostro analytics role; Brazil versus Canada
+159	different position	B adds HTML/CSS specialist duties and requirements
+269	duplicate	Same JavaScript pool; both locations and modes are remote
+61	different position	Professional Services delivery versus Customer Success AI strategy
+221	same group	Same DevOps duties and stack; Maryland versus Texas
+132	different position	Different specialties, required skills and certifications
+144	different position	Cloud platform engineering versus application development requirements
+129	different position	Splunk SWE2 versus front-end SWE3
+99	different position	Different experience requirements: five versus four years
+286	same group	Same database SRE role; Ireland versus Spain
+225	same group	Same data and AI platform role; Bengaluru versus Copenhagen
+268	same group	Same engineering manager role; Tokyo versus Taipei
+248	same group	Same forward deployed engineering role; different locations and modes
+106	unclear	A supplies only generic security duties; specialty unspecified
+116	different position	Identity platform architecture versus reporting and reconciliation

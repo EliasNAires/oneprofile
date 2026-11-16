@@ -649,7 +649,11 @@ The launch gate:
 1. Greenhouse and Ashby both swept.
 2. The engineering-role classifier has met its exit criterion.
 3. Skill extraction has a measured precision.
-4. Roles are read from titles, work mode is derived, and duplicate vacancies are collapsed.
+4. Roles are read from titles, work mode is derived, and duplicate vacancies are collapsed. Collapsing
+   is built (`POST /vacancy-groups`, after normalization, #27) and measured once
+   (`docs/measurements/2026-11-duplicates.md`): only descriptions identical once places, pay, dates and
+   numbers are stripped merge, the one threshold at merge precision ≥ 95% (95.0% held-out, at the bar),
+   with 41% recall. The subset's 155,767 vacancies make 142,335 groups and 4,088 duplicates.
 5. Seniority is read from the body.
 6. Eligibility is extracted, and its recall measured.
 7. **100k engineering vacancies live in one sweep**, counted as vacancy groups (#27). The snapshot has 55,331 on live boards:

@@ -1,0 +1,21 @@
+pair	answer	reason
+244	same group	Same support duties, San Diego vs Columbus
+266	duplicate	Same body, locations and modes
+204	same group	Same model optimization role, India vs Malaysia
+292	duplicate	Same body, location and mode
+214	different position	Different level: 1 year vs 3+ years and technical leadership
+143	different position	General data analysis vs production document ML workflows
+285	same group	Same product role, Germany vs Vietnam
+113	different position	Different stack: AEM and Java vs C# and .NET
+50	different position	Security test infrastructure vs Windows system acceptance testing
+16	different position	Application development vs AI platform engineering
+293	same group	Same network security role, Argentina vs Mexico
+288	same group	Same DED leadership role, San Carlos vs US remote
+251	unclear	Both lack job details beyond company boilerplate
+173	different position	Different named products: BJAK AI Neobank vs Doit AI Finance Agent
+296	different position	Different level: Staff 7+ years vs Staff+ 10+ years
+175	different position	Different requirements: React and motion planning vs NixOS
+284	same group	Same cloud security role, San Francisco vs Chicago
+64	different position	Business Identity Graph vs B2B Suite; 4+ vs 3+ years
+241	same group	Same marketplace development role, UK vs India
+34	different position	Internal analytics platform vs developer-facing blockchain APIs

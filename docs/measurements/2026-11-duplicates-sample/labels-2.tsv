@@ -1,0 +1,21 @@
+pair	answer	reason
+4	same group	Same graduate support program, Canada vs United States
+55	different position	Security architecture vs security operations management
+145	same group	Same duties and requirements, Lisbon vs San Francisco
+146	same group	Same job, onsite vs explicitly remote description
+289	same group	Same EDR Workflows job, Greece vs Portugal
+200	different position	Technical ownership vs development, 10+ vs 5+ years
+77	same group	Same research role, Geneva vs Bochum
+245	same group	Same compute products, other city and work mode
+281	duplicate	Same closing team role, same place and hybrid mode
+240	duplicate	Same federal observability duties and qualifications, same place
+237	different position	General solutions architecture vs Adtech specialty
+57	different position	Managed Services support vs Consulting Services delivery
+9	different position	CRM communications vs content platform, different levels
+94	different position	Risk analytics with AWS vs Analytics and Transformation with Snowflake
+246	same group	Same AI Finance role, United Kingdom hybrid vs Austria remote
+67	different position	COBOL mainframe vs MuleSoft marketing integration
+211	different position	Different products: ATS Experience vs LMS
+40	different position	General accounts vs Retail and CPG specialization
+93	different position	Cross-industry agents vs specialized healthcare team and workflows
+110	different position	Enterprise CI/CD platform vs IFX full-stack solutions

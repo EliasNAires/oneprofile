@@ -1,0 +1,21 @@
+pair	answer	reason
+239	different position	experience level: 1-3 vs 5+ years
+68	unclear	A has no job duties or requirements
+227	same group	same finance role, other city
+186	different position	full-stack vs backend team; different requirements
+134	different position	other team and products: YouVersion vs Digital Product
+84	different position	personnel clearances vs SCI program security
+222	same group	same engineering body, other country and mode
+250	same group	same ad serving role, other city
+29	unclear	B has no description
+189	same group	same OpenStack role, other city
+85	same group	same mid-level Ads hiring pool, other country
+194	different position	other level: Engineer 5 vs Engineer 4
+198	same group	same maintenance role, other city
+95	different position	storage testing vs cloud infrastructure development
+89	different position	experience level: 8+ vs 7+ years
+201	same group	same AI Finance Agent mobile role, other country
+160	duplicate	same IMS support role, same place and mode
+141	same group	same graduate program and duties, other country
+62	different position	other domain: Trading vs Payments
+272	same group	same architect role, other city and mode

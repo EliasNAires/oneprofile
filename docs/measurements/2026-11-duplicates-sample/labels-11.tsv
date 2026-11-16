@@ -1,0 +1,21 @@
+pair	answer	reason
+299	same group	Same duties and requirements, other city
+137	different position	Serving vs Recommendation specialty; different GPU experience requirements
+235	different position	Different experience requirements: 10+ vs 8+ years
+1	different position	Different levels: Developer II vs Senior
+166	different position	Internal developer tools and AI workflows vs general full-stack work
+38	different position	Infrastructure security vs risk systems testing
+203	same group	Same duties and requirements, other location and mode
+76	different position	Membership analytics vs financial and executive reporting
+12	different position	Different levels: Mortgage Advisor vs Advisor II
+114	different position	Spring Boot development vs AEM specialization
+142	same group	Same electro-optical role, other city
+18	different position	Developer vs Senior; 3-7 vs 7-12 years
+15	different position	Map sourcing and compilation vs city data platform
+90	different position	Different levels: Engineer 5 vs Engineer 4
+181	different position	Different experience requirements: 2+ vs 5+ years
+279	same group	Same AI Investing role, other country
+184	different position	Entry-level eligibility vs 3-5 years and active clearance
+86	different position	Whitebox firmware validation vs customer and system qualification
+59	different position	Ultra-low-latency trading networks vs enterprise core networks
+202	different position	Different levels: Engineer 4 vs Engineer 5

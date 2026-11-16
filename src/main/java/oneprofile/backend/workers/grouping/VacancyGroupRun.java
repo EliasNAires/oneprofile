@@ -33,8 +33,11 @@ public class VacancyGroupRun {
 	/** Descriptions are read by whole buckets around this size, and marks written in batches of this size. */
 	private static final int CHUNK = 1000;
 
-	/** Placeholder until the labelled sample of #27 sets the similarity threshold. */
-	private static final double THRESHOLD = 0.8;
+	/**
+	 * The similarity threshold the labelled sample of #27 set: only descriptions identical once stripped merge,
+	 * the one threshold whose merge precision reached 95% (docs/measurements/2026-11-duplicates.md).
+	 */
+	private static final double THRESHOLD = 1.0;
 
 	private final DescriptionSimilarityRule similarity;
 
@@ -47,7 +50,7 @@ public class VacancyGroupRun {
 	private final int chunk;
 
 	/**
-	 * Groups vacancies at the placeholder threshold with a chunk of a thousand vacancies.
+	 * Groups vacancies at the measured threshold with a chunk of a thousand vacancies.
 	 * @param similarity the rule that shingles descriptions
 	 * @param rule the rule that groups compared vacancies and chooses duplicates
 	 * @param normalized where the subset is read and the marks recorded

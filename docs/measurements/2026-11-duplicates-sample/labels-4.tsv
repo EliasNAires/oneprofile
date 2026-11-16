@@ -1,0 +1,21 @@
+pair	answer	reason
+188	same group	Same duties and requirements, different places and modes
+153	different position	Different requirements: SIGINT targeting versus general systems experience
+21	duplicate	Same robotics role translated, same place and mode
+138	duplicate	Same requirements, duties section omitted, same place and mode
+180	different position	Different levels and networking specialties: TCP_04 versus TCP_05
+199	different position	Different preferred expertise: advanced integration leadership versus system configuration
+174	same group	Same architecture duties and requirements, different regions and modes
+54	different position	Different teams and stacks: SAP versus Kafka and service mesh
+220	different position	B explicitly supports the Workday HCM transformation programme
+254	same group	Same Android role, different cities
+223	same group	Same iOS duties and requirements, different cities
+209	duplicate	Same Java role, same declared place and mode
+295	same group	Same autonomy integration duties and requirements, different cities
+33	different position	Different products: fleet lifecycle management versus feature flagging
+264	same group	Same OT Watch Complete role, different countries
+27	different position	Different specialty: general ML and GenAI versus marketing analytics
+197	different position	Different named products: KIRA versus Doit AI Finance Agent
+219	same group	Same Thomas engineering role, different cities
+31	different position	Different products: Zelle and Bill Pay versus securities processing
+82	same group	Same AI deployment duties, different countries and modes

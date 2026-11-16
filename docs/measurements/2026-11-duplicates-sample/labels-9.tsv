@@ -1,0 +1,21 @@
+pair	answer	reason
+212	different position	Pretraining versus reinforcement learning research
+58	different position	Different levels: Engineer 3 versus 2
+115	same group	Same duties, Warsaw versus Prague
+206	same group	Same duties, different country and mode
+210	same group	Same duties, Toronto versus Austin
+42	different position	French fluency required only in B
+270	duplicate	Identical descriptions, same place and mode
+170	same group	Same duties, New York versus London
+100	different position	Payment Networks versus Foundry R&D team
+118	different position	Different levels and Airflow workflow duties
+140	different position	Card versus Identity International team
+172	duplicate	Same job and requirements, same location and mode
+102	different position	Inventory Savings versus Otter Grow team
+136	different position	Manual testing versus automation and API testing
+258	different position	Engineer 3 versus 2, eight versus six years
+205	different position	Pricing forecasting versus online and marketing specializations
+213	same group	Same superapp scope and duties, different place and mode
+207	same group	Same kernel driver duties, hybrid versus onsite
+155	same group	Same Salesforce duties, Lille versus Paris
+44	different position	Windows platforms versus Linux and Kubernetes
