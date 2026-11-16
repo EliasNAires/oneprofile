@@ -653,7 +653,9 @@ The launch gate:
    is built (`POST /vacancy-groups`, after normalization, #27) and measured once
    (`docs/measurements/2026-11-duplicates.md`): only descriptions identical once places, pay, dates and
    numbers are stripped merge, the one threshold at merge precision ≥ 95% (95.0% held-out, at the bar),
-   with 41% recall. The subset's 155,767 vacancies make 142,335 groups and 4,088 duplicates.
+   with 41% recall. The subset's 155,767 vacancies make 142,335 groups and 4,088 duplicates. The
+   approach is reconsidered in #106 (Elias, 2026-11-16): remove duplicates and exact coincidences only,
+   comparing title and body without taking words out.
 5. Seniority is read from the body.
 6. Eligibility is extracted, and its recall measured.
 7. **100k engineering vacancies live in one sweep**, counted as vacancy groups (#27). The snapshot has 55,331 on live boards:
