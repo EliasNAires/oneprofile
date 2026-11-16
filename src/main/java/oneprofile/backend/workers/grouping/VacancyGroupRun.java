@@ -177,8 +177,12 @@ public class VacancyGroupRun {
 		}
 	}
 
-	/** Title evidence that must agree before descriptions can be compared. */
-	private Bucket bucket(GroupVacancy vacancy) {
+	/**
+	 * Title evidence that must agree before descriptions can be compared.
+	 * @param vacancy a vacancy of the subset
+	 * @return the company's title bucket it is compared within
+	 */
+	public static Bucket bucket(GroupVacancy vacancy) {
 		List<String> titles = (vacancy.normalizedTitles() == null || vacancy.normalizedTitles().isEmpty())
 				? List.of(vacancy.cleanedTitle().toLowerCase(Locale.ROOT)) : vacancy.normalizedTitles();
 		return new Bucket(vacancy.slug(), titles, vacancy.managementLevel(), vacancy.titleSeniorities());
@@ -202,7 +206,7 @@ public class VacancyGroupRun {
 	 * @param managementLevel its title's management level, null if none
 	 * @param seniorities the seniority levels its title names
 	 */
-	private record Bucket(String slug, List<String> titles, ManagementLevelEnum managementLevel,
+	public record Bucket(String slug, List<String> titles, ManagementLevelEnum managementLevel,
 			Set<SeniorityLevelEnum> seniorities) {
 	}
 
