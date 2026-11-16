@@ -29,19 +29,29 @@ import org.springframework.context.ConfigurableApplicationContext;
  *
  * Writes one line a pair, as slug, first and second vacancy id, their ATSs, whether they share the pass's
  * bucket (1 or 0), the merge level and the overlap, tab-separated. The merge level is the highest threshold
- * at which single linkage joins the two, through other vacancies of the bucket or directly: the pass merges
- * them at threshold t exactly when the level is at least t; it is 0 outside a bucket. The overlap is their
- * own descriptions' shingle overlap, which decides whether one can hide the other as a duplicate. Both strip
- * the locations the pass strips, those of the bucket, or of the candidate pairs' titles outside one.
+ * at which single linkage joins the two, through other vacancies of the bucket or directly: at any positive
+ * threshold t the pass merges them exactly when the level is at least t; it is 0 outside a bucket. The
+ * overlap is their own descriptions' shingle overlap, which decides whether one can hide the other as a
+ * duplicate. Both strip the locations the pass strips, those of the bucket, or of the candidate pairs'
+ * titles outside one.
  */
 class VacancyGroupPairs {
 
 	/** Titles are read for about this many vacancies at once. */
 	private static final int CHUNK = 1000;
 
+	/**
+	 * The vacancies #27 calls candidates of one another.
+	 * @param slug the company's slug across ATSs
+	 * @param titles their normalized titles, as the pass's bucket reads them
+	 */
 	record Frame(String slug, List<String> titles) {
 	}
 
+	/**
+	 * Reads the subset and writes its candidate pairs.
+	 * @param args the file the pairs are written to
+	 */
 	public static void main(String[] args) throws Exception {
 		ConfigurableApplicationContext context = new SpringApplicationBuilder(BackendApplication.class)
 			.web(WebApplicationType.NONE)
@@ -163,13 +173,13 @@ class VacancyGroupPairs {
 			componentOf.put(i, i);
 		}
 		for (Edge edge : edges) {
-			int a = componentOf.get(edge.a());
-			int c = componentOf.get(edge.b());
-			if (a == c) {
+			int leftComponent = componentOf.get(edge.a());
+			int rightComponent = componentOf.get(edge.b());
+			if (leftComponent == rightComponent) {
 				continue;
 			}
-			List<Integer> left = components.get(a);
-			List<Integer> right = components.remove(c);
+			List<Integer> left = components.get(leftComponent);
+			List<Integer> right = components.remove(rightComponent);
 			for (int x : left) {
 				for (int y : right) {
 					level[x][y] = edge.overlap();
@@ -177,7 +187,7 @@ class VacancyGroupPairs {
 				}
 			}
 			for (int y : right) {
-				componentOf.put(y, a);
+				componentOf.put(y, leftComponent);
 			}
 			left.addAll(right);
 		}
