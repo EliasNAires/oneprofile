@@ -3,11 +3,14 @@ package oneprofile.backend.workers.probe;
 import java.io.IOException;
 import java.time.Clock;
 import java.time.Instant;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import oneprofile.backend.storage.company.AtsEnum;
+import oneprofile.backend.storage.company.BoardStatusEnum;
 import oneprofile.backend.storage.company.CompanyStore;
 import oneprofile.backend.storage.company.RegionEnum;
+import oneprofile.backend.storage.vacancy.VacancyStore;
 import oneprofile.backend.workers.Pace;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -21,7 +24,9 @@ import org.springframework.stereotype.Component;
  * every company held and an ATS is under no obligation to serve them all at once: several are open at
  * once, up to a limit, and they start no faster than a limit a second. Runs of different ATSs share
  * no limit, so they can go side by side. A board that could not be read at all is left as it was
- * rather than recorded as anything, so the next run probes it again.
+ * rather than recorded as anything, so the next run probes it again. A board found empty or not
+ * found has its held vacancies removed before its probe is recorded. An active board keeps its
+ * vacancies for the sweep to read.
  */
 @Component
 public class BoardProbeRun {
@@ -46,6 +51,8 @@ public class BoardProbeRun {
 
 	private final CompanyStore companies;
 
+	private final VacancyStore vacancies;
+
 	private final Clock clock;
 
 	/**
@@ -55,25 +62,29 @@ public class BoardProbeRun {
 	 * @param lever reads Lever boards
 	 * @param workday reads Workday boards
 	 * @param companies the companies to probe, and where the probes are recorded
+	 * @param vacancies where vacancies of boards found empty or not found are removed
 	 */
 	@Autowired
 	public BoardProbeRun(GreenhouseBoardReaderAdapter greenhouse, AshbyBoardReaderAdapter ashby,
-			LeverBoardReaderAdapter lever, WorkdayBoardReaderAdapter workday, CompanyStore companies) {
+			LeverBoardReaderAdapter lever, WorkdayBoardReaderAdapter workday, CompanyStore companies,
+			VacancyStore vacancies) {
 		this(Map.of(AtsEnum.GREENHOUSE, greenhouse, AtsEnum.ASHBY, ashby, AtsEnum.LEVER, lever, AtsEnum.WORKDAY,
-				workday), PACES, companies, Clock.systemUTC());
+				workday), PACES, companies, vacancies, Clock.systemUTC());
 	}
 
 	/**
 	 * @param readers what reads the boards of each ATS
 	 * @param paces how fast each ATS is asked
 	 * @param companies the companies to probe, and where the probes are recorded
+	 * @param vacancies where vacancies of boards found empty or not found are removed
 	 * @param clock what a probe is timestamped from
 	 */
 	BoardProbeRun(Map<AtsEnum, BoardReaderPort> readers, Map<AtsEnum, Pace> paces, CompanyStore companies,
-			Clock clock) {
+			VacancyStore vacancies, Clock clock) {
 		this.readers = Map.copyOf(readers);
 		this.paces = Map.copyOf(paces);
 		this.companies = companies;
+		this.vacancies = vacancies;
 		this.clock = clock;
 	}
 
@@ -95,6 +106,11 @@ public class BoardProbeRun {
 							unreadable.incrementAndGet();
 							return;
 						}
+						if (reading.boardStatus() == BoardStatusEnum.NOT_FOUND
+								|| reading.boardStatus() == BoardStatusEnum.EMPTY) {
+							this.vacancies.mirror(ats, slug, List.of());
+						}
+						// If the company write fails, its old status remains with no vacancies; the next run retries.
 						this.companies.recordProbe(ats, slug, reading.boardStatus(), reading.name(),
 								Instant.now(this.clock));
 						switch (reading.boardStatus()) {

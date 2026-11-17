@@ -11,6 +11,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import oneprofile.backend.storage.company.RegionEnum;
 import oneprofile.backend.storage.normalizedvacancy.Classification;
 import oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum;
@@ -36,6 +37,11 @@ import tools.jackson.databind.JsonNode;
  * the parts overlap least; a part still too large is narrowed by a further facet. A vacancy found in
  * two parts, as one in two locations is, is held once.
  * <p>
+ * A first, unfaceted list page answering {@code 400}, {@code 401}, {@code 403}, {@code 404} or
+ * {@code 422} means no board is published under the slug and throws {@link BoardNotFoundException}.
+ * Other failures to read a list page throw {@link IOException}, including those answers on later
+ * pages or under facets.
+ * <p>
  * A description takes a request a vacancy, so it is asked for only where the title classification
  * leaves the vacancy {@code IN}, or {@code UNKNOWN} for a reason the body pass reads it for: a million
  * descriptions would take 18 hours, and the body pass never reads the rest (decided with Elias on
@@ -57,6 +63,9 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 
 	/** The offset Workday stops paging at. */
 	private static final int PAGING_LIMIT = 2000;
+
+	/** What Workday answers when no public board is published, as in the probe. */
+	private static final Set<Integer> NO_BOARD = Set.of(400, 401, 403, 404, 422);
 
 	private final WorkdayApiPort api;
 
@@ -137,6 +146,10 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 	private JsonNode page(String slug, Map<String, List<String>> appliedFacets, int offset, Runnable onRefusal)
 			throws IOException {
 		WorkdayApiPort.Answer answer = this.api.jobs(slug, appliedFacets, offset, this.pageSize, onRefusal);
+		if (offset == 0 && appliedFacets.isEmpty() && NO_BOARD.contains(answer.status())) {
+			throw new BoardNotFoundException("Asked for the vacancies of %s under %s from %d and got %d"
+				.formatted(slug, appliedFacets, offset, answer.status()));
+		}
 		if (answer.status() != 200 || !answer.body().path("jobPostings").isArray()) {
 			throw new IOException("Asked for the vacancies of %s under %s from %d and got %d".formatted(slug,
 					appliedFacets, offset, answer.status()));

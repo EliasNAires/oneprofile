@@ -32,8 +32,9 @@ import tools.jackson.databind.ObjectMapper;
  * a description into parts its page shows one after another — the description, each list under its
  * heading, the pay description and the closing — and the description is held as that page reads.
  * What Lever structures and no other ATS does — its workplace type, country, commitment, team and
- * every location — is kept as Lever writes it. A board that does not answer with its postings is a
- * failure rather than an answer, as it is on the other ATSs.
+ * every location — is kept as Lever writes it. A {@code 404} answer means no board is published under
+ * the slug and throws {@link BoardNotFoundException}. Any other failure to read the board throws
+ * {@link IOException}.
  */
 @Component
 public class LeverVacancyReaderAdapter implements VacancyReaderPort {
@@ -108,6 +109,9 @@ public class LeverVacancyReaderAdapter implements VacancyReaderPort {
 			.GET()
 			.build();
 		HttpResponse<String> response = send(request, slug, onRefusal);
+		if (response.statusCode() == 404) {
+			throw new BoardNotFoundException("Asked for the vacancies of %s and got 404".formatted(slug));
+		}
 		if (response.statusCode() != 200) {
 			throw new IOException("Asked for the openings of %s and got %d".formatted(slug, response.statusCode()));
 		}

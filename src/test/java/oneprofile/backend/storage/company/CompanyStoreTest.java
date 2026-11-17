@@ -55,6 +55,20 @@ class CompanyStoreTest {
 		assertThat(stripe.probedAt()).isEqualTo(PROBED_AT);
 	}
 
+	/** A sweep closes the board without recording a probe or losing its name. */
+	@Test
+	void recordsNotFoundWithoutChangingTheNameOrProbeTime() {
+		this.companies.record(AtsEnum.GREENHOUSE, Map.of("stripe", RegionEnum.US));
+		this.companies.recordProbe(AtsEnum.GREENHOUSE, "stripe", BoardStatusEnum.ACTIVE, "Stripe", PROBED_AT);
+
+		this.companies.recordNotFound(AtsEnum.GREENHOUSE, "stripe");
+
+		CompanyEntity stripe = this.repository.findByAtsAndSlug(AtsEnum.GREENHOUSE, "stripe").orElseThrow();
+		assertThat(stripe.boardStatus()).isEqualTo(BoardStatusEnum.NOT_FOUND);
+		assertThat(stripe.name()).isEqualTo("Stripe");
+		assertThat(stripe.probedAt()).isEqualTo(PROBED_AT);
+	}
+
 	@Test
 	void keepsTheNameItAlreadyHasWhenALaterProbeBringsNone() {
 		this.companies.record(AtsEnum.GREENHOUSE, Map.of("stripe", RegionEnum.US));

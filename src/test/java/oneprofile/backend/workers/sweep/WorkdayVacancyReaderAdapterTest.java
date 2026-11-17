@@ -18,6 +18,8 @@ import oneprofile.backend.workers.WorkdayApiPort;
 import oneprofile.backend.workers.classification.TitleClassificationRule;
 import oneprofile.backend.workers.cleaning.TitleCleaningRule;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.json.JsonMapper;
 import tools.jackson.databind.node.ArrayNode;
@@ -138,12 +140,14 @@ class WorkdayVacancyReaderAdapterTest {
 				"jobs {timeType=[full], locations=[b]} 0", "jobs {timeType=[part]} 0");
 	}
 
+	/** A closed vacancy is left out while the rest of its board is still read. */
 	@Test
 	void leavesOutAVacancyThatClosedBetweenTheListAndItsPage() throws IOException {
-		FakeWorkday workday = new FakeWorkday(List.of(posting("Senior Software Engineer", "Santa-Clara", "JR1")));
+		FakeWorkday workday = new FakeWorkday(List.of(posting("Senior Software Engineer", "Santa-Clara", "JR1"),
+				posting("Registered Nurse", "Santa-Clara", "JR2")));
 
 		assertThat(reader(workday).read(SLUG, RegionEnum.US, () -> {
-		})).isEmpty();
+		})).extracting(PublishedVacancy::externalId).containsExactly("Registered-Nurse_JR2");
 	}
 
 	@Test
@@ -158,13 +162,52 @@ class WorkdayVacancyReaderAdapterTest {
 				null, null, null, null, null, null));
 	}
 
+	/** These answers on the first unfaceted page mean no public board is published. */
+	@ParameterizedTest
+	@ValueSource(ints = { 400, 401, 403, 404, 422 })
+	void reportsABoardThatIsNotPublished(int status) {
+		FakeWorkday workday = new FakeWorkday(List.of());
+		workday.listStatus = status;
+
+		assertThatIOException().isThrownBy(() -> reader(workday).read(SLUG, RegionEnum.US, () -> {
+		})).isInstanceOf(BoardNotFoundException.class);
+	}
+
+	/** A server error on the first page says nothing about whether a board is published. */
 	@Test
 	void failsOnABoardThatCannotBeRead() {
 		FakeWorkday workday = new FakeWorkday(List.of());
-		workday.listStatus = 422;
+		workday.listStatus = 500;
 
 		assertThatIOException().isThrownBy(() -> reader(workday).read(SLUG, RegionEnum.US, () -> {
-		}));
+		})).isNotInstanceOf(BoardNotFoundException.class);
+	}
+
+	/** A later page cannot establish that the board is not published. */
+	@Test
+	void failsOnALaterPageThatCannotBeRead() {
+		FakeWorkday workday = new FakeWorkday(List.of(posting("Registered Nurse", "A", "JR1"),
+				posting("Registered Nurse", "B", "JR2"), posting("Registered Nurse", "C", "JR3")));
+		workday.laterListStatus = 404;
+
+		assertThatIOException().isThrownBy(() -> reader(workday).read(SLUG, RegionEnum.US, () -> {
+		})).isNotInstanceOf(BoardNotFoundException.class);
+		assertThat(this.asked).containsExactly("jobs {} 0", "jobs {} 2");
+	}
+
+	/** Even offset zero under a facet cannot establish that the board is not published. */
+	@Test
+	void failsOnAFacetedPageThatCannotBeRead() {
+		FakeWorkday workday = new FakeWorkday(List.of(
+				posting("Registered Nurse", "A", "JR1", Map.of("timeType", Set.of("full"))),
+				posting("Registered Nurse", "B", "JR2", Map.of("timeType", Set.of("full"))),
+				posting("Registered Nurse", "C", "JR3", Map.of("timeType", Set.of("part"))),
+				posting("Registered Nurse", "D", "JR4", Map.of("timeType", Set.of("part")))));
+		workday.facetedListStatus = 404;
+
+		assertThatIOException().isThrownBy(() -> reader(workday).read(SLUG, RegionEnum.US, () -> {
+		})).isNotInstanceOf(BoardNotFoundException.class);
+		assertThat(this.asked).containsExactly("jobs {} 0", "jobs {timeType=[full]} 0");
 	}
 
 	private WorkdayVacancyReaderAdapter reader(FakeWorkday workday) {
@@ -193,6 +236,12 @@ class WorkdayVacancyReaderAdapterTest {
 
 		private int listStatus = 200;
 
+		/** The answer for a page after offset zero. */
+		private int laterListStatus = 200;
+
+		/** The answer for a page narrowed by facets. */
+		private int facetedListStatus = 200;
+
 		private int detailStatus = 200;
 
 		FakeWorkday(List<Posting> postings) {
@@ -205,6 +254,12 @@ class WorkdayVacancyReaderAdapterTest {
 			WorkdayVacancyReaderAdapterTest.this.asked.add("jobs %s %d".formatted(appliedFacets, offset));
 			if (this.listStatus != 200) {
 				return new Answer(this.listStatus, MissingNode.getInstance());
+			}
+			if (offset > 0 && this.laterListStatus != 200) {
+				return new Answer(this.laterListStatus, MissingNode.getInstance());
+			}
+			if (!appliedFacets.isEmpty() && this.facetedListStatus != 200) {
+				return new Answer(this.facetedListStatus, MissingNode.getInstance());
 			}
 			Predicate<Posting> applied = (posting) -> appliedFacets.entrySet()
 				.stream()

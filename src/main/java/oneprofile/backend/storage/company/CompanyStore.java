@@ -87,6 +87,20 @@ public class CompanyStore {
 	}
 
 	/**
+	 * Records that a sweep found no board, keeping the company's name and last probe time.
+	 * @param ats the ATS the slug belongs to
+	 * @param slug the slug whose board was not found
+	 * @throws IllegalStateException if no company is held under that slug
+	 */
+	@Transactional
+	public void recordNotFound(AtsEnum ats, String slug) {
+		CompanyEntity company = this.repository.findByAtsAndSlug(ats, slug)
+			.orElseThrow(() -> new IllegalStateException("No %s company is held under %s".formatted(ats, slug)));
+		company.notFound();
+		this.repository.save(company);
+	}
+
+	/**
 	 * Records on a company what a probe found on its board. Probing the same slug again replaces
 	 * what the last probe recorded rather than adding anything.
 	 * @param ats the ATS the slug belongs to

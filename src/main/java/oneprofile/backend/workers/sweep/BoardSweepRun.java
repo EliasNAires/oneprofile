@@ -29,7 +29,9 @@ import org.springframework.stereotype.Component;
  * limit, and they start no faster than a limit a second. Each board is mirrored as soon as it is
  * read. A board that could not be read is skipped whole: the company keeps the vacancies it already
  * had, so a board that went down is not mistaken for a board that emptied. Where its vacancies name
- * the company, as Workday's do, the company takes the name they give most often.
+ * the company, as Workday's do, the company takes the name they give most often. A board the ATS
+ * confirms is not found is mirrored as empty, then its company is recorded as NOT_FOUND without
+ * changing its name or last probe time.
  */
 @Component
 public class BoardSweepRun {
@@ -99,14 +101,24 @@ public class BoardSweepRun {
 		AtomicInteger added = new AtomicInteger();
 		AtomicInteger updated = new AtomicInteger();
 		AtomicInteger deleted = new AtomicInteger();
+		AtomicInteger notFound = new AtomicInteger();
 		AtomicInteger unreadable = new AtomicInteger();
 		this.paces.get(ats)
 			.readEach("The %s sweep".formatted(ats), regions,
-					(slug, region, onRefusal) -> read(ats, reader, slug, region, onRefusal), (slug, openings) -> {
-						if (openings == null) {
+					(slug, region, onRefusal) -> read(ats, reader, slug, region, onRefusal), (slug, reading) -> {
+						if (reading instanceof Unreadable) {
 							unreadable.incrementAndGet();
 							return;
 						}
+						if (reading instanceof NotFound) {
+							VacancyStore.Reconciliation reconciliation = this.vacancies.mirror(ats, slug, List.of());
+							// If the company write fails, it stays ACTIVE with no vacancies; the next sweep retries.
+							this.companies.recordNotFound(ats, slug);
+							deleted.addAndGet(reconciliation.deleted());
+							notFound.incrementAndGet();
+							return;
+						}
+						List<PublishedVacancy> openings = ((Published) reading).vacancies();
 						VacancyStore.Reconciliation reconciliation = this.vacancies.mirror(ats, slug, openings);
 						companyName(openings).ifPresent((name) -> this.companies.recordName(ats, slug, name));
 						published.addAndGet(openings.size());
@@ -115,7 +127,7 @@ public class BoardSweepRun {
 						deleted.addAndGet(reconciliation.deleted());
 					});
 		return new Report(regions.size(), published.get(), added.get(), updated.get(), deleted.get(),
-				unreadable.get());
+				notFound.get(), unreadable.get());
 	}
 
 	/**
@@ -133,30 +145,51 @@ public class BoardSweepRun {
 			.map(Map.Entry::getKey);
 	}
 
-	/** What the board publishes, or null if the ATS could not be made to say. */
-	private static List<PublishedVacancy> read(AtsEnum ats, VacancyReaderPort reader, String slug,
-			RegionEnum region, Runnable onRefusal) {
+	/** What the board publishes, or that it was not found, or that it could not be read. */
+	private static Reading read(AtsEnum ats, VacancyReaderPort reader, String slug, RegionEnum region,
+			Runnable onRefusal) {
 		try {
-			return reader.read(slug, region, onRefusal);
+			return new Published(reader.read(slug, region, onRefusal));
+		}
+		catch (BoardNotFoundException ex) {
+			return new NotFound();
 		}
 		catch (IOException ex) {
 			logger.warn("Could not read the openings of the %s board of %s".formatted(ats, slug), ex);
-			return null;
+			return new Unreadable();
 		}
 	}
 
+	/** The three outcomes of asking an ATS for a board's vacancies. */
+	private sealed interface Reading permits Published, NotFound, Unreadable {
+	}
+
+	/** Every vacancy the board publishes, none on an empty board. */
+	private record Published(List<PublishedVacancy> vacancies) implements Reading {
+	}
+
+	/** The ATS confirmed that no board is published under the slug. */
+	private record NotFound() implements Reading {
+	}
+
+	/** The ATS could not be made to say what the board publishes. */
+	private record Unreadable() implements Reading {
+	}
+
 	/**
-	 * What one run found. A company whose board could not be read keeps every vacancy it already
-	 * had, and is counted nowhere but in the boards that were unreadable.
+	 * What one run found. A board that was not found adds its held vacancies to deleted.
+	 * A company whose board could not be read keeps every vacancy it already had, and is counted
+	 * only in boards and unreadable.
 	 *
-	 * @param boards how many boards were swept
+	 * @param boards how many boards were asked for, including those not found or unreadable
 	 * @param published how many openings those boards published
 	 * @param added how many of them were not held yet
 	 * @param updated how many held vacancies their boards still publish
 	 * @param deleted how many held vacancies their boards no longer publish
+	 * @param notFound how many slugs had no board
 	 * @param unreadable how many boards the ATS would not say anything about
 	 */
-	public record Report(int boards, int published, int added, int updated, int deleted, int unreadable) {
+	public record Report(int boards, int published, int added, int updated, int deleted, int notFound, int unreadable) {
 	}
 
 }

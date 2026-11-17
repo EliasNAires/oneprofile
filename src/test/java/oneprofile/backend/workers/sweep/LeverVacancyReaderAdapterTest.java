@@ -161,13 +161,29 @@ class LeverVacancyReaderAdapterTest {
 		assertThat(Duration.between(before, Instant.now())).isGreaterThanOrEqualTo(Duration.ofSeconds(1));
 	}
 
+	/** A missing board is distinct from a board that could not be read. */
 	@Test
-	void givesUpOnABoardTheAtsWillNotServe() {
+	void reportsABoardThatIsNotPublished() {
 		serve((exchange) -> respondWith(exchange, 404, """
 				{"ok":false,"error":"Document not found"}"""));
 
-		assertThatThrownBy(() -> reader().read("finix", RegionEnum.US, () -> {})).isInstanceOf(IOException.class)
+		assertThatThrownBy(() -> reader().read("finix", RegionEnum.US, () -> {})).isInstanceOf(BoardNotFoundException.class)
 			.hasMessageContaining("404");
+	}
+
+	/** A server error remains a read failure after every retry has been used. */
+	@Test
+	void failsOnABoardThatCannotBeRead() {
+		AtomicInteger attempts = new AtomicInteger();
+		serve((exchange) -> {
+			attempts.incrementAndGet();
+			respondWith(exchange, 500, "");
+		});
+
+		assertThatThrownBy(() -> reader().read("finix", RegionEnum.US, () -> {})).isInstanceOf(IOException.class)
+			.isNotInstanceOf(BoardNotFoundException.class)
+			.hasMessageContaining("500");
+		assertThat(attempts).hasValue(3);
 	}
 
 	@Test

@@ -21,10 +21,10 @@ class SweepEndpointTest {
 
 	@Test
 	void reportsWhatTheRunFoundForTheAtsItNames() {
-		given(this.sweep.sweepAll(AtsEnum.ASHBY)).willReturn(new BoardSweepRun.Report(4, 120, 12, 108, 3, 1));
+		given(this.sweep.sweepAll(AtsEnum.ASHBY)).willReturn(new BoardSweepRun.Report(4, 120, 12, 108, 3, 1, 1));
 
 		assertThat(this.mvc.post().uri("/sweeps/ashby")).hasStatusOk().bodyJson().isEqualTo("""
-				{"boards":4,"published":120,"added":12,"updated":108,"deleted":3,"unreadable":1}""");
+				{"boards":4,"published":120,"added":12,"updated":108,"deleted":3,"notFound":1,"unreadable":1}""");
 	}
 
 }

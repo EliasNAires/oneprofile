@@ -212,12 +212,23 @@ class GreenhouseVacancyReaderAdapterTest {
 		assertThat(attempts).hasValue(3);
 	}
 
+	/** A missing board is distinct from a board that could not be read. */
 	@Test
-	void givesUpOnABoardTheAtsWillNotServe() {
+	void reportsABoardThatIsNotPublished() {
 		serve((exchange) -> respondWith(exchange, 404, ""));
 
-		assertThatThrownBy(() -> reader().read("stripe", RegionEnum.US, () -> {})).isInstanceOf(IOException.class)
+		assertThatThrownBy(() -> reader().read("stripe", RegionEnum.US, () -> {})).isInstanceOf(BoardNotFoundException.class)
 			.hasMessageContaining("404");
+	}
+
+	/** A server error says nothing about whether a board is published. */
+	@Test
+	void failsOnABoardThatCannotBeRead() {
+		serve((exchange) -> respondWith(exchange, 500, ""));
+
+		assertThatThrownBy(() -> reader().read("stripe", RegionEnum.US, () -> {})).isInstanceOf(IOException.class)
+			.isNotInstanceOf(BoardNotFoundException.class)
+			.hasMessageContaining("500");
 	}
 
 	@Test

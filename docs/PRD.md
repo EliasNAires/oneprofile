@@ -61,7 +61,11 @@ Built for every ATS, each at its own pace. A company keeps the **region** of the
 was discovered on, `US` or `EU`, and is asked for in that region's API where its ATS has one per
 region (ADR-0022). Companies are probed and recorded as `ACTIVE`, `EMPTY`
 or `NOT_FOUND`; only `ACTIVE` companies are swept. `vacancy` is a **mirror of the board**: upsert
-what is returned, delete what has disappeared.
+what is returned, delete what has disappeared. A board a sweep cannot read (a refusal, a `5xx`,
+a timeout) keeps what is held, so a board that went down is not mistaken for one that emptied.
+A board the ATS says is not there is closed: a sweep records the company `NOT_FOUND` and deletes
+its vacancies, and a probe that finds a board `NOT_FOUND` or `EMPTY` deletes them too, so both
+runs agree that a closed board holds no vacancies (#49).
 
 Ashby: `GET https://api.ashbyhq.com/posting-api/job-board/{slug}?includeCompensation=true`.
 Unauthenticated, whole board in one response, no pagination, so a probe reads what a sweep does.

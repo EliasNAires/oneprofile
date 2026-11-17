@@ -30,8 +30,9 @@ import tools.jackson.databind.ObjectMapper;
  * <p>
  * The whole board comes in one answer, descriptions and compensation included, and needs no key.
  * What Ashby structures and Greenhouse does not — its workplace type, the country of each location,
- * the interval a pay range is quoted in — is kept as Ashby writes it. A board that does
- * not answer with its openings is a failure rather than an answer, as it is on Greenhouse.
+ * the interval a pay range is quoted in — is kept as Ashby writes it. A {@code 404} answer means no
+ * board is published under the slug and throws {@link BoardNotFoundException}. Any other failure to
+ * read the board throws {@link IOException}.
  */
 @Component
 public class AshbyVacancyReaderAdapter implements VacancyReaderPort {
@@ -101,6 +102,9 @@ public class AshbyVacancyReaderAdapter implements VacancyReaderPort {
 			.GET()
 			.build();
 		HttpResponse<String> response = send(request, slug, onRefusal);
+		if (response.statusCode() == 404) {
+			throw new BoardNotFoundException("Asked for the vacancies of %s and got 404".formatted(slug));
+		}
 		if (response.statusCode() != 200) {
 			throw new IOException("Asked for the openings of %s and got %d".formatted(slug, response.statusCode()));
 		}

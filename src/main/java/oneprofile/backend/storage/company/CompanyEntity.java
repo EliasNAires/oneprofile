@@ -68,6 +68,11 @@ public class CompanyEntity {
 		this.name = name;
 	}
 
+	/** Records that a sweep found no board, keeping the name and last probe time. */
+	public void notFound() {
+		this.boardStatus = BoardStatusEnum.NOT_FOUND;
+	}
+
 	/** The identifier it is known by within its ATS. */
 	public String slug() {
 		return this.slug;
@@ -83,7 +88,7 @@ public class CompanyEntity {
 		return this.name;
 	}
 
-	/** What the last probe found its board to be, or null if it has never been probed. */
+	/** What its board was last found to be by a probe or sweep, or null if neither has read it. */
 	public BoardStatusEnum boardStatus() {
 		return this.boardStatus;
 	}

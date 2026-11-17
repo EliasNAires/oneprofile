@@ -28,9 +28,9 @@ import tools.jackson.databind.ObjectMapper;
  * Reads every opening of a Greenhouse board from its public job board API.
  * <p>
  * The whole board comes in one answer, and asking for the content multiplies that answer ten times
- * over, so the wait for it is generous. Unlike a probe, a board that does not answer with its
- * openings is a failure rather than an answer: the sweep of that company is given up on, and what
- * is already held for it is left alone.
+ * over, so the wait for it is generous. A {@code 404} answer means no board is published under the
+ * slug and throws {@link BoardNotFoundException}. Any other failure to read the board throws
+ * {@link IOException}.
  */
 @Component
 public class GreenhouseVacancyReaderAdapter implements VacancyReaderPort {
@@ -97,6 +97,9 @@ public class GreenhouseVacancyReaderAdapter implements VacancyReaderPort {
 			.GET()
 			.build();
 		HttpResponse<String> response = send(request, slug, onRefusal);
+		if (response.statusCode() == 404) {
+			throw new BoardNotFoundException("Asked for the vacancies of %s and got 404".formatted(slug));
+		}
 		if (response.statusCode() != 200) {
 			throw new IOException("Asked for the openings of %s and got %d".formatted(slug, response.statusCode()));
 		}

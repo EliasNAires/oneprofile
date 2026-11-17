@@ -5,6 +5,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
+import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 
 import java.io.IOException;
@@ -18,17 +19,29 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import oneprofile.backend.TestcontainersConfiguration;
 import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.company.BoardStatusEnum;
+import oneprofile.backend.storage.company.CompanyRepository;
 import oneprofile.backend.storage.company.CompanyStore;
 import oneprofile.backend.storage.company.RegionEnum;
 import oneprofile.backend.storage.vacancy.PublishedGreenhouseVacancy;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
 import oneprofile.backend.storage.vacancy.PublishedWorkdayVacancy;
+import oneprofile.backend.storage.vacancy.VacancyRepository;
 import oneprofile.backend.storage.vacancy.VacancyStore;
 import oneprofile.backend.workers.Pace;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
+import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase;
+import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase.Replace;
+import org.springframework.context.annotation.Import;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 class BoardSweepRunTest {
 
@@ -50,7 +63,7 @@ class BoardSweepRunTest {
 		BoardSweepRun sweep = sweepOf(Map.of("stripe", List.of(published(4001), published(4002), published(4003)),
 				"notion", List.of(published(5001))));
 
-		assertThat(sweep.sweepAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardSweepRun.Report(2, 4, 2, 2, 3, 0));
+		assertThat(sweep.sweepAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardSweepRun.Report(2, 4, 2, 2, 3, 0, 0));
 		then(this.vacancies).should().mirror(AtsEnum.GREENHOUSE, "notion", List.of(published(5001)));
 	}
 
@@ -81,7 +94,7 @@ class BoardSweepRunTest {
 		boards.put("stripe", List.of(published(4001)));
 		boards.put("unreachable", null);
 
-		assertThat(sweepOf(boards).sweepAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardSweepRun.Report(2, 1, 1, 0, 0, 1));
+		assertThat(sweepOf(boards).sweepAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardSweepRun.Report(2, 1, 1, 0, 0, 0, 1));
 
 		then(this.vacancies).should(BDDMockito.never()).mirror(eq(AtsEnum.GREENHOUSE), eq("unreachable"), any());
 	}
@@ -147,7 +160,7 @@ class BoardSweepRunTest {
 		};
 
 		assertThat(sweepOf(reader, new Pace(2, 1000, false)).sweepAll(AtsEnum.GREENHOUSE))
-			.isEqualTo(new BoardSweepRun.Report(2, 1, 1, 0, 0, 1));
+			.isEqualTo(new BoardSweepRun.Report(2, 1, 1, 0, 0, 0, 1));
 		then(this.vacancies).should(BDDMockito.never()).mirror(eq(AtsEnum.GREENHOUSE), eq("refused"), any());
 	}
 
@@ -161,7 +174,7 @@ class BoardSweepRunTest {
 				Map.of(AtsEnum.GREENHOUSE, reader(Map.of()), AtsEnum.ASHBY, reader(Map.of("ramp", List.of(published(1))))),
 				Map.of(AtsEnum.GREENHOUSE, UNPACED, AtsEnum.ASHBY, UNPACED), this.companies, this.vacancies);
 
-		assertThat(sweep.sweepAll(AtsEnum.ASHBY)).isEqualTo(new BoardSweepRun.Report(1, 1, 1, 0, 0, 0));
+		assertThat(sweep.sweepAll(AtsEnum.ASHBY)).isEqualTo(new BoardSweepRun.Report(1, 1, 1, 0, 0, 0, 0));
 		then(this.vacancies).should().mirror(AtsEnum.ASHBY, "ramp", List.of(published(1)));
 	}
 
@@ -181,6 +194,90 @@ class BoardSweepRunTest {
 		sweep.sweepAll(AtsEnum.LEVER);
 
 		assertThat(asked).isEqualTo(Map.of("finix", RegionEnum.US, "kwalee", RegionEnum.EU));
+	}
+
+	/** The vacancies are removed before the company stops being swept. */
+	@Test
+	void mirrorsANotFoundBoardBeforeRecordingItAsNotFound() {
+		activeSlugs("gone");
+		given(this.vacancies.mirror(AtsEnum.GREENHOUSE, "gone", List.of()))
+			.willReturn(new VacancyStore.Reconciliation(0, 0, 3));
+		VacancyReaderPort reader = (slug, region, onRefusal) -> {
+			throw new BoardNotFoundException("No board under gone");
+		};
+
+		assertThat(sweepOf(reader, UNPACED).sweepAll(AtsEnum.GREENHOUSE))
+			.isEqualTo(new BoardSweepRun.Report(1, 0, 0, 0, 3, 1, 0));
+
+		var order = inOrder(this.vacancies, this.companies);
+		order.verify(this.vacancies).mirror(AtsEnum.GREENHOUSE, "gone", List.of());
+		order.verify(this.companies).recordNotFound(AtsEnum.GREENHOUSE, "gone");
+	}
+
+	/** Exercises reconciliation and company status with the real stores. */
+	@Nested
+	@DataJpaTest
+	@AutoConfigureTestDatabase(replace = Replace.NONE)
+	@Import({ TestcontainersConfiguration.class, CompanyStore.class, VacancyStore.class })
+	@Transactional(propagation = Propagation.NOT_SUPPORTED)
+	class WithStores {
+
+		@Autowired
+		private CompanyStore companies;
+
+		@Autowired
+		private VacancyStore vacancies;
+
+		@Autowired
+		private CompanyRepository companyRepository;
+
+		@Autowired
+		private VacancyRepository vacancyRepository;
+
+		/** Removes committed fixtures, since paced callbacks run on other threads. */
+		@AfterEach
+		void removeCompanies() {
+			for (String slug : List.of("sweep-open", "sweep-gone", "sweep-unreadable")) {
+				this.companyRepository.findByAtsAndSlug(AtsEnum.GREENHOUSE, slug).ifPresent((company) -> {
+					this.vacancies.mirror(AtsEnum.GREENHOUSE, slug, List.of());
+					this.companyRepository.delete(company);
+				});
+			}
+		}
+
+		/** A missing board closes its held vacancies; a failed read preserves them. */
+		@Test
+		void closesOnlyTheBoardThatWasNotFoundAndReportsEveryOutcome() {
+			this.companies.record(AtsEnum.GREENHOUSE, Map.of("sweep-open", RegionEnum.US, "sweep-gone",
+					RegionEnum.US, "sweep-unreadable", RegionEnum.US));
+			for (String slug : List.of("sweep-open", "sweep-gone", "sweep-unreadable")) {
+				this.companies.recordProbe(AtsEnum.GREENHOUSE, slug, BoardStatusEnum.ACTIVE, slug, Instant.EPOCH);
+			}
+			this.vacancies.mirror(AtsEnum.GREENHOUSE, "sweep-open", List.of(published(1)));
+			this.vacancies.mirror(AtsEnum.GREENHOUSE, "sweep-gone", List.of(published(2), published(3), published(4)));
+			this.vacancies.mirror(AtsEnum.GREENHOUSE, "sweep-unreadable",
+					List.of(published(5), published(6), published(7), published(8)));
+			VacancyReaderPort reader = (slug, region, onRefusal) -> {
+				if (slug.equals("sweep-gone")) {
+					throw new BoardNotFoundException("No board under sweep-gone");
+				}
+				if (slug.equals("sweep-unreadable")) {
+					throw new IOException("The ATS answered 503");
+				}
+				return List.of(published(1), published(9));
+			};
+			BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader),
+					Map.of(AtsEnum.GREENHOUSE, UNPACED), this.companies, this.vacancies);
+
+			assertThat(sweep.sweepAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardSweepRun.Report(3, 2, 1, 1, 3, 1, 1));
+
+			var gone = this.companyRepository.findByAtsAndSlug(AtsEnum.GREENHOUSE, "sweep-gone").orElseThrow();
+			assertThat(gone.boardStatus()).isEqualTo(BoardStatusEnum.NOT_FOUND);
+			assertThat(this.vacancyRepository.findByCompany(gone)).isEmpty();
+			var unreadable = this.companyRepository.findByAtsAndSlug(AtsEnum.GREENHOUSE, "sweep-unreadable").orElseThrow();
+			assertThat(unreadable.boardStatus()).isEqualTo(BoardStatusEnum.ACTIVE);
+			assertThat(this.vacancyRepository.findByCompany(unreadable)).hasSize(4);
+		}
 	}
 
 	private static PublishedVacancy workday(String externalId, String companyName) {
