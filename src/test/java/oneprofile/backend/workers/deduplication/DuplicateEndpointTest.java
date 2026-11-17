@@ -1,4 +1,4 @@
-package oneprofile.backend.workers.grouping;
+package oneprofile.backend.workers.deduplication;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
@@ -9,21 +9,21 @@ import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
-@WebMvcTest(VacancyGroupEndpoint.class)
-class VacancyGroupEndpointTest {
+@WebMvcTest(DuplicateEndpoint.class)
+class DuplicateEndpointTest {
 
 	@Autowired
 	private MockMvcTester mvc;
 
 	@MockitoBean
-	private VacancyGroupRun run;
+	private DuplicateRun run;
 
 	@Test
-	void reportsTheVacanciesGroupsDuplicatesAndFreshIds() {
-		given(this.run.groupVacancies()).willReturn(new VacancyGroupRun.Report(8, 3, 2, 1));
+	void reportsTheVacanciesAndDuplicates() {
+		given(this.run.markDuplicates()).willReturn(new DuplicateRun.Report(8, 2));
 
-		assertThat(this.mvc.post().uri("/vacancy-groups")).hasStatusOk().bodyJson().isLenientlyEqualTo("""
-				{"vacancies":8,"groups":3,"duplicates":2,"newGroups":1}""");
+		assertThat(this.mvc.post().uri("/duplicates")).hasStatusOk().bodyJson().isLenientlyEqualTo("""
+				{"vacancies":8,"duplicates":2}""");
 	}
 
 }

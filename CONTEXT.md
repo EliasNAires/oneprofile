@@ -109,17 +109,14 @@ seniority evidence appears.
 _Avoid_: content, body, details
 
 **Duplicate**:
-A vacancy that repeats another one: the same requisition on a second board of its company, or a
-repost. Only one of them is kept, the company's own board's over an aggregator's or a staffing
-firm's, and the other is never shown or counted (#27).
+A vacancy that repeats another one word for word: same company, title, description, declared
+locations and work modes, title and description equal once spacing and case are folded. The same
+requisition on a second board of the company, or a repost. One is kept, from the board that
+published it first the one published last; the others are never shown or counted (#106). Only
+boards of one slug are compared, so a duplicate on an aggregator's or a staffing firm's board is
+not matched. The same text published for another place or work mode is another vacancy, and is
+shown.
 _Avoid_: copy, clone, repost
-
-**Vacancy Group**:
-The vacancies that are one position posted once per location: remote once per country or state,
-onsite once per city, or both. Folded into one, while each vacancy keeps its own location, work
-mode, pay and apply link. The Finder lists groups and the Explorer and the launch gate count them;
-a group matches a filter when one of its vacancies meets all of it (#27).
-_Avoid_: cluster, family, folded vacancy
 
 **Normalized Vacancy**:
 The facts derived from a vacancy by rule rather than published by the ATS: cleaned and

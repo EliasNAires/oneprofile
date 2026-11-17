@@ -12,66 +12,33 @@ import org.springframework.data.repository.ListCrudRepository;
 public interface NormalizedVacancyRepository extends ListCrudRepository<NormalizedVacancyEntity, Long> {
 
 	/**
-	 * Lets go of group and duplicate marks outside the engineering subset, in one statement.
-	 * @return how many vacancies held either mark outside the subset
+	 * Clears every duplicate mark in one statement before recording a new run.
+	 * @return how many vacancies held a duplicate mark
 	 */
-	@Modifying
-	@Query("update NormalizedVacancy n set n.groupId = null, n.duplicateOfVacancyId = null "
-			+ "where (n.classificationState is null "
-			+ "or n.classificationState <> oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum.IN) "
-			+ "and (n.groupId is not null or n.duplicateOfVacancyId is not null)")
-	int clearVacancyGroupsOutsideSubset();
+	@Modifying(flushAutomatically = true, clearAutomatically = true)
+	@Query("update NormalizedVacancy n set n.duplicateOfVacancyId = null where n.duplicateOfVacancyId is not null")
+	int clearDuplicates();
 
 	/**
-	 * Reserves fresh vacancy-group ids in one statement.
-	 * @param count how many ids to reserve
-	 * @return the sequence values in reservation order
-	 */
-	@Query(value = "select nextval('normalized_vacancy_group_id_seq') from generate_series(1, :count)", nativeQuery = true)
-	List<Long> nextGroupIds(int count);
-
-	/**
-	 * How many open vacancies every company holds, including a board that holds none.
-	 * @return company id and vacancy count per row
-	 */
-	@Query(value = "select c.id, count(v.id) from company c left join vacancy v on v.company_id = c.id group by c.id",
-			nativeQuery = true)
-	List<Tuple> openVacanciesByCompany();
-
-	/**
-	 * The description segments held for the requested vacancies, without their other derived facts.
+	 * The raw descriptions stored by the requested vacancies' boards.
 	 * @param vacancyIds the vacancies to read
-	 * @return vacancy id and description segments per row
+	 * @return vacancy id and raw description per row, null where absent
 	 */
-	@Query("select n.vacancyId, n.descriptionSegments from NormalizedVacancy n where n.vacancyId in :vacancyIds")
-	List<Tuple> segmentsOf(Collection<Long> vacancyIds);
+	@Query("select v.id, v.description from Vacancy v where v.id in :vacancyIds")
+	List<Tuple> descriptionsOf(Collection<Long> vacancyIds);
 
 	/**
 	 * The whole engineering subset, in vacancy id order, without descriptions.
 	 * @return vacancy id, ATS, location field, address country, secondary locations, Lever and Workday
-	 * locations, company id, slug, cleaned title, normalized titles, management level, work modes,
-	 * first publication and stored group id, in that order
+	 * locations, company id, slug, raw title, work modes and first publication, in that order
 	 */
 	@Query("select n.vacancyId, c.ats, v.location, treat(v as AshbyVacancy).addressCountry, "
 			+ "treat(v as AshbyVacancy).secondaryLocations, treat(v as LeverVacancy).allLocations, "
-			+ "treat(v as WorkdayVacancy).allLocations, c.id, c.slug, n.cleanedTitle, n.normalizedTitles, "
-			+ "n.managementLevel, n.workModes, v.firstPublishedAt, n.groupId "
+			+ "treat(v as WorkdayVacancy).allLocations, c.id, c.slug, v.title, n.workModes, v.firstPublishedAt "
 			+ "from NormalizedVacancy n join Vacancy v on v.id = n.vacancyId join v.company c "
 			+ "where n.classificationState = oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum.IN "
 			+ "order by n.vacancyId")
-	List<Tuple> vacancyGroupScope();
-
-	/**
-	 * Every title seniority of the whole engineering subset, without a parameter per vacancy.
-	 * @return one vacancy id and one level it names per row
-	 */
-	@Query(value = "select n.vacancy_id, t.title_seniority from normalized_vacancy n "
-			+ "join normalized_vacancy_title_seniority t on t.normalized_vacancy_id = n.id "
-			+ "where n.classification_state = 'IN' union "
-			+ "select n.vacancy_id, g.title_seniority from normalized_vacancy n "
-			+ "join normalized_vacancy_guarded_title_seniority g on g.normalized_vacancy_id = n.id "
-			+ "where n.classification_state = 'IN'", nativeQuery = true)
-	List<Tuple> vacancyGroupTitleSeniorities();
+	List<Tuple> duplicateScope();
 
 	/**
 	 * What is held for a batch of vacancies.

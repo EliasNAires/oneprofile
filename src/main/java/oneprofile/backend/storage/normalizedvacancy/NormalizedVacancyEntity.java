@@ -75,8 +75,6 @@ public class NormalizedVacancyEntity {
 
 	private String[] workModes;
 
-	private Long groupId;
-
 	private Long duplicateOfVacancyId;
 
 	@Enumerated(EnumType.STRING)
@@ -173,25 +171,16 @@ public class NormalizedVacancyEntity {
 	}
 
 	/**
-	 * Takes on the vacancy group or duplicate mark the run gave it, replacing what the last run recorded.
-	 * @param mark its group or the vacancy it repeats
+	 * Takes on the duplicate mark the run gave it, replacing what the last run recorded.
+	 * @param vacancyId the vacancy it repeats, null where it repeats none
 	 */
-	public void groupedAs(GroupMark mark) {
-		this.groupId = mark.groupId();
-		this.duplicateOfVacancyId = mark.duplicateOfVacancyId();
+	public void duplicateOf(Long vacancyId) {
+		this.duplicateOfVacancyId = vacancyId;
 	}
 
 	/**
-	 * Its vacancy group's id, null for a duplicate or before the run.
-	 * @return its group id, null for a duplicate or before the run
-	 */
-	public Long groupId() {
-		return this.groupId;
-	}
-
-	/**
-	 * The vacancy it repeats, null for a group member or once that vacancy closes.
-	 * @return the kept vacancy's id, null for a group member or once that vacancy closes
+	 * The vacancy it repeats, null when it repeats none or once that vacancy closes.
+	 * @return the kept vacancy's id, null when it repeats none or once that vacancy closes
 	 */
 	public Long duplicateOfVacancyId() {
 		return this.duplicateOfVacancyId;

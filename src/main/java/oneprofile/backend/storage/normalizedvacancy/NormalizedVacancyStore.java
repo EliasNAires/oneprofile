@@ -30,99 +30,56 @@ public class NormalizedVacancyStore {
 	}
 
 	/**
-	 * Lets go of vacancy groups and duplicate marks outside the engineering subset, so a vacancy that
-	 * has left it keeps neither. Vacancies still in the subset keep what the last run recorded.
-	 * @return how many vacancies outside the subset held a group or duplicate mark
+	 * Replaces every duplicate mark in one transaction, including marks outside the subset.
+	 * @param duplicates each duplicate vacancy id mapped to the vacancy kept
+	 * @return how many duplicate marks this recorded
 	 */
 	@Transactional
-	public int clearVacancyGroupsOutsideSubset() {
-		return this.repository.clearVacancyGroupsOutsideSubset();
-	}
-
-	/**
-	 * Records the vacancy groups and duplicates a run found, replacing each vacancy's previous mark.
-	 * @param marks the group or the vacancy repeated, by vacancy id
-	 * @return how many vacancies this recorded a group or duplicate mark for
-	 */
-	@Transactional
-	public int recordVacancyGroups(Map<Long, GroupMark> marks) {
-		List<NormalizedVacancyEntity> recorded = new ArrayList<>(marks.size());
-		for (NormalizedVacancyEntity normalized : this.repository.findByVacancyIdIn(marks.keySet())) {
-			normalized.groupedAs(marks.get(normalized.vacancyId()));
-			recorded.add(normalized);
+	public int recordDuplicates(Map<Long, Long> duplicates) {
+		this.repository.clearDuplicates();
+		if (duplicates.isEmpty()) {
+			return 0;
+		}
+		List<NormalizedVacancyEntity> recorded = this.repository.findByVacancyIdIn(duplicates.keySet());
+		for (NormalizedVacancyEntity normalized : recorded) {
+			normalized.duplicateOf(duplicates.get(normalized.vacancyId()));
 		}
 		this.repository.saveAll(recorded);
 		return recorded.size();
 	}
 
 	/**
-	 * Reserves ids for new vacancy groups, independent of the vacancies that will belong to them.
-	 * @param count how many new groups need ids
-	 * @return fresh ids in increasing order, empty when none are needed
-	 */
-	@Transactional
-	public List<Long> nextGroupIds(int count) {
-		return (count == 0) ? List.of() : this.repository.nextGroupIds(count);
-	}
-
-	/**
-	 * How many open vacancies each company holds: a vacancy is held only while it remains on its board.
-	 * @return the count by company id, including zero for a board holding none
-	 */
-	@Transactional(readOnly = true)
-	public Map<Long, Integer> openVacanciesByCompany() {
-		Map<Long, Integer> counts = new HashMap<>();
-		for (Tuple row : this.repository.openVacanciesByCompany()) {
-			counts.put(row.get(0, Long.class), Math.toIntExact(row.get(1, Long.class)));
-		}
-		return counts;
-	}
-
-	/**
-	 * The description segments of the given vacancies, read apart from the light vacancy-group scope.
+	 * The raw descriptions of the requested vacancies, read apart from the light duplicate scope.
 	 * @param vacancyIds the vacancies whose descriptions the pass needs
-	 * @return their segments by vacancy id, empty where cleaning has cut none
+	 * @return their raw descriptions by vacancy id, null where absent
 	 */
 	@Transactional(readOnly = true)
-	public Map<Long, List<Segment>> segmentsOf(Collection<Long> vacancyIds) {
-		Map<Long, List<Segment>> segments = new HashMap<>();
+	public Map<Long, String> descriptionsOf(Collection<Long> vacancyIds) {
+		Map<Long, String> descriptions = new HashMap<>();
 		if (vacancyIds.isEmpty()) {
-			return segments;
+			return descriptions;
 		}
-		vacancyIds.forEach((vacancyId) -> segments.put(vacancyId, List.of()));
-		for (Tuple row : this.repository.segmentsOf(vacancyIds)) {
-			@SuppressWarnings("unchecked")
-			List<Segment> held = (List<Segment>) row.get(1);
-			segments.put(row.get(0, Long.class), (held != null) ? held : List.of());
+		vacancyIds.forEach((vacancyId) -> descriptions.put(vacancyId, null));
+		for (Tuple row : this.repository.descriptionsOf(vacancyIds)) {
+			descriptions.put(row.get(0, Long.class), row.get(1, String.class));
 		}
-		return segments;
+		return descriptions;
 	}
 
 	/**
-	 * The whole engineering subset in vacancy id order, with the title evidence and declared locations
-	 * the vacancy-group pass reads. Descriptions are read apart, only for the vacancies it needs.
-	 * @return every vacancy of the subset, with its stored group where it has one
+	 * The whole engineering subset in vacancy id order, without descriptions.
+	 * @return its vacancies with raw titles, declared locations and countries, work modes and first publication
 	 */
 	@Transactional(readOnly = true)
-	public List<GroupVacancy> vacancyGroupScope() {
-		List<Tuple> read = this.repository.vacancyGroupScope();
-		if (read.isEmpty()) {
-			return List.of();
-		}
-		Map<Long, Set<SeniorityLevelEnum>> named = new HashMap<>();
-		for (Tuple row : this.repository.vacancyGroupTitleSeniorities()) {
-			named.computeIfAbsent(row.get(0, Long.class), (vacancyId) -> EnumSet.noneOf(SeniorityLevelEnum.class))
-				.add(SeniorityLevelEnum.valueOf(row.get(1, String.class)));
-		}
-		List<GroupVacancy> scope = new ArrayList<>(read.size());
+	public List<DuplicateVacancy> duplicateScope() {
+		List<Tuple> read = this.repository.duplicateScope();
+		List<DuplicateVacancy> scope = new ArrayList<>(read.size());
 		for (Tuple row : read) {
-			long vacancyId = row.get(0, Long.class);
-			String[] titles = row.get(10, String[].class);
-			scope.add(new GroupVacancy(vacancyId, row.get(7, Long.class), row.get(1, AtsEnum.class),
-					row.get(8, String.class), row.get(9, String.class), (titles != null) ? List.of(titles) : null,
-					row.get(11, ManagementLevelEnum.class), named.getOrDefault(vacancyId, Set.of()),
-					declaredLocations(row).stream().map(LocationString::location).toList(),
-					WorkModeEnum.setOf(row.get(12, String[].class)), row.get(13, Instant.class), row.get(14, Long.class)));
+			scope.add(new DuplicateVacancy(row.get(0, Long.class), row.get(7, Long.class),
+					row.get(8, String.class), row.get(9, String.class),
+					declaredLocations(row).stream()
+						.map((location) -> new DuplicateVacancy.Location(location.location(), location.country())).toList(),
+					WorkModeEnum.setOf(row.get(10, String[].class)), row.get(11, Instant.class)));
 		}
 		return scope;
 	}

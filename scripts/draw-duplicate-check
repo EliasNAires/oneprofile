@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+"""Draws a blind check of the duplicate pass's merged pairs (#106) from the development database.
+
+    scripts/draw-duplicate-check DIRECTORY
+
+Reads every (vacancy_id, duplicate_of_vacancy_id) marked pair from normalized_vacancy through the development
+Postgres container. Draws SIZE pairs uniformly without replacement with SEED (all pairs if fewer).
+
+Writes DIRECTORY/sample.tsv with pair, duplicate and kept, numbered in draw order; and DIRECTORY/batch-N.txt,
+the pairs shuffled in batches of BATCH with only what a labeller sees (docs/duplicate-criterion.md): a block
+per pair, headed `=== N`, with the two vacancies as A and B in a random order, each with its company, title,
+locations, work modes and description segments. The batches never identify which vacancy is kept.
+"""
+
+import csv
+import json
+import random
+import subprocess
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+
+SIZE = 40
+SEED = 106
+BATCH = 20
+
+PAIRS = """
+copy (
+  select n.vacancy_id, n.duplicate_of_vacancy_id
+  from normalized_vacancy n
+  where n.duplicate_of_vacancy_id is not null
+  order by n.vacancy_id
+) to stdout with (format csv, header false)
+"""
+
+VACANCIES = """
+copy (
+  select n.vacancy_id, coalesce(c.name, c.slug), v.title, array_to_string(n.work_modes, ','),
+    n.description_segments,
+    (select json_agg(l.location order by case l.list when 'LOCATION' then 0 when 'SECONDARY_LOCATIONS' then 1
+       else 2 end, l.position) from normalized_vacancy_location l where l.normalized_vacancy_id = n.id)
+  from normalized_vacancy n join vacancy v on v.id = n.vacancy_id join company c on c.id = v.company_id
+  where n.vacancy_id in ({ids})
+) to stdout with (format csv, header false)
+"""
+
+
+def psql(query):
+    out = subprocess.run(["docker", "compose", "--project-directory", str(REPO), "exec", "-T", "postgres", "psql",
+                          "-v", "ON_ERROR_STOP=1", "-U", "oneprofile", "-d", "oneprofile", "-c", query],
+                         capture_output=True, text=True, encoding="utf-8", check=True).stdout
+    return list(csv.reader(out.splitlines(keepends=True)))
+
+
+def draw(pairs, rng):
+    """Draws up to SIZE marked pairs uniformly without replacement."""
+    return rng.sample(pairs, min(SIZE, len(pairs)))
+
+
+def flat(text):
+    return " ".join((text or "-").split())
+
+
+def marked(segment):
+    text = flat(segment["text"])
+    if segment.get("kind") == "HEADING":
+        text = "# " + text
+    elif segment.get("kind") == "ITEM":
+        text = "- " + text
+    return "> " + text if segment.get("boilerplate") else text
+
+
+def shown(vacancy):
+    return (f"company: {flat(vacancy['company'])}\ntitle: {flat(vacancy['title'])}\n"
+            f"locations: {' | '.join(flat(location) for location in vacancy['locations']) or '-'}\n"
+            f"work modes: {vacancy['modes'].lower().replace(',', ', ') or '-'}\ndescription:\n"
+            + ("\n".join(marked(segment) for segment in vacancy["segments"]) or "-") + "\n")
+
+
+def vacancies_of(ids):
+    found = {}
+    ids = sorted(ids, key=int)
+    for start in range(0, len(ids), 500):
+        for r in psql(VACANCIES.format(ids=",".join(ids[start:start + 500]))):
+            found[r[0]] = {"company": r[1], "title": r[2], "modes": r[3],
+                           "segments": json.loads(r[4]) if r[4] else [], "locations": json.loads(r[5]) if r[5] else []}
+    return found
+
+
+def main():
+    if len(sys.argv) != 2:
+        sys.exit(__doc__)
+    directory = Path(sys.argv[1])
+    directory.mkdir(parents=True, exist_ok=True)
+    rng = random.Random(SEED)
+    drawn = draw(psql(PAIRS), rng)
+    pairs = [{"pair": str(number), "duplicate": duplicate, "kept": kept}
+             for number, (duplicate, kept) in enumerate(drawn, 1)]
+    with open(directory / "sample.tsv", "w", encoding="utf-8", newline="") as out:
+        writer = csv.DictWriter(out, fieldnames=["pair", "duplicate", "kept"], delimiter="\t", lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(pairs)
+
+    vacancies = vacancies_of({vacancy for pair in drawn for vacancy in pair})
+    order = list(pairs)
+    rng.shuffle(order)
+    for number, start in enumerate(range(0, len(order), BATCH), 1):
+        blocks = []
+        for pair in order[start:start + BATCH]:
+            a, b = pair["duplicate"], pair["kept"]
+            first, second = (a, b) if rng.random() < 0.5 else (b, a)
+            blocks.append(f"=== {pair['pair']}\n--- A\n{shown(vacancies[first])}--- B\n{shown(vacancies[second])}\n")
+        body = "".join(blocks)
+        (directory / f"batch-{number}.txt").write_text(body, encoding="utf-8")
+        print(f"batch-{number}.txt: {len(blocks)} pairs, {len(body.encode()) / 1024:.1f} KB")
+    print(f"{len(drawn)} pairs drawn")
+
+
+if __name__ == "__main__":
+    main()

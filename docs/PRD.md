@@ -649,16 +649,16 @@ The launch gate:
 1. Greenhouse and Ashby both swept.
 2. The engineering-role classifier has met its exit criterion.
 3. Skill extraction has a measured precision.
-4. Roles are read from titles, work mode is derived, and duplicate vacancies are collapsed. Collapsing
-   is built (`POST /vacancy-groups`, after normalization, #27) and measured once
-   (`docs/measurements/2026-11-duplicates.md`): only descriptions identical once places, pay, dates and
-   numbers are stripped merge, the one threshold at merge precision ≥ 95% (95.0% held-out, at the bar),
-   with 41% recall. The subset's 155,767 vacancies make 142,335 groups and 4,088 duplicates. The
-   approach is reconsidered in #106 (Elias, 2026-11-16): remove duplicates and exact coincidences only,
-   comparing title and body without taking words out.
+4. Roles are read from titles, work mode is derived, and duplicate vacancies are removed. Removal is
+   built (`POST /duplicates`, after normalization, #106) and measured once
+   (`docs/measurements/2026-11-exact-duplicates.md`): a vacancy is a duplicate only of one of the same slug
+   with the same title, description, declared locations and work modes, title and description equal once spacing and
+   case are folded. Merge precision 100% (39 of 39 clear pairs, interval 91% to 100%), with 32% recall on
+   #27's sample. The subset's 155,767 vacancies hold 1,976 duplicates, leaving 153,791 shown. #27's
+   vacancy groups are dropped (Elias, 2026-11-17).
 5. Seniority is read from the body.
 6. Eligibility is extracted, and its recall measured.
-7. **100k engineering vacancies live in one sweep**, counted as vacancy groups (#27). The snapshot has 55,331 on live boards:
+7. **100k engineering vacancies live in one sweep**, counted as shown vacancies, those not marked duplicate (#106). The snapshot has 55,331 on live boards:
    34,173 from Greenhouse and 21,158 from Ashby (`docs/measurements/2026-10-ashby.md`). The figure for one
    country, eligible plus unknown, is reported beside it but not gated on. The figures for
    Argentina, Brazil and Mexico decide later whether marketing aims at developers outside the US.
@@ -673,7 +673,7 @@ Volume is done: Ashby (#20), then whatever reached 100k vacancies (#70). The res
 (decided 2026-10-26):
 
 1. **Extraction**: the title breakdown (#92) and its check (#94) → roles from titles (#25), beside work mode (#86) → seniority from the body (#8) →
-   places from declared locations (#26) → eligibility and its measurement (#13, #12) → deduplication (#27).
+   places from declared locations (#26) → eligibility and its measurement (#13, #12) → deduplication (#27, #106).
 2. **Data quality**: the corpus fixes ready for an agent (#83, #85, #49).
 3. **Scheduling**: the schedule (#30), with the passes and the Workday sweep fitted to the server
    (#89, #90, #88).

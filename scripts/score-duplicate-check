@@ -1,0 +1,157 @@
+#!/usr/bin/env python3
+"""Scores the duplicate pass's blind merge check and recall on #27's labelled sample (#106).
+
+    scripts/score-duplicate-check DIRECTORY [RECALL_DIRECTORY]
+
+Reads DIRECTORY/sample.tsv (pair, duplicate, kept) and labels-N.tsv (pair, answer, reason). Prints each
+answer's count, merge precision excluding unclear, its 95% Wilson interval and PASS/FAIL at BAR; then every
+pair not labelled duplicate with its ids, answer and reason. Missing labels and invalid answers fail.
+
+Reads RECALL_DIRECTORY/sample.tsv (pair, stratum, half, slug, a, b, ...) and labels-N.tsv; defaults to
+docs/measurements/2026-11-duplicates-sample/. Reads current classification_state and duplicate marks from
+the development Postgres container. Prints recall among labelled duplicates whose vacancies both remain
+in the engineering subset, and the count excluded because a vacancy left it. Writes no files.
+"""
+
+import csv
+import math
+import subprocess
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+RECALL_DIRECTORY = REPO / "docs/measurements/2026-11-duplicates-sample"
+ANSWERS = ("duplicate", "another vacancy", "different position", "unclear")
+BAR = 0.95
+Z = 1.96
+
+
+def read(path):
+    with open(path, encoding="utf-8", newline="") as tsv:
+        return list(csv.DictReader(tsv, delimiter="\t"))
+
+
+def labels_of(directory, pairs, answers=ANSWERS):
+    labels = {}
+    for path in sorted(directory.glob("labels-*.tsv")):
+        for label in read(path):
+            if answers is not None and label["answer"] not in answers:
+                raise ValueError(f"Invalid answer {label['answer']!r} for pair {label['pair']} in {path}")
+            if label["pair"] in labels:
+                raise ValueError(f"Repeated label for pair {label['pair']} in {path}")
+            labels[label["pair"]] = label
+    for pair in pairs:
+        if pair["pair"] not in labels:
+            raise ValueError(f"Missing label for pair {pair['pair']} in {directory}")
+    return labels
+
+
+def wilson(successes, total):
+    """The 95% Wilson interval, or None without observations."""
+    if not total:
+        return None
+    share = successes / total
+    scale = 1 + Z * Z / total
+    center = (share + Z * Z / (2 * total)) / scale
+    radius = Z * math.sqrt(share * (1 - share) / total + Z * Z / (4 * total * total)) / scale
+    return center - radius, center + radius
+
+
+def precision(answers):
+    """Returns duplicates and the number of clear answers."""
+    answers = list(answers)
+    return answers.count("duplicate"), sum(answer != "unclear" for answer in answers)
+
+
+def verdict(successes, total):
+    return "PASS" if total and successes / total >= BAR else "FAIL"
+
+
+def psql(query):
+    out = subprocess.run(["docker", "compose", "--project-directory", str(REPO), "exec", "-T", "postgres", "psql",
+                          "-v", "ON_ERROR_STOP=1", "-U", "oneprofile", "-d", "oneprofile", "-c", query],
+                         capture_output=True, text=True, encoding="utf-8", check=True).stdout
+    return list(csv.reader(out.splitlines(keepends=True)))
+
+
+def states_of(ids):
+    """Reads the current subset membership and duplicate marks for the supplied vacancy ids."""
+    inside = set()
+    marks = {}
+    ids = sorted({str(int(vacancy)) for vacancy in ids}, key=int)
+    for start in range(0, len(ids), 500):
+        query = """
+copy (
+  select vacancy_id, classification_state, duplicate_of_vacancy_id
+  from normalized_vacancy where vacancy_id in ({ids})
+) to stdout with (format csv, header false)
+""".format(ids=",".join(ids[start:start + 500]))
+        for vacancy, state, kept in psql(query):
+            if state == "IN":
+                inside.add(vacancy)
+            marks[vacancy] = kept or None
+    return inside, marks
+
+
+def merged(a, b, marks):
+    """Whether either is marked as the other's duplicate, or both have the same kept vacancy."""
+    kept_a, kept_b = marks.get(a), marks.get(b)
+    return kept_a == b or kept_b == a or (kept_a is not None and kept_a == kept_b)
+
+
+def recall(pairs, labels, inside, marks):
+    """Returns merged, denominator and excluded counts among #27's labelled duplicates."""
+    joined = total = excluded = 0
+    for pair in pairs:
+        if labels[pair["pair"]]["answer"] != "duplicate":
+            continue
+        a, b = pair["a"], pair["b"]
+        if a not in inside or b not in inside:
+            excluded += 1
+            continue
+        total += 1
+        joined += merged(a, b, marks)
+    return joined, total, excluded
+
+
+def main():
+    if len(sys.argv) not in (2, 3):
+        sys.exit(__doc__)
+    directory = Path(sys.argv[1])
+    recall_directory = Path(sys.argv[2]) if len(sys.argv) == 3 else RECALL_DIRECTORY
+    pairs = read(directory / "sample.tsv")
+    labels = labels_of(directory, pairs)
+    answers = [labels[pair["pair"]]["answer"] for pair in pairs]
+    for answer in ANSWERS:
+        print(f"{answer}: {answers.count(answer)}")
+    successes, total = precision(answers)
+    interval = wilson(successes, total)
+    if interval is None:
+        print(f"Merge precision: {successes}/{total}, n/a; 95% Wilson: n/a; {verdict(successes, total)} (bar {BAR:.0%})")
+    else:
+        low, high = interval
+        print(f"Merge precision: {successes}/{total} = {successes / total:.2%}; "
+              f"95% Wilson: [{low:.2%}, {high:.2%}]; {verdict(successes, total)} (bar {BAR:.0%})")
+    for pair in pairs:
+        label = labels[pair["pair"]]
+        if label["answer"] != "duplicate":
+            print(f"Pair {pair['pair']}: duplicate={pair['duplicate']} kept={pair['kept']} "
+                  f"{label['answer']}: {label['reason']}")
+
+    recall_pairs = read(recall_directory / "sample.tsv")
+    # Revision 1 had other nonduplicate answers; only its duplicate labels enter recall.
+    recall_labels = labels_of(recall_directory, recall_pairs, answers=None)
+    ids = {pair[side] for pair in recall_pairs if recall_labels[pair["pair"]]["answer"] == "duplicate"
+           for side in ("a", "b")}
+    inside, marks = states_of(ids)
+    joined, denominator, excluded = recall(recall_pairs, recall_labels, inside, marks)
+    share = f"{joined / denominator:.2%}" if denominator else "n/a"
+    print(f"Recall: {joined}/{denominator} = {share}")
+    print(f"Labelled duplicates excluded because a vacancy left the engineering subset: {excluded}")
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except (ValueError, OSError, KeyError, subprocess.CalledProcessError) as error:
+        sys.exit(str(error))
