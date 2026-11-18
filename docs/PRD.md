@@ -682,8 +682,9 @@ Volume is done: Ashby (#20), then whatever reached 100k vacancies (#70). The res
 1. **Extraction**: the title breakdown (#92) and its check (#94) → roles from titles (#25), beside work mode (#86) → seniority from the body (#8) →
    places from declared locations (#26) → eligibility and its measurement (#13, #12) → deduplication (#27, #106).
 2. **Data quality**: the corpus fixes ready for an agent (#83, #85, #49).
-3. **Scheduling**: the schedule (#30), with the passes and the Workday sweep fitted to the server
-   (#89, #90, #88).
+3. **Scheduling**: the Workday sweep measured and brought under about 4 hours (#90, Elias
+   2026-11-18) → the pipeline run on Elias's server, and the passes measured there (#89) → the
+   schedule (#30). #88 waits until after the launch unless #90's run shows one of its triggers.
 4. **The public side**: the two modules (#71) and the public side on Elias's server (#68) → the
    publish stage (#28) → the read app (#72) → the Finder (#69). It waits for extraction rather than
    publishing columns left null.
