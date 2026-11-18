@@ -7,6 +7,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.time.Duration;
+import java.util.Map;
 import java.util.Set;
 import oneprofile.backend.storage.company.BoardStatusEnum;
 import oneprofile.backend.storage.company.RegionEnum;
@@ -23,13 +24,20 @@ import tools.jackson.databind.ObjectMapper;
  * <p>
  * Ashby has no lighter answer than the whole board, so a probe asks for what a sweep does, and waits
  * as long for it. A slug with no board answers 404, which is an answer about the board rather than a
- * failure, so it is never retried. Ashby names the company nowhere in the answer, so a probe brings
- * no name.
+ * failure, so it is never retried. A separate hosted-page GraphQL request supplies the company's
+ * readable name where the company holds none.
  */
 @Component
 public class AshbyBoardReaderAdapter implements BoardReaderPort {
 
 	private static final URI POSTING_API = URI.create("https://api.ashbyhq.com/");
+
+	/** The hosted jobs service publishes company names through GraphQL. */
+	private static final URI NAMES_BASE = URI.create("https://jobs.ashbyhq.com/");
+
+	/** The hosted-page operation that reads only the organization's name. */
+	private static final String NAME_QUERY = "query ApiOrganizationFromHostedJobsPageName($organizationHostedJobsPageName: String!)"
+			+ " { organization: organizationFromHostedJobsPageName(organizationHostedJobsPageName: $organizationHostedJobsPageName) { name } }";
 
 	/** What an ATS answers when it asks to be given time, which slows the run down. */
 	private static final Set<Integer> REFUSED = Set.of(429, 503);
@@ -50,6 +58,8 @@ public class AshbyBoardReaderAdapter implements BoardReaderPort {
 
 	private final URI base;
 
+	private final URI namesBase;
+
 	private final String userAgent;
 
 	private final int attempts;
@@ -61,21 +71,24 @@ public class AshbyBoardReaderAdapter implements BoardReaderPort {
 	/** Reads from Ashby. */
 	@Autowired
 	public AshbyBoardReaderAdapter() {
-		this(POSTING_API, UserAgent.VALUE, ATTEMPTS, BACK_OFF, READ_TIMEOUT);
+		this(POSTING_API, NAMES_BASE, UserAgent.VALUE, ATTEMPTS, BACK_OFF, READ_TIMEOUT);
 	}
 
 	/**
 	 * @param base what board paths are resolved against
+	 * @param namesBase what hosted-page name requests are resolved against
 	 * @param userAgent how this client identifies itself
 	 * @param attempts how many times a request is made before it is given up on
 	 * @param backOff how long to wait after the first refusal, doubling with each further one
 	 * @param readTimeout how long a board is given to answer
 	 */
-	AshbyBoardReaderAdapter(URI base, String userAgent, int attempts, Duration backOff, Duration readTimeout) {
+	AshbyBoardReaderAdapter(URI base, URI namesBase, String userAgent, int attempts, Duration backOff,
+			Duration readTimeout) {
 		if (attempts < 1) {
 			throw new IllegalArgumentException("A request has to be attempted at least once");
 		}
 		this.base = base;
+		this.namesBase = namesBase;
 		this.userAgent = userAgent;
 		this.attempts = attempts;
 		this.backOff = backOff;
@@ -98,6 +111,39 @@ public class AshbyBoardReaderAdapter implements BoardReaderPort {
 			throw new IOException("Asked for the board of %s and got %d".formatted(slug, response.statusCode()));
 		}
 		return reading(response.body(), slug);
+	}
+
+	/** Reads the company's name from the hosted-page operation without changing its board status. */
+	@Override
+	public String name(String slug, RegionEnum region, Runnable onRefusal) throws IOException {
+		try {
+			String body = this.json.writeValueAsString(Map.of("operationName", "ApiOrganizationFromHostedJobsPageName",
+					"variables", Map.of("organizationHostedJobsPageName", slug), "query", NAME_QUERY));
+			HttpRequest request = HttpRequest.newBuilder(this.namesBase.resolve(
+					"api/non-user-graphql?op=ApiOrganizationFromHostedJobsPageName"))
+				.header("User-Agent", this.userAgent)
+				.header("Content-Type", "application/json")
+				.timeout(this.readTimeout)
+				.POST(HttpRequest.BodyPublishers.ofString(body))
+				.build();
+			HttpResponse<String> response = send(request, slug, onRefusal);
+			if (response.statusCode() != 200) {
+				throw new IOException("Asked for the name of %s and got %d".formatted(slug, response.statusCode()));
+			}
+			JsonNode answer = this.json.readTree(response.body());
+			if (answer == null || !answer.isObject()) {
+				throw new IOException("Unreadable name answer for " + slug);
+			}
+			JsonNode errors = answer.path("errors");
+			if (errors.isArray() && !errors.isEmpty()) {
+				return null;
+			}
+			JsonNode name = answer.path("data").path("organization").path("name");
+			return (name.isString() && !name.stringValue().isBlank()) ? name.stringValue().trim() : null;
+		}
+		catch (JacksonException ex) {
+			throw new IOException("Unreadable name answer for " + slug, ex);
+		}
 	}
 
 	private BoardReading reading(String body, String slug) throws IOException {

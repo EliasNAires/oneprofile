@@ -21,6 +21,8 @@ import oneprofile.backend.storage.company.RegionEnum;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  * Exercised against a stub server rather than {@code api.lever.co} and {@code api.eu.lever.co}: each
@@ -132,6 +134,75 @@ class LeverBoardReaderAdapterTest {
 			.hasMessageContaining("finix");
 	}
 
+	/** Names come from the hosted board page in the company's own region. */
+	@Test
+	void readsTheNameFromEachRegionsBoardPage() throws IOException {
+		serve((exchange) -> {
+			assertThat(exchange.getRequestMethod()).isEqualTo("GET");
+			assertThat(exchange.getRequestHeaders().getFirst("User-Agent"))
+				.isEqualTo("oneprofile/0.1 (+https://github.com/EliasNAires/oneprofile)");
+			String name = exchange.getRequestURI().getPath().contains("/eu/") ? "Kwalee" : "Palantir Technologies";
+			respondWith(exchange, 200, "<title> " + name + " </title><meta property=\"og:title\" content=\"" + name + " jobs\">");
+		});
+		assertThat(reader().name("palantir", RegionEnum.US, () -> {})).isEqualTo("Palantir Technologies");
+		assertThat(reader().name("kwalee", RegionEnum.EU, () -> {})).isEqualTo("Kwalee");
+		assertThat(this.queries).containsExactly("/pages/us/palantir?null", "/pages/eu/kwalee?null");
+	}
+
+	/** Named and numeric entities are decoded once in both title and metadata. */
+	@Test
+	void unescapesTheNameAndItsMatchingMetadata() throws IOException {
+		serve((exchange) -> respondWith(exchange, 200,
+				"<title>A &amp; B &#39;C&#39; &quot;D&quot; &lt;E&gt; &#65;&#x1F680;</title>"
+				+ "<meta content='A &amp; B &#39;C&#39; &quot;D&quot; &lt;E&gt; &#65;&#x1F680; jobs' property='og:title'>"));
+		assertThat(reader().name("company", RegionEnum.US, () -> {})).isEqualTo("A & B 'C' \"D\" <E> A🚀");
+	}
+
+	/** An empty board's hosted page answers 404. */
+	@Test
+	void readsNoNameFromAMissingPageWithoutRetrying() throws IOException {
+		serve((exchange) -> respondWith(exchange, 404, "Not Found"));
+		assertThat(reader().name("empty", RegionEnum.US, () -> {})).isNull();
+		assertThat(this.queries).hasSize(1);
+	}
+
+	/** A title alone cannot establish that a page names this company's board. */
+	@ParameterizedTest
+	@ValueSource(strings = {
+			"<title>Not found – 404 error</title>",
+			"<title>Company</title><meta property=\"og:title\" content=\"Other jobs\">",
+			"<title> </title><meta property=\"og:title\" content=\" jobs\">" })
+	void readsNoNameWithoutAMatchingNonblankTitle(String body) throws IOException {
+		serve((exchange) -> respondWith(exchange, 200, body));
+		assertThat(reader().name("company", RegionEnum.US, () -> {})).isNull();
+	}
+
+	/** Gateway failures are retried without slowing the run; refusals do slow it. */
+	@Test
+	void retriesNameRequestsWithTheSameRefusalCallbackAsBoards() throws IOException {
+		AtomicInteger attempts = new AtomicInteger();
+		AtomicInteger refusals = new AtomicInteger();
+		serve((exchange) -> {
+			int attempt = attempts.incrementAndGet();
+			respondWith(exchange, attempt == 1 ? 502 : attempt == 3 ? 429 : 200,
+					"<title>Kwalee</title><meta property=\"og:title\" content=\"Kwalee jobs\">");
+		});
+		assertThat(reader().name("kwalee", RegionEnum.EU, refusals::incrementAndGet)).isEqualTo("Kwalee");
+		assertThat(attempts).hasValue(2);
+		assertThat(refusals).hasValue(0);
+		assertThat(reader().name("kwalee", RegionEnum.EU, refusals::incrementAndGet)).isEqualTo("Kwalee");
+		assertThat(attempts).hasValue(4);
+		assertThat(refusals).hasValue(1);
+	}
+
+	/** An HTTP failure cannot supply a name. */
+	@ParameterizedTest
+	@ValueSource(ints = { 403, 502 })
+	void throwsWhenTheNamePageKeepsFailing(int status) {
+		serve((exchange) -> respondWith(exchange, status, ""));
+		assertThatThrownBy(() -> reader().name("kwalee", RegionEnum.EU, () -> {})).isInstanceOf(IOException.class);
+	}
+
 	private void respondWith(HttpExchange exchange, int status, String body) throws IOException {
 		byte[] bytes = body.getBytes(StandardCharsets.UTF_8);
 		exchange.sendResponseHeaders(status, bytes.length == 0 ? -1 : bytes.length);
@@ -151,6 +222,7 @@ class LeverBoardReaderAdapterTest {
 		String server = "http://localhost:" + this.server.getAddress().getPort();
 		return new LeverBoardReaderAdapter(
 				Map.of(RegionEnum.US, URI.create(server + "/us/"), RegionEnum.EU, URI.create(server + "/eu/")),
+				Map.of(RegionEnum.US, URI.create(server + "/pages/us/"), RegionEnum.EU, URI.create(server + "/pages/eu/")),
 				"oneprofile/0.1 (+https://github.com/EliasNAires/oneprofile)", 3, Duration.ofMillis(10),
 				Duration.ofSeconds(5));
 	}

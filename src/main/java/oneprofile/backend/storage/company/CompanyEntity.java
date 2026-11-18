@@ -45,8 +45,7 @@ public class CompanyEntity {
 
 	/**
 	 * Records what a probe found. A probe that brings no name leaves the name the company already
-	 * has, because the name is read from the openings a board publishes and an empty board publishes
-	 * none.
+	 * has; a probe brings no name for a board with no openings, or where the ATS publishes none.
 	 * @param boardStatus what the probe found the board to be
 	 * @param name the readable name the board gave, or null if it gave none
 	 * @param probedAt when the probe was made

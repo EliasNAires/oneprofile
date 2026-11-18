@@ -60,6 +60,72 @@ class BoardProbeRunTest {
 
 	private final VacancyStore vacancies = mock(VacancyStore.class);
 
+	/** Only an active company still holding no name is asked separately. */
+	@Test
+	void asksForAndRecordsOnlyTheMissingNameOfAnActiveCompany() throws IOException {
+		heldSlugs("unnamed", "named", "empty", "gone", "unreadable", "listed", "provided");
+		BDDMockito.given(this.companies.unnamedSlugsOf(AtsEnum.GREENHOUSE))
+			.willReturn(Set.of("unnamed", "empty", "gone", "unreadable", "listed", "provided"));
+		BoardReaderPort reader = mock(BoardReaderPort.class);
+		BDDMockito.given(reader.read(any(), any(), any())).willAnswer((call) -> switch ((String) call.getArgument(0)) {
+			case "unreadable" -> throw new IOException("Unavailable");
+			case "empty" -> new BoardReading(BoardStatusEnum.EMPTY, null);
+			case "gone" -> new BoardReading(BoardStatusEnum.NOT_FOUND, null);
+			case "provided" -> new BoardReading(BoardStatusEnum.ACTIVE, "Provided");
+			default -> new BoardReading(BoardStatusEnum.ACTIVE, null);
+		});
+		BDDMockito.given(reader.name(eq("unnamed"), eq(RegionEnum.US), any())).willReturn("Readable");
+		BoardProbeRun probe = new BoardProbeRun(Map.of(AtsEnum.GREENHOUSE, reader),
+				Map.of(AtsEnum.GREENHOUSE, UNPACED), this.companies, this.vacancies, unread("listed"), clock());
+
+		assertThat(probe.probeAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardProbeRun.Report(3, 1, 1, 1, 1));
+
+		then(reader).should().name(eq("unnamed"), eq(RegionEnum.US), any());
+		for (String slug : List.of("named", "empty", "gone", "unreadable", "listed", "provided")) {
+			then(reader).should(BDDMockito.never()).name(eq(slug), any(), any());
+		}
+		then(this.companies).should().unnamedSlugsOf(AtsEnum.GREENHOUSE);
+		then(this.companies).should().recordProbe(AtsEnum.GREENHOUSE, "unnamed", BoardStatusEnum.ACTIVE,
+				"Readable", PROBED_AT);
+	}
+
+	/** A failed name request keeps the board active and is tried again until the company is named. */
+	@Test
+	void retriesAFailedNameOnTheNextRunAndStopsOnceNamed() throws IOException {
+		heldSlugs("unnamed");
+		BDDMockito.given(this.companies.unnamedSlugsOf(AtsEnum.GREENHOUSE))
+			.willReturn(Set.of("unnamed"), Set.of("unnamed"), Set.of());
+		BoardReaderPort reader = mock(BoardReaderPort.class);
+		BDDMockito.given(reader.read(any(), any(), any())).willReturn(new BoardReading(BoardStatusEnum.ACTIVE, null));
+		BDDMockito.given(reader.name(eq("unnamed"), eq(RegionEnum.US), any()))
+			.willThrow(new IOException("Unavailable")).willReturn("Readable");
+		BoardProbeRun probe = probeOf(reader, UNPACED);
+
+		assertThat(probe.probeAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardProbeRun.Report(1, 0, 0, 0, 0));
+		then(this.companies).should().recordProbe(AtsEnum.GREENHOUSE, "unnamed", BoardStatusEnum.ACTIVE, null, PROBED_AT);
+		assertThat(probe.probeAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardProbeRun.Report(1, 0, 0, 0, 0));
+		then(this.companies).should().recordProbe(AtsEnum.GREENHOUSE, "unnamed", BoardStatusEnum.ACTIVE,
+				"Readable", PROBED_AT);
+		probe.probeAll(AtsEnum.GREENHOUSE);
+		then(reader).should(BDDMockito.times(2)).name(eq("unnamed"), eq(RegionEnum.US), any());
+	}
+
+	/** An ATS publishing no name leaves the company eligible for the next probe. */
+	@Test
+	void retriesAnEmptyNameOnTheNextRun() throws IOException {
+		heldSlugs("unnamed");
+		BDDMockito.given(this.companies.unnamedSlugsOf(AtsEnum.GREENHOUSE)).willReturn(Set.of("unnamed"));
+		BoardReaderPort reader = mock(BoardReaderPort.class);
+		BDDMockito.given(reader.read(any(), any(), any())).willReturn(new BoardReading(BoardStatusEnum.ACTIVE, null));
+		BDDMockito.given(reader.name(any(), any(), any())).willReturn(null, "Readable");
+		BoardProbeRun probe = probeOf(reader, UNPACED);
+		probe.probeAll(AtsEnum.GREENHOUSE);
+		probe.probeAll(AtsEnum.GREENHOUSE);
+		then(reader).should(BDDMockito.times(2)).name(eq("unnamed"), eq(RegionEnum.US), any());
+		then(this.companies).should().recordProbe(AtsEnum.GREENHOUSE, "unnamed", BoardStatusEnum.ACTIVE,
+				"Readable", PROBED_AT);
+	}
+
 	/** Listed boards are cleared without requesting them; all other outcomes are counted. */
 	@Test
 	void recordsListedBoardsAsUnreadWithoutReadingThem() {

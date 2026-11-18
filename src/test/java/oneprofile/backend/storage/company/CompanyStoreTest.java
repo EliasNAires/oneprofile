@@ -27,6 +27,16 @@ class CompanyStoreTest {
 	@Autowired
 	private CompanyRepository repository;
 
+	/** Only unnamed companies of the requested ATS need a separate name request. */
+	@Test
+	void readsOnlyTheUnnamedSlugsOfTheRequestedAts() {
+		this.companies.record(AtsEnum.ASHBY, Map.of("unnamed", RegionEnum.US, "named", RegionEnum.US));
+		this.companies.record(AtsEnum.LEVER, Map.of("other", RegionEnum.EU));
+		this.companies.recordProbe(AtsEnum.ASHBY, "named", BoardStatusEnum.ACTIVE, "Named", PROBED_AT);
+
+		assertThat(this.companies.unnamedSlugsOf(AtsEnum.ASHBY)).containsExactly("unnamed");
+	}
+
 	@Test
 	void holdsOneCompanyPerSlugItIsGiven() {
 		this.companies.record(AtsEnum.GREENHOUSE, Map.of("stripe", RegionEnum.US, "notion", RegionEnum.US));

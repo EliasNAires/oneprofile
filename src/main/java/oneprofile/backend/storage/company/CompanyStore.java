@@ -53,6 +53,16 @@ public class CompanyStore {
 	}
 
 	/**
+	 * The slugs held for one ATS whose company holds no name.
+	 * @param ats the ATS to read
+	 * @return every unnamed slug held for it
+	 */
+	@Transactional(readOnly = true)
+	public Set<String> unnamedSlugsOf(AtsEnum ats) {
+		return this.repository.unnamedSlugsOf(ats);
+	}
+
+	/**
 	 * The slugs held for one ATS whose board was last found to be of one kind, each with its region,
 	 * in slug order, so that a run over them is repeatable.
 	 * @param ats the ATS to read

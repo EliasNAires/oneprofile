@@ -18,6 +18,14 @@ public interface CompanyRepository extends ListCrudRepository<CompanyEntity, Lon
 	Set<String> slugsOf(AtsEnum ats);
 
 	/**
+	 * The slugs held for one ATS whose company holds no name.
+	 * @param ats the ATS to read
+	 * @return every unnamed slug held for it
+	 */
+	@Query("select c.slug from Company c where c.ats = :ats and c.name is null")
+	Set<String> unnamedSlugsOf(AtsEnum ats);
+
+	/**
 	 * The companies held for one ATS.
 	 * @param ats the ATS to read
 	 * @return every company held for it

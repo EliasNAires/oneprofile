@@ -18,4 +18,16 @@ public interface BoardReaderPort {
 	 */
 	BoardReading read(String slug, RegionEnum region, Runnable onRefusal) throws IOException;
 
+	/**
+	 * Asks the ATS for the company's readable name where {@link #read} brings none.
+	 * @param slug the slug whose company to name
+	 * @param region the region whose host to ask
+	 * @param onRefusal run each time the ATS refuses a request, so that the run slows down
+	 * @return the readable name, or null when the ATS publishes none
+	 * @throws IOException if the ATS could not be read
+	 */
+	default String name(String slug, RegionEnum region, Runnable onRefusal) throws IOException {
+		return null;
+	}
+
 }

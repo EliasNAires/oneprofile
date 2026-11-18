@@ -30,7 +30,8 @@ import org.springframework.stereotype.Component;
  * no limit, so they can go side by side. A board that could not be read at all is left as it was
  * rather than recorded as anything, so the next run probes it again. A board found empty or not
  * found has its held vacancies removed before its probe is recorded. An active board keeps its
- * vacancies for the sweep to read.
+ * vacancies for the sweep to read. An active company holding no name is asked for it within the
+ * paced read; a failed name request leaves the board active and is tried again on the next probe.
  * <p>
  * A board on the list of boards the sweep does not read ({@code boards/unread.tsv}) is not asked
  * for: its held vacancies are removed and it is recorded unread, so no later probe sets it back to
@@ -107,6 +108,7 @@ public class BoardProbeRun {
 	 * @return what the run found
 	 */
 	public Report probeAll(AtsEnum ats) {
+		Set<String> unnamedSlugs = this.companies.unnamedSlugsOf(ats);
 		Set<String> unreadSlugs = this.boardList.unreadSlugsOf(ats);
 		SortedMap<String, RegionEnum> toRead = new TreeMap<>(this.companies.regionsOf(ats));
 		int unread = 0;
@@ -124,7 +126,7 @@ public class BoardProbeRun {
 		AtomicInteger unreadable = new AtomicInteger();
 		this.paces.get(ats)
 			.readEach("The %s probe".formatted(ats), toRead,
-					(slug, region, onRefusal) -> read(ats, reader, slug, region, onRefusal), (slug, reading) -> {
+					(slug, region, onRefusal) -> read(ats, reader, slug, region, onRefusal, unnamedSlugs), (slug, reading) -> {
 						if (reading == null) {
 							unreadable.incrementAndGet();
 							return;
@@ -152,14 +154,24 @@ public class BoardProbeRun {
 
 	/** What the board is, or null if the ATS could not be made to say. */
 	private static BoardReading read(AtsEnum ats, BoardReaderPort reader, String slug, RegionEnum region,
-			Runnable onRefusal) {
+			Runnable onRefusal, Set<String> unnamedSlugs) {
+		BoardReading reading;
 		try {
-			return reader.read(slug, region, onRefusal);
+			reading = reader.read(slug, region, onRefusal);
 		}
 		catch (IOException ex) {
 			logger.warn("Could not read the %s board of %s".formatted(ats, slug), ex);
 			return null;
 		}
+		if (reading.boardStatus() == BoardStatusEnum.ACTIVE && reading.name() == null && unnamedSlugs.contains(slug)) {
+			try {
+				return new BoardReading(reading.boardStatus(), reader.name(slug, region, onRefusal));
+			}
+			catch (IOException ex) {
+				logger.warn("Could not read the %s name of %s".formatted(ats, slug), ex);
+			}
+		}
+		return reading;
 	}
 
 	/**

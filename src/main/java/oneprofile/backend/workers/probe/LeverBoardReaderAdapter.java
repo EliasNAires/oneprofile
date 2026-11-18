@@ -9,6 +9,8 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.time.Duration;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import oneprofile.backend.storage.company.BoardStatusEnum;
 import oneprofile.backend.storage.company.RegionEnum;
 import oneprofile.backend.workers.RetryAfter;
@@ -26,14 +28,31 @@ import tools.jackson.databind.ObjectMapper;
  * A probe asks for one posting, which says whether a board has any as well as the whole board does,
  * and Lever's largest boards answer tens of megabytes. A slug with no board answers 404, which is an
  * answer about the board rather than a failure, so it is never retried, and the other region is not
- * asked. Lever names the company nowhere in a posting, so a probe brings no name. Lever answers a
- * gateway error now and then (#79, #82), which is retried without slowing the run.
+ * asked. A separate board-page request supplies the company's readable name where it holds none.
+ * Lever answers a gateway error now and then (#79, #82), which is retried without slowing the run.
  */
 @Component
 public class LeverBoardReaderAdapter implements BoardReaderPort {
 
 	private static final Map<RegionEnum, URI> POSTINGS_APIS = Map.of(RegionEnum.US,
 			URI.create("https://api.lever.co/"), RegionEnum.EU, URI.create("https://api.eu.lever.co/"));
+
+	/** Hosted board pages publish company names separately from postings. */
+	private static final Map<RegionEnum, URI> PAGE_BASES = Map.of(RegionEnum.US,
+			URI.create("https://jobs.lever.co/"), RegionEnum.EU, URI.create("https://jobs.eu.lever.co/"));
+
+	/** The board page's readable title. */
+	private static final Pattern TITLE = Pattern.compile("<title\\b[^>]*>(.*?)</title\\s*>",
+			Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
+
+	/** Metadata tags are inspected independently of their attribute order. */
+	private static final Pattern META = Pattern.compile("<meta\\b[^>]*>", Pattern.CASE_INSENSITIVE);
+
+	/** Quoted HTML attribute values, retaining the quote used to delimit them. */
+	private static final Pattern ATTRIBUTE = Pattern.compile("([\\w:-]+)\\s*=\\s*(['\"])(.*?)\\2", Pattern.DOTALL);
+
+	/** Named punctuation and decimal or hexadecimal Unicode entities. */
+	private static final Pattern ENTITY = Pattern.compile("&(#(?:[xX][0-9a-fA-F]+|[0-9]+)|amp|apos|quot|lt|gt);");
 
 	/** What Lever answers when it asks to be given time, which slows the run down. */
 	private static final Set<Integer> REFUSED = Set.of(429, 503);
@@ -60,6 +79,8 @@ public class LeverBoardReaderAdapter implements BoardReaderPort {
 
 	private final Map<RegionEnum, URI> bases;
 
+	private final Map<RegionEnum, URI> pageBases;
+
 	private final String userAgent;
 
 	private final int attempts;
@@ -71,22 +92,24 @@ public class LeverBoardReaderAdapter implements BoardReaderPort {
 	/** Reads from Lever. */
 	@Autowired
 	public LeverBoardReaderAdapter() {
-		this(POSTINGS_APIS, UserAgent.VALUE, ATTEMPTS, BACK_OFF, READ_TIMEOUT);
+		this(POSTINGS_APIS, PAGE_BASES, UserAgent.VALUE, ATTEMPTS, BACK_OFF, READ_TIMEOUT);
 	}
 
 	/**
 	 * @param bases what board paths are resolved against, for each region
+	 * @param pageBases what hosted board paths are resolved against, for each region
 	 * @param userAgent how this client identifies itself
 	 * @param attempts how many times a request is made before it is given up on
 	 * @param backOff how long to wait after the first refusal, doubling with each further one
 	 * @param readTimeout how long a board is given to answer
 	 */
-	LeverBoardReaderAdapter(Map<RegionEnum, URI> bases, String userAgent, int attempts, Duration backOff,
-			Duration readTimeout) {
+	LeverBoardReaderAdapter(Map<RegionEnum, URI> bases, Map<RegionEnum, URI> pageBases, String userAgent, int attempts,
+			Duration backOff, Duration readTimeout) {
 		if (attempts < 1) {
 			throw new IllegalArgumentException("A request has to be attempted at least once");
 		}
 		this.bases = Map.copyOf(bases);
+		this.pageBases = Map.copyOf(pageBases);
 		this.userAgent = userAgent;
 		this.attempts = attempts;
 		this.backOff = backOff;
@@ -109,6 +132,75 @@ public class LeverBoardReaderAdapter implements BoardReaderPort {
 			throw new IOException("Asked for the board of %s and got %d".formatted(slug, response.statusCode()));
 		}
 		return reading(response.body(), slug);
+	}
+
+	/** Reads a hosted page's title only when its Open Graph title confirms the company's jobs page. */
+	@Override
+	public String name(String slug, RegionEnum region, Runnable onRefusal) throws IOException {
+		HttpRequest request = HttpRequest.newBuilder(this.pageBases.get(region).resolve(slug))
+			.header("User-Agent", this.userAgent)
+			.timeout(this.readTimeout)
+			.GET()
+			.build();
+		HttpResponse<String> response = send(request, slug, onRefusal);
+		if (response.statusCode() == 404) {
+			return null;
+		}
+		if (response.statusCode() != 200) {
+			throw new IOException("Asked for the name of %s and got %d".formatted(slug, response.statusCode()));
+		}
+		Matcher title = TITLE.matcher(response.body());
+		if (!title.find()) {
+			return null;
+		}
+		String name = unescape(title.group(1)).trim();
+		if (name.isEmpty()) {
+			return null;
+		}
+		Matcher meta = META.matcher(response.body());
+		while (meta.find()) {
+			Matcher attributes = ATTRIBUTE.matcher(meta.group());
+			String property = null;
+			String content = null;
+			while (attributes.find()) {
+				if (attributes.group(1).equalsIgnoreCase("property")) {
+					property = attributes.group(3);
+				}
+				else if (attributes.group(1).equalsIgnoreCase("content")) {
+					content = attributes.group(3);
+				}
+			}
+			if ("og:title".equals(property) && content != null && unescape(content).equals(name + " jobs")) {
+				return name;
+			}
+		}
+		return null;
+	}
+
+	/** Decodes the entities a title uses in one pass, preserving unrecognized or invalid entities. */
+	private static String unescape(String value) {
+		return ENTITY.matcher(value).replaceAll((match) -> {
+			String entity = match.group(1);
+			String decoded = switch (entity) {
+				case "amp" -> "&";
+				case "apos" -> "'";
+				case "quot" -> "\"";
+				case "lt" -> "<";
+				case "gt" -> ">";
+				default -> {
+					try {
+						boolean hexadecimal = entity.charAt(1) == 'x' || entity.charAt(1) == 'X';
+						int codePoint = Integer.parseInt(entity.substring(hexadecimal ? 2 : 1), hexadecimal ? 16 : 10);
+						yield Character.isValidCodePoint(codePoint) ? new String(Character.toChars(codePoint))
+							: match.group();
+					}
+					catch (IllegalArgumentException ex) {
+						yield match.group();
+					}
+				}
+			};
+			return Matcher.quoteReplacement(decoded);
+		});
 	}
 
 	private BoardReading reading(String body, String slug) throws IOException {
