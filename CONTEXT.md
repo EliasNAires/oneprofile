@@ -32,8 +32,9 @@ board's URL; a probe and a sweep ask that region's API, where an ATS has one per
 _Avoid_: host, datacenter, locale
 
 **Board Status**:
-Whether a board was found and whether it had openings when last checked: active, empty, or
-not found. Unknown until the board has been checked.
+Whether a board was found and whether it had openings when last checked: active, empty,
+not found, or unread (on the list of boards the sweep does not read). Unknown until the board has
+been checked.
 _Avoid_: alive, valid, health
 
 **Discovery**:

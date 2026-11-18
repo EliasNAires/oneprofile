@@ -1,6 +1,7 @@
 package oneprofile.backend.workers.probe;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.then;
@@ -8,6 +9,7 @@ import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
@@ -15,6 +17,7 @@ import java.time.ZoneOffset;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
@@ -23,6 +26,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import oneprofile.backend.TestcontainersConfiguration;
+import oneprofile.backend.storage.boardlist.BoardListStore;
 import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.company.BoardStatusEnum;
 import oneprofile.backend.storage.company.CompanyRepository;
@@ -56,13 +60,47 @@ class BoardProbeRunTest {
 
 	private final VacancyStore vacancies = mock(VacancyStore.class);
 
+	/** Listed boards are cleared without requesting them; all other outcomes are counted. */
+	@Test
+	void recordsListedBoardsAsUnreadWithoutReadingThem() {
+		heldSlugs("demo", "active", "empty", "gone", "unreadable");
+		Set<String> asked = ConcurrentHashMap.newKeySet();
+		BoardReaderPort answers = reader(Map.of("demo", new BoardReading(BoardStatusEnum.ACTIVE, "Demo"),
+				"active", new BoardReading(BoardStatusEnum.ACTIVE, "Active"), "empty",
+				new BoardReading(BoardStatusEnum.EMPTY, null), "gone", new BoardReading(BoardStatusEnum.NOT_FOUND, null)));
+		BoardReaderPort reader = (slug, region, onRefusal) -> {
+			asked.add(slug);
+			return answers.read(slug, region, onRefusal);
+		};
+		BoardProbeRun probe = new BoardProbeRun(Map.of(AtsEnum.GREENHOUSE, reader),
+				Map.of(AtsEnum.GREENHOUSE, UNPACED), this.companies, this.vacancies, unread("demo"), clock());
+
+		assertThat(probe.probeAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardProbeRun.Report(1, 1, 1, 1, 1));
+
+		assertThat(asked).containsExactlyInAnyOrder("active", "empty", "gone", "unreadable");
+		var order = inOrder(this.vacancies, this.companies);
+		order.verify(this.vacancies).mirror(AtsEnum.GREENHOUSE, "demo", List.of());
+		order.verify(this.companies).recordProbe(AtsEnum.GREENHOUSE, "demo", BoardStatusEnum.UNREAD, null, PROBED_AT);
+	}
+
+	/** UNREAD is assigned by the list, never returned by a reader. */
+	@Test
+	void refusesAnUnreadReaderResult() {
+		heldSlugs("bug");
+
+		assertThatIllegalStateException().isThrownBy(() -> probeOf(Map.of("bug",
+				new BoardReading(BoardStatusEnum.UNREAD, null))).probeAll(AtsEnum.GREENHOUSE));
+		then(this.companies).should(BDDMockito.never()).recordProbe(any(), any(), any(), any(), any());
+		then(this.vacancies).shouldHaveNoInteractions();
+	}
+
 	@Test
 	void recordsAgainstEveryCompanyWhatItsBoardIs() {
 		heldSlugs("stripe", "notion", "gone");
 		BoardProbeRun probe = probeOf(Map.of("stripe", new BoardReading(BoardStatusEnum.ACTIVE, "Stripe"), "notion",
 				new BoardReading(BoardStatusEnum.EMPTY, null), "gone", new BoardReading(BoardStatusEnum.NOT_FOUND, null)));
 
-		assertThat(probe.probeAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardProbeRun.Report(1, 1, 1, 0));
+		assertThat(probe.probeAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardProbeRun.Report(1, 1, 1, 0, 0));
 
 		then(this.companies).should()
 			.recordProbe(AtsEnum.GREENHOUSE, "stripe", BoardStatusEnum.ACTIVE, "Stripe", PROBED_AT);
@@ -83,7 +121,7 @@ class BoardProbeRunTest {
 		boards.put("stripe", new BoardReading(BoardStatusEnum.ACTIVE, "Stripe"));
 		boards.put("unreachable", null);
 
-		assertThat(probeOf(boards).probeAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardProbeRun.Report(1, 0, 0, 1));
+		assertThat(probeOf(boards).probeAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardProbeRun.Report(1, 0, 0, 0, 1));
 
 		then(this.companies).should().recordProbe(AtsEnum.GREENHOUSE, "stripe", BoardStatusEnum.ACTIVE, "Stripe", PROBED_AT);
 		then(this.companies).should(BDDMockito.never())
@@ -172,7 +210,7 @@ class BoardProbeRunTest {
 		};
 
 		assertThat(probeOf(reader, new Pace(2, 1000, false)).probeAll(AtsEnum.GREENHOUSE))
-			.isEqualTo(new BoardProbeRun.Report(1, 0, 0, 1));
+			.isEqualTo(new BoardProbeRun.Report(1, 0, 0, 0, 1));
 		then(this.companies).should(BDDMockito.never())
 			.recordProbe(eq(AtsEnum.GREENHOUSE), eq("refused"), any(), any(), any());
 	}
@@ -193,7 +231,7 @@ class BoardProbeRunTest {
 			return new BoardReading(BoardStatusEnum.ACTIVE, null);
 		};
 		BoardProbeRun probe = new BoardProbeRun(Map.of(AtsEnum.LEVER, reader),
-				Map.of(AtsEnum.LEVER, new Pace(1, 1000, true)), this.companies, this.vacancies, clock());
+				Map.of(AtsEnum.LEVER, new Pace(1, 1000, true)), this.companies, this.vacancies, unread(), clock());
 
 		probe.probeAll(AtsEnum.LEVER);
 
@@ -207,9 +245,9 @@ class BoardProbeRunTest {
 		BoardProbeRun probe = new BoardProbeRun(
 				Map.of(AtsEnum.GREENHOUSE, reader(Map.of()), AtsEnum.ASHBY,
 						reader(Map.of("ramp", new BoardReading(BoardStatusEnum.ACTIVE, null)))),
-				Map.of(AtsEnum.GREENHOUSE, UNPACED, AtsEnum.ASHBY, UNPACED), this.companies, this.vacancies, clock());
+				Map.of(AtsEnum.GREENHOUSE, UNPACED, AtsEnum.ASHBY, UNPACED), this.companies, this.vacancies, unread(), clock());
 
-		assertThat(probe.probeAll(AtsEnum.ASHBY)).isEqualTo(new BoardProbeRun.Report(1, 0, 0, 0));
+		assertThat(probe.probeAll(AtsEnum.ASHBY)).isEqualTo(new BoardProbeRun.Report(1, 0, 0, 0, 0));
 		then(this.companies).should().recordProbe(AtsEnum.ASHBY, "ramp", BoardStatusEnum.ACTIVE, null, PROBED_AT);
 	}
 
@@ -223,9 +261,9 @@ class BoardProbeRunTest {
 			return new BoardReading(BoardStatusEnum.ACTIVE, null);
 		};
 		BoardProbeRun probe = new BoardProbeRun(Map.of(AtsEnum.LEVER, reader), Map.of(AtsEnum.LEVER, UNPACED),
-				this.companies, this.vacancies, clock());
+				this.companies, this.vacancies, unread(), clock());
 
-		assertThat(probe.probeAll(AtsEnum.LEVER)).isEqualTo(new BoardProbeRun.Report(2, 0, 0, 0));
+		assertThat(probe.probeAll(AtsEnum.LEVER)).isEqualTo(new BoardProbeRun.Report(2, 0, 0, 0, 0));
 		assertThat(asked).isEqualTo(Map.of("finix", RegionEnum.US, "kwalee", RegionEnum.EU));
 	}
 
@@ -241,7 +279,13 @@ class BoardProbeRunTest {
 
 	private BoardProbeRun probeOf(BoardReaderPort reader, Pace pace) {
 		return new BoardProbeRun(Map.of(AtsEnum.GREENHOUSE, reader), Map.of(AtsEnum.GREENHOUSE, pace), this.companies,
-				this.vacancies, clock());
+				this.vacancies, unread(), clock());
+	}
+
+	/** A list containing only the named Greenhouse boards. */
+	private BoardListStore unread(String... slugs) {
+		return BoardListStore.read(new StringReader("ats\tslug\treason\n" + Stream.of(slugs)
+			.map((slug) -> "greenhouse\t" + slug + "\tTest board\n").collect(Collectors.joining())));
 	}
 
 	private static void pause(Duration duration) {
@@ -287,12 +331,43 @@ class BoardProbeRunTest {
 		/** Removes committed fixtures, since paced callbacks run on other threads. */
 		@AfterEach
 		void removeCompanies() {
-			for (String slug : List.of("probe-gone", "probe-empty", "probe-active", "probe-unreadable")) {
+			for (String slug : List.of("probe-gone", "probe-empty", "probe-active", "probe-unreadable",
+					"probe-unread", "probe-relisted")) {
 				this.companyRepository.findByAtsAndSlug(AtsEnum.GREENHOUSE, slug).ifPresent((company) -> {
 					this.vacancies.mirror(AtsEnum.GREENHOUSE, slug, List.of());
 					this.companyRepository.delete(company);
 				});
 			}
+		}
+
+		/** Listed boards lose their vacancies and keep their held name without being read. */
+		@Test
+		void clearsAListedActiveBoardAndProbesAnUnlistedUnreadBoard() {
+			this.companies.record(AtsEnum.GREENHOUSE,
+					Map.of("probe-unread", RegionEnum.US, "probe-relisted", RegionEnum.US));
+			this.companies.recordProbe(AtsEnum.GREENHOUSE, "probe-unread", BoardStatusEnum.ACTIVE,
+					"Held name", Instant.EPOCH);
+			this.companies.recordProbe(AtsEnum.GREENHOUSE, "probe-relisted", BoardStatusEnum.UNREAD,
+					"Old name", Instant.EPOCH);
+			this.vacancies.mirror(AtsEnum.GREENHOUSE, "probe-unread", List.of(published("held")));
+			BoardReaderPort reader = (slug, region, onRefusal) -> {
+				assertThat(slug).isEqualTo("probe-relisted");
+				return new BoardReading(BoardStatusEnum.ACTIVE, "New name");
+			};
+			BoardProbeRun probe = new BoardProbeRun(Map.of(AtsEnum.GREENHOUSE, reader),
+					Map.of(AtsEnum.GREENHOUSE, UNPACED), this.companies, this.vacancies, unread("probe-unread"), clock());
+
+			assertThat(probe.probeAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardProbeRun.Report(1, 0, 0, 1, 0));
+
+			var unread = this.companyRepository.findByAtsAndSlug(AtsEnum.GREENHOUSE, "probe-unread").orElseThrow();
+			assertThat(unread.boardStatus()).isEqualTo(BoardStatusEnum.UNREAD);
+			assertThat(unread.name()).isEqualTo("Held name");
+			assertThat(unread.probedAt()).isEqualTo(PROBED_AT);
+			assertThat(this.vacancyRepository.findByCompany(unread)).isEmpty();
+			var relisted = this.companyRepository.findByAtsAndSlug(AtsEnum.GREENHOUSE, "probe-relisted").orElseThrow();
+			assertThat(relisted.boardStatus()).isEqualTo(BoardStatusEnum.ACTIVE);
+			assertThat(relisted.name()).isEqualTo("New name");
+			assertThat(relisted.probedAt()).isEqualTo(PROBED_AT);
 		}
 
 		/** Only boards confirmed to publish nothing lose their vacancies. */
@@ -308,9 +383,9 @@ class BoardProbeRunTest {
 					"probe-empty", new BoardReading(BoardStatusEnum.EMPTY, null), "probe-active",
 					new BoardReading(BoardStatusEnum.ACTIVE, "Active")));
 			BoardProbeRun probe = new BoardProbeRun(Map.of(AtsEnum.GREENHOUSE, reader),
-					Map.of(AtsEnum.GREENHOUSE, UNPACED), this.companies, this.vacancies, clock());
+					Map.of(AtsEnum.GREENHOUSE, UNPACED), this.companies, this.vacancies, unread(), clock());
 
-			assertThat(probe.probeAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardProbeRun.Report(1, 1, 1, 1));
+			assertThat(probe.probeAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardProbeRun.Report(1, 1, 1, 0, 1));
 
 			for (String slug : List.of("probe-gone", "probe-empty")) {
 				var company = this.companyRepository.findByAtsAndSlug(AtsEnum.GREENHOUSE, slug).orElseThrow();

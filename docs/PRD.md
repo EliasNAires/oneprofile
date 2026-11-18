@@ -60,7 +60,10 @@ Each archive's yield: `docs/measurements/2026-10-wayback.md` and
 Built for every ATS, each at its own pace. A company keeps the **region** of the host its board
 was discovered on, `US` or `EU`, and is asked for in that region's API where its ATS has one per
 region (ADR-0022). Companies are probed and recorded as `ACTIVE`, `EMPTY`
-or `NOT_FOUND`; only `ACTIVE` companies are swept. `vacancy` is a **mirror of the board**: upsert
+or `NOT_FOUND`; only `ACTIVE` companies are swept. A board on the hand-kept list of boards the
+sweep does not read (`boards/unread.tsv`: ATS demo boards, a company's test and sandbox boards,
+and a board too slow to read) is not asked for: a probe deletes its vacancies and records it
+`UNREAD`, and taking its row off the list is the whole undo (#83). `vacancy` is a **mirror of the board**: upsert
 what is returned, delete what has disappeared. A board a sweep cannot read (a refusal, a `5xx`,
 a timeout) keeps what is held, so a board that went down is not mistaken for one that emptied.
 A board the ATS says is not there is closed: a sweep records the company `NOT_FOUND` and deletes

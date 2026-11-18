@@ -5,7 +5,11 @@ import java.time.Clock;
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.concurrent.atomic.AtomicInteger;
+import oneprofile.backend.storage.boardlist.BoardListStore;
 import oneprofile.backend.storage.company.AtsEnum;
 import oneprofile.backend.storage.company.BoardStatusEnum;
 import oneprofile.backend.storage.company.CompanyStore;
@@ -27,6 +31,10 @@ import org.springframework.stereotype.Component;
  * rather than recorded as anything, so the next run probes it again. A board found empty or not
  * found has its held vacancies removed before its probe is recorded. An active board keeps its
  * vacancies for the sweep to read.
+ * <p>
+ * A board on the list of boards the sweep does not read ({@code boards/unread.tsv}) is not asked
+ * for: its held vacancies are removed and it is recorded unread, so no later probe sets it back to
+ * active. A board taken off the list is probed as usual on the next run.
  */
 @Component
 public class BoardProbeRun {
@@ -53,6 +61,8 @@ public class BoardProbeRun {
 
 	private final VacancyStore vacancies;
 
+	private final BoardListStore boardList;
+
 	private final Clock clock;
 
 	/**
@@ -63,13 +73,14 @@ public class BoardProbeRun {
 	 * @param workday reads Workday boards
 	 * @param companies the companies to probe, and where the probes are recorded
 	 * @param vacancies where vacancies of boards found empty or not found are removed
+	 * @param boardList the boards the sweep does not read
 	 */
 	@Autowired
 	public BoardProbeRun(GreenhouseBoardReaderAdapter greenhouse, AshbyBoardReaderAdapter ashby,
 			LeverBoardReaderAdapter lever, WorkdayBoardReaderAdapter workday, CompanyStore companies,
-			VacancyStore vacancies) {
+			VacancyStore vacancies, BoardListStore boardList) {
 		this(Map.of(AtsEnum.GREENHOUSE, greenhouse, AtsEnum.ASHBY, ashby, AtsEnum.LEVER, lever, AtsEnum.WORKDAY,
-				workday), PACES, companies, vacancies, Clock.systemUTC());
+				workday), PACES, companies, vacancies, boardList, Clock.systemUTC());
 	}
 
 	/**
@@ -77,14 +88,16 @@ public class BoardProbeRun {
 	 * @param paces how fast each ATS is asked
 	 * @param companies the companies to probe, and where the probes are recorded
 	 * @param vacancies where vacancies of boards found empty or not found are removed
+	 * @param boardList the boards the sweep does not read
 	 * @param clock what a probe is timestamped from
 	 */
 	BoardProbeRun(Map<AtsEnum, BoardReaderPort> readers, Map<AtsEnum, Pace> paces, CompanyStore companies,
-			VacancyStore vacancies, Clock clock) {
+			VacancyStore vacancies, BoardListStore boardList, Clock clock) {
 		this.readers = Map.copyOf(readers);
 		this.paces = Map.copyOf(paces);
 		this.companies = companies;
 		this.vacancies = vacancies;
+		this.boardList = boardList;
 		this.clock = clock;
 	}
 
@@ -94,17 +107,30 @@ public class BoardProbeRun {
 	 * @return what the run found
 	 */
 	public Report probeAll(AtsEnum ats) {
+		Set<String> unreadSlugs = this.boardList.unreadSlugsOf(ats);
+		SortedMap<String, RegionEnum> toRead = new TreeMap<>(this.companies.regionsOf(ats));
+		int unread = 0;
+		for (String slug : unreadSlugs) {
+			if (toRead.remove(slug) != null) {
+				this.vacancies.mirror(ats, slug, List.of());
+				this.companies.recordProbe(ats, slug, BoardStatusEnum.UNREAD, null, Instant.now(this.clock));
+				unread++;
+			}
+		}
 		BoardReaderPort reader = this.readers.get(ats);
 		AtomicInteger active = new AtomicInteger();
 		AtomicInteger empty = new AtomicInteger();
 		AtomicInteger notFound = new AtomicInteger();
 		AtomicInteger unreadable = new AtomicInteger();
 		this.paces.get(ats)
-			.readEach("The %s probe".formatted(ats), this.companies.regionsOf(ats),
+			.readEach("The %s probe".formatted(ats), toRead,
 					(slug, region, onRefusal) -> read(ats, reader, slug, region, onRefusal), (slug, reading) -> {
 						if (reading == null) {
 							unreadable.incrementAndGet();
 							return;
+						}
+						if (reading.boardStatus() == BoardStatusEnum.UNREAD) {
+							throw new IllegalStateException("A board reader returned UNREAD for " + slug);
 						}
 						if (reading.boardStatus() == BoardStatusEnum.NOT_FOUND
 								|| reading.boardStatus() == BoardStatusEnum.EMPTY) {
@@ -117,9 +143,11 @@ public class BoardProbeRun {
 							case ACTIVE -> active.incrementAndGet();
 							case EMPTY -> empty.incrementAndGet();
 							case NOT_FOUND -> notFound.incrementAndGet();
+							case UNREAD -> {
+							}
 						}
 					});
-		return new Report(active.get(), empty.get(), notFound.get(), unreadable.get());
+		return new Report(active.get(), empty.get(), notFound.get(), unread, unreadable.get());
 	}
 
 	/** What the board is, or null if the ATS could not be made to say. */
@@ -141,9 +169,10 @@ public class BoardProbeRun {
 	 * @param active how many boards had openings
 	 * @param empty how many boards had none
 	 * @param notFound how many slugs had no board
+	 * @param unread how many held boards were on the list the sweep does not read
 	 * @param unreadable how many boards the ATS would not say anything about
 	 */
-	public record Report(int active, int empty, int notFound, int unreadable) {
+	public record Report(int active, int empty, int notFound, int unread, int unreadable) {
 	}
 
 }

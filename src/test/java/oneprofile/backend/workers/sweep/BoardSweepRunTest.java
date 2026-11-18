@@ -237,12 +237,33 @@ class BoardSweepRunTest {
 		/** Removes committed fixtures, since paced callbacks run on other threads. */
 		@AfterEach
 		void removeCompanies() {
-			for (String slug : List.of("sweep-open", "sweep-gone", "sweep-unreadable")) {
+			for (String slug : List.of("sweep-open", "sweep-gone", "sweep-unreadable", "sweep-unread")) {
 				this.companyRepository.findByAtsAndSlug(AtsEnum.GREENHOUSE, slug).ifPresent((company) -> {
 					this.vacancies.mirror(AtsEnum.GREENHOUSE, slug, List.of());
 					this.companyRepository.delete(company);
 				});
 			}
+		}
+
+		/** The sweep leaves unread boards and their held vacancies alone. */
+		@Test
+		void doesNotReadAnUnreadBoardOrChangeItsVacancies() {
+			this.companies.record(AtsEnum.GREENHOUSE, Map.of("sweep-unread", RegionEnum.US));
+			this.companies.recordProbe(AtsEnum.GREENHOUSE, "sweep-unread", BoardStatusEnum.UNREAD,
+					"Unread", Instant.EPOCH);
+			this.vacancies.mirror(AtsEnum.GREENHOUSE, "sweep-unread", List.of(published(1)));
+			VacancyReaderPort reader = (slug, region, onRefusal) -> {
+				throw new AssertionError("The sweep asked for unread board " + slug);
+			};
+			BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader),
+					Map.of(AtsEnum.GREENHOUSE, UNPACED), this.companies, this.vacancies);
+
+			assertThat(sweep.sweepAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardSweepRun.Report(0, 0, 0, 0, 0, 0, 0));
+
+			var unread = this.companyRepository.findByAtsAndSlug(AtsEnum.GREENHOUSE, "sweep-unread").orElseThrow();
+			assertThat(unread.boardStatus()).isEqualTo(BoardStatusEnum.UNREAD);
+			assertThat(this.vacancyRepository.findByCompany(unread)).singleElement()
+				.satisfies((vacancy) -> assertThat(vacancy.externalId()).isEqualTo("1"));
 		}
 
 		/** A missing board closes its held vacancies; a failed read preserves them. */

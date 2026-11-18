@@ -1,8 +1,9 @@
 package oneprofile.backend.storage.company;
 
 /**
- * Whether a board was found and whether it had openings when it was last probed. A company that has
- * never been probed has no board status at all, which is what unknown means.
+ * Whether a board was found and whether it had openings when it was last probed, or that it is on the
+ * list of boards the sweep does not read. A company that has never been probed has no board status at
+ * all, which is what unknown means.
  */
 public enum BoardStatusEnum {
 
@@ -13,6 +14,9 @@ public enum BoardStatusEnum {
 	EMPTY,
 
 	/** No board is published under the slug. */
-	NOT_FOUND
+	NOT_FOUND,
+
+	/** The board is on the list of boards the sweep does not read. */
+	UNREAD
 
 }

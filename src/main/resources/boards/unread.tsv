@@ -1,0 +1,84 @@
+ats	slug	reason
+ashby	ashby-embed-demo-org	Ashby demo board
+ashby	demo.talentlink	Ashby demo board
+ashby	demo.uipath.com	Ashby demo board, standard demo titles
+ashby	krakensandbox	sandbox next to lever/kraken
+ashby	smoketestco	smoke test board
+greenhouse	agodasandbox	sandbox next to greenhouse/agoda
+greenhouse	alixpartnerssandbox	test board next to greenhouse/alixpartners
+greenhouse	aparavisandbox	sandbox next to greenhouse/aparavi
+greenhouse	arctouchaccessibilitytests	accessibility test board
+greenhouse	artefacttest	test board next to greenhouse/artefact
+greenhouse	astoundcommercesandbox	sandbox next to greenhouse/astoundcommerce
+greenhouse	bridgekesandbox	sandbox-suffixed board slug
+greenhouse	bridgengsandbox	sandbox-suffixed board slug
+greenhouse	bridgeugsandbox	sandbox-suffixed board slug
+greenhouse	builtinintegrationsandbox	integration sandbox board
+greenhouse	comparablysandboxsandbox	sandbox board for Comparably
+greenhouse	considerintegrationsandbox	integration sandbox board
+greenhouse	cristinatestjbfr	test job board
+greenhouse	dejabrewcoffeesandbox	sandbox board, placeholder titles
+greenhouse	demidemo	demo-suffixed board slug
+greenhouse	devtestglanua	dev test board
+greenhouse	discosandbox	sandbox next to greenhouse/disco
+greenhouse	diversityjobsintegrationsandbox	integration sandbox board
+greenhouse	edobestsandbox	sandbox-suffixed board slug
+greenhouse	ekoexcelsandbox	sandbox-suffixed board slug
+greenhouse	eslfaceitgrouplimitedsandbox	sandbox next to greenhouse/eslfaceitgrouplimited
+greenhouse	examplecorpsandbox	Example Corp sandbox board
+greenhouse	form3test	test board next to greenhouse/form3
+greenhouse	frogtest	test board next to greenhouse/frog
+greenhouse	gaptestjobboard	test job board
+greenhouse	gigtest	test-suffixed board slug
+greenhouse	glassdoorsandbox	sandbox next to greenhouse/glassdoor
+greenhouse	grayscale	board named Grayscale (Sandbox), placeholder titles
+greenhouse	handshaketesting	Handshake integration test board
+greenhouse	hbtest	test-suffixed board slug
+greenhouse	houwzersandbox	sandbox-suffixed board slug
+greenhouse	jamyrintegrationsandbox	integration sandbox board
+greenhouse	jobtest	test-suffixed board slug
+greenhouse	kaizengamingtest	test board next to greenhouse/kaizengaming
+greenhouse	liberiasandbox	sandbox next to greenhouse/liberia
+greenhouse	mctest	test-suffixed board slug
+greenhouse	mergeapiintegrationsandbox	integration sandbox, automation test titles
+greenhouse	mjtest	test-suffixed board slug
+greenhouse	modtestingsite	testing site board
+greenhouse	newglobesandbox	sandbox next to greenhouse/newglobe
+greenhouse	qetestboard20220325	QE test board
+greenhouse	quizletsandbox	sandbox next to greenhouse/quizlet
+greenhouse	recrutastoneteste	test board next to greenhouse/testestone
+greenhouse	redventuressyncingsandbox	integration sandbox for Red Ventures
+greenhouse	ripplematchtest	test board next to greenhouse/ripplematch
+greenhouse	rohansrecruiterssandbox	sandbox board, fictional placeholder titles
+greenhouse	rohanstest	test board, fictional placeholder titles
+greenhouse	rubiconprojectsandbox	sandbox-suffixed board slug
+greenhouse	samplecorpsandbox	Sample Corp sandbox board
+greenhouse	sandbox	sandbox board
+greenhouse	sarahsandbox	sandbox-suffixed board slug
+greenhouse	seisandbox	sandbox next to greenhouse/sei
+greenhouse	simplifyjobsintegrationsandbox	integration sandbox board
+greenhouse	spicyhrintegrationsandbox	integration sandbox board
+greenhouse	studioghiblitest	test board, explicitly fake and translation test titles
+greenhouse	sypnewsitetest	test-suffixed site board
+greenhouse	tegnasandbox	sandbox-suffixed board slug
+greenhouse	testcanonical123	board named Test Board, placeholder titles
+greenhouse	testcompany	test board next to greenhouse/company
+greenhouse	testestone	test board, Portuguese test titles
+greenhouse	testingjobboard	test job board
+greenhouse	testio	test board, placeholder titles and Termfront board name
+greenhouse	testmindgeeken	test board
+greenhouse	testnisc	test board next to greenhouse/nisc
+greenhouse	testreferral	referral test board
+greenhouse	vmtest	test-suffixed board slug
+greenhouse	yotest	test-suffixed board slug
+greenhouse	zetatest	test board next to lever/zeta
+lever	leverdemo	Lever demo board
+lever	leverdemo193	Lever demo board
+lever	leverdemo-8	Lever demo board
+lever	leverdemo93321	Lever demo board, placeholder titles
+lever	leverdemo956	Lever demo board
+lever	levertest	Lever test board, placeholder titles
+lever	salesdemo-jr	Lever sales demo board
+workday	accenture.wd103/accenturecareers	too slow to read, #88
+workday	ambgroup.wd1/test	explicit test board under AMB Group tenant
+workday	brinks.wd5/testlinkexternal	test link site under the Brinks tenant

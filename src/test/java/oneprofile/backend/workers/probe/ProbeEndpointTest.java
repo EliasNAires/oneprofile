@@ -21,10 +21,10 @@ class ProbeEndpointTest {
 
 	@Test
 	void reportsWhatTheRunFoundForTheAtsItNames() {
-		given(this.probe.probeAll(AtsEnum.ASHBY)).willReturn(new BoardProbeRun.Report(3, 1, 2, 1));
+		given(this.probe.probeAll(AtsEnum.ASHBY)).willReturn(new BoardProbeRun.Report(3, 1, 2, 4, 1));
 
 		assertThat(this.mvc.post().uri("/probes/ashby")).hasStatusOk().bodyJson().isEqualTo("""
-				{"active":3,"empty":1,"notFound":2,"unreadable":1}""");
+				{"active":3,"empty":1,"notFound":2,"unread":4,"unreadable":1}""");
 	}
 
 }
