@@ -10,6 +10,7 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import oneprofile.backend.storage.company.RegionEnum;
@@ -17,6 +18,7 @@ import oneprofile.backend.storage.normalizedvacancy.Classification;
 import oneprofile.backend.storage.normalizedvacancy.ClassificationStateEnum;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
 import oneprofile.backend.storage.vacancy.PublishedWorkdayVacancy;
+import oneprofile.backend.storage.vacancy.VacancyStore;
 import oneprofile.backend.workers.WorkdayApiPort;
 import oneprofile.backend.workers.classification.TitleClassificationRule;
 import oneprofile.backend.workers.cleaning.TitleCleaningRule;
@@ -33,9 +35,9 @@ import tools.jackson.databind.JsonNode;
  * The board's list is paged 20 at a time and names each vacancy's title, path and location, with no
  * description; the board's {@code total} comes on the first page, on some boards on no other. Workday
  * stops paging at an offset of 2000, so a board of 2000 or more is read in parts: narrowed by the
- * facet whose every value holds fewer than 2000, the one whose values add up to the fewest, so that
- * the parts overlap least; a part still too large is narrowed by a further facet. A vacancy found in
- * two parts, as one in two locations is, is held once.
+ * facet whose every value holds fewer than 2000, the one whose values take the fewest pages, then
+ * add up to the fewest vacancies; a part still too large is narrowed by a further facet. A vacancy
+ * found in two parts, as one in two locations is, is held once.
  * <p>
  * A first, unfaceted list page answering {@code 400}, {@code 401}, {@code 403}, {@code 404} or
  * {@code 422} means no board is published under the slug and throws {@link BoardNotFoundException}.
@@ -46,10 +48,13 @@ import tools.jackson.databind.JsonNode;
  * leaves the vacancy {@code IN}, or {@code UNKNOWN} for a reason the body pass reads it for: a million
  * descriptions would take 18 hours, and the body pass never reads the rest (decided with Elias on
  * 2026-10-23 and 2026-10-24). The title is classified with the rules as they stand when the sweep
- * runs; a vacancy they rule in later has its description read by the next sweep. A vacancy whose
- * page answers {@code 404} has closed since the list was read, and is left out; one whose page
- * Workday answers with another error of its own is held as the list names it, so that one vacancy
- * does not cost its board. Its page also names the company, which the sweep takes as its name.
+ * runs; a vacancy they rule in later has its description read by the next sweep. Before reading a
+ * board, its held vacancies with descriptions are read by external id. One whose id and title still
+ * match the list is returned as held without asking for its page, with no company name because the
+ * vacancy holds none. A vacancy whose page answers {@code 404} has closed since the list was read,
+ * and is left out; one whose page Workday answers with another error of its own is held as the list
+ * names it, so that one vacancy does not cost its board. Its page also names the company, which the
+ * sweep takes as its name.
  */
 @Component
 public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
@@ -69,6 +74,8 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 
 	private final WorkdayApiPort api;
 
+	private final VacancyStore vacancies;
+
 	private final TitleCleaningRule titleCleaning;
 
 	private final TitleClassificationRule titleClassification;
@@ -80,25 +87,28 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 	/**
 	 * Reads from Workday, asking for the descriptions the title rules call for.
 	 * @param api what asks Workday
+	 * @param vacancies what holds the descriptions already read
 	 * @param titleCleaning cleans a title before it is classified
 	 * @param titleClassification classifies a cleaned title
 	 */
 	@Autowired
-	public WorkdayVacancyReaderAdapter(WorkdayApiPort api, TitleCleaningRule titleCleaning,
+	public WorkdayVacancyReaderAdapter(WorkdayApiPort api, VacancyStore vacancies, TitleCleaningRule titleCleaning,
 			TitleClassificationRule titleClassification) {
-		this(api, titleCleaning, titleClassification, PAGE_SIZE, PAGING_LIMIT);
+		this(api, vacancies, titleCleaning, titleClassification, PAGE_SIZE, PAGING_LIMIT);
 	}
 
 	/**
 	 * @param api what asks Workday
+	 * @param vacancies what holds the descriptions already read
 	 * @param titleCleaning cleans a title before it is classified
 	 * @param titleClassification classifies a cleaned title
 	 * @param pageSize how many vacancies a page asks for
 	 * @param pagingLimit the offset Workday stops paging at
 	 */
-	WorkdayVacancyReaderAdapter(WorkdayApiPort api, TitleCleaningRule titleCleaning,
+	WorkdayVacancyReaderAdapter(WorkdayApiPort api, VacancyStore vacancies, TitleCleaningRule titleCleaning,
 			TitleClassificationRule titleClassification, int pageSize, int pagingLimit) {
 		this.api = api;
+		this.vacancies = vacancies;
 		this.titleCleaning = titleCleaning;
 		this.titleClassification = titleClassification;
 		this.pageSize = pageSize;
@@ -111,18 +121,19 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 		Pages pages = new Pages();
 		boolean failed = true;
 		try {
+			Map<String, PublishedWorkdayVacancy> held = this.vacancies.describedWorkdayVacancies(slug);
 			Map<String, JsonNode> postings = new LinkedHashMap<>();
 			readPart(slug, new LinkedHashMap<>(), postings, onRefusal, pages);
 			List<PublishedVacancy> published = new ArrayList<>(postings.size());
 			for (JsonNode posting : postings.values()) {
-				publishedVacancy(slug, posting, onRefusal, pages).ifPresent(published::add);
+				publishedVacancy(slug, posting, held, onRefusal, pages).ifPresent(published::add);
 			}
 			failed = false;
 			return published;
 		}
 		finally {
-			logger.info("WORKDAY_BOARD slug=%s list_pages=%d description_pages=%d parts=%d failed=%s"
-				.formatted(slug, pages.list, pages.description, pages.parts, failed));
+			logger.info("WORKDAY_BOARD slug=%s list_pages=%d description_pages=%d descriptions_held=%d parts=%d failed=%s"
+				.formatted(slug, pages.list, pages.description, pages.held, pages.parts, failed));
 		}
 	}
 
@@ -185,9 +196,9 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 
 	/**
 	 * The facet to narrow a board by: of those not applied yet, one whose every value holds fewer than
-	 * the paging limit, the fewest in all; or failing any, the one whose largest value holds fewest, to
-	 * be narrowed further. Workday groups its location facets under one that names no values of its
-	 * own, which is looked inside.
+	 * the paging limit, the fewest pages in all, then the fewest vacancies; or failing any, the one
+	 * whose largest value holds fewest, to be narrowed further. Workday groups its location facets
+	 * under one that names no values of its own, which is looked inside.
 	 */
 	private Optional<Facet> narrowest(JsonNode facets, Map<String, List<String>> appliedFacets) {
 		List<Facet> candidates = new ArrayList<>();
@@ -195,16 +206,19 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 			addFacet(facet, appliedFacets, candidates);
 		}
 		Comparator<Facet> fewest = Comparator.comparingLong(Facet::sum);
-		Optional<Facet> under = candidates.stream().filter((facet) -> facet.largest() < this.pagingLimit).min(fewest);
+		Optional<Facet> under = candidates.stream()
+			.filter((facet) -> facet.largest() < this.pagingLimit)
+			.min(Comparator.comparingLong(Facet::pages).thenComparing(fewest));
 		return under.isPresent() ? under
 				: candidates.stream().min(Comparator.comparingLong(Facet::largest).thenComparing(fewest));
 	}
 
 	/** Adds a facet, and each facet nested among its values, to the candidates unless it is applied. */
-	private static void addFacet(JsonNode facet, Map<String, List<String>> appliedFacets, List<Facet> candidates) {
+	private void addFacet(JsonNode facet, Map<String, List<String>> appliedFacets, List<Facet> candidates) {
 		String parameter = text(facet.path("facetParameter"));
 		List<String> values = new ArrayList<>();
 		long sum = 0;
+		long pages = 0;
 		long largest = 0;
 		for (JsonNode value : facet.path("values")) {
 			if (value.has("facetParameter")) {
@@ -216,20 +230,26 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 			if (id != null && count > 0) {
 				values.add(id);
 				sum += count;
+				pages += (count - 1) / this.pageSize + 1;
 				largest = Math.max(largest, count);
 			}
 		}
 		if (parameter != null && !values.isEmpty() && !appliedFacets.containsKey(parameter)) {
-			candidates.add(new Facet(parameter, values, sum, largest));
+			candidates.add(new Facet(parameter, values, sum, largest, pages));
 		}
 	}
 
 	/** The vacancy, with its page read if its title calls for it, or empty if it has closed since. */
-	private Optional<PublishedVacancy> publishedVacancy(String slug, JsonNode posting, Runnable onRefusal, Pages pages)
-			throws IOException {
+	private Optional<PublishedVacancy> publishedVacancy(String slug, JsonNode posting,
+			Map<String, PublishedWorkdayVacancy> held, Runnable onRefusal, Pages pages) throws IOException {
 		String path = text(posting.path("externalPath"));
 		String externalId = path.substring(path.lastIndexOf('/') + 1);
 		String title = text(posting.path("title"));
+		PublishedWorkdayVacancy described = held.get(externalId);
+		if (described != null && Objects.equals(described.title(), title)) {
+			pages.held++;
+			return Optional.of(described);
+		}
 		PublishedWorkdayVacancy listed = new PublishedWorkdayVacancy(externalId, title,
 				text(posting.path("locationsText")), null, url(slug, path), null, null, null, null, null, null);
 		if (!descriptionCalledFor(title)) {
@@ -313,8 +333,9 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 	 * @param values the id of every value that holds a vacancy
 	 * @param sum how many vacancies its values hold, those in several counted in each
 	 * @param largest how many its largest value holds
+	 * @param pages how many list pages its values take in all
 	 */
-	private record Facet(String parameter, List<String> values, long sum, long largest) {
+	private record Facet(String parameter, List<String> values, long sum, long largest, long pages) {
 	}
 
 	/** Request counts owned by one read, never shared by concurrent boards. */
@@ -323,6 +344,8 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 		private int list;
 
 		private int description;
+
+		private int held;
 
 		private int parts;
 

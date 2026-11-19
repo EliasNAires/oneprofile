@@ -65,6 +65,22 @@ public class VacancyStore {
 	}
 
 	/**
+	 * The described vacancies held for one Workday board, by the id Workday gives them.
+	 * @param slug the company's board slug
+	 * @return what is held, with no company name because the vacancy holds none
+	 */
+	@Transactional(readOnly = true)
+	public Map<String, PublishedWorkdayVacancy> describedWorkdayVacancies(String slug) {
+		Map<String, PublishedWorkdayVacancy> held = new HashMap<>();
+		for (WorkdayVacancyEntity vacancy : this.repository.describedWorkdayVacancies(slug)) {
+			held.put(vacancy.externalId(), new PublishedWorkdayVacancy(vacancy.externalId(), vacancy.title(),
+					vacancy.location(), vacancy.description(), vacancy.url(), vacancy.firstPublishedAt(),
+					vacancy.timeType(), vacancy.remoteType(), vacancy.country(), vacancy.allLocations(), null));
+		}
+		return held;
+	}
+
+	/**
 	 * The titles, descriptions and declared languages of the vacancies held after one id, in id order. Cleaning walks
 	 * the corpus with this, batch by batch, resuming from the last id it read.
 	 * @param after the id to read past, 0 to start at the first vacancy

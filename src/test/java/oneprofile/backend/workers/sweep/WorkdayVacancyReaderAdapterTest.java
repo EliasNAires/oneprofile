@@ -2,6 +2,9 @@ package oneprofile.backend.workers.sweep;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIOException;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.withSettings;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -14,6 +17,7 @@ import java.util.function.Predicate;
 import oneprofile.backend.storage.company.RegionEnum;
 import oneprofile.backend.storage.vacancy.PublishedVacancy;
 import oneprofile.backend.storage.vacancy.PublishedWorkdayVacancy;
+import oneprofile.backend.storage.vacancy.VacancyStore;
 import oneprofile.backend.workers.WorkdayApiPort;
 import oneprofile.backend.workers.classification.TitleClassificationRule;
 import oneprofile.backend.workers.cleaning.TitleCleaningRule;
@@ -21,6 +25,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.mockito.MockMakers;
 import org.springframework.boot.test.system.CapturedOutput;
 import org.springframework.boot.test.system.OutputCaptureExtension;
 import tools.jackson.databind.JsonNode;
@@ -52,6 +57,43 @@ class WorkdayVacancyReaderAdapterTest {
 
 	private final List<String> asked = new ArrayList<>();
 
+	private final VacancyStore vacancies = mock(VacancyStore.class, withSettings().mockMaker(MockMakers.SUBCLASS));
+
+	/** A described vacancy with the same identity and title is returned with everything held. */
+	@Test
+	void returnsAHeldVacancyWithoutReadingItsPage(CapturedOutput output) throws IOException {
+		FakeWorkday workday = new FakeWorkday(List.of(posting("Senior Software Engineer", "Santa-Clara", "JR1")));
+		PublishedWorkdayVacancy held = new PublishedWorkdayVacancy("Senior-Software-Engineer_JR1",
+				"Senior Software Engineer", "Held location", "Held description", "https://example.com/held",
+				Instant.parse("2026-10-20T00:00:00Z"), "Full time", "Remote", "US", List.of("Held location"), null);
+		given(this.vacancies.describedWorkdayVacancies(SLUG)).willAnswer((invocation) -> Map.of(held.externalId(), held));
+
+		assertThat(reader(workday).read(SLUG, RegionEnum.US, () -> {
+		})).containsExactly(held);
+		assertThat(this.asked).containsExactly("jobs {} 0");
+		assertThat(output.getOut().lines().filter((line) -> line.contains("WORKDAY_BOARD "))).singleElement()
+			.asString()
+			.endsWith("WORKDAY_BOARD slug=" + SLUG
+					+ " list_pages=1 description_pages=0 descriptions_held=1 parts=1 failed=false");
+	}
+
+	/** A matching identity does not reuse a description when the listed title differs. */
+	@Test
+	void readsThePageWhenTheHeldTitleDiffers() throws IOException {
+		FakeWorkday workday = new FakeWorkday(List.of(posting("Senior Software Engineer", "Santa-Clara", "JR1")));
+		workday.details.put("/job/Santa-Clara/Senior-Software-Engineer_JR1", DETAIL);
+		PublishedWorkdayVacancy held = new PublishedWorkdayVacancy("Senior-Software-Engineer_JR1",
+				"Software Engineer", "Held location", "Held description", "https://example.com/held",
+				null, null, null, null, null, null);
+		given(this.vacancies.describedWorkdayVacancies(SLUG)).willAnswer((invocation) -> Map.of(held.externalId(), held));
+
+		assertThat(reader(workday).read(SLUG, RegionEnum.US, () -> {
+		})).singleElement().extracting(PublishedVacancy::description).isEqualTo("""
+				# What you'll be doing:
+				- Build the NVLink firmware.""");
+		assertThat(this.asked).containsExactly("jobs {} 0", "job /job/Santa-Clara/Senior-Software-Engineer_JR1");
+	}
+
 	/** An unnarrowed board reports its list and description requests once. */
 	@Test
 	void readsTheDescriptionOfAVacancyWhoseTitleIsAnEngineeringRole(CapturedOutput output) throws IOException {
@@ -66,10 +108,11 @@ class WorkdayVacancyReaderAdapterTest {
 				"https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Senior-Software-Engineer_JR1",
 				Instant.parse("2026-10-23T00:00:00Z"), "Full time", "Hybrid", "US",
 				List.of("US, CA, Santa Clara", "Israel, Tel Aviv"), "2100 NVIDIA USA"));
+		assertThat(this.asked).containsExactly("jobs {} 0", "job /job/US-CA-Santa-Clara/Senior-Software-Engineer_JR1");
 		assertThat(output.getOut().lines().filter((line) -> line.contains("WORKDAY_BOARD "))).singleElement()
 			.asString()
 			.endsWith("WORKDAY_BOARD slug=" + SLUG
-					+ " list_pages=1 description_pages=1 parts=1 failed=false");
+					+ " list_pages=1 description_pages=1 descriptions_held=0 parts=1 failed=false");
 	}
 
 	@Test
@@ -135,7 +178,23 @@ class WorkdayVacancyReaderAdapterTest {
 		assertThat(output.getOut().lines().filter((line) -> line.contains("WORKDAY_BOARD "))).singleElement()
 			.asString()
 			.endsWith("WORKDAY_BOARD slug=" + SLUG
-					+ " list_pages=4 description_pages=0 parts=2 failed=false");
+					+ " list_pages=4 description_pages=0 descriptions_held=0 parts=2 failed=false");
+	}
+
+	/** Four pages for six counted vacancies beat five pages for five, despite the overlap. */
+	@Test
+	void narrowsByTheFacetThatTakesTheFewestPages() throws IOException {
+		FakeWorkday workday = new FakeWorkday(List.of(
+				posting("Registered Nurse", "A", "JR1", Map.of("timeType", Set.of("full"), "locations", Set.of("a"))),
+				posting("Registered Nurse", "B", "JR2", Map.of("timeType", Set.of("full"), "locations", Set.of("b"))),
+				posting("Registered Nurse", "C", "JR3", Map.of("timeType", Set.of("full", "part"), "locations", Set.of("c"))),
+				posting("Registered Nurse", "D", "JR4", Map.of("timeType", Set.of("part"), "locations", Set.of("d"))),
+				posting("Registered Nurse", "E", "JR5", Map.of("timeType", Set.of("part"), "locations", Set.of("e")))));
+
+		assertThat(reader(workday).read(SLUG, RegionEnum.US, () -> {
+		})).hasSize(5);
+		assertThat(this.asked).containsExactly("jobs {} 0", "jobs {timeType=[full]} 0",
+				"jobs {timeType=[full]} 2", "jobs {timeType=[part]} 0", "jobs {timeType=[part]} 2");
 	}
 
 	@Test
@@ -189,7 +248,7 @@ class WorkdayVacancyReaderAdapterTest {
 		assertThat(output.getOut().lines().filter((line) -> line.contains("WORKDAY_BOARD "))).singleElement()
 			.asString()
 			.endsWith("WORKDAY_BOARD slug=" + SLUG
-					+ " list_pages=1 description_pages=0 parts=1 failed=true");
+					+ " list_pages=1 description_pages=0 descriptions_held=0 parts=1 failed=true");
 	}
 
 	/** A server error on the first page says nothing about whether a board is published. */
@@ -203,7 +262,7 @@ class WorkdayVacancyReaderAdapterTest {
 		assertThat(output.getOut().lines().filter((line) -> line.contains("WORKDAY_BOARD "))).singleElement()
 			.asString()
 			.endsWith("WORKDAY_BOARD slug=" + SLUG
-					+ " list_pages=1 description_pages=0 parts=1 failed=true");
+					+ " list_pages=1 description_pages=0 descriptions_held=0 parts=1 failed=true");
 	}
 
 	/** A later page cannot establish that the board is not published. */
@@ -233,8 +292,10 @@ class WorkdayVacancyReaderAdapterTest {
 		assertThat(this.asked).containsExactly("jobs {} 0", "jobs {timeType=[full]} 0");
 	}
 
+	/** Reads the miniature board with the descriptions the store holds. */
 	private WorkdayVacancyReaderAdapter reader(FakeWorkday workday) {
-		return new WorkdayVacancyReaderAdapter(workday, new TitleCleaningRule(), new TitleClassificationRule(), 2, 4);
+		return new WorkdayVacancyReaderAdapter(workday, this.vacancies, new TitleCleaningRule(),
+				new TitleClassificationRule(), 2, 4);
 	}
 
 	private static Posting posting(String title, String location, String requisition) {

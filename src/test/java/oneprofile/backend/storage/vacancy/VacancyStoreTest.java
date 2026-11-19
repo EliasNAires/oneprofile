@@ -140,6 +140,31 @@ class VacancyStoreTest {
 		assertThat(atsHeld()).containsExactly("WORKDAY");
 	}
 
+	/** Only described Workday vacancies of the requested company are returned, without a company name. */
+	@Test
+	void readsDescribedWorkdayVacanciesForOneSlug() {
+		String slug = "nvidia.wd5/nvidiaexternalcareersite";
+		String other = "other.wd5/careers";
+		this.companies.record(AtsEnum.WORKDAY, Map.of(slug, RegionEnum.US, other, RegionEnum.US));
+		this.companies.record(AtsEnum.GREENHOUSE, Map.of(slug, RegionEnum.US));
+		PublishedWorkdayVacancy described = new PublishedWorkdayVacancy("Software-Engineer_JR1",
+				"Software Engineer", "Santa Clara", "Build software.", "https://example.com/job",
+				FIRST_PUBLISHED_AT, "Full time", "Hybrid", "US", List.of("Santa Clara", "Tel Aviv"), "NVIDIA");
+		PublishedWorkdayVacancy undescribed = new PublishedWorkdayVacancy("Nurse_JR2", "Nurse", "Santa Clara",
+				null, "https://example.com/nurse", null, null, null, null, null, null);
+		this.vacancies.mirror(AtsEnum.WORKDAY, slug, List.of(described, undescribed));
+		this.vacancies.mirror(AtsEnum.WORKDAY, other, List.of(described));
+		this.vacancies.mirror(AtsEnum.GREENHOUSE, slug, List.of(published(4001)));
+		this.entityManager.flush();
+		this.entityManager.clear();
+
+		assertThat(this.vacancies.describedWorkdayVacancies(slug)).containsExactlyInAnyOrderEntriesOf(Map.of(
+				"Software-Engineer_JR1", new PublishedWorkdayVacancy("Software-Engineer_JR1", "Software Engineer",
+						"Santa Clara", "Build software.", "https://example.com/job", FIRST_PUBLISHED_AT,
+						"Full time", "Hybrid", "US", List.of("Santa Clara", "Tel Aviv"), null)));
+		assertThat(this.vacancies.describedWorkdayVacancies("missing.wd5/careers")).isEmpty();
+	}
+
 	@Test
 	void holdsAGreenhouseVacancyUnderItsAts() {
 		this.vacancies.mirror(AtsEnum.GREENHOUSE, "stripe", List.of(published(4001)));

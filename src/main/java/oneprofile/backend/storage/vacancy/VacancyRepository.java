@@ -17,6 +17,14 @@ public interface VacancyRepository extends ListCrudRepository<VacancyEntity, Lon
 	List<VacancyEntity> findByCompany(CompanyEntity company);
 
 	/**
+	 * The Workday vacancies of one company whose descriptions are held.
+	 * @param slug the company's board slug
+	 * @return only its Workday vacancies with a non-null description
+	 */
+	@Query("select v from WorkdayVacancy v where v.company.slug = :slug and v.description is not null")
+	List<WorkdayVacancyEntity> describedWorkdayVacancies(String slug);
+
+	/**
 	 * The titles, descriptions and declared languages of the vacancies held after one id, in id order, so that a pass
 	 * over the whole corpus can be walked in batches and resumed from the last id it read.
 	 * Only a Greenhouse vacancy declares a language; every other ATS's is read with none.
