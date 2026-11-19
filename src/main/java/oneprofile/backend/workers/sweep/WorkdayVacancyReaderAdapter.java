@@ -35,9 +35,9 @@ import tools.jackson.databind.JsonNode;
  * The board's list is paged 20 at a time and names each vacancy's title, path and location, with no
  * description; the board's {@code total} comes on the first page, on some boards on no other. Workday
  * stops paging at an offset of 2000, so a board of 2000 or more is read in parts: narrowed by the
- * facet whose every value holds fewer than 2000, the one whose values take the fewest pages, then
- * add up to the fewest vacancies; a part still too large is narrowed by a further facet. A vacancy
- * found in two parts, as one in two locations is, is held once.
+ * facet whose values take the fewest pages, then add up to the fewest vacancies; a part still too
+ * large is narrowed by a further facet. A vacancy found in two parts, as one in two locations is, is
+ * held once.
  * <p>
  * A first, unfaceted list page answering {@code 400}, {@code 401}, {@code 403}, {@code 404} or
  * {@code 422} means no board is published under the slug and throws {@link BoardNotFoundException}.
@@ -195,10 +195,12 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 	}
 
 	/**
-	 * The facet to narrow a board by: of those not applied yet, one whose every value holds fewer than
-	 * the paging limit, the fewest pages in all, then the fewest vacancies; or failing any, the one
-	 * whose largest value holds fewest, to be narrowed further. Workday groups its location facets
-	 * under one that names no values of its own, which is looked inside.
+	 * The facet to narrow a part by: of those not applied yet that split it, into two values or more,
+	 * the one whose values take the fewest pages, then the fewest vacancies. A value still too large is
+	 * narrowed further, so a facet of a few large values beats one of thousands of small ones: on CVS's
+	 * board, a time type of two values takes about 930 pages and its locations 5266 (#90). Failing any
+	 * that splits it, the one whose largest value holds fewest. Workday groups its location facets under
+	 * one that names no values of its own, which is looked inside.
 	 */
 	private Optional<Facet> narrowest(JsonNode facets, Map<String, List<String>> appliedFacets) {
 		List<Facet> candidates = new ArrayList<>();
@@ -206,10 +208,10 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 			addFacet(facet, appliedFacets, candidates);
 		}
 		Comparator<Facet> fewest = Comparator.comparingLong(Facet::sum);
-		Optional<Facet> under = candidates.stream()
-			.filter((facet) -> facet.largest() < this.pagingLimit)
+		Optional<Facet> splitting = candidates.stream()
+			.filter((facet) -> facet.values().size() > 1)
 			.min(Comparator.comparingLong(Facet::pages).thenComparing(fewest));
-		return under.isPresent() ? under
+		return splitting.isPresent() ? splitting
 				: candidates.stream().min(Comparator.comparingLong(Facet::largest).thenComparing(fewest));
 	}
 
