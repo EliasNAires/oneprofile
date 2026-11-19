@@ -1,11 +1,19 @@
 package oneprofile.backend.workers.sweep;
 
 import java.io.IOException;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.InstantSource;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentSkipListSet;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -49,6 +57,13 @@ public class BoardSweepRun {
 			AtsEnum.ASHBY, new Pace(8, 20, false), AtsEnum.LEVER, new Pace(8, 9, true), AtsEnum.WORKDAY,
 			new Pace(20, 16, false));
 
+	/** How often a running sweep reports its progress. */
+	private static final Duration HEARTBEAT = Duration.ofMinutes(1);
+
+	private final InstantSource clock;
+
+	private final Duration heartbeat;
+
 	private final Map<AtsEnum, VacancyReaderPort> readers;
 
 	private final Map<AtsEnum, Pace> paces;
@@ -71,7 +86,7 @@ public class BoardSweepRun {
 			LeverVacancyReaderAdapter lever, WorkdayVacancyReaderAdapter workday, CompanyStore companies,
 			VacancyStore vacancies) {
 		this(Map.of(AtsEnum.GREENHOUSE, greenhouse, AtsEnum.ASHBY, ashby, AtsEnum.LEVER, lever, AtsEnum.WORKDAY,
-				workday), PACES, companies, vacancies);
+				workday), PACES, companies, vacancies, InstantSource.system(), HEARTBEAT);
 	}
 
 	/**
@@ -79,9 +94,13 @@ public class BoardSweepRun {
 	 * @param paces how fast each ATS is asked
 	 * @param companies where the boards to sweep are read from
 	 * @param vacancies where what the boards publish is mirrored
+	 * @param clock supplies the run's wall time
+	 * @param heartbeat how often progress is logged
 	 */
 	BoardSweepRun(Map<AtsEnum, VacancyReaderPort> readers, Map<AtsEnum, Pace> paces, CompanyStore companies,
-			VacancyStore vacancies) {
+			VacancyStore vacancies, InstantSource clock, Duration heartbeat) {
+		this.clock = clock;
+		this.heartbeat = heartbeat;
 		this.readers = Map.copyOf(readers);
 		this.paces = Map.copyOf(paces);
 		this.companies = companies;
@@ -92,42 +111,116 @@ public class BoardSweepRun {
 	 * Sweeps the board of every company of one ATS whose board has openings, starting them in slug
 	 * order.
 	 * @param ats the ATS whose boards to sweep
+	 * @param after the exclusive slug cursor, or null to start at the first board
+	 * @param limit the maximum boards to read, or null for all remaining boards
 	 * @return what the run found
 	 */
-	public Report sweepAll(AtsEnum ats) {
+	public Report sweep(AtsEnum ats, String after, Integer limit) {
+		Instant started = this.clock.instant();
 		VacancyReaderPort reader = this.readers.get(ats);
-		SortedMap<String, RegionEnum> regions = this.companies.regionsOf(ats, BoardStatusEnum.ACTIVE);
+		TreeMap<String, RegionEnum> regions = new TreeMap<>();
+		this.companies.regionsOf(ats, BoardStatusEnum.ACTIVE).entrySet().stream()
+			.filter((board) -> after == null || board.getKey().compareTo(after) > 0)
+			.limit(limit == null ? Long.MAX_VALUE : limit)
+			.forEach((board) -> regions.put(board.getKey(), board.getValue()));
+		ConcurrentSkipListSet<String> unfinished = new ConcurrentSkipListSet<>(regions.keySet());
+		Map<String, Long> open = new ConcurrentHashMap<>();
 		AtomicInteger published = new AtomicInteger();
 		AtomicInteger added = new AtomicInteger();
 		AtomicInteger updated = new AtomicInteger();
 		AtomicInteger deleted = new AtomicInteger();
 		AtomicInteger notFound = new AtomicInteger();
 		AtomicInteger unreadable = new AtomicInteger();
-		this.paces.get(ats)
-			.readEach("The %s sweep".formatted(ats), regions,
-					(slug, region, onRefusal) -> read(ats, reader, slug, region, onRefusal), (slug, reading) -> {
-						if (reading instanceof Unreadable) {
-							unreadable.incrementAndGet();
-							return;
-						}
-						if (reading instanceof NotFound) {
-							VacancyStore.Reconciliation reconciliation = this.vacancies.mirror(ats, slug, List.of());
-							// If the company write fails, it stays ACTIVE with no vacancies; the next sweep retries.
-							this.companies.recordNotFound(ats, slug);
-							deleted.addAndGet(reconciliation.deleted());
-							notFound.incrementAndGet();
-							return;
-						}
-						List<PublishedVacancy> openings = ((Published) reading).vacancies();
-						VacancyStore.Reconciliation reconciliation = this.vacancies.mirror(ats, slug, openings);
-						companyName(openings).ifPresent((name) -> this.companies.recordName(ats, slug, name));
-						published.addAndGet(openings.size());
-						added.addAndGet(reconciliation.added());
-						updated.addAndGet(reconciliation.updated());
-						deleted.addAndGet(reconciliation.deleted());
-					});
-		return new Report(regions.size(), published.get(), added.get(), updated.get(), deleted.get(),
-				notFound.get(), unreadable.get());
+		AtomicInteger openingsRead = new AtomicInteger();
+		ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor(
+				Thread.ofPlatform().daemon().name("sweep-heartbeat").factory());
+		try {
+			timer.scheduleAtFixedRate(() -> heartbeat(ats, after, regions, unfinished, open, openingsRead),
+					this.heartbeat.toNanos(), this.heartbeat.toNanos(), TimeUnit.NANOSECONDS);
+			this.paces.get(ats).readEach("The %s sweep".formatted(ats), regions, (slug, region, onRefusal) -> {
+				long before = System.nanoTime();
+				synchronized (unfinished) {
+					open.put(slug, before);
+				}
+				Reading reading = read(ats, reader, slug, region, onRefusal);
+				long readMs = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - before);
+				if (reading instanceof Published board) {
+					openingsRead.addAndGet(board.vacancies().size());
+				}
+				return new TimedReading(reading, readMs);
+			}, (slug, timed) -> {
+				Reading reading = timed.reading();
+				long before = System.nanoTime();
+				String outcome;
+				int count = 0;
+				if (reading instanceof Unreadable) {
+					unreadable.incrementAndGet();
+					outcome = "unreadable";
+				}
+				else if (reading instanceof NotFound) {
+					VacancyStore.Reconciliation reconciliation = this.vacancies.mirror(ats, slug, List.of());
+					// If the company write fails, it stays ACTIVE with no vacancies; the next sweep retries.
+					this.companies.recordNotFound(ats, slug);
+					deleted.addAndGet(reconciliation.deleted());
+					notFound.incrementAndGet();
+					outcome = "not_found";
+				}
+				else {
+					List<PublishedVacancy> openings = ((Published) reading).vacancies();
+					VacancyStore.Reconciliation reconciliation = this.vacancies.mirror(ats, slug, openings);
+					companyName(openings).ifPresent((name) -> this.companies.recordName(ats, slug, name));
+					published.addAndGet(openings.size());
+					added.addAndGet(reconciliation.added());
+					updated.addAndGet(reconciliation.updated());
+					deleted.addAndGet(reconciliation.deleted());
+					count = openings.size();
+					outcome = "published";
+				}
+				long mirrorMs = reading instanceof Unreadable ? 0
+						: TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - before);
+				logger.info("SWEEP_BOARD ats=%s slug=%s outcome=%s read_ms=%d mirror_ms=%d vacancies=%d"
+					.formatted(ats.name(), slug, outcome, timed.readMs(), mirrorMs, count));
+				synchronized (unfinished) {
+					open.remove(slug);
+					unfinished.remove(slug);
+				}
+			});
+			long wallSeconds = Duration.between(started, this.clock.instant()).toSeconds();
+			Report report = new Report(regions.size(), published.get(), added.get(), updated.get(), deleted.get(),
+					notFound.get(), unreadable.get(), wallSeconds);
+			logger.info(("SWEEP_REPORT ats=%s after=%s limit=%s boards=%d published=%d added=%d updated=%d"
+					+ " deleted=%d not_found=%d unreadable=%d wall_s=%d").formatted(ats.name(),
+						after == null ? "-" : after, limit == null ? "-" : limit, report.boards(), report.published(),
+						report.added(), report.updated(), report.deleted(), report.notFound(), report.unreadable(),
+						report.wallSeconds()));
+			return report;
+		}
+		finally {
+			timer.shutdownNow();
+		}
+	}
+
+	/** Logs progress independently of blocked reader and store calls. */
+	private void heartbeat(AtsEnum ats, String after, TreeMap<String, RegionEnum> regions,
+			ConcurrentSkipListSet<String> unfinished, Map<String, Long> open, AtomicInteger vacancies) {
+		synchronized (unfinished) {
+			String first = unfinished.isEmpty() ? null : unfinished.first();
+			String resume = first == null ? (regions.isEmpty() ? after : regions.lastKey()) : regions.lowerKey(first);
+			if (resume == null) {
+				resume = after;
+			}
+			Map.Entry<String, Long> oldest = open.entrySet().stream().min(Map.Entry.comparingByValue()).orElse(null);
+			int finished = regions.size() - unfinished.size();
+			logger.info(("SWEEP_HEARTBEAT ats=%s finished=%d open=%d left=%d vacancies=%d resume_after=%s"
+					+ " longest_open=%s longest_open_s=%d").formatted(ats.name(), finished, open.size(),
+						unfinished.size() - open.size(), vacancies.get(), resume == null ? "-" : resume,
+						oldest == null ? "-" : oldest.getKey(), oldest == null ? 0
+								: TimeUnit.NANOSECONDS.toSeconds(System.nanoTime() - oldest.getValue())));
+		}
+	}
+
+	/** A board's reading and the elapsed time of its reader call. */
+	private record TimedReading(Reading reading, long readMs) {
 	}
 
 	/**
@@ -188,8 +281,10 @@ public class BoardSweepRun {
 	 * @param deleted how many held vacancies their boards no longer publish
 	 * @param notFound how many slugs had no board
 	 * @param unreadable how many boards the ATS would not say anything about
+	 * @param wallSeconds the elapsed wall time of the run in seconds
 	 */
-	public record Report(int boards, int published, int added, int updated, int deleted, int notFound, int unreadable) {
+	public record Report(int boards, int published, int added, int updated, int deleted, int notFound, int unreadable,
+			long wallSeconds) {
 	}
 
 }

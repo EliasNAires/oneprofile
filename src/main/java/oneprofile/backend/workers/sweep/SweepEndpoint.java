@@ -3,6 +3,7 @@ package oneprofile.backend.workers.sweep;
 import oneprofile.backend.storage.company.AtsEnum;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -20,9 +21,11 @@ class SweepEndpoint {
 		this.sweep = sweep;
 	}
 
+	/** Sweeps the selected boards and returns what the run found. */
 	@PostMapping("/sweeps/{ats}")
-	BoardSweepRun.Report sweep(@PathVariable String ats) {
-		return this.sweep.sweepAll(AtsEnum.named(ats));
+	BoardSweepRun.Report sweep(@PathVariable String ats, @RequestParam(required = false) String after,
+			@RequestParam(required = false) Integer limit) {
+		return this.sweep.sweep(AtsEnum.named(ats), after, limit);
 	}
 
 }

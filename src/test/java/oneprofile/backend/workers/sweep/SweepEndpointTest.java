@@ -21,10 +21,20 @@ class SweepEndpointTest {
 
 	@Test
 	void reportsWhatTheRunFoundForTheAtsItNames() {
-		given(this.sweep.sweepAll(AtsEnum.ASHBY)).willReturn(new BoardSweepRun.Report(4, 120, 12, 108, 3, 1, 1));
+		given(this.sweep.sweep(AtsEnum.ASHBY, null, null)).willReturn(new BoardSweepRun.Report(4, 120, 12, 108, 3, 1, 1, 0));
 
 		assertThat(this.mvc.post().uri("/sweeps/ashby")).hasStatusOk().bodyJson().isEqualTo("""
-				{"boards":4,"published":120,"added":12,"updated":108,"deleted":3,"notFound":1,"unreadable":1}""");
+				{"boards":4,"published":120,"added":12,"updated":108,"deleted":3,"notFound":1,"unreadable":1,"wallSeconds":0}""");
+	}
+
+	/** Optional slice parameters are passed unchanged to the run. */
+	@Test
+	void passesTheSliceToTheRun() {
+		given(this.sweep.sweep(AtsEnum.ASHBY, "ramp", 3))
+			.willReturn(new BoardSweepRun.Report(3, 0, 0, 0, 0, 0, 0, 7));
+		assertThat(this.mvc.post().uri("/sweeps/ashby").param("after", "ramp").param("limit", "3"))
+			.hasStatusOk().bodyJson().isEqualTo("""
+				{"boards":3,"published":0,"added":0,"updated":0,"deleted":0,"notFound":0,"unreadable":0,"wallSeconds":7}""");
 	}
 
 }

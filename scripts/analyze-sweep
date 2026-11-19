@@ -1,0 +1,320 @@
+#!/usr/bin/env python3
+"""Explains where a board sweep's time went (#90, step 6).
+
+    scripts/analyze-sweep export OUT.tsv
+    scripts/analyze-sweep report LOG [BEFORE.tsv AFTER.tsv]
+
+Exports held vacancies from the development Postgres container, streaming TSV with
+title and description MD5 hashes. Reports console-log timing, Workday traffic,
+boards and, optionally, description changes between two exports. Traffic counters
+are per log interval; gauges use the last observation in each minute. Pace spans
+start at their first observation and end at the next rate or Workday's last line.
+"""
+
+import csv
+import re
+import subprocess
+import sys
+from collections import Counter
+from datetime import datetime, timedelta
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+COLUMNS = ("ats", "slug", "external_id", "title_hash", "description_hash")
+NUMBERS = {
+    "SWEEP_BOARD": "read_ms mirror_ms vacancies",
+    "SWEEP_HEARTBEAT": "finished open left vacancies longest_open_s",
+    "SWEEP_REPORT": "boards published added updated deleted not_found unreadable wall_s",
+    "WORKDAY_BOARD": "list_pages description_pages parts",
+    "WORKDAY_TRAFFIC": "started_list started_description answered_list list_ms "
+                       "answered_description description_ms status_200 status_404 status_other "
+                       "tenant_429 challenge gateway io_error throttle_wait_ms backoff_ms "
+                       "requests_at_once starts_a_second open oldest_open_s",
+}
+STRINGS = {
+    "SWEEP_BOARD": "ats slug outcome",
+    "SWEEP_HEARTBEAT": "ats resume_after longest_open",
+    "SWEEP_REPORT": "ats after limit",
+    "WORKDAY_BOARD": "slug failed",
+    "WORKDAY_TRAFFIC": "",
+}
+PREFIX = re.compile(r"\b(" + "|".join(NUMBERS) + r")\s+")
+OUTCOMES = ("status_200", "status_404", "status_other", "tenant_429", "challenge", "gateway", "io_error")
+COUNTERS = tuple(key for key in NUMBERS["WORKDAY_TRAFFIC"].split()
+                 if key not in ("requests_at_once", "starts_a_second", "open", "oldest_open_s"))
+
+
+def psql(query, output):
+    """Streams COPY output directly to a file, without buffering the corpus."""
+    subprocess.run(["docker", "compose", "--project-directory", str(REPO), "exec", "-T", "postgres", "psql",
+                    "-X", "-q", "-v", "ON_ERROR_STOP=1", "-U", "oneprofile", "-d", "oneprofile", "-c", query],
+                   stdout=output, check=True)
+
+
+def export(path):
+    query = """
+copy (
+  select c.ats, c.slug, v.external_id,
+         coalesce(md5(v.title), '') as title_hash,
+         coalesce(md5(v.description), '') as description_hash
+  from vacancy v join company c on c.id = v.company_id
+) to stdout with (format csv, delimiter E'\t', header true)
+"""
+    with open(path, "w", encoding="utf-8", newline="") as output:
+        psql(query, output)
+
+
+def parse_line(line):
+    """Returns a complete typed event, or None for unrelated/malformed lines."""
+    try:
+        token, message = line.split(maxsplit=1)
+        if "T" not in token:
+            return None
+        time = datetime.fromisoformat(token.replace("Z", "+00:00"))
+        if time.utcoffset() is None:
+            return None
+        if "was refused, so it slows down to" in message:
+            return {"kind": "HALVING", "time": time, "ats": "WORKDAY"}
+        match = PREFIX.search(message)
+        if not match:
+            return None
+        kind = match[1]
+        fields = {}
+        for field in message[match.end():].split():
+            key, value = field.split("=", 1)
+            if not key or not value or key in fields:
+                return None
+            fields[key] = value
+        for key in STRINGS[kind].split():
+            fields[key] = None if fields[key] == "-" else fields[key]
+        for key in NUMBERS[kind].split():
+            value = fields[key]
+            if not re.fullmatch(r"\d+(?:\.\d+)?" if key == "wall_s" else r"\d+", value):
+                return None
+            fields[key] = float(value) if key == "wall_s" else int(value)
+        if kind == "SWEEP_BOARD" and fields["outcome"] not in ("published", "not_found", "unreadable"):
+            return None
+        if kind == "WORKDAY_BOARD" and fields["failed"] not in ("true", "false"):
+            return None
+        if kind.startswith("WORKDAY_"):
+            fields["ats"] = "WORKDAY"
+        if not fields.get("ats") or (kind.endswith("_BOARD") and not fields.get("slug")):
+            return None
+        return dict(fields, kind=kind, time=time)
+    except (ValueError, KeyError, OverflowError):
+        return None
+
+
+def parse_log(lines):
+    return sorted((event for line in lines if (event := parse_line(line)) is not None),
+                  key=lambda event: event["time"])
+
+
+def seconds(start, end):
+    return (end - start).total_seconds()
+
+
+def analyze(events):
+    """Builds report data; repeated board completions retain their last event."""
+    start = events[0]["time"] if events else None
+    end = events[-1]["time"] if events else None
+    ats_data = {}
+    for ats in sorted({event["ats"] for event in events}):
+        own = [event for event in events if event["ats"] == ats]
+        starts = [event["time"] for event in own if event["kind"] in ("SWEEP_BOARD", "SWEEP_HEARTBEAT")]
+        first = starts[0] if starts else own[0]["time"]
+        reports = [event for event in own if event["kind"] == "SWEEP_REPORT"]
+        last = reports[-1]["time"] if reports else own[-1]["time"]
+        completions = [event for event in own if event["kind"] == "SWEEP_BOARD"]
+        boards = {event["slug"]: event for event in completions}
+        ats_data[ats] = dict(start=first, end=last, wall_s=seconds(first, last),
+                             reported_wall_s=sum(event["wall_s"] for event in reports),
+                             reports=len(reports), report_boards=sum(event["boards"] for event in reports),
+                             finished_lines=len(completions), boards=list(boards.values()),
+                             outcomes=dict(Counter(event["outcome"] for event in boards.values())))
+    heartbeats = [event["time"] for event in events if event["kind"] == "SWEEP_HEARTBEAT"]
+    boundaries = [start, *heartbeats, end] if events else []
+    gaps = [dict(start=a, end=b, seconds=seconds(a, b)) for a, b in zip(boundaries, boundaries[1:])
+            if seconds(a, b) > 180]
+    workday_boards = {event["slug"]: event for event in events if event["kind"] == "WORKDAY_BOARD"}
+    boards = []
+    for ats, data in ats_data.items():
+        for board in data["boards"]:
+            duration = board["read_ms"] + board["mirror_ms"]
+            boards.append(dict(board, duration_ms=duration,
+                               share=duration / (data["wall_s"] * 1000) if data["wall_s"] else None,
+                               workday=workday_boards.get(board["slug"]) if ats == "WORKDAY" else None))
+    traffic = [event for event in events if event["kind"] == "WORKDAY_TRAFFIC"]
+    totals = {key: sum(event[key] for event in traffic) for key in COUNTERS}
+    means = {kind: totals[kind + "_ms"] / totals["answered_" + kind]
+             if totals["answered_" + kind] else None for kind in ("list", "description")}
+    pace = []
+    for event in traffic:
+        rate = event["starts_a_second"]
+        if not pace or pace[-1]["starts_a_second"] != rate:
+            if pace:
+                pace[-1]["end"] = event["time"]
+            pace.append(dict(start=event["time"], end=event["time"], starts_a_second=rate, started=0))
+        pace[-1]["started"] += event["started_list"] + event["started_description"]
+    if pace:
+        pace[-1]["end"] = ats_data["WORKDAY"]["end"]
+    for span in pace:
+        span["seconds"] = seconds(span["start"], span["end"])
+    minutes = {}
+    for event in traffic:
+        minute = event["time"].replace(second=0, microsecond=0)
+        row = minutes.setdefault(minute, dict(time=minute, started_list=0, started_description=0, challenge=0))
+        for key in ("started_list", "started_description", "challenge"):
+            row[key] += event[key]
+        for key in ("starts_a_second", "open", "oldest_open_s"):
+            row[key] = event[key]
+    # Include silent minutes; carry the last observed gauges forward.
+    if traffic:
+        minute, last_minute = min(minutes), max(minutes)
+        previous = {}
+        while minute <= last_minute:
+            if minute not in minutes:
+                minutes[minute] = dict(previous, time=minute, started_list=0, started_description=0, challenge=0)
+            previous = minutes[minute]
+            minute += timedelta(minutes=1)
+    return dict(start=start, end=end, wall_s=seconds(start, end) if events else 0,
+                ats=ats_data, gaps=gaps, pace=pace,
+                halvings=[event["time"] for event in events if event["kind"] == "HALVING"],
+                totals=totals, mean_ms=means, minutes=[minutes[key] for key in sorted(minutes)],
+                longest=sorted(boards, key=lambda board: board["duration_ms"], reverse=True)[:20],
+                unreadable=[board for board in boards if board["outcome"] == "unreadable"])
+
+
+def read_tsv(path):
+    """Yields validated rows, including validation of non-Workday rows."""
+    try:
+        with open(path, encoding="utf-8", newline="") as source:
+            rows = csv.reader(source, delimiter="\t", strict=True)
+            if next(rows, None) != list(COLUMNS):
+                raise ValueError("expected header: " + "\t".join(COLUMNS))
+            for values in rows:
+                if len(values) != len(COLUMNS) or not all(values[:3]):
+                    raise ValueError(f"invalid row at line {rows.line_num}")
+                yield dict(zip(COLUMNS, values))
+    except (OSError, UnicodeError, csv.Error, ValueError) as error:
+        raise ValueError(f"Unreadable TSV {path}: {error}") from error
+
+
+def descriptions(before_path, after_path, report):
+    before = {(row["ats"], row["slug"], row["external_id"]): (row["title_hash"], row["description_hash"])
+              for row in read_tsv(before_path) if row["ats"] == "WORKDAY"}
+    counts = dict(new=0, without_description_before=0, same_description=0,
+                  same_description_and_title=0, changed_description=0)
+    for row in read_tsv(after_path):
+        if row["ats"] != "WORKDAY" or not row["description_hash"]:
+            continue
+        old = before.get((row["ats"], row["slug"], row["external_id"]))
+        if old is None:
+            counts["new"] += 1
+        elif not old[1]:
+            counts["without_description_before"] += 1
+        elif old[1] == row["description_hash"]:
+            counts["same_description"] += 1
+            counts["same_description_and_title"] += old[0] == row["title_hash"]
+        else:
+            counts["changed_description"] += 1
+    started = report["totals"]["started_list"] + report["totals"]["started_description"]
+    wall = report["ats"].get("WORKDAY", {}).get("wall_s", 0)
+    rate = started / wall if wall else None
+    saved = counts["same_description_and_title"]
+    return dict(counts, requests_started=started, projected_requests=started - saved,
+                observed_rate=rate, saved_hours=saved / rate / 3600 if rate else None,
+                measured_hours=wall / 3600,
+                projected_hours=(started - saved) / rate / 3600 if rate else None)
+
+
+def stamp(time):
+    return time.isoformat() if time is not None else "n/a"
+
+
+def number(value):
+    return f"{value:.3f}" if value is not None else "n/a"
+
+
+def board_line(board):
+    share = f"{board['share']:.2%}" if board["share"] is not None else "n/a"
+    line = (f"{board['ats']} {board['slug']} {board['outcome']} read_ms={board['read_ms']} "
+            f"mirror_ms={board['mirror_ms']} vacancies={board['vacancies']} ATS_wall_share={share}")
+    if board["workday"]:
+        detail = board["workday"]
+        line += " WORKDAY_BOARD " + " ".join(f"{key}={detail[key]}" for key in
+                                             ("slug", "list_pages", "description_pages", "parts", "failed"))
+    return line
+
+
+def print_report(report, changes=None):
+    print("Wall time")
+    print(f"Run: {stamp(report['start'])} to {stamp(report['end'])}; {report['wall_s']:.3f} s")
+    for ats, data in report["ats"].items():
+        print(f"{ats}: {stamp(data['start'])} to {stamp(data['end'])}; {data['wall_s']:.3f} s; "
+              f"sum of reported wall_s={data['reported_wall_s']:.3f}")
+    print("Heartbeat gaps > 3 minutes (including run edges):")
+    for gap in report["gaps"]:
+        print(f"{stamp(gap['start'])} to {stamp(gap['end'])}: {gap['seconds']:.3f} s")
+    if not report["gaps"]:
+        print("None")
+    print("\nWorkday pace")
+    for span in report["pace"]:
+        print(f"{stamp(span['start'])}: starts_a_second={span['starts_a_second']} "
+              f"length_s={span['seconds']:.3f} requests_started={span['started']}")
+    for time in report["halvings"]:
+        print(f"Halving: {stamp(time)}")
+    print("\nRequests")
+    for kind in ("list", "description"):
+        print(f"{kind}: started={report['totals']['started_' + kind]} "
+              f"answered={report['totals']['answered_' + kind]} mean_ms={number(report['mean_ms'][kind])}")
+    print("Outcomes (status and diagnostic counters may overlap): " +
+          " ".join(f"{key}={report['totals'][key]}" for key in OUTCOMES))
+    print(" ".join(f"{key}={report['totals'][key]}" for key in ("throttle_wait_ms", "backoff_ms")))
+    print("time\tstarted_list\tstarted_description\tchallenge\tstarts_a_second\topen\toldest_open_s")
+    for row in report["minutes"]:
+        print("\t".join([stamp(row["time"])] + [str(row[key]) for key in
+                         ("started_list", "started_description", "challenge", "starts_a_second", "open", "oldest_open_s")]))
+    print("\nLongest boards")
+    print("Board times can sum to more than 100% of ATS wall time because boards run concurrently.")
+    for board in report["longest"]:
+        print(board_line(board))
+    print("\nBoards")
+    for ats, data in report["ats"].items():
+        counts = " ".join(f"{outcome}={data['outcomes'].get(outcome, 0)}" for outcome in
+                          ("published", "not_found", "unreadable"))
+        match = str(data["finished_lines"] == data["report_boards"]).lower() if data["reports"] else "n/a (no reports)"
+        print(f"{ats}: {counts}; unique_boards={len(data['boards'])}; "
+              f"SWEEP_BOARD lines={data['finished_lines']} report_boards={data['report_boards']} match={match}")
+    print("Unreadable boards:")
+    for board in report["unreadable"]:
+        print(board_line(board))
+    if changes is not None:
+        print("\nDescriptions")
+        for key in ("new", "without_description_before", "same_description", "same_description_and_title", "changed_description"):
+            print(f"{key}={changes[key]}")
+        print(f"Workday requests: observed={changes['requests_started']} projected={changes['projected_requests']}; "
+              f"observed_requests_per_second={number(changes['observed_rate'])}")
+        print(f"Saved hours={number(changes['saved_hours'])}; measured Workday hours={number(changes['measured_hours'])}; "
+              f"projected hours={number(changes['projected_hours'])}")
+        print("Assumption: time ~ requests / observed rate; skip same-description-and-title requests.")
+
+
+def main():
+    args = sys.argv[1:]
+    if len(args) == 2 and args[0] == "export":
+        export(args[1])
+    elif len(args) in (2, 4) and args[0] == "report":
+        with open(args[1], encoding="utf-8") as log:
+            report = analyze(parse_log(log))
+        changes = descriptions(args[2], args[3], report) if len(args) == 4 else None
+        print_report(report, changes)
+    else:
+        sys.exit(__doc__)
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except (ValueError, OSError, csv.Error, subprocess.CalledProcessError) as error:
+        sys.exit(str(error))

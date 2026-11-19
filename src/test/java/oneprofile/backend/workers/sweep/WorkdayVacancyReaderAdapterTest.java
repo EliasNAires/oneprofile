@@ -18,8 +18,11 @@ import oneprofile.backend.workers.WorkdayApiPort;
 import oneprofile.backend.workers.classification.TitleClassificationRule;
 import oneprofile.backend.workers.cleaning.TitleCleaningRule;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.springframework.boot.test.system.CapturedOutput;
+import org.springframework.boot.test.system.OutputCaptureExtension;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.json.JsonMapper;
 import tools.jackson.databind.node.ArrayNode;
@@ -31,6 +34,7 @@ import tools.jackson.databind.node.ObjectNode;
  * 20 at a time and stops at 2000: past it, it answers page one again, and gives a {@code total} no
  * larger than 4, on the first page only.
  */
+@ExtendWith(OutputCaptureExtension.class)
 class WorkdayVacancyReaderAdapterTest {
 
 	private static final String SLUG = "nvidia.wd5/nvidiaexternalcareersite";
@@ -48,8 +52,9 @@ class WorkdayVacancyReaderAdapterTest {
 
 	private final List<String> asked = new ArrayList<>();
 
+	/** An unnarrowed board reports its list and description requests once. */
 	@Test
-	void readsTheDescriptionOfAVacancyWhoseTitleIsAnEngineeringRole() throws IOException {
+	void readsTheDescriptionOfAVacancyWhoseTitleIsAnEngineeringRole(CapturedOutput output) throws IOException {
 		FakeWorkday workday = new FakeWorkday(List.of(posting("Senior Software Engineer", "US-CA-Santa-Clara", "JR1")));
 		workday.details.put("/job/US-CA-Santa-Clara/Senior-Software-Engineer_JR1", DETAIL);
 
@@ -61,6 +66,10 @@ class WorkdayVacancyReaderAdapterTest {
 				"https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Senior-Software-Engineer_JR1",
 				Instant.parse("2026-10-23T00:00:00Z"), "Full time", "Hybrid", "US",
 				List.of("US, CA, Santa Clara", "Israel, Tel Aviv"), "2100 NVIDIA USA"));
+		assertThat(output.getOut().lines().filter((line) -> line.contains("WORKDAY_BOARD "))).singleElement()
+			.asString()
+			.endsWith("WORKDAY_BOARD slug=" + SLUG
+					+ " list_pages=1 description_pages=1 parts=1 failed=false");
 	}
 
 	@Test
@@ -105,8 +114,10 @@ class WorkdayVacancyReaderAdapterTest {
 		assertThat(this.asked).containsExactly("jobs {} 0", "jobs {} 2");
 	}
 
+	/** Only the parts actually paged count, while their discovery page is still a list request. */
 	@Test
-	void readsABoardTooLargeToPageWholeInPartsByTheFacetThatSplitsItUnderTheLimit() throws IOException {
+	void readsABoardTooLargeToPageWholeInPartsByTheFacetThatSplitsItUnderTheLimit(CapturedOutput output)
+			throws IOException {
 		FakeWorkday workday = new FakeWorkday(List.of(
 				posting("Registered Nurse", "A", "JR1", Map.of("jobFamilyGroup", Set.of("care"), "locations", Set.of("a", "b"))),
 				posting("Registered Nurse", "B", "JR2", Map.of("jobFamilyGroup", Set.of("care"), "locations", Set.of("a", "b"))),
@@ -121,6 +132,10 @@ class WorkdayVacancyReaderAdapterTest {
 		assertThat(this.asked).contains("jobs {jobFamilyGroup=[care]} 0", "jobs {jobFamilyGroup=[care]} 2",
 				"jobs {jobFamilyGroup=[retail]} 0");
 		assertThat(this.asked).noneMatch((request) -> request.contains("locations"));
+		assertThat(output.getOut().lines().filter((line) -> line.contains("WORKDAY_BOARD "))).singleElement()
+			.asString()
+			.endsWith("WORKDAY_BOARD slug=" + SLUG
+					+ " list_pages=4 description_pages=0 parts=2 failed=false");
 	}
 
 	@Test
@@ -165,22 +180,30 @@ class WorkdayVacancyReaderAdapterTest {
 	/** These answers on the first unfaceted page mean no public board is published. */
 	@ParameterizedTest
 	@ValueSource(ints = { 400, 401, 403, 404, 422 })
-	void reportsABoardThatIsNotPublished(int status) {
+	void reportsABoardThatIsNotPublished(int status, CapturedOutput output) {
 		FakeWorkday workday = new FakeWorkday(List.of());
 		workday.listStatus = status;
 
 		assertThatIOException().isThrownBy(() -> reader(workday).read(SLUG, RegionEnum.US, () -> {
 		})).isInstanceOf(BoardNotFoundException.class);
+		assertThat(output.getOut().lines().filter((line) -> line.contains("WORKDAY_BOARD "))).singleElement()
+			.asString()
+			.endsWith("WORKDAY_BOARD slug=" + SLUG
+					+ " list_pages=1 description_pages=0 parts=1 failed=true");
 	}
 
 	/** A server error on the first page says nothing about whether a board is published. */
 	@Test
-	void failsOnABoardThatCannotBeRead() {
+	void failsOnABoardThatCannotBeRead(CapturedOutput output) {
 		FakeWorkday workday = new FakeWorkday(List.of());
 		workday.listStatus = 500;
 
 		assertThatIOException().isThrownBy(() -> reader(workday).read(SLUG, RegionEnum.US, () -> {
 		})).isNotInstanceOf(BoardNotFoundException.class);
+		assertThat(output.getOut().lines().filter((line) -> line.contains("WORKDAY_BOARD "))).singleElement()
+			.asString()
+			.endsWith("WORKDAY_BOARD slug=" + SLUG
+					+ " list_pages=1 description_pages=0 parts=1 failed=true");
 	}
 
 	/** A later page cannot establish that the board is not published. */

@@ -11,11 +11,16 @@ import static org.mockito.Mockito.mock;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
+import java.time.InstantSource;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -34,15 +39,19 @@ import oneprofile.backend.workers.Pace;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase;
 import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase.Replace;
+import org.springframework.boot.test.system.CapturedOutput;
+import org.springframework.boot.test.system.OutputCaptureExtension;
 import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+@ExtendWith(OutputCaptureExtension.class)
 class BoardSweepRunTest {
 
 	/** Fast enough that no test waits on it. */
@@ -51,6 +60,20 @@ class BoardSweepRunTest {
 	private final CompanyStore companies = mock(CompanyStore.class);
 
 	private final VacancyStore vacancies = mock(VacancyStore.class);
+
+	/** The report measures elapsed seconds using the supplied wall clock. */
+	@Test
+	void reportsTheElapsedWallTime(CapturedOutput output) {
+		activeSlugs();
+		InstantSource clock = mock(InstantSource.class);
+		given(clock.instant()).willReturn(Instant.EPOCH, Instant.EPOCH.plusSeconds(125));
+		BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader(Map.of())),
+				Map.of(AtsEnum.GREENHOUSE, UNPACED), this.companies, this.vacancies, clock, Duration.ofMillis(50));
+
+		assertThat(sweep.sweep(AtsEnum.GREENHOUSE, "cursor", 4).wallSeconds()).isEqualTo(125);
+		assertThat(output.getOut()).contains("SWEEP_REPORT ats=GREENHOUSE after=cursor limit=4 boards=0 published=0"
+				+ " added=0 updated=0 deleted=0 not_found=0 unreadable=0 wall_s=125");
+	}
 
 	@Test
 	void mirrorsTheBoardOfEveryCompanyWhoseBoardHasOpenings() {
@@ -63,7 +86,7 @@ class BoardSweepRunTest {
 		BoardSweepRun sweep = sweepOf(Map.of("stripe", List.of(published(4001), published(4002), published(4003)),
 				"notion", List.of(published(5001))));
 
-		assertThat(sweep.sweepAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardSweepRun.Report(2, 4, 2, 2, 3, 0, 0));
+		assertThat(sweep.sweep(AtsEnum.GREENHOUSE, null, null)).isEqualTo(new BoardSweepRun.Report(2, 4, 2, 2, 3, 0, 0, 0));
 		then(this.vacancies).should().mirror(AtsEnum.GREENHOUSE, "notion", List.of(published(5001)));
 	}
 
@@ -78,8 +101,8 @@ class BoardSweepRunTest {
 				"acme.wd1/careers", List.of(workday("JR9", null)));
 
 		new BoardSweepRun(Map.of(AtsEnum.WORKDAY, reader(boards)), Map.of(AtsEnum.WORKDAY, UNPACED), this.companies,
-				this.vacancies)
-			.sweepAll(AtsEnum.WORKDAY);
+				this.vacancies, InstantSource.fixed(Instant.EPOCH), Duration.ofMillis(50))
+			.sweep(AtsEnum.WORKDAY, null, null);
 
 		then(this.companies).should().recordName(AtsEnum.WORKDAY, "nvidia.wd5/careers", "2100 NVIDIA USA");
 		then(this.companies).should(BDDMockito.never()).recordName(eq(AtsEnum.WORKDAY), eq("acme.wd1/careers"), any());
@@ -94,7 +117,7 @@ class BoardSweepRunTest {
 		boards.put("stripe", List.of(published(4001)));
 		boards.put("unreachable", null);
 
-		assertThat(sweepOf(boards).sweepAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardSweepRun.Report(2, 1, 1, 0, 0, 0, 1));
+		assertThat(sweepOf(boards).sweep(AtsEnum.GREENHOUSE, null, null)).isEqualTo(new BoardSweepRun.Report(2, 1, 1, 0, 0, 0, 1, 0));
 
 		then(this.vacancies).should(BDDMockito.never()).mirror(eq(AtsEnum.GREENHOUSE), eq("unreachable"), any());
 	}
@@ -112,7 +135,7 @@ class BoardSweepRunTest {
 			return List.of();
 		};
 
-		sweepOf(reader, new Pace(3, 1000, false)).sweepAll(AtsEnum.GREENHOUSE);
+		sweepOf(reader, new Pace(3, 1000, false)).sweep(AtsEnum.GREENHOUSE, null, null);
 
 		assertThat(mostOpen).hasValue(3);
 	}
@@ -123,7 +146,7 @@ class BoardSweepRunTest {
 		given(this.vacancies.mirror(any(), any(), any())).willReturn(new VacancyStore.Reconciliation(0, 0, 0));
 
 		Instant before = Instant.now();
-		sweepOf((slug, region, onRefusal) -> List.of(), new Pace(10, 20, false)).sweepAll(AtsEnum.GREENHOUSE);
+		sweepOf((slug, region, onRefusal) -> List.of(), new Pace(10, 20, false)).sweep(AtsEnum.GREENHOUSE, null, null);
 
 		assertThat(Duration.between(before, Instant.now())).isGreaterThanOrEqualTo(Duration.ofMillis(200));
 	}
@@ -140,7 +163,7 @@ class BoardSweepRunTest {
 		};
 
 		Instant before = Instant.now();
-		sweepOf(reader, new Pace(1, 20, false)).sweepAll(AtsEnum.GREENHOUSE);
+		sweepOf(reader, new Pace(1, 20, false)).sweep(AtsEnum.GREENHOUSE, null, null);
 
 		// 50 ms before b, whose start was set before the refusal, then 100 ms before each of c and d.
 		assertThat(Duration.between(before, Instant.now())).isGreaterThanOrEqualTo(Duration.ofMillis(250));
@@ -159,8 +182,8 @@ class BoardSweepRunTest {
 			return List.of(published(4001));
 		};
 
-		assertThat(sweepOf(reader, new Pace(2, 1000, false)).sweepAll(AtsEnum.GREENHOUSE))
-			.isEqualTo(new BoardSweepRun.Report(2, 1, 1, 0, 0, 0, 1));
+		assertThat(sweepOf(reader, new Pace(2, 1000, false)).sweep(AtsEnum.GREENHOUSE, null, null))
+			.isEqualTo(new BoardSweepRun.Report(2, 1, 1, 0, 0, 0, 1, 0));
 		then(this.vacancies).should(BDDMockito.never()).mirror(eq(AtsEnum.GREENHOUSE), eq("refused"), any());
 	}
 
@@ -172,9 +195,9 @@ class BoardSweepRunTest {
 			.willReturn(new VacancyStore.Reconciliation(1, 0, 0));
 		BoardSweepRun sweep = new BoardSweepRun(
 				Map.of(AtsEnum.GREENHOUSE, reader(Map.of()), AtsEnum.ASHBY, reader(Map.of("ramp", List.of(published(1))))),
-				Map.of(AtsEnum.GREENHOUSE, UNPACED, AtsEnum.ASHBY, UNPACED), this.companies, this.vacancies);
+				Map.of(AtsEnum.GREENHOUSE, UNPACED, AtsEnum.ASHBY, UNPACED), this.companies, this.vacancies, InstantSource.fixed(Instant.EPOCH), Duration.ofMillis(50));
 
-		assertThat(sweep.sweepAll(AtsEnum.ASHBY)).isEqualTo(new BoardSweepRun.Report(1, 1, 1, 0, 0, 0, 0));
+		assertThat(sweep.sweep(AtsEnum.ASHBY, null, null)).isEqualTo(new BoardSweepRun.Report(1, 1, 1, 0, 0, 0, 0, 0));
 		then(this.vacancies).should().mirror(AtsEnum.ASHBY, "ramp", List.of(published(1)));
 	}
 
@@ -189,9 +212,9 @@ class BoardSweepRunTest {
 			return List.of();
 		};
 		BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.LEVER, reader), Map.of(AtsEnum.LEVER, UNPACED),
-				this.companies, this.vacancies);
+				this.companies, this.vacancies, InstantSource.fixed(Instant.EPOCH), Duration.ofMillis(50));
 
-		sweep.sweepAll(AtsEnum.LEVER);
+		sweep.sweep(AtsEnum.LEVER, null, null);
 
 		assertThat(asked).isEqualTo(Map.of("finix", RegionEnum.US, "kwalee", RegionEnum.EU));
 	}
@@ -206,12 +229,116 @@ class BoardSweepRunTest {
 			throw new BoardNotFoundException("No board under gone");
 		};
 
-		assertThat(sweepOf(reader, UNPACED).sweepAll(AtsEnum.GREENHOUSE))
-			.isEqualTo(new BoardSweepRun.Report(1, 0, 0, 0, 3, 1, 0));
+		assertThat(sweepOf(reader, UNPACED).sweep(AtsEnum.GREENHOUSE, null, null))
+			.isEqualTo(new BoardSweepRun.Report(1, 0, 0, 0, 3, 1, 0, 0));
 
 		var order = inOrder(this.vacancies, this.companies);
 		order.verify(this.vacancies).mirror(AtsEnum.GREENHOUSE, "gone", List.of());
 		order.verify(this.companies).recordNotFound(AtsEnum.GREENHOUSE, "gone");
+	}
+
+	/** Filtering precedes limiting, in the store's slug order. */
+	@Test
+	void sweepsOnlyBoardsAfterTheCursor() {
+		assertSlice("b", null, List.of("c", "d"));
+	}
+
+	/** A limit takes the first boards in slug order. */
+	@Test
+	void sweepsOnlyTheFirstBoards() {
+		assertSlice(null, 2, List.of("a", "b"));
+	}
+
+	/** The cursor and limit describe one slice together. */
+	@Test
+	void limitsTheBoardsAfterTheCursor() {
+		assertSlice("b", 1, List.of("c"));
+	}
+
+	/** The report and writes count only the selected boards. */
+	private void assertSlice(String after, Integer limit, List<String> expected) {
+		activeSlugs("d", "b", "a", "c");
+		given(this.vacancies.mirror(any(), any(), any())).willReturn(new VacancyStore.Reconciliation(0, 0, 0));
+		List<String> asked = new CopyOnWriteArrayList<>();
+		BoardSweepRun.Report report = sweepOf((slug, region, refusal) -> {
+			asked.add(slug);
+			return List.of();
+		}, UNPACED).sweep(AtsEnum.GREENHOUSE, after, limit);
+		assertThat(asked).containsExactlyElementsOf(expected);
+		assertThat(report.boards()).isEqualTo(expected.size());
+	}
+
+	/** Each handled board has exactly one line, with the number of openings read. */
+	@Test
+	void logsEveryBoardAndTheReport(CapturedOutput output) {
+		activeSlugs("a", "b", "c");
+		given(this.vacancies.mirror(any(), any(), any())).willReturn(new VacancyStore.Reconciliation(1, 0, 0));
+		sweepOf((slug, region, refusal) -> {
+			if (slug.equals("b")) {
+				throw new BoardNotFoundException("Gone");
+			}
+			if (slug.equals("c")) {
+				throw new IOException("Unavailable");
+			}
+			return List.of(published(1), published(2));
+		}, UNPACED).sweep(AtsEnum.GREENHOUSE, null, null);
+		List<String> lines = output.getOut().lines().filter((line) -> line.contains("SWEEP_BOARD ")).toList();
+		assertThat(lines).hasSize(3);
+		assertThat(String.join("\n", lines))
+			.containsPattern("SWEEP_BOARD ats=GREENHOUSE slug=a outcome=published read_ms=\\d+ mirror_ms=\\d+ vacancies=2")
+			.containsPattern("SWEEP_BOARD ats=GREENHOUSE slug=b outcome=not_found read_ms=\\d+ mirror_ms=\\d+ vacancies=0")
+			.containsPattern("SWEEP_BOARD ats=GREENHOUSE slug=c outcome=unreadable read_ms=\\d+ mirror_ms=0 vacancies=0");
+		assertThat(output.getOut()).contains("SWEEP_REPORT ats=GREENHOUSE after=- limit=- boards=3 published=2 added=1 updated=0 deleted=0 not_found=1 unreadable=1 wall_s=0");
+	}
+
+	/** A separate heartbeat survives a blocked worker and retains the run's cursor. */
+	@Test
+	void reportsABlockedBoard(CapturedOutput output) throws Exception {
+		assertBlockedHeartbeat(output, "before", false);
+	}
+
+	/** A later finished board cannot move the resume cursor past a slow first board. */
+	@Test
+	void resumesBeforeTheFirstUnfinishedBoard(CapturedOutput output) throws Exception {
+		assertBlockedHeartbeat(output, null, true);
+	}
+
+	/** Holds the first board until the heartbeat describes the expected state. */
+	private void assertBlockedHeartbeat(CapturedOutput output, String after, boolean second) throws Exception {
+		activeSlugs(second ? new String[] { "first", "second" } : new String[] { "first" });
+		given(this.vacancies.mirror(any(), any(), any())).willReturn(new VacancyStore.Reconciliation(0, 0, 0));
+		CountDownLatch release = new CountDownLatch(1);
+		BoardSweepRun sweep = sweepOf((slug, region, refusal) -> {
+			if (slug.equals("first")) {
+				try {
+					if (!release.await(5, TimeUnit.SECONDS)) {
+						throw new IOException("Test did not release the board");
+					}
+				}
+				catch (InterruptedException ex) {
+					Thread.currentThread().interrupt();
+					throw new IOException(ex);
+				}
+			}
+			return List.of();
+		}, new Pace(2, 1000, false));
+		try (var executor = Executors.newSingleThreadExecutor()) {
+			var run = executor.submit(() -> sweep.sweep(AtsEnum.GREENHOUSE, after, null));
+			try {
+				String expected = "SWEEP_HEARTBEAT ats=GREENHOUSE finished=" + (second ? 1 : 0)
+						+ " open=1 left=0 vacancies=0 resume_after=" + (after == null ? "-" : after)
+						+ " longest_open=first longest_open_s=";
+				long deadline = System.nanoTime() + Duration.ofSeconds(3).toNanos();
+				while (!output.getOut().contains(expected) && System.nanoTime() < deadline) {
+					Thread.sleep(10);
+				}
+				assertThat(output.getOut()).contains(expected);
+			}
+			finally {
+				release.countDown();
+			}
+			run.get(3, TimeUnit.SECONDS);
+		}
 	}
 
 	/** Exercises reconciliation and company status with the real stores. */
@@ -256,9 +383,9 @@ class BoardSweepRunTest {
 				throw new AssertionError("The sweep asked for unread board " + slug);
 			};
 			BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader),
-					Map.of(AtsEnum.GREENHOUSE, UNPACED), this.companies, this.vacancies);
+					Map.of(AtsEnum.GREENHOUSE, UNPACED), this.companies, this.vacancies, InstantSource.fixed(Instant.EPOCH), Duration.ofMillis(50));
 
-			assertThat(sweep.sweepAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardSweepRun.Report(0, 0, 0, 0, 0, 0, 0));
+			assertThat(sweep.sweep(AtsEnum.GREENHOUSE, null, null)).isEqualTo(new BoardSweepRun.Report(0, 0, 0, 0, 0, 0, 0, 0));
 
 			var unread = this.companyRepository.findByAtsAndSlug(AtsEnum.GREENHOUSE, "sweep-unread").orElseThrow();
 			assertThat(unread.boardStatus()).isEqualTo(BoardStatusEnum.UNREAD);
@@ -288,9 +415,9 @@ class BoardSweepRunTest {
 				return List.of(published(1), published(9));
 			};
 			BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader),
-					Map.of(AtsEnum.GREENHOUSE, UNPACED), this.companies, this.vacancies);
+					Map.of(AtsEnum.GREENHOUSE, UNPACED), this.companies, this.vacancies, InstantSource.fixed(Instant.EPOCH), Duration.ofMillis(50));
 
-			assertThat(sweep.sweepAll(AtsEnum.GREENHOUSE)).isEqualTo(new BoardSweepRun.Report(3, 2, 1, 1, 3, 1, 1));
+			assertThat(sweep.sweep(AtsEnum.GREENHOUSE, null, null)).isEqualTo(new BoardSweepRun.Report(3, 2, 1, 1, 3, 1, 1, 0));
 
 			var gone = this.companyRepository.findByAtsAndSlug(AtsEnum.GREENHOUSE, "sweep-gone").orElseThrow();
 			assertThat(gone.boardStatus()).isEqualTo(BoardStatusEnum.NOT_FOUND);
@@ -318,7 +445,7 @@ class BoardSweepRunTest {
 
 	private BoardSweepRun sweepOf(VacancyReaderPort reader, Pace pace) {
 		return new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader), Map.of(AtsEnum.GREENHOUSE, pace), this.companies,
-				this.vacancies);
+				this.vacancies, InstantSource.fixed(Instant.EPOCH), Duration.ofMillis(50));
 	}
 
 	private static void pause(Duration duration) {

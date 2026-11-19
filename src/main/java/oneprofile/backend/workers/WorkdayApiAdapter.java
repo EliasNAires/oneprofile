@@ -1,5 +1,6 @@
 package oneprofile.backend.workers;
 
+import jakarta.annotation.PreDestroy;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -11,6 +12,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.LongAdder;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import tools.jackson.core.JacksonException;
@@ -39,10 +48,24 @@ import tools.jackson.databind.node.MissingNode;
 @Component
 public class WorkdayApiAdapter implements WorkdayApiPort {
 
+	/** Reports Workday traffic independently of the threads making requests. */
+	private static final Log logger = LogFactory.getLog(WorkdayApiAdapter.class);
+
+	/** The production traffic reporting interval. */
+	private static final Duration HEARTBEAT = Duration.ofMinutes(1);
+
+	/** Traffic counters in the order written to each interval's log line. */
+	private static final List<String> METRICS = List.of("started_list", "started_description", "answered_list",
+			"list_ms", "answered_description", "description_ms", "status_200", "status_404", "status_other",
+			"tenant_429", "challenge", "gateway", "io_error", "throttle_wait_ms", "backoff_ms");
+
+	/** Workday's tenant, host and site identify the board API. */
 	private static final String BOARD_API = "https://%1$s.%2$s.myworkdayjobs.com/wday/cxs/%1$s/%3$s/";
 
+	/** The most requests the shared throttle keeps open. */
 	private static final int REQUESTS_AT_ONCE = 20;
 
+	/** The most requests the shared throttle starts each second. */
 	private static final int STARTS_A_SECOND = 16;
 
 	/**
@@ -51,18 +74,22 @@ public class WorkdayApiAdapter implements WorkdayApiPort {
 	 */
 	private static final Duration RESTORED_AFTER_IDLE = Duration.ofMinutes(10);
 
+	/** Gateway failures are retried without slowing the throttle. */
 	private static final Set<Integer> GATEWAY_ERRORS = Set.of(502, 503, 504, 520);
 
+	/** The number of attempts before a request is given up on. */
 	private static final int ATTEMPTS = 5;
 
 	/** Cloudflare's challenge cleared within one to five minutes; the throttle holds this long at first. */
 	private static final Duration REFUSAL_BACK_OFF = Duration.ofMinutes(1);
 
+	/** The first retry wait for a tenant limit or gateway error. */
 	private static final Duration BACK_OFF = Duration.ofSeconds(1);
 
 	/** An answer took up to two minutes in the long probe. */
 	private static final Duration READ_TIMEOUT = Duration.ofMinutes(3);
 
+	/** The longest retry wait or shared refusal hold. */
 	private static final Duration MAX_BACK_OFF = Duration.ofMinutes(5);
 
 	private final HttpClient http = HttpClient.newBuilder()
@@ -86,12 +113,22 @@ public class WorkdayApiAdapter implements WorkdayApiPort {
 
 	private final Duration readTimeout;
 
+	private final Duration heartbeat;
+
+	private final Map<String, LongAdder> traffic = new LinkedHashMap<>();
+
+	private final Map<Long, Long> open = new ConcurrentHashMap<>();
+
+	private final AtomicLong attemptIds = new AtomicLong();
+
+	private ScheduledExecutorService reporter;
+
 	/** Asks Workday. */
 	@Autowired
 	public WorkdayApiAdapter() {
 		this(BOARD_API, UserAgent.VALUE,
 				new Throttle("Workday", REQUESTS_AT_ONCE, STARTS_A_SECOND, RESTORED_AFTER_IDLE), ATTEMPTS,
-				REFUSAL_BACK_OFF, BACK_OFF, READ_TIMEOUT);
+				REFUSAL_BACK_OFF, BACK_OFF, READ_TIMEOUT, HEARTBEAT);
 	}
 
 	/**
@@ -104,9 +141,10 @@ public class WorkdayApiAdapter implements WorkdayApiPort {
 	 * while it still refuses
 	 * @param backOff how long to wait after any other first failure, doubling with each further one
 	 * @param readTimeout how long a request is given to answer
+	 * @param heartbeat how often traffic is reported while the adapter is used
 	 */
 	WorkdayApiAdapter(String boardApi, String userAgent, Throttle throttle, int attempts, Duration refusalBackOff,
-			Duration backOff, Duration readTimeout) {
+			Duration backOff, Duration readTimeout, Duration heartbeat) {
 		if (attempts < 1) {
 			throw new IllegalArgumentException("A request has to be attempted at least once");
 		}
@@ -117,8 +155,11 @@ public class WorkdayApiAdapter implements WorkdayApiPort {
 		this.refusalBackOff = refusalBackOff;
 		this.backOff = backOff;
 		this.readTimeout = readTimeout;
+		this.heartbeat = heartbeat;
+		METRICS.forEach((metric) -> this.traffic.put(metric, new LongAdder()));
 	}
 
+	/** Asks for a list page under the supplied facets. */
 	@Override
 	public Answer jobs(String slug, Map<String, List<String>> appliedFacets, int offset, int limit, Runnable onRefusal)
 			throws IOException {
@@ -133,12 +174,14 @@ public class WorkdayApiAdapter implements WorkdayApiPort {
 		return send(request, slug, onRefusal);
 	}
 
+	/** Asks for one vacancy's description. */
 	@Override
 	public Answer job(String slug, String externalPath, Runnable onRefusal) throws IOException {
 		String path = externalPath.startsWith("/") ? externalPath.substring(1) : externalPath;
 		return send(request(slug, path).GET().build(), slug, onRefusal);
 	}
 
+	/** Builds an identified request to one path on the board. */
 	private HttpRequest.Builder request(String slug, String path) throws IOException {
 		String[] board = slug.split("[./]", 3);
 		if (board.length != 3) {
@@ -160,9 +203,10 @@ public class WorkdayApiAdapter implements WorkdayApiPort {
 	 * a gateway error, each attempt paced by the throttle.
 	 */
 	private Answer send(HttpRequest request, String slug, Runnable onRefusal) throws IOException {
+		startTraffic();
 		for (int attempt = 1;; attempt++) {
 			long startedAt = awaitStart(request);
-			HttpResponse<String> response = sendOnce(request);
+			HttpResponse<String> response = sendOnce(request, startedAt);
 			int status = response.statusCode();
 			boolean challenged = status == 429
 					&& response.headers().firstValue("cf-mitigated").filter("challenge"::equalsIgnoreCase).isPresent();
@@ -185,7 +229,9 @@ public class WorkdayApiAdapter implements WorkdayApiPort {
 		}
 	}
 
+	/** Waits for permission to send, accounting for time spent held by the shared throttle. */
 	private long awaitStart(HttpRequest request) throws IOException {
+		long waitingAt = System.nanoTime();
 		try {
 			return this.throttle.awaitStart();
 		}
@@ -193,19 +239,91 @@ public class WorkdayApiAdapter implements WorkdayApiPort {
 			Thread.currentThread().interrupt();
 			throw new IOException("Interrupted while waiting to ask " + request.uri(), ex);
 		}
+		finally {
+			this.traffic.get("throttle_wait_ms").add(TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - waitingAt));
+		}
 	}
 
 	/** Sends a request the throttle has started, and counts it finished once answered. */
-	private HttpResponse<String> sendOnce(HttpRequest request) throws IOException {
+	private HttpResponse<String> sendOnce(HttpRequest request, long startedAt) throws IOException {
+		String kind = request.method().equals("POST") ? "list" : "description";
+		long id = this.attemptIds.incrementAndGet();
+		this.open.put(id, System.nanoTime());
+		this.traffic.get("started_" + kind).increment();
 		try {
-			return this.http.send(request, BodyHandlers.ofString());
+			HttpResponse<String> response = this.http.send(request, BodyHandlers.ofString());
+			this.traffic.get("answered_" + kind).increment();
+			this.traffic.get(kind + "_ms").add(TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startedAt));
+			this.traffic.get(outcome(response)).increment();
+			return response;
+		}
+		catch (IOException ex) {
+			this.traffic.get("io_error").increment();
+			throw ex;
 		}
 		catch (InterruptedException ex) {
+			this.traffic.get("io_error").increment();
 			Thread.currentThread().interrupt();
 			throw new IOException("Interrupted while asking " + request.uri(), ex);
 		}
 		finally {
+			this.open.remove(id);
 			this.throttle.finished();
+		}
+	}
+
+	/** Assigns exactly one HTTP outcome to each answered attempt. */
+	private static String outcome(HttpResponse<String> response) {
+		int status = response.statusCode();
+		if (status == 200 || status == 404) {
+			return "status_" + status;
+		}
+		if (status == 429) {
+			return response.headers().firstValue("cf-mitigated").filter("challenge"::equalsIgnoreCase).isPresent()
+					? "challenge" : "tenant_429";
+		}
+		return GATEWAY_ERRORS.contains(status) ? "gateway" : "status_other";
+	}
+
+	/** Starts a single daemon reporter on the first request, including while every sender is blocked. */
+	private synchronized void startTraffic() {
+		if (this.reporter == null) {
+			this.reporter = Executors.newSingleThreadScheduledExecutor((task) -> {
+				Thread thread = new Thread(task, "workday-traffic");
+				thread.setDaemon(true);
+				return thread;
+			});
+			this.reporter.scheduleAtFixedRate(this::reportTraffic, this.heartbeat.toNanos(), this.heartbeat.toNanos(),
+					TimeUnit.NANOSECONDS);
+		}
+	}
+
+	/** Takes the interval's counters while retaining the ages of attempts still awaiting their body. */
+	private void reportTraffic() {
+		StringBuilder line = new StringBuilder("WORKDAY_TRAFFIC");
+		boolean active = false;
+		for (Map.Entry<String, LongAdder> metric : this.traffic.entrySet()) {
+			long value = metric.getValue().sumThenReset();
+			active |= value != 0;
+			line.append(' ').append(metric.getKey()).append('=').append(value);
+		}
+		List<Long> starts = List.copyOf(this.open.values());
+		if (!active && starts.isEmpty()) {
+			return;
+		}
+		long now = System.nanoTime();
+		long oldest = starts.stream().mapToLong((start) -> TimeUnit.NANOSECONDS.toSeconds(now - start)).max().orElse(0);
+		line.append(" requests_at_once=").append(this.throttle.requestsAtOnce())
+			.append(" starts_a_second=").append(this.throttle.startsASecond())
+			.append(" open=").append(starts.size()).append(" oldest_open_s=").append(oldest);
+		logger.info(line.toString());
+	}
+
+	/** Stops the daemon when Spring releases the shared adapter. */
+	@PreDestroy
+	synchronized void stopTraffic() {
+		if (this.reporter != null) {
+			this.reporter.shutdownNow();
 		}
 	}
 
@@ -222,13 +340,18 @@ public class WorkdayApiAdapter implements WorkdayApiPort {
 		}
 	}
 
-	private static void wait(Duration wait, String slug) throws IOException {
+	/** Sleeps between retry attempts and accounts for the actual time slept, even if interrupted. */
+	private void wait(Duration wait, String slug) throws IOException {
+		long waitingAt = System.nanoTime();
 		try {
 			Thread.sleep(wait);
 		}
 		catch (InterruptedException ex) {
 			Thread.currentThread().interrupt();
 			throw new IOException("Interrupted while waiting to ask again about " + slug, ex);
+		}
+		finally {
+			this.traffic.get("backoff_ms").add(TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - waitingAt));
 		}
 	}
 

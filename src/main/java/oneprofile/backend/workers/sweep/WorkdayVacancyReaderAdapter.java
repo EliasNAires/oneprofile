@@ -105,29 +105,41 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 		this.pagingLimit = pagingLimit;
 	}
 
+	/** Reads a board and logs its request counts, including a read that fails. */
 	@Override
 	public List<PublishedVacancy> read(String slug, RegionEnum region, Runnable onRefusal) throws IOException {
-		Map<String, JsonNode> postings = new LinkedHashMap<>();
-		readPart(slug, new LinkedHashMap<>(), postings, onRefusal);
-		List<PublishedVacancy> published = new ArrayList<>(postings.size());
-		for (JsonNode posting : postings.values()) {
-			publishedVacancy(slug, posting, onRefusal).ifPresent(published::add);
+		Pages pages = new Pages();
+		boolean failed = true;
+		try {
+			Map<String, JsonNode> postings = new LinkedHashMap<>();
+			readPart(slug, new LinkedHashMap<>(), postings, onRefusal, pages);
+			List<PublishedVacancy> published = new ArrayList<>(postings.size());
+			for (JsonNode posting : postings.values()) {
+				publishedVacancy(slug, posting, onRefusal, pages).ifPresent(published::add);
+			}
+			failed = false;
+			return published;
 		}
-		return published;
+		finally {
+			logger.info("WORKDAY_BOARD slug=%s list_pages=%d description_pages=%d parts=%d failed=%s"
+				.formatted(slug, pages.list, pages.description, pages.parts, failed));
+		}
 	}
 
 	/** Reads every vacancy under the facets applied into {@code postings}, by path. */
 	private void readPart(String slug, Map<String, List<String>> appliedFacets, Map<String, JsonNode> postings,
-			Runnable onRefusal) throws IOException {
-		JsonNode first = page(slug, appliedFacets, 0, onRefusal);
+			Runnable onRefusal, Pages pages) throws IOException {
+		pages.parts++;
+		JsonNode first = page(slug, appliedFacets, 0, onRefusal, pages);
 		int total = first.path("total").asInt(0);
 		if (total >= this.pagingLimit) {
 			Optional<Facet> facet = narrowest(first.path("facets"), appliedFacets);
 			if (facet.isPresent()) {
+				pages.parts--;
 				for (String value : facet.get().values()) {
 					Map<String, List<String>> narrowed = new LinkedHashMap<>(appliedFacets);
 					narrowed.put(facet.get().parameter(), List.of(value));
-					readPart(slug, narrowed, postings, onRefusal);
+					readPart(slug, narrowed, postings, onRefusal, pages);
 				}
 				return;
 			}
@@ -137,14 +149,16 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 		collect(first, postings);
 		int end = Math.min(total, this.pagingLimit);
 		for (int offset = this.pageSize; offset < end; offset += this.pageSize) {
-			if (!collect(page(slug, appliedFacets, offset, onRefusal), postings)) {
+			if (!collect(page(slug, appliedFacets, offset, onRefusal, pages), postings)) {
 				break;
 			}
 		}
 	}
 
-	private JsonNode page(String slug, Map<String, List<String>> appliedFacets, int offset, Runnable onRefusal)
+	/** Asks for a list page, counting the request even if it fails. */
+	private JsonNode page(String slug, Map<String, List<String>> appliedFacets, int offset, Runnable onRefusal, Pages pages)
 			throws IOException {
+		pages.list++;
 		WorkdayApiPort.Answer answer = this.api.jobs(slug, appliedFacets, offset, this.pageSize, onRefusal);
 		if (offset == 0 && appliedFacets.isEmpty() && NO_BOARD.contains(answer.status())) {
 			throw new BoardNotFoundException("Asked for the vacancies of %s under %s from %d and got %d"
@@ -211,7 +225,7 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 	}
 
 	/** The vacancy, with its page read if its title calls for it, or empty if it has closed since. */
-	private Optional<PublishedVacancy> publishedVacancy(String slug, JsonNode posting, Runnable onRefusal)
+	private Optional<PublishedVacancy> publishedVacancy(String slug, JsonNode posting, Runnable onRefusal, Pages pages)
 			throws IOException {
 		String path = text(posting.path("externalPath"));
 		String externalId = path.substring(path.lastIndexOf('/') + 1);
@@ -221,6 +235,7 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 		if (!descriptionCalledFor(title)) {
 			return Optional.of(listed);
 		}
+		pages.description++;
 		WorkdayApiPort.Answer answer = this.api.job(slug, path, onRefusal);
 		if (answer.status() == 404) {
 			return Optional.empty();
@@ -300,6 +315,17 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 	 * @param largest how many its largest value holds
 	 */
 	private record Facet(String parameter, List<String> values, long sum, long largest) {
+	}
+
+	/** Request counts owned by one read, never shared by concurrent boards. */
+	private static final class Pages {
+
+		private int list;
+
+		private int description;
+
+		private int parts;
+
 	}
 
 }
