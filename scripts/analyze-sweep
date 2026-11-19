@@ -268,7 +268,7 @@ def print_report(report, changes=None):
     for kind in ("list", "description"):
         print(f"{kind}: started={report['totals']['started_' + kind]} "
               f"answered={report['totals']['answered_' + kind]} mean_ms={number(report['mean_ms'][kind])}")
-    print("Outcomes (status and diagnostic counters may overlap): " +
+    print("Outcomes, one per attempt: " +
           " ".join(f"{key}={report['totals'][key]}" for key in OUTCOMES))
     print(" ".join(f"{key}={report['totals'][key]}" for key in ("throttle_wait_ms", "backoff_ms")))
     print("time\tstarted_list\tstarted_description\tchallenge\tstarts_a_second\topen\toldest_open_s")
