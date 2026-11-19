@@ -646,7 +646,11 @@ Every stage runs on a schedule in production: discovery when a new crawl is publ
 probing after discovery and periodically for empty and not-found boards, and every day a sweep
 followed by a publish, so a vacancy that closed is gone from the Finder by the next day.
 Every ATS is swept at the same time, and the sweeps together take under about 4 hours (Elias,
-2026-11-18); Workday's is the longest, so it decides (#90).
+2026-11-18); Workday's is the longest, so it decides (#90). Measured on dev on 2026-11-19, with a
+Workday description read only where none is held: Ashby 5m, Lever 8m, Greenhouse 15m, Workday 4h 5m,
+stopped with one board left (`docs/measurements/2026-11-workday-sweep.md`). What sets the rest is
+Workday's pace after Cloudflare's challenge, one board read a request at a time (#88), and how a large
+board is narrowed by facet.
 
 ### 12.6 Launch
 
