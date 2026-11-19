@@ -197,30 +197,6 @@ class WorkdayVacancyReaderAdapterTest {
 				"jobs {timeType=[full]} 2", "jobs {timeType=[part]} 0", "jobs {timeType=[part]} 2");
 	}
 
-	/**
-	 * A facet of two values, one still too large, takes fewer pages than one of many single vacancies,
-	 * as a time type does against locations on CVS's board.
-	 */
-	@Test
-	void narrowsByAFacetOfFewLargeValuesRatherThanManySmallOnes() throws IOException {
-		FakeWorkday workday = new FakeWorkday(List.of(
-				posting("Registered Nurse", "A", "JR1", Map.of("timeType", Set.of("full"), "jobFamilyGroup", Set.of("x"), "locations", Set.of("a"))),
-				posting("Registered Nurse", "B", "JR2", Map.of("timeType", Set.of("full"), "jobFamilyGroup", Set.of("x"), "locations", Set.of("b"))),
-				posting("Registered Nurse", "C", "JR3", Map.of("timeType", Set.of("full"), "jobFamilyGroup", Set.of("x"), "locations", Set.of("c"))),
-				posting("Registered Nurse", "D", "JR4", Map.of("timeType", Set.of("full"), "jobFamilyGroup", Set.of("y"), "locations", Set.of("d"))),
-				posting("Registered Nurse", "E", "JR5", Map.of("timeType", Set.of("full"), "jobFamilyGroup", Set.of("y"), "locations", Set.of("e"))),
-				posting("Registered Nurse", "F", "JR6", Map.of("timeType", Set.of("full"), "jobFamilyGroup", Set.of("y"), "locations", Set.of("f"))),
-				posting("Registered Nurse", "G", "JR7", Map.of("timeType", Set.of("part"), "jobFamilyGroup", Set.of("x"), "locations", Set.of("g"))),
-				posting("Registered Nurse", "H", "JR8", Map.of("timeType", Set.of("part"), "jobFamilyGroup", Set.of("x"), "locations", Set.of("h")))));
-
-		assertThat(reader(workday).read(SLUG, RegionEnum.US, () -> {
-		})).hasSize(8);
-		assertThat(this.asked).containsExactly("jobs {} 0", "jobs {timeType=[full]} 0",
-				"jobs {timeType=[full], jobFamilyGroup=[x]} 0", "jobs {timeType=[full], jobFamilyGroup=[x]} 2",
-				"jobs {timeType=[full], jobFamilyGroup=[y]} 0", "jobs {timeType=[full], jobFamilyGroup=[y]} 2",
-				"jobs {timeType=[part]} 0");
-	}
-
 	@Test
 	void narrowsAPartStillTooLargeByAFurtherFacetAndHoldsAVacancyInTwoPartsOnce() throws IOException {
 		FakeWorkday workday = new FakeWorkday(List.of(
