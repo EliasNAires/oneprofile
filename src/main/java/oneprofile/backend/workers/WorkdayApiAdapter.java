@@ -353,10 +353,17 @@ public class WorkdayApiAdapter implements WorkdayApiPort {
 		}
 	}
 
-	/** A {@code 200} has to be JSON; an error's body is kept where it is JSON, as Workday's are. */
+	/**
+	 * A {@code 200} has to be JSON, and an empty body, which Jackson reads as missing, is not; an
+	 * error's body is kept where it is JSON, as Workday's are.
+	 */
 	private Answer answer(HttpResponse<String> response, HttpRequest request) throws IOException {
 		try {
-			return new Answer(response.statusCode(), this.json.readTree(response.body()));
+			JsonNode body = this.json.readTree(response.body());
+			if (response.statusCode() == 200 && body.isMissingNode()) {
+				throw new IOException("Empty answer from " + request.uri());
+			}
+			return new Answer(response.statusCode(), body);
 		}
 		catch (JacksonException ex) {
 			if (response.statusCode() == 200) {

@@ -213,6 +213,18 @@ class WorkdayApiAdapterTest {
 	}
 
 	@Test
+	void asksAgainAfterAnEmptyAnswer() throws IOException {
+		AtomicInteger attempts = new AtomicInteger();
+		serve((exchange) -> respond(exchange, 200, attempts.incrementAndGet() == 1 ? "" : PAGE));
+
+		WorkdayApiPort.Answer answer = api(new Throttle("The test", 20, 100)).jobs("amb.wd1/careers", Map.of(), 0, 1,
+				this.refusals::incrementAndGet);
+
+		assertThat(answer.body().path("total").asInt()).isEqualTo(1);
+		assertThat(this.requests).hasSize(2);
+	}
+
+	@Test
 	void givesUpOnAnAnswerThatIsNeverJson() {
 		serve((exchange) -> respond(exchange, 200, "<html>maintenance</html>"));
 
