@@ -244,17 +244,27 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 	}
 
 	/**
-	 * The facet to narrow a capped part by: of those not applied yet with two values or more, one whose
-	 * sum is within the tolerance of the part's size, the fewest pages in all, then the fewest values;
-	 * or failing any, the location facet of most values. Workday groups its location facets under one
-	 * that names no values of its own, which is looked inside.
+	 * The facet to narrow a capped part by: of those not applied yet with two values or more, whose sum
+	 * is within the tolerance of the part's size, one whose every value holds fewer than the paging
+	 * limit, the fewest pages in all, then the fewest values; or failing any, the one whose largest value
+	 * holds fewest, to be narrowed further; or failing any, the location facet of most values. A value
+	 * narrowed further can be left with no facet that covers it, since Workday lists fewer values under
+	 * a facet applied (#110). Workday groups its location facets under one that names no values of its
+	 * own, which is looked inside.
 	 */
 	private Optional<Facet> narrowest(List<Facet> candidates, Long size) {
-		Optional<Facet> covering = candidates.stream()
+		List<Facet> covering = candidates.stream()
 			.filter((facet) -> facet.values().size() >= 2 && size != null
 					&& Math.abs(facet.sum() - size) <= TOLERANCE * size)
+			.toList();
+		Optional<Facet> under = covering.stream()
+			.filter((facet) -> facet.largest() < this.pagingLimit)
 			.min(Comparator.comparingLong(Facet::pages).thenComparingInt((facet) -> facet.values().size()));
-		return covering.isPresent() ? covering : candidates.stream()
+		if (under.isPresent()) {
+			return under;
+		}
+		Optional<Facet> smallest = covering.stream().min(Comparator.comparingLong(Facet::largest));
+		return smallest.isPresent() ? smallest : candidates.stream()
 			.filter((facet) -> facet.location() && facet.values().size() >= 2)
 			.max(Comparator.comparingInt((facet) -> facet.values().size()));
 	}
@@ -290,6 +300,7 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 		List<Value> values = new ArrayList<>();
 		long sum = 0;
 		long pages = 0;
+		long largest = 0;
 		for (JsonNode value : facet.path("values")) {
 			if (value.has("facetParameter")) {
 				addFacet(value, appliedFacets, candidates, location);
@@ -301,10 +312,11 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 				values.add(new Value(id, count));
 				sum += count;
 				pages += (count - 1) / this.pageSize + 1;
+				largest = Math.max(largest, count);
 			}
 		}
 		if (parameter != null && !values.isEmpty() && !appliedFacets.containsKey(parameter)) {
-			candidates.add(new Facet(parameter, values, sum, pages,
+			candidates.add(new Facet(parameter, values, sum, largest, pages,
 					location));
 		}
 	}
@@ -402,10 +414,11 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 	 * @param parameter its name, as a page names it and a request applies it
 	 * @param values the id and count of every value that holds a vacancy
 	 * @param sum how many vacancies its values hold, those in several counted in each
+	 * @param largest how many its largest value holds
 	 * @param pages how many list pages its values take in all
 	 * @param location whether its name, or the group it is nested in, names a location
 	 */
-	private record Facet(String parameter, List<Value> values, long sum, long pages, boolean location) {
+	private record Facet(String parameter, List<Value> values, long sum, long largest, long pages, boolean location) {
 	}
 
 	/** A facet value's request id and the size of the part it names. */

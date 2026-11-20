@@ -421,19 +421,22 @@ class WorkdayVacancyReaderAdapterTest {
 		assertThat(output.getOut()).contains("read=4 size=- failed=false");
 	}
 
-	/** Equal page costs prefer fewer values even when one value must be narrowed again. */
+	/**
+	 * A covering facet whose every value pages whole beats one of as few pages with a value to narrow
+	 * again, which may be left with no facet that covers it.
+	 */
 	@Test
-	void breaksAPageCostTieByFewerValuesIncludingACappedValue() throws IOException {
+	void prefersACoveringFacetWhoseEveryValueIsUnderTheLimit() throws IOException {
 		List<Posting> postings = new ArrayList<>();
 		for (int i = 0; i < 6; i++) {
 			postings.add(posting("Registered Nurse", "L" + i, "JR" + i,
-					Map.of("timeType", Set.of(i < 4 ? "full" : "part"),
-							"jobFamilyGroup", Set.of("family" + i / 2), "locations", Set.of("L" + i))));
+					Map.of("timeType", Set.of(i < 4 ? "full" : "part"), "jobFamilyGroup", Set.of("family" + i / 2))));
 		}
 		assertThat(reader(new FakeWorkday(postings)).read(SLUG, RegionEnum.US, () -> {
 		})).hasSize(6);
-		assertThat(this.asked).contains("jobs {timeType=[full]} 0", "jobs {timeType=[part]} 0");
-		assertThat(this.asked).noneMatch((request) -> request.startsWith("jobs {jobFamilyGroup="));
+		assertThat(this.asked).contains("jobs {jobFamilyGroup=[family0]} 0", "jobs {jobFamilyGroup=[family1]} 0",
+				"jobs {jobFamilyGroup=[family2]} 0");
+		assertThat(this.asked).noneMatch((request) -> request.startsWith("jobs {timeType="));
 	}
 
 	/** Counts within one percent may narrow a part despite request-to-request drift. */
@@ -442,12 +445,11 @@ class WorkdayVacancyReaderAdapterTest {
 		List<Posting> postings = new ArrayList<>();
 		for (int i = 0; i < 101; i++) {
 			postings.add(posting("Registered Nurse", "L" + i, "JR" + i,
-					Map.of("timeType", i == 100 ? Set.of() : Set.of(i < 50 ? "full" : "part"),
-							"locations", Set.of("L" + i))));
+					Map.of("jobFamilyGroup", i == 100 ? Set.of() : Set.of("family" + i / 3))));
 		}
 		assertThat(reader(new FakeWorkday(postings)).read(SLUG, RegionEnum.US, () -> {
 		})).hasSize(100);
-		assertThat(this.asked).contains("jobs {timeType=[full]} 0", "jobs {timeType=[part]} 0");
+		assertThat(this.asked).contains("jobs {jobFamilyGroup=[family0]} 0", "jobs {jobFamilyGroup=[family33]} 0");
 	}
 
 	/** Distinct locations provide a covering split for a miniature board. */
