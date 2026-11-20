@@ -42,7 +42,8 @@ import tools.jackson.databind.node.MissingNode;
  * slows the throttle and the run down once: in a sweep on 2026-10-24, each request refused after a
  * challenge was asked to halve again, and one challenge took the pace from 16 a second to 2. A tenant's own {@code 429}, with Workday's JSON error body, and a gateway error from one
  * tenant's server ({@code 502}, {@code 503} "no healthy upstream", {@code 504}, {@code 520}) are asked
- * again without slowing anything. Workday's other errors ({@code 400}, {@code 401}, {@code 403},
+ * again without slowing anything, as are a network error (a TLS handshake, an HTTP/2 stream reset, a
+ * timeout) and a {@code 200} whose body is not JSON: each cost its whole board in #90's runs. Workday's other errors ({@code 400}, {@code 401}, {@code 403},
  * {@code 404}, {@code 422}) say a board cannot be read, and are answers.
  */
 @Component
@@ -200,13 +201,24 @@ public class WorkdayApiAdapter implements WorkdayApiPort {
 
 	/**
 	 * Asks until Workday answers about the board, held by the throttle after a refusal and waiting after
-	 * a gateway error, each attempt paced by the throttle.
+	 * a gateway error, a network error or a {@code 200} that is not JSON, each attempt paced by the
+	 * throttle. Only an interruption gives up at once.
 	 */
 	private Answer send(HttpRequest request, String slug, Runnable onRefusal) throws IOException {
 		startTraffic();
 		for (int attempt = 1;; attempt++) {
 			long startedAt = awaitStart(request);
-			HttpResponse<String> response = sendOnce(request, startedAt);
+			HttpResponse<String> response;
+			try {
+				response = sendOnce(request, startedAt);
+			}
+			catch (IOException ex) {
+				if (Thread.currentThread().isInterrupted() || attempt == this.attempts) {
+					throw ex;
+				}
+				wait(backOff(attempt), slug);
+				continue;
+			}
 			int status = response.statusCode();
 			boolean challenged = status == 429
 					&& response.headers().firstValue("cf-mitigated").filter("challenge"::equalsIgnoreCase).isPresent();
@@ -214,7 +226,16 @@ public class WorkdayApiAdapter implements WorkdayApiPort {
 				this.throttle.answered(startedAt);
 			}
 			if (status != 429 && !GATEWAY_ERRORS.contains(status)) {
-				return answer(response, request);
+				try {
+					return answer(response, request);
+				}
+				catch (IOException ex) {
+					if (attempt == this.attempts) {
+						throw ex;
+					}
+					wait(backOff(attempt), slug);
+					continue;
+				}
 			}
 			if (challenged && this.throttle.refused(startedAt, this.refusalBackOff, MAX_BACK_OFF)) {
 				onRefusal.run();
@@ -223,10 +244,15 @@ public class WorkdayApiAdapter implements WorkdayApiPort {
 				throw new IOException("Asked %s of %s and got %d".formatted(request.uri(), slug, status));
 			}
 			if (!challenged) {
-				Duration doubled = this.backOff.multipliedBy(1L << (attempt - 1));
-				wait(RetryAfter.or(response, (doubled.compareTo(MAX_BACK_OFF) > 0) ? MAX_BACK_OFF : doubled), slug);
+				wait(RetryAfter.or(response, backOff(attempt)), slug);
 			}
 		}
+	}
+
+	/** How long to wait after the given failed attempt: the first back-off, doubling, up to the longest. */
+	private Duration backOff(int attempt) {
+		Duration doubled = this.backOff.multipliedBy(1L << (attempt - 1));
+		return (doubled.compareTo(MAX_BACK_OFF) > 0) ? MAX_BACK_OFF : doubled;
 	}
 
 	/** Waits for permission to send, accounting for time spent held by the shared throttle. */

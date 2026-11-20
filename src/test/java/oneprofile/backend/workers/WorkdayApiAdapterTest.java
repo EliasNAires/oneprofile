@@ -201,11 +201,24 @@ class WorkdayApiAdapterTest {
 	}
 
 	@Test
-	void failsOnAnAnswerThatIsNotJson() {
+	void asksAgainAfterAnAnswerThatIsNotJson() throws IOException {
+		AtomicInteger attempts = new AtomicInteger();
+		serve((exchange) -> respond(exchange, 200, attempts.incrementAndGet() == 1 ? "<html>maintenance</html>" : PAGE));
+
+		WorkdayApiPort.Answer answer = api(new Throttle("The test", 20, 100)).jobs("amb.wd1/careers", Map.of(), 0, 1,
+				this.refusals::incrementAndGet);
+
+		assertThat(answer.body().path("total").asInt()).isEqualTo(1);
+		assertThat(this.requests).hasSize(2);
+	}
+
+	@Test
+	void givesUpOnAnAnswerThatIsNeverJson() {
 		serve((exchange) -> respond(exchange, 200, "<html>maintenance</html>"));
 
 		assertThatIOException().isThrownBy(() -> api(new Throttle("The test", 20, 100))
 			.jobs("amb.wd1/careers", Map.of(), 0, 1, this.refusals::incrementAndGet));
+		assertThat(this.requests).hasSize(4);
 	}
 
 	@Test
@@ -278,19 +291,41 @@ class WorkdayApiAdapterTest {
 				+ " open=0 oldest_open_s=0");
 	}
 
-	/** A connection closed without an HTTP answer is counted once as an I/O failure. */
+	/** A connection closed without an HTTP answer is asked again, and counted as an I/O failure. */
 	@Test
-	void reportsAnIoFailureWithoutAnHttpAnswer(CapturedOutput output) throws Exception {
+	void asksAgainAfterAnIoFailureWithoutAnHttpAnswer(CapturedOutput output) throws Exception {
+		AtomicInteger attempts = new AtomicInteger();
+		serve((exchange) -> {
+			if (attempts.incrementAndGet() == 1) {
+				exchange.close();
+				return;
+			}
+			respond(exchange, 200, PAGE);
+		});
+		WorkdayApiAdapter api = api(new Throttle("The test", 20, 100), Duration.ofMillis(50));
+
+		WorkdayApiPort.Answer answer = api.jobs("nvidia.wd5/careers", Map.of(), 0, 1, this.refusals::incrementAndGet);
+
+		assertThat(answer.status()).isEqualTo(200);
+		assertThat(this.refusals).hasValue(0);
+		await(() -> total(output, "io_error") == 1 && total(output, "status_200") == 1);
+		assertThat(total(output, "started_list")).isEqualTo(2);
+		assertThat(total(output, "answered_list")).isEqualTo(1);
+		assertThat(total(output, "status_other")).isZero();
+	}
+
+	/** Each attempt that ends without an HTTP answer counts once, until the attempts run out. */
+	@Test
+	void givesUpAfterItsAttemptsWithoutAnHttpAnswer(CapturedOutput output) throws Exception {
 		serve(HttpExchange::close);
 		WorkdayApiAdapter api = api(new Throttle("The test", 20, 100), Duration.ofMillis(50));
 
 		assertThatIOException().isThrownBy(() -> api.jobs("nvidia.wd5/careers", Map.of(), 0, 1,
 				this.refusals::incrementAndGet));
 
-		await(() -> total(output, "io_error") == 1);
-		assertThat(total(output, "started_list")).isEqualTo(1);
+		await(() -> total(output, "io_error") == 4);
+		assertThat(total(output, "started_list")).isEqualTo(4);
 		assertThat(total(output, "answered_list")).isZero();
-		assertThat(total(output, "status_other")).isZero();
 	}
 
 	/** Headers alone do not finish a request: the heartbeat still sees its unfinished body. */
