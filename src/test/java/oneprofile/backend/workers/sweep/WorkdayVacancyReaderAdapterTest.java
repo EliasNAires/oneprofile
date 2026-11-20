@@ -3,6 +3,7 @@ package oneprofile.backend.workers.sweep;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIOException;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.withSettings;
 
@@ -59,16 +60,16 @@ class WorkdayVacancyReaderAdapterTest {
 
 	private final VacancyStore vacancies = mock(VacancyStore.class, withSettings().mockMaker(MockMakers.SUBCLASS));
 
-	/** A described vacancy with the same identity and title is returned with everything held. */
+	/** In a short sweep, a described vacancy with the same identity and title is returned with everything held. */
 	@Test
-	void returnsAHeldVacancyWithoutReadingItsPage(CapturedOutput output) throws IOException {
+	void returnsAHeldVacancyWithoutReadingItsPageInAShortSweep(CapturedOutput output) throws IOException {
 		FakeWorkday workday = new FakeWorkday(List.of(posting("Senior Software Engineer", "Santa-Clara", "JR1")));
 		PublishedWorkdayVacancy held = new PublishedWorkdayVacancy("Senior-Software-Engineer_JR1",
 				"Senior Software Engineer", "Held location", "Held description", "https://example.com/held",
 				Instant.parse("2026-10-20T00:00:00Z"), "Full time", "Remote", "US", List.of("Held location"), null);
 		given(this.vacancies.describedWorkdayVacancies(SLUG)).willAnswer((invocation) -> Map.of(held.externalId(), held));
 
-		assertThat(reader(workday).read(SLUG, RegionEnum.US, () -> {
+		assertThat(reader(workday).readShort(SLUG, RegionEnum.US, () -> {
 		})).containsExactly(held);
 		assertThat(this.asked).containsExactly("jobs {} 0");
 		assertThat(output.getOut().lines().filter((line) -> line.contains("WORKDAY_BOARD "))).singleElement()
@@ -77,9 +78,9 @@ class WorkdayVacancyReaderAdapterTest {
 					+ " list_pages=1 description_pages=0 descriptions_held=1 parts=1 failed=false");
 	}
 
-	/** A matching identity does not reuse a description when the listed title differs. */
+	/** In a short sweep, a matching identity does not reuse a description when the listed title differs. */
 	@Test
-	void readsThePageWhenTheHeldTitleDiffers() throws IOException {
+	void readsThePageWhenTheHeldTitleDiffersInAShortSweep() throws IOException {
 		FakeWorkday workday = new FakeWorkday(List.of(posting("Senior Software Engineer", "Santa-Clara", "JR1")));
 		workday.details.put("/job/Santa-Clara/Senior-Software-Engineer_JR1", DETAIL);
 		PublishedWorkdayVacancy held = new PublishedWorkdayVacancy("Senior-Software-Engineer_JR1",
@@ -87,11 +88,26 @@ class WorkdayVacancyReaderAdapterTest {
 				null, null, null, null, null, null);
 		given(this.vacancies.describedWorkdayVacancies(SLUG)).willAnswer((invocation) -> Map.of(held.externalId(), held));
 
+		assertThat(reader(workday).readShort(SLUG, RegionEnum.US, () -> {
+		})).singleElement().extracting(PublishedVacancy::description).isEqualTo("""
+				# What you'll be doing:
+				- Build the NVLink firmware.""");
+		assertThat(this.asked).containsExactly("jobs {} 0", "job /job/Santa-Clara/Senior-Software-Engineer_JR1");
+	}
+
+	/** A long sweep reads the page of a vacancy held with its description, without asking what is held. */
+	@Test
+	void readsThePageOfAHeldVacancyInALongSweep(CapturedOutput output) throws IOException {
+		FakeWorkday workday = new FakeWorkday(List.of(posting("Senior Software Engineer", "Santa-Clara", "JR1")));
+		workday.details.put("/job/Santa-Clara/Senior-Software-Engineer_JR1", DETAIL);
+
 		assertThat(reader(workday).read(SLUG, RegionEnum.US, () -> {
 		})).singleElement().extracting(PublishedVacancy::description).isEqualTo("""
 				# What you'll be doing:
 				- Build the NVLink firmware.""");
 		assertThat(this.asked).containsExactly("jobs {} 0", "job /job/Santa-Clara/Senior-Software-Engineer_JR1");
+		then(this.vacancies).shouldHaveNoInteractions();
+		assertThat(output.getOut()).contains("list_pages=1 description_pages=1 descriptions_held=0 parts=1 failed=false");
 	}
 
 	/** An unnarrowed board reports its list and description requests once. */

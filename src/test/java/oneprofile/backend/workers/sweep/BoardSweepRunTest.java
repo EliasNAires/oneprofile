@@ -57,6 +57,11 @@ class BoardSweepRunTest {
 	/** Fast enough that no test waits on it. */
 	private static final Pace UNPACED = new Pace(1, 1000, false);
 
+	/** The short Workday reader of a test that runs no short sweep. */
+	private static final VacancyReaderPort NO_SHORT_SWEEP = (slug, region, onRefusal) -> {
+		throw new AssertionError("A long sweep read " + slug + " with the short reader");
+	};
+
 	private final CompanyStore companies = mock(CompanyStore.class);
 
 	private final VacancyStore vacancies = mock(VacancyStore.class);
@@ -67,12 +72,48 @@ class BoardSweepRunTest {
 		activeSlugs();
 		InstantSource clock = mock(InstantSource.class);
 		given(clock.instant()).willReturn(Instant.EPOCH, Instant.EPOCH.plusSeconds(125));
-		BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader(Map.of())),
+		BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader(Map.of())), NO_SHORT_SWEEP,
 				Map.of(AtsEnum.GREENHOUSE, UNPACED), this.companies, this.vacancies, clock, Duration.ofMillis(50));
 
 		assertThat(sweep.sweep(AtsEnum.GREENHOUSE, "cursor", 4).wallSeconds()).isEqualTo(125);
-		assertThat(output.getOut()).contains("SWEEP_REPORT ats=GREENHOUSE after=cursor limit=4 boards=0 published=0"
+		assertThat(output.getOut()).contains("SWEEP_REPORT ats=GREENHOUSE kind=long after=cursor limit=4 boards=0 published=0"
 				+ " added=0 updated=0 deleted=0 not_found=0 unreadable=0 wall_s=125");
+	}
+
+	/** A short sweep reads Workday's boards with the short reader, the slice it is given, and says so. */
+	@Test
+	void sweepsWorkdayShortWithTheShortReader(CapturedOutput output) {
+		given(this.companies.regionsOf(AtsEnum.WORKDAY, BoardStatusEnum.ACTIVE)).willReturn(new TreeMap<>(
+				Map.of("acme.wd1/careers", RegionEnum.US, "nvidia.wd5/careers", RegionEnum.US, "zeta.wd3/jobs", RegionEnum.US)));
+		given(this.vacancies.mirror(any(), any(), any())).willReturn(new VacancyStore.Reconciliation(1, 0, 0));
+		VacancyReaderPort longReader = (slug, region, onRefusal) -> {
+			throw new AssertionError("A short sweep read " + slug + " with the long reader");
+		};
+		VacancyReaderPort shortReader = (slug, region, onRefusal) -> List.of(workday("JR1", null));
+
+		BoardSweepRun.Report report = new BoardSweepRun(Map.of(AtsEnum.WORKDAY, longReader), shortReader,
+				Map.of(AtsEnum.WORKDAY, UNPACED), this.companies, this.vacancies, InstantSource.fixed(Instant.EPOCH),
+				Duration.ofMillis(50))
+			.shortSweep("acme.wd1/careers", 1);
+
+		assertThat(report).isEqualTo(new BoardSweepRun.Report(1, 1, 1, 0, 0, 0, 0, 0));
+		then(this.vacancies).should().mirror(AtsEnum.WORKDAY, "nvidia.wd5/careers", List.of(workday("JR1", null)));
+		assertThat(output.getOut()).contains("SWEEP_REPORT ats=WORKDAY kind=short after=acme.wd1/careers limit=1");
+	}
+
+	/** A sweep of Workday asked for by its ATS is a long sweep, with the long reader. */
+	@Test
+	void sweepsWorkdayLongWithItsReader(CapturedOutput output) {
+		given(this.companies.regionsOf(AtsEnum.WORKDAY, BoardStatusEnum.ACTIVE))
+			.willReturn(new TreeMap<>(Map.of("nvidia.wd5/careers", RegionEnum.US)));
+		given(this.vacancies.mirror(any(), any(), any())).willReturn(new VacancyStore.Reconciliation(1, 0, 0));
+
+		new BoardSweepRun(Map.of(AtsEnum.WORKDAY, reader(Map.of("nvidia.wd5/careers", List.of(workday("JR1", null))))),
+				NO_SHORT_SWEEP, Map.of(AtsEnum.WORKDAY, UNPACED), this.companies, this.vacancies,
+				InstantSource.fixed(Instant.EPOCH), Duration.ofMillis(50))
+			.sweep(AtsEnum.WORKDAY, null, null);
+
+		assertThat(output.getOut()).contains("SWEEP_REPORT ats=WORKDAY kind=long after=- limit=-");
 	}
 
 	@Test
@@ -100,7 +141,7 @@ class BoardSweepRunTest {
 						workday("JR4", "2100 NVIDIA USA")),
 				"acme.wd1/careers", List.of(workday("JR9", null)));
 
-		new BoardSweepRun(Map.of(AtsEnum.WORKDAY, reader(boards)), Map.of(AtsEnum.WORKDAY, UNPACED), this.companies,
+		new BoardSweepRun(Map.of(AtsEnum.WORKDAY, reader(boards)), NO_SHORT_SWEEP, Map.of(AtsEnum.WORKDAY, UNPACED), this.companies,
 				this.vacancies, InstantSource.fixed(Instant.EPOCH), Duration.ofMillis(50))
 			.sweep(AtsEnum.WORKDAY, null, null);
 
@@ -194,7 +235,7 @@ class BoardSweepRunTest {
 		given(this.vacancies.mirror(eq(AtsEnum.ASHBY), eq("ramp"), any()))
 			.willReturn(new VacancyStore.Reconciliation(1, 0, 0));
 		BoardSweepRun sweep = new BoardSweepRun(
-				Map.of(AtsEnum.GREENHOUSE, reader(Map.of()), AtsEnum.ASHBY, reader(Map.of("ramp", List.of(published(1))))),
+				Map.of(AtsEnum.GREENHOUSE, reader(Map.of()), AtsEnum.ASHBY, reader(Map.of("ramp", List.of(published(1))))), NO_SHORT_SWEEP,
 				Map.of(AtsEnum.GREENHOUSE, UNPACED, AtsEnum.ASHBY, UNPACED), this.companies, this.vacancies, InstantSource.fixed(Instant.EPOCH), Duration.ofMillis(50));
 
 		assertThat(sweep.sweep(AtsEnum.ASHBY, null, null)).isEqualTo(new BoardSweepRun.Report(1, 1, 1, 0, 0, 0, 0, 0));
@@ -211,7 +252,7 @@ class BoardSweepRunTest {
 			asked.put(slug, region);
 			return List.of();
 		};
-		BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.LEVER, reader), Map.of(AtsEnum.LEVER, UNPACED),
+		BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.LEVER, reader), NO_SHORT_SWEEP, Map.of(AtsEnum.LEVER, UNPACED),
 				this.companies, this.vacancies, InstantSource.fixed(Instant.EPOCH), Duration.ofMillis(50));
 
 		sweep.sweep(AtsEnum.LEVER, null, null);
@@ -288,7 +329,7 @@ class BoardSweepRunTest {
 			.containsPattern("SWEEP_BOARD ats=GREENHOUSE slug=a outcome=published read_ms=\\d+ mirror_ms=\\d+ vacancies=2")
 			.containsPattern("SWEEP_BOARD ats=GREENHOUSE slug=b outcome=not_found read_ms=\\d+ mirror_ms=\\d+ vacancies=0")
 			.containsPattern("SWEEP_BOARD ats=GREENHOUSE slug=c outcome=unreadable read_ms=\\d+ mirror_ms=0 vacancies=0");
-		assertThat(output.getOut()).contains("SWEEP_REPORT ats=GREENHOUSE after=- limit=- boards=3 published=2 added=1 updated=0 deleted=0 not_found=1 unreadable=1 wall_s=0");
+		assertThat(output.getOut()).contains("SWEEP_REPORT ats=GREENHOUSE kind=long after=- limit=- boards=3 published=2 added=1 updated=0 deleted=0 not_found=1 unreadable=1 wall_s=0");
 	}
 
 	/** A separate heartbeat survives a blocked worker and retains the run's cursor. */
@@ -382,7 +423,7 @@ class BoardSweepRunTest {
 			VacancyReaderPort reader = (slug, region, onRefusal) -> {
 				throw new AssertionError("The sweep asked for unread board " + slug);
 			};
-			BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader),
+			BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader), NO_SHORT_SWEEP,
 					Map.of(AtsEnum.GREENHOUSE, UNPACED), this.companies, this.vacancies, InstantSource.fixed(Instant.EPOCH), Duration.ofMillis(50));
 
 			assertThat(sweep.sweep(AtsEnum.GREENHOUSE, null, null)).isEqualTo(new BoardSweepRun.Report(0, 0, 0, 0, 0, 0, 0, 0));
@@ -414,7 +455,7 @@ class BoardSweepRunTest {
 				}
 				return List.of(published(1), published(9));
 			};
-			BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader),
+			BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader), NO_SHORT_SWEEP,
 					Map.of(AtsEnum.GREENHOUSE, UNPACED), this.companies, this.vacancies, InstantSource.fixed(Instant.EPOCH), Duration.ofMillis(50));
 
 			assertThat(sweep.sweep(AtsEnum.GREENHOUSE, null, null)).isEqualTo(new BoardSweepRun.Report(3, 2, 1, 1, 3, 1, 1, 0));
@@ -444,7 +485,7 @@ class BoardSweepRunTest {
 	}
 
 	private BoardSweepRun sweepOf(VacancyReaderPort reader, Pace pace) {
-		return new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader), Map.of(AtsEnum.GREENHOUSE, pace), this.companies,
+		return new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader), NO_SHORT_SWEEP, Map.of(AtsEnum.GREENHOUSE, pace), this.companies,
 				this.vacancies, InstantSource.fixed(Instant.EPOCH), Duration.ofMillis(50));
 	}
 

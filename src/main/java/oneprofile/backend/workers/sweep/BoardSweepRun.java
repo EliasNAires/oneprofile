@@ -40,6 +40,10 @@ import org.springframework.stereotype.Component;
  * the company, as Workday's do, the company takes the name they give most often. A board the ATS
  * confirms is not found is mirrored as empty, then its company is recorded as NOT_FOUND without
  * changing its name or last probe time.
+ * <p>
+ * Workday is swept two ways (ADR-0032): a long sweep reads every description the title rules call
+ * for, and a short sweep keeps the description held for a vacancy listed under the same id and title.
+ * Every other ATS gives its descriptions with the list, so it has one sweep, the long one.
  */
 @Component
 public class BoardSweepRun {
@@ -66,6 +70,8 @@ public class BoardSweepRun {
 
 	private final Map<AtsEnum, VacancyReaderPort> readers;
 
+	private final VacancyReaderPort shortWorkday;
+
 	private final Map<AtsEnum, Pace> paces;
 
 	private final CompanyStore companies;
@@ -86,22 +92,24 @@ public class BoardSweepRun {
 			LeverVacancyReaderAdapter lever, WorkdayVacancyReaderAdapter workday, CompanyStore companies,
 			VacancyStore vacancies) {
 		this(Map.of(AtsEnum.GREENHOUSE, greenhouse, AtsEnum.ASHBY, ashby, AtsEnum.LEVER, lever, AtsEnum.WORKDAY,
-				workday), PACES, companies, vacancies, InstantSource.system(), HEARTBEAT);
+				workday), workday::readShort, PACES, companies, vacancies, InstantSource.system(), HEARTBEAT);
 	}
 
 	/**
-	 * @param readers what reads the openings of each ATS
+	 * @param readers what reads the openings of each ATS for a long sweep
+	 * @param shortWorkday what reads the openings of a Workday board for a short sweep
 	 * @param paces how fast each ATS is asked
 	 * @param companies where the boards to sweep are read from
 	 * @param vacancies where what the boards publish is mirrored
 	 * @param clock supplies the run's wall time
 	 * @param heartbeat how often progress is logged
 	 */
-	BoardSweepRun(Map<AtsEnum, VacancyReaderPort> readers, Map<AtsEnum, Pace> paces, CompanyStore companies,
-			VacancyStore vacancies, InstantSource clock, Duration heartbeat) {
+	BoardSweepRun(Map<AtsEnum, VacancyReaderPort> readers, VacancyReaderPort shortWorkday, Map<AtsEnum, Pace> paces,
+			CompanyStore companies, VacancyStore vacancies, InstantSource clock, Duration heartbeat) {
 		this.clock = clock;
 		this.heartbeat = heartbeat;
 		this.readers = Map.copyOf(readers);
+		this.shortWorkday = shortWorkday;
 		this.paces = Map.copyOf(paces);
 		this.companies = companies;
 		this.vacancies = vacancies;
@@ -109,15 +117,30 @@ public class BoardSweepRun {
 
 	/**
 	 * Sweeps the board of every company of one ATS whose board has openings, starting them in slug
-	 * order.
+	 * order: a long sweep, where the ATS is Workday.
 	 * @param ats the ATS whose boards to sweep
 	 * @param after the exclusive slug cursor, or null to start at the first board
 	 * @param limit the maximum boards to read, or null for all remaining boards
 	 * @return what the run found
 	 */
 	public Report sweep(AtsEnum ats, String after, Integer limit) {
+		return sweep(ats, "long", this.readers.get(ats), after, limit);
+	}
+
+	/**
+	 * Sweeps every Workday board that has openings as {@link #sweep} does, but keeps the description
+	 * held for a vacancy listed under the same id and title instead of reading it again.
+	 * @param after the exclusive slug cursor, or null to start at the first board
+	 * @param limit the maximum boards to read, or null for all remaining boards
+	 * @return what the run found
+	 */
+	public Report shortSweep(String after, Integer limit) {
+		return sweep(AtsEnum.WORKDAY, "short", this.shortWorkday, after, limit);
+	}
+
+	/** Sweeps the selected boards of one ATS with the reader of the kind of sweep named. */
+	private Report sweep(AtsEnum ats, String kind, VacancyReaderPort reader, String after, Integer limit) {
 		Instant started = this.clock.instant();
-		VacancyReaderPort reader = this.readers.get(ats);
 		TreeMap<String, RegionEnum> regions = new TreeMap<>();
 		this.companies.regionsOf(ats, BoardStatusEnum.ACTIVE).entrySet().stream()
 			.filter((board) -> after == null || board.getKey().compareTo(after) > 0)
@@ -188,8 +211,8 @@ public class BoardSweepRun {
 			long wallSeconds = Duration.between(started, this.clock.instant()).toSeconds();
 			Report report = new Report(regions.size(), published.get(), added.get(), updated.get(), deleted.get(),
 					notFound.get(), unreadable.get(), wallSeconds);
-			logger.info(("SWEEP_REPORT ats=%s after=%s limit=%s boards=%d published=%d added=%d updated=%d"
-					+ " deleted=%d not_found=%d unreadable=%d wall_s=%d").formatted(ats.name(),
+			logger.info(("SWEEP_REPORT ats=%s kind=%s after=%s limit=%s boards=%d published=%d added=%d updated=%d"
+					+ " deleted=%d not_found=%d unreadable=%d wall_s=%d").formatted(ats.name(), kind,
 						after == null ? "-" : after, limit == null ? "-" : limit, report.boards(), report.published(),
 						report.added(), report.updated(), report.deleted(), report.notFound(), report.unreadable(),
 						report.wallSeconds()));

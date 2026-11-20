@@ -48,10 +48,11 @@ import tools.jackson.databind.JsonNode;
  * leaves the vacancy {@code IN}, or {@code UNKNOWN} for a reason the body pass reads it for: a million
  * descriptions would take 18 hours, and the body pass never reads the rest (decided with Elias on
  * 2026-10-23 and 2026-10-24). The title is classified with the rules as they stand when the sweep
- * runs; a vacancy they rule in later has its description read by the next sweep. Before reading a
- * board, its held vacancies with descriptions are read by external id. One whose id and title still
- * match the list is returned as held without asking for its page, with no company name because the
- * vacancy holds none. A vacancy whose page answers {@code 404} has closed since the list was read,
+ * runs; a vacancy they rule in later has its description read by the next sweep. A long sweep reads
+ * every such description, held or not. A short sweep first reads the board's held vacancies with
+ * descriptions by external id, and returns one whose id and title still match the list as held
+ * without asking for its page, with no company name because the vacancy holds none (ADR-0032). A
+ * vacancy whose page answers {@code 404} has closed since the list was read,
  * and is left out; one whose page Workday answers with another error of its own is held as the list
  * names it, so that one vacancy does not cost its board. Its page also names the company, which the
  * sweep takes as its name.
@@ -87,7 +88,7 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 	/**
 	 * Reads from Workday, asking for the descriptions the title rules call for.
 	 * @param api what asks Workday
-	 * @param vacancies what holds the descriptions already read
+	 * @param vacancies what holds the descriptions already read, which a short sweep keeps
 	 * @param titleCleaning cleans a title before it is classified
 	 * @param titleClassification classifies a cleaned title
 	 */
@@ -115,13 +116,33 @@ public class WorkdayVacancyReaderAdapter implements VacancyReaderPort {
 		this.pagingLimit = pagingLimit;
 	}
 
-	/** Reads a board and logs its request counts, including a read that fails. */
+	/** Reads a board for a long sweep, asking for every description the title rules call for. */
 	@Override
 	public List<PublishedVacancy> read(String slug, RegionEnum region, Runnable onRefusal) throws IOException {
+		return read(slug, false, onRefusal);
+	}
+
+	/**
+	 * Reads a board for a short sweep, keeping the held description of a vacancy whose id and title
+	 * still match the list.
+	 * @param slug the slug whose board to read
+	 * @param region the region its company holds, unused since Workday has one API
+	 * @param onRefusal run each time Workday refuses a request
+	 * @return what the board publishes, empty if it publishes nothing
+	 * @throws BoardNotFoundException if Workday answers that no board is published under the slug
+	 * @throws IOException otherwise if the board could not be read
+	 */
+	public List<PublishedVacancy> readShort(String slug, RegionEnum region, Runnable onRefusal) throws IOException {
+		return read(slug, true, onRefusal);
+	}
+
+	/** Reads a board and logs its request counts, including a read that fails. */
+	private List<PublishedVacancy> read(String slug, boolean keepsHeld, Runnable onRefusal) throws IOException {
 		Pages pages = new Pages();
 		boolean failed = true;
 		try {
-			Map<String, PublishedWorkdayVacancy> held = this.vacancies.describedWorkdayVacancies(slug);
+			Map<String, PublishedWorkdayVacancy> held = keepsHeld ? this.vacancies.describedWorkdayVacancies(slug)
+					: Map.of();
 			Map<String, JsonNode> postings = new LinkedHashMap<>();
 			readPart(slug, new LinkedHashMap<>(), postings, onRefusal, pages);
 			List<PublishedVacancy> published = new ArrayList<>(postings.size());

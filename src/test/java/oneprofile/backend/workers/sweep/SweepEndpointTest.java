@@ -37,4 +37,14 @@ class SweepEndpointTest {
 				{"boards":3,"published":0,"added":0,"updated":0,"deleted":0,"notFound":0,"unreadable":0,"wallSeconds":7}""");
 	}
 
+	/** Workday's short sweep has an endpoint of its own, sliced as the long one is. */
+	@Test
+	void runsWorkdaysShortSweepOnTheSlice() {
+		given(this.sweep.shortSweep("acme.wd1/careers", 20))
+			.willReturn(new BoardSweepRun.Report(20, 900, 4, 896, 2, 0, 0, 60));
+		assertThat(this.mvc.post().uri("/sweeps/workday/short").param("after", "acme.wd1/careers").param("limit", "20"))
+			.hasStatusOk().bodyJson().isEqualTo("""
+				{"boards":20,"published":900,"added":4,"updated":896,"deleted":2,"notFound":0,"unreadable":0,"wallSeconds":60}""");
+	}
+
 }
