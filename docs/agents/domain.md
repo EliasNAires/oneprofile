@@ -35,6 +35,10 @@ the later ADR wins; the overridden parts are marked below.
   full scale. Written in one `docs/measurements/` file; the tools are `scripts/pace-*`.
   *Amended:* Workday is paced per request at 16 a second and 20 open, by one throttle its probes
   and sweeps share, and a Cloudflare challenge is waited out from 1 minute (#81).
+- **0032**: Workday has a **long sweep**, which reads every description the title rules call for,
+  and a **short sweep**, which reads one only for a vacancy not held with one under the same id and
+  title. Both read every list page. A long sweep each night, short sweeps through the day (#30).
+  Speed-ups that change nothing a visitor sees apply to both (#90, #110, #88).
 - **0021**: each ATS's vacancy is a class of its own over the one `vacancy` table, keeping what
   that ATS publishes as it publishes it; `Vacancy` holds what any ATS would be expected to
   publish. Facts are derived in passes, never in the sweep. Overrides PRD §7's nullable columns.

@@ -90,7 +90,8 @@ Workday: `POST https://{tenant}.{host}.myworkdayjobs.com/wday/cxs/{tenant}/{site
 vacancies a page with no description; a probe asks for one. Paging stops at 2000, so a larger
 board is read in parts by facet. A description is a `GET …/job/{path}` a vacancy, asked for only
 where the title is `IN`, or `UNKNOWN` for domain or scope ambiguity; the rest are held from the
-list alone. Its own errors (`400`, `401`, `403`, `404`, `422`) mean no public board. Workday
+list alone. A short sweep also skips a vacancy held with a description under the same id and title,
+and keeps that description (ADR-0032). Its own errors (`400`, `401`, `403`, `404`, `422`) mean no public board. Workday
 names the company only on a vacancy's page, so the sweep records it, the name a board's vacancies
 give most often, as Workday writes it (a legal entity such as "2100 NVIDIA USA"); a board whose
 pages were not read keeps none. A company takes its name wherever its ATS gives one, and has none
@@ -645,12 +646,15 @@ Lever, Workable and, if still short, Workday (#74, ADR-0022, ADR-0023).
 Every stage runs on a schedule in production: discovery when a new crawl is published,
 probing after discovery and periodically for empty and not-found boards, and every day a sweep
 followed by a publish, so a vacancy that closed is gone from the Finder by the next day.
-Every ATS is swept at the same time, and the sweeps together take under about 4 hours (Elias,
-2026-11-18); Workday's is the longest, so it decides (#90). Measured on dev on 2026-11-19, with a
-Workday description read only where none is held: Ashby 5m, Lever 8m, Greenhouse 15m, Workday 4h 5m,
-stopped with one board left (`docs/measurements/2026-11-workday-sweep.md`). What sets the rest is
-Workday's pace after Cloudflare's challenge, one board read a request at a time (#88), and how a large
-board is narrowed by facet.
+Every ATS is swept at the same time (Elias, 2026-11-18). Workday is swept two ways (ADR-0032): a
+**long sweep** each night reads every description, and **short sweeps** through the day read only the
+descriptions of vacancies not held with one, around US working hours. Both read every list page, so a
+closed vacancy is gone after the next sweep of either kind, and a changed description after the next
+long one. The goal: a long sweep fits a US night, and a short sweep is as short as #110 and #88 make
+it. Measured on dev on 2026-11-18 and 19 (`docs/measurements/2026-11-workday-sweep.md`): a long sweep
+took 8h 38m and a short one 4h 5m, at the 8 a second Workday's throttle holds after Cloudflare's
+challenge; Greenhouse, Ashby and Lever took 5 to 28 minutes. Projected with #110 at 8 a second: about
+7h 25m and 2h 15m (#90).
 
 ### 12.6 Launch
 

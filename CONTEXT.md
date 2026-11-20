@@ -51,6 +51,16 @@ _Avoid_: validate, ping, health check
 Reading every opening from a board and reconciling them against what is already held.
 _Avoid_: fetch, sync, import, scrape
 
+**Long sweep**:
+A Workday sweep that reads every description the title rules call for, held or not. Run each night
+(ADR-0032).
+_Avoid_: full sync, deep sweep
+
+**Short sweep**:
+A Workday sweep that reads a description only for a vacancy not held with one under the same id and
+title, and keeps the held one otherwise. Run through the day (ADR-0032).
+_Avoid_: quick sync, light sweep, incremental sweep
+
 **Archive**:
 A public record of captured web pages that discovery searches for board URLs. There are two:
 Common Crawl, which publishes its record as crawls, and the Wayback Machine, which has no crawls

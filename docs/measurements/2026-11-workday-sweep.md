@@ -244,3 +244,9 @@ rest of its 4h 5m was O'Reilly read alone. Three things set the time from here:
   `cc.wd3/chanelcareers`, `corpartners.wd5/englemartin`, `garlandtx.wd1/garlandcareers`,
   `gapinc.wd1/gapinc`) each cost a whole board.
 - A `200` that is not JSON is not asked again: Dollar Tree, after 2033 pages, in the first run.
+
+## What was decided
+
+What skipping held descriptions loses was measured next (`2026-11-description-changes.md`): 1.8% of
+open `IN` vacancies with a wrong fact after 26 days. So Workday has a long sweep, every night, and a
+short sweep, which skips them, through the day (ADR-0032). The rest of the plan is #90's.
