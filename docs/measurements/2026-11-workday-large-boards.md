@@ -121,3 +121,74 @@ The tolerance is **1% of the part's size**. It matters only on a capped part, 20
 - Estimated from the first pages: 8199 list pages for the uncapped boards and about 9985 for the capped
   ones, about 18 200 in all, against #90's second run's 48 820. Parts under a value of 2000 or more
   add their own first pages.
+
+## The run (#110 step 5)
+
+Run on 2026-11-20 from 14:10:45 to 17:50:44 with 0c5553a, from what dev held after #90
+(`~/oneprofile-snapshots/archive/pre-sweep-2026-11-18.dump` restored), dumped first to
+`archive/pre-sweep-2026-11-20.dump` (1.2 GB, 6m 33s, 1 448 737 vacancies) and exported with
+`analyze-sweep export`. A Workday short sweep and the long sweeps of the other three, called at once
+as in `2026-11-workday-sweep.md`. The log is `~/oneprofile-sweep-logs/run4.log`.
+
+| Sweep | Wall time | Boards | Published | Added | Deleted | Unreadable | Short |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Ashby | 4m 45s | 3629 | 64 141 | 18 724 | 19 211 | 0 | 0 |
+| Lever | 7m 32s | 1889 | 70 672 | 3914 | 4126 | 0 | 0 |
+| Greenhouse | 14m 3s | 6888 | 213 054 | 11 773 | 11 878 | 0 | 0 |
+| Workday, short | **3h 39m 54s** | 6469 | 1 169 489 | 469 865 | 384 917 | 6 | 7 |
+
+Added and deleted count two days of change on top of #110's: dev held the corpus of 2026-11-18.
+Cloudflare challenged at 15:23, 72 minutes in, and the throttle held 8 a second from there. Workday
+asked for 63 391 list pages and 65 052 descriptions. The board lines add up to each report.
+
+### The 78 boards
+
+| | #90's second run | This run |
+| --- | ---: | ---: |
+| List pages | 54 749 | 18 539 |
+| Vacancies read | 266 522 | 353 584 |
+| Their sizes, added up | | 361 051 (97.9% read) |
+
+#110's issue gave 48 820 list pages for #90's second run; 54 749 adds up its `WORKDAY_BOARD` lines for
+the 78. Walmart read 19 968 of a size of 20 093 (414 before), 7-Eleven 12 152 (472), Target 14 185 of
+14 191 in 34 minutes. Under 99% of their size: Babilou and Citi at 98.9%, and Airbus and Bridgestone,
+read short.
+
+### Read short
+
+| Board | Read | Size | Why |
+| --- | ---: | ---: | --- |
+| `bridgestone.wd5/external` | 901 | 2887 | narrowed twice, no facet covering the second part |
+| `kohls.wd504/kohlscareers` | 1429 | 5996 | the same |
+| `kindercare.wd5/externalcareersite` | 211 | 2568 | the same |
+| `petco.wd504/external` | 1151 | 3881 | the same |
+| `ag.wd3/airbus` | 2679 | 3007 | the same |
+| `cbh.wd12/cherrybekaertearlycareers` | 5 | 7 | the `total` behind closed vacancies |
+| `jpi.wd1/jpicareers` | 14 | 16 | the same |
+
+All seven kept their held vacancies. **Under a facet applied, Workday lists at most 55 values of
+every facet, location facets included**: Bridgestone's `primaryLocation` lists 1635 values on its first
+page, 55 (sum 288) under full time. So a part narrowed once and still capped can be left with no
+facet that covers it, and its location fallback reads a cut list. The root survey above could not
+show this.
+
+0c5553a had dropped #90's preference for a covering facet whose every value is under 2000, to spare
+Walmart pages. Restored in 7ddc227, the five boards narrowed twice, the two small ones and Walmart
+were swept again alone (`run5.log`):
+
+| Board | Read | Size | List pages |
+| --- | ---: | ---: | ---: |
+| `bridgestone.wd5/external` | 2883 | 2884 | 1644 |
+| `kohls.wd504/kohlscareers` | 5992 | 5992 | 1166 |
+| `kindercare.wd5/externalcareersite` | 2564 | 2565 | 2062 |
+| `petco.wd504/external` | 1150 | 3881, short | 106 |
+| `ag.wd3/airbus` | 2680 | 3008, short | 173 |
+| `walmart.wd504/walmartexternal` | 20 016 | 20 072 | 4351 |
+
+The two small boards read whole too, an hour later (5 and 14). Petco and Airbus have no covering facet
+whose every value is under 2000, so they are still narrowed twice: Petco's `locations` (1288 values)
+would read it whole, but its sum is 2.7% over the size, a vacancy in several stores counted in each,
+so it does not cover. Estimated from the first pages, the preference takes the 78 from 18 539 list
+pages to about 24 300, mostly Walmart's `primaryLocation`: 4351 pages and 1h 37m alone, against 1042
+pages and 38m by `locationCountry`. Read one request after another, Walmart is then a sweep's last
+board by about an hour, until #88 reads a board's requests several at a time.
