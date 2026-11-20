@@ -142,6 +142,25 @@ class SweepTest(unittest.TestCase):
         self.assertEqual([board["slug"] for board in self.report["unreadable"]], ["s"])
         self.assertEqual(self.report["unreadable"][0]["workday"]["parts"], 3)
 
+    def test_short_boards_are_counted_and_listed_with_old_and_new_reports(self):
+        events = sweep.parse_log([
+            line("00:00.000", "SWEEP_BOARD ats=WORKDAY slug=short-board outcome=short read_ms=100 mirror_ms=0 vacancies=0 read=8 size=10"),
+            line("00:01.000", "SWEEP_REPORT ats=WORKDAY after=- limit=1 boards=1 published=0 added=0 updated=0 deleted=0 not_found=0 unreadable=0 short=1 wall_s=1"),
+            line("00:02.000", "SWEEP_REPORT ats=WORKDAY after=short-board limit=0 boards=0 published=0 added=0 updated=0 deleted=0 not_found=0 unreadable=0 wall_s=0"),
+        ])
+        self.assertEqual(len(events), 3)
+        report = sweep.analyze(events)
+        self.assertEqual(report["ats"]["WORKDAY"]["outcomes"], {"short": 1})
+        self.assertEqual([board["slug"] for board in report["short"]], ["short-board"])
+        self.assertEqual(report["unreadable"], [])
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output):
+            sweep.print_report(report)
+        text = output.getvalue()
+        self.assertIn("published=0 not_found=0 unreadable=0 short=1", text)
+        self.assertIn("Short boards:\nWORKDAY short-board short", text)
+        self.assertLess(text.index("Unreadable boards:"), text.index("Short boards:"))
+
     def test_ignores_malformed_lines(self):
         valid = line("00:00.000", "SWEEP_BOARD ats=WORKDAY slug=s outcome=published read_ms=1 mirror_ms=2 vacancies=3")
         for malformed in ("", "not a log", valid.replace("14:00", "99:00"),

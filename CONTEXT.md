@@ -111,7 +111,8 @@ _Avoid_: canonical URL, normalized URL, sort key
 
 **Vacancy**:
 A single open position at a company, as published on its board. Held as a mirror of the
-board: a vacancy that disappears from the board is treated as closed.
+board: a vacancy that disappears from the board is treated as closed, unless the board was read
+short (a Workday board read to under 90% of its size keeps what it holds, ADR-0033).
 _Avoid_: job, posting, listing, opening, role, ad
 
 **Description**:

@@ -77,7 +77,7 @@ class BoardSweepRunTest {
 
 		assertThat(sweep.sweep(AtsEnum.GREENHOUSE, "cursor", 4).wallSeconds()).isEqualTo(125);
 		assertThat(output.getOut()).contains("SWEEP_REPORT ats=GREENHOUSE kind=long after=cursor limit=4 boards=0 published=0"
-				+ " added=0 updated=0 deleted=0 not_found=0 unreadable=0 wall_s=125");
+				+ " added=0 updated=0 deleted=0 not_found=0 unreadable=0 short=0 wall_s=125");
 	}
 
 	/** A short sweep reads Workday's boards with the short reader, the slice it is given, and says so. */
@@ -96,7 +96,7 @@ class BoardSweepRunTest {
 				Duration.ofMillis(50))
 			.shortSweep("acme.wd1/careers", 1);
 
-		assertThat(report).isEqualTo(new BoardSweepRun.Report(1, 1, 1, 0, 0, 0, 0, 0));
+		assertThat(report).isEqualTo(new BoardSweepRun.Report(1, 1, 1, 0, 0, 0, 0, 0, 0));
 		then(this.vacancies).should().mirror(AtsEnum.WORKDAY, "nvidia.wd5/careers", List.of(workday("JR1", null)));
 		assertThat(output.getOut()).contains("SWEEP_REPORT ats=WORKDAY kind=short after=acme.wd1/careers limit=1");
 	}
@@ -127,7 +127,7 @@ class BoardSweepRunTest {
 		BoardSweepRun sweep = sweepOf(Map.of("stripe", List.of(published(4001), published(4002), published(4003)),
 				"notion", List.of(published(5001))));
 
-		assertThat(sweep.sweep(AtsEnum.GREENHOUSE, null, null)).isEqualTo(new BoardSweepRun.Report(2, 4, 2, 2, 3, 0, 0, 0));
+		assertThat(sweep.sweep(AtsEnum.GREENHOUSE, null, null)).isEqualTo(new BoardSweepRun.Report(2, 4, 2, 2, 3, 0, 0, 0, 0));
 		then(this.vacancies).should().mirror(AtsEnum.GREENHOUSE, "notion", List.of(published(5001)));
 	}
 
@@ -158,7 +158,7 @@ class BoardSweepRunTest {
 		boards.put("stripe", List.of(published(4001)));
 		boards.put("unreachable", null);
 
-		assertThat(sweepOf(boards).sweep(AtsEnum.GREENHOUSE, null, null)).isEqualTo(new BoardSweepRun.Report(2, 1, 1, 0, 0, 0, 1, 0));
+		assertThat(sweepOf(boards).sweep(AtsEnum.GREENHOUSE, null, null)).isEqualTo(new BoardSweepRun.Report(2, 1, 1, 0, 0, 0, 1, 0, 0));
 
 		then(this.vacancies).should(BDDMockito.never()).mirror(eq(AtsEnum.GREENHOUSE), eq("unreachable"), any());
 	}
@@ -224,7 +224,7 @@ class BoardSweepRunTest {
 		};
 
 		assertThat(sweepOf(reader, new Pace(2, 1000, false)).sweep(AtsEnum.GREENHOUSE, null, null))
-			.isEqualTo(new BoardSweepRun.Report(2, 1, 1, 0, 0, 0, 1, 0));
+			.isEqualTo(new BoardSweepRun.Report(2, 1, 1, 0, 0, 0, 1, 0, 0));
 		then(this.vacancies).should(BDDMockito.never()).mirror(eq(AtsEnum.GREENHOUSE), eq("refused"), any());
 	}
 
@@ -238,7 +238,7 @@ class BoardSweepRunTest {
 				Map.of(AtsEnum.GREENHOUSE, reader(Map.of()), AtsEnum.ASHBY, reader(Map.of("ramp", List.of(published(1))))), NO_SHORT_SWEEP,
 				Map.of(AtsEnum.GREENHOUSE, UNPACED, AtsEnum.ASHBY, UNPACED), this.companies, this.vacancies, InstantSource.fixed(Instant.EPOCH), Duration.ofMillis(50));
 
-		assertThat(sweep.sweep(AtsEnum.ASHBY, null, null)).isEqualTo(new BoardSweepRun.Report(1, 1, 1, 0, 0, 0, 0, 0));
+		assertThat(sweep.sweep(AtsEnum.ASHBY, null, null)).isEqualTo(new BoardSweepRun.Report(1, 1, 1, 0, 0, 0, 0, 0, 0));
 		then(this.vacancies).should().mirror(AtsEnum.ASHBY, "ramp", List.of(published(1)));
 	}
 
@@ -271,7 +271,7 @@ class BoardSweepRunTest {
 		};
 
 		assertThat(sweepOf(reader, UNPACED).sweep(AtsEnum.GREENHOUSE, null, null))
-			.isEqualTo(new BoardSweepRun.Report(1, 0, 0, 0, 3, 1, 0, 0));
+			.isEqualTo(new BoardSweepRun.Report(1, 0, 0, 0, 3, 1, 0, 0, 0));
 
 		var order = inOrder(this.vacancies, this.companies);
 		order.verify(this.vacancies).mirror(AtsEnum.GREENHOUSE, "gone", List.of());
@@ -329,7 +329,25 @@ class BoardSweepRunTest {
 			.containsPattern("SWEEP_BOARD ats=GREENHOUSE slug=a outcome=published read_ms=\\d+ mirror_ms=\\d+ vacancies=2")
 			.containsPattern("SWEEP_BOARD ats=GREENHOUSE slug=b outcome=not_found read_ms=\\d+ mirror_ms=\\d+ vacancies=0")
 			.containsPattern("SWEEP_BOARD ats=GREENHOUSE slug=c outcome=unreadable read_ms=\\d+ mirror_ms=0 vacancies=0");
-		assertThat(output.getOut()).contains("SWEEP_REPORT ats=GREENHOUSE kind=long after=- limit=- boards=3 published=2 added=1 updated=0 deleted=0 not_found=1 unreadable=1 wall_s=0");
+		assertThat(output.getOut()).contains("SWEEP_REPORT ats=GREENHOUSE kind=long after=- limit=- boards=3 published=2 added=1 updated=0 deleted=0 not_found=1 unreadable=1 short=0 wall_s=0");
+	}
+
+	/** A short board keeps its held vacancies and company name, and counts separately from unreadable. */
+	@Test
+	void leavesAloneABoardReadShortAndReportsItsSize(CapturedOutput output) {
+		activeSlugs("short");
+		VacancyReaderPort reader = (slug, region, onRefusal) -> {
+			throw new ShortBoardException(8, 10);
+		};
+
+		assertThat(sweepOf(reader, UNPACED).sweep(AtsEnum.GREENHOUSE, null, null))
+			.isEqualTo(new BoardSweepRun.Report(1, 0, 0, 0, 0, 0, 0, 1, 0));
+		then(this.vacancies).should(BDDMockito.never()).mirror(eq(AtsEnum.GREENHOUSE), eq("short"), any());
+		then(this.companies).should(BDDMockito.never()).recordName(eq(AtsEnum.GREENHOUSE), eq("short"), any());
+		then(this.companies).should(BDDMockito.never()).recordNotFound(AtsEnum.GREENHOUSE, "short");
+		assertThat(output.getOut())
+			.containsPattern("SWEEP_BOARD ats=GREENHOUSE slug=short outcome=short read_ms=\\d+ mirror_ms=0 vacancies=0 read=8 size=10")
+			.contains("not_found=0 unreadable=0 short=1 wall_s=0");
 	}
 
 	/** A separate heartbeat survives a blocked worker and retains the run's cursor. */
@@ -426,7 +444,7 @@ class BoardSweepRunTest {
 			BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader), NO_SHORT_SWEEP,
 					Map.of(AtsEnum.GREENHOUSE, UNPACED), this.companies, this.vacancies, InstantSource.fixed(Instant.EPOCH), Duration.ofMillis(50));
 
-			assertThat(sweep.sweep(AtsEnum.GREENHOUSE, null, null)).isEqualTo(new BoardSweepRun.Report(0, 0, 0, 0, 0, 0, 0, 0));
+			assertThat(sweep.sweep(AtsEnum.GREENHOUSE, null, null)).isEqualTo(new BoardSweepRun.Report(0, 0, 0, 0, 0, 0, 0, 0, 0));
 
 			var unread = this.companyRepository.findByAtsAndSlug(AtsEnum.GREENHOUSE, "sweep-unread").orElseThrow();
 			assertThat(unread.boardStatus()).isEqualTo(BoardStatusEnum.UNREAD);
@@ -458,7 +476,7 @@ class BoardSweepRunTest {
 			BoardSweepRun sweep = new BoardSweepRun(Map.of(AtsEnum.GREENHOUSE, reader), NO_SHORT_SWEEP,
 					Map.of(AtsEnum.GREENHOUSE, UNPACED), this.companies, this.vacancies, InstantSource.fixed(Instant.EPOCH), Duration.ofMillis(50));
 
-			assertThat(sweep.sweep(AtsEnum.GREENHOUSE, null, null)).isEqualTo(new BoardSweepRun.Report(3, 2, 1, 1, 3, 1, 1, 0));
+			assertThat(sweep.sweep(AtsEnum.GREENHOUSE, null, null)).isEqualTo(new BoardSweepRun.Report(3, 2, 1, 1, 3, 1, 1, 0, 0));
 
 			var gone = this.companyRepository.findByAtsAndSlug(AtsEnum.GREENHOUSE, "sweep-gone").orElseThrow();
 			assertThat(gone.boardStatus()).isEqualTo(BoardStatusEnum.NOT_FOUND);

@@ -92,7 +92,7 @@ def parse_line(line):
             if not re.fullmatch(r"\d+(?:\.\d+)?" if key == "wall_s" else r"\d+", value):
                 return None
             fields[key] = float(value) if key == "wall_s" else int(value)
-        if kind == "SWEEP_BOARD" and fields["outcome"] not in ("published", "not_found", "unreadable"):
+        if kind == "SWEEP_BOARD" and fields["outcome"] not in ("published", "not_found", "unreadable", "short"):
             return None
         if kind == "WORKDAY_BOARD" and fields["failed"] not in ("true", "false"):
             return None
@@ -182,7 +182,8 @@ def analyze(events):
                 halvings=[event["time"] for event in events if event["kind"] == "HALVING"],
                 totals=totals, mean_ms=means, minutes=[minutes[key] for key in sorted(minutes)],
                 longest=sorted(boards, key=lambda board: board["duration_ms"], reverse=True)[:20],
-                unreadable=[board for board in boards if board["outcome"] == "unreadable"])
+                unreadable=[board for board in boards if board["outcome"] == "unreadable"],
+                short=[board for board in boards if board["outcome"] == "short"])
 
 
 def read_tsv(path):
@@ -282,12 +283,15 @@ def print_report(report, changes=None):
     print("\nBoards")
     for ats, data in report["ats"].items():
         counts = " ".join(f"{outcome}={data['outcomes'].get(outcome, 0)}" for outcome in
-                          ("published", "not_found", "unreadable"))
+                          ("published", "not_found", "unreadable", "short"))
         match = str(data["finished_lines"] == data["report_boards"]).lower() if data["reports"] else "n/a (no reports)"
         print(f"{ats}: {counts}; unique_boards={len(data['boards'])}; "
               f"SWEEP_BOARD lines={data['finished_lines']} report_boards={data['report_boards']} match={match}")
     print("Unreadable boards:")
     for board in report["unreadable"]:
+        print(board_line(board))
+    print("Short boards:")
+    for board in report["short"]:
         print(board_line(board))
     if changes is not None:
         print("\nDescriptions")

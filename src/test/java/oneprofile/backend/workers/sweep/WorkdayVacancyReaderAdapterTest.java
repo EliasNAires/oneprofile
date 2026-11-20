@@ -25,6 +25,7 @@ import oneprofile.backend.workers.cleaning.TitleCleaningRule;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockMakers;
 import org.springframework.boot.test.system.CapturedOutput;
@@ -75,7 +76,7 @@ class WorkdayVacancyReaderAdapterTest {
 		assertThat(output.getOut().lines().filter((line) -> line.contains("WORKDAY_BOARD "))).singleElement()
 			.asString()
 			.endsWith("WORKDAY_BOARD slug=" + SLUG
-					+ " list_pages=1 description_pages=0 descriptions_held=1 parts=1 failed=false");
+					+ " list_pages=1 description_pages=0 descriptions_held=1 parts=1 read=1 size=1 failed=false");
 	}
 
 	/** In a short sweep, a matching identity does not reuse a description when the listed title differs. */
@@ -107,7 +108,7 @@ class WorkdayVacancyReaderAdapterTest {
 				- Build the NVLink firmware.""");
 		assertThat(this.asked).containsExactly("jobs {} 0", "job /job/Santa-Clara/Senior-Software-Engineer_JR1");
 		then(this.vacancies).shouldHaveNoInteractions();
-		assertThat(output.getOut()).contains("list_pages=1 description_pages=1 descriptions_held=0 parts=1 failed=false");
+		assertThat(output.getOut()).contains("list_pages=1 description_pages=1 descriptions_held=0 parts=1 read=1 size=1 failed=false");
 	}
 
 	/** An unnarrowed board reports its list and description requests once. */
@@ -128,7 +129,7 @@ class WorkdayVacancyReaderAdapterTest {
 		assertThat(output.getOut().lines().filter((line) -> line.contains("WORKDAY_BOARD "))).singleElement()
 			.asString()
 			.endsWith("WORKDAY_BOARD slug=" + SLUG
-					+ " list_pages=1 description_pages=1 descriptions_held=0 parts=1 failed=false");
+					+ " list_pages=1 description_pages=1 descriptions_held=0 parts=1 read=1 size=1 failed=false");
 	}
 
 	@Test
@@ -194,23 +195,23 @@ class WorkdayVacancyReaderAdapterTest {
 		assertThat(output.getOut().lines().filter((line) -> line.contains("WORKDAY_BOARD "))).singleElement()
 			.asString()
 			.endsWith("WORKDAY_BOARD slug=" + SLUG
-					+ " list_pages=4 description_pages=0 descriptions_held=0 parts=2 failed=false");
+					+ " list_pages=4 description_pages=0 descriptions_held=0 parts=2 read=5 size=5 failed=false");
 	}
 
-	/** Four pages for six counted vacancies beat five pages for five, despite the overlap. */
+	/** Among covering facets, three pages beat five single-vacancy pages. */
 	@Test
 	void narrowsByTheFacetThatTakesTheFewestPages() throws IOException {
 		FakeWorkday workday = new FakeWorkday(List.of(
 				posting("Registered Nurse", "A", "JR1", Map.of("timeType", Set.of("full"), "locations", Set.of("a"))),
 				posting("Registered Nurse", "B", "JR2", Map.of("timeType", Set.of("full"), "locations", Set.of("b"))),
-				posting("Registered Nurse", "C", "JR3", Map.of("timeType", Set.of("full", "part"), "locations", Set.of("c"))),
+				posting("Registered Nurse", "C", "JR3", Map.of("timeType", Set.of("full"), "locations", Set.of("c"))),
 				posting("Registered Nurse", "D", "JR4", Map.of("timeType", Set.of("part"), "locations", Set.of("d"))),
 				posting("Registered Nurse", "E", "JR5", Map.of("timeType", Set.of("part"), "locations", Set.of("e")))));
 
 		assertThat(reader(workday).read(SLUG, RegionEnum.US, () -> {
 		})).hasSize(5);
 		assertThat(this.asked).containsExactly("jobs {} 0", "jobs {timeType=[full]} 0",
-				"jobs {timeType=[full]} 2", "jobs {timeType=[part]} 0", "jobs {timeType=[part]} 2");
+				"jobs {timeType=[full]} 2", "jobs {timeType=[part]} 0");
 	}
 
 	@Test
@@ -264,7 +265,7 @@ class WorkdayVacancyReaderAdapterTest {
 		assertThat(output.getOut().lines().filter((line) -> line.contains("WORKDAY_BOARD "))).singleElement()
 			.asString()
 			.endsWith("WORKDAY_BOARD slug=" + SLUG
-					+ " list_pages=1 description_pages=0 descriptions_held=0 parts=1 failed=true");
+					+ " list_pages=1 description_pages=0 descriptions_held=0 parts=1 read=0 size=- failed=true");
 	}
 
 	/** A server error on the first page says nothing about whether a board is published. */
@@ -278,7 +279,7 @@ class WorkdayVacancyReaderAdapterTest {
 		assertThat(output.getOut().lines().filter((line) -> line.contains("WORKDAY_BOARD "))).singleElement()
 			.asString()
 			.endsWith("WORKDAY_BOARD slug=" + SLUG
-					+ " list_pages=1 description_pages=0 descriptions_held=0 parts=1 failed=true");
+					+ " list_pages=1 description_pages=0 descriptions_held=0 parts=1 read=0 size=- failed=true");
 	}
 
 	/** A later page cannot establish that the board is not published. */
@@ -306,6 +307,156 @@ class WorkdayVacancyReaderAdapterTest {
 		assertThatIOException().isThrownBy(() -> reader(workday).read(SLUG, RegionEnum.US, () -> {
 		})).isNotInstanceOf(BoardNotFoundException.class);
 		assertThat(this.asked).containsExactly("jobs {} 0", "jobs {timeType=[full]} 0");
+	}
+
+	/** A real total above the cap is paged whole without applying any facet. */
+	@Test
+	void pagesAnUncappedBoardPastTheLimit() throws IOException {
+		FakeWorkday workday = new FakeWorkday(nurses(7));
+		workday.uncapped = true;
+
+		assertThat(reader(workday).read(SLUG, RegionEnum.US, () -> {
+		})).hasSize(7);
+		assertThat(this.asked).containsExactly("jobs {} 0", "jobs {} 2", "jobs {} 4", "jobs {} 6");
+	}
+
+	/** Exactly the cap still needs narrowing, and one-value facets must not reproduce the part. */
+	@Test
+	void narrowsAPartOfExactlyTheLimit() throws IOException {
+		FakeWorkday workday = new FakeWorkday(nurses(4));
+		assertThat(reader(workday).read(SLUG, RegionEnum.US, () -> {
+		})).hasSize(4);
+		assertThat(this.asked).hasSize(5).contains("jobs {locations=[L0]} 0", "jobs {locations=[L3]} 0");
+		assertThat(this.asked).noneMatch((request) -> request.contains("workerSubType") || request.contains("coverage"));
+	}
+
+	/** Neither an incomplete company facet nor an overlapping facet covers the part. */
+	@Test
+	void passesOverFacetsWhoseSumsMissOrDoubleCountVacancies() throws IOException {
+		List<Posting> postings = new ArrayList<>();
+		for (int i = 0; i < 6; i++) {
+			postings.add(posting("Registered Nurse", "L" + i, "JR" + i,
+					Map.of("company", i == 0 ? Set.of("small") : Set.of(),
+							"timeType", Set.of("full", "part"), "locations", Set.of("L" + i))));
+		}
+		assertThat(reader(new FakeWorkday(postings)).read(SLUG, RegionEnum.US, () -> {
+		})).hasSize(6);
+		assertThat(this.asked).hasSize(7).noneMatch((request) -> request.contains("company") || request.contains("timeType"));
+	}
+
+	/** With no covering split, the finest location facet still reads overlapping parts once. */
+	@Test
+	void fallsBackToTheFinestLocationFacetWhenNoFacetCoversThePart() throws IOException {
+		List<Posting> postings = new ArrayList<>();
+		for (int i = 0; i < 5; i++) {
+			postings.add(posting("Registered Nurse", "L" + i, "JR" + i,
+					Map.of("countryLocation", i == 0 ? Set.of("country", "other") : Set.of("country"),
+							"locations", i < 2 ? Set.of("L" + i, "shared") : Set.of("L" + i))));
+		}
+		assertThat(reader(new FakeWorkday(postings)).read(SLUG, RegionEnum.US, () -> {
+		})).hasSize(5);
+		assertThat(this.asked).contains("jobs {locations=[L0]} 0");
+		assertThat(this.asked).noneMatch((request) -> request.contains("countryLocation"));
+	}
+
+	/** The list is checked before an engineering vacancy can trigger a description request. */
+	@Test
+	void throwsWhenTheListStopsBeforeNinetyPercentOfTheBoard(CapturedOutput output) {
+		FakeWorkday workday = new FakeWorkday(nurses(8).stream()
+			.map((posting) -> posting("Software Engineer", posting.location(), posting.location())).toList());
+		workday.uncapped = true;
+		workday.reportedTotal = 10;
+		assertThatIOException().isThrownBy(() -> reader(workday).read(SLUG, RegionEnum.US, () -> {
+		})).isInstanceOfSatisfying(ShortBoardException.class, (ex) -> {
+			assertThat(ex.read()).isEqualTo(8);
+			assertThat(ex.size()).isEqualTo(10);
+		});
+		assertThat(this.asked).noneMatch((request) -> request.startsWith("job "));
+		assertThat(output.getOut()).contains("parts=1 read=8 size=10 failed=true");
+	}
+
+	/** Exactly ninety percent is enough to mirror a board whose counts drifted. */
+	@Test
+	void returnsABoardReadToExactlyNinetyPercent() throws IOException {
+		FakeWorkday workday = new FakeWorkday(nurses(9));
+		workday.uncapped = true;
+		workday.reportedTotal = 10;
+		assertThat(reader(workday).read(SLUG, RegionEnum.US, () -> {
+		})).hasSize(9);
+	}
+
+	/** Without two agreeing facets, a capped board cannot be checked for completeness. */
+	@Test
+	void logsAnUncheckedCappedBoard(CapturedOutput output) throws IOException {
+		FakeWorkday workday = new FakeWorkday(nurses(5));
+		workday.coverage = false;
+		assertThat(reader(workday).read(SLUG, RegionEnum.US, () -> {
+		})).hasSize(5);
+		assertThat(output.getOut()).contains("read=5 size=- failed=false", "not checked");
+	}
+
+	/** An exact agreement wins even when a larger pair agrees only within tolerance. */
+	@ParameterizedTest
+	@CsvSource({ "100,100,200,201,100", "100,100,200,200,200", "100,101,200,203,101" })
+	void derivesTheLargestAgreedSizePreferringExactAgreement(long first, long second, long third, long fourth,
+			int expected) {
+		FakeWorkday workday = new FakeWorkday(nurses(4));
+		workday.rootCounts = Map.of("first", Map.of("all", first), "second", Map.of("all", second),
+				"third", Map.of("all", third), "fourth", Map.of("all", fourth));
+		assertThatIOException().isThrownBy(() -> reader(workday).read(SLUG, RegionEnum.US, () -> {
+		})).isInstanceOfSatisfying(ShortBoardException.class, (ex) -> {
+			assertThat(ex.read()).isEqualTo(4);
+			assertThat(ex.size()).isEqualTo(expected);
+		});
+		assertThat(this.asked).containsExactly("jobs {} 0", "jobs {} 2");
+	}
+
+	/** Two sums farther apart than the tolerance leave a capped board unchecked. */
+	@Test
+	void leavesTheSizeUncheckedWhenFacetSumsDisagreeBeyondTolerance(CapturedOutput output) throws IOException {
+		FakeWorkday workday = new FakeWorkday(nurses(4));
+		workday.rootCounts = Map.of("first", Map.of("all", 100L), "second", Map.of("all", 102L));
+		assertThat(reader(workday).read(SLUG, RegionEnum.US, () -> {
+		})).hasSize(4);
+		assertThat(output.getOut()).contains("read=4 size=- failed=false");
+	}
+
+	/** Equal page costs prefer fewer values even when one value must be narrowed again. */
+	@Test
+	void breaksAPageCostTieByFewerValuesIncludingACappedValue() throws IOException {
+		List<Posting> postings = new ArrayList<>();
+		for (int i = 0; i < 6; i++) {
+			postings.add(posting("Registered Nurse", "L" + i, "JR" + i,
+					Map.of("timeType", Set.of(i < 4 ? "full" : "part"),
+							"jobFamilyGroup", Set.of("family" + i / 2), "locations", Set.of("L" + i))));
+		}
+		assertThat(reader(new FakeWorkday(postings)).read(SLUG, RegionEnum.US, () -> {
+		})).hasSize(6);
+		assertThat(this.asked).contains("jobs {timeType=[full]} 0", "jobs {timeType=[part]} 0");
+		assertThat(this.asked).noneMatch((request) -> request.startsWith("jobs {jobFamilyGroup="));
+	}
+
+	/** Counts within one percent may narrow a part despite request-to-request drift. */
+	@Test
+	void acceptsACoveringFacetWithinOnePercentOfTheSize() throws IOException {
+		List<Posting> postings = new ArrayList<>();
+		for (int i = 0; i < 101; i++) {
+			postings.add(posting("Registered Nurse", "L" + i, "JR" + i,
+					Map.of("timeType", i == 100 ? Set.of() : Set.of(i < 50 ? "full" : "part"),
+							"locations", Set.of("L" + i))));
+		}
+		assertThat(reader(new FakeWorkday(postings)).read(SLUG, RegionEnum.US, () -> {
+		})).hasSize(100);
+		assertThat(this.asked).contains("jobs {timeType=[full]} 0", "jobs {timeType=[part]} 0");
+	}
+
+	/** Distinct locations provide a covering split for a miniature board. */
+	private List<Posting> nurses(int count) {
+		List<Posting> postings = new ArrayList<>();
+		for (int i = 0; i < count; i++) {
+			postings.add(posting("Registered Nurse", "L" + i, "JR" + i, Map.of("locations", Set.of("L" + i))));
+		}
+		return postings;
 	}
 
 	/** Reads the miniature board with the descriptions the store holds. */
@@ -344,6 +495,18 @@ class WorkdayVacancyReaderAdapterTest {
 
 		private int detailStatus = 200;
 
+		/** Whether the board pages beyond the miniature cap. */
+		private boolean uncapped;
+
+		/** A drifting total, or null to use the matching vacancies. */
+		private Integer reportedTotal;
+
+		/** Two single-value facets establish size without offering a split. */
+		private boolean coverage = true;
+
+		/** Root facet counts override the miniature's counts to model drifting size estimates. */
+		private Map<String, Map<String, Long>> rootCounts;
+
 		FakeWorkday(List<Posting> postings) {
 			this.postings = postings;
 		}
@@ -367,23 +530,32 @@ class WorkdayVacancyReaderAdapterTest {
 					.stream()
 					.anyMatch((value) -> posting.facets().getOrDefault(facet.getKey(), Set.of()).contains(value)));
 			List<Posting> matching = this.postings.stream().filter(applied).toList();
-			int from = (offset >= 4) ? 0 : offset;
+			int from = (!this.uncapped && offset >= 4) ? 0 : offset;
 			ObjectNode page = WorkdayVacancyReaderAdapterTest.this.json.createObjectNode();
-			page.put("total", (offset == 0) ? Math.min(matching.size(), 4) : 0);
+			page.put("total", (offset == 0) ? (this.reportedTotal != null ? this.reportedTotal
+					: this.uncapped ? matching.size() : Math.min(matching.size(), 4)) : 0);
 			ArrayNode jobPostings = page.putArray("jobPostings");
 			matching.stream().skip(from).limit(limit).forEach((posting) -> jobPostings.addObject()
 				.put("title", posting.title())
 				.put("externalPath", posting.externalPath())
 				.put("locationsText", posting.location()));
 			ArrayNode facets = page.putArray("facets");
-			Map<String, Map<String, Integer>> counts = new LinkedHashMap<>();
+			Map<String, Map<String, Long>> counts = new LinkedHashMap<>();
+			if (this.coverage && !matching.isEmpty()) {
+				counts.put("workerSubType", Map.of("all", (long) matching.size()));
+				counts.put("coverage", Map.of("all", (long) matching.size()));
+			}
 			for (Posting posting : matching) {
 				posting.facets().forEach((facet, values) -> values.forEach((value) -> counts
 					.computeIfAbsent(facet, (key) -> new LinkedHashMap<>())
-					.merge(value, 1, Integer::sum)));
+					.merge(value, 1L, Long::sum)));
+			}
+			if (appliedFacets.isEmpty() && this.rootCounts != null) {
+				counts.clear();
+				counts.putAll(this.rootCounts);
 			}
 			ObjectNode locationGroup = null;
-			for (Map.Entry<String, Map<String, Integer>> facet : counts.entrySet()) {
+			for (Map.Entry<String, Map<String, Long>> facet : counts.entrySet()) {
 				ObjectNode node;
 				if (facet.getKey().equals("locations")) {
 					// Workday nests its location facets under a group that names no values of its own.

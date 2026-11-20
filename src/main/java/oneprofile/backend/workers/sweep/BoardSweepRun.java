@@ -35,8 +35,9 @@ import org.springframework.stereotype.Component;
  * Only the active boards are asked: the rest have already said they publish nothing. Requests are
  * paced at what each ATS serves without refusing, with a margin: several are open at once, up to a
  * limit, and they start no faster than a limit a second. Each board is mirrored as soon as it is
- * read. A board that could not be read is skipped whole: the company keeps the vacancies it already
- * had, so a board that went down is not mistaken for a board that emptied. Where its vacancies name
+ * read. A board that could not be read, or was read short of its size, is skipped whole: the company
+ * keeps the vacancies it already had, so a board that went down is not mistaken for a board that
+ * emptied. Where its vacancies name
  * the company, as Workday's do, the company takes the name they give most often. A board the ATS
  * confirms is not found is mirrored as empty, then its company is recorded as NOT_FOUND without
  * changing its name or last probe time.
@@ -154,6 +155,7 @@ public class BoardSweepRun {
 		AtomicInteger deleted = new AtomicInteger();
 		AtomicInteger notFound = new AtomicInteger();
 		AtomicInteger unreadable = new AtomicInteger();
+		AtomicInteger shortRead = new AtomicInteger();
 		AtomicInteger openingsRead = new AtomicInteger();
 		ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor(
 				Thread.ofPlatform().daemon().name("sweep-heartbeat").factory());
@@ -180,6 +182,10 @@ public class BoardSweepRun {
 					unreadable.incrementAndGet();
 					outcome = "unreadable";
 				}
+				else if (reading instanceof ReadShort) {
+					shortRead.incrementAndGet();
+					outcome = "short";
+				}
 				else if (reading instanceof NotFound) {
 					VacancyStore.Reconciliation reconciliation = this.vacancies.mirror(ats, slug, List.of());
 					// If the company write fails, it stays ACTIVE with no vacancies; the next sweep retries.
@@ -199,10 +205,12 @@ public class BoardSweepRun {
 					count = openings.size();
 					outcome = "published";
 				}
-				long mirrorMs = reading instanceof Unreadable ? 0
+				long mirrorMs = reading instanceof Unreadable || reading instanceof ReadShort ? 0
 						: TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - before);
-				logger.info("SWEEP_BOARD ats=%s slug=%s outcome=%s read_ms=%d mirror_ms=%d vacancies=%d"
-					.formatted(ats.name(), slug, outcome, timed.readMs(), mirrorMs, count));
+				String detail = reading instanceof ReadShort board
+						? " read=%d size=%d".formatted(board.read(), board.size()) : "";
+				logger.info("SWEEP_BOARD ats=%s slug=%s outcome=%s read_ms=%d mirror_ms=%d vacancies=%d%s"
+					.formatted(ats.name(), slug, outcome, timed.readMs(), mirrorMs, count, detail));
 				synchronized (unfinished) {
 					open.remove(slug);
 					unfinished.remove(slug);
@@ -210,12 +218,12 @@ public class BoardSweepRun {
 			});
 			long wallSeconds = Duration.between(started, this.clock.instant()).toSeconds();
 			Report report = new Report(regions.size(), published.get(), added.get(), updated.get(), deleted.get(),
-					notFound.get(), unreadable.get(), wallSeconds);
+					notFound.get(), unreadable.get(), shortRead.get(), wallSeconds);
 			logger.info(("SWEEP_REPORT ats=%s kind=%s after=%s limit=%s boards=%d published=%d added=%d updated=%d"
-					+ " deleted=%d not_found=%d unreadable=%d wall_s=%d").formatted(ats.name(), kind,
+					+ " deleted=%d not_found=%d unreadable=%d short=%d wall_s=%d").formatted(ats.name(), kind,
 						after == null ? "-" : after, limit == null ? "-" : limit, report.boards(), report.published(),
 						report.added(), report.updated(), report.deleted(), report.notFound(), report.unreadable(),
-						report.wallSeconds()));
+						report.shortRead(), report.wallSeconds()));
 			return report;
 		}
 		finally {
@@ -261,7 +269,7 @@ public class BoardSweepRun {
 			.map(Map.Entry::getKey);
 	}
 
-	/** What the board publishes, or that it was not found, or that it could not be read. */
+	/** What the board publishes, or that it was not found, unreadable, or read short. */
 	private static Reading read(AtsEnum ats, VacancyReaderPort reader, String slug, RegionEnum region,
 			Runnable onRefusal) {
 		try {
@@ -270,14 +278,17 @@ public class BoardSweepRun {
 		catch (BoardNotFoundException ex) {
 			return new NotFound();
 		}
+		catch (ShortBoardException ex) {
+			return new ReadShort(ex.read(), ex.size());
+		}
 		catch (IOException ex) {
 			logger.warn("Could not read the openings of the %s board of %s".formatted(ats, slug), ex);
 			return new Unreadable();
 		}
 	}
 
-	/** The three outcomes of asking an ATS for a board's vacancies. */
-	private sealed interface Reading permits Published, NotFound, Unreadable {
+	/** The four outcomes of asking an ATS for a board's vacancies. */
+	private sealed interface Reading permits Published, NotFound, Unreadable, ReadShort {
 	}
 
 	/** Every vacancy the board publishes, none on an empty board. */
@@ -292,22 +303,27 @@ public class BoardSweepRun {
 	private record Unreadable() implements Reading {
 	}
 
+	/** The list named too few distinct vacancies to mirror the board safely. */
+	private record ReadShort(int read, int size) implements Reading {
+	}
+
 	/**
 	 * What one run found. A board that was not found adds its held vacancies to deleted.
-	 * A company whose board could not be read keeps every vacancy it already had, and is counted
-	 * only in boards and unreadable.
+	 * A company whose board could not be read or was read short keeps every vacancy it already had,
+	 * and is counted only in boards and unreadable or shortRead, respectively.
 	 *
-	 * @param boards how many boards were asked for, including those not found or unreadable
+	 * @param boards how many boards were asked for, including those not found, unreadable or short
 	 * @param published how many openings those boards published
 	 * @param added how many of them were not held yet
 	 * @param updated how many held vacancies their boards still publish
 	 * @param deleted how many held vacancies their boards no longer publish
 	 * @param notFound how many slugs had no board
 	 * @param unreadable how many boards the ATS would not say anything about
+	 * @param shortRead how many boards named too few vacancies for their known size
 	 * @param wallSeconds the elapsed wall time of the run in seconds
 	 */
 	public record Report(int boards, int published, int added, int updated, int deleted, int notFound, int unreadable,
-			long wallSeconds) {
+			int shortRead, long wallSeconds) {
 	}
 
 }

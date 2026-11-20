@@ -39,6 +39,9 @@ the later ADR wins; the overridden parts are marked below.
   and a **short sweep**, which reads one only for a vacancy not held with one under the same id and
   title. Both read every list page. A long sweep each night, short sweeps through the day (#30).
   Speed-ups that change nothing a visitor sees apply to both (#90, #110, #88).
+- **0033**: a Workday board read to under 90% of its size (its `total`, or for a capped board the
+  sum its facets agree on) keeps what it holds instead of being mirrored, under the outcome `short`.
+  A capped board whose facets give no size is logged as unchecked (#110).
 - **0021**: each ATS's vacancy is a class of its own over the one `vacancy` table, keeping what
   that ATS publishes as it publishes it; `Vacancy` holds what any ATS would be expected to
   publish. Facts are derived in passes, never in the sweep. Overrides PRD §7's nullable columns.
